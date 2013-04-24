@@ -1,0 +1,2209 @@
+
+<simulationRun xmlns="http://www.purl.org/org/esmetadata/cim/1.5/schemas" xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:gco="http://www.isotc211.org/2005/gco" xmlns:gmd="http://www.isotc211.org/2005/gmd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <responsibleParty>
+      <!--responsibleParty uri :: a8cc8f14-5f04-11e1-a133-00163e9152a5-->
+        <gmd:individualName>
+            <gco:CharacterString>Charline Marzin</gco:CharacterString>
+        </gmd:individualName>
+        <gmd:contactInfo>
+            <gmd:CI_Contact>
+                <gmd:address>
+                    <gmd:CI_Address>
+                        <gmd:deliveryPoint>
+                            <gco:CharacterString>Met Office Hadley Centre, Fitzroy Road, Exeter, Devon, UK, EX1 3PB</gco:CharacterString>
+                        </gmd:deliveryPoint>
+                        <gmd:electronicMailAddress>
+                            <gco:CharacterString>charline.marzin@metoffice.gov.uk</gco:CharacterString>
+                        </gmd:electronicMailAddress>
+                    </gmd:CI_Address>
+                </gmd:address>
+                <gmd:onlineResource>
+                    <gmd:CI_OnlineResource>
+                        <gmd:linkage>
+                            <gmd:URL>http://www.metoffice.gov.uk/research/people/charline-marzin</gmd:URL>
+                        </gmd:linkage>
+                    </gmd:CI_OnlineResource>
+                </gmd:onlineResource>
+            </gmd:CI_Contact>
+        </gmd:contactInfo>
+        <gmd:role>
+            <gmd:CI_RoleCode codeList="" codeListValue="contact"/>
+        </gmd:role>
+        <abbreviation>Charline Marzin</abbreviation>
+    </responsibleParty>
+    <responsibleParty>
+      <!--responsibleParty uri :: 78b7d580-e2ab-11df-9efb-00163e9152a5-->
+        <gmd:individualName>
+            <gco:CharacterString>Chris Jones</gco:CharacterString>
+        </gmd:individualName>
+        <gmd:contactInfo>
+            <gmd:CI_Contact>
+                <gmd:address>
+                    <gmd:CI_Address>
+                        <gmd:deliveryPoint>
+                            <gco:CharacterString>Met Office Hadley Centre, Fitzroy Road, Exeter, Devon, UK, EX1 3PB</gco:CharacterString>
+                        </gmd:deliveryPoint>
+                        <gmd:electronicMailAddress>
+                            <gco:CharacterString>chris.jones@metoffice.gov.uk</gco:CharacterString>
+                        </gmd:electronicMailAddress>
+                    </gmd:CI_Address>
+                </gmd:address>
+                <gmd:onlineResource>
+                    <gmd:CI_OnlineResource>
+                        <gmd:linkage>
+                            <gmd:URL>http://www.metoffice.gov.uk/research/our-scientists/climate-chemistry-ecosystems/chris-jones</gmd:URL>
+                        </gmd:linkage>
+                    </gmd:CI_OnlineResource>
+                </gmd:onlineResource>
+            </gmd:CI_Contact>
+        </gmd:contactInfo>
+        <gmd:role>
+            <gmd:CI_RoleCode codeList="" codeListValue="author"/>
+        </gmd:role>
+        <abbreviation>Chris Jones</abbreviation>
+    </responsibleParty>
+    <responsibleParty>
+      <!--responsibleParty uri :: 8baaf006-d3a5-11df-837f-00163e9152a5-->
+        <gmd:organisationName>
+            <gco:CharacterString>UK Met Office Hadley Centre</gco:CharacterString>
+        </gmd:organisationName>
+        <gmd:contactInfo>
+            <gmd:CI_Contact>
+                <gmd:address>
+                    <gmd:CI_Address>
+                        <gmd:deliveryPoint>
+                            <gco:CharacterString/>
+                        </gmd:deliveryPoint>
+                        <gmd:electronicMailAddress>
+                            <gco:CharacterString/>
+                        </gmd:electronicMailAddress>
+                    </gmd:CI_Address>
+                </gmd:address>
+                <gmd:onlineResource>
+                    <gmd:CI_OnlineResource>
+                        <gmd:linkage>
+                            <gmd:URL/>
+                        </gmd:linkage>
+                    </gmd:CI_OnlineResource>
+                </gmd:onlineResource>
+            </gmd:CI_Contact>
+        </gmd:contactInfo>
+        <gmd:role>
+            <gmd:CI_RoleCode codeList="" codeListValue="funder"/>
+        </gmd:role>
+        <abbreviation>MOHC</abbreviation>
+    </responsibleParty>
+    <responsibleParty>
+      <!--responsibleParty uri :: 8baaf006-d3a5-11df-837f-00163e9152a5-->
+        <gmd:organisationName>
+            <gco:CharacterString>UK Met Office Hadley Centre</gco:CharacterString>
+        </gmd:organisationName>
+        <gmd:contactInfo>
+            <gmd:CI_Contact>
+                <gmd:address>
+                    <gmd:CI_Address>
+                        <gmd:deliveryPoint>
+                            <gco:CharacterString/>
+                        </gmd:deliveryPoint>
+                        <gmd:electronicMailAddress>
+                            <gco:CharacterString/>
+                        </gmd:electronicMailAddress>
+                    </gmd:CI_Address>
+                </gmd:address>
+                <gmd:onlineResource>
+                    <gmd:CI_OnlineResource>
+                        <gmd:linkage>
+                            <gmd:URL/>
+                        </gmd:linkage>
+                    </gmd:CI_OnlineResource>
+                </gmd:onlineResource>
+            </gmd:CI_Contact>
+        </gmd:contactInfo>
+        <gmd:role>
+            <gmd:CI_RoleCode codeList="" codeListValue="centre"/>
+        </gmd:role>
+        <abbreviation>MOHC</abbreviation>
+    </responsibleParty>
+    <project open="true" value="CMIP5">
+        <controlledVocabulary>
+            <name>project</name>
+            <server>http://proj.badc.rl.ac.uk/svn/metafor/cmip5q/trunk</server>
+        </controlledVocabulary>
+    </project>
+    <shortName>midHolocene_HadGEM2-CC</shortName>
+    <longName>3.4 MidHolocene</longName>
+    <description>Consistent with PMIP specifications (https://pmip3.lsce.ipsl.fr/wiki/doku.php/pmip3:design:6K:final), simulation is run with midHolocene conditions, including atmospheric conditions of well-mixed gases and orbital variations.  [Nominal start date is set to 1859-12-01 to match piControl run].  Only the final 35 years (i.e the reference dates of 1941 - 1975) of this simulation have been submitted to the CMIP5 archive.</description>
+    <supports>
+        <reference xlink:href="#//CIMRecord/experiment[id='aadc187e-d3a5-11df-837f-00163e9152a5']">
+            <id>aadc187e-d3a5-11df-837f-00163e9152a5</id>
+            <name>midHolocene</name>
+            <type>experiment</type>
+            <version>1</version>
+            <description>Reference to an Experiment called midHolocene with experimentNumber 3.4</description>
+        </reference>
+    </supports>
+    <calendar>
+        <perpetualPeriod/>
+    </calendar>
+    <input fullySpecified="true" purpose="boundaryCondition">
+        <description>Fixed at preindustrial conditions.  Dataset is derived from the historical annual time series prepared for CMIP5.  This input field is interpolated by the model every 5 simulated days from the prescribed monthly mean field.</description>
+        <type open="true" value="File">
+            <controlledVocabulary>
+                <name>CouplingType</name>
+                <server>http://proj.badc.rl.ac.uk/svn/metafor/cmip5q/trunk</server>
+            </controlledVocabulary>
+        </type>
+        <timeProfile units="days" variableRate="false">
+            <rate>5</rate>
+        </timeProfile>
+        <spatialRegridding>
+            <spatialRegriddingStandardMethod>conservative</spatialRegriddingStandardMethod>
+        </spatialRegridding>
+        <timeTransformation>
+            <mappingType open="true" value="TimeInterpolation">
+                <controlledVocabulary>
+                    <name>mappingType</name>
+                    <server>http://proj.badc.rl.ac.uk/svn/metafor/cmip5q/trunk</server>
+                </controlledVocabulary>
+            </mappingType>
+        </timeTransformation>
+        <couplingSource>
+            <dataSource>
+                <reference xlink:href="#//CIMRecord/dataObject[id='465110ea-5176-11e0-9b89-00163e9152a5']">
+                    <id>465110ea-5176-11e0-9b89-00163e9152a5</id>
+                    <name>fossil_fuel_black_carbon</name>
+                    <type>dataObject</type>
+                    <version>1</version>
+                    <description>Reference to a dataObject called fossil_fuel_black_carbon</description>
+                </reference>
+            </dataSource>
+        </couplingSource>
+        <couplingTarget>
+            <dataSource>
+                <reference xlink:href="#//CIMRecord/modelComponent[id='2f54cf4c-9679-11e0-a921-00163e9152a5']">
+                    <id>2f54cf4c-9679-11e0-a921-00163e9152a5</id>
+                    <name>Aerosols</name>
+                    <type>modelComponent</type>
+                    <version>1</version>
+                    <description>Reference to a modelComponent called Aerosols</description>
+                </reference>
+            </dataSource>
+        </couplingTarget>
+        <connection>
+            <connectionSource>
+                <dataSource>
+                    <reference xlink:href="#//CIMRecord/dataObject[id='465110ea-5176-11e0-9b89-00163e9152a5']">
+                        <id>465110ea-5176-11e0-9b89-00163e9152a5</id>
+                        <name>fossil_fuel_black_carbon</name>
+                        <type>fileVariable</type>
+                        <version>1</version>
+                        <description>Reference to a fileVariable called fossil_fuel_black_carbon in a dataObject called fossil_fuel_black_carbon</description>
+                    </reference>
+                </dataSource>
+            </connectionSource>
+            <connectionTarget>
+                <dataSource>
+                    <reference xlink:href="#//CIMRecord/modelComponent[id='2f54cf4c-9679-11e0-a921-00163e9152a5']">
+                        <id>2f54cf4c-9679-11e0-a921-00163e9152a5</id>
+                        <name>fossil_fuel_black_carbon</name>
+                        <type>componentProperty</type>
+                        <version>1</version>
+                        <description>Reference to a componentProperty called fossil_fuel_black_carbon in a modelComponent called Aerosols</description>
+                    </reference>
+                </dataSource>
+            </connectionTarget>
+        </connection>
+    </input>
+    <input fullySpecified="true" purpose="boundaryCondition">
+        <description>Fixed at preindustrial conditions. Dataset is derived from the historical annual time series prepared for CMIP5.  This input field is interpolated by the model every 5 simulated days from the prescribed monthly mean field.</description>
+        <type open="true" value="File">
+            <controlledVocabulary>
+                <name>CouplingType</name>
+                <server>http://proj.badc.rl.ac.uk/svn/metafor/cmip5q/trunk</server>
+            </controlledVocabulary>
+        </type>
+        <timeProfile units="days" variableRate="false">
+            <rate>5</rate>
+        </timeProfile>
+        <spatialRegridding>
+            <spatialRegriddingStandardMethod>conservative</spatialRegriddingStandardMethod>
+        </spatialRegridding>
+        <timeTransformation>
+            <mappingType open="true" value="TimeInterpolation">
+                <controlledVocabulary>
+                    <name>mappingType</name>
+                    <server>http://proj.badc.rl.ac.uk/svn/metafor/cmip5q/trunk</server>
+                </controlledVocabulary>
+            </mappingType>
+        </timeTransformation>
+        <couplingSource>
+            <dataSource>
+                <reference xlink:href="#//CIMRecord/dataObject[id='8e92715a-5176-11e0-9919-00163e9152a5']">
+                    <id>8e92715a-5176-11e0-9919-00163e9152a5</id>
+                    <name>fossil_fuel_organic_carbon</name>
+                    <type>dataObject</type>
+                    <version>1</version>
+                    <description>Reference to a dataObject called fossil_fuel_organic_carbon</description>
+                </reference>
+            </dataSource>
+        </couplingSource>
+        <couplingTarget>
+            <dataSource>
+                <reference xlink:href="#//CIMRecord/modelComponent[id='2f54cf4c-9679-11e0-a921-00163e9152a5']">
+                    <id>2f54cf4c-9679-11e0-a921-00163e9152a5</id>
+                    <name>Aerosols</name>
+                    <type>modelComponent</type>
+                    <version>1</version>
+                    <description>Reference to a modelComponent called Aerosols</description>
+                </reference>
+            </dataSource>
+        </couplingTarget>
+        <connection>
+            <connectionSource>
+                <dataSource>
+                    <reference xlink:href="#//CIMRecord/dataObject[id='8e92715a-5176-11e0-9919-00163e9152a5']">
+                        <id>8e92715a-5176-11e0-9919-00163e9152a5</id>
+                        <name>fossil_fuel_organic_carbon</name>
+                        <type>fileVariable</type>
+                        <version>1</version>
+                        <description>Reference to a fileVariable called fossil_fuel_organic_carbon in a dataObject called fossil_fuel_organic_carbon</description>
+                    </reference>
+                </dataSource>
+            </connectionSource>
+            <connectionTarget>
+                <dataSource>
+                    <reference xlink:href="#//CIMRecord/modelComponent[id='2f54cf4c-9679-11e0-a921-00163e9152a5']">
+                        <id>2f54cf4c-9679-11e0-a921-00163e9152a5</id>
+                        <name>fossil_fuel_organic_carb</name>
+                        <type>componentProperty</type>
+                        <version>1</version>
+                        <description>Reference to a componentProperty called fossil_fuel_organic_carb in a modelComponent called Aerosols</description>
+                    </reference>
+                </dataSource>
+            </connectionTarget>
+        </connection>
+    </input>
+    <input fullySpecified="true" purpose="boundaryCondition">
+        <description>Fixed at preindustrial conditions. Dataset is derived from the historical annual time series prepared for CMIP5.  These input fields are interpolated by the model every 5 simulated days from the prescribed monthly mean field.</description>
+        <type open="true" value="File">
+            <controlledVocabulary>
+                <name>CouplingType</name>
+                <server>http://proj.badc.rl.ac.uk/svn/metafor/cmip5q/trunk</server>
+            </controlledVocabulary>
+        </type>
+        <timeProfile units="days" variableRate="false">
+            <rate>5</rate>
+        </timeProfile>
+        <spatialRegridding>
+            <spatialRegriddingStandardMethod>conservative</spatialRegriddingStandardMethod>
+        </spatialRegridding>
+        <timeTransformation>
+            <mappingType open="true" value="TimeInterpolation">
+                <controlledVocabulary>
+                    <name>mappingType</name>
+                    <server>http://proj.badc.rl.ac.uk/svn/metafor/cmip5q/trunk</server>
+                </controlledVocabulary>
+            </mappingType>
+        </timeTransformation>
+        <couplingSource>
+            <dataSource>
+                <reference xlink:href="#//CIMRecord/dataObject[id='bd51f29a-5176-11e0-94a5-00163e9152a5']">
+                    <id>bd51f29a-5176-11e0-94a5-00163e9152a5</id>
+                    <name>biomass_burning</name>
+                    <type>dataObject</type>
+                    <version>1</version>
+                    <description>Reference to a dataObject called biomass_burning</description>
+                </reference>
+            </dataSource>
+        </couplingSource>
+        <couplingTarget>
+            <dataSource>
+                <reference xlink:href="#//CIMRecord/modelComponent[id='2f54cf4c-9679-11e0-a921-00163e9152a5']">
+                    <id>2f54cf4c-9679-11e0-a921-00163e9152a5</id>
+                    <name>Aerosols</name>
+                    <type>modelComponent</type>
+                    <version>1</version>
+                    <description>Reference to a modelComponent called Aerosols</description>
+                </reference>
+            </dataSource>
+        </couplingTarget>
+        <connection>
+            <connectionSource>
+                <dataSource>
+                    <reference xlink:href="#//CIMRecord/dataObject[id='bd51f29a-5176-11e0-94a5-00163e9152a5']">
+                        <id>bd51f29a-5176-11e0-94a5-00163e9152a5</id>
+                        <name>forest fire emissions</name>
+                        <type>fileVariable</type>
+                        <version>1</version>
+                        <description>Reference to a fileVariable called forest fire emissions in a dataObject called biomass_burning</description>
+                    </reference>
+                </dataSource>
+            </connectionSource>
+            <connectionTarget>
+                <dataSource>
+                    <reference xlink:href="#//CIMRecord/modelComponent[id='2f54cf4c-9679-11e0-a921-00163e9152a5']">
+                        <id>2f54cf4c-9679-11e0-a921-00163e9152a5</id>
+                        <name>biomass_burning</name>
+                        <type>componentProperty</type>
+                        <version>1</version>
+                        <description>Reference to a componentProperty called biomass_burning in a modelComponent called Aerosols</description>
+                    </reference>
+                </dataSource>
+            </connectionTarget>
+        </connection>
+    </input>
+    <input fullySpecified="true" purpose="boundaryCondition">
+        <description>Fixed at preindustrial conditions. Dataset is derived from the historical annual time series prepared for CMIP5.  These input fields are interpolated by the model every 5 simulated days from the prescribed monthly mean field.</description>
+        <type open="true" value="File">
+            <controlledVocabulary>
+                <name>CouplingType</name>
+                <server>http://proj.badc.rl.ac.uk/svn/metafor/cmip5q/trunk</server>
+            </controlledVocabulary>
+        </type>
+        <timeProfile units="days" variableRate="false">
+            <rate>5</rate>
+        </timeProfile>
+        <spatialRegridding>
+            <spatialRegriddingStandardMethod>conservative</spatialRegriddingStandardMethod>
+        </spatialRegridding>
+        <timeTransformation>
+            <mappingType open="true" value="TimeInterpolation">
+                <controlledVocabulary>
+                    <name>mappingType</name>
+                    <server>http://proj.badc.rl.ac.uk/svn/metafor/cmip5q/trunk</server>
+                </controlledVocabulary>
+            </mappingType>
+        </timeTransformation>
+        <couplingSource>
+            <dataSource>
+                <reference xlink:href="#//CIMRecord/dataObject[id='bd51f29a-5176-11e0-94a5-00163e9152a5']">
+                    <id>bd51f29a-5176-11e0-94a5-00163e9152a5</id>
+                    <name>biomass_burning</name>
+                    <type>dataObject</type>
+                    <version>1</version>
+                    <description>Reference to a dataObject called biomass_burning</description>
+                </reference>
+            </dataSource>
+        </couplingSource>
+        <couplingTarget>
+            <dataSource>
+                <reference xlink:href="#//CIMRecord/modelComponent[id='2f54cf4c-9679-11e0-a921-00163e9152a5']">
+                    <id>2f54cf4c-9679-11e0-a921-00163e9152a5</id>
+                    <name>Aerosols</name>
+                    <type>modelComponent</type>
+                    <version>1</version>
+                    <description>Reference to a modelComponent called Aerosols</description>
+                </reference>
+            </dataSource>
+        </couplingTarget>
+        <connection>
+            <connectionSource>
+                <dataSource>
+                    <reference xlink:href="#//CIMRecord/dataObject[id='bd51f29a-5176-11e0-94a5-00163e9152a5']">
+                        <id>bd51f29a-5176-11e0-94a5-00163e9152a5</id>
+                        <name>grass fire emissions</name>
+                        <type>fileVariable</type>
+                        <version>1</version>
+                        <description>Reference to a fileVariable called grass fire emissions in a dataObject called biomass_burning</description>
+                    </reference>
+                </dataSource>
+            </connectionSource>
+            <connectionTarget>
+                <dataSource>
+                    <reference xlink:href="#//CIMRecord/modelComponent[id='2f54cf4c-9679-11e0-a921-00163e9152a5']">
+                        <id>2f54cf4c-9679-11e0-a921-00163e9152a5</id>
+                        <name>biomass_burning</name>
+                        <type>componentProperty</type>
+                        <version>1</version>
+                        <description>Reference to a componentProperty called biomass_burning in a modelComponent called Aerosols</description>
+                    </reference>
+                </dataSource>
+            </connectionTarget>
+        </connection>
+    </input>
+    <input fullySpecified="true" purpose="boundaryCondition">
+        <description> Fixed at preindustrial conditions of 286ppm. </description>
+        <type open="true" value="File">
+            <controlledVocabulary>
+                <name>CouplingType</name>
+                <server>http://proj.badc.rl.ac.uk/svn/metafor/cmip5q/trunk</server>
+            </controlledVocabulary>
+        </type>
+        <timeProfile units="minutes" variableRate="false">
+            <rate>20</rate>
+        </timeProfile>
+        <timeTransformation>
+            <mappingType open="true" value="TimeInterpolation">
+                <controlledVocabulary>
+                    <name>mappingType</name>
+                    <server>http://proj.badc.rl.ac.uk/svn/metafor/cmip5q/trunk</server>
+                </controlledVocabulary>
+            </mappingType>
+        </timeTransformation>
+        <couplingSource>
+            <dataSource>
+                <reference xlink:href="#//CIMRecord/dataObject[id='a31d55c4-4bc0-11e0-a872-00163e9152a5']">
+                    <id>a31d55c4-4bc0-11e0-a872-00163e9152a5</id>
+                    <name>well_mixed_gas_CO2</name>
+                    <type>dataObject</type>
+                    <version>1</version>
+                    <description>Reference to a dataObject called well_mixed_gas_CO2</description>
+                </reference>
+            </dataSource>
+        </couplingSource>
+        <couplingTarget>
+            <dataSource>
+                <reference xlink:href="#//CIMRecord/modelComponent[id='311854c0-9679-11e0-a921-00163e9152a5']">
+                    <id>311854c0-9679-11e0-a921-00163e9152a5</id>
+                    <name>Atmosphere</name>
+                    <type>modelComponent</type>
+                    <version>1</version>
+                    <description>Reference to a modelComponent called Atmosphere</description>
+                </reference>
+            </dataSource>
+        </couplingTarget>
+        <connection>
+            <connectionSource>
+                <dataSource>
+                    <reference xlink:href="#//CIMRecord/dataObject[id='a31d55c4-4bc0-11e0-a872-00163e9152a5']">
+                        <id>a31d55c4-4bc0-11e0-a872-00163e9152a5</id>
+                        <name>CO2_concentration_mmr</name>
+                        <type>fileVariable</type>
+                        <version>1</version>
+                        <description>Reference to a fileVariable called CO2_concentration_mmr in a dataObject called well_mixed_gas_CO2</description>
+                    </reference>
+                </dataSource>
+            </connectionSource>
+            <connectionTarget>
+                <dataSource>
+                    <reference xlink:href="#//CIMRecord/modelComponent[id='311854c0-9679-11e0-a921-00163e9152a5']">
+                        <id>311854c0-9679-11e0-a921-00163e9152a5</id>
+                        <name>well_mixed_gas_CO2</name>
+                        <type>componentProperty</type>
+                        <version>1</version>
+                        <description>Reference to a componentProperty called well_mixed_gas_CO2 in a modelComponent called Atmosphere</description>
+                    </reference>
+                </dataSource>
+            </connectionTarget>
+        </connection>
+    </input>
+    <input fullySpecified="true" purpose="boundaryCondition">
+        <description>Fixed at preindustrial conditions of 650 ppb. </description>
+        <type open="true" value="File">
+            <controlledVocabulary>
+                <name>CouplingType</name>
+                <server>http://proj.badc.rl.ac.uk/svn/metafor/cmip5q/trunk</server>
+            </controlledVocabulary>
+        </type>
+        <timeProfile units="minutes" variableRate="false">
+            <rate>20</rate>
+        </timeProfile>
+        <timeTransformation>
+            <mappingType open="true" value="TimeInterpolation">
+                <controlledVocabulary>
+                    <name>mappingType</name>
+                    <server>http://proj.badc.rl.ac.uk/svn/metafor/cmip5q/trunk</server>
+                </controlledVocabulary>
+            </mappingType>
+        </timeTransformation>
+        <couplingSource>
+            <dataSource>
+                <reference xlink:href="#//CIMRecord/dataObject[id='6c407ee4-5bb6-11e1-8e33-00163e9152a5']">
+                    <id>6c407ee4-5bb6-11e1-8e33-00163e9152a5</id>
+                    <name>hadgem2-cc_CH4</name>
+                    <type>dataObject</type>
+                    <version>1</version>
+                    <description>Reference to a dataObject called hadgem2-cc_CH4</description>
+                </reference>
+            </dataSource>
+        </couplingSource>
+        <couplingTarget>
+            <dataSource>
+                <reference xlink:href="#//CIMRecord/modelComponent[id='311854c0-9679-11e0-a921-00163e9152a5']">
+                    <id>311854c0-9679-11e0-a921-00163e9152a5</id>
+                    <name>Atmosphere</name>
+                    <type>modelComponent</type>
+                    <version>1</version>
+                    <description>Reference to a modelComponent called Atmosphere</description>
+                </reference>
+            </dataSource>
+        </couplingTarget>
+        <connection>
+            <connectionSource>
+                <dataSource>
+                    <reference xlink:href="#//CIMRecord/dataObject[id='6c407ee4-5bb6-11e1-8e33-00163e9152a5']">
+                        <id>6c407ee4-5bb6-11e1-8e33-00163e9152a5</id>
+                        <name>CH4</name>
+                        <type>fileVariable</type>
+                        <version>1</version>
+                        <description>Reference to a fileVariable called CH4 in a dataObject called hadgem2-cc_CH4</description>
+                    </reference>
+                </dataSource>
+            </connectionSource>
+            <connectionTarget>
+                <dataSource>
+                    <reference xlink:href="#//CIMRecord/modelComponent[id='311854c0-9679-11e0-a921-00163e9152a5']">
+                        <id>311854c0-9679-11e0-a921-00163e9152a5</id>
+                        <name>well_mixed_gas_CH4</name>
+                        <type>componentProperty</type>
+                        <version>1</version>
+                        <description>Reference to a componentProperty called well_mixed_gas_CH4 in a modelComponent called Atmosphere</description>
+                    </reference>
+                </dataSource>
+            </connectionTarget>
+        </connection>
+    </input>
+    <input fullySpecified="true" purpose="boundaryCondition">
+        <description>Fixed at preindustrial conditions of 270 ppb. </description>
+        <type open="true" value="File">
+            <controlledVocabulary>
+                <name>CouplingType</name>
+                <server>http://proj.badc.rl.ac.uk/svn/metafor/cmip5q/trunk</server>
+            </controlledVocabulary>
+        </type>
+        <timeProfile units="minutes" variableRate="false">
+            <rate>20</rate>
+        </timeProfile>
+        <timeTransformation>
+            <mappingType open="true" value="TimeInterpolation">
+                <controlledVocabulary>
+                    <name>mappingType</name>
+                    <server>http://proj.badc.rl.ac.uk/svn/metafor/cmip5q/trunk</server>
+                </controlledVocabulary>
+            </mappingType>
+        </timeTransformation>
+        <couplingSource>
+            <dataSource>
+                <reference xlink:href="#//CIMRecord/dataObject[id='04c2aa56-4bf6-11e0-9fc1-00163e9152a5']">
+                    <id>04c2aa56-4bf6-11e0-9fc1-00163e9152a5</id>
+                    <name>well_mixed_gas_N2O</name>
+                    <type>dataObject</type>
+                    <version>1</version>
+                    <description>Reference to a dataObject called well_mixed_gas_N2O</description>
+                </reference>
+            </dataSource>
+        </couplingSource>
+        <couplingTarget>
+            <dataSource>
+                <reference xlink:href="#//CIMRecord/modelComponent[id='311854c0-9679-11e0-a921-00163e9152a5']">
+                    <id>311854c0-9679-11e0-a921-00163e9152a5</id>
+                    <name>Atmosphere</name>
+                    <type>modelComponent</type>
+                    <version>1</version>
+                    <description>Reference to a modelComponent called Atmosphere</description>
+                </reference>
+            </dataSource>
+        </couplingTarget>
+        <connection>
+            <connectionSource>
+                <dataSource>
+                    <reference xlink:href="#//CIMRecord/dataObject[id='04c2aa56-4bf6-11e0-9fc1-00163e9152a5']">
+                        <id>04c2aa56-4bf6-11e0-9fc1-00163e9152a5</id>
+                        <name>N2O_concentration_mmr</name>
+                        <type>fileVariable</type>
+                        <version>1</version>
+                        <description>Reference to a fileVariable called N2O_concentration_mmr in a dataObject called well_mixed_gas_N2O</description>
+                    </reference>
+                </dataSource>
+            </connectionSource>
+            <connectionTarget>
+                <dataSource>
+                    <reference xlink:href="#//CIMRecord/modelComponent[id='311854c0-9679-11e0-a921-00163e9152a5']">
+                        <id>311854c0-9679-11e0-a921-00163e9152a5</id>
+                        <name>well_mixed_gas_N2O</name>
+                        <type>componentProperty</type>
+                        <version>1</version>
+                        <description>Reference to a componentProperty called well_mixed_gas_N2O in a modelComponent called Atmosphere</description>
+                    </reference>
+                </dataSource>
+            </connectionTarget>
+        </connection>
+    </input>
+    <input fullySpecified="true" purpose="boundaryCondition">
+        <description>Fixed at pre-industrial conditions.  Stratospheric ozone is prescribed as monthly zonal/height ancillary files taken from the CMIP5 recommended AC&amp;C/SPARC ozone database.  The values provided to the HadGEM2-CC include the effects of polar solar variability, as compared to the HadGEM2-ES runs which do not. These data were horizontally interpolated onto the model N96 horizontal grid. Vertical interpolation was achieved by mapping the SPARC ozone data from pressure surfaces onto pressure surface equivalent levels corresponding to the models height-based grid. Near-surface missing data was replaced by overlying nearest neighbour non-missing data.  </description>
+        <type open="true" value="File">
+            <controlledVocabulary>
+                <name>CouplingType</name>
+                <server>http://proj.badc.rl.ac.uk/svn/metafor/cmip5q/trunk</server>
+            </controlledVocabulary>
+        </type>
+        <timeProfile units="minutes" variableRate="false">
+            <rate>20</rate>
+        </timeProfile>
+        <spatialRegridding>
+            <spatialRegriddingStandardMethod>non-conservative</spatialRegriddingStandardMethod>
+        </spatialRegridding>
+        <timeTransformation>
+            <mappingType open="true" value="TimeInterpolation">
+                <controlledVocabulary>
+                    <name>mappingType</name>
+                    <server>http://proj.badc.rl.ac.uk/svn/metafor/cmip5q/trunk</server>
+                </controlledVocabulary>
+            </mappingType>
+        </timeTransformation>
+        <couplingSource>
+            <dataSource>
+                <reference xlink:href="#//CIMRecord/dataObject[id='8d18c18c-5bb4-11e1-be59-00163e9152a5']">
+                    <id>8d18c18c-5bb4-11e1-be59-00163e9152a5</id>
+                    <name>hadgem2-cc_ozone</name>
+                    <type>dataObject</type>
+                    <version>1</version>
+                    <description>Reference to a dataObject called hadgem2-cc_ozone</description>
+                </reference>
+            </dataSource>
+        </couplingSource>
+        <couplingTarget>
+            <dataSource>
+                <reference xlink:href="#//CIMRecord/modelComponent[id='311854c0-9679-11e0-a921-00163e9152a5']">
+                    <id>311854c0-9679-11e0-a921-00163e9152a5</id>
+                    <name>Atmosphere</name>
+                    <type>modelComponent</type>
+                    <version>1</version>
+                    <description>Reference to a modelComponent called Atmosphere</description>
+                </reference>
+            </dataSource>
+        </couplingTarget>
+        <connection>
+            <connectionSource>
+                <dataSource>
+                    <reference xlink:href="#//CIMRecord/dataObject[id='8d18c18c-5bb4-11e1-be59-00163e9152a5']">
+                        <id>8d18c18c-5bb4-11e1-be59-00163e9152a5</id>
+                        <name>O3</name>
+                        <type>fileVariable</type>
+                        <version>1</version>
+                        <description>Reference to a fileVariable called O3 in a dataObject called hadgem2-cc_ozone</description>
+                    </reference>
+                </dataSource>
+            </connectionSource>
+            <connectionTarget>
+                <dataSource>
+                    <reference xlink:href="#//CIMRecord/modelComponent[id='311854c0-9679-11e0-a921-00163e9152a5']">
+                        <id>311854c0-9679-11e0-a921-00163e9152a5</id>
+                        <name>well_mixed_gas_Ozone</name>
+                        <type>componentProperty</type>
+                        <version>1</version>
+                        <description>Reference to a componentProperty called well_mixed_gas_Ozone in a modelComponent called Atmosphere</description>
+                    </reference>
+                </dataSource>
+            </connectionTarget>
+        </connection>
+    </input>
+    <input fullySpecified="true" purpose="boundaryCondition">
+        <description>Fixed at pre-industrial conditions.  Stratospheric aerosol concentrations due to volcanic eruptions are varied across four equal area latitudinal zones on a monthly timescale. The aerosol is distributed vertically above the tropopause such that the mass mixing ratio is constant across the levels. In this version of the model, volcanic aerosol is not related to, and does not interact with, other simulated aerosol behaviour. The dataset used for the historic period was monthly stratospheric optical depths, at 550nm, from 1850 to 2000 (Sato et al., 1993).Background aerosols concentrations are covered in the sulphur_dioxide_emissions input.  HadGEM2-CC does not treat any gases from volcanic sources as a climate forcing.</description>
+        <type open="true" value="File">
+            <controlledVocabulary>
+                <name>CouplingType</name>
+                <server>http://proj.badc.rl.ac.uk/svn/metafor/cmip5q/trunk</server>
+            </controlledVocabulary>
+        </type>
+        <timeProfile units="months" variableRate="false">
+            <rate>1</rate>
+        </timeProfile>
+        <timeTransformation>
+            <mappingType open="true" value="Exact">
+                <controlledVocabulary>
+                    <name>mappingType</name>
+                    <server>http://proj.badc.rl.ac.uk/svn/metafor/cmip5q/trunk</server>
+                </controlledVocabulary>
+            </mappingType>
+        </timeTransformation>
+        <couplingSource>
+            <dataSource>
+                <reference xlink:href="#//CIMRecord/dataObject[id='e9c7b676-509e-11e0-b2eb-00163e9152a5']">
+                    <id>e9c7b676-509e-11e0-b2eb-00163e9152a5</id>
+                    <name>volcanic_optical_thickness</name>
+                    <type>dataObject</type>
+                    <version>1</version>
+                    <description>Reference to a dataObject called volcanic_optical_thickness</description>
+                </reference>
+            </dataSource>
+        </couplingSource>
+        <couplingTarget>
+            <dataSource>
+                <reference xlink:href="#//CIMRecord/modelComponent[id='311854c0-9679-11e0-a921-00163e9152a5']">
+                    <id>311854c0-9679-11e0-a921-00163e9152a5</id>
+                    <name>Atmosphere</name>
+                    <type>modelComponent</type>
+                    <version>1</version>
+                    <description>Reference to a modelComponent called Atmosphere</description>
+                </reference>
+            </dataSource>
+        </couplingTarget>
+        <connection>
+            <connectionSource>
+                <dataSource>
+                    <reference xlink:href="#//CIMRecord/dataObject[id='e9c7b676-509e-11e0-b2eb-00163e9152a5']">
+                        <id>e9c7b676-509e-11e0-b2eb-00163e9152a5</id>
+                        <name>stratospheric_optical_thickness</name>
+                        <type>fileVariable</type>
+                        <version>1</version>
+                        <description>Reference to a fileVariable called stratospheric_optical_thickness in a dataObject called volcanic_optical_thickness</description>
+                    </reference>
+                </dataSource>
+            </connectionSource>
+            <connectionTarget>
+                <dataSource>
+                    <reference xlink:href="#//CIMRecord/modelComponent[id='311854c0-9679-11e0-a921-00163e9152a5']">
+                        <id>311854c0-9679-11e0-a921-00163e9152a5</id>
+                        <name>volcanic aerosol</name>
+                        <type>componentProperty</type>
+                        <version>1</version>
+                        <description>Reference to a componentProperty called volcanic aerosol in a modelComponent called Atmosphere</description>
+                    </reference>
+                </dataSource>
+            </connectionTarget>
+        </connection>
+    </input>
+    <input fullySpecified="true" purpose="boundaryCondition">
+        <description>Fixed at preindustrial conditions.  Dataset is derived from Andres and Kasgnoc (1998).  The total emissions are presented as annual values with the emissions constant at 0.62 Tg[S]/yr).  The distribution of emissions varies from year to year, both horizontally and vertically.</description>
+        <type open="true" value="File">
+            <controlledVocabulary>
+                <name>CouplingType</name>
+                <server>http://proj.badc.rl.ac.uk/svn/metafor/cmip5q/trunk</server>
+            </controlledVocabulary>
+        </type>
+        <timeProfile units="days" variableRate="false">
+            <rate>5</rate>
+        </timeProfile>
+        <spatialRegridding>
+            <spatialRegriddingStandardMethod>conservative</spatialRegriddingStandardMethod>
+        </spatialRegridding>
+        <timeTransformation>
+            <mappingType open="true" value="Exact">
+                <controlledVocabulary>
+                    <name>mappingType</name>
+                    <server>http://proj.badc.rl.ac.uk/svn/metafor/cmip5q/trunk</server>
+                </controlledVocabulary>
+            </mappingType>
+        </timeTransformation>
+        <couplingSource>
+            <dataSource>
+                <reference xlink:href="#//CIMRecord/dataObject[id='19a1da9a-5179-11e0-aa5f-00163e9152a5']">
+                    <id>19a1da9a-5179-11e0-aa5f-00163e9152a5</id>
+                    <name>sulphur_dioxide_emissions</name>
+                    <type>dataObject</type>
+                    <version>1</version>
+                    <description>Reference to a dataObject called sulphur_dioxide_emissions</description>
+                </reference>
+            </dataSource>
+        </couplingSource>
+        <couplingTarget>
+            <dataSource>
+                <reference xlink:href="#//CIMRecord/modelComponent[id='311854c0-9679-11e0-a921-00163e9152a5']">
+                    <id>311854c0-9679-11e0-a921-00163e9152a5</id>
+                    <name>Atmosphere</name>
+                    <type>modelComponent</type>
+                    <version>1</version>
+                    <description>Reference to a modelComponent called Atmosphere</description>
+                </reference>
+            </dataSource>
+        </couplingTarget>
+        <connection>
+            <connectionSource>
+                <dataSource>
+                    <reference xlink:href="#//CIMRecord/dataObject[id='19a1da9a-5179-11e0-aa5f-00163e9152a5']">
+                        <id>19a1da9a-5179-11e0-aa5f-00163e9152a5</id>
+                        <name>sulphur dioxide</name>
+                        <type>fileVariable</type>
+                        <version>1</version>
+                        <description>Reference to a fileVariable called sulphur dioxide in a dataObject called sulphur_dioxide_emissions</description>
+                    </reference>
+                </dataSource>
+            </connectionSource>
+            <connectionTarget>
+                <dataSource>
+                    <reference xlink:href="#//CIMRecord/modelComponent[id='311854c0-9679-11e0-a921-00163e9152a5']">
+                        <id>311854c0-9679-11e0-a921-00163e9152a5</id>
+                        <name>volcanic SO2 emissions</name>
+                        <type>componentProperty</type>
+                        <version>1</version>
+                        <description>Reference to a componentProperty called volcanic SO2 emissions in a modelComponent called Atmosphere</description>
+                    </reference>
+                </dataSource>
+            </connectionTarget>
+        </connection>
+    </input>
+    <input fullySpecified="true" purpose="boundaryCondition">
+        <description>Fixed at preindustrial conditions.  Dataset is derived from Spiro et al. (1992) and has a constant annual rate of 0.86 Tg[S]/yr.  The emissions are presented monthly and vary horizontally and by month to account for seasonal effects.</description>
+        <type open="true" value="File">
+            <controlledVocabulary>
+                <name>CouplingType</name>
+                <server>http://proj.badc.rl.ac.uk/svn/metafor/cmip5q/trunk</server>
+            </controlledVocabulary>
+        </type>
+        <timeProfile units="days" variableRate="false">
+            <rate>5</rate>
+        </timeProfile>
+        <spatialRegridding>
+            <spatialRegriddingStandardMethod>conservative</spatialRegriddingStandardMethod>
+        </spatialRegridding>
+        <timeTransformation>
+            <mappingType open="true" value="Exact">
+                <controlledVocabulary>
+                    <name>mappingType</name>
+                    <server>http://proj.badc.rl.ac.uk/svn/metafor/cmip5q/trunk</server>
+                </controlledVocabulary>
+            </mappingType>
+        </timeTransformation>
+        <couplingSource>
+            <dataSource>
+                <reference xlink:href="#//CIMRecord/dataObject[id='4693d238-5179-11e0-aa5f-00163e9152a5']">
+                    <id>4693d238-5179-11e0-aa5f-00163e9152a5</id>
+                    <name>DMS_emissions</name>
+                    <type>dataObject</type>
+                    <version>1</version>
+                    <description>Reference to a dataObject called DMS_emissions</description>
+                </reference>
+            </dataSource>
+        </couplingSource>
+        <couplingTarget>
+            <dataSource>
+                <reference xlink:href="#//CIMRecord/modelComponent[id='311854c0-9679-11e0-a921-00163e9152a5']">
+                    <id>311854c0-9679-11e0-a921-00163e9152a5</id>
+                    <name>Atmosphere</name>
+                    <type>modelComponent</type>
+                    <version>1</version>
+                    <description>Reference to a modelComponent called Atmosphere</description>
+                </reference>
+            </dataSource>
+        </couplingTarget>
+        <connection>
+            <connectionSource>
+                <dataSource>
+                    <reference xlink:href="#//CIMRecord/dataObject[id='4693d238-5179-11e0-aa5f-00163e9152a5']">
+                        <id>4693d238-5179-11e0-aa5f-00163e9152a5</id>
+                        <name>DMS_emissions</name>
+                        <type>fileVariable</type>
+                        <version>1</version>
+                        <description>Reference to a fileVariable called DMS_emissions in a dataObject called DMS_emissions</description>
+                    </reference>
+                </dataSource>
+            </connectionSource>
+            <connectionTarget>
+                <dataSource>
+                    <reference xlink:href="#//CIMRecord/modelComponent[id='311854c0-9679-11e0-a921-00163e9152a5']">
+                        <id>311854c0-9679-11e0-a921-00163e9152a5</id>
+                        <name>land DMS emissions</name>
+                        <type>componentProperty</type>
+                        <version>1</version>
+                        <description>Reference to a componentProperty called land DMS emissions in a modelComponent called Atmosphere</description>
+                    </reference>
+                </dataSource>
+            </connectionTarget>
+        </connection>
+    </input>
+    <input fullySpecified="true" purpose="boundaryCondition">
+        <description>Fixed at preindustrial conditions.  Dataset is derived from annual sector based emissions.  </description>
+        <type open="true" value="File">
+            <controlledVocabulary>
+                <name>CouplingType</name>
+                <server>http://proj.badc.rl.ac.uk/svn/metafor/cmip5q/trunk</server>
+            </controlledVocabulary>
+        </type>
+        <timeProfile units="days" variableRate="false">
+            <rate>5</rate>
+        </timeProfile>
+        <spatialRegridding>
+            <spatialRegriddingStandardMethod>conservative</spatialRegriddingStandardMethod>
+        </spatialRegridding>
+        <timeTransformation>
+            <mappingType open="true" value="TimeInterpolation">
+                <controlledVocabulary>
+                    <name>mappingType</name>
+                    <server>http://proj.badc.rl.ac.uk/svn/metafor/cmip5q/trunk</server>
+                </controlledVocabulary>
+            </mappingType>
+        </timeTransformation>
+        <couplingSource>
+            <dataSource>
+                <reference xlink:href="#//CIMRecord/dataObject[id='9f025ae4-53b2-11e0-a555-00163e9152a5']">
+                    <id>9f025ae4-53b2-11e0-a555-00163e9152a5</id>
+                    <name>anthropogenic_emissions_SO2</name>
+                    <type>dataObject</type>
+                    <version>1</version>
+                    <description>Reference to a dataObject called anthropogenic_emissions_SO2</description>
+                </reference>
+            </dataSource>
+        </couplingSource>
+        <couplingTarget>
+            <dataSource>
+                <reference xlink:href="#//CIMRecord/modelComponent[id='311854c0-9679-11e0-a921-00163e9152a5']">
+                    <id>311854c0-9679-11e0-a921-00163e9152a5</id>
+                    <name>Atmosphere</name>
+                    <type>modelComponent</type>
+                    <version>1</version>
+                    <description>Reference to a modelComponent called Atmosphere</description>
+                </reference>
+            </dataSource>
+        </couplingTarget>
+        <connection>
+            <connectionSource>
+                <dataSource>
+                    <reference xlink:href="#//CIMRecord/dataObject[id='9f025ae4-53b2-11e0-a555-00163e9152a5']">
+                        <id>9f025ae4-53b2-11e0-a555-00163e9152a5</id>
+                        <name>SO2_emissions</name>
+                        <type>fileVariable</type>
+                        <version>1</version>
+                        <description>Reference to a fileVariable called SO2_emissions in a dataObject called anthropogenic_emissions_SO2</description>
+                    </reference>
+                </dataSource>
+            </connectionSource>
+            <connectionTarget>
+                <dataSource>
+                    <reference xlink:href="#//CIMRecord/modelComponent[id='311854c0-9679-11e0-a921-00163e9152a5']">
+                        <id>311854c0-9679-11e0-a921-00163e9152a5</id>
+                        <name>anthro_SO2_aerosol</name>
+                        <type>componentProperty</type>
+                        <version>1</version>
+                        <description>Reference to a componentProperty called anthro_SO2_aerosol in a modelComponent called Atmosphere</description>
+                    </reference>
+                </dataSource>
+            </connectionTarget>
+        </connection>
+    </input>
+    <input fullySpecified="true" purpose="boundaryCondition">
+        <description>Fixed at preindustrial conditions.  Annual mean variations in total solar irradiance (TSI) passed to the model are partitioned across six shortwave spectral bands (0.2-10um) to estimate the associated spectral changes with TSI variations (Lean et al., 1995). With the changes across the spectral bands the Rayleigh scattering and ozone absorption properties are also varied in the model. The TSI data used for the historic period were recommended by CMIP5 (Lean et al.,  SOLARIS 2009) and are created from reconstructions of solar cycle and background variations in TSI. The annual mean TSI was processed to force the mean of the 1700-2004 period to be the same as the model control solar constant value (1365 Wm-2). </description>
+        <type open="true" value="File">
+            <controlledVocabulary>
+                <name>CouplingType</name>
+                <server>http://proj.badc.rl.ac.uk/svn/metafor/cmip5q/trunk</server>
+            </controlledVocabulary>
+        </type>
+        <timeProfile units="days" variableRate="false">
+            <rate>5</rate>
+        </timeProfile>
+        <timeTransformation>
+            <mappingType open="true" value="TimeInterpolation">
+                <controlledVocabulary>
+                    <name>mappingType</name>
+                    <server>http://proj.badc.rl.ac.uk/svn/metafor/cmip5q/trunk</server>
+                </controlledVocabulary>
+            </mappingType>
+        </timeTransformation>
+        <couplingSource>
+            <dataSource>
+                <reference xlink:href="#//CIMRecord/dataObject[id='753a78ee-e2ac-11df-b3ef-00163e9152a5']">
+                    <id>753a78ee-e2ac-11df-b3ef-00163e9152a5</id>
+                    <name>solar</name>
+                    <type>dataObject</type>
+                    <version>1</version>
+                    <description>Reference to a dataObject called solar</description>
+                </reference>
+            </dataSource>
+        </couplingSource>
+        <couplingTarget>
+            <dataSource>
+                <reference xlink:href="#//CIMRecord/modelComponent[id='311854c0-9679-11e0-a921-00163e9152a5']">
+                    <id>311854c0-9679-11e0-a921-00163e9152a5</id>
+                    <name>Atmosphere</name>
+                    <type>modelComponent</type>
+                    <version>1</version>
+                    <description>Reference to a modelComponent called Atmosphere</description>
+                </reference>
+            </dataSource>
+        </couplingTarget>
+        <connection>
+            <connectionSource>
+                <dataSource>
+                    <reference xlink:href="#//CIMRecord/dataObject[id='753a78ee-e2ac-11df-b3ef-00163e9152a5']">
+                        <id>753a78ee-e2ac-11df-b3ef-00163e9152a5</id>
+                        <name>Total Solar Irradiance</name>
+                        <type>fileVariable</type>
+                        <version>1</version>
+                        <description>Reference to a fileVariable called Total Solar Irradiance in a dataObject called solar</description>
+                    </reference>
+                </dataSource>
+            </connectionSource>
+            <connectionTarget>
+                <dataSource>
+                    <reference xlink:href="#//CIMRecord/modelComponent[id='311854c0-9679-11e0-a921-00163e9152a5']">
+                        <id>311854c0-9679-11e0-a921-00163e9152a5</id>
+                        <name>solar irradiance</name>
+                        <type>componentProperty</type>
+                        <version>1</version>
+                        <description>Reference to a componentProperty called solar irradiance in a modelComponent called Atmosphere</description>
+                    </reference>
+                </dataSource>
+            </connectionTarget>
+        </connection>
+    </input>
+    <input fullySpecified="false" purpose="boundaryCondition">
+        <description>Ocean dimethyl sulphide emissions at the surface calculated interactively by the biogeochemical scheme.</description>
+        <type open="true" value="Shared Memory">
+            <controlledVocabulary>
+                <name>CouplingType</name>
+                <server>http://proj.badc.rl.ac.uk/svn/metafor/cmip5q/trunk</server>
+            </controlledVocabulary>
+        </type>
+        <timeProfile units="days" variableRate="false">
+            <rate>1</rate>
+        </timeProfile>
+        <timeTransformation>
+            <mappingType open="true" value="Exact">
+                <controlledVocabulary>
+                    <name>mappingType</name>
+                    <server>http://proj.badc.rl.ac.uk/svn/metafor/cmip5q/trunk</server>
+                </controlledVocabulary>
+            </mappingType>
+        </timeTransformation>
+        <couplingSource>
+            <dataSource>
+                <reference xlink:href="#//CIMRecord/modelComponent[id='3ac00180-9679-11e0-a921-00163e9152a5']">
+                    <id>3ac00180-9679-11e0-a921-00163e9152a5</id>
+                    <name>Ocean Biogeo Chemistry</name>
+                    <type>modelComponent</type>
+                    <version>1</version>
+                    <description>Reference to a modelComponent called Ocean Biogeo Chemistry</description>
+                </reference>
+            </dataSource>
+        </couplingSource>
+        <couplingTarget>
+            <dataSource>
+                <reference xlink:href="#//CIMRecord/modelComponent[id='311854c0-9679-11e0-a921-00163e9152a5']">
+                    <id>311854c0-9679-11e0-a921-00163e9152a5</id>
+                    <name>Atmosphere</name>
+                    <type>modelComponent</type>
+                    <version>1</version>
+                    <description>Reference to a modelComponent called Atmosphere</description>
+                </reference>
+            </dataSource>
+        </couplingTarget>
+        <connection>
+        <!--this coupling has no connection source specified-->
+            <connectionTarget>
+                <dataSource>
+                    <reference xlink:href="#//CIMRecord/modelComponent[id='311854c0-9679-11e0-a921-00163e9152a5']">
+                        <id>311854c0-9679-11e0-a921-00163e9152a5</id>
+                        <name>ocean_DMS_emissions</name>
+                        <type>componentProperty</type>
+                        <version>1</version>
+                        <description>Reference to a componentProperty called ocean_DMS_emissions in a modelComponent called Atmosphere</description>
+                    </reference>
+                </dataSource>
+            </connectionTarget>
+        </connection>
+    </input>
+    <input fullySpecified="true" purpose="boundaryCondition">
+        <description>Secondary organic aerosols from biogenic emissions are represented by monthly distributions of three-dimensional mass-mixing ratios obtained from the chemistry transport model (Derwent et al., 2003). These distributions are presented as monthly 3D profiles that are constant for all simulated years.</description>
+        <type open="true" value="File">
+            <controlledVocabulary>
+                <name>CouplingType</name>
+                <server>http://proj.badc.rl.ac.uk/svn/metafor/cmip5q/trunk</server>
+            </controlledVocabulary>
+        </type>
+        <timeProfile units="days" variableRate="false">
+            <rate>5</rate>
+        </timeProfile>
+        <spatialRegridding>
+            <spatialRegriddingStandardMethod>conservative</spatialRegriddingStandardMethod>
+        </spatialRegridding>
+        <timeTransformation>
+            <mappingType open="true" value="TimeInterpolation">
+                <controlledVocabulary>
+                    <name>mappingType</name>
+                    <server>http://proj.badc.rl.ac.uk/svn/metafor/cmip5q/trunk</server>
+                </controlledVocabulary>
+            </mappingType>
+        </timeTransformation>
+        <couplingSource>
+            <dataSource>
+                <reference xlink:href="#//CIMRecord/dataObject[id='e5d7f29a-5474-11e0-a872-00163e9152a5']">
+                    <id>e5d7f29a-5474-11e0-a872-00163e9152a5</id>
+                    <name>biogenic_emission_aerosols</name>
+                    <type>dataObject</type>
+                    <version>1</version>
+                    <description>Reference to a dataObject called biogenic_emission_aerosols</description>
+                </reference>
+            </dataSource>
+        </couplingSource>
+        <couplingTarget>
+            <dataSource>
+                <reference xlink:href="#//CIMRecord/modelComponent[id='311854c0-9679-11e0-a921-00163e9152a5']">
+                    <id>311854c0-9679-11e0-a921-00163e9152a5</id>
+                    <name>Atmosphere</name>
+                    <type>modelComponent</type>
+                    <version>1</version>
+                    <description>Reference to a modelComponent called Atmosphere</description>
+                </reference>
+            </dataSource>
+        </couplingTarget>
+        <connection>
+            <connectionSource>
+                <dataSource>
+                    <reference xlink:href="#//CIMRecord/dataObject[id='e5d7f29a-5474-11e0-a872-00163e9152a5']">
+                        <id>e5d7f29a-5474-11e0-a872-00163e9152a5</id>
+                        <name>biogenic emission concentration</name>
+                        <type>fileVariable</type>
+                        <version>1</version>
+                        <description>Reference to a fileVariable called biogenic emission concentration in a dataObject called biogenic_emission_aerosols</description>
+                    </reference>
+                </dataSource>
+            </connectionSource>
+            <connectionTarget>
+                <dataSource>
+                    <reference xlink:href="#//CIMRecord/modelComponent[id='311854c0-9679-11e0-a921-00163e9152a5']">
+                        <id>311854c0-9679-11e0-a921-00163e9152a5</id>
+                        <name>biogenic_emission_aeroso</name>
+                        <type>componentProperty</type>
+                        <version>1</version>
+                        <description>Reference to a componentProperty called biogenic_emission_aeroso in a modelComponent called Atmosphere</description>
+                    </reference>
+                </dataSource>
+            </connectionTarget>
+        </connection>
+    </input>
+    <input fullySpecified="false" purpose="boundaryCondition">
+        <description/>
+        <type open="true" value="Shared Memory">
+            <controlledVocabulary>
+                <name>CouplingType</name>
+                <server>http://proj.badc.rl.ac.uk/svn/metafor/cmip5q/trunk</server>
+            </controlledVocabulary>
+        </type>
+        <timeProfile units="minutes" variableRate="false">
+            <rate>20</rate>
+        </timeProfile>
+        <timeTransformation>
+            <mappingType open="true" value="Exact">
+                <controlledVocabulary>
+                    <name>mappingType</name>
+                    <server>http://proj.badc.rl.ac.uk/svn/metafor/cmip5q/trunk</server>
+                </controlledVocabulary>
+            </mappingType>
+        </timeTransformation>
+        <couplingSource>
+            <dataSource>
+                <reference xlink:href="#//CIMRecord/modelComponent[id='311854c0-9679-11e0-a921-00163e9152a5']">
+                    <id>311854c0-9679-11e0-a921-00163e9152a5</id>
+                    <name>Atmosphere</name>
+                    <type>modelComponent</type>
+                    <version>1</version>
+                    <description>Reference to a modelComponent called Atmosphere</description>
+                </reference>
+            </dataSource>
+        </couplingSource>
+        <couplingTarget>
+            <dataSource>
+                <reference xlink:href="#//CIMRecord/modelComponent[id='34949c58-9679-11e0-a921-00163e9152a5']">
+                    <id>34949c58-9679-11e0-a921-00163e9152a5</id>
+                    <name>Atmospheric Chemistry</name>
+                    <type>modelComponent</type>
+                    <version>1</version>
+                    <description>Reference to a modelComponent called Atmospheric Chemistry</description>
+                </reference>
+            </dataSource>
+        </couplingTarget>
+        <connection>
+        <!--this coupling has no connection source specified-->
+            <connectionTarget>
+                <dataSource>
+                    <reference xlink:href="#//CIMRecord/modelComponent[id='34949c58-9679-11e0-a921-00163e9152a5']">
+                        <id>34949c58-9679-11e0-a921-00163e9152a5</id>
+                        <name>oxidant_O3</name>
+                        <type>componentProperty</type>
+                        <version>1</version>
+                        <description>Reference to a componentProperty called oxidant_O3 in a modelComponent called Atmospheric Chemistry</description>
+                    </reference>
+                </dataSource>
+            </connectionTarget>
+        </connection>
+    </input>
+    <input fullySpecified="true" purpose="initialCondition">
+        <description>The historical land use data is based on the HYDE database v3.1 (Klein Goldewijk et al., 2010a; Klein Goldewijk et al., 2010b) as processed for CMIP5 by Hurtt et al (2010), and made available at 0.5 x 0.5 degree resolution. These fractions are mapped on to the N96 grid using area average re-gridding.</description>
+        <spatialRegridding>
+            <spatialRegriddingStandardMethod>conservative</spatialRegriddingStandardMethod>
+        </spatialRegridding>
+        <timeTransformation>
+            <mappingType open="true" value="Exact">
+                <controlledVocabulary>
+                    <name>mappingType</name>
+                    <server>http://proj.badc.rl.ac.uk/svn/metafor/cmip5q/trunk</server>
+                </controlledVocabulary>
+            </mappingType>
+        </timeTransformation>
+        <couplingSource>
+            <dataSource>
+                <reference xlink:href="#//CIMRecord/dataObject[id='f59b8360-53cd-11e0-ad0a-00163e9152a5']">
+                    <id>f59b8360-53cd-11e0-ad0a-00163e9152a5</id>
+                    <name>land_use</name>
+                    <type>dataObject</type>
+                    <version>1</version>
+                    <description>Reference to a dataObject called land_use</description>
+                </reference>
+            </dataSource>
+        </couplingSource>
+        <couplingTarget>
+            <dataSource>
+                <reference xlink:href="#//CIMRecord/modelComponent[id='38218958-9679-11e0-a921-00163e9152a5']">
+                    <id>38218958-9679-11e0-a921-00163e9152a5</id>
+                    <name>Land Surface</name>
+                    <type>modelComponent</type>
+                    <version>1</version>
+                    <description>Reference to a modelComponent called Land Surface</description>
+                </reference>
+            </dataSource>
+        </couplingTarget>
+        <connection>
+            <connectionSource>
+                <dataSource>
+                    <reference xlink:href="#//CIMRecord/dataObject[id='f59b8360-53cd-11e0-ad0a-00163e9152a5']">
+                        <id>f59b8360-53cd-11e0-ad0a-00163e9152a5</id>
+                        <name>fractional_cover_baresoil</name>
+                        <type>fileVariable</type>
+                        <version>1</version>
+                        <description>Reference to a fileVariable called fractional_cover_baresoil in a dataObject called land_use</description>
+                    </reference>
+                </dataSource>
+            </connectionSource>
+            <connectionTarget>
+                <dataSource>
+                    <reference xlink:href="#//CIMRecord/modelComponent[id='38218958-9679-11e0-a921-00163e9152a5']">
+                        <id>38218958-9679-11e0-a921-00163e9152a5</id>
+                        <name>initial_land_use</name>
+                        <type>componentProperty</type>
+                        <version>1</version>
+                        <description>Reference to a componentProperty called initial_land_use in a modelComponent called Land Surface</description>
+                    </reference>
+                </dataSource>
+            </connectionTarget>
+        </connection>
+    </input>
+    <input fullySpecified="true" purpose="initialCondition">
+        <description>The historical land use data is based on the HYDE database v3.1 (Klein Goldewijk et al., 2010a; Klein Goldewijk et al., 2010b) as processed for CMIP5 by Hurtt et al (2010), and made available at 0.5 x 0.5 degree resolution. These fractions are mapped on to the N96 grid using area average re-gridding.</description>
+        <spatialRegridding>
+            <spatialRegriddingStandardMethod>conservative</spatialRegriddingStandardMethod>
+        </spatialRegridding>
+        <timeTransformation>
+            <mappingType open="true" value="Exact">
+                <controlledVocabulary>
+                    <name>mappingType</name>
+                    <server>http://proj.badc.rl.ac.uk/svn/metafor/cmip5q/trunk</server>
+                </controlledVocabulary>
+            </mappingType>
+        </timeTransformation>
+        <couplingSource>
+            <dataSource>
+                <reference xlink:href="#//CIMRecord/dataObject[id='f59b8360-53cd-11e0-ad0a-00163e9152a5']">
+                    <id>f59b8360-53cd-11e0-ad0a-00163e9152a5</id>
+                    <name>land_use</name>
+                    <type>dataObject</type>
+                    <version>1</version>
+                    <description>Reference to a dataObject called land_use</description>
+                </reference>
+            </dataSource>
+        </couplingSource>
+        <couplingTarget>
+            <dataSource>
+                <reference xlink:href="#//CIMRecord/modelComponent[id='38218958-9679-11e0-a921-00163e9152a5']">
+                    <id>38218958-9679-11e0-a921-00163e9152a5</id>
+                    <name>Land Surface</name>
+                    <type>modelComponent</type>
+                    <version>1</version>
+                    <description>Reference to a modelComponent called Land Surface</description>
+                </reference>
+            </dataSource>
+        </couplingTarget>
+        <connection>
+            <connectionSource>
+                <dataSource>
+                    <reference xlink:href="#//CIMRecord/dataObject[id='f59b8360-53cd-11e0-ad0a-00163e9152a5']">
+                        <id>f59b8360-53cd-11e0-ad0a-00163e9152a5</id>
+                        <name>fractional_cover_broadleaf_tree</name>
+                        <type>fileVariable</type>
+                        <version>1</version>
+                        <description>Reference to a fileVariable called fractional_cover_broadleaf_tree in a dataObject called land_use</description>
+                    </reference>
+                </dataSource>
+            </connectionSource>
+            <connectionTarget>
+                <dataSource>
+                    <reference xlink:href="#//CIMRecord/modelComponent[id='38218958-9679-11e0-a921-00163e9152a5']">
+                        <id>38218958-9679-11e0-a921-00163e9152a5</id>
+                        <name>initial_land_use</name>
+                        <type>componentProperty</type>
+                        <version>1</version>
+                        <description>Reference to a componentProperty called initial_land_use in a modelComponent called Land Surface</description>
+                    </reference>
+                </dataSource>
+            </connectionTarget>
+        </connection>
+    </input>
+    <input fullySpecified="true" purpose="initialCondition">
+        <description>The historical land use data is based on the HYDE database v3.1 (Klein Goldewijk et al., 2010a; Klein Goldewijk et al., 2010b) as processed for CMIP5 by Hurtt et al (2010), and made available at 0.5 x 0.5 degree resolution. These fractions are mapped on to the N96 grid using area average re-gridding.</description>
+        <spatialRegridding>
+            <spatialRegriddingStandardMethod>conservative</spatialRegriddingStandardMethod>
+        </spatialRegridding>
+        <timeTransformation>
+            <mappingType open="true" value="Exact">
+                <controlledVocabulary>
+                    <name>mappingType</name>
+                    <server>http://proj.badc.rl.ac.uk/svn/metafor/cmip5q/trunk</server>
+                </controlledVocabulary>
+            </mappingType>
+        </timeTransformation>
+        <couplingSource>
+            <dataSource>
+                <reference xlink:href="#//CIMRecord/dataObject[id='f59b8360-53cd-11e0-ad0a-00163e9152a5']">
+                    <id>f59b8360-53cd-11e0-ad0a-00163e9152a5</id>
+                    <name>land_use</name>
+                    <type>dataObject</type>
+                    <version>1</version>
+                    <description>Reference to a dataObject called land_use</description>
+                </reference>
+            </dataSource>
+        </couplingSource>
+        <couplingTarget>
+            <dataSource>
+                <reference xlink:href="#//CIMRecord/modelComponent[id='38218958-9679-11e0-a921-00163e9152a5']">
+                    <id>38218958-9679-11e0-a921-00163e9152a5</id>
+                    <name>Land Surface</name>
+                    <type>modelComponent</type>
+                    <version>1</version>
+                    <description>Reference to a modelComponent called Land Surface</description>
+                </reference>
+            </dataSource>
+        </couplingTarget>
+        <connection>
+            <connectionSource>
+                <dataSource>
+                    <reference xlink:href="#//CIMRecord/dataObject[id='f59b8360-53cd-11e0-ad0a-00163e9152a5']">
+                        <id>f59b8360-53cd-11e0-ad0a-00163e9152a5</id>
+                        <name>fractional_cover_C3_grass</name>
+                        <type>fileVariable</type>
+                        <version>1</version>
+                        <description>Reference to a fileVariable called fractional_cover_C3_grass in a dataObject called land_use</description>
+                    </reference>
+                </dataSource>
+            </connectionSource>
+            <connectionTarget>
+                <dataSource>
+                    <reference xlink:href="#//CIMRecord/modelComponent[id='38218958-9679-11e0-a921-00163e9152a5']">
+                        <id>38218958-9679-11e0-a921-00163e9152a5</id>
+                        <name>initial_land_use</name>
+                        <type>componentProperty</type>
+                        <version>1</version>
+                        <description>Reference to a componentProperty called initial_land_use in a modelComponent called Land Surface</description>
+                    </reference>
+                </dataSource>
+            </connectionTarget>
+        </connection>
+    </input>
+    <input fullySpecified="true" purpose="initialCondition">
+        <description>The historical land use data is based on the HYDE database v3.1 (Klein Goldewijk et al., 2010a; Klein Goldewijk et al., 2010b) as processed for CMIP5 by Hurtt et al (2010), and made available at 0.5 x 0.5 degree resolution. These fractions are mapped on to the N96 grid using area average re-gridding.</description>
+        <spatialRegridding>
+            <spatialRegriddingStandardMethod>conservative</spatialRegriddingStandardMethod>
+        </spatialRegridding>
+        <timeTransformation>
+            <mappingType open="true" value="Exact">
+                <controlledVocabulary>
+                    <name>mappingType</name>
+                    <server>http://proj.badc.rl.ac.uk/svn/metafor/cmip5q/trunk</server>
+                </controlledVocabulary>
+            </mappingType>
+        </timeTransformation>
+        <couplingSource>
+            <dataSource>
+                <reference xlink:href="#//CIMRecord/dataObject[id='f59b8360-53cd-11e0-ad0a-00163e9152a5']">
+                    <id>f59b8360-53cd-11e0-ad0a-00163e9152a5</id>
+                    <name>land_use</name>
+                    <type>dataObject</type>
+                    <version>1</version>
+                    <description>Reference to a dataObject called land_use</description>
+                </reference>
+            </dataSource>
+        </couplingSource>
+        <couplingTarget>
+            <dataSource>
+                <reference xlink:href="#//CIMRecord/modelComponent[id='38218958-9679-11e0-a921-00163e9152a5']">
+                    <id>38218958-9679-11e0-a921-00163e9152a5</id>
+                    <name>Land Surface</name>
+                    <type>modelComponent</type>
+                    <version>1</version>
+                    <description>Reference to a modelComponent called Land Surface</description>
+                </reference>
+            </dataSource>
+        </couplingTarget>
+        <connection>
+            <connectionSource>
+                <dataSource>
+                    <reference xlink:href="#//CIMRecord/dataObject[id='f59b8360-53cd-11e0-ad0a-00163e9152a5']">
+                        <id>f59b8360-53cd-11e0-ad0a-00163e9152a5</id>
+                        <name>fractional_cover_C4_grass</name>
+                        <type>fileVariable</type>
+                        <version>1</version>
+                        <description>Reference to a fileVariable called fractional_cover_C4_grass in a dataObject called land_use</description>
+                    </reference>
+                </dataSource>
+            </connectionSource>
+            <connectionTarget>
+                <dataSource>
+                    <reference xlink:href="#//CIMRecord/modelComponent[id='38218958-9679-11e0-a921-00163e9152a5']">
+                        <id>38218958-9679-11e0-a921-00163e9152a5</id>
+                        <name>initial_land_use</name>
+                        <type>componentProperty</type>
+                        <version>1</version>
+                        <description>Reference to a componentProperty called initial_land_use in a modelComponent called Land Surface</description>
+                    </reference>
+                </dataSource>
+            </connectionTarget>
+        </connection>
+    </input>
+    <input fullySpecified="true" purpose="initialCondition">
+        <description>The historical land use data is based on the HYDE database v3.1 (Klein Goldewijk et al., 2010a; Klein Goldewijk et al., 2010b) as processed for CMIP5 by Hurtt et al (2010), and made available at 0.5 x 0.5 degree resolution. These fractions are mapped on to the N96 grid using area average re-gridding.</description>
+        <spatialRegridding>
+            <spatialRegriddingStandardMethod>conservative</spatialRegriddingStandardMethod>
+        </spatialRegridding>
+        <timeTransformation>
+            <mappingType open="true" value="Exact">
+                <controlledVocabulary>
+                    <name>mappingType</name>
+                    <server>http://proj.badc.rl.ac.uk/svn/metafor/cmip5q/trunk</server>
+                </controlledVocabulary>
+            </mappingType>
+        </timeTransformation>
+        <couplingSource>
+            <dataSource>
+                <reference xlink:href="#//CIMRecord/dataObject[id='f59b8360-53cd-11e0-ad0a-00163e9152a5']">
+                    <id>f59b8360-53cd-11e0-ad0a-00163e9152a5</id>
+                    <name>land_use</name>
+                    <type>dataObject</type>
+                    <version>1</version>
+                    <description>Reference to a dataObject called land_use</description>
+                </reference>
+            </dataSource>
+        </couplingSource>
+        <couplingTarget>
+            <dataSource>
+                <reference xlink:href="#//CIMRecord/modelComponent[id='38218958-9679-11e0-a921-00163e9152a5']">
+                    <id>38218958-9679-11e0-a921-00163e9152a5</id>
+                    <name>Land Surface</name>
+                    <type>modelComponent</type>
+                    <version>1</version>
+                    <description>Reference to a modelComponent called Land Surface</description>
+                </reference>
+            </dataSource>
+        </couplingTarget>
+        <connection>
+            <connectionSource>
+                <dataSource>
+                    <reference xlink:href="#//CIMRecord/dataObject[id='f59b8360-53cd-11e0-ad0a-00163e9152a5']">
+                        <id>f59b8360-53cd-11e0-ad0a-00163e9152a5</id>
+                        <name>fractional_cover_ice</name>
+                        <type>fileVariable</type>
+                        <version>1</version>
+                        <description>Reference to a fileVariable called fractional_cover_ice in a dataObject called land_use</description>
+                    </reference>
+                </dataSource>
+            </connectionSource>
+            <connectionTarget>
+                <dataSource>
+                    <reference xlink:href="#//CIMRecord/modelComponent[id='38218958-9679-11e0-a921-00163e9152a5']">
+                        <id>38218958-9679-11e0-a921-00163e9152a5</id>
+                        <name>initial_land_use</name>
+                        <type>componentProperty</type>
+                        <version>1</version>
+                        <description>Reference to a componentProperty called initial_land_use in a modelComponent called Land Surface</description>
+                    </reference>
+                </dataSource>
+            </connectionTarget>
+        </connection>
+    </input>
+    <input fullySpecified="true" purpose="initialCondition">
+        <description>The historical land use data is based on the HYDE database v3.1 (Klein Goldewijk et al., 2010a; Klein Goldewijk et al., 2010b) as processed for CMIP5 by Hurtt et al (2010), and made available at 0.5 x 0.5 degree resolution. These fractions are mapped on to the N96 grid using area average re-gridding.</description>
+        <spatialRegridding>
+            <spatialRegriddingStandardMethod>conservative</spatialRegriddingStandardMethod>
+        </spatialRegridding>
+        <timeTransformation>
+            <mappingType open="true" value="Exact">
+                <controlledVocabulary>
+                    <name>mappingType</name>
+                    <server>http://proj.badc.rl.ac.uk/svn/metafor/cmip5q/trunk</server>
+                </controlledVocabulary>
+            </mappingType>
+        </timeTransformation>
+        <couplingSource>
+            <dataSource>
+                <reference xlink:href="#//CIMRecord/dataObject[id='f59b8360-53cd-11e0-ad0a-00163e9152a5']">
+                    <id>f59b8360-53cd-11e0-ad0a-00163e9152a5</id>
+                    <name>land_use</name>
+                    <type>dataObject</type>
+                    <version>1</version>
+                    <description>Reference to a dataObject called land_use</description>
+                </reference>
+            </dataSource>
+        </couplingSource>
+        <couplingTarget>
+            <dataSource>
+                <reference xlink:href="#//CIMRecord/modelComponent[id='38218958-9679-11e0-a921-00163e9152a5']">
+                    <id>38218958-9679-11e0-a921-00163e9152a5</id>
+                    <name>Land Surface</name>
+                    <type>modelComponent</type>
+                    <version>1</version>
+                    <description>Reference to a modelComponent called Land Surface</description>
+                </reference>
+            </dataSource>
+        </couplingTarget>
+        <connection>
+            <connectionSource>
+                <dataSource>
+                    <reference xlink:href="#//CIMRecord/dataObject[id='f59b8360-53cd-11e0-ad0a-00163e9152a5']">
+                        <id>f59b8360-53cd-11e0-ad0a-00163e9152a5</id>
+                        <name>fractional_cover_lake</name>
+                        <type>fileVariable</type>
+                        <version>1</version>
+                        <description>Reference to a fileVariable called fractional_cover_lake in a dataObject called land_use</description>
+                    </reference>
+                </dataSource>
+            </connectionSource>
+            <connectionTarget>
+                <dataSource>
+                    <reference xlink:href="#//CIMRecord/modelComponent[id='38218958-9679-11e0-a921-00163e9152a5']">
+                        <id>38218958-9679-11e0-a921-00163e9152a5</id>
+                        <name>initial_land_use</name>
+                        <type>componentProperty</type>
+                        <version>1</version>
+                        <description>Reference to a componentProperty called initial_land_use in a modelComponent called Land Surface</description>
+                    </reference>
+                </dataSource>
+            </connectionTarget>
+        </connection>
+    </input>
+    <input fullySpecified="true" purpose="initialCondition">
+        <description>The historical land use data is based on the HYDE database v3.1 (Klein Goldewijk et al., 2010a; Klein Goldewijk et al., 2010b) as processed for CMIP5 by Hurtt et al (2010), and made available at 0.5 x 0.5 degree resolution. These fractions are mapped on to the N96 grid using area average re-gridding.</description>
+        <spatialRegridding>
+            <spatialRegriddingStandardMethod>conservative</spatialRegriddingStandardMethod>
+        </spatialRegridding>
+        <timeTransformation>
+            <mappingType open="true" value="Exact">
+                <controlledVocabulary>
+                    <name>mappingType</name>
+                    <server>http://proj.badc.rl.ac.uk/svn/metafor/cmip5q/trunk</server>
+                </controlledVocabulary>
+            </mappingType>
+        </timeTransformation>
+        <couplingSource>
+            <dataSource>
+                <reference xlink:href="#//CIMRecord/dataObject[id='f59b8360-53cd-11e0-ad0a-00163e9152a5']">
+                    <id>f59b8360-53cd-11e0-ad0a-00163e9152a5</id>
+                    <name>land_use</name>
+                    <type>dataObject</type>
+                    <version>1</version>
+                    <description>Reference to a dataObject called land_use</description>
+                </reference>
+            </dataSource>
+        </couplingSource>
+        <couplingTarget>
+            <dataSource>
+                <reference xlink:href="#//CIMRecord/modelComponent[id='38218958-9679-11e0-a921-00163e9152a5']">
+                    <id>38218958-9679-11e0-a921-00163e9152a5</id>
+                    <name>Land Surface</name>
+                    <type>modelComponent</type>
+                    <version>1</version>
+                    <description>Reference to a modelComponent called Land Surface</description>
+                </reference>
+            </dataSource>
+        </couplingTarget>
+        <connection>
+            <connectionSource>
+                <dataSource>
+                    <reference xlink:href="#//CIMRecord/dataObject[id='f59b8360-53cd-11e0-ad0a-00163e9152a5']">
+                        <id>f59b8360-53cd-11e0-ad0a-00163e9152a5</id>
+                        <name>fractional_cover_needleleaf_tree</name>
+                        <type>fileVariable</type>
+                        <version>1</version>
+                        <description>Reference to a fileVariable called fractional_cover_needleleaf_tree in a dataObject called land_use</description>
+                    </reference>
+                </dataSource>
+            </connectionSource>
+            <connectionTarget>
+                <dataSource>
+                    <reference xlink:href="#//CIMRecord/modelComponent[id='38218958-9679-11e0-a921-00163e9152a5']">
+                        <id>38218958-9679-11e0-a921-00163e9152a5</id>
+                        <name>initial_land_use</name>
+                        <type>componentProperty</type>
+                        <version>1</version>
+                        <description>Reference to a componentProperty called initial_land_use in a modelComponent called Land Surface</description>
+                    </reference>
+                </dataSource>
+            </connectionTarget>
+        </connection>
+    </input>
+    <input fullySpecified="true" purpose="initialCondition">
+        <description>The historical land use data is based on the HYDE database v3.1 (Klein Goldewijk et al., 2010a; Klein Goldewijk et al., 2010b) as processed for CMIP5 by Hurtt et al (2010), and made available at 0.5 x 0.5 degree resolution. These fractions are mapped on to the N96 grid using area average re-gridding.</description>
+        <spatialRegridding>
+            <spatialRegriddingStandardMethod>conservative</spatialRegriddingStandardMethod>
+        </spatialRegridding>
+        <timeTransformation>
+            <mappingType open="true" value="Exact">
+                <controlledVocabulary>
+                    <name>mappingType</name>
+                    <server>http://proj.badc.rl.ac.uk/svn/metafor/cmip5q/trunk</server>
+                </controlledVocabulary>
+            </mappingType>
+        </timeTransformation>
+        <couplingSource>
+            <dataSource>
+                <reference xlink:href="#//CIMRecord/dataObject[id='f59b8360-53cd-11e0-ad0a-00163e9152a5']">
+                    <id>f59b8360-53cd-11e0-ad0a-00163e9152a5</id>
+                    <name>land_use</name>
+                    <type>dataObject</type>
+                    <version>1</version>
+                    <description>Reference to a dataObject called land_use</description>
+                </reference>
+            </dataSource>
+        </couplingSource>
+        <couplingTarget>
+            <dataSource>
+                <reference xlink:href="#//CIMRecord/modelComponent[id='38218958-9679-11e0-a921-00163e9152a5']">
+                    <id>38218958-9679-11e0-a921-00163e9152a5</id>
+                    <name>Land Surface</name>
+                    <type>modelComponent</type>
+                    <version>1</version>
+                    <description>Reference to a modelComponent called Land Surface</description>
+                </reference>
+            </dataSource>
+        </couplingTarget>
+        <connection>
+            <connectionSource>
+                <dataSource>
+                    <reference xlink:href="#//CIMRecord/dataObject[id='f59b8360-53cd-11e0-ad0a-00163e9152a5']">
+                        <id>f59b8360-53cd-11e0-ad0a-00163e9152a5</id>
+                        <name>fractional_cover_shrub</name>
+                        <type>fileVariable</type>
+                        <version>1</version>
+                        <description>Reference to a fileVariable called fractional_cover_shrub in a dataObject called land_use</description>
+                    </reference>
+                </dataSource>
+            </connectionSource>
+            <connectionTarget>
+                <dataSource>
+                    <reference xlink:href="#//CIMRecord/modelComponent[id='38218958-9679-11e0-a921-00163e9152a5']">
+                        <id>38218958-9679-11e0-a921-00163e9152a5</id>
+                        <name>initial_land_use</name>
+                        <type>componentProperty</type>
+                        <version>1</version>
+                        <description>Reference to a componentProperty called initial_land_use in a modelComponent called Land Surface</description>
+                    </reference>
+                </dataSource>
+            </connectionTarget>
+        </connection>
+    </input>
+    <input fullySpecified="true" purpose="initialCondition">
+        <description>The historical land use data is based on the HYDE database v3.1 (Klein Goldewijk et al., 2010a; Klein Goldewijk et al., 2010b) as processed for CMIP5 by Hurtt et al (2010), and made available at 0.5 x 0.5 degree resolution. These fractions are mapped on to the N96 grid using area average re-gridding.</description>
+        <spatialRegridding>
+            <spatialRegriddingStandardMethod>conservative</spatialRegriddingStandardMethod>
+        </spatialRegridding>
+        <timeTransformation>
+            <mappingType open="true" value="Exact">
+                <controlledVocabulary>
+                    <name>mappingType</name>
+                    <server>http://proj.badc.rl.ac.uk/svn/metafor/cmip5q/trunk</server>
+                </controlledVocabulary>
+            </mappingType>
+        </timeTransformation>
+        <couplingSource>
+            <dataSource>
+                <reference xlink:href="#//CIMRecord/dataObject[id='f59b8360-53cd-11e0-ad0a-00163e9152a5']">
+                    <id>f59b8360-53cd-11e0-ad0a-00163e9152a5</id>
+                    <name>land_use</name>
+                    <type>dataObject</type>
+                    <version>1</version>
+                    <description>Reference to a dataObject called land_use</description>
+                </reference>
+            </dataSource>
+        </couplingSource>
+        <couplingTarget>
+            <dataSource>
+                <reference xlink:href="#//CIMRecord/modelComponent[id='38218958-9679-11e0-a921-00163e9152a5']">
+                    <id>38218958-9679-11e0-a921-00163e9152a5</id>
+                    <name>Land Surface</name>
+                    <type>modelComponent</type>
+                    <version>1</version>
+                    <description>Reference to a modelComponent called Land Surface</description>
+                </reference>
+            </dataSource>
+        </couplingTarget>
+        <connection>
+            <connectionSource>
+                <dataSource>
+                    <reference xlink:href="#//CIMRecord/dataObject[id='f59b8360-53cd-11e0-ad0a-00163e9152a5']">
+                        <id>f59b8360-53cd-11e0-ad0a-00163e9152a5</id>
+                        <name>fractional_cover_urban</name>
+                        <type>fileVariable</type>
+                        <version>1</version>
+                        <description>Reference to a fileVariable called fractional_cover_urban in a dataObject called land_use</description>
+                    </reference>
+                </dataSource>
+            </connectionSource>
+            <connectionTarget>
+                <dataSource>
+                    <reference xlink:href="#//CIMRecord/modelComponent[id='38218958-9679-11e0-a921-00163e9152a5']">
+                        <id>38218958-9679-11e0-a921-00163e9152a5</id>
+                        <name>initial_land_use</name>
+                        <type>componentProperty</type>
+                        <version>1</version>
+                        <description>Reference to a componentProperty called initial_land_use in a modelComponent called Land Surface</description>
+                    </reference>
+                </dataSource>
+            </connectionTarget>
+        </connection>
+    </input>
+    <input fullySpecified="false" purpose="boundaryCondition">
+        <description/>
+        <type open="true" value="Shared Memory">
+            <controlledVocabulary>
+                <name>CouplingType</name>
+                <server>http://proj.badc.rl.ac.uk/svn/metafor/cmip5q/trunk</server>
+            </controlledVocabulary>
+        </type>
+        <timeProfile units="minutes" variableRate="false">
+            <rate>20</rate>
+        </timeProfile>
+        <timeTransformation>
+            <mappingType open="true" value="Exact">
+                <controlledVocabulary>
+                    <name>mappingType</name>
+                    <server>http://proj.badc.rl.ac.uk/svn/metafor/cmip5q/trunk</server>
+                </controlledVocabulary>
+            </mappingType>
+        </timeTransformation>
+        <couplingSource>
+            <dataSource>
+                <reference xlink:href="#//CIMRecord/modelComponent[id='311854c0-9679-11e0-a921-00163e9152a5']">
+                    <id>311854c0-9679-11e0-a921-00163e9152a5</id>
+                    <name>Atmosphere</name>
+                    <type>modelComponent</type>
+                    <version>1</version>
+                    <description>Reference to a modelComponent called Atmosphere</description>
+                </reference>
+            </dataSource>
+        </couplingSource>
+        <couplingTarget>
+            <dataSource>
+                <reference xlink:href="#//CIMRecord/modelComponent[id='38218958-9679-11e0-a921-00163e9152a5']">
+                    <id>38218958-9679-11e0-a921-00163e9152a5</id>
+                    <name>Land Surface</name>
+                    <type>modelComponent</type>
+                    <version>1</version>
+                    <description>Reference to a modelComponent called Land Surface</description>
+                </reference>
+            </dataSource>
+        </couplingTarget>
+        <connection>
+        <!--this coupling has no connection source specified-->
+            <connectionTarget>
+                <dataSource>
+                    <reference xlink:href="#//CIMRecord/modelComponent[id='38218958-9679-11e0-a921-00163e9152a5']">
+                        <id>38218958-9679-11e0-a921-00163e9152a5</id>
+                        <name>well_mixed_gas_CO2</name>
+                        <type>componentProperty</type>
+                        <version>1</version>
+                        <description>Reference to a componentProperty called well_mixed_gas_CO2 in a modelComponent called Land Surface</description>
+                    </reference>
+                </dataSource>
+            </connectionTarget>
+        </connection>
+    </input>
+    <input fullySpecified="true" purpose="boundaryCondition">
+        <description>Fixed at preindustrial conditions of 286ppm. </description>
+        <type open="true" value="File">
+            <controlledVocabulary>
+                <name>CouplingType</name>
+                <server>http://proj.badc.rl.ac.uk/svn/metafor/cmip5q/trunk</server>
+            </controlledVocabulary>
+        </type>
+        <timeProfile units="minutes" variableRate="false">
+            <rate>20</rate>
+        </timeProfile>
+        <spatialRegridding>
+            <spatialRegriddingStandardMethod>conservative</spatialRegriddingStandardMethod>
+        </spatialRegridding>
+        <timeTransformation>
+            <mappingType open="true" value="Exact">
+                <controlledVocabulary>
+                    <name>mappingType</name>
+                    <server>http://proj.badc.rl.ac.uk/svn/metafor/cmip5q/trunk</server>
+                </controlledVocabulary>
+            </mappingType>
+        </timeTransformation>
+        <couplingSource>
+            <dataSource>
+                <reference xlink:href="#//CIMRecord/dataObject[id='a31d55c4-4bc0-11e0-a872-00163e9152a5']">
+                    <id>a31d55c4-4bc0-11e0-a872-00163e9152a5</id>
+                    <name>well_mixed_gas_CO2</name>
+                    <type>dataObject</type>
+                    <version>1</version>
+                    <description>Reference to a dataObject called well_mixed_gas_CO2</description>
+                </reference>
+            </dataSource>
+        </couplingSource>
+        <couplingTarget>
+            <dataSource>
+                <reference xlink:href="#//CIMRecord/modelComponent[id='3c4fd2c8-9679-11e0-a921-00163e9152a5']">
+                    <id>3c4fd2c8-9679-11e0-a921-00163e9152a5</id>
+                    <name>Ocean</name>
+                    <type>modelComponent</type>
+                    <version>1</version>
+                    <description>Reference to a modelComponent called Ocean</description>
+                </reference>
+            </dataSource>
+        </couplingTarget>
+        <connection>
+            <connectionSource>
+                <dataSource>
+                    <reference xlink:href="#//CIMRecord/dataObject[id='a31d55c4-4bc0-11e0-a872-00163e9152a5']">
+                        <id>a31d55c4-4bc0-11e0-a872-00163e9152a5</id>
+                        <name>CO2_concentration_mmr</name>
+                        <type>fileVariable</type>
+                        <version>1</version>
+                        <description>Reference to a fileVariable called CO2_concentration_mmr in a dataObject called well_mixed_gas_CO2</description>
+                    </reference>
+                </dataSource>
+            </connectionSource>
+            <connectionTarget>
+                <dataSource>
+                    <reference xlink:href="#//CIMRecord/modelComponent[id='3c4fd2c8-9679-11e0-a921-00163e9152a5']">
+                        <id>3c4fd2c8-9679-11e0-a921-00163e9152a5</id>
+                        <name>well_mixed_gas_CO2</name>
+                        <type>componentProperty</type>
+                        <version>1</version>
+                        <description>Reference to a componentProperty called well_mixed_gas_CO2 in a modelComponent called Ocean</description>
+                    </reference>
+                </dataSource>
+            </connectionTarget>
+        </connection>
+    </input>
+    <input fullySpecified="true" purpose="boundaryCondition">
+        <description>Fixed at preindustrial conditions.</description>
+        <type open="true" value="File">
+            <controlledVocabulary>
+                <name>CouplingType</name>
+                <server>http://proj.badc.rl.ac.uk/svn/metafor/cmip5q/trunk</server>
+            </controlledVocabulary>
+        </type>
+        <timeProfile units="minutes" variableRate="false">
+            <rate>20</rate>
+        </timeProfile>
+        <timeTransformation>
+            <mappingType open="true" value="Exact">
+                <controlledVocabulary>
+                    <name>mappingType</name>
+                    <server>http://proj.badc.rl.ac.uk/svn/metafor/cmip5q/trunk</server>
+                </controlledVocabulary>
+            </mappingType>
+        </timeTransformation>
+        <couplingSource>
+            <dataSource>
+                <reference xlink:href="#//CIMRecord/dataObject[id='8146baf0-5bb2-11e1-81c3-00163e9152a5']">
+                    <id>8146baf0-5bb2-11e1-81c3-00163e9152a5</id>
+                    <name>hadgem2-cc_oxidants</name>
+                    <type>dataObject</type>
+                    <version>1</version>
+                    <description>Reference to a dataObject called hadgem2-cc_oxidants</description>
+                </reference>
+            </dataSource>
+        </couplingSource>
+        <couplingTarget>
+            <dataSource>
+                <reference xlink:href="#//CIMRecord/modelComponent[id='34949c58-9679-11e0-a921-00163e9152a5']">
+                    <id>34949c58-9679-11e0-a921-00163e9152a5</id>
+                    <name>Atmospheric Chemistry</name>
+                    <type>modelComponent</type>
+                    <version>1</version>
+                    <description>Reference to a modelComponent called Atmospheric Chemistry</description>
+                </reference>
+            </dataSource>
+        </couplingTarget>
+        <connection>
+            <connectionSource>
+                <dataSource>
+                    <reference xlink:href="#//CIMRecord/dataObject[id='8146baf0-5bb2-11e1-81c3-00163e9152a5']">
+                        <id>8146baf0-5bb2-11e1-81c3-00163e9152a5</id>
+                        <name>OH</name>
+                        <type>fileVariable</type>
+                        <version>1</version>
+                        <description>Reference to a fileVariable called OH in a dataObject called hadgem2-cc_oxidants</description>
+                    </reference>
+                </dataSource>
+            </connectionSource>
+            <connectionTarget>
+                <dataSource>
+                    <reference xlink:href="#//CIMRecord/modelComponent[id='34949c58-9679-11e0-a921-00163e9152a5']">
+                        <id>34949c58-9679-11e0-a921-00163e9152a5</id>
+                        <name>oxidant_OH</name>
+                        <type>componentProperty</type>
+                        <version>1</version>
+                        <description>Reference to a componentProperty called oxidant_OH in a modelComponent called Atmospheric Chemistry</description>
+                    </reference>
+                </dataSource>
+            </connectionTarget>
+        </connection>
+    </input>
+    <input fullySpecified="true" purpose="boundaryCondition">
+        <description>Fixed at preindustrial conditions.</description>
+        <type open="true" value="File">
+            <controlledVocabulary>
+                <name>CouplingType</name>
+                <server>http://proj.badc.rl.ac.uk/svn/metafor/cmip5q/trunk</server>
+            </controlledVocabulary>
+        </type>
+        <timeProfile units="minutes" variableRate="false">
+            <rate>20</rate>
+        </timeProfile>
+        <timeTransformation>
+            <mappingType open="true" value="Exact">
+                <controlledVocabulary>
+                    <name>mappingType</name>
+                    <server>http://proj.badc.rl.ac.uk/svn/metafor/cmip5q/trunk</server>
+                </controlledVocabulary>
+            </mappingType>
+        </timeTransformation>
+        <couplingSource>
+            <dataSource>
+                <reference xlink:href="#//CIMRecord/dataObject[id='8146baf0-5bb2-11e1-81c3-00163e9152a5']">
+                    <id>8146baf0-5bb2-11e1-81c3-00163e9152a5</id>
+                    <name>hadgem2-cc_oxidants</name>
+                    <type>dataObject</type>
+                    <version>1</version>
+                    <description>Reference to a dataObject called hadgem2-cc_oxidants</description>
+                </reference>
+            </dataSource>
+        </couplingSource>
+        <couplingTarget>
+            <dataSource>
+                <reference xlink:href="#//CIMRecord/modelComponent[id='34949c58-9679-11e0-a921-00163e9152a5']">
+                    <id>34949c58-9679-11e0-a921-00163e9152a5</id>
+                    <name>Atmospheric Chemistry</name>
+                    <type>modelComponent</type>
+                    <version>1</version>
+                    <description>Reference to a modelComponent called Atmospheric Chemistry</description>
+                </reference>
+            </dataSource>
+        </couplingTarget>
+        <connection>
+            <connectionSource>
+                <dataSource>
+                    <reference xlink:href="#//CIMRecord/dataObject[id='8146baf0-5bb2-11e1-81c3-00163e9152a5']">
+                        <id>8146baf0-5bb2-11e1-81c3-00163e9152a5</id>
+                        <name>H2O2</name>
+                        <type>fileVariable</type>
+                        <version>1</version>
+                        <description>Reference to a fileVariable called H2O2 in a dataObject called hadgem2-cc_oxidants</description>
+                    </reference>
+                </dataSource>
+            </connectionSource>
+            <connectionTarget>
+                <dataSource>
+                    <reference xlink:href="#//CIMRecord/modelComponent[id='34949c58-9679-11e0-a921-00163e9152a5']">
+                        <id>34949c58-9679-11e0-a921-00163e9152a5</id>
+                        <name>oxidant_H202</name>
+                        <type>componentProperty</type>
+                        <version>1</version>
+                        <description>Reference to a componentProperty called oxidant_H202 in a modelComponent called Atmospheric Chemistry</description>
+                    </reference>
+                </dataSource>
+            </connectionTarget>
+        </connection>
+    </input>
+    <input fullySpecified="true" purpose="boundaryCondition">
+        <description>Fixed at preindustrial conditions.</description>
+        <type open="true" value="File">
+            <controlledVocabulary>
+                <name>CouplingType</name>
+                <server>http://proj.badc.rl.ac.uk/svn/metafor/cmip5q/trunk</server>
+            </controlledVocabulary>
+        </type>
+        <timeProfile units="minutes" variableRate="false">
+            <rate>20</rate>
+        </timeProfile>
+        <timeTransformation>
+            <mappingType open="true" value="Exact">
+                <controlledVocabulary>
+                    <name>mappingType</name>
+                    <server>http://proj.badc.rl.ac.uk/svn/metafor/cmip5q/trunk</server>
+                </controlledVocabulary>
+            </mappingType>
+        </timeTransformation>
+        <couplingSource>
+            <dataSource>
+                <reference xlink:href="#//CIMRecord/dataObject[id='8146baf0-5bb2-11e1-81c3-00163e9152a5']">
+                    <id>8146baf0-5bb2-11e1-81c3-00163e9152a5</id>
+                    <name>hadgem2-cc_oxidants</name>
+                    <type>dataObject</type>
+                    <version>1</version>
+                    <description>Reference to a dataObject called hadgem2-cc_oxidants</description>
+                </reference>
+            </dataSource>
+        </couplingSource>
+        <couplingTarget>
+            <dataSource>
+                <reference xlink:href="#//CIMRecord/modelComponent[id='34949c58-9679-11e0-a921-00163e9152a5']">
+                    <id>34949c58-9679-11e0-a921-00163e9152a5</id>
+                    <name>Atmospheric Chemistry</name>
+                    <type>modelComponent</type>
+                    <version>1</version>
+                    <description>Reference to a modelComponent called Atmospheric Chemistry</description>
+                </reference>
+            </dataSource>
+        </couplingTarget>
+        <connection>
+            <connectionSource>
+                <dataSource>
+                    <reference xlink:href="#//CIMRecord/dataObject[id='8146baf0-5bb2-11e1-81c3-00163e9152a5']">
+                        <id>8146baf0-5bb2-11e1-81c3-00163e9152a5</id>
+                        <name>HO2</name>
+                        <type>fileVariable</type>
+                        <version>1</version>
+                        <description>Reference to a fileVariable called HO2 in a dataObject called hadgem2-cc_oxidants</description>
+                    </reference>
+                </dataSource>
+            </connectionSource>
+            <connectionTarget>
+                <dataSource>
+                    <reference xlink:href="#//CIMRecord/modelComponent[id='34949c58-9679-11e0-a921-00163e9152a5']">
+                        <id>34949c58-9679-11e0-a921-00163e9152a5</id>
+                        <name>oxidant_HO2</name>
+                        <type>componentProperty</type>
+                        <version>1</version>
+                        <description>Reference to a componentProperty called oxidant_HO2 in a modelComponent called Atmospheric Chemistry</description>
+                    </reference>
+                </dataSource>
+            </connectionTarget>
+        </connection>
+    </input>
+    <authorsList>
+        <list>C. Marzin, R. Kahana, C Jones</list>
+    </authorsList>
+    <conformance>
+        <conformance conformant="true" type="via inputs">
+            <description>The concentrations of well mixed gases was set to the PMIP defined values except for the CO2 concentration which was fixed at 286 ppm rather than 280 ppm.  The concentrations used were: [ CO2 = 286 ppm ], [ CH4 = 650 ppb ], [ N2O = 270 ppb ], [ CFC = 0 ], [ O3 = same as in HadGEM2-CC preindustrial run ]</description>
+            <requirement>
+                <reference xlink:href="#//CIMRecord/experiment[id='aadc187e-d3a5-11df-837f-00163e9152a5']">
+                    <id>aadc187e-d3a5-11df-837f-00163e9152a5</id>
+                    <name>bc.070</name>
+                    <type>NumericalRequirement</type>
+                    <version>1</version>
+                    <description>Reference to a NumericalRequirement called bc.070 in a experiment called 3.4 midHolocene</description>
+                </reference>
+            </requirement>
+        </conformance>
+    </conformance>
+    <conformance>
+        <conformance conformant="true" type="standard config">
+            <description>Orbital parameters were set to PMIP required values: [ ecc = 0.018682 ],  [ obl = 24.105&#176; ],  [ peri-180&#176; = 0.87&#176; ].  The date of the vernal equinox was set to March 21 at noon.</description>
+            <requirement>
+                <reference xlink:href="#//CIMRecord/experiment[id='aadc187e-d3a5-11df-837f-00163e9152a5']">
+                    <id>aadc187e-d3a5-11df-837f-00163e9152a5</id>
+                    <name>bc.069</name>
+                    <type>NumericalRequirement</type>
+                    <version>1</version>
+                    <description>Reference to a NumericalRequirement called bc.069 in a experiment called 3.4 midHolocene</description>
+                </reference>
+            </requirement>
+        </conformance>
+    </conformance>
+    <conformance>
+        <conformance conformant="true" type="via inputs">
+            <description>Solar constant was same as for the HadGEM2-CC preindustrial simulation</description>
+            <requirement>
+                <reference xlink:href="#//CIMRecord/experiment[id='aadc187e-d3a5-11df-837f-00163e9152a5']">
+                    <id>aadc187e-d3a5-11df-837f-00163e9152a5</id>
+                    <name>bc.071</name>
+                    <type>NumericalRequirement</type>
+                    <version>1</version>
+                    <description>Reference to a NumericalRequirement called bc.071 in a experiment called 3.4 midHolocene</description>
+                </reference>
+            </requirement>
+        </conformance>
+    </conformance>
+    <conformance>
+        <conformance conformant="true" type="via inputs">
+            <description>Initialised from HadGEM2-CC piControl at 1859-12-01.</description>
+            <requirement>
+                <reference xlink:href="#//CIMRecord/experiment[id='aadc187e-d3a5-11df-837f-00163e9152a5']">
+                    <id>aadc187e-d3a5-11df-837f-00163e9152a5</id>
+                    <name>ic.001</name>
+                    <type>NumericalRequirement</type>
+                    <version>1</version>
+                    <description>Reference to a NumericalRequirement called ic.001 in a experiment called 3.4 midHolocene</description>
+                </reference>
+            </requirement>
+        </conformance>
+    </conformance>
+    <conformance>
+        <conformance conformant="true" type="standard config">
+            <description>Although the simulation was run for 100 years, due to problems in the early part of the simulation only the final 35 years have been submitted.</description>
+            <requirement>
+                <reference xlink:href="#//CIMRecord/experiment[id='aadc187e-d3a5-11df-837f-00163e9152a5']">
+                    <id>aadc187e-d3a5-11df-837f-00163e9152a5</id>
+                    <name>stc.028</name>
+                    <type>NumericalRequirement</type>
+                    <version>1</version>
+                    <description>Reference to a NumericalRequirement called stc.028 in a experiment called 3.4 midHolocene</description>
+                </reference>
+            </requirement>
+        </conformance>
+    </conformance>
+    <deployment>
+        <description>The resources(deployment) on which this simulation ran</description>
+        <platform>
+            <reference xlink:href="#//CIMRecord/platform[id='b765775a-e2ac-11df-9efb-00163e9152a5']">
+                <id>b765775a-e2ac-11df-9efb-00163e9152a5</id>
+                <name>IBM Power 6</name>
+                <type>platform</type>
+                <version>1</version>
+                <description>Reference to a platform called IBM Power 6</description>
+            </reference>
+        </platform>
+    </deployment>
+    <dateRange>
+        <closedDateRange>
+            <endDate>1975-12-01T00:00:00Z</endDate>
+            <startDate>1941-12-01T00:00:00Z</startDate>
+        </closedDateRange>
+    </dateRange>
+    <model>
+        <reference xlink:href="#//CIMRecord/modelComponent[id='2f4cc6d0-9679-11e0-a921-00163e9152a5']">
+            <id>2f4cc6d0-9679-11e0-a921-00163e9152a5</id>
+            <name>HadGEM2-CC</name>
+            <type>modelComponent</type>
+            <version>1</version>
+            <description>Reference to a modelComponent called HadGEM2-CC</description>
+        </reference>
+    </model>
+    <documentID>e773377a-5d7b-11e1-bb69-00163e9152a5</documentID>
+    <documentVersion>5</documentVersion>
+    <externalID open="true" value="MOHC_HadGEM2-CC_midHolocene_r1i1p1_1941">
+        <standard>
+            <name>QN_DRS</name>
+            <description>
+                      The QN_DRS value allows mapping from data files to metadata
+                      being exported from the metadata questionnaire, and contains
+                      the institution name, the model name on which the simulation
+                      was run, the experiment name to which the simulation
+                      conforms, the simulation level base rip value, and finally
+                      the given start year for the simulation. The format of the string will thus be:
+                      institute_model_experiment_rip_startyear. Also note, that in particular cases,
+                      i.e. decadal and noVolc exps, the start date and expdate
+                      may differ - this will occur in those cases where the simulation
+                      start date is 1st january but still refers to an experiment
+                      for the year before. - (see cmip5 experiment design document)
+            </description>
+        </standard>
+    </externalID>
+    <externalID open="true" value="r1i1p1">
+        <standard>
+            <name>DRS_CMIP5_ensembleType</name>
+        </standard>
+    </externalID>
+    <documentAuthor>
+        <gmd:individualName>
+            <gco:CharacterString>Metafor Questionnaire</gco:CharacterString>
+        </gmd:individualName>
+        <gmd:role>
+            <gmd:CI_RoleCode codeList="" codeListValue="documentAuthor"/>
+        </gmd:role>
+    </documentAuthor>
+    <documentCreationDate>2012-05-21T17:35:28.054762</documentCreationDate>
+</simulationRun>
+  

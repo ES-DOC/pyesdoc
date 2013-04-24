@@ -1,0 +1,1647 @@
+
+<simulationRun xmlns="http://www.purl.org/org/esmetadata/cim/1.5/schemas" xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:gco="http://www.isotc211.org/2005/gco" xmlns:gmd="http://www.isotc211.org/2005/gmd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <responsibleParty>
+      <!--responsibleParty uri :: 8bb3d86a-d3a5-11df-837f-00163e9152a5-->
+        <gmd:individualName>
+            <gco:CharacterString>cmip5-mpi-esm</gco:CharacterString>
+        </gmd:individualName>
+        <gmd:contactInfo>
+            <gmd:CI_Contact>
+                <gmd:address>
+                    <gmd:CI_Address>
+                        <gmd:deliveryPoint>
+                            <gco:CharacterString/>
+                        </gmd:deliveryPoint>
+                        <gmd:electronicMailAddress>
+                            <gco:CharacterString>cmip5-mpi-esm@dkrz.de</gco:CharacterString>
+                        </gmd:electronicMailAddress>
+                    </gmd:CI_Address>
+                </gmd:address>
+                <gmd:onlineResource>
+                    <gmd:CI_OnlineResource>
+                        <gmd:linkage>
+                            <gmd:URL/>
+                        </gmd:linkage>
+                    </gmd:CI_OnlineResource>
+                </gmd:onlineResource>
+            </gmd:CI_Contact>
+        </gmd:contactInfo>
+        <gmd:role>
+            <gmd:CI_RoleCode codeList="" codeListValue="contact"/>
+        </gmd:role>
+        <abbreviation>cmip5-mpi-esm</abbreviation>
+    </responsibleParty>
+    <responsibleParty>
+      <!--responsibleParty uri :: e5d7a61c-dd2a-11df-9b99-00163e9152a5-->
+        <gmd:individualName>
+            <gco:CharacterString>Marco Giorgetta</gco:CharacterString>
+        </gmd:individualName>
+        <gmd:contactInfo>
+            <gmd:CI_Contact>
+                <gmd:address>
+                    <gmd:CI_Address>
+                        <gmd:deliveryPoint>
+                            <gco:CharacterString>Department (modelling group): 'The Atmosphere in the Earth System'</gco:CharacterString>
+                        </gmd:deliveryPoint>
+                        <gmd:electronicMailAddress>
+                            <gco:CharacterString>marco.giorgetta@zmaw.de</gco:CharacterString>
+                        </gmd:electronicMailAddress>
+                    </gmd:CI_Address>
+                </gmd:address>
+                <gmd:onlineResource>
+                    <gmd:CI_OnlineResource>
+                        <gmd:linkage>
+                            <gmd:URL>http://www.mpimet.mpg.de/</gmd:URL>
+                        </gmd:linkage>
+                    </gmd:CI_OnlineResource>
+                </gmd:onlineResource>
+            </gmd:CI_Contact>
+        </gmd:contactInfo>
+        <gmd:role>
+            <gmd:CI_RoleCode codeList="" codeListValue="author"/>
+        </gmd:role>
+        <abbreviation>Marco Giorgetta</abbreviation>
+    </responsibleParty>
+    <responsibleParty>
+      <!--responsibleParty uri :: c4d0637a-e8e9-11e0-b223-00163e9152a5-->
+        <gmd:organisationName>
+            <gco:CharacterString>Bundesministerium fuer Bildung und Forschung</gco:CharacterString>
+        </gmd:organisationName>
+        <gmd:contactInfo>
+            <gmd:CI_Contact>
+                <gmd:address>
+                    <gmd:CI_Address>
+                        <gmd:deliveryPoint>
+                            <gco:CharacterString/>
+                        </gmd:deliveryPoint>
+                        <gmd:electronicMailAddress>
+                            <gco:CharacterString/>
+                        </gmd:electronicMailAddress>
+                    </gmd:CI_Address>
+                </gmd:address>
+                <gmd:onlineResource>
+                    <gmd:CI_OnlineResource>
+                        <gmd:linkage>
+                            <gmd:URL/>
+                        </gmd:linkage>
+                    </gmd:CI_OnlineResource>
+                </gmd:onlineResource>
+            </gmd:CI_Contact>
+        </gmd:contactInfo>
+        <gmd:role>
+            <gmd:CI_RoleCode codeList="" codeListValue="funder"/>
+        </gmd:role>
+        <abbreviation>BMBF</abbreviation>
+    </responsibleParty>
+    <responsibleParty>
+      <!--responsibleParty uri :: 8bb22b46-d3a5-11df-837f-00163e9152a5-->
+        <gmd:organisationName>
+            <gco:CharacterString>Max Planck Institute for Meteorology</gco:CharacterString>
+        </gmd:organisationName>
+        <gmd:contactInfo>
+            <gmd:CI_Contact>
+                <gmd:address>
+                    <gmd:CI_Address>
+                        <gmd:deliveryPoint>
+                            <gco:CharacterString/>
+                        </gmd:deliveryPoint>
+                        <gmd:electronicMailAddress>
+                            <gco:CharacterString/>
+                        </gmd:electronicMailAddress>
+                    </gmd:CI_Address>
+                </gmd:address>
+                <gmd:onlineResource>
+                    <gmd:CI_OnlineResource>
+                        <gmd:linkage>
+                            <gmd:URL/>
+                        </gmd:linkage>
+                    </gmd:CI_OnlineResource>
+                </gmd:onlineResource>
+            </gmd:CI_Contact>
+        </gmd:contactInfo>
+        <gmd:role>
+            <gmd:CI_RoleCode codeList="" codeListValue="centre"/>
+        </gmd:role>
+        <abbreviation>MPI-M</abbreviation>
+    </responsibleParty>
+    <project open="true" value="CMIP5">
+        <controlledVocabulary>
+            <name>project</name>
+            <server>http://proj.badc.rl.ac.uk/svn/metafor/cmip5q/trunk</server>
+        </controlledVocabulary>
+    </project>
+    <shortName>decadal1960-MR</shortName>
+    <longName>decadal1960-MR</longName>
+    <description>decadal hindcast experiment </description>
+    <supports>
+        <reference xlink:href="#//CIMRecord/experiment[id='2cdef55e-48d8-11e0-8116-001de019e26d']">
+            <id>2cdef55e-48d8-11e0-8116-001de019e26d</id>
+            <name>decadal1960</name>
+            <type>experiment</type>
+            <version>1</version>
+            <description>Reference to an Experiment called decadal with experimentNumber 1.1 which this simulation has specialised as decadal1960</description>
+        </reference>
+    </supports>
+    <calendar>
+        <realCalendar/>
+    </calendar>
+    <input fullySpecified="false" purpose="ancillaryFile">
+        <description/>
+        <spatialRegridding>
+            <spatialRegriddingStandardMethod>conservative</spatialRegriddingStandardMethod>
+        </spatialRegridding>
+        <timeTransformation>
+            <mappingType open="true" value="Exact">
+                <controlledVocabulary>
+                    <name>mappingType</name>
+                    <server>http://proj.badc.rl.ac.uk/svn/metafor/cmip5q/trunk</server>
+                </controlledVocabulary>
+            </mappingType>
+        </timeTransformation>
+        <couplingSource>
+            <dataSource>
+                <reference xlink:href="#//CIMRecord/dataObject[id='ed8881b2-8539-11e0-83b9-00163e9152a5']">
+                    <id>ed8881b2-8539-11e0-83b9-00163e9152a5</id>
+                    <name>CldOptProps</name>
+                    <type>dataObject</type>
+                    <version>1</version>
+                    <description>Reference to a dataObject called CldOptProps</description>
+                </reference>
+            </dataSource>
+        </couplingSource>
+        <couplingTarget>
+            <dataSource>
+                <reference xlink:href="#//CIMRecord/modelComponent[id='216735e2-f98d-11e0-8d01-00163e9152a5']">
+                    <id>216735e2-f98d-11e0-8d01-00163e9152a5</id>
+                    <name>ECHAM6</name>
+                    <type>modelComponent</type>
+                    <version>1</version>
+                    <description>Reference to a modelComponent called ECHAM6</description>
+                </reference>
+            </dataSource>
+        </couplingTarget>
+        <connection>
+        <!--this coupling has no connection source specified-->
+            <connectionTarget>
+                <dataSource>
+                    <reference xlink:href="#//CIMRecord/modelComponent[id='216735e2-f98d-11e0-8d01-00163e9152a5']">
+                        <id>216735e2-f98d-11e0-8d01-00163e9152a5</id>
+                        <name>CldOptProps</name>
+                        <type>componentProperty</type>
+                        <version>1</version>
+                        <description>Reference to a componentProperty called CldOptProps in a modelComponent called ECHAM6</description>
+                    </reference>
+                </dataSource>
+            </connectionTarget>
+        </connection>
+    </input>
+    <input fullySpecified="false" purpose="ancillaryFile">
+        <description/>
+        <spatialRegridding>
+            <spatialRegriddingStandardMethod>conservative</spatialRegriddingStandardMethod>
+        </spatialRegridding>
+        <timeTransformation>
+            <mappingType open="true" value="Exact">
+                <controlledVocabulary>
+                    <name>mappingType</name>
+                    <server>http://proj.badc.rl.ac.uk/svn/metafor/cmip5q/trunk</server>
+                </controlledVocabulary>
+            </mappingType>
+        </timeTransformation>
+        <couplingSource>
+            <dataSource>
+                <reference xlink:href="#//CIMRecord/dataObject[id='7feec2e8-8542-11e0-83b9-00163e9152a5']">
+                    <id>7feec2e8-8542-11e0-83b9-00163e9152a5</id>
+                    <name>hdpara</name>
+                    <type>dataObject</type>
+                    <version>1</version>
+                    <description>Reference to a dataObject called hdpara</description>
+                </reference>
+            </dataSource>
+        </couplingSource>
+        <couplingTarget>
+            <dataSource>
+                <reference xlink:href="#//CIMRecord/modelComponent[id='216735e2-f98d-11e0-8d01-00163e9152a5']">
+                    <id>216735e2-f98d-11e0-8d01-00163e9152a5</id>
+                    <name>ECHAM6</name>
+                    <type>modelComponent</type>
+                    <version>1</version>
+                    <description>Reference to a modelComponent called ECHAM6</description>
+                </reference>
+            </dataSource>
+        </couplingTarget>
+        <connection>
+        <!--this coupling has no connection source specified-->
+            <connectionTarget>
+                <dataSource>
+                    <reference xlink:href="#//CIMRecord/modelComponent[id='216735e2-f98d-11e0-8d01-00163e9152a5']">
+                        <id>216735e2-f98d-11e0-8d01-00163e9152a5</id>
+                        <name>hdpara</name>
+                        <type>componentProperty</type>
+                        <version>1</version>
+                        <description>Reference to a componentProperty called hdpara in a modelComponent called ECHAM6</description>
+                    </reference>
+                </dataSource>
+            </connectionTarget>
+        </connection>
+    </input>
+    <input fullySpecified="false" purpose="initialCondition">
+        <description/>
+        <spatialRegridding>
+            <spatialRegriddingStandardMethod>conservative</spatialRegriddingStandardMethod>
+        </spatialRegridding>
+        <timeTransformation>
+            <mappingType open="true" value="Exact">
+                <controlledVocabulary>
+                    <name>mappingType</name>
+                    <server>http://proj.badc.rl.ac.uk/svn/metafor/cmip5q/trunk</server>
+                </controlledVocabulary>
+            </mappingType>
+        </timeTransformation>
+        <couplingSource>
+            <dataSource>
+                <reference xlink:href="#//CIMRecord/dataObject[id='28d96a2a-8543-11e0-bb8f-00163e9152a5']">
+                    <id>28d96a2a-8543-11e0-bb8f-00163e9152a5</id>
+                    <name>hdstart</name>
+                    <type>dataObject</type>
+                    <version>1</version>
+                    <description>Reference to a dataObject called hdstart</description>
+                </reference>
+            </dataSource>
+        </couplingSource>
+        <couplingTarget>
+            <dataSource>
+                <reference xlink:href="#//CIMRecord/modelComponent[id='216735e2-f98d-11e0-8d01-00163e9152a5']">
+                    <id>216735e2-f98d-11e0-8d01-00163e9152a5</id>
+                    <name>ECHAM6</name>
+                    <type>modelComponent</type>
+                    <version>1</version>
+                    <description>Reference to a modelComponent called ECHAM6</description>
+                </reference>
+            </dataSource>
+        </couplingTarget>
+        <connection>
+        <!--this coupling has no connection source specified-->
+            <connectionTarget>
+                <dataSource>
+                    <reference xlink:href="#//CIMRecord/modelComponent[id='216735e2-f98d-11e0-8d01-00163e9152a5']">
+                        <id>216735e2-f98d-11e0-8d01-00163e9152a5</id>
+                        <name>hdstart</name>
+                        <type>componentProperty</type>
+                        <version>1</version>
+                        <description>Reference to a componentProperty called hdstart in a modelComponent called ECHAM6</description>
+                    </reference>
+                </dataSource>
+            </connectionTarget>
+        </connection>
+    </input>
+    <input fullySpecified="false" purpose="initialCondition">
+        <description/>
+        <spatialRegridding>
+            <spatialRegriddingStandardMethod>conservative</spatialRegriddingStandardMethod>
+        </spatialRegridding>
+        <timeTransformation>
+            <mappingType open="true" value="Exact">
+                <controlledVocabulary>
+                    <name>mappingType</name>
+                    <server>http://proj.badc.rl.ac.uk/svn/metafor/cmip5q/trunk</server>
+                </controlledVocabulary>
+            </mappingType>
+        </timeTransformation>
+        <couplingSource>
+            <dataSource>
+                <reference xlink:href="#//CIMRecord/dataObject[id='673861da-b15d-11e1-aebc-00163e9152a5']">
+                    <id>673861da-b15d-11e1-aebc-00163e9152a5</id>
+                    <name>T63L95_jan_spec</name>
+                    <type>dataObject</type>
+                    <version>1</version>
+                    <description>Reference to a dataObject called T63L95_jan_spec</description>
+                </reference>
+            </dataSource>
+        </couplingSource>
+        <couplingTarget>
+            <dataSource>
+                <reference xlink:href="#//CIMRecord/modelComponent[id='216735e2-f98d-11e0-8d01-00163e9152a5']">
+                    <id>216735e2-f98d-11e0-8d01-00163e9152a5</id>
+                    <name>ECHAM6</name>
+                    <type>modelComponent</type>
+                    <version>1</version>
+                    <description>Reference to a modelComponent called ECHAM6</description>
+                </reference>
+            </dataSource>
+        </couplingTarget>
+        <connection>
+        <!--this coupling has no connection source specified-->
+            <connectionTarget>
+                <dataSource>
+                    <reference xlink:href="#//CIMRecord/modelComponent[id='216735e2-f98d-11e0-8d01-00163e9152a5']">
+                        <id>216735e2-f98d-11e0-8d01-00163e9152a5</id>
+                        <name>T63L95_jan_spec</name>
+                        <type>componentProperty</type>
+                        <version>1</version>
+                        <description>Reference to a componentProperty called T63L95_jan_spec in a modelComponent called ECHAM6</description>
+                    </reference>
+                </dataSource>
+            </connectionTarget>
+        </connection>
+    </input>
+    <input fullySpecified="false" purpose="initialCondition">
+        <description/>
+        <spatialRegridding>
+            <spatialRegriddingStandardMethod>conservative</spatialRegriddingStandardMethod>
+        </spatialRegridding>
+        <timeTransformation>
+            <mappingType open="true" value="Exact">
+                <controlledVocabulary>
+                    <name>mappingType</name>
+                    <server>http://proj.badc.rl.ac.uk/svn/metafor/cmip5q/trunk</server>
+                </controlledVocabulary>
+            </mappingType>
+        </timeTransformation>
+        <couplingSource>
+            <dataSource>
+                <reference xlink:href="#//CIMRecord/dataObject[id='673861da-b15d-11e1-aebc-00163e9152a5']">
+                    <id>673861da-b15d-11e1-aebc-00163e9152a5</id>
+                    <name>T63L95_jan_spec</name>
+                    <type>dataObject</type>
+                    <version>1</version>
+                    <description>Reference to a dataObject called T63L95_jan_spec</description>
+                </reference>
+            </dataSource>
+        </couplingSource>
+        <couplingTarget>
+            <dataSource>
+                <reference xlink:href="#//CIMRecord/modelComponent[id='216735e2-f98d-11e0-8d01-00163e9152a5']">
+                    <id>216735e2-f98d-11e0-8d01-00163e9152a5</id>
+                    <name>ECHAM6</name>
+                    <type>modelComponent</type>
+                    <version>1</version>
+                    <description>Reference to a modelComponent called ECHAM6</description>
+                </reference>
+            </dataSource>
+        </couplingTarget>
+        <connection>
+        <!--this coupling has no connection source specified-->
+            <connectionTarget>
+                <dataSource>
+                    <reference xlink:href="#//CIMRecord/modelComponent[id='216735e2-f98d-11e0-8d01-00163e9152a5']">
+                        <id>216735e2-f98d-11e0-8d01-00163e9152a5</id>
+                        <name>T63TP04_jan_surf</name>
+                        <type>componentProperty</type>
+                        <version>1</version>
+                        <description>Reference to a componentProperty called T63TP04_jan_surf in a modelComponent called ECHAM6</description>
+                    </reference>
+                </dataSource>
+            </connectionTarget>
+        </connection>
+    </input>
+    <input fullySpecified="false" purpose="ancillaryFile">
+        <description/>
+        <spatialRegridding>
+            <spatialRegriddingStandardMethod>conservative</spatialRegriddingStandardMethod>
+        </spatialRegridding>
+        <timeTransformation>
+            <mappingType open="true" value="Exact">
+                <controlledVocabulary>
+                    <name>mappingType</name>
+                    <server>http://proj.badc.rl.ac.uk/svn/metafor/cmip5q/trunk</server>
+                </controlledVocabulary>
+            </mappingType>
+        </timeTransformation>
+        <couplingSource>
+            <dataSource>
+                <reference xlink:href="#//CIMRecord/dataObject[id='7ba866f0-853b-11e0-83b9-00163e9152a5']">
+                    <id>7ba866f0-853b-11e0-83b9-00163e9152a5</id>
+                    <name>aeropt_lw_b16</name>
+                    <type>dataObject</type>
+                    <version>1</version>
+                    <description>Reference to a dataObject called aeropt_lw_b16</description>
+                </reference>
+            </dataSource>
+        </couplingSource>
+        <couplingTarget>
+            <dataSource>
+                <reference xlink:href="#//CIMRecord/modelComponent[id='216735e2-f98d-11e0-8d01-00163e9152a5']">
+                    <id>216735e2-f98d-11e0-8d01-00163e9152a5</id>
+                    <name>ECHAM6</name>
+                    <type>modelComponent</type>
+                    <version>1</version>
+                    <description>Reference to a modelComponent called ECHAM6</description>
+                </reference>
+            </dataSource>
+        </couplingTarget>
+        <connection>
+        <!--this coupling has no connection source specified-->
+            <connectionTarget>
+                <dataSource>
+                    <reference xlink:href="#//CIMRecord/modelComponent[id='216735e2-f98d-11e0-8d01-00163e9152a5']">
+                        <id>216735e2-f98d-11e0-8d01-00163e9152a5</id>
+                        <name>lw_b16_coa</name>
+                        <type>componentProperty</type>
+                        <version>1</version>
+                        <description>Reference to a componentProperty called lw_b16_coa in a modelComponent called ECHAM6</description>
+                    </reference>
+                </dataSource>
+            </connectionTarget>
+        </connection>
+    </input>
+    <input fullySpecified="false" purpose="boundaryCondition">
+        <description/>
+        <spatialRegridding>
+            <spatialRegriddingStandardMethod>conservative</spatialRegriddingStandardMethod>
+        </spatialRegridding>
+        <timeTransformation>
+            <mappingType open="true" value="Exact">
+                <controlledVocabulary>
+                    <name>mappingType</name>
+                    <server>http://proj.badc.rl.ac.uk/svn/metafor/cmip5q/trunk</server>
+                </controlledVocabulary>
+            </mappingType>
+        </timeTransformation>
+        <couplingSource>
+            <dataSource>
+                <reference xlink:href="#//CIMRecord/dataObject[id='e075aea8-8545-11e0-92a2-00163e9152a5']">
+                    <id>e075aea8-8545-11e0-92a2-00163e9152a5</id>
+                    <name>ozone</name>
+                    <type>dataObject</type>
+                    <version>1</version>
+                    <description>Reference to a dataObject called ozone</description>
+                </reference>
+            </dataSource>
+        </couplingSource>
+        <couplingTarget>
+            <dataSource>
+                <reference xlink:href="#//CIMRecord/modelComponent[id='216735e2-f98d-11e0-8d01-00163e9152a5']">
+                    <id>216735e2-f98d-11e0-8d01-00163e9152a5</id>
+                    <name>ECHAM6</name>
+                    <type>modelComponent</type>
+                    <version>1</version>
+                    <description>Reference to a modelComponent called ECHAM6</description>
+                </reference>
+            </dataSource>
+        </couplingTarget>
+        <connection>
+        <!--this coupling has no connection source specified-->
+            <connectionTarget>
+                <dataSource>
+                    <reference xlink:href="#//CIMRecord/modelComponent[id='216735e2-f98d-11e0-8d01-00163e9152a5']">
+                        <id>216735e2-f98d-11e0-8d01-00163e9152a5</id>
+                        <name>ozone</name>
+                        <type>componentProperty</type>
+                        <version>1</version>
+                        <description>Reference to a componentProperty called ozone in a modelComponent called ECHAM6</description>
+                    </reference>
+                </dataSource>
+            </connectionTarget>
+        </connection>
+    </input>
+    <input fullySpecified="false" purpose="ancillaryFile">
+        <description/>
+        <spatialRegridding>
+            <spatialRegriddingStandardMethod>conservative</spatialRegriddingStandardMethod>
+        </spatialRegridding>
+        <timeTransformation>
+            <mappingType open="true" value="Exact">
+                <controlledVocabulary>
+                    <name>mappingType</name>
+                    <server>http://proj.badc.rl.ac.uk/svn/metafor/cmip5q/trunk</server>
+                </controlledVocabulary>
+            </mappingType>
+        </timeTransformation>
+        <couplingSource>
+            <dataSource>
+                <reference xlink:href="#//CIMRecord/dataObject[id='0faf235a-8539-11e0-ba5a-00163e9152a5']">
+                    <id>0faf235a-8539-11e0-ba5a-00163e9152a5</id>
+                    <name>rrtmg</name>
+                    <type>dataObject</type>
+                    <version>1</version>
+                    <description>Reference to a dataObject called rrtmg</description>
+                </reference>
+            </dataSource>
+        </couplingSource>
+        <couplingTarget>
+            <dataSource>
+                <reference xlink:href="#//CIMRecord/modelComponent[id='216735e2-f98d-11e0-8d01-00163e9152a5']">
+                    <id>216735e2-f98d-11e0-8d01-00163e9152a5</id>
+                    <name>ECHAM6</name>
+                    <type>modelComponent</type>
+                    <version>1</version>
+                    <description>Reference to a modelComponent called ECHAM6</description>
+                </reference>
+            </dataSource>
+        </couplingTarget>
+        <connection>
+        <!--this coupling has no connection source specified-->
+            <connectionTarget>
+                <dataSource>
+                    <reference xlink:href="#//CIMRecord/modelComponent[id='216735e2-f98d-11e0-8d01-00163e9152a5']">
+                        <id>216735e2-f98d-11e0-8d01-00163e9152a5</id>
+                        <name>rrtmg</name>
+                        <type>componentProperty</type>
+                        <version>1</version>
+                        <description>Reference to a componentProperty called rrtmg in a modelComponent called ECHAM6</description>
+                    </reference>
+                </dataSource>
+            </connectionTarget>
+        </connection>
+    </input>
+    <input fullySpecified="false" purpose="initialCondition">
+        <description/>
+        <spatialRegridding>
+            <spatialRegriddingStandardMethod>conservative</spatialRegriddingStandardMethod>
+        </spatialRegridding>
+        <timeTransformation>
+            <mappingType open="true" value="Exact">
+                <controlledVocabulary>
+                    <name>mappingType</name>
+                    <server>http://proj.badc.rl.ac.uk/svn/metafor/cmip5q/trunk</server>
+                </controlledVocabulary>
+            </mappingType>
+        </timeTransformation>
+        <couplingSource>
+            <dataSource>
+                <reference xlink:href="#//CIMRecord/dataObject[id='b19a5b90-8538-11e0-84a6-00163e9152a5']">
+                    <id>b19a5b90-8538-11e0-84a6-00163e9152a5</id>
+                    <name>surrta</name>
+                    <type>dataObject</type>
+                    <version>1</version>
+                    <description>Reference to a dataObject called surrta</description>
+                </reference>
+            </dataSource>
+        </couplingSource>
+        <couplingTarget>
+            <dataSource>
+                <reference xlink:href="#//CIMRecord/modelComponent[id='216735e2-f98d-11e0-8d01-00163e9152a5']">
+                    <id>216735e2-f98d-11e0-8d01-00163e9152a5</id>
+                    <name>ECHAM6</name>
+                    <type>modelComponent</type>
+                    <version>1</version>
+                    <description>Reference to a modelComponent called ECHAM6</description>
+                </reference>
+            </dataSource>
+        </couplingTarget>
+        <connection>
+        <!--this coupling has no connection source specified-->
+            <connectionTarget>
+                <dataSource>
+                    <reference xlink:href="#//CIMRecord/modelComponent[id='216735e2-f98d-11e0-8d01-00163e9152a5']">
+                        <id>216735e2-f98d-11e0-8d01-00163e9152a5</id>
+                        <name>surrta</name>
+                        <type>componentProperty</type>
+                        <version>1</version>
+                        <description>Reference to a componentProperty called surrta in a modelComponent called ECHAM6</description>
+                    </reference>
+                </dataSource>
+            </connectionTarget>
+        </connection>
+    </input>
+    <input fullySpecified="false" purpose="initialCondition">
+        <description/>
+        <spatialRegridding>
+            <spatialRegriddingStandardMethod>conservative</spatialRegriddingStandardMethod>
+        </spatialRegridding>
+        <timeTransformation>
+            <mappingType open="true" value="Exact">
+                <controlledVocabulary>
+                    <name>mappingType</name>
+                    <server>http://proj.badc.rl.ac.uk/svn/metafor/cmip5q/trunk</server>
+                </controlledVocabulary>
+            </mappingType>
+        </timeTransformation>
+        <couplingSource>
+            <dataSource>
+                <reference xlink:href="#//CIMRecord/dataObject[id='9e33b822-8546-11e0-83b9-00163e9152a5']">
+                    <id>9e33b822-8546-11e0-83b9-00163e9152a5</id>
+                    <name>aeropt_sw_b14_fin</name>
+                    <type>dataObject</type>
+                    <version>1</version>
+                    <description>Reference to a dataObject called aeropt_sw_b14_fin</description>
+                </reference>
+            </dataSource>
+        </couplingSource>
+        <couplingTarget>
+            <dataSource>
+                <reference xlink:href="#//CIMRecord/modelComponent[id='216735e2-f98d-11e0-8d01-00163e9152a5']">
+                    <id>216735e2-f98d-11e0-8d01-00163e9152a5</id>
+                    <name>ECHAM6</name>
+                    <type>modelComponent</type>
+                    <version>1</version>
+                    <description>Reference to a modelComponent called ECHAM6</description>
+                </reference>
+            </dataSource>
+        </couplingTarget>
+        <connection>
+        <!--this coupling has no connection source specified-->
+            <connectionTarget>
+                <dataSource>
+                    <reference xlink:href="#//CIMRecord/modelComponent[id='216735e2-f98d-11e0-8d01-00163e9152a5']">
+                        <id>216735e2-f98d-11e0-8d01-00163e9152a5</id>
+                        <name>sw_b14_fin</name>
+                        <type>componentProperty</type>
+                        <version>1</version>
+                        <description>Reference to a componentProperty called sw_b14_fin in a modelComponent called ECHAM6</description>
+                    </reference>
+                </dataSource>
+            </connectionTarget>
+        </connection>
+    </input>
+    <input fullySpecified="false" purpose="ancillaryFile">
+        <description/>
+        <spatialRegridding>
+            <spatialRegriddingStandardMethod>conservative</spatialRegriddingStandardMethod>
+        </spatialRegridding>
+        <timeTransformation>
+            <mappingType open="true" value="Exact">
+                <controlledVocabulary>
+                    <name>mappingType</name>
+                    <server>http://proj.badc.rl.ac.uk/svn/metafor/cmip5q/trunk</server>
+                </controlledVocabulary>
+            </mappingType>
+        </timeTransformation>
+        <couplingSource>
+            <dataSource>
+                <reference xlink:href="#//CIMRecord/dataObject[id='d6e02eaa-853a-11e0-83b9-00163e9152a5']">
+                    <id>d6e02eaa-853a-11e0-83b9-00163e9152a5</id>
+                    <name>aeropt_sw_b14</name>
+                    <type>dataObject</type>
+                    <version>1</version>
+                    <description>Reference to a dataObject called aeropt_sw_b14</description>
+                </reference>
+            </dataSource>
+        </couplingSource>
+        <couplingTarget>
+            <dataSource>
+                <reference xlink:href="#//CIMRecord/modelComponent[id='216735e2-f98d-11e0-8d01-00163e9152a5']">
+                    <id>216735e2-f98d-11e0-8d01-00163e9152a5</id>
+                    <name>ECHAM6</name>
+                    <type>modelComponent</type>
+                    <version>1</version>
+                    <description>Reference to a modelComponent called ECHAM6</description>
+                </reference>
+            </dataSource>
+        </couplingTarget>
+        <connection>
+        <!--this coupling has no connection source specified-->
+            <connectionTarget>
+                <dataSource>
+                    <reference xlink:href="#//CIMRecord/modelComponent[id='216735e2-f98d-11e0-8d01-00163e9152a5']">
+                        <id>216735e2-f98d-11e0-8d01-00163e9152a5</id>
+                        <name>sw_b14_coa</name>
+                        <type>componentProperty</type>
+                        <version>1</version>
+                        <description>Reference to a componentProperty called sw_b14_coa in a modelComponent called ECHAM6</description>
+                    </reference>
+                </dataSource>
+            </connectionTarget>
+        </connection>
+    </input>
+    <input fullySpecified="false" purpose="initialCondition">
+        <description/>
+        <spatialRegridding>
+            <spatialRegriddingStandardMethod>conservative</spatialRegriddingStandardMethod>
+        </spatialRegridding>
+        <timeTransformation>
+            <mappingType open="true" value="Exact">
+                <controlledVocabulary>
+                    <name>mappingType</name>
+                    <server>http://proj.badc.rl.ac.uk/svn/metafor/cmip5q/trunk</server>
+                </controlledVocabulary>
+            </mappingType>
+        </timeTransformation>
+        <couplingSource>
+            <dataSource>
+                <reference xlink:href="#//CIMRecord/dataObject[id='4c50369a-b162-11e1-8719-00163e9152a5']">
+                    <id>4c50369a-b162-11e1-8719-00163e9152a5</id>
+                    <name>T63TP04_TSLCLIM</name>
+                    <type>dataObject</type>
+                    <version>1</version>
+                    <description>Reference to a dataObject called T63TP04_TSLCLIM</description>
+                </reference>
+            </dataSource>
+        </couplingSource>
+        <couplingTarget>
+            <dataSource>
+                <reference xlink:href="#//CIMRecord/modelComponent[id='216735e2-f98d-11e0-8d01-00163e9152a5']">
+                    <id>216735e2-f98d-11e0-8d01-00163e9152a5</id>
+                    <name>ECHAM6</name>
+                    <type>modelComponent</type>
+                    <version>1</version>
+                    <description>Reference to a modelComponent called ECHAM6</description>
+                </reference>
+            </dataSource>
+        </couplingTarget>
+        <connection>
+        <!--this coupling has no connection source specified-->
+            <connectionTarget>
+                <dataSource>
+                    <reference xlink:href="#//CIMRecord/modelComponent[id='216735e2-f98d-11e0-8d01-00163e9152a5']">
+                        <id>216735e2-f98d-11e0-8d01-00163e9152a5</id>
+                        <name>T63TP04_TSLCLIM</name>
+                        <type>componentProperty</type>
+                        <version>1</version>
+                        <description>Reference to a componentProperty called T63TP04_TSLCLIM in a modelComponent called ECHAM6</description>
+                    </reference>
+                </dataSource>
+            </connectionTarget>
+        </connection>
+    </input>
+    <input fullySpecified="false" purpose="initialCondition">
+        <description/>
+        <spatialRegridding>
+            <spatialRegriddingStandardMethod>conservative</spatialRegriddingStandardMethod>
+        </spatialRegridding>
+        <timeTransformation>
+            <mappingType open="true" value="Exact">
+                <controlledVocabulary>
+                    <name>mappingType</name>
+                    <server>http://proj.badc.rl.ac.uk/svn/metafor/cmip5q/trunk</server>
+                </controlledVocabulary>
+            </mappingType>
+        </timeTransformation>
+        <couplingSource>
+            <dataSource>
+                <reference xlink:href="#//CIMRecord/dataObject[id='6a4527be-b162-11e1-8719-00163e9152a5']">
+                    <id>6a4527be-b162-11e1-8719-00163e9152a5</id>
+                    <name>T63TP04_VGRATCLIM</name>
+                    <type>dataObject</type>
+                    <version>1</version>
+                    <description>Reference to a dataObject called T63TP04_VGRATCLIM</description>
+                </reference>
+            </dataSource>
+        </couplingSource>
+        <couplingTarget>
+            <dataSource>
+                <reference xlink:href="#//CIMRecord/modelComponent[id='216735e2-f98d-11e0-8d01-00163e9152a5']">
+                    <id>216735e2-f98d-11e0-8d01-00163e9152a5</id>
+                    <name>ECHAM6</name>
+                    <type>modelComponent</type>
+                    <version>1</version>
+                    <description>Reference to a modelComponent called ECHAM6</description>
+                </reference>
+            </dataSource>
+        </couplingTarget>
+        <connection>
+        <!--this coupling has no connection source specified-->
+            <connectionTarget>
+                <dataSource>
+                    <reference xlink:href="#//CIMRecord/modelComponent[id='216735e2-f98d-11e0-8d01-00163e9152a5']">
+                        <id>216735e2-f98d-11e0-8d01-00163e9152a5</id>
+                        <name>T63TP04_VGRATCLIM</name>
+                        <type>componentProperty</type>
+                        <version>1</version>
+                        <description>Reference to a componentProperty called T63TP04_VGRATCLIM in a modelComponent called ECHAM6</description>
+                    </reference>
+                </dataSource>
+            </connectionTarget>
+        </connection>
+    </input>
+    <input fullySpecified="false" purpose="initialCondition">
+        <description/>
+        <spatialRegridding>
+            <spatialRegriddingStandardMethod>conservative</spatialRegriddingStandardMethod>
+        </spatialRegridding>
+        <timeTransformation>
+            <mappingType open="true" value="Exact">
+                <controlledVocabulary>
+                    <name>mappingType</name>
+                    <server>http://proj.badc.rl.ac.uk/svn/metafor/cmip5q/trunk</server>
+                </controlledVocabulary>
+            </mappingType>
+        </timeTransformation>
+        <couplingSource>
+            <dataSource>
+                <reference xlink:href="#//CIMRecord/dataObject[id='a705db26-b162-11e1-8719-00163e9152a5']">
+                    <id>a705db26-b162-11e1-8719-00163e9152a5</id>
+                    <name>T63TP04_VLTCLIM</name>
+                    <type>dataObject</type>
+                    <version>1</version>
+                    <description>Reference to a dataObject called T63TP04_VLTCLIM</description>
+                </reference>
+            </dataSource>
+        </couplingSource>
+        <couplingTarget>
+            <dataSource>
+                <reference xlink:href="#//CIMRecord/modelComponent[id='216735e2-f98d-11e0-8d01-00163e9152a5']">
+                    <id>216735e2-f98d-11e0-8d01-00163e9152a5</id>
+                    <name>ECHAM6</name>
+                    <type>modelComponent</type>
+                    <version>1</version>
+                    <description>Reference to a modelComponent called ECHAM6</description>
+                </reference>
+            </dataSource>
+        </couplingTarget>
+        <connection>
+        <!--this coupling has no connection source specified-->
+            <connectionTarget>
+                <dataSource>
+                    <reference xlink:href="#//CIMRecord/modelComponent[id='216735e2-f98d-11e0-8d01-00163e9152a5']">
+                        <id>216735e2-f98d-11e0-8d01-00163e9152a5</id>
+                        <name>T63TP04_VLTCLIM</name>
+                        <type>componentProperty</type>
+                        <version>1</version>
+                        <description>Reference to a componentProperty called T63TP04_VLTCLIM in a modelComponent called ECHAM6</description>
+                    </reference>
+                </dataSource>
+            </connectionTarget>
+        </connection>
+    </input>
+    <input fullySpecified="false" purpose="initialCondition">
+        <description/>
+        <spatialRegridding>
+            <spatialRegriddingStandardMethod>conservative</spatialRegriddingStandardMethod>
+        </spatialRegridding>
+        <timeTransformation>
+            <mappingType open="true" value="Exact">
+                <controlledVocabulary>
+                    <name>mappingType</name>
+                    <server>http://proj.badc.rl.ac.uk/svn/metafor/cmip5q/trunk</server>
+                </controlledVocabulary>
+            </mappingType>
+        </timeTransformation>
+        <couplingSource>
+            <dataSource>
+                <reference xlink:href="#//CIMRecord/dataObject[id='581cd5b0-8552-11e0-92a2-00163e9152a5']">
+                    <id>581cd5b0-8552-11e0-92a2-00163e9152a5</id>
+                    <name>jsbach_11tiles</name>
+                    <type>dataObject</type>
+                    <version>1</version>
+                    <description>Reference to a dataObject called jsbach_11tiles</description>
+                </reference>
+            </dataSource>
+        </couplingSource>
+        <couplingTarget>
+            <dataSource>
+                <reference xlink:href="#//CIMRecord/modelComponent[id='2875de56-f98d-11e0-8d01-00163e9152a5']">
+                    <id>2875de56-f98d-11e0-8d01-00163e9152a5</id>
+                    <name>JSBACH</name>
+                    <type>modelComponent</type>
+                    <version>1</version>
+                    <description>Reference to a modelComponent called JSBACH</description>
+                </reference>
+            </dataSource>
+        </couplingTarget>
+        <connection>
+        <!--this coupling has no connection source specified-->
+            <connectionTarget>
+                <dataSource>
+                    <reference xlink:href="#//CIMRecord/modelComponent[id='2875de56-f98d-11e0-8d01-00163e9152a5']">
+                        <id>2875de56-f98d-11e0-8d01-00163e9152a5</id>
+                        <name>11_tiles</name>
+                        <type>componentProperty</type>
+                        <version>1</version>
+                        <description>Reference to a componentProperty called 11_tiles in a modelComponent called JSBACH</description>
+                    </reference>
+                </dataSource>
+            </connectionTarget>
+        </connection>
+    </input>
+    <input fullySpecified="false" purpose="boundaryCondition">
+        <description/>
+        <spatialRegridding>
+            <spatialRegriddingStandardMethod>conservative</spatialRegriddingStandardMethod>
+        </spatialRegridding>
+        <timeTransformation>
+            <mappingType open="true" value="Exact">
+                <controlledVocabulary>
+                    <name>mappingType</name>
+                    <server>http://proj.badc.rl.ac.uk/svn/metafor/cmip5q/trunk</server>
+                </controlledVocabulary>
+            </mappingType>
+        </timeTransformation>
+        <couplingSource>
+            <dataSource>
+                <reference xlink:href="#//CIMRecord/dataObject[id='1a3626ee-b160-11e1-be09-00163e9152a5']">
+                    <id>1a3626ee-b160-11e1-be09-00163e9152a5</id>
+                    <name>TP04_DUST</name>
+                    <type>dataObject</type>
+                    <version>1</version>
+                    <description>Reference to a dataObject called TP04_DUST</description>
+                </reference>
+            </dataSource>
+        </couplingSource>
+        <couplingTarget>
+            <dataSource>
+                <reference xlink:href="#//CIMRecord/modelComponent[id='2b78e198-f98d-11e0-8d01-00163e9152a5']">
+                    <id>2b78e198-f98d-11e0-8d01-00163e9152a5</id>
+                    <name>HAMOCC</name>
+                    <type>modelComponent</type>
+                    <version>1</version>
+                    <description>Reference to a modelComponent called HAMOCC</description>
+                </reference>
+            </dataSource>
+        </couplingTarget>
+        <connection>
+        <!--this coupling has no connection source specified-->
+            <connectionTarget>
+                <dataSource>
+                    <reference xlink:href="#//CIMRecord/modelComponent[id='2b78e198-f98d-11e0-8d01-00163e9152a5']">
+                        <id>2b78e198-f98d-11e0-8d01-00163e9152a5</id>
+                        <name>TP04_DUST</name>
+                        <type>componentProperty</type>
+                        <version>1</version>
+                        <description>Reference to a componentProperty called TP04_DUST in a modelComponent called HAMOCC</description>
+                    </reference>
+                </dataSource>
+            </connectionTarget>
+        </connection>
+    </input>
+    <input fullySpecified="false" purpose="ancillaryFile">
+        <description/>
+        <spatialRegridding>
+            <spatialRegriddingStandardMethod>conservative</spatialRegriddingStandardMethod>
+        </spatialRegridding>
+        <timeTransformation>
+            <mappingType open="true" value="Exact">
+                <controlledVocabulary>
+                    <name>mappingType</name>
+                    <server>http://proj.badc.rl.ac.uk/svn/metafor/cmip5q/trunk</server>
+                </controlledVocabulary>
+            </mappingType>
+        </timeTransformation>
+        <couplingSource>
+            <dataSource>
+                <reference xlink:href="#//CIMRecord/dataObject[id='7133b85e-b15f-11e1-9a84-00163e9152a5']">
+                    <id>7133b85e-b15f-11e1-9a84-00163e9152a5</id>
+                    <name>TP04_anta</name>
+                    <type>dataObject</type>
+                    <version>1</version>
+                    <description>Reference to a dataObject called TP04_anta</description>
+                </reference>
+            </dataSource>
+        </couplingSource>
+        <couplingTarget>
+            <dataSource>
+                <reference xlink:href="#//CIMRecord/modelComponent[id='45ac2912-f98d-11e0-8d01-00163e9152a5']">
+                    <id>45ac2912-f98d-11e0-8d01-00163e9152a5</id>
+                    <name>MPIOM</name>
+                    <type>modelComponent</type>
+                    <version>1</version>
+                    <description>Reference to a modelComponent called MPIOM</description>
+                </reference>
+            </dataSource>
+        </couplingTarget>
+        <connection>
+        <!--this coupling has no connection source specified-->
+            <connectionTarget>
+                <dataSource>
+                    <reference xlink:href="#//CIMRecord/modelComponent[id='45ac2912-f98d-11e0-8d01-00163e9152a5']">
+                        <id>45ac2912-f98d-11e0-8d01-00163e9152a5</id>
+                        <name>TP04_anta</name>
+                        <type>componentProperty</type>
+                        <version>1</version>
+                        <description>Reference to a componentProperty called TP04_anta in a modelComponent called MPIOM</description>
+                    </reference>
+                </dataSource>
+            </connectionTarget>
+        </connection>
+    </input>
+    <input fullySpecified="false" purpose="ancillaryFile">
+        <description/>
+        <spatialRegridding>
+            <spatialRegriddingStandardMethod>conservative</spatialRegriddingStandardMethod>
+        </spatialRegridding>
+        <timeTransformation>
+            <mappingType open="true" value="Exact">
+                <controlledVocabulary>
+                    <name>mappingType</name>
+                    <server>http://proj.badc.rl.ac.uk/svn/metafor/cmip5q/trunk</server>
+                </controlledVocabulary>
+            </mappingType>
+        </timeTransformation>
+        <couplingSource>
+            <dataSource>
+                <reference xlink:href="#//CIMRecord/dataObject[id='8c8814b0-b15f-11e1-a515-00163e9152a5']">
+                    <id>8c8814b0-b15f-11e1-a515-00163e9152a5</id>
+                    <name>TP04_arcgri</name>
+                    <type>dataObject</type>
+                    <version>1</version>
+                    <description>Reference to a dataObject called TP04_arcgri</description>
+                </reference>
+            </dataSource>
+        </couplingSource>
+        <couplingTarget>
+            <dataSource>
+                <reference xlink:href="#//CIMRecord/modelComponent[id='45ac2912-f98d-11e0-8d01-00163e9152a5']">
+                    <id>45ac2912-f98d-11e0-8d01-00163e9152a5</id>
+                    <name>MPIOM</name>
+                    <type>modelComponent</type>
+                    <version>1</version>
+                    <description>Reference to a modelComponent called MPIOM</description>
+                </reference>
+            </dataSource>
+        </couplingTarget>
+        <connection>
+        <!--this coupling has no connection source specified-->
+            <connectionTarget>
+                <dataSource>
+                    <reference xlink:href="#//CIMRecord/modelComponent[id='45ac2912-f98d-11e0-8d01-00163e9152a5']">
+                        <id>45ac2912-f98d-11e0-8d01-00163e9152a5</id>
+                        <name>TP04_arcgri</name>
+                        <type>componentProperty</type>
+                        <version>1</version>
+                        <description>Reference to a componentProperty called TP04_arcgri in a modelComponent called MPIOM</description>
+                    </reference>
+                </dataSource>
+            </connectionTarget>
+        </connection>
+    </input>
+    <input fullySpecified="false" purpose="ancillaryFile">
+        <description/>
+        <spatialRegridding>
+            <spatialRegriddingStandardMethod>conservative</spatialRegriddingStandardMethod>
+        </spatialRegridding>
+        <timeTransformation>
+            <mappingType open="true" value="Exact">
+                <controlledVocabulary>
+                    <name>mappingType</name>
+                    <server>http://proj.badc.rl.ac.uk/svn/metafor/cmip5q/trunk</server>
+                </controlledVocabulary>
+            </mappingType>
+        </timeTransformation>
+        <couplingSource>
+            <dataSource>
+                <reference xlink:href="#//CIMRecord/dataObject[id='be9a54b8-b15f-11e1-be09-00163e9152a5']">
+                    <id>be9a54b8-b15f-11e1-be09-00163e9152a5</id>
+                    <name>TP04_BEK</name>
+                    <type>dataObject</type>
+                    <version>1</version>
+                    <description>Reference to a dataObject called TP04_BEK</description>
+                </reference>
+            </dataSource>
+        </couplingSource>
+        <couplingTarget>
+            <dataSource>
+                <reference xlink:href="#//CIMRecord/modelComponent[id='45ac2912-f98d-11e0-8d01-00163e9152a5']">
+                    <id>45ac2912-f98d-11e0-8d01-00163e9152a5</id>
+                    <name>MPIOM</name>
+                    <type>modelComponent</type>
+                    <version>1</version>
+                    <description>Reference to a modelComponent called MPIOM</description>
+                </reference>
+            </dataSource>
+        </couplingTarget>
+        <connection>
+        <!--this coupling has no connection source specified-->
+            <connectionTarget>
+                <dataSource>
+                    <reference xlink:href="#//CIMRecord/modelComponent[id='45ac2912-f98d-11e0-8d01-00163e9152a5']">
+                        <id>45ac2912-f98d-11e0-8d01-00163e9152a5</id>
+                        <name>TP04_BEK</name>
+                        <type>componentProperty</type>
+                        <version>1</version>
+                        <description>Reference to a componentProperty called TP04_BEK in a modelComponent called MPIOM</description>
+                    </reference>
+                </dataSource>
+            </connectionTarget>
+        </connection>
+    </input>
+    <input fullySpecified="false" purpose="initialCondition">
+        <description/>
+        <spatialRegridding>
+            <spatialRegriddingStandardMethod>conservative</spatialRegriddingStandardMethod>
+        </spatialRegridding>
+        <timeTransformation>
+            <mappingType open="true" value="Exact">
+                <controlledVocabulary>
+                    <name>mappingType</name>
+                    <server>http://proj.badc.rl.ac.uk/svn/metafor/cmip5q/trunk</server>
+                </controlledVocabulary>
+            </mappingType>
+        </timeTransformation>
+        <couplingSource>
+            <dataSource>
+                <reference xlink:href="#//CIMRecord/dataObject[id='68e1daae-b160-11e1-a515-00163e9152a5']">
+                    <id>68e1daae-b160-11e1-a515-00163e9152a5</id>
+                    <name>TP04L40_INISAL</name>
+                    <type>dataObject</type>
+                    <version>1</version>
+                    <description>Reference to a dataObject called TP04L40_INISAL</description>
+                </reference>
+            </dataSource>
+        </couplingSource>
+        <couplingTarget>
+            <dataSource>
+                <reference xlink:href="#//CIMRecord/modelComponent[id='45ac2912-f98d-11e0-8d01-00163e9152a5']">
+                    <id>45ac2912-f98d-11e0-8d01-00163e9152a5</id>
+                    <name>MPIOM</name>
+                    <type>modelComponent</type>
+                    <version>1</version>
+                    <description>Reference to a modelComponent called MPIOM</description>
+                </reference>
+            </dataSource>
+        </couplingTarget>
+        <connection>
+        <!--this coupling has no connection source specified-->
+            <connectionTarget>
+                <dataSource>
+                    <reference xlink:href="#//CIMRecord/modelComponent[id='45ac2912-f98d-11e0-8d01-00163e9152a5']">
+                        <id>45ac2912-f98d-11e0-8d01-00163e9152a5</id>
+                        <name>TP04L40_INISAL</name>
+                        <type>componentProperty</type>
+                        <version>1</version>
+                        <description>Reference to a componentProperty called TP04L40_INISAL in a modelComponent called MPIOM</description>
+                    </reference>
+                </dataSource>
+            </connectionTarget>
+        </connection>
+    </input>
+    <input fullySpecified="false" purpose="initialCondition">
+        <description/>
+        <spatialRegridding>
+            <spatialRegriddingStandardMethod>conservative</spatialRegriddingStandardMethod>
+        </spatialRegridding>
+        <timeTransformation>
+            <mappingType open="true" value="Exact">
+                <controlledVocabulary>
+                    <name>mappingType</name>
+                    <server>http://proj.badc.rl.ac.uk/svn/metafor/cmip5q/trunk</server>
+                </controlledVocabulary>
+            </mappingType>
+        </timeTransformation>
+        <couplingSource>
+            <dataSource>
+                <reference xlink:href="#//CIMRecord/dataObject[id='ae030e5a-b160-11e1-aebc-00163e9152a5']">
+                    <id>ae030e5a-b160-11e1-aebc-00163e9152a5</id>
+                    <name>TP04L40_INITEM</name>
+                    <type>dataObject</type>
+                    <version>1</version>
+                    <description>Reference to a dataObject called TP04L40_INITEM</description>
+                </reference>
+            </dataSource>
+        </couplingSource>
+        <couplingTarget>
+            <dataSource>
+                <reference xlink:href="#//CIMRecord/modelComponent[id='45ac2912-f98d-11e0-8d01-00163e9152a5']">
+                    <id>45ac2912-f98d-11e0-8d01-00163e9152a5</id>
+                    <name>MPIOM</name>
+                    <type>modelComponent</type>
+                    <version>1</version>
+                    <description>Reference to a modelComponent called MPIOM</description>
+                </reference>
+            </dataSource>
+        </couplingTarget>
+        <connection>
+        <!--this coupling has no connection source specified-->
+            <connectionTarget>
+                <dataSource>
+                    <reference xlink:href="#//CIMRecord/modelComponent[id='45ac2912-f98d-11e0-8d01-00163e9152a5']">
+                        <id>45ac2912-f98d-11e0-8d01-00163e9152a5</id>
+                        <name>TP04L40_INITEMP</name>
+                        <type>componentProperty</type>
+                        <version>1</version>
+                        <description>Reference to a componentProperty called TP04L40_INITEMP in a modelComponent called MPIOM</description>
+                    </reference>
+                </dataSource>
+            </connectionTarget>
+        </connection>
+    </input>
+    <input fullySpecified="false" purpose="initialCondition">
+        <description/>
+        <spatialRegridding>
+            <spatialRegriddingStandardMethod>conservative</spatialRegriddingStandardMethod>
+        </spatialRegridding>
+        <timeTransformation>
+            <mappingType open="true" value="Exact">
+                <controlledVocabulary>
+                    <name>mappingType</name>
+                    <server>http://proj.badc.rl.ac.uk/svn/metafor/cmip5q/trunk</server>
+                </controlledVocabulary>
+            </mappingType>
+        </timeTransformation>
+        <couplingSource>
+            <dataSource>
+                <reference xlink:href="#//CIMRecord/dataObject[id='8c97c7ec-b160-11e1-9a84-00163e9152a5']">
+                    <id>8c97c7ec-b160-11e1-9a84-00163e9152a5</id>
+                    <name>TP04L40_SURSAL</name>
+                    <type>dataObject</type>
+                    <version>1</version>
+                    <description>Reference to a dataObject called TP04L40_SURSAL</description>
+                </reference>
+            </dataSource>
+        </couplingSource>
+        <couplingTarget>
+            <dataSource>
+                <reference xlink:href="#//CIMRecord/modelComponent[id='45ac2912-f98d-11e0-8d01-00163e9152a5']">
+                    <id>45ac2912-f98d-11e0-8d01-00163e9152a5</id>
+                    <name>MPIOM</name>
+                    <type>modelComponent</type>
+                    <version>1</version>
+                    <description>Reference to a modelComponent called MPIOM</description>
+                </reference>
+            </dataSource>
+        </couplingTarget>
+        <connection>
+        <!--this coupling has no connection source specified-->
+            <connectionTarget>
+                <dataSource>
+                    <reference xlink:href="#//CIMRecord/modelComponent[id='45ac2912-f98d-11e0-8d01-00163e9152a5']">
+                        <id>45ac2912-f98d-11e0-8d01-00163e9152a5</id>
+                        <name>TP04L40_SURSAL</name>
+                        <type>componentProperty</type>
+                        <version>1</version>
+                        <description>Reference to a componentProperty called TP04L40_SURSAL in a modelComponent called MPIOM</description>
+                    </reference>
+                </dataSource>
+            </connectionTarget>
+        </connection>
+    </input>
+    <input fullySpecified="false" purpose="ancillaryFile">
+        <description/>
+        <spatialRegridding>
+            <spatialRegriddingStandardMethod>conservative</spatialRegriddingStandardMethod>
+        </spatialRegridding>
+        <timeTransformation>
+            <mappingType open="true" value="Exact">
+                <controlledVocabulary>
+                    <name>mappingType</name>
+                    <server>http://proj.badc.rl.ac.uk/svn/metafor/cmip5q/trunk</server>
+                </controlledVocabulary>
+            </mappingType>
+        </timeTransformation>
+        <couplingSource>
+            <dataSource>
+                <reference xlink:href="#//CIMRecord/dataObject[id='a90a558a-b15f-11e1-9a84-00163e9152a5']">
+                    <id>a90a558a-b15f-11e1-9a84-00163e9152a5</id>
+                    <name>TP04_topo</name>
+                    <type>dataObject</type>
+                    <version>1</version>
+                    <description>Reference to a dataObject called TP04_topo</description>
+                </reference>
+            </dataSource>
+        </couplingSource>
+        <couplingTarget>
+            <dataSource>
+                <reference xlink:href="#//CIMRecord/modelComponent[id='45ac2912-f98d-11e0-8d01-00163e9152a5']">
+                    <id>45ac2912-f98d-11e0-8d01-00163e9152a5</id>
+                    <name>MPIOM</name>
+                    <type>modelComponent</type>
+                    <version>1</version>
+                    <description>Reference to a modelComponent called MPIOM</description>
+                </reference>
+            </dataSource>
+        </couplingTarget>
+        <connection>
+        <!--this coupling has no connection source specified-->
+            <connectionTarget>
+                <dataSource>
+                    <reference xlink:href="#//CIMRecord/modelComponent[id='45ac2912-f98d-11e0-8d01-00163e9152a5']">
+                        <id>45ac2912-f98d-11e0-8d01-00163e9152a5</id>
+                        <name>TP04_topo</name>
+                        <type>componentProperty</type>
+                        <version>1</version>
+                        <description>Reference to a componentProperty called TP04_topo in a modelComponent called MPIOM</description>
+                    </reference>
+                </dataSource>
+            </connectionTarget>
+        </connection>
+    </input>
+    <authorsList>
+        <list>J. Jungclaus, M.A. Giorgetta, C. Reick, S. Legutke, V. Brovkin, T. Crueger, M. Esch, K. Fieg, K. Glushak, V. Gayler, H. Haak, H.-D. Hollweg, S. Kinne, L. Kornblueh, D. Matei, T. Mauritsen, U. Mikolajewicz,  W. Mueller, D. Notz, T.Pohlmann, T. Raddatz, S. Rast, E. Roeckner, M. Salzmann, H. Schmidt, R. Schnur, J. Segschneider, K. Six, M. Stockhause, J. Wegner, H. Widmann, K.H. Wieners, M. Claussen, J. Marotzke, B. Stevens: &#13;
+CMIP5 simulations of the Max Planck Institute for Meteorology (MPI-M) based on the MPI-ESM-MR model: The decadal1960 experiment.&#13;
+        </list>
+    </authorsList>
+    <conformance>
+        <conformance conformant="true" type="via inputs">
+            <description/>
+            <requirement>
+                <reference xlink:href="#//CIMRecord/experiment[id='2cdef55e-48d8-11e0-8116-001de019e26d']">
+                    <id>2cdef55e-48d8-11e0-8116-001de019e26d</id>
+                    <name>ic.007</name>
+                    <type>NumericalRequirement</type>
+                    <version>1</version>
+                    <description>Reference to a NumericalRequirement called ic.007 in a experiment called 1.1 decadal</description>
+                </reference>
+            </requirement>
+        </conformance>
+    </conformance>
+    <conformance>
+        <conformance conformant="true" type="via inputs">
+            <description/>
+            <requirement>
+                <reference xlink:href="#//CIMRecord/experiment[id='2cdef55e-48d8-11e0-8116-001de019e26d']">
+                    <id>2cdef55e-48d8-11e0-8116-001de019e26d</id>
+                    <name>bc.011</name>
+                    <type>NumericalRequirement</type>
+                    <version>1</version>
+                    <description>Reference to a NumericalRequirement called bc.011 in a experiment called 1.1 decadal</description>
+                </reference>
+            </requirement>
+        </conformance>
+    </conformance>
+    <conformance>
+        <conformance conformant="true" type="via inputs">
+            <description/>
+            <requirement>
+                <reference xlink:href="#//CIMRecord/experiment[id='2cdef55e-48d8-11e0-8116-001de019e26d']">
+                    <id>2cdef55e-48d8-11e0-8116-001de019e26d</id>
+                    <name>bc.012</name>
+                    <type>NumericalRequirement</type>
+                    <version>1</version>
+                    <description>Reference to a NumericalRequirement called bc.012 in a experiment called 1.1 decadal</description>
+                </reference>
+            </requirement>
+        </conformance>
+    </conformance>
+    <conformance>
+        <conformance conformant="true" type="via inputs">
+            <description/>
+            <requirement>
+                <reference xlink:href="#//CIMRecord/experiment[id='2cdef55e-48d8-11e0-8116-001de019e26d']">
+                    <id>2cdef55e-48d8-11e0-8116-001de019e26d</id>
+                    <name>bc.013</name>
+                    <type>NumericalRequirement</type>
+                    <version>1</version>
+                    <description>Reference to a NumericalRequirement called bc.013 in a experiment called 1.1 decadal</description>
+                </reference>
+            </requirement>
+        </conformance>
+    </conformance>
+    <conformance>
+        <conformance conformant="true" type="via inputs">
+            <description/>
+            <requirement>
+                <reference xlink:href="#//CIMRecord/experiment[id='2cdef55e-48d8-11e0-8116-001de019e26d']">
+                    <id>2cdef55e-48d8-11e0-8116-001de019e26d</id>
+                    <name>bc.014</name>
+                    <type>NumericalRequirement</type>
+                    <version>1</version>
+                    <description>Reference to a NumericalRequirement called bc.014 in a experiment called 1.1 decadal</description>
+                </reference>
+            </requirement>
+        </conformance>
+    </conformance>
+    <conformance>
+        <conformance conformant="true" type="via inputs">
+            <description/>
+            <requirement>
+                <reference xlink:href="#//CIMRecord/experiment[id='2cdef55e-48d8-11e0-8116-001de019e26d']">
+                    <id>2cdef55e-48d8-11e0-8116-001de019e26d</id>
+                    <name>bc.015</name>
+                    <type>NumericalRequirement</type>
+                    <version>1</version>
+                    <description>Reference to a NumericalRequirement called bc.015 in a experiment called 1.1 decadal</description>
+                </reference>
+            </requirement>
+        </conformance>
+    </conformance>
+    <conformance>
+        <conformance conformant="true" type="via inputs">
+            <description/>
+            <requirement>
+                <reference xlink:href="#//CIMRecord/experiment[id='2cdef55e-48d8-11e0-8116-001de019e26d']">
+                    <id>2cdef55e-48d8-11e0-8116-001de019e26d</id>
+                    <name>bc.016</name>
+                    <type>NumericalRequirement</type>
+                    <version>1</version>
+                    <description>Reference to a NumericalRequirement called bc.016 in a experiment called 1.1 decadal</description>
+                </reference>
+            </requirement>
+        </conformance>
+    </conformance>
+    <conformance>
+        <conformance conformant="true" type="via inputs">
+            <description/>
+            <requirement>
+                <reference xlink:href="#//CIMRecord/experiment[id='2cdef55e-48d8-11e0-8116-001de019e26d']">
+                    <id>2cdef55e-48d8-11e0-8116-001de019e26d</id>
+                    <name>bc.017</name>
+                    <type>NumericalRequirement</type>
+                    <version>1</version>
+                    <description>Reference to a NumericalRequirement called bc.017 in a experiment called 1.1 decadal</description>
+                </reference>
+            </requirement>
+        </conformance>
+    </conformance>
+    <conformance>
+        <conformance conformant="true" type="standard config">
+            <description/>
+            <requirement>
+                <reference xlink:href="#//CIMRecord/experiment[id='2cdef55e-48d8-11e0-8116-001de019e26d']">
+                    <id>2cdef55e-48d8-11e0-8116-001de019e26d</id>
+                    <name>bc.021</name>
+                    <type>NumericalRequirement</type>
+                    <version>1</version>
+                    <description>Reference to a NumericalRequirement called bc.021 in a experiment called 1.1 decadal</description>
+                </reference>
+            </requirement>
+        </conformance>
+    </conformance>
+    <conformance>
+        <conformance conformant="true" type="via inputs">
+            <description/>
+            <requirement>
+                <reference xlink:href="#//CIMRecord/experiment[id='2cdef55e-48d8-11e0-8116-001de019e26d']">
+                    <id>2cdef55e-48d8-11e0-8116-001de019e26d</id>
+                    <name>bc.022</name>
+                    <type>NumericalRequirement</type>
+                    <version>1</version>
+                    <description>Reference to a NumericalRequirement called bc.022 in a experiment called 1.1 decadal</description>
+                </reference>
+            </requirement>
+        </conformance>
+    </conformance>
+    <conformance>
+        <conformance conformant="true" type="via inputs">
+            <description/>
+            <requirement>
+                <reference xlink:href="#//CIMRecord/experiment[id='2cdef55e-48d8-11e0-8116-001de019e26d']">
+                    <id>2cdef55e-48d8-11e0-8116-001de019e26d</id>
+                    <name>bc.057</name>
+                    <type>NumericalRequirement</type>
+                    <version>1</version>
+                    <description>Reference to a NumericalRequirement called bc.057 in a experiment called 1.1 decadal</description>
+                </reference>
+            </requirement>
+        </conformance>
+    </conformance>
+    <conformance>
+        <conformance conformant="true" type="via inputs">
+            <description/>
+            <requirement>
+                <reference xlink:href="#//CIMRecord/experiment[id='2cdef55e-48d8-11e0-8116-001de019e26d']">
+                    <id>2cdef55e-48d8-11e0-8116-001de019e26d</id>
+                    <name>bc.058</name>
+                    <type>NumericalRequirement</type>
+                    <version>1</version>
+                    <description>Reference to a NumericalRequirement called bc.058 in a experiment called 1.1 decadal</description>
+                </reference>
+            </requirement>
+        </conformance>
+    </conformance>
+    <conformance>
+        <conformance conformant="true" type="via inputs">
+            <description/>
+            <requirement>
+                <reference xlink:href="#//CIMRecord/experiment[id='2cdef55e-48d8-11e0-8116-001de019e26d']">
+                    <id>2cdef55e-48d8-11e0-8116-001de019e26d</id>
+                    <name>bc.025</name>
+                    <type>NumericalRequirement</type>
+                    <version>1</version>
+                    <description>Reference to a NumericalRequirement called bc.025 in a experiment called 1.1 decadal</description>
+                </reference>
+            </requirement>
+        </conformance>
+    </conformance>
+    <conformance>
+        <conformance conformant="true" type="via inputs">
+            <description/>
+            <requirement>
+                <reference xlink:href="#//CIMRecord/experiment[id='2cdef55e-48d8-11e0-8116-001de019e26d']">
+                    <id>2cdef55e-48d8-11e0-8116-001de019e26d</id>
+                    <name>bc.026</name>
+                    <type>NumericalRequirement</type>
+                    <version>1</version>
+                    <description>Reference to a NumericalRequirement called bc.026 in a experiment called 1.1 decadal</description>
+                </reference>
+            </requirement>
+        </conformance>
+    </conformance>
+    <conformance>
+        <conformance conformant="true" type="via inputs">
+            <description/>
+            <requirement>
+                <reference xlink:href="#//CIMRecord/experiment[id='2cdef55e-48d8-11e0-8116-001de019e26d']">
+                    <id>2cdef55e-48d8-11e0-8116-001de019e26d</id>
+                    <name>bc.027</name>
+                    <type>NumericalRequirement</type>
+                    <version>1</version>
+                    <description>Reference to a NumericalRequirement called bc.027 in a experiment called 1.1 decadal</description>
+                </reference>
+            </requirement>
+        </conformance>
+    </conformance>
+    <conformance>
+        <conformance conformant="true" type="via inputs">
+            <description/>
+            <requirement>
+                <reference xlink:href="#//CIMRecord/experiment[id='2cdef55e-48d8-11e0-8116-001de019e26d']">
+                    <id>2cdef55e-48d8-11e0-8116-001de019e26d</id>
+                    <name>bc.028</name>
+                    <type>NumericalRequirement</type>
+                    <version>1</version>
+                    <description>Reference to a NumericalRequirement called bc.028 in a experiment called 1.1 decadal</description>
+                </reference>
+            </requirement>
+        </conformance>
+    </conformance>
+    <conformance>
+        <conformance conformant="true" type="via inputs">
+            <description/>
+            <requirement>
+                <reference xlink:href="#//CIMRecord/experiment[id='2cdef55e-48d8-11e0-8116-001de019e26d']">
+                    <id>2cdef55e-48d8-11e0-8116-001de019e26d</id>
+                    <name>bc.033</name>
+                    <type>NumericalRequirement</type>
+                    <version>1</version>
+                    <description>Reference to a NumericalRequirement called bc.033 in a experiment called 1.1 decadal</description>
+                </reference>
+            </requirement>
+        </conformance>
+    </conformance>
+    <conformance>
+        <conformance conformant="true" type="via inputs">
+            <description/>
+            <requirement>
+                <reference xlink:href="#//CIMRecord/experiment[id='2cdef55e-48d8-11e0-8116-001de019e26d']">
+                    <id>2cdef55e-48d8-11e0-8116-001de019e26d</id>
+                    <name>bc.034</name>
+                    <type>NumericalRequirement</type>
+                    <version>1</version>
+                    <description>Reference to a NumericalRequirement called bc.034 in a experiment called 1.1 decadal</description>
+                </reference>
+            </requirement>
+        </conformance>
+    </conformance>
+    <conformance>
+        <conformance conformant="true" type="standard config">
+            <description/>
+            <requirement>
+                <reference xlink:href="#//CIMRecord/experiment[id='2cdef55e-48d8-11e0-8116-001de019e26d']">
+                    <id>2cdef55e-48d8-11e0-8116-001de019e26d</id>
+                    <name>stc.001</name>
+                    <type>NumericalRequirement</type>
+                    <version>1</version>
+                    <description>Reference to a NumericalRequirement called stc.001 in a experiment called 1.1 decadal</description>
+                </reference>
+            </requirement>
+        </conformance>
+    </conformance>
+    <deployment>
+        <description>The resources(deployment) on which this simulation ran</description>
+        <platform>
+            <reference xlink:href="#//CIMRecord/platform[id='fee3df00-dab8-11df-8fb4-00163e9152a5']">
+                <id>fee3df00-dab8-11df-8fb4-00163e9152a5</id>
+                <name>Blizzard</name>
+                <type>platform</type>
+                <version>2</version>
+                <description>Reference to a platform called Blizzard</description>
+            </reference>
+        </platform>
+    </deployment>
+    <dateRange>
+        <closedDateRange>
+            <duration>P10Y</duration>
+            <startDate>1961-01-01T00:00:00Z</startDate>
+        </closedDateRange>
+    </dateRange>
+    <model>
+        <reference xlink:href="#//CIMRecord/modelComponent[id='1113561c-f98d-11e0-8d01-00163e9152a5']">
+            <id>1113561c-f98d-11e0-8d01-00163e9152a5</id>
+            <name>MPI-ESM-MR</name>
+            <type>modelComponent</type>
+            <version>4</version>
+            <description>Reference to a modelComponent called MPI-ESM-MR</description>
+        </reference>
+    </model>
+    <documentID>026c131e-3b7e-11e1-8bd6-00163e9152a5</documentID>
+    <documentVersion>4</documentVersion>
+    <externalID open="true" value="MPI-M_MPI-ESM-MR_decadal1960_r1i1p1_1960">
+        <standard>
+            <name>QN_DRS</name>
+            <description>
+                      The QN_DRS value allows mapping from data files to metadata
+                      being exported from the metadata questionnaire, and contains
+                      the institution name, the model name on which the simulation
+                      was run, the experiment name to which the simulation
+                      conforms, the simulation level base rip value, and finally
+                      the given start year for the simulation. The format of the string will thus be:
+                      institute_model_experiment_rip_startyear. Also note, that in particular cases,
+                      i.e. decadal and noVolc exps, the start date and expdate
+                      may differ - this will occur in those cases where the simulation
+                      start date is 1st january but still refers to an experiment
+                      for the year before. - (see cmip5 experiment design document)
+            </description>
+        </standard>
+    </externalID>
+    <externalID open="true" value="r1i1p1">
+        <standard>
+            <name>DRS_CMIP5_ensembleType</name>
+        </standard>
+    </externalID>
+    <documentAuthor>
+        <gmd:individualName>
+            <gco:CharacterString>Metafor Questionnaire</gco:CharacterString>
+        </gmd:individualName>
+        <gmd:role>
+            <gmd:CI_RoleCode codeList="" codeListValue="documentAuthor"/>
+        </gmd:role>
+    </documentAuthor>
+    <documentCreationDate>2012-08-20T07:24:50.485873</documentCreationDate>
+    <documentGenealogy>
+        <relationship>
+            <simulationRelationship direction="toTarget" type="other">
+                <description/>
+                <target>
+                    <reference xlink:href="#//CIMRecord/simulation[id='1e734654-e516-11e0-a561-00163e9152a5']">
+                        <id>1e734654-e516-11e0-a561-00163e9152a5</id>
+                        <name>decadal1960-LR</name>
+                        <type>simulation</type>
+                        <version>6</version>
+                        <description>Reference to a simulation called decadal1960-LR</description>
+                    </reference>
+                </target>
+            </simulationRelationship>
+        </relationship>
+    </documentGenealogy>
+</simulationRun>
+  

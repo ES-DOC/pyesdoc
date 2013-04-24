@@ -1,0 +1,187 @@
+
+<cIM_Quality xmlns="http://www.purl.org/org/esmetadata/cim/1.5/schemas" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:gco="http://www.isotc211.org/2005/gco" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:gmd="http://www.isotc211.org/2005/gmd" xmlns:geonet="http://www.fao.org/geonetwork" xmlns:csw="http://www.opengis.net/cat/csw/2.0.2" xsi:schemaLocation="http://www.purl.org/org/esmetadata/cim/1.5/schemas ">
+    <scope>
+        <gmd:level/>
+    </scope>
+    <report>
+        <gmd:nameOfMeasure>
+            <gco:CharacterString>CMIP5 Quality Control Data Level 2</gco:CharacterString>
+        </gmd:nameOfMeasure>
+        <gmd:measureDescription>
+            <gco:CharacterString>WDCC Conformance and Subjective Controls: Automated technical quality checks of data subjective data and metadata controls</gco:CharacterString>
+        </gmd:measureDescription>
+        <gmd:evaluationMethodDescription>
+            <gco:CharacterString>
+evaluationMethodType=indirect
+
+Quality Control Levels in CMIP5:
+* Level 0: Spot checks on selected data
+* Level 1: CMOR2 and ESG publisher conformance checks
+* Level 2: Data consistency checks
+* Level 3: Double- and cross-checks of data and metadata and data publication as DataCite DOI
+
+Level 2
+1. File consistency
+  a. in the end files will have the right number of records. The number is given in the metadata.
+  b. strictly regular time steps (ESG checker allows for time gaps)
+  c. Metadata consistency (check of consistency between metadata of the standard_output table and the metadata of the file headers)
+
+2. Physical properties of variables
+  time series are calculated for: min, max, globally weighted mean (in case of no _FillValue), area weighted mean (in case of existing _FillValue; reasonable, e.g., for temperature of snow), standard deviation of the globally weighted mean.
+            </gco:CharacterString>
+        </gmd:evaluationMethodDescription>
+        <gmd:dateTime>
+            <gco:DateTime>2011-05-01T12:00:00</gco:DateTime>
+        </gmd:dateTime>
+        <gmd:result xlink:href="http://cera-www.dkrz.de/WDCC/CMIP5/QCResult.jsp?experiment=cmip5/output1/MPI-M/MPI-ESM-LR/noVolc1990" xlink:title="QC Level 2 Results">
+            <gmd:DQ_ConformanceResult>
+                <gmd:specification xlink:href="http://cmip5qc.wdc-climate.de" xlink:title="The CMIP5/AR5 Model Data Quality Control">
+                    <gmd:CI_Citation>
+                        <gmd:title>
+                            <gco:CharacterString>The CMIP5/AR5 Model Data Quality Control Level 2 (http://cmip5qc.wdc-climate.de) for publication unit "cmip5.output1.MPI-M.MPI-ESM-LR.noVolc1990.day.ocean.day.r4i1p1.v20121114"</gco:CharacterString>
+                        </gmd:title>
+                        <gmd:date>
+                            <gmd:CI_Date>
+                                <gmd:date>
+                                    <gco:Date>2012-11-16</gco:Date>
+                                </gmd:date>
+                                <gmd:dateType/>
+                            </gmd:CI_Date>
+                        </gmd:date>
+                    </gmd:CI_Citation>
+                </gmd:specification>
+                <gmd:explanation>
+                    <gco:CharacterString>Quality Control results are accessible at: http://cera-www.dkrz.de/WDCC/CMIP5/QCResult.jsp?experiment=cmip5/output1/MPI-M/MPI-ESM-LR/noVolc1990 . nc files are the QC result files for every variable, the log file summarizes the QC results for this experiment. If available, the pdf file visualizes the global timeseries for statistical values and an error code for every variable of the experiment, relying on the QC result files.
+Used version of checker tool: "QC Tool in svn revision: 4608 by author: heinz-dieter on date: 2012-05-14 10:48:51 +0200 (Mon, 14 May 2012)".
+
+QC Level2 assigned at 2012-11-19 09:12:41 UTC: no exceptions for v20121114
+                    </gco:CharacterString>
+                </gmd:explanation>
+                <gmd:pass>
+                    <gco:Boolean>1</gco:Boolean>
+                </gmd:pass>
+            </gmd:DQ_ConformanceResult>
+        </gmd:result>
+        <evaluator>
+            <gmd:individualName>
+                <gco:CharacterString>stockhause@dkrz.de</gco:CharacterString>
+            </gmd:individualName>
+            <gmd:organisationName>
+                <gco:CharacterString/>
+            </gmd:organisationName>
+            <gmd:role>
+                <gmd:CI_RoleCode codeList="http://www.isotc211.org/2005/resources/CodeList/gmxCodelists.xml#CI_RoleCode" codeListValue="pointofContact"/>
+            </gmd:role>
+        </evaluator>
+        <measure>
+            <measureIdentification>
+                <gmd:code>
+                    <gco:CharacterString>cmip5-qc-2d</gco:CharacterString>
+                </gmd:code>
+            </measureIdentification>
+        </measure>
+    </report>
+    <report>
+        <gmd:nameOfMeasure>
+            <gco:CharacterString>CMIP5 Quality Control Data Level 3</gco:CharacterString>
+        </gmd:nameOfMeasure>
+        <gmd:measureDescription>
+            <gco:CharacterString>DOI Data Publication</gco:CharacterString>
+        </gmd:measureDescription>
+        <gmd:evaluationMethodDescription>
+            <gco:CharacterString>
+evaluationMethodType=indirect
+
+Quality Control Levels in CMIP5:
+    * Level 0: Spot checks on selected data
+    * Level 1: CMOR2 and ESG publisher conformance checks
+    * Level 2: Data consistency checks
+    * Level 3: Double- and cross-checks of data and metadata and data publication as DataCite DOI
+
+Level 3 / DataCite DOI Data Publication
+1. Technical Quality Assurance
+    a. metadata consistency check (TDS, CIM, CERA2)
+    b. data accessiblitiy at CMIP5 gateways at PCMDI, BADC, DKRZ
+2. Scientific Quality Assurance
+    Documantation of method and results of quality checks performed by data creator
+3. Data Publication
+  a. assignment of unique identifier DOI via DataCite API
+  b. metadata persistence
+  c. data persistence accessiblility via DOI resolver
+            </gco:CharacterString>
+        </gmd:evaluationMethodDescription>
+        <gmd:dateTime>
+            <gco:DateTime>2011-05-01T12:00:00</gco:DateTime>
+        </gmd:dateTime>
+        <gmd:result xlink:href="http://dx.doi.org/10.1594/WDCC/CMIP5.MXELv9" xlink:title="DOI:10.1594/WDCC/CMIP5.MXELv9">
+            <gmd:DQ_ConformanceResult>
+                <gmd:specification xlink:href="http://cmip5qc.wdc-climate.de" xlink:title="The CMIP5/AR5 Model Data Quality Control">
+                    <gmd:CI_Citation>
+                        <gmd:title>
+                            <gco:CharacterString>The CMIP5/AR5 Model Data Quality Control Level 3 / DOI data publication (http://cmip5qc.wdc-climate.de) for publication unit "cmip5.output1.MPI-M.MPI-ESM-LR.noVolc1990.day.ocean.day.r4i1p1.v20121114"</gco:CharacterString>
+                        </gmd:title>
+                        <gmd:date>
+                            <gmd:CI_Date>
+                                <gmd:date>
+                                    <gco:Date>2012-11-27</gco:Date>
+                                </gmd:date>
+                                <gmd:dateType/>
+                            </gmd:CI_Date>
+                        </gmd:date>
+                    </gmd:CI_Citation>
+                </gmd:specification>
+                <gmd:explanation>
+                    <gco:CharacterString>The quality results for this ESG publication unit are part of the quality results for the related experiment:  Quality control checks level 3 / DOI data publication according to DataCite regulations (http://datacite.org) for experiment "cmip5 output1 MPI-M MPI-ESM-LR noVolc1990"
+
+Quality specification:
+[CMIP5:QualityLevel=3] [CMIP5:QualityFlag=approved by author] according to CMIP5 quality control rules http://cmip5qc.wdc-climate.de [CMIP5:DateOfQualityControl2=2012-11-16] [CMIP5:QualityControl2Comment=QC Level2 assigned at 2012-11-19 09:12:41 UTC: no exceptions for v20121114] [CMIP5:DateOfQualityControl3=2012-11-26] [CMIP5:CimMetadata=TDS CIM cross-checks passed - only 3 of 10 ensembles described in CIM]&#13;
+
+[CMIP5:TQA=done according to criteria for QCL3 defined at http://redmine.dkrz.de/collaboration/projects/cmip5-qc/wiki/Qc_l3#Criteria-for-QC-L3DOI-publication ]&#13;
+&#13;
+
+
+Data Citation:
+Jungclaus,Johann; Giorgetta,Marco; Reick,Christian; Legutke,Stephanie; Brovkin,Victor; Crueger,Traute; Esch,Monika; Glushak,Ksenia; Gayler,Veronika; Haak,Helmuth; Hollweg,Heinz-Dieter; Kinne,Stefan; Kornblueh,Luis; Matei,Daniela; Mauritsen,Thorsten; Mikolajewicz,Uwe; M&#252;ller,Wolfgang; Notz,Dirk; Raddatz,Thomas; Rast,Sebastian; Roeckner,Erich; Salzmann,Marc; Schmidt,Hauke; Schnur,Reiner; Segschneider,Joachim; Six,Katharina; Stockhause,Martina; Wegner,Joerg; Wieners,Karl-Hermann; Claussen,Martin; Marotzke,Jochem; Stevens,Bjorn (2012): CMIP5 simulations of the Max Planck Institute for Meteorology (MPI-M) based on the MPI-ESM-LR model: The noVolc1990 experiment, served by ESGF. World Data Center for Climate. DOI:10.1594/WDCC/CMIP5.MXELv9. http://dx.doi.org/10.1594/WDCC/CMIP5.MXELv9
+                    </gco:CharacterString>
+                </gmd:explanation>
+                <gmd:pass>
+                    <gco:Boolean>1</gco:Boolean>
+                </gmd:pass>
+            </gmd:DQ_ConformanceResult>
+        </gmd:result>
+        <evaluator>
+            <gmd:individualName>
+                <gco:CharacterString>stockhause@dkrz.de</gco:CharacterString>
+            </gmd:individualName>
+            <gmd:organisationName>
+                <gco:CharacterString/>
+            </gmd:organisationName>
+            <gmd:role>
+                <gmd:CI_RoleCode codeList="http://www.isotc211.org/2005/resources/CodeList/gmxCodelists.xml#CI_RoleCode" codeListValue="pointofContact"/>
+            </gmd:role>
+        </evaluator>
+        <measure>
+            <measureIdentification>
+                <gmd:code>
+                    <gco:CharacterString>cmip5-qc-3</gco:CharacterString>
+                </gmd:code>
+            </measureIdentification>
+        </measure>
+    </report>
+    <documentID>efac81b8-38ad-11e2-af19-0010185b3f28</documentID>
+    <documentVersion>2</documentVersion>
+    <externalID value="cmip5.output1.MPI-M.MPI-ESM-LR.noVolc1990.day.ocean.day.r4i1p1.v20121114" open="true"/>
+    <documentCreationDate>2012-11-27T16:17:27</documentCreationDate>
+    <documentGenealogy>
+        <relationship>
+            <documentRelationship direction="toTarget" type="other">
+                <target>
+                    <reference>
+                        <externalID open="true" value="cmip5.output1.MPI-M.MPI-ESM-LR.noVolc1990"/>
+                        <description>quality document of related experiment</description>
+                    </reference>
+                </target>
+            </documentRelationship>
+        </relationship>
+    </documentGenealogy>
+</cIM_Quality>

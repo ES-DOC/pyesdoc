@@ -1,0 +1,83 @@
+<platform xmlns="http://www.purl.org/org/esmetadata/cim/1.5/schemas" xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:gco="http://www.isotc211.org/2005/gco" xmlns:gmd="http://www.isotc211.org/2005/gmd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <shortName>IBM Power 6_Other</shortName>
+    <longName>Machine IBM Power 6 and compiler Other</longName>
+    <contact>
+      <!--responsibleParty uri :: 8baaf006-d3a5-11df-837f-00163e9152a5-->
+        <gmd:organisationName>
+            <gco:CharacterString>UK Met Office Hadley Centre</gco:CharacterString>
+        </gmd:organisationName>
+        <gmd:contactInfo>
+            <gmd:CI_Contact>
+                <gmd:address>
+                    <gmd:CI_Address>
+                        <gmd:deliveryPoint>
+                            <gco:CharacterString/>
+                        </gmd:deliveryPoint>
+                        <gmd:electronicMailAddress>
+                            <gco:CharacterString/>
+                        </gmd:electronicMailAddress>
+                    </gmd:CI_Address>
+                </gmd:address>
+                <gmd:onlineResource>
+                    <gmd:CI_OnlineResource>
+                        <gmd:linkage>
+                            <gmd:URL/>
+                        </gmd:linkage>
+                    </gmd:CI_OnlineResource>
+                </gmd:onlineResource>
+            </gmd:CI_Contact>
+        </gmd:contactInfo>
+        <gmd:role>
+            <gmd:CI_RoleCode codeList="" codeListValue="contact"/>
+        </gmd:role>
+        <abbreviation>MOHC</abbreviation>
+    </contact>
+    <unit>
+        <machine>
+            <machineName>IBM Power 6</machineName>
+            <machineSystem>Parallel</machineSystem>
+            <machineOperatingSystem open="true" value="AIX">
+                <controlledVocabulary>
+                    <name>machineOperatingSystem</name>
+                    <server>http://proj.badc.rl.ac.uk/svn/metafor/cmip5q/trunk</server>
+                </controlledVocabulary>
+            </machineOperatingSystem>
+            <machineVendor open="true" value="IBM">
+                <controlledVocabulary>
+                    <name>machineVendor</name>
+                    <server>http://proj.badc.rl.ac.uk/svn/metafor/cmip5q/trunk</server>
+                </controlledVocabulary>
+            </machineVendor>
+            <machineInterconnect open="true" value="Infiniband">
+                <controlledVocabulary>
+                    <name>machineInterconnect</name>
+                    <server>http://proj.badc.rl.ac.uk/svn/metafor/cmip5q/trunk</server>
+                </controlledVocabulary>
+            </machineInterconnect>
+            <machineMaximumProcessors>2</machineMaximumProcessors>
+            <machineCoresPerProcessor>32</machineCoresPerProcessor>
+            <machineProcessorType open="true" value="Other">
+                <controlledVocabulary>
+                    <name>machineProcessorType</name>
+                    <server>http://proj.badc.rl.ac.uk/svn/metafor/cmip5q/trunk</server>
+                </controlledVocabulary>
+            </machineProcessorType>
+        </machine>
+        <compiler>
+            <compilerName>Other</compilerName>
+            <compilerVersion>12.1.0.0</compilerVersion>
+        </compiler>
+    </unit>
+    <documentID>b765775a-e2ac-11df-9efb-00163e9152a5</documentID>
+    <documentVersion>1</documentVersion>
+    <documentAuthor>
+        <gmd:individualName>
+            <gco:CharacterString>Metafor Questionnaire</gco:CharacterString>
+        </gmd:individualName>
+        <gmd:role>
+            <gmd:CI_RoleCode codeList="" codeListValue="documentAuthor"/>
+        </gmd:role>
+    </documentAuthor>
+    <documentCreationDate>2012-03-01T13:55:56.232228</documentCreationDate>
+</platform>
+  

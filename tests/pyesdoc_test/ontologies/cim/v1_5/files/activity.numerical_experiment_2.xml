@@ -1,0 +1,54 @@
+<numericalExperiment xmlns="http://www.purl.org/org/esmetadata/cim/1.5/schemas" xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:gco="http://www.isotc211.org/2005/gco" xmlns:gmd="http://www.isotc211.org/2005/gmd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <rationale>Diagnostic experiment for understanding the long-term simulations.
+        Gregory experiment to diagnose slow climate system response to 4X[CO2]
+        Perturbation to experiments 6.2a and 6.2b with climate system allowed to respond
+    </rationale>
+    <shortName>abrupt4xCO2</shortName>
+    <longName>Abrupt 4XCO2</longName>
+    <description>Impose an instantaneous quadrupling of CO2, then hold fixed.</description>
+    <experimentID>6.3</experimentID>
+    <calendar>
+        <perpetualPeriod/>
+    </calendar>
+    <numericalRequirement>
+        <initialCondition>
+            <id>ic.006</id>
+            <name>6.3.ic</name>
+            <description>Initial conditions are from a January in experiment 3.1_piControl</description>
+        </initialCondition>
+    </numericalRequirement>
+    <numericalRequirement>
+        <boundaryCondition>
+            <id>bc.056</id>
+            <name>6.3.bc.4X_CO2_conc</name>
+            <description>Prescribed concentration of well mixed Gas: CO2
+                     is quadruple of 3.1_piControl concentration
+            </description>
+        </boundaryCondition>
+    </numericalRequirement>
+    <numericalRequirement>
+        <spatioTemporalConstraint>
+            <id>stc.037</id>
+            <name>6.3.stc.1850_150yr</name>
+            <description>Begin in 1850 and run for 150 years</description>
+            <requiredDuration>
+                <closedDateRange>
+                    <duration>P150Y</duration>
+                    <endDate>1850-12-30T00:00:00Z</endDate>
+                    <startDate>1850-01-01T00:00:00Z</startDate>
+                </closedDateRange>
+            </requiredDuration>
+        </spatioTemporalConstraint>
+    </numericalRequirement>
+    <documentID>a0d3a554-d3a5-11df-837f-00163e9152a5</documentID>
+    <documentVersion>1</documentVersion>
+    <documentAuthor>
+        <gmd:individualName>
+            <gco:CharacterString>Metafor Questionnaire</gco:CharacterString>
+        </gmd:individualName>
+        <gmd:role>
+            <gmd:CI_RoleCode codeList="" codeListValue="documentAuthor"/>
+        </gmd:role>
+    </documentAuthor>
+    <documentCreationDate>2013-01-14T04:16:13.835697</documentCreationDate>
+</numericalExperiment>

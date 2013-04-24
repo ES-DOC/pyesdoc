@@ -1,0 +1,70 @@
+
+<numericalExperiment xmlns="http://www.purl.org/org/esmetadata/cim/1.5/schemas" xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:gco="http://www.isotc211.org/2005/gco" xmlns:gmd="http://www.isotc211.org/2005/gmd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <rationale>Mid-Holocene. Compare paleodata with the model response to known orbital forcing
+		changes in greenhouse gas concentrations.
+    </rationale>
+    <shortName>midHolocene</shortName>
+    <longName>mid-Holocene</longName>
+    <description>Consistent with PMIP (Paleo Model Intercomparison Project) specifications. Impose
+		Mid-Holocene (6 kyrs ago) conditions including Orbital parameters and Atmospheric
+		concentrations of well-mixed greenhouse gasses.
+    </description>
+    <experimentID>3.4</experimentID>
+    <calendar>
+        <perpetualPeriod/>
+    </calendar>
+    <numericalRequirement>
+        <initialCondition>
+            <id>ic.001</id>
+            <name>3.4.ic</name>
+            <description>A description of initial condition for the control run</description>
+        </initialCondition>
+    </numericalRequirement>
+    <numericalRequirement>
+        <boundaryCondition>
+            <id>bc.069</id>
+            <name>3.4.bc.MH_orb</name>
+            <description>Impose Mid-Holocene orbital parameter conditions</description>
+        </boundaryCondition>
+    </numericalRequirement>
+    <numericalRequirement>
+        <boundaryCondition>
+            <id>bc.070</id>
+            <name>3.4.bc.MH_wmg</name>
+            <description>Impose Mid-Holocene conditions of well-mixed gases</description>
+        </boundaryCondition>
+    </numericalRequirement>
+    <numericalRequirement>
+        <boundaryCondition>
+            <id>bc.071</id>
+            <name>3.4.bc.MH_solar</name>
+            <description>Impose Mid-Holocene solar forcing</description>
+        </boundaryCondition>
+    </numericalRequirement>
+    <numericalRequirement>
+        <spatioTemporalConstraint>
+            <id>stc.028</id>
+            <name>3.4.stc.4000_100yr</name>
+            <description>Begin around 4000 BC and run for 100 years</description>
+            <requiredDuration>
+                <closedDateRange>
+                    <duration>P100Y</duration>
+                    <endDate>4000-01-01T00:00:00Z</endDate>
+                    <startDate>4000-01-01T00:00:00Z</startDate>
+                </closedDateRange>
+            </requiredDuration>
+        </spatioTemporalConstraint>
+    </numericalRequirement>
+    <documentID>aadc187e-d3a5-11df-837f-00163e9152a5</documentID>
+    <documentVersion>1</documentVersion>
+    <documentAuthor>
+        <gmd:individualName>
+            <gco:CharacterString>Metafor Questionnaire</gco:CharacterString>
+        </gmd:individualName>
+        <gmd:role>
+            <gmd:CI_RoleCode codeList="" codeListValue="documentAuthor"/>
+        </gmd:role>
+    </documentAuthor>
+    <documentCreationDate>2013-01-14T00:13:12.420720</documentCreationDate>
+</numericalExperiment>
+  

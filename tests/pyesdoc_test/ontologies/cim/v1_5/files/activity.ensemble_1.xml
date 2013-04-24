@@ -1,0 +1,279 @@
+<ensemble xmlns="http://www.purl.org/org/esmetadata/cim/1.5/schemas" xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:gco="http://www.isotc211.org/2005/gco" xmlns:gmd="http://www.isotc211.org/2005/gmd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <responsibleParty>
+      <!--responsibleParty uri :: 8bacfc20-d3a5-11df-837f-00163e9152a5-->
+        <gmd:organisationName>
+            <gco:CharacterString>NOAA Geophysical Fluid Dynamics Laboratory</gco:CharacterString>
+        </gmd:organisationName>
+        <gmd:contactInfo>
+            <gmd:CI_Contact>
+                <gmd:address>
+                    <gmd:CI_Address>
+                        <gmd:deliveryPoint>
+                            <gco:CharacterString></gco:CharacterString>
+                        </gmd:deliveryPoint>
+                        <gmd:electronicMailAddress>
+                            <gco:CharacterString></gco:CharacterString>
+                        </gmd:electronicMailAddress>
+                    </gmd:CI_Address>
+                </gmd:address>
+                <gmd:onlineResource>
+                    <gmd:CI_OnlineResource>
+                        <gmd:linkage>
+                            <gmd:URL></gmd:URL>
+                        </gmd:linkage>
+                    </gmd:CI_OnlineResource>
+                </gmd:onlineResource>
+            </gmd:CI_Contact>
+        </gmd:contactInfo>
+        <gmd:role>
+            <gmd:CI_RoleCode codeList="" codeListValue="centre"/>
+        </gmd:role>
+        <abbreviation>NOAA-GFDL</abbreviation>
+    </responsibleParty>
+    <shortName>sst2030 hiram-c360</shortName>
+    <longName>Simulation using HIRAM-C360 using future SSTs and RCP 4.5 forcing for the period 2026-2035</longName>
+    <description>Additional ensemble members were started by from 01 January using different years with future SST/sea-ice from two different models. </description>
+    <supports>
+        <reference xlink:href="#//CIMRecord/experiment[id='d5b6bae0-d3a5-11df-837f-00163e9152a5']">
+            <id>d5b6bae0-d3a5-11df-837f-00163e9152a5</id>
+            <name>2.1 sst2030</name>
+            <type>experiment</type>
+            <version>1</version>
+            <description>Reference to a experiment called 2.1 sst2030</description>
+        </reference>
+    </supports>
+    <ensembleType open="true" value="Mixed">
+        <controlledVocabulary>
+            <name>ensembleType</name>
+            <server>http://proj.badc.rl.ac.uk/svn/metafor/cmip5q/trunk</server>
+        </controlledVocabulary>
+    </ensembleType>
+    <ensembleMember>
+        <simulation>
+            <reference xlink:href="#//CIMRecord/simulation[id='7800a084-6169-11e1-bd49-00163e9152a5']">
+                <id>7800a084-6169-11e1-bd49-00163e9152a5</id>
+                <name>sst2030 hiram-c360</name>
+                <type>simulation</type>
+                <version>2</version>
+                <description>Reference to a simulation called sst2030 hiram-c360</description>
+            </reference>
+        </simulation>
+        <ensembleMemberID open="true" value="r1i1p1">
+            <controlledVocabulary>
+                <name>DRS_CMIP5_ensembleType</name>
+                <server>http://proj.badc.rl.ac.uk/svn/metafor/cmip5q/trunk</server>
+            </controlledVocabulary>
+        </ensembleMemberID>
+    </ensembleMember>
+    <ensembleMember>
+        <simulation>
+            <reference xlink:href="#//CIMRecord/simulation[id='7800a084-6169-11e1-bd49-00163e9152a5']">
+                <id>7800a084-6169-11e1-bd49-00163e9152a5</id>
+                <name>sst2030 hiram-c360</name>
+                <type>simulation</type>
+                <version>2</version>
+                <description>Reference to a simulation called sst2030 hiram-c360</description>
+                <change type="ParameterChange">
+                    <name>sea-ice thickness ESM2M</name>
+                    <changeTarget>
+                        <reference xlink:href="#//CIMRecord/modelComponent[id='bc188c18-e2c6-11e0-a561-00163e9152a5']">
+                            <id>bc188c18-e2c6-11e0-a561-00163e9152a5</id>
+                            <name>Sea Ice Key Properties</name>
+                            <type>modelComponent</type>
+                            <version>1</version>
+                            <description>Reference to a modelComponent called Sea Ice Key Properties</description>
+                        </reference>
+                    </changeTarget>
+                    <detail>
+                        <value>1.74</value>
+                        <name>ice_thickness</name>
+                        <description>Model was run in AMIP mode with SST and sea ice concentration determined from the HadISST 1.1 data set (http://hadobs.metoffice.com/hadisst/) plus a monthly mean SST and sea ice concentration anomaly computed as the difference between the GFDL-ESM2M historical and RCP4.5 experiments. The sea-ice coverage is determined by truncating the resulting future sea-ice concentration to either 0 or 1. The uniform sea-ice thickness was reduced from it's AMIP value of 2.00 meters to 1.74 meters.</description>
+                    </detail>
+                </change>
+                <change type="InitialCondition">
+                    <name>IC_C360_F2p1</name>
+                    <changeDate>2026-01-01T00:00:00Z</changeDate>
+                    <detail>
+                        <description>Initial condition for C360 AMIP. Taken from 01 January 2024 during the 3-year spinup of a 2030 time-slice experiment using GFDL-ESM2M SSTs (r1i1p1). (See code modification sea-ice thickness ESM2M.)</description>
+                    </detail>
+                </change>
+            </reference>
+        </simulation>
+        <ensembleMemberID open="true" value="r2i1p1">
+            <standard>
+                <name>DRS_CMIP5_ensembleType</name>
+            </standard>
+        </ensembleMemberID>
+    </ensembleMember>
+    <ensembleMember>
+        <simulation>
+            <reference xlink:href="#//CIMRecord/simulation[id='7800a084-6169-11e1-bd49-00163e9152a5']">
+                <id>7800a084-6169-11e1-bd49-00163e9152a5</id>
+                <name>sst2030 hiram-c360</name>
+                <type>simulation</type>
+                <version>2</version>
+                <description>Reference to a simulation called sst2030 hiram-c360</description>
+                <change type="ParameterChange">
+                    <name>sea-ice thickness ESM2M</name>
+                    <changeTarget>
+                        <reference xlink:href="#//CIMRecord/modelComponent[id='bc188c18-e2c6-11e0-a561-00163e9152a5']">
+                            <id>bc188c18-e2c6-11e0-a561-00163e9152a5</id>
+                            <name>Sea Ice Key Properties</name>
+                            <type>modelComponent</type>
+                            <version>1</version>
+                            <description>Reference to a modelComponent called Sea Ice Key Properties</description>
+                        </reference>
+                    </changeTarget>
+                    <detail>
+                        <value>1.74</value>
+                        <name>ice_thickness</name>
+                        <description>Model was run in AMIP mode with SST and sea ice concentration determined from the HadISST 1.1 data set (http://hadobs.metoffice.com/hadisst/) plus a monthly mean SST and sea ice concentration anomaly computed as the difference between the GFDL-ESM2M historical and RCP4.5 experiments. The sea-ice coverage is determined by truncating the resulting future sea-ice concentration to either 0 or 1. The uniform sea-ice thickness was reduced from it's AMIP value of 2.00 meters to 1.74 meters.</description>
+                    </detail>
+                </change>
+                <change type="InitialCondition">
+                    <name>IC_C360_F3p1</name>
+                    <changeDate>2026-01-01T00:00:00Z</changeDate>
+                    <detail>
+                        <description>Initial condition for C360 AMIP. Taken from 01 January 2025 during the 3-year spinup of a 2030 time-slice experiment using GFDL-ESM2M SSTs (r1i1p1). (See code modification sea-ice thickness ESM2M.)</description>
+                    </detail>
+                </change>
+            </reference>
+        </simulation>
+        <ensembleMemberID open="true" value="r3i1p1">
+            <standard>
+                <name>DRS_CMIP5_ensembleType</name>
+            </standard>
+        </ensembleMemberID>
+    </ensembleMember>
+    <ensembleMember>
+        <simulation>
+            <reference xlink:href="#//CIMRecord/simulation[id='7800a084-6169-11e1-bd49-00163e9152a5']">
+                <id>7800a084-6169-11e1-bd49-00163e9152a5</id>
+                <name>sst2030 hiram-c360</name>
+                <type>simulation</type>
+                <version>2</version>
+                <description>Reference to a simulation called sst2030 hiram-c360</description>
+                <change type="ParameterChange">
+                    <name>sea-ice thickness CM3</name>
+                    <changeTarget>
+                        <reference xlink:href="#//CIMRecord/modelComponent[id='bc188c18-e2c6-11e0-a561-00163e9152a5']">
+                            <id>bc188c18-e2c6-11e0-a561-00163e9152a5</id>
+                            <name>Sea Ice Key Properties</name>
+                            <type>modelComponent</type>
+                            <version>1</version>
+                            <description>Reference to a modelComponent called Sea Ice Key Properties</description>
+                        </reference>
+                    </changeTarget>
+                    <detail>
+                        <value>1.23</value>
+                        <name>ice thickness</name>
+                        <description>Model was run in AMIP mode with SST and sea ice concentration determined from the HadISST 1.1 data set (http://hadobs.metoffice.com/hadisst/) plus a monthly mean SST and sea ice concentration anomaly computed as the difference between the GFDL-CM3 historical and RCP4.5 experiments. The sea-ice coverage is determined by truncating the resulting future sea-ice concentration to either 0 or 1.  The uniform sea-ice thickness was reduced from it's AMIP value of 2.00 meters to 1.23 meters.</description>
+                    </detail>
+                </change>
+                <change type="InitialCondition">
+                    <name>IC_C360_F1</name>
+                    <changeDate>2026-01-01T00:00:00Z</changeDate>
+                    <detail>
+                        <description>Initial condition for HIRAM-C360 taken from the end of an AMIP run (r1i1p1).</description>
+                    </detail>
+                </change>
+            </reference>
+        </simulation>
+        <ensembleMemberID open="true" value="r1i1p2">
+            <standard>
+                <name>DRS_CMIP5_ensembleType</name>
+            </standard>
+        </ensembleMemberID>
+    </ensembleMember>
+    <ensembleMember>
+        <simulation>
+            <reference xlink:href="#//CIMRecord/simulation[id='7800a084-6169-11e1-bd49-00163e9152a5']">
+                <id>7800a084-6169-11e1-bd49-00163e9152a5</id>
+                <name>sst2030 hiram-c360</name>
+                <type>simulation</type>
+                <version>2</version>
+                <description>Reference to a simulation called sst2030 hiram-c360</description>
+                <change type="ParameterChange">
+                    <name>sea-ice thickness CM3</name>
+                    <changeTarget>
+                        <reference xlink:href="#//CIMRecord/modelComponent[id='bc188c18-e2c6-11e0-a561-00163e9152a5']">
+                            <id>bc188c18-e2c6-11e0-a561-00163e9152a5</id>
+                            <name>Sea Ice Key Properties</name>
+                            <type>modelComponent</type>
+                            <version>1</version>
+                            <description>Reference to a modelComponent called Sea Ice Key Properties</description>
+                        </reference>
+                    </changeTarget>
+                    <detail>
+                        <value>1.23</value>
+                        <name>ice thickness</name>
+                        <description>Model was run in AMIP mode with SST and sea ice concentration determined from the HadISST 1.1 data set (http://hadobs.metoffice.com/hadisst/) plus a monthly mean SST and sea ice concentration anomaly computed as the difference between the GFDL-CM3 historical and RCP4.5 experiments. The sea-ice coverage is determined by truncating the resulting future sea-ice concentration to either 0 or 1.  The uniform sea-ice thickness was reduced from it's AMIP value of 2.00 meters to 1.23 meters.</description>
+                    </detail>
+                </change>
+                <change type="InitialCondition">
+                    <name>IC_C360_F2p2</name>
+                    <changeDate>2026-01-01T00:00:00Z</changeDate>
+                    <detail>
+                        <description>Initial condition for C360 AMIP. Taken from 01 January 2024 during the 3-year spinup of a 2030 time-slice experiment using GFDL-CM3 SSTs (r1i1p2). (See code modification sea-ice thickness CM3.)</description>
+                    </detail>
+                </change>
+            </reference>
+        </simulation>
+        <ensembleMemberID open="true" value="r2i1p2">
+            <standard>
+                <name>DRS_CMIP5_ensembleType</name>
+            </standard>
+        </ensembleMemberID>
+    </ensembleMember>
+    <ensembleMember>
+        <simulation>
+            <reference xlink:href="#//CIMRecord/simulation[id='7800a084-6169-11e1-bd49-00163e9152a5']">
+                <id>7800a084-6169-11e1-bd49-00163e9152a5</id>
+                <name>sst2030 hiram-c360</name>
+                <type>simulation</type>
+                <version>2</version>
+                <description>Reference to a simulation called sst2030 hiram-c360</description>
+                <change type="ParameterChange">
+                    <name>sea-ice thickness CM3</name>
+                    <changeTarget>
+                        <reference xlink:href="#//CIMRecord/modelComponent[id='bc188c18-e2c6-11e0-a561-00163e9152a5']">
+                            <id>bc188c18-e2c6-11e0-a561-00163e9152a5</id>
+                            <name>Sea Ice Key Properties</name>
+                            <type>modelComponent</type>
+                            <version>1</version>
+                            <description>Reference to a modelComponent called Sea Ice Key Properties</description>
+                        </reference>
+                    </changeTarget>
+                    <detail>
+                        <value>1.23</value>
+                        <name>ice thickness</name>
+                        <description>Model was run in AMIP mode with SST and sea ice concentration determined from the HadISST 1.1 data set (http://hadobs.metoffice.com/hadisst/) plus a monthly mean SST and sea ice concentration anomaly computed as the difference between the GFDL-CM3 historical and RCP4.5 experiments. The sea-ice coverage is determined by truncating the resulting future sea-ice concentration to either 0 or 1.  The uniform sea-ice thickness was reduced from it's AMIP value of 2.00 meters to 1.23 meters.</description>
+                    </detail>
+                </change>
+                <change type="InitialCondition">
+                    <name>IC_C360_F3p2</name>
+                    <changeDate>2026-01-01T00:00:00Z</changeDate>
+                    <detail>
+                        <description>Initial condition for C360 AMIP. Taken from 01 January 2025 during the 3-year spinup of a 2030 time-slice experiment using GFDL-CM3 SSTs (r1i1p2). (See code modification sea-ice thickness CM3.)</description>
+                    </detail>
+                </change>
+            </reference>
+        </simulation>
+        <ensembleMemberID open="true" value="r3i1p2">
+            <standard>
+                <name>DRS_CMIP5_ensembleType</name>
+            </standard>
+        </ensembleMemberID>
+    </ensembleMember>
+    <documentID>f943c050-616d-11e1-bd49-00163e9152a5</documentID>
+    <documentVersion>1</documentVersion>
+    <documentAuthor>
+        <gmd:individualName>
+            <gco:CharacterString>Metafor Questionnaire</gco:CharacterString>
+        </gmd:individualName>
+        <gmd:role>
+            <gmd:CI_RoleCode codeList="" codeListValue="documentAuthor"/>
+        </gmd:role>
+    </documentAuthor>
+    <documentCreationDate>2012-05-17T14:20:29.446090</documentCreationDate>
+</ensemble>

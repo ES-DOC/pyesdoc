@@ -1,0 +1,172 @@
+<numericalExperiment xmlns="http://www.purl.org/org/esmetadata/cim/1.5/schemas" xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:gco="http://www.isotc211.org/2005/gco" xmlns:gmd="http://www.isotc211.org/2005/gmd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <rationale>Provide estimate of future antrhopogenic climate change.</rationale>
+    <shortName>rcp26</shortName>
+    <longName>RCP2.6</longName>
+    <description>Future projection (2006-2100) forced by RCP2.6.
+        RCP2.6 is a representative concentration pathway which approximately results in a radiative
+        forcing of 2.6 W m-2 at year 2100, relative to pre-industrial conditions.
+    </description>
+    <experimentID>4.3</experimentID>
+    <calendar>
+        <realCalendar/>
+    </calendar>
+    <numericalRequirement>
+        <initialCondition>
+            <id>ic.004</id>
+            <name>4.3.ic</name>
+            <description>Initial conditions are from the end of experiment 3.2_historical</description>
+        </initialCondition>
+    </numericalRequirement>
+    <numericalRequirement>
+        <boundaryCondition>
+            <name>4.3.bc.wmg</name>
+            <description>Imposed changing concentrations or emissions of RCP2.6 well mixed gases, including CO2</description>
+            <requirementOption optionRelationship="XOR">
+                <requirement>
+                    <requirement>
+                        <boundaryCondition>
+                            <id>bc.076</id>
+                            <name>4.3.bc.wmg_conc</name>
+                            <description>Concentrations</description>
+                        </boundaryCondition>
+                    </requirement>
+                </requirement>
+            </requirementOption>
+            <requirementOption optionRelationship="XOR">
+                <requirement>
+                    <requirement>
+                        <boundaryCondition>
+                            <id>bc.080</id>
+                            <name>4.3.bc.wmg_em</name>
+                            <description>Emissions</description>
+                        </boundaryCondition>
+                    </requirement>
+                </requirement>
+            </requirementOption>
+        </boundaryCondition>
+    </numericalRequirement>
+    <numericalRequirement>
+        <boundaryCondition>
+            <name>4.3.bc.sls_conc</name>
+            <description>Imposed changing concentrations or emissions of RCP2.6 short lived gas species</description>
+            <requirementOption optionRelationship="XOR">
+                <requirement>
+                    <requirement>
+                        <boundaryCondition>
+                            <id>bc.077</id>
+                            <name>4.3.bc.sls_conc</name>
+                            <description>Concentrations</description>
+                        </boundaryCondition>
+                    </requirement>
+                </requirement>
+            </requirementOption>
+            <requirementOption optionRelationship="XOR">
+                <requirement>
+                    <requirement>
+                        <boundaryCondition>
+                            <id>bc.081</id>
+                            <name>4.3.bc.sls_em</name>
+                            <description>Emissions</description>
+                        </boundaryCondition>
+                    </requirement>
+                </requirement>
+            </requirementOption>
+        </boundaryCondition>
+    </numericalRequirement>
+    <numericalRequirement>
+        <boundaryCondition>
+            <name>4.3.bc.aer</name>
+            <description>Imposed changing concentrations or emissions of RCP2.6 aerosols</description>
+            <requirementOption optionRelationship="XOR">
+                <requirement>
+                    <requirement>
+                        <boundaryCondition>
+                            <id>bc.078</id>
+                            <name>4.3.bc.aer_conc</name>
+                            <description>Concentrations</description>
+                        </boundaryCondition>
+                    </requirement>
+                </requirement>
+            </requirementOption>
+            <requirementOption optionRelationship="XOR">
+                <requirement>
+                    <requirement>
+                        <boundaryCondition>
+                            <id>bc.082</id>
+                            <name>4.3.bc.aer_em</name>
+                            <description>Emissions</description>
+                        </boundaryCondition>
+                    </requirement>
+                </requirement>
+            </requirementOption>
+        </boundaryCondition>
+    </numericalRequirement>
+    <numericalRequirement>
+        <boundaryCondition>
+            <name>4.3.bc.aer_pre</name>
+            <description>Imposed changing concentrations or emissions of RCP2.6 aerosol precursors</description>
+            <requirementOption optionRelationship="XOR">
+                <requirement>
+                    <requirement>
+                        <boundaryCondition>
+                            <id>bc.079</id>
+                            <name>4.3.bc.aer_pre_conc</name>
+                            <description>Concentrations</description>
+                        </boundaryCondition>
+                    </requirement>
+                </requirement>
+            </requirementOption>
+            <requirementOption optionRelationship="XOR">
+                <requirement>
+                    <requirement>
+                        <boundaryCondition>
+                            <id>bc.083</id>
+                            <name>4.3.bc.aer_pre_em</name>
+                            <description>Emissions</description>
+                        </boundaryCondition>
+                    </requirement>
+                </requirement>
+            </requirementOption>
+        </boundaryCondition>
+    </numericalRequirement>
+    <numericalRequirement>
+        <boundaryCondition>
+            <id>bc.084</id>
+            <name>4.3.bc.LU</name>
+            <description>Imposed changing RCP2.6 land use</description>
+        </boundaryCondition>
+    </numericalRequirement>
+    <numericalRequirement>
+        <spatioTemporalConstraint>
+            <id>stc.030</id>
+            <name>4.3.stc.2006_94yr</name>
+            <description>Begin in 2006 and run for 94 years</description>
+            <requiredDuration>
+                <closedDateRange>
+                    <duration>P94Y</duration>
+                    <endDate>2100-01-01T00:00:00Z</endDate>
+                    <startDate>2006-01-01T00:00:00Z</startDate>
+                </closedDateRange>
+            </requiredDuration>
+        </spatioTemporalConstraint>
+    </numericalRequirement>
+    <numericalRequirement>
+        <boundaryCondition>
+            <id>bc.034</id>
+            <name>4.3.bc.volc_aer_conc</name>
+            <description>Imposed constant background volcanic aerosol</description>
+        </boundaryCondition>
+    </numericalRequirement>
+    <documentID>b464433a-d3a5-11df-837f-00163e9152a5</documentID>
+    <documentVersion>2</documentVersion>
+    <documentAuthor>
+        <gmd:individualName>
+            <gco:CharacterString>Metafor Questionnaire</gco:CharacterString>
+        </gmd:individualName>
+        <gmd:role>
+            <gmd:CI_RoleCode codeList="" codeListValue="documentAuthor"/>
+        </gmd:role>
+    </documentAuthor>
+    <documentCreationDate>2012-03-06T10:06:42.266723</documentCreationDate>
+</numericalExperiment>
+  

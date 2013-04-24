@@ -1,0 +1,116 @@
+"""
+.. module:: cim.v1_5.validation.__init__.py
+
+   :copyright: @2013 Earth System Documentation (http://esdocumentation.org)
+   :license: GPL / CeCILL
+   :platform: Unix, Windows
+   :synopsis: A set of validators over the cim 1.5 ontology.
+
+.. moduleauthor:: Earth System Documentation (ES-DOC) <dev@esdocumentation.org>
+.. note:: Code generated using esdoc_mp @ 2013-04-17 17:20:28.633731.
+
+"""
+
+# Module imports.
+from pyesdoc.ontologies.cim.v1_5.validation.validator_for_activity_package import validate_activity
+from pyesdoc.ontologies.cim.v1_5.validation.validator_for_activity_package import validate_boundary_condition
+from pyesdoc.ontologies.cim.v1_5.validation.validator_for_activity_package import validate_conformance
+from pyesdoc.ontologies.cim.v1_5.validation.validator_for_activity_package import validate_ensemble
+from pyesdoc.ontologies.cim.v1_5.validation.validator_for_activity_package import validate_ensemble_member
+from pyesdoc.ontologies.cim.v1_5.validation.validator_for_activity_package import validate_experiment
+from pyesdoc.ontologies.cim.v1_5.validation.validator_for_activity_package import validate_experiment_relationship
+from pyesdoc.ontologies.cim.v1_5.validation.validator_for_activity_package import validate_experiment_relationship_target
+from pyesdoc.ontologies.cim.v1_5.validation.validator_for_activity_package import validate_initial_condition
+from pyesdoc.ontologies.cim.v1_5.validation.validator_for_activity_package import validate_measurement_campaign
+from pyesdoc.ontologies.cim.v1_5.validation.validator_for_activity_package import validate_numerical_activity
+from pyesdoc.ontologies.cim.v1_5.validation.validator_for_activity_package import validate_numerical_experiment
+from pyesdoc.ontologies.cim.v1_5.validation.validator_for_activity_package import validate_numerical_requirement
+from pyesdoc.ontologies.cim.v1_5.validation.validator_for_activity_package import validate_numerical_requirement_option
+from pyesdoc.ontologies.cim.v1_5.validation.validator_for_activity_package import validate_output_requirement
+from pyesdoc.ontologies.cim.v1_5.validation.validator_for_activity_package import validate_physical_modification
+from pyesdoc.ontologies.cim.v1_5.validation.validator_for_activity_package import validate_simulation
+from pyesdoc.ontologies.cim.v1_5.validation.validator_for_activity_package import validate_simulation_composite
+from pyesdoc.ontologies.cim.v1_5.validation.validator_for_activity_package import validate_simulation_relationship
+from pyesdoc.ontologies.cim.v1_5.validation.validator_for_activity_package import validate_simulation_relationship_target
+from pyesdoc.ontologies.cim.v1_5.validation.validator_for_activity_package import validate_simulation_run
+from pyesdoc.ontologies.cim.v1_5.validation.validator_for_activity_package import validate_spatio_temporal_constraint
+from pyesdoc.ontologies.cim.v1_5.validation.validator_for_data_package import validate_data_content
+from pyesdoc.ontologies.cim.v1_5.validation.validator_for_data_package import validate_data_distribution
+from pyesdoc.ontologies.cim.v1_5.validation.validator_for_data_package import validate_data_extent
+from pyesdoc.ontologies.cim.v1_5.validation.validator_for_data_package import validate_data_extent_geographical
+from pyesdoc.ontologies.cim.v1_5.validation.validator_for_data_package import validate_data_extent_temporal
+from pyesdoc.ontologies.cim.v1_5.validation.validator_for_data_package import validate_data_extent_time_interval
+from pyesdoc.ontologies.cim.v1_5.validation.validator_for_data_package import validate_data_hierarchy_level
+from pyesdoc.ontologies.cim.v1_5.validation.validator_for_data_package import validate_data_object
+from pyesdoc.ontologies.cim.v1_5.validation.validator_for_data_package import validate_data_property
+from pyesdoc.ontologies.cim.v1_5.validation.validator_for_data_package import validate_data_restriction
+from pyesdoc.ontologies.cim.v1_5.validation.validator_for_data_package import validate_data_storage
+from pyesdoc.ontologies.cim.v1_5.validation.validator_for_data_package import validate_data_storage_db
+from pyesdoc.ontologies.cim.v1_5.validation.validator_for_data_package import validate_data_storage_file
+from pyesdoc.ontologies.cim.v1_5.validation.validator_for_data_package import validate_data_storage_ip
+from pyesdoc.ontologies.cim.v1_5.validation.validator_for_data_package import validate_data_topic
+from pyesdoc.ontologies.cim.v1_5.validation.validator_for_grids_package import validate_coordinate_list
+from pyesdoc.ontologies.cim.v1_5.validation.validator_for_grids_package import validate_grid_extent
+from pyesdoc.ontologies.cim.v1_5.validation.validator_for_grids_package import validate_grid_mosaic
+from pyesdoc.ontologies.cim.v1_5.validation.validator_for_grids_package import validate_grid_property
+from pyesdoc.ontologies.cim.v1_5.validation.validator_for_grids_package import validate_grid_spec
+from pyesdoc.ontologies.cim.v1_5.validation.validator_for_grids_package import validate_grid_tile
+from pyesdoc.ontologies.cim.v1_5.validation.validator_for_grids_package import validate_grid_tile_resolution_type
+from pyesdoc.ontologies.cim.v1_5.validation.validator_for_grids_package import validate_vertical_coordinate_list
+from pyesdoc.ontologies.cim.v1_5.validation.validator_for_quality_package import validate_cim_quality
+from pyesdoc.ontologies.cim.v1_5.validation.validator_for_quality_package import validate_evaluation
+from pyesdoc.ontologies.cim.v1_5.validation.validator_for_quality_package import validate_measure
+from pyesdoc.ontologies.cim.v1_5.validation.validator_for_quality_package import validate_report
+from pyesdoc.ontologies.cim.v1_5.validation.validator_for_shared_package import validate_calendar
+from pyesdoc.ontologies.cim.v1_5.validation.validator_for_shared_package import validate_change
+from pyesdoc.ontologies.cim.v1_5.validation.validator_for_shared_package import validate_change_property
+from pyesdoc.ontologies.cim.v1_5.validation.validator_for_shared_package import validate_cim_document_relationship
+from pyesdoc.ontologies.cim.v1_5.validation.validator_for_shared_package import validate_cim_document_relationship_target
+from pyesdoc.ontologies.cim.v1_5.validation.validator_for_shared_package import validate_cim_genealogy
+from pyesdoc.ontologies.cim.v1_5.validation.validator_for_shared_package import validate_cim_info
+from pyesdoc.ontologies.cim.v1_5.validation.validator_for_shared_package import validate_cim_reference
+from pyesdoc.ontologies.cim.v1_5.validation.validator_for_shared_package import validate_cim_relationship
+from pyesdoc.ontologies.cim.v1_5.validation.validator_for_shared_package import validate_cim_type_info
+from pyesdoc.ontologies.cim.v1_5.validation.validator_for_shared_package import validate_citation
+from pyesdoc.ontologies.cim.v1_5.validation.validator_for_shared_package import validate_closed_date_range
+from pyesdoc.ontologies.cim.v1_5.validation.validator_for_shared_package import validate_compiler
+from pyesdoc.ontologies.cim.v1_5.validation.validator_for_shared_package import validate_daily_360
+from pyesdoc.ontologies.cim.v1_5.validation.validator_for_shared_package import validate_data_source
+from pyesdoc.ontologies.cim.v1_5.validation.validator_for_shared_package import validate_date_range
+from pyesdoc.ontologies.cim.v1_5.validation.validator_for_shared_package import validate_license
+from pyesdoc.ontologies.cim.v1_5.validation.validator_for_shared_package import validate_machine
+from pyesdoc.ontologies.cim.v1_5.validation.validator_for_shared_package import validate_machine_compiler_unit
+from pyesdoc.ontologies.cim.v1_5.validation.validator_for_shared_package import validate_open_date_range
+from pyesdoc.ontologies.cim.v1_5.validation.validator_for_shared_package import validate_perpetual_period
+from pyesdoc.ontologies.cim.v1_5.validation.validator_for_shared_package import validate_platform
+from pyesdoc.ontologies.cim.v1_5.validation.validator_for_shared_package import validate_property
+from pyesdoc.ontologies.cim.v1_5.validation.validator_for_shared_package import validate_real_calendar
+from pyesdoc.ontologies.cim.v1_5.validation.validator_for_shared_package import validate_responsible_party
+from pyesdoc.ontologies.cim.v1_5.validation.validator_for_shared_package import validate_responsible_party_contact_info
+from pyesdoc.ontologies.cim.v1_5.validation.validator_for_shared_package import validate_standard
+from pyesdoc.ontologies.cim.v1_5.validation.validator_for_shared_package import validate_standard_name
+from pyesdoc.ontologies.cim.v1_5.validation.validator_for_software_package import validate_component
+from pyesdoc.ontologies.cim.v1_5.validation.validator_for_software_package import validate_component_language
+from pyesdoc.ontologies.cim.v1_5.validation.validator_for_software_package import validate_component_language_property
+from pyesdoc.ontologies.cim.v1_5.validation.validator_for_software_package import validate_component_property
+from pyesdoc.ontologies.cim.v1_5.validation.validator_for_software_package import validate_composition
+from pyesdoc.ontologies.cim.v1_5.validation.validator_for_software_package import validate_connection
+from pyesdoc.ontologies.cim.v1_5.validation.validator_for_software_package import validate_connection_endpoint
+from pyesdoc.ontologies.cim.v1_5.validation.validator_for_software_package import validate_connection_property
+from pyesdoc.ontologies.cim.v1_5.validation.validator_for_software_package import validate_coupling
+from pyesdoc.ontologies.cim.v1_5.validation.validator_for_software_package import validate_coupling_endpoint
+from pyesdoc.ontologies.cim.v1_5.validation.validator_for_software_package import validate_coupling_property
+from pyesdoc.ontologies.cim.v1_5.validation.validator_for_software_package import validate_deployment
+from pyesdoc.ontologies.cim.v1_5.validation.validator_for_software_package import validate_entry_point
+from pyesdoc.ontologies.cim.v1_5.validation.validator_for_software_package import validate_model_component
+from pyesdoc.ontologies.cim.v1_5.validation.validator_for_software_package import validate_parallelisation
+from pyesdoc.ontologies.cim.v1_5.validation.validator_for_software_package import validate_processor_component
+from pyesdoc.ontologies.cim.v1_5.validation.validator_for_software_package import validate_rank
+from pyesdoc.ontologies.cim.v1_5.validation.validator_for_software_package import validate_spatial_regridding
+from pyesdoc.ontologies.cim.v1_5.validation.validator_for_software_package import validate_spatial_regridding_property
+from pyesdoc.ontologies.cim.v1_5.validation.validator_for_software_package import validate_spatial_regridding_user_method
+from pyesdoc.ontologies.cim.v1_5.validation.validator_for_software_package import validate_time_lag
+from pyesdoc.ontologies.cim.v1_5.validation.validator_for_software_package import validate_time_transformation
+from pyesdoc.ontologies.cim.v1_5.validation.validator_for_software_package import validate_timing
+
+

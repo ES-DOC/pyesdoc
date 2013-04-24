@@ -1,0 +1,125 @@
+<dataObject xmlns="http://www.purl.org/org/esmetadata/cim/1.5/schemas" xmlns:gco="http://www.isotc211.org/2005/gco" xmlns:gmd="http://www.isotc211.org/2005/gmd" xmlns:oai="http://www.openarchives.org/OAI/2.0/" xmlns:xref="http://www.oracle.com/XSL/Transform/java/" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:geonet="http://www.fao.org/geonetwork" xmlns:csw="http://www.opengis.net/cat/csw/2.0.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" purpose="test" dataStatus="complete">
+    <acronym>HADGEM2_20C3M_1_D0_hus700</acronym>
+    <description>This dataset represents daily output: instantaneous daily values at 0UTC (D0) or daily averaged/accumulated/max/min values (DM) of the selected variable for ENSEMBLES. The model output was prepared for the IPCC Fourth Assessment 20C3M experiment.
+
+For specific scenario details see experiment summary.
+
+These data are in netCDF format.
+    </description>
+    <hierarchyLevelName open="true" value="experiment"/>
+    <hierarchyLevelValue>HADGEM2_20C3M_1_D0_hus700</hierarchyLevelValue>
+    <keyword>Test keyword</keyword>
+    <dataProperty>
+        <dataProperty>
+            <name>TestProperty1</name>
+            <value>1</value>
+        </dataProperty>
+        <dataProperty>
+            <name>TestProperty2</name>
+            <value>2</value>
+        </dataProperty>
+    </dataProperty>
+    <sourceSimulation>
+        <reference/>
+    </sourceSimulation>
+    <restriction restrictionScope="dataAccessConstraint"/>
+    <storage>
+        <ipStorage dataLocation="http://cera-www.dkrz.de/WDCC/ui/Compact.jsp?acronym=HADGEM2_20C3M_1_D0_hus700">
+            <fileName>HADGEM2_20C3M_1_D0_hus700</fileName>
+        </ipStorage>
+    </storage>
+    <distribution distributionAccess="OnlineFileHTTP">
+        <distributionFormat open="false" value="NetCDF"/>
+        <responsibleParty>
+            <gmd:individualName>
+                <gco:CharacterString>Met Office (HC)</gco:CharacterString>
+            </gmd:individualName>
+            <gmd:organisationName>
+                <gco:CharacterString>Hadley Centre</gco:CharacterString>
+            </gmd:organisationName>
+            <gmd:role>
+                <gmd:CI_RoleCode codeList="http://wis.wmo.int/2006/catalogues/gmxCodelists.xml#CI_RoleCode" codeListValue="distributor">distributor</gmd:CI_RoleCode>
+            </gmd:role>
+        </responsibleParty>
+    </distribution>
+    <citation>
+        <citation>
+            <gmd:title>
+                <gco:CharacterString>1 - ENSEMBLES2_HADGEM2_20C3M_1_D0_hus700: specific_humidity</gco:CharacterString>
+            </gmd:title>
+            <gmd:alternateTitle>
+                <gco:CharacterString/>
+            </gmd:alternateTitle>
+            <gmd:date>
+                <gmd:CI_Date>
+                    <gmd:date>
+                        <gco:Date>2009-02-11</gco:Date>
+                    </gmd:date>
+                    <gmd:dateType>
+                        <gmd:CI_DateTypeCode codeList="http://wis.wmo.int/2006/catalogues/gmxCodelists.xml#CI_DateTypeCode" codeListValue="creation"/>
+                    </gmd:dateType>
+                </gmd:CI_Date>
+            </gmd:date>
+        </citation>
+        <citation>
+            <gmd:title>
+                <gco:CharacterString>2 - XXXXXXXXXX: XXXXXXXXXX</gco:CharacterString>
+            </gmd:title>
+            <gmd:alternateTitle>
+                <gco:CharacterString/>
+            </gmd:alternateTitle>
+            <gmd:date>
+                <gmd:CI_Date>
+                    <gmd:date>
+                        <gco:Date>2009-02-11</gco:Date>
+                    </gmd:date>
+                    <gmd:dateType>
+                        <gmd:CI_DateTypeCode codeList="http://wis.wmo.int/2006/catalogues/gmxCodelists.xml#CI_DateTypeCode" codeListValue="creation"/>
+                    </gmd:dateType>
+                </gmd:CI_Date>
+            </gmd:date>
+        </citation>
+    </citation>
+    <content>
+        <topic>
+            <name>specific_humidity</name>
+            <standardName open="true" value="specific_humidity"/>
+            <description>"specific" means per unit mass. Specific humidity is the mass fraction of water vapor in (moist) air.[CF-Standard Name]</description>
+            <unit open="true" value="m s-1"/>
+        </topic>
+        <aggregation>sum</aggregation>
+        <frequency open="true" value="Other"/>
+    </content>
+    <extent>
+        <gmd:geographicElement>
+            <gmd:EX_GeographicBoundingBox>
+                <gmd:westBoundLongitude>
+                    <gco:Decimal>0</gco:Decimal>
+                </gmd:westBoundLongitude>
+                <gmd:eastBoundLongitude>
+                    <gco:Decimal>360</gco:Decimal>
+                </gmd:eastBoundLongitude>
+                <gmd:southBoundLatitude>
+                    <gco:Decimal>-90</gco:Decimal>
+                </gmd:southBoundLatitude>
+                <gmd:northBoundLatitude>
+                    <gco:Decimal>90</gco:Decimal>
+                </gmd:northBoundLatitude>
+            </gmd:EX_GeographicBoundingBox>
+        </gmd:geographicElement>
+        <gmd:temporalElement>
+            <gmd:EX_TemporalExtent>
+                <gmd:extent>
+                    <gml:TimePeriod gml:id="id_2201761185912119991230">
+                        <gml:beginPosition>1859-12-1</gml:beginPosition>
+                        <gml:endPosition>1999-12-30</gml:endPosition>
+                        <gml:timeInterval unit="day" factor="-1" radix="50430">50430</gml:timeInterval>
+                    </gml:TimePeriod>
+                </gmd:extent>
+            </gmd:EX_TemporalExtent>
+        </gmd:temporalElement>
+    </extent>
+    <documentID>834151a4-978d-4627-954e-285916bb907a</documentID>
+    <documentVersion>1</documentVersion>
+    <documentCreationDate>2011-09-28T16:08:41</documentCreationDate>
+</dataObject>
