@@ -17,7 +17,7 @@ from pyesdoc.serialization.decoder_xml_utils import (
     load_xml,
     decode_xml
     )
-from pyesdoc.utils.exception import PYESDOC_Exception
+from pyesdoc.utils.exception import ESDOC_Exception
 
 from pyesdoc.ontologies.cim.v1_5.types.shared.cim_type_info import CimTypeInfo
 import pyesdoc.ontologies.cim.v1_5.serialization as v1_5_decoders
@@ -73,14 +73,14 @@ def decode(representation, schema):
 
     # Validate xml.
     if _can_decode_from_xml(xml) == False:
-        raise PYESDOC_Exception('Representation failed XML validation.')
+        raise ESDOC_Exception('Representation failed XML validation.')
 
     # Get document type.
     type = xml.tag.split('}')[1]
     
     # Get decoder.
     if type not in _decoders[schema]:
-        raise PYESDOC_Exception('No decoder exists for the following CIM type :: {0}.'.format(type))
+        raise ESDOC_Exception('No decoder exists for the following CIM type :: {0}.'.format(type))
     decoder = _decoders[schema][type]
 
     # Decode pyesdoc obj.

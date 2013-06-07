@@ -17,7 +17,7 @@ from dateutil import parser as dateutil_parser
 from lxml import etree as et
 import uuid
 
-from pyesdoc.serializer import decode
+from pyesdoc import decode
 
 
 

@@ -19,7 +19,7 @@ from dateutil import parser as dateutil_parser
 from lxml import etree as et
 from lxml.etree import _ElementStringResult as etstring
 
-from pyesdoc.utils.exception import PYESDOC_Exception
+from pyesdoc.utils.exception import ESDOC_Exception
 
 
 
@@ -408,7 +408,7 @@ def decode_xml(decoder, xml, nsmap, is_iterable):
         return collection
 
     # otherwise exception
-    raise PYESDOC_Exception("xml cannot be decoded.")
+    raise ESDOC_Exception("xml cannot be decoded.")
 
 
 def load_xml(xml, return_nsmap=False, default_ns='cim'):
@@ -429,7 +429,7 @@ def load_xml(xml, return_nsmap=False, default_ns='cim'):
     """
     # Defensive programming.
     if xml is None:
-        raise PYESDOC_Exception("XML is undefined.")
+        raise ESDOC_Exception("XML is undefined.")
 
     nsmap = None
     # ... etree elements.
@@ -452,9 +452,9 @@ def load_xml(xml, return_nsmap=False, default_ns='cim'):
                     xml = et.fromstring(xml)
                     nsmap = xml.nsmap
                 except Exception:
-                    raise PYESDOC_Exception("Invalid xml string.")
+                    raise ESDOC_Exception("Invalid xml string.")
             else:
-                raise PYESDOC_Exception("Unsupported xml type, must be either a string, file, url or etree.")
+                raise ESDOC_Exception("Unsupported xml type, must be either a string, file, url or etree.")
 
     # Set default namespace.
     if nsmap is not None:

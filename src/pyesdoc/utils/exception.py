@@ -11,7 +11,7 @@
 """
 
 
-class PYESDOC_Exception(Exception):
+class ESDOC_Exception(Exception):
     """Default library exception class.
 
     """
