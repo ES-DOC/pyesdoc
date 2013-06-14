@@ -40,7 +40,7 @@ def encode(instance, schema):
     :param instance: pyesdoc document instance.
     :type instance: object
 
-    :param schema: A document schema (e.g. CIM 1.5).
+    :param schema: A document schema (e.g. CIM v1).
     :type schema: str
 
     :returns: A json representation of document instance.

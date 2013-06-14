@@ -19,29 +19,29 @@ from pyesdoc.serialization.decoder_xml_utils import (
     )
 from pyesdoc.utils.exception import ESDOC_Exception
 
-from pyesdoc.ontologies.cim.v1_5.types.shared.cim_type_info import CimTypeInfo
-import pyesdoc.ontologies.cim.v1_5.serialization as v1_5_decoders
+from pyesdoc.ontologies.cim.v1.types.shared.cim_type_info import CimTypeInfo
+import pyesdoc.ontologies.cim.v1.serialization as v1_decoders
 
 
 
 # Set of decoders grouped by cim version.
 _decoders = {
-    '1.5' : {
-        'cIM_Quality' : v1_5_decoders.decode_cim_quality,
-        'dataObject' : v1_5_decoders.decode_data_object,
-        'ensemble' : v1_5_decoders.decode_ensemble,
-        'gridSpec' : v1_5_decoders.decode_grid_spec,
-        'modelComponent' : v1_5_decoders.decode_model_component,
-        'numericalExperiment' : v1_5_decoders.decode_numerical_experiment,
-        'platform' : v1_5_decoders.decode_platform,
-        'simulationRun' : v1_5_decoders.decode_simulation_run,
-        'simulationComposite' : v1_5_decoders.decode_simulation_composite,
+    '1' : {
+        'cIM_Quality' : v1_decoders.decode_cim_quality,
+        'dataObject' : v1_decoders.decode_data_object,
+        'ensemble' : v1_decoders.decode_ensemble,
+        'gridSpec' : v1_decoders.decode_grid_spec,
+        'modelComponent' : v1_decoders.decode_model_component,
+        'numericalExperiment' : v1_decoders.decode_numerical_experiment,
+        'platform' : v1_decoders.decode_platform,
+        'simulationRun' : v1_decoders.decode_simulation_run,
+        'simulationComposite' : v1_decoders.decode_simulation_composite,
     }
 }
 
 # Set of type information injected into decoded objects.
 _type_info = {
-    '1.5' : {
+    '1' : {
         'cIM_Quality' : ('quality', 'QC Record'),
         'dataObject' : ('data', 'Data Object'),
         'ensemble' : ('activity', 'Ensemble'),
@@ -61,7 +61,7 @@ def decode(representation, schema):
     :param representation: A document xml representation.
     :type representation: str
 
-    :param schema: A document schema (e.g. CIM 1.5).
+    :param schema: A document schema (e.g. CIM v1).
     :type schema: str
 
     :returns: A pyesdoc document instance.
@@ -98,7 +98,7 @@ def _set_cim_type_info(obj, schema, type):
     :param obj: pyesdoc document instance.
     :type obj: object
 
-    :param schema: A document schema (e.g. CIM 1.5).
+    :param schema: A document schema (e.g. CIM v1).
     :type schema: str
 
     :param type: Document type (e.g. 'model').

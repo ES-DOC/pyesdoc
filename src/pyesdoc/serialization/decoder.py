@@ -33,7 +33,7 @@ def decode(representation, schema, encoding):
     :param representation: A document representation (e.g. utf-8).
     :type representation: str
 
-    :param schema: A document schema (e.g. CIM 1.5).
+    :param schema: A document schema (e.g. CIM v1).
     :type schema: str
 
     :param encoding: A document encoding (e.g. json).

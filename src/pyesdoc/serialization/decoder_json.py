@@ -23,7 +23,7 @@ def decode(representation, schema):
     :param representation: A document json representation.
     :type representation: str
 
-    :param schema: A document schema (e.g. CIM 1.5).
+    :param schema: A document schema (e.g. CIM v1).
     :type schema: str
 
     :returns: A pyesdoc document instance.

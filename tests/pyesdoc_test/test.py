@@ -11,5 +11,5 @@
 """
 
 # Module imports.
-from pyesdoc_test.ontologies.cim.v1_5.test import *
+from pyesdoc_test.ontologies.cim.v1.test import *
 
