@@ -10,24 +10,65 @@
 
 """
 # Module imports.
-from pyesdoc.ontologies.constants import (
-    CIM_ENCODINGS,
-    CIM_SCHEMAS
-    )
-from pyesdoc.serialization.decoder import decode as decoder
-from pyesdoc.serialization.encoder import encode as encoder
-from pyesdoc.utils.exception import ESDOC_Exception
+from collections import namedtuple
+
+from pyesdoc.utils.ontologies import is_supported as is_supported_ontology
+from pyesdoc.serialization.decoder_json import decode as json_decoder
+from pyesdoc.serialization.decoder_xml import decode as xml_decoder
+from pyesdoc.serialization.encoder_json import encode as json_encoder
+from pyesdoc.serialization.encoder_xml import encode as xml_encoder
+from pyesdoc.utils.exception import PYESDOC_Exception
 
 
 
-def decode(representation, schema, encoding):
+class _ContextInfo(object):
+    """Contextual information passed around during serialization operations.
+
+    """
+    def __init__(self,
+                 schema_name,
+                 schema_version,
+                 encoding,
+                 type=None,
+                 representation=None,
+                 instance=None):
+        self.schema_name = str(schema_name).upper()
+        self.schema_version = str(schema_version).upper()
+        self.encoding = str(encoding).lower()
+        self.type = type
+        self.representation = representation
+        self.instance = instance
+
+
+# Set of supported ESDOC encodings.
+ESDOC_ENCODING_JSON = 'json'
+ESDOC_ENCODING_XML = 'xml'
+
+# Set of decoders.
+_decoders = {
+    ESDOC_ENCODING_JSON : json_decoder,
+    ESDOC_ENCODING_XML : xml_decoder,
+}
+
+# Set of encoders.
+_encoders = {
+    ESDOC_ENCODING_JSON : json_encoder,
+    ESDOC_ENCODING_XML : xml_encoder,
+}
+
+
+
+def decode(representation, schema_name, schema_version, encoding):
     """Decodes a pyesdoc document representation.
 
     :param representation: A document representation (e.g. utf-8).
     :type representation: str
 
-    :param schema: A document schema (e.g. CIM v1).
-    :type schema: str
+    :param schema_name: A document schema (e.g. CIM).
+    :type schema_name: str
+
+    :param schema_version: A document schema version (e.g. v1).
+    :type schema_version: str
 
     :param encoding: A document encoding (e.g. json).
     :type encoding: str
@@ -38,24 +79,31 @@ def decode(representation, schema, encoding):
     """
     # Defensive programming.
     if representation is None:
-        raise ESDOC_Exception('Document instances cannot be decoded from null objects.')
-    if schema not in CIM_SCHEMAS:
-        raise ESDOC_Exception('{0} is an unsupported schema.'.format(schema))
-    if encoding not in CIM_ENCODINGS:
-        raise ESDOC_Exception('{0} is an unsupported encoding.'.format(encoding))
+        raise PYESDOC_Exception('Document instances cannot be decoded from null objects.')
+    if not is_supported_ontology(schema_name, schema_version):
+        msg = "Ontology {0} v{1} is unsupported."
+        raise PYESDOC_Exception(msg.format(schema_name, schema_version))
+    if not encoding in _decoders:
+        raise PYESDOC_Exception("{0} decoding unsupported.".format(encoding))
 
-    return decoder(representation, schema, encoding)
+    ctx = _ContextInfo(schema_name, schema_version, encoding, representation=representation)
+    _decoders[encoding](ctx)
+
+    return ctx.instance
 
 
-def encode(instance, schema, encoding):
+def encode(instance, schema_name, schema_version, encoding):
     """Encodes a pyesdoc document instance.
 
     :param instance: pyesdoc document instance.
     :type instance: object
 
-    :param schema: A document schema (e.g. CIM v1).
-    :type schema: str
+    :param schema_name: A document schema (e.g. CIM).
+    :type schema_name: str
 
+    :param schema_version: A document schema version (e.g. v1).
+    :type schema_version: str
+    
     :param encoding: A document encoding (e.g. json).
     :type encoding: str
 
@@ -65,10 +113,14 @@ def encode(instance, schema, encoding):
     """
     # Defensive programming.
     if instance is None:
-        raise ESDOC_Exception('Cannot encode null objects.')
-    if schema not in CIM_SCHEMAS:
-        raise ESDOC_Exception('{0} is an unsupported CIM schema.'.format(schema))
-    if encoding not in CIM_ENCODINGS:
-        raise ESDOC_Exception('{0} is an unsupported CIM encoding.'.format(encoding))
+        raise PYESDOC_Exception('Cannot encode null objects.')
+    if not is_supported_ontology(schema_name, schema_version):
+        msg = "Schema {0} v{1} (encoding {2}) is unsupported."
+        raise PYESDOC_Exception(msg.format(schema_name, schema_version, encoding))
+    if not encoding in _encoders:
+        raise PYESDOC_Exception("{0} encoding unsupported.".format(encoding))
 
-    return encoder(instance, schema, encoding)
+    ctx = _ContextInfo(schema_name, schema_version, encoding, instance=instance)
+    _encoders[encoding](ctx)
+
+    return ctx.representation

@@ -11,31 +11,17 @@
 """
 
 # Module imports.
-try:
-    import simplejson as json
-except ImportError:
-    import json
+import json
 
 
-def decode(representation, schema):
+def decode(ctx):
     """Decodes a pyesdoc document from a json representation.
 
-    :param representation: A document json representation.
-    :type representation: str
+    :param ctx: Serialization context info.
+    :type ctx: namedtuple
 
-    :param schema: A document schema (e.g. CIM v1).
-    :type schema: str
-
-    :returns: A pyesdoc document instance.
-    :rtype: object
-
-    """
-    as_dict = json.loads(representation)
-    
+    """    
     # TODO 1. From dictionary representation get type info.
     # TODO 2. Instantiate type.
     # TODO 3. Hydrate type.
-
-    return as_dict
-
-
+    ctx.instance = json.loads(ctx.representation)

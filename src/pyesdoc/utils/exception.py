@@ -11,7 +11,7 @@
 """
 
 
-class ESDOC_Exception(Exception):
+class PYESDOC_Exception(Exception):
     """Default library exception class.
 
     """
@@ -30,5 +30,5 @@ class ESDOC_Exception(Exception):
         """Returns a string representation.
 
         """
-        return "ES-DOC :: !!! EXCEPTION !!! : {0}".format(repr(self.message))
+        return "ES-DOC PY-CLIENT EXCEPTION : {0}".format(repr(self.message))
 

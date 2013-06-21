@@ -17,14 +17,17 @@ from pyesdoc.serialization import (
     )
 
 
-def decode(representation, schema, encoding):
+def decode(representation, schema_name, schema_version, encoding):
     """Decodes a pyesdoc document representation.
 
     :param representation: A document representation (e.g. utf-8).
     :type representation: str
 
-    :param schema: A document schema (e.g. CIM v1).
-    :type schema: str
+    :param schema_name: A document schema (e.g. CIM).
+    :type schema_name: str
+
+    :param schema_version: A document schema version (e.g. v1).
+    :type schema_version: str
 
     :param encoding: A document encoding (e.g. json).
     :type encoding: str
@@ -33,17 +36,20 @@ def decode(representation, schema, encoding):
     :rtype: object
 
     """
-    return decoder(representation, schema, encoding)
+    return decoder(representation, schema_name, schema_version, encoding)
 
 
-def encode(instance, schema, encoding):
+def encode(instance, schema_name, schema_version, encoding):
     """Encodes a pyesdoc document instance.
 
     :param instance: pyesdoc document instance.
     :type instance: object
 
-    :param schema: A document schema (e.g. CIM v1).
-    :type schema: str
+    :param schema_name: A document schema (e.g. CIM).
+    :type schema_name: str
+
+    :param schema_version: A document schema version (e.g. v1).
+    :type schema_version: str
 
     :param encoding: A document encoding (e.g. json).
     :type encoding: str
@@ -52,4 +58,4 @@ def encode(instance, schema, encoding):
     :rtype: object
 
     """
-    return encoder(instance, schema, encoding)
+    return encoder(instance, schema_name, schema_version, encoding)

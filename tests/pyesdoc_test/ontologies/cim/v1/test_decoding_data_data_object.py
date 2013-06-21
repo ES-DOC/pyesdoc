@@ -18,13 +18,13 @@ from pyesdoc_test.test_utils import *
 
 
 # Target schema being tested.
-SCHEMA = 'cim'
+_SCHEMA_NAME = 'cim'
 
 # Target schema version being tested.
-SCHEMA_VERSION = '1'
+_SCHEMA_VERSION = '1'
 
 # Test representation file.
-FILE = '1.5/data.data_object.xml'
+_TEST_FILE = '1.5/data.data_object.xml'
 
 
 class TestDecodeDataObject(unittest.TestCase):
@@ -32,12 +32,11 @@ class TestDecodeDataObject(unittest.TestCase):
 
     """
     def test_open_xml(self):
-        xml = get_test_file(SCHEMA, SCHEMA_VERSION, FILE)
-        assert xml is not None
+        assert get_test_file(_SCHEMA_NAME, _SCHEMA_VERSION, _TEST_FILE) is not None
 
 
     def test_decode_obj_from_xml(self):
-        obj = decode_obj_from_xml(SCHEMA, SCHEMA_VERSION, FILE, TYPE)
+        obj = decode_obj_from_xml(_SCHEMA_NAME, _SCHEMA_VERSION, _TEST_FILE, TYPE)
 
         assert_cim(obj, '834151a4-978d-4627-954e-285916bb907a', '1', '2011-09-28T16:08:41')
 
@@ -92,7 +91,7 @@ class TestDecodeDataObject(unittest.TestCase):
 
 
     def test_representation_dict(self):
-        d = decode_dict_from_xml(SCHEMA, SCHEMA_VERSION, FILE, TYPE)
+        d = decode_dict_from_xml(_SCHEMA_NAME, _SCHEMA_VERSION, _TEST_FILE, TYPE)
 
         assert d is not None
         assert isinstance(d, dict) == True

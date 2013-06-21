@@ -14,13 +14,13 @@ from pyesdoc_test.test_utils import *
 
 
 # Target schema being tested.
-SCHEMA = 'cim'
+_SCHEMA_NAME = 'cim'
 
 # Target schema version being tested.
-SCHEMA_VERSION = '1'
+_SCHEMA_VERSION = '1'
 
 # Test representation file.
-FILE = '1.5/quality.cim_quality.xml'
+_TEST_FILE = '1.5/quality.cim_quality.xml'
 
 
 class TestDecodeCimQuality(unittest.TestCase):
@@ -28,12 +28,11 @@ class TestDecodeCimQuality(unittest.TestCase):
 
     """
     def test_open_xml(self):
-        xml = get_test_file(SCHEMA, SCHEMA_VERSION, FILE)
-        assert xml is not None
+        assert get_test_file(_SCHEMA_NAME, _SCHEMA_VERSION, _TEST_FILE) is not None
 
 
     def test_decode_obj_from_xml(self):
-        obj = decode_obj_from_xml(SCHEMA, SCHEMA_VERSION, FILE, TYPE)
+        obj = decode_obj_from_xml(_SCHEMA_NAME, _SCHEMA_VERSION, _TEST_FILE, TYPE)
     
         assert_cim(obj, 'c1debb66-2737-11e2-bc06-0010185b3f28', '2', '2012-11-05T09:51:25')
 
@@ -61,7 +60,7 @@ class TestDecodeCimQuality(unittest.TestCase):
 
 
     def test_representation_dict(self):
-        d = decode_dict_from_xml(SCHEMA, SCHEMA_VERSION, FILE, TYPE)
+        d = decode_dict_from_xml(_SCHEMA_NAME, _SCHEMA_VERSION, _TEST_FILE, TYPE)
 
         assert_object(d, dict)
         assert_uuid(d['cim_info']['id'], 'c1debb66-2737-11e2-bc06-0010185b3f28')

@@ -14,13 +14,13 @@ from pyesdoc_test.test_utils import *
 
 
 # Target schema being tested.
-SCHEMA = 'cim'
+_SCHEMA_NAME = 'cim'
 
 # Target schema version being tested.
-SCHEMA_VERSION = '1'
+_SCHEMA_VERSION = '1'
 
 # Test representation file.
-FILE = '1.5/grids.grid_spec.xml'
+_TEST_FILE = '1.5/grids.grid_spec.xml'
 
 
 class TestDecodeGridSpec(unittest.TestCase):
@@ -28,12 +28,11 @@ class TestDecodeGridSpec(unittest.TestCase):
 
     """
     def test_open_xml(self):
-        xml = get_test_file(SCHEMA, SCHEMA_VERSION, FILE)
-        assert xml is not None
+        assert get_test_file(_SCHEMA_NAME, _SCHEMA_VERSION, _TEST_FILE) is not None
 
 
     def test_decode_obj_from_xml(self):
-        obj = decode_obj_from_xml(SCHEMA, SCHEMA_VERSION, FILE, TYPE)
+        obj = decode_obj_from_xml(_SCHEMA_NAME, _SCHEMA_VERSION, _TEST_FILE, TYPE)
 
         assert_cim(obj, '9cef52e4-e2af-11df-bf17-00163e9152a5', '1', '2012-03-01 13:08:34.746335')
 
@@ -82,7 +81,7 @@ class TestDecodeGridSpec(unittest.TestCase):
         
         
     def test_representation_dict(self):
-        d = decode_dict_from_xml(SCHEMA, SCHEMA_VERSION, FILE, TYPE)
+        d = decode_dict_from_xml(_SCHEMA_NAME, _SCHEMA_VERSION, _TEST_FILE, TYPE)
         assert d is not None
         assert isinstance(d, dict) == True
 

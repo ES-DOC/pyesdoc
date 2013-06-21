@@ -3,18 +3,12 @@
 """
 
 
-def encode(instance, schema):
+def encode(ctx):
     """Encodes an xml representation of passed pyesdoc document instance.
 
-    :param instance: pyesdoc document instance.
-    :type instance: object
-
-    :param schema: A document schema (e.g. CIM v1).
-    :type schema: str
-
-    :returns: An xml representation of document instance.
-    :rtype: str
+    :param ctx: Serialization context info.
+    :type ctx: namedtuple
 
     """
-    # TODO
-    return instance
+    ctx.representation = None
+

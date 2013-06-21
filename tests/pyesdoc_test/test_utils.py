@@ -99,7 +99,7 @@ def decode_obj_from_xml(schema_name, schema_version, xml_file, expected_type):
     xml = get_test_file(schema_name, schema_version, xml_file)
 
     # Decode.
-    obj = decode(xml, schema_version, 'xml')
+    obj = decode(xml, schema_name, schema_version, 'xml')
 
     # Perform basic assertions.
     assert obj is not None

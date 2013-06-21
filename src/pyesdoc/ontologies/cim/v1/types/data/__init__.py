@@ -7,7 +7,7 @@
    :synopsis: A set of cim 1 data package types.
 
 .. moduleauthor:: Earth System Documentation (ES-DOC) <dev@esdocumentation.org>
-.. note:: Code generated using esdoc_mp @ 2013-06-14 19:01:08.017617.
+.. note:: Code generated using esdoc_mp @ 2013-06-21 14:34:23.240056.
 
 """
 
