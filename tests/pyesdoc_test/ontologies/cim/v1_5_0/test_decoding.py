@@ -1,0 +1,16 @@
+"""
+A set of cim related unit tests.
+"""
+
+# Module imports.
+from pyesdoc_test.ontologies.cim.v1_5_0.test_decoding_activity_ensemble import TestDecodeCIM_v1_5_0_Ensemble
+from pyesdoc_test.ontologies.cim.v1_5_0.test_decoding_activity_ensemble_1 import TestDecodeCIM_v1_5_0_Ensemble_1
+from pyesdoc_test.ontologies.cim.v1_5_0.test_decoding_activity_numerical_experiment import TestDecodeCIM_v1_5_0_NumericalExperiment
+from pyesdoc_test.ontologies.cim.v1_5_0.test_decoding_activity_simulation_run import TestDecodeCIM_v1_5_0_SimulationRun
+from pyesdoc_test.ontologies.cim.v1_5_0.test_decoding_data_data_object import TestDecodeCIM_v1_5_0_DataObject
+from pyesdoc_test.ontologies.cim.v1_5_0.test_decoding_grids_gridspec import TestDecodeCIM_v1_5_0_GridSpec
+from pyesdoc_test.ontologies.cim.v1_5_0.test_decoding_quality_cim_quality import TestDecodeCIM_v1_5_0_CimQuality
+from pyesdoc_test.ontologies.cim.v1_5_0.test_decoding_shared_platform import TestDecodeCIM_v1_5_0_Platform
+from pyesdoc_test.ontologies.cim.v1_5_0.test_decoding_software_model_component import TestDecodeCIM_v1_5_0_ModelComponent
+
+

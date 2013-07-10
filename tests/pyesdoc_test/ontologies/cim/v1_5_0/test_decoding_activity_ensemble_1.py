@@ -17,10 +17,10 @@ _SCHEMA_NAME = 'cim'
 _SCHEMA_VERSION = '1'
 
 # Test representation file.
-_TEST_FILE = '1.5/activity.ensemble_1.xml'
+_TEST_FILE = '/v1_5_0/files/activity.ensemble_1.xml'
 
 
-class TestDecodeEnsemble_1(unittest.TestCase):
+class TestDecodeCIM_v1_5_0_Ensemble_1(unittest.TestCase):
     """A decoding from xml unit test.
 
     """

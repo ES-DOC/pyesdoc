@@ -7,7 +7,7 @@
    :synopsis: A concrete class within the cim v1 type system.
 
 .. moduleauthor:: Earth System Documentation (ES-DOC) <dev@esdocumentation.org>
-.. note:: Code generated using esdoc_mp @ 2013-06-21 14:34:23.301675.
+.. note:: Code generated using esdoc_mp @ 2013-07-10 16:12:40.271425.
 
 """
 

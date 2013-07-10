@@ -26,14 +26,14 @@ class _ContextInfo(object):
 
     """
     def __init__(self,
-                 schema_name,
-                 schema_version,
+                 ontology_name,
+                 ontology_version,
                  encoding,
                  type=None,
                  representation=None,
                  instance=None):
-        self.schema_name = str(schema_name).upper()
-        self.schema_version = str(schema_version).upper()
+        self.ontology_name = str(ontology_name).lower()
+        self.ontology_version = str(ontology_version).upper()
         self.encoding = str(encoding).lower()
         self.type = type
         self.representation = representation
@@ -58,17 +58,17 @@ _encoders = {
 
 
 
-def decode(representation, schema_name, schema_version, encoding):
+def decode(representation, ontology_name, ontology_version, encoding):
     """Decodes a pyesdoc document representation.
 
     :param representation: A document representation (e.g. utf-8).
     :type representation: str
 
-    :param schema_name: A document schema (e.g. CIM).
-    :type schema_name: str
+    :param ontology_name: Name of ontology from which representation is derived (e.g. CIM).
+    :type ontology_name: str
 
-    :param schema_version: A document schema version (e.g. v1).
-    :type schema_version: str
+    :param ontology_version: Version of ontology from which representation is derived (e.g. v1).
+    :type ontology_version: str
 
     :param encoding: A document encoding (e.g. json).
     :type encoding: str
@@ -80,29 +80,29 @@ def decode(representation, schema_name, schema_version, encoding):
     # Defensive programming.
     if representation is None:
         raise PYESDOC_Exception('Document instances cannot be decoded from null objects.')
-    if not is_supported_ontology(schema_name, schema_version):
+    if not is_supported_ontology(ontology_name, ontology_version):
         msg = "Ontology {0} v{1} is unsupported."
-        raise PYESDOC_Exception(msg.format(schema_name, schema_version))
+        raise PYESDOC_Exception(msg.format(ontology_name, ontology_version))
     if not encoding in _decoders:
         raise PYESDOC_Exception("{0} decoding unsupported.".format(encoding))
 
-    ctx = _ContextInfo(schema_name, schema_version, encoding, representation=representation)
+    ctx = _ContextInfo(ontology_name, ontology_version, encoding, representation=representation)
     _decoders[encoding](ctx)
 
     return ctx.instance
 
 
-def encode(instance, schema_name, schema_version, encoding):
+def encode(instance, ontology_name, ontology_version, encoding):
     """Encodes a pyesdoc document instance.
 
     :param instance: pyesdoc document instance.
     :type instance: object
 
-    :param schema_name: A document schema (e.g. CIM).
-    :type schema_name: str
+    :param ontology_name: Name of ontology from which representation is derived (e.g. CIM).
+    :type ontology_name: str
 
-    :param schema_version: A document schema version (e.g. v1).
-    :type schema_version: str
+    :param ontology_version: Version of ontology from which representation is derived (e.g. v1).
+    :type ontology_version: str
     
     :param encoding: A document encoding (e.g. json).
     :type encoding: str
@@ -114,13 +114,13 @@ def encode(instance, schema_name, schema_version, encoding):
     # Defensive programming.
     if instance is None:
         raise PYESDOC_Exception('Cannot encode null objects.')
-    if not is_supported_ontology(schema_name, schema_version):
+    if not is_supported_ontology(ontology_name, ontology_version):
         msg = "Schema {0} v{1} (encoding {2}) is unsupported."
-        raise PYESDOC_Exception(msg.format(schema_name, schema_version, encoding))
+        raise PYESDOC_Exception(msg.format(ontology_name, ontology_version, encoding))
     if not encoding in _encoders:
         raise PYESDOC_Exception("{0} encoding unsupported.".format(encoding))
 
-    ctx = _ContextInfo(schema_name, schema_version, encoding, instance=instance)
+    ctx = _ContextInfo(ontology_name, ontology_version, encoding, instance=instance)
     _encoders[encoding](ctx)
 
     return ctx.representation

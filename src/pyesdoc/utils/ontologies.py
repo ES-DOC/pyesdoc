@@ -10,9 +10,88 @@
 
 """
 
+# ESDOC json encoding.
+ESDOC_ENCODING_JSON = 'json'
+
+# ESDOC xml encoding.
+ESDOC_ENCODING_XML = 'xml'
+
+# Metafor CIM xml encoding.
+METAFOR_CIM_XML_ENCODING = 'metafor-xml'
+
+# Set of supported ESDOC encodings.
+ESDOC_ENCODINGS = [
+    ESDOC_ENCODING_JSON,
+    ESDOC_ENCODING_XML,
+    METAFOR_CIM_XML_ENCODING,
+]
+
+# Default encoding, language.
+ESDOC_DEFAULT_ENCODING = ESDOC_ENCODING_JSON
+ESDOC_DEFAULT_LANGUAGE = 'en'
+
+# Token for latest version of a document.
+ESDOC_VERSION_LATEST = 'latest'
+
+# Default xml encoding.
+ESDOC_UNICODE = 'utf-8'
+
+# Set of supported cim v1 types.
+CIM_1_TYPE_ASSIMILATION = 'assimilation'
+CIM_1_TYPE_DATA_OBJECT = 'dataObject'
+CIM_1_TYPE_DATA_PROCESSING = 'dataProcessing'
+CIM_1_TYPE_DOCUMENT_SET = 'CIMDocumentSet'
+CIM_1_TYPE_ENSEMBLE = 'ensemble'
+CIM_1_TYPE_GRID_SPEC = 'gridSpec'
+CIM_1_TYPE_MODEL_COMPONENT = 'modelComponent'
+CIM_1_TYPE_NUMERICAL_EXPERIMENT = 'numericalExperiment'
+CIM_1_TYPE_PLATFORM = 'platform'
+CIM_1_TYPE_PROCESSOR_COMPONENT = 'processorComponent'
+CIM_1_TYPE_QUALITY = 'cIM_Quality'
+CIM_1_TYPE_SIMULATION_COMPOSITE = 'simulationComposite'
+CIM_1_TYPE_SIMULATION_RUN = 'simulationRun'
+CIM_1_TYPE_STATISTICAL_MODEL_COMPONENT = 'statisticalModelComponent'
+
+
+# Collection of active cim v1 types.
+CIM_1_TYPES_ACTIVE = [
+    CIM_1_TYPE_DATA_OBJECT,
+    CIM_1_TYPE_ENSEMBLE,
+    CIM_1_TYPE_GRID_SPEC,
+    CIM_1_TYPE_MODEL_COMPONENT,
+    CIM_1_TYPE_NUMERICAL_EXPERIMENT,
+    CIM_1_TYPE_PLATFORM,
+    CIM_1_TYPE_QUALITY,
+    CIM_1_TYPE_SIMULATION_COMPOSITE,
+    CIM_1_TYPE_SIMULATION_RUN,
+    CIM_1_TYPE_STATISTICAL_MODEL_COMPONENT,
+]
+
+# Collection of all cim v1 types.
+CIM_1_TYPES = [
+    CIM_1_TYPE_ASSIMILATION,
+    CIM_1_TYPE_DATA_OBJECT,
+    CIM_1_TYPE_DATA_PROCESSING,
+    CIM_1_TYPE_DOCUMENT_SET,
+    CIM_1_TYPE_ENSEMBLE,
+    CIM_1_TYPE_GRID_SPEC,
+    CIM_1_TYPE_MODEL_COMPONENT,
+    CIM_1_TYPE_NUMERICAL_EXPERIMENT,
+    CIM_1_TYPE_PLATFORM,
+    CIM_1_TYPE_PROCESSOR_COMPONENT,
+    CIM_1_TYPE_QUALITY,
+    CIM_1_TYPE_SIMULATION_COMPOSITE,
+    CIM_1_TYPE_SIMULATION_RUN,
+    CIM_1_TYPE_STATISTICAL_MODEL_COMPONENT,
+]
+
 # Set of supported ontologies.
-_supported = {
-    'CIM' : ['1']
+ESDOC_ONTOLOGIES = {
+    'cim' : {
+        '1' : {
+            'types' : CIM_1_TYPES
+        }
+    }
 }
 
 
@@ -29,129 +108,9 @@ def is_supported(name, version):
     :rtype: bool
 
     """
-    name = str(name).upper()
+    name = str(name).lower()
     version = str(version).upper()
 
-    return name in _supported and version in _supported[name]
-
-
-
-CIM_V1_5 = {
-    'version' : '1.5',
-    'encodings' : [
-        'json',
-        'xml',
-        'metafor-xml'
-    ],
-    'media_types' : [
-        'application/json',
-        'application/xml',
-        'application/vnd.metafor.cim-v15'
-    ],
-    'defaults' : {
-        'encoding' : 'json',
-        'language' : 'en',
-        'media_type' : 'application/json'
-    }
-}
-
-
-# Set of supported CIM schemas.
-CIM_SCHEMA_1_5 = '1.5'
-CIM_SCHEMAS = [CIM_SCHEMA_1_5]
-
-# Set of supported ESDOC encodings.
-ESDOC_ENCODING_JSON = 'json'
-ESDOC_ENCODING_XML = 'xml'
-CIM_ENCODING_METAFOR_XML = 'metafor-xml'
-
-CIM_ENCODINGS = [
-    ESDOC_ENCODING_JSON,
-    ESDOC_ENCODING_XML,
-    CIM_ENCODING_METAFOR_XML,
-]
-
-# Default encoding, language, schema.
-CIM_DEFAULT_ENCODING = ESDOC_ENCODING_XML
-CIM_DEFAULT_LANGUAGE = 'en'
-CIM_DEFAULT_SCHEMA = CIM_SCHEMA_1_5
-
-
-
-def get_cim_media_type(version, encoding):
-    """
-    Derives cim media type from passed version / encoding.
-
-    Keyword Arguments:
-    version - version of cim schema.
-    encoding - cim document encoding.
-    """
-    version = version.replace('.', '')
-    mt = 'application/vnd.metafor.cim-v{0}+{1}'
-    mt = mt.format(version, encoding)
-
-    return mt
-
-
-
-
-"""Exposes set of cim constants.
-
-"""
-
-
-# Set of supported CIM schemas.
-CIM_SCHEMA_1_5 = '1.5'
-CIM_SCHEMAS = [
-    CIM_SCHEMA_1_5
-]
-
-# Supported CIM xml schemas.
-CIM_XML_1_5_SCHEMA = 'http://www.purl.org/org/esmetadata/cim/1.5/schemas'
-CIM_XML_1_5_XSD = 'http://www.purl.org/org/esmetadata/cim/1.5/schemas/cim.xsd'
-
-# Set of supported CIM encodings.
-CIM_ENCODING_JSON = 'json'
-CIM_ENCODING_XML = 'xml'
-CIM_ENCODINGS = [
-    CIM_ENCODING_JSON,
-    CIM_ENCODING_XML,
-]
-
-# Set of standard representations to be decoded automatically.
-CIM_STANDARD_REPRESENTATIONS = [
-    (CIM_SCHEMA_1_5, CIM_ENCODING_JSON)
-]
-
-# Default encoding, language, schema.
-CIM_DEFAULT_ENCODING = CIM_ENCODING_JSON
-CIM_DEFAULT_LANGUAGE = 'en'
-CIM_DEFAULT_SCHEMA = CIM_SCHEMA_1_5
-
-# Set of supported CIM media types.
-CIM_MEDIA_TYPE = "application/vnd.metafor.cim"
-CIM_MEDIA_TYPE_V15 = CIM_MEDIA_TYPE + "-v15"
-CIM_MEDIA_TYPE_V15_JSON = CIM_MEDIA_TYPE_V15 + "+json"
-CIM_MEDIA_TYPE_V15_XML = CIM_MEDIA_TYPE_V15 + "+xml"
-CIM_MEDIA_TYPES = [
-    CIM_MEDIA_TYPE_V15_JSON,
-    CIM_MEDIA_TYPE_V15_XML,
-]
-
-METAFOR_MEDIA_TYPE_CIM_V15 = "application/vnd.esdoc.cim-v1.5"
-METAFOR_MEDIA_TYPE_CIM_V15_XML = METAFOR_MEDIA_TYPE_CIM_V15 + '+xml'
-
-ESDOC_MEDIA_TYPE_CIM_V15 = "application/vnd.esdoc.cim-v1.5"
-ESDOC_MEDIA_TYPE_CIM_V15_XML = ESDOC_MEDIA_TYPE_CIM_V15 + "+xml"
-ESDOC_MEDIA_TYPE_CIM_V15_JSON = ESDOC_MEDIA_TYPE_CIM_V15 + "+json"
-
-
-# Token for latest version of a document.
-CIM_DOC_VERSION_LATEST = 'latest'
-
-# Default xml encoding.
-CIM_UNICODE = 'utf-8'
-
-
+    return name in ESDOC_ONTOLOGIES and version in ESDOC_ONTOLOGIES[name]
 
 

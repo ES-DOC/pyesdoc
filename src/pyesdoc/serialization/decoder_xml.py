@@ -21,12 +21,19 @@ from pyesdoc.utils.exception import PYESDOC_Exception
 
 from pyesdoc.ontologies.cim.v1.types.shared.cim_type_info import CimTypeInfo
 
-# Set of supported decoders.
-_decoders = None
 
-# Type information injected into decoded objects.
-# TODO replace with values from repo.
-_type_info = None
+
+
+class _State(object):
+    """Encpasulates mutable module state.
+
+    """
+    # Type information injected into decoded objects.
+    # TODO replace with values from repo.
+    type_info = None
+
+    # Set of supported decoders.
+    decoders = None
 
 
 def _get_decoder(ctx):
@@ -36,16 +43,12 @@ def _get_decoder(ctx):
     :type ctx: namedtuple
 
     """
-    global _decoders
-
     def load_decoders():
-        global _decoders
-        
         import pyesdoc.ontologies.cim.v1.serialization as v1_decoders
 
         # Set of supported decoders.
-        _decoders = {
-            'CIM' : {
+        _State.decoders = {
+            'cim' : {
                 '1' : {
                     'cIM_Quality' : v1_decoders.decode_cim_quality,
                     'dataObject' : v1_decoders.decode_data_object,
@@ -62,18 +65,19 @@ def _get_decoder(ctx):
         }
 
     # JIT load.
-    if _decoders is None:
+    if _State.decoders is None:
         load_decoders()
 
     # Defensive programming.
-    if ctx.schema_name not in _decoders or \
-       ctx.schema_version not in _decoders[ctx.schema_name] or \
-       ctx.type not in _decoders[ctx.schema_name][ctx.schema_version]:
+    decoders = _State.decoders
+    if ctx.ontology_name not in decoders or \
+       ctx.ontology_version not in decoders[ctx.ontology_name] or \
+       ctx.type not in decoders[ctx.ontology_name][ctx.ontology_version]:
         err = "{0} v{1} {2} decoder not found."
-        err = err.format(ctx.schema_name, ctx.schema_version, ctx.type)
+        err = err.format(ctx.ontology_name, ctx.ontology_version, ctx.type)
         raise PYESDOC_Exception(err)
 
-    return _decoders[ctx.schema_name][ctx.schema_version][ctx.type]
+    return decoders[ctx.ontology_name][ctx.ontology_version][ctx.type]
 
 
 def _set_type_info(ctx):
@@ -83,17 +87,12 @@ def _set_type_info(ctx):
     :type ctx: namedtuple
 
     """
-    global _type_info
-
     def load_type_info():
-        global _type_info
-        
         import pyesdoc.ontologies.cim.v1.serialization as v1_decoders
 
         # Type information injected into decoded objects.
-        # TODO replace with values from repo.
-        _type_info = {
-            'CIM' : {
+        _State.type_info = {
+            'cim' : {
                 '1' : {
                     'cIM_Quality' : ('quality', 'QC Record'),
                     'dataObject' : ('data', 'Data Object'),
@@ -110,21 +109,23 @@ def _set_type_info(ctx):
         }
 
     # JIT load.
-    if _type_info is None:
+    if _State.type_info is None:
         load_type_info()
 
     # Defensive programming.
-    if ctx.schema_name in _type_info and \
-       ctx.schema_version in _type_info[ctx.schema_name] and \
-       ctx.type in _type_info[ctx.schema_name][ctx.schema_version]:
-        info = _type_info[ctx.schema_name][ctx.schema_version][ctx.type]
+    type_info = _State.type_info
+    if ctx.ontology_name in type_info and \
+       ctx.ontology_version in type_info[ctx.ontology_name] and \
+       ctx.type in type_info[ctx.ontology_name][ctx.ontology_version]:
+        info = type_info[ctx.ontology_name][ctx.ontology_version][ctx.type]
         ctx.instance.cim_info.type_info = CimTypeInfo()
         ctx.instance.cim_info.type_info.package = info[0]
-        ctx.instance.cim_info.type_info.schema = ctx.schema_name
+        ctx.instance.cim_info.type_info.ontology_name = ctx.ontology_name
+        ctx.instance.cim_info.type_info.ontology_version = ctx.ontology_version
         ctx.instance.cim_info.type_info.type = ctx.type
         ctx.instance.cim_info.type_info.type_display_name = info[1]
     else:
-        print "WARNING :: pyesdoc type information is underivable", ctx.schema_name, ctx.schema_version, ctx.type
+        print "WARNING :: pyesdoc type information is underivable", ctx.ontology_name, ctx.ontology_version, ctx.type
 
 
 def decode(ctx):

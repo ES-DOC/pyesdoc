@@ -7,7 +7,7 @@
    :synopsis: A set of cim 1 software package types.
 
 .. moduleauthor:: Earth System Documentation (ES-DOC) <dev@esdocumentation.org>
-.. note:: Code generated using esdoc_mp @ 2013-06-21 14:34:23.241434.
+.. note:: Code generated using esdoc_mp @ 2013-07-10 16:12:40.213526.
 
 """
 

@@ -20,10 +20,10 @@ _SCHEMA_NAME = 'cim'
 _SCHEMA_VERSION = '1'
 
 # Test representation file.
-_TEST_FILE = '1.5/quality.cim_quality.xml'
+_TEST_FILE = '/v1_5_0/files/quality.cim_quality.xml'
 
 
-class TestDecodeCimQuality(unittest.TestCase):
+class TestDecodeCIM_v1_5_0_CimQuality(unittest.TestCase):
     """A decoding from xml unit test.
 
     """

@@ -24,10 +24,10 @@ _SCHEMA_NAME = 'cim'
 _SCHEMA_VERSION = '1'
 
 # Test representation file.
-_TEST_FILE = '1.5/activity.simulation_run.xml'
+_TEST_FILE = '/v1_5_0/files/activity.simulation_run.xml'
 
 
-class TestDecodeSimulationRun(unittest.TestCase):
+class TestDecodeCIM_v1_5_0_SimulationRun(unittest.TestCase):
     """A decoding from xml unit test.
 
     """

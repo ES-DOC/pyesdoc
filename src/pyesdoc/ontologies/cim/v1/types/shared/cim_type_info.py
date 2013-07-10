@@ -7,7 +7,7 @@
    :synopsis: A concrete class within the cim v1 type system.
 
 .. moduleauthor:: Earth System Documentation (ES-DOC) <dev@esdocumentation.org>
-.. note:: Code generated using esdoc_mp @ 2013-06-21 14:34:23.275132.
+.. note:: Code generated using esdoc_mp @ 2013-07-10 16:12:40.251382.
 
 """
 
@@ -27,8 +27,9 @@ class CimTypeInfo(object):
     def __init__(self):
         """Constructor"""
         super(CimTypeInfo, self).__init__()
+        self.ontology_name = str()                   # type = str
+        self.ontology_version = str()                # type = str
         self.package = str()                         # type = str
-        self.schema = str()                          # type = str
         self.type = str()                            # type = str
         self.type_display_name = str()               # type = str
 
@@ -50,8 +51,9 @@ class CimTypeInfo(object):
 
         # Populate a deep dictionary.
         d = dict()
+        append(d, 'ontology_name', self.ontology_name, False, True, False)
+        append(d, 'ontology_version', self.ontology_version, False, True, False)
         append(d, 'package', self.package, False, True, False)
-        append(d, 'schema', self.schema, False, True, False)
         append(d, 'type', self.type, False, True, False)
         append(d, 'type_display_name', self.type_display_name, False, True, False)
         return d

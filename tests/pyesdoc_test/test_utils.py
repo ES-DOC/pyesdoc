@@ -12,23 +12,24 @@
 
 # Module imports.
 import sys
-
-from dateutil import parser as dateutil_parser
-from lxml import etree as et
 import uuid
+from dateutil import parser as dateutil_parser
+
+from lxml import etree as et
+from nose.tools import nottest
 
 from pyesdoc import decode
 
 
-
-def get_test_file_path(schema_name, schema_version, file_name):
+@nottest
+def get_test_file_path(ontology_name, ontology_version, file_name):
     """Returns file path for a test file.
 
-    :param schema_name: Ontology schema name.
-    :type schema_name: str
+    :param ontology_name: Ontology name.
+    :type ontology_name: str
 
-    :param schema_version: Ontology schema version.
-    :type schema_version: str
+    :param ontology_version: Ontology version.
+    :type ontology_version: str
 
     :param file_name: Name of file being tested.
     :type file_name: str
@@ -41,23 +42,21 @@ def get_test_file_path(schema_name, schema_version, file_name):
         if path.endswith('esdoc-py-client/tests'):
             result = path
             result += '/pyesdoc_test/ontologies/'
-            result += schema_name
-            result += '/v'
-            result += schema_version.replace('.', '_')
-            result += '/files/'
+            result += ontology_name
             result += file_name
             return result
     return None
 
 
-def get_test_file(schema_name, schema_version, name, type='xml'):
+@nottest
+def get_test_file(ontology_name, ontology_version, file_name, type='xml'):
     """Opens & returns a test xml file.
 
-    :param schema_name: Ontology schema name.
-    :type schema_name: str
+    :param ontology_name: Ontology name.
+    :type ontology_name: str
 
-    :param schema_version: Ontology schema version.
-    :type schema_version: str
+    :param ontology_version: Ontology version.
+    :type ontology_version: str
 
     :param name: Name of file being tested.
     :type name: str
@@ -69,21 +68,21 @@ def get_test_file(schema_name, schema_version, name, type='xml'):
     :rtype: file
 
     """
-    path = get_test_file_path(schema_name, schema_version, name)
+    path = get_test_file_path(ontology_name, ontology_version, file_name)
     if type=='xml':
         return et.parse(path)
     else:
         return open(path, 'r')
 
 
-def decode_obj_from_xml(schema_name, schema_version, xml_file, expected_type):
+def decode_obj_from_xml(ontology_name, ontology_version, xml_file, expected_type):
     """Decodes a test xml file & performs basic assertions.
 
-    :param schema_name: Ontology schema name.
-    :type schema_name: str
+    :param ontology_name: Ontology name.
+    :type ontology_name: str
 
-    :param schema_version: Ontology schema version.
-    :type schema_version: str
+    :param ontology_version: Ontology version.
+    :type ontology_version: str
     
     :param xml_file: Name of xml file to be opened.
     :type xml_file: str
@@ -96,10 +95,10 @@ def decode_obj_from_xml(schema_name, schema_version, xml_file, expected_type):
 
     """    
     # Open cim xml file.
-    xml = get_test_file(schema_name, schema_version, xml_file)
+    xml = get_test_file(ontology_name, ontology_version, xml_file)
 
     # Decode.
-    obj = decode(xml, schema_name, schema_version, 'xml')
+    obj = decode(xml, ontology_name, ontology_version, 'xml')
 
     # Perform basic assertions.
     assert obj is not None
@@ -108,14 +107,14 @@ def decode_obj_from_xml(schema_name, schema_version, xml_file, expected_type):
     return obj
 
 
-def decode_dict_from_xml(schema_name, schema_version, xml_file, expected_type):
+def decode_dict_from_xml(ontology_name, ontology_version, xml_file, expected_type):
     """Decodes a dictionary from xml file.
 
-    :param schema_name: Ontology schema name.
-    :type schema_name: str
+    :param ontology_name: Ontology name.
+    :type ontology_name: str
 
-    :param schema_version: Ontology schema version.
-    :type schema_version: str
+    :param ontology_version: Ontology version.
+    :type ontology_version: str
 
     :param xml_file: Name of xml file to be opened.
     :type xml_file: str
@@ -127,7 +126,7 @@ def decode_dict_from_xml(schema_name, schema_version, xml_file, expected_type):
     :rtype: dict
 
     """
-    obj = decode_obj_from_xml(schema_name, schema_version, xml_file, expected_type)
+    obj = decode_obj_from_xml(ontology_name, ontology_version, xml_file, expected_type)
 
     # Convert.
     d = obj.as_dict()

@@ -9,6 +9,9 @@
 
 
 """
+# Module imports.
+import types
+
 
     
 def convert_dict_keys(d, key_formatter):

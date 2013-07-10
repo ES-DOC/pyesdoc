@@ -19,10 +19,10 @@ _SCHEMA_NAME = 'cim'
 _SCHEMA_VERSION = '1'
 
 # Test representation file.
-_TEST_FILE = '1.5/software.model_component.xml'
+_TEST_FILE = '/v1_5_0/files/software.model_component.xml'
 
 
-class TestDecodeModelComponent(unittest.TestCase):
+class TestDecodeCIM_v1_5_0_ModelComponent(unittest.TestCase):
     """A decoding from xml unit test.
 
     """
