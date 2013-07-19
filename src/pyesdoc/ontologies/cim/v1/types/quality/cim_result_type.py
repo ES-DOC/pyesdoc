@@ -7,7 +7,7 @@
    :synopsis: An enumerationwithin the cim v1 type system.
 
 .. moduleauthor:: Earth System Documentation (ES-DOC) <dev@esdocumentation.org>
-.. note:: Code generated using esdoc_mp @ 2013-07-10 16:12:40.278096.
+.. note:: Code generated using esdoc_mp @ 2013-07-17 14:43:15.233333.
 
 """
 
