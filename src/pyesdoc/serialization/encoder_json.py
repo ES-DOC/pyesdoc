@@ -48,6 +48,4 @@ def encode(ctx):
     d = convert_dict_keys(d, convert_to_pascal_case)
 
     # Encode to json.
-    representation = JSONEncoder().encode(d)
-    print 'ZZZ', isinstance(representation, unicode)
     ctx.representation = JSONEncoder().encode(d)
