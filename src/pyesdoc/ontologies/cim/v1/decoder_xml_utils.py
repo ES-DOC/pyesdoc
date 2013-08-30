@@ -1,5 +1,5 @@
 """
-.. module:: pyesdoc.serialization.decoder_xml_utils.py
+.. module:: pyesdoc.ontologies.cim.v1.decoder_xml_utils.py
 
    :copyright: @2013 Earth System Documentation (http://esdocumentation.org)
    :license: GPL / CeCILL
@@ -7,6 +7,7 @@
    :synopsis: XML decoding utility functions.
 
 .. moduleauthor:: Earth System Documentation (ES-DOC) <dev@esdocumentation.org>
+.. note:: Code generated using esdoc_mp @ 2013-08-28 14:41:13.340289.
 
 """
 
@@ -52,7 +53,7 @@ def _get_value_as_string(xml, nsmap):
 
     :param xml: An xml element.
     :type xml: lxml.etree._Element
-    
+
     :param nsmap: Set of xml namespace mappings.
     :type nsmap: dict
 
@@ -212,11 +213,14 @@ _simple_type_decoders = {
     'bool' : convert_to_bool,
     'date' : convert_to_datetime,
     'datetime' : convert_to_datetime,
+    'datetime.date' : convert_to_datetime,
+    'datetime.datetime' : convert_to_datetime,
     'float' : convert_to_float,
     'int' : convert_to_integer,
     'str' : convert_to_string,
     'uri' : convert_to_string,
     'uuid' : convert_to_uid,
+    'uuid.UUID' : convert_to_uid,
 }
 
 
@@ -237,7 +241,7 @@ def set_attributes(target, xml, nsmap, decodings):
 
     :returns: A pyesdoc object with assigned attributes.
     :rtype: object
-    
+
     """
     # Iterate & apply decodings.
     for decoding in decodings:
@@ -304,7 +308,7 @@ def _set_attribute(target, xml, nsmap, attr, decoder, xpath, is_simple_type, is_
        '@' not in xpath and \
        xpath.endswith('/text()') == False:
        xpath += '/text()'
-       
+
     # Set target object / attribute.
     obj = target
     parts = attr.split('.')
@@ -397,7 +401,7 @@ def decode_xml(decoder, xml, nsmap, is_iterable):
 
     :param take_first: Flag indicating whether to return only the first entity of a collection.
     :type take_first: bool
-    
+
     :returns: Decoded entity or entity collection.
     :rtype: miscellaneous
 

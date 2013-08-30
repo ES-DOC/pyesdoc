@@ -10,117 +10,69 @@
 
 """
 # Module imports.
-from collections import namedtuple
+from . import (
+    serializer_dict,
+    serializer_json,
+    serializer_xml,
+    serializer_xml_metafor_cim_v1
+    )
+from .. import utils
 
-from pyesdoc.utils.ontologies import is_supported as is_supported_ontology
-from pyesdoc.serialization.decoder_json import decode as json_decoder
-from pyesdoc.serialization.decoder_xml import decode as xml_decoder
-from pyesdoc.serialization.encoder_json import encode as json_encoder
-from pyesdoc.serialization.encoder_xml import encode as xml_encoder
-from pyesdoc.utils.exception import PYESDOC_Exception
-
-
-
-class _ContextInfo(object):
-    """Contextual information passed around during serialization operations.
-
-    """
-    def __init__(self,
-                 ontology_name,
-                 ontology_version,
-                 encoding,
-                 type=None,
-                 representation=None,
-                 instance=None):
-        self.ontology_name = str(ontology_name).lower()
-        self.ontology_version = str(ontology_version).upper()
-        self.encoding = str(encoding).lower()
-        self.type = type
-        self.representation = representation
-        self.instance = instance
 
 
 # Set of supported ESDOC encodings.
+ESDOC_ENCODING_DICT = 'dict'
 ESDOC_ENCODING_JSON = 'json'
 ESDOC_ENCODING_XML = 'xml'
+METAFOR_CIM_XML_ENCODING = 'metafor-cim-v1-xml'
 
-# Set of decoders.
-_decoders = {
-    ESDOC_ENCODING_JSON : json_decoder,
-    ESDOC_ENCODING_XML : xml_decoder,
+
+# Set of supported sesrializers keyed by encoding.
+_serializers = {
+    ESDOC_ENCODING_DICT : serializer_dict,
+    ESDOC_ENCODING_JSON : serializer_json,
+    ESDOC_ENCODING_XML : serializer_xml,
+    METAFOR_CIM_XML_ENCODING : serializer_xml_metafor_cim_v1,
 }
 
-# Set of encoders.
-_encoders = {
-    ESDOC_ENCODING_JSON : json_encoder,
-    ESDOC_ENCODING_XML : xml_encoder,
-}
 
+def _assert(encoding):
+    """Asserts that the serialization encoding is supported."""
+    if not encoding in _serializers:
+        raise ValueError('Document encoding is unsupported :: encoding = {0}.'.format(encoding))
+    
 
-
-def decode(representation, ontology_name, ontology_version, encoding):
+def decode(representation, encoding):
     """Decodes a pyesdoc document representation.
 
-    :param representation: A document representation (e.g. utf-8).
+    :param representation: A document representation (e.g. json).
     :type representation: str
 
-    :param ontology_name: Name of ontology from which representation is derived (e.g. CIM).
-    :type ontology_name: str
-
-    :param ontology_version: Version of ontology from which representation is derived (e.g. v1).
-    :type ontology_version: str
-
-    :param encoding: A document encoding (e.g. json).
+    :param encoding: A document encoding (dict|json|xml|metafor-cim-1-xml).
     :type encoding: str
 
     :returns: A pyesdoc document instance.
     :rtype: object
 
     """
-    # Defensive programming.
-    if representation is None:
-        raise PYESDOC_Exception('Document instances cannot be decoded from null objects.')
-    if not is_supported_ontology(ontology_name, ontology_version):
-        msg = "Ontology {0} v{1} is unsupported."
-        raise PYESDOC_Exception(msg.format(ontology_name, ontology_version))
-    if not encoding in _decoders:
-        raise PYESDOC_Exception("{0} decoding unsupported.".format(encoding))
+    _assert(encoding)
 
-    ctx = _ContextInfo(ontology_name, ontology_version, encoding, representation=representation)
-    _decoders[encoding](ctx)
-
-    return ctx.instance
+    return _serializers[encoding].decode(representation)
 
 
-def encode(instance, ontology_name, ontology_version, encoding):
+def encode(doc, encoding):
     """Encodes a pyesdoc document instance.
 
-    :param instance: pyesdoc document instance.
-    :type instance: object
+    :param doc: pyesdoc document instance.
+    :type doc: object
 
-    :param ontology_name: Name of ontology from which representation is derived (e.g. CIM).
-    :type ontology_name: str
-
-    :param ontology_version: Version of ontology from which representation is derived (e.g. v1).
-    :type ontology_version: str
-    
-    :param encoding: A document encoding (e.g. json).
+    :param encoding: A document encoding (dict|json|xml).
     :type encoding: str
 
-    :returns: A pyesdoc document instance.
-    :rtype: object
+    :returns: A pyesdoc document representation.
+    :rtype: unicode | dict
 
     """
-    # Defensive programming.
-    if instance is None:
-        raise PYESDOC_Exception('Cannot encode null objects.')
-    if not is_supported_ontology(ontology_name, ontology_version):
-        msg = "Schema {0} v{1} (encoding {2}) is unsupported."
-        raise PYESDOC_Exception(msg.format(ontology_name, ontology_version, encoding))
-    if not encoding in _encoders:
-        raise PYESDOC_Exception("{0} encoding unsupported.".format(encoding))
-
-    ctx = _ContextInfo(ontology_name, ontology_version, encoding, instance=instance)
-    _encoders[encoding](ctx)
-
-    return ctx.representation
+    _assert(encoding)
+    
+    return _serializers[encoding].encode(doc)

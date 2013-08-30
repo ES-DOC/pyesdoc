@@ -11,25 +11,38 @@
 """
 
 # Module imports.
+import datetime
+import random
 import sys
 import uuid
-from dateutil import parser as dateutil_parser
 
-from lxml import etree as et
 from nose.tools import nottest
+import dateutil.parser as dateutil_parser
+import lxml.etree as et
 
-from pyesdoc import decode
+import pyesdoc
+import pyesdoc.ontologies.cim.v1.typeset as cim_v1
+
+
+
+# Integer assertion constants.
+COMPARE_EXACT = "EXACT"
+COMPARE_GT = "GT"
+COMPARE_GTE = "GTE"
+COMPARE_LTE = "LTE"
+COMPARE_LT = "LT"
+COMPARE_TYPES = (
+    COMPARE_EXACT,
+    COMPARE_GT,
+    COMPARE_GTE,
+    COMPARE_LT,
+    COMPARE_LTE
+)
 
 
 @nottest
-def get_test_file_path(ontology_name, ontology_version, file_name):
+def get_test_file_path(name):
     """Returns file path for a test file.
-
-    :param ontology_name: Ontology name.
-    :type ontology_name: str
-
-    :param ontology_version: Ontology version.
-    :type ontology_version: str
 
     :param file_name: Name of file being tested.
     :type file_name: str
@@ -41,22 +54,15 @@ def get_test_file_path(ontology_name, ontology_version, file_name):
     for path in sys.path:
         if path.endswith('esdoc-py-client/tests'):
             result = path
-            result += '/pyesdoc_test/ontologies/'
-            result += ontology_name
-            result += file_name
+            result += '/pyesdoc_test/files/'
+            result += name
             return result
     return None
 
 
 @nottest
-def get_test_file(ontology_name, ontology_version, file_name, type='xml'):
+def get_test_file(name, type='xml'):
     """Opens & returns a test xml file.
-
-    :param ontology_name: Ontology name.
-    :type ontology_name: str
-
-    :param ontology_version: Ontology version.
-    :type ontology_version: str
 
     :param name: Name of file being tested.
     :type name: str
@@ -68,124 +74,265 @@ def get_test_file(ontology_name, ontology_version, file_name, type='xml'):
     :rtype: file
 
     """
-    path = get_test_file_path(ontology_name, ontology_version, file_name)
+    path = get_test_file_path(name)
     if type=='xml':
         return et.parse(path)
     else:
         return open(path, 'r')
 
 
-def decode_obj_from_xml(ontology_name, ontology_version, xml_file, expected_type):
-    """Decodes a test xml file & performs basic assertions.
+def encode_to_xml_metafor_cim_v1(doc):
+    # Decode.
+    as_xml = pyesdoc.encode(doc, pyesdoc.METAFOR_CIM_XML_ENCODING)
 
-    :param ontology_name: Ontology name.
-    :type ontology_name: str
+    # Perform basic assertions.
+    assert as_xml is not None
+    assert isinstance(as_xml, str)
+    as_xml.decode('utf-8')
 
-    :param ontology_version: Ontology version.
-    :type ontology_version: str
-    
-    :param xml_file: Name of xml file to be opened.
-    :type xml_file: str
+    return as_xml
 
-    :param expected_type: Type that the decoded instance should be.
-    :type expected_type: class
 
-    :returns: Decoded object.
-    :rtype: object
-
-    """    
+def decode_from_xml_metafor_cim_v1(xml_file, expected_type):
     # Open cim xml file.
-    xml = get_test_file(ontology_name, ontology_version, xml_file)
+    as_xml = get_test_file(xml_file)
 
     # Decode.
-    obj = decode(xml, ontology_name, ontology_version, 'xml')
+    doc = pyesdoc.decode(as_xml, pyesdoc.METAFOR_CIM_XML_ENCODING)
 
     # Perform basic assertions.
-    assert obj is not None
-    assert isinstance(obj, expected_type)
+    assert doc is not None
+    assert isinstance(doc, expected_type)
 
-    return obj
+    return doc
 
 
-def decode_dict_from_xml(ontology_name, ontology_version, xml_file, expected_type):
-    """Decodes a dictionary from xml file.
+def encode_to_dict(doc):
+    # Decode.
+    as_dict = pyesdoc.encode(doc, pyesdoc.ESDOC_ENCODING_DICT)
 
-    :param ontology_name: Ontology name.
-    :type ontology_name: str
+    # Perform basic assertions.
+    assert as_dict is not None
+    assert isinstance(as_dict, dict)
 
-    :param ontology_version: Ontology version.
-    :type ontology_version: str
+    return as_dict
 
-    :param xml_file: Name of xml file to be opened.
-    :type xml_file: str
 
-    :param expected_type: Type that the decoded instance should be.
-    :type expected_type: class
+def decode_from_dict(as_dict):
+    # Decode.
+    doc = pyesdoc.decode(as_dict, pyesdoc.ESDOC_ENCODING_DICT)
 
-    :returns: Decoded dictionary.
-    :rtype: dict
+    # Perform basic assertions.
+    assert doc is not None
+    assert isinstance(doc, object)
+
+    return doc
+
+
+def encode_to_json(doc):
+    # Decode.
+    as_json = pyesdoc.encode(doc, pyesdoc.ESDOC_ENCODING_JSON)
+
+    # Perform basic assertions.
+    assert as_json is not None
+    assert isinstance(as_json, str)
+    as_json.decode('utf-8')
+
+    return as_json
+
+
+def decode_from_json(as_json):
+    # Decode.
+    doc = pyesdoc.decode(as_json, pyesdoc.ESDOC_ENCODING_JSON)
+
+    # Perform basic assertions.
+    assert doc is not None
+    assert isinstance(doc, object)
+
+    return doc
+
+
+def encode_to_xml(doc):
+    # Decode.
+    as_xml = pyesdoc.encode(doc, pyesdoc.ESDOC_ENCODING_XML)
+
+    # Perform basic assertions.
+    assert as_xml is not None
+    assert isinstance(as_xml, str)
+    as_xml.decode('utf-8')
+
+    return as_xml
+
+
+def decode_from_xml(as_xml):
+    # Decode.
+    doc = pyesdoc.decode(as_xml, pyesdoc.ESDOC_ENCODING_XML)
+
+    # Perform basic assertions.
+    assert doc is not None
+    assert isinstance(doc, object)
+
+    return doc
+
+
+def get_test_obj():
+    """Returns a pyesdoc object for test purposes.
 
     """
-    obj = decode_obj_from_xml(ontology_name, ontology_version, xml_file, expected_type)
+    instance = decode_from_xml_metafor_cim_v1('cim',
+                                   '1',
+                                   'cim/v1_5_0/software.model_component.xml',
+                                   cim_v1.ModelComponent)
+    assert_object(instance, cim_v1.ModelComponent)
 
-    # Convert.
-    d = obj.as_dict()
-
-    # Perform basic assertions.
-    assert d is not None
-    assert isinstance(d, dict)
-
-    return d
+    return instance
 
 
-def assert_cim(as_obj, uid, version, create_date):
-    """Tests information associated with a cim object.
+def get_boolean():
+    """Returns a random boolean for testing purposes.
 
-    :param as_obj: Object representation of a document.
-    :type as_obj: object
+    """
+    return True
 
-    :param uid: UID associated with object.
+
+def get_date():
+    """Returns a random integer for testing purposes.
+
+    """
+    return datetime.datetime.now()
+
+
+def get_int(lower=0, upper=9999999):
+    """Returns a random integer for testing purposes.
+
+    """
+    return random.randint(lower, upper)
+
+
+def get_float():
+    """Returns a random float for testing purposes.
+
+    """
+    return random.random()
+
+
+def get_string(len):
+    """Returns a random string for testing purposes.
+
+    """
+    return str(uuid.uuid1())[:len]
+
+
+def get_unicode(len):
+    """Returns a random unicode for testing purposes.
+
+    """
+    return unicode(uuid.uuid1())[:len]
+
+
+def get_uuid():
+    """Returns a uuid for testing purposes.
+
+    """
+    return str(uuid.uuid1())
+
+
+def assert_pyesdoc_obj(obj, uid, version, create_date):
+    """Tests information associated with a pyesdoc object.
+
+    :param obj: Document pyesdoc object representation.
+    :type obj: object
+
+    :param uid: Document UID.
     :type uid: uuid
 
-    :param version: Version associated with object.
+    :param version: Document version.
     :type version: str
 
-    :param create_date: Date upon which object was created.
+    :param create_date: Document create date.
     :type create_date: datetime
 
     """
-    assert_object(as_obj)
-    assert_object(as_obj.cim_info)
+    assert_object(obj)
+    assert_object(obj.cim_info)
     if uid is not None:
-        assert_uuid(as_obj.cim_info.id, uid)
+        assert_uuid(obj.cim_info.id, uid)
     if version is not None:
-        assert_string(as_obj.cim_info.version, version)
+        assert_string(obj.cim_info.version, version)
     if create_date is not None:
-        assert_date(as_obj.cim_info.create_date, create_date)
+        assert_date(obj.cim_info.create_date, create_date)
 
 
-def assert_collection(collection, length=-1):
+def assert_collection(collection,
+                      length = -1,
+                      length_compare = COMPARE_GTE,
+                      item_type=None):
     """Asserts an object collection.
 
-    :param collection: A collection of object instances.
+    :param collection: An object collection.
     :type collection: list
 
-    :param length: Expected collection length.
+    :param length: Collection size.
     :type length: int
+
+    :param length: Collection size comparason operator.
+    :type length: str
+
+    :param item_type: Type that each collection item should sub-class.
+    :type item_type: class or None
 
     """
     assert_object(collection)
-    if length >= 0:
-        assert len(collection) == length
-    
+    assert iter(collection) is not None
+    if length != -1:
+        assert_integer(len(collection), length, length_compare)
+    if item_type is not None:
+        if isinstance(collection, dict):
+            collection = collection.values()
+        for instance in collection:
+            assert_object(instance, item_type)
+
+
+def assert_in_collection(collection, item_attr, items):
+    """Asserts an item is within a collection.
+
+    :param collection: A collection.
+    :type collection: list
+
+    :param item: A collection item.
+    :type item: object
+
+    """
+    try:
+        iter(items)
+    except:
+        items = [items]
+    targets = None
+    if item_attr is not None:
+        targets = [getattr(i, item_attr) for i in collection]
+    else:
+        targets = collection
+    for item in items:
+        assert item in targets, item
+
+
+def assert_none(instance):
+    """Asserts an instance is none.
+
+    :param instance: An object for testing.
+    :type instance: object
+
+    """
+    assert instance is None
+
 
 def assert_object(instance, type=None):
     """Asserts an object instance.
 
-    :param instance: An object instance.
+    :param instance: An object for testing.
     :type instance: object
 
-    :param type: Expected type.
+    :param type: Type that object must either be or sub-class from.
     :type type: class
 
     """
@@ -194,58 +341,126 @@ def assert_object(instance, type=None):
         assert isinstance(instance, type)
 
 
+def assert_objects(instance1, instance2):
+    """Asserts that 2 object instances are equal.
+
+    :param instance1: An object for testing.
+    :type instance1: object
+
+    :param instance2: An object for testing.
+    :type instance2: object
+
+    """
+    assert instance1 is not None
+    assert instance2 is not None
+    assert instance1 == instance2
+
+
 def assert_string(actual, expected, startswith=False):
     """Asserts a string.
 
-    :param actual: Actual value.
-    :type actual: datetime
+    :param actual: A string.
+    :type actual: str
 
-    :param expected: Expected value.
-    :type expected: datetime
+    :param expected: Expected string value.
+    :type expected: str
 
-    :param startswith: Flag indicating whether to perform startswith test.
-    :type startswith: bool
+    :param expected: Flag indicating whether to perform startswith test.
+    :type expected: bool
 
     """
     # Format.
-    actual = actual.strip()
-    expected = expected.strip()
+    actual = str(actual).strip()
+    expected = str(expected).strip()
 
     # Assert.
     if startswith == False:
-        assert actual == expected
+        assert actual == expected, \
+               "String mismatch : actual = {0} :: expected = {1}".format(actual, expected)
     else:
-        assert actual.startswith(expected)
+        assert actual.startswith(expected), \
+               "String startswith mismatch : actual = {0} :: expected = {1}".format(actual, expected)
+
+
+def assert_unicode(actual, expected):
+    """Asserts a unicode.
+
+    :param actual: A unicode.
+    :type actual: str
+
+    :param expected: Expected unicode value.
+    :type expected: str
+
+    """
+    assert_object(actual, unicode)
+    assert_object(expected, unicode)
+    assert actual == expected, \
+           "Unicode mismatch : actual = {0} :: expected = {1}".format(actual, expected)
 
 
 def assert_date(actual, expected):
     """Asserts a datetime.
 
-    :param actual: Actual value.
-    :type actual: datetime
+    :param actual: A date.
+    :type actual: str
 
-    :param expected: Expected value.
-    :type expected: datetime
+    :param expected: Expected date value.
+    :type expected: str
 
     """
     assert actual == dateutil_parser.parse(expected)
 
 
+def assert_integer(actual, expected, assert_type=COMPARE_EXACT):
+    """Asserts an integer.
+
+    :param actual: An integer.
+    :type actual: int
+
+    :param expected: Expected integer value.
+    :type expected: int
+
+    """
+    if assert_type == COMPARE_EXACT:
+        assert actual == expected, "{0} != {1}".format(actual, expected)
+    elif assert_type == COMPARE_GT:
+        assert actual > expected, "{0} !> {1}".format(actual, expected)
+    elif assert_type == COMPARE_GTE:
+        assert actual >= expected, "{0} !>= {1}".format(actual, expected)
+    elif assert_type == COMPARE_LE:
+        assert actual < expected, "{0} !< {1}".format(actual, expected)
+    elif assert_type == COMPARE_LTE:
+        assert actual <= expected, "{0} !<= {1}".format(actual, expected)
+    else:
+        assert actual == expected, "{0} != {1}".format(actual, expected)
+
+
+def assert_integer_negative(actual, expected):
+    """Negatively asserts an integer.
+
+    :param actual: An integer.
+    :type actual: int
+
+    :param expected: Another integer value.
+    :type expected: int
+
+    """
+    assert actual != expected
+
 
 def assert_uuid(actual, expected):
     """Asserts a uuid.
 
-    :param actual: Actual value.
-    :type actual: uuid
+    :param actual: A date.
+    :type actual: str
 
-    :param expected: Expected value.
-    :type expected: uuid
+    :param expected: Expected uuid value.
+    :type expected: str
 
     """
     if isinstance(actual, uuid.UUID) == False:
         actual = uuid.UUID(actual)
     if isinstance(expected, uuid.UUID) == False:
         expected = uuid.UUID(expected)
-        
-    assert actual == expected
 
+    assert actual == expected

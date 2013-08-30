@@ -1,0 +1,198 @@
+<ensemble>
+    <supportsReferences>
+        <supportsReference>
+            <description>Reference to a experiment called 7.3 historicalMisc</description>
+            <type>experiment</type>
+            <version>1</version>
+            <id>b979a032-c273-4875-ae3d-1720b1d70c7c</id>
+            <name>7.3 historicalMisc</name>
+        </supportsReference>
+    </supportsReferences>
+    <responsibleParties>
+        <responsibleParty>
+            <abbreviation>NASA GISS</abbreviation>
+            <organisationName>NASA Goddard Institute for Space Studies USA</organisationName>
+            <role>centre</role>
+        </responsibleParty>
+    </responsibleParties>
+    <rationales />
+    <description>Each simulation was started from 20 year apart IC from the control.</description>
+    <cimInfo>
+        <typeInfo>
+            <typeDisplayName>Ensemble</typeDisplayName>
+            <ontologyName>cim</ontologyName>
+            <type>ensemble</type>
+            <ontologyVersion>1</ontologyVersion>
+            <package>activity</package>
+        </typeInfo>
+        <author>
+            <role>documentAuthor</role>
+            <individualName>Metafor Questionnaire</individualName>
+        </author>
+        <id>fd46d094-6fdb-11e1-825e-00163e9152a5</id>
+        <version>1</version>
+        <createDate>2012-03-17 02:50:59.407620</createDate>
+    </cimInfo>
+    <fundingSources />
+    <longName>historical (no-AIE), GISS-E2-R, non-interactive composition (phsyics-version=1)</longName>
+    <members>
+        <member>
+            <simulationReference>
+                <description>Reference to a simulation called historicalNoAIE GISS-E2-R p1</description>
+                <type>simulation</type>
+                <version>1</version>
+                <externalId />
+                <changes />
+                <id>80509692-6fdb-11e1-9bbb-00163e9152a5</id>
+                <name>historicalNoAIE GISS-E2-R p1</name>
+            </simulationReference>
+            <ensembleIds>
+                <ensembleId>
+                    <value>r1i1p1</value>
+                    <isOpen>True</isOpen>
+                </ensembleId>
+            </ensembleIds>
+        </member>
+        <member>
+            <simulationReference>
+                <description>Reference to a simulation called historicalNoAIE GISS-E2-R p1</description>
+                <type>simulation</type>
+                <version>1</version>
+                <changes>
+                    <change>
+                        <details>
+                            <detail>
+                                <description>ICs come from different points in the control run</description>
+                            </detail>
+                        </details>
+                        <date>1850-01-01 00:00:00+00:00</date>
+                        <type>InitialCondition</type>
+                        <name>IC mod</name>
+                    </change>
+                </changes>
+                <id>80509692-6fdb-11e1-9bbb-00163e9152a5</id>
+                <name>historicalNoAIE GISS-E2-R p1</name>
+            </simulationReference>
+            <fundingSources />
+            <ensembleIds>
+                <ensembleId>
+                    <value>r2i1p1</value>
+                    <isOpen>True</isOpen>
+                    <standards>
+                        <standard>
+                            <name>DRS_CMIP5_ensembleType</name>
+                        </standard>
+                    </standards>
+                </ensembleId>
+            </ensembleIds>
+        </member>
+        <member>
+            <simulationReference>
+                <description>Reference to a simulation called historicalNoAIE GISS-E2-R p1</description>
+                <type>simulation</type>
+                <version>1</version>
+                <changes>
+                    <change>
+                        <details>
+                            <detail>
+                                <description>ICs come from different points in the control run</description>
+                            </detail>
+                        </details>
+                        <date>1850-01-01 00:00:00+00:00</date>
+                        <type>InitialCondition</type>
+                        <name>IC mod</name>
+                    </change>
+                </changes>
+                <id>80509692-6fdb-11e1-9bbb-00163e9152a5</id>
+                <name>historicalNoAIE GISS-E2-R p1</name>
+            </simulationReference>
+            <fundingSources />
+            <ensembleIds>
+                <ensembleId>
+                    <value>r3i1p1</value>
+                    <isOpen>True</isOpen>
+                    <standards>
+                        <standard>
+                            <name>DRS_CMIP5_ensembleType</name>
+                        </standard>
+                    </standards>
+                </ensembleId>
+            </ensembleIds>
+        </member>
+        <member>
+            <simulationReference>
+                <description>Reference to a simulation called historicalNoAIE GISS-E2-R p1</description>
+                <type>simulation</type>
+                <version>1</version>
+                <externalId />
+                <changes>
+                    <change>
+                        <details>
+                            <detail>
+                                <description>ICs come from different points in the control run</description>
+                            </detail>
+                        </details>
+                        <date>1850-01-01 00:00:00+00:00</date>
+                        <type>InitialCondition</type>
+                        <name>IC mod</name>
+                    </change>
+                </changes>
+                <id>80509692-6fdb-11e1-9bbb-00163e9152a5</id>
+                <name>historicalNoAIE GISS-E2-R p1</name>
+            </simulationReference>
+            <fundingSources />
+            <ensembleIds>
+                <ensembleId>
+                    <value>r4i1p1</value>
+                    <isOpen>True</isOpen>
+                    <standards>
+                        <standard>
+                            <name>DRS_CMIP5_ensembleType</name>
+                        </standard>
+                    </standards>
+                </ensembleId>
+            </ensembleIds>
+        </member>
+        <member>
+            <simulationReference>
+                <description>Reference to a simulation called historicalNoAIE GISS-E2-R p1</description>
+                <type>simulation</type>
+                <version>1</version>
+                <externalId />
+                <changes>
+                    <change>
+                        <details>
+                            <detail>
+                                <description>ICs come from different points in the control run</description>
+                            </detail>
+                        </details>
+                        <date>1850-01-01 00:00:00+00:00</date>
+                        <type>InitialCondition</type>
+                        <name>IC mod</name>
+                    </change>
+                </changes>
+                <id>80509692-6fdb-11e1-9bbb-00163e9152a5</id>
+                <name>historicalNoAIE GISS-E2-R p1</name>
+            </simulationReference>
+            <fundingSources />
+            <ensembleIds>
+                <ensembleId>
+                    <value>r5i1p1</value>
+                    <isOpen>True</isOpen>
+                    <standards>
+                        <standard>
+                            <name>DRS_CMIP5_ensembleType</name>
+                        </standard>
+                    </standards>
+                </ensembleId>
+            </ensembleIds>
+        </member>
+    </members>
+    <outputs />
+    <shortName>historicalNoAIE GISS-E2-R p1</shortName>
+    <esdoc>cim.1.activity.Ensemble</esdoc>
+    <supports />
+    <types>
+        <type>Initial Condition</type>
+    </types>
+</ensemble>
