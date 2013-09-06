@@ -7,7 +7,7 @@
    :synopsis: A set of validators over the cim 1 ontology.
 
 .. moduleauthor:: Earth System Documentation (ES-DOC) <dev@esdocumentation.org>
-.. note:: Code generated using esdoc_mp @ 2013-08-30 17:49:36.020257.
+.. note:: Code generated using esdoc_mp @ 2013-09-06 15:59:51.470549.
 
 """
 
@@ -91,7 +91,6 @@ __all__ = [
     'validate_cim_info',
     'validate_cim_reference',
     'validate_cim_relationship',
-    'validate_cim_type_info',
     'validate_citation',
     'validate_closed_date_range',
     'validate_compiler',
@@ -200,7 +199,6 @@ supported = (
     shared.validate_cim_info,
     shared.validate_cim_reference,
     shared.validate_cim_relationship,
-    shared.validate_cim_type_info,
     shared.validate_citation,
     shared.validate_closed_date_range,
     shared.validate_compiler,

@@ -26,6 +26,17 @@ ESDOC_ENCODING_JSON = 'json'
 ESDOC_ENCODING_XML = 'xml'
 METAFOR_CIM_XML_ENCODING = 'metafor-cim-v1-xml'
 
+# Standard ESDOC encodings.
+ESDOC_ENCODINGS = (
+    ESDOC_ENCODING_DICT,
+    ESDOC_ENCODING_JSON,
+    ESDOC_ENCODING_XML
+)
+
+# Custom ESDOC encodings.
+ESDOC_ENCODINGS_CUSTOM = (
+    METAFOR_CIM_XML_ENCODING,
+)
 
 # Set of supported sesrializers keyed by encoding.
 _serializers = {
@@ -74,5 +85,5 @@ def encode(doc, encoding):
 
     """
     _assert(encoding)
-    
+
     return _serializers[encoding].encode(doc)

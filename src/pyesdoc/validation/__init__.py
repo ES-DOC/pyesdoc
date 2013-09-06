@@ -1,1 +1,0 @@
-print "VALIDATION : package initialised"

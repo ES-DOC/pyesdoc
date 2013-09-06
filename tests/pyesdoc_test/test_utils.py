@@ -81,108 +81,59 @@ def get_test_file(name, type='xml'):
         return open(path, 'r')
 
 
-def encode_to_xml_metafor_cim_v1(doc):
+def serialize(encoding, file, type, assertion):
+    doc = decode_from_xml_metafor_cim_v1(file, type)
+    assertion(doc)
+    type = doc.__class__
+    repr = encode(doc, encoding)
+    if encoding not in (pyesdoc.ESDOC_ENCODING_XML):
+        doc = decode(repr, encoding)
+        assert isinstance(doc, type), "Decoded type mismatch"
+        assertion(doc)
+    
+
+def decode(repr, encoding):
     # Decode.
-    as_xml = pyesdoc.encode(doc, pyesdoc.METAFOR_CIM_XML_ENCODING)
+    doc = pyesdoc.decode(repr, encoding)
 
     # Perform basic assertions.
-    assert as_xml is not None
-    assert isinstance(as_xml, str)
-    as_xml.decode('utf-8')
+    assert doc is not None
+    assert isinstance(doc, object)
 
-    return as_xml
+    return doc
 
 
-def decode_from_xml_metafor_cim_v1(xml_file, expected_type):
+def encode(doc, encoding, type=None):
+    repr = pyesdoc.encode(doc, encoding)
+
+    # Perform basic assertions.
+    assert repr is not None
+    if type is not None:
+        assert isinstance(repr, type)
+        if isinstance(type, str):
+            repr.decode('utf-8')
+
+    return repr
+
+
+def decode_from_xml_metafor_cim_v1(as_xml, type=None):
     # Open cim xml file.
-    as_xml = get_test_file(xml_file)
+    if isinstance(as_xml, str):
+        as_xml = get_test_file(as_xml)
 
-    # Decode.
-    doc = pyesdoc.decode(as_xml, pyesdoc.METAFOR_CIM_XML_ENCODING)
-
-    # Perform basic assertions.
-    assert doc is not None
-    assert isinstance(doc, expected_type)
-
-    return doc
+    return decode(as_xml, pyesdoc.METAFOR_CIM_XML_ENCODING)
 
 
-def encode_to_dict(doc):
-    # Decode.
-    as_dict = pyesdoc.encode(doc, pyesdoc.ESDOC_ENCODING_DICT)
-
-    # Perform basic assertions.
-    assert as_dict is not None
-    assert isinstance(as_dict, dict)
-
-    return as_dict
-
-
-def decode_from_dict(as_dict):
-    # Decode.
-    doc = pyesdoc.decode(as_dict, pyesdoc.ESDOC_ENCODING_DICT)
-
-    # Perform basic assertions.
-    assert doc is not None
-    assert isinstance(doc, object)
-
-    return doc
-
-
-def encode_to_json(doc):
-    # Decode.
-    as_json = pyesdoc.encode(doc, pyesdoc.ESDOC_ENCODING_JSON)
-
-    # Perform basic assertions.
-    assert as_json is not None
-    assert isinstance(as_json, str)
-    as_json.decode('utf-8')
-
-    return as_json
-
-
-def decode_from_json(as_json):
-    # Decode.
-    doc = pyesdoc.decode(as_json, pyesdoc.ESDOC_ENCODING_JSON)
-
-    # Perform basic assertions.
-    assert doc is not None
-    assert isinstance(doc, object)
-
-    return doc
-
-
-def encode_to_xml(doc):
-    # Decode.
-    as_xml = pyesdoc.encode(doc, pyesdoc.ESDOC_ENCODING_XML)
-
-    # Perform basic assertions.
-    assert as_xml is not None
-    assert isinstance(as_xml, str)
-    as_xml.decode('utf-8')
-
-    return as_xml
-
-
-def decode_from_xml(as_xml):
-    # Decode.
-    doc = pyesdoc.decode(as_xml, pyesdoc.ESDOC_ENCODING_XML)
-
-    # Perform basic assertions.
-    assert doc is not None
-    assert isinstance(doc, object)
-
-    return doc
+def encode_to_xml_metafor_cim_v1(doc):
+    return encode(doc, pyesdoc.METAFOR_CIM_XML_ENCODING, str)
 
 
 def get_test_obj():
     """Returns a pyesdoc object for test purposes.
 
     """
-    instance = decode_from_xml_metafor_cim_v1('cim',
-                                   '1',
-                                   'cim/v1_5_0/software.model_component.xml',
-                                   cim_v1.ModelComponent)
+    instance = decode_from_xml_metafor_cim_v1('cim/v1_5_0/software.model_component.xml',
+                                              cim_v1.ModelComponent)
     assert_object(instance, cim_v1.ModelComponent)
 
     return instance

@@ -17,4 +17,8 @@ from convertors import (
     convert_to_spaced_case,
     convert_to_underscore_case
     )
+from options import (
+    get_option,
+    set_option
+    )
 from runtime import PYESDOC_Exception

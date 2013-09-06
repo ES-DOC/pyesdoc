@@ -7,7 +7,7 @@
    :synopsis: Typeset information for the cim v1 ontology.
 
 .. moduleauthor:: Earth System Documentation (ES-DOC) <dev@esdocumentation.org>
-.. note:: Code generated using esdoc_mp @ 2013-08-30 17:49:36.036864.
+.. note:: Code generated using esdoc_mp @ 2013-09-06 15:59:51.483093.
 
 """
 
@@ -99,7 +99,6 @@ __all__ = [
     'CimInfo',
     'CimReference',
     'CimRelationship',
-    'CimTypeInfo',
     'Citation',
     'ClosedDateRange',
     'Compiler',
@@ -208,7 +207,6 @@ TYPES = (
     shared.CimInfo,
     shared.CimReference,
     shared.CimRelationship,
-    shared.CimTypeInfo,
     shared.Citation,
     shared.ClosedDateRange,
     shared.Compiler,

@@ -7,7 +7,7 @@
    :synopsis: A set of validators over the cim.v1.shared package.
 
 .. moduleauthor:: Earth System Documentation (ES-DOC) <dev@esdocumentation.org>
-.. note:: Code generated using esdoc_mp @ 2013-08-30 17:49:36.023744.
+.. note:: Code generated using esdoc_mp @ 2013-09-06 15:59:51.474270.
 
 """
 # Module imports.
@@ -124,19 +124,6 @@ def validate_cim_relationship(instance):
 
     :param instance: A type instance being validated.
     :type instance: cim.v1.types.shared.CimRelationship
-
-    :returns: List of validation errors.
-    :rtype: list
-
-    """
-    return NotImplementedError()
-
-
-def validate_cim_type_info(instance):
-    """Validates an instance of the following type: cim.v1.types.shared.CimTypeInfo.
-
-    :param instance: A type instance being validated.
-    :type instance: cim.v1.types.shared.CimTypeInfo
 
     :returns: List of validation errors.
     :rtype: list

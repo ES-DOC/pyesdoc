@@ -7,7 +7,7 @@
    :synopsis: A set of cim 1 decoders.
 
 .. moduleauthor:: Earth System Documentation (ES-DOC) <dev@esdocumentation.org>
-.. note:: Code generated using esdoc_mp @ 2013-08-30 17:49:36.011319.
+.. note:: Code generated using esdoc_mp @ 2013-09-06 15:59:51.462159.
 
 """
 
@@ -219,25 +219,6 @@ def decode_cim_relationship(xml, nsmap):
     ]
 
     return set_attributes(typeset.shared.CimRelationship(), xml, nsmap, decodings)
-
-
-def decode_cim_type_info(xml, nsmap):
-    """Decodes an instance of the following type: cim type info.
-
-    :param xml: XML from which type is to be decoded.
-    :type xml: lxml.etree
-
-    :param nsmap: XML namespace mappings.
-    :type nsmap: dict
-
-    :returns: A decoded type instance.
-    :rtype: cim.v1.typeset.shared.CimTypeInfo
-
-    """
-    decodings = [
-    ]
-
-    return set_attributes(typeset.shared.CimTypeInfo(), xml, nsmap, decodings)
 
 
 def decode_citation(xml, nsmap):

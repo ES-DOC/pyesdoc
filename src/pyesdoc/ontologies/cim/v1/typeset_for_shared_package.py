@@ -7,7 +7,7 @@
    :synopsis: The set of types of the cim.v1.shared package.
 
 .. moduleauthor:: Earth System Documentation (ES-DOC) <dev@esdocumentation.org>
-.. note:: Code generated using esdoc_mp @ 2013-08-30 17:49:36.056828.
+.. note:: Code generated using esdoc_mp @ 2013-09-06 15:59:51.497346.
 
 """
 # Module imports.
@@ -107,7 +107,6 @@ class CimInfo(object):
         self.project = str()                         # type = str
         self.source = str()                          # type = str
         self.status = ''                             # type = shared.DocumentStatusType
-        self.type_info = None                        # type = shared.CimTypeInfo
         self.version = str()                         # type = str
 
 
@@ -146,24 +145,6 @@ class CimRelationship(object):
 
         self.description = str()                     # type = str
         self.direction = ''                          # type = shared.CimRelationshipDirectionType
-
-
-class CimTypeInfo(object):
-    """A concrete class within the cim v1 type system.
-
-    Encapsulates cim type information.
-    """
-    def __init__(self):
-        """Constructor.
-
-        """
-        super(CimTypeInfo, self).__init__()
-
-        self.ontology_name = str()                   # type = str
-        self.ontology_version = str()                # type = str
-        self.package = str()                         # type = str
-        self.type = str()                            # type = str
-        self.type_display_name = str()               # type = str
 
 
 class Citation(object):

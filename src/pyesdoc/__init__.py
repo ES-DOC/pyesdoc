@@ -12,16 +12,20 @@
 # Module imports.
 import uuid
 
-import ontologies as ontologies
-import serialization as serialization
-import utils as utils
-import validation as validation
+from . import ontologies
+from . import publishing
+from . import serialization
+from . import utils
+from . import validation
 from serialization import (
+    ESDOC_ENCODINGS,
+    ESDOC_ENCODINGS_CUSTOM,
     ESDOC_ENCODING_DICT,
     ESDOC_ENCODING_JSON,
     ESDOC_ENCODING_XML,
     METAFOR_CIM_XML_ENCODING
     )
+from utils import PYESDOC_Exception
 
 
 # Module exports.
@@ -29,18 +33,33 @@ __all__ = [
     'create',
     'decode',
     'encode',
-    'is_supported_ontology',
-    'is_supported_type',
+    'ESDOC_DEFAULT_ENCODING',
+    'ESDOC_DEFAULT_LANGUAGE',
+    'ESDOC_ENCODINGS',
+    'ESDOC_ENCODINGS_CUSTOM',
+    'ESDOC_ENCODING_DICT',
+    'ESDOC_ENCODING_JSON',
+    'ESDOC_ENCODING_XML',
+    'set_option',
+    'is_supported',
     'is_valid',
     'list_types',
+    'METAFOR_CIM_XML_ENCODING',
     'ontologies',
     'publish',
+    'PYESDOC_Exception',
     'retrieve',
+    'set_option',
     'unpublish',
     'validate',
 ]
 
 
+# Default language.
+ESDOC_DEFAULT_LANGUAGE = "en"
+
+# Default encoding.
+ESDOC_DEFAULT_ENCODING = ESDOC_ENCODING_JSON
 
 
 def _raise(msg):
@@ -48,20 +67,16 @@ def _raise(msg):
     raise utils.PYESDOC_Exception(msg)
 
 
-def _assert_ontology(ontology_name, ontology_version):
+def _assert_ontology(n, v):
     """Asserts ontology name/version."""
-    if not ontologies.is_supported(ontology_name, ontology_version):
-        msg = "Ontology {0} v{1} is unsupported."
-        msg = msg.format(ontology_name, ontology_version)
-        _raise(msg)
+    if not ontologies.is_supported(n, v):
+        _raise("Ontology {0} v{1} is unsupported.".format(n, v))
 
 
-def _assert_type(ontology_name, ontology_version, type_name):
+def _assert_type(o, v, p, t):
     """Asserts document type."""
-    if not ontologies.is_supported(ontology_name, ontology_version, type_name):
-        msg = "Type {0}.v{1}.{2} is unsupported."
-        msg = msg.format(ontology_name, ontology_version, type_name)
-        _raise(msg)
+    if not ontologies.is_supported(o, v, p, t):
+        _raise("Type {0}.v{1}.{2} is unsupported.".format(o, v, p, t))
 
 
 def _assert_document(instance, msg):
@@ -155,14 +170,13 @@ def retrieve(uid, version):
 
 
     """
-    # Defensive programming.
-    if uuid is None or not isinstance(uid, uuid.UUID):
-        _raise("Invalid document unique identifier.")
-    if version is None or not isinstance(version, int):
-        _raise("Invalid document version.")
+    # Format parameters.
+    if not isinstance(uid, uuid.UUID):
+        uid = uuid.UUID(uid)
+    if not isinstance(version, int):
+        version = int(version)
 
-    # TODO invoke internal module to retrieve from remote API.
-    raise NotImplementedError("TODO - unpublish instance")
+    return publishing.retrieve(uid, version)
 
 
 def list_types(ontology_name=None, ontology_version=None):
@@ -177,65 +191,64 @@ def list_types(ontology_name=None, ontology_version=None):
     :returns: List of supported document types.
     :rtype: list
     
-    """
-    return ontologies.list(ontology_name, ontology_version)
+    """    
+    return ontologies.list_types(ontology_name, ontology_version)
 
 
-def is_supported_ontology(ontology_name, ontology_version):
+def is_supported(ontology_name,
+                 ontology_version,
+                 ontology_package=None,
+                 ontology_type=None):
     """Returns a flag indicating whether an ontology is supported or not.
 
-    :param ontology_name: Name of a supported ontology (e.g. CIM).
+    :param ontology_name: Ontology name, e.g. cim.
     :type ontology_name: str
 
-    :param ontology_version: Version of a supported ontology (e.g. v1).
+    :param ontology_version: Ontology version, e.g. 1.
     :type ontology_version: str
+
+    :param ontology_package: Ontology package, e.g. activity.
+    :type ontology_package: str
+
+    :param ontology_type: Ontology type, e.g. Experiment.
+    :type ontology_type: str
 
     :returns: True if supported, false otherwise.
     :rtype: bool
 
-    """
-    return ontologies.is_supported(ontology_name, ontology_version)
+    """    
+    return ontologies.is_supported(ontology_name, 
+                                   ontology_version,
+                                   ontology_package,
+                                   ontology_type)
 
 
-def is_supported_type(ontology_name, ontology_version, type_name=None):
-    """Returns a flag indicating whether a type is supported or not.
-
-    :param ontology_name: Name of a supported ontology (e.g. CIM).
-    :type ontology_name: str
-
-    :param ontology_version: Version of a supported ontology (e.g. v1).
-    :type ontology_version: str
-
-    :param type_name: Name of a supported type (e.g. model).
-    :type type_name: str
-
-    :returns: True if supported, false otherwise.
-    :rtype: bool
-
-    """
-    return ontologies.is_supported(ontology_name, ontology_version, type_name)
-
-
-def create(ontology_name, ontology_version, type_name):
+def create(ontology_name, ontology_version, ontology_package, ontology_type):
     """Creates a document.
 
-    :param ontology_name: Name of a supported ontology (e.g. CIM).
+    :param ontology_name: Ontology name, e.g. cim.
     :type ontology_name: str
 
-    :param ontology_version: Version of a supported ontology (e.g. v1).
+    :param ontology_version: Ontology version, e.g. 1.
     :type ontology_version: str
 
-    :param type_name: Name of a supported type (e.g. model).
-    :type type_name: str
+    :param ontology_package: Ontology package, e.g. activity.
+    :type ontology_package: str
+
+    :param ontology_type: Ontology type, e.g. Experiment.
+    :type ontology_type: str
 
     :returns: A pyesdoc document instance.
     :rtype: pyesdoc object
 
     """
     # Defensive programming.
-    _assert_type(ontology_name, ontology_version, type_name)
+    _assert_type(ontology_name, ontology_version, ontology_package, ontology_type)
 
-    return ontologies.create(ontology_name, ontology_version, type_name)
+    return ontologies.create(ontology_name, 
+                             ontology_version,
+                             ontology_package,
+                             ontology_type)
 
 
 def validate(document):
@@ -265,3 +278,20 @@ def is_valid(document):
 
     """
     return not bool(validate(document))
+
+
+def set_option(name, value):
+    """Sets a library option.
+
+    :param name: Option name.
+    :type name: str
+
+    :param value: Option value.
+    :type value: str
+
+    """
+    if name not in _OPTIONS:
+        pass
+
+    _OPTIONS[name] = str(value)
+

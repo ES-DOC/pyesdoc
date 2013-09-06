@@ -7,7 +7,7 @@
    :synopsis: Encpasulates meta-information pertaining to the cim.v1 typeset.
 
 .. moduleauthor:: Earth System Documentation (ES-DOC) <dev@esdocumentation.org>
-.. note:: Code generated using esdoc_mp @ 2013-08-30 17:49:36.037958.
+.. note:: Code generated using esdoc_mp @ 2013-09-06 15:59:51.483618.
 
 """
 # Module imports.
@@ -85,7 +85,6 @@ shared.CimGenealogy.type_key = 'cim.1.shared.CimGenealogy'
 shared.CimInfo.type_key = 'cim.1.shared.CimInfo'
 shared.CimReference.type_key = 'cim.1.shared.CimReference'
 shared.CimRelationship.type_key = 'cim.1.shared.CimRelationship'
-shared.CimTypeInfo.type_key = 'cim.1.shared.CimTypeInfo'
 shared.Citation.type_key = 'cim.1.shared.Citation'
 shared.ClosedDateRange.type_key = 'cim.1.shared.ClosedDateRange'
 shared.Compiler.type_key = 'cim.1.shared.Compiler'
@@ -559,7 +558,6 @@ shared.CimInfo.type_info = (
     ('project', str, True, False),
     ('source', str, True, False),
     ('status', str, False, False),
-    ('type_info', shared.CimTypeInfo, False, False),
     ('version', str, True, False),
 )
 
@@ -576,14 +574,6 @@ shared.CimReference.type_info = (
 shared.CimRelationship.type_info = (
     ('description', str, False, False),
     ('direction', str, True, False),
-)
-
-shared.CimTypeInfo.type_info = (
-    ('ontology_name', str, True, False),
-    ('ontology_version', str, True, False),
-    ('package', str, True, False),
-    ('type', str, True, False),
-    ('type_display_name', str, True, False),
 )
 
 shared.Citation.type_info = (

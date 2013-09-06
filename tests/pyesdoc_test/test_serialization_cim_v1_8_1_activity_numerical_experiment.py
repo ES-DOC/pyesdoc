@@ -15,6 +15,7 @@ import uuid
 
 from dateutil import parser as dateutil_parser
 
+import pyesdoc
 import pyesdoc.ontologies.cim as cim
 import pyesdoc_test.test_utils as tu
 
@@ -27,26 +28,22 @@ _TEST_TYPE = cim.v1.NumericalExperiment
 _TEST_FILE = 'cim/v1_8_1/activity.numerical_experiment.xml'
 
 
-def test_open_test_file():
-    assert tu.get_test_file(_TEST_FILE) is not None
+def _assert_doc(doc):
+    doc = tu.decode_from_xml_metafor_cim_v1(_TEST_FILE, _TEST_TYPE)
 
+    tu.assert_pyesdoc_obj(doc, 'b464433a-d3a5-11df-837f-00163e9152a5', '2', '2012-03-06 10:06:42.266723')
 
-def test_decode_from_xml_metafor_cim_v1():
-    obj = tu.decode_from_xml_metafor_cim_v1(_TEST_FILE, _TEST_TYPE)
+    assert doc.long_name == 'RCP2.6'
+    assert doc.short_name == 'rcp26'
+    assert doc.description.startswith('Future projection (2006-2100) forced by RCP2.6.')
 
-    tu.assert_pyesdoc_obj(obj, 'b464433a-d3a5-11df-837f-00163e9152a5', '2', '2012-03-06 10:06:42.266723')
+    assert len(doc.rationales) == 1
+    assert doc.rationales[0].startswith('Provide estimate of future antrhopogenic')
 
-    assert obj.long_name == 'RCP2.6'
-    assert obj.short_name == 'rcp26'
-    assert obj.description.startswith('Future projection (2006-2100) forced by RCP2.6.')
+    assert doc.experiment_id == '4.3'
 
-    assert len(obj.rationales) == 1
-    assert obj.rationales[0].startswith('Provide estimate of future antrhopogenic')
-
-    assert obj.experiment_id == '4.3'
-
-    assert len(obj.requirements) == 9
-    for requirement in obj.requirements:
+    assert len(doc.requirements) == 9
+    for requirement in doc.requirements:
         if requirement.id == 'ic.004':
             assert isinstance(requirement, cim.v1.InitialCondition)
             assert requirement.name == '4.3.ic'
@@ -74,51 +71,11 @@ def test_decode_from_xml_metafor_cim_v1():
             assert isinstance(requirement, cim.v1.SpatioTemporalConstraint)
 
 
-@nose.tools.raises(NotImplementedError)
-def test_encode_xml_metafor_cim_v1():
-    doc = tu.decode_from_xml_metafor_cim_v1(_TEST_FILE, _TEST_TYPE)
-
-    tu.encode_to_xml_metafor_cim_v1(doc)
+def test_open_test_file():
+    assert tu.get_test_file(_TEST_FILE) is not None
 
 
-def test_decode_dict():
-    doc1 = tu.decode_from_xml_metafor_cim_v1(_TEST_FILE, _TEST_TYPE)
-
-    as_dict = tu.encode_to_dict(doc1)
-
-    doc = tu.decode_from_dict(as_dict)
-
-
-def test_encode_dict():
-    doc = tu.decode_from_xml_metafor_cim_v1(_TEST_FILE, _TEST_TYPE)
-
-    d = tu.encode_to_dict(doc)
-
-
-def test_decode_json():
-    doc1 = tu.decode_from_xml_metafor_cim_v1(_TEST_FILE, _TEST_TYPE)
-
-    as_json = tu.encode_to_json(doc1)
-
-    doc = tu.decode_from_json(as_json)
-
-
-def test_encode_json():
-    doc = tu.decode_from_xml_metafor_cim_v1(_TEST_FILE, _TEST_TYPE)
-
-    tu.encode_to_json(doc)
-
-
-@nose.tools.raises(NotImplementedError)
-def test_decode_xml():
-    doc1 = tu.decode_from_xml_metafor_cim_v1(_TEST_FILE, _TEST_TYPE)
-
-    as_xml = tu.encode_to_xml(doc1)
-
-    doc = tu.decode_from_xml(as_xml)
-
-
-def test_encode_xml():
-    doc = tu.decode_from_xml_metafor_cim_v1(_TEST_FILE, _TEST_TYPE)
-
-    tu.encode_to_xml(doc)
+def test_serialize():
+    for encoding in pyesdoc.ESDOC_ENCODINGS:
+        tu.serialize.description = "{0}.test_serialize.{1}".format(__name__, encoding)
+        yield tu.serialize, encoding, _TEST_FILE, _TEST_TYPE, _assert_doc

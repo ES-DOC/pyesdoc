@@ -15,6 +15,7 @@ import uuid
 
 from dateutil import parser as dateutil_parser
 
+import pyesdoc
 import pyesdoc.ontologies.cim as cim
 import pyesdoc_test.test_utils as tu
 
@@ -27,31 +28,28 @@ _TEST_TYPE = cim.v1.ModelComponent
 _TEST_FILE = 'cim/v1_5_0/software.model_component.xml'
 
 
-def test_open_test_file():
-    assert tu.get_test_file(_TEST_FILE) is not None
+def _assert_doc(doc):
+    doc = tu.decode_from_xml_metafor_cim_v1(_TEST_FILE, _TEST_TYPE)
 
+    tu.assert_pyesdoc_obj(doc, '7a2b64cc-03ca-11e1-a36a-00163e9152a5', '1', '2012-01-31 12:34:51.361018')
 
-def test_decode_from_xml_metafor_cim_v1():
-    obj = tu.decode_from_xml_metafor_cim_v1(_TEST_FILE, _TEST_TYPE)
-
-    tu.assert_pyesdoc_obj(obj, '7a2b64cc-03ca-11e1-a36a-00163e9152a5', '1', '2012-01-31 12:34:51.361018')
-
-    assert obj.cim_info.author.individual_name == 'Metafor Questionnaire'
-    assert obj.cim_info.author.role == 'documentAuthor'
-    assert len(obj.cim_info.genealogy.relationships) == 1
-    r = obj.cim_info.genealogy.relationships[0]
+    assert isinstance(doc.cim_info, cim.v1.CimInfo)
+    assert doc.cim_info.author.individual_name == 'Metafor Questionnaire'
+    assert doc.cim_info.author.role == 'documentAuthor'
+    assert len(doc.cim_info.genealogy.relationships) == 1
+    r = doc.cim_info.genealogy.relationships[0]
     assert r.description.startswith('The HadGEM2-A model')
     assert r.direction == 'toTarget'
     assert r.target.reference.name == 'HadGEM1'
     assert r.type == 'previousVersionOf'
 
-    assert obj.activity is None
-    assert obj.timing is None
-    assert len(obj.types ) == 1
-    t = obj.types[0]
+    assert doc.activity is None
+    assert doc.timing is None
+    assert len(doc.types ) == 1
+    t = doc.types[0]
     assert t == 'model'
-    assert len(obj.children) == 4
-    cc = obj.children[0]
+    assert len(doc.children) == 4
+    cc = doc.children[0]
     assert len(cc.children) == 3
     assert len(cc.properties) == 4
     assert len(cc.responsible_parties) == 4
@@ -81,109 +79,56 @@ def test_decode_from_xml_metafor_cim_v1():
     assert sn == 'biomass_burning_carbon_flux'
     sn = cp.standard_names[1]
     assert sn == 'carbon_flux'
-    assert len(obj.citations) == 2
-    c = obj.citations[0]
+    assert len(doc.citations) == 2
+    c = doc.citations[0]
     assert c.collective_title.startswith('Bellouin')
     assert c.location.startswith("http://www.metoffice.gov.uk/publications/HCTN/HCTN_73.pdf")
     assert c.title.startswith('Bellouin')
-    c = obj.citations[1]
+    c = doc.citations[1]
     assert c.collective_title.startswith('Collins')
     assert c.location.startswith("http://www.metoffice.gov.uk/publications/HCTN/HCTN_74.pdf")
     assert c.title.startswith('Collins')
-    assert obj.language is None
-    assert obj.properties == []
-    assert obj.composition is None
-    assert obj.coupling_framework is ''
-    assert obj.dependencies == []
-    assert obj.deployments == []
-    assert obj.description.startswith('The HadGEM2-A model')
-    assert obj.funding_sources == []
-    assert obj.grid is None
-    assert obj.is_embedded == False
-    assert obj.license is None
-    assert obj.long_name == 'Hadley Global Environment Model 2 - Atmosphere'
+    assert doc.language is None
+    assert doc.properties == []
+    assert doc.composition is None
+    assert doc.coupling_framework is ''
+    assert doc.dependencies == []
+    assert doc.deployments == []
+    assert doc.description.startswith('The HadGEM2-A model')
+    assert doc.funding_sources == []
+    assert doc.grid is None
+    assert doc.is_embedded == False
+    assert doc.license is None
+    assert doc.long_name == 'Hadley Global Environment Model 2 - Atmosphere'
     # TODO default for uri's = None ?
-    assert obj.online_resource == str()
-    assert obj.parent is None
+    assert doc.online_resource == str()
+    assert doc.parent is None
     # TODO default for str's = None ?
-    assert obj.previous_version == str()
-    assert obj.release_date == dateutil_parser.parse('2009')
-    assert len(obj.responsible_parties) == 4
-    rp = obj.responsible_parties[0]
+    assert doc.previous_version == str()
+    assert doc.release_date == dateutil_parser.parse('2009')
+    assert len(doc.responsible_parties) == 4
+    rp = doc.responsible_parties[0]
     assert rp.abbreviation == 'Chris Jones'
     assert rp.contact_info.address.startswith('Met Office Hadley Centre')
     assert rp.contact_info.email is None
     assert rp.contact_info.url.startswith('http://www.metoffice.gov.uk/research/our-scientists/climate-chemistry-ecosystems/chris-jones')
     assert rp.individual_name == 'Chris Jones'
     assert rp.role == 'PI'
-    rp = obj.responsible_parties[2]
+    rp = doc.responsible_parties[2]
     assert rp.abbreviation == 'Gill Martin'
     assert rp.contact_info.address.startswith('Met Office Hadley Centre')
     assert rp.contact_info.email == 'mark.webb@metoffice.gov.uk'
     assert rp.contact_info.url.startswith('http://www.metoffice.gov.uk/research/people/gill-martin')
     assert rp.individual_name == 'Gill Martin'
     assert rp.role == 'contact'
-    assert obj.short_name == 'HadGEM2-A'
+    assert doc.short_name == 'HadGEM2-A'
 
 
-@nose.tools.raises(NotImplementedError)
-def test_encode_xml_metafor_cim_v1():
-    doc = tu.decode_from_xml_metafor_cim_v1(_TEST_FILE, _TEST_TYPE)
-
-    tu.encode_to_xml_metafor_cim_v1(doc)
+def test_open_test_file():
+    assert tu.get_test_file(_TEST_FILE) is not None
 
 
-def test_decode_dict():
-    doc1 = tu.decode_from_xml_metafor_cim_v1(_TEST_FILE, _TEST_TYPE)
-
-    as_dict = tu.encode_to_dict(doc1)
-
-    doc = tu.decode_from_dict(as_dict)
-
-
-def test_encode_dict():
-    doc = tu.decode_from_xml_metafor_cim_v1(_TEST_FILE, _TEST_TYPE)
-
-    d = tu.encode_to_dict(doc)
-    assert d['cim_info']['id'] == uuid.UUID('7a2b64cc-03ca-11e1-a36a-00163e9152a5')
-
-    assert d['short_name'] == 'HadGEM2-A'
-    assert len(d['types']) == 1
-    assert len(d['children']) == 4
-    cc = d['children'][0]
-    assert len(cc['children']) == 3
-    assert cc['short_name'] == 'Aerosols'
-    assert cc['cim_info']['id'] == uuid.UUID('7a44cb24-03ca-11e1-a36a-00163e9152a5')
-    cp = cc['properties'][0]
-    assert len(cp['children']) == 6
-    assert cp['intent'] == 'interactive'
-    assert cp['short_name'] == 'Aerosol Key Properties'
-
-
-def test_decode_json():
-    doc1 = tu.decode_from_xml_metafor_cim_v1(_TEST_FILE, _TEST_TYPE)
-
-    as_json = tu.encode_to_json(doc1)
-
-    doc = tu.decode_from_json(as_json)
-
-
-def test_encode_json():
-    doc = tu.decode_from_xml_metafor_cim_v1(_TEST_FILE, _TEST_TYPE)
-
-    tu.encode_to_json(doc)
-
-
-@nose.tools.raises(NotImplementedError)
-def test_decode_xml():
-    doc1 = tu.decode_from_xml_metafor_cim_v1(_TEST_FILE, _TEST_TYPE)
-
-    as_xml = tu.encode_to_xml(doc1)
-
-    doc = tu.decode_from_xml(as_xml)
-
-
-def test_encode_xml():
-    doc = tu.decode_from_xml_metafor_cim_v1(_TEST_FILE, _TEST_TYPE)
-
-    tu.encode_to_xml(doc)
+def test_serialize():    
+    for encoding in pyesdoc.ESDOC_ENCODINGS:
+        tu.serialize.description = "{0}.test_serialize.{1}".format(__name__, encoding)
+        yield tu.serialize, encoding, _TEST_FILE, _TEST_TYPE, _assert_doc

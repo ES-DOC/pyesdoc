@@ -15,6 +15,7 @@ import uuid
 
 from dateutil import parser as dateutil_parser
 
+import pyesdoc
 import pyesdoc.ontologies.cim as cim
 import pyesdoc_test.test_utils as tu
 
@@ -27,17 +28,13 @@ _TEST_TYPE = cim.v1.CimQuality
 _TEST_FILE = 'cim/v1_5_0/quality.cim_quality.xml'
 
 
-def test_open_test_file():
-    assert tu.get_test_file(_TEST_FILE) is not None
+def _assert_doc(doc):
+    doc = tu.decode_from_xml_metafor_cim_v1(_TEST_FILE, _TEST_TYPE)
 
+    tu.assert_pyesdoc_obj(doc, 'c1debb66-2737-11e2-bc06-0010185b3f28', '2', '2012-11-05T09:51:25')
 
-def test_decode_from_xml_metafor_cim_v1():
-    obj = tu.decode_from_xml_metafor_cim_v1(_TEST_FILE, _TEST_TYPE)
-
-    tu.assert_pyesdoc_obj(obj, 'c1debb66-2737-11e2-bc06-0010185b3f28', '2', '2012-11-05T09:51:25')
-
-    tu.assert_collection(obj.reports, 1)
-    r1 = obj.reports[0]
+    tu.assert_collection(doc.reports, 1)
+    r1 = doc.reports[0]
     tu.assert_date(r1.date, '2011-05-01 12:00:00')
 
     tu.assert_object(r1.evaluator)
@@ -59,55 +56,11 @@ def test_decode_from_xml_metafor_cim_v1():
     tu.assert_string(r1.evaluation.specification_hyperlink, 'http://cmip5qc.wdc-climate.de')
 
 
-@nose.tools.raises(NotImplementedError)
-def test_encode_xml_metafor_cim_v1():
-    doc = tu.decode_from_xml_metafor_cim_v1(_TEST_FILE, _TEST_TYPE)
-
-    tu.encode_to_xml_metafor_cim_v1(doc)
+def test_open_test_file():
+    assert tu.get_test_file(_TEST_FILE) is not None
 
 
-def test_decode_dict():
-    doc1 = tu.decode_from_xml_metafor_cim_v1(_TEST_FILE, _TEST_TYPE)
-
-    as_dict = tu.encode_to_dict(doc1)
-
-    doc = tu.decode_from_dict(as_dict)
-
-
-def test_encode_dict():
-    doc = tu.decode_from_xml_metafor_cim_v1(_TEST_FILE, _TEST_TYPE)
-
-    d = tu.encode_to_dict(doc)
-    tu.assert_uuid(d['cim_info']['id'], 'c1debb66-2737-11e2-bc06-0010185b3f28')
-    tu.assert_string(d['cim_info']['version'], '2')
-    tu.assert_date(d['cim_info']['create_date'], '2012-11-05T09:51:25')
-
-
-def test_decode_json():
-    doc1 = tu.decode_from_xml_metafor_cim_v1(_TEST_FILE, _TEST_TYPE)
-
-    as_json = tu.encode_to_json(doc1)
-
-    doc = tu.decode_from_json(as_json)
-
-
-def test_encode_json():
-    doc = tu.decode_from_xml_metafor_cim_v1(_TEST_FILE, _TEST_TYPE)
-
-    tu.encode_to_json(doc)
-
-
-@nose.tools.raises(NotImplementedError)
-def test_decode_xml():
-    doc1 = tu.decode_from_xml_metafor_cim_v1(_TEST_FILE, _TEST_TYPE)
-
-    as_xml = tu.encode_to_xml(doc1)
-
-    doc = tu.decode_from_xml(as_xml)
-
-
-def test_encode_xml():
-    doc = tu.decode_from_xml_metafor_cim_v1(_TEST_FILE, _TEST_TYPE)
-
-    tu.encode_to_xml(doc)
-
+def test_serialize():
+    for encoding in pyesdoc.ESDOC_ENCODINGS:
+        tu.serialize.description = "{0}.test_serialize.{1}".format(__name__, encoding)
+        yield tu.serialize, encoding, _TEST_FILE, _TEST_TYPE, _assert_doc

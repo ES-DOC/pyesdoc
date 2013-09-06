@@ -26,25 +26,27 @@ _TYPES = ontologies.get_types()
 
 
 
+def _is_encodable(obj):
+    """Returns flag indicating whether an object is encodable or not."""
+    return obj.__class__ in _TYPES
+
+
 def _encode(obj):
     """Encodes an onbject to a deep dictionary."""
-    def is_encodable(i):
-        return i.__class__ in _TYPES
+    result = {}
 
-    d = obj.__dict__
-
-    for k, v in d.items():
+    for k, v in obj.__dict__.items():
         try:
             iter(v)
         except TypeError:
-            d[k] = _encode(v) if is_encodable(v) else v
+            result[k] = _encode(v) if _is_encodable(v) else v
         else:
             if v.__class__ in (str,):
-                d[k] = v
+                result[k] = v
             else:
-                d[k] = map(lambda i : _encode(i) if is_encodable(i) else i, v)
+                result[k] = map(lambda i : _encode(i) if _is_encodable(i) else i, v)
 
-    return d
+    return result
 
 
 def encode(doc):
