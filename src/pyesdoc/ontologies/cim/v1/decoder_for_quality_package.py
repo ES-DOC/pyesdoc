@@ -7,7 +7,7 @@
    :synopsis: A set of cim 1 decoders.
 
 .. moduleauthor:: Earth System Documentation (ES-DOC) <dev@esdocumentation.org>
-.. note:: Code generated using esdoc_mp @ 2013-09-06 15:59:51.459969.
+.. note:: Code generated using esdoc_mp @ 2013-09-12 17:03:09.108787.
 
 """
 
@@ -32,7 +32,7 @@ def decode_cim_quality(xml, nsmap):
 
     """
     decodings = [
-        ('cim_info', False, decode_cim_info, 'self::cim:cIM_Quality'),
+        ('doc_info', False, decode_doc_info, 'self::cim:cIM_Quality'),
         ('reports', True, decode_report, 'child::cim:report'),
     ]
 

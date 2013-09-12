@@ -80,7 +80,7 @@ def _encode_dict(xml, d):
 
 def _get_xml_tag(doc):
     """Returns document root xml tag."""
-    return utils.convert_to_camel_case(doc.type_key.split('.')[3])
+    return utils.convert_to_camel_case(doc.__class__.type_key.split('.')[3])
 
 
 def encode(doc):
@@ -106,11 +106,11 @@ def encode(doc):
     return ET.tostring(as_xml, _UNICODE)
 
 
-def decode(as_xml):
+def decode(repr):
     """Decodes a document from an xml string.
 
-    :param as_xml: Document xml representation.
-    :type as_xml: str
+    :param repr: Document xml representation.
+    :type repr: str
 
     :returns: A pyesdoc document instance.
     :rtype: object

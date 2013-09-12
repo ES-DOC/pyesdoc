@@ -243,6 +243,8 @@ def set_attributes(target, xml, nsmap, decodings):
     :rtype: object
 
     """
+    attrs = []
+
     # Iterate & apply decodings.
     for decoding in decodings:
         # N.B. attributes to be ommitted can be declared as a mnemonic.
@@ -251,8 +253,19 @@ def set_attributes(target, xml, nsmap, decodings):
         elif len(decoding) == 4:
             attr, is_iterable, type, xpath  = decoding
             is_simple_type = type in _simple_type_decoders
+            is_duplicate = attr in attrs
+            if not is_duplicate:
+                attrs.append(attr)
             try:
-                _set_attribute(target, xml, nsmap, attr, type, xpath, is_simple_type, is_iterable)
+                _set_attribute(target,
+                               xml,
+                               nsmap,
+                               attr,
+                               type,
+                               xpath,
+                               is_simple_type,
+                               is_iterable,
+                               is_duplicate)
             except Exception as e:
                 msg = "ES-DOC :: WARNING :: XML DECODING ERROR\n"
                 msg += "\tTarget = {0};\n".format(target)
@@ -268,35 +281,16 @@ def set_attributes(target, xml, nsmap, decodings):
     return target
 
 
-def _set_attribute(target, xml, nsmap, attr, decoder, xpath, is_simple_type, is_iterable):
+def _set_attribute(target,
+                   xml,
+                   nsmap,
+                   attr,
+                   decoder,
+                   xpath,
+                   is_simple_type,
+                   is_iterable,
+                   is_duplicate):
     """Decodes entity attribute from a decoding.
-
-    :param target: A pyesdoc object with a set of attributes to be assigned.
-    :type target: object
-
-    :param xml: An xml element.
-    :type xml: lxml.etree._Element
-
-    :param nsmap: Set of xml namespace mappings.
-    :type nsmap: dict
-
-    :param attr: Attribute to be assigned.
-    :type attr: str
-
-    :param decoder: Decoder function pointer.
-    :type decoder: function
-
-    :param xpath: Attribute xpath.
-    :type xpath: str
-
-    :param is_simple_type: Flag indicating whether type is a simple one or not.
-    :type is_simple_type: bool
-
-    :param is_iterable: flag indicating whether attribute is iterable or not.
-    :type is_iterable: bool
-
-    :returns: A pyesdoc object with assigned attribute.
-    :rtype: object
 
     """
     # Escape if xpath is unassigned.
@@ -320,19 +314,24 @@ def _set_attribute(target, xml, nsmap, attr, decoder, xpath, is_simple_type, is_
     att_value = _get_attribute_value(xml, nsmap, decoder, xpath, is_simple_type, is_iterable)
 
     # Set attribute value.
-    if not is_iterable:
-        if is_simple_type:
-            setattr(obj, att_name, att_value)
-        else:
-            # ... do not overwrite previously assigned property values.
-            cur_obj = getattr(obj, att_name)
-            if cur_obj is None:
-                setattr(obj, att_name, att_value)
-    else:
-        if len(att_value) > 0:
-            iterable = getattr(obj, att_name)
+    if is_simple_type:
+        if is_iterable:
             for i in att_value:
-                iterable.append(i)
+                getattr(obj, att_name).append(i)
+        else:
+            setattr(obj, att_name, att_value)
+    else:
+        if is_iterable:
+            for i in att_value:
+                getattr(obj, att_name).append(i)
+        else:
+            if is_duplicate:
+                # ... do not overwrite previously assigned property values.
+                cur_obj = getattr(obj, att_name)
+                if cur_obj is None:
+                    setattr(obj, att_name, att_value)
+            else:
+                setattr(obj, att_name, att_value)
 
     # Support operation chaining.
     return target

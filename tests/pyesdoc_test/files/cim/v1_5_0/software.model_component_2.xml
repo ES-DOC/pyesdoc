@@ -1,0 +1,201 @@
+<modelComponent 
+    xmlns:gml="http://www.opengis.net/gml/3.2"
+    xmlns:xlink="http://www.w3.org/1999/xlink"
+    xmlns:gco="http://www.isotc211.org/2005/gco"
+    xmlns:gmd="http://www.isotc211.org/2005/gmd"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns="http://www.purl.org/org/esmetadata/cim/1.5/schemas"
+    xsi:schemaLocation="http://www.purl.org/org/esmetadata/cim/1.5/schemas/cim.xsd">
+
+    <shortName>HadGEM2-A</shortName>
+    <longName>Hadley Global Environment Model 2 - Atmosphere</longName>
+    <description>The HadGEM2-A model is a configuration of the HadGEM2 model which is an atmosphere only simulation with other component interfaces replaced with ancillary file input.</description>
+    <responsibleParty>
+      <!--responsibleParty uri :: 78b7d580-e2ab-11df-9efb-00163e9152a5-->
+        <gmd:individualName>
+            <gco:CharacterString>Chris Jones</gco:CharacterString>
+        </gmd:individualName>
+        <gmd:contactInfo>
+            <gmd:CI_Contact>
+                <gmd:address>
+                    <gmd:CI_Address>
+                        <gmd:deliveryPoint>
+                            <gco:CharacterString>Met Office Hadley Centre, Fitzroy Road, Exeter, Devon, UK, EX1 3PB</gco:CharacterString>
+                        </gmd:deliveryPoint>
+                        <gmd:electronicMailAddress>
+                            <gco:CharacterString></gco:CharacterString>
+                        </gmd:electronicMailAddress>
+                    </gmd:CI_Address>
+                </gmd:address>
+                <gmd:onlineResource>
+                    <gmd:CI_OnlineResource>
+                        <gmd:linkage>
+                            <gmd:URL>http://www.metoffice.gov.uk/research/our-scientists/climate-chemistry-ecosystems/chris-jones</gmd:URL>
+                        </gmd:linkage>
+                    </gmd:CI_OnlineResource>
+                </gmd:onlineResource>
+            </gmd:CI_Contact>
+        </gmd:contactInfo>
+        <gmd:role>
+            <gmd:CI_RoleCode codeList="" codeListValue="PI"/>
+        </gmd:role>
+        <abbreviation>Chris Jones</abbreviation>
+    </responsibleParty>
+    <responsibleParty>
+      <!--responsibleParty uri :: 8baaf006-d3a5-11df-837f-00163e9152a5-->
+        <gmd:organisationName>
+            <gco:CharacterString>UK Met Office Hadley Centre</gco:CharacterString>
+        </gmd:organisationName>
+        <gmd:contactInfo>
+            <gmd:CI_Contact>
+                <gmd:address>
+                    <gmd:CI_Address>
+                        <gmd:deliveryPoint>
+                            <gco:CharacterString></gco:CharacterString>
+                        </gmd:deliveryPoint>
+                        <gmd:electronicMailAddress>
+                            <gco:CharacterString></gco:CharacterString>
+                        </gmd:electronicMailAddress>
+                    </gmd:CI_Address>
+                </gmd:address>
+                <gmd:onlineResource>
+                    <gmd:CI_OnlineResource>
+                        <gmd:linkage>
+                            <gmd:URL></gmd:URL>
+                        </gmd:linkage>
+                    </gmd:CI_OnlineResource>
+                </gmd:onlineResource>
+            </gmd:CI_Contact>
+        </gmd:contactInfo>
+        <gmd:role>
+            <gmd:CI_RoleCode codeList="" codeListValue="funder"/>
+        </gmd:role>
+        <abbreviation>MOHC</abbreviation>
+    </responsibleParty>
+    <responsibleParty>
+      <!--responsibleParty uri :: 470164ce-03cb-11e1-a06e-00163e9152a5-->
+        <gmd:individualName>
+            <gco:CharacterString>Gill Martin</gco:CharacterString>
+        </gmd:individualName>
+        <gmd:contactInfo>
+            <gmd:CI_Contact>
+                <gmd:address>
+                    <gmd:CI_Address>
+                        <gmd:deliveryPoint>
+                            <gco:CharacterString>Met Office Hadley Centre, Fitzroy Road, Exeter, Devon, UK, EX1 3PB</gco:CharacterString>
+                        </gmd:deliveryPoint>
+                        <gmd:electronicMailAddress>
+                            <gco:CharacterString>mark.webb@metoffice.gov.uk</gco:CharacterString>
+                        </gmd:electronicMailAddress>
+                    </gmd:CI_Address>
+                </gmd:address>
+                <gmd:onlineResource>
+                    <gmd:CI_OnlineResource>
+                        <gmd:linkage>
+                            <gmd:URL>http://www.metoffice.gov.uk/research/people/gill-martin</gmd:URL>
+                        </gmd:linkage>
+                    </gmd:CI_OnlineResource>
+                </gmd:onlineResource>
+            </gmd:CI_Contact>
+        </gmd:contactInfo>
+        <gmd:role>
+            <gmd:CI_RoleCode codeList="" codeListValue="contact"/>
+        </gmd:role>
+        <abbreviation>Gill Martin</abbreviation>
+    </responsibleParty>
+    <responsibleParty>
+      <!--responsibleParty uri :: 8baaf006-d3a5-11df-837f-00163e9152a5-->
+        <gmd:organisationName>
+            <gco:CharacterString>UK Met Office Hadley Centre</gco:CharacterString>
+        </gmd:organisationName>
+        <gmd:contactInfo>
+            <gmd:CI_Contact>
+                <gmd:address>
+                    <gmd:CI_Address>
+                        <gmd:deliveryPoint>
+                            <gco:CharacterString></gco:CharacterString>
+                        </gmd:deliveryPoint>
+                        <gmd:electronicMailAddress>
+                            <gco:CharacterString></gco:CharacterString>
+                        </gmd:electronicMailAddress>
+                    </gmd:CI_Address>
+                </gmd:address>
+                <gmd:onlineResource>
+                    <gmd:CI_OnlineResource>
+                        <gmd:linkage>
+                            <gmd:URL></gmd:URL>
+                        </gmd:linkage>
+                    </gmd:CI_OnlineResource>
+                </gmd:onlineResource>
+            </gmd:CI_Contact>
+        </gmd:contactInfo>
+        <gmd:role>
+            <gmd:CI_RoleCode codeList="" codeListValue="centre"/>
+        </gmd:role>
+        <abbreviation>MOHC</abbreviation>
+    </responsibleParty>
+    <releaseDate>2009</releaseDate>
+    <citation>
+        <gmd:title>
+            <gco:CharacterString>Bellouin et al. 2007</gco:CharacterString>
+        </gmd:title>
+        <gmd:date/>
+        <gmd:presentationForm>
+            <gmd:CI_PresentationFormCode codeList="" codeListValue="Online Other"/>
+        </gmd:presentationForm>
+        <gmd:otherCitationDetails>
+            <gco:CharacterString>http://www.metoffice.gov.uk/publications/HCTN/HCTN_73.pdf</gco:CharacterString>
+        </gmd:otherCitationDetails>
+        <gmd:collectiveTitle>
+            <gco:CharacterString>Bellouin N., O. Boucher, J. Haywood, C. Johnson, A. Jones, J. Rae, and S. Woodward. (2007) Improved representation of aerosols for HadGEM2.. Meteorological Office Hadley Centre, Technical Note 73, March 2007</gco:CharacterString>
+        </gmd:collectiveTitle>
+    </citation>
+    <citation>
+        <gmd:title>
+            <gco:CharacterString>Collins et al. 2008</gco:CharacterString>
+        </gmd:title>
+        <gmd:date/>
+        <gmd:presentationForm>
+            <gmd:CI_PresentationFormCode codeList="" codeListValue="Online Other"/>
+        </gmd:presentationForm>
+        <gmd:otherCitationDetails>
+            <gco:CharacterString>http://www.metoffice.gov.uk/publications/HCTN/HCTN_74.pdf</gco:CharacterString>
+        </gmd:otherCitationDetails>
+        <gmd:collectiveTitle>
+            <gco:CharacterString>Collins W.J. , N. Bellouin, M. Doutriaux-Boucher, N. Gedney, T. Hinton, C.D. Jones, S. Liddicoat, G. Martin, F. O'Connor, J. Rae, C. Senior, I. Totterdell, and S. Woodward (2008) Evaluation of the HadGEM2 model.  Meteorological Office Hadley Centre, Technical Note 74</gco:CharacterString>
+        </gmd:collectiveTitle>
+    </citation>
+    <!--I am coupled-->
+    <!--Component Ocean has implemented set to false-->
+    <!--Component Ocean Biogeo Chemistry has implemented set to false-->
+    <!--Component Sea Ice has implemented set to false-->
+    <type open="true" value="model">
+        <controlledVocabulary>
+            <name>metafor</name>
+            <server>http://proj.badc.rl.ac.uk/svn/metafor/cmip5q/trunk</server>
+        </controlledVocabulary>
+    </type>
+    <documentID>7a2b64cc-03ca-11e1-a36a-00163e9152a5</documentID>
+    <documentVersion>1</documentVersion>
+    <documentAuthor>
+        <gmd:individualName>
+            <gco:CharacterString>Metafor Questionnaire</gco:CharacterString>
+        </gmd:individualName>
+        <gmd:role>
+            <gmd:CI_RoleCode codeList="" codeListValue="documentAuthor"/>
+        </gmd:role>
+    </documentAuthor>
+    <documentCreationDate>2012-01-31T12:34:51.361018</documentCreationDate>
+    <documentGenealogy>
+        <relationship>
+            <documentRelationship direction="toTarget" type="previousVersionOf">
+                <description>The HadGEM2-A model was a development from HadGEM1 model used for the CMIP3 simulations.</description>
+                <target>
+                    <reference>
+                        <name>HadGEM1</name>
+                    </reference>
+                </target>
+            </documentRelationship>
+        </relationship>
+    </documentGenealogy>
+</modelComponent>

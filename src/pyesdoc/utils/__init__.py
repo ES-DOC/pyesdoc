@@ -22,3 +22,5 @@ from options import (
     set_option
     )
 from runtime import PYESDOC_Exception
+
+from . import runtime

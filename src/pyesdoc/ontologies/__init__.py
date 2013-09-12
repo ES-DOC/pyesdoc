@@ -133,9 +133,22 @@ def get_type(name, version, package, type):
     :rtype: class or None
 
     """
-    type_key = get_type_key(name, version, package, type)
-    for t in get_types(name, version):
-        if t.type_key.lower() == type_key.lower():
+    return get_type_from_key(get_type_key(name, version, package, type))
+
+
+def get_type_from_key(key):
+    """Returns a type if supported.
+
+    :param key: Type key, e.g. cim.1.software.ModelComponent.
+    :type key: str
+
+    :returns: A type (if found).
+    :rtype: class or None
+
+    """
+    type_key = str(key).lower()
+    for t in get_types():
+        if t.type_key.lower() == type_key:
             return t
 
     return None

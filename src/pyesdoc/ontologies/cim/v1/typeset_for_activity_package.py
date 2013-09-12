@@ -7,7 +7,7 @@
    :synopsis: The set of types of the cim.v1.activity package.
 
 .. moduleauthor:: Earth System Documentation (ES-DOC) <dev@esdocumentation.org>
-.. note:: Code generated using esdoc_mp @ 2013-09-06 15:59:51.488123.
+.. note:: Code generated using esdoc_mp @ 2013-09-12 17:03:09.141765.
 
 """
 # Module imports.
@@ -33,10 +33,10 @@ class Activity(object):
         """
         super(Activity, self).__init__()
 
-        self.funding_sources = []                    # type = str
-        self.projects = []                           # type = activity.ProjectType
-        self.rationales = []                         # type = str
-        self.responsible_parties = []                # type = shared.ResponsibleParty
+        self.funding_sources = []                         # str
+        self.projects = []                                # activity.ProjectType
+        self.rationales = []                              # str
+        self.responsible_parties = []                     # shared.ResponsibleParty
 
 
 class Conformance(object):
@@ -50,17 +50,17 @@ class Conformance(object):
         """
         super(Conformance, self).__init__()
 
-        self.description = str()                     # type = str
-        self.frequency = ''                          # type = activity.FrequencyType
-        self.is_conformant = bool()                  # type = bool
-        self.requirements = []                       # type = activity.NumericalRequirement
-        self.requirements_references = []            # type = shared.CimReference
-        self.sources = []                            # type = shared.DataSource
-        self.sources_references = []                 # type = shared.CimReference
-        self.type = ''                               # type = activity.ConformanceType
+        self.description = str()                          # str
+        self.frequency = ''                               # activity.FrequencyType
+        self.is_conformant = bool()                       # bool
+        self.requirements = []                            # activity.NumericalRequirement
+        self.requirements_references = []                 # shared.DocReference
+        self.sources = []                                 # shared.DataSource
+        self.sources_references = []                      # shared.DocReference
+        self.type = ''                                    # activity.ConformanceType
 
 
-class ExperimentRelationship(shared.CimRelationship):
+class ExperimentRelationship(shared.Relationship):
     """A concrete class within the cim v1 type system.
 
     Contains a set of relationship types specific to a experiment document that can be used to describe its genealogy.
@@ -71,8 +71,8 @@ class ExperimentRelationship(shared.CimRelationship):
         """
         super(ExperimentRelationship, self).__init__()
 
-        self.target = None                           # type = activity.ExperimentRelationshipTarget
-        self.type = ''                               # type = activity.ExperimentRelationshipType
+        self.target = ExperimentRelationshipTarget()      # activity.ExperimentRelationshipTarget
+        self.type = ''                                    # activity.ExperimentRelationshipType
 
 
 class ExperimentRelationshipTarget(object):
@@ -86,8 +86,8 @@ class ExperimentRelationshipTarget(object):
         """
         super(ExperimentRelationshipTarget, self).__init__()
 
-        self.numerical_experiment = None             # type = activity.NumericalExperiment
-        self.reference = None                        # type = shared.CimReference
+        self.numerical_experiment = None                  # activity.NumericalExperiment
+        self.reference = None                             # shared.DocReference
 
 
 class NumericalRequirement(object):
@@ -103,13 +103,13 @@ class NumericalRequirement(object):
         """
         super(NumericalRequirement, self).__init__()
 
-        self.description = str()                     # type = str
-        self.id = str()                              # type = str
-        self.name = str()                            # type = str
-        self.options = []                            # type = activity.NumericalRequirementOption
-        self.requirement_type = str()                # type = str
-        self.source = None                           # type = shared.DataSource
-        self.source_reference = None                 # type = shared.CimReference
+        self.description = str()                          # str
+        self.id = str()                                   # str
+        self.name = str()                                 # str
+        self.options = []                                 # activity.NumericalRequirementOption
+        self.requirement_type = str()                     # str
+        self.source = None                                # shared.DataSource
+        self.source_reference = None                      # shared.DocReference
 
 
 class NumericalRequirementOption(object):
@@ -123,11 +123,11 @@ class NumericalRequirementOption(object):
         """
         super(NumericalRequirementOption, self).__init__()
 
-        self.relationship = str()                    # type = str
-        self.requirement = None                      # type = activity.NumericalRequirement
+        self.relationship = str()                         # str
+        self.requirement = None                           # activity.NumericalRequirement
 
 
-class SimulationRelationship(shared.CimRelationship):
+class SimulationRelationship(shared.Relationship):
     """A concrete class within the cim v1 type system.
 
     Contains a set of relationship types specific to a simulation document that can be used to describe its genealogy.
@@ -138,8 +138,8 @@ class SimulationRelationship(shared.CimRelationship):
         """
         super(SimulationRelationship, self).__init__()
 
-        self.target = None                           # type = activity.SimulationRelationshipTarget
-        self.type = ''                               # type = activity.SimulationRelationshipType
+        self.target = SimulationRelationshipTarget()      # activity.SimulationRelationshipTarget
+        self.type = ''                                    # activity.SimulationRelationshipType
 
 
 class SimulationRelationshipTarget(object):
@@ -153,8 +153,8 @@ class SimulationRelationshipTarget(object):
         """
         super(SimulationRelationshipTarget, self).__init__()
 
-        self.reference = None                        # type = shared.CimReference
-        self.target = ''                             # type = activity.SimulationType
+        self.reference = None                             # shared.DocReference
+        self.target = ''                                  # activity.SimulationType
 
 
 class BoundaryCondition(NumericalRequirement):
@@ -184,12 +184,12 @@ class Experiment(Activity):
         """
         super(Experiment, self).__init__()
 
-        self.generates = []                          # type = str
-        self.measurement_campaigns = []              # type = activity.MeasurementCampaign
-        self.requires = []                           # type = activity.NumericalActivity
-        self.requires_references = []                # type = shared.CimReference
-        self.supports = []                           # type = str
-        self.supports_references = []                # type = shared.CimReference
+        self.generates = []                               # str
+        self.measurement_campaigns = []                   # activity.MeasurementCampaign
+        self.requires = []                                # activity.NumericalActivity
+        self.requires_references = []                     # shared.DocReference
+        self.supports = []                                # str
+        self.supports_references = []                     # shared.DocReference
 
 
 class InitialCondition(NumericalRequirement):
@@ -231,7 +231,7 @@ class MeasurementCampaign(Activity):
         """
         super(MeasurementCampaign, self).__init__()
 
-        self.duration = int()                        # type = int
+        self.duration = int()                             # int
 
 
 class NumericalActivity(Activity):
@@ -247,11 +247,11 @@ class NumericalActivity(Activity):
         """
         super(NumericalActivity, self).__init__()
 
-        self.description = str()                     # type = str
-        self.long_name = str()                       # type = str
-        self.short_name = str()                      # type = str
-        self.supports = []                           # type = activity.Experiment
-        self.supports_references = []                # type = shared.CimReference
+        self.description = str()                          # str
+        self.long_name = str()                            # str
+        self.short_name = str()                           # str
+        self.supports = []                                # activity.Experiment
+        self.supports_references = []                     # shared.DocReference
 
 
 class NumericalExperiment(Experiment):
@@ -265,12 +265,12 @@ class NumericalExperiment(Experiment):
         """
         super(NumericalExperiment, self).__init__()
 
-        self.cim_info = None                         # type = shared.CimInfo
-        self.description = str()                     # type = str
-        self.experiment_id = str()                   # type = str
-        self.long_name = str()                       # type = str
-        self.requirements = []                       # type = activity.NumericalRequirement
-        self.short_name = str()                      # type = str
+        self.description = str()                          # str
+        self.doc_info = shared.DocInfo()                  # shared.DocInfo
+        self.experiment_id = str()                        # str
+        self.long_name = str()                            # str
+        self.requirements = []                            # activity.NumericalRequirement
+        self.short_name = str()                           # str
 
 
 class OutputRequirement(NumericalRequirement):
@@ -313,21 +313,21 @@ class Simulation(NumericalActivity):
         """
         super(Simulation, self).__init__()
 
-        self.authors = str()                         # type = str
-        self.calendar = None                         # type = shared.Calendar
-        self.conformances = []                       # type = activity.Conformance
-        self.control_simulation = None               # type = activity.Simulation
-        self.control_simulation_reference = None     # type = shared.CimReference
-        self.deployments = []                        # type = software.Deployment
-        self.inputs = []                             # type = software.Coupling
-        self.output_references = []                  # type = shared.CimReference
-        self.outputs = []                            # type = data.DataObject
-        self.restart_references = []                 # type = shared.CimReference
-        self.restarts = []                           # type = data.DataObject
-        self.simulation_id = str()                   # type = str
-        self.spinup_date_range = None                # type = shared.ClosedDateRange
-        self.spinup_simulation = None                # type = activity.Simulation
-        self.spinup_simulation_reference = None      # type = shared.CimReference
+        self.authors = str()                              # str
+        self.calendar = shared.Calendar()                 # shared.Calendar
+        self.conformances = []                            # activity.Conformance
+        self.control_simulation = None                    # activity.Simulation
+        self.control_simulation_reference = None          # shared.DocReference
+        self.deployments = []                             # software.Deployment
+        self.inputs = []                                  # software.Coupling
+        self.output_references = []                       # shared.DocReference
+        self.outputs = []                                 # data.DataObject
+        self.restart_references = []                      # shared.DocReference
+        self.restarts = []                                # data.DataObject
+        self.simulation_id = str()                        # str
+        self.spinup_date_range = None                     # shared.ClosedDateRange
+        self.spinup_simulation = None                     # activity.Simulation
+        self.spinup_simulation_reference = None           # shared.DocReference
 
 
 class SimulationComposite(Simulation):
@@ -341,10 +341,10 @@ class SimulationComposite(Simulation):
         """
         super(SimulationComposite, self).__init__()
 
-        self.child = []                              # type = activity.Simulation
-        self.cim_info = None                         # type = shared.CimInfo
-        self.date_range = None                       # type = shared.DateRange
-        self.rank = int()                            # type = int
+        self.child = []                                   # activity.Simulation
+        self.date_range = shared.DateRange()              # shared.DateRange
+        self.doc_info = shared.DocInfo()                  # shared.DocInfo
+        self.rank = int()                                 # int
 
 
 class SimulationRun(Simulation):
@@ -358,10 +358,10 @@ class SimulationRun(Simulation):
         """
         super(SimulationRun, self).__init__()
 
-        self.cim_info = None                         # type = shared.CimInfo
-        self.date_range = None                       # type = shared.DateRange
-        self.model = None                            # type = software.ModelComponent
-        self.model_reference = None                  # type = shared.CimReference
+        self.date_range = shared.DateRange()              # shared.DateRange
+        self.doc_info = shared.DocInfo()                  # shared.DocInfo
+        self.model = None                                 # software.ModelComponent
+        self.model_reference = None                       # shared.DocReference
 
 
 class SpatioTemporalConstraint(NumericalRequirement):
@@ -375,8 +375,8 @@ class SpatioTemporalConstraint(NumericalRequirement):
         """
         super(SpatioTemporalConstraint, self).__init__()
 
-        self.date_range = None                       # type = shared.DateRange
-        self.spatial_resolution = ''                 # type = activity.ResolutionType
+        self.date_range = None                            # shared.DateRange
+        self.spatial_resolution = ''                      # activity.ResolutionType
         self.requirement_type = str("spatioTemporalConstraint")
 
 
@@ -393,15 +393,15 @@ class DownscalingSimulation(NumericalActivity):
         """
         super(DownscalingSimulation, self).__init__()
 
-        self.calendar = None                         # type = shared.Calendar
-        self.cim_info = None                         # type = shared.CimInfo
-        self.downscaled_from = None                  # type = shared.DataSource
-        self.downscaled_from_reference = None        # type = shared.CimReference
-        self.downscaling_id = str()                  # type = str
-        self.downscaling_type = ''                   # type = activity.DownscalingType
-        self.inputs = []                             # type = software.Coupling
-        self.output_references = []                  # type = shared.CimReference
-        self.outputs = []                            # type = data.DataObject
+        self.calendar = shared.Calendar()                 # shared.Calendar
+        self.doc_info = shared.DocInfo()                  # shared.DocInfo
+        self.downscaled_from = shared.DataSource()        # shared.DataSource
+        self.downscaled_from_reference = shared.DocReference()# shared.DocReference
+        self.downscaling_id = str()                       # str
+        self.downscaling_type = ''                        # activity.DownscalingType
+        self.inputs = []                                  # software.Coupling
+        self.output_references = []                       # shared.DocReference
+        self.outputs = []                                 # data.DataObject
 
 
 class Ensemble(NumericalActivity):
@@ -415,11 +415,11 @@ class Ensemble(NumericalActivity):
         """
         super(Ensemble, self).__init__()
 
-        self.cim_info = None                         # type = shared.CimInfo
-        self.members = []                            # type = activity.EnsembleMember
-        self.outputs = []                            # type = shared.DataSource
-        self.outputs_references = []                 # type = shared.CimReference
-        self.types = []                              # type = activity.EnsembleType
+        self.doc_info = shared.DocInfo()                  # shared.DocInfo
+        self.members = []                                 # activity.EnsembleMember
+        self.outputs = []                                 # shared.DataSource
+        self.outputs_references = []                      # shared.DocReference
+        self.types = []                                   # activity.EnsembleType
 
 
 class EnsembleMember(NumericalActivity):
@@ -433,11 +433,11 @@ class EnsembleMember(NumericalActivity):
         """
         super(EnsembleMember, self).__init__()
 
-        self.ensemble = None                         # type = activity.Ensemble
-        self.ensemble_ids = []                       # type = shared.StandardName
-        self.ensemble_reference = None               # type = shared.CimReference
-        self.simulation = None                       # type = activity.Simulation
-        self.simulation_reference = None             # type = shared.CimReference
+        self.ensemble = None                              # activity.Ensemble
+        self.ensemble_ids = []                            # shared.StandardName
+        self.ensemble_reference = None                    # shared.DocReference
+        self.simulation = None                            # activity.Simulation
+        self.simulation_reference = None                  # shared.DocReference
 
 
 class ConformanceType(object):

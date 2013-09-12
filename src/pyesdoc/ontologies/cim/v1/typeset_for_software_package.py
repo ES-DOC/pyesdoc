@@ -7,7 +7,7 @@
    :synopsis: The set of types of the cim.v1.software package.
 
 .. moduleauthor:: Earth System Documentation (ES-DOC) <dev@esdocumentation.org>
-.. note:: Code generated using esdoc_mp @ 2013-09-06 15:59:51.502320.
+.. note:: Code generated using esdoc_mp @ 2013-09-12 17:03:09.155405.
 
 """
 # Module imports.
@@ -31,29 +31,29 @@ class Component(shared.DataSource):
         """
         super(Component, self).__init__()
 
-        self.children = []                           # type = software.Component
-        self.citation_list = []                      # type = shared.Citation
-        self.citations = []                          # type = shared.Citation
-        self.composition = None                      # type = software.Composition
-        self.coupling_framework = ''                 # type = software.CouplingFrameworkType
-        self.dependencies = []                       # type = software.EntryPoint
-        self.deployments = []                        # type = software.Deployment
-        self.description = str()                     # type = str
-        self.funding_sources = []                    # type = str
-        self.grid = None                             # type = grids.GridSpec
-        self.is_embedded = bool()                    # type = bool
-        self.language = None                         # type = software.ComponentLanguage
-        self.license = None                          # type = shared.License
-        self.long_name = str()                       # type = str
-        self.online_resource = str()                 # type = str
-        self.parent = None                           # type = software.Component
-        self.previous_version = str()                # type = str
-        self.properties = []                         # type = software.ComponentProperty
-        self.property_tree = []                      # type = software.ComponentProperty
-        self.release_date = datetime.datetime.now()  # type = datetime.datetime
-        self.responsible_parties = []                # type = shared.ResponsibleParty
-        self.responsible_party_list = []             # type = shared.ResponsibleParty
-        self.short_name = str()                      # type = str
+        self.children = []                                # software.Component
+        self.citation_list = []                           # shared.Citation
+        self.citations = []                               # shared.Citation
+        self.composition = None                           # software.Composition
+        self.coupling_framework = ''                      # software.CouplingFrameworkType
+        self.dependencies = []                            # software.EntryPoint
+        self.deployments = []                             # software.Deployment
+        self.description = str()                          # str
+        self.funding_sources = []                         # str
+        self.grid = None                                  # grids.GridSpec
+        self.is_embedded = bool()                         # bool
+        self.language = None                              # software.ComponentLanguage
+        self.license = None                               # shared.License
+        self.long_name = str()                            # str
+        self.online_resource = str()                      # str
+        self.parent = None                                # software.Component
+        self.previous_version = str()                     # str
+        self.properties = []                              # software.ComponentProperty
+        self.property_tree = []                           # software.ComponentProperty
+        self.release_date = datetime.datetime.now()       # datetime.datetime
+        self.responsible_parties = []                     # shared.ResponsibleParty
+        self.responsible_party_list = []                  # shared.ResponsibleParty
+        self.short_name = str()                           # str
 
 
 class ComponentLanguage(object):
@@ -67,8 +67,8 @@ class ComponentLanguage(object):
         """
         super(ComponentLanguage, self).__init__()
 
-        self.name = str()                            # type = str
-        self.properties = []                         # type = software.ComponentLanguageProperty
+        self.name = str()                                 # str
+        self.properties = []                              # software.ComponentLanguageProperty
 
 
 class ComponentLanguageProperty(shared.Property):
@@ -95,17 +95,17 @@ class ComponentProperty(shared.DataSource):
         """
         super(ComponentProperty, self).__init__()
 
-        self.children = []                           # type = software.ComponentProperty
-        self.citations = []                          # type = shared.Citation
-        self.description = str()                     # type = str
-        self.grid = str()                            # type = str
-        self.intent = ''                             # type = software.ComponentPropertyIntentType
-        self.is_represented = bool()                 # type = bool
-        self.long_name = str()                       # type = str
-        self.short_name = str()                      # type = str
-        self.standard_names = []                     # type = str
-        self.units = ''                              # type = shared.UnitType
-        self.values = []                             # type = str
+        self.children = []                                # software.ComponentProperty
+        self.citations = []                               # shared.Citation
+        self.description = str()                          # str
+        self.grid = str()                                 # str
+        self.intent = ''                                  # software.ComponentPropertyIntentType
+        self.is_represented = bool()                      # bool
+        self.long_name = str()                            # str
+        self.short_name = str()                           # str
+        self.standard_names = []                          # str
+        self.units = ''                                   # shared.UnitType
+        self.values = []                                  # str
 
 
 class Composition(object):
@@ -119,8 +119,8 @@ class Composition(object):
         """
         super(Composition, self).__init__()
 
-        self.couplings = []                          # type = str
-        self.description = str()                     # type = str
+        self.couplings = []                               # str
+        self.description = str()                          # str
 
 
 class Connection(object):
@@ -134,19 +134,19 @@ class Connection(object):
         """
         super(Connection, self).__init__()
 
-        self.description = str()                     # type = str
-        self.priming = None                          # type = shared.DataSource
-        self.priming_reference = None                # type = shared.CimReference
-        self.properties = []                         # type = software.ConnectionProperty
-        self.sources = []                            # type = software.ConnectionEndpoint
-        self.spatial_regridding = []                 # type = software.SpatialRegridding
-        self.target = None                           # type = software.ConnectionEndpoint
-        self.time_lag = str()                        # type = str
-        self.time_profile = None                     # type = software.Timing
-        self.time_transformation = None              # type = software.TimeTransformation
-        self.transformers = []                       # type = software.ProcessorComponent
-        self.transformers_references = []            # type = shared.CimReference
-        self.type = ''                               # type = software.ConnectionType
+        self.description = str()                          # str
+        self.priming = None                               # shared.DataSource
+        self.priming_reference = None                     # shared.DocReference
+        self.properties = []                              # software.ConnectionProperty
+        self.sources = []                                 # software.ConnectionEndpoint
+        self.spatial_regridding = []                      # software.SpatialRegridding
+        self.target = None                                # software.ConnectionEndpoint
+        self.time_lag = str()                             # str
+        self.time_profile = None                          # software.Timing
+        self.time_transformation = None                   # software.TimeTransformation
+        self.transformers = []                            # software.ProcessorComponent
+        self.transformers_references = []                 # shared.DocReference
+        self.type = ''                                    # software.ConnectionType
 
 
 class ConnectionEndpoint(object):
@@ -160,10 +160,10 @@ class ConnectionEndpoint(object):
         """
         super(ConnectionEndpoint, self).__init__()
 
-        self.data_source = None                      # type = shared.DataSource
-        self.data_source_reference = None            # type = shared.CimReference
-        self.instance_id = str()                     # type = str
-        self.properties = []                         # type = software.ConnectionProperty
+        self.data_source = None                           # shared.DataSource
+        self.data_source_reference = None                 # shared.DocReference
+        self.instance_id = str()                          # str
+        self.properties = []                              # software.ConnectionProperty
 
 
 class ConnectionProperty(shared.Property):
@@ -190,22 +190,22 @@ class Coupling(object):
         """
         super(Coupling, self).__init__()
 
-        self.connections = []                        # type = software.Connection
-        self.description = str()                     # type = str
-        self.is_fully_specified = bool()             # type = bool
-        self.priming = None                          # type = shared.DataSource
-        self.priming_reference = None                # type = shared.CimReference
-        self.properties = []                         # type = software.CouplingProperty
-        self.purpose = ''                            # type = shared.DataPurpose
-        self.sources = []                            # type = software.CouplingEndpoint
-        self.spatial_regriddings = []                # type = software.SpatialRegridding
-        self.target = None                           # type = software.CouplingEndpoint
-        self.time_lag = None                         # type = software.TimeLag
-        self.time_profile = None                     # type = software.Timing
-        self.time_transformation = None              # type = software.TimeTransformation
-        self.transformers = []                       # type = software.ProcessorComponent
-        self.transformers_references = []            # type = shared.CimReference
-        self.type = ''                               # type = software.ConnectionType
+        self.connections = []                             # software.Connection
+        self.description = str()                          # str
+        self.is_fully_specified = bool()                  # bool
+        self.priming = None                               # shared.DataSource
+        self.priming_reference = None                     # shared.DocReference
+        self.properties = []                              # software.CouplingProperty
+        self.purpose = ''                                 # shared.DataPurpose
+        self.sources = []                                 # software.CouplingEndpoint
+        self.spatial_regriddings = []                     # software.SpatialRegridding
+        self.target = CouplingEndpoint()                  # software.CouplingEndpoint
+        self.time_lag = None                              # software.TimeLag
+        self.time_profile = None                          # software.Timing
+        self.time_transformation = None                   # software.TimeTransformation
+        self.transformers = []                            # software.ProcessorComponent
+        self.transformers_references = []                 # shared.DocReference
+        self.type = ''                                    # software.ConnectionType
 
 
 class CouplingEndpoint(object):
@@ -219,10 +219,10 @@ class CouplingEndpoint(object):
         """
         super(CouplingEndpoint, self).__init__()
 
-        self.data_source = None                      # type = shared.DataSource
-        self.data_source_reference = None            # type = shared.CimReference
-        self.instance_id = str()                     # type = str
-        self.properties = []                         # type = software.CouplingProperty
+        self.data_source = None                           # shared.DataSource
+        self.data_source_reference = None                 # shared.DocReference
+        self.instance_id = str()                          # str
+        self.properties = []                              # software.CouplingProperty
 
 
 class CouplingProperty(shared.Property):
@@ -249,13 +249,13 @@ class Deployment(object):
         """
         super(Deployment, self).__init__()
 
-        self.deployment_date = datetime.datetime.now()# type = datetime.datetime
-        self.description = str()                     # type = str
-        self.executable_arguments = []               # type = str
-        self.executable_name = str()                 # type = str
-        self.parallelisation = None                  # type = software.Parallelisation
-        self.platform = None                         # type = shared.Platform
-        self.platform_reference = None               # type = shared.CimReference
+        self.deployment_date = datetime.datetime.now()    # datetime.datetime
+        self.description = str()                          # str
+        self.executable_arguments = []                    # str
+        self.executable_name = str()                      # str
+        self.parallelisation = None                       # software.Parallelisation
+        self.platform = None                              # shared.Platform
+        self.platform_reference = None                    # shared.DocReference
 
 
 class EntryPoint(object):
@@ -269,7 +269,7 @@ class EntryPoint(object):
         """
         super(EntryPoint, self).__init__()
 
-        self.name = str()                            # type = str
+        self.name = str()                                 # str
 
 
 class Parallelisation(object):
@@ -283,8 +283,8 @@ class Parallelisation(object):
         """
         super(Parallelisation, self).__init__()
 
-        self.processes = int()                       # type = int
-        self.ranks = []                              # type = software.Rank
+        self.processes = int()                            # int
+        self.ranks = []                                   # software.Rank
 
 
 class Rank(object):
@@ -298,10 +298,10 @@ class Rank(object):
         """
         super(Rank, self).__init__()
 
-        self.increment = int()                       # type = int
-        self.max = int()                             # type = int
-        self.min = int()                             # type = int
-        self.value = int()                           # type = int
+        self.increment = int()                            # int
+        self.max = int()                                  # int
+        self.min = int()                                  # int
+        self.value = int()                                # int
 
 
 class SpatialRegridding(object):
@@ -315,10 +315,10 @@ class SpatialRegridding(object):
         """
         super(SpatialRegridding, self).__init__()
 
-        self.dimension = ''                          # type = software.SpatialRegriddingDimensionType
-        self.properties = []                         # type = software.SpatialRegriddingProperty
-        self.standard_method = ''                    # type = software.SpatialRegriddingStandardMethodType
-        self.user_method = None                      # type = software.SpatialRegriddingUserMethod
+        self.dimension = ''                               # software.SpatialRegriddingDimensionType
+        self.properties = []                              # software.SpatialRegriddingProperty
+        self.standard_method = ''                         # software.SpatialRegriddingStandardMethodType
+        self.user_method = None                           # software.SpatialRegriddingUserMethod
 
 
 class SpatialRegriddingProperty(shared.Property):
@@ -345,9 +345,9 @@ class SpatialRegriddingUserMethod(object):
         """
         super(SpatialRegriddingUserMethod, self).__init__()
 
-        self.file = None                             # type = data.DataObject
-        self.file_reference = None                   # type = shared.CimReference
-        self.name = str()                            # type = str
+        self.file = None                                  # data.DataObject
+        self.file_reference = None                        # shared.DocReference
+        self.name = str()                                 # str
 
 
 class TimeLag(object):
@@ -361,8 +361,8 @@ class TimeLag(object):
         """
         super(TimeLag, self).__init__()
 
-        self.units = ''                              # type = software.TimingUnits
-        self.value = int()                           # type = int
+        self.units = ''                                   # software.TimingUnits
+        self.value = int()                                # int
 
 
 class TimeTransformation(object):
@@ -376,8 +376,8 @@ class TimeTransformation(object):
         """
         super(TimeTransformation, self).__init__()
 
-        self.description = str()                     # type = str
-        self.mapping_type = ''                       # type = software.TimeMappingType
+        self.description = str()                          # str
+        self.mapping_type = ''                            # software.TimeMappingType
 
 
 class Timing(object):
@@ -391,11 +391,11 @@ class Timing(object):
         """
         super(Timing, self).__init__()
 
-        self.end = datetime.datetime.now()           # type = datetime.datetime
-        self.is_variable_rate = bool()               # type = bool
-        self.rate = int()                            # type = int
-        self.start = datetime.datetime.now()         # type = datetime.datetime
-        self.units = ''                              # type = software.TimingUnits
+        self.end = datetime.datetime.now()                # datetime.datetime
+        self.is_variable_rate = bool()                    # bool
+        self.rate = int()                                 # int
+        self.start = datetime.datetime.now()              # datetime.datetime
+        self.units = ''                                   # software.TimingUnits
 
 
 class ModelComponent(Component):
@@ -409,11 +409,11 @@ class ModelComponent(Component):
         """
         super(ModelComponent, self).__init__()
 
-        self.activity = None                         # type = activity.Activity
-        self.cim_info = None                         # type = shared.CimInfo
-        self.timing = None                           # type = software.Timing
-        self.type = ''                               # type = software.ModelComponentType
-        self.types = []                              # type = software.ModelComponentType
+        self.activity = None                              # activity.Activity
+        self.doc_info = shared.DocInfo()                  # shared.DocInfo
+        self.timing = None                                # software.Timing
+        self.type = ''                                    # software.ModelComponentType
+        self.types = []                                   # software.ModelComponentType
 
 
 class ProcessorComponent(Component):
@@ -427,7 +427,7 @@ class ProcessorComponent(Component):
         """
         super(ProcessorComponent, self).__init__()
 
-        self.cim_info = None                         # type = shared.CimInfo
+        self.doc_info = shared.DocInfo()                  # shared.DocInfo
 
 
 class StatisticalModelComponent(Component):
@@ -441,10 +441,10 @@ class StatisticalModelComponent(Component):
         """
         super(StatisticalModelComponent, self).__init__()
 
-        self.cim_info = None                         # type = shared.CimInfo
-        self.timing = None                           # type = software.Timing
-        self.type = ''                               # type = software.StatisticalModelComponentType
-        self.types = []                              # type = software.StatisticalModelComponentType
+        self.doc_info = shared.DocInfo()                  # shared.DocInfo
+        self.timing = None                                # software.Timing
+        self.type = ''                                    # software.StatisticalModelComponentType
+        self.types = []                                   # software.StatisticalModelComponentType
 
 
 class ComponentPropertyIntentType(object):

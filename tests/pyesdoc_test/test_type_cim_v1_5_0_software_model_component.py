@@ -1,50 +1,42 @@
-"""
-.. module:: test_decoding_cim_v1_5_0_software_model_component.py
-   :copyright: Copyright "Aug 7, 2013", Earth System Documentation
-   :license: GPL/CeCIL
-   :platform: Unix, Windows
-   :synopsis: Tests a cim v1.5.0 software model component document.
-
-.. moduleauthor:: Mark Conway-Greenslade (formerly Morgan) <momipsl@ipsl.jussieu.fr>
-
-
-"""
-# Module imports.
-import nose
 import uuid
 
 from dateutil import parser as dateutil_parser
 
-import pyesdoc
 import pyesdoc.ontologies.cim as cim
 import pyesdoc_test.test_utils as tu
 
 
 
-# Test type.
-_TEST_TYPE = cim.v1.ModelComponent
+# Test document type.
+DOC_TYPE = cim.v1.ModelComponent
 
-# Test representation file.
-_TEST_FILE = 'cim/v1_5_0/software.model_component.xml'
+# Test document metafor cim v1 xml file.
+DOC_FILE = 'cim/v1_5_0/software.model_component.xml'
+
+# Test document uid.
+DOC_UID = '7a2b64cc-03ca-11e1-a36a-00163e9152a5'
+
+# Test document version.
+DOC_VERSION = '1'
+
+# Test document creation date.
+DOC_DATE = '2012-01-31 12:34:51.361018'
 
 
-def _assert_doc(doc):
-    doc = tu.decode_from_xml_metafor_cim_v1(_TEST_FILE, _TEST_TYPE)
-
-    tu.assert_pyesdoc_obj(doc, '7a2b64cc-03ca-11e1-a36a-00163e9152a5', '1', '2012-01-31 12:34:51.361018')
-
-    assert isinstance(doc.cim_info, cim.v1.CimInfo)
-    assert doc.cim_info.author.individual_name == 'Metafor Questionnaire'
-    assert doc.cim_info.author.role == 'documentAuthor'
-    assert len(doc.cim_info.genealogy.relationships) == 1
-    r = doc.cim_info.genealogy.relationships[0]
+def assert_doc(doc):
+    assert isinstance(doc.doc_info, cim.v1.DocInfo)
+    assert doc.doc_info.author.individual_name == 'Metafor Questionnaire'
+    assert doc.doc_info.author.role == 'documentAuthor'
+    assert len(doc.doc_info.genealogy.relationships) == 1
+    r = doc.doc_info.genealogy.relationships[0]
     assert r.description.startswith('The HadGEM2-A model')
     assert r.direction == 'toTarget'
-    assert r.target.reference.name == 'HadGEM1'
     assert r.type == 'previousVersionOf'
+    assert r.target.reference.name == 'HadGEM1'
 
     assert doc.activity is None
     assert doc.timing is None
+    assert doc.type == 'model'
     assert len(doc.types ) == 1
     t = doc.types[0]
     assert t == 'model'
@@ -54,18 +46,18 @@ def _assert_doc(doc):
     assert len(cc.properties) == 4
     assert len(cc.responsible_parties) == 4
     assert cc.short_name == 'Aerosols'
-    assert len(cc.types) == 2
-    assert cc.cim_info.id == uuid.UUID('7a44cb24-03ca-11e1-a36a-00163e9152a5')
+    assert len(cc.types) == 2    
+    assert cc.doc_info.id == uuid.UUID('7a44cb24-03ca-11e1-a36a-00163e9152a5')
     cp = cc.properties[0]
     assert len(cp.children) == 6
-    assert cp.intent == 'interactive'
     assert cp.is_represented == True
     assert cp.long_name == 'Aerosols'
     assert cp.short_name == 'Aerosol Key Properties'
+    assert cp.intent == 'interactive'
     assert len(cp.values) == 0
     cp = cp.children[0]
     assert len(cp.children) == 0
-    assert cp.intent == None
+    assert cp.intent is None
     assert cp.is_represented == True
     assert cp.long_name == 'AerosolSchemeScope'
     assert cp.short_name == 'AerosolSchemeScope'
@@ -124,11 +116,9 @@ def _assert_doc(doc):
     assert doc.short_name == 'HadGEM2-A'
 
 
-def test_open_test_file():
-    assert tu.get_test_file(_TEST_FILE) is not None
+def update_doc(doc):
+    pass
 
 
-def test_serialize():    
-    for encoding in pyesdoc.ESDOC_ENCODINGS:
-        tu.serialize.description = "{0}.test_serialize.{1}".format(__name__, encoding)
-        yield tu.serialize, encoding, _TEST_FILE, _TEST_TYPE, _assert_doc
+def assert_doc_updates(doc):
+    pass

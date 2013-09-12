@@ -7,7 +7,7 @@
    :synopsis: The set of types of the cim.v1.shared package.
 
 .. moduleauthor:: Earth System Documentation (ES-DOC) <dev@esdocumentation.org>
-.. note:: Code generated using esdoc_mp @ 2013-09-06 15:59:51.497346.
+.. note:: Code generated using esdoc_mp @ 2013-09-12 17:03:09.149167.
 
 """
 # Module imports.
@@ -32,9 +32,9 @@ class Calendar(object):
         """
         super(Calendar, self).__init__()
 
-        self.description = str()                     # type = str
-        self.length = int()                          # type = int
-        self.range = None                            # type = shared.DateRange
+        self.description = str()                          # str
+        self.length = int()                               # int
+        self.range = None                                 # shared.DateRange
 
 
 class Change(object):
@@ -48,103 +48,12 @@ class Change(object):
         """
         super(Change, self).__init__()
 
-        self.author = None                           # type = shared.ResponsibleParty
-        self.date = datetime.datetime.now()          # type = datetime.datetime
-        self.description = str()                     # type = str
-        self.details = []                            # type = shared.ChangeProperty
-        self.name = str()                            # type = str
-        self.type = ''                               # type = shared.ChangePropertyType
-
-
-class CimDocumentRelationshipTarget(object):
-    """A concrete class within the cim v1 type system.
-
-    
-    """
-    def __init__(self):
-        """Constructor.
-
-        """
-        super(CimDocumentRelationshipTarget, self).__init__()
-
-        self.document = ''                           # type = shared.CimDocumentType
-        self.reference = None                        # type = shared.CimReference
-
-
-class CimGenealogy(object):
-    """A concrete class within the cim v1 type system.
-
-    A record of a document's history. A genealogy element contains a textual description and a set of relationships. Each relationship has a type and a reference to some target. There are different relationships for different document types.
-    """
-    def __init__(self):
-        """Constructor.
-
-        """
-        super(CimGenealogy, self).__init__()
-
-        self.relationships = []                      # type = shared.CimRelationship
-
-
-class CimInfo(object):
-    """A concrete class within the cim v1 type system.
-
-    Encapsulates common cim information.
-    """
-    def __init__(self):
-        """Constructor.
-
-        """
-        super(CimInfo, self).__init__()
-
-        self.author = None                           # type = shared.ResponsibleParty
-        self.create_date = datetime.datetime.now()   # type = datetime.datetime
-        self.external_ids = []                       # type = shared.StandardName
-        self.genealogy = None                        # type = shared.CimGenealogy
-        self.id = uuid.uuid4()                       # type = uuid.UUID
-        self.language = str()                        # type = str
-        self.metadata_id = str()                     # type = str
-        self.metadata_version = str()                # type = str
-        self.project = str()                         # type = str
-        self.source = str()                          # type = str
-        self.status = ''                             # type = shared.DocumentStatusType
-        self.version = str()                         # type = str
-
-
-class CimReference(object):
-    """A concrete class within the cim v1 type system.
-
-    A reference to another cim entity
-    """
-    def __init__(self):
-        """Constructor.
-
-        """
-        super(CimReference, self).__init__()
-
-        self.changes = []                            # type = shared.Change
-        self.description = str()                     # type = str
-        self.external_id = str()                     # type = str
-        self.id = uuid.uuid4()                       # type = uuid.UUID
-        self.name = str()                            # type = str
-        self.type = str()                            # type = str
-        self.version = str()                         # type = str
-
-
-class CimRelationship(object):
-    """An abstract class within the cim v1 type system.
-
-    A record of a relationship between one document and another. This class is abstract; specific document types must specialise this class for their relationshipTypes to be included in a document's genealogy.
-    """
-    __metaclass__ = abc.ABCMeta
-
-    def __init__(self):
-        """Constructor.
-
-        """
-        super(CimRelationship, self).__init__()
-
-        self.description = str()                     # type = str
-        self.direction = ''                          # type = shared.CimRelationshipDirectionType
+        self.author = None                                # shared.ResponsibleParty
+        self.date = datetime.datetime.now()               # datetime.datetime
+        self.description = str()                          # str
+        self.details = []                                 # shared.ChangeProperty
+        self.name = str()                                 # str
+        self.type = ''                                    # shared.ChangePropertyType
 
 
 class Citation(object):
@@ -158,16 +67,16 @@ class Citation(object):
         """
         super(Citation, self).__init__()
 
-        self.alternative_title = str()               # type = str
-        self.collective_title = str()                # type = str
-        self.date = datetime.datetime.now()          # type = datetime.datetime
-        self.date_type = str()                       # type = str
-        self.location = str()                        # type = str
-        self.organisation = str()                    # type = str
-        self.reference = None                        # type = shared.CimReference
-        self.role = str()                            # type = str
-        self.title = str()                           # type = str
-        self.type = str()                            # type = str
+        self.alternative_title = str()                    # str
+        self.collective_title = str()                     # str
+        self.date = datetime.datetime.now()               # datetime.datetime
+        self.date_type = str()                            # str
+        self.location = str()                             # str
+        self.organisation = str()                         # str
+        self.reference = None                             # shared.DocReference
+        self.role = str()                                 # str
+        self.title = str()                                # str
+        self.type = str()                                 # str
 
 
 class Compiler(object):
@@ -181,12 +90,12 @@ class Compiler(object):
         """
         super(Compiler, self).__init__()
 
-        self.environment_variables = str()           # type = str
-        self.language = str()                        # type = str
-        self.name = str()                            # type = str
-        self.options = str()                         # type = str
-        self.type = ''                               # type = shared.CompilerType
-        self.version = str()                         # type = str
+        self.environment_variables = str()                # str
+        self.language = str()                             # str
+        self.name = str()                                 # str
+        self.options = str()                              # str
+        self.type = ''                                    # shared.CompilerType
+        self.version = str()                              # str
 
 
 class DataSource(object):
@@ -202,7 +111,7 @@ class DataSource(object):
         """
         super(DataSource, self).__init__()
 
-        self.purpose = ''                            # type = shared.DataPurpose
+        self.purpose = ''                                 # shared.DataPurpose
 
 
 class DateRange(object):
@@ -218,7 +127,82 @@ class DateRange(object):
         """
         super(DateRange, self).__init__()
 
-        self.duration = str()                        # type = str
+        self.duration = str()                             # str
+
+
+class DocGenealogy(object):
+    """A concrete class within the cim v1 type system.
+
+    A record of a document's history. A genealogy element contains a textual description and a set of relationships. Each relationship has a type and a reference to some target. There are different relationships for different document types.
+    """
+    def __init__(self):
+        """Constructor.
+
+        """
+        super(DocGenealogy, self).__init__()
+
+        self.relationships = []                           # shared.DocRelationship
+
+
+class DocInfo(object):
+    """A concrete class within the cim v1 type system.
+
+    Encapsulates common cim information.
+    """
+    def __init__(self):
+        """Constructor.
+
+        """
+        super(DocInfo, self).__init__()
+
+        self.author = None                                # shared.ResponsibleParty
+        self.create_date = datetime.datetime.now()        # datetime.datetime
+        self.external_ids = []                            # shared.StandardName
+        self.genealogy = None                             # shared.DocGenealogy
+        self.id = uuid.uuid4()                            # uuid.UUID
+        self.institute = str()                            # str
+        self.language = str()                             # str
+        self.metadata_id = str()                          # str
+        self.metadata_version = str()                     # str
+        self.project = str()                              # str
+        self.source = str()                               # str
+        self.status = ''                                  # shared.DocStatusType
+        self.version = int()                              # int
+
+
+class DocReference(object):
+    """A concrete class within the cim v1 type system.
+
+    A reference to another cim entity
+    """
+    def __init__(self):
+        """Constructor.
+
+        """
+        super(DocReference, self).__init__()
+
+        self.changes = []                                 # shared.Change
+        self.description = str()                          # str
+        self.external_id = str()                          # str
+        self.id = uuid.uuid4()                            # uuid.UUID
+        self.name = str()                                 # str
+        self.type = str()                                 # str
+        self.version = str()                              # str
+
+
+class DocRelationshipTarget(object):
+    """A concrete class within the cim v1 type system.
+
+    
+    """
+    def __init__(self):
+        """Constructor.
+
+        """
+        super(DocRelationshipTarget, self).__init__()
+
+        self.document = ''                                # shared.DocType
+        self.reference = None                             # shared.DocReference
 
 
 class License(object):
@@ -232,10 +216,10 @@ class License(object):
         """
         super(License, self).__init__()
 
-        self.contact = str()                         # type = str
-        self.description = str()                     # type = str
-        self.is_unrestricted = str()                 # type = str
-        self.name = str()                            # type = str
+        self.contact = str()                              # str
+        self.description = str()                          # str
+        self.is_unrestricted = str()                      # str
+        self.name = str()                                 # str
 
 
 class Machine(object):
@@ -249,18 +233,18 @@ class Machine(object):
         """
         super(Machine, self).__init__()
 
-        self.cores_per_processor = int()             # type = int
-        self.description = str()                     # type = str
-        self.interconnect = ''                       # type = shared.InterconnectType
-        self.libraries = []                          # type = str
-        self.location = str()                        # type = str
-        self.maximum_processors = int()              # type = int
-        self.name = str()                            # type = str
-        self.operating_system = ''                   # type = shared.OperatingSystemType
-        self.processor_type = ''                     # type = shared.ProcessorType
-        self.system = str()                          # type = str
-        self.type = ''                               # type = shared.MachineType
-        self.vendor = ''                             # type = shared.MachineVendorType
+        self.cores_per_processor = int()                  # int
+        self.description = str()                          # str
+        self.interconnect = ''                            # shared.InterconnectType
+        self.libraries = []                               # str
+        self.location = str()                             # str
+        self.maximum_processors = int()                   # int
+        self.name = str()                                 # str
+        self.operating_system = ''                        # shared.OperatingSystemType
+        self.processor_type = ''                          # shared.ProcessorType
+        self.system = str()                               # str
+        self.type = ''                                    # shared.MachineType
+        self.vendor = ''                                  # shared.MachineVendorType
 
 
 class MachineCompilerUnit(object):
@@ -274,8 +258,8 @@ class MachineCompilerUnit(object):
         """
         super(MachineCompilerUnit, self).__init__()
 
-        self.compilers = []                          # type = shared.Compiler
-        self.machine = None                          # type = shared.Machine
+        self.compilers = []                               # shared.Compiler
+        self.machine = Machine()                          # shared.Machine
 
 
 class Platform(object):
@@ -289,12 +273,12 @@ class Platform(object):
         """
         super(Platform, self).__init__()
 
-        self.cim_info = None                         # type = shared.CimInfo
-        self.contacts = []                           # type = shared.ResponsibleParty
-        self.description = str()                     # type = str
-        self.long_name = str()                       # type = str
-        self.short_name = str()                      # type = str
-        self.units = []                              # type = shared.MachineCompilerUnit
+        self.contacts = []                                # shared.ResponsibleParty
+        self.description = str()                          # str
+        self.doc_info = DocInfo()                         # shared.DocInfo
+        self.long_name = str()                            # str
+        self.short_name = str()                           # str
+        self.units = []                                   # shared.MachineCompilerUnit
 
 
 class Property(object):
@@ -308,8 +292,25 @@ class Property(object):
         """
         super(Property, self).__init__()
 
-        self.name = str()                            # type = str
-        self.value = str()                           # type = str
+        self.name = str()                                 # str
+        self.value = str()                                # str
+
+
+class Relationship(object):
+    """An abstract class within the cim v1 type system.
+
+    A record of a relationship between one document and another. This class is abstract; specific document types must specialise this class for their relationshipTypes to be included in a document's genealogy.
+    """
+    __metaclass__ = abc.ABCMeta
+
+    def __init__(self):
+        """Constructor.
+
+        """
+        super(Relationship, self).__init__()
+
+        self.description = str()                          # str
+        self.direction = ''                               # shared.DocRelationshipDirectionType
 
 
 class ResponsibleParty(object):
@@ -323,11 +324,11 @@ class ResponsibleParty(object):
         """
         super(ResponsibleParty, self).__init__()
 
-        self.abbreviation = str()                    # type = str
-        self.contact_info = None                     # type = shared.ResponsiblePartyContactInfo
-        self.individual_name = str()                 # type = str
-        self.organisation_name = str()               # type = str
-        self.role = str()                            # type = str
+        self.abbreviation = str()                         # str
+        self.contact_info = ResponsiblePartyContactInfo() # shared.ResponsiblePartyContactInfo
+        self.individual_name = str()                      # str
+        self.organisation_name = str()                    # str
+        self.role = str()                                 # str
 
 
 class ResponsiblePartyContactInfo(object):
@@ -341,9 +342,9 @@ class ResponsiblePartyContactInfo(object):
         """
         super(ResponsiblePartyContactInfo, self).__init__()
 
-        self.address = str()                         # type = str
-        self.email = str()                           # type = str
-        self.url = str()                             # type = str
+        self.address = str()                              # str
+        self.email = str()                                # str
+        self.url = str()                                  # str
 
 
 class Standard(object):
@@ -357,9 +358,9 @@ class Standard(object):
         """
         super(Standard, self).__init__()
 
-        self.description = str()                     # type = str
-        self.name = str()                            # type = str
-        self.version = str()                         # type = str
+        self.description = str()                          # str
+        self.name = str()                                 # str
+        self.version = str()                              # str
 
 
 class StandardName(object):
@@ -373,9 +374,9 @@ class StandardName(object):
         """
         super(StandardName, self).__init__()
 
-        self.is_open = bool()                        # type = bool
-        self.standards = []                          # type = shared.Standard
-        self.value = str()                           # type = str
+        self.is_open = bool()                             # bool
+        self.standards = []                               # shared.Standard
+        self.value = str()                                # str
 
 
 class ChangeProperty(Property):
@@ -389,23 +390,8 @@ class ChangeProperty(Property):
         """
         super(ChangeProperty, self).__init__()
 
-        self.description = str()                     # type = str
-        self.id = str()                              # type = str
-
-
-class CimDocumentRelationship(CimRelationship):
-    """A concrete class within the cim v1 type system.
-
-    Contains the set of relationships supported by a Document.
-    """
-    def __init__(self):
-        """Constructor.
-
-        """
-        super(CimDocumentRelationship, self).__init__()
-
-        self.target = None                           # type = shared.CimDocumentRelationshipTarget
-        self.type = ''                               # type = shared.CimDocumentRelationshipType
+        self.description = str()                          # str
+        self.id = str()                                   # str
 
 
 class ClosedDateRange(DateRange):
@@ -419,8 +405,8 @@ class ClosedDateRange(DateRange):
         """
         super(ClosedDateRange, self).__init__()
 
-        self.end = datetime.datetime.now()           # type = datetime.datetime
-        self.start = datetime.datetime.now()         # type = datetime.datetime
+        self.end = datetime.datetime.now()                # datetime.datetime
+        self.start = datetime.datetime.now()              # datetime.datetime
 
 
 class Daily360(Calendar):
@@ -436,6 +422,21 @@ class Daily360(Calendar):
 
 
 
+class DocRelationship(Relationship):
+    """A concrete class within the cim v1 type system.
+
+    Contains the set of relationships supported by a Document.
+    """
+    def __init__(self):
+        """Constructor.
+
+        """
+        super(DocRelationship, self).__init__()
+
+        self.target = DocRelationshipTarget()             # shared.DocRelationshipTarget
+        self.type = ''                                    # shared.DocRelationshipType
+
+
 class OpenDateRange(DateRange):
     """A concrete class within the cim v1 type system.
 
@@ -447,8 +448,8 @@ class OpenDateRange(DateRange):
         """
         super(OpenDateRange, self).__init__()
 
-        self.end = datetime.datetime.now()           # type = datetime.datetime
-        self.start = datetime.datetime.now()         # type = datetime.datetime
+        self.end = datetime.datetime.now()                # datetime.datetime
+        self.start = datetime.datetime.now()              # datetime.datetime
 
 
 class PerpetualPeriod(Calendar):
@@ -486,33 +487,6 @@ class ChangePropertyType(object):
     pass
 
 
-class CimDocumentRelationshipType(object):
-    """An enumeration within the cim v1 type system.
-
-    
-    """
-
-    pass
-
-
-class CimDocumentType(object):
-    """An enumeration within the cim v1 type system.
-
-    
-    """
-
-    pass
-
-
-class CimRelationshipDirectionType(object):
-    """An enumeration within the cim v1 type system.
-
-    
-    """
-
-    pass
-
-
 class CompilerType(object):
     """An enumeration within the cim v1 type system.
 
@@ -531,10 +505,37 @@ class DataPurpose(object):
     pass
 
 
-class DocumentStatusType(object):
+class DocRelationshipDirectionType(object):
+    """An enumeration within the cim v1 type system.
+
+    
+    """
+
+    pass
+
+
+class DocRelationshipType(object):
+    """An enumeration within the cim v1 type system.
+
+    
+    """
+
+    pass
+
+
+class DocStatusType(object):
     """An enumeration within the cim v1 type system.
 
     Status of cim document.
+    """
+
+    pass
+
+
+class DocType(object):
+    """An enumeration within the cim v1 type system.
+
+    
     """
 
     pass

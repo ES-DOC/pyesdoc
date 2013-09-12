@@ -7,7 +7,7 @@
    :synopsis: A set of cim 1 decoders.
 
 .. moduleauthor:: Earth System Documentation (ES-DOC) <dev@esdocumentation.org>
-.. note:: Code generated using esdoc_mp @ 2013-09-06 15:59:51.462159.
+.. note:: Code generated using esdoc_mp @ 2013-09-12 17:03:09.111357.
 
 """
 
@@ -86,139 +86,6 @@ def decode_change_property(xml, nsmap):
     ]
 
     return set_attributes(typeset.shared.ChangeProperty(), xml, nsmap, decodings)
-
-
-def decode_cim_document_relationship(xml, nsmap):
-    """Decodes an instance of the following type: cim document relationship.
-
-    :param xml: XML from which type is to be decoded.
-    :type xml: lxml.etree
-
-    :param nsmap: XML namespace mappings.
-    :type nsmap: dict
-
-    :returns: A decoded type instance.
-    :rtype: cim.v1.typeset.shared.CimDocumentRelationship
-
-    """
-    decodings = [
-        ('description', False, 'str', 'child::cim:description'),
-        ('direction', False, 'str', 'self::cim:documentRelationship/@direction'),
-        ('target', False, decode_cim_document_relationship_target, 'child::cim:target'),
-        ('type', False, 'str', 'self::cim:documentRelationship/@type'),
-    ]
-
-    return set_attributes(typeset.shared.CimDocumentRelationship(), xml, nsmap, decodings)
-
-
-def decode_cim_document_relationship_target(xml, nsmap):
-    """Decodes an instance of the following type: cim document relationship target.
-
-    :param xml: XML from which type is to be decoded.
-    :type xml: lxml.etree
-
-    :param nsmap: XML namespace mappings.
-    :type nsmap: dict
-
-    :returns: A decoded type instance.
-    :rtype: cim.v1.typeset.shared.CimDocumentRelationshipTarget
-
-    """
-    decodings = [
-        ('reference', False, decode_cim_reference, 'child::cim:reference'),
-    ]
-
-    return set_attributes(typeset.shared.CimDocumentRelationshipTarget(), xml, nsmap, decodings)
-
-
-def decode_cim_genealogy(xml, nsmap):
-    """Decodes an instance of the following type: cim genealogy.
-
-    :param xml: XML from which type is to be decoded.
-    :type xml: lxml.etree
-
-    :param nsmap: XML namespace mappings.
-    :type nsmap: dict
-
-    :returns: A decoded type instance.
-    :rtype: cim.v1.typeset.shared.CimGenealogy
-
-    """
-    decodings = [
-        ('relationships', True, decode_cim_document_relationship, 'child::cim:relationship/cim:documentRelationship'),
-    ]
-
-    return set_attributes(typeset.shared.CimGenealogy(), xml, nsmap, decodings)
-
-
-def decode_cim_info(xml, nsmap):
-    """Decodes an instance of the following type: cim info.
-
-    :param xml: XML from which type is to be decoded.
-    :type xml: lxml.etree
-
-    :param nsmap: XML namespace mappings.
-    :type nsmap: dict
-
-    :returns: A decoded type instance.
-    :rtype: cim.v1.typeset.shared.CimInfo
-
-    """
-    decodings = [
-        ('author', False, decode_responsible_party, 'child::cim:documentAuthor'),
-        ('create_date', False, 'datetime.datetime', 'child::cim:documentCreationDate'),
-        ('external_ids', True, decode_standard_name, 'child::cim:externalID'),
-        ('genealogy', False, decode_cim_genealogy, 'child::cim:documentGenealogy'),
-        ('id', False, 'uuid.UUID', 'child::cim:documentID'),
-        ('version', False, 'str', 'child::cim:documentVersion'),
-    ]
-
-    return set_attributes(typeset.shared.CimInfo(), xml, nsmap, decodings)
-
-
-def decode_cim_reference(xml, nsmap):
-    """Decodes an instance of the following type: cim reference.
-
-    :param xml: XML from which type is to be decoded.
-    :type xml: lxml.etree
-
-    :param nsmap: XML namespace mappings.
-    :type nsmap: dict
-
-    :returns: A decoded type instance.
-    :rtype: cim.v1.typeset.shared.CimReference
-
-    """
-    decodings = [
-        ('changes', True, decode_change, 'child::cim:change'),
-        ('description', False, 'str', 'child::cim:description'),
-        ('external_id', False, 'str', 'child::cim:externalID'),
-        ('id', False, 'uuid.UUID', 'child::cim:id'),
-        ('name', False, 'str', 'child::cim:name'),
-        ('type', False, 'str', 'child::cim:type'),
-        ('version', False, 'str', 'child::cim:version'),
-    ]
-
-    return set_attributes(typeset.shared.CimReference(), xml, nsmap, decodings)
-
-
-def decode_cim_relationship(xml, nsmap):
-    """Decodes an instance of the following type: cim relationship.
-
-    :param xml: XML from which type is to be decoded.
-    :type xml: lxml.etree
-
-    :param nsmap: XML namespace mappings.
-    :type nsmap: dict
-
-    :returns: A decoded type instance.
-    :rtype: cim.v1.typeset.shared.CimRelationship
-
-    """
-    decodings = [
-    ]
-
-    return set_attributes(typeset.shared.CimRelationship(), xml, nsmap, decodings)
 
 
 def decode_citation(xml, nsmap):
@@ -356,6 +223,120 @@ def decode_date_range(xml, nsmap):
     return set_attributes(typeset.shared.DateRange(), xml, nsmap, decodings)
 
 
+def decode_doc_genealogy(xml, nsmap):
+    """Decodes an instance of the following type: doc genealogy.
+
+    :param xml: XML from which type is to be decoded.
+    :type xml: lxml.etree
+
+    :param nsmap: XML namespace mappings.
+    :type nsmap: dict
+
+    :returns: A decoded type instance.
+    :rtype: cim.v1.typeset.shared.DocGenealogy
+
+    """
+    decodings = [
+        ('relationships', True, decode_doc_relationship, 'child::cim:relationship/cim:documentRelationship'),
+    ]
+
+    return set_attributes(typeset.shared.DocGenealogy(), xml, nsmap, decodings)
+
+
+def decode_doc_info(xml, nsmap):
+    """Decodes an instance of the following type: doc info.
+
+    :param xml: XML from which type is to be decoded.
+    :type xml: lxml.etree
+
+    :param nsmap: XML namespace mappings.
+    :type nsmap: dict
+
+    :returns: A decoded type instance.
+    :rtype: cim.v1.typeset.shared.DocInfo
+
+    """
+    decodings = [
+        ('author', False, decode_responsible_party, 'child::cim:documentAuthor'),
+        ('create_date', False, 'datetime.datetime', 'child::cim:documentCreationDate'),
+        ('external_ids', True, decode_standard_name, 'child::cim:externalID'),
+        ('genealogy', False, decode_doc_genealogy, 'child::cim:documentGenealogy'),
+        ('id', False, 'uuid.UUID', 'child::cim:documentID'),
+        ('version', False, 'int', 'child::cim:documentVersion'),
+    ]
+
+    return set_attributes(typeset.shared.DocInfo(), xml, nsmap, decodings)
+
+
+def decode_doc_reference(xml, nsmap):
+    """Decodes an instance of the following type: doc reference.
+
+    :param xml: XML from which type is to be decoded.
+    :type xml: lxml.etree
+
+    :param nsmap: XML namespace mappings.
+    :type nsmap: dict
+
+    :returns: A decoded type instance.
+    :rtype: cim.v1.typeset.shared.DocReference
+
+    """
+    decodings = [
+        ('changes', True, decode_change, 'child::cim:change'),
+        ('description', False, 'str', 'child::cim:description'),
+        ('external_id', False, 'str', 'child::cim:externalID'),
+        ('id', False, 'uuid.UUID', 'child::cim:id'),
+        ('name', False, 'str', 'child::cim:name'),
+        ('type', False, 'str', 'child::cim:type'),
+        ('version', False, 'str', 'child::cim:version'),
+    ]
+
+    return set_attributes(typeset.shared.DocReference(), xml, nsmap, decodings)
+
+
+def decode_doc_relationship(xml, nsmap):
+    """Decodes an instance of the following type: doc relationship.
+
+    :param xml: XML from which type is to be decoded.
+    :type xml: lxml.etree
+
+    :param nsmap: XML namespace mappings.
+    :type nsmap: dict
+
+    :returns: A decoded type instance.
+    :rtype: cim.v1.typeset.shared.DocRelationship
+
+    """
+    decodings = [
+        ('description', False, 'str', 'child::cim:description'),
+        ('direction', False, 'str', 'self::cim:documentRelationship/@direction'),
+        ('target', False, decode_doc_relationship_target, 'child::cim:target'),
+        ('type', False, 'str', 'self::cim:documentRelationship/@type'),
+    ]
+
+    return set_attributes(typeset.shared.DocRelationship(), xml, nsmap, decodings)
+
+
+def decode_doc_relationship_target(xml, nsmap):
+    """Decodes an instance of the following type: doc relationship target.
+
+    :param xml: XML from which type is to be decoded.
+    :type xml: lxml.etree
+
+    :param nsmap: XML namespace mappings.
+    :type nsmap: dict
+
+    :returns: A decoded type instance.
+    :rtype: cim.v1.typeset.shared.DocRelationshipTarget
+
+    """
+    decodings = [
+        ('reference', False, decode_doc_reference, 'child::cim:reference'),
+    ]
+
+    return set_attributes(typeset.shared.DocRelationshipTarget(), xml, nsmap, decodings)
+
+
 def decode_license(xml, nsmap):
     """Decodes an instance of the following type: license.
 
@@ -486,9 +467,9 @@ def decode_platform(xml, nsmap):
 
     """
     decodings = [
-        ('cim_info', False, decode_cim_info, 'self::cim:platform'),
         ('contacts', True, decode_responsible_party, 'child::cim:contact'),
         ('description', False, 'str', 'child::cim:description'),
+        ('doc_info', False, decode_doc_info, 'self::cim:platform'),
         ('long_name', False, 'str', 'child::cim:longName'),
         ('short_name', False, 'str', 'child::cim:shortName'),
         ('units', True, decode_machine_compiler_unit, 'child::cim:unit'),
@@ -539,6 +520,25 @@ def decode_real_calendar(xml, nsmap):
     ]
 
     return set_attributes(typeset.shared.RealCalendar(), xml, nsmap, decodings)
+
+
+def decode_relationship(xml, nsmap):
+    """Decodes an instance of the following type: relationship.
+
+    :param xml: XML from which type is to be decoded.
+    :type xml: lxml.etree
+
+    :param nsmap: XML namespace mappings.
+    :type nsmap: dict
+
+    :returns: A decoded type instance.
+    :rtype: cim.v1.typeset.shared.Relationship
+
+    """
+    decodings = [
+    ]
+
+    return set_attributes(typeset.shared.Relationship(), xml, nsmap, decodings)
 
 
 def decode_responsible_party(xml, nsmap):

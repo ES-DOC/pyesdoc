@@ -55,15 +55,15 @@ def encode(doc):
     return _JSONEncoder().encode(as_dict)
 
 
-def decode(as_json):
+def decode(repr):
     """Decodes a document from a json string.
 
-    :param as_json: Document json representation.
-    :type as_json: str
+    :param repr: Document json representation.
+    :type repr: str
 
     :returns: A pyesdoc document instance.
     :rtype: object
 
     """
     # Decode from dictionary.
-    return serializer_dict.decode(json.loads(as_json))
+    return serializer_dict.decode(json.loads(repr))

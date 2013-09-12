@@ -21,6 +21,7 @@ from .. ontologies import cim
 from .. utils import runtime as rt
 
 
+
 # CIM v1 decoders.
 _decoders = {
     'cIM_Quality' : cim.v1.decoder.decode_cim_quality,
@@ -36,16 +37,15 @@ _decoders = {
 }
 
 
-
-def decode(as_xml):
+def decode(repr):
     """Decodes a pyesdoc document from passed representation.
 
-    :param as_xml: Metafor CIM v1 XML document representation.
-    :type as_xml: lxml.etree._ElementTree
+    :param repr: Metafor CIM v1 XML document representation.
+    :type repr: lxml.etree._ElementTree
 
     """
     # Load xml & associated namespaces.
-    xml, nsmap = load_xml(as_xml, return_nsmap=True)
+    xml, nsmap = load_xml(repr, return_nsmap=True)
     if not isinstance(xml, et._Element):
         raise rt.PYESDOC_Exception('Decoding failure due to invalid Metafor CIM v1 XML XML.')
 
@@ -54,11 +54,8 @@ def decode(as_xml):
     if doc_type not in _decoders:
         raise rt.PYESDOC_Exception("CIM v1 - {0} document type decoding unsupported.".format(doc_type))
 
-    # Decode pyesdoc obj.
-    doc = decode_xml(_decoders[doc_type], xml, nsmap, None)
-
-    return doc
-
+    # Decode pyesdoc doc.
+    return decode_xml(_decoders[doc_type], xml, nsmap, None)
 
 
 def encode(doc):

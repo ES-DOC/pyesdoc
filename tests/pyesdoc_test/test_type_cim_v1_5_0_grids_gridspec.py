@@ -1,38 +1,25 @@
-"""
-.. module:: test_decoding_cim_v1_5_0_grids_gridspec.py
-   :copyright: Copyright "Aug 7, 2013", Earth System Documentation
-   :license: GPL/CeCIL
-   :platform: Unix, Windows
-   :synopsis: Tests a cim v1.5.0 grids gridspec document.
-
-.. moduleauthor:: Mark Conway-Greenslade (formerly Morgan) <momipsl@ipsl.jussieu.fr>
-
-
-"""
-# Module imports.
-import nose
-import uuid
-
-from dateutil import parser as dateutil_parser
-
-import pyesdoc
 import pyesdoc.ontologies.cim as cim
 import pyesdoc_test.test_utils as tu
 
 
 
 # Test type.
-_TEST_TYPE = cim.v1.GridSpec
+DOC_TYPE = cim.v1.GridSpec
 
 # Test representation file.
-_TEST_FILE = 'cim/v1_5_0/grids.grid_spec.xml'
+DOC_FILE = 'cim/v1_5_0/grids.grid_spec.xml'
+
+# Test document uid.
+DOC_UID = '9cef52e4-e2af-11df-bf17-00163e9152a5'
+
+# Test document version.
+DOC_VERSION = '1'
+
+# Test document creation date.
+DOC_DATE = '2012-03-01 13:08:34.746335'
 
 
-def _assert_doc(doc):
-    doc = tu.decode_from_xml_metafor_cim_v1(_TEST_FILE, _TEST_TYPE)
-
-    tu.assert_pyesdoc_obj(doc, '9cef52e4-e2af-11df-bf17-00163e9152a5', '1', '2012-03-01 13:08:34.746335')
-
+def assert_doc(doc):
     assert len(doc.esm_model_grids) == 1
     assert len(doc.esm_exchange_grids) == 0
 
@@ -76,12 +63,9 @@ def _assert_doc(doc):
     assert doc.esm_model_grids[0].tiles[0].zcoords.form == 'depth'
 
 
+def update_doc(doc):
+    pass
 
-def test_open_test_file():
-    assert tu.get_test_file(_TEST_FILE) is not None
 
-
-def test_serialize():
-    for encoding in pyesdoc.ESDOC_ENCODINGS:
-        tu.serialize.description = "{0}.test_serialize.{1}".format(__name__, encoding)
-        yield tu.serialize, encoding, _TEST_FILE, _TEST_TYPE, _assert_doc
+def assert_doc_updates(doc):
+    pass

@@ -7,7 +7,7 @@
    :synopsis: A set of cim 1 decoders.
 
 .. moduleauthor:: Earth System Documentation (ES-DOC) <dev@esdocumentation.org>
-.. note:: Code generated using esdoc_mp @ 2013-09-06 15:59:51.457639.
+.. note:: Code generated using esdoc_mp @ 2013-09-12 17:03:09.104097.
 
 """
 
@@ -187,13 +187,13 @@ def decode_data_object(xml, nsmap):
     """
     decodings = [
         ('acronym', False, 'str', 'child::cim:acronym'),
-        ('cim_info', False, decode_cim_info, 'self::cim:dataObject'),
         ('citations', True, decode_citation, '//cim:citation[not(cim:citation)]'),
         ('content', True, decode_data_content, 'child::cim:content'),
         ('data_property', True, decode_data_property, 'child::cim:dataProperty/cim:dataProperty'),
         ('data_status', False, 'str', 'self::cim:dataObject/@dataStatus'),
         ('description', False, 'str', 'child::cim:description'),
         ('distribution', False, decode_data_distribution, 'child::cim:distribution'),
+        ('doc_info', False, decode_doc_info, 'self::cim:dataObject'),
         ('extent', False, decode_data_extent, 'child::cim:extent'),
         ('hierarchy_level', False, decode_data_hierarchy_level, 'self::cim:dataObject'),
         ('keyword', False, 'str', 'child::cim:keyword'),

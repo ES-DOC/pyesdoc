@@ -121,22 +121,15 @@ def decode_from_xml_metafor_cim_v1(as_xml, type=None):
     if isinstance(as_xml, str):
         as_xml = get_test_file(as_xml)
 
-    return decode(as_xml, pyesdoc.METAFOR_CIM_XML_ENCODING)
+    doc = decode(as_xml, pyesdoc.METAFOR_CIM_XML_ENCODING)
+    if doc is not None:
+        doc.doc_info.language = pyesdoc.ESDOC_DEFAULT_LANGUAGE
+
+    return doc
 
 
 def encode_to_xml_metafor_cim_v1(doc):
     return encode(doc, pyesdoc.METAFOR_CIM_XML_ENCODING, str)
-
-
-def get_test_obj():
-    """Returns a pyesdoc object for test purposes.
-
-    """
-    instance = decode_from_xml_metafor_cim_v1('cim/v1_5_0/software.model_component.xml',
-                                              cim_v1.ModelComponent)
-    assert_object(instance, cim_v1.ModelComponent)
-
-    return instance
 
 
 def get_boolean():
@@ -188,7 +181,7 @@ def get_uuid():
     return str(uuid.uuid1())
 
 
-def assert_pyesdoc_obj(obj, uid, version, create_date):
+def assert_pyesdoc_obj(doc, uid, version, create_date):
     """Tests information associated with a pyesdoc object.
 
     :param obj: Document pyesdoc object representation.
@@ -204,14 +197,14 @@ def assert_pyesdoc_obj(obj, uid, version, create_date):
     :type create_date: datetime
 
     """
-    assert_object(obj)
-    assert_object(obj.cim_info)
+    assert_object(doc)
+    assert_object(doc.doc_info)
     if uid is not None:
-        assert_uuid(obj.cim_info.id, uid)
+        assert_uuid(doc.doc_info.id, uid)
     if version is not None:
-        assert_string(obj.cim_info.version, version)
+        assert_string(doc.doc_info.version, version)
     if create_date is not None:
-        assert_date(obj.cim_info.create_date, create_date)
+        assert_date(doc.doc_info.create_date, create_date)
 
 
 def assert_collection(collection,
@@ -359,7 +352,13 @@ def assert_date(actual, expected):
     :type expected: str
 
     """
-    assert actual == dateutil_parser.parse(expected)
+    if isinstance(actual, datetime.datetime) and \
+       isinstance(expected, datetime.datetime):
+       assert actual == expected
+    elif isinstance(actual, datetime.datetime):
+        assert actual == dateutil_parser.parse(expected)
+    else:
+        assert dateutil_parser.parse(actual) == expected
 
 
 def assert_integer(actual, expected, assert_type=COMPARE_EXACT):
@@ -414,4 +413,4 @@ def assert_uuid(actual, expected):
     if isinstance(expected, uuid.UUID) == False:
         expected = uuid.UUID(expected)
 
-    assert actual == expected
+    assert actual == expected, "{0} != {1}".format(actual, expected)

@@ -313,7 +313,12 @@ def _set_attribute(target, xml, nsmap, attr, decoder, xpath, is_simple_type, is_
     att_name = parts[len(parts) - 1]
 
     # Get attribute value.
-    att_value = _get_attribute_value(xml, nsmap, decoder, xpath, is_simple_type, is_iterable)
+    att_value = _get_attribute_value(xml,
+                                     nsmap,
+                                     decoder,
+                                     xpath,
+                                     is_simple_type,
+                                     is_iterable)
 
     # Set attribute value.
     if not is_iterable:

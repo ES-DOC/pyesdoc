@@ -53,11 +53,11 @@ def _assert(encoding):
         raise ValueError('Document encoding is unsupported :: encoding = {0}.'.format(encoding))
     
 
-def decode(representation, encoding):
+def decode(repr, encoding):
     """Decodes a pyesdoc document representation.
 
-    :param representation: A document representation (e.g. json).
-    :type representation: str
+    :param repr: A document representation (e.g. json).
+    :type repr: str
 
     :param encoding: A document encoding (dict|json|xml|metafor-cim-1-xml).
     :type encoding: str
@@ -68,7 +68,7 @@ def decode(representation, encoding):
     """
     _assert(encoding)
 
-    return _serializers[encoding].decode(representation)
+    return _serializers[encoding].decode(repr)
 
 
 def encode(doc, encoding):

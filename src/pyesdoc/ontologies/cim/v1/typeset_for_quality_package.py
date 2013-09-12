@@ -7,7 +7,7 @@
    :synopsis: The set of types of the cim.v1.quality package.
 
 .. moduleauthor:: Earth System Documentation (ES-DOC) <dev@esdocumentation.org>
-.. note:: Code generated using esdoc_mp @ 2013-09-06 15:59:51.493325.
+.. note:: Code generated using esdoc_mp @ 2013-09-12 17:03:09.146507.
 
 """
 # Module imports.
@@ -15,6 +15,7 @@ import abc
 import datetime
 import uuid
 
+import typeset_for_shared_package as shared
 
 
 
@@ -30,8 +31,8 @@ class CimQuality(object):
         """
         super(CimQuality, self).__init__()
 
-        self.cim_info = None                         # type = shared.CimInfo
-        self.reports = []                            # type = quality.Report
+        self.doc_info = shared.DocInfo()                  # shared.DocInfo
+        self.reports = []                                 # quality.Report
 
 
 class Evaluation(object):
@@ -45,15 +46,15 @@ class Evaluation(object):
         """
         super(Evaluation, self).__init__()
 
-        self.date = datetime.datetime.now()          # type = datetime.datetime
-        self.description = str()                     # type = str
-        self.did_pass = bool()                       # type = bool
-        self.explanation = str()                     # type = str
-        self.specification = str()                   # type = str
-        self.specification_hyperlink = str()         # type = str
-        self.title = str()                           # type = str
-        self.type = str()                            # type = str
-        self.type_hyperlink = str()                  # type = str
+        self.date = datetime.datetime.now()               # datetime.datetime
+        self.description = str()                          # str
+        self.did_pass = bool()                            # bool
+        self.explanation = str()                          # str
+        self.specification = str()                        # str
+        self.specification_hyperlink = str()              # str
+        self.title = str()                                # str
+        self.type = str()                                 # str
+        self.type_hyperlink = str()                       # str
 
 
 class Measure(object):
@@ -67,9 +68,9 @@ class Measure(object):
         """
         super(Measure, self).__init__()
 
-        self.description = str()                     # type = str
-        self.identification = str()                  # type = str
-        self.name = str()                            # type = str
+        self.description = str()                          # str
+        self.identification = str()                       # str
+        self.name = str()                                 # str
 
 
 class Report(object):
@@ -83,10 +84,10 @@ class Report(object):
         """
         super(Report, self).__init__()
 
-        self.date = datetime.datetime.now()          # type = datetime.datetime
-        self.evaluation = None                       # type = quality.Evaluation
-        self.evaluator = None                        # type = shared.ResponsibleParty
-        self.measure = None                          # type = quality.Measure
+        self.date = datetime.datetime.now()               # datetime.datetime
+        self.evaluation = Evaluation()                    # quality.Evaluation
+        self.evaluator = None                             # shared.ResponsibleParty
+        self.measure = Measure()                          # quality.Measure
 
 
 class CimFeatureType(object):

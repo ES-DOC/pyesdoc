@@ -7,7 +7,7 @@
    :synopsis: The set of types of the cim.v1.data package.
 
 .. moduleauthor:: Earth System Documentation (ES-DOC) <dev@esdocumentation.org>
-.. note:: Code generated using esdoc_mp @ 2013-09-06 15:59:51.490486.
+.. note:: Code generated using esdoc_mp @ 2013-09-12 17:03:09.143936.
 
 """
 # Module imports.
@@ -31,9 +31,9 @@ class DataContent(shared.DataSource):
         """
         super(DataContent, self).__init__()
 
-        self.aggregation = str()                     # type = str
-        self.frequency = str()                       # type = str
-        self.topic = None                            # type = data.DataTopic
+        self.aggregation = str()                          # str
+        self.frequency = str()                            # str
+        self.topic = DataTopic()                          # data.DataTopic
 
 
 class DataDistribution(object):
@@ -47,10 +47,10 @@ class DataDistribution(object):
         """
         super(DataDistribution, self).__init__()
 
-        self.access = str()                          # type = str
-        self.fee = str()                             # type = str
-        self.format = str()                          # type = str
-        self.responsible_party = None                # type = shared.ResponsibleParty
+        self.access = str()                               # str
+        self.fee = str()                                  # str
+        self.format = str()                               # str
+        self.responsible_party = None                     # shared.ResponsibleParty
 
 
 class DataExtent(object):
@@ -64,8 +64,8 @@ class DataExtent(object):
         """
         super(DataExtent, self).__init__()
 
-        self.geographical = None                     # type = data.DataExtentGeographical
-        self.temporal = None                         # type = data.DataExtentTemporal
+        self.geographical = DataExtentGeographical()      # data.DataExtentGeographical
+        self.temporal = DataExtentTemporal()              # data.DataExtentTemporal
 
 
 class DataExtentGeographical(object):
@@ -79,10 +79,10 @@ class DataExtentGeographical(object):
         """
         super(DataExtentGeographical, self).__init__()
 
-        self.east = float()                          # type = float
-        self.north = float()                         # type = float
-        self.south = float()                         # type = float
-        self.west = float()                          # type = float
+        self.east = float()                               # float
+        self.north = float()                              # float
+        self.south = float()                              # float
+        self.west = float()                               # float
 
 
 class DataExtentTemporal(object):
@@ -96,9 +96,9 @@ class DataExtentTemporal(object):
         """
         super(DataExtentTemporal, self).__init__()
 
-        self.begin = datetime.date(1900, 1, 1)       # type = datetime.date
-        self.end = datetime.date(1900, 1, 1)         # type = datetime.date
-        self.time_interval = None                    # type = data.DataExtentTimeInterval
+        self.begin = datetime.date(1900, 1, 1)            # datetime.date
+        self.end = datetime.date(1900, 1, 1)              # datetime.date
+        self.time_interval = None                         # data.DataExtentTimeInterval
 
 
 class DataExtentTimeInterval(object):
@@ -112,9 +112,9 @@ class DataExtentTimeInterval(object):
         """
         super(DataExtentTimeInterval, self).__init__()
 
-        self.factor = int()                          # type = int
-        self.radix = int()                           # type = int
-        self.unit = str()                            # type = str
+        self.factor = int()                               # int
+        self.radix = int()                                # int
+        self.unit = str()                                 # str
 
 
 class DataHierarchyLevel(object):
@@ -128,9 +128,9 @@ class DataHierarchyLevel(object):
         """
         super(DataHierarchyLevel, self).__init__()
 
-        self.is_open = bool()                        # type = bool
-        self.name = ''                               # type = data.DataHierarchyType
-        self.value = str()                           # type = str
+        self.is_open = bool()                             # bool
+        self.name = ''                                    # data.DataHierarchyType
+        self.value = str()                                # str
 
 
 class DataObject(shared.DataSource):
@@ -144,24 +144,24 @@ class DataObject(shared.DataSource):
         """
         super(DataObject, self).__init__()
 
-        self.acronym = str()                         # type = str
-        self.child_object = []                       # type = data.DataObject
-        self.cim_info = None                         # type = shared.CimInfo
-        self.citations = []                          # type = shared.Citation
-        self.content = []                            # type = data.DataContent
-        self.data_property = []                      # type = data.DataProperty
-        self.data_status = ''                        # type = data.DataStatusType
-        self.description = str()                     # type = str
-        self.distribution = None                     # type = data.DataDistribution
-        self.extent = None                           # type = data.DataExtent
-        self.geometry_model = str()                  # type = str
-        self.hierarchy_level = None                  # type = data.DataHierarchyLevel
-        self.keyword = str()                         # type = str
-        self.parent_object = None                    # type = data.DataObject
-        self.parent_object_reference = None          # type = shared.CimReference
-        self.restriction = []                        # type = data.DataRestriction
-        self.source_simulation = str()               # type = str
-        self.storage = []                            # type = data.DataStorage
+        self.acronym = str()                              # str
+        self.child_object = []                            # data.DataObject
+        self.citations = []                               # shared.Citation
+        self.content = []                                 # data.DataContent
+        self.data_property = []                           # data.DataProperty
+        self.data_status = ''                             # data.DataStatusType
+        self.description = str()                          # str
+        self.distribution = None                          # data.DataDistribution
+        self.doc_info = shared.DocInfo()                  # shared.DocInfo
+        self.extent = None                                # data.DataExtent
+        self.geometry_model = str()                       # str
+        self.hierarchy_level = None                       # data.DataHierarchyLevel
+        self.keyword = str()                              # str
+        self.parent_object = None                         # data.DataObject
+        self.parent_object_reference = None               # shared.DocReference
+        self.restriction = []                             # data.DataRestriction
+        self.source_simulation = str()                    # str
+        self.storage = []                                 # data.DataStorage
 
 
 class DataProperty(shared.Property):
@@ -175,7 +175,7 @@ class DataProperty(shared.Property):
         """
         super(DataProperty, self).__init__()
 
-        self.description = str()                     # type = str
+        self.description = str()                          # str
 
 
 class DataRestriction(object):
@@ -189,9 +189,9 @@ class DataRestriction(object):
         """
         super(DataRestriction, self).__init__()
 
-        self.license = None                          # type = shared.License
-        self.restriction = str()                     # type = str
-        self.scope = str()                           # type = str
+        self.license = None                               # shared.License
+        self.restriction = str()                          # str
+        self.scope = str()                                # str
 
 
 class DataStorage(object):
@@ -207,10 +207,10 @@ class DataStorage(object):
         """
         super(DataStorage, self).__init__()
 
-        self.format = str()                          # type = str
-        self.location = str()                        # type = str
-        self.modification_date = datetime.datetime.now()# type = datetime.datetime
-        self.size = int()                            # type = int
+        self.format = str()                               # str
+        self.location = str()                             # str
+        self.modification_date = datetime.datetime.now()  # datetime.datetime
+        self.size = int()                                 # int
 
 
 class DataTopic(object):
@@ -224,9 +224,9 @@ class DataTopic(object):
         """
         super(DataTopic, self).__init__()
 
-        self.description = str()                     # type = str
-        self.name = str()                            # type = str
-        self.unit = str()                            # type = str
+        self.description = str()                          # str
+        self.name = str()                                 # str
+        self.unit = str()                                 # str
 
 
 class DataStorageDb(DataStorage):
@@ -240,10 +240,10 @@ class DataStorageDb(DataStorage):
         """
         super(DataStorageDb, self).__init__()
 
-        self.access_string = str()                   # type = str
-        self.name = str()                            # type = str
-        self.owner = str()                           # type = str
-        self.table = str()                           # type = str
+        self.access_string = str()                        # str
+        self.name = str()                                 # str
+        self.owner = str()                                # str
+        self.table = str()                                # str
 
 
 class DataStorageFile(DataStorage):
@@ -257,9 +257,9 @@ class DataStorageFile(DataStorage):
         """
         super(DataStorageFile, self).__init__()
 
-        self.file_name = str()                       # type = str
-        self.file_system = str()                     # type = str
-        self.path = str()                            # type = str
+        self.file_name = str()                            # str
+        self.file_system = str()                          # str
+        self.path = str()                                 # str
 
 
 class DataStorageIp(DataStorage):
@@ -273,10 +273,10 @@ class DataStorageIp(DataStorage):
         """
         super(DataStorageIp, self).__init__()
 
-        self.file_name = str()                       # type = str
-        self.host = str()                            # type = str
-        self.path = str()                            # type = str
-        self.protocol = str()                        # type = str
+        self.file_name = str()                            # str
+        self.host = str()                                 # str
+        self.path = str()                                 # str
+        self.protocol = str()                             # str
 
 
 class DataHierarchyType(object):

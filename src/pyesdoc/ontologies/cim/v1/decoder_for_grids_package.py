@@ -7,7 +7,7 @@
    :synopsis: A set of cim 1 decoders.
 
 .. moduleauthor:: Earth System Documentation (ES-DOC) <dev@esdocumentation.org>
-.. note:: Code generated using esdoc_mp @ 2013-09-06 15:59:51.459155.
+.. note:: Code generated using esdoc_mp @ 2013-09-12 17:03:09.106399.
 
 """
 
@@ -131,7 +131,7 @@ def decode_grid_spec(xml, nsmap):
 
     """
     decodings = [
-        ('cim_info', False, decode_cim_info, 'self::cim:gridSpec'),
+        ('doc_info', False, decode_doc_info, 'self::cim:gridSpec'),
         ('esm_exchange_grids', True, decode_grid_mosaic, 'child::cim:esmExchangeGrid'),
         ('esm_model_grids', True, decode_grid_mosaic, 'child::cim:esmModelGrid'),
     ]

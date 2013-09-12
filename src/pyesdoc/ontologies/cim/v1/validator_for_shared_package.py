@@ -7,7 +7,7 @@
    :synopsis: A set of validators over the cim.v1.shared package.
 
 .. moduleauthor:: Earth System Documentation (ES-DOC) <dev@esdocumentation.org>
-.. note:: Code generated using esdoc_mp @ 2013-09-06 15:59:51.474270.
+.. note:: Code generated using esdoc_mp @ 2013-09-12 17:03:09.123142.
 
 """
 # Module imports.
@@ -46,84 +46,6 @@ def validate_change_property(instance):
 
     :param instance: A type instance being validated.
     :type instance: cim.v1.types.shared.ChangeProperty
-
-    :returns: List of validation errors.
-    :rtype: list
-
-    """
-    return NotImplementedError()
-
-
-def validate_cim_document_relationship(instance):
-    """Validates an instance of the following type: cim.v1.types.shared.CimDocumentRelationship.
-
-    :param instance: A type instance being validated.
-    :type instance: cim.v1.types.shared.CimDocumentRelationship
-
-    :returns: List of validation errors.
-    :rtype: list
-
-    """
-    return NotImplementedError()
-
-
-def validate_cim_document_relationship_target(instance):
-    """Validates an instance of the following type: cim.v1.types.shared.CimDocumentRelationshipTarget.
-
-    :param instance: A type instance being validated.
-    :type instance: cim.v1.types.shared.CimDocumentRelationshipTarget
-
-    :returns: List of validation errors.
-    :rtype: list
-
-    """
-    return NotImplementedError()
-
-
-def validate_cim_genealogy(instance):
-    """Validates an instance of the following type: cim.v1.types.shared.CimGenealogy.
-
-    :param instance: A type instance being validated.
-    :type instance: cim.v1.types.shared.CimGenealogy
-
-    :returns: List of validation errors.
-    :rtype: list
-
-    """
-    return NotImplementedError()
-
-
-def validate_cim_info(instance):
-    """Validates an instance of the following type: cim.v1.types.shared.CimInfo.
-
-    :param instance: A type instance being validated.
-    :type instance: cim.v1.types.shared.CimInfo
-
-    :returns: List of validation errors.
-    :rtype: list
-
-    """
-    return NotImplementedError()
-
-
-def validate_cim_reference(instance):
-    """Validates an instance of the following type: cim.v1.types.shared.CimReference.
-
-    :param instance: A type instance being validated.
-    :type instance: cim.v1.types.shared.CimReference
-
-    :returns: List of validation errors.
-    :rtype: list
-
-    """
-    return NotImplementedError()
-
-
-def validate_cim_relationship(instance):
-    """Validates an instance of the following type: cim.v1.types.shared.CimRelationship.
-
-    :param instance: A type instance being validated.
-    :type instance: cim.v1.types.shared.CimRelationship
 
     :returns: List of validation errors.
     :rtype: list
@@ -202,6 +124,71 @@ def validate_date_range(instance):
 
     :param instance: A type instance being validated.
     :type instance: cim.v1.types.shared.DateRange
+
+    :returns: List of validation errors.
+    :rtype: list
+
+    """
+    return NotImplementedError()
+
+
+def validate_doc_genealogy(instance):
+    """Validates an instance of the following type: cim.v1.types.shared.DocGenealogy.
+
+    :param instance: A type instance being validated.
+    :type instance: cim.v1.types.shared.DocGenealogy
+
+    :returns: List of validation errors.
+    :rtype: list
+
+    """
+    return NotImplementedError()
+
+
+def validate_doc_info(instance):
+    """Validates an instance of the following type: cim.v1.types.shared.DocInfo.
+
+    :param instance: A type instance being validated.
+    :type instance: cim.v1.types.shared.DocInfo
+
+    :returns: List of validation errors.
+    :rtype: list
+
+    """
+    return NotImplementedError()
+
+
+def validate_doc_reference(instance):
+    """Validates an instance of the following type: cim.v1.types.shared.DocReference.
+
+    :param instance: A type instance being validated.
+    :type instance: cim.v1.types.shared.DocReference
+
+    :returns: List of validation errors.
+    :rtype: list
+
+    """
+    return NotImplementedError()
+
+
+def validate_doc_relationship(instance):
+    """Validates an instance of the following type: cim.v1.types.shared.DocRelationship.
+
+    :param instance: A type instance being validated.
+    :type instance: cim.v1.types.shared.DocRelationship
+
+    :returns: List of validation errors.
+    :rtype: list
+
+    """
+    return NotImplementedError()
+
+
+def validate_doc_relationship_target(instance):
+    """Validates an instance of the following type: cim.v1.types.shared.DocRelationshipTarget.
+
+    :param instance: A type instance being validated.
+    :type instance: cim.v1.types.shared.DocRelationshipTarget
 
     :returns: List of validation errors.
     :rtype: list
@@ -306,6 +293,19 @@ def validate_real_calendar(instance):
 
     :param instance: A type instance being validated.
     :type instance: cim.v1.types.shared.RealCalendar
+
+    :returns: List of validation errors.
+    :rtype: list
+
+    """
+    return NotImplementedError()
+
+
+def validate_relationship(instance):
+    """Validates an instance of the following type: cim.v1.types.shared.Relationship.
+
+    :param instance: A type instance being validated.
+    :type instance: cim.v1.types.shared.Relationship
 
     :returns: List of validation errors.
     :rtype: list

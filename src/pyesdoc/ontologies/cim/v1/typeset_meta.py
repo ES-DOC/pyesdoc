@@ -7,7 +7,7 @@
    :synopsis: Encpasulates meta-information pertaining to the cim.v1 typeset.
 
 .. moduleauthor:: Earth System Documentation (ES-DOC) <dev@esdocumentation.org>
-.. note:: Code generated using esdoc_mp @ 2013-09-06 15:59:51.483618.
+.. note:: Code generated using esdoc_mp @ 2013-09-12 17:03:09.137824.
 
 """
 # Module imports.
@@ -79,18 +79,17 @@ quality.Report.type_key = 'cim.1.quality.Report'
 shared.Calendar.type_key = 'cim.1.shared.Calendar'
 shared.Change.type_key = 'cim.1.shared.Change'
 shared.ChangeProperty.type_key = 'cim.1.shared.ChangeProperty'
-shared.CimDocumentRelationship.type_key = 'cim.1.shared.CimDocumentRelationship'
-shared.CimDocumentRelationshipTarget.type_key = 'cim.1.shared.CimDocumentRelationshipTarget'
-shared.CimGenealogy.type_key = 'cim.1.shared.CimGenealogy'
-shared.CimInfo.type_key = 'cim.1.shared.CimInfo'
-shared.CimReference.type_key = 'cim.1.shared.CimReference'
-shared.CimRelationship.type_key = 'cim.1.shared.CimRelationship'
 shared.Citation.type_key = 'cim.1.shared.Citation'
 shared.ClosedDateRange.type_key = 'cim.1.shared.ClosedDateRange'
 shared.Compiler.type_key = 'cim.1.shared.Compiler'
 shared.Daily360.type_key = 'cim.1.shared.Daily360'
 shared.DataSource.type_key = 'cim.1.shared.DataSource'
 shared.DateRange.type_key = 'cim.1.shared.DateRange'
+shared.DocGenealogy.type_key = 'cim.1.shared.DocGenealogy'
+shared.DocInfo.type_key = 'cim.1.shared.DocInfo'
+shared.DocReference.type_key = 'cim.1.shared.DocReference'
+shared.DocRelationship.type_key = 'cim.1.shared.DocRelationship'
+shared.DocRelationshipTarget.type_key = 'cim.1.shared.DocRelationshipTarget'
 shared.License.type_key = 'cim.1.shared.License'
 shared.Machine.type_key = 'cim.1.shared.Machine'
 shared.MachineCompilerUnit.type_key = 'cim.1.shared.MachineCompilerUnit'
@@ -99,6 +98,7 @@ shared.PerpetualPeriod.type_key = 'cim.1.shared.PerpetualPeriod'
 shared.Platform.type_key = 'cim.1.shared.Platform'
 shared.Property.type_key = 'cim.1.shared.Property'
 shared.RealCalendar.type_key = 'cim.1.shared.RealCalendar'
+shared.Relationship.type_key = 'cim.1.shared.Relationship'
 shared.ResponsibleParty.type_key = 'cim.1.shared.ResponsibleParty'
 shared.ResponsiblePartyContactInfo.type_key = 'cim.1.shared.ResponsiblePartyContactInfo'
 shared.Standard.type_key = 'cim.1.shared.Standard'
@@ -145,47 +145,47 @@ activity.Conformance.type_info = (
     ('frequency', str, False, False),
     ('is_conformant', bool, True, False),
     ('requirements', activity.NumericalRequirement, False, True),
-    ('requirements_references', shared.CimReference, False, True),
+    ('requirements_references', shared.DocReference, False, True),
     ('sources', shared.DataSource, False, True),
-    ('sources_references', shared.CimReference, False, True),
+    ('sources_references', shared.DocReference, False, True),
     ('type', str, False, False),
 )
 
 activity.DownscalingSimulation.type_info = (
     ('calendar', shared.Calendar, True, False),
-    ('cim_info', shared.CimInfo, True, False),
+    ('doc_info', shared.DocInfo, True, False),
     ('downscaled_from', shared.DataSource, True, False),
-    ('downscaled_from_reference', shared.CimReference, True, False),
+    ('downscaled_from_reference', shared.DocReference, True, False),
     ('downscaling_id', str, False, False),
     ('downscaling_type', str, False, False),
     ('inputs', software.Coupling, False, True),
-    ('output_references', shared.CimReference, False, True),
+    ('output_references', shared.DocReference, False, True),
     ('outputs', data.DataObject, False, True),
 )
 
 activity.Ensemble.type_info = (
-    ('cim_info', shared.CimInfo, True, False),
+    ('doc_info', shared.DocInfo, True, False),
     ('members', activity.EnsembleMember, True, True),
     ('outputs', shared.DataSource, False, True),
-    ('outputs_references', shared.CimReference, False, True),
+    ('outputs_references', shared.DocReference, False, True),
     ('types', str, True, True),
 )
 
 activity.EnsembleMember.type_info = (
     ('ensemble', activity.Ensemble, False, False),
     ('ensemble_ids', shared.StandardName, False, True),
-    ('ensemble_reference', shared.CimReference, False, False),
+    ('ensemble_reference', shared.DocReference, False, False),
     ('simulation', activity.Simulation, False, False),
-    ('simulation_reference', shared.CimReference, False, False),
+    ('simulation_reference', shared.DocReference, False, False),
 )
 
 activity.Experiment.type_info = (
     ('generates', str, False, True),
     ('measurement_campaigns', activity.MeasurementCampaign, False, True),
     ('requires', activity.NumericalActivity, False, True),
-    ('requires_references', shared.CimReference, False, True),
+    ('requires_references', shared.DocReference, False, True),
     ('supports', str, True, True),
-    ('supports_references', shared.CimReference, False, True),
+    ('supports_references', shared.DocReference, False, True),
 )
 
 activity.ExperimentRelationship.type_info = (
@@ -195,7 +195,7 @@ activity.ExperimentRelationship.type_info = (
 
 activity.ExperimentRelationshipTarget.type_info = (
     ('numerical_experiment', activity.NumericalExperiment, False, False),
-    ('reference', shared.CimReference, False, False),
+    ('reference', shared.DocReference, False, False),
 )
 
 activity.InitialCondition.type_info = (
@@ -213,12 +213,12 @@ activity.NumericalActivity.type_info = (
     ('long_name', str, False, False),
     ('short_name', str, True, False),
     ('supports', activity.Experiment, True, True),
-    ('supports_references', shared.CimReference, True, True),
+    ('supports_references', shared.DocReference, True, True),
 )
 
 activity.NumericalExperiment.type_info = (
-    ('cim_info', shared.CimInfo, True, False),
     ('description', str, False, False),
+    ('doc_info', shared.DocInfo, True, False),
     ('experiment_id', str, False, False),
     ('long_name', str, False, False),
     ('requirements', activity.NumericalRequirement, False, True),
@@ -232,7 +232,7 @@ activity.NumericalRequirement.type_info = (
     ('options', activity.NumericalRequirementOption, False, True),
     ('requirement_type', str, True, False),
     ('source', shared.DataSource, False, False),
-    ('source_reference', shared.CimReference, False, False),
+    ('source_reference', shared.DocReference, False, False),
 )
 
 activity.NumericalRequirementOption.type_info = (
@@ -251,23 +251,23 @@ activity.Simulation.type_info = (
     ('calendar', shared.Calendar, True, False),
     ('conformances', activity.Conformance, False, True),
     ('control_simulation', activity.Simulation, False, False),
-    ('control_simulation_reference', shared.CimReference, False, False),
+    ('control_simulation_reference', shared.DocReference, False, False),
     ('deployments', software.Deployment, False, True),
     ('inputs', software.Coupling, False, True),
-    ('output_references', shared.CimReference, False, True),
+    ('output_references', shared.DocReference, False, True),
     ('outputs', data.DataObject, False, True),
-    ('restart_references', shared.CimReference, False, True),
+    ('restart_references', shared.DocReference, False, True),
     ('restarts', data.DataObject, False, True),
     ('simulation_id', str, False, False),
     ('spinup_date_range', shared.ClosedDateRange, False, False),
     ('spinup_simulation', activity.Simulation, False, False),
-    ('spinup_simulation_reference', shared.CimReference, False, False),
+    ('spinup_simulation_reference', shared.DocReference, False, False),
 )
 
 activity.SimulationComposite.type_info = (
     ('child', activity.Simulation, False, True),
-    ('cim_info', shared.CimInfo, True, False),
     ('date_range', shared.DateRange, True, False),
+    ('doc_info', shared.DocInfo, True, False),
     ('rank', int, True, False),
 )
 
@@ -277,15 +277,15 @@ activity.SimulationRelationship.type_info = (
 )
 
 activity.SimulationRelationshipTarget.type_info = (
-    ('reference', shared.CimReference, False, False),
+    ('reference', shared.DocReference, False, False),
     ('target', str, False, False),
 )
 
 activity.SimulationRun.type_info = (
-    ('cim_info', shared.CimInfo, True, False),
     ('date_range', shared.DateRange, True, False),
+    ('doc_info', shared.DocInfo, True, False),
     ('model', software.ModelComponent, False, False),
-    ('model_reference', shared.CimReference, False, False),
+    ('model_reference', shared.DocReference, False, False),
 )
 
 activity.SpatioTemporalConstraint.type_info = (
@@ -339,19 +339,19 @@ data.DataHierarchyLevel.type_info = (
 data.DataObject.type_info = (
     ('acronym', str, False, False),
     ('child_object', data.DataObject, False, True),
-    ('cim_info', shared.CimInfo, True, False),
     ('citations', shared.Citation, False, True),
     ('content', data.DataContent, False, True),
     ('data_property', data.DataProperty, False, True),
     ('data_status', str, False, False),
     ('description', str, False, False),
     ('distribution', data.DataDistribution, False, False),
+    ('doc_info', shared.DocInfo, True, False),
     ('extent', data.DataExtent, False, False),
     ('geometry_model', str, False, False),
     ('hierarchy_level', data.DataHierarchyLevel, False, False),
     ('keyword', str, False, False),
     ('parent_object', data.DataObject, False, False),
-    ('parent_object_reference', shared.CimReference, False, False),
+    ('parent_object_reference', shared.DocReference, False, False),
     ('restriction', data.DataRestriction, False, True),
     ('source_simulation', str, False, False),
     ('storage', data.DataStorage, False, True),
@@ -435,7 +435,7 @@ grids.GridProperty.type_info = (
 )
 
 grids.GridSpec.type_info = (
-    ('cim_info', shared.CimInfo, True, False),
+    ('doc_info', shared.DocInfo, True, False),
     ('esm_exchange_grids', grids.GridMosaic, False, True),
     ('esm_model_grids', grids.GridMosaic, False, True),
 )
@@ -483,7 +483,7 @@ grids.VerticalCoordinateList.type_info = (
 )
 
 quality.CimQuality.type_info = (
-    ('cim_info', shared.CimInfo, True, False),
+    ('doc_info', shared.DocInfo, True, False),
     ('reports', quality.Report, False, True),
 )
 
@@ -532,50 +532,6 @@ shared.ChangeProperty.type_info = (
     ('id', str, False, False),
 )
 
-shared.CimDocumentRelationship.type_info = (
-    ('target', shared.CimDocumentRelationshipTarget, True, False),
-    ('type', str, True, False),
-)
-
-shared.CimDocumentRelationshipTarget.type_info = (
-    ('document', str, False, False),
-    ('reference', shared.CimReference, False, False),
-)
-
-shared.CimGenealogy.type_info = (
-    ('relationships', shared.CimRelationship, False, True),
-)
-
-shared.CimInfo.type_info = (
-    ('author', shared.ResponsibleParty, False, False),
-    ('create_date', datetime.datetime, True, False),
-    ('external_ids', shared.StandardName, False, True),
-    ('genealogy', shared.CimGenealogy, False, False),
-    ('id', uuid.UUID, True, False),
-    ('language', str, True, False),
-    ('metadata_id', str, False, False),
-    ('metadata_version', str, False, False),
-    ('project', str, True, False),
-    ('source', str, True, False),
-    ('status', str, False, False),
-    ('version', str, True, False),
-)
-
-shared.CimReference.type_info = (
-    ('changes', shared.Change, False, True),
-    ('description', str, False, False),
-    ('external_id', str, False, False),
-    ('id', uuid.UUID, False, False),
-    ('name', str, False, False),
-    ('type', str, False, False),
-    ('version', str, False, False),
-)
-
-shared.CimRelationship.type_info = (
-    ('description', str, False, False),
-    ('direction', str, True, False),
-)
-
 shared.Citation.type_info = (
     ('alternative_title', str, False, False),
     ('collective_title', str, False, False),
@@ -583,7 +539,7 @@ shared.Citation.type_info = (
     ('date_type', str, False, False),
     ('location', str, False, False),
     ('organisation', str, False, False),
-    ('reference', shared.CimReference, False, False),
+    ('reference', shared.DocReference, False, False),
     ('role', str, False, False),
     ('title', str, False, False),
     ('type', str, False, False),
@@ -612,6 +568,46 @@ shared.DataSource.type_info = (
 
 shared.DateRange.type_info = (
     ('duration', str, False, False),
+)
+
+shared.DocGenealogy.type_info = (
+    ('relationships', shared.DocRelationship, False, True),
+)
+
+shared.DocInfo.type_info = (
+    ('author', shared.ResponsibleParty, False, False),
+    ('create_date', datetime.datetime, True, False),
+    ('external_ids', shared.StandardName, False, True),
+    ('genealogy', shared.DocGenealogy, False, False),
+    ('id', uuid.UUID, True, False),
+    ('institute', str, False, False),
+    ('language', str, True, False),
+    ('metadata_id', str, False, False),
+    ('metadata_version', str, False, False),
+    ('project', str, True, False),
+    ('source', str, True, False),
+    ('status', str, False, False),
+    ('version', int, True, False),
+)
+
+shared.DocReference.type_info = (
+    ('changes', shared.Change, False, True),
+    ('description', str, False, False),
+    ('external_id', str, False, False),
+    ('id', uuid.UUID, False, False),
+    ('name', str, False, False),
+    ('type', str, False, False),
+    ('version', str, False, False),
+)
+
+shared.DocRelationship.type_info = (
+    ('target', shared.DocRelationshipTarget, True, False),
+    ('type', str, True, False),
+)
+
+shared.DocRelationshipTarget.type_info = (
+    ('document', str, False, False),
+    ('reference', shared.DocReference, False, False),
 )
 
 shared.License.type_info = (
@@ -650,9 +646,9 @@ shared.PerpetualPeriod.type_info = (
 )
 
 shared.Platform.type_info = (
-    ('cim_info', shared.CimInfo, True, False),
     ('contacts', shared.ResponsibleParty, False, True),
     ('description', str, False, False),
+    ('doc_info', shared.DocInfo, True, False),
     ('long_name', str, False, False),
     ('short_name', str, True, False),
     ('units', shared.MachineCompilerUnit, True, True),
@@ -664,6 +660,11 @@ shared.Property.type_info = (
 )
 
 shared.RealCalendar.type_info = (
+)
+
+shared.Relationship.type_info = (
+    ('description', str, False, False),
+    ('direction', str, True, False),
 )
 
 shared.ResponsibleParty.type_info = (
@@ -748,7 +749,7 @@ software.Composition.type_info = (
 software.Connection.type_info = (
     ('description', str, False, False),
     ('priming', shared.DataSource, False, False),
-    ('priming_reference', shared.CimReference, False, False),
+    ('priming_reference', shared.DocReference, False, False),
     ('properties', software.ConnectionProperty, False, True),
     ('sources', software.ConnectionEndpoint, False, True),
     ('spatial_regridding', software.SpatialRegridding, False, True),
@@ -757,13 +758,13 @@ software.Connection.type_info = (
     ('time_profile', software.Timing, False, False),
     ('time_transformation', software.TimeTransformation, False, False),
     ('transformers', software.ProcessorComponent, False, True),
-    ('transformers_references', shared.CimReference, False, True),
+    ('transformers_references', shared.DocReference, False, True),
     ('type', str, False, False),
 )
 
 software.ConnectionEndpoint.type_info = (
     ('data_source', shared.DataSource, False, False),
-    ('data_source_reference', shared.CimReference, False, False),
+    ('data_source_reference', shared.DocReference, False, False),
     ('instance_id', str, False, False),
     ('properties', software.ConnectionProperty, False, True),
 )
@@ -776,7 +777,7 @@ software.Coupling.type_info = (
     ('description', str, False, False),
     ('is_fully_specified', bool, True, False),
     ('priming', shared.DataSource, False, False),
-    ('priming_reference', shared.CimReference, False, False),
+    ('priming_reference', shared.DocReference, False, False),
     ('properties', software.CouplingProperty, False, True),
     ('purpose', str, True, False),
     ('sources', software.CouplingEndpoint, True, True),
@@ -786,13 +787,13 @@ software.Coupling.type_info = (
     ('time_profile', software.Timing, False, False),
     ('time_transformation', software.TimeTransformation, False, False),
     ('transformers', software.ProcessorComponent, False, True),
-    ('transformers_references', shared.CimReference, False, True),
+    ('transformers_references', shared.DocReference, False, True),
     ('type', str, False, False),
 )
 
 software.CouplingEndpoint.type_info = (
     ('data_source', shared.DataSource, False, False),
-    ('data_source_reference', shared.CimReference, False, False),
+    ('data_source_reference', shared.DocReference, False, False),
     ('instance_id', str, False, False),
     ('properties', software.CouplingProperty, False, True),
 )
@@ -807,7 +808,7 @@ software.Deployment.type_info = (
     ('executable_name', str, False, False),
     ('parallelisation', software.Parallelisation, False, False),
     ('platform', shared.Platform, False, False),
-    ('platform_reference', shared.CimReference, False, False),
+    ('platform_reference', shared.DocReference, False, False),
 )
 
 software.EntryPoint.type_info = (
@@ -816,7 +817,7 @@ software.EntryPoint.type_info = (
 
 software.ModelComponent.type_info = (
     ('activity', activity.Activity, False, False),
-    ('cim_info', shared.CimInfo, True, False),
+    ('doc_info', shared.DocInfo, True, False),
     ('timing', software.Timing, False, False),
     ('type', str, False, False),
     ('types', str, True, True),
@@ -828,7 +829,7 @@ software.Parallelisation.type_info = (
 )
 
 software.ProcessorComponent.type_info = (
-    ('cim_info', shared.CimInfo, True, False),
+    ('doc_info', shared.DocInfo, True, False),
 )
 
 software.Rank.type_info = (
@@ -850,12 +851,12 @@ software.SpatialRegriddingProperty.type_info = (
 
 software.SpatialRegriddingUserMethod.type_info = (
     ('file', data.DataObject, False, False),
-    ('file_reference', shared.CimReference, False, False),
+    ('file_reference', shared.DocReference, False, False),
     ('name', str, True, False),
 )
 
 software.StatisticalModelComponent.type_info = (
-    ('cim_info', shared.CimInfo, True, False),
+    ('doc_info', shared.DocInfo, True, False),
     ('timing', software.Timing, False, False),
     ('type', str, False, False),
     ('types', str, True, True),

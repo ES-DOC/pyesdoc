@@ -7,7 +7,7 @@
    :synopsis: A set of cim 1 decoders.
 
 .. moduleauthor:: Earth System Documentation (ES-DOC) <dev@esdocumentation.org>
-.. note:: Code generated using esdoc_mp @ 2013-09-06 15:59:51.466884.
+.. note:: Code generated using esdoc_mp @ 2013-09-12 17:03:09.116388.
 
 """
 
@@ -167,7 +167,7 @@ def decode_connection(xml, nsmap):
         ('priming', False, decode_model_component, 'child::cim:priming/cim:priming/cim:softwareComponent'),
         ('priming', False, decode_processor_component, 'child::cim:priming/cim:priming/cim:softwareComponent'),
         ('priming', False, decode_statistical_model_component, 'child::cim:priming/cim:priming/cim:softwareComponent'),
-        ('priming_reference', False, decode_cim_reference, 'child::cim:priming/cim:reference'),
+        ('priming_reference', False, decode_doc_reference, 'child::cim:priming/cim:reference'),
         ('properties', True, decode_connection_property, 'child::cim:connectionProperty'),
         ('sources', True, decode_connection_endpoint, 'child::cim:connectionSource'),
         ('spatial_regridding', True, decode_spatial_regridding, 'child::cim:spatialRegridding'),
@@ -176,7 +176,7 @@ def decode_connection(xml, nsmap):
         ('time_profile', False, decode_timing, 'child::cim:timeProfile'),
         ('time_transformation', False, decode_time_transformation, 'child::cim:timeTransformation'),
         ('transformers', True, decode_processor_component, 'child::cim:transformer/cim:processorComponent'),
-        ('transformers_references', True, decode_cim_reference, 'child::cim:transformer/cim:reference'),
+        ('transformers_references', True, decode_doc_reference, 'child::cim:transformer/cim:reference'),
         ('type', False, 'str', 'child::cim:type/@value'),
     ]
 
@@ -203,7 +203,7 @@ def decode_connection_endpoint(xml, nsmap):
         ('data_source', False, decode_model_component, 'child::cim:dataSource/cim:dataSource/cim:softwareComponent'),
         ('data_source', False, decode_processor_component, 'child::cim:dataSource/cim:dataSource/cim:softwareComponent'),
         ('data_source', False, decode_statistical_model_component, 'child::cim:dataSource/cim:dataSource/cim:softwareComponent'),
-        ('data_source_reference', False, decode_cim_reference, 'child::cim:dataSource/cim:reference'),
+        ('data_source_reference', False, decode_doc_reference, 'child::cim:dataSource/cim:reference'),
         ('instance_id', False, 'str', 'child::cim:instanceID'),
         ('properties', True, decode_connection_property, 'child::cim:connectionProperty'),
     ]
@@ -255,7 +255,7 @@ def decode_coupling(xml, nsmap):
         ('priming', False, decode_model_component, 'child::cim:priming/cim:priming/cim:softwareComponent'),
         ('priming', False, decode_processor_component, 'child::cim:priming/cim:priming/cim:softwareComponent'),
         ('priming', False, decode_statistical_model_component, 'child::cim:priming/cim:priming/cim:softwareComponent'),
-        ('priming_reference', False, decode_cim_reference, 'child::cim:priming/cim:reference'),
+        ('priming_reference', False, decode_doc_reference, 'child::cim:priming/cim:reference'),
         ('properties', True, decode_coupling_property, 'child::cim:couplingProperty'),
         ('purpose', False, 'str', '@purpose'),
         ('sources', True, decode_coupling_endpoint, 'child::cim:couplingSource'),
@@ -265,7 +265,7 @@ def decode_coupling(xml, nsmap):
         ('time_profile', False, decode_timing, 'child::cim:timeProfile'),
         ('time_transformation', False, decode_time_transformation, 'child::cim:timeTransformation'),
         ('transformers', True, decode_processor_component, 'child::cim:transformer/cim:processorComponent'),
-        ('transformers_references', True, decode_cim_reference, 'child::cim:transformer/cim:reference'),
+        ('transformers_references', True, decode_doc_reference, 'child::cim:transformer/cim:reference'),
         ('type', False, 'str', 'child::cim:type/@value'),
     ]
 
@@ -292,7 +292,7 @@ def decode_coupling_endpoint(xml, nsmap):
         ('data_source', False, decode_model_component, 'child::cim:dataSource/cim:dataSource/cim:softwareComponent'),
         ('data_source', False, decode_processor_component, 'child::cim:dataSource/cim:dataSource/cim:softwareComponent'),
         ('data_source', False, decode_statistical_model_component, 'child::cim:dataSource/cim:dataSource/cim:softwareComponent'),
-        ('data_source_reference', False, decode_cim_reference, 'child::cim:dataSource/cim:reference'),
+        ('data_source_reference', False, decode_doc_reference, 'child::cim:dataSource/cim:reference'),
         ('instance_id', False, 'str', 'child::cim:instanceID'),
         ('properties', True, decode_coupling_property, 'child::cim:couplingProperty'),
     ]
@@ -341,7 +341,7 @@ def decode_deployment(xml, nsmap):
         ('executable_name', False, 'str', 'child::cim:executableName'),
         ('parallelisation', False, decode_parallelisation, 'child::cim:parallelisation'),
         ('platform', False, decode_platform, 'child::cim:platform/cim:platform'),
-        ('platform_reference', False, decode_cim_reference, 'child::cim:platform/cim:reference'),
+        ('platform_reference', False, decode_doc_reference, 'child::cim:platform/cim:reference'),
     ]
 
     return set_attributes(typeset.software.Deployment(), xml, nsmap, decodings)
@@ -382,10 +382,10 @@ def decode_model_component(xml, nsmap):
     decodings = [
         ('children', True, decode_model_component, 'child::cim:childComponent/cim:modelComponent'),
         ('children', True, decode_processor_component, 'child::cim:childComponent/cim:processorComponent'),
-        ('cim_info', False, decode_cim_info, 'self::cim:modelComponent'),
         ('citation_list', True, decode_citation, 'child::cim:citation'),
         ('citations', True, decode_citation, 'child::cim:citation'),
         ('description', False, 'str', 'child::cim:description'),
+        ('doc_info', False, decode_doc_info, 'self::cim:modelComponent'),
         ('language', False, decode_component_language, 'child::cim:componentLanguage'),
         ('long_name', False, 'str', 'child::cim:longName'),
         ('properties', True, decode_component_property, 'child::cim:componentProperties/cim:componentProperty'),
@@ -443,10 +443,10 @@ def decode_processor_component(xml, nsmap):
     decodings = [
         ('children', True, decode_model_component, 'child::cim:childComponent/cim:modelComponent'),
         ('children', True, decode_processor_component, 'child::cim:childComponent/cim:processorComponent'),
-        ('cim_info', False, decode_cim_info, 'self::cim:modelComponent'),
         ('citation_list', True, decode_citation, 'child::cim:citation'),
         ('citations', True, decode_citation, 'child::cim:citation'),
         ('description', False, 'str', 'child::cim:description'),
+        ('doc_info', False, decode_doc_info, 'self::cim:modelComponent'),
         ('language', False, decode_component_language, 'child::cim:componentLanguage'),
         ('long_name', False, 'str', 'child::cim:longName'),
         ('properties', True, decode_component_property, 'child::cim:componentProperties/cim:componentProperty'),
@@ -546,7 +546,7 @@ def decode_spatial_regridding_user_method(xml, nsmap):
     """
     decodings = [
         ('file', False, decode_data_object, 'child::cim:file/cim:dataObject'),
-        ('file_reference', False, decode_cim_reference, 'child::cim:file/cim:reference'),
+        ('file_reference', False, decode_doc_reference, 'child::cim:file/cim:reference'),
         ('name', False, 'str', 'child::cim:name'),
     ]
 
@@ -569,10 +569,10 @@ def decode_statistical_model_component(xml, nsmap):
     decodings = [
         ('children', True, decode_model_component, 'child::cim:childComponent/cim:modelComponent'),
         ('children', True, decode_processor_component, 'child::cim:childComponent/cim:processorComponent'),
-        ('cim_info', False, decode_cim_info, 'self::cim:statisticalModelComponent'),
         ('citation_list', True, decode_citation, 'child::cim:citation'),
         ('citations', True, decode_citation, 'child::cim:citation'),
         ('description', False, 'str', 'child::cim:description'),
+        ('doc_info', False, decode_doc_info, 'self::cim:statisticalModelComponent'),
         ('language', False, decode_component_language, 'child::cim:componentLanguage'),
         ('long_name', False, 'str', 'child::cim:longName'),
         ('properties', True, decode_component_property, 'child::cim:componentProperties/cim:componentProperty'),

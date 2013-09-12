@@ -9,6 +9,11 @@
 
 
 """
+# Module imports.
+from . import runtime as rt
+
+
+
 # Set of supported options.
 _OPTIONS = {
     'api_url' : "http://127.0.0.1:5000"

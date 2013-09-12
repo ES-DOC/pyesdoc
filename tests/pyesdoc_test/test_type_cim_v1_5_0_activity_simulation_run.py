@@ -1,45 +1,36 @@
-"""
-.. module:: test_decoding_cim_v1_5_0_activity_simulation_run.py
-   :copyright: Copyright "Aug 7, 2013", Earth System Documentation
-   :license: GPL/CeCIL
-   :platform: Unix, Windows
-   :synopsis: Tests a cim v1.5.0 activity simulation run document.
-
-.. moduleauthor:: Mark Conway-Greenslade (formerly Morgan) <momipsl@ipsl.jussieu.fr>
-
-
-"""
-# Module imports.
-import nose
 import uuid
 
 from dateutil import parser as dateutil_parser
 
-import pyesdoc
 import pyesdoc.ontologies.cim as cim
 import pyesdoc_test.test_utils as tu
 
 
 
 # Test type.
-_TEST_TYPE = cim.v1.SimulationRun
+DOC_TYPE = cim.v1.SimulationRun
 
 # Test representation file.
-_TEST_FILE = 'cim/v1_5_0/activity.simulation_run.xml'
+DOC_FILE = 'cim/v1_5_0/activity.simulation_run.xml'
+
+# Test document uid.
+DOC_UID = '5e45202c-2b2a-11e1-a1f2-00163e9152a5'
+
+# Test document version.
+DOC_VERSION = '2'
+
+# Test document creation date.
+DOC_DATE = '2012-02-24 16:26:48.499198'
 
 
-def _assert_doc(doc):
-    doc = tu.decode_from_xml_metafor_cim_v1(_TEST_FILE, _TEST_TYPE)
-
-    tu.assert_pyesdoc_obj(doc, '5e45202c-2b2a-11e1-a1f2-00163e9152a5', '2', '2012-02-24 16:26:48.499198')
-
-    assert doc.cim_info.author.individual_name == 'Metafor Questionnaire'
-    assert len(doc.cim_info.external_ids) == 1
-    assert doc.cim_info.external_ids[0].is_open == True
-    assert doc.cim_info.external_ids[0].value == 'MOHC_HadGEM2-ES_6.3 abrupt4xCO2'
-    assert len(doc.cim_info.external_ids[0].standards) == 1
-    assert doc.cim_info.external_ids[0].standards[0].name == 'QN_DRS'
-    assert doc.cim_info.external_ids[0].standards[0].description.startswith('The QN_DRS value')
+def assert_doc(doc):
+    assert doc.doc_info.author.individual_name == 'Metafor Questionnaire'
+    assert len(doc.doc_info.external_ids) == 1
+    assert doc.doc_info.external_ids[0].is_open == True
+    assert doc.doc_info.external_ids[0].value == 'MOHC_HadGEM2-ES_6.3 abrupt4xCO2'
+    assert len(doc.doc_info.external_ids[0].standards) == 1
+    assert doc.doc_info.external_ids[0].standards[0].name == 'QN_DRS'
+    assert doc.doc_info.external_ids[0].standards[0].description.startswith('The QN_DRS value')
 
     assert doc.long_name == '6.3  Gregory-style diagnosis of slow climate system responses'
     assert doc.short_name == 'abrupt4xCO2'
@@ -149,12 +140,9 @@ def _assert_doc(doc):
     assert doc.supports_references[0].description == 'Reference to an Experiment called abrupt4xCO2 with experimentNumber 6.3'
 
 
+def update_doc(doc):
+    pass
 
-def test_open_test_file():
-    assert tu.get_test_file(_TEST_FILE) is not None
 
-
-def test_serialize():
-    for encoding in pyesdoc.ESDOC_ENCODINGS:
-        tu.serialize.description = "{0}.test_serialize.{1}".format(__name__, encoding)
-        yield tu.serialize, encoding, _TEST_FILE, _TEST_TYPE, _assert_doc
+def assert_doc_updates(doc):
+    pass

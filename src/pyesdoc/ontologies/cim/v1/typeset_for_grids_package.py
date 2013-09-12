@@ -7,7 +7,7 @@
    :synopsis: The set of types of the cim.v1.grids package.
 
 .. moduleauthor:: Earth System Documentation (ES-DOC) <dev@esdocumentation.org>
-.. note:: Code generated using esdoc_mp @ 2013-09-06 15:59:51.492255.
+.. note:: Code generated using esdoc_mp @ 2013-09-12 17:03:09.145496.
 
 """
 # Module imports.
@@ -31,9 +31,9 @@ class CoordinateList(object):
         """
         super(CoordinateList, self).__init__()
 
-        self.has_constant_offset = bool()            # type = bool
-        self.length = int()                          # type = int
-        self.uom = str()                             # type = str
+        self.has_constant_offset = bool()                 # bool
+        self.length = int()                               # int
+        self.uom = str()                                  # str
 
 
 class GridExtent(object):
@@ -47,11 +47,11 @@ class GridExtent(object):
         """
         super(GridExtent, self).__init__()
 
-        self.maximum_latitude = str()                # type = str
-        self.maximum_longitude = str()               # type = str
-        self.minimum_latitude = str()                # type = str
-        self.minimum_longitude = str()               # type = str
-        self.units = str()                           # type = str
+        self.maximum_latitude = str()                     # str
+        self.maximum_longitude = str()                    # str
+        self.minimum_latitude = str()                     # str
+        self.minimum_longitude = str()                    # str
+        self.units = str()                                # str
 
 
 class GridMosaic(object):
@@ -65,20 +65,20 @@ class GridMosaic(object):
         """
         super(GridMosaic, self).__init__()
 
-        self.citations = []                          # type = shared.Citation
-        self.description = str()                     # type = str
-        self.extent = None                           # type = grids.GridExtent
-        self.has_congruent_tiles = bool()            # type = bool
-        self.id = str()                              # type = str
-        self.is_leaf = bool()                        # type = bool
-        self.long_name = str()                       # type = str
-        self.mnemonic = str()                        # type = str
-        self.mosaic_count = int()                    # type = int
-        self.mosaics = []                            # type = grids.GridMosaic
-        self.short_name = str()                      # type = str
-        self.tile_count = int()                      # type = int
-        self.tiles = []                              # type = grids.GridTile
-        self.type = str()                            # type = str
+        self.citations = []                               # shared.Citation
+        self.description = str()                          # str
+        self.extent = None                                # grids.GridExtent
+        self.has_congruent_tiles = bool()                 # bool
+        self.id = str()                                   # str
+        self.is_leaf = bool()                             # bool
+        self.long_name = str()                            # str
+        self.mnemonic = str()                             # str
+        self.mosaic_count = int()                         # int
+        self.mosaics = []                                 # grids.GridMosaic
+        self.short_name = str()                           # str
+        self.tile_count = int()                           # int
+        self.tiles = []                                   # grids.GridTile
+        self.type = str()                                 # str
 
 
 class GridProperty(shared.Property):
@@ -105,9 +105,9 @@ class GridSpec(object):
         """
         super(GridSpec, self).__init__()
 
-        self.cim_info = None                         # type = shared.CimInfo
-        self.esm_exchange_grids = []                 # type = grids.GridMosaic
-        self.esm_model_grids = []                    # type = grids.GridMosaic
+        self.doc_info = shared.DocInfo()                  # shared.DocInfo
+        self.esm_exchange_grids = []                      # grids.GridMosaic
+        self.esm_model_grids = []                         # grids.GridMosaic
 
 
 class GridTile(object):
@@ -121,34 +121,34 @@ class GridTile(object):
         """
         super(GridTile, self).__init__()
 
-        self.area = str()                            # type = str
-        self.cell_array = str()                      # type = str
-        self.cell_ref_array = str()                  # type = str
-        self.coord_file = str()                      # type = str
-        self.coordinate_pole = str()                 # type = str
-        self.description = str()                     # type = str
-        self.discretization_type = ''                # type = grids.DiscretizationEnum
-        self.extent = None                           # type = grids.GridExtent
-        self.geometry_type = ''                      # type = grids.GeometryTypeEnum
-        self.grid_north_pole = str()                 # type = str
-        self.horizontal_crs = str()                  # type = str
-        self.horizontal_resolution = None            # type = grids.GridTileResolutionType
-        self.id = str()                              # type = str
-        self.is_conformal = bool()                   # type = bool
-        self.is_regular = bool()                     # type = bool
-        self.is_terrain_following = bool()           # type = bool
-        self.is_uniform = bool()                     # type = bool
-        self.long_name = str()                       # type = str
-        self.mnemonic = str()                        # type = str
-        self.nx = int()                              # type = int
-        self.ny = int()                              # type = int
-        self.nz = int()                              # type = int
-        self.refinement_scheme = ''                  # type = grids.RefinementTypeEnum
-        self.short_name = str()                      # type = str
-        self.simple_grid_geom = str()                # type = str
-        self.vertical_crs = str()                    # type = str
-        self.vertical_resolution = None              # type = grids.GridTileResolutionType
-        self.zcoords = None                          # type = grids.VerticalCoordinateList
+        self.area = str()                                 # str
+        self.cell_array = str()                           # str
+        self.cell_ref_array = str()                       # str
+        self.coord_file = str()                           # str
+        self.coordinate_pole = str()                      # str
+        self.description = str()                          # str
+        self.discretization_type = ''                     # grids.DiscretizationEnum
+        self.extent = None                                # grids.GridExtent
+        self.geometry_type = ''                           # grids.GeometryTypeEnum
+        self.grid_north_pole = str()                      # str
+        self.horizontal_crs = str()                       # str
+        self.horizontal_resolution = None                 # grids.GridTileResolutionType
+        self.id = str()                                   # str
+        self.is_conformal = bool()                        # bool
+        self.is_regular = bool()                          # bool
+        self.is_terrain_following = bool()                # bool
+        self.is_uniform = bool()                          # bool
+        self.long_name = str()                            # str
+        self.mnemonic = str()                             # str
+        self.nx = int()                                   # int
+        self.ny = int()                                   # int
+        self.nz = int()                                   # int
+        self.refinement_scheme = ''                       # grids.RefinementTypeEnum
+        self.short_name = str()                           # str
+        self.simple_grid_geom = str()                     # str
+        self.vertical_crs = str()                         # str
+        self.vertical_resolution = None                   # grids.GridTileResolutionType
+        self.zcoords = None                               # grids.VerticalCoordinateList
 
 
 class GridTileResolutionType(object):
@@ -162,8 +162,8 @@ class GridTileResolutionType(object):
         """
         super(GridTileResolutionType, self).__init__()
 
-        self.description = str()                     # type = str
-        self.properties = []                         # type = grids.GridProperty
+        self.description = str()                          # str
+        self.properties = []                              # grids.GridProperty
 
 
 class VerticalCoordinateList(CoordinateList):
@@ -177,9 +177,9 @@ class VerticalCoordinateList(CoordinateList):
         """
         super(VerticalCoordinateList, self).__init__()
 
-        self.form = str()                            # type = str
-        self.properties = []                         # type = grids.GridProperty
-        self.type = str()                            # type = str
+        self.form = str()                                 # str
+        self.properties = []                              # grids.GridProperty
+        self.type = str()                                 # str
 
 
 class DiscretizationEnum(object):

@@ -1,38 +1,25 @@
-"""
-.. module:: test_decoding_cim_v1_5_0_quality_cim_quality.py
-   :copyright: Copyright "Aug 7, 2013", Earth System Documentation
-   :license: GPL/CeCIL
-   :platform: Unix, Windows
-   :synopsis: Tests a cim v1.5.0 quality quality document.
-
-.. moduleauthor:: Mark Conway-Greenslade (formerly Morgan) <momipsl@ipsl.jussieu.fr>
-
-
-"""
-# Module imports.
-import nose
-import uuid
-
-from dateutil import parser as dateutil_parser
-
-import pyesdoc
 import pyesdoc.ontologies.cim as cim
 import pyesdoc_test.test_utils as tu
 
 
 
 # Test type.
-_TEST_TYPE = cim.v1.CimQuality
+DOC_TYPE = cim.v1.CimQuality
 
 # Test representation file.
-_TEST_FILE = 'cim/v1_5_0/quality.cim_quality.xml'
+DOC_FILE = 'cim/v1_5_0/quality.cim_quality.xml'
+
+# Test document uid.
+DOC_UID = 'c1debb66-2737-11e2-bc06-0010185b3f28'
+
+# Test document version.
+DOC_VERSION = '2'
+
+# Test document creation date.
+DOC_DATE = '2012-11-05T09:51:25'
 
 
-def _assert_doc(doc):
-    doc = tu.decode_from_xml_metafor_cim_v1(_TEST_FILE, _TEST_TYPE)
-
-    tu.assert_pyesdoc_obj(doc, 'c1debb66-2737-11e2-bc06-0010185b3f28', '2', '2012-11-05T09:51:25')
-
+def assert_doc(doc):
     tu.assert_collection(doc.reports, 1)
     r1 = doc.reports[0]
     tu.assert_date(r1.date, '2011-05-01 12:00:00')
@@ -56,11 +43,9 @@ def _assert_doc(doc):
     tu.assert_string(r1.evaluation.specification_hyperlink, 'http://cmip5qc.wdc-climate.de')
 
 
-def test_open_test_file():
-    assert tu.get_test_file(_TEST_FILE) is not None
+def update_doc(doc):
+    pass
 
 
-def test_serialize():
-    for encoding in pyesdoc.ESDOC_ENCODINGS:
-        tu.serialize.description = "{0}.test_serialize.{1}".format(__name__, encoding)
-        yield tu.serialize, encoding, _TEST_FILE, _TEST_TYPE, _assert_doc
+def assert_doc_updates(doc):
+    pass
