@@ -15,7 +15,7 @@
                     <target ontologyTypeKey="cim.1.shared.DocRelationshipTarget">
                         <reference ontologyTypeKey="cim.1.shared.DocReference">
                             <description>related quality document of experiment</description>
-                            <id>218f1643-a193-4d92-adfa-78219f4d920b</id>
+                            <id>a87eddcb-7451-45a4-a82f-30298dd3b28f</id>
                         </reference>
                     </target>
                     <type>other</type>

@@ -163,13 +163,6 @@
             <description>Imposed constant background volcanic aerosol</description>
         </boundaryCondition>
     </numericalRequirement>
-    <numericalRequirement>
-        <lateralBoundaryCondition>
-            <id>bc.093</id>
-            <name>9.3.bc.volc_aer_conc</name>
-            <description>Imposed constant background volcanic aerosol</description>
-        </lateralBoundaryCondition>
-    </numericalRequirement>
     <documentID>b464433a-d3a5-11df-837f-00163e9152a5</documentID>
     <documentVersion>2</documentVersion>
     <documentAuthor>

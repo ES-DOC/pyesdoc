@@ -31,10 +31,6 @@ _test_modules = (
     test_type_cim_v1_8_1_software_statistical_model_component,
 )
 
-_test_modules = (
-    test_type_cim_v1_5_0_quality_cim_quality,
-)
-
 
 def _create_doc(tm):
     doc = tu.decode_from_xml_metafor_cim_v1(tm.DOC_FILE, tm.DOC_TYPE)

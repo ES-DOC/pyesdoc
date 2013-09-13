@@ -28,7 +28,7 @@
                     <direction>toTarget</direction>
                     <target ontologyTypeKey="cim.1.shared.DocRelationshipTarget">
                         <reference ontologyTypeKey="cim.1.shared.DocReference">
-                            <id>2c9e5c67-0bfc-4095-9eab-e1d38f2970b8</id>
+                            <id>e3632ca1-66b1-4a04-a85f-2d07203f8483</id>
                             <name>HadGEM1</name>
                         </reference>
                     </target>

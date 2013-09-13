@@ -1,3 +1,4 @@
+
 <statisticalModelComponent ontologyTypeKey="cim.1.software.StatisticalModelComponent">
     <citations>
         <citation ontologyTypeKey="cim.1.shared.Citation">
@@ -31,7 +32,7 @@ More information: http://icmc.ipsl.fr/
                     <direction>toTarget</direction>
                     <target ontologyTypeKey="cim.1.shared.DocRelationshipTarget">
                         <reference ontologyTypeKey="cim.1.shared.DocReference">
-                            <id>80402fd3-7752-46bb-ae3e-3392c23bd8a6</id>
+                            <id>045e0be3-4ff5-4729-82ed-fef08ff9e3bd</id>
                             <name>IPSLCM4_v2</name>
                         </reference>
                     </target>

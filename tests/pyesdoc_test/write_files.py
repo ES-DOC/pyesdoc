@@ -14,6 +14,7 @@ import test_type_cim_v1_8_1_activity_numerical_experiment
 import test_type_cim_v1_8_1_software_statistical_model_component
 
 
+# Output folder.
 OP = '/Users/markmorgan/Development/sourcetree/esdoc/esdoc-py-client/tests/pyesdoc_test/files'
 
 
@@ -33,16 +34,26 @@ _test_modules = (
 
 
 def _get_file_name(type, encoding):
-    return OP + '/' + type.type_key + '.' + encoding
+    path = OP
+    path += '/'
+    path += encoding
+    path += '/'
+    path += type.type_key
+    path += '.'
+    if encoding == pyesdoc.METAFOR_CIM_XML_ENCODING:
+        path += pyesdoc.ESDOC_ENCODING_XML
+    else:
+        path += encoding
+
+    return path
 
 
 def _write_file(doc, encoding):
-    f = open(_get_file_name(doc.__class__, encoding), 'w')
-    f.write(pyesdoc.encode(doc, encoding))
+    with open(_get_file_name(doc.__class__, encoding), 'w') as f:
+        f.write(pyesdoc.encode(doc, encoding))
 
     
 for tm in _test_modules:
     doc = tu.decode_from_xml_metafor_cim_v1(tm.DOC_FILE, tm.DOC_TYPE)
     for encoding in (pyesdoc.ESDOC_ENCODING_XML, pyesdoc.ESDOC_ENCODING_JSON):
         _write_file(doc, encoding)
-
