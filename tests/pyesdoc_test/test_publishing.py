@@ -17,7 +17,7 @@ import test_type_cim_v1_8_1_activity_numerical_experiment
 import test_type_cim_v1_8_1_software_statistical_model_component
 
 
-# Set of publishing test modules.
+# Set of type test modules.
 _test_modules = (
     test_type_cim_v1_5_0_activity_ensemble,
     test_type_cim_v1_5_0_activity_numerical_experiment,

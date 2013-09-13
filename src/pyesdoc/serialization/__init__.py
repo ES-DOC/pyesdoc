@@ -24,7 +24,7 @@ from .. import utils
 ESDOC_ENCODING_DICT = 'dict'
 ESDOC_ENCODING_JSON = 'json'
 ESDOC_ENCODING_XML = 'xml'
-METAFOR_CIM_XML_ENCODING = 'metafor-cim-v1-xml'
+METAFOR_CIM_XML_ENCODING = 'xml-metafor-cim-v1'
 
 # Standard ESDOC encodings.
 ESDOC_ENCODINGS = (

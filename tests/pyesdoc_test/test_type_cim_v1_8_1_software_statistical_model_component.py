@@ -32,7 +32,7 @@ def assert_doc(doc):
     assert r.type == 'previousVersionOf'
 
     assert len(doc.types ) == 1
-    assert len(doc.children) == 0
+    assert len(doc.sub_components) == 0
     assert len(doc.citations) == 1
     assert len(doc.dependencies) == 0
     assert len(doc.deployments) == 0
@@ -54,15 +54,15 @@ def assert_doc(doc):
     assert doc.types[0] == 'downscaling'
 
     p = doc.properties[0]
-    assert len(p.children) == 4
+    assert len(p.sub_properties) == 4
     assert p.intent == None
     assert p.is_represented == True
     assert p.long_name == None
     assert p.short_name == 'Sea Ice Key Properties'
     assert len(p.values) == 0
 
-    p = p.children[0]
-    assert len(p.children) == 0
+    p = p.sub_properties[0]
+    assert len(p.sub_properties) == 0
     assert p.intent == None
     assert p.is_represented == True
     assert p.long_name == 'BasicApproximations'

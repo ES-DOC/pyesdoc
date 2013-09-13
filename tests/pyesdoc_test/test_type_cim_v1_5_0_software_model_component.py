@@ -40,23 +40,23 @@ def assert_doc(doc):
     assert len(doc.types ) == 1
     t = doc.types[0]
     assert t == 'model'
-    assert len(doc.children) == 4
-    cc = doc.children[0]
-    assert len(cc.children) == 3
+    assert len(doc.sub_components) == 4
+    cc = doc.sub_components[0]
+    assert len(cc.sub_components) == 3
     assert len(cc.properties) == 4
     assert len(cc.responsible_parties) == 4
     assert cc.short_name == 'Aerosols'
     assert len(cc.types) == 2    
     assert cc.doc_info.id == uuid.UUID('7a44cb24-03ca-11e1-a36a-00163e9152a5')
     cp = cc.properties[0]
-    assert len(cp.children) == 6
+    assert len(cp.sub_properties) == 6
     assert cp.is_represented == True
     assert cp.long_name == 'Aerosols'
     assert cp.short_name == 'Aerosol Key Properties'
     assert cp.intent == 'interactive'
     assert len(cp.values) == 0
-    cp = cp.children[0]
-    assert len(cp.children) == 0
+    cp = cp.sub_properties[0]
+    assert len(cp.sub_properties) == 0
     assert cp.intent is None
     assert cp.is_represented == True
     assert cp.long_name == 'AerosolSchemeScope'

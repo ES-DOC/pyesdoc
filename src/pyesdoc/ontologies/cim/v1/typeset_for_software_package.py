@@ -7,7 +7,7 @@
    :synopsis: The set of types of the cim.v1.software package.
 
 .. moduleauthor:: Earth System Documentation (ES-DOC) <dev@esdocumentation.org>
-.. note:: Code generated using esdoc_mp @ 2013-09-12 17:03:09.155405.
+.. note:: Code generated using esdoc_mp @ 2013-09-13 15:41:48.822813.
 
 """
 # Module imports.
@@ -31,8 +31,6 @@ class Component(shared.DataSource):
         """
         super(Component, self).__init__()
 
-        self.children = []                                # software.Component
-        self.citation_list = []                           # shared.Citation
         self.citations = []                               # shared.Citation
         self.composition = None                           # software.Composition
         self.coupling_framework = ''                      # software.CouplingFrameworkType
@@ -49,11 +47,11 @@ class Component(shared.DataSource):
         self.parent = None                                # software.Component
         self.previous_version = str()                     # str
         self.properties = []                              # software.ComponentProperty
-        self.property_tree = []                           # software.ComponentProperty
         self.release_date = datetime.datetime.now()       # datetime.datetime
         self.responsible_parties = []                     # shared.ResponsibleParty
         self.responsible_party_list = []                  # shared.ResponsibleParty
         self.short_name = str()                           # str
+        self.sub_components = []                          # software.Component
 
 
 class ComponentLanguage(object):
@@ -95,7 +93,6 @@ class ComponentProperty(shared.DataSource):
         """
         super(ComponentProperty, self).__init__()
 
-        self.children = []                                # software.ComponentProperty
         self.citations = []                               # shared.Citation
         self.description = str()                          # str
         self.grid = str()                                 # str
@@ -104,6 +101,7 @@ class ComponentProperty(shared.DataSource):
         self.long_name = str()                            # str
         self.short_name = str()                           # str
         self.standard_names = []                          # str
+        self.sub_properties = []                          # software.ComponentProperty
         self.units = ''                                   # shared.UnitType
         self.values = []                                  # str
 

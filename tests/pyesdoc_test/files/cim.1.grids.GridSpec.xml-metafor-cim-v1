@@ -1,0 +1,99 @@
+<gridSpec xmlns="http://www.purl.org/org/esmetadata/cim/1.5/schemas" xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:gco="http://www.isotc211.org/2005/gco" xmlns:gmd="http://www.isotc211.org/2005/gmd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" gml:id="metafor9cef52e4-e2af-11df-bf17-00163e9152a5">
+    <esmModelGrid gridType="regular_lat_lon" id="" isLeaf="true" numTiles="1" numMosaics="0">
+        <shortName>UM N180L40 OCN Grid System</shortName>
+        <longName>Met Office Unified Model 360-column 40-level Ocean Grid System</longName>
+        <description>Specification of the ocean grid configuration utilised in the Met Office Hadley Centre's HadGEM1 and HadGEM2 climate models.&#13;
+&#13;
+The key features of the N180L40 grid, which is utilised within the Met Office Hadley Centre HadGOM1 and HadGOM2 ocean models, are as follows:&#13;
+&#13;
+The grid is logically rectangular and dimensioned (i=360, j=216, k=40), where i = longitude, j = latitude, k = depth. The grid is characterised as regular rather than uniform since the Y dimension (latitude) is specified via a 1D vector rather than a constant scalar offset.&#13;
+&#13;
+Between the poles and 30 degrees N and S the horizontal grid cell size is 1.0 degree by 1.0 degree. In the tropical region, however, the grid cell size in the Y/latitude directon decreases (and resolution increases) smoothly from 1 degree at 30 N/S to approximately 1/3 degree at the equator.&#13;
+&#13;
+Grid staggering in the HadGOM1/HadGOM2 ocean grid is based upon the Arakawa-B grid scheme. In this scheme, u and v variables are co-located at the corners points of the grid cells. T and w variables coincide in the horizontal (at the grid cell centres) but are offset from each other by one-half a grid cell in the vertical. In physical space, T/w points are exactly halfway in latitude between u/v points, but the converse does not hold true. In the vertical, T points are exactly halfway in depth between w points, but again the converse does not hold true.
+        </description>
+        <citationList>
+            <citation>
+                <gmd:title>
+                    <gco:CharacterString>Johns_2005</gco:CharacterString>
+                </gmd:title>
+                <gmd:date/>
+                <gmd:presentationForm>
+                    <gmd:CI_PresentationFormCode codeList="" codeListValue="Offline Other"/>
+                </gmd:presentationForm>
+                <gmd:otherCitationDetails>
+                    <gco:CharacterString/>
+                </gmd:otherCitationDetails>
+                <gmd:collectiveTitle>
+                    <gco:CharacterString>Johns T.C., et al. (2005). "HadGEM1 - Model description and analysis of preliminary experiments for the IPCC Fourth Assessment Report". Hadley Centre Technical Note 55, Met, Office, Exeter 74pp. </gco:CharacterString>
+                </gmd:collectiveTitle>
+            </citation>
+            <citation>
+                <gmd:title>
+                    <gco:CharacterString>Johns_2006</gco:CharacterString>
+                </gmd:title>
+                <gmd:date/>
+                <gmd:presentationForm>
+                    <gmd:CI_PresentationFormCode codeList="" codeListValue="Offline Refereed"/>
+                </gmd:presentationForm>
+                <gmd:otherCitationDetails>
+                    <gco:CharacterString/>
+                </gmd:otherCitationDetails>
+                <gmd:collectiveTitle>
+                    <gco:CharacterString>Johns T.C., C.F. Durman, H.T. Banks, M.J. Roberts, A.J. McLaren, J.K. Ridley, C.A. Senior, K.D. Williams, A. Jones, G.J. Rickard, S. Cusack, W.J. Ingram, M. Crucifix, D.M.H. Sexton, M.M. Joshi, B-W. Dong, H. Spencer, R.S.R. Hill, J.M. Gregory, A.B. Keen, A.K. Pardaens, J.A. Lowe, A. Bodas-Salcedo, S (2006). "The new Hadley Centre climate model HadGEM1: Evaluation of coupled simulations." Journal of Climate, American Meteorological Society, Vol. 19, No. 7, pages 1327-1353. </gco:CharacterString>
+                </gmd:collectiveTitle>
+            </citation>
+        </citationList>
+        <gridTile discretizationType="logically_rectangular">
+            <description>Horizontal properties: Between the poles and 30 degrees N and S the horizontal grid cell size is 1.0 degree by 1.0 degree. In the tropical region, however, the grid cell size in the Y/latitude direction decreases (and resolution increases) smoothly from 1 degree at 30 N/S to approximately 1/3 degree at the equator. Vertical properties: Layer thickness increases from 10 m at the surface to 345 m at maximum depth</description>
+            <extent>
+                <latMin>-90</latMin>
+                <latMax>90</latMax>
+                <lonMin>0</lonMin>
+                <lonMax>360</lonMax>
+            </extent>
+            <horizontalResolution description="1 deg by 1 deg between 30 N/S and the poles; meridional resolution increases to 1/3 deg at the equator  ">
+                <property>
+                    <value>216</value>
+                    <name>NumberOfLatitudinalGridCells</name>
+                </property>
+                <property>
+                    <value>360</value>
+                    <name>NumberOfLongitudinalGridCells</name>
+                </property>
+            </horizontalResolution>
+        <!--Vertical Domain specified as : oceanic-->
+            <verticalResolution>
+                <property>
+                    <value>10</value>
+                    <name>NumberOfLevelsInUpper100m</name>
+                </property>
+                <property>
+                    <value>5.0</value>
+                    <name>UpperLevel</name>
+                </property>
+                <property>
+                    <value>5327.5</value>
+                    <name>LowerLevel</name>
+                </property>
+                <property>
+                    <value>40</value>
+                    <name>NumberOfLevels</name>
+                </property>
+            </verticalResolution>
+            <zcoords coordinateType="space-based" coordinateForm="depth" />
+            <mnemonic>N180</mnemonic>
+        </gridTile>
+    </esmModelGrid>
+    <documentID>9cef52e4-e2af-11df-bf17-00163e9152a5</documentID>
+    <documentVersion>1</documentVersion>
+    <documentAuthor>
+        <gmd:individualName>
+            <gco:CharacterString>Metafor Questionnaire</gco:CharacterString>
+        </gmd:individualName>
+        <gmd:role>
+            <gmd:CI_RoleCode codeList="" codeListValue="documentAuthor"/>
+        </gmd:role>
+    </documentAuthor>
+    <documentCreationDate>2012-03-01T13:08:34.746335</documentCreationDate>
+</gridSpec>

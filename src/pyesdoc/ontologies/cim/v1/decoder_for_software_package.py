@@ -7,7 +7,7 @@
    :synopsis: A set of cim 1 decoders.
 
 .. moduleauthor:: Earth System Documentation (ES-DOC) <dev@esdocumentation.org>
-.. note:: Code generated using esdoc_mp @ 2013-09-12 17:03:09.116388.
+.. note:: Code generated using esdoc_mp @ 2013-09-13 15:41:48.780541.
 
 """
 
@@ -35,9 +35,6 @@ def decode_component(xml, nsmap):
 
     """
     decodings = [
-        ('children', True, decode_model_component, 'child::cim:childComponent/cim:modelComponent'),
-        ('children', True, decode_processor_component, 'child::cim:childComponent/cim:processorComponent'),
-        ('citation_list', True, decode_citation, 'child::cim:citation'),
         ('citations', True, decode_citation, 'child::cim:citation'),
         ('description', False, 'str', 'child::cim:description'),
         ('language', False, decode_component_language, 'child::cim:componentLanguage'),
@@ -45,13 +42,12 @@ def decode_component(xml, nsmap):
         ('properties', True, decode_component_property, 'child::cim:componentProperties/cim:componentProperty'),
         ('properties', True, decode_component_property, 'child::cim:scientificProperties/cim:componentProperty'),
         ('properties', True, decode_component_property, 'child::cim:numericalProperties/cim:componentProperty'),
-        ('property_tree', True, decode_component_property, 'child::cim:componentProperties/cim:componentProperty'),
-        ('property_tree', True, decode_component_property, 'child::cim:scientificProperties/cim:componentProperty'),
-        ('property_tree', True, decode_component_property, 'child::cim:numericalProperties/cim:componentProperty'),
         ('release_date', False, 'datetime.datetime', 'child::cim:releaseDate'),
         ('responsible_parties', True, decode_responsible_party, 'child::cim:responsibleParty'),
         ('responsible_party_list', True, decode_responsible_party, 'child::cim:responsibleParty'),
         ('short_name', False, 'str', 'child::cim:shortName'),
+        ('sub_components', True, decode_model_component, 'child::cim:childComponent/cim:modelComponent'),
+        ('sub_components', True, decode_processor_component, 'child::cim:childComponent/cim:processorComponent'),
     ]
 
     return set_attributes(typeset.software.Component(), xml, nsmap, decodings)
@@ -112,7 +108,6 @@ def decode_component_property(xml, nsmap):
 
     """
     decodings = [
-        ('children', True, decode_component_property, 'child::cim:componentProperty'),
         ('citations', True, decode_citation, 'child::cim:citation'),
         ('description', False, 'str', 'child::cim:description'),
         ('intent', False, 'str', 'self::cim:componentProperty/@intent'),
@@ -120,6 +115,7 @@ def decode_component_property(xml, nsmap):
         ('long_name', False, 'str', 'child::cim:longName'),
         ('short_name', False, 'str', 'child::cim:shortName'),
         ('standard_names', True, 'str', 'child::cim:standardName/@value'),
+        ('sub_properties', True, decode_component_property, 'child::cim:componentProperty'),
         ('units', False, 'str', 'child::cim:units/@value'),
         ('values', True, 'str', 'child::cim:value'),
     ]
@@ -380,9 +376,6 @@ def decode_model_component(xml, nsmap):
 
     """
     decodings = [
-        ('children', True, decode_model_component, 'child::cim:childComponent/cim:modelComponent'),
-        ('children', True, decode_processor_component, 'child::cim:childComponent/cim:processorComponent'),
-        ('citation_list', True, decode_citation, 'child::cim:citation'),
         ('citations', True, decode_citation, 'child::cim:citation'),
         ('description', False, 'str', 'child::cim:description'),
         ('doc_info', False, decode_doc_info, 'self::cim:modelComponent'),
@@ -391,13 +384,12 @@ def decode_model_component(xml, nsmap):
         ('properties', True, decode_component_property, 'child::cim:componentProperties/cim:componentProperty'),
         ('properties', True, decode_component_property, 'child::cim:scientificProperties/cim:componentProperty'),
         ('properties', True, decode_component_property, 'child::cim:numericalProperties/cim:componentProperty'),
-        ('property_tree', True, decode_component_property, 'child::cim:componentProperties/cim:componentProperty'),
-        ('property_tree', True, decode_component_property, 'child::cim:scientificProperties/cim:componentProperty'),
-        ('property_tree', True, decode_component_property, 'child::cim:numericalProperties/cim:componentProperty'),
         ('release_date', False, 'datetime.datetime', 'child::cim:releaseDate'),
         ('responsible_parties', True, decode_responsible_party, 'child::cim:responsibleParty'),
         ('responsible_party_list', True, decode_responsible_party, 'child::cim:responsibleParty'),
         ('short_name', False, 'str', 'child::cim:shortName'),
+        ('sub_components', True, decode_model_component, 'child::cim:childComponent/cim:modelComponent'),
+        ('sub_components', True, decode_processor_component, 'child::cim:childComponent/cim:processorComponent'),
         ('timing', False, decode_timing, 'child::cim:timing'),
         ('type', False, 'str', 'child::cim:type[1]/@value'),
         ('types', True, 'str', 'child::cim:type/@value'),
@@ -441,9 +433,6 @@ def decode_processor_component(xml, nsmap):
 
     """
     decodings = [
-        ('children', True, decode_model_component, 'child::cim:childComponent/cim:modelComponent'),
-        ('children', True, decode_processor_component, 'child::cim:childComponent/cim:processorComponent'),
-        ('citation_list', True, decode_citation, 'child::cim:citation'),
         ('citations', True, decode_citation, 'child::cim:citation'),
         ('description', False, 'str', 'child::cim:description'),
         ('doc_info', False, decode_doc_info, 'self::cim:modelComponent'),
@@ -452,13 +441,12 @@ def decode_processor_component(xml, nsmap):
         ('properties', True, decode_component_property, 'child::cim:componentProperties/cim:componentProperty'),
         ('properties', True, decode_component_property, 'child::cim:scientificProperties/cim:componentProperty'),
         ('properties', True, decode_component_property, 'child::cim:numericalProperties/cim:componentProperty'),
-        ('property_tree', True, decode_component_property, 'child::cim:componentProperties/cim:componentProperty'),
-        ('property_tree', True, decode_component_property, 'child::cim:scientificProperties/cim:componentProperty'),
-        ('property_tree', True, decode_component_property, 'child::cim:numericalProperties/cim:componentProperty'),
         ('release_date', False, 'datetime.datetime', 'child::cim:releaseDate'),
         ('responsible_parties', True, decode_responsible_party, 'child::cim:responsibleParty'),
         ('responsible_party_list', True, decode_responsible_party, 'child::cim:responsibleParty'),
         ('short_name', False, 'str', 'child::cim:shortName'),
+        ('sub_components', True, decode_model_component, 'child::cim:childComponent/cim:modelComponent'),
+        ('sub_components', True, decode_processor_component, 'child::cim:childComponent/cim:processorComponent'),
     ]
 
     return set_attributes(typeset.software.ProcessorComponent(), xml, nsmap, decodings)
@@ -567,9 +555,6 @@ def decode_statistical_model_component(xml, nsmap):
 
     """
     decodings = [
-        ('children', True, decode_model_component, 'child::cim:childComponent/cim:modelComponent'),
-        ('children', True, decode_processor_component, 'child::cim:childComponent/cim:processorComponent'),
-        ('citation_list', True, decode_citation, 'child::cim:citation'),
         ('citations', True, decode_citation, 'child::cim:citation'),
         ('description', False, 'str', 'child::cim:description'),
         ('doc_info', False, decode_doc_info, 'self::cim:statisticalModelComponent'),
@@ -578,13 +563,12 @@ def decode_statistical_model_component(xml, nsmap):
         ('properties', True, decode_component_property, 'child::cim:componentProperties/cim:componentProperty'),
         ('properties', True, decode_component_property, 'child::cim:scientificProperties/cim:componentProperty'),
         ('properties', True, decode_component_property, 'child::cim:numericalProperties/cim:componentProperty'),
-        ('property_tree', True, decode_component_property, 'child::cim:componentProperties/cim:componentProperty'),
-        ('property_tree', True, decode_component_property, 'child::cim:scientificProperties/cim:componentProperty'),
-        ('property_tree', True, decode_component_property, 'child::cim:numericalProperties/cim:componentProperty'),
         ('release_date', False, 'datetime.datetime', 'child::cim:releaseDate'),
         ('responsible_parties', True, decode_responsible_party, 'child::cim:responsibleParty'),
         ('responsible_party_list', True, decode_responsible_party, 'child::cim:responsibleParty'),
         ('short_name', False, 'str', 'child::cim:shortName'),
+        ('sub_components', True, decode_model_component, 'child::cim:childComponent/cim:modelComponent'),
+        ('sub_components', True, decode_processor_component, 'child::cim:childComponent/cim:processorComponent'),
         ('timing', False, decode_timing, 'child::cim:timing'),
         ('type', False, 'str', 'child::cim:type[1]/@value'),
         ('types', True, 'str', 'child::cim:type/@value'),

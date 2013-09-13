@@ -7,7 +7,7 @@
    :synopsis: Encpasulates meta-information pertaining to the cim.v1 typeset.
 
 .. moduleauthor:: Earth System Documentation (ES-DOC) <dev@esdocumentation.org>
-.. note:: Code generated using esdoc_mp @ 2013-09-12 17:03:09.137824.
+.. note:: Code generated using esdoc_mp @ 2013-09-13 15:41:48.800499.
 
 """
 # Module imports.
@@ -694,8 +694,6 @@ shared.StandardName.type_info = (
 )
 
 software.Component.type_info = (
-    ('children', software.Component, False, True),
-    ('citation_list', shared.Citation, False, True),
     ('citations', shared.Citation, False, True),
     ('composition', software.Composition, False, False),
     ('coupling_framework', str, False, False),
@@ -712,11 +710,11 @@ software.Component.type_info = (
     ('parent', software.Component, False, False),
     ('previous_version', str, False, False),
     ('properties', software.ComponentProperty, False, True),
-    ('property_tree', software.ComponentProperty, False, True),
     ('release_date', datetime.datetime, False, False),
     ('responsible_parties', shared.ResponsibleParty, False, True),
     ('responsible_party_list', shared.ResponsibleParty, False, True),
     ('short_name', str, True, False),
+    ('sub_components', software.Component, False, True),
 )
 
 software.ComponentLanguage.type_info = (
@@ -728,7 +726,6 @@ software.ComponentLanguageProperty.type_info = (
 )
 
 software.ComponentProperty.type_info = (
-    ('children', software.ComponentProperty, False, True),
     ('citations', shared.Citation, False, True),
     ('description', str, False, False),
     ('grid', str, False, False),
@@ -737,6 +734,7 @@ software.ComponentProperty.type_info = (
     ('long_name', str, False, False),
     ('short_name', str, True, False),
     ('standard_names', str, False, True),
+    ('sub_properties', software.ComponentProperty, False, True),
     ('units', str, False, False),
     ('values', str, False, True),
 )

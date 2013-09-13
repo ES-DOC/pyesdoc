@@ -37,7 +37,12 @@ def _get_item_tag(tag):
             return tag[0:len(tag) - len(suffix)] + replacement
         
     return tag + 'Item'
-    
+
+
+def _is_encodable_scalar(sv):
+    """Predicate returning flag indicating whether a scalar value requires encoding."""
+    return sv not in (None, str(), int())
+
 
 def _encode_scalar(xml, sv):
     """Encodes a scalar value."""
@@ -67,13 +72,19 @@ def _encode_list(xml, tag, l):
 
 def _encode_dict(xml, d):
     """Encodes a dictionary."""
-    for k, v in d.items():
+    for k in sorted(d.iterkeys()):
+        v = d[k]
         if isinstance(v, dict):
             _encode_dict(ET.SubElement(xml, k), v)
         elif isinstance(v, list):
-            _encode_list(ET.SubElement(xml, k), k, v)
+            if len(v) > 0:
+                _encode_list(ET.SubElement(xml, k), k, v)
         else:
-            _encode_scalar(ET.SubElement(xml, k), v)
+            if _is_encodable_scalar(v):
+                if k == 'docTypeKey':
+                    xml.attrib["ontologyTypeKey"] = v
+                else:
+                    _encode_scalar(ET.SubElement(xml, k), v)
 
     return xml
 
