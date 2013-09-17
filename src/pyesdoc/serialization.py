@@ -1,22 +1,22 @@
 """
-.. module:: pyesdoc.serialization.__init__.py
-   :copyright: Copyright "Feb 7, 2013", Earth System Documentation
+.. module:: pyesdoc.serialization.py
+   :copyright: @2013 Earth System Documentation (http://es-doc.org)
    :license: GPL/CeCIL
    :platform: Unix, Windows
-   :synopsis: Package initialisor.
+   :synopsis: Exposes document serialization functions.
 
 .. moduleauthor:: Mark Conway-Greenslade (formerly Morgan) <momipsl@ipsl.jussieu.fr>
 
 
 """
 # Module imports.
-from . import (
+from . utils import (
+    runtime as rt,
     serializer_dict,
     serializer_json,
     serializer_xml,
     serializer_xml_metafor_cim_v1
     )
-from .. import utils
 
 
 
@@ -47,11 +47,22 @@ _serializers = {
 }
 
 
-def _assert(encoding):
+def _assert_encoding(encoding):
     """Asserts that the serialization encoding is supported."""
     if not encoding in _serializers:
         raise ValueError('Document encoding is unsupported :: encoding = {0}.'.format(encoding))
+
+
+def _assert_doc(doc):
+    """Asserts that the document is encodable."""    
+    rt.assert_doc('doc', doc, "Cannot encode a null document")
     
+
+def _assert_representation(repr):
+    """Asserts that the representation is decodable."""
+    if repr is None:
+        _raise("Documents cannot be decoded from null objects.")
+
 
 def decode(repr, encoding):
     """Decodes a pyesdoc document representation.
@@ -66,7 +77,8 @@ def decode(repr, encoding):
     :rtype: object
 
     """
-    _assert(encoding)
+    _assert_representation(repr)
+    _assert_encoding(encoding)
 
     return _serializers[encoding].decode(repr)
 
@@ -84,6 +96,7 @@ def encode(doc, encoding):
     :rtype: unicode | dict
 
     """
-    _assert(encoding)
+    _assert_doc(doc)
+    _assert_encoding(encoding)
 
     return _serializers[encoding].encode(doc)

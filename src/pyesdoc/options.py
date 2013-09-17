@@ -10,7 +10,7 @@
 
 """
 # Module imports.
-from . import runtime as rt
+from .utils import runtime as rt
 
 
 
@@ -20,8 +20,18 @@ _OPTIONS = {
 }
 
 
+def list():
+    """List library options.
 
-def set_option(name, value):
+    """
+    opts = []
+    for k, v in _OPTIONS.items():
+        opts.append((k, v))
+
+    return tuple(opts)
+
+
+def set(name, value):
     """Sets a library option.
 
     :param name: Option name.
@@ -32,12 +42,12 @@ def set_option(name, value):
 
     """
     if name not in _OPTIONS:
-        pass
+        rt.raise_error("pyesdoc option {0} is unsupported".format(name))
 
     _OPTIONS[name] = str(value)
 
 
-def get_option(name):
+def get(name):
     """Returns a library option.
 
     :param name: Option name.
@@ -48,6 +58,6 @@ def get_option(name):
 
     """
     if name not in _OPTIONS:
-        pass
+        rt.raise_error("pyesdoc option {0} is unsupported".format(name))
 
     return _OPTIONS[name]

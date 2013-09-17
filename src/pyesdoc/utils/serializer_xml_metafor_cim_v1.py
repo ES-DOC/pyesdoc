@@ -1,7 +1,7 @@
 """
-.. module:: pyesdoc.serialization.serializer_xml_metafor_cim_v1.py
+.. module:: pyesdoc.utils.serializer_xml_metafor_cim_v1.py
 
-   :copyright: @2013 Earth System Documentation (http://esdocumentation.org)
+   :copyright: @2013 Earth System Documentation (http://es-doc.org)
    :license: GPL / CeCILL
    :platform: Unix, Windows
    :synopsis: Exposes functions for decoding document instances from Metafor CIM v1 xml representations.

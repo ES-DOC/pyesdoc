@@ -1,6 +1,5 @@
 import datetime
 import uuid
-
 import nose
 
 import pyesdoc
@@ -34,13 +33,10 @@ _test_modules = (
 
 def _create_doc(tm):
     doc = tu.decode_from_xml_metafor_cim_v1(tm.DOC_FILE, tm.DOC_TYPE)
-    tu.assert_object(doc, tm.DOC_TYPE)
-
-    doc.doc_info.id = uid = uuid.uuid4()
-    doc.doc_info.version = version  = 0
-    doc.doc_info.create_date = create_date = datetime.datetime.now()
+    doc.doc_info.id = uuid.uuid4()
+    doc.doc_info.version = 0
+    doc.doc_info.create_date = datetime.datetime.now()
     doc.doc_info.project = 'cmip5'
-    tu.assert_pyesdoc_obj(doc, uid, version, str(create_date))
 
     return doc
 
@@ -111,4 +107,5 @@ def test_publishing():
     for tm in _test_modules:
         _test_publishing.description = 'test_publish.{0}'.format(tm.DOC_TYPE)
         yield _test_publishing, tm
+
 

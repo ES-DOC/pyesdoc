@@ -7,7 +7,7 @@
    :synopsis: Typeset information for the cim v1 ontology.
 
 .. moduleauthor:: Earth System Documentation (ES-DOC) <dev@esdocumentation.org>
-.. note:: Code generated using esdoc_mp @ 2013-09-13 15:41:48.799572.
+.. note:: Code generated using esdoc_mp @ 2013-09-17 11:53:50.223737.
 
 """
 

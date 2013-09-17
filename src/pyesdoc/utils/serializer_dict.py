@@ -1,7 +1,7 @@
 """
-.. module:: pyesdoc.serialization.serializer_dict.py
+.. module:: pyesdoc.utils.serializer_dict.py
 
-   :copyright: @2013 Earth System Documentation (http://esdocumentation.org)
+   :copyright: @2013 Earth System Documentation (http://es-doc.org)
    :license: GPL / CeCILL
    :platform: Unix, Windows
    :synopsis: Exposes document dictionary serialization functions.
@@ -15,10 +15,13 @@ import uuid
 
 from dateutil import parser as date_parser
 
-from .. import (
-    ontologies,
-    utils
+from .. import ontologies
+from . import runtime as rt
+from . convertors import (
+    convert_dict_keys,
+    convert_to_underscore_case
     )
+
 
 
 # Set of ontology types.
@@ -83,7 +86,7 @@ def _decode(v, type, iterable):
         if type.type_key != d['doc_type_key']:
             doc_type = ontologies.get_type_from_key(d['doc_type_key'])
         if doc_type is None:
-            utils.runtime.raise_error('Decoding type is unrecognized')
+            rt.raise_error('Decoding type is unrecognized')
     
         # Create doc.
         doc = doc_type()
@@ -128,7 +131,7 @@ def decode(repr):
 
     """
     # Format dictionary keys.
-    as_dict = utils.convert_dict_keys(repr, utils.convert_to_underscore_case)
+    as_dict = convert_dict_keys(repr, convert_to_underscore_case)
 
     # Get target type.
     o, v, p, t = as_dict['doc_type_key'].split('.')

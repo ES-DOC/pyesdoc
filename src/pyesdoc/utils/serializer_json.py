@@ -1,7 +1,7 @@
 """
-.. module:: pyesdoc.serialization.serializer_json.py
+.. module:: pyesdoc.utils.serializer_json.py
 
-   :copyright: @2013 Earth System Documentation (http://esdocumentation.org)
+   :copyright: @2013 Earth System Documentation (http://es-doc.org)
    :license: GPL / CeCILL
    :platform: Unix, Windows
    :synopsis: Exposes document json serialization functions.
@@ -15,7 +15,11 @@ import json
 import uuid
 
 from . import serializer_dict
-from .. import utils
+from . convertors import (
+    convert_dict_keys,
+    convert_to_camel_case
+    )
+
 
 
 class _JSONEncoder(json.JSONEncoder):
@@ -49,7 +53,7 @@ def encode(doc):
     as_dict = serializer_dict.encode(doc)
 
     # Format dictionary keys.
-    as_dict = utils.convert_dict_keys(as_dict, utils.convert_to_camel_case)
+    as_dict = convert_dict_keys(as_dict, convert_to_camel_case)
 
     # Return json encoded string.
     return _JSONEncoder().encode(as_dict)

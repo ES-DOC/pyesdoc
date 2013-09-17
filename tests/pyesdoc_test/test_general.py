@@ -12,23 +12,34 @@ _CIM_V1 = '1'
 _CIM_PACKAGE = 'software'
 _CIM_TYPE = 'modelComponent'
 
+# Test constants.
+_INSTITUTE = 'TEST'
+_PROJECT = 'TEST'
+
 # Test representation file.
 DOC_FILE = 'cim/v1_5_0/software.model_component.xml'
 
 
+def _create_doc(o=_CIM, v=_CIM_V1, p=_CIM_PACKAGE, t=_CIM_TYPE):
+    return pyesdoc.create(o, v, p, t, _INSTITUTE, _PROJECT)
+
 
 def test_create_01():
-    doc = pyesdoc.create(_CIM, _CIM_V1, _CIM_PACKAGE, _CIM_TYPE)
+    doc = _create_doc()
     tu.assert_object(doc, pyesdoc.ontologies.cim.v1.typeset.ModelComponent)
+    tu.assert_string(doc.doc_info.institute, _INSTITUTE.lower())
     tu.assert_string(doc.doc_info.language, pyesdoc.ESDOC_DEFAULT_LANGUAGE)
+    tu.assert_string(doc.doc_info.project, _PROJECT.lower())
 
 
 def test_create_02():
     for o, v, p, t in pyesdoc.list_types():
-        doc = pyesdoc.create(o, v, p, t)
+        doc = _create_doc(o, v, p, t)
         tu.assert_object(doc)
         if hasattr(doc, 'doc_info'):
+            tu.assert_string(doc.doc_info.institute, _INSTITUTE.lower())
             tu.assert_string(doc.doc_info.language, pyesdoc.ESDOC_DEFAULT_LANGUAGE)
+            tu.assert_string(doc.doc_info.project, _PROJECT.lower())
         tu.assert_string(doc.__class__.type_key, "{0}.{1}.{2}.{3}".format(o, v, p, t))
 
 
@@ -79,22 +90,19 @@ def test_list_types():
     tu.assert_integer(len(types), 0)
 
 
-def test_set_institute():
-    doc = pyesdoc.create(_CIM, _CIM_V1, _CIM_PACKAGE, _CIM_TYPE)
-    tu.assert_string(doc.doc_info.institute, '')
-    pyesdoc.set_institute(doc, "TEST")
-    tu.assert_string(doc.doc_info.institute, "TEST".lower())
-
-
-def test_set_project():
-    doc = pyesdoc.create(_CIM, _CIM_V1, _CIM_PACKAGE, _CIM_TYPE)
-    tu.assert_string(doc.doc_info.project, '')
-    pyesdoc.set_project(doc, "TEST")
-    tu.assert_string(doc.doc_info.project, "TEST".lower())
-
-
 @nose.tools.raises(NotImplementedError)
 def test_validate():
     raise NotImplementedError("TODO test validate")
 
 
+def test_set_option_01():
+    api_url = 'http://es-doc.org'
+    api_url_old = pyesdoc.get_option('api_url')
+    pyesdoc.set_option('api_url', api_url)
+    tu.assert_string(api_url, pyesdoc.get_option('api_url'))
+    pyesdoc.set_option('api_url', api_url_old)
+    
+
+@nose.tools.raises(pyesdoc.PYESDOC_Exception)
+def test_set_option_02():
+    pyesdoc.set_option('xxx', 'xxx')

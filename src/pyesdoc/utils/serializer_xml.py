@@ -1,7 +1,7 @@
 """
-.. module:: pyesdoc.serialization.serializer_xml.py
+.. module:: pyesdoc.utils.serializer_xml.py
 
-   :copyright: @2013 Earth System Documentation (http://esdocumentation.org)
+   :copyright: @2013 Earth System Documentation (http://es-doc.org)
    :license: GPL / CeCILL
    :platform: Unix, Windows
    :synopsis: Exposes document xml serialization functions.
@@ -15,7 +15,10 @@ import datetime
 import xml.etree.ElementTree as ET
 
 from . import serializer_dict
-from .. import utils
+from . convertors import (
+    convert_dict_keys,
+    convert_to_camel_case
+    )
 
 
 
@@ -91,7 +94,7 @@ def _encode_dict(xml, d):
 
 def _get_xml_tag(doc):
     """Returns document root xml tag."""
-    return utils.convert_to_camel_case(doc.__class__.type_key.split('.')[3])
+    return convert_to_camel_case(doc.__class__.type_key.split('.')[3])
 
 
 def encode(doc):
@@ -108,7 +111,7 @@ def encode(doc):
     as_dict = serializer_dict.encode(doc)
 
     # Format dictionary keys.    
-    as_dict = utils.convert_dict_keys(as_dict, utils.convert_to_camel_case)
+    as_dict = convert_dict_keys(as_dict, convert_to_camel_case)
 
     # Encode to an xml element.
     as_xml = _encode_dict(ET.Element(_get_xml_tag(doc)), as_dict)

@@ -1,7 +1,7 @@
 """
-.. module:: pyesdoc.serialization.decoder_xml_utils.py
+.. module:: pyesdoc.utils.decoder_xml_utils.py
 
-   :copyright: @2013 Earth System Documentation (http://esdocumentation.org)
+   :copyright: @2013 Earth System Documentation (http://es-doc.org)
    :license: GPL / CeCILL
    :platform: Unix, Windows
    :synopsis: XML decoding utility functions.

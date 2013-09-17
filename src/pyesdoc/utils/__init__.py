@@ -17,10 +17,12 @@ from convertors import (
     convert_to_spaced_case,
     convert_to_underscore_case
     )
-from options import (
-    get_option,
-    set_option
-    )
 from runtime import PYESDOC_Exception
 
-from . import runtime
+from . import (
+    runtime,
+    serializer_dict,
+    serializer_json,
+    serializer_xml,
+    serializer_xml_metafor_cim_v1
+    )
