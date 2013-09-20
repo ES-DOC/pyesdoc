@@ -1,1 +1,43 @@
-<platform ontologyTypeKey="cim.1.shared.Platform"><contacts><contact ontologyTypeKey="cim.1.shared.ResponsibleParty"><abbreviation>MOHC</abbreviation><contactInfo ontologyTypeKey="cim.1.shared.ResponsiblePartyContactInfo" /><organisationName>UK Met Office Hadley Centre</organisationName><role>contact</role></contact></contacts><docInfo ontologyTypeKey="cim.1.shared.DocInfo"><author ontologyTypeKey="cim.1.shared.ResponsibleParty"><individualName>Metafor Questionnaire</individualName><role>documentAuthor</role></author><createDate>2012-03-01 13:55:56.232228</createDate><id>b765775a-e2ac-11df-9efb-00163e9152a5</id><language>en</language><version>1</version></docInfo><longName>Machine IBM Power 6 and compiler Other</longName><shortName>IBM Power 6_Other</shortName><units><unit ontologyTypeKey="cim.1.shared.MachineCompilerUnit"><compilers><compiler ontologyTypeKey="cim.1.shared.Compiler"><name>Other</name><version>12.1.0.0</version></compiler></compilers><machine ontologyTypeKey="cim.1.shared.Machine"><coresPerProcessor>32</coresPerProcessor><interconnect>Infiniband</interconnect><maximumProcessors>2</maximumProcessors><name>IBM Power 6</name><operatingSystem>AIX</operatingSystem><processorType>Other</processorType><system>Parallel</system><vendor>IBM</vendor></machine></unit></units></platform>
+
+<platform ontologyTypeKey="cim.1.shared.Platform">
+    <contacts>
+        <contact ontologyTypeKey="cim.1.shared.ResponsibleParty">
+            <abbreviation>MOHC</abbreviation>
+            <contactInfo ontologyTypeKey="cim.1.shared.ResponsiblePartyContactInfo" />
+            <organisationName>UK Met Office Hadley Centre</organisationName>
+            <role>contact</role>
+        </contact>
+    </contacts>
+    <docInfo ontologyTypeKey="cim.1.shared.DocInfo">
+        <author ontologyTypeKey="cim.1.shared.ResponsibleParty">
+            <individualName>Metafor Questionnaire</individualName>
+            <role>documentAuthor</role>
+        </author>
+        <createDate>2012-03-01 13:55:56.232228</createDate>
+        <id>b765775a-e2ac-11df-9efb-00163e9152a5</id>
+        <language>en</language>
+        <version>1</version>
+    </docInfo>
+    <longName>Machine IBM Power 6 and compiler Other</longName>
+    <shortName>IBM Power 6_Other</shortName>
+    <units>
+        <unit ontologyTypeKey="cim.1.shared.MachineCompilerUnit">
+            <compilers>
+                <compiler ontologyTypeKey="cim.1.shared.Compiler">
+                    <name>Other</name>
+                    <version>12.1.0.0</version>
+                </compiler>
+            </compilers>
+            <machine ontologyTypeKey="cim.1.shared.Machine">
+                <coresPerProcessor>32</coresPerProcessor>
+                <interconnect>Infiniband</interconnect>
+                <maximumProcessors>2</maximumProcessors>
+                <name>IBM Power 6</name>
+                <operatingSystem>AIX</operatingSystem>
+                <processorType>Other</processorType>
+                <system>Parallel</system>
+                <vendor>IBM</vendor>
+            </machine>
+        </unit>
+    </units>
+</platform>
