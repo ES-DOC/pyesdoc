@@ -26,6 +26,17 @@ _test_modules = (
     test_type_cim_v1_8_1_software_statistical_model_component,
 )
 
+_test_modules = (
+    test_type_cim_v1_5_0_software_model_component,
+)
+
+
+def _create_doc(tm):
+    doc = tu.decode_from_xml_metafor_cim_v1(tm.DOC_FILE, tm.DOC_TYPE)
+    doc.doc_info.project = 'cmip5'
+    doc.doc_info.source = 'testing'
+
+    return doc
 
 
 def _test_open_file(tm):
@@ -33,7 +44,7 @@ def _test_open_file(tm):
 
     
 def _test_serialization(tm, encoding):
-    doc = tu.decode_from_xml_metafor_cim_v1(tm.DOC_FILE, tm.DOC_TYPE)
+    doc = _create_doc(tm)
     tu.assert_pyesdoc_obj(doc, tm.DOC_UID, tm.DOC_VERSION, tm.DOC_DATE)
     tm.assert_doc(doc)
     repr = tu.encode(doc, encoding)

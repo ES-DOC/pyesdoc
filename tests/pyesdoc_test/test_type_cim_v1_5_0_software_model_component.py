@@ -25,6 +25,8 @@ DOC_DATE = '2012-01-31 12:34:51.361018'
 
 def assert_doc(doc):
     assert isinstance(doc.doc_info, cim.v1.DocInfo)
+    assert doc.doc_info.project == 'cmip5'
+    assert doc.doc_info.source == 'testing'
     assert doc.doc_info.author.individual_name == 'Metafor Questionnaire'
     assert doc.doc_info.author.role == 'documentAuthor'
     assert len(doc.doc_info.genealogy.relationships) == 1
