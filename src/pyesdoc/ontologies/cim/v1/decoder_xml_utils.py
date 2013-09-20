@@ -267,7 +267,7 @@ def set_attributes(target, xml, nsmap, decodings):
                                is_iterable,
                                is_duplicate)
             except Exception as e:
-                msg = "ES-DOC :: WARNING :: XML DECODING ERROR\n"
+                msg = "\nES-DOC :: WARNING :: XML DECODING ERROR\n"
                 msg += "\tTarget = {0};\n".format(target)
                 msg += "\tAttribute name = {0};\n".format(attr)
                 msg += "\tAttribute type = {0};\n".format(type)

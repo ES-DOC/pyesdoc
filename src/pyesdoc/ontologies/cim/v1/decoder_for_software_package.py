@@ -7,7 +7,7 @@
    :synopsis: A set of cim 1 decoders.
 
 .. moduleauthor:: Earth System Documentation (ES-DOC) <dev@esdocumentation.org>
-.. note:: Code generated using esdoc_mp @ 2013-09-17 11:53:50.206237.
+.. note:: Code generated using esdoc_mp @ 2013-09-18 10:44:02.261328.
 
 """
 
@@ -44,7 +44,6 @@ def decode_component(xml, nsmap):
         ('properties', True, decode_component_property, 'child::cim:numericalProperties/cim:componentProperty'),
         ('release_date', False, 'datetime.datetime', 'child::cim:releaseDate'),
         ('responsible_parties', True, decode_responsible_party, 'child::cim:responsibleParty'),
-        ('responsible_party_list', True, decode_responsible_party, 'child::cim:responsibleParty'),
         ('short_name', False, 'str', 'child::cim:shortName'),
         ('sub_components', True, decode_model_component, 'child::cim:childComponent/cim:modelComponent'),
         ('sub_components', True, decode_processor_component, 'child::cim:childComponent/cim:processorComponent'),
@@ -386,7 +385,6 @@ def decode_model_component(xml, nsmap):
         ('properties', True, decode_component_property, 'child::cim:numericalProperties/cim:componentProperty'),
         ('release_date', False, 'datetime.datetime', 'child::cim:releaseDate'),
         ('responsible_parties', True, decode_responsible_party, 'child::cim:responsibleParty'),
-        ('responsible_party_list', True, decode_responsible_party, 'child::cim:responsibleParty'),
         ('short_name', False, 'str', 'child::cim:shortName'),
         ('sub_components', True, decode_model_component, 'child::cim:childComponent/cim:modelComponent'),
         ('sub_components', True, decode_processor_component, 'child::cim:childComponent/cim:processorComponent'),
@@ -443,7 +441,6 @@ def decode_processor_component(xml, nsmap):
         ('properties', True, decode_component_property, 'child::cim:numericalProperties/cim:componentProperty'),
         ('release_date', False, 'datetime.datetime', 'child::cim:releaseDate'),
         ('responsible_parties', True, decode_responsible_party, 'child::cim:responsibleParty'),
-        ('responsible_party_list', True, decode_responsible_party, 'child::cim:responsibleParty'),
         ('short_name', False, 'str', 'child::cim:shortName'),
         ('sub_components', True, decode_model_component, 'child::cim:childComponent/cim:modelComponent'),
         ('sub_components', True, decode_processor_component, 'child::cim:childComponent/cim:processorComponent'),
@@ -565,7 +562,6 @@ def decode_statistical_model_component(xml, nsmap):
         ('properties', True, decode_component_property, 'child::cim:numericalProperties/cim:componentProperty'),
         ('release_date', False, 'datetime.datetime', 'child::cim:releaseDate'),
         ('responsible_parties', True, decode_responsible_party, 'child::cim:responsibleParty'),
-        ('responsible_party_list', True, decode_responsible_party, 'child::cim:responsibleParty'),
         ('short_name', False, 'str', 'child::cim:shortName'),
         ('sub_components', True, decode_model_component, 'child::cim:childComponent/cim:modelComponent'),
         ('sub_components', True, decode_processor_component, 'child::cim:childComponent/cim:processorComponent'),

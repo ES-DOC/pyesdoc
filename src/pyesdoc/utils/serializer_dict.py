@@ -27,21 +27,19 @@ from . convertors import (
 # Set of ontology types.
 _TYPES = ontologies.get_types()
 
-cim = ontologies.cim
-
 
 def _is_encodable(obj):
     """Returns flag indicating whether an object is encodable or not."""
     return obj.__class__ in _TYPES
 
 
-def _encode(obj):
+def _encode(doc):
     """Encodes an onbject to a deep dictionary."""
     result = {
-        'doc_type_key' : obj.__class__.type_key
+        'ontology_type_key' : doc.__class__.type_key
     }
 
-    for k, v in obj.__dict__.items():
+    for k, v in doc.__dict__.items():
         try:
             iter(v)
         except TypeError:
@@ -55,7 +53,7 @@ def _encode(obj):
     return result
 
 
-def _decode_scalar(v, type, iterable):
+def _decode_scalar(sv, type, iterable):
     """Decodes a scalar value."""
     def _do(s):
         s = s.encode('utf-8') if isinstance(s, unicode) else str(s)
@@ -74,17 +72,17 @@ def _decode_scalar(v, type, iterable):
             except Error as e:
                 print "Scalar decoding error", s, type, iterable
 
-    return map(lambda i : _do(i), v) if iterable else _do(v)
+    return map(lambda i : _do(i), sv) if iterable else _do(sv)
 
 
-def _decode(v, type, iterable):
+def _decode(dv, type, iterable):
     """Decodes a dictionary value."""
         
     def _do(d):
         # Set doc type.
         doc_type = type
-        if type.type_key != d['doc_type_key']:
-            doc_type = ontologies.get_type_from_key(d['doc_type_key'])
+        if type.type_key != d['ontology_type_key']:
+            doc_type = ontologies.get_type_from_key(d['ontology_type_key'])
         if doc_type is None:
             rt.raise_error('Decoding type is unrecognized')
     
@@ -104,7 +102,7 @@ def _decode(v, type, iterable):
 
         return doc
 
-    return _do(v) if not iterable else map(lambda i : _do(i), v)
+    return _do(dv) if not iterable else map(lambda i : _do(i), dv)
 
 
 def encode(doc):
@@ -134,7 +132,7 @@ def decode(repr):
     as_dict = convert_dict_keys(repr, convert_to_underscore_case)
 
     # Get target type.
-    o, v, p, t = as_dict['doc_type_key'].split('.')
+    o, v, p, t = as_dict['ontology_type_key'].split('.')
     type = ontologies.get_type(o, v, p, t)
 
     return _decode(as_dict, type, False)

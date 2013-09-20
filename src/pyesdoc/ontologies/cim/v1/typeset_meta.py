@@ -7,7 +7,7 @@
    :synopsis: Encpasulates meta-information pertaining to the cim.v1 typeset.
 
 .. moduleauthor:: Earth System Documentation (ES-DOC) <dev@esdocumentation.org>
-.. note:: Code generated using esdoc_mp @ 2013-09-17 11:53:50.224488.
+.. note:: Code generated using esdoc_mp @ 2013-09-18 10:44:02.282052.
 
 """
 # Module imports.
@@ -712,7 +712,6 @@ software.Component.type_info = (
     ('properties', software.ComponentProperty, False, True),
     ('release_date', datetime.datetime, False, False),
     ('responsible_parties', shared.ResponsibleParty, False, True),
-    ('responsible_party_list', shared.ResponsibleParty, False, True),
     ('short_name', str, True, False),
     ('sub_components', software.Component, False, True),
 )

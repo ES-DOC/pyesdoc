@@ -107,7 +107,6 @@ def retrieve(uid, version):
         url += '/{0}'.format(version)
 
     # Issue HTTP GET.
-    print "BBB", url
     r = _invoke(requests.get, url)
 
     # Process HTTP response code.
@@ -116,7 +115,7 @@ def retrieve(uid, version):
     elif r.status_code == HTTP_RESPONSE_STATUS_404:
         _raise("XXXX :: {0}-v{1}".format(uid, version))
     elif r.status_code == HTTP_RESPONSE_STATUS_500:
-        _raise("A retrieval error has occurred :: {0}".format(r.text))
+        _raise("Document retrieval server side failure")
 
 
 def publish(doc):
@@ -140,7 +139,6 @@ def publish(doc):
 
     # Set HTTP operation parameters.
     url = _get_api_url(_EP_PUBLISHING)
-    print "AAA", url
     data = serialization.encode(doc, serialization.ESDOC_ENCODING_JSON)
 
 
@@ -149,7 +147,7 @@ def publish(doc):
 
     # Process HTTP response code.
     if r.status_code == HTTP_RESPONSE_STATUS_500:
-        _raise("A publishing error has occurred :: {0}".format(r.text))
+        _raise("Document publishing server side failure")
 
 
 def unpublish(uid, version):
@@ -176,5 +174,4 @@ def unpublish(uid, version):
 
     # Process HTTP response code.
     if r.status_code == HTTP_RESPONSE_STATUS_500:
-        _raise("An unpublishing error has occurred :: {0}".format(r.text))
-
+        _raise("Document unpublishing server side failure")

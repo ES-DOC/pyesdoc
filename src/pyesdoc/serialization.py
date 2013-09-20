@@ -38,6 +38,12 @@ ESDOC_ENCODINGS_CUSTOM = (
     METAFOR_CIM_XML_ENCODING,
 )
 
+# Standard ESDOC encodings.
+ESDOC_ENCODING_HTTP_MEDIA_TYPES = {
+    ESDOC_ENCODING_JSON : "application/json",
+    ESDOC_ENCODING_XML : "application/xml"
+}
+
 # Set of supported sesrializers keyed by encoding.
 _serializers = {
     ESDOC_ENCODING_DICT : serializer_dict,

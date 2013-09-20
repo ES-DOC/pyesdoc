@@ -7,7 +7,7 @@
    :synopsis: The set of types of the cim.v1.software package.
 
 .. moduleauthor:: Earth System Documentation (ES-DOC) <dev@esdocumentation.org>
-.. note:: Code generated using esdoc_mp @ 2013-09-17 11:53:50.242742.
+.. note:: Code generated using esdoc_mp @ 2013-09-18 10:44:02.303489.
 
 """
 # Module imports.
@@ -49,7 +49,6 @@ class Component(shared.DataSource):
         self.properties = []                              # software.ComponentProperty
         self.release_date = datetime.datetime.now()       # datetime.datetime
         self.responsible_parties = []                     # shared.ResponsibleParty
-        self.responsible_party_list = []                  # shared.ResponsibleParty
         self.short_name = str()                           # str
         self.sub_components = []                          # software.Component
 

@@ -84,8 +84,8 @@ def _encode_dict(xml, d):
                 _encode_list(ET.SubElement(xml, k), k, v)
         else:
             if _is_encodable_scalar(v):
-                if k == 'docTypeKey':
-                    xml.attrib["ontologyTypeKey"] = v
+                if k in ('ontologyTypeKey'):
+                    xml.attrib[k] = v
                 else:
                     _encode_scalar(ET.SubElement(xml, k), v)
 
