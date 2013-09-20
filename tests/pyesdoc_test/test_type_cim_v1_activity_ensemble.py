@@ -7,7 +7,7 @@ import pyesdoc_test.test_utils as tu
 DOC_TYPE = cim.v1.Ensemble
 
 # Test representation file.
-DOC_FILE = 'cim/v1_5_0/activity.ensemble.xml'
+DOC_FILE = 'xml-metafor-cim-v1/cim.1.activity.Ensemble.xml'
 
 # Test document uid.
 DOC_UID = 'fd46d094-6fdb-11e1-825e-00163e9152a5'

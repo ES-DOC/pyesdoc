@@ -11,7 +11,7 @@ import pyesdoc_test.test_utils as tu
 DOC_TYPE = cim.v1.SimulationRun
 
 # Test representation file.
-DOC_FILE = 'cim/v1_5_0/activity.simulation_run.xml'
+DOC_FILE = 'xml-metafor-cim-v1/cim.1.activity.SimulationRun.xml'
 
 # Test document uid.
 DOC_UID = '5e45202c-2b2a-11e1-a1f2-00163e9152a5'

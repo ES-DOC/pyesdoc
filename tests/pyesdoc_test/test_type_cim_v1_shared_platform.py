@@ -7,7 +7,7 @@ import pyesdoc_test.test_utils as tu
 DOC_TYPE = cim.v1.Platform
 
 # Test representation file.
-DOC_FILE = 'cim/v1_5_0/shared.platform.xml'
+DOC_FILE = 'xml-metafor-cim-v1/cim.1.shared.Platform.xml'
 
 # Test document uid.
 DOC_UID = 'b765775a-e2ac-11df-9efb-00163e9152a5'

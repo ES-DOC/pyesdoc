@@ -11,7 +11,7 @@ import pyesdoc_test.test_utils as tu
 DOC_TYPE = cim.v1.NumericalExperiment
 
 # Test representation file.
-DOC_FILE = 'cim/v1_8_1/activity.numerical_experiment.xml'
+DOC_FILE = 'xml-metafor-cim-v1/cim.1.activity.NumericalExperiment.xml'
 
 # Test document uid.
 DOC_UID = 'b464433a-d3a5-11df-837f-00163e9152a5'

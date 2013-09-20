@@ -7,7 +7,7 @@ import pyesdoc_test.test_utils as tu
 DOC_TYPE = cim.v1.CimQuality
 
 # Test representation file.
-DOC_FILE = 'cim/v1_5_0/quality.cim_quality.xml'
+DOC_FILE = 'xml-metafor-cim-v1/cim.1.quality.CimQuality.xml'
 
 # Test document uid.
 DOC_UID = 'c1debb66-2737-11e2-bc06-0010185b3f28'

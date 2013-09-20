@@ -11,7 +11,7 @@ import pyesdoc_test.test_utils as tu
 DOC_TYPE = cim.v1.ModelComponent
 
 # Test document metafor cim v1 xml file.
-DOC_FILE = 'cim/v1_5_0/software.model_component.xml'
+DOC_FILE = 'xml-metafor-cim-v1/cim.1.software.ModelComponent.xml'
 
 # Test document uid.
 DOC_UID = '7a2b64cc-03ca-11e1-a36a-00163e9152a5'

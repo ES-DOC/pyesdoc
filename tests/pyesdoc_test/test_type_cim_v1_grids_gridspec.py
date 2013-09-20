@@ -7,7 +7,7 @@ import pyesdoc_test.test_utils as tu
 DOC_TYPE = cim.v1.GridSpec
 
 # Test representation file.
-DOC_FILE = 'cim/v1_5_0/grids.grid_spec.xml'
+DOC_FILE = 'xml-metafor-cim-v1/cim.1.grids.GridSpec.xml'
 
 # Test document uid.
 DOC_UID = '9cef52e4-e2af-11df-bf17-00163e9152a5'

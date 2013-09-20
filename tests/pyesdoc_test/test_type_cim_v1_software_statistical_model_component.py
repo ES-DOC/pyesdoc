@@ -9,7 +9,7 @@ import pyesdoc_test.test_utils as tu
 DOC_TYPE = cim.v1.StatisticalModelComponent
 
 # Test representation file.
-DOC_FILE = 'cim/v1_8_1/software.statisticalModelComponent.xml'
+DOC_FILE = 'xml-metafor-cim-v1/cim.1.software.StatisticalModelComponent.xml'
 
 # Test document uid.
 DOC_UID = '4b29d25e-2968-11e0-8517-00163e9152a5'

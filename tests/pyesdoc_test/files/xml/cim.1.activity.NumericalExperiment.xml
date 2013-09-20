@@ -155,6 +155,17 @@
             <name>4.3.stc.2006_94yr</name>
             <requirementType>spatioTemporalConstraint</requirementType>
         </requirement>
+        <requirement ontologyTypeKey="cim.1.activity.SpatioTemporalConstraint">
+            <dateRange ontologyTypeKey="cim.1.shared.ClosedDateRange">
+                <duration>P94Y</duration>
+                <end>2100-01-01 00:00:00+00:00</end>
+                <start>2006-01-01 00:00:00+00:00</start>
+            </dateRange>
+            <description>Begin in 2006 and run for 94 years</description>
+            <id>stc.030</id>
+            <name>4.3.stc.2006_94yr</name>
+            <requirementType>outputCondition</requirementType>
+        </requirement>
     </requirements>
     <shortName>rcp26</shortName>
 </numericalExperiment>

@@ -9,7 +9,7 @@ import pyesdoc_test.test_utils as tu
 DOC_TYPE = cim.v1.DataObject
 
 # Test representation file.
-DOC_FILE = 'cim/v1_5_0/data.data_object.xml'
+DOC_FILE = 'xml-metafor-cim-v1/cim.1.data.DataObject.xml'
 
 # Test document uid.
 DOC_UID = '834151a4-978d-4627-954e-285916bb907a'
