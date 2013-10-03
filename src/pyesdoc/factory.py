@@ -18,52 +18,46 @@ from . import ontologies
 from .utils import runtime as rt
 
 
+def _assert_type(type):
+    if isinstance(type, str):
+        o, v, p, t = type.split('.')
+        if not ontologies.is_supported(o, v, p, t):
+            _raise("Type {0}.v{1}.{2} is unsupported.".format(o, v, p, t))
+    elif type not in ontologies.get_types():
+        _raise("Type {0} is unsupported.".format(type))
 
-def _assert_type(o, v, p, t):
-    """Asserts document type."""
-    if not ontologies.is_supported(o, v, p, t):
-        _raise("Type {0}.v{1}.{2} is unsupported.".format(o, v, p, t))
 
-
-# Module imports.
-def create(ontology_name,
-           ontology_version,
-           ontology_package,
-           ontology_type,
-           institute,
-           project,
-           language=ESDOC_DEFAULT_LANGUAGE):
+def create(type, project, institute, language=ESDOC_DEFAULT_LANGUAGE):
     """Creates a document.
 
-    :param ontology_name: Ontology name, e.g. cim.
-    :type ontology_name: str
+    :param type: Ontology type, e.g. cim.1.software.ModelComponent.
+    :type type: str
 
-    :param ontology_version: Ontology version, e.g. 1.
-    :type ontology_version: str
+    :param project: Project wih which instance is associated.
+    :type project: str
 
-    :param ontology_package: Ontology package, e.g. activity.
-    :type ontology_package: str
-
-    :param ontology_type: Ontology type, e.g. Experiment.
-    :type ontology_type: str
+    :param institute: Institute wih which instance is associated.
+    :type institute: str
 
     :returns: A pyesdoc document instance.
     :rtype: pyesdoc object
 
     """
     # Defensive programming.
-    _assert_type(ontology_name, ontology_version, ontology_package, ontology_type)
+    _assert_type(type)
     rt.assert_var('institute', institute, str)
     rt.assert_var('project', project, str)
     rt.assert_var('language', language, str)
 
     # Create document.
-    doc = ontologies.create(ontology_name,
-                            ontology_version,
-                            ontology_package,
-                            ontology_type)
-
-    # Auto assign defaults if dealing with a publishable document.
+    doc = None
+    if isinstance(type, str):
+        o, v, p, t = type.split('.')
+        doc = ontologies.create(o, v, p, t)
+    else:
+        doc = type()
+        
+    # Assign document info when appropriate.
     if doc is not None and hasattr(doc, 'doc_info'):
         doc.doc_info.id = uuid.uuid4()
         doc.doc_info.version = 0

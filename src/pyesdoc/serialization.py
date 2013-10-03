@@ -106,3 +106,22 @@ def encode(doc, encoding):
     _assert_encoding(encoding)
 
     return _serializers[encoding].encode(doc)
+
+
+def convert(repr, encoding_from, encoding_to):
+    """Converts one encoding to another.
+
+    :param repr: A document representation (e.g. json).
+    :type repr: str
+
+    :param encoding_from: A document encoding (dict|json|xml).
+    :type encoding_from: str
+
+    :param encoding_to: A document encoding (dict|json|xml).
+    :type encoding_to: str
+
+    :returns: A pyesdoc document representation.
+    :rtype: str
+
+    """
+    return encode(decode(repr, encoding_from), encoding_to)

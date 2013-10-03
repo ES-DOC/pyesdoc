@@ -17,9 +17,16 @@ from .defaults import (
 from .factory import (
     create
     )
+from .io import (
+    write,
+    read,
+    set_output_directory
+    )
 from .ontologies import (
-    list_types,
-    is_supported
+    associate,
+    get_types,
+    is_supported,
+    list_types
     )
 from .options import (
     set as set_option,
@@ -34,6 +41,7 @@ from .publishing import (
     unpublish
     )
 from .serialization import (
+    convert,
     decode,
     encode,
     ESDOC_ENCODINGS,

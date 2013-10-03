@@ -11,6 +11,7 @@
 """
 # Module imports.
 import cim
+from .. utils import runtime as rt
 
 
 # Set of ontologies supported out of the box.
@@ -223,3 +224,37 @@ def get_type_info(type, types=get_types()):
             ti += get_type_info(base, types)
 
     return ti
+
+
+def associate(left, attr, right):
+    """Creates and returns an association between two documents.
+
+    :param left: A document.
+    :type left:  A pyesdoc object.
+
+    :param attr: Name of attribute upon left document to which the association will be assigned.
+    :type attr:  str
+
+    :param right: A document.
+    :type right:  A pyesdoc object.
+
+    :returns: A document reference.
+    :rtype:  object
+
+    """
+    # Defensive Programming.
+    rt.assert_doc("left", left)
+    rt.assert_doc("right", right)
+    if not hasattr(left, attr):
+        rt.raise_error("Cannot set association upon invalid attribute.")
+
+    # Create reference.
+    # TODO alter reference based upon ontology type.
+    ref = cim.v1.DocReference()
+    ref.id = right.doc_info.id
+    ref.version = right.doc_info.version
+    
+    # Set association.
+    setattr(left, attr, ref)
+
+    return ref

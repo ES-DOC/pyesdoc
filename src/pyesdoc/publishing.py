@@ -81,7 +81,7 @@ def _get_api_url(ep):
     return options.get(_OPT_API_URL) + '/1/{0}'.format(ep)
 
 
-def retrieve(uid, version):
+def retrieve(uid, version=ESDOC_DOC_VERSION_LATEST):
     """Retrieves a document from remote repository.
 
     :param uid: Document unique identifier.
@@ -105,6 +105,7 @@ def retrieve(uid, version):
     url += '/{0}'.format(uid)
     if version is not None:
         url += '/{0}'.format(version)
+    url += '.{0}'.format(serialization.ESDOC_ENCODING_JSON)
 
     # Issue HTTP GET.
     r = _invoke(requests.get, url)
@@ -141,7 +142,6 @@ def publish(doc):
     url = _get_api_url(_EP_PUBLISHING)
     data = serialization.encode(doc, serialization.ESDOC_ENCODING_JSON)
 
-
     # Invoke HTTP operation.
     r = _invoke(requests.post, url, data)
 
@@ -150,7 +150,7 @@ def publish(doc):
         _raise("Document publishing server side failure")
 
 
-def unpublish(uid, version):
+def unpublish(uid, version=ESDOC_DOC_VERSION_ALL):
     """Unpublishes a document from remote repository.
 
     :param doc: Document being unpublished.

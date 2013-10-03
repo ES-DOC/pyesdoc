@@ -3,6 +3,7 @@ import inspect
 import nose.tools
 
 import pyesdoc
+import pyesdoc.ontologies.cim as cim
 import pyesdoc_test.test_utils as tu
 
 
@@ -21,30 +22,38 @@ DOC_FILE = 'cim/v1_5_0/software.model_component.xml'
 
 
 def _create_doc(o=_CIM, v=_CIM_V1, p=_CIM_PACKAGE, t=_CIM_TYPE):
-    return pyesdoc.create(o, v, p, t, _INSTITUTE, _PROJECT)
+    return pyesdoc.create(".".join([o, v, p, t]), _INSTITUTE, _PROJECT)
+
+
+def _assert_doc(doc, type=None):
+    tu.assert_object(doc, type)
+    if hasattr(doc, 'doc_info'):
+        tu.assert_string(doc.doc_info.institute, _INSTITUTE.lower())
+        tu.assert_string(doc.doc_info.language, pyesdoc.ESDOC_DEFAULT_LANGUAGE)
+        tu.assert_string(doc.doc_info.project, _PROJECT.lower())
 
 
 def test_create_01():
     doc = _create_doc()
-    tu.assert_object(doc, pyesdoc.ontologies.cim.v1.typeset.ModelComponent)
-    tu.assert_string(doc.doc_info.institute, _INSTITUTE.lower())
-    tu.assert_string(doc.doc_info.language, pyesdoc.ESDOC_DEFAULT_LANGUAGE)
-    tu.assert_string(doc.doc_info.project, _PROJECT.lower())
+    _assert_doc(doc, cim.v1.ModelComponent)
 
 
 def test_create_02():
     for o, v, p, t in pyesdoc.list_types():
         doc = _create_doc(o, v, p, t)
-        tu.assert_object(doc)
-        if hasattr(doc, 'doc_info'):
-            tu.assert_string(doc.doc_info.institute, _INSTITUTE.lower())
-            tu.assert_string(doc.doc_info.language, pyesdoc.ESDOC_DEFAULT_LANGUAGE)
-            tu.assert_string(doc.doc_info.project, _PROJECT.lower())
+        _assert_doc(doc)
         tu.assert_string(doc.__class__.type_key, "{0}.{1}.{2}.{3}".format(o, v, p, t))
+
+
+def test_create_03():
+    for type in pyesdoc.get_types():
+        doc = pyesdoc.create(type, _INSTITUTE, _PROJECT)
+        _assert_doc(doc, type)
 
 
 def test_import():
     assert inspect.ismodule(pyesdoc)
+    assert inspect.ismodule(pyesdoc.ontologies.cim)
 
 
 def test_is_supported_ontology():
