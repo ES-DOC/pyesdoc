@@ -1,0 +1,303 @@
+<?xml version="1.0"?>
+<RECORDS>
+<RECORD>
+	<Key>AEROSOLS</Key>
+	<Value>Aerosols</Value>
+</RECORD>
+<RECORD>
+	<Key>AEROSOLS.AEROSOLEMISSIONANDCONC</Key>
+	<Value>Aerosol Emission And Conc</Value>
+	<ValueForDisplay>Emission And Concentration</ValueForDisplay>
+</RECORD>
+<RECORD>
+	<Key>AEROSOLS.AEROSOLMODEL</Key>
+	<Value>Aerosol Model</Value>
+	<ValueForDisplay>Model</ValueForDisplay>
+</RECORD>
+<RECORD>
+	<Key>AEROSOLS.AEROSOLTRANSPORT</Key>
+	<Value>Aerosol Transport</Value>
+	<ValueForDisplay>Transport</ValueForDisplay>
+</RECORD>
+<RECORD>
+	<Key>ATMOSPHERE</Key>
+	<Value>Atmosphere</Value>
+</RECORD>
+<RECORD>
+	<Key>ATMOSPHERE.ATMOSCONVECTTURBULCLOUD</Key>
+	<Value>Atmos Convect Turbul Cloud</Value>
+	<ValueForDisplay>Convection Cloud Turbulence</ValueForDisplay>
+</RECORD>
+<RECORD>
+	<Key>ATMOSPHERE.ATMOSCONVECTTURBULCLOUD.ATMOSCLOUDSCHEME</Key>
+	<Value>Atmos Cloud Scheme</Value>
+	<ValueForDisplay>Cloud Scheme</ValueForDisplay>
+</RECORD>
+<RECORD>
+	<Key>ATMOSPHERE.ATMOSCONVECTTURBULCLOUD.CLOUDSIMULATOR</Key>
+	<Value>Cloud Simulator</Value>
+</RECORD>
+<RECORD>
+	<Key>ATMOSPHERE.ATMOSDYNAMICALCORE</Key>
+	<Value>Atmos Dynamical Core</Value>
+	<ValueForDisplay>Dynamical Core</ValueForDisplay>
+</RECORD>
+<RECORD>
+	<Key>ATMOSPHERE.ATMOSDYNAMICALCORE.ATMOSADVECTION</Key>
+	<Value>Atmos Advection</Value>
+	<ValueForDisplay>Advection</ValueForDisplay>
+</RECORD>
+<RECORD>
+	<Key>ATMOSPHERE.ATMOSOROGRAPHYANDWAVES</Key>
+	<Value>Atmos Orography And Waves</Value>
+	<ValueForDisplay>Orography And Waves</ValueForDisplay>
+</RECORD>
+<RECORD>
+	<Key>ATMOSPHERE.ATMOSRADIATION</Key>
+	<Value>Atmos Radiation</Value>
+	<ValueForDisplay>Radiation</ValueForDisplay>
+</RECORD>
+<RECORD>
+	<Key>ATMOSPHERE.OTHER</Key>
+	<Value>Other</Value>
+</RECORD>
+<RECORD>
+	<Key>ATMOSPHERICCHEMISTRY</Key>
+	<Value>Atmospheric Chemistry</Value>
+</RECORD>
+<RECORD>
+	<Key>ATMOSPHERICCHEMISTRY.ATMCHEMEMISSIONANDCONC</Key>
+	<Value>Atm Chem Emission And Conc</Value>
+	<ValueForDisplay>Emission And Conc</ValueForDisplay>
+</RECORD>
+<RECORD>
+	<Key>ATMOSPHERICCHEMISTRY.ATMCHEMGASPHASECHEMISTRY</Key>
+	<Value>Atm Chem Gas Phase Chemistry</Value>
+	<ValueForDisplay>Gas Phase Chemistry</ValueForDisplay>
+</RECORD>
+<RECORD>
+	<Key>ATMOSPHERICCHEMISTRY.ATMCHEMHETEROGENCHEMISTRY</Key>
+	<Value>Atm Chem Heterogen Chemistry</Value>
+	<ValueForDisplay>Heterogen Chemistry</ValueForDisplay>
+</RECORD>
+<RECORD>
+	<Key>ATMOSPHERICCHEMISTRY.ATMCHEMHETEROGENCHEMISTRY.STRATOSPHERICHETERCHEM</Key>
+	<Value>Stratospheric Heter Chem</Value>
+</RECORD>
+<RECORD>
+	<Key>ATMOSPHERICCHEMISTRY.ATMCHEMHETEROGENCHEMISTRY.TROPOSPHERICHETERCHEM</Key>
+	<Value>Tropospheric Heter Chem</Value>
+</RECORD>
+<RECORD>
+	<Key>ATMOSPHERICCHEMISTRY.ATMCHEMPHOTOCHEMISTRY</Key>
+	<Value>Atm Chem Photo Chemistry</Value>
+	<ValueForDisplay>Photo Chemistry</ValueForDisplay>
+</RECORD>
+<RECORD>
+	<Key>ATMOSPHERICCHEMISTRY.ATMCHEMTRANSPORT</Key>
+	<Value>Atm Chem Transport</Value>
+	<ValueForDisplay>Transport</ValueForDisplay>
+</RECORD>
+<RECORD>
+	<Key>LANDICE</Key>
+	<Value>Land Ice</Value>
+</RECORD>
+<RECORD>
+	<Key>LANDICE.LANDICEGLACIERS</Key>
+	<Value>Land Ice Glaciers</Value>
+	<ValueForDisplay>Glaciers</ValueForDisplay>
+</RECORD>
+<RECORD>
+	<Key>LANDICE.LANDICESHEET</Key>
+	<Value>Land Ice Sheet</Value>
+	<ValueForDisplay>Sheet</ValueForDisplay>
+</RECORD>
+<RECORD>
+	<Key>LANDICE.LANDICESHEET.ICESHEETDYNAMICS</Key>
+	<Value>Ice Sheet Dynamics</Value>
+</RECORD>
+<RECORD>
+	<Key>LANDICE.LANDICESHELVES</Key>
+	<Value>Land Ice Shelves</Value>
+	<ValueForDisplay>Shelves</ValueForDisplay>
+</RECORD>
+<RECORD>
+	<Key>LANDICE.LANDICESHELVES.LANDICESHELVESDYNAMICS</Key>
+	<Value>Land Ice Shelves Dynamics</Value>
+	<ValueForDisplay>Dynamics</ValueForDisplay>
+</RECORD>
+<RECORD>
+	<Key>LANDSURFACE</Key>
+	<Value>Land Surface</Value>
+</RECORD>
+<RECORD>
+	<Key>LANDSURFACE.LANDSURFACEALBEDO</Key>
+	<Value>Land Surface Albedo</Value>
+	<ValueForDisplay>Albedo</ValueForDisplay>
+</RECORD>
+<RECORD>
+	<Key>LANDSURFACE.LANDSURFACECARBONCYCLE</Key>
+	<Value>Land Surface Carbon Cycle</Value>
+	<ValueForDisplay>Carbon Cycle</ValueForDisplay>
+</RECORD>
+<RECORD>
+	<Key>LANDSURFACE.LANDSURFACECARBONCYCLE.VEGETATIONCARBONCYCLE</Key>
+	<Value>Vegetation Carbon Cycle</Value>
+</RECORD>
+<RECORD>
+	<Key>LANDSURFACE.LANDSURFACEENERGYBALANCE</Key>
+	<Value>Land Surface Energy Balance</Value>
+	<ValueForDisplay>Energy Balance</ValueForDisplay>
+</RECORD>
+<RECORD>
+	<Key>LANDSURFACE.LANDSURFACELAKES</Key>
+	<Value>Land Surface Lakes</Value>
+	<ValueForDisplay>Lakes</ValueForDisplay>
+</RECORD>
+<RECORD>
+	<Key>LANDSURFACE.LANDSURFACESNOW</Key>
+	<Value>Land Surface Snow</Value>
+	<ValueForDisplay>Snow</ValueForDisplay>
+</RECORD>
+<RECORD>
+	<Key>LANDSURFACE.LANDSURFACESOIL</Key>
+	<Value>Land Surface Soil</Value>
+	<ValueForDisplay>Soil</ValueForDisplay>
+</RECORD>
+<RECORD>
+	<Key>LANDSURFACE.LANDSURFACESOIL.LANDSURFSOILHEATTREATMENT</Key>
+	<Value>Land Surf Soil Heat Treatment</Value>
+	<ValueForDisplay>Heat Treatment</ValueForDisplay>
+</RECORD>
+<RECORD>
+	<Key>LANDSURFACE.LANDSURFACESOIL.LANDSURFSOILHYDROLOGY</Key>
+	<Value>Land Surf Soil Hydrology</Value>
+	<ValueForDisplay>Hydrology</ValueForDisplay>
+</RECORD>
+<RECORD>
+	<Key>LANDSURFACE.LANDSURFACEVEGETATION</Key>
+	<Value>Land Surface Vegetation</Value>
+	<ValueForDisplay>Vegetation</ValueForDisplay>
+</RECORD>
+<RECORD>
+	<Key>LANDSURFACE.OTHER</Key>
+	<Value>Other</Value>
+</RECORD>
+<RECORD>
+	<Key>LANDSURFACE.RIVERROUTING</Key>
+	<Value>River Routing</Value>
+</RECORD>
+<RECORD>
+	<Key>OCEAN</Key>
+	<Value>Ocean</Value>
+</RECORD>
+<RECORD>
+	<Key>OCEAN.OCEANADVECTION</Key>
+	<Value>Ocean Advection</Value>
+	<ValueForDisplay>Advection</ValueForDisplay>
+</RECORD>
+<RECORD>
+	<Key>OCEAN.OCEANBOUNDARYFORCING</Key>
+	<Value>Ocean Boundary Forcing</Value>
+	<ValueForDisplay>Boundary Forcing</ValueForDisplay>
+</RECORD>
+<RECORD>
+	<Key>OCEAN.OCEANBOUNDARYFORCING.OCEANBOUNDFORCINGTRACERS</Key>
+	<Value>Ocean Bound Forcing Tracers</Value>
+	<ValueForDisplay>Tracers</ValueForDisplay>
+</RECORD>
+<RECORD>
+	<Key>OCEAN.OCEANLATERALPHYSICS</Key>
+	<Value>Ocean Lateral Physics</Value>
+	<ValueForDisplay>Lateral Physics</ValueForDisplay>
+</RECORD>
+<RECORD>
+	<Key>OCEAN.OCEANLATERALPHYSICS.OCEANLATERALPHYSMOMENTUM</Key>
+	<Value>Ocean Lateral Phys Momentum</Value>
+	<ValueForDisplay>Momentum</ValueForDisplay>
+</RECORD>
+<RECORD>
+	<Key>OCEAN.OCEANLATERALPHYSICS.OCEANLATERALPHYSTRACERS</Key>
+	<Value>Ocean Lateral Phys Tracers</Value>
+	<ValueForDisplay>Tracers</ValueForDisplay>
+</RECORD>
+<RECORD>
+	<Key>OCEAN.OCEANLATERALPHYSICS.OTHER</Key>
+	<Value>Other</Value>
+</RECORD>
+<RECORD>
+	<Key>OCEAN.OCEANUPANDLOWBOUNDARIES</Key>
+	<Value>Ocean Up And Low Boundaries</Value>
+	<ValueForDisplay>Up And Low Boundaries</ValueForDisplay>
+</RECORD>
+<RECORD>
+	<Key>OCEAN.OCEANVERTICALPHYSICS</Key>
+	<Value>Ocean Vertical Physics</Value>
+	<ValueForDisplay>Vertical Physics</ValueForDisplay>
+</RECORD>
+<RECORD>
+	<Key>OCEAN.OCEANVERTICALPHYSICS.OCEANINTERIORMIXING</Key>
+	<Value>Ocean Interior Mixing</Value>
+	<ValueForDisplay>Interior Mixing</ValueForDisplay>
+</RECORD>
+<RECORD>
+	<Key>OCEAN.OCEANVERTICALPHYSICS.OCEANMIXEDLAYER</Key>
+	<Value>Ocean Mixed Layer</Value>
+	<ValueForDisplay>Mixed Layer</ValueForDisplay>
+</RECORD>
+<RECORD>
+	<Key>OCEAN.OTHER</Key>
+	<Value>Other</Value>
+</RECORD>
+<RECORD>
+	<Key>OCEANBIOGEOCHEMISTRY</Key>
+	<Value>Ocean Biogeo Chemistry</Value>
+</RECORD>
+<RECORD>
+	<Key>OCEANBIOGEOCHEMISTRY.OCEANBIOBOUNDARYFORCING</Key>
+	<Value>Ocean Bio Boundary Forcing</Value>
+	<ValueForDisplay>Boundary Forcing</ValueForDisplay>
+</RECORD>
+<RECORD>
+	<Key>OCEANBIOGEOCHEMISTRY.OCEANBIOCHEMISTRY</Key>
+	<Value>Ocean Bio Chemistry</Value>
+	<ValueForDisplay>Chemistry</ValueForDisplay>
+</RECORD>
+<RECORD>
+	<Key>OCEANBIOGEOCHEMISTRY.OCEANBIOGASEXCHANGE</Key>
+	<Value>Ocean Bio Gas Exchange</Value>
+	<ValueForDisplay>Gas Exchange</ValueForDisplay>
+</RECORD>
+<RECORD>
+	<Key>OCEANBIOGEOCHEMISTRY.OCEANBIOTRACERS</Key>
+	<Value>Ocean Bio Tracers</Value>
+	<ValueForDisplay>Tracers</ValueForDisplay>
+</RECORD>
+<RECORD>
+	<Key>OCEANBIOGEOCHEMISTRY.OCEANBIOTRACERS.OCEANBIOTRACERSECOSYSTEM</Key>
+	<Value>Ocean Bio Tracers Ecosystem</Value>
+	<ValueForDisplay>Ecosystem</ValueForDisplay>
+</RECORD>
+<RECORD>
+	<Key>OTHER</Key>
+	<Value>Other</Value>
+</RECORD>
+<RECORD>
+	<Key>SEAICE</Key>
+	<Value>Sea Ice</Value>
+</RECORD>
+<RECORD>
+	<Key>SEAICE.OTHER</Key>
+	<Value>Other</Value>
+</RECORD>
+<RECORD>
+	<Key>SEAICE.SEAICEDYNAMICS</Key>
+	<Value>Sea Ice Dynamics</Value>
+	<ValueForDisplay>Dynamics</ValueForDisplay>
+</RECORD>
+<RECORD>
+	<Key>SEAICE.SEAICETHERMODYNAMICS</Key>
+	<Value>Sea Ice Thermodynamics</Value>
+	<ValueForDisplay>Thermodynamics</ValueForDisplay>
+</RECORD>
+</RECORDS>
