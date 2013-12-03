@@ -42,7 +42,7 @@ def set(name, value):
 
     """
     if name not in _OPTIONS:
-        rt.raise_error("pyesdoc option {0} is unsupported".format(name))
+        rt.throw("pyesdoc option {0} is unsupported".format(name))
 
     _OPTIONS[name] = str(value)
 
@@ -58,6 +58,6 @@ def get(name):
 
     """
     if name not in _OPTIONS:
-        rt.raise_error("pyesdoc option {0} is unsupported".format(name))
+        rt.throw("pyesdoc option {0} is unsupported".format(name))
 
     return _OPTIONS[name]

@@ -13,18 +13,20 @@
 import datetime
 import uuid
 
-from . import ESDOC_DEFAULT_LANGUAGE
 from . import ontologies
+from .defaults import ESDOC_DEFAULT_LANGUAGE
 from .utils import runtime as rt
 
 
+
 def _assert_type(type):
+    """Asserts that the passed type is a supported pyesdoc document type reference."""
     if isinstance(type, str):
         o, v, p, t = type.split('.')
         if not ontologies.is_supported(o, v, p, t):
-            _raise("Type {0}.v{1}.{2} is unsupported.".format(o, v, p, t))
+            rt.throw("Type {0}.v{1}.{2} is unsupported.".format(o, v, p, t))
     elif type not in ontologies.get_types():
-        _raise("Type {0} is unsupported.".format(type))
+        rt.throw("Type {0} is unsupported.".format(type))
 
 
 def create(type, project, institute, language=ESDOC_DEFAULT_LANGUAGE):
@@ -57,7 +59,7 @@ def create(type, project, institute, language=ESDOC_DEFAULT_LANGUAGE):
     else:
         doc = type()
         
-    # Assign document info when appropriate.
+    # Assign document info.
     if doc is not None and hasattr(doc, 'doc_info'):
         doc.doc_info.id = uuid.uuid4()
         doc.doc_info.version = 0

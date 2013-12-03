@@ -10,7 +10,7 @@
 
 """
 # Module imports.
-from . utils import (
+from .utils import (
     runtime as rt,
     serializer_dict,
     serializer_json,
@@ -20,7 +20,7 @@ from . utils import (
 
 
 
-# Set of supported ESDOC encodings.
+# Supported ESDOC encodings.
 ESDOC_ENCODING_DICT = 'dict'
 ESDOC_ENCODING_JSON = 'json'
 ESDOC_ENCODING_XML = 'xml'
@@ -38,13 +38,13 @@ ESDOC_ENCODINGS_CUSTOM = (
     METAFOR_CIM_XML_ENCODING,
 )
 
-# Standard ESDOC encodings.
+# Map of standard ESDOC encodings to MIME types.
 ESDOC_ENCODING_HTTP_MEDIA_TYPES = {
     ESDOC_ENCODING_JSON : "application/json",
     ESDOC_ENCODING_XML : "application/xml"
 }
 
-# Set of supported sesrializers keyed by encoding.
+# Map of encodings to serializers.
 _serializers = {
     ESDOC_ENCODING_DICT : serializer_dict,
     ESDOC_ENCODING_JSON : serializer_json,
@@ -67,7 +67,7 @@ def _assert_doc(doc):
 def _assert_representation(repr):
     """Asserts that the representation is decodable."""
     if repr is None:
-        _raise("Documents cannot be decoded from null objects.")
+        rt.throw("Documents cannot be decoded from null objects.")
 
 
 def decode(repr, encoding):

@@ -14,10 +14,10 @@ import uuid
 
 import requests
 
-from . import utils
 from . import options
 from . import serialization
-from . validation import is_valid
+from .utils import runtime as rt
+from .validation import is_valid
 
 
 
@@ -42,38 +42,52 @@ ESDOC_DOC_VERSION_ALL = 'all'
 def _assert_doc(doc, msg):
     """Asserts document instance."""
     if doc is None:
-        _raise(msg if msg is not None else "Document instance is null.")
+        rt.throw(msg if msg is not None else "Document instance is null.")
 
 
-def _raise(msg):
-    """Raise exception."""
-    raise utils.PYESDOC_Exception(msg)
+def _throw_invalid_doc_id():
+    """Throws an error."""
+    rt.throw("Invalid document uid (must be an instance of uuid.UUID).")
 
 
-def _raise_connection_error():
-    _raise("Could not connect to remote API server.")
+def _throw_invalid_doc_version():
+    """Throws an error."""
+    rt.throw("Invalid document version (must be either 'all', 'latest' or an integer.")
 
 
-def _raise_http_error():
-    _raise("Invalid HTTP response from remote API server.")
+def _throw_connection_error():
+    """Throws an error."""
+    rt.throw("Could not connect to remote API server.")
 
 
-def _raise_timeout_error():
-    _raise("Remote API server connection timed out.")
+def _throw_http_error():
+    """Throws an error."""
+    rt.throw("Invalid HTTP response from remote API server.")
+
+
+def _throw_timeout_error():
+    """Throws an error."""
+    rt.throw("Remote API server connection timed out.")
+
+
+def _throw_server_error():
+    """Throws an error."""
+    rt.throw("A server side failure has occurred.")
 
 
 def _invoke(op, url, data=None):
+    """Invokes a publoishing endpoint operation."""
     try:
         if data is not None:
             return op(url, data=data)
         else:
             return op(url)
     except requests.ConnectionError:
-        _raise_connection_error()
+        _throw_connection_error()
     except requests.HTTPError:
-        _raise_http_error()
+        _throw_http_error()
     except requests.Timeout:
-        _raise_timeout_error()
+        _throw_timeout_error()
     
 
 def _get_api_url(ep):
@@ -91,14 +105,14 @@ def retrieve(uid, version=ESDOC_DOC_VERSION_LATEST):
     :type version: str or uuid.UUID
 
     :returns: A document from remote repository.
-    :rtype: object or None
+    :rtype: object, list or None
 
     """
     # Defensive programming.
     if not isinstance(uid, uuid.UUID):
-        _raise("Invalid document uid (must be an instance of uuid.UUID).")
+        _throw_invalid_doc_id()
     if version != ESDOC_DOC_VERSION_LATEST and not isinstance(version, int):
-        _raise("Invalid document version (must be either 'latest' or an integer.")
+        _throw_invalid_doc_version()
 
     # Set HTTP operation parameters.
     url = _get_api_url(_EP_PUBLISHING)
@@ -114,9 +128,9 @@ def retrieve(uid, version=ESDOC_DOC_VERSION_LATEST):
     if r.status_code == HTTP_RESPONSE_STATUS_200 and len(r.text):
         return serialization.decode(r.json(), serialization.ESDOC_ENCODING_DICT)
     elif r.status_code == HTTP_RESPONSE_STATUS_404:
-        _raise("XXXX :: {0}-v{1}".format(uid, version))
+        rt.throw("XXXX :: {0}-v{1}".format(uid, version))
     elif r.status_code == HTTP_RESPONSE_STATUS_500:
-        _raise("Document retrieval server side failure")
+        rt.throw("Document retrieval server side failure")
 
 
 def publish(doc):
@@ -131,9 +145,9 @@ def publish(doc):
     """
     # Defensive programming.
     if doc is None:
-        _raise("Cannot publish null documents.")
+        rt.throw("Cannot publish null documents.")
     if not is_valid(doc):
-        _raise("Cannot publish invalid documents.")
+        rt.throw("Cannot publish invalid documents.")
         
     # Increment version.
     doc.doc_info.version += 1
@@ -147,7 +161,7 @@ def publish(doc):
 
     # Process HTTP response code.
     if r.status_code == HTTP_RESPONSE_STATUS_500:
-        _raise("Document publishing server side failure")
+        _throw_server_error()
 
 
 def unpublish(uid, version=ESDOC_DOC_VERSION_ALL):
@@ -159,11 +173,11 @@ def unpublish(uid, version=ESDOC_DOC_VERSION_ALL):
     """
     # Defensive programming.
     if not isinstance(uid, uuid.UUID):
-        _raise("Invalid document uid (must be an instance of uuid.UUID).")
+        _throw_invalid_doc_id()
     if not version == ESDOC_DOC_VERSION_ALL and \
        not version == ESDOC_DOC_VERSION_LATEST and \
        not isinstance(version, int):
-        _raise("Invalid document version (must be either 'all', 'latest' or an integer.")
+       _throw_invalid_doc_version()
 
     # Set HTTP operation parameters.
     url = _get_api_url(_EP_PUBLISHING)
@@ -174,4 +188,4 @@ def unpublish(uid, version=ESDOC_DOC_VERSION_ALL):
 
     # Process HTTP response code.
     if r.status_code == HTTP_RESPONSE_STATUS_500:
-        _raise("Document unpublishing server side failure")
+        _throw_server_error()

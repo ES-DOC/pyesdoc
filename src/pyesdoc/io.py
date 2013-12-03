@@ -22,13 +22,11 @@ _output_directory = None
 
 def _get_doc_path(doc, encoding):
     """Returns path to doc file in the relevant encoding."""
-    path = doc.__class__.type_key
-    path += '_'
-    path += str(doc.doc_info.id)
-    path += '_'
-    path += str(doc.doc_info.version)
-    path += '.'
-    path += encoding
+    path = '{0}_{1}_{2}.{3}'.format(
+        doc.__class__.type_key,
+        str(doc.doc_info.id),
+        str(doc.doc_info.version),
+        encoding)
 
     return os.path.join(_output_directory, path)
 
@@ -54,9 +52,6 @@ def write(doc, encoding=serialization.ESDOC_ENCODING_JSON):
 
     :param doc: A pyesdoc document instance.
     :type doc: object
-
-    :param path: Document encoding.
-    :type path: str
 
     :param encoding: Document encoding.
     :type encoding: str

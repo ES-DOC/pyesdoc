@@ -14,6 +14,7 @@ import cim
 from .. utils import runtime as rt
 
 
+
 # Set of ontologies supported out of the box.
 _defaults = (cim,)
 
@@ -27,9 +28,9 @@ def _get_ontologies():
 
     return tuple(result)
 
+
 # Set of supported ontologies.
 ESDOC_ONTOLOGIES = _get_ontologies()
-
 
 
 class _State(object):
@@ -112,7 +113,10 @@ def list_types(name=None, version=None):
     :rtype: tuple
 
     """
-    return tuple([tuple(t.type_key.split('.')) for t in get_types(name, version)])
+    types = get_types(name, version)
+    types = [tuple(t.type_key.split('.')) for t in types] 
+
+    return tuple(types)
 
 
 def get_type(name, version, package, type):
@@ -134,7 +138,9 @@ def get_type(name, version, package, type):
     :rtype: class or None
 
     """
-    return get_type_from_key(get_type_key(name, version, package, type))
+    type_key = get_type_key(name, version, package, type)
+
+    return get_type_from_key(type_key)
 
 
 def get_type_from_key(key):
@@ -246,7 +252,7 @@ def associate(left, attr, right):
     rt.assert_doc("left", left)
     rt.assert_doc("right", right)
     if not hasattr(left, attr):
-        rt.raise_error("Cannot set association upon invalid attribute.")
+        rt.throw("Cannot set association upon invalid attribute.")
 
     # Create reference.
     # TODO alter reference based upon ontology type.

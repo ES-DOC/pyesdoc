@@ -12,9 +12,9 @@
 from .serialization import ESDOC_ENCODING_JSON
 
 
+
 # Default language.
 ESDOC_DEFAULT_LANGUAGE = 'en'
 
 # Default encoding.
 ESDOC_DEFAULT_ENCODING = ESDOC_ENCODING_JSON
-

@@ -3,7 +3,7 @@
    :copyright: Copyright "Feb 7, 2013", Earth System Documentation
    :license: GPL/CeCIL
    :platform: Unix, Windows
-   :synopsis: Set of library conversion functions.
+   :synopsis: Set of conversion functions.
 
 .. moduleauthor:: Mark Conway-Greenslade (formerly Morgan) <momipsl@ipsl.jussieu.fr>
 
@@ -56,7 +56,7 @@ def convert_dict_keys(d, key_formatter):
     return r
 
 
-def convert_to_pascal_case(target, separator='_'):
+def convert_to_pascal_case(target, separator="_"):
     """Converts passed name to pascal case.
 
     :param target: A string to be converted.
@@ -69,7 +69,7 @@ def convert_to_pascal_case(target, separator='_'):
     :rtype: str
     
     """
-    r = ''
+    r = ""
     if target is not None:
         s = target.split(separator)
         for s in s:
@@ -77,10 +77,11 @@ def convert_to_pascal_case(target, separator='_'):
                 r += s[0].upper()
                 if (len(s) > 1):
                     r += s[1:]
+
     return r
 
 
-def convert_to_camel_case(target, separator='_'):
+def convert_to_camel_case(target, separator="_"):
     """Converts passed name to camel case.
 
     :param target: A string to be converted.
@@ -93,12 +94,13 @@ def convert_to_camel_case(target, separator='_'):
     :rtype: str
 
     """
-    r = ''
+    r = ""
     s = convert_to_pascal_case(target, separator)
     if (len(s) > 0):
         r += s[0].lower()
         if (len(s) > 1):
             r += s[1:]
+
     return r
 
 
@@ -129,4 +131,5 @@ def convert_to_underscore_case(name):
 
     """
     s1 = re.sub('(.)([A-Z][a-z]+)', r'\1_\2', name)
+    
     return re.sub('([a-z0-9])([A-Z])', r'\1_\2', s1).lower()

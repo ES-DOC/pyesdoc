@@ -26,6 +26,8 @@ def validate(doc):
     # Defensive programming.
     rt.assert_doc('doc', doc)
 
+    # TODO 1. implement a validation algorithm based upon doc type info.
+    # TODO 2. allow ontologies to implement custom validators.
     return []
 
 
@@ -40,5 +42,3 @@ def is_valid(doc):
 
     """
     return len(validate(doc)) == 0
-
-

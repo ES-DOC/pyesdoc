@@ -121,8 +121,8 @@ def encode(doc):
 def decode(repr):
     """Decodes a document from a dictionary.
 
-    :param as_dict: Document dictionary representation.
-    :type as_dict: dict
+    :param repr: Document dictionary representation.
+    :type repr: dict
 
     :returns: A pyesdoc document instance.
     :rtype: object

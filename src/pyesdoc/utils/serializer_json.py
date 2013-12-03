@@ -69,5 +69,8 @@ def decode(repr):
     :rtype: object
 
     """
+    # Convert to dictionary.
+    as_dict = json.loads(repr)
+
     # Decode from dictionary.
-    return serializer_dict.decode(json.loads(repr))
+    return serializer_dict.decode(as_dict)

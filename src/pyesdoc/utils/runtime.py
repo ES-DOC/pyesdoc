@@ -262,8 +262,7 @@ def throw(msg):
     :type msg: str
 
     """
-    raise PYESDOC_Exception(msg)
-
+    raise_error(msg)
 
 
 def log(msg):
@@ -273,4 +272,5 @@ def log(msg):
     :type msg: str
 
     """
+    # TODO Implement proper logging.
     print "ES-DOC API :: " + str(msg)
