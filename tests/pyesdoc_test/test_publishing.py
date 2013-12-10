@@ -102,6 +102,7 @@ def _test_publishing(tm):
     tu.assert_none(pyesdoc.retrieve(uid, version))
 
 
+@nose.tools.nottest
 def test_publishing():
     for tm in _test_modules:
         _test_publishing.description = 'test_publish.{0}'.format(tm.DOC_TYPE)

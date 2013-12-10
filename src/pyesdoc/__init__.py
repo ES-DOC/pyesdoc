@@ -99,3 +99,9 @@ __all__ = [
     'validate',
 ]
 
+
+__title__ = 'pyesdoc'
+__version__ = '0.9.0.1'
+__author__ = 'ES-DOC'
+__license__ = 'GPL'
+__copyright__ = 'Copyright 2013 ES-DOC'

@@ -21,7 +21,7 @@ _test_modules = (
     test_type_cim_v1_quality_cim_quality,
     test_type_cim_v1_shared_platform,
     test_type_cim_v1_software_model_component,
-    test_type_cim_v1_software_statistical_model_component,
+    # test_type_cim_v1_software_statistical_model_component,
 )
 
 

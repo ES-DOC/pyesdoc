@@ -33,6 +33,10 @@ def _assert_doc(doc, type=None):
         tu.assert_string(doc.doc_info.project, _PROJECT.lower())
 
 
+def test_version():
+    tu.assert_string(pyesdoc.__version__, "0.9.0.1")
+
+
 def test_create_01():
     doc = _create_doc()
     _assert_doc(doc, cim.v1.ModelComponent)
