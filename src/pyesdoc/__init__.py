@@ -36,6 +36,7 @@ from .options import (
 from .publishing import (
     ESDOC_DOC_VERSION_LATEST,
     ESDOC_DOC_VERSION_ALL,
+    exists,
     publish,
     retrieve,
     unpublish

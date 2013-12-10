@@ -465,7 +465,7 @@ def load_xml(xml, return_nsmap=False, default_ns='cim'):
             xml = et.parse(xml)
             xml = xml.getroot()
             nsmap = xml.nsmap
-        except Exception as e:
+        except Exception:
             # ... strings.
             if isinstance(xml, basestring):
                 try:

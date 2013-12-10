@@ -95,6 +95,42 @@ def _get_api_url(ep):
     return options.get(_OPT_API_URL) + '/1/{0}'.format(ep)
 
 
+def _get_doc_url(uid, version=None, encoding=None):
+    """Returns a document instance endpoint url."""
+    url = _get_api_url(_EP_PUBLISHING)
+    url += '/{0}'.format(uid)
+    if version is not None:
+        url += '/{0}'.format(version)
+    if encoding is not None:
+        url += '.{0}'.format(encoding)
+
+    return url
+
+
+def exists(uid, version=None):
+    """Determines whether a document already exists within remote repository.
+
+    :param uid: Document unique identifier.
+    :type uid: str | uuid.UUID
+
+    :returns: Flag indicating whether document already exists.
+    :rtype: bool
+
+    """
+    # Defensive programming.
+    if not isinstance(uid, uuid.UUID):
+        _throw_invalid_doc_id()
+    if version is not None and not isinstance(version, int):
+        _throw_invalid_doc_version()
+
+    # Issue HTTP HEAD.
+    url = _get_doc_url(uid, version) 
+    r = _invoke(requests.head, url)
+
+    # Process HTTP response code.    
+    return True if r.status_code == HTTP_RESPONSE_STATUS_200 else False
+
+
 def retrieve(uid, version=ESDOC_DOC_VERSION_LATEST):
     """Retrieves a document from remote repository.
 
@@ -114,14 +150,8 @@ def retrieve(uid, version=ESDOC_DOC_VERSION_LATEST):
     if version != ESDOC_DOC_VERSION_LATEST and not isinstance(version, int):
         _throw_invalid_doc_version()
 
-    # Set HTTP operation parameters.
-    url = _get_api_url(_EP_PUBLISHING)
-    url += '/{0}'.format(uid)
-    if version is not None:
-        url += '/{0}'.format(version)
-    url += '.{0}'.format(serialization.ESDOC_ENCODING_JSON)
-
     # Issue HTTP GET.
+    url = _get_doc_url(uid, version, serialization.ESDOC_ENCODING_JSON) 
     r = _invoke(requests.get, url)
 
     # Process HTTP response code.
@@ -179,11 +209,8 @@ def unpublish(uid, version=ESDOC_DOC_VERSION_ALL):
        not isinstance(version, int):
        _throw_invalid_doc_version()
 
-    # Set HTTP operation parameters.
-    url = _get_api_url(_EP_PUBLISHING)
-    url += '/{0}/{1}'.format(uid, version)
-
     # Invoke HTTP operation.
+    url = _get_doc_url(uid, version) 
     r = _invoke(requests.delete, url)
 
     # Process HTTP response code.
