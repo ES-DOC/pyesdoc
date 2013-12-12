@@ -18,6 +18,7 @@ from convertors import (
     convert_to_underscore_case
     )
 from runtime import PYESDOC_Exception
+from decoder_xml_utils import PYESDOC_XMLError
 
 from . import (
     runtime,

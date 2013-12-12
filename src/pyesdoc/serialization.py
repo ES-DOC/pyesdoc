@@ -83,10 +83,16 @@ def decode(repr, encoding):
     :rtype: object
 
     """
+    def set_attributes(doc):
+        if doc is not None:
+            doc.doc_info.type = doc.__class__.type_key
+
+        return doc
+
     _assert_representation(repr)
     _assert_encoding(encoding)
 
-    return _serializers[encoding].decode(repr)
+    return set_attributes(_serializers[encoding].decode(repr))
 
 
 def encode(doc, encoding):

@@ -47,7 +47,7 @@ def set_output_directory(path):
     _output_directory = path
 
 
-def write(doc, encoding=serialization.ESDOC_ENCODING_JSON):
+def write(doc, encoding=serialization.ESDOC_ENCODING_JSON, path=None):
     """Writes a document to the file system in the passed encoding.
 
     :param doc: A pyesdoc document instance.
@@ -56,18 +56,22 @@ def write(doc, encoding=serialization.ESDOC_ENCODING_JSON):
     :param encoding: Document encoding.
     :type encoding: str
 
+    :param path: Path to file to be written.
+    :type path: str
+
     :returns: Path to created file.
     :rtype: str
 
     """
-    path = _get_doc_path(doc, encoding)
+    if path is None:
+        path = _get_doc_path(doc, encoding)
     with open(path, 'w') as f:
         f.write(serialization.encode(doc, encoding))
 
     return path
 
 
-def read(path):
+def read(path, encoding=None):
     """Opens a document from a previously saved file from file system.
 
     :param path: Path to previously saved file.
@@ -83,6 +87,8 @@ def read(path):
         if not os.path.isfile(path):
             rt.raise_error("File path does not exist.")
 
-    encoding = os.path.splitext(path)[1][1:]
+    if encoding is None:
+        encoding = os.path.splitext(path)[1][1:]
+        
     with open(path, 'r') as f:
         return serialization.decode(f.read(), encoding)

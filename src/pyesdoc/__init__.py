@@ -55,6 +55,7 @@ from .serialization import (
     )
 from .utils import (
     PYESDOC_Exception,
+    PYESDOC_XMLError,
     runtime as rt
     )
 from .validation import (
@@ -100,8 +101,9 @@ __all__ = [
 ]
 
 
+# Standard package info.
 __title__ = 'pyesdoc'
-__version__ = '0.9.0.1'
+__version__ = '0.9.0.0'
 __author__ = 'ES-DOC'
 __license__ = 'GPL'
 __copyright__ = 'Copyright 2013 ES-DOC'
