@@ -6,7 +6,7 @@
    :platform: Unix, Windows
    :synopsis: Exposes functions for decoding document instances from Metafor CIM v1 xml representations.
 
-.. moduleauthor:: Earth System Documentation (ES-DOC) <dev@esdocumentation.org>
+.. moduleauthor:: Earth System Documentation (ES-DOC) <dev@es-doc.org>
 
 """
 

@@ -1,12 +1,12 @@
 """
 .. module:: pyesdoc.ontologies.cim.v1.decoder_xml_utils.py
 
-   :copyright: @2013 Earth System Documentation (http://esdocumentation.org)
+   :copyright: @2013 Earth System Documentation (http://es-doc.org)
    :license: GPL / CeCILL
    :platform: Unix, Windows
    :synopsis: XML decoding utility functions.
 
-.. moduleauthor:: Earth System Documentation (ES-DOC) <dev@esdocumentation.org>
+.. moduleauthor:: Earth System Documentation (ES-DOC) <dev@es-doc.org>
 .. note:: Code generated using esdoc_mp @ 2013-08-28 14:41:13.340289.
 
 """

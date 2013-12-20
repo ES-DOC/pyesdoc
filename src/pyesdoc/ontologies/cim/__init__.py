@@ -6,7 +6,7 @@
    :platform: Unix, Windows
    :synopsis: The cim package initializer.
 
-.. moduleauthor:: Earth System Documentation (ES-DOC) <dev@esdocumentation.org>
+.. moduleauthor:: Earth System Documentation (ES-DOC) <dev@es-doc.org>
 .. note:: Code generated using esdoc_mp @ 2013-04-17 13:14:13.903808.
 
 """

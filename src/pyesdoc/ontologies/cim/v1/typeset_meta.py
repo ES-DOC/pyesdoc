@@ -1,13 +1,13 @@
 """
 .. module:: cim.v1.typeset_meta.py
 
-   :copyright: @2013 Earth System Documentation (http://esdocumentation.org)
+   :copyright: @2013 Earth System Documentation (http://es-doc.org)
    :license: GPL / CeCILL
    :platform: Unix, Windows
    :synopsis: Encpasulates meta-information pertaining to the cim.v1 typeset.
 
-.. moduleauthor:: Earth System Documentation (ES-DOC) <dev@esdocumentation.org>
-.. note:: Code generated using esdoc_mp @ 2013-12-02 10:54:58.453992.
+.. moduleauthor:: Earth System Documentation (ES-DOC) <dev@es-doc.org>
+.. note:: Code generated using esdoc_mp @ 2013-12-16 16:41:48.360514.
 
 """
 # Module imports.

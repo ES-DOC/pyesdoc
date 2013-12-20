@@ -1,13 +1,13 @@
 """
 .. module:: cim.v1.validator_for_quality_package.py
 
-   :copyright: @2013 Earth System Documentation (http://esdocumentation.org)
+   :copyright: @2013 Earth System Documentation (http://es-doc.org)
    :license: GPL / CeCILL
    :platform: Unix, Windows
    :synopsis: A set of validators over the cim.v1.quality package.
 
-.. moduleauthor:: Earth System Documentation (ES-DOC) <dev@esdocumentation.org>
-.. note:: Code generated using esdoc_mp @ 2013-12-02 10:54:58.441075.
+.. moduleauthor:: Earth System Documentation (ES-DOC) <dev@es-doc.org>
+.. note:: Code generated using esdoc_mp @ 2013-12-16 16:41:48.353360.
 
 """
 # Module imports.

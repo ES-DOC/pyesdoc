@@ -1,13 +1,13 @@
 """
 .. module:: cim.v1.typeset_for_activity_package.py
 
-   :copyright: @2013 Earth System Documentation (http://esdocumentation.org)
+   :copyright: @2013 Earth System Documentation (http://es-doc.org)
    :license: GPL / CeCILL
    :platform: Unix, Windows
    :synopsis: The set of types of the cim.v1.activity package.
 
-.. moduleauthor:: Earth System Documentation (ES-DOC) <dev@esdocumentation.org>
-.. note:: Code generated using esdoc_mp @ 2013-12-02 10:54:58.463879.
+.. moduleauthor:: Earth System Documentation (ES-DOC) <dev@es-doc.org>
+.. note:: Code generated using esdoc_mp @ 2013-12-16 16:41:48.364287.
 
 """
 # Module imports.

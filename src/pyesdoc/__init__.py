@@ -6,7 +6,7 @@
    :platform: Unix, Windows
    :synopsis: Package initializer.
 
-.. moduleauthor:: Earth System Documentation (ES-DOC) <dev@esdocumentation.org>
+.. moduleauthor:: Earth System Documentation (ES-DOC) <dev@es-doc.org>
 
 """
 # Module imports.
