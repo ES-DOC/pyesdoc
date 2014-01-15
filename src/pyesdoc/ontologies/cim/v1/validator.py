@@ -1,13 +1,13 @@
 """
 .. module:: cim.v1.validator.py
 
-   :copyright: @2013 Earth System Documentation (http://es-doc.org)
+   :copyright: @2014 Earth System Documentation (http://es-doc.org)
    :license: GPL / CeCILL
    :platform: Unix, Windows
    :synopsis: A set of validators over the cim 1 ontology.
 
 .. moduleauthor:: Earth System Documentation (ES-DOC) <dev@es-doc.org>
-.. note:: Code generated using esdoc_mp @ 2013-12-16 16:41:48.350483.
+.. note:: Code generated using esdoc_mp @ 2014-01-07 20:31:23.799745.
 
 """
 
@@ -15,6 +15,7 @@
 from validator_for_activity_package import *
 from validator_for_data_package import *
 from validator_for_grids_package import *
+from validator_for_misc_package import *
 from validator_for_quality_package import *
 from validator_for_shared_package import *
 from validator_for_software_package import *
@@ -22,6 +23,7 @@ from validator_for_software_package import *
 import validator_for_activity_package as activity
 import validator_for_data_package as data
 import validator_for_grids_package as grids
+import validator_for_misc_package as misc
 import validator_for_quality_package as quality
 import validator_for_shared_package as shared
 import validator_for_software_package as software
@@ -133,6 +135,7 @@ __all__ = [
     'validate_time_lag',
     'validate_time_transformation',
     'validate_timing',
+    'validate_document_set',
 ]
 
 
@@ -241,4 +244,5 @@ supported = (
     software.validate_time_lag,
     software.validate_time_transformation,
     software.validate_timing,
+    misc.validate_document_set,
 )

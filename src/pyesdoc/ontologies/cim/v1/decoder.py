@@ -1,17 +1,18 @@
 """
 .. module:: pyesdoc.ontologies.cim.v1.decoder.py
 
-   :copyright: @2013 Earth System Documentation (http://es-doc.org)
+   :copyright: @2014 Earth System Documentation (http://es-doc.org)
    :license: GPL / CeCILL
    :platform: Unix, Windows
    :synopsis: A set of cim 1 decoders.
 
 .. moduleauthor:: Earth System Documentation (ES-DOC) <dev@es-doc.org>
-.. note:: Code generated using esdoc_mp @ 2013-12-16 16:41:48.331631.
+.. note:: Code generated using esdoc_mp @ 2014-01-07 20:31:23.776744.
 
 """
 
 # Module imports.
+from decoder_for_activity_package import decode_downscaling_simulation
 from decoder_for_activity_package import decode_ensemble
 from decoder_for_activity_package import decode_numerical_experiment
 from decoder_for_activity_package import decode_simulation_composite
@@ -23,6 +24,7 @@ from decoder_for_shared_package import decode_platform
 from decoder_for_software_package import decode_model_component
 from decoder_for_software_package import decode_processor_component
 from decoder_for_software_package import decode_statistical_model_component
+from decoder_for_misc_package import decode_document_set
 
 
 

@@ -1,13 +1,13 @@
 """
 .. module:: cim.v1.typeset_meta.py
 
-   :copyright: @2013 Earth System Documentation (http://es-doc.org)
+   :copyright: @2014 Earth System Documentation (http://es-doc.org)
    :license: GPL / CeCILL
    :platform: Unix, Windows
    :synopsis: Encpasulates meta-information pertaining to the cim.v1 typeset.
 
 .. moduleauthor:: Earth System Documentation (ES-DOC) <dev@es-doc.org>
-.. note:: Code generated using esdoc_mp @ 2013-12-16 16:41:48.360514.
+.. note:: Code generated using esdoc_mp @ 2014-01-07 20:31:23.811082.
 
 """
 # Module imports.
@@ -17,6 +17,7 @@ import uuid
 import typeset_for_activity_package as activity
 import typeset_for_data_package as data
 import typeset_for_grids_package as grids
+import typeset_for_misc_package as misc
 import typeset_for_quality_package as quality
 import typeset_for_shared_package as shared
 import typeset_for_software_package as software
@@ -127,6 +128,7 @@ software.StatisticalModelComponent.type_key = 'cim.1.software.StatisticalModelCo
 software.TimeLag.type_key = 'cim.1.software.TimeLag'
 software.TimeTransformation.type_key = 'cim.1.software.TimeTransformation'
 software.Timing.type_key = 'cim.1.software.Timing'
+misc.DocumentSet.type_key = 'cim.1.misc.DocumentSet'
 
 
 # Set type attribute info (name, type, is_required, is_iterative).
@@ -876,5 +878,16 @@ software.Timing.type_info = (
     ('rate', int, False, False),
     ('start', datetime.datetime, False, False),
     ('units', str, False, False),
+)
+
+misc.DocumentSet.type_info = (
+    ('data', str, False, True),
+    ('doc_info', shared.DocInfo, True, False),
+    ('ensembles', activity.Ensemble, False, True),
+    ('experiment', activity.NumericalExperiment, False, False),
+    ('grid', grids.GridSpec, False, False),
+    ('model', software.ModelComponent, False, False),
+    ('platform', shared.Platform, False, False),
+    ('simulation', activity.SimulationRun, False, False),
 )
 

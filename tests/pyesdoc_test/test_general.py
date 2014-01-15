@@ -55,9 +55,20 @@ def test_create_03():
         _assert_doc(doc, type)
 
 
-def test_import():
+def test_import_01():
     assert inspect.ismodule(pyesdoc)
     assert inspect.ismodule(pyesdoc.ontologies.cim)
+
+
+def test_import_02():
+    import pyesdoc.ontologies.cim
+    import pyesdoc.ontologies.cim.v1
+    import pyesdoc.ontologies.cim.v1.decoder_for_activity_package
+    import pyesdoc.ontologies.cim.v1.decoder_for_data_package
+    import pyesdoc.ontologies.cim.v1.decoder_for_grids_package
+    import pyesdoc.ontologies.cim.v1.decoder_for_quality_package
+    import pyesdoc.ontologies.cim.v1.decoder_for_shared_package
+    import pyesdoc.ontologies.cim.v1.decoder_for_software_package
 
 
 def test_is_supported_ontology():
@@ -92,11 +103,11 @@ def test_is_valid():
 def test_list_types():
     # supported - all
     types = pyesdoc.list_types()
-    tu.assert_integer(len(types), 102)
+    tu.assert_integer(len(types), 103)
 
     # supported - cim v1
     types = pyesdoc.list_types(_CIM, _CIM_V1)
-    tu.assert_integer(len(types), 102)
+    tu.assert_integer(len(types), 103)
 
     # unsupported
     types = pyesdoc.list_types('x', 'x')

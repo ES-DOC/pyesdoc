@@ -25,7 +25,8 @@ from .. utils import runtime as rt
 # CIM v1 decoders.
 _decoders = {
     'cIM_Quality' : cim.v1.decoder.decode_cim_quality,
-    'dataObject' : cim.v1.decoder.decode_data_object,
+    'numericalExperiment' : cim.v1.decoder.decode_numerical_experiment,
+    'CIMDocumentSet' : cim.v1.decoder.decode_document_set,
     'ensemble' : cim.v1.decoder.decode_ensemble,
     'gridSpec' : cim.v1.decoder.decode_grid_spec,
     'modelComponent' : cim.v1.decoder.decode_model_component,
@@ -44,16 +45,15 @@ def decode(repr):
     :type repr: lxml.etree._ElementTree
 
     """
-    # Load xml & associated namespaces.
     xml, nsmap = load_xml(repr, return_nsmap=True)
     if not isinstance(xml, et._Element):
-        raise rt.PYESDOC_Exception('Decoding failure due to invalid Metafor CIM v1 XML XML.')
+        raise rt.PYESDOC_Exception('Decoding failure due to invalid Metafor CIM v1 XML.')
 
     # Validate decoder.
     doc_type = xml.tag.split('}')[1]
     if doc_type not in _decoders:
         raise rt.PYESDOC_Exception("CIM v1 - {0} document type decoding unsupported.".format(doc_type))
-        
+    
     # Decode pyesdoc doc.
     return decode_xml(_decoders[doc_type], xml, nsmap, None)
 
@@ -68,4 +68,5 @@ def encode(doc):
     :rtype: str
 
     """
+    # No need to implement this - EVER!
     raise NotImplementedError()

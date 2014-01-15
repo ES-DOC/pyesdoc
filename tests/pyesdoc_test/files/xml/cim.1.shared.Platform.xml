@@ -15,7 +15,9 @@
         </author>
         <createDate>2012-03-01 13:55:56.232228</createDate>
         <id>b765775a-e2ac-11df-9efb-00163e9152a5</id>
+        <institute>MOHC</institute>
         <language>en</language>
+        <project>CMIP5</project>
         <version>1</version>
     </docInfo>
     <longName>Machine IBM Power 6 and compiler Other</longName>

@@ -26,6 +26,7 @@ _test_modules = (
 
 
 def _create_doc(tm):
+    """Creates a document from a cmip5 file emitted by Metafor cmip5 questionnaire."""
     doc = tu.decode_from_xml_metafor_cim_v1(tm.DOC_FILE, tm.DOC_TYPE)
     doc.doc_info.project = 'cmip5'
     doc.doc_info.source = 'testing'
@@ -42,16 +43,15 @@ def _test_serialization(tm, encoding):
     tu.assert_pyesdoc_obj(doc, tm.DOC_UID, tm.DOC_VERSION, tm.DOC_DATE)
     tm.assert_doc(doc)
     repr = tu.encode(doc, encoding)
-    if encoding not in (pyesdoc.ESDOC_ENCODING_XML):
-        doc = tu.decode(repr, encoding)
-        assert isinstance(doc, tm.DOC_TYPE), "Decoded type mismatch"
-        tm.assert_doc(doc)
+    doc = tu.decode(repr, encoding)
+    assert isinstance(doc, tm.DOC_TYPE), "Decoded type mismatch"
+    tm.assert_doc(doc)
 
         
 def test():
     for tm in _test_modules:
         _test_open_file.description = "{0}.test_open_file".format(tm.__name__)
-        yield _test_open_file, tm
+        yield _test_open_file, tm        
         for encoding in pyesdoc.ESDOC_ENCODINGS:
             _test_serialization.description = "{0}.test_serialize.{1}".format(tm.__name__, encoding)
             yield _test_serialization, tm, encoding

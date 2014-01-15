@@ -1,13 +1,13 @@
 """
 .. module:: cim.v1.validator_for_shared_package.py
 
-   :copyright: @2013 Earth System Documentation (http://es-doc.org)
+   :copyright: @2014 Earth System Documentation (http://es-doc.org)
    :license: GPL / CeCILL
    :platform: Unix, Windows
    :synopsis: A set of validators over the cim.v1.shared package.
 
 .. moduleauthor:: Earth System Documentation (ES-DOC) <dev@es-doc.org>
-.. note:: Code generated using esdoc_mp @ 2013-12-16 16:41:48.353906.
+.. note:: Code generated using esdoc_mp @ 2014-01-07 20:31:23.804438.
 
 """
 # Module imports.

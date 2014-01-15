@@ -240,25 +240,21 @@ def set_attributes(target, xml, nsmap, decodings):
     
     """
     # Iterate & apply decodings.
-    for decoding in decodings:
-        # N.B. attributes to be ommitted can be declared as a mnemonic.
-        if len(decoding) == 1:
-            pass
-        elif len(decoding) == 4:
-            attr, is_iterable, type, xpath  = decoding
-            is_simple_type = type in _simple_type_decoders
-            try:
-                _set_attribute(target, xml, nsmap, attr, type, xpath, is_simple_type, is_iterable)
-            except Exception as e:
-                msg = "ES-DOC :: WARNING :: XML DECODING ERROR\n"
-                msg += "\tTarget = {0};\n".format(target)
-                msg += "\tAttribute name = {0};\n".format(attr)
-                msg += "\tAttribute type = {0};\n".format(type)
-                msg += "\tAttribute is iterable ? = {0};\n".format(is_iterable)
-                msg += "\tAttribute is simple ? = {0};\n".format(is_simple_type)
-                msg += "\tAttribute xpath = {0};\n".format(xpath)
-                msg += "\tError = {0};\n".format(e)
-                print msg
+    for decoding in [d for d in decodings if len(d) == 4]:
+        attr, is_iterable, type, xpath  = decoding
+        is_simple_type = type in _simple_type_decoders
+        try:
+            _set_attribute(target, xml, nsmap, attr, type, xpath, is_simple_type, is_iterable)
+        except Exception as e:
+            msg = "ES-DOC :: WARNING :: XML DECODING ERROR\n"
+            msg += "\tTarget = {0};\n".format(target)
+            msg += "\tAttribute name = {0};\n".format(attr)
+            msg += "\tAttribute type = {0};\n".format(type)
+            msg += "\tAttribute is iterable ? = {0};\n".format(is_iterable)
+            msg += "\tAttribute is simple ? = {0};\n".format(is_simple_type)
+            msg += "\tAttribute xpath = {0};\n".format(xpath)
+            msg += "\tError = {0};\n".format(e)
+            print msg
 
     # Support operation chaining.
     return target
@@ -295,6 +291,8 @@ def _set_attribute(target, xml, nsmap, attr, decoder, xpath, is_simple_type, is_
     :rtype: object
 
     """
+    print attr, decoder, xpath, is_simple_type, is_iterable
+
     # Escape if xpath is unassigned.
     if xpath is None or xpath == '':
         return

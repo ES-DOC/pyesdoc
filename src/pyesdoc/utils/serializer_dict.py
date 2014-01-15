@@ -34,7 +34,7 @@ def _is_encodable(obj):
 
 
 def _encode(doc):
-    """Encodes an onbject to a deep dictionary."""
+    """Encodes an object to a deep dictionary."""
     result = {
         'ontology_type_key' : doc.__class__.type_key
     }
@@ -75,13 +75,12 @@ def _decode_scalar(sv, type, iterable):
     return map(lambda i : _do(i), sv) if iterable else _do(sv)
 
 
-def _decode(dv, type, iterable):
-    """Decodes a dictionary value."""
-        
+def _decode(repr, typeof, iterable):
+    """Decodes a dictionary value."""        
     def _do(d):
         # Set doc type.
-        doc_type = type
-        if type.type_key != d['ontology_type_key']:
+        doc_type = typeof
+        if typeof.type_key != d['ontology_type_key']:
             doc_type = ontologies.get_type_from_key(d['ontology_type_key'])
         if doc_type is None:
             rt.raise_error('Decoding type is unrecognized')
@@ -102,7 +101,7 @@ def _decode(dv, type, iterable):
 
         return doc
 
-    return _do(dv) if not iterable else map(lambda i : _do(i), dv)
+    return _do(repr) if not iterable else map(lambda i : _do(i), repr)
 
 
 def encode(doc):
@@ -133,6 +132,6 @@ def decode(repr):
 
     # Get target type.
     o, v, p, t = as_dict['ontology_type_key'].split('.')
-    type = ontologies.get_type(o, v, p, t)
+    doc_type = ontologies.get_type(o, v, p, t)
 
-    return _decode(as_dict, type, False)
+    return _decode(as_dict, doc_type, False)
