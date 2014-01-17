@@ -40,6 +40,15 @@ def _create_doc(tm):
     return doc
 
 
+def _set_api_url(mode='dev'):
+    if mode = 'dev':
+        pyesdoc.set_option("api_url", "http://127.0.0.1:5000")      
+    elif mode = 'test':
+        pyesdoc.set_option("api_url", "http://test.api.es-doc.org")      
+    elif mode = 'test':
+        pyesdoc.set_option("api_url", "http://api.es-doc.org")      
+
+
 def _test_publishing(tm):
     # Create.
     doc = _create_doc(tm)
@@ -104,6 +113,7 @@ def _test_publishing(tm):
 
 @nose.tools.nottest
 def test_publishing():
+    _set_api_url('dev')
     for tm in _test_modules:
         _test_publishing.description = 'test_publish.{0}'.format(tm.DOC_TYPE)
         yield _test_publishing, tm
