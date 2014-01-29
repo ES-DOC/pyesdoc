@@ -20,7 +20,7 @@ DOC_DATE = '2012-03-01 13:55:56.232228'
 
 
 def assert_doc(doc):
-    assert doc.description is None
+    assert doc.description in [None, '']
     assert doc.long_name == 'Machine IBM Power 6 and compiler Other'
     assert doc.short_name == 'IBM Power 6_Other'
 
@@ -32,23 +32,23 @@ def assert_doc(doc):
     assert len(doc.units) == 1
     assert doc.units[0].machine is not None
     assert doc.units[0].machine.cores_per_processor == 32
-    assert doc.units[0].machine.description is None
+    assert doc.units[0].machine.description in [None, '']
     assert doc.units[0].machine.interconnect == 'Infiniband'
     assert doc.units[0].machine.name == 'IBM Power 6'
     assert len(doc.units[0].machine.libraries) == 0
-    assert doc.units[0].machine.location is None
+    assert doc.units[0].machine.location in [None, '']
     assert doc.units[0].machine.maximum_processors == 2
     assert doc.units[0].machine.operating_system == 'AIX'
     assert doc.units[0].machine.system == 'Parallel'
-    assert doc.units[0].machine.type is None
+    assert doc.units[0].machine.type in [None, '']
     assert doc.units[0].machine.vendor == 'IBM'
     assert doc.units[0].machine.processor_type == 'Other'
     assert len(doc.units[0].compilers) == 1
-    assert doc.units[0].compilers[0].environment_variables is None
-    assert doc.units[0].compilers[0].language is None
+    assert doc.units[0].compilers[0].environment_variables in [None, '']
+    assert doc.units[0].compilers[0].language in [None, '']
     assert doc.units[0].compilers[0].name == 'Other'
-    assert doc.units[0].compilers[0].options is None
-    assert doc.units[0].compilers[0].type is None
+    assert doc.units[0].compilers[0].options in [None, '']
+    assert doc.units[0].compilers[0].type in [None, '']
     assert doc.units[0].compilers[0].version == '12.1.0.0'
 
 

@@ -59,7 +59,7 @@ def assert_doc(doc):
     assert len(cp.values) == 0
     cp = cp.sub_properties[0]
     assert len(cp.sub_properties) == 0
-    assert cp.intent is None
+    assert cp.intent in [None, '']
     assert cp.is_represented == True
     assert cp.long_name == 'AerosolSchemeScope'
     assert cp.short_name == 'AerosolSchemeScope'
@@ -85,7 +85,7 @@ def assert_doc(doc):
     assert doc.language is None
     assert doc.properties == []
     assert doc.composition is None
-    assert doc.coupling_framework is ''
+    assert doc.coupling_framework == ''
     assert doc.dependencies == []
     assert doc.deployments == []
     assert doc.description.startswith('The HadGEM2-A model')
@@ -104,7 +104,7 @@ def assert_doc(doc):
     rp = doc.responsible_parties[0]
     assert rp.abbreviation == 'Chris Jones'
     assert rp.contact_info.address.startswith('Met Office Hadley Centre')
-    assert rp.contact_info.email is None
+    assert rp.contact_info.email in [None, '']
     assert rp.contact_info.url.startswith('http://www.metoffice.gov.uk/research/our-scientists/climate-chemistry-ecosystems/chris-jones')
     assert rp.individual_name == 'Chris Jones'
     assert rp.role == 'PI'

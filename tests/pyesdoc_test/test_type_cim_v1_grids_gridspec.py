@@ -46,7 +46,7 @@ def assert_doc(doc):
     assert doc.esm_model_grids[0].tiles[0].extent.maximum_latitude == '90'
     assert doc.esm_model_grids[0].tiles[0].extent.minimum_longitude == '0'
     assert doc.esm_model_grids[0].tiles[0].extent.maximum_longitude == '360'
-    assert doc.esm_model_grids[0].tiles[0].extent.units is None
+    assert doc.esm_model_grids[0].tiles[0].extent.units in [None, '']
     assert doc.esm_model_grids[0].tiles[0].mnemonic == 'N180'
     assert doc.esm_model_grids[0].tiles[0].horizontal_resolution is not None
     assert doc.esm_model_grids[0].tiles[0].horizontal_resolution.description.startswith('1 deg by 1 deg')

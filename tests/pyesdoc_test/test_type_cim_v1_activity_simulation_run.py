@@ -45,7 +45,7 @@ def assert_doc(doc):
     assert doc.conformances[0].is_conformant == True
     assert doc.conformances[0].type == 'via inputs'
     assert doc.conformances[0].description.startswith('Main element (r1i1p1)')
-    assert doc.conformances[0].frequency is None
+    assert doc.conformances[0].frequency in [None, '']
     assert len(doc.conformances[0].requirements_references) == 1
     assert doc.conformances[0].requirements_references[0].id == uuid.UUID('a0d3a554-d3a5-11df-837f-00163e9152a5')
     assert doc.conformances[0].requirements_references[0].name == 'ic.006'

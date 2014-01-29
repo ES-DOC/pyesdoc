@@ -53,23 +53,33 @@ def _get_item_tag(tag):
 def _decode_scalar(sv, type, iterable):
     """Decodes a scalar value."""
     def _do(s):
+        # None if empty value.
+        if not len(s):
+            return None
+
+        # Encode.
         s = s.encode('utf-8') if isinstance(s, unicode) else str(s)
 
+        # Decode according to type:
+        # ... date
         if type in (datetime.datetime, datetime.date, datetime.time):
             return date_parser.parse(s)
+        # ... uuid
         elif type is uuid.UUID:
             return uuid.UUID(s)
+        # ... boolean
         elif type is bool:
             if s.lower() in ("yes", "true", "t", "1", "y"):
                 return True
             return False
+        # ... other
         else:
             try:
                 return type(s)
             except Error as e:
                 print "Scalar decoding error", s, type, iterable
 
-    return map(lambda i : _do(i), sv) if iterable else _do(sv)
+    return map(lambda i : _do(i.text), sv) if iterable else _do(sv.text)
 
 
 def _decode(repr, typeof, iterable):
@@ -82,27 +92,19 @@ def _decode(repr, typeof, iterable):
         if doc_type is None:
             rt.raise_error('Decoding type is unrecognized')
     
-        # Create doc.
+        # Set doc.
         doc = doc_type()
 
         # Set doc attributes.
-        for _name, _type, _required, _iterable in ontologies.get_type_info(doc_type):
+        for _name, _type, _required, _iterable in ontologies.get_type_info(doc_type):            
             elem = xml.find(convert_to_camel_case(_name))
-            # ... not found therefore ignore.
-            if elem is None:
-                continue
-            # ... no sub-elements/value therefore None.
-            elif not len(elem) and (elem.text is None or not len(elem.text.strip())):
-                setattr(doc, _name, [] if _iterable else None)
-            # ... supported type therefore decode.
-            elif _type in _TYPES:
-                setattr(doc, _name, _decode(elem, _type, _iterable))
-            else:
-                setattr(doc, _name, _decode_scalar(elem.text, _type, _iterable))
+            if elem is not None:
+                decoder = _decode if _type in _TYPES else _decode_scalar
+                setattr(doc, _name, decoder(elem, _type, _iterable))
 
         return doc
 
-    return _do(repr) if not iterable else map(lambda i : _do(i), repr)
+    return map(lambda i : _do(i), repr) if iterable else _do(repr)
 
 
 def _is_encodable_scalar(sv):

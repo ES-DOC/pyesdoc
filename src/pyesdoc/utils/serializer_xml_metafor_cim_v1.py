@@ -27,6 +27,7 @@ _decoders = {
     'cIM_Quality' : cim.v1.decoder.decode_cim_quality,
     'numericalExperiment' : cim.v1.decoder.decode_numerical_experiment,
     'CIMDocumentSet' : cim.v1.decoder.decode_document_set,
+    'dataObject' : cim.v1.decoder.decode_data_object,
     'ensemble' : cim.v1.decoder.decode_ensemble,
     'gridSpec' : cim.v1.decoder.decode_grid_spec,
     'modelComponent' : cim.v1.decoder.decode_model_component,
@@ -36,6 +37,7 @@ _decoders = {
     'simulationComposite' : cim.v1.decoder.decode_simulation_composite,
     'statisticalModelComponent' : cim.v1.decoder.decode_statistical_model_component,
 }
+
 
 
 def decode(repr):
