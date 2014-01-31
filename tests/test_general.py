@@ -4,7 +4,8 @@ import nose.tools
 
 import pyesdoc
 import pyesdoc.ontologies.cim as cim
-import pyesdoc_test.test_utils as tu
+from . import test_utils as tu
+
 
 
 # Test ontology constants.

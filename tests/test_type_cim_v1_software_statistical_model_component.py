@@ -1,7 +1,7 @@
 from dateutil import parser as dateutil_parser
 
 import pyesdoc.ontologies.cim as cim
-import pyesdoc_test.test_utils as tu
+from . import test_utils as tu
 
 
 

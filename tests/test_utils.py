@@ -12,6 +12,7 @@
 
 # Module imports.
 import datetime
+from os.path import dirname, abspath, join
 import random
 import sys
 import uuid
@@ -51,13 +52,11 @@ def get_test_file_path(name):
     :rtype: str
 
     """
-    for path in sys.path:
-        if path.endswith('esdoc-py-client/tests'):
-            result = path
-            result += '/pyesdoc_test/files/'
-            result += name
-            return result
-    return None
+    fp = dirname(abspath(__file__))
+    fp = join(fp, 'files')
+    fp = join(fp, name)
+
+    return fp
 
 
 @nottest
