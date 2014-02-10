@@ -35,7 +35,7 @@ def _assert_doc(doc, type=None):
 
 
 def test_version():
-    tu.assert_string(pyesdoc.__version__, "0.9.0.2")
+    tu.assert_string(pyesdoc.__version__, "0.9.0.3")
 
 
 def test_create_01():
