@@ -1,4 +1,3 @@
-
 <simulationRun ontologyTypeKey="cim.1.activity.SimulationRun">
     <authors>M Webb, J. Williams, T. Andrews, A. Bodas-Salcedo, Y Tsushima, J Hughes, C Jones</authors>
     <calendar ontologyTypeKey="cim.1.shared.PerpetualPeriod" />
