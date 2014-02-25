@@ -1,0 +1,24 @@
+{% set requirement = ctx.data %}
+<table class="table table-hover table-condensed">
+	{% comment ***************** %}
+	{% comment Emit overview     %}
+	{% comment ***************** %}
+	<tbody>
+		<tr>
+			<td class="col-md-3"><b>{{requirement.name}}</b></td>
+			<td class="col-md-1">{{requirement.id}}</td>
+			<td>{{requirement.description}}</td>
+		</tr>
+
+	{% comment ***************** %}
+	{% comment Emit options      %}
+	{% comment ***************** %}
+	{% for option in requirement.options %}
+		<tr>
+			<td class="col-md-3"><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{option.requirement.name}}</b></td>
+			<td class="col-md-1">{{option.requirement.id}}</td>
+			<td>{{option.requirement.description}}</td>
+		</tr>					
+	{% end %}
+	</tbody>
+</table>

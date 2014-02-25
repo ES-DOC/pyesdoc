@@ -1,0 +1,58 @@
+{% extends "../core/document.html" %}
+
+{% block doc-content %}
+
+	{% comment ***************** %}
+	{% comment Emit overview     %}
+	{% comment ***************** %}
+	{% set ctx = ContextInfo(doc) %}
+	{% set ctx.header = DOCUMENT_OVERVIEW_HEADER %}
+	{% set ctx.fieldset = DOCUMENT_OVERVIEW_FIELDSET %}
+	{% set ctx.template = "fieldset_table.html" %}
+	{% include ../core/section.html %}	
+
+	{% for unit in doc.units %}
+		{% comment ***************** %}
+		{% comment Emit machine      %}
+		{% comment ***************** %}
+		{% set ctx = ContextInfo(unit.machine,
+			header = "Machine",
+			fieldset = [
+				FieldInfo('Name', 'name'),
+				FieldInfo('Vendor', 'vendor'),
+				FieldInfo('Operating System', 'operating_system'),
+				FieldInfo('Processor Type', 'processor_type'),
+				FieldInfo('Max. Processors', 'maximum_processors'),
+				FieldInfo('Cores / Processor', 'cores_per_processor'),
+				FieldInfo('System', 'system'),
+				FieldInfo('Interconnect', 'interconnect'),	
+			],
+			template = "fieldset_table.html"
+		) %}
+		{% include ../core/section.html %}	
+
+		{% comment ***************** %}
+		{% comment Emit compiler     %}
+		{% comment ***************** %}
+		{% set ctx = ContextInfo(unit.compilers,
+			header = "Compiler",
+			fieldset = [
+			    FieldInfo('Name', 'name'),
+			    FieldInfo('Type', 'type'),
+			    FieldInfo('Version', 'version'),
+			    FieldInfo('Language', 'language'),
+			    FieldInfo('Options', 'options'),
+			    FieldInfo('Env. Variables', 'environment_variables')
+			],
+			template = "fieldset_table.html"
+		) %}
+		{% include ../core/section.html %}	
+	{% end %}
+
+	{% comment ***************** %}
+	{% comment Emit contacts     %}
+	{% comment ***************** %}
+	{% set ctx = ContextInfo(doc.contacts) %}
+	{% include shared_responsible_party.html %}
+
+{% end %}

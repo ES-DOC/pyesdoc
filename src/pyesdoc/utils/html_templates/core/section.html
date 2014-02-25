@@ -1,0 +1,18 @@
+{% comment ********************** %}
+{% comment Output doc section     %}
+{% comment ********************** %}
+{% if len(ctx.dataset) %}
+	<article>			
+		<h3>{{ ctx.header }}</h3>
+		{% for data in ctx.dataset %}
+			{% set ctx.data = data %}
+			<section>
+				{% if ctx.template == "fieldset_table.html" %}
+					{% include fieldset_table.html %}
+				{% elif ctx.template == "cim_1_activity_numerical_requirement.html" %}
+					{% include ../cim_1/activity_numerical_requirement.html %}
+				{% end %}
+			</section>
+		{% end %}
+	</article>
+{% end %}

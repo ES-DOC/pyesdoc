@@ -1,0 +1,12 @@
+<tr>
+	<td class="col-md-3 esdoc-field-name"><b>{{ field.get_name() }}</b></td>
+	<td class="esdoc-field-value">
+		{% if field.link_path %}
+			<a class="esdoc-field-hyperlink" href="{{ field.get_link(ctx.data) }}">{{ field.get_value(ctx.data) }}</a>
+		{% elif field.is_email %}
+			<a class="esdoc-field-email" href="mailto:{{ field.get_value(ctx.data) }}?subject=ES-DOC :: subject goes here">{{ field.get_value(ctx.data) }}</a>
+		{% else %}
+			{{ field.get_value(ctx.data) }}
+		{% end %}
+	</td>
+</tr>

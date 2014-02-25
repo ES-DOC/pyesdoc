@@ -13,24 +13,34 @@
 from .utils import (
     runtime as rt,
     serializer_dict,
+    serializer_html,
     serializer_json,
     serializer_xml,
     serializer_xml_metafor_cim_v1
     )
-
+import defaults
 
 
 # Supported ESDOC encodings.
 ESDOC_ENCODING_DICT = 'dict'
 ESDOC_ENCODING_JSON = 'json'
 ESDOC_ENCODING_XML = 'xml'
+ESDOC_ENCODING_HTML = 'html'
 METAFOR_CIM_XML_ENCODING = 'xml-metafor-cim-v1'
 
 # Standard ESDOC encodings.
 ESDOC_ENCODINGS = (
     ESDOC_ENCODING_DICT,
     ESDOC_ENCODING_JSON,
-    ESDOC_ENCODING_XML
+    ESDOC_ENCODING_XML,
+    ESDOC_ENCODING_HTML,
+)
+
+# Standard ESDOC file encodings.
+ESDOC_ENCODINGS_FILE = (
+    ESDOC_ENCODING_JSON,
+    ESDOC_ENCODING_XML,
+    ESDOC_ENCODING_HTML,
 )
 
 # Custom ESDOC encodings.
@@ -38,10 +48,16 @@ ESDOC_ENCODINGS_CUSTOM = (
     METAFOR_CIM_XML_ENCODING,
 )
 
+# Custom ESDOC file encodings.
+ESDOC_ENCODINGS_FILE_CUSTOM = (
+    METAFOR_CIM_XML_ENCODING,
+)
+
 # Map of standard ESDOC encodings to MIME types.
 ESDOC_ENCODING_HTTP_MEDIA_TYPES = {
     ESDOC_ENCODING_JSON : "application/json",
-    ESDOC_ENCODING_XML : "application/xml"
+    ESDOC_ENCODING_XML : "application/xml",
+    ESDOC_ENCODING_HTML : "text/html",
 }
 
 # Map of encodings to serializers.
@@ -49,6 +65,7 @@ _serializers = {
     ESDOC_ENCODING_DICT : serializer_dict,
     ESDOC_ENCODING_JSON : serializer_json,
     ESDOC_ENCODING_XML : serializer_xml,
+    ESDOC_ENCODING_HTML : serializer_html,
     METAFOR_CIM_XML_ENCODING : serializer_xml_metafor_cim_v1,
 }
 
@@ -68,6 +85,13 @@ def _assert_representation(repr):
     """Asserts that the representation is decodable."""
     if repr is None:
         rt.throw("Documents cannot be decoded from null objects.")
+
+
+def _parse_doc(doc):
+    """Parses a document prior to encoding."""
+    doc.doc_info.encodings = list(get_file_encodings(doc))
+    if doc.doc_info.language is None or not len(doc.doc_info.language):
+        doc.doc_info.language = defaults.ESDOC_DEFAULT_LANGUAGE
 
 
 def decode(repr, encoding):
@@ -111,6 +135,9 @@ def encode(doc, encoding):
     _assert_doc(doc)
     _assert_encoding(encoding)
 
+    # N.B. this should perhaps be removed.
+    _parse_doc(doc)
+
     return _serializers[encoding].encode(doc)
 
 
@@ -131,3 +158,19 @@ def convert(repr, encoding_from, encoding_to):
 
     """
     return encode(decode(repr, encoding_from), encoding_to)
+
+
+def get_file_encodings(doc):
+    """Returns set of file encodings for the passed document.
+
+    :param object doc: A document for which the set of supported file encodings is to be returned.
+
+    :returns: Set of supported file encodings.
+    :rtype: set
+
+    """
+    result = ESDOC_ENCODINGS_FILE
+    if doc.doc_info.type.startswith("cim.1"):
+        result = result + (METAFOR_CIM_XML_ENCODING,)
+
+    return result

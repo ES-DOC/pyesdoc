@@ -1,0 +1,17 @@
+{% extends "../core/document.html" %}
+
+{% block doc-content %}
+
+	{% comment ***************** %}
+	{% comment Emit mosaics      %}
+	{% comment ***************** %}
+	{% for mosaic in doc.esm_model_grids %}
+		{% set mosaic_type = "Model" %}		
+		{% include grids_grid_mosaic.html %}
+	{% end %}
+	{% for mosaic in doc.esm_exchange_grids %}
+		{% set mosaic_type = "Exchange" %}		
+		{% include grids_grid_mosaic.html %}
+	{% end %}
+
+{% end %}

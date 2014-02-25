@@ -48,9 +48,11 @@ from .serialization import (
     ESDOC_ENCODINGS,
     ESDOC_ENCODINGS_CUSTOM,
     ESDOC_ENCODING_DICT,
+    ESDOC_ENCODING_HTML,
     ESDOC_ENCODING_HTTP_MEDIA_TYPES,
     ESDOC_ENCODING_JSON,
     ESDOC_ENCODING_XML,
+    get_file_encodings,
     METAFOR_CIM_XML_ENCODING
     )
 from .utils import (

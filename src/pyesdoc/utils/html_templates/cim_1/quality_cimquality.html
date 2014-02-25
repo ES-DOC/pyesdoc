@@ -1,0 +1,24 @@
+{% extends "../core/document.html" %}
+
+{% block doc-content %}
+
+	{% comment ***************** %}
+	{% comment Emit reports      %}
+	{% comment ***************** %}
+	{% for report in doc.reports %}		
+		{% set ctx = ContextInfo(report,
+			header = report.measure.name,
+			fieldset = [
+                FieldInfo('Measure', 'measure.name', link_path='evaluation.type_hyperlink'),
+                FieldInfo('Outcome', 'evaluation.specification', link_path='evaluation.specification_hyperlink'),
+                FieldInfo('Evaluator', 'evaluator.individual_name', is_email=True),
+                FieldInfo('Evaluation Date', 'evaluation.date'),
+                FieldInfo('Details', 'evaluation.explanation')
+			],
+			template = "fieldset_table.html"
+		) %}
+		{% include ../core/section.html %}	
+
+	{% end %}
+
+{% end %}

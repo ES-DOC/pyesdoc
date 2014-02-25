@@ -103,9 +103,21 @@ def convert_to_camel_case(target, separator="_"):
 
     return r
 
+def _str_to_spaced_case(value, separator='_'):
+    """Helper function to convert a string value to spaced case."""
+    if value is None:
+        return ""
+        
+    if separator is not None and len(value.split(separator)) > 1:
+        return " ".join(value.split(separator))
+    elif value.find(" ") == -1:
+        return re.sub("([A-Z])"," \g<0>", value).strip()
+    else:
+        return value
 
-def convert_to_spaced_case(value):
-    """Helper function to convert a string value from camel case to spaced case.
+
+def convert_to_spaced_case(value, separator='_'):
+    """Helper function to convert a string value to spaced case.
 
     :param value: A string for conversion.
     :type value: str
@@ -114,7 +126,11 @@ def convert_to_spaced_case(value):
     :rtype: str
 
     """
-    if value.find(" ") == -1:
+    if value is None:
+        return ""
+    elif separator is not None and len(value.split(separator)) > 1:
+        return " ".join(value.split(separator))
+    elif value.find(" ") == -1:
         return re.sub("([A-Z])"," \g<0>", value).strip()
     else:
         return value

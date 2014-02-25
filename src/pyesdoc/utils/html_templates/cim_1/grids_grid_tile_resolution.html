@@ -1,0 +1,8 @@
+{% set ctx.fieldset = [
+	FieldInfo('Description', 'description'),
+] %}	
+{% for p in sorted(ctx.data.properties, key=lambda p: p.name) %}
+	{% set ctx.fieldset = ctx.fieldset + [FieldInfo(p.name, "$$$" + p.value)] %}
+{% end %}
+<h4>Tile {{ resolution_type }} Resolution</h4>
+{% include ../core/fieldset_table.html %}

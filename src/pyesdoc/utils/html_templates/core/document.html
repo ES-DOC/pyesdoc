@@ -1,0 +1,60 @@
+{% comment ***************** %}
+{% comment Global variables  %}
+{% comment ***************** %}
+{% set DOCUMENT_OVERVIEW_HEADER = "Overview" %}
+{% set DOCUMENT_OVERVIEW_FIELDSET = [
+    FieldInfo('Project', 'doc_info.project'),
+    FieldInfo('Institute', 'doc_info.institute'),
+    FieldInfo('Name', 'short_name'),
+    FieldInfo('Long Name', 'long_name'),
+    FieldInfo('Description', 'description'),
+] %}
+
+
+<html>
+
+<head>
+    <link href="ext/bootstrap-3.1.1/css/bootstrap.min.css" rel="stylesheet" type="text/css" media="screen" />
+    <link href="media/base.css" rel="stylesheet" type="text/css" media="screen" />
+    <title>ES-DOC Viewer</title>
+    <script src="ext/jquery-2.1.0.min.js"></script>
+    <script src="ext/bootstrap-3.1.1/js/bootstrap.min.js"></script>
+    <script src="media/base.js"></script>
+</head>
+
+<body>
+
+    <header>
+        <img src="media/images/logo.png" alt="Earth System Documentation" title="Earth System Documentation" class="pull-left" />
+        <h1 style="text-align: right;">            
+            <small><b>Documentation Viewer</b></small>
+            <button type="button" class="btn btn-info">Support</button>
+        </h1>
+    </header>
+                    
+    <div class="clearfix page-content-container">
+        <h2>{{ doc.doc_info.project }} {{ doc.doc_info.type.split('.')[-1] }}: {{ doc.doc_info.institute }} <small>(v{{ doc.doc_info.version }})</small>
+        </h2>        
+        {% comment ***************** %}
+        {% comment Emit doc content  %}
+        {% comment ***************** %}
+        {% block doc-content %}{% end %}
+
+        {% comment ***************** %}
+        {% comment Emit doc metadata %}
+        {% comment ***************** %}
+        {% include document_metadata.html %}   
+    </div>
+
+    <footer>
+        <h4 class="pull-left">            
+            <small>&copy; ES-DOC 2014</small>
+        </h4>        
+        <h4 class="pull-right">            
+            <small>Documentation Viewer v0.9.0.3</small>
+        </h4>        
+    </footer>
+
+</body>
+
+</html>

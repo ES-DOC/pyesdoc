@@ -1,0 +1,16 @@
+{% set ctx = ContextInfo(
+	data = doc, 
+	header = "Document Metadata",
+	fieldset = [
+	    FieldInfo('ID', 'doc_info.id'),
+	    FieldInfo('Version', 'doc_info.version'),
+	    FieldInfo('Create Date', 'doc_info.create_date'),
+	    FieldInfo('Type', 'doc_info.type'),
+	    FieldInfo('Language', 'doc_info.language'),
+	    FieldInfo('Encodings', 'doc_info.encodings'),
+	    FieldInfo('Project', 'doc_info.project'),
+	    FieldInfo('Institute', 'doc_info.institute'),
+	    ], 
+	template = "fieldset_table.html" 
+) %}
+{% include section.html %}	

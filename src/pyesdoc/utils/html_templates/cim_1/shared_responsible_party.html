@@ -1,0 +1,11 @@
+{% set ctx.header = "Contacts" %}
+{% set ctx.fieldset = [
+    FieldInfo('Role', 'role'),
+    FieldInfo('Person', 'individual_name'),
+    FieldInfo('Organisation', 'organisation_name'),
+    FieldInfo('Address', 'contact_info.address'),
+    FieldInfo('Email', 'contact_info.email'),
+    FieldInfo('URL', 'contact_info.url')
+    ] %}
+{% set ctx.template = "fieldset_table.html" %}
+{% include ../core/section.html %}	
