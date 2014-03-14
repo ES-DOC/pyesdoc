@@ -6,18 +6,18 @@
 	{% comment Emit reports      %}
 	{% comment ***************** %}
 	{% for report in doc.reports %}		
-		{% set ctx = ContextInfo(report,
+		{% set ctx = TemplateInfo(report,
 			header = report.measure.name,
 			fieldset = [
-                FieldInfo('Measure', 'measure.name', link_path='evaluation.type_hyperlink'),
-                FieldInfo('Outcome', 'evaluation.specification', link_path='evaluation.specification_hyperlink'),
-                FieldInfo('Evaluator', 'evaluator.individual_name', is_email=True),
-                FieldInfo('Evaluation Date', 'evaluation.date'),
-                FieldInfo('Details', 'evaluation.explanation')
+                FieldInfo('Measure', path='measure.name', link_path='evaluation.type_hyperlink'),
+                FieldInfo('Outcome', path='evaluation.specification', link_path='evaluation.specification_hyperlink'),
+                FieldInfo('Evaluator', path='evaluator.individual_name', email_path='evaluator.individual_name'),
+                FieldInfo('Evaluation Date', path='evaluation.date'),
+                FieldInfo('Details', path='evaluation.explanation')
 			],
 			template = "fieldset_table.html"
 		) %}
-		{% include ../core/section.html %}	
+		{% include ../core/section_01.html %}	
 
 	{% end %}
 

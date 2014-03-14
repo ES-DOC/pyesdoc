@@ -1,28 +1,24 @@
-<article>		
-	<h3>{{ mosaic_type }} Grid: {{ mosaic.short_name }}</h3>
-	<section>
-		{% comment ***************** %}
-		{% comment Emit overview     %}
-		{% comment ***************** %}
-		{% set ctx = ContextInfo(mosaic,
-			fieldset = [
-		        FieldInfo('Name', 'short_name'),
-		        FieldInfo('Long Name', 'long_name'),
-		        FieldInfo('Type', 'type'),
-		        FieldInfo('Tiles', 'tile_count'),
-		        FieldInfo('Mosaics', 'mosaic_count'),
-		        FieldInfo('Is Leaf', 'is_leaf'),
-		        FieldInfo('Has Congruent Tiles', 'has_congruent_tiles'),
-		        FieldInfo('Description', 'description')
-			]) %}
-		{% include ../core/fieldset_table.html %}	
+{% set mosaic = ctx.data %}
 
-		{% comment ***************** %}
-		{% comment Emit tiles        %}
-		{% comment ***************** %}
-		{% for tile in mosaic.tiles %}
-			{% set ctx = ContextInfo(tile) %}
-			{% include grids_grid_tile.html %}
-		{% end %}
-	</section>
-</article>
+{% comment ***************** %}
+{% comment Emit overview     %}
+{% comment ***************** %}
+{% set ctx = TemplateInfo(mosaic,
+    fieldset = [
+        FieldInfo('Name', path='short_name'),
+        FieldInfo('Long Name', path='long_name'),
+        FieldInfo('Type', path='type'),
+        FieldInfo('Tiles', path='tile_count'),
+        FieldInfo('Mosaics', path='mosaic_count'),
+        FieldInfo('Is Leaf', path='is_leaf'),
+        FieldInfo('Has Congruent Tiles', path='has_congruent_tiles'),
+        FieldInfo('Description', path='description')
+    ]) %}
+{% include ../core/fieldset_table.html %}  
+
+{% comment ***************** %}
+{% comment Emit tiles        %}
+{% comment ***************** %}
+{% for tile in mosaic.tiles %}
+    {% include grids_grid_tile.html %}
+{% end %}

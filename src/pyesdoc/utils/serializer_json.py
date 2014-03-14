@@ -10,33 +10,11 @@
 
 """
 # Module imports.
-import datetime
-import json
-import uuid
-
-from . import serializer_dict
-from . convertors import (
-    convert_dict_keys,
-    convert_to_camel_case
+from . import (
+    convert,
+    serializer_dict
     )
 
-
-
-class _JSONEncoder(json.JSONEncoder):
-    """Extends json encoder so as to handle extended types.
-
-    """
-    def default(self, obj):
-        if isinstance(obj, datetime.datetime):
-            return obj.isoformat().replace('T', ' ')
-        elif isinstance(obj, datetime.date):
-            return obj.isoformat()
-        elif isinstance(obj, datetime.time):
-            return obj.isoformat()
-        elif isinstance(obj, uuid.UUID):
-            return str(obj)
-        else:
-            raise TypeError(repr(obj) + " is not JSON serializable")
 
 
 def encode(doc):
@@ -49,14 +27,14 @@ def encode(doc):
     :rtype: str
 
     """
-    # Convert to dictionary.
+    # Encode as dictionary.
     as_dict = serializer_dict.encode(doc)
 
     # Format dictionary keys.
-    as_dict = convert_dict_keys(as_dict, convert_to_camel_case)
+    as_dict = convert.dict_keys(as_dict, convert.str_to_camel_case)
 
-    # Return json encoded string.
-    return _JSONEncoder().encode(as_dict)
+    # Convert dictionary to json.
+    return convert.dict_to_json(as_dict)
 
 
 def decode(repr):
@@ -70,7 +48,10 @@ def decode(repr):
 
     """
     # Convert to dictionary.
-    as_dict = json.loads(repr)
+    as_dict = convert.json_to_dict(repr)
+
+    # Format dictionary keys.
+    as_dict = convert.dict_keys(as_dict, convert.str_to_underscore_case)
 
     # Decode from dictionary.
     return serializer_dict.decode(as_dict)

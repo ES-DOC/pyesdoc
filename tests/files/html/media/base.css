@@ -5,7 +5,7 @@ body {
 }
 
 
-h2, h3 {
+h1, h2, h3, h4, h5, h6 {
 	border-radius: 3px;
 	padding: 4px;
 }
@@ -14,7 +14,7 @@ article > section:nth-child(n+3) {
 	margin-top: 4px;
 }
 
-article > section > h3 {
+article > section h4 {
 	font-weight: bold;
 }
 
@@ -28,5 +28,33 @@ header h1 small b {
 .page-content-container {
     display: inline-block;
     width: 100%;
+}
+
+.esdoc-document nav {
+    margin-bottom: 5px;
+    border-bottom: 0;
+}
+
+.esdoc-document table tbody td {
+    border: 0px;
+}
+
+.esdoc-document h2.bg-print, h3.bg-print {
+    color: white;
+    background-color: black;
+}
+
+.esdoc-document h4.bg-print, h5.bg-print {
+    color: white;
+    background-color: black;
+}
+
+.esdoc-document h2 small.bg-print {
+    color: white;
+    background-color: black;
+}
+
+@media print {
+    
 }
 

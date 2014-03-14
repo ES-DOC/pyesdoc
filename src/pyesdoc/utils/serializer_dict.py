@@ -16,10 +16,9 @@ import uuid
 from dateutil import parser as date_parser
 
 from .. import ontologies
-from . import runtime as rt
-from . convertors import (
-    convert_dict_keys,
-    convert_to_underscore_case
+from . import (
+    convert,
+    runtime as rt
     )
 
 
@@ -30,13 +29,13 @@ _TYPES = ontologies.get_types()
 
 def _is_encodable(obj):
     """Returns flag indicating whether an object is encodable or not."""
-    return obj.__class__ in _TYPES
+    return type(obj) in _TYPES
 
 
 def _encode(doc):
     """Encodes an object to a deep dictionary."""
     result = {
-        'ontology_type_key' : doc.__class__.type_key
+        'ontology_type_key' : type(doc).type_key
     }
 
     for k, v in doc.__dict__.items():
@@ -45,7 +44,7 @@ def _encode(doc):
         except TypeError:
             result[k] = _encode(v) if _is_encodable(v) else v
         else:
-            if v.__class__ in (str,):
+            if type(v) in (str,):
                 result[k] = v
             else:
                 result[k] = map(lambda i : _encode(i) if _is_encodable(i) else i, v)
@@ -128,7 +127,7 @@ def decode(repr):
 
     """
     # Format dictionary keys.
-    as_dict = convert_dict_keys(repr, convert_to_underscore_case)
+    as_dict = convert.dict_keys(repr, convert.str_to_underscore_case)
 
     # Get target type.
     o, v, p, t = as_dict['ontology_type_key'].split('.')

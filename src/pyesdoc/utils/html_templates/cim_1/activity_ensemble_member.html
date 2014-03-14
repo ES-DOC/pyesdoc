@@ -1,0 +1,12 @@
+{% set ctx = TemplateInfo(ctx,
+	fieldset = [
+		FieldInfo('ID', value=member.ensemble_ids[0].value),
+		FieldInfo('Simulation ID', path='simulation_reference.name'),
+    ],
+) %}
+{% if member.simulation_reference %}
+	{% for change in member.simulation_reference.changes %}
+		{% raw ctx.fieldset.append(FieldInfo('Change Info', value=change.details[0].description)) or "" %}
+	{% end %}		
+{% end %}
+{% include ../core/fieldset_table.html %} 

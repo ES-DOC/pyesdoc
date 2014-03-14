@@ -1,63 +1,69 @@
 {% comment ***************** %}
 {% comment Emit overview     %}
 {% comment ***************** %}
-{% set ctx.fieldset = [
-	FieldInfo('Area', 'area'),
-	FieldInfo('Cell Array', 'cell_array'),
-	FieldInfo('Coord File', 'coord_file'),
-	FieldInfo('Coordinate Pole', 'coordinate_pole'),
-	FieldInfo('Description', 'description'),
-	FieldInfo('Discretization Type', 'discretization_type'),
-	FieldInfo('Geometry Type', 'geometry_type'),
-	FieldInfo('Grid North Pole', 'grid_north_pole'),
-	FieldInfo('Horizontal CRS', 'horizontal_crs'),
-	FieldInfo('id', 'id'),
-	FieldInfo('Is Conformal ?', 'is_conformal'),
-	FieldInfo('Is Regular ?', 'is_regular'),
-	FieldInfo('Is Terrain Following ?', 'is_terrain_following'),
-	FieldInfo('Is Uniform ?', 'is_uniform'),
-	FieldInfo('Long Name', 'long_name'),
-	FieldInfo('Mnemonic', 'mnemonic'),
-	FieldInfo('NX', 'nx'),
-	FieldInfo('NY', 'ny'),
-	FieldInfo('NZ', 'nz'),
-	FieldInfo('Refinement Scheme', 'refinement_scheme'),
-	FieldInfo('Short Name', 'short_name'),
-	FieldInfo('Simple Grid Geom', 'simple_grid_geom'),
-	FieldInfo('Vertical CRS', 'vertical_crs'),
-	FieldInfo('Z-Coords', 'zcoords'),
-] %}
-<h4>{{ "Tile Overview" }}</h4>
-{% include ../core/fieldset_table.html %}
+{% set ctx = TemplateInfo(tile,
+	depth = 1,
+	header = "Tile Overview",
+    fieldset = [
+		FieldInfo('Area', path='area'),
+		FieldInfo('Cell Array', path='cell_array'),
+		FieldInfo('Coord File', path='coord_file'),
+		FieldInfo('Coordinate Pole', path='coordinate_pole'),
+		FieldInfo('Description', path='description'),
+		FieldInfo('Discretization Type', path='discretization_type'),
+		FieldInfo('Geometry Type', path='geometry_type'),
+		FieldInfo('Grid North Pole', path='grid_north_pole'),
+		FieldInfo('Horizontal CRS', path='horizontal_crs'),
+		FieldInfo('id', path='id'),
+		FieldInfo('Is Conformal ?', path='is_conformal'),
+		FieldInfo('Is Regular ?', path='is_regular'),
+		FieldInfo('Is Terrain Following ?', path='is_terrain_following'),
+		FieldInfo('Is Uniform ?', path='is_uniform'),
+		FieldInfo('Long Name', path='long_name'),
+		FieldInfo('Mnemonic', path='mnemonic'),
+		FieldInfo('NX', path='nx'),
+		FieldInfo('NY', path='ny'),
+		FieldInfo('NZ', path='nz'),
+		FieldInfo('Refinement Scheme', path='refinement_scheme'),
+		FieldInfo('Short Name', path='short_name'),
+		FieldInfo('Simple Grid Geom', path='simple_grid_geom'),
+		FieldInfo('Vertical CRS', path='vertical_crs'),
+		FieldInfo('Z-Coords', path='zcoords'),
+    ],
+    template = "fieldset_table.html"
+) %}
+{% include ../core/section_01.html %}
 
 {% comment ***************** %}
 {% comment Emit extent       %}
 {% comment ***************** %}
 {% if tile.extent %}
-	<h4>Tile Extent</h4>
-	{% set ctx = ContextInfo(tile.extent,
+	{% set ctx = TemplateInfo(tile.extent,
+		depth = 1,
+		header = "Tile Extent",
 		fieldset = [
-			FieldInfo('maximum_latitude', 'maximum_latitude'),
-			FieldInfo('minimum_latitude', 'minimum_latitude'),
-			FieldInfo('maximum_longitude', 'maximum_longitude'),
-			FieldInfo('minimum_longitude', 'minimum_longitude'),
-			FieldInfo('units', 'units'),
-		]
+			FieldInfo('maximum_latitude', path='maximum_latitude'),
+			FieldInfo('minimum_latitude', path='minimum_latitude'),
+			FieldInfo('maximum_longitude', path='maximum_longitude'),
+			FieldInfo('minimum_longitude', path='minimum_longitude'),
+			FieldInfo('units', path='units'),
+		],
+		template="fieldset_table.html"
 	) %}
-	{% include ../core/fieldset_table.html %}
+	{% include ../core/section_01.html %}
 {% end %}
 
 {% comment ***************** %}
 {% comment Emit resolutions  %}
 {% comment ***************** %}
-{% if tile.horizontal_resolution and len(tile.horizontal_resolution.properties) %}
-	{% set ctx = ContextInfo(tile.horizontal_resolution) %}
+{% if tile.horizontal_resolution %}
+	{% set resolution = tile.horizontal_resolution %}	
 	{% set resolution_type = "Horizontal" %}	
 	{% include grids_grid_tile_resolution.html %}
 {% end %}
-{% if tile.vertical_resolution and len(tile.vertical_resolution.properties) %}
-	{% set ctx = ContextInfo(tile.vertical_resolution) %}
+{% comment if tile.vertical_resolution %}
+	{% set resolution = tile.vertical_resolution %}	
 	{% set resolution_type = "Vertical" %}	
 	{% include grids_grid_tile_resolution.html %}
-{% end %}
+{% comment end %}
 

@@ -1,11 +1,15 @@
-{% set ctx.header = "Contacts" %}
-{% set ctx.fieldset = [
-    FieldInfo('Role', 'role'),
-    FieldInfo('Person', 'individual_name'),
-    FieldInfo('Organisation', 'organisation_name'),
-    FieldInfo('Address', 'contact_info.address'),
-    FieldInfo('Email', 'contact_info.email'),
-    FieldInfo('URL', 'contact_info.url')
-    ] %}
-{% set ctx.template = "fieldset_table.html" %}
-{% include ../core/section.html %}	
+{% comment TODO: ABBREVIATION field ??? %}
+
+{% set ctx = TemplateInfo(ctx,
+	fieldset = [
+	    FieldInfo('Role', path='role', formatter=unicode.upper),
+	    FieldInfo('Person', path='individual_name'),
+	    FieldInfo('Organisation', path='organisation_name'),
+	    FieldInfo('Address', path='contact_info.address'),
+	    FieldInfo('Email', path='contact_info.email', email_path='contact_info.email'),
+	    FieldInfo('URL', path='contact_info.url', link_path='contact_info.url')
+    ],
+) %}
+{% include ../core/fieldset_table.html %} 
+
+{% set ctx = ctx.previous %}

@@ -5,54 +5,63 @@
 	{% comment ***************** %}
 	{% comment Emit overview     %}
 	{% comment ***************** %}
-	{% set ctx = ContextInfo(doc) %}
-	{% set ctx.header = DOCUMENT_OVERVIEW_HEADER %}
-	{% set ctx.fieldset = DOCUMENT_OVERVIEW_FIELDSET %}
-	{% set ctx.template = "fieldset_table.html" %}
-	{% include ../core/section.html %}	
+	{% set ctx = TemplateInfo(doc,
+		header = "Overview",
+		fieldset = [
+		    FieldInfo('Project', path='doc_info.project'),
+		    FieldInfo('Institute', path='doc_info.institute'),
+		    FieldInfo('Name', path='short_name'),
+		    FieldInfo('Long Name', path='long_name'),
+		    FieldInfo('Description', path='description'),
+		],
+		template = "fieldset_table.html"
+	) %}
+	{% include ../core/section_01.html %}	
 
 	{% for unit in doc.units %}
 		{% comment ***************** %}
 		{% comment Emit machine      %}
 		{% comment ***************** %}
-		{% set ctx = ContextInfo(unit.machine,
+		{% set ctx = TemplateInfo(unit.machine,
 			header = "Machine",
 			fieldset = [
-				FieldInfo('Name', 'name'),
-				FieldInfo('Vendor', 'vendor'),
-				FieldInfo('Operating System', 'operating_system'),
-				FieldInfo('Processor Type', 'processor_type'),
-				FieldInfo('Max. Processors', 'maximum_processors'),
-				FieldInfo('Cores / Processor', 'cores_per_processor'),
-				FieldInfo('System', 'system'),
-				FieldInfo('Interconnect', 'interconnect'),	
+				FieldInfo('Name', path='name'),
+				FieldInfo('Vendor', path='vendor'),
+				FieldInfo('Operating System', path='operating_system'),
+				FieldInfo('Processor Type', path='processor_type'),
+				FieldInfo('Max. Processors', path='maximum_processors'),
+				FieldInfo('Cores / Processor', path='cores_per_processor'),
+				FieldInfo('System', path='system'),
+				FieldInfo('Interconnect', path='interconnect'),	
 			],
 			template = "fieldset_table.html"
 		) %}
-		{% include ../core/section.html %}	
+		{% include ../core/section_01.html %}	
 
 		{% comment ***************** %}
 		{% comment Emit compiler     %}
 		{% comment ***************** %}
-		{% set ctx = ContextInfo(unit.compilers,
+		{% set ctx = TemplateInfo(unit.compilers,
 			header = "Compiler",
 			fieldset = [
-			    FieldInfo('Name', 'name'),
-			    FieldInfo('Type', 'type'),
-			    FieldInfo('Version', 'version'),
-			    FieldInfo('Language', 'language'),
-			    FieldInfo('Options', 'options'),
-			    FieldInfo('Env. Variables', 'environment_variables')
+			    FieldInfo('Name', path='name'),
+			    FieldInfo('Type', path='type'),
+			    FieldInfo('Version', path='version'),
+			    FieldInfo('Language', path='language'),
+			    FieldInfo('Options', path='options'),
+			    FieldInfo('Env. Variables', path='environment_variables')
 			],
 			template = "fieldset_table.html"
 		) %}
-		{% include ../core/section.html %}	
+		{% include ../core/section_01.html %}	
 	{% end %}
 
 	{% comment ***************** %}
 	{% comment Emit contacts     %}
 	{% comment ***************** %}
-	{% set ctx = ContextInfo(doc.contacts) %}
-	{% include shared_responsible_party.html %}
-
+	{% set ctx = TemplateInfo(doc.contacts,
+		header = "Contacts",
+		template = "cim_1_shared_responsible_party.html"
+	) %}
+	{% include ../core/section_01.html %}	
 {% end %}

@@ -11,11 +11,30 @@ window.$ = jQuery.noConflict();
 
     // Event handler for document ready event.
     $(document).ready(function() {
-		$(".page-content-container h2, article > h3").addClass("bg-primary");
-		$("article > section > h4").addClass("well well-sm");
-		$("h2 small").addClass("bg-primary");
-		$("table").addClass("bg-info");	
-		$(".esdoc-field-name").css("text-transform", "capitalize");	
+		// Headers.
+		$(".esdoc-document h2, .esdoc-document h3").addClass("bg-print");
+		$(".esdoc-document h2 small").addClass("bg-print");
+		$(".esdoc-document h4").addClass("bg-print");
+		$(".esdoc-document h5").addClass("bg-print");
+
+		// Tables.
+		$(".esdoc-document table").addClass("bg-info table table-hover table-condensed");	
+		$(".esdoc-document table tr td.esdoc-field-name").addClass("col-md-3");
+		$(".esdoc-document table tr td.esdoc-field-subname").addClass("col-md-1");
+		$(".esdoc-document table tr td.esdoc-field-name").css("text-transform", "capitalize");
+
+		// Navigation when appropriate.
+		if ($(".esdoc-document nav").length) {
+			$(".esdoc-document nav ul").addClass("nav nav-inverse nav-tabs nav-justified");	
+			$(".esdoc-document nav ul li a").attr("data-toggle", "tab");	
+			$(".esdoc-document article").addClass("tab-content");	
+			$(".esdoc-document article > section").addClass("tab-pane");	
+			$(".esdoc-document article > section > h3").hide();	
+			$('.esdoc-document nav ul li:first').addClass('active');
+		}
+
+		// Hide null fields.
+		$('.esdoc-document .esdoc-field-value:contains(--)').parent().hide();
     });
 
 })(window.$);

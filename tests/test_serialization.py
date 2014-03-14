@@ -6,6 +6,7 @@ from . import (
     test_type_cim_v1_activity_simulation_run,
     test_type_cim_v1_data_data_object,
     test_type_cim_v1_grids_gridspec,
+    test_type_cim_v1_misc_document_set,
     test_type_cim_v1_quality_cim_quality,
     test_type_cim_v1_shared_platform,
     test_type_cim_v1_software_model_component,
@@ -16,14 +17,15 @@ from . import (
 
 # Set of type test modules.
 _test_modules = (
-    test_type_cim_v1_activity_ensemble,
-    test_type_cim_v1_activity_numerical_experiment,
-    test_type_cim_v1_activity_simulation_run,
-    test_type_cim_v1_data_data_object,
-    test_type_cim_v1_grids_gridspec,
-    test_type_cim_v1_quality_cim_quality,
-    test_type_cim_v1_shared_platform,
-    test_type_cim_v1_software_model_component,
+    # test_type_cim_v1_activity_ensemble,
+    # test_type_cim_v1_activity_numerical_experiment,
+    # test_type_cim_v1_activity_simulation_run,
+    # test_type_cim_v1_data_data_object,
+    # test_type_cim_v1_grids_gridspec,
+    test_type_cim_v1_misc_document_set,    
+    # test_type_cim_v1_quality_cim_quality,
+    # test_type_cim_v1_shared_platform,
+    # test_type_cim_v1_software_model_component,
     # test_type_cim_v1_software_statistical_model_component,
 )
 

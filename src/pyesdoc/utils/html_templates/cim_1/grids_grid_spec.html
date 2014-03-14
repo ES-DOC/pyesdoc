@@ -6,12 +6,18 @@
 	{% comment Emit mosaics      %}
 	{% comment ***************** %}
 	{% for mosaic in doc.esm_model_grids %}
-		{% set mosaic_type = "Model" %}		
-		{% include grids_grid_mosaic.html %}
-	{% end %}
+		{% set ctx = TemplateInfo(mosaic,
+			header = "Model Grid: " +  mosaic.short_name,
+			template = "cim_1_grids_grid_mosaic.html"
+		) %}
+		{% include ../core/section_02.html %}	
+	{% end %}		
 	{% for mosaic in doc.esm_exchange_grids %}
-		{% set mosaic_type = "Exchange" %}		
-		{% include grids_grid_mosaic.html %}
+		{% set ctx = TemplateInfo(mosaic,
+			header = "Exchange Grid: " +  mosaic.short_name,
+			template = "cim_1_grids_grid_mosaic.html"
+		) %}
+		{% include ../core/section_02.html %}	
 	{% end %}
 
 {% end %}

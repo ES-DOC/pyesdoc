@@ -33,6 +33,10 @@ from .options import (
     get as get_option,
     list as list_options
     )
+from .parsers import (
+    parse,
+    is_parseable
+    )
 from .publishing import (
     ESDOC_DOC_VERSION_LATEST,
     ESDOC_DOC_VERSION_ALL,

@@ -10,12 +10,12 @@
 
 """
 # Module imports.
-from convertors import (
-    convert_dict_keys,
-    convert_to_camel_case,
-    convert_to_pascal_case,
-    convert_to_spaced_case,
-    convert_to_underscore_case
+from convert import (
+    dict_keys,
+    str_to_camel_case,
+    str_to_pascal_case,
+    str_to_spaced_case,
+    str_to_underscore_case
     )
 from runtime import PYESDOC_Exception
 from decoder_xml_utils import PYESDOC_XMLError

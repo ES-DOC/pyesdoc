@@ -47,6 +47,7 @@ def decode(repr):
     :type repr: lxml.etree._ElementTree
 
     """
+    # Defensive programming.
     xml, nsmap = load_xml(repr, return_nsmap=True)
     if not isinstance(xml, et._Element):
         raise rt.PYESDOC_Exception('Decoding failure due to invalid Metafor CIM v1 XML.')

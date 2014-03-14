@@ -17,11 +17,10 @@ import xml.etree.ElementTree as ET
 from dateutil import parser as date_parser
 
 from .. import ontologies
-from . import runtime as rt
-from . import serializer_dict
-from . convertors import (
-    convert_dict_keys,
-    convert_to_camel_case
+from . import (
+    convert,
+    runtime as rt,
+    serializer_dict
     )
 
 
@@ -54,7 +53,7 @@ def _decode_scalar(sv, type, iterable):
     """Decodes a scalar value."""
     def _do(s):
         # None if empty value.
-        if not len(s):
+        if s is None or not len(s):
             return None
 
         # Encode.
@@ -97,7 +96,7 @@ def _decode(repr, typeof, iterable):
 
         # Set doc attributes.
         for _name, _type, _required, _iterable in ontologies.get_type_info(doc_type):            
-            elem = xml.find(convert_to_camel_case(_name))
+            elem = xml.find(convert.str_to_camel_case(_name))
             if elem is not None:
                 decoder = _decode if _type in _TYPES else _decode_scalar
                 setattr(doc, _name, decoder(elem, _type, _iterable))
@@ -125,7 +124,7 @@ def _encode_scalar(xml, sv):
     else:
         sv = str(sv)
     
-    xml.text = sv
+    xml.text = unicode(sv.decode('utf8').strip()) if sv is not None and len(sv) else u''
 
 
 def _encode_list(xml, tag, l):
@@ -159,7 +158,7 @@ def _encode_dict(xml, d):
 
 def _get_xml_tag(doc):
     """Returns document root xml tag."""
-    return convert_to_camel_case(doc.__class__.type_key.split('.')[3])
+    return convert.str_to_camel_case(doc.__class__.type_key.split('.')[3])
 
 
 def encode(doc):
@@ -176,7 +175,7 @@ def encode(doc):
     as_dict = serializer_dict.encode(doc)
 
     # Format dictionary keys.    
-    as_dict = convert_dict_keys(as_dict, convert_to_camel_case)
+    as_dict = convert.dict_keys(as_dict, convert.str_to_camel_case)
 
     # Encode to an xml element.
     as_xml = _encode_dict(ET.Element(_get_xml_tag(doc)), as_dict)

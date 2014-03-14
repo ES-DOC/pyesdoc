@@ -32,18 +32,25 @@
         </h1>
     </header>
                     
-    <div class="clearfix page-content-container">
-        <h2>{{ doc.doc_info.project }} {{ doc.doc_info.type.split('.')[-1] }}: {{ doc.doc_info.institute }} <small>(v{{ doc.doc_info.version }})</small>
+    <div class="clearfix esdoc-document page-content-container">
+        {% comment ******************* %}
+        {% comment Emit doc header %}
+        {% comment ******************* %}
+        <h2>{{ doc.doc_info.project }} {{ doc.doc_info.type_display_name }} : {{ doc.doc_info.institute }} - <small>(v{{ doc.doc_info.version }})</small>
         </h2>        
+
+        {% comment ******************* %}
+        {% comment Emit doc navigation %}
+        {% comment ******************* %}
+        {% block doc-nav %}{% end %}
+
         {% comment ***************** %}
         {% comment Emit doc content  %}
         {% comment ***************** %}
-        {% block doc-content %}{% end %}
-
-        {% comment ***************** %}
-        {% comment Emit doc metadata %}
-        {% comment ***************** %}
-        {% include document_metadata.html %}   
+        <article>
+            {% block doc-content %}{% end %}
+            {% include document_metadata.html %}               
+        </article>
     </div>
 
     <footer>
