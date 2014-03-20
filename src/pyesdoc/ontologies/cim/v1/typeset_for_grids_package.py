@@ -7,7 +7,7 @@
    :synopsis: The set of types of the cim.v1.grids package.
 
 .. moduleauthor:: Earth System Documentation (ES-DOC) <dev@es-doc.org>
-.. note:: Code generated using esdoc_mp @ 2014-03-06 20:20:08.979459.
+.. note:: Code generated using esdoc_mp @ 2014-03-20 16:18:50.946523.
 
 """
 # Module imports.

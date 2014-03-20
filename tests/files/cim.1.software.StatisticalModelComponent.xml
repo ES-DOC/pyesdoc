@@ -1,0 +1,147 @@
+<statisticalModelComponent ontologyTypeKey="cim.1.software.StatisticalModelComponent">
+    <citations>
+        <citation ontologyTypeKey="cim.1.shared.Citation">
+            <collectiveTitle>Dufresne, J-L - Foujols, M-A - Denvil, S. - Caubel, A. - Marti, O. - Aumont, O - Balkanski, Y - Bekki, S - Bellenger, H - Benshila, R - Bony, S - Bopp, L - Braconnot, P - Brockmann, P - Cadule, P - Cheruy, F - Codron, F - Cozic, A - Cugnet, D - de Noblet, N - Duvel, J-P - Ethé, C - Fairhead, L - Fichefet, T - Flavoni, S - Friedlingstein, P - Grandpeix, J-Y - Guez, L - Guilyardi, E - Hauglustaine, D - Hourdin, F - Idelkadi, A - Ghattas, J - Joussaume, S - Kageyama, M - Krinner, G - Labetoulle, S - Lahellec, A - Lefebvre, M-P - Lefevre, F - Levy, C - Li, Z. X. - Lloyd, J - Lott, F - Madec, G - Mancip, M - Marchand, M - Masson, S - Meurdesoif, Y - Mignot, J - Musat, I - Parouty, S - Polcher, J - Rio, C - Schulz, M - Swingedouw, D - Szopa, S - Talandier, C - Terray, P - Viovy, N - Vuichard, N (2012). Climate change projections using the IPSL-CM5 Earth System Model: from CMIP3 to CMIP5. Submitted to Clim. Dynamics.</collectiveTitle>
+            <title>Dufresne et al 2012</title>
+            <type>Online Refereed</type>
+        </citation>
+    </citations>
+    <description>IPSL-CM5A-LR is the low resolution version of the IPSL-CM5A Earth system model. The resolution is 1.875°x3.75° with 39 vertical level for the atmosphere (96x95L39) and about 2° (with a meridional increased resolution of 0.5° near the equator) and with 31 vertical levels for the ocean (149x182L31). IPSL-CM5A is one of the two configurations of the IPSL-CM5 model for CMIP5, the second one being IPSL-CM5B, with a different set of atmospheric physical parameterizations. IPSL-CM5A is an Earth system model based on an improved version of the IPSL-CM4 coupled ocean-atmosphere GCM that was used in CMIP3. Compared with IPSL-CM4, IPSL-CM5A includes among others the following improvements: (i) An increase vertical resolution of the atmosphere from 19 to 39 vertical levels, with 15 levels above 20 km (ii) six different species of aerosols that can be either externally prescribed or computed on-line (iii) stratospheric and tropospheric ozone can be either prescribed or computed on-line (iv) improved physical parameterizations of the ocean (v) carbon cycle models for both the ocean part and terrestrial part and land use change can be externally imposed More information: http://icmc.ipsl.fr/</description>
+    <docInfo ontologyTypeKey="cim.1.shared.DocInfo">
+        <author ontologyTypeKey="cim.1.shared.ResponsibleParty">
+            <individualName>Metafor Questionnaire</individualName>
+            <role>documentAuthor</role>
+        </author>
+        <createDate>2013-03-22 17:54:48.178304</createDate>
+        <encodings>
+            <encoding>json</encoding>
+            <encoding>xml</encoding>
+            <encoding>html</encoding>
+            <encoding>xml-metafor-cim-v1</encoding>
+        </encodings>
+        <genealogy ontologyTypeKey="cim.1.shared.DocGenealogy">
+            <relationships>
+                <relationship ontologyTypeKey="cim.1.shared.DocRelationship">
+                    <direction>toTarget</direction>
+                    <target ontologyTypeKey="cim.1.shared.DocRelationshipTarget">
+                        <reference ontologyTypeKey="cim.1.shared.DocReference">
+                            <id>4670dc2b-4a5f-41b9-b981-c6d0b1d96a9a</id>
+                            <name>IPSLCM4_v2</name>
+                        </reference>
+                    </target>
+                    <type>previousVersionOf</type>
+                </relationship>
+            </relationships>
+        </genealogy>
+        <id>4b29d25e-2968-11e0-8517-00163e9152a5</id>
+        <institute>MOHC</institute>
+        <language>en</language>
+        <project>CMIP5</project>
+        <source>testing</source>
+        <type>cim.1.software.StatisticalModelComponent</type>
+        <typeDisplayName>Model</typeDisplayName>
+        <version>9</version>
+    </docInfo>
+    <longName>IPSL-CM5A-LR;atmosphere:LMDZ5A(95x96L39);ocean:NEMOv3.2 (OPA-LIM-PISCES,149x182L31)</longName>
+    <properties>
+        <property ontologyTypeKey="cim.1.software.ComponentProperty">
+            <isRepresented>True</isRepresented>
+            <shortName>Sea Ice Key Properties</shortName>
+            <subProperties>
+                <subProperty ontologyTypeKey="cim.1.software.ComponentProperty">
+                    <isRepresented>True</isRepresented>
+                    <longName>BasicApproximations</longName>
+                    <shortName>BasicApproximations</shortName>
+                    <values>
+                        <value>2-level + visco-plastic rheology</value>
+                    </values>
+                </subProperty>
+                <subProperty ontologyTypeKey="cim.1.software.ComponentProperty">
+                    <isRepresented>True</isRepresented>
+                    <longName>ListOfPrognosticVariables</longName>
+                    <shortName>ListOfPrognosticVariables</shortName>
+                    <values>
+                        <value>sea ice [thickness, concentration, velocity, temperature, heat content], snow thickness, snow temperature</value>
+                    </values>
+                </subProperty>
+                <subProperty ontologyTypeKey="cim.1.software.ComponentProperty">
+                    <isRepresented>True</isRepresented>
+                    <longName>SeaIceRepresentation</longName>
+                    <shortName>SeaIceRepresentation</shortName>
+                    <subProperties>
+                        <subProperty ontologyTypeKey="cim.1.software.ComponentProperty">
+                            <isRepresented>True</isRepresented>
+                            <longName>SchemeType</longName>
+                            <shortName>SchemeType</shortName>
+                            <values>
+                                <value>2-levels</value>
+                            </values>
+                        </subProperty>
+                    </subProperties>
+                </subProperty>
+                <subProperty ontologyTypeKey="cim.1.software.ComponentProperty">
+                    <isRepresented>True</isRepresented>
+                    <longName>TimeSteppingFramework</longName>
+                    <shortName>TimeSteppingFramework</shortName>
+                    <subProperties>
+                        <subProperty ontologyTypeKey="cim.1.software.ComponentProperty">
+                            <isRepresented>True</isRepresented>
+                            <longName>Method</longName>
+                            <shortName>Method</shortName>
+                            <values>
+                                <value>specific time step</value>
+                            </values>
+                        </subProperty>
+                        <subProperty ontologyTypeKey="cim.1.software.ComponentProperty">
+                            <isRepresented>True</isRepresented>
+                            <longName>TimeStep</longName>
+                            <shortName>TimeStep</shortName>
+                            <values>
+                                <value>5 ocean time steps (8h)</value>
+                            </values>
+                        </subProperty>
+                    </subProperties>
+                </subProperty>
+            </subProperties>
+        </property>
+    </properties>
+    <releaseDate>2010-03-20 00:00:00</releaseDate>
+    <responsibleParties>
+        <responsibleParty ontologyTypeKey="cim.1.shared.ResponsibleParty">
+            <abbreviation>Dufresne</abbreviation>
+            <contactInfo ontologyTypeKey="cim.1.shared.ResponsiblePartyContactInfo">
+                <address>Lab. de Météorologie Dynamique (LMD) Institut Pierre Simon Laplace (IPSL) Jussieu, Tour 45-55, 3e etage UPMC ; Boite 99 ; 4 place Jussieu ; 75252 Paris Cedex 05 - France</address>
+                <email>Jean-Louis.Dufresne@lmd.jussieu.fr</email>
+            </contactInfo>
+            <individualName>Jean-Louis Dufresne</individualName>
+            <role>PI</role>
+        </responsibleParty>
+        <responsibleParty ontologyTypeKey="cim.1.shared.ResponsibleParty">
+            <abbreviation>IPSL</abbreviation>
+            <contactInfo ontologyTypeKey="cim.1.shared.ResponsiblePartyContactInfo" />
+            <organisationName>Institut Pierre Simon Laplace</organisationName>
+            <role>funder</role>
+        </responsibleParty>
+        <responsibleParty ontologyTypeKey="cim.1.shared.ResponsibleParty">
+            <abbreviation>ICMC</abbreviation>
+            <contactInfo ontologyTypeKey="cim.1.shared.ResponsiblePartyContactInfo">
+                <address>Institut Pierre Simon Laplace (IPSL) Jussieu, Tour 45-55, 2e etage UPMC ; Boite 101 ; 4 place Jussieu 75252 Paris Cedex 5</address>
+                <email>ipsl-cmip5@ipsl.jussieu.fr</email>
+                <url>http://icmc.ipsl.fr/</url>
+            </contactInfo>
+            <individualName>Jean-Louis Dufresne, Sébastien Denvil, Marie-Alice Foujols. Arnaud Caubel.</individualName>
+            <role>contact</role>
+        </responsibleParty>
+        <responsibleParty ontologyTypeKey="cim.1.shared.ResponsibleParty">
+            <abbreviation>IPSL</abbreviation>
+            <contactInfo ontologyTypeKey="cim.1.shared.ResponsiblePartyContactInfo" />
+            <organisationName>Institut Pierre Simon Laplace</organisationName>
+            <role>centre</role>
+        </responsibleParty>
+    </responsibleParties>
+    <shortName>IPSL-CM5A-LR</shortName>
+    <type>downscaling</type>
+    <types>
+        <type>downscaling</type>
+    </types>
+</statisticalModelComponent>

@@ -31,6 +31,9 @@ _JSON_CHARSET = "ISO-8859-1"
 # ISO date formats.
 _ISO_DATE_FORMATS = ["%Y-%m-%d %H:%M:%S", "%Y-%m-%dT%H:%M:%S"]
 
+# Values considered to be abbreviations. 
+_ABBREVIATIONS = ("id", "uid", "uuid")
+
 
 def str_to_pascal_case(target, separator='_'):
     """Converts passed name to pascal case.
@@ -46,15 +49,25 @@ def str_to_pascal_case(target, separator='_'):
     
     """
     r = ''
-    if target is not None:
+    if target is not None and len(target):
+        # Preserve initial separator
+        if target[0:len(separator)] == separator:
+            r = separator
+
+        # Iterate string parts.
         s = target.split(separator)
         for s in s:
-            if s.lower() in ["id", "uid", "uuid"]:
+
+            # Upper case abbreviations.
+            if s.lower() in _ABBREVIATIONS:
                 r += s.upper()
+
+            # Upper case initial character.
             elif (len(s) > 0):
                 r += s[0].upper()
                 if (len(s) > 1):
                     r += s[1:]
+
     return r
 
 
@@ -71,49 +84,66 @@ def str_to_camel_case(target, separator='_'):
     :rtype: str
 
     """
-    s = str_to_pascal_case(target, separator)
+    r = ''
+    if target is not None and len(target):
+        # Convert to pascal case.
+        s = str_to_pascal_case(target, separator)
 
-    if len(s) > 1:
-        return s[0].lower() + s[1:]
-    elif len(s) == 1:
-        return s.lower()
-    else:
-        return ''
+        # Preserve initial separator
+        if s[0:len(separator)] == separator:
+            r += separator
+            s = s[len(separator):]
+
+        # Lower case abbreviations.
+        if s.lower() in _ABBREVIATIONS:
+            r += s.lower()
+        
+        # Lower case initial character.
+        elif len(s):
+            r += s[0].lower()
+            r += s[1:]            
+
+    return r
 
 
-def str_to_spaced_case(value, separator='_'):
+def str_to_spaced_case(target, separator='_'):
     """Helper function to convert a string value from camel case to spaced case.
 
-    :param value: A string for conversion.
-    :type value: str
+    :param target: A string for conversion.
+    :type target: str
 
     :returns: A string converted to spaced case.
     :rtype: str
 
     """
-    if value is None:
+    if target is None:
         return ""
-    elif separator is not None and len(value.split(separator)) > 1:
-        return " ".join(value.split(separator))
-    elif value.find(" ") == -1:
-        return re.sub("([A-Z])"," \g<0>", value).strip()
+    elif separator is not None and len(target.split(separator)) > 1:
+        return " ".join(target.split(separator))
+    elif target.find(" ") == -1:
+        return re.sub("([A-Z])"," \g<0>", target).strip()
     else:
-        return value
+        return target
 
 
-def str_to_underscore_case(name):
+def str_to_underscore_case(target):
     """Helper function to convert a from camel case string to an underscore case string.
 
-    :param value: A camel casestring for conversion, e.g. AccountNumber.
-    :type value: str
+    :param target: A string for conversion.
+    :type target: str
 
     :returns: A string converted to underscore case, e.g. account_number.
     :rtype: str
 
     """
-    s1 = re.sub('(.)([A-Z][a-z]+)', r'\1_\2', name)
-    
-    return re.sub('([a-z0-9])([A-Z])', r'\1_\2', s1).lower()
+    if target is None or not len(target):
+        return ''
+
+    r = re.sub('(.)([A-Z][a-z]+)', r'\1_\2', target)    
+    r = re.sub('([a-z0-9])([A-Z])', r'\1_\2', r)
+    r = r.lower()
+
+    return r
 
 
 class _JSONEncoder(json.JSONEncoder):

@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<numericalExperiment xmlns="http://www.purl.org/org/esmetadata/cim/1.5/schemas" xmlns:gco="http://www.isotc211.org/2005/gco" xmlns:gmd="http://www.isotc211.org/2005/gmd" xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.purl.org/org/esmetadata/cim/1.5/schemas/cim.xsd">
+    <rationale>AMIP. Baseline simulation for model evaluation.</rationale>
+    <shortName>amip</shortName>
+    <longName>AMIP</longName>
+    <description>AMIP (1979 - at least 2008).
+        Impose SSTs and sea ice from observations but with other conditions as in experiment 3.2 historical.</description>
+    <experimentID>3.3</experimentID>
+    <calendar>
+        <realCalendar/>
+    </calendar>
+    <numericalRequirement>
+        <initialCondition>
+            <id>ic.003</id>
+            <name>3.3.ic</name>
+            <description>Initial conditions are from year 1979 of experiment 3.2_historical.</description>
+        </initialCondition>
+    </numericalRequirement>
+    <numericalRequirement>
+        <boundaryCondition>
+            <name>3.3.bc.sls</name>
+            <description>Imposed changing concentrations or emissions of historical short lived gas species</description>
+            <requirementOption optionRelationship="XOR">
+                <requirement>
+                    <requirement>
+                        <boundaryCondition>
+                            <id>bc.013</id>
+                            <name>3.3.bc.sls_conc</name>
+                            <description>Concentrations</description>
+                        </boundaryCondition>
+                    </requirement>
+                </requirement>
+            </requirementOption>
+            <requirementOption optionRelationship="XOR">
+                <requirement>
+                    <requirement>
+                        <boundaryCondition>
+                            <id>bc.018</id>
+                            <name>3.3.bc.sls_em</name>
+                            <description>Emissions</description>
+                        </boundaryCondition>
+                    </requirement>
+                </requirement>
+            </requirementOption>
+        </boundaryCondition>
+    </numericalRequirement>
+    <numericalRequirement>
+        <boundaryCondition>
+            <name>3.3.bc.nat_aer</name>
+            <description>Imposed changing concentrations or emissions of historical natural aerosols</description>
+            <requirementOption optionRelationship="XOR">
+                <requirement>
+                    <requirement>
+                        <boundaryCondition>
+                            <id>bc.014</id>
+                            <name>3.3.bc.nat_aer_conc</name>
+                            <description>Concentrations</description>
+                        </boundaryCondition>
+                    </requirement>
+                </requirement>
+            </requirementOption>
+            <requirementOption optionRelationship="XOR">
+                <requirement>
+                    <requirement>
+                        <boundaryCondition>
+                            <id>bc.019</id>
+                            <name>3.3.bc.nat_aer_em</name>
+                            <description>Emissions</description>
+                        </boundaryCondition>
+                    </requirement>
+                </requirement>
+            </requirementOption>
+        </boundaryCondition>
+    </numericalRequirement>
+    <numericalRequirement>
+        <boundaryCondition>
+            <name>3.3.bc.ant_aer</name>
+            <description>Imposed changing concentrations or emissions of historical anthropogenic aerosols</description>
+            <requirementOption optionRelationship="XOR">
+                <requirement>
+                    <requirement>
+                        <boundaryCondition>
+                            <id>bc.015</id>
+                            <name>3.3.bc.ant_aer_conc</name>
+                            <description>Concentrations</description>
+                        </boundaryCondition>
+                    </requirement>
+                </requirement>
+            </requirementOption>
+            <requirementOption optionRelationship="XOR">
+                <requirement>
+                    <requirement>
+                        <boundaryCondition>
+                            <id>bc.020</id>
+                            <name>3.3.bc.ant_aer_em</name>
+                            <description>Emissions</description>
+                        </boundaryCondition>
+                    </requirement>
+                </requirement>
+            </requirementOption>
+        </boundaryCondition>
+    </numericalRequirement>
+    <numericalRequirement>
+        <boundaryCondition>
+            <id>bc.016</id>
+            <name>3.3.bc.nat_aer_pre_conc</name>
+            <description>Imposed changing concentrations of historical natural aerosol precursors</description>
+        </boundaryCondition>
+    </numericalRequirement>
+    <numericalRequirement>
+        <boundaryCondition>
+            <id>bc.017</id>
+            <name>3.3.bc.ant_aer_pre_conc</name>
+            <description>Imposed changing concentrations of historical anthropogenic aerosol precursors</description>
+        </boundaryCondition>
+    </numericalRequirement>
+    <numericalRequirement>
+        <boundaryCondition>
+            <id>bc.021</id>
+            <name>3.3.bc.solar</name>
+            <description>Imposed historical changing solar forcing</description>
+        </boundaryCondition>
+    </numericalRequirement>
+    <numericalRequirement>
+        <boundaryCondition>
+            <id>bc.022</id>
+            <name>3.3.bc.LU</name>
+            <description>Imposed historical changing land use</description>
+        </boundaryCondition>
+    </numericalRequirement>
+    <numericalRequirement>
+        <boundaryCondition>
+            <id>bc.023</id>
+            <name>3.3.bc.sst_obs</name>
+            <description>Sea surface temperature (SST) imposed from historical observations</description>
+        </boundaryCondition>
+    </numericalRequirement>
+    <numericalRequirement>
+        <boundaryCondition>
+            <id>bc.024</id>
+            <name>3.3.bc.seaice_obs</name>
+            <description>Sea ice imposed from historical observations</description>
+        </boundaryCondition>
+    </numericalRequirement>
+    <numericalRequirement>
+        <spatioTemporalConstraint>
+            <id>stc.027</id>
+            <name>3.3.stc.1979_30yr</name>
+            <description>Begin in 1979 and run for 30 years</description>
+            <requiredDuration>
+                <closedDateRange>
+                    <duration>P30Y</duration>
+                    <endDate>2008-12-30T00:00:00Z</endDate>
+                    <startDate>1979-01-01T00:00:00Z</startDate>
+                </closedDateRange>
+            </requiredDuration>
+        </spatioTemporalConstraint>
+    </numericalRequirement>
+    <numericalRequirement>
+        <boundaryCondition>
+            <id>bc.011</id>
+            <name>3.3.bc.ant_wmg_conc</name>
+            <description>Imposed changing historical anthropogenic atmospheric composition, including CO2</description>
+        </boundaryCondition>
+    </numericalRequirement>
+    <numericalRequirement>
+        <boundaryCondition>
+            <id>bc.012</id>
+            <name>3.3.bc.volc_wmg_conc</name>
+            <description>Imposed changing historical volcanic atmospheric composition</description>
+        </boundaryCondition>
+    </numericalRequirement>
+    <documentID>9fa513fc-d3a5-11df-837f-00163e9152a5</documentID>
+    <documentVersion>1</documentVersion>
+    <documentAuthor>
+        <gmd:individualName>
+            <gco:CharacterString>Metafor Questionnaire</gco:CharacterString>
+        </gmd:individualName>
+        <gmd:role>
+            <gmd:CI_RoleCode codeList="" codeListValue="documentAuthor"/>
+        </gmd:role>
+    </documentAuthor>
+    <documentCreationDate>2012-04-23T14:59:07.048869</documentCreationDate>
+</numericalExperiment>

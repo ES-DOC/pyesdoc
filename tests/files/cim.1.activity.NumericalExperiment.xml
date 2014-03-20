@@ -1,0 +1,172 @@
+<numericalExperiment ontologyTypeKey="cim.1.activity.NumericalExperiment">
+    <description>AMIP (1979 - at least 2008). Impose SSTs and sea ice from observations but with other conditions as in experiment 3.2 historical.</description>
+    <docInfo ontologyTypeKey="cim.1.shared.DocInfo">
+        <author ontologyTypeKey="cim.1.shared.ResponsibleParty">
+            <individualName>Metafor Questionnaire</individualName>
+            <role>documentAuthor</role>
+        </author>
+        <createDate>2012-04-23 14:59:07.048869</createDate>
+        <encodings>
+            <encoding>json</encoding>
+            <encoding>xml</encoding>
+            <encoding>html</encoding>
+            <encoding>xml-metafor-cim-v1</encoding>
+        </encodings>
+        <id>9fa513fc-d3a5-11df-837f-00163e9152a5</id>
+        <institute>MOHC</institute>
+        <language>en</language>
+        <project>CMIP5</project>
+        <source>testing</source>
+        <type>cim.1.activity.NumericalExperiment</type>
+        <typeDisplayName>Experiment</typeDisplayName>
+        <version>1</version>
+    </docInfo>
+    <experimentID>3.3</experimentID>
+    <longName>AMIP</longName>
+    <rationales>
+        <rationale>AMIP. Baseline simulation for model evaluation.</rationale>
+    </rationales>
+    <requirements>
+        <requirement ontologyTypeKey="cim.1.activity.InitialCondition">
+            <description>Initial conditions are from year 1979 of experiment 3.2_historical.</description>
+            <id>ic.003</id>
+            <name>3.3.ic</name>
+            <requirementType>initialCondition</requirementType>
+        </requirement>
+        <requirement ontologyTypeKey="cim.1.activity.BoundaryCondition">
+            <description>Imposed changing concentrations or emissions of historical short lived gas species</description>
+            <name>3.3.bc.sls</name>
+            <options>
+                <option ontologyTypeKey="cim.1.activity.NumericalRequirementOption">
+                    <relationship>XOR</relationship>
+                    <requirement ontologyTypeKey="cim.1.activity.BoundaryCondition">
+                        <description>Concentrations</description>
+                        <id>bc.013</id>
+                        <name>3.3.bc.sls_conc</name>
+                        <requirementType>boundaryCondition</requirementType>
+                    </requirement>
+                </option>
+                <option ontologyTypeKey="cim.1.activity.NumericalRequirementOption">
+                    <relationship>XOR</relationship>
+                    <requirement ontologyTypeKey="cim.1.activity.BoundaryCondition">
+                        <description>Emissions</description>
+                        <id>bc.018</id>
+                        <name>3.3.bc.sls_em</name>
+                        <requirementType>boundaryCondition</requirementType>
+                    </requirement>
+                </option>
+            </options>
+            <requirementType>boundaryCondition</requirementType>
+        </requirement>
+        <requirement ontologyTypeKey="cim.1.activity.BoundaryCondition">
+            <description>Imposed changing concentrations or emissions of historical natural aerosols</description>
+            <name>3.3.bc.nat_aer</name>
+            <options>
+                <option ontologyTypeKey="cim.1.activity.NumericalRequirementOption">
+                    <relationship>XOR</relationship>
+                    <requirement ontologyTypeKey="cim.1.activity.BoundaryCondition">
+                        <description>Concentrations</description>
+                        <id>bc.014</id>
+                        <name>3.3.bc.nat_aer_conc</name>
+                        <requirementType>boundaryCondition</requirementType>
+                    </requirement>
+                </option>
+                <option ontologyTypeKey="cim.1.activity.NumericalRequirementOption">
+                    <relationship>XOR</relationship>
+                    <requirement ontologyTypeKey="cim.1.activity.BoundaryCondition">
+                        <description>Emissions</description>
+                        <id>bc.019</id>
+                        <name>3.3.bc.nat_aer_em</name>
+                        <requirementType>boundaryCondition</requirementType>
+                    </requirement>
+                </option>
+            </options>
+            <requirementType>boundaryCondition</requirementType>
+        </requirement>
+        <requirement ontologyTypeKey="cim.1.activity.BoundaryCondition">
+            <description>Imposed changing concentrations or emissions of historical anthropogenic aerosols</description>
+            <name>3.3.bc.ant_aer</name>
+            <options>
+                <option ontologyTypeKey="cim.1.activity.NumericalRequirementOption">
+                    <relationship>XOR</relationship>
+                    <requirement ontologyTypeKey="cim.1.activity.BoundaryCondition">
+                        <description>Concentrations</description>
+                        <id>bc.015</id>
+                        <name>3.3.bc.ant_aer_conc</name>
+                        <requirementType>boundaryCondition</requirementType>
+                    </requirement>
+                </option>
+                <option ontologyTypeKey="cim.1.activity.NumericalRequirementOption">
+                    <relationship>XOR</relationship>
+                    <requirement ontologyTypeKey="cim.1.activity.BoundaryCondition">
+                        <description>Emissions</description>
+                        <id>bc.020</id>
+                        <name>3.3.bc.ant_aer_em</name>
+                        <requirementType>boundaryCondition</requirementType>
+                    </requirement>
+                </option>
+            </options>
+            <requirementType>boundaryCondition</requirementType>
+        </requirement>
+        <requirement ontologyTypeKey="cim.1.activity.BoundaryCondition">
+            <description>Imposed changing concentrations of historical natural aerosol precursors</description>
+            <id>bc.016</id>
+            <name>3.3.bc.nat_aer_pre_conc</name>
+            <requirementType>boundaryCondition</requirementType>
+        </requirement>
+        <requirement ontologyTypeKey="cim.1.activity.BoundaryCondition">
+            <description>Imposed changing concentrations of historical anthropogenic aerosol precursors</description>
+            <id>bc.017</id>
+            <name>3.3.bc.ant_aer_pre_conc</name>
+            <requirementType>boundaryCondition</requirementType>
+        </requirement>
+        <requirement ontologyTypeKey="cim.1.activity.BoundaryCondition">
+            <description>Imposed historical changing solar forcing</description>
+            <id>bc.021</id>
+            <name>3.3.bc.solar</name>
+            <requirementType>boundaryCondition</requirementType>
+        </requirement>
+        <requirement ontologyTypeKey="cim.1.activity.BoundaryCondition">
+            <description>Imposed historical changing land use</description>
+            <id>bc.022</id>
+            <name>3.3.bc.LU</name>
+            <requirementType>boundaryCondition</requirementType>
+        </requirement>
+        <requirement ontologyTypeKey="cim.1.activity.BoundaryCondition">
+            <description>Sea surface temperature (SST) imposed from historical observations</description>
+            <id>bc.023</id>
+            <name>3.3.bc.sst_obs</name>
+            <requirementType>boundaryCondition</requirementType>
+        </requirement>
+        <requirement ontologyTypeKey="cim.1.activity.BoundaryCondition">
+            <description>Sea ice imposed from historical observations</description>
+            <id>bc.024</id>
+            <name>3.3.bc.seaice_obs</name>
+            <requirementType>boundaryCondition</requirementType>
+        </requirement>
+        <requirement ontologyTypeKey="cim.1.activity.BoundaryCondition">
+            <description>Imposed changing historical anthropogenic atmospheric composition, including CO2</description>
+            <id>bc.011</id>
+            <name>3.3.bc.ant_wmg_conc</name>
+            <requirementType>boundaryCondition</requirementType>
+        </requirement>
+        <requirement ontologyTypeKey="cim.1.activity.BoundaryCondition">
+            <description>Imposed changing historical volcanic atmospheric composition</description>
+            <id>bc.012</id>
+            <name>3.3.bc.volc_wmg_conc</name>
+            <requirementType>boundaryCondition</requirementType>
+        </requirement>
+        <requirement ontologyTypeKey="cim.1.activity.SpatioTemporalConstraint">
+            <dateRange ontologyTypeKey="cim.1.shared.ClosedDateRange">
+                <duration>P30Y</duration>
+                <end>2008-12-30 00:00:00+00:00</end>
+                <start>1979-01-01 00:00:00+00:00</start>
+            </dateRange>
+            <description>Begin in 1979 and run for 30 years</description>
+            <id>stc.027</id>
+            <name>3.3.stc.1979_30yr</name>
+            <requirementType>spatioTemporalConstraint</requirementType>
+        </requirement>
+    </requirements>
+    <shortName>amip</shortName>
+</numericalExperiment>

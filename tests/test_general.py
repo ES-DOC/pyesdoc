@@ -4,8 +4,33 @@ import nose.tools
 
 import pyesdoc
 import pyesdoc.ontologies.cim as cim
-from . import test_utils as tu
+import test_utils as tu
+import test_type_cim_v1_activity_ensemble
+import test_type_cim_v1_activity_numerical_experiment
+import test_type_cim_v1_activity_simulation_run
+import test_type_cim_v1_data_data_object
+import test_type_cim_v1_grids_gridspec
+import test_type_cim_v1_misc_document_set
+import test_type_cim_v1_quality_cim_quality
+import test_type_cim_v1_shared_platform
+import test_type_cim_v1_software_model_component
+import test_type_cim_v1_software_statistical_model_component
 
+
+
+# Test modules.
+_test_modules = (
+    test_type_cim_v1_activity_ensemble,
+    test_type_cim_v1_activity_numerical_experiment,
+    test_type_cim_v1_activity_simulation_run,
+    test_type_cim_v1_data_data_object,
+    test_type_cim_v1_grids_gridspec,
+    test_type_cim_v1_misc_document_set,    
+    test_type_cim_v1_quality_cim_quality,
+    test_type_cim_v1_shared_platform,
+    test_type_cim_v1_software_model_component,
+    test_type_cim_v1_software_statistical_model_component,
+)
 
 
 # Test ontology constants.
@@ -17,9 +42,6 @@ _CIM_TYPE = 'modelComponent'
 # Test constants.
 _INSTITUTE = 'TEST'
 _PROJECT = 'TEST'
-
-# Test representation file.
-DOC_FILE = 'cim/v1_5_0/software.model_component.xml'
 
 
 def _create_doc(o=_CIM, v=_CIM_V1, p=_CIM_PACKAGE, t=_CIM_TYPE):
@@ -36,6 +58,16 @@ def _assert_doc(doc, type=None):
 
 def test_version():
     tu.assert_string(pyesdoc.__version__, "0.9.0.3")
+
+
+def _test_open_file(tm):
+    assert tu.get_test_file(tm.DOC_FILE) is not None
+
+
+def test_open_files():
+    for tm in _test_modules:
+        _test_open_file.description = "{0}.test_open_file".format(tm.__name__)
+        assert tu.get_test_file(tm.DOC_FILE) is not None
 
 
 def test_create_01():
@@ -131,3 +163,5 @@ def test_set_option_01():
 @nose.tools.raises(pyesdoc.PYESDOC_Exception)
 def test_set_option_02():
     pyesdoc.set_option('xxx', 'xxx')
+
+

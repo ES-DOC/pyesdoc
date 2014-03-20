@@ -7,7 +7,7 @@
    :synopsis: The set of types of the cim.v1.misc package.
 
 .. moduleauthor:: Earth System Documentation (ES-DOC) <dev@es-doc.org>
-.. note:: Code generated using esdoc_mp @ 2014-03-06 20:20:08.980442.
+.. note:: Code generated using esdoc_mp @ 2014-03-20 16:18:50.947456.
 
 """
 # Module imports.
@@ -35,7 +35,7 @@ class DocumentSet(object):
         self.doc_info = shared.DocInfo()                  # shared.DocInfo
         self.ensembles = []                               # activity.Ensemble
         self.experiment = None                            # activity.NumericalExperiment
-        self.grid = None                                  # grids.GridSpec
+        self.grids = []                                   # grids.GridSpec
         self.model = None                                 # software.ModelComponent
         self.platform = None                              # shared.Platform
         self.simulation = None                            # activity.SimulationRun

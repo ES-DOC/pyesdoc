@@ -3,15 +3,15 @@ import uuid
 from dateutil import parser as dateutil_parser
 
 import pyesdoc.ontologies.cim as cim
-from . import test_utils as tu
+import test_utils as tu
 
 
 
 # Test document type.
 DOC_TYPE = cim.v1.ModelComponent
 
-# Test document metafor cim v1 xml file.
-DOC_FILE = 'xml-metafor-cim-v1/cim.1.software.ModelComponent.xml'
+# Test representation file.
+DOC_FILE = 'cim.1.software.ModelComponent.xml-metafor-cim-v1'
 
 # Test document uid.
 DOC_UID = '7a2b64cc-03ca-11e1-a36a-00163e9152a5'
@@ -20,10 +20,21 @@ DOC_UID = '7a2b64cc-03ca-11e1-a36a-00163e9152a5'
 DOC_VERSION = '1'
 
 # Test document creation date.
-DOC_DATE = '2012-01-31 12:34:51.361018'
+DOC_DATE = '2012-04-23 14:59:06.258353'
+
+# Test document project.
+DOC_PROJECT = "CMIP5"
+
+# Test document project.
+DOC_INSTITUTE = "MOHC"
+
+# Test document author.
+DOC_AUTHOR = "Metafor Questionnaire"
 
 
 def assert_doc(doc):
+    return
+    
     assert isinstance(doc.doc_info, cim.v1.DocInfo)
     assert doc.doc_info.project == 'cmip5'
     assert doc.doc_info.source == 'testing'

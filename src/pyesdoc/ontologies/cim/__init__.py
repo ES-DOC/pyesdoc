@@ -24,3 +24,4 @@ VERSIONS = (v1,)
 
 # Ontology types.
 TYPES = v1.TYPES
+

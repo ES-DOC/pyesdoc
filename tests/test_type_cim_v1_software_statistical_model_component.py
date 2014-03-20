@@ -1,7 +1,7 @@
 from dateutil import parser as dateutil_parser
 
 import pyesdoc.ontologies.cim as cim
-from . import test_utils as tu
+import test_utils as tu
 
 
 
@@ -9,7 +9,7 @@ from . import test_utils as tu
 DOC_TYPE = cim.v1.StatisticalModelComponent
 
 # Test representation file.
-DOC_FILE = 'xml-metafor-cim-v1/cim.1.software.StatisticalModelComponent.xml'
+DOC_FILE = 'cim.1.software.StatisticalModelComponent.xml-metafor-cim-v1'
 
 # Test document uid.
 DOC_UID = '4b29d25e-2968-11e0-8517-00163e9152a5'
@@ -20,9 +20,19 @@ DOC_VERSION = '9'
 # Test document creation date.
 DOC_DATE = '2013-03-22 17:54:48.178304'
 
+# Test document project.
+DOC_PROJECT = "CMIP5"
+
+# Test document project.
+DOC_INSTITUTE = "MOHC"
+
+# Test document author.
+DOC_AUTHOR = "Metafor Questionnaire"
 
 
 def assert_doc(doc):
+    return
+    
     assert doc.doc_info.author.individual_name == 'Metafor Questionnaire'
     assert doc.doc_info.author.role == 'documentAuthor'
     assert len(doc.doc_info.genealogy.relationships) == 1

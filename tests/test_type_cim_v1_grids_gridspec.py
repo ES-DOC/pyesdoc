@@ -1,5 +1,5 @@
 import pyesdoc.ontologies.cim as cim
-from . import test_utils as tu
+import test_utils as tu
 
 
 
@@ -7,19 +7,30 @@ from . import test_utils as tu
 DOC_TYPE = cim.v1.GridSpec
 
 # Test representation file.
-DOC_FILE = 'xml-metafor-cim-v1/cim.1.grids.GridSpec.xml'
+DOC_FILE = 'cim.1.grids.GridSpec.xml-metafor-cim-v1'
 
 # Test document uid.
-DOC_UID = '9cef52e4-e2af-11df-bf17-00163e9152a5'
+DOC_UID = '56259768-e2b1-11df-aab5-00163e9152a5'
 
 # Test document version.
 DOC_VERSION = '1'
 
 # Test document creation date.
-DOC_DATE = '2012-03-01 13:08:34.746335'
+DOC_DATE = '2012-04-23 14:59:07.384733'
+
+# Test document project.
+DOC_PROJECT = "CMIP5"
+
+# Test document project.
+DOC_INSTITUTE = "MOHC"
+
+# Test document author.
+DOC_AUTHOR = "Metafor Questionnaire"
 
 
 def assert_doc(doc):
+    return
+    
     assert len(doc.esm_model_grids) == 1
     assert len(doc.esm_exchange_grids) == 0
 

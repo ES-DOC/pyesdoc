@@ -60,21 +60,19 @@ def get_test_file_path(name):
 
 
 @nottest
-def get_test_file(name, type='xml'):
+def get_test_file(name):
     """Opens & returns a test xml file.
 
     :param name: Name of file being tested.
     :type name: str
-
-    :param type: Type of file being tested.
-    :type type: str
 
     :returns: Opened file.
     :rtype: file
 
     """
     path = get_test_file_path(name)
-    if type=='xml':
+
+    if name.split(".")[-1] in (pyesdoc.ESDOC_ENCODING_XML, pyesdoc.METAFOR_CIM_XML_ENCODING):
         return et.parse(path)
     else:
         return open(path, 'r')
@@ -115,16 +113,30 @@ def encode(doc, encoding, type=None):
     return repr
 
 
-def decode_from_xml_metafor_cim_v1(as_xml, type=None):
-    # Open cim xml file.
+def decode_from_xml_metafor_cim_v1(as_xml, type=None, project=None, institute=None):
     if isinstance(as_xml, str):
         as_xml = get_test_file(as_xml)
 
     doc = decode(as_xml, pyesdoc.METAFOR_CIM_XML_ENCODING)
     if doc is not None:
-        doc.doc_info.language = pyesdoc.ESDOC_DEFAULT_LANGUAGE
+        doc.doc_info.source = 'testing'
+        if project is not None:
+            doc.doc_info.project = project
+        if institute is not None:
+            doc.doc_info.institute = institute
 
     return doc
+
+
+def get_doc(tm):
+    doc = decode_from_xml_metafor_cim_v1(tm.DOC_FILE, 
+                                         tm.DOC_TYPE, 
+                                         tm.DOC_PROJECT,
+                                         tm.DOC_INSTITUTE)
+    assert_doc(tm, doc)
+
+    return doc
+
 
 
 def encode_to_xml_metafor_cim_v1(doc):
@@ -178,6 +190,26 @@ def get_uuid():
 
     """
     return str(uuid.uuid1())
+
+
+def assert_doc(tm, doc):
+    """Asserts doc against a test module."""
+    assert_object(doc, tm.DOC_TYPE)
+    assert_object(doc.doc_info)
+    assert_string(doc.doc_info.source, "testing")
+    if tm.DOC_UID:
+        assert_uuid(doc.doc_info.id, tm.DOC_UID)
+    if tm.DOC_VERSION:
+        assert_string(doc.doc_info.version, tm.DOC_VERSION)
+    if tm.DOC_PROJECT:
+        assert_string(doc.doc_info.project, tm.DOC_PROJECT)
+    if tm.DOC_INSTITUTE:
+        assert_string(doc.doc_info.institute, tm.DOC_INSTITUTE)
+    if tm.DOC_DATE:
+        assert_date(doc.doc_info.create_date, tm.DOC_DATE)
+    if tm.DOC_AUTHOR and doc.doc_info.author:
+        assert_string(doc.doc_info.author.individual_name, tm.DOC_AUTHOR)
+    tm.assert_doc(doc)
 
 
 def assert_pyesdoc_obj(doc, uid, version, create_date):
@@ -371,17 +403,17 @@ def assert_integer(actual, expected, assert_type=COMPARE_EXACT):
 
     """
     if assert_type == COMPARE_EXACT:
-        assert actual == expected, "{0} != {1}".format(actual, expected)
+        assert expected == actual, "{0} != {1}".format(actual, expected)
     elif assert_type == COMPARE_GT:
-        assert actual > expected, "{0} !> {1}".format(actual, expected)
+        assert expected > actual, "{0} !> {1}".format(actual, expected)
     elif assert_type == COMPARE_GTE:
-        assert actual >= expected, "{0} !>= {1}".format(actual, expected)
+        assert expected >= actual, "{0} !>= {1}".format(actual, expected)
     elif assert_type == COMPARE_LE:
-        assert actual < expected, "{0} !< {1}".format(actual, expected)
+        assert expected < actual, "{0} !< {1}".format(actual, expected)
     elif assert_type == COMPARE_LTE:
-        assert actual <= expected, "{0} !<= {1}".format(actual, expected)
+        assert expected <= actual, "{0} !<= {1}".format(actual, expected)
     else:
-        assert actual == expected, "{0} != {1}".format(actual, expected)
+        assert expected == actual, "{0} != {1}".format(actual, expected)
 
 
 def assert_integer_negative(actual, expected):

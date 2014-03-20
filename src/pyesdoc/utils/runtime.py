@@ -194,14 +194,14 @@ def assert_attr(instance, attr, msg=None):
         throw(get_msg if msg is None else msg)
 
 
-def assert_doc(name, value, msg=None):
+def assert_doc(name, doc, msg=None):
     """Asserts thay passed variable is a pyesdoc object instance.
 
     :param name: Variable name.
     :type name: str
 
-    :param value: Variable value.
-    :type value: object
+    :param doc: A pyesdoc object instance.
+    :type doc: object
 
     :param msg: Error message to output if assertion fails.
     :type msg: str or None
@@ -211,8 +211,8 @@ def assert_doc(name, value, msg=None):
         return msg if msg is not None else \
                "{0} is not a pyesdoc type instance".format(name)
 
-    assert_var(name, value, object, msg=get_msg)
-    assert_attr(value, 'doc_info', msg="Document meta-information is missing")
+    assert_var(name, doc, object, msg=get_msg)
+    assert_attr(doc, 'doc_info', msg="Document meta-information is missing")
 
 
 def is_iterable(target):

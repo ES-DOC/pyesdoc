@@ -3,32 +3,13 @@ import uuid
 import nose
 
 import pyesdoc
-from . import (
-    test_utils as tu,
-    test_type_cim_v1_activity_ensemble,
-    test_type_cim_v1_activity_numerical_experiment,
-    test_type_cim_v1_activity_simulation_run,
-    test_type_cim_v1_data_data_object,
-    test_type_cim_v1_grids_gridspec,
-    test_type_cim_v1_quality_cim_quality,
-    test_type_cim_v1_shared_platform,
-    test_type_cim_v1_software_model_component,
-    test_type_cim_v1_software_statistical_model_component
-    )
+import test_utils as tu
+import test_types as tt
 
 
-# Set of type test modules.
-_test_modules = (
-    test_type_cim_v1_activity_ensemble,
-    test_type_cim_v1_activity_numerical_experiment,
-    test_type_cim_v1_activity_simulation_run,
-    test_type_cim_v1_data_data_object,
-    test_type_cim_v1_grids_gridspec,
-    test_type_cim_v1_quality_cim_quality,
-    test_type_cim_v1_shared_platform,
-    test_type_cim_v1_software_model_component,
-    test_type_cim_v1_software_statistical_model_component,
-)
+
+# Set of type related modules for testing.
+_test_modules = tt.MODULES
 
 
 def _create_doc(tm):
@@ -121,5 +102,3 @@ def test_publishing():
     for tm in _test_modules:
         _test_publishing.description = 'test_publish.{0}'.format(tm.DOC_TYPE)
         yield _test_publishing, tm
-
-

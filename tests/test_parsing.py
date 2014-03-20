@@ -1,75 +1,74 @@
 import nose
 
 import pyesdoc
-from . import (
-    test_utils as tu,
-    test_type_cim_v1_activity_ensemble,
-    test_type_cim_v1_activity_numerical_experiment,
-    test_type_cim_v1_activity_simulation_run,
-    test_type_cim_v1_data_data_object,
-    test_type_cim_v1_grids_gridspec,
-    test_type_cim_v1_quality_cim_quality,
-    test_type_cim_v1_shared_platform,
-    test_type_cim_v1_software_model_component,
-    test_type_cim_v1_software_statistical_model_component
-    )
+import test_utils as tu
+import test_types as tt
 
 
 
-# Set of type test modules.
-_test_modules = (
-    test_type_cim_v1_activity_ensemble,
-    test_type_cim_v1_activity_numerical_experiment,
-    test_type_cim_v1_activity_simulation_run,
-    test_type_cim_v1_data_data_object,
-    test_type_cim_v1_grids_gridspec,
-    test_type_cim_v1_quality_cim_quality,
-    test_type_cim_v1_shared_platform,
-    test_type_cim_v1_software_model_component,
-    # test_type_cim_v1_software_statistical_model_component,
-)
+def test_custom_parser_count():
+    tu.assert_collection(pyesdoc.parsers.supported, length=7)
 
 
-def _assert_doc(tm, doc):
-    assert isinstance(doc, tm.DOC_TYPE), "Decoded type mismatch"
-    tu.assert_pyesdoc_obj(doc, tm.DOC_UID, tm.DOC_VERSION, tm.DOC_DATE)
-    tm.assert_doc(doc)
+def test_is_custom_parseable():
+    for dt in pyesdoc.ontologies.get_types():
+        if dt.type_key.lower() in pyesdoc.parsers.supported:
+            assert pyesdoc.is_parseable(dt.type_key)
+        else:
+            assert pyesdoc.is_parseable(dt.type_key) == False
 
 
-def _create_doc(tm):
-    """Creates a test document."""
-    doc = tu.decode_from_xml_metafor_cim_v1(tm.DOC_FILE, tm.DOC_TYPE)
-    doc.doc_info.project = 'cmip5'
-    doc.doc_info.source = 'testing'
-    _assert_doc(tm, doc)
-
-    return doc
+def _test_parsing(tm):
+    tu.get_doc(tm)
 
 
-def _parse_doc(tm):
-    doc = _create_doc(tm)
-    pyesdoc.parse(doc)
-
-    return doc
-
-
-def test_parser_count():
-    tu.assert_collection(pyesdoc.parsers.supported, 1)
+def test_all():
+    for tm in tt.MODULES:
+        desc = "test_standard_parse.{0}".format(tm.__name__.split(".")[-1])
+        _test_parsing.description = desc
+        yield _test_parsing, tm
 
 
-def test_is_parseable():
-    for doc_type in pyesdoc.parsers.supported.keys():
-        assert pyesdoc.is_parseable(doc_type)
+def test_parsing_cim_v1_activity_ensemble():
+    doc = tu.get_doc(tt.test_type_cim_v1_activity_ensemble)
+    # TODO assert parsed attributes
 
+def test_parsing_cim_v1_activity_numerical_experiment():
+    doc = tu.get_doc(tt.test_type_cim_v1_activity_numerical_experiment)
+    # TODO assert parsed attributes
 
-def test_parsers():
-    for tm in _test_modules:
-        _parse_doc(tm)
+def test_parsing_cim_v1_activity_simulation_run():
+    doc = tu.get_doc(tt.test_type_cim_v1_activity_simulation_run)
+    # TODO assert parsed attributes
+    
+def test_parsing_cim_v1_data_data_object():
+    doc = tu.get_doc(tt.test_type_cim_v1_data_data_object)
+    # TODO assert parsed attributes
+    
+def test_parsing_cim_v1_grids_gridspec():
+    doc = tu.get_doc(tt.test_type_cim_v1_grids_gridspec)
+    # TODO assert parsed attributes
+    
+def test_parsing_cim_v1_misc_document_set():
+    # TODO
+    pass
 
+def test_parsing_cim_v1_quality_cim_quality():
+    doc = tu.get_doc(tt.test_type_cim_v1_quality_cim_quality)
+    # TODO assert parsed attributes
+    
+def test_parsing_cim_v1_shared_platform():
+    doc = tu.get_doc(tt.test_type_cim_v1_shared_platform)
+    # TODO assert parsed attributes
+    
+def test_parsing_cim_v1_software_model_component():
+    doc = tu.get_doc(tt.test_type_cim_v1_software_model_component)
+    # TODO assert parsed attributes
 
-def test_parser_cim_v1_software_model_component():
-    doc = _parse_doc(test_type_cim_v1_software_model_component)
+    # tu.assert_collection(doc._component_tree, 25)
+    # for c in doc._component_tree:
+    #     tu.assert_collection(c._property_tree)
 
-    tu.assert_collection(doc._component_tree, 25)
-    for c in doc._component_tree:
-        tu.assert_collection(c._property_tree)
+def test_parsing_cim_v1_software_statistical_model_component():
+    # TODO
+    pass

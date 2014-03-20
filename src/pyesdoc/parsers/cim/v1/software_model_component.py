@@ -1,9 +1,7 @@
 """
-.. module:: esdoc_api.lib.repo.index.cim_v1.model_component.parser.py
+.. module:: software_model_component.py
    :platform: Unix, Windows
-   :synopsis: Performs a pre-facet indexing parse over a cim.v1.software.model_component object.
-
-.. moduleauthor:: Mark Conway-Greenslade (formerly Morgan) <momipsl@ipsl.jussieu.fr>
+   :synopsis: Parses a cim.v1.software.modelcomponent document.
 
 
 """
@@ -301,6 +299,7 @@ def _parse_component_01(ctx):
     ctx.c._parent = ctx.parent
     ctx.c._property_list = []
     ctx.c._property_tree = []
+    ctx.c._display_name = ctx.c.short_name
 
 
 def _parse_component_02(ctx):
@@ -360,13 +359,13 @@ def _parse_component_08(ctx):
 # Set of component parsers.
 _component_parsers = (
     _parse_component_01, 
-    _parse_component_02,
-    _parse_component_03,
-    _parse_component_04,
-    _parse_component_05,
-    _parse_component_06,
-    _parse_component_07,
-    _parse_component_08,
+    # _parse_component_02,
+    # _parse_component_03,
+    # _parse_component_04,
+    # _parse_component_05,
+    # _parse_component_06,
+    # _parse_component_07,
+    # _parse_component_08,
     )
 
 
@@ -380,8 +379,13 @@ def parse(doc):
     :rtype: pyesdoc.ontologies.cim.v1.software.ModelComponent
 
     """
-    _do_parse(_component_parsers, 
-              ComponentContextInfo(doc, None, []))
+    # Set document type display name.
+    doc._type_display_name = doc.doc_info.type_display_name = "Model"
+
+    # Intiialize parsing context info.
+    ctx = ComponentContextInfo(doc, None, [])
+
+    # Parse document.
+    _do_parse(_component_parsers, ctx)
 
     return doc
-
