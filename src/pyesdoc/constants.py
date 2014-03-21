@@ -3,7 +3,7 @@
    :copyright: @2013 Earth System Documentation (http://es-doc.org)
    :license: GPL/CeCIL
    :platform: Unix, Windows
-   :synopsis: Serialization related constants.
+   :synopsis: Package constants.
 
 .. moduleauthor:: Mark Conway-Greenslade (formerly Morgan) <momipsl@ipsl.jussieu.fr>
 
@@ -47,3 +47,15 @@ ESDOC_ENCODING_HTTP_MEDIA_TYPES = {
     ESDOC_ENCODING_XML : "application/xml",
     ESDOC_ENCODING_HTML : "text/html",
 }
+
+# Latest document version label.
+ESDOC_DOC_VERSION_LATEST = 'latest'
+
+# All document versions label.
+ESDOC_DOC_VERSION_ALL = 'all'
+
+# Default language.
+ESDOC_DEFAULT_LANGUAGE = 'en'
+
+# Default encoding.
+ESDOC_DEFAULT_ENCODING = 'json'

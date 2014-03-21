@@ -10,47 +10,17 @@
 
 """
 # Module imports.
+from . import (
+    decoder, 
+    encoder
+    )
 from .. import parsers
 from .. utils import runtime as rt
-from . import (
-    constants,
-    serializer_dict,
-    serializer_html,
-    serializer_json,
-    serializer_xml,
-    serializer_xml_metafor_cim_v1
-    )
 
-
-# Serializers.
-_serializers = {
-    constants.ESDOC_ENCODING_DICT : serializer_dict,
-    constants.ESDOC_ENCODING_JSON : serializer_json,
-    constants.ESDOC_ENCODING_XML : serializer_xml,
-    constants.ESDOC_ENCODING_HTML : serializer_html,
-    constants.METAFOR_CIM_XML_ENCODING : serializer_xml_metafor_cim_v1,
-}
-
-
-def _assert_encoding(encoding):
-    """Asserts that the serialization encoding is supported."""
-    if not encoding in _serializers:
-        raise ValueError('Document encoding is unsupported :: encoding = {0}.'.format(encoding))
-
-
-def _assert_doc(doc):
-    """Asserts that the document is encodable."""    
-    rt.assert_doc('doc', doc, "Cannot encode a null document")
-    
-
-def _assert_representation(repr):
-    """Asserts that the representation is decodable."""
-    if repr is None:
-        rt.throw("Documents cannot be decoded from null objects.")
 
 
 def decode(doc, encoding):
-    """Decodes a pyesdoc document representation.
+    """Decodes a pyesdoc document from a representation.
 
     :param doc: A document representation (e.g. json).
     :type doc: str | unicode
@@ -62,19 +32,12 @@ def decode(doc, encoding):
     :rtype: object
 
     """
-    # Defensive programming.
-    _assert_representation(doc)
-    _assert_encoding(encoding)
-
     # Decode.
-    doc = _serializers[encoding].decode(doc)
+    doc = decoder.decode(doc, encoding)
 
+    # Parse.
     if doc:
-        # Parse.
         parsers.parse(doc)
-
-        # Set supported encodings.
-        doc._encodings = doc.doc_info.encodings = list(get_file_encodings(doc))
 
     return doc
 
@@ -82,20 +45,17 @@ def decode(doc, encoding):
 def encode(doc, encoding):
     """Encodes a pyesdoc document instance.
 
-    :param decoded: pyesdoc document instance.
-    :type decoded: object
+    :param doc: pyesdoc document instance.
+    :type doc: object
 
-    :param encoding: A document encoding (dict|json|xml).
+    :param encoding: A document encoding.
     :type encoding: str
 
-    :returns: A pyesdoc document representation.
-    :rtype: unicode | dict
+    :returns: A formatted representation of a pyesdoc document.
+    :rtype: object
 
     """
-    _assert_doc(doc)
-    _assert_encoding(encoding)
-
-    return _serializers[encoding].encode(doc)
+    return encoder.encode(doc, encoding)
 
 
 def convert(doc, encoding_from, encoding_to):
@@ -114,28 +74,4 @@ def convert(doc, encoding_from, encoding_to):
     :rtype: str
 
     """
-    # Defensive programming.
-    _assert_representation(doc)
-    _assert_encoding(encoding_from)
-    _assert_encoding(encoding_to)
-
     return encode(decode(doc, encoding_from), encoding_to)
-
-
-def get_file_encodings(doc):
-    """Returns set of file encodings for the passed document.
-
-    :param object doc: A document for which the set of supported file encodings is to be returned.
-
-    :returns: Set of supported file encodings.
-    :rtype: set
-
-    """
-    # Defensive programming.
-    _assert_doc(doc)
-
-    result = constants.ESDOC_ENCODINGS_FILE
-    if doc.doc_info.type.startswith("cim.1"):
-        result = result + (constants.METAFOR_CIM_XML_ENCODING,)
-
-    return result

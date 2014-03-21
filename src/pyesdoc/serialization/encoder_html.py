@@ -1,10 +1,10 @@
 """
-.. module:: pyesdoc.utils.serializer_html.py
+.. module:: encoder_html.py
 
    :copyright: @2013 Earth System Documentation (http://es-doc.org)
    :license: GPL / CeCILL
    :platform: Unix, Windows
-   :synopsis: Exposes document html serialization functions.
+   :synopsis: HTML encoder from document.
 
 .. moduleauthor:: Earth System Documentation (ES-DOC) <dev@es-doc.org>
 
@@ -15,7 +15,6 @@ import os
 
 import tornado.template as template
 
-from .. parsers import parse
 from .. utils import (
     convert, 
     functional
@@ -239,28 +238,16 @@ class _FieldInfo():
         return _format_value(_get_value(data, self.email_path))
 
 
-def decode(repr):
-    """Decodes a pyesdoc document from passed representation.
-
-    :param repr: Metafor CIM v1 XML document representation.
-    :type repr: lxml.etree._ElementTree
-
-    """
-    raise NotImplementedError()
-
-
 def encode(doc):
-    """Encodes a document to an xml string.
+    """Encodes a document to HTML.
 
     :param doc: Document being encoded.
     :type doc: object
 
-    :returns: An xml representation of a document.
+    :returns: An HTML representation of a document.
     :rtype: str
 
     """
-    parse(doc)
-
     template = _templates[doc.doc_info.type.lower()]
 
     return template.generate(doc=doc,

@@ -11,7 +11,7 @@
 # Module imports.
 import os
 
-from . import serialization
+from . import constants, serialization
 from .utils import runtime as rt
 
 
@@ -47,7 +47,7 @@ def set_output_directory(path):
     _output_directory = path
 
 
-def write(doc, encoding=serialization.ESDOC_ENCODING_JSON, path=None):
+def write(doc, encoding=constants.ESDOC_ENCODING_JSON, path=None):
     """Writes a document to the file system in the passed encoding.
 
     :param doc: A pyesdoc document instance.

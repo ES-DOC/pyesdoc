@@ -486,3 +486,40 @@ def csv_file_to_json_file(fp, dest=None):
         dest = fp.split(".")[0] + ".json"
     with open(dest, 'w') as f:
         f.write(dict_to_json(csv_file_to_dict(fp)))
+
+
+def str_to_typed_value(s, type):
+    """Converts a string to a typed value.
+
+    :param str s: A string for type conversion.
+    :param class type: Target type.
+
+    :returns: A string converted to a typed value.
+    :rtype: object
+
+    """
+    # Encode.
+    if s is not None:
+        s = s.encode('utf-8') if isinstance(s, unicode) else str(s)
+
+    # None if empty value.
+    if s is None or not len(s):
+        return None
+
+    # Decode according to type:
+    # ... date's
+    if type in (datetime.datetime, datetime.date, datetime.time):
+        return date_parser.parse(s)
+    # ... uuid's
+    elif type is uuid.UUID:
+        return uuid.UUID(s)
+    # ... boolean's
+    elif type is bool:
+        return s.lower() in ("yes", "true", "t", "1", "y")
+    # ... others
+    else:
+        try:
+            return type(s)
+        # ... exceptions
+        except Error as e:
+            print "Scalar decoding error", s, type    

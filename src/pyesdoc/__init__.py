@@ -10,54 +10,40 @@
 
 """
 # Module imports.
-from .defaults import (
-    ESDOC_DEFAULT_LANGUAGE,
-    ESDOC_DEFAULT_ENCODING
-)
-from .factory import (
+from . constants import *
+from . factory import (
     create
     )
-from .io import (
+from . io import (
     write,
     read,
     set_output_directory
     )
-from .ontologies import (
+from . ontologies import (
     associate,
     get_types,
     is_supported,
     list_types
     )
-from .options import (
+from . options import (
     set as set_option,
     get as get_option,
     list as list_options
     )
-from .parsers import (
+from . parsers import (
     parse,
     is_parseable
     )
-from .publishing import (
-    ESDOC_DOC_VERSION_LATEST,
-    ESDOC_DOC_VERSION_ALL,
+from . publishing import (
     exists,
     publish,
     retrieve,
     unpublish
     )
-from .serialization import (
+from . serialization import (
     convert,
     decode,
     encode,
-    ESDOC_ENCODINGS,
-    ESDOC_ENCODINGS_CUSTOM,
-    ESDOC_ENCODING_DICT,
-    ESDOC_ENCODINGS_FILE,
-    ESDOC_ENCODING_HTML,
-    ESDOC_ENCODING_HTTP_MEDIA_TYPES,
-    ESDOC_ENCODING_JSON,
-    ESDOC_ENCODING_XML,
-    METAFOR_CIM_XML_ENCODING
     )
 from .utils import (
     PYESDOC_Exception,

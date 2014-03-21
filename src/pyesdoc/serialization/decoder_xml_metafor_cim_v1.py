@@ -1,15 +1,14 @@
 """
-.. module:: pyesdoc.utils.serializer_xml_metafor_cim_v1.py
+.. module:: pyesdoc.utils.decoder_xml.py
 
    :copyright: @2013 Earth System Documentation (http://es-doc.org)
    :license: GPL / CeCILL
    :platform: Unix, Windows
-   :synopsis: Exposes functions for decoding document instances from Metafor CIM v1 xml representations.
+   :synopsis: Document decoder from metafor cim v1 xml.
 
 .. moduleauthor:: Earth System Documentation (ES-DOC) <dev@es-doc.org>
 
 """
-
 # Module imports.
 from lxml import etree as et
 
@@ -39,7 +38,6 @@ _decoders = {
 }
 
 
-
 def decode(repr):
     """Decodes a pyesdoc document from passed representation.
 
@@ -50,26 +48,12 @@ def decode(repr):
     # Defensive programming.
     xml, nsmap = load_xml(repr, return_nsmap=True)
     if not isinstance(xml, et._Element):
-        raise rt.PYESDOC_Exception('Decoding failure due to invalid Metafor CIM v1 XML.')
+        rt.raise_error('Decoding failure due to invalid Metafor CIM v1 XML.')
 
     # Validate decoder.
     doc_type = xml.tag.split('}')[1]
     if doc_type not in _decoders:
-        raise rt.PYESDOC_Exception("CIM v1 - {0} document type decoding unsupported.".format(doc_type))
+        rt.raise_error("CIM v1 - {0} document type decoding unsupported.".format(doc_type))
     
     # Decode pyesdoc doc.
     return decode_xml(_decoders[doc_type], xml, nsmap, None)
-
-
-def encode(doc):
-    """Encodes a document to an xml string.
-
-    :param doc: Document being encoded.
-    :type doc: object
-
-    :returns: An xml representation of a document.
-    :rtype: str
-
-    """
-    # No need to implement this - EVER!
-    raise NotImplementedError()

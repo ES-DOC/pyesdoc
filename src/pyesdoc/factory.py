@@ -13,9 +13,8 @@
 import datetime
 import uuid
 
-from . import ontologies
-from .defaults import ESDOC_DEFAULT_LANGUAGE
-from .utils import runtime as rt
+from . import constants, ontologies
+from . utils import runtime as rt
 
 
 
@@ -29,7 +28,7 @@ def _assert_type(type):
         rt.throw("Type {0} is unsupported.".format(type))
 
 
-def create(type, project, institute, language=ESDOC_DEFAULT_LANGUAGE):
+def create(type, project, institute, language=constants.ESDOC_DEFAULT_LANGUAGE):
     """Creates a document.
 
     :param type: Ontology type, e.g. cim.1.software.ModelComponent.

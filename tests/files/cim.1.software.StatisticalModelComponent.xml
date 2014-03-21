@@ -25,7 +25,7 @@
                     <direction>toTarget</direction>
                     <target ontologyTypeKey="cim.1.shared.DocRelationshipTarget">
                         <reference ontologyTypeKey="cim.1.shared.DocReference">
-                            <id>4670dc2b-4a5f-41b9-b981-c6d0b1d96a9a</id>
+                            <id>3e994cdb-2232-41d4-965c-8c7cc6f2d514</id>
                             <name>IPSLCM4_v2</name>
                         </reference>
                     </target>
@@ -105,7 +105,7 @@
             </subProperties>
         </property>
     </properties>
-    <releaseDate>2010-03-20 00:00:00</releaseDate>
+    <releaseDate>2010-03-21 00:00:00</releaseDate>
     <responsibleParties>
         <responsibleParty ontologyTypeKey="cim.1.shared.ResponsibleParty">
             <abbreviation>Dufresne</abbreviation>

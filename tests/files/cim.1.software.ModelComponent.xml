@@ -33,7 +33,7 @@
                     <direction>toTarget</direction>
                     <target ontologyTypeKey="cim.1.shared.DocRelationshipTarget">
                         <reference ontologyTypeKey="cim.1.shared.DocReference">
-                            <id>66d0548e-d9bc-4df2-92c1-c97a31e0f7bf</id>
+                            <id>aaaf3682-2f4e-4210-90d6-a4bac129dd71</id>
                             <name>HadGEM1</name>
                         </reference>
                     </target>
@@ -51,7 +51,7 @@
         <version>1</version>
     </docInfo>
     <longName>Hadley Global Environment Model 2 - Atmosphere</longName>
-    <releaseDate>2009-03-20 00:00:00</releaseDate>
+    <releaseDate>2009-03-21 00:00:00</releaseDate>
     <responsibleParties>
         <responsibleParty ontologyTypeKey="cim.1.shared.ResponsibleParty">
             <abbreviation>Chris Jones</abbreviation>

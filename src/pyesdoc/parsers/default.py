@@ -12,7 +12,8 @@
 
 """
 # Module imports.
-from .. import defaults
+from .. import constants
+
 
 
 def _set_type(doc):
@@ -28,7 +29,7 @@ def _set_type_display_name(doc):
 def _set_language(doc):
     """Sets document language."""
     if doc.doc_info.language is None or not len(doc.doc_info.language):
-        doc.doc_info.language = defaults.ESDOC_DEFAULT_LANGUAGE
+        doc.doc_info.language = constants.ESDOC_DEFAULT_LANGUAGE
     doc._language = doc.doc_info.language
 
 
@@ -76,6 +77,22 @@ def _set_full_display_name(doc):
     doc._full_display_name = name.strip()
 
 
+def _set_file_encodings(doc):
+    """Returns set of file encodings for the passed document.
+
+    :param object doc: A document for which the set of supported file encodings is to be returned.
+
+    :returns: Set of supported file encodings.
+    :rtype: set
+
+    """
+    encodings = constants.ESDOC_ENCODINGS_FILE
+    if doc.doc_info.type.startswith("cim.1"):
+        encodings = encodings + (constants.METAFOR_CIM_XML_ENCODING,)
+
+    doc._encodings = doc.doc_info.encodings = list(encodings)
+
+
 # Set of pre-parsers.
 _pre_parsers = (
     _set_type,
@@ -84,6 +101,7 @@ _pre_parsers = (
     _set_display_name, 
     _set_description,
     _set_summary_fields,
+    _set_file_encodings,
     )
 
 

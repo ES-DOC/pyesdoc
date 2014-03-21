@@ -78,17 +78,6 @@ def get_test_file(name):
         return open(path, 'r')
 
 
-def serialize(encoding, file, type, assertion):
-    doc = decode_from_xml_metafor_cim_v1(file, type)
-    assertion(doc)
-    type = doc.__class__
-    repr = encode(doc, encoding)
-    if encoding not in (pyesdoc.ESDOC_ENCODING_XML):
-        doc = decode(repr, encoding)
-        assert isinstance(doc, type), "Decoded type mismatch"
-        assertion(doc)
-    
-
 def decode(repr, encoding):
     # Decode.
     doc = pyesdoc.decode(repr, encoding)
@@ -113,34 +102,29 @@ def encode(doc, encoding, type=None):
     return repr
 
 
-def decode_from_xml_metafor_cim_v1(as_xml, type=None, project=None, institute=None):
+def _decode_from_xml_metafor_cim_v1(as_xml, type=None, project=None, institute=None):
     if isinstance(as_xml, str):
         as_xml = get_test_file(as_xml)
 
     doc = decode(as_xml, pyesdoc.METAFOR_CIM_XML_ENCODING)
-    if doc is not None:
-        doc.doc_info.source = 'testing'
-        if project is not None:
-            doc.doc_info.project = project
-        if institute is not None:
-            doc.doc_info.institute = institute
+    if project is not None:
+        doc.doc_info.project = project
+    if institute is not None:
+        doc.doc_info.institute = institute
 
     return doc
 
 
 def get_doc(tm):
-    doc = decode_from_xml_metafor_cim_v1(tm.DOC_FILE, 
-                                         tm.DOC_TYPE, 
-                                         tm.DOC_PROJECT,
-                                         tm.DOC_INSTITUTE)
+    """Returns a test document."""
+    doc = _decode_from_xml_metafor_cim_v1(tm.DOC_FILE, 
+                                          tm.DOC_TYPE, 
+                                          tm.DOC_PROJECT,
+                                          tm.DOC_INSTITUTE)
+    doc.doc_info.source = "testing"
     assert_doc(tm, doc)
 
     return doc
-
-
-
-def encode_to_xml_metafor_cim_v1(doc):
-    return encode(doc, pyesdoc.METAFOR_CIM_XML_ENCODING, str)
 
 
 def get_boolean():
@@ -193,7 +177,7 @@ def get_uuid():
 
 
 def assert_doc(tm, doc):
-    """Asserts doc against a test module."""
+    """Asserts doc against a test module."""    
     assert_object(doc, tm.DOC_TYPE)
     assert_object(doc.doc_info)
     assert_string(doc.doc_info.source, "testing")

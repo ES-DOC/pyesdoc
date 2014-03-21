@@ -1,6 +1,6 @@
 {
     "ontologyTypeKey": "cim.1.software.StatisticalModelComponent",
-    "releaseDate": "2010-03-20 00:00:00",
+    "releaseDate": "2010-03-21 00:00:00",
     "longName": "IPSL-CM5A-LR;atmosphere:LMDZ5A(95x96L39);ocean:NEMOv3.2 (OPA-LIM-PISCES,149x182L31)",
     "fundingSources": [],
     "deployments": [],
@@ -211,7 +211,7 @@
                         "externalID": null,
                         "ontologyTypeKey": "cim.1.shared.DocReference",
                         "changes": [],
-                        "id": "4670dc2b-4a5f-41b9-b981-c6d0b1d96a9a",
+                        "id": "3e994cdb-2232-41d4-965c-8c7cc6f2d514",
                         "name": "IPSLCM4_v2"
                     },
                     "ontologyTypeKey": "cim.1.shared.DocRelationshipTarget"

@@ -130,7 +130,7 @@ def assert_doc(doc):
 
 
 def update_doc(doc):
-    print "ZZZ", doc.sub_components[0].properties[0].sub_properties[0].values
+    pass
 
 
 def assert_doc_updates(doc):
