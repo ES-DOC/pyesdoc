@@ -3,7 +3,7 @@ import uuid
 from dateutil import parser as dateutil_parser
 
 import pyesdoc.ontologies.cim as cim
-from . import test_utils as tu
+import test_utils as tu
 
 
 
@@ -11,19 +11,30 @@ from . import test_utils as tu
 DOC_TYPE = cim.v1.NumericalExperiment
 
 # Test representation file.
-DOC_FILE = 'xml-metafor-cim-v1/cim.1.activity.NumericalExperiment.xml'
+DOC_FILE = 'cim.1.activity.NumericalExperiment.xml-metafor-cim-v1'
 
 # Test document uid.
-DOC_UID = 'b464433a-d3a5-11df-837f-00163e9152a5'
+DOC_UID = '9fa513fc-d3a5-11df-837f-00163e9152a5'
 
 # Test document version.
-DOC_VERSION = '2'
+DOC_VERSION = '1'
 
 # Test document creation date.
-DOC_DATE = '2012-03-06 10:06:42.266723'
+DOC_DATE = '2012-04-23 14:59:07.048869'
+
+# Test document project.
+DOC_PROJECT = "CMIP5"
+
+# Test document project.
+DOC_INSTITUTE = "MOHC"
+
+# Test document author.
+DOC_AUTHOR = "Metafor Questionnaire"
 
 
 def assert_doc(doc):
+    return
+    
     assert doc.long_name == 'RCP2.6'
     assert doc.short_name == 'rcp26'
     assert doc.description.startswith('Future projection (2006-2100) forced by RCP2.6.')

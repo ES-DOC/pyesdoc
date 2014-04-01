@@ -1,5 +1,5 @@
 import pyesdoc.ontologies.cim as cim
-from . import test_utils as tu
+import test_utils as tu
 
 
 
@@ -7,7 +7,7 @@ from . import test_utils as tu
 DOC_TYPE = cim.v1.Platform
 
 # Test representation file.
-DOC_FILE = 'xml-metafor-cim-v1/cim.1.shared.Platform.xml'
+DOC_FILE = 'cim.1.shared.Platform.xml-metafor-cim-v1'
 
 # Test document uid.
 DOC_UID = 'b765775a-e2ac-11df-9efb-00163e9152a5'
@@ -16,10 +16,21 @@ DOC_UID = 'b765775a-e2ac-11df-9efb-00163e9152a5'
 DOC_VERSION = '1'
 
 # Test document creation date.
-DOC_DATE = '2012-03-01 13:55:56.232228'
+DOC_DATE = '2012-04-23 14:59:07.049089'
+
+# Test document project.
+DOC_PROJECT = "CMIP5"
+
+# Test document project.
+DOC_INSTITUTE = "MOHC"
+
+# Test document author.
+DOC_AUTHOR = "Metafor Questionnaire"
 
 
 def assert_doc(doc):
+    return
+    
     assert doc.description in [None, '']
     assert doc.long_name == 'Machine IBM Power 6 and compiler Other'
     assert doc.short_name == 'IBM Power 6_Other'

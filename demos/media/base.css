@@ -1,0 +1,43 @@
+
+body {
+    width: 980px;
+    margin:auto;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	border-radius: 3px;
+	padding: 4px;
+}
+
+
+
+.page-content-container {
+    display: inline-block;
+    width: 100%;
+}
+
+.esdoc-document > header small {
+    color: white;
+}
+
+.esdoc-document nav {
+    margin-bottom: 4px;
+    border-bottom: 0;
+}
+
+.esdoc-document table tr:not(:last-child) {
+    border-bottom: 1px dotted lightgray;
+}
+
+.esdoc-document table tbody td {
+    border: 0px;
+}
+
+.esdoc-docuemnt table tr td.esdoc-field-name {
+    text-transform: capitalize;
+}
+
+@media print {
+    
+}
+

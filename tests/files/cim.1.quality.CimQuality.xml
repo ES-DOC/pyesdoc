@@ -1,0 +1,62 @@
+<cimQuality ontologyTypeKey="cim.1.quality.CimQuality">
+    <docInfo ontologyTypeKey="cim.1.shared.DocInfo">
+        <createDate>2012-11-05 09:51:25</createDate>
+        <encodings>
+            <encoding>json</encoding>
+            <encoding>xml</encoding>
+            <encoding>html</encoding>
+            <encoding>xml-metafor-cim-v1</encoding>
+        </encodings>
+        <externalIds>
+            <externalId ontologyTypeKey="cim.1.shared.StandardName">
+                <isOpen>True</isOpen>
+                <value>cmip5.output1.NCC.NorESM1-ME.rcp45.yr.ocnBgchem.Oyr.r1i1p1.v20120330</value>
+            </externalId>
+        </externalIds>
+        <genealogy ontologyTypeKey="cim.1.shared.DocGenealogy">
+            <relationships>
+                <relationship ontologyTypeKey="cim.1.shared.DocRelationship">
+                    <direction>toTarget</direction>
+                    <target ontologyTypeKey="cim.1.shared.DocRelationshipTarget">
+                        <reference ontologyTypeKey="cim.1.shared.DocReference">
+                            <description>related quality document of experiment</description>
+                            <id>ef30beaa-3f24-4f90-bbd6-052d0b7fdfdf</id>
+                        </reference>
+                    </target>
+                    <type>other</type>
+                </relationship>
+            </relationships>
+        </genealogy>
+        <id>c1debb66-2737-11e2-bc06-0010185b3f28</id>
+        <institute>MOHC</institute>
+        <language>en</language>
+        <project>CMIP5</project>
+        <source>testing</source>
+        <type>cim.1.quality.CimQuality</type>
+        <typeDisplayName>QC Record</typeDisplayName>
+        <version>2</version>
+    </docInfo>
+    <reports>
+        <report ontologyTypeKey="cim.1.quality.Report">
+            <date>2011-05-01 12:00:00</date>
+            <evaluation ontologyTypeKey="cim.1.quality.Evaluation">
+                <date>2012-11-05 00:00:00</date>
+                <description>evaluationMethodType=indirect Quality Control Levels in CMIP5: * Level 0: Spot checks on selected data * Level 1: CMOR2 and ESG publisher conformance checks * Level 2: Data consistency checks * Level 3: Double- and cross-checks of data and metadata and data publication as DataCite DOI Level 2 1. File consistency a. in the end files will have the right number of records. The number is given in the metadata. b. strictly regular time steps (ESG checker allows for time gaps) c. Metadata consistency (check of consistency between metadata of the standard_output table and the metadata of the file headers) 2. Physical properties of variables time series are calculated for: min, max, globally weighted mean (in case of no _FillValue), area weighted mean (in case of existing _FillValue; reasonable, e.g., for temperature of snow), standard deviation of the globally weighted mean.</description>
+                <explanation>The quality results for this ESG publication unit are part of the quality results for the related experiment: Quality Control results are accessible at: http://cera-www.dkrz.de/WDCC/CMIP5/QCResult.jsp?experiment=cmip5/output1/NCC/NorESM1-ME/rcp45 . nc files are the QC result files for every variable, the log file summarizes the QC results for this experiment. If available, the pdf file visualizes the global timeseries for statistical values and an error code for every variable of the experiment, relying on the QC result files. Used version of checker tool: "QC Tool in svn revision: 4529 by author: heinz-dieter on date: 2012-04-03 15:19:46 +0200 (Tue, 03 Apr 2012)". QC Level2 assigned at 2012-11-05 10:58:35 UTC: no additional exceptions for v20121101; QC restart (2012-11-05 09:14:10 UTC); QC Level set to QCL2_started (2012-11-05 08:58:04 UTC): new data; QC Level2 assigned at 2012-05-16 09:43:56 UTC: QC L2 assignment confirmation from Ingo Bethke (16.05.2012)</explanation>
+                <specification>The CMIP5/AR5 Model Data Quality Control</specification>
+                <specificationHyperlink>http://cmip5qc.wdc-climate.de</specificationHyperlink>
+                <type>QC Level 2 Results</type>
+                <typeHyperlink>http://cera-www.dkrz.de/WDCC/CMIP5/QCResult.jsp?experiment=cmip5/output1/NCC/NorESM1-ME/rcp45</typeHyperlink>
+            </evaluation>
+            <evaluator ontologyTypeKey="cim.1.shared.ResponsibleParty">
+                <individualName>stockhause@dkrz.de</individualName>
+                <role>pointofContact</role>
+            </evaluator>
+            <measure ontologyTypeKey="cim.1.quality.Measure">
+                <description>WDCC Conformance and Subjective Controls: Automated technical quality checks of data subjective data and metadata controls</description>
+                <identification>cmip5-qc-2d</identification>
+                <name>CMIP5 Quality Control Data Level 2</name>
+            </measure>
+        </report>
+    </reports>
+</cimQuality>

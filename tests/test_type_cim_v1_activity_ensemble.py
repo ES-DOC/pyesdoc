@@ -1,5 +1,5 @@
 import pyesdoc.ontologies.cim as cim
-from . import test_utils as tu
+import test_utils as tu
 
 
 
@@ -7,19 +7,30 @@ from . import test_utils as tu
 DOC_TYPE = cim.v1.Ensemble
 
 # Test representation file.
-DOC_FILE = 'xml-metafor-cim-v1/cim.1.activity.Ensemble.xml'
+DOC_FILE = 'cim.1.activity.Ensemble.xml-metafor-cim-v1'
 
 # Test document uid.
-DOC_UID = 'fd46d094-6fdb-11e1-825e-00163e9152a5'
+DOC_UID = '4c95e1c8-5d79-11e1-83af-00163e9152a5'
 
 # Test document version.
 DOC_VERSION = '1'
 
 # Test document creation date.
-DOC_DATE = '2012-03-17 02:50:59.407620'
+DOC_DATE = '2012-04-23 14:59:07.019144'
+
+# Test document project.
+DOC_PROJECT = "CMIP5"
+
+# Test document project.
+DOC_INSTITUTE = "MOHC"
+
+# Test document author.
+DOC_AUTHOR = "Metafor Questionnaire"
 
 
 def assert_doc(doc):
+    return
+    
     def assert_member(m, is_open, value):
         assert m.ensemble_ids[0].is_open == is_open
         assert m.ensemble_ids[0].value == value

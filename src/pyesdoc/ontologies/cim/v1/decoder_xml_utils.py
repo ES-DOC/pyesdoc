@@ -1,5 +1,5 @@
 """
-.. module:: pyesdoc.ontologies.cim.v1.decoder_xml_utils.py
+.. module:: decoder_xml_utils.py
 
    :copyright: @2013 Earth System Documentation (http://es-doc.org)
    :license: GPL / CeCILL
@@ -25,7 +25,7 @@ NULL_UUID = ['00000000-0000-0000-0000-000000000000']
 
 
 
-class _PYESDOC_XMLError(Exception):
+class PYESDOC_XMLError(Exception):
     """Module exception class.
 
     """
@@ -246,36 +246,37 @@ def set_attributes(target, xml, nsmap, decodings):
     attrs = []
 
     # Iterate & apply decodings.
-    for decoding in decodings:
-        # N.B. attributes to be ommitted can be declared as a mnemonic.
-        if len(decoding) == 1:
-            pass
-        elif len(decoding) == 4:
-            attr, is_iterable, type, xpath  = decoding
-            is_simple_type = type in _simple_type_decoders
-            is_duplicate = attr in attrs
-            if not is_duplicate:
-                attrs.append(attr)
-            try:
-                _set_attribute(target,
-                               xml,
-                               nsmap,
-                               attr,
-                               type,
-                               xpath,
-                               is_simple_type,
-                               is_iterable,
-                               is_duplicate)
-            except Exception as e:
-                msg = "\nES-DOC :: WARNING :: XML DECODING ERROR\n"
-                msg += "\tTarget = {0};\n".format(target)
-                msg += "\tAttribute name = {0};\n".format(attr)
-                msg += "\tAttribute type = {0};\n".format(type)
-                msg += "\tAttribute is iterable ? = {0};\n".format(is_iterable)
-                msg += "\tAttribute is simple ? = {0};\n".format(is_simple_type)
-                msg += "\tAttribute xpath = {0};\n".format(xpath)
-                msg += "\tError = {0};\n".format(e)
-                print msg
+    for attr, is_iterable, type, xpath in \
+        [d for d in decodings if len(d) == 4]:
+
+        # Determine if this is a duplicate assignment.
+        is_duplicate = attr in attrs
+        if not is_duplicate:
+            attrs.append(attr)
+
+        # Determine if type is a simple one.
+        is_simple_type = type in _simple_type_decoders
+
+        try:
+            _set_attribute(target,
+                           xml,
+                           nsmap,
+                           attr,
+                           type,
+                           xpath,
+                           is_simple_type,
+                           is_iterable,
+                           is_duplicate)
+        except Exception as e:
+            msg = "\nES-DOC :: WARNING :: XML DECODING ERROR\n"
+            msg += "\tTarget = {0};\n".format(target)
+            msg += "\tAttribute name = {0};\n".format(attr)
+            msg += "\tAttribute type = {0};\n".format(type)
+            msg += "\tAttribute is iterable ? = {0};\n".format(is_iterable)
+            msg += "\tAttribute is simple ? = {0};\n".format(is_simple_type)
+            msg += "\tAttribute xpath = {0};\n".format(xpath)
+            msg += "\tError = {0};\n".format(e)
+            print msg
 
     # Support operation chaining.
     return target
@@ -314,19 +315,28 @@ def _set_attribute(target,
     att_value = _get_attribute_value(xml, nsmap, decoder, xpath, is_simple_type, is_iterable)
 
     # Set attribute value.
+    # ... simple types
     if is_simple_type:
+        # ... iterables
         if is_iterable:
+            collection = getattr(obj, att_name)
             for i in att_value:
-                getattr(obj, att_name).append(i)
+                collection.append(i)
+        # ... non-iterables
         else:
             setattr(obj, att_name, att_value)
+
+    # ... complex types
     else:
+        # ... iterables        
         if is_iterable:
+            collection = getattr(obj, att_name)
             for i in att_value:
-                getattr(obj, att_name).append(i)
+                collection.append(i)
+        # ... non-iterables
         else:
+            # ... do not overwrite previously assigned property values.
             if is_duplicate:
-                # ... do not overwrite previously assigned property values.
                 cur_obj = getattr(obj, att_name)
                 if cur_obj is None:
                     setattr(obj, att_name, att_value)
@@ -430,7 +440,7 @@ def decode_xml(decoder, xml, nsmap, is_iterable):
         return collection
 
     # otherwise exception
-    raise _PYESDOC_XMLError("xml cannot be decoded.")
+    raise PYESDOC_XMLError("xml cannot be decoded.")
 
 
 def load_xml(xml, return_nsmap=False, default_ns='cim'):
@@ -451,7 +461,7 @@ def load_xml(xml, return_nsmap=False, default_ns='cim'):
     """
     # Defensive programming.
     if xml is None:
-        raise _PYESDOC_XMLError("XML is undefined.")
+        raise PYESDOC_XMLError("XML is undefined.")
 
     nsmap = None
     # ... etree elements.
@@ -474,9 +484,9 @@ def load_xml(xml, return_nsmap=False, default_ns='cim'):
                     xml = et.fromstring(xml)
                     nsmap = xml.nsmap
                 except Exception:
-                    raise _PYESDOC_XMLError("Invalid xml string.")
+                    raise PYESDOC_XMLError("Invalid xml string.")
             else:
-                raise _PYESDOC_XMLError("Unsupported xml type, must be either a string, file, url or etree.")
+                raise PYESDOC_XMLError("Unsupported xml type, must be either a string, file, url or etree.")
 
     # Set default namespace.
     if nsmap is not None:

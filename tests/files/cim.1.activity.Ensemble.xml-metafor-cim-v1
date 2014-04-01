@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ensemble xmlns="http://www.purl.org/org/esmetadata/cim/1.5/schemas" xmlns:gco="http://www.isotc211.org/2005/gco" xmlns:gmd="http://www.isotc211.org/2005/gmd" xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.purl.org/org/esmetadata/cim/1.5/schemas/cim.xsd">
+    <responsibleParty>
+        <!--responsibleParty uri :: 8baaf006-d3a5-11df-837f-00163e9152a5-->
+        <gmd:organisationName>
+            <gco:CharacterString>UK Met Office Hadley Centre</gco:CharacterString>
+        </gmd:organisationName>
+        <gmd:contactInfo>
+            <gmd:CI_Contact>
+                <gmd:address>
+                    <gmd:CI_Address>
+                        <gmd:deliveryPoint>
+                            <gco:CharacterString/>
+                        </gmd:deliveryPoint>
+                        <gmd:electronicMailAddress>
+                            <gco:CharacterString/>
+                        </gmd:electronicMailAddress>
+                    </gmd:CI_Address>
+                </gmd:address>
+                <gmd:onlineResource>
+                    <gmd:CI_OnlineResource>
+                        <gmd:linkage>
+                            <gmd:URL/>
+                        </gmd:linkage>
+                    </gmd:CI_OnlineResource>
+                </gmd:onlineResource>
+            </gmd:CI_Contact>
+        </gmd:contactInfo>
+        <gmd:role>
+            <gmd:CI_RoleCode codeList="" codeListValue="centre"/>
+        </gmd:role>
+        <abbreviation>MOHC</abbreviation>
+    </responsibleParty>
+    <shortName>amip</shortName>
+    <longName>3.3 AMIP and AMIP Ensemble</longName>
+    <description>Six element ensemble, all using three different types of initialisation:
+r1i1p1 - standard initialisation from previous HadGEM2-A run (not submitted)
+r1i2p1- atmosphere only initialisation from same run as r1i1p1
+r2i3p1 - initialisation from r1i2p1 (2001) - atmosphere and land surface variation
+r3i2p1 - initialisation from r1i2p1 (2001) - atmosphere variation only
+r4i3p1 - initialisation from r3i2p1 (2008) - atmosphere and land surface variation
+r5i3p1 - initialisation from r4i3p1 (2008) - atmosphere and land surface variation</description>
+    <supports>
+        <reference xlink:href="#//CIMRecord/experiment[id='9fa513fc-d3a5-11df-837f-00163e9152a5']">
+            <id>9fa513fc-d3a5-11df-837f-00163e9152a5</id>
+            <name>3.3 amip</name>
+            <type>experiment</type>
+            <version>1</version>
+            <description>Reference to a experiment called 3.3 amip</description>
+        </reference>
+    </supports>
+    <ensembleType open="true" value="Initial Condition">
+        <controlledVocabulary>
+            <name>ensembleType</name>
+            <server>http://proj.badc.rl.ac.uk/svn/metafor/cmip5q/trunk</server>
+        </controlledVocabulary>
+    </ensembleType>
+    <ensembleMember>
+        <simulation>
+            <reference xlink:href="#//CIMRecord/simulation[id='e4155a28-268e-11e1-9a0e-00163e9152a5']">
+                <id>e4155a28-268e-11e1-9a0e-00163e9152a5</id>
+                <name>amip</name>
+                <type>simulation</type>
+                <version>2</version>
+                <description>Reference to a simulation called amip</description>
+            </reference>
+        </simulation>
+        <ensembleMemberID open="true" value="r1i1p1">
+            <controlledVocabulary>
+                <name>DRS_CMIP5_ensembleType</name>
+                <server>http://proj.badc.rl.ac.uk/svn/metafor/cmip5q/trunk</server>
+            </controlledVocabulary>
+        </ensembleMemberID>
+    </ensembleMember>
+    <ensembleMember>
+        <simulation>
+            <reference xlink:href="#//CIMRecord/simulation[id='e4155a28-268e-11e1-9a0e-00163e9152a5']">
+                <id>e4155a28-268e-11e1-9a0e-00163e9152a5</id>
+                <name>amip</name>
+                <type>simulation</type>
+                <version>2</version>
+                <description>Reference to a simulation called amip</description>
+            </reference>
+        </simulation>
+        <ensembleMemberID open="true" value="r1i2p1">
+            <standard>
+                <name>DRS_CMIP5_ensembleType</name>
+            </standard>
+        </ensembleMemberID>
+    </ensembleMember>
+    <ensembleMember>
+        <simulation>
+            <reference xlink:href="#//CIMRecord/simulation[id='e4155a28-268e-11e1-9a0e-00163e9152a5']">
+                <id>e4155a28-268e-11e1-9a0e-00163e9152a5</id>
+                <name>amip</name>
+                <type>simulation</type>
+                <version>2</version>
+                <description>Reference to a simulation called amip</description>
+            </reference>
+        </simulation>
+        <ensembleMemberID open="true" value="r2i3p1">
+            <standard>
+                <name>DRS_CMIP5_ensembleType</name>
+            </standard>
+        </ensembleMemberID>
+    </ensembleMember>
+    <ensembleMember>
+        <simulation>
+            <reference xlink:href="#//CIMRecord/simulation[id='e4155a28-268e-11e1-9a0e-00163e9152a5']">
+                <id>e4155a28-268e-11e1-9a0e-00163e9152a5</id>
+                <name>amip</name>
+                <type>simulation</type>
+                <version>2</version>
+                <description>Reference to a simulation called amip</description>
+            </reference>
+        </simulation>
+        <ensembleMemberID open="true" value="r3i2p1">
+            <standard>
+                <name>DRS_CMIP5_ensembleType</name>
+            </standard>
+        </ensembleMemberID>
+    </ensembleMember>
+    <ensembleMember>
+        <simulation>
+            <reference xlink:href="#//CIMRecord/simulation[id='e4155a28-268e-11e1-9a0e-00163e9152a5']">
+                <id>e4155a28-268e-11e1-9a0e-00163e9152a5</id>
+                <name>amip</name>
+                <type>simulation</type>
+                <version>2</version>
+                <description>Reference to a simulation called amip</description>
+            </reference>
+        </simulation>
+        <ensembleMemberID open="true" value="r4i3p1">
+            <standard>
+                <name>DRS_CMIP5_ensembleType</name>
+            </standard>
+        </ensembleMemberID>
+    </ensembleMember>
+    <ensembleMember>
+        <simulation>
+            <reference xlink:href="#//CIMRecord/simulation[id='e4155a28-268e-11e1-9a0e-00163e9152a5']">
+                <id>e4155a28-268e-11e1-9a0e-00163e9152a5</id>
+                <name>amip</name>
+                <type>simulation</type>
+                <version>2</version>
+                <description>Reference to a simulation called amip</description>
+            </reference>
+        </simulation>
+        <ensembleMemberID open="true" value="r5i3p1">
+            <standard>
+                <name>DRS_CMIP5_ensembleType</name>
+            </standard>
+        </ensembleMemberID>
+    </ensembleMember>
+    <documentID>4c95e1c8-5d79-11e1-83af-00163e9152a5</documentID>
+    <documentVersion>1</documentVersion>
+    <documentAuthor>
+        <gmd:individualName>
+            <gco:CharacterString>Metafor Questionnaire</gco:CharacterString>
+        </gmd:individualName>
+        <gmd:role>
+            <gmd:CI_RoleCode codeList="" codeListValue="documentAuthor"/>
+        </gmd:role>
+    </documentAuthor>
+    <documentCreationDate>2012-04-23T14:59:07.019144</documentCreationDate>
+</ensemble>

@@ -1,0 +1,30 @@
+{% comment ****************** %}
+{% comment Emit doc section   %}
+{% comment ****************** %}
+{% if len(ctx.dataset) %}
+	<section id="{% raw '' if not ctx.tag_id else ctx.tag_id %}">	
+		<header>
+		{% if ctx.depth == 0 %}
+			<h3>{{ ctx.header }}</h3>
+		{% elif ctx.depth == 1 %}
+			<h4>{{ ctx.header }}</h4>		
+		{% elif ctx.depth == 2 %}
+			<h5>{{ ctx.header }}</h5>
+		{% end %}
+		</header>
+		{% for data in ctx.dataset %}
+			{% set ctx.data = data %}
+			{% if ctx.template == "cim_1_grids_grid_mosaic.html" %}
+				{% include ../cim_1/grids_grid_mosaic.html %}
+			{% elif ctx.template == "cim_1_activity_numerical_requirement.html" %}
+				{% include ../cim_1/activity_numerical_requirement.html %}
+			{% elif ctx.template == "cim_1_activity_ensemble_member.html" %}
+				{% include ../cim_1/activity_ensemble_member.html %}
+			{% elif ctx.template == "cim_1_software_model_subcomponent.html" %}
+				{% include ../cim_1/software_model_subcomponent.html %}
+			{% elif ctx.template == "cim_1_software_model_subcomponent_detail.html" %}
+				{% include ../cim_1/software_model_subcomponent_detail.html %}
+			{% end %}
+		{% end %}
+	</section>
+{% end %}

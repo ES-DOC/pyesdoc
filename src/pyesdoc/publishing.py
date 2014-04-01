@@ -14,10 +14,9 @@ import uuid
 
 import requests
 
-from . import options
-from . import serialization
-from .utils import runtime as rt
-from .validation import is_valid
+from . import constants, options, serialization
+from . utils import runtime as rt
+from . validation import is_valid
 
 
 
@@ -31,12 +30,6 @@ _EP_PUBLISHING = 'publishing'
 HTTP_RESPONSE_STATUS_200 = 200
 HTTP_RESPONSE_STATUS_404 = 404
 HTTP_RESPONSE_STATUS_500 = 500
-
-# Latest document version label.
-ESDOC_DOC_VERSION_LATEST = 'latest'
-
-# All document versions label.
-ESDOC_DOC_VERSION_ALL = 'all'
 
 
 def _assert_doc(doc, msg):
@@ -131,7 +124,7 @@ def exists(uid, version=None):
     return True if r.status_code == HTTP_RESPONSE_STATUS_200 else False
 
 
-def retrieve(uid, version=ESDOC_DOC_VERSION_LATEST):
+def retrieve(uid, version=constants.ESDOC_DOC_VERSION_LATEST):
     """Retrieves a document from remote repository.
 
     :param uid: Document unique identifier.
@@ -147,16 +140,16 @@ def retrieve(uid, version=ESDOC_DOC_VERSION_LATEST):
     # Defensive programming.
     if not isinstance(uid, uuid.UUID):
         _throw_invalid_doc_id()
-    if version != ESDOC_DOC_VERSION_LATEST and not isinstance(version, int):
+    if version != constants.ESDOC_DOC_VERSION_LATEST and not isinstance(version, int):
         _throw_invalid_doc_version()
 
     # Issue HTTP GET.
-    url = _get_doc_url(uid, version, serialization.ESDOC_ENCODING_JSON) 
+    url = _get_doc_url(uid, version, constants.ESDOC_ENCODING_JSON) 
     r = _invoke(requests.get, url)
 
     # Process HTTP response code.
     if r.status_code == HTTP_RESPONSE_STATUS_200 and len(r.text):
-        return serialization.decode(r.json(), serialization.ESDOC_ENCODING_DICT)
+        return serialization.decode(r.json(), constants.ESDOC_ENCODING_DICT)
     elif r.status_code == HTTP_RESPONSE_STATUS_404:
         rt.throw("XXXX :: {0}-v{1}".format(uid, version))
     elif r.status_code == HTTP_RESPONSE_STATUS_500:
@@ -184,7 +177,7 @@ def publish(doc):
 
     # Set HTTP operation parameters.
     url = _get_api_url(_EP_PUBLISHING)
-    data = serialization.encode(doc, serialization.ESDOC_ENCODING_JSON)
+    data = serialization.encode(doc, constants.ESDOC_ENCODING_JSON)
 
     # Invoke HTTP operation.
     r = _invoke(requests.post, url, data)
@@ -194,7 +187,7 @@ def publish(doc):
         _throw_server_error()
 
 
-def unpublish(uid, version=ESDOC_DOC_VERSION_ALL):
+def unpublish(uid, version=constants.ESDOC_DOC_VERSION_ALL):
     """Unpublishes a document from remote repository.
 
     :param doc: Document being unpublished.
@@ -204,8 +197,8 @@ def unpublish(uid, version=ESDOC_DOC_VERSION_ALL):
     # Defensive programming.
     if not isinstance(uid, uuid.UUID):
         _throw_invalid_doc_id()
-    if not version == ESDOC_DOC_VERSION_ALL and \
-       not version == ESDOC_DOC_VERSION_LATEST and \
+    if not version == constants.ESDOC_DOC_VERSION_ALL and \
+       not version == constants.ESDOC_DOC_VERSION_LATEST and \
        not isinstance(version, int):
        _throw_invalid_doc_version()
 

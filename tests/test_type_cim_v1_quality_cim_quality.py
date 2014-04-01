@@ -1,5 +1,8 @@
+
+# Test document author.
+DOC_AUTHOR = "Metafor Questionnaire"
 import pyesdoc.ontologies.cim as cim
-from . import test_utils as tu
+import test_utils as tu
 
 
 
@@ -7,7 +10,7 @@ from . import test_utils as tu
 DOC_TYPE = cim.v1.CimQuality
 
 # Test representation file.
-DOC_FILE = 'xml-metafor-cim-v1/cim.1.quality.CimQuality.xml'
+DOC_FILE = 'cim.1.quality.CimQuality.xml-metafor-cim-v1'
 
 # Test document uid.
 DOC_UID = 'c1debb66-2737-11e2-bc06-0010185b3f28'
@@ -17,6 +20,15 @@ DOC_VERSION = '2'
 
 # Test document creation date.
 DOC_DATE = '2012-11-05T09:51:25'
+
+# Test document project.
+DOC_PROJECT = "CMIP5"
+
+# Test document project.
+DOC_INSTITUTE = "MOHC"
+
+# Test document author.
+DOC_AUTHOR = "Metafor Questionnaire"
 
 
 def assert_doc(doc):

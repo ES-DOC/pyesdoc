@@ -1,0 +1,9 @@
+{% set ctx = TemplateInfo(resolution,
+	depth = 1,
+	header = "Tile " + resolution_type + " Resolution",
+	fieldset = [
+		FieldInfo('Description', path='description'),
+	] + map(lambda p: FieldInfo(p.name, value=p.value), sorted(resolution.properties, key=lambda p: p.name)),
+	template="fieldset_table.html"
+) %}
+{% include ../core/section_01.html %}
