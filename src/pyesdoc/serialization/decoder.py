@@ -10,7 +10,10 @@
 
 """
 # Module imports.
-from lxml.etree import _ElementTree as et
+from lxml.etree import (
+    _ElementTree as et,
+    _Element as ete
+    )
 import xml.etree.ElementTree as ET
 
 from .. import constants
@@ -37,7 +40,7 @@ _input_types = {
     constants.ESDOC_ENCODING_DICT : (dict, ),
     constants.ESDOC_ENCODING_JSON : (str, unicode),
     constants.ESDOC_ENCODING_XML : (str, unicode, ET.Element),
-    constants.METAFOR_CIM_XML_ENCODING : (str, unicode, ET.Element, et),
+    constants.METAFOR_CIM_XML_ENCODING : (str, unicode, ET.Element, et, ete),
 }
 
 
@@ -48,7 +51,10 @@ def _assert(doc, encoding):
     if not encoding in _decoders:
         raise NotImplementedError('Document decoding is unsupported :: encoding = {0}.'.format(encoding))
     if type(doc) not in _input_types[encoding]:
-        rt.throw("Document representation type is unsupported, it must be one of {0}.".format(_input_types[encoding]))
+        print "ZZZ", type(doc)
+        err = "Document representation type ({0}) is unsupported, it must be one of {1}."
+        err = err.format(type(doc), _input_types[encoding])
+        rt.throw(err)
 
 
 def decode(doc, encoding):

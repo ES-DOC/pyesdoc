@@ -9,7 +9,7 @@
    :synopsis: A set of cim 1 decoders.
 
 .. moduleauthor:: Earth System Documentation (ES-DOC) <dev@es-doc.org>
-.. note:: Code generated using esdoc_mp @ 2014-04-14 13:48:26.078499.
+.. note:: Code generated using esdoc_mp @ 2014-04-14 15:44:38.709077.
 
 """
 

@@ -9,7 +9,7 @@
    :synopsis: The set of types of the cim.v1.misc package.
 
 .. moduleauthor:: Earth System Documentation (ES-DOC) <dev@es-doc.org>
-.. note:: Code generated using esdoc_mp @ 2014-04-14 13:48:26.108892.
+.. note:: Code generated using esdoc_mp @ 2014-04-14 15:44:38.738830.
 
 """
 # Module imports.
