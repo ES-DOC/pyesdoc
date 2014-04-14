@@ -5,7 +5,7 @@
    :platform: Unix, Windows
    :synopsis: Ontologies sub-package init.
 
-.. moduleauthor:: Mark Conway-Greenslade (formerly Morgan) <momipsl@ipsl.jussieu.fr>
+.. moduleauthor:: Mark Conway-Greenslade <momipsl@ipsl.jussieu.fr>
 
 
 """
@@ -257,8 +257,8 @@ def associate(left, attr, right):
     # Create reference.
     # TODO alter reference based upon ontology type.
     ref = cim.v1.DocReference()
-    ref.id = right.doc_info.id
-    ref.version = right.doc_info.version
+    ref.id = right.meta.id
+    ref.version = right.meta.version
     
     # Set association.
     setattr(left, attr, ref)

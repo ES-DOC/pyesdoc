@@ -1,5 +1,5 @@
 """
-.. module:: pyesdoc_test.test_utils.py
+.. module:: test_utils.py
 
    :copyright: @2013 Earth System Documentation (http://es-doc.org)
    :license: GPL / CeCILL
@@ -14,7 +14,6 @@
 import datetime
 from os.path import dirname, abspath, join
 import random
-import sys
 import uuid
 
 from nose.tools import nottest
@@ -23,6 +22,7 @@ import lxml.etree as et
 
 import pyesdoc
 import pyesdoc.ontologies.cim.v1.typeset as cim_v1
+import test_types as tt
 
 
 
@@ -40,6 +40,9 @@ COMPARE_TYPES = (
     COMPARE_LTE
 )
 
+# Document source.
+DOCUMENT_SOURCE = "testing"
+
 
 @nottest
 def get_test_file_path(name):
@@ -52,11 +55,11 @@ def get_test_file_path(name):
     :rtype: str
 
     """
-    fp = dirname(abspath(__file__))
-    fp = join(fp, 'files')
-    fp = join(fp, name)
+    fpath = dirname(abspath(__file__))
+    fpath = join(fpath, 'files')
+    fpath = join(fpath, name)
 
-    return fp
+    return fpath
 
 
 @nottest
@@ -72,15 +75,19 @@ def get_test_file(name):
     """
     path = get_test_file_path(name)
 
-    if name.split(".")[-1] in (pyesdoc.ESDOC_ENCODING_XML, pyesdoc.METAFOR_CIM_XML_ENCODING):
+    if name.split(".")[-1] in (
+        pyesdoc.ESDOC_ENCODING_XML,
+        pyesdoc.METAFOR_CIM_XML_ENCODING
+        ):
         return et.parse(path)
     else:
         return open(path, 'r')
 
 
-def decode(repr, encoding):
+def decode(doc, encoding):
+    """Decode a document representation."""
     # Decode.
-    doc = pyesdoc.decode(repr, encoding)
+    doc = pyesdoc.decode(doc, encoding)
 
     # Perform basic assertions.
     assert doc is not None
@@ -89,40 +96,59 @@ def decode(repr, encoding):
     return doc
 
 
-def encode(doc, encoding, type=None):
-    repr = pyesdoc.encode(doc, encoding)
+def encode(doc, encoding, doc_type=None):
+    """Encode a document."""
+    doc = pyesdoc.encode(doc, encoding)
 
     # Perform basic assertions.
-    assert repr is not None
-    if type is not None:
-        assert isinstance(repr, type)
-        if isinstance(type, str):
-            repr.decode('utf-8')
-
-    return repr
-
-
-def _decode_from_xml_metafor_cim_v1(as_xml, type=None, project=None, institute=None):
-    if isinstance(as_xml, str):
-        as_xml = get_test_file(as_xml)
-
-    doc = decode(as_xml, pyesdoc.METAFOR_CIM_XML_ENCODING)
-    if project is not None:
-        doc.doc_info.project = project
-    if institute is not None:
-        doc.doc_info.institute = institute
+    assert doc is not None
+    if doc_type is not None:
+        assert isinstance(doc, doc_type)
+        if isinstance(doc_type, str):
+            doc.decode('utf-8')
 
     return doc
 
 
-def get_doc(tm):
+def _decode_from_xml_metafor_cim_v1(as_xml,
+                                    doc_type=None,
+                                    project=None,
+                                    institute=None):
+    """Decodes a Metafor CIM v1 document from a file."""
+    # Load xml file if necessary.
+    if isinstance(as_xml, str):
+        as_xml = get_test_file(as_xml)
+
+    # Decode document.
+    doc = decode(as_xml, pyesdoc.METAFOR_CIM_XML_ENCODING)
+    assert_object(doc, doc_type)
+
+    # Assign document attributes.
+    if project is not None:
+        doc.meta.project = project
+    if institute is not None:
+        doc.meta.institute = institute
+    doc.meta.source = DOCUMENT_SOURCE
+
+    return doc
+
+
+def get_doc(mod):
     """Returns a test document."""
-    doc = _decode_from_xml_metafor_cim_v1(tm.DOC_FILE, 
-                                          tm.DOC_TYPE, 
-                                          tm.DOC_PROJECT,
-                                          tm.DOC_INSTITUTE)
-    doc.doc_info.source = "testing"
-    assert_doc(tm, doc)
+    # Reset module state.
+    tt.reset(mod)
+
+    # Create.
+    doc = _decode_from_xml_metafor_cim_v1(mod.DOC_FILE,
+                                          mod.DOC_TYPE,
+                                          mod.DOC_PROJECT,
+                                          mod.DOC_INSTITUTE)
+
+    # Parse.
+    pyesdoc.parse(doc)
+
+    # Verify.
+    assert_doc(mod, doc)
 
     return doc
 
@@ -155,18 +181,18 @@ def get_float():
     return random.random()
 
 
-def get_string(len):
+def get_string(length):
     """Returns a random string for testing purposes.
 
     """
-    return str(uuid.uuid1())[:len]
+    return str(uuid.uuid1())[:length]
 
 
-def get_unicode(len):
+def get_unicode(length):
     """Returns a random unicode for testing purposes.
 
     """
-    return unicode(uuid.uuid1())[:len]
+    return unicode(uuid.uuid1())[:length]
 
 
 def get_uuid():
@@ -176,56 +202,49 @@ def get_uuid():
     return str(uuid.uuid1())
 
 
-def assert_doc(tm, doc):
-    """Asserts doc against a test module."""    
-    assert_object(doc, tm.DOC_TYPE)
-    assert_object(doc.doc_info)
-    assert_string(doc.doc_info.source, "testing")
-    if tm.DOC_UID:
-        assert_uuid(doc.doc_info.id, tm.DOC_UID)
-    if tm.DOC_VERSION:
-        assert_string(doc.doc_info.version, tm.DOC_VERSION)
-    if tm.DOC_PROJECT:
-        assert_string(doc.doc_info.project, tm.DOC_PROJECT)
-    if tm.DOC_INSTITUTE:
-        assert_string(doc.doc_info.institute, tm.DOC_INSTITUTE)
-    if tm.DOC_DATE:
-        assert_date(doc.doc_info.create_date, tm.DOC_DATE)
-    if tm.DOC_AUTHOR and doc.doc_info.author:
-        assert_string(doc.doc_info.author.individual_name, tm.DOC_AUTHOR)
-    tm.assert_doc(doc)
+def assert_doc(mod, doc):
+    """Asserts doc against a test module."""
+    # Assert document type information.
+    assert_object(doc, mod.DOC_TYPE)
+    assert_str(mod.DOC_TYPE_KEY, doc.type_key, True)
+
+    # Assert document meta information.
+    meta = doc.meta
+    assert_object(meta, cim_v1.DocMetaInfo)
+    assert_str(meta.source, DOCUMENT_SOURCE)
+    assert_iter(meta.encodings, mod.DOC_ENCODINGS_COUNT, str)
+    if mod.DOC_UID:
+        assert_uuid(meta.id, mod.DOC_UID)
+    if mod.DOC_VERSION:
+        assert_str(meta.version, mod.DOC_VERSION)
+    if mod.DOC_PROJECT:
+        assert_str(meta.project, mod.DOC_PROJECT)
+    if mod.DOC_INSTITUTE:
+        assert_str(meta.institute, mod.DOC_INSTITUTE)
+    if mod.DOC_DATE:
+        assert_date(meta.create_date, mod.DOC_DATE)
+    if mod.DOC_AUTHOR and meta.author:
+        assert_str(meta.author.individual_name, mod.DOC_AUTHOR)
+    if hasattr(mod, "assert_meta_info"):
+        mod.assert_meta_info(meta)
+
+    # Assert document extension information.
+    if hasattr(doc, "ext"):
+        ext = doc.ext
+        assert_str(mod.DOC_TYPE_KEY, ext.type, True)
+        assert_str(ext.language, pyesdoc.constants.ESDOC_DEFAULT_LANGUAGE)
+        assert_iter(ext.encodings, mod.DOC_ENCODINGS_COUNT, str)
+        if hasattr(mod, "assert_extension_info"):
+                mod.assert_extension_info(ext)
+
+    # Perform specific document assertions.
+    mod.assert_doc(doc)
 
 
-def assert_pyesdoc_obj(doc, uid, version, create_date):
-    """Tests information associated with a pyesdoc object.
-
-    :param obj: Document pyesdoc object representation.
-    :type obj: object
-
-    :param uid: Document UID.
-    :type uid: uuid
-
-    :param version: Document version.
-    :type version: str
-
-    :param create_date: Document create date.
-    :type create_date: datetime
-
-    """
-    assert_object(doc)
-    assert_object(doc.doc_info)
-    if uid is not None:
-        assert_uuid(doc.doc_info.id, uid)
-    if version is not None:
-        assert_string(doc.doc_info.version, version)
-    if create_date is not None:
-        assert_date(doc.doc_info.create_date, create_date)
-
-
-def assert_collection(collection,
-                      length = -1,
-                      length_compare = COMPARE_GTE,
-                      item_type=None):
+def assert_iter(collection,
+                length=-1,
+                item_type=None,
+                length_compare=COMPARE_GTE):
     """Asserts an object collection.
 
     :param collection: An object collection.
@@ -244,7 +263,7 @@ def assert_collection(collection,
     assert_object(collection)
     assert iter(collection) is not None
     if length != -1:
-        assert_integer(len(collection), length, length_compare)
+        assert_int(len(collection), length, length_compare)
     if item_type is not None:
         if isinstance(collection, dict):
             collection = collection.values()
@@ -264,7 +283,7 @@ def assert_in_collection(collection, item_attr, items):
     """
     try:
         iter(items)
-    except:
+    except TypeError:
         items = [items]
     targets = None
     if item_attr is not None:
@@ -282,22 +301,26 @@ def assert_none(instance):
     :type instance: object
 
     """
-    assert instance is None
+    assert instance is None, \
+           "Instance null mismatch : actual = {0} - {1} :: expected = None" \
+           .format(type(instance), instance)
 
 
-def assert_object(instance, type=None):
+def assert_object(instance, instance_type=None):
     """Asserts an object instance.
 
     :param instance: An object for testing.
     :type instance: object
 
-    :param type: Type that object must either be or sub-class from.
-    :type type: class
+    :param instance_type: Type that object must either be or sub-class from.
+    :type instance_type: class
 
     """
     assert instance is not None
-    if type is not None:
-        assert isinstance(instance, type)
+    if instance_type is not None:
+        assert isinstance(instance, instance_type), \
+               "Instance type mismatch : actual = {0} :: expected = {1}" \
+               .format(type(instance), instance_type)
 
 
 def assert_objects(instance1, instance2):
@@ -310,12 +333,25 @@ def assert_objects(instance1, instance2):
     :type instance2: object
 
     """
-    assert instance1 is not None
-    assert instance2 is not None
-    assert instance1 == instance2
+    assert instance1 is not None, "Only non-null objects are comparable."
+    assert instance2 is not None, "Only non-null objects are comparable."
+    assert instance1 == instance2, "Instances are not equal"
 
 
-def assert_string(actual, expected, startswith=False):
+def assert_bool(actual, expected):
+    """Asserts a boolean.
+
+    :param actual: An expression evaluaed as a boolean.
+    :type actual: expr | bool
+
+    :param expected: An expression evaluaed as a boolean.
+    :type actual: expr | bool
+
+    """
+    assert bool(actual) == bool(expected)
+
+
+def assert_str(actual, expected, startswith=False):
     """Asserts a string.
 
     :param actual: A string.
@@ -324,8 +360,8 @@ def assert_string(actual, expected, startswith=False):
     :param expected: Expected string value.
     :type expected: str
 
-    :param expected: Flag indicating whether to perform startswith test.
-    :type expected: bool
+    :param startswith: Flag indicating whether to perform startswith test.
+    :type startswith: bool
 
     """
     # Format.
@@ -335,10 +371,12 @@ def assert_string(actual, expected, startswith=False):
     # Assert.
     if startswith == False:
         assert actual == expected, \
-               "String mismatch : actual = {0} :: expected = {1}".format(actual, expected)
+               "String mismatch : actual = {0} :: expected = {1}" \
+               .format(actual, expected)
     else:
-        assert actual.startswith(expected), \
-               "String startswith mismatch : actual = {0} :: expected = {1}".format(actual, expected)
+        assert actual.startswith(expected) == True, \
+               "String startswith mismatch : actual = {0} :: expected = {1}" \
+               .format(actual, expected)
 
 
 def assert_unicode(actual, expected):
@@ -354,7 +392,8 @@ def assert_unicode(actual, expected):
     assert_object(actual, unicode)
     assert_object(expected, unicode)
     assert actual == expected, \
-           "Unicode mismatch : actual = {0} :: expected = {1}".format(actual, expected)
+           "Unicode mismatch : actual = {0} :: expected = {1}" \
+           .format(actual, expected)
 
 
 def assert_date(actual, expected):
@@ -367,16 +406,31 @@ def assert_date(actual, expected):
     :type expected: str
 
     """
-    if isinstance(actual, datetime.datetime) and \
-       isinstance(expected, datetime.datetime):
-       assert actual == expected
-    elif isinstance(actual, datetime.datetime):
-        assert actual == dateutil_parser.parse(expected)
-    else:
-        assert dateutil_parser.parse(actual) == expected
+    if not isinstance(actual, datetime.datetime):
+        actual = dateutil_parser.parse(actual)
+    if not isinstance(expected, datetime.datetime):
+        expected = dateutil_parser.parse(expected)
+
+    assert actual == expected, \
+           "Date mismatch : actual = {0} :: expected = {1}" \
+           .format(actual, expected)
 
 
-def assert_integer(actual, expected, assert_type=COMPARE_EXACT):
+def assert_float(actual, expected):
+    """Asserts a float.
+
+    :param float actual: Actual float value.
+    :param float expected: Expected float value.
+
+    """
+    assert_object(actual, float)
+    assert_object(expected, float)
+    assert actual == expected, \
+           "Float mismatch : actual = {0} :: expected = {1}" \
+           .format(actual, expected)
+
+
+def assert_int(actual, expected, assert_type=COMPARE_EXACT):
     """Asserts an integer.
 
     :param actual: An integer.
@@ -386,13 +440,26 @@ def assert_integer(actual, expected, assert_type=COMPARE_EXACT):
     :type expected: int
 
     """
+    # Parse actual value.
+    # ... convert string
+    if type(actual) == str:
+        actual = int(actual)
+    # ... collection length checks
+    else:
+        try:
+            iter(actual)
+        except TypeError:
+            pass
+        else:
+            actual = len(actual)
+
     if assert_type == COMPARE_EXACT:
         assert expected == actual, "{0} != {1}".format(actual, expected)
     elif assert_type == COMPARE_GT:
         assert expected > actual, "{0} !> {1}".format(actual, expected)
     elif assert_type == COMPARE_GTE:
         assert expected >= actual, "{0} !>= {1}".format(actual, expected)
-    elif assert_type == COMPARE_LE:
+    elif assert_type == COMPARE_LT:
         assert expected < actual, "{0} !< {1}".format(actual, expected)
     elif assert_type == COMPARE_LTE:
         assert expected <= actual, "{0} !<= {1}".format(actual, expected)
@@ -400,7 +467,7 @@ def assert_integer(actual, expected, assert_type=COMPARE_EXACT):
         assert expected == actual, "{0} != {1}".format(actual, expected)
 
 
-def assert_integer_negative(actual, expected):
+def assert_int_negative(actual, expected):
     """Negatively asserts an integer.
 
     :param actual: An integer.

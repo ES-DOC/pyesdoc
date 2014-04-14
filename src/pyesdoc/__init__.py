@@ -30,7 +30,7 @@ from . options import (
     get as get_option,
     list as list_options
     )
-from . parsers import (
+from . parsing import (
     parse,
     is_parseable
     )
@@ -44,10 +44,10 @@ from . serialization import (
     convert,
     decode,
     encode,
+    PYESDOC_XMLError,
     )
 from .utils import (
     PYESDOC_Exception,
-    PYESDOC_XMLError,
     runtime as rt
     )
 from .validation import (

@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 """
 .. module:: cim.v1.__init__.py
 
@@ -7,7 +9,7 @@
    :synopsis: The cim v1 package initialisor.
 
 .. moduleauthor:: Earth System Documentation (ES-DOC) <dev@es-doc.org>
-.. note:: Code generated using esdoc_mp @ 2014-03-20 16:18:50.927226.
+.. note:: Code generated using esdoc_mp @ 2014-04-14 13:48:26.089796.
 
 """
 # Module imports.

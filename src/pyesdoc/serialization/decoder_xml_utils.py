@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 """
 .. module:: decoder_xml_utils.py
 
@@ -49,18 +51,7 @@ class PYESDOC_XMLError(Exception):
 
 
 def _get_value_as_string(xml, nsmap):
-    """Converts passed xml fragment to a string.
-
-    :param xml: An xml element.
-    :type xml: lxml.etree._Element
-
-    :param nsmap: Set of xml namespace mappings.
-    :type nsmap: dict
-
-    :returns: String representation of passed xml element.
-    :rtype: str
-
-    """
+    """Converts passed xml fragment to a string."""
     result = None
 
     # Strip first item from iterables.
@@ -86,35 +77,13 @@ def _get_value_as_string(xml, nsmap):
     return result
 
 
-def convert_to_string(xml, nsmap=None):
-    """Converts an etree element xml representation into a string type.
-
-    :param xml: An xml element.
-    :type xml: lxml.etree._Element
-
-    :param nsmap: Set of xml namespace mappings.
-    :type nsmap: dict
-
-    :returns: String representation of passed xml element.
-    :rtype: str
-
-    """
+def _convert_to_string(xml, nsmap=None):
+    """Converts an etree element xml representation into a string type."""
     return _get_value_as_string(xml, nsmap)
 
 
-def convert_to_bool(xml, nsmap=None):
-    """Converts an etree element xml representation into a boolean type.
-
-    :param xml: An xml element.
-    :type xml: lxml.etree._Element
-
-    :param nsmap: Set of xml namespace mappings.
-    :type nsmap: dict
-
-    :returns: Boolean representation of passed xml element.
-    :rtype: str
-
-    """
+def _convert_to_bool(xml, nsmap=None):
+    """Converts an etree element xml representation into a boolean type."""
     as_string = _get_value_as_string(xml, nsmap)
     if as_string is None:
         return bool()
@@ -128,19 +97,8 @@ def convert_to_bool(xml, nsmap=None):
             return bool()
 
 
-def convert_to_integer(xml, nsmap=None):
-    """Converts an etree element xml representation into an integer type.
-
-    :param xml: An xml element.
-    :type xml: lxml.etree._Element
-
-    :param nsmap: Set of xml namespace mappings.
-    :type nsmap: dict
-
-    :returns: Integer representation of passed xml element.
-    :rtype: str
-
-    """
+def _convert_to_integer(xml, nsmap=None):
+    """Converts an etree element xml representation into an integer type."""
     as_string = _get_value_as_string(xml, nsmap)
     if as_string is None or as_string.upper() == 'NONE':
         return int()
@@ -148,19 +106,8 @@ def convert_to_integer(xml, nsmap=None):
         return int(as_string)
 
 
-def convert_to_float(xml, nsmap=None):
-    """Converts an etree element xml representation into a float type.
-
-    :param xml: An xml element.
-    :type xml: lxml.etree._Element
-
-    :param nsmap: Set of xml namespace mappings.
-    :type nsmap: dict
-
-    :returns: Float representation of passed xml element.
-    :rtype: str
-
-    """
+def _convert_to_float(xml, nsmap=None):
+    """Converts an etree element xml representation into a float type."""
     as_string = _get_value_as_string(xml, nsmap)
     if as_string is None:
         return float()
@@ -168,19 +115,8 @@ def convert_to_float(xml, nsmap=None):
         return float(as_string)
 
 
-def convert_to_uid(xml, nsmap=None):
-    """Converts an etree element xml representation into a uid type.
-
-    :param xml: An xml element.
-    :type xml: lxml.etree._Element
-
-    :param nsmap: Set of xml namespace mappings.
-    :type nsmap: dict
-
-    :returns: UUID representation of passed xml element.
-    :rtype: str
-
-    """
+def _convert_to_uid(xml, nsmap=None):
+    """Converts an etree element xml representation into a uid type."""
     as_string = _get_value_as_string(xml, nsmap)
     if as_string is None or as_string in NULL_UUID:
         return uuid.uuid4()
@@ -188,19 +124,8 @@ def convert_to_uid(xml, nsmap=None):
         return uuid.UUID(as_string)
 
 
-def convert_to_datetime(xml, nsmap=None):
-    """Converts an etree element xml representation into a datetime type.
-
-    :param xml: An xml element.
-    :type xml: lxml.etree._Element
-
-    :param nsmap: Set of xml namespace mappings.
-    :type nsmap: dict
-
-    :returns: Datetime representation of passed xml element.
-    :rtype: str
-
-    """
+def _convert_to_datetime(xml, nsmap=None):
+    """Converts an etree element xml representation into a datetime type."""
     as_string = _get_value_as_string(xml, nsmap)
     if as_string is None:
         return None
@@ -210,17 +135,17 @@ def convert_to_datetime(xml, nsmap=None):
 
 # Set of simple type convertors.
 _simple_type_decoders = {
-    'bool' : convert_to_bool,
-    'date' : convert_to_datetime,
-    'datetime' : convert_to_datetime,
-    'datetime.date' : convert_to_datetime,
-    'datetime.datetime' : convert_to_datetime,
-    'float' : convert_to_float,
-    'int' : convert_to_integer,
-    'str' : convert_to_string,
-    'uri' : convert_to_string,
-    'uuid' : convert_to_uid,
-    'uuid.UUID' : convert_to_uid,
+    'bool' : _convert_to_bool,
+    'date' : _convert_to_datetime,
+    'datetime' : _convert_to_datetime,
+    'datetime.date' : _convert_to_datetime,
+    'datetime.datetime' : _convert_to_datetime,
+    'float' : _convert_to_float,
+    'int' : _convert_to_integer,
+    'str' : _convert_to_string,
+    'uri' : _convert_to_string,
+    'uuid' : _convert_to_uid,
+    'uuid.UUID' : _convert_to_uid,
 }
 
 
@@ -291,9 +216,7 @@ def _set_attribute(target,
                    is_simple_type,
                    is_iterable,
                    is_duplicate):
-    """Decodes entity attribute from a decoding.
-
-    """
+    """Decodes entity attribute from a decoding."""
     # Escape if xpath is unassigned.
     if xpath is None or xpath == '':
         return
@@ -328,7 +251,7 @@ def _set_attribute(target,
 
     # ... complex types
     else:
-        # ... iterables        
+        # ... iterables
         if is_iterable:
             collection = getattr(obj, att_name)
             for i in att_value:
@@ -348,30 +271,7 @@ def _set_attribute(target,
 
 
 def _get_attribute_value(xml, nsmap, decoder, xpath, is_simple_type, is_iterable):
-    """Gets the value of an attribute from xml.
-
-    :param xml: An xml element.
-    :type xml: lxml.etree._Element
-
-    :param nsmap: Set of xml namespace mappings.
-    :type nsmap: dict
-
-    :param decoder: Decoder function pointer.
-    :type decoder: function
-
-    :param xpath: Attribute xpath.
-    :type xpath: str
-
-    :param is_simple_type: Flag indicating whether type is a simple one or not.
-    :type is_simple_type: bool
-
-    :param is_iterable: flag indicating whether attribute is iterable or not.
-    :type is_iterable: bool
-
-    :returns: Decoded attribute value.
-    :rtype: miscellaneous
-
-    """
+    """Gets the value of an attribute from xml."""
     result = None
 
     # Apply xpath (derive xml fragment from value is derived).
@@ -383,15 +283,18 @@ def _get_attribute_value(xml, nsmap, decoder, xpath, is_simple_type, is_iterable
         if decoder in _simple_type_decoders:
             decoder = _simple_type_decoders[decoder]
         if is_iterable:
-            result = []
-            for el in att_xml:
-                result.append(decoder(el, nsmap))
+            result = map(lambda i: decoder(i, nsmap), att_xml)
         else:
             result = decoder(att_xml, nsmap)
 
     # ... complex types.
     else:
         result = decode_xml(decoder, att_xml, nsmap, is_iterable)
+
+    # Workaround - decoding empty xml attributes.
+    if is_simple_type and not is_iterable and \
+       "@" in xpath and result == str():
+        result = None
 
     return result
 
@@ -482,9 +385,10 @@ def load_xml(xml, return_nsmap=False, default_ns='cim'):
             if isinstance(xml, basestring):
                 try:
                     xml = et.fromstring(xml)
-                    nsmap = xml.nsmap
                 except Exception:
                     raise PYESDOC_XMLError("Invalid xml string.")
+                else:
+                    nsmap = xml.nsmap
             else:
                 raise PYESDOC_XMLError("Unsupported xml type, must be either a string, file, url or etree.")
 
@@ -497,4 +401,3 @@ def load_xml(xml, return_nsmap=False, default_ns='cim'):
         return xml, nsmap
     else:
         return xml
-

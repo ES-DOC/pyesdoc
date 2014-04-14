@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 """
 .. module:: cim.v1.decoder_for_data_package.py
 
@@ -7,7 +9,7 @@
    :synopsis: A set of cim 1 decoders.
 
 .. moduleauthor:: Earth System Documentation (ES-DOC) <dev@es-doc.org>
-.. note:: Code generated using esdoc_mp @ 2014-03-20 16:18:50.917317.
+.. note:: Code generated using esdoc_mp @ 2014-04-14 13:48:26.078499.
 
 """
 
@@ -189,14 +191,15 @@ def decode_data_object(xml, nsmap):
         ('acronym', False, 'str', 'child::cim:acronym'),
         ('citations', True, decode_citation, '//cim:citation[not(cim:citation)]'),
         ('content', True, decode_data_content, 'child::cim:content'),
-        ('data_property', True, decode_data_property, 'child::cim:dataProperty/cim:dataProperty'),
         ('data_status', False, 'str', 'self::cim:dataObject/@dataStatus'),
         ('description', False, 'str', 'child::cim:description'),
         ('distribution', False, decode_data_distribution, 'child::cim:distribution'),
-        ('doc_info', False, decode_doc_info, 'self::cim:dataObject'),
         ('extent', False, decode_data_extent, 'child::cim:extent'),
         ('hierarchy_level', False, decode_data_hierarchy_level, 'self::cim:dataObject'),
         ('keyword', False, 'str', 'child::cim:keyword'),
+        ('meta', False, decode_doc_meta_info, 'self::cim:dataObject'),
+        ('properties', True, decode_data_property, 'child::cim:dataProperty/cim:dataProperty'),
+        ('purpose', False, 'str', 'self::cim:dataObject/@purpose'),
         ('purpose', False, 'str', 'self::cim:dataObject/@purpose'),
     ]
 

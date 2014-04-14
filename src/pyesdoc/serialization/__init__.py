@@ -4,3 +4,4 @@ from . serializer import (
     decode,
     encode
 	)
+from decoder_xml_utils import PYESDOC_XMLError

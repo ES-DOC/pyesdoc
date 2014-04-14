@@ -16,7 +16,7 @@ import os
 import tornado.template as template
 
 from .. utils import (
-    convert, 
+    convert,
     functional
     )
 
@@ -38,20 +38,26 @@ _templates = {
 }
 
 
-def _format_value(v):
-    """Formats a value for document output."""    
-    # Convert to string.
-    if v is None:
-        v = str()
-    elif isinstance(v, list):
-        v = '  '.join(map(lambda i: str(i), v))
-    # TODO add support for time formatting.
-    elif isinstance(v, datetime.datetime):
-        v = str(v)[:10]
-    else:
-        v = str(v)
+def _format_value(v, formatter=None):
+    """Formats values for document output."""
+    def _format(s):
+        if s is None:
+            s = None
+        # TODO add support for time formatting.
+        elif isinstance(v, datetime.datetime):
+            s = str(s)[:10]
+        else:
+            s = str(s)
 
-    return unicode(v.decode('utf8').strip()) if len(v) else None
+        if s and len(s):
+            s = unicode(s.decode('utf8').strip())
+
+        if formatter:
+            s = formatter(s)
+
+        return s
+
+    return "  ".join(map(_format, v)).strip() if isinstance(v, list) else _format(v)
 
 
 def _get_value(data, path):
@@ -65,7 +71,7 @@ def _get_value(data, path):
         except ValueError:
             return False
         else:
-            return True        
+            return True
 
     # Initialise return value.
     value = data
@@ -76,12 +82,12 @@ def _get_value(data, path):
         if is_collection_reference(attr):
             value = value[int(attr)]
         # ... collection filter by attribute
-        elif "=" in attr:    
+        elif "=" in attr:
             left, right = attr.split("=")
             value = functional.first(value, left, right.lower(), lambda v: str(v).lower())
         # ... item attribute filter
         elif hasattr(value, attr):
-            value = getattr(value, attr) 
+            value = getattr(value, attr)
         # Otherwise escape.
         else:
             break
@@ -97,7 +103,7 @@ def _get_name(name):
     """Returns formatted name for document output."""
     # Initialise.
     name = "" if name is None else name.strip()
-    
+
     # Convert to spaced case.
     if len(name) > 4:
         name = convert.str_to_spaced_case(name).strip()
@@ -110,7 +116,7 @@ def _get_name(name):
             name = prefixes[prefix] + name[len(prefix):]
 
     # Substrings.
-    replacements = { 
+    replacements = {
         "_": " ",
         "Second": "2nd",
         "First": "1st"
@@ -119,7 +125,7 @@ def _get_name(name):
         name = name.replace(replacement, replacements[replacement])
 
     # Substitutions.
-    swaps = { 
+    swaps = {
         "id": "ID",
     }
     for swap in swaps.keys():
@@ -131,14 +137,14 @@ def _get_name(name):
 
 class _TemplateInfo():
     """Template processing information."""
-    def __init__(self, 
-                 data, 
-                 header=None, 
-                 fieldset=[], 
+    def __init__(self,
+                 data,
+                 header=None,
+                 fieldset=[],
                  fieldset_type="namevalue",
                  tag_id=None,
-                 template=None, 
-                 previous=None, 
+                 template=None,
+                 previous=None,
                  depth=0):
         if isinstance(data, _TemplateInfo):
             previous = data
@@ -179,18 +185,24 @@ class _TemplateInfo():
 
 class _FieldInfo():
     """Document field processing information."""
-    def __init__(self, 
-                 name, 
-                 link_path=None, 
-                 path=None, 
-                 email_path=None, 
-                 formatter=None, 
+    def __init__(self,
+                 name,
+                 email=None,
+                 email_path=None,
+                 formatter=None,
+                 link=None,
+                 link_path=None,
+                 path=None,
+                 tag_id=None,
                  value=None):
         self.name = name
-        self.formatter = formatter
-        self.path = path
-        self.link_path = link_path
+        self.email = email
         self.email_path = email_path
+        self.formatter = formatter
+        self.link = link
+        self.link_path = link_path
+        self.path = path
+        self.tag_id = tag_id
         self.value = value
 
 
@@ -208,10 +220,10 @@ class _FieldInfo():
         :rtype str:
 
         """
-        value = _get_value(data, self.path) if self.path else self.value
-        value = _format_value(value)
+        v = _get_value(data, self.path) if self.path else self.value
+        v = _format_value(v, self.formatter)
 
-        return value if not self.formatter else self.formatter(value)
+        return v
 
 
     def get_link(self, data):
@@ -223,7 +235,10 @@ class _FieldInfo():
         :rtype str:
 
         """
-        return _format_value(_get_value(data, self.link_path))
+        v = _get_value(data, self.link_path)
+        v = _format_value(v)
+
+        return v
 
 
     def get_email(self, data):
@@ -235,7 +250,10 @@ class _FieldInfo():
         :rtype str:
 
         """
-        return _format_value(_get_value(data, self.email_path))
+        v = _get_value(data, self.email_path)
+        v = _format_value(v)
+
+        return v
 
 
 def encode(doc):
@@ -248,8 +266,8 @@ def encode(doc):
     :rtype: str
 
     """
-    template = _templates[doc.doc_info.type.lower()]
+    template = _templates[doc.meta.type.lower()]
 
     return template.generate(doc=doc,
                              FieldInfo=_FieldInfo,
-                             TemplateInfo=_TemplateInfo, compress_whitespace=True)
+                             TemplateInfo=_TemplateInfo)

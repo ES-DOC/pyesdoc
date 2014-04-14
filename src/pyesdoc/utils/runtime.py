@@ -5,7 +5,7 @@
    :platform: Unix, Windows
    :synopsis: Runtime utility functions.
 
-.. moduleauthor:: Mark Conway-Greenslade (formerly Morgan) <momipsl@ipsl.jussieu.fr>
+.. moduleauthor:: Mark Conway-Greenslade <momipsl@ipsl.jussieu.fr>
 
 
 """
@@ -212,7 +212,7 @@ def assert_doc(name, doc, msg=None):
                "{0} is not a pyesdoc type instance".format(name)
 
     assert_var(name, doc, object, msg=get_msg)
-    assert_attr(doc, 'doc_info', msg="Document meta-information is missing")
+    assert_attr(doc, 'meta', msg="Document meta-information is missing")
 
 
 def is_iterable(target):

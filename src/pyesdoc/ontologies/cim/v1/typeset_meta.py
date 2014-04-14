@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 """
 .. module:: cim.v1.typeset_meta.py
 
@@ -7,7 +9,7 @@
    :synopsis: Encpasulates meta-information pertaining to the cim.v1 typeset.
 
 .. moduleauthor:: Earth System Documentation (ES-DOC) <dev@es-doc.org>
-.. note:: Code generated using esdoc_mp @ 2014-03-20 16:18:50.938846.
+.. note:: Code generated using esdoc_mp @ 2014-04-14 13:48:26.100467.
 
 """
 # Module imports.
@@ -87,7 +89,7 @@ shared.Daily360.type_key = 'cim.1.shared.Daily360'
 shared.DataSource.type_key = 'cim.1.shared.DataSource'
 shared.DateRange.type_key = 'cim.1.shared.DateRange'
 shared.DocGenealogy.type_key = 'cim.1.shared.DocGenealogy'
-shared.DocInfo.type_key = 'cim.1.shared.DocInfo'
+shared.DocMetaInfo.type_key = 'cim.1.shared.DocMetaInfo'
 shared.DocReference.type_key = 'cim.1.shared.DocReference'
 shared.DocRelationship.type_key = 'cim.1.shared.DocRelationship'
 shared.DocRelationshipTarget.type_key = 'cim.1.shared.DocRelationshipTarget'
@@ -155,19 +157,19 @@ activity.Conformance.type_info = (
 
 activity.DownscalingSimulation.type_info = (
     ('calendar', shared.Calendar, True, False),
-    ('doc_info', shared.DocInfo, True, False),
     ('downscaled_from', shared.DataSource, True, False),
     ('downscaled_from_reference', shared.DocReference, True, False),
     ('downscaling_id', str, False, False),
     ('downscaling_type', str, False, False),
     ('inputs', software.Coupling, False, True),
+    ('meta', shared.DocMetaInfo, True, False),
     ('output_references', shared.DocReference, False, True),
     ('outputs', data.DataObject, False, True),
 )
 
 activity.Ensemble.type_info = (
-    ('doc_info', shared.DocInfo, True, False),
     ('members', activity.EnsembleMember, True, True),
+    ('meta', shared.DocMetaInfo, True, False),
     ('outputs', shared.DataSource, False, True),
     ('outputs_references', shared.DocReference, False, True),
     ('types', str, True, True),
@@ -220,9 +222,9 @@ activity.NumericalActivity.type_info = (
 
 activity.NumericalExperiment.type_info = (
     ('description', str, False, False),
-    ('doc_info', shared.DocInfo, True, False),
     ('experiment_id', str, False, False),
     ('long_name', str, False, False),
+    ('meta', shared.DocMetaInfo, True, False),
     ('requirements', activity.NumericalRequirement, False, True),
     ('short_name', str, True, False),
 )
@@ -269,7 +271,7 @@ activity.Simulation.type_info = (
 activity.SimulationComposite.type_info = (
     ('child', activity.Simulation, False, True),
     ('date_range', shared.DateRange, True, False),
-    ('doc_info', shared.DocInfo, True, False),
+    ('meta', shared.DocMetaInfo, True, False),
     ('rank', int, True, False),
 )
 
@@ -285,7 +287,7 @@ activity.SimulationRelationshipTarget.type_info = (
 
 activity.SimulationRun.type_info = (
     ('date_range', shared.DateRange, True, False),
-    ('doc_info', shared.DocInfo, True, False),
+    ('meta', shared.DocMetaInfo, True, False),
     ('model', software.ModelComponent, False, False),
     ('model_reference', shared.DocReference, False, False),
 )
@@ -343,17 +345,18 @@ data.DataObject.type_info = (
     ('child_object', data.DataObject, False, True),
     ('citations', shared.Citation, False, True),
     ('content', data.DataContent, False, True),
-    ('data_property', data.DataProperty, False, True),
     ('data_status', str, False, False),
     ('description', str, False, False),
     ('distribution', data.DataDistribution, False, False),
-    ('doc_info', shared.DocInfo, True, False),
     ('extent', data.DataExtent, False, False),
     ('geometry_model', str, False, False),
     ('hierarchy_level', data.DataHierarchyLevel, False, False),
     ('keyword', str, False, False),
+    ('meta', shared.DocMetaInfo, True, False),
     ('parent_object', data.DataObject, False, False),
     ('parent_object_reference', shared.DocReference, False, False),
+    ('properties', data.DataProperty, False, True),
+    ('purpose', str, False, False),
     ('restriction', data.DataRestriction, False, True),
     ('source_simulation', str, False, False),
     ('storage', data.DataStorage, False, True),
@@ -437,9 +440,9 @@ grids.GridProperty.type_info = (
 )
 
 grids.GridSpec.type_info = (
-    ('doc_info', shared.DocInfo, True, False),
     ('esm_exchange_grids', grids.GridMosaic, False, True),
     ('esm_model_grids', grids.GridMosaic, False, True),
+    ('meta', shared.DocMetaInfo, True, False),
 )
 
 grids.GridTile.type_info = (
@@ -485,7 +488,7 @@ grids.VerticalCoordinateList.type_info = (
 )
 
 quality.CimQuality.type_info = (
-    ('doc_info', shared.DocInfo, True, False),
+    ('meta', shared.DocMetaInfo, True, False),
     ('reports', quality.Report, False, True),
 )
 
@@ -576,9 +579,10 @@ shared.DocGenealogy.type_info = (
     ('relationships', shared.DocRelationship, False, True),
 )
 
-shared.DocInfo.type_info = (
+shared.DocMetaInfo.type_info = (
     ('author', shared.ResponsibleParty, False, False),
     ('create_date', datetime.datetime, True, False),
+    ('encodings', str, False, True),
     ('external_ids', shared.StandardName, False, True),
     ('genealogy', shared.DocGenealogy, False, False),
     ('id', uuid.UUID, True, False),
@@ -652,8 +656,8 @@ shared.PerpetualPeriod.type_info = (
 shared.Platform.type_info = (
     ('contacts', shared.ResponsibleParty, False, True),
     ('description', str, False, False),
-    ('doc_info', shared.DocInfo, True, False),
     ('long_name', str, False, False),
+    ('meta', shared.DocMetaInfo, True, False),
     ('short_name', str, True, False),
     ('units', shared.MachineCompilerUnit, True, True),
 )
@@ -818,7 +822,7 @@ software.EntryPoint.type_info = (
 
 software.ModelComponent.type_info = (
     ('activity', activity.Activity, False, False),
-    ('doc_info', shared.DocInfo, True, False),
+    ('meta', shared.DocMetaInfo, True, False),
     ('timing', software.Timing, False, False),
     ('type', str, False, False),
     ('types', str, True, True),
@@ -830,7 +834,7 @@ software.Parallelisation.type_info = (
 )
 
 software.ProcessorComponent.type_info = (
-    ('doc_info', shared.DocInfo, True, False),
+    ('meta', shared.DocMetaInfo, True, False),
 )
 
 software.Rank.type_info = (
@@ -857,7 +861,7 @@ software.SpatialRegriddingUserMethod.type_info = (
 )
 
 software.StatisticalModelComponent.type_info = (
-    ('doc_info', shared.DocInfo, True, False),
+    ('meta', shared.DocMetaInfo, True, False),
     ('timing', software.Timing, False, False),
     ('type', str, False, False),
     ('types', str, True, True),
@@ -883,10 +887,10 @@ software.Timing.type_info = (
 
 misc.DocumentSet.type_info = (
     ('data', str, False, True),
-    ('doc_info', shared.DocInfo, True, False),
     ('ensembles', activity.Ensemble, False, True),
     ('experiment', activity.NumericalExperiment, False, False),
     ('grids', grids.GridSpec, False, True),
+    ('meta', shared.DocMetaInfo, True, False),
     ('model', software.ModelComponent, False, False),
     ('platform', shared.Platform, False, False),
     ('simulation', activity.SimulationRun, False, False),

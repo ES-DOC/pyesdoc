@@ -1,3 +1,15 @@
+"""
+.. module:: test_general.py
+
+   :copyright: @2013 Earth System Documentation (http://es-doc.org)
+   :license: GPL / CeCILL
+   :platform: Unix, Windows
+   :synopsis: Executes pyesdoc general tests.
+
+.. moduleauthor:: Earth System Documentation (ES-DOC) <dev@es-doc.org>
+
+"""
+# Module imports.
 import inspect
 
 import nose.tools
@@ -5,32 +17,8 @@ import nose.tools
 import pyesdoc
 import pyesdoc.ontologies.cim as cim
 import test_utils as tu
-import test_type_cim_v1_activity_ensemble
-import test_type_cim_v1_activity_numerical_experiment
-import test_type_cim_v1_activity_simulation_run
-import test_type_cim_v1_data_data_object
-import test_type_cim_v1_grids_gridspec
-import test_type_cim_v1_misc_document_set
-import test_type_cim_v1_quality_cim_quality
-import test_type_cim_v1_shared_platform
-import test_type_cim_v1_software_model_component
-import test_type_cim_v1_software_statistical_model_component
+import test_types as tt
 
-
-
-# Test modules.
-_test_modules = (
-    test_type_cim_v1_activity_ensemble,
-    test_type_cim_v1_activity_numerical_experiment,
-    test_type_cim_v1_activity_simulation_run,
-    test_type_cim_v1_data_data_object,
-    test_type_cim_v1_grids_gridspec,
-    test_type_cim_v1_misc_document_set,    
-    test_type_cim_v1_quality_cim_quality,
-    test_type_cim_v1_shared_platform,
-    test_type_cim_v1_software_model_component,
-    test_type_cim_v1_software_statistical_model_component,
-)
 
 
 # Test ontology constants.
@@ -50,50 +38,84 @@ def _create_doc(o=_CIM, v=_CIM_V1, p=_CIM_PACKAGE, t=_CIM_TYPE):
 
 def _assert_doc(doc, type=None):
     tu.assert_object(doc, type)
-    if hasattr(doc, 'doc_info'):
-        tu.assert_string(doc.doc_info.institute, _INSTITUTE.lower())
-        tu.assert_string(doc.doc_info.language, pyesdoc.ESDOC_DEFAULT_LANGUAGE)
-        tu.assert_string(doc.doc_info.project, _PROJECT.lower())
+    if hasattr(doc, 'meta'):
+        tu.assert_str(doc.meta.institute, _INSTITUTE.lower())
+        tu.assert_str(doc.meta.language, pyesdoc.ESDOC_DEFAULT_LANGUAGE)
+        tu.assert_str(doc.meta.project, _PROJECT.lower())
+
+
+def _test_open_file(mod):
+    assert tu.get_test_file(mod.DOC_FILE) is not None
+
+
+def _test_module_setup(mod):
+    """Tests that the test document module is correctly setup."""
+    tu.assert_bool(mod in tt.MODULES, True)
+    tu.assert_bool(mod in tt.INITIAL_STATE, True)
+    for field in tt.STATE_FIELDS:
+        tu.assert_bool(hasattr(mod, field), True)
+
+
+def _test_module_reset(mod):
+    """Tests that the test document module is correctly reset."""
+    pass
 
 
 def test_version():
-    tu.assert_string(pyesdoc.__version__, "0.9.0.3")
+    """Test package version."""
+    tu.assert_str(pyesdoc.__version__, "0.9.0.3")
 
 
-def _test_open_file(tm):
-    assert tu.get_test_file(tm.DOC_FILE) is not None
+def test_module_setup():
+    """Tests that the test document modules are correctly setup."""
+    for mod in tt.MODULES:
+        _test_module_setup.description = "Test module setup - {0}".format(mod.__name__.split('.')[1])
+        yield _test_module_setup, mod
+
+
+def test_module_reset():
+    """Tests that the test document modules are correctly reset."""
+    for mod in tt.MODULES:
+        _test_module_reset.description = "Test module reset - {0}".format(mod.__name__.split('.')[1])
+        yield _test_module_reset, mod
 
 
 def test_open_files():
-    for tm in _test_modules:
-        _test_open_file.description = "{0}.test_open_file".format(tm.__name__)
-        assert tu.get_test_file(tm.DOC_FILE) is not None
+    """Test opening test files."""
+    for mod in tt.MODULES:
+        _test_open_file.description = "{0}.test_open_file".format(mod.__name__)
+        assert tu.get_test_file(mod.DOC_FILE) is not None
 
 
 def test_create_01():
+    """Test creating documents - 1."""
     doc = _create_doc()
     _assert_doc(doc, cim.v1.ModelComponent)
 
 
 def test_create_02():
+    """Test creating documents - 2."""
     for o, v, p, t in pyesdoc.list_types():
         doc = _create_doc(o, v, p, t)
         _assert_doc(doc)
-        tu.assert_string(doc.__class__.type_key, "{0}.{1}.{2}.{3}".format(o, v, p, t))
+        tu.assert_str(doc.__class__.type_key, "{0}.{1}.{2}.{3}".format(o, v, p, t))
 
 
 def test_create_03():
+    """Test creating documents - 3."""
     for type in pyesdoc.get_types():
         doc = pyesdoc.create(type, _INSTITUTE, _PROJECT)
         _assert_doc(doc, type)
 
 
 def test_import_01():
+    """Test importing package - 1."""
     assert inspect.ismodule(pyesdoc)
     assert inspect.ismodule(pyesdoc.ontologies.cim)
 
 
 def test_import_02():
+    """Test importing package - 2."""
     import pyesdoc.ontologies.cim
     import pyesdoc.ontologies.cim.v1
     import pyesdoc.ontologies.cim.v1.decoder_for_activity_package
@@ -105,6 +127,7 @@ def test_import_02():
 
 
 def test_is_supported_ontology():
+    """Test supported ontologies."""
     # supported
     assert pyesdoc.is_supported(_CIM, _CIM_V1)
 
@@ -114,6 +137,7 @@ def test_is_supported_ontology():
 
 
 def test_is_supported_type_01():
+    """Test supported ontology types - positive."""
     # supported
     assert pyesdoc.is_supported(_CIM, _CIM_V1, _CIM_PACKAGE, _CIM_TYPE)
     for o, v, p, t in pyesdoc.list_types():
@@ -121,6 +145,7 @@ def test_is_supported_type_01():
 
 
 def test_is_supported_type_02():
+    """Test supported ontology types - negative."""
     # unsupported
     assert not pyesdoc.is_supported('x', _CIM_V1, _CIM_PACKAGE, _CIM_TYPE)
     assert not pyesdoc.is_supported(_CIM, 'x', _CIM_PACKAGE, _CIM_TYPE)
@@ -128,40 +153,31 @@ def test_is_supported_type_02():
     assert not pyesdoc.is_supported(_CIM, _CIM_V1, _CIM_PACKAGE, 'x')
 
 
-@nose.tools.raises(NotImplementedError)
-def test_is_valid():
-    raise NotImplementedError("TODO test is_valid")
-
-
 def test_list_types():
+    """Test listing of supported types."""
     # supported - all
     types = pyesdoc.list_types()
-    tu.assert_integer(len(types), 103)
+    tu.assert_int(len(types), 103)
 
     # supported - cim v1
     types = pyesdoc.list_types(_CIM, _CIM_V1)
-    tu.assert_integer(len(types), 103)
+    tu.assert_int(len(types), 103)
 
     # unsupported
     types = pyesdoc.list_types('x', 'x')
-    tu.assert_integer(len(types), 0)
-
-
-@nose.tools.raises(NotImplementedError)
-def test_validate():
-    raise NotImplementedError("TODO test validate")
+    tu.assert_int(len(types), 0)
 
 
 def test_set_option_01():
+    """Test setting package options - positive."""
     api_url = 'http://es-doc.org'
     api_url_old = pyesdoc.get_option('api_url')
     pyesdoc.set_option('api_url', api_url)
-    tu.assert_string(api_url, pyesdoc.get_option('api_url'))
+    tu.assert_str(api_url, pyesdoc.get_option('api_url'))
     pyesdoc.set_option('api_url', api_url_old)
-    
+
 
 @nose.tools.raises(pyesdoc.PYESDOC_Exception)
 def test_set_option_02():
+    """Test setting package options - negative."""
     pyesdoc.set_option('xxx', 'xxx')
-
-

@@ -1,0 +1,13 @@
+<modelComponent ontologyTypeKey="cim.1.software.ModelComponent">
+    <description>{AS PARENT with differences as indicated} The horizontal resolution is 0.44°x0.44°, which gives a minimum resolution of ~50 km at the Equator of the rotated grid. Due to its fine resolution, the model requires a timestep of 5 minutes to maintain numerical stability.</description>
+    <docInfo ontologyTypeKey="cim.1.shared.DocInfo">
+        <createDate>2014-04-07 15:08:25.225585</createDate>
+        <id>52d6bfab-b498-4682-81f2-b2391909b152</id>
+        <institute>mohc</institute>
+        <language>en</language>
+        <project>cmip5</project>
+    </docInfo>
+    <longName>Atmosphere</longName>
+    <releaseDate>2014-04-07 15:08:25.225494</releaseDate>
+    <shortName>Atmosphere</shortName>
+</modelComponent>

@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 """
 .. module:: cim.v1.validator_for_quality_package.py
 
@@ -7,7 +9,7 @@
    :synopsis: A set of validators over the cim.v1.quality package.
 
 .. moduleauthor:: Earth System Documentation (ES-DOC) <dev@es-doc.org>
-.. note:: Code generated using esdoc_mp @ 2014-03-20 16:18:50.931817.
+.. note:: Code generated using esdoc_mp @ 2014-04-14 13:48:26.093843.
 
 """
 # Module imports.

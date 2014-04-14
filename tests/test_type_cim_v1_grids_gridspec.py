@@ -1,3 +1,15 @@
+"""
+.. module:: test_type_cim_v1_grids_gridspec.py
+
+   :copyright: @2013 Earth System Documentation (http://es-doc.org)
+   :license: GPL / CeCILL
+   :platform: Unix, Windows
+   :synopsis: Tests a cim.v1.GridSpec instance.
+
+.. moduleauthor:: Earth System Documentation (ES-DOC) <dev@es-doc.org>
+
+"""
+# Module imports.
 import pyesdoc.ontologies.cim as cim
 import test_utils as tu
 
@@ -5,6 +17,9 @@ import test_utils as tu
 
 # Test type.
 DOC_TYPE = cim.v1.GridSpec
+
+# Test document type.
+DOC_TYPE_KEY = DOC_TYPE.type_key
 
 # Test representation file.
 DOC_FILE = 'cim.1.grids.GridSpec.xml-metafor-cim-v1'
@@ -27,56 +42,124 @@ DOC_INSTITUTE = "MOHC"
 # Test document author.
 DOC_AUTHOR = "Metafor Questionnaire"
 
+# Test supported document encodings.
+DOC_ENCODINGS_COUNT = 4
 
-def assert_doc(doc):
-    return
-    
-    assert len(doc.esm_model_grids) == 1
-    assert len(doc.esm_exchange_grids) == 0
 
-    assert doc.esm_model_grids[0].description.startswith('Specification of the ocean grid configuration')
-    assert doc.esm_model_grids[0].long_name == 'Met Office Unified Model 360-column 40-level Ocean Grid System'
-    assert doc.esm_model_grids[0].short_name == 'UM N180L40 OCN Grid System'
+def assert_extension_info(ext):
+    """Asserts a document's extension information.
 
-    assert len(doc.esm_model_grids[0].citations) == 2
-    assert doc.esm_model_grids[0].citations[0].title == 'Johns_2005'
-    assert doc.esm_model_grids[0].citations[0].collective_title.startswith('Johns T.C., et al. (2005).')
+    :param object ext: Document extension information.
 
-    assert doc.esm_model_grids[0].extent is None
-    assert doc.esm_model_grids[0].has_congruent_tiles == False
-    assert doc.esm_model_grids[0].id == ''
-    assert doc.esm_model_grids[0].is_leaf == True
-    assert doc.esm_model_grids[0].mosaic_count == 0
-    assert doc.esm_model_grids[0].tile_count == 1
-    assert doc.esm_model_grids[0].type == 'regular_lat_lon'
+    """
+    tu.assert_str(ext.display_name, "UM N96L38 ATM Grid System")
+    tu.assert_str(ext.description, "Met Office Unified Model", True)
+    tu.assert_str(ext.full_display_name, "CMIP5 Grid Spec : MOHC - UM N96L38 ATM Grid System")
+    tu.assert_str(ext.type_display_name, "Grid Spec")
+    tu.assert_int(ext.summary_fields, 2)
+    tu.assert_str(ext.summary_fields[0], "UM N96L38 ATM Grid System")
+    tu.assert_str(ext.summary_fields[1], "Met Office Unified Model", True)
 
-    assert len(doc.esm_model_grids[0].tiles) == 1
-    assert doc.esm_model_grids[0].tiles[0].description.startswith('Horizontal properties: Between the poles')
-    assert doc.esm_model_grids[0].tiles[0].extent is not None
-    assert doc.esm_model_grids[0].tiles[0].extent.minimum_latitude == '-90'
-    assert doc.esm_model_grids[0].tiles[0].extent.maximum_latitude == '90'
-    assert doc.esm_model_grids[0].tiles[0].extent.minimum_longitude == '0'
-    assert doc.esm_model_grids[0].tiles[0].extent.maximum_longitude == '360'
-    assert doc.esm_model_grids[0].tiles[0].extent.units in [None, '']
-    assert doc.esm_model_grids[0].tiles[0].mnemonic == 'N180'
-    assert doc.esm_model_grids[0].tiles[0].horizontal_resolution is not None
-    assert doc.esm_model_grids[0].tiles[0].horizontal_resolution.description.startswith('1 deg by 1 deg')
-    assert len(doc.esm_model_grids[0].tiles[0].horizontal_resolution.properties) == 2
-    assert doc.esm_model_grids[0].tiles[0].horizontal_resolution.properties[0].name == 'NumberOfLatitudinalGridCells'
-    assert doc.esm_model_grids[0].tiles[0].horizontal_resolution.properties[0].value == '216'
-    assert doc.esm_model_grids[0].tiles[0].vertical_resolution is not None
-    assert len(doc.esm_model_grids[0].tiles[0].vertical_resolution.properties) == 4
-    assert doc.esm_model_grids[0].tiles[0].vertical_resolution.properties[0].name == 'NumberOfLevelsInUpper100m'
-    assert doc.esm_model_grids[0].tiles[0].vertical_resolution.properties[0].value == '10'
 
-    assert doc.esm_model_grids[0].tiles[0].zcoords is not None
-    assert doc.esm_model_grids[0].tiles[0].zcoords.type == 'space-based'
-    assert doc.esm_model_grids[0].tiles[0].zcoords.form == 'depth'
+def _assert_doc_core(doc, is_update):
+    """Assert core information."""
+    tu.assert_iter(doc.esm_model_grids, 1, cim.v1.GridMosaic)
+    g = doc.esm_model_grids[0]
+    tu.assert_iter(g.citations, 2, cim.v1.Citation)
+    tu.assert_str(g.description, "Specification of the atmosphere", True)
+    tu.assert_bool(g.is_leaf, True)
+    tu.assert_str(g.long_name, "Met Office Unified Model 192", True)
+    tu.assert_str(g.short_name, "UM N96L38 ATM Grid System")
+    tu.assert_str(g.type, "regular_lat_lon")
+
+
+def _assert_doc_tile(doc, is_update):
+    """Assert tile information."""
+    g = doc.esm_model_grids[0]
+    tu.assert_int(g.tile_count, 1)
+    tu.assert_iter(g.tiles, 1, cim.v1.GridTile)
+    tu.assert_object(g.tiles[0], cim.v1.GridTile)
+    t = g.tiles[0]
+    tu.assert_str(t.description, "Horizontal properties: The N96", True)
+    tu.assert_str(t.discretization_type, "logically_rectangular")
+    tu.assert_str(t.mnemonic, "N96")
+
+
+def _assert_doc_tile_extent(doc, is_update):
+    """Assert tile extent information."""
+    t = doc.esm_model_grids[0].tiles[0]
+    tu.assert_object(t.extent, cim.v1.GridExtent)
+    e = t.extent
+    tu.assert_int(e.maximum_latitude, 90)
+    tu.assert_int(e.minimum_latitude, -90)
+    tu.assert_int(e.minimum_longitude, 0)
+    tu.assert_int(e.maximum_longitude, 360, int)
+
+
+def _assert_doc_tile_horizontal_resolution(doc, is_update):
+    """Assert tile horizontal resolution."""
+    t = doc.esm_model_grids[0].tiles[0]
+    tu.assert_object(t.horizontal_resolution, cim.v1.GridTileResolutionType)
+    hr = t.horizontal_resolution
+    tu.assert_str(hr.description, "1.875 degrees in longitude", True)
+    tu.assert_iter(hr.properties, 2, cim.v1.GridProperty)
+    p = hr.properties[0]
+    tu.assert_str(p.name, "NumberOfLatitudinalGridCells")
+    tu.assert_str(p.value, "145")
+
+
+def _assert_doc_tile_vertical_resolution(doc, is_update):
+    """Assert tile vertical resolution."""
+    t = doc.esm_model_grids[0].tiles[0]
+    tu.assert_object(t.vertical_resolution, cim.v1.GridTileResolutionType)
+    vr = t.vertical_resolution
+    tu.assert_iter(vr.properties, 4, cim.v1.GridProperty)
+    p = vr.properties[0]
+    tu.assert_str(p.name, "TopModelLevel")
+    tu.assert_str(p.value, "39254.8")
+
+
+def _assert_doc_tile_zcoords(doc, is_update):
+    """Assert tile zcoords information."""
+    t = doc.esm_model_grids[0].tiles[0]
+    tu.assert_object(t.zcoords, cim.v1.VerticalCoordinateList)
+    z = t.zcoords
+    tu.assert_str(z.form, "hybrid height")
+    tu.assert_str(z.type, "hybrid")
+    tu.assert_iter(z.properties, 1, cim.v1.GridProperty)
+
+
+def assert_doc(doc, is_update=False):
+    """Asserts a document.
+
+    :param object doc: Document being tested.
+    :param bool is_update: Flag indicating whether document has been updated.
+
+    """
+    for assertor in (
+        _assert_doc_core,
+        _assert_doc_tile,
+        _assert_doc_tile_extent,
+        _assert_doc_tile_horizontal_resolution,
+        _assert_doc_tile_vertical_resolution,
+        _assert_doc_tile_zcoords
+        ):
+        assertor(doc, is_update)
 
 
 def update_doc(doc):
+    """Update a document prior to republishing.
+
+    :param object doc: Document being republished.
+
+    """
     pass
 
 
 def assert_doc_updates(doc):
+    """Asserts a document after being updated.
+
+    :param object doc: Document being tested.
+
+    """
     pass

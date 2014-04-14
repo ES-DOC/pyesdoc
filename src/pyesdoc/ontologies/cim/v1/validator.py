@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 """
 .. module:: cim.v1.validator.py
 
@@ -7,7 +9,7 @@
    :synopsis: A set of validators over the cim 1 ontology.
 
 .. moduleauthor:: Earth System Documentation (ES-DOC) <dev@es-doc.org>
-.. note:: Code generated using esdoc_mp @ 2014-03-20 16:18:50.928330.
+.. note:: Code generated using esdoc_mp @ 2014-04-14 13:48:26.090851.
 
 """
 
@@ -94,7 +96,7 @@ __all__ = [
     'validate_data_source',
     'validate_date_range',
     'validate_doc_genealogy',
-    'validate_doc_info',
+    'validate_doc_meta_info',
     'validate_doc_reference',
     'validate_doc_relationship',
     'validate_doc_relationship_target',
@@ -203,7 +205,7 @@ supported = (
     shared.validate_data_source,
     shared.validate_date_range,
     shared.validate_doc_genealogy,
-    shared.validate_doc_info,
+    shared.validate_doc_meta_info,
     shared.validate_doc_reference,
     shared.validate_doc_relationship,
     shared.validate_doc_relationship_target,

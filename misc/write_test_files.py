@@ -1,5 +1,5 @@
 # Module imports.
-from os.path import abspath, join, dirname, exists
+from os.path import abspath, basename, join, dirname, exists, splitext
 
 import tornado.template as template
 
@@ -13,24 +13,26 @@ import test_types as tt
 OP_FILES = join(join(dirname(dirname(abspath(__file__))), "tests"), "files")
 
 
-def _get_file_name(doc, encoding):
-    path = join(OP_FILES, doc.__class__.type_key)
+def _get_file_name(mod, encoding):
+    path = join(OP_FILES, mod.DOC_FILE)
+    path = splitext(path)[0]
+    path = path + "." + encoding
 
-    return path + "." + encoding
+    return path
 
 
-def _write_file(doc, encoding):
+def _write_file(mod, doc, encoding):
     encoded = pyesdoc.encode(doc, encoding)
-    with open(_get_file_name(doc, encoding), 'w') as f:
+    with open(_get_file_name(mod, encoding), 'w') as f:
         f.write(encoded)
 
 
 def _main():
-    for tm in tt.MODULES:
-        doc = tu.get_doc(tm)
+    for mod in tt.MODULES:
+        doc = tu.get_doc(mod)
         for encoding in pyesdoc.ESDOC_ENCODINGS_FILE:
             try:
-                _write_file(doc, encoding)
+                _write_file(mod, doc, encoding)
             except Exception as err:
                 print "ERR ::", doc.type_key, " ::", err  
 

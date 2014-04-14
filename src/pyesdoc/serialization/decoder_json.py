@@ -15,18 +15,22 @@ from .. utils import convert
 
 
 
-def decode(json):
+def decode(as_json):
     """Decodes a document from a json string.
 
-    :param json: Document json representation.
-    :type json: str
+    :param as_json: Document json representation.
+    :type as_json: unicode | str
 
     :returns: A pyesdoc document instance.
     :rtype: object
 
     """
+    # Convert strings (assume are utf-8 encoded).
+    if isinstance(as_json, str):
+        as_json = as_json.decode("utf-8")
+
     # Convert to dictionary.
-    d = convert.json_to_dict(json)
+    d = convert.json_to_dict(as_json)
 
     # Format dictionary keys.
     d = convert.dict_keys(d, convert.str_to_underscore_case)

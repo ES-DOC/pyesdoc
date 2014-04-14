@@ -7,7 +7,7 @@
    :platform: Unix, Windows
    :synopsis: Set of functional programming utilities for working with collections.
 
-.. moduleauthor:: Mark Conway-Greenslade (formerly Morgan) <momipsl@ipsl.jussieu.fr>
+.. moduleauthor:: Mark Conway-Greenslade <momipsl@ipsl.jussieu.fr>
 
 
 """

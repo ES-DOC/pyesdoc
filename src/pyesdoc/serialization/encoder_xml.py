@@ -35,7 +35,7 @@ def _get_item_tag(tag):
     for suffix, replacement in _suffix_maps:
         if tag.endswith(suffix):
             return tag[0:len(tag) - len(suffix)] + replacement
-        
+
     return tag + 'Item'
 
 
@@ -60,7 +60,7 @@ def _encode_simple(xml, sv):
 
     # Assign to xml.
     if sv is not None and len(sv):
-        xml.text = unicode(sv.decode('utf8').strip())
+        xml.text = unicode(sv.decode(_UNICODE).strip())
     else:
         xml.text = u''
 
@@ -93,7 +93,7 @@ def _encode_complex(xml, d):
         elif isinstance(v, dict):
             if len(v.keys()):
                 elem = ET.SubElement(xml, k)
-                _encode_complex(elem, v)   
+                _encode_complex(elem, v)
 
         # ... simple
         elif _is_encodable_simple(v):
@@ -128,7 +128,7 @@ def encode(doc):
     # Convert to dictionary.
     d = encoder_dict.encode(doc)
 
-    # Format dictionary keys.    
+    # Format dictionary keys.
     d = convert.dict_keys(d, convert.str_to_camel_case)
 
     # Encode to an etree xml element.

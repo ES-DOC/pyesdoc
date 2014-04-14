@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 """
 .. module:: cim.v1.validator_for_shared_package.py
 
@@ -7,7 +9,7 @@
    :synopsis: A set of validators over the cim.v1.shared package.
 
 .. moduleauthor:: Earth System Documentation (ES-DOC) <dev@es-doc.org>
-.. note:: Code generated using esdoc_mp @ 2014-03-20 16:18:50.932326.
+.. note:: Code generated using esdoc_mp @ 2014-04-14 13:48:26.094272.
 
 """
 # Module imports.
@@ -145,11 +147,11 @@ def validate_doc_genealogy(instance):
     return NotImplementedError()
 
 
-def validate_doc_info(instance):
-    """Validates an instance of the following type: cim.v1.types.shared.DocInfo.
+def validate_doc_meta_info(instance):
+    """Validates an instance of the following type: cim.v1.types.shared.DocMetaInfo.
 
     :param instance: A type instance being validated.
-    :type instance: cim.v1.types.shared.DocInfo
+    :type instance: cim.v1.types.shared.DocMetaInfo
 
     :returns: List of validation errors.
     :rtype: list

@@ -46,7 +46,7 @@ def _decode_simple(v, type, iterable):
 
 
 def _decode(v, type, iterable):
-    """Decodes a dictionary."""        
+    """Decodes a dictionary."""
     def _do(d):
         # Create doc.
         doc, doc_type_info = _get_doc(d, type)
@@ -69,28 +69,22 @@ def _decode(v, type, iterable):
     return _do(v) if not iterable else map(lambda i : _do(i), v)
 
 
-def decode(d):
+def decode(as_dict):
     """Decodes a document from a dictionary.
 
-    :param d: A document in dictionary format.
-    :type d: dict
+    :param dict as_dict: A document in dictionary format.
 
     :returns: A pyesdoc document instance.
     :rtype: object
 
     """
-    # Defensive programming.
-    if not isinstance(d, dict):
-        rt.raise_error('Dictionary is unspecified and therefore the document cannot be decoded.')
-
     # Format keys.
-    d = convert.dict_keys(d, convert.str_to_underscore_case)
-    if 'ontology_type_key' not in d:
+    as_dict = convert.dict_keys(as_dict, convert.str_to_underscore_case)
+    if 'ontology_type_key' not in as_dict:
         rt.raise_error('Ontology type key is unspecified and therefore the document cannot be decoded.')
 
     # Get document type.
-    o, v, p, t = d['ontology_type_key'].split('.')
-    doc_type = ontologies.get_type(o, v, p, t)
+    doc_type_key = as_dict['ontology_type_key']
+    doc_type = ontologies.get_type_from_key(doc_type_key)
 
-    return _decode(d, doc_type, False)
-    
+    return _decode(as_dict, doc_type, False)

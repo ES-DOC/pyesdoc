@@ -5,17 +5,15 @@
    :platform: Unix, Windows
    :synopsis: Exposes document serialization functions.
 
-.. moduleauthor:: Mark Conway-Greenslade (formerly Morgan) <momipsl@ipsl.jussieu.fr>
+.. moduleauthor:: Mark Conway-Greenslade <momipsl@ipsl.jussieu.fr>
 
 
 """
 # Module imports.
 from . import (
-    decoder, 
+    decoder,
     encoder
     )
-from .. import parsers
-from .. utils import runtime as rt
 
 
 
@@ -32,14 +30,7 @@ def decode(doc, encoding):
     :rtype: object
 
     """
-    # Decode.
-    doc = decoder.decode(doc, encoding)
-
-    # Parse.
-    if doc:
-        parsers.parse(doc)
-
-    return doc
+    return decoder.decode(doc, encoding)
 
 
 def encode(doc, encoding):
@@ -51,8 +42,8 @@ def encode(doc, encoding):
     :param encoding: A document encoding.
     :type encoding: str
 
-    :returns: A formatted representation of a pyesdoc document.
-    :rtype: object
+    :returns: A pyesdoc document representation.
+    :rtype: unicode | dict
 
     """
     return encoder.encode(doc, encoding)
@@ -71,7 +62,7 @@ def convert(doc, encoding_from, encoding_to):
     :type encoding_to: str
 
     :returns: A pyesdoc document representation.
-    :rtype: str
+    :rtype: unicode | dict
 
     """
     return encode(decode(doc, encoding_from), encoding_to)

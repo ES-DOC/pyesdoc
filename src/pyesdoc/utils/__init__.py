@@ -5,13 +5,12 @@
    :platform: Unix, Windows
    :synopsis: Package init.
 
-.. moduleauthor:: Mark Conway-Greenslade (formerly Morgan) <momipsl@ipsl.jussieu.fr>
+.. moduleauthor:: Mark Conway-Greenslade <momipsl@ipsl.jussieu.fr>
 
 
 """
 # Module imports.
 from runtime import PYESDOC_Exception
-from decoder_xml_utils import PYESDOC_XMLError
 
 from . import (
     convert,
