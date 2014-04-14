@@ -89,4 +89,9 @@
 		</property>
 	</properties>
 	<purpose>test</purpose>
+	<storage>
+		<storageItem ontologyTypeKey="cim.1.data.DataStorageIp">
+			<fileName>HADGEM2_20C3M_1_D0_hus700</fileName>
+		</storageItem>
+	</storage>
 </dataObject>

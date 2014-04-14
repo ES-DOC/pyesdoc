@@ -6,7 +6,17 @@
     "parentObject": null,
     "acronym": "HADGEM2_20C3M_1_D0_hus700",
     "parentObjectReference": null,
-    "storage": [],
+    "storage": [{
+        "protocol": null,
+        "format": null,
+        "fileName": "HADGEM2_20C3M_1_D0_hus700",
+        "host": null,
+        "location": null,
+        "ontologyTypeKey": "cim.1.data.DataStorageIp",
+        "modificationDate": null,
+        "path": null,
+        "size": null
+    }],
     "hierarchyLevel": {
         "value": "HADGEM2_20C3M_1_D0_hus700",
         "name": "experiment",

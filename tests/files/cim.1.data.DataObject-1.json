@@ -6,7 +6,17 @@
     "parentObject": null,
     "acronym": "fossil_fuel_organic_carbon",
     "parentObjectReference": null,
-    "storage": [],
+    "storage": [{
+        "protocol": null,
+        "format": "ASCII",
+        "fileName": "emissions of organic carbon from fossil fuel burning",
+        "host": null,
+        "location": null,
+        "ontologyTypeKey": "cim.1.data.DataStorageIp",
+        "modificationDate": null,
+        "path": null,
+        "size": null
+    }],
     "hierarchyLevel": {
         "value": null,
         "name": null,

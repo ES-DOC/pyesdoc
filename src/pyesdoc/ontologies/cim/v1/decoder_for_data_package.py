@@ -9,7 +9,7 @@
    :synopsis: A set of cim 1 decoders.
 
 .. moduleauthor:: Earth System Documentation (ES-DOC) <dev@es-doc.org>
-.. note:: Code generated using esdoc_mp @ 2014-04-14 15:44:38.709077.
+.. note:: Code generated using esdoc_mp @ 2014-04-14 16:32:44.444877.
 
 """
 
@@ -201,6 +201,7 @@ def decode_data_object(xml, nsmap):
         ('properties', True, decode_data_property, 'child::cim:dataProperty/cim:dataProperty'),
         ('purpose', False, 'str', 'self::cim:dataObject/@purpose'),
         ('purpose', False, 'str', 'self::cim:dataObject/@purpose'),
+        ('storage', True, decode_data_storage_ip, 'child::cim:storage/cim:ipStorage'),
     ]
 
     return set_attributes(typeset.data.DataObject(), xml, nsmap, decodings)
@@ -318,6 +319,8 @@ def decode_data_storage_ip(xml, nsmap):
 
     """
     decodings = [
+        ('fileName', False, 'str', 'child::cim:fileName'),
+        ('format', False, 'str', 'child::cim:dataFormat/@value'),
     ]
 
     return set_attributes(typeset.data.DataStorageIp(), xml, nsmap, decodings)

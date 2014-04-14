@@ -36,4 +36,10 @@
 		<typeDisplayName>Data Object</typeDisplayName>
 		<version>1</version>
 	</meta>
+	<storage>
+		<storageItem ontologyTypeKey="cim.1.data.DataStorageIp">
+			<fileName>emissions of organic carbon from fossil fuel burning</fileName>
+			<format>ASCII</format>
+		</storageItem>
+	</storage>
 </dataObject>
