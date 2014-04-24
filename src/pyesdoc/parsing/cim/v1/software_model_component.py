@@ -182,18 +182,32 @@ def _do_component_parse(ctx):
         f(ctx)
 
 
-def _set_component_hierarchy(ctx):
-    """Parses component hierarchy."""
-    _do_component_parse(_ComponentContextInfo(ctx.doc, ctx.ext, None, []))
-
-
 def _set_type_display_name(ctx):
     """Sets document type display name."""
     ctx.meta.type_display_name = ctx.ext.type_display_name = "Model"
 
 
+def _set_component_hierarchy(ctx):
+    """Parses component hierarchy."""
+    _do_component_parse(_ComponentContextInfo(ctx.doc, ctx.ext, None, []))
+
+
+def _set_component_meta_info(ctx):
+    """Parses component hierarchy."""
+    for c in ctx.doc._component_tree:
+        if not c.meta.language:
+            c.meta.language = ctx.doc.meta.language
+        if not c.meta.project:
+            c.meta.project = ctx.doc.meta.project
+        if not c.meta.source:
+            c.meta.source = ctx.doc.meta.source
+        if not c.meta.type:
+            c.meta.type = ctx.doc.meta.type
+
+
 # Set of parsing functions.
 PARSERS = (
     _set_type_display_name,
-    _set_component_hierarchy
+    _set_component_hierarchy,
+    _set_component_meta_info
     )

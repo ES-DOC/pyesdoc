@@ -20,7 +20,7 @@ import test_types as tt
 
 def test_custom_parser_count():
     """Test number of parsers."""
-    tu.assert_iter(pyesdoc.parsing.SUPPORTED, length=8)
+    tu.assert_iter(pyesdoc.parsing.SUPPORTED, length=9)
 
 
 def test_is_custom_parseable():

@@ -1,5 +1,6 @@
 # Module imports.
 from . import (
+	activity_ensemble,
 	activity_numerical_experiment,
 	activity_simulation_run,
 	data_data_object,
@@ -18,6 +19,7 @@ __all__ = ['SUPPORTED']
 
 # Supported parsers keyed by document type.
 SUPPORTED = {
+	"cim.1.activity.ensemble": activity_ensemble,
 	"cim.1.activity.numericalexperiment": activity_numerical_experiment,
 	"cim.1.activity.simulationrun": activity_simulation_run,
 	"cim.1.data.dataobject": data_data_object,

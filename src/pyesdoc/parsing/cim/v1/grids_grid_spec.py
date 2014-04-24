@@ -29,6 +29,13 @@ def _set_description(ctx):
         ctx.ext.description = ctx.doc.esm_exchange_grids[0].long_name
 
 
+def _set_ids(ctx):
+    """Sets document id."""
+    for grid in ctx.doc.esm_model_grids + ctx.doc.esm_exchange_grids:
+        if not grid.id:
+            grid.id = grid.short_name
+
+
 def _set_summary_fields(ctx):
     """Sets document summary fields."""
     if len(ctx.doc.esm_model_grids):
@@ -48,5 +55,6 @@ PARSERS = (
     _set_display_name,
     _set_type_display_name,
     _set_description,
-    _set_summary_fields
+    _set_ids,
+    _set_summary_fields,
     )

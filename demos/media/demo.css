@@ -20,8 +20,6 @@ body > header h1 small b {
     color: black;
 }
 
-
-
 .page-content-container {
     display: inline-block;
     width: 100%;
@@ -32,7 +30,7 @@ body > header h1 small b {
 }
 
 .esdoc-document nav {
-    margin-bottom: 4px;
+    margin-bottom: 8px;
     border-bottom: 0;
 }
 

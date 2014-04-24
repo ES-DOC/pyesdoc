@@ -9,7 +9,7 @@
    :synopsis: Encpasulates meta-information pertaining to the cim.v1 typeset.
 
 .. moduleauthor:: Earth System Documentation (ES-DOC) <dev@es-doc.org>
-.. note:: Code generated using esdoc_mp @ 2014-04-14 16:32:44.465928.
+.. note:: Code generated using esdoc_mp @ 2014-04-24 17:22:15.171286.
 
 """
 # Module imports.
@@ -133,7 +133,7 @@ software.Timing.type_key = 'cim.1.software.Timing'
 misc.DocumentSet.type_key = 'cim.1.misc.DocumentSet'
 
 
-# Set type attribute info (name, type, is_required, is_iterative).
+# Set type info (name, type, is_required, is_iterative).
 activity.Activity.type_info = (
     ('funding_sources', str, False, True),
     ('projects', str, False, True),
@@ -188,7 +188,7 @@ activity.Experiment.type_info = (
     ('measurement_campaigns', activity.MeasurementCampaign, False, True),
     ('requires', activity.NumericalActivity, False, True),
     ('requires_references', shared.DocReference, False, True),
-    ('supports', str, True, True),
+    ('supports', str, False, True),
     ('supports_references', shared.DocReference, False, True),
 )
 
@@ -216,8 +216,8 @@ activity.NumericalActivity.type_info = (
     ('description', str, False, False),
     ('long_name', str, False, False),
     ('short_name', str, True, False),
-    ('supports', activity.Experiment, True, True),
-    ('supports_references', shared.DocReference, True, True),
+    ('supports', activity.Experiment, False, True),
+    ('supports_references', shared.DocReference, False, True),
 )
 
 activity.NumericalExperiment.type_info = (
@@ -677,7 +677,7 @@ shared.Relationship.type_info = (
 
 shared.ResponsibleParty.type_info = (
     ('abbreviation', str, False, False),
-    ('contact_info', shared.ResponsiblePartyContactInfo, True, False),
+    ('contact_info', shared.ResponsiblePartyContactInfo, False, False),
     ('individual_name', str, False, False),
     ('organisation_name', str, False, False),
     ('role', str, False, False),
