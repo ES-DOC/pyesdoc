@@ -29,7 +29,7 @@ def _set_doc_errors_02(doc):
     return 1
 
 
-def _test_validation(mod):
+def _test(mod):
     """Performs standard document validation tests."""
     # Set test document/error factories.
     error_setters = (
@@ -51,9 +51,9 @@ def _test_validation(mod):
         errors = pyesdoc.validate(doc)
 
         # ... print errors if mismatch between expected & actual.
-        if len(errors) == expected_error_count:
-            for error in errors:
-                rt.log(error, level=rt.LOG_LEVEL_WARNING)
+        # if len(errors) == expected_error_count:
+        #     for error in errors:
+        #         rt.log(error, level=rt.LOG_LEVEL_WARNING)
 
         # ... assert errors.
         tu.assert_iter(errors, expected_error_count)
@@ -62,6 +62,5 @@ def _test_validation(mod):
 def test():
     """Performs parsing tests over the set of test documents."""
     for mod in tt.MODULES:
-        desc = "Test validation - {0}".format(mod.DOC_TYPE_KEY)
-        _test_validation.description = desc
-        yield _test_validation, mod
+        tu.init(_test, 'validation', mod)
+        yield _test, mod

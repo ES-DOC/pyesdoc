@@ -39,7 +39,7 @@ def _set_api_url(mode='dev'):
         pyesdoc.set_option("api_url", "http://api.es-doc.org")
 
 
-def _test_publishing(mod):
+def _test(mod):
     """Performs a publishing workflow test."""
     # Create document.
     doc = _create_doc(mod)
@@ -109,5 +109,5 @@ def test():
     """Performs publishing workflow tests over the set of test documents."""
     _set_api_url('dev')
     for mod in tt.MODULES:
-        _test_publishing.description = 'Test publishing - {0}'.format(mod.DOC_TYPE_KEY)
-        yield _test_publishing, mod
+        tu.init(_test, 'publishing', mod)
+        yield _test, mod

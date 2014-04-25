@@ -84,6 +84,22 @@ def get_test_file(name):
         return open(path, 'r')
 
 
+def init(test, description, mod=None, suffix=None):
+    """Initializes a test module prior to a test being executed.
+
+    :param function test: The test to be run.
+    :param str description: The description to be applied to the test.
+    :param module mod: The associated document test module.
+
+    """
+    if mod is not None and suffix is not None:
+        test.description = "ES-DOC :: Test {0} - {1} ({2})".format(description, mod.DOC_TYPE_KEY, suffix)
+    elif mod is not None:
+        test.description = "ES-DOC :: Test {0} - {1}".format(description, mod.DOC_TYPE_KEY)        
+    else:
+        test.description = "ES-DOC :: Test {0}".format(description)
+
+
 def decode(doc, encoding):
     """Decode a document representation."""
     # Decode.

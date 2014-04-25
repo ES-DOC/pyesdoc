@@ -30,7 +30,7 @@ def test_is_custom_parseable():
         assert pyesdoc.is_parseable(doc_type.type_key) == is_parseable
 
 
-def _test_parsing(mod):
+def _test(mod):
     """Performs standard document parsing tests,"""
     doc = tu.get_doc(mod)    # Note - returns a parsed document
     tu.assert_object(doc.ext)
@@ -43,6 +43,5 @@ def _test_parsing(mod):
 def test():
     """Performs parsing tests over the set of test documents."""
     for mod in tt.MODULES:
-        desc = "Test parsing - {0}".format(mod.DOC_TYPE_KEY)
-        _test_parsing.description = desc
-        yield _test_parsing, mod
+        tu.init(_test, 'parsing', mod)
+        yield _test, mod

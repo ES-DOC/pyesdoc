@@ -15,7 +15,8 @@ import test_utils as tu
 import test_types as tt
 
 
-def _test_encoding(mod, doc, encoding):
+
+def _test(mod, doc, encoding):
     """Perform encoding specific serialization tests."""
     # Encode/decode and re-assert document.
     as_repr = tu.encode(doc, encoding)
@@ -28,11 +29,11 @@ def _test_encoding(mod, doc, encoding):
     tu.assert_str(as_repr, as_repr_1)
 
 
-def _test_xml_metafor_cim_v1(mod, doc):
+def _test_metafor_xml(doc):
     """Perform metafor cim v1 xml serialization tests."""
     # Simply verify that encoding is not unsupported at this time.
     try:
-        as_xml = tu.encode(doc, pyesdoc.METAFOR_CIM_XML_ENCODING)
+        tu.encode(doc, pyesdoc.METAFOR_CIM_XML_ENCODING)
     except NotImplementedError:
         pass
 
@@ -40,15 +41,15 @@ def _test_xml_metafor_cim_v1(mod, doc):
 def _test_html(mod, doc):
     """Perform html serialization tests."""
     try:
-        as_html = tu.encode(doc, pyesdoc.ESDOC_ENCODING_HTML)
-    except KeyError as e:
+        tu.encode(doc, pyesdoc.ESDOC_ENCODING_HTML)
+    except KeyError as err:
         if mod.DOC_TYPE.type_key.lower() in (
             "cim.1.activity.simulationrun",
             "cim.1.misc.documentset",
             "cim.1.software.statisticalmodelcomponent"):
             pass
         else:
-            raise e
+            raise err
 
 
 def test():
@@ -58,21 +59,17 @@ def test():
         doc = tu.get_doc(mod)
 
         # Test json.
-        _test_encoding.description = \
-            "Test serialization - {0} (JSON)".format(mod.DOC_TYPE_KEY)
-        yield _test_encoding, mod, doc, pyesdoc.ESDOC_ENCODING_JSON
+        tu.init(_test, 'serialization', mod, 'JSON')
+        yield _test, mod, doc, pyesdoc.ESDOC_ENCODING_JSON
 
         # Test xml.
-        _test_encoding.description = \
-            "Test serialization - {0} (XML)".format(mod.DOC_TYPE_KEY)
-        yield _test_encoding, mod, doc, pyesdoc.ESDOC_ENCODING_XML
+        tu.init(_test, 'serialization', mod, 'XML')
+        yield _test, mod, doc, pyesdoc.ESDOC_ENCODING_XML
 
         # Test metafor cim v1 xml.
-        _test_xml_metafor_cim_v1.description = \
-            "Test serialization - {0} (XML Metafor CIM v1)".format(mod.DOC_TYPE_KEY)
-        yield _test_xml_metafor_cim_v1, mod, doc
+        tu.init(_test_metafor_xml, 'serialization', mod, 'XML Metafor CIM v1')
+        yield _test_metafor_xml, doc
 
         # Test html.
-        _test_html.description = \
-            "Test serialization - {0} (HTML)".format(mod.DOC_TYPE_KEY)
+        tu.init(_test_html, 'serialization', mod, 'HTML')
         yield _test_html, mod, doc

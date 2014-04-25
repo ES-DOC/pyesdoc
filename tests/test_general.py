@@ -69,14 +69,14 @@ def test_version():
 def test_module_setup():
     """Tests that the test document modules are correctly setup."""
     for mod in tt.MODULES:
-        _test_module_setup.description = "Test module setup - {0}".format(mod.__name__.split('.')[1])
+        _test_module_setup.description = "ES-DOC :: Test module setup - {0}".format(mod.__name__.split('.')[1])
         yield _test_module_setup, mod
 
 
 def test_module_reset():
     """Tests that the test document modules are correctly reset."""
     for mod in tt.MODULES:
-        _test_module_reset.description = "Test module reset - {0}".format(mod.__name__.split('.')[1])
+        _test_module_reset.description = "ES-DOC :: Test module reset - {0}".format(mod.__name__.split('.')[1])
         yield _test_module_reset, mod
 
 
