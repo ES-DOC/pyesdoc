@@ -53,11 +53,21 @@ def _do_test(encoding):
         tu.assert_object(as_doc, cim.v1.ModelComponent)
 
 
-def test_xml_serialization():
+def _test_xml_serialization():
     """Test xml serialization of a document containing non-ascii characters."""
     _do_test(pyesdoc.ESDOC_ENCODING_XML)
 
 
-def test_json_serialization():
+def _test_json_serialization():
     """Test json serialization of a document containing non-ascii characters."""
     _do_test(pyesdoc.ESDOC_ENCODING_JSON)
+
+
+def test():
+    """Test serialization of documents containing non-ascii characters."""
+    for f in (
+        _test_xml_serialization,
+        _test_json_serialization,
+        ):
+        tu.init(f, f.__doc__[5:])
+        yield f

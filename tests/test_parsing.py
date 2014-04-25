@@ -18,12 +18,12 @@ import test_types as tt
 
 
 
-def test_custom_parser_count():
+def _test_custom_parser_count():
     """Test number of parsers."""
     tu.assert_iter(pyesdoc.parsing.SUPPORTED, length=9)
 
 
-def test_is_custom_parseable():
+def _test_is_custom_parseable():
     """Test parsers correctly mapped to document types."""
     for doc_type in pyesdoc.ontologies.get_types():
         is_parseable = doc_type.type_key.lower() in pyesdoc.parsing.SUPPORTED
@@ -42,6 +42,13 @@ def _test(mod):
 
 def test():
     """Performs parsing tests over the set of test documents."""
+    for f in (
+        _test_custom_parser_count,
+        _test_is_custom_parseable,
+        ):
+        tu.init(f, f.__doc__[5:])
+        yield f
+
     for mod in tt.MODULES:
         tu.init(_test, 'parsing', mod)
         yield _test, mod
