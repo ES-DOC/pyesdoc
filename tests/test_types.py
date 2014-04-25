@@ -63,6 +63,14 @@ for mod in MODULES:
         INITIAL_STATE[mod][field] = getattr(mod, field)
 
 
+def reset_all():
+    """Resets all module state prior to usage.
+
+    """
+    for mod in MODULES:
+        reset(mod)
+
+
 def reset(mod):
     """Resets module state prior to usage.
 

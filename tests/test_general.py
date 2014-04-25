@@ -65,8 +65,21 @@ def _test_version():
 
 def _test_module_reset(mod):
     """Test that the test document modules are correctly reset."""
-    # TODO
-    pass
+    # Assert module state is cached.
+    assert mod in tt.INITIAL_STATE
+
+    # Update state.
+    for field in tt.STATE_FIELDS:
+        setattr(mod, field, "XXX")
+        tu.assert_str(getattr(mod, field), "XXX")
+
+    # Reset.
+    tt.reset(mod)
+
+    # Assert initial state.
+    for field in tt.STATE_FIELDS:
+        state = tt.INITIAL_STATE[mod][field]
+        assert getattr(mod, field) == state
 
 
 def _test_module_file_open(mod):
@@ -82,10 +95,11 @@ def _test_create_01():
 
 def _test_create_02():
     """Test creating documents - 2."""
-    for o, v, p, t in pyesdoc.list_types():
-        doc = _create_doc(o, v, p, t)
+    for ontology, version, package, typeof in pyesdoc.list_types():
+        doc = _create_doc(ontology, version, package, typeof)
         _assert_doc(doc)
-        tu.assert_str(doc.__class__.type_key, "{0}.{1}.{2}.{3}".format(o, v, p, t))
+        type_key = "{0}.{1}.{2}.{3}".format(ontology, version, package, typeof)
+        tu.assert_str(doc.__class__.type_key, type_key)
 
 
 def _test_create_03():
@@ -95,11 +109,13 @@ def _test_create_03():
         _assert_doc(doc, doc_type)
 
 
+def _test_import(mod):
+    """Test module import."""
+    assert inspect.ismodule(mod)
+
+
 def test_imports_01():
     """Test importing packages - 1."""
-    def do_test(mod):
-        assert inspect.ismodule(mod)
-
     for mod in (
         pyesdoc,
         pyesdoc.constants,
@@ -120,15 +136,12 @@ def test_imports_01():
         pyesdoc.validation.graph,
         pyesdoc.validation.validator,
         ):
-        tu.init(do_test, "import module", mod)
-        yield do_test, mod
+        tu.init(_test_import, "import module", mod)
+        yield _test_import, mod
 
 
 def test_imports_02():
     """Test importing packages - 2."""
-    def do_test(mod):
-        assert inspect.ismodule(mod)
-
     cim = pyesdoc.ontologies.cim
     for mod in (
         cim,
@@ -151,8 +164,8 @@ def test_imports_02():
         cim.v1.typeset_for_software_package,
         cim.v1.typeset_meta,
         ):
-        tu.init(do_test, "import cim module", mod)
-        yield do_test, mod
+        tu.init(_test_import, "import cim module", mod)
+        yield _test_import, mod
 
 
 def _test_is_supported_ontology():
@@ -169,8 +182,8 @@ def _test_is_supported_type_01():
     """Test supported ontology types - positive."""
     # supported
     assert pyesdoc.is_supported(_CIM, _CIM_V1, _CIM_PACKAGE, _CIM_TYPE)
-    for o, v, p, t in pyesdoc.list_types():
-        assert pyesdoc.is_supported(o, v, p, t)
+    for ontology, version, package, typeof in pyesdoc.list_types():
+        assert pyesdoc.is_supported(ontology, version, package, typeof)
 
 
 def _test_is_supported_type_02():
