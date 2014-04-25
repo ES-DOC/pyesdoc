@@ -92,12 +92,22 @@ def init(test, description, mod=None, suffix=None):
     :param module mod: The associated document test module.
 
     """
+    desc = "ES-DOC :: pyesdoc :: Test {0}"
     if mod is not None and suffix is not None:
-        test.description = "ES-DOC :: Test {0} - {1} ({2})".format(description, mod.DOC_TYPE_KEY, suffix)
+        desc += " - {1} ({2})"
+        if hasattr(mod, "DOC_TYPE_KEY"):
+            desc = desc.format(description, mod.DOC_TYPE_KEY, suffix)
+        else:
+            desc = desc.format(description, mod.__name__, suffix)
     elif mod is not None:
-        test.description = "ES-DOC :: Test {0} - {1}".format(description, mod.DOC_TYPE_KEY)        
+        desc += " - {1}"
+        if hasattr(mod, "DOC_TYPE_KEY"):
+            desc = desc.format(description, mod.DOC_TYPE_KEY)
+        else:
+            desc = desc.format(description, mod.__name__)
     else:
-        test.description = "ES-DOC :: Test {0}".format(description)
+        desc = desc.format(description)
+    test.description = desc
 
 
 def decode(doc, encoding):

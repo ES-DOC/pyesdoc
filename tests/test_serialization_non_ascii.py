@@ -65,9 +65,9 @@ def _test_json_serialization():
 
 def test():
     """Test serialization of documents containing non-ascii characters."""
-    for f in (
+    for func in (
         _test_xml_serialization,
         _test_json_serialization,
         ):
-        tu.init(f, f.__doc__[5:])
-        yield f
+        tu.init(func, func.__doc__[5:])
+        yield func

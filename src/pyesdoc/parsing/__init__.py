@@ -1,5 +1,5 @@
 # Module imports.
-from .parse import (
+from .parser import (
 	is_parseable,
 	parse,
 	SUPPORTED

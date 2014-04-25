@@ -15,7 +15,6 @@ import inspect
 import nose.tools
 
 import pyesdoc
-import pyesdoc.ontologies.cim as cim
 import test_utils as tu
 import test_types as tt
 
@@ -32,20 +31,23 @@ _INSTITUTE = 'TEST'
 _PROJECT = 'TEST'
 
 
-def _create_doc(o=_CIM, v=_CIM_V1, p=_CIM_PACKAGE, t=_CIM_TYPE):
-    return pyesdoc.create(".".join([o, v, p, t]), _INSTITUTE, _PROJECT)
+def _create_doc(ontology=_CIM,
+                version=_CIM_V1,
+                package=_CIM_PACKAGE,
+                typeof=_CIM_TYPE):
+    """Creates a test document."""
+    type_key = ".".join([ontology, version, package, typeof])
+
+    return pyesdoc.create(type_key, _INSTITUTE, _PROJECT)
 
 
-def _assert_doc(doc, type=None):
-    tu.assert_object(doc, type)
+def _assert_doc(doc, typeof=None):
+    """Perform standard test document assertions."""
+    tu.assert_object(doc, typeof)
     if hasattr(doc, 'meta'):
         tu.assert_str(doc.meta.institute, _INSTITUTE.lower())
         tu.assert_str(doc.meta.language, pyesdoc.ESDOC_DEFAULT_LANGUAGE)
         tu.assert_str(doc.meta.project, _PROJECT.lower())
-
-
-def _test_open_file(mod):
-    assert tu.get_test_file(mod.DOC_FILE) is not None
 
 
 def _test_module_setup(mod):
@@ -56,41 +58,26 @@ def _test_module_setup(mod):
         tu.assert_bool(hasattr(mod, field), True)
 
 
-def _test_module_reset(mod):
-    """Test that the test document module is correctly reset."""
-    pass
-
-
 def _test_version():
     """Test package version."""
     tu.assert_str(pyesdoc.__version__, "0.9.0.3")
 
 
-def _test_module_setup():
-    """Test that the test document modules are correctly setup."""
-    for mod in tt.MODULES:
-        _test_module_setup.description = "ES-DOC :: Test module setup - {0}".format(mod.__name__.split('.')[1])
-        yield _test_module_setup, mod
-
-
-def test_module_reset():
+def _test_module_reset(mod):
     """Test that the test document modules are correctly reset."""
-    for mod in tt.MODULES:
-        tu.init(_test_module_reset, 'module reset', mod)
-        yield _test_module_reset, mod
+    # TODO
+    pass
 
 
-def test_open_files():
-    """Test opening test files."""
-    for mod in tt.MODULES:
-        tu.init(_test_open_file, 'open test file', mod)
-        yield _test_open_file, mod
+def _test_module_file_open(mod):
+    """Test opening module test files."""
+    assert tu.get_test_file(mod.DOC_FILE) is not None
 
 
 def _test_create_01():
     """Test creating documents - 1."""
     doc = _create_doc()
-    _assert_doc(doc, cim.v1.ModelComponent)
+    _assert_doc(doc, pyesdoc.ontologies.cim.v1.ModelComponent)
 
 
 def _test_create_02():
@@ -103,27 +90,69 @@ def _test_create_02():
 
 def _test_create_03():
     """Test creating documents - 3."""
-    for type in pyesdoc.get_types():
-        doc = pyesdoc.create(type, _INSTITUTE, _PROJECT)
-        _assert_doc(doc, type)
+    for doc_type in pyesdoc.get_types():
+        doc = pyesdoc.create(doc_type, _INSTITUTE, _PROJECT)
+        _assert_doc(doc, doc_type)
 
 
-def _test_import_01():
-    """Test importing package - 1."""
-    assert inspect.ismodule(pyesdoc)
-    assert inspect.ismodule(pyesdoc.ontologies.cim)
+def test_imports_01():
+    """Test importing packages - 1."""
+    def do_test(mod):
+        assert inspect.ismodule(mod)
+
+    for mod in (
+        pyesdoc,
+        pyesdoc.constants,
+        pyesdoc.factory,
+        pyesdoc.io,
+        pyesdoc.ontologies,
+        pyesdoc.options,
+        pyesdoc.parsing,
+        pyesdoc.parsing.default,
+        pyesdoc.parsing.parser,
+        pyesdoc.publishing,
+        pyesdoc.serialization,
+        pyesdoc.utils,
+        pyesdoc.utils.convert,
+        pyesdoc.utils.functional,
+        pyesdoc.utils.runtime,
+        pyesdoc.validation,
+        pyesdoc.validation.graph,
+        pyesdoc.validation.validator,
+        ):
+        tu.init(do_test, "import module", mod)
+        yield do_test, mod
 
 
-def _test_import_02():
-    """Test importing package - 2."""
-    import pyesdoc.ontologies.cim
-    import pyesdoc.ontologies.cim.v1
-    import pyesdoc.ontologies.cim.v1.decoder_for_activity_package
-    import pyesdoc.ontologies.cim.v1.decoder_for_data_package
-    import pyesdoc.ontologies.cim.v1.decoder_for_grids_package
-    import pyesdoc.ontologies.cim.v1.decoder_for_quality_package
-    import pyesdoc.ontologies.cim.v1.decoder_for_shared_package
-    import pyesdoc.ontologies.cim.v1.decoder_for_software_package
+def test_imports_02():
+    """Test importing packages - 2."""
+    def do_test(mod):
+        assert inspect.ismodule(mod)
+
+    cim = pyesdoc.ontologies.cim
+    for mod in (
+        cim,
+        cim.v1,
+        cim.v1.decoder,
+        cim.v1.decoder_for_activity_package,
+        cim.v1.decoder_for_data_package,
+        cim.v1.decoder_for_grids_package,
+        cim.v1.decoder_for_misc_package,
+        cim.v1.decoder_for_quality_package,
+        cim.v1.decoder_for_shared_package,
+        cim.v1.decoder_for_software_package,
+        cim.v1.typeset,
+        cim.v1.typeset_for_activity_package,
+        cim.v1.typeset_for_data_package,
+        cim.v1.typeset_for_grids_package,
+        cim.v1.typeset_for_misc_package,
+        cim.v1.typeset_for_quality_package,
+        cim.v1.typeset_for_shared_package,
+        cim.v1.typeset_for_software_package,
+        cim.v1.typeset_meta,
+        ):
+        tu.init(do_test, "import cim module", mod)
+        yield do_test, mod
 
 
 def _test_is_supported_ontology():
@@ -154,7 +183,7 @@ def _test_is_supported_type_02():
 
 
 def _test_list_types():
-    """Test listing of supported types."""
+    """Test listing supported types."""
     # supported - all
     types = pyesdoc.list_types()
     tu.assert_int(len(types), 103)
@@ -184,21 +213,31 @@ def _test_set_option_02():
 
 
 def test():
-    """Dolly"""
-    for f in (
+    """Runs set of geenral unit tests."""
+    for mod in tt.MODULES:
+        tu.init(_test_module_file_open, 'open document module test file', mod)
+        yield _test_module_file_open, mod
+
+    for mod in tt.MODULES:
+        tu.init(_test_module_reset, 'document module reset', mod)
+        yield _test_module_reset, mod
+
+    for mod in tt.MODULES:
+        tu.init(_test_module_setup, 'document module setup', mod)
+        yield _test_module_setup, mod
+
+    for func in (
         _test_version,
-        _test_module_setup,
-        _test_create_01,
-        _test_create_02,
-        _test_create_03,
-        _test_import_01,
-        _test_import_02,
+        _test_set_option_01,
+        _test_set_option_02,
         _test_is_supported_ontology,
         _test_is_supported_type_01,
         _test_is_supported_type_02,
         _test_list_types,
-        _test_set_option_01,
-        _test_set_option_02,
+        _test_create_01,
+        _test_create_02,
+        _test_create_03,
         ):
-        tu.init(f, f.__doc__[5:])
-        yield f
+        tu.init(func, func.__doc__[5:])
+        yield func
+
