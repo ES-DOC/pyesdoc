@@ -15,5 +15,6 @@ from runtime import PYESDOC_Exception
 from . import (
     convert,
     functional,
+    logger,
     runtime,
     )

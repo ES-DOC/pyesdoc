@@ -55,7 +55,7 @@ class _DocumentValidationNode(object):
     def __repr__(self):
         """Returns string representation."""
         if self.error:
-            return "{0} :: {1}".format(self.path, self.error)
+            return "{0} --> {1}".format(self.path, self.error)
         else:
             return self.path
 

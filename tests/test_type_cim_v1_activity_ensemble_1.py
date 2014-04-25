@@ -119,4 +119,4 @@ def assert_doc_updates(doc):
     :param object doc: Document being tested.
 
     """
-    pass
+    tu.assert_str(doc.description, "X")

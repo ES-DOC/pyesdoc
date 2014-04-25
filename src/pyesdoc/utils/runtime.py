@@ -14,6 +14,13 @@ import inspect
 
 
 
+# Set of logging levels.
+LOG_LEVEL_DEBUG = 'DUBUG'
+LOG_LEVEL_INFO = 'INFO'
+LOG_LEVEL_WARNING = 'WARNING'
+LOG_LEVEL_ERROR = 'ERROR'
+
+
 class PYESDOC_Exception(Exception):
     """Default library exception class.
 
@@ -205,7 +212,7 @@ def assert_doc(name, doc, msg=None):
 
     :param msg: Error message to output if assertion fails.
     :type msg: str or None
-    
+
     """
     def get_msg():
         return msg if msg is not None else \
@@ -265,12 +272,29 @@ def throw(msg):
     raise_error(msg)
 
 
-def log(msg):
+def log(msg=None, level=LOG_LEVEL_INFO):
     """Outputs a message to log.
 
-    :param msg: Logging message.
-    :type msg: str
+    :param str msg: Message for writing to log.
+    :param str level: Logging level.
 
     """
-    # TODO Implement proper logging.
-    print "ES-DOC API :: " + str(msg)
+    # Format.
+    if msg:
+        msg = "\nES-DOC :: pyesdoc :: {0} > {1}".format(level, str(msg).strip())
+    else:
+        msg = '-----------------------------------------'
+        msg += msg
+
+    # TODO output to logs.
+    print msg
+
+
+def log_error(err):
+    """Logs a runtime error.
+
+    :param Exception err: Exception to be logged.
+
+    """
+    msg = "!!! RUNTIME ERROR !!! :: {0} :: {1}.".format(err.__class__, err)
+    log(msg, level=LOG_LEVEL_ERROR)

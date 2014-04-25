@@ -16,7 +16,8 @@ from .utils import runtime as rt
 
 # Set of supported options.
 _OPTIONS = {
-    'api_url' : "http://test.api.es-doc.org"
+    'api_url' : "http://test.api.es-doc.org",
+    'institute': "UNKNOWN"
 }
 
 

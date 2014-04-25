@@ -10,38 +10,53 @@
 
 """
 # Module imports.
-import nose
-
 import pyesdoc
 import test_utils as tu
 import test_types as tt
+from pyesdoc.utils import runtime as rt
 
 
 
-def _get_doc_01(mod):
-    return tu.get_doc(mod), 0
+def _set_doc_errors_01(doc):
+    """Valid document - i.e. error count = 0."""
+    return 0
 
 
-def _get_doc_02(mod):
-    doc = tu.get_doc(mod)
+def _set_doc_errors_02(doc):
+    """Invalid document - meta attribute is missing."""
     doc.meta = None
 
-    return doc, 1
+    return 1
 
 
 def _test_validation(mod):
-    """Performs standard document validation tests,"""
-    for factory in (
-        _get_doc_01,
-        _get_doc_02
-        ):
-        doc, expected_error_count = factory(mod)
-        errors = pyesdoc.validate(doc)
-        if len(errors) != expected_error_count:
-            for error in errors:
-                print error
+    """Performs standard document validation tests."""
+    # Set test document/error factories.
+    error_setters = (
+        _set_doc_errors_01,
+        _set_doc_errors_02
+        )
+    if hasattr(mod, "get_document_error_setters"):
+        error_setters += mod.get_document_error_setters()
 
-        tu.assert_iter(pyesdoc.validate(doc), expected_error_count)
+    # Perform validation test.
+    for error_setter in error_setters:
+        # ... set valid test document.
+        doc = tu.get_doc(mod)
+
+        # ... set expected error count.
+        expected_error_count = error_setter(doc)
+
+        # ... validate document.
+        errors = pyesdoc.validate(doc)
+
+        # ... print errors if mismatch between expected & actual.
+        if len(errors) == expected_error_count:
+            for error in errors:
+                rt.log(error, level=rt.LOG_LEVEL_WARNING)
+
+        # ... assert errors.
+        tu.assert_iter(errors, expected_error_count)
 
 
 def test():
