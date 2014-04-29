@@ -193,7 +193,7 @@ def _set_component_hierarchy(ctx):
 
 
 def _set_component_meta_info(ctx):
-    """Parses component hierarchy."""
+    """Parses component meta info."""
     for c in ctx.doc._component_tree:
         if not c.meta.language:
             c.meta.language = ctx.doc.meta.language
@@ -205,9 +205,18 @@ def _set_component_meta_info(ctx):
             c.meta.type = ctx.doc.meta.type
 
 
+def _set_component_type_info(ctx):
+    """Parses component type info."""
+    if not c.type:
+        c.type = c.meta.type
+    if c.type not in c.types:
+        c.types = [c.type] + c.types
+
+
 # Set of parsing functions.
 PARSERS = (
     _set_type_display_name,
     _set_component_hierarchy,
-    _set_component_meta_info
+    _set_component_meta_info,
+    _set_component_type_info
     )

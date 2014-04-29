@@ -26,29 +26,6 @@ _CIM_V1 = '1'
 _CIM_PACKAGE = 'software'
 _CIM_TYPE = 'modelComponent'
 
-# Test constants.
-_INSTITUTE = 'TEST'
-_PROJECT = 'TEST'
-
-
-def _create_doc(ontology=_CIM,
-                version=_CIM_V1,
-                package=_CIM_PACKAGE,
-                typeof=_CIM_TYPE):
-    """Creates a test document."""
-    type_key = ".".join([ontology, version, package, typeof])
-
-    return pyesdoc.create(type_key, _INSTITUTE, _PROJECT)
-
-
-def _assert_doc(doc, typeof=None):
-    """Perform standard test document assertions."""
-    tu.assert_object(doc, typeof)
-    if hasattr(doc, 'meta'):
-        tu.assert_str(doc.meta.institute, _INSTITUTE.lower())
-        tu.assert_str(doc.meta.language, pyesdoc.ESDOC_DEFAULT_LANGUAGE)
-        tu.assert_str(doc.meta.project, _PROJECT.lower())
-
 
 def _test_module_setup(mod):
     """Test that the test document module is correctly setup."""
@@ -70,8 +47,8 @@ def _test_module_reset(mod):
 
     # Update state.
     for field in tt.STATE_FIELDS:
-        setattr(mod, field, "XXX")
-        tu.assert_str(getattr(mod, field), "XXX")
+        setattr(mod, field, 'XXX')
+        tu.assert_str(getattr(mod, field), 'XXX')
 
     # Reset.
     tt.reset(mod)
@@ -85,28 +62,6 @@ def _test_module_reset(mod):
 def _test_module_file_open(mod):
     """Test opening module test files."""
     assert tu.get_test_file(mod.DOC_FILE) is not None
-
-
-def _test_create_01():
-    """Test creating documents - 1."""
-    doc = _create_doc()
-    _assert_doc(doc, pyesdoc.ontologies.cim.v1.ModelComponent)
-
-
-def _test_create_02():
-    """Test creating documents - 2."""
-    for ontology, version, package, typeof in pyesdoc.list_types():
-        doc = _create_doc(ontology, version, package, typeof)
-        _assert_doc(doc)
-        type_key = "{0}.{1}.{2}.{3}".format(ontology, version, package, typeof)
-        tu.assert_str(doc.__class__.type_key, type_key)
-
-
-def _test_create_03():
-    """Test creating documents - 3."""
-    for doc_type in pyesdoc.get_types():
-        doc = pyesdoc.create(doc_type, _INSTITUTE, _PROJECT)
-        _assert_doc(doc, doc_type)
 
 
 def _test_import(mod):
@@ -247,9 +202,6 @@ def test():
         _test_is_supported_type_01,
         _test_is_supported_type_02,
         _test_list_types,
-        _test_create_01,
-        _test_create_02,
-        _test_create_03,
         ):
         tu.init(func, func.__doc__[5:])
         yield func

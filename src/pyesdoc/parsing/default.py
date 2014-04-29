@@ -54,7 +54,7 @@ def _set_display_name(ctx):
 
 def _set_description(ctx):
     """Sets document description."""
-    ctx.ext.description = None    
+    ctx.ext.description = None
     if hasattr(ctx.doc, "description") and ctx.doc.description:
         ctx.ext.description = ctx.doc.description[:1023]
     elif hasattr(ctx.doc, "long_name") and ctx.doc.long_name:
