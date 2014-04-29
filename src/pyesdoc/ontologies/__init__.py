@@ -5,7 +5,7 @@
    :platform: Unix, Windows
    :synopsis: Ontologies sub-package init.
 
-.. moduleauthor:: Mark Conway-Greenslade (formerly Morgan) <momipsl@ipsl.jussieu.fr>
+.. moduleauthor:: Mark Conway-Greenslade <momipsl@ipsl.jussieu.fr>
 
 
 """
@@ -15,30 +15,14 @@ from .. utils import runtime as rt
 
 
 
+# Set of registered ontologies.
+ONTOLOGIES = ()
+
 # Set of ontologies supported out of the box.
-_defaults = (cim,)
+_DEFAULT_ONTOLOGIES = (cim,)
 
-
-def _get_ontologies():
-    """Returns set of supported ontologies."""
-    result = []
-    for o in _defaults:
-        for v in o.VERSIONS:
-            result.append((o.NAME, v.ID, v.TYPES))
-
-    return tuple(result)
-
-
-# Set of supported ontologies.
-ESDOC_ONTOLOGIES = _get_ontologies()
-
-
-class _State(object):
-    """Module state bag.
-
-    """
-    # Set of supported ontologies.
-    ontologies = []
+# Set of registered types.
+TYPES = ()
 
 
 def get_type_key(name, version, package, type):
@@ -67,15 +51,20 @@ def register(o):
     :type o: module
 
     """
-    if o not in _State.ontologies:
-        _State.ontologies.append(o)
+    global ONTOLOGIES
+    global TYPES
+
+    if o not in ONTOLOGIES:
+        ONTOLOGIES += (o,)
+        for v in o.VERSIONS:
+            TYPES += v.TYPES
 
 
 # Auto register default ontologies.
-for o in _defaults:
+for o in _DEFAULT_ONTOLOGIES:
     register(o)
 
-    
+
 def get_types(name=None, version=None):
     """Returns set of supported types.
 
@@ -91,7 +80,7 @@ def get_types(name=None, version=None):
     """
     result = ()
 
-    for o in _State.ontologies:
+    for o in ONTOLOGIES:
         if name is None or name == o.NAME:
             for v in o.VERSIONS:
                 if version is None or version == v.ID:
@@ -114,7 +103,7 @@ def list_types(name=None, version=None):
 
     """
     types = get_types(name, version)
-    types = [tuple(t.type_key.split('.')) for t in types] 
+    types = [tuple(t.type_key.split('.')) for t in types]
 
     return tuple(types)
 
@@ -154,7 +143,7 @@ def get_type_from_key(key):
 
     """
     type_key = str(key).lower()
-    for t in get_types():
+    for t in TYPES:
         if t.type_key.lower() == type_key:
             return t
 
@@ -214,20 +203,19 @@ def create(name, version, package, type):
     return None if type is None else type()
 
 
-def get_type_info(type, types=get_types()):
+def get_type_info(doc_type):
     """Returns meta-information associated with a type.
 
-    :param type: A type for which meta-information is to be returned.
-    :type type: class
+    :param class doc_type: A document type for which meta-information is to be returned.
 
     :returns: Type meta-information.
     :rtype: tuple
-    
+
     """
-    ti = type.type_info
-    for base in type.__bases__:
-        if base in types:
-            ti += get_type_info(base, types)
+    ti = doc_type.type_info
+    for base in doc_type.__bases__:
+        if base in TYPES:
+            ti += get_type_info(base)
 
     return ti
 
@@ -257,9 +245,9 @@ def associate(left, attr, right):
     # Create reference.
     # TODO alter reference based upon ontology type.
     ref = cim.v1.DocReference()
-    ref.id = right.doc_info.id
-    ref.version = right.doc_info.version
-    
+    ref.id = right.meta.id
+    ref.version = right.meta.version
+
     # Set association.
     setattr(left, attr, ref)
 

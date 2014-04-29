@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 """
 .. module:: cim.v1.decoder_for_software_package.py
 
@@ -7,7 +9,7 @@
    :synopsis: A set of cim 1 decoders.
 
 .. moduleauthor:: Earth System Documentation (ES-DOC) <dev@es-doc.org>
-.. note:: Code generated using esdoc_mp @ 2014-01-31 14:14:51.538242.
+.. note:: Code generated using esdoc_mp @ 2014-04-25 15:28:51.115961.
 
 """
 
@@ -377,9 +379,9 @@ def decode_model_component(xml, nsmap):
     decodings = [
         ('citations', True, decode_citation, 'child::cim:citation'),
         ('description', False, 'str', 'child::cim:description'),
-        ('doc_info', False, decode_doc_info, 'self::cim:modelComponent'),
         ('language', False, decode_component_language, 'child::cim:componentLanguage'),
         ('long_name', False, 'str', 'child::cim:longName'),
+        ('meta', False, decode_doc_meta_info, 'self::cim:modelComponent'),
         ('properties', True, decode_component_property, 'child::cim:componentProperties/cim:componentProperty'),
         ('properties', True, decode_component_property, 'child::cim:scientificProperties/cim:componentProperty'),
         ('properties', True, decode_component_property, 'child::cim:numericalProperties/cim:componentProperty'),
@@ -433,9 +435,9 @@ def decode_processor_component(xml, nsmap):
     decodings = [
         ('citations', True, decode_citation, 'child::cim:citation'),
         ('description', False, 'str', 'child::cim:description'),
-        ('doc_info', False, decode_doc_info, 'self::cim:modelComponent'),
         ('language', False, decode_component_language, 'child::cim:componentLanguage'),
         ('long_name', False, 'str', 'child::cim:longName'),
+        ('meta', False, decode_doc_meta_info, 'self::cim:modelComponent'),
         ('properties', True, decode_component_property, 'child::cim:componentProperties/cim:componentProperty'),
         ('properties', True, decode_component_property, 'child::cim:scientificProperties/cim:componentProperty'),
         ('properties', True, decode_component_property, 'child::cim:numericalProperties/cim:componentProperty'),
@@ -554,9 +556,9 @@ def decode_statistical_model_component(xml, nsmap):
     decodings = [
         ('citations', True, decode_citation, 'child::cim:citation'),
         ('description', False, 'str', 'child::cim:description'),
-        ('doc_info', False, decode_doc_info, 'self::cim:statisticalModelComponent'),
         ('language', False, decode_component_language, 'child::cim:componentLanguage'),
         ('long_name', False, 'str', 'child::cim:longName'),
+        ('meta', False, decode_doc_meta_info, 'self::cim:statisticalModelComponent'),
         ('properties', True, decode_component_property, 'child::cim:componentProperties/cim:componentProperty'),
         ('properties', True, decode_component_property, 'child::cim:scientificProperties/cim:componentProperty'),
         ('properties', True, decode_component_property, 'child::cim:numericalProperties/cim:componentProperty'),

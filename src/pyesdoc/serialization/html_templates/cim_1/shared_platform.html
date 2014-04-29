@@ -1,0 +1,76 @@
+{% extends "../core/document.html" %}
+
+{% block doc-nav %}
+    <li><a href="#overview">Overview</a></li>
+    <li><a href="#machine">Machine</a></li>
+    <li><a href="#compiler">Compiler</a></li>
+	{% if len(doc.contacts) %}
+	    <li><a href="#contacts">Contacts</a></li>
+    {% end %}
+{% end %}
+
+{% block doc-content %}
+
+	{% comment ***************** %}
+	{% comment Emit overview     %}
+	{% comment ***************** %}
+	{% set ctx = TemplateInfo(doc,
+		header = "Overview",
+		fieldset = [
+		    FieldInfo('Project', path='meta.project'),
+		    FieldInfo('Institute', path='meta.institute'),
+		    FieldInfo('Name', path='short_name'),
+		    FieldInfo('Long Name', path='long_name'),
+		    FieldInfo('Description', path='description'),
+		],
+		template = "fieldset_table.html"
+	) %}
+	{% include ../core/section_01.html %}	
+
+	{% for unit in doc.units %}
+		{% comment ***************** %}
+		{% comment Emit machine      %}
+		{% comment ***************** %}
+		{% set ctx = TemplateInfo(unit.machine,
+			header = "Machine",
+			fieldset = [
+				FieldInfo('Name', path='name'),
+				FieldInfo('Vendor', path='vendor'),
+				FieldInfo('Operating System', path='operating_system'),
+				FieldInfo('Processor Type', path='processor_type'),
+				FieldInfo('Max. Processors', path='maximum_processors'),
+				FieldInfo('Cores / Processor', path='cores_per_processor'),
+				FieldInfo('System', path='system'),
+				FieldInfo('Interconnect', path='interconnect'),	
+			],
+			template = "fieldset_table.html"
+		) %}
+		{% include ../core/section_01.html %}	
+
+		{% comment ***************** %}
+		{% comment Emit compiler     %}
+		{% comment ***************** %}
+		{% set ctx = TemplateInfo(unit.compilers,
+			header = "Compiler",
+			fieldset = [
+			    FieldInfo('Name', path='name'),
+			    FieldInfo('Type', path='type'),
+			    FieldInfo('Version', path='version'),
+			    FieldInfo('Language', path='language'),
+			    FieldInfo('Options', path='options'),
+			    FieldInfo('Env. Variables', path='environment_variables')
+			],
+			template = "fieldset_table.html"
+		) %}
+		{% include ../core/section_01.html %}	
+	{% end %}
+
+	{% comment ***************** %}
+	{% comment Emit contacts     %}
+	{% comment ***************** %}
+	{% set ctx = TemplateInfo(doc.contacts,
+		header = "Contacts",
+		template = "cim_1_shared_responsible_party.html"
+	) %}
+	{% include ../core/section_01.html %}	
+{% end %}

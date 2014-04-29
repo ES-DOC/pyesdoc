@@ -1,36 +1,193 @@
-import uuid
+"""
+.. module:: test_type_cim_v1_activity_simulation_run.py
 
-from dateutil import parser as dateutil_parser
+   :copyright: @2013 Earth System Documentation (http://es-doc.org)
+   :license: GPL / CeCILL
+   :platform: Unix, Windows
+   :synopsis: Tests a cim.v1.SimulationRun instance.
 
+.. moduleauthor:: Earth System Documentation (ES-DOC) <dev@es-doc.org>
+
+"""
+# Module imports.
 import pyesdoc.ontologies.cim as cim
-from . import test_utils as tu
+import test_utils as tu
 
 
 
 # Test type.
 DOC_TYPE = cim.v1.SimulationRun
 
+# Test document type.
+DOC_TYPE_KEY = DOC_TYPE.type_key
+
 # Test representation file.
-DOC_FILE = 'xml-metafor-cim-v1/cim.1.activity.SimulationRun.xml'
+DOC_FILE = 'cim.1.activity.SimulationRun.xml-metafor-cim-v1'
 
 # Test document uid.
-DOC_UID = '5e45202c-2b2a-11e1-a1f2-00163e9152a5'
+DOC_UID = 'e4155a28-268e-11e1-9a0e-00163e9152a5'
 
 # Test document version.
 DOC_VERSION = '2'
 
 # Test document creation date.
-DOC_DATE = '2012-02-24 16:26:48.499198'
+DOC_DATE = '2012-04-23 14:59:06.767729'
+
+# Test document project.
+DOC_PROJECT = "CMIP5"
+
+# Test document project.
+DOC_INSTITUTE = "MOHC"
+
+# Test document author.
+DOC_AUTHOR = "Metafor Questionnaire"
+
+# Test supported document encodings.
+DOC_ENCODINGS_COUNT = 4
 
 
-def assert_doc(doc):
-    assert doc.doc_info.author.individual_name == 'Metafor Questionnaire'
-    assert len(doc.doc_info.external_ids) == 1
-    assert doc.doc_info.external_ids[0].is_open == True
-    assert doc.doc_info.external_ids[0].value == 'MOHC_HadGEM2-ES_6.3 abrupt4xCO2'
-    assert len(doc.doc_info.external_ids[0].standards) == 1
-    assert doc.doc_info.external_ids[0].standards[0].name == 'QN_DRS'
-    assert doc.doc_info.external_ids[0].standards[0].description.startswith('The QN_DRS value')
+def assert_meta_info(meta):
+    """Asserts a document's meta-information.
+
+    :param object meta: Document meta information.
+
+    """
+    tu.assert_iter(meta.external_ids, 2, cim.v1.StandardName)
+    id = meta.external_ids[0]
+    tu.assert_bool(id.is_open, True)
+    tu.assert_iter(id.standards, 1, cim.v1.Standard)
+    tu.assert_str(id.value, "MOHC_HadGEM2-A_amip_r1i1p1_1978")
+    std = id.standards[0]
+    tu.assert_str(std.description, "The QN_DRS value allows", True)
+    tu.assert_str(std.name, "QN_DRS")
+
+
+def assert_extension_info(ext):
+    """Asserts a document's extension information.
+
+    :param object ext: Document extension information.
+
+    """
+    tu.assert_str(ext.display_name, "amip")
+    tu.assert_str(ext.description, "Main amip ensemble simulations", True)
+    tu.assert_str(ext.full_display_name, "CMIP5 Simulation : MOHC - amip")
+    tu.assert_str(ext.type_display_name, "Simulation")
+    tu.assert_int(ext.summary_fields, 2)
+    tu.assert_str(ext.summary_fields[0], "amip")
+    tu.assert_str(ext.summary_fields[1], "3.3 AMIP and AMIP Ensemble", True)
+
+
+def _assert_doc_core(doc, is_update):
+    """Assert core information."""
+    tu.assert_str(doc.authors, "C. Jones, J. Hughes", True)
+    tu.assert_object(doc.date_range, cim.v1.ClosedDateRange)
+    tu.assert_str(doc.date_range.duration, "P30Y")
+    tu.assert_date(doc.date_range.start, "1978-12-01 00:00:00+00:00")
+    tu.assert_str(doc.description, "Main amip ensemble simulations", True)
+    tu.assert_str(doc.long_name, "3.3 AMIP and AMIP Ensemble", True)
+    tu.assert_iter(doc.projects, 1, str)
+    tu.assert_iter(doc.projects[0], "CMIP5")
+    tu.assert_iter(doc.responsible_parties, 4, cim.v1.ResponsibleParty)
+    tu.assert_str(doc.short_name, "amip")
+    tu.assert_object(doc.spinup_date_range, cim.v1.ClosedDateRange)
+    tu.assert_str(doc.spinup_date_range.duration, "P30Y")
+    tu.assert_date(doc.spinup_date_range.start, "1978-12-01 00:00:00+00:00")
+
+
+def _assert_doc_conformances(doc, is_update):
+    """Assert simulation conformances."""
+    tu.assert_iter(doc.conformances, 13, cim.v1.Conformance)
+
+    c = doc.conformances[0]
+    tu.assert_str(c.type, "standard config")
+    tu.assert_iter(c.requirements_references, 1, cim.v1.DocReference)
+    ref = c.requirements_references[0]
+    tu.assert_str(ref.description, "Reference to a NumericalRequirement", True)
+    tu.assert_uuid(ref.id, "9fa513fc-d3a5-11df-837f-00163e9152a5")
+    tu.assert_str(ref.name, "ic.003")
+    tu.assert_str(ref.type, "NumericalRequirement")
+    tu.assert_int(ref.version, 1)
+
+    c = doc.conformances[7]
+    tu.assert_str(c.description, "Prescribed land use", True)
+    tu.assert_bool(c.is_conformant, True)
+    tu.assert_str(c.type, "via inputs")
+
+
+def _assert_doc_deployments(doc, is_update):
+    """Assert simulation deployments."""
+    tu.assert_iter(doc.deployments, 1, cim.v1.Deployment)
+
+    dep = doc.deployments[0]
+    tu.assert_str(dep.description, "The resources(deployment) on which", True)
+    tu.assert_object(dep.platform_reference, cim.v1.DocReference)
+    ref = dep.platform_reference
+    tu.assert_str(ref.description, "Reference to a platform", True)
+    tu.assert_uuid(ref.id, "b765775a-e2ac-11df-9efb-00163e9152a5")
+    tu.assert_str(ref.name, "IBM Power 6")
+    tu.assert_str(ref.type, "platform")
+    tu.assert_int(ref.version, 1)
+
+
+def _assert_doc_inputs(doc, is_update):
+    """Assert simulation inputs."""
+    tu.assert_iter(doc.inputs, 56, cim.v1.Coupling)
+
+
+def _assert_doc_references(doc, is_update):
+    """Assert simulation references."""
+    # Model reference.
+    tu.assert_object(doc.model_reference, cim.v1.DocReference)
+    ref = doc.model_reference
+    tu.assert_str(ref.description, "Reference to a modelComponent", True)
+    tu.assert_uuid(ref.id, "7a2b64cc-03ca-11e1-a36a-00163e9152a5")
+    tu.assert_str(ref.name, "HadGEM2-A")
+    tu.assert_str(ref.type, "modelComponent")
+    tu.assert_int(ref.version, 1)
+
+    # Experiment reference.
+    tu.assert_iter(doc.supports_references, 1, cim.v1.DocReference)
+    ref = doc.supports_references[0]
+    tu.assert_str(ref.description, "Reference to an Experiment", True)
+    tu.assert_uuid(ref.id, "9fa513fc-d3a5-11df-837f-00163e9152a5")
+    tu.assert_str(ref.name, "amip")
+    tu.assert_str(ref.type, "experiment")
+    tu.assert_int(ref.version, 1)
+
+
+def assert_doc(doc, is_update=False):
+    """Asserts a document.
+
+    :param object doc: Document being tested.
+    :param bool is_update: Flag indicating whether document has been updated.
+
+    """
+    for assertor in (
+        _assert_doc_core,
+        _assert_doc_conformances,
+        _assert_doc_deployments,
+        _assert_doc_inputs,
+        _assert_doc_references,
+        ):
+        assertor(doc, is_update)
+
+
+def assert_doc1(doc, meta, ext):
+    """Asserts a document.
+
+    :param object doc: Document being tested.
+    :param object meta: Document meta information.
+    :param object ext: Document extension information.
+
+    """
+    return
+
+    assert len(doc.meta.external_ids) == 1
+    assert doc.meta.external_ids[0].is_open == True
+    assert doc.meta.external_ids[0].value == 'MOHC_HadGEM2-ES_6.3 abrupt4xCO2'
+    assert len(doc.meta.external_ids[0].standards) == 1
+    assert doc.meta.external_ids[0].standards[0].name == 'QN_DRS'
+    assert doc.meta.external_ids[0].standards[0].description.startswith('The QN_DRS value')
 
     assert doc.long_name == '6.3  Gregory-style diagnosis of slow climate system responses'
     assert doc.short_name == 'abrupt4xCO2'
@@ -141,8 +298,18 @@ def assert_doc(doc):
 
 
 def update_doc(doc):
+    """Update a document prior to republishing.
+
+    :param object doc: Document being republished.
+
+    """
     pass
 
 
 def assert_doc_updates(doc):
+    """Asserts a document after being updated.
+
+    :param object doc: Document being tested.
+
+    """
     pass

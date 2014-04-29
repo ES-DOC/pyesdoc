@@ -5,7 +5,7 @@
    :platform: Unix, Windows
    :synopsis: Exposes document publishing functions.
 
-.. moduleauthor:: Mark Conway-Greenslade (formerly Morgan) <momipsl@ipsl.jussieu.fr>
+.. moduleauthor:: Mark Conway-Greenslade <momipsl@ipsl.jussieu.fr>
 
 
 """
@@ -14,10 +14,11 @@ import uuid
 
 import requests
 
-from . import options
-from . import serialization
-from .utils import runtime as rt
-from .validation import is_valid
+from . import constants, options
+from . serialization import encode, decode
+from . parsing import parse
+from . utils import runtime as rt
+from . validation import is_valid
 
 
 
@@ -31,12 +32,6 @@ _EP_PUBLISHING = 'publishing'
 HTTP_RESPONSE_STATUS_200 = 200
 HTTP_RESPONSE_STATUS_404 = 404
 HTTP_RESPONSE_STATUS_500 = 500
-
-# Latest document version label.
-ESDOC_DOC_VERSION_LATEST = 'latest'
-
-# All document versions label.
-ESDOC_DOC_VERSION_ALL = 'all'
 
 
 def _assert_doc(doc, msg):
@@ -52,7 +47,8 @@ def _throw_invalid_doc_id():
 
 def _throw_invalid_doc_version():
     """Throws an error."""
-    rt.throw("Invalid document version (must be either 'all', 'latest' or an integer.")
+    rt.throw("Invalid document version (must be either \
+             'all', 'latest' or an integer.")
 
 
 def _throw_connection_error():
@@ -75,24 +71,24 @@ def _throw_server_error():
     rt.throw("A server side failure has occurred.")
 
 
-def _invoke(op, url, data=None):
-    """Invokes a publoishing endpoint operation."""
+def _invoke(operation, url, data=None):
+    """Invokes a publishing endpoint operation."""
     try:
         if data is not None:
-            return op(url, data=data)
+            return operation(url, data=data)
         else:
-            return op(url)
+            return operation(url)
     except requests.ConnectionError:
         _throw_connection_error()
     except requests.HTTPError:
         _throw_http_error()
     except requests.Timeout:
         _throw_timeout_error()
-    
 
-def _get_api_url(ep):
+
+def _get_api_url(endpoint):
     """Helper function to return api endpoint url."""
-    return options.get(_OPT_API_URL) + '/1/{0}'.format(ep)
+    return options.get(_OPT_API_URL) + '/1/{0}'.format(endpoint)
 
 
 def _get_doc_url(uid, version=None, encoding=None):
@@ -124,14 +120,24 @@ def exists(uid, version=None):
         _throw_invalid_doc_version()
 
     # Issue HTTP HEAD.
-    url = _get_doc_url(uid, version) 
-    r = _invoke(requests.head, url)
+    url = _get_doc_url(uid, version)
+    resp = _invoke(requests.head, url)
 
-    # Process HTTP response code.    
-    return True if r.status_code == HTTP_RESPONSE_STATUS_200 else False
+    # Process HTTP response code.
+    # 200 - return true;
+    if resp.status_code == HTTP_RESPONSE_STATUS_200:
+        return True
+
+    # 404 - return false;
+    elif resp.status_code == HTTP_RESPONSE_STATUS_404:
+        return False
+
+    # 500 - raise error.
+    elif resp.status_code == HTTP_RESPONSE_STATUS_500:
+        rt.throw("Document retrieval server side failure")
 
 
-def retrieve(uid, version=ESDOC_DOC_VERSION_LATEST):
+def retrieve(uid, version=constants.ESDOC_DOC_VERSION_LATEST):
     """Retrieves a document from remote repository.
 
     :param uid: Document unique identifier.
@@ -147,19 +153,25 @@ def retrieve(uid, version=ESDOC_DOC_VERSION_LATEST):
     # Defensive programming.
     if not isinstance(uid, uuid.UUID):
         _throw_invalid_doc_id()
-    if version != ESDOC_DOC_VERSION_LATEST and not isinstance(version, int):
+    if version != constants.ESDOC_DOC_VERSION_LATEST and \
+       not isinstance(version, int):
         _throw_invalid_doc_version()
 
     # Issue HTTP GET.
-    url = _get_doc_url(uid, version, serialization.ESDOC_ENCODING_JSON) 
-    r = _invoke(requests.get, url)
+    url = _get_doc_url(uid, version, constants.ESDOC_ENCODING_JSON)
+    resp = _invoke(requests.get, url)
 
-    # Process HTTP response code.
-    if r.status_code == HTTP_RESPONSE_STATUS_200 and len(r.text):
-        return serialization.decode(r.json(), serialization.ESDOC_ENCODING_DICT)
-    elif r.status_code == HTTP_RESPONSE_STATUS_404:
-        rt.throw("XXXX :: {0}-v{1}".format(uid, version))
-    elif r.status_code == HTTP_RESPONSE_STATUS_500:
+    # Process HTTP response code:
+    # 200 - return decoded/parsed document;
+    if resp.status_code == HTTP_RESPONSE_STATUS_200 and len(resp.text):
+        return parse(decode(resp.json(), constants.ESDOC_ENCODING_DICT))
+
+    # 404 - raise error;
+    elif resp.status_code == HTTP_RESPONSE_STATUS_404:
+        rt.throw("Document Not Found :: {0}-v{1}".format(uid, version))
+
+    # 500 - raise error.
+    elif resp.status_code == HTTP_RESPONSE_STATUS_500:
         rt.throw("Document retrieval server side failure")
 
 
@@ -178,23 +190,24 @@ def publish(doc):
         rt.throw("Cannot publish null documents.")
     if not is_valid(doc):
         rt.throw("Cannot publish invalid documents.")
-        
+
     # Increment version.
-    doc.doc_info.version += 1
+    doc.meta.version += 1
 
     # Set HTTP operation parameters.
     url = _get_api_url(_EP_PUBLISHING)
-    data = serialization.encode(doc, serialization.ESDOC_ENCODING_JSON)
+    data = encode(doc, constants.ESDOC_ENCODING_JSON)
 
     # Invoke HTTP operation.
-    r = _invoke(requests.post, url, data)
+    resp = _invoke(requests.post, url, data)
 
-    # Process HTTP response code.
-    if r.status_code == HTTP_RESPONSE_STATUS_500:
+    # Process HTTP response code:
+    # 500 - raise error.
+    if resp.status_code == HTTP_RESPONSE_STATUS_500:
         _throw_server_error()
 
 
-def unpublish(uid, version=ESDOC_DOC_VERSION_ALL):
+def unpublish(uid, version=constants.ESDOC_DOC_VERSION_ALL):
     """Unpublishes a document from remote repository.
 
     :param doc: Document being unpublished.
@@ -204,15 +217,16 @@ def unpublish(uid, version=ESDOC_DOC_VERSION_ALL):
     # Defensive programming.
     if not isinstance(uid, uuid.UUID):
         _throw_invalid_doc_id()
-    if not version == ESDOC_DOC_VERSION_ALL and \
-       not version == ESDOC_DOC_VERSION_LATEST and \
+    if not version == constants.ESDOC_DOC_VERSION_ALL and \
+       not version == constants.ESDOC_DOC_VERSION_LATEST and \
        not isinstance(version, int):
-       _throw_invalid_doc_version()
+        _throw_invalid_doc_version()
 
     # Invoke HTTP operation.
-    url = _get_doc_url(uid, version) 
-    r = _invoke(requests.delete, url)
+    url = _get_doc_url(uid, version)
+    resp = _invoke(requests.delete, url)
 
-    # Process HTTP response code.
-    if r.status_code == HTTP_RESPONSE_STATUS_500:
+    # Process HTTP response code:
+    # 500 - raise error.
+    if resp.status_code == HTTP_RESPONSE_STATUS_500:
         _throw_server_error()

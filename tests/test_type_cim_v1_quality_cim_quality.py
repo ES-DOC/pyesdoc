@@ -1,13 +1,28 @@
+"""
+.. module:: test_type_cim_v1_quality_cim_quality.py
+
+   :copyright: @2013 Earth System Documentation (http://es-doc.org)
+   :license: GPL / CeCILL
+   :platform: Unix, Windows
+   :synopsis: Tests a cim.v1.CimQuality instance.
+
+.. moduleauthor:: Earth System Documentation (ES-DOC) <dev@es-doc.org>
+
+"""
+# Module imports.
 import pyesdoc.ontologies.cim as cim
-from . import test_utils as tu
+import test_utils as tu
 
 
 
 # Test type.
 DOC_TYPE = cim.v1.CimQuality
 
+# Test document type.
+DOC_TYPE_KEY = DOC_TYPE.type_key
+
 # Test representation file.
-DOC_FILE = 'xml-metafor-cim-v1/cim.1.quality.CimQuality.xml'
+DOC_FILE = 'cim.1.quality.CimQuality.xml-metafor-cim-v1'
 
 # Test document uid.
 DOC_UID = 'c1debb66-2737-11e2-bc06-0010185b3f28'
@@ -18,34 +33,95 @@ DOC_VERSION = '2'
 # Test document creation date.
 DOC_DATE = '2012-11-05T09:51:25'
 
+# Test document project.
+DOC_PROJECT = "CMIP5"
 
-def assert_doc(doc):
-    tu.assert_collection(doc.reports, 1)
-    r1 = doc.reports[0]
-    tu.assert_date(r1.date, '2011-05-01 12:00:00')
+# Test document project.
+DOC_INSTITUTE = "MOHC"
 
-    tu.assert_object(r1.evaluator)
-    tu.assert_string(r1.evaluator.individual_name, 'stockhause@dkrz.de')
-    tu.assert_string(r1.evaluator.role, 'pointofContact')
+# Test document author.
+DOC_AUTHOR = "Metafor Questionnaire"
 
-    tu.assert_object(r1.measure)
-    tu.assert_string(r1.measure.identification, 'cmip5-qc-2d')
-    tu.assert_string(r1.measure.description, 'WDCC Conformance', True)
-    tu.assert_string(r1.measure.name, 'CMIP5 Quality Control Data Level 2')
+# Test supported document encodings.
+DOC_ENCODINGS_COUNT = 4
 
-    tu.assert_object(r1.evaluation)
-    tu.assert_date(r1.evaluation.date, '2012-11-05')
-    tu.assert_string(r1.evaluation.description, 'evaluationMethodType=indirect', True)
 
-    tu.assert_string(r1.evaluation.type, 'QC Level 2 Results')
-    tu.assert_string(r1.evaluation.type_hyperlink, 'http://cera-www.dkrz.de/WDCC/CMIP5/QCResult.jsp?experiment=cmip5/output1/NCC/NorESM1-ME/rcp45')
-    tu.assert_string(r1.evaluation.specification, 'The CMIP5/AR5 Model Data Quality Control')
-    tu.assert_string(r1.evaluation.specification_hyperlink, 'http://cmip5qc.wdc-climate.de')
+def assert_extension_info(ext):
+    """Asserts a document's extension information.
+
+    :param object ext: Document extension information.
+
+    """
+    tu.assert_str(ext.display_name, "CMIP5 Quality Control Data Level 2")
+    tu.assert_str(ext.description, "CMIP5 Quality Control", True)
+    tu.assert_str(ext.full_display_name, "CMIP5 QC Record : MOHC - CMIP5 Quality Control Data Level 2")
+    tu.assert_str(ext.type_display_name, "QC Record")
+    tu.assert_int(ext.summary_fields, 1)
+    tu.assert_str(ext.summary_fields[0], "cmip5.output1.", True)
+
+
+def _assert_doc_core(doc, is_update):
+    """Assert core information."""
+    tu.assert_iter(doc.reports, 1)
+    r = doc.reports[0]
+    tu.assert_date(r.date, '2011-05-01 12:00:00')
+    tu.assert_object(r.evaluator, cim.v1.ResponsibleParty)
+    tu.assert_str(r.evaluator.individual_name, 'stockhause@dkrz.de')
+    tu.assert_str(r.evaluator.role, 'pointofContact')
+
+
+def _assert_doc_report_evaluation(doc, is_update):
+    """Assert report evaluation information."""
+    r = doc.reports[0]
+    tu.assert_object(r.evaluation, cim.v1.Evaluation)
+    e = r.evaluation
+    tu.assert_date(e.date, '2012-11-05')
+    tu.assert_str(e.description, 'evaluationMethodType=indirect', True)
+    tu.assert_str(e.explanation, 'The quality results for this ESG', True)
+    tu.assert_str(e.specification, 'The CMIP5/AR5 Model Data Quality Control')
+    tu.assert_str(e.specification_hyperlink, 'http://cmip5qc.wdc-climate.de')
+    tu.assert_str(e.type, 'QC Level 2 Results')
+    tu.assert_str(e.type_hyperlink, 'http://cera-www.dkrz.de/WDCC/CMIP5/QCResult.jsp?experiment=cmip5/output1/NCC/NorESM1-ME/rcp45')
+
+
+def _assert_doc_report_measure(doc, is_update):
+    """Assert report measure information."""
+    r = doc.reports[0]
+    tu.assert_object(r.measure, cim.v1.Measure)
+    m = r.measure
+    tu.assert_str(m.description, 'WDCC Conformance', True)
+    tu.assert_str(m.identification, 'cmip5-qc-2d')
+    tu.assert_str(m.name, 'CMIP5 Quality Control Data Level 2')
+
+
+def assert_doc(doc, is_update=False):
+    """Asserts a document.
+
+    :param object doc: Document being tested.
+    :param bool is_update: Flag indicating whether document has been updated.
+
+    """
+    for assertor in (
+        _assert_doc_core,
+        _assert_doc_report_evaluation,
+        _assert_doc_report_measure,
+        ):
+        assertor(doc, is_update)
 
 
 def update_doc(doc):
+    """Update a document prior to republishing.
+
+    :param object doc: Document being republished.
+
+    """
     pass
 
 
 def assert_doc_updates(doc):
+    """Asserts a document after being updated.
+
+    :param object doc: Document being tested.
+
+    """
     pass

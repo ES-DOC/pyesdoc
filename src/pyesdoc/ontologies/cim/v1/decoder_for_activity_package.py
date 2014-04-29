@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 """
 .. module:: cim.v1.decoder_for_activity_package.py
 
@@ -7,7 +9,7 @@
    :synopsis: A set of cim 1 decoders.
 
 .. moduleauthor:: Earth System Documentation (ES-DOC) <dev@es-doc.org>
-.. note:: Code generated using esdoc_mp @ 2014-01-31 14:14:51.527467.
+.. note:: Code generated using esdoc_mp @ 2014-04-25 15:28:51.104536.
 
 """
 
@@ -127,7 +129,6 @@ def decode_downscaling_simulation(xml, nsmap):
         ('calendar', False, decode_perpetual_period, 'child::cim:calendar/cim:perpetualPeriod'),
         ('calendar', False, decode_real_calendar, 'child::cim:calendar/cim:realCalendar'),
         ('description', False, 'str', 'child::cim:description'),
-        ('doc_info', False, decode_doc_info, 'self::cim:downscalingSimulation'),
         ('downscaled_from', False, decode_data_object, 'child::cim:downscaledFrom/cim:downscaledFrom/cim:dataObject'),
         ('downscaled_from', False, decode_data_content, 'child::cim:downscaledFrom/cim:downscaledFrom/cim:dataContent'),
         ('downscaled_from', False, decode_component_property, 'child::cim:downscaledFrom/cim:downscaledFrom/cim:componentProperty'),
@@ -140,6 +141,7 @@ def decode_downscaling_simulation(xml, nsmap):
         ('funding_sources', True, 'str', 'child::cim:fundingSource'),
         ('inputs', True, decode_coupling, 'child::cim:input'),
         ('long_name', False, 'str', 'child::cim:longName'),
+        ('meta', False, decode_doc_meta_info, 'self::cim:downscalingSimulation'),
         ('outputs', True, decode_data_object, 'child::cim:output/cim:dataObject'),
         ('projects', True, 'str', 'child::cim:project/@value'),
         ('rationales', True, 'str', 'child::cim:rationale'),
@@ -167,10 +169,10 @@ def decode_ensemble(xml, nsmap):
     """
     decodings = [
         ('description', False, 'str', 'child::cim:description'),
-        ('doc_info', False, decode_doc_info, 'self::cim:ensemble'),
         ('funding_sources', True, 'str', 'child::cim:fundingSource'),
         ('long_name', False, 'str', 'child::cim:longName'),
         ('members', True, decode_ensemble_member, 'child::cim:ensembleMember'),
+        ('meta', False, decode_doc_meta_info, 'self::cim:ensemble'),
         ('outputs', True, decode_data_object, 'child::cim:output/cim:output/cim:dataObject'),
         ('outputs', True, decode_data_content, 'child::cim:output/cim:output/cim:dataContent'),
         ('outputs', True, decode_component_property, 'child::cim:output/cim:output/cim:componentProperty'),
@@ -410,10 +412,10 @@ def decode_numerical_experiment(xml, nsmap):
     """
     decodings = [
         ('description', False, 'str', 'child::cim:description'),
-        ('doc_info', False, decode_doc_info, 'self::cim:numericalExperiment'),
         ('experiment_id', False, 'str', 'child::cim:experimentID'),
         ('funding_sources', True, 'str', 'child::cim:fundingSource'),
         ('long_name', False, 'str', 'child::cim:longName'),
+        ('meta', False, decode_doc_meta_info, 'self::cim:numericalExperiment'),
         ('projects', True, 'str', 'child::cim:project/@value'),
         ('rationales', True, 'str', 'child::cim:rationale'),
         ('requirements', True, decode_initial_condition, 'child::cim:numericalRequirement/cim:initialCondition'),
@@ -617,10 +619,10 @@ def decode_simulation_composite(xml, nsmap):
         ('date_range', False, decode_open_date_range, 'child::cim:dateRange/cim:openDateRange'),
         ('deployments', True, decode_deployment, 'child::cim:deployment'),
         ('description', False, 'str', 'child::cim:description'),
-        ('doc_info', False, decode_doc_info, 'self::cim:simulationRun'),
         ('funding_sources', True, 'str', 'child::cim:fundingSource'),
         ('inputs', True, decode_coupling, 'child::cim:input'),
         ('long_name', False, 'str', 'child::cim:longName'),
+        ('meta', False, decode_doc_meta_info, 'self::cim:simulationRun'),
         ('projects', True, 'str', 'child::cim:project/@value'),
         ('rank', False, 'int', 'child::cim:rank'),
         ('rationales', True, 'str', 'child::cim:rationale'),
@@ -699,10 +701,10 @@ def decode_simulation_run(xml, nsmap):
         ('date_range', False, decode_open_date_range, 'child::cim:dateRange/cim:openDateRange'),
         ('deployments', True, decode_deployment, 'child::cim:deployment'),
         ('description', False, 'str', 'child::cim:description'),
-        ('doc_info', False, decode_doc_info, 'self::cim:simulationRun'),
         ('funding_sources', True, 'str', 'child::cim:fundingSource'),
         ('inputs', True, decode_coupling, 'child::cim:input'),
         ('long_name', False, 'str', 'child::cim:longName'),
+        ('meta', False, decode_doc_meta_info, 'self::cim:simulationRun'),
         ('model', False, decode_model_component, 'child::cim:model/cim:modelComponent'),
         ('model_reference', False, decode_doc_reference, 'child::cim:model/cim:reference'),
         ('projects', True, 'str', 'child::cim:project/@value'),

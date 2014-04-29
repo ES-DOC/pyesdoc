@@ -1,0 +1,289 @@
+{
+    "supportsReferences": [{
+        "description": "Reference to a experiment called 7.3 historicalMisc",
+        "type": "experiment",
+        "version": "1",
+        "externalID": null,
+        "ontologyTypeKey": "cim.1.shared.DocReference",
+        "changes": [],
+        "id": "c3c01b06-d3a5-11df-837f-00163e9152a5",
+        "name": "7.3 historicalMisc"
+    }],
+    "responsibleParties": [{
+        "organisationName": "NASA Goddard Institute for Space Studies USA",
+        "abbreviation": "NASA GISS",
+        "role": "centre",
+        "ontologyTypeKey": "cim.1.shared.ResponsibleParty",
+        "contactInfo": {
+            "url": null,
+            "address": null,
+            "email": null,
+            "ontologyTypeKey": "cim.1.shared.ResponsiblePartyContactInfo"
+        },
+        "individualName": null
+    }],
+    "rationales": [],
+    "description": "Each simulation was started from 20 year apart IC from the control.",
+    "fundingSources": [],
+    "longName": "historical (no-AIE), GISS-E2-R, non-interactive composition (phsyics-version=1)",
+    "outputsReferences": [],
+    "meta": {
+        "status": null,
+        "externalIds": [],
+        "language": "en",
+        "genealogy": null,
+        "author": {
+            "organisationName": null,
+            "abbreviation": null,
+            "role": "documentAuthor",
+            "ontologyTypeKey": "cim.1.shared.ResponsibleParty",
+            "contactInfo": null,
+            "individualName": "Metafor Questionnaire"
+        },
+        "institute": "MOHC",
+        "createDate": "2012-06-13 13:28:36.407863",
+        "ontologyTypeKey": "cim.1.shared.DocMetaInfo",
+        "project": "CMIP5",
+        "source": "testing",
+        "metadataVersion": null,
+        "version": 1,
+        "metadataID": null,
+        "encodings": ["json", "xml", "html", "xml-metafor-cim-v1"],
+        "type": "cim.1.activity.Ensemble",
+        "id": "fd46d094-6fdb-11e1-825e-00163e9152a5",
+        "typeDisplayName": "Ensemble"
+    },
+    "ontologyTypeKey": "cim.1.activity.Ensemble",
+    "types": ["Initial Condition"],
+    "members": [{
+        "supportsReferences": [],
+        "responsibleParties": [],
+        "rationales": [],
+        "description": null,
+        "simulationReference": {
+            "description": "Reference to a simulation called historicalNoAIE GISS-E2-R p1",
+            "type": "simulation",
+            "version": "4",
+            "externalID": null,
+            "ontologyTypeKey": "cim.1.shared.DocReference",
+            "changes": [],
+            "id": "80509692-6fdb-11e1-9bbb-00163e9152a5",
+            "name": "historicalNoAIE GISS-E2-R p1"
+        },
+        "fundingSources": [],
+        "ensembleIds": [{
+            "standards": [],
+            "value": "r1i1p1",
+            "isOpen": true,
+            "ontologyTypeKey": "cim.1.shared.StandardName"
+        }],
+        "ontologyTypeKey": "cim.1.activity.EnsembleMember",
+        "simulation": null,
+        "ensembleReference": null,
+        "longName": null,
+        "shortName": null,
+        "supports": [],
+        "ensemble": null,
+        "projects": []
+    }, {
+        "supportsReferences": [],
+        "responsibleParties": [],
+        "rationales": [],
+        "description": null,
+        "simulationReference": {
+            "description": "Reference to a simulation called historicalNoAIE GISS-E2-R p1",
+            "type": "simulation",
+            "version": "4",
+            "externalID": null,
+            "ontologyTypeKey": "cim.1.shared.DocReference",
+            "changes": [{
+                "description": null,
+                "author": null,
+                "details": [{
+                    "id": null,
+                    "name": null,
+                    "description": "ICs come from different points in the control run",
+                    "value": null,
+                    "ontologyTypeKey": "cim.1.shared.ChangeProperty"
+                }],
+                "ontologyTypeKey": "cim.1.shared.Change",
+                "date": "1850-01-01 00:00:00+00:00",
+                "type": "InitialCondition",
+                "name": "IC mod"
+            }],
+            "id": "80509692-6fdb-11e1-9bbb-00163e9152a5",
+            "name": "historicalNoAIE GISS-E2-R p1"
+        },
+        "fundingSources": [],
+        "ensembleIds": [{
+            "standards": [{
+                "description": null,
+                "version": null,
+                "name": "DRS_CMIP5_ensembleType",
+                "ontologyTypeKey": "cim.1.shared.Standard"
+            }],
+            "value": "r2i1p1",
+            "isOpen": true,
+            "ontologyTypeKey": "cim.1.shared.StandardName"
+        }],
+        "ontologyTypeKey": "cim.1.activity.EnsembleMember",
+        "simulation": null,
+        "ensembleReference": null,
+        "longName": null,
+        "shortName": null,
+        "supports": [],
+        "ensemble": null,
+        "projects": []
+    }, {
+        "supportsReferences": [],
+        "responsibleParties": [],
+        "rationales": [],
+        "description": null,
+        "simulationReference": {
+            "description": "Reference to a simulation called historicalNoAIE GISS-E2-R p1",
+            "type": "simulation",
+            "version": "4",
+            "externalID": null,
+            "ontologyTypeKey": "cim.1.shared.DocReference",
+            "changes": [{
+                "description": null,
+                "author": null,
+                "details": [{
+                    "id": null,
+                    "name": null,
+                    "description": "ICs come from different points in the control run",
+                    "value": null,
+                    "ontologyTypeKey": "cim.1.shared.ChangeProperty"
+                }],
+                "ontologyTypeKey": "cim.1.shared.Change",
+                "date": "1850-01-01 00:00:00+00:00",
+                "type": "InitialCondition",
+                "name": "IC mod"
+            }],
+            "id": "80509692-6fdb-11e1-9bbb-00163e9152a5",
+            "name": "historicalNoAIE GISS-E2-R p1"
+        },
+        "fundingSources": [],
+        "ensembleIds": [{
+            "standards": [{
+                "description": null,
+                "version": null,
+                "name": "DRS_CMIP5_ensembleType",
+                "ontologyTypeKey": "cim.1.shared.Standard"
+            }],
+            "value": "r3i1p1",
+            "isOpen": true,
+            "ontologyTypeKey": "cim.1.shared.StandardName"
+        }],
+        "ontologyTypeKey": "cim.1.activity.EnsembleMember",
+        "simulation": null,
+        "ensembleReference": null,
+        "longName": null,
+        "shortName": null,
+        "supports": [],
+        "ensemble": null,
+        "projects": []
+    }, {
+        "supportsReferences": [],
+        "responsibleParties": [],
+        "rationales": [],
+        "description": null,
+        "simulationReference": {
+            "description": "Reference to a simulation called historicalNoAIE GISS-E2-R p1",
+            "type": "simulation",
+            "version": "4",
+            "externalID": null,
+            "ontologyTypeKey": "cim.1.shared.DocReference",
+            "changes": [{
+                "description": null,
+                "author": null,
+                "details": [{
+                    "id": null,
+                    "name": null,
+                    "description": "ICs come from different points in the control run",
+                    "value": null,
+                    "ontologyTypeKey": "cim.1.shared.ChangeProperty"
+                }],
+                "ontologyTypeKey": "cim.1.shared.Change",
+                "date": "1850-01-01 00:00:00+00:00",
+                "type": "InitialCondition",
+                "name": "IC mod"
+            }],
+            "id": "80509692-6fdb-11e1-9bbb-00163e9152a5",
+            "name": "historicalNoAIE GISS-E2-R p1"
+        },
+        "fundingSources": [],
+        "ensembleIds": [{
+            "standards": [{
+                "description": null,
+                "version": null,
+                "name": "DRS_CMIP5_ensembleType",
+                "ontologyTypeKey": "cim.1.shared.Standard"
+            }],
+            "value": "r4i1p1",
+            "isOpen": true,
+            "ontologyTypeKey": "cim.1.shared.StandardName"
+        }],
+        "ontologyTypeKey": "cim.1.activity.EnsembleMember",
+        "simulation": null,
+        "ensembleReference": null,
+        "longName": null,
+        "shortName": null,
+        "supports": [],
+        "ensemble": null,
+        "projects": []
+    }, {
+        "supportsReferences": [],
+        "responsibleParties": [],
+        "rationales": [],
+        "description": null,
+        "simulationReference": {
+            "description": "Reference to a simulation called historicalNoAIE GISS-E2-R p1",
+            "type": "simulation",
+            "version": "4",
+            "externalID": null,
+            "ontologyTypeKey": "cim.1.shared.DocReference",
+            "changes": [{
+                "description": null,
+                "author": null,
+                "details": [{
+                    "id": null,
+                    "name": null,
+                    "description": "ICs come from different points in the control run",
+                    "value": null,
+                    "ontologyTypeKey": "cim.1.shared.ChangeProperty"
+                }],
+                "ontologyTypeKey": "cim.1.shared.Change",
+                "date": "1850-01-01 00:00:00+00:00",
+                "type": "InitialCondition",
+                "name": "IC mod"
+            }],
+            "id": "80509692-6fdb-11e1-9bbb-00163e9152a5",
+            "name": "historicalNoAIE GISS-E2-R p1"
+        },
+        "fundingSources": [],
+        "ensembleIds": [{
+            "standards": [{
+                "description": null,
+                "version": null,
+                "name": "DRS_CMIP5_ensembleType",
+                "ontologyTypeKey": "cim.1.shared.Standard"
+            }],
+            "value": "r5i1p1",
+            "isOpen": true,
+            "ontologyTypeKey": "cim.1.shared.StandardName"
+        }],
+        "ontologyTypeKey": "cim.1.activity.EnsembleMember",
+        "simulation": null,
+        "ensembleReference": null,
+        "longName": null,
+        "shortName": null,
+        "supports": [],
+        "ensemble": null,
+        "projects": []
+    }],
+    "outputs": [],
+    "shortName": "historicalNoAIE GISS-E2-R p1",
+    "supports": [],
+    "projects": []
+}

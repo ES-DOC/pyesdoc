@@ -1,0 +1,26 @@
+{% comment ****************** %}
+{% comment Emit doc section   %}
+{% comment ****************** %}
+{% if len(ctx.dataset) %}
+	<section id="{% raw '' if not ctx.tag_id else ctx.tag_id %}">	
+		<header>
+		{% if ctx.depth == 0 %}
+			<h3>{{ ctx.header }}</h3>
+		{% elif ctx.depth == 1 %}
+			<h4>{{ ctx.header }}</h4>		
+		{% elif ctx.depth == 2 %}
+			<h5>{{ ctx.header }}</h5>
+		{% end %}
+		</header>
+		{% for data in ctx.dataset %}
+			{% set ctx.data = data %}
+			{% if ctx.template == "fieldset_table.html" %}
+				{% include fieldset_table.html %}
+			{% elif ctx.template == "cim_1_shared_responsible_party.html" %}
+				{% include ../cim_1/shared_responsible_party.html %}
+			{% elif ctx.template == "cim_1_shared_citation.html" %}
+				{% include ../cim_1/shared_citation.html %}
+			{% end %}
+		{% end %}
+	</section>
+{% end %}

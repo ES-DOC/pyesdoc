@@ -1,0 +1,21 @@
+<tr class="esdoc-field {{ctx.fieldset_type}}">
+	{% if ctx.fieldset_type == "namevalue" %}
+		<td class="esdoc-field-name"><b>{{ ctx.field.get_name() }}</b></td>
+		<td class="esdoc-field-value" id="{% raw '' if not ctx.field.tag_id else ctx.field.tag_id %}">
+			{% if ctx.field.link_path and ctx.field.get_link(ctx.data) %}
+				<a class="esdoc-field-hyperlink" href="{{ ctx.field.get_link(ctx.data) }}">{{ ctx.field.get_value(ctx.data) or "--" }}</a>
+			{% elif ctx.field.email_path and ctx.field.get_email(ctx.data) %}
+				<a class="esdoc-field-email" href="mailto:{{ ctx.field.get_email(ctx.data) }}?subject=ES-DOC :: subject goes here">{{ ctx.field.get_value(ctx.data) or "--" }}</a>
+			{% elif ctx.field.link %}
+				<a class="esdoc-field-hyperlink" href="{{ ctx.field.link }}">{{ ctx.field.get_value(ctx.data) or "--" }}</a>
+			{% else %}
+				{{ ctx.field.get_value(ctx.data) or "--" }}
+			{% end %}
+		</td>
+
+	{% elif ctx.fieldset_type == "property" %}
+		<td>
+			<b>{{ctx.field.get_name()}}</b>: {{ ctx.field.get_value() }}
+		</td>
+	{% end %}
+</tr>

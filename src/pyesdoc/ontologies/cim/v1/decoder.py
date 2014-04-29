@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 """
 .. module:: pyesdoc.ontologies.cim.v1.decoder.py
 
@@ -7,7 +9,7 @@
    :synopsis: A set of cim 1 decoders.
 
 .. moduleauthor:: Earth System Documentation (ES-DOC) <dev@es-doc.org>
-.. note:: Code generated using esdoc_mp @ 2014-01-31 14:14:51.521896.
+.. note:: Code generated using esdoc_mp @ 2014-04-25 15:28:51.099487.
 
 """
 

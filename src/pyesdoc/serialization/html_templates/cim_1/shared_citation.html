@@ -1,0 +1,10 @@
+{% set ctx = TemplateInfo(ctx,
+	fieldset = [
+	    FieldInfo('Title', path='title'),
+	    FieldInfo('Long Title', path='collective_title'),
+	    FieldInfo('Location', path='location', link_path='location'),
+    ],
+) %}
+{% include ../core/fieldset_table.html %} 
+
+{% set ctx = ctx.previous %}

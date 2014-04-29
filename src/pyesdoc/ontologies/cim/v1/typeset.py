@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 """
 .. module:: cim.v1.typeset.py
 
@@ -7,7 +9,7 @@
    :synopsis: Typeset information for the cim v1 ontology.
 
 .. moduleauthor:: Earth System Documentation (ES-DOC) <dev@es-doc.org>
-.. note:: Code generated using esdoc_mp @ 2014-01-31 14:14:51.551351.
+.. note:: Code generated using esdoc_mp @ 2014-04-25 15:28:51.122374.
 
 """
 
@@ -103,7 +105,7 @@ __all__ = [
     'DataSource',
     'DateRange',
     'DocGenealogy',
-    'DocInfo',
+    'DocMetaInfo',
     'DocReference',
     'DocRelationship',
     'DocRelationshipTarget',
@@ -212,7 +214,7 @@ TYPES = (
     shared.DataSource,
     shared.DateRange,
     shared.DocGenealogy,
-    shared.DocInfo,
+    shared.DocMetaInfo,
     shared.DocReference,
     shared.DocRelationship,
     shared.DocRelationshipTarget,

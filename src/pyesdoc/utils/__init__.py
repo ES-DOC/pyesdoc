@@ -5,25 +5,15 @@
    :platform: Unix, Windows
    :synopsis: Package init.
 
-.. moduleauthor:: Mark Conway-Greenslade (formerly Morgan) <momipsl@ipsl.jussieu.fr>
+.. moduleauthor:: Mark Conway-Greenslade <momipsl@ipsl.jussieu.fr>
 
 
 """
 # Module imports.
-from convertors import (
-    convert_dict_keys,
-    convert_to_camel_case,
-    convert_to_pascal_case,
-    convert_to_spaced_case,
-    convert_to_underscore_case
-    )
 from runtime import PYESDOC_Exception
-from decoder_xml_utils import PYESDOC_XMLError
 
 from . import (
+    convert,
+    functional,
     runtime,
-    serializer_dict,
-    serializer_json,
-    serializer_xml,
-    serializer_xml_metafor_cim_v1
     )

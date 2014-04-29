@@ -1,0 +1,24 @@
+{% set mosaic = ctx.data %}
+
+{% comment ***************** %}
+{% comment Emit overview     %}
+{% comment ***************** %}
+{% set ctx = TemplateInfo(mosaic,
+    fieldset = [
+        FieldInfo('Name', path='short_name'),
+        FieldInfo('Long Name', path='long_name'),
+        FieldInfo('Type', path='type'),
+        FieldInfo('Tiles', path='tile_count'),
+        FieldInfo('Mosaics', path='mosaic_count'),
+        FieldInfo('Is Leaf', path='is_leaf'),
+        FieldInfo('Has Congruent Tiles', path='has_congruent_tiles'),
+        FieldInfo('Description', path='description')
+    ]) %}
+{% include ../core/fieldset_table.html %}  
+
+{% comment ***************** %}
+{% comment Emit tiles        %}
+{% comment ***************** %}
+{% for tile in mosaic.tiles %}
+    {% include grids_grid_tile.html %}
+{% end %}

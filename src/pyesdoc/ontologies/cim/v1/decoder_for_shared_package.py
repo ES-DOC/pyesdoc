@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 """
 .. module:: cim.v1.decoder_for_shared_package.py
 
@@ -7,7 +9,7 @@
    :synopsis: A set of cim 1 decoders.
 
 .. moduleauthor:: Earth System Documentation (ES-DOC) <dev@es-doc.org>
-.. note:: Code generated using esdoc_mp @ 2014-01-31 14:14:51.535047.
+.. note:: Code generated using esdoc_mp @ 2014-04-25 15:28:51.112446.
 
 """
 
@@ -243,8 +245,8 @@ def decode_doc_genealogy(xml, nsmap):
     return set_attributes(typeset.shared.DocGenealogy(), xml, nsmap, decodings)
 
 
-def decode_doc_info(xml, nsmap):
-    """Decodes an instance of the following type: doc info.
+def decode_doc_meta_info(xml, nsmap):
+    """Decodes an instance of the following type: doc meta info.
 
     :param xml: XML from which type is to be decoded.
     :type xml: lxml.etree
@@ -253,7 +255,7 @@ def decode_doc_info(xml, nsmap):
     :type nsmap: dict
 
     :returns: A decoded type instance.
-    :rtype: cim.v1.typeset.shared.DocInfo
+    :rtype: cim.v1.typeset.shared.DocMetaInfo
 
     """
     decodings = [
@@ -265,7 +267,7 @@ def decode_doc_info(xml, nsmap):
         ('version', False, 'int', 'child::cim:documentVersion'),
     ]
 
-    return set_attributes(typeset.shared.DocInfo(), xml, nsmap, decodings)
+    return set_attributes(typeset.shared.DocMetaInfo(), xml, nsmap, decodings)
 
 
 def decode_doc_reference(xml, nsmap):
@@ -469,8 +471,8 @@ def decode_platform(xml, nsmap):
     decodings = [
         ('contacts', True, decode_responsible_party, 'child::cim:contact'),
         ('description', False, 'str', 'child::cim:description'),
-        ('doc_info', False, decode_doc_info, 'self::cim:platform'),
         ('long_name', False, 'str', 'child::cim:longName'),
+        ('meta', False, decode_doc_meta_info, 'self::cim:platform'),
         ('short_name', False, 'str', 'child::cim:shortName'),
         ('units', True, decode_machine_compiler_unit, 'child::cim:unit'),
     ]

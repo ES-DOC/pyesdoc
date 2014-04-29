@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gridSpec gml:id="metafor56259768-e2b1-11df-aab5-00163e9152a5" xmlns="http://www.purl.org/org/esmetadata/cim/1.5/schemas" xmlns:gco="http://www.isotc211.org/2005/gco" xmlns:gmd="http://www.isotc211.org/2005/gmd" xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.purl.org/org/esmetadata/cim/1.5/schemas/cim.xsd">
+    <esmModelGrid gridType="regular_lat_lon" id="" isLeaf="true" numMosaics="0" numTiles="1">
+        <shortName>UM N96L38 ATM Grid System</shortName>
+        <longName>Met Office Unified Model 192-column 38-level Atmosphere Grid System</longName>
+        <description>Specification of the atmosphere grid configuration utilised in the Met Office Hadley Centre's HadGEM1 and HadGEM2 climate models.
+
+The key features of the N96L38 grid configuration, which is utilised by the Met Office Hadley Centre HadGAM1 and HadGAM2 atmosphere models, are as follows.
+
+The grid is logically rectangular and dimensioned (i=192, j=145, k=38), where i = longitude, j = latitude, k = level. Horizontal grid cell size is 1.875 degrees in longitude by 1.25 degrees in latitude. Vertical levels are terrain-following for levels up to k=29 and constant thickness above that level. Grid staggering (i.e. between the sub-grids used by scalar (physics) and vector quantities) is based upon the Arakawa-C grid configuration.
+
+Array indexing in the latitude direction starts at the south pole. For an unrotated grid mesh, longitude (i=0.5) corresponds to Greenwich meridian.
+
+In the Unified Model, the north and south poles coincide with the bounding half-integer j planes, i.e. j=0.5 and j=M-0.5. P-points and u-points exist at the poles, but not v-points. At the poles all values of P variables are set equal. Likewise for scalar variables rho, theta, m, w.</description>
+        <citationList>
+            <citation>
+                <gmd:title>
+                    <gco:CharacterString>Johns_2005</gco:CharacterString>
+                </gmd:title>
+                <gmd:date/>
+                <gmd:presentationForm>
+                    <gmd:CI_PresentationFormCode codeList="" codeListValue="Offline Other"/>
+                </gmd:presentationForm>
+                <gmd:otherCitationDetails>
+                    <gco:CharacterString/>
+                </gmd:otherCitationDetails>
+                <gmd:collectiveTitle>
+                    <gco:CharacterString>Johns T.C., et al. (2005). &quot;HadGEM1 - Model description and analysis of preliminary experiments for the IPCC Fourth Assessment Report&quot;. Hadley Centre Technical Note 55, Met, Office, Exeter 74pp. </gco:CharacterString>
+                </gmd:collectiveTitle>
+            </citation>
+            <citation>
+                <gmd:title>
+                    <gco:CharacterString>Martin 2006</gco:CharacterString>
+                </gmd:title>
+                <gmd:date/>
+                <gmd:presentationForm>
+                    <gmd:CI_PresentationFormCode codeList="" codeListValue="Offline Refereed"/>
+                </gmd:presentationForm>
+                <gmd:otherCitationDetails>
+                    <gco:CharacterString/>
+                </gmd:otherCitationDetails>
+                <gmd:collectiveTitle>
+                    <gco:CharacterString>Martin G.M., M.A. Ringer, V.D. Pope, A. Jones, C. Dearden and T.J. Hinton (2006) The physical properties of the atmosphere in the new Hadley Centre Global Environmental Model, HadGEM1 - Part 1: Model description and global climatology. Journal of Climate, American Meteorological Society, Vol. 19, No.7, pages 1274-1301.  </gco:CharacterString>
+                </gmd:collectiveTitle>
+            </citation>
+        </citationList>
+        <gridTile discretizationType="logically_rectangular">
+            <description>Horizontal properties: The N96 Grid represents the 192-column horizontal coordinate system utilised within the Met Office Hadley Centre HadGAM1 and HadGAM2 atmosphere models. This grid defines the horizontal locations of the physics (P) variables computed by these atmosphere models. The locations of U variables are offset by one-half of a grid cell to the east of P grid locations. The locations of V variables are offset by one-half of a grid cell to the north of P grid locations. Vertical properties: Vertical levels are terrain-following for levels up to k=29 and constant thickness above that level.</description>
+            <extent>
+                <latMin>-90</latMin>
+                <latMax>90</latMax>
+                <lonMin>0</lonMin>
+                <lonMax>360</lonMax>
+            </extent>
+            <horizontalResolution description="1.875 degrees in longitude by 1.25 degrees in latitude">
+                <property>
+                    <value>145</value>
+                    <name>NumberOfLatitudinalGridCells</name>
+                </property>
+                <property>
+                    <value>192</value>
+                    <name>NumberOfLongitudinalGridCells</name>
+                </property>
+            </horizontalResolution>
+            <!--Vertical Domain specified as : atmospheric-->
+            <verticalResolution>
+                <property>
+                    <value>39254.8</value>
+                    <name>TopModelLevel</name>
+                </property>
+                <property>
+                    <value>n/a</value>
+                    <name>NumberOfLevelsBelow850hPa</name>
+                </property>
+                <property>
+                    <value>n/a</value>
+                    <name>NumberOfLevelsAbove200hPa</name>
+                </property>
+                <property>
+                    <value>38</value>
+                    <name>NumberOfLevels</name>
+                </property>
+            </verticalResolution>
+            <zcoords coordinateForm="hybrid height" coordinateType="hybrid">
+                <property>
+                    <value>Hybrid height, terrain-following near bottom boundary</value>
+                    <name>Hybridization</name>
+                </property>
+            </zcoords>
+            <mnemonic>N96</mnemonic>
+        </gridTile>
+    </esmModelGrid>
+    <documentID>56259768-e2b1-11df-aab5-00163e9152a5</documentID>
+    <documentVersion>1</documentVersion>
+    <documentAuthor>
+        <gmd:individualName>
+            <gco:CharacterString>Metafor Questionnaire</gco:CharacterString>
+        </gmd:individualName>
+        <gmd:role>
+            <gmd:CI_RoleCode codeList="" codeListValue="documentAuthor"/>
+        </gmd:role>
+    </documentAuthor>
+    <documentCreationDate>2012-04-23T14:59:07.384733</documentCreationDate>
+</gridSpec>

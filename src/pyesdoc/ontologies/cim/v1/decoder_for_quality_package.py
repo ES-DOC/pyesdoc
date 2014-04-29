@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 """
 .. module:: cim.v1.decoder_for_quality_package.py
 
@@ -7,7 +9,7 @@
    :synopsis: A set of cim 1 decoders.
 
 .. moduleauthor:: Earth System Documentation (ES-DOC) <dev@es-doc.org>
-.. note:: Code generated using esdoc_mp @ 2014-01-31 14:14:51.533275.
+.. note:: Code generated using esdoc_mp @ 2014-04-25 15:28:51.110794.
 
 """
 
@@ -32,7 +34,7 @@ def decode_cim_quality(xml, nsmap):
 
     """
     decodings = [
-        ('doc_info', False, decode_doc_info, 'self::cim:cIM_Quality'),
+        ('meta', False, decode_doc_meta_info, 'self::cim:cIM_Quality'),
         ('reports', True, decode_report, 'child::cim:report'),
     ]
 
@@ -59,7 +61,7 @@ def decode_evaluation(xml, nsmap):
         ('explanation', False, 'str', 'child::gmd:result/gmd:DQ_ConformanceResult/gmd:explanation/gco:CharacterString'),
         ('specification', False, 'str', 'child::gmd:result/gmd:DQ_ConformanceResult/gmd:specification/@xlink:title'),
         ('specification_hyperlink', False, 'str', 'child::gmd:result/gmd:DQ_ConformanceResult/gmd:specification/@xlink:href'),
-        ('title', False, 'str', 'child::gmd:result/gmd:DQ_ConformanceResult/gmd:specification/gmd:CI_Citation/gmd:title'),
+        ('title', False, 'str', 'child::gmd:result/gmd:DQ_ConformanceResult/gmd:specification/gmd:CI_Citation/gmd:title/gco:CharacterString'),
         ('type', False, 'str', 'child::gmd:result/@xlink:title'),
         ('type_hyperlink', False, 'str', 'child::gmd:result/@xlink:href'),
     ]

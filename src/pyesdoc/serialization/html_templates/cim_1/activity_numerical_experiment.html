@@ -1,0 +1,66 @@
+{% extends "../core/document.html" %}
+
+{% block doc-nav %}
+    <li><a href="#overview">Overview</a></li>
+	{% set REQUIREMENT_TYPES = {
+		"initialCondition" : "Initial Conditions",
+		"boundaryCondition": "Boundary Conditions",
+		"lateralBoundaryCondition" : "Lateral Boundary Conditions",
+		"outputRequirement" : "Spatio Temporal Constraints",
+		"spatioTemporalConstraint" : "Output Requirements",
+	} %}
+	{% for type in REQUIREMENT_TYPES.keys() %}
+		{% set requirements = filter(lambda r : r.requirement_type == type, doc.requirements) %}
+		{% if len(requirements) %}
+	    	<li><a href="#{{ type }}">{{ REQUIREMENT_TYPES[type] }}</a></li>
+		{% end %}
+	{% end %}
+{% end %}
+
+{% block doc-content %}
+
+	{% comment ***************** %}
+	{% comment Parse document    %}
+	{% comment ***************** %}
+	{% set doc.name = doc.experiment_id + ' ' + doc.short_name %}
+	{% set doc.id = doc.experiment_id %}
+
+	{% comment ***************** %}
+	{% comment Emit overview     %}
+	{% comment ***************** %}
+	{% set ctx = TemplateInfo(doc,
+		header = "Overview",
+		fieldset = [
+		    FieldInfo('Project', path='meta.project'),
+		    FieldInfo('Institute', path='meta.institute'),
+		    FieldInfo('Name', path='short_name'),
+		    FieldInfo('Long Name', path='long_name'),
+			FieldInfo('ID', path='name'),
+		    FieldInfo('Description', path='description'),
+			FieldInfo('Rationale', path='rationales'),
+		],
+		template = "fieldset_table.html"
+	) %}
+	{% include ../core/section_01.html %}
+
+	{% comment ***************** %}
+	{% comment Emit requirements %}
+	{% comment ***************** %}
+	{% set REQUIREMENT_TYPES = {
+		"initialCondition" : "Initial Conditions",
+		"boundaryCondition": "Boundary Conditions",
+		"lateralBoundaryCondition" : "Lateral Boundary Conditions",
+		"outputRequirement" : "Output Requirements",
+		"spatioTemporalConstraint" : "Spatio Temporal Constraints",
+	} %}
+	{% for type in REQUIREMENT_TYPES.keys() %}
+		{% set requirements = filter(lambda r : r.requirement_type == type, doc.requirements) %}
+		{% set ctx = TemplateInfo(requirements,
+			tag_id = type,
+			header = REQUIREMENT_TYPES[type],
+			template = "cim_1_activity_numerical_requirement.html"
+		) %}
+		{% include ../core/section_02.html %}
+	{% end %}
+
+{% end %}

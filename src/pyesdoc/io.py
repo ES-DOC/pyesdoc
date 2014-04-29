@@ -5,13 +5,13 @@
    :platform: Unix, Windows
    :synopsis: Exposes document io functions.
 
-.. moduleauthor:: Mark Conway-Greenslade (formerly Morgan) <momipsl@ipsl.jussieu.fr>
+.. moduleauthor:: Mark Conway-Greenslade <momipsl@ipsl.jussieu.fr>
 
 """
 # Module imports.
 import os
 
-from . import serialization
+from . import constants, serialization
 from .utils import runtime as rt
 
 
@@ -24,8 +24,8 @@ def _get_doc_path(doc, encoding):
     """Returns path to doc file in the relevant encoding."""
     path = '{0}_{1}_{2}.{3}'.format(
         doc.__class__.type_key,
-        str(doc.doc_info.id),
-        str(doc.doc_info.version),
+        str(doc.meta.id),
+        str(doc.meta.version),
         encoding)
 
     return os.path.join(_output_directory, path)
@@ -47,7 +47,7 @@ def set_output_directory(path):
     _output_directory = path
 
 
-def write(doc, encoding=serialization.ESDOC_ENCODING_JSON, path=None):
+def write(doc, encoding=constants.ESDOC_ENCODING_JSON, path=None):
     """Writes a document to the file system in the passed encoding.
 
     :param doc: A pyesdoc document instance.

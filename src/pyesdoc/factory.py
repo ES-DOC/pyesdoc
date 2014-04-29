@@ -5,7 +5,7 @@
    :platform: Unix, Windows
    :synopsis: Exposes document creation functions.
 
-.. moduleauthor:: Mark Conway-Greenslade (formerly Morgan) <momipsl@ipsl.jussieu.fr>
+.. moduleauthor:: Mark Conway-Greenslade <momipsl@ipsl.jussieu.fr>
 
 
 """
@@ -13,9 +13,8 @@
 import datetime
 import uuid
 
-from . import ontologies
-from .defaults import ESDOC_DEFAULT_LANGUAGE
-from .utils import runtime as rt
+from . import constants, ontologies
+from . utils import runtime as rt
 
 
 
@@ -29,7 +28,7 @@ def _assert_type(type):
         rt.throw("Type {0} is unsupported.".format(type))
 
 
-def create(type, project, institute, language=ESDOC_DEFAULT_LANGUAGE):
+def create(type, project, institute, language=constants.ESDOC_DEFAULT_LANGUAGE):
     """Creates a document.
 
     :param type: Ontology type, e.g. cim.1.software.ModelComponent.
@@ -59,13 +58,13 @@ def create(type, project, institute, language=ESDOC_DEFAULT_LANGUAGE):
     else:
         doc = type()
         
-    # Assign document info.
-    if doc is not None and hasattr(doc, 'doc_info'):
-        doc.doc_info.id = uuid.uuid4()
-        doc.doc_info.version = 0
-        doc.doc_info.create_date = datetime.datetime.now()
-        doc.doc_info.institute = str(institute).lower()
-        doc.doc_info.language = str(language).lower()
-        doc.doc_info.project = str(project).lower()
+    # Assign document meta info.
+    if doc is not None and hasattr(doc, 'meta'):
+        doc.meta.id = uuid.uuid4()
+        doc.meta.version = 0
+        doc.meta.create_date = datetime.datetime.now()
+        doc.meta.institute = str(institute).lower()
+        doc.meta.language = str(language).lower()
+        doc.meta.project = str(project).lower()
 
     return doc

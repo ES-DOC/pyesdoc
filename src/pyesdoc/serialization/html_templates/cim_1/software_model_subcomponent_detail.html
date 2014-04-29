@@ -1,0 +1,43 @@
+{% comment ***************** %}
+{% comment Emit properties   %}
+{% comment ***************** %}
+{% if len(ctx.data._property_list) %}
+	{% set ctx = TemplateInfo(ctx,
+		depth = 2,
+		fieldset_type = "property",
+		header = "Properties",
+		template = "fieldset_table.html"
+	) %}
+	{% for p in sorted(ctx.data._property_list, key=lambda p: p._list_display_name) %}	
+		{% for v in sorted(p.values) %}		
+			{% raw ctx.fieldset.append(FieldInfo(p._list_display_name, value=v)) or "" %}
+		{% end %}
+	{% end %}
+	{% include ../core/section_01.html %}
+	{% set ctx = ctx.previous %}
+{% end %}
+
+{% comment ***************** %}
+{% comment Emit citations    %}
+{% comment ***************** %}
+{% set ctx = TemplateInfo(ctx.data.citations,
+	depth = 2,
+	header = "Citations",
+	template = "cim_1_shared_citation.html",
+	previous = ctx
+) %}
+{% include ../core/section_01.html %}
+{% set ctx = ctx.previous %}
+
+
+{% comment ***************** %}
+{% comment Emit contacts     %}
+{% comment ***************** %}
+{% set ctx = TemplateInfo([rp for rp in ctx.data.responsible_parties if rp.role.lower() not in ['funder', 'centre']],
+	depth = 2,
+	header = "Contacts",
+	template = "cim_1_shared_responsible_party.html",
+	previous = ctx
+) %}
+{% include ../core/section_01.html %}
+{% set ctx = ctx.previous %}

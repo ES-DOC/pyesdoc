@@ -1,0 +1,26 @@
+{% set ctx = TemplateInfo(
+	data = doc, 
+	header = "Metadata",
+	fieldset = [
+	    FieldInfo('ID', path='meta.id'),
+	    FieldInfo('Version', path='meta.version'),
+	    FieldInfo('Create Date', path='meta.create_date'),
+	    FieldInfo('Type', path='meta.type'),
+	    FieldInfo('Language', path='meta.language'),
+	    FieldInfo('Project', path='meta.project'),
+	    FieldInfo('Institute', path='meta.institute'),
+	    ],
+	template = "fieldset_table.html" 
+) %}
+
+{% for i, encoding in enumerate(doc.meta.encodings) %}
+	{% set field_info = FieldInfo('', value=encoding) %}
+	{% if i == 0 %}
+		{% set field_info.name = "Encodings" %}
+	{% end %}
+	{% set field_info.link = "#" + encoding %}
+	{% set field_info.tag_id = "{0}_{1}_{2}".format(doc.meta.id, doc.meta.version, encoding) %}
+	{% raw ctx.fieldset.append(field_info) or "" %}	
+{% end %}
+
+{% include section_01.html %}	

@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 """
 .. module:: cim.v1.decoder_for_grids_package.py
 
@@ -7,7 +9,7 @@
    :synopsis: A set of cim 1 decoders.
 
 .. moduleauthor:: Earth System Documentation (ES-DOC) <dev@es-doc.org>
-.. note:: Code generated using esdoc_mp @ 2014-01-31 14:14:51.531995.
+.. note:: Code generated using esdoc_mp @ 2014-04-25 15:28:51.109263.
 
 """
 
@@ -131,9 +133,9 @@ def decode_grid_spec(xml, nsmap):
 
     """
     decodings = [
-        ('doc_info', False, decode_doc_info, 'self::cim:gridSpec'),
         ('esm_exchange_grids', True, decode_grid_mosaic, 'child::cim:esmExchangeGrid'),
         ('esm_model_grids', True, decode_grid_mosaic, 'child::cim:esmModelGrid'),
+        ('meta', False, decode_doc_meta_info, 'self::cim:gridSpec'),
     ]
 
     return set_attributes(typeset.grids.GridSpec(), xml, nsmap, decodings)

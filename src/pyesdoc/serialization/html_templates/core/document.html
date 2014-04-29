@@ -1,0 +1,49 @@
+{% comment ***************** %}
+{% comment Global variables  %}
+{% comment ***************** %}
+{% set DOCUMENT_OVERVIEW_HEADER = "Overview" %}
+{% set DOCUMENT_OVERVIEW_FIELDSET = [
+    FieldInfo('Project', 'meta.project'),
+    FieldInfo('Institute', 'meta.institute'),
+    FieldInfo('Name', 'short_name'),
+    FieldInfo('Long Name', 'long_name'),
+    FieldInfo('Description', 'description'),
+] %}
+
+<body class="esdoc-document {{doc.type_key.lower().replace(".", "-")}}">
+    {% comment ******************* %}
+    {% comment Emit doc header %}
+    {% comment ******************* %}
+    <header>
+        <h2>{{ doc.ext.full_display_name }}<small> (v{{ doc.meta.version }})</small></h2>
+    </header>
+
+    {% comment ******************* %}
+    {% comment Emit doc navigation %}
+    {% comment ******************* %}
+    <nav>
+        <ul>
+            {% block doc-nav %}{% end %}
+            <li><a href="#metadata">Metadata</a></li>
+        </ul>
+    </nav>
+
+    {% comment ***************** %}
+    {% comment Emit doc content  %}
+    {% comment ***************** %}
+    <article>
+        {% block doc-content %}{% end %}
+        {% include document_metadata.html %}
+    </article>
+
+    {% comment ***************** %}
+    {% comment Emit doc footer   %}
+    {% comment ***************** %}
+    <footer>
+        <h4>
+            &nbsp;
+            <span>&copy; ES-DOC 2014</span>
+            <span>Documentation Viewer v0.9.0.3</span>
+        </h4>
+    </footer>
+</body>

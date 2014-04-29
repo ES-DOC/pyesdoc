@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataObject dataStatus="complete" xmlns="http://www.purl.org/org/esmetadata/cim/1.5/schemas" xmlns:gco="http://www.isotc211.org/2005/gco" xmlns:gmd="http://www.isotc211.org/2005/gmd" xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.purl.org/org/esmetadata/cim/1.5/schemas/cim.xsd">
+    <acronym>fossil_fuel_organic_carbon</acronym>
+    <description>2D gridded monthly-mean fields of organic carbon emissions from fossil fuel burning</description>
+    <storage>
+      <ipStorage>
+        <dataFormat open="true" value="ASCII">
+          <controlledVocabulary>
+            <name>dataFormatType</name>
+            <server>http://proj.badc.rl.ac.uk/svn/metafor/cmip5q/trunk</server>
+          </controlledVocabulary>
+        </dataFormat>
+        <fileName>emissions of organic carbon from fossil fuel burning</fileName>
+      </ipStorage>
+    </storage>
+    <distribution>
+      <distributionFormat open="true" value="ASCII">
+        <controlledVocabulary>
+          <name>dataFormatType</name>
+          <server>http://proj.badc.rl.ac.uk/svn/metafor/cmip5q/trunk</server>
+        </controlledVocabulary>
+      </distributionFormat>
+    </distribution>
+    <content>
+      <topic>
+        <name>fossil_fuel_organic_carbon</name>
+        <description>missing CF name: tendency_of_atmosphere_mass_content_of_carbon_dioxide_expressed_as_carbon_due_to_emission_from_fossil_fuel_combustion</description>
+      </topic>
+    </content>
+    <documentID>8e92715a-5176-11e0-9919-00163e9152a5</documentID>
+    <documentVersion>1</documentVersion>
+    <documentAuthor>
+      <gmd:individualName>
+        <gco:CharacterString>Metafor Questionnaire</gco:CharacterString>
+      </gmd:individualName>
+      <gmd:role>
+        <gmd:CI_RoleCode codeList="" codeListValue="documentAuthor"/>
+      </gmd:role>
+    </documentAuthor>
+    <documentCreationDate>2012-04-23T14:59:07.146365</documentCreationDate>
+  </dataObject>
