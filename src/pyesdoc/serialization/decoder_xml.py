@@ -19,7 +19,8 @@ from .. utils import (
     )
 
 
-# Set of ontology types.
+
+# Set of supported ontology types.
 _TYPES = ontologies.get_types()
 
 
@@ -43,7 +44,7 @@ def _decode_simple(v, type, iterable):
 
 
 def _decode_complex(v, doc_type, iterable):
-    """Decodes a complex type."""        
+    """Decodes a complex type."""
     def _do(xml):
         # Set doc.
         doc, doc_type_info = _get_doc(xml, doc_type)
@@ -55,7 +56,7 @@ def _decode_complex(v, doc_type, iterable):
 
             # ... set attribute
             if elem is not None:
-                decoder = _decode_complex if _type in _TYPES else _decode_simple                
+                decoder = _decode_complex if _type in _TYPES else _decode_simple
                 setattr(doc, _name, decoder(elem, _type, _iterable))
 
         return doc
@@ -63,21 +64,28 @@ def _decode_complex(v, doc_type, iterable):
     return map(lambda i : _do(i), v) if iterable else _do(v)
 
 
-def decode(xml):
+def decode(as_xml):
     """Decodes a document from an xml string.
 
-    :param xml: Document xml representation.
-    :type xml: str
+    :param as_xml: Document xml representation.
+    :type as_xml: unicode | str | ET.Element
 
     :returns: A pyesdoc document instance.
     :rtype: object
 
     """
     # Convert to etree.
-    xml = xml if type(xml) == ET else ET.fromstring(xml)
+    if isinstance(as_xml, unicode):
+        as_xml = ET.fromstring(as_xml.encode('utf-8'))
+    elif isinstance(as_xml, str):
+        as_xml = ET.fromstring(as_xml)
+
+    # Verify etree.
+    if not isinstance(as_xml, ET.Element):
+        rt.throw("Cannot decode non xml documents")
 
     # Get target type.
-    o, v, p, t = xml.get("ontologyTypeKey").split('.')
-    doc_type = ontologies.get_type(o, v, p, t)
+    doc_type_key = as_xml.get("ontologyTypeKey")
+    doc_type = ontologies.get_type_from_key(doc_type_key)
 
-    return  _decode_complex(xml, doc_type, False)
+    return  _decode_complex(as_xml, doc_type, False)

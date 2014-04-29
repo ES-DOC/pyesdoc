@@ -10,7 +10,7 @@
 
 """
 # Module imports.
-from .. import constants
+from .. import constants, ontologies
 from .. utils import runtime as rt
 from . import (
     encoder_dict,
@@ -19,6 +19,10 @@ from . import (
     encoder_xml,
     )
 
+
+
+# Set of ontology types.
+_TYPES = ontologies.get_types()
 
 # Encoders.
 _encoders = {
@@ -29,13 +33,12 @@ _encoders = {
 }
 
 
-def _assert_doc(doc):
-    """Asserts that document is encodable."""    
-    rt.assert_doc('doc', doc, "Cannot encode a null document")
-    
-
-def _assert_encoding(encoding):
-    """Asserts that encoding is supported."""
+def _assert(doc, encoding):
+    """Validates input parameters."""
+    if doc is None:
+        rt.throw("Cannot encode a null document.")
+    if type(doc) not in _TYPES:
+        rt.throw("Unsupported document type: {0}.".format(type(doc)))
     if not encoding in _encoders:
         raise NotImplementedError('Document encoding is unsupported :: encoding = {0}.'.format(encoding))
 
@@ -54,7 +57,6 @@ def encode(doc, encoding):
 
     """
     # Defensive programming.
-    _assert_doc(doc)
-    _assert_encoding(encoding)
+    _assert(doc, encoding)
 
     return _encoders[encoding].encode(doc)

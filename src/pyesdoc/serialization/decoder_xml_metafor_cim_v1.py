@@ -11,6 +11,8 @@
 """
 # Module imports.
 from lxml import etree as et
+# from lxml.etree import _ElementTree as ET
+
 
 from . decoder_xml_utils import (
     load_xml,
@@ -38,15 +40,19 @@ _decoders = {
 }
 
 
-def decode(repr):
+def decode(as_xml):
     """Decodes a pyesdoc document from passed representation.
 
-    :param repr: Metafor CIM v1 XML document representation.
-    :type repr: lxml.etree._ElementTree
+    :param as_xml: Metafor CIM v1 XML document representation.
+    :type as_xml: str | unicode | lxml.etree._ElementTree
 
     """
+    # Convert unicode to string.
+    if isinstance(as_xml, unicode):
+        as_xml = as_xml.encode('utf-8')
+
     # Defensive programming.
-    xml, nsmap = load_xml(repr, return_nsmap=True)
+    xml, nsmap = load_xml(as_xml, return_nsmap=True)
     if not isinstance(xml, et._Element):
         rt.raise_error('Decoding failure due to invalid Metafor CIM v1 XML.')
 
@@ -54,6 +60,6 @@ def decode(repr):
     doc_type = xml.tag.split('}')[1]
     if doc_type not in _decoders:
         rt.raise_error("CIM v1 - {0} document type decoding unsupported.".format(doc_type))
-    
+
     # Decode pyesdoc doc.
     return decode_xml(_decoders[doc_type], xml, nsmap, None)

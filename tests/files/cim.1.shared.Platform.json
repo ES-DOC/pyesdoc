@@ -14,6 +14,32 @@
         "individualName": null
     }],
     "ontologyTypeKey": "cim.1.shared.Platform",
+    "meta": {
+        "status": null,
+        "externalIds": [],
+        "language": "en",
+        "genealogy": null,
+        "author": {
+            "organisationName": null,
+            "abbreviation": null,
+            "role": "documentAuthor",
+            "ontologyTypeKey": "cim.1.shared.ResponsibleParty",
+            "contactInfo": null,
+            "individualName": "Metafor Questionnaire"
+        },
+        "institute": "MOHC",
+        "createDate": "2012-04-23 14:59:07.049089",
+        "ontologyTypeKey": "cim.1.shared.DocMetaInfo",
+        "project": "CMIP5",
+        "source": "testing",
+        "metadataVersion": null,
+        "version": 1,
+        "metadataID": null,
+        "encodings": ["json", "xml", "html", "xml-metafor-cim-v1"],
+        "type": "cim.1.shared.Platform",
+        "id": "b765775a-e2ac-11df-9efb-00163e9152a5",
+        "typeDisplayName": "Platform"
+    },
     "longName": "Machine IBM Power 6 and compiler Other",
     "units": [{
         "machine": {
@@ -42,31 +68,5 @@
         }],
         "ontologyTypeKey": "cim.1.shared.MachineCompilerUnit"
     }],
-    "shortName": "IBM Power 6_Other",
-    "docInfo": {
-        "status": "",
-        "externalIds": [],
-        "language": "en",
-        "genealogy": null,
-        "author": {
-            "organisationName": null,
-            "abbreviation": null,
-            "role": "documentAuthor",
-            "ontologyTypeKey": "cim.1.shared.ResponsibleParty",
-            "contactInfo": null,
-            "individualName": "Metafor Questionnaire"
-        },
-        "institute": "MOHC",
-        "createDate": "2012-04-23 14:59:07.049089",
-        "ontologyTypeKey": "cim.1.shared.DocInfo",
-        "project": "CMIP5",
-        "source": "testing",
-        "metadataVersion": "",
-        "version": 1,
-        "metadataID": "",
-        "encodings": ["json", "xml", "html", "xml-metafor-cim-v1"],
-        "type": "cim.1.shared.Platform",
-        "id": "b765775a-e2ac-11df-9efb-00163e9152a5",
-        "typeDisplayName": "Platform"
-    }
+    "shortName": "IBM Power 6_Other"
 }

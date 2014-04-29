@@ -25,32 +25,37 @@ def _is_encodable(obj):
 
 def _encode(doc):
     """Encodes an object to a deep dictionary."""
-    result = {
+    # Initialise result (note - type key is necessary to decode).
+    d = {
         'ontology_type_key' : type(doc).type_key
     }
 
     # Iterate document dictionary key/value pairs.
     for k, v in doc.__dict__.items():
         # Omit private members.
-        if k[0]  == "_" or k[0:2]  == "__":
+        if k.startswith("_") or k.startswith("__"):
             continue
 
-        # Test for iterability.
+        # Omit extension.
+        if k == "ext":
+            continue
+
+        # Process value depending upon type:
         try:
             iter(v)
         # ... non-iterables
         except TypeError:
-            result[k] = _encode(v) if _is_encodable(v) else v
+            d[k] = _encode(v) if _is_encodable(v) else v
         # ... iterables
         else:
             # ... strings / unicodes
             if type(v) in (str, unicode,):
-                result[k] = v
-            # ... mapped
+                d[k] = v
+            # ... collection
             else:
-                result[k] = map(lambda i : _encode(i) if _is_encodable(i) else i, v)
+                d[k] = map(lambda i : _encode(i) if _is_encodable(i) else i, v)
 
-    return result
+    return d
 
 
 def encode(doc):

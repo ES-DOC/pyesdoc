@@ -7,10 +7,22 @@
    :platform: Unix, Windows
    :synopsis: Set of functional programming utilities for working with collections.
 
-.. moduleauthor:: Mark Conway-Greenslade (formerly Morgan) <momipsl@ipsl.jussieu.fr>
+.. moduleauthor:: Mark Conway-Greenslade <momipsl@ipsl.jussieu.fr>
 
 
 """
+def invoke(collection, func):
+    """Invokes a function over each member of a collection.
+
+    :param iterable collection: A collection of items.
+    :param function func: A function to be applied to each collection member.
+
+    :returns: Tuple of function results.
+    :rtype: tuple
+
+    """
+    return (func(i) for i in collection)
+
 
 def first(collection, name, value, value_formatter=None):
     """Returns first item in collection filtered by attribute name/value.
@@ -23,7 +35,7 @@ def first(collection, name, value, value_formatter=None):
     :returns: First item in collection filtered by attribute name/value.
     :rtype: object | None
 
-    """    
+    """
     filtered = all(collection, name, value, value_formatter)
 
     return filtered[0] if len(filtered) else None
@@ -49,7 +61,7 @@ def all(collection, name, value, formatter=None):
             v = getattr(i, name)
             if formatter:
                 v = formatter(v)
-            
+
             return v == value
         else:
             return False

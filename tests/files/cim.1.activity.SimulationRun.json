@@ -11,7 +11,63 @@
     }],
     "ontologyTypeKey": "cim.1.activity.SimulationRun",
     "spinupSimulation": null,
+    "meta": {
+        "status": null,
+        "externalIds": [{
+            "standards": [{
+                "description": "The QN_DRS value allows mapping from data files to metadata \n                      being exported from the metadata questionnaire, and contains \n                      the institution name, the model name on which the simulation \n                      was run, the experiment name to which the simulation \n                      conforms, the simulation level base rip value, and finally \n                      the given start year for the simulation. The format of the string will thus be: \n                      institute_model_experiment_rip_startyear. Also note, that in particular cases, \n                      i.e. decadal and noVolc exps, the start date and expdate \n                      may differ - this will occur in those cases where the simulation \n                      start date is 1st january but still refers to an experiment \n                      for the year before. - (see cmip5 experiment design document)",
+                "version": null,
+                "name": "QN_DRS",
+                "ontologyTypeKey": "cim.1.shared.Standard"
+            }],
+            "value": "MOHC_HadGEM2-A_amip_r1i1p1_1978",
+            "isOpen": true,
+            "ontologyTypeKey": "cim.1.shared.StandardName"
+        }, {
+            "standards": [{
+                "description": null,
+                "version": null,
+                "name": "DRS_CMIP5_ensembleType",
+                "ontologyTypeKey": "cim.1.shared.Standard"
+            }],
+            "value": "r1i1p1",
+            "isOpen": true,
+            "ontologyTypeKey": "cim.1.shared.StandardName"
+        }],
+        "language": "en",
+        "genealogy": {
+            "relationships": [],
+            "ontologyTypeKey": "cim.1.shared.DocGenealogy"
+        },
+        "author": {
+            "organisationName": null,
+            "abbreviation": null,
+            "role": "documentAuthor",
+            "ontologyTypeKey": "cim.1.shared.ResponsibleParty",
+            "contactInfo": null,
+            "individualName": "Metafor Questionnaire"
+        },
+        "institute": "MOHC",
+        "createDate": "2012-04-23 14:59:06.767729",
+        "ontologyTypeKey": "cim.1.shared.DocMetaInfo",
+        "project": "CMIP5",
+        "source": "testing",
+        "metadataVersion": null,
+        "version": 2,
+        "metadataID": null,
+        "encodings": ["json", "xml", "html", "xml-metafor-cim-v1"],
+        "type": "cim.1.activity.SimulationRun",
+        "id": "e4155a28-268e-11e1-9a0e-00163e9152a5",
+        "typeDisplayName": "Simulation"
+    },
     "longName": "3.3 AMIP and AMIP Ensemble",
+    "calendar": {
+        "range": null,
+        "description": null,
+        "length": 0,
+        "ontologyTypeKey": "cim.1.shared.RealCalendar"
+    },
+    "controlSimulationReference": null,
     "conformances": [{
         "requirementsReferences": [{
             "description": "Reference to a NumericalRequirement called ic.003 in a experiment called 3.3 amip",
@@ -260,13 +316,6 @@
         "type": "standard config",
         "description": "Submitted data begins 1978-12-01.  Simulation was actually run from 1978-09-01 to allow spin up of configured fields like river water storage."
     }],
-    "controlSimulationReference": null,
-    "calendar": {
-        "range": null,
-        "description": null,
-        "length": 0,
-        "ontologyTypeKey": "cim.1.shared.RealCalendar"
-    },
     "rationales": [],
     "fundingSources": [],
     "deployments": [{
@@ -6408,54 +6457,5 @@
         "end": null,
         "ontologyTypeKey": "cim.1.shared.ClosedDateRange"
     },
-    "model": null,
-    "docInfo": {
-        "status": "",
-        "externalIds": [{
-            "standards": [{
-                "description": "The QN_DRS value allows mapping from data files to metadata \n                      being exported from the metadata questionnaire, and contains \n                      the institution name, the model name on which the simulation \n                      was run, the experiment name to which the simulation \n                      conforms, the simulation level base rip value, and finally \n                      the given start year for the simulation. The format of the string will thus be: \n                      institute_model_experiment_rip_startyear. Also note, that in particular cases, \n                      i.e. decadal and noVolc exps, the start date and expdate \n                      may differ - this will occur in those cases where the simulation \n                      start date is 1st january but still refers to an experiment \n                      for the year before. - (see cmip5 experiment design document)",
-                "version": null,
-                "name": "QN_DRS",
-                "ontologyTypeKey": "cim.1.shared.Standard"
-            }],
-            "value": "MOHC_HadGEM2-A_amip_r1i1p1_1978",
-            "isOpen": true,
-            "ontologyTypeKey": "cim.1.shared.StandardName"
-        }, {
-            "standards": [{
-                "description": null,
-                "version": null,
-                "name": "DRS_CMIP5_ensembleType",
-                "ontologyTypeKey": "cim.1.shared.Standard"
-            }],
-            "value": "r1i1p1",
-            "isOpen": true,
-            "ontologyTypeKey": "cim.1.shared.StandardName"
-        }],
-        "language": "en",
-        "genealogy": {
-            "relationships": [],
-            "ontologyTypeKey": "cim.1.shared.DocGenealogy"
-        },
-        "author": {
-            "organisationName": null,
-            "abbreviation": null,
-            "role": "documentAuthor",
-            "ontologyTypeKey": "cim.1.shared.ResponsibleParty",
-            "contactInfo": null,
-            "individualName": "Metafor Questionnaire"
-        },
-        "institute": "MOHC",
-        "createDate": "2012-04-23 14:59:06.767729",
-        "ontologyTypeKey": "cim.1.shared.DocInfo",
-        "project": "CMIP5",
-        "source": "testing",
-        "metadataVersion": "",
-        "version": 2,
-        "metadataID": "",
-        "encodings": ["json", "xml", "html", "xml-metafor-cim-v1"],
-        "type": "cim.1.activity.SimulationRun",
-        "id": "e4155a28-268e-11e1-9a0e-00163e9152a5",
-        "typeDisplayName": "SimulationRun"
-    }
+    "model": null
 }

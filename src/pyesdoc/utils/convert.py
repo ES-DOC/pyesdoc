@@ -7,7 +7,7 @@
    :platform: Unix, Windows
    :synopsis: Set of library conversion functions.
 
-.. moduleauthor:: Mark Conway-Greenslade (formerly Morgan) <momipsl@ipsl.jussieu.fr>
+.. moduleauthor:: Mark Conway-Greenslade <momipsl@ipsl.jussieu.fr>
 
 
 """
@@ -31,7 +31,7 @@ _JSON_CHARSET = "ISO-8859-1"
 # ISO date formats.
 _ISO_DATE_FORMATS = ["%Y-%m-%d %H:%M:%S", "%Y-%m-%dT%H:%M:%S"]
 
-# Values considered to be abbreviations. 
+# Values considered to be abbreviations.
 _ABBREVIATIONS = ("id", "uid", "uuid")
 
 
@@ -46,7 +46,7 @@ def str_to_pascal_case(target, separator='_'):
 
     :returns: The target string converted to pascal case.
     :rtype: str
-    
+
     """
     r = ''
     if target is not None and len(target):
@@ -97,11 +97,11 @@ def str_to_camel_case(target, separator='_'):
         # Lower case abbreviations.
         if s.lower() in _ABBREVIATIONS:
             r += s.lower()
-        
+
         # Lower case initial character.
         elif len(s):
             r += s[0].lower()
-            r += s[1:]            
+            r += s[1:]
 
     return r
 
@@ -139,7 +139,7 @@ def str_to_underscore_case(target):
     if target is None or not len(target):
         return ''
 
-    r = re.sub('(.)([A-Z][a-z]+)', r'\1_\2', target)    
+    r = re.sub('(.)([A-Z][a-z]+)', r'\1_\2', target)
     r = re.sub('([a-z0-9])([A-Z])', r'\1_\2', r)
     r = r.lower()
 
@@ -168,13 +168,13 @@ class _JSONDecoder(json.JSONDecoder):
 
     """
     def __init__(self, key_formatter, to_namedtuple=False):
-        json.JSONDecoder.__init__(self, 
-                                  encoding=_JSON_CHARSET, 
+        json.JSONDecoder.__init__(self,
+                                  encoding=_JSON_CHARSET,
                                   object_hook=self.dict_to_object)
         self.key_formatter = key_formatter
         self.to_namedtuple = to_namedtuple
         self.value_parsers = [
-            self.unicode_to_datetime, 
+            self.unicode_to_datetime,
             self.unicode_to_uuid
             ]
 
@@ -185,7 +185,7 @@ class _JSONDecoder(json.JSONDecoder):
             for parser in self.value_parsers:
                 if parser(d, k, v):
                     break
-                    
+
         # Format keys.
         if self.key_formatter is not None:
             d = dict_keys(d, self.key_formatter)
@@ -194,7 +194,7 @@ class _JSONDecoder(json.JSONDecoder):
         return d if not self.to_namedtuple else dict_to_namedtuple(d)
 
 
-    def unicode_to_datetime(self, d, k, v):        
+    def unicode_to_datetime(self, d, k, v):
         if isinstance(v, unicode) and len(v):
             try:
                 float(v)
@@ -262,7 +262,7 @@ def _convert_file(fp, convertor, key_formatter=None):
         return convertor(f.read(), key_formatter)
 
 
-def json_file_to_dict(fp, key_formatter=None):  
+def json_file_to_dict(fp, key_formatter=None):
     """Converts a json file to a dictionary.
 
     :param fp: A json file path.
@@ -278,7 +278,7 @@ def json_file_to_dict(fp, key_formatter=None):
     return _convert_file(fp, json_to_dict, key_formatter)
 
 
-def json_file_to_namedtuple(fp, key_formatter=None):  
+def json_file_to_namedtuple(fp, key_formatter=None):
     """Converts a json file to a namedtuple.
 
     :param fp: A json file path.
@@ -304,7 +304,7 @@ def dict_to_json(d, key_formatter=None):
     :type key_formatter: function
 
     :returns: A json encoded string.
-    :rtype: str 
+    :rtype: str
 
     """
     if key_formatter is not None:
@@ -435,7 +435,7 @@ def now_to_timestamp(offset=0):
     now = time.time()
     localtime = time.localtime(now)
     milliseconds = '%03d' % int((now - int(now)) * 1000)
-    ts = time.strftime('%Y%m%d%H%M%S', localtime) + milliseconds    
+    ts = time.strftime('%Y%m%d%H%M%S', localtime) + milliseconds
 
     return int(ts) + offset
 
@@ -446,7 +446,7 @@ def csv_file_to_dict(fp):
     :param str fp: A csv file path.
 
     :returns: A list of dictionaries.
-    :rtype: list 
+    :rtype: list
 
     """
     return map(lambda r:r, csv.DictReader(open(fp)))
@@ -458,7 +458,7 @@ def csv_file_to_namedtuple(fp):
     :param str fp: A csv file path.
 
     :returns: A list of named tuples.
-    :rtype: list 
+    :rtype: list
 
     """
     return map(dict_to_namedtuple, csv.DictReader(open(fp)))
@@ -470,7 +470,7 @@ def csv_file_to_json(fp):
     :param str fp: A csv file path.
 
     :returns: A json string.
-    :rtype: unicode 
+    :rtype: unicode
 
     """
     return dict_to_json(csv_file_to_dict(fp))
@@ -522,4 +522,4 @@ def str_to_typed_value(s, type):
             return type(s)
         # ... exceptions
         except Error as e:
-            print "Scalar decoding error", s, type    
+            print "Scalar decoding error", s, type

@@ -5,7 +5,7 @@
    :platform: Unix, Windows
    :synopsis: Set of cim v1 utility constants / functions.
 
-.. moduleauthor:: Mark Conway-Greenslade (formerly Morgan) <momipsl@ipsl.jussieu.fr>
+.. moduleauthor:: Mark Conway-Greenslade <momipsl@ipsl.jussieu.fr>
 
 
 """
