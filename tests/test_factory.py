@@ -11,6 +11,7 @@
 """
 # Module imports.
 import pyesdoc
+from pyesdoc.ontologies import cim
 import test_utils as tu
 import test_types as tt
 
@@ -52,7 +53,8 @@ def _assert_doc(doc, typeof=None):
 def _test_create_01():
     """Test creating documents - 1."""
     doc = _create_doc()
-    _assert_doc(doc, pyesdoc.ontologies.cim.v1.ModelComponent)
+
+    _assert_doc(doc, cim.v1.ModelComponent)
 
 
 def _test_create_02():

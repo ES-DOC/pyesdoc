@@ -96,7 +96,7 @@ def _parse_component_01(ctx):
 def _parse_component_02(ctx):
     """Sets component key."""
     # Create key based upon component type plus ancestor key.
-    ctx.c._key = ctx.c.type.lower()
+    ctx.c._key = str() if ctx.c.type is None else ctx.c.type.lower()
     if len(ctx.c._ancestors):
         ctx.c._key = ctx.c._ancestors[-1]._key + '.' + ctx.c._key
 
@@ -207,10 +207,11 @@ def _set_component_meta_info(ctx):
 
 def _set_component_type_info(ctx):
     """Parses component type info."""
-    if not c.type:
-        c.type = c.meta.type
-    if c.type not in c.types:
-        c.types = [c.type] + c.types
+    for c in [ctx.doc] + ctx.doc._component_tree:
+        if not c.type:
+            c.type = c.meta.type
+        if c.meta.type not in c.types:
+            c.types = [c.meta.type] + c.types
 
 
 # Set of parsing functions.

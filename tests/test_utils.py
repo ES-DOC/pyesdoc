@@ -261,7 +261,7 @@ def assert_doc(mod, doc):
         assert_str(ext.language, pyesdoc.constants.ESDOC_DEFAULT_LANGUAGE)
         assert_iter(ext.encodings, mod.DOC_ENCODINGS_COUNT, str)
         if hasattr(mod, "assert_extension_info"):
-                mod.assert_extension_info(ext)
+            mod.assert_extension_info(ext)
 
     # Perform specific document assertions.
     mod.assert_doc(doc)

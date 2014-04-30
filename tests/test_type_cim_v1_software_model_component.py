@@ -84,8 +84,8 @@ def _assert_doc_core(doc, is_update):
     tu.assert_date(doc.release_date, "2009")
     tu.assert_str(doc.short_name, "HadGEM2-A")
     tu.assert_str(doc.type, "model")
-    tu.assert_int(doc.types, 1)
-    tu.assert_str(doc.types[0], "model")
+    tu.assert_int(doc.types, 2)
+    tu.assert_str(doc.types[1], "model")
 
 
 def _assert_doc_citations(doc, is_update):
@@ -131,7 +131,7 @@ def _assert_doc_sub_components(doc, is_update):
     tu.assert_int(sc.sub_components, 3)
     tu.assert_str(sc.short_name, "Aerosols")
     tu.assert_str(sc.type, "Aerosols")
-    tu.assert_int(sc.types, 2)
+    tu.assert_int(sc.types, 3)
 
     # Property.
     p = sc.properties[0]
