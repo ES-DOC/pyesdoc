@@ -1,6 +1,9 @@
 {% extends "../core/document.html" %}
 
-{% block doc-nav %}	
+{% comment ******************* %}
+{% comment Emit navigation     %}
+{% comment ******************* %}
+{% block doc-nav %}
     <li><a href="#overview">Overview</a></li>
 	{% if len(doc.citations) %}
 	    <li><a href="#citations">Citations</a></li>
@@ -9,7 +12,7 @@
 	{% if len(contacts) %}
 	    <li><a href="#contacts">Contacts</a></li>
     {% end %}
-	{% if len(doc._property_list) %}
+	{% if len(doc._property_tree) %}
     	<li><a href="#properties">Properties</a></li>
     {% end %}
 	{% if len(doc._component_tree) %}
@@ -17,6 +20,9 @@
     {% end %}
 {% end %}
 
+{% comment ***************** %}
+{% comment Emit content      %}
+{% comment ***************** %}
 {% block doc-content %}
 
 	{% comment ***************** %}
@@ -36,19 +42,19 @@
 		],
 		template = "fieldset_table.html"
 	) %}
-	{% include ../core/section_01.html %}	
+	{% include ../core/section_01.html %}
 
 	{% comment ***************** %}
 	{% comment Emit properties   %}
 	{% comment ***************** %}
-	{% if len(doc._property_list) %}
+	{% if len(doc._property_tree) %}
 		{% set ctx = TemplateInfo(doc,
 			fieldset_type = "property",
 			header = "Properties",
 			template = "fieldset_table.html"
 		) %}
-		{% for p in sorted(doc._property_list, key=lambda p: p._list_display_name) %}	
-			{% for v in sorted(p.values) %}		
+		{% for p in doc._property_tree %}
+			{% for v in sorted(p.values) %}
 				{% raw ctx.fieldset.append(FieldInfo(p._list_display_name, value=v)) or "" %}
 			{% end %}
 		{% end %}
@@ -76,10 +82,121 @@
 	{% comment ***************** %}
 	{% comment Emit components   %}
 	{% comment ***************** %}
-	{% set ctx = TemplateInfo(doc._component_tree,
-		header = "Components",
-		template = "cim_1_software_model_subcomponent.html"
-	) %}
-	{% include ../core/section_02.html %}
+	{% if len(doc._component_tree) %}
+		<section id="components">
+			<header><h3>Components</h3></header>
+
+			{% comment ********************* %}
+			{% comment Emit component tree   %}
+			{% comment ********************* %}
+			<nav>
+				<ul class="depth-0">
+				{% for c in doc.sub_components %}
+					<li>
+						<a id="nav-{{c.meta.id}}" href="#">{{c._tree_display_name}}</a>
+					</li>
+					{% if len(c.sub_components) %}
+						<ul class="depth-1">
+							{% for c in c.sub_components %}
+								<li>
+									<a id="nav-{{c.meta.id}}" href="#">{{c._tree_display_name}}</a>
+								</li>
+								{% if len(c.sub_components) %}
+									<ul class="depth-2">
+										{% for c in c.sub_components %}
+										<li>
+											<a id="nav-{{c.meta.id}}" href="#">{{c._tree_display_name}}</a>
+										</li>
+										{% end %}
+									</ul>
+								{% end %}
+							{% end %}
+						</ul>
+					{% end %}
+				{% end %}
+				</ul>
+			</nav>
+
+			{% comment ********************** %}
+			{% comment Emit component details %}
+			{% comment ********************** %}
+			{% for c in doc._component_tree %}
+				<section id="{{c.meta.id}}">
+					<header>
+						<h4>
+						{% for p in c._ancestors[1:] %}
+							<span id="breadcrumb-{{p.meta.id}}">
+							{{ p._tree_display_name }} >
+							</span>
+						{% end %}
+						{{ c._tree_display_name }}
+						</h4>
+					</header>
+
+					{% comment *************** %}
+					{% comment ... overview   %}
+					{% comment *************** %}
+					{% if c.description and len(c.description) %}
+					<section>
+						<header><h5>Overview</h5></header>
+						<p>{{ c.description }}</p>
+					</section>
+					{% end %}
+
+					{% comment **************** %}
+					{% comment ... properties   %}
+					{% comment **************** %}
+					{% if len(c._property_tree) %}
+					<section>
+						<header><h5>Properties</h5></header>
+						<table>
+							<tbody>
+								{% for p in c._property_tree %}
+									{% for v in sorted(p.values) %}
+									<tr class="esdoc-field">
+										<td>
+											<b>{{ p._list_display_name }}</b>: {{v}}
+										</td>
+									</tr>
+									{% end %}
+								{% end %}
+							</tbody>
+						</table>
+					</section>
+				    {% end %}
+
+					{% comment *************** %}
+					{% comment ... citations   %}
+					{% comment *************** %}
+					{% if len(c.citations) %}
+						{% set ctx = TemplateInfo(c.citations,
+							depth = 2,
+							header = "Citations",
+							template = "cim_1_shared_citation.html",
+							previous = ctx
+						) %}
+						{% include ../core/section_01.html %}
+						{% set ctx = ctx.previous %}
+					{% end %}
+
+					{% comment **************** %}
+					{% comment ... contacts     %}
+					{% comment **************** %}
+				    {% set contacts = [rp for rp in c.responsible_parties if rp.role.lower() not in ['funder', 'centre']] %}
+					{% if len(contacts) %}
+						{% set ctx = TemplateInfo(contacts,
+							depth = 2,
+							header = "Contacts",
+							template = "cim_1_shared_responsible_party.html",
+							previous = ctx
+						) %}
+						{% include ../core/section_01.html %}
+						{% set ctx = ctx.previous %}
+				    {% end %}
+
+				</section>
+			{% end %}
+		</section>
+    {% end %}
 
 {% end %}

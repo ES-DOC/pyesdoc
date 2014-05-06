@@ -3,7 +3,7 @@
 {% block doc-nav %}
 	{% for i, mosaic in enumerate(doc.esm_model_grids) %}
 	    <li><a href="#grid0{{i}}">{{ mosaic.short_name }}</a></li>
-	{% end %}		
+	{% end %}
 	{% for i, mosaic in enumerate(doc.esm_exchange_grids) %}
 	    <li><a href="#grid1{{i}}">{{ mosaic.short_name }}</a></li>
 	{% end %}
@@ -20,15 +20,15 @@
 			tag_id = "grid0" + str(i),
 			template = "cim_1_grids_grid_mosaic.html"
 		) %}
-		{% include ../core/section_02.html %}	
-	{% end %}		
+		{% include ../core/section_02.html %}
+	{% end %}
 	{% for i, mosaic in enumerate(doc.esm_exchange_grids) %}
 		{% set ctx = TemplateInfo(mosaic,
 			header = "Exchange Grid: " +  mosaic.short_name,
 			tag_id = "grid1" + str(i),
 			template = "cim_1_grids_grid_mosaic.html"
 		) %}
-		{% include ../core/section_02.html %}	
+		{% include ../core/section_02.html %}
 	{% end %}
 
 {% end %}

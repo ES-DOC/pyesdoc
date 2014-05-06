@@ -22,7 +22,7 @@ DOC_TYPE = cim.v1.ModelComponent
 DOC_TYPE_KEY = DOC_TYPE.type_key
 
 # Test representation file.
-DOC_FILE = 'cim.1.software.ModelComponent.xml-metafor-cim-v1'
+DOC_FILE = 'cim.1.software.ModelComponent-1.xml-metafor-cim-v1'
 
 # Test document uid.
 DOC_UID = '7a2b64cc-03ca-11e1-a36a-00163e9152a5'

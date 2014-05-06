@@ -16,6 +16,12 @@ from .. import constants
 
 
 
+def _set_full_id(ctx):
+    """Sets full document identifier."""
+    ctx.ext.full_id = "{0}-{1}-{2}".format(
+        ctx.meta.project, ctx.meta.id, ctx.meta.version)
+
+
 def _set_type(ctx):
     """Sets document type information."""
     ctx.meta.type = ctx.ext.type = ctx.doc.__class__.type_key
@@ -90,6 +96,7 @@ def _set_encodings(ctx):
 
 # Set of pre-parsers.
 PRE_PARSERS = (
+    _set_full_id,
     _set_type,
     _set_type_display_name,
     _set_language,

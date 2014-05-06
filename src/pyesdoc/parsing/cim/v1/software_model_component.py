@@ -87,7 +87,6 @@ def _parse_component_01(ctx):
     ctx.c._component_tree = []
     ctx.c._depth = len(ctx.ancestors)
     ctx.c._parent = ctx.parent
-    ctx.c._property_list = []
     ctx.c._property_tree = []
     ctx.c._display_name = ctx.c.short_name
     ctx.c._standard_properties = []
@@ -131,34 +130,16 @@ def _parse_component_05(ctx):
 def _parse_component_06(ctx):
     """Process child components."""
     for c in ctx.c.sub_components:
-        _do_component_parse(_ComponentContextInfo(c, c, ctx.c, ctx.ancestors + [ctx.c]))
+        _do_component_parse(c, c, ctx.c, ctx.ancestors + [ctx.c])
 
 
 def _parse_component_07(ctx):
-    """Sort child components."""
+    """Sort components."""
     def get_sort_key(c):
         return c._list_display_name
 
     ctx.c.sub_components = sorted(ctx.c.sub_components, key=get_sort_key)
-
-
-def _parse_component_08(ctx):
-    """Set component property tree."""
-    for p in ctx.c.properties:
-        parse_property(ctx.c, p)
-        ctx.c._property_tree += [p] + p._property_tree
-
-
-def _parse_component_09(ctx):
-    """Set flattened component property tree."""
-    ctx.c._property_list = filter(lambda p: p._value is not None,
-                                  ctx.c._property_tree)
-
-
-def _parse_component_10(ctx):
-    """Set standard/scientific properties."""
-    set_standard_properties(ctx.c)
-    set_scientific_properties(ctx.c)
+    ctx.c._component_tree = sorted(ctx.c._component_tree, key=get_sort_key)
 
 
 # Set of component parsers.
@@ -170,14 +151,12 @@ _COMPONENT_PARSERS = (
     _parse_component_05,
     _parse_component_06,
     _parse_component_07,
-    _parse_component_08,
-    _parse_component_09,
-    _parse_component_10,
     )
 
 
-def _do_component_parse(ctx):
+def _do_component_parse(c, ext, parent=None, ancestors=[]):
     """Parses a component."""
+    ctx = _ComponentContextInfo(c, ext, parent, ancestors)
     for f in _COMPONENT_PARSERS:
         f(ctx)
 
@@ -189,7 +168,25 @@ def _set_type_display_name(ctx):
 
 def _set_component_hierarchy(ctx):
     """Parses component hierarchy."""
-    _do_component_parse(_ComponentContextInfo(ctx.doc, ctx.ext, None, []))
+    _do_component_parse(ctx.doc, ctx.ext)
+
+
+def _set_component_properties(ctx):
+    """Parses component properties."""
+    for c in [ctx.doc] + ctx.doc._component_tree:
+        for p in c.properties:
+            parse_property(c, p)
+            set_standard_properties(c)
+            set_scientific_properties(c)
+        c._property_tree = sorted(c._property_tree, key=lambda p: p._key)
+
+
+def _log_component_properties(ctx):
+    """Logs component properties."""
+    for c in [ctx.doc] + ctx.doc._component_tree:
+        print "\n", c._key
+        for p in c._property_tree:
+            print p._key
 
 
 def _set_component_meta_info(ctx):
@@ -218,6 +215,8 @@ def _set_component_type_info(ctx):
 PARSERS = (
     _set_type_display_name,
     _set_component_hierarchy,
+    _set_component_properties,
+    # _log_component_properties,
     _set_component_meta_info,
     _set_component_type_info
     )

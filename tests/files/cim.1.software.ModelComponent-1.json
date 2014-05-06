@@ -1,6 +1,6 @@
 {
     "ontologyTypeKey": "cim.1.software.ModelComponent",
-    "releaseDate": "2009-04-14 00:00:00",
+    "releaseDate": "2009-05-02 00:00:00",
     "meta": {
         "status": null,
         "externalIds": [],
@@ -16,7 +16,7 @@
                         "externalID": null,
                         "ontologyTypeKey": "cim.1.shared.DocReference",
                         "changes": [],
-                        "id": "13ab549e-fc2e-4607-b475-0b46350a58a9",
+                        "id": "3aceb3b8-e792-4fb8-ae07-53b53f1e0698",
                         "name": "HadGEM1"
                     },
                     "ontologyTypeKey": "cim.1.shared.DocRelationshipTarget"
@@ -137,7 +137,7 @@
         "meta": {
             "status": null,
             "externalIds": [],
-            "language": null,
+            "language": "en",
             "genealogy": null,
             "author": {
                 "organisationName": null,
@@ -150,13 +150,13 @@
             "institute": null,
             "createDate": "2012-04-23 14:59:04.757315",
             "ontologyTypeKey": "cim.1.shared.DocMetaInfo",
-            "project": null,
-            "source": null,
+            "project": "CMIP5",
+            "source": "testing",
             "metadataVersion": null,
             "version": 1,
             "metadataID": null,
             "encodings": [],
-            "type": null,
+            "type": "cim.1.software.ModelComponent",
             "id": "7a44cb24-03ca-11e1-a36a-00163e9152a5",
             "typeDisplayName": null
         },
@@ -236,7 +236,7 @@
             "meta": {
                 "status": null,
                 "externalIds": [],
-                "language": null,
+                "language": "en",
                 "genealogy": null,
                 "author": {
                     "organisationName": null,
@@ -249,13 +249,13 @@
                 "institute": null,
                 "createDate": "2012-04-23 14:59:04.652513",
                 "ontologyTypeKey": "cim.1.shared.DocMetaInfo",
-                "project": null,
-                "source": null,
+                "project": "CMIP5",
+                "source": "testing",
                 "metadataVersion": null,
                 "version": 1,
                 "metadataID": null,
                 "encodings": [],
-                "type": null,
+                "type": "cim.1.software.ModelComponent",
                 "id": "7abdf076-03ca-11e1-a36a-00163e9152a5",
                 "typeDisplayName": null
             },
@@ -645,7 +645,7 @@
                 "intent": null,
                 "shortName": "Concentrations"
             }],
-            "types": ["AerosolEmissionAndConc"],
+            "types": ["cim.1.software.ModelComponent", "AerosolEmissionAndConc"],
             "language": null,
             "license": null,
             "onlineResource": null,
@@ -657,7 +657,7 @@
             "meta": {
                 "status": null,
                 "externalIds": [],
-                "language": null,
+                "language": "en",
                 "genealogy": null,
                 "author": {
                     "organisationName": null,
@@ -670,13 +670,13 @@
                 "institute": null,
                 "createDate": "2012-04-23 14:59:04.724275",
                 "ontologyTypeKey": "cim.1.shared.DocMetaInfo",
-                "project": null,
-                "source": null,
+                "project": "CMIP5",
+                "source": "testing",
                 "metadataVersion": null,
                 "version": 1,
                 "metadataID": null,
                 "encodings": [],
-                "type": null,
+                "type": "cim.1.software.ModelComponent",
                 "id": "7b37379c-03ca-11e1-a36a-00163e9152a5",
                 "typeDisplayName": null
             },
@@ -904,7 +904,7 @@
                 "intent": null,
                 "shortName": "AerosolScheme"
             }],
-            "types": ["AerosolModel"],
+            "types": ["cim.1.software.ModelComponent", "AerosolModel"],
             "language": null,
             "license": null,
             "onlineResource": null,
@@ -916,7 +916,7 @@
             "meta": {
                 "status": null,
                 "externalIds": [],
-                "language": null,
+                "language": "en",
                 "genealogy": null,
                 "author": {
                     "organisationName": null,
@@ -929,13 +929,13 @@
                 "institute": null,
                 "createDate": "2012-04-23 14:59:04.757212",
                 "ontologyTypeKey": "cim.1.shared.DocMetaInfo",
-                "project": null,
-                "source": null,
+                "project": "CMIP5",
+                "source": "testing",
                 "metadataVersion": null,
                 "version": 1,
                 "metadataID": null,
                 "encodings": [],
-                "type": null,
+                "type": "cim.1.software.ModelComponent",
                 "id": "7a9d75a8-03ca-11e1-a36a-00163e9152a5",
                 "typeDisplayName": null
             },
@@ -1083,7 +1083,7 @@
                 "intent": null,
                 "shortName": "Turbulence"
             }],
-            "types": ["AerosolTransport"],
+            "types": ["cim.1.software.ModelComponent", "AerosolTransport"],
             "language": null,
             "license": null,
             "onlineResource": null,
@@ -1251,7 +1251,7 @@
             "intent": null,
             "shortName": "fossil_fuel_organic_carb"
         }],
-        "types": ["Aerosols", "aerosol"],
+        "types": ["cim.1.software.ModelComponent", "Aerosols", "aerosol"],
         "language": null,
         "license": null,
         "onlineResource": null,
@@ -1263,7 +1263,7 @@
         "meta": {
             "status": null,
             "externalIds": [],
-            "language": null,
+            "language": "en",
             "genealogy": null,
             "author": {
                 "organisationName": null,
@@ -1276,13 +1276,13 @@
             "institute": null,
             "createDate": "2012-04-23 14:59:05.524019",
             "ontologyTypeKey": "cim.1.shared.DocMetaInfo",
-            "project": null,
-            "source": null,
+            "project": "CMIP5",
+            "source": "testing",
             "metadataVersion": null,
             "version": 1,
             "metadataID": null,
             "encodings": [],
-            "type": null,
+            "type": "cim.1.software.ModelComponent",
             "id": "7bbe5cc2-03ca-11e1-a36a-00163e9152a5",
             "typeDisplayName": null
         },
@@ -1362,7 +1362,7 @@
             "meta": {
                 "status": null,
                 "externalIds": [],
-                "language": null,
+                "language": "en",
                 "genealogy": null,
                 "author": {
                     "organisationName": null,
@@ -1375,13 +1375,13 @@
                 "institute": null,
                 "createDate": "2012-04-23 14:59:05.156185",
                 "ontologyTypeKey": "cim.1.shared.DocMetaInfo",
-                "project": null,
-                "source": null,
+                "project": "CMIP5",
+                "source": "testing",
                 "metadataVersion": null,
                 "version": 1,
                 "metadataID": null,
                 "encodings": [],
-                "type": null,
+                "type": "cim.1.software.ModelComponent",
                 "id": "7cbf84ca-03ca-11e1-a36a-00163e9152a5",
                 "typeDisplayName": null
             },
@@ -1557,7 +1557,7 @@
                 "meta": {
                     "status": null,
                     "externalIds": [],
-                    "language": null,
+                    "language": "en",
                     "genealogy": null,
                     "author": {
                         "organisationName": null,
@@ -1570,13 +1570,13 @@
                     "institute": null,
                     "createDate": "2012-04-23 14:59:05.073073",
                     "ontologyTypeKey": "cim.1.shared.DocMetaInfo",
-                    "project": null,
-                    "source": null,
+                    "project": "CMIP5",
+                    "source": "testing",
                     "metadataVersion": null,
                     "version": 1,
                     "metadataID": null,
                     "encodings": [],
-                    "type": null,
+                    "type": "cim.1.software.ModelComponent",
                     "id": "7cf30c50-03ca-11e1-a36a-00163e9152a5",
                     "typeDisplayName": null
                 },
@@ -1810,7 +1810,7 @@
                     "intent": null,
                     "shortName": "SubGridScaleWaterDistribution"
                 }],
-                "types": ["AtmosCloudScheme"],
+                "types": ["cim.1.software.ModelComponent", "AtmosCloudScheme"],
                 "language": null,
                 "license": null,
                 "onlineResource": null,
@@ -1822,7 +1822,7 @@
                 "meta": {
                     "status": null,
                     "externalIds": [],
-                    "language": null,
+                    "language": "en",
                     "genealogy": null,
                     "author": {
                         "organisationName": null,
@@ -1835,13 +1835,13 @@
                     "institute": null,
                     "createDate": "2012-04-23 14:59:05.156115",
                     "ontologyTypeKey": "cim.1.shared.DocMetaInfo",
-                    "project": null,
-                    "source": null,
+                    "project": "CMIP5",
+                    "source": "testing",
                     "metadataVersion": null,
                     "version": 1,
                     "metadataID": null,
                     "encodings": [],
-                    "type": null,
+                    "type": "cim.1.software.ModelComponent",
                     "id": "7d15abf2-03ca-11e1-a36a-00163e9152a5",
                     "typeDisplayName": null
                 },
@@ -2219,7 +2219,7 @@
                     "intent": null,
                     "shortName": "ISSCPAttributes"
                 }],
-                "types": ["CloudSimulator"],
+                "types": ["cim.1.software.ModelComponent", "CloudSimulator"],
                 "language": null,
                 "license": null,
                 "onlineResource": null,
@@ -2513,7 +2513,7 @@
                 "intent": null,
                 "shortName": "Microphysics"
             }],
-            "types": ["AtmosConvectTurbulCloud"],
+            "types": ["cim.1.software.ModelComponent", "AtmosConvectTurbulCloud"],
             "language": null,
             "license": null,
             "onlineResource": null,
@@ -2525,7 +2525,7 @@
             "meta": {
                 "status": null,
                 "externalIds": [],
-                "language": null,
+                "language": "en",
                 "genealogy": null,
                 "author": {
                     "organisationName": null,
@@ -2538,13 +2538,13 @@
                 "institute": null,
                 "createDate": "2012-04-23 14:59:05.332701",
                 "ontologyTypeKey": "cim.1.shared.DocMetaInfo",
-                "project": null,
-                "source": null,
+                "project": "CMIP5",
+                "source": "testing",
                 "metadataVersion": null,
                 "version": 1,
                 "metadataID": null,
                 "encodings": [],
-                "type": null,
+                "type": "cim.1.software.ModelComponent",
                 "id": "7c05d930-03ca-11e1-a36a-00163e9152a5",
                 "typeDisplayName": null
             },
@@ -2624,7 +2624,7 @@
                 "meta": {
                     "status": null,
                     "externalIds": [],
-                    "language": null,
+                    "language": "en",
                     "genealogy": null,
                     "author": {
                         "organisationName": null,
@@ -2637,13 +2637,13 @@
                     "institute": null,
                     "createDate": "2012-04-23 14:59:05.332630",
                     "ontologyTypeKey": "cim.1.shared.DocMetaInfo",
-                    "project": null,
-                    "source": null,
+                    "project": "CMIP5",
+                    "source": "testing",
                     "metadataVersion": null,
                     "version": 1,
                     "metadataID": null,
                     "encodings": [],
-                    "type": null,
+                    "type": "cim.1.software.ModelComponent",
                     "id": "7c090f10-03ca-11e1-a36a-00163e9152a5",
                     "typeDisplayName": null
                 },
@@ -2893,7 +2893,7 @@
                     "intent": null,
                     "shortName": "Momentum"
                 }],
-                "types": ["AtmosAdvection"],
+                "types": ["cim.1.software.ModelComponent", "AtmosAdvection"],
                 "language": null,
                 "license": null,
                 "onlineResource": null,
@@ -3117,7 +3117,7 @@
                 "intent": null,
                 "shortName": "HorizontalDiffusion"
             }],
-            "types": ["AtmosDynamicalCore"],
+            "types": ["cim.1.software.ModelComponent", "AtmosDynamicalCore"],
             "language": null,
             "license": null,
             "onlineResource": null,
@@ -3129,7 +3129,7 @@
             "meta": {
                 "status": null,
                 "externalIds": [],
-                "language": null,
+                "language": "en",
                 "genealogy": null,
                 "author": {
                     "organisationName": null,
@@ -3142,13 +3142,13 @@
                 "institute": null,
                 "createDate": "2012-04-23 14:59:05.444394",
                 "ontologyTypeKey": "cim.1.shared.DocMetaInfo",
-                "project": null,
-                "source": null,
+                "project": "CMIP5",
+                "source": "testing",
                 "metadataVersion": null,
                 "version": 1,
                 "metadataID": null,
                 "encodings": [],
-                "type": null,
+                "type": "cim.1.software.ModelComponent",
                 "id": "7dd0cafe-03ca-11e1-a36a-00163e9152a5",
                 "typeDisplayName": null
             },
@@ -3398,7 +3398,7 @@
                 "intent": null,
                 "shortName": "Non-OrographicGravityWaves"
             }],
-            "types": ["AtmosOrographyAndWaves"],
+            "types": ["cim.1.software.ModelComponent", "AtmosOrographyAndWaves"],
             "language": null,
             "license": null,
             "onlineResource": null,
@@ -3410,7 +3410,7 @@
             "meta": {
                 "status": null,
                 "externalIds": [],
-                "language": null,
+                "language": "en",
                 "genealogy": null,
                 "author": {
                     "organisationName": null,
@@ -3423,13 +3423,13 @@
                 "institute": null,
                 "createDate": "2012-04-23 14:59:05.523902",
                 "ontologyTypeKey": "cim.1.shared.DocMetaInfo",
-                "project": null,
-                "source": null,
+                "project": "CMIP5",
+                "source": "testing",
                 "metadataVersion": null,
                 "version": 1,
                 "metadataID": null,
                 "encodings": [],
-                "type": null,
+                "type": "cim.1.software.ModelComponent",
                 "id": "7c81b8fc-03ca-11e1-a36a-00163e9152a5",
                 "typeDisplayName": null
             },
@@ -3767,7 +3767,7 @@
                 "intent": null,
                 "shortName": "CloudRadiativeProperties"
             }],
-            "types": ["AtmosRadiation"],
+            "types": ["cim.1.software.ModelComponent", "AtmosRadiation"],
             "language": null,
             "license": null,
             "onlineResource": null,
@@ -4215,7 +4215,7 @@
             "intent": null,
             "shortName": "well_mixed_gas_Ozone"
         }],
-        "types": ["Atmosphere", "atmos"],
+        "types": ["cim.1.software.ModelComponent", "Atmosphere", "atmos"],
         "language": null,
         "license": null,
         "onlineResource": null,
@@ -4227,7 +4227,7 @@
         "meta": {
             "status": null,
             "externalIds": [],
-            "language": null,
+            "language": "en",
             "genealogy": null,
             "author": {
                 "organisationName": null,
@@ -4240,13 +4240,13 @@
             "institute": null,
             "createDate": "2012-04-23 14:59:05.590884",
             "ontologyTypeKey": "cim.1.shared.DocMetaInfo",
-            "project": null,
-            "source": null,
+            "project": "CMIP5",
+            "source": "testing",
             "metadataVersion": null,
             "version": 1,
             "metadataID": null,
             "encodings": [],
-            "type": null,
+            "type": "cim.1.software.ModelComponent",
             "id": "80393b6e-03ca-11e1-a36a-00163e9152a5",
             "typeDisplayName": null
         },
@@ -4326,7 +4326,7 @@
             "meta": {
                 "status": null,
                 "externalIds": [],
-                "language": null,
+                "language": "en",
                 "genealogy": null,
                 "author": {
                     "organisationName": null,
@@ -4339,13 +4339,13 @@
                 "institute": null,
                 "createDate": "2012-04-23 14:59:05.590795",
                 "ontologyTypeKey": "cim.1.shared.DocMetaInfo",
-                "project": null,
-                "source": null,
+                "project": "CMIP5",
+                "source": "testing",
                 "metadataVersion": null,
                 "version": 1,
                 "metadataID": null,
                 "encodings": [],
-                "type": null,
+                "type": "cim.1.software.ModelComponent",
                 "id": "80a4b272-03ca-11e1-a36a-00163e9152a5",
                 "typeDisplayName": null
             },
@@ -4443,7 +4443,7 @@
                 "intent": null,
                 "shortName": "MassBalance"
             }],
-            "types": ["LandIceSheet"],
+            "types": ["cim.1.software.ModelComponent", "LandIceSheet"],
             "language": null,
             "license": null,
             "onlineResource": null,
@@ -4485,7 +4485,7 @@
             "intent": null,
             "shortName": "Land Ice Key Properties"
         }],
-        "types": ["LandIce", "landIce"],
+        "types": ["cim.1.software.ModelComponent", "LandIce", "landIce"],
         "language": null,
         "license": null,
         "onlineResource": null,
@@ -4497,7 +4497,7 @@
         "meta": {
             "status": null,
             "externalIds": [],
-            "language": null,
+            "language": "en",
             "genealogy": null,
             "author": {
                 "organisationName": null,
@@ -4510,13 +4510,13 @@
             "institute": null,
             "createDate": "2012-04-23 14:59:06.258171",
             "ontologyTypeKey": "cim.1.shared.DocMetaInfo",
-            "project": null,
-            "source": null,
+            "project": "CMIP5",
+            "source": "testing",
             "metadataVersion": null,
             "version": 1,
             "metadataID": null,
             "encodings": [],
-            "type": null,
+            "type": "cim.1.software.ModelComponent",
             "id": "81319052-03ca-11e1-a36a-00163e9152a5",
             "typeDisplayName": null
         },
@@ -4608,7 +4608,7 @@
             "meta": {
                 "status": null,
                 "externalIds": [],
-                "language": null,
+                "language": "en",
                 "genealogy": null,
                 "author": {
                     "organisationName": null,
@@ -4621,13 +4621,13 @@
                 "institute": null,
                 "createDate": "2012-04-23 14:59:05.757939",
                 "ontologyTypeKey": "cim.1.shared.DocMetaInfo",
-                "project": null,
-                "source": null,
+                "project": "CMIP5",
+                "source": "testing",
                 "metadataVersion": null,
                 "version": 1,
                 "metadataID": null,
                 "encodings": [],
-                "type": null,
+                "type": "cim.1.software.ModelComponent",
                 "id": "8290b540-03ca-11e1-a36a-00163e9152a5",
                 "typeDisplayName": null
             },
@@ -4835,7 +4835,7 @@
                 "intent": null,
                 "shortName": "SnowAlbedo"
             }],
-            "types": ["LandSurfaceAlbedo"],
+            "types": ["cim.1.software.ModelComponent", "LandSurfaceAlbedo"],
             "language": null,
             "license": null,
             "onlineResource": null,
@@ -4847,7 +4847,7 @@
             "meta": {
                 "status": null,
                 "externalIds": [],
-                "language": null,
+                "language": "en",
                 "genealogy": null,
                 "author": {
                     "organisationName": null,
@@ -4860,13 +4860,13 @@
                 "institute": null,
                 "createDate": "2012-04-23 14:59:05.809422",
                 "ontologyTypeKey": "cim.1.shared.DocMetaInfo",
-                "project": null,
-                "source": null,
+                "project": "CMIP5",
+                "source": "testing",
                 "metadataVersion": null,
                 "version": 1,
                 "metadataID": null,
                 "encodings": [],
-                "type": null,
+                "type": "cim.1.software.ModelComponent",
                 "id": "8273cfa2-03ca-11e1-a36a-00163e9152a5",
                 "typeDisplayName": null
             },
@@ -5044,7 +5044,7 @@
                 "intent": null,
                 "shortName": "SchemeMethod"
             }],
-            "types": ["LandSurfaceEnergyBalance"],
+            "types": ["cim.1.software.ModelComponent", "LandSurfaceEnergyBalance"],
             "language": null,
             "license": null,
             "onlineResource": null,
@@ -5056,7 +5056,7 @@
             "meta": {
                 "status": null,
                 "externalIds": [],
-                "language": null,
+                "language": "en",
                 "genealogy": null,
                 "author": {
                     "organisationName": null,
@@ -5069,13 +5069,13 @@
                 "institute": null,
                 "createDate": "2012-04-23 14:59:05.853480",
                 "ontologyTypeKey": "cim.1.shared.DocMetaInfo",
-                "project": null,
-                "source": null,
+                "project": "CMIP5",
+                "source": "testing",
                 "metadataVersion": null,
                 "version": 1,
                 "metadataID": null,
                 "encodings": [],
-                "type": null,
+                "type": "cim.1.software.ModelComponent",
                 "id": "838d0fb6-03ca-11e1-a36a-00163e9152a5",
                 "typeDisplayName": null
             },
@@ -5243,7 +5243,7 @@
                 "intent": null,
                 "shortName": "SchemeMethod"
             }],
-            "types": ["LandSurfaceLakes"],
+            "types": ["cim.1.software.ModelComponent", "LandSurfaceLakes"],
             "language": null,
             "license": null,
             "onlineResource": null,
@@ -5255,7 +5255,7 @@
             "meta": {
                 "status": null,
                 "externalIds": [],
-                "language": null,
+                "language": "en",
                 "genealogy": null,
                 "author": {
                     "organisationName": null,
@@ -5268,13 +5268,13 @@
                 "institute": null,
                 "createDate": "2012-04-23 14:59:06.258010",
                 "ontologyTypeKey": "cim.1.shared.DocMetaInfo",
-                "project": null,
-                "source": null,
+                "project": "CMIP5",
+                "source": "testing",
                 "metadataVersion": null,
                 "version": 1,
                 "metadataID": null,
                 "encodings": [],
-                "type": null,
+                "type": "cim.1.software.ModelComponent",
                 "id": "833d604c-03ca-11e1-a36a-00163e9152a5",
                 "typeDisplayName": null
             },
@@ -5496,7 +5496,7 @@
                 "intent": null,
                 "shortName": "OceanicDischarge"
             }],
-            "types": ["RiverRouting"],
+            "types": ["cim.1.software.ModelComponent", "RiverRouting"],
             "language": null,
             "license": null,
             "onlineResource": null,
@@ -5508,7 +5508,7 @@
             "meta": {
                 "status": null,
                 "externalIds": [],
-                "language": null,
+                "language": "en",
                 "genealogy": null,
                 "author": {
                     "organisationName": null,
@@ -5521,13 +5521,13 @@
                 "institute": null,
                 "createDate": "2012-04-23 14:59:05.919364",
                 "ontologyTypeKey": "cim.1.shared.DocMetaInfo",
-                "project": null,
-                "source": null,
+                "project": "CMIP5",
+                "source": "testing",
                 "metadataVersion": null,
                 "version": 1,
                 "metadataID": null,
                 "encodings": [],
-                "type": null,
+                "type": "cim.1.software.ModelComponent",
                 "id": "81e4b31c-03ca-11e1-a36a-00163e9152a5",
                 "typeDisplayName": null
             },
@@ -5749,7 +5749,7 @@
                 "intent": null,
                 "shortName": "SchemeMethod"
             }],
-            "types": ["LandSurfaceSnow"],
+            "types": ["cim.1.software.ModelComponent", "LandSurfaceSnow"],
             "language": null,
             "license": null,
             "onlineResource": null,
@@ -5761,7 +5761,7 @@
             "meta": {
                 "status": null,
                 "externalIds": [],
-                "language": null,
+                "language": "en",
                 "genealogy": null,
                 "author": {
                     "organisationName": null,
@@ -5774,13 +5774,13 @@
                 "institute": null,
                 "createDate": "2012-04-23 14:59:06.076350",
                 "ontologyTypeKey": "cim.1.shared.DocMetaInfo",
-                "project": null,
-                "source": null,
+                "project": "CMIP5",
+                "source": "testing",
                 "metadataVersion": null,
                 "version": 1,
                 "metadataID": null,
                 "encodings": [],
-                "type": null,
+                "type": "cim.1.software.ModelComponent",
                 "id": "81730870-03ca-11e1-a36a-00163e9152a5",
                 "typeDisplayName": null
             },
@@ -5872,7 +5872,7 @@
                 "meta": {
                     "status": null,
                     "externalIds": [],
-                    "language": null,
+                    "language": "en",
                     "genealogy": null,
                     "author": {
                         "organisationName": null,
@@ -5885,13 +5885,13 @@
                     "institute": null,
                     "createDate": "2012-04-23 14:59:06.001055",
                     "ontologyTypeKey": "cim.1.shared.DocMetaInfo",
-                    "project": null,
-                    "source": null,
+                    "project": "CMIP5",
+                    "source": "testing",
                     "metadataVersion": null,
                     "version": 1,
                     "metadataID": null,
                     "encodings": [],
-                    "type": null,
+                    "type": "cim.1.software.ModelComponent",
                     "id": "81c113bc-03ca-11e1-a36a-00163e9152a5",
                     "typeDisplayName": null
                 },
@@ -6045,7 +6045,7 @@
                     "intent": null,
                     "shortName": "Method"
                 }],
-                "types": ["LandSurfSoilHeatTreatment"],
+                "types": ["cim.1.software.ModelComponent", "LandSurfSoilHeatTreatment"],
                 "language": null,
                 "license": null,
                 "onlineResource": null,
@@ -6057,7 +6057,7 @@
                 "meta": {
                     "status": null,
                     "externalIds": [],
-                    "language": null,
+                    "language": "en",
                     "genealogy": null,
                     "author": {
                         "organisationName": null,
@@ -6070,13 +6070,13 @@
                     "institute": null,
                     "createDate": "2012-04-23 14:59:06.076286",
                     "ontologyTypeKey": "cim.1.shared.DocMetaInfo",
-                    "project": null,
-                    "source": null,
+                    "project": "CMIP5",
+                    "source": "testing",
                     "metadataVersion": null,
                     "version": 1,
                     "metadataID": null,
                     "encodings": [],
-                    "type": null,
+                    "type": "cim.1.software.ModelComponent",
                     "id": "8176657e-03ca-11e1-a36a-00163e9152a5",
                     "typeDisplayName": null
                 },
@@ -6324,7 +6324,7 @@
                     "intent": null,
                     "shortName": "Runoff-Drainage"
                 }],
-                "types": ["LandSurfSoilHydrology"],
+                "types": ["cim.1.software.ModelComponent", "LandSurfSoilHydrology"],
                 "language": null,
                 "license": null,
                 "onlineResource": null,
@@ -6408,7 +6408,7 @@
                 "intent": null,
                 "shortName": "SoilMap"
             }],
-            "types": ["LandSurfaceSoil"],
+            "types": ["cim.1.software.ModelComponent", "LandSurfaceSoil"],
             "language": null,
             "license": null,
             "onlineResource": null,
@@ -6420,7 +6420,7 @@
             "meta": {
                 "status": null,
                 "externalIds": [],
-                "language": null,
+                "language": "en",
                 "genealogy": null,
                 "author": {
                     "organisationName": null,
@@ -6433,13 +6433,13 @@
                 "institute": null,
                 "createDate": "2012-04-23 14:59:06.169235",
                 "ontologyTypeKey": "cim.1.shared.DocMetaInfo",
-                "project": null,
-                "source": null,
+                "project": "CMIP5",
+                "source": "testing",
                 "metadataVersion": null,
                 "version": 1,
                 "metadataID": null,
                 "encodings": [],
-                "type": null,
+                "type": "cim.1.software.ModelComponent",
                 "id": "820f000e-03ca-11e1-a36a-00163e9152a5",
                 "typeDisplayName": null
             },
@@ -6747,7 +6747,7 @@
                 "intent": null,
                 "shortName": "SchemeMethod"
             }],
-            "types": ["LandSurfaceVegetation"],
+            "types": ["cim.1.software.ModelComponent", "LandSurfaceVegetation"],
             "language": null,
             "license": null,
             "onlineResource": null,
@@ -6957,7 +6957,7 @@
             "intent": null,
             "shortName": "changing_anthro_land_use"
         }],
-        "types": ["LandSurface", "land"],
+        "types": ["cim.1.software.ModelComponent", "LandSurface", "land"],
         "language": null,
         "license": null,
         "onlineResource": null,
@@ -6971,7 +6971,7 @@
     "timing": null,
     "shortName": "HadGEM2-A",
     "properties": [],
-    "types": ["model"],
+    "types": ["cim.1.software.ModelComponent", "model"],
     "language": null,
     "license": null,
     "onlineResource": null,

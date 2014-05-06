@@ -183,6 +183,10 @@ class _TemplateInfo():
             self.tag_id = None
 
 
+    def reset_fieldset(self):
+        self.fieldset = []
+
+
 class _FieldInfo():
     """Document field processing information."""
     def __init__(self,

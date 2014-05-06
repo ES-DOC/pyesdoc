@@ -22,18 +22,20 @@ def _parse_property_01(ctx):
     ctx.p._ancestors = ctx.ancestors
     ctx.p._depth = len(ctx.ancestors)
     ctx.p._parent = ctx.parent
-    ctx.p._property_tree = []
 
 
 def _parse_property_02(ctx):
     """Sets property key."""
-    pass
+    key = ctx.c._key + '>'
+    if len(ctx.p._ancestors):
+        key += ctx.p._ancestors[-1].short_name.lower().strip() + '.'
+    key += ctx.p.short_name.lower().strip()
+    ctx.p._key = key
 
 
 def _parse_property_03(ctx):
-    """Sets property tree."""
-    for a in ctx.p._ancestors:
-        a._property_tree.append(ctx.p)
+    """Extend component property tree."""
+    ctx.c._property_tree.append(ctx.p)
 
 
 def _parse_property_04(ctx):
@@ -72,7 +74,7 @@ def _parse_property_05(ctx):
 def _parse_property_06(ctx):
     """Process child properties."""
     for p in ctx.p.sub_properties:
-        _do_property_parse(PropertyContextInfo(ctx.c, p, ctx.p, ctx.ancestors + [ctx.p]))
+        parse(ctx.c, p, ctx.p, ctx.ancestors + [ctx.p])
 
 
 # Set of property parsers.
@@ -86,13 +88,7 @@ _property_parsers = (
     )
 
 
-def _do_property_parse(ctx):
-    """Parses a property."""
-    for f in _property_parsers:
-        f(ctx)
-
-
-def parse(c, p):
+def parse(c, p, parent=None, ancestors=[]):
     """Performs a parse over a property in readiness for later processing.
 
     :param c: A model component.
@@ -101,8 +97,16 @@ def parse(c, p):
     :param p: A model component property.
     :type p: pyesdoc.ontologies.cim.v1.software.ComponentProperty
 
+    :param parent: Parent model component property.
+    :type parent: pyesdoc.ontologies.cim.v1.software.ComponentProperty
+
+    :param ancestors: Ancestor model component properties.
+    :type ancestors: list
+
     """
-    _do_property_parse(PropertyContextInfo(c, p, None, []))
+    ctx = PropertyContextInfo(c, p, parent, ancestors)
+    for f in _property_parsers:
+        f(ctx)
 
 
 def _create_property(p_tree, values, name, description):
