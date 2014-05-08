@@ -270,8 +270,11 @@ def encode(doc):
     :rtype: str
 
     """
-    template = _templates[doc.meta.type.lower()]
-
-    return template.generate(doc=doc,
-                             FieldInfo=_FieldInfo,
-                             TemplateInfo=_TemplateInfo)
+    template_key = doc.meta.type.lower()
+    if template_key not in _templates:
+        return "<div class='cim-document'>TODO</div>"
+    else:
+        template = _templates[doc.meta.type.lower()]
+        return template.generate(doc=doc,
+                                 FieldInfo=_FieldInfo,
+                                 TemplateInfo=_TemplateInfo)

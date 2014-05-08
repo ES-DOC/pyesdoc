@@ -24,9 +24,10 @@ import test_types as tt
 OP = dirname(abspath(__file__))
 OP = dirname(OP)
 OP = dirname(OP)
-OP = join(OP, "esdoc-static")
-OP = join(OP, "demos")
-OP = join(OP, "viewer")
+OP = join(OP, "esdoc-viewer")
+OP = join(OP, "src")
+OP = join(OP, "media")
+OP = join(OP, "html")
 
 # Demo document template.
 _TEMPLATE = dirname(abspath(__file__))
@@ -35,9 +36,13 @@ _TEMPLATE = template.Loader(_TEMPLATE).load("demo_document_TEMPLATE.html")
 
 def _get_file_name(doc):
     """Gets document file name in readiness for io."""
-    path = join(OP, doc.__class__.type_key)
+    path = join(OP, doc.meta.project.upper())
+    path += '-'
+    path += doc.__class__.type_key.upper().replace(".", "-")
+    path += '.'
+    path += pyesdoc.ESDOC_ENCODING_HTML
 
-    return path + "." + pyesdoc.ESDOC_ENCODING_HTML
+    return path
 
 
 def _write(doc):
