@@ -1,12 +1,21 @@
 {% extends "../core/document.html" %}
 
+{% comment ***************** %}
+{% comment Emit navigation   %}
+{% comment ***************** %}
 {% block doc-nav %}
-    <li><a href="#overview">Overview</a></li>
+    <li><a href="#{{ doc.ext.full_id }}-overview">Overview</a></li>
 	{% for i, member in enumerate(doc.members) %}
-    <li><a href="#member{{i}}">{{member.ensemble_ids[0].value}}</a></li>
+    <li><a href="#{{ doc.ext.full_id }}-member{{i}}">{{member.ensemble_ids[0].value}}</a></li>
 	{% end %}
+	{% if len(doc.responsible_parties) %}
+	    <li><a href="#{{ doc.ext.full_id }}-contacts">Contacts</a></li>
+    {% end %}
 {% end %}
 
+{% comment ***************** %}
+{% comment Emit content      %}
+{% comment ***************** %}
 {% block doc-content %}
 
 	{% comment ***************** %}
@@ -24,6 +33,7 @@
 		    FieldInfo('Rationale', path='rationales'),
 		    FieldInfo('Experiment', path='supports_references.0.name'),
 		],
+		tag_id = doc.ext.full_id + "-overview",
 		template = "fieldset_table.html"
 	) %}
 	{% include ../core/section_01.html %}
@@ -34,7 +44,7 @@
 	{% for i, member in enumerate(doc.members) %}
 		{% set ctx = TemplateInfo(member,
 			header = "Ensemble Member: " + member.ensemble_ids[0].value,
-			tag_id = "member" + str(i),
+			tag_id = doc.ext.full_id + "-member" + str(i),
 			template = "cim_1_activity_ensemble_member.html"
 		) %}
 		{% include ../core/section_02.html %}
@@ -45,6 +55,7 @@
 	{% comment ***************** %}
 	{% set ctx = TemplateInfo(doc.responsible_parties,
 		header = "Contacts",
+		tag_id = doc.ext.full_id + "-contacts" + str(i),
 		template = "cim_1_shared_responsible_party.html"
 	) %}
 	{% include ../core/section_01.html %}

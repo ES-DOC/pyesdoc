@@ -1,14 +1,20 @@
 {% extends "../core/document.html" %}
 
+{% comment ***************** %}
+{% comment Emit navigation   %}
+{% comment ***************** %}
 {% block doc-nav %}
 	{% for i, mosaic in enumerate(doc.esm_model_grids) %}
-	    <li><a href="#grid0{{i}}">{{ mosaic.short_name }}</a></li>
+	    <li><a href="#{{ doc.ext.full_id }}-grid0{{i}}">{{ mosaic.short_name }}</a></li>
 	{% end %}
 	{% for i, mosaic in enumerate(doc.esm_exchange_grids) %}
-	    <li><a href="#grid1{{i}}">{{ mosaic.short_name }}</a></li>
+	    <li><a href="#{{ doc.ext.full_id }}-grid1{{i}}">{{ mosaic.short_name }}</a></li>
 	{% end %}
 {% end %}
 
+{% comment ***************** %}
+{% comment Emit content      %}
+{% comment ***************** %}
 {% block doc-content %}
 
 	{% comment ***************** %}
@@ -17,7 +23,7 @@
 	{% for i, mosaic in enumerate(doc.esm_model_grids) %}
 		{% set ctx = TemplateInfo(mosaic,
 			header = "Model Grid: " +  mosaic.short_name,
-			tag_id = "grid0" + str(i),
+			tag_id = doc.ext.full_id + "-grid0" + str(i),
 			template = "cim_1_grids_grid_mosaic.html"
 		) %}
 		{% include ../core/section_02.html %}
@@ -25,7 +31,7 @@
 	{% for i, mosaic in enumerate(doc.esm_exchange_grids) %}
 		{% set ctx = TemplateInfo(mosaic,
 			header = "Exchange Grid: " +  mosaic.short_name,
-			tag_id = "grid1" + str(i),
+			tag_id = doc.ext.full_id + "-grid1" + str(i),
 			template = "cim_1_grids_grid_mosaic.html"
 		) %}
 		{% include ../core/section_02.html %}

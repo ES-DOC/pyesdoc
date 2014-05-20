@@ -57,13 +57,13 @@
 {% comment Emit resolutions  %}
 {% comment ***************** %}
 {% if tile.horizontal_resolution %}
-	{% set resolution = tile.horizontal_resolution %}	
-	{% set resolution_type = "Horizontal" %}	
+	{% set resolution = tile.horizontal_resolution %}
+	{% set resolution_type = "Horizontal" %}
 	{% include grids_grid_tile_resolution.html %}
 {% end %}
 {% comment if tile.vertical_resolution %}
-	{% set resolution = tile.vertical_resolution %}	
-	{% set resolution_type = "Vertical" %}	
+	{% set resolution = tile.vertical_resolution %}
+	{% set resolution_type = "Vertical" %}
 	{% include grids_grid_tile_resolution.html %}
 {% comment end %}
 

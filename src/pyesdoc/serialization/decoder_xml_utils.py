@@ -121,7 +121,11 @@ def _convert_to_uid(xml, nsmap=None):
     if as_string is None or as_string in NULL_UUID:
         return uuid.uuid4()
     else:
-        return uuid.UUID(as_string)
+        try:
+            return uuid.UUID(as_string)
+        except ValueError:
+            print("ES-DOC :: WARNING :: UUID conversion failed, retrying with first 36 characters")
+            return uuid.UUID(as_string[0:36])
 
 
 def _convert_to_datetime(xml, nsmap=None):

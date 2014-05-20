@@ -1,14 +1,20 @@
 {% extends "../core/document.html" %}
 
+{% comment ***************** %}
+{% comment Emit navigation   %}
+{% comment ***************** %}
 {% block doc-nav %}
-    <li><a href="#overview">Overview</a></li>
-    <li><a href="#machine">Machine</a></li>
-    <li><a href="#compiler">Compiler</a></li>
+    <li><a href="#{{ doc.ext.full_id }}-overview">Overview</a></li>
+    <li><a href="#{{ doc.ext.full_id }}-machine">Machine</a></li>
+    <li><a href="#{{ doc.ext.full_id }}-compiler">Compiler</a></li>
 	{% if len(doc.contacts) %}
-	    <li><a href="#contacts">Contacts</a></li>
+	    <li><a href="#{{ doc.ext.full_id }}-contacts">Contacts</a></li>
     {% end %}
 {% end %}
 
+{% comment ***************** %}
+{% comment Emit content      %}
+{% comment ***************** %}
 {% block doc-content %}
 
 	{% comment ***************** %}
@@ -23,9 +29,10 @@
 		    FieldInfo('Long Name', path='long_name'),
 		    FieldInfo('Description', path='description'),
 		],
+		tag_id = doc.ext.full_id + "-overview",
 		template = "fieldset_table.html"
 	) %}
-	{% include ../core/section_01.html %}	
+	{% include ../core/section_01.html %}
 
 	{% for unit in doc.units %}
 		{% comment ***************** %}
@@ -41,11 +48,12 @@
 				FieldInfo('Max. Processors', path='maximum_processors'),
 				FieldInfo('Cores / Processor', path='cores_per_processor'),
 				FieldInfo('System', path='system'),
-				FieldInfo('Interconnect', path='interconnect'),	
+				FieldInfo('Interconnect', path='interconnect'),
 			],
+			tag_id = doc.ext.full_id + "-machine",
 			template = "fieldset_table.html"
 		) %}
-		{% include ../core/section_01.html %}	
+		{% include ../core/section_01.html %}
 
 		{% comment ***************** %}
 		{% comment Emit compiler     %}
@@ -60,9 +68,10 @@
 			    FieldInfo('Options', path='options'),
 			    FieldInfo('Env. Variables', path='environment_variables')
 			],
+			tag_id = doc.ext.full_id + "-compiler",
 			template = "fieldset_table.html"
 		) %}
-		{% include ../core/section_01.html %}	
+		{% include ../core/section_01.html %}
 	{% end %}
 
 	{% comment ***************** %}
@@ -70,7 +79,8 @@
 	{% comment ***************** %}
 	{% set ctx = TemplateInfo(doc.contacts,
 		header = "Contacts",
+		tag_id = doc.ext.full_id + "-contacts",
 		template = "cim_1_shared_responsible_party.html"
 	) %}
-	{% include ../core/section_01.html %}	
+	{% include ../core/section_01.html %}
 {% end %}

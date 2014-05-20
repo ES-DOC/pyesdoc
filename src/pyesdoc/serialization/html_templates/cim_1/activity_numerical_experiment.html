@@ -1,7 +1,10 @@
 {% extends "../core/document.html" %}
 
+{% comment ***************** %}
+{% comment Emit navigation   %}
+{% comment ***************** %}
 {% block doc-nav %}
-    <li><a href="#overview">Overview</a></li>
+    <li><a href="#{{ doc.ext.full_id }}-overview">Overview</a></li>
 	{% set REQUIREMENT_TYPES = {
 		"initialCondition" : "Initial Conditions",
 		"boundaryCondition": "Boundary Conditions",
@@ -12,18 +15,15 @@
 	{% for type in REQUIREMENT_TYPES.keys() %}
 		{% set requirements = filter(lambda r : r.requirement_type == type, doc.requirements) %}
 		{% if len(requirements) %}
-	    	<li><a href="#{{ type }}">{{ REQUIREMENT_TYPES[type] }}</a></li>
+	    	<li><a href="#{{ doc.ext.full_id }}-{{ type }}">{{ REQUIREMENT_TYPES[type] }}</a></li>
 		{% end %}
 	{% end %}
 {% end %}
 
+{% comment ***************** %}
+{% comment Emit content      %}
+{% comment ***************** %}
 {% block doc-content %}
-
-	{% comment ***************** %}
-	{% comment Parse document    %}
-	{% comment ***************** %}
-	{% set doc.name = doc.experiment_id + ' ' + doc.short_name %}
-	{% set doc.id = doc.experiment_id %}
 
 	{% comment ***************** %}
 	{% comment Emit overview     %}
@@ -35,10 +35,11 @@
 		    FieldInfo('Institute', path='meta.institute'),
 		    FieldInfo('Name', path='short_name'),
 		    FieldInfo('Long Name', path='long_name'),
-			FieldInfo('ID', path='name'),
+			FieldInfo('ID', path='ext.full_experiment_name'),
 		    FieldInfo('Description', path='description'),
 			FieldInfo('Rationale', path='rationales'),
 		],
+		tag_id = doc.ext.full_id + "-overview",
 		template = "fieldset_table.html"
 	) %}
 	{% include ../core/section_01.html %}
@@ -56,7 +57,7 @@
 	{% for type in REQUIREMENT_TYPES.keys() %}
 		{% set requirements = filter(lambda r : r.requirement_type == type, doc.requirements) %}
 		{% set ctx = TemplateInfo(requirements,
-			tag_id = type,
+			tag_id = doc.ext.full_id + '-' + type,
 			header = REQUIREMENT_TYPES[type],
 			template = "cim_1_activity_numerical_requirement.html"
 		) %}

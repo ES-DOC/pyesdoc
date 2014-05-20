@@ -11,7 +11,6 @@
 """
 # Module imports.
 from lxml import etree as et
-# from lxml.etree import _ElementTree as ET
 
 
 from . decoder_xml_utils import (

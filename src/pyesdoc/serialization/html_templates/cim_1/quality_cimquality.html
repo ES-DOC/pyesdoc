@@ -1,20 +1,26 @@
 {% extends "../core/document.html" %}
 
+{% comment ***************** %}
+{% comment Emit navigation   %}
+{% comment ***************** %}
 {% block doc-nav %}
-	{% for i, report in enumerate(doc.reports) %}		
-	    <li><a href="#report{{i}}">{{report.measure.name}}</a></li>
+	{% for i, report in enumerate(doc.reports) %}
+	    <li><a href="#{{ doc.ext.full_id }}-report{{i}}">{{report.measure.name}}</a></li>
     {% end %}
 {% end %}
 
+{% comment ***************** %}
+{% comment Emit content      %}
+{% comment ***************** %}
 {% block doc-content %}
 
 	{% comment ***************** %}
 	{% comment Emit reports      %}
 	{% comment ***************** %}
-	{% for i, report in enumerate(doc.reports) %}		
+	{% for i, report in enumerate(doc.reports) %}
 		{% set ctx = TemplateInfo(report,
 			header = report.measure.name,
-			tag_id = "report" + str(i),
+			tag_id = doc.ext.full_id + "-report" + str(i),
 			fieldset = [
                 FieldInfo('Measure', path='measure.name', link_path='evaluation.type_hyperlink'),
                 FieldInfo('Outcome', path='evaluation.specification', link_path='evaluation.specification_hyperlink'),
@@ -24,7 +30,7 @@
 			],
 			template = "fieldset_table.html"
 		) %}
-		{% include ../core/section_01.html %}	
+		{% include ../core/section_01.html %}
 
 	{% end %}
 
