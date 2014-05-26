@@ -1,7 +1,7 @@
 """
 .. module:: quality_cim_quality.py
    :platform: Unix, Windows
-   :synopsis: Parses a cim.v1.quality.cim_quality document.
+   :synopsis: Extends a cim.v1.quality.cim_quality document.
 
 .. moduleauthor:: Mark Conway-Greenslade <momipsl@ipsl.jussieu.fr>
 
@@ -32,8 +32,8 @@ def _set_summary_fields(ctx):
         )
 
 
-# Set of parsing functions.
-PARSERS = (
+# Set of extension functions.
+EXTENDERS = (
     _set_display_name,
     _set_type_display_name,
     _set_description,

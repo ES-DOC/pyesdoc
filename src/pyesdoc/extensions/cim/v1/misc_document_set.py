@@ -1,7 +1,7 @@
 """
 .. module:: misc_document_set.py
    :platform: Unix, Windows
-   :synopsis: Parses a cim.v1.misc.document_set document.
+   :synopsis: Extends a cim.v1.misc.document_set document.
 
 .. moduleauthor:: Mark Conway-Greenslade <momipsl@ipsl.jussieu.fr>
 
@@ -30,8 +30,8 @@ def _set_summary_fields(ctx):
     pass
 
 
-# Set of parsing functions.
-PARSERS = (
+# Set of extension functions.
+EXTENDERS = (
     _set_meta_info,
     _set_display_name,
     _set_type_display_name,

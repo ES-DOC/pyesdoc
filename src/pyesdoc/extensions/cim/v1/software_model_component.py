@@ -1,17 +1,20 @@
 """
 .. module:: software_model_component.py
    :platform: Unix, Windows
-   :synopsis: Parses a cim.v1.software.modelcomponent document.
+   :synopsis: Extends a cim.v1.software.modelcomponent document.
 
 
 """
 # Module imports.
 from collections import namedtuple
 
-from . software_model_component_property import (
-    parse as parse_property,
+from . software_model_component_property_1 import (
+    extend as extend_property,
+    )
+from . software_model_component_property_2 import (
     set_standard_properties,
-    set_scientific_properties
+    set_scientific_properties,
+    set_qc_properties
     )
 
 
@@ -56,7 +59,7 @@ _COMPONENT_TYPE_DISPLAY_NAMES = {
     'OceanBioBoundaryForcing' : 'Boundary Forcing',
     'OceanBioChemistry' : 'Chemistry',
     'OceanBioGasExchange' : 'Gas Exchange',
-    'OceanBiogeoChemistry' : 'Ocean Bio-Geo Chem.',
+    'OceanBiogeoChemistry' : 'Ocean Bio-Geo Chemistry',
     'OceanBioTracers' : 'Tracers',
     'OceanBioTracersEcosystem' : 'Ecosystem',
     'OceanAdvection' : 'Advection',
@@ -75,24 +78,32 @@ _COMPONENT_TYPE_DISPLAY_NAMES = {
 }
 
 
-# Component parsing context information.
+# Component extension context information.
 _ComponentContextInfo = \
-    namedtuple('ComponentContextInfo', \
-               ['c', 'ext', 'parent', 'ancestors'])
+    namedtuple('ComponentContextInfo', ['c', 'ext', 'parent', 'ancestors'])
 
 
-def _parse_component_01(ctx):
-    """Sets component extension properties."""
+def _get_sort_key(item):
+    """Returns a sort key."""
+    return item._full_display_name
+
+
+def _extend_component_01(ctx):
+    """Initializes component extension properties."""
     ctx.c._ancestors = ctx.ancestors
     ctx.c._component_tree = []
     ctx.c._depth = len(ctx.ancestors)
     ctx.c._parent = ctx.parent
-    ctx.c._property_tree = []
-    ctx.c._display_name = ctx.c.short_name
+    ctx.c._properties = []
+    ctx.c._qc_properties = []
+    ctx.c._qc_property_tree = []
+    ctx.c._scientific_properties = []
+    ctx.c._scientific_property_tree = []
     ctx.c._standard_properties = []
+    ctx.c._standard_property_tree = []
 
 
-def _parse_component_02(ctx):
+def _extend_component_02(ctx):
     """Sets component key."""
     # Create key based upon component type plus ancestor key.
     ctx.c._key = str() if ctx.c.type is None else ctx.c.type.lower()
@@ -100,64 +111,61 @@ def _parse_component_02(ctx):
         ctx.c._key = ctx.c._ancestors[-1]._key + '.' + ctx.c._key
 
 
-def _parse_component_03(ctx):
+def _extend_component_03(ctx):
     """Sets component tree."""
     # Append component to tree of each direct ancestor.
     for a in ctx.c._ancestors:
         a._component_tree.append(ctx.c)
 
 
-def _parse_component_04(ctx):
-    """Sets component tree display name."""
+def _extend_component_04(ctx):
+    """Sets component display names."""
+    # Short name.
     if not ctx.c._parent:
-        ctx.c._tree_display_name = ctx.c.short_name
+        ctx.c._short_display_name = ctx.c.short_name
     elif ctx.c.type in _COMPONENT_TYPE_DISPLAY_NAMES:
-        ctx.c._tree_display_name = _COMPONENT_TYPE_DISPLAY_NAMES[ctx.c.type]
+        ctx.c._short_display_name = _COMPONENT_TYPE_DISPLAY_NAMES[ctx.c.type]
     else:
-        ctx.c._tree_display_name = ctx.c.type
+        ctx.c._short_display_name = ctx.c.type
+
+    # Long name.
+    ctx.c._long_display_name = ""
+    if ctx.c._depth > 1:
+        ctx.c._long_display_name += ctx.c._parent._long_display_name
+        ctx.c._long_display_name += " > "
+    ctx.c._long_display_name += ctx.c._short_display_name
+
+    # Full name.
+    ctx.c._full_display_name = ""
+    if ctx.c._depth > 0:
+        ctx.c._full_display_name += ctx.c._parent._full_display_name
+        ctx.c._full_display_name += " > "
+    ctx.c._full_display_name += ctx.c._short_display_name
 
 
-def _parse_component_05(ctx):
-    """Sets component list display name."""
-    if ctx.c._depth <= 1:
-        ctx.c._list_display_name = ctx.c._tree_display_name
-    else:
-        ctx.c._list_display_name = ctx.c._parent._list_display_name
-        ctx.c._list_display_name += " > "
-        ctx.c._list_display_name += ctx.c._tree_display_name
-
-
-def _parse_component_06(ctx):
+def _extend_component_05(ctx):
     """Process child components."""
     for c in ctx.c.sub_components:
-        _do_component_parse(c, c, ctx.c, ctx.ancestors + [ctx.c])
+        _extend_component(c, c, ctx.c, ctx.ancestors + [ctx.c])
 
 
-def _parse_component_07(ctx):
+def _extend_component_06(ctx):
     """Sort components."""
-    def get_sort_key(c):
-        return c._list_display_name
-
-    ctx.c.sub_components = sorted(ctx.c.sub_components, key=get_sort_key)
-    ctx.c._component_tree = sorted(ctx.c._component_tree, key=get_sort_key)
+    ctx.c.sub_components = sorted(ctx.c.sub_components, key=_get_sort_key)
+    ctx.c._component_tree = sorted(ctx.c._component_tree, key=_get_sort_key)
 
 
-# Set of component parsers.
-_COMPONENT_PARSERS = (
-    _parse_component_01,
-    _parse_component_02,
-    _parse_component_03,
-    _parse_component_04,
-    _parse_component_05,
-    _parse_component_06,
-    _parse_component_07,
-    )
-
-
-def _do_component_parse(c, ext, parent=None, ancestors=[]):
-    """Parses a component."""
+def _extend_component(c, ext, parent=None, ancestors=[]):
+    """Extends a component."""
     ctx = _ComponentContextInfo(c, ext, parent, ancestors)
-    for f in _COMPONENT_PARSERS:
+    for f in (
+        _extend_component_01,
+        _extend_component_02,
+        _extend_component_03,
+        _extend_component_04,
+        _extend_component_05,
+        _extend_component_06,
+        ):
         f(ctx)
 
 
@@ -167,30 +175,41 @@ def _set_type_display_name(ctx):
 
 
 def _set_component_hierarchy(ctx):
-    """Parses component hierarchy."""
-    _do_component_parse(ctx.doc, ctx.ext)
+    """Extends component hierarchy."""
+    _extend_component(ctx.doc, ctx.ext)
 
 
-def _set_component_properties(ctx):
-    """Parses component properties."""
+def _set_component_property_sets(ctx):
+    """Extends component property sets."""
+    def set_properties(builder, c, p_list):
+        builder(c)
+        for p in p_list:
+            extend_property(c, p)
+            c._properties.append(p)
+
     for c in [ctx.doc] + ctx.doc._component_tree:
-        for p in c.properties:
-            parse_property(c, p)
-            set_standard_properties(c)
-            set_scientific_properties(c)
-        c._property_tree = sorted(c._property_tree, key=lambda p: p._key)
+        set_properties(set_scientific_properties, c, c._scientific_properties)
+        set_properties(set_standard_properties, c, c._standard_properties)
+        set_properties(set_qc_properties, c, c._qc_properties)
 
 
-def _log_component_properties(ctx):
-    """Logs component properties."""
+def _set_component_property_trees(ctx):
+    """Extends component property tree."""
+    def build_tree(p_list, p_tree, sort=False):
+        for p in p_list:
+            p_tree.append(p)
+            build_tree(p.sub_properties, p_tree)
+        if sort:
+            p_tree = sorted(p_tree, key=_get_sort_key)
+
     for c in [ctx.doc] + ctx.doc._component_tree:
-        print "\n", c._key
-        for p in c._property_tree:
-            print p._key
+        build_tree(c._scientific_properties, c._scientific_property_tree, True)
+        build_tree(c._standard_properties, c._standard_property_tree, True)
+        build_tree(c._qc_properties, c._qc_property_tree, True)
 
 
 def _set_component_meta_info(ctx):
-    """Parses component meta info."""
+    """Extends component meta info."""
     for c in ctx.doc._component_tree:
         if not c.meta.language:
             c.meta.language = ctx.doc.meta.language
@@ -203,7 +222,7 @@ def _set_component_meta_info(ctx):
 
 
 def _set_component_type_info(ctx):
-    """Parses component type info."""
+    """Extends component type info."""
     for c in [ctx.doc] + ctx.doc._component_tree:
         if not c.type:
             c.type = c.meta.type
@@ -211,12 +230,12 @@ def _set_component_type_info(ctx):
             c.types = [c.meta.type] + c.types
 
 
-# Set of parsing functions.
-PARSERS = (
+# Set of extension functions.
+EXTENDERS = (
     _set_type_display_name,
     _set_component_hierarchy,
-    _set_component_properties,
-    # _log_component_properties,
+    _set_component_property_sets,
+    _set_component_property_trees,
     _set_component_meta_info,
     _set_component_type_info
     )

@@ -12,8 +12,8 @@
 	{% if len(contacts) %}
 	    <li><a href="#contacts">Contacts</a></li>
     {% end %}
-	{% if len(doc._property_tree) %}
-    	<li><a href="#properties">Properties</a></li>
+	{% if len(doc._scientific_property_tree[0].sub_properties) %}
+    	<li><a href="#properties">Properties{{len(doc._scientific_property_tree)}}</a></li>
     {% end %}
 	{% if len(doc._component_tree) %}
 	    <li><a href="#components">Components</a></li>
@@ -45,17 +45,17 @@
 	{% include ../core/section_01.html %}
 
 	{% comment ***************** %}
-	{% comment Emit properties   %}
+	{% comment Emit scientific properties   %}
 	{% comment ***************** %}
-	{% if len(doc._property_tree) %}
+	{% if len(doc._scientific_property_tree[0].sub_properties) %}
 		{% set ctx = TemplateInfo(doc,
 			fieldset_type = "property",
 			header = "Properties",
 			template = "fieldset_table.html"
 		) %}
-		{% for p in doc._property_tree %}
+		{% for p in doc._scientific_property_tree %}
 			{% for v in sorted(p.values) %}
-				{% raw ctx.fieldset.append(FieldInfo(p._list_display_name, value=v)) or "" %}
+				{% raw ctx.fieldset.append(FieldInfo(p._full_display_name, value=v)) or "" %}
 			{% end %}
 		{% end %}
 		{% include ../core/section_01.html %}
@@ -93,19 +93,19 @@
 				<ul class="depth-0">
 				{% for c in doc.sub_components %}
 					<li>
-						<a id="nav-{{c.meta.id}}" href="#">{{c._tree_display_name}}</a>
+						<a id="nav-{{c.meta.id}}" href="#">{{c._short_display_name}}</a>
 					</li>
 					{% if len(c.sub_components) %}
 						<ul class="depth-1">
 							{% for c in c.sub_components %}
 								<li>
-									<a id="nav-{{c.meta.id}}" href="#">{{c._tree_display_name}}</a>
+									<a id="nav-{{c.meta.id}}" href="#">{{c._short_display_name}}</a>
 								</li>
 								{% if len(c.sub_components) %}
 									<ul class="depth-2">
 										{% for c in c.sub_components %}
 										<li>
-											<a id="nav-{{c.meta.id}}" href="#">{{c._tree_display_name}}</a>
+											<a id="nav-{{c.meta.id}}" href="#">{{c._short_display_name}}</a>
 										</li>
 										{% end %}
 									</ul>
@@ -124,12 +124,12 @@
 				<section id="{{c.meta.id}}">
 					<header>
 						<h4>
-						{% for p in c._ancestors[1:] %}
-							<span id="breadcrumb-{{p.meta.id}}">
-							{{ p._tree_display_name }} >
+						{% for pc in c._ancestors[1:] %}
+							<span id="breadcrumb-{{pc.meta.id}}">
+							{{ pc._short_display_name }} >
 							</span>
 						{% end %}
-						{{ c._tree_display_name }}
+						{{ c._short_display_name }}
 						</h4>
 					</header>
 
@@ -143,19 +143,19 @@
 					</section>
 					{% end %}
 
-					{% comment **************** %}
-					{% comment ... properties   %}
-					{% comment **************** %}
-					{% if len(c._property_tree) %}
+					{% comment *************************** %}
+					{% comment ... scientific properties   %}
+					{% comment *************************** %}
+					{% if len(c._scientific_property_tree) %}
 					<section>
 						<header><h5>Properties</h5></header>
 						<table>
 							<tbody>
-								{% for p in c._property_tree %}
+								{% for p in c._scientific_property_tree %}
 									{% for v in sorted(p.values) %}
 									<tr class="esdoc-field">
 										<td>
-											<b>{{ p._list_display_name }}</b>: {{v}}
+											<b>{{ " > ".join(p._display_name.split(" > ")[1:]) }}</b>: {{v}}
 										</td>
 									</tr>
 									{% end %}

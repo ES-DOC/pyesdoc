@@ -1,7 +1,7 @@
 """
 .. module:: grids_grid_spec.py
    :platform: Unix, Windows
-   :synopsis: Parses a cim.v1.grids.grid_spec document.
+   :synopsis: Extends a cim.v1.grids.grid_spec document.
 
 .. moduleauthor:: Mark Conway-Greenslade <momipsl@ipsl.jussieu.fr>
 
@@ -50,8 +50,8 @@ def _set_summary_fields(ctx):
         )
 
 
-# Set of parsing functions.
-PARSERS = (
+# Set of extension functions.
+EXTENDERS = (
     _set_display_name,
     _set_type_display_name,
     _set_description,

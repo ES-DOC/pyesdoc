@@ -16,7 +16,7 @@ import requests
 
 from . import constants, options
 from . serialization import encode, decode
-from . parsing import parse
+from . extensions import extend
 from . utils import runtime as rt
 from . validation import is_valid
 
@@ -162,9 +162,9 @@ def retrieve(uid, version=constants.ESDOC_DOC_VERSION_LATEST):
     resp = _invoke(requests.get, url)
 
     # Process HTTP response code:
-    # 200 - return decoded/parsed document;
+    # 200 - return decoded/extended document;
     if resp.status_code == HTTP_RESPONSE_STATUS_200 and len(resp.text):
-        return parse(decode(resp.json(), constants.ESDOC_ENCODING_DICT))
+        return extend(decode(resp.json(), constants.ESDOC_ENCODING_DICT))
 
     # 404 - raise error;
     elif resp.status_code == HTTP_RESPONSE_STATUS_404:

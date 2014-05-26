@@ -35,6 +35,26 @@ _ISO_DATE_FORMATS = ["%Y-%m-%d %H:%M:%S", "%Y-%m-%dT%H:%M:%S"]
 _ABBREVIATIONS = ("id", "uid", "uuid")
 
 
+def capitalize(target):
+    """Capitalizes passed string.
+
+    :param str target: A string to be converted.
+
+    :returns: The target string capitalized.
+    :rtype: str
+
+    """
+    if not isinstance(target, (str, unicode)):
+        raise TypeError()
+
+    if len(target) == 0:
+        return target
+    elif len(target) == 1:
+        return target[0].upper()
+    else:
+        return target[0].upper() + target[1:]
+
+
 def str_to_pascal_case(target, separator='_'):
     """Converts passed name to pascal case.
 

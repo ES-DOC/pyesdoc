@@ -6,107 +6,8 @@
 
 """
 # Module imports.
-from collections import namedtuple
-
 from ....ontologies.cim.v1 import ComponentProperty
-from ....utils import convert
 
-
-
-# Component property parsing context information.
-PropertyContextInfo = namedtuple('PropertyContextInfo', ['c', 'p', 'parent', 'ancestors'])
-
-
-def _parse_property_01(ctx):
-    """Sets property extension properties."""
-    ctx.p._ancestors = ctx.ancestors
-    ctx.p._depth = len(ctx.ancestors)
-    ctx.p._parent = ctx.parent
-
-
-def _parse_property_02(ctx):
-    """Sets property key."""
-    key = ctx.c._key + '>'
-    if len(ctx.p._ancestors):
-        key += ctx.p._ancestors[-1].short_name.lower().strip() + '.'
-    key += ctx.p.short_name.lower().strip()
-    ctx.p._key = key
-
-
-def _parse_property_03(ctx):
-    """Extend component property tree."""
-    ctx.c._property_tree.append(ctx.p)
-
-
-def _parse_property_04(ctx):
-    """Sets property value."""
-    # Format existing values.
-    ctx.p.values = map(lambda v: str(v).strip(), ctx.p.values)
-    ctx.p.values = [v for v in ctx.p.values if len(v)]
-    ctx.p.values = map(lambda v: v[0].upper() + v[1:], ctx.p.values)
-
-    if len(ctx.p.values):
-        ctx.p._value = reduce(lambda x, v: v if x is None else x + " | " + v, ctx.p.values, None)
-        ctx.p._value = ctx.p._value[0].upper() + ctx.p._value[1:]
-    else:
-        ctx.p._value = None
-
-
-def _parse_property_05(ctx):
-    """Sets property display names."""
-    # Tree display name.
-    name = convert.str_to_spaced_case(ctx.p.short_name)
-    for old, new in [("2 D- ", "2D-"), ("3 D- ", "3D-")]:
-        name = name.replace(old, new)
-    name = map(lambda s: s[0].upper() + s[1:], name.split(" "))
-    name = reduce(lambda x, s: s if x is None else x + " " + s, name, None)
-    ctx.p._tree_display_name = name
-
-    # List display name.
-    if ctx.p._depth == 0:
-        ctx.p._list_display_name = ctx.p._tree_display_name
-    else:
-        ctx.p._list_display_name = ctx.p._parent._list_display_name
-        ctx.p._list_display_name += " > "
-        ctx.p._list_display_name += ctx.p._tree_display_name
-
-
-def _parse_property_06(ctx):
-    """Process child properties."""
-    for p in ctx.p.sub_properties:
-        parse(ctx.c, p, ctx.p, ctx.ancestors + [ctx.p])
-
-
-# Set of property parsers.
-_property_parsers = (
-    _parse_property_01,
-    _parse_property_02,
-    _parse_property_03,
-    _parse_property_04,
-    _parse_property_05,
-    _parse_property_06,
-    )
-
-
-def parse(c, p, parent=None, ancestors=[]):
-    """Performs a parse over a property in readiness for later processing.
-
-    :param c: A model component.
-    :type c: pyesdoc.ontologies.cim.v1.software.ModelComponent
-
-    :param p: A model component property.
-    :type p: pyesdoc.ontologies.cim.v1.software.ComponentProperty
-
-    :param parent: Parent model component property.
-    :type parent: pyesdoc.ontologies.cim.v1.software.ComponentProperty
-
-    :param ancestors: Ancestor model component properties.
-    :type ancestors: list
-
-    """
-    ctx = PropertyContextInfo(c, p, parent, ancestors)
-    for f in _property_parsers:
-        f(ctx)
 
 
 def _create_property(p_tree, values, name, description):
@@ -213,7 +114,7 @@ def _set_standard_properties_citations(c, p_tree):
 
 
 def set_standard_properties(c):
-    """Sets standard properties for a component.
+    """Sets standard scientific properties.
 
     :param c: A model component.
     :type c: pyesdoc.ontologies.cim.v1.software.ModelComponent
@@ -223,7 +124,7 @@ def set_standard_properties(c):
     p = _create_property(c._standard_properties,
                          None,
                          'Standard Properties',
-                         'Set of properties common to all components')
+                         'Set of component standard properties')
     # Create sub-groups.
     for setter in [
         _set_standard_properties_descriptive,
@@ -234,10 +135,45 @@ def set_standard_properties(c):
 
 
 def set_scientific_properties(c):
-    """Sets scientific properties for a component.
+    """Sets component scientific properties.
 
     :param c: A model component.
     :type c: pyesdoc.ontologies.cim.v1.software.ModelComponent
 
     """
-    pass
+    # Create property group.
+    p = _create_property(c._scientific_properties,
+                         None,
+                         'Scientific Properties',
+                         'Set of component scientific properties')
+
+    # Key properties == scientific properties.
+    for cp in c.properties:
+        if cp.short_name.find("Key Properties") != -1:
+            p.sub_properties = cp.sub_properties
+            return
+
+    # Filter out QC properties.
+    for cp in c.properties:
+        if cp.short_name.find("QC Properties") == -1:
+            p.sub_properties.append(cp)
+
+
+def set_qc_properties(c):
+    """Sets component qc properties.
+
+    :param c: A model component.
+    :type c: pyesdoc.ontologies.cim.v1.software.ModelComponent
+
+    """
+    # Create property group.
+    p = _create_property(c._qc_properties,
+                         None,
+                         'QC Properties',
+                         'Set of component quality control properties')
+
+    # Append qc properties.
+    for cp in c.properties:
+        if cp.short_name.find("QC Properties") != -1:
+            p.sub_properties = cp.sub_properties
+            return

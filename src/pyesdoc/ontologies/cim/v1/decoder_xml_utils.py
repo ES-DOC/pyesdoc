@@ -324,22 +324,18 @@ def decode_xml(decoder, xml, nsmap, is_iterable):
     """
     # None if passed none.
     if xml is None:
-        # print 'Nothing to decode ...'
         return None
 
     # Instance if passed etree element.
     if isinstance(xml, et._Element):
-        # print 'Decoding an instance ...'
         return decoder(xml, nsmap)
 
     # Instance if passed etree element collection and caller wants first only.
     if isinstance(xml, types.ListType) and is_iterable == False:
-        # print 'Decoding first instance  from collection ...'
         return None if len(xml) == 0 else decode_xml(decoder, xml[0], nsmap, None)
 
     # Collection if passed etree element collection.
     if isinstance(xml, types.ListType):
-        # print 'Decoding a collection ...'
         collection = []
         for elem in xml:
             instance = decode_xml(decoder, elem, nsmap, None)

@@ -17,7 +17,7 @@ __all__ = ['SUPPORTED']
 
 
 
-# Supported parsers keyed by document type.
+# Supported extenders keyed by document type.
 SUPPORTED = {
 	"cim.1.activity.ensemble": activity_ensemble,
 	"cim.1.activity.numericalexperiment": activity_numerical_experiment,

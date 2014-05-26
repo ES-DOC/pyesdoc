@@ -26,8 +26,11 @@ from .. utils import (
 _loader = template.Loader(os.path.join(os.path.dirname(os.path.abspath(__file__)), "html_templates"))
 
 
+# Main document set template.
+_template = _loader.load("core/document_set.html")
+
 # Document templates keyed by document type.
-_templates = {
+_document_templates = {    
     "cim.1.activity.ensemble": _loader.load("cim_1/activity_ensemble.html"),
     "cim.1.activity.numericalexperiment": _loader.load("cim_1/activity_numerical_experiment.html"),
     "cim.1.data.dataobject": _loader.load("cim_1/data_data_object.html"),
@@ -263,18 +266,36 @@ class _FieldInfo():
 def encode(doc):
     """Encodes a document to HTML.
 
-    :param doc: Document being encoded.
-    :type doc: object
+    :param object doc: Document being encoded.
 
     :returns: An HTML representation of a document.
     :rtype: str
 
     """
-    template_key = doc.meta.type.lower()
-    if template_key not in _templates:
-        return "<div class='cim-document'>TODO</div>"
+    # Convert to iterable.
+    try:
+        iter(doc)
+    except TypeError:
+        document_set = [doc]
     else:
-        template = _templates[doc.meta.type.lower()]
+        document_set = doc
+
+    # Return generated template.
+    return _template.generate(document_set=document_set,
+                              document_templates=_document_templates,
+                              generate_document=generate_document,
+                              FieldInfo=_FieldInfo,
+                              TemplateInfo=_TemplateInfo)
+
+
+
+    template_key = doc.meta.type.lower()
+    if template_key not in _document_templates:
+        return "<div class='cim-document'>TODO - {0}</div>".format(template_key)
+    else:
+        template = _document_templates[doc.meta.type.lower()]
         return template.generate(doc=doc,
+                                 document_set=document_set,
                                  FieldInfo=_FieldInfo,
                                  TemplateInfo=_TemplateInfo)
+

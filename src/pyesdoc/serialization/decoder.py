@@ -51,7 +51,6 @@ def _assert(doc, encoding):
     if not encoding in _decoders:
         raise NotImplementedError('Document decoding is unsupported :: encoding = {0}.'.format(encoding))
     if type(doc) not in _input_types[encoding]:
-        print "ZZZ", type(doc)
         err = "Document representation type ({0}) is unsupported, it must be one of {1}."
         err = err.format(type(doc), _input_types[encoding])
         rt.throw(err)

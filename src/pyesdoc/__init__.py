@@ -30,9 +30,9 @@ from . options import (
     get as get_option,
     list as list_options
     )
-from . parsing import (
-    parse,
-    is_parseable
+from . extensions import (
+    extend,
+    is_extendable
     )
 from . publishing import (
     exists,

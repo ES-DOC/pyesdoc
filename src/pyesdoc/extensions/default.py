@@ -5,7 +5,7 @@
    :copyright: Copyright "Feb 7, 2013", Earth System Documentation
    :license: GPL/CeCIL
    :platform: Unix, Windows
-   :synopsis: Default document parser.
+   :synopsis: Default document extender.
 
 .. moduleauthor:: Mark Conway-Greenslade <momipsl@ipsl.jussieu.fr>
 
@@ -94,8 +94,8 @@ def _set_encodings(ctx):
     ctx.ext.encodings = ctx.meta.encodings = list(encodings)
 
 
-# Set of pre-parsers.
-PRE_PARSERS = (
+# Set of pre-extenders.
+PRE_EXTENDERS = (
     _set_full_id,
     _set_type,
     _set_type_display_name,
@@ -107,8 +107,8 @@ PRE_PARSERS = (
     )
 
 
-# Set of post-parsers.
-POST_PARSERS = (
+# Set of post-extenders.
+POST_EXTENDERS = (
     _set_full_display_name,
     )
 

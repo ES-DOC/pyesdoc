@@ -153,6 +153,7 @@ def _assert_doc_sub_components(doc, is_update):
     tu.assert_str(p.values[0], "Whole atmosphere")
 
 
+
 def assert_doc(doc, is_update=False):
     """Asserts a document.
 
@@ -187,8 +188,8 @@ def assert_doc_updates(doc):
     tu.assert_str(doc.long_name, "X")
 
 
-def assert_doc_parsing(doc):
-    """Asserts a document after being parsed.
+def assert_doc_extensions(doc):
+    """Asserts a document after being extended.
 
     :param object doc: Document being tested.
 

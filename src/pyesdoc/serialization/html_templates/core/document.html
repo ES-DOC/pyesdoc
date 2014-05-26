@@ -1,15 +1,3 @@
-{% comment ***************** %}
-{% comment Global variables  %}
-{% comment ***************** %}
-{% set DOCUMENT_OVERVIEW_HEADER = "Overview" %}
-{% set DOCUMENT_OVERVIEW_FIELDSET = [
-    FieldInfo('Project', 'meta.project'),
-    FieldInfo('Institute', 'meta.institute'),
-    FieldInfo('Name', 'short_name'),
-    FieldInfo('Long Name', 'long_name'),
-    FieldInfo('Description', 'description'),
-] %}
-
 <div id="{{ doc.ext.full_id }}" 
     class="esdoc-document {{doc.type_key.lower().replace(".", "-")}}">
     {% comment ******************* %}

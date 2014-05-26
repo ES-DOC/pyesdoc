@@ -60,7 +60,7 @@ def _test(mod):
 
 
 def test():
-    """Performs parsing tests over the set of test documents."""
+    """Performs validation tests over the set of test documents."""
     for mod in tt.MODULES:
         tu.init(_test, 'validation', mod)
         yield _test, mod

@@ -1,7 +1,7 @@
 """
 .. module:: activity_numerical_experiment.py
    :platform: Unix, Windows
-   :synopsis: Parses a cim.v1.activity.numerical_experiment document.
+   :synopsis: Extends a cim.v1.activity.numerical_experiment document.
 
 .. moduleauthor:: Mark Conway-Greenslade <momipsl@ipsl.jussieu.fr>
 
@@ -23,8 +23,8 @@ def _set_full_experiment_name(ctx):
     ctx.ext.full_experiment_name = name
 
 
-# Set of parsing functions.
-PARSERS = (
+# Set of extension functions.
+EXTENDERS = (
     _set_type_display_name,
     _set_full_experiment_name,
     )

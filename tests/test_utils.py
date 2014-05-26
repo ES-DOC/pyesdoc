@@ -170,8 +170,8 @@ def get_doc(mod):
                                           mod.DOC_PROJECT,
                                           mod.DOC_INSTITUTE)
 
-    # Parse.
-    pyesdoc.parse(doc)
+    # Extend.
+    pyesdoc.extend(doc)
 
     # Verify.
     assert_doc(mod, doc)
