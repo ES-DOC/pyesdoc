@@ -16,9 +16,10 @@ def _set_display_name(ctx):
         ctx.ext.display_name = ctx.doc.esm_exchange_grids[0].short_name
 
 
-def _set_type_display_name(ctx):
-    """Sets document type display name."""
+def _set_type_display_info(ctx):
+    """Sets document type information."""
     ctx.ext.type_display_name = ctx.meta.type_display_name = "Grid Spec"
+    ctx.ext.type_sortkey = ctx.meta.type_sortkey = "BB"
 
 
 def _set_description(ctx):
@@ -53,7 +54,7 @@ def _set_summary_fields(ctx):
 # Set of extension functions.
 EXTENDERS = (
     _set_display_name,
-    _set_type_display_name,
+    _set_type_display_info,
     _set_description,
     _set_ids,
     _set_summary_fields,

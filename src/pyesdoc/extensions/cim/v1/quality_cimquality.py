@@ -13,9 +13,10 @@ def _set_display_name(ctx):
         ctx.ext.display_name = ctx.doc.reports[0].measure.name
 
 
-def _set_type_display_name(ctx):
-    """Sets document type display name."""
+def _set_type_display_info(ctx):
+    """Sets document type information."""
     ctx.ext.type_display_name = ctx.meta.type_display_name = "QC Record"
+    ctx.ext.type_sortkey = ctx.meta.type_sortkey = "CB"
 
 
 def _set_description(ctx):
@@ -35,7 +36,7 @@ def _set_summary_fields(ctx):
 # Set of extension functions.
 EXTENDERS = (
     _set_display_name,
-    _set_type_display_name,
+    _set_type_display_info,
     _set_description,
     _set_summary_fields
     )

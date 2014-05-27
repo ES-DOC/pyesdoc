@@ -1,22 +1,53 @@
-{% if len(document_set) %}
-	{% for doc in document_set %}
+{% autoescape None %}
 
-	{% end %}
+{% comment ******************* %}
+{% comment Emit header         %}
+{% comment ******************* %}
+{% if len(document_group_set) > 1 %}
+<nav class="esdoc-document-group-set">
+    <ul>
+        {% for group_key in sorted(document_group_set.keys()) %}
+        {% if len(document_group_set[group_key]) == 1 %}
+        {% set doc = document_group_set[group_key][0] %}
+        <li class="esdoc-document-group-single">
+            <a href="#{{ doc.ext.full_id }}">{{ group_key[3:] }}</a>
+        </li>
+        {% else %}
+        <li class="esdoc-document-group-multi">
+            <a href="#">
+              {{ group_key[3:] }} <span class="caret"></span>
+            </a>
+            <ul>
+                {% for doc in document_group_set[group_key] %}
+                <li>
+                    <a href="#{{ doc.ext.full_id }}">{{ doc.ext.display_name }}</a>
+                </li>
+                {% end %}
+            </ul>
+        </li>
+        {% end %}
+        {% end %}
+    </ul>
+</nav>
 {% end %}
 
-{% for doc in document_set %}
-
-<div id="{{ doc.ext.full_id }}"
-    class="esdoc-document {{doc.type_key.lower().replace(".", "-")}}">
-
-    {% comment ******************* %}
-    {% comment Emit doc header %}
-    {% comment ******************* %}
-    <header>
-        <h2>{{ doc.ext.full_display_name }}<small> (v{{ doc.meta.version }})</small></h2>
-    </header>
-
+{% comment ******************* %}
+{% comment Emit content        %}
+{% comment ******************* %}
+<div class="esdoc-document-set">
+    {% for doc in document_set %}
+    <div id="{{ doc.ext.full_id }}"
+         class="esdoc-document {{doc.type_key.lower().replace(".", "-")}}">
+        {% comment ******************* %}
+        {% comment Emit doc header %}
+        {% comment ******************* %}
+        <header>
+            <h2>{{ doc.ext.full_display_name }}<small> (v{{ doc.meta.version }})</small></h2>
+        </header>
+        {% comment ******************* %}
+        {% comment Emit doc content    %}
+        {% comment ******************* %}
+        {{squeeze(generate_document(doc))}}
+    </div>
+    {% end %}
 </div>
-
-{% end %}
-

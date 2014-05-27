@@ -20,7 +20,7 @@ def _set_display_name(ctx):
     pass
 
 
-def _set_type_display_name(ctx):
+def _set_type_display_info(ctx):
     """Sets document type display name."""
     pass
 
@@ -34,6 +34,6 @@ def _set_summary_fields(ctx):
 EXTENDERS = (
     _set_meta_info,
     _set_display_name,
-    _set_type_display_name,
+    _set_type_display_info,
     _set_summary_fields
     )

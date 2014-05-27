@@ -27,11 +27,12 @@ def _set_type(ctx):
     ctx.meta.type = ctx.ext.type = ctx.doc.__class__.type_key
 
 
-def _set_type_display_name(ctx):
+def _set_type_display_info(ctx):
     """Sets document type display name."""
     ctx.meta.type_display_name = \
         ctx.ext.type_display_name = \
             ctx.meta.type.split(".")[-1]
+    ctx.meta.type_sortkey = "ZZ"
 
 
 def _set_language(ctx):
@@ -98,7 +99,7 @@ def _set_encodings(ctx):
 PRE_EXTENDERS = (
     _set_full_id,
     _set_type,
-    _set_type_display_name,
+    _set_type_display_info,
     _set_language,
     _set_display_name,
     _set_description,

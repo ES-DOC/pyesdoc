@@ -30,7 +30,7 @@ _loader = template.Loader(os.path.join(os.path.dirname(os.path.abspath(__file__)
 _template = _loader.load("core/document_set.html")
 
 # Document templates keyed by document type.
-_document_templates = {    
+_document_templates = {
     "cim.1.activity.ensemble": _loader.load("cim_1/activity_ensemble.html"),
     "cim.1.activity.numericalexperiment": _loader.load("cim_1/activity_numerical_experiment.html"),
     "cim.1.data.dataobject": _loader.load("cim_1/data_data_object.html"),
@@ -263,6 +263,40 @@ class _FieldInfo():
         return v
 
 
+def _generate(document):
+    template_key = document.meta.type.lower()
+    if template_key not in _document_templates:
+        msg = u"TODO - document html generator for {0} documents."
+        return msg.format(template_key)
+
+    template = _document_templates[template_key]
+    return template.generate(doc=document,
+                             FieldInfo=_FieldInfo,
+                             TemplateInfo=_TemplateInfo)
+
+
+def _get_group_set(document_set):
+    def get_sort_key(document):
+        """Returns key used for document sorting."""
+        return document.ext.full_display_name.lower()
+
+    def get_group_key(document):
+        return "{0}-{1}".format(document.ext.type_sortkey,
+                                document.ext.type_display_name)
+
+    group_set = {}
+    for document in document_set:
+        group_key = get_group_key(document)
+        if group_key not in group_set:
+            group_set[group_key] = []
+        group_set[group_key].append(document)
+
+    for group_key, document_set in group_set.iteritems():
+        group_set[group_key] = sorted(document_set, key=get_sort_key)
+
+    return group_set
+
+
 def encode(doc):
     """Encodes a document to HTML.
 
@@ -272,30 +306,19 @@ def encode(doc):
     :rtype: str
 
     """
-    # Convert to iterable.
+    def get_sort_key(document):
+        """Returns key used for document sorting."""
+        return document.meta.type_sortkey
+
+    # Convert to sorted iterable.
     try:
         iter(doc)
     except TypeError:
         document_set = [doc]
     else:
-        document_set = doc
+        document_set = sorted(doc, key=get_sort_key)
 
     # Return generated template.
     return _template.generate(document_set=document_set,
-                              document_templates=_document_templates,
-                              generate_document=generate_document,
-                              FieldInfo=_FieldInfo,
-                              TemplateInfo=_TemplateInfo)
-
-
-
-    template_key = doc.meta.type.lower()
-    if template_key not in _document_templates:
-        return "<div class='cim-document'>TODO - {0}</div>".format(template_key)
-    else:
-        template = _document_templates[doc.meta.type.lower()]
-        return template.generate(doc=doc,
-                                 document_set=document_set,
-                                 FieldInfo=_FieldInfo,
-                                 TemplateInfo=_TemplateInfo)
-
+                              document_group_set=_get_group_set(document_set),
+                              generate_document=_generate)

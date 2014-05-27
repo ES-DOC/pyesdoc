@@ -8,7 +8,8 @@
 	{% for i, member in enumerate(doc.members) %}
     <li><a href="#{{ doc.ext.full_id }}-member{{i}}">{{member.ensemble_ids[0].value}}</a></li>
 	{% end %}
-	{% if len(doc.responsible_parties) %}
+    {% set contacts = [rp for rp in doc.responsible_parties if rp.role.lower() not in ['funder', 'centre']] %}
+	{% if len(contacts) %}
 	    <li><a href="#{{ doc.ext.full_id }}-contacts">Contacts</a></li>
     {% end %}
 {% end %}
@@ -53,9 +54,9 @@
 	{% comment ***************** %}
 	{% comment Emit contacts     %}
 	{% comment ***************** %}
-	{% set ctx = TemplateInfo(doc.responsible_parties,
+	{% set ctx = TemplateInfo([rp for rp in doc.responsible_parties if rp.role.lower() not in ['funder', 'centre']],
 		header = "Contacts",
-		tag_id = doc.ext.full_id + "-contacts" + str(i),
+		tag_id = doc.ext.full_id + "-contacts",
 		template = "cim_1_shared_responsible_party.html"
 	) %}
 	{% include ../core/section_01.html %}

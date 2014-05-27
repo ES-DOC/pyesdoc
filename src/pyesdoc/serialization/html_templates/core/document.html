@@ -1,27 +1,17 @@
-<div id="{{ doc.ext.full_id }}" 
-    class="esdoc-document {{doc.type_key.lower().replace(".", "-")}}">
-    {% comment ******************* %}
-    {% comment Emit doc header %}
-    {% comment ******************* %}
-    <header>
-        <h2>{{ doc.ext.full_display_name }}<small> (v{{ doc.meta.version }})</small></h2>
-    </header>
+{% comment ******************* %}
+{% comment Emit doc navigation %}
+{% comment ******************* %}
+<nav>
+    <ul class="">
+        {% block doc-nav %}{% end %}
+        <li><a href="#{{ doc.ext.full_id }}-meta">Meta</a></li>
+    </ul>
+</nav>
 
-    {% comment ******************* %}
-    {% comment Emit doc navigation %}
-    {% comment ******************* %}
-    <nav>
-        <ul>
-            {% block doc-nav %}{% end %}
-            <li><a href="#{{ doc.ext.full_id }}-meta">Meta</a></li>
-        </ul>
-    </nav>
-
-    {% comment ***************** %}
-    {% comment Emit doc content  %}
-    {% comment ***************** %}
-    <article>
-        {% block doc-content %}{% end %}
-        {% include document_metadata.html %}
-    </article>
-</div>
+{% comment ***************** %}
+{% comment Emit doc content  %}
+{% comment ***************** %}
+<article>
+    {% block doc-content %}{% end %}
+    {% include document_metadata.html %}
+</article>

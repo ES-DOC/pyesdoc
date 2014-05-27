@@ -169,9 +169,10 @@ def _extend_component(c, ext, parent=None, ancestors=[]):
         f(ctx)
 
 
-def _set_type_display_name(ctx):
-    """Sets document type display name."""
+def _set_type_display_info(ctx):
+    """Sets document type information."""
     ctx.meta.type_display_name = ctx.ext.type_display_name = "Model"
+    ctx.ext.type_sortkey = ctx.meta.type_sortkey = "AA"
 
 
 def _set_component_hierarchy(ctx):
@@ -232,7 +233,7 @@ def _set_component_type_info(ctx):
 
 # Set of extension functions.
 EXTENDERS = (
-    _set_type_display_name,
+    _set_type_display_info,
     _set_component_hierarchy,
     _set_component_property_sets,
     _set_component_property_trees,

@@ -7,9 +7,10 @@
 
 
 """
-def _set_type_display_name(ctx):
-    """Sets document type display name."""
+def _set_type_display_info(ctx):
+    """Sets document type information."""
     ctx.meta.type_display_name = ctx.ext.type_display_name = "Experiment"
+    ctx.ext.type_sortkey = ctx.meta.type_sortkey = "AB"
 
 
 def _set_full_experiment_name(ctx):
@@ -25,6 +26,6 @@ def _set_full_experiment_name(ctx):
 
 # Set of extension functions.
 EXTENDERS = (
-    _set_type_display_name,
+    _set_type_display_info,
     _set_full_experiment_name,
     )

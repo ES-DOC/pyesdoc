@@ -12,9 +12,10 @@ def _set_display_name(ctx):
     ctx.ext.display_name = ctx.doc.acronym
 
 
-def _set_type_display_name(ctx):
-    """Sets document type display name."""
+def _set_type_display_info(ctx):
+    """Sets document type information."""
     ctx.ext.type_display_name = ctx.meta.type_display_name = "Data Object"
+    ctx.ext.type_sortkey = ctx.meta.type_sortkey = "CA"
 
 
 def _set_summary_fields(ctx):
@@ -28,6 +29,6 @@ def _set_summary_fields(ctx):
 # Set of extension functions.
 EXTENDERS = (
     _set_display_name,
-    _set_type_display_name,
+    _set_type_display_info,
     _set_summary_fields
     )

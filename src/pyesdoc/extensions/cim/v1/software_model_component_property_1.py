@@ -1,5 +1,5 @@
 """
-.. module:: software_model_component.py
+.. module:: software_model_component_1.py
    :platform: Unix, Windows
    :synopsis: Extends a cim.v1.software.modelcomponent document.
 

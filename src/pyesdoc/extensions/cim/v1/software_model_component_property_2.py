@@ -1,7 +1,7 @@
 """
-.. module:: software_model_component.py
+.. module:: software_model_component_2.py
    :platform: Unix, Windows
-   :synopsis: Parses a cim.v1.software.modelcomponent document.
+   :synopsis: Extends a cim.v1.software.modelcomponent document.
 
 
 """

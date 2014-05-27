@@ -7,6 +7,11 @@
 
 
 """
+def _set_type_display_info(ctx):
+    """Sets document type information."""
+    ctx.ext.type_sortkey = ctx.meta.type_sortkey = "BC"
+
+
 def _set_member_short_name(ctx):
     """Sets ensemble member short names."""
     for member in ctx.doc.members:
@@ -16,5 +21,6 @@ def _set_member_short_name(ctx):
 
 # Set of extension functions.
 EXTENDERS = (
+	_set_type_display_info,
     _set_member_short_name,
     )
