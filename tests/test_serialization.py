@@ -44,7 +44,6 @@ def _test_html(mod, doc):
         tu.encode(doc, pyesdoc.ESDOC_ENCODING_HTML)
     except KeyError as err:
         if mod.DOC_TYPE.type_key.lower() in (
-            "cim.1.activity.simulationrun",
             "cim.1.misc.documentset",
             "cim.1.software.statisticalmodelcomponent"):
             pass

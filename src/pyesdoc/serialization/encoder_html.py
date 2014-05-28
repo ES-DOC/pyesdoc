@@ -33,6 +33,7 @@ _template = _loader.load("core/document_set.html")
 _document_templates = {
     "cim.1.activity.ensemble": _loader.load("cim_1/activity_ensemble.html"),
     "cim.1.activity.numericalexperiment": _loader.load("cim_1/activity_numerical_experiment.html"),
+    "cim.1.activity.simulationrun": _loader.load("cim_1/activity_simulation_run.html"),
     "cim.1.data.dataobject": _loader.load("cim_1/data_data_object.html"),
     "cim.1.grids.gridspec": _loader.load("cim_1/grids_grid_spec.html"),
     "cim.1.shared.platform": _loader.load("cim_1/shared_platform.html"),

@@ -59,7 +59,7 @@ def encode(doc, encoding):
     # Defensive programming.
     try:
         iter(doc)
-    except ValueError:
+    except TypeError:
         _assert(doc, encoding)
     else:
         for item in doc:
