@@ -22,13 +22,12 @@ _output_directory = None
 
 def _get_doc_path(doc, encoding):
     """Returns path to doc file in the relevant encoding."""
-    path = '{0}_{1}_{2}.{3}'.format(
-        doc.__class__.type_key,
-        str(doc.meta.id),
-        str(doc.meta.version),
-        encoding)
+    fpath = '{0}_{1}_{2}.{3}'.format(doc.__class__.type_key,
+                                     str(doc.meta.id),
+                                     str(doc.meta.version),
+                                     encoding)
 
-    return os.path.join(_output_directory, path)
+    return os.path.join(_output_directory, fpath)
 
 
 def set_output_directory(path):
@@ -47,48 +46,48 @@ def set_output_directory(path):
     _output_directory = path
 
 
-def write(doc, encoding=constants.ESDOC_ENCODING_JSON, path=None):
+def write(doc, encoding=constants.ESDOC_ENCODING_JSON, fpath=None):
     """Writes a document to the file system in the passed encoding.
 
-    :param doc: A pyesdoc document instance.
-    :type doc: object
-
-    :param encoding: Document encoding.
-    :type encoding: str
-
-    :param path: Path to file to be written.
-    :type path: str
+    :param object doc: A pyesdoc document instance.
+    :param str encoding: Document encoding.
+    :param str fpath: Path to file to be written.
 
     :returns: Path to created file.
     :rtype: str
 
     """
-    if path is None:
-        path = _get_doc_path(doc, encoding)
-    with open(path, 'w') as f:
-        f.write(serialization.encode(doc, encoding))
+    if fpath is None:
+        fpath = _get_doc_path(doc, encoding)
 
-    return path
+    doc = serialization.encode(doc, encoding)
+
+    with open(fpath, 'w') as output_file:
+        output_file.write(doc)
+
+    return fpath
 
 
-def read(path, encoding=None):
+def read(fpath, encoding=None):
     """Opens a document from a previously saved file from file system.
 
-    :param path: Path to previously saved file.
-    :type path: str
+    :param str fpath: Path to previously saved file.
+    :param str encoding: Encoding to use during deserialization.
+    :param func post_processing_handlers: Callback(s) to invoke after processing.
 
     :returns: A pyesdoc document instance.
     :rtype: object
 
     """
     # Defensive programming.
-    if not os.path.isfile(path):
-        path = os.path.join(_output_directory, path)
-        if not os.path.isfile(path):
+    if not os.path.isfile(fpath):
+        fpath = os.path.join(_output_directory, fpath)
+        if not os.path.isfile(fpath):
             rt.raise_error("File path does not exist.")
 
+    # If encoding is unspecified then derive from file extension.
     if encoding is None:
-        encoding = os.path.splitext(path)[1][1:]
-        
-    with open(path, 'r') as f:
-        return serialization.decode(f.read(), encoding)
+        encoding = os.path.splitext(fpath)[1][1:]
+
+    with open(fpath, 'r') as input_file:
+        return serialization.decode(input_file.read(), encoding)

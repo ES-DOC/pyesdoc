@@ -20,7 +20,7 @@ import test_types as tt
 
 def _test_custom_extender_count():
     """Test number of extenders."""
-    tu.assert_iter(pyesdoc.extensions.SUPPORTED, length=9)
+    tu.assert_iter(pyesdoc.extensions.SUPPORTED, length=10)
 
 
 def _test_is_custom_extendable():

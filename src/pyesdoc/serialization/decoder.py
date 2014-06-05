@@ -73,4 +73,10 @@ def decode(doc, encoding):
     _assert(doc, encoding)
 
     # Decode.
-    return _decoders[encoding].decode(doc)
+    doc = _decoders[encoding].decode(doc)
+
+    # Set standard meta attributes.
+    if doc is not None:
+        doc.meta.type == type(doc).type_key
+
+    return doc

@@ -51,7 +51,6 @@ class DocumentExtensionInfo(object):
         self.language = str()
         self.summary_fields = []
         self.type = str()
-        self.type_display_name = str()
 
 
 def extend(doc):

@@ -18,15 +18,12 @@ from . import (
 
 
 def decode(doc, encoding):
-    """Decodes a pyesdoc document from a representation.
+    """Returns a decoded pyesdoc document.
 
-    :param doc: A document representation (e.g. json).
-    :type doc: str | unicode
+    :param unicode doc: A document representation (e.g. json).
+    :param str encoding: A document encoding (dict|json|xml|metafor-cim-1-xml).
+    :param func post_processing_handlers: Callback(s) to invoke after processing.
 
-    :param encoding: A document encoding (dict|json|xml|metafor-cim-1-xml).
-    :type encoding: str
-
-    :returns: A pyesdoc document instance.
     :rtype: object
 
     """
@@ -34,15 +31,11 @@ def decode(doc, encoding):
 
 
 def encode(doc, encoding):
-    """Encodes a pyesdoc document instance.
+    """Returns an encoded pyesdoc document instance.
 
-    :param doc: pyesdoc document instance.
-    :type doc: object
+    :param object doc: pyesdoc document instance.
+    :param str encoding: A document encoding.
 
-    :param encoding: A document encoding.
-    :type encoding: str
-
-    :returns: A pyesdoc document representation.
     :rtype: unicode | dict
 
     """
@@ -52,14 +45,9 @@ def encode(doc, encoding):
 def convert(doc, encoding_from, encoding_to):
     """Converts one encoding to another.
 
-    :param doc: A document representation (e.g. json).
-    :type doc: str
-
-    :param encoding_from: A document encoding (dict|json|xml).
-    :type encoding_from: str
-
-    :param encoding_to: A document encoding (dict|json|xml).
-    :type encoding_to: str
+    :param unicode doc: A document representation (e.g. json).
+    :param str encoding_from: A document encoding (dict|json|xml).
+    :param str encoding_to: A document encoding (dict|json|xml).
 
     :returns: A pyesdoc document representation.
     :rtype: unicode | dict

@@ -28,7 +28,11 @@ def _assert_type(typeof):
         rt.throw("Type {0} is unsupported.".format(typeof))
 
 
-def create(typeof, project, institute, language=constants.ESDOC_DEFAULT_LANGUAGE, source=None):
+def create(typeof,
+           project,
+           institute,
+           language=constants.ESDOC_DEFAULT_LANGUAGE,
+           source=None):
     """Creates a document.
 
     :param typeof: Ontology type, e.g. cim.1.software.ModelComponent.

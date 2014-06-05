@@ -9,7 +9,7 @@
    :synopsis: The set of types of the cim.v1.shared package.
 
 .. moduleauthor:: Earth System Documentation (ES-DOC) <dev@es-doc.org>
-.. note:: Code generated using esdoc_mp @ 2014-05-27 15:15:32.841312.
+.. note:: Code generated using esdoc_mp @ 2014-06-04 15:28:18.863308.
 
 """
 # Module imports.
@@ -177,6 +177,7 @@ class DocMetaInfo(object):
         self.status = None                                # shared.DocStatusType
         self.type = None                                  # str
         self.type_display_name = None                     # str
+        self.type_sort_key = None                         # str
         self.version = None                               # int
 
 

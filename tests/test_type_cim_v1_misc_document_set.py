@@ -46,15 +46,14 @@ DOC_AUTHOR = "Metafor Questionnaire"
 DOC_ENCODINGS_COUNT = 4
 
 
-def assert_doc(doc, meta, ext):
+def assert_doc(doc, is_update=False):
     """Asserts a document.
 
     :param object doc: Document being tested.
-    :param object meta: Document meta information.
-    :param object ext: Document extension information.
+    :param bool is_update: Flag indicating whether document has been updated.
 
     """
-    return
+    pass
 
 
 def update_doc(doc):

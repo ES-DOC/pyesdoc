@@ -1,0 +1,56 @@
+{% set INPUT_PURPOSES = {
+	"initialCondition" : "Initial Condition",
+	"boundaryCondition": "Boundary Condition",
+	"lateralBoundaryCondition" : "Lateral Boundary Condition",
+} %}
+
+{% set input = ctx.data %}
+
+<table>
+	<tbody>
+		<tr>
+			<td class="esdoc-field-name"><b>Type</b></td>
+			<td class="esdoc-field-value">{{ input.type }}</td>
+		</tr>
+
+		{% if input.purpose %}
+		{% if input.purpose in INPUT_PURPOSES %}
+			<tr>
+				<td class="esdoc-field-name"><b>Purpose</b></td>
+				<td class="esdoc-field-value">{{ INPUT_PURPOSES[input.purpose] }}</td>
+			</tr>
+		{% else %}
+			<tr>
+				<td class="esdoc-field-name"><b>Purpose</b></td>
+				<td class="esdoc-field-value">{{ input.purpose }}</td>
+			</tr>
+		{% end %}
+		{% end %}
+
+		{% if input.type == "File" and \
+			  len(input.sources) and \
+			  input.target and \
+			  len(input.connections) and \
+			  len(input.connections[0].sources) %}
+		{% set source = input.sources[0] %}
+		{% set target = input.target %}
+		{% set connection = input.connections[0] %}
+		<tr>
+			<td class="esdoc-field-name"><b>Source</b>&nbsp;(File > Variable)</td>
+			<td class="esdoc-field-value">{{ source.data_source_reference.name }} > {{ connection.sources[0].data_source_reference.name }}</td>
+		</tr>
+		<tr>
+			<td class="esdoc-field-name"><b>Target</b>&nbsp;(Component > Property)</td>
+			<td class="esdoc-field-value">{{ target.data_source_reference.name }} > {{ connection.target.data_source_reference.name }}</td>
+		</tr>
+
+		{% if input.description %}
+		<tr>
+			<td class="esdoc-field-name"><b>Description</b></td>
+			<td class="esdoc-field-value">{{ input.description }}</td>
+		</tr>
+		{% end %}
+
+		{% end %}
+	</tbody>
+</table>

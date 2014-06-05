@@ -18,6 +18,9 @@ import test_utils as tu
 # Test document type.
 DOC_TYPE = cim.v1.ModelComponent
 
+# Test type display name.
+DOC_TYPE_DISPLAY_NAME = "Model"
+
 # Test document type.
 DOC_TYPE_KEY = DOC_TYPE.type_key
 
@@ -70,7 +73,6 @@ def assert_extension_info(ext):
     tu.assert_str(ext.display_name, "HadGEM2-A")
     tu.assert_str(ext.description, "The HadGEM2-A model", True)
     tu.assert_str(ext.full_display_name, "CMIP5 Model : MOHC - HadGEM2-A")
-    tu.assert_str(ext.type_display_name, "Model")
     tu.assert_int(ext.summary_fields, 2)
     tu.assert_str(ext.summary_fields[0], "HadGEM2-A")
     tu.assert_str(ext.summary_fields[1], "Hadley Global Environment Model 2 - Atmosphere")

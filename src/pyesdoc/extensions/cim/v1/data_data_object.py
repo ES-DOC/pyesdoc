@@ -14,8 +14,8 @@ def _set_display_name(ctx):
 
 def _set_type_display_info(ctx):
     """Sets document type information."""
-    ctx.ext.type_display_name = ctx.meta.type_display_name = "Data Object"
-    ctx.ext.type_sortkey = ctx.meta.type_sortkey = "CA"
+    ctx.meta.type_display_name = "Data Object"
+    ctx.meta.type_sort_key = "CA"
 
 
 def _set_summary_fields(ctx):

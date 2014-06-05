@@ -9,8 +9,8 @@
 """
 def _set_type_display_info(ctx):
     """Sets document type information."""
-    ctx.meta.type_display_name = ctx.ext.type_display_name = "Experiment"
-    ctx.ext.type_sortkey = ctx.meta.type_sortkey = "AB"
+    ctx.meta.type_display_name = "Experiment"
+    ctx.meta.type_sort_key = "AB"
 
 
 def _set_full_experiment_name(ctx):

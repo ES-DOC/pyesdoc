@@ -9,7 +9,7 @@
 """
 def _set_type_display_info(ctx):
     """Sets document type information."""
-    ctx.ext.type_sortkey = ctx.meta.type_sortkey = "BA"
+    ctx.meta.type_sort_key = "BA"
 
 
 # Set of extension functions.

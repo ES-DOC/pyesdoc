@@ -34,6 +34,7 @@ _document_templates = {
     "cim.1.activity.ensemble": _loader.load("cim_1/activity_ensemble.html"),
     "cim.1.activity.numericalexperiment": _loader.load("cim_1/activity_numerical_experiment.html"),
     "cim.1.activity.simulationrun": _loader.load("cim_1/activity_simulation_run.html"),
+    "cim.1.misc.documentset": _loader.load("cim_1/misc_document_set.html"),
     "cim.1.data.dataobject": _loader.load("cim_1/data_data_object.html"),
     "cim.1.grids.gridspec": _loader.load("cim_1/grids_grid_spec.html"),
     "cim.1.shared.platform": _loader.load("cim_1/shared_platform.html"),
@@ -282,8 +283,8 @@ def _get_group_set(document_set):
         return document.ext.full_display_name.lower()
 
     def get_group_key(document):
-        return "{0}-{1}".format(document.ext.type_sortkey,
-                                document.ext.type_display_name)
+        return "{0}-{1}".format(document.meta.type_sort_key,
+                                document.meta.type_display_name)
 
     group_set = {}
     for document in document_set:
@@ -309,7 +310,7 @@ def encode(doc):
     """
     def get_sort_key(document):
         """Returns key used for document sorting."""
-        return document.meta.type_sortkey
+        return document.meta.type_sort_key
 
     # Convert to sorted iterable.
     try:

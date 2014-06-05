@@ -4,14 +4,15 @@
 {% comment Emit navigation   %}
 {% comment ***************** %}
 {% block doc-nav %}
-    <li><a href="#{{ doc.ext.full_id }}-overview">Overview</a></li>
 	{% set REQUIREMENT_TYPES = {
 		"initialCondition" : "Initial Conditions",
 		"boundaryCondition": "Boundary Conditions",
 		"lateralBoundaryCondition" : "Lateral Boundary Conditions",
-		"outputRequirement" : "Spatio Temporal Constraints",
-		"spatioTemporalConstraint" : "Output Requirements",
+		"outputRequirement" : "Output Requirements",
+		"spatioTemporalConstraint" : "Spatio Temporal Constraints",
 	} %}
+
+    <li><a href="#{{ doc.ext.full_id }}-overview">Overview</a></li>
 	{% for type in REQUIREMENT_TYPES.keys() %}
 		{% set requirements = filter(lambda r : r.requirement_type == type, doc.requirements) %}
 		{% if len(requirements) %}
@@ -24,6 +25,13 @@
 {% comment Emit content      %}
 {% comment ***************** %}
 {% block doc-content %}
+	{% set REQUIREMENT_TYPES = {
+		"initialCondition" : "Initial Conditions",
+		"boundaryCondition": "Boundary Conditions",
+		"lateralBoundaryCondition" : "Lateral Boundary Conditions",
+		"outputRequirement" : "Output Requirements",
+		"spatioTemporalConstraint" : "Spatio Temporal Constraints",
+	} %}
 
 	{% comment ***************** %}
 	{% comment Emit overview     %}
@@ -47,13 +55,6 @@
 	{% comment ***************** %}
 	{% comment Emit requirements %}
 	{% comment ***************** %}
-	{% set REQUIREMENT_TYPES = {
-		"initialCondition" : "Initial Conditions",
-		"boundaryCondition": "Boundary Conditions",
-		"lateralBoundaryCondition" : "Lateral Boundary Conditions",
-		"outputRequirement" : "Output Requirements",
-		"spatioTemporalConstraint" : "Spatio Temporal Constraints",
-	} %}
 	{% for type in REQUIREMENT_TYPES.keys() %}
 		{% set requirements = filter(lambda r : r.requirement_type == type, doc.requirements) %}
 		{% set ctx = TemplateInfo(requirements,

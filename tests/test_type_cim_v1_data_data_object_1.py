@@ -18,6 +18,9 @@ import test_utils as tu
 # Test type.
 DOC_TYPE = cim.v1.DataObject
 
+# Test type display name.
+DOC_TYPE_DISPLAY_NAME = "Data Object"
+
 # Test document type.
 DOC_TYPE_KEY = DOC_TYPE.type_key + '-1'
 
@@ -55,7 +58,6 @@ def assert_extension_info(ext):
     tu.assert_str(ext.display_name, "fossil_fuel_organic_carbon")
     tu.assert_str(ext.description, "2D gridded monthly-mean", True)
     tu.assert_str(ext.full_display_name, "CMIP5 Data Object : MOHC - fossil_fuel_organic_carbon")
-    tu.assert_str(ext.type_display_name, "Data Object")
     tu.assert_int(ext.summary_fields, 2)
     tu.assert_str(ext.summary_fields[0], "fossil_fuel_organic_carbon")
     tu.assert_str(ext.summary_fields[1], "2D gridded monthly-mean", True)

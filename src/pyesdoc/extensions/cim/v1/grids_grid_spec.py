@@ -18,8 +18,8 @@ def _set_display_name(ctx):
 
 def _set_type_display_info(ctx):
     """Sets document type information."""
-    ctx.ext.type_display_name = ctx.meta.type_display_name = "Grid Spec"
-    ctx.ext.type_sortkey = ctx.meta.type_sortkey = "BB"
+    ctx.meta.type_display_name = "Grid Spec"
+    ctx.meta.type_sort_key = "BB"
 
 
 def _set_description(ctx):

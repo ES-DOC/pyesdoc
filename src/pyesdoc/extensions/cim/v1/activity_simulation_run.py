@@ -9,11 +9,22 @@
 """
 def _set_type_display_info(ctx):
     """Sets document type information."""
-    ctx.meta.type_display_name = ctx.ext.type_display_name = "Simulation"
-    ctx.ext.type_sortkey = ctx.meta.type_sortkey = "AC"
+    ctx.meta.type_display_name = "Simulation"
+    ctx.meta.type_sort_key = "AC"
+
+
+def _set_experiment_conformances(ctx):
+    """Sets conformance links."""
+    ctx.ext.conformances = []
+    for conformance in ctx.doc.conformances:
+    	if len(conformance.requirements_references):
+    		for requirement_reference in conformance.requirements_references:
+    			ctx.ext.conformances.append(requirement_reference.name)
+    ctx.ext.conformances = ", ".join(ctx.ext.conformances)
 
 
 # Set of extension functions.
 EXTENDERS = (
     _set_type_display_info,
+    _set_experiment_conformances,
     )

@@ -18,6 +18,9 @@ import test_utils as tu
 # Test document type.
 DOC_TYPE = cim.v1.ModelComponent
 
+# Test type display name.
+DOC_TYPE_DISPLAY_NAME = "Model"
+
 # Test document type.
 DOC_TYPE_KEY = DOC_TYPE.type_key
 
@@ -54,5 +57,30 @@ def assert_doc(doc, is_update=False):
 
     """
     pass
+  
+
+def update_doc(doc):
+    """Update a document prior to republishing.
+
+    :param object doc: Document being republished.
+
+    """
+    doc.long_name = "X"
 
 
+def assert_doc_updates(doc):
+    """Asserts a document after being updated.
+
+    :param object doc: Document being tested.
+
+    """
+    tu.assert_str(doc.long_name, "X")
+
+
+def assert_doc_extensions(doc):
+    """Asserts a document after being extended.
+
+    :param object doc: Document being tested.
+
+    """
+    pass

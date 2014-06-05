@@ -18,6 +18,9 @@ import test_utils as tu
 # Test type.
 DOC_TYPE = cim.v1.StatisticalModelComponent
 
+# Test type display name.
+DOC_TYPE_DISPLAY_NAME = "Model"
+
 # Test document type.
 DOC_TYPE_KEY = DOC_TYPE.type_key
 

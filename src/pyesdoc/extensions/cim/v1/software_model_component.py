@@ -171,8 +171,8 @@ def _extend_component(c, ext, parent=None, ancestors=[]):
 
 def _set_type_display_info(ctx):
     """Sets document type information."""
-    ctx.meta.type_display_name = ctx.ext.type_display_name = "Model"
-    ctx.ext.type_sortkey = ctx.meta.type_sortkey = "AA"
+    ctx.meta.type_display_name = "Model"
+    ctx.meta.type_sort_key = "AA"
 
 
 def _set_component_hierarchy(ctx):

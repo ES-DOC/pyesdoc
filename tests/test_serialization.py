@@ -25,7 +25,10 @@ def _test(mod, doc, encoding):
 
     # Re-encode and assert encodings.
     as_repr_1 = tu.encode(as_doc_1, encoding)
-    tu.assert_int(len(as_repr), len(as_repr_1))
+    if len(as_repr) != len(as_repr_1) and len(as_repr) < 3000:
+        print as_repr
+        print as_repr_1
+    tu.assert_int(len(as_repr), len(as_repr_1), msg=str(type(doc)))
     tu.assert_str(as_repr, as_repr_1)
 
 

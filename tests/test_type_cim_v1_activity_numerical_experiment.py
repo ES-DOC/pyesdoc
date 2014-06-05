@@ -18,6 +18,9 @@ import test_utils as tu
 # Test type.
 DOC_TYPE = cim.v1.NumericalExperiment
 
+# Test type display name.
+DOC_TYPE_DISPLAY_NAME = "Experiment"
+
 # Test document type.
 DOC_TYPE_KEY = DOC_TYPE.type_key
 
@@ -55,7 +58,6 @@ def assert_extension_info(ext):
     tu.assert_str(ext.display_name, "amip")
     tu.assert_str(ext.description, "AMIP (1979 - at least 2008)", True)
     tu.assert_str(ext.full_display_name, "CMIP5 Experiment : MOHC - amip")
-    tu.assert_str(ext.type_display_name, "Experiment")
     tu.assert_int(ext.summary_fields, 2)
     tu.assert_str(ext.summary_fields[0], "amip")
     tu.assert_str(ext.summary_fields[1], "AMIP")

@@ -251,10 +251,12 @@ def assert_doc(mod, doc):
         assert_date(meta.create_date, mod.DOC_DATE)
     if mod.DOC_AUTHOR and meta.author:
         assert_str(meta.author.individual_name, mod.DOC_AUTHOR)
+    if hasattr(mod, "DOC_TYPE_DISPLAY_NAME"):
+        assert_str(meta.type_display_name, mod.DOC_TYPE_DISPLAY_NAME)
     if hasattr(mod, "assert_meta_info"):
         mod.assert_meta_info(meta)
 
-    # Assert document extension information.
+    # Assert extended documents.
     if hasattr(doc, "ext"):
         ext = doc.ext
         assert_str(mod.DOC_TYPE_KEY, ext.type, True)
@@ -456,7 +458,7 @@ def assert_float(actual, expected):
            .format(actual, expected)
 
 
-def assert_int(actual, expected, assert_type=COMPARE_EXACT):
+def assert_int(actual, expected, assert_type=COMPARE_EXACT, msg=None):
     """Asserts an integer.
 
     :param actual: An integer.
@@ -480,17 +482,17 @@ def assert_int(actual, expected, assert_type=COMPARE_EXACT):
             actual = len(actual)
 
     if assert_type == COMPARE_EXACT:
-        assert expected == actual, "{0} != {1}".format(actual, expected)
+        assert expected == actual, "{0} != {1} {2}".format(actual, expected, msg)
     elif assert_type == COMPARE_GT:
-        assert expected > actual, "{0} !> {1}".format(actual, expected)
+        assert expected > actual, "{0} !> {1} {2}".format(actual, expected, msg)
     elif assert_type == COMPARE_GTE:
-        assert expected >= actual, "{0} !>= {1}".format(actual, expected)
+        assert expected >= actual, "{0} !>= {1} {2}".format(actual, expected, msg)
     elif assert_type == COMPARE_LT:
-        assert expected < actual, "{0} !< {1}".format(actual, expected)
+        assert expected < actual, "{0} !< {1} {2}".format(actual, expected, msg)
     elif assert_type == COMPARE_LTE:
-        assert expected <= actual, "{0} !<= {1}".format(actual, expected)
+        assert expected <= actual, "{0} !<= {1} {2}".format(actual, expected, msg)
     else:
-        assert expected == actual, "{0} != {1}".format(actual, expected)
+        assert expected == actual, "{0} != {1} {2}".format(actual, expected, msg)
 
 
 def assert_int_negative(actual, expected):

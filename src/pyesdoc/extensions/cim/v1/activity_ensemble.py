@@ -9,7 +9,7 @@
 """
 def _set_type_display_info(ctx):
     """Sets document type information."""
-    ctx.ext.type_sortkey = ctx.meta.type_sortkey = "BC"
+    ctx.meta.type_sort_key = "BC"
 
 
 def _set_member_short_name(ctx):

@@ -18,6 +18,9 @@ import test_utils as tu
 # Test type.
 DOC_TYPE = cim.v1.CimQuality
 
+# Test type display name.
+DOC_TYPE_DISPLAY_NAME = "QC Record"
+
 # Test document type.
 DOC_TYPE_KEY = DOC_TYPE.type_key
 
@@ -55,7 +58,6 @@ def assert_extension_info(ext):
     tu.assert_str(ext.display_name, "CMIP5 Quality Control Data Level 2")
     tu.assert_str(ext.description, "CMIP5 Quality Control", True)
     tu.assert_str(ext.full_display_name, "CMIP5 QC Record : MOHC - CMIP5 Quality Control Data Level 2")
-    tu.assert_str(ext.type_display_name, "QC Record")
     tu.assert_int(ext.summary_fields, 1)
     tu.assert_str(ext.summary_fields[0], "cmip5.output1.", True)
 

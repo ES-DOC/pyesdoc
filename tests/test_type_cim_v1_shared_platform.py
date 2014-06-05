@@ -18,6 +18,9 @@ import test_utils as tu
 # Test type.
 DOC_TYPE = cim.v1.Platform
 
+# Test type display name.
+DOC_TYPE_DISPLAY_NAME = "Platform"
+
 # Test document type.
 DOC_TYPE_KEY = DOC_TYPE.type_key
 
@@ -55,7 +58,6 @@ def assert_extension_info(ext):
     tu.assert_str(ext.display_name, "IBM Power 6_Other")
     tu.assert_str(ext.description, "Machine IBM Power 6", True)
     tu.assert_str(ext.full_display_name, "CMIP5 Platform : MOHC - IBM Power 6_Other")
-    tu.assert_str(ext.type_display_name, "Platform")
     tu.assert_int(ext.summary_fields, 2)
     tu.assert_str(ext.summary_fields[0], "IBM Power 6_Other")
     tu.assert_str(ext.summary_fields[1], "Machine IBM Power 6", True)

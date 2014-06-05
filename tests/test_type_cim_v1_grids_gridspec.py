@@ -18,6 +18,9 @@ import test_utils as tu
 # Test type.
 DOC_TYPE = cim.v1.GridSpec
 
+# Test type display name.
+DOC_TYPE_DISPLAY_NAME = "Grid Spec"
+
 # Test document type.
 DOC_TYPE_KEY = DOC_TYPE.type_key
 
@@ -55,7 +58,6 @@ def assert_extension_info(ext):
     tu.assert_str(ext.display_name, "UM N96L38 ATM Grid System")
     tu.assert_str(ext.description, "Met Office Unified Model", True)
     tu.assert_str(ext.full_display_name, "CMIP5 Grid Spec : MOHC - UM N96L38 ATM Grid System")
-    tu.assert_str(ext.type_display_name, "Grid Spec")
     tu.assert_int(ext.summary_fields, 2)
     tu.assert_str(ext.summary_fields[0], "UM N96L38 ATM Grid System")
     tu.assert_str(ext.summary_fields[1], "Met Office Unified Model", True)

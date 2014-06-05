@@ -29,10 +29,8 @@ def _set_type(ctx):
 
 def _set_type_display_info(ctx):
     """Sets document type display name."""
-    ctx.meta.type_display_name = \
-        ctx.ext.type_display_name = \
-            ctx.meta.type.split(".")[-1]
-    ctx.meta.type_sortkey = "ZZ"
+    ctx.meta.type_display_name = ctx.meta.type.split(".")[-1]
+    ctx.meta.type_sort_key = "ZZ"
 
 
 def _set_language(ctx):
