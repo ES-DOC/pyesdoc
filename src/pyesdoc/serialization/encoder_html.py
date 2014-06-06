@@ -148,6 +148,7 @@ class _TemplateInfo():
                  fieldset=[],
                  fieldset_type="namevalue",
                  tag_id=None,
+                 tag_css=None,
                  template=None,
                  previous=None,
                  depth=0):
@@ -161,6 +162,7 @@ class _TemplateInfo():
         self.fieldset = fieldset
         self.fieldset_type = fieldset_type
         self.previous = previous
+        self.tag_css = tag_css
         self.template = template
         self._set_tag_id(tag_id)
         self._set_dataset(data)

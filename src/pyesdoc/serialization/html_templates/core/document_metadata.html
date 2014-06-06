@@ -1,5 +1,5 @@
 {% set ctx = TemplateInfo(
-	data = doc, 
+	data = doc,
 	header = "Meta",
 	fieldset = [
 	    FieldInfo('ID', path='meta.id'),
@@ -11,7 +11,8 @@
 	    FieldInfo('Institute', path='meta.institute'),
 	    ],
 	tag_id = doc.ext.full_id + "-meta",
-	template = "fieldset_table.html" 
+	tag_css = "esdoc-document-meta",
+	template = "fieldset_table.html"
 ) %}
 
 {% for i, encoding in enumerate(doc.meta.encodings) %}

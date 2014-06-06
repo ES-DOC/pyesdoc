@@ -9,7 +9,7 @@
    :synopsis: Encpasulates meta-information pertaining to the cim.v1 typeset.
 
 .. moduleauthor:: Earth System Documentation (ES-DOC) <dev@es-doc.org>
-.. note:: Code generated using esdoc_mp @ 2014-06-04 15:28:18.852644.
+.. note:: Code generated using esdoc_mp @ 2014-06-06 13:55:48.249195.
 
 """
 # Module imports.

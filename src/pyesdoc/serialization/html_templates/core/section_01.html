@@ -2,12 +2,13 @@
 {% comment Emit doc section   %}
 {% comment ****************** %}
 {% if len(ctx.dataset) %}
-	<section id="{% raw '' if not ctx.tag_id else ctx.tag_id %}">	
+	<section id="{% raw '' if not ctx.tag_id else ctx.tag_id %}"
+			 class="{% raw '' if not ctx.tag_css else ctx.tag_css %}">
 		<header>
 		{% if ctx.depth == 0 %}
 			<h3>{{ ctx.header }}</h3>
 		{% elif ctx.depth == 1 %}
-			<h4>{{ ctx.header }}</h4>		
+			<h4>{{ ctx.header }}</h4>
 		{% elif ctx.depth == 2 %}
 			<h5>{{ ctx.header }}</h5>
 		{% end %}

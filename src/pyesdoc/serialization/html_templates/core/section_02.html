@@ -2,7 +2,8 @@
 {% comment Emit doc section   %}
 {% comment ****************** %}
 {% if len(ctx.dataset) %}
-	<section id="{% raw '' if not ctx.tag_id else ctx.tag_id %}">
+	<section id="{% raw '' if not ctx.tag_id else ctx.tag_id %}"
+			 class="{% raw '' if not ctx.tag_css else ctx.tag_css %}">
 		<header>
 		{% if ctx.depth == 0 %}
 			<h3>{{ ctx.header }}</h3>
