@@ -298,3 +298,20 @@ def log_error(err):
     """
     msg = "!!! RUNTIME ERROR !!! :: {0} :: {1}.".format(err.__class__, err)
     log(msg, level=LOG_LEVEL_ERROR)
+
+
+def invoke(ctx, actions, error_actions):
+    """Invokes a set of actions.
+
+    :param object ctx: Processing context information.
+    :param iterable actions: Set of actions to perform.
+    :param iterable error_actions: Set of error actions to perform.
+
+    """
+    try:
+        for action in actions:
+            action(ctx)
+    except Exception as exc:
+        ctx.error = exc
+        for action in error_actions:
+            action(ctx)

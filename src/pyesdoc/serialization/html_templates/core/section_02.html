@@ -13,26 +13,20 @@
 			<h5>{{ ctx.header }}</h5>
 		{% end %}
 		</header>
-
-		{% comment Enumerate dataset: %}
-		{% for item in ctx.dataset %}
-			{% set ctx.data = item %}
-
-			{% if ctx.template == "cim_1_grids_grid_mosaic.html" %}
+		{% for data in ctx.dataset %}
+			{% set ctx.data = data %}
+			{% if ctx.template == "fieldset_table.html" %}
+				{% include fieldset_table.html %}
+			{% elif ctx.template == "cim_1_grids_grid_mosaic.html" %}
 				{% include ../cim_1/grids_grid_mosaic.html %}
-
 			{% elif ctx.template == "cim_1_activity_numerical_requirement.html" %}
 				{% include ../cim_1/activity_numerical_requirement.html %}
-
 			{% elif ctx.template == "cim_1_activity_ensemble_member.html" %}
 				{% include ../cim_1/activity_ensemble_member.html %}
-
 			{% elif ctx.template == "cim_1_activity_simulation_input.html" %}
 				{% include ../cim_1/activity_simulation_input.html %}
-
 			{% elif ctx.template == "cim_1_activity_simulation_conformance.html" %}
 				{% include ../cim_1/activity_simulation_conformance.html %}
-
 			{% end %}
 		{% end %}
 

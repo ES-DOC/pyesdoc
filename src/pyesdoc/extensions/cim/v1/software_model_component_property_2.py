@@ -121,7 +121,7 @@ def set_standard_properties(c):
 
     """
     # Create property group.
-    p = _create_property(c._standard_properties,
+    p = _create_property(c.ext.standard_properties,
                          None,
                          'Standard Properties',
                          'Set of component standard properties')
@@ -142,7 +142,7 @@ def set_scientific_properties(c):
 
     """
     # Create property group.
-    p = _create_property(c._scientific_properties,
+    p = _create_property(c.ext.scientific_properties,
                          None,
                          'Scientific Properties',
                          'Set of component scientific properties')
@@ -167,7 +167,7 @@ def set_qc_properties(c):
 
     """
     # Create property group.
-    p = _create_property(c._qc_properties,
+    p = _create_property(c.ext.qc_properties,
                          None,
                          'QC Properties',
                          'Set of component quality control properties')

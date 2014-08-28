@@ -10,7 +10,7 @@
         {% if len(document_group_set[group_key]) == 1 %}
         {% set doc = document_group_set[group_key][0] %}
         <li class="esdoc-document-group-single">
-            <a href="#{{ doc.ext.full_id }}">{{ group_key[3:] }}</a>
+            <a class="esdoc-document-nav" href="#{{ doc.ext.full_id }}">{{ group_key[3:] }}</a>
         </li>
         {% else %}
         <li class="esdoc-document-group-multi">
@@ -20,7 +20,7 @@
             <ul>
                 {% for doc in document_group_set[group_key] %}
                 <li>
-                    <a href="#{{ doc.ext.full_id }}">{{ doc.ext.display_name }}</a>
+                    <a class="esdoc-document-nav" href="#{{ doc.ext.full_id }}">{{ doc.ext.display_name }}</a>
                 </li>
                 {% end %}
             </ul>

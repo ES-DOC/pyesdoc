@@ -1,5 +1,5 @@
 # Module imports.
-from . serializer import (
+from .serializer import (
     convert,
     decode,
     encode

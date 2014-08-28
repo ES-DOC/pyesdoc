@@ -124,7 +124,7 @@ def _convert_to_uid(xml, nsmap=None):
         try:
             return uuid.UUID(as_string)
         except ValueError:
-            print("ES-DOC :: WARNING :: UUID conversion failed, retrying with first 36 characters")
+            # Workaround for poorly encoded uuid's in cmip5 questionnaire
             return uuid.UUID(as_string[0:36])
 
 
@@ -222,14 +222,8 @@ def _set_attribute(target,
                    is_duplicate):
     """Decodes entity attribute from a decoding."""
     # Escape if xpath is unassigned.
-    if xpath is None or xpath == '':
+    if not xpath:
         return
-
-    # Format xpath when appropriate.
-    if is_simple_type == True and \
-       '@' not in xpath and \
-       xpath.endswith('/text()') == False:
-       xpath += '/text()'
 
     # Set target object / attribute.
     obj = target
@@ -238,40 +232,23 @@ def _set_attribute(target,
         obj = getattr(obj, parts[i])
     att_name = parts[len(parts) - 1]
 
-    # Get attribute value.
-    att_value = _get_attribute_value(xml, nsmap, decoder, xpath, is_simple_type, is_iterable)
+    # Get current attribute value.
+    cur_value = getattr(obj, att_name)
+
+    # Escape if processing a duplicate and the target is already assigned.
+    if is_duplicate and not is_iterable and cur_value is not None:
+        return
+
+    # Format xpath when appropriate.
+    if is_simple_type == True and \
+       '@' not in xpath and \
+       xpath.endswith('/text()') == False:
+       xpath += '/text()'
 
     # Set attribute value.
-    # ... simple types
-    if is_simple_type:
-        # ... iterables
-        if is_iterable:
-            collection = getattr(obj, att_name)
-            for i in att_value:
-                collection.append(i)
-        # ... non-iterables
-        else:
-            setattr(obj, att_name, att_value)
-
-    # ... complex types
-    else:
-        # ... iterables
-        if is_iterable:
-            collection = getattr(obj, att_name)
-            for i in att_value:
-                collection.append(i)
-        # ... non-iterables
-        else:
-            # ... do not overwrite previously assigned property values.
-            if is_duplicate:
-                cur_obj = getattr(obj, att_name)
-                if cur_obj is None:
-                    setattr(obj, att_name, att_value)
-            else:
-                setattr(obj, att_name, att_value)
-
-    # Support operation chaining.
-    return target
+    att_value = _get_attribute_value(xml, nsmap, decoder, xpath, is_simple_type, is_iterable)
+    setattr(obj, att_name,
+            att_value if not is_iterable else cur_value + att_value)
 
 
 def _get_attribute_value(xml, nsmap, decoder, xpath, is_simple_type, is_iterable):
@@ -280,6 +257,8 @@ def _get_attribute_value(xml, nsmap, decoder, xpath, is_simple_type, is_iterable
 
     # Apply xpath (derive xml fragment from value is derived).
     att_xml = xml.xpath(xpath, namespaces=nsmap)
+    if not att_xml:
+        return None if not is_iterable else []
 
     # From xml derive value.
     # ... simple types.

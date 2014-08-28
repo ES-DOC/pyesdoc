@@ -15,10 +15,10 @@ import uuid
 import requests
 
 from . import constants, options
-from . serialization import encode, decode
-from . extensions import extend
-from . utils import runtime as rt
-from . validation import is_valid
+from .serialization import encode, decode
+from .extensions import extend
+from .utils import runtime as rt
+from .validation import is_valid
 
 
 
@@ -192,7 +192,7 @@ def publish(doc):
         rt.throw("Cannot publish invalid documents.")
 
     # Increment version.
-    doc.meta.version += 1
+    doc.meta.version = doc.meta.version + 1
 
     # Set HTTP operation parameters.
     url = _get_api_url(_EP_PUBLISHING)

@@ -73,6 +73,19 @@ def test_imports_01():
     """Test importing packages - 1."""
     for mod in (
         pyesdoc,
+        pyesdoc.archive,
+        pyesdoc.archive.config,
+        pyesdoc.archive.io,
+        pyesdoc.archive.parsers,
+        pyesdoc.db,
+        pyesdoc.db.cache,
+        pyesdoc.db.dao,
+        pyesdoc.db.index,
+        pyesdoc.db.ingest,
+        pyesdoc.db.init,
+        pyesdoc.db.models,
+        pyesdoc.db.session,
+        pyesdoc.db.utils,
         pyesdoc.constants,
         pyesdoc.factory,
         pyesdoc.io,
@@ -181,7 +194,7 @@ def _test_set_option_02():
 
 
 def test():
-    """Runs set of geenral unit tests."""
+    """Runs set of general unit tests."""
     for mod in tt.MODULES:
         tu.init(_test_module_file_open, 'open document module test file', mod)
         yield _test_module_file_open, mod

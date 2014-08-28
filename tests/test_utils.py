@@ -12,9 +12,10 @@
 
 # Module imports.
 import datetime
-from os.path import dirname, abspath, join
+import os
 import random
 import uuid
+from os.path import dirname, abspath, join
 
 from nose.tools import nottest
 import dateutil.parser as dateutil_parser
@@ -456,6 +457,15 @@ def assert_float(actual, expected):
     assert actual == expected, \
            "Float mismatch : actual = {0} :: expected = {1}" \
            .format(actual, expected)
+
+
+def assert_path(actual):
+    """Asserts a filepath.
+
+    :param str actual: Actual file path.
+
+    """
+    assert_bool(os.path.exists(actual), True)
 
 
 def assert_int(actual, expected, assert_type=COMPARE_EXACT, msg=None):

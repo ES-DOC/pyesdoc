@@ -13,7 +13,7 @@
 from lxml import etree as et
 
 
-from . decoder_xml_utils import (
+from .decoder_xml_utils import (
     load_xml,
     decode_xml
     )

@@ -75,7 +75,7 @@ def decode(doc, encoding):
     # Decode.
     doc = _decoders[encoding].decode(doc)
 
-    # Set standard meta attributes.
+    # Set doument type key.
     if doc is not None:
         doc.meta.type == type(doc).type_key
 

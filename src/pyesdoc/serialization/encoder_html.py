@@ -38,7 +38,7 @@ _document_templates = {
     "cim.1.data.dataobject": _loader.load("cim_1/data_data_object.html"),
     "cim.1.grids.gridspec": _loader.load("cim_1/grids_grid_spec.html"),
     "cim.1.shared.platform": _loader.load("cim_1/shared_platform.html"),
-    "cim.1.software.modelcomponent": _loader.load("cim_1/software_model_component.html"),
+    "cim.1.software.modelcomponent": _loader.load("cim_1/software_model_component_1.html"),
     "cim.1.quality.cimquality": _loader.load("cim_1/quality_cimquality.html")
 }
 

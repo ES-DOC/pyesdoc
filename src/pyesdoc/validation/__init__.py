@@ -1,5 +1,5 @@
 # Module imports.
-from . validator import (
+from .validator import (
 	is_valid, 
 	validate
 	)

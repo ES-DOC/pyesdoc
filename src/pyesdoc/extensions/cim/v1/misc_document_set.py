@@ -7,33 +7,49 @@
 
 
 """
+def _extend_children(ctx):
+    """Extends child documents."""
+    # Note : JIT extension.
+    from ...extender import extend as extend_doc
+
+    children = []
+    # children = children + ctx.doc.data
+    children = children + ctx.doc.ensembles
+    children = children + ctx.doc.grids
+    children.append(ctx.doc.experiment)
+    children.append(ctx.doc.model)
+    children.append(ctx.doc.platform)
+    children.append(ctx.doc.simulation)
+
+    for child in children:
+        if not child.meta.institute:
+            child.meta.institute = ctx.doc.meta.institute
+        extend_doc(child)
+
+
 def _set_meta_info(ctx):
     """Sets document meta information."""
-    if ctx.doc.simulation:
-        ctx.meta.create_date = ctx.doc.simulation.meta.create_date
-        ctx.meta.id = ctx.doc.simulation.meta.id
-        ctx.meta.version = ctx.doc.simulation.meta.version
+    simulation = ctx.doc.simulation
+    if simulation:
+        ctx.meta.create_date = simulation.meta.create_date
+        ctx.meta.external_ids = simulation.meta.external_ids
+        ctx.meta.id = simulation.meta.id
+        ctx.meta.version = simulation.meta.version
+    ctx.meta.type_display_name = "Simulation"
+    ctx.meta.type_sort_key = "AC"
 
 
-def _set_display_name(ctx):
-    """Sets document display name."""
-    pass
+def _set_ext_info(ctx):
+    """Sets document extension information."""
+    simulation = ctx.doc.simulation
+    if simulation:
+        ctx.ext = ctx.doc.ext = simulation.ext
 
-
-def _set_type_display_info(ctx):
-    """Sets document type display name."""
-    pass
-
-
-def _set_summary_fields(ctx):
-    """Sets document summary fields."""
-    pass
 
 
 # Set of extension functions.
 EXTENDERS = (
+    _extend_children,
     _set_meta_info,
-    _set_display_name,
-    _set_type_display_info,
-    _set_summary_fields
+    _set_ext_info,
     )

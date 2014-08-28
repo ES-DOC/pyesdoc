@@ -70,12 +70,12 @@ def _set_full_display_name(ctx):
     """Sets document full display name."""
     name = ""
     if ctx.meta.project:
-        name += ctx.meta.project
+        name += ctx.meta.project.upper()
     name += " "
     name += ctx.meta.type_display_name
     name += " : "
     if ctx.meta.institute:
-        name += ctx.meta.institute
+        name += ctx.meta.institute.upper()
         name += " - "
     if ctx.ext.display_name:
         name += ctx.ext.display_name

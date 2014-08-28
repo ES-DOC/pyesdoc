@@ -11,7 +11,7 @@
 """
 # Module imports.
 from .. utils import runtime as rt
-from . graph import DocumentValidationGraph
+from .graph import DocumentValidationGraph
 
 
 

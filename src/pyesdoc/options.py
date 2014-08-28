@@ -35,11 +35,8 @@ def list():
 def set(name, value):
     """Sets a library option.
 
-    :param name: Option name.
-    :type name: str
-
-    :param value: Option value.
-    :type value: str
+    :param str name: Option name.
+    :param str value: Option value.
 
     """
     if name not in _OPTIONS:

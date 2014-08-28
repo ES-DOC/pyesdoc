@@ -12,8 +12,6 @@
 
 """
 # Module imports.
-from collections import namedtuple
-
 from . import cim, default
 from .. utils import runtime as rt
 from .. ontologies import get_types
@@ -29,11 +27,17 @@ _TYPES = get_types()
 # Supported extenders keyed by document type.
 SUPPORTED = {}
 for o in _ONTOLOGIES:
-    for d_type, d_extender in o.SUPPORTED.iteritems():
-        SUPPORTED[d_type] = d_extender
+    for doc_type, doc_extender in o.SUPPORTED.iteritems():
+        SUPPORTED[doc_type] = doc_extender
 
-# Document extension context information.
-_ExtensionContextInfo = namedtuple('ExtensionContextInfo', ['doc', 'meta', 'ext'])
+
+class _ExtensionContextInfo(object):
+    """Document extension context information."""
+    def __init__(self, doc, meta, ext):
+        """Constructor."""
+        self.doc = doc
+        self.meta = meta
+        self.ext = ext
 
 
 class DocumentExtensionInfo(object):

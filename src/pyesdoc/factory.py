@@ -14,7 +14,7 @@ import datetime
 import uuid
 
 from . import constants, ontologies
-from . utils import runtime as rt
+from .utils import runtime as rt
 
 
 

@@ -10,37 +10,37 @@
 
 """
 # Module imports.
-from . constants import *
-from . factory import (
+from .constants import *
+from .factory import (
     create
     )
-from . io import (
+from .io import (
     write,
     read,
     set_output_directory
     )
-from . ontologies import (
+from .ontologies import (
     associate,
     get_types,
     is_supported,
     list_types
     )
-from . options import (
+from .options import (
     set as set_option,
     get as get_option,
     list as list_options
     )
-from . extensions import (
+from .extensions import (
     extend,
     is_extendable
     )
-from . publishing import (
+from .publishing import (
     exists,
     publish,
     retrieve,
     unpublish
     )
-from . serialization import (
+from .serialization import (
     convert,
     decode,
     encode,
@@ -55,6 +55,8 @@ from .validation import (
     validate
     )
 
+from . import archive
+from . import db
 from . import ontologies
 from . import options
 from . import publishing
@@ -66,6 +68,7 @@ from . import validation
 # Module exports.
 __all__ = [
     'create',
+    'db',
     'decode',
     'encode',
     'ESDOC_DEFAULT_ENCODING',
