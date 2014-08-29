@@ -405,6 +405,8 @@ def set_doc_summary(doc, summary):
             summary.LongName = str(field)
         else:
             setattr(summary, 'Field_0' + str(i - 1), str(field))
+
+
 def write_doc_stats():
     """Writes document stats to file system.
 

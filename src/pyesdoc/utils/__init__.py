@@ -17,3 +17,5 @@ from . import (
     functional,
     runtime,
     )
+
+from .config import data as config

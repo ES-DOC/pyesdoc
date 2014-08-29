@@ -48,7 +48,8 @@ from .serialization import (
     )
 from .utils import (
     PYESDOC_Exception,
-    runtime as rt
+    runtime as rt,
+    config
     )
 from .validation import (
     is_valid,

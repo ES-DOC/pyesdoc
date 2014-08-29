@@ -14,7 +14,7 @@ from . import (
 	)
 from .config import get_project_sources
 from .io import (
-	yield_organized_documents, 
+	yield_organized_documents,
 	get
 	)
 
