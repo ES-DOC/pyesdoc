@@ -45,7 +45,7 @@ def execute():
     rt.log("DB INITIALIZATION BEGINS")
 
     for initializer in _INITIALIZERS:
-        rt.log("DB INITIALIZATION :: {0}".format(initializer.__name__))
+        rt.log("INITIALIZING DB TABLE :: {0}".format(initializer.__name__))
         initializer.execute()
 
     rt.log("DB INITIALIZATION ENDS")
