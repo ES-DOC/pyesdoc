@@ -54,8 +54,11 @@ ESDOC_DOC_VERSION_LATEST = 'latest'
 # All document versions label.
 ESDOC_DOC_VERSION_ALL = 'all'
 
-# Default language.
+# Default document language.
 ESDOC_DEFAULT_LANGUAGE = 'en'
 
-# Default encoding.
+# Default document encoding.
 ESDOC_DEFAULT_ENCODING = 'json'
+
+# Default document source.
+ESDOC_DEFAULT_SOURCE = 'Unknown'

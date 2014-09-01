@@ -76,11 +76,10 @@ def _set_standard_properties_pi(c, p_tree):
                          pi.individual_name,
                          'PI Name',
                          'PI Name')
-        if pi.contact_info:
-            _create_property(p_tree,
-                             pi.contact_info.email,
-                             'PI Email Address',
-                             'PI Email Address')
+        _create_property(p_tree,
+                         pi.email,
+                         'PI Email Address',
+                         'PI Email Address')
 
 
 def _set_standard_properties_citations(c, p_tree):

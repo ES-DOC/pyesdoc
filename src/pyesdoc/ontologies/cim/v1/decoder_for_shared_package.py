@@ -9,7 +9,7 @@
    :synopsis: A set of cim 1 decoders.
 
 .. moduleauthor:: Earth System Documentation (ES-DOC) <dev@es-doc.org>
-.. note:: Code generated using esdoc_mp @ 2014-07-02 15:21:17.281373.
+.. note:: Code generated using esdoc_mp @ 2014-09-01 11:51:33.796800.
 
 """
 
@@ -559,35 +559,15 @@ def decode_responsible_party(xml, nsmap):
     """
     decodings = [
         ('abbreviation', False, 'str', 'child::cim:abbreviation'),
-        ('contact_info', False, decode_responsible_party_contact_info, 'child::gmd:contactInfo/gmd:CI_Contact'),
+        ('address', False, 'str', 'child::gmd:contactInfo/gmd:CI_Contact/gmd:address/gmd:CI_Address/gmd:deliveryPoint/gco:CharacterString'),
+        ('email', False, 'str', 'child::gmd:contactInfo/gmd:CI_Contact/gmd:address/gmd:CI_Address/gmd:electronicMailAddress/gco:CharacterString'),
         ('individual_name', False, 'str', 'child::gmd:individualName/gco:CharacterString'),
         ('organisation_name', False, 'str', 'child::gmd:organisationName/gco:CharacterString'),
         ('role', False, 'str', 'gmd:role/gmd:CI_RoleCode/@codeListValue'),
+        ('url', False, 'str', 'child::gmd:contactInfo/gmd:CI_Contact/gmd:onlineResource/gmd:CI_OnlineResource/gmd:linkage/gmd:URL'),
     ]
 
     return set_attributes(typeset.shared.ResponsibleParty(), xml, nsmap, decodings)
-
-
-def decode_responsible_party_contact_info(xml, nsmap):
-    """Decodes an instance of the following type: responsible party contact info.
-
-    :param xml: XML from which type is to be decoded.
-    :type xml: lxml.etree
-
-    :param nsmap: XML namespace mappings.
-    :type nsmap: dict
-
-    :returns: A decoded type instance.
-    :rtype: cim.v1.typeset.shared.ResponsiblePartyContactInfo
-
-    """
-    decodings = [
-        ('address', False, 'str', 'child::gmd:address/gmd:CI_Address/gmd:deliveryPoint/gco:CharacterString'),
-        ('email', False, 'str', 'child::gmd:address/gmd:CI_Address/gmd:electronicMailAddress/gco:CharacterString'),
-        ('url', False, 'str', 'child::gmd:onlineResource/gmd:CI_OnlineResource/gmd:linkage/gmd:URL'),
-    ]
-
-    return set_attributes(typeset.shared.ResponsiblePartyContactInfo(), xml, nsmap, decodings)
 
 
 def decode_standard(xml, nsmap):

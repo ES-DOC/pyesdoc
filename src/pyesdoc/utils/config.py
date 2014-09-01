@@ -24,9 +24,18 @@ _CONFIG_FILENAME = '.esdoc'
 # Config file path.
 _CONFIG_FILEPATH = "{0}/{1}".format(os.environ['HOME'], _CONFIG_FILENAME)
 
-# Exception if config file not found.
+# Search parent directories if config file not found in user's home directory.
 if not os.path.exists(_CONFIG_FILEPATH):
-    raise IOError("ESDOC configuration file [$HOME/.esdoc] not found.")
+	dirname = os.path.dirname(os.path.abspath(__file__))
+	for _ in range(3):
+		_CONFIG_FILEPATH = "{0}/{1}".format(dirname, _CONFIG_FILENAME)
+		if os.path.exists(_CONFIG_FILEPATH):
+			break
+		dirname = os.path.dirname(dirname)
+
+# Exception if still not found.
+if not os.path.exists(_CONFIG_FILEPATH):
+    raise IOError("ESDOC configuration file [.esdoc] not found.")
 
 # Config data wrapper.
 data = json_file_to_namedtuple(_CONFIG_FILEPATH)

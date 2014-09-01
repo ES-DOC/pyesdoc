@@ -9,7 +9,7 @@
    :synopsis: The set of types of the cim.v1.shared package.
 
 .. moduleauthor:: Earth System Documentation (ES-DOC) <dev@es-doc.org>
-.. note:: Code generated using esdoc_mp @ 2014-07-02 15:21:17.301910.
+.. note:: Code generated using esdoc_mp @ 2014-09-01 11:51:33.817642.
 
 """
 # Module imports.
@@ -346,26 +346,11 @@ class ResponsibleParty(object):
         super(ResponsibleParty, self).__init__()
 
         self.abbreviation = None                          # str
-        self.contact_info = None                          # shared.ResponsiblePartyContactInfo
+        self.address = None                               # str
+        self.email = None                                 # str
         self.individual_name = None                       # str
         self.organisation_name = None                     # str
         self.role = None                                  # str
-
-
-class ResponsiblePartyContactInfo(object):
-    """A concrete class within the cim v1 type system.
-
-    Maps gmd:contactInfo element.
-
-    """
-    def __init__(self):
-        """Constructor.
-
-        """
-        super(ResponsiblePartyContactInfo, self).__init__()
-
-        self.address = None                               # str
-        self.email = None                                 # str
         self.url = None                                   # str
 
 

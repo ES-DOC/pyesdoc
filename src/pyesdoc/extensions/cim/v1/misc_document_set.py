@@ -44,7 +44,7 @@ def _set_ext_info(ctx):
     simulation = ctx.doc.simulation
     if simulation:
         ctx.ext = ctx.doc.ext = simulation.ext
-
+        ctx.ext.type = ctx.meta.type
 
 
 # Set of extension functions.

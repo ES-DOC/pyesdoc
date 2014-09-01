@@ -9,7 +9,7 @@
    :synopsis: Encpasulates meta-information pertaining to the cim.v1 typeset.
 
 .. moduleauthor:: Earth System Documentation (ES-DOC) <dev@es-doc.org>
-.. note:: Code generated using esdoc_mp @ 2014-07-02 15:21:17.291027.
+.. note:: Code generated using esdoc_mp @ 2014-09-01 11:51:33.806904.
 
 """
 # Module imports.
@@ -103,7 +103,6 @@ shared.Property.type_key = 'cim.1.shared.Property'
 shared.RealCalendar.type_key = 'cim.1.shared.RealCalendar'
 shared.Relationship.type_key = 'cim.1.shared.Relationship'
 shared.ResponsibleParty.type_key = 'cim.1.shared.ResponsibleParty'
-shared.ResponsiblePartyContactInfo.type_key = 'cim.1.shared.ResponsiblePartyContactInfo'
 shared.Standard.type_key = 'cim.1.shared.Standard'
 shared.StandardName.type_key = 'cim.1.shared.StandardName'
 software.Component.type_key = 'cim.1.software.Component'
@@ -594,7 +593,7 @@ shared.DocMetaInfo.type_info = (
     ('metadata_version', str, False, False),
     ('project', str, True, False),
     ('source', str, True, False),
-    ('source_key', str, True, False),
+    ('source_key', str, False, False),
     ('status', str, False, False),
     ('type', str, True, False),
     ('type_display_name', str, False, False),
@@ -681,15 +680,11 @@ shared.Relationship.type_info = (
 
 shared.ResponsibleParty.type_info = (
     ('abbreviation', str, False, False),
-    ('contact_info', shared.ResponsiblePartyContactInfo, False, False),
+    ('address', str, False, False),
+    ('email', str, False, False),
     ('individual_name', str, False, False),
     ('organisation_name', str, False, False),
     ('role', str, False, False),
-)
-
-shared.ResponsiblePartyContactInfo.type_info = (
-    ('address', str, False, False),
-    ('email', str, False, False),
     ('url', str, False, False),
 )
 

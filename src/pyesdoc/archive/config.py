@@ -14,26 +14,16 @@
 # Module imports.
 import os
 
-from ..utils import convert as convertor
+from ..utils import config
 
 
-
-# Configuration file name.
-_CONFIG_FILENAME = "config.json"
-
-# Configuration file path.
-_CONFIG_FILEPATH = os.path.dirname(os.path.abspath(__file__))
-_CONFIG_FILEPATH = os.path.join(_CONFIG_FILEPATH, _CONFIG_FILENAME)
-
-# Configuration file info.
-_cfg = convertor.json_file_to_namedtuple(_CONFIG_FILEPATH)
 
 # Default archive location.
 _DEFAULT_ARCHIVE_LOCATION = "./documents"
 
 # Archive root directory.
-if _cfg.location != _DEFAULT_ARCHIVE_LOCATION:
-    DIR_ARCHIVE = _cfg.location
+if config.archive.location != _DEFAULT_ARCHIVE_LOCATION:
+    DIR_ARCHIVE = config.archive.location
 else:
     DIR_ARCHIVE = os.path.dirname(os.path.abspath(__file__))
     DIR_ARCHIVE = os.path.join(DIR_ARCHIVE, "documents")
@@ -42,16 +32,16 @@ if not os.path.exists(DIR_ARCHIVE):
 
 
 # Set of supported projects.
-projects = _cfg.projects
+projects = config.archive.projects
 
 # Set of supported sources.
-sources = _cfg.sources
+sources = config.archive.sources
 
 
 def get_project_sources():
     """Returns iterable of unique project/source pairs."""
     result = []
-    for project in _cfg.projects:
+    for project in projects:
         for source in (f.source for f in project.feeds):
             if (project.name, source) not in result:
                 result.append((project.name, source))

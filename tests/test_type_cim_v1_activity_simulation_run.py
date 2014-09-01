@@ -287,7 +287,7 @@ def assert_doc1(doc, meta, ext):
     assert len(doc.responsible_parties) == 4
     rp = doc.responsible_parties[0]
     assert rp.abbreviation == 'Mark Webb'
-    assert rp.contact_info.email == 'mark.webb@metoffice.gov.uk'
+    assert rp.email == 'mark.webb@metoffice.gov.uk'
     assert rp.individual_name == 'Mark Webb'
     assert rp.role == 'contact'
 

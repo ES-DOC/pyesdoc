@@ -5,9 +5,9 @@
 	    FieldInfo('Role', path='role', formatter=unicode.upper),
 	    FieldInfo('Person', path='individual_name'),
 	    FieldInfo('Organisation', path='organisation_name'),
-	    FieldInfo('Address', path='contact_info.address'),
-	    FieldInfo('Email', path='contact_info.email', email_path='contact_info.email'),
-	    FieldInfo('URL', path='contact_info.url', link_path='contact_info.url')
+	    FieldInfo('Address', path='address'),
+	    FieldInfo('Email', path='email', email_path='email'),
+	    FieldInfo('URL', path='url', link_path='url')
     ],
 ) %}
 {% include ../core/fieldset_table.html %}

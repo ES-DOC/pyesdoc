@@ -50,7 +50,7 @@ def create(typeof,
     rt.assert_var('institute', institute, str)
     rt.assert_var('project', project, str)
     rt.assert_var('language', language, str)
-    if source is not None:
+    if source:
         rt.assert_var('source', source, str)
 
     # Format params.

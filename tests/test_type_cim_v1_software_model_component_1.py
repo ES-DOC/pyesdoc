@@ -107,11 +107,11 @@ def _assert_doc_responsible_parties(doc, is_update):
 
     rp = doc.responsible_parties[0]
     tu.assert_str(rp.abbreviation, "Chris Jones")
-    tu.assert_str(rp.contact_info.address, "Met Office Hadley Centre", True)
-    tu.assert_str(rp.contact_info.email, "chris.jones@metoffice.gov.uk")
-    tu.assert_str(rp.contact_info.url, r"http://www.metoffice.gov.uk/research/our-scientists/climate-chemistry-ecosystems/chris-jones", True)
+    tu.assert_str(rp.address, "Met Office Hadley Centre", True)
+    tu.assert_str(rp.email, "chris.jones@metoffice.gov.uk")
     tu.assert_str(rp.individual_name, "Chris Jones")
     tu.assert_str(rp.role, "PI")
+    tu.assert_str(rp.url, r"http://www.metoffice.gov.uk/research/our-scientists/climate-chemistry-ecosystems/chris-jones", True)
 
     rp = doc.responsible_parties[1]
     tu.assert_str(rp.organisation_name, "UK Met Office Hadley Centre")
