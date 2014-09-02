@@ -281,7 +281,7 @@ def log(msg=None, level=LOG_LEVEL_INFO):
     """
     # Format.
     if msg:
-        msg = "\nES-DOC :: pyesdoc :: {0} > {1}".format(level, str(msg).strip())
+        msg = "ES-DOC :: pyesdoc :: {0} > {1}".format(level, str(msg).strip())
     else:
         msg = '-----------------------------------------'
         msg += msg
@@ -298,6 +298,15 @@ def log_error(err):
     """
     msg = "!!! RUNTIME ERROR !!! :: {0} :: {1}.".format(err.__class__, err)
     log(msg, level=LOG_LEVEL_ERROR)
+
+
+def log_warning(msg):
+    """Logs a runtime warning.
+
+    :param str msg: Message for writing to log.
+
+    """
+    log(msg, level=LOG_LEVEL_WARNING)
 
 
 def invoke(ctx, actions, error_actions):
