@@ -39,7 +39,7 @@ def execute(ctx):
     try:
         session.insert(idx)
     except sqlalchemy.exc.IntegrityError:
-        ctx.stop()
         session.rollback()
-    finally:
+        raise ValueError("Document already ingested")
+    else:
         ctx.primary = idx

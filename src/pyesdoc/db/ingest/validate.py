@@ -24,7 +24,7 @@ def _validate_id(ctx):
     """Validates document id."""
     # Is mandatory.
     if not ctx.doc.meta.id:
-        ctx.stop("ID is mandatory")
+        raise ValueError("Document ID is mandatory")
 
     # Is a UUID.
     if not type(ctx.doc.meta.id) == uuid.UUID:
@@ -33,37 +33,37 @@ def _validate_id(ctx):
         except (ValueError, TypeError):
             msg = "ID must be a universally unique identifer (UUID): {0}"
             msg = msg.format(ctx.doc)
-            ctx.stop(msg)
+            raise ValueError(msg)
 
 
 def _validate_version(ctx):
     """Validates document version."""
     # Is mandatory.
     if not ctx.doc.meta.version:
-        ctx.stop("Version is mandatory: {0}".format(type(ctx.doc)))
+        raise ValueError("Document version is mandatory")
 
     # Is an integer.
     if not type(ctx.doc.meta.version) == int:
         try:
             ctx.doc.meta.version = int(ctx.doc.meta.version)
         except TypeError:
-            ctx.stop("Version must be an integer")
+            raise ValueError("Document version must be a positive integer")
 
     # Is a positive integer.
     if not ctx.doc.meta.version > 0:
-        ctx.stop("Version must be a positive integer")
+        raise ValueError("Document version must be a positive integer")
 
 
 def _validate_project(ctx):
     """Validates project code."""
     # Is mandatory.
     if not ctx.doc.meta.project:
-        ctx.stop("Project code is mandatory")
+        raise ValueError("Document project code is mandatory")
 
     # Is controlled vocabulary.
     if not cache.get_project(ctx.doc.meta.project):
         err = "Project code is unsupported: {0}"
-        ctx.stop(err.format(ctx.doc.meta.project))
+        raise ValueError(err.format(ctx.doc.meta.project))
 
 
 def _validate_institute(ctx):
@@ -71,21 +71,21 @@ def _validate_institute(ctx):
     # Is sometimes mandatory.
     if not ctx.doc.meta.institute:
         if type(ctx.doc) not in _INSTITUTE_VALIDATION_EXCEPIONS:
-            ctx.stop("Institute code is mandatory")
+            raise ValueError("Institute code is mandatory")
         else:
             return
 
     # Is controlled vocabulary.
     if not cache.get_institute(ctx.doc.meta.institute):
         err = "Institute code is unsupported: {0}"
-        ctx.stop(err.format(ctx.doc.meta.institute))
+        raise ValueError(err.format(ctx.doc.meta.institute))
 
 
 def _validate_name(ctx):
     """Validates name."""
     # Is mandatory.
     if not ctx.doc.ext.display_name:
-        ctx.stop("Name is mandatory")
+        raise ValueError("Document name is mandatory")
 
 
 # Set of validators to apply.

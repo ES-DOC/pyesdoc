@@ -57,6 +57,8 @@ __all__ = [
     'get_document_type_count',
     'get_documents_by_external_id',
     'get_project_document_type_counts',
+    'get_summary_eperiment_set',
+    'get_summary_model_set',
 ]
 
 
@@ -352,23 +354,16 @@ def get_document_summaries(
     type,
     version,
     language_id,
-    institute_id=None):
+    institute_id=None,
+    model=None,
+    experiment=None):
     """Returns a list of DocumentSummary instance with matching criteria.
 
-    :param project_id: ID of a Project instance.
-    :type project_id: int
-
-    :param type: Document type.
-    :type type: str
-
-    :param version: Document version (latest | all).
-    :type version: str
-
-    :param language_id: ID of a DocumentLanguage instance.
-    :type language_id: int
-
-    :param institute_id: ID of an Institute instance.
-    :type institute_id: int
+    :param int project_id: ID of a Project instance.
+    :param str type: Document type.
+    :param str version: Document version (latest | all).
+    :param int language_id: ID of a DocumentLanguage instance.
+    :param int institute_id: ID of an Institute instance.
 
     :returns: First DocumentSummary instance with matching document & language.
     :rtype: db.models.DocumentSummary
@@ -377,19 +372,27 @@ def get_document_summaries(
     # Format params.
     version = version.lower()
     type = type.upper()
+    if model:
+        model = model.upper()
+    if experiment:
+        experiment = experiment.upper()
 
     # Set query.
     q = session.query(DocumentSummary).join(Document)
 
-    # Set params.
+    # Set mandatory params.
     q = q.filter(Document.Project_ID==project_id)
     q = q.filter(DocumentSummary.Language_ID==language_id)
-    if institute_id is not None:
-        q = q.filter(Document.Institute_ID==institute_id)
     if type != models.DOCUMENT_TYPE_ALL:
         q = q.filter(sa.func.upper(Document.Type)==type)
     if version == models.DOCUMENT_VERSION_LATEST:
         q = q.filter(Document.IsLatest==True)
+    if experiment is not None:
+        q = q.filter(sa.func.upper(DocumentSummary.Experiment)==experiment)
+    if institute_id is not None:
+        q = q.filter(Document.Institute_ID==institute_id)
+    if model is not None:
+        q = q.filter(sa.func.upper(DocumentSummary.Model)==model)
 
     # Apply query limit.
     q = q.limit(session.QUERY_LIMIT)
@@ -550,3 +553,23 @@ def get_doc_descriptions(project_id, language_id, type):
     q = q.filter(DocumentSummary.Language_ID==language_id)
 
     return q.all()
+
+
+def _get_summary_fieldset(field):
+    """Returns set of unique document summary field values."""
+    q = session.query(Document.Project_ID, field)
+    q = q.join(DocumentSummary)
+    q = q.filter(field!='None')
+    q = q.distinct()
+
+    return q.all()
+
+
+def get_summary_model_set():
+    """Returns set of unique document summary model names."""
+    return _get_summary_fieldset(DocumentSummary.Model)
+
+
+def get_summary_eperiment_set():
+    """Returns set of unique document summary experiment names."""
+    return _get_summary_fieldset(DocumentSummary.Experiment)

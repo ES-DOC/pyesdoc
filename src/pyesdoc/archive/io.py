@@ -21,11 +21,14 @@ from ..extensions import extend as extend_doc
 
 
 
-# Raw sub-directory.
-DIR_RAW = "raw"
+# Ingested sub-directory.
+DIR_INGESTED = "ingested"
 
-# Raw error sub-directory.
-DIR_RAW_ERROR = "raw_error"
+# Ingest error sub-directory.
+DIR_INGESTED_ERROR = "ingested_error"
+
+# Organized sub-directory.
+DIR_ORGANIZED = "organized"
 
 # Parsed sub-directory.
 DIR_PARSED = "parsed"
@@ -33,15 +36,16 @@ DIR_PARSED = "parsed"
 # Parsed error sub-directory.
 DIR_PARSED_ERROR = "parsed_error"
 
-# Organized sub-directory.
-DIR_ORGANIZED = "organized"
+# Raw sub-directory.
+DIR_RAW = "raw"
 
-# Ingest error sub-directory.
-DIR_INGEST_ERROR = "ingest_error"
+# Raw error sub-directory.
+DIR_RAW_ERROR = "raw_error"
 
 # Set of sub-directories.
 SUB_DIRECTORIES = {
-    DIR_INGEST_ERROR,
+    DIR_INGESTED,
+    DIR_INGESTED_ERROR,
     DIR_ORGANIZED,
     DIR_PARSED,
     DIR_PARSED_ERROR,
@@ -147,6 +151,22 @@ def yield_organized_documents(type_filter=None):
             doc_dir = os.path.join(doc_dir, "*.json")
             for doc_fpath in glob.iglob(doc_dir):
                 yield extend_doc(read_doc(doc_fpath))
+
+
+def yield_ingestable_documents():
+    """Yields ingestable documents.
+
+    :rtype: generator
+
+    """
+    for organized_dir in yield_doc_dir(DIR_ORGANIZED):
+        for doc_type in os.listdir(organized_dir):
+            dirpath = os.path.join(organized_dir, doc_type)
+            dirpath = os.path.join(dirpath, "*.json")
+            for fpath in glob.iglob(dirpath):
+                fpath_ingested = fpath.replace(DIR_ORGANIZED, DIR_INGESTED)
+                if not os.path.exists(fpath_ingested):
+                    yield extend_doc(read_doc(fpath)), fpath, fpath_ingested
 
 
 def get_documents(sub_dir):

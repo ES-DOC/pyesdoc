@@ -18,15 +18,8 @@ from ..utils import config
 
 
 
-# Default archive location.
-_DEFAULT_ARCHIVE_LOCATION = "./documents"
-
-# Archive root directory.
-if config.archive.location != _DEFAULT_ARCHIVE_LOCATION:
-    DIR_ARCHIVE = config.archive.location
-else:
-    DIR_ARCHIVE = os.path.dirname(os.path.abspath(__file__))
-    DIR_ARCHIVE = os.path.join(DIR_ARCHIVE, "documents")
+# Archive location comes from config.
+DIR_ARCHIVE = config.archive.location
 if not os.path.exists(DIR_ARCHIVE):
     raise IOError("Archive directory does not exist: {0}".format(DIR_ARCHIVE))
 

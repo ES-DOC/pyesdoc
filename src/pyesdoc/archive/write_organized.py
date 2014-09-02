@@ -132,7 +132,7 @@ def _write_error(ctx):
             output.write(u"\tPROJECT = {0};\n".format(ctx.project))
             output.write(u"\tSOURCE = {0};\n".format(ctx.source))
             output.write(u"\tFILEPATH = {0};\n".format(ctx.fpath))
-            output.write(u"\tERROR = {0}.".format(unicode(ctx.error)))
+            output.write(u"\tERROR = {0};\n".format(unicode(ctx.error)))
             output.write(u"\tERROR TYPE = {0}.".format(type(ctx.error)))
     except IOError:
         rt.log("Document processing error handling failed.")

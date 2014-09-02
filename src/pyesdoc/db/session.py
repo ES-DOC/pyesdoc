@@ -105,6 +105,24 @@ def do_ingest():
     ingest.execute()
 
 
+def create(connection):
+    """Creates a repo session.
+
+    :param str connection: Repoistory connection string.
+
+    """
+    # Set engine.
+    sa_engine = create_engine(unicode(connection), echo=False)
+
+    # Set session.
+    sa_session = sessionmaker(bind=sa_engine)()
+
+    # Setup ORM binding.
+    models.metadata.bind = sa_engine
+
+    return sa_session
+
+
 def start(connection=None):
     """Starts a repo session.
 
