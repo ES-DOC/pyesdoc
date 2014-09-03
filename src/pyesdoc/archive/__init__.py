@@ -10,7 +10,7 @@
 # Module imports.
 from .write_organized import execute as organize
 from .write_parsed import execute as parse
-from .write_pulled import execute as seed
+from .write_pulled import execute as populate
 from .config import get_project_sources
 from .io import (
 	yield_ingestable_documents,
