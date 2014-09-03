@@ -9,6 +9,10 @@
 
 
 """
+from ...exceptions import ObsoleteDocumentException
+
+
+
 # CIM v1.4 schema .
 CIM_V1_4 = 'http://www.metaforclimate.eu/cim/1.4"'
 
@@ -22,7 +26,7 @@ CIM_V1_SCHEMA = 'http://www.purl.org/org/esmetadata/cim/1.5/schemas'
 def _reject_obsolete(content):
     """Rejects obsolete documents."""
     if content.find(CIM_V1_4) != -1:
-        raise ValueError("WARNING :: obsolete document (cim schema = 1.4)")
+        raise ObsoleteDocumentException("cim schema = 1.4")
 
 
 def _correct_schema_reference(content):

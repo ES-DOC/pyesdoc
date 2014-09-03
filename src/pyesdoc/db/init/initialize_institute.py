@@ -23,6 +23,13 @@ def execute():
     """
     # BADC.
     i = models.Institute()
+    i.Name = "--"
+    i.LongName = "Placeholder for scenario when an institute is undefined"
+    i.CountryCode = "--"
+    session.insert(i)
+
+    # BADC.
+    i = models.Institute()
     i.Name = "BADC"
     i.LongName = "British Atmospheric Data Centre"
     i.CountryCode = "UK"
@@ -68,7 +75,6 @@ def execute():
     i.CountryCode = "CA"
     i.URL = "http://www.ec.gc.ca/ccmac-cccma/"
     session.insert(i)
-
 
     # RSMAS.
     i = models.Institute()

@@ -22,7 +22,7 @@ _PARSERS = {
     "cmip5": {
         "metafor-q": cmip5_metafor_q.PARSERS
     },
-    "esdoc-q": esdoc_q.PARSERS,
+    "esdoc-q": esdoc_q.PARSERS
 }
 
 

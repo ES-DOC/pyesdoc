@@ -12,7 +12,8 @@
 # Module imports.
 from . import (
     doc_parser_cmip5_dkrz_qc as cmip5_dkrz_qc,
-    doc_parser_cmip5_metafor_q as cmip5_metafor_q
+    doc_parser_cmip5_metafor_q as cmip5_metafor_q,
+    doc_parser_esdoc_q as esdoc_q
     )
 from .. import io
 
@@ -23,7 +24,8 @@ _PARSERS = {
     "cmip5": {
         "dkrz-qc": cmip5_dkrz_qc.PARSERS,
         "metafor-q": cmip5_metafor_q.PARSERS
-    }
+    },
+    "esdoc-q": esdoc_q.PARSERS
 }
 
 
