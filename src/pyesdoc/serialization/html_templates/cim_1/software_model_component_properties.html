@@ -1,19 +1,27 @@
 <section id="{{ doc.ext.full_id }}-details-properties">
 	<header>
-		<h4>Properties ({{ len(doc.ext.scientific_property_tree) }})</h4>
+		<h3>Properties</h3>
 	</header>
 
-	{% set ctx = TemplateInfo(doc, fieldset_type="property") %}
-	{% for p in doc.ext.scientific_property_tree %}
-		{% set p_display_name = p.ext.display_name.replace("Scientific Properties > ", "") %}
-		{% for v in sorted(p.values) %}
-			{% set ctx.fieldset = ctx.fieldset + [FieldInfo(p_display_name, value=v)] %}
+	{% comment ************************* %}
+	{% comment scientific properties     %}
+	{% comment ************************* %}
+	<section>
+		<header>
+			<h4>Scientific Properties ({{ len(doc.ext.scientific_property_tree) }})</h4>
+		</header>
+		{% set ctx = TemplateInfo(doc, fieldset_type="property") %}
+		{% for p in doc.ext.scientific_property_tree %}
+			{% set p_display_name = p.ext.display_name.replace("Scientific Properties > ", "") %}
+			{% for v in sorted(p.values) %}
+				{% set ctx.fieldset = ctx.fieldset + [FieldInfo(p_display_name, value=v)] %}
+			{% end %}
 		{% end %}
-	{% end %}
-	<table>
-		<tbody>
-		{% include ../core/fieldset.html %}
-		</tbody>
-	</table>
+		<table>
+			<tbody>
+			{% include ../core/fieldset.html %}
+			</tbody>
+		</table>
+	</section>
 
 </section>

@@ -4,14 +4,17 @@
 {% comment Emit navigation     %}
 {% comment ******************* %}
 {% block doc-nav %}
-{% if doc.ext.component_tree %}
 <nav>
     <ul>
 	    <li><a href="#{{ doc.ext.full_id }}-details">Details</a></li>
+		{% if doc.ext.scientific_property_tree[0].sub_properties %}
+		    <li><a href="#{{ doc.ext.full_id }}-details-properties">Properties</a></li>
+	    {% end %}
+    	{% if doc.ext.component_tree %}
 	    <li><a href="#{{ doc.ext.full_id }}-components">Components</a></li>
+		{% end %}
     </ul>
 </nav>
-{% end %}
 {% end %}
 
 {% comment ***************** %}
@@ -20,6 +23,9 @@
 {% block doc-content %}
 
 	{% include software_model_component_details.html %}
+	{% if doc.ext.scientific_property_tree[0].sub_properties %}
+		{% include software_model_component_properties.html %}
+    {% end %}
 	{% if doc.ext.component_tree %}
 		{% include software_model_component_hierarchy.html %}
     {% end %}
