@@ -9,7 +9,7 @@
    :synopsis: A set of cim 1 decoders.
 
 .. moduleauthor:: Earth System Documentation (ES-DOC) <dev@es-doc.org>
-.. note:: Code generated using esdoc_mp @ 2014-09-01 11:51:33.789463.
+.. note:: Code generated using esdoc_mp @ 2014-10-01 15:17:56.359135.
 
 """
 
@@ -418,6 +418,11 @@ def decode_numerical_experiment(xml, nsmap):
         ('meta', False, decode_doc_meta_info, 'self::cim:numericalExperiment'),
         ('projects', True, 'str', 'child::cim:project/@value'),
         ('rationales', True, 'str', 'child::cim:rationale'),
+        ('requirements', True, decode_initial_condition, 'child::cim:numericalRequirement[@xsi:type="InitialCondition"]'),
+        ('requirements', True, decode_boundary_condition, 'child::cim:numericalRequirement[@xsi:type="BoundaryCondition"]'),
+        ('requirements', True, decode_lateral_boundary_condition, 'child::cim:numericalRequirement[@xsi:type="LateralBoundaryCondition"]'),
+        ('requirements', True, decode_spatio_temporal_constraint, 'child::cim:numericalRequirement[@xsi:type="SpatioTemporalConstraint"]'),
+        ('requirements', True, decode_output_requirement, 'child::cim:numericalRequirement[@xsi:type="OutputRequirement"]'),
         ('requirements', True, decode_initial_condition, 'child::cim:numericalRequirement/cim:initialCondition'),
         ('requirements', True, decode_boundary_condition, 'child::cim:numericalRequirement/cim:boundaryCondition'),
         ('requirements', True, decode_lateral_boundary_condition, 'child::cim:numericalRequirement/cim:lateralBoundaryCondition'),

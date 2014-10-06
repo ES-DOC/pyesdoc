@@ -7,6 +7,15 @@
 
 
 """
+def get_extenders():
+    """Returns set of extension functions."""
+    return (
+        _set_display_name,
+        _set_type_display_info,
+        _set_summary_fields
+        )
+
+
 def _set_display_name(ctx):
     """Sets document display name."""
     ctx.ext.display_name = ctx.doc.acronym
@@ -26,9 +35,3 @@ def _set_summary_fields(ctx):
     )
 
 
-# Set of extension functions.
-EXTENDERS = (
-    _set_display_name,
-    _set_type_display_info,
-    _set_summary_fields
-    )

@@ -245,8 +245,12 @@ def _set_attribute(target,
        xpath.endswith('/text()') == False:
        xpath += '/text()'
 
-    # Set attribute value.
+    # Get attribute value.
     att_value = _get_attribute_value(xml, nsmap, decoder, xpath, is_simple_type, is_iterable)
+    if is_iterable and isinstance(att_value, list):
+        att_value = [v for v in att_value if v]
+
+    # Set attribute value.
     setattr(obj, att_name,
             att_value if not is_iterable else cur_value + att_value)
 

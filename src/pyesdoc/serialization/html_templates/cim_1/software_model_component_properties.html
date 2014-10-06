@@ -1,0 +1,19 @@
+<section id="{{ doc.ext.full_id }}-properties">
+	<header>
+		<h3>Properties ({{ len(doc.ext.scientific_property_tree) }})</h3>
+	</header>
+
+	{% set ctx = TemplateInfo(doc, fieldset_type="property") %}
+	{% for p in doc.ext.scientific_property_tree %}
+		{% set p_display_name = p.ext.display_name.replace("Scientific Properties > ", "") %}
+		{% for v in sorted(p.values) %}
+			{% raw ctx.fieldset.append(FieldInfo(p_display_name, value=v)) or "" %}
+		{% end %}
+	{% end %}
+	<table>
+		<tbody>
+		{% include ../core/fieldset.html %}
+		</tbody>
+	</table>
+
+</section>

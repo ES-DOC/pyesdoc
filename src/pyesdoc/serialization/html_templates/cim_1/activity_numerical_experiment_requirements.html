@@ -1,0 +1,21 @@
+{% set REQUIREMENT_TYPES = [
+	("initialCondition", "Initial Conditions"),
+	("boundaryCondition", "Boundary Conditions"),
+	("lateralBoundaryCondition", "Lateral Boundary Conditions"),
+	("spatioTemporalConstraint", "Spatio Temporal Constraints"),
+	("outputRequirement", "Output Requirements")
+] %}
+
+{% for type, description in REQUIREMENT_TYPES %}
+	{% set requirements = [r for r in doc.requirements if r.requirement_type == type] %}
+	{% if requirements %}
+	<section>
+		<header>
+			<h4>{{ description }}</h4>
+		</header>
+		{% for requirement in requirements %}
+			{% include activity_numerical_requirement.html %}
+		{% end %}
+	</section>
+	{% end %}
+{% end %}

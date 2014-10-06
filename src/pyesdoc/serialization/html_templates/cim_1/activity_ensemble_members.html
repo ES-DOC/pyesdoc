@@ -1,0 +1,10 @@
+<section id="{{ doc.ext.full_id }}-details-overview">
+	<header>
+		<h4>Member Changes</h4>
+	</header>
+	{% for member_id, member in enumerate(doc.members) %}
+		{% if member.simulation_reference.changes %}
+		{% include activity_ensemble_member.html %}
+		{% end %}
+	{% end %}
+</section>

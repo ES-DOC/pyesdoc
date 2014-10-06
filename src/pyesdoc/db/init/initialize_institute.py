@@ -21,10 +21,17 @@ def execute():
     """Initializes collection of supported institutes.
 
     """
-    # BADC.
+    # Undefined.
     i = models.Institute()
     i.Name = "--"
     i.LongName = "Placeholder for scenario when an institute is undefined"
+    i.CountryCode = "--"
+    session.insert(i)
+
+    # Test.
+    i = models.Institute()
+    i.Name = "TEST"
+    i.LongName = "Placeholder for test scenrarios"
     i.CountryCode = "--"
     session.insert(i)
 

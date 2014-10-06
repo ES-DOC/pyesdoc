@@ -18,24 +18,16 @@ from .convert import json_file_to_namedtuple
 
 
 
-# Config filename.
-_CONFIG_FILENAME = '.esdoc'
+# Configuration file name.
+_CONFIG_FNAME = ".esdoc-config"
 
-# Config file path.
-_CONFIG_FILEPATH = "{0}/{1}".format(os.environ['HOME'], _CONFIG_FILENAME)
-
-# Search parent directories if config file not found in user's home directory.
-if not os.path.exists(_CONFIG_FILEPATH):
-	dirname = os.path.dirname(os.path.abspath(__file__))
-	for _ in range(3):
-		_CONFIG_FILEPATH = "{0}/{1}".format(dirname, _CONFIG_FILENAME)
-		if os.path.exists(_CONFIG_FILEPATH):
-			break
-		dirname = os.path.dirname(dirname)
+# Configuration file path.
+_CONFIG_FPATH = "{0}/{1}".format(os.environ['HOME'], _CONFIG_FNAME)
 
 # Exception if still not found.
-if not os.path.exists(_CONFIG_FILEPATH):
-    raise IOError("ESDOC configuration file [.esdoc] not found.")
+if not os.path.exists(_CONFIG_FPATH):
+	msg = "ESDOC configuration file does not exist :: {0}"
+	raise RuntimeError(msg.format(_CONFIG_FPATH))
 
 # Config data wrapper.
-data = json_file_to_namedtuple(_CONFIG_FILEPATH)
+data = json_file_to_namedtuple(_CONFIG_FPATH)

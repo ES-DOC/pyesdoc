@@ -62,3 +62,9 @@ ESDOC_DEFAULT_ENCODING = 'json'
 
 # Default document source.
 ESDOC_DEFAULT_SOURCE = 'Unknown'
+
+# Document viewer url.
+ESDOC_VIEWER_URL = "index.html?renderMethod=id&project={0}&id={1}&version={2}"
+
+# Document encoding url.
+ESDOC_ENCODING_URL = "index.html?renderMethod=id&project={0}&id={1}&version={2}"

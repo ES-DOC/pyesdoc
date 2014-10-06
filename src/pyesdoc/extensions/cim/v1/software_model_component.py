@@ -19,6 +19,18 @@ from .software_model_component_property_2 import (
 
 
 
+def get_extenders():
+    """Returns set of extension functions."""
+    return (
+        _set_type_display_info,
+        _set_component_hierarchy,
+        _set_component_property_sets,
+        _set_component_property_trees,
+        _set_component_meta_info,
+        _set_component_type_info
+        )
+
+
 # Mappings between component type & component type display name.
 _COMPONENT_TYPE_DISPLAY_NAMES = {
     'AerosolEmissionAndConc' : 'Emission & Concentration',
@@ -84,17 +96,23 @@ _ComponentContextInfo = \
 
 
 class _ComponentExtensionInfo(object):
-    """Conponent extension properties."""
+    """Conponent extension properties.
+
+    """
     pass
 
 
 def _get_sort_key(item):
-    """Returns a sort key."""
+    """Returns a sort key.
+
+    """
     return item.ext.full_display_name
 
 
 def _extend_component_01(ctx):
-    """Initializes component extension properties."""
+    """Initializes component extension properties.
+
+    """
     if not hasattr(ctx.c, "ext"):
         ctx.c.ext = _ComponentExtensionInfo()
 
@@ -112,14 +130,18 @@ def _extend_component_01(ctx):
 
 
 def _extend_component_02(ctx):
-    """Sets component tree."""
+    """Sets component tree.
+
+    """
     # Append component to tree of each direct ancestor.
     for a in ctx.c.ext.ancestors:
         a.ext.component_tree.append(ctx.c)
 
 
 def _extend_component_03(ctx):
-    """Sets component display names."""
+    """Sets component display names.
+
+    """
     # Short name.
     if not ctx.c.ext.parent:
         ctx.c.ext.short_display_name = ctx.c.short_name
@@ -144,19 +166,26 @@ def _extend_component_03(ctx):
 
 
 def _extend_component_04(ctx):
-    """Process child components."""
+    """Process child components.
+
+    """
+    # Recursively extend child components.
     for c in ctx.c.sub_components:
         _extend_component(c, c, ctx.c, ctx.ancestors + [ctx.c])
 
 
 def _extend_component_05(ctx):
-    """Sort components."""
+    """Sort components.
+
+    """
     ctx.c.sub_components = sorted(ctx.c.sub_components, key=_get_sort_key)
     ctx.c.ext.component_tree = sorted(ctx.c.ext.component_tree, key=_get_sort_key)
 
 
 def _extend_component(c, ext, parent=None, ancestors=[]):
-    """Extends a component."""
+    """Extends a component.
+
+    """
     ctx = _ComponentContextInfo(c, ext, parent, ancestors)
     for f in (
         _extend_component_01,
@@ -169,18 +198,24 @@ def _extend_component(c, ext, parent=None, ancestors=[]):
 
 
 def _set_type_display_info(ctx):
-    """Sets document type information."""
+    """Sets document type information.
+
+    """
     ctx.meta.type_display_name = "Model"
     ctx.meta.type_sort_key = "AA"
 
 
 def _set_component_hierarchy(ctx):
-    """Extends component hierarchy."""
+    """Extends component hierarchy.
+
+    """
     _extend_component(ctx.doc, ctx.ext)
 
 
 def _set_component_property_sets(ctx):
-    """Extends component property sets."""
+    """Extends component property sets.
+
+    """
     def set_properties(builder, c, p_list):
         builder(c)
         for p in p_list:
@@ -194,7 +229,9 @@ def _set_component_property_sets(ctx):
 
 
 def _set_component_property_trees(ctx):
-    """Extends component property tree."""
+    """Extends component property tree.
+
+    """
     def sort_tree(p_tree):
         return sorted(p_tree, key=_get_sort_key)
 
@@ -214,33 +251,22 @@ def _set_component_property_trees(ctx):
 
 
 def _set_component_meta_info(ctx):
-    """Extends component meta info."""
+    """Extends component meta info.
+
+    """
+    fields = ('language', 'project', 'source', 'type')
     for c in ctx.doc.ext.component_tree:
-        if not c.meta.language:
-            c.meta.language = ctx.doc.meta.language
-        if not c.meta.project:
-            c.meta.project = ctx.doc.meta.project
-        if not c.meta.source:
-            c.meta.source = ctx.doc.meta.source
-        if not c.meta.type:
-            c.meta.type = ctx.doc.meta.type
+        for field in fields:
+            if not getattr(c.meta, field):
+                setattr(c.meta, field, getattr(ctx.doc.meta, field))
 
 
 def _set_component_type_info(ctx):
-    """Extends component type info."""
+    """Extends component type info.
+
+    """
     for c in [ctx.doc] + ctx.doc.ext.component_tree:
         if not c.type:
             c.type = c.meta.type
         if c.meta.type not in c.types:
             c.types = [c.meta.type] + c.types
-
-
-# Set of extension functions.
-EXTENDERS = (
-    _set_type_display_info,
-    _set_component_hierarchy,
-    _set_component_property_sets,
-    _set_component_property_trees,
-    _set_component_meta_info,
-    _set_component_type_info
-    )

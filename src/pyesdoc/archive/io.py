@@ -218,22 +218,27 @@ def get_counts():
     return tuple(counts)
 
 
-def get(uid, version, original=False):
+def get(uid, version, original=False, must_exist=False):
     """Returns a document from archive.
 
     :param str uid: Document unique identifier.
     :param str version: Document version.
     :param bool original: Flag indicating whether original document is to be returned or not.
+    :param bool must_exist: Flag indicating whether the document is expected to exist within the archive.
 
     :rtype: object | None
 
     """
     fname = "{0}_{1}.json" if not original else "{0}_{1}.original"
+    fname = fname.format(uid, version)
     for doc_dir in yield_organized_dirs():
-        fpath = fname.format(uid, version)
-        fpath = os.path.join(doc_dir, fpath)
+        fpath = os.path.join(doc_dir, fname)
         try:
             with open(fpath, 'r') as fcontent:
                 return fcontent.read()
         except IOError as err:
             pass
+
+    # Exception if the document was expected to exist.
+    if must_exist:
+        raise IOError("Document does not exist within archive: {0}.".format(fname))

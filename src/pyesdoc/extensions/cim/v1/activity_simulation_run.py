@@ -7,6 +7,14 @@
 
 
 """
+def get_extenders():
+    """Returns set of extension functions."""
+    return (
+        _set_type_display_info,
+        _set_experiment_conformances,
+        )
+
+
 def _set_type_display_info(ctx):
     """Sets document type information."""
     ctx.meta.type_display_name = "Simulation"
@@ -23,8 +31,3 @@ def _set_experiment_conformances(ctx):
     ctx.ext.conformances = ", ".join(ctx.ext.conformances)
 
 
-# Set of extension functions.
-EXTENDERS = (
-    _set_type_display_info,
-    _set_experiment_conformances,
-    )

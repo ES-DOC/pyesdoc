@@ -9,7 +9,7 @@
    :synopsis: A set of cim 1 decoders.
 
 .. moduleauthor:: Earth System Documentation (ES-DOC) <dev@es-doc.org>
-.. note:: Code generated using esdoc_mp @ 2014-09-01 11:51:33.796800.
+.. note:: Code generated using esdoc_mp @ 2014-10-01 15:17:56.366987.
 
 """
 
@@ -105,11 +105,15 @@ def decode_citation(xml, nsmap):
     """
     decodings = [
         ('alternative_title', False, 'str', 'child::gmd:alternateTitle/gco:CharacterString'),
+        ('alternative_title', False, 'str', 'child::gmd:alternateTitle'),
         ('collective_title', False, 'str', 'gmd:collectiveTitle/gco:CharacterString'),
+        ('collective_title', False, 'str', 'gmd:collectiveTitle'),
         ('date', False, 'datetime.datetime', 'child::gmd:date/gmd:CI_Date/gmd:date/gco:Date'),
         ('date_type', False, 'str', 'child::gmd:date/gmd:CI_Date/gmd:dateType/gmd:CI_DateTypeCode/@codeListValue'),
         ('location', False, 'str', 'child::gmd:otherCitationDetails/gco:CharacterString'),
+        ('location', False, 'str', 'child::gmd:otherCitationDetails'),
         ('title', False, 'str', 'child::gmd:title/gco:CharacterString'),
+        ('title', False, 'str', 'child::gmd:title'),
         ('type', False, 'str', 'child::gmd:presentationForm/gmd:CI_PresentationFormCode/@codeListValue'),
     ]
 
@@ -560,9 +564,13 @@ def decode_responsible_party(xml, nsmap):
     decodings = [
         ('abbreviation', False, 'str', 'child::cim:abbreviation'),
         ('address', False, 'str', 'child::gmd:contactInfo/gmd:CI_Contact/gmd:address/gmd:CI_Address/gmd:deliveryPoint/gco:CharacterString'),
+        ('address', False, 'str', 'child::gmd:contactInfo/gmd:CI_Contact/gmd:address/gmd:CI_Address/gmd:deliveryPoint'),
         ('email', False, 'str', 'child::gmd:contactInfo/gmd:CI_Contact/gmd:address/gmd:CI_Address/gmd:electronicMailAddress/gco:CharacterString'),
+        ('email', False, 'str', 'child::gmd:contactInfo/gmd:CI_Contact/gmd:address/gmd:CI_Address/gmd:electronicMailAddress'),
         ('individual_name', False, 'str', 'child::gmd:individualName/gco:CharacterString'),
+        ('individual_name', False, 'str', 'child::gmd:individualName'),
         ('organisation_name', False, 'str', 'child::gmd:organisationName/gco:CharacterString'),
+        ('organisation_name', False, 'str', 'child::gmd:organisationName'),
         ('role', False, 'str', 'gmd:role/gmd:CI_RoleCode/@codeListValue'),
         ('url', False, 'str', 'child::gmd:contactInfo/gmd:CI_Contact/gmd:onlineResource/gmd:CI_OnlineResource/gmd:linkage/gmd:URL'),
     ]

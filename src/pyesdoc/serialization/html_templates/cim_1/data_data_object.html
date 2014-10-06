@@ -4,10 +4,12 @@
 {% comment Emit navigation   %}
 {% comment ***************** %}
 {% block doc-nav %}
+
     <li><a href="#{{ doc.ext.full_id }}-overview">Overview</a></li>
-	{% if len(doc.citations) %}
+	{% if doc.citations %}
 	    <li><a href="#{{ doc.ext.full_id }}-citations">Citations</a></li>
     {% end %}
+
 {% end %}
 
 {% comment ***************** %}
@@ -31,7 +33,7 @@
 		tag_id = doc.ext.full_id + "-overview",
 		template = "fieldset_table.html"
 	) %}
-	{% include ../core/section_01.html %}	
+	{% include ../core/section_01.html %}
 
 	{% comment ***************** %}
 	{% comment Emit citations    %}
@@ -41,6 +43,6 @@
 		tag_id = doc.ext.full_id + "-citations",
 		template = "cim_1_shared_citation.html"
 	) %}
-	{% include ../core/section_01.html %}	
+	{% include ../core/section_01.html %}
 
 {% end %}

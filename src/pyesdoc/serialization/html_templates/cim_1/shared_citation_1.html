@@ -1,0 +1,16 @@
+{% if citations %}
+<section id="{{ section_id }}">
+	<header>
+		<{{ header }}>Citations</{{ header }}>
+	</header>
+	{% for citation in citations %}
+	{% set ctx = TemplateInfo(citation, fieldset = 'cim.1.shared.citation') %}
+	<h5>{{ citation.title }}</h5>
+	<table>
+		<tbody>
+		{% include ../core/fieldset.html %}
+		</tbody>
+	</table>
+	{% end %}
+</section>
+{% end %}

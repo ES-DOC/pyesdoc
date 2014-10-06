@@ -22,15 +22,12 @@ def _set_full_id(ctx):
         ctx.meta.project, ctx.meta.id, ctx.meta.version)
 
 
-def _set_type(ctx):
+def _set_type_info(ctx):
     """Sets document type information."""
     ctx.meta.type = ctx.ext.type = ctx.doc.__class__.type_key
-
-
-def _set_type_display_info(ctx):
-    """Sets document type display name."""
     ctx.meta.type_display_name = ctx.meta.type.split(".")[-1]
     ctx.meta.type_sort_key = "ZZ"
+    ctx.ext.css_class = ctx.ext.type.lower().replace(".", "-")
 
 
 def _set_language(ctx):
@@ -66,24 +63,6 @@ def _set_description(ctx):
         ctx.ext.description = ctx.doc.long_name[:1023]
 
 
-def _set_full_display_name(ctx):
-    """Sets document full display name."""
-    name = ""
-    if ctx.meta.project:
-        name += ctx.meta.project.upper()
-    name += " "
-    name += ctx.meta.type_display_name
-    name += " : "
-    if ctx.meta.institute:
-        name += ctx.meta.institute.upper()
-        name += " - "
-    if ctx.ext.display_name:
-        name += ctx.ext.display_name
-        name += " "
-
-    ctx.ext.full_display_name = name.strip()
-
-
 def _set_encodings(ctx):
     """Returns set of file encodings for the passed document."""
     encodings = constants.ESDOC_ENCODINGS_FILE
@@ -93,21 +72,57 @@ def _set_encodings(ctx):
     ctx.ext.encodings = ctx.meta.encodings = list(encodings)
 
 
+def _set_viewer_url(ctx):
+    """Sets document viewer URL."""
+    ctx.ext.viewer_url = constants.ESDOC_VIEWER_URL.format(ctx.meta.project,
+                                                           ctx.meta.id,
+                                                           ctx.meta.version)
+
+def _set_full_display_name(ctx):
+    """Sets document full display name."""
+    # Escape if already assigned.
+    if ctx.ext.full_display_name:
+        return
+
+    name = ""
+    if ctx.meta.project:
+        name += ctx.meta.project.upper()
+        name += " "
+    name += ctx.meta.type_display_name
+    name += " : "
+    if ctx.meta.institute and ctx.meta.institute != "--":
+        name += ctx.meta.institute.upper()
+        name += " - "
+    if ctx.ext.display_name:
+        name += ctx.ext.display_name
+        name += " "
+
+    ctx.ext.full_display_name = name.strip()
+
+
+def _set_sort_key(ctx):
+    """Sets document full display name."""
+    ctx.meta.sort_key = ctx.meta.type_sort_key
+    ctx.meta.sort_key += ctx.ext.display_name
+    ctx.meta.sort_key = ctx.meta.sort_key.upper()
+
+
 # Set of pre-extenders.
 PRE_EXTENDERS = (
     _set_full_id,
-    _set_type,
-    _set_type_display_info,
+    _set_type_info,
     _set_language,
     _set_display_name,
     _set_description,
     _set_summary_fields,
     _set_encodings,
+    _set_viewer_url,
     )
 
 
 # Set of post-extenders.
 POST_EXTENDERS = (
     _set_full_display_name,
+    _set_sort_key
     )
 

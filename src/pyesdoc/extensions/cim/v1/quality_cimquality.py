@@ -7,10 +7,25 @@
 
 
 """
+def get_extenders():
+    """Returns set of extension functions."""
+    return (
+        _set_display_name,
+        _set_type_display_info,
+        _set_description,
+        _set_summary_fields
+        )
+
+
 def _set_display_name(ctx):
     """Sets document display name."""
-    if len(ctx.doc.reports) and ctx.doc.reports[0].measure is not None:
-        ctx.ext.display_name = ctx.doc.reports[0].measure.name
+    name = ""
+    if ctx.meta.project:
+        name += ctx.meta.project.upper()
+        name += " "
+    name += "Quality Control Report"
+
+    ctx.ext.display_name = ctx.ext.full_display_name = name
 
 
 def _set_type_display_info(ctx):
@@ -33,10 +48,3 @@ def _set_summary_fields(ctx):
         )
 
 
-# Set of extension functions.
-EXTENDERS = (
-    _set_display_name,
-    _set_type_display_info,
-    _set_description,
-    _set_summary_fields
-    )

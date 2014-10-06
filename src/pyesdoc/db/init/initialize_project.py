@@ -27,6 +27,12 @@ def execute():
     i.Description = "An application placeholder that acts as a null reference"
     session.insert(i)
 
+    # Test.
+    i = models.Project()
+    i.Name = "Test"
+    i.Description = "A test project plceholder"
+    session.insert(i)
+
     # CMIP5.
     i = models.Project()
     i.Name = "CMIP5"

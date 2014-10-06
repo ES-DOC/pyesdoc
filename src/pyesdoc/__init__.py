@@ -17,6 +17,7 @@ from .factory import (
 from .io import (
     write,
     read,
+    convert as convert_file,
     set_output_directory
     )
 from .ontologies import (

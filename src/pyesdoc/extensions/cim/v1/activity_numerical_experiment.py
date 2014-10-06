@@ -7,6 +7,14 @@
 
 
 """
+def get_extenders():
+    """Returns set of extension functions."""
+    return (
+        _set_type_display_info,
+        _set_full_experiment_name,
+        )
+
+
 def _set_type_display_info(ctx):
     """Sets document type information."""
     ctx.meta.type_display_name = "Experiment"
@@ -23,9 +31,3 @@ def _set_full_experiment_name(ctx):
 
     ctx.ext.full_experiment_name = name
 
-
-# Set of extension functions.
-EXTENDERS = (
-    _set_type_display_info,
-    _set_full_experiment_name,
-    )

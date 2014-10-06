@@ -1,64 +1,19 @@
 {% extends "../core/document.html" %}
 
 {% comment ***************** %}
-{% comment Emit navigation   %}
-{% comment ***************** %}
-{% block doc-nav %}
-    <li><a href="#{{ doc.ext.full_id }}-overview">Overview</a></li>
-	{% for i, member in enumerate(doc.members) %}
-    <li><a href="#{{ doc.ext.full_id }}-member{{i}}">{{member.ensemble_ids[0].value}}</a></li>
-	{% end %}
-    {% set contacts = [rp for rp in doc.responsible_parties if rp.role.lower() not in ['funder', 'centre']] %}
-	{% if len(contacts) %}
-	    <li><a href="#{{ doc.ext.full_id }}-contacts">Contacts</a></li>
-    {% end %}
-{% end %}
-
-{% comment ***************** %}
 {% comment Emit content      %}
 {% comment ***************** %}
 {% block doc-content %}
 
-	{% comment ***************** %}
-	{% comment Emit overview     %}
-	{% comment ***************** %}
-	{% set ctx = TemplateInfo(doc,
-		header = "Overview",
-		fieldset = [
-		    FieldInfo('Project', path='meta.project'),
-		    FieldInfo('Institute', path='meta.institute'),
-		    FieldInfo('Name', path='short_name'),
-		    FieldInfo('Long Name', path='long_name'),
-			FieldInfo('Type', path='types'),
-		    FieldInfo('Description', path='description'),
-		    FieldInfo('Rationale', path='rationales'),
-		    FieldInfo('Experiment', path='supports_references.0.name'),
-		],
-		tag_id = doc.ext.full_id + "-overview",
-		template = "fieldset_table.html"
-	) %}
-	{% include ../core/section_01.html %}
-
-	{% comment ***************** %}
-	{% comment Emit members      %}
-	{% comment ***************** %}
-	{% for i, member in enumerate(doc.members) %}
-		{% set ctx = TemplateInfo(member,
-			header = "Ensemble Member: " + member.ensemble_ids[0].value,
-			tag_id = doc.ext.full_id + "-member" + str(i),
-			template = "cim_1_activity_ensemble_member.html"
-		) %}
-		{% include ../core/section_02.html %}
+	{% include activity_ensemble_overview.html %}
+	{% if doc.ext.has_changes %}
+		{% include activity_ensemble_members.html %}
 	{% end %}
-
-	{% comment ***************** %}
-	{% comment Emit contacts     %}
-	{% comment ***************** %}
-	{% set ctx = TemplateInfo([rp for rp in doc.responsible_parties if rp.role.lower() not in ['funder', 'centre']],
-		header = "Contacts",
-		tag_id = doc.ext.full_id + "-contacts",
-		template = "cim_1_shared_responsible_party.html"
-	) %}
-	{% include ../core/section_01.html %}
+	{% if doc.responsible_parties %}
+		{% set contacts = doc.responsible_parties %}
+		{% set header = "h4" %}
+		{% set section_id = "{0}-contacts".format(doc.ext.full_id) %}
+		{% include shared_responsible_party_1.html %}
+	{% end %}
 
 {% end %}

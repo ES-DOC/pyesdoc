@@ -10,6 +10,11 @@
 
 """
 
+def get_parsers():
+    """Returns set of document parsers."""
+    return _set_institute
+
+
 def _set_institute(doc):
     """Sets institute code."""
     # Escape if no external id has been defined.
@@ -24,8 +29,3 @@ def _set_institute(doc):
     if len(drs) > 0:
         doc.meta.institute = drs[0].upper()
 
-
-# Set of document parsers.
-PARSERS = (
-    _set_institute,
-    )

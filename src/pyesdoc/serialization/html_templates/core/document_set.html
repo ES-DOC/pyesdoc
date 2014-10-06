@@ -1,53 +1,54 @@
 {% autoescape None %}
 
-{% comment ******************* %}
-{% comment Emit header         %}
-{% comment ******************* %}
+{% comment *********************** %}
+{% comment group set navigation    %}
+{% comment *********************** %}
 {% if len(document_group_set) > 1 %}
 <nav class="esdoc-document-group-set">
     <ul>
-        {% for group_key in sorted(document_group_set.keys()) %}
-        {% if len(document_group_set[group_key]) == 1 %}
-        {% set doc = document_group_set[group_key][0] %}
-        <li class="esdoc-document-group-single">
-            <a class="esdoc-document-nav" href="#{{ doc.ext.full_id }}">{{ group_key[3:] }}</a>
-        </li>
-        {% else %}
-        <li class="esdoc-document-group-multi">
-            <a href="#">
-              {{ group_key[3:] }} <span class="caret"></span>
-            </a>
-            <ul>
-                {% for doc in document_group_set[group_key] %}
-                <li>
-                    <a class="esdoc-document-nav" href="#{{ doc.ext.full_id }}">{{ doc.ext.display_name }}</a>
+        {% for index, key in enumerate(sorted(document_group_set.keys())) %}
+            {% set orderCSS =  "" if index > 0 else "first" %}
+            {% if len(document_group_set[key]) == 1 %}
+
+                {% comment *********************** %}
+                {% comment single document groups  %}
+                {% comment *********************** %}
+                {% set doc = document_group_set[key][0] %}
+                <li class="esdoc-document-group-single">
+                    <a class="esdoc-document-nav {{ orderCSS }}" href="#{{ doc.ext.full_id }}">{{ key[3:] }}</a>
                 </li>
-                {% end %}
-            </ul>
-        </li>
-        {% end %}
+
+            {% else %}
+
+                {% comment *********************** %}
+                {% comment multi document groups   %}
+                {% comment *********************** %}
+                <li class="esdoc-document-group-multi">
+                    <a href="#">
+                      {{ key[3:] }}
+                    </a>
+                    <ul>
+                        {% for doc in document_group_set[key] %}
+                        <li>
+                            <a class="esdoc-document-nav {{ orderCSS }}" href="#{{ doc.ext.full_id }}">{{ doc.ext.display_name }}</a>
+                        </li>
+                        {% end %}
+                    </ul>
+                </li>
+            {% end %}
         {% end %}
     </ul>
 </nav>
 {% end %}
 
 {% comment ******************* %}
-{% comment Emit content        %}
+{% comment document set        %}
 {% comment ******************* %}
 <div class="esdoc-document-set">
     {% for doc in document_set %}
-    <div id="{{ doc.ext.full_id }}"
-         class="esdoc-document {{doc.type_key.lower().replace(".", "-")}}">
-        {% comment ******************* %}
-        {% comment Emit doc header %}
-        {% comment ******************* %}
-        <header>
-            <h2>{{ doc.ext.full_display_name }}<small> (v{{ doc.meta.version }})</small></h2>
-        </header>
-        {% comment ******************* %}
-        {% comment Emit doc content    %}
-        {% comment ******************* %}
-        {{squeeze(generate_document(doc))}}
-    </div>
+        <article id="{{ doc.ext.full_id }}"
+             class="esdoc-document {{ doc.type_key.lower().replace(".", "-") }}">
+            {{ squeeze(generate_document(doc)) }}
+        </article>
     {% end %}
 </div>

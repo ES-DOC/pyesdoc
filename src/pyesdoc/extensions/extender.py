@@ -48,6 +48,8 @@ class DocumentExtensionInfo(object):
         """Constructor.
 
         """
+        self.children = []
+        self.css_class = str()
         self.description = str()
         self.display_name = str()
         self.encodings = []
@@ -55,6 +57,7 @@ class DocumentExtensionInfo(object):
         self.language = str()
         self.summary_fields = []
         self.type = str()
+        self.viewer_url = str()
 
 
 def extend(doc):
@@ -87,7 +90,19 @@ def extend(doc):
 
     # Step 2: invoke type specific extenders.
     if is_extendable(doc):
-        for extender in SUPPORTED[doc.type_key.lower()].EXTENDERS:
+        mod = SUPPORTED[doc.type_key.lower()]
+        # Step 2.1  Unpack child documents.
+        try:
+            mod.unpack_children(ctx)
+        except AttributeError:
+            pass
+
+        # Step 2.2 Extend child documents (i.e. bottom up extension).
+        for child in ctx.ext.children:
+            extend(child)
+
+        # Step 2.3 Invoke extension callbacks.
+        for extender in mod.get_extenders():
             extender(ctx)
 
     # Step 3: invoke default post-extenders.
@@ -109,5 +124,6 @@ def is_extendable(doc):
         rt.assert_doc('doc', doc, "Invalid document")
 
     doc_type = doc if isinstance(doc, str) else doc.type_key
+    doc_type = doc_type.lower()
 
-    return doc_type.lower() in SUPPORTED
+    return doc_type in SUPPORTED

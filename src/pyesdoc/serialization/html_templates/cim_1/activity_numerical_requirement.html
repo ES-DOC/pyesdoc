@@ -1,5 +1,3 @@
-{% set requirement = ctx.data %}
-
 <table>
 	{% comment ***************** %}
 	{% comment Emit overview     %}
@@ -7,7 +5,7 @@
 	<tbody>
 		<tr>
 			<td class="esdoc-field-name"><b>{{requirement.name}}</b></td>
-			<td class="esdoc-field-subname">{{requirement.id}}</td>
+			<td class="esdoc-field-subname">{{requirement.id if requirement.id else ""}}</td>
 			<td>{{requirement.description}}</td>
 		</tr>
 

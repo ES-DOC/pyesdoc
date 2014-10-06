@@ -7,30 +7,34 @@
 
 
 """
-def _extend_children(ctx):
-    """Extends child documents."""
-    # Note : JIT extension.
-    from ...extender import extend as extend_doc
+def get_extenders():
+    """Returns set of extension functions."""
+    return (
+        _propogate_institute,
+        _set_meta_info,
+        _set_ext_info,
+        )
 
-    children = []
-    # children = children + ctx.doc.data
-    children = children + ctx.doc.ensembles
-    children = children + ctx.doc.grids
-    children.append(ctx.doc.experiment)
-    children.append(ctx.doc.model)
-    children.append(ctx.doc.platform)
-    children.append(ctx.doc.simulation)
 
-    for child in children:
-        if not child.meta.institute:
-            child.meta.institute = ctx.doc.meta.institute
-        extend_doc(child)
+def unpack_children(ctx):
+    """Unpacks child documents."""
+    children = [
+        ctx.doc.experiment,
+        ctx.doc.model,
+        ctx.doc.platform,
+        ctx.doc.simulation
+        ]
+    children += ctx.doc.data
+    children += ctx.doc.ensembles
+    children += ctx.doc.grids
+
+    ctx.ext.children = [c for c in children if c]
 
 
 def _set_meta_info(ctx):
     """Sets document meta information."""
-    simulation = ctx.doc.simulation
-    if simulation:
+    if ctx.doc.simulation:
+        simulation = ctx.doc.simulation
         ctx.meta.create_date = simulation.meta.create_date
         ctx.meta.external_ids = simulation.meta.external_ids
         ctx.meta.id = simulation.meta.id
@@ -41,15 +45,19 @@ def _set_meta_info(ctx):
 
 def _set_ext_info(ctx):
     """Sets document extension information."""
-    simulation = ctx.doc.simulation
-    if simulation:
-        ctx.ext = ctx.doc.ext = simulation.ext
-        ctx.ext.type = ctx.meta.type
+    # Copy across simulation extension information.
+    if ctx.doc.simulation:
+        simulation = ctx.doc.simulation
+        for field in (
+            'display_name',
+            'description',
+            'summary_fields',
+            'full_display_name'):
+            setattr(ctx.ext, field, getattr(simulation.ext, field))
 
 
-# Set of extension functions.
-EXTENDERS = (
-    _extend_children,
-    _set_meta_info,
-    _set_ext_info,
-    )
+def _propogate_institute(ctx):
+    """Sets child meta attributes."""
+    for child in ctx.ext.children:
+        if not child.meta.institute:
+            child.meta.institute = ctx.doc.meta.institute

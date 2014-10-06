@@ -1,0 +1,78 @@
+{% for c in doc.ext.component_tree %}
+
+<section id="{{ c.meta.id }}">
+	{% comment *************************** %}
+	{% comment ... breadcrumb              %}
+	{% comment *************************** %}
+	<header>
+		<h4>
+		{% for pc in c.ext.ancestors[1:] %}
+			<span id="breadcrumb-{{ pc.meta.id }}">
+			{{ pc.ext.short_display_name }} >
+			</span>
+		{% end %}
+		{{ c.ext.short_display_name }}
+		</h4>
+	</header>
+
+	{% comment *************************** %}
+	{% comment ... overview                %}
+	{% comment *************************** %}
+	{% if c.description and len(c.description) %}
+	<section id="{{ c.meta.id }}-overview">
+		<header><h5>Overview</h5></header>
+		<p>{{ c.description }}</p>
+	</section>
+	{% end %}
+
+	{% comment *************************** %}
+	{% comment ... scientific properties   %}
+	{% comment *************************** %}
+	{% if c.ext.scientific_property_tree %}
+	<section id="{{ c.meta.id }}-scientific-properties">
+		<header>
+			<h5>Properties</h5>
+		</header>
+		<table>
+			<tbody>
+				{% for p in c.ext.scientific_property_tree %}
+					{% for v in sorted(p.values) %}
+					<tr class="esdoc-field">
+						<td>
+							<b>{{ " > ".join(p.ext.display_name.split(" > ")[1:]) }}</b>: {{v}}
+						</td>
+					</tr>
+					{% end %}
+				{% end %}
+			</tbody>
+		</table>
+	</section>
+    {% end %}
+
+	{% comment *************** %}
+	{% comment ... citations   %}
+	{% comment *************** %}
+	{% if c.citations %}
+		{% set citations = c.citations %}
+		{% set previousCtx = ctx %}
+		{% set header = "h5" %}
+		{% set section_id = "{0}-citations".format(c.meta.id) %}
+		{% include shared_citation_1.html %}
+		{% set ctx = previousCtx %}
+    {% end %}
+
+	{% comment **************** %}
+	{% comment ... contacts     %}
+	{% comment **************** %}
+    {% set contacts = [rp for rp in c.responsible_parties if rp.role.lower() not in ['funder', 'centre']] %}
+	{% if contacts %}
+		{% set previousCtx = ctx %}
+		{% set header = "h5" %}
+		{% set section_id = "{0}-contacts".format(c.meta.id) %}
+		{% include shared_responsible_party_1.html %}
+		{% set ctx = previousCtx %}
+    {% end %}
+
+</section>
+
+{% end %}

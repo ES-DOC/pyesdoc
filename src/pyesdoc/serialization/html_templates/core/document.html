@@ -1,17 +1,48 @@
 {% comment ******************* %}
-{% comment Emit doc navigation %}
+{% comment document header     %}
 {% comment ******************* %}
-<nav>
-    <ul>
-        {% block doc-nav %}{% end %}
-        <li class="esdoc-document-meta-nav"><a href="#{{ doc.ext.full_id }}-meta">Meta</a></li>
-    </ul>
-</nav>
+<header>
+    <h2>{{ doc.ext.full_display_name }}<small> (v{{ doc.meta.version }})</small></h2>
+	<nav>
+	    <ul>
+	        {% block doc-nav %}{% end %}
+	    </ul>
+	</nav>
+</header>
 
 {% comment ***************** %}
-{% comment Emit doc content  %}
+{% comment document content  %}
 {% comment ***************** %}
-<article>
-    {% block doc-content %}{% end %}
-    {% include document_metadata.html %}
-</article>
+{% block doc-content %}{% end %}
+
+{% comment ******************* %}
+{% comment document footer     %}
+{% comment ******************* %}
+<footer>
+    <h4>
+		<span>
+	        ES-DOC Documentation Viewer (v0.9.1.0) &copy; ES-DOC 2014
+		</span>
+    </h4>
+    <section class="esdoc-document-meta">
+    	<header>
+    		<h5>
+    			Document meta-data
+    		</h5>
+    	</header>
+    	<dl>
+    		<dt>
+    			<dfn>Document ID</dfn>
+    		</dt>
+    		<dd>
+    			{{ doc.meta.id }}
+    		</dd>
+    		<dt>
+    			<dfn>Document Version</dfn>
+    		</dt>
+    		<dd>
+    			{{ doc.meta.version }}
+    		</dd>
+    	</dl>
+    </section>
+</footer>

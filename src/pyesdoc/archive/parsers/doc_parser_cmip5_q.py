@@ -46,8 +46,21 @@ _DRS_NAME_TAG = "DRS"
 
 
 
+def get_parsers():
+    """Returns set of document parsers."""
+    return (
+        _set_drs,
+        _set_institute_1,
+        _set_institute_2,
+        _set_institute_3,
+        # _propogate_meta_attributes,
+        _set_model_name,
+        _delete_model_properties
+        )
+
+
 def _is_of_type(doc, type_key):
-    """Returns flag inidcating whether a document is of matched type."""
+    """Helper function: returns document type match."""
     return doc.type_key.lower() == type_key
 
 
@@ -96,12 +109,13 @@ def _format_model_name(name):
 
 def _format_institute_name(name):
     """Returns parsed institute name."""
-    name = name.upper()
-    if name in _INSTITUTE_OVERRIDES:
-        msg = "WARNING :: institute name overidden :: from {0} to {1}"
-        msg = msg.format(name, _INSTITUTE_OVERRIDES[name])
-        rt.log(msg)
-        name = _INSTITUTE_OVERRIDES[name]
+    if name is not None:
+        name = name.upper()
+        if name in _INSTITUTE_OVERRIDES:
+            msg = "WARNING :: institute name overidden :: from {0} to {1}"
+            msg = msg.format(name, _INSTITUTE_OVERRIDES[name])
+            rt.log(msg)
+            name = _INSTITUTE_OVERRIDES[name]
 
     return name
 
@@ -154,10 +168,28 @@ def _set_institute_2(doc):
 
 def _set_institute_3(doc):
     """Formats institute name so as to confirm to DRS."""
+    doc.meta.institute = _format_institute_name(doc.meta.institute)
+
+
+def _propogate_meta_attributes(doc):
+    """Propogates meta attributes to child documents."""
+    if not _is_of_type(doc, _TYPE_KEY_DOCUMENT_SET):
+        return
     if doc.meta.institute is None:
         return
 
-    doc.meta.institute = _format_institute_name(doc.meta.institute)
+    child_docs = [
+        ctx.doc.experiment,
+        ctx.doc.model,
+        ctx.doc.platform,
+        ctx.doc.simulation
+        ]
+    # child_docs += ctx.doc.data
+    child_docs += ctx.doc.ensembles
+    child_docs += ctx.doc.grids
+
+    for child in child_docs:
+        child.meta.institute = ctx.doc.meta.institute
 
 
 def _set_model_name(doc):
@@ -173,12 +205,3 @@ def _delete_model_properties(doc):
     if _is_of_type(doc, _TYPE_KEY_MODEL_COMPONENT):
         doc.properties = []
 
-
-# Set of document parsers.
-PARSERS = (
-    _set_drs,
-    _set_institute_1,
-    _set_institute_2,
-    _set_model_name,
-    _delete_model_properties
-    )

@@ -1,0 +1,35 @@
+{% comment ***************** %}
+{% comment Emit summary     %}
+{% comment ***************** %}
+{% set ctx = TemplateInfo(doc,
+	depth = 1,
+	header = "Summary",
+	fieldset = [
+	    FieldInfo('Project', path='simulation.meta.project'),
+	    FieldInfo('Institute', path='simulation.meta.institute'),
+        FieldInfo('Name', path='simulation.short_name'),
+        FieldInfo('Long Name', path='simulation.long_name'),	        	        FieldInfo('ID', path='simulation.simulation_id'),
+        FieldInfo('Experiment', path='experiment.short_name', link_path='experiment.ext.viewer_url'),
+        FieldInfo('Experiment conformances', path='simulation.ext.conformances'),
+        FieldInfo('Model', path='model.short_name', link_path='model.ext.viewer_url'),
+        FieldInfo('Platform', path='platform.short_name', link_path='platform.ext.viewer_url'),
+		FieldInfo('Authors', path='simulation.authors'),
+        FieldInfo('Funder', path='simulation.responsible_parties.role=funder.organisation_name', link_path='responsible_parties.role=funder.url'),
+        FieldInfo('RIP Value', path='simulation.simulation_id'),
+        FieldInfo('Spinup start', path='simulation.spinup_date_range.start'),
+        FieldInfo('Spinup duration', path='simulation.spinup_date_range.duration'),
+	],
+	template = "fieldset_table.html"
+) %}
+{% include ../core/section_01.html %}
+
+{% comment ***************** %}
+{% comment Emit contacts     %}
+{% comment ***************** %}
+{% set contacts = [rp for rp in doc.simulation.responsible_parties if rp.role.lower() not in ['funder', 'centre']] %}
+{% set ctx = TemplateInfo(contacts,
+	depth = 1,
+	header = "Contacts",
+	template = "cim_1_shared_responsible_party.html"
+) %}
+{% include ../core/section_01.html %}
