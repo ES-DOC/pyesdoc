@@ -1,7 +1,9 @@
 <section id="{{ doc.ext.full_id }}-details">
+	{% if doc.ext.component_tree %}
 	<header>
 		<h3>Details</h3>
 	</header>
+	{% end %}
 
 	{% comment ************************* %}
 	{% comment Sub-section: overview     %}
@@ -37,5 +39,12 @@
 		{% set section_id = "{0}-details-contacts".format(doc.ext.full_id) %}
 		{% include shared_responsible_party_1.html %}
 	{% end %}
+
+	{% comment ************************* %}
+	{% comment Sub-section: properties   %}
+	{% comment ************************* %}
+	{% if doc.ext.scientific_property_tree[0].sub_properties %}
+		{% include software_model_component_properties.html %}
+    {% end %}
 
 </section>

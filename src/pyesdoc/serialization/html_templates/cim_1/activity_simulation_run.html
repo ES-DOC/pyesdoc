@@ -4,16 +4,20 @@
 {% comment Emit navigation     %}
 {% comment ******************* %}
 {% block doc-nav %}
-    <li><a href="#{{ doc.ext.full_id }}-overview">Overview</a></li>
-	{% if doc.responsible_parties %}
-	    <li><a href="#{{ doc.ext.full_id }}-contacts">Responsible Parties</a></li>
-    {% end %}
-	{% if doc.inputs %}
-	    <li><a href="#{{ doc.ext.full_id }}-inputs">Inputs ({{len(doc.inputs)}})</a></li>
-    {% end %}
-	{% if doc.model_reference and doc.model_reference.changes %}
-	    <li><a href="#{{ doc.ext.full_id }}-model-mods">Model Modifications {{len(doc.model_reference.changes)}}</a></li>
-	{% end %}
+<nav>
+    <ul>
+	    <li><a href="#{{ doc.ext.full_id }}-overview">Overview</a></li>
+		{% if doc.responsible_parties %}
+		    <li><a href="#{{ doc.ext.full_id }}-contacts">Responsible Parties</a></li>
+	    {% end %}
+		{% if doc.inputs %}
+		    <li><a href="#{{ doc.ext.full_id }}-inputs">Inputs ({{len(doc.inputs)}})</a></li>
+	    {% end %}
+		{% if doc.model_reference and doc.model_reference.changes %}
+		    <li><a href="#{{ doc.ext.full_id }}-model-mods">Model Modifications {{len(doc.model_reference.changes)}}</a></li>
+		{% end %}
+    </ul>
+</nav>
 {% end %}
 
 {% comment ***************** %}

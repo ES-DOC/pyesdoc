@@ -4,14 +4,15 @@
 {% comment Emit navigation     %}
 {% comment ******************* %}
 {% block doc-nav %}
-	{% comment Set helper vars %}
-	{% set simulation = doc.simulation %}
-
-    <li><a href="#{{ doc.ext.full_id }}-overview">Overview</a></li>
-    <li><a href="#{{ doc.ext.full_id }}-couplings">Couplings</a></li>
-	{% if simulation.model_reference and simulation.model_reference.changes %}
+<nav>
+    <ul>
+	    <li><a href="#{{ doc.ext.full_id }}-overview">Overview</a></li>
+	    <li><a href="#{{ doc.ext.full_id }}-couplings">Couplings</a></li>
+		{% if doc.simulation.model_reference and doc.simulation.model_reference.changes %}
 	    <li><a href="#{{ doc.ext.full_id }}-model-mods">Model Mods</a></li>
-	{% end %}
+		{% end %}
+    </ul>
+</nav>
 {% end %}
 
 {% comment ***************** %}

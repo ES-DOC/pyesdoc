@@ -115,6 +115,8 @@ def _extend_component_01(ctx):
     """
     if not hasattr(ctx.c, "ext"):
         ctx.c.ext = _ComponentExtensionInfo()
+    if not hasattr(ctx.c.ext, "full_display_name"):
+        ctx.c.ext.full_display_name = str()
 
     ctx.c.ext.ancestors = ctx.ancestors
     ctx.c.ext.component_tree = []
@@ -158,11 +160,10 @@ def _extend_component_03(ctx):
     ctx.c.ext.long_display_name += ctx.c.ext.short_display_name
 
     # Full name.
-    ctx.c.ext.full_display_name = ""
     if ctx.c.ext.depth > 0:
         ctx.c.ext.full_display_name += ctx.c.ext.parent.ext.full_display_name
         ctx.c.ext.full_display_name += " > "
-    ctx.c.ext.full_display_name += ctx.c.ext.short_display_name
+        ctx.c.ext.full_display_name += ctx.c.ext.short_display_name
 
 
 def _extend_component_04(ctx):

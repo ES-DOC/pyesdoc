@@ -1,18 +1,6 @@
 {% extends "../core/document.html" %}
 
 {% comment ***************** %}
-{% comment Emit navigation   %}
-{% comment ***************** %}
-{% block doc-nav %}
-
-    <li><a href="#{{ doc.ext.full_id }}-overview">Overview</a></li>
-	{% if doc.citations %}
-	    <li><a href="#{{ doc.ext.full_id }}-citations">Citations</a></li>
-    {% end %}
-
-{% end %}
-
-{% comment ***************** %}
 {% comment Emit content      %}
 {% comment ***************** %}
 {% block doc-content %}
