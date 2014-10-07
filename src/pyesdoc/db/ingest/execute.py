@@ -38,7 +38,7 @@ class _DocumentProcessingInfo(object):
 
     def __repr__(self):
         """Object representation."""
-        return "Processing ID = {0} :: Doc ID = {1} :: Doc Verion = {2}".format(
+        return "Processing ID = {0} :: Doc ID = {1} :: Doc Version = {2}".format(
             self.index,
             self.doc.meta.id,
             self.doc.meta.version)
@@ -46,6 +46,10 @@ class _DocumentProcessingInfo(object):
 
 def _write_error(ctx):
     """Writes document processing error to file system."""
+    # Escape if writing controlled loop exit errors.
+    if isinstance(ctx.error, StopIteration):
+        return
+
     # Create parent directory.
     try:
         os.makedirs(os.path.dirname(ctx.fpath_error))
@@ -71,6 +75,10 @@ def _write_error(ctx):
 
 def _log_error(ctx):
     """Write processing error message to standard output."""
+    # Escape if writing controlled loop exit errors.
+    if isinstance(ctx.error, StopIteration):
+        return
+
     rt.log("INGEST ERROR :: {0} :: {1} :: {2}".format(ctx, ctx.error, type(ctx.error)))
 
 

@@ -102,8 +102,8 @@ def _set_full_display_name(ctx):
 
 def _set_sort_key(ctx):
     """Sets document full display name."""
-    ctx.meta.sort_key = ctx.meta.type_sort_key
-    ctx.meta.sort_key += ctx.ext.display_name
+    ctx.meta.sort_key = "{0}{1}".format(
+        ctx.meta.type_sort_key, ctx.ext.display_name or str())
     ctx.meta.sort_key = ctx.meta.sort_key.upper()
 
 
