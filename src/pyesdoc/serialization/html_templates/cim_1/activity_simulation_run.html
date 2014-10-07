@@ -22,39 +22,12 @@
 {% comment ***************** %}
 {% block doc-content %}
 
-	{% comment ***************** %}
-	{% comment Emit details      %}
-	{% comment ***************** %}
 	{% include activity_simulation_run_details.html %}
-
-	{% comment ***************** %}
-	{% comment Emit inputs   %}
-	{% comment ***************** %}
 	{% if doc.inputs %}
 		{% include activity_simulation_run_inputs.html %}
 	{% end %}
-
-	{% comment ***************** %}
-	{% comment Emit model mods   %}
-	{% comment ***************** %}
-	<h1>Model mods: {{ len(doc.model_reference.changes) }}</h1>
 	{% if doc.model_reference and len(doc.model_reference.changes) %}
-		{% set changeset = [c for c in doc.model_reference.changes if len(c.details)] %}
-		{% if len(changeset) %}
-
-
-		{% set ctx = TemplateInfo(doc,
-			fieldset_type = "property",
-			header = "Model Modifications",
-			tag_id = doc.ext.full_id + "-model-mods",
-			template = "fieldset_table.html"
-		) %}
-		{% for change_property in changeset %}
-			{% raw ctx.fieldset.append(FieldInfo(change_property.name, value=change_property.details[0].description)) or "" %}
-		{% end %}
-		{% include ../core/section_01.html %}
-
-		{% end %}
+		{% include activity_simulation_run_model_mods.html %}
 	{% end %}
 
 {% end %}

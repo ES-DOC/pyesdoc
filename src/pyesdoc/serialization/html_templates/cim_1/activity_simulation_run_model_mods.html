@@ -1,0 +1,17 @@
+{% set mods = [c for c in doc.model_reference.changes if len(c.details)] %}
+{% if mods %}
+<section id="{{ doc.ext.full_id }}-model-mods">
+	<header>
+		<h3>Model Modifications</h3>
+	</header>
+	<table>
+		<tbody>
+		{% set ctx = TemplateInfo(doc, fieldset_type='property') %}
+		{% for mod in mods %}
+			{% set ctx.fieldset = ctx.fieldset + [FieldInfo(mod.name, value=mod.details[0].description)] %}
+		{% end %}
+		{% include ../core/fieldset.html %}
+		</tbody>
+	</table>
+</section>
+{% end %}
