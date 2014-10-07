@@ -18,11 +18,8 @@ from .convert import json_file_to_namedtuple
 
 
 
-# Default configuration file name.
-_CONFIG_FNAME = ".esdoc-config"
-
-# Default configuration file directory.
-_CONFIG_DIR = os.environ['HOME']
+# Default configuration file path.
+_CONFIG_FPATH = "ops/config/esdoc.json"
 
 # Configuration data.
 data = None
@@ -33,21 +30,17 @@ def _init():
 	"""Initializes configuration."""
 	global data
 
-	# Default location is in users home directory.
-	fpath = "{0}/{1}".format(_CONFIG_DIR, _CONFIG_FNAME)
-
-	# If not found in default then scan up file system hierarchy.
-	if not os.path.exists(fpath):
-		dpath = os.path.dirname(os.path.abspath(__file__))
-		while dirpath != '/':
-			fpath = os.path.join(dpath, _CONFIG_FNAME)
-			if os.path.exists(fpath):
-				break
-			dpath = os.path.dirname(dpath)
+	# Scan up file system hierarchy until reaching ops/config directory.
+	dpath = os.path.dirname(os.path.abspath(__file__))
+	while dpath != '/':
+		fpath = os.path.join(dpath, _CONFIG_FPATH)
+		if os.path.exists(fpath):
+			break
+		dpath = os.path.dirname(dpath)
 
 	# If still not found then exception.
 	if not os.path.exists(fpath):
-		msg = "ESDOC configuration file (.esdoc-config) could not be found"
+		msg = "ESDOC configuration file ({0}) could not be found".format(_CONFIG_FPATH)
 		raise RuntimeError(msg)
 
 	# Config data wrapper.
