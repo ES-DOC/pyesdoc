@@ -1,0 +1,32 @@
+{% set INPUT_PURPOSES = {
+	"initialCondition" : "Initial Condition",
+	"boundaryCondition": "Boundary Condition",
+	"lateralBoundaryCondition" : "Lateral Boundary Condition",
+} %}
+<section id="{{ doc.ext.full_id }}-inputs">
+	<header>
+		<h3>Couplings</h3>
+	</header>
+	{% for type, description in INPUT_PURPOSES.items() %}
+	{% set inputs = [i for i in doc.inputs if i.purpose == type] %}
+	{% if inputs %}
+	<section>
+		<header>
+			<h4>{{ description }} Couplings</h4>
+		</header>
+		<section>
+			{% for input_id, input in enumerate(inputs) %}
+			<header>
+				<h5>Coupling</h5>
+			</header>
+			<table>
+				<tbody>
+					{% include activity_simulation_run_input.html %}
+				</tbody>
+			</table>
+			{% end %}
+		</section>
+	</section>
+	{% end %}
+	{% end %}
+</section>

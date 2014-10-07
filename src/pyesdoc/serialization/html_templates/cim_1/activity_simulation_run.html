@@ -6,12 +6,9 @@
 {% block doc-nav %}
 <nav>
     <ul>
-	    <li><a href="#{{ doc.ext.full_id }}-overview">Overview</a></li>
-		{% if doc.responsible_parties %}
-		    <li><a href="#{{ doc.ext.full_id }}-contacts">Responsible Parties</a></li>
-	    {% end %}
+	    <li><a href="#{{ doc.ext.full_id }}-details">Details</a></li>
 		{% if doc.inputs %}
-		    <li><a href="#{{ doc.ext.full_id }}-inputs">Inputs ({{len(doc.inputs)}})</a></li>
+		    <li><a href="#{{ doc.ext.full_id }}-inputs">Couplings</a></li>
 	    {% end %}
 		{% if doc.model_reference and doc.model_reference.changes %}
 		    <li><a href="#{{ doc.ext.full_id }}-model-mods">Model Modifications {{len(doc.model_reference.changes)}}</a></li>
@@ -26,40 +23,21 @@
 {% block doc-content %}
 
 	{% comment ***************** %}
-	{% comment Emit overview     %}
+	{% comment Emit details      %}
 	{% comment ***************** %}
-	{% set ctx = TemplateInfo(doc,
-		header = "Overview",
-		tag_id = doc.ext.full_id + "-overview",
-		template = "cim_1_activity_simulation_run_overview.html"
-	) %}
-	{% include ../core/section_02.html %}
-
-	{% comment ***************** %}
-	{% comment Emit contacts     %}
-	{% comment ***************** %}
-	{% if doc.responsible_parties %}
-		{% set contacts = doc.responsible_parties %}
-		{% set header = "h3" %}
-		{% set section_id = "{0}-contacts".format(doc.ext.full_id) %}
-		{% include shared_responsible_party_1.html %}
-    {% end %}
+	{% include activity_simulation_run_details.html %}
 
 	{% comment ***************** %}
 	{% comment Emit inputs   %}
 	{% comment ***************** %}
 	{% if doc.inputs %}
-		{% set ctx = TemplateInfo(doc.inputs,
-			tag_id = doc.ext.full_id + '-',
-			header = "Couplings",
-			template = "cim_1_activity_simulation_input.html"
-		) %}
-		{% include ../core/section_02.html %}
+		{% include activity_simulation_run_inputs.html %}
 	{% end %}
 
 	{% comment ***************** %}
 	{% comment Emit model mods   %}
 	{% comment ***************** %}
+	<h1>Model mods: {{ len(doc.model_reference.changes) }}</h1>
 	{% if doc.model_reference and len(doc.model_reference.changes) %}
 		{% set changeset = [c for c in doc.model_reference.changes if len(c.details)] %}
 		{% if len(changeset) %}

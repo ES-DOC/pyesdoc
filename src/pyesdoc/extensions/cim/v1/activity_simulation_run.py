@@ -12,6 +12,7 @@ def get_extenders():
     return (
         _set_type_display_info,
         _set_experiment_conformances,
+        _set_responsible_parties
         )
 
 
@@ -28,6 +29,11 @@ def _set_experiment_conformances(ctx):
     	if len(conformance.requirements_references):
     		for requirement_reference in conformance.requirements_references:
     			ctx.ext.conformances.append(requirement_reference.name)
-    ctx.ext.conformances = ", ".join(ctx.ext.conformances)
+    ctx.ext.conformances = ", ".join(sorted(ctx.ext.conformances))
 
+
+def _set_responsible_parties(ctx):
+    """Sets sorted contacts list."""
+    ctx.doc.responsible_parties = \
+        sorted(ctx.doc.responsible_parties, key=lambda rp: rp.role)
 

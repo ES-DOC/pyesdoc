@@ -1,0 +1,74 @@
+<tr>
+	<td class="esdoc-field-name"><b>Type</b></td>
+	{% if input.type %}
+	<td class="esdoc-field-value">{{ "{0} -> {1}".format(description, input.type) }}</td>
+	{% else %}
+	<td class="esdoc-field-value">{{ description }}</td>
+	{% end %}
+</tr>
+
+{% if input.type in ("File", "", None) and \
+  len(input.sources) and \
+  input.target and \
+  len(input.connections) and \
+  len(input.connections[0].sources) %}
+{% set source = input.sources[0] %}
+{% set target = input.target %}
+{% set connection = input.connections[0] %}
+	<tr>
+	<td class="esdoc-field-name"><b>Source</b>&nbsp;(File > Variable)</td>
+	<td class="esdoc-field-value"><b>{{ source.data_source_reference.name }}</b> > {{ connection.sources[0].data_source_reference.name }}</td>
+	</tr>
+	<tr>
+	<td class="esdoc-field-name"><b>Target</b>&nbsp;(Component > Property)</td>
+	<td class="esdoc-field-value"><b>{{ target.data_source_reference.name }}</b> > {{ connection.target.data_source_reference.name }}</td>
+	</tr>
+	{% if input.description %}
+		<tr>
+		<td class="esdoc-field-name"><b>Description</b></td>
+		<td class="esdoc-field-value">{{ input.description }}</td>
+		</tr>
+	{% end %}
+	{% if input.spatial_regriddings %}
+		{% set spatial_regridding = input.spatial_regriddings[0] %}
+		<tr>
+		<td class="esdoc-field-name"><b>Regridding Method</b></td>
+		<td class="esdoc-field-value">{{ input.spatial_regriddings[0].standard_method }}</td>
+		</tr>
+	{% end %}
+	{% if input.time_transformation %}
+		{% set time_transformation = input.time_transformation %}
+		<tr>
+		<td class="esdoc-field-name"><b>Time Transformation Mapping</b></td>
+		<td class="esdoc-field-value">{{ time_transformation.mapping_type }}</td>
+		</tr>
+	{% end %}
+{% end %}
+
+{% if input.type == "Shared Memory" and \
+  len(input.sources) and \
+  input.target and \
+  len(input.connections) %}
+{% set source = input.sources[0] %}
+{% set target = input.target %}
+{% set connection = input.connections[0] %}
+	<tr>
+	<td class="esdoc-field-name"><b>Source</b>&nbsp;(Component)</td>
+	<td class="esdoc-field-value"><b>{{ source.data_source_reference.name }}</b></td>
+	</tr>
+	<tr>
+	<td class="esdoc-field-name"><b>Target</b>&nbsp;(Component > Property)</td>
+	<td class="esdoc-field-value"><b>{{ target.data_source_reference.name }}</b> > {{ connection.target.data_source_reference.name }}</td>
+	</tr>
+	<tr>
+	<td class="esdoc-field-name"><b>Description</b></td>
+	<td class="esdoc-field-value">{{ input.description or "--" }}</td>
+	</tr>
+	{% if input.spatial_regriddings %}
+		{% set spatial_regridding = input.spatial_regriddings[0] %}
+		<tr>
+		<td class="esdoc-field-name"><b>Regridding Method</b></td>
+		<td class="esdoc-field-value">{{ input.spatial_regriddings[0].standard_method }}</td>
+		</tr>
+	{% end %}
+{% end %}

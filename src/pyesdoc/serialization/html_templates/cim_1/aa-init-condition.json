@@ -1,0 +1,104 @@
+{
+    "transformersReferences": [],
+    "transformers": [],
+    "description": "The historical land use data is based on the HYDE database v3.1 (Klein Goldewijk et al., 2010a; Klein Goldewijk et al., 2010b) as processed for CMIP5 by Hurtt et al (2010), and made available at 0.5 x 0.5 degree resolution. These fractions are mapped on to the N96 grid using area average re-gridding.",
+    "isFullySpecified": true,
+    "ontologyTypeKey": "cim.1.software.Coupling",
+    "connections": [{
+        "transformersReferences": [],
+        "transformers": [],
+        "description": null,
+        "ontologyTypeKey": "cim.1.software.Connection",
+        "sources": [{
+            "instanceID": null,
+            "properties": [],
+            "ontologyTypeKey": "cim.1.software.ConnectionEndpoint",
+            "dataSourceReference": {
+                "description": "Reference to a fileVariable called fractional_cover_baresoil in a dataObject called land_use",
+                "type": "fileVariable",
+                "version": "1",
+                "externalID": null,
+                "ontologyTypeKey": "cim.1.shared.DocReference",
+                "changes": [],
+                "id": "f59b8360-53cd-11e0-ad0a-00163e9152a5",
+                "name": "fractional_cover_baresoil"
+            },
+            "dataSource": null
+        }],
+        "timeProfile": null,
+        "target": {
+            "instanceID": null,
+            "properties": [],
+            "ontologyTypeKey": "cim.1.software.ConnectionEndpoint",
+            "dataSourceReference": {
+                "description": "Reference to a componentProperty called initial_land_use in a modelComponent called Land Surface",
+                "type": "componentProperty",
+                "version": "1",
+                "externalID": null,
+                "ontologyTypeKey": "cim.1.shared.DocReference",
+                "changes": [],
+                "id": "38218958-9679-11e0-a921-00163e9152a5",
+                "name": "initial_land_use"
+            },
+            "dataSource": null
+        },
+        "spatialRegridding": [],
+        "primingReference": null,
+        "timeLag": null,
+        "type": null,
+        "properties": [],
+        "timeTransformation": null,
+        "priming": null
+    }],
+    "sources": [{
+        "instanceID": null,
+        "properties": [],
+        "ontologyTypeKey": "cim.1.software.CouplingEndpoint",
+        "dataSourceReference": {
+            "description": "Reference to a dataObject called land_use",
+            "type": "dataObject",
+            "version": "1",
+            "externalID": null,
+            "ontologyTypeKey": "cim.1.shared.DocReference",
+            "changes": [],
+            "id": "f59b8360-53cd-11e0-ad0a-00163e9152a5",
+            "name": "land_use"
+        },
+        "dataSource": null
+    }],
+    "timeProfile": null,
+    "target": {
+        "instanceID": null,
+        "properties": [],
+        "ontologyTypeKey": "cim.1.software.CouplingEndpoint",
+        "dataSourceReference": {
+            "description": "Reference to a modelComponent called Land Surface",
+            "type": "modelComponent",
+            "version": "1",
+            "externalID": null,
+            "ontologyTypeKey": "cim.1.shared.DocReference",
+            "changes": [],
+            "id": "38218958-9679-11e0-a921-00163e9152a5",
+            "name": "Land Surface"
+        },
+        "dataSource": null
+    },
+    "spatialRegriddings": [{
+        "properties": [],
+        "userMethod": null,
+        "dimension": null,
+        "standardMethod": "conservative",
+        "ontologyTypeKey": "cim.1.software.SpatialRegridding"
+    }],
+    "purpose": "initialCondition",
+    "primingReference": null,
+    "timeLag": null,
+    "type": null,
+    "properties": [],
+    "timeTransformation": {
+        "mappingType": "Exact",
+        "description": null,
+        "ontologyTypeKey": "cim.1.software.TimeTransformation"
+    },
+    "priming": null
+}

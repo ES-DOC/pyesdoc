@@ -219,6 +219,20 @@ _FIELDSETS = {
         FieldInfo('Description', path='description'),
         FieldInfo('Rationale', path='rationales'),
     ],
+    'cim.1.activity.simulationrun-overview': [
+        FieldInfo('Project', path='meta.project'),
+        FieldInfo('Institute', path='meta.institute'),
+        FieldInfo('Name', path='short_name'),
+        FieldInfo('Long Name', path='long_name'),
+        FieldInfo('ID', path='simulation_id'),
+        FieldInfo('Experiment', path='supports_references[0].name'),
+        FieldInfo('Experiment conformances', path='ext.conformances'),
+        FieldInfo('Authors', path='authors'),
+        FieldInfo('Funder', path='responsible_parties.role=funder.organisation_name', link_path='responsible_parties.role=funder.url'),
+        FieldInfo('RIP Value', path='simulation_id'),
+        FieldInfo('Spinup start', path='spinup_date_range.start'),
+        FieldInfo('Spinup duration', path='spinup_date_range.duration')
+    ],
     'cim.1.grids.grid-mosaic': [
         FieldInfo('Name', path='short_name'),
         FieldInfo('Long Name', path='long_name'),
