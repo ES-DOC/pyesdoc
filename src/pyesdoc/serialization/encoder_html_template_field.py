@@ -323,7 +323,7 @@ _FIELDSETS = {
         FieldInfo('Email', path='email', email_path='email'),
         FieldInfo('URL', path='url', link_path='url')
     ],
-    'cim.1.software.modelcomponent-summary': [
+    'cim.1.software.modelcomponent-details': [
         FieldInfo('Project', path='meta.project'),
         FieldInfo('Institute', path='meta.institute'),
         FieldInfo('Name', path='short_name'),
