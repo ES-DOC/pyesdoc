@@ -12,7 +12,7 @@
 	{% comment ***************** %}
 	{% comment Emit options      %}
 	{% comment ***************** %}
-	{% for option in requirement.options %}
+	{% for option in [o for o in requirement.options if o and o.requirement] %}
 		<tr>
 			<td class="esdoc-field-name"><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{option.requirement.name}}</b></td>
 			<td class="esdoc-field-subname">{{option.requirement.id}}</td>
