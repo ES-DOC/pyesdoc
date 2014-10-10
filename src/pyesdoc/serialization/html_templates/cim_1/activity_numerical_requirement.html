@@ -12,12 +12,16 @@
 	{% comment ***************** %}
 	{% comment Emit options      %}
 	{% comment ***************** %}
-	{% for option in [o for o in requirement.options if o and o.requirement] %}
+	{% set options = [o for o in requirement.options if o] %}
+	{% if options %}
+	{% set options = sorted(options, key=lambda o: o.name.lower() if o.name else str()) %}
+	{% for option in options %}
 		<tr>
-			<td class="esdoc-field-name"><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{option.requirement.name}}</b></td>
-			<td class="esdoc-field-subname">{{option.requirement.id}}</td>
-			<td>{{option.requirement.description}}</td>
+			<td class="esdoc-field-name"><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{option.name}}</b></td>
+			<td class="esdoc-field-subname">{{option.id}}</td>
+			<td>{{option.description}}</td>
 		</tr>
+	{% end %}
 	{% end %}
 	</tbody>
 </table>

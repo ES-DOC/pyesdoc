@@ -9,6 +9,7 @@
 {% for type, description in REQUIREMENT_TYPES %}
 	{% set requirements = [r for r in doc.requirements if r.requirement_type == type] %}
 	{% if requirements %}
+	{% set requirements = sorted(requirements, key=lambda r: r.name.lower() if r.name else str()) %}
 	<section>
 		<header>
 			<h4>{{ description }}</h4>

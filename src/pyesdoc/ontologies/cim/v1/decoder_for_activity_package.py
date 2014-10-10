@@ -9,7 +9,7 @@
    :synopsis: A set of cim 1 decoders.
 
 .. moduleauthor:: Earth System Documentation (ES-DOC) <dev@es-doc.org>
-.. note:: Code generated using esdoc_mp @ 2014-10-01 15:17:56.359135.
+.. note:: Code generated using esdoc_mp @ 2014-10-10 15:19:03.804774.
 
 """
 
@@ -479,12 +479,25 @@ def decode_numerical_requirement_option(xml, nsmap):
 
     """
     decodings = [
+        ('description', False, 'str', 'child::cim:description'),
+        ('description', False, 'str', 'child::cim:requirement/cim:requirement/cim:boundaryCondition/cim:description'),
+        ('description', False, 'str', 'child::cim:requirement/cim:requirement/cim:initialCondition/cim:description'),
+        ('description', False, 'str', 'child::cim:requirement/cim:requirement/cim:lateralBoundaryCondition/cim:description'),
+        ('description', False, 'str', 'child::cim:requirement/cim:requirement/cim:outputRequirement/cim:description'),
+        ('description', False, 'str', 'child::cim:requirement/cim:requirement/cim:spatioTemporalConstraint/cim:description'),
+        ('id', False, 'str', 'child::cim:id'),
+        ('id', False, 'str', 'child::cim:requirement/cim:requirement/cim:boundaryCondition/cim:id'),
+        ('id', False, 'str', 'child::cim:requirement/cim:requirement/cim:initialCondition/cim:id'),
+        ('id', False, 'str', 'child::cim:requirement/cim:requirement/cim:lateralBoundaryCondition/cim:id'),
+        ('id', False, 'str', 'child::cim:requirement/cim:requirement/cim:outputRequirement/cim:id'),
+        ('id', False, 'str', 'child::cim:requirement/cim:requirement/cim:spatioTemporalConstraint/cim:id'),
+        ('name', False, 'str', 'child::cim:name'),
+        ('name', False, 'str', 'child::cim:requirement/cim:requirement/cim:boundaryCondition/cim:name'),
+        ('name', False, 'str', 'child::cim:requirement/cim:requirement/cim:initialCondition/cim:name'),
+        ('name', False, 'str', 'child::cim:requirement/cim:requirement/cim:lateralBoundaryCondition/cim:name'),
+        ('name', False, 'str', 'child::cim:requirement/cim:requirement/cim:outputRequirement/cim:name'),
+        ('name', False, 'str', 'child::cim:requirement/cim:requirement/cim:spatioTemporalConstraint/cim:name'),
         ('relationship', False, 'str', 'self::cim:requirementOption/@optionRelationship'),
-        ('requirement', False, decode_initial_condition, 'child::cim:requirement/cim:requirement/cim:initialCondition'),
-        ('requirement', False, decode_output_requirement, 'child::cim:requirement/cim:requirement/cim:spatioTemporalConstraint'),
-        ('requirement', False, decode_spatio_temporal_constraint, 'child::cim:requirement/cim:requirement/cim:outputRequirement'),
-        ('requirement', False, decode_boundary_condition, 'child::cim:requirement/cim:requirement/cim:boundaryCondition'),
-        ('requirement', False, decode_lateral_boundary_condition, 'child::cim:requirement/cim:requirement/cim:lateralBoundaryCondition'),
     ]
 
     return set_attributes(typeset.activity.NumericalRequirementOption(), xml, nsmap, decodings)

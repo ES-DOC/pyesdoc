@@ -9,7 +9,7 @@
    :synopsis: Encpasulates meta-information pertaining to the cim.v1 typeset.
 
 .. moduleauthor:: Earth System Documentation (ES-DOC) <dev@es-doc.org>
-.. note:: Code generated using esdoc_mp @ 2014-10-01 15:17:56.376795.
+.. note:: Code generated using esdoc_mp @ 2014-10-10 15:19:03.821696.
 
 """
 # Module imports.
@@ -239,8 +239,11 @@ activity.NumericalRequirement.type_info = (
 )
 
 activity.NumericalRequirementOption.type_info = (
+    ('description', str, False, False),
+    ('id', str, False, False),
+    ('name', str, True, False),
     ('relationship', str, False, False),
-    ('requirement', activity.NumericalRequirement, False, False),
+    ('sub_options', activity.NumericalRequirementOption, False, True),
 )
 
 activity.OutputRequirement.type_info = (

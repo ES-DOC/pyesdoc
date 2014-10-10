@@ -9,7 +9,7 @@
    :synopsis: The set of types of the cim.v1.activity package.
 
 .. moduleauthor:: Earth System Documentation (ES-DOC) <dev@es-doc.org>
-.. note:: Code generated using esdoc_mp @ 2014-10-01 15:17:56.381075.
+.. note:: Code generated using esdoc_mp @ 2014-10-10 15:19:03.825581.
 
 """
 # Module imports.
@@ -128,8 +128,11 @@ class NumericalRequirementOption(object):
         """
         super(NumericalRequirementOption, self).__init__()
 
+        self.description = None                           # str
+        self.id = None                                    # str
+        self.name = None                                  # str
         self.relationship = None                          # str
-        self.requirement = None                           # activity.NumericalRequirement
+        self.sub_options = []                             # activity.NumericalRequirementOption
 
 
 class SimulationRelationship(shared.Relationship):
