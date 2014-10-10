@@ -23,7 +23,7 @@ def _set_display_name(ctx):
     if ctx.meta.project:
         name += ctx.meta.project.upper()
         name += " "
-    name += "Quality Control Report"
+    name += "Dataset Quality Control Report"
 
     ctx.ext.display_name = ctx.ext.full_display_name = name
 
