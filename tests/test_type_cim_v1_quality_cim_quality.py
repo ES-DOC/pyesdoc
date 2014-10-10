@@ -19,7 +19,7 @@ import test_utils as tu
 DOC_TYPE = cim.v1.CimQuality
 
 # Test type display name.
-DOC_TYPE_DISPLAY_NAME = "QC Record"
+DOC_TYPE_DISPLAY_NAME = "Dataset QC"
 
 # Test document type.
 DOC_TYPE_KEY = DOC_TYPE.type_key

@@ -30,7 +30,7 @@ def _set_display_name(ctx):
 
 def _set_type_display_info(ctx):
     """Sets document type information."""
-    ctx.meta.type_display_name = "QC Record"
+    ctx.meta.type_display_name = "Dataset QC"
     ctx.meta.type_sort_key = "CB"
 
 
