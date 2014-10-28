@@ -68,6 +68,11 @@ def _assert_doc_core(doc, is_update):
     tu.assert_str(doc.acronym, "fossil_fuel_organic_carbon")
     tu.assert_str(doc.data_status, "complete")
     tu.assert_str(doc.description, "2D gridded monthly-mean", True)
+    tu.assert_iter(doc.storage, 1)
+    storage = doc.storage[0]
+    tu.assert_object(storage, cim.v1.DataStorageIp)
+    tu.assert_str(storage.format, "ASCII")
+    tu.assert_str(storage.file_name, "emissions of organic", True)
 
 
 def _assert_doc_content(doc, is_update):

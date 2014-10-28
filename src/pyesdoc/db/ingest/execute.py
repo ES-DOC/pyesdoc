@@ -24,10 +24,14 @@ from ... utils import config, rt
 
 
 
-class _DocumentProcessingInfo(object):
-    """Encapsulates document processing information."""
+class DocumentProcessingInfo(object):
+    """Encapsulates document processing information.
+
+    """
     def __init__(self, doc, fpath, fpath_ingested, index):
-        """Object constructor."""
+        """Object constructor.
+
+        """
         self.doc = doc
         self.error = None
         self.fpath = fpath
@@ -37,7 +41,9 @@ class _DocumentProcessingInfo(object):
 
 
     def __repr__(self):
-        """Object representation."""
+        """Object representation.
+
+        """
         return "Processing ID = {0} :: Doc ID = {1} :: Doc Version = {2}".format(
             self.index,
             self.doc.meta.id,
@@ -45,7 +51,9 @@ class _DocumentProcessingInfo(object):
 
 
 def _write_error(ctx):
-    """Writes document processing error to file system."""
+    """Writes document processing error to file system.
+
+    """
     # Escape if writing controlled loop exit errors.
     if isinstance(ctx.error, StopIteration):
         return
@@ -70,11 +78,13 @@ def _write_error(ctx):
             output.write(u"\tERROR = {0};\n".format(unicode(ctx.error)))
             output.write(u"\tERROR TYPE = {0}.".format(type(ctx.error)))
     except IOError:
-        rt.log("Document processing error handling failed.")
+        rt.log_warning("Document processing error handling failed.")
 
 
 def _log_error(ctx):
-    """Write processing error message to standard output."""
+    """Write processing error message to standard output.
+
+    """
     # Escape if writing controlled loop exit errors.
     if isinstance(ctx.error, StopIteration):
         return
@@ -83,7 +93,9 @@ def _log_error(ctx):
 
 
 def _write_ingested(ctx):
-    """Writes ingested file to archive."""
+    """Writes ingested file to archive.
+
+    """
     # Create parent directory.
     try:
         os.makedirs(os.path.dirname(ctx.fpath_ingested))
@@ -95,21 +107,22 @@ def _write_ingested(ctx):
 
 
 def _get_documents(throttle=0):
-    """Yields documents for processing."""
-    yielded = 0
-    for doc, fpath, fpath_ingested in archive.yield_ingestable_documents():
-        yielded = yielded + 1
-        yield _DocumentProcessingInfo(doc, fpath, fpath_ingested, yielded)
+    """Yields documents for processing.
 
-        # ... apply throttle
+    """
+    yielded = 0
+    for doc, fpath, fpath_ingested in archive.yield_ingestable():
+        yielded += + 1
+        yield DocumentProcessingInfo(doc, fpath, fpath_ingested, yielded)
         if throttle and throttle == yielded:
             break
 
 
-def _process(ctx):
-    """Processes a document."""
-    # Set of document handlers (N.B. order matters).
-    handlers = (
+def process(ctx):
+    """Ingests a document.
+
+    """
+    tasks = (
         validate.execute,
         set_primary.execute,
         set_is_latest.execute,
@@ -119,18 +132,19 @@ def _process(ctx):
         _write_ingested
         )
 
-    # Set of document error handlers.
-    error_handlers = (_write_error, _log_error)
+    error_tasks = (
+        _write_error,
+        _log_error
+        )
 
-    # Invoke handlers.
-    rt.invoke(ctx, handlers, error_handlers)
+    rt.invoke(ctx, tasks, error_tasks)
 
 
-def do(throttle=0):
-    """Creates document index.
+def process_archived(throttle=0):
+    """Ingests files from archive.
 
     :param int throttle: Limits the number of documents to process.
 
     """
     for ctx in _get_documents(throttle):
-        _process(ctx)
+        process(ctx)

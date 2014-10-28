@@ -279,8 +279,7 @@ def _get_attribute_value(xml, nsmap, decoder, xpath, is_simple_type, is_iterable
         result = decode_xml(decoder, att_xml, nsmap, is_iterable)
 
     # Workaround - decoding empty xml attributes.
-    if is_simple_type and not is_iterable and \
-       "@" in xpath and result == str():
+    if is_simple_type and not is_iterable and result == str():
         result = None
 
     return result

@@ -56,7 +56,7 @@ def _test(mod):
         #         rt.log(error, level=rt.LOG_LEVEL_WARNING)
 
         # ... assert errors.
-        tu.assert_iter(errors, expected_error_count)
+        tu.assert_iter(errors, expected_error_count, length_compare=tu.COMPARE_LTE)
 
 
 def test():

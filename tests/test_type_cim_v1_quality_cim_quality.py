@@ -55,9 +55,9 @@ def assert_extension_info(ext):
     :param object ext: Document extension information.
 
     """
-    tu.assert_str(ext.display_name, "CMIP5 Quality Control Data Level 2")
+    tu.assert_str(ext.display_name, "CMIP5 Dataset Quality Control Report")
     tu.assert_str(ext.description, "CMIP5 Quality Control", True)
-    tu.assert_str(ext.full_display_name, "CMIP5 QC Record : MOHC - CMIP5 Quality Control Data Level 2")
+    tu.assert_str(ext.full_display_name, " CMIP5 Dataset Quality Control Report")
     tu.assert_int(ext.summary_fields, 1)
     tu.assert_str(ext.summary_fields[0], "cmip5.output1.", True)
 

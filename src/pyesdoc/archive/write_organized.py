@@ -1,22 +1,21 @@
+# -*- coding: utf-8 -*-
 """
 .. module:: write_organized.py
    :copyright: @2013 Earth System Documentation (http://es-doc.org)
    :license: GPL/CeCIL
    :platform: Unix, Windows
-   :synopsis: Writes set of parsed documents to file system.
+   :synopsis: Writes set of organized documents to file system.
 
 .. moduleauthor:: Mark Conway-Greenslade <momipsl@ipsl.jussieu.fr>
 
 
 """
-# Module imports.
-import datetime
-import os
+import datetime, os
 from multiprocessing.dummy import Pool as ThreadPool
 
 from . import io
+from .. import constants
 from .parsers.doc_parser import parse as parse_doc
-from ..constants import ESDOC_ENCODING_JSON as _ENCODING
 from ..extensions import extend as extend_doc
 from ..io import (
     read as read_doc,
@@ -26,44 +25,159 @@ from ..utils import runtime as rt
 
 
 
+# Default document encoding.
+_ENCODING = constants.ESDOC_ENCODING_JSON
+
 # Original encoding type literal.
 _ORIGINAL = "original"
 
 
 class _DecodingException(Exception):
-    """Exception raised when document decoding fails."""
+    """Exception raised when document decoding fails.
+
+    """
     pass
 
 
 class _IOException(Exception):
-    """Exception raised when document i/o fails."""
+    """Exception raised when document i/o fails.
+
+    """
     pass
 
 
-class _DocumentContextInfo(object):
-    """Encapsulates document processing information."""
-    def __init__(self, project, source, fpath, index, verbose):
-        self.dirname = os.path.dirname(fpath)
-        self.encoding = fpath.split('.')[-1]
+class _DocumentProcessingInfo(object):
+    """Encapsulates document processing information.
+
+    """
+    def __init__(self, raw_file, index, verbose):
+        """Object constructor.
+
+        """
+        self.decoded = None
+        self.encoding = raw_file.encoding
         self.error = None
         self.index = index
-        self.fpath = fpath
-        self.fpath_parsed = fpath.replace(io.DIR_RAW, io.DIR_PARSED) \
-                                 .replace(self.encoding, _ENCODING)
-        self.fpath_error = fpath.replace(io.DIR_RAW, io.DIR_PARSED_ERROR)
-        self.project = project
-        self.source = source
+        self.raw = raw_file
         self.verbose = verbose
-
-        self.exists = os.path.exists(self.fpath_parsed)
 
 
     def __repr__(self):
-        return "{0} :: {1}".format(self.project.name, self.fpath)
+        """Object representation.
+
+        """
+        return "{0} :: {1}".format(self.project.name, self.raw.path)
+
+
+    @property
+    def fpath(self):
+        """Gets raw filepath.
+
+        """
+        return self.raw.path
+
+
+    @property
+    def fpath_parsed(self):
+        """Gets parsed filepath.
+
+        """
+        return self.raw.path.replace(io.DIR_RAW, io.DIR_PARSED) \
+                            .replace(self.raw.encoding, _ENCODING)
+
+
+    @property
+    def fpath_parsed_original(self):
+        """Gets original parsed filepath.
+
+        """
+        return self.raw.path.replace(io.DIR_RAW, io.DIR_PARSED) \
+                            .replace(self.raw.encoding, _ORIGINAL)
+
+
+    @property
+    def fpath_error(self):
+        """Gets error filepath.
+
+        """
+        return self.raw.path.replace(io.DIR_RAW, io.DIR_PARSED_ERROR) \
+                            .replace(self.raw.encoding, _ENCODING)
+
+
+    @property
+    def fname_organized(self):
+        """Gets organized file name.
+
+        """
+        return "{0}_{1}.{2}".format(self.decoded.meta.id,
+                                    self.decoded.meta.version,
+                                    _ENCODING)
+
+
+    @property
+    def fpath_organized(self):
+        """Gets organized file path.
+
+        """
+        return "{0}/{1}".format(self.organized_dir, self.fname_organized)
+
+
+    @property
+    def fname_organized_original(self):
+        """Gets organized original file name.
+
+        """
+        return "{0}_{1}.{2}".format(self.decoded.meta.id,
+                                    self.decoded.meta.version,
+                                    _ORIGINAL)
+
+    @property
+    def fpath_organized_original(self):
+        """Gets organized original file path.
+
+        """
+        return "{0}/{1}".format(self.organized_dir,
+                                self.fname_organized_original)
+
+
+    @property
+    def organized_dir(self):
+        """Gets organized document directory.
+
+        """
+        return io.get_doc_organized_folder(self.project,
+                                           self.source,
+                                           self.decoded)
+
+
+    @property
+    def is_processed(self):
+        """Gets flag indicating whether this file has already been processed.
+
+        """
+        return os.path.exists(self.fpath_parsed)
+
+
+    @property
+    def project(self):
+        """Gets associated document project.
+
+        """
+        return self.raw.project
+
+
+    @property
+    def source(self):
+        """Gets associated document source.
+
+        """
+        return self.raw.source
 
 
 def _log_start(ctx):
-    """Writes a processing start message to standard output."""
+    """Writes a processing start message to standard output.
+
+    """
     if ctx.verbose:
         msg = "processing document {0}: {1} --> {2} --> {3}"
         msg = msg.format(ctx.index, ctx.project, ctx.source, ctx.fpath)
@@ -71,64 +185,77 @@ def _log_start(ctx):
 
 
 def _decode(ctx):
-    """Decodes a document."""
-    # Use pyesdoc to decode raw file.
+    """Decodes a document.
+
+    """
     try:
-        ctx.decoded = read_doc(ctx.fpath, encoding=ctx.encoding)
+        ctx.decoded = read_doc(ctx.raw.path, encoding=ctx.raw.encoding)
     except Exception as err:
         raise _DecodingException(err)
 
 
-def _parse(ctx):
-    """Parses a document."""
-    # Parse document.
-    parse_doc(ctx.project, ctx.source, ctx.decoded)
+def _parse_and_extend(ctx):
+    """Parses and extends a document.
 
-    # Extend document.
+    """
+    parse_doc(ctx.project, ctx.source, ctx.decoded)
     extend_doc(ctx.decoded)
 
 
 def _write_parsed(ctx):
-    """Writes a parsed document to the file system."""
+    """Writes a parsed document to the file system.
+
+    """
     try:
         write_doc(ctx.decoded, _ENCODING, ctx.fpath_parsed)
     except IOError as err:
         raise _IOException(err)
     else:
-        ctx.exists = True
-        os.symlink(ctx.fpath, ctx.fpath_parsed.replace(_ENCODING, _ORIGINAL))
+        os.symlink(ctx.fpath, ctx.fpath_parsed_original)
 
 
 def _write_organized(ctx):
-    """Writes symbolic links."""
-    # Set organized document type directory.
-    dirname = io.get_organized_dir(ctx.project, ctx.source, ctx.decoded)
+    """Writes symbolic links to organized folder.
 
-    # Set organized file name.
-    fname = "{0}_{1}".format(ctx.decoded.meta.id, ctx.decoded.meta.version)
-    fpath = os.path.join(dirname, fname)
+    """
+    os.symlink(ctx.fpath, ctx.fpath_organized_original)
+    os.symlink(ctx.fpath_parsed, ctx.fpath_organized)
 
-    # Set links.
-    os.symlink(ctx.fpath, fpath + ".orginal")
-    os.symlink(ctx.fpath_parsed, fpath + "." + _ENCODING)
+
+def _delete_written(ctx):
+    """Deletes written file from file system in event of a processing error.
+
+    """
+    try:
+        os.remove(ctx.fpath_parsed)
+    except IOError:
+        pass
+    try:
+        os.remove(ctx.fpath_parsed_original)
+    except IOError:
+        pass
 
 
 def _log_error(ctx):
-    """Write processing error message to standard output."""
+    """Write processing error message to standard output.
+
+    """
     msg = "ARCHIVE ERROR :: processing document {0}: {1} --> {2} --> {3}"
     msg = msg.format(ctx.index, ctx.project, ctx.source, ctx.fpath)
     rt.log(msg)
 
 
 def _write_error(ctx):
-    """Writes document processing error to file system."""
+    """Writes document processing error to file system.
+
+    """
     try:
         with open(ctx.fpath_error, 'wb') as output:
             output.seek(0)
             output.write(u"------------------------------------------------------------\n")
-            output.write(u"ES-DOC ARCHIVE UPLOAD ERROR @ {} \n".format(datetime.datetime.now()))
+            output.write(u"ES-DOC ARCHIVE ERROR @ {} \n".format(datetime.datetime.now()))
             output.write(u"------------------------------------------------------------\n")
-            output.write(u"An error occurred whilst uploading a document to the db:\n\n")
+            output.write(u"An error occurred whilst organizing a document:\n\n")
             output.write(u"\tPROJECT = {0};\n".format(ctx.project))
             output.write(u"\tSOURCE = {0};\n".format(ctx.source))
             output.write(u"\tFILEPATH = {0};\n".format(ctx.fpath))
@@ -139,7 +266,9 @@ def _write_error(ctx):
 
 
 def _log_processing_stats(scanned, processed, errors):
-    """Logs processing stats."""
+    """Logs processing stats.
+
+    """
     rt.log("{0} documents scanned of which {1} required processing" \
         .format(scanned, processed))
     if errors:
@@ -147,13 +276,15 @@ def _log_processing_stats(scanned, processed, errors):
 
 
 def _get_documents(throttle, verbose):
-    """Yields documents for processing."""
+    """Yields documents for processing.
+
+    """
     scanned = 0
     yielded = 0
-    for project, source, fpath in io.get_documents(io.DIR_RAW):
+    for raw_file in io.yield_raw():
         scanned = scanned + 1
-        ctx = _DocumentContextInfo(project, source, fpath, yielded + 1, verbose)
-        if not ctx.exists:
+        ctx = _DocumentProcessingInfo(raw_file, yielded + 1, verbose)
+        if not ctx.is_processed:
             yielded = yielded + 1
             yield ctx
 
@@ -166,10 +297,24 @@ def _get_documents(throttle, verbose):
 
 
 def _process(ctx):
-    """Processes a downloaded document."""
-    rt.invoke(ctx,
-              (_log_start, _decode, _parse, _write_parsed, _write_organized),
-              (_log_error,_write_error))
+    """Processes a downloaded document.
+
+    """
+    tasks = (
+        _log_start,
+        _decode,
+        _parse_and_extend,
+        _write_parsed,
+        _write_organized
+        )
+
+    error_tasks = (
+        _delete_written,
+        _log_error,
+        _write_error
+        )
+
+    rt.invoke(ctx, tasks, error_tasks)
 
 
 def execute(throttle=0, verbose=False):

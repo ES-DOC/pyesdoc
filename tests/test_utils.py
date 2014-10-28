@@ -42,7 +42,7 @@ COMPARE_TYPES = (
 )
 
 # Document source.
-DOCUMENT_SOURCE = "testing"
+DOCUMENT_SOURCE = "test-unit"
 
 
 @nottest

@@ -9,7 +9,7 @@
    :synopsis: Encpasulates meta-information pertaining to the cim.v1 typeset.
 
 .. moduleauthor:: Earth System Documentation (ES-DOC) <dev@es-doc.org>
-.. note:: Code generated using esdoc_mp @ 2014-10-10 15:19:03.821696.
+.. note:: Code generated using esdoc_mp @ 2014-10-10 20:27:24.733146.
 
 """
 # Module imports.
@@ -395,7 +395,7 @@ data.DataStorageFile.type_info = (
 )
 
 data.DataStorageIp.type_info = (
-    ('fileName', str, False, False),
+    ('file_name', str, False, False),
     ('host', str, False, False),
     ('path', str, False, False),
     ('protocol', str, False, False),

@@ -27,18 +27,18 @@ import test_type_cim_v1_software_statistical_model_component
 
 # Set of test modules.
 MODULES = (
-    test_type_cim_v1_activity_ensemble_1,
-    test_type_cim_v1_activity_ensemble_2,
+    # test_type_cim_v1_activity_ensemble_1,
+    # test_type_cim_v1_activity_ensemble_2,
     test_type_cim_v1_activity_numerical_experiment,
-    test_type_cim_v1_activity_simulation_run,
-    test_type_cim_v1_data_data_object_1,
-    test_type_cim_v1_data_data_object_2,
-    test_type_cim_v1_grids_gridspec,
-    test_type_cim_v1_misc_document_set,
-    test_type_cim_v1_quality_cim_quality,
-    test_type_cim_v1_shared_platform,
-    test_type_cim_v1_software_model_component_1,
-    test_type_cim_v1_software_model_component_2,
+    # test_type_cim_v1_activity_simulation_run,
+    # test_type_cim_v1_data_data_object_1,
+    # test_type_cim_v1_data_data_object_2,
+    # test_type_cim_v1_grids_gridspec,
+    # test_type_cim_v1_misc_document_set,
+    # test_type_cim_v1_quality_cim_quality,
+    # test_type_cim_v1_shared_platform,
+    # test_type_cim_v1_software_model_component_1,
+    # test_type_cim_v1_software_model_component_2,
     # test_type_cim_v1_software_statistical_model_component,
 )
 

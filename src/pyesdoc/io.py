@@ -93,10 +93,10 @@ def read(fpath, encoding=None):
         return serialization.decode(input_file.read(), encoding)
 
 
-def convert(fpath, to_encoding, from_encoding=None):
+def convert(in_file, to_encoding, from_encoding=None):
     """Converts a document from one encoding to another.
 
-    :param str fpath: Path to previously saved file.
+    :param str in_file: Path to previously saved file.
     :param str encoding: Encoding to use during encoding.
 
     :returns: Path to converted pyesdoc document instance.
@@ -104,14 +104,14 @@ def convert(fpath, to_encoding, from_encoding=None):
 
     """
     # Validate input file path.
-    if not os.path.isfile(fpath):
-        fpath = os.path.join(_output_directory, fpath)
-        if not os.path.isfile(fpath):
+    if not os.path.isfile(in_file):
+        in_file = os.path.join(_output_directory, in_file)
+        if not os.path.isfile(in_file):
             rt.raise_error("File path does not exist.")
 
     # Set document to be converted.
-    doc = read(fpath, from_encoding)
+    doc = read(in_file, from_encoding)
 
     # Convert & write file.
-    ofpath = "{0}.{1}".format(os.path.splitext(fpath)[0], to_encoding)
-    write(read(fpath, from_encoding), to_encoding, ofpath)
+    out_file = "{0}.{1}".format(os.path.splitext(in_file)[0], to_encoding)
+    write(read(in_file, from_encoding), to_encoding, out_file)

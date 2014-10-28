@@ -96,14 +96,10 @@ def _assert_doc_requirements(doc, is_update):
     # Boundary condition - options.
     tu.assert_iter(req.options, 2, cim.v1.NumericalRequirementOption)
     opt = req.options[0]
+    tu.assert_str(opt.description, "Concentrations")
+    tu.assert_str(opt.id, "bc.013")
+    tu.assert_str(opt.name, "3.3.bc.sls_conc")
     tu.assert_str(opt.relationship, "XOR")
-    tu.assert_object(opt.requirement, cim.v1.BoundaryCondition)
-    # ... sub-requirement
-    req = opt.requirement
-    tu.assert_str(req.requirement_type, "boundaryCondition")
-    tu.assert_str(req.description, "Concentrations")
-    tu.assert_str(req.id, "bc.013")
-    tu.assert_str(req.name, "3.3.bc.sls_conc")
 
     # Spatio Temporal Constraint.
     req = doc.requirements[12]

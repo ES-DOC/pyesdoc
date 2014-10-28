@@ -1,1 +1,86 @@
-{"description": null, "contacts": [{"organisationName": "UK Met Office Hadley Centre", "url": null, "ontologyTypeKey": "cim.1.shared.ResponsibleParty", "abbreviation": "MOHC", "role": "contact", "address": null, "email": null, "individualName": null}], "ontologyTypeKey": "cim.1.shared.Platform", "meta": {"status": null, "typeSortKey": "BA", "language": "en", "genealogy": null, "author": {"organisationName": null, "url": null, "ontologyTypeKey": "cim.1.shared.ResponsibleParty", "abbreviation": null, "role": "documentAuthor", "address": null, "email": null, "individualName": "Metafor Questionnaire"}, "institute": "MOHC", "type": "cim.1.shared.Platform", "createDate": "2012-04-23 14:59:07.049089", "ontologyTypeKey": "cim.1.shared.DocMetaInfo", "externalIds": [], "id": "b765775a-e2ac-11df-9efb-00163e9152a5", "project": "CMIP5", "source": "testing", "metadataVersion": null, "drsPath": null, "metadataID": null, "version": 1, "encodings": ["json", "xml", "html", "xml-metafor-cim-v1"], "drsKeys": [], "sourceKey": null, "typeDisplayName": "Platform"}, "longName": "Machine IBM Power 6 and compiler Other", "units": [{"machine": {"maximumProcessors": 2, "interconnect": "Infiniband", "name": "IBM Power 6", "system": "Parallel", "libraries": [], "processorType": "Other", "location": null, "ontologyTypeKey": "cim.1.shared.Machine", "vendor": "IBM", "type": null, "operatingSystem": "AIX", "coresPerProcessor": 32, "description": null}, "compilers": [{"name": "Other", "language": null, "environmentVariables": null, "version": "12.1.0.0", "ontologyTypeKey": "cim.1.shared.Compiler", "type": null, "options": null}], "ontologyTypeKey": "cim.1.shared.MachineCompilerUnit"}], "shortName": "IBM Power 6_Other"}
+{
+    "contacts": [
+        {
+            "abbreviation": "MOHC",
+            "address": null,
+            "email": null,
+            "individualName": null,
+            "ontologyTypeKey": "cim.1.shared.ResponsibleParty",
+            "organisationName": "UK Met Office Hadley Centre",
+            "role": "contact",
+            "url": null
+        }
+    ],
+    "description": null,
+    "longName": "Machine IBM Power 6 and compiler Other",
+    "meta": {
+        "author": {
+            "abbreviation": null,
+            "address": null,
+            "email": null,
+            "individualName": "Metafor Questionnaire",
+            "ontologyTypeKey": "cim.1.shared.ResponsibleParty",
+            "organisationName": null,
+            "role": "documentAuthor",
+            "url": null
+        },
+        "createDate": "2012-04-23 14:59:07.049089",
+        "drsKeys": [],
+        "drsPath": null,
+        "encodings": [
+            "json",
+            "xml",
+            "html",
+            "xml-metafor-cim-v1"
+        ],
+        "externalIds": [],
+        "genealogy": null,
+        "id": "b765775a-e2ac-11df-9efb-00163e9152a5",
+        "institute": "MOHC",
+        "language": "en",
+        "metadataID": null,
+        "metadataVersion": null,
+        "ontologyTypeKey": "cim.1.shared.DocMetaInfo",
+        "project": "CMIP5",
+        "source": "testing",
+        "sourceKey": null,
+        "status": null,
+        "type": "cim.1.shared.Platform",
+        "typeDisplayName": "Platform",
+        "typeSortKey": "BA",
+        "version": 1
+    },
+    "ontologyTypeKey": "cim.1.shared.Platform",
+    "shortName": "IBM Power 6_Other",
+    "units": [
+        {
+            "compilers": [
+                {
+                    "environmentVariables": null,
+                    "language": null,
+                    "name": "Other",
+                    "ontologyTypeKey": "cim.1.shared.Compiler",
+                    "options": null,
+                    "type": null,
+                    "version": "12.1.0.0"
+                }
+            ],
+            "machine": {
+                "coresPerProcessor": 32,
+                "description": null,
+                "interconnect": "Infiniband",
+                "libraries": [],
+                "location": null,
+                "maximumProcessors": 2,
+                "name": "IBM Power 6",
+                "ontologyTypeKey": "cim.1.shared.Machine",
+                "operatingSystem": "AIX",
+                "processorType": "Other",
+                "system": "Parallel",
+                "type": null,
+                "vendor": "IBM"
+            },
+            "ontologyTypeKey": "cim.1.shared.MachineCompilerUnit"
+        }
+    ]
+}

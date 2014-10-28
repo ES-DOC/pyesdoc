@@ -18,6 +18,10 @@ import test_utils as tu
 import test_types as tt
 
 
+# Testing mode.
+_MODE = 'dev'
+
+
 
 def _create_doc(mod):
     """Creates a document for testing."""
@@ -29,13 +33,13 @@ def _create_doc(mod):
     return doc
 
 
-def _set_api_url(mode='dev'):
+def _set_api_url():
     """Assigns the base API url."""
-    if mode == 'dev':
+    if _MODE == 'dev':
         pyesdoc.set_option("api_url", "http://127.0.0.1:5000")
-    elif mode == 'test':
+    elif _MODE == 'test':
         pyesdoc.set_option("api_url", "http://test.api.es-doc.org")
-    elif mode == 'prod':
+    elif _MODE == 'prod':
         pyesdoc.set_option("api_url", "http://api.es-doc.org")
 
 
@@ -84,6 +88,7 @@ def _test(mod):
     doc = pyesdoc.retrieve(mod.DOC_ID, pyesdoc.ESDOC_DOC_VERSION_LATEST)
     mod.assert_doc(doc, True)
     mod.assert_doc_updates(doc)
+    return
 
     # Unpublish.
     pyesdoc.unpublish(mod.DOC_ID, mod.DOC_VERSION)
@@ -107,7 +112,7 @@ def _test(mod):
 
 def test():
     """Performs publishing workflow tests over the set of test documents."""
-    _set_api_url('dev')
+    _set_api_url()
     for mod in tt.MODULES:
         tu.init(_test, 'publishing', mod)
         yield _test, mod

@@ -26,6 +26,9 @@
 	{% if doc.inputs %}
 		{% include activity_simulation_run_inputs.html %}
 	{% end %}
+	{% if doc.conformances %}
+		{% include activity_simulation_run_conformances.html %}
+	{% end %}
 	{% if doc.model_reference and len(doc.model_reference.changes) %}
 		{% include activity_simulation_run_model_mods.html %}
 	{% end %}
