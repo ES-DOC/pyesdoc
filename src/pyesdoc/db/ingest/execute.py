@@ -8,7 +8,6 @@
 
 """
 import datetime, os
-from multiprocessing.dummy import Pool as ThreadPool
 
 from . import (
     set_drs,
@@ -18,26 +17,27 @@ from . import (
     set_summary,
     validate
     )
-from .. import session as db_session
 from ... import archive
-from ... utils import config, rt
+from ... utils import rt
+from ...extensions import extend as extend_doc
+from ...io import read as read_doc
 
 
 
-class DocumentProcessingInfo(object):
+class _DocumentProcessingInfo(object):
     """Encapsulates document processing information.
 
     """
-    def __init__(self, doc, fpath, fpath_ingested, index):
+    def __init__(self, organized, ingestable, index):
         """Object constructor.
 
         """
-        self.doc = doc
+        self.doc = None
         self.error = None
-        self.fpath = fpath
-        self.fpath_ingested = fpath_ingested
-        self.fpath_error = fpath_ingested.replace("ingested", "ingested_error")
+        self.fpath_error = ingestable.path.replace("ingested", "ingested_error")
         self.index = index
+        self.ingestable = ingestable
+        self.organized = organized
 
 
     def __repr__(self):
@@ -50,6 +50,35 @@ class DocumentProcessingInfo(object):
             self.doc.meta.version)
 
 
+class _DecodingException(Exception):
+    """Exception raised when document decoding fails.
+
+    """
+    pass
+
+
+class _ExtendingException(Exception):
+    """Exception raised when document extension fails.
+
+    """
+    pass
+
+
+def _set_document(ctx):
+    """Sets document prior to processing.
+
+    """
+    try:
+        ctx.doc = read_doc(ctx.organized.path, ctx.organized.encoding)
+    except Exception as err:
+        raise _DecodingException(err)
+
+    try:
+        extend_doc(ctx.doc)
+    except Exception as err:
+        raise _ExtendingException(err)
+
+
 def _write_error(ctx):
     """Writes document processing error to file system.
 
@@ -58,12 +87,6 @@ def _write_error(ctx):
     if isinstance(ctx.error, StopIteration):
         return
 
-    # Create parent directory.
-    try:
-        os.makedirs(os.path.dirname(ctx.fpath_error))
-    except OSError:
-        pass
-
     # Create error file.
     try:
         with open(ctx.fpath_error, 'wb') as output:
@@ -71,14 +94,14 @@ def _write_error(ctx):
             output.write(u"------------------------------------------------------------\n")
             output.write(u"ES-DOC API DB INGEST ERROR @ {} \n".format(datetime.datetime.now()))
             output.write(u"------------------------------------------------------------\n")
-            output.write(u"An error occurred whilst uploading a document to the db:\n\n")
+            output.write(u"An error occurred whilst ingesting a document:\n\n")
             output.write(u"\tPROJECT = {0};\n".format(ctx.doc.meta.project))
             output.write(u"\tSOURCE = {0};\n".format(ctx.doc.meta.source))
-            output.write(u"\tFILEPATH = {0};\n".format(ctx.fpath))
+            output.write(u"\tFILEPATH = {0};\n".format(ctx.organized.path))
             output.write(u"\tERROR = {0};\n".format(unicode(ctx.error)))
             output.write(u"\tERROR TYPE = {0}.".format(type(ctx.error)))
-    except IOError:
-        rt.log_warning("Document processing error handling failed.")
+    except IOError as err:
+        rt.log_warning("Document processing error handler failed: {0}".format(err))
 
 
 def _log_error(ctx):
@@ -96,14 +119,16 @@ def _write_ingested(ctx):
     """Writes ingested file to archive.
 
     """
-    # Create parent directory.
-    try:
-        os.makedirs(os.path.dirname(ctx.fpath_ingested))
-    except OSError:
-        pass
+    # Escape if file already exists.
+    if ctx.ingestable.exists:
+        return
 
-    # Create symbolic link to original file.
-    os.symlink(ctx.fpath, ctx.fpath_ingested)
+    # Escape upon uncontrolled error.
+    if ctx.error and not isinstance(ctx.error, StopIteration):
+        return
+
+    # Create symbolic link to organized file.
+    os.symlink(ctx.organized.path, ctx.ingestable.path)
 
 
 def _get_documents(throttle=0):
@@ -111,9 +136,9 @@ def _get_documents(throttle=0):
 
     """
     yielded = 0
-    for doc, fpath, fpath_ingested in archive.yield_ingestable():
-        yielded += + 1
-        yield DocumentProcessingInfo(doc, fpath, fpath_ingested, yielded)
+    for organized, ingestable in archive.yield_ingestable():
+        yielded += 1
+        yield _DocumentProcessingInfo(organized, ingestable, yielded)
         if throttle and throttle == yielded:
             break
 
@@ -123,6 +148,7 @@ def process(ctx):
 
     """
     tasks = (
+        _set_document,
         validate.execute,
         set_primary.execute,
         set_is_latest.execute,
@@ -133,6 +159,7 @@ def process(ctx):
         )
 
     error_tasks = (
+        _write_ingested,
         _write_error,
         _log_error
         )

@@ -10,6 +10,8 @@
 
 
 """
+import os
+
 
 class FileInfo(object):
     """Represents an archived file.
@@ -46,3 +48,19 @@ class FileInfo(object):
 
         """
         return self.folder.managed_dir
+
+
+    @property
+    def name(self):
+        """Get file name.
+
+        """
+        return self.path.split("/")[-1]
+
+
+    @property
+    def exists(self):
+        """Gets flag indicating whether file exists.
+
+        """
+        return os.path.exists(self.path)

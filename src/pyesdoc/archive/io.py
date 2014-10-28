@@ -19,6 +19,7 @@ from ..io import (
     )
 from ..extensions import extend as extend_doc
 from folder_info import FolderInfo
+from file_info import FileInfo
 
 
 
@@ -86,10 +87,6 @@ def get_folders(managed_filter=None):
 
     for project, source in config.get_project_sources():
         for managed in MANAGED_FOLDERS:
-            # Escape if out of scope.
-            if managed_filter and managed != managed_filter:
-                continue
-
             # Set managed folder directory path.
             path = config.DIR_ARCHIVE
             for name in (project, source, managed):
@@ -109,6 +106,11 @@ def get_folders(managed_filter=None):
                     result.append(FolderInfo(project, source, managed, sub_dir))
             else:
                 result.append(FolderInfo(project, source, managed, path))
+
+    # Apply filter.
+    if managed_filter:
+        managed_filter = managed_filter.lower()
+        result = [f for f in result if f.managed_dir == managed_filter]
 
     return result
 
@@ -145,17 +147,6 @@ def yield_raw():
             yield raw_file
 
 
-def yield_organized():
-    """Yields organized documents.
-
-    :returns: Set of organized directories.
-    :rtype: generator
-
-    """
-    for folder in get_folders(DIR_ORGANIZED):
-        return folder.yield_documents(file_filter="*.json")
-
-
 def yield_ingestable():
     """Yields ingestable documents.
 
@@ -163,12 +154,12 @@ def yield_ingestable():
     :rtype: generator
 
     """
-    for folder in get_folders(DIR_ORGANIZED):
-        for fpath in folder.yield_files():
-            fpath_ingested = fpath.replace(DIR_ORGANIZED, DIR_INGESTED)
-            if not os.path.exists(fpath_ingested):
-                doc = extend_doc(read_doc(fpath))
-                yield doc, fpath, fpath_ingested
+    for organized in get_folders(DIR_ORGANIZED):
+        ingested = get_folder(organized.project, organized.source, DIR_INGESTED)
+        for organized_file in organized.yield_files("*.json"):
+            ingested_fpath = os.path.join(ingested.path, organized_file.name)
+            if not os.path.exists(ingested_fpath):
+                yield organized_file, FileInfo(ingested, ingested_fpath)
 
 
 def get_counts():
