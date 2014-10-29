@@ -13,3 +13,6 @@ requests==2.3.0
 six==1.7.3
 tornado==4.0.1
 wsgiref==0.1.2
+sphinx
+sphinx-autobuild
+sphinx_rtd_theme
