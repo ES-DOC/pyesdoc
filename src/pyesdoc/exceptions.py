@@ -2,7 +2,7 @@
 class ObsoleteDocumentException(Exception):
 	"""Raised when an obsolete documents is being processed."""
 	def __init__(self, message):
-		Exception.__init__(self, "WARNING :: obsolete document 123 :: {0}".format(message))
+		Exception.__init__(self, "WARNING :: obsolete document :: {0}".format(message))
 
 
 class DocumentDecodingException(Exception):

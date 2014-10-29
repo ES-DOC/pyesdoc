@@ -9,7 +9,6 @@
 .. moduleauthor:: Earth System Documentation (ES-DOC) <dev@es-doc.org>
 
 """
-# Module imports.
 from .constants import *
 from .factory import (
     create
@@ -58,7 +57,6 @@ from .validation import (
     )
 
 from . import archive
-from . import db
 from . import ontologies
 from . import options
 from . import publishing
@@ -70,7 +68,6 @@ from . import validation
 # Module exports.
 __all__ = [
     'create',
-    'db',
     'decode',
     'encode',
     'ESDOC_DEFAULT_ENCODING',

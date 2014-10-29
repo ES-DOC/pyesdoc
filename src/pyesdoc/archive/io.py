@@ -52,6 +52,7 @@ MANAGED_FOLDERS = {
     DIR_INGESTED,
     DIR_INGESTED_ERROR,
     DIR_ORGANIZED,
+    DIR_ORGANIZED_ERROR,
     DIR_PARSED,
     DIR_PARSED_ERROR,
     DIR_RAW,
@@ -65,7 +66,7 @@ def get_folder(project, source, managed, sub_dir=None):
     """
     # Set managed directory.
     path = config.DIR_ARCHIVE
-    for name in (project, source, managed):
+    for name in (managed, project, source):
         path = os.path.join(path, name)
 
     # Set sub-directory.
@@ -85,11 +86,12 @@ def get_folders(managed_filter=None):
     """
     result = []
 
+    # Iterate config & managed folders.
     for project, source in config.get_project_sources():
         for managed in MANAGED_FOLDERS:
-            # Set managed folder directory path.
+            # Set folder directory path.
             path = config.DIR_ARCHIVE
-            for name in (project, source, managed):
+            for name in (managed, project, source):
                 path = os.path.join(path, name)
 
             # Ensure directory exists.
@@ -249,7 +251,7 @@ def load(uid, version, load_original=False, must_exist=False):
 
     # Exception if the document was expected to exist.
     if must_exist:
-        raise IOError("Document does not exist within archive: {0}.".format(fname))
+        raise IOError("Document does not exist within archive: {0}-{1}.".format(uid, version))
 
 
 def write(doc):

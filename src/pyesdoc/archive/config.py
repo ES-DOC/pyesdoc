@@ -30,19 +30,15 @@ projects = config.archive.projects
 # Set of supported sources.
 sources = config.archive.sources
 
-# Set of default sources.
-_DEFAULT_SOURCES = ["test", "test-unit"]
-
 
 def get_project_sources():
-    """Returns iterable of unique project/source pairs."""
+    """Returns iterable of unique project/source pairs.
+
+    """
     result = []
     for project in projects:
         for source in (f.source for f in project.feeds):
             if (project.name, source) not in result:
                 result.append((project.name, source))
-        # Append default sources.
-        for source in _DEFAULT_SOURCES:
-            result.append((project.name, source))
 
     return tuple(result)

@@ -36,17 +36,17 @@ def _test_archive_doc_dirs():
     import pyesdoc.archive.config as cfg
     import pyesdoc.archive.io as io
 
-    for project, source in cfg.get_project_sources():
-        for sub_dir in io.MANAGED_FOLDERS:
-            doc_dir = io.get_folder(project, source, sub_dir)
-            assert os.path.exists(doc_dir), doc_dir
+    for managed_dir in io.MANAGED_FOLDERS:
+        for project, source in cfg.get_project_sources():
+            folder = io.get_folder(project, source, managed_dir)
+            assert os.path.exists(folder.path), folder.path
 
 
 def _test_archive_get_counts():
     """Test archive document counts."""
     import pyesdoc.archive.io as io
 
-    tu.assert_int(len(io.get_counts()), 35)
+    tu.assert_int(len(io.get_counts()), 43, assert_type=tu.COMPARE_LTE)
 
 
 def test():
