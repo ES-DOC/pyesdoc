@@ -11,40 +11,77 @@
 
 
 """
-# Module imports.
 import os
 
 from .convert import json_file_to_namedtuple
 
 
 
+# Users home directory.
+_HOME = os.path.expanduser("~")
+
 # Default configuration file path.
-_CONFIG_FPATH = "ops/config/esdoc.json"
+_CONFIG_FPATH = "pyesdoc.conf"
 
 # Configuration data.
 data = None
 
 
+def _init_from_shell_config():
+    """Attempts to initialize configuration from the shell.
+
+    """
+    # Find.
+    dir_path = os.path.dirname(os.path.abspath(__file__))
+    while dir_path != '/':
+        config_path = os.path.join(dir_path, "ops/config/pyesdoc.conf")
+        if os.path.exists(config_path):
+            return config_path
+        dir_path = os.path.dirname(dir_path)
+
+
+def _init_from_user_home():
+    """Attempts to initialize configuration from a file foud on user's home directory.
+
+    """
+    config_path = os.path.join(_HOME, ".esdoc")
+    if os.path.exists(config_path):
+        return config_path
+
+
 
 def _init():
-	"""Initializes configuration."""
-	global data
+    """Initializes configuration."""
+    global data
 
-	# Scan up file system hierarchy until reaching ops/config directory.
-	dpath = os.path.dirname(os.path.abspath(__file__))
-	while dpath != '/':
-		fpath = os.path.join(dpath, _CONFIG_FPATH)
-		if os.path.exists(fpath):
-			break
-		dpath = os.path.dirname(dpath)
+    # Attempt to load config from file system.
+    for func in (
+        _init_from_shell_config,
+        _init_from_user_home,
+        ):
+        config_path = func()
+        if config_path:
+            break
 
-	# If still not found then exception.
-	if not os.path.exists(fpath):
-		msg = "ESDOC configuration file ({0}) could not be found".format(_CONFIG_FPATH)
-		raise RuntimeError(msg)
+    # Decode.
+    if config_path:
+        data = json_file_to_namedtuple(config_path)
 
-	# Config data wrapper.
-	data = json_file_to_namedtuple(fpath)
+    # Warn
+    else:
+        msg = """
+            WARNING :: pyesdoc configuration file not found.
+            If you are running pyesdoc as part of the ES-DOC shell then the config file location should be:
+                SHELL-HOME/ops/config/pyesdoc.conf.
+            If you are running pyesdoc in standalone mode then the config file location should be:
+                $HOME/.esdoc
+            If neither of these files exist then:
+                1.  Download the following default configuration file:
+                    https://raw.githubusercontent.com/ES-DOC/esdoc-shell/master/misc/resources/templates/template-esdoc.json
+                2.  Copy downloaded file to $HOME/.esdoc
+            If this problem persists them contact es-doc-support@list.woc.noaa.gov
+        """
+        raise RuntimeError(msg)
 
 
 # Auto-initialize.
