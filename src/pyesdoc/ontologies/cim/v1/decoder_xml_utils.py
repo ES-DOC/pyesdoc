@@ -12,12 +12,10 @@
 .. note:: Code generated using esdoc_mp @ 2013-08-28 14:41:13.340289.
 
 """
-
-# Module imports.
 import uuid
 import types
 
-from dateutil import parser as dateutil_parser
+import arrow
 from lxml import etree as et
 
 
@@ -134,7 +132,10 @@ def _convert_to_datetime(xml, nsmap=None):
     if as_string is None:
         return None
     else:
-        return dateutil_parser.parse(as_string)
+        if len(as_string) == 4:
+            return arrow.get(as_string, 'YYYY').datetime
+        else:
+            return arrow.get(as_string).datetime
 
 
 # Set of simple type convertors.

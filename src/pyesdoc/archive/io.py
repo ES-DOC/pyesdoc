@@ -164,6 +164,14 @@ def yield_ingestable():
                 yield organized_file, FileInfo(ingested, ingested_fpath)
 
 
+def delete_files(managed_dir):
+    """Deletes file from a managed folder.
+
+    """
+    for folder in get_folders(managed_dir):
+        folder.delete_files()
+
+
 def get_counts():
     """Returns sub-directory document counts.
 

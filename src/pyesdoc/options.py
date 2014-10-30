@@ -17,23 +17,24 @@ from .utils import runtime as rt
 # Set of supported options.
 _OPTIONS = {
     'api_url' : "http://test.api.es-doc.org",
-    'institute': "UNKNOWN"
+    'institute': "UNKNOWN",
+    'ouput_dir': ''
 }
 
 
-def list():
+def list_options():
     """List library options.
 
     """
     opts = []
-    for k, v in _OPTIONS.items():
-        opts.append((k, v))
+    for name, value in _OPTIONS.items():
+        opts.append((name, value))
 
     return tuple(opts)
 
 
-def set(name, value):
-    """Sets a library option.
+def set_option(name, value):
+    """Sets an option value.
 
     :param str name: Option name.
     :param str value: Option value.
@@ -45,11 +46,10 @@ def set(name, value):
     _OPTIONS[name] = str(value)
 
 
-def get(name):
-    """Returns a library option.
+def get_option(name):
+    """Returns an option value.
 
-    :param name: Option name.
-    :type name: str
+    :param str name: Option name.
 
     :returns: A library option.
     :rtype: str

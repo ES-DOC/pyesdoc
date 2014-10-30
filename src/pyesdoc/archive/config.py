@@ -42,3 +42,4 @@ def get_project_sources():
                 result.append((project.name, source))
 
     return tuple(result)
+  

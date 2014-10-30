@@ -77,7 +77,7 @@ def _init():
                 $HOME/.esdoc
             If neither of these files exist then:
                 1.  Download the following default configuration file:
-                    https://raw.githubusercontent.com/ES-DOC/esdoc-shell/master/misc/resources/templates/template-esdoc.json
+                    https://raw.githubusercontent.com/ES-DOC/esdoc-shell/master/resources/user/template-pyesdoc.conf
                 2.  Copy downloaded file to $HOME/.esdoc
             If this problem persists them contact es-doc-support@list.woc.noaa.gov
         """

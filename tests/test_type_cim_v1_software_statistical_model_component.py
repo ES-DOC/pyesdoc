@@ -9,7 +9,8 @@
 .. moduleauthor:: Earth System Documentation (ES-DOC) <dev@es-doc.org>
 
 """
-# Module imports.
+import arrow
+
 import pyesdoc.ontologies.cim as cim
 import test_utils as tu
 
@@ -34,7 +35,7 @@ DOC_UID = '4b29d25e-2968-11e0-8517-00163e9152a5'
 DOC_VERSION = '9'
 
 # Test document creation date.
-DOC_DATE = '2013-03-22 17:54:48.178304'
+DOC_DATE = arrow.get('2013-03-22 17:54:48.178304').datetime
 
 # Test document project.
 DOC_PROJECT = "CMIP5"
@@ -85,7 +86,7 @@ def assert_doc(doc, meta, ext):
     assert doc.license is None
     assert doc.long_name == "IPSL-CM5A-LR;atmosphere:LMDZ5A(95x96L39);ocean:NEMOv3.2 (OPA-LIM-PISCES,149x182L31)"
     assert doc.previous_version == str()
-    assert doc.release_date == dateutil_parser.parse('2010')
+    assert doc.release_date == arrow.get('2010', 'YYYY').datetime
     assert doc.short_name == 'IPSL-CM5A-LR'
     assert doc.types[0] == 'downscaling'
 

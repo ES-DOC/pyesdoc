@@ -324,6 +324,9 @@ def execute(throttle=0, verbose=False):
     :param bool verbose: Flag indicating whether logging is verbose.
 
     """
+    io.delete_files(io.DIR_ORGANIZED_ERROR)
+    io.delete_files(io.DIR_PARSED_ERROR)
+
     pool = ThreadPool()
     pool.map(_process, _get_documents(throttle, verbose))
     pool.close()

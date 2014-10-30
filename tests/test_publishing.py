@@ -9,11 +9,12 @@
 .. moduleauthor:: Earth System Documentation (ES-DOC) <dev@es-doc.org>
 
 """
-# Module imports.
-import datetime
-import uuid
+import datetime, uuid
+
+import arrow
 
 import pyesdoc
+
 import test_utils as tu
 import test_types as tt
 
@@ -28,7 +29,7 @@ def _create_doc(mod):
     doc = tu.get_doc(mod)
     mod.DOC_ID = doc.meta.id = uuid.uuid4()
     mod.DOC_VERSION = doc.meta.version = 0
-    mod.DOC_DATE = doc.meta.create_date = datetime.datetime.now()
+    mod.DOC_DATE = doc.meta.create_date = arrow.now().datetime
 
     return doc
 

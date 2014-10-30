@@ -11,7 +11,6 @@
 
 
 """
-# Module imports.
 import collections
 import csv
 import datetime
@@ -21,7 +20,7 @@ import time
 import types
 import uuid
 
-from dateutil import parser as date_parser
+import arrow
 
 
 
@@ -529,7 +528,7 @@ def str_to_typed_value(s, type):
     # Decode according to type:
     # ... date's
     if type in (datetime.datetime, datetime.date, datetime.time):
-        return date_parser.parse(s)
+        return arrow.get(s).datetime
     # ... uuid's
     elif type is uuid.UUID:
         return uuid.UUID(s)

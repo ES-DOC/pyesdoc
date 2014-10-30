@@ -17,9 +17,10 @@ import random
 import uuid
 from os.path import dirname, abspath, join
 
+import arrow
 from nose.tools import nottest
-import dateutil.parser as dateutil_parser
 import lxml.etree as et
+
 
 import pyesdoc
 import pyesdoc.ontologies.cim.v1.typeset as cim_v1
@@ -187,11 +188,17 @@ def get_boolean():
     return True
 
 
-def get_date():
+def get_date(value=None):
     """Returns a random integer for testing purposes.
 
     """
-    return datetime.datetime.now()
+    if value:
+        if len(value) == 4:
+            return arrow.get(value, "YYYY").datetime
+        else:
+            return arrow.get(value).datetime
+    else:
+        return arrow.utcnow().datetime
 
 
 def get_int(lower=0, upper=9999999):
@@ -436,9 +443,9 @@ def assert_date(actual, expected):
 
     """
     if not isinstance(actual, datetime.datetime):
-        actual = dateutil_parser.parse(actual)
+        actual = get_date(actual)
     if not isinstance(expected, datetime.datetime):
-        expected = dateutil_parser.parse(expected)
+        expected = get_date(expected)
 
     assert actual == expected, \
            "Date mismatch : actual = {0} :: expected = {1}" \

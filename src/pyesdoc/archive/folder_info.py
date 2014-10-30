@@ -96,3 +96,11 @@ class FolderInfo(object):
 
         """
         return len(glob.glob(self.path_all_files))
+
+
+    def delete_files(self, file_filter=None):
+        """Deletes folder files.
+
+        """
+        for file_info in self.yield_files(file_filter):
+            os.remove(file_info.path)

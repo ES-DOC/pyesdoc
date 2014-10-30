@@ -9,7 +9,8 @@
 .. moduleauthor:: Earth System Documentation (ES-DOC) <dev@es-doc.org>
 
 """
-# Module imports.
+import arrow
+
 import pyesdoc.ontologies.cim as cim
 import test_utils as tu
 
@@ -34,7 +35,7 @@ DOC_UID = '834151a4-978d-4627-954e-285916bb907a'
 DOC_VERSION = '1'
 
 # Test document creation date.
-DOC_DATE = '2011-09-28 16:08:41'
+DOC_DATE = arrow.get('2011-09-28 16:08:41').datetime
 
 # Test document project.
 DOC_PROJECT = "CMIP5"
@@ -137,7 +138,7 @@ def assert_doc1(doc, meta, ext):
         assert c is not None
         assert isinstance(c, cim.v1.Citation)
         assert c.title.startswith(str(i + 1) + ' - ')
-        assert c.date == dateutil_parser.parse('2009-02-11')
+        assert c.date == arrow.get('2009-02-11').datetime
     assert len(doc.content) == 1
     assert doc.content[0].aggregation == 'sum'
     assert doc.content[0].frequency == 'Other'
@@ -160,8 +161,8 @@ def assert_doc1(doc, meta, ext):
     assert doc.extent.geographical.south == float(-90)
     assert doc.extent.geographical.west == float(0)
     assert doc.extent.geographical.north == float(90)
-    assert doc.extent.temporal.begin == dateutil_parser.parse('1859-12-1')
-    assert doc.extent.temporal.end == dateutil_parser.parse('1999-12-30')
+    assert doc.extent.temporal.begin == arrow.get('1859-12-1').datetime
+    assert doc.extent.temporal.end == arrow.get('1999-12-30').datetime
     assert doc.extent.temporal.time_interval.factor == int(-1)
     assert doc.extent.temporal.time_interval.radix == int(50430)
     assert doc.extent.temporal.time_interval.unit == 'day'

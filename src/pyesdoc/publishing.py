@@ -17,7 +17,7 @@ import requests
 from . import constants, options
 from serialization import encode, decode
 from extensions import extend
-from utils import rt, config
+from utils import rt
 from validation import is_valid
 
 
@@ -118,7 +118,7 @@ def _get_api_url(verb):
     """Helper function to return api endpoint url.
 
     """
-    return options.get(_OPT_API_URL) + '/2/document/{0}'.format(verb)
+    return options.get_option(_OPT_API_URL) + '/2/document/{0}'.format(verb)
 
 
 def _get_doc_url(verb, uid, version, encoding=None):

@@ -16,8 +16,7 @@ from .factory import (
 from .io import (
     write,
     read,
-    convert as convert_file,
-    set_output_directory
+    convert as convert_file
     )
 from .ontologies import (
     associate,
@@ -26,9 +25,9 @@ from .ontologies import (
     list_types
     )
 from .options import (
-    set as set_option,
-    get as get_option,
-    list as list_options
+    set_option,
+    get_option,
+    list_options
     )
 from .extensions import (
     extend,
@@ -57,6 +56,7 @@ from .validation import (
     )
 
 from . import archive
+from . import io
 from . import ontologies
 from . import options
 from . import publishing
@@ -80,6 +80,7 @@ __all__ = [
     'ESDOC_ENCODING_JSON',
     'ESDOC_ENCODING_XML',
     'get_option',
+    'io',
     'is_supported',
     'is_valid',
     'list_options',

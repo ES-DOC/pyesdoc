@@ -13,13 +13,18 @@
 import datetime
 import uuid
 
-from . import constants, ontologies
+from . import constants, ontologies, options
 from .utils import runtime as rt
 
 
+# Institute option.
+_OPT_INSTITUTE = "institute"
+
 
 def _assert_type(typeof):
-    """Asserts that the passed type is a supported pyesdoc document type reference."""
+    """Asserts that the passed type is a supported pyesdoc document type reference.
+
+    """
     if isinstance(typeof, str):
         o, v, p, t = typeof.split('.')
         if not ontologies.is_supported(o, v, p, t):
@@ -30,8 +35,8 @@ def _assert_type(typeof):
 
 def create(typeof,
            project,
-           institute,
-           language=constants.ESDOC_DEFAULT_LANGUAGE,
+           institute=None,
+           language=None,
            source=None):
     """Creates a document.
 
@@ -45,13 +50,19 @@ def create(typeof,
     :rtype: pyesdoc object
 
     """
-    # Defensive programming.
+    # Validate inputs.
     _assert_type(typeof)
-    rt.assert_var('institute', institute, str)
     rt.assert_var('project', project, str)
-    rt.assert_var('language', language, str)
+    if institute:
+        rt.assert_var('institute', institute, str)
+    if language:
+        rt.assert_var('language', language, str)
     if source:
         rt.assert_var('source', source, str)
+
+    # Set defaults.
+    institute = institute or options.get_option(_OPT_INSTITUTE)
+    language = language or constants.ESDOC_DEFAULT_LANGUAGE
 
     # Format params.
     institute = str(institute).lower()
@@ -67,7 +78,7 @@ def create(typeof,
     else:
         doc = typeof()
 
-    # Assign document meta info.
+    # Initialize document meta info.
     if doc is not None and hasattr(doc, 'meta'):
         doc.meta.id = uuid.uuid4()
         doc.meta.version = 0

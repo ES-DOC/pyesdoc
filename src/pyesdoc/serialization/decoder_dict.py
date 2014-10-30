@@ -13,8 +13,6 @@
 import datetime
 import uuid
 
-from dateutil import parser as date_parser
-
 from .. import ontologies
 from .. utils import (
     convert,

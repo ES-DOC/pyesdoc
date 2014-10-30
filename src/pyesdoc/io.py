@@ -8,16 +8,14 @@
 .. moduleauthor:: Mark Conway-Greenslade <momipsl@ipsl.jussieu.fr>
 
 """
-# Module imports.
 import os
 
-from . import constants, serialization
-from .utils import runtime as rt
+from . import constants, serialization, options
 
 
 
-# Output directory path.
-_output_directory = None
+# Output directory option.
+_OPT_OUTPUT_DIR = "ouput_dir"
 
 
 def _get_doc_path(doc, encoding):
@@ -27,23 +25,7 @@ def _get_doc_path(doc, encoding):
                                      str(doc.meta.version),
                                      encoding)
 
-    return os.path.join(_output_directory, fpath)
-
-
-def set_output_directory(path):
-    """Sets io output directory.
-
-    :param path: Output directory path.
-    :type path: str
-
-    """
-    global _output_directory
-
-    # Defensive programming.
-    if not os.path.isdir(path):
-        rt.raise_error("Invalid directory path :: {0}.".format(path))
-
-    _output_directory = path
+    return os.path.join(options.get(_OPT_OUTPUT_DIR), fpath)
 
 
 def write(doc, encoding=constants.ESDOC_ENCODING_JSON, fpath=None):
@@ -60,10 +42,8 @@ def write(doc, encoding=constants.ESDOC_ENCODING_JSON, fpath=None):
     if fpath is None:
         fpath = _get_doc_path(doc, encoding)
 
-    doc = serialization.encode(doc, encoding)
-
     with open(fpath, 'w') as output_file:
-        output_file.write(doc)
+        output_file.write(serialization.encode(doc, encoding))
 
     return fpath
 
@@ -79,11 +59,10 @@ def read(fpath, encoding=None):
     :rtype: object
 
     """
-    # Defensive programming.
     if not os.path.isfile(fpath):
-        fpath = os.path.join(_output_directory, fpath)
+        fpath = os.path.join(options.get(_OPT_OUTPUT_DIR), fpath)
         if not os.path.isfile(fpath):
-            rt.raise_error("File path does not exist.")
+            raise IOError("Document file path does not exist")
 
     # If encoding is unspecified then derive from file extension.
     if encoding is None:
@@ -105,13 +84,13 @@ def convert(in_file, to_encoding, from_encoding=None):
     """
     # Validate input file path.
     if not os.path.isfile(in_file):
-        in_file = os.path.join(_output_directory, in_file)
+        in_file = os.path.join(options.get(_OPT_OUTPUT_DIR), in_file)
         if not os.path.isfile(in_file):
-            rt.raise_error("File path does not exist.")
+            raise IOError("Document file path does not exist")
 
-    # Set document to be converted.
+    # Read document.
     doc = read(in_file, from_encoding)
 
-    # Convert & write file.
+    # Write converted document.
     out_file = "{0}.{1}".format(os.path.splitext(in_file)[0], to_encoding)
-    write(read(in_file, from_encoding), to_encoding, out_file)
+    write(doc, to_encoding, out_file)

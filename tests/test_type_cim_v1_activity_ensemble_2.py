@@ -9,7 +9,8 @@
 .. moduleauthor:: Earth System Documentation (ES-DOC) <dev@es-doc.org>
 
 """
-# Module imports.
+import arrow
+
 import pyesdoc.ontologies.cim as cim
 import test_utils as tu
 
@@ -34,7 +35,7 @@ DOC_UID = 'fd46d094-6fdb-11e1-825e-00163e9152a5'
 DOC_VERSION = '1'
 
 # Test document creation date.
-DOC_DATE = '2012-06-13 13:28:36.407863'
+DOC_DATE = arrow.get('2012-06-13 13:28:36.407863').datetime
 
 # Test document project.
 DOC_PROJECT = "CMIP5"
