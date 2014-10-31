@@ -10,7 +10,7 @@
 """
 import os
 
-from . import constants, serialization, options
+from . import constants, serialization, options, extensions
 
 
 
@@ -90,6 +90,10 @@ def convert(in_file, to_encoding, from_encoding=None):
 
     # Read document.
     doc = read(in_file, from_encoding)
+
+    # Extend document.
+    if to_encoding == constants.ESDOC_ENCODING_HTML:
+        extensions.extend(doc)
 
     # Write converted document.
     out_file = "{0}.{1}".format(os.path.splitext(in_file)[0], to_encoding)

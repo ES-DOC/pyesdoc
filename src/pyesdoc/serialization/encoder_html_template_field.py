@@ -331,6 +331,7 @@ _FIELDSETS = {
         FieldInfo('Funder', path='responsible_parties.role=funder.organisation_name', link_path='responsible_parties.role=funder.url'),
         FieldInfo('Principal Investigator', path='responsible_parties.role=pi.individual_name', email_path='responsible_parties.role=pi.email'),
         FieldInfo('Release Date', path='release_date'),
+        FieldInfo('Language', path='language.name'),
         FieldInfo('Description', path='description')
     ]
 }
