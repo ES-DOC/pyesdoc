@@ -25,7 +25,7 @@ def _get_doc_path(doc, encoding):
                                      str(doc.meta.version),
                                      encoding)
 
-    return os.path.join(options.get(_OPT_OUTPUT_DIR), fpath)
+    return os.path.join(options.get_option(_OPT_OUTPUT_DIR), fpath)
 
 
 def write(doc, encoding=constants.ESDOC_ENCODING_JSON, fpath=None):
@@ -59,8 +59,9 @@ def read(fpath, encoding=None):
     :rtype: object
 
     """
+    print fpath, os.path.isfile(fpath)
     if not os.path.isfile(fpath):
-        fpath = os.path.join(options.get(_OPT_OUTPUT_DIR), fpath)
+        fpath = os.path.join(options.get_option(_OPT_OUTPUT_DIR), fpath)
         if not os.path.isfile(fpath):
             raise IOError("Document file path does not exist")
 
@@ -84,7 +85,7 @@ def convert(in_file, to_encoding, from_encoding=None):
     """
     # Validate input file path.
     if not os.path.isfile(in_file):
-        in_file = os.path.join(options.get(_OPT_OUTPUT_DIR), in_file)
+        in_file = os.path.join(options.get_option(_OPT_OUTPUT_DIR), in_file)
         if not os.path.isfile(in_file):
             raise IOError("Document file path does not exist")
 
