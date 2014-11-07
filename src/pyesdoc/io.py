@@ -59,7 +59,6 @@ def read(fpath, encoding=None):
     :rtype: object
 
     """
-    print fpath, os.path.isfile(fpath)
     if not os.path.isfile(fpath):
         fpath = os.path.join(options.get_option(_OPT_OUTPUT_DIR), fpath)
         if not os.path.isfile(fpath):
