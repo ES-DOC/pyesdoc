@@ -9,7 +9,7 @@
    :synopsis: The set of types of the cim.v1.activity package.
 
 .. moduleauthor:: Earth System Documentation (ES-DOC) <dev@es-doc.org>
-.. note:: Code generated using esdoc_mp @ 2014-11-10 13:54:31.100648.
+.. note:: Code generated using esdoc_mp @ 2014-11-10 15:38:55.262860.
 
 """
 # Module imports.

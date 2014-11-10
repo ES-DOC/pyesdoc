@@ -9,7 +9,7 @@
    :synopsis: A set of cim 1 decoders.
 
 .. moduleauthor:: Earth System Documentation (ES-DOC) <dev@es-doc.org>
-.. note:: Code generated using esdoc_mp @ 2014-11-10 13:54:31.085184.
+.. note:: Code generated using esdoc_mp @ 2014-11-10 15:38:55.242294.
 
 """
 
@@ -295,7 +295,7 @@ def decode_doc_reference(xml, nsmap):
         ('id', False, 'uuid.UUID', 'child::cim:id'),
         ('name', False, 'str', 'child::cim:name'),
         ('type', False, 'str', 'child::cim:type'),
-        ('version', False, 'str', 'child::cim:version'),
+        ('version', False, 'int', 'child::cim:version'),
     ]
 
     return set_attributes(typeset.shared.DocReference(), xml, nsmap, decodings)
