@@ -9,13 +9,14 @@
    :synopsis: A set of cim 1 decoders.
 
 .. moduleauthor:: Earth System Documentation (ES-DOC) <dev@es-doc.org>
-.. note:: Code generated using esdoc_mp @ 2014-10-10 20:27:24.721695.
+.. note:: Code generated using esdoc_mp @ 2014-11-10 13:54:31.083186.
 
 """
 
 # Module imports.
 from decoder_xml_utils import set_attributes
 from decoder_for_activity_package import *
+from decoder_for_data_package import *
 from decoder_for_grids_package import *
 from decoder_for_shared_package import *
 from decoder_for_software_package import *
@@ -37,7 +38,7 @@ def decode_document_set(xml, nsmap):
 
     """
     decodings = [
-        ('data', True, 'str', 'child::cim:dataObject'),
+        ('data', True, decode_data_object, 'child::cim:dataObject'),
         ('ensembles', True, decode_ensemble, 'child::cim:ensemble'),
         ('experiment', False, decode_numerical_experiment, 'child::cim:numericalExperiment'),
         ('grids', True, decode_grid_spec, 'child::cim:gridSpec'),

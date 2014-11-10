@@ -54,7 +54,13 @@ def assert_doc(doc, is_update=False):
     :param bool is_update: Flag indicating whether document has been updated.
 
     """
-    pass
+    tu.assert_iter(doc.data, 18, cim.v1.DataObject)
+    tu.assert_iter(doc.ensembles, 1, cim.v1.Ensemble)
+    tu.assert_object(doc.experiment, cim.v1.NumericalExperiment)
+    tu.assert_iter(doc.grids, 1, cim.v1.GridSpec)
+    tu.assert_object(doc.model, cim.v1.ModelComponent)
+    tu.assert_object(doc.platform, cim.v1.Platform)
+    tu.assert_object(doc.simulation, cim.v1.SimulationRun)
 
 
 def update_doc(doc):

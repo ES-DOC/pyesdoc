@@ -9,18 +9,12 @@
 .. moduleauthor:: Earth System Documentation (ES-DOC) <dev@es-doc.org>
 
 """
-
-# Module imports.
-import datetime
-import os
-import random
-import uuid
+import datetime, os, random, uuid
 from os.path import dirname, abspath, join
 
 import arrow
 from nose.tools import nottest
 import lxml.etree as et
-
 
 import pyesdoc
 import pyesdoc.ontologies.cim.v1.typeset as cim_v1
@@ -75,15 +69,8 @@ def get_test_file(name):
     :rtype: file
 
     """
-    path = get_test_file_path(name)
-
-    if name.split(".")[-1] in (
-        pyesdoc.ESDOC_ENCODING_XML,
-        pyesdoc.METAFOR_CIM_XML_ENCODING
-        ):
-        return et.parse(path)
-    else:
-        return open(path, 'r')
+    with open(get_test_file_path(name), 'r') as in_file:
+        return in_file.read()
 
 
 def init(test, description, mod=None, suffix=None):
@@ -280,18 +267,12 @@ def assert_doc(mod, doc):
 def assert_iter(collection,
                 length=-1,
                 item_type=None,
-                length_compare=COMPARE_GTE):
+                length_compare=COMPARE_EXACT):
     """Asserts an object collection.
 
-    :param collection: An object collection.
-    :type collection: list
-
-    :param length: Collection size.
-    :type length: int
-
-    :param length: Collection size comparason operator.
-    :type length: str
-
+    :param list collection: An object collection.
+    :param int length: Collection size.
+    :param str length: Collection size comparason operator.
     :param item_type: Type that each collection item should sub-class.
     :type item_type: class or None
 

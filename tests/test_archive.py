@@ -22,13 +22,13 @@ def _test_archive_config():
     import pyesdoc.archive.config as cfg
 
     tu.assert_path(cfg.DIR_ARCHIVE)
-    tu.assert_int(cfg.projects, 4)
+    tu.assert_int(cfg.projects, 5)
     tu.assert_int(cfg.sources, 4)
     tu.assert_int(cfg.projects[0].feeds, 5)
     tu.assert_int(cfg.projects[1].feeds, 1)
     tu.assert_int(cfg.projects[2].feeds, 1)
     tu.assert_int(cfg.projects[3].feeds, 1)
-    tu.assert_int(cfg.get_project_sources(), 5)
+    tu.assert_int(cfg.get_project_sources(), 6)
 
 
 def _test_archive_doc_dirs():

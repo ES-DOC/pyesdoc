@@ -89,7 +89,7 @@ def _assert_doc_core(doc, is_update):
     tu.assert_str(doc.description, "Main amip ensemble simulations", True)
     tu.assert_str(doc.long_name, "3.3 AMIP and AMIP Ensemble", True)
     tu.assert_iter(doc.projects, 1, str)
-    tu.assert_iter(doc.projects[0], "CMIP5")
+    tu.assert_str(doc.projects[0], "CMIP5")
     tu.assert_iter(doc.responsible_parties, 4, cim.v1.ResponsibleParty)
     tu.assert_str(doc.short_name, "amip")
     tu.assert_object(doc.spinup_date_range, cim.v1.ClosedDateRange)
@@ -183,8 +183,6 @@ def assert_doc1(doc, meta, ext):
     :param object ext: Document extension information.
 
     """
-    return
-
     assert len(doc.meta.external_ids) == 1
     assert doc.meta.external_ids[0].is_open == True
     assert doc.meta.external_ids[0].value == 'MOHC_HadGEM2-ES_6.3 abrupt4xCO2'

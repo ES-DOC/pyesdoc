@@ -9,7 +9,7 @@
    :synopsis: Encpasulates meta-information pertaining to the cim.v1 typeset.
 
 .. moduleauthor:: Earth System Documentation (ES-DOC) <dev@es-doc.org>
-.. note:: Code generated using esdoc_mp @ 2014-10-10 20:27:24.733146.
+.. note:: Code generated using esdoc_mp @ 2014-11-10 13:54:31.096511.
 
 """
 # Module imports.
@@ -889,13 +889,20 @@ software.Timing.type_info = (
 )
 
 misc.DocumentSet.type_info = (
-    ('data', str, False, True),
+    ('data', data.DataObject, False, True),
+    ('data_references', shared.DocReference, False, True),
     ('ensembles', activity.Ensemble, False, True),
+    ('ensembles_references', shared.DocReference, False, True),
     ('experiment', activity.NumericalExperiment, False, False),
+    ('experiment_reference', shared.DocReference, False, False),
     ('grids', grids.GridSpec, False, True),
+    ('grids_references', shared.DocReference, False, True),
     ('meta', shared.DocMetaInfo, True, False),
     ('model', software.ModelComponent, False, False),
+    ('model_reference', shared.DocReference, False, False),
     ('platform', shared.Platform, False, False),
+    ('platform_reference', shared.DocReference, False, False),
     ('simulation', activity.SimulationRun, False, False),
+    ('simulation_reference', shared.DocReference, False, False),
 )
 
