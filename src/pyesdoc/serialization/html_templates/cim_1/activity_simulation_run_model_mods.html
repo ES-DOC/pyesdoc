@@ -6,10 +6,7 @@
 	</header>
 	<table>
 		<tbody>
-		{% set ctx = TemplateInfo(doc, fieldset_type='property') %}
-		{% for mod in mods %}
-			{% set ctx.fieldset = ctx.fieldset + [FieldInfo(mod.name, value=mod.details[0].description)] %}
-		{% end %}
+		{% set ctx = TemplateInfo(doc, fieldset_type='property', fieldset=("cim.1.activity.simulationrun-model-mods", mods)) %}
 		{% include ../core/fieldset.html %}
 		</tbody>
 	</table>

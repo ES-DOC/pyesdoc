@@ -10,15 +10,9 @@
 		<header>
 			<h4>Scientific Properties ({{ len(doc.ext.scientific_property_tree) }})</h4>
 		</header>
-		{% set ctx = TemplateInfo(doc, fieldset_type="property") %}
-		{% for p in doc.ext.scientific_property_tree %}
-			{% set p_display_name = p.ext.display_name.replace("Scientific Properties > ", "") %}
-			{% for v in sorted(p.values) %}
-				{% set ctx.fieldset = ctx.fieldset + [FieldInfo(p_display_name, value=v)] %}
-			{% end %}
-		{% end %}
 		<table>
 			<tbody>
+			{% set ctx = TemplateInfo(doc, fieldset_type="property", fieldset=("cim.1.software.modelcomponent-properties", doc.ext.scientific_property_tree)) %}
 			{% include ../core/fieldset.html %}
 			</tbody>
 		</table>

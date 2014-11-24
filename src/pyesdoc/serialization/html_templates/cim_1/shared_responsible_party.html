@@ -1,15 +1,20 @@
-{% comment TODO: ABBREVIATION field ??? %}
+<section id={{ section_id }}>
+	<header>
+		<{{ header }}>Contacts</{{ header }}>
+	</header>
+	{% for contact_id, contact in enumerate(contacts) %}
 
-{% set ctx = TemplateInfo(ctx,
-	fieldset = [
-	    FieldInfo('Role', path='role', formatter=unicode.upper),
-	    FieldInfo('Person', path='individual_name'),
-	    FieldInfo('Organisation', path='organisation_name'),
-	    FieldInfo('Address', path='address'),
-	    FieldInfo('Email', path='email', email_path='email'),
-	    FieldInfo('URL', path='url', link_path='url')
-    ],
-) %}
-{% include ../core/fieldset_table.html %}
+	{% if contact.role %}
+	<h5>{{ contact.role }}</h5>
+	{% else %}
+	<h5>Contact {{ contact_id }}</h5>
+	{% end %}
 
-{% set ctx = ctx.previous %}
+	<table>
+		<tbody>
+		{% set ctx = TemplateInfo(contact, fieldset="cim.1.shared.responsibleparty") %}
+		{% include ../core/fieldset.html %}
+		</tbody>
+	</table>
+	{% end %}
+</section>

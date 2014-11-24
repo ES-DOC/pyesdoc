@@ -13,6 +13,9 @@
     	{% if doc.ext.component_tree %}
 	    <li><a href="#{{ doc.ext.full_id }}-components">Components</a></li>
 		{% end %}
+    	{% if doc.grid %}
+	    <li><a href="#{{ doc.ext.full_id }}-grid">Grid</a></li>
+		{% end %}
     </ul>
 </nav>
 {% end %}
@@ -28,6 +31,18 @@
     {% end %}
 	{% if doc.ext.component_tree %}
 		{% include software_model_component_hierarchy.html %}
+    {% end %}
+	{% if doc.grid %}
+		<section>
+		    <header>
+		        <h4>Grid</h4>
+		    </header>
+		    <table>
+		        <tbody>
+		        {% comment TODO emit model grid %}
+		        </tbody>
+		    </table>
+		</section>
     {% end %}
 
 {% end %}

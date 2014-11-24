@@ -1,204 +1,75 @@
 """
-.. module:: encoder_html_template_field.py
+.. module:: cim_1.py
 
    :copyright: @2013 Earth System Documentation (http://es-doc.org)
    :license: GPL / CeCILL
    :platform: Unix, Windows
-   :synopsis: HTML encoding template field information.
+   :synopsis: CIM v1 HTML field sets.
 
 .. moduleauthor:: Earth System Documentation (ES-DOC) <dev@es-doc.org>
 
 """
-import datetime
-
-from .. utils import convert, functional
+from .field_info import FieldInfo
 
 
 
-class FieldInfo():
-    """Document field processing information."""
-    def __init__(self,
-                 name,
-                 email=None,
-                 email_path=None,
-                 formatter=None,
-                 link=None,
-                 link_path=None,
-                 path=None,
-                 tag_id=None,
-                 value=None):
-        self.name = name
-        self.email = email
-        self.email_path = email_path
-        self.formatter = formatter
-        self.link = link
-        self.link_path = link_path
-        self.path = path
-        self.tag_id = tag_id
-        self.value = value
-
-
-    def get_name(self):
-        """Returns formatted field name for html output."""
-        return _get_name(self.name)
-
-
-    def get_value(self, data=None):
-        """Returns value of field for html output.
-
-        :param object data: An object from which the field value is derived.
-
-        :returns: The derived field value.
-        :rtype str:
-
-        """
-        v = _get_value(data, self.path) if self.path else self.value
-        v = _format_value(v, self.formatter)
-
-        return v
-
-
-    def get_link(self, data):
-        """Returns value of associated hyperlink.
-
-        :param object data: An object from which the hyperlink value is derived.
-
-        :returns: The derived field hyperlink.
-        :rtype str:
-
-        """
-        v = _get_value(data, self.link_path)
-        v = _format_value(v)
-
-        return v
-
-
-    def get_email(self, data):
-        """Returns value of associated email link.
-
-        :param object data: An object from which the email link value is derived.
-
-        :returns: The derived field email link.
-        :rtype str:
-
-        """
-        v = _get_value(data, self.email_path)
-        v = _format_value(v)
-
-        return v
-
-
-def _format_value(v, formatter=None):
-    """Formats values for document output."""
-    def _format(s):
-        if s is None:
-            s = None
-        # TODO add support for time formatting.
-        elif isinstance(v, datetime.datetime):
-            s = str(s)[:10]
-        else:
-            s = str(s)
-
-        if s and len(s):
-            s = unicode(s.decode('utf8').strip())
-            if formatter:
-                s = formatter(s)
-
-        return s
-
-    return "  ".join(map(_format, v)).strip() if isinstance(v, list) else _format(v)
-
-
-def _get_value(data, path):
-    """Returns formatted value for document output."""
-    if data is None:
-        return None
-
-    def is_collection_reference(attr):
-        try:
-            int(attr)
-        except ValueError:
-            return False
-        else:
-            return True
-
-    # Initialise return value.
-    value = data
-
-    # Walk attribute path.
-    for attr in path.split("."):
-        # ... collection filter by index
-        if is_collection_reference(attr):
-            value = value[int(attr)]
-        # ... collection filter by attribute
-        elif "=" in attr:
-            left, right = attr.split("=")
-            value = functional.first(value, left, right.lower(), lambda v: str(v).lower())
-        # ... item attribute filter
-        elif hasattr(value, attr):
-            value = getattr(value, attr)
-        # Otherwise escape.
-        else:
-            break
-
-        # Escape at dead-end.
-        if value is None:
-            break
-
-    return None if value == data else value
-
-
-def _get_name(name):
-    """Returns formatted name for document output."""
-    # Initialise.
-    name = "" if name is None else name.strip()
-
-    # Convert to spaced case.
-    if len(name) > 4:
-        name = convert.str_to_spaced_case(name).strip()
-
-    # Prefixes.
-    n = name.lower()
-    prefixes = { "number of ": "" }
-    for prefix in prefixes.keys():
-        if n.startswith(prefix):
-            name = prefixes[prefix] + name[len(prefix):]
-
-    # Substrings.
-    replacements = {
-        "_": " ",
-        "Second": "2nd",
-        "First": "1st"
-    }
-    for replacement in replacements.keys():
-        name = name.replace(replacement, replacements[replacement])
-
-    # Substitutions.
-    swaps = {
-        "id": "ID",
-    }
-    for swap in swaps.keys():
-        if name == swap:
-            name = swaps[swap]
-
-    return name
-
-
-def _get_cim_1_grids_grid_tile_resolution(resolution):
-    """Returns a fieldset.
+def _get_grids_grid_tile_resolution(resolution):
+    """Fieldset factory.
 
     """
     props = sorted(resolution.properties, key=lambda p: p.name)
-    result = map(lambda p: FieldInfo(p.name, value=p.value), props)
+    result = [FieldInfo(p.name, value=p.value) for p in props]
     result.insert(0, FieldInfo('Description', path='description'))
 
     return result
 
 
-# Pre-compiled document field sets.
-_FIELDSETS = {
-    'cim.1.activity.ensemble-member': [
-    ],
+def _get_activity_ensemble_member(member):
+    """Fieldset factory.
+
+    """
+    result = []
+
+    if member.simulation_reference:
+        for change in member.simulation_reference.changes:
+            result.append(FieldInfo('Change type', value=change.type))
+            result.append(FieldInfo('Change name', value=change.name))
+            result.append(FieldInfo('Change date', value=change.date))
+            result.append(FieldInfo('Change description', value=change.details[0].description))
+
+    return result
+
+
+def _get_activity_simulation_run_model_mods(mods):
+    """Fieldset factory.
+
+    """
+    result = []
+
+    for mod in mods:
+        result.append(FieldInfo(mod.name, value=mod.details[0].description))
+
+    return result
+
+
+def _get_software_modelcomponent_properties(properties):
+    """Fieldset factory.
+
+    """
+    result = []
+
+    for prop in properties:
+        display_name = prop.ext.display_name.replace("Scientific Properties > ", "")
+        for value in sorted(prop.values):
+            result.append(FieldInfo(display_name, value=value))
+
+    return result
+
+
+# Document field sets.
+FIELDSETS = {
+    'cim.1.activity.ensemble-member': \
+        _get_activity_ensemble_member,
     'cim.1.activity.ensemble-overview': [
         FieldInfo('Project', path='meta.project'),
         FieldInfo('Institute', path='meta.institute'),
@@ -232,6 +103,16 @@ _FIELDSETS = {
         FieldInfo('RIP Value', path='simulation_id'),
         FieldInfo('Spinup start', path='spinup_date_range.start'),
         FieldInfo('Spinup duration', path='spinup_date_range.duration')
+    ],
+    'cim.1.activity.simulationrun-model-mods': \
+        _get_activity_simulation_run_model_mods,
+    'cim.1.data.dataobject-overview': [
+        FieldInfo('Project', path='meta.project'),
+        FieldInfo('Institute', path='meta.institute'),
+        FieldInfo('Acronym', path='acronym'),
+        FieldInfo('Format', path='distribution.format'),
+        FieldInfo('State', path='data_status', formatter=unicode.upper),
+        FieldInfo('Description', path='description')
     ],
     'cim.1.grids.grid-mosaic': [
         FieldInfo('Name', path='short_name'),
@@ -277,7 +158,7 @@ _FIELDSETS = {
         FieldInfo('units', path='units')
     ],
     'cim.1.grids.grid-tile-resolution': \
-        _get_cim_1_grids_grid_tile_resolution,
+        _get_grids_grid_tile_resolution,
     'cim.1.quality.cimquality': [
         FieldInfo('Measure', path='measure.name', link_path='evaluation.type_hyperlink'),
         FieldInfo('Outcome', path='evaluation.specification', link_path='evaluation.specification_hyperlink'),
@@ -331,26 +212,16 @@ _FIELDSETS = {
         FieldInfo('Funder', path='responsible_parties.role=funder.organisation_name', link_path='responsible_parties.role=funder.url'),
         FieldInfo('Principal Investigator', path='responsible_parties.role=pi.individual_name', email_path='responsible_parties.role=pi.email'),
         FieldInfo('Release Date', path='release_date'),
+        FieldInfo('License', path='license.name'),
+        FieldInfo('Previous Version', path='previous_version'),
+        FieldInfo('Funding Source', path='funding_sources'),
+        FieldInfo('Home Page', path='online_resource'),
         FieldInfo('Language', path='language.name'),
-        FieldInfo('Description', path='description')
-    ]
+        FieldInfo('Coupling Framework', path='coupling_framework'),
+        FieldInfo('Description', path='description'),
+        FieldInfo('Doc. author', path='meta.author.individual_name'),
+        FieldInfo('Doc. created', path='meta.create_date')
+    ],
+    'cim.1.software.modelcomponent-properties': \
+        _get_software_modelcomponent_properties
 }
-
-
-def load(fieldset):
-    """Loads a templating fieldset.
-
-    :param fieldset: Fieldset identifier.
-    :ptype fieldset: tuple | str
-
-    :returns: A templating fieldset.
-    :rtype: list
-
-    """
-    if isinstance(fieldset, tuple):
-        key, obj = fieldset
-        return _FIELDSETS[key](obj)
-    elif isinstance(fieldset, str):
-        return _FIELDSETS[fieldset]
-    else:
-        return fieldset or []

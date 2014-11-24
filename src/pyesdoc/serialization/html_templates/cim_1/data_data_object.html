@@ -5,32 +5,12 @@
 {% comment ***************** %}
 {% block doc-content %}
 
-	{% comment ***************** %}
-	{% comment Emit overview     %}
-	{% comment ***************** %}
-	{% set ctx = TemplateInfo(doc,
-		header = "Overview",
-		fieldset = [
-		    FieldInfo('Project', path='meta.project'),
-		    FieldInfo('Institute', path='meta.institute'),
-		    FieldInfo('Acronym', path='acronym'),
-			FieldInfo('Format', path='distribution.format'),
-			FieldInfo('State', path='data_status', formatter=unicode.upper),
-		    FieldInfo('Description', path='description'),
-		],
-		tag_id = doc.ext.full_id + "-overview",
-		template = "fieldset_table.html"
-	) %}
-	{% include ../core/section_01.html %}
-
-	{% comment ***************** %}
-	{% comment Emit citations    %}
-	{% comment ***************** %}
-	{% set ctx = TemplateInfo(doc.citations,
-		header = "Citations",
-		tag_id = doc.ext.full_id + "-citations",
-		template = "cim_1_shared_citation.html"
-	) %}
-	{% include ../core/section_01.html %}
+	{% include data_data_object_overview.html %}
+	{% if doc.citations %}
+		{% set citations = doc.citations %}
+		{% set header = "h4" %}
+		{% set section_id = "{0}-details-citations".format(doc.ext.full_id) %}
+		{% include shared_citation.html %}
+	{% end %}
 
 {% end %}

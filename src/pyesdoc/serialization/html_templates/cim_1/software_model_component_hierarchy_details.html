@@ -57,7 +57,7 @@
 		{% set previousCtx = ctx %}
 		{% set header = "h5" %}
 		{% set section_id = "{0}-citations".format(c.meta.id) %}
-		{% include shared_citation_1.html %}
+		{% include shared_citation.html %}
 		{% set ctx = previousCtx %}
     {% end %}
 
@@ -69,7 +69,7 @@
 		{% set previousCtx = ctx %}
 		{% set header = "h5" %}
 		{% set section_id = "{0}-contacts".format(c.meta.id) %}
-		{% include shared_responsible_party_1.html %}
+		{% include shared_responsible_party.html %}
 		{% set ctx = previousCtx %}
     {% end %}
 

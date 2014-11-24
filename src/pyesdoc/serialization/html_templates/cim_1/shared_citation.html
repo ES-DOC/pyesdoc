@@ -1,10 +1,16 @@
-{% set ctx = TemplateInfo(ctx,
-	fieldset = [
-	    FieldInfo('Title', path='title'),
-	    FieldInfo('Long Title', path='collective_title'),
-	    FieldInfo('Location', path='location', link_path='location'),
-    ],
-) %}
-{% include ../core/fieldset_table.html %}
-
-{% set ctx = ctx.previous %}
+{% if citations %}
+<section id="{{ section_id }}">
+	<header>
+		<{{ header }}>Citations</{{ header }}>
+	</header>
+	{% for citation in citations %}
+	{% set ctx = TemplateInfo(citation, fieldset = 'cim.1.shared.citation') %}
+	<h5>{{ citation.title }}</h5>
+	<table>
+		<tbody>
+		{% include ../core/fieldset.html %}
+		</tbody>
+	</table>
+	{% end %}
+</section>
+{% end %}

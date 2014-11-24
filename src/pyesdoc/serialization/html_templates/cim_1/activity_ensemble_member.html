@@ -4,15 +4,7 @@
 	</header>
 	<table>
 		<tbody>
-		{% set ctx = TemplateInfo(member, fieldset="cim.1.activity.ensemble-member") %}
-		{% if member.simulation_reference %}
-			{% for change in member.simulation_reference.changes %}
-				{% set ctx.fieldset = ctx.fieldset + [FieldInfo('Change type', value=change.type)] %}
-				{% set ctx.fieldset = ctx.fieldset + [FieldInfo('Change Name', value=change.name)] %}
-				{% set ctx.fieldset = ctx.fieldset + [FieldInfo('Change Date', value=change.date)] %}
-				{% set ctx.fieldset = ctx.fieldset + [FieldInfo('Change Description', value=change.details[0].description)] %}
-			{% end %}
-		{% end %}
+		{% set ctx = TemplateInfo(member, fieldset=("cim.1.activity.ensemble-member", member)) %}
 		{% include ../core/fieldset.html %}
 		</tbody>
 	</table>
