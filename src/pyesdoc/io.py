@@ -15,7 +15,7 @@ from . import constants, serialization, options, extensions
 
 
 # Output directory option.
-_OPT_OUTPUT_DIR = "ouput_dir"
+_OPT_OUTPUT_DIR = "output_dir"
 
 
 def _get_doc_path(doc, encoding):

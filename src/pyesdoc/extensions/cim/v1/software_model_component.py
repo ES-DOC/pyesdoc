@@ -5,7 +5,6 @@
 
 
 """
-# Module imports.
 from collections import namedtuple
 
 from .software_model_component_property_1 import (
@@ -20,7 +19,9 @@ from .software_model_component_property_2 import (
 
 
 def get_extenders():
-    """Returns set of extension functions."""
+    """Returns set of extension functions.
+
+    """
     return (
         _set_type_display_info,
         _set_component_hierarchy,
@@ -117,6 +118,10 @@ def _extend_component_01(ctx):
         ctx.c.ext = _ComponentExtensionInfo()
     if not hasattr(ctx.c.ext, "full_display_name"):
         ctx.c.ext.full_display_name = str()
+    if not hasattr(ctx.c.ext, "long_display_name"):
+        ctx.c.ext.long_display_name = str()
+    if not hasattr(ctx.c.ext, "short_display_name"):
+        ctx.c.ext.short_display_name = str()
 
     ctx.c.ext.ancestors = ctx.ancestors
     ctx.c.ext.component_tree = []

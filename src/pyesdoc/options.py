@@ -18,7 +18,7 @@ from .utils import runtime as rt
 _OPTIONS = {
     'api_url' : "http://test.api.es-doc.org",
     'institute': "UNKNOWN",
-    'ouput_dir': ''
+    'output_dir': ''
 }
 
 
