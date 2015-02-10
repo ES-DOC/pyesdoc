@@ -9,10 +9,10 @@
 
 
 """
-
 def _correct_property_values(content):
     """Removes erroneous property values."""
     return content.replace('(+: (DEFAULT: ), 1)', '1')
+
 
 
 # Set of content parsers.
