@@ -3,13 +3,13 @@
 """
 .. module:: cim.v1.typeset.py
 
-   :copyright: @2014 Earth System Documentation (http://es-doc.org)
+   :copyright: @2015 Earth System Documentation (http://es-doc.org)
    :license: GPL / CeCILL
    :platform: Unix, Windows
    :synopsis: Typeset information for the cim v1 ontology.
 
 .. moduleauthor:: Earth System Documentation (ES-DOC) <dev@es-doc.org>
-.. note:: Code generated using esdoc_mp @ 2014-11-10 15:38:55.257507.
+.. note:: Code generated using esdoc_mp @ 2015-02-11 15:34:49.682909.
 
 """
 
@@ -90,6 +90,7 @@ __all__ = [
     'GridSpec',
     'GridTile',
     'GridTileResolutionType',
+    'SimpleGridGeometry',
     'VerticalCoordinateList',
     'CimQuality',
     'Evaluation',
@@ -198,6 +199,7 @@ TYPES = (
     grids.GridSpec,
     grids.GridTile,
     grids.GridTileResolutionType,
+    grids.SimpleGridGeometry,
     grids.VerticalCoordinateList,
     quality.CimQuality,
     quality.Evaluation,

@@ -3,13 +3,13 @@
 """
 .. module:: cim.v1.typeset_meta.py
 
-   :copyright: @2014 Earth System Documentation (http://es-doc.org)
+   :copyright: @2015 Earth System Documentation (http://es-doc.org)
    :license: GPL / CeCILL
    :platform: Unix, Windows
    :synopsis: Encpasulates meta-information pertaining to the cim.v1 typeset.
 
 .. moduleauthor:: Earth System Documentation (ES-DOC) <dev@es-doc.org>
-.. note:: Code generated using esdoc_mp @ 2014-11-10 15:38:55.258289.
+.. note:: Code generated using esdoc_mp @ 2015-02-11 15:34:49.683595.
 
 """
 # Module imports.
@@ -74,6 +74,7 @@ grids.GridProperty.type_key = 'cim.1.grids.GridProperty'
 grids.GridSpec.type_key = 'cim.1.grids.GridSpec'
 grids.GridTile.type_key = 'cim.1.grids.GridTile'
 grids.GridTileResolutionType.type_key = 'cim.1.grids.GridTileResolutionType'
+grids.SimpleGridGeometry.type_key = 'cim.1.grids.SimpleGridGeometry'
 grids.VerticalCoordinateList.type_key = 'cim.1.grids.VerticalCoordinateList'
 quality.CimQuality.type_key = 'cim.1.quality.CimQuality'
 quality.Evaluation.type_key = 'cim.1.quality.Evaluation'
@@ -472,7 +473,7 @@ grids.GridTile.type_info = (
     ('nz', int, False, False),
     ('refinement_scheme', str, False, False),
     ('short_name', str, False, False),
-    ('simple_grid_geom', str, False, False),
+    ('simple_grid_geom', grids.SimpleGridGeometry, False, False),
     ('vertical_crs', str, False, False),
     ('vertical_resolution', grids.GridTileResolutionType, False, False),
     ('zcoords', grids.VerticalCoordinateList, False, False),
@@ -481,6 +482,15 @@ grids.GridTile.type_info = (
 grids.GridTileResolutionType.type_info = (
     ('description', str, False, False),
     ('properties', grids.GridProperty, False, True),
+)
+
+grids.SimpleGridGeometry.type_info = (
+    ('dim_order', str, False, False),
+    ('is_mesh', bool, False, False),
+    ('num_dims', int, True, False),
+    ('xcoords', grids.CoordinateList, True, False),
+    ('ycoords', grids.CoordinateList, True, False),
+    ('zcoords', grids.CoordinateList, False, False),
 )
 
 grids.VerticalCoordinateList.type_info = (

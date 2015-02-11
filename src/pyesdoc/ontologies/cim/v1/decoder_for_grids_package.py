@@ -3,13 +3,13 @@
 """
 .. module:: cim.v1.decoder_for_grids_package.py
 
-   :copyright: @2014 Earth System Documentation (http://es-doc.org)
+   :copyright: @2015 Earth System Documentation (http://es-doc.org)
    :license: GPL / CeCILL
    :platform: Unix, Windows
    :synopsis: A set of cim 1 decoders.
 
 .. moduleauthor:: Earth System Documentation (ES-DOC) <dev@es-doc.org>
-.. note:: Code generated using esdoc_mp @ 2014-11-10 15:38:55.237075.
+.. note:: Code generated using esdoc_mp @ 2015-02-11 15:34:49.665688.
 
 """
 
@@ -198,6 +198,25 @@ def decode_grid_tile_resolution_type(xml, nsmap):
     ]
 
     return set_attributes(typeset.grids.GridTileResolutionType(), xml, nsmap, decodings)
+
+
+def decode_simple_grid_geometry(xml, nsmap):
+    """Decodes an instance of the following type: simple grid geometry.
+
+    :param xml: XML from which type is to be decoded.
+    :type xml: lxml.etree
+
+    :param nsmap: XML namespace mappings.
+    :type nsmap: dict
+
+    :returns: A decoded type instance.
+    :rtype: cim.v1.typeset.grids.SimpleGridGeometry
+
+    """
+    decodings = [
+    ]
+
+    return set_attributes(typeset.grids.SimpleGridGeometry(), xml, nsmap, decodings)
 
 
 def decode_vertical_coordinate_list(xml, nsmap):

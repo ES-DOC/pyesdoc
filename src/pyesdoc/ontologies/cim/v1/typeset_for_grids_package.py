@@ -3,13 +3,13 @@
 """
 .. module:: cim.v1.typeset_for_grids_package.py
 
-   :copyright: @2014 Earth System Documentation (http://es-doc.org)
+   :copyright: @2015 Earth System Documentation (http://es-doc.org)
    :license: GPL / CeCILL
    :platform: Unix, Windows
    :synopsis: The set of types of the cim.v1.grids package.
 
 .. moduleauthor:: Earth System Documentation (ES-DOC) <dev@es-doc.org>
-.. note:: Code generated using esdoc_mp @ 2014-11-10 15:38:55.267922.
+.. note:: Code generated using esdoc_mp @ 2015-02-11 15:34:49.693316.
 
 """
 # Module imports.
@@ -150,7 +150,7 @@ class GridTile(object):
         self.nz = None                                    # int
         self.refinement_scheme = None                     # grids.RefinementTypeEnum
         self.short_name = None                            # str
-        self.simple_grid_geom = None                      # str
+        self.simple_grid_geom = None                      # grids.SimpleGridGeometry
         self.vertical_crs = None                          # str
         self.vertical_resolution = None                   # grids.GridTileResolutionType
         self.zcoords = None                               # grids.VerticalCoordinateList
@@ -170,6 +170,26 @@ class GridTileResolutionType(object):
 
         self.description = None                           # str
         self.properties = []                              # grids.GridProperty
+
+
+class SimpleGridGeometry(object):
+    """A concrete class within the cim v1 type system.
+
+    SimpleGridGeometry:This property may be used to define the coordinates of the nodes or cells making up a simple (i.e. uniform or regular) grid tile. More details are provided in the description of the SimpleGridGeometry data type.
+
+    """
+    def __init__(self):
+        """Constructor.
+
+        """
+        super(SimpleGridGeometry, self).__init__()
+
+        self.dim_order = None                             # str
+        self.is_mesh = None                               # bool
+        self.num_dims = None                              # int
+        self.xcoords = None                               # grids.CoordinateList
+        self.ycoords = None                               # grids.CoordinateList
+        self.zcoords = None                               # grids.CoordinateList
 
 
 class VerticalCoordinateList(CoordinateList):

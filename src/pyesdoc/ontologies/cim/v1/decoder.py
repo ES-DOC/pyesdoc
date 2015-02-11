@@ -3,13 +3,13 @@
 """
 .. module:: pyesdoc.ontologies.cim.v1.decoder.py
 
-   :copyright: @2014 Earth System Documentation (http://es-doc.org)
+   :copyright: @2015 Earth System Documentation (http://es-doc.org)
    :license: GPL / CeCILL
    :platform: Unix, Windows
    :synopsis: A set of cim 1 decoders.
 
 .. moduleauthor:: Earth System Documentation (ES-DOC) <dev@es-doc.org>
-.. note:: Code generated using esdoc_mp @ 2014-11-10 15:38:55.225212.
+.. note:: Code generated using esdoc_mp @ 2015-02-11 15:34:49.649883.
 
 """
 

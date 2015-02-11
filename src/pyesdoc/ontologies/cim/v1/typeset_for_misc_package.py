@@ -3,13 +3,13 @@
 """
 .. module:: cim.v1.typeset_for_misc_package.py
 
-   :copyright: @2014 Earth System Documentation (http://es-doc.org)
+   :copyright: @2015 Earth System Documentation (http://es-doc.org)
    :license: GPL / CeCILL
    :platform: Unix, Windows
    :synopsis: The set of types of the cim.v1.misc package.
 
 .. moduleauthor:: Earth System Documentation (ES-DOC) <dev@es-doc.org>
-.. note:: Code generated using esdoc_mp @ 2014-11-10 15:38:55.269082.
+.. note:: Code generated using esdoc_mp @ 2015-02-11 15:34:49.694542.
 
 """
 # Module imports.
