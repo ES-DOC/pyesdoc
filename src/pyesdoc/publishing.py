@@ -219,6 +219,8 @@ def unpublish(uid, version=constants.ESDOC_DOC_VERSION_ALL):
     """
     # Defensive programming.
     if not isinstance(uid, uuid.UUID):
+        uid = uuid.UUID(uid)
+    if not isinstance(uid, uuid.UUID):
         _throw_invalid_doc_id()
     if not version == constants.ESDOC_DOC_VERSION_ALL and \
        not version == constants.ESDOC_DOC_VERSION_LATEST and \

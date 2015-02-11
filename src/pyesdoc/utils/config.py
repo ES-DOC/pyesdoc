@@ -49,7 +49,6 @@ def _init_from_user_home():
         return config_path
 
 
-
 def _init():
     """Initializes configuration."""
     global data

@@ -158,11 +158,11 @@ def _test_list_types():
     """Test listing supported types."""
     # supported - all
     types = pyesdoc.list_types()
-    tu.assert_int(len(types), 102)
+    tu.assert_int(len(types), 103)
 
     # supported - cim v1
     types = pyesdoc.list_types(_CIM, _CIM_V1)
-    tu.assert_int(len(types), 102)
+    tu.assert_int(len(types), 103)
 
     # unsupported
     types = pyesdoc.list_types('x', 'x')
