@@ -70,6 +70,7 @@ def _get_software_modelcomponent_properties(properties):
 FIELDSETS = {
     'cim.1.activity.ensemble-member': \
         _get_activity_ensemble_member,
+
     'cim.1.activity.ensemble-overview': [
         FieldInfo('Project', path='meta.project'),
         FieldInfo('Institute', path='meta.institute'),
@@ -81,6 +82,7 @@ FIELDSETS = {
         FieldInfo('Simulation', path='members.0.simulation_reference.name'),
         FieldInfo('Experiment', path='supports_references.0.name')
     ],
+
     'cim.1.activity.numericalexperiment-overview': [
         FieldInfo('Project', path='meta.project'),
         FieldInfo('Institute', path='meta.institute'),
@@ -90,6 +92,7 @@ FIELDSETS = {
         FieldInfo('Description', path='description'),
         FieldInfo('Rationale', path='rationales'),
     ],
+
     'cim.1.activity.simulationrun-overview': [
         FieldInfo('Project', path='meta.project'),
         FieldInfo('Institute', path='meta.institute'),
@@ -104,8 +107,10 @@ FIELDSETS = {
         FieldInfo('Spinup start', path='spinup_date_range.start'),
         FieldInfo('Spinup duration', path='spinup_date_range.duration')
     ],
+
     'cim.1.activity.simulationrun-model-mods': \
         _get_activity_simulation_run_model_mods,
+
     'cim.1.data.dataobject-overview': [
         FieldInfo('Project', path='meta.project'),
         FieldInfo('Institute', path='meta.institute'),
@@ -114,6 +119,7 @@ FIELDSETS = {
         FieldInfo('State', path='data_status', formatter=unicode.upper),
         FieldInfo('Description', path='description')
     ],
+
     'cim.1.grids.grid-mosaic': [
         FieldInfo('Name', path='short_name'),
         FieldInfo('Long Name', path='long_name'),
@@ -124,6 +130,7 @@ FIELDSETS = {
         FieldInfo('Has Congruent Tiles', path='has_congruent_tiles'),
         FieldInfo('Description', path='description')
     ],
+
     'cim.1.grids.grid-tile-overview': [
         FieldInfo('Area', path='area'),
         FieldInfo('Cell Array', path='cell_array'),
@@ -150,6 +157,7 @@ FIELDSETS = {
         FieldInfo('Vertical CRS', path='vertical_crs'),
         FieldInfo('Z-Coords', path='zcoords')
     ],
+
     'cim.1.grids.grid-tile-extent': [
         FieldInfo('maximum_latitude', path='maximum_latitude'),
         FieldInfo('minimum_latitude', path='minimum_latitude'),
@@ -157,8 +165,10 @@ FIELDSETS = {
         FieldInfo('minimum_longitude', path='minimum_longitude'),
         FieldInfo('units', path='units')
     ],
+
     'cim.1.grids.grid-tile-resolution': \
         _get_grids_grid_tile_resolution,
+
     'cim.1.quality.cimquality': [
         FieldInfo('Measure', path='measure.name', link_path='evaluation.type_hyperlink'),
         FieldInfo('Outcome', path='evaluation.specification', link_path='evaluation.specification_hyperlink'),
@@ -166,11 +176,13 @@ FIELDSETS = {
         FieldInfo('Evaluation Date', path='evaluation.date'),
         FieldInfo('Details', path='evaluation.explanation')
     ],
+
     'cim.1.shared.citation' : [
         # FieldInfo('Title', path='title'),
         FieldInfo('Long Title', path='collective_title'),
         FieldInfo('Location', path='location', link_path='location')
     ],
+
     'cim.1.shared.platform': [
         FieldInfo('Project', path='meta.project'),
         FieldInfo('Institute', path='meta.institute'),
@@ -178,6 +190,7 @@ FIELDSETS = {
         FieldInfo('Long Name', path='long_name'),
         FieldInfo('Description', path='description')
     ],
+
     'cim.1.shared.platform.unit.machine': [
         FieldInfo('Name', path='name'),
         FieldInfo('Vendor', path='vendor'),
@@ -188,6 +201,7 @@ FIELDSETS = {
         FieldInfo('System', path='system'),
         FieldInfo('Interconnect', path='interconnect')
     ],
+
     'cim.1.shared.platform.unit.compiler': [
         FieldInfo('Name', path='name'),
         FieldInfo('Type', path='type'),
@@ -196,6 +210,7 @@ FIELDSETS = {
         FieldInfo('Options', path='options'),
         FieldInfo('Env. Variables', path='environment_variables')
     ],
+
     'cim.1.shared.responsibleparty': [
         # FieldInfo('Role', path='role', formatter=unicode.upper),
         FieldInfo('Name', path='individual_name'),
@@ -204,6 +219,7 @@ FIELDSETS = {
         FieldInfo('Email', path='email', email_path='email'),
         FieldInfo('URL', path='url', link_path='url')
     ],
+
     'cim.1.software.modelcomponent-details': [
         FieldInfo('Project', path='meta.project'),
         FieldInfo('Institute', path='meta.institute'),
@@ -222,6 +238,7 @@ FIELDSETS = {
         FieldInfo('Doc. author', path='meta.author.individual_name'),
         FieldInfo('Doc. created', path='meta.create_date')
     ],
+
     'cim.1.software.modelcomponent-properties': \
         _get_software_modelcomponent_properties
 }

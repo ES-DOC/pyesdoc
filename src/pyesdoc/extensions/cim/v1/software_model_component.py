@@ -83,7 +83,7 @@ _COMPONENT_TYPE_DISPLAY_NAMES = {
     'OceanLateralPhysMomentum' : 'Momentum',
     'OceanLateralPhysTracers' : 'Tracers',
     'OceanMixedLayer' : 'Mixed Layer',
-    'OceanUpAndLowBoundaries' : 'Up & Low Boundaries',
+    'OceanUpAndLowBoundaries' : 'Upper & Lower Boundaries',
     'OceanVerticalPhysics' : 'Vertical Physics',
     'SeaIce' : 'Sea Ice',
     'SeaIceDynamics' : 'Dynamics',
