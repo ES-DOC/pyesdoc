@@ -126,7 +126,7 @@ FIELDSETS = {
         FieldInfo('Type', path='type'),
         FieldInfo('Tiles', path='tile_count'),
         FieldInfo('Mosaics', path='mosaic_count'),
-        FieldInfo('Is Leaf', path='is_leaf'),
+        FieldInfo('Is Leaf ?', path='is_leaf'),
         FieldInfo('Has Congruent Tiles', path='has_congruent_tiles'),
         FieldInfo('Description', path='description')
     ],
@@ -183,6 +183,13 @@ FIELDSETS = {
         FieldInfo('Location', path='location', link_path='location')
     ],
 
+    'cim.1.shared.license': [
+        FieldInfo('Contact', path='contact'),
+        FieldInfo('Description', path='description'),
+        FieldInfo('Is Unrestricted ?', path='is_unrestricted'),
+        FieldInfo('Name', path='name'),
+    ],
+
     'cim.1.shared.platform': [
         FieldInfo('Project', path='meta.project'),
         FieldInfo('Institute', path='meta.institute'),
@@ -225,14 +232,16 @@ FIELDSETS = {
         FieldInfo('Institute', path='meta.institute'),
         FieldInfo('Name', path='short_name'),
         FieldInfo('Long Name', path='long_name'),
+        FieldInfo('Home Page', path='online_resource', link_path='online_resource'),
+        FieldInfo('Type', path='ext.type_display_name'),
         FieldInfo('Funder', path='responsible_parties.role=funder.organisation_name', link_path='responsible_parties.role=funder.url'),
         FieldInfo('Principal Investigator', path='responsible_parties.role=pi.individual_name', email_path='responsible_parties.role=pi.email'),
         FieldInfo('Release Date', path='release_date'),
-        FieldInfo('License', path='license.name'),
+        FieldInfo('Version', path='version'),
         FieldInfo('Previous Version', path='previous_version'),
-        FieldInfo('Funding Source', path='funding_sources'),
-        FieldInfo('Home Page', path='online_resource'),
         FieldInfo('Language', path='language.name'),
+        FieldInfo('Code Access', path='code_access'),
+        FieldInfo('Funding Source(s)', path='funding_sources'),
         FieldInfo('Coupling Framework', path='coupling_framework'),
         FieldInfo('Description', path='description'),
         FieldInfo('Doc. author', path='meta.author.individual_name'),
@@ -240,5 +249,14 @@ FIELDSETS = {
     ],
 
     'cim.1.software.modelcomponent-properties': \
-        _get_software_modelcomponent_properties
+        _get_software_modelcomponent_properties,
+
+
+    'cim.1.software.timing': [
+        FieldInfo('Rate', path='rate'),
+        FieldInfo('Units', path='units'),
+        FieldInfo('Is Rate Variable ?', path='is_variable_rate'),
+        FieldInfo('Start', path='start'),
+        FieldInfo('End', path='start')
+    ]
 }

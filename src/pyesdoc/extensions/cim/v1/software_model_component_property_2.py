@@ -141,21 +141,22 @@ def set_scientific_properties(c):
 
     """
     # Create property group.
-    p = _create_property(c.ext.scientific_properties,
-                         None,
-                         'Scientific Properties',
-                         'Set of component scientific properties')
+    scipg = _create_property(c.ext.scientific_properties,
+                             None,
+                             'Scientific Properties',
+                             'Set of component scientific properties')
 
     # Key properties == scientific properties.
     for cp in c.properties:
-        if cp.short_name.find("Key Properties") != -1:
-            p.sub_properties = cp.sub_properties
+        if "Key Properties" in cp.short_name or \
+           "KeyProperties" in cp.short_name:
+            scipg.sub_properties = cp.sub_properties
             return
 
     # Filter out QC properties.
     for cp in c.properties:
         if cp.short_name.find("QC Properties") == -1:
-            p.sub_properties.append(cp)
+            scipg.sub_properties.append(cp)
 
 
 def set_qc_properties(c):

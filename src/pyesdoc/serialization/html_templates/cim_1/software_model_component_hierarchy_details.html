@@ -28,14 +28,14 @@
 	{% comment *************************** %}
 	{% comment ... scientific properties   %}
 	{% comment *************************** %}
-	{% if c.ext.scientific_property_tree %}
+	{% if c.ext.displayable_scientific_properties %}
 	<section id="{{ c.meta.id }}-scientific-properties">
 		<header>
-			<h5>Scientific Properties</h5>
+			<h5>Scientific Properties ({{ len(c.ext.displayable_scientific_properties) }})</h5>
 		</header>
 		<table>
 			<tbody>
-				{% for p in c.ext.scientific_property_tree %}
+				{% for p in c.ext.displayable_scientific_properties %}
 					{% for v in sorted(p.values) %}
 					<tr class="esdoc-field">
 						<td>

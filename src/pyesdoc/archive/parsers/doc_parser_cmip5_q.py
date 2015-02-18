@@ -47,7 +47,9 @@ _DRS_NAME_TAG = "DRS"
 
 
 def get_parsers():
-    """Returns set of document parsers."""
+    """Returns set of document parsers.
+
+    """
     return (
         _set_drs,
         _set_institute_1,
@@ -55,6 +57,7 @@ def get_parsers():
         _set_institute_3,
         # _propogate_meta_attributes,
         _set_model_name,
+        _set_model_name_inpe_hadgem2es,
         _delete_model_properties
         )
 
@@ -167,7 +170,9 @@ def _set_institute_2(doc):
 
 
 def _set_institute_3(doc):
-    """Formats institute name so as to confirm to DRS."""
+    """Formats institute name so as to confirm to DRS.
+
+    """
     doc.meta.institute = _format_institute_name(doc.meta.institute)
 
 
@@ -198,6 +203,20 @@ def _set_model_name(doc):
         return
 
     doc.short_name = _format_model_name(doc.short_name)
+
+
+def _set_model_name_inpe_hadgem2es(doc):
+    """Overrides model name for the INPE HADGEM2-ES model run.
+
+    """
+    if not _is_of_type(doc, _TYPE_KEY_MODEL_COMPONENT):
+        return
+
+    if doc.meta.institute == 'INPE' and \
+       doc.short_name == 'HADGEM2-ES':
+        doc.short_name = 'INPE-HADGEM2-ES'
+        msg = "WARNING :: model name overidden :: from HADGEM2-ES to INPE-HADGEM2-ES"
+        rt.log(msg)
 
 
 def _delete_model_properties(doc):

@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """
 .. module:: constants.py
    :copyright: @2013 Earth System Documentation (http://es-doc.org)
@@ -65,6 +66,3 @@ ESDOC_DEFAULT_SOURCE = 'Unknown'
 
 # Document viewer url.
 ESDOC_VIEWER_URL = "index.html?renderMethod=id&project={0}&id={1}&version={2}"
-
-# Document encoding url.
-ESDOC_ENCODING_URL = "index.html?renderMethod=id&project={0}&id={1}&version={2}"

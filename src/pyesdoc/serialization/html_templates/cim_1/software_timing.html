@@ -1,0 +1,13 @@
+{% if timing %}
+<section id="{{ section_id }}">
+	<header>
+		<{{ header }}>{{ title }}</{{ header }}>
+	</header>
+	<table>
+		<tbody>
+		{% set ctx = TemplateInfo(timing, fieldset = 'cim.1.software.timing') %}
+		{% include ../core/fieldset.html %}
+		</tbody>
+	</table>
+</section>
+{% end %}

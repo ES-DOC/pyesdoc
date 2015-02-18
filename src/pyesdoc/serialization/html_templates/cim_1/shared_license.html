@@ -1,0 +1,13 @@
+{% if license %}
+<section id="{{ section_id }}">
+	<header>
+		<{{ header }}>Licensing</{{ header }}>
+	</header>
+	<table>
+		<tbody>
+		{% set ctx = TemplateInfo(license, fieldset = 'cim.1.shared.license') %}
+		{% include ../core/fieldset.html %}
+		</tbody>
+	</table>
+</section>
+{% end %}

@@ -8,11 +8,11 @@
 	{% comment ************************* %}
 	<section>
 		<header>
-			<h4>Scientific Properties ({{ len(doc.ext.scientific_property_tree) }})</h4>
+			<h4>Scientific Properties ({{ len(doc.ext.displayable_scientific_properties) }})</h4>
 		</header>
 		<table>
 			<tbody>
-			{% set ctx = TemplateInfo(doc, fieldset_type="property", fieldset=("cim.1.software.modelcomponent-properties", doc.ext.scientific_property_tree)) %}
+			{% set ctx = TemplateInfo(doc, fieldset_type="property", fieldset=("cim.1.software.modelcomponent-properties", doc.ext.displayable_scientific_properties)) %}
 			{% include ../core/fieldset.html %}
 			</tbody>
 		</table>

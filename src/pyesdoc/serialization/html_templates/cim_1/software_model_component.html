@@ -7,7 +7,7 @@
 <nav>
     <ul>
 	    <li><a href="#{{ doc.ext.full_id }}-details">Details</a></li>
-		{% if doc.ext.scientific_property_tree[0].sub_properties %}
+		{% if doc.ext.displayable_scientific_properties %}
 		    <li><a href="#{{ doc.ext.full_id }}-details-properties">Properties</a></li>
 	    {% end %}
     	{% if doc.ext.component_tree %}
@@ -26,7 +26,7 @@
 {% block doc-content %}
 
 	{% include software_model_component_details.html %}
-	{% if doc.ext.scientific_property_tree[0].sub_properties %}
+	{% if doc.ext.displayable_scientific_properties %}
 		{% include software_model_component_properties.html %}
     {% end %}
 	{% if doc.ext.component_tree %}

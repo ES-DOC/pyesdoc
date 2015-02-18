@@ -21,6 +21,27 @@
 	</section>
 
 	{% comment ************************* %}
+	{% comment Sub-section: license     %}
+	{% comment ************************* %}
+	{% if doc.license %}
+		{% set license = doc.license %}
+		{% set header = "h4" %}
+		{% set section_id = "{0}-details-license".format(doc.ext.full_id) %}
+		{% include shared_license.html %}
+	{% end %}
+
+	{% comment ************************* %}
+	{% comment Sub-section: timing     %}
+	{% comment ************************* %}
+	{% if doc.timing %}
+		{% set timing = doc.timing %}
+		{% set header = "h4" %}
+		{% set title = "Timing" %}
+		{% set section_id = "{0}-details-timing".format(doc.ext.full_id) %}
+		{% include software_timing.html %}
+	{% end %}
+
+	{% comment ************************* %}
 	{% comment Sub-section: citations    %}
 	{% comment ************************* %}
 	{% if doc.citations %}

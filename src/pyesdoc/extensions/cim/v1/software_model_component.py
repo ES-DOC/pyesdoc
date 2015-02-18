@@ -7,6 +7,8 @@
 """
 from collections import namedtuple
 
+from .software_model_component_type_map import \
+    METAFOR_ESDOC_MODEL_COMPONENT_MAP
 from .software_model_component_property_1 import (
     extend as extend_property,
     )
@@ -33,62 +35,8 @@ def get_extenders():
 
 
 # Mappings between component type & component type display name.
-_COMPONENT_TYPE_DISPLAY_NAMES = {
-    'AerosolEmissionAndConc' : 'Emission & Concentration',
-    'AerosolModel' :  'Model',
-    'AerosolTransport' :  'Transport',
-    'AtmosConvectTurbulCloud' : 'Convection Cloud Turbulence',
-    'AtmosCloudScheme' : 'Cloud Scheme',
-    'CloudSimulator' : 'Cloud Simulator',
-    'AtmosDynamicalCore' : 'Dynamical Core',
-    'AtmosAdvection' : 'Advection',
-    'AtmosOrographyAndWaves' : 'Orography & Waves',
-    'AtmosRadiation' : 'Radiation',
-    'AtmosphericChemistry' : 'Atmospheric Chemistry',
-    'AtmChemTransport' : 'Transport',
-    'AtmChemPhotoChemistry' : 'Photo Chemistry',
-    'AtmChemHeterogenChemistry' : 'Heterogen Chemistry',
-    'StratosphericHeterChem' : 'Stratospheric',
-    'TroposphericHeterChem' : 'Tropospheric',
-    'AtmChemGasPhaseChemistry' : 'Gas Phase Chemistry',
-    'AtmChemEmissionAndConc' : 'Emission & Concentration',
-    'LandIce' : 'Land Ice',
-    'LandIceGlaciers' : 'Glaciers',
-    'LandIceSheet' : 'Sheet',
-    'LandIceShelves' : 'Shelves',
-    'LandIceShelves Dynamics' : 'Dynamics',
-    'LandSurface' : 'Land Surface',
-    'LandSurfaceAlbedo' : 'Albedo',
-    'LandSurfaceCarbonCycle' : 'Carbon Cycle',
-    'LandSurfaceEnergyBalance' : 'Energy Balance',
-    'VegetationCarbonCycle' : 'Vegetation',
-    'LandSurfaceLakes' : 'Lakes',
-    'LandSurfaceSnow' : 'Snow',
-    'LandSurfaceSoil' : 'Soil',
-    'LandSurfaceVegetation' : 'Vegetation',
-    'LandSurfSoilHeatTreatment' : 'Heat Treatment',
-    'LandSurfSoilHydrology' : 'Hydrology',
-    'Model' : 'Earth System Model',
-    'OceanBioBoundaryForcing' : 'Boundary Forcing',
-    'OceanBioChemistry' : 'Chemistry',
-    'OceanBioGasExchange' : 'Gas Exchange',
-    'OceanBiogeoChemistry' : 'Ocean Bio-Geo Chemistry',
-    'OceanBioTracers' : 'Tracers',
-    'OceanBioTracersEcosystem' : 'Ecosystem',
-    'OceanAdvection' : 'Advection',
-    'OceanBoundaryForcing' : 'Boundary Forcing',
-    'OceanBoundForcingTracers' : 'Tracers',
-    'OceanInteriorMixing' : 'Interior Mixing',
-    'OceanLateralPhysics' : 'Lateral Physics',
-    'OceanLateralPhysMomentum' : 'Momentum',
-    'OceanLateralPhysTracers' : 'Tracers',
-    'OceanMixedLayer' : 'Mixed Layer',
-    'OceanUpAndLowBoundaries' : 'Upper & Lower Boundaries',
-    'OceanVerticalPhysics' : 'Vertical Physics',
-    'SeaIce' : 'Sea Ice',
-    'SeaIceDynamics' : 'Dynamics',
-    'SeaIceThermodynamics' : 'Thermodynamics'
-}
+_COMPONENT_TYPE_DISPLAY_NAMES = \
+    {k:v.split(">")[-1].strip() for k, v in iter(METAFOR_ESDOC_MODEL_COMPONENT_MAP.items())}
 
 
 # Component extension context information.
@@ -97,7 +45,7 @@ _ComponentContextInfo = \
 
 
 class _ComponentExtensionInfo(object):
-    """Conponent extension properties.
+    """Component extension properties.
 
     """
     pass
@@ -108,6 +56,26 @@ def _get_sort_key(item):
 
     """
     return item.ext.full_display_name
+
+
+def _extend_component_00(ctx):
+    """Pre component extension tasks.
+
+    """
+    # Remove sub-components with invalid type names.
+    for sc in ctx.c.sub_components:
+        if sc.type.lower() == 'other' and \
+             sc.short_name.replace(" ", "").lower() in \
+                ['new', 'surfexoceansurface']:
+            ctx.c.sub_components.remove(sc)
+
+    # Rename component short name.
+    if ctx.c.short_name == 'Ocean straits and horizontal diffusion':
+        ctx.c.short_name = 'Ocean Straits'
+
+    # If component type was specified as other then derive it from short name.
+    if ctx.c.type.lower() == 'other':
+        ctx.c.type = ctx.c.short_name.replace(" ", "")
 
 
 def _extend_component_01(ctx):
@@ -122,6 +90,8 @@ def _extend_component_01(ctx):
         ctx.c.ext.long_display_name = str()
     if not hasattr(ctx.c.ext, "short_display_name"):
         ctx.c.ext.short_display_name = str()
+    if not hasattr(ctx.c.ext, "type_display_name"):
+        ctx.c.ext.type_display_name = str()
 
     ctx.c.ext.ancestors = ctx.ancestors
     ctx.c.ext.component_tree = []
@@ -130,10 +100,13 @@ def _extend_component_01(ctx):
     ctx.c.ext.properties = []
     ctx.c.ext.qc_properties = []
     ctx.c.ext.qc_property_tree = []
+    ctx.c.ext.displayable_qc_properties = []
     ctx.c.ext.scientific_properties = []
     ctx.c.ext.scientific_property_tree = []
+    ctx.c.ext.displayable_scientific_properties = []
     ctx.c.ext.standard_properties = []
     ctx.c.ext.standard_property_tree = []
+    ctx.c.ext.displayable_standard_properties = []
 
 
 def _extend_component_02(ctx):
@@ -149,6 +122,12 @@ def _extend_component_03(ctx):
     """Sets component display names.
 
     """
+    # Type display name.
+    if ctx.c.type in _COMPONENT_TYPE_DISPLAY_NAMES:
+        ctx.c.ext.type_display_name = _COMPONENT_TYPE_DISPLAY_NAMES[ctx.c.type]
+    else:
+        ctx.c.ext.type_display_name = ctx.c.type
+
     # Short name.
     if not ctx.c.ext.parent:
         ctx.c.ext.short_display_name = ctx.c.short_name
@@ -194,6 +173,7 @@ def _extend_component(c, ext, parent=None, ancestors=[]):
     """
     ctx = _ComponentContextInfo(c, ext, parent, ancestors)
     for f in (
+        _extend_component_00,
         _extend_component_01,
         _extend_component_02,
         _extend_component_03,
@@ -241,19 +221,38 @@ def _set_component_property_trees(ctx):
     def sort_tree(p_tree):
         return sorted(p_tree, key=_get_sort_key)
 
+
     def build_tree(p_list, p_tree):
         for p in p_list:
             p_tree.append(p)
             build_tree(p.sub_properties, p_tree)
 
-    for c in [ctx.doc] + ctx.doc.ext.component_tree:
-        build_tree(c.ext.scientific_properties, c.ext.scientific_property_tree)
-        build_tree(c.ext.standard_properties, c.ext.standard_property_tree)
-        build_tree(c.ext.qc_properties, c.ext.qc_property_tree)
 
-        c.ext.scientific_property_tree = sort_tree(c.ext.scientific_property_tree)
-        c.ext.standard_properties = sort_tree(c.ext.standard_properties)
-        c.ext.qc_property_tree = sort_tree(c.ext.qc_property_tree)
+    def get_displayable(p_tree):
+        return [p for p in p_tree if p.values]
+
+
+    for c in [ctx.doc] + ctx.doc.ext.component_tree:
+        build_tree(c.ext.scientific_properties,
+                   c.ext.scientific_property_tree)
+        build_tree(c.ext.standard_properties,
+                   c.ext.standard_property_tree)
+        build_tree(c.ext.qc_properties,
+                   c.ext.qc_property_tree)
+
+        c.ext.scientific_property_tree = \
+            sort_tree(c.ext.scientific_property_tree)
+        c.ext.standard_properties = \
+            sort_tree(c.ext.standard_properties)
+        c.ext.qc_property_tree = \
+            sort_tree(c.ext.qc_property_tree)
+
+        c.ext.displayable_scientific_properties = \
+            get_displayable(c.ext.scientific_property_tree)
+        c.ext.displayable_standard_properties = \
+            get_displayable(c.ext.standard_property_tree)
+        c.ext.displayable_qc_properties = \
+            get_displayable(c.ext.qc_property_tree)
 
 
 def _set_component_meta_info(ctx):

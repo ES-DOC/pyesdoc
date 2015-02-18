@@ -37,6 +37,22 @@ def _set_language(ctx):
     ctx.ext.language = ctx.meta.language
 
 
+def _set_institute(ctx):
+    """Sets document institute field."""
+    if ctx.meta.institute:
+        ctx.meta.institute = ctx.meta.institute.upper()
+    else:
+        ctx.meta.institute = "--"
+
+
+def _set_project(ctx):
+    """Sets document project field."""
+    if ctx.meta.project:
+        ctx.meta.project = ctx.meta.project.upper()
+    else:
+        ctx.meta.project = "--"
+
+
 def _set_summary_fields(ctx):
     """Sets document summary fields."""
     fields = ()
@@ -112,6 +128,8 @@ PRE_EXTENDERS = (
     _set_full_id,
     _set_type_info,
     _set_language,
+    _set_institute,
+    _set_project,
     _set_display_name,
     _set_description,
     _set_summary_fields,

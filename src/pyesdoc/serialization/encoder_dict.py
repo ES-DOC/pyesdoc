@@ -36,7 +36,7 @@ def _encode(doc):
         if k.startswith("_") or k.startswith("__"):
             continue
 
-        # Omit extension.
+        # Omit extensions.
         if k == "ext":
             continue
 
