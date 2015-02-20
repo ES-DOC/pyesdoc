@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """
 .. module:: pyesdoc.validation.graph.py
    :copyright: @2013 Earth System Documentation (http://es-doc.org)
@@ -9,7 +10,6 @@
 
 
 """
-# Module imports.
 from .. import ontologies
 
 
@@ -25,7 +25,7 @@ class _DocumentValidationNode(object):
                  is_required=False,
                  parent=None,
                  root=None):
-        """Constructor.
+        """Object constructor.
 
         :param object value: Current node value.
         :param str path: Node path.
@@ -53,7 +53,9 @@ class _DocumentValidationNode(object):
 
 
     def __repr__(self):
-        """Returns string representation."""
+        """Object representation.
+
+        """
         if self.error:
             return "{0} --> {1}".format(self.path, self.error)
         else:
@@ -62,18 +64,25 @@ class _DocumentValidationNode(object):
 
     @property
     def is_valid(self):
-        """Gets a flag indicating whether node is valid."""
+        """Gets a flag indicating whether node is valid.
+
+        """
         return self.error is None
 
 
     @property
     def is_invalid(self):
-        """Gets a flag indicating whether node is valid."""
+        """Gets a flag indicating whether node is valid.
+
+        """
         return not self.is_valid
 
 
     @property
     def _has_children(self):
+        """Gets a flag indicating whether node has children or not.
+
+        """
         return \
             self.type in ontologies.TYPES and \
             not isinstance(self.value, list) and \
@@ -82,7 +91,9 @@ class _DocumentValidationNode(object):
 
 
     def _set_children(self):
-        """Sets collection of child node from type information."""
+        """Sets collection of child node from type information.
+
+        """
         for type_info in ontologies.get_type_info(self.type):
             # Unpack type info.
             is_required = type_info[2]
@@ -123,7 +134,7 @@ class DocumentValidationGraph(_DocumentValidationNode):
 
     """
     def __init__(self, doc):
-        """Constructor.
+        """Object constructor.
 
         :param object doc: pyesdoc document.
 
@@ -133,11 +144,15 @@ class DocumentValidationGraph(_DocumentValidationNode):
 
 
     def __repr__(self):
-        """Returns string representation."""
+        """Object representation.
+
+        """
         return reduce(lambda r, n: r + "\n{0}".format(n), self.nodes, self.path)
 
 
     @property
     def invalid_nodes(self):
-        """Get set of invalid nodes."""
+        """Get set of invalid nodes.
+
+        """
         return [n for n in self.nodes if n.is_invalid]

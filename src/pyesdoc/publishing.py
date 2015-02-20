@@ -149,19 +149,19 @@ def _parse_api_response(resp, error_on_404=True):
 def retrieve(uid, version=constants.ESDOC_DOC_VERSION_LATEST):
     """Retrieves a document from remote repository.
 
-    :param uid: Document unique identifier.
-    :type uid: str or uuid.UUID
-
-    :param version: Document unique identifier.
-    :type version: str or uuid.UUID
+    :param str|uuid.UUID uid: Document unique identifier.
+    :param str|int version: Document version.
 
     :returns: A document from remote repository.
-    :rtype: object, list or None
+    :rtype: object | None
 
     """
     # Defensive programming.
     if not isinstance(uid, uuid.UUID):
-        _throw_invalid_doc_id()
+        try:
+            uid = uuid.UUID(uid)
+        except ValueError:
+            _throw_invalid_doc_id()
     if version != constants.ESDOC_DOC_VERSION_LATEST and \
        not isinstance(version, int):
         _throw_invalid_doc_version()
@@ -213,15 +213,16 @@ def publish(doc):
 def unpublish(uid, version=constants.ESDOC_DOC_VERSION_ALL):
     """Unpublishes a document from remote repository.
 
-    :param doc: Document being unpublished.
-    :type doc: object
+    :param str|uuid.UUID uid: Document unique identifier.
+    :param str|int version: Document version.
 
     """
     # Defensive programming.
     if not isinstance(uid, uuid.UUID):
-        uid = uuid.UUID(uid)
-    if not isinstance(uid, uuid.UUID):
-        _throw_invalid_doc_id()
+        try:
+            uid = uuid.UUID(uid)
+        except ValueError:
+            _throw_invalid_doc_id()
     if not version == constants.ESDOC_DOC_VERSION_ALL and \
        not version == constants.ESDOC_DOC_VERSION_LATEST and \
        not isinstance(version, int):
@@ -234,36 +235,3 @@ def unpublish(uid, version=constants.ESDOC_DOC_VERSION_ALL):
     # Process HTTP response.
     _parse_api_response(resp)
 
-
-def exists(uid, version=None):
-    """Determines whether a document already exists within remote repository.
-
-    :param uid: Document unique identifier.
-    :type uid: str | uuid.UUID
-
-    :returns: Flag indicating whether document already exists.
-    :rtype: bool
-
-    """
-    # Defensive programming.
-    if not isinstance(uid, uuid.UUID):
-        _throw_invalid_doc_id()
-    if version is not None and not isinstance(version, int):
-        _throw_invalid_doc_version()
-
-    # Issue HTTP HEAD.
-    url = _get_doc_url(uid, version)
-    resp = _invoke_api(requests.head, url)
-
-    # Process HTTP response code.
-    # 200 - return true;
-    if resp.status_code == HTTP_RESPONSE_STATUS_200:
-        return True
-
-    # 404 - return false;
-    elif resp.status_code == HTTP_RESPONSE_STATUS_404:
-        return False
-
-    # 500 - raise error.
-    elif resp.status_code == HTTP_RESPONSE_STATUS_500:
-        rt.throw("Document retrieval server side failure")

@@ -34,7 +34,6 @@ from .extensions import (
     is_extendable
     )
 from .publishing import (
-    exists,
     publish,
     retrieve,
     unpublish
@@ -101,4 +100,4 @@ __title__ = 'pyesdoc'
 __version__ = '0.9.1.0'
 __author__ = 'ES-DOC'
 __license__ = 'GPL'
-__copyright__ = 'Copyright 2013 ES-DOC'
+__copyright__ = 'Copyright 2015 ES-DOC'

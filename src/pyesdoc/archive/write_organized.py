@@ -145,9 +145,9 @@ class _DocumentProcessingInfo(object):
         """Gets organized document directory.
 
         """
-        return io.get_doc_organized_folder(self.project,
-                                           self.source,
-                                           self.decoded)
+        return io.get_doc_organized_folder(self.decoded,
+                                           self.project,
+                                           self.source)
 
 
     @property

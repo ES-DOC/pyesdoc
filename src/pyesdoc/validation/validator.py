@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """
 .. module:: pyesdoc.validation.validator.py
    :copyright: @2013 Earth System Documentation (http://es-doc.org)
@@ -9,7 +10,6 @@
 
 
 """
-# Module imports.
 from .. utils import runtime as rt
 from .graph import DocumentValidationGraph
 

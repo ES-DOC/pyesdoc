@@ -12,15 +12,16 @@
 """
 import glob, os
 
-from . import config
-from ..io import (
+from pyesdoc import constants
+from pyesdoc.archive import config
+from pyesdoc.archive.folder_info import FolderInfo
+from pyesdoc.archive.file_info import FileInfo
+from pyesdoc.extensions import extend as extend_doc
+from pyesdoc.io import (
     read as read_doc,
     write as write_doc
     )
-from ..extensions import extend as extend_doc
-from folder_info import FolderInfo
-from file_info import FileInfo
-
+from pyesdoc.utils import runtime as rt
 
 
 # Ingested sub-directory.
@@ -59,6 +60,9 @@ MANAGED_FOLDERS = {
     DIR_RAW_ERROR
 }
 
+# Set of folders.
+_FOLDERS = []
+
 
 def get_folder(project, source, managed, sub_dir=None):
     """Returns an archive folder wrapper.
@@ -80,44 +84,108 @@ def get_folder(project, source, managed, sub_dir=None):
     return FolderInfo(project, source, managed, path)
 
 
+def _init():
+    """Initializes file system in readiness for IO.
+
+    """
+    if _FOLDERS:
+        return
+
+    rt.log("Initializing archive folders")
+    _init_config_folders()
+
+    # Walk archive sub-directories.
+    root_level = len(config.DIR_ARCHIVE.split('/'))
+    for path in (x[0] for x in os.walk(config.DIR_ARCHIVE)):
+        parts = path.split('/')
+        if len(parts) - root_level == 3:
+            offset = 0
+        elif len(parts) - root_level == 4:
+            offset = -1
+        else:
+            continue
+
+        managed = parts[offset - 3]
+        project = parts[offset - 2]
+        source = parts[offset - 1]
+
+        _FOLDERS.append(FolderInfo(project, source, managed, path))
+
+
+def _init_config_folders():
+    """Initializes archive folders from pyesdoc.conf.
+
+    """
+    for project, source in config.get_project_sources():
+        for managed in MANAGED_FOLDERS:
+            path = config.DIR_ARCHIVE
+            path = os.path.join(path, managed)
+            path = os.path.join(path, project)
+            path = os.path.join(path, source)
+            if not os.path.exists(path):
+                os.makedirs(path)
+
+
+def _init_doc_folders(doc):
+    """Initializes archive folders for a new document.
+
+    """
+    for managed_dir in (
+        DIR_ORGANIZED,
+        DIR_ORGANIZED_ERROR,
+        DIR_INGESTED,
+        DIR_INGESTED_ERROR
+        ):
+        doc_folder = get_doc_folder(doc, managed_dir)
+        cached = [f for f in get_folders(managed_dir)
+                  if f.path == doc_folder.path]
+        if not cached:
+            _FOLDERS.append(doc_folder)
+
+
 def get_folders(managed_filter=None):
     """Returns set of folders for processing.
 
     """
-    result = []
-
-    # Iterate config & managed folders.
-    for project, source in config.get_project_sources():
-        for managed in MANAGED_FOLDERS:
-            # Set folder directory path.
-            path = config.DIR_ARCHIVE
-            for name in (managed, project, source):
-                path = os.path.join(path, name)
-
-            # Ensure directory exists.
-            if not os.path.exists(path):
-                os.makedirs(path)
-
-            # Set sub-drectories.
-            sub_dirs = [os.path.join(path, d) for d in os.listdir(path) \
-                        if os.path.isdir(os.path.join(path, d))]
-
-            # Append folders.
-            if sub_dirs:
-                for sub_dir in sub_dirs:
-                    result.append(FolderInfo(project, source, managed, sub_dir))
-            else:
-                result.append(FolderInfo(project, source, managed, path))
-
-    # Apply filter.
+    _init()
     if managed_filter:
         managed_filter = managed_filter.lower()
-        result = [f for f in result if f.managed_dir == managed_filter]
+        return [f for f in _FOLDERS if f.managed_dir == managed_filter]
+    else:
+        return _FOLDERS
 
-    return result
+
+def get_doc_file(doc, managed_dir):
+    """Returns a folder into which document information will be written.
+
+    """
+    folder = get_doc_folder(doc, managed_dir)
+    fname = "{0}_{1}.json".format(doc.meta.id, doc.meta.version)
+    fpath = os.path.join(folder.path, fname)
+
+    return FileInfo(folder, fpath)
 
 
-def get_doc_organized_folder(project, source, doc):
+def get_doc_folder(doc, managed_dir, project=None, source=None):
+    """Returns a folder into which document information will be written.
+
+    """
+    if project is None:
+        project = doc.meta.project
+    if source is None:
+        source = doc.meta.source
+    if managed_dir != DIR_ORGANIZED:
+        type_dir = None
+    else:
+        try:
+            type_dir = doc.meta.type.replace(".", "-").lower()
+        except AttributeError:
+            type_dir = doc.lower()
+
+    return get_folder(project, source, managed_dir, type_dir)
+
+
+def get_doc_organized_folder(doc, project=None, source=None):
     """Returns a document's organized folder.
 
     :param str project: Name of a supported project.
@@ -129,12 +197,7 @@ def get_doc_organized_folder(project, source, doc):
     :rtype: str
 
     """
-    try:
-        doc_type = doc.meta.type.replace(".", "-").lower()
-    except AttributeError:
-        doc_type = doc.lower()
-
-    return get_folder(project, source, DIR_ORGANIZED, doc_type)
+    return get_doc_folder(doc, DIR_ORGANIZED, project, source)
 
 
 def yield_raw():
@@ -213,10 +276,25 @@ def get_count_all():
     return count
 
 
+def _get_latest_version_id(uid):
+    """Returns id of latest version.
+
+    """
+    fname = "{0}*.*".format(uid)
+    for folder in get_folders(DIR_ORGANIZED):
+        fpath = os.path.join(folder.path, fname)
+        versions = [int(f.split('/')[-1].split('.')[0].split('_')[1])
+                    for f in glob.glob(fpath)]
+        if versions:
+            return max(versions)
+
+
 def get_organized_filepath(uid, version, load_original=False):
     """Returns filepath to an organized document.
 
     """
+    if version == constants.ESDOC_DOC_VERSION_LATEST:
+        version = _get_latest_version_id(uid)
     fname = "{0}_{1}.json" if not load_original else "{0}_{1}.original"
     fname = fname.format(uid, version)
     for folder in get_folders(DIR_ORGANIZED):
@@ -265,13 +343,18 @@ def load(uid, version, load_original=False, must_exist=False):
 def write(doc):
     """Writes a document to archive.
 
-    """
-    fname = "{0}_{1}.json"
-    fname = fname.format(doc.meta.id, doc.meta.version)
-    folder = get_doc_organized_folder(doc.meta.project, doc.meta.source, doc)
-    fpath = os.path.join(folder.path, fname)
+    :returns: File information.
+    :rtype: pyesdoc.archive.FileInfo
 
-    write_doc(doc, fpath=fpath)
+    """
+    # Initialize archive folders.
+    _init_doc_folders(doc)
+
+    # Write document.
+    doc_file = get_doc_file(doc, DIR_ORGANIZED)
+    write_doc(doc, fpath=doc_file.path)
+
+    return doc_file
 
 
 def read(uid, version, extend=True):
@@ -288,7 +371,8 @@ def read(uid, version, extend=True):
     filepath = get_organized_filepath(uid, version)
     if filepath:
         doc = read_doc(filepath)
-        return extend_doc(doc) if extend else doc
+        if doc:
+            return extend_doc(doc) if extend else doc
 
 
 def delete(uid, version):

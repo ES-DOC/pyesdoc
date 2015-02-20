@@ -22,6 +22,7 @@ from .io import (
     DIR_RAW,
     DIR_RAW_ERROR,
 	exists,
+    get_doc_file,
 	load,
 	read,
 	write,
