@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """
 .. module:: doc_parser.py
    :copyright: @2013 Earth System Documentation (http://es-doc.org)
@@ -9,7 +10,6 @@
 
 
 """
-# Module imports.
 from . import (
     doc_parser_cmip5_qc as cmip5_qc,
     doc_parser_cmip5_q as cmip5_q

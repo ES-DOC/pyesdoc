@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 """
 .. module:: TODO - write module name
    :copyright: Copyright "Sep 4, 2013", Earth System Documentation
@@ -9,7 +11,6 @@
 
 
 """
-# Module imports.
 from .utils import runtime as rt
 
 

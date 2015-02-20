@@ -1,4 +1,5 @@
-# Module imports.
+# -*- coding: utf-8 -*-
+
 from . import (
 	activity_ensemble,
 	activity_numerical_experiment,

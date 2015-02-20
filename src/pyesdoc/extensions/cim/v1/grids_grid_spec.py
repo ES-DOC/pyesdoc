@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 """
 .. module:: grids_grid_spec.py
    :platform: Unix, Windows
@@ -7,6 +9,9 @@
 
 
 """
+
+
+
 def get_extenders():
     """Returns set of extension functions."""
     return (

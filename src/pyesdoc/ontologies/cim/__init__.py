@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """
 .. module:: cim.__init__.py
 

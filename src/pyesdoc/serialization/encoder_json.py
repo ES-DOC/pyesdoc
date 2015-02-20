@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 """
 .. module:: pyesdoc.utils.encoder_json.py
 
@@ -9,7 +11,6 @@
 .. moduleauthor:: Earth System Documentation (ES-DOC) <dev@es-doc.org>
 
 """
-# Module imports.
 from . import encoder_dict
 from .. utils import convert
 

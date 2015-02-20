@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """
 .. module:: pyesdoc.ontologies.__init__.py
    :copyright: Copyright "Jun 14, 2013", Earth System Documentation
@@ -9,7 +10,6 @@
 
 
 """
-# Module imports.
 import cim
 from .. utils import runtime as rt
 

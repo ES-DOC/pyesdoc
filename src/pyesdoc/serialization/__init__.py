@@ -1,4 +1,5 @@
-# Module imports.
+# -*- coding: utf-8 -*-
+
 from .serializer import (
     convert,
     decode,

@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 """
 .. module:: pyesdoc.serialization.py
    :copyright: @2013 Earth System Documentation (http://es-doc.org)
@@ -9,7 +11,6 @@
 
 
 """
-# Module imports.
 from . import (
     decoder,
     encoder

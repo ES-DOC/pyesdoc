@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 """
 .. module:: pyesdoc.utils.decoder_xml.py
 
@@ -9,7 +11,6 @@
 .. moduleauthor:: Earth System Documentation (ES-DOC) <dev@es-doc.org>
 
 """
-# Module imports.
 import xml.etree.ElementTree as ET
 
 from .. import ontologies

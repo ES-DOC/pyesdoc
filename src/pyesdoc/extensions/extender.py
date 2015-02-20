@@ -11,7 +11,6 @@
 
 
 """
-# Module imports.
 from . import cim, default
 from .. utils import runtime as rt
 from .. ontologies import get_types

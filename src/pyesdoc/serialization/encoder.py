@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 """
 .. module:: encoder.py
 
@@ -9,7 +11,6 @@
 .. moduleauthor:: Earth System Documentation (ES-DOC) <dev@es-doc.org>
 
 """
-# Module imports.
 from .. import constants, ontologies
 from .. utils import runtime as rt
 from . import (

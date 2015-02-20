@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """
 .. module:: pyesdoc.ontologies.utils.cim_v1.py
    :copyright: Copyright "Sep 5, 2013", Earth System Documentation
@@ -9,6 +10,9 @@
 
 
 """
+
+
+
 # CIM v1 type keys.
 TYPE_KEY_DATA_OBJECT = 'cim.1.data.DataObject'
 TYPE_KEY_DOCUMENT_SET = 'cim.1.misc.DocumentSet'

@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 """
 .. module:: software_model_component_1.py
    :platform: Unix, Windows
@@ -5,7 +7,6 @@
 
 
 """
-# Module imports.
 from collections import namedtuple
 
 from .... utils import convert

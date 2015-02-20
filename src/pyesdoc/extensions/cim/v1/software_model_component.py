@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 """
 .. module:: software_model_component.py
    :platform: Unix, Windows

@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+
 """
 .. module:: constants.py
    :copyright: @2013 Earth System Documentation (http://es-doc.org)
@@ -10,6 +11,9 @@
 
 
 """
+
+
+
 # Supported ESDOC encodings.
 ESDOC_ENCODING_DICT = 'dict'
 ESDOC_ENCODING_JSON = 'json'

@@ -11,7 +11,6 @@
 
 
 """
-# Module imports.
 from .. import constants
 
 

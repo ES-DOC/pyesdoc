@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 """
 .. module:: software_model_component_type_map.py
 
@@ -9,6 +11,9 @@
 .. moduleauthor:: Earth System Documentation (ES-DOC) <dev@es-doc.org>
 
 """
+
+
+
 # Map from metafor to es-doc model component types.
 METAFOR_ESDOC_MODEL_COMPONENT_MAP = {
     # Aerosols

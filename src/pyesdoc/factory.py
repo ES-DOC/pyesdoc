@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 """
 .. module:: pyesdoc.factory.py
    :copyright: @2013 Earth System Documentation (http://es-doc.org)
@@ -9,12 +11,12 @@
 
 
 """
-# Module imports.
 import datetime
 import uuid
 
 from . import constants, ontologies, options
 from .utils import runtime as rt
+
 
 
 # Institute option.

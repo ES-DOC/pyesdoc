@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """
 .. module:: pyesdoc.utils.__init__.py
    :copyright: Copyright "Feb 7, 2013", Earth System Documentation
@@ -9,7 +10,6 @@
 
 
 """
-# Module imports.
 from runtime import PYESDOC_Exception
 
 from . import (
