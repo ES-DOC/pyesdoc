@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 """
 .. module:: test_type_cim_v1_data_data_object_2.py
 

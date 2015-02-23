@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 """
 .. module:: test_type_cim_v1_quality_cim_quality.py
 
