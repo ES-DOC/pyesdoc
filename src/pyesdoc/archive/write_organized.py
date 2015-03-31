@@ -327,11 +327,6 @@ def execute(throttle=0, verbose=False):
     io.delete_files(io.DIR_ORGANIZED_ERROR)
     io.delete_files(io.DIR_PARSED_ERROR)
 
-    for ctx in _get_documents(throttle, verbose):
-        _process(ctx)
-
-    return
-
     pool = ThreadPool()
     pool.map(_process, _get_documents(throttle, verbose))
     pool.close()
