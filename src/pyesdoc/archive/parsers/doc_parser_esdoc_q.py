@@ -17,6 +17,10 @@ from ...utils import runtime as rt
 # CIM v1 type keys.
 _TYPE_KEY_MODEL_COMPONENT = 'cim.1.software.modelcomponent'
 
+# Institute name overrides.
+_INSTITUTE_OVERRIDES = {
+    'DEPARTMENT OF ENERGY' : 'DOE',
+}
 
 
 
@@ -26,10 +30,8 @@ def get_parsers():
     """
     return (
         _set_document_type,
+        _set_institute
         )
-
-
-
 
 
 def _is_of_type(doc, type_key):
@@ -46,3 +48,14 @@ def _set_document_type(doc):
     if _is_of_type(doc, _TYPE_KEY_MODEL_COMPONENT) and not doc.types:
         doc.type = _TYPE_KEY_MODEL_COMPONENT
         doc.types = [doc.type]
+
+
+def _set_institute(doc):
+    """Sets institute name.
+
+    """
+    if doc.meta.institute is None or not doc.meta.institute.strip():
+        doc.meta.institute = "--"
+    elif doc.meta.institute.upper() in _INSTITUTE_OVERRIDES:
+        doc.meta.institute = _INSTITUTE_OVERRIDES[doc.meta.institute.upper()]
+
