@@ -39,7 +39,7 @@ def _test_module_setup(mod):
 
 def _test_version():
     """Test package version."""
-    tu.assert_str(pyesdoc.__version__, "0.9.1.0")
+    tu.assert_str(pyesdoc.__version__, "0.9.2.0")
 
 
 def _test_module_reset(mod):
