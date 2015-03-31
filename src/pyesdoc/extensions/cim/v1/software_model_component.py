@@ -174,7 +174,7 @@ def _extend_component(c, ext, parent=None, ancestors=[]):
 
     """
     ctx = _ComponentContextInfo(c, ext, parent, ancestors)
-    for f in (
+    for func in (
         _extend_component_00,
         _extend_component_01,
         _extend_component_02,
@@ -182,7 +182,7 @@ def _extend_component(c, ext, parent=None, ancestors=[]):
         _extend_component_04,
         _extend_component_05,
         ):
-        f(ctx)
+        func(ctx)
 
 
 def _set_type_display_info(ctx):

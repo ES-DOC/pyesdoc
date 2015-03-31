@@ -12,7 +12,8 @@
 """
 from . import (
     doc_parser_cmip5_qc as cmip5_qc,
-    doc_parser_cmip5_q as cmip5_q
+    doc_parser_cmip5_q as cmip5_q,
+    doc_parser_esdoc_q
     )
 from .. import io
 
@@ -24,6 +25,7 @@ _PARSERS = {
         "dkrz-qc": cmip5_qc,
         "metafor-q": cmip5_q
     },
+    "esps": doc_parser_esdoc_q,
     "test": cmip5_qc
 }
 
