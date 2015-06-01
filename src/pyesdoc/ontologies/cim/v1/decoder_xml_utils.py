@@ -18,6 +18,8 @@ import types
 import arrow
 from lxml import etree as et
 
+import pyesdoc
+
 
 
 # Null uuid for checking whether one has to be generated.
@@ -25,31 +27,10 @@ NULL_UUID = ['00000000-0000-0000-0000-000000000000']
 
 
 
-class PYESDOC_XMLError(Exception):
-    """Module exception class.
+def _get_value_as_string(xml, nsmap):
+    """Converts passed xml fragment to a string.
 
     """
-
-    def __init__(self, message):
-        """Contructor.
-
-        :param message: Exception message.
-        :type message: str
-
-        """
-        self.message = message
-
-
-    def __str__(self):
-        """Returns a string representation.
-
-        """
-        return "ES-DOC PY-CLIENT XML ERROR : {0}".format(repr(self.message))
-
-
-
-def _get_value_as_string(xml, nsmap):
-    """Converts passed xml fragment to a string."""
     result = None
 
     # Strip first item from iterables.
@@ -76,12 +57,16 @@ def _get_value_as_string(xml, nsmap):
 
 
 def _convert_to_string(xml, nsmap=None):
-    """Converts an etree element xml representation into a string type."""
+    """Converts an etree element xml representation into a string type.
+
+    """
     return _get_value_as_string(xml, nsmap)
 
 
 def _convert_to_bool(xml, nsmap=None):
-    """Converts an etree element xml representation into a boolean type."""
+    """Converts an etree element xml representation into a boolean type.
+
+    """
     as_string = _get_value_as_string(xml, nsmap)
     if as_string is None:
         return bool()
@@ -96,7 +81,9 @@ def _convert_to_bool(xml, nsmap=None):
 
 
 def _convert_to_integer(xml, nsmap=None):
-    """Converts an etree element xml representation into an integer type."""
+    """Converts an etree element xml representation into an integer type.
+
+    """
     as_string = _get_value_as_string(xml, nsmap)
     if as_string is None or as_string.upper() == 'NONE':
         return int()
@@ -105,7 +92,9 @@ def _convert_to_integer(xml, nsmap=None):
 
 
 def _convert_to_float(xml, nsmap=None):
-    """Converts an etree element xml representation into a float type."""
+    """Converts an etree element xml representation into a float type.
+
+    """
     as_string = _get_value_as_string(xml, nsmap)
     if as_string is None:
         return float()
@@ -114,7 +103,9 @@ def _convert_to_float(xml, nsmap=None):
 
 
 def _convert_to_uid(xml, nsmap=None):
-    """Converts an etree element xml representation into a uid type."""
+    """Converts an etree element xml representation into a uid type.
+
+    """
     as_string = _get_value_as_string(xml, nsmap)
     if as_string is None or as_string in NULL_UUID:
         return uuid.uuid4()
@@ -127,7 +118,9 @@ def _convert_to_uid(xml, nsmap=None):
 
 
 def _convert_to_datetime(xml, nsmap=None):
-    """Converts an etree element xml representation into a datetime type."""
+    """Converts an etree element xml representation into a datetime type.
+
+    """
     as_string = _get_value_as_string(xml, nsmap)
     if as_string is None:
         return None
@@ -326,7 +319,7 @@ def decode_xml(decoder, xml, nsmap, is_iterable):
         return collection
 
     # otherwise exception
-    raise PYESDOC_XMLError("xml cannot be decoded.")
+    raise pyesdoc.DecodingException("xml cannot be decoded.")
 
 
 def load_xml(xml, return_nsmap=False, default_ns='cim'):
@@ -347,7 +340,7 @@ def load_xml(xml, return_nsmap=False, default_ns='cim'):
     """
     # Defensive programming.
     if xml is None:
-        raise PYESDOC_XMLError("XML is undefined.")
+        raise pyesdoc.DecodingException("XML is undefined.")
 
     nsmap = None
     # ... etree elements.
@@ -369,11 +362,11 @@ def load_xml(xml, return_nsmap=False, default_ns='cim'):
                 try:
                     xml = et.fromstring(xml)
                 except Exception:
-                    raise PYESDOC_XMLError("Invalid xml string.")
+                    raise pyesdoc.DecodingException("Invalid xml string.")
                 else:
                     nsmap = xml.nsmap
             else:
-                raise PYESDOC_XMLError("Unsupported xml type, must be either a string, file, url or etree.")
+                raise pyesdoc.DecodingException("Unsupported xml type, must be either a string, file, url or etree.")
 
     # Set default namespace.
     if nsmap is not None:

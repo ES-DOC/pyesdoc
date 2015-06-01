@@ -9,7 +9,7 @@
    :synopsis: The set of types of the cim.v1.shared package.
 
 .. moduleauthor:: Earth System Documentation (ES-DOC) <dev@es-doc.org>
-.. note:: Code generated using esdoc_mp @ 2015-02-23 10:55:17.757864.
+.. note:: Code generated using esdoc_mp @ 2015-06-01 16:50:10.364320.
 
 """
 import abc
@@ -22,7 +22,7 @@ import uuid
 class Calendar(object):
     """An abstract class within the cim v1 type system.
 
-    Describes a method of calculating a span of dates.
+    Creates and returns instance of calendar class.
 
     """
     __metaclass__ = abc.ABCMeta
@@ -41,7 +41,7 @@ class Calendar(object):
 class Change(object):
     """A concrete class within the cim v1 type system.
 
-    A description of [a set of] changes applied at a particular time, by a particular party, to a particular unit of metadata.
+    Creates and returns instance of change class.
 
     """
     def __init__(self):
@@ -61,7 +61,7 @@ class Change(object):
 class Citation(object):
     """A concrete class within the cim v1 type system.
 
-    An academic reference to published work.
+    Creates and returns instance of citation class.
 
     """
     def __init__(self):
@@ -85,7 +85,7 @@ class Citation(object):
 class Compiler(object):
     """A concrete class within the cim v1 type system.
 
-    A description of a compiler used on a particular platform.
+    Creates and returns instance of compiler class.
 
     """
     def __init__(self):
@@ -105,7 +105,7 @@ class Compiler(object):
 class DataSource(object):
     """An abstract class within the cim v1 type system.
 
-    A DataSource can be realised by either a DataObject (file), a DataContent (variable), a Component (model), or a ComponentProperty (variable); all of those can supply data.
+    Creates and returns instance of data_source class.
 
     """
     __metaclass__ = abc.ABCMeta
@@ -122,6 +122,8 @@ class DataSource(object):
 class DateRange(object):
     """An abstract class within the cim v1 type system.
 
+    Creates and returns instance of date_range class.
+
     """
     __metaclass__ = abc.ABCMeta
 
@@ -137,7 +139,7 @@ class DateRange(object):
 class DocGenealogy(object):
     """A concrete class within the cim v1 type system.
 
-    A record of a document's history. A genealogy element contains a textual description and a set of relationships. Each relationship has a type and a reference to some target. There are different relationships for different document types.
+    Creates and returns instance of doc_genealogy class.
 
     """
     def __init__(self):
@@ -152,7 +154,7 @@ class DocGenealogy(object):
 class DocMetaInfo(object):
     """A concrete class within the cim v1 type system.
 
-    Encapsulates document meta information.
+    Creates and returns instance of doc_meta_info class.
 
     """
     def __init__(self):
@@ -187,7 +189,7 @@ class DocMetaInfo(object):
 class DocReference(object):
     """A concrete class within the cim v1 type system.
 
-    A reference to another cim entity
+    Creates and returns instance of reference class.
 
     """
     def __init__(self):
@@ -208,6 +210,8 @@ class DocReference(object):
 class DocRelationshipTarget(object):
     """A concrete class within the cim v1 type system.
 
+    Creates and returns instance of doc_relationship_target class.
+
     """
     def __init__(self):
         """Constructor.
@@ -222,7 +226,7 @@ class DocRelationshipTarget(object):
 class License(object):
     """A concrete class within the cim v1 type system.
 
-    A description of a license restricting access to a unit of data or software
+    Creates and returns instance of license class.
 
     """
     def __init__(self):
@@ -240,7 +244,7 @@ class License(object):
 class Machine(object):
     """A concrete class within the cim v1 type system.
 
-    A description of a machine used by a particular platform
+    Creates and returns instance of machine class.
 
     """
     def __init__(self):
@@ -266,7 +270,7 @@ class Machine(object):
 class MachineCompilerUnit(object):
     """A concrete class within the cim v1 type system.
 
-    Associates a machine with a [set of] compilers.  This is a separate class in case a platform needs to specify more than one machine/compiler pair.
+    Creates and returns instance of machine_compiler_unit class.
 
     """
     def __init__(self):
@@ -282,7 +286,7 @@ class MachineCompilerUnit(object):
 class Platform(object):
     """A concrete class within the cim v1 type system.
 
-    A platform is a description of resources used to deploy a component/simulation.  A platform pairs a machine with a (set of) compilers.  There is also a point of contact for the platform.
+    Creates and returns instance of platform class.
 
     """
     def __init__(self):
@@ -302,7 +306,7 @@ class Platform(object):
 class Property(object):
     """A concrete class within the cim v1 type system.
 
-    A simple name/value pair representing a property of some entity or other
+    Creates and returns instance of property class.
 
     """
     def __init__(self):
@@ -318,7 +322,7 @@ class Property(object):
 class Relationship(object):
     """An abstract class within the cim v1 type system.
 
-    A record of a relationship between one document and another. This class is abstract; specific document types must specialise this class for their relationshipTypes to be included in a document's genealogy.
+    Creates and returns instance of relationship class.
 
     """
     __metaclass__ = abc.ABCMeta
@@ -336,7 +340,7 @@ class Relationship(object):
 class ResponsibleParty(object):
     """A concrete class within the cim v1 type system.
 
-    A person/organsiation responsible for some aspect of a climate science artefact
+    Creates and returns instance of responsible_party class.
 
     """
     def __init__(self):
@@ -357,7 +361,7 @@ class ResponsibleParty(object):
 class Standard(object):
     """A concrete class within the cim v1 type system.
 
-    Describes a name given to an entity from a recognised standard.  The CIM records the standard and the name.  For example, the standard might be CF and the name might be atmospheric_pressure.
+    Creates and returns instance of standard class.
 
     """
     def __init__(self):
@@ -374,7 +378,7 @@ class Standard(object):
 class StandardName(object):
     """A concrete class within the cim v1 type system.
 
-    Describes a name given to an entity from a recognised standard.  The CIM records the standard and the name.  For example, the standard might be CF and the name might be atmospheric_pressure.
+    Creates and returns instance of standard_name class.
 
     """
     def __init__(self):
@@ -391,7 +395,7 @@ class StandardName(object):
 class ChangeProperty(Property):
     """A concrete class within the cim v1 type system.
 
-    A description of a single change applied to a single target.  Every ChangeProperty has a description, and may also have a name from a controlled vocabulary and a value.
+    Creates and returns instance of change class.
 
     """
     def __init__(self):
@@ -407,7 +411,7 @@ class ChangeProperty(Property):
 class ClosedDateRange(DateRange):
     """A concrete class within the cim v1 type system.
 
-    A date range with specified start and end points.
+    Creates and returns instance of closed_date_range class.
 
     """
     def __init__(self):
@@ -423,6 +427,8 @@ class ClosedDateRange(DateRange):
 class Daily360(Calendar):
     """A concrete class within the cim v1 type system.
 
+    Creates and returns instance of daily_360 class.
+
     """
     def __init__(self):
         """Constructor.
@@ -435,7 +441,7 @@ class Daily360(Calendar):
 class DocRelationship(Relationship):
     """A concrete class within the cim v1 type system.
 
-    Contains the set of relationships supported by a Document.
+    Creates and returns instance of doc_relationship class.
 
     """
     def __init__(self):
@@ -451,7 +457,7 @@ class DocRelationship(Relationship):
 class OpenDateRange(DateRange):
     """A concrete class within the cim v1 type system.
 
-    A date range without a specified start and/or end point.
+    Creates and returns instance of open_date_range class.
 
     """
     def __init__(self):
@@ -467,6 +473,8 @@ class OpenDateRange(DateRange):
 class PerpetualPeriod(Calendar):
     """A concrete class within the cim v1 type system.
 
+    Creates and returns instance of perpetual_period class.
+
     """
     def __init__(self):
         """Constructor.
@@ -478,6 +486,8 @@ class PerpetualPeriod(Calendar):
 
 class RealCalendar(Calendar):
     """A concrete class within the cim v1 type system.
+
+    Creates and returns instance of real_calendar class.
 
     """
     def __init__(self):
@@ -491,7 +501,7 @@ class RealCalendar(Calendar):
 class ChangePropertyType(object):
     """An enumeration within the cim v1 type system.
 
-    
+    Creates and returns instance of change_property_type enum.
     """
 
     pass
@@ -500,7 +510,7 @@ class ChangePropertyType(object):
 class CompilerType(object):
     """An enumeration within the cim v1 type system.
 
-    A list of known compilers.
+    Creates and returns instance of compiler_type enum.
     """
 
     pass
@@ -509,43 +519,7 @@ class CompilerType(object):
 class DataPurpose(object):
     """An enumeration within the cim v1 type system.
 
-    Purpose of the data - i.e. ancillaryFile, boundaryCondition or initialCondition.
-    """
-
-    pass
-
-
-class DocRelationshipDirectionType(object):
-    """An enumeration within the cim v1 type system.
-
-    
-    """
-
-    pass
-
-
-class DocRelationshipType(object):
-    """An enumeration within the cim v1 type system.
-
-    
-    """
-
-    pass
-
-
-class DocStatusType(object):
-    """An enumeration within the cim v1 type system.
-
-    Status of cim document.
-    """
-
-    pass
-
-
-class DocType(object):
-    """An enumeration within the cim v1 type system.
-
-    
+    Creates and returns instance of data_purpose enum.
     """
 
     pass
@@ -554,7 +528,7 @@ class DocType(object):
 class InterconnectType(object):
     """An enumeration within the cim v1 type system.
 
-    A list of connectors between machines.
+    Creates and returns instance of interconnect_type enum.
     """
 
     pass
@@ -563,7 +537,7 @@ class InterconnectType(object):
 class MachineType(object):
     """An enumeration within the cim v1 type system.
 
-    A list of known machines.
+    Creates and returns instance of machine_type enum.
     """
 
     pass
@@ -572,7 +546,7 @@ class MachineType(object):
 class MachineVendorType(object):
     """An enumeration within the cim v1 type system.
 
-    A list of organisations that create machines.
+    Creates and returns instance of machine_vendor_type enum.
     """
 
     pass
@@ -581,7 +555,7 @@ class MachineVendorType(object):
 class OperatingSystemType(object):
     """An enumeration within the cim v1 type system.
 
-    A list of common operating systems.
+    Creates and returns instance of operating_system_type enum.
     """
 
     pass
@@ -590,7 +564,7 @@ class OperatingSystemType(object):
 class ProcessorType(object):
     """An enumeration within the cim v1 type system.
 
-    A list of known cpu's.
+    Creates and returns instance of processor_type enum.
     """
 
     pass
@@ -599,7 +573,43 @@ class ProcessorType(object):
 class UnitType(object):
     """An enumeration within the cim v1 type system.
 
-    A list of scientific units.
+    Creates and returns instance of unit_type enum.
+    """
+
+    pass
+
+
+class DocRelationshipDirectionType(object):
+    """An enumeration within the cim v1 type system.
+
+    Creates and returns instance of relationship_direction_type enum.
+    """
+
+    pass
+
+
+class DocRelationshipType(object):
+    """An enumeration within the cim v1 type system.
+
+    Creates and returns instance of document_relationship_type enum.
+    """
+
+    pass
+
+
+class DocStatusType(object):
+    """An enumeration within the cim v1 type system.
+
+    Creates and returns instance of doc_status_type enum.
+    """
+
+    pass
+
+
+class DocType(object):
+    """An enumeration within the cim v1 type system.
+
+    Creates and returns instance of doc_type enum.
     """
 
     pass

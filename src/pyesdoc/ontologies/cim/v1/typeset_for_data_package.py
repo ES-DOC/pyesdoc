@@ -9,7 +9,7 @@
    :synopsis: The set of types of the cim.v1.data package.
 
 .. moduleauthor:: Earth System Documentation (ES-DOC) <dev@es-doc.org>
-.. note:: Code generated using esdoc_mp @ 2015-02-23 10:55:17.752767.
+.. note:: Code generated using esdoc_mp @ 2015-06-01 16:50:10.358639.
 
 """
 import abc
@@ -23,7 +23,7 @@ import typeset_for_shared_package as shared
 class DataContent(shared.DataSource):
     """A concrete class within the cim v1 type system.
 
-    The contents of the data object; like ISO: MD_ContentInformation.
+    Creates and returns instance of data_content class.
 
     """
     def __init__(self):
@@ -40,7 +40,7 @@ class DataContent(shared.DataSource):
 class DataDistribution(object):
     """A concrete class within the cim v1 type system.
 
-    Describes how a DataObject is distributed.
+    Creates and returns instance of data_distribution class.
 
     """
     def __init__(self):
@@ -58,7 +58,7 @@ class DataDistribution(object):
 class DataExtent(object):
     """A concrete class within the cim v1 type system.
 
-    A data object extent represents the geographical and temporal coverage associated with a data object.
+    Creates and returns instance of data_extent class.
 
     """
     def __init__(self):
@@ -74,7 +74,7 @@ class DataExtent(object):
 class DataExtentGeographical(object):
     """A concrete class within the cim v1 type system.
 
-    A data object geographical extent represents the geographical coverage associated with a data object.
+    Creates and returns instance of data_extent_geographical class.
 
     """
     def __init__(self):
@@ -92,7 +92,7 @@ class DataExtentGeographical(object):
 class DataExtentTemporal(object):
     """A concrete class within the cim v1 type system.
 
-    A data object temporal extent represents the temporal coverage associated with a data object.
+    Creates and returns instance of data_extent_temporal class.
 
     """
     def __init__(self):
@@ -109,7 +109,7 @@ class DataExtentTemporal(object):
 class DataExtentTimeInterval(object):
     """A concrete class within the cim v1 type system.
 
-    A data object temporal extent represents the temporal coverage associated with a data object.
+    Creates and returns instance of data_extent_time_interval class.
 
     """
     def __init__(self):
@@ -126,7 +126,7 @@ class DataExtentTimeInterval(object):
 class DataHierarchyLevel(object):
     """A concrete class within the cim v1 type system.
 
-    The type of data object that is grouped together into a particular hierarchy.  Currently, this is made up of terms describing how the Met Office splits up archived data and how THREDDS categorises variables.
+    Creates and returns instance of data_hierarchy_level class.
 
     """
     def __init__(self):
@@ -143,7 +143,7 @@ class DataHierarchyLevel(object):
 class DataObject(shared.DataSource):
     """A concrete class within the cim v1 type system.
 
-    A DataObject describes a unit of data.  DataObjects can be grouped hierarchically.  The attributes hierarchyLevelName and hierarchyLevelValue describe how objects are grouped.
+    Creates and returns instance of data_object class.
 
     """
     def __init__(self):
@@ -176,7 +176,7 @@ class DataObject(shared.DataSource):
 class DataProperty(shared.Property):
     """A concrete class within the cim v1 type system.
 
-    A property of a DataObject. Currently this is intended to be used to record CF specific information (like packing, scaling, etc.) for OASIS4.
+    Creates and returns instance of data_property class.
 
     """
     def __init__(self):
@@ -191,7 +191,7 @@ class DataProperty(shared.Property):
 class DataRestriction(object):
     """A concrete class within the cim v1 type system.
 
-    An access or use restriction on some element of the DataObject's actual data.
+    Creates and returns instance of data_restriction class.
 
     """
     def __init__(self):
@@ -208,7 +208,7 @@ class DataRestriction(object):
 class DataStorage(object):
     """An abstract class within the cim v1 type system.
 
-    Describes the method that the DataObject is stored. An abstract class with specific child classes for each supported method.
+    Creates and returns instance of data_storage class.
 
     """
     __metaclass__ = abc.ABCMeta
@@ -228,7 +228,7 @@ class DataStorage(object):
 class DataTopic(object):
     """A concrete class within the cim v1 type system.
 
-    Describes the content  of a data object; the variable's name, units, etc.
+    Creates and returns instance of data_topic class.
 
     """
     def __init__(self):
@@ -245,7 +245,7 @@ class DataTopic(object):
 class DataStorageDb(DataStorage):
     """A concrete class within the cim v1 type system.
 
-    Contains attributes to describe a DataObject stored as a database file.
+    Creates and returns instance of data_storage_db class.
 
     """
     def __init__(self):
@@ -263,7 +263,7 @@ class DataStorageDb(DataStorage):
 class DataStorageFile(DataStorage):
     """A concrete class within the cim v1 type system.
 
-    Contains attributes to describe a DataObject stored as a single file.
+    Creates and returns instance of data_storage_file class.
 
     """
     def __init__(self):
@@ -280,7 +280,7 @@ class DataStorageFile(DataStorage):
 class DataStorageIp(DataStorage):
     """A concrete class within the cim v1 type system.
 
-    Contains attributes to describe a DataObject stored as a database file.
+    Creates and returns instance of data_storage_ip class.
 
     """
     def __init__(self):
@@ -298,7 +298,7 @@ class DataStorageIp(DataStorage):
 class DataHierarchyType(object):
     """An enumeration within the cim v1 type system.
 
-    What level in the data hierarchy (constructed by the self-referential parent/child aggregations) is this DataObject.
+    Creates and returns instance of data_status_type enum.
     """
 
     pass
@@ -307,7 +307,7 @@ class DataHierarchyType(object):
 class DataStatusType(object):
     """An enumeration within the cim v1 type system.
 
-    Status of the data.
+    Creates and returns instance of data_status_type enum.
     """
 
     pass

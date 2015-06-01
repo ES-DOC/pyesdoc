@@ -9,7 +9,7 @@
    :synopsis: The set of types of the cim.v1.quality package.
 
 .. moduleauthor:: Earth System Documentation (ES-DOC) <dev@es-doc.org>
-.. note:: Code generated using esdoc_mp @ 2015-02-23 10:55:17.756310.
+.. note:: Code generated using esdoc_mp @ 2015-06-01 16:50:10.362513.
 
 """
 import abc
@@ -23,7 +23,7 @@ import typeset_for_shared_package as shared
 class CimQuality(object):
     """A concrete class within the cim v1 type system.
 
-    The starting point for a quality record.  It can contain any number of issues and reports.  An issue is an open-ended description of some issue about a CIM instance.  A record is a prescribed description of some specific quantitative measure that has been applied to a CIM instance.
+    Creates and returns instance of cim_quality class.
 
     """
     def __init__(self):
@@ -38,6 +38,8 @@ class CimQuality(object):
 
 class Evaluation(object):
     """A concrete class within the cim v1 type system.
+
+    Creates and returns instance of evaluation class.
 
     """
     def __init__(self):
@@ -60,6 +62,8 @@ class Evaluation(object):
 class Measure(object):
     """A concrete class within the cim v1 type system.
 
+    Creates and returns instance of measure class.
+
     """
     def __init__(self):
         """Constructor.
@@ -74,6 +78,8 @@ class Measure(object):
 
 class Report(object):
     """A concrete class within the cim v1 type system.
+
+    Creates and returns instance of report class.
 
     """
     def __init__(self):
@@ -91,7 +97,7 @@ class Report(object):
 class CimFeatureType(object):
     """An enumeration within the cim v1 type system.
 
-    
+    Creates and returns instance of cim_feature_type enum.
     """
 
     pass
@@ -100,7 +106,7 @@ class CimFeatureType(object):
 class CimResultType(object):
     """An enumeration within the cim v1 type system.
 
-    
+    Creates and returns instance of cim_result_type enum.
     """
 
     pass
@@ -109,7 +115,7 @@ class CimResultType(object):
 class CimScopeCodeType(object):
     """An enumeration within the cim v1 type system.
 
-    This would cover quality issues with the CIM itself
+    Creates and returns instance of cim_scope_code_type enum.
     """
 
     pass
@@ -118,7 +124,7 @@ class CimScopeCodeType(object):
 class QualityIssueType(object):
     """An enumeration within the cim v1 type system.
 
-    
+    Creates and returns instance of quality_issue_type enum.
     """
 
     pass
@@ -127,7 +133,7 @@ class QualityIssueType(object):
 class QualitySeverityType(object):
     """An enumeration within the cim v1 type system.
 
-    
+    Creates and returns instance of quality_severity_type enum.
     """
 
     pass
@@ -136,7 +142,7 @@ class QualitySeverityType(object):
 class QualityStatusType(object):
     """An enumeration within the cim v1 type system.
 
-    
+    Creates and returns instance of quality_status_type enum.
     """
 
     pass
