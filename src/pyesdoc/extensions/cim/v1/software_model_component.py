@@ -67,7 +67,7 @@ def _extend_component_00(ctx):
     # Remove sub-components with invalid type names.
     for sc in ctx.c.sub_components:
         if sc.type.lower() == 'other' and \
-             sc.short_name.replace(" ", "").lower() in \
+           sc.short_name.replace(" ", "").lower() in \
                 ['new', 'surfexoceansurface']:
             ctx.c.sub_components.remove(sc)
 

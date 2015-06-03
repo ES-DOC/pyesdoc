@@ -25,7 +25,7 @@ def _set_type_info(ctx):
     """Sets document type information."""
     ctx.meta.type = ctx.ext.type = ctx.doc.__class__.type_key
     ctx.meta.type_display_name = ctx.meta.type.split(".")[-1]
-    ctx.meta.type_sort_key = "ZZ"
+    ctx.meta.type_sort_key = u"ZZ"
     ctx.ext.css_class = ctx.ext.type.lower().replace(".", "-")
 
 
@@ -41,7 +41,7 @@ def _set_institute(ctx):
     if ctx.meta.institute:
         ctx.meta.institute = ctx.meta.institute.upper()
     else:
-        ctx.meta.institute = "--"
+        ctx.meta.institute = u"--"
 
 
 def _set_project(ctx):
@@ -49,7 +49,7 @@ def _set_project(ctx):
     if ctx.meta.project:
         ctx.meta.project = ctx.meta.project.upper()
     else:
-        ctx.meta.project = "--"
+        ctx.meta.project = u"--"
 
 
 def _set_summary_fields(ctx):
@@ -105,7 +105,7 @@ def _set_full_display_name(ctx):
         name += " "
     name += ctx.meta.type_display_name
     name += " : "
-    if ctx.meta.institute and ctx.meta.institute != "--":
+    if ctx.meta.institute and ctx.meta.institute != u"--":
         name += ctx.meta.institute.upper()
         name += " - "
     if ctx.ext.display_name:

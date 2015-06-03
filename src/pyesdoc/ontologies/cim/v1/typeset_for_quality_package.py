@@ -9,7 +9,7 @@
    :synopsis: The set of types of the cim.v1.quality package.
 
 .. moduleauthor:: Earth System Documentation (ES-DOC) <dev@es-doc.org>
-.. note:: Code generated using esdoc_mp @ 2015-06-01 16:50:10.362513.
+.. note:: Code generated using esdoc_mp @ 2015-06-03 10:37:52.880947.
 
 """
 import abc
@@ -23,7 +23,7 @@ import typeset_for_shared_package as shared
 class CimQuality(object):
     """A concrete class within the cim v1 type system.
 
-    Creates and returns instance of cim_quality class.
+    The starting point for a quality record.  It can contain any number of issues and reports.  An issue is an open-ended description of some issue about a CIM instance.  A record is a prescribed description of some specific quantitative measure that has been applied to a CIM instance.
 
     """
     def __init__(self):
@@ -115,7 +115,7 @@ class CimResultType(object):
 class CimScopeCodeType(object):
     """An enumeration within the cim v1 type system.
 
-    Creates and returns instance of cim_scope_code_type enum.
+    This would cover quality issues with the CIM itself.
     """
 
     pass

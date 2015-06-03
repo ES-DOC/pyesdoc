@@ -12,6 +12,7 @@
 """
 import inspect
 
+import pyesdoc
 
 
 # Set of logging levels.
@@ -21,29 +22,7 @@ LOG_LEVEL_WARNING = 'WARNING'
 LOG_LEVEL_ERROR = 'ERROR'
 
 
-class PYESDOC_Exception(Exception):
-    """Default library exception class.
-
-    """
-
-    def __init__(self, msg):
-        """Contructor.
-
-        :param msg: Exception message.
-        :type msg: str
-
-        """
-        self.message = msg() if inspect.isfunction(msg) else str(msg)
-
-
-    def __str__(self):
-        """Returns a string representation.
-
-        """
-        return "ES-DOC PY-CLIENT EXCEPTION : {0}".format(repr(self.message))
-
-
-def raise_error(msg, type=PYESDOC_Exception):
+def raise_error(msg, err_type=None):
     """Helper function to raise a runtime error.
 
     :param msg: Error message.
@@ -53,7 +32,10 @@ def raise_error(msg, type=PYESDOC_Exception):
     :type type: class
 
     """
-    raise type(msg)
+    if err_type is None:
+        err_type = pyesdoc.PYESDOC_Exception
+
+    raise err_type(msg)
 
 
 def assert_function(f, msg=None):

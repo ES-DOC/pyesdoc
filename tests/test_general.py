@@ -180,9 +180,11 @@ def _test_set_option_01():
     pyesdoc.set_option('api_url', api_url_old)
 
 
-@nose.tools.raises(pyesdoc.PYESDOC_Exception)
+@nose.tools.raises(pyesdoc.InvalidOptionException)
 def _test_set_option_02():
-    """Test setting package options - negative."""
+    """Test setting package options - negative.
+
+    """
     pyesdoc.set_option('xxx', 'xxx')
 
 

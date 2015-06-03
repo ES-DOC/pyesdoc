@@ -12,21 +12,18 @@
 """
 import os
 
-from ..utils import config
+from pyesdoc.utils import config
 
 
 
 # Archive location comes from config.
 DIR_ARCHIVE = config.archive.location
-if not os.path.exists(DIR_ARCHIVE):
-    raise IOError("Archive directory does not exist: {0}".format(DIR_ARCHIVE))
-
 
 # Set of supported projects.
-projects = config.archive.projects
+PROJECTS = config.archive.projects
 
 # Set of supported sources.
-sources = config.archive.sources
+SOURCES = config.archive.sources
 
 
 def get_project_sources():
@@ -34,10 +31,9 @@ def get_project_sources():
 
     """
     result = []
-    for project in projects:
+    for project in PROJECTS:
         for source in (f.source for f in project.feeds):
             if (project.name, source) not in result:
                 result.append((project.name, source))
 
     return tuple(result)
-  

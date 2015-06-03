@@ -327,7 +327,7 @@ def dict_to_json(d, key_formatter=None):
 
     """
     if key_formatter is not None:
-        d = key_formatter(d)
+        d = dict_keys(d, key_formatter)
 
     return _JSONEncoder().encode(d)
 

@@ -12,28 +12,35 @@
 """
 import os
 
-from . import constants, serialization, options, extensions
+import pyesdoc
 
 
 
 # Output directory option.
 _OPT_OUTPUT_DIR = "output_dir"
 
+# Default document encoding.
+_UNICODE = "utf-8"
+
+
 
 def _get_doc_path(doc, encoding):
-    """Returns path to doc file in the relevant encoding."""
+    """Returns path to doc file in the relevant encoding.
+
+    """
     fpath = '{0}_{1}_{2}.{3}'.format(doc.__class__.type_key,
                                      str(doc.meta.id),
                                      str(doc.meta.version),
                                      encoding)
+    output_dir = pyesdoc.get_option(_OPT_OUTPUT_DIR)
 
-    return os.path.join(options.get_option(_OPT_OUTPUT_DIR), fpath)
+    return os.path.join(output_dir, fpath)
 
 
-def write(doc, encoding=constants.ESDOC_ENCODING_JSON, fpath=None):
+def write(document, encoding=None, fpath=None):
     """Writes a document to the file system in the passed encoding.
 
-    :param object doc: A pyesdoc document instance.
+    :param object document: A pyesdoc document instance.
     :param str encoding: Document encoding.
     :param str fpath: Path to file to be written.
 
@@ -41,28 +48,31 @@ def write(doc, encoding=constants.ESDOC_ENCODING_JSON, fpath=None):
     :rtype: str
 
     """
+    if encoding is None:
+        encoding = pyesdoc.constants.ESDOC_ENCODING_JSON
     if fpath is None:
-        fpath = _get_doc_path(doc, encoding)
-
+        fpath = _get_doc_path(document, encoding)
+    content = pyesdoc.encode(document, encoding)
     with open(fpath, 'w') as output_file:
-        output_file.write(serialization.encode(doc, encoding))
+        output_file.write(content)
 
     return fpath
 
 
-def read(fpath, encoding=None):
+def read(fpath, encoding=None, decode=True):
     """Opens a document from a previously saved file from file system.
 
     :param str fpath: Path to previously saved file.
     :param str encoding: Encoding to use during deserialization.
-    :param func post_processing_handlers: Callback(s) to invoke after processing.
+    :param bool decode: Flag indicating whether document will be decoded.
 
     :returns: A pyesdoc document instance.
     :rtype: object
 
     """
+    # Validate file path.
     if not os.path.isfile(fpath):
-        fpath = os.path.join(options.get_option(_OPT_OUTPUT_DIR), fpath)
+        fpath = os.path.join(pyesdoc.get_option(_OPT_OUTPUT_DIR), fpath)
         if not os.path.isfile(fpath):
             raise IOError("Document file path does not exist")
 
@@ -70,33 +80,35 @@ def read(fpath, encoding=None):
     if encoding is None:
         encoding = os.path.splitext(fpath)[1][1:]
 
+    # Set raw content.
     with open(fpath, 'r') as input_file:
-        return serialization.decode(input_file.read(), encoding)
+        content = input_file.read().decode(_UNICODE)
+
+    # Decode upon request.
+    document = None
+    if decode:
+        document = pyesdoc.decode(content, encoding)
+
+    return document or content
 
 
-def convert(in_file, to_encoding, from_encoding=None):
+def convert(fpath, to_encoding, from_encoding=None):
     """Converts a document from one encoding to another.
 
-    :param str in_file: Path to previously saved file.
-    :param str encoding: Encoding to use during encoding.
+    :param str fpath: Path to previously saved file.
+    :param str to_encoding: Target encoding.
+    :param str from_encoding: Source encoding (defaults to json).
 
     :returns: Path to converted pyesdoc document instance.
     :rtype: str
 
     """
-    # Validate input file path.
-    if not os.path.isfile(in_file):
-        in_file = os.path.join(options.get_option(_OPT_OUTPUT_DIR), in_file)
-        if not os.path.isfile(in_file):
+    if not os.path.isfile(fpath):
+        fpath = os.path.join(pyesdoc.get_option(_OPT_OUTPUT_DIR), fpath)
+        if not os.path.isfile(fpath):
             raise IOError("Document file path does not exist")
 
-    # Read document.
-    doc = read(in_file, from_encoding)
+    document = read(fpath, from_encoding)
+    fpath_out = "{0}.{1}".format(os.path.splitext(fpath)[0], to_encoding)
 
-    # Extend document.
-    if to_encoding == constants.ESDOC_ENCODING_HTML:
-        extensions.extend(doc)
-
-    # Write converted document.
-    out_file = "{0}.{1}".format(os.path.splitext(in_file)[0], to_encoding)
-    write(doc, to_encoding, out_file)
+    return write(document, to_encoding, fpath_out)

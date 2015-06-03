@@ -38,7 +38,7 @@ def _extend_property_01(ctx):
 def _extend_property_02(ctx):
     """Formats property values."""
     ctx.p.values = filter(None, ctx.p.values)
-    ctx.p.values = map(lambda v: str(v).strip(), ctx.p.values)
+    ctx.p.values = map(lambda v: unicode(v).strip(), ctx.p.values)
     ctx.p.values = filter(lambda v: len(v), ctx.p.values)
     ctx.p.values = map(lambda v: v[0].upper() + v[1:], ctx.p.values)
 
@@ -56,25 +56,25 @@ def _extend_property_03(ctx):
     # Display name.
     if ctx.p.ext.depth:
         ctx.p.ext.display_name += ctx.p.ext.parent.ext.display_name
-        ctx.p.ext.display_name += " > "
+        ctx.p.ext.display_name += u" > "
     ctx.p.ext.display_name += ctx.p.ext.short_display_name
 
     # Long name.
     if not ctx.p.ext.depth:
         ctx.p.ext.long_display_name = ctx.c.ext.long_display_name
-        ctx.p.ext.long_display_name += " >> "
+        ctx.p.ext.long_display_name += u" >> "
     else:
         ctx.p.ext.long_display_name = ctx.p.ext.parent.ext.long_display_name
-        ctx.p.ext.long_display_name += " > "
+        ctx.p.ext.long_display_name += u" > "
     ctx.p.ext.long_display_name += ctx.p.ext.short_display_name
 
     # Full name.
     if not ctx.p.ext.depth:
         ctx.p.ext.full_display_name = ctx.c.ext.full_display_name
-        ctx.p.ext.full_display_name += " >> "
+        ctx.p.ext.full_display_name += u" >> "
     else:
         ctx.p.ext.full_display_name = ctx.p.ext.parent.ext.full_display_name
-        ctx.p.ext.full_display_name += " > "
+        ctx.p.ext.full_display_name += u" > "
     ctx.p.ext.full_display_name += ctx.p.ext.short_display_name
 
 
@@ -106,4 +106,8 @@ def extend(c, p, parent=None, ancestors=[]):
         _extend_property_03,
         _extend_property_04,
         ):
-        func(ctx)
+        try:
+            func(ctx)
+        except Exception as err:
+            print func, err
+            raise err

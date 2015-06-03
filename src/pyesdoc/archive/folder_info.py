@@ -1,10 +1,11 @@
 # -*- coding: utf-8 -*-
+
 """
-.. module:: folder_info.py
+.. module:: file_info.py
    :copyright: @2013 Earth System Documentation (http://es-doc.org)
    :license: GPL/CeCIL
    :platform: Unix, Windows
-   :synopsis: An archive folder information wrapper.
+    :synopsis: An archived document folder wrapper.
 
 .. moduleauthor:: Mark Conway-Greenslade <momipsl@ipsl.jussieu.fr>
 
@@ -12,71 +13,66 @@
 """
 import glob, os
 
-from . import config
-from ..extensions import extend as extend_doc
-from ..io import read as read_doc
-from file_info import FileInfo
+import pyesdoc
+from pyesdoc.archive import constants
+from pyesdoc.archive.file_info import ArchiveFileInfo
+from pyesdoc.extensions import extend as extend_doc
+from pyesdoc.io import read as read_doc
+
+
+def _get_file_filterset():
+    """Returns set of supported file filters.
+
+    """
+    result = constants.FILE_FILTER_SET
+    for doc_type in pyesdoc.ontologies.get_doc_type_keyset():
+        result.add("{}_*.*".format(doc_type.replace(".", "-").lower()))
+
+    return result
 
 
 
-# Organized folder.
-_FOLDER_ORGANIZED = "organized"
-
-# Raw folder.
-_FOLDER_RAW = "raw"
-
-# All files filter.
-_FILE_FILTER_ALL = "*.*"
-
-
-class FolderInfo(object):
+class ArchiveFolderInfo(object):
     """An archive folder.
 
     """
-    def __init__(self, project, source, managed_dir, path):
-        """Object constructor.
+    def __init__(self, project, source, path):
+        """Instance constructor.
 
         """
-        self.managed_dir = managed_dir.lower()
         self.path = path
-        self.path_all_files = os.path.join(self.path, _FILE_FILTER_ALL)
         self.project = project.lower()
         self.source = source.lower()
-
+        self._paths = \
+            { ff: os.path.join(path, ff) for ff in _get_file_filterset() }
 
     def __repr__(self):
-        """Object representation.
+        """Instance representation.
 
         """
         return "{0}".format(self.path)
 
-
     @property
-    def is_organized(self):
-        """Get flag indicating whether this is an organized folder."""
-        return self.managed_dir == _FOLDER_ORGANIZED
+    def exists(self):
+        """Gets flag indicating whether folder exists.
 
+        """
+        return os.path.exists(self.path)
 
-    @property
-    def is_raw(self):
-        """Get flag indicating whether this is an organized folder."""
-        return self.managed_dir == _FOLDER_RAW
+    def delete(self):
+        """Deletes underlying folder from local file system.
 
+        """
+        if self.exists:
+            os.remove(self.path)
 
-    def yield_files(self, file_filter=None):
-        """Yields set of files.
-
-        :param str file_filter: Optional file filter.
-
-        :returns: Set of file paths.
-        :rtype: generator
+    def get_count(self, file_filter=None):
+        """Returns file count.
 
         """
         if not file_filter:
-            file_filter = _FILE_FILTER_ALL
-        for fpath in glob.iglob(os.path.join(self.path, file_filter)):
-            yield FileInfo(self, fpath)
-
+            file_filter = constants.FILE_FILTER_ALL
+        return len(glob.glob(self._paths[file_filter]))
 
     def yield_documents(self, file_filter=None):
         """Yields set of documents.
@@ -90,17 +86,33 @@ class FolderInfo(object):
         for file_info in self.yield_files(file_filter):
             yield extend_doc(read_doc(file_info.path))
 
+    def yield_files(self, file_filter=None):
+        """Yields set of files.
 
-    def get_file_count(self):
-        """Returns file count.
+        :param str file_filter: Optional file filter.
 
-        """
-        return len(glob.glob(self.path_all_files))
-
-
-    def delete_files(self, file_filter=None):
-        """Deletes folder files.
+        :returns: Set of file paths.
+        :rtype: generator
 
         """
-        for file_info in self.yield_files(file_filter):
-            os.remove(file_info.path)
+        if file_filter is None or file_filter == "*":
+            file_filter = constants.FILE_FILTER_ALL
+        elif file_filter != constants.FILE_FILTER_ERROR and file_filter.find("_") == -1:
+            file_filter = "{}_*.*".format(file_filter)
+        for fpath in glob.iglob(self._paths[file_filter]):
+            yield ArchiveFileInfo(self, fpath)
+
+    def find_file(self, uid, version):
+        """Yields files for processing.
+
+        :param str uid: Document unique identifier.
+        :param str version: Document version.
+
+        :returns: A file wrapper to be processed.
+        :rtype: pyesdoc.archive.ArchiveFileInfo
+
+        """
+        file_filter = "*_{0}_{1}_*.*".format(uid, version)
+        files = glob.glob(os.path.join(self.path, file_filter))
+        if files:
+            return ArchiveFileInfo(self, files[0])

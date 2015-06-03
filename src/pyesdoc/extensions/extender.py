@@ -11,14 +11,16 @@
 
 
 """
-from . import cim, default
-from .. utils import runtime as rt
-from .. ontologies import get_types
+import pyesdoc
+from pyesdoc.extensions import cim
+from pyesdoc.extensions import default
+from pyesdoc.utils import runtime as rt
+from pyesdoc.ontologies import get_types
 
 
 
-# Set of ontologies.
-_ONTOLOGIES = [cim]
+# Set of extenders mapped by ontology.
+_ONTOLOGIES = {cim}
 
 # Set of ontology types.
 _TYPES = get_types()
@@ -31,9 +33,13 @@ for o in _ONTOLOGIES:
 
 
 class _ExtensionContextInfo(object):
-    """Document extension context information."""
+    """Document extension context information.
+
+    """
     def __init__(self, doc, meta, ext):
-        """Constructor."""
+        """Instance constructor.
+
+        """
         self.doc = doc
         self.meta = meta
         self.ext = ext
@@ -44,7 +50,7 @@ class DocumentExtensionInfo(object):
 
     """
     def __init__(self):
-        """Constructor.
+        """Instance constructor.
 
         """
         self.children = []
@@ -69,8 +75,8 @@ def extend(doc):
     :rtype: object
 
     """
-    # Escape if extending null documents.
-    if doc is None:
+    # Escape if extending null documents or already extended.
+    if doc is None or hasattr(doc, 'ext'):
         return
 
     # Verify that document type is supported.
@@ -96,13 +102,16 @@ def extend(doc):
         except AttributeError:
             pass
 
-        # Step 2.2 Extend child documents (i.e. bottom up extension).
+        # Step 2.2 Extend child documents (i.e. bottom up recursive extension).
         for child in ctx.ext.children:
             extend(child)
 
         # Step 2.3 Invoke extension callbacks.
         for extender in mod.get_extenders():
-            extender(ctx)
+            try:
+                extender(ctx)
+            except Exception as err:
+                raise pyesdoc.ExtendingException(err, extender)
 
     # Step 3: invoke default post-extenders.
     for extender in default.POST_EXTENDERS:

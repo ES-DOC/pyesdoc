@@ -9,12 +9,13 @@
    :synopsis: Encpasulates meta-information pertaining to the cim.v2 typeset.
 
 .. moduleauthor:: Earth System Documentation (ES-DOC) <dev@es-doc.org>
-.. note:: Code generated using esdoc_mp @ 2015-06-01 16:50:05.523857.
+.. note:: Code generated using esdoc_mp @ 2015-06-03 11:24:48.582723.
 
 """
 import datetime
 import uuid
 
+import typeset_for_activity_package as activity
 import typeset_for_activity_package as activity
 import typeset_for_data_package as data
 import typeset_for_platform_package as platform
@@ -24,6 +25,24 @@ import typeset_for_shared_package as shared
 
 
 # Set type keys.
+activity.Activity.type_key = 'cim.2.activity.Activity'
+activity.AxisMember.type_key = 'cim.2.activity.AxisMember'
+activity.Configuration.type_key = 'cim.2.activity.Configuration'
+activity.Conformance.type_key = 'cim.2.activity.Conformance'
+activity.Ensemble.type_key = 'cim.2.activity.Ensemble'
+activity.EnsembleRequirement.type_key = 'cim.2.activity.EnsembleRequirement'
+activity.EnsembleRequirement.type_key = 'cim.2.activity.EnsembleRequirement'
+activity.ForcingConstraint.type_key = 'cim.2.activity.ForcingConstraint'
+activity.MemberDescription.type_key = 'cim.2.activity.MemberDescription'
+activity.MultiEnsemble.type_key = 'cim.2.activity.MultiEnsemble'
+activity.MultiTimeEnsemble.type_key = 'cim.2.activity.MultiTimeEnsemble'
+activity.NumericalExperiment.type_key = 'cim.2.activity.NumericalExperiment'
+activity.NumericalRequirement.type_key = 'cim.2.activity.NumericalRequirement'
+activity.OutputTemporalRequirement.type_key = 'cim.2.activity.OutputTemporalRequirement'
+activity.Project.type_key = 'cim.2.activity.Project'
+activity.Simulation.type_key = 'cim.2.activity.Simulation'
+activity.SimulationPlan.type_key = 'cim.2.activity.SimulationPlan'
+activity.TemporalConstraint.type_key = 'cim.2.activity.TemporalConstraint'
 activity.Activity.type_key = 'cim.2.activity.Activity'
 activity.AxisMember.type_key = 'cim.2.activity.AxisMember'
 activity.Configuration.type_key = 'cim.2.activity.Configuration'
@@ -69,6 +88,126 @@ shared.VocabMember.type_key = 'cim.2.shared.VocabMember'
 
 
 # Set type info (name, type, is_required, is_iterative).
+activity.Activity.type_info = (
+    ('canonical_name', str, False, False),
+    ('description', shared.CimText, False, False),
+    ('duration', str, False, False),
+    ('keywords', str, False, True),
+    ('long_name', str, False, False),
+    ('meta', shared.Meta, True, False),
+    ('name', str, True, False),
+    ('references', shared.Citation, False, True),
+    ('responsible_parties', shared.Responsibility, False, True),
+)
+
+activity.AxisMember.type_info = (
+    ('description', str, True, False),
+    ('index', int, True, False),
+    ('start_date', str, False, False),
+    ('value', float, False, False),
+)
+
+activity.Configuration.type_info = (
+    ('conformances', str, True, True),
+    ('description', str, False, False),
+)
+
+activity.Conformance.type_info = (
+    ('conformance_detail', shared.CimText, True, False),
+    ('target_name', str, True, False),
+    ('target_requirement', str, True, False),
+)
+
+activity.Ensemble.type_info = (
+    ('i_defined_by', str, True, False),
+    ('p_defined_by', str, True, False),
+    ('r_defined_by', str, True, False),
+    ('s_defined_by', str, False, False),
+    ('simulations_include', str, True, True),
+    ('supported', str, True, True),
+)
+
+activity.EnsembleRequirement.type_info = (
+    ('ensemble_member', str, False, True),
+    ('ensemble_type', str, True, False),
+    ('minimum_size', int, True, False),
+)
+
+activity.EnsembleRequirement.type_info = (
+    ('ensemble_member', str, False, True),
+    ('ensemble_type', str, True, False),
+    ('minimum_size', int, True, False),
+)
+
+activity.ForcingConstraint.type_info = (
+    ('additional_constraint', shared.CimText, False, False),
+    ('category', str, True, False),
+    ('code', str, True, False),
+    ('data_link', str, False, False),
+    ('forcing_Type', str, True, False),
+    ('group', str, False, False),
+    ('origin', shared.Citation, False, False),
+)
+
+activity.MemberDescription.type_info = (
+    ('axis', str, True, False),
+    ('description', shared.CimText, False, False),
+    ('member', activity.AxisMember, True, True),
+)
+
+activity.MultiEnsemble.type_info = (
+    ('ensemble_axis', str, True, True),
+)
+
+activity.MultiTimeEnsemble.type_info = (
+    ('ensemble_members', str, True, False),
+)
+
+activity.NumericalExperiment.type_info = (
+    ('experiment_id', str, False, False),
+    ('related_experiments', str, False, True),
+    ('requirements', str, False, True),
+)
+
+activity.NumericalRequirement.type_info = (
+    ('additional_requirements', str, False, True),
+    ('was_conformance_requested', bool, True, False),
+)
+
+activity.OutputTemporalRequirement.type_info = (
+    ('continuous_subset', str, False, True),
+    ('sliced_subset', str, False, False),
+    ('throughout', bool, True, False),
+)
+
+activity.Project.type_info = (
+    ('previous_projects', str, False, True),
+    ('required_experiments', str, False, True),
+    ('sub_projects', str, False, True),
+)
+
+activity.Simulation.type_info = (
+    ('conformed_via', str, False, False),
+    ('had_performance', str, False, False),
+    ('ran_on', str, False, False),
+    ('supported', str, True, True),
+    ('used', str, True, False),
+)
+
+activity.SimulationPlan.type_info = (
+    ('expected_performance', str, False, False),
+    ('experiments', str, True, True),
+    ('machine', str, False, False),
+    ('model', str, True, False),
+)
+
+activity.TemporalConstraint.type_info = (
+    ('required_calendar', str, False, False),
+    ('required_duration', str, False, False),
+    ('start_date', str, False, False),
+    ('start_flexibility', str, False, False),
+)
+
 activity.Activity.type_info = (
     ('canonical_name', str, False, False),
     ('description', shared.CimText, False, False),

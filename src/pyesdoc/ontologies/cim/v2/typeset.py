@@ -9,14 +9,16 @@
    :synopsis: Typeset information for the cim v2 ontology.
 
 .. moduleauthor:: Earth System Documentation (ES-DOC) <dev@es-doc.org>
-.. note:: Code generated using esdoc_mp @ 2015-06-01 16:50:05.523409.
+.. note:: Code generated using esdoc_mp @ 2015-06-03 11:24:48.582277.
 
 """
+from typeset_for_activity_package import *
 from typeset_for_activity_package import *
 from typeset_for_data_package import *
 from typeset_for_platform_package import *
 from typeset_for_shared_package import *
 
+import typeset_for_activity_package as activity
 import typeset_for_activity_package as activity
 import typeset_for_data_package as data
 import typeset_for_platform_package as platform
@@ -30,9 +32,28 @@ import typeset_meta         # Assigns type info.
 __all__ = [
     'TYPES',
     'activity',
+    'activity',
     'data',
     'platform',
     'shared',
+    'Activity',
+    'AxisMember',
+    'Configuration',
+    'Conformance',
+    'Ensemble',
+    'EnsembleRequirement',
+    'EnsembleRequirement',
+    'ForcingConstraint',
+    'MemberDescription',
+    'MultiEnsemble',
+    'MultiTimeEnsemble',
+    'NumericalExperiment',
+    'NumericalRequirement',
+    'OutputTemporalRequirement',
+    'Project',
+    'Simulation',
+    'SimulationPlan',
+    'TemporalConstraint',
     'Activity',
     'AxisMember',
     'Configuration',
@@ -81,6 +102,24 @@ __all__ = [
 
 # Supported types.
 TYPES = (
+    activity.Activity,
+    activity.AxisMember,
+    activity.Configuration,
+    activity.Conformance,
+    activity.Ensemble,
+    activity.EnsembleRequirement,
+    activity.EnsembleRequirement,
+    activity.ForcingConstraint,
+    activity.MemberDescription,
+    activity.MultiEnsemble,
+    activity.MultiTimeEnsemble,
+    activity.NumericalExperiment,
+    activity.NumericalRequirement,
+    activity.OutputTemporalRequirement,
+    activity.Project,
+    activity.Simulation,
+    activity.SimulationPlan,
+    activity.TemporalConstraint,
     activity.Activity,
     activity.AxisMember,
     activity.Configuration,

@@ -11,13 +11,100 @@
 
 
 """
-class ObsoleteDocumentException(Exception):
-	"""Raised when an obsolete documents is being processed."""
-	def __init__(self, message):
-		Exception.__init__(self, "WARNING :: obsolete document :: {0}".format(message))
+import inspect
 
 
-class DocumentDecodingException(Exception):
-	"""Raised when document decoding fails."""
-	def __init__(self):
-		Exception.__init__(self, "Document decoding failed.")
+
+class PYESDOC_Exception(Exception):
+    """Default library exception class.
+
+    """
+
+    def __init__(self, msg):
+        """Contructor.
+
+        :param msg: Exception message.
+        :type msg: str
+
+        """
+        self.message = msg() if inspect.isfunction(msg) else unicode(msg)
+
+
+    def __str__(self):
+        """Returns a string representation.
+
+        """
+        return u"ES-DOC PY-CLIENT EXCEPTION : {0}".format(repr(self.message))
+
+
+class ObsoleteException(PYESDOC_Exception):
+    """Raised when an obsolete documents is being processed.
+
+    """
+    def __init__(self, message):
+        """Instance constructor.
+
+        """
+        super(ObsoleteException, self).__init__("WARNING :: obsolete document :: {0}".format(message))
+
+
+class DecodingException(PYESDOC_Exception):
+    """Raised when document decoding fails.
+
+    """
+    def __init__(self):
+        """Instance constructor.
+
+        """
+        super(DecodingException, self).__init__("Document decoding failed.")
+
+
+class InvalidOptionException(PYESDOC_Exception):
+    """Raised when an attempt to access an invalid library option occurs.
+
+    """
+    def __init__(self):
+        """Instance constructor.
+
+        """
+        super(InvalidOptionException, self).__init__(self, "Option is invalid.")
+
+
+class ExtendingException(PYESDOC_Exception):
+    """Exception raised when document extension fails.
+
+    """
+    def __init__(self, err, extender=None):
+        """Instance constructor.
+
+        """
+        if extender is not None:
+            err = "Document extension failed: {0} :: {1}".format(extender, err)
+        else:
+            err = "Document extension failed: {}".format(err)
+        super(ExtendingException, self).__init__(err)
+
+
+class LoadingException(PYESDOC_Exception):
+    """Exception raised when document loading fails.
+
+    """
+    def __init__(self, err):
+        """Instance constructor.
+
+        """
+        err = "Document loading failed: {}".format(err)
+        super(LoadingException, self).__init__(err)
+
+
+class ParsingException(PYESDOC_Exception):
+    """Exception raised when document parsing fails.
+
+    """
+    def __init__(self, err):
+        """Instance constructor.
+
+        """
+        err = "Document parsing failed: {}".format(err)
+        super(ParsingException, self).__init__(err)
+

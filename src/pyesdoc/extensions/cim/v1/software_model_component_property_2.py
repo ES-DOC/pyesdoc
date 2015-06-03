@@ -15,7 +15,7 @@ def _create_property(p_tree, values, name, description):
     """Sets & returns a component standard property."""
     def append_value(p, v):
         if v is not None:
-            p.values.append(str(v))
+            p.values.append(v)
 
     # Instantiate.
     p = ComponentProperty()

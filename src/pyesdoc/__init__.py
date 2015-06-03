@@ -11,90 +11,40 @@
 .. moduleauthor:: Earth System Documentation (ES-DOC) <dev@es-doc.org>
 
 """
-from .constants import *
-from .factory import (
-    create
-    )
-from .io import (
-    write,
-    read,
-    convert as convert_file
-    )
-from .ontologies import (
-    associate,
-    get_types,
-    is_supported,
-    list_types
-    )
-from .options import (
-    set_option,
-    get_option,
-    list_options
-    )
-from .extensions import (
-    extend,
-    is_extendable
-    )
-from .publishing import (
-    publish,
-    retrieve,
-    unpublish
-    )
-from .serialization import (
-    convert,
-    decode,
-    encode,
-    PYESDOC_XMLError,
-    )
-from .utils import (
-    PYESDOC_Exception,
-    runtime as rt,
-    config
-    )
-from .validation import (
-    is_valid,
-    validate
-    )
+from pyesdoc.constants import *
+from pyesdoc.exceptions import *
+from pyesdoc.factory import create
+from pyesdoc.io import convert as convert_file
+from pyesdoc.io import read
+from pyesdoc.io import write
+from pyesdoc.ontologies import associate
+from pyesdoc.ontologies import get_types
+from pyesdoc.ontologies import is_supported
+from pyesdoc.ontologies import list_types
+from pyesdoc.options import set_option
+from pyesdoc.options import get_option
+from pyesdoc.options import list_options
+from pyesdoc.extensions import extend
+from pyesdoc.extensions import is_extendable
+from pyesdoc.publishing import publish
+from pyesdoc.publishing import retrieve
+from pyesdoc.publishing import unpublish
+from pyesdoc.serialization import convert
+from pyesdoc.serialization import decode
+from pyesdoc.serialization import encode
+from pyesdoc.utils import runtime as rt
+from pyesdoc.utils import config
+from pyesdoc.validation import is_valid
+from pyesdoc.validation import validate
 
-from . import archive
-from . import io
-from . import ontologies
-from . import options
-from . import publishing
-from . import serialization
-from . import utils
-from . import validation
-
-
-# Module exports.
-__all__ = [
-    'create',
-    'decode',
-    'encode',
-    'ESDOC_DEFAULT_ENCODING',
-    'ESDOC_DEFAULT_LANGUAGE',
-    'ESDOC_DOC_VERSION_LATEST',
-    'ESDOC_DOC_VERSION_ALL',
-    'ESDOC_ENCODINGS',
-    'ESDOC_ENCODINGS_CUSTOM',
-    'ESDOC_ENCODING_DICT',
-    'ESDOC_ENCODING_JSON',
-    'ESDOC_ENCODING_XML',
-    'get_option',
-    'io',
-    'is_supported',
-    'is_valid',
-    'list_options',
-    'list_types',
-    'METAFOR_CIM_XML_ENCODING',
-    'ontologies',
-    'publish',
-    'PYESDOC_Exception',
-    'retrieve',
-    'set_option',
-    'unpublish',
-    'validate',
-]
+from pyesdoc import archive
+from pyesdoc import io
+from pyesdoc import ontologies
+from pyesdoc import options
+from pyesdoc import publishing
+from pyesdoc import serialization
+from pyesdoc import utils
+from pyesdoc import validation
 
 
 # Standard package info.

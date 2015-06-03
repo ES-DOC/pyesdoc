@@ -24,6 +24,9 @@ _DEFAULT_ONTOLOGIES = (cim,)
 # Set of registered types.
 TYPES = ()
 
+# Set of registered document types.
+DOC_TYPES = ()
+
 
 def get_type_key(name, version, package, type):
     """Returns type key.
@@ -51,14 +54,20 @@ def register(o):
     :type o: module
 
     """
+    if o in ONTOLOGIES:
+        return
+
     global ONTOLOGIES
     global TYPES
+    global DOC_TYPES
 
-    if o not in ONTOLOGIES:
-        ONTOLOGIES += (o,)
-        for v in o.VERSIONS:
-            TYPES += v.TYPES
-
+    ONTOLOGIES += (o,)
+    for v in o.VERSIONS:
+        TYPES += v.TYPES
+        for type_ in TYPES:
+            for attr_info in type_.type_info:
+                if attr_info[0] == 'meta':
+                    DOC_TYPES += (type_,)
 
 # Auto register default ontologies.
 for o in _DEFAULT_ONTOLOGIES:
@@ -106,6 +115,26 @@ def list_types(name=None, version=None):
     types = [tuple(t.type_key.split('.')) for t in types]
 
     return tuple(types)
+
+
+def get_doc_types():
+    """Returns list of supported document type keys and types.
+
+    :returns: A tuple of supported typekeys and types.
+    :rtype: tuple
+
+    """
+    return [tuple(t.type_key.split('.')) for t in DOC_TYPES]
+
+
+def get_doc_type_keyset():
+    """Returns set of supported document type keys.
+
+    :returns: Set of supported document type keys.
+    :rtype: set
+
+    """
+    return {t.type_key for t in DOC_TYPES}
 
 
 def get_type(name, version, package, type):

@@ -1,7 +1,5 @@
 # -*- coding: utf-8 -*-
 
-from .extender import (
-	is_extendable,
-	extend,
-	SUPPORTED
-	)
+from pyesdoc.extensions.extender import is_extendable
+from pyesdoc.extensions.extender import extend
+from pyesdoc.extensions.extender import SUPPORTED
