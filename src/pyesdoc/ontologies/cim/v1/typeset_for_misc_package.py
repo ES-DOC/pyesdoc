@@ -9,7 +9,7 @@
    :synopsis: The set of types of the cim.v1.misc package.
 
 .. moduleauthor:: Earth System Documentation (ES-DOC) <dev@es-doc.org>
-.. note:: Code generated using esdoc_mp @ 2015-06-03 10:37:52.880407.
+.. note:: Code generated using esdoc_mp @ 2015-06-05 15:44:25.800707.
 
 """
 import abc
@@ -32,20 +32,20 @@ class DocumentSet(object):
         """
         super(DocumentSet, self).__init__()
 
-        self.data = []                                    # data.DataObject
-        self.data_references = []                         # shared.DocReference
-        self.ensembles = []                               # activity.Ensemble
-        self.ensembles_references = []                    # shared.DocReference
-        self.experiment = None                            # activity.NumericalExperiment
-        self.experiment_reference = None                  # shared.DocReference
-        self.grids = []                                   # grids.GridSpec
-        self.grids_references = []                        # shared.DocReference
-        self.meta = shared.DocMetaInfo()                  # shared.DocMetaInfo
-        self.model = None                                 # software.ModelComponent
-        self.model_reference = None                       # shared.DocReference
-        self.platform = None                              # shared.Platform
-        self.platform_reference = None                    # shared.DocReference
         self.simulation = None                            # activity.SimulationRun
         self.simulation_reference = None                  # shared.DocReference
+        self.experiment_reference = None                  # shared.DocReference
+        self.model = None                                 # software.ModelComponent
+        self.ensembles = []                               # activity.Ensemble
+        self.grids = []                                   # grids.GridSpec
+        self.model_reference = None                       # shared.DocReference
+        self.meta = shared.DocMetaInfo()                  # shared.DocMetaInfo
+        self.ensembles_references = []                    # shared.DocReference
+        self.data = []                                    # data.DataObject
+        self.platform_reference = None                    # shared.DocReference
+        self.experiment = None                            # activity.NumericalExperiment
+        self.data_references = []                         # shared.DocReference
+        self.platform = None                              # shared.Platform
+        self.grids_references = []                        # shared.DocReference
 
 

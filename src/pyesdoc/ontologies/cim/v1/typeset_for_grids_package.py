@@ -9,7 +9,7 @@
    :synopsis: The set of types of the cim.v1.grids package.
 
 .. moduleauthor:: Earth System Documentation (ES-DOC) <dev@es-doc.org>
-.. note:: Code generated using esdoc_mp @ 2015-06-03 10:37:52.879263.
+.. note:: Code generated using esdoc_mp @ 2015-06-05 15:44:25.804566.
 
 """
 import abc
@@ -17,84 +17,7 @@ import datetime
 import uuid
 
 import typeset_for_shared_package as shared
-
-
-
-class CoordinateList(object):
-    """A concrete class within the cim v1 type system.
-
-    The CoordList type may be used to specify a list of coordinates, typically for the purpose of defining coordinates along the X, Y or Z axes. The length of the coordinate list is given by the attribute of that name. This may be used by software to allocate memory in advance of storing the coordinate values. The hasConstantOffset attribute may be used to indicate that the coordinate list consists of values with constant offset (spacing). In this case only the first coordinate value and the offset (spacing) value need to be specified; however, the length attribute must still define the final as-built size of the coordinate list.
-
-    """
-    def __init__(self):
-        """Constructor.
-
-        """
-        super(CoordinateList, self).__init__()
-
-        self.has_constant_offset = None                   # bool
-        self.length = None                                # int
-        self.uom = None                                   # str
-
-
-class GridExtent(object):
-    """A concrete class within the cim v1 type system.
-
-    DataType for recording the geographic extent of a gridMosaic or gridTile.
-
-    """
-    def __init__(self):
-        """Constructor.
-
-        """
-        super(GridExtent, self).__init__()
-
-        self.maximum_latitude = None                      # str
-        self.maximum_longitude = None                     # str
-        self.minimum_latitude = None                      # str
-        self.minimum_longitude = None                     # str
-        self.units = None                                 # str
-
-
-class GridMosaic(object):
-    """A concrete class within the cim v1 type system.
-
-    The GridMosaic class is used to define the geometry properties of an earth system model grid or an exchange grid. Such a grid definition may then be referenced by any number of earth system models. A GridMosaic object consists either of 1 or more child GridMosaics, or one or more child GridTiles, but not both. In the latter case the isLeaf property should be set to true, indicating that the mosaic is a leaf mosaic.
-
-    """
-    def __init__(self):
-        """Constructor.
-
-        """
-        super(GridMosaic, self).__init__()
-
-        self.citations = []                               # shared.Citation
-        self.description = None                           # str
-        self.extent = None                                # grids.GridExtent
-        self.has_congruent_tiles = None                   # bool
-        self.id = None                                    # str
-        self.is_leaf = None                               # bool
-        self.long_name = None                             # str
-        self.mnemonic = None                              # str
-        self.mosaic_count = None                          # int
-        self.mosaics = []                                 # grids.GridMosaic
-        self.short_name = None                            # str
-        self.tile_count = None                            # int
-        self.tiles = []                                   # grids.GridTile
-        self.type = None                                  # str
-
-
-class GridProperty(shared.Property):
-    """A concrete class within the cim v1 type system.
-
-    Creates and returns instance of grid_property class.
-
-    """
-    def __init__(self):
-        """Constructor.
-
-        """
-        super(GridProperty, self).__init__()
+import typeset_for_grids_package as grids
 
 
 
@@ -110,51 +33,26 @@ class GridSpec(object):
         """
         super(GridSpec, self).__init__()
 
+        self.meta = shared.DocMetaInfo()                  # shared.DocMetaInfo
         self.esm_exchange_grids = []                      # grids.GridMosaic
         self.esm_model_grids = []                         # grids.GridMosaic
-        self.meta = shared.DocMetaInfo()                  # shared.DocMetaInfo
 
 
-class GridTile(object):
+class CoordinateList(object):
     """A concrete class within the cim v1 type system.
 
-    The GridTile class is used to model an individual grid tile contained within a grid mosaic. A GridTile consists of an array of grid cells which may be defined in one of four ways: 1) for simple grids, by use of the SimpleGridGeometry data type; 2) by defining an array of GridCell objects; 3) by specifying an array of references to externally defined GridCell objects; or 4) by specifying a URI to a remote data file containing the grid cell definitions.  For all but the simplest grid tiles, it is envisaged that method 4 above will be the most frequently used option. However, it should be remembered that the CIM is primarily concerned with encoding climate model metadata. Specifying the coordinates of individual grid tiles and cells will most likely not be required as part of such metadata descriptions.  A GridTile object is associated with a geodetic or projected CRS via the horizontalCRS property, and with a vertical CRS via the verticalCRS property.
+    The CoordList type may be used to specify a list of coordinates, typically for the purpose of defining coordinates along the X, Y or Z axes. The length of the coordinate list is given by the attribute of that name. This may be used by software to allocate memory in advance of storing the coordinate values. The hasConstantOffset attribute may be used to indicate that the coordinate list consists of values with constant offset (spacing). In this case only the first coordinate value and the offset (spacing) value need to be specified; however, the length attribute must still define the final as-built size of the coordinate list.
 
     """
     def __init__(self):
         """Constructor.
 
         """
-        super(GridTile, self).__init__()
+        super(CoordinateList, self).__init__()
 
-        self.area = None                                  # str
-        self.cell_array = None                            # str
-        self.cell_ref_array = None                        # str
-        self.coord_file = None                            # str
-        self.coordinate_pole = None                       # str
-        self.description = None                           # str
-        self.discretization_type = None                   # grids.DiscretizationEnum
-        self.extent = None                                # grids.GridExtent
-        self.geometry_type = None                         # grids.GeometryTypeEnum
-        self.grid_north_pole = None                       # str
-        self.horizontal_crs = None                        # str
-        self.horizontal_resolution = None                 # grids.GridTileResolutionType
-        self.id = None                                    # str
-        self.is_conformal = None                          # bool
-        self.is_regular = None                            # bool
-        self.is_terrain_following = None                  # bool
-        self.is_uniform = None                            # bool
-        self.long_name = None                             # str
-        self.mnemonic = None                              # str
-        self.nx = None                                    # int
-        self.ny = None                                    # int
-        self.nz = None                                    # int
-        self.refinement_scheme = None                     # grids.RefinementTypeEnum
-        self.short_name = None                            # str
-        self.simple_grid_geom = None                      # grids.SimpleGridGeometry
-        self.vertical_crs = None                          # str
-        self.vertical_resolution = None                   # grids.GridTileResolutionType
-        self.zcoords = None                               # grids.VerticalCoordinateList
+        self.has_constant_offset = None                   # bool
+        self.uom = None                                   # str
+        self.length = None                                # int
 
 
 class GridTileResolutionType(object):
@@ -173,6 +71,109 @@ class GridTileResolutionType(object):
         self.properties = []                              # grids.GridProperty
 
 
+class GridTile(object):
+    """A concrete class within the cim v1 type system.
+
+    The GridTile class is used to model an individual grid tile contained within a grid mosaic. A GridTile consists of an array of grid cells which may be defined in one of four ways: 1) for simple grids, by use of the SimpleGridGeometry data type; 2) by defining an array of GridCell objects; 3) by specifying an array of references to externally defined GridCell objects; or 4) by specifying a URI to a remote data file containing the grid cell definitions.  For all but the simplest grid tiles, it is envisaged that method 4 above will be the most frequently used option. However, it should be remembered that the CIM is primarily concerned with encoding climate model metadata. Specifying the coordinates of individual grid tiles and cells will most likely not be required as part of such metadata descriptions.  A GridTile object is associated with a geodetic or projected CRS via the horizontalCRS property, and with a vertical CRS via the verticalCRS property.
+
+    """
+    def __init__(self):
+        """Constructor.
+
+        """
+        super(GridTile, self).__init__()
+
+        self.mnemonic = None                              # str
+        self.nx = None                                    # int
+        self.short_name = None                            # str
+        self.ny = None                                    # int
+        self.nz = None                                    # int
+        self.vertical_crs = None                          # str
+        self.refinement_scheme = None                     # grids.RefinementTypeEnum
+        self.description = None                           # str
+        self.discretization_type = None                   # grids.DiscretizationEnum
+        self.extent = None                                # grids.GridExtent
+        self.grid_north_pole = None                       # str
+        self.geometry_type = None                         # grids.GeometryTypeEnum
+        self.vertical_resolution = None                   # grids.GridTileResolutionType
+        self.zcoords = None                               # grids.VerticalCoordinateList
+        self.horizontal_resolution = None                 # grids.GridTileResolutionType
+        self.id = None                                    # str
+        self.area = None                                  # str
+        self.is_conformal = None                          # bool
+        self.cell_array = None                            # str
+        self.is_regular = None                            # bool
+        self.cell_ref_array = None                        # str
+        self.simple_grid_geom = None                      # grids.SimpleGridGeometry
+        self.is_terrain_following = None                  # bool
+        self.coord_file = None                            # str
+        self.is_uniform = None                            # bool
+        self.coordinate_pole = None                       # str
+        self.long_name = None                             # str
+        self.horizontal_crs = None                        # str
+
+
+class GridProperty(shared.Property):
+    """A concrete class within the cim v1 type system.
+
+    Creates and returns instance of grid_property class.
+
+    """
+    def __init__(self):
+        """Constructor.
+
+        """
+        super(GridProperty, self).__init__()
+
+
+
+class GridMosaic(object):
+    """A concrete class within the cim v1 type system.
+
+    The GridMosaic class is used to define the geometry properties of an earth system model grid or an exchange grid. Such a grid definition may then be referenced by any number of earth system models. A GridMosaic object consists either of 1 or more child GridMosaics, or one or more child GridTiles, but not both. In the latter case the isLeaf property should be set to true, indicating that the mosaic is a leaf mosaic.
+
+    """
+    def __init__(self):
+        """Constructor.
+
+        """
+        super(GridMosaic, self).__init__()
+
+        self.mosaic_count = None                          # int
+        self.is_leaf = None                               # bool
+        self.tiles = []                                   # grids.GridTile
+        self.mnemonic = None                              # str
+        self.mosaics = []                                 # grids.GridMosaic
+        self.type = None                                  # str
+        self.extent = None                                # grids.GridExtent
+        self.citations = []                               # shared.Citation
+        self.has_congruent_tiles = None                   # bool
+        self.tile_count = None                            # int
+        self.long_name = None                             # str
+        self.short_name = None                            # str
+        self.id = None                                    # str
+        self.description = None                           # str
+
+
+class GridExtent(object):
+    """A concrete class within the cim v1 type system.
+
+    DataType for recording the geographic extent of a gridMosaic or gridTile.
+
+    """
+    def __init__(self):
+        """Constructor.
+
+        """
+        super(GridExtent, self).__init__()
+
+        self.minimum_longitude = None                     # str
+        self.maximum_latitude = None                      # str
+        self.minimum_latitude = None                      # str
+        self.units = None                                 # str
+        self.maximum_longitude = None                     # str
+
+
 class SimpleGridGeometry(object):
     """A concrete class within the cim v1 type system.
 
@@ -185,12 +186,12 @@ class SimpleGridGeometry(object):
         """
         super(SimpleGridGeometry, self).__init__()
 
-        self.dim_order = None                             # str
-        self.is_mesh = None                               # bool
-        self.num_dims = None                              # int
         self.xcoords = None                               # grids.CoordinateList
-        self.ycoords = None                               # grids.CoordinateList
+        self.is_mesh = None                               # bool
+        self.dim_order = None                             # str
         self.zcoords = None                               # grids.CoordinateList
+        self.ycoords = None                               # grids.CoordinateList
+        self.num_dims = None                              # int
 
 
 class VerticalCoordinateList(CoordinateList):
@@ -206,14 +207,14 @@ class VerticalCoordinateList(CoordinateList):
         super(VerticalCoordinateList, self).__init__()
 
         self.form = None                                  # str
-        self.properties = []                              # grids.GridProperty
         self.type = None                                  # str
+        self.properties = []                              # grids.GridProperty
 
 
-class ArcTypeEnum(object):
+class HorizontalCsEnum(object):
     """An enumeration within the cim v1 type system.
 
-    Creates and returns instance of arc_type_enum enum.
+    Creates and returns instance of horizontal_cs_enum enum.
     """
 
     pass
@@ -228,19 +229,19 @@ class DiscretizationEnum(object):
     pass
 
 
-class FeatureTypeEnum(object):
+class GeometryTypeEnum(object):
     """An enumeration within the cim v1 type system.
 
-    Creates and returns instance of feature_type_enum enum.
+    Creates and returns instance of geometry_type_enum enum.
     """
 
     pass
 
 
-class GeometryTypeEnum(object):
+class RefinementTypeEnum(object):
     """An enumeration within the cim v1 type system.
 
-    Creates and returns instance of geometry_type_enum enum.
+    Creates and returns instance of refinement_type_enum enum.
     """
 
     pass
@@ -264,19 +265,10 @@ class GridTypeEnum(object):
     pass
 
 
-class HorizontalCsEnum(object):
+class FeatureTypeEnum(object):
     """An enumeration within the cim v1 type system.
 
-    Creates and returns instance of horizontal_cs_enum enum.
-    """
-
-    pass
-
-
-class RefinementTypeEnum(object):
-    """An enumeration within the cim v1 type system.
-
-    Creates and returns instance of refinement_type_enum enum.
+    Creates and returns instance of feature_type_enum enum.
     """
 
     pass
@@ -286,6 +278,15 @@ class VerticalCsEnum(object):
     """An enumeration within the cim v1 type system.
 
     Creates and returns instance of vertical_cs_enum enum.
+    """
+
+    pass
+
+
+class ArcTypeEnum(object):
+    """An enumeration within the cim v1 type system.
+
+    Creates and returns instance of arc_type_enum enum.
     """
 
     pass

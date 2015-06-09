@@ -9,15 +9,51 @@
    :synopsis: The set of types of the cim.v1.quality package.
 
 .. moduleauthor:: Earth System Documentation (ES-DOC) <dev@es-doc.org>
-.. note:: Code generated using esdoc_mp @ 2015-06-03 10:37:52.880947.
+.. note:: Code generated using esdoc_mp @ 2015-06-05 15:44:25.809682.
 
 """
 import abc
 import datetime
 import uuid
 
+import typeset_for_quality_package as quality
 import typeset_for_shared_package as shared
 
+
+
+class Measure(object):
+    """A concrete class within the cim v1 type system.
+
+    Creates and returns instance of measure class.
+
+    """
+    def __init__(self):
+        """Constructor.
+
+        """
+        super(Measure, self).__init__()
+
+        self.description = None                           # str
+        self.name = None                                  # str
+        self.identification = None                        # str
+
+
+class Report(object):
+    """A concrete class within the cim v1 type system.
+
+    Creates and returns instance of report class.
+
+    """
+    def __init__(self):
+        """Constructor.
+
+        """
+        super(Report, self).__init__()
+
+        self.date = None                                  # datetime.datetime
+        self.measure = None                               # quality.Measure
+        self.evaluator = None                             # shared.ResponsibleParty
+        self.evaluation = None                            # quality.Evaluation
 
 
 class CimQuality(object):
@@ -48,59 +84,15 @@ class Evaluation(object):
         """
         super(Evaluation, self).__init__()
 
-        self.date = None                                  # datetime.datetime
+        self.specification_hyperlink = None               # str
         self.description = None                           # str
+        self.title = None                                 # str
         self.did_pass = None                              # bool
+        self.type = None                                  # str
         self.explanation = None                           # str
         self.specification = None                         # str
-        self.specification_hyperlink = None               # str
-        self.title = None                                 # str
-        self.type = None                                  # str
         self.type_hyperlink = None                        # str
-
-
-class Measure(object):
-    """A concrete class within the cim v1 type system.
-
-    Creates and returns instance of measure class.
-
-    """
-    def __init__(self):
-        """Constructor.
-
-        """
-        super(Measure, self).__init__()
-
-        self.description = None                           # str
-        self.identification = None                        # str
-        self.name = None                                  # str
-
-
-class Report(object):
-    """A concrete class within the cim v1 type system.
-
-    Creates and returns instance of report class.
-
-    """
-    def __init__(self):
-        """Constructor.
-
-        """
-        super(Report, self).__init__()
-
         self.date = None                                  # datetime.datetime
-        self.evaluation = None                            # quality.Evaluation
-        self.evaluator = None                             # shared.ResponsibleParty
-        self.measure = None                               # quality.Measure
-
-
-class CimFeatureType(object):
-    """An enumeration within the cim v1 type system.
-
-    Creates and returns instance of cim_feature_type enum.
-    """
-
-    pass
 
 
 class CimResultType(object):
@@ -112,10 +104,10 @@ class CimResultType(object):
     pass
 
 
-class CimScopeCodeType(object):
+class QualitySeverityType(object):
     """An enumeration within the cim v1 type system.
 
-    This would cover quality issues with the CIM itself.
+    Creates and returns instance of quality_severity_type enum.
     """
 
     pass
@@ -130,10 +122,19 @@ class QualityIssueType(object):
     pass
 
 
-class QualitySeverityType(object):
+class CimScopeCodeType(object):
     """An enumeration within the cim v1 type system.
 
-    Creates and returns instance of quality_severity_type enum.
+    This would cover quality issues with the CIM itself.
+    """
+
+    pass
+
+
+class CimFeatureType(object):
+    """An enumeration within the cim v1 type system.
+
+    Creates and returns instance of cim_feature_type enum.
     """
 
     pass

@@ -9,7 +9,7 @@
    :synopsis: The set of types of the cim.v1.software package.
 
 .. moduleauthor:: Earth System Documentation (ES-DOC) <dev@es-doc.org>
-.. note:: Code generated using esdoc_mp @ 2015-06-03 10:37:52.888720.
+.. note:: Code generated using esdoc_mp @ 2015-06-05 15:44:25.807485.
 
 """
 import abc
@@ -17,59 +17,33 @@ import datetime
 import uuid
 
 import typeset_for_shared_package as shared
+import typeset_for_software_package as software
 
 
 
-class Component(shared.DataSource):
+class ComponentProperty(shared.DataSource):
     """A concrete class within the cim v1 type system.
 
-    A SofwareComponent is an abstract component from which all other components derive. It represents an element that takes input data and generates output data. A SoftwareCompnent can include nested "child" components. Every component can have "componentProperties" which describe the scientific properties that a component simulates (for example, temperature, pressure, etc.) and the numerical properties that influence how a component performs its simulation (for example, the force of gravity). A SoftwareComponent can also have a Deployment, which describes how software is deployed onto computing resources. And a SoftwareComponent can have a composition, which describes how ComponentProperties are coupled together either to/from other SoftwareComponents or external data files. The properties specified by a component's composition must be owned by that component or a child of that component; child components cannot couple together their parents' properties.
+    ComponentProperties include things that a component simulates (ie: pressure, humidity) and things that prescribe that simulation (ie: gravity, choice of advection scheme). Note that this is a specialisation of shared::DataSource. data::DataObject is also a specialisation of shared::DataSource. This allows software::Connections and/or activity::Conformance to refer to either ComponentProperties or DataObjects.
 
     """
     def __init__(self):
         """Constructor.
 
         """
-        super(Component, self).__init__()
+        super(ComponentProperty, self).__init__()
 
-        self.citations = []                               # shared.Citation
-        self.code_access = None                           # str
-        self.composition = None                           # software.Composition
-        self.coupling_framework = None                    # software.CouplingFrameworkType
-        self.dependencies = []                            # software.EntryPoint
-        self.deployments = []                             # software.Deployment
-        self.description = None                           # str
-        self.funding_sources = []                         # str
-        self.grid = None                                  # grids.GridSpec
-        self.is_embedded = None                           # bool
-        self.language = None                              # software.ComponentLanguage
-        self.license = None                               # shared.License
-        self.long_name = None                             # str
-        self.online_resource = None                       # str
-        self.parent = None                                # software.Component
-        self.previous_version = None                      # str
-        self.properties = []                              # software.ComponentProperty
-        self.release_date = None                          # datetime.datetime
-        self.responsible_parties = []                     # shared.ResponsibleParty
+        self.values = []                                  # str
+        self.grid = None                                  # str
         self.short_name = None                            # str
-        self.sub_components = []                          # software.Component
-        self.version = None                               # str
-
-
-class ComponentLanguage(object):
-    """A concrete class within the cim v1 type system.
-
-    Details of the programming language a component is written in. There is an assumption that all EntryPoints use the same ComponentLanguage.
-
-    """
-    def __init__(self):
-        """Constructor.
-
-        """
-        super(ComponentLanguage, self).__init__()
-
-        self.name = None                                  # str
-        self.properties = []                              # software.ComponentLanguageProperty
+        self.intent = None                                # software.ComponentPropertyIntentType
+        self.description = None                           # str
+        self.units = None                                 # shared.UnitType
+        self.citations = []                               # shared.Citation
+        self.sub_properties = []                          # software.ComponentProperty
+        self.standard_names = []                          # str
+        self.long_name = None                             # str
+        self.is_represented = None                        # bool
 
 
 class ComponentLanguageProperty(shared.Property):
@@ -86,152 +60,22 @@ class ComponentLanguageProperty(shared.Property):
 
 
 
-class ComponentProperty(shared.DataSource):
+class Rank(object):
     """A concrete class within the cim v1 type system.
 
-    ComponentProperties include things that a component simulates (ie: pressure, humidity) and things that prescribe that simulation (ie: gravity, choice of advection scheme). Note that this is a specialisation of shared::DataSource. data::DataObject is also a specialisation of shared::DataSource. This allows software::Connections and/or activity::Conformance to refer to either ComponentProperties or DataObjects.
+    Creates and returns instance of rank class.
 
     """
     def __init__(self):
         """Constructor.
 
         """
-        super(ComponentProperty, self).__init__()
+        super(Rank, self).__init__()
 
-        self.citations = []                               # shared.Citation
-        self.description = None                           # str
-        self.grid = None                                  # str
-        self.intent = None                                # software.ComponentPropertyIntentType
-        self.is_represented = None                        # bool
-        self.long_name = None                             # str
-        self.short_name = None                            # str
-        self.standard_names = []                          # str
-        self.sub_properties = []                          # software.ComponentProperty
-        self.units = None                                 # shared.UnitType
-        self.values = []                                  # str
-
-
-class Composition(object):
-    """A concrete class within the cim v1 type system.
-
-    The set of Couplings used by a Component. Couplings can only occur between child components. That is, a composition must belong to an ancestor component of the components whose fields are being connected.
-
-    """
-    def __init__(self):
-        """Constructor.
-
-        """
-        super(Composition, self).__init__()
-
-        self.couplings = []                               # str
-        self.description = None                           # str
-
-
-class Connection(object):
-    """A concrete class within the cim v1 type system.
-
-    A Connection represents a link from a source DataSource to a target DataSource.  These can either be ComponentProperties (ie: the values come from an internal component) or DataObjects (ie: the values come from an external file).   It can be associated with another software component (a transformer).  If present, the rate, lag, timeTransformation, and spatialRegridding override that of the parent coupling.  Note that there is the potential for multiple connectionSource & connectionTarget and multiple couplingSources & couplingTargets.  This may lead users to wonder how to match up a connection source (a ComponentProperty) with its coupling source (a SoftwareComponent). Clever logic is not required though; because the sources and targets are listed by reference, they can be found in a CIM document and the parent can be navigated to from there - there is no need to consult the source or target of the coupling.
-
-    """
-    def __init__(self):
-        """Constructor.
-
-        """
-        super(Connection, self).__init__()
-
-        self.description = None                           # str
-        self.priming = None                               # shared.DataSource
-        self.priming_reference = None                     # shared.DocReference
-        self.properties = []                              # software.ConnectionProperty
-        self.sources = []                                 # software.ConnectionEndpoint
-        self.spatial_regridding = []                      # software.SpatialRegridding
-        self.target = None                                # software.ConnectionEndpoint
-        self.time_lag = None                              # str
-        self.time_profile = None                          # software.Timing
-        self.time_transformation = None                   # software.TimeTransformation
-        self.transformers = []                            # software.ProcessorComponent
-        self.transformers_references = []                 # shared.DocReference
-        self.type = None                                  # software.ConnectionType
-
-
-class ConnectionEndpoint(object):
-    """A concrete class within the cim v1 type system.
-
-    The source/target of a coupling.  This is a DataSource (a SoftwareComponent or DataObject).  This is a separate class in order to associate an instanceID with the DataSource; this is used to identify which particular instance is being coupled in case the same DataSource is used more than once in a coupled model (this may be required for BFG).
-
-    """
-    def __init__(self):
-        """Constructor.
-
-        """
-        super(ConnectionEndpoint, self).__init__()
-
-        self.data_source = None                           # shared.DataSource
-        self.data_source_reference = None                 # shared.DocReference
-        self.instance_id = None                           # str
-        self.properties = []                              # software.ConnectionProperty
-
-
-class ConnectionProperty(shared.Property):
-    """A concrete class within the cim v1 type system.
-
-    A ConnectionProperty is a name/value pair used to specify OASIS-specific properties.
-
-    """
-    def __init__(self):
-        """Constructor.
-
-        """
-        super(ConnectionProperty, self).__init__()
-
-
-
-class Coupling(object):
-    """A concrete class within the cim v1 type system.
-
-    A coupling represents a set of Connections between a source and target component. Couplings can be complete or incomplete. If they are complete then they must include all Connections between model properties. If they are incomplete then the connections can be underspecified or not listed at all.
-
-    """
-    def __init__(self):
-        """Constructor.
-
-        """
-        super(Coupling, self).__init__()
-
-        self.connections = []                             # software.Connection
-        self.description = None                           # str
-        self.is_fully_specified = None                    # bool
-        self.priming = None                               # shared.DataSource
-        self.priming_reference = None                     # shared.DocReference
-        self.properties = []                              # software.CouplingProperty
-        self.purpose = None                               # shared.DataPurpose
-        self.sources = []                                 # software.CouplingEndpoint
-        self.spatial_regriddings = []                     # software.SpatialRegridding
-        self.target = None                                # software.CouplingEndpoint
-        self.time_lag = None                              # software.TimeLag
-        self.time_profile = None                          # software.Timing
-        self.time_transformation = None                   # software.TimeTransformation
-        self.transformers = []                            # software.ProcessorComponent
-        self.transformers_references = []                 # shared.DocReference
-        self.type = None                                  # software.ConnectionType
-
-
-class CouplingEndpoint(object):
-    """A concrete class within the cim v1 type system.
-
-    The source/target of a coupling.  This is a DataSource (a SoftwareComponent or DataObject).  This is a separate class in order to associate an instanceID with the DataSource; this is used to identify which particular instance is being coupled in case the same DataSource is used more than once in a coupled model (this may be required for BFG).
-
-    """
-    def __init__(self):
-        """Constructor.
-
-        """
-        super(CouplingEndpoint, self).__init__()
-
-        self.data_source = None                           # shared.DataSource
-        self.data_source_reference = None                 # shared.DocReference
-        self.instance_id = None                           # str
-        self.properties = []                              # software.CouplingProperty
+        self.min = None                                   # int
+        self.increment = None                             # int
+        self.value = None                                 # int
+        self.max = None                                   # int
 
 
 class CouplingProperty(shared.Property):
@@ -248,40 +92,114 @@ class CouplingProperty(shared.Property):
 
 
 
-class Deployment(object):
+class SpatialRegridding(object):
     """A concrete class within the cim v1 type system.
 
-    Gives information about the technical properties of a component: what machine it was run on, which compilers were used, how it was parallised, etc. A deployment basically associates a deploymentDate with a Platform. A deployment only exists if something has been deployed. A platform, in contrast, can exist independently, waiting to be used in deployments.
+    Characteristics of the scheme used to interpolate a field from one grid (source grid) to another (target grid).  Documents should use either the spatialRegriddingStandardMethod _or_ the spatialRegriddingUserMethod, but not both.
 
     """
     def __init__(self):
         """Constructor.
 
         """
-        super(Deployment, self).__init__()
+        super(SpatialRegridding, self).__init__()
 
-        self.deployment_date = None                       # datetime.datetime
+        self.standard_method = None                       # software.SpatialRegriddingStandardMethodType
+        self.user_method = None                           # software.SpatialRegriddingUserMethod
+        self.dimension = None                             # software.SpatialRegriddingDimensionType
+        self.properties = []                              # software.SpatialRegriddingProperty
+
+
+class ConnectionEndpoint(object):
+    """A concrete class within the cim v1 type system.
+
+    The source/target of a coupling.  This is a DataSource (a SoftwareComponent or DataObject).  This is a separate class in order to associate an instanceID with the DataSource; this is used to identify which particular instance is being coupled in case the same DataSource is used more than once in a coupled model (this may be required for BFG).
+
+    """
+    def __init__(self):
+        """Constructor.
+
+        """
+        super(ConnectionEndpoint, self).__init__()
+
+        self.properties = []                              # software.ConnectionProperty
+        self.instance_id = None                           # str
+        self.data_source = None                           # shared.DataSource
+        self.data_source_reference = None                 # shared.DocReference
+
+
+class Connection(object):
+    """A concrete class within the cim v1 type system.
+
+    A Connection represents a link from a source DataSource to a target DataSource.  These can either be ComponentProperties (ie: the values come from an internal component) or DataObjects (ie: the values come from an external file).   It can be associated with another software component (a transformer).  If present, the rate, lag, timeTransformation, and spatialRegridding override that of the parent coupling.  Note that there is the potential for multiple connectionSource & connectionTarget and multiple couplingSources & couplingTargets.  This may lead users to wonder how to match up a connection source (a ComponentProperty) with its coupling source (a SoftwareComponent). Clever logic is not required though; because the sources and targets are listed by reference, they can be found in a CIM document and the parent can be navigated to from there - there is no need to consult the source or target of the coupling.
+
+    """
+    def __init__(self):
+        """Constructor.
+
+        """
+        super(Connection, self).__init__()
+
+        self.properties = []                              # software.ConnectionProperty
+        self.transformers_references = []                 # shared.DocReference
+        self.type = None                                  # software.ConnectionType
+        self.target = None                                # software.ConnectionEndpoint
+        self.priming = None                               # shared.DataSource
+        self.priming_reference = None                     # shared.DocReference
+        self.time_profile = None                          # software.Timing
+        self.spatial_regridding = []                      # software.SpatialRegridding
+        self.transformers = []                            # software.ProcessorComponent
+        self.sources = []                                 # software.ConnectionEndpoint
         self.description = None                           # str
-        self.executable_arguments = []                    # str
-        self.executable_name = None                       # str
-        self.parallelisation = None                       # software.Parallelisation
-        self.platform = None                              # shared.Platform
-        self.platform_reference = None                    # shared.DocReference
+        self.time_lag = None                              # str
+        self.time_transformation = None                   # software.TimeTransformation
 
 
-class EntryPoint(object):
+class Coupling(object):
     """A concrete class within the cim v1 type system.
 
-    Describes a function or subroutine of a SoftwareComponent. BFG will use these EntryPoints to define a schedule of subroutine calls for a coupled model. Currently, a very basic schedule can be approximated by using the "proceeds" and "follows" attributes, however a more complete system is required for full BFG compatibility. Every EntryPoint can have a set of arguments associated with it. These reference (previously defined) ComponentProperties.
+    A coupling represents a set of Connections between a source and target component. Couplings can be complete or incomplete. If they are complete then they must include all Connections between model properties. If they are incomplete then the connections can be underspecified or not listed at all.
 
     """
     def __init__(self):
         """Constructor.
 
         """
-        super(EntryPoint, self).__init__()
+        super(Coupling, self).__init__()
+
+        self.transformers = []                            # software.ProcessorComponent
+        self.target = None                                # software.CouplingEndpoint
+        self.priming = None                               # shared.DataSource
+        self.is_fully_specified = None                    # bool
+        self.connections = []                             # software.Connection
+        self.priming_reference = None                     # shared.DocReference
+        self.type = None                                  # software.ConnectionType
+        self.time_transformation = None                   # software.TimeTransformation
+        self.transformers_references = []                 # shared.DocReference
+        self.properties = []                              # software.CouplingProperty
+        self.sources = []                                 # software.CouplingEndpoint
+        self.spatial_regriddings = []                     # software.SpatialRegridding
+        self.description = None                           # str
+        self.purpose = None                               # shared.DataPurpose
+        self.time_profile = None                          # software.Timing
+        self.time_lag = None                              # software.TimeLag
+
+
+class SpatialRegriddingUserMethod(object):
+    """A concrete class within the cim v1 type system.
+
+    Characteristics of the scheme used to interpolate a field from one grid (source grid) to another (target grid).  Documents should use either the spatialRegriddingStandardMethod _or_ the spatialRegriddingUserMethod, but not both.
+
+    """
+    def __init__(self):
+        """Constructor.
+
+        """
+        super(SpatialRegriddingUserMethod, self).__init__()
 
         self.name = None                                  # str
+        self.file = None                                  # data.DataObject
+        self.file_reference = None                        # shared.DocReference
 
 
 class Parallelisation(object):
@@ -300,40 +218,40 @@ class Parallelisation(object):
         self.ranks = []                                   # software.Rank
 
 
-class Rank(object):
+class Component(shared.DataSource):
     """A concrete class within the cim v1 type system.
 
-    Creates and returns instance of rank class.
+    A SofwareComponent is an abstract component from which all other components derive. It represents an element that takes input data and generates output data. A SoftwareCompnent can include nested "child" components. Every component can have "componentProperties" which describe the scientific properties that a component simulates (for example, temperature, pressure, etc.) and the numerical properties that influence how a component performs its simulation (for example, the force of gravity). A SoftwareComponent can also have a Deployment, which describes how software is deployed onto computing resources. And a SoftwareComponent can have a composition, which describes how ComponentProperties are coupled together either to/from other SoftwareComponents or external data files. The properties specified by a component's composition must be owned by that component or a child of that component; child components cannot couple together their parents' properties.
 
     """
     def __init__(self):
         """Constructor.
 
         """
-        super(Rank, self).__init__()
+        super(Component, self).__init__()
 
-        self.increment = None                             # int
-        self.max = None                                   # int
-        self.min = None                                   # int
-        self.value = None                                 # int
-
-
-class SpatialRegridding(object):
-    """A concrete class within the cim v1 type system.
-
-    Characteristics of the scheme used to interpolate a field from one grid (source grid) to another (target grid).  Documents should use either the spatialRegriddingStandardMethod _or_ the spatialRegriddingUserMethod, but not both.
-
-    """
-    def __init__(self):
-        """Constructor.
-
-        """
-        super(SpatialRegridding, self).__init__()
-
-        self.dimension = None                             # software.SpatialRegriddingDimensionType
-        self.properties = []                              # software.SpatialRegriddingProperty
-        self.standard_method = None                       # software.SpatialRegriddingStandardMethodType
-        self.user_method = None                           # software.SpatialRegriddingUserMethod
+        self.is_embedded = None                           # bool
+        self.language = None                              # software.ComponentLanguage
+        self.license = None                               # shared.License
+        self.dependencies = []                            # software.EntryPoint
+        self.long_name = None                             # str
+        self.online_resource = None                       # str
+        self.parent = None                                # software.Component
+        self.sub_components = []                          # software.Component
+        self.previous_version = None                      # str
+        self.citations = []                               # shared.Citation
+        self.properties = []                              # software.ComponentProperty
+        self.code_access = None                           # str
+        self.release_date = None                          # datetime.datetime
+        self.composition = None                           # software.Composition
+        self.responsible_parties = []                     # shared.ResponsibleParty
+        self.coupling_framework = None                    # software.CouplingFrameworkType
+        self.short_name = None                            # str
+        self.version = None                               # str
+        self.deployments = []                             # software.Deployment
+        self.description = None                           # str
+        self.funding_sources = []                         # str
+        self.grid = None                                  # grids.GridSpec
 
 
 class SpatialRegriddingProperty(shared.Property):
@@ -350,37 +268,104 @@ class SpatialRegriddingProperty(shared.Property):
 
 
 
-class SpatialRegriddingUserMethod(object):
+class EntryPoint(object):
     """A concrete class within the cim v1 type system.
 
-    Characteristics of the scheme used to interpolate a field from one grid (source grid) to another (target grid).  Documents should use either the spatialRegriddingStandardMethod _or_ the spatialRegriddingUserMethod, but not both.
+    Describes a function or subroutine of a SoftwareComponent. BFG will use these EntryPoints to define a schedule of subroutine calls for a coupled model. Currently, a very basic schedule can be approximated by using the "proceeds" and "follows" attributes, however a more complete system is required for full BFG compatibility. Every EntryPoint can have a set of arguments associated with it. These reference (previously defined) ComponentProperties.
 
     """
     def __init__(self):
         """Constructor.
 
         """
-        super(SpatialRegriddingUserMethod, self).__init__()
+        super(EntryPoint, self).__init__()
 
-        self.file = None                                  # data.DataObject
-        self.file_reference = None                        # shared.DocReference
         self.name = None                                  # str
 
 
-class TimeLag(object):
+class CouplingEndpoint(object):
     """A concrete class within the cim v1 type system.
 
-    The coupling field used in the target at a given time corresponds to a field produced by the source at a previous time. This lag specifies the difference in time.
+    The source/target of a coupling.  This is a DataSource (a SoftwareComponent or DataObject).  This is a separate class in order to associate an instanceID with the DataSource; this is used to identify which particular instance is being coupled in case the same DataSource is used more than once in a coupled model (this may be required for BFG).
 
     """
     def __init__(self):
         """Constructor.
 
         """
-        super(TimeLag, self).__init__()
+        super(CouplingEndpoint, self).__init__()
 
-        self.units = None                                 # software.TimingUnits
-        self.value = None                                 # int
+        self.properties = []                              # software.CouplingProperty
+        self.instance_id = None                           # str
+        self.data_source = None                           # shared.DataSource
+        self.data_source_reference = None                 # shared.DocReference
+
+
+class Composition(object):
+    """A concrete class within the cim v1 type system.
+
+    The set of Couplings used by a Component. Couplings can only occur between child components. That is, a composition must belong to an ancestor component of the components whose fields are being connected.
+
+    """
+    def __init__(self):
+        """Constructor.
+
+        """
+        super(Composition, self).__init__()
+
+        self.couplings = []                               # str
+        self.description = None                           # str
+
+
+class ComponentLanguage(object):
+    """A concrete class within the cim v1 type system.
+
+    Details of the programming language a component is written in. There is an assumption that all EntryPoints use the same ComponentLanguage.
+
+    """
+    def __init__(self):
+        """Constructor.
+
+        """
+        super(ComponentLanguage, self).__init__()
+
+        self.name = None                                  # str
+        self.properties = []                              # software.ComponentLanguageProperty
+
+
+class Deployment(object):
+    """A concrete class within the cim v1 type system.
+
+    Gives information about the technical properties of a component: what machine it was run on, which compilers were used, how it was parallised, etc. A deployment basically associates a deploymentDate with a Platform. A deployment only exists if something has been deployed. A platform, in contrast, can exist independently, waiting to be used in deployments.
+
+    """
+    def __init__(self):
+        """Constructor.
+
+        """
+        super(Deployment, self).__init__()
+
+        self.executable_arguments = []                    # str
+        self.platform_reference = None                    # shared.DocReference
+        self.platform = None                              # shared.Platform
+        self.description = None                           # str
+        self.deployment_date = None                       # datetime.datetime
+        self.executable_name = None                       # str
+        self.parallelisation = None                       # software.Parallelisation
+
+
+class ConnectionProperty(shared.Property):
+    """A concrete class within the cim v1 type system.
+
+    A ConnectionProperty is a name/value pair used to specify OASIS-specific properties.
+
+    """
+    def __init__(self):
+        """Constructor.
+
+        """
+        super(ConnectionProperty, self).__init__()
+
 
 
 class TimeTransformation(object):
@@ -399,6 +384,22 @@ class TimeTransformation(object):
         self.mapping_type = None                          # software.TimeMappingType
 
 
+class TimeLag(object):
+    """A concrete class within the cim v1 type system.
+
+    The coupling field used in the target at a given time corresponds to a field produced by the source at a previous time. This lag specifies the difference in time.
+
+    """
+    def __init__(self):
+        """Constructor.
+
+        """
+        super(TimeLag, self).__init__()
+
+        self.units = None                                 # software.TimingUnits
+        self.value = None                                 # int
+
+
 class Timing(object):
     """A concrete class within the cim v1 type system.
 
@@ -412,10 +413,28 @@ class Timing(object):
         super(Timing, self).__init__()
 
         self.end = None                                   # datetime.datetime
-        self.is_variable_rate = None                      # bool
-        self.rate = None                                  # int
         self.start = None                                 # datetime.datetime
+        self.rate = None                                  # int
         self.units = None                                 # software.TimingUnits
+        self.is_variable_rate = None                      # bool
+
+
+class StatisticalModelComponent(Component):
+    """A concrete class within the cim v1 type system.
+
+    Creates and returns instance of statistical_model_component class.
+
+    """
+    def __init__(self):
+        """Constructor.
+
+        """
+        super(StatisticalModelComponent, self).__init__()
+
+        self.type = None                                  # software.StatisticalModelComponentType
+        self.meta = shared.DocMetaInfo()                  # shared.DocMetaInfo
+        self.types = []                                   # software.StatisticalModelComponentType
+        self.timing = None                                # software.Timing
 
 
 class ModelComponent(Component):
@@ -430,11 +449,11 @@ class ModelComponent(Component):
         """
         super(ModelComponent, self).__init__()
 
+        self.types = []                                   # software.ModelComponentType
+        self.type = None                                  # software.ModelComponentType
+        self.timing = None                                # software.Timing
         self.activity = None                              # activity.Activity
         self.meta = shared.DocMetaInfo()                  # shared.DocMetaInfo
-        self.timing = None                                # software.Timing
-        self.type = None                                  # software.ModelComponentType
-        self.types = []                                   # software.ModelComponentType
 
 
 class ProcessorComponent(Component):
@@ -452,28 +471,10 @@ class ProcessorComponent(Component):
         self.meta = shared.DocMetaInfo()                  # shared.DocMetaInfo
 
 
-class StatisticalModelComponent(Component):
-    """A concrete class within the cim v1 type system.
-
-    Creates and returns instance of statistical_model_component class.
-
-    """
-    def __init__(self):
-        """Constructor.
-
-        """
-        super(StatisticalModelComponent, self).__init__()
-
-        self.meta = shared.DocMetaInfo()                  # shared.DocMetaInfo
-        self.timing = None                                # software.Timing
-        self.type = None                                  # software.StatisticalModelComponentType
-        self.types = []                                   # software.StatisticalModelComponentType
-
-
-class ComponentPropertyIntentType(object):
+class CouplingFrameworkType(object):
     """An enumeration within the cim v1 type system.
 
-    The direction that the associated component property is intended to be coupled: in, out, or inout.
+    Creates and returns instance of coupling_framework_type enum.
     """
 
     pass
@@ -488,10 +489,10 @@ class ConnectionType(object):
     pass
 
 
-class CouplingFrameworkType(object):
+class SpatialRegriddingStandardMethodType(object):
     """An enumeration within the cim v1 type system.
 
-    Creates and returns instance of coupling_framework_type enum.
+    Creates and returns instance of spatial_regridding_standard_method_type enum.
     """
 
     pass
@@ -515,10 +516,10 @@ class SpatialRegriddingDimensionType(object):
     pass
 
 
-class SpatialRegriddingStandardMethodType(object):
+class TimeMappingType(object):
     """An enumeration within the cim v1 type system.
 
-    Creates and returns instance of spatial_regridding_standard_method_type enum.
+    Enumerates the different ways that time can be mapped when transforming from one field to another.
     """
 
     pass
@@ -533,10 +534,10 @@ class StatisticalModelComponentType(object):
     pass
 
 
-class TimeMappingType(object):
+class ComponentPropertyIntentType(object):
     """An enumeration within the cim v1 type system.
 
-    Enumerates the different ways that time can be mapped when transforming from one field to another.
+    The direction that the associated component property is intended to be coupled: in, out, or inout.
     """
 
     pass

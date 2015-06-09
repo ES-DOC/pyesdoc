@@ -9,7 +9,7 @@
    :synopsis: The cim v2 package initialisor.
 
 .. moduleauthor:: Earth System Documentation (ES-DOC) <dev@es-doc.org>
-.. note:: Code generated using esdoc_mp @ 2015-06-03 11:24:48.580387.
+.. note:: Code generated using esdoc_mp @ 2015-06-05 14:48:44.248244.
 
 """
 from typeset import *
