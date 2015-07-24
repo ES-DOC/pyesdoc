@@ -9,7 +9,7 @@
    :synopsis: The set of types of the cim.v1.misc package.
 
 .. moduleauthor:: Earth System Documentation (ES-DOC) <dev@es-doc.org>
-.. note:: Code generated using esdoc_mp @ 2015-07-24 23:33:18.153885.
+.. note:: Code generated using esdoc_mp.
 
 """
 import abc
@@ -32,20 +32,20 @@ class DocumentSet(object):
         """
         super(DocumentSet, self).__init__()
 
-        self.grids_references = []                        # shared.DocReference
-        self.simulation_reference = None                  # shared.DocReference
-        self.experiment = None                            # activity.NumericalExperiment
-        self.model_reference = None                       # shared.DocReference
-        self.model = None                                 # software.ModelComponent
-        self.simulation = None                            # activity.SimulationRun
-        self.data_references = []                         # shared.DocReference
-        self.meta = shared.DocMetaInfo()                  # shared.DocMetaInfo
-        self.experiment_reference = None                  # shared.DocReference
-        self.ensembles = []                               # activity.Ensemble
-        self.platform = None                              # shared.Platform
-        self.grids = []                                   # grids.GridSpec
-        self.platform_reference = None                    # shared.DocReference
-        self.ensembles_references = []                    # shared.DocReference
         self.data = []                                    # data.DataObject
+        self.data_references = []                         # shared.DocReference
+        self.ensembles = []                               # activity.Ensemble
+        self.ensembles_references = []                    # shared.DocReference
+        self.experiment = None                            # activity.NumericalExperiment
+        self.experiment_reference = None                  # shared.DocReference
+        self.grids = []                                   # grids.GridSpec
+        self.grids_references = []                        # shared.DocReference
+        self.meta = shared.DocMetaInfo()                  # shared.DocMetaInfo
+        self.model = None                                 # software.ModelComponent
+        self.model_reference = None                       # shared.DocReference
+        self.platform = None                              # shared.Platform
+        self.platform_reference = None                    # shared.DocReference
+        self.simulation = None                            # activity.SimulationRun
+        self.simulation_reference = None                  # shared.DocReference
 
 

@@ -9,7 +9,7 @@
    :synopsis: The set of types of the cim.v1.shared package.
 
 .. moduleauthor:: Earth System Documentation (ES-DOC) <dev@es-doc.org>
-.. note:: Code generated using esdoc_mp @ 2015-07-24 23:33:18.147145.
+.. note:: Code generated using esdoc_mp.
 
 """
 import abc
@@ -18,98 +18,6 @@ import uuid
 
 import typeset_for_shared_package as shared
 
-
-
-class Change(object):
-    """A concrete class within the cim v1 type system.
-
-    A description of [a set of] changes applied at a particular time, by a particular party, to a particular unit of metadata.
-
-    """
-    def __init__(self):
-        """Constructor.
-
-        """
-        super(Change, self).__init__()
-
-        self.name = None                                  # str
-        self.type = None                                  # shared.ChangePropertyType
-        self.date = None                                  # datetime.datetime
-        self.description = None                           # str
-        self.details = []                                 # shared.ChangeProperty
-        self.author = None                                # shared.ResponsibleParty
-
-
-class License(object):
-    """A concrete class within the cim v1 type system.
-
-    A description of a license restricting access to a unit of data or software.
-
-    """
-    def __init__(self):
-        """Constructor.
-
-        """
-        super(License, self).__init__()
-
-        self.name = None                                  # str
-        self.contact = None                               # str
-        self.is_unrestricted = None                       # str
-        self.description = None                           # str
-
-
-class Standard(object):
-    """A concrete class within the cim v1 type system.
-
-    Describes a name given to an entity from a recognised standard.  The CIM records the standard and the name.  For example, the standard might be CF and the name might be atmospheric_pressure.
-
-    """
-    def __init__(self):
-        """Constructor.
-
-        """
-        super(Standard, self).__init__()
-
-        self.version = None                               # str
-        self.description = None                           # str
-        self.name = None                                  # str
-
-
-class DocRelationshipTarget(object):
-    """A concrete class within the cim v1 type system.
-
-    Creates and returns instance of doc_relationship_target class.
-
-    """
-    def __init__(self):
-        """Constructor.
-
-        """
-        super(DocRelationshipTarget, self).__init__()
-
-        self.document = None                              # shared.DocType
-        self.reference = None                             # shared.DocReference
-
-
-class ResponsibleParty(object):
-    """A concrete class within the cim v1 type system.
-
-    A person/organsiation responsible for some aspect of a climate science artefact.
-
-    """
-    def __init__(self):
-        """Constructor.
-
-        """
-        super(ResponsibleParty, self).__init__()
-
-        self.role = None                                  # str
-        self.email = None                                 # str
-        self.individual_name = None                       # str
-        self.abbreviation = None                          # str
-        self.url = None                                   # str
-        self.organisation_name = None                     # str
-        self.address = None                               # str
 
 
 class Calendar(object):
@@ -126,9 +34,45 @@ class Calendar(object):
         """
         super(Calendar, self).__init__()
 
-        self.range = None                                 # shared.DateRange
         self.description = None                           # str
         self.length = None                                # int
+        self.range = None                                 # shared.DateRange
+
+
+class Change(object):
+    """A concrete class within the cim v1 type system.
+
+    A description of [a set of] changes applied at a particular time, by a particular party, to a particular unit of metadata.
+
+    """
+    def __init__(self):
+        """Constructor.
+
+        """
+        super(Change, self).__init__()
+
+        self.author = None                                # shared.ResponsibleParty
+        self.date = None                                  # datetime.datetime
+        self.description = None                           # str
+        self.details = []                                 # shared.ChangeProperty
+        self.name = None                                  # str
+        self.type = None                                  # shared.ChangePropertyType
+
+
+class ChangeProperty(Property):
+    """A concrete class within the cim v1 type system.
+
+    A description of a single change applied to a single target.  Every ChangeProperty has a description, and may also have a name from a controlled vocabulary and a value.
+
+    """
+    def __init__(self):
+        """Constructor.
+
+        """
+        super(ChangeProperty, self).__init__()
+
+        self.description = None                           # str
+        self.id = None                                    # str
 
 
 class Citation(object):
@@ -143,75 +87,66 @@ class Citation(object):
         """
         super(Citation, self).__init__()
 
-        self.location = None                              # str
-        self.type = None                                  # str
-        self.date_type = None                             # str
-        self.date = None                                  # datetime.datetime
-        self.role = None                                  # str
         self.alternative_title = None                     # str
-        self.title = None                                 # str
         self.collective_title = None                      # str
+        self.date = None                                  # datetime.datetime
+        self.date_type = None                             # str
+        self.location = None                              # str
         self.organisation = None                          # str
         self.reference = None                             # shared.DocReference
-
-
-class Platform(object):
-    """A concrete class within the cim v1 type system.
-
-    A platform is a description of resources used to deploy a component/simulation.  A platform pairs a machine with a (set of) compilers.  There is also a point of contact for the platform.
-
-    """
-    def __init__(self):
-        """Constructor.
-
-        """
-        super(Platform, self).__init__()
-
-        self.description = None                           # str
-        self.long_name = None                             # str
-        self.contacts = []                                # shared.ResponsibleParty
-        self.meta = DocMetaInfo()                         # shared.DocMetaInfo
-        self.units = []                                   # shared.MachineCompilerUnit
-        self.short_name = None                            # str
-
-
-class Relationship(object):
-    """An abstract class within the cim v1 type system.
-
-    A record of a relationship between one document and another. This class is abstract; specific document types must specialise this class for their relationshipTypes to be included in a document's genealogy.
-
-    """
-    __metaclass__ = abc.ABCMeta
-
-    def __init__(self):
-        """Constructor.
-
-        """
-        super(Relationship, self).__init__()
-
-        self.description = None                           # str
-        self.direction = None                             # shared.DocRelationshipDirectionType
-
-
-class DocReference(object):
-    """A concrete class within the cim v1 type system.
-
-    A reference to another cim entity.
-
-    """
-    def __init__(self):
-        """Constructor.
-
-        """
-        super(DocReference, self).__init__()
-
+        self.role = None                                  # str
+        self.title = None                                 # str
         self.type = None                                  # str
-        self.description = None                           # str
-        self.external_id = None                           # str
-        self.version = None                               # int
-        self.id = None                                    # uuid.UUID
+
+
+class ClosedDateRange(DateRange):
+    """A concrete class within the cim v1 type system.
+
+    A date range with specified start and end points.
+
+    """
+    def __init__(self):
+        """Constructor.
+
+        """
+        super(ClosedDateRange, self).__init__()
+
+        self.end = None                                   # datetime.datetime
+        self.start = None                                 # datetime.datetime
+
+
+class Compiler(object):
+    """A concrete class within the cim v1 type system.
+
+    A description of a compiler used on a particular platform.
+
+    """
+    def __init__(self):
+        """Constructor.
+
+        """
+        super(Compiler, self).__init__()
+
+        self.environment_variables = None                 # str
+        self.language = None                              # str
         self.name = None                                  # str
-        self.changes = []                                 # shared.Change
+        self.options = None                               # str
+        self.type = None                                  # shared.CompilerType
+        self.version = None                               # str
+
+
+class Daily360(Calendar):
+    """A concrete class within the cim v1 type system.
+
+    Creates and returns instance of daily_360 class.
+
+    """
+    def __init__(self):
+        """Constructor.
+
+        """
+        super(Daily360, self).__init__()
+
 
 
 class DataSource(object):
@@ -231,65 +166,21 @@ class DataSource(object):
         self.purpose = None                               # shared.DataPurpose
 
 
-class DocMetaInfo(object):
-    """A concrete class within the cim v1 type system.
+class DateRange(object):
+    """An abstract class within the cim v1 type system.
 
-    Encapsulates document meta information.
+    Creates and returns instance of date_range class.
 
     """
+    __metaclass__ = abc.ABCMeta
+
     def __init__(self):
         """Constructor.
 
         """
-        super(DocMetaInfo, self).__init__()
+        super(DateRange, self).__init__()
 
-        self.language = None                              # str
-        self.type_sort_key = None                         # str
-        self.type_display_name = None                     # str
-        self.drs_path = None                              # str
-        self.sort_key = None                              # str
-        self.metadata_version = None                      # str
-        self.genealogy = None                             # shared.DocGenealogy
-        self.status = None                                # shared.DocStatusType
-        self.drs_keys = []                                # str
-        self.create_date = None                           # datetime.datetime
-        self.id = None                                    # uuid.UUID
-        self.version = None                               # int
-        self.type = None                                  # str
-        self.encodings = []                               # str
-        self.source = None                                # str
-        self.metadata_id = None                           # str
-        self.institute = None                             # str
-        self.project = None                               # str
-        self.source_key = None                            # str
-        self.external_ids = []                            # shared.StandardName
-        self.author = None                                # shared.ResponsibleParty
-
-
-class Machine(object):
-    """A concrete class within the cim v1 type system.
-
-    A description of a machine used by a particular platform.
-
-    """
-    def __init__(self):
-        """Constructor.
-
-        """
-        super(Machine, self).__init__()
-
-        self.description = None                           # str
-        self.location = None                              # str
-        self.processor_type = None                        # shared.ProcessorType
-        self.system = None                                # str
-        self.interconnect = None                          # shared.InterconnectType
-        self.maximum_processors = None                    # int
-        self.type = None                                  # shared.MachineType
-        self.name = None                                  # str
-        self.operating_system = None                      # shared.OperatingSystemType
-        self.vendor = None                                # shared.MachineVendorType
-        self.libraries = []                               # str
-        self.cores_per_processor = None                   # int
+        self.duration = None                              # str
 
 
 class DocGenealogy(object):
@@ -307,57 +198,136 @@ class DocGenealogy(object):
         self.relationships = []                           # shared.DocRelationship
 
 
-class Property(object):
+class DocMetaInfo(object):
     """A concrete class within the cim v1 type system.
 
-    A simple name/value pair representing a property of some entity or other.
+    Encapsulates document meta information.
 
     """
     def __init__(self):
         """Constructor.
 
         """
-        super(Property, self).__init__()
+        super(DocMetaInfo, self).__init__()
 
-        self.name = None                                  # str
-        self.value = None                                 # str
-
-
-class Compiler(object):
-    """A concrete class within the cim v1 type system.
-
-    A description of a compiler used on a particular platform.
-
-    """
-    def __init__(self):
-        """Constructor.
-
-        """
-        super(Compiler, self).__init__()
-
-        self.name = None                                  # str
-        self.type = None                                  # shared.CompilerType
-        self.options = None                               # str
-        self.environment_variables = None                 # str
+        self.author = None                                # shared.ResponsibleParty
+        self.create_date = None                           # datetime.datetime
+        self.drs_keys = []                                # str
+        self.drs_path = None                              # str
+        self.encodings = []                               # str
+        self.external_ids = []                            # shared.StandardName
+        self.genealogy = None                             # shared.DocGenealogy
+        self.id = None                                    # uuid.UUID
+        self.institute = None                             # str
         self.language = None                              # str
-        self.version = None                               # str
+        self.metadata_id = None                           # str
+        self.metadata_version = None                      # str
+        self.project = None                               # str
+        self.sort_key = None                              # str
+        self.source = None                                # str
+        self.source_key = None                            # str
+        self.status = None                                # shared.DocStatusType
+        self.type = None                                  # str
+        self.type_display_name = None                     # str
+        self.type_sort_key = None                         # str
+        self.version = None                               # int
 
 
-class StandardName(object):
+class DocReference(object):
     """A concrete class within the cim v1 type system.
 
-    Describes a name given to an entity from a recognised standard.  The CIM records the standard and the name.  For example, the standard might be CF and the name might be atmospheric_pressure.
+    A reference to another cim entity.
 
     """
     def __init__(self):
         """Constructor.
 
         """
-        super(StandardName, self).__init__()
+        super(DocReference, self).__init__()
 
-        self.is_open = None                               # bool
-        self.value = None                                 # str
-        self.standards = []                               # shared.Standard
+        self.changes = []                                 # shared.Change
+        self.description = None                           # str
+        self.external_id = None                           # str
+        self.id = None                                    # uuid.UUID
+        self.name = None                                  # str
+        self.type = None                                  # str
+        self.version = None                               # int
+
+
+class DocRelationship(Relationship):
+    """A concrete class within the cim v1 type system.
+
+    Contains the set of relationships supported by a Document.
+
+    """
+    def __init__(self):
+        """Constructor.
+
+        """
+        super(DocRelationship, self).__init__()
+
+        self.target = None                                # shared.DocRelationshipTarget
+        self.type = None                                  # shared.DocRelationshipType
+
+
+class DocRelationshipTarget(object):
+    """A concrete class within the cim v1 type system.
+
+    Creates and returns instance of doc_relationship_target class.
+
+    """
+    def __init__(self):
+        """Constructor.
+
+        """
+        super(DocRelationshipTarget, self).__init__()
+
+        self.document = None                              # shared.DocType
+        self.reference = None                             # shared.DocReference
+
+
+class License(object):
+    """A concrete class within the cim v1 type system.
+
+    A description of a license restricting access to a unit of data or software.
+
+    """
+    def __init__(self):
+        """Constructor.
+
+        """
+        super(License, self).__init__()
+
+        self.contact = None                               # str
+        self.description = None                           # str
+        self.is_unrestricted = None                       # str
+        self.name = None                                  # str
+
+
+class Machine(object):
+    """A concrete class within the cim v1 type system.
+
+    A description of a machine used by a particular platform.
+
+    """
+    def __init__(self):
+        """Constructor.
+
+        """
+        super(Machine, self).__init__()
+
+        self.cores_per_processor = None                   # int
+        self.description = None                           # str
+        self.interconnect = None                          # shared.InterconnectType
+        self.libraries = []                               # str
+        self.location = None                              # str
+        self.maximum_processors = None                    # int
+        self.name = None                                  # str
+        self.operating_system = None                      # shared.OperatingSystemType
+        self.processor_type = None                        # shared.ProcessorType
+        self.system = None                                # str
+        self.type = None                                  # shared.MachineType
+        self.vendor = None                                # shared.MachineVendorType
 
 
 class MachineCompilerUnit(object):
@@ -374,23 +344,6 @@ class MachineCompilerUnit(object):
 
         self.compilers = []                               # shared.Compiler
         self.machine = None                               # shared.Machine
-
-
-class DateRange(object):
-    """An abstract class within the cim v1 type system.
-
-    Creates and returns instance of date_range class.
-
-    """
-    __metaclass__ = abc.ABCMeta
-
-    def __init__(self):
-        """Constructor.
-
-        """
-        super(DateRange, self).__init__()
-
-        self.duration = None                              # str
 
 
 class OpenDateRange(DateRange):
@@ -423,66 +376,40 @@ class PerpetualPeriod(Calendar):
 
 
 
-class ClosedDateRange(DateRange):
+class Platform(object):
     """A concrete class within the cim v1 type system.
 
-    A date range with specified start and end points.
+    A platform is a description of resources used to deploy a component/simulation.  A platform pairs a machine with a (set of) compilers.  There is also a point of contact for the platform.
 
     """
     def __init__(self):
         """Constructor.
 
         """
-        super(ClosedDateRange, self).__init__()
+        super(Platform, self).__init__()
 
-        self.end = None                                   # datetime.datetime
-        self.start = None                                 # datetime.datetime
-
-
-class Daily360(Calendar):
-    """A concrete class within the cim v1 type system.
-
-    Creates and returns instance of daily_360 class.
-
-    """
-    def __init__(self):
-        """Constructor.
-
-        """
-        super(Daily360, self).__init__()
-
-
-
-class ChangeProperty(Property):
-    """A concrete class within the cim v1 type system.
-
-    A description of a single change applied to a single target.  Every ChangeProperty has a description, and may also have a name from a controlled vocabulary and a value.
-
-    """
-    def __init__(self):
-        """Constructor.
-
-        """
-        super(ChangeProperty, self).__init__()
-
+        self.contacts = []                                # shared.ResponsibleParty
         self.description = None                           # str
-        self.id = None                                    # str
+        self.long_name = None                             # str
+        self.meta = DocMetaInfo()                         # shared.DocMetaInfo
+        self.short_name = None                            # str
+        self.units = []                                   # shared.MachineCompilerUnit
 
 
-class DocRelationship(Relationship):
+class Property(object):
     """A concrete class within the cim v1 type system.
 
-    Contains the set of relationships supported by a Document.
+    A simple name/value pair representing a property of some entity or other.
 
     """
     def __init__(self):
         """Constructor.
 
         """
-        super(DocRelationship, self).__init__()
+        super(Property, self).__init__()
 
-        self.type = None                                  # shared.DocRelationshipType
-        self.target = None                                # shared.DocRelationshipTarget
+        self.name = None                                  # str
+        self.value = None                                 # str
 
 
 class RealCalendar(Calendar):
@@ -499,28 +426,83 @@ class RealCalendar(Calendar):
 
 
 
-class InterconnectType(object):
-    """An enumeration within the cim v1 type system.
+class Relationship(object):
+    """An abstract class within the cim v1 type system.
 
-    A list of connectors between machines.
+    A record of a relationship between one document and another. This class is abstract; specific document types must specialise this class for their relationshipTypes to be included in a document's genealogy.
+
     """
+    __metaclass__ = abc.ABCMeta
 
-    pass
+    def __init__(self):
+        """Constructor.
+
+        """
+        super(Relationship, self).__init__()
+
+        self.description = None                           # str
+        self.direction = None                             # shared.DocRelationshipDirectionType
+
+
+class ResponsibleParty(object):
+    """A concrete class within the cim v1 type system.
+
+    A person/organsiation responsible for some aspect of a climate science artefact.
+
+    """
+    def __init__(self):
+        """Constructor.
+
+        """
+        super(ResponsibleParty, self).__init__()
+
+        self.abbreviation = None                          # str
+        self.address = None                               # str
+        self.email = None                                 # str
+        self.individual_name = None                       # str
+        self.organisation_name = None                     # str
+        self.role = None                                  # str
+        self.url = None                                   # str
+
+
+class Standard(object):
+    """A concrete class within the cim v1 type system.
+
+    Describes a name given to an entity from a recognised standard.  The CIM records the standard and the name.  For example, the standard might be CF and the name might be atmospheric_pressure.
+
+    """
+    def __init__(self):
+        """Constructor.
+
+        """
+        super(Standard, self).__init__()
+
+        self.description = None                           # str
+        self.name = None                                  # str
+        self.version = None                               # str
+
+
+class StandardName(object):
+    """A concrete class within the cim v1 type system.
+
+    Describes a name given to an entity from a recognised standard.  The CIM records the standard and the name.  For example, the standard might be CF and the name might be atmospheric_pressure.
+
+    """
+    def __init__(self):
+        """Constructor.
+
+        """
+        super(StandardName, self).__init__()
+
+        self.is_open = None                               # bool
+        self.standards = []                               # shared.Standard
+        self.value = None                                 # str
 
 
 class ChangePropertyType(object):
     """An enumeration within the cim v1 type system.
 
     Creates and returns instance of change_property_type enum.
-    """
-
-    pass
-
-
-class OperatingSystemType(object):
-    """An enumeration within the cim v1 type system.
-
-    A list of common operating systems.
     """
 
     pass
@@ -535,37 +517,10 @@ class CompilerType(object):
     pass
 
 
-class DocType(object):
+class DataPurpose(object):
     """An enumeration within the cim v1 type system.
 
-    Creates and returns instance of doc_type enum.
-    """
-
-    pass
-
-
-class MachineVendorType(object):
-    """An enumeration within the cim v1 type system.
-
-    A list of organisations that create machines.
-    """
-
-    pass
-
-
-class MachineType(object):
-    """An enumeration within the cim v1 type system.
-
-    A list of known machines.
-    """
-
-    pass
-
-
-class DocStatusType(object):
-    """An enumeration within the cim v1 type system.
-
-    Status of cim document.
+    Purpose of the data - i.e. ancillaryFile, boundaryCondition or initialCondition.
     """
 
     pass
@@ -580,10 +535,64 @@ class DocRelationshipDirectionType(object):
     pass
 
 
-class UnitType(object):
+class DocRelationshipType(object):
     """An enumeration within the cim v1 type system.
 
-    A list of scientific units.
+    Creates and returns instance of document_relationship_type enum.
+    """
+
+    pass
+
+
+class DocStatusType(object):
+    """An enumeration within the cim v1 type system.
+
+    Status of cim document.
+    """
+
+    pass
+
+
+class DocType(object):
+    """An enumeration within the cim v1 type system.
+
+    Creates and returns instance of doc_type enum.
+    """
+
+    pass
+
+
+class InterconnectType(object):
+    """An enumeration within the cim v1 type system.
+
+    A list of connectors between machines.
+    """
+
+    pass
+
+
+class MachineType(object):
+    """An enumeration within the cim v1 type system.
+
+    A list of known machines.
+    """
+
+    pass
+
+
+class MachineVendorType(object):
+    """An enumeration within the cim v1 type system.
+
+    A list of organisations that create machines.
+    """
+
+    pass
+
+
+class OperatingSystemType(object):
+    """An enumeration within the cim v1 type system.
+
+    A list of common operating systems.
     """
 
     pass
@@ -598,19 +607,10 @@ class ProcessorType(object):
     pass
 
 
-class DataPurpose(object):
+class UnitType(object):
     """An enumeration within the cim v1 type system.
 
-    Purpose of the data - i.e. ancillaryFile, boundaryCondition or initialCondition.
-    """
-
-    pass
-
-
-class DocRelationshipType(object):
-    """An enumeration within the cim v1 type system.
-
-    Creates and returns instance of document_relationship_type enum.
+    A list of scientific units.
     """
 
     pass
