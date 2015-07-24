@@ -18,8 +18,8 @@ import typeset
 
 
 
-def decode_grid_tile_resolution_type(xml, nsmap):
-    """Decodes an instance of the following type: grid tile resolution type.
+def decode_coordinate_list(xml, nsmap):
+    """Decodes an instance of the following type: coordinate list.
 
     :param xml: XML from which type is to be decoded.
     :type xml: lxml.etree
@@ -28,15 +28,72 @@ def decode_grid_tile_resolution_type(xml, nsmap):
     :type nsmap: dict
 
     :returns: A decoded type instance.
-    :rtype: cim.v1.typeset.grids.GridTileResolutionType
+    :rtype: cim.v1.typeset.grids.CoordinateList
 
     """
     decodings = [
-        ('description', False, 'str', '@description'),
-        ('properties', True, decode_grid_property, 'child::cim:property'),
+        ('has_constant_offset', False, 'bool', '@hasConstantOffset'),
+        ('length', False, 'int', '@length'),
+        ('uom', False, 'str', '@uom'),
     ]
 
-    return set_attributes(typeset.grids.GridTileResolutionType(), xml, nsmap, decodings)
+    return set_attributes(typeset.grids.CoordinateList(), xml, nsmap, decodings)
+
+
+def decode_grid_extent(xml, nsmap):
+    """Decodes an instance of the following type: grid extent.
+
+    :param xml: XML from which type is to be decoded.
+    :type xml: lxml.etree
+
+    :param nsmap: XML namespace mappings.
+    :type nsmap: dict
+
+    :returns: A decoded type instance.
+    :rtype: cim.v1.typeset.grids.GridExtent
+
+    """
+    decodings = [
+        ('maximum_latitude', False, 'str', 'child::cim:latMax'),
+        ('maximum_longitude', False, 'str', 'child::cim:lonMax'),
+        ('minimum_latitude', False, 'str', 'child::cim:latMin'),
+        ('minimum_longitude', False, 'str', 'child::cim:lonMin'),
+        ('units', False, 'str', 'child::cim:units'),
+    ]
+
+    return set_attributes(typeset.grids.GridExtent(), xml, nsmap, decodings)
+
+
+def decode_grid_mosaic(xml, nsmap):
+    """Decodes an instance of the following type: grid mosaic.
+
+    :param xml: XML from which type is to be decoded.
+    :type xml: lxml.etree
+
+    :param nsmap: XML namespace mappings.
+    :type nsmap: dict
+
+    :returns: A decoded type instance.
+    :rtype: cim.v1.typeset.grids.GridMosaic
+
+    """
+    decodings = [
+        ('citations', True, decode_citation, 'child::cim:citationList/cim:citation'),
+        ('description', False, 'str', 'child::cim:description'),
+        ('has_congruent_tiles', False, 'bool', '@congruentTiles'),
+        ('id', False, 'str', '@id'),
+        ('is_leaf', False, 'bool', '@isLeaf'),
+        ('long_name', False, 'str', 'child::cim:longName'),
+        ('mnemonic', False, 'str', 'child::cim:mnemonic'),
+        ('mosaic_count', False, 'int', '@numMosaics'),
+        ('mosaics', True, decode_grid_mosaic, 'child::cim:gridMosaic'),
+        ('short_name', False, 'str', 'child::cim:shortName'),
+        ('tile_count', False, 'int', '@numTiles'),
+        ('tiles', True, decode_grid_tile, 'child::cim:gridTile'),
+        ('type', False, 'str', '@gridType'),
+    ]
+
+    return set_attributes(typeset.grids.GridMosaic(), xml, nsmap, decodings)
 
 
 def decode_grid_property(xml, nsmap):
@@ -58,87 +115,6 @@ def decode_grid_property(xml, nsmap):
     ]
 
     return set_attributes(typeset.grids.GridProperty(), xml, nsmap, decodings)
-
-
-def decode_grid_mosaic(xml, nsmap):
-    """Decodes an instance of the following type: grid mosaic.
-
-    :param xml: XML from which type is to be decoded.
-    :type xml: lxml.etree
-
-    :param nsmap: XML namespace mappings.
-    :type nsmap: dict
-
-    :returns: A decoded type instance.
-    :rtype: cim.v1.typeset.grids.GridMosaic
-
-    """
-    decodings = [
-        ('citations', True, decode_citation, 'child::cim:citationList/cim:citation'),
-        ('is_leaf', False, 'bool', '@isLeaf'),
-        ('mosaics', True, decode_grid_mosaic, 'child::cim:gridMosaic'),
-        ('short_name', False, 'str', 'child::cim:shortName'),
-        ('mosaic_count', False, 'int', '@numMosaics'),
-        ('mnemonic', False, 'str', 'child::cim:mnemonic'),
-        ('tile_count', False, 'int', '@numTiles'),
-        ('id', False, 'str', '@id'),
-        ('long_name', False, 'str', 'child::cim:longName'),
-        ('tiles', True, decode_grid_tile, 'child::cim:gridTile'),
-        ('has_congruent_tiles', False, 'bool', '@congruentTiles'),
-        ('description', False, 'str', 'child::cim:description'),
-        ('type', False, 'str', '@gridType'),
-    ]
-
-    return set_attributes(typeset.grids.GridMosaic(), xml, nsmap, decodings)
-
-
-def decode_vertical_coordinate_list(xml, nsmap):
-    """Decodes an instance of the following type: vertical coordinate list.
-
-    :param xml: XML from which type is to be decoded.
-    :type xml: lxml.etree
-
-    :param nsmap: XML namespace mappings.
-    :type nsmap: dict
-
-    :returns: A decoded type instance.
-    :rtype: cim.v1.typeset.grids.VerticalCoordinateList
-
-    """
-    decodings = [
-        ('type', False, 'str', '@coordinateType'),
-        ('has_constant_offset', False, 'bool', '@hasConstantOffset'),
-        ('form', False, 'str', '@coordinateForm'),
-        ('properties', True, decode_grid_property, 'child::cim:property'),
-        ('length', False, 'int', '@length'),
-        ('uom', False, 'str', '@uom'),
-    ]
-
-    return set_attributes(typeset.grids.VerticalCoordinateList(), xml, nsmap, decodings)
-
-
-def decode_grid_extent(xml, nsmap):
-    """Decodes an instance of the following type: grid extent.
-
-    :param xml: XML from which type is to be decoded.
-    :type xml: lxml.etree
-
-    :param nsmap: XML namespace mappings.
-    :type nsmap: dict
-
-    :returns: A decoded type instance.
-    :rtype: cim.v1.typeset.grids.GridExtent
-
-    """
-    decodings = [
-        ('maximum_longitude', False, 'str', 'child::cim:lonMax'),
-        ('minimum_latitude', False, 'str', 'child::cim:latMin'),
-        ('units', False, 'str', 'child::cim:units'),
-        ('maximum_latitude', False, 'str', 'child::cim:latMax'),
-        ('minimum_longitude', False, 'str', 'child::cim:lonMin'),
-    ]
-
-    return set_attributes(typeset.grids.GridExtent(), xml, nsmap, decodings)
 
 
 def decode_grid_spec(xml, nsmap):
@@ -177,32 +153,32 @@ def decode_grid_tile(xml, nsmap):
 
     """
     decodings = [
-        ('id', False, 'str', '@id'),
+        ('description', False, 'str', 'child::cim:description'),
         ('discretization_type', False, 'str', '@discretizationType'),
-        ('nz', False, 'int', '@nz'),
-        ('is_uniform', False, 'bool', '@isUniform'),
+        ('extent', False, decode_grid_extent, 'child::cim:extent'),
+        ('geometry_type', False, 'str', '@geometryType'),
+        ('horizontal_resolution', False, decode_grid_tile_resolution_type, 'child::cim:horizontalResolution'),
+        ('id', False, 'str', '@id'),
         ('is_conformal', False, 'bool', '@isConformal'),
         ('is_regular', False, 'bool', '@isRegular'),
-        ('description', False, 'str', 'child::cim:description'),
-        ('ny', False, 'int', '@ny'),
-        ('nx', False, 'int', '@nx'),
         ('is_terrain_following', False, 'bool', '@isTerrainFollowing'),
-        ('short_name', False, 'str', 'child::cim:shortName'),
-        ('extent', False, decode_grid_extent, 'child::cim:extent'),
+        ('is_uniform', False, 'bool', '@isUniform'),
         ('long_name', False, 'str', 'child::cim:longName'),
-        ('geometry_type', False, 'str', '@geometryType'),
         ('mnemonic', False, 'str', 'child::cim:mnemonic'),
-        ('vertical_resolution', False, decode_grid_tile_resolution_type, 'child::cim:verticalResolution'),
-        ('horizontal_resolution', False, decode_grid_tile_resolution_type, 'child::cim:horizontalResolution'),
+        ('nx', False, 'int', '@nx'),
+        ('ny', False, 'int', '@ny'),
+        ('nz', False, 'int', '@nz'),
         ('refinement_scheme', False, 'str', '@refinementScheme'),
+        ('short_name', False, 'str', 'child::cim:shortName'),
+        ('vertical_resolution', False, decode_grid_tile_resolution_type, 'child::cim:verticalResolution'),
         ('zcoords', False, decode_vertical_coordinate_list, 'child::cim:zcoords'),
     ]
 
     return set_attributes(typeset.grids.GridTile(), xml, nsmap, decodings)
 
 
-def decode_coordinate_list(xml, nsmap):
-    """Decodes an instance of the following type: coordinate list.
+def decode_grid_tile_resolution_type(xml, nsmap):
+    """Decodes an instance of the following type: grid tile resolution type.
 
     :param xml: XML from which type is to be decoded.
     :type xml: lxml.etree
@@ -211,16 +187,15 @@ def decode_coordinate_list(xml, nsmap):
     :type nsmap: dict
 
     :returns: A decoded type instance.
-    :rtype: cim.v1.typeset.grids.CoordinateList
+    :rtype: cim.v1.typeset.grids.GridTileResolutionType
 
     """
     decodings = [
-        ('has_constant_offset', False, 'bool', '@hasConstantOffset'),
-        ('length', False, 'int', '@length'),
-        ('uom', False, 'str', '@uom'),
+        ('description', False, 'str', '@description'),
+        ('properties', True, decode_grid_property, 'child::cim:property'),
     ]
 
-    return set_attributes(typeset.grids.CoordinateList(), xml, nsmap, decodings)
+    return set_attributes(typeset.grids.GridTileResolutionType(), xml, nsmap, decodings)
 
 
 def decode_simple_grid_geometry(xml, nsmap):
@@ -240,5 +215,30 @@ def decode_simple_grid_geometry(xml, nsmap):
     ]
 
     return set_attributes(typeset.grids.SimpleGridGeometry(), xml, nsmap, decodings)
+
+
+def decode_vertical_coordinate_list(xml, nsmap):
+    """Decodes an instance of the following type: vertical coordinate list.
+
+    :param xml: XML from which type is to be decoded.
+    :type xml: lxml.etree
+
+    :param nsmap: XML namespace mappings.
+    :type nsmap: dict
+
+    :returns: A decoded type instance.
+    :rtype: cim.v1.typeset.grids.VerticalCoordinateList
+
+    """
+    decodings = [
+        ('form', False, 'str', '@coordinateForm'),
+        ('has_constant_offset', False, 'bool', '@hasConstantOffset'),
+        ('length', False, 'int', '@length'),
+        ('properties', True, decode_grid_property, 'child::cim:property'),
+        ('type', False, 'str', '@coordinateType'),
+        ('uom', False, 'str', '@uom'),
+    ]
+
+    return set_attributes(typeset.grids.VerticalCoordinateList(), xml, nsmap, decodings)
 
 

@@ -36,12 +36,12 @@ def decode_document_set(xml, nsmap):
 
     """
     decodings = [
-        ('ensembles', True, decode_ensemble, 'child::cim:ensemble'),
-        ('grids', True, decode_grid_spec, 'child::cim:gridSpec'),
         ('data', True, decode_data_object, 'child::cim:dataObject'),
-        ('platform', False, decode_platform, 'child::cim:platform'),
+        ('ensembles', True, decode_ensemble, 'child::cim:ensemble'),
         ('experiment', False, decode_numerical_experiment, 'child::cim:numericalExperiment'),
+        ('grids', True, decode_grid_spec, 'child::cim:gridSpec'),
         ('model', False, decode_model_component, 'child::cim:modelComponent'),
+        ('platform', False, decode_platform, 'child::cim:platform'),
         ('simulation', False, decode_simulation_run, 'child::cim:simulationRun'),
     ]
 
