@@ -9,7 +9,7 @@
    :synopsis: The set of types of the cim.v2.science package.
 
 .. moduleauthor:: Earth System Documentation (ES-DOC) <dev@es-doc.org>
-.. note:: Code generated using esdoc_mp @ 2015-07-24 23:58:29.556151.
+.. note:: Code generated using esdoc_mp.
 
 """
 import abc
@@ -81,8 +81,8 @@ class Tuning(object):
         """
         super(Tuning, self).__init__()
 
-        self.trend_metrics_used = None                    # data.VariableCollection
         self.regional_metrics_used = None                 # data.VariableCollection
+        self.trend_metrics_used = None                    # data.VariableCollection
         self.description = None                           # shared.Cimtext
         self.global_mean_metrics_used = None              # data.VariableCollection
 
@@ -102,8 +102,8 @@ class Algorithm(object):
 
         self.prognostic_variables = []                    # data.VariableCollection
         self.diagnostic_variables = []                    # data.VariableCollection
-        self.references = []                              # shared.Citation
         self.implementation_overview = None               # shared.Cimtext
+        self.references = []                              # shared.Citation
         self.heading = None                               # str
 
 
@@ -142,8 +142,8 @@ class Resolution(object):
 
         self.equivalent_horizontal_resolution = None      # float
         self.number_of_levels = []                        # int
-        self.number_of_xy_gridpoints = []                 # int
         self.name = None                                  # str
+        self.number_of_xy_gridpoints = []                 # int
         self.is_adaptive_grid = None                      # bool
 
 
@@ -180,13 +180,13 @@ class Process(object):
         super(Process, self).__init__()
 
         self.algorithm_properties = []                    # science.Algorithm
+        self.references = []                              # shared.Reference
         self.name = None                                  # str
         self.detailed_properties = []                     # science.ProcessDetail
-        self.references = []                              # shared.Reference
         self.keywords = None                              # str
+        self.time_step_in_process = None                  # float
         self.description = None                           # str
         self.implementation_overview = None               # shared.Cimtext
-        self.time_step_in_process = None                  # float
 
 
 class ScientificDomain(object):
@@ -205,13 +205,13 @@ class ScientificDomain(object):
         self.realm = None                                 # str
         self.meta = shared.Meta()                         # shared.Meta
         self.simulates = []                               # science.Process
-        self.extra_conservation_properties = None         # science.ConservationProperties
-        self.resolution = None                            # science.Resolution
+        self.overview = None                              # shared.Cimtext
+        self.time_step = None                             # float
         self.references = []                              # shared.Reference
         self.grid = None                                  # science.GridSummary
-        self.overview = None                              # shared.Cimtext
+        self.extra_conservation_properties = None         # science.ConservationProperties
         self.name = None                                  # str
-        self.time_step = None                             # float
+        self.resolution = None                            # science.Resolution
 
 
 class GridLayouts(object):

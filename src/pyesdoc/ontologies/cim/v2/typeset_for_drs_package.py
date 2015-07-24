@@ -9,7 +9,7 @@
    :synopsis: The set of types of the cim.v2.drs package.
 
 .. moduleauthor:: Earth System Documentation (ES-DOC) <dev@es-doc.org>
-.. note:: Code generated using esdoc_mp @ 2015-07-24 23:58:29.536939.
+.. note:: Code generated using esdoc_mp.
 
 """
 import abc
@@ -33,11 +33,11 @@ class DrsPublicationDataset(object):
         super(DrsPublicationDataset, self).__init__()
 
         self.model = None                                 # str
-        self.realm = None                                 # drs.DrsRealms
         self.version_number = None                        # int
-        self.product = None                               # str
-        self.activity = None                              # str
         self.frequency = None                             # drs.DrsFrequencyTypes
+        self.activity = None                              # str
+        self.product = None                               # str
+        self.realm = None                                 # drs.DrsRealms
         self.experiment = None                            # str
         self.institute = None                             # str
 
@@ -110,10 +110,10 @@ class DrsAtomicDataset(DrsPublicationDataset):
         """
         super(DrsAtomicDataset, self).__init__()
 
-        self.temporal_constraint = None                   # drs.DrsTemporalIdentifier
         self.mip_table = None                             # str
-        self.ensemble_member = None                       # drs.DrsEnsembleIdentifier
+        self.temporal_constraint = None                   # drs.DrsTemporalIdentifier
         self.variable_name = None                         # str
+        self.ensemble_member = None                       # drs.DrsEnsembleIdentifier
         self.geographical_constraint = None               # drs.DrsGeographicalIndicator
 
 
@@ -126,19 +126,19 @@ class DrsFrequencyTypes(object):
     pass
 
 
-class DrsRealms(object):
+class DrsTimeSuffixes(object):
     """An enumeration within the cim v2 type system.
 
-    Set of allowed DRS modelling realms
+    Set of permitted time averaging suffixes for drs temporal identifiers.
     """
 
     pass
 
 
-class DrsTimeSuffixes(object):
+class DrsRealms(object):
     """An enumeration within the cim v2 type system.
 
-    Set of permitted time averaging suffixes for drs temporal identifiers.
+    Set of allowed DRS modelling realms
     """
 
     pass
