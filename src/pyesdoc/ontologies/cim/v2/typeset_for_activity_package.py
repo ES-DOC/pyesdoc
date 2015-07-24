@@ -9,39 +9,61 @@
    :synopsis: The set of types of the cim.v2.activity package.
 
 .. moduleauthor:: Earth System Documentation (ES-DOC) <dev@es-doc.org>
-.. note:: Code generated using esdoc_mp @ 2015-06-05 14:48:44.252820.
+.. note:: Code generated using esdoc_mp @ 2015-07-24 23:45:43.355072.
 
 """
 import abc
 import datetime
 import uuid
 
+import typeset_for_software_package as software
+import typeset_for_platform_package as platform
 import typeset_for_shared_package as shared
+import typeset_for_activity_package as activity
 
 
 
-class AxisMember(object):
+class EnsembleAxis(object):
     """A concrete class within the cim v2 type system.
 
-    Describes an individual ensemble member.
+    Defines the meaning of r/i/p indices in an ensemble
 
     """
     def __init__(self):
         """Constructor.
 
         """
-        super(AxisMember, self).__init__()
+        super(EnsembleAxis, self).__init__()
 
-        self.start_date = None                            # time.DateTime
-        self.value = None                                 # float
-        self.description = None                           # str
-        self.index = None                                 # int
+        self.extra_detail = None                          # shared.Cimtext
+        self.short_identifier = None                      # str
+        self.target_requirement = None                    # activity.NumericalRequirement
+        self.member = []                                  # activity.AxisMember
+
+
+class EnsembleMember(object):
+    """A concrete class within the cim v2 type system.
+
+    An ensemble may be a complicated interplay of axes, for example, r/i/p, not all of which
+    are populated, so we need a list of the actual simulations and how they map onto the ensemble
+    axes.
+
+    """
+    def __init__(self):
+        """Constructor.
+
+        """
+        super(EnsembleMember, self).__init__()
+
+        self.had_performance = None                       # platform.Performance
+        self.simulation = None                            # activity.Simulation
+        self.ran_on = None                                # platform.Machine
 
 
 class Activity(object):
     """An abstract class within the cim v2 type system.
 
-    Base class for activities.
+    Base class for activities
 
     """
     __metaclass__ = abc.ABCMeta
@@ -52,54 +74,59 @@ class Activity(object):
         """
         super(Activity, self).__init__()
 
-        self.references = []                              # shared.Citation
-        self.meta = shared.Meta()                         # shared.Meta
-        self.responsible_parties = []                     # shared.Responsibility
-        self.description = None                           # shared.CimText
-        self.long_name = None                             # str
+        self.canonical_name = None                        # str
         self.name = None                                  # str
         self.keywords = []                                # str
-        self.canonical_name = None                        # activity.VocabMember
-        self.duration = None                              # time.TimePeriod
+        self.description = None                           # shared.Cimtext
+        self.references = []                              # shared.Citation
+        self.meta = shared.Meta()                         # shared.Meta
+        self.duration = None                              # shared.TimePeriod
+        self.long_name = None                             # str
+        self.rationale = None                             # shared.Cimtext
+        self.responsible_parties = []                     # shared.Responsibility
 
 
-class MemberDescription(object):
+class ParentSimulation(object):
     """A concrete class within the cim v2 type system.
 
-    Defines the r/i/p axes of an ensemble.
+    Defines the relationship between a simulation and its parent
 
     """
     def __init__(self):
         """Constructor.
 
         """
-        super(MemberDescription, self).__init__()
+        super(ParentSimulation, self).__init__()
 
-        self.member = []                                  # activity.AxisMember
-        self.axis = None                                  # activity.EnsembleTypes
-        self.description = None                           # shared.CimText
+        self.branch_time_in_child = None                  # shared.DateTime
+        self.parent = None                                # activity.Simulation
+        self.branch_time_in_parent = None                 # shared.DateTime
 
 
-class NumericalRequirement(Activity):
+class AxisMember(object):
     """A concrete class within the cim v2 type system.
 
-    Numerical requirement base class.
+    Description of a given ensemble member. It will normally be related to a specific
+    ensemble requirement. Note that start dates can be extracted directly from the simulations
+    and do not need to be recorded with an axis member description.
 
     """
     def __init__(self):
         """Constructor.
 
         """
-        super(NumericalRequirement, self).__init__()
+        super(AxisMember, self).__init__()
 
-        self.additional_requirements = []                 # linked_to(activity.NumericalRequirement)
-        self.was_conformance_requested = None             # bool
+        self.value = None                                 # float
+        self.description = None                           # str
+        self.index = None                                 # int
 
 
 class Conformance(Activity):
     """A concrete class within the cim v2 type system.
 
-    Conformance information for a particular numerical requirement.
+    A specific conformance. Describes how a particular numerical requirement has been implemented.
+    Will normally be linked from an ensemble descriptor.
 
     """
     def __init__(self):
@@ -108,15 +135,72 @@ class Conformance(Activity):
         """
         super(Conformance, self).__init__()
 
-        self.conformance_detail = None                    # shared.CimText
-        self.target_requirement = None                    # str
-        self.target_name = None                           # str
+        self.target_requirement = None                    # activity.NumericalRequirement
+
+
+class NumericalRequirement(Activity):
+    """A concrete class within the cim v2 type system.
+
+    A numerical requirement associated with a numerical experiment.
+
+    """
+    def __init__(self):
+        """Constructor.
+
+        """
+        super(NumericalRequirement, self).__init__()
+
+        self.additional_requirements = []                 # activity.NumericalRequirement
+        self.conformance_is_requested = None              # bool
+
+
+class Ensemble(Activity):
+    """A concrete class within the cim v2 type system.
+
+    Generic ensemble definition.
+    Holds the definition of how the various ensemble members have been configured.
+    If ensemble axes are not present, then this is either a single member ensemble,
+    or part of an uber ensemble.
+
+    """
+    def __init__(self):
+        """Constructor.
+
+        """
+        super(Ensemble, self).__init__()
+
+        self.part_of = []                                 # activity.UberEnsemble
+        self.members = []                                 # activity.EnsembleMember
+        self.supported = []                               # activity.NumericalExperiment
+        self.common_conformances = []                     # activity.Conformance
+        self.has_ensemble_axes = []                       # activity.EnsembleAxis
+
+
+class OutputTemporalRequirement(NumericalRequirement):
+    """A concrete class within the cim v2 type system.
+
+    Provides details of when output is required from an experiment.
+    Typically output will be required in one of three modes:
+    (1) continuous,
+    (2) continuous for a set of subset periods, or
+    (3) sliced for a set of months in a year or days in a month.
+
+    """
+    def __init__(self):
+        """Constructor.
+
+        """
+        super(OutputTemporalRequirement, self).__init__()
+
+        self.throughout = None                            # bool
+        self.continuous_subset = []                       # shared.TimePeriod
+        self.sliced_subset = None                         # shared.TimesliceList
 
 
 class MultiTimeEnsemble(NumericalRequirement):
     """A concrete class within the cim v2 type system.
 
-    Defines an experiment ensemble with multiple start dates.
+    Defines an experiment ensemble with multiple start dates
 
     """
     def __init__(self):
@@ -125,29 +209,47 @@ class MultiTimeEnsemble(NumericalRequirement):
         """
         super(MultiTimeEnsemble, self).__init__()
 
-        self.ensemble_members = None                      # time.DatetimeSet
+        self.ensemble_members = None                      # shared.DatetimeSet
 
 
-class Configuration(Activity):
+class NumericalExperiment(Activity):
     """A concrete class within the cim v2 type system.
 
-    Aggregation of conformance information for a particular configuration of a model for a particular experiment.
+    Defines a numerical experiment
 
     """
     def __init__(self):
         """Constructor.
 
         """
-        super(Configuration, self).__init__()
+        super(NumericalExperiment, self).__init__()
 
-        self.conformances = []                            # linked_to(activity.Conformance)
-        self.description = None                           # str
+        self.requirements = []                            # activity.NumericalRequirement
+        self.related_experiments = []                     # activity.NumericalExperiment
+
+
+class EnsembleRequirement(NumericalRequirement):
+    """A concrete class within the cim v2 type system.
+
+    Defines an experiment ensemble
+
+    """
+    def __init__(self):
+        """Constructor.
+
+        """
+        super(EnsembleRequirement, self).__init__()
+
+        self.ensemble_member = []                         # activity.NumericalRequirement
+        self.minimum_size = None                          # int
+        self.ensemble_type = None                         # activity.EnsembleTypes
 
 
 class Simulation(Activity):
     """A concrete class within the cim v2 type system.
 
-    Provides the integrating link about what models were run and why.
+    Simulation class provides the integrating link about what models were run and wny.
+    In many cases this should be auto-generated from output file headers.
 
     """
     def __init__(self):
@@ -156,11 +258,28 @@ class Simulation(Activity):
         """
         super(Simulation, self).__init__()
 
-        self.supported = []                               # linked_to(activity.NumericalExperiment)
-        self.used = None                                  # linked_to(software.ConfiguredModel)
-        self.ran_on = None                                # linked_to(platform.Machine)
-        self.conformed_via = None                         # linked_to(activity.Configuration)
-        self.had_performance = None                       # linked_to(platform.Performance)
+        self.primary_ensemble = None                      # activity.Ensemble
+        self.part_of_project = []                         # activity.Project
+        self.ensemble_identifier = None                   # str
+        self.run_for_experiments = []                     # activity.NumericalExperiment
+        self.parent_simulation = None                     # activity.ParentSimulation
+        self.used = None                                  # software.Model
+
+
+class DomainProperties(NumericalRequirement):
+    """A concrete class within the cim v2 type system.
+
+    Properties of the domain which needs to be simulated, extend and/or resolution
+
+    """
+    def __init__(self):
+        """Constructor.
+
+        """
+        super(DomainProperties, self).__init__()
+
+        self.required_extent = None                       # science.Extent
+        self.required_resolution = None                   # science.Resolution
 
 
 class Project(Activity):
@@ -175,95 +294,27 @@ class Project(Activity):
         """
         super(Project, self).__init__()
 
-        self.sub_projects = []                            # linked_to(activity.Project)
-        self.previous_projects = []                       # linked_to(activity.Project)
-        self.required_experiments = []                    # linked_to(activity.NumericalExperiment)
+        self.previous_projects = []                       # activity.Project
+        self.sub_projects = []                            # activity.Project
+        self.requires_experiments = []                    # activity.NumericalExperiment
 
 
-class Ensemble(Activity):
+class SimulationPlan(Activity):
     """A concrete class within the cim v2 type system.
 
-    Provides the ensemble r/i/p definitions.
+    Describes a simulation that needs to be run
 
     """
     def __init__(self):
         """Constructor.
 
         """
-        super(Ensemble, self).__init__()
+        super(SimulationPlan, self).__init__()
 
-        self.s_defined_by = None                          # activity.MemberDescription
-        self.simulations_include = []                     # linked_to(activity.Simulation)
-        self.r_defined_by = None                          # activity.MemberDescription
-        self.i_defined_by = None                          # activity.MemberDescription
-        self.supported = []                               # linked_to(activity.NumericalExperiment)
-        self.p_defined_by = None                          # activity.MemberDescription
-
-
-class MultiEnsemble(NumericalRequirement):
-    """A concrete class within the cim v2 type system.
-
-    In the case of multiple ensemble axes, defines how they are set up and ordered.
-
-    """
-    def __init__(self):
-        """Constructor.
-
-        """
-        super(MultiEnsemble, self).__init__()
-
-        self.ensemble_axis = []                           # linked_to(activity.EnsembleRequirement)
-
-
-class EnsembleRequirement(NumericalRequirement):
-    """A concrete class within the cim v2 type system.
-
-    Defines details of experiment ensemble.
-
-    """
-    def __init__(self):
-        """Constructor.
-
-        """
-        super(EnsembleRequirement, self).__init__()
-
-        self.ensemble_member = []                         # linked_to(activity.NumericalRequirement)
-        self.minimum_size = None                          # int
-        self.ensemble_type = None                         # activity.EnsembleTypes
-
-
-class EnsembleRequirement(NumericalRequirement):
-    """A concrete class within the cim v2 type system.
-
-    Defines details of an experiment ensemble requirement.
-
-    """
-    def __init__(self):
-        """Constructor.
-
-        """
-        super(EnsembleRequirement, self).__init__()
-
-        self.minimum_size = None                          # int
-        self.ensemble_member = []                         # linked_to(activity.NumericalRequirement)
-        self.ensemble_type = None                         # activity.EnsembleTypes
-
-
-class NumericalExperiment(Activity):
-    """A concrete class within the cim v2 type system.
-
-    Defines a numerical experiment.
-
-    """
-    def __init__(self):
-        """Constructor.
-
-        """
-        super(NumericalExperiment, self).__init__()
-
-        self.experiment_id = None                         # str
-        self.requirements = []                            # linked_to(activity.NumericalRequirement)
-        self.related_experiments = []                     # linked_to(activity.NumericalExperiment)
+        self.expected_platform = None                     # platform.Machine
+        self.expected_model = None                        # software.Model
+        self.will_support_experiments = []                # activity.NumericalExperiment
+        self.expected_performance_sypd = None             # float
 
 
 class TemporalConstraint(NumericalRequirement):
@@ -278,54 +329,33 @@ class TemporalConstraint(NumericalRequirement):
         """
         super(TemporalConstraint, self).__init__()
 
-        self.required_calendar = None                     # time.Calendar
-        self.start_flexibility = None                     # time.TimePeriod
-        self.required_duration = None                     # time.TimePeriod
-        self.start_date = None                            # time.DateTime
+        self.start_date = None                            # shared.DateTime
+        self.start_flexibility = None                     # shared.TimePeriod
+        self.required_calendar = None                     # shared.Calendar
+        self.required_duration = None                     # shared.TimePeriod
 
 
-class SimulationPlan(Activity):
+class UberEnsemble(Ensemble):
     """A concrete class within the cim v2 type system.
 
-    Describes a simulation that needs to be run.
+    An ensemble made up of other ensembles. Often used where parts of an ensemble were run by
+    different institutes. Could also be used when a new experiment is designed which can use
+    ensemble members from previous experiments and/or projects.
 
     """
     def __init__(self):
         """Constructor.
 
         """
-        super(SimulationPlan, self).__init__()
+        super(UberEnsemble, self).__init__()
 
-        self.machine = None                               # linked_to(platform.Machine)
-        self.model = None                                 # linked_to(software.ConfiguredModel)
-        self.expected_performance = None                  # linked_to(platform.Performance)
-        self.experiments = []                             # linked_to(activity.NumericalExperiment)
-
-
-class OutputTemporalRequirement(NumericalRequirement):
-    """A concrete class within the cim v2 type system.
-
-    Defines gross details of output temporal requirements. Typically output
-    will be required in one of three modes: (1) continuous,
-    (2) continuos for a set of subset periods, or (3) sliced
-    for a set of months in year or days a month.
-
-    """
-    def __init__(self):
-        """Constructor.
-
-        """
-        super(OutputTemporalRequirement, self).__init__()
-
-        self.continuous_subset = []                       # time.TimePeriod
-        self.throughout = None                            # bool
-        self.sliced_subset = None                         # time.TimesliceList
+        self.child_ensembles = []                         # activity.Ensemble
 
 
 class ForcingConstraint(NumericalRequirement):
     """A concrete class within the cim v2 type system.
 
-    Identifies a model forcing constraint.
+    Identifies a model forcing constraint
 
     """
     def __init__(self):
@@ -334,19 +364,50 @@ class ForcingConstraint(NumericalRequirement):
         """
         super(ForcingConstraint, self).__init__()
 
-        self.category = None                              # activity.VocabMember
+        self.forcing_type = None                          # activity.ForcingTypes
         self.origin = None                                # shared.Citation
-        self.group = None                                 # activity.VocabMember
+        self.additional_constraint = None                 # shared.Cimtext
+        self.category = None                              # shared.VocabMember
+        self.code = None                                  # shared.VocabMember
+        self.group = None                                 # shared.VocabMember
         self.data_link = None                             # shared.OnlineResource
-        self.forcing_Type = None                          # activity.ForcingTypes
-        self.code = None                                  # activity.VocabMember
-        self.additional_constraint = None                 # shared.CimText
 
 
-class ModelTypes(object):
+class MultiEnsemble(NumericalRequirement):
+    """A concrete class within the cim v2 type system.
+
+    In the case of multiple ensemble axes, defines how they
+    are set up and ordered
+
+    """
+    def __init__(self):
+        """Constructor.
+
+        """
+        super(MultiEnsemble, self).__init__()
+
+        self.ensemble_axis = []                           # activity.EnsembleRequirement
+
+
+class Downscaling(Simulation):
+    """A concrete class within the cim v2 type system.
+
+    Defines a downscaling activity
+
+    """
+    def __init__(self):
+        """Constructor.
+
+        """
+        super(Downscaling, self).__init__()
+
+        self.downscaled_from = None                       # activity.Simulation
+
+
+class ForcingTypes(object):
     """An enumeration within the cim v2 type system.
 
-    Defines a set of gross model classes.
+    Defines the possible set of forcing types for a forcing constraint
     """
 
     pass
@@ -355,16 +416,7 @@ class ModelTypes(object):
 class EnsembleTypes(object):
     """An enumeration within the cim v2 type system.
 
-    Defines the various axes along which one can set up an ensemble.
-    """
-
-    pass
-
-
-class ForcingTypes(object):
-    """An enumeration within the cim v2 type system.
-
-    Defines the possible set of forcing types for a forcing constraint.
+    Defines the various axes along which one can set up an ensemble
     """
 
     pass

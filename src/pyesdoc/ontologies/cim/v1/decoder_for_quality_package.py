@@ -9,13 +9,85 @@
    :synopsis: A set of cim 1 decoders.
 
 .. moduleauthor:: Earth System Documentation (ES-DOC) <dev@es-doc.org>
-.. note:: Code generated using esdoc_mp @ 2015-06-05 15:44:25.781314.
+.. note:: Code generated using esdoc_mp @ 2015-07-24 23:33:18.110453.
 
 """
 from decoder_xml_utils import set_attributes
 from decoder_for_shared_package import *
 import typeset
 
+
+
+def decode_report(xml, nsmap):
+    """Decodes an instance of the following type: report.
+
+    :param xml: XML from which type is to be decoded.
+    :type xml: lxml.etree
+
+    :param nsmap: XML namespace mappings.
+    :type nsmap: dict
+
+    :returns: A decoded type instance.
+    :rtype: cim.v1.typeset.quality.Report
+
+    """
+    decodings = [
+        ('measure', False, decode_measure, 'self::cim:report/cim:measure'),
+        ('evaluator', False, decode_responsible_party, 'child::cim:evaluator'),
+        ('evaluation', False, decode_evaluation, 'self::cim:report'),
+        ('date', False, 'datetime.datetime', 'child::gmd:dateTime/gco:DateTime'),
+    ]
+
+    return set_attributes(typeset.quality.Report(), xml, nsmap, decodings)
+
+
+def decode_evaluation(xml, nsmap):
+    """Decodes an instance of the following type: evaluation.
+
+    :param xml: XML from which type is to be decoded.
+    :type xml: lxml.etree
+
+    :param nsmap: XML namespace mappings.
+    :type nsmap: dict
+
+    :returns: A decoded type instance.
+    :rtype: cim.v1.typeset.quality.Evaluation
+
+    """
+    decodings = [
+        ('type_hyperlink', False, 'str', 'child::gmd:result/@xlink:href'),
+        ('date', False, 'datetime.datetime', 'child::gmd:result/gmd:DQ_ConformanceResult/gmd:specification/gmd:CI_Citation/gmd:date/gmd:CI_Date/gmd:date/gco:Date'),
+        ('specification', False, 'str', 'child::gmd:result/gmd:DQ_ConformanceResult/gmd:specification/@xlink:title'),
+        ('description', False, 'str', 'gmd:evaluationMethodDescription/gco:CharacterString'),
+        ('specification_hyperlink', False, 'str', 'child::gmd:result/gmd:DQ_ConformanceResult/gmd:specification/@xlink:href'),
+        ('did_pass', False, 'bool', 'child::gmd:result/gmd:DQ_ConformanceResult/gmd:pass/gco:Boolean'),
+        ('title', False, 'str', 'child::gmd:result/gmd:DQ_ConformanceResult/gmd:specification/gmd:CI_Citation/gmd:title/gco:CharacterString'),
+        ('type', False, 'str', 'child::gmd:result/@xlink:title'),
+        ('explanation', False, 'str', 'child::gmd:result/gmd:DQ_ConformanceResult/gmd:explanation/gco:CharacterString'),
+    ]
+
+    return set_attributes(typeset.quality.Evaluation(), xml, nsmap, decodings)
+
+
+def decode_cim_quality(xml, nsmap):
+    """Decodes an instance of the following type: cim quality.
+
+    :param xml: XML from which type is to be decoded.
+    :type xml: lxml.etree
+
+    :param nsmap: XML namespace mappings.
+    :type nsmap: dict
+
+    :returns: A decoded type instance.
+    :rtype: cim.v1.typeset.quality.CimQuality
+
+    """
+    decodings = [
+        ('meta', False, decode_doc_meta_info, 'self::cim:cIM_Quality'),
+        ('reports', True, decode_report, 'child::cim:report'),
+    ]
+
+    return set_attributes(typeset.quality.CimQuality(), xml, nsmap, decodings)
 
 
 def decode_measure(xml, nsmap):
@@ -40,77 +112,5 @@ def decode_measure(xml, nsmap):
     ]
 
     return set_attributes(typeset.quality.Measure(), xml, nsmap, decodings)
-
-
-def decode_report(xml, nsmap):
-    """Decodes an instance of the following type: report.
-
-    :param xml: XML from which type is to be decoded.
-    :type xml: lxml.etree
-
-    :param nsmap: XML namespace mappings.
-    :type nsmap: dict
-
-    :returns: A decoded type instance.
-    :rtype: cim.v1.typeset.quality.Report
-
-    """
-    decodings = [
-        ('date', False, 'datetime.datetime', 'child::gmd:dateTime/gco:DateTime'),
-        ('evaluation', False, decode_evaluation, 'self::cim:report'),
-        ('evaluator', False, decode_responsible_party, 'child::cim:evaluator'),
-        ('measure', False, decode_measure, 'self::cim:report/cim:measure'),
-    ]
-
-    return set_attributes(typeset.quality.Report(), xml, nsmap, decodings)
-
-
-def decode_cim_quality(xml, nsmap):
-    """Decodes an instance of the following type: cim quality.
-
-    :param xml: XML from which type is to be decoded.
-    :type xml: lxml.etree
-
-    :param nsmap: XML namespace mappings.
-    :type nsmap: dict
-
-    :returns: A decoded type instance.
-    :rtype: cim.v1.typeset.quality.CimQuality
-
-    """
-    decodings = [
-        ('meta', False, decode_doc_meta_info, 'self::cim:cIM_Quality'),
-        ('reports', True, decode_report, 'child::cim:report'),
-    ]
-
-    return set_attributes(typeset.quality.CimQuality(), xml, nsmap, decodings)
-
-
-def decode_evaluation(xml, nsmap):
-    """Decodes an instance of the following type: evaluation.
-
-    :param xml: XML from which type is to be decoded.
-    :type xml: lxml.etree
-
-    :param nsmap: XML namespace mappings.
-    :type nsmap: dict
-
-    :returns: A decoded type instance.
-    :rtype: cim.v1.typeset.quality.Evaluation
-
-    """
-    decodings = [
-        ('specification_hyperlink', False, 'str', 'child::gmd:result/gmd:DQ_ConformanceResult/gmd:specification/@xlink:href'),
-        ('specification', False, 'str', 'child::gmd:result/gmd:DQ_ConformanceResult/gmd:specification/@xlink:title'),
-        ('date', False, 'datetime.datetime', 'child::gmd:result/gmd:DQ_ConformanceResult/gmd:specification/gmd:CI_Citation/gmd:date/gmd:CI_Date/gmd:date/gco:Date'),
-        ('description', False, 'str', 'gmd:evaluationMethodDescription/gco:CharacterString'),
-        ('did_pass', False, 'bool', 'child::gmd:result/gmd:DQ_ConformanceResult/gmd:pass/gco:Boolean'),
-        ('explanation', False, 'str', 'child::gmd:result/gmd:DQ_ConformanceResult/gmd:explanation/gco:CharacterString'),
-        ('type', False, 'str', 'child::gmd:result/@xlink:title'),
-        ('type_hyperlink', False, 'str', 'child::gmd:result/@xlink:href'),
-        ('title', False, 'str', 'child::gmd:result/gmd:DQ_ConformanceResult/gmd:specification/gmd:CI_Citation/gmd:title/gco:CharacterString'),
-    ]
-
-    return set_attributes(typeset.quality.Evaluation(), xml, nsmap, decodings)
 
 

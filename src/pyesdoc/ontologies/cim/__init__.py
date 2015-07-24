@@ -12,8 +12,10 @@
 
 """
 import v1
+import v2
 
 from v1.typeset import *
+from v2.typeset import *
 
 
 
@@ -21,7 +23,7 @@ from v1.typeset import *
 NAME = 'cim'
 
 # Ontology versions.
-VERSIONS = (v1,)
+VERSIONS = (v1, v2)
 
 # Ontology types.
-TYPES = v1.TYPES
+TYPES = v1.TYPES + v2.TYPES

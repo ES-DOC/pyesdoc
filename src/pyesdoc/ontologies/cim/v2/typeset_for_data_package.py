@@ -9,21 +9,38 @@
    :synopsis: The set of types of the cim.v2.data package.
 
 .. moduleauthor:: Earth System Documentation (ES-DOC) <dev@es-doc.org>
-.. note:: Code generated using esdoc_mp @ 2015-06-05 14:48:44.254031.
+.. note:: Code generated using esdoc_mp @ 2015-07-24 23:45:43.345824.
 
 """
 import abc
 import datetime
 import uuid
 
+import typeset_for_data_package as data
 import typeset_for_shared_package as shared
 
+
+
+class VariableCollection(object):
+    """A concrete class within the cim v2 type system.
+
+    A collection of variables within the scope of a code or process element
+
+    """
+    def __init__(self):
+        """Constructor.
+
+        """
+        super(VariableCollection, self).__init__()
+
+        self.collection_name = None                       # str
+        self.variables = []                               # str
 
 
 class Dataset(object):
     """A concrete class within the cim v2 type system.
 
-    Discovery level metadata for a dataset.
+    Dataset discovery information
 
     """
     def __init__(self):
@@ -32,13 +49,40 @@ class Dataset(object):
         """
         super(Dataset, self).__init__()
 
-        self.description = None                           # str
-        self.references = []                              # shared.Citation
-        self.dataset_author = []                          # linked_to(shared.Party)
         self.meta = shared.Meta()                         # shared.Meta
-        self.name = None                                  # str
-        self.related_to_dataset = []                      # linked_to(data.Dataset)
-        self.produced_by = None                           # linked_to(activity.Simulation)
+        self.references = []                              # shared.Citation
+        self.related_to_dataset = []                      # data.RelatedData
+        self.description = None                           # str
         self.availability = []                            # shared.OnlineResource
+        self.dataset_author = []                          # shared.Party
+        self.produced_by = None                           # activity.Simulation
+        self.drs_datasets = []                            # drs.DrsPublicationDataset
+        self.name = None                                  # str
+
+
+class RelatedData(shared.CimLink):
+    """A concrete class within the cim v2 type system.
+
+    A related dataset and a controlled relationship
+
+    """
+    def __init__(self):
+        """Constructor.
+
+        """
+        super(RelatedData, self).__init__()
+
+        self.relationship = None                          # data.DataAssociationTypes
+        self.other_dataset = None                         # data.Dataset
+
+
+class DataAssociationTypes(object):
+    """An enumeration within the cim v2 type system.
+
+    Set of possible dataset associations.
+    Selected from, and extended from,  ISO19115 (2014) DS_AssociationTypeCode
+    """
+
+    pass
 
 

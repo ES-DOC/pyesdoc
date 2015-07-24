@@ -9,7 +9,7 @@
    :synopsis: The set of types of the cim.v1.quality package.
 
 .. moduleauthor:: Earth System Documentation (ES-DOC) <dev@es-doc.org>
-.. note:: Code generated using esdoc_mp @ 2015-06-05 15:44:25.809682.
+.. note:: Code generated using esdoc_mp @ 2015-07-24 23:33:18.139539.
 
 """
 import abc
@@ -19,6 +19,63 @@ import uuid
 import typeset_for_quality_package as quality
 import typeset_for_shared_package as shared
 
+
+
+class Report(object):
+    """A concrete class within the cim v1 type system.
+
+    Creates and returns instance of report class.
+
+    """
+    def __init__(self):
+        """Constructor.
+
+        """
+        super(Report, self).__init__()
+
+        self.evaluator = None                             # shared.ResponsibleParty
+        self.date = None                                  # datetime.datetime
+        self.measure = None                               # quality.Measure
+        self.evaluation = None                            # quality.Evaluation
+
+
+class Evaluation(object):
+    """A concrete class within the cim v1 type system.
+
+    Creates and returns instance of evaluation class.
+
+    """
+    def __init__(self):
+        """Constructor.
+
+        """
+        super(Evaluation, self).__init__()
+
+        self.type_hyperlink = None                        # str
+        self.date = None                                  # datetime.datetime
+        self.specification = None                         # str
+        self.description = None                           # str
+        self.specification_hyperlink = None               # str
+        self.did_pass = None                              # bool
+        self.title = None                                 # str
+        self.type = None                                  # str
+        self.explanation = None                           # str
+
+
+class CimQuality(object):
+    """A concrete class within the cim v1 type system.
+
+    The starting point for a quality record.  It can contain any number of issues and reports.  An issue is an open-ended description of some issue about a CIM instance.  A record is a prescribed description of some specific quantitative measure that has been applied to a CIM instance.
+
+    """
+    def __init__(self):
+        """Constructor.
+
+        """
+        super(CimQuality, self).__init__()
+
+        self.meta = shared.DocMetaInfo()                  # shared.DocMetaInfo
+        self.reports = []                                 # quality.Report
 
 
 class Measure(object):
@@ -38,85 +95,10 @@ class Measure(object):
         self.identification = None                        # str
 
 
-class Report(object):
-    """A concrete class within the cim v1 type system.
-
-    Creates and returns instance of report class.
-
-    """
-    def __init__(self):
-        """Constructor.
-
-        """
-        super(Report, self).__init__()
-
-        self.date = None                                  # datetime.datetime
-        self.measure = None                               # quality.Measure
-        self.evaluator = None                             # shared.ResponsibleParty
-        self.evaluation = None                            # quality.Evaluation
-
-
-class CimQuality(object):
-    """A concrete class within the cim v1 type system.
-
-    The starting point for a quality record.  It can contain any number of issues and reports.  An issue is an open-ended description of some issue about a CIM instance.  A record is a prescribed description of some specific quantitative measure that has been applied to a CIM instance.
-
-    """
-    def __init__(self):
-        """Constructor.
-
-        """
-        super(CimQuality, self).__init__()
-
-        self.meta = shared.DocMetaInfo()                  # shared.DocMetaInfo
-        self.reports = []                                 # quality.Report
-
-
-class Evaluation(object):
-    """A concrete class within the cim v1 type system.
-
-    Creates and returns instance of evaluation class.
-
-    """
-    def __init__(self):
-        """Constructor.
-
-        """
-        super(Evaluation, self).__init__()
-
-        self.specification_hyperlink = None               # str
-        self.description = None                           # str
-        self.title = None                                 # str
-        self.did_pass = None                              # bool
-        self.type = None                                  # str
-        self.explanation = None                           # str
-        self.specification = None                         # str
-        self.type_hyperlink = None                        # str
-        self.date = None                                  # datetime.datetime
-
-
-class CimResultType(object):
+class CimFeatureType(object):
     """An enumeration within the cim v1 type system.
 
-    Creates and returns instance of cim_result_type enum.
-    """
-
-    pass
-
-
-class QualitySeverityType(object):
-    """An enumeration within the cim v1 type system.
-
-    Creates and returns instance of quality_severity_type enum.
-    """
-
-    pass
-
-
-class QualityIssueType(object):
-    """An enumeration within the cim v1 type system.
-
-    Creates and returns instance of quality_issue_type enum.
+    Creates and returns instance of cim_feature_type enum.
     """
 
     pass
@@ -131,10 +113,19 @@ class CimScopeCodeType(object):
     pass
 
 
-class CimFeatureType(object):
+class QualityIssueType(object):
     """An enumeration within the cim v1 type system.
 
-    Creates and returns instance of cim_feature_type enum.
+    Creates and returns instance of quality_issue_type enum.
+    """
+
+    pass
+
+
+class CimResultType(object):
+    """An enumeration within the cim v1 type system.
+
+    Creates and returns instance of cim_result_type enum.
     """
 
     pass
@@ -144,6 +135,15 @@ class QualityStatusType(object):
     """An enumeration within the cim v1 type system.
 
     Creates and returns instance of quality_status_type enum.
+    """
+
+    pass
+
+
+class QualitySeverityType(object):
+    """An enumeration within the cim v1 type system.
+
+    Creates and returns instance of quality_severity_type enum.
     """
 
     pass
