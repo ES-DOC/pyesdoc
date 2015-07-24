@@ -9,7 +9,7 @@
    :synopsis: The set of types of the cim.v2.software package.
 
 .. moduleauthor:: Earth System Documentation (ES-DOC) <dev@es-doc.org>
-.. note:: Code generated using esdoc_mp @ 2015-07-24 23:45:43.351399.
+.. note:: Code generated using esdoc_mp @ 2015-07-24 23:58:29.550785.
 
 """
 import abc
@@ -36,31 +36,23 @@ class Gridspec(object):
         self.description = None                           # str
 
 
-class ComponentBase(object):
-    """An abstract class within the cim v2 type system.
+class Composition(object):
+    """A concrete class within the cim v2 type system.
 
-    Base class for software component properties, whether a top level model,
-    or a specific piece of code known as a component. In software terms, a
-    component is a discrete set of code that takes input data and generates output data.
-    Components may or may not have scientific descriptions.
+    Describes how component variables are coupled together either to/from other
+    SoftwareComponents or external data files. The variables specified by a component's
+    composition must be owned by that component, or a  child of that component;
+    child components cannot couple together parent variables.
 
     """
-    __metaclass__ = abc.ABCMeta
-
     def __init__(self):
         """Constructor.
 
         """
-        super(ComponentBase, self).__init__()
+        super(Composition, self).__init__()
 
-        self.version = None                               # str
-        self.development_history = None                   # software.DevelopmentPath
-        self.release_date = None                          # datetime.datetime
-        self.documentation = []                           # shared.Citation
-        self.tuning_applied = None                        # science.Tuning
-        self.description = None                           # shared.Cimtext
-        self.long_name = None                             # str
-        self.name = None                                  # str
+        self.couplings = []                               # str
+        self.description = None                           # str
 
 
 class Variable(object):
@@ -83,6 +75,33 @@ class Variable(object):
         self.name = None                                  # str
 
 
+class ComponentBase(object):
+    """An abstract class within the cim v2 type system.
+
+    Base class for software component properties, whether a top level model,
+    or a specific piece of code known as a component. In software terms, a
+    component is a discrete set of code that takes input data and generates output data.
+    Components may or may not have scientific descriptions.
+
+    """
+    __metaclass__ = abc.ABCMeta
+
+    def __init__(self):
+        """Constructor.
+
+        """
+        super(ComponentBase, self).__init__()
+
+        self.version = None                               # str
+        self.development_history = None                   # software.DevelopmentPath
+        self.release_date = None                          # datetime.datetime
+        self.documentation = []                           # shared.Citation
+        self.tuning_applied = None                        # science.Tuning
+        self.name = None                                  # str
+        self.long_name = None                             # str
+        self.description = None                           # shared.Cimtext
+
+
 class DevelopmentPath(object):
     """A concrete class within the cim v2 type system.
 
@@ -97,8 +116,8 @@ class DevelopmentPath(object):
 
         self.previous_version = None                      # str
         self.developed_in_house = None                    # bool
-        self.funding_sources = []                         # shared.Responsibility
         self.consortium_name = None                       # str
+        self.funding_sources = []                         # shared.Responsibility
         self.creators = []                                # shared.Responsibility
 
 
@@ -122,23 +141,27 @@ class EntryPoint(object):
         self.name = None                                  # str
 
 
-class Composition(object):
+class SoftwareComponent(ComponentBase):
     """A concrete class within the cim v2 type system.
 
-    Describes how component variables are coupled together either to/from other
-    SoftwareComponents or external data files. The variables specified by a component's
-    composition must be owned by that component, or a  child of that component;
-    child components cannot couple together parent variables.
+    An embedded piece of software that does not normally function as a standalone model (although
+    it may be used standalone in a test harness).
 
     """
     def __init__(self):
         """Constructor.
 
         """
-        super(Composition, self).__init__()
+        super(SoftwareComponent, self).__init__()
 
-        self.couplings = []                               # str
-        self.description = None                           # str
+        self.grid = None                                  # software.Gridspec
+        self.license = None                               # str
+        self.composition = None                           # software.Composition
+        self.sub_components = []                          # software.SoftwareComponent
+        self.coupling_framework = None                    # software.CouplingFramework
+        self.language = None                              # software.ProgrammingLanguage
+        self.connection_points = []                       # software.Variable
+        self.dependencies = []                            # software.EntryPoint
 
 
 class Model(ComponentBase):
@@ -162,29 +185,6 @@ class Model(ComponentBase):
         self.coupler = None                               # software.CouplingFramework
         self.coupled_software_components = []             # software.Model
         self.meta = shared.Meta()                         # shared.Meta
-
-
-class SoftwareComponent(ComponentBase):
-    """A concrete class within the cim v2 type system.
-
-    An embedded piece of software that does not normally function as a standalone model (although
-    it may be used standalone in a test harness).
-
-    """
-    def __init__(self):
-        """Constructor.
-
-        """
-        super(SoftwareComponent, self).__init__()
-
-        self.grid = None                                  # software.Gridspec
-        self.license = None                               # str
-        self.composition = None                           # software.Composition
-        self.sub_components = []                          # software.SoftwareComponent
-        self.coupling_framework = None                    # software.CouplingFramework
-        self.language = None                              # software.ProgrammingLanguage
-        self.connection_points = []                       # software.Variable
-        self.dependencies = []                            # software.EntryPoint
 
 
 class CouplingFramework(object):

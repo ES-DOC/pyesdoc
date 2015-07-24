@@ -9,7 +9,7 @@
    :synopsis: The set of types of the cim.v2.activity package.
 
 .. moduleauthor:: Earth System Documentation (ES-DOC) <dev@es-doc.org>
-.. note:: Code generated using esdoc_mp @ 2015-07-24 23:45:43.355072.
+.. note:: Code generated using esdoc_mp @ 2015-07-24 23:58:29.543824.
 
 """
 import abc
@@ -18,8 +18,8 @@ import uuid
 
 import typeset_for_software_package as software
 import typeset_for_platform_package as platform
-import typeset_for_shared_package as shared
 import typeset_for_activity_package as activity
+import typeset_for_shared_package as shared
 
 
 
@@ -35,10 +35,27 @@ class EnsembleAxis(object):
         """
         super(EnsembleAxis, self).__init__()
 
-        self.extra_detail = None                          # shared.Cimtext
         self.short_identifier = None                      # str
         self.target_requirement = None                    # activity.NumericalRequirement
+        self.extra_detail = None                          # shared.Cimtext
         self.member = []                                  # activity.AxisMember
+
+
+class ParentSimulation(object):
+    """A concrete class within the cim v2 type system.
+
+    Defines the relationship between a simulation and its parent
+
+    """
+    def __init__(self):
+        """Constructor.
+
+        """
+        super(ParentSimulation, self).__init__()
+
+        self.parent = None                                # activity.Simulation
+        self.branch_time_in_child = None                  # shared.DateTime
+        self.branch_time_in_parent = None                 # shared.DateTime
 
 
 class EnsembleMember(object):
@@ -74,33 +91,16 @@ class Activity(object):
         """
         super(Activity, self).__init__()
 
-        self.canonical_name = None                        # str
-        self.name = None                                  # str
-        self.keywords = []                                # str
-        self.description = None                           # shared.Cimtext
-        self.references = []                              # shared.Citation
-        self.meta = shared.Meta()                         # shared.Meta
-        self.duration = None                              # shared.TimePeriod
         self.long_name = None                             # str
+        self.duration = None                              # shared.TimePeriod
+        self.canonical_name = None                        # str
         self.rationale = None                             # shared.Cimtext
         self.responsible_parties = []                     # shared.Responsibility
-
-
-class ParentSimulation(object):
-    """A concrete class within the cim v2 type system.
-
-    Defines the relationship between a simulation and its parent
-
-    """
-    def __init__(self):
-        """Constructor.
-
-        """
-        super(ParentSimulation, self).__init__()
-
-        self.branch_time_in_child = None                  # shared.DateTime
-        self.parent = None                                # activity.Simulation
-        self.branch_time_in_parent = None                 # shared.DateTime
+        self.references = []                              # shared.Citation
+        self.keywords = []                                # str
+        self.name = None                                  # str
+        self.meta = shared.Meta()                         # shared.Meta
+        self.description = None                           # shared.Cimtext
 
 
 class AxisMember(object):
@@ -122,6 +122,64 @@ class AxisMember(object):
         self.index = None                                 # int
 
 
+class NumericalRequirement(Activity):
+    """A concrete class within the cim v2 type system.
+
+    A numerical requirement associated with a numerical experiment.
+
+    """
+    def __init__(self):
+        """Constructor.
+
+        """
+        super(NumericalRequirement, self).__init__()
+
+        self.additional_requirements = []                 # activity.NumericalRequirement
+        self.conformance_is_requested = None              # bool
+
+
+class Simulation(Activity):
+    """A concrete class within the cim v2 type system.
+
+    Simulation class provides the integrating link about what models were run and wny.
+    In many cases this should be auto-generated from output file headers.
+
+    """
+    def __init__(self):
+        """Constructor.
+
+        """
+        super(Simulation, self).__init__()
+
+        self.ensemble_identifier = None                   # str
+        self.run_for_experiments = []                     # activity.NumericalExperiment
+        self.parent_simulation = None                     # activity.ParentSimulation
+        self.used = None                                  # software.Model
+        self.primary_ensemble = None                      # activity.Ensemble
+        self.part_of_project = []                         # activity.Project
+
+
+class OutputTemporalRequirement(NumericalRequirement):
+    """A concrete class within the cim v2 type system.
+
+    Provides details of when output is required from an experiment.
+    Typically output will be required in one of three modes:
+    (1) continuous,
+    (2) continuous for a set of subset periods, or
+    (3) sliced for a set of months in a year or days in a month.
+
+    """
+    def __init__(self):
+        """Constructor.
+
+        """
+        super(OutputTemporalRequirement, self).__init__()
+
+        self.continuous_subset = []                       # shared.TimePeriod
+        self.throughout = None                            # bool
+        self.sliced_subset = None                         # shared.TimesliceList
+
+
 class Conformance(Activity):
     """A concrete class within the cim v2 type system.
 
@@ -138,20 +196,20 @@ class Conformance(Activity):
         self.target_requirement = None                    # activity.NumericalRequirement
 
 
-class NumericalRequirement(Activity):
+class MultiEnsemble(NumericalRequirement):
     """A concrete class within the cim v2 type system.
 
-    A numerical requirement associated with a numerical experiment.
+    In the case of multiple ensemble axes, defines how they
+    are set up and ordered
 
     """
     def __init__(self):
         """Constructor.
 
         """
-        super(NumericalRequirement, self).__init__()
+        super(MultiEnsemble, self).__init__()
 
-        self.additional_requirements = []                 # activity.NumericalRequirement
-        self.conformance_is_requested = None              # bool
+        self.ensemble_axis = []                           # activity.EnsembleRequirement
 
 
 class Ensemble(Activity):
@@ -176,25 +234,20 @@ class Ensemble(Activity):
         self.has_ensemble_axes = []                       # activity.EnsembleAxis
 
 
-class OutputTemporalRequirement(NumericalRequirement):
+class NumericalExperiment(Activity):
     """A concrete class within the cim v2 type system.
 
-    Provides details of when output is required from an experiment.
-    Typically output will be required in one of three modes:
-    (1) continuous,
-    (2) continuous for a set of subset periods, or
-    (3) sliced for a set of months in a year or days in a month.
+    Defines a numerical experiment
 
     """
     def __init__(self):
         """Constructor.
 
         """
-        super(OutputTemporalRequirement, self).__init__()
+        super(NumericalExperiment, self).__init__()
 
-        self.throughout = None                            # bool
-        self.continuous_subset = []                       # shared.TimePeriod
-        self.sliced_subset = None                         # shared.TimesliceList
+        self.requirements = []                            # activity.NumericalRequirement
+        self.related_experiments = []                     # activity.NumericalExperiment
 
 
 class MultiTimeEnsemble(NumericalRequirement):
@@ -212,74 +265,25 @@ class MultiTimeEnsemble(NumericalRequirement):
         self.ensemble_members = None                      # shared.DatetimeSet
 
 
-class NumericalExperiment(Activity):
+class ForcingConstraint(NumericalRequirement):
     """A concrete class within the cim v2 type system.
 
-    Defines a numerical experiment
+    Identifies a model forcing constraint
 
     """
     def __init__(self):
         """Constructor.
 
         """
-        super(NumericalExperiment, self).__init__()
+        super(ForcingConstraint, self).__init__()
 
-        self.requirements = []                            # activity.NumericalRequirement
-        self.related_experiments = []                     # activity.NumericalExperiment
-
-
-class EnsembleRequirement(NumericalRequirement):
-    """A concrete class within the cim v2 type system.
-
-    Defines an experiment ensemble
-
-    """
-    def __init__(self):
-        """Constructor.
-
-        """
-        super(EnsembleRequirement, self).__init__()
-
-        self.ensemble_member = []                         # activity.NumericalRequirement
-        self.minimum_size = None                          # int
-        self.ensemble_type = None                         # activity.EnsembleTypes
-
-
-class Simulation(Activity):
-    """A concrete class within the cim v2 type system.
-
-    Simulation class provides the integrating link about what models were run and wny.
-    In many cases this should be auto-generated from output file headers.
-
-    """
-    def __init__(self):
-        """Constructor.
-
-        """
-        super(Simulation, self).__init__()
-
-        self.primary_ensemble = None                      # activity.Ensemble
-        self.part_of_project = []                         # activity.Project
-        self.ensemble_identifier = None                   # str
-        self.run_for_experiments = []                     # activity.NumericalExperiment
-        self.parent_simulation = None                     # activity.ParentSimulation
-        self.used = None                                  # software.Model
-
-
-class DomainProperties(NumericalRequirement):
-    """A concrete class within the cim v2 type system.
-
-    Properties of the domain which needs to be simulated, extend and/or resolution
-
-    """
-    def __init__(self):
-        """Constructor.
-
-        """
-        super(DomainProperties, self).__init__()
-
-        self.required_extent = None                       # science.Extent
-        self.required_resolution = None                   # science.Resolution
+        self.category = None                              # shared.VocabMember
+        self.origin = None                                # shared.Citation
+        self.group = None                                 # shared.VocabMember
+        self.data_link = None                             # shared.OnlineResource
+        self.forcing_type = None                          # activity.ForcingTypes
+        self.code = None                                  # shared.VocabMember
+        self.additional_constraint = None                 # shared.Cimtext
 
 
 class Project(Activity):
@@ -299,42 +303,6 @@ class Project(Activity):
         self.requires_experiments = []                    # activity.NumericalExperiment
 
 
-class SimulationPlan(Activity):
-    """A concrete class within the cim v2 type system.
-
-    Describes a simulation that needs to be run
-
-    """
-    def __init__(self):
-        """Constructor.
-
-        """
-        super(SimulationPlan, self).__init__()
-
-        self.expected_platform = None                     # platform.Machine
-        self.expected_model = None                        # software.Model
-        self.will_support_experiments = []                # activity.NumericalExperiment
-        self.expected_performance_sypd = None             # float
-
-
-class TemporalConstraint(NumericalRequirement):
-    """A concrete class within the cim v2 type system.
-
-    A temporal constraint on a numerical experiment.
-
-    """
-    def __init__(self):
-        """Constructor.
-
-        """
-        super(TemporalConstraint, self).__init__()
-
-        self.start_date = None                            # shared.DateTime
-        self.start_flexibility = None                     # shared.TimePeriod
-        self.required_calendar = None                     # shared.Calendar
-        self.required_duration = None                     # shared.TimePeriod
-
-
 class UberEnsemble(Ensemble):
     """A concrete class within the cim v2 type system.
 
@@ -352,43 +320,6 @@ class UberEnsemble(Ensemble):
         self.child_ensembles = []                         # activity.Ensemble
 
 
-class ForcingConstraint(NumericalRequirement):
-    """A concrete class within the cim v2 type system.
-
-    Identifies a model forcing constraint
-
-    """
-    def __init__(self):
-        """Constructor.
-
-        """
-        super(ForcingConstraint, self).__init__()
-
-        self.forcing_type = None                          # activity.ForcingTypes
-        self.origin = None                                # shared.Citation
-        self.additional_constraint = None                 # shared.Cimtext
-        self.category = None                              # shared.VocabMember
-        self.code = None                                  # shared.VocabMember
-        self.group = None                                 # shared.VocabMember
-        self.data_link = None                             # shared.OnlineResource
-
-
-class MultiEnsemble(NumericalRequirement):
-    """A concrete class within the cim v2 type system.
-
-    In the case of multiple ensemble axes, defines how they
-    are set up and ordered
-
-    """
-    def __init__(self):
-        """Constructor.
-
-        """
-        super(MultiEnsemble, self).__init__()
-
-        self.ensemble_axis = []                           # activity.EnsembleRequirement
-
-
 class Downscaling(Simulation):
     """A concrete class within the cim v2 type system.
 
@@ -402,6 +333,75 @@ class Downscaling(Simulation):
         super(Downscaling, self).__init__()
 
         self.downscaled_from = None                       # activity.Simulation
+
+
+class DomainProperties(NumericalRequirement):
+    """A concrete class within the cim v2 type system.
+
+    Properties of the domain which needs to be simulated, extend and/or resolution
+
+    """
+    def __init__(self):
+        """Constructor.
+
+        """
+        super(DomainProperties, self).__init__()
+
+        self.required_extent = None                       # science.Extent
+        self.required_resolution = None                   # science.Resolution
+
+
+class EnsembleRequirement(NumericalRequirement):
+    """A concrete class within the cim v2 type system.
+
+    Defines an experiment ensemble
+
+    """
+    def __init__(self):
+        """Constructor.
+
+        """
+        super(EnsembleRequirement, self).__init__()
+
+        self.ensemble_member = []                         # activity.NumericalRequirement
+        self.minimum_size = None                          # int
+        self.ensemble_type = None                         # activity.EnsembleTypes
+
+
+class SimulationPlan(Activity):
+    """A concrete class within the cim v2 type system.
+
+    Describes a simulation that needs to be run
+
+    """
+    def __init__(self):
+        """Constructor.
+
+        """
+        super(SimulationPlan, self).__init__()
+
+        self.expected_platform = None                     # platform.Machine
+        self.will_support_experiments = []                # activity.NumericalExperiment
+        self.expected_model = None                        # software.Model
+        self.expected_performance_sypd = None             # float
+
+
+class TemporalConstraint(NumericalRequirement):
+    """A concrete class within the cim v2 type system.
+
+    A temporal constraint on a numerical experiment.
+
+    """
+    def __init__(self):
+        """Constructor.
+
+        """
+        super(TemporalConstraint, self).__init__()
+
+        self.required_calendar = None                     # shared.Calendar
+        self.start_flexibility = None                     # shared.TimePeriod
+        self.start_date = None                            # shared.DateTime
+        self.required_duration = None                     # shared.TimePeriod
 
 
 class ForcingTypes(object):

@@ -9,7 +9,7 @@
    :synopsis: The set of types of the cim.v2.data package.
 
 .. moduleauthor:: Earth System Documentation (ES-DOC) <dev@es-doc.org>
-.. note:: Code generated using esdoc_mp @ 2015-07-24 23:45:43.345824.
+.. note:: Code generated using esdoc_mp @ 2015-07-24 23:58:29.529542.
 
 """
 import abc
@@ -50,14 +50,14 @@ class Dataset(object):
         super(Dataset, self).__init__()
 
         self.meta = shared.Meta()                         # shared.Meta
-        self.references = []                              # shared.Citation
-        self.related_to_dataset = []                      # data.RelatedData
         self.description = None                           # str
         self.availability = []                            # shared.OnlineResource
-        self.dataset_author = []                          # shared.Party
         self.produced_by = None                           # activity.Simulation
+        self.dataset_author = []                          # shared.Party
         self.drs_datasets = []                            # drs.DrsPublicationDataset
         self.name = None                                  # str
+        self.references = []                              # shared.Citation
+        self.related_to_dataset = []                      # data.RelatedData
 
 
 class RelatedData(shared.CimLink):
