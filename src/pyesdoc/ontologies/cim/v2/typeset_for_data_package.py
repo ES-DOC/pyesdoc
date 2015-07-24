@@ -49,15 +49,15 @@ class Dataset(object):
         """
         super(Dataset, self).__init__()
 
-        self.meta = shared.Meta()                         # shared.Meta
-        self.description = None                           # str
-        self.availability = []                            # shared.OnlineResource
-        self.produced_by = None                           # activity.Simulation
         self.dataset_author = []                          # shared.Party
+        self.meta = shared.Meta()                         # shared.Meta
         self.drs_datasets = []                            # drs.DrsPublicationDataset
+        self.produced_by = None                           # activity.Simulation
+        self.description = None                           # str
         self.name = None                                  # str
-        self.references = []                              # shared.Citation
         self.related_to_dataset = []                      # data.RelatedData
+        self.availability = []                            # shared.OnlineResource
+        self.references = []                              # shared.Citation
 
 
 class RelatedData(shared.CimLink):
@@ -72,8 +72,8 @@ class RelatedData(shared.CimLink):
         """
         super(RelatedData, self).__init__()
 
-        self.relationship = None                          # data.DataAssociationTypes
         self.other_dataset = None                         # data.Dataset
+        self.relationship = None                          # data.DataAssociationTypes
 
 
 class DataAssociationTypes(object):

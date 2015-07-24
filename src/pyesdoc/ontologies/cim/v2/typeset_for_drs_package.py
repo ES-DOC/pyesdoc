@@ -32,14 +32,14 @@ class DrsPublicationDataset(object):
         """
         super(DrsPublicationDataset, self).__init__()
 
-        self.model = None                                 # str
-        self.realm = None                                 # drs.DrsRealms
-        self.version_number = None                        # int
-        self.frequency = None                             # drs.DrsFrequencyTypes
-        self.activity = None                              # str
         self.product = None                               # str
-        self.experiment = None                            # str
+        self.frequency = None                             # drs.DrsFrequencyTypes
         self.institute = None                             # str
+        self.realm = None                                 # drs.DrsRealms
+        self.model = None                                 # str
+        self.version_number = None                        # int
+        self.experiment = None                            # str
+        self.activity = None                              # str
 
 
 class DrsTemporalIdentifier(object):
@@ -111,25 +111,25 @@ class DrsAtomicDataset(DrsPublicationDataset):
         super(DrsAtomicDataset, self).__init__()
 
         self.temporal_constraint = None                   # drs.DrsTemporalIdentifier
-        self.mip_table = None                             # str
         self.variable_name = None                         # str
         self.ensemble_member = None                       # drs.DrsEnsembleIdentifier
+        self.mip_table = None                             # str
         self.geographical_constraint = None               # drs.DrsGeographicalIndicator
-
-
-class DrsFrequencyTypes(object):
-    """An enumeration within the cim v2 type system.
-
-    Set of allowed DRS frequency types
-    """
-
-    pass
 
 
 class DrsTimeSuffixes(object):
     """An enumeration within the cim v2 type system.
 
     Set of permitted time averaging suffixes for drs temporal identifiers.
+    """
+
+    pass
+
+
+class DrsFrequencyTypes(object):
+    """An enumeration within the cim v2 type system.
+
+    Set of allowed DRS frequency types
     """
 
     pass

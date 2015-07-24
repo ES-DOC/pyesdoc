@@ -17,9 +17,28 @@ import datetime
 import uuid
 
 import typeset_for_software_package as software
-import typeset_for_shared_package as shared
 import typeset_for_platform_package as platform
+import typeset_for_shared_package as shared
 
+
+
+class StoragePool(object):
+    """A concrete class within the cim v2 type system.
+
+    Homogeneous storage pool on a computing machine
+
+    """
+    def __init__(self):
+        """Constructor.
+
+        """
+        super(StoragePool, self).__init__()
+
+        self.description = None                           # shared.Cimtext
+        self.volume_available = None                      # platform.StorageVolume
+        self.vendor = None                                # shared.Party
+        self.type = None                                  # platform.StorageSystems
+        self.name = None                                  # str
 
 
 class Partition(object):
@@ -34,16 +53,44 @@ class Partition(object):
         """
         super(Partition, self).__init__()
 
-        self.model_number = None                          # str
-        self.storage_pools = []                           # platform.StoragePool
-        self.name = None                                  # str
-        self.vendor = None                                # shared.Party
-        self.institution = None                           # shared.Party
-        self.online_documentation = []                    # shared.OnlineResource
-        self.when_used = None                             # shared.TimePeriod
         self.description = None                           # shared.Cimtext
+        self.vendor = None                                # shared.Party
+        self.storage_pools = []                           # platform.StoragePool
+        self.model_number = None                          # str
+        self.institution = None                           # shared.Party
+        self.name = None                                  # str
+        self.when_used = None                             # shared.TimePeriod
         self.compute_pools = []                           # platform.ComputePool
+        self.online_documentation = []                    # shared.OnlineResource
         self.partition = []                               # platform.Partition
+
+
+class Performance(object):
+    """A concrete class within the cim v2 type system.
+
+    Describes the properties of a performance of a configured model on a particular system/machine
+
+    """
+    def __init__(self):
+        """Constructor.
+
+        """
+        super(Performance, self).__init__()
+
+        self.load_imbalance = None                        # float
+        self.platform = None                              # platform.Machine
+        self.memory_bloat = None                          # float
+        self.io_load = None                               # float
+        self.meta = shared.Meta()                         # shared.Meta
+        self.total_nodes_used = None                      # int
+        self.subcomponent_performance = None              # platform.ComponentPerformance
+        self.chsy = None                                  # float
+        self.compiler = None                              # str
+        self.coupler_load = None                          # float
+        self.asypd = None                                 # float
+        self.sypd = None                                  # float
+        self.model = None                                 # software.Model
+        self.name = None                                  # str
 
 
 class ComponentPerformance(object):
@@ -77,16 +124,16 @@ class ComputePool(object):
         """
         super(ComputePool, self).__init__()
 
+        self.description = None                           # shared.Cimtext
         self.operating_system = None                      # str
+        self.accelerator_type = None                      # str
+        self.cpu_type = None                              # str
+        self.number_of_nodes = None                       # int
+        self.compute_cores_per_node = None                # int
         self.model_number = None                          # str
+        self.interconnect = None                          # str
         self.accelerators_per_node = None                 # int
         self.memory_per_node = None                       # platform.StorageVolume
-        self.compute_cores_per_node = None                # int
-        self.description = None                           # shared.Cimtext
-        self.number_of_nodes = None                       # int
-        self.accelerator_type = None                      # str
-        self.interconnect = None                          # str
-        self.cpu_type = None                              # str
         self.name = None                                  # str
 
 
@@ -104,53 +151,6 @@ class StorageVolume(object):
 
         self.units = None                                 # platform.VolumeUnits
         self.volume = None                                # int
-
-
-class StoragePool(object):
-    """A concrete class within the cim v2 type system.
-
-    Homogeneous storage pool on a computing machine
-
-    """
-    def __init__(self):
-        """Constructor.
-
-        """
-        super(StoragePool, self).__init__()
-
-        self.description = None                           # shared.Cimtext
-        self.volume_available = None                      # platform.StorageVolume
-        self.vendor = None                                # shared.Party
-        self.name = None                                  # str
-        self.type = None                                  # platform.StorageSystems
-
-
-class Performance(object):
-    """A concrete class within the cim v2 type system.
-
-    Describes the properties of a performance of a configured model on a particular system/machine
-
-    """
-    def __init__(self):
-        """Constructor.
-
-        """
-        super(Performance, self).__init__()
-
-        self.meta = shared.Meta()                         # shared.Meta
-        self.chsy = None                                  # float
-        self.compiler = None                              # str
-        self.memory_bloat = None                          # float
-        self.asypd = None                                 # float
-        self.model = None                                 # software.Model
-        self.sypd = None                                  # float
-        self.subcomponent_performance = None              # platform.ComponentPerformance
-        self.load_imbalance = None                        # float
-        self.platform = None                              # platform.Machine
-        self.coupler_load = None                          # float
-        self.io_load = None                               # float
-        self.total_nodes_used = None                      # int
-        self.name = None                                  # str
 
 
 class Machine(Partition):
