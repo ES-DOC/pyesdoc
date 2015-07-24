@@ -37,16 +37,16 @@ class Activity(object):
         """
         super(Activity, self).__init__()
 
+        self.canonical_name = None                        # str
+        self.description = None                           # shared.Cimtext
+        self.duration = None                              # shared.TimePeriod
         self.keywords = []                                # str
-        self.rationale = None                             # shared.Cimtext
-        self.responsible_parties = []                     # shared.Responsibility
+        self.long_name = None                             # str
         self.meta = shared.Meta()                         # shared.Meta
         self.name = None                                  # str
-        self.long_name = None                             # str
-        self.description = None                           # shared.Cimtext
+        self.rationale = None                             # shared.Cimtext
         self.references = []                              # shared.Citation
-        self.canonical_name = None                        # str
-        self.duration = None                              # shared.TimePeriod
+        self.responsible_parties = []                     # shared.Responsibility
 
 
 class AxisMember(object):
@@ -64,8 +64,8 @@ class AxisMember(object):
         super(AxisMember, self).__init__()
 
         self.description = None                           # str
-        self.value = None                                 # float
         self.index = None                                 # int
+        self.value = None                                 # float
 
 
 class Conformance(Activity):
@@ -130,11 +130,11 @@ class Ensemble(Activity):
         """
         super(Ensemble, self).__init__()
 
-        self.supported = []                               # activity.NumericalExperiment
         self.common_conformances = []                     # activity.Conformance
+        self.has_ensemble_axes = []                       # activity.EnsembleAxis
         self.members = []                                 # activity.EnsembleMember
         self.part_of = []                                 # activity.UberEnsemble
-        self.has_ensemble_axes = []                       # activity.EnsembleAxis
+        self.supported = []                               # activity.NumericalExperiment
 
 
 class EnsembleAxis(object):
@@ -149,10 +149,10 @@ class EnsembleAxis(object):
         """
         super(EnsembleAxis, self).__init__()
 
-        self.short_identifier = None                      # str
-        self.target_requirement = None                    # activity.NumericalRequirement
         self.extra_detail = None                          # shared.Cimtext
         self.member = []                                  # activity.AxisMember
+        self.short_identifier = None                      # str
+        self.target_requirement = None                    # activity.NumericalRequirement
 
 
 class EnsembleMember(object):
@@ -169,9 +169,9 @@ class EnsembleMember(object):
         """
         super(EnsembleMember, self).__init__()
 
-        self.simulation = None                            # activity.Simulation
         self.had_performance = None                       # platform.Performance
         self.ran_on = None                                # platform.Machine
+        self.simulation = None                            # activity.Simulation
 
 
 class EnsembleRequirement(NumericalRequirement):
@@ -187,8 +187,8 @@ class EnsembleRequirement(NumericalRequirement):
         super(EnsembleRequirement, self).__init__()
 
         self.ensemble_member = []                         # activity.NumericalRequirement
-        self.minimum_size = None                          # int
         self.ensemble_type = None                         # activity.EnsembleTypes
+        self.minimum_size = None                          # int
 
 
 class ForcingConstraint(NumericalRequirement):
@@ -203,12 +203,12 @@ class ForcingConstraint(NumericalRequirement):
         """
         super(ForcingConstraint, self).__init__()
 
-        self.category = None                              # shared.VocabMember
-        self.data_link = None                             # shared.OnlineResource
-        self.group = None                                 # shared.VocabMember
         self.additional_constraint = None                 # shared.Cimtext
-        self.forcing_type = None                          # activity.ForcingTypes
+        self.category = None                              # shared.VocabMember
         self.code = None                                  # shared.VocabMember
+        self.data_link = None                             # shared.OnlineResource
+        self.forcing_type = None                          # activity.ForcingTypes
+        self.group = None                                 # shared.VocabMember
         self.origin = None                                # shared.Citation
 
 
@@ -292,8 +292,8 @@ class OutputTemporalRequirement(NumericalRequirement):
         super(OutputTemporalRequirement, self).__init__()
 
         self.continuous_subset = []                       # shared.TimePeriod
-        self.throughout = None                            # bool
         self.sliced_subset = None                         # shared.TimesliceList
+        self.throughout = None                            # bool
 
 
 class ParentSimulation(object):
@@ -308,9 +308,9 @@ class ParentSimulation(object):
         """
         super(ParentSimulation, self).__init__()
 
-        self.parent = None                                # activity.Simulation
         self.branch_time_in_child = None                  # shared.DateTime
         self.branch_time_in_parent = None                 # shared.DateTime
+        self.parent = None                                # activity.Simulation
 
 
 class Project(Activity):
@@ -325,9 +325,9 @@ class Project(Activity):
         """
         super(Project, self).__init__()
 
-        self.sub_projects = []                            # activity.Project
         self.previous_projects = []                       # activity.Project
         self.requires_experiments = []                    # activity.NumericalExperiment
+        self.sub_projects = []                            # activity.Project
 
 
 class Simulation(Activity):
@@ -343,12 +343,12 @@ class Simulation(Activity):
         """
         super(Simulation, self).__init__()
 
-        self.run_for_experiments = []                     # activity.NumericalExperiment
-        self.parent_simulation = None                     # activity.ParentSimulation
-        self.used = None                                  # software.Model
-        self.primary_ensemble = None                      # activity.Ensemble
-        self.part_of_project = []                         # activity.Project
         self.ensemble_identifier = None                   # str
+        self.parent_simulation = None                     # activity.ParentSimulation
+        self.part_of_project = []                         # activity.Project
+        self.primary_ensemble = None                      # activity.Ensemble
+        self.run_for_experiments = []                     # activity.NumericalExperiment
+        self.used = None                                  # software.Model
 
 
 class SimulationPlan(Activity):
@@ -364,9 +364,9 @@ class SimulationPlan(Activity):
         super(SimulationPlan, self).__init__()
 
         self.expected_model = None                        # software.Model
-        self.will_support_experiments = []                # activity.NumericalExperiment
-        self.expected_platform = None                     # platform.Machine
         self.expected_performance_sypd = None             # float
+        self.expected_platform = None                     # platform.Machine
+        self.will_support_experiments = []                # activity.NumericalExperiment
 
 
 class TemporalConstraint(NumericalRequirement):
@@ -382,9 +382,9 @@ class TemporalConstraint(NumericalRequirement):
         super(TemporalConstraint, self).__init__()
 
         self.required_calendar = None                     # shared.Calendar
+        self.required_duration = None                     # shared.TimePeriod
         self.start_date = None                            # shared.DateTime
         self.start_flexibility = None                     # shared.TimePeriod
-        self.required_duration = None                     # shared.TimePeriod
 
 
 class UberEnsemble(Ensemble):
