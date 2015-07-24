@@ -82,8 +82,8 @@ class Tuning(object):
         super(Tuning, self).__init__()
 
         self.regional_metrics_used = None                 # data.VariableCollection
-        self.trend_metrics_used = None                    # data.VariableCollection
         self.description = None                           # shared.Cimtext
+        self.trend_metrics_used = None                    # data.VariableCollection
         self.global_mean_metrics_used = None              # data.VariableCollection
 
 
@@ -140,10 +140,10 @@ class Resolution(object):
         """
         super(Resolution, self).__init__()
 
+        self.number_of_xy_gridpoints = []                 # int
         self.equivalent_horizontal_resolution = None      # float
         self.number_of_levels = []                        # int
         self.name = None                                  # str
-        self.number_of_xy_gridpoints = []                 # int
         self.is_adaptive_grid = None                      # bool
 
 
@@ -180,13 +180,13 @@ class Process(object):
         super(Process, self).__init__()
 
         self.algorithm_properties = []                    # science.Algorithm
-        self.references = []                              # shared.Reference
         self.name = None                                  # str
         self.detailed_properties = []                     # science.ProcessDetail
-        self.keywords = None                              # str
         self.time_step_in_process = None                  # float
+        self.keywords = None                              # str
         self.description = None                           # str
         self.implementation_overview = None               # shared.Cimtext
+        self.references = []                              # shared.Reference
 
 
 class ScientificDomain(object):
@@ -205,13 +205,13 @@ class ScientificDomain(object):
         self.realm = None                                 # str
         self.meta = shared.Meta()                         # shared.Meta
         self.simulates = []                               # science.Process
-        self.overview = None                              # shared.Cimtext
-        self.time_step = None                             # float
+        self.extra_conservation_properties = None         # science.ConservationProperties
+        self.resolution = None                            # science.Resolution
         self.references = []                              # shared.Reference
         self.grid = None                                  # science.GridSummary
-        self.extra_conservation_properties = None         # science.ConservationProperties
+        self.overview = None                              # shared.Cimtext
         self.name = None                                  # str
-        self.resolution = None                            # science.Resolution
+        self.time_step = None                             # float
 
 
 class GridLayouts(object):

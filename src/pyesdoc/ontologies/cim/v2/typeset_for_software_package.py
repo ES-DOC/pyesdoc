@@ -21,6 +21,60 @@ import typeset_for_shared_package as shared
 
 
 
+class Gridspec(object):
+    """A concrete class within the cim v2 type system.
+
+    Fully defines the computational grid used.
+
+    """
+    def __init__(self):
+        """Constructor.
+
+        """
+        super(Gridspec, self).__init__()
+
+        self.description = None                           # str
+
+
+class Composition(object):
+    """A concrete class within the cim v2 type system.
+
+    Describes how component variables are coupled together either to/from other
+    SoftwareComponents or external data files. The variables specified by a component's
+    composition must be owned by that component, or a  child of that component;
+    child components cannot couple together parent variables.
+
+    """
+    def __init__(self):
+        """Constructor.
+
+        """
+        super(Composition, self).__init__()
+
+        self.couplings = []                               # str
+        self.description = None                           # str
+
+
+class Variable(object):
+    """A concrete class within the cim v2 type system.
+
+    An instance of a model software variable which may be prognostic or diagnostic, and which is
+    available as a connection to other software components. Note that these variables may only exist
+    within the software workflow as interim quantities or coupling endpoints. Input and output
+    variables will be a subset of these software variables.
+
+    """
+    def __init__(self):
+        """Constructor.
+
+        """
+        super(Variable, self).__init__()
+
+        self.description = None                           # str
+        self.prognostic = None                            # bool
+        self.name = None                                  # str
+
+
 class ComponentBase(object):
     """An abstract class within the cim v2 type system.
 
@@ -48,25 +102,6 @@ class ComponentBase(object):
         self.description = None                           # shared.Cimtext
 
 
-class Composition(object):
-    """A concrete class within the cim v2 type system.
-
-    Describes how component variables are coupled together either to/from other
-    SoftwareComponents or external data files. The variables specified by a component's
-    composition must be owned by that component, or a  child of that component;
-    child components cannot couple together parent variables.
-
-    """
-    def __init__(self):
-        """Constructor.
-
-        """
-        super(Composition, self).__init__()
-
-        self.couplings = []                               # str
-        self.description = None                           # str
-
-
 class DevelopmentPath(object):
     """A concrete class within the cim v2 type system.
 
@@ -79,9 +114,9 @@ class DevelopmentPath(object):
         """
         super(DevelopmentPath, self).__init__()
 
-        self.funding_sources = []                         # shared.Responsibility
-        self.developed_in_house = None                    # bool
         self.previous_version = None                      # str
+        self.developed_in_house = None                    # bool
+        self.funding_sources = []                         # shared.Responsibility
         self.consortium_name = None                       # str
         self.creators = []                                # shared.Responsibility
 
@@ -106,39 +141,27 @@ class EntryPoint(object):
         self.name = None                                  # str
 
 
-class Variable(object):
+class SoftwareComponent(ComponentBase):
     """A concrete class within the cim v2 type system.
 
-    An instance of a model software variable which may be prognostic or diagnostic, and which is
-    available as a connection to other software components. Note that these variables may only exist
-    within the software workflow as interim quantities or coupling endpoints. Input and output
-    variables will be a subset of these software variables.
+    An embedded piece of software that does not normally function as a standalone model (although
+    it may be used standalone in a test harness).
 
     """
     def __init__(self):
         """Constructor.
 
         """
-        super(Variable, self).__init__()
+        super(SoftwareComponent, self).__init__()
 
-        self.description = None                           # str
-        self.prognostic = None                            # bool
-        self.name = None                                  # str
-
-
-class Gridspec(object):
-    """A concrete class within the cim v2 type system.
-
-    Fully defines the computational grid used.
-
-    """
-    def __init__(self):
-        """Constructor.
-
-        """
-        super(Gridspec, self).__init__()
-
-        self.description = None                           # str
+        self.grid = None                                  # software.Gridspec
+        self.license = None                               # str
+        self.composition = None                           # software.Composition
+        self.sub_components = []                          # software.SoftwareComponent
+        self.coupling_framework = None                    # software.CouplingFramework
+        self.language = None                              # software.ProgrammingLanguage
+        self.connection_points = []                       # software.Variable
+        self.dependencies = []                            # software.EntryPoint
 
 
 class Model(ComponentBase):
@@ -162,29 +185,6 @@ class Model(ComponentBase):
         self.coupler = None                               # software.CouplingFramework
         self.coupled_software_components = []             # software.Model
         self.meta = shared.Meta()                         # shared.Meta
-
-
-class SoftwareComponent(ComponentBase):
-    """A concrete class within the cim v2 type system.
-
-    An embedded piece of software that does not normally function as a standalone model (although
-    it may be used standalone in a test harness).
-
-    """
-    def __init__(self):
-        """Constructor.
-
-        """
-        super(SoftwareComponent, self).__init__()
-
-        self.grid = None                                  # software.Gridspec
-        self.license = None                               # str
-        self.composition = None                           # software.Composition
-        self.coupling_framework = None                    # software.CouplingFramework
-        self.language = None                              # software.ProgrammingLanguage
-        self.connection_points = []                       # software.Variable
-        self.dependencies = []                            # software.EntryPoint
-        self.sub_components = []                          # software.SoftwareComponent
 
 
 class CouplingFramework(object):

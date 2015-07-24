@@ -52,12 +52,12 @@ class Dataset(object):
         self.meta = shared.Meta()                         # shared.Meta
         self.description = None                           # str
         self.availability = []                            # shared.OnlineResource
-        self.references = []                              # shared.Citation
-        self.related_to_dataset = []                      # data.RelatedData
+        self.produced_by = None                           # activity.Simulation
         self.dataset_author = []                          # shared.Party
         self.drs_datasets = []                            # drs.DrsPublicationDataset
         self.name = None                                  # str
-        self.produced_by = None                           # activity.Simulation
+        self.references = []                              # shared.Citation
+        self.related_to_dataset = []                      # data.RelatedData
 
 
 class RelatedData(shared.CimLink):

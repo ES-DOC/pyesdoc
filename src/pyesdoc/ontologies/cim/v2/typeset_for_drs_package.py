@@ -33,11 +33,11 @@ class DrsPublicationDataset(object):
         super(DrsPublicationDataset, self).__init__()
 
         self.model = None                                 # str
+        self.realm = None                                 # drs.DrsRealms
         self.version_number = None                        # int
         self.frequency = None                             # drs.DrsFrequencyTypes
         self.activity = None                              # str
         self.product = None                               # str
-        self.realm = None                                 # drs.DrsRealms
         self.experiment = None                            # str
         self.institute = None                             # str
 
@@ -110,8 +110,8 @@ class DrsAtomicDataset(DrsPublicationDataset):
         """
         super(DrsAtomicDataset, self).__init__()
 
-        self.mip_table = None                             # str
         self.temporal_constraint = None                   # drs.DrsTemporalIdentifier
+        self.mip_table = None                             # str
         self.variable_name = None                         # str
         self.ensemble_member = None                       # drs.DrsEnsembleIdentifier
         self.geographical_constraint = None               # drs.DrsGeographicalIndicator
