@@ -12,21 +12,21 @@
 .. note:: Code generated using esdoc_mp.
 
 """
-from typeset_for_shared_package import *
-from typeset_for_science_package import *
-from typeset_for_platform_package import *
-from typeset_for_software_package import *
+from typeset_for_activity_package import *
 from typeset_for_data_package import *
 from typeset_for_drs_package import *
-from typeset_for_activity_package import *
+from typeset_for_platform_package import *
+from typeset_for_science_package import *
+from typeset_for_shared_package import *
+from typeset_for_software_package import *
 
-import typeset_for_shared_package as shared
-import typeset_for_science_package as science
-import typeset_for_platform_package as platform
-import typeset_for_software_package as software
+import typeset_for_activity_package as activity
 import typeset_for_data_package as data
 import typeset_for_drs_package as drs
-import typeset_for_activity_package as activity
+import typeset_for_platform_package as platform
+import typeset_for_science_package as science
+import typeset_for_shared_package as shared
+import typeset_for_software_package as software
 
 import typeset_meta         # Assigns type info.
 
