@@ -21,22 +21,6 @@ import typeset_for_shared_package as shared
 
 
 
-class VariableCollection(object):
-    """A concrete class within the cim v2 type system.
-
-    A collection of variables within the scope of a code or process element
-
-    """
-    def __init__(self):
-        """Constructor.
-
-        """
-        super(VariableCollection, self).__init__()
-
-        self.collection_name = None                       # str
-        self.variables = []                               # str
-
-
 class Dataset(object):
     """A concrete class within the cim v2 type system.
 
@@ -49,15 +33,15 @@ class Dataset(object):
         """
         super(Dataset, self).__init__()
 
-        self.dataset_author = []                          # shared.Party
-        self.meta = shared.Meta()                         # shared.Meta
-        self.drs_datasets = []                            # drs.DrsPublicationDataset
-        self.produced_by = None                           # activity.Simulation
-        self.description = None                           # str
-        self.name = None                                  # str
-        self.related_to_dataset = []                      # data.RelatedData
         self.availability = []                            # shared.OnlineResource
+        self.dataset_author = []                          # shared.Party
+        self.description = None                           # str
+        self.drs_datasets = []                            # drs.DrsPublicationDataset
+        self.meta = shared.Meta()                         # shared.Meta
+        self.name = None                                  # str
+        self.produced_by = None                           # activity.Simulation
         self.references = []                              # shared.Citation
+        self.related_to_dataset = []                      # data.RelatedData
 
 
 class RelatedData(shared.CimLink):
@@ -74,6 +58,22 @@ class RelatedData(shared.CimLink):
 
         self.other_dataset = None                         # data.Dataset
         self.relationship = None                          # data.DataAssociationTypes
+
+
+class VariableCollection(object):
+    """A concrete class within the cim v2 type system.
+
+    A collection of variables within the scope of a code or process element
+
+    """
+    def __init__(self):
+        """Constructor.
+
+        """
+        super(VariableCollection, self).__init__()
+
+        self.collection_name = None                       # str
+        self.variables = []                               # str
 
 
 class DataAssociationTypes(object):

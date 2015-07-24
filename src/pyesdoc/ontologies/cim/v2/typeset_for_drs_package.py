@@ -20,6 +20,60 @@ import typeset_for_drs_package as drs
 
 
 
+class DrsAtomicDataset(DrsPublicationDataset):
+    """A concrete class within the cim v2 type system.
+
+    An entity in a DRS file system
+
+    """
+    def __init__(self):
+        """Constructor.
+
+        """
+        super(DrsAtomicDataset, self).__init__()
+
+        self.ensemble_member = None                       # drs.DrsEnsembleIdentifier
+        self.geographical_constraint = None               # drs.DrsGeographicalIndicator
+        self.mip_table = None                             # str
+        self.temporal_constraint = None                   # drs.DrsTemporalIdentifier
+        self.variable_name = None                         # str
+
+
+class DrsEnsembleIdentifier(object):
+    """A concrete class within the cim v2 type system.
+
+    Identifies an ensemble realisation.
+
+    """
+    def __init__(self):
+        """Constructor.
+
+        """
+        super(DrsEnsembleIdentifier, self).__init__()
+
+        self.initialisation_method_number = None          # int
+        self.perturbation_number = None                   # int
+        self.realisation_number = None                    # int
+
+
+class DrsGeographicalIndicator(object):
+    """A concrete class within the cim v2 type system.
+
+    Specifies geographical subsets described by bounding boxes or by named regions.
+     One of spatial domain or bounding box must appear.
+
+    """
+    def __init__(self):
+        """Constructor.
+
+        """
+        super(DrsGeographicalIndicator, self).__init__()
+
+        self.bounding_box = None                          # str
+        self.operator = None                              # drs.DrsGeographicalOperators
+        self.spatial_domain = None                        # str
+
+
 class DrsPublicationDataset(object):
     """A concrete class within the cim v2 type system.
 
@@ -32,14 +86,14 @@ class DrsPublicationDataset(object):
         """
         super(DrsPublicationDataset, self).__init__()
 
-        self.product = None                               # str
+        self.activity = None                              # str
+        self.experiment = None                            # str
         self.frequency = None                             # drs.DrsFrequencyTypes
         self.institute = None                             # str
-        self.realm = None                                 # drs.DrsRealms
         self.model = None                                 # str
+        self.product = None                               # str
+        self.realm = None                                 # drs.DrsRealms
         self.version_number = None                        # int
-        self.experiment = None                            # str
-        self.activity = None                              # str
 
 
 class DrsTemporalIdentifier(object):
@@ -59,77 +113,23 @@ class DrsTemporalIdentifier(object):
         super(DrsTemporalIdentifier, self).__init__()
 
         self.end = None                                   # str
-        self.suffix = None                                # drs.DrsTimeSuffixes
         self.start = None                                 # str
-
-
-class DrsGeographicalIndicator(object):
-    """A concrete class within the cim v2 type system.
-
-    Specifies geographical subsets described by bounding boxes or by named regions.
-     One of spatial domain or bounding box must appear.
-
-    """
-    def __init__(self):
-        """Constructor.
-
-        """
-        super(DrsGeographicalIndicator, self).__init__()
-
-        self.spatial_domain = None                        # str
-        self.bounding_box = None                          # str
-        self.operator = None                              # drs.DrsGeographicalOperators
-
-
-class DrsEnsembleIdentifier(object):
-    """A concrete class within the cim v2 type system.
-
-    Identifies an ensemble realisation.
-
-    """
-    def __init__(self):
-        """Constructor.
-
-        """
-        super(DrsEnsembleIdentifier, self).__init__()
-
-        self.realisation_number = None                    # int
-        self.initialisation_method_number = None          # int
-        self.perturbation_number = None                   # int
-
-
-class DrsAtomicDataset(DrsPublicationDataset):
-    """A concrete class within the cim v2 type system.
-
-    An entity in a DRS file system
-
-    """
-    def __init__(self):
-        """Constructor.
-
-        """
-        super(DrsAtomicDataset, self).__init__()
-
-        self.temporal_constraint = None                   # drs.DrsTemporalIdentifier
-        self.variable_name = None                         # str
-        self.ensemble_member = None                       # drs.DrsEnsembleIdentifier
-        self.mip_table = None                             # str
-        self.geographical_constraint = None               # drs.DrsGeographicalIndicator
-
-
-class DrsTimeSuffixes(object):
-    """An enumeration within the cim v2 type system.
-
-    Set of permitted time averaging suffixes for drs temporal identifiers.
-    """
-
-    pass
+        self.suffix = None                                # drs.DrsTimeSuffixes
 
 
 class DrsFrequencyTypes(object):
     """An enumeration within the cim v2 type system.
 
     Set of allowed DRS frequency types
+    """
+
+    pass
+
+
+class DrsGeographicalOperators(object):
+    """An enumeration within the cim v2 type system.
+
+    Set of permitted spatial averaging operator suffixes for drs spatial indicators (yyyy-zzzz)
     """
 
     pass
@@ -144,10 +144,10 @@ class DrsRealms(object):
     pass
 
 
-class DrsGeographicalOperators(object):
+class DrsTimeSuffixes(object):
     """An enumeration within the cim v2 type system.
 
-    Set of permitted spatial averaging operator suffixes for drs spatial indicators (yyyy-zzzz)
+    Set of permitted time averaging suffixes for drs temporal identifiers.
     """
 
     pass

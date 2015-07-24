@@ -16,10 +16,121 @@ import abc
 import datetime
 import uuid
 
-import typeset_for_software_package as software
 import typeset_for_platform_package as platform
 import typeset_for_shared_package as shared
+import typeset_for_software_package as software
 
+
+
+class ComponentPerformance(object):
+    """A concrete class within the cim v2 type system.
+
+    Describes the simulation rate of a component in seconds per model day
+
+    """
+    def __init__(self):
+        """Constructor.
+
+        """
+        super(ComponentPerformance, self).__init__()
+
+        self.component = None                             # software.SoftwareComponent
+        self.component_name = None                        # str
+        self.cores_used = None                            # int
+        self.nodes_used = None                            # int
+        self.speed = None                                 # float
+
+
+class ComputePool(object):
+    """A concrete class within the cim v2 type system.
+
+    Homogeneous pool of nodes within a computing machine.
+
+    """
+    def __init__(self):
+        """Constructor.
+
+        """
+        super(ComputePool, self).__init__()
+
+        self.accelerator_type = None                      # str
+        self.accelerators_per_node = None                 # int
+        self.compute_cores_per_node = None                # int
+        self.cpu_type = None                              # str
+        self.description = None                           # shared.Cimtext
+        self.interconnect = None                          # str
+        self.memory_per_node = None                       # platform.StorageVolume
+        self.model_number = None                          # str
+        self.name = None                                  # str
+        self.number_of_nodes = None                       # int
+        self.operating_system = None                      # str
+
+
+class Machine(Partition):
+    """A concrete class within the cim v2 type system.
+
+    A computer/system/platform/machine which is used for simulation.
+
+    """
+    def __init__(self):
+        """Constructor.
+
+        """
+        super(Machine, self).__init__()
+
+        self.meta = shared.Meta()                         # shared.Meta
+
+
+class Partition(object):
+    """A concrete class within the cim v2 type system.
+
+    A major partition (component) of a computing system (aka machine)
+
+    """
+    def __init__(self):
+        """Constructor.
+
+        """
+        super(Partition, self).__init__()
+
+        self.compute_pools = []                           # platform.ComputePool
+        self.description = None                           # shared.Cimtext
+        self.institution = None                           # shared.Party
+        self.model_number = None                          # str
+        self.name = None                                  # str
+        self.online_documentation = []                    # shared.OnlineResource
+        self.partition = []                               # platform.Partition
+        self.storage_pools = []                           # platform.StoragePool
+        self.vendor = None                                # shared.Party
+        self.when_used = None                             # shared.TimePeriod
+
+
+class Performance(object):
+    """A concrete class within the cim v2 type system.
+
+    Describes the properties of a performance of a configured model on a particular system/machine
+
+    """
+    def __init__(self):
+        """Constructor.
+
+        """
+        super(Performance, self).__init__()
+
+        self.asypd = None                                 # float
+        self.chsy = None                                  # float
+        self.compiler = None                              # str
+        self.coupler_load = None                          # float
+        self.io_load = None                               # float
+        self.load_imbalance = None                        # float
+        self.memory_bloat = None                          # float
+        self.meta = shared.Meta()                         # shared.Meta
+        self.model = None                                 # software.Model
+        self.name = None                                  # str
+        self.platform = None                              # platform.Machine
+        self.subcomponent_performance = None              # platform.ComponentPerformance
+        self.sypd = None                                  # float
+        self.total_nodes_used = None                      # int
 
 
 class StoragePool(object):
@@ -35,106 +146,10 @@ class StoragePool(object):
         super(StoragePool, self).__init__()
 
         self.description = None                           # shared.Cimtext
-        self.volume_available = None                      # platform.StorageVolume
-        self.vendor = None                                # shared.Party
+        self.name = None                                  # str
         self.type = None                                  # platform.StorageSystems
-        self.name = None                                  # str
-
-
-class Partition(object):
-    """A concrete class within the cim v2 type system.
-
-    A major partition (component) of a computing system (aka machine)
-
-    """
-    def __init__(self):
-        """Constructor.
-
-        """
-        super(Partition, self).__init__()
-
-        self.description = None                           # shared.Cimtext
         self.vendor = None                                # shared.Party
-        self.storage_pools = []                           # platform.StoragePool
-        self.model_number = None                          # str
-        self.institution = None                           # shared.Party
-        self.name = None                                  # str
-        self.when_used = None                             # shared.TimePeriod
-        self.compute_pools = []                           # platform.ComputePool
-        self.online_documentation = []                    # shared.OnlineResource
-        self.partition = []                               # platform.Partition
-
-
-class Performance(object):
-    """A concrete class within the cim v2 type system.
-
-    Describes the properties of a performance of a configured model on a particular system/machine
-
-    """
-    def __init__(self):
-        """Constructor.
-
-        """
-        super(Performance, self).__init__()
-
-        self.load_imbalance = None                        # float
-        self.platform = None                              # platform.Machine
-        self.memory_bloat = None                          # float
-        self.io_load = None                               # float
-        self.meta = shared.Meta()                         # shared.Meta
-        self.total_nodes_used = None                      # int
-        self.subcomponent_performance = None              # platform.ComponentPerformance
-        self.chsy = None                                  # float
-        self.compiler = None                              # str
-        self.coupler_load = None                          # float
-        self.asypd = None                                 # float
-        self.sypd = None                                  # float
-        self.model = None                                 # software.Model
-        self.name = None                                  # str
-
-
-class ComponentPerformance(object):
-    """A concrete class within the cim v2 type system.
-
-    Describes the simulation rate of a component in seconds per model day
-
-    """
-    def __init__(self):
-        """Constructor.
-
-        """
-        super(ComponentPerformance, self).__init__()
-
-        self.nodes_used = None                            # int
-        self.speed = None                                 # float
-        self.component = None                             # software.SoftwareComponent
-        self.cores_used = None                            # int
-        self.component_name = None                        # str
-
-
-class ComputePool(object):
-    """A concrete class within the cim v2 type system.
-
-    Homogeneous pool of nodes within a computing machine.
-
-    """
-    def __init__(self):
-        """Constructor.
-
-        """
-        super(ComputePool, self).__init__()
-
-        self.description = None                           # shared.Cimtext
-        self.operating_system = None                      # str
-        self.accelerator_type = None                      # str
-        self.cpu_type = None                              # str
-        self.number_of_nodes = None                       # int
-        self.compute_cores_per_node = None                # int
-        self.model_number = None                          # str
-        self.interconnect = None                          # str
-        self.accelerators_per_node = None                 # int
-        self.memory_per_node = None                       # platform.StorageVolume
-        self.name = None                                  # str
+        self.volume_available = None                      # platform.StorageVolume
 
 
 class StorageVolume(object):
@@ -151,21 +166,6 @@ class StorageVolume(object):
 
         self.units = None                                 # platform.VolumeUnits
         self.volume = None                                # int
-
-
-class Machine(Partition):
-    """A concrete class within the cim v2 type system.
-
-    A computer/system/platform/machine which is used for simulation.
-
-    """
-    def __init__(self):
-        """Constructor.
-
-        """
-        super(Machine, self).__init__()
-
-        self.meta = shared.Meta()                         # shared.Meta
 
 
 class StorageSystems(object):

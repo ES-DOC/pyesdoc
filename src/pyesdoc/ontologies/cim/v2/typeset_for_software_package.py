@@ -38,14 +38,52 @@ class ComponentBase(object):
         """
         super(ComponentBase, self).__init__()
 
-        self.tuning_applied = None                        # science.Tuning
-        self.name = None                                  # str
         self.description = None                           # shared.Cimtext
-        self.long_name = None                             # str
-        self.documentation = []                           # shared.Citation
-        self.version = None                               # str
         self.development_history = None                   # software.DevelopmentPath
+        self.documentation = []                           # shared.Citation
+        self.long_name = None                             # str
+        self.name = None                                  # str
         self.release_date = None                          # datetime.datetime
+        self.tuning_applied = None                        # science.Tuning
+        self.version = None                               # str
+
+
+class Composition(object):
+    """A concrete class within the cim v2 type system.
+
+    Describes how component variables are coupled together either to/from other
+    SoftwareComponents or external data files. The variables specified by a component's
+    composition must be owned by that component, or a  child of that component;
+    child components cannot couple together parent variables.
+
+    """
+    def __init__(self):
+        """Constructor.
+
+        """
+        super(Composition, self).__init__()
+
+        self.couplings = []                               # str
+        self.description = None                           # str
+
+
+class DevelopmentPath(object):
+    """A concrete class within the cim v2 type system.
+
+    Describes the software development path for this model/component.
+
+    """
+    def __init__(self):
+        """Constructor.
+
+        """
+        super(DevelopmentPath, self).__init__()
+
+        self.consortium_name = None                       # str
+        self.creators = []                                # shared.Responsibility
+        self.developed_in_house = None                    # bool
+        self.funding_sources = []                         # shared.Responsibility
+        self.previous_version = None                      # str
 
 
 class EntryPoint(object):
@@ -68,25 +106,6 @@ class EntryPoint(object):
         self.name = None                                  # str
 
 
-class DevelopmentPath(object):
-    """A concrete class within the cim v2 type system.
-
-    Describes the software development path for this model/component.
-
-    """
-    def __init__(self):
-        """Constructor.
-
-        """
-        super(DevelopmentPath, self).__init__()
-
-        self.previous_version = None                      # str
-        self.developed_in_house = None                    # bool
-        self.funding_sources = []                         # shared.Responsibility
-        self.consortium_name = None                       # str
-        self.creators = []                                # shared.Responsibility
-
-
 class Gridspec(object):
     """A concrete class within the cim v2 type system.
 
@@ -100,6 +119,52 @@ class Gridspec(object):
         super(Gridspec, self).__init__()
 
         self.description = None                           # str
+
+
+class Model(ComponentBase):
+    """A concrete class within the cim v2 type system.
+
+    A model component: can be executed standalone, and has as scientific
+    description available via a link to a science.domain document. (A configured model can
+     be understood in terms of a simulation, a model, and a configuration.)
+
+    """
+    def __init__(self):
+        """Constructor.
+
+        """
+        super(Model, self).__init__()
+
+        self.category = None                              # science.ModelTypes
+        self.coupled_software_components = []             # software.Model
+        self.coupler = None                               # software.CouplingFramework
+        self.extra_conservation_properties = None         # science.ConservationProperties
+        self.internal_software_components = []            # software.SoftwareComponent
+        self.meta = shared.Meta()                         # shared.Meta
+        self.scientific_domain = []                       # science.ScientificDomain
+
+
+class SoftwareComponent(ComponentBase):
+    """A concrete class within the cim v2 type system.
+
+    An embedded piece of software that does not normally function as a standalone model (although
+    it may be used standalone in a test harness).
+
+    """
+    def __init__(self):
+        """Constructor.
+
+        """
+        super(SoftwareComponent, self).__init__()
+
+        self.composition = None                           # software.Composition
+        self.connection_points = []                       # software.Variable
+        self.coupling_framework = None                    # software.CouplingFramework
+        self.dependencies = []                            # software.EntryPoint
+        self.grid = None                                  # software.Gridspec
+        self.language = None                              # software.ProgrammingLanguage
+        self.license = None                               # str
+        self.sub_components = []                          # software.SoftwareComponent
 
 
 class Variable(object):
@@ -117,74 +182,9 @@ class Variable(object):
         """
         super(Variable, self).__init__()
 
+        self.description = None                           # str
         self.name = None                                  # str
-        self.description = None                           # str
         self.prognostic = None                            # bool
-
-
-class Composition(object):
-    """A concrete class within the cim v2 type system.
-
-    Describes how component variables are coupled together either to/from other
-    SoftwareComponents or external data files. The variables specified by a component's
-    composition must be owned by that component, or a  child of that component;
-    child components cannot couple together parent variables.
-
-    """
-    def __init__(self):
-        """Constructor.
-
-        """
-        super(Composition, self).__init__()
-
-        self.couplings = []                               # str
-        self.description = None                           # str
-
-
-class SoftwareComponent(ComponentBase):
-    """A concrete class within the cim v2 type system.
-
-    An embedded piece of software that does not normally function as a standalone model (although
-    it may be used standalone in a test harness).
-
-    """
-    def __init__(self):
-        """Constructor.
-
-        """
-        super(SoftwareComponent, self).__init__()
-
-        self.coupling_framework = None                    # software.CouplingFramework
-        self.sub_components = []                          # software.SoftwareComponent
-        self.language = None                              # software.ProgrammingLanguage
-        self.license = None                               # str
-        self.dependencies = []                            # software.EntryPoint
-        self.grid = None                                  # software.Gridspec
-        self.connection_points = []                       # software.Variable
-        self.composition = None                           # software.Composition
-
-
-class Model(ComponentBase):
-    """A concrete class within the cim v2 type system.
-
-    A model component: can be executed standalone, and has as scientific
-    description available via a link to a science.domain document. (A configured model can
-     be understood in terms of a simulation, a model, and a configuration.)
-
-    """
-    def __init__(self):
-        """Constructor.
-
-        """
-        super(Model, self).__init__()
-
-        self.extra_conservation_properties = None         # science.ConservationProperties
-        self.scientific_domain = []                       # science.ScientificDomain
-        self.coupled_software_components = []             # software.Model
-        self.meta = shared.Meta()                         # shared.Meta
-        self.internal_software_components = []            # software.SoftwareComponent
-        self.coupler = None                               # software.CouplingFramework
-        self.category = None                              # science.ModelTypes
 
 
 class CouplingFramework(object):
