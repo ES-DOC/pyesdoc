@@ -75,7 +75,7 @@ def decode(as_xml):
     """
     # Convert to etree.
     if isinstance(as_xml, unicode):
-        as_xml = ET.fromstring(as_xml.encode('utf-8'))
+        as_xml = ET.fromstring(convert.unicode_to_str(as_xml))
     elif isinstance(as_xml, str):
         as_xml = ET.fromstring(as_xml)
 

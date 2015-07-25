@@ -35,7 +35,12 @@ _ABBREVIATIONS = ("id", "uid", "uuid")
 
 
 def str_to_unicode(val):
-    """Converts input to a unicode literal.
+    """Converts string input to a unicode literal.
+
+    :param object val: arget to be converted to a unicode literal.
+
+    :returns: A unicode literal.
+    :rtype: unicode
 
     """
     if val is None:
@@ -46,6 +51,25 @@ def str_to_unicode(val):
         return unicode()
 
     return unicode(val)
+
+
+def unicode_to_str(val):
+    """Converts unicode input to a string literal.
+
+    :param object val: arget to be converted to a unicode literal.
+
+    :returns: A unicode literal.
+    :rtype: unicode
+
+    """
+    if val is None:
+        return str()
+
+    val = unicode(val).encode('utf-8').strip()
+    if not len(val):
+        return str()
+
+    return str(val)
 
 
 def capitalize(target):
@@ -533,7 +557,7 @@ def str_to_typed_value(s, type):
     """
     # Encode.
     if s is not None:
-        s = s.encode('utf-8') if isinstance(s, unicode) else str(s)
+        s = unicode_to_str(s) if isinstance(s, unicode) else str(s)
 
     # None if empty value.
     if s is None or not len(s):

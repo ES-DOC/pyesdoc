@@ -112,38 +112,13 @@ def _format_value(v, formatter=None):
             s = str(s)
 
         if s and len(s):
-            s = unicode(s.decode('utf8').strip())
+            s = convert.str_to_unicode(s)
             if formatter:
                 s = formatter(s)
 
         return s
 
     return "  ".join(map(_format, v)).strip() if isinstance(v, list) else _format(v)
-
-
-def StringValue(object):
-    def __init__(self, value):
-        self.value = value
-
-
-    def __repr__(self):
-        if isinstance(self.value, unicode):
-            return self.value.encode('utf8')
-        else:
-            return self.value
-
-    def __str__(self):
-        if isinstance(self.value, unicode):
-            return self.value.encode('utf8')
-        else:
-            return self.value
-
-
-    def __unicode__(self):
-        if isinstance(self.value, str):
-            return self.value.decode('utf8')
-        else:
-            return self.value
 
 
 def _get_value(data, path):
@@ -188,7 +163,7 @@ def _get_value(data, path):
 
     # Tornado templating requires 'strings'.
     if isinstance(value, unicode):
-        value = value.encode('utf8')
+        value = convert.unicode_to_str(value)
 
     return None if value == data else value
 

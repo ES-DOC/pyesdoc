@@ -15,17 +15,16 @@ import datetime
 import requests
 
 import pyesdoc
+from pyesdoc.utils import convert
 from pyesdoc.utils import runtime
 
 
-
-# Default document encoding.
-_UTF8 = 'utf-8'
 
 # Requests session - improves download times by pooling connection.
 _SESSION = requests.Session()
 _SESSION.mount('http://', requests.adapters.HTTPAdapter(
     pool_connections=100, pool_maxsize=100))
+
 
 # Error file template.
 _ERROR = """
@@ -106,7 +105,7 @@ def _set_content(ctx):
 
     """
     try:
-        ctx.content = ctx.download.text.encode(_UTF8)
+        ctx.content = convert.unicode_to_str(ctx.download.text)
     except Exception as err:
         raise _EncodingException(err)
 

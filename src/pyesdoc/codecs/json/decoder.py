@@ -16,11 +16,6 @@ from pyesdoc.utils import convert
 
 
 
-# Default document encoding.
-_UNICODE = "utf-8"
-
-
-
 def decode(as_json):
     """Decodes a document from a UTF-8 encoded json text blob.
 
@@ -32,7 +27,7 @@ def decode(as_json):
 
     """
     # Convert to dictionary.
-    d = convert.json_to_dict(as_json.decode(_UNICODE))
+    d = convert.json_to_dict(convert.str_to_unicode(as_json))
 
     # Format dictionary keys.
     d = convert.dict_keys(d, convert.str_to_underscore_case)

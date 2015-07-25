@@ -13,14 +13,12 @@
 import os
 
 import pyesdoc
+from pyesdoc.utils.convert import str_to_unicode
 
 
 
 # Output directory option.
 _OPT_OUTPUT_DIR = "output_dir"
-
-# Default document encoding.
-_UNICODE = "utf-8"
 
 
 
@@ -82,14 +80,13 @@ def read(fpath, encoding=None, decode=True):
 
     # Set raw content.
     with open(fpath, 'r') as input_file:
-        content = input_file.read().decode(_UNICODE)
+        content = str_to_unicode(input_file.read())
 
     # Decode upon request.
-    document = None
     if decode:
-        document = pyesdoc.decode(content, encoding)
-
-    return document or content
+        return pyesdoc.decode(content, encoding)
+    else:
+        return content
 
 
 def convert(fpath, to_encoding, from_encoding=None):
