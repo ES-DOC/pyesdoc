@@ -7,7 +7,7 @@
 
 
 """
-from ....ontologies.cim.v1 import ComponentProperty
+from pyesdoc.ontologies.cim.v1 import ComponentProperty
 
 
 

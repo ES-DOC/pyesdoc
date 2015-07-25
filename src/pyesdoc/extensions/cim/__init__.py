@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from . import v1
+from pyesdoc.extensions.cim import v1
 
 
 # Supported cim versions.

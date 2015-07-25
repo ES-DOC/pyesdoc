@@ -10,7 +10,7 @@
 
 
 """
-from .. import ontologies
+from pyesdoc import ontologies
 
 
 

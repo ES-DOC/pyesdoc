@@ -48,6 +48,7 @@ class ArchiveFileInfo(object):
         """
         return self.path
 
+
     @property
     def exists(self):
         """Gets flag indicating whether a matching file exists.
@@ -81,12 +82,14 @@ class ArchiveFileInfo(object):
         """
         return self.folder.source
 
+
     def delete(self):
         """Deletes underlying file from local file system.
 
         """
         if self.exists:
             os.remove(self.path)
+
 
     def get_document(self, extend=True):
         """Returns deserialized document.
@@ -117,6 +120,7 @@ class ArchiveFileInfo(object):
                 raise pyesdoc.ExtendingException(err)
 
         return document
+
 
     def get_content(self, encoding):
         """Returns content of an archived file in the desired encoding.

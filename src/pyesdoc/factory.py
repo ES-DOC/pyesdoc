@@ -14,8 +14,10 @@
 import datetime
 import uuid
 
-from . import constants, ontologies, options
-from .utils import runtime as rt
+from pyesdoc import constants
+from pyesdoc import ontologies
+from pyesdoc import options
+from pyesdoc.utils import runtime as rt
 
 
 

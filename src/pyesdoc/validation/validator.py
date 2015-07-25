@@ -10,8 +10,8 @@
 
 
 """
-from .. utils import runtime as rt
-from .graph import DocumentValidationGraph
+from pyesdoc.utils import runtime as rt
+from pyesdoc.validation.graph import DocumentValidationGraph
 
 
 

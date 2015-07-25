@@ -9,7 +9,10 @@
 """
 from collections import namedtuple
 
-from .... utils import convert
+from pyesdoc.utils.convert import capitalize
+from pyesdoc.utils.convert import str_to_spaced_case
+from pyesdoc.utils.convert import str_to_unicode
+
 
 
 
@@ -38,8 +41,8 @@ def _extend_property_01(ctx):
 def _extend_property_02(ctx):
     """Formats property values."""
     ctx.p.values = filter(None, ctx.p.values)
-    ctx.p.values = map(lambda v: unicode(v).strip(), ctx.p.values)
-    ctx.p.values = filter(lambda v: len(v), ctx.p.values)
+    ctx.p.values = map(str_to_unicode, ctx.p.values)
+    ctx.p.values = filter(len, ctx.p.values)
     ctx.p.values = map(lambda v: v[0].upper() + v[1:], ctx.p.values)
 
 
@@ -48,8 +51,8 @@ def _extend_property_03(ctx):
     # Short name.
     name = ctx.p.short_name
     if len(name) and not name[0].isdigit():
-        name = convert.str_to_spaced_case(name)
-        name = map(convert.capitalize, name.split(" "))
+        name = str_to_spaced_case(name)
+        name = map(capitalize, name.split(" "))
         name = reduce(lambda x, s: s if x is None else x + " " + s, name, None)
     ctx.p.ext.short_display_name = name
 

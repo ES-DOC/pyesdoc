@@ -9,16 +9,11 @@
 """
 from collections import namedtuple
 
-from .software_model_component_type_map import \
-    METAFOR_ESDOC_MODEL_COMPONENT_MAP
-from .software_model_component_property_1 import (
-    extend as extend_property,
-    )
-from .software_model_component_property_2 import (
-    set_standard_properties,
-    set_scientific_properties,
-    set_qc_properties
-    )
+from pyesdoc.extensions.cim.v1.software_model_component_type_map import METAFOR_ESDOC_MODEL_COMPONENT_MAP
+from pyesdoc.extensions.cim.v1.software_model_component_property_1 import extend as extend_property
+from pyesdoc.extensions.cim.v1.software_model_component_property_2 import set_standard_properties
+from pyesdoc.extensions.cim.v1.software_model_component_property_2 import set_scientific_properties
+from pyesdoc.extensions.cim.v1.software_model_component_property_2 import set_qc_properties
 
 
 

@@ -15,11 +15,12 @@ import uuid
 
 import requests
 
-from . import constants, options
-from serialization import encode, decode
-from extensions import extend
-from utils import rt
-from validation import is_valid
+from pyesdoc import constants
+from pyesdoc import options
+from pyesdoc.serialization import encode, decode
+from pyesdoc.extensions import extend
+from pyesdoc.utils import rt
+from pyesdoc.validation import is_valid
 
 
 

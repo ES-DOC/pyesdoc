@@ -1,6 +1,4 @@
 # -*- coding: utf-8 -*-
 
-from .validator import (
-	is_valid, 
-	validate
-	)
+from pyesdoc.validation.validator import is_valid
+from pyesdoc.validation.validator import validate

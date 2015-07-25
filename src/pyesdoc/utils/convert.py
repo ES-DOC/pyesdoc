@@ -34,6 +34,20 @@ _ISO_DATE_FORMATS = ["%Y-%m-%d %H:%M:%S", "%Y-%m-%dT%H:%M:%S"]
 _ABBREVIATIONS = ("id", "uid", "uuid")
 
 
+def str_to_unicode(val):
+    """Converts input to a unicode literal.
+
+    """
+    if val is None:
+        return unicode()
+
+    val = str(val).decode('utf-8').strip()
+    if not len(val):
+        return unicode()
+
+    return unicode(val)
+
+
 def capitalize(target):
     """Capitalizes passed string.
 

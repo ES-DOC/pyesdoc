@@ -13,7 +13,7 @@
 """
 import os
 
-from .convert import json_file_to_namedtuple
+from pyesdoc.utils.convert import json_file_to_namedtuple
 
 
 

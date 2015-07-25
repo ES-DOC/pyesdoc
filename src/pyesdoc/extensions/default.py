@@ -11,7 +11,7 @@
 
 
 """
-from .. import constants
+from pyesdoc import constants
 
 
 

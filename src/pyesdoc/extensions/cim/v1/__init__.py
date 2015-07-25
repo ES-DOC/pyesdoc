@@ -1,16 +1,14 @@
 # -*- coding: utf-8 -*-
 
-from . import (
-	activity_ensemble,
-	activity_numerical_experiment,
-	activity_simulation_run,
-	data_data_object,
-	grids_grid_spec,
-	misc_document_set,
-	shared_platform,
-	software_model_component,
-	quality_cimquality,
-	)
+from pyesdoc.extensions.cim.v1 import activity_ensemble
+from pyesdoc.extensions.cim.v1 import activity_numerical_experiment
+from pyesdoc.extensions.cim.v1 import activity_simulation_run
+from pyesdoc.extensions.cim.v1 import data_data_object
+from pyesdoc.extensions.cim.v1 import grids_grid_spec
+from pyesdoc.extensions.cim.v1 import misc_document_set
+from pyesdoc.extensions.cim.v1 import shared_platform
+from pyesdoc.extensions.cim.v1 import software_model_component
+from pyesdoc.extensions.cim.v1 import quality_cimquality
 
 
 
