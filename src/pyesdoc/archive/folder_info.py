@@ -11,7 +11,8 @@
 
 
 """
-import glob, os
+import glob
+import os
 
 import pyesdoc
 from pyesdoc.archive import constants
