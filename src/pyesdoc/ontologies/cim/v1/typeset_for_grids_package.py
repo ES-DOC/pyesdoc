@@ -21,40 +21,18 @@ import typeset_for_shared_package as shared
 
 
 
-class CoordinateList(object):
+class GridProperty(shared.Property):
     """A concrete class within the cim v1 type system.
 
-    The CoordList type may be used to specify a list of coordinates, typically for the purpose of defining coordinates along the X, Y or Z axes. The length of the coordinate list is given by the attribute of that name. This may be used by software to allocate memory in advance of storing the coordinate values. The hasConstantOffset attribute may be used to indicate that the coordinate list consists of values with constant offset (spacing). In this case only the first coordinate value and the offset (spacing) value need to be specified; however, the length attribute must still define the final as-built size of the coordinate list.
+    Creates and returns instance of grid_property class.
 
     """
     def __init__(self):
         """Constructor.
 
         """
-        super(CoordinateList, self).__init__()
+        super(GridProperty, self).__init__()
 
-        self.has_constant_offset = None                   # bool
-        self.length = None                                # int
-        self.uom = None                                   # str
-
-
-class GridExtent(object):
-    """A concrete class within the cim v1 type system.
-
-    DataType for recording the geographic extent of a gridMosaic or gridTile.
-
-    """
-    def __init__(self):
-        """Constructor.
-
-        """
-        super(GridExtent, self).__init__()
-
-        self.maximum_latitude = None                      # str
-        self.maximum_longitude = None                     # str
-        self.minimum_latitude = None                      # str
-        self.minimum_longitude = None                     # str
-        self.units = None                                 # str
 
 
 class GridMosaic(object):
@@ -83,37 +61,6 @@ class GridMosaic(object):
         self.tile_count = None                            # int
         self.tiles = []                                   # grids.GridTile
         self.type = None                                  # str
-
-
-class GridProperty(shared.Property):
-    """A concrete class within the cim v1 type system.
-
-    Creates and returns instance of grid_property class.
-
-    """
-    def __init__(self):
-        """Constructor.
-
-        """
-        super(GridProperty, self).__init__()
-
-
-
-class GridSpec(object):
-    """A concrete class within the cim v1 type system.
-
-    This is a container class for GridSpec objects. A GridSpec object can contain one or more esmModelGrid objects, and one or more esmExchangeGrid objects. These objects may be serialised to one or possibly several files according to taste. Since GridSpec is sub-typed from GML's AbstractGeometryType it can, and should, be identified using a gml:id attribute.
-
-    """
-    def __init__(self):
-        """Constructor.
-
-        """
-        super(GridSpec, self).__init__()
-
-        self.esm_exchange_grids = []                      # grids.GridMosaic
-        self.esm_model_grids = []                         # grids.GridMosaic
-        self.meta = shared.DocMetaInfo()                  # shared.DocMetaInfo
 
 
 class GridTile(object):
@@ -158,20 +105,40 @@ class GridTile(object):
         self.zcoords = None                               # grids.VerticalCoordinateList
 
 
-class GridTileResolutionType(object):
+class GridExtent(object):
     """A concrete class within the cim v1 type system.
 
-    Provides a description and set of named properties for the horizontal or vertical resolution.
+    DataType for recording the geographic extent of a gridMosaic or gridTile.
 
     """
     def __init__(self):
         """Constructor.
 
         """
-        super(GridTileResolutionType, self).__init__()
+        super(GridExtent, self).__init__()
 
-        self.description = None                           # str
-        self.properties = []                              # grids.GridProperty
+        self.maximum_latitude = None                      # str
+        self.maximum_longitude = None                     # str
+        self.minimum_latitude = None                      # str
+        self.minimum_longitude = None                     # str
+        self.units = None                                 # str
+
+
+class GridSpec(object):
+    """A concrete class within the cim v1 type system.
+
+    This is a container class for GridSpec objects. A GridSpec object can contain one or more esmModelGrid objects, and one or more esmExchangeGrid objects. These objects may be serialised to one or possibly several files according to taste. Since GridSpec is sub-typed from GML's AbstractGeometryType it can, and should, be identified using a gml:id attribute.
+
+    """
+    def __init__(self):
+        """Constructor.
+
+        """
+        super(GridSpec, self).__init__()
+
+        self.esm_exchange_grids = []                      # grids.GridMosaic
+        self.esm_model_grids = []                         # grids.GridMosaic
+        self.meta = shared.DocMetaInfo()                  # shared.DocMetaInfo
 
 
 class SimpleGridGeometry(object):
@@ -192,6 +159,39 @@ class SimpleGridGeometry(object):
         self.xcoords = None                               # grids.CoordinateList
         self.ycoords = None                               # grids.CoordinateList
         self.zcoords = None                               # grids.CoordinateList
+
+
+class GridTileResolutionType(object):
+    """A concrete class within the cim v1 type system.
+
+    Provides a description and set of named properties for the horizontal or vertical resolution.
+
+    """
+    def __init__(self):
+        """Constructor.
+
+        """
+        super(GridTileResolutionType, self).__init__()
+
+        self.description = None                           # str
+        self.properties = []                              # grids.GridProperty
+
+
+class CoordinateList(object):
+    """A concrete class within the cim v1 type system.
+
+    The CoordList type may be used to specify a list of coordinates, typically for the purpose of defining coordinates along the X, Y or Z axes. The length of the coordinate list is given by the attribute of that name. This may be used by software to allocate memory in advance of storing the coordinate values. The hasConstantOffset attribute may be used to indicate that the coordinate list consists of values with constant offset (spacing). In this case only the first coordinate value and the offset (spacing) value need to be specified; however, the length attribute must still define the final as-built size of the coordinate list.
+
+    """
+    def __init__(self):
+        """Constructor.
+
+        """
+        super(CoordinateList, self).__init__()
+
+        self.has_constant_offset = None                   # bool
+        self.length = None                                # int
+        self.uom = None                                   # str
 
 
 class VerticalCoordinateList(CoordinateList):

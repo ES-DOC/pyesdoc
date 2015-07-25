@@ -20,129 +20,6 @@ import typeset_for_shared_package as shared
 
 
 
-class Calendar(object):
-    """A concrete class within the cim v2 type system.
-
-    Creates and returns instance of calendar class. This class is based on the
-    calendar attributes and properties found in the CF netCDF conventions.
-
-    """
-    def __init__(self):
-        """Constructor.
-
-        """
-        super(Calendar, self).__init__()
-
-        self.cal_type = None                              # shared.CalendarTypes
-        self.description = None                           # str
-        self.month_lengths = []                           # int
-        self.name = None                                  # str
-
-
-class CimLink(OnlineResource):
-    """A concrete class within the cim v2 type system.
-
-    Specialisation of online resource for link between CIM documents
-
-    """
-    def __init__(self):
-        """Constructor.
-
-        """
-        super(CimLink, self).__init__()
-
-        self.remote_type = None                           # str
-
-
-class Cimtext(object):
-    """A concrete class within the cim v2 type system.
-
-    Provides a text class which supports plaintext, html, and
-    friends (or will do).
-
-    """
-    def __init__(self):
-        """Constructor.
-
-        """
-        super(Cimtext, self).__init__()
-
-        self.content = None                               # str
-        self.content_type = None                          # shared.TextCode
-
-
-class Citation(object):
-    """A concrete class within the cim v2 type system.
-
-    Create and return an instance of the citation class
-
-    """
-    def __init__(self):
-        """Constructor.
-
-        """
-        super(Citation, self).__init__()
-
-        self.abstract = None                              # str
-        self.citation_str = None                          # shared.Cimtext
-        self.context = None                               # shared.Cimtext
-        self.doi = None                                   # str
-        self.title = None                                 # str
-        self.url = None                                   # shared.OnlineResource
-
-
-class DateTime(object):
-    """A concrete class within the cim v2 type system.
-
-    A date or time. Either in simulation time with the simulation
-    calendar, or with reference to a simulation start, in which
-    case the datetime is an interval after the start date.
-
-    """
-    def __init__(self):
-        """Constructor.
-
-        """
-        super(DateTime, self).__init__()
-
-        self.offset = None                                # bool
-        self.value = None                                 # str
-
-
-class DatetimeSet(object):
-    """An abstract class within the cim v2 type system.
-
-    Base class for a set of dates or times.
-    Note that we assume either a periodic set of dates which can
-    be date and/or time, or an irregular set which can only be dates
-
-    """
-    __metaclass__ = abc.ABCMeta
-
-    def __init__(self):
-        """Constructor.
-
-        """
-        super(DatetimeSet, self).__init__()
-
-        self.length = None                                # int
-
-
-class IrregularDateset(DatetimeSet):
-    """A concrete class within the cim v2 type system.
-
-    Creates a set of irregularly spaced times
-
-    """
-    def __init__(self):
-        """Constructor.
-
-        """
-        super(IrregularDateset, self).__init__()
-
-        self.date_set = None                              # str
-
-
 class KeyFloat(object):
     """A concrete class within the cim v2 type system.
 
@@ -159,58 +36,38 @@ class KeyFloat(object):
         self.value = None                                 # float
 
 
-class Meta(MinimalMeta):
+class Pid(object):
     """A concrete class within the cim v2 type system.
 
-    Metadata for all documents, describing who created it, and last updated etc.
+    A permanent identifier (with a resolution service).
 
     """
     def __init__(self):
         """Constructor.
 
         """
-        super(Meta, self).__init__()
+        super(Pid, self).__init__()
 
-        self.metadata_author = None                       # shared.Party
-        self.metadata_completeness = None                 # str
-        self.metadata_quality = None                      # str
-        self.metadata_reviewer = None                     # shared.Party
+        self.id = None                                    # str
+        self.resolution_service = None                    # shared.OnlineResource
 
 
-class MinimalMeta(object):
+class TimesliceList(object):
     """A concrete class within the cim v2 type system.
 
-    Provides a base class for minimal metadata, used for document classes which
-    are basically lists of external entities such as people, as opposed to documents
-    which are the main business of the CIM. The presence of an attribute of this
-    class (or any subclases) on another class indicates that the latter class carries
-    the <<document>> stereotype.
+    A list of referential dates, 
+        e.g. yearlist, 1,4,5 would refer to jan,april,may,
+             monthlist, 1,5,6 would refer to the 1st, 5th and 6th of the month
 
     """
     def __init__(self):
         """Constructor.
 
         """
-        super(MinimalMeta, self).__init__()
+        super(TimesliceList, self).__init__()
 
-        self.document_version = None                      # int
-        self.metadata_last_updated = None                 # datetime.datetime
-        self.uid = None                                   # str
-
-
-class NumberArray(object):
-    """A concrete class within the cim v2 type system.
-
-    Provides a class for entering an array of numbers
-
-    """
-    def __init__(self):
-        """Constructor.
-
-        """
-        super(NumberArray, self).__init__()
-
-        self.values = None                                # str
+        self.members = None                               # shared.NumberArray
+        self.units = None                                 # shared.SlicetimeUnits
 
 
 class OnlineResource(object):
@@ -229,6 +86,25 @@ class OnlineResource(object):
         self.linkage = None                               # str
         self.name = None                                  # str
         self.protocol = None                              # str
+
+
+class Calendar(object):
+    """A concrete class within the cim v2 type system.
+
+    Creates and returns instance of calendar class. This class is based on the
+    calendar attributes and properties found in the CF netCDF conventions.
+
+    """
+    def __init__(self):
+        """Constructor.
+
+        """
+        super(Calendar, self).__init__()
+
+        self.cal_type = None                              # shared.CalendarTypes
+        self.description = None                           # str
+        self.month_lengths = []                           # int
+        self.name = None                                  # str
 
 
 class Party(object):
@@ -254,51 +130,64 @@ class Party(object):
         self.url = None                                   # shared.OnlineResource
 
 
-class Pid(object):
+class Citation(object):
     """A concrete class within the cim v2 type system.
 
-    A permanent identifier (with a resolution service).
+    Create and return an instance of the citation class
 
     """
     def __init__(self):
         """Constructor.
 
         """
-        super(Pid, self).__init__()
+        super(Citation, self).__init__()
 
-        self.id = None                                    # str
-        self.resolution_service = None                    # shared.OnlineResource
+        self.abstract = None                              # str
+        self.citation_str = None                          # shared.Cimtext
+        self.context = None                               # shared.Cimtext
+        self.doi = None                                   # str
+        self.title = None                                 # str
+        self.url = None                                   # shared.OnlineResource
 
 
-class Reference(Citation):
+class MinimalMeta(object):
     """A concrete class within the cim v2 type system.
 
-    A citation which is forced to have a context provided
+    Provides a base class for minimal metadata, used for document classes which
+    are basically lists of external entities such as people, as opposed to documents
+    which are the main business of the CIM. The presence of an attribute of this
+    class (or any subclases) on another class indicates that the latter class carries
+    the <<document>> stereotype.
 
     """
     def __init__(self):
         """Constructor.
 
         """
-        super(Reference, self).__init__()
+        super(MinimalMeta, self).__init__()
+
+        self.document_version = None                      # int
+        self.metadata_last_updated = None                 # datetime.datetime
+        self.uid = None                                   # str
 
 
-
-class RegularTimeset(DatetimeSet):
+class TimePeriod(object):
     """A concrete class within the cim v2 type system.
 
-    Creates a regularly spaced set of times
+    Creates a time period class aka a temporal extent
 
     """
     def __init__(self):
         """Constructor.
 
         """
-        super(RegularTimeset, self).__init__()
+        super(TimePeriod, self).__init__()
 
-        self.increment = None                             # shared.TimePeriod
+        self.calendar = None                              # shared.Calendar
+        self.date = None                                  # shared.DateTime
+        self.date_type = None                             # shared.PeriodDateTypes
         self.length = None                                # int
-        self.start_date = None                            # shared.DateTime
+        self.units = None                                 # shared.TimeUnits
 
 
 class Responsibility(object):
@@ -317,6 +206,92 @@ class Responsibility(object):
         self.party = []                                   # shared.Party
         self.role = None                                  # shared.RoleCode
         self.when = None                                  # shared.TimePeriod
+
+
+class DatetimeSet(object):
+    """An abstract class within the cim v2 type system.
+
+    Base class for a set of dates or times.
+    Note that we assume either a periodic set of dates which can
+    be date and/or time, or an irregular set which can only be dates
+
+    """
+    __metaclass__ = abc.ABCMeta
+
+    def __init__(self):
+        """Constructor.
+
+        """
+        super(DatetimeSet, self).__init__()
+
+        self.length = None                                # int
+
+
+class Cimtext(object):
+    """A concrete class within the cim v2 type system.
+
+    Provides a text class which supports plaintext, html, and
+    friends (or will do).
+
+    """
+    def __init__(self):
+        """Constructor.
+
+        """
+        super(Cimtext, self).__init__()
+
+        self.content = None                               # str
+        self.content_type = None                          # shared.TextCode
+
+
+class DateTime(object):
+    """A concrete class within the cim v2 type system.
+
+    A date or time. Either in simulation time with the simulation
+    calendar, or with reference to a simulation start, in which
+    case the datetime is an interval after the start date.
+
+    """
+    def __init__(self):
+        """Constructor.
+
+        """
+        super(DateTime, self).__init__()
+
+        self.offset = None                                # bool
+        self.value = None                                 # str
+
+
+class VocabMember(object):
+    """A concrete class within the cim v2 type system.
+
+    A term in an external (to the CIM) controlled vocabulary (CV)
+
+    """
+    def __init__(self):
+        """Constructor.
+
+        """
+        super(VocabMember, self).__init__()
+
+        self.uri = None                                   # str
+        self.value = None                                 # str
+        self.vocab = None                                 # shared.Citation
+
+
+class NumberArray(object):
+    """A concrete class within the cim v2 type system.
+
+    Provides a class for entering an array of numbers
+
+    """
+    def __init__(self):
+        """Constructor.
+
+        """
+        super(NumberArray, self).__init__()
+
+        self.values = None                                # str
 
 
 class StandaloneDocument(object):
@@ -340,58 +315,83 @@ class StandaloneDocument(object):
         self.responsible_parties = []                     # shared.Responsibility
 
 
-class TimePeriod(object):
+class Meta(MinimalMeta):
     """A concrete class within the cim v2 type system.
 
-    Creates a time period class aka a temporal extent
+    Metadata for all documents, describing who created it, and last updated etc.
 
     """
     def __init__(self):
         """Constructor.
 
         """
-        super(TimePeriod, self).__init__()
+        super(Meta, self).__init__()
 
-        self.calendar = None                              # shared.Calendar
-        self.date = None                                  # shared.DateTime
-        self.date_type = None                             # shared.PeriodDateTypes
+        self.metadata_author = None                       # shared.Party
+        self.metadata_completeness = None                 # str
+        self.metadata_quality = None                      # str
+        self.metadata_reviewer = None                     # shared.Party
+
+
+class IrregularDateset(DatetimeSet):
+    """A concrete class within the cim v2 type system.
+
+    Creates a set of irregularly spaced times
+
+    """
+    def __init__(self):
+        """Constructor.
+
+        """
+        super(IrregularDateset, self).__init__()
+
+        self.date_set = None                              # str
+
+
+class Reference(Citation):
+    """A concrete class within the cim v2 type system.
+
+    A citation which is forced to have a context provided
+
+    """
+    def __init__(self):
+        """Constructor.
+
+        """
+        super(Reference, self).__init__()
+
+
+
+class CimLink(OnlineResource):
+    """A concrete class within the cim v2 type system.
+
+    Specialisation of online resource for link between CIM documents
+
+    """
+    def __init__(self):
+        """Constructor.
+
+        """
+        super(CimLink, self).__init__()
+
+        self.remote_type = None                           # str
+
+
+class RegularTimeset(DatetimeSet):
+    """A concrete class within the cim v2 type system.
+
+    Creates a regularly spaced set of times
+
+    """
+    def __init__(self):
+        """Constructor.
+
+        """
+        super(RegularTimeset, self).__init__()
+
+        self.increment = None                             # shared.TimePeriod
         self.length = None                                # int
-        self.units = None                                 # shared.TimeUnits
-
-
-class TimesliceList(object):
-    """A concrete class within the cim v2 type system.
-
-    A list of referential dates, 
-        e.g. yearlist, 1,4,5 would refer to jan,april,may,
-             monthlist, 1,5,6 would refer to the 1st, 5th and 6th of the month
-
-    """
-    def __init__(self):
-        """Constructor.
-
-        """
-        super(TimesliceList, self).__init__()
-
-        self.members = None                               # shared.NumberArray
-        self.units = None                                 # shared.SlicetimeUnits
-
-
-class VocabMember(object):
-    """A concrete class within the cim v2 type system.
-
-    A term in an external (to the CIM) controlled vocabulary (CV)
-
-    """
-    def __init__(self):
-        """Constructor.
-
-        """
-        super(VocabMember, self).__init__()
-
-        self.uri = None                                   # str
-        self.value = None                                 # str
-        self.vocab = None                                 # shared.Citation
+        self.start_date = None                            # shared.DateTime
 
 
 class CalendarTypes(object):

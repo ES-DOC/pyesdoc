@@ -37,29 +37,6 @@ class CimQuality(object):
         self.reports = []                                 # quality.Report
 
 
-class Evaluation(object):
-    """A concrete class within the cim v1 type system.
-
-    Creates and returns instance of evaluation class.
-
-    """
-    def __init__(self):
-        """Constructor.
-
-        """
-        super(Evaluation, self).__init__()
-
-        self.date = None                                  # datetime.datetime
-        self.description = None                           # str
-        self.did_pass = None                              # bool
-        self.explanation = None                           # str
-        self.specification = None                         # str
-        self.specification_hyperlink = None               # str
-        self.title = None                                 # str
-        self.type = None                                  # str
-        self.type_hyperlink = None                        # str
-
-
 class Measure(object):
     """A concrete class within the cim v1 type system.
 
@@ -93,6 +70,29 @@ class Report(object):
         self.evaluation = None                            # quality.Evaluation
         self.evaluator = None                             # shared.ResponsibleParty
         self.measure = None                               # quality.Measure
+
+
+class Evaluation(object):
+    """A concrete class within the cim v1 type system.
+
+    Creates and returns instance of evaluation class.
+
+    """
+    def __init__(self):
+        """Constructor.
+
+        """
+        super(Evaluation, self).__init__()
+
+        self.date = None                                  # datetime.datetime
+        self.description = None                           # str
+        self.did_pass = None                              # bool
+        self.explanation = None                           # str
+        self.specification = None                         # str
+        self.specification_hyperlink = None               # str
+        self.title = None                                 # str
+        self.type = None                                  # str
+        self.type_hyperlink = None                        # str
 
 
 class CimFeatureType(object):

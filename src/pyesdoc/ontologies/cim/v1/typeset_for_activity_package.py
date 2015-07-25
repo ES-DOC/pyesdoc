@@ -21,10 +21,10 @@ import typeset_for_shared_package as shared
 
 
 
-class Activity(object):
+class NumericalRequirement(object):
     """An abstract class within the cim v1 type system.
 
-    An abstract class used as the parent of MeasurementCampaigns, Projects, Experiments, and NumericalActivities.
+    A description of the requirements of particular experiments.  Numerical Requirements can be initial conditions, boundary conditions, or physical modificiations.
 
     """
     __metaclass__ = abc.ABCMeta
@@ -33,27 +33,47 @@ class Activity(object):
         """Constructor.
 
         """
-        super(Activity, self).__init__()
+        super(NumericalRequirement, self).__init__()
 
-        self.funding_sources = []                         # str
-        self.projects = []                                # activity.ProjectType
-        self.rationales = []                              # str
-        self.responsible_parties = []                     # shared.ResponsibleParty
+        self.description = None                           # str
+        self.id = None                                    # str
+        self.name = None                                  # str
+        self.options = []                                 # activity.NumericalRequirementOption
+        self.requirement_type = None                      # str
+        self.source = None                                # shared.DataSource
+        self.source_reference = None                      # shared.DocReference
 
 
-class BoundaryCondition(NumericalRequirement):
+class ExperimentRelationship(shared.Relationship):
     """A concrete class within the cim v1 type system.
 
-    A boundary condition is a numerical requirement which looks like a variable imposed on the model evolution (i.e. it might - or might not - evolve with time, but is seen by the model at various times during its evolution) as opposed to an initial condition (at model time zero).
+    Contains a set of relationship types specific to a experiment document that can be used to describe its genealogy.
 
     """
     def __init__(self):
         """Constructor.
 
         """
-        super(BoundaryCondition, self).__init__()
+        super(ExperimentRelationship, self).__init__()
 
-        self.requirement_type = str("boundaryCondition")
+        self.target = None                                # activity.ExperimentRelationshipTarget
+        self.type = None                                  # activity.ExperimentRelationshipType
+
+
+class SimulationRelationshipTarget(object):
+    """A concrete class within the cim v1 type system.
+
+    Creates and returns instance of simulation_relationship_target class.
+
+    """
+    def __init__(self):
+        """Constructor.
+
+        """
+        super(SimulationRelationshipTarget, self).__init__()
+
+        self.reference = None                             # shared.DocReference
+        self.target = None                                # activity.SimulationType
 
 
 class Conformance(object):
@@ -78,10 +98,42 @@ class Conformance(object):
         self.type = None                                  # activity.ConformanceType
 
 
-class DownscalingSimulation(NumericalActivity):
+class ExperimentRelationshipTarget(object):
+    """A concrete class within the cim v1 type system.
+
+    Creates and returns instance of experiment_relationship_target class.
+
+    """
+    def __init__(self):
+        """Constructor.
+
+        """
+        super(ExperimentRelationshipTarget, self).__init__()
+
+        self.numerical_experiment = None                  # activity.NumericalExperiment
+        self.reference = None                             # shared.DocReference
+
+
+class SimulationRelationship(shared.Relationship):
+    """A concrete class within the cim v1 type system.
+
+    Contains a set of relationship types specific to a simulation document that can be used to describe its genealogy.
+
+    """
+    def __init__(self):
+        """Constructor.
+
+        """
+        super(SimulationRelationship, self).__init__()
+
+        self.target = None                                # activity.SimulationRelationshipTarget
+        self.type = None                                  # activity.SimulationRelationshipType
+
+
+class Activity(object):
     """An abstract class within the cim v1 type system.
 
-    A simulation is the implementation of a numerical experiment.  A simulation can be made up of "child" simulations aggregated together to form a simulation composite.  The parent simulation can be made up of whole or partial child simulations, the simulation attributes need to be able to capture this.
+    An abstract class used as the parent of MeasurementCampaigns, Projects, Experiments, and NumericalActivities.
 
     """
     __metaclass__ = abc.ABCMeta
@@ -90,55 +142,31 @@ class DownscalingSimulation(NumericalActivity):
         """Constructor.
 
         """
-        super(DownscalingSimulation, self).__init__()
+        super(Activity, self).__init__()
 
-        self.calendar = None                              # shared.Calendar
-        self.downscaled_from = None                       # shared.DataSource
-        self.downscaled_from_reference = None             # shared.DocReference
-        self.downscaling_id = None                        # str
-        self.downscaling_type = None                      # activity.DownscalingType
-        self.inputs = []                                  # software.Coupling
-        self.meta = shared.DocMetaInfo()                  # shared.DocMetaInfo
-        self.output_references = []                       # shared.DocReference
-        self.outputs = []                                 # data.DataObject
+        self.funding_sources = []                         # str
+        self.projects = []                                # activity.ProjectType
+        self.rationales = []                              # str
+        self.responsible_parties = []                     # shared.ResponsibleParty
 
 
-class Ensemble(NumericalActivity):
+class NumericalRequirementOption(object):
     """A concrete class within the cim v1 type system.
 
-    An ensemble is made up of two or more simulations which are to be compared against each other to create ensemble statistics. Ensemble members can differ in terms of initial conditions, physical parameterisation and the model used. An ensemble bundles together sets of ensembleMembers, all of which reference the same Simulation(Run) and include one or more changes.
+    A NumericalRequirement that is being used as a set of related requirements; For example if a requirement is to use 1 of 3 boundary conditions, then that "parent" requirement would have three "child" RequirmentOptions (each of one with the XOR optionRelationship).
 
     """
     def __init__(self):
         """Constructor.
 
         """
-        super(Ensemble, self).__init__()
+        super(NumericalRequirementOption, self).__init__()
 
-        self.members = []                                 # activity.EnsembleMember
-        self.meta = shared.DocMetaInfo()                  # shared.DocMetaInfo
-        self.outputs = []                                 # shared.DataSource
-        self.outputs_references = []                      # shared.DocReference
-        self.types = []                                   # activity.EnsembleType
-
-
-class EnsembleMember(NumericalActivity):
-    """A concrete class within the cim v1 type system.
-
-    A simulation is the implementation of a numerical experiment.  A simulation can be made up of "child" simulations aggregated together to form a "simulation composite".  The "parent" simulation can be made up of whole or partial child simulations, the simulation attributes need to be able to capture this.
-
-    """
-    def __init__(self):
-        """Constructor.
-
-        """
-        super(EnsembleMember, self).__init__()
-
-        self.ensemble = None                              # activity.Ensemble
-        self.ensemble_ids = []                            # shared.StandardName
-        self.ensemble_reference = None                    # shared.DocReference
-        self.simulation = None                            # activity.Simulation
-        self.simulation_reference = None                  # shared.DocReference
+        self.description = None                           # str
+        self.id = None                                    # str
+        self.name = None                                  # str
+        self.relationship = None                          # str
+        self.sub_options = []                             # activity.NumericalRequirementOption
 
 
 class Experiment(Activity):
@@ -163,36 +191,35 @@ class Experiment(Activity):
         self.supports_references = []                     # shared.DocReference
 
 
-class ExperimentRelationship(shared.Relationship):
+class SpatioTemporalConstraint(NumericalRequirement):
     """A concrete class within the cim v1 type system.
 
-    Contains a set of relationship types specific to a experiment document that can be used to describe its genealogy.
+    Contains a set of relationship types specific to a simulation document that can be used to describe its genealogy.
 
     """
     def __init__(self):
         """Constructor.
 
         """
-        super(ExperimentRelationship, self).__init__()
+        super(SpatioTemporalConstraint, self).__init__()
 
-        self.target = None                                # activity.ExperimentRelationshipTarget
-        self.type = None                                  # activity.ExperimentRelationshipType
+        self.date_range = None                            # shared.DateRange
+        self.spatial_resolution = None                    # activity.ResolutionType
+        self.requirement_type = str("spatioTemporalConstraint")
 
 
-class ExperimentRelationshipTarget(object):
+class PhysicalModification(Conformance):
     """A concrete class within the cim v1 type system.
 
-    Creates and returns instance of experiment_relationship_target class.
+    Physical modification is the implementation of a boundary condition numerical requirement that is achieved within the model code rather than from some external source file. It  might include, for example,  a specific rate constant within a chemical reaction, or coefficient value(s) in a parameterisation.  For example, one might require a numerical experiment where specific chemical reactions were turned off - e.g. no heterogeneous chemistry.
 
     """
     def __init__(self):
         """Constructor.
 
         """
-        super(ExperimentRelationshipTarget, self).__init__()
+        super(PhysicalModification, self).__init__()
 
-        self.numerical_experiment = None                  # activity.NumericalExperiment
-        self.reference = None                             # shared.DocReference
 
 
 class InitialCondition(NumericalRequirement):
@@ -208,36 +235,6 @@ class InitialCondition(NumericalRequirement):
         super(InitialCondition, self).__init__()
 
         self.requirement_type = str("initialCondition")
-
-
-class LateralBoundaryCondition(NumericalRequirement):
-    """A concrete class within the cim v1 type system.
-
-    A boundary condition is a numerical requirement which looks like a variable imposed on the model evolution (i.e. it might - or might not - evolve with time, but is seen by the model at various times during its evolution) as opposed to an initial condition (at model time zero).
-
-    """
-    def __init__(self):
-        """Constructor.
-
-        """
-        super(LateralBoundaryCondition, self).__init__()
-
-        self.requirement_type = str("lateralBoundaryCondition")
-
-
-class MeasurementCampaign(Activity):
-    """A concrete class within the cim v1 type system.
-
-    Creates and returns instance of measurement_campaign class.
-
-    """
-    def __init__(self):
-        """Constructor.
-
-        """
-        super(MeasurementCampaign, self).__init__()
-
-        self.duration = None                              # int
 
 
 class NumericalActivity(Activity):
@@ -281,46 +278,19 @@ class NumericalExperiment(Experiment):
         self.short_name = None                            # str
 
 
-class NumericalRequirement(object):
-    """An abstract class within the cim v1 type system.
-
-    A description of the requirements of particular experiments.  Numerical Requirements can be initial conditions, boundary conditions, or physical modificiations.
-
-    """
-    __metaclass__ = abc.ABCMeta
-
-    def __init__(self):
-        """Constructor.
-
-        """
-        super(NumericalRequirement, self).__init__()
-
-        self.description = None                           # str
-        self.id = None                                    # str
-        self.name = None                                  # str
-        self.options = []                                 # activity.NumericalRequirementOption
-        self.requirement_type = None                      # str
-        self.source = None                                # shared.DataSource
-        self.source_reference = None                      # shared.DocReference
-
-
-class NumericalRequirementOption(object):
+class LateralBoundaryCondition(NumericalRequirement):
     """A concrete class within the cim v1 type system.
 
-    A NumericalRequirement that is being used as a set of related requirements; For example if a requirement is to use 1 of 3 boundary conditions, then that "parent" requirement would have three "child" RequirmentOptions (each of one with the XOR optionRelationship).
+    A boundary condition is a numerical requirement which looks like a variable imposed on the model evolution (i.e. it might - or might not - evolve with time, but is seen by the model at various times during its evolution) as opposed to an initial condition (at model time zero).
 
     """
     def __init__(self):
         """Constructor.
 
         """
-        super(NumericalRequirementOption, self).__init__()
+        super(LateralBoundaryCondition, self).__init__()
 
-        self.description = None                           # str
-        self.id = None                                    # str
-        self.name = None                                  # str
-        self.relationship = None                          # str
-        self.sub_options = []                             # activity.NumericalRequirementOption
+        self.requirement_type = str("lateralBoundaryCondition")
 
 
 class OutputRequirement(NumericalRequirement):
@@ -338,18 +308,59 @@ class OutputRequirement(NumericalRequirement):
         self.requirement_type = str("outputRequirement")
 
 
-class PhysicalModification(Conformance):
+class MeasurementCampaign(Activity):
     """A concrete class within the cim v1 type system.
 
-    Physical modification is the implementation of a boundary condition numerical requirement that is achieved within the model code rather than from some external source file. It  might include, for example,  a specific rate constant within a chemical reaction, or coefficient value(s) in a parameterisation.  For example, one might require a numerical experiment where specific chemical reactions were turned off - e.g. no heterogeneous chemistry.
+    Creates and returns instance of measurement_campaign class.
 
     """
     def __init__(self):
         """Constructor.
 
         """
-        super(PhysicalModification, self).__init__()
+        super(MeasurementCampaign, self).__init__()
 
+        self.duration = None                              # int
+
+
+class BoundaryCondition(NumericalRequirement):
+    """A concrete class within the cim v1 type system.
+
+    A boundary condition is a numerical requirement which looks like a variable imposed on the model evolution (i.e. it might - or might not - evolve with time, but is seen by the model at various times during its evolution) as opposed to an initial condition (at model time zero).
+
+    """
+    def __init__(self):
+        """Constructor.
+
+        """
+        super(BoundaryCondition, self).__init__()
+
+        self.requirement_type = str("boundaryCondition")
+
+
+class DownscalingSimulation(NumericalActivity):
+    """An abstract class within the cim v1 type system.
+
+    A simulation is the implementation of a numerical experiment.  A simulation can be made up of "child" simulations aggregated together to form a simulation composite.  The parent simulation can be made up of whole or partial child simulations, the simulation attributes need to be able to capture this.
+
+    """
+    __metaclass__ = abc.ABCMeta
+
+    def __init__(self):
+        """Constructor.
+
+        """
+        super(DownscalingSimulation, self).__init__()
+
+        self.calendar = None                              # shared.Calendar
+        self.downscaled_from = None                       # shared.DataSource
+        self.downscaled_from_reference = None             # shared.DocReference
+        self.downscaling_id = None                        # str
+        self.downscaling_type = None                      # activity.DownscalingType
+        self.inputs = []                                  # software.Coupling
+        self.meta = shared.DocMetaInfo()                  # shared.DocMetaInfo
+        self.output_references = []                       # shared.DocReference
+        self.outputs = []                                 # data.DataObject
 
 
 class Simulation(NumericalActivity):
@@ -383,56 +394,6 @@ class Simulation(NumericalActivity):
         self.spinup_simulation_reference = None           # shared.DocReference
 
 
-class SimulationComposite(Simulation):
-    """A concrete class within the cim v1 type system.
-
-    A SimulationComposite is an aggregation of Simulations. With the aggreation connector between Simulation and SimulationComposite(SC) the SC can be made up of both SimulationRuns and SCs. The SimulationComposite is the new name for the concept of SimulationCollection: A simulation can be made up of "child" simulations aggregated together to form a "simulation composite".  The "parent" simulation can be made up of whole or partial child simulations and the SimulationComposite attributes need to be able to capture this.
-
-    """
-    def __init__(self):
-        """Constructor.
-
-        """
-        super(SimulationComposite, self).__init__()
-
-        self.child = []                                   # activity.Simulation
-        self.date_range = None                            # shared.DateRange
-        self.meta = shared.DocMetaInfo()                  # shared.DocMetaInfo
-        self.rank = None                                  # int
-
-
-class SimulationRelationship(shared.Relationship):
-    """A concrete class within the cim v1 type system.
-
-    Contains a set of relationship types specific to a simulation document that can be used to describe its genealogy.
-
-    """
-    def __init__(self):
-        """Constructor.
-
-        """
-        super(SimulationRelationship, self).__init__()
-
-        self.target = None                                # activity.SimulationRelationshipTarget
-        self.type = None                                  # activity.SimulationRelationshipType
-
-
-class SimulationRelationshipTarget(object):
-    """A concrete class within the cim v1 type system.
-
-    Creates and returns instance of simulation_relationship_target class.
-
-    """
-    def __init__(self):
-        """Constructor.
-
-        """
-        super(SimulationRelationshipTarget, self).__init__()
-
-        self.reference = None                             # shared.DocReference
-        self.target = None                                # activity.SimulationType
-
-
 class SimulationRun(Simulation):
     """A concrete class within the cim v1 type system.
 
@@ -451,21 +412,60 @@ class SimulationRun(Simulation):
         self.model_reference = None                       # shared.DocReference
 
 
-class SpatioTemporalConstraint(NumericalRequirement):
+class EnsembleMember(NumericalActivity):
     """A concrete class within the cim v1 type system.
 
-    Contains a set of relationship types specific to a simulation document that can be used to describe its genealogy.
+    A simulation is the implementation of a numerical experiment.  A simulation can be made up of "child" simulations aggregated together to form a "simulation composite".  The "parent" simulation can be made up of whole or partial child simulations, the simulation attributes need to be able to capture this.
 
     """
     def __init__(self):
         """Constructor.
 
         """
-        super(SpatioTemporalConstraint, self).__init__()
+        super(EnsembleMember, self).__init__()
 
+        self.ensemble = None                              # activity.Ensemble
+        self.ensemble_ids = []                            # shared.StandardName
+        self.ensemble_reference = None                    # shared.DocReference
+        self.simulation = None                            # activity.Simulation
+        self.simulation_reference = None                  # shared.DocReference
+
+
+class Ensemble(NumericalActivity):
+    """A concrete class within the cim v1 type system.
+
+    An ensemble is made up of two or more simulations which are to be compared against each other to create ensemble statistics. Ensemble members can differ in terms of initial conditions, physical parameterisation and the model used. An ensemble bundles together sets of ensembleMembers, all of which reference the same Simulation(Run) and include one or more changes.
+
+    """
+    def __init__(self):
+        """Constructor.
+
+        """
+        super(Ensemble, self).__init__()
+
+        self.members = []                                 # activity.EnsembleMember
+        self.meta = shared.DocMetaInfo()                  # shared.DocMetaInfo
+        self.outputs = []                                 # shared.DataSource
+        self.outputs_references = []                      # shared.DocReference
+        self.types = []                                   # activity.EnsembleType
+
+
+class SimulationComposite(Simulation):
+    """A concrete class within the cim v1 type system.
+
+    A SimulationComposite is an aggregation of Simulations. With the aggreation connector between Simulation and SimulationComposite(SC) the SC can be made up of both SimulationRuns and SCs. The SimulationComposite is the new name for the concept of SimulationCollection: A simulation can be made up of "child" simulations aggregated together to form a "simulation composite".  The "parent" simulation can be made up of whole or partial child simulations and the SimulationComposite attributes need to be able to capture this.
+
+    """
+    def __init__(self):
+        """Constructor.
+
+        """
+        super(SimulationComposite, self).__init__()
+
+        self.child = []                                   # activity.Simulation
         self.date_range = None                            # shared.DateRange
-        self.spatial_resolution = None                    # activity.ResolutionType
-        self.requirement_type = str("spatioTemporalConstraint")
+        self.meta = shared.DocMetaInfo()                  # shared.DocMetaInfo
+        self.rank = None                                  # int
 
 
 class ConformanceType(object):
