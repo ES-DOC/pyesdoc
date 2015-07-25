@@ -21,6 +21,66 @@ import typeset_for_shared_package as shared
 
 
 
+class GridSummary(object):
+    """A concrete class within the cim v2 type system.
+
+    Key scientific characteristics of the grid use to simulate a specific domain
+
+    """
+    def __init__(self):
+        """Constructor.
+
+        """
+        super(GridSummary, self).__init__()
+
+        self.grid_extent = None                           # science.Extent
+        self.grid_layout = None                           # science.GridLayouts
+        self.grid_type = None                             # science.GridTypes
+
+
+class Process(object):
+    """A concrete class within the cim v2 type system.
+
+    Provides structure for description of a process simulated within a particular
+    area (or domain/realm/component) of a model. This will often be subclassed
+    within a specific implementation so that constraints can be used to ensure
+    that the vocabulary used is consistent with project requirements.
+
+    """
+    def __init__(self):
+        """Constructor.
+
+        """
+        super(Process, self).__init__()
+
+        self.algorithm_properties = []                    # science.Algorithm
+        self.description = None                           # str
+        self.detailed_properties = []                     # science.ProcessDetail
+        self.implementation_overview = None               # shared.Cimtext
+        self.keywords = None                              # str
+        self.name = None                                  # str
+        self.references = []                              # shared.Reference
+        self.time_step_in_process = None                  # float
+
+
+class Tuning(object):
+    """A concrete class within the cim v2 type system.
+
+    Method used to optimise equation parameters in model component (aka "tuning")
+
+    """
+    def __init__(self):
+        """Constructor.
+
+        """
+        super(Tuning, self).__init__()
+
+        self.description = None                           # shared.Cimtext
+        self.global_mean_metrics_used = None              # data.VariableCollection
+        self.regional_metrics_used = None                 # data.VariableCollection
+        self.trend_metrics_used = None                    # data.VariableCollection
+
+
 class ProcessDetail(object):
     """A concrete class within the cim v2 type system.
 
@@ -43,44 +103,24 @@ class ProcessDetail(object):
         self.vocabulary = None                            # str
 
 
-class GridSummary(object):
+class Algorithm(object):
     """A concrete class within the cim v2 type system.
 
-    Key scientific characteristics of the grid use to simulate a specific domain
+    Used to hold information associated with a process algorithm and it's properties.
+    Expected to be used to describe aspects of how a process is implemented.
 
     """
     def __init__(self):
         """Constructor.
 
         """
-        super(GridSummary, self).__init__()
+        super(Algorithm, self).__init__()
 
-        self.grid_extent = None                           # science.Extent
-        self.grid_layout = None                           # science.GridLayouts
-        self.grid_type = None                             # science.GridTypes
-
-
-class Resolution(object):
-    """A concrete class within the cim v2 type system.
-
-    Describes the computational spatial resolution of a component or process. Not intended
-        to replace or replicate the output grid description.  When it appears as part of a process
-        description, provide only properties that differ from parent domain. Note that where
-        different variables have different grids, differences in resolution can be captured by
-        repeating the number_of_ properties.
-
-    """
-    def __init__(self):
-        """Constructor.
-
-        """
-        super(Resolution, self).__init__()
-
-        self.equivalent_horizontal_resolution = None      # float
-        self.is_adaptive_grid = None                      # bool
-        self.name = None                                  # str
-        self.number_of_levels = []                        # int
-        self.number_of_xy_gridpoints = []                 # int
+        self.diagnostic_variables = []                    # data.VariableCollection
+        self.heading = None                               # str
+        self.implementation_overview = None               # shared.Cimtext
+        self.prognostic_variables = []                    # data.VariableCollection
+        self.references = []                              # shared.Citation
 
 
 class Extent(object):
@@ -134,67 +174,27 @@ class ScientificDomain(object):
         self.time_step = None                             # float
 
 
-class Algorithm(object):
+class Resolution(object):
     """A concrete class within the cim v2 type system.
 
-    Used to hold information associated with a process algorithm and it's properties.
-    Expected to be used to describe aspects of how a process is implemented.
+    Describes the computational spatial resolution of a component or process. Not intended
+        to replace or replicate the output grid description.  When it appears as part of a process
+        description, provide only properties that differ from parent domain. Note that where
+        different variables have different grids, differences in resolution can be captured by
+        repeating the number_of_ properties.
 
     """
     def __init__(self):
         """Constructor.
 
         """
-        super(Algorithm, self).__init__()
+        super(Resolution, self).__init__()
 
-        self.diagnostic_variables = []                    # data.VariableCollection
-        self.heading = None                               # str
-        self.implementation_overview = None               # shared.Cimtext
-        self.prognostic_variables = []                    # data.VariableCollection
-        self.references = []                              # shared.Citation
-
-
-class Process(object):
-    """A concrete class within the cim v2 type system.
-
-    Provides structure for description of a process simulated within a particular
-    area (or domain/realm/component) of a model. This will often be subclassed
-    within a specific implementation so that constraints can be used to ensure
-    that the vocabulary used is consistent with project requirements.
-
-    """
-    def __init__(self):
-        """Constructor.
-
-        """
-        super(Process, self).__init__()
-
-        self.algorithm_properties = []                    # science.Algorithm
-        self.description = None                           # str
-        self.detailed_properties = []                     # science.ProcessDetail
-        self.implementation_overview = None               # shared.Cimtext
-        self.keywords = None                              # str
+        self.equivalent_horizontal_resolution = None      # float
+        self.is_adaptive_grid = None                      # bool
         self.name = None                                  # str
-        self.references = []                              # shared.Reference
-        self.time_step_in_process = None                  # float
-
-
-class Tuning(object):
-    """A concrete class within the cim v2 type system.
-
-    Method used to optimise equation parameters in model component (aka "tuning")
-
-    """
-    def __init__(self):
-        """Constructor.
-
-        """
-        super(Tuning, self).__init__()
-
-        self.description = None                           # shared.Cimtext
-        self.global_mean_metrics_used = None              # data.VariableCollection
-        self.regional_metrics_used = None                 # data.VariableCollection
-        self.trend_metrics_used = None                    # data.VariableCollection
+        self.number_of_levels = []                        # int
+        self.number_of_xy_gridpoints = []                 # int
 
 
 class ConservationProperties(object):

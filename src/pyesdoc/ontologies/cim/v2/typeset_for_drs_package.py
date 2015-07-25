@@ -20,6 +20,23 @@ import typeset_for_drs_package as drs
 
 
 
+class DrsEnsembleIdentifier(object):
+    """A concrete class within the cim v2 type system.
+
+    Identifies an ensemble realisation.
+
+    """
+    def __init__(self):
+        """Constructor.
+
+        """
+        super(DrsEnsembleIdentifier, self).__init__()
+
+        self.initialisation_method_number = None          # int
+        self.perturbation_number = None                   # int
+        self.realisation_number = None                    # int
+
+
 class DrsPublicationDataset(object):
     """A concrete class within the cim v2 type system.
 
@@ -79,23 +96,6 @@ class DrsGeographicalIndicator(object):
         self.bounding_box = None                          # str
         self.operator = None                              # drs.DrsGeographicalOperators
         self.spatial_domain = None                        # str
-
-
-class DrsEnsembleIdentifier(object):
-    """A concrete class within the cim v2 type system.
-
-    Identifies an ensemble realisation.
-
-    """
-    def __init__(self):
-        """Constructor.
-
-        """
-        super(DrsEnsembleIdentifier, self).__init__()
-
-        self.initialisation_method_number = None          # int
-        self.perturbation_number = None                   # int
-        self.realisation_number = None                    # int
 
 
 class DrsAtomicDataset(DrsPublicationDataset):

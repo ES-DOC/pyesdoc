@@ -21,20 +21,22 @@ import typeset_for_shared_package as shared
 
 
 
-class CimQuality(object):
+class Report(object):
     """A concrete class within the cim v1 type system.
 
-    The starting point for a quality record.  It can contain any number of issues and reports.  An issue is an open-ended description of some issue about a CIM instance.  A record is a prescribed description of some specific quantitative measure that has been applied to a CIM instance.
+    Creates and returns instance of report class.
 
     """
     def __init__(self):
         """Constructor.
 
         """
-        super(CimQuality, self).__init__()
+        super(Report, self).__init__()
 
-        self.meta = shared.DocMetaInfo()                  # shared.DocMetaInfo
-        self.reports = []                                 # quality.Report
+        self.date = None                                  # datetime.datetime
+        self.evaluation = None                            # quality.Evaluation
+        self.evaluator = None                             # shared.ResponsibleParty
+        self.measure = None                               # quality.Measure
 
 
 class Measure(object):
@@ -54,22 +56,20 @@ class Measure(object):
         self.name = None                                  # str
 
 
-class Report(object):
+class CimQuality(object):
     """A concrete class within the cim v1 type system.
 
-    Creates and returns instance of report class.
+    The starting point for a quality record.  It can contain any number of issues and reports.  An issue is an open-ended description of some issue about a CIM instance.  A record is a prescribed description of some specific quantitative measure that has been applied to a CIM instance.
 
     """
     def __init__(self):
         """Constructor.
 
         """
-        super(Report, self).__init__()
+        super(CimQuality, self).__init__()
 
-        self.date = None                                  # datetime.datetime
-        self.evaluation = None                            # quality.Evaluation
-        self.evaluator = None                             # shared.ResponsibleParty
-        self.measure = None                               # quality.Measure
+        self.meta = shared.DocMetaInfo()                  # shared.DocMetaInfo
+        self.reports = []                                 # quality.Report
 
 
 class Evaluation(object):
