@@ -21,53 +21,55 @@ import typeset_for_shared_package as shared
 
 
 
-class DataExtentTimeInterval(object):
+class DataContent(shared.DataSource):
     """A concrete class within the cim v1 type system.
 
-    A data object temporal extent represents the temporal coverage associated with a data object.
+    The contents of the data object; like ISO: MD_ContentInformation.
 
     """
     def __init__(self):
         """Constructor.
 
         """
-        super(DataExtentTimeInterval, self).__init__()
+        super(DataContent, self).__init__()
 
-        self.factor = None                                # int
-        self.radix = None                                 # int
-        self.unit = None                                  # str
+        self.aggregation = None                           # str
+        self.frequency = None                             # str
+        self.topic = None                                 # data.DataTopic
 
 
-class DataRestriction(object):
+class DataDistribution(object):
     """A concrete class within the cim v1 type system.
 
-    An access or use restriction on some element of the DataObject actual data.
+    Describes how a DataObject is distributed.
 
     """
     def __init__(self):
         """Constructor.
 
         """
-        super(DataRestriction, self).__init__()
+        super(DataDistribution, self).__init__()
 
-        self.license = None                               # shared.License
-        self.restriction = None                           # str
-        self.scope = None                                 # str
+        self.access = None                                # str
+        self.fee = None                                   # str
+        self.format = None                                # str
+        self.responsible_party = None                     # shared.ResponsibleParty
 
 
-class DataProperty(shared.Property):
+class DataExtent(object):
     """A concrete class within the cim v1 type system.
 
-    A property of a DataObject. Currently this is intended to be used to record CF specific information (like packing, scaling, etc.) for OASIS4.
+    A data object extent represents the geographical and temporal coverage associated with a data object.
 
     """
     def __init__(self):
         """Constructor.
 
         """
-        super(DataProperty, self).__init__()
+        super(DataExtent, self).__init__()
 
-        self.description = None                           # str
+        self.geographical = None                          # data.DataExtentGeographical
+        self.temporal = None                              # data.DataExtentTemporal
 
 
 class DataExtentGeographical(object):
@@ -105,6 +107,40 @@ class DataExtentTemporal(object):
         self.time_interval = None                         # data.DataExtentTimeInterval
 
 
+class DataExtentTimeInterval(object):
+    """A concrete class within the cim v1 type system.
+
+    A data object temporal extent represents the temporal coverage associated with a data object.
+
+    """
+    def __init__(self):
+        """Constructor.
+
+        """
+        super(DataExtentTimeInterval, self).__init__()
+
+        self.factor = None                                # int
+        self.radix = None                                 # int
+        self.unit = None                                  # str
+
+
+class DataHierarchyLevel(object):
+    """A concrete class within the cim v1 type system.
+
+    The type of data object that is grouped together into a particular hierarchy.  Currently, this is made up of terms describing how the Met Office splits up archived data and how THREDDS categorises variables.
+
+    """
+    def __init__(self):
+        """Constructor.
+
+        """
+        super(DataHierarchyLevel, self).__init__()
+
+        self.is_open = None                               # bool
+        self.name = None                                  # data.DataHierarchyType
+        self.value = None                                 # str
+
+
 class DataObject(shared.DataSource):
     """A concrete class within the cim v1 type system.
 
@@ -138,21 +174,36 @@ class DataObject(shared.DataSource):
         self.storage = []                                 # data.DataStorage
 
 
-class DataTopic(object):
+class DataProperty(shared.Property):
     """A concrete class within the cim v1 type system.
 
-    Describes the content of a data object: the variable name, units, etc.
+    A property of a DataObject. Currently this is intended to be used to record CF specific information (like packing, scaling, etc.) for OASIS4.
 
     """
     def __init__(self):
         """Constructor.
 
         """
-        super(DataTopic, self).__init__()
+        super(DataProperty, self).__init__()
 
         self.description = None                           # str
-        self.name = None                                  # str
-        self.unit = None                                  # str
+
+
+class DataRestriction(object):
+    """A concrete class within the cim v1 type system.
+
+    An access or use restriction on some element of the DataObject actual data.
+
+    """
+    def __init__(self):
+        """Constructor.
+
+        """
+        super(DataRestriction, self).__init__()
+
+        self.license = None                               # shared.License
+        self.restriction = None                           # str
+        self.scope = None                                 # str
 
 
 class DataStorage(object):
@@ -175,72 +226,39 @@ class DataStorage(object):
         self.size = None                                  # int
 
 
-class DataDistribution(object):
+class DataTopic(object):
     """A concrete class within the cim v1 type system.
 
-    Describes how a DataObject is distributed.
+    Describes the content of a data object: the variable name, units, etc.
 
     """
     def __init__(self):
         """Constructor.
 
         """
-        super(DataDistribution, self).__init__()
+        super(DataTopic, self).__init__()
 
-        self.access = None                                # str
-        self.fee = None                                   # str
-        self.format = None                                # str
-        self.responsible_party = None                     # shared.ResponsibleParty
+        self.description = None                           # str
+        self.name = None                                  # str
+        self.unit = None                                  # str
 
 
-class DataContent(shared.DataSource):
+class DataStorageDb(DataStorage):
     """A concrete class within the cim v1 type system.
 
-    The contents of the data object; like ISO: MD_ContentInformation.
+    Contains attributes to describe a DataObject stored as a database file.
 
     """
     def __init__(self):
         """Constructor.
 
         """
-        super(DataContent, self).__init__()
+        super(DataStorageDb, self).__init__()
 
-        self.aggregation = None                           # str
-        self.frequency = None                             # str
-        self.topic = None                                 # data.DataTopic
-
-
-class DataExtent(object):
-    """A concrete class within the cim v1 type system.
-
-    A data object extent represents the geographical and temporal coverage associated with a data object.
-
-    """
-    def __init__(self):
-        """Constructor.
-
-        """
-        super(DataExtent, self).__init__()
-
-        self.geographical = None                          # data.DataExtentGeographical
-        self.temporal = None                              # data.DataExtentTemporal
-
-
-class DataHierarchyLevel(object):
-    """A concrete class within the cim v1 type system.
-
-    The type of data object that is grouped together into a particular hierarchy.  Currently, this is made up of terms describing how the Met Office splits up archived data and how THREDDS categorises variables.
-
-    """
-    def __init__(self):
-        """Constructor.
-
-        """
-        super(DataHierarchyLevel, self).__init__()
-
-        self.is_open = None                               # bool
-        self.name = None                                  # data.DataHierarchyType
-        self.value = None                                 # str
+        self.access_string = None                         # str
+        self.name = None                                  # str
+        self.owner = None                                 # str
+        self.table = None                                 # str
 
 
 class DataStorageFile(DataStorage):
@@ -276,24 +294,6 @@ class DataStorageIp(DataStorage):
         self.host = None                                  # str
         self.path = None                                  # str
         self.protocol = None                              # str
-
-
-class DataStorageDb(DataStorage):
-    """A concrete class within the cim v1 type system.
-
-    Contains attributes to describe a DataObject stored as a database file.
-
-    """
-    def __init__(self):
-        """Constructor.
-
-        """
-        super(DataStorageDb, self).__init__()
-
-        self.access_string = None                         # str
-        self.name = None                                  # str
-        self.owner = None                                 # str
-        self.table = None                                 # str
 
 
 class DataHierarchyType(object):

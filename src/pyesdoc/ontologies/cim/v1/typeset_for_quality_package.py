@@ -21,41 +21,6 @@ import typeset_for_shared_package as shared
 
 
 
-class Report(object):
-    """A concrete class within the cim v1 type system.
-
-    Creates and returns instance of report class.
-
-    """
-    def __init__(self):
-        """Constructor.
-
-        """
-        super(Report, self).__init__()
-
-        self.date = None                                  # datetime.datetime
-        self.evaluation = None                            # quality.Evaluation
-        self.evaluator = None                             # shared.ResponsibleParty
-        self.measure = None                               # quality.Measure
-
-
-class Measure(object):
-    """A concrete class within the cim v1 type system.
-
-    Creates and returns instance of measure class.
-
-    """
-    def __init__(self):
-        """Constructor.
-
-        """
-        super(Measure, self).__init__()
-
-        self.description = None                           # str
-        self.identification = None                        # str
-        self.name = None                                  # str
-
-
 class CimQuality(object):
     """A concrete class within the cim v1 type system.
 
@@ -93,6 +58,41 @@ class Evaluation(object):
         self.title = None                                 # str
         self.type = None                                  # str
         self.type_hyperlink = None                        # str
+
+
+class Measure(object):
+    """A concrete class within the cim v1 type system.
+
+    Creates and returns instance of measure class.
+
+    """
+    def __init__(self):
+        """Constructor.
+
+        """
+        super(Measure, self).__init__()
+
+        self.description = None                           # str
+        self.identification = None                        # str
+        self.name = None                                  # str
+
+
+class Report(object):
+    """A concrete class within the cim v1 type system.
+
+    Creates and returns instance of report class.
+
+    """
+    def __init__(self):
+        """Constructor.
+
+        """
+        super(Report, self).__init__()
+
+        self.date = None                                  # datetime.datetime
+        self.evaluation = None                            # quality.Evaluation
+        self.evaluator = None                             # shared.ResponsibleParty
+        self.measure = None                               # quality.Measure
 
 
 class CimFeatureType(object):
