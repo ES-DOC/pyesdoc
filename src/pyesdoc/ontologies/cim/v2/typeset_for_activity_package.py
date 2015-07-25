@@ -23,43 +23,6 @@ import typeset_for_software_package as software
 
 
 
-class EnsembleAxis(object):
-    """A concrete class within the cim v2 type system.
-
-    Defines the meaning of r/i/p indices in an ensemble
-
-    """
-    def __init__(self):
-        """Constructor.
-
-        """
-        super(EnsembleAxis, self).__init__()
-
-        self.extra_detail = None                          # shared.Cimtext
-        self.member = []                                  # activity.AxisMember
-        self.short_identifier = None                      # str
-        self.target_requirement = None                    # activity.NumericalRequirement
-
-
-class AxisMember(object):
-    """A concrete class within the cim v2 type system.
-
-    Description of a given ensemble member. It will normally be related to a specific
-    ensemble requirement. Note that start dates can be extracted directly from the simulations
-    and do not need to be recorded with an axis member description.
-
-    """
-    def __init__(self):
-        """Constructor.
-
-        """
-        super(AxisMember, self).__init__()
-
-        self.description = None                           # str
-        self.index = None                                 # int
-        self.value = None                                 # float
-
-
 class Activity(object):
     """An abstract class within the cim v2 type system.
 
@@ -86,21 +49,41 @@ class Activity(object):
         self.responsible_parties = []                     # shared.Responsibility
 
 
-class ParentSimulation(object):
+class AxisMember(object):
     """A concrete class within the cim v2 type system.
 
-    Defines the relationship between a simulation and its parent
+    Description of a given ensemble member. It will normally be related to a specific
+    ensemble requirement. Note that start dates can be extracted directly from the simulations
+    and do not need to be recorded with an axis member description.
 
     """
     def __init__(self):
         """Constructor.
 
         """
-        super(ParentSimulation, self).__init__()
+        super(AxisMember, self).__init__()
 
-        self.branch_time_in_child = None                  # shared.DateTime
-        self.branch_time_in_parent = None                 # shared.DateTime
-        self.parent = None                                # activity.Simulation
+        self.description = None                           # str
+        self.index = None                                 # int
+        self.value = None                                 # float
+
+
+class EnsembleAxis(object):
+    """A concrete class within the cim v2 type system.
+
+    Defines the meaning of r/i/p indices in an ensemble
+
+    """
+    def __init__(self):
+        """Constructor.
+
+        """
+        super(EnsembleAxis, self).__init__()
+
+        self.extra_detail = None                          # shared.Cimtext
+        self.member = []                                  # activity.AxisMember
+        self.short_identifier = None                      # str
+        self.target_requirement = None                    # activity.NumericalRequirement
 
 
 class EnsembleMember(object):
@@ -122,22 +105,37 @@ class EnsembleMember(object):
         self.simulation = None                            # activity.Simulation
 
 
-class SimulationPlan(Activity):
+class ParentSimulation(object):
     """A concrete class within the cim v2 type system.
 
-    Describes a simulation that needs to be run
+    Defines the relationship between a simulation and its parent
 
     """
     def __init__(self):
         """Constructor.
 
         """
-        super(SimulationPlan, self).__init__()
+        super(ParentSimulation, self).__init__()
 
-        self.expected_model = None                        # software.Model
-        self.expected_performance_sypd = None             # float
-        self.expected_platform = None                     # platform.Machine
-        self.will_support_experiments = []                # activity.NumericalExperiment
+        self.branch_time_in_child = None                  # shared.DateTime
+        self.branch_time_in_parent = None                 # shared.DateTime
+        self.parent = None                                # activity.Simulation
+
+
+class Conformance(Activity):
+    """A concrete class within the cim v2 type system.
+
+    A specific conformance. Describes how a particular numerical requirement has been implemented.
+    Will normally be linked from an ensemble descriptor.
+
+    """
+    def __init__(self):
+        """Constructor.
+
+        """
+        super(Conformance, self).__init__()
+
+        self.target_requirement = None                    # activity.NumericalRequirement
 
 
 class Ensemble(Activity):
@@ -162,38 +160,20 @@ class Ensemble(Activity):
         self.supported = []                               # activity.NumericalExperiment
 
 
-class Project(Activity):
+class NumericalExperiment(Activity):
     """A concrete class within the cim v2 type system.
 
-    Describes a scientific project.
+    Defines a numerical experiment
 
     """
     def __init__(self):
         """Constructor.
 
         """
-        super(Project, self).__init__()
+        super(NumericalExperiment, self).__init__()
 
-        self.previous_projects = []                       # activity.Project
-        self.requires_experiments = []                    # activity.NumericalExperiment
-        self.sub_projects = []                            # activity.Project
-
-
-class UberEnsemble(Ensemble):
-    """A concrete class within the cim v2 type system.
-
-    An ensemble made up of other ensembles. Often used where parts of an ensemble were run by
-    different institutes. Could also be used when a new experiment is designed which can use
-    ensemble members from previous experiments and/or projects.
-
-    """
-    def __init__(self):
-        """Constructor.
-
-        """
-        super(UberEnsemble, self).__init__()
-
-        self.child_ensembles = []                         # activity.Ensemble
+        self.related_experiments = []                     # activity.NumericalExperiment
+        self.requirements = []                            # activity.NumericalRequirement
 
 
 class NumericalRequirement(Activity):
@@ -210,55 +190,6 @@ class NumericalRequirement(Activity):
 
         self.additional_requirements = []                 # activity.NumericalRequirement
         self.conformance_is_requested = None              # bool
-
-
-class MultiEnsemble(NumericalRequirement):
-    """A concrete class within the cim v2 type system.
-
-    In the case of multiple ensemble axes, defines how they
-    are set up and ordered
-
-    """
-    def __init__(self):
-        """Constructor.
-
-        """
-        super(MultiEnsemble, self).__init__()
-
-        self.ensemble_axis = []                           # activity.EnsembleRequirement
-
-
-class DomainProperties(NumericalRequirement):
-    """A concrete class within the cim v2 type system.
-
-    Properties of the domain which needs to be simulated, extend and/or resolution
-
-    """
-    def __init__(self):
-        """Constructor.
-
-        """
-        super(DomainProperties, self).__init__()
-
-        self.required_extent = None                       # science.Extent
-        self.required_resolution = None                   # science.Resolution
-
-
-class EnsembleRequirement(NumericalRequirement):
-    """A concrete class within the cim v2 type system.
-
-    Defines an experiment ensemble
-
-    """
-    def __init__(self):
-        """Constructor.
-
-        """
-        super(EnsembleRequirement, self).__init__()
-
-        self.ensemble_member = []                         # activity.NumericalRequirement
-        self.ensemble_type = None                         # activity.EnsembleTypes
-        self.minimum_size = None                          # int
 
 
 class OutputTemporalRequirement(NumericalRequirement):
@@ -282,19 +213,21 @@ class OutputTemporalRequirement(NumericalRequirement):
         self.throughout = None                            # bool
 
 
-class MultiTimeEnsemble(NumericalRequirement):
+class Project(Activity):
     """A concrete class within the cim v2 type system.
 
-    Defines an experiment ensemble with multiple start dates
+    Describes a scientific project.
 
     """
     def __init__(self):
         """Constructor.
 
         """
-        super(MultiTimeEnsemble, self).__init__()
+        super(Project, self).__init__()
 
-        self.ensemble_members = None                      # shared.DatetimeSet
+        self.previous_projects = []                       # activity.Project
+        self.requires_experiments = []                    # activity.NumericalExperiment
+        self.sub_projects = []                            # activity.Project
 
 
 class Simulation(Activity):
@@ -318,36 +251,105 @@ class Simulation(Activity):
         self.used = None                                  # software.Model
 
 
-class Conformance(Activity):
+class SimulationPlan(Activity):
     """A concrete class within the cim v2 type system.
 
-    A specific conformance. Describes how a particular numerical requirement has been implemented.
-    Will normally be linked from an ensemble descriptor.
+    Describes a simulation that needs to be run
 
     """
     def __init__(self):
         """Constructor.
 
         """
-        super(Conformance, self).__init__()
+        super(SimulationPlan, self).__init__()
 
-        self.target_requirement = None                    # activity.NumericalRequirement
+        self.expected_model = None                        # software.Model
+        self.expected_performance_sypd = None             # float
+        self.expected_platform = None                     # platform.Machine
+        self.will_support_experiments = []                # activity.NumericalExperiment
 
 
-class NumericalExperiment(Activity):
+class TemporalConstraint(NumericalRequirement):
     """A concrete class within the cim v2 type system.
 
-    Defines a numerical experiment
+    A temporal constraint on a numerical experiment.
 
     """
     def __init__(self):
         """Constructor.
 
         """
-        super(NumericalExperiment, self).__init__()
+        super(TemporalConstraint, self).__init__()
 
-        self.related_experiments = []                     # activity.NumericalExperiment
-        self.requirements = []                            # activity.NumericalRequirement
+        self.required_calendar = None                     # shared.Calendar
+        self.required_duration = None                     # shared.TimePeriod
+        self.start_date = None                            # shared.DateTime
+        self.start_flexibility = None                     # shared.TimePeriod
+
+
+class UberEnsemble(Ensemble):
+    """A concrete class within the cim v2 type system.
+
+    An ensemble made up of other ensembles. Often used where parts of an ensemble were run by
+    different institutes. Could also be used when a new experiment is designed which can use
+    ensemble members from previous experiments and/or projects.
+
+    """
+    def __init__(self):
+        """Constructor.
+
+        """
+        super(UberEnsemble, self).__init__()
+
+        self.child_ensembles = []                         # activity.Ensemble
+
+
+class DomainProperties(NumericalRequirement):
+    """A concrete class within the cim v2 type system.
+
+    Properties of the domain which needs to be simulated, extend and/or resolution
+
+    """
+    def __init__(self):
+        """Constructor.
+
+        """
+        super(DomainProperties, self).__init__()
+
+        self.required_extent = None                       # science.Extent
+        self.required_resolution = None                   # science.Resolution
+
+
+class Downscaling(Simulation):
+    """A concrete class within the cim v2 type system.
+
+    Defines a downscaling activity
+
+    """
+    def __init__(self):
+        """Constructor.
+
+        """
+        super(Downscaling, self).__init__()
+
+        self.downscaled_from = None                       # activity.Simulation
+
+
+class EnsembleRequirement(NumericalRequirement):
+    """A concrete class within the cim v2 type system.
+
+    Defines an experiment ensemble
+
+    """
+    def __init__(self):
+        """Constructor.
+
+        """
+        super(EnsembleRequirement, self).__init__()
+
+        self.ensemble_member = []                         # activity.NumericalRequirement
+        self.ensemble_type = None                         # activity.EnsembleTypes
+        self.minimum_size = None                          # int
 
 
 class ForcingConstraint(NumericalRequirement):
@@ -371,37 +373,35 @@ class ForcingConstraint(NumericalRequirement):
         self.origin = None                                # shared.Citation
 
 
-class TemporalConstraint(NumericalRequirement):
+class MultiEnsemble(NumericalRequirement):
     """A concrete class within the cim v2 type system.
 
-    A temporal constraint on a numerical experiment.
+    In the case of multiple ensemble axes, defines how they
+    are set up and ordered
 
     """
     def __init__(self):
         """Constructor.
 
         """
-        super(TemporalConstraint, self).__init__()
+        super(MultiEnsemble, self).__init__()
 
-        self.required_calendar = None                     # shared.Calendar
-        self.required_duration = None                     # shared.TimePeriod
-        self.start_date = None                            # shared.DateTime
-        self.start_flexibility = None                     # shared.TimePeriod
+        self.ensemble_axis = []                           # activity.EnsembleRequirement
 
 
-class Downscaling(Simulation):
+class MultiTimeEnsemble(NumericalRequirement):
     """A concrete class within the cim v2 type system.
 
-    Defines a downscaling activity
+    Defines an experiment ensemble with multiple start dates
 
     """
     def __init__(self):
         """Constructor.
 
         """
-        super(Downscaling, self).__init__()
+        super(MultiTimeEnsemble, self).__init__()
 
-        self.downscaled_from = None                       # activity.Simulation
+        self.ensemble_members = None                      # shared.DatetimeSet
 
 
 class EnsembleTypes(object):

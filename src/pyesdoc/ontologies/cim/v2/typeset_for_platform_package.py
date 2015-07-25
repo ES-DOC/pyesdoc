@@ -22,23 +22,72 @@ import typeset_for_software_package as software
 
 
 
-class StoragePool(object):
+class ComponentPerformance(object):
     """A concrete class within the cim v2 type system.
 
-    Homogeneous storage pool on a computing machine
+    Describes the simulation rate of a component in seconds per model day
 
     """
     def __init__(self):
         """Constructor.
 
         """
-        super(StoragePool, self).__init__()
+        super(ComponentPerformance, self).__init__()
 
+        self.component = None                             # software.SoftwareComponent
+        self.component_name = None                        # str
+        self.cores_used = None                            # int
+        self.nodes_used = None                            # int
+        self.speed = None                                 # float
+
+
+class ComputePool(object):
+    """A concrete class within the cim v2 type system.
+
+    Homogeneous pool of nodes within a computing machine.
+
+    """
+    def __init__(self):
+        """Constructor.
+
+        """
+        super(ComputePool, self).__init__()
+
+        self.accelerator_type = None                      # str
+        self.accelerators_per_node = None                 # int
+        self.compute_cores_per_node = None                # int
+        self.cpu_type = None                              # str
         self.description = None                           # shared.Cimtext
+        self.interconnect = None                          # str
+        self.memory_per_node = None                       # platform.StorageVolume
+        self.model_number = None                          # str
         self.name = None                                  # str
-        self.type = None                                  # platform.StorageSystems
+        self.number_of_nodes = None                       # int
+        self.operating_system = None                      # str
+
+
+class Partition(object):
+    """A concrete class within the cim v2 type system.
+
+    A major partition (component) of a computing system (aka machine)
+
+    """
+    def __init__(self):
+        """Constructor.
+
+        """
+        super(Partition, self).__init__()
+
+        self.compute_pools = []                           # platform.ComputePool
+        self.description = None                           # shared.Cimtext
+        self.institution = None                           # shared.Party
+        self.model_number = None                          # str
+        self.name = None                                  # str
+        self.online_documentation = []                    # shared.OnlineResource
+        self.partition = []                               # platform.Partition
+        self.storage_pools = []                           # platform.StoragePool
         self.vendor = None                                # shared.Party
-        self.volume_available = None                      # platform.StorageVolume
+        self.when_used = None                             # shared.TimePeriod
 
 
 class Performance(object):
@@ -69,47 +118,23 @@ class Performance(object):
         self.total_nodes_used = None                      # int
 
 
-class ComponentPerformance(object):
+class StoragePool(object):
     """A concrete class within the cim v2 type system.
 
-    Describes the simulation rate of a component in seconds per model day
+    Homogeneous storage pool on a computing machine
 
     """
     def __init__(self):
         """Constructor.
 
         """
-        super(ComponentPerformance, self).__init__()
+        super(StoragePool, self).__init__()
 
-        self.component = None                             # software.SoftwareComponent
-        self.component_name = None                        # str
-        self.cores_used = None                            # int
-        self.nodes_used = None                            # int
-        self.speed = None                                 # float
-
-
-class Partition(object):
-    """A concrete class within the cim v2 type system.
-
-    A major partition (component) of a computing system (aka machine)
-
-    """
-    def __init__(self):
-        """Constructor.
-
-        """
-        super(Partition, self).__init__()
-
-        self.compute_pools = []                           # platform.ComputePool
         self.description = None                           # shared.Cimtext
-        self.institution = None                           # shared.Party
-        self.model_number = None                          # str
         self.name = None                                  # str
-        self.online_documentation = []                    # shared.OnlineResource
-        self.partition = []                               # platform.Partition
-        self.storage_pools = []                           # platform.StoragePool
+        self.type = None                                  # platform.StorageSystems
         self.vendor = None                                # shared.Party
-        self.when_used = None                             # shared.TimePeriod
+        self.volume_available = None                      # platform.StorageVolume
 
 
 class StorageVolume(object):
@@ -126,31 +151,6 @@ class StorageVolume(object):
 
         self.units = None                                 # platform.VolumeUnits
         self.volume = None                                # int
-
-
-class ComputePool(object):
-    """A concrete class within the cim v2 type system.
-
-    Homogeneous pool of nodes within a computing machine.
-
-    """
-    def __init__(self):
-        """Constructor.
-
-        """
-        super(ComputePool, self).__init__()
-
-        self.accelerator_type = None                      # str
-        self.accelerators_per_node = None                 # int
-        self.compute_cores_per_node = None                # int
-        self.cpu_type = None                              # str
-        self.description = None                           # shared.Cimtext
-        self.interconnect = None                          # str
-        self.memory_per_node = None                       # platform.StorageVolume
-        self.model_number = None                          # str
-        self.name = None                                  # str
-        self.number_of_nodes = None                       # int
-        self.operating_system = None                      # str
 
 
 class Machine(Partition):

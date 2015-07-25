@@ -21,6 +21,69 @@ import typeset_for_shared_package as shared
 
 
 
+class Algorithm(object):
+    """A concrete class within the cim v2 type system.
+
+    Used to hold information associated with a process algorithm and it's properties.
+    Expected to be used to describe aspects of how a process is implemented.
+
+    """
+    def __init__(self):
+        """Constructor.
+
+        """
+        super(Algorithm, self).__init__()
+
+        self.diagnostic_variables = []                    # data.VariableCollection
+        self.heading = None                               # str
+        self.implementation_overview = None               # shared.Cimtext
+        self.prognostic_variables = []                    # data.VariableCollection
+        self.references = []                              # shared.Citation
+
+
+class ConservationProperties(object):
+    """A concrete class within the cim v2 type system.
+
+    Describes how prognostic variables are conserved
+
+    """
+    def __init__(self):
+        """Constructor.
+
+        """
+        super(ConservationProperties, self).__init__()
+
+        self.corrected_conserved_prognostic_variables = None# data.VariableCollection
+        self.correction_methodology = None                # shared.Cimtext
+        self.flux_correction_was_used = None              # bool
+
+
+class Extent(object):
+    """A concrete class within the cim v2 type system.
+
+    Key scientific characteristics of the grid use to simulate a specific domain.
+    Note that the extent does not itself describe a grid, so, for example, a polar
+    stereographic grid may have an extent of northern boundary 90N, southern boundary
+    45N, but the fact that it is PS comes from the grid_type.
+
+    """
+    def __init__(self):
+        """Constructor.
+
+        """
+        super(Extent, self).__init__()
+
+        self.eastern_boundary = None                      # float
+        self.is_global = None                             # bool
+        self.maximum_vertical_level = None                # float
+        self.minimum_vertical_level = None                # float
+        self.northern_boundary = None                     # float
+        self.region_known_as = []                         # str
+        self.southern_boundary = None                     # float
+        self.western_boundary = None                      # float
+        self.z_units = None                               # str
+
+
 class GridSummary(object):
     """A concrete class within the cim v2 type system.
 
@@ -63,24 +126,6 @@ class Process(object):
         self.time_step_in_process = None                  # float
 
 
-class Tuning(object):
-    """A concrete class within the cim v2 type system.
-
-    Method used to optimise equation parameters in model component (aka "tuning")
-
-    """
-    def __init__(self):
-        """Constructor.
-
-        """
-        super(Tuning, self).__init__()
-
-        self.description = None                           # shared.Cimtext
-        self.global_mean_metrics_used = None              # data.VariableCollection
-        self.regional_metrics_used = None                 # data.VariableCollection
-        self.trend_metrics_used = None                    # data.VariableCollection
-
-
 class ProcessDetail(object):
     """A concrete class within the cim v2 type system.
 
@@ -103,50 +148,27 @@ class ProcessDetail(object):
         self.vocabulary = None                            # str
 
 
-class Algorithm(object):
+class Resolution(object):
     """A concrete class within the cim v2 type system.
 
-    Used to hold information associated with a process algorithm and it's properties.
-    Expected to be used to describe aspects of how a process is implemented.
+    Describes the computational spatial resolution of a component or process. Not intended
+        to replace or replicate the output grid description.  When it appears as part of a process
+        description, provide only properties that differ from parent domain. Note that where
+        different variables have different grids, differences in resolution can be captured by
+        repeating the number_of_ properties.
 
     """
     def __init__(self):
         """Constructor.
 
         """
-        super(Algorithm, self).__init__()
+        super(Resolution, self).__init__()
 
-        self.diagnostic_variables = []                    # data.VariableCollection
-        self.heading = None                               # str
-        self.implementation_overview = None               # shared.Cimtext
-        self.prognostic_variables = []                    # data.VariableCollection
-        self.references = []                              # shared.Citation
-
-
-class Extent(object):
-    """A concrete class within the cim v2 type system.
-
-    Key scientific characteristics of the grid use to simulate a specific domain.
-    Note that the extent does not itself describe a grid, so, for example, a polar
-    stereographic grid may have an extent of northern boundary 90N, southern boundary
-    45N, but the fact that it is PS comes from the grid_type.
-
-    """
-    def __init__(self):
-        """Constructor.
-
-        """
-        super(Extent, self).__init__()
-
-        self.eastern_boundary = None                      # float
-        self.is_global = None                             # bool
-        self.maximum_vertical_level = None                # float
-        self.minimum_vertical_level = None                # float
-        self.northern_boundary = None                     # float
-        self.region_known_as = []                         # str
-        self.southern_boundary = None                     # float
-        self.western_boundary = None                      # float
-        self.z_units = None                               # str
+        self.equivalent_horizontal_resolution = None      # float
+        self.is_adaptive_grid = None                      # bool
+        self.name = None                                  # str
+        self.number_of_levels = []                        # int
+        self.number_of_xy_gridpoints = []                 # int
 
 
 class ScientificDomain(object):
@@ -174,44 +196,22 @@ class ScientificDomain(object):
         self.time_step = None                             # float
 
 
-class Resolution(object):
+class Tuning(object):
     """A concrete class within the cim v2 type system.
 
-    Describes the computational spatial resolution of a component or process. Not intended
-        to replace or replicate the output grid description.  When it appears as part of a process
-        description, provide only properties that differ from parent domain. Note that where
-        different variables have different grids, differences in resolution can be captured by
-        repeating the number_of_ properties.
+    Method used to optimise equation parameters in model component (aka "tuning")
 
     """
     def __init__(self):
         """Constructor.
 
         """
-        super(Resolution, self).__init__()
+        super(Tuning, self).__init__()
 
-        self.equivalent_horizontal_resolution = None      # float
-        self.is_adaptive_grid = None                      # bool
-        self.name = None                                  # str
-        self.number_of_levels = []                        # int
-        self.number_of_xy_gridpoints = []                 # int
-
-
-class ConservationProperties(object):
-    """A concrete class within the cim v2 type system.
-
-    Describes how prognostic variables are conserved
-
-    """
-    def __init__(self):
-        """Constructor.
-
-        """
-        super(ConservationProperties, self).__init__()
-
-        self.corrected_conserved_prognostic_variables = None# data.VariableCollection
-        self.correction_methodology = None                # shared.Cimtext
-        self.flux_correction_was_used = None              # bool
+        self.description = None                           # shared.Cimtext
+        self.global_mean_metrics_used = None              # data.VariableCollection
+        self.regional_metrics_used = None                 # data.VariableCollection
+        self.trend_metrics_used = None                    # data.VariableCollection
 
 
 class GridLayouts(object):

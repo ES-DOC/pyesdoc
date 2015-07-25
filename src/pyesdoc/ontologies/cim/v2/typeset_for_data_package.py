@@ -44,22 +44,6 @@ class Dataset(object):
         self.related_to_dataset = []                      # data.RelatedData
 
 
-class VariableCollection(object):
-    """A concrete class within the cim v2 type system.
-
-    A collection of variables within the scope of a code or process element
-
-    """
-    def __init__(self):
-        """Constructor.
-
-        """
-        super(VariableCollection, self).__init__()
-
-        self.collection_name = None                       # str
-        self.variables = []                               # str
-
-
 class RelatedData(shared.CimLink):
     """A concrete class within the cim v2 type system.
 
@@ -74,6 +58,22 @@ class RelatedData(shared.CimLink):
 
         self.other_dataset = None                         # data.Dataset
         self.relationship = None                          # data.DataAssociationTypes
+
+
+class VariableCollection(object):
+    """A concrete class within the cim v2 type system.
+
+    A collection of variables within the scope of a code or process element
+
+    """
+    def __init__(self):
+        """Constructor.
+
+        """
+        super(VariableCollection, self).__init__()
+
+        self.collection_name = None                       # str
+        self.variables = []                               # str
 
 
 class DataAssociationTypes(object):

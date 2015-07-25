@@ -37,6 +37,24 @@ class DrsEnsembleIdentifier(object):
         self.realisation_number = None                    # int
 
 
+class DrsGeographicalIndicator(object):
+    """A concrete class within the cim v2 type system.
+
+    Specifies geographical subsets described by bounding boxes or by named regions.
+     One of spatial domain or bounding box must appear.
+
+    """
+    def __init__(self):
+        """Constructor.
+
+        """
+        super(DrsGeographicalIndicator, self).__init__()
+
+        self.bounding_box = None                          # str
+        self.operator = None                              # drs.DrsGeographicalOperators
+        self.spatial_domain = None                        # str
+
+
 class DrsPublicationDataset(object):
     """A concrete class within the cim v2 type system.
 
@@ -78,24 +96,6 @@ class DrsTemporalIdentifier(object):
         self.end = None                                   # str
         self.start = None                                 # str
         self.suffix = None                                # drs.DrsTimeSuffixes
-
-
-class DrsGeographicalIndicator(object):
-    """A concrete class within the cim v2 type system.
-
-    Specifies geographical subsets described by bounding boxes or by named regions.
-     One of spatial domain or bounding box must appear.
-
-    """
-    def __init__(self):
-        """Constructor.
-
-        """
-        super(DrsGeographicalIndicator, self).__init__()
-
-        self.bounding_box = None                          # str
-        self.operator = None                              # drs.DrsGeographicalOperators
-        self.spatial_domain = None                        # str
 
 
 class DrsAtomicDataset(DrsPublicationDataset):

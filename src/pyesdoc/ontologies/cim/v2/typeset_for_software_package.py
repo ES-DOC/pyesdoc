@@ -21,65 +21,6 @@ import typeset_for_shared_package as shared
 
 
 
-class Variable(object):
-    """A concrete class within the cim v2 type system.
-
-    An instance of a model software variable which may be prognostic or diagnostic, and which is
-    available as a connection to other software components. Note that these variables may only exist
-    within the software workflow as interim quantities or coupling endpoints. Input and output
-    variables will be a subset of these software variables.
-
-    """
-    def __init__(self):
-        """Constructor.
-
-        """
-        super(Variable, self).__init__()
-
-        self.description = None                           # str
-        self.name = None                                  # str
-        self.prognostic = None                            # bool
-
-
-class EntryPoint(object):
-    """A concrete class within the cim v2 type system.
-
-    Describes a function or subroutine of a SoftwareComponent.
-    BFG will use these EntryPoints to define a schedule of subroutine calls for a coupled model.
-    Currently, a very basic schedule can be approximated by using the "proceeds" and "follows" attributes,
-    however a more complete system is required for full BFG compatibility.
-    Every EntryPoint can have a set of arguments associated with it.
-    These reference (previously defined) variables
-
-    """
-    def __init__(self):
-        """Constructor.
-
-        """
-        super(EntryPoint, self).__init__()
-
-        self.name = None                                  # str
-
-
-class Composition(object):
-    """A concrete class within the cim v2 type system.
-
-    Describes how component variables are coupled together either to/from other
-    SoftwareComponents or external data files. The variables specified by a component's
-    composition must be owned by that component, or a  child of that component;
-    child components cannot couple together parent variables.
-
-    """
-    def __init__(self):
-        """Constructor.
-
-        """
-        super(Composition, self).__init__()
-
-        self.couplings = []                               # str
-        self.description = None                           # str
-
-
 class ComponentBase(object):
     """An abstract class within the cim v2 type system.
 
@@ -107,6 +48,25 @@ class ComponentBase(object):
         self.version = None                               # str
 
 
+class Composition(object):
+    """A concrete class within the cim v2 type system.
+
+    Describes how component variables are coupled together either to/from other
+    SoftwareComponents or external data files. The variables specified by a component's
+    composition must be owned by that component, or a  child of that component;
+    child components cannot couple together parent variables.
+
+    """
+    def __init__(self):
+        """Constructor.
+
+        """
+        super(Composition, self).__init__()
+
+        self.couplings = []                               # str
+        self.description = None                           # str
+
+
 class DevelopmentPath(object):
     """A concrete class within the cim v2 type system.
 
@@ -126,6 +86,26 @@ class DevelopmentPath(object):
         self.previous_version = None                      # str
 
 
+class EntryPoint(object):
+    """A concrete class within the cim v2 type system.
+
+    Describes a function or subroutine of a SoftwareComponent.
+    BFG will use these EntryPoints to define a schedule of subroutine calls for a coupled model.
+    Currently, a very basic schedule can be approximated by using the "proceeds" and "follows" attributes,
+    however a more complete system is required for full BFG compatibility.
+    Every EntryPoint can have a set of arguments associated with it.
+    These reference (previously defined) variables
+
+    """
+    def __init__(self):
+        """Constructor.
+
+        """
+        super(EntryPoint, self).__init__()
+
+        self.name = None                                  # str
+
+
 class Gridspec(object):
     """A concrete class within the cim v2 type system.
 
@@ -141,27 +121,24 @@ class Gridspec(object):
         self.description = None                           # str
 
 
-class SoftwareComponent(ComponentBase):
+class Variable(object):
     """A concrete class within the cim v2 type system.
 
-    An embedded piece of software that does not normally function as a standalone model (although
-    it may be used standalone in a test harness).
+    An instance of a model software variable which may be prognostic or diagnostic, and which is
+    available as a connection to other software components. Note that these variables may only exist
+    within the software workflow as interim quantities or coupling endpoints. Input and output
+    variables will be a subset of these software variables.
 
     """
     def __init__(self):
         """Constructor.
 
         """
-        super(SoftwareComponent, self).__init__()
+        super(Variable, self).__init__()
 
-        self.composition = None                           # software.Composition
-        self.connection_points = []                       # software.Variable
-        self.coupling_framework = None                    # software.CouplingFramework
-        self.dependencies = []                            # software.EntryPoint
-        self.grid = None                                  # software.Gridspec
-        self.language = None                              # software.ProgrammingLanguage
-        self.license = None                               # str
-        self.sub_components = []                          # software.SoftwareComponent
+        self.description = None                           # str
+        self.name = None                                  # str
+        self.prognostic = None                            # bool
 
 
 class Model(ComponentBase):
@@ -185,6 +162,29 @@ class Model(ComponentBase):
         self.internal_software_components = []            # software.SoftwareComponent
         self.meta = shared.Meta()                         # shared.Meta
         self.scientific_domain = []                       # science.ScientificDomain
+
+
+class SoftwareComponent(ComponentBase):
+    """A concrete class within the cim v2 type system.
+
+    An embedded piece of software that does not normally function as a standalone model (although
+    it may be used standalone in a test harness).
+
+    """
+    def __init__(self):
+        """Constructor.
+
+        """
+        super(SoftwareComponent, self).__init__()
+
+        self.composition = None                           # software.Composition
+        self.connection_points = []                       # software.Variable
+        self.coupling_framework = None                    # software.CouplingFramework
+        self.dependencies = []                            # software.EntryPoint
+        self.grid = None                                  # software.Gridspec
+        self.language = None                              # software.ProgrammingLanguage
+        self.license = None                               # str
+        self.sub_components = []                          # software.SoftwareComponent
 
 
 class CouplingFramework(object):
