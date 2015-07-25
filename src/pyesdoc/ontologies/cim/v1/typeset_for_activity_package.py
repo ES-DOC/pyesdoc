@@ -21,60 +21,6 @@ import typeset_for_shared_package as shared
 
 
 
-class Conformance(object):
-    """A concrete class within the cim v1 type system.
-
-    A conformance class maps how a configured model component met a specific numerical requirement.  For example, for a double CO2 boundary condition, a model component might read a CO2 dataset in which CO2 has been doubled, or it might modify a parameterisation (presumably with a factor of two somewhere).  So, the conformance links a requirement to a DataSource (which can be either an actual DataObject or a property of a model component).  In some cases a model/simulation may _naturally_ conform to a requirement.  In this case there would be no reference to a DataSource but the conformant attribute would be true.  If something is purpopsefully non-conformant then the conformant attribute would be false.
-
-    """
-    def __init__(self):
-        """Constructor.
-
-        """
-        super(Conformance, self).__init__()
-
-        self.description = None                           # str
-        self.frequency = None                             # activity.FrequencyType
-        self.is_conformant = None                         # bool
-        self.requirements = []                            # activity.NumericalRequirement
-        self.requirements_references = []                 # shared.DocReference
-        self.sources = []                                 # shared.DataSource
-        self.sources_references = []                      # shared.DocReference
-        self.type = None                                  # activity.ConformanceType
-
-
-class SimulationRelationshipTarget(object):
-    """A concrete class within the cim v1 type system.
-
-    Creates and returns instance of simulation_relationship_target class.
-
-    """
-    def __init__(self):
-        """Constructor.
-
-        """
-        super(SimulationRelationshipTarget, self).__init__()
-
-        self.reference = None                             # shared.DocReference
-        self.target = None                                # activity.SimulationType
-
-
-class SimulationRelationship(shared.Relationship):
-    """A concrete class within the cim v1 type system.
-
-    Contains a set of relationship types specific to a simulation document that can be used to describe its genealogy.
-
-    """
-    def __init__(self):
-        """Constructor.
-
-        """
-        super(SimulationRelationship, self).__init__()
-
-        self.target = None                                # activity.SimulationRelationshipTarget
-        self.type = None                                  # activity.SimulationRelationshipType
-
-
 class NumericalRequirement(object):
     """An abstract class within the cim v1 type system.
 
@@ -117,6 +63,44 @@ class NumericalRequirementOption(object):
         self.sub_options = []                             # activity.NumericalRequirementOption
 
 
+class SimulationRelationshipTarget(object):
+    """A concrete class within the cim v1 type system.
+
+    Creates and returns instance of simulation_relationship_target class.
+
+    """
+    def __init__(self):
+        """Constructor.
+
+        """
+        super(SimulationRelationshipTarget, self).__init__()
+
+        self.reference = None                             # shared.DocReference
+        self.target = None                                # activity.SimulationType
+
+
+class Conformance(object):
+    """A concrete class within the cim v1 type system.
+
+    A conformance class maps how a configured model component met a specific numerical requirement.  For example, for a double CO2 boundary condition, a model component might read a CO2 dataset in which CO2 has been doubled, or it might modify a parameterisation (presumably with a factor of two somewhere).  So, the conformance links a requirement to a DataSource (which can be either an actual DataObject or a property of a model component).  In some cases a model/simulation may _naturally_ conform to a requirement.  In this case there would be no reference to a DataSource but the conformant attribute would be true.  If something is purpopsefully non-conformant then the conformant attribute would be false.
+
+    """
+    def __init__(self):
+        """Constructor.
+
+        """
+        super(Conformance, self).__init__()
+
+        self.description = None                           # str
+        self.frequency = None                             # activity.FrequencyType
+        self.is_conformant = None                         # bool
+        self.requirements = []                            # activity.NumericalRequirement
+        self.requirements_references = []                 # shared.DocReference
+        self.sources = []                                 # shared.DataSource
+        self.sources_references = []                      # shared.DocReference
+        self.type = None                                  # activity.ConformanceType
+
+
 class ExperimentRelationshipTarget(object):
     """A concrete class within the cim v1 type system.
 
@@ -147,6 +131,22 @@ class ExperimentRelationship(shared.Relationship):
 
         self.target = None                                # activity.ExperimentRelationshipTarget
         self.type = None                                  # activity.ExperimentRelationshipType
+
+
+class SimulationRelationship(shared.Relationship):
+    """A concrete class within the cim v1 type system.
+
+    Contains a set of relationship types specific to a simulation document that can be used to describe its genealogy.
+
+    """
+    def __init__(self):
+        """Constructor.
+
+        """
+        super(SimulationRelationship, self).__init__()
+
+        self.target = None                                # activity.SimulationRelationshipTarget
+        self.type = None                                  # activity.SimulationRelationshipType
 
 
 class Activity(object):
@@ -191,21 +191,6 @@ class Experiment(Activity):
         self.supports_references = []                     # shared.DocReference
 
 
-class InitialCondition(NumericalRequirement):
-    """A concrete class within the cim v1 type system.
-
-    An initial condition is a numerical requirement on a model prognostic variable value at time zero.
-
-    """
-    def __init__(self):
-        """Constructor.
-
-        """
-        super(InitialCondition, self).__init__()
-
-        self.requirement_type = str("initialCondition")
-
-
 class SpatioTemporalConstraint(NumericalRequirement):
     """A concrete class within the cim v1 type system.
 
@@ -223,34 +208,19 @@ class SpatioTemporalConstraint(NumericalRequirement):
         self.requirement_type = str("spatioTemporalConstraint")
 
 
-class LateralBoundaryCondition(NumericalRequirement):
+class InitialCondition(NumericalRequirement):
     """A concrete class within the cim v1 type system.
 
-    A boundary condition is a numerical requirement which looks like a variable imposed on the model evolution (i.e. it might - or might not - evolve with time, but is seen by the model at various times during its evolution) as opposed to an initial condition (at model time zero).
+    An initial condition is a numerical requirement on a model prognostic variable value at time zero.
 
     """
     def __init__(self):
         """Constructor.
 
         """
-        super(LateralBoundaryCondition, self).__init__()
+        super(InitialCondition, self).__init__()
 
-        self.requirement_type = str("lateralBoundaryCondition")
-
-
-class OutputRequirement(NumericalRequirement):
-    """A concrete class within the cim v1 type system.
-
-    Contains a set of relationship types specific to a simulation document that can be used to describe its genealogy.
-
-    """
-    def __init__(self):
-        """Constructor.
-
-        """
-        super(OutputRequirement, self).__init__()
-
-        self.requirement_type = str("outputRequirement")
+        self.requirement_type = str("initialCondition")
 
 
 class PhysicalModification(Conformance):
@@ -306,6 +276,55 @@ class NumericalExperiment(Experiment):
         self.meta = shared.DocMetaInfo()                  # shared.DocMetaInfo
         self.requirements = []                            # activity.NumericalRequirement
         self.short_name = None                            # str
+
+
+class LateralBoundaryCondition(NumericalRequirement):
+    """A concrete class within the cim v1 type system.
+
+    A boundary condition is a numerical requirement which looks like a variable imposed on the model evolution (i.e. it might - or might not - evolve with time, but is seen by the model at various times during its evolution) as opposed to an initial condition (at model time zero).
+
+    """
+    def __init__(self):
+        """Constructor.
+
+        """
+        super(LateralBoundaryCondition, self).__init__()
+
+        self.requirement_type = str("lateralBoundaryCondition")
+
+
+class Ensemble(NumericalActivity):
+    """A concrete class within the cim v1 type system.
+
+    An ensemble is made up of two or more simulations which are to be compared against each other to create ensemble statistics. Ensemble members can differ in terms of initial conditions, physical parameterisation and the model used. An ensemble bundles together sets of ensembleMembers, all of which reference the same Simulation(Run) and include one or more changes.
+
+    """
+    def __init__(self):
+        """Constructor.
+
+        """
+        super(Ensemble, self).__init__()
+
+        self.members = []                                 # activity.EnsembleMember
+        self.meta = shared.DocMetaInfo()                  # shared.DocMetaInfo
+        self.outputs = []                                 # shared.DataSource
+        self.outputs_references = []                      # shared.DocReference
+        self.types = []                                   # activity.EnsembleType
+
+
+class OutputRequirement(NumericalRequirement):
+    """A concrete class within the cim v1 type system.
+
+    Contains a set of relationship types specific to a simulation document that can be used to describe its genealogy.
+
+    """
+    def __init__(self):
+        """Constructor.
+
+        """
+        super(OutputRequirement, self).__init__()
+
+        self.requirement_type = str("outputRequirement")
 
 
 class MeasurementCampaign(Activity):
@@ -411,25 +430,6 @@ class Simulation(NumericalActivity):
         self.spinup_date_range = None                     # shared.ClosedDateRange
         self.spinup_simulation = None                     # activity.Simulation
         self.spinup_simulation_reference = None           # shared.DocReference
-
-
-class Ensemble(NumericalActivity):
-    """A concrete class within the cim v1 type system.
-
-    An ensemble is made up of two or more simulations which are to be compared against each other to create ensemble statistics. Ensemble members can differ in terms of initial conditions, physical parameterisation and the model used. An ensemble bundles together sets of ensembleMembers, all of which reference the same Simulation(Run) and include one or more changes.
-
-    """
-    def __init__(self):
-        """Constructor.
-
-        """
-        super(Ensemble, self).__init__()
-
-        self.members = []                                 # activity.EnsembleMember
-        self.meta = shared.DocMetaInfo()                  # shared.DocMetaInfo
-        self.outputs = []                                 # shared.DataSource
-        self.outputs_references = []                      # shared.DocReference
-        self.types = []                                   # activity.EnsembleType
 
 
 class SimulationComposite(Simulation):
