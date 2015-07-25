@@ -19,7 +19,6 @@ import arrow
 from lxml import etree as et
 
 import pyesdoc
-from pyesdoc.utils import convert
 
 
 
@@ -45,7 +44,7 @@ def _get_value_as_string(xml, nsmap):
     if xml is None:
         result = None
     elif isinstance(xml, types.StringTypes):
-        result = convert.unicode_to_str(xml)
+        result = xml.encode('utf-8', 'ignore')
     else:
         result = et.tostring(xml)
 
