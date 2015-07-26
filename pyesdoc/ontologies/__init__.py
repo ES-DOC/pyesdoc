@@ -54,12 +54,12 @@ def register(o):
     :type o: module
 
     """
-    if o in ONTOLOGIES:
-        return
-
     global ONTOLOGIES
     global TYPES
     global DOC_TYPES
+
+    if o in ONTOLOGIES:
+        return
 
     ONTOLOGIES += (o,)
     for v in o.VERSIONS:
