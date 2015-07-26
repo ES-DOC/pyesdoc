@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 """
-.. module:: decoder_xml_utils.py
+.. module:: decoder_utils.py
 
    :copyright: @2013 Earth System Documentation (http://es-doc.org)
    :license: GPL / CeCILL
@@ -9,7 +9,7 @@
    :synopsis: XML decoding utility functions.
 
 .. moduleauthor:: Earth System Documentation (ES-DOC) <dev@es-doc.org>
-.. note:: Code generated using esdoc_mp.
+.. note:: Code generated using esdoc_mp @ 2013-08-28 14:41:13.340289.
 
 """
 import uuid
@@ -19,6 +19,7 @@ import arrow
 from lxml import etree as et
 
 import pyesdoc
+from pyesdoc.utils import convert
 
 
 
@@ -28,9 +29,7 @@ NULL_UUID = ['00000000-0000-0000-0000-000000000000']
 
 
 def _get_value_as_string(xml, nsmap):
-    """Converts passed xml fragment to a string.
-
-    """
+    """Converts passed xml fragment to a string."""
     result = None
 
     # Strip first item from iterables.
@@ -44,7 +43,7 @@ def _get_value_as_string(xml, nsmap):
     if xml is None:
         result = None
     elif isinstance(xml, types.StringTypes):
-        result = xml.encode('utf-8', 'ignore')
+        result = convert.unicode_to_str(xml)
     else:
         result = et.tostring(xml)
 
@@ -57,16 +56,12 @@ def _get_value_as_string(xml, nsmap):
 
 
 def _convert_to_string(xml, nsmap=None):
-    """Converts an etree element xml representation into a string type.
-
-    """
+    """Converts an etree element xml representation into a string type."""
     return _get_value_as_string(xml, nsmap)
 
 
 def _convert_to_bool(xml, nsmap=None):
-    """Converts an etree element xml representation into a boolean type.
-
-    """
+    """Converts an etree element xml representation into a boolean type."""
     as_string = _get_value_as_string(xml, nsmap)
     if as_string is None:
         return bool()
@@ -81,9 +76,7 @@ def _convert_to_bool(xml, nsmap=None):
 
 
 def _convert_to_integer(xml, nsmap=None):
-    """Converts an etree element xml representation into an integer type.
-
-    """
+    """Converts an etree element xml representation into an integer type."""
     as_string = _get_value_as_string(xml, nsmap)
     if as_string is None or as_string.upper() == 'NONE':
         return int()
@@ -92,9 +85,7 @@ def _convert_to_integer(xml, nsmap=None):
 
 
 def _convert_to_float(xml, nsmap=None):
-    """Converts an etree element xml representation into a float type.
-
-    """
+    """Converts an etree element xml representation into a float type."""
     as_string = _get_value_as_string(xml, nsmap)
     if as_string is None:
         return float()
@@ -103,9 +94,7 @@ def _convert_to_float(xml, nsmap=None):
 
 
 def _convert_to_uid(xml, nsmap=None):
-    """Converts an etree element xml representation into a uid type.
-
-    """
+    """Converts an etree element xml representation into a uid type."""
     as_string = _get_value_as_string(xml, nsmap)
     if as_string is None or as_string in NULL_UUID:
         return uuid.uuid4()
@@ -118,9 +107,7 @@ def _convert_to_uid(xml, nsmap=None):
 
 
 def _convert_to_datetime(xml, nsmap=None):
-    """Converts an etree element xml representation into a datetime type.
-
-    """
+    """Converts an etree element xml representation into a datetime type."""
     as_string = _get_value_as_string(xml, nsmap)
     if as_string is None:
         return None
@@ -129,7 +116,6 @@ def _convert_to_datetime(xml, nsmap=None):
             return arrow.get(as_string, 'YYYY').datetime
         else:
             return arrow.get(as_string).datetime
-
 
 # Set of simple type convertors.
 _simple_type_decoders = {
@@ -342,31 +328,41 @@ def load_xml(xml, return_nsmap=False, default_ns='cim'):
     if xml is None:
         raise pyesdoc.DecodingException("XML is undefined.")
 
-    nsmap = None
+
     # ... etree elements.
+    nsmap = None
     if isinstance(xml, et._Element):
         nsmap = xml.nsmap
+
     # ... etree element trees.
     elif isinstance(xml, et._ElementTree):
         xml = xml.getroot()
         nsmap = xml.nsmap
+
     else:
-        # ... files / URLs.
+        # ... files / url's
         try:
             xml = et.parse(xml)
             xml = xml.getroot()
             nsmap = xml.nsmap
         except Exception as e:
-            # ... strings.
-            if isinstance(xml, basestring):
+            # ... unicode
+            if isinstance(xml, unicode):
+                xml = convert.unicode_to_str(xml)
+
+            # ... strings
+            if isinstance(xml, str):
                 try:
                     xml = et.fromstring(xml)
-                except Exception:
+                except Exception as err:
                     raise pyesdoc.DecodingException("Invalid xml string.")
                 else:
                     nsmap = xml.nsmap
+
+            # Unsupported
             else:
                 raise pyesdoc.DecodingException("Unsupported xml type, must be either a string, file, url or etree.")
+
 
     # Set default namespace.
     if nsmap is not None:

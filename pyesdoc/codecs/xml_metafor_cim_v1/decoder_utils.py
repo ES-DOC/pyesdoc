@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 """
-.. module:: decoder_xml_utils.py
+.. module:: decoder_utils.py
 
    :copyright: @2013 Earth System Documentation (http://es-doc.org)
    :license: GPL / CeCILL
