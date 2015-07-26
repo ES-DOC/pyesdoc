@@ -104,13 +104,13 @@ class ArchiveFileInfo(object):
         except Exception as err:
             raise pyesdoc.LoadingException(err)
 
-        # Parse.
+        # Parse - performs project/source specific processing.
         try:
             pyesdoc.archive.parse(document, self.encoding, self.project, self.source)
         except Exception as err:
             raise pyesdoc.ParsingException(err)
 
-        # Extend.
+        # Extend - performs generic processing.
         if extend:
             try:
                 pyesdoc.extend(document)

@@ -50,8 +50,10 @@ def _assert_decode(target, encoding):
     """
     if target is None:
         rt.throw("Documents cannot be decoded from null objects.")
+
     if not encoding in _CODECS:
         raise NotImplementedError('Document decoding is unsupported :: encoding = {0}.'.format(encoding))
+
     if type(target) not in _DECODE_TYPE_WHITELIST[encoding]:
         err = "Document representation type ({0}) is unsupported, it must be one of {1}."
         err = err.format(type(target), _DECODE_TYPE_WHITELIST[encoding])
@@ -70,9 +72,11 @@ def decode(target, encoding):
 
     """
     _assert_decode(target, encoding)
+
     document = _CODECS[encoding].decode(target)
     if document:
         document.meta.type == type(document).type_key
+
     return document
 
 
@@ -82,8 +86,10 @@ def _assert_encode(target, encoding):
     """
     if target is None:
         rt.throw("Cannot encode a null document.")
+
     if type(target) not in ontologies.get_types():
         rt.throw("Unsupported document type: {0}.".format(type(target)))
+
     if not encoding in _CODECS:
         raise NotImplementedError('Unsupported document encoding :: {0}.'.format(encoding))
 
@@ -103,8 +109,8 @@ def encode(target, encoding):
     except TypeError:
         _assert_encode(target, encoding)
         return _CODECS[encoding].encode(target)
-    else:
-        return [encode(d, encoding) for d in target]
+
+    return [encode(d, encoding) for d in target]
 
 
 def convert(doc, encoding_from, encoding_to):

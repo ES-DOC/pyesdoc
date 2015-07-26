@@ -65,11 +65,14 @@ def unicode_to_str(val):
     if val is None:
         return str()
 
-    val = unicode(val).encode('utf-8').strip()
+    if not isinstance(val, unicode):
+        val = unicode(val)
+
+    val = val.encode('utf-8').strip()
     if not len(val):
         return str()
 
-    return str(val)
+    return val
 
 
 def capitalize(target):

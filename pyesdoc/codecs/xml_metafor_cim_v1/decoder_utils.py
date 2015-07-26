@@ -328,31 +328,41 @@ def load_xml(xml, return_nsmap=False, default_ns='cim'):
     if xml is None:
         raise pyesdoc.DecodingException("XML is undefined.")
 
-    nsmap = None
+
     # ... etree elements.
+    nsmap = None
     if isinstance(xml, et._Element):
         nsmap = xml.nsmap
+
     # ... etree element trees.
     elif isinstance(xml, et._ElementTree):
         xml = xml.getroot()
         nsmap = xml.nsmap
+
     else:
-        # ... files / URLs.
+        # ... files / url's
         try:
             xml = et.parse(xml)
             xml = xml.getroot()
             nsmap = xml.nsmap
         except Exception as e:
-            # ... strings.
-            if isinstance(xml, basestring):
+            # ... unicode
+            if isinstance(xml, unicode):
+                xml = convert.unicode_to_str(xml)
+
+            # ... strings
+            if isinstance(xml, str):
                 try:
                     xml = et.fromstring(xml)
-                except Exception:
+                except Exception as err:
                     raise pyesdoc.DecodingException("Invalid xml string.")
                 else:
                     nsmap = xml.nsmap
+
+            # Unsupported
             else:
                 raise pyesdoc.DecodingException("Unsupported xml type, must be either a string, file, url or etree.")
+
 
     # Set default namespace.
     if nsmap is not None:
