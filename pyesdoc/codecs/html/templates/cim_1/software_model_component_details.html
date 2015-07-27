@@ -23,7 +23,7 @@
 	{% comment ************************* %}
 	{% comment Sub-section: license     %}
 	{% comment ************************* %}
-	{% if doc.license %}
+	{% if doc.license and doc.license.name %}
 		{% set license = doc.license %}
 		{% set header = "h4" %}
 		{% set section_id = "{0}-details-license".format(doc.ext.full_id) %}
