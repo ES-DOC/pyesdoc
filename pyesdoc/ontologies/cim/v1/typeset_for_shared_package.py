@@ -238,7 +238,7 @@ class License(object):
 
         self.contact = None                               # str
         self.description = None                           # str
-        self.is_unrestricted = None                       # str
+        self.is_unrestricted = None                       # bool
         self.name = None                                  # str
 
 

@@ -655,7 +655,7 @@ shared.DocRelationshipTarget.type_info = (
 shared.License.type_info = (
     ('contact', str, False, False),
     ('description', str, False, False),
-    ('is_unrestricted', str, False, False),
+    ('is_unrestricted', bool, False, False),
     ('name', str, False, False),
 )
 
