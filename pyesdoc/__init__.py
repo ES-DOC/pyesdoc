@@ -49,7 +49,7 @@ from pyesdoc import validation
 
 # Standard package info.
 __title__ = 'pyesdoc'
-__version__ = '0.9.2.0'
+__version__ = '0.9.2.1'
 __author__ = 'ES-DOC'
 __license__ = 'GPL'
 __copyright__ = 'Copyright 2015 ES-DOC'
