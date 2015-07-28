@@ -20,19 +20,13 @@ _INSTITUTE_OVERRIDES = {
 }
 
 
-def _is_of_type(doc, type_key):
-    """Helper function: returns document type match.
-
-    """
-    return doc.type_key.lower() == type_key
-
-
 def _set_document_type(doc):
     """Sets document type when unassigned.
 
     """
-    if _is_of_type(doc, _TYPE_KEY_MODEL_COMPONENT) and not doc.types:
-        doc.type = _TYPE_KEY_MODEL_COMPONENT
+    if doc.type_key.lower() == _TYPE_KEY_MODEL_COMPONENT and not doc.types:
+        if not doc.type:
+            doc.type = _TYPE_KEY_MODEL_COMPONENT
         doc.types = [doc.type]
 
 

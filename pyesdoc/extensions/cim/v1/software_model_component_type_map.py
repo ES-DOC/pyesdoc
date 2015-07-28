@@ -91,6 +91,7 @@ METAFOR_ESDOC_MODEL_COMPONENT_MAP = {
     'Model' : 'Earth System Model',
     'model' : 'Earth System Model',
     'cim.1.software.ModelComponent' : 'Earth System Model',
+    'cim.1.software.modelcomponent' : 'Earth System Model',
 
     # Sea Ice
     'SeaIce' : 'Sea Ice',
