@@ -14,6 +14,7 @@
 import os
 
 from pyesdoc.utils.convert import json_file_to_namedtuple
+from pyesdoc.utils. runtime import log
 
 
 
@@ -70,12 +71,13 @@ def _init():
 
     # Attempt to load config from file system.
     for func in (
-        _init_from_shell_config,
         _init_from_local_config,
         _init_from_user_home,
+        _init_from_shell_config,
         ):
         config_path = func()
         if config_path:
+            log("Loading pyesdoc config from: {}".format(config_path))
             break
 
     # Decode.
