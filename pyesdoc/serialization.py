@@ -73,11 +73,7 @@ def decode(target, encoding):
     """
     _assert_decode(target, encoding)
 
-    document = _CODECS[encoding].decode(target)
-    if document:
-        document.meta.type == type(document).type_key
-
-    return document
+    return _CODECS[encoding].decode(target)
 
 
 def _assert_encode(target, encoding):
