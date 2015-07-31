@@ -108,9 +108,12 @@ def encode(target, encoding):
         iter(target)
     except TypeError:
         _assert_encode(target, encoding)
-        return _CODECS[encoding].encode(target)
-
-    return [encode(d, encoding) for d in target]
+        encoded = _CODECS[encoding].encode(target)
+        if encoded:
+            encoded = encoded.strip()
+        return encoded
+    else:
+        return [encode(d, encoding) for d in target]
 
 
 def convert(doc, encoding_from, encoding_to):

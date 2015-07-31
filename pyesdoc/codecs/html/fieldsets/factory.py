@@ -12,12 +12,12 @@
 
 """
 from pyesdoc.codecs.html.fieldsets import cim_1
+from pyesdoc.codecs.html.fieldsets import cim_2
 
 
 
 # Fieldsets by ontology type.
-_FIELDSETS = cim_1.FIELDSETS
-
+_FIELDSETS = dict(cim_1.FIELDSETS.items() + cim_2.FIELDSETS.items())
 
 
 def create(fieldset):

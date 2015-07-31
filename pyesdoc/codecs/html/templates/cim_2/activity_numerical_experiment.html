@@ -1,0 +1,11 @@
+{% extends "../core/document.html" %}
+
+{% comment ***************** %}
+{% comment Emit content      %}
+{% comment ***************** %}
+{% block doc-content %}
+
+	{% set ctx = TemplateInfo(doc, fieldset = 'cim.2.activity.numericalexperiment') %}
+	{% include ../core/fieldset.html %}
+
+{% end %}
