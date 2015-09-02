@@ -639,6 +639,7 @@ shared.DocReference.type_info = (
     ('id', uuid.UUID, False, False),
     ('name', str, False, False),
     ('type', str, False, False),
+    ('url', str, False, False),
     ('version', int, False, False),
 )
 

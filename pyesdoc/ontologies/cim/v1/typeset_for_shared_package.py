@@ -205,6 +205,7 @@ class DocReference(object):
         self.id = None                                    # uuid.UUID
         self.name = None                                  # str
         self.type = None                                  # str
+        self.url = None                                   # str
         self.version = None                               # int
 
 
