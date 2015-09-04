@@ -1,5 +1,6 @@
 arrow
 feedparser
+ipython
 lxml
 nose
 requests
