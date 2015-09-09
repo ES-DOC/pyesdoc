@@ -23,8 +23,9 @@ import typeset_for_shared_package as shared
 class Calendar(object):
     """A concrete class within the cim v2 type system.
 
-    Creates and returns instance of calendar class. This class is based on the
-    calendar attributes and properties found in the CF netCDF conventions.
+    Describes the calendar required/used in an experiment/simulation.
+    This class is based on the calendar attributes and properties found in the
+    CF netCDF conventions.
 
     """
     def __init__(self):
@@ -69,8 +70,8 @@ class Citation(object):
         super(Citation, self).__init__()
 
         self.abstract = None                              # str
-        self.citation_str = None                          # shared.Cimtext
-        self.context = None                               # shared.Cimtext
+        self.citation_str = None                          # str
+        self.context = None                               # str
         self.doi = None                                   # str
         self.title = None                                 # str
         self.url = None                                   # shared.OnlineResource

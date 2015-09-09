@@ -57,7 +57,7 @@ class ComputePool(object):
         self.accelerators_per_node = None                 # int
         self.compute_cores_per_node = None                # int
         self.cpu_type = None                              # str
-        self.description = None                           # shared.Cimtext
+        self.description = None                           # str
         self.interconnect = None                          # str
         self.memory_per_node = None                       # platform.StorageVolume
         self.model_number = None                          # str
@@ -79,7 +79,7 @@ class Partition(object):
         super(Partition, self).__init__()
 
         self.compute_pools = []                           # platform.ComputePool
-        self.description = None                           # shared.Cimtext
+        self.description = None                           # str
         self.institution = None                           # shared.Party
         self.model_number = None                          # str
         self.name = None                                  # str
@@ -130,7 +130,7 @@ class StoragePool(object):
         """
         super(StoragePool, self).__init__()
 
-        self.description = None                           # shared.Cimtext
+        self.description = None                           # str
         self.name = None                                  # str
         self.type = None                                  # platform.StorageSystems
         self.vendor = None                                # shared.Party

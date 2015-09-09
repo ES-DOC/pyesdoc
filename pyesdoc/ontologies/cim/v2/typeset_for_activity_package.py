@@ -26,7 +26,7 @@ import typeset_for_software_package as software
 class Activity(object):
     """An abstract class within the cim v2 type system.
 
-    Base class for activities
+    Base class for activities.
 
     """
     __metaclass__ = abc.ABCMeta
@@ -38,13 +38,13 @@ class Activity(object):
         super(Activity, self).__init__()
 
         self.canonical_name = None                        # str
-        self.description = None                           # shared.Cimtext
+        self.description = None                           # str
         self.duration = None                              # shared.TimePeriod
         self.keywords = []                                # str
         self.long_name = None                             # str
         self.meta = shared.Meta()                         # shared.Meta
         self.name = None                                  # str
-        self.rationale = None                             # shared.Cimtext
+        self.rationale = None                             # str
         self.references = []                              # shared.Citation
         self.responsible_parties = []                     # shared.Responsibility
 
@@ -80,7 +80,7 @@ class EnsembleAxis(object):
         """
         super(EnsembleAxis, self).__init__()
 
-        self.extra_detail = None                          # shared.Cimtext
+        self.extra_detail = None                          # str
         self.member = []                                  # activity.AxisMember
         self.short_identifier = None                      # str
         self.target_requirement = None                    # activity.NumericalRequirement
@@ -243,11 +243,12 @@ class Simulation(Activity):
         """
         super(Simulation, self).__init__()
 
+        self.calendar = None                              # shared.Calendar
         self.ensemble_identifier = None                   # str
         self.parent_simulation = None                     # activity.ParentSimulation
         self.part_of_project = []                         # activity.Project
         self.primary_ensemble = None                      # activity.Ensemble
-        self.run_for_experiments = []                     # activity.NumericalExperiment
+        self.ran_for_experiments = []                     # activity.NumericalExperiment
         self.used = None                                  # software.Model
 
 
@@ -364,7 +365,7 @@ class ForcingConstraint(NumericalRequirement):
         """
         super(ForcingConstraint, self).__init__()
 
-        self.additional_constraint = None                 # shared.Cimtext
+        self.additional_constraint = None                 # str
         self.category = None                              # shared.VocabMember
         self.code = None                                  # shared.VocabMember
         self.data_link = None                             # shared.OnlineResource
