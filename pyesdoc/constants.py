@@ -65,8 +65,14 @@ ESDOC_DEFAULT_LANGUAGE = 'en'
 # Default document encoding.
 ESDOC_DEFAULT_ENCODING = 'json'
 
+# Default document project.
+ESDOC_DEFAULT_PROJECT = '--'
+
+# Default document institute.
+ESDOC_DEFAULT_INSTIUTE = '--'
+
 # Default document source.
-ESDOC_DEFAULT_SOURCE = 'Unknown'
+ESDOC_DEFAULT_SOURCE = 'scripts'
 
 # Document viewer url.
 ESDOC_VIEWER_URL = "index.html?renderMethod=id&project={0}&id={1}&version={2}"

@@ -85,6 +85,18 @@ class ExtendingException(PYESDOC_Exception):
         super(ExtendingException, self).__init__(err)
 
 
+class InvalidDocumentTypeException(PYESDOC_Exception):
+    """Exception raised when an invalid document type is declared.
+
+    """
+    def __init__(self, doc_type):
+        """Instance constructor.
+
+        """
+        err = "Document type [{}] is unsupported.".format(doc_type)
+        super(InvalidDocumentTypeException, self).__init__(err)
+
+
 class LoadingException(PYESDOC_Exception):
     """Exception raised when document loading fails.
 

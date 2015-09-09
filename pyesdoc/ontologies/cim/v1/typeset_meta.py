@@ -629,6 +629,7 @@ shared.DocMetaInfo.type_info = (
     ('type', str, True, False),
     ('type_display_name', str, False, False),
     ('type_sort_key', str, False, False),
+    ('update_date', datetime.datetime, True, False),
     ('version', int, True, False),
 )
 

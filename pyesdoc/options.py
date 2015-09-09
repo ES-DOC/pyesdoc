@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
 
 """
-.. module:: TODO - write module name
+.. module:: pyesdoc.options.py
    :copyright: Copyright "Sep 4, 2013", Earth System Documentation
    :license: GPL/CeCIL
    :platform: Unix, Windows
-   :synopsis: TODO - write synopsis
+   :synopsis: Encapsulates library options that can be overridden at runtime.
 
 .. moduleauthor:: Mark Conway-Greenslade <momipsl@ipsl.jussieu.fr>
 
@@ -18,7 +18,6 @@ from pyesdoc.utils import runtime as rt
 # Set of supported options.
 _OPTIONS = {
     'api_url' : "http://test.api.es-doc.org",
-    'institute': "UNKNOWN",
     'output_dir': ''
 }
 

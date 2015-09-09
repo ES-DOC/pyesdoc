@@ -70,9 +70,6 @@ def validate(doc):
     :rtype: list
 
     """
-    # Defensive programming.
-    rt.assert_doc('doc', doc)
-
     # Instantiate validation graph.
     graph = DocumentValidationGraph(doc)
 

@@ -184,6 +184,7 @@ class DocMetaInfo(object):
         self.type = None                                  # str
         self.type_display_name = None                     # str
         self.type_sort_key = None                         # str
+        self.update_date = None                           # datetime.datetime
         self.version = None                               # int
 
 

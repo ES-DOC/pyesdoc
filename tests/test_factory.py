@@ -71,7 +71,7 @@ def _test_create_02():
 def _test_create_03():
     """Test creating documents - 3."""
     for doc_type in pyesdoc.get_types():
-        doc = pyesdoc.create(doc_type, _INSTITUTE, _PROJECT)
+        doc = pyesdoc.create(doc_type, institute=_INSTITUTE, project=_PROJECT)
         _assert_doc(doc, doc_type)
 
 

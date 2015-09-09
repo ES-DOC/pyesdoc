@@ -17,6 +17,15 @@ from pyesdoc.codecs.html.fieldsets.field_info import FieldInfo
 
 # Document field sets.
 FIELDSETS = {
+    'cim.2.activity.numericalexperiment-overview': [
+        FieldInfo('Project', path='meta.project'),
+        FieldInfo('Institute', path='meta.institute'),
+        FieldInfo('Name', path='short_name'),
+        FieldInfo('Long Name', path='long_name'),
+        FieldInfo('ID', path='ext.full_experiment_name'),
+        FieldInfo('Description', path='description'),
+        FieldInfo('Rationale', path='rationales'),
+    ],
     'cim.2.activity.project': {
         FieldInfo('Name', path='name'),
     },

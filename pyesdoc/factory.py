@@ -15,82 +15,68 @@ import datetime
 import uuid
 
 from pyesdoc import constants
+from pyesdoc import exceptions
 from pyesdoc import ontologies
-from pyesdoc import options
-from pyesdoc.utils import runtime as rt
 
-
-
-# Institute option.
-_OPT_INSTITUTE = "institute"
-
-
-def _assert_type(typeof):
-    """Asserts that the passed type is a supported pyesdoc document type reference.
-
-    """
-    if isinstance(typeof, str):
-        o, v, p, t = typeof.split('.')
-        if not ontologies.is_supported(o, v, p, t):
-            rt.throw("Type {0}.v{1}.{2} is unsupported.".format(o, v, p, t))
-    elif typeof not in ontologies.get_types():
-        rt.throw("Type {0} is unsupported.".format(typeof))
 
 
 def create(typeof,
-           project,
+           project=None,
            institute=None,
            language=None,
-           source=None):
+           source=None,
+           author=None):
     """Creates a document.
 
-    :param typeof: Ontology type, e.g. cim.1.software.ModelComponent.
-    :type typeof: str | class
+    :param class typeof: Ontology type, e.g. cim.1.software.ModelComponent.
     :param str project: Project wih which instance is associated.
     :param str institute: Institute wih which instance is associated.
+    :param str language: Language wih which instance is associated.
     :param str source: Source application with which instance is associated.
+    :param str author: Author wih which instance is associated.
 
     :returns: A pyesdoc document instance.
     :rtype: pyesdoc object
 
     """
-    # Validate inputs.
-    _assert_type(typeof)
-    rt.assert_var('project', project, str)
-    if institute:
-        rt.assert_var('institute', institute, str)
-    if language:
-        rt.assert_var('language', language, str)
-    if source:
-        rt.assert_var('source', source, str)
+    # Validate document type.
+    if typeof not in ontologies.get_types():
+        raise exceptions.InvalidDocumentTypeException(typeof)
 
     # Set defaults.
-    institute = institute or options.get_option(_OPT_INSTITUTE)
-    language = language or constants.ESDOC_DEFAULT_LANGUAGE
+    if not institute:
+        institute = constants.ESDOC_DEFAULT_INSTIUTE
+    if not language:
+        language = constants.ESDOC_DEFAULT_LANGUAGE
+    if not project:
+        project = constants.ESDOC_DEFAULT_PROJECT
+    if not source:
+        source = constants.ESDOC_DEFAULT_SOURCE
 
-    # Format params.
-    institute = str(institute).lower()
-    language = str(language).lower()
-    project = str(project).lower()
-    source = source if source is not None else institute
+    # Reformat.
+    institute = unicode(institute).lower()
+    language = unicode(language).lower()
+    project = unicode(project).lower()
+    source = unicode(source).lower()
 
-    # Create document.
-    doc = None
-    if isinstance(typeof, str):
-        ontology, version, package, type_ = typeof.split('.')
-        doc = ontologies.create(ontology, version, package, type_)
-    else:
-        doc = typeof()
-
-    # Initialize document meta info.
-    if doc is not None and hasattr(doc, 'meta'):
+    # Instantiate & initialize meta info (if necessary).
+    doc = typeof()
+    if hasattr(doc, 'meta'):
+        now = datetime.datetime.now()
+        doc.meta.author = author
         doc.meta.id = uuid.uuid4()
         doc.meta.version = 0
-        doc.meta.create_date = datetime.datetime.now()
+        doc.meta.create_date = now
         doc.meta.institute = institute
         doc.meta.language = language
         doc.meta.project = project
-        doc.meta.type = doc.__class__.type_key
         doc.meta.source = source
+        doc.meta.type = doc.__class__.type_key
+        doc.meta.update_date = now
+
+        # cim v2 support
+        doc.meta.metadata_author = author
+        doc.meta.metadata_last_updated = now
+        doc.meta.uid = str(doc.meta.id)
 
     return doc

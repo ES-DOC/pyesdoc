@@ -70,7 +70,7 @@ def _generate(document):
     """
     target = TEMPLATE_TYPE_MAPPINGS[type(document)]
     try:
-        return target.generate(doc=document, TemplateInfo=TemplateInfo)
+        return target.generate(doc=document, TemplateInfo=TemplateInfo, pyesdoc=pyesdoc)
     except Exception as err:
         rt.log_error("Template generation error: {0}".format(err.message))
         raise err
