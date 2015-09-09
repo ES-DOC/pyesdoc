@@ -38,7 +38,7 @@ class ComponentBase(object):
         """
         super(ComponentBase, self).__init__()
 
-        self.description = None                           # shared.Cimtext
+        self.description = None                           # str
         self.development_history = None                   # software.DevelopmentPath
         self.documentation = []                           # shared.Citation
         self.long_name = None                             # str

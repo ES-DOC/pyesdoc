@@ -34,7 +34,6 @@ class Dataset(object):
         super(Dataset, self).__init__()
 
         self.availability = []                            # shared.OnlineResource
-        self.dataset_author = []                          # shared.Party
         self.description = None                           # str
         self.drs_datasets = []                            # drs.DrsPublicationDataset
         self.meta = shared.Meta()                         # shared.Meta
@@ -42,6 +41,7 @@ class Dataset(object):
         self.produced_by = None                           # activity.Simulation
         self.references = []                              # shared.Citation
         self.related_to_dataset = []                      # data.RelatedData
+        self.responsible_parties = []                     # shared.Responsibility
 
 
 class RelatedData(shared.CimLink):

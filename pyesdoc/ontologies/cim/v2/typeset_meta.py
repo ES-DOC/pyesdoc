@@ -106,13 +106,13 @@ software.Variable.type_key = 'cim.2.software.Variable'
 # Set type info (name, type, is_required, is_iterative).
 activity.Activity.type_info = (
     ('canonical_name', str, False, False),
-    ('description', shared.Cimtext, False, False),
+    ('description', str, False, False),
     ('duration', shared.TimePeriod, False, False),
     ('keywords', str, False, True),
     ('long_name', str, False, False),
     ('meta', shared.Meta, True, False),
     ('name', str, True, False),
-    ('rationale', shared.Cimtext, False, False),
+    ('rationale', str, False, False),
     ('references', shared.Citation, False, True),
     ('responsible_parties', shared.Responsibility, False, True),
 )
@@ -145,7 +145,7 @@ activity.Ensemble.type_info = (
 )
 
 activity.EnsembleAxis.type_info = (
-    ('extra_detail', shared.Cimtext, True, False),
+    ('extra_detail', str, True, False),
     ('member', activity.AxisMember, True, True),
     ('short_identifier', str, True, False),
     ('target_requirement', activity.NumericalRequirement, True, False),
@@ -164,7 +164,7 @@ activity.EnsembleRequirement.type_info = (
 )
 
 activity.ForcingConstraint.type_info = (
-    ('additional_constraint', shared.Cimtext, False, False),
+    ('additional_constraint', str, False, False),
     ('category', shared.VocabMember, True, False),
     ('code', shared.VocabMember, True, False),
     ('data_link', shared.OnlineResource, False, False),
@@ -210,11 +210,12 @@ activity.Project.type_info = (
 )
 
 activity.Simulation.type_info = (
+    ('calendar', shared.Calendar, False, False),
     ('ensemble_identifier', str, True, False),
     ('parent_simulation', activity.ParentSimulation, False, False),
     ('part_of_project', activity.Project, True, True),
     ('primary_ensemble', activity.Ensemble, False, False),
-    ('run_for_experiments', activity.NumericalExperiment, True, True),
+    ('ran_for_experiments', activity.NumericalExperiment, True, True),
     ('used', software.Model, True, False),
 )
 
@@ -238,7 +239,6 @@ activity.UberEnsemble.type_info = (
 
 data.Dataset.type_info = (
     ('availability', shared.OnlineResource, False, True),
-    ('dataset_author', shared.Party, False, True),
     ('description', str, False, False),
     ('drs_datasets', drs.DrsPublicationDataset, False, True),
     ('meta', shared.Meta, True, False),
@@ -246,6 +246,7 @@ data.Dataset.type_info = (
     ('produced_by', activity.Simulation, False, False),
     ('references', shared.Citation, False, True),
     ('related_to_dataset', data.RelatedData, False, True),
+    ('responsible_parties', shared.Responsibility, False, True),
 )
 
 data.RelatedData.type_info = (
@@ -308,7 +309,7 @@ platform.ComputePool.type_info = (
     ('accelerators_per_node', int, False, False),
     ('compute_cores_per_node', int, False, False),
     ('cpu_type', str, False, False),
-    ('description', shared.Cimtext, False, False),
+    ('description', str, False, False),
     ('interconnect', str, False, False),
     ('memory_per_node', platform.StorageVolume, False, False),
     ('model_number', str, False, False),
@@ -323,7 +324,7 @@ platform.Machine.type_info = (
 
 platform.Partition.type_info = (
     ('compute_pools', platform.ComputePool, True, True),
-    ('description', shared.Cimtext, False, False),
+    ('description', str, False, False),
     ('institution', shared.Party, True, False),
     ('model_number', str, False, False),
     ('name', str, True, False),
@@ -352,7 +353,7 @@ platform.Performance.type_info = (
 )
 
 platform.StoragePool.type_info = (
-    ('description', shared.Cimtext, False, False),
+    ('description', str, False, False),
     ('name', str, True, False),
     ('type', str, False, False),
     ('vendor', shared.Party, False, False),
@@ -367,14 +368,14 @@ platform.StorageVolume.type_info = (
 science.Algorithm.type_info = (
     ('diagnostic_variables', data.VariableCollection, False, True),
     ('heading', str, True, False),
-    ('implementation_overview', shared.Cimtext, True, False),
+    ('implementation_overview', str, True, False),
     ('prognostic_variables', data.VariableCollection, False, True),
     ('references', shared.Citation, False, True),
 )
 
 science.ConservationProperties.type_info = (
     ('corrected_conserved_prognostic_variables', data.VariableCollection, False, False),
-    ('correction_methodology', shared.Cimtext, False, False),
+    ('correction_methodology', str, False, False),
     ('flux_correction_was_used', bool, True, False),
 )
 
@@ -400,7 +401,7 @@ science.Process.type_info = (
     ('algorithm_properties', science.Algorithm, False, True),
     ('description', str, False, False),
     ('detailed_properties', science.ProcessDetail, False, True),
-    ('implementation_overview', shared.Cimtext, True, False),
+    ('implementation_overview', str, True, False),
     ('keywords', str, True, False),
     ('name', str, True, False),
     ('references', shared.Reference, False, True),
@@ -408,7 +409,7 @@ science.Process.type_info = (
 )
 
 science.ProcessDetail.type_info = (
-    ('content', shared.Cimtext, False, False),
+    ('content', str, False, False),
     ('heading', str, False, False),
     ('properties', shared.KeyFloat, False, True),
     ('selection', str, False, True),
@@ -428,7 +429,7 @@ science.ScientificDomain.type_info = (
     ('grid', science.GridSummary, False, False),
     ('meta', shared.Meta, True, False),
     ('name', str, True, False),
-    ('overview', shared.Cimtext, False, False),
+    ('overview', str, False, False),
     ('realm', str, False, False),
     ('references', shared.Reference, False, True),
     ('resolution', science.Resolution, True, False),
@@ -437,7 +438,7 @@ science.ScientificDomain.type_info = (
 )
 
 science.Tuning.type_info = (
-    ('description', shared.Cimtext, True, False),
+    ('description', str, True, False),
     ('global_mean_metrics_used', data.VariableCollection, False, False),
     ('regional_metrics_used', data.VariableCollection, False, False),
     ('trend_metrics_used', data.VariableCollection, False, False),
@@ -461,8 +462,8 @@ shared.Cimtext.type_info = (
 
 shared.Citation.type_info = (
     ('abstract', str, False, False),
-    ('citation_str', shared.Cimtext, True, False),
-    ('context', shared.Cimtext, False, False),
+    ('citation_str', str, True, False),
+    ('context', str, False, False),
     ('doi', str, False, False),
     ('title', str, False, False),
     ('url', shared.OnlineResource, False, False),
@@ -567,7 +568,7 @@ shared.VocabMember.type_info = (
 )
 
 software.ComponentBase.type_info = (
-    ('description', shared.Cimtext, False, False),
+    ('description', str, False, False),
     ('development_history', software.DevelopmentPath, False, False),
     ('documentation', shared.Citation, False, True),
     ('long_name', str, False, False),
