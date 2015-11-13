@@ -104,4 +104,4 @@ def _init():
 
 
 # Auto-initialize.
-_init()
+# _init()
