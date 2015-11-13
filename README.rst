@@ -31,8 +31,10 @@ Developers building value added software ontop of the ES-DOC eco-system.
 What are the contents of pyesdoc ?
 --------------------------------------
 
-    \src           		Source code.
-    \tests              Unit tests.
+    \docs           		Library documentation.
+    \jobs           		Jobs to be run from command line.
+    \pyesdoc           		Source code.
+    \tests  	            Unit tests.
 
 
 Further Information ?
