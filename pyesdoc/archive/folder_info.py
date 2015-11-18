@@ -51,7 +51,7 @@ class ArchiveFolderInfo(object):
         """Instance representation.
 
         """
-        return "SSSS{0}".format(self.path)
+        return "{0}".format(self.path)
 
     @property
     def exists(self):
