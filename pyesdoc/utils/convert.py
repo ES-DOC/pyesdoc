@@ -45,6 +45,8 @@ def str_to_unicode(val):
     """
     if val is None:
         return unicode()
+    if isinstance(val, unicode):
+        return val
 
     val = str(val).decode('utf-8').strip()
     if not len(val):
@@ -548,38 +550,36 @@ def csv_file_to_json_file(fp, dest=None):
         f.write(dict_to_json(csv_file_to_dict(fp)))
 
 
-def str_to_typed_value(s, type):
-    """Converts a string to a typed value.
+def text_to_typed_value(text, target_type):
+    """Converts text to a typed value.
 
-    :param str s: A string for type conversion.
+    :param str text: Text to be converted to a typed value.
     :param class type: Target type.
 
-    :returns: A string converted to a typed value.
+    :returns: A typed value.
     :rtype: object
 
     """
     # Encode.
-    if s is not None:
-        s = unicode_to_str(s) if isinstance(s, unicode) else str(s)
-
-    # None if empty value.
-    if s is None or not len(s):
-        return None
+    if text is not None:
+        text = unicode_to_str(text) if isinstance(text, unicode) else str(text)
 
     # Decode according to type:
     # ... date's
-    if type in (datetime.datetime, datetime.date, datetime.time):
-        return arrow.get(s).datetime
+    if target_type in {datetime.datetime, datetime.date, datetime.time}:
+        return arrow.get(text).datetime
     # ... uuid's
-    elif type is uuid.UUID:
-        return uuid.UUID(s)
+    elif target_type is uuid.UUID:
+        return uuid.UUID(text)
     # ... boolean's
-    elif type is bool:
-        return s.lower() in ("yes", "true", "t", "1", "y")
+    elif target_type is bool:
+        return text.lower() in {"yes", "true", "t", "1", "y"}
+    elif target_type is unicode:
+        return text
     # ... others
     else:
         try:
-            return type(s)
+            return target_type(text)
         # ... exceptions
-        except Error as e:
-            print "Scalar decoding error", s, type
+        except Exception as e:
+            print "Scalar decoding error", text, target_type

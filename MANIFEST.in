@@ -1,5 +1,6 @@
 recursive-include pyesdoc *.py
 include LICENSE
 include README.rst
+include pyesdoc.conf
 include requirements.txt
 include runtests.sh

@@ -49,7 +49,7 @@ def _assert_decode(target, encoding):
 
     """
     if target is None:
-        rt.throw("Documents cannot be decoded from null objects.")
+        raise ValueError("Documents cannot be decoded from null objects.")
 
     if not encoding in _CODECS:
         raise NotImplementedError('Document decoding is unsupported :: encoding = {0}.'.format(encoding))
@@ -57,7 +57,7 @@ def _assert_decode(target, encoding):
     if type(target) not in _DECODE_TYPE_WHITELIST[encoding]:
         err = "Document representation type ({0}) is unsupported, it must be one of {1}."
         err = err.format(type(target), _DECODE_TYPE_WHITELIST[encoding])
-        rt.throw(err)
+        raise TypeError(err)
 
 
 def decode(target, encoding):
@@ -81,10 +81,10 @@ def _assert_encode(target, encoding):
 
     """
     if target is None:
-        rt.throw("Cannot encode a null document.")
+        raise ValueError("Cannot encode a null document.")
 
     if type(target) not in ontologies.get_types():
-        rt.throw("Unsupported document type: {0}.".format(type(target)))
+        raise TypeError("Unsupported document type: {0}.".format(type(target)))
 
     if not encoding in _CODECS:
         raise NotImplementedError('Unsupported document encoding :: {0}.'.format(encoding))

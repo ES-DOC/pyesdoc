@@ -38,14 +38,14 @@ class ComponentBase(object):
         """
         super(ComponentBase, self).__init__()
 
-        self.description = None                           # str
+        self.description = None                           # unicode
         self.development_history = None                   # software.DevelopmentPath
         self.documentation = []                           # shared.Citation
-        self.long_name = None                             # str
-        self.name = None                                  # str
+        self.long_name = None                             # unicode
+        self.name = None                                  # unicode
         self.release_date = None                          # datetime.datetime
         self.tuning_applied = None                        # science.Tuning
-        self.version = None                               # str
+        self.version = None                               # unicode
 
 
 class Composition(object):
@@ -63,8 +63,8 @@ class Composition(object):
         """
         super(Composition, self).__init__()
 
-        self.couplings = []                               # str
-        self.description = None                           # str
+        self.couplings = []                               # unicode
+        self.description = None                           # unicode
 
 
 class DevelopmentPath(object):
@@ -79,11 +79,11 @@ class DevelopmentPath(object):
         """
         super(DevelopmentPath, self).__init__()
 
-        self.consortium_name = None                       # str
+        self.consortium_name = None                       # unicode
         self.creators = []                                # shared.Responsibility
         self.developed_in_house = None                    # bool
         self.funding_sources = []                         # shared.Responsibility
-        self.previous_version = None                      # str
+        self.previous_version = None                      # unicode
 
 
 class EntryPoint(object):
@@ -103,7 +103,7 @@ class EntryPoint(object):
         """
         super(EntryPoint, self).__init__()
 
-        self.name = None                                  # str
+        self.name = None                                  # unicode
 
 
 class Gridspec(object):
@@ -118,7 +118,7 @@ class Gridspec(object):
         """
         super(Gridspec, self).__init__()
 
-        self.description = None                           # str
+        self.description = None                           # unicode
 
 
 class Variable(object):
@@ -136,8 +136,8 @@ class Variable(object):
         """
         super(Variable, self).__init__()
 
-        self.description = None                           # str
-        self.name = None                                  # str
+        self.description = None                           # unicode
+        self.name = None                                  # unicode
         self.prognostic = None                            # bool
 
 
@@ -183,7 +183,7 @@ class SoftwareComponent(ComponentBase):
         self.dependencies = []                            # software.EntryPoint
         self.grid = None                                  # software.Gridspec
         self.language = None                              # software.ProgrammingLanguage
-        self.license = None                               # str
+        self.license = None                               # unicode
         self.sub_components = []                          # software.SoftwareComponent
 
 

@@ -14,7 +14,7 @@
 import datetime
 
 from pyesdoc.utils import convert
-from pyesdoc.utils import functional
+from pyesdoc.utils import runtime as rt
 
 
 
@@ -150,7 +150,7 @@ def _get_value(data, path):
         # ... collection filter by attribute
         elif "=" in attr:
             left, right = attr.split("=")
-            value = functional.first(value, left, right.lower(), lambda v: unicode(v).lower())
+            value = rt.first(value, left, right.lower(), lambda v: unicode(v).lower())
         # ... item attribute filter
         elif hasattr(value, attr):
             value = getattr(value, attr)

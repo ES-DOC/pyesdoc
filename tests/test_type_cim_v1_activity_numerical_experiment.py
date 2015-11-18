@@ -48,9 +48,6 @@ DOC_INSTITUTE = "MOHC"
 # Test document author.
 DOC_AUTHOR = "Metafor Questionnaire"
 
-# Test supported document encodings.
-DOC_ENCODINGS_COUNT = 4
-
 
 def assert_extension_info(ext):
     """Asserts a document's extension information.
@@ -80,16 +77,8 @@ def _assert_doc_requirements(doc, is_update):
     """Assert experiment requirements."""
     tu.assert_iter(doc.requirements, 13, cim.v1.NumericalRequirement)
 
-    # Initial condition.
-    req = doc.requirements[0]
-    tu.assert_object(req, cim.v1.InitialCondition)
-    tu.assert_str(req.description, "Initial conditions are from", True)
-    tu.assert_str(req.id, "ic.003")
-    tu.assert_str(req.name, "3.3.ic")
-    tu.assert_str(req.requirement_type, "initialCondition")
-
     # Boundary condition.
-    req = doc.requirements[1]
+    req = doc.requirements[0]
     tu.assert_object(req, cim.v1.BoundaryCondition)
     tu.assert_str(req.requirement_type, "boundaryCondition")
     tu.assert_str(req.description, "Imposed changing concentrations", True)
@@ -103,6 +92,14 @@ def _assert_doc_requirements(doc, is_update):
     tu.assert_str(opt.id, "bc.013")
     tu.assert_str(opt.name, "3.3.bc.sls_conc")
     tu.assert_str(opt.relationship, "XOR")
+
+    # Initial condition.
+    req = doc.requirements[11]
+    tu.assert_object(req, cim.v1.InitialCondition)
+    tu.assert_str(req.description, "Initial conditions are from", True)
+    tu.assert_str(req.id, "ic.003")
+    tu.assert_str(req.name, "3.3.ic")
+    tu.assert_str(req.requirement_type, "initialCondition")
 
     # Spatio Temporal Constraint.
     req = doc.requirements[12]

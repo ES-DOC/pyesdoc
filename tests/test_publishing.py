@@ -11,10 +11,9 @@
 .. moduleauthor:: Earth System Documentation (ES-DOC) <dev@es-doc.org>
 
 """
-import datetime, uuid
+import uuid
 
 import arrow
-
 import pyesdoc
 
 import test_utils as tu
@@ -31,7 +30,7 @@ def _create_doc(mod):
     doc = tu.get_doc(mod)
     mod.DOC_ID = doc.meta.id = uuid.uuid4()
     mod.DOC_VERSION = doc.meta.version = 0
-    mod.DOC_DATE = doc.meta.create_date = arrow.now().datetime
+    mod.DOC_DATE = doc.meta.create_date = doc.meta.update_date = arrow.now().datetime
 
     return doc
 
@@ -50,6 +49,9 @@ def _test(mod):
     """Performs a publishing workflow test."""
     # Create document.
     doc = _create_doc(mod)
+
+    # for err in pyesdoc.validate(doc):
+    #     print err
 
     # Publish.
     pyesdoc.publish(doc)

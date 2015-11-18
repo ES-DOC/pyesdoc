@@ -35,7 +35,7 @@ class ComponentPerformance(object):
         super(ComponentPerformance, self).__init__()
 
         self.component = None                             # software.SoftwareComponent
-        self.component_name = None                        # str
+        self.component_name = None                        # unicode
         self.cores_used = None                            # int
         self.nodes_used = None                            # int
         self.speed = None                                 # float
@@ -53,17 +53,17 @@ class ComputePool(object):
         """
         super(ComputePool, self).__init__()
 
-        self.accelerator_type = None                      # str
+        self.accelerator_type = None                      # unicode
         self.accelerators_per_node = None                 # int
         self.compute_cores_per_node = None                # int
-        self.cpu_type = None                              # str
-        self.description = None                           # str
-        self.interconnect = None                          # str
+        self.cpu_type = None                              # unicode
+        self.description = None                           # unicode
+        self.interconnect = None                          # unicode
         self.memory_per_node = None                       # platform.StorageVolume
-        self.model_number = None                          # str
-        self.name = None                                  # str
+        self.model_number = None                          # unicode
+        self.name = None                                  # unicode
         self.number_of_nodes = None                       # int
-        self.operating_system = None                      # str
+        self.operating_system = None                      # unicode
 
 
 class Partition(object):
@@ -79,10 +79,10 @@ class Partition(object):
         super(Partition, self).__init__()
 
         self.compute_pools = []                           # platform.ComputePool
-        self.description = None                           # str
+        self.description = None                           # unicode
         self.institution = None                           # shared.Party
-        self.model_number = None                          # str
-        self.name = None                                  # str
+        self.model_number = None                          # unicode
+        self.name = None                                  # unicode
         self.online_documentation = []                    # shared.OnlineResource
         self.partition = []                               # platform.Partition
         self.storage_pools = []                           # platform.StoragePool
@@ -104,14 +104,14 @@ class Performance(object):
 
         self.asypd = None                                 # float
         self.chsy = None                                  # float
-        self.compiler = None                              # str
+        self.compiler = None                              # unicode
         self.coupler_load = None                          # float
         self.io_load = None                               # float
         self.load_imbalance = None                        # float
         self.memory_bloat = None                          # float
         self.meta = shared.Meta()                         # shared.Meta
         self.model = None                                 # software.Model
-        self.name = None                                  # str
+        self.name = None                                  # unicode
         self.platform = None                              # platform.Machine
         self.subcomponent_performance = None              # platform.ComponentPerformance
         self.sypd = None                                  # float
@@ -130,8 +130,8 @@ class StoragePool(object):
         """
         super(StoragePool, self).__init__()
 
-        self.description = None                           # str
-        self.name = None                                  # str
+        self.description = None                           # unicode
+        self.name = None                                  # unicode
         self.type = None                                  # platform.StorageSystems
         self.vendor = None                                # shared.Party
         self.volume_available = None                      # platform.StorageVolume

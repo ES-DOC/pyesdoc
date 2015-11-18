@@ -48,9 +48,6 @@ DOC_INSTITUTE = "MOHC"
 # Test document author.
 DOC_AUTHOR = "Metafor Questionnaire"
 
-# Test supported document encodings.
-DOC_ENCODINGS_COUNT = 4
-
 
 def assert_doc(doc, meta, ext):
     """Asserts a document.
@@ -87,7 +84,7 @@ def assert_doc(doc, meta, ext):
     assert doc.language is None
     assert doc.license is None
     assert doc.long_name == "IPSL-CM5A-LR;atmosphere:LMDZ5A(95x96L39);ocean:NEMOv3.2 (OPA-LIM-PISCES,149x182L31)"
-    assert doc.previous_version == str()
+    assert doc.previous_version == unicode()
     assert doc.release_date == arrow.get('2010', 'YYYY').datetime
     assert doc.short_name == 'IPSL-CM5A-LR'
     assert doc.types[0] == 'downscaling'

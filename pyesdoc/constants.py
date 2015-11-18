@@ -59,20 +59,20 @@ ESDOC_DOC_VERSION_LATEST = 'latest'
 # All document versions label.
 ESDOC_DOC_VERSION_ALL = 'all'
 
-# Default document language.
-ESDOC_DEFAULT_LANGUAGE = 'en'
-
 # Default document encoding.
 ESDOC_DEFAULT_ENCODING = 'json'
 
+# Default document language.
+ESDOC_DEFAULT_LANGUAGE = u'en'
+
 # Default document project.
-ESDOC_DEFAULT_PROJECT = '--'
+ESDOC_DEFAULT_PROJECT = u'--'
 
 # Default document institute.
-ESDOC_DEFAULT_INSTIUTE = '--'
+ESDOC_DEFAULT_INSTIUTE = u'--'
 
 # Default document source.
-ESDOC_DEFAULT_SOURCE = 'scripts'
+ESDOC_DEFAULT_SOURCE = u'scripts'
 
 # Document viewer url.
-ESDOC_VIEWER_URL = "index.html?renderMethod=id&project={0}&id={1}&version={2}"
+ESDOC_VIEWER_URL = u"index.html?renderMethod=id&project={0}&id={1}&version={2}"

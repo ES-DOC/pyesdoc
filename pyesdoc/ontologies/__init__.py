@@ -176,8 +176,6 @@ def get_type_from_key(key):
         if t.type_key.lower() == type_key:
             return t
 
-    return None
-
 
 def is_supported(name, version, package=None, type=None):
     """Returns a flag indicating whether ontology/type is supported.
@@ -266,10 +264,10 @@ def associate(left, attr, right):
 
     """
     # Defensive Programming.
-    rt.assert_doc("left", left)
-    rt.assert_doc("right", right)
+    rt.assert_doc(left)
+    rt.assert_doc(right)
     if not hasattr(left, attr):
-        rt.throw("Cannot set association upon invalid attribute.")
+        raise ValueError("Cannot set association upon invalid attribute.")
 
     # Create reference.
     # TODO alter reference based upon ontology type.

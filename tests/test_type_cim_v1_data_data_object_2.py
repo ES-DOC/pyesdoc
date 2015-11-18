@@ -48,9 +48,6 @@ DOC_INSTITUTE = "MOHC"
 # Test document author.
 DOC_AUTHOR = "Metafor Questionnaire"
 
-# Test supported document encodings.
-DOC_ENCODINGS_COUNT = 4
-
 
 def _assert_doc_core(doc, is_update):
     """Assert core information."""

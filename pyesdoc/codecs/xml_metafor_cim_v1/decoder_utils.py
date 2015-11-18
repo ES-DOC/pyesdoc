@@ -24,101 +24,87 @@ from pyesdoc.utils import convert
 
 
 # Null uuid for checking whether one has to be generated.
-NULL_UUID = ['00000000-0000-0000-0000-000000000000']
+NULL_UUID = u'00000000-0000-0000-0000-000000000000'
 
 
 
-def _get_value_as_string(xml, nsmap):
-    """Converts passed xml fragment to a string."""
-    result = None
-
-    # Strip first item from iterables.
+def _get_value(xml, rtype=unicode):
+    """Returns xml node value."""
+    # Get xml value.
     if isinstance(xml, types.ListType):
-        if len(xml) > 0:
-            xml = xml[0]
-        else:
-            xml = None
-
-    # Get raw string.
+        xml = None if len(xml) == 0 else xml[0]
     if xml is None:
-        result = None
-    elif isinstance(xml, types.StringTypes):
-        result = convert.unicode_to_str(xml)
-    else:
-        result = et.tostring(xml)
+        return None
 
-    # Format string.
-    if result is not None:
-        result = result.strip()
-        result = result.rstrip('|')
+    # Get unicode.
+    if rtype is unicode:
+        if isinstance(xml, types.StringTypes):
+            result = convert.str_to_unicode(xml)
+        else:
+            result = convert.str_to_unicode(et.tostring(xml))
+    else:
+        if isinstance(xml, types.StringTypes):
+            result = convert.unicode_to_str(xml)
+        else:
+            result = et.tostring(xml)
+
+    # Format.
+    result = result.strip()
+    result = result.rstrip('|')
 
     return result
 
 
-def _convert_to_string(xml, nsmap=None):
-    """Converts an etree element xml representation into a string type."""
-    return _get_value_as_string(xml, nsmap)
+def _convert_to_unicode(xml, nsmap=None):
+    """Converts an etree element xml representation into a unicode type."""
+    return _get_value(xml, str)
 
 
 def _convert_to_bool(xml, nsmap=None):
     """Converts an etree element xml representation into a boolean type."""
-    as_string = _get_value_as_string(xml, nsmap)
-    if as_string is None:
-        return bool()
-    else:
-        as_string = as_string.upper()
-        if as_string in ['TRUE']:
-            return True
-        elif as_string in ['FALSE']:
-            return False
-        else:
-            return bool()
+    value = _get_value(xml)
+
+    return True if value is not None and value.lower() in [u'true'] else bool()
 
 
 def _convert_to_integer(xml, nsmap=None):
     """Converts an etree element xml representation into an integer type."""
-    as_string = _get_value_as_string(xml, nsmap)
-    if as_string is None or as_string.upper() == 'NONE':
-        return int()
-    else:
-        return int(as_string)
+    value = _get_value(xml)
+
+    return int(value) if value is not None and value.upper() != u'NONE' else int()
 
 
 def _convert_to_float(xml, nsmap=None):
     """Converts an etree element xml representation into a float type."""
-    as_string = _get_value_as_string(xml, nsmap)
-    if as_string is None:
-        return float()
-    else:
-        return float(as_string)
+    value = _get_value(xml)
+
+    return float(value) if value is not None else float()
 
 
 def _convert_to_uid(xml, nsmap=None):
     """Converts an etree element xml representation into a uid type."""
-    as_string = _get_value_as_string(xml, nsmap)
-    if as_string is None or as_string in NULL_UUID:
+    value = _get_value(xml)
+    if value is None or value == NULL_UUID:
         return uuid.uuid4()
-    else:
-        try:
-            return uuid.UUID(as_string)
-        except ValueError:
-            # Workaround for poorly encoded uuid's in cmip5 questionnaire
-            return uuid.UUID(as_string[0:36])
+    try:
+        return uuid.UUID(value)
+    except ValueError:
+        return uuid.UUID(value[0:36])
 
 
 def _convert_to_datetime(xml, nsmap=None):
     """Converts an etree element xml representation into a datetime type."""
-    as_string = _get_value_as_string(xml, nsmap)
-    if as_string is None:
+    value = _get_value(xml)
+    if value is None:
         return None
+    if len(value) == 4:
+        return arrow.get(value, u"YYYY").datetime
     else:
-        if len(as_string) == 4:
-            return arrow.get(as_string, 'YYYY').datetime
-        else:
-            return arrow.get(as_string).datetime
+        return arrow.get(value).datetime
+
 
 # Set of simple type convertors.
-_simple_type_decoders = {
+_SIMPLE_TYPE_DECODERS = {
     'bool' : _convert_to_bool,
     'date' : _convert_to_datetime,
     'datetime' : _convert_to_datetime,
@@ -126,8 +112,9 @@ _simple_type_decoders = {
     'datetime.datetime' : _convert_to_datetime,
     'float' : _convert_to_float,
     'int' : _convert_to_integer,
-    'str' : _convert_to_string,
-    'uri' : _convert_to_string,
+    'str' : _convert_to_unicode,
+    'unicode' : _convert_to_unicode,
+    'uri' : _convert_to_unicode,
     'uuid' : _convert_to_uid,
     'uuid.UUID' : _convert_to_uid,
 }
@@ -136,17 +123,10 @@ _simple_type_decoders = {
 def set_attributes(target, xml, nsmap, decodings):
     """Decodes entity attributes from a collection of decodings.
 
-    :param target: A pyesdoc object with a set of attributes to be assigned.
-    :type target: object
-
-    :param xml: An xml element.
-    :type xml: lxml.etree._Element
-
-    :param nsmap: Set of xml namespace mappings.
-    :type nsmap: dict
-
-    :param decodings: Set of mappings used to perform decoding.
-    :type decodings: dict
+    :param object target: A pyesdoc object with a set of attributes to be assigned.
+    :param lxml.etree._Element xml: An xml element.
+    :param dict nsmap: Set of xml namespace mappings.
+    :param dict decodings: Set of mappings used to perform decoding.
 
     :returns: A pyesdoc object with assigned attributes.
     :rtype: object
@@ -164,7 +144,7 @@ def set_attributes(target, xml, nsmap, decodings):
             attrs.append(attr)
 
         # Determine if type is a simple one.
-        is_simple_type = type in _simple_type_decoders
+        is_simple_type = type in _SIMPLE_TYPE_DECODERS
 
         try:
             _set_attribute(target,
@@ -237,48 +217,34 @@ def _set_attribute(target,
 
 def _get_attribute_value(xml, nsmap, decoder, xpath, is_simple_type, is_iterable):
     """Gets the value of an attribute from xml."""
-    result = None
-
     # Apply xpath (derive xml fragment from value is derived).
     att_xml = xml.xpath(xpath, namespaces=nsmap)
     if not att_xml:
-        return None if not is_iterable else []
+        return [] if is_iterable else None
 
     # From xml derive value.
     # ... simple types.
     if is_simple_type:
-        if decoder in _simple_type_decoders:
-            decoder = _simple_type_decoders[decoder]
+        if decoder in _SIMPLE_TYPE_DECODERS:
+            decoder = _SIMPLE_TYPE_DECODERS[decoder]
         if is_iterable:
-            result = map(lambda i: decoder(i, nsmap), att_xml)
+            return [decoder(i, nsmap) for i in att_xml]
         else:
-            result = decoder(att_xml, nsmap)
+            decoded = decoder(att_xml, nsmap)
+            return None if decoded == str() else decoded
 
     # ... complex types.
     else:
-        result = decode_xml(decoder, att_xml, nsmap, is_iterable)
-
-    # Workaround - decoding empty xml attributes.
-    if is_simple_type and not is_iterable and result == str():
-        result = None
-
-    return result
+        return decode_xml(decoder, att_xml, nsmap, is_iterable)
 
 
 def decode_xml(decoder, xml, nsmap, is_iterable):
     """Decodes either an entity or an entity collection from xml.
 
-    :param decoder: Decoder function pointer.
-    :type decoder: function
-
-    :param xml: An xml element.
-    :type xml: lxml.etree._Element
-
-    :param nsmap: Set of xml namespace mappings.
-    :type nsmap: dict
-
-    :param take_first: Flag indicating whether to return only the first entity of a collection.
-    :type take_first: bool
+    :param function decoder: Decoder function pointer.
+    :param lxml.etree._Element xml: An xml element.
+    :param dict nsmap: Set of xml namespace mappings.
+    :param bool take_first: Flag indicating whether to return only the first entity of a collection.
 
     :returns: Decoded entity or entity collection.
     :rtype: miscellaneous
@@ -311,14 +277,9 @@ def decode_xml(decoder, xml, nsmap, is_iterable):
 def load_xml(xml, return_nsmap=False, default_ns='cim'):
     """Loads etree xml element.
 
-    :param xml: An xml blob.
-    :type xml: string
-
-    :param return_nsmap: Flag indicating whether namespace map will be returned or not.
-    :type return_nsmap: bool
-
-    :param default_ns: Default namespace.
-    :type default_ns: str
+    :param string xml: An xml blob.
+    :param bool return_nsmap: Flag indicating whether namespace map will be returned or not.
+    :param str default_ns: Default namespace.
 
     :returns: XML element.
     :rtype: lxml.etree._Element
@@ -327,7 +288,6 @@ def load_xml(xml, return_nsmap=False, default_ns='cim'):
     # Defensive programming.
     if xml is None:
         raise pyesdoc.DecodingException("XML is undefined.")
-
 
     # ... etree elements.
     nsmap = None

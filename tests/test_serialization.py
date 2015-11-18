@@ -28,8 +28,8 @@ def _test(mod, doc, encoding):
     # Re-encode.
     as_repr_1 = tu.encode(as_doc_1, encoding)
 
-    # TODO - explore why sometimes XML encoding is problematic 
-    # although all good why reencodign in json.
+    # TODO - explore why sometimes XML encoding is problematic
+    # although all good when reencoding to json.
     if len(as_repr) != len(as_repr_1) and encoding == 'xml':
         as_repr = tu.encode(tu.decode(as_repr, encoding), 'json')
         as_repr_1 = tu.encode(tu.decode(as_repr_1, encoding), 'json')

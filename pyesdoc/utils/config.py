@@ -63,45 +63,36 @@ def _init_from_user_home():
         return config_path
 
 
-def _init():
+def init():
     """Initializes configuration.
 
     """
     global data
 
-    # Attempt to load config from file system.
-    for func in (
-        _init_from_local_config,
-        _init_from_user_home,
-        _init_from_shell_config,
-        ):
-        config_path = func()
-        if config_path:
-            log("Loading pyesdoc config from: {}".format(config_path))
-            break
+    # Escape if config data already initialized.
+    if data is not None:
+        return
 
-    # Decode.
-    if config_path:
-        data = json_file_to_namedtuple(config_path)
+    # Attempt to load config.
+    config_path = _init_from_local_config() or \
+                  _init_from_user_home() or \
+                  _init_from_shell_config()
 
-    # Warn
-    else:
-        msg = """
+    if not config_path:
+        raise RuntimeError("""
             WARNING :: pyesdoc configuration file not found.
-            If you are running pyesdoc as part of the ES-DOC shell then the config file location should be:
+            If running pyesdoc within ES-DOC shell the config file location should be:
                 SHELL-HOME/ops/config/pyesdoc.conf.
-            If you are running pyesdoc as part of the ES-DOC notebook-shell then the config file location should be:
+            If running pyesdoc within ES-DOC notebook-shell the config file location should be:
                 SHELL-HOME/pyesdoc.conf.
-            If you are running pyesdoc in standalone mode then the config file location should be:
+            If running pyesdoc in standalone mode the config file location should be:
                 $HOME/.pyesdoc
-            If neither of these files exist then:
+            Otherwise:
                 1.  Download the following default configuration file:
-                    https://raw.githubusercontent.com/ES-DOC/esdoc-shell/master/resources/user/template-pyesdoc.conf
+                    http://bit.ly/1MjRS5n
                 2.  Copy downloaded file to $HOME/.pyesdoc
             If this problem persists them contact es-doc-support@list.woc.noaa.gov
-        """
-        raise RuntimeError(msg)
+        """)
 
-
-# Auto-initialize.
-# _init()
+    log("Loading pyesdoc config from: {}".format(config_path))
+    data = json_file_to_namedtuple(config_path)

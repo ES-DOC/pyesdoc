@@ -25,7 +25,8 @@ def create(typeof,
            institute=None,
            language=None,
            source=None,
-           author=None):
+           author=None,
+           uid=None):
     """Creates a document.
 
     :param class typeof: Ontology type, e.g. cim.1.software.ModelComponent.
@@ -34,6 +35,7 @@ def create(typeof,
     :param str language: Language wih which instance is associated.
     :param str source: Source application with which instance is associated.
     :param str author: Author wih which instance is associated.
+    :param uuid.UUID uid: Document unique identifier.
 
     :returns: A pyesdoc document instance.
     :rtype: pyesdoc object
@@ -52,19 +54,23 @@ def create(typeof,
         project = constants.ESDOC_DEFAULT_PROJECT
     if not source:
         source = constants.ESDOC_DEFAULT_SOURCE
+    if not uid:
+        uid =  uuid.uuid4()
 
     # Reformat.
     institute = unicode(institute).lower()
     language = unicode(language).lower()
     project = unicode(project).lower()
     source = unicode(source).lower()
+    if not isinstance(uid, uuid.UUID):
+        uid = uuid.UUID(uid)
 
     # Instantiate & initialize meta info (if necessary).
     doc = typeof()
     if hasattr(doc, 'meta'):
         now = datetime.datetime.now()
         doc.meta.author = author
-        doc.meta.id = uuid.uuid4()
+        doc.meta.id = uid
         doc.meta.version = 0
         doc.meta.create_date = now
         doc.meta.institute = institute
@@ -77,6 +83,6 @@ def create(typeof,
         # cim v2 support
         doc.meta.metadata_author = author
         doc.meta.metadata_last_updated = now
-        doc.meta.uid = str(doc.meta.id)
+        doc.meta.uid = unicode(uid)
 
     return doc

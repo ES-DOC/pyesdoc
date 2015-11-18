@@ -63,10 +63,9 @@ def _encode_simple(xml, val):
     elif isinstance(val, datetime.time):
         val = val.isoformat()
     else:
-        val = unicode(val)
+        val = convert.str_to_unicode(val)
     if val is None or len(val) == 0:
         val = u''
-
 
     # Assign to xml.
     xml.text = val.strip()

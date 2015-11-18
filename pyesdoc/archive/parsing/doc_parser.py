@@ -45,7 +45,7 @@ def _get_source_description(source):
     """Returns document source description.
 
     """
-    for source_cfg in config.SOURCES:
+    for source_cfg in config.get_sources():
         if source_cfg.name == source:
             return source_cfg.description
     return source

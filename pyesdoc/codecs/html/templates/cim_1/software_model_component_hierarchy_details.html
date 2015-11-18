@@ -49,6 +49,41 @@
 	</section>
     {% end %}
 
+	{% comment *************************** %}
+	{% comment ... quality control properties   %}
+	{% comment *************************** %}
+	{% if c.ext.displayable_qc_properties %}
+	<section id="{{ c.meta.id }}-qc-properties">
+		<header>
+			<h5>Documentation Quality Control Properties</h5>
+		</header>
+		<table>
+			<tbody>
+				{% for p in c.ext.displayable_qc_properties %}
+					{% for v in sorted(p.values) %}
+					<tr class="esdoc-field">
+						<td>
+							<b>{{ " > ".join(p.ext.display_name.split(" > ")[1:]) }}</b>:
+							{% if p.ext.short_display_name == "Verification Status" %}
+								{% if v == "0" %}
+									Awaiting review
+								{% elif v == "1" %}
+									Under review
+								{% elif v == "2" %}
+									Accepted
+								{% end %}
+							{% else %}
+								{{v}}
+						    {% end %}
+						</td>
+					</tr>
+					{% end %}
+				{% end %}
+			</tbody>
+		</table>
+	</section>
+    {% end %}
+
 	{% comment *************** %}
 	{% comment ... citations   %}
 	{% comment *************** %}

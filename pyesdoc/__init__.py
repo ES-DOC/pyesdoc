@@ -11,6 +11,14 @@
 .. moduleauthor:: Earth System Documentation (ES-DOC) <dev@es-doc.org>
 
 """
+# Standard package info.
+__title__ = 'pyesdoc'
+__version__ = '0.9.3.6'
+__author__ = 'ES-DOC'
+__license__ = 'GPL'
+__copyright__ = 'Copyright 2015 ES-DOC'
+
+
 from pyesdoc.constants import *
 from pyesdoc.exceptions import *
 from pyesdoc.factory import create
@@ -47,9 +55,3 @@ from pyesdoc import utils
 from pyesdoc import validation
 
 
-# Standard package info.
-__title__ = 'pyesdoc'
-__version__ = '0.9.3.2'
-__author__ = 'ES-DOC'
-__license__ = 'GPL'
-__copyright__ = 'Copyright 2015 ES-DOC'

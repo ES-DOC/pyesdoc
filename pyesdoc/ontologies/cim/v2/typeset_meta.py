@@ -105,20 +105,20 @@ software.Variable.type_key = 'cim.2.software.Variable'
 
 # Set type info (name, type, is_required, is_iterative).
 activity.Activity.type_info = (
-    ('canonical_name', str, False, False),
-    ('description', str, False, False),
+    ('canonical_name', unicode, False, False),
+    ('description', unicode, False, False),
     ('duration', shared.TimePeriod, False, False),
-    ('keywords', str, False, True),
-    ('long_name', str, False, False),
+    ('keywords', unicode, False, True),
+    ('long_name', unicode, False, False),
     ('meta', shared.Meta, True, False),
-    ('name', str, True, False),
-    ('rationale', str, False, False),
+    ('name', unicode, True, False),
+    ('rationale', unicode, False, False),
     ('references', shared.Citation, False, True),
     ('responsible_parties', shared.Responsibility, False, True),
 )
 
 activity.AxisMember.type_info = (
-    ('description', str, True, False),
+    ('description', unicode, True, False),
     ('index', int, True, False),
     ('value', float, False, False),
 )
@@ -145,9 +145,9 @@ activity.Ensemble.type_info = (
 )
 
 activity.EnsembleAxis.type_info = (
-    ('extra_detail', str, True, False),
+    ('extra_detail', unicode, True, False),
     ('member', activity.AxisMember, True, True),
-    ('short_identifier', str, True, False),
+    ('short_identifier', unicode, True, False),
     ('target_requirement', activity.NumericalRequirement, True, False),
 )
 
@@ -159,16 +159,16 @@ activity.EnsembleMember.type_info = (
 
 activity.EnsembleRequirement.type_info = (
     ('ensemble_member', activity.NumericalRequirement, False, True),
-    ('ensemble_type', str, True, False),
+    ('ensemble_type', unicode, True, False),
     ('minimum_size', int, True, False),
 )
 
 activity.ForcingConstraint.type_info = (
-    ('additional_constraint', str, False, False),
+    ('additional_constraint', unicode, False, False),
     ('category', shared.VocabMember, True, False),
     ('code', shared.VocabMember, True, False),
     ('data_link', shared.OnlineResource, False, False),
-    ('forcing_type', str, True, False),
+    ('forcing_type', unicode, True, False),
     ('group', shared.VocabMember, False, False),
     ('origin', shared.Citation, False, False),
 )
@@ -211,7 +211,7 @@ activity.Project.type_info = (
 
 activity.Simulation.type_info = (
     ('calendar', shared.Calendar, False, False),
-    ('ensemble_identifier', str, True, False),
+    ('ensemble_identifier', unicode, True, False),
     ('parent_simulation', activity.ParentSimulation, False, False),
     ('part_of_project', activity.Project, True, True),
     ('primary_ensemble', activity.Ensemble, False, False),
@@ -239,10 +239,10 @@ activity.UberEnsemble.type_info = (
 
 data.Dataset.type_info = (
     ('availability', shared.OnlineResource, False, True),
-    ('description', str, False, False),
+    ('description', unicode, False, False),
     ('drs_datasets', drs.DrsPublicationDataset, False, True),
     ('meta', shared.Meta, True, False),
-    ('name', str, True, False),
+    ('name', unicode, True, False),
     ('produced_by', activity.Simulation, False, False),
     ('references', shared.Citation, False, True),
     ('related_to_dataset', data.RelatedData, False, True),
@@ -251,20 +251,20 @@ data.Dataset.type_info = (
 
 data.RelatedData.type_info = (
     ('other_dataset', data.Dataset, True, False),
-    ('relationship', str, True, False),
+    ('relationship', unicode, True, False),
 )
 
 data.VariableCollection.type_info = (
-    ('collection_name', str, False, False),
-    ('variables', str, True, True),
+    ('collection_name', unicode, False, False),
+    ('variables', unicode, True, True),
 )
 
 drs.DrsAtomicDataset.type_info = (
     ('ensemble_member', drs.DrsEnsembleIdentifier, True, False),
     ('geographical_constraint', drs.DrsGeographicalIndicator, False, False),
-    ('mip_table', str, True, False),
+    ('mip_table', unicode, True, False),
     ('temporal_constraint', drs.DrsTemporalIdentifier, False, False),
-    ('variable_name', str, True, False),
+    ('variable_name', unicode, True, False),
 )
 
 drs.DrsEnsembleIdentifier.type_info = (
@@ -274,48 +274,48 @@ drs.DrsEnsembleIdentifier.type_info = (
 )
 
 drs.DrsGeographicalIndicator.type_info = (
-    ('bounding_box', str, False, False),
-    ('operator', str, False, False),
-    ('spatial_domain', str, False, False),
+    ('bounding_box', unicode, False, False),
+    ('operator', unicode, False, False),
+    ('spatial_domain', unicode, False, False),
 )
 
 drs.DrsPublicationDataset.type_info = (
-    ('activity', str, True, False),
-    ('experiment', str, True, False),
-    ('frequency', str, False, False),
-    ('institute', str, True, False),
-    ('model', str, True, False),
-    ('product', str, True, False),
-    ('realm', str, False, False),
+    ('activity', unicode, True, False),
+    ('experiment', unicode, True, False),
+    ('frequency', unicode, False, False),
+    ('institute', unicode, True, False),
+    ('model', unicode, True, False),
+    ('product', unicode, True, False),
+    ('realm', unicode, False, False),
     ('version_number', int, False, False),
 )
 
 drs.DrsTemporalIdentifier.type_info = (
-    ('end', str, False, False),
-    ('start', str, True, False),
-    ('suffix', str, False, False),
+    ('end', unicode, False, False),
+    ('start', unicode, True, False),
+    ('suffix', unicode, False, False),
 )
 
 platform.ComponentPerformance.type_info = (
     ('component', software.SoftwareComponent, False, False),
-    ('component_name', str, True, False),
+    ('component_name', unicode, True, False),
     ('cores_used', int, False, False),
     ('nodes_used', int, False, False),
     ('speed', float, True, False),
 )
 
 platform.ComputePool.type_info = (
-    ('accelerator_type', str, False, False),
+    ('accelerator_type', unicode, False, False),
     ('accelerators_per_node', int, False, False),
     ('compute_cores_per_node', int, False, False),
-    ('cpu_type', str, False, False),
-    ('description', str, False, False),
-    ('interconnect', str, False, False),
+    ('cpu_type', unicode, False, False),
+    ('description', unicode, False, False),
+    ('interconnect', unicode, False, False),
     ('memory_per_node', platform.StorageVolume, False, False),
-    ('model_number', str, False, False),
-    ('name', str, False, False),
+    ('model_number', unicode, False, False),
+    ('name', unicode, False, False),
     ('number_of_nodes', int, False, False),
-    ('operating_system', str, False, False),
+    ('operating_system', unicode, False, False),
 )
 
 platform.Machine.type_info = (
@@ -324,10 +324,10 @@ platform.Machine.type_info = (
 
 platform.Partition.type_info = (
     ('compute_pools', platform.ComputePool, True, True),
-    ('description', str, False, False),
+    ('description', unicode, False, False),
     ('institution', shared.Party, True, False),
-    ('model_number', str, False, False),
-    ('name', str, True, False),
+    ('model_number', unicode, False, False),
+    ('name', unicode, True, False),
     ('online_documentation', shared.OnlineResource, False, True),
     ('partition', platform.Partition, False, True),
     ('storage_pools', platform.StoragePool, False, True),
@@ -338,14 +338,14 @@ platform.Partition.type_info = (
 platform.Performance.type_info = (
     ('asypd', float, False, False),
     ('chsy', float, False, False),
-    ('compiler', str, False, False),
+    ('compiler', unicode, False, False),
     ('coupler_load', float, False, False),
     ('io_load', float, False, False),
     ('load_imbalance', float, False, False),
     ('memory_bloat', float, False, False),
     ('meta', shared.Meta, True, False),
     ('model', software.Model, True, False),
-    ('name', str, False, False),
+    ('name', unicode, False, False),
     ('platform', platform.Machine, True, False),
     ('subcomponent_performance', platform.ComponentPerformance, False, False),
     ('sypd', float, False, False),
@@ -353,29 +353,29 @@ platform.Performance.type_info = (
 )
 
 platform.StoragePool.type_info = (
-    ('description', str, False, False),
-    ('name', str, True, False),
-    ('type', str, False, False),
+    ('description', unicode, False, False),
+    ('name', unicode, True, False),
+    ('type', unicode, False, False),
     ('vendor', shared.Party, False, False),
     ('volume_available', platform.StorageVolume, True, False),
 )
 
 platform.StorageVolume.type_info = (
-    ('units', str, True, False),
+    ('units', unicode, True, False),
     ('volume', int, True, False),
 )
 
 science.Algorithm.type_info = (
     ('diagnostic_variables', data.VariableCollection, False, True),
-    ('heading', str, True, False),
-    ('implementation_overview', str, True, False),
+    ('heading', unicode, True, False),
+    ('implementation_overview', unicode, True, False),
     ('prognostic_variables', data.VariableCollection, False, True),
     ('references', shared.Citation, False, True),
 )
 
 science.ConservationProperties.type_info = (
     ('corrected_conserved_prognostic_variables', data.VariableCollection, False, False),
-    ('correction_methodology', str, False, False),
+    ('correction_methodology', unicode, False, False),
     ('flux_correction_was_used', bool, True, False),
 )
 
@@ -385,41 +385,41 @@ science.Extent.type_info = (
     ('maximum_vertical_level', float, False, False),
     ('minimum_vertical_level', float, False, False),
     ('northern_boundary', float, False, False),
-    ('region_known_as', str, False, True),
+    ('region_known_as', unicode, False, True),
     ('southern_boundary', float, False, False),
     ('western_boundary', float, False, False),
-    ('z_units', str, True, False),
+    ('z_units', unicode, True, False),
 )
 
 science.GridSummary.type_info = (
     ('grid_extent', science.Extent, True, False),
-    ('grid_layout', str, True, False),
-    ('grid_type', str, True, False),
+    ('grid_layout', unicode, True, False),
+    ('grid_type', unicode, True, False),
 )
 
 science.Process.type_info = (
     ('algorithm_properties', science.Algorithm, False, True),
-    ('description', str, False, False),
+    ('description', unicode, False, False),
     ('detailed_properties', science.ProcessDetail, False, True),
-    ('implementation_overview', str, True, False),
-    ('keywords', str, True, False),
-    ('name', str, True, False),
+    ('implementation_overview', unicode, True, False),
+    ('keywords', unicode, True, False),
+    ('name', unicode, True, False),
     ('references', shared.Reference, False, True),
     ('time_step_in_process', float, False, False),
 )
 
 science.ProcessDetail.type_info = (
-    ('content', str, False, False),
-    ('heading', str, False, False),
+    ('content', unicode, False, False),
+    ('heading', unicode, False, False),
     ('properties', shared.KeyFloat, False, True),
-    ('selection', str, False, True),
-    ('vocabulary', str, False, False),
+    ('selection', unicode, False, True),
+    ('vocabulary', unicode, False, False),
 )
 
 science.Resolution.type_info = (
     ('equivalent_horizontal_resolution', float, True, False),
     ('is_adaptive_grid', bool, False, False),
-    ('name', str, True, False),
+    ('name', unicode, True, False),
     ('number_of_levels', int, False, True),
     ('number_of_xy_gridpoints', int, False, True),
 )
@@ -428,9 +428,9 @@ science.ScientificDomain.type_info = (
     ('extra_conservation_properties', science.ConservationProperties, False, False),
     ('grid', science.GridSummary, False, False),
     ('meta', shared.Meta, True, False),
-    ('name', str, True, False),
-    ('overview', str, False, False),
-    ('realm', str, False, False),
+    ('name', unicode, True, False),
+    ('overview', unicode, False, False),
+    ('realm', unicode, False, False),
     ('references', shared.Reference, False, True),
     ('resolution', science.Resolution, True, False),
     ('simulates', science.Process, True, True),
@@ -438,40 +438,40 @@ science.ScientificDomain.type_info = (
 )
 
 science.Tuning.type_info = (
-    ('description', str, True, False),
+    ('description', unicode, True, False),
     ('global_mean_metrics_used', data.VariableCollection, False, False),
     ('regional_metrics_used', data.VariableCollection, False, False),
     ('trend_metrics_used', data.VariableCollection, False, False),
 )
 
 shared.Calendar.type_info = (
-    ('cal_type', str, True, False),
-    ('description', str, False, False),
+    ('cal_type', unicode, True, False),
+    ('description', unicode, False, False),
     ('month_lengths', int, False, True),
-    ('name', str, False, False),
+    ('name', unicode, False, False),
 )
 
 shared.CimLink.type_info = (
-    ('remote_type', str, True, False),
+    ('remote_type', unicode, True, False),
 )
 
 shared.Cimtext.type_info = (
-    ('content', str, True, False),
-    ('content_type', str, True, False),
+    ('content', unicode, True, False),
+    ('content_type', unicode, True, False),
 )
 
 shared.Citation.type_info = (
-    ('abstract', str, False, False),
-    ('citation_str', str, True, False),
-    ('context', str, False, False),
-    ('doi', str, False, False),
-    ('title', str, False, False),
+    ('abstract', unicode, False, False),
+    ('citation_str', unicode, True, False),
+    ('context', unicode, False, False),
+    ('doi', unicode, False, False),
+    ('title', unicode, False, False),
     ('url', shared.OnlineResource, False, False),
 )
 
 shared.DateTime.type_info = (
     ('offset', bool, False, False),
-    ('value', str, True, False),
+    ('value', unicode, True, False),
 )
 
 shared.DatetimeSet.type_info = (
@@ -479,49 +479,49 @@ shared.DatetimeSet.type_info = (
 )
 
 shared.IrregularDateset.type_info = (
-    ('date_set', str, True, False),
+    ('date_set', unicode, True, False),
 )
 
 shared.KeyFloat.type_info = (
-    ('key', str, True, False),
+    ('key', unicode, True, False),
     ('value', float, True, False),
 )
 
 shared.Meta.type_info = (
     ('metadata_author', shared.Party, True, False),
-    ('metadata_completeness', str, False, False),
-    ('metadata_quality', str, False, False),
+    ('metadata_completeness', unicode, False, False),
+    ('metadata_quality', unicode, False, False),
     ('metadata_reviewer', shared.Party, False, False),
 )
 
 shared.MinimalMeta.type_info = (
     ('document_version', int, False, False),
     ('metadata_last_updated', datetime.datetime, True, False),
-    ('uid', str, True, False),
+    ('uid', unicode, True, False),
 )
 
 shared.NumberArray.type_info = (
-    ('values', str, True, False),
+    ('values', unicode, True, False),
 )
 
 shared.OnlineResource.type_info = (
-    ('description', str, False, False),
-    ('linkage', str, True, False),
-    ('name', str, True, False),
-    ('protocol', str, False, False),
+    ('description', unicode, False, False),
+    ('linkage', unicode, True, False),
+    ('name', unicode, True, False),
+    ('protocol', unicode, False, False),
 )
 
 shared.Party.type_info = (
-    ('address', str, False, False),
-    ('email', str, False, False),
+    ('address', unicode, False, False),
+    ('email', unicode, False, False),
     ('meta', shared.MinimalMeta, True, False),
-    ('name', str, False, False),
+    ('name', unicode, False, False),
     ('organisation', bool, False, False),
     ('url', shared.OnlineResource, False, False),
 )
 
 shared.Pid.type_info = (
-    ('id', str, True, False),
+    ('id', unicode, True, False),
     ('resolution_service', shared.OnlineResource, True, False),
 )
 
@@ -536,14 +536,14 @@ shared.RegularTimeset.type_info = (
 
 shared.Responsibility.type_info = (
     ('party', shared.Party, True, True),
-    ('role', str, True, False),
+    ('role', unicode, True, False),
     ('when', shared.TimePeriod, False, False),
 )
 
 shared.StandaloneDocument.type_info = (
-    ('long_name', str, False, False),
+    ('long_name', unicode, False, False),
     ('meta', shared.Meta, True, False),
-    ('name', str, True, False),
+    ('name', unicode, True, False),
     ('references', shared.Citation, False, True),
     ('responsible_parties', shared.Responsibility, False, True),
 )
@@ -551,58 +551,58 @@ shared.StandaloneDocument.type_info = (
 shared.TimePeriod.type_info = (
     ('calendar', shared.Calendar, False, False),
     ('date', shared.DateTime, False, False),
-    ('date_type', str, True, False),
+    ('date_type', unicode, True, False),
     ('length', int, True, False),
-    ('units', str, True, False),
+    ('units', unicode, True, False),
 )
 
 shared.TimesliceList.type_info = (
     ('members', shared.NumberArray, True, False),
-    ('units', str, True, False),
+    ('units', unicode, True, False),
 )
 
 shared.VocabMember.type_info = (
-    ('uri', str, False, False),
-    ('value', str, True, False),
+    ('uri', unicode, False, False),
+    ('value', unicode, True, False),
     ('vocab', shared.Citation, False, False),
 )
 
 software.ComponentBase.type_info = (
-    ('description', str, False, False),
+    ('description', unicode, False, False),
     ('development_history', software.DevelopmentPath, False, False),
     ('documentation', shared.Citation, False, True),
-    ('long_name', str, False, False),
-    ('name', str, True, False),
+    ('long_name', unicode, False, False),
+    ('name', unicode, True, False),
     ('release_date', datetime.datetime, False, False),
     ('tuning_applied', science.Tuning, False, False),
-    ('version', str, False, False),
+    ('version', unicode, False, False),
 )
 
 software.Composition.type_info = (
-    ('couplings', str, False, True),
-    ('description', str, False, False),
+    ('couplings', unicode, False, True),
+    ('description', unicode, False, False),
 )
 
 software.DevelopmentPath.type_info = (
-    ('consortium_name', str, False, False),
+    ('consortium_name', unicode, False, False),
     ('creators', shared.Responsibility, False, True),
     ('developed_in_house', bool, True, False),
     ('funding_sources', shared.Responsibility, False, True),
-    ('previous_version', str, False, False),
+    ('previous_version', unicode, False, False),
 )
 
 software.EntryPoint.type_info = (
-    ('name', str, False, False),
+    ('name', unicode, False, False),
 )
 
 software.Gridspec.type_info = (
-    ('description', str, True, False),
+    ('description', unicode, True, False),
 )
 
 software.Model.type_info = (
-    ('category', str, True, False),
+    ('category', unicode, True, False),
     ('coupled_software_components', software.Model, False, True),
-    ('coupler', str, False, False),
+    ('coupler', unicode, False, False),
     ('extra_conservation_properties', science.ConservationProperties, False, False),
     ('internal_software_components', software.SoftwareComponent, False, True),
     ('meta', shared.Meta, True, False),
@@ -612,17 +612,17 @@ software.Model.type_info = (
 software.SoftwareComponent.type_info = (
     ('composition', software.Composition, False, False),
     ('connection_points', software.Variable, False, True),
-    ('coupling_framework', str, False, False),
+    ('coupling_framework', unicode, False, False),
     ('dependencies', software.EntryPoint, False, True),
     ('grid', software.Gridspec, False, False),
-    ('language', str, False, False),
-    ('license', str, False, False),
+    ('language', unicode, False, False),
+    ('license', unicode, False, False),
     ('sub_components', software.SoftwareComponent, False, True),
 )
 
 software.Variable.type_info = (
-    ('description', str, False, False),
-    ('name', str, True, False),
+    ('description', unicode, False, False),
+    ('name', unicode, True, False),
     ('prognostic', bool, True, False),
 )
 

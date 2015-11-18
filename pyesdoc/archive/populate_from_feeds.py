@@ -96,7 +96,7 @@ def _yield_feeds(project_filter=None):
     """Yields feeds to be processed.
 
     """
-    for project in config.PROJECTS:
+    for project in config.get_projects():
         if project_filter and project.name != project_filter:
             continue
         for feed in [f for f in project.feeds if f.is_active]:

@@ -78,15 +78,6 @@ def _set_description(ctx):
         ctx.ext.description = ctx.doc.long_name[:1023]
 
 
-def _set_encodings(ctx):
-    """Returns set of file encodings for the passed document."""
-    encodings = constants.ESDOC_ENCODINGS_FILE
-    if ctx.meta.type.startswith("cim.1"):
-        encodings = encodings + (constants.METAFOR_CIM_XML_ENCODING,)
-
-    ctx.ext.encodings = ctx.meta.encodings = list(encodings)
-
-
 def _set_viewer_url(ctx):
     """Sets document viewer URL."""
     ctx.ext.viewer_url = constants.ESDOC_VIEWER_URL.format(ctx.meta.project,
@@ -99,26 +90,26 @@ def _set_full_display_name(ctx):
     if ctx.ext.full_display_name:
         return
 
-    name = ""
+    name = u""
     if ctx.meta.project:
         name += ctx.meta.project.upper()
-        name += " "
+        name += u" "
     name += ctx.meta.type_display_name
-    name += " : "
+    name += u" : "
     if ctx.meta.institute and ctx.meta.institute != u"--":
         name += ctx.meta.institute.upper()
-        name += " - "
+        name += u" - "
     if ctx.ext.display_name:
         name += ctx.ext.display_name
-        name += " "
+        name += u" "
 
     ctx.ext.full_display_name = name.strip()
 
 
 def _set_sort_key(ctx):
     """Sets document full display name."""
-    ctx.meta.sort_key = "{0}{1}".format(
-        ctx.meta.type_sort_key, ctx.ext.display_name or str())
+    ctx.meta.sort_key = u"{0}{1}".format(
+        ctx.meta.type_sort_key, ctx.ext.display_name or unicode())
     ctx.meta.sort_key = ctx.meta.sort_key.upper()
 
 
@@ -132,7 +123,6 @@ PRE_EXTENDERS = (
     _set_display_name,
     _set_description,
     _set_summary_fields,
-    _set_encodings,
     _set_viewer_url,
     )
 

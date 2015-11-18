@@ -77,12 +77,12 @@ def test_imports_01():
         pyesdoc,
         pyesdoc.archive,
         pyesdoc.archive.config,
-        pyesdoc.archive.io,
-        pyesdoc.archive.parsers,
         pyesdoc.constants,
         pyesdoc.factory,
         pyesdoc.io,
         pyesdoc.ontologies,
+        pyesdoc.ontologies.cim.v1,
+        pyesdoc.ontologies.cim.v2,
         pyesdoc.options,
         pyesdoc.extensions,
         pyesdoc.extensions.default,
@@ -91,7 +91,6 @@ def test_imports_01():
         pyesdoc.serialization,
         pyesdoc.utils,
         pyesdoc.utils.convert,
-        pyesdoc.utils.functional,
         pyesdoc.utils.runtime,
         pyesdoc.validation,
         pyesdoc.validation.graph,
@@ -160,7 +159,7 @@ def _test_list_types():
     """Test listing supported types."""
     # supported - all
     types = pyesdoc.list_types()
-    tu.assert_int(len(types), 103)
+    tu.assert_int(len(types), 177)
 
     # supported - cim v1
     types = pyesdoc.list_types(_CIM, _CIM_V1)

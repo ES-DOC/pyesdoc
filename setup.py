@@ -68,7 +68,7 @@ setup(
     install_requires=_REQUIRES,
     url='https://github.com/ES-DOC/esdoc-py-client',
     license='GPL',
-    author='Mark Anthony Conway-Greenslade',
+    author='Mark A. Greenslade',
     author_email='momipsl@ipsl.jussieu.fr',
     packages=find_packages(),
     # package_dir={'pyesdoc': 'pyesdoc'},

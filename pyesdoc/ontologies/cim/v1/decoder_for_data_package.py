@@ -21,19 +21,16 @@ import typeset
 def decode_data_content(xml, nsmap):
     """Decodes an instance of the following type: data content.
 
-    :param xml: XML from which type is to be decoded.
-    :type xml: lxml.etree
-
-    :param nsmap: XML namespace mappings.
-    :type nsmap: dict
+    :param lxml.etree xml: XML from which type is to be decoded.
+    :param dict nsmap: XML namespace mappings.
 
     :returns: A decoded type instance.
     :rtype: cim.v1.typeset.data.DataContent
 
     """
     decodings = [
-        ('aggregation', False, 'str', 'child::cim:aggregation'),
-        ('frequency', False, 'str', 'child::cim:frequency/@value'),
+        ('aggregation', False, 'unicode', 'child::cim:aggregation'),
+        ('frequency', False, 'unicode', 'child::cim:frequency/@value'),
         ('topic', False, decode_data_topic, 'child::cim:topic'),
     ]
 
@@ -43,19 +40,16 @@ def decode_data_content(xml, nsmap):
 def decode_data_distribution(xml, nsmap):
     """Decodes an instance of the following type: data distribution.
 
-    :param xml: XML from which type is to be decoded.
-    :type xml: lxml.etree
-
-    :param nsmap: XML namespace mappings.
-    :type nsmap: dict
+    :param lxml.etree xml: XML from which type is to be decoded.
+    :param dict nsmap: XML namespace mappings.
 
     :returns: A decoded type instance.
     :rtype: cim.v1.typeset.data.DataDistribution
 
     """
     decodings = [
-        ('access', False, 'str', '@distributionAccess'),
-        ('format', False, 'str', 'child::cim:distributionFormat/@value'),
+        ('access', False, 'unicode', '@distributionAccess'),
+        ('format', False, 'unicode', 'child::cim:distributionFormat/@value'),
         ('responsible_party', False, decode_responsible_party, 'child::cim:responsibleParty'),
     ]
 
@@ -65,11 +59,8 @@ def decode_data_distribution(xml, nsmap):
 def decode_data_extent(xml, nsmap):
     """Decodes an instance of the following type: data extent.
 
-    :param xml: XML from which type is to be decoded.
-    :type xml: lxml.etree
-
-    :param nsmap: XML namespace mappings.
-    :type nsmap: dict
+    :param lxml.etree xml: XML from which type is to be decoded.
+    :param dict nsmap: XML namespace mappings.
 
     :returns: A decoded type instance.
     :rtype: cim.v1.typeset.data.DataExtent
@@ -86,11 +77,8 @@ def decode_data_extent(xml, nsmap):
 def decode_data_extent_geographical(xml, nsmap):
     """Decodes an instance of the following type: data extent geographical.
 
-    :param xml: XML from which type is to be decoded.
-    :type xml: lxml.etree
-
-    :param nsmap: XML namespace mappings.
-    :type nsmap: dict
+    :param lxml.etree xml: XML from which type is to be decoded.
+    :param dict nsmap: XML namespace mappings.
 
     :returns: A decoded type instance.
     :rtype: cim.v1.typeset.data.DataExtentGeographical
@@ -109,11 +97,8 @@ def decode_data_extent_geographical(xml, nsmap):
 def decode_data_extent_temporal(xml, nsmap):
     """Decodes an instance of the following type: data extent temporal.
 
-    :param xml: XML from which type is to be decoded.
-    :type xml: lxml.etree
-
-    :param nsmap: XML namespace mappings.
-    :type nsmap: dict
+    :param lxml.etree xml: XML from which type is to be decoded.
+    :param dict nsmap: XML namespace mappings.
 
     :returns: A decoded type instance.
     :rtype: cim.v1.typeset.data.DataExtentTemporal
@@ -131,11 +116,8 @@ def decode_data_extent_temporal(xml, nsmap):
 def decode_data_extent_time_interval(xml, nsmap):
     """Decodes an instance of the following type: data extent time interval.
 
-    :param xml: XML from which type is to be decoded.
-    :type xml: lxml.etree
-
-    :param nsmap: XML namespace mappings.
-    :type nsmap: dict
+    :param lxml.etree xml: XML from which type is to be decoded.
+    :param dict nsmap: XML namespace mappings.
 
     :returns: A decoded type instance.
     :rtype: cim.v1.typeset.data.DataExtentTimeInterval
@@ -144,7 +126,7 @@ def decode_data_extent_time_interval(xml, nsmap):
     decodings = [
         ('factor', False, 'int', '@factor'),
         ('radix', False, 'int', '@radix'),
-        ('unit', False, 'str', '@unit'),
+        ('unit', False, 'unicode', '@unit'),
     ]
 
     return set_attributes(typeset.data.DataExtentTimeInterval(), xml, nsmap, decodings)
@@ -153,11 +135,8 @@ def decode_data_extent_time_interval(xml, nsmap):
 def decode_data_hierarchy_level(xml, nsmap):
     """Decodes an instance of the following type: data hierarchy level.
 
-    :param xml: XML from which type is to be decoded.
-    :type xml: lxml.etree
-
-    :param nsmap: XML namespace mappings.
-    :type nsmap: dict
+    :param lxml.etree xml: XML from which type is to be decoded.
+    :param dict nsmap: XML namespace mappings.
 
     :returns: A decoded type instance.
     :rtype: cim.v1.typeset.data.DataHierarchyLevel
@@ -165,8 +144,8 @@ def decode_data_hierarchy_level(xml, nsmap):
     """
     decodings = [
         ('is_open', False, 'bool', 'child::cim:hierarchyLevelName/@open'),
-        ('name', False, 'str', 'child::cim:hierarchyLevelName/@value'),
-        ('value', False, 'str', 'child::cim:hierarchyLevelValue'),
+        ('name', False, 'unicode', 'child::cim:hierarchyLevelName/@value'),
+        ('value', False, 'unicode', 'child::cim:hierarchyLevelValue'),
     ]
 
     return set_attributes(typeset.data.DataHierarchyLevel(), xml, nsmap, decodings)
@@ -175,30 +154,27 @@ def decode_data_hierarchy_level(xml, nsmap):
 def decode_data_object(xml, nsmap):
     """Decodes an instance of the following type: data object.
 
-    :param xml: XML from which type is to be decoded.
-    :type xml: lxml.etree
-
-    :param nsmap: XML namespace mappings.
-    :type nsmap: dict
+    :param lxml.etree xml: XML from which type is to be decoded.
+    :param dict nsmap: XML namespace mappings.
 
     :returns: A decoded type instance.
     :rtype: cim.v1.typeset.data.DataObject
 
     """
     decodings = [
-        ('acronym', False, 'str', 'child::cim:acronym'),
+        ('acronym', False, 'unicode', 'child::cim:acronym'),
         ('citations', True, decode_citation, '//cim:citation[not(cim:citation)]'),
         ('content', True, decode_data_content, 'child::cim:content'),
-        ('data_status', False, 'str', 'self::cim:dataObject/@dataStatus'),
-        ('description', False, 'str', 'child::cim:description'),
+        ('data_status', False, 'unicode', 'self::cim:dataObject/@dataStatus'),
+        ('description', False, 'unicode', 'child::cim:description'),
         ('distribution', False, decode_data_distribution, 'child::cim:distribution'),
         ('extent', False, decode_data_extent, 'child::cim:extent'),
         ('hierarchy_level', False, decode_data_hierarchy_level, 'self::cim:dataObject'),
-        ('keyword', False, 'str', 'child::cim:keyword'),
+        ('keyword', False, 'unicode', 'child::cim:keyword'),
         ('meta', False, decode_doc_meta_info, 'self::cim:dataObject'),
         ('properties', True, decode_data_property, 'child::cim:dataProperty/cim:dataProperty'),
-        ('purpose', False, 'str', 'self::cim:dataObject/@purpose'),
-        ('purpose', False, 'str', 'self::cim:dataObject/@purpose'),
+        ('purpose', False, 'unicode', 'self::cim:dataObject/@purpose'),
+        ('purpose', False, 'unicode', 'self::cim:dataObject/@purpose'),
         ('storage', True, decode_data_storage_ip, 'child::cim:storage/cim:ipStorage'),
     ]
 
@@ -208,20 +184,17 @@ def decode_data_object(xml, nsmap):
 def decode_data_property(xml, nsmap):
     """Decodes an instance of the following type: data property.
 
-    :param xml: XML from which type is to be decoded.
-    :type xml: lxml.etree
-
-    :param nsmap: XML namespace mappings.
-    :type nsmap: dict
+    :param lxml.etree xml: XML from which type is to be decoded.
+    :param dict nsmap: XML namespace mappings.
 
     :returns: A decoded type instance.
     :rtype: cim.v1.typeset.data.DataProperty
 
     """
     decodings = [
-        ('description', False, 'str', 'child::cim:description'),
-        ('name', False, 'str', 'child::cim:name'),
-        ('value', False, 'str', 'child::cim:value'),
+        ('description', False, 'unicode', 'child::cim:description'),
+        ('name', False, 'unicode', 'child::cim:name'),
+        ('value', False, 'unicode', 'child::cim:value'),
     ]
 
     return set_attributes(typeset.data.DataProperty(), xml, nsmap, decodings)
@@ -230,11 +203,8 @@ def decode_data_property(xml, nsmap):
 def decode_data_restriction(xml, nsmap):
     """Decodes an instance of the following type: data restriction.
 
-    :param xml: XML from which type is to be decoded.
-    :type xml: lxml.etree
-
-    :param nsmap: XML namespace mappings.
-    :type nsmap: dict
+    :param lxml.etree xml: XML from which type is to be decoded.
+    :param dict nsmap: XML namespace mappings.
 
     :returns: A decoded type instance.
     :rtype: cim.v1.typeset.data.DataRestriction
@@ -249,11 +219,8 @@ def decode_data_restriction(xml, nsmap):
 def decode_data_storage(xml, nsmap):
     """Decodes an instance of the following type: data storage.
 
-    :param xml: XML from which type is to be decoded.
-    :type xml: lxml.etree
-
-    :param nsmap: XML namespace mappings.
-    :type nsmap: dict
+    :param lxml.etree xml: XML from which type is to be decoded.
+    :param dict nsmap: XML namespace mappings.
 
     :returns: A decoded type instance.
     :rtype: cim.v1.typeset.data.DataStorage
@@ -268,11 +235,8 @@ def decode_data_storage(xml, nsmap):
 def decode_data_storage_db(xml, nsmap):
     """Decodes an instance of the following type: data storage db.
 
-    :param xml: XML from which type is to be decoded.
-    :type xml: lxml.etree
-
-    :param nsmap: XML namespace mappings.
-    :type nsmap: dict
+    :param lxml.etree xml: XML from which type is to be decoded.
+    :param dict nsmap: XML namespace mappings.
 
     :returns: A decoded type instance.
     :rtype: cim.v1.typeset.data.DataStorageDb
@@ -287,11 +251,8 @@ def decode_data_storage_db(xml, nsmap):
 def decode_data_storage_file(xml, nsmap):
     """Decodes an instance of the following type: data storage file.
 
-    :param xml: XML from which type is to be decoded.
-    :type xml: lxml.etree
-
-    :param nsmap: XML namespace mappings.
-    :type nsmap: dict
+    :param lxml.etree xml: XML from which type is to be decoded.
+    :param dict nsmap: XML namespace mappings.
 
     :returns: A decoded type instance.
     :rtype: cim.v1.typeset.data.DataStorageFile
@@ -306,19 +267,16 @@ def decode_data_storage_file(xml, nsmap):
 def decode_data_storage_ip(xml, nsmap):
     """Decodes an instance of the following type: data storage ip.
 
-    :param xml: XML from which type is to be decoded.
-    :type xml: lxml.etree
-
-    :param nsmap: XML namespace mappings.
-    :type nsmap: dict
+    :param lxml.etree xml: XML from which type is to be decoded.
+    :param dict nsmap: XML namespace mappings.
 
     :returns: A decoded type instance.
     :rtype: cim.v1.typeset.data.DataStorageIp
 
     """
     decodings = [
-        ('file_name', False, 'str', 'child::cim:fileName'),
-        ('format', False, 'str', 'child::cim:dataFormat/@value'),
+        ('file_name', False, 'unicode', 'child::cim:fileName'),
+        ('format', False, 'unicode', 'child::cim:dataFormat/@value'),
     ]
 
     return set_attributes(typeset.data.DataStorageIp(), xml, nsmap, decodings)
@@ -327,20 +285,17 @@ def decode_data_storage_ip(xml, nsmap):
 def decode_data_topic(xml, nsmap):
     """Decodes an instance of the following type: data topic.
 
-    :param xml: XML from which type is to be decoded.
-    :type xml: lxml.etree
-
-    :param nsmap: XML namespace mappings.
-    :type nsmap: dict
+    :param lxml.etree xml: XML from which type is to be decoded.
+    :param dict nsmap: XML namespace mappings.
 
     :returns: A decoded type instance.
     :rtype: cim.v1.typeset.data.DataTopic
 
     """
     decodings = [
-        ('description', False, 'str', 'child::cim:description'),
-        ('name', False, 'str', 'child::cim:name'),
-        ('unit', False, 'str', 'child::cim:unit/@value'),
+        ('description', False, 'unicode', 'child::cim:description'),
+        ('name', False, 'unicode', 'child::cim:name'),
+        ('unit', False, 'unicode', 'child::cim:unit/@value'),
     ]
 
     return set_attributes(typeset.data.DataTopic(), xml, nsmap, decodings)

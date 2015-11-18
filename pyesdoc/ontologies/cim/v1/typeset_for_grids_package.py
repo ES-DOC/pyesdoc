@@ -35,7 +35,7 @@ class CoordinateList(object):
 
         self.has_constant_offset = None                   # bool
         self.length = None                                # int
-        self.uom = None                                   # str
+        self.uom = None                                   # unicode
 
 
 class GridExtent(object):
@@ -50,11 +50,11 @@ class GridExtent(object):
         """
         super(GridExtent, self).__init__()
 
-        self.maximum_latitude = None                      # str
-        self.maximum_longitude = None                     # str
-        self.minimum_latitude = None                      # str
-        self.minimum_longitude = None                     # str
-        self.units = None                                 # str
+        self.maximum_latitude = None                      # unicode
+        self.maximum_longitude = None                     # unicode
+        self.minimum_latitude = None                      # unicode
+        self.minimum_longitude = None                     # unicode
+        self.units = None                                 # unicode
 
 
 class GridMosaic(object):
@@ -70,19 +70,19 @@ class GridMosaic(object):
         super(GridMosaic, self).__init__()
 
         self.citations = []                               # shared.Citation
-        self.description = None                           # str
+        self.description = None                           # unicode
         self.extent = None                                # grids.GridExtent
         self.has_congruent_tiles = None                   # bool
-        self.id = None                                    # str
+        self.id = None                                    # unicode
         self.is_leaf = None                               # bool
-        self.long_name = None                             # str
-        self.mnemonic = None                              # str
+        self.long_name = None                             # unicode
+        self.mnemonic = None                              # unicode
         self.mosaic_count = None                          # int
         self.mosaics = []                                 # grids.GridMosaic
-        self.short_name = None                            # str
+        self.short_name = None                            # unicode
         self.tile_count = None                            # int
         self.tiles = []                                   # grids.GridTile
-        self.type = None                                  # str
+        self.type = None                                  # unicode
 
 
 class GridProperty(shared.Property):
@@ -128,32 +128,32 @@ class GridTile(object):
         """
         super(GridTile, self).__init__()
 
-        self.area = None                                  # str
-        self.cell_array = None                            # str
-        self.cell_ref_array = None                        # str
-        self.coord_file = None                            # str
-        self.coordinate_pole = None                       # str
-        self.description = None                           # str
+        self.area = None                                  # unicode
+        self.cell_array = None                            # unicode
+        self.cell_ref_array = None                        # unicode
+        self.coord_file = None                            # unicode
+        self.coordinate_pole = None                       # unicode
+        self.description = None                           # unicode
         self.discretization_type = None                   # grids.DiscretizationEnum
         self.extent = None                                # grids.GridExtent
         self.geometry_type = None                         # grids.GeometryTypeEnum
-        self.grid_north_pole = None                       # str
-        self.horizontal_crs = None                        # str
+        self.grid_north_pole = None                       # unicode
+        self.horizontal_crs = None                        # unicode
         self.horizontal_resolution = None                 # grids.GridTileResolutionType
-        self.id = None                                    # str
+        self.id = None                                    # unicode
         self.is_conformal = None                          # bool
         self.is_regular = None                            # bool
         self.is_terrain_following = None                  # bool
         self.is_uniform = None                            # bool
-        self.long_name = None                             # str
-        self.mnemonic = None                              # str
+        self.long_name = None                             # unicode
+        self.mnemonic = None                              # unicode
         self.nx = None                                    # int
         self.ny = None                                    # int
         self.nz = None                                    # int
         self.refinement_scheme = None                     # grids.RefinementTypeEnum
-        self.short_name = None                            # str
+        self.short_name = None                            # unicode
         self.simple_grid_geom = None                      # grids.SimpleGridGeometry
-        self.vertical_crs = None                          # str
+        self.vertical_crs = None                          # unicode
         self.vertical_resolution = None                   # grids.GridTileResolutionType
         self.zcoords = None                               # grids.VerticalCoordinateList
 
@@ -170,7 +170,7 @@ class GridTileResolutionType(object):
         """
         super(GridTileResolutionType, self).__init__()
 
-        self.description = None                           # str
+        self.description = None                           # unicode
         self.properties = []                              # grids.GridProperty
 
 
@@ -186,7 +186,7 @@ class SimpleGridGeometry(object):
         """
         super(SimpleGridGeometry, self).__init__()
 
-        self.dim_order = None                             # str
+        self.dim_order = None                             # unicode
         self.is_mesh = None                               # bool
         self.num_dims = None                              # int
         self.xcoords = None                               # grids.CoordinateList
@@ -206,9 +206,9 @@ class VerticalCoordinateList(CoordinateList):
         """
         super(VerticalCoordinateList, self).__init__()
 
-        self.form = None                                  # str
+        self.form = None                                  # unicode
         self.properties = []                              # grids.GridProperty
-        self.type = None                                  # str
+        self.type = None                                  # unicode
 
 
 class ArcTypeEnum(object):

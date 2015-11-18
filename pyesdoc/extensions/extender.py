@@ -54,15 +54,14 @@ class DocumentExtensionInfo(object):
 
         """
         self.children = []
-        self.css_class = str()
-        self.description = str()
-        self.display_name = str()
-        self.encodings = []
-        self.full_display_name = str()
-        self.language = str()
+        self.css_class = unicode()
+        self.description = unicode()
+        self.display_name = unicode()
+        self.full_display_name = unicode()
+        self.language = unicode()
         self.summary_fields = []
-        self.type = str()
-        self.viewer_url = str()
+        self.type = unicode()
+        self.viewer_url = unicode()
 
 
 def extend(doc):
@@ -81,7 +80,7 @@ def extend(doc):
 
     # Verify that document type is supported.
     if type(doc) not in _TYPES:
-        rt.throw("Unsupported document type: {0}.".format(type(doc)))
+        raise TypeError("Unsupported document type: {0}.".format(type(doc)))
 
     # Initialize document extension information.
     doc.ext = DocumentExtensionInfo()
@@ -129,7 +128,7 @@ def is_extendable(doc):
     """
     # Defensive programming.
     if not isinstance(doc, str):
-        rt.assert_doc('doc', doc, "Invalid document")
+        rt.assert_doc(doc)
 
     doc_type = doc if isinstance(doc, str) else doc.type_key
     doc_type = doc_type.lower()

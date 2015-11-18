@@ -20,18 +20,15 @@ import typeset
 def decode_calendar(xml, nsmap):
     """Decodes an instance of the following type: calendar.
 
-    :param xml: XML from which type is to be decoded.
-    :type xml: lxml.etree
-
-    :param nsmap: XML namespace mappings.
-    :type nsmap: dict
+    :param lxml.etree xml: XML from which type is to be decoded.
+    :param dict nsmap: XML namespace mappings.
 
     :returns: A decoded type instance.
     :rtype: cim.v1.typeset.shared.Calendar
 
     """
     decodings = [
-        ('description', False, 'str', 'child::cim:description'),
+        ('description', False, 'unicode', 'child::cim:description'),
         ('length', False, 'int', 'child::cim:length'),
         ('range', False, decode_closed_date_range, 'child::cim:range/cim:closedDateRange'),
         ('range', False, decode_open_date_range, 'child::cim:range/cim:openDateRange'),
@@ -43,11 +40,8 @@ def decode_calendar(xml, nsmap):
 def decode_change(xml, nsmap):
     """Decodes an instance of the following type: change.
 
-    :param xml: XML from which type is to be decoded.
-    :type xml: lxml.etree
-
-    :param nsmap: XML namespace mappings.
-    :type nsmap: dict
+    :param lxml.etree xml: XML from which type is to be decoded.
+    :param dict nsmap: XML namespace mappings.
 
     :returns: A decoded type instance.
     :rtype: cim.v1.typeset.shared.Change
@@ -56,10 +50,10 @@ def decode_change(xml, nsmap):
     decodings = [
         ('author', False, decode_responsible_party, 'child::cim:changeAuthor'),
         ('date', False, 'datetime.datetime', 'child::cim:changeDate'),
-        ('description', False, 'str', 'child::cim:description'),
+        ('description', False, 'unicode', 'child::cim:description'),
         ('details', True, decode_change_property, 'child::cim:detail'),
-        ('name', False, 'str', 'child::cim:name'),
-        ('type', False, 'str', 'self::cim:change/@type'),
+        ('name', False, 'unicode', 'child::cim:name'),
+        ('type', False, 'unicode', 'self::cim:change/@type'),
     ]
 
     return set_attributes(typeset.shared.Change(), xml, nsmap, decodings)
@@ -68,21 +62,18 @@ def decode_change(xml, nsmap):
 def decode_change_property(xml, nsmap):
     """Decodes an instance of the following type: change property.
 
-    :param xml: XML from which type is to be decoded.
-    :type xml: lxml.etree
-
-    :param nsmap: XML namespace mappings.
-    :type nsmap: dict
+    :param lxml.etree xml: XML from which type is to be decoded.
+    :param dict nsmap: XML namespace mappings.
 
     :returns: A decoded type instance.
     :rtype: cim.v1.typeset.shared.ChangeProperty
 
     """
     decodings = [
-        ('description', False, 'str', 'child::cim:description'),
-        ('id', False, 'str', 'child::cim:id'),
-        ('name', False, 'str', 'child::cim:name'),
-        ('value', False, 'str', 'child::cim:value'),
+        ('description', False, 'unicode', 'child::cim:description'),
+        ('id', False, 'unicode', 'child::cim:id'),
+        ('name', False, 'unicode', 'child::cim:name'),
+        ('value', False, 'unicode', 'child::cim:value'),
     ]
 
     return set_attributes(typeset.shared.ChangeProperty(), xml, nsmap, decodings)
@@ -91,28 +82,25 @@ def decode_change_property(xml, nsmap):
 def decode_citation(xml, nsmap):
     """Decodes an instance of the following type: citation.
 
-    :param xml: XML from which type is to be decoded.
-    :type xml: lxml.etree
-
-    :param nsmap: XML namespace mappings.
-    :type nsmap: dict
+    :param lxml.etree xml: XML from which type is to be decoded.
+    :param dict nsmap: XML namespace mappings.
 
     :returns: A decoded type instance.
     :rtype: cim.v1.typeset.shared.Citation
 
     """
     decodings = [
-        ('alternative_title', False, 'str', 'child::gmd:alternateTitle'),
-        ('alternative_title', False, 'str', 'child::gmd:alternateTitle/gco:CharacterString'),
-        ('collective_title', False, 'str', 'gmd:collectiveTitle'),
-        ('collective_title', False, 'str', 'gmd:collectiveTitle/gco:CharacterString'),
+        ('alternative_title', False, 'unicode', 'child::gmd:alternateTitle'),
+        ('alternative_title', False, 'unicode', 'child::gmd:alternateTitle/gco:CharacterString'),
+        ('collective_title', False, 'unicode', 'gmd:collectiveTitle'),
+        ('collective_title', False, 'unicode', 'gmd:collectiveTitle/gco:CharacterString'),
         ('date', False, 'datetime.datetime', 'child::gmd:date/gmd:CI_Date/gmd:date/gco:Date'),
-        ('date_type', False, 'str', 'child::gmd:date/gmd:CI_Date/gmd:dateType/gmd:CI_DateTypeCode/@codeListValue'),
-        ('location', False, 'str', 'child::gmd:otherCitationDetails'),
-        ('location', False, 'str', 'child::gmd:otherCitationDetails/gco:CharacterString'),
-        ('title', False, 'str', 'child::gmd:title'),
-        ('title', False, 'str', 'child::gmd:title/gco:CharacterString'),
-        ('type', False, 'str', 'child::gmd:presentationForm/gmd:CI_PresentationFormCode/@codeListValue'),
+        ('date_type', False, 'unicode', 'child::gmd:date/gmd:CI_Date/gmd:dateType/gmd:CI_DateTypeCode/@codeListValue'),
+        ('location', False, 'unicode', 'child::gmd:otherCitationDetails'),
+        ('location', False, 'unicode', 'child::gmd:otherCitationDetails/gco:CharacterString'),
+        ('title', False, 'unicode', 'child::gmd:title'),
+        ('title', False, 'unicode', 'child::gmd:title/gco:CharacterString'),
+        ('type', False, 'unicode', 'child::gmd:presentationForm/gmd:CI_PresentationFormCode/@codeListValue'),
     ]
 
     return set_attributes(typeset.shared.Citation(), xml, nsmap, decodings)
@@ -121,18 +109,15 @@ def decode_citation(xml, nsmap):
 def decode_closed_date_range(xml, nsmap):
     """Decodes an instance of the following type: closed date range.
 
-    :param xml: XML from which type is to be decoded.
-    :type xml: lxml.etree
-
-    :param nsmap: XML namespace mappings.
-    :type nsmap: dict
+    :param lxml.etree xml: XML from which type is to be decoded.
+    :param dict nsmap: XML namespace mappings.
 
     :returns: A decoded type instance.
     :rtype: cim.v1.typeset.shared.ClosedDateRange
 
     """
     decodings = [
-        ('duration', False, 'str', 'child::cim:duration'),
+        ('duration', False, 'unicode', 'child::cim:duration'),
         ('end', False, 'datetime.datetime', 'child::cim:endDate'),
         ('start', False, 'datetime.datetime', 'child::cim:startDate'),
     ]
@@ -143,23 +128,20 @@ def decode_closed_date_range(xml, nsmap):
 def decode_compiler(xml, nsmap):
     """Decodes an instance of the following type: compiler.
 
-    :param xml: XML from which type is to be decoded.
-    :type xml: lxml.etree
-
-    :param nsmap: XML namespace mappings.
-    :type nsmap: dict
+    :param lxml.etree xml: XML from which type is to be decoded.
+    :param dict nsmap: XML namespace mappings.
 
     :returns: A decoded type instance.
     :rtype: cim.v1.typeset.shared.Compiler
 
     """
     decodings = [
-        ('environment_variables', False, 'str', 'child::cim:compilerEnvironmentVariables'),
-        ('language', False, 'str', 'child::cim:compilerLanguage'),
-        ('name', False, 'str', 'child::cim:compilerName'),
-        ('options', False, 'str', 'child::cim:compilerOptions'),
-        ('type', False, 'str', 'child::cim:compilerType'),
-        ('version', False, 'str', 'child::cim:compilerVersion'),
+        ('environment_variables', False, 'unicode', 'child::cim:compilerEnvironmentVariables'),
+        ('language', False, 'unicode', 'child::cim:compilerLanguage'),
+        ('name', False, 'unicode', 'child::cim:compilerName'),
+        ('options', False, 'unicode', 'child::cim:compilerOptions'),
+        ('type', False, 'unicode', 'child::cim:compilerType'),
+        ('version', False, 'unicode', 'child::cim:compilerVersion'),
     ]
 
     return set_attributes(typeset.shared.Compiler(), xml, nsmap, decodings)
@@ -168,18 +150,15 @@ def decode_compiler(xml, nsmap):
 def decode_daily_360(xml, nsmap):
     """Decodes an instance of the following type: daily 360.
 
-    :param xml: XML from which type is to be decoded.
-    :type xml: lxml.etree
-
-    :param nsmap: XML namespace mappings.
-    :type nsmap: dict
+    :param lxml.etree xml: XML from which type is to be decoded.
+    :param dict nsmap: XML namespace mappings.
 
     :returns: A decoded type instance.
     :rtype: cim.v1.typeset.shared.Daily360
 
     """
     decodings = [
-        ('description', False, 'str', 'child::cim:description'),
+        ('description', False, 'unicode', 'child::cim:description'),
         ('length', False, 'int', 'child::cim:length'),
         ('range', False, decode_closed_date_range, 'child::cim:range/cim:closedDateRange'),
         ('range', False, decode_open_date_range, 'child::cim:range/cim:openDateRange'),
@@ -191,11 +170,8 @@ def decode_daily_360(xml, nsmap):
 def decode_data_source(xml, nsmap):
     """Decodes an instance of the following type: data source.
 
-    :param xml: XML from which type is to be decoded.
-    :type xml: lxml.etree
-
-    :param nsmap: XML namespace mappings.
-    :type nsmap: dict
+    :param lxml.etree xml: XML from which type is to be decoded.
+    :param dict nsmap: XML namespace mappings.
 
     :returns: A decoded type instance.
     :rtype: cim.v1.typeset.shared.DataSource
@@ -210,18 +186,15 @@ def decode_data_source(xml, nsmap):
 def decode_date_range(xml, nsmap):
     """Decodes an instance of the following type: date range.
 
-    :param xml: XML from which type is to be decoded.
-    :type xml: lxml.etree
-
-    :param nsmap: XML namespace mappings.
-    :type nsmap: dict
+    :param lxml.etree xml: XML from which type is to be decoded.
+    :param dict nsmap: XML namespace mappings.
 
     :returns: A decoded type instance.
     :rtype: cim.v1.typeset.shared.DateRange
 
     """
     decodings = [
-        ('duration', False, 'str', 'child::cim:duration'),
+        ('duration', False, 'unicode', 'child::cim:duration'),
     ]
 
     return set_attributes(typeset.shared.DateRange(), xml, nsmap, decodings)
@@ -230,11 +203,8 @@ def decode_date_range(xml, nsmap):
 def decode_doc_genealogy(xml, nsmap):
     """Decodes an instance of the following type: doc genealogy.
 
-    :param xml: XML from which type is to be decoded.
-    :type xml: lxml.etree
-
-    :param nsmap: XML namespace mappings.
-    :type nsmap: dict
+    :param lxml.etree xml: XML from which type is to be decoded.
+    :param dict nsmap: XML namespace mappings.
 
     :returns: A decoded type instance.
     :rtype: cim.v1.typeset.shared.DocGenealogy
@@ -250,11 +220,8 @@ def decode_doc_genealogy(xml, nsmap):
 def decode_doc_meta_info(xml, nsmap):
     """Decodes an instance of the following type: doc meta info.
 
-    :param xml: XML from which type is to be decoded.
-    :type xml: lxml.etree
-
-    :param nsmap: XML namespace mappings.
-    :type nsmap: dict
+    :param lxml.etree xml: XML from which type is to be decoded.
+    :param dict nsmap: XML namespace mappings.
 
     :returns: A decoded type instance.
     :rtype: cim.v1.typeset.shared.DocMetaInfo
@@ -266,6 +233,7 @@ def decode_doc_meta_info(xml, nsmap):
         ('external_ids', True, decode_standard_name, 'child::cim:externalID'),
         ('genealogy', False, decode_doc_genealogy, 'child::cim:documentGenealogy'),
         ('id', False, 'uuid.UUID', 'child::cim:documentID'),
+        ('update_date', False, 'datetime.datetime', 'child::cim:documentCreationDate'),
         ('version', False, 'int', 'child::cim:documentVersion'),
         ('version', False, 'int', 'self::cim:numericalExperiment/@documentVersion'),
     ]
@@ -276,11 +244,8 @@ def decode_doc_meta_info(xml, nsmap):
 def decode_doc_reference(xml, nsmap):
     """Decodes an instance of the following type: doc reference.
 
-    :param xml: XML from which type is to be decoded.
-    :type xml: lxml.etree
-
-    :param nsmap: XML namespace mappings.
-    :type nsmap: dict
+    :param lxml.etree xml: XML from which type is to be decoded.
+    :param dict nsmap: XML namespace mappings.
 
     :returns: A decoded type instance.
     :rtype: cim.v1.typeset.shared.DocReference
@@ -288,11 +253,11 @@ def decode_doc_reference(xml, nsmap):
     """
     decodings = [
         ('changes', True, decode_change, 'child::cim:change'),
-        ('description', False, 'str', 'child::cim:description'),
-        ('external_id', False, 'str', 'child::cim:externalID'),
+        ('description', False, 'unicode', 'child::cim:description'),
+        ('external_id', False, 'unicode', 'child::cim:externalID'),
         ('id', False, 'uuid.UUID', 'child::cim:id'),
-        ('name', False, 'str', 'child::cim:name'),
-        ('type', False, 'str', 'child::cim:type'),
+        ('name', False, 'unicode', 'child::cim:name'),
+        ('type', False, 'unicode', 'child::cim:type'),
         ('version', False, 'int', 'child::cim:version'),
     ]
 
@@ -302,21 +267,18 @@ def decode_doc_reference(xml, nsmap):
 def decode_doc_relationship(xml, nsmap):
     """Decodes an instance of the following type: doc relationship.
 
-    :param xml: XML from which type is to be decoded.
-    :type xml: lxml.etree
-
-    :param nsmap: XML namespace mappings.
-    :type nsmap: dict
+    :param lxml.etree xml: XML from which type is to be decoded.
+    :param dict nsmap: XML namespace mappings.
 
     :returns: A decoded type instance.
     :rtype: cim.v1.typeset.shared.DocRelationship
 
     """
     decodings = [
-        ('description', False, 'str', 'child::cim:description'),
-        ('direction', False, 'str', 'self::cim:documentRelationship/@direction'),
+        ('description', False, 'unicode', 'child::cim:description'),
+        ('direction', False, 'unicode', 'self::cim:documentRelationship/@direction'),
         ('target', False, decode_doc_relationship_target, 'child::cim:target'),
-        ('type', False, 'str', 'self::cim:documentRelationship/@type'),
+        ('type', False, 'unicode', 'self::cim:documentRelationship/@type'),
     ]
 
     return set_attributes(typeset.shared.DocRelationship(), xml, nsmap, decodings)
@@ -325,11 +287,8 @@ def decode_doc_relationship(xml, nsmap):
 def decode_doc_relationship_target(xml, nsmap):
     """Decodes an instance of the following type: doc relationship target.
 
-    :param xml: XML from which type is to be decoded.
-    :type xml: lxml.etree
-
-    :param nsmap: XML namespace mappings.
-    :type nsmap: dict
+    :param lxml.etree xml: XML from which type is to be decoded.
+    :param dict nsmap: XML namespace mappings.
 
     :returns: A decoded type instance.
     :rtype: cim.v1.typeset.shared.DocRelationshipTarget
@@ -345,11 +304,8 @@ def decode_doc_relationship_target(xml, nsmap):
 def decode_license(xml, nsmap):
     """Decodes an instance of the following type: license.
 
-    :param xml: XML from which type is to be decoded.
-    :type xml: lxml.etree
-
-    :param nsmap: XML namespace mappings.
-    :type nsmap: dict
+    :param lxml.etree xml: XML from which type is to be decoded.
+    :param dict nsmap: XML namespace mappings.
 
     :returns: A decoded type instance.
     :rtype: cim.v1.typeset.shared.License
@@ -364,11 +320,8 @@ def decode_license(xml, nsmap):
 def decode_machine(xml, nsmap):
     """Decodes an instance of the following type: machine.
 
-    :param xml: XML from which type is to be decoded.
-    :type xml: lxml.etree
-
-    :param nsmap: XML namespace mappings.
-    :type nsmap: dict
+    :param lxml.etree xml: XML from which type is to be decoded.
+    :param dict nsmap: XML namespace mappings.
 
     :returns: A decoded type instance.
     :rtype: cim.v1.typeset.shared.Machine
@@ -376,17 +329,17 @@ def decode_machine(xml, nsmap):
     """
     decodings = [
         ('cores_per_processor', False, 'int', 'child::cim:machineCoresPerProcessor'),
-        ('description', False, 'str', 'child::cim:machineDescription'),
-        ('interconnect', False, 'str', 'child::cim:machineInterconnect/@value'),
-        ('libraries', True, 'str', 'child::cim:machineLibrary'),
-        ('location', False, 'str', 'child::cim:machineLocation'),
+        ('description', False, 'unicode', 'child::cim:machineDescription'),
+        ('interconnect', False, 'unicode', 'child::cim:machineInterconnect/@value'),
+        ('libraries', True, 'unicode', 'child::cim:machineLibrary'),
+        ('location', False, 'unicode', 'child::cim:machineLocation'),
         ('maximum_processors', False, 'int', 'child::cim:machineMaximumProcessors'),
-        ('name', False, 'str', 'child::cim:machineName'),
-        ('operating_system', False, 'str', 'child::cim:machineOperatingSystem/@value'),
-        ('processor_type', False, 'str', 'child::cim:machineProcessorType/@value'),
-        ('system', False, 'str', 'child::cim:machineSystem'),
-        ('type', False, 'str', '@machineType'),
-        ('vendor', False, 'str', 'child::cim:machineVendor/@value'),
+        ('name', False, 'unicode', 'child::cim:machineName'),
+        ('operating_system', False, 'unicode', 'child::cim:machineOperatingSystem/@value'),
+        ('processor_type', False, 'unicode', 'child::cim:machineProcessorType/@value'),
+        ('system', False, 'unicode', 'child::cim:machineSystem'),
+        ('type', False, 'unicode', '@machineType'),
+        ('vendor', False, 'unicode', 'child::cim:machineVendor/@value'),
     ]
 
     return set_attributes(typeset.shared.Machine(), xml, nsmap, decodings)
@@ -395,11 +348,8 @@ def decode_machine(xml, nsmap):
 def decode_machine_compiler_unit(xml, nsmap):
     """Decodes an instance of the following type: machine compiler unit.
 
-    :param xml: XML from which type is to be decoded.
-    :type xml: lxml.etree
-
-    :param nsmap: XML namespace mappings.
-    :type nsmap: dict
+    :param lxml.etree xml: XML from which type is to be decoded.
+    :param dict nsmap: XML namespace mappings.
 
     :returns: A decoded type instance.
     :rtype: cim.v1.typeset.shared.MachineCompilerUnit
@@ -416,18 +366,15 @@ def decode_machine_compiler_unit(xml, nsmap):
 def decode_open_date_range(xml, nsmap):
     """Decodes an instance of the following type: open date range.
 
-    :param xml: XML from which type is to be decoded.
-    :type xml: lxml.etree
-
-    :param nsmap: XML namespace mappings.
-    :type nsmap: dict
+    :param lxml.etree xml: XML from which type is to be decoded.
+    :param dict nsmap: XML namespace mappings.
 
     :returns: A decoded type instance.
     :rtype: cim.v1.typeset.shared.OpenDateRange
 
     """
     decodings = [
-        ('duration', False, 'str', 'child::cim:duration'),
+        ('duration', False, 'unicode', 'child::cim:duration'),
         ('end', False, 'datetime.datetime', 'child::cim:endDate'),
         ('start', False, 'datetime.datetime', 'child::cim:startDate'),
     ]
@@ -438,18 +385,15 @@ def decode_open_date_range(xml, nsmap):
 def decode_perpetual_period(xml, nsmap):
     """Decodes an instance of the following type: perpetual period.
 
-    :param xml: XML from which type is to be decoded.
-    :type xml: lxml.etree
-
-    :param nsmap: XML namespace mappings.
-    :type nsmap: dict
+    :param lxml.etree xml: XML from which type is to be decoded.
+    :param dict nsmap: XML namespace mappings.
 
     :returns: A decoded type instance.
     :rtype: cim.v1.typeset.shared.PerpetualPeriod
 
     """
     decodings = [
-        ('description', False, 'str', 'child::cim:description'),
+        ('description', False, 'unicode', 'child::cim:description'),
         ('length', False, 'int', 'child::cim:length'),
         ('range', False, decode_closed_date_range, 'child::cim:range/cim:closedDateRange'),
         ('range', False, decode_open_date_range, 'child::cim:range/cim:openDateRange'),
@@ -461,11 +405,8 @@ def decode_perpetual_period(xml, nsmap):
 def decode_platform(xml, nsmap):
     """Decodes an instance of the following type: platform.
 
-    :param xml: XML from which type is to be decoded.
-    :type xml: lxml.etree
-
-    :param nsmap: XML namespace mappings.
-    :type nsmap: dict
+    :param lxml.etree xml: XML from which type is to be decoded.
+    :param dict nsmap: XML namespace mappings.
 
     :returns: A decoded type instance.
     :rtype: cim.v1.typeset.shared.Platform
@@ -473,10 +414,10 @@ def decode_platform(xml, nsmap):
     """
     decodings = [
         ('contacts', True, decode_responsible_party, 'child::cim:contact'),
-        ('description', False, 'str', 'child::cim:description'),
-        ('long_name', False, 'str', 'child::cim:longName'),
+        ('description', False, 'unicode', 'child::cim:description'),
+        ('long_name', False, 'unicode', 'child::cim:longName'),
         ('meta', False, decode_doc_meta_info, 'self::cim:platform'),
-        ('short_name', False, 'str', 'child::cim:shortName'),
+        ('short_name', False, 'unicode', 'child::cim:shortName'),
         ('units', True, decode_machine_compiler_unit, 'child::cim:unit'),
     ]
 
@@ -486,19 +427,16 @@ def decode_platform(xml, nsmap):
 def decode_property(xml, nsmap):
     """Decodes an instance of the following type: property.
 
-    :param xml: XML from which type is to be decoded.
-    :type xml: lxml.etree
-
-    :param nsmap: XML namespace mappings.
-    :type nsmap: dict
+    :param lxml.etree xml: XML from which type is to be decoded.
+    :param dict nsmap: XML namespace mappings.
 
     :returns: A decoded type instance.
     :rtype: cim.v1.typeset.shared.Property
 
     """
     decodings = [
-        ('name', False, 'str', 'child::cim:name'),
-        ('value', False, 'str', 'child::cim:value'),
+        ('name', False, 'unicode', 'child::cim:name'),
+        ('value', False, 'unicode', 'child::cim:value'),
     ]
 
     return set_attributes(typeset.shared.Property(), xml, nsmap, decodings)
@@ -507,18 +445,15 @@ def decode_property(xml, nsmap):
 def decode_real_calendar(xml, nsmap):
     """Decodes an instance of the following type: real calendar.
 
-    :param xml: XML from which type is to be decoded.
-    :type xml: lxml.etree
-
-    :param nsmap: XML namespace mappings.
-    :type nsmap: dict
+    :param lxml.etree xml: XML from which type is to be decoded.
+    :param dict nsmap: XML namespace mappings.
 
     :returns: A decoded type instance.
     :rtype: cim.v1.typeset.shared.RealCalendar
 
     """
     decodings = [
-        ('description', False, 'str', 'child::cim:description'),
+        ('description', False, 'unicode', 'child::cim:description'),
         ('length', False, 'int', 'child::cim:length'),
         ('range', False, decode_closed_date_range, 'child::cim:range/cim:closedDateRange'),
         ('range', False, decode_open_date_range, 'child::cim:range/cim:openDateRange'),
@@ -530,11 +465,8 @@ def decode_real_calendar(xml, nsmap):
 def decode_relationship(xml, nsmap):
     """Decodes an instance of the following type: relationship.
 
-    :param xml: XML from which type is to be decoded.
-    :type xml: lxml.etree
-
-    :param nsmap: XML namespace mappings.
-    :type nsmap: dict
+    :param lxml.etree xml: XML from which type is to be decoded.
+    :param dict nsmap: XML namespace mappings.
 
     :returns: A decoded type instance.
     :rtype: cim.v1.typeset.shared.Relationship
@@ -549,28 +481,25 @@ def decode_relationship(xml, nsmap):
 def decode_responsible_party(xml, nsmap):
     """Decodes an instance of the following type: responsible party.
 
-    :param xml: XML from which type is to be decoded.
-    :type xml: lxml.etree
-
-    :param nsmap: XML namespace mappings.
-    :type nsmap: dict
+    :param lxml.etree xml: XML from which type is to be decoded.
+    :param dict nsmap: XML namespace mappings.
 
     :returns: A decoded type instance.
     :rtype: cim.v1.typeset.shared.ResponsibleParty
 
     """
     decodings = [
-        ('abbreviation', False, 'str', 'child::cim:abbreviation'),
-        ('address', False, 'str', 'child::gmd:contactInfo/gmd:CI_Contact/gmd:address/gmd:CI_Address/gmd:deliveryPoint'),
-        ('address', False, 'str', 'child::gmd:contactInfo/gmd:CI_Contact/gmd:address/gmd:CI_Address/gmd:deliveryPoint/gco:CharacterString'),
-        ('email', False, 'str', 'child::gmd:contactInfo/gmd:CI_Contact/gmd:address/gmd:CI_Address/gmd:electronicMailAddress'),
-        ('email', False, 'str', 'child::gmd:contactInfo/gmd:CI_Contact/gmd:address/gmd:CI_Address/gmd:electronicMailAddress/gco:CharacterString'),
-        ('individual_name', False, 'str', 'child::gmd:individualName'),
-        ('individual_name', False, 'str', 'child::gmd:individualName/gco:CharacterString'),
-        ('organisation_name', False, 'str', 'child::gmd:organisationName'),
-        ('organisation_name', False, 'str', 'child::gmd:organisationName/gco:CharacterString'),
-        ('role', False, 'str', 'gmd:role/gmd:CI_RoleCode/@codeListValue'),
-        ('url', False, 'str', 'child::gmd:contactInfo/gmd:CI_Contact/gmd:onlineResource/gmd:CI_OnlineResource/gmd:linkage/gmd:URL'),
+        ('abbreviation', False, 'unicode', 'child::cim:abbreviation'),
+        ('address', False, 'unicode', 'child::gmd:contactInfo/gmd:CI_Contact/gmd:address/gmd:CI_Address/gmd:deliveryPoint'),
+        ('address', False, 'unicode', 'child::gmd:contactInfo/gmd:CI_Contact/gmd:address/gmd:CI_Address/gmd:deliveryPoint/gco:CharacterString'),
+        ('email', False, 'unicode', 'child::gmd:contactInfo/gmd:CI_Contact/gmd:address/gmd:CI_Address/gmd:electronicMailAddress'),
+        ('email', False, 'unicode', 'child::gmd:contactInfo/gmd:CI_Contact/gmd:address/gmd:CI_Address/gmd:electronicMailAddress/gco:CharacterString'),
+        ('individual_name', False, 'unicode', 'child::gmd:individualName'),
+        ('individual_name', False, 'unicode', 'child::gmd:individualName/gco:CharacterString'),
+        ('organisation_name', False, 'unicode', 'child::gmd:organisationName'),
+        ('organisation_name', False, 'unicode', 'child::gmd:organisationName/gco:CharacterString'),
+        ('role', False, 'unicode', 'gmd:role/gmd:CI_RoleCode/@codeListValue'),
+        ('url', False, 'unicode', 'child::gmd:contactInfo/gmd:CI_Contact/gmd:onlineResource/gmd:CI_OnlineResource/gmd:linkage/gmd:URL'),
     ]
 
     return set_attributes(typeset.shared.ResponsibleParty(), xml, nsmap, decodings)
@@ -579,20 +508,17 @@ def decode_responsible_party(xml, nsmap):
 def decode_standard(xml, nsmap):
     """Decodes an instance of the following type: standard.
 
-    :param xml: XML from which type is to be decoded.
-    :type xml: lxml.etree
-
-    :param nsmap: XML namespace mappings.
-    :type nsmap: dict
+    :param lxml.etree xml: XML from which type is to be decoded.
+    :param dict nsmap: XML namespace mappings.
 
     :returns: A decoded type instance.
     :rtype: cim.v1.typeset.shared.Standard
 
     """
     decodings = [
-        ('description', False, 'str', 'child::cim:description'),
-        ('name', False, 'str', 'child::cim:name'),
-        ('version', False, 'str', 'child::cim:version'),
+        ('description', False, 'unicode', 'child::cim:description'),
+        ('name', False, 'unicode', 'child::cim:name'),
+        ('version', False, 'unicode', 'child::cim:version'),
     ]
 
     return set_attributes(typeset.shared.Standard(), xml, nsmap, decodings)
@@ -601,11 +527,8 @@ def decode_standard(xml, nsmap):
 def decode_standard_name(xml, nsmap):
     """Decodes an instance of the following type: standard name.
 
-    :param xml: XML from which type is to be decoded.
-    :type xml: lxml.etree
-
-    :param nsmap: XML namespace mappings.
-    :type nsmap: dict
+    :param lxml.etree xml: XML from which type is to be decoded.
+    :param dict nsmap: XML namespace mappings.
 
     :returns: A decoded type instance.
     :rtype: cim.v1.typeset.shared.StandardName
@@ -614,7 +537,7 @@ def decode_standard_name(xml, nsmap):
     decodings = [
         ('is_open', False, 'bool', '@open'),
         ('standards', True, decode_standard, 'child::cim:standard'),
-        ('value', False, 'str', '@value'),
+        ('value', False, 'unicode', '@value'),
     ]
 
     return set_attributes(typeset.shared.StandardName(), xml, nsmap, decodings)

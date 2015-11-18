@@ -50,7 +50,6 @@ STATE_FIELDS = (
     "DOC_TYPE",
     "DOC_TYPE_KEY",
     "DOC_FILE",
-    "DOC_ENCODINGS_COUNT",
     "DOC_UID",
     "DOC_VERSION",
     "DOC_DATE",

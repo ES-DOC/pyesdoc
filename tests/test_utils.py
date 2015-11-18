@@ -235,7 +235,6 @@ def assert_doc(mod, doc):
     meta = doc.meta
     assert_object(meta, cim_v1.DocMetaInfo)
     assert_str(meta.source, DOCUMENT_SOURCE)
-    assert_iter(meta.encodings, mod.DOC_ENCODINGS_COUNT, str)
     if mod.DOC_UID:
         assert_uuid(meta.id, mod.DOC_UID)
     if mod.DOC_VERSION:
@@ -258,7 +257,6 @@ def assert_doc(mod, doc):
         ext = doc.ext
         assert_str(mod.DOC_TYPE_KEY, ext.type, True)
         assert_str(ext.language, pyesdoc.constants.ESDOC_DEFAULT_LANGUAGE)
-        assert_iter(ext.encodings, mod.DOC_ENCODINGS_COUNT, str)
         if hasattr(mod, "assert_extension_info"):
             mod.assert_extension_info(ext)
 

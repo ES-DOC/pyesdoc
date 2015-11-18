@@ -12,7 +12,9 @@ from pyesdoc.ontologies.cim.v1 import ComponentProperty
 
 
 def _create_property(p_tree, values, name, description):
-    """Sets & returns a component standard property."""
+    """Sets & returns a component standard property.
+
+    """
     def append_value(p, v):
         if v is not None:
             p.values.append(v)
@@ -39,7 +41,9 @@ def _create_property(p_tree, values, name, description):
 
 
 def _set_standard_properties_descriptive(c, p_tree):
-    """Sets descriptive standard properties."""
+    """Sets descriptive standard properties.
+
+    """
     _create_property(p_tree,
                      c.description,
                      'Description',
@@ -142,7 +146,7 @@ def set_scientific_properties(c):
 
     """
     # Create property group.
-    scipg = _create_property(c.ext.scientific_properties,
+    group = _create_property(c.ext.scientific_properties,
                              None,
                              'Scientific Properties',
                              'Set of component scientific properties')
@@ -151,13 +155,15 @@ def set_scientific_properties(c):
     for cp in c.properties:
         if "Key Properties" in cp.short_name or \
            "KeyProperties" in cp.short_name:
-            scipg.sub_properties = cp.sub_properties
+            for cpp in cp.sub_properties:
+                if cpp.short_name.lower().find("qc properties") == -1:
+                    group.sub_properties.append(cpp)
             return
 
     # Filter out QC properties.
     for cp in c.properties:
-        if cp.short_name.find("QC Properties") == -1:
-            scipg.sub_properties.append(cp)
+        if cp.short_name.lower().find("qc properties") == -1:
+            group.sub_properties.append(cp)
 
 
 def set_qc_properties(c):
@@ -168,13 +174,13 @@ def set_qc_properties(c):
 
     """
     # Create property group.
-    p = _create_property(c.ext.qc_properties,
-                         None,
-                         'QC Properties',
-                         'Set of component quality control properties')
+    group = _create_property(c.ext.qc_properties,
+                             None,
+                             'QC Properties',
+                             'Set of component quality control properties')
 
     # Append qc properties.
     for cp in c.properties:
-        if cp.short_name.find("QC Properties") != -1:
-            p.sub_properties = cp.sub_properties
+        if cp.short_name.lower().find("qc properties") != -1:
+            group.sub_properties = cp.sub_properties
             return

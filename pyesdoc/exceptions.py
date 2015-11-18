@@ -63,11 +63,11 @@ class InvalidOptionException(PYESDOC_Exception):
     """Raised when an attempt to access an invalid library option occurs.
 
     """
-    def __init__(self):
+    def __init__(self, option):
         """Instance constructor.
 
         """
-        super(InvalidOptionException, self).__init__(self, "Option is invalid.")
+        super(InvalidOptionException, self).__init__("Option {} is unsupported.".format(option))
 
 
 class ExtendingException(PYESDOC_Exception):
@@ -118,5 +118,17 @@ class ParsingException(PYESDOC_Exception):
 
         """
         err = "Document parsing failed: {}".format(err)
+        super(ParsingException, self).__init__(err)
+
+
+class WebServiceException(PYESDOC_Exception):
+    """Exception raised when a web service operation fails.
+
+    """
+    def __init__(self, err):
+        """Instance constructor.
+
+        """
+        err = "Web service invocation failed: {}".format(err)
         super(ParsingException, self).__init__(err)
 

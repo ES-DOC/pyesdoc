@@ -34,10 +34,10 @@ class Dataset(object):
         super(Dataset, self).__init__()
 
         self.availability = []                            # shared.OnlineResource
-        self.description = None                           # str
+        self.description = None                           # unicode
         self.drs_datasets = []                            # drs.DrsPublicationDataset
         self.meta = shared.Meta()                         # shared.Meta
-        self.name = None                                  # str
+        self.name = None                                  # unicode
         self.produced_by = None                           # activity.Simulation
         self.references = []                              # shared.Citation
         self.related_to_dataset = []                      # data.RelatedData
@@ -72,8 +72,8 @@ class VariableCollection(object):
         """
         super(VariableCollection, self).__init__()
 
-        self.collection_name = None                       # str
-        self.variables = []                               # str
+        self.collection_name = None                       # unicode
+        self.variables = []                               # unicode
 
 
 class DataAssociationTypes(object):

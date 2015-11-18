@@ -82,13 +82,13 @@ def _extend_component_01(ctx):
     if not hasattr(ctx.c, "ext"):
         ctx.c.ext = _ComponentExtensionInfo()
     if not hasattr(ctx.c.ext, "full_display_name"):
-        ctx.c.ext.full_display_name = str()
+        ctx.c.ext.full_display_name = unicode()
     if not hasattr(ctx.c.ext, "long_display_name"):
-        ctx.c.ext.long_display_name = str()
+        ctx.c.ext.long_display_name = unicode()
     if not hasattr(ctx.c.ext, "short_display_name"):
-        ctx.c.ext.short_display_name = str()
+        ctx.c.ext.short_display_name = unicode()
     if not hasattr(ctx.c.ext, "type_display_name"):
-        ctx.c.ext.type_display_name = str()
+        ctx.c.ext.type_display_name = unicode()
 
     ctx.c.ext.ancestors = ctx.ancestors
     ctx.c.ext.component_tree = []
@@ -134,16 +134,16 @@ def _extend_component_03(ctx):
         ctx.c.ext.short_display_name = ctx.c.type
 
     # Long name.
-    ctx.c.ext.long_display_name = ""
+    ctx.c.ext.long_display_name = unicode()
     if ctx.c.ext.depth > 1:
         ctx.c.ext.long_display_name += ctx.c.ext.parent.ext.long_display_name
-        ctx.c.ext.long_display_name += " > "
+        ctx.c.ext.long_display_name += u" > "
     ctx.c.ext.long_display_name += ctx.c.ext.short_display_name
 
     # Full name.
     if ctx.c.ext.depth > 0:
         ctx.c.ext.full_display_name += ctx.c.ext.parent.ext.full_display_name
-        ctx.c.ext.full_display_name += " > "
+        ctx.c.ext.full_display_name += u" > "
         ctx.c.ext.full_display_name += ctx.c.ext.short_display_name
 
 
@@ -184,8 +184,8 @@ def _set_type_display_info(ctx):
     """Sets document type information.
 
     """
-    ctx.meta.type_display_name = "Model"
-    ctx.meta.type_sort_key = "AA"
+    ctx.meta.type_display_name = u"Model"
+    ctx.meta.type_sort_key = u"AA"
 
 
 def _set_component_hierarchy(ctx):
@@ -215,41 +215,34 @@ def _set_component_property_trees(ctx):
     """Extends component property tree.
 
     """
-    def sort_tree(p_tree):
-        return sorted(p_tree, key=_get_sort_key)
-
-
     def build_tree(p_list, p_tree):
+        """Builds a flatted property tree.
+
+        """
         for p in p_list:
             p_tree.append(p)
             build_tree(p.sub_properties, p_tree)
 
 
     def get_displayable(p_tree):
-        return [p for p in p_tree if p.values]
+        """Returns only displayable properties within a tree.
 
+        """
+        return [p for p in p_tree if p.values and p.values[0].lower() != 'none']
 
     for c in [ctx.doc] + ctx.doc.ext.component_tree:
-        build_tree(c.ext.scientific_properties,
-                   c.ext.scientific_property_tree)
-        build_tree(c.ext.standard_properties,
-                   c.ext.standard_property_tree)
-        build_tree(c.ext.qc_properties,
-                   c.ext.qc_property_tree)
-
-        c.ext.scientific_property_tree = \
-            sort_tree(c.ext.scientific_property_tree)
-        c.ext.standard_properties = \
-            sort_tree(c.ext.standard_properties)
-        c.ext.qc_property_tree = \
-            sort_tree(c.ext.qc_property_tree)
-
-        c.ext.displayable_scientific_properties = \
-            get_displayable(c.ext.scientific_property_tree)
-        c.ext.displayable_standard_properties = \
-            get_displayable(c.ext.standard_property_tree)
-        c.ext.displayable_qc_properties = \
-            get_displayable(c.ext.qc_property_tree)
+        # ... build trees
+        build_tree(c.ext.scientific_properties, c.ext.scientific_property_tree)
+        build_tree(c.ext.standard_properties, c.ext.standard_property_tree)
+        build_tree(c.ext.qc_properties, c.ext.qc_property_tree)
+        # ... sort trees
+        c.ext.scientific_property_tree = sorted(c.ext.scientific_property_tree, key=_get_sort_key)
+        c.ext.standard_property_tree = sorted(c.ext.standard_property_tree, key=_get_sort_key)
+        c.ext.qc_property_tree = sorted(c.ext.qc_property_tree, key=_get_sort_key)
+        # ... set displayable properties
+        c.ext.displayable_scientific_properties = get_displayable(c.ext.scientific_property_tree)
+        c.ext.displayable_standard_properties = get_displayable(c.ext.standard_property_tree)
+        c.ext.displayable_qc_properties = get_displayable(c.ext.qc_property_tree)
 
 
 def _set_component_meta_info(ctx):

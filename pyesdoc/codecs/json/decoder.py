@@ -26,11 +26,14 @@ def decode(as_json):
     :rtype: object
 
     """
+    # Convert to unicode.
+    as_json = convert.str_to_unicode(as_json)
+
     # Convert to dictionary.
-    d = convert.json_to_dict(convert.str_to_unicode(as_json))
+    as_dict = convert.json_to_dict(as_json)
 
     # Format dictionary keys.
-    d = convert.dict_keys(d, convert.str_to_underscore_case)
+    as_dict = convert.dict_keys(as_dict, convert.str_to_underscore_case)
 
     # Decode from dictionary.
-    return dict_decoder.decode(d)
+    return dict_decoder.decode(as_dict)

@@ -21,11 +21,8 @@ import typeset
 def decode_cim_quality(xml, nsmap):
     """Decodes an instance of the following type: cim quality.
 
-    :param xml: XML from which type is to be decoded.
-    :type xml: lxml.etree
-
-    :param nsmap: XML namespace mappings.
-    :type nsmap: dict
+    :param lxml.etree xml: XML from which type is to be decoded.
+    :param dict nsmap: XML namespace mappings.
 
     :returns: A decoded type instance.
     :rtype: cim.v1.typeset.quality.CimQuality
@@ -42,11 +39,8 @@ def decode_cim_quality(xml, nsmap):
 def decode_evaluation(xml, nsmap):
     """Decodes an instance of the following type: evaluation.
 
-    :param xml: XML from which type is to be decoded.
-    :type xml: lxml.etree
-
-    :param nsmap: XML namespace mappings.
-    :type nsmap: dict
+    :param lxml.etree xml: XML from which type is to be decoded.
+    :param dict nsmap: XML namespace mappings.
 
     :returns: A decoded type instance.
     :rtype: cim.v1.typeset.quality.Evaluation
@@ -54,14 +48,14 @@ def decode_evaluation(xml, nsmap):
     """
     decodings = [
         ('date', False, 'datetime.datetime', 'child::gmd:result/gmd:DQ_ConformanceResult/gmd:specification/gmd:CI_Citation/gmd:date/gmd:CI_Date/gmd:date/gco:Date'),
-        ('description', False, 'str', 'gmd:evaluationMethodDescription/gco:CharacterString'),
+        ('description', False, 'unicode', 'gmd:evaluationMethodDescription/gco:CharacterString'),
         ('did_pass', False, 'bool', 'child::gmd:result/gmd:DQ_ConformanceResult/gmd:pass/gco:Boolean'),
-        ('explanation', False, 'str', 'child::gmd:result/gmd:DQ_ConformanceResult/gmd:explanation/gco:CharacterString'),
-        ('specification', False, 'str', 'child::gmd:result/gmd:DQ_ConformanceResult/gmd:specification/@xlink:title'),
-        ('specification_hyperlink', False, 'str', 'child::gmd:result/gmd:DQ_ConformanceResult/gmd:specification/@xlink:href'),
-        ('title', False, 'str', 'child::gmd:result/gmd:DQ_ConformanceResult/gmd:specification/gmd:CI_Citation/gmd:title/gco:CharacterString'),
-        ('type', False, 'str', 'child::gmd:result/@xlink:title'),
-        ('type_hyperlink', False, 'str', 'child::gmd:result/@xlink:href'),
+        ('explanation', False, 'unicode', 'child::gmd:result/gmd:DQ_ConformanceResult/gmd:explanation/gco:CharacterString'),
+        ('specification', False, 'unicode', 'child::gmd:result/gmd:DQ_ConformanceResult/gmd:specification/@xlink:title'),
+        ('specification_hyperlink', False, 'unicode', 'child::gmd:result/gmd:DQ_ConformanceResult/gmd:specification/@xlink:href'),
+        ('title', False, 'unicode', 'child::gmd:result/gmd:DQ_ConformanceResult/gmd:specification/gmd:CI_Citation/gmd:title/gco:CharacterString'),
+        ('type', False, 'unicode', 'child::gmd:result/@xlink:title'),
+        ('type_hyperlink', False, 'unicode', 'child::gmd:result/@xlink:href'),
     ]
 
     return set_attributes(typeset.quality.Evaluation(), xml, nsmap, decodings)
@@ -70,22 +64,19 @@ def decode_evaluation(xml, nsmap):
 def decode_measure(xml, nsmap):
     """Decodes an instance of the following type: measure.
 
-    :param xml: XML from which type is to be decoded.
-    :type xml: lxml.etree
-
-    :param nsmap: XML namespace mappings.
-    :type nsmap: dict
+    :param lxml.etree xml: XML from which type is to be decoded.
+    :param dict nsmap: XML namespace mappings.
 
     :returns: A decoded type instance.
     :rtype: cim.v1.typeset.quality.Measure
 
     """
     decodings = [
-        ('description', False, 'str', 'child::cim:measureDescription'),
-        ('description', False, 'str', 'parent::cim:report/child::gmd:measureDescription/gco:CharacterString'),
-        ('identification', False, 'str', 'child::cim:measureIdentification/gmd:code/gco:CharacterString'),
-        ('name', False, 'str', 'child::cim:nameOfMeasure'),
-        ('name', False, 'str', 'parent::cim:report/child::gmd:nameOfMeasure/gco:CharacterString'),
+        ('description', False, 'unicode', 'child::cim:measureDescription'),
+        ('description', False, 'unicode', 'parent::cim:report/child::gmd:measureDescription/gco:CharacterString'),
+        ('identification', False, 'unicode', 'child::cim:measureIdentification/gmd:code/gco:CharacterString'),
+        ('name', False, 'unicode', 'child::cim:nameOfMeasure'),
+        ('name', False, 'unicode', 'parent::cim:report/child::gmd:nameOfMeasure/gco:CharacterString'),
     ]
 
     return set_attributes(typeset.quality.Measure(), xml, nsmap, decodings)
@@ -94,11 +85,8 @@ def decode_measure(xml, nsmap):
 def decode_report(xml, nsmap):
     """Decodes an instance of the following type: report.
 
-    :param xml: XML from which type is to be decoded.
-    :type xml: lxml.etree
-
-    :param nsmap: XML namespace mappings.
-    :type nsmap: dict
+    :param lxml.etree xml: XML from which type is to be decoded.
+    :param dict nsmap: XML namespace mappings.
 
     :returns: A decoded type instance.
     :rtype: cim.v1.typeset.quality.Report

@@ -20,48 +20,51 @@ from pyesdoc.utils import runtime as rt
 
 
 
-def _get_doc(d, doc_type):
-    """Returns document."""
-    if doc_type.type_key != d['ontology_type_key']:
-        doc_type = ontologies.get_type_from_key(d['ontology_type_key'])
+def _get_doc(obj, doc_type):
+    """Returns document.
+
+    """
+    if doc_type.type_key != obj['ontology_type_key']:
+        doc_type = ontologies.get_type_from_key(obj['ontology_type_key'])
     if doc_type is None:
-        rt.raise_error('Decoding type is unrecognized')
+        raise ValueError('Decoding type is unrecognized')
 
     return doc_type(), ontologies.get_type_info(doc_type)
 
 
-def _decode_simple(v, type, iterable):
-    """Decodes a simple value."""
+def _decode_simple(value, target_type, iterable):
+    """Decodes a simple value.
+
+    """
     if iterable:
-        return map(lambda i : convert.str_to_typed_value(i, type), v)
-    else:
-        return convert.str_to_typed_value(v, type)
+        return [convert.text_to_typed_value(i, target_type) for i in value]
+    return convert.text_to_typed_value(value, target_type)
 
 
-def _decode(v, type, iterable):
+def _decode(value, doc_type, iterable):
     """Decodes a dictionary.
 
     """
-    def _do(d):
+    def _do(obj):
         # Create doc.
-        doc, doc_type_info = _get_doc(d, type)
+        doc, doc_type_info = _get_doc(obj, doc_type)
 
         # Set doc attributes.
         for _name, _type, _required, _iterable in doc_type_info:
             # ... set placeholders
-            if _name not in d:
+            if _name not in obj:
                 continue
             # ... set nulls
-            elif d[_name] is None:
+            elif obj[_name] is None:
                 setattr(doc, _name, [] if _iterable else None)
             # ... set simple / complex types
             else:
                 decoder = _decode if _type in ontologies.get_types() else _decode_simple
-                setattr(doc, _name, decoder(d[_name], _type, _iterable))
+                setattr(doc, _name, decoder(obj[_name], _type, _iterable))
 
         return doc
 
-    return _do(v) if not iterable else map(lambda i : _do(i), v)
+    return _do(value) if not iterable else [_do(i) for i in value]
 
 
 def decode(as_dict):
@@ -76,7 +79,7 @@ def decode(as_dict):
     # Format keys.
     as_dict = convert.dict_keys(as_dict, convert.str_to_underscore_case)
     if 'ontology_type_key' not in as_dict:
-        rt.raise_error('Ontology type key is unspecified and therefore the document cannot be decoded.')
+        raise KeyError('ontology_type_key is unspecified and therefore the document cannot be decoded.')
 
     # Get document type.
     doc_type_key = as_dict['ontology_type_key']

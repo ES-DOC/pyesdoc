@@ -15,6 +15,7 @@ import uuid
 
 import requests
 
+import pyesdoc
 from pyesdoc import constants
 from pyesdoc import options
 from pyesdoc.serialization import encode, decode
@@ -41,64 +42,64 @@ def _assert_doc(doc, msg):
 
     """
     if doc is None:
-        rt.throw(msg if msg is not None else "Document instance is null.")
+        raise ValueError(msg if msg is not None else "Document instance is null.")
 
 
 def _throw_invalid_doc_id():
     """Throws an error.
 
     """
-    rt.throw("Invalid document uid (must be an instance of uuid.UUID).")
+    raise TypeError("Invalid document uid (must be an instance of uuid.UUID).")
 
 
 def _throw_invalid_doc_version():
     """Throws an error.
 
     """
-    rt.throw("Invalid document version (must be either \
-             'all', 'latest' or an integer.")
+    raise TypeError("Invalid document version (must be either \
+                     'all', 'latest' or an integer.")
 
 
 def _throw_connection_error():
     """Throws an error.
 
     """
-    rt.throw("Could not connect to remote API server.")
+    raise pyesdoc.WebServiceException("Could not connect to remote API server.")
 
 
 def _throw_not_found_error():
     """Throws an error.
 
     """
-    rt.throw("Could not find remote resource.")
+    raise pyesdoc.WebServiceException("Could not find remote resource.")
 
 
 def _throw_http_error():
     """Throws an error.
 
     """
-    rt.throw("Invalid HTTP response from remote API server.")
+    raise pyesdoc.WebServiceException("Invalid HTTP response from remote API server.")
 
 
 def _throw_timeout_error():
     """Throws an error.
 
     """
-    rt.throw("Remote API server connection timed out.")
+    raise pyesdoc.WebServiceException("Remote API server connection timed out.")
 
 
 def _throw_server_error(resp):
     """Throws an error.
 
     """
-    rt.throw("A server side failure has occurred: {0}".format(resp.text))
+    raise pyesdoc.WebServiceException("A server side failure has occurred: {0}".format(resp.text))
 
 
 def _throw_uncontrolled_server_error(resp):
     """Throws an unknown server error.
 
     """
-    rt.throw("An uncontrolled server side failure has occurred: {0}".format(resp.text))
+    raise pyesdoc.WebServiceException("An uncontrolled server side failure has occurred: {0}".format(resp.text))
 
 
 def _invoke_api(verb, url, data=None):
@@ -194,9 +195,9 @@ def publish(doc):
     """
     # Defensive programming.
     if doc is None:
-        rt.throw("Cannot publish null documents.")
+        raise TypeError("Cannot publish null documents.")
     if not is_valid(doc):
-        rt.throw("Cannot publish invalid documents.")
+        raise ValueError("Cannot publish invalid documents.")
 
     # Increment version.
     doc.meta.version = doc.meta.version + 1

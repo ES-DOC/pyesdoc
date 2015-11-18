@@ -26,6 +26,7 @@ def _main():
     """Main entry point.
 
     """
+    pyesdoc.archive.init()
     pyesdoc.archive.populate(options.throttle, options.project)
 
 

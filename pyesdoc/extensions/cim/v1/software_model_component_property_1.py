@@ -24,10 +24,10 @@ _ExtensionContextInfo = \
 class _PropertyExtensionInfo(object):
     """Property extension properties."""
     def __init__(self):
-        self.display_name = ""
-        self.full_display_name = ""
-        self.long_display_name = ""
-        self.short_display_name = ""
+        self.display_name = unicode()
+        self.full_display_name = unicode()
+        self.long_display_name = unicode()
+        self.short_display_name = unicode()
 
 
 def _extend_property_01(ctx):

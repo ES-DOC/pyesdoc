@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
 
 """
-.. module:: model.py
+.. module:: archive/manager.py
    :copyright: @2013 Earth System Documentation (http://es-doc.org)
    :license: GPL/CeCIL
    :platform: Unix, Windows
-   :synopsis: A model of a document archive.
+   :synopsis: Manages access to the document archive.
 
 .. moduleauthor:: Mark Conway-Greenslade <momipsl@ipsl.jussieu.fr>
 
@@ -13,7 +13,8 @@
 """
 import os
 
-from pyesdoc.archive import config, constants
+from pyesdoc.archive import config
+from pyesdoc.archive import constants
 from pyesdoc.archive.file_info import ArchiveFileInfo
 from pyesdoc.archive.folder_info import ArchiveFolderInfo
 
@@ -22,13 +23,17 @@ from pyesdoc.archive.folder_info import ArchiveFolderInfo
 # Set of managed folders.
 _FOLDERS = set()
 
-# Initialized managed folders from configuration file.
-for project, source in config.get_project_sources():
-    path = os.path.join(config.DIR_ARCHIVE, project)
-    path = os.path.join(path, source)
-    if not os.path.exists(path):
-        os.makedirs(path)
-    _FOLDERS.add(ArchiveFolderInfo(project, source, path))
+
+def init():
+    """Initializes archive manager.
+
+    """
+    for project, source in config.get_project_sources():
+        path = os.path.join(config.get_directory(), project)
+        path = os.path.join(path, source)
+        if not os.path.exists(path):
+            os.makedirs(path)
+        _FOLDERS.add(ArchiveFolderInfo(project, source, path))
 
 
 def delete_error_files(project=None, source=None):

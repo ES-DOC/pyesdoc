@@ -37,14 +37,14 @@ class Activity(object):
         """
         super(Activity, self).__init__()
 
-        self.canonical_name = None                        # str
-        self.description = None                           # str
+        self.canonical_name = None                        # unicode
+        self.description = None                           # unicode
         self.duration = None                              # shared.TimePeriod
-        self.keywords = []                                # str
-        self.long_name = None                             # str
+        self.keywords = []                                # unicode
+        self.long_name = None                             # unicode
         self.meta = shared.Meta()                         # shared.Meta
-        self.name = None                                  # str
-        self.rationale = None                             # str
+        self.name = None                                  # unicode
+        self.rationale = None                             # unicode
         self.references = []                              # shared.Citation
         self.responsible_parties = []                     # shared.Responsibility
 
@@ -63,7 +63,7 @@ class AxisMember(object):
         """
         super(AxisMember, self).__init__()
 
-        self.description = None                           # str
+        self.description = None                           # unicode
         self.index = None                                 # int
         self.value = None                                 # float
 
@@ -80,9 +80,9 @@ class EnsembleAxis(object):
         """
         super(EnsembleAxis, self).__init__()
 
-        self.extra_detail = None                          # str
+        self.extra_detail = None                          # unicode
         self.member = []                                  # activity.AxisMember
-        self.short_identifier = None                      # str
+        self.short_identifier = None                      # unicode
         self.target_requirement = None                    # activity.NumericalRequirement
 
 
@@ -244,7 +244,7 @@ class Simulation(Activity):
         super(Simulation, self).__init__()
 
         self.calendar = None                              # shared.Calendar
-        self.ensemble_identifier = None                   # str
+        self.ensemble_identifier = None                   # unicode
         self.parent_simulation = None                     # activity.ParentSimulation
         self.part_of_project = []                         # activity.Project
         self.primary_ensemble = None                      # activity.Ensemble
@@ -365,7 +365,7 @@ class ForcingConstraint(NumericalRequirement):
         """
         super(ForcingConstraint, self).__init__()
 
-        self.additional_constraint = None                 # str
+        self.additional_constraint = None                 # unicode
         self.category = None                              # shared.VocabMember
         self.code = None                                  # shared.VocabMember
         self.data_link = None                             # shared.OnlineResource

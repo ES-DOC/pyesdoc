@@ -26,6 +26,8 @@ def _main():
     """Main entry point.
 
     """
+    pyesdoc.archive.init()
+
     document = pyesdoc.archive.load(options.uid, options.version)
     if not document:
         pyesdoc.rt.log("document not found")

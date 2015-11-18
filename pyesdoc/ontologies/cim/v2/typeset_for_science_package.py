@@ -35,8 +35,8 @@ class Algorithm(object):
         super(Algorithm, self).__init__()
 
         self.diagnostic_variables = []                    # data.VariableCollection
-        self.heading = None                               # str
-        self.implementation_overview = None               # str
+        self.heading = None                               # unicode
+        self.implementation_overview = None               # unicode
         self.prognostic_variables = []                    # data.VariableCollection
         self.references = []                              # shared.Citation
 
@@ -54,7 +54,7 @@ class ConservationProperties(object):
         super(ConservationProperties, self).__init__()
 
         self.corrected_conserved_prognostic_variables = None# data.VariableCollection
-        self.correction_methodology = None                # str
+        self.correction_methodology = None                # unicode
         self.flux_correction_was_used = None              # bool
 
 
@@ -78,10 +78,10 @@ class Extent(object):
         self.maximum_vertical_level = None                # float
         self.minimum_vertical_level = None                # float
         self.northern_boundary = None                     # float
-        self.region_known_as = []                         # str
+        self.region_known_as = []                         # unicode
         self.southern_boundary = None                     # float
         self.western_boundary = None                      # float
-        self.z_units = None                               # str
+        self.z_units = None                               # unicode
 
 
 class GridSummary(object):
@@ -117,11 +117,11 @@ class Process(object):
         super(Process, self).__init__()
 
         self.algorithm_properties = []                    # science.Algorithm
-        self.description = None                           # str
+        self.description = None                           # unicode
         self.detailed_properties = []                     # science.ProcessDetail
-        self.implementation_overview = None               # str
-        self.keywords = None                              # str
-        self.name = None                                  # str
+        self.implementation_overview = None               # unicode
+        self.keywords = None                              # unicode
+        self.name = None                                  # unicode
         self.references = []                              # shared.Reference
         self.time_step_in_process = None                  # float
 
@@ -141,11 +141,11 @@ class ProcessDetail(object):
         """
         super(ProcessDetail, self).__init__()
 
-        self.content = None                               # str
-        self.heading = None                               # str
+        self.content = None                               # unicode
+        self.heading = None                               # unicode
         self.properties = []                              # shared.KeyFloat
-        self.selection = []                               # str
-        self.vocabulary = None                            # str
+        self.selection = []                               # unicode
+        self.vocabulary = None                            # unicode
 
 
 class Resolution(object):
@@ -166,7 +166,7 @@ class Resolution(object):
 
         self.equivalent_horizontal_resolution = None      # float
         self.is_adaptive_grid = None                      # bool
-        self.name = None                                  # str
+        self.name = None                                  # unicode
         self.number_of_levels = []                        # int
         self.number_of_xy_gridpoints = []                 # int
 
@@ -187,9 +187,9 @@ class ScientificDomain(object):
         self.extra_conservation_properties = None         # science.ConservationProperties
         self.grid = None                                  # science.GridSummary
         self.meta = shared.Meta()                         # shared.Meta
-        self.name = None                                  # str
-        self.overview = None                              # str
-        self.realm = None                                 # str
+        self.name = None                                  # unicode
+        self.overview = None                              # unicode
+        self.realm = None                                 # unicode
         self.references = []                              # shared.Reference
         self.resolution = None                            # science.Resolution
         self.simulates = []                               # science.Process
@@ -208,7 +208,7 @@ class Tuning(object):
         """
         super(Tuning, self).__init__()
 
-        self.description = None                           # str
+        self.description = None                           # unicode
         self.global_mean_metrics_used = None              # data.VariableCollection
         self.regional_metrics_used = None                 # data.VariableCollection
         self.trend_metrics_used = None                    # data.VariableCollection

@@ -28,16 +28,7 @@ Who uses pyesdoc ?
 Developers building value added software ontop of the ES-DOC eco-system.
 
 
-What are the contents of pyesdoc ?
---------------------------------------
-
-    \docs           		Library documentation.
-    \jobs           		Jobs to be run from command line.
-    \pyesdoc           		Source code.
-    \tests  	            Unit tests.
-
-
 Further Information ?
 --------------------------------------
 
-Please refer to the [splash page](http:es-doc.org) for further information.
+See http:es-doc.org.

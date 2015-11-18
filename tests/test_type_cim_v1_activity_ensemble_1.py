@@ -48,9 +48,6 @@ DOC_INSTITUTE = "MOHC"
 # Test document author.
 DOC_AUTHOR = "Metafor Questionnaire"
 
-# Test supported document encodings.
-DOC_ENCODINGS_COUNT = 4
-
 
 def assert_extension_info(ext):
     """Asserts a document's extension information.
@@ -58,12 +55,12 @@ def assert_extension_info(ext):
     :param object ext: Document extension information.
 
     """
-    tu.assert_str(ext.display_name, "amip")
-    tu.assert_str(ext.description, "Six element ensemble", True)
-    tu.assert_str(ext.full_display_name, "CMIP5 Ensemble : MOHC - amip")
+    tu.assert_str(ext.display_name, u"amip")
+    tu.assert_str(ext.description, u"Six element ensemble", True)
+    tu.assert_str(ext.full_display_name, u"CMIP5 Ensemble : MOHC - amip")
     tu.assert_int(ext.summary_fields, 2)
-    tu.assert_str(ext.summary_fields[0], "amip")
-    tu.assert_str(ext.summary_fields[1], "3.3 AMIP and AMIP Ensemble")
+    tu.assert_str(ext.summary_fields[0], u"amip")
+    tu.assert_str(ext.summary_fields[1], u"3.3 AMIP and AMIP Ensemble")
 
 
 def _assert_doc_core(doc, is_update):
@@ -73,9 +70,8 @@ def _assert_doc_core(doc, is_update):
     tu.assert_iter(doc.members, 6, cim.v1.EnsembleMember)
     tu.assert_str(doc.long_name, "3.3 AMIP and AMIP Ensemble")
     tu.assert_str(doc.short_name, "amip")
-    tu.assert_iter(doc.types, 1, str)
+    tu.assert_iter(doc.types, 1)
     tu.assert_str(doc.types[0], "Initial Condition")
-
 
 def _assert_doc_member(doc, is_update):
     """Assert ensemble members information."""

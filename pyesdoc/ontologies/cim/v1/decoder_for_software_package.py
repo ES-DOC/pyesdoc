@@ -24,11 +24,8 @@ import typeset
 def decode_component(xml, nsmap):
     """Decodes an instance of the following type: component.
 
-    :param xml: XML from which type is to be decoded.
-    :type xml: lxml.etree
-
-    :param nsmap: XML namespace mappings.
-    :type nsmap: dict
+    :param lxml.etree xml: XML from which type is to be decoded.
+    :param dict nsmap: XML namespace mappings.
 
     :returns: A decoded type instance.
     :rtype: cim.v1.typeset.software.Component
@@ -36,15 +33,15 @@ def decode_component(xml, nsmap):
     """
     decodings = [
         ('citations', True, decode_citation, 'child::cim:citation'),
-        ('description', False, 'str', 'child::cim:description'),
+        ('description', False, 'unicode', 'child::cim:description'),
         ('language', False, decode_component_language, 'child::cim:componentLanguage'),
-        ('long_name', False, 'str', 'child::cim:longName'),
+        ('long_name', False, 'unicode', 'child::cim:longName'),
         ('properties', True, decode_component_property, 'child::cim:componentProperties/cim:componentProperty'),
         ('properties', True, decode_component_property, 'child::cim:numericalProperties/cim:componentProperty'),
         ('properties', True, decode_component_property, 'child::cim:scientificProperties/cim:componentProperty'),
         ('release_date', False, 'datetime.datetime', 'child::cim:releaseDate'),
         ('responsible_parties', True, decode_responsible_party, 'child::cim:responsibleParty'),
-        ('short_name', False, 'str', 'child::cim:shortName'),
+        ('short_name', False, 'unicode', 'child::cim:shortName'),
         ('sub_components', True, decode_model_component, 'child::cim:childComponent/cim:modelComponent'),
         ('sub_components', True, decode_processor_component, 'child::cim:childComponent/cim:processorComponent'),
     ]
@@ -55,18 +52,15 @@ def decode_component(xml, nsmap):
 def decode_component_language(xml, nsmap):
     """Decodes an instance of the following type: component language.
 
-    :param xml: XML from which type is to be decoded.
-    :type xml: lxml.etree
-
-    :param nsmap: XML namespace mappings.
-    :type nsmap: dict
+    :param lxml.etree xml: XML from which type is to be decoded.
+    :param dict nsmap: XML namespace mappings.
 
     :returns: A decoded type instance.
     :rtype: cim.v1.typeset.software.ComponentLanguage
 
     """
     decodings = [
-        ('name', False, 'str', 'child::cim:name'),
+        ('name', False, 'unicode', 'child::cim:name'),
     ]
 
     return set_attributes(typeset.software.ComponentLanguage(), xml, nsmap, decodings)
@@ -75,19 +69,16 @@ def decode_component_language(xml, nsmap):
 def decode_component_language_property(xml, nsmap):
     """Decodes an instance of the following type: component language property.
 
-    :param xml: XML from which type is to be decoded.
-    :type xml: lxml.etree
-
-    :param nsmap: XML namespace mappings.
-    :type nsmap: dict
+    :param lxml.etree xml: XML from which type is to be decoded.
+    :param dict nsmap: XML namespace mappings.
 
     :returns: A decoded type instance.
     :rtype: cim.v1.typeset.software.ComponentLanguageProperty
 
     """
     decodings = [
-        ('name', False, 'str', 'child::cim:name'),
-        ('value', False, 'str', 'child::cim:value'),
+        ('name', False, 'unicode', 'child::cim:name'),
+        ('value', False, 'unicode', 'child::cim:value'),
     ]
 
     return set_attributes(typeset.software.ComponentLanguageProperty(), xml, nsmap, decodings)
@@ -96,11 +87,8 @@ def decode_component_language_property(xml, nsmap):
 def decode_component_property(xml, nsmap):
     """Decodes an instance of the following type: component property.
 
-    :param xml: XML from which type is to be decoded.
-    :type xml: lxml.etree
-
-    :param nsmap: XML namespace mappings.
-    :type nsmap: dict
+    :param lxml.etree xml: XML from which type is to be decoded.
+    :param dict nsmap: XML namespace mappings.
 
     :returns: A decoded type instance.
     :rtype: cim.v1.typeset.software.ComponentProperty
@@ -108,15 +96,15 @@ def decode_component_property(xml, nsmap):
     """
     decodings = [
         ('citations', True, decode_citation, 'child::cim:citation'),
-        ('description', False, 'str', 'child::cim:description'),
-        ('intent', False, 'str', 'self::cim:componentProperty/@intent'),
+        ('description', False, 'unicode', 'child::cim:description'),
+        ('intent', False, 'unicode', 'self::cim:componentProperty/@intent'),
         ('is_represented', False, 'bool', 'self::cim:componentProperty/@represented'),
-        ('long_name', False, 'str', 'child::cim:longName'),
-        ('short_name', False, 'str', 'child::cim:shortName'),
-        ('standard_names', True, 'str', 'child::cim:standardName/@value'),
+        ('long_name', False, 'unicode', 'child::cim:longName'),
+        ('short_name', False, 'unicode', 'child::cim:shortName'),
+        ('standard_names', True, 'unicode', 'child::cim:standardName/@value'),
         ('sub_properties', True, decode_component_property, 'child::cim:componentProperty'),
-        ('units', False, 'str', 'child::cim:units/@value'),
-        ('values', True, 'str', 'child::cim:value'),
+        ('units', False, 'unicode', 'child::cim:units/@value'),
+        ('values', True, 'unicode', 'child::cim:value'),
     ]
 
     return set_attributes(typeset.software.ComponentProperty(), xml, nsmap, decodings)
@@ -125,11 +113,8 @@ def decode_component_property(xml, nsmap):
 def decode_composition(xml, nsmap):
     """Decodes an instance of the following type: composition.
 
-    :param xml: XML from which type is to be decoded.
-    :type xml: lxml.etree
-
-    :param nsmap: XML namespace mappings.
-    :type nsmap: dict
+    :param lxml.etree xml: XML from which type is to be decoded.
+    :param dict nsmap: XML namespace mappings.
 
     :returns: A decoded type instance.
     :rtype: cim.v1.typeset.software.Composition
@@ -144,18 +129,15 @@ def decode_composition(xml, nsmap):
 def decode_connection(xml, nsmap):
     """Decodes an instance of the following type: connection.
 
-    :param xml: XML from which type is to be decoded.
-    :type xml: lxml.etree
-
-    :param nsmap: XML namespace mappings.
-    :type nsmap: dict
+    :param lxml.etree xml: XML from which type is to be decoded.
+    :param dict nsmap: XML namespace mappings.
 
     :returns: A decoded type instance.
     :rtype: cim.v1.typeset.software.Connection
 
     """
     decodings = [
-        ('description', False, 'str', 'child::cim:description'),
+        ('description', False, 'unicode', 'child::cim:description'),
         ('priming', False, decode_component_property, 'child::cim:priming/cim:priming/cim:componentProperty'),
         ('priming', False, decode_data_content, 'child::cim:priming/cim:priming/cim:dataContent'),
         ('priming', False, decode_data_object, 'child::cim:priming/cim:priming/cim:dataObject'),
@@ -167,12 +149,12 @@ def decode_connection(xml, nsmap):
         ('sources', True, decode_connection_endpoint, 'child::cim:connectionSource'),
         ('spatial_regridding', True, decode_spatial_regridding, 'child::cim:spatialRegridding'),
         ('target', False, decode_connection_endpoint, 'child::cim:connectionTarget'),
-        ('time_lag', False, 'str', 'child::cim:timeLag'),
+        ('time_lag', False, 'unicode', 'child::cim:timeLag'),
         ('time_profile', False, decode_timing, 'child::cim:timeProfile'),
         ('time_transformation', False, decode_time_transformation, 'child::cim:timeTransformation'),
         ('transformers', True, decode_processor_component, 'child::cim:transformer/cim:processorComponent'),
         ('transformers_references', True, decode_doc_reference, 'child::cim:transformer/cim:reference'),
-        ('type', False, 'str', 'child::cim:type/@value'),
+        ('type', False, 'unicode', 'child::cim:type/@value'),
     ]
 
     return set_attributes(typeset.software.Connection(), xml, nsmap, decodings)
@@ -181,11 +163,8 @@ def decode_connection(xml, nsmap):
 def decode_connection_endpoint(xml, nsmap):
     """Decodes an instance of the following type: connection endpoint.
 
-    :param xml: XML from which type is to be decoded.
-    :type xml: lxml.etree
-
-    :param nsmap: XML namespace mappings.
-    :type nsmap: dict
+    :param lxml.etree xml: XML from which type is to be decoded.
+    :param dict nsmap: XML namespace mappings.
 
     :returns: A decoded type instance.
     :rtype: cim.v1.typeset.software.ConnectionEndpoint
@@ -199,7 +178,7 @@ def decode_connection_endpoint(xml, nsmap):
         ('data_source', False, decode_processor_component, 'child::cim:dataSource/cim:dataSource/cim:softwareComponent'),
         ('data_source', False, decode_statistical_model_component, 'child::cim:dataSource/cim:dataSource/cim:softwareComponent'),
         ('data_source_reference', False, decode_doc_reference, 'child::cim:dataSource/cim:reference'),
-        ('instance_id', False, 'str', 'child::cim:instanceID'),
+        ('instance_id', False, 'unicode', 'child::cim:instanceID'),
         ('properties', True, decode_connection_property, 'child::cim:connectionProperty'),
     ]
 
@@ -209,19 +188,16 @@ def decode_connection_endpoint(xml, nsmap):
 def decode_connection_property(xml, nsmap):
     """Decodes an instance of the following type: connection property.
 
-    :param xml: XML from which type is to be decoded.
-    :type xml: lxml.etree
-
-    :param nsmap: XML namespace mappings.
-    :type nsmap: dict
+    :param lxml.etree xml: XML from which type is to be decoded.
+    :param dict nsmap: XML namespace mappings.
 
     :returns: A decoded type instance.
     :rtype: cim.v1.typeset.software.ConnectionProperty
 
     """
     decodings = [
-        ('name', False, 'str', 'child::cim:name'),
-        ('value', False, 'str', 'child::cim:value'),
+        ('name', False, 'unicode', 'child::cim:name'),
+        ('value', False, 'unicode', 'child::cim:value'),
     ]
 
     return set_attributes(typeset.software.ConnectionProperty(), xml, nsmap, decodings)
@@ -230,11 +206,8 @@ def decode_connection_property(xml, nsmap):
 def decode_coupling(xml, nsmap):
     """Decodes an instance of the following type: coupling.
 
-    :param xml: XML from which type is to be decoded.
-    :type xml: lxml.etree
-
-    :param nsmap: XML namespace mappings.
-    :type nsmap: dict
+    :param lxml.etree xml: XML from which type is to be decoded.
+    :param dict nsmap: XML namespace mappings.
 
     :returns: A decoded type instance.
     :rtype: cim.v1.typeset.software.Coupling
@@ -242,7 +215,7 @@ def decode_coupling(xml, nsmap):
     """
     decodings = [
         ('connections', True, decode_connection, 'child::cim:connection'),
-        ('description', False, 'str', 'child::cim:description'),
+        ('description', False, 'unicode', 'child::cim:description'),
         ('is_fully_specified', False, 'bool', '@fullySpecified'),
         ('priming', False, decode_component_property, 'child::cim:priming/cim:priming/cim:componentProperty'),
         ('priming', False, decode_data_content, 'child::cim:priming/cim:priming/cim:dataContent'),
@@ -252,7 +225,7 @@ def decode_coupling(xml, nsmap):
         ('priming', False, decode_statistical_model_component, 'child::cim:priming/cim:priming/cim:softwareComponent'),
         ('priming_reference', False, decode_doc_reference, 'child::cim:priming/cim:reference'),
         ('properties', True, decode_coupling_property, 'child::cim:couplingProperty'),
-        ('purpose', False, 'str', '@purpose'),
+        ('purpose', False, 'unicode', '@purpose'),
         ('sources', True, decode_coupling_endpoint, 'child::cim:couplingSource'),
         ('spatial_regriddings', True, decode_spatial_regridding, 'child::cim:spatialRegridding'),
         ('target', False, decode_coupling_endpoint, 'child::cim:couplingTarget'),
@@ -261,7 +234,7 @@ def decode_coupling(xml, nsmap):
         ('time_transformation', False, decode_time_transformation, 'child::cim:timeTransformation'),
         ('transformers', True, decode_processor_component, 'child::cim:transformer/cim:processorComponent'),
         ('transformers_references', True, decode_doc_reference, 'child::cim:transformer/cim:reference'),
-        ('type', False, 'str', 'child::cim:type/@value'),
+        ('type', False, 'unicode', 'child::cim:type/@value'),
     ]
 
     return set_attributes(typeset.software.Coupling(), xml, nsmap, decodings)
@@ -270,11 +243,8 @@ def decode_coupling(xml, nsmap):
 def decode_coupling_endpoint(xml, nsmap):
     """Decodes an instance of the following type: coupling endpoint.
 
-    :param xml: XML from which type is to be decoded.
-    :type xml: lxml.etree
-
-    :param nsmap: XML namespace mappings.
-    :type nsmap: dict
+    :param lxml.etree xml: XML from which type is to be decoded.
+    :param dict nsmap: XML namespace mappings.
 
     :returns: A decoded type instance.
     :rtype: cim.v1.typeset.software.CouplingEndpoint
@@ -288,7 +258,7 @@ def decode_coupling_endpoint(xml, nsmap):
         ('data_source', False, decode_processor_component, 'child::cim:dataSource/cim:dataSource/cim:softwareComponent'),
         ('data_source', False, decode_statistical_model_component, 'child::cim:dataSource/cim:dataSource/cim:softwareComponent'),
         ('data_source_reference', False, decode_doc_reference, 'child::cim:dataSource/cim:reference'),
-        ('instance_id', False, 'str', 'child::cim:instanceID'),
+        ('instance_id', False, 'unicode', 'child::cim:instanceID'),
         ('properties', True, decode_coupling_property, 'child::cim:couplingProperty'),
     ]
 
@@ -298,19 +268,16 @@ def decode_coupling_endpoint(xml, nsmap):
 def decode_coupling_property(xml, nsmap):
     """Decodes an instance of the following type: coupling property.
 
-    :param xml: XML from which type is to be decoded.
-    :type xml: lxml.etree
-
-    :param nsmap: XML namespace mappings.
-    :type nsmap: dict
+    :param lxml.etree xml: XML from which type is to be decoded.
+    :param dict nsmap: XML namespace mappings.
 
     :returns: A decoded type instance.
     :rtype: cim.v1.typeset.software.CouplingProperty
 
     """
     decodings = [
-        ('name', False, 'str', 'child::cim:name'),
-        ('value', False, 'str', 'child::cim:value'),
+        ('name', False, 'unicode', 'child::cim:name'),
+        ('value', False, 'unicode', 'child::cim:value'),
     ]
 
     return set_attributes(typeset.software.CouplingProperty(), xml, nsmap, decodings)
@@ -319,11 +286,8 @@ def decode_coupling_property(xml, nsmap):
 def decode_deployment(xml, nsmap):
     """Decodes an instance of the following type: deployment.
 
-    :param xml: XML from which type is to be decoded.
-    :type xml: lxml.etree
-
-    :param nsmap: XML namespace mappings.
-    :type nsmap: dict
+    :param lxml.etree xml: XML from which type is to be decoded.
+    :param dict nsmap: XML namespace mappings.
 
     :returns: A decoded type instance.
     :rtype: cim.v1.typeset.software.Deployment
@@ -331,9 +295,9 @@ def decode_deployment(xml, nsmap):
     """
     decodings = [
         ('deployment_date', False, 'datetime.datetime', 'child::cim:deploymentDate'),
-        ('description', False, 'str', 'child::cim:description'),
-        ('executable_arguments', True, 'str', 'child::cim:executableArgument'),
-        ('executable_name', False, 'str', 'child::cim:executableName'),
+        ('description', False, 'unicode', 'child::cim:description'),
+        ('executable_arguments', True, 'unicode', 'child::cim:executableArgument'),
+        ('executable_name', False, 'unicode', 'child::cim:executableName'),
         ('parallelisation', False, decode_parallelisation, 'child::cim:parallelisation'),
         ('platform', False, decode_platform, 'child::cim:platform/cim:platform'),
         ('platform_reference', False, decode_doc_reference, 'child::cim:platform/cim:reference'),
@@ -345,11 +309,8 @@ def decode_deployment(xml, nsmap):
 def decode_entry_point(xml, nsmap):
     """Decodes an instance of the following type: entry point.
 
-    :param xml: XML from which type is to be decoded.
-    :type xml: lxml.etree
-
-    :param nsmap: XML namespace mappings.
-    :type nsmap: dict
+    :param lxml.etree xml: XML from which type is to be decoded.
+    :param dict nsmap: XML namespace mappings.
 
     :returns: A decoded type instance.
     :rtype: cim.v1.typeset.software.EntryPoint
@@ -364,11 +325,8 @@ def decode_entry_point(xml, nsmap):
 def decode_model_component(xml, nsmap):
     """Decodes an instance of the following type: model component.
 
-    :param xml: XML from which type is to be decoded.
-    :type xml: lxml.etree
-
-    :param nsmap: XML namespace mappings.
-    :type nsmap: dict
+    :param lxml.etree xml: XML from which type is to be decoded.
+    :param dict nsmap: XML namespace mappings.
 
     :returns: A decoded type instance.
     :rtype: cim.v1.typeset.software.ModelComponent
@@ -376,21 +334,21 @@ def decode_model_component(xml, nsmap):
     """
     decodings = [
         ('citations', True, decode_citation, 'child::cim:citation'),
-        ('description', False, 'str', 'child::cim:description'),
+        ('description', False, 'unicode', 'child::cim:description'),
         ('language', False, decode_component_language, 'child::cim:componentLanguage'),
-        ('long_name', False, 'str', 'child::cim:longName'),
+        ('long_name', False, 'unicode', 'child::cim:longName'),
         ('meta', False, decode_doc_meta_info, 'self::cim:modelComponent'),
         ('properties', True, decode_component_property, 'child::cim:componentProperties/cim:componentProperty'),
         ('properties', True, decode_component_property, 'child::cim:numericalProperties/cim:componentProperty'),
         ('properties', True, decode_component_property, 'child::cim:scientificProperties/cim:componentProperty'),
         ('release_date', False, 'datetime.datetime', 'child::cim:releaseDate'),
         ('responsible_parties', True, decode_responsible_party, 'child::cim:responsibleParty'),
-        ('short_name', False, 'str', 'child::cim:shortName'),
+        ('short_name', False, 'unicode', 'child::cim:shortName'),
         ('sub_components', True, decode_model_component, 'child::cim:childComponent/cim:modelComponent'),
         ('sub_components', True, decode_processor_component, 'child::cim:childComponent/cim:processorComponent'),
         ('timing', False, decode_timing, 'child::cim:timing'),
-        ('type', False, 'str', 'child::cim:type[1]/@value'),
-        ('types', True, 'str', 'child::cim:type/@value'),
+        ('type', False, 'unicode', 'child::cim:type[1]/@value'),
+        ('types', True, 'unicode', 'child::cim:type/@value'),
     ]
 
     return set_attributes(typeset.software.ModelComponent(), xml, nsmap, decodings)
@@ -399,11 +357,8 @@ def decode_model_component(xml, nsmap):
 def decode_parallelisation(xml, nsmap):
     """Decodes an instance of the following type: parallelisation.
 
-    :param xml: XML from which type is to be decoded.
-    :type xml: lxml.etree
-
-    :param nsmap: XML namespace mappings.
-    :type nsmap: dict
+    :param lxml.etree xml: XML from which type is to be decoded.
+    :param dict nsmap: XML namespace mappings.
 
     :returns: A decoded type instance.
     :rtype: cim.v1.typeset.software.Parallelisation
@@ -420,11 +375,8 @@ def decode_parallelisation(xml, nsmap):
 def decode_processor_component(xml, nsmap):
     """Decodes an instance of the following type: processor component.
 
-    :param xml: XML from which type is to be decoded.
-    :type xml: lxml.etree
-
-    :param nsmap: XML namespace mappings.
-    :type nsmap: dict
+    :param lxml.etree xml: XML from which type is to be decoded.
+    :param dict nsmap: XML namespace mappings.
 
     :returns: A decoded type instance.
     :rtype: cim.v1.typeset.software.ProcessorComponent
@@ -432,16 +384,16 @@ def decode_processor_component(xml, nsmap):
     """
     decodings = [
         ('citations', True, decode_citation, 'child::cim:citation'),
-        ('description', False, 'str', 'child::cim:description'),
+        ('description', False, 'unicode', 'child::cim:description'),
         ('language', False, decode_component_language, 'child::cim:componentLanguage'),
-        ('long_name', False, 'str', 'child::cim:longName'),
+        ('long_name', False, 'unicode', 'child::cim:longName'),
         ('meta', False, decode_doc_meta_info, 'self::cim:modelComponent'),
         ('properties', True, decode_component_property, 'child::cim:componentProperties/cim:componentProperty'),
         ('properties', True, decode_component_property, 'child::cim:numericalProperties/cim:componentProperty'),
         ('properties', True, decode_component_property, 'child::cim:scientificProperties/cim:componentProperty'),
         ('release_date', False, 'datetime.datetime', 'child::cim:releaseDate'),
         ('responsible_parties', True, decode_responsible_party, 'child::cim:responsibleParty'),
-        ('short_name', False, 'str', 'child::cim:shortName'),
+        ('short_name', False, 'unicode', 'child::cim:shortName'),
         ('sub_components', True, decode_model_component, 'child::cim:childComponent/cim:modelComponent'),
         ('sub_components', True, decode_processor_component, 'child::cim:childComponent/cim:processorComponent'),
     ]
@@ -452,11 +404,8 @@ def decode_processor_component(xml, nsmap):
 def decode_rank(xml, nsmap):
     """Decodes an instance of the following type: rank.
 
-    :param xml: XML from which type is to be decoded.
-    :type xml: lxml.etree
-
-    :param nsmap: XML namespace mappings.
-    :type nsmap: dict
+    :param lxml.etree xml: XML from which type is to be decoded.
+    :param dict nsmap: XML namespace mappings.
 
     :returns: A decoded type instance.
     :rtype: cim.v1.typeset.software.Rank
@@ -475,20 +424,17 @@ def decode_rank(xml, nsmap):
 def decode_spatial_regridding(xml, nsmap):
     """Decodes an instance of the following type: spatial regridding.
 
-    :param xml: XML from which type is to be decoded.
-    :type xml: lxml.etree
-
-    :param nsmap: XML namespace mappings.
-    :type nsmap: dict
+    :param lxml.etree xml: XML from which type is to be decoded.
+    :param dict nsmap: XML namespace mappings.
 
     :returns: A decoded type instance.
     :rtype: cim.v1.typeset.software.SpatialRegridding
 
     """
     decodings = [
-        ('dimension', False, 'str', 'child::cim:spatialRegriddingDimension'),
+        ('dimension', False, 'unicode', 'child::cim:spatialRegriddingDimension'),
         ('properties', True, decode_spatial_regridding_property, 'child::cim:spatialRegriddingProperty'),
-        ('standard_method', False, 'str', 'child::cim:spatialRegriddingStandardMethod'),
+        ('standard_method', False, 'unicode', 'child::cim:spatialRegriddingStandardMethod'),
         ('user_method', False, decode_spatial_regridding_user_method, 'child::cim:spatialRegriddingUserMethod'),
     ]
 
@@ -498,19 +444,16 @@ def decode_spatial_regridding(xml, nsmap):
 def decode_spatial_regridding_property(xml, nsmap):
     """Decodes an instance of the following type: spatial regridding property.
 
-    :param xml: XML from which type is to be decoded.
-    :type xml: lxml.etree
-
-    :param nsmap: XML namespace mappings.
-    :type nsmap: dict
+    :param lxml.etree xml: XML from which type is to be decoded.
+    :param dict nsmap: XML namespace mappings.
 
     :returns: A decoded type instance.
     :rtype: cim.v1.typeset.software.SpatialRegriddingProperty
 
     """
     decodings = [
-        ('name', False, 'str', 'child::cim:name'),
-        ('value', False, 'str', 'child::cim:value'),
+        ('name', False, 'unicode', 'child::cim:name'),
+        ('value', False, 'unicode', 'child::cim:value'),
     ]
 
     return set_attributes(typeset.software.SpatialRegriddingProperty(), xml, nsmap, decodings)
@@ -519,11 +462,8 @@ def decode_spatial_regridding_property(xml, nsmap):
 def decode_spatial_regridding_user_method(xml, nsmap):
     """Decodes an instance of the following type: spatial regridding user method.
 
-    :param xml: XML from which type is to be decoded.
-    :type xml: lxml.etree
-
-    :param nsmap: XML namespace mappings.
-    :type nsmap: dict
+    :param lxml.etree xml: XML from which type is to be decoded.
+    :param dict nsmap: XML namespace mappings.
 
     :returns: A decoded type instance.
     :rtype: cim.v1.typeset.software.SpatialRegriddingUserMethod
@@ -532,7 +472,7 @@ def decode_spatial_regridding_user_method(xml, nsmap):
     decodings = [
         ('file', False, decode_data_object, 'child::cim:file/cim:dataObject'),
         ('file_reference', False, decode_doc_reference, 'child::cim:file/cim:reference'),
-        ('name', False, 'str', 'child::cim:name'),
+        ('name', False, 'unicode', 'child::cim:name'),
     ]
 
     return set_attributes(typeset.software.SpatialRegriddingUserMethod(), xml, nsmap, decodings)
@@ -541,11 +481,8 @@ def decode_spatial_regridding_user_method(xml, nsmap):
 def decode_statistical_model_component(xml, nsmap):
     """Decodes an instance of the following type: statistical model component.
 
-    :param xml: XML from which type is to be decoded.
-    :type xml: lxml.etree
-
-    :param nsmap: XML namespace mappings.
-    :type nsmap: dict
+    :param lxml.etree xml: XML from which type is to be decoded.
+    :param dict nsmap: XML namespace mappings.
 
     :returns: A decoded type instance.
     :rtype: cim.v1.typeset.software.StatisticalModelComponent
@@ -553,21 +490,21 @@ def decode_statistical_model_component(xml, nsmap):
     """
     decodings = [
         ('citations', True, decode_citation, 'child::cim:citation'),
-        ('description', False, 'str', 'child::cim:description'),
+        ('description', False, 'unicode', 'child::cim:description'),
         ('language', False, decode_component_language, 'child::cim:componentLanguage'),
-        ('long_name', False, 'str', 'child::cim:longName'),
+        ('long_name', False, 'unicode', 'child::cim:longName'),
         ('meta', False, decode_doc_meta_info, 'self::cim:statisticalModelComponent'),
         ('properties', True, decode_component_property, 'child::cim:componentProperties/cim:componentProperty'),
         ('properties', True, decode_component_property, 'child::cim:numericalProperties/cim:componentProperty'),
         ('properties', True, decode_component_property, 'child::cim:scientificProperties/cim:componentProperty'),
         ('release_date', False, 'datetime.datetime', 'child::cim:releaseDate'),
         ('responsible_parties', True, decode_responsible_party, 'child::cim:responsibleParty'),
-        ('short_name', False, 'str', 'child::cim:shortName'),
+        ('short_name', False, 'unicode', 'child::cim:shortName'),
         ('sub_components', True, decode_model_component, 'child::cim:childComponent/cim:modelComponent'),
         ('sub_components', True, decode_processor_component, 'child::cim:childComponent/cim:processorComponent'),
         ('timing', False, decode_timing, 'child::cim:timing'),
-        ('type', False, 'str', 'child::cim:type[1]/@value'),
-        ('types', True, 'str', 'child::cim:type/@value'),
+        ('type', False, 'unicode', 'child::cim:type[1]/@value'),
+        ('types', True, 'unicode', 'child::cim:type/@value'),
     ]
 
     return set_attributes(typeset.software.StatisticalModelComponent(), xml, nsmap, decodings)
@@ -576,18 +513,15 @@ def decode_statistical_model_component(xml, nsmap):
 def decode_time_lag(xml, nsmap):
     """Decodes an instance of the following type: time lag.
 
-    :param xml: XML from which type is to be decoded.
-    :type xml: lxml.etree
-
-    :param nsmap: XML namespace mappings.
-    :type nsmap: dict
+    :param lxml.etree xml: XML from which type is to be decoded.
+    :param dict nsmap: XML namespace mappings.
 
     :returns: A decoded type instance.
     :rtype: cim.v1.typeset.software.TimeLag
 
     """
     decodings = [
-        ('units', False, 'str', '@units'),
+        ('units', False, 'unicode', '@units'),
         ('value', False, 'int', 'child::cim:value'),
     ]
 
@@ -597,19 +531,16 @@ def decode_time_lag(xml, nsmap):
 def decode_time_transformation(xml, nsmap):
     """Decodes an instance of the following type: time transformation.
 
-    :param xml: XML from which type is to be decoded.
-    :type xml: lxml.etree
-
-    :param nsmap: XML namespace mappings.
-    :type nsmap: dict
+    :param lxml.etree xml: XML from which type is to be decoded.
+    :param dict nsmap: XML namespace mappings.
 
     :returns: A decoded type instance.
     :rtype: cim.v1.typeset.software.TimeTransformation
 
     """
     decodings = [
-        ('description', False, 'str', 'child::cim:description'),
-        ('mapping_type', False, 'str', 'child::cim:mappingType/@value'),
+        ('description', False, 'unicode', 'child::cim:description'),
+        ('mapping_type', False, 'unicode', 'child::cim:mappingType/@value'),
     ]
 
     return set_attributes(typeset.software.TimeTransformation(), xml, nsmap, decodings)
@@ -618,11 +549,8 @@ def decode_time_transformation(xml, nsmap):
 def decode_timing(xml, nsmap):
     """Decodes an instance of the following type: timing.
 
-    :param xml: XML from which type is to be decoded.
-    :type xml: lxml.etree
-
-    :param nsmap: XML namespace mappings.
-    :type nsmap: dict
+    :param lxml.etree xml: XML from which type is to be decoded.
+    :param dict nsmap: XML namespace mappings.
 
     :returns: A decoded type instance.
     :rtype: cim.v1.typeset.software.Timing
@@ -633,7 +561,7 @@ def decode_timing(xml, nsmap):
         ('is_variable_rate', False, 'bool', '@variableRate'),
         ('rate', False, 'int', 'child::cim:rate'),
         ('start', False, 'datetime.datetime', 'child::cim:start'),
-        ('units', False, 'str', '@units'),
+        ('units', False, 'unicode', '@units'),
     ]
 
     return set_attributes(typeset.software.Timing(), xml, nsmap, decodings)

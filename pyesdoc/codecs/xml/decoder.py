@@ -24,27 +24,33 @@ _TYPES = ontologies.get_types()
 
 
 def _get_doc(xml, doc_type):
-    """Returns document."""
+    """Returns document.
+
+    """
     type_key = xml.get('ontologyTypeKey')
     if type_key and doc_type.type_key != type_key:
         doc_type = ontologies.get_type_from_key(xml.get('ontologyTypeKey'))
     if doc_type is None:
-        rt.raise_error('Decoding type is unrecognized')
+        raise ValueError('Decoding type is unrecognized')
 
     return doc_type(), ontologies.get_type_info(doc_type)
 
 
 def _decode_simple(v, type, iterable):
-    """Decodes a simple value."""
+    """Decodes a simple type value.
+
+    """
     if iterable:
-        return map(lambda i : convert.str_to_typed_value(i.text, type), v)
+        return [convert.text_to_typed_value(i.text, type) for i in v]
     else:
-        return convert.str_to_typed_value(v.text, type)
+        return convert.text_to_typed_value(v.text, type)
 
 
-def _decode_complex(v, doc_type, iterable):
-    """Decodes a complex type."""
-    def _do(xml):
+def _decode_complex(val, doc_type, iterable):
+    """Decodes a complex type value.
+
+    """
+    def _decode(xml):
         # Set doc.
         doc, doc_type_info = _get_doc(xml, doc_type)
 
@@ -60,7 +66,7 @@ def _decode_complex(v, doc_type, iterable):
 
         return doc
 
-    return map(lambda i : _do(i), v) if iterable else _do(v)
+    return [_decode(i) for i in val] if iterable else _decode(val)
 
 
 def decode(as_xml):
@@ -81,7 +87,7 @@ def decode(as_xml):
 
     # Verify etree.
     if not isinstance(as_xml, ET.Element):
-        rt.throw("Cannot decode non xml documents")
+        raise TypeError("Cannot decode non xml documents")
 
     # Get target type.
     doc_type_key = as_xml.get("ontologyTypeKey")

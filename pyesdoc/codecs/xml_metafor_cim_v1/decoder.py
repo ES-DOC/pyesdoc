@@ -48,12 +48,12 @@ def decode(as_xml):
     # Defensive programming.
     xml, nsmap = load_xml(as_xml, return_nsmap=True)
     if not isinstance(xml, et._Element):
-        rt.raise_error('Decoding failure due to invalid Metafor CIM v1 XML.')
+        raise TypeError('Decoding failure due to invalid Metafor CIM v1 XML.')
 
     # Validate decoder.
     doc_type = xml.tag.split('}')[1]
     if doc_type not in _decoders:
-        rt.raise_error("CIM v1 - {0} document type decoding unsupported.".format(doc_type))
+        raise ValueError("CIM v1 - {0} document type decoding unsupported.".format(doc_type))
 
     # Decode pyesdoc doc.
     return decode_xml(_decoders[doc_type], xml, nsmap, None)

@@ -11,6 +11,7 @@
 
 
 """
+import pyesdoc
 from pyesdoc.utils import runtime as rt
 
 
@@ -41,7 +42,7 @@ def set_option(name, value):
 
     """
     if name not in _OPTIONS:
-        rt.throw("pyesdoc option {0} is unsupported".format(name))
+        raise pyesdoc.InvalidOptionException(name)
 
     _OPTIONS[name] = str(value)
 
@@ -56,6 +57,6 @@ def get_option(name):
 
     """
     if name not in _OPTIONS:
-        rt.throw("pyesdoc option {0} is unsupported".format(name))
+        raise ValueError("pyesdoc option {0} is unsupported".format(name))
 
     return _OPTIONS[name]

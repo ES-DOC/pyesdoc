@@ -35,9 +35,9 @@ class Calendar(object):
         super(Calendar, self).__init__()
 
         self.cal_type = None                              # shared.CalendarTypes
-        self.description = None                           # str
+        self.description = None                           # unicode
         self.month_lengths = []                           # int
-        self.name = None                                  # str
+        self.name = None                                  # unicode
 
 
 class Cimtext(object):
@@ -53,7 +53,7 @@ class Cimtext(object):
         """
         super(Cimtext, self).__init__()
 
-        self.content = None                               # str
+        self.content = None                               # unicode
         self.content_type = None                          # shared.TextCode
 
 
@@ -69,11 +69,11 @@ class Citation(object):
         """
         super(Citation, self).__init__()
 
-        self.abstract = None                              # str
-        self.citation_str = None                          # str
-        self.context = None                               # str
-        self.doi = None                                   # str
-        self.title = None                                 # str
+        self.abstract = None                              # unicode
+        self.citation_str = None                          # unicode
+        self.context = None                               # unicode
+        self.doi = None                                   # unicode
+        self.title = None                                 # unicode
         self.url = None                                   # shared.OnlineResource
 
 
@@ -92,7 +92,7 @@ class DateTime(object):
         super(DateTime, self).__init__()
 
         self.offset = None                                # bool
-        self.value = None                                 # str
+        self.value = None                                 # unicode
 
 
 class DatetimeSet(object):
@@ -126,7 +126,7 @@ class KeyFloat(object):
         """
         super(KeyFloat, self).__init__()
 
-        self.key = None                                   # str
+        self.key = None                                   # unicode
         self.value = None                                 # float
 
 
@@ -148,7 +148,7 @@ class MinimalMeta(object):
 
         self.document_version = None                      # int
         self.metadata_last_updated = None                 # datetime.datetime
-        self.uid = None                                   # str
+        self.uid = None                                   # unicode
 
 
 class NumberArray(object):
@@ -163,7 +163,7 @@ class NumberArray(object):
         """
         super(NumberArray, self).__init__()
 
-        self.values = None                                # str
+        self.values = None                                # unicode
 
 
 class OnlineResource(object):
@@ -178,10 +178,10 @@ class OnlineResource(object):
         """
         super(OnlineResource, self).__init__()
 
-        self.description = None                           # str
-        self.linkage = None                               # str
-        self.name = None                                  # str
-        self.protocol = None                              # str
+        self.description = None                           # unicode
+        self.linkage = None                               # unicode
+        self.name = None                                  # unicode
+        self.protocol = None                              # unicode
 
 
 class Party(object):
@@ -199,10 +199,10 @@ class Party(object):
         """
         super(Party, self).__init__()
 
-        self.address = None                               # str
-        self.email = None                                 # str
+        self.address = None                               # unicode
+        self.email = None                                 # unicode
         self.meta = MinimalMeta()                         # shared.MinimalMeta
-        self.name = None                                  # str
+        self.name = None                                  # unicode
         self.organisation = None                          # bool
         self.url = None                                   # shared.OnlineResource
 
@@ -219,7 +219,7 @@ class Pid(object):
         """
         super(Pid, self).__init__()
 
-        self.id = None                                    # str
+        self.id = None                                    # unicode
         self.resolution_service = None                    # shared.OnlineResource
 
 
@@ -255,9 +255,9 @@ class StandaloneDocument(object):
         """
         super(StandaloneDocument, self).__init__()
 
-        self.long_name = None                             # str
+        self.long_name = None                             # unicode
         self.meta = Meta()                                # shared.Meta
-        self.name = None                                  # str
+        self.name = None                                  # unicode
         self.references = []                              # shared.Citation
         self.responsible_parties = []                     # shared.Responsibility
 
@@ -311,8 +311,8 @@ class VocabMember(object):
         """
         super(VocabMember, self).__init__()
 
-        self.uri = None                                   # str
-        self.value = None                                 # str
+        self.uri = None                                   # unicode
+        self.value = None                                 # unicode
         self.vocab = None                                 # shared.Citation
 
 
@@ -328,7 +328,7 @@ class CimLink(OnlineResource):
         """
         super(CimLink, self).__init__()
 
-        self.remote_type = None                           # str
+        self.remote_type = None                           # unicode
 
 
 class IrregularDateset(DatetimeSet):
@@ -343,7 +343,7 @@ class IrregularDateset(DatetimeSet):
         """
         super(IrregularDateset, self).__init__()
 
-        self.date_set = None                              # str
+        self.date_set = None                              # unicode
 
 
 class Meta(MinimalMeta):
@@ -359,8 +359,8 @@ class Meta(MinimalMeta):
         super(Meta, self).__init__()
 
         self.metadata_author = None                       # shared.Party
-        self.metadata_completeness = None                 # str
-        self.metadata_quality = None                      # str
+        self.metadata_completeness = None                 # unicode
+        self.metadata_quality = None                      # unicode
         self.metadata_reviewer = None                     # shared.Party
 
 

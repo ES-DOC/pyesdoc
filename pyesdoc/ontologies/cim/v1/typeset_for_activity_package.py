@@ -35,9 +35,9 @@ class Activity(object):
         """
         super(Activity, self).__init__()
 
-        self.funding_sources = []                         # str
+        self.funding_sources = []                         # unicode
         self.projects = []                                # activity.ProjectType
-        self.rationales = []                              # str
+        self.rationales = []                              # unicode
         self.responsible_parties = []                     # shared.ResponsibleParty
 
 
@@ -53,7 +53,7 @@ class Conformance(object):
         """
         super(Conformance, self).__init__()
 
-        self.description = None                           # str
+        self.description = None                           # unicode
         self.frequency = None                             # activity.FrequencyType
         self.is_conformant = None                         # bool
         self.requirements = []                            # activity.NumericalRequirement
@@ -109,11 +109,11 @@ class NumericalRequirement(object):
         """
         super(NumericalRequirement, self).__init__()
 
-        self.description = None                           # str
-        self.id = None                                    # str
-        self.name = None                                  # str
+        self.description = None                           # unicode
+        self.id = None                                    # unicode
+        self.name = None                                  # unicode
         self.options = []                                 # activity.NumericalRequirementOption
-        self.requirement_type = None                      # str
+        self.requirement_type = None                      # unicode
         self.source = None                                # shared.DataSource
         self.source_reference = None                      # shared.DocReference
 
@@ -130,10 +130,10 @@ class NumericalRequirementOption(object):
         """
         super(NumericalRequirementOption, self).__init__()
 
-        self.description = None                           # str
-        self.id = None                                    # str
-        self.name = None                                  # str
-        self.relationship = None                          # str
+        self.description = None                           # unicode
+        self.id = None                                    # unicode
+        self.name = None                                  # unicode
+        self.relationship = None                          # unicode
         self.sub_options = []                             # activity.NumericalRequirementOption
 
 
@@ -181,7 +181,7 @@ class BoundaryCondition(NumericalRequirement):
         """
         super(BoundaryCondition, self).__init__()
 
-        self.requirement_type = str("boundaryCondition")
+        self.requirement_type = unicode("boundaryCondition")
 
 
 class Experiment(Activity):
@@ -198,11 +198,11 @@ class Experiment(Activity):
         """
         super(Experiment, self).__init__()
 
-        self.generates = []                               # str
+        self.generates = []                               # unicode
         self.measurement_campaigns = []                   # activity.MeasurementCampaign
         self.requires = []                                # activity.NumericalActivity
         self.requires_references = []                     # shared.DocReference
-        self.supports = []                                # str
+        self.supports = []                                # unicode
         self.supports_references = []                     # shared.DocReference
 
 
@@ -218,7 +218,7 @@ class InitialCondition(NumericalRequirement):
         """
         super(InitialCondition, self).__init__()
 
-        self.requirement_type = str("initialCondition")
+        self.requirement_type = unicode("initialCondition")
 
 
 class LateralBoundaryCondition(NumericalRequirement):
@@ -233,7 +233,7 @@ class LateralBoundaryCondition(NumericalRequirement):
         """
         super(LateralBoundaryCondition, self).__init__()
 
-        self.requirement_type = str("lateralBoundaryCondition")
+        self.requirement_type = unicode("lateralBoundaryCondition")
 
 
 class MeasurementCampaign(Activity):
@@ -265,9 +265,9 @@ class NumericalActivity(Activity):
         """
         super(NumericalActivity, self).__init__()
 
-        self.description = None                           # str
-        self.long_name = None                             # str
-        self.short_name = None                            # str
+        self.description = None                           # unicode
+        self.long_name = None                             # unicode
+        self.short_name = None                            # unicode
         self.supports = []                                # activity.Experiment
         self.supports_references = []                     # shared.DocReference
 
@@ -284,12 +284,12 @@ class NumericalExperiment(Experiment):
         """
         super(NumericalExperiment, self).__init__()
 
-        self.description = None                           # str
-        self.experiment_id = None                         # str
-        self.long_name = None                             # str
+        self.description = None                           # unicode
+        self.experiment_id = None                         # unicode
+        self.long_name = None                             # unicode
         self.meta = shared.DocMetaInfo()                  # shared.DocMetaInfo
         self.requirements = []                            # activity.NumericalRequirement
-        self.short_name = None                            # str
+        self.short_name = None                            # unicode
 
 
 class OutputRequirement(NumericalRequirement):
@@ -304,7 +304,7 @@ class OutputRequirement(NumericalRequirement):
         """
         super(OutputRequirement, self).__init__()
 
-        self.requirement_type = str("outputRequirement")
+        self.requirement_type = unicode("outputRequirement")
 
 
 class PhysicalModification(Conformance):
@@ -335,7 +335,7 @@ class Simulation(NumericalActivity):
         """
         super(Simulation, self).__init__()
 
-        self.authors = None                               # str
+        self.authors = None                               # unicode
         self.calendar = None                              # shared.Calendar
         self.conformances = []                            # activity.Conformance
         self.control_simulation = None                    # activity.Simulation
@@ -346,7 +346,7 @@ class Simulation(NumericalActivity):
         self.outputs = []                                 # data.DataObject
         self.restart_references = []                      # shared.DocReference
         self.restarts = []                                # data.DataObject
-        self.simulation_id = None                         # str
+        self.simulation_id = None                         # unicode
         self.spinup_date_range = None                     # shared.ClosedDateRange
         self.spinup_simulation = None                     # activity.Simulation
         self.spinup_simulation_reference = None           # shared.DocReference
@@ -402,7 +402,7 @@ class SpatioTemporalConstraint(NumericalRequirement):
 
         self.date_range = None                            # shared.DateRange
         self.spatial_resolution = None                    # activity.ResolutionType
-        self.requirement_type = str("spatioTemporalConstraint")
+        self.requirement_type = unicode("spatioTemporalConstraint")
 
 
 class DownscalingSimulation(NumericalActivity):
@@ -422,7 +422,7 @@ class DownscalingSimulation(NumericalActivity):
         self.calendar = None                              # shared.Calendar
         self.downscaled_from = None                       # shared.DataSource
         self.downscaled_from_reference = None             # shared.DocReference
-        self.downscaling_id = None                        # str
+        self.downscaling_id = None                        # unicode
         self.downscaling_type = None                      # activity.DownscalingType
         self.inputs = []                                  # software.Coupling
         self.meta = shared.DocMetaInfo()                  # shared.DocMetaInfo

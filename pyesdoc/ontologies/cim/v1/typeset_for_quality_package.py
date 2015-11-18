@@ -50,14 +50,14 @@ class Evaluation(object):
         super(Evaluation, self).__init__()
 
         self.date = None                                  # datetime.datetime
-        self.description = None                           # str
+        self.description = None                           # unicode
         self.did_pass = None                              # bool
-        self.explanation = None                           # str
-        self.specification = None                         # str
-        self.specification_hyperlink = None               # str
-        self.title = None                                 # str
-        self.type = None                                  # str
-        self.type_hyperlink = None                        # str
+        self.explanation = None                           # unicode
+        self.specification = None                         # unicode
+        self.specification_hyperlink = None               # unicode
+        self.title = None                                 # unicode
+        self.type = None                                  # unicode
+        self.type_hyperlink = None                        # unicode
 
 
 class Measure(object):
@@ -72,9 +72,9 @@ class Measure(object):
         """
         super(Measure, self).__init__()
 
-        self.description = None                           # str
-        self.identification = None                        # str
-        self.name = None                                  # str
+        self.description = None                           # unicode
+        self.identification = None                        # unicode
+        self.name = None                                  # unicode
 
 
 class Report(object):

@@ -10,30 +10,48 @@
 
 
 """
-import os
-
 from pyesdoc.utils import config
 
-
-
-# Archive location comes from config.
-DIR_ARCHIVE = config.archive.location
-
-# Set of supported projects.
-PROJECTS = config.archive.projects
-
-# Set of supported sources.
-SOURCES = config.archive.sources
 
 
 def get_project_sources():
     """Returns iterable of unique project/source pairs.
 
     """
+    config.init()
+
     result = []
-    for project in PROJECTS:
+    for project in get_projects():
         for source in (f.source for f in project.feeds):
             if (project.name, source) not in result:
                 result.append((project.name, source))
 
     return tuple(result)
+
+
+def get_directory():
+    """Returns archive directory as defined withn pyesdoc.conf.
+
+    """
+    config.init()
+
+    return config.data.archive.location
+
+
+def get_projects():
+    """Returns set of archive projects.
+
+    """
+    config.init()
+
+    return config.data.archive.projects
+
+
+def get_sources():
+    """Returns set of archive sources.
+
+    """
+    config.init()
+
+    return config.data.archive.sources
+

@@ -11,8 +11,7 @@
 
 """
 from pyesdoc.utils import convert
-from pyesdoc.utils import functional
 from pyesdoc.utils import runtime
 from pyesdoc.utils import runtime as rt
-from pyesdoc.utils.config import data as config
+from pyesdoc.utils import config
 

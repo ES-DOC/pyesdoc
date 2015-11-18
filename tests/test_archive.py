@@ -11,10 +11,6 @@
 .. moduleauthor:: Earth System Documentation (ES-DOC) <dev@es-doc.org>
 
 """
-# Module imports.
-import nose
-import os
-
 import pyesdoc
 import test_utils as tu
 
@@ -23,32 +19,27 @@ def _test_archive_config():
     """Test archive configuration."""
     import pyesdoc.archive.config as cfg
 
-    tu.assert_path(cfg.DIR_ARCHIVE)
-    tu.assert_int(cfg.projects, 5)
-    tu.assert_int(cfg.sources, 4)
-    tu.assert_int(cfg.projects[0].feeds, 5)
-    tu.assert_int(cfg.projects[1].feeds, 1)
-    tu.assert_int(cfg.projects[2].feeds, 1)
-    tu.assert_int(cfg.projects[3].feeds, 1)
-    tu.assert_int(cfg.get_project_sources(), 6)
+    tu.assert_path(cfg.get_directory())
+    tu.assert_int(cfg.get_projects(), 6)
+    tu.assert_int(cfg.get_sources(), 4)
+    tu.assert_int(cfg.get_projects()[0].feeds, 2)
+    tu.assert_int(cfg.get_projects()[1].feeds, 1)
+    tu.assert_int(cfg.get_projects()[2].feeds, 1)
+    tu.assert_int(cfg.get_projects()[3].feeds, 1)
+    tu.assert_int(cfg.get_projects()[4].feeds, 1)
+    tu.assert_int(cfg.get_project_sources(), 7)
 
 
 def _test_archive_doc_dirs():
     """Test archive document directories."""
-    import pyesdoc.archive.config as cfg
-    import pyesdoc.archive.io as io
-
-    for managed_dir in io.MANAGED_FOLDERS:
-        for project, source in cfg.get_project_sources():
-            folder = io.get_folder(project, source, managed_dir)
-            assert os.path.exists(folder.path), folder.path
+    folders = list(pyesdoc.archive.yield_folders())
+    for folder in folders:
+        assert folder.exists, True
 
 
 def _test_archive_get_counts():
     """Test archive document counts."""
-    import pyesdoc.archive.io as io
-
-    tu.assert_int(len(io.get_counts()), 43, assert_type=tu.COMPARE_LTE)
+    tu.assert_int(pyesdoc.archive.get_count(), 37019, assert_type=tu.COMPARE_LTE)
 
 
 def test():
