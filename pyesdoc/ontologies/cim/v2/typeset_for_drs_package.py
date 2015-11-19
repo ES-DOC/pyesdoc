@@ -16,7 +16,6 @@ import abc
 import datetime
 import uuid
 
-import typeset_for_drs_package as drs
 
 
 

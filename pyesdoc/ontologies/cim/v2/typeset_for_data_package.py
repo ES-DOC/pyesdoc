@@ -17,8 +17,6 @@ import datetime
 import uuid
 
 import typeset_for_activity_package as activity
-import typeset_for_data_package as data
-import typeset_for_designing_package as designing
 import typeset_for_science_package as science
 import typeset_for_shared_package as shared
 
