@@ -5,9 +5,7 @@
 {% comment ***************** %}
 {% block doc-content %}
 
-	{% include activity_numerical_experiment_overview.html %}
-	{% if doc.requirements %}
-		{% include activity_numerical_experiment_requirements.html %}
-	{% end %}
+	{% set ctx = TemplateInfo(doc, fieldset = 'cim.2.designing.project') %}
+	{% include ../core/fieldset.html %}
 
 {% end %}
