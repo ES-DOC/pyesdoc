@@ -18,14 +18,17 @@ import uuid
 
 import typeset_for_science_package as science
 import typeset_for_shared_package as shared
+import typeset_for_software_package as software
 
 
 
 class Algorithm(object):
     """A concrete class within the cim v2 type system.
 
-    Used to hold information associated with a process algorithm and it's properties.
-    Expected to be used to describe aspects of how a process is implemented.
+    Used to hold information associated with an algorithm which implements some key
+    part of a process, and its properties. In most cases this is quite a high level concept
+    and isn't intended to describe the gory detail of how the code implements the algorithm
+    rather the key scientific aspects of the algorithm.
 
     """
     def __init__(self):
@@ -34,6 +37,7 @@ class Algorithm(object):
         """
         super(Algorithm, self).__init__()
 
+        self.detailed_properties = []                     # science.ProcessDetail
         self.diagnostic_variables = []                    # data.VariableCollection
         self.heading = None                               # unicode
         self.implementation_overview = None               # unicode
@@ -99,6 +103,29 @@ class GridSummary(object):
         self.grid_extent = None                           # science.Extent
         self.grid_layout = None                           # science.GridLayouts
         self.grid_type = None                             # science.GridTypes
+
+
+class Model(software.ComponentBase):
+    """A concrete class within the cim v2 type system.
+
+    A model component: can be executed standalone, and has as scientific
+    description available via a link to a science.domain document. (A configured model can
+     be understood in terms of a simulation, a model, and a configuration.)
+
+    """
+    def __init__(self):
+        """Constructor.
+
+        """
+        super(Model, self).__init__()
+
+        self.category = None                              # science.ModelTypes
+        self.coupled_software_components = []             # science.Model
+        self.coupler = None                               # software.CouplingFramework
+        self.extra_conservation_properties = None         # science.ConservationProperties
+        self.internal_software_components = []            # software.SoftwareComponent
+        self.meta = shared.Meta()                         # shared.Meta
+        self.scientific_domain = []                       # science.ScientificDomain
 
 
 class Process(object):
@@ -194,6 +221,7 @@ class ScientificDomain(object):
         self.resolution = None                            # science.Resolution
         self.simulates = []                               # science.Process
         self.time_step = None                             # float
+        self.tuning_applied = None                        # science.Tuning
 
 
 class Tuning(object):

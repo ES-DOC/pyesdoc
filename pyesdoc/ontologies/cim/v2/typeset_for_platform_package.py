@@ -17,8 +17,8 @@ import datetime
 import uuid
 
 import typeset_for_platform_package as platform
+import typeset_for_science_package as science
 import typeset_for_shared_package as shared
-import typeset_for_software_package as software
 
 
 
@@ -110,7 +110,7 @@ class Performance(object):
         self.load_imbalance = None                        # float
         self.memory_bloat = None                          # float
         self.meta = shared.Meta()                         # shared.Meta
-        self.model = None                                 # software.Model
+        self.model = None                                 # science.Model
         self.name = None                                  # unicode
         self.platform = None                              # platform.Machine
         self.subcomponent_performance = None              # platform.ComponentPerformance

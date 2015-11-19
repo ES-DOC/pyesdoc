@@ -16,7 +16,10 @@ import abc
 import datetime
 import uuid
 
+import typeset_for_activity_package as activity
 import typeset_for_data_package as data
+import typeset_for_designing_package as designing
+import typeset_for_science_package as science
 import typeset_for_shared_package as shared
 
 
@@ -38,7 +41,7 @@ class Dataset(object):
         self.drs_datasets = []                            # drs.DrsPublicationDataset
         self.meta = shared.Meta()                         # shared.Meta
         self.name = None                                  # unicode
-        self.produced_by = None                           # activity.Simulation
+        self.produced_by = None                           # data.Simulation
         self.references = []                              # shared.Citation
         self.related_to_dataset = []                      # data.RelatedData
         self.responsible_parties = []                     # shared.Responsibility
@@ -60,6 +63,28 @@ class RelatedData(shared.CimLink):
         self.relationship = None                          # data.DataAssociationTypes
 
 
+class Simulation(activity.Activity):
+    """A concrete class within the cim v2 type system.
+
+    Simulation class provides the integrating link about what models were run and wny.
+    In many cases this should be auto-generated from output file headers.
+
+    """
+    def __init__(self):
+        """Constructor.
+
+        """
+        super(Simulation, self).__init__()
+
+        self.calendar = None                              # shared.Calendar
+        self.ensemble_identifier = None                   # unicode
+        self.parent_simulation = None                     # activity.ParentSimulation
+        self.part_of_project = []                         # designing.Project
+        self.primary_ensemble = None                      # activity.Ensemble
+        self.ran_for_experiments = []                     # designing.NumericalExperiment
+        self.used = None                                  # science.Model
+
+
 class VariableCollection(object):
     """A concrete class within the cim v2 type system.
 
@@ -74,6 +99,21 @@ class VariableCollection(object):
 
         self.collection_name = None                       # unicode
         self.variables = []                               # unicode
+
+
+class Downscaling(Simulation):
+    """A concrete class within the cim v2 type system.
+
+    Defines a downscaling activity
+
+    """
+    def __init__(self):
+        """Constructor.
+
+        """
+        super(Downscaling, self).__init__()
+
+        self.downscaled_from = None                       # data.Simulation
 
 
 class DataAssociationTypes(object):

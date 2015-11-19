@@ -16,8 +16,6 @@ import abc
 import datetime
 import uuid
 
-import typeset_for_science_package as science
-import typeset_for_shared_package as shared
 
 
 
@@ -44,7 +42,7 @@ class ComponentBase(object):
         self.long_name = None                             # unicode
         self.name = None                                  # unicode
         self.release_date = None                          # datetime.datetime
-        self.tuning_applied = None                        # science.Tuning
+        self.repository = None                            # shared.OnlineResource
         self.version = None                               # unicode
 
 
@@ -139,29 +137,6 @@ class Variable(object):
         self.description = None                           # unicode
         self.name = None                                  # unicode
         self.prognostic = None                            # bool
-
-
-class Model(ComponentBase):
-    """A concrete class within the cim v2 type system.
-
-    A model component: can be executed standalone, and has as scientific
-    description available via a link to a science.domain document. (A configured model can
-     be understood in terms of a simulation, a model, and a configuration.)
-
-    """
-    def __init__(self):
-        """Constructor.
-
-        """
-        super(Model, self).__init__()
-
-        self.category = None                              # science.ModelTypes
-        self.coupled_software_components = []             # software.Model
-        self.coupler = None                               # software.CouplingFramework
-        self.extra_conservation_properties = None         # science.ConservationProperties
-        self.internal_software_components = []            # software.SoftwareComponent
-        self.meta = shared.Meta()                         # shared.Meta
-        self.scientific_domain = []                       # science.ScientificDomain
 
 
 class SoftwareComponent(ComponentBase):

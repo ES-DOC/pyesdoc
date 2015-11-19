@@ -14,6 +14,7 @@
 """
 from typeset_for_activity_package import *
 from typeset_for_data_package import *
+from typeset_for_designing_package import *
 from typeset_for_drs_package import *
 from typeset_for_platform_package import *
 from typeset_for_science_package import *
@@ -22,6 +23,7 @@ from typeset_for_software_package import *
 
 import typeset_for_activity_package as activity
 import typeset_for_data_package as data
+import typeset_for_designing_package as designing
 import typeset_for_drs_package as drs
 import typeset_for_platform_package as platform
 import typeset_for_science_package as science
@@ -38,6 +40,7 @@ __all__ = [
     # Packages
     'activity',
     'data',
+    'designing',
     'drs',
     'platform',
     'science',
@@ -126,27 +129,27 @@ TYPES = (
     activity.Activity,
     activity.AxisMember,
     activity.Conformance,
-    activity.DomainProperties,
-    activity.Downscaling,
     activity.Ensemble,
     activity.EnsembleAxis,
     activity.EnsembleMember,
-    activity.EnsembleRequirement,
-    activity.ForcingConstraint,
-    activity.MultiEnsemble,
-    activity.MultiTimeEnsemble,
-    activity.NumericalExperiment,
-    activity.NumericalRequirement,
-    activity.OutputTemporalRequirement,
     activity.ParentSimulation,
-    activity.Project,
-    activity.Simulation,
-    activity.SimulationPlan,
-    activity.TemporalConstraint,
     activity.UberEnsemble,
     data.Dataset,
+    data.Downscaling,
     data.RelatedData,
+    data.Simulation,
     data.VariableCollection,
+    designing.DomainProperties,
+    designing.EnsembleRequirement,
+    designing.ForcingConstraint,
+    designing.MultiEnsemble,
+    designing.MultiTimeEnsemble,
+    designing.NumericalExperiment,
+    designing.NumericalRequirement,
+    designing.OutputTemporalRequirement,
+    designing.Project,
+    designing.SimulationPlan,
+    designing.TemporalConstraint,
     drs.DrsAtomicDataset,
     drs.DrsEnsembleIdentifier,
     drs.DrsGeographicalIndicator,
@@ -163,6 +166,7 @@ TYPES = (
     science.ConservationProperties,
     science.Extent,
     science.GridSummary,
+    science.Model,
     science.Process,
     science.ProcessDetail,
     science.Resolution,
@@ -194,7 +198,6 @@ TYPES = (
     software.DevelopmentPath,
     software.EntryPoint,
     software.Gridspec,
-    software.Model,
     software.SoftwareComponent,
     software.Variable,
 )

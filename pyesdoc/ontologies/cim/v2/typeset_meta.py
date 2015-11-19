@@ -17,6 +17,7 @@ import uuid
 
 import typeset_for_activity_package as activity
 import typeset_for_data_package as data
+import typeset_for_designing_package as designing
 import typeset_for_drs_package as drs
 import typeset_for_platform_package as platform
 import typeset_for_science_package as science
@@ -30,27 +31,27 @@ import typeset_for_software_package as software
 activity.Activity.type_key = 'cim.2.activity.Activity'
 activity.AxisMember.type_key = 'cim.2.activity.AxisMember'
 activity.Conformance.type_key = 'cim.2.activity.Conformance'
-activity.DomainProperties.type_key = 'cim.2.activity.DomainProperties'
-activity.Downscaling.type_key = 'cim.2.activity.Downscaling'
 activity.Ensemble.type_key = 'cim.2.activity.Ensemble'
 activity.EnsembleAxis.type_key = 'cim.2.activity.EnsembleAxis'
 activity.EnsembleMember.type_key = 'cim.2.activity.EnsembleMember'
-activity.EnsembleRequirement.type_key = 'cim.2.activity.EnsembleRequirement'
-activity.ForcingConstraint.type_key = 'cim.2.activity.ForcingConstraint'
-activity.MultiEnsemble.type_key = 'cim.2.activity.MultiEnsemble'
-activity.MultiTimeEnsemble.type_key = 'cim.2.activity.MultiTimeEnsemble'
-activity.NumericalExperiment.type_key = 'cim.2.activity.NumericalExperiment'
-activity.NumericalRequirement.type_key = 'cim.2.activity.NumericalRequirement'
-activity.OutputTemporalRequirement.type_key = 'cim.2.activity.OutputTemporalRequirement'
 activity.ParentSimulation.type_key = 'cim.2.activity.ParentSimulation'
-activity.Project.type_key = 'cim.2.activity.Project'
-activity.Simulation.type_key = 'cim.2.activity.Simulation'
-activity.SimulationPlan.type_key = 'cim.2.activity.SimulationPlan'
-activity.TemporalConstraint.type_key = 'cim.2.activity.TemporalConstraint'
 activity.UberEnsemble.type_key = 'cim.2.activity.UberEnsemble'
 data.Dataset.type_key = 'cim.2.data.Dataset'
+data.Downscaling.type_key = 'cim.2.data.Downscaling'
 data.RelatedData.type_key = 'cim.2.data.RelatedData'
+data.Simulation.type_key = 'cim.2.data.Simulation'
 data.VariableCollection.type_key = 'cim.2.data.VariableCollection'
+designing.DomainProperties.type_key = 'cim.2.designing.DomainProperties'
+designing.EnsembleRequirement.type_key = 'cim.2.designing.EnsembleRequirement'
+designing.ForcingConstraint.type_key = 'cim.2.designing.ForcingConstraint'
+designing.MultiEnsemble.type_key = 'cim.2.designing.MultiEnsemble'
+designing.MultiTimeEnsemble.type_key = 'cim.2.designing.MultiTimeEnsemble'
+designing.NumericalExperiment.type_key = 'cim.2.designing.NumericalExperiment'
+designing.NumericalRequirement.type_key = 'cim.2.designing.NumericalRequirement'
+designing.OutputTemporalRequirement.type_key = 'cim.2.designing.OutputTemporalRequirement'
+designing.Project.type_key = 'cim.2.designing.Project'
+designing.SimulationPlan.type_key = 'cim.2.designing.SimulationPlan'
+designing.TemporalConstraint.type_key = 'cim.2.designing.TemporalConstraint'
 drs.DrsAtomicDataset.type_key = 'cim.2.drs.DrsAtomicDataset'
 drs.DrsEnsembleIdentifier.type_key = 'cim.2.drs.DrsEnsembleIdentifier'
 drs.DrsGeographicalIndicator.type_key = 'cim.2.drs.DrsGeographicalIndicator'
@@ -67,6 +68,7 @@ science.Algorithm.type_key = 'cim.2.science.Algorithm'
 science.ConservationProperties.type_key = 'cim.2.science.ConservationProperties'
 science.Extent.type_key = 'cim.2.science.Extent'
 science.GridSummary.type_key = 'cim.2.science.GridSummary'
+science.Model.type_key = 'cim.2.science.Model'
 science.Process.type_key = 'cim.2.science.Process'
 science.ProcessDetail.type_key = 'cim.2.science.ProcessDetail'
 science.Resolution.type_key = 'cim.2.science.Resolution'
@@ -98,7 +100,6 @@ software.Composition.type_key = 'cim.2.software.Composition'
 software.DevelopmentPath.type_key = 'cim.2.software.DevelopmentPath'
 software.EntryPoint.type_key = 'cim.2.software.EntryPoint'
 software.Gridspec.type_key = 'cim.2.software.Gridspec'
-software.Model.type_key = 'cim.2.software.Model'
 software.SoftwareComponent.type_key = 'cim.2.software.SoftwareComponent'
 software.Variable.type_key = 'cim.2.software.Variable'
 
@@ -124,16 +125,7 @@ activity.AxisMember.type_info = (
 )
 
 activity.Conformance.type_info = (
-    ('target_requirement', activity.NumericalRequirement, True, False),
-)
-
-activity.DomainProperties.type_info = (
-    ('required_extent', science.Extent, False, False),
-    ('required_resolution', science.Resolution, False, False),
-)
-
-activity.Downscaling.type_info = (
-    ('downscaled_from', activity.Simulation, True, False),
+    ('target_requirement', designing.NumericalRequirement, True, False),
 )
 
 activity.Ensemble.type_info = (
@@ -141,96 +133,26 @@ activity.Ensemble.type_info = (
     ('has_ensemble_axes', activity.EnsembleAxis, False, True),
     ('members', activity.EnsembleMember, True, True),
     ('part_of', activity.UberEnsemble, False, True),
-    ('supported', activity.NumericalExperiment, True, True),
+    ('supported', designing.NumericalExperiment, True, True),
 )
 
 activity.EnsembleAxis.type_info = (
     ('extra_detail', unicode, True, False),
     ('member', activity.AxisMember, True, True),
     ('short_identifier', unicode, True, False),
-    ('target_requirement', activity.NumericalRequirement, True, False),
+    ('target_requirement', designing.NumericalRequirement, True, False),
 )
 
 activity.EnsembleMember.type_info = (
     ('had_performance', platform.Performance, False, False),
     ('ran_on', platform.Machine, True, False),
-    ('simulation', activity.Simulation, True, False),
-)
-
-activity.EnsembleRequirement.type_info = (
-    ('ensemble_member', activity.NumericalRequirement, False, True),
-    ('ensemble_type', unicode, True, False),
-    ('minimum_size', int, True, False),
-)
-
-activity.ForcingConstraint.type_info = (
-    ('additional_constraint', unicode, False, False),
-    ('category', shared.VocabMember, True, False),
-    ('code', shared.VocabMember, True, False),
-    ('data_link', shared.OnlineResource, False, False),
-    ('forcing_type', unicode, True, False),
-    ('group', shared.VocabMember, False, False),
-    ('origin', shared.Citation, False, False),
-)
-
-activity.MultiEnsemble.type_info = (
-    ('ensemble_axis', activity.EnsembleRequirement, True, True),
-)
-
-activity.MultiTimeEnsemble.type_info = (
-    ('ensemble_members', shared.DatetimeSet, True, False),
-)
-
-activity.NumericalExperiment.type_info = (
-    ('related_experiments', activity.NumericalExperiment, False, True),
-    ('requirements', activity.NumericalRequirement, False, True),
-)
-
-activity.NumericalRequirement.type_info = (
-    ('additional_requirements', activity.NumericalRequirement, False, True),
-    ('conformance_is_requested', bool, True, False),
-)
-
-activity.OutputTemporalRequirement.type_info = (
-    ('continuous_subset', shared.TimePeriod, False, True),
-    ('sliced_subset', shared.TimesliceList, False, False),
-    ('throughout', bool, True, False),
+    ('simulation', data.Simulation, True, False),
 )
 
 activity.ParentSimulation.type_info = (
     ('branch_time_in_child', shared.DateTime, False, False),
     ('branch_time_in_parent', shared.DateTime, False, False),
-    ('parent', activity.Simulation, True, False),
-)
-
-activity.Project.type_info = (
-    ('previous_projects', activity.Project, False, True),
-    ('requires_experiments', activity.NumericalExperiment, False, True),
-    ('sub_projects', activity.Project, False, True),
-)
-
-activity.Simulation.type_info = (
-    ('calendar', shared.Calendar, False, False),
-    ('ensemble_identifier', unicode, True, False),
-    ('parent_simulation', activity.ParentSimulation, False, False),
-    ('part_of_project', activity.Project, True, True),
-    ('primary_ensemble', activity.Ensemble, False, False),
-    ('ran_for_experiments', activity.NumericalExperiment, True, True),
-    ('used', software.Model, True, False),
-)
-
-activity.SimulationPlan.type_info = (
-    ('expected_model', software.Model, True, False),
-    ('expected_performance_sypd', float, False, False),
-    ('expected_platform', platform.Machine, False, False),
-    ('will_support_experiments', activity.NumericalExperiment, True, True),
-)
-
-activity.TemporalConstraint.type_info = (
-    ('required_calendar', shared.Calendar, False, False),
-    ('required_duration', shared.TimePeriod, False, False),
-    ('start_date', shared.DateTime, False, False),
-    ('start_flexibility', shared.TimePeriod, False, False),
+    ('parent', data.Simulation, True, False),
 )
 
 activity.UberEnsemble.type_info = (
@@ -243,10 +165,14 @@ data.Dataset.type_info = (
     ('drs_datasets', drs.DrsPublicationDataset, False, True),
     ('meta', shared.Meta, True, False),
     ('name', unicode, True, False),
-    ('produced_by', activity.Simulation, False, False),
+    ('produced_by', data.Simulation, False, False),
     ('references', shared.Citation, False, True),
     ('related_to_dataset', data.RelatedData, False, True),
     ('responsible_parties', shared.Responsibility, False, True),
+)
+
+data.Downscaling.type_info = (
+    ('downscaled_from', data.Simulation, True, False),
 )
 
 data.RelatedData.type_info = (
@@ -254,9 +180,84 @@ data.RelatedData.type_info = (
     ('relationship', unicode, True, False),
 )
 
+data.Simulation.type_info = (
+    ('calendar', shared.Calendar, False, False),
+    ('ensemble_identifier', unicode, True, False),
+    ('parent_simulation', activity.ParentSimulation, False, False),
+    ('part_of_project', designing.Project, True, True),
+    ('primary_ensemble', activity.Ensemble, False, False),
+    ('ran_for_experiments', designing.NumericalExperiment, True, True),
+    ('used', science.Model, True, False),
+)
+
 data.VariableCollection.type_info = (
     ('collection_name', unicode, False, False),
     ('variables', unicode, True, True),
+)
+
+designing.DomainProperties.type_info = (
+    ('required_extent', science.Extent, False, False),
+    ('required_resolution', science.Resolution, False, False),
+)
+
+designing.EnsembleRequirement.type_info = (
+    ('ensemble_member', designing.NumericalRequirement, False, True),
+    ('ensemble_type', unicode, True, False),
+    ('minimum_size', int, True, False),
+)
+
+designing.ForcingConstraint.type_info = (
+    ('additional_constraint', unicode, False, False),
+    ('category', shared.VocabMember, True, False),
+    ('code', shared.VocabMember, True, False),
+    ('data_link', shared.OnlineResource, False, False),
+    ('forcing_type', unicode, True, False),
+    ('group', shared.VocabMember, False, False),
+    ('origin', shared.Citation, False, False),
+)
+
+designing.MultiEnsemble.type_info = (
+    ('ensemble_axis', designing.EnsembleRequirement, True, True),
+)
+
+designing.MultiTimeEnsemble.type_info = (
+    ('ensemble_members', shared.DatetimeSet, True, False),
+)
+
+designing.NumericalExperiment.type_info = (
+    ('related_experiments', designing.NumericalExperiment, False, True),
+    ('requirements', designing.NumericalRequirement, False, True),
+)
+
+designing.NumericalRequirement.type_info = (
+    ('additional_requirements', designing.NumericalRequirement, False, True),
+    ('conformance_is_requested', bool, True, False),
+)
+
+designing.OutputTemporalRequirement.type_info = (
+    ('continuous_subset', shared.TimePeriod, False, True),
+    ('sliced_subset', shared.TimesliceList, False, False),
+    ('throughout', bool, True, False),
+)
+
+designing.Project.type_info = (
+    ('previous_projects', designing.Project, False, True),
+    ('requires_experiments', designing.NumericalExperiment, False, True),
+    ('sub_projects', designing.Project, False, True),
+)
+
+designing.SimulationPlan.type_info = (
+    ('expected_model', science.Model, True, False),
+    ('expected_performance_sypd', float, False, False),
+    ('expected_platform', platform.Machine, False, False),
+    ('will_support_experiments', designing.NumericalExperiment, True, True),
+)
+
+designing.TemporalConstraint.type_info = (
+    ('required_calendar', shared.Calendar, False, False),
+    ('required_duration', shared.TimePeriod, False, False),
+    ('start_date', shared.DateTime, False, False),
+    ('start_flexibility', shared.TimePeriod, False, False),
 )
 
 drs.DrsAtomicDataset.type_info = (
@@ -344,7 +345,7 @@ platform.Performance.type_info = (
     ('load_imbalance', float, False, False),
     ('memory_bloat', float, False, False),
     ('meta', shared.Meta, True, False),
-    ('model', software.Model, True, False),
+    ('model', science.Model, True, False),
     ('name', unicode, False, False),
     ('platform', platform.Machine, True, False),
     ('subcomponent_performance', platform.ComponentPerformance, False, False),
@@ -366,6 +367,7 @@ platform.StorageVolume.type_info = (
 )
 
 science.Algorithm.type_info = (
+    ('detailed_properties', science.ProcessDetail, False, True),
     ('diagnostic_variables', data.VariableCollection, False, True),
     ('heading', unicode, True, False),
     ('implementation_overview', unicode, True, False),
@@ -395,6 +397,16 @@ science.GridSummary.type_info = (
     ('grid_extent', science.Extent, True, False),
     ('grid_layout', unicode, True, False),
     ('grid_type', unicode, True, False),
+)
+
+science.Model.type_info = (
+    ('category', unicode, True, False),
+    ('coupled_software_components', science.Model, False, True),
+    ('coupler', unicode, False, False),
+    ('extra_conservation_properties', science.ConservationProperties, False, False),
+    ('internal_software_components', software.SoftwareComponent, False, True),
+    ('meta', shared.Meta, True, False),
+    ('scientific_domain', science.ScientificDomain, False, True),
 )
 
 science.Process.type_info = (
@@ -435,6 +447,7 @@ science.ScientificDomain.type_info = (
     ('resolution', science.Resolution, True, False),
     ('simulates', science.Process, True, True),
     ('time_step', float, True, False),
+    ('tuning_applied', science.Tuning, False, False),
 )
 
 science.Tuning.type_info = (
@@ -445,10 +458,10 @@ science.Tuning.type_info = (
 )
 
 shared.Calendar.type_info = (
-    ('cal_type', unicode, True, False),
     ('description', unicode, False, False),
     ('month_lengths', int, False, True),
     ('name', unicode, False, False),
+    ('standard_name', unicode, True, False),
 )
 
 shared.CimLink.type_info = (
@@ -465,7 +478,7 @@ shared.Citation.type_info = (
     ('citation_str', unicode, True, False),
     ('context', unicode, False, False),
     ('doi', unicode, False, False),
-    ('title', unicode, False, False),
+    ('short_cite', unicode, False, False),
     ('url', shared.OnlineResource, False, False),
 )
 
@@ -495,6 +508,7 @@ shared.Meta.type_info = (
 )
 
 shared.MinimalMeta.type_info = (
+    ('document_created', datetime.datetime, True, False),
     ('document_version', int, False, False),
     ('metadata_last_updated', datetime.datetime, True, False),
     ('uid', unicode, True, False),
@@ -574,7 +588,7 @@ software.ComponentBase.type_info = (
     ('long_name', unicode, False, False),
     ('name', unicode, True, False),
     ('release_date', datetime.datetime, False, False),
-    ('tuning_applied', science.Tuning, False, False),
+    ('repository', shared.OnlineResource, False, False),
     ('version', unicode, False, False),
 )
 
@@ -597,16 +611,6 @@ software.EntryPoint.type_info = (
 
 software.Gridspec.type_info = (
     ('description', unicode, True, False),
-)
-
-software.Model.type_info = (
-    ('category', unicode, True, False),
-    ('coupled_software_components', software.Model, False, True),
-    ('coupler', unicode, False, False),
-    ('extra_conservation_properties', science.ConservationProperties, False, False),
-    ('internal_software_components', software.SoftwareComponent, False, True),
-    ('meta', shared.Meta, True, False),
-    ('scientific_domain', science.ScientificDomain, False, True),
 )
 
 software.SoftwareComponent.type_info = (

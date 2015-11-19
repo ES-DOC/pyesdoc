@@ -34,10 +34,10 @@ class Calendar(object):
         """
         super(Calendar, self).__init__()
 
-        self.cal_type = None                              # shared.CalendarTypes
         self.description = None                           # unicode
         self.month_lengths = []                           # int
         self.name = None                                  # unicode
+        self.standard_name = None                         # shared.CalendarTypes
 
 
 class Cimtext(object):
@@ -60,7 +60,7 @@ class Cimtext(object):
 class Citation(object):
     """A concrete class within the cim v2 type system.
 
-    Create and return an instance of the citation class
+    Description of material suitable for citation - in the academic sense, i.e. for a journal bibliography.
 
     """
     def __init__(self):
@@ -73,7 +73,7 @@ class Citation(object):
         self.citation_str = None                          # unicode
         self.context = None                               # unicode
         self.doi = None                                   # unicode
-        self.title = None                                 # unicode
+        self.short_cite = None                            # unicode
         self.url = None                                   # shared.OnlineResource
 
 
@@ -146,6 +146,7 @@ class MinimalMeta(object):
         """
         super(MinimalMeta, self).__init__()
 
+        self.document_created = None                      # datetime.datetime
         self.document_version = None                      # int
         self.metadata_last_updated = None                 # datetime.datetime
         self.uid = None                                   # unicode
