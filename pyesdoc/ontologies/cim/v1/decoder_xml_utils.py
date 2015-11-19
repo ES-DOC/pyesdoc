@@ -30,13 +30,13 @@ NULL_UUID = u'00000000-0000-0000-0000-000000000000'
 
 def _get_value(xml, rtype=unicode):
     """Returns xml node value."""
-    # Get xml node.
+    # Get xml value.
     if isinstance(xml, types.ListType):
         xml = None if len(xml) == 0 else xml[0]
     if xml is None:
         return None
 
-    # Convert xml node.
+    # Get unicode.
     if rtype is unicode:
         if isinstance(xml, types.StringTypes):
             result = convert.str_to_unicode(xml)

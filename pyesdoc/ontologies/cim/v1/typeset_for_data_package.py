@@ -16,7 +16,6 @@ import abc
 import datetime
 import uuid
 
-import typeset_for_data_package as data
 import typeset_for_shared_package as shared
 
 

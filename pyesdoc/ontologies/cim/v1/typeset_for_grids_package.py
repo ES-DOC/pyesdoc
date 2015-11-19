@@ -16,7 +16,6 @@ import abc
 import datetime
 import uuid
 
-import typeset_for_grids_package as grids
 import typeset_for_shared_package as shared
 
 

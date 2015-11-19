@@ -16,7 +16,6 @@ import abc
 import datetime
 import uuid
 
-import typeset_for_activity_package as activity
 import typeset_for_shared_package as shared
 
 
