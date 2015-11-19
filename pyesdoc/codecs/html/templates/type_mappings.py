@@ -27,6 +27,6 @@ TEMPLATE_TYPE_MAPPINGS = {
     cim.v1.software.ModelComponent: "cim_1/software_model_component.html",
     cim.v1.quality.CimQuality: "cim_1/quality_cimquality.html",
     # CIM v2 templates.
-    cim.v2.activity.Project: "cim_2/activity_project.html",
-    cim.v2.activity.NumericalExperiment: "cim_2/activity_numerical_experiment.html"
+    # cim.v2.activity.Project: "cim_2/activity_project.html",
+    # cim.v2.activity.NumericalExperiment: "cim_2/activity_numerical_experiment.html"
 }
