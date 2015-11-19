@@ -43,11 +43,13 @@ class _BinaryDistribution(Distribution):
         return False
 
 
-def _read(*paths):
-    """Build a file path from *paths* and return the contents.
+def _read(fname):
+    """Returns content of a file.
 
     """
-    with open(os.path.join(*paths), 'r') as file_:
+    fpath = os.path.dirname(__file__)
+    fpath = os.path.join(fpath, fname)
+    with open(fpath, 'r') as file_:
         return file_.read()
 
 
@@ -55,9 +57,9 @@ def _get_version():
     """Returns library version by inspecting __init__.py file.
 
     """
-    with open('pyesdoc/__init__.py', 'r') as init_file:
-        return re.search(r'^__version__\s*=\s*[\'"]([^\'"]*)[\'"]',
-                         init_file.read(), re.MULTILINE).group(1)
+    return re.search(r'^__version__\s*=\s*[\'"]([^\'"]*)[\'"]',
+                     _read("pyesdoc/__init__.py"),
+                     re.MULTILINE).group(1)
 
 
 setup(
