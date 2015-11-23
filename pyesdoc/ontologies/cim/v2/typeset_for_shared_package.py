@@ -151,6 +151,7 @@ class MinimalMeta(object):
         self.document_version = None                      # int
         self.drs_keys = []                                # unicode
         self.drs_path = None                              # unicode
+        self.external_ids = []                            # unicode
         self.id = None                                    # uuid.UUID
         self.institute = None                             # unicode
         self.language = None                              # unicode

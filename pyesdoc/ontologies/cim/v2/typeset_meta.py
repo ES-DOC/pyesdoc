@@ -514,6 +514,7 @@ shared.MinimalMeta.type_info = (
     ('document_version', int, False, False),
     ('drs_keys', unicode, False, True),
     ('drs_path', unicode, False, False),
+    ('external_ids', unicode, False, True),
     ('id', uuid.UUID, True, False),
     ('institute', unicode, False, False),
     ('language', unicode, True, False),
