@@ -145,10 +145,26 @@ class MinimalMeta(object):
         """
         super(MinimalMeta, self).__init__()
 
+        self.author = None                                # shared.Party
+        self.create_date = None                           # datetime.datetime
         self.document_created = None                      # datetime.datetime
         self.document_version = None                      # int
+        self.drs_keys = []                                # unicode
+        self.drs_path = None                              # unicode
+        self.id = None                                    # uuid.UUID
+        self.institute = None                             # unicode
+        self.language = None                              # unicode
         self.metadata_last_updated = None                 # datetime.datetime
+        self.project = None                               # unicode
+        self.sort_key = None                              # unicode
+        self.source = None                                # unicode
+        self.source_key = None                            # unicode
+        self.type = None                                  # unicode
+        self.type_display_name = None                     # unicode
+        self.type_sort_key = None                         # unicode
         self.uid = None                                   # unicode
+        self.update_date = None                           # datetime.datetime
+        self.version = None                               # int
 
 
 class NumberArray(object):
@@ -187,8 +203,8 @@ class OnlineResource(object):
 class Party(object):
     """A concrete class within the cim v2 type system.
 
-    Implements minimal material for an ISO19115-1 (2014) compliant party. 
-    For our purposes this is a much better animal than the previous responsibleParty 
+    Implements minimal material for an ISO19115-1 (2014) compliant party.
+    For our purposes this is a much better animal than the previous responsibleParty
     which munged roles together with people. Note we have collapsed CI_Contact,
     CI_Individual and CI_Organisation as well as the abstract CI_Party.
 

@@ -508,10 +508,26 @@ shared.Meta.type_info = (
 )
 
 shared.MinimalMeta.type_info = (
+    ('author', shared.Party, False, False),
+    ('create_date', datetime.datetime, True, False),
     ('document_created', datetime.datetime, True, False),
     ('document_version', int, False, False),
+    ('drs_keys', unicode, False, True),
+    ('drs_path', unicode, False, False),
+    ('id', uuid.UUID, True, False),
+    ('institute', unicode, False, False),
+    ('language', unicode, True, False),
     ('metadata_last_updated', datetime.datetime, True, False),
+    ('project', unicode, True, False),
+    ('sort_key', unicode, False, False),
+    ('source', unicode, True, False),
+    ('source_key', unicode, False, False),
+    ('type', unicode, True, False),
+    ('type_display_name', unicode, False, False),
+    ('type_sort_key', unicode, False, False),
     ('uid', unicode, True, False),
+    ('update_date', datetime.datetime, True, False),
+    ('version', int, True, False),
 )
 
 shared.NumberArray.type_info = (
