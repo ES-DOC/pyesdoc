@@ -183,4 +183,4 @@ def set_qc_properties(c):
     for cp in c.properties:
         if cp.short_name.lower().find("qc properties") != -1:
             group.sub_properties = cp.sub_properties
-            return
+            break

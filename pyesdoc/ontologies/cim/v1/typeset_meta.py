@@ -618,8 +618,6 @@ shared.DocMetaInfo.type_info = (
     ('id', uuid.UUID, True, False),
     ('institute', unicode, False, False),
     ('language', unicode, True, False),
-    ('metadata_id', unicode, False, False),
-    ('metadata_version', unicode, False, False),
     ('project', unicode, True, False),
     ('sort_key', unicode, False, False),
     ('source', unicode, True, False),
