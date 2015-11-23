@@ -172,8 +172,6 @@ class DocMetaInfo(object):
         self.id = None                                    # uuid.UUID
         self.institute = None                             # unicode
         self.language = None                              # unicode
-        self.metadata_id = None                           # unicode
-        self.metadata_version = None                      # unicode
         self.project = None                               # unicode
         self.sort_key = None                              # unicode
         self.source = None                                # unicode
