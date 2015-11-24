@@ -120,11 +120,13 @@ class Model(software.ComponentBase):
 
         self.category = None                              # science.ModelTypes
         self.coupled_software_components = []             # science.Model
+        self.coupled_software_components_references = []  # shared.DocReference
         self.coupler = None                               # software.CouplingFramework
         self.extra_conservation_properties = None         # science.ConservationProperties
         self.internal_software_components = []            # software.SoftwareComponent
-        self.meta = shared.Meta()                         # shared.Meta
+        self.meta = shared.DocMetaInfo()                  # shared.DocMetaInfo
         self.scientific_domain = []                       # science.ScientificDomain
+        self.scientific_domain_references = []            # shared.DocReference
 
 
 class Process(object):
@@ -212,7 +214,7 @@ class ScientificDomain(object):
 
         self.extra_conservation_properties = None         # science.ConservationProperties
         self.grid = None                                  # science.GridSummary
-        self.meta = shared.Meta()                         # shared.Meta
+        self.meta = shared.DocMetaInfo()                  # shared.DocMetaInfo
         self.name = None                                  # unicode
         self.overview = None                              # unicode
         self.realm = None                                 # unicode

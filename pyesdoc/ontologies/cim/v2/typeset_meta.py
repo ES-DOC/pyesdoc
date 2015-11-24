@@ -80,10 +80,10 @@ shared.Cimtext.type_key = u'cim.2.shared.Cimtext'
 shared.Citation.type_key = u'cim.2.shared.Citation'
 shared.DateTime.type_key = u'cim.2.shared.DateTime'
 shared.DatetimeSet.type_key = u'cim.2.shared.DatetimeSet'
+shared.DocMetaInfo.type_key = u'cim.2.shared.DocMetaInfo'
+shared.DocReference.type_key = u'cim.2.shared.DocReference'
 shared.IrregularDateset.type_key = u'cim.2.shared.IrregularDateset'
 shared.KeyFloat.type_key = u'cim.2.shared.KeyFloat'
-shared.Meta.type_key = u'cim.2.shared.Meta'
-shared.MinimalMeta.type_key = u'cim.2.shared.MinimalMeta'
 shared.NumberArray.type_key = u'cim.2.shared.NumberArray'
 shared.OnlineResource.type_key = u'cim.2.shared.OnlineResource'
 shared.Party.type_key = u'cim.2.shared.Party'
@@ -111,7 +111,7 @@ activity.Activity.type_info = (
     ('duration', shared.TimePeriod, False, False),
     ('keywords', unicode, False, True),
     ('long_name', unicode, False, False),
-    ('meta', shared.Meta, True, False),
+    ('meta', shared.DocMetaInfo, True, False),
     ('name', unicode, True, False),
     ('rationale', unicode, False, False),
     ('references', shared.Citation, False, True),
@@ -126,14 +126,17 @@ activity.AxisMember.type_info = (
 
 activity.Conformance.type_info = (
     ('target_requirement', designing.NumericalRequirement, True, False),
+    ('target_requirement_reference', shared.DocReference, False, False),
 )
 
 activity.Ensemble.type_info = (
     ('common_conformances', activity.Conformance, False, True),
+    ('common_conformances_references', shared.DocReference, False, True),
     ('has_ensemble_axes', activity.EnsembleAxis, False, True),
     ('members', activity.EnsembleMember, True, True),
     ('part_of', activity.UberEnsemble, False, True),
     ('supported', designing.NumericalExperiment, True, True),
+    ('supported_references', shared.DocReference, False, True),
 )
 
 activity.EnsembleAxis.type_info = (
@@ -141,42 +144,52 @@ activity.EnsembleAxis.type_info = (
     ('member', activity.AxisMember, True, True),
     ('short_identifier', unicode, True, False),
     ('target_requirement', designing.NumericalRequirement, True, False),
+    ('target_requirement_reference', shared.DocReference, False, False),
 )
 
 activity.EnsembleMember.type_info = (
     ('had_performance', platform.Performance, False, False),
+    ('had_performance_reference', shared.DocReference, False, False),
     ('ran_on', platform.Machine, True, False),
+    ('ran_on_reference', shared.DocReference, False, False),
     ('simulation', data.Simulation, True, False),
+    ('simulation_reference', shared.DocReference, False, False),
 )
 
 activity.ParentSimulation.type_info = (
     ('branch_time_in_child', shared.DateTime, False, False),
     ('branch_time_in_parent', shared.DateTime, False, False),
     ('parent', data.Simulation, True, False),
+    ('parent_reference', shared.DocReference, False, False),
 )
 
 activity.UberEnsemble.type_info = (
     ('child_ensembles', activity.Ensemble, True, True),
+    ('child_ensembles_references', shared.DocReference, False, True),
 )
 
 data.Dataset.type_info = (
     ('availability', shared.OnlineResource, False, True),
     ('description', unicode, False, False),
     ('drs_datasets', drs.DrsPublicationDataset, False, True),
-    ('meta', shared.Meta, True, False),
+    ('meta', shared.DocMetaInfo, True, False),
     ('name', unicode, True, False),
     ('produced_by', data.Simulation, False, False),
+    ('produced_by_reference', shared.DocReference, False, False),
     ('references', shared.Citation, False, True),
     ('related_to_dataset', data.RelatedData, False, True),
     ('responsible_parties', shared.Responsibility, False, True),
+    ('responsible_parties_references', shared.DocReference, False, True),
 )
 
 data.Downscaling.type_info = (
     ('downscaled_from', data.Simulation, True, False),
+    ('downscaled_from_reference', shared.DocReference, False, False),
 )
 
 data.RelatedData.type_info = (
     ('other_dataset', data.Dataset, True, False),
+    ('other_dataset_reference', shared.DocReference, False, False),
     ('relationship', unicode, True, False),
 )
 
@@ -185,9 +198,13 @@ data.Simulation.type_info = (
     ('ensemble_identifier', unicode, True, False),
     ('parent_simulation', activity.ParentSimulation, False, False),
     ('part_of_project', designing.Project, True, True),
+    ('part_of_project_references', shared.DocReference, False, True),
     ('primary_ensemble', activity.Ensemble, False, False),
+    ('primary_ensemble_reference', shared.DocReference, False, False),
     ('ran_for_experiments', designing.NumericalExperiment, True, True),
+    ('ran_for_experiments_references', shared.DocReference, False, True),
     ('used', science.Model, True, False),
+    ('used_reference', shared.DocReference, False, False),
 )
 
 data.VariableCollection.type_info = (
@@ -202,6 +219,7 @@ designing.DomainProperties.type_info = (
 
 designing.EnsembleRequirement.type_info = (
     ('ensemble_member', designing.NumericalRequirement, False, True),
+    ('ensemble_member_references', shared.DocReference, False, True),
     ('ensemble_type', unicode, True, False),
     ('minimum_size', int, True, False),
 )
@@ -218,6 +236,7 @@ designing.ForcingConstraint.type_info = (
 
 designing.MultiEnsemble.type_info = (
     ('ensemble_axis', designing.EnsembleRequirement, True, True),
+    ('ensemble_axis_references', shared.DocReference, False, True),
 )
 
 designing.MultiTimeEnsemble.type_info = (
@@ -226,11 +245,14 @@ designing.MultiTimeEnsemble.type_info = (
 
 designing.NumericalExperiment.type_info = (
     ('related_experiments', designing.NumericalExperiment, False, True),
+    ('related_experiments_references', shared.DocReference, False, True),
     ('requirements', designing.NumericalRequirement, False, True),
+    ('requirements_references', shared.DocReference, False, True),
 )
 
 designing.NumericalRequirement.type_info = (
     ('additional_requirements', designing.NumericalRequirement, False, True),
+    ('additional_requirements_references', shared.DocReference, False, True),
     ('conformance_is_requested', bool, True, False),
 )
 
@@ -242,15 +264,21 @@ designing.OutputTemporalRequirement.type_info = (
 
 designing.Project.type_info = (
     ('previous_projects', designing.Project, False, True),
+    ('previous_projects_references', shared.DocReference, False, True),
     ('requires_experiments', designing.NumericalExperiment, False, True),
+    ('requires_experiments_references', shared.DocReference, False, True),
     ('sub_projects', designing.Project, False, True),
+    ('sub_projects_references', shared.DocReference, False, True),
 )
 
 designing.SimulationPlan.type_info = (
     ('expected_model', science.Model, True, False),
+    ('expected_model_reference', shared.DocReference, False, False),
     ('expected_performance_sypd', float, False, False),
     ('expected_platform', platform.Machine, False, False),
+    ('expected_platform_reference', shared.DocReference, False, False),
     ('will_support_experiments', designing.NumericalExperiment, True, True),
+    ('will_support_experiments_references', shared.DocReference, False, True),
 )
 
 designing.TemporalConstraint.type_info = (
@@ -320,19 +348,21 @@ platform.ComputePool.type_info = (
 )
 
 platform.Machine.type_info = (
-    ('meta', shared.Meta, True, False),
+    ('meta', shared.DocMetaInfo, True, False),
 )
 
 platform.Partition.type_info = (
     ('compute_pools', platform.ComputePool, True, True),
     ('description', unicode, False, False),
     ('institution', shared.Party, True, False),
+    ('institution_reference', shared.DocReference, False, False),
     ('model_number', unicode, False, False),
     ('name', unicode, True, False),
     ('online_documentation', shared.OnlineResource, False, True),
     ('partition', platform.Partition, False, True),
     ('storage_pools', platform.StoragePool, False, True),
     ('vendor', shared.Party, False, False),
+    ('vendor_reference', shared.DocReference, False, False),
     ('when_used', shared.TimePeriod, False, False),
 )
 
@@ -344,10 +374,12 @@ platform.Performance.type_info = (
     ('io_load', float, False, False),
     ('load_imbalance', float, False, False),
     ('memory_bloat', float, False, False),
-    ('meta', shared.Meta, True, False),
+    ('meta', shared.DocMetaInfo, True, False),
     ('model', science.Model, True, False),
+    ('model_reference', shared.DocReference, False, False),
     ('name', unicode, False, False),
     ('platform', platform.Machine, True, False),
+    ('platform_reference', shared.DocReference, False, False),
     ('subcomponent_performance', platform.ComponentPerformance, False, False),
     ('sypd', float, False, False),
     ('total_nodes_used', int, False, False),
@@ -358,6 +390,7 @@ platform.StoragePool.type_info = (
     ('name', unicode, True, False),
     ('type', unicode, False, False),
     ('vendor', shared.Party, False, False),
+    ('vendor_reference', shared.DocReference, False, False),
     ('volume_available', platform.StorageVolume, True, False),
 )
 
@@ -402,11 +435,13 @@ science.GridSummary.type_info = (
 science.Model.type_info = (
     ('category', unicode, True, False),
     ('coupled_software_components', science.Model, False, True),
+    ('coupled_software_components_references', shared.DocReference, False, True),
     ('coupler', unicode, False, False),
     ('extra_conservation_properties', science.ConservationProperties, False, False),
     ('internal_software_components', software.SoftwareComponent, False, True),
-    ('meta', shared.Meta, True, False),
+    ('meta', shared.DocMetaInfo, True, False),
     ('scientific_domain', science.ScientificDomain, False, True),
+    ('scientific_domain_references', shared.DocReference, False, True),
 )
 
 science.Process.type_info = (
@@ -439,7 +474,7 @@ science.Resolution.type_info = (
 science.ScientificDomain.type_info = (
     ('extra_conservation_properties', science.ConservationProperties, False, False),
     ('grid', science.GridSummary, False, False),
-    ('meta', shared.Meta, True, False),
+    ('meta', shared.DocMetaInfo, True, False),
     ('name', unicode, True, False),
     ('overview', unicode, False, False),
     ('realm', unicode, False, False),
@@ -491,34 +526,15 @@ shared.DatetimeSet.type_info = (
     ('length', int, True, False),
 )
 
-shared.IrregularDateset.type_info = (
-    ('date_set', unicode, True, False),
-)
-
-shared.KeyFloat.type_info = (
-    ('key', unicode, True, False),
-    ('value', float, True, False),
-)
-
-shared.Meta.type_info = (
-    ('metadata_author', shared.Party, True, False),
-    ('metadata_completeness', unicode, False, False),
-    ('metadata_quality', unicode, False, False),
-    ('metadata_reviewer', shared.Party, False, False),
-)
-
-shared.MinimalMeta.type_info = (
+shared.DocMetaInfo.type_info = (
     ('author', shared.Party, False, False),
     ('create_date', datetime.datetime, True, False),
-    ('document_created', datetime.datetime, True, False),
-    ('document_version', int, False, False),
     ('drs_keys', unicode, False, True),
     ('drs_path', unicode, False, False),
     ('external_ids', unicode, False, True),
     ('id', uuid.UUID, True, False),
     ('institute', unicode, False, False),
     ('language', unicode, True, False),
-    ('metadata_last_updated', datetime.datetime, True, False),
     ('project', unicode, True, False),
     ('sort_key', unicode, False, False),
     ('source', unicode, True, False),
@@ -526,9 +542,26 @@ shared.MinimalMeta.type_info = (
     ('type', unicode, True, False),
     ('type_display_name', unicode, False, False),
     ('type_sort_key', unicode, False, False),
-    ('uid', unicode, True, False),
     ('update_date', datetime.datetime, True, False),
     ('version', int, True, False),
+)
+
+shared.DocReference.type_info = (
+    ('description', unicode, False, False),
+    ('id', uuid.UUID, False, False),
+    ('name', unicode, False, False),
+    ('type', unicode, False, False),
+    ('url', unicode, False, False),
+    ('version', int, False, False),
+)
+
+shared.IrregularDateset.type_info = (
+    ('date_set', unicode, True, False),
+)
+
+shared.KeyFloat.type_info = (
+    ('key', unicode, True, False),
+    ('value', float, True, False),
 )
 
 shared.NumberArray.type_info = (
@@ -545,7 +578,7 @@ shared.OnlineResource.type_info = (
 shared.Party.type_info = (
     ('address', unicode, False, False),
     ('email', unicode, False, False),
-    ('meta', shared.MinimalMeta, True, False),
+    ('meta', shared.DocMetaInfo, True, False),
     ('name', unicode, False, False),
     ('organisation', bool, False, False),
     ('url', shared.OnlineResource, False, False),
@@ -567,13 +600,14 @@ shared.RegularTimeset.type_info = (
 
 shared.Responsibility.type_info = (
     ('party', shared.Party, True, True),
+    ('party_references', shared.DocReference, False, True),
     ('role', unicode, True, False),
     ('when', shared.TimePeriod, False, False),
 )
 
 shared.StandaloneDocument.type_info = (
     ('long_name', unicode, False, False),
-    ('meta', shared.Meta, True, False),
+    ('meta', shared.DocMetaInfo, True, False),
     ('name', unicode, True, False),
     ('references', shared.Citation, False, True),
     ('responsible_parties', shared.Responsibility, False, True),

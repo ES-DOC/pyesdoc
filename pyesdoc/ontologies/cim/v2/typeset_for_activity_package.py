@@ -39,7 +39,7 @@ class Activity(object):
         self.duration = None                              # shared.TimePeriod
         self.keywords = []                                # unicode
         self.long_name = None                             # unicode
-        self.meta = shared.Meta()                         # shared.Meta
+        self.meta = shared.DocMetaInfo()                  # shared.DocMetaInfo
         self.name = None                                  # unicode
         self.rationale = None                             # unicode
         self.references = []                              # shared.Citation
@@ -81,6 +81,7 @@ class EnsembleAxis(object):
         self.member = []                                  # activity.AxisMember
         self.short_identifier = None                      # unicode
         self.target_requirement = None                    # designing.NumericalRequirement
+        self.target_requirement_reference = None          # shared.DocReference
 
 
 class EnsembleMember(object):
@@ -98,8 +99,11 @@ class EnsembleMember(object):
         super(EnsembleMember, self).__init__()
 
         self.had_performance = None                       # platform.Performance
+        self.had_performance_reference = None             # shared.DocReference
         self.ran_on = None                                # platform.Machine
+        self.ran_on_reference = None                      # shared.DocReference
         self.simulation = None                            # data.Simulation
+        self.simulation_reference = None                  # shared.DocReference
 
 
 class ParentSimulation(object):
@@ -117,6 +121,7 @@ class ParentSimulation(object):
         self.branch_time_in_child = None                  # shared.DateTime
         self.branch_time_in_parent = None                 # shared.DateTime
         self.parent = None                                # data.Simulation
+        self.parent_reference = None                      # shared.DocReference
 
 
 class Conformance(Activity):
@@ -133,6 +138,7 @@ class Conformance(Activity):
         super(Conformance, self).__init__()
 
         self.target_requirement = None                    # designing.NumericalRequirement
+        self.target_requirement_reference = None          # shared.DocReference
 
 
 class Ensemble(Activity):
@@ -151,10 +157,12 @@ class Ensemble(Activity):
         super(Ensemble, self).__init__()
 
         self.common_conformances = []                     # activity.Conformance
+        self.common_conformances_references = []          # shared.DocReference
         self.has_ensemble_axes = []                       # activity.EnsembleAxis
         self.members = []                                 # activity.EnsembleMember
         self.part_of = []                                 # activity.UberEnsemble
         self.supported = []                               # designing.NumericalExperiment
+        self.supported_references = []                    # shared.DocReference
 
 
 class UberEnsemble(Ensemble):
@@ -172,6 +180,7 @@ class UberEnsemble(Ensemble):
         super(UberEnsemble, self).__init__()
 
         self.child_ensembles = []                         # activity.Ensemble
+        self.child_ensembles_references = []              # shared.DocReference
 
 
 class EnsembleTypes(object):

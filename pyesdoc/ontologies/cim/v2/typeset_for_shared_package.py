@@ -113,6 +113,57 @@ class DatetimeSet(object):
         self.length = None                                # int
 
 
+class DocMetaInfo(object):
+    """A concrete class within the cim v2 type system.
+
+    Encapsulates document meta information.
+
+    """
+    def __init__(self):
+        """Constructor.
+
+        """
+        super(DocMetaInfo, self).__init__()
+
+        self.author = None                                # shared.Party
+        self.create_date = None                           # datetime.datetime
+        self.drs_keys = []                                # unicode
+        self.drs_path = None                              # unicode
+        self.external_ids = []                            # unicode
+        self.id = None                                    # uuid.UUID
+        self.institute = None                             # unicode
+        self.language = None                              # unicode
+        self.project = None                               # unicode
+        self.sort_key = None                              # unicode
+        self.source = None                                # unicode
+        self.source_key = None                            # unicode
+        self.type = None                                  # unicode
+        self.type_display_name = None                     # unicode
+        self.type_sort_key = None                         # unicode
+        self.update_date = None                           # datetime.datetime
+        self.version = None                               # int
+
+
+class DocReference(object):
+    """A concrete class within the cim v2 type system.
+
+    A reference to another cim entity.
+
+    """
+    def __init__(self):
+        """Constructor.
+
+        """
+        super(DocReference, self).__init__()
+
+        self.description = None                           # unicode
+        self.id = None                                    # uuid.UUID
+        self.name = None                                  # unicode
+        self.type = None                                  # unicode
+        self.url = None                                   # unicode
+        self.version = None                               # int
+
+
 class KeyFloat(object):
     """A concrete class within the cim v2 type system.
 
@@ -127,45 +178,6 @@ class KeyFloat(object):
 
         self.key = None                                   # unicode
         self.value = None                                 # float
-
-
-class MinimalMeta(object):
-    """A concrete class within the cim v2 type system.
-
-    Provides a base class for minimal metadata, used for document classes which
-    are basically lists of external entities such as people, as opposed to documents
-    which are the main business of the CIM. The presence of an attribute of this
-    class (or any subclases) on another class indicates that the latter class carries
-    the <<document>> stereotype.
-
-    """
-    def __init__(self):
-        """Constructor.
-
-        """
-        super(MinimalMeta, self).__init__()
-
-        self.author = None                                # shared.Party
-        self.create_date = None                           # datetime.datetime
-        self.document_created = None                      # datetime.datetime
-        self.document_version = None                      # int
-        self.drs_keys = []                                # unicode
-        self.drs_path = None                              # unicode
-        self.external_ids = []                            # unicode
-        self.id = None                                    # uuid.UUID
-        self.institute = None                             # unicode
-        self.language = None                              # unicode
-        self.metadata_last_updated = None                 # datetime.datetime
-        self.project = None                               # unicode
-        self.sort_key = None                              # unicode
-        self.source = None                                # unicode
-        self.source_key = None                            # unicode
-        self.type = None                                  # unicode
-        self.type_display_name = None                     # unicode
-        self.type_sort_key = None                         # unicode
-        self.uid = None                                   # unicode
-        self.update_date = None                           # datetime.datetime
-        self.version = None                               # int
 
 
 class NumberArray(object):
@@ -204,8 +216,8 @@ class OnlineResource(object):
 class Party(object):
     """A concrete class within the cim v2 type system.
 
-    Implements minimal material for an ISO19115-1 (2014) compliant party.
-    For our purposes this is a much better animal than the previous responsibleParty
+    Implements minimal material for an ISO19115-1 (2014) compliant party. 
+    For our purposes this is a much better animal than the previous responsibleParty 
     which munged roles together with people. Note we have collapsed CI_Contact,
     CI_Individual and CI_Organisation as well as the abstract CI_Party.
 
@@ -218,7 +230,7 @@ class Party(object):
 
         self.address = None                               # unicode
         self.email = None                                 # unicode
-        self.meta = MinimalMeta()                         # shared.MinimalMeta
+        self.meta = DocMetaInfo()                         # shared.DocMetaInfo
         self.name = None                                  # unicode
         self.organisation = None                          # bool
         self.url = None                                   # shared.OnlineResource
@@ -254,6 +266,7 @@ class Responsibility(object):
         super(Responsibility, self).__init__()
 
         self.party = []                                   # shared.Party
+        self.party_references = []                        # shared.DocReference
         self.role = None                                  # shared.RoleCode
         self.when = None                                  # shared.TimePeriod
 
@@ -273,7 +286,7 @@ class StandaloneDocument(object):
         super(StandaloneDocument, self).__init__()
 
         self.long_name = None                             # unicode
-        self.meta = Meta()                                # shared.Meta
+        self.meta = DocMetaInfo()                         # shared.DocMetaInfo
         self.name = None                                  # unicode
         self.references = []                              # shared.Citation
         self.responsible_parties = []                     # shared.Responsibility
@@ -361,24 +374,6 @@ class IrregularDateset(DatetimeSet):
         super(IrregularDateset, self).__init__()
 
         self.date_set = None                              # unicode
-
-
-class Meta(MinimalMeta):
-    """A concrete class within the cim v2 type system.
-
-    Metadata for all documents, describing who created it, and last updated etc.
-
-    """
-    def __init__(self):
-        """Constructor.
-
-        """
-        super(Meta, self).__init__()
-
-        self.metadata_author = None                       # shared.Party
-        self.metadata_completeness = None                 # unicode
-        self.metadata_quality = None                      # unicode
-        self.metadata_reviewer = None                     # shared.Party
 
 
 class Reference(Citation):

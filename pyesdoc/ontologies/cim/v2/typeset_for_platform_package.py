@@ -79,12 +79,14 @@ class Partition(object):
         self.compute_pools = []                           # platform.ComputePool
         self.description = None                           # unicode
         self.institution = None                           # shared.Party
+        self.institution_reference = None                 # shared.DocReference
         self.model_number = None                          # unicode
         self.name = None                                  # unicode
         self.online_documentation = []                    # shared.OnlineResource
         self.partition = []                               # platform.Partition
         self.storage_pools = []                           # platform.StoragePool
         self.vendor = None                                # shared.Party
+        self.vendor_reference = None                      # shared.DocReference
         self.when_used = None                             # shared.TimePeriod
 
 
@@ -107,10 +109,12 @@ class Performance(object):
         self.io_load = None                               # float
         self.load_imbalance = None                        # float
         self.memory_bloat = None                          # float
-        self.meta = shared.Meta()                         # shared.Meta
+        self.meta = shared.DocMetaInfo()                  # shared.DocMetaInfo
         self.model = None                                 # science.Model
+        self.model_reference = None                       # shared.DocReference
         self.name = None                                  # unicode
         self.platform = None                              # platform.Machine
+        self.platform_reference = None                    # shared.DocReference
         self.subcomponent_performance = None              # platform.ComponentPerformance
         self.sypd = None                                  # float
         self.total_nodes_used = None                      # int
@@ -132,6 +136,7 @@ class StoragePool(object):
         self.name = None                                  # unicode
         self.type = None                                  # platform.StorageSystems
         self.vendor = None                                # shared.Party
+        self.vendor_reference = None                      # shared.DocReference
         self.volume_available = None                      # platform.StorageVolume
 
 
@@ -163,7 +168,7 @@ class Machine(Partition):
         """
         super(Machine, self).__init__()
 
-        self.meta = shared.Meta()                         # shared.Meta
+        self.meta = shared.DocMetaInfo()                  # shared.DocMetaInfo
 
 
 class StorageSystems(object):

@@ -33,7 +33,9 @@ class NumericalExperiment(activity.Activity):
         super(NumericalExperiment, self).__init__()
 
         self.related_experiments = []                     # designing.NumericalExperiment
+        self.related_experiments_references = []          # shared.DocReference
         self.requirements = []                            # designing.NumericalRequirement
+        self.requirements_references = []                 # shared.DocReference
 
 
 class NumericalRequirement(activity.Activity):
@@ -49,6 +51,7 @@ class NumericalRequirement(activity.Activity):
         super(NumericalRequirement, self).__init__()
 
         self.additional_requirements = []                 # designing.NumericalRequirement
+        self.additional_requirements_references = []      # shared.DocReference
         self.conformance_is_requested = None              # bool
 
 
@@ -65,8 +68,11 @@ class Project(activity.Activity):
         super(Project, self).__init__()
 
         self.previous_projects = []                       # designing.Project
+        self.previous_projects_references = []            # shared.DocReference
         self.requires_experiments = []                    # designing.NumericalExperiment
+        self.requires_experiments_references = []         # shared.DocReference
         self.sub_projects = []                            # designing.Project
+        self.sub_projects_references = []                 # shared.DocReference
 
 
 class SimulationPlan(activity.Activity):
@@ -82,9 +88,12 @@ class SimulationPlan(activity.Activity):
         super(SimulationPlan, self).__init__()
 
         self.expected_model = None                        # science.Model
+        self.expected_model_reference = None              # shared.DocReference
         self.expected_performance_sypd = None             # float
         self.expected_platform = None                     # platform.Machine
+        self.expected_platform_reference = None           # shared.DocReference
         self.will_support_experiments = []                # designing.NumericalExperiment
+        self.will_support_experiments_references = []     # shared.DocReference
 
 
 class DomainProperties(NumericalRequirement):
@@ -116,6 +125,7 @@ class EnsembleRequirement(NumericalRequirement):
         super(EnsembleRequirement, self).__init__()
 
         self.ensemble_member = []                         # designing.NumericalRequirement
+        self.ensemble_member_references = []              # shared.DocReference
         self.ensemble_type = None                         # designing.EnsembleTypes
         self.minimum_size = None                          # int
 
@@ -155,6 +165,7 @@ class MultiEnsemble(NumericalRequirement):
         super(MultiEnsemble, self).__init__()
 
         self.ensemble_axis = []                           # designing.EnsembleRequirement
+        self.ensemble_axis_references = []                # shared.DocReference
 
 
 class MultiTimeEnsemble(NumericalRequirement):
