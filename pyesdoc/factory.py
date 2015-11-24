@@ -84,11 +84,4 @@ def create(typeof,
         doc.meta.type = doc.__class__.type_key
         doc.meta.update_date = now
 
-        # cim v2 support
-        doc.meta.document_created = doc.meta.create_date
-        doc.meta.document_version = doc.meta.version
-        doc.meta.metadata_author = author
-        doc.meta.metadata_last_updated = doc.meta.create_date
-        doc.meta.uid = unicode(uid)
-
     return doc

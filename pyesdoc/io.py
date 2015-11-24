@@ -22,17 +22,28 @@ _OPT_OUTPUT_DIR = "output_dir"
 
 
 
-def _get_doc_path(doc, encoding):
+def get_filename(doc, encoding=None):
+    """Returns name of doc file in the relevant encoding.
+
+    :param object document: A pyesdoc document instance.
+    :param str encoding: Document encoding.
+
+    """
+    if encoding is None:
+        encoding = pyesdoc.constants.ESDOC_ENCODING_JSON
+
+    return '{0}_{1}_{2}.{3}'.format(doc.__class__.type_key,
+                                    str(doc.meta.id),
+                                    str(doc.meta.version),
+                                    encoding)
+
+
+def _get_filepath(doc, encoding):
     """Returns path to doc file in the relevant encoding.
 
     """
-    fpath = '{0}_{1}_{2}.{3}'.format(doc.__class__.type_key,
-                                     str(doc.meta.id),
-                                     str(doc.meta.version),
-                                     encoding)
-    output_dir = pyesdoc.get_option(_OPT_OUTPUT_DIR)
-
-    return os.path.join(output_dir, fpath)
+    return os.path.join(pyesdoc.get_option(_OPT_OUTPUT_DIR),
+                        get_filename(doc, encoding))
 
 
 def write(document, encoding=None, fpath=None):
@@ -49,7 +60,7 @@ def write(document, encoding=None, fpath=None):
     if encoding is None:
         encoding = pyesdoc.constants.ESDOC_ENCODING_JSON
     if fpath is None:
-        fpath = _get_doc_path(document, encoding)
+        fpath = _get_filepath(document, encoding)
     content = pyesdoc.encode(document, encoding)
     with open(fpath, 'w') as output_file:
         output_file.write(content)

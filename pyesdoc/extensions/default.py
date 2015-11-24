@@ -57,6 +57,8 @@ def _set_summary_fields(ctx):
     fields = ()
     if hasattr(ctx.doc, "short_name"):
         fields = fields + (ctx.doc.short_name, )
+    elif hasattr(ctx.doc, "canonical_name"):
+        fields = fields + (ctx.doc.canonical_name, )
     if hasattr(ctx.doc, "long_name"):
         fields = fields + (ctx.doc.long_name, )
     ctx.ext.summary_fields = fields
@@ -67,6 +69,8 @@ def _set_display_name(ctx):
     ctx.ext.display_name = None
     if hasattr(ctx.doc, "short_name") and ctx.doc.short_name:
         ctx.ext.display_name = ctx.doc.short_name
+    elif hasattr(ctx.doc, "name") and ctx.doc.name:
+        ctx.ext.display_name = ctx.doc.name
 
 
 def _set_description(ctx):
