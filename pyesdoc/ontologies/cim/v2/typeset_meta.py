@@ -528,6 +528,7 @@ shared.DatetimeSet.type_info = (
 
 shared.DocMetaInfo.type_info = (
     ('author', shared.Party, False, False),
+    ('author_reference', shared.DocReference, False, False),
     ('create_date', datetime.datetime, True, False),
     ('drs_keys', unicode, False, True),
     ('drs_path', unicode, False, False),

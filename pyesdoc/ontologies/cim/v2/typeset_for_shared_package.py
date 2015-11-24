@@ -126,6 +126,7 @@ class DocMetaInfo(object):
         super(DocMetaInfo, self).__init__()
 
         self.author = None                                # shared.Party
+        self.author_reference = None                      # shared.DocReference
         self.create_date = None                           # datetime.datetime
         self.drs_keys = []                                # unicode
         self.drs_path = None                              # unicode
