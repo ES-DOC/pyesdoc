@@ -50,6 +50,7 @@ _WS_URL = "url"
 
 # Row offsets.
 _WS_ROW_OFFSETS = {
+    _WS_ENSEMBLE_REQUIREMENT: 2,
     _WS_EXPERIMENT: 2
 }
 
@@ -191,6 +192,16 @@ class Spreadsheet(object):
         return unicode(value).lower() in [u'true', u't', u'yes', u'y', u"1"]
 
 
+    def _convert_to_int(self, value):
+        """Converts a cell value to an integer.
+
+        """
+        if value is None:
+            return None
+
+        return int(value)
+
+
     def _convert_to_string_array(self, value):
         """Converts a cell value to an array of strings.
 
@@ -279,6 +290,33 @@ class Spreadsheet(object):
         ])
 
 
+    def get_ensemble_requirements(self):
+        """Gets the collection of ensemble requirements defined within spreadsheet.
+
+        """
+        def _get_responsible_parties(role_code, row):
+            """Returns experiment responsibility info.
+
+            """
+            if role_code is not None:
+                result = cim.v2.Responsibility()
+                result.role_code = role_code
+                result.party = [r for r in [row(7), row(8), row(9)] if r]
+                return result
+
+        return self._get_documents(_WS_ENSEMBLE_REQUIREMENT, cim.v2.EnsembleRequirement, [
+            ("canonical_name", 3, None),
+            ("conformance_is_requested", 12, self._convert_to_bool),
+            ("description", 5, None),
+            ("ensemble_type", 13, None),
+            ("keywords", 4, self._convert_to_string_array),
+            ("long_name", 2, None),
+            ("minimum_size", 14, self._convert_to_int),
+            ("name", 1, None),
+            ("responsible_parties", [6], _get_responsible_parties)
+        ])
+
+
     def get_temporal_constraints(self):
         """Gets the collection of temporal constraints defined within spreadsheet.
 
@@ -306,11 +344,11 @@ class Spreadsheet(object):
             """Returns experiment responsibility info.
 
             """
-            result = cim.v2.Responsibility()
-            result.role_code = role_code
-            result.party = [r for r in [row(7), row(8), row(9)] if r]
-
-            return result
+            if role_code is not None:
+                result = cim.v2.Responsibility()
+                result.role_code = role_code
+                result.party = [r for r in [row(7), row(8), row(9)] if r]
+                return result
 
         return self._get_documents(_WS_FORCING_CONSTRAINT, cim.v2.ForcingConstraint, [
             ("canonical_name", 3, None),
@@ -333,15 +371,16 @@ class Spreadsheet(object):
             """Returns experiment responsibility info.
 
             """
-            result = cim.v2.Responsibility()
-            result.role_code = role_code
-            result.party = [r for r in [row(7), row(8), row(9)] if r]
-
-            return result
+            if role_code is not None:
+                result = cim.v2.Responsibility()
+                result.role_code = role_code
+                result.party = [r for r in [row(7), row(8), row(9)] if r]
+                return result
 
         return self._get_documents(_WS_EXPERIMENT, cim.v2.NumericalExperiment, [
             ("canonical_name", 3, None),
             ("description", 5, None),
+            ("ensembles", [18, 19], None),
             ("forcing_constraints", [21, 22, 23, 24, 25, 26, 27, 28, 29], None),
             ("keywords", 4, self._convert_to_string_array),
             ("long_name", 2, None),
@@ -363,6 +402,7 @@ class DocumentSet(object):
         """
         self.archive_directory = archive_directory
         self.citations = spreadsheet.get_citations()
+        self.ensembles = spreadsheet.get_ensemble_requirements()
         self.experiments = spreadsheet.get_experiments()
         self.forcing_constraints = spreadsheet.get_forcing_constraints()
         self.parties = spreadsheet.get_parties()
@@ -377,9 +417,46 @@ class DocumentSet(object):
 
         """
         return self.experiments + \
+               self.ensembles + \
                self.forcing_constraints + \
                self.parties + \
                self.temporal_constraints
+
+
+    @property
+    def requirements(self):
+        """Gets full set of managed numerical requirements.
+
+        """
+        return self.ensembles + \
+               self.forcing_constraints
+
+    @property
+    def citation_containers(self):
+        """Gets full set of managed objects that have citation collections.
+
+        """
+        return self.experiments + self.forcing_constraints + self.temporal_constraints
+
+
+    @property
+    def url_containers(self):
+        """Gets full set of managed objects that have citation collections.
+
+        """
+        return self.parties + self.citations
+
+
+    @property
+    def responsible_parties(self):
+        """Gets full set of managed responsible parties.
+
+        """
+        result = []
+        for item in self.requirements + self.experiments:
+            result += item.responsible_parties
+
+        return result
 
 
     def _get_document_reference(self, doc):
@@ -429,7 +506,7 @@ class DocumentSet(object):
 
 
     def _get_temporal_constraint(self, name):
-        """Returns a temporal constraint.
+        """Returns a temporal constraint numerical requirement.
 
         """
         if name is None or len(name.strip()) == 0:
@@ -440,7 +517,7 @@ class DocumentSet(object):
 
 
     def _get_forcing_constraint(self, name):
-        """Returns a forcing constraint.
+        """Returns a forcing constraint numerical requirement.
 
         """
         if name is None or len(name.strip()) == 0:
@@ -448,6 +525,17 @@ class DocumentSet(object):
         for forcing_constraint in self.forcing_constraints:
             if forcing_constraint.name.lower() == name.lower():
                 return forcing_constraint
+
+
+    def _get_ensemble(self, name):
+        """Returns an ensemble numerical requirement.
+
+        """
+        if name is None or len(name.strip()) == 0:
+            return None
+        for ensemble in self.ensembles:
+            if ensemble.name.lower() == name.lower():
+                return ensemble
 
 
     def _get_party(self, name):
@@ -465,56 +553,37 @@ class DocumentSet(object):
         """Sets inter document connections.
 
         """
-        # Set party urls.
-        for party in [p for p in self.parties]:
-            party.url = self._get_url(party.url)
+        # Set urls.
+        for container in self.url_containers:
+            container.url = self._get_url(container.url)
 
-        # # Set reference urls.
-        for citation in [c for c in self.citations if c.url]:
-            citation.url = self._get_url(citation.url)
+        # Set citations.
+        for container in self.citation_containers:
+            container.references = [self._get_citation(v) for v in container.references]
 
-        # Forcing constraint citations.
-        for fc in self.forcing_constraints:
-            fc.references = [self._get_citation(v) for v in fc.references]
-
-        # Forcing constraint responsible parties.
-        for fc in self.forcing_constraints:
-            for responsibility in fc.responsible_parties:
-                responsibility.party = [self._get_party(v) for v in responsibility.party]
-
-        # Temporal constraint citations.
-        for tc in self.temporal_constraints:
-            tc.references = [self._get_citation(v) for v in tc.references]
-
-        # Experiment citations.
-        for exp in self.experiments:
-            exp.references = [self._get_citation(v) for v in exp.references]
-
-        # Experiment responsible parties.
-        for exp in self.experiments:
-            for responsibility in exp.responsible_parties:
-                responsibility.party = [self._get_party(v) for v in responsibility.party]
+        # Set responsibility parties.
+        for responsibility in self.responsible_parties:
+            responsibility.party = [self._get_party(v) for v in responsibility.party]
 
         # Experiment related experiments.
-        for exp in self.experiments:
-            exp.related_experiments = [self._get_experiment(v) for v in exp.related_experiments]
+        for experiment in self.experiments:
+            experiment.related_experiments = [self._get_experiment(v) for v in experiment.related_experiments]
 
         # Experiment requirements.
-        for exp in self.experiments:
-            if exp.temporal_constraint:
-                exp.requirements.append(self._get_temporal_constraint(exp.temporal_constraint))
-            for fc in exp.forcing_constraints:
-                exp.requirements.append(self._get_forcing_constraint(fc))
+        for experiment in self.experiments:
+            experiment.requirements.append(self._get_temporal_constraint(experiment.temporal_constraint))
+            experiment.requirements += [self._get_forcing_constraint(c) for c in experiment.forcing_constraints]
+            experiment.requirements += [self._get_ensemble(c) for c in experiment.ensembles]
+            experiment.requirements = [r for r in experiment.requirements if r]
 
 
     def set_document_references(self):
         """Sets inter document references.
 
         """
-        # Forcing constraint to party references.
-        for fc in self.forcing_constraints:
-            for responsibility in fc.responsible_parties:
-                responsibility.party_references = [self._get_document_reference(d) for d in responsibility.party]
+        # Responsibility to party references.
+        for responsibility in self.responsible_parties:
+            responsibility.party_references = [self._get_document_reference(d) for d in responsibility.party]
 
         # Experiment to related experiment references.
         for exp in self.experiments:
@@ -524,26 +593,19 @@ class DocumentSet(object):
         for exp in self.experiments:
             exp.requirements_references = [self._get_document_reference(d) for d in exp.requirements]
 
-        # Experiment to party references.
-        for exp in self.experiments:
-            for responsibility in exp.responsible_parties:
-                responsibility.party_references = [self._get_document_reference(d) for d in responsibility.party]
-
 
     def _prepare_for_write(self):
         """Prepares for I/O by deleting information not to be serialized.
 
         """
-        for constraint in self.forcing_constraints:
-            for responsibility in constraint.responsible_parties:
-                del responsibility.party
+        for responsibility in self.responsible_parties:
+            del responsibility.party
         for experiment in self.experiments:
+            del experiment.ensembles
             del experiment.forcing_constraints
             del experiment.related_experiments
             del experiment.requirements
             del experiment.temporal_constraint
-            for responsibility in experiment.responsible_parties:
-                del responsibility.party
 
 
     def write_documents(self):
