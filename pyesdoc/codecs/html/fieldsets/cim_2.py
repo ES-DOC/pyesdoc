@@ -26,7 +26,8 @@ FIELDSETS = {
         FieldInfo('Description', path='description'),
         FieldInfo('Keywords', path='keywords', input_formatter=lambda v: " | ".join(v)),
         FieldInfo('Related Experiments',
-                  link_factory=lambda exp: [(i.name, i.viewer_url) for i in exp.related_experiments_references])
+                  link_factory=lambda exp: [(i.name, i.viewer_url) for i in \
+                                            sorted(exp.related_experiments_references, lambda v: v.name)])
     ],
 
     str(cim.v2.designing.EnsembleRequirement) : [
