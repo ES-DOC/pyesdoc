@@ -73,6 +73,7 @@ class Citation(object):
         self.context = None                               # unicode
         self.doi = None                                   # unicode
         self.short_cite = None                            # unicode
+        self.title = None                                 # unicode
         self.url = None                                   # shared.OnlineResource
 
 

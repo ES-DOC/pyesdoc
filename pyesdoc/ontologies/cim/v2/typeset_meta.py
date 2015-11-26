@@ -514,6 +514,7 @@ shared.Citation.type_info = (
     ('context', unicode, False, False),
     ('doi', unicode, False, False),
     ('short_cite', unicode, False, False),
+    ('title', unicode, False, False),
     ('url', shared.OnlineResource, False, False),
 )
 
