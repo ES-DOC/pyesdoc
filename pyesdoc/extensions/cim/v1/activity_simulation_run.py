@@ -15,16 +15,9 @@
 def get_extenders():
     """Returns set of extension functions."""
     return (
-        _set_type_display_info,
         _set_experiment_conformances,
         _set_responsible_parties
         )
-
-
-def _set_type_display_info(ctx):
-    """Sets document type information."""
-    ctx.meta.type_display_name = "Simulation"
-    ctx.meta.type_sort_key = "AC"
 
 
 def _set_experiment_conformances(ctx):

@@ -12,48 +12,95 @@
 
 """
 from pyesdoc import constants
+from pyesdoc.ontologies import cim
 
+
+# Map of document types to type display names.
+_TYPE_DISPLAY_NAMES = {
+    cim.v1.activity.NumericalExperiment: u"Experiment",
+    cim.v1.activity.SimulationRun: u"Simulation",
+    cim.v1.data.DataObject: u"Data Object",
+    cim.v1.grids.GridSpec: u"Grid Spec",
+    cim.v1.misc.DocumentSet: u"Simulation",
+    cim.v1.quality.CimQuality: u"Dataset QC",
+    cim.v1.software.ModelComponent: u"Model",
+
+    cim.v2.designing.NumericalExperiment: u"Experiment"
+}
+
+# Map of document types to type sort keys.
+_TYPE_SORT_KEYS = {
+    cim.v1.activity.Ensemble: u"BC",
+    cim.v1.activity.NumericalExperiment: u"AB",
+    cim.v1.activity.SimulationRun: u"AC",
+    cim.v1.data.DataObject: u"CA",
+    cim.v1.grids.GridSpec: u"BB",
+    cim.v1.misc.DocumentSet: u"AC",
+    cim.v1.quality.CimQuality: u"CB",
+    cim.v1.shared.Platform: u"BA",
+    cim.v1.software.ModelComponent: u"AA",
+
+    cim.v2.designing.NumericalExperiment: u"AB"
+}
 
 
 def _set_full_id(ctx):
-    """Sets full document identifier."""
+    """Sets full document identifier.
+
+    """
     ctx.ext.full_id = "{0}-{1}-{2}".format(
         ctx.meta.project, ctx.meta.id, ctx.meta.version)
 
 
 def _set_type_info(ctx):
-    """Sets document type information."""
+    """Sets document type information.
+
+    """
     ctx.meta.type = ctx.ext.type = ctx.doc.__class__.type_key
-    ctx.meta.type_display_name = ctx.meta.type.split(".")[-1]
-    ctx.meta.type_sort_key = u"ZZ"
     ctx.ext.css_class = ctx.ext.type.lower().replace(".", "-")
+    try:
+        ctx.meta.type_display_name = _TYPE_DISPLAY_NAMES[type(ctx.doc)]
+    except KeyError:
+        ctx.meta.type_display_name = ctx.meta.type.split(".")[-1]
+    try:
+        ctx.meta.type_sort_key = _TYPE_SORT_KEYS[type(ctx.doc)]
+    except KeyError:
+        ctx.meta.type_sort_key = u"ZZ"
 
 
 def _set_language(ctx):
-    """Sets document language."""
+    """Sets document language.
+
+    """
     if not ctx.meta.language:
         ctx.meta.language = constants.ESDOC_DEFAULT_LANGUAGE
     ctx.ext.language = ctx.meta.language
 
 
 def _set_institute(ctx):
-    """Sets document institute field."""
+    """Sets document institute field.
+
+    """
     if ctx.meta.institute:
         ctx.meta.institute = ctx.meta.institute.upper()
     else:
-        ctx.meta.institute = u"--"
+        ctx.meta.institute = constants.ESDOC_DEFAULT_INSTITUTE
 
 
 def _set_project(ctx):
-    """Sets document project field."""
+    """Sets document project field.
+
+    """
     if ctx.meta.project:
         ctx.meta.project = ctx.meta.project.upper()
     else:
-        ctx.meta.project = u"--"
+        ctx.meta.institute = constants.ESDOC_DEFAULT_PROJECT
 
 
 def _set_summary_fields(ctx):
-    """Sets document summary fields."""
+    """Sets document summary fields.
+
+    """
     fields = ()
     if hasattr(ctx.doc, "short_name"):
         fields = fields + (ctx.doc.short_name, )
@@ -65,7 +112,9 @@ def _set_summary_fields(ctx):
 
 
 def _set_display_name(ctx):
-    """Sets document display name."""
+    """Sets document display name.
+
+    """
     ctx.ext.display_name = None
     if hasattr(ctx.doc, "short_name") and ctx.doc.short_name:
         ctx.ext.display_name = ctx.doc.short_name
@@ -74,7 +123,9 @@ def _set_display_name(ctx):
 
 
 def _set_description(ctx):
-    """Sets document description."""
+    """Sets document description.
+
+    """
     ctx.ext.description = None
     if hasattr(ctx.doc, "description") and ctx.doc.description:
         ctx.ext.description = ctx.doc.description[:1023]
@@ -83,13 +134,17 @@ def _set_description(ctx):
 
 
 def _set_viewer_url(ctx):
-    """Sets document viewer URL."""
+    """Sets document viewer URL.
+
+    """
     ctx.ext.viewer_url = constants.ESDOC_VIEWER_URL.format(ctx.meta.project,
                                                            ctx.meta.id,
                                                            ctx.meta.version)
 
 def _set_full_display_name(ctx):
-    """Sets document full display name."""
+    """Sets document full display name.
+
+    """
     # Escape if already assigned.
     if ctx.ext.full_display_name:
         return
@@ -111,7 +166,9 @@ def _set_full_display_name(ctx):
 
 
 def _set_sort_key(ctx):
-    """Sets document full display name."""
+    """Sets document full display name.
+
+    """
     ctx.meta.sort_key = u"{0}{1}".format(
         ctx.meta.type_sort_key, ctx.ext.display_name or unicode())
     ctx.meta.sort_key = ctx.meta.sort_key.upper()

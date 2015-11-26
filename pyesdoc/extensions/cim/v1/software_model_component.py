@@ -22,7 +22,6 @@ def get_extenders():
 
     """
     return (
-        _set_type_display_info,
         _set_component_hierarchy,
         _set_component_property_sets,
         _set_component_property_trees,
@@ -178,14 +177,6 @@ def _extend_component(c, ext, parent=None, ancestors=[]):
         _extend_component_05,
         ):
         func(ctx)
-
-
-def _set_type_display_info(ctx):
-    """Sets document type information.
-
-    """
-    ctx.meta.type_display_name = u"Model"
-    ctx.meta.type_sort_key = u"AA"
 
 
 def _set_component_hierarchy(ctx):

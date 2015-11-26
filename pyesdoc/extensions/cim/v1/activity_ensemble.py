@@ -15,15 +15,9 @@
 def get_extenders():
     """Returns set of extension functions."""
     return (
-        _set_type_display_info,
         _set_member_short_name,
         _set_has_changes
         )
-
-
-def _set_type_display_info(ctx):
-    """Sets document type information."""
-    ctx.meta.type_sort_key = "BC"
 
 
 def _set_member_short_name(ctx):

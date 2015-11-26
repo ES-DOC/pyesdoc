@@ -44,8 +44,6 @@ def _set_meta_info(ctx):
         ctx.meta.external_ids = simulation.meta.external_ids
         ctx.meta.id = simulation.meta.id
         ctx.meta.version = simulation.meta.version
-    ctx.meta.type_display_name = "Simulation"
-    ctx.meta.type_sort_key = "AC"
 
 
 def _set_ext_info(ctx):

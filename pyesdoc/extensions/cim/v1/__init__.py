@@ -6,7 +6,6 @@ from pyesdoc.extensions.cim.v1 import activity_simulation_run
 from pyesdoc.extensions.cim.v1 import data_data_object
 from pyesdoc.extensions.cim.v1 import grids_grid_spec
 from pyesdoc.extensions.cim.v1 import misc_document_set
-from pyesdoc.extensions.cim.v1 import shared_platform
 from pyesdoc.extensions.cim.v1 import software_model_component
 from pyesdoc.extensions.cim.v1 import quality_cimquality
 
@@ -25,7 +24,6 @@ SUPPORTED = {
 	"cim.1.data.dataobject": data_data_object,
 	"cim.1.grids.gridspec": grids_grid_spec,
 	"cim.1.misc.documentset": misc_document_set,
-	"cim.1.shared.platform": shared_platform,
 	"cim.1.software.modelcomponent": software_model_component,
 	"cim.1.software.statisticalmodelcomponent": software_model_component,
 	"cim.1.quality.cimquality": quality_cimquality,

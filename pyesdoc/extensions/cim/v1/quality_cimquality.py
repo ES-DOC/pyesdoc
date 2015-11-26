@@ -16,7 +16,6 @@ def get_extenders():
     """Returns set of extension functions."""
     return (
         _set_display_name,
-        _set_type_display_info,
         _set_description,
         _set_summary_fields
         )
@@ -31,12 +30,6 @@ def _set_display_name(ctx):
     name += "Dataset Quality Control Report"
 
     ctx.ext.display_name = ctx.ext.full_display_name = name
-
-
-def _set_type_display_info(ctx):
-    """Sets document type information."""
-    ctx.meta.type_display_name = "Dataset QC"
-    ctx.meta.type_sort_key = "CB"
 
 
 def _set_description(ctx):
