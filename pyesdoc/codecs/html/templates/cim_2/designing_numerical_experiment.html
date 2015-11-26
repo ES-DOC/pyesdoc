@@ -27,4 +27,14 @@
 		{% include shared_citation.html %}
 	{% end %}
 
+	{% comment ************************* %}
+	{% comment Sub-section: contacts    %}
+	{% comment ************************* %}
+	{% if doc.responsible_parties %}
+		{% set responsible_parties = doc.responsible_parties %}
+		{% set header = "h4" %}
+		{% set section_id = "{0}-details-contacts".format(doc.ext.full_id) %}
+		{% include shared_responsible_parties.html %}
+	{% end %}
+
 {% end %}

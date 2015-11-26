@@ -1,0 +1,18 @@
+{% if responsible_parties %}
+<section id="{{ section_id }}">
+	<header>
+		<{{ header }}>Responsible Parties</{{ header }}>
+	</header>
+	{% for responsible in responsible_parties %}
+	{% for party in sorted(load(responsible.party_references), key=lambda i: i.name.split(" ")[-1]) %}
+	{% set ctx = TemplateInfo(party, fieldset='cim.2.shared.party') %}
+	<h5>{{ responsible.role }}&nbsp;-->&nbsp;{{ party.name }}</h5>
+	<table>
+		<tbody>
+		{% include ../core/fieldset.html %}
+		</tbody>
+	</table>
+	{% end %}
+	{% end %}
+</section>
+{% end %}

@@ -60,5 +60,12 @@ FIELDSETS = {
         FieldInfo('Context', path='context'),
         FieldInfo('DOI', path='doi', link_path=lambda v: "https://doi.org/{}".format(v.doi)),
         FieldInfo('Abstract', path='abstract'),
+    ],
+
+    'cim.2.shared.party' : [
+        FieldInfo('Name', path='name', link_path="url.linkage"),
+        FieldInfo('Address', path='address'),
+        FieldInfo('Email', path='email', email_path='email'),
+
     ]
 }

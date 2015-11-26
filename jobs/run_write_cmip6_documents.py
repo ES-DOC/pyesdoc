@@ -198,9 +198,15 @@ class Spreadsheet(object):
         if value is None:
             return None
 
+        # Null substitutions.
         value = unicode(value)
         if value.lower() in [u"n/a"]:
             return None
+
+        # Strip superfluos suffixes.
+        value = value.strip()
+        if len(value) > 0 and value[-1] in [u":"]:
+            return value[0:-1]
 
         return value
 
@@ -307,13 +313,13 @@ class Spreadsheet(object):
         """Gets the collection of ensemble requirements defined within spreadsheet.
 
         """
-        def _get_responsible_parties(role_code, row):
+        def _get_responsible_parties(role, row):
             """Returns experiment responsibility info.
 
             """
-            if role_code is not None:
+            if role is not None:
                 result = cim.v2.Responsibility()
-                result.role_code = role_code
+                result.role = self._convert_to_unicode(role)
                 result.party = [r for r in [row(7), row(8), row(9)] if r]
                 return result
 
@@ -353,13 +359,13 @@ class Spreadsheet(object):
         """Gets the collection of temporal constraints defined within spreadsheet.
 
         """
-        def _get_responsible_parties(role_code, row):
+        def _get_responsible_parties(role, row):
             """Returns experiment responsibility info.
 
             """
-            if role_code is not None:
+            if role is not None:
                 result = cim.v2.Responsibility()
-                result.role_code = role_code
+                result.role = self._convert_to_unicode(role)
                 result.party = [r for r in [row(7), row(8), row(9)] if r]
                 return result
 
@@ -380,13 +386,13 @@ class Spreadsheet(object):
         """Gets the collection of experiments defined within spreadsheet.
 
         """
-        def _get_responsible_parties(role_code, row):
+        def _get_responsible_parties(role, row):
             """Returns experiment responsibility info.
 
             """
-            if role_code is not None:
+            if role is not None:
                 result = cim.v2.Responsibility()
-                result.role_code = role_code
+                result.role = self._convert_to_unicode(role)
                 result.party = [r for r in [row(7), row(8), row(9)] if r]
                 return result
 
