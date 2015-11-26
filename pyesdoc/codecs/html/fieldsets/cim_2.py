@@ -20,13 +20,16 @@ FIELDSETS = {
     'cim.2.designing.numericalexperiment-overview': [
         FieldInfo('Project', path='meta.project'),
         FieldInfo('Institute', path='meta.institute'),
-        FieldInfo('Name', path='short_name'),
+        FieldInfo('Name', path='canonical_name'),
         FieldInfo('Long Name', path='long_name'),
-        FieldInfo('ID', path='ext.full_experiment_name'),
         FieldInfo('Description', path='description'),
-        FieldInfo('Rationale', path='rationales'),
+        FieldInfo('Keywords', path='keywords', input_formatter=lambda v: " | ".join(v))
     ],
-    'cim.2.designing.project': {
-        FieldInfo('Name', path='name'),
-    },
+
+    'cim.2.shared.citation' : [
+        FieldInfo('Long Title', path='citation_str', link_path="url.linkage"),
+        FieldInfo('Context', path='context'),
+        FieldInfo('DOI', path='doi', link_path=lambda i: "https://doi.org/{}".format(i.doi)),
+        FieldInfo('Abstract', path='abstract'),
+    ]
 }

@@ -12,6 +12,7 @@
 
 """
 import datetime
+import inspect
 
 from pyesdoc.utils import convert
 from pyesdoc.utils import runtime as rt
@@ -26,7 +27,8 @@ class FieldInfo(object):
                  name,
                  email=None,
                  email_path=None,
-                 formatter=None,
+                 input_formatter=None,
+                 output_formatter=None,
                  link=None,
                  link_path=None,
                  path=None,
@@ -38,7 +40,8 @@ class FieldInfo(object):
         self.name = name
         self.email = email
         self.email_path = email_path
-        self.formatter = formatter
+        self.input_formatter = input_formatter
+        self.output_formatter = output_formatter
         self.link = link
         self.link_path = link_path
         self.path = path
@@ -63,7 +66,7 @@ class FieldInfo(object):
 
         """
         v = _get_value(data, self.path) if self.path else self.value
-        v = _format_value(v, self.formatter)
+        v = _format_value(v, self.input_formatter, self.output_formatter)
 
         return v
 
@@ -77,7 +80,10 @@ class FieldInfo(object):
         :rtype str:
 
         """
-        v = _get_value(data, self.link_path)
+        if inspect.isfunction(self.link_path):
+            v = self.link_path(data)
+        else:
+            v = _get_value(data, self.link_path)
         v = _format_value(v)
 
         return v
@@ -92,13 +98,16 @@ class FieldInfo(object):
         :rtype str:
 
         """
-        v = _get_value(data, self.email_path)
+        if inspect.isfunction(self.email_path):
+            v = self.email_path(data)
+        else:
+            v = _get_value(data, self.email_path)
         v = _format_value(v)
 
         return v
 
 
-def _format_value(v, formatter=None):
+def _format_value(v, input_formatter=None, output_formatter=None):
     """Formats values for document output.
 
     """
@@ -113,12 +122,19 @@ def _format_value(v, formatter=None):
 
         if s and len(s):
             s = convert.str_to_unicode(s)
-            if formatter:
-                s = formatter(s)
+            if output_formatter:
+                s = output_formatter(s)
 
         return s
 
-    return "  ".join(map(_format, v)).strip() if isinstance(v, list) else _format(v)
+    if input_formatter:
+        v = input_formatter(v)
+
+    if isinstance(v, list):
+        print "XXXX"
+        return "  ".join(map(_format, v)).strip()
+    else:
+        return _format(v)
 
 
 def _get_value(data, path):

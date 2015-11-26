@@ -192,6 +192,20 @@ class Spreadsheet(object):
         return unicode(value).lower() in [u'true', u't', u'yes', u'y', u"1"]
 
 
+    def _convert_to_unicode(self, value):
+        """Converts a cell value to a boolean.
+
+        """
+        if value is None:
+            return None
+
+        value = unicode(value)
+        if value.lower() in [u"n/a"]:
+            return None
+
+        return value
+
+
     def _convert_to_int(self, value):
         """Converts a cell value to an integer.
 
@@ -272,7 +286,7 @@ class Spreadsheet(object):
             ("abstract", 6, None),
             ("citation_str", 4, None),
             ("context", 3, None),
-            ("doi", 1, None),
+            ("doi", 1, self._convert_to_unicode),
             ("title", 2, None),
             ("url", 5, None)
         ])

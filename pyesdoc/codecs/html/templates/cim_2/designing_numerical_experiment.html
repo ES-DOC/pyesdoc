@@ -6,8 +6,22 @@
 {% block doc-content %}
 
 	{% include designing_numerical_experiment_overview.html %}
+
+	{% comment ************************* %}
+	{% comment Sub-section: requirements    %}
+	{% comment ************************* %}
 	{% if doc.requirements %}
-		{% include designing_numerical_experiment_requirements.html %}
+		<h4>REQS{{ len(doc.requirements) }}</h4>
+	{% end %}
+
+	{% comment ************************* %}
+	{% comment Sub-section: citations    %}
+	{% comment ************************* %}
+	{% if doc.references %}
+		{% set citations = doc.references %}
+		{% set header = "h4" %}
+		{% set section_id = "{0}-details-citations".format(doc.ext.full_id) %}
+		{% include shared_citation.html %}
 	{% end %}
 
 {% end %}

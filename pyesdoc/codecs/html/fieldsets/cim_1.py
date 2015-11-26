@@ -104,7 +104,8 @@ FIELDSETS = {
         FieldInfo('Experiment', path='supports_references[0].name'),
         FieldInfo('Experiment conformances', path='ext.conformances'),
         FieldInfo('Authors', path='authors'),
-        FieldInfo('Funder', path='responsible_parties.role=funder.organisation_name', link_path='responsible_parties.role=funder.url'),
+        FieldInfo('Funder', path='responsible_parties.role=funder.organisation_name',
+                            link_path='responsible_parties.role=funder.url'),
         FieldInfo('RIP Value', path='simulation_id'),
         FieldInfo('Spinup start', path='spinup_date_range.start'),
         FieldInfo('Spinup duration', path='spinup_date_range.duration')
@@ -118,7 +119,7 @@ FIELDSETS = {
         FieldInfo('Institute', path='meta.institute'),
         FieldInfo('Acronym', path='acronym'),
         FieldInfo('Format', path='distribution.format'),
-        FieldInfo('State', path='data_status', formatter=unicode.upper),
+        FieldInfo('State', path='data_status', output_formatter=unicode.upper),
         FieldInfo('Description', path='description')
     ],
 
@@ -221,7 +222,7 @@ FIELDSETS = {
     ],
 
     'cim.1.shared.responsibleparty': [
-        # FieldInfo('Role', path='role', formatter=unicode.upper),
+        # FieldInfo('Role', path='role', output_formatter=unicode.upper),
         FieldInfo('Name', path='individual_name'),
         FieldInfo('Organisation', path='organisation_name'),
         FieldInfo('Address', path='address'),
