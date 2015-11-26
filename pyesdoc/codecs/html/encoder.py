@@ -43,6 +43,25 @@ def _init_templates():
         TEMPLATE_TYPE_MAPPINGS[doc_type] = loader.load(template_path)
 
 
+def load(reference):
+    """Loads a referenced document.
+
+    """
+    def _load(ref):
+        """Inner function to load document from archive.
+
+        """
+        return pyesdoc.archive.read(ref.id, ref.version)
+
+    try:
+        iter(reference)
+    except TypeError:
+        return _load(reference)
+    else:
+        return [_load(i) for i in reference]
+
+
+
 class TemplateInfo(object):
     """Template processing information wrapper.
 
@@ -70,7 +89,7 @@ def _generate(document):
     """
     target = TEMPLATE_TYPE_MAPPINGS[type(document)]
     try:
-        return target.generate(doc=document, TemplateInfo=TemplateInfo, pyesdoc=pyesdoc)
+        return target.generate(doc=document, TemplateInfo=TemplateInfo, pyesdoc=pyesdoc, load=load)
     except Exception as err:
         rt.log_error("Template generation error: {0}".format(err.message))
         raise err

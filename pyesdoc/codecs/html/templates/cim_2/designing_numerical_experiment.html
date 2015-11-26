@@ -5,13 +5,16 @@
 {% comment ***************** %}
 {% block doc-content %}
 
+	{% comment ************************* %}
+	{% comment Sub-section: overview    %}
+	{% comment ************************* %}
 	{% include designing_numerical_experiment_overview.html %}
 
 	{% comment ************************* %}
 	{% comment Sub-section: requirements    %}
 	{% comment ************************* %}
-	{% if doc.requirements %}
-		<h4>REQS{{ len(doc.requirements) }}</h4>
+	{% if doc.requirements_references %}
+		{% include designing_numerical_experiment_requirements.html %}
 	{% end %}
 
 	{% comment ************************* %}

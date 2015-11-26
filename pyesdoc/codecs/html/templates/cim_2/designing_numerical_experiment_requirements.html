@@ -1,24 +1,27 @@
 {% set REQUIREMENT_TYPES = [
-	(pyesdoc.ontologies.cim.v2.DomainProperties, "Domain Properties"),
+	(pyesdoc.ontologies.cim.v2.TemporalConstraint, "Temporal Constraints"),
 	(pyesdoc.ontologies.cim.v2.EnsembleRequirement, "Ensemble Requirements"),
 	(pyesdoc.ontologies.cim.v2.ForcingConstraint, "Forcing Constraints"),
-	(pyesdoc.ontologies.cim.v2.MultiEnsemble, "Multi Ensembles"),
-	(pyesdoc.ontologies.cim.v2.MultiTimeEnsemble, "Multi-Time Ensembles"),
-	(pyesdoc.ontologies.cim.v2.OutputTemporalRequirement, "Output Temporal Requirements"),
-	(pyesdoc.ontologies.cim.v2.TemporalConstraint, "Temporal Constraint")
 ] %}
-
-{% for type, description in REQUIREMENT_TYPES %}
-	{% set requirements = [r for r in doc.requirements if isinstance(r, type)] %}
-	{% if requirements %}
-	{% set requirements = sorted(requirements, key=lambda r: r.name.lower() if r.name else str()) %}
+{% set requirements = load(doc.requirements_references) %}
+{% for typeof, description in REQUIREMENT_TYPES %}
+	{% set subrequirements = [r for r in requirements if isinstance(r, typeof)] %}
+	{% if subrequirements %}
+	{% set subrequirements = sorted(subrequirements, key=lambda r: r.name.lower() if r.name else str()) %}
 	<section>
 		<header>
 			<h4>{{ description }}</h4>
 		</header>
-		{% for requirement in requirements %}
-			{% include designing_numerical_requirement.html %}
+		{% for requirement in subrequirements %}
+		{% set ctx = TemplateInfo(requirement, fieldset = str(typeof)) %}
+		<h5>{{ requirement.long_name }}</h5>
+		<table>
+			<tbody>
+			{% include ../core/fieldset.html %}
+			</tbody>
+		</table>
 		{% end %}
 	</section>
 	{% end %}
 {% end %}
+
