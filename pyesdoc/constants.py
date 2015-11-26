@@ -76,3 +76,4 @@ ESDOC_DEFAULT_SOURCE = u'scripts'
 
 # Document viewer url.
 ESDOC_VIEWER_URL = u"index.html?renderMethod=id&project={0}&id={1}&version={2}"
+

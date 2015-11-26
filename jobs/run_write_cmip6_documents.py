@@ -11,7 +11,6 @@
 
 """
 import argparse
-import hashlib
 import os
 
 import pyesdoc
@@ -21,14 +20,14 @@ import xlrd
 
 
 # Define command line options.
-_parser = argparse.ArgumentParser("Publishes CIM documents extracted from CMIP6 experiment spreadsheet.")
-_parser.add_argument(
+_ARGS = argparse.ArgumentParser("Publishes CIM documents extracted from CMIP6 experiment spreadsheet.")
+_ARGS.add_argument(
     "--archive-dir",
     help="Path to a directory into which documents will be written.",
     dest="archive_dir",
     type=str
     )
-_parser.add_argument(
+_ARGS.add_argument(
     "--spreadsheet",
     help="Path to the CMIP6 experiments worksheet.",
     dest="spreadsheet_filepath",
@@ -482,6 +481,13 @@ class DocumentSet(object):
             reference.id = doc.meta.id
             reference.version = doc.meta.version
             reference.type = doc.type_key
+            for attr in ["canonical_name", "name"]:
+                try:
+                    reference.name = getattr(doc, attr)
+                except AttributeError:
+                    pass
+                else:
+                    break
 
             return reference
 
@@ -666,5 +672,5 @@ def _main(worksheet_fpath, archive_dir):
 
 # Entry point.
 if __name__ == '__main__':
-    args = _parser.parse_args()
+    args = _ARGS.parse_args()
     _main(args.spreadsheet_filepath, args.archive_dir)

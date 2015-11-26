@@ -24,7 +24,9 @@ FIELDSETS = {
         FieldInfo('Name', path='canonical_name'),
         FieldInfo('Long Name', path='long_name'),
         FieldInfo('Description', path='description'),
-        FieldInfo('Keywords', path='keywords', input_formatter=lambda v: " | ".join(v))
+        FieldInfo('Keywords', path='keywords', input_formatter=lambda v: " | ".join(v)),
+        FieldInfo('Related Experiments',
+                  link_factory=lambda exp: [(i.name, i.viewer_url) for i in exp.related_experiments_references])
     ],
 
     str(cim.v2.designing.EnsembleRequirement) : [
@@ -56,7 +58,7 @@ FIELDSETS = {
     'cim.2.shared.citation' : [
         FieldInfo('Long Title', path='citation_str', link_path="url.linkage"),
         FieldInfo('Context', path='context'),
-        FieldInfo('DOI', path='doi', link_path=lambda i: "https://doi.org/{}".format(i.doi)),
+        FieldInfo('DOI', path='doi', link_path=lambda v: "https://doi.org/{}".format(v.doi)),
         FieldInfo('Abstract', path='abstract'),
     ]
 }

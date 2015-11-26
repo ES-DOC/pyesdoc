@@ -30,6 +30,7 @@ class FieldInfo(object):
                  input_formatter=None,
                  output_formatter=None,
                  link=None,
+                 link_factory=None,
                  link_path=None,
                  path=None,
                  tag_id=None,
@@ -43,6 +44,7 @@ class FieldInfo(object):
         self.input_formatter = input_formatter
         self.output_formatter = output_formatter
         self.link = link
+        self.link_factory = link_factory
         self.link_path = link_path
         self.path = path
         self.tag_id = tag_id
@@ -65,8 +67,11 @@ class FieldInfo(object):
         :rtype str:
 
         """
-        v = _get_value(data, self.path) if self.path else self.value
-        v = _format_value(v, self.input_formatter, self.output_formatter)
+        if self.link_factory:
+            v = self.link_factory(data)
+        else:
+            v = _get_value(data, self.path) if self.path else self.value
+            v = _format_value(v, self.input_formatter, self.output_formatter)
 
         return v
 
