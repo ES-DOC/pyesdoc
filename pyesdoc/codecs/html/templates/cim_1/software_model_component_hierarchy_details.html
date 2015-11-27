@@ -1,24 +1,26 @@
-<section id="{{ c.meta.id }}">
+<section id="{{ c.meta.id }}" class="esdoc-nav-target">
 	{% comment ************************************************** %}
 	{% comment Breadcrumb 	 		    			  			  %}
 	{% comment ************************************************** %}
 	<header>
-		<h4>
+		<h3>
 		{% for pc in c.ext.ancestors[1:] %}
 			<span id="breadcrumb-{{ pc.meta.id }}">
 			{{ pc.ext.short_display_name }} >
 			</span>
 		{% end %}
 		{{ c.ext.short_display_name }}
-		</h4>
+		</h3>
 	</header>
 
 	{% comment ************************************************** %}
 	{% comment Sub-section: overview 	 		    			  %}
 	{% comment ************************************************** %}
 	{% if c.description and len(c.description) %}
-	<section id="{{ c.meta.id }}-overview">
-		<header><h5>Overview</h5></header>
+	<section>
+		<header>
+			<h4>Overview</h4>
+		</header>
 		<p>{{ c.description }}</p>
 	</section>
 	{% end %}
@@ -27,9 +29,9 @@
 	{% comment Sub-section: scientific properties 	 		      %}
 	{% comment ************************************************** %}
 	{% if c.ext.displayable_scientific_properties %}
-	<section id="{{ c.meta.id }}-scientific-properties">
+	<section>
 		<header>
-			<h5>Scientific Properties ({{ len(c.ext.displayable_scientific_properties) }})</h5>
+			<h4>Scientific Properties ({{ len(c.ext.displayable_scientific_properties) }})</h4>
 		</header>
 		<table>
 			<tbody>
@@ -51,9 +53,9 @@
 	{% comment Sub-section: quality control properties 	 		  %}
 	{% comment ************************************************** %}
 	{% if c.ext.displayable_qc_properties %}
-	<section id="{{ c.meta.id }}-qc-properties">
+	<section>
 		<header>
-			<h5>Component Documentation Quality Control</h5>
+			<h4>Component Documentation Quality Control</h4>
 		</header>
 		<table>
 			<tbody>
