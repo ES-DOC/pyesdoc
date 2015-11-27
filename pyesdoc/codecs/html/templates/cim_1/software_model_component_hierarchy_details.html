@@ -1,9 +1,7 @@
-{% for c in doc.ext.component_tree %}
-
 <section id="{{ c.meta.id }}">
-	{% comment *************************** %}
-	{% comment ... breadcrumb              %}
-	{% comment *************************** %}
+	{% comment ************************************************** %}
+	{% comment Breadcrumb 	 		    			  			  %}
+	{% comment ************************************************** %}
 	<header>
 		<h4>
 		{% for pc in c.ext.ancestors[1:] %}
@@ -15,9 +13,9 @@
 		</h4>
 	</header>
 
-	{% comment *************************** %}
-	{% comment ... overview                %}
-	{% comment *************************** %}
+	{% comment ************************************************** %}
+	{% comment Sub-section: overview 	 		    			  %}
+	{% comment ************************************************** %}
 	{% if c.description and len(c.description) %}
 	<section id="{{ c.meta.id }}-overview">
 		<header><h5>Overview</h5></header>
@@ -25,9 +23,9 @@
 	</section>
 	{% end %}
 
-	{% comment *************************** %}
-	{% comment ... scientific properties   %}
-	{% comment *************************** %}
+	{% comment ************************************************** %}
+	{% comment Sub-section: scientific properties 	 		      %}
+	{% comment ************************************************** %}
 	{% if c.ext.displayable_scientific_properties %}
 	<section id="{{ c.meta.id }}-scientific-properties">
 		<header>
@@ -49,9 +47,9 @@
 	</section>
     {% end %}
 
-	{% comment *************************** %}
-	{% comment ... quality control properties   %}
-	{% comment *************************** %}
+	{% comment ************************************************** %}
+	{% comment Sub-section: quality control properties 	 		  %}
+	{% comment ************************************************** %}
 	{% if c.ext.displayable_qc_properties %}
 	<section id="{{ c.meta.id }}-qc-properties">
 		<header>
@@ -84,30 +82,22 @@
 	</section>
     {% end %}
 
-	{% comment *************** %}
-	{% comment ... citations   %}
-	{% comment *************** %}
-	{% if c.citations %}
-		{% set citations = c.citations %}
-		{% set previousCtx = ctx %}
-		{% set header = "h5" %}
-		{% set section_id = "{0}-citations".format(c.meta.id) %}
-		{% include shared_citation.html %}
-		{% set ctx = previousCtx %}
-    {% end %}
+	{% comment ************************************************** %}
+	{% comment Sub-section: citations 		    				  %}
+	{% comment ************************************************** %}
+	{% set previousCtx = ctx %}
+	{% set citations = c.citations %}
+	{% set header = 4 %}
+	{% include shared_citation.html %}
+	{% set ctx = previousCtx %}
 
 	{% comment **************** %}
 	{% comment ... contacts     %}
 	{% comment **************** %}
     {% set contacts = [rp for rp in c.responsible_parties if rp.role.lower() not in ['funder', 'centre']] %}
-	{% if contacts %}
-		{% set previousCtx = ctx %}
-		{% set header = "h5" %}
-		{% set section_id = "{0}-contacts".format(c.meta.id) %}
-		{% include shared_responsible_party.html %}
-		{% set ctx = previousCtx %}
-    {% end %}
+	{% set previousCtx = ctx %}
+	{% set header = 4 %}
+	{% include shared_responsible_party.html %}
+	{% set ctx = previousCtx %}
 
 </section>
-
-{% end %}

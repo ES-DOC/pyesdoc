@@ -5,14 +5,17 @@
 {% comment ***************** %}
 {% block doc-content %}
 
+{% comment ************************************************** %}
+{% comment Sub-section: report    						      %}
+{% comment ************************************************** %}
 {% for i, report in enumerate(doc.reports) %}
 <section id="{{ doc.ext.full_id }}-report{{ i }}">
 	<header>
-		<h4>{{ report.measure.name }}</h4>
+		<h3>{{ report.measure.name }}</h3>
 	</header>
 	<table>
 		<tbody>
-		{% set ctx = TemplateInfo(report, fieldset = 'cim.1.quality.cimquality') %}
+		{% set ctx = TemplateInfo(report, fieldset='cim.1.quality.cimquality') %}
 		{% include ../core/fieldset.html %}
 		</tbody>
 	</table>

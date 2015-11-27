@@ -1,27 +1,21 @@
-<nav>
-	<ul class="depth-0">
-	{% for c in doc.sub_components %}
-		<li>
-			<a id="nav-{{c.meta.id}}" href="#">{{c.ext.short_display_name}}</a>
-		</li>
-		{% if len(c.sub_components) %}
-			<ul class="depth-1">
-				{% for c in c.sub_components %}
+<li>
+	<a id="nav-{{c.meta.id}}" href="#">{{c.ext.short_display_name}}</a>
+</li>
+{% if len(c.sub_components) %}
+	<ul class="depth-1">
+		{% for c in c.sub_components %}
+			<li>
+				<a id="nav-{{c.meta.id}}" href="#">{{c.ext.short_display_name}}</a>
+			</li>
+			{% if len(c.sub_components) %}
+				<ul class="depth-2">
+					{% for c in c.sub_components %}
 					<li>
 						<a id="nav-{{c.meta.id}}" href="#">{{c.ext.short_display_name}}</a>
 					</li>
-					{% if len(c.sub_components) %}
-						<ul class="depth-2">
-							{% for c in c.sub_components %}
-							<li>
-								<a id="nav-{{c.meta.id}}" href="#">{{c.ext.short_display_name}}</a>
-							</li>
-							{% end %}
-						</ul>
 					{% end %}
-				{% end %}
-			</ul>
+				</ul>
+			{% end %}
 		{% end %}
-	{% end %}
 	</ul>
-</nav>
+{% end %}

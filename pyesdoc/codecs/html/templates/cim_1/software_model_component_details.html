@@ -1,64 +1,79 @@
-<section id="{{ doc.ext.full_id }}-details">
-	{% if doc.ext.component_tree %}
+{% comment ************************************************** %}
+{% comment Sub-section: overview 		    				  %}
+{% comment ************************************************** %}
+<section>
 	<header>
-		<h3>Details</h3>
+		<h3>Overview</h3>
 	</header>
-	{% end %}
-
-	{% comment ************************* %}
-	{% comment Sub-section: overview     %}
-	{% comment ************************* %}
-	<section id="{{ doc.ext.full_id }}-details-overview">
-		<header>
-			<h4>Overview</h4>
-		</header>
-		<table>
-			<tbody>
-			{% set ctx = TemplateInfo(doc, fieldset = 'cim.1.software.modelcomponent-details') %}
-			{% include ../core/fieldset.html %}
-			</tbody>
-		</table>
-	</section>
-
-	{% comment ************************* %}
-	{% comment Sub-section: license     %}
-	{% comment ************************* %}
-	{% if doc.license %}
-		{% set license = doc.license %}
-		{% set header = "h4" %}
-		{% set section_id = "{0}-details-license".format(doc.ext.full_id) %}
-		{% include shared_license.html %}
-	{% end %}
-
-	{% comment ************************* %}
-	{% comment Sub-section: timing     %}
-	{% comment ************************* %}
-	{% if doc.timing %}
-		{% set timing = doc.timing %}
-		{% set header = "h4" %}
-		{% set title = "Timing" %}
-		{% set section_id = "{0}-details-timing".format(doc.ext.full_id) %}
-		{% include software_timing.html %}
-	{% end %}
-
-	{% comment ************************* %}
-	{% comment Sub-section: citations    %}
-	{% comment ************************* %}
-	{% if doc.citations %}
-		{% set citations = doc.citations %}
-		{% set header = "h4" %}
-		{% set section_id = "{0}-details-citations".format(doc.ext.full_id) %}
-		{% include shared_citation.html %}
-	{% end %}
-
-	{% comment ************************* %}
-	{% comment Sub-section: contacts    %}
-	{% comment ************************* %}
-	{% if doc.responsible_parties %}
-		{% set contacts = doc.responsible_parties %}
-		{% set header = "h4" %}
-		{% set section_id = "{0}-details-contacts".format(doc.ext.full_id) %}
-		{% include shared_responsible_party.html %}
-	{% end %}
-
+	<table>
+		<tbody>
+		{% set ctx = TemplateInfo(doc, fieldset='cim.1.software.modelcomponent-details') %}
+		{% include ../core/fieldset.html %}
+		</tbody>
+	</table>
 </section>
+
+{% comment ************************************************** %}
+{% comment Sub-section: license 	 		    			  %}
+{% comment ************************************************** %}
+{% if doc.license %}
+<section>
+	<header>
+		<h3>Licensing</h3>
+	</header>
+	<table>
+		<tbody>
+		{% set ctx = TemplateInfo(doc.license, fieldset='cim.1.shared.license') %}
+		{% include ../core/fieldset.html %}
+		</tbody>
+	</table>
+</section>
+{% end %}
+
+{% comment ************************************************** %}
+{% comment Sub-section: timing 	 		    				  %}
+{% comment ************************************************** %}
+{% if doc.timing %}
+<section>
+	<header>
+		<h3>Timing</h3>
+	</header>
+	<table>
+		<tbody>
+		{% set ctx = TemplateInfo(doc.timing, fieldset='cim.1.software.timing') %}
+		{% include ../core/fieldset.html %}
+		</tbody>
+	</table>
+</section>
+{% end %}
+
+{% comment ************************************************** %}
+{% comment Sub-section: scientific properties 	 		      %}
+{% comment ************************************************** %}
+{% if doc.ext.displayable_scientific_properties %}
+<section>
+	<header>
+		<h3>Scientific Properties ({{ len(doc.ext.displayable_scientific_properties) }})</h3>
+	</header>
+	<table>
+		<tbody>
+		{% set ctx = TemplateInfo(doc, fieldset_type="property", fieldset=("cim.1.software.modelcomponent-properties", doc.ext.displayable_scientific_properties)) %}
+		{% include ../core/fieldset.html %}
+		</tbody>
+	</table>
+</section>
+{% end %}
+
+{% comment ************************************************** %}
+{% comment Sub-section: citations 		    				  %}
+{% comment ************************************************** %}
+{% set citations = doc.citations %}
+{% set header = 3 %}
+{% include shared_citation.html %}
+
+{% comment ************************************************** %}
+{% comment Sub-section: Responsible parties 		    	  %}
+{% comment ************************************************** %}
+{% set contacts = doc.responsible_parties %}
+{% set header = 3 %}
+{% include shared_responsible_party.html %}

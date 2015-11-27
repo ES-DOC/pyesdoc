@@ -5,35 +5,45 @@
 {% comment ***************** %}
 {% block doc-content %}
 
-	{% comment ************************* %}
-	{% comment Sub-section: overview    %}
-	{% comment ************************* %}
-	{% include designing_numerical_experiment_overview.html %}
+	{% comment ************************************************** %}
+	{% comment Sub-section: overview 		    				  %}
+	{% comment ************************************************** %}
+	<section>
+		<header>
+			<h3>Overview</h3>
+		</header>
+		<table>
+			<tbody>
+			{% set ctx = TemplateInfo(doc, fieldset='cim.2.designing.numericalexperiment-overview') %}
+			{% include ../core/fieldset.html %}
+			</tbody>
+		</table>
+	</section>
 
-	{% comment ************************* %}
-	{% comment Sub-section: requirements    %}
-	{% comment ************************* %}
+	{% comment ************************************************** %}
+	{% comment Sub-section: requirements 		    			  %}
+	{% comment ************************************************** %}
 	{% if doc.requirements_references %}
+		{% set doc.requirements = load(doc.requirements_references) %}
+		{% set header = 3 %}
 		{% include designing_numerical_experiment_requirements.html %}
 	{% end %}
 
-	{% comment ************************* %}
-	{% comment Sub-section: citations    %}
-	{% comment ************************* %}
+	{% comment ************************************************** %}
+	{% comment Sub-section: citations   		    			  %}
+	{% comment ************************************************** %}
 	{% if doc.references %}
 		{% set citations = doc.references %}
-		{% set header = "h4" %}
-		{% set section_id = "{0}-details-citations".format(doc.ext.full_id) %}
+		{% set header = 3 %}
 		{% include shared_citation.html %}
 	{% end %}
 
-	{% comment ************************* %}
-	{% comment Sub-section: contacts    %}
-	{% comment ************************* %}
+	{% comment ************************************************** %}
+	{% comment Sub-section: responsible parties   		    	  %}
+	{% comment ************************************************** %}
 	{% if doc.responsible_parties %}
 		{% set responsible_parties = doc.responsible_parties %}
-		{% set header = "h4" %}
-		{% set section_id = "{0}-details-contacts".format(doc.ext.full_id) %}
+		{% set header = 3 %}
 		{% include shared_responsible_parties.html %}
 	{% end %}
 

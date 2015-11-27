@@ -7,14 +7,8 @@
 <nav>
     <ul>
 	    <li><a href="#{{ doc.ext.full_id }}-details">Details</a></li>
-		{% if doc.ext.displayable_scientific_properties %}
-		    <li><a href="#{{ doc.ext.full_id }}-details-properties">Properties</a></li>
-	    {% end %}
     	{% if doc.ext.component_tree %}
 	    <li><a href="#{{ doc.ext.full_id }}-components">Components</a></li>
-		{% end %}
-    	{% if doc.grid %}
-	    <li><a href="#{{ doc.ext.full_id }}-grid">Grid</a></li>
 		{% end %}
     </ul>
 </nav>
@@ -25,25 +19,29 @@
 {% comment ***************** %}
 {% block doc-content %}
 
-	{% include software_model_component_details.html %}
-	{% if doc.ext.displayable_scientific_properties %}
-		{% include software_model_component_properties.html %}
-    {% end %}
-	{% if doc.ext.component_tree %}
-		{% include software_model_component_hierarchy.html %}
-    {% end %}
+	{% comment ************************************************** %}
+	{% comment Sub-section: details 		    				  %}
+	{% comment ************************************************** %}
+	<section id="{{ doc.ext.full_id }}-details">
+		{% include software_model_component_details.html %}
+	</section>
 
-	{% if doc.grid %}
-		<section>
-		    <header>
-		        <h4>Grid</h4>
-		    </header>
-		    <table>
-		        <tbody>
-		        {% comment TODO emit model grid %}
-		        </tbody>
-		    </table>
-		</section>
+	{% comment ************************************************** %}
+	{% comment Sub-section: component tree 				    	  %}
+	{% comment ************************************************** %}
+	{% if doc.ext.component_tree %}
+	<section id="{{ doc.ext.full_id }}-components" class="{{ doc.ext.css_class }}-components">
+		<nav>
+			<ul class="depth-0">
+			{% for c in doc.ext.component_tree %}
+				{% include software_model_component_hierarchy_nav.html %}
+			{% end %}
+			</ul>
+		</nav>
+		{% for c in doc.ext.component_tree %}
+			{% include software_model_component_hierarchy_details.html %}
+	    {% end %}
+	</section>
     {% end %}
 
 {% end %}

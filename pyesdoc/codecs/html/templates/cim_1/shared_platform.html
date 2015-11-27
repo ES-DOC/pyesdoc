@@ -5,16 +5,60 @@
 {% comment ***************** %}
 {% block doc-content %}
 
-	{% include shared_platform_overview.html %}
+	{% comment ************************************************** %}
+	{% comment Sub-section: overview    						  %}
+	{% comment ************************************************** %}
+	{% set ctx = TemplateInfo(doc, fieldset='cim.1.shared.platform') %}
+	<section>
+		<header>
+			<h3>Overview</h3>
+		</header>
+		<table>
+			<tbody>
+			{% include ../core/fieldset.html %}
+			</tbody>
+		</table>
+	</section>
+
 	{% for unit_id, unit in enumerate(doc.units) %}
-		{% include shared_platform_unit_compiler.html %}
-		{% include shared_platform_unit_machine.html %}
+		{% comment ************************************************** %}
+		{% comment Sub-section: compiler 		    				  %}
+		{% comment ************************************************** %}
+		<section>
+			<header>
+				<h3>Compiler(s)</h3>
+			</header>
+			{% for compiler in unit.compilers %}
+			{% set ctx = TemplateInfo(compiler, fieldset='cim.1.shared.platform.unit.compiler') %}
+			<table>
+				<tbody>
+				{% include ../core/fieldset.html %}
+				</tbody>
+			</table>
+			{% end %}
+		</section>
+
+		{% comment ************************************************** %}
+		{% comment Sub-section: machine 		    				  %}
+		{% comment ************************************************** %}
+		{% set ctx = TemplateInfo(unit.machine, fieldset='cim.1.shared.platform.unit.machine') %}
+		<section>
+			<header>
+				<h3>Machine</h3>
+			</header>
+			<table>
+				<tbody>
+				{% include ../core/fieldset.html %}
+				</tbody>
+			</table>
+		</section>
 	{% end %}
-	{% if doc.contacts %}
-		{% set contacts = doc.contacts %}
-		{% set header = "h4" %}
-		{% set section_id = "{0}-details-contacts".format(doc.ext.full_id) %}
-		{% include shared_responsible_party.html %}
-    {% end %}
+
+	{% comment ************************************************** %}
+	{% comment Sub-section: responsible parties   		    	  %}
+	{% comment ************************************************** %}
+	{% set contacts = doc.contacts %}
+	{% set header = 3 %}
+	{% include shared_responsible_party.html %}
 
 {% end %}

@@ -3,25 +3,28 @@
 	(pyesdoc.ontologies.cim.v2.EnsembleRequirement, "Ensemble Requirements"),
 	(pyesdoc.ontologies.cim.v2.ForcingConstraint, "Forcing Constraints"),
 ] %}
-{% set requirements = load(doc.requirements_references) %}
+
 {% for typeof, description in REQUIREMENT_TYPES %}
-	{% set subrequirements = [r for r in requirements if isinstance(r, typeof)] %}
-	{% if subrequirements %}
-	{% set subrequirements = sorted(subrequirements, key=lambda r: r.name.lower() if r.name else str()) %}
+	{% set requirements = [r for r in doc.requirements if isinstance(r, typeof)] %}
+	{% set requirements = sorted(requirements, key=lambda r: r.name.lower() if r.name else str()) %}
+	{% if requirements %}
 	<section>
 		<header>
-			<h4>{{ description }}</h4>
+			<h{{ header }}>{{ description }}</h{{ header }}>
 		</header>
-		{% for requirement in subrequirements %}
-		{% set ctx = TemplateInfo(requirement, fieldset = str(typeof)) %}
-		<h5>{{ requirement.long_name }}</h5>
-		<table>
-			<tbody>
-			{% include ../core/fieldset.html %}
-			</tbody>
-		</table>
+		{% for requirement in requirements %}
+		{% set ctx = TemplateInfo(requirement, fieldset=str(typeof)) %}
+		<section>
+			<header>
+				<h{{ header + 1 }}>{{ requirement.long_name }}</h{{ header + 1 }}>
+			</header>
+			<table>
+				<tbody>
+				{% include ../core/fieldset.html %}
+				</tbody>
+			</table>
+		</section>
 		{% end %}
 	</section>
 	{% end %}
 {% end %}
-

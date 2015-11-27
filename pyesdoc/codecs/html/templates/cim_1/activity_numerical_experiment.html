@@ -5,8 +5,26 @@
 {% comment ***************** %}
 {% block doc-content %}
 
-	{% include activity_numerical_experiment_overview.html %}
+	{% comment ************************************************** %}
+	{% comment Sub-section: overview 		    				  %}
+	{% comment ************************************************** %}
+	<section>
+		<header>
+			<h3>Overview</h3>
+		</header>
+		<table>
+			<tbody>
+			{% set ctx = TemplateInfo(doc, fieldset='cim.1.activity.numericalexperiment-overview') %}
+			{% include ../core/fieldset.html %}
+			</tbody>
+		</table>
+	</section>
+
+	{% comment ************************************************** %}
+	{% comment Sub-section: requirements 		    			  %}
+	{% comment ************************************************** %}
 	{% if doc.requirements %}
+		{% set header = 3 %}
 		{% include activity_numerical_experiment_requirements.html %}
 	{% end %}
 

@@ -1,20 +1,20 @@
-<section id={{ section_id }}>
+{% if contacts %}
+<section>
 	<header>
-		<{{ header }}>Contacts</{{ header }}>
+		<h{{ header }}>Responsible Parties</h{{ header }}>
 	</header>
 	{% for contact_id, contact in enumerate(contacts) %}
-
-	{% if contact.role %}
-	<h5>{{ contact.role }}</h5>
-	{% else %}
-	<h5>Contact #{{ contact_id + 1 }}</h5>
-	{% end %}
-
-	<table>
-		<tbody>
-		{% set ctx = TemplateInfo(contact, fieldset="cim.1.shared.responsibleparty") %}
-		{% include ../core/fieldset.html %}
-		</tbody>
-	</table>
+	<section>
+		<header>
+			<h{{ header + 1 }}>{{ contact.role if contact.role else "Contact#{}".format(contact_id = 1) }}</h{{ header + 1 }}>
+		</header>
+		<table>
+			<tbody>
+			{% set ctx = TemplateInfo(contact, fieldset="cim.1.shared.responsibleparty") %}
+			{% include ../core/fieldset.html %}
+			</tbody>
+		</table>
+	</section>
 	{% end %}
 </section>
+{% end %}
