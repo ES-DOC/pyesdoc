@@ -50,7 +50,7 @@ def _read(fname):
     """
     fpath = os.path.dirname(__file__)
     fpath = os.path.join(fpath, fname)
-    with open(fpath, 'r') as file_:
+    with open(fpath, 'r', 'utf-8') as file_:
         return file_.read()
 
 
@@ -63,21 +63,31 @@ def _get_version():
                      re.MULTILINE).group(1)
 
 
+# Libary version.
+_VERSION = _get_version()
+
+# Library packages.
+_PACKAGES = find_packages()
+
+# User readme.
+_README = _read('README.rst')
+
+
+
 setup(
     name='pyesdoc',
-    version=_get_version(),
+    version=_VERSION,
     description='pyesdoc is a python library for publishing earth system documentation.',
-    long_description=(_read('README.rst')),
+    long_description=_README,
     author='Mark A. Greenslade',
     author_email='momipsl@ipsl.jussieu.fr',
     url='https://github.com/ES-DOC/esdoc-py-client',
-    packages=find_packages(),
+    packages=_PACKAGES,
     include_package_data=True,
-    # package_data={'': ['LICENSE'], 'pyesdoc': ['*.html']},
-    # package_dir={'pyesdoc': 'pyesdoc'},
     install_requires=_REQUIRES,
     license='GPL',
     zip_safe=False,
+    distclass=_BinaryDistribution,
     classifiers=[
         'Development Status :: 4 - Beta',
         'Intended Audience :: Developers',
