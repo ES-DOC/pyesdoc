@@ -28,7 +28,8 @@ _REQUIRES = [
     'lxml',
     'nose',
     'requests',
-    'tornado'
+    'tornado',
+    'xlrd'
     ]
 
 
@@ -67,15 +68,15 @@ setup(
     version=_get_version(),
     description='pyesdoc is a python library for publishing earth system documentation.',
     long_description=(_read('README.rst')),
-    install_requires=_REQUIRES,
-    url='https://github.com/ES-DOC/esdoc-py-client',
-    license='GPL',
     author='Mark A. Greenslade',
     author_email='momipsl@ipsl.jussieu.fr',
+    url='https://github.com/ES-DOC/esdoc-py-client',
     packages=find_packages(),
-    # package_dir={'pyesdoc': 'pyesdoc'},
+    package_dir={'pyesdoc': 'pyesdoc'},
     include_package_data=True,
-    distclass=_BinaryDistribution,
+    install_requires=_REQUIRES,
+    license='GPL',
+    zip_safe=False,
     classifiers=[
         'Development Status :: 4 - Beta',
         'Intended Audience :: Developers',
@@ -87,5 +88,5 @@ setup(
         'Programming Language :: Python :: 2',
         'Programming Language :: Python :: 2.7',
         'Topic :: Software Development :: Libraries :: Python Modules',
-    ],
+    ]
 )
