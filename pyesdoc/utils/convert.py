@@ -562,7 +562,7 @@ def text_to_typed_value(text, target_type):
     """
     # Encode.
     if text is not None:
-        text = unicode_to_str(text) if isinstance(text, unicode) else str(text)
+        text = str_to_unicode(text) if isinstance(text, str) else unicode(text)
 
     # Decode according to type:
     # ... date's
