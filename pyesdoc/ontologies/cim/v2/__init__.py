@@ -3,7 +3,6 @@
 """
 .. module:: cim.v2.__init__.py
 
-   :copyright: @2015 Earth System Documentation (http://es-doc.org)
    :license: GPL / CeCILL
    :platform: Unix, Windows
    :synopsis: The cim v2 package initialisor.

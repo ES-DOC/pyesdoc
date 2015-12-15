@@ -3,7 +3,6 @@
 """
 .. module:: pyesdoc.codecs.xml_metafor_cim_v1.decoder.py
 
-   :copyright: @2013 Earth System Documentation (http://es-doc.org)
    :license: GPL / CeCILL
    :platform: Unix, Windows
    :synopsis: Decodes a document from a Metafor cim v1 XML text blob.

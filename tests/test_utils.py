@@ -3,7 +3,6 @@
 """
 .. module:: test_utils.py
 
-   :copyright: @2013 Earth System Documentation (http://es-doc.org)
    :license: GPL / CeCILL
    :platform: Unix, Windows
    :synopsis: Exposes test utility functions.

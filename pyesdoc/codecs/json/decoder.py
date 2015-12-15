@@ -3,7 +3,6 @@
 """
 .. module:: pyesdoc.codecs.json.decoder.py
 
-   :copyright: @2013 Earth System Documentation (http://es-doc.org)
    :license: GPL / CeCILL
    :platform: Unix, Windows
    :synopsis: Decodes a document from a JSON text blob.

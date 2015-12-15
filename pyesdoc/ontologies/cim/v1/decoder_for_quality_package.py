@@ -3,7 +3,6 @@
 """
 .. module:: cim.v1.decoder_for_quality_package.py
 
-   :copyright: @2015 Earth System Documentation (http://es-doc.org)
    :license: GPL / CeCILL
    :platform: Unix, Windows
    :synopsis: A set of cim 1 decoders.

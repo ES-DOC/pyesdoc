@@ -2,7 +2,6 @@
 
 """
 .. module:: run_publish_cmip6_documents.py
-   :copyright: @2013 Earth System Documentation (http://es-doc.org)
    :license: GPL/CeCIL
    :platform: Unix, Windows
    :synopsis: Publishes CMIP6 documents from the CMIP6 experiment spreadsheet.

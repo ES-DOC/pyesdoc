@@ -3,7 +3,6 @@
 """
 .. module:: test_types.py
 
-   :copyright: @2013 Earth System Documentation (http://es-doc.org)
    :license: GPL / CeCILL
    :platform: Unix, Windows
    :synopsis: Set of document types to be tested.

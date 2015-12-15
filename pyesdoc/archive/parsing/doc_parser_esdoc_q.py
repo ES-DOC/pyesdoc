@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 """
 .. module:: handlers_metafor_q.py
-   :copyright: @2013 Earth System Documentation (http://es-doc.org)
    :license: GPL/CeCIL
    :platform: Unix, Windows
    :synopsis: Exposes Metafor Questionnaire document processing handlers.

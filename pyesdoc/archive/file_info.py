@@ -2,7 +2,6 @@
 
 """
 .. module:: file_info.py
-   :copyright: @2013 Earth System Documentation (http://es-doc.org)
    :license: GPL/CeCIL
    :platform: Unix, Windows
     :synopsis: An archived document file wrapper.

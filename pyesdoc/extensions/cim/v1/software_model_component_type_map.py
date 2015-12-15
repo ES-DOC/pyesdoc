@@ -3,7 +3,6 @@
 """
 .. module:: software_model_component_type_map.py
 
-   :copyright: @2013 Earth System Documentation (http://es-doc.org)
    :license: GPL / CeCILL
    :platform: Unix, Windows
    :synopsis: Exposes mappings of software model component types.

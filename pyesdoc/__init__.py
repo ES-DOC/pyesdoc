@@ -3,7 +3,6 @@
 """
 .. module:: pyesdoc.__init__.py
 
-   :copyright: @2013 Earth System Documentation (http://es-doc.org)
    :license: GPL / CeCILL
    :platform: Unix, Windows
    :synopsis: Package initializer.
@@ -13,10 +12,10 @@
 """
 # Standard package info.
 __title__ = 'pyesdoc'
-__version__ = '0.9.3.1.5'
+__version__ = '0.9.3.1.6'
 __author__ = 'ES-DOC'
 __license__ = 'GPL'
-__copyright__ = 'Copyright 2015 ES-DOC'
+__copyright__ = 'Copyright 2015 ???'
 
 
 from pyesdoc.constants import *

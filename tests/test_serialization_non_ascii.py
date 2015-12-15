@@ -3,7 +3,6 @@
 """
 .. module:: test_serialization_non_ascii.py
 
-   :copyright: @2013 Earth System Documentation (http://es-doc.org)
    :license: GPL / CeCILL
    :platform: Unix, Windows
    :synopsis: Executes pyesdoc non-ascii document content tests.

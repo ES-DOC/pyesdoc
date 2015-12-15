@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 """
 .. module:: config.py
-   :copyright: @2013 Earth System Documentation (http://es-doc.org)
    :license: GPL/CeCIL
    :platform: Unix, Windows
    :synopsis: Configuration utility functions.

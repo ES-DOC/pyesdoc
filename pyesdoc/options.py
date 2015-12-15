@@ -2,7 +2,6 @@
 
 """
 .. module:: pyesdoc.options.py
-   :copyright: Copyright "Sep 4, 2013", Earth System Documentation
    :license: GPL/CeCIL
    :platform: Unix, Windows
    :synopsis: Encapsulates library options that can be overridden at runtime.

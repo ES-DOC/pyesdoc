@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 """
 .. module:: downloader.py
-   :copyright: @2013 Earth System Documentation (http://es-doc.org)
    :license: GPL/CeCIL
    :platform: Unix, Windows
    :synopsis: Downloads a document pulled from a 3rd party ATOM feed.

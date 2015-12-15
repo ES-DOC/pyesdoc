@@ -3,7 +3,6 @@
 """
 .. module:: test_archive.py
 
-   :copyright: @2013 Earth System Documentation (http://es-doc.org)
    :license: GPL / CeCILL
    :platform: Unix, Windows
    :synopsis: Executes pyesdoc document archive tests.

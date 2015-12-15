@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 """
 .. module:: populate_from_feeds.py
-   :copyright: @2013 Earth System Documentation (http://es-doc.org)
    :license: GPL/CeCIL
    :platform: Unix, Windows
    :synopsis: Populates archive with documents pulled from 3rd party ATOM feeds.

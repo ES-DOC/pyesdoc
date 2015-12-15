@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """
 .. module:: pyesdoc.ontologies.utils.cim_v1.py
-   :copyright: Copyright "Sep 5, 2013", Earth System Documentation
+
    :license: GPL/CeCIL
    :platform: Unix, Windows
    :synopsis: Set of cim v1 utility constants / functions.

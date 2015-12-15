@@ -3,7 +3,6 @@
 """
 .. module:: cim.v1.typeset_for_activity_package.py
 
-   :copyright: @2015 Earth System Documentation (http://es-doc.org)
    :license: GPL / CeCILL
    :platform: Unix, Windows
    :synopsis: The set of types of the cim.v1.activity package.

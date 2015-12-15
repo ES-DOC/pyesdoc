@@ -2,7 +2,6 @@
 
 """
 .. module:: run_peek_document.py
-   :copyright: @2013 Earth System Documentation (http://es-doc.org)
    :license: GPL/CeCIL
    :platform: Unix, Windows
    :synopsis: Peeks at a document held upon local file system.

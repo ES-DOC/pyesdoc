@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 """
 .. module:: pyesdoc.archive.parsing.__init__.py
-   :copyright: @2013 Earth System Documentation (http://es-doc.org)
    :license: GPL/CeCIL
    :platform: Unix, Windows
    :synopsis: Exposes a document parser that 'corrects' either content

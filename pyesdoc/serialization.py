@@ -2,7 +2,6 @@
 
 """
 .. module:: pyesdoc.serialization.py
-   :copyright: Copyright "Sep 4, 2013", Earth System Documentation
    :license: GPL/CeCIL
    :platform: Unix, Windows
    :synopsis: Encpasulates transformations of documents from one format to another.

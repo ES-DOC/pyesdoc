@@ -2,7 +2,6 @@
 
 """
 .. module:: run_archive_populate.py
-   :copyright: @2013 Earth System Documentation (http://es-doc.org)
    :license: GPL/CeCIL
    :platform: Unix, Windows
    :synopsis: Populates archive with documents pulled from remote sources.

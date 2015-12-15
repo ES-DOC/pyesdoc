@@ -3,7 +3,6 @@
 """
 .. module:: factory.py
 
-   :copyright: @2013 Earth System Documentation (http://es-doc.org)
    :license: GPL / CeCILL
    :platform: Unix, Windows
    :synopsis: CIM v1 HTML field set factory.

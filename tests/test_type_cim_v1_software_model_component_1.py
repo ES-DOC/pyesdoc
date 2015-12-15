@@ -3,7 +3,6 @@
 """
 .. module:: test_type_cim_v1_sofware_model_component.py
 
-   :copyright: @2013 Earth System Documentation (http://es-doc.org)
    :license: GPL / CeCILL
    :platform: Unix, Windows
    :synopsis: Tests a cim.v1.ModelComponent instance.

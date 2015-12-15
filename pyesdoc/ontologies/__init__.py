@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """
 .. module:: pyesdoc.ontologies.__init__.py
-   :copyright: Copyright "Jun 14, 2013", Earth System Documentation
+
    :license: GPL/CeCIL
    :platform: Unix, Windows
    :synopsis: Ontologies sub-package init.

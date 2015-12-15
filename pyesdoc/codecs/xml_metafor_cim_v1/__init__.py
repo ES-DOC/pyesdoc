@@ -3,7 +3,6 @@
 """
 .. module:: pyesdoc.codecs.xml_metafor_cim_v1.__init__.py
 
-   :copyright: @2013 Earth System Documentation (http://es-doc.org)
    :license: GPL / CeCILL
    :platform: Unix, Windows
    :synopsis: Metafor CIM v1 XML codec.

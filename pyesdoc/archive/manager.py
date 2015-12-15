@@ -2,7 +2,6 @@
 
 """
 .. module:: archive/manager.py
-   :copyright: @2013 Earth System Documentation (http://es-doc.org)
    :license: GPL/CeCIL
    :platform: Unix, Windows
    :synopsis: Manages access to the document archive.

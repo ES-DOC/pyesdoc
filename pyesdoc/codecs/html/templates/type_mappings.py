@@ -3,7 +3,6 @@
 """
 .. module:: pyesdoc.codecs.html.encoder.py
 
-   :copyright: @2013 Earth System Documentation (http://es-doc.org)
    :license: GPL / CeCILL
    :platform: Unix, Windows
    :synopsis: Encodes a document as an HTML text blob.

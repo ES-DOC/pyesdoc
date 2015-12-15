@@ -3,7 +3,6 @@
 """
 .. module:: cim.v1.typeset.py
 
-   :copyright: @2015 Earth System Documentation (http://es-doc.org)
    :license: GPL / CeCILL
    :platform: Unix, Windows
    :synopsis: Typeset information for the cim v1 ontology.

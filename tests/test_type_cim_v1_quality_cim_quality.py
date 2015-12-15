@@ -3,7 +3,6 @@
 """
 .. module:: test_type_cim_v1_quality_cim_quality.py
 
-   :copyright: @2013 Earth System Documentation (http://es-doc.org)
    :license: GPL / CeCILL
    :platform: Unix, Windows
    :synopsis: Tests a cim.v1.CimQuality instance.
