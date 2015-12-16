@@ -99,7 +99,7 @@ class DatetimeSet(object):
 
     Base class for a set of dates or times.
     Note that we assume either a periodic set of dates which can
-    be date and/or time, or an irregular set which can only be dates
+    be date and/or time, or an irregular set which can only be dates.
 
     """
     __metaclass__ = abc.ABCMeta
@@ -168,7 +168,7 @@ class DocReference(object):
 class KeyFloat(object):
     """A concrete class within the cim v2 type system.
 
-    Holds a key and a float value
+    Holds a key and a float value.
 
     """
     def __init__(self):
@@ -184,7 +184,7 @@ class KeyFloat(object):
 class NumberArray(object):
     """A concrete class within the cim v2 type system.
 
-    Provides a class for entering an array of numbers
+    Provides a class for entering an array of numbers.
 
     """
     def __init__(self):
@@ -199,7 +199,7 @@ class NumberArray(object):
 class OnlineResource(object):
     """A concrete class within the cim v2 type system.
 
-    An approximation of ISO19115 CI_ONLINERESOURCE
+    An approximation of ISO19115 CI_ONLINERESOURCE.
 
     """
     def __init__(self):
@@ -275,7 +275,7 @@ class Responsibility(object):
 class StandaloneDocument(object):
     """An abstract class within the cim v2 type system.
 
-    Raw base class for documents which are created standalone in a workflow
+    Raw base class for documents which are created standalone in a workflow.
 
     """
     __metaclass__ = abc.ABCMeta
@@ -296,7 +296,7 @@ class StandaloneDocument(object):
 class TimePeriod(object):
     """A concrete class within the cim v2 type system.
 
-    Creates a time period class aka a temporal extent
+    Creates a time period class aka a temporal extent.
 
     """
     def __init__(self):
@@ -317,7 +317,7 @@ class TimesliceList(object):
 
     A list of referential dates, 
         e.g. yearlist, 1,4,5 would refer to jan,april,may,
-             monthlist, 1,5,6 would refer to the 1st, 5th and 6th of the month
+             monthlist, 1,5,6 would refer to the 1st, 5th and 6th of the month.
 
     """
     def __init__(self):
@@ -333,7 +333,7 @@ class TimesliceList(object):
 class VocabMember(object):
     """A concrete class within the cim v2 type system.
 
-    A term in an external (to the CIM) controlled vocabulary (CV)
+    A term in an external (to the CIM) controlled vocabulary (CV).
 
     """
     def __init__(self):
@@ -350,7 +350,7 @@ class VocabMember(object):
 class CimLink(OnlineResource):
     """A concrete class within the cim v2 type system.
 
-    Specialisation of online resource for link between CIM documents
+    Specialisation of online resource for link between CIM documents.
 
     """
     def __init__(self):
@@ -365,7 +365,7 @@ class CimLink(OnlineResource):
 class IrregularDateset(DatetimeSet):
     """A concrete class within the cim v2 type system.
 
-    Creates a set of irregularly spaced times
+    Creates a set of irregularly spaced times.
 
     """
     def __init__(self):
@@ -380,7 +380,7 @@ class IrregularDateset(DatetimeSet):
 class Reference(Citation):
     """A concrete class within the cim v2 type system.
 
-    A citation which is forced to have a context provided
+    A citation which is forced to have a context provided.
 
     """
     def __init__(self):
@@ -394,7 +394,7 @@ class Reference(Citation):
 class RegularTimeset(DatetimeSet):
     """A concrete class within the cim v2 type system.
 
-    Creates a regularly spaced set of times
+    Creates a regularly spaced set of times.
 
     """
     def __init__(self):
@@ -411,7 +411,7 @@ class RegularTimeset(DatetimeSet):
 class CalendarTypes(object):
     """An enumeration within the cim v2 type system.
 
-    Create and return a calendar type enum
+    Create and return a calendar type enum.
     """
 
     pass
@@ -420,7 +420,7 @@ class CalendarTypes(object):
 class PeriodDateTypes(object):
     """An enumeration within the cim v2 type system.
 
-    Create and return a period date type enum (used by time_period)
+    Create and return a period date type enum (used by time_period).
     """
 
     pass
@@ -429,7 +429,7 @@ class PeriodDateTypes(object):
 class RoleCode(object):
     """An enumeration within the cim v2 type system.
 
-    Responsibility role codes
+    Responsibility role codes.
     """
 
     pass
@@ -438,7 +438,7 @@ class RoleCode(object):
 class SlicetimeUnits(object):
     """An enumeration within the cim v2 type system.
 
-    Create and return a time unit enum for just years and months
+    Create and return a time unit enum for just years and months.
     """
 
     pass
@@ -457,7 +457,7 @@ class TextCode(object):
 class TimeUnits(object):
     """An enumeration within the cim v2 type system.
 
-    Create and return a time unit enum
+    Create and return a time unit enum.
     """
 
     pass

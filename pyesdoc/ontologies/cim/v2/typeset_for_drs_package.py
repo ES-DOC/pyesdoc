@@ -56,7 +56,7 @@ class DrsGeographicalIndicator(object):
 class DrsPublicationDataset(object):
     """A concrete class within the cim v2 type system.
 
-    A collection of atomic datasets which share a single combination of DRS component values
+    A collection of atomic datasets which share a single combination of DRS component values.
 
     """
     def __init__(self):
@@ -99,7 +99,7 @@ class DrsTemporalIdentifier(object):
 class DrsAtomicDataset(DrsPublicationDataset):
     """A concrete class within the cim v2 type system.
 
-    An entity in a DRS file system
+    An entity in a DRS file system.
 
     """
     def __init__(self):
@@ -118,7 +118,7 @@ class DrsAtomicDataset(DrsPublicationDataset):
 class DrsFrequencyTypes(object):
     """An enumeration within the cim v2 type system.
 
-    Set of allowed DRS frequency types
+    Set of allowed DRS frequency types.
     """
 
     pass
@@ -127,7 +127,7 @@ class DrsFrequencyTypes(object):
 class DrsGeographicalOperators(object):
     """An enumeration within the cim v2 type system.
 
-    Set of permitted spatial averaging operator suffixes for drs spatial indicators (yyyy-zzzz)
+    Set of permitted spatial averaging operator suffixes for drs spatial indicators (yyyy-zzzz).
     """
 
     pass
@@ -136,7 +136,7 @@ class DrsGeographicalOperators(object):
 class DrsRealms(object):
     """An enumeration within the cim v2 type system.
 
-    Set of allowed DRS modelling realms
+    Set of allowed DRS modelling realms.
     """
 
     pass

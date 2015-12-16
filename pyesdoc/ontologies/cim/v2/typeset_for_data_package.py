@@ -23,7 +23,7 @@ import typeset_for_shared_package as shared
 class Dataset(object):
     """A concrete class within the cim v2 type system.
 
-    Dataset discovery information
+    Dataset discovery information.
 
     """
     def __init__(self):
@@ -48,7 +48,7 @@ class Dataset(object):
 class RelatedData(shared.CimLink):
     """A concrete class within the cim v2 type system.
 
-    A related dataset and a controlled relationship
+    A related dataset and a controlled relationship.
 
     """
     def __init__(self):
@@ -91,7 +91,7 @@ class Simulation(activity.Activity):
 class VariableCollection(object):
     """A concrete class within the cim v2 type system.
 
-    A collection of variables within the scope of a code or process element
+    A collection of variables within the scope of a code or process element.
 
     """
     def __init__(self):
@@ -107,7 +107,7 @@ class VariableCollection(object):
 class Downscaling(Simulation):
     """A concrete class within the cim v2 type system.
 
-    Defines a downscaling activity
+    Defines a downscaling activity.
 
     """
     def __init__(self):
@@ -124,7 +124,7 @@ class DataAssociationTypes(object):
     """An enumeration within the cim v2 type system.
 
     Set of possible dataset associations.
-    Selected from, and extended from,  ISO19115 (2014) DS_AssociationTypeCode
+    Selected from, and extended from,  ISO19115 (2014) DS_AssociationTypeCode.
     """
 
     pass

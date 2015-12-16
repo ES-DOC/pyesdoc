@@ -46,7 +46,7 @@ class Algorithm(object):
 class ConservationProperties(object):
     """A concrete class within the cim v2 type system.
 
-    Describes how prognostic variables are conserved
+    Describes how prognostic variables are conserved.
 
     """
     def __init__(self):
@@ -89,7 +89,7 @@ class Extent(object):
 class GridSummary(object):
     """A concrete class within the cim v2 type system.
 
-    Key scientific characteristics of the grid use to simulate a specific domain
+    Key scientific characteristics of the grid use to simulate a specific domain.
 
     """
     def __init__(self):
@@ -108,7 +108,7 @@ class Model(software.ComponentBase):
 
     A model component: can be executed standalone, and has as scientific
     description available via a link to a science.domain document. (A configured model can
-     be understood in terms of a simulation, a model, and a configuration.)
+     be understood in terms of a simulation, a model, and a configuration.).
 
     """
     def __init__(self):
@@ -159,7 +159,7 @@ class ProcessDetail(object):
     Three possible implementations of process_detail:
         1) A generic description of some aspect of detail,
         2) Several specific descriptions selected from a vocabulary, or
-        3) One specfic property selected from a vocabulary
+        3) One specfic property selected from a vocabulary.
 
     """
     def __init__(self):
@@ -202,7 +202,7 @@ class ScientificDomain(object):
     """A concrete class within the cim v2 type system.
 
     Scientific area of a numerical model - usually a sub-model or component.
-    Can also be known as a realm
+    Can also be known as a realm.
 
     """
     def __init__(self):
@@ -227,7 +227,7 @@ class ScientificDomain(object):
 class Tuning(object):
     """A concrete class within the cim v2 type system.
 
-    Method used to optimise equation parameters in model component (aka "tuning")
+    Method used to optimise equation parameters in model component (aka "tuning").
 
     """
     def __init__(self):
@@ -245,7 +245,7 @@ class Tuning(object):
 class GridLayouts(object):
     """An enumeration within the cim v2 type system.
 
-    Defines the set of grid layouts (e.g. Arakawa C-Grid) which are understood
+    Defines the set of grid layouts (e.g. Arakawa C-Grid) which are understood.
     """
 
     pass
@@ -254,7 +254,7 @@ class GridLayouts(object):
 class GridTypes(object):
     """An enumeration within the cim v2 type system.
 
-    Defines the set of grid types (e.g Cubed Sphere) which are understood
+    Defines the set of grid types (e.g Cubed Sphere) which are understood.
     """
 
     pass
@@ -263,7 +263,7 @@ class GridTypes(object):
 class ModelTypes(object):
     """An enumeration within the cim v2 type system.
 
-    Defines a set of gross model classes
+    Defines a set of gross model classes.
     """
 
     pass

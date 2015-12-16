@@ -22,7 +22,7 @@ import typeset_for_shared_package as shared
 class ComponentPerformance(object):
     """A concrete class within the cim v2 type system.
 
-    Describes the simulation rate of a component in seconds per model day
+    Describes the simulation rate of a component in seconds per model day.
 
     """
     def __init__(self):
@@ -66,7 +66,7 @@ class ComputePool(object):
 class Partition(object):
     """A concrete class within the cim v2 type system.
 
-    A major partition (component) of a computing system (aka machine)
+    A major partition (component) of a computing system (aka machine).
 
     """
     def __init__(self):
@@ -92,7 +92,7 @@ class Partition(object):
 class Performance(object):
     """A concrete class within the cim v2 type system.
 
-    Describes the properties of a performance of a configured model on a particular system/machine
+    Describes the properties of a performance of a configured model on a particular system/machine.
 
     """
     def __init__(self):
@@ -122,7 +122,7 @@ class Performance(object):
 class StoragePool(object):
     """A concrete class within the cim v2 type system.
 
-    Homogeneous storage pool on a computing machine
+    Homogeneous storage pool on a computing machine.
 
     """
     def __init__(self):
@@ -142,7 +142,7 @@ class StoragePool(object):
 class StorageVolume(object):
     """A concrete class within the cim v2 type system.
 
-    Volume and units
+    Volume and units.
 
     """
     def __init__(self):

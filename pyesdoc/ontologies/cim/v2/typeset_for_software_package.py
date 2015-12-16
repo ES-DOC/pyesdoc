@@ -91,7 +91,7 @@ class EntryPoint(object):
     Currently, a very basic schedule can be approximated by using the "proceeds" and "follows" attributes,
     however a more complete system is required for full BFG compatibility.
     Every EntryPoint can have a set of arguments associated with it.
-    These reference (previously defined) variables
+    These reference (previously defined) variables.
 
     """
     def __init__(self):
@@ -164,7 +164,7 @@ class SoftwareComponent(ComponentBase):
 class CouplingFramework(object):
     """An enumeration within the cim v2 type system.
 
-    The set of terms which define known coupling frameworks
+    The set of terms which define known coupling frameworks.
     """
 
     pass

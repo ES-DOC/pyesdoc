@@ -125,7 +125,7 @@ activity.AxisMember.type_info = (
 
 activity.Conformance.type_info = (
     ('target_requirement', designing.NumericalRequirement, True, False),
-    ('target_requirement_reference', shared.DocReference, False, False),
+    ('target_requirement_reference', shared.DocReference, True, False),
 )
 
 activity.Ensemble.type_info = (
@@ -135,7 +135,7 @@ activity.Ensemble.type_info = (
     ('members', activity.EnsembleMember, True, True),
     ('part_of', activity.UberEnsemble, False, True),
     ('supported', designing.NumericalExperiment, True, True),
-    ('supported_references', shared.DocReference, False, True),
+    ('supported_references', shared.DocReference, True, True),
 )
 
 activity.EnsembleAxis.type_info = (
@@ -143,28 +143,28 @@ activity.EnsembleAxis.type_info = (
     ('member', activity.AxisMember, True, True),
     ('short_identifier', unicode, True, False),
     ('target_requirement', designing.NumericalRequirement, True, False),
-    ('target_requirement_reference', shared.DocReference, False, False),
+    ('target_requirement_reference', shared.DocReference, True, False),
 )
 
 activity.EnsembleMember.type_info = (
     ('had_performance', platform.Performance, False, False),
     ('had_performance_reference', shared.DocReference, False, False),
     ('ran_on', platform.Machine, True, False),
-    ('ran_on_reference', shared.DocReference, False, False),
+    ('ran_on_reference', shared.DocReference, True, False),
     ('simulation', data.Simulation, True, False),
-    ('simulation_reference', shared.DocReference, False, False),
+    ('simulation_reference', shared.DocReference, True, False),
 )
 
 activity.ParentSimulation.type_info = (
     ('branch_time_in_child', shared.DateTime, False, False),
     ('branch_time_in_parent', shared.DateTime, False, False),
     ('parent', data.Simulation, True, False),
-    ('parent_reference', shared.DocReference, False, False),
+    ('parent_reference', shared.DocReference, True, False),
 )
 
 activity.UberEnsemble.type_info = (
     ('child_ensembles', activity.Ensemble, True, True),
-    ('child_ensembles_references', shared.DocReference, False, True),
+    ('child_ensembles_references', shared.DocReference, True, True),
 )
 
 data.Dataset.type_info = (
@@ -183,12 +183,12 @@ data.Dataset.type_info = (
 
 data.Downscaling.type_info = (
     ('downscaled_from', data.Simulation, True, False),
-    ('downscaled_from_reference', shared.DocReference, False, False),
+    ('downscaled_from_reference', shared.DocReference, True, False),
 )
 
 data.RelatedData.type_info = (
     ('other_dataset', data.Dataset, True, False),
-    ('other_dataset_reference', shared.DocReference, False, False),
+    ('other_dataset_reference', shared.DocReference, True, False),
     ('relationship', unicode, True, False),
 )
 
@@ -197,13 +197,13 @@ data.Simulation.type_info = (
     ('ensemble_identifier', unicode, True, False),
     ('parent_simulation', activity.ParentSimulation, False, False),
     ('part_of_project', designing.Project, True, True),
-    ('part_of_project_references', shared.DocReference, False, True),
+    ('part_of_project_references', shared.DocReference, True, True),
     ('primary_ensemble', activity.Ensemble, False, False),
     ('primary_ensemble_reference', shared.DocReference, False, False),
     ('ran_for_experiments', designing.NumericalExperiment, True, True),
-    ('ran_for_experiments_references', shared.DocReference, False, True),
+    ('ran_for_experiments_references', shared.DocReference, True, True),
     ('used', science.Model, True, False),
-    ('used_reference', shared.DocReference, False, False),
+    ('used_reference', shared.DocReference, True, False),
 )
 
 data.VariableCollection.type_info = (
@@ -235,7 +235,7 @@ designing.ForcingConstraint.type_info = (
 
 designing.MultiEnsemble.type_info = (
     ('ensemble_axis', designing.EnsembleRequirement, True, True),
-    ('ensemble_axis_references', shared.DocReference, False, True),
+    ('ensemble_axis_references', shared.DocReference, True, True),
 )
 
 designing.MultiTimeEnsemble.type_info = (
@@ -272,12 +272,12 @@ designing.Project.type_info = (
 
 designing.SimulationPlan.type_info = (
     ('expected_model', science.Model, True, False),
-    ('expected_model_reference', shared.DocReference, False, False),
+    ('expected_model_reference', shared.DocReference, True, False),
     ('expected_performance_sypd', float, False, False),
     ('expected_platform', platform.Machine, False, False),
     ('expected_platform_reference', shared.DocReference, False, False),
     ('will_support_experiments', designing.NumericalExperiment, True, True),
-    ('will_support_experiments_references', shared.DocReference, False, True),
+    ('will_support_experiments_references', shared.DocReference, True, True),
 )
 
 designing.TemporalConstraint.type_info = (
@@ -354,7 +354,7 @@ platform.Partition.type_info = (
     ('compute_pools', platform.ComputePool, True, True),
     ('description', unicode, False, False),
     ('institution', shared.Party, True, False),
-    ('institution_reference', shared.DocReference, False, False),
+    ('institution_reference', shared.DocReference, True, False),
     ('model_number', unicode, False, False),
     ('name', unicode, True, False),
     ('online_documentation', shared.OnlineResource, False, True),
@@ -375,10 +375,10 @@ platform.Performance.type_info = (
     ('memory_bloat', float, False, False),
     ('meta', shared.DocMetaInfo, True, False),
     ('model', science.Model, True, False),
-    ('model_reference', shared.DocReference, False, False),
+    ('model_reference', shared.DocReference, True, False),
     ('name', unicode, False, False),
     ('platform', platform.Machine, True, False),
-    ('platform_reference', shared.DocReference, False, False),
+    ('platform_reference', shared.DocReference, True, False),
     ('subcomponent_performance', platform.ComponentPerformance, False, False),
     ('sypd', float, False, False),
     ('total_nodes_used', int, False, False),
@@ -601,7 +601,7 @@ shared.RegularTimeset.type_info = (
 
 shared.Responsibility.type_info = (
     ('party', shared.Party, True, True),
-    ('party_references', shared.DocReference, False, True),
+    ('party_references', shared.DocReference, True, True),
     ('role', unicode, True, False),
     ('when', shared.TimePeriod, False, False),
 )

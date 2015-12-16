@@ -22,7 +22,7 @@ import typeset_for_activity_package as activity
 class NumericalExperiment(activity.Activity):
     """A concrete class within the cim v2 type system.
 
-    Defines a numerical experiment
+    Defines a numerical experiment.
 
     """
     def __init__(self):
@@ -77,7 +77,7 @@ class Project(activity.Activity):
 class SimulationPlan(activity.Activity):
     """A concrete class within the cim v2 type system.
 
-    Describes a simulation that needs to be run
+    Describes a simulation that needs to be run.
 
     """
     def __init__(self):
@@ -98,7 +98,7 @@ class SimulationPlan(activity.Activity):
 class DomainProperties(NumericalRequirement):
     """A concrete class within the cim v2 type system.
 
-    Properties of the domain which needs to be simulated, extend and/or resolution
+    Properties of the domain which needs to be simulated, extend and/or resolution.
 
     """
     def __init__(self):
@@ -114,7 +114,7 @@ class DomainProperties(NumericalRequirement):
 class EnsembleRequirement(NumericalRequirement):
     """A concrete class within the cim v2 type system.
 
-    Defines an experiment ensemble
+    Defines an experiment ensemble.
 
     """
     def __init__(self):
@@ -132,7 +132,7 @@ class EnsembleRequirement(NumericalRequirement):
 class ForcingConstraint(NumericalRequirement):
     """A concrete class within the cim v2 type system.
 
-    Identifies a model forcing constraint
+    Identifies a model forcing constraint.
 
     """
     def __init__(self):
@@ -154,7 +154,7 @@ class MultiEnsemble(NumericalRequirement):
     """A concrete class within the cim v2 type system.
 
     In the case of multiple ensemble axes, defines how they
-    are set up and ordered
+    are set up and ordered.
 
     """
     def __init__(self):
@@ -170,7 +170,7 @@ class MultiEnsemble(NumericalRequirement):
 class MultiTimeEnsemble(NumericalRequirement):
     """A concrete class within the cim v2 type system.
 
-    Defines an experiment ensemble with multiple start dates
+    Defines an experiment ensemble with multiple start dates.
 
     """
     def __init__(self):
@@ -224,7 +224,7 @@ class TemporalConstraint(NumericalRequirement):
 class EnsembleTypes(object):
     """An enumeration within the cim v2 type system.
 
-    Defines the various axes along which one can set up an ensemble
+    Defines the various axes along which one can set up an ensemble.
     """
 
     pass
@@ -233,7 +233,7 @@ class EnsembleTypes(object):
 class ForcingTypes(object):
     """An enumeration within the cim v2 type system.
 
-    Defines the possible set of forcing types for a forcing constraint
+    Defines the possible set of forcing types for a forcing constraint.
     """
 
     pass
