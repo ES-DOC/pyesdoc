@@ -88,7 +88,7 @@ class EntryPoint(object):
 
     Describes a function or subroutine of a SoftwareComponent.
     BFG will use these EntryPoints to define a schedule of subroutine calls for a coupled model.
-    Currently, a very basic schedule can be approximated by using the "proceeds" and "follows" attributes,
+    Currently, a very basic schedule can be approximated by using the 'proceeds' and 'follows' attributes,
     however a more complete system is required for full BFG compatibility.
     Every EntryPoint can have a set of arguments associated with it.
     These reference (previously defined) variables.

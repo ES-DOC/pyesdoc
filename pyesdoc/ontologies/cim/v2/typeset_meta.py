@@ -72,6 +72,7 @@ science.Process.type_key = u'cim.2.science.Process'
 science.ProcessDetail.type_key = u'cim.2.science.ProcessDetail'
 science.Resolution.type_key = u'cim.2.science.Resolution'
 science.ScientificDomain.type_key = u'cim.2.science.ScientificDomain'
+science.SubProcess.type_key = u'cim.2.science.SubProcess'
 science.Tuning.type_key = u'cim.2.science.Tuning'
 shared.Calendar.type_key = u'cim.2.shared.Calendar'
 shared.CimLink.type_key = u'cim.2.shared.CimLink'
@@ -399,7 +400,6 @@ platform.StorageVolume.type_info = (
 )
 
 science.Algorithm.type_info = (
-    ('detailed_properties', science.ProcessDetail, False, True),
     ('diagnostic_variables', data.VariableCollection, False, True),
     ('heading', unicode, True, False),
     ('implementation_overview', unicode, True, False),
@@ -444,22 +444,23 @@ science.Model.type_info = (
 )
 
 science.Process.type_info = (
-    ('algorithm_properties', science.Algorithm, False, True),
+    ('algorithms', science.Algorithm, False, True),
     ('description', unicode, False, False),
-    ('detailed_properties', science.ProcessDetail, False, True),
     ('implementation_overview', unicode, True, False),
     ('keywords', unicode, True, False),
     ('name', unicode, True, False),
+    ('properties', science.ProcessDetail, False, True),
     ('references', shared.Reference, False, True),
+    ('sub_processes', science.SubProcess, False, True),
     ('time_step_in_process', float, False, False),
 )
 
 science.ProcessDetail.type_info = (
     ('content', unicode, False, False),
+    ('detail_selection', unicode, False, True),
+    ('detail_vocabulary', unicode, False, False),
     ('heading', unicode, False, False),
-    ('properties', shared.KeyFloat, False, True),
-    ('selection', unicode, False, True),
-    ('vocabulary', unicode, False, False),
+    ('numeric_properties', shared.KeyFloat, False, True),
 )
 
 science.Resolution.type_info = (
@@ -482,6 +483,15 @@ science.ScientificDomain.type_info = (
     ('simulates', science.Process, True, True),
     ('time_step', float, True, False),
     ('tuning_applied', science.Tuning, False, False),
+)
+
+science.SubProcess.type_info = (
+    ('description', unicode, False, False),
+    ('implementation_overview', unicode, False, False),
+    ('keywords', unicode, False, False),
+    ('name', unicode, True, False),
+    ('properties', science.ProcessDetail, False, True),
+    ('references', shared.Reference, False, True),
 )
 
 science.Tuning.type_info = (

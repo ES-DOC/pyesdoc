@@ -35,7 +35,6 @@ class Algorithm(object):
         """
         super(Algorithm, self).__init__()
 
-        self.detailed_properties = []                     # science.ProcessDetail
         self.diagnostic_variables = []                    # data.VariableCollection
         self.heading = None                               # unicode
         self.implementation_overview = None               # unicode
@@ -143,13 +142,14 @@ class Process(object):
         """
         super(Process, self).__init__()
 
-        self.algorithm_properties = []                    # science.Algorithm
+        self.algorithms = []                              # science.Algorithm
         self.description = None                           # unicode
-        self.detailed_properties = []                     # science.ProcessDetail
         self.implementation_overview = None               # unicode
         self.keywords = None                              # unicode
         self.name = None                                  # unicode
+        self.properties = []                              # science.ProcessDetail
         self.references = []                              # shared.Reference
+        self.sub_processes = []                           # science.SubProcess
         self.time_step_in_process = None                  # float
 
 
@@ -169,10 +169,10 @@ class ProcessDetail(object):
         super(ProcessDetail, self).__init__()
 
         self.content = None                               # unicode
+        self.detail_selection = []                        # unicode
+        self.detail_vocabulary = None                     # unicode
         self.heading = None                               # unicode
-        self.properties = []                              # shared.KeyFloat
-        self.selection = []                               # unicode
-        self.vocabulary = None                            # unicode
+        self.numeric_properties = []                      # shared.KeyFloat
 
 
 class Resolution(object):
@@ -224,10 +224,34 @@ class ScientificDomain(object):
         self.tuning_applied = None                        # science.Tuning
 
 
+class SubProcess(object):
+    """A concrete class within the cim v2 type system.
+
+    Provides structure for description of part of process simulated within a particular
+    area (or domain/realm/component) of a model. Typically this will be a part of process
+    which shares common properties. It will normally be subclassed within a specific
+    implementation so that constraints can be used to ensure that the vocabulary used is
+    consistent with project requirements.
+
+    """
+    def __init__(self):
+        """Constructor.
+
+        """
+        super(SubProcess, self).__init__()
+
+        self.description = None                           # unicode
+        self.implementation_overview = None               # unicode
+        self.keywords = None                              # unicode
+        self.name = None                                  # unicode
+        self.properties = []                              # science.ProcessDetail
+        self.references = []                              # shared.Reference
+
+
 class Tuning(object):
     """A concrete class within the cim v2 type system.
 
-    Method used to optimise equation parameters in model component (aka "tuning").
+    Method used to optimise equation parameters in model component (aka 'tuning').
 
     """
     def __init__(self):
