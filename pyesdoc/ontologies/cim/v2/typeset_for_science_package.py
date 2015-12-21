@@ -24,9 +24,10 @@ class Algorithm(object):
     """A concrete class within the cim v2 type system.
 
     Used to hold information associated with an algorithm which implements some key
-    part of a process, and its properties. In most cases this is quite a high level concept
-    and isn't intended to describe the gory detail of how the code implements the algorithm
-    rather the key scientific aspects of the algorithm.
+    part of a process. In most cases this is quite a high level concept and isn't intended
+    to describe the gory detail of how the code implements the algorithm rather the key
+    scientific aspects of the algorithm. In particular, it provides a method
+    of grouping variables which take part in an algorithm within a process.
 
     """
     def __init__(self):
@@ -133,7 +134,8 @@ class Process(object):
     Provides structure for description of a process simulated within a particular
     area (or domain/realm/component) of a model. This will often be subclassed
     within a specific implementation so that constraints can be used to ensure
-    that the vocabulary used is consistent with project requirements.
+    that the process details requested are consistent with project requirements
+    for information.
 
     """
     def __init__(self):
@@ -156,10 +158,11 @@ class Process(object):
 class ProcessDetail(object):
     """A concrete class within the cim v2 type system.
 
-    Three possible implementations of process_detail:
-        1) A generic description of some aspect of detail,
-        2) Several specific descriptions selected from a vocabulary, or
-        3) One specfic property selected from a vocabulary.
+    Provides detail of specific properties of a process, there are two possible specialisations
+    expected: (1) A detail_vocabulary is identified, and a cardinality is assigned to that
+    for possible responses, or (2) Process_Detail is used to provide a collection for a set of
+    properties which are defined in the sub-class. However, those properties must have a type
+    which is selected from the classmap (that is, standard 'non-es-doc' types).
 
     """
     def __init__(self):
@@ -168,11 +171,11 @@ class ProcessDetail(object):
         """
         super(ProcessDetail, self).__init__()
 
+        self.cardinality_of_selection = None              # science.SelectionCardinality
         self.content = None                               # unicode
         self.detail_selection = []                        # unicode
         self.detail_vocabulary = None                     # unicode
         self.heading = None                               # unicode
-        self.numeric_properties = []                      # shared.KeyFloat
 
 
 class Resolution(object):
@@ -229,9 +232,9 @@ class SubProcess(object):
 
     Provides structure for description of part of process simulated within a particular
     area (or domain/realm/component) of a model. Typically this will be a part of process
-    which shares common properties. It will normally be subclassed within a specific
-    implementation so that constraints can be used to ensure that the vocabulary used is
-    consistent with project requirements.
+    which shares common properties. It will normally be sub classed within a specific
+    implementation so that constraints can be used to ensure that the process details requested are
+    consistent with projects requirements for information.
 
     """
     def __init__(self):
@@ -288,6 +291,15 @@ class ModelTypes(object):
     """An enumeration within the cim v2 type system.
 
     Defines a set of gross model classes.
+    """
+
+    pass
+
+
+class SelectionCardinality(object):
+    """An enumeration within the cim v2 type system.
+
+    Provides the possible cardinalities for selecting from a controlled vocabulary.
     """
 
     pass

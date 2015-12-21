@@ -456,11 +456,11 @@ science.Process.type_info = (
 )
 
 science.ProcessDetail.type_info = (
+    ('cardinality_of_selection', unicode, False, False),
     ('content', unicode, False, False),
     ('detail_selection', unicode, False, True),
     ('detail_vocabulary', unicode, False, False),
     ('heading', unicode, False, False),
-    ('numeric_properties', shared.KeyFloat, False, True),
 )
 
 science.Resolution.type_info = (
