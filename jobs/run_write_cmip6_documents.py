@@ -477,8 +477,8 @@ class DocumentSet(object):
         return result
 
 
-    def _get_document_reference(self, doc):
-        """Returns a document reference.
+    def _get_document_link(self, doc):
+        """Returns a document link.
 
         """
         if doc:
@@ -602,21 +602,21 @@ class DocumentSet(object):
             experiment.requirements = [r for r in experiment.requirements if r]
 
 
-    def set_document_references(self):
+    def set_document_links(self):
         """Sets inter document references.
 
         """
         # Responsibility to party references.
         for responsibility in self.responsible_parties:
-            responsibility.party_references = [self._get_document_reference(d) for d in responsibility.party]
+            responsibility.link_to_party = [self._get_document_link(d) for d in responsibility.party]
 
         # Experiment to related experiment references.
         for exp in self.experiments:
-            exp.related_experiments_references = [self._get_document_reference(d) for d in exp.related_experiments]
+            exp.link_to_related_experiments = [self._get_document_link(d) for d in exp.related_experiments]
 
         # Experiment to requirement references.
         for exp in self.experiments:
-            exp.requirements_references = [self._get_document_reference(d) for d in exp.requirements]
+            exp.link_to_requirements = [self._get_document_link(d) for d in exp.requirements]
 
 
     def _prepare_for_write(self):
@@ -671,7 +671,7 @@ def _main(worksheet_fpath, archive_dir):
         raise ValueError("Archive directory does not exist")
 
     document_set = DocumentSet(archive_dir, Spreadsheet(worksheet_fpath))
-    document_set.set_document_references()
+    document_set.set_document_links()
     document_set.write_documents()
 
 

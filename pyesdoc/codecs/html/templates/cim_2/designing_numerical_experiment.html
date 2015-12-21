@@ -23,8 +23,8 @@
 	{% comment ************************************************** %}
 	{% comment Sub-section: requirements 		    			  %}
 	{% comment ************************************************** %}
-	{% if doc.requirements_references %}
-		{% set doc.requirements = load(doc.requirements_references) %}
+	{% if doc.link_to_requirements %}
+		{% set doc.requirements = load(doc.link_to_requirements) %}
 		{% set header = 3 %}
 		{% include designing_numerical_experiment_requirements.html %}
 	{% end %}

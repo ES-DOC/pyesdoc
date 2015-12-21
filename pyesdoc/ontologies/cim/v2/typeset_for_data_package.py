@@ -35,14 +35,14 @@ class Dataset(object):
         self.availability = []                            # shared.OnlineResource
         self.description = None                           # unicode
         self.drs_datasets = []                            # drs.DrsPublicationDataset
+        self.link_to_produced_by = None                   # shared.DocReference
+        self.link_to_responsible_parties = []             # shared.DocReference
         self.meta = shared.DocMetaInfo()                  # shared.DocMetaInfo
         self.name = None                                  # unicode
         self.produced_by = None                           # data.Simulation
-        self.produced_by_reference = None                 # shared.DocReference
         self.references = []                              # shared.Citation
         self.related_to_dataset = []                      # data.RelatedData
         self.responsible_parties = []                     # shared.Responsibility
-        self.responsible_parties_references = []          # shared.DocReference
 
 
 class RelatedData(shared.CimLink):
@@ -57,8 +57,8 @@ class RelatedData(shared.CimLink):
         """
         super(RelatedData, self).__init__()
 
+        self.link_to_other_dataset = None                 # shared.DocReference
         self.other_dataset = None                         # data.Dataset
-        self.other_dataset_reference = None               # shared.DocReference
         self.relationship = None                          # data.DataAssociationTypes
 
 
@@ -77,15 +77,15 @@ class Simulation(activity.Activity):
 
         self.calendar = None                              # shared.Calendar
         self.ensemble_identifier = None                   # unicode
+        self.link_to_part_of_project = []                 # shared.DocReference
+        self.link_to_primary_ensemble = None              # shared.DocReference
+        self.link_to_ran_for_experiments = []             # shared.DocReference
+        self.link_to_used = None                          # shared.DocReference
         self.parent_simulation = None                     # activity.ParentSimulation
         self.part_of_project = []                         # designing.Project
-        self.part_of_project_references = []              # shared.DocReference
         self.primary_ensemble = None                      # activity.Ensemble
-        self.primary_ensemble_reference = None            # shared.DocReference
         self.ran_for_experiments = []                     # designing.NumericalExperiment
-        self.ran_for_experiments_references = []          # shared.DocReference
         self.used = None                                  # science.Model
-        self.used_reference = None                        # shared.DocReference
 
 
 class VariableCollection(object):
@@ -117,7 +117,7 @@ class Downscaling(Simulation):
         super(Downscaling, self).__init__()
 
         self.downscaled_from = None                       # data.Simulation
-        self.downscaled_from_reference = None             # shared.DocReference
+        self.link_to_downscaled_from = None               # shared.DocReference
 
 
 class DataAssociationTypes(object):

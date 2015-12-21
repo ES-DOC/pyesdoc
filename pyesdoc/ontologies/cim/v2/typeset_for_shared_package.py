@@ -266,8 +266,8 @@ class Responsibility(object):
         """
         super(Responsibility, self).__init__()
 
+        self.link_to_party = []                           # shared.DocReference
         self.party = []                                   # shared.Party
-        self.party_references = []                        # shared.DocReference
         self.role = None                                  # shared.RoleCode
         self.when = None                                  # shared.TimePeriod
 

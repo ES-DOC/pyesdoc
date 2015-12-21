@@ -26,6 +26,6 @@ def _set_related_experiment_viewer_urls(ctx):
     """Sets related experiment viewer urls.
 
     """
-    for ref in ctx.doc.related_experiments_references:
+    for ref in ctx.doc.link_to_related_experiments:
         ref.viewer_url = ESDOC_VIEWER_URL.format(ctx.meta.project, ref.id, ref.version)
 
