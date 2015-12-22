@@ -25,9 +25,7 @@ def _is_encodable_attribute(name):
     """Returns flag indicating whether an attribute is encodable.
 
     """
-    if name.startswith("_") or name.startswith("__"):
-        return False
-    if name == "ext":
+    if name.startswith("_") or name.startswith("__") or name == "ext":
         return False
     return True
 

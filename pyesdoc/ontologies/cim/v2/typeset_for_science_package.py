@@ -122,8 +122,6 @@ class Model(software.ComponentBase):
         self.coupler = None                               # software.CouplingFramework
         self.extra_conservation_properties = None         # science.ConservationProperties
         self.internal_software_components = []            # software.SoftwareComponent
-        self.link_to_coupled_software_components = []     # shared.DocReference
-        self.link_to_scientific_domain = []               # shared.DocReference
         self.meta = shared.DocMetaInfo()                  # shared.DocMetaInfo
         self.scientific_domain = []                       # science.ScientificDomain
 

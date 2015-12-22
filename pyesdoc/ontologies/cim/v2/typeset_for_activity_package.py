@@ -77,7 +77,6 @@ class EnsembleAxis(object):
         super(EnsembleAxis, self).__init__()
 
         self.extra_detail = None                          # unicode
-        self.link_to_target_requirement = None            # shared.DocReference
         self.member = []                                  # activity.AxisMember
         self.short_identifier = None                      # unicode
         self.target_requirement = None                    # designing.NumericalRequirement
@@ -98,9 +97,6 @@ class EnsembleMember(object):
         super(EnsembleMember, self).__init__()
 
         self.had_performance = None                       # platform.Performance
-        self.link_to_had_performance = None               # shared.DocReference
-        self.link_to_ran_on = None                        # shared.DocReference
-        self.link_to_simulation = None                    # shared.DocReference
         self.ran_on = None                                # platform.Machine
         self.simulation = None                            # data.Simulation
 
@@ -119,7 +115,6 @@ class ParentSimulation(object):
 
         self.branch_time_in_child = None                  # shared.DateTime
         self.branch_time_in_parent = None                 # shared.DateTime
-        self.link_to_parent = None                        # shared.DocReference
         self.parent = None                                # data.Simulation
 
 
@@ -136,7 +131,6 @@ class Conformance(Activity):
         """
         super(Conformance, self).__init__()
 
-        self.link_to_target_requirement = None            # shared.DocReference
         self.target_requirement = None                    # designing.NumericalRequirement
 
 
@@ -157,8 +151,6 @@ class Ensemble(Activity):
 
         self.common_conformances = []                     # activity.Conformance
         self.has_ensemble_axes = []                       # activity.EnsembleAxis
-        self.link_to_common_conformances = []             # shared.DocReference
-        self.link_to_supported = []                       # shared.DocReference
         self.members = []                                 # activity.EnsembleMember
         self.part_of = []                                 # activity.UberEnsemble
         self.supported = []                               # designing.NumericalExperiment
@@ -179,7 +171,6 @@ class UberEnsemble(Ensemble):
         super(UberEnsemble, self).__init__()
 
         self.child_ensembles = []                         # activity.Ensemble
-        self.link_to_child_ensembles = []                 # shared.DocReference
 
 
 class EnsembleTypes(object):

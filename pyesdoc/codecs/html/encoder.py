@@ -50,7 +50,12 @@ def load(reference):
         """Inner function to load document from archive.
 
         """
-        return pyesdoc.archive.read(ref.id, ref.version)
+        try:
+            ref.meta
+        except AttributeError:
+            return pyesdoc.archive.read(ref.id, ref.version)
+        else:
+            return ref
 
     try:
         iter(reference)

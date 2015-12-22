@@ -157,7 +157,7 @@ class Spreadsheet(object):
 
         # Assign document author.
         try:
-            doc.meta.link_to_author = _DOC_AUTHOR_REFERENCE
+            doc.meta.author = _DOC_AUTHOR_REFERENCE
         except AttributeError:
             pass
 
@@ -608,29 +608,16 @@ class DocumentSet(object):
         """
         # Responsibility to party references.
         for responsibility in self.responsible_parties:
-            responsibility.link_to_party = [self._get_document_link(d) for d in responsibility.party]
+            responsibility.party = [self._get_document_link(d) for d in responsibility.party]
 
         # Experiment to related experiment references.
         for exp in self.experiments:
-            exp.link_to_related_experiments = [self._get_document_link(d) for d in exp.related_experiments]
+            exp.related_experiments = [self._get_document_link(d) for d in exp.related_experiments]
 
         # Experiment to requirement references.
         for exp in self.experiments:
-            exp.link_to_requirements = [self._get_document_link(d) for d in exp.requirements]
+            exp.requirements = [self._get_document_link(d) for d in exp.requirements]
 
-
-    def _prepare_for_write(self):
-        """Prepares for I/O by deleting information not to be serialized.
-
-        """
-        for responsibility in self.responsible_parties:
-            del responsibility.party
-        for experiment in self.experiments:
-            del experiment.ensembles
-            del experiment.forcing_constraints
-            del experiment.related_experiments
-            del experiment.requirements
-            del experiment.temporal_constraint
 
 
     def write_documents(self):
@@ -642,9 +629,7 @@ class DocumentSet(object):
 
             """
             fname = pyesdoc.get_filename(doc, encoding)
-            # fname = hashlib.md5(fname).hexdigest()
             fpath = os.path.join(self.archive_directory, fname)
-            # fpath += ".json"
 
             return fpath
 
@@ -655,7 +640,7 @@ class DocumentSet(object):
             """
             pyesdoc.write(doc, encoding=encoding, fpath=_get_filepath(doc, encoding))
 
-        self._prepare_for_write()
+
         for doc in self.documents:
             _write(doc, pyesdoc.ESDOC_ENCODING_JSON)
             _write(doc, pyesdoc.ESDOC_ENCODING_XML)

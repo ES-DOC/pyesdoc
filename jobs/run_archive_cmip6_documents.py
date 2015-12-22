@@ -42,8 +42,6 @@ def _main(source_dir, target_dir):
     if not os.path.isdir(target_dir):
         raise ValueError("Target directory does not exist")
 
-    
-
     for src in glob.iglob(os.path.join(source_dir, "*.json")):
         dest = hashlib.md5(src.split("/")[-1]).hexdigest()
         dest += ".json"

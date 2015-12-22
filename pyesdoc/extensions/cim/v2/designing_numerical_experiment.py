@@ -10,7 +10,7 @@
 
 """
 from pyesdoc.constants import ESDOC_VIEWER_URL
-
+from pyesdoc.ontologies import cim
 
 
 def get_extenders():
@@ -26,6 +26,9 @@ def _set_related_experiment_viewer_urls(ctx):
     """Sets related experiment viewer urls.
 
     """
-    for ref in ctx.doc.link_to_related_experiments:
-        ref.viewer_url = ESDOC_VIEWER_URL.format(ctx.meta.project, ref.id, ref.version)
+    for exp in ctx.doc.related_experiments:
+        if isinstance(exp, cim.v2.designing.NumericalExperiment):
+            exp.viewer_url = ESDOC_VIEWER_URL.format(ctx.meta.project, exp.meta.id, exp.meta.version)
+        elif isinstance(exp, cim.v2.shared.DocReference):
+            exp.viewer_url = ESDOC_VIEWER_URL.format(ctx.meta.project, exp.id, exp.version)
 

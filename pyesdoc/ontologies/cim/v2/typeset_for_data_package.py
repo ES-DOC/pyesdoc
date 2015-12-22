@@ -35,8 +35,6 @@ class Dataset(object):
         self.availability = []                            # shared.OnlineResource
         self.description = None                           # unicode
         self.drs_datasets = []                            # drs.DrsPublicationDataset
-        self.link_to_produced_by = None                   # shared.DocReference
-        self.link_to_responsible_parties = []             # shared.DocReference
         self.meta = shared.DocMetaInfo()                  # shared.DocMetaInfo
         self.name = None                                  # unicode
         self.produced_by = None                           # data.Simulation
@@ -57,7 +55,6 @@ class RelatedData(shared.CimLink):
         """
         super(RelatedData, self).__init__()
 
-        self.link_to_other_dataset = None                 # shared.DocReference
         self.other_dataset = None                         # data.Dataset
         self.relationship = None                          # data.DataAssociationTypes
 
@@ -77,10 +74,6 @@ class Simulation(activity.Activity):
 
         self.calendar = None                              # shared.Calendar
         self.ensemble_identifier = None                   # unicode
-        self.link_to_part_of_project = []                 # shared.DocReference
-        self.link_to_primary_ensemble = None              # shared.DocReference
-        self.link_to_ran_for_experiments = []             # shared.DocReference
-        self.link_to_used = None                          # shared.DocReference
         self.parent_simulation = None                     # activity.ParentSimulation
         self.part_of_project = []                         # designing.Project
         self.primary_ensemble = None                      # activity.Ensemble
@@ -117,7 +110,6 @@ class Downscaling(Simulation):
         super(Downscaling, self).__init__()
 
         self.downscaled_from = None                       # data.Simulation
-        self.link_to_downscaled_from = None               # shared.DocReference
 
 
 class DataAssociationTypes(object):

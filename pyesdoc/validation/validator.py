@@ -20,6 +20,22 @@ _ERR_ITEM_IS_NULL = "is null"
 _ERR_ITEM_TYPE = "is of invalid type (actual = {0}, expected={1})"
 _ERR_ITEM_IS_EMPTY_TEXT = "is zero length"
 
+# Type of document references.
+_DOCUMENT_REFERENCE_TYPE = "DocReference"
+
+
+def _is_type_mismatch(instance, expected_type):
+    """Validates that a complex type matches.
+
+    """
+    if isinstance(instance, expected_type):
+        return False
+
+    if type(instance).__name__.split(".")[-1] == _DOCUMENT_REFERENCE_TYPE:
+        return False
+
+    return True
+
 
 def _validate_list_node(node):
     """Validates a node that represents a list.
@@ -29,7 +45,7 @@ def _validate_list_node(node):
         node.error = _ERR_LIST_IS_EMPTY
     else:
         for i in node.value:
-            if not isinstance(i, node.type):
+            if _is_type_mismatch(i, node.type):
                 node.error = _ERR_LIST_CONTAINS_INVALID_ITEM_TYPES
 
 
@@ -46,24 +62,20 @@ def _validate_item_node(node):
         node.error = _ERR_ITEM_IS_NULL
         return
 
-    # Validate type (non text).
-    if node.type not in (str, unicode) and not isinstance(node.value, node.type):
-        node.error = _ERR_ITEM_TYPE.format(type(node.value), node.type)
-        return
-
-    # Validate type.
-    if node.type in (str, unicode):
-        if not isinstance(node.value, (str, unicode)):
+    # Assert valid type (non text).
+    if node.type not in (str, unicode):
+        if _is_type_mismatch(node.value, node.type):
             node.error = _ERR_ITEM_TYPE.format(type(node.value), node.type)
-            return
-    elif not isinstance(node.value, node.type):
+        return
+
+    # Assert valid type (text).
+    if not isinstance(node.value, (str, unicode)):
         node.error = _ERR_ITEM_TYPE.format(type(node.value), node.type)
         return
 
-    # Validate length of text types.
-    if node.type in (str, unicode) and len(node.value) == 0:
+    # Assert valid text length.
+    if len(node.value) == 0:
         node.error = _ERR_ITEM_IS_EMPTY_TEXT
-        return
 
 
 def _validate_node(node):

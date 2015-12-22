@@ -31,8 +31,6 @@ class NumericalExperiment(activity.Activity):
         """
         super(NumericalExperiment, self).__init__()
 
-        self.link_to_related_experiments = []             # shared.DocReference
-        self.link_to_requirements = []                    # shared.DocReference
         self.related_experiments = []                     # designing.NumericalExperiment
         self.requirements = []                            # designing.NumericalRequirement
 
@@ -51,7 +49,6 @@ class NumericalRequirement(activity.Activity):
 
         self.additional_requirements = []                 # designing.NumericalRequirement
         self.conformance_is_requested = None              # bool
-        self.link_to_additional_requirements = []         # shared.DocReference
 
 
 class Project(activity.Activity):
@@ -66,9 +63,6 @@ class Project(activity.Activity):
         """
         super(Project, self).__init__()
 
-        self.link_to_previous_projects = []               # shared.DocReference
-        self.link_to_requires_experiments = []            # shared.DocReference
-        self.link_to_sub_projects = []                    # shared.DocReference
         self.previous_projects = []                       # designing.Project
         self.requires_experiments = []                    # designing.NumericalExperiment
         self.sub_projects = []                            # designing.Project
@@ -89,9 +83,6 @@ class SimulationPlan(activity.Activity):
         self.expected_model = None                        # science.Model
         self.expected_performance_sypd = None             # float
         self.expected_platform = None                     # platform.Machine
-        self.link_to_expected_model = None                # shared.DocReference
-        self.link_to_expected_platform = None             # shared.DocReference
-        self.link_to_will_support_experiments = []        # shared.DocReference
         self.will_support_experiments = []                # designing.NumericalExperiment
 
 
@@ -125,7 +116,6 @@ class EnsembleRequirement(NumericalRequirement):
 
         self.ensemble_member = []                         # designing.NumericalRequirement
         self.ensemble_type = None                         # designing.EnsembleTypes
-        self.link_to_ensemble_member = []                 # shared.DocReference
         self.minimum_size = None                          # int
 
 
@@ -164,7 +154,6 @@ class MultiEnsemble(NumericalRequirement):
         super(MultiEnsemble, self).__init__()
 
         self.ensemble_axis = []                           # designing.EnsembleRequirement
-        self.link_to_ensemble_axis = []                   # shared.DocReference
 
 
 class MultiTimeEnsemble(NumericalRequirement):

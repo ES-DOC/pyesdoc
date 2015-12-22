@@ -133,7 +133,6 @@ class DocMetaInfo(object):
         self.id = None                                    # uuid.UUID
         self.institute = None                             # unicode
         self.language = None                              # unicode
-        self.link_to_author = None                        # shared.DocReference
         self.project = None                               # unicode
         self.reviews = []                                 # shared.DocQualityReview
         self.sort_key = None                              # unicode
@@ -160,7 +159,6 @@ class DocQualityReview(object):
 
         self.completeness = None                          # unicode
         self.date = None                                  # unicode
-        self.link_to_reviewer = None                      # shared.DocReference
         self.quality = None                               # unicode
         self.reviewer = None                              # shared.Party
 
@@ -286,7 +284,6 @@ class Responsibility(object):
         """
         super(Responsibility, self).__init__()
 
-        self.link_to_party = []                           # shared.DocReference
         self.party = []                                   # shared.Party
         self.role = None                                  # shared.RoleCode
         self.when = None                                  # shared.TimePeriod
