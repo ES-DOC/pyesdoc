@@ -157,7 +157,7 @@ class Spreadsheet(object):
 
         # Assign document author.
         try:
-            doc.meta.author_reference = _DOC_AUTHOR_REFERENCE
+            doc.meta.link_to_author = _DOC_AUTHOR_REFERENCE
         except AttributeError:
             pass
 

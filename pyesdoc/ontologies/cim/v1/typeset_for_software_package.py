@@ -139,8 +139,9 @@ class Connection(object):
         super(Connection, self).__init__()
 
         self.description = None                           # unicode
+        self.link_to_priming = None                       # shared.DocReference
+        self.link_to_transformers = []                    # shared.DocReference
         self.priming = None                               # shared.DataSource
-        self.priming_reference = None                     # shared.DocReference
         self.properties = []                              # software.ConnectionProperty
         self.sources = []                                 # software.ConnectionEndpoint
         self.spatial_regridding = []                      # software.SpatialRegridding
@@ -149,7 +150,6 @@ class Connection(object):
         self.time_profile = None                          # software.Timing
         self.time_transformation = None                   # software.TimeTransformation
         self.transformers = []                            # software.ProcessorComponent
-        self.transformers_references = []                 # shared.DocReference
         self.type = None                                  # software.ConnectionType
 
 
@@ -166,8 +166,8 @@ class ConnectionEndpoint(object):
         super(ConnectionEndpoint, self).__init__()
 
         self.data_source = None                           # shared.DataSource
-        self.data_source_reference = None                 # shared.DocReference
         self.instance_id = None                           # unicode
+        self.link_to_data_source = None                   # shared.DocReference
         self.properties = []                              # software.ConnectionProperty
 
 
@@ -200,8 +200,9 @@ class Coupling(object):
         self.connections = []                             # software.Connection
         self.description = None                           # unicode
         self.is_fully_specified = None                    # bool
+        self.link_to_priming = None                       # shared.DocReference
+        self.link_to_transformers = []                    # shared.DocReference
         self.priming = None                               # shared.DataSource
-        self.priming_reference = None                     # shared.DocReference
         self.properties = []                              # software.CouplingProperty
         self.purpose = None                               # shared.DataPurpose
         self.sources = []                                 # software.CouplingEndpoint
@@ -211,7 +212,6 @@ class Coupling(object):
         self.time_profile = None                          # software.Timing
         self.time_transformation = None                   # software.TimeTransformation
         self.transformers = []                            # software.ProcessorComponent
-        self.transformers_references = []                 # shared.DocReference
         self.type = None                                  # software.ConnectionType
 
 
@@ -228,8 +228,8 @@ class CouplingEndpoint(object):
         super(CouplingEndpoint, self).__init__()
 
         self.data_source = None                           # shared.DataSource
-        self.data_source_reference = None                 # shared.DocReference
         self.instance_id = None                           # unicode
+        self.link_to_data_source = None                   # shared.DocReference
         self.properties = []                              # software.CouplingProperty
 
 
@@ -263,9 +263,9 @@ class Deployment(object):
         self.description = None                           # unicode
         self.executable_arguments = []                    # unicode
         self.executable_name = None                       # unicode
+        self.link_to_platform = None                      # shared.DocReference
         self.parallelisation = None                       # software.Parallelisation
         self.platform = None                              # shared.Platform
-        self.platform_reference = None                    # shared.DocReference
 
 
 class EntryPoint(object):
@@ -362,7 +362,7 @@ class SpatialRegriddingUserMethod(object):
         super(SpatialRegriddingUserMethod, self).__init__()
 
         self.file = None                                  # data.DataObject
-        self.file_reference = None                        # shared.DocReference
+        self.link_to_file = None                          # shared.DocReference
         self.name = None                                  # unicode
 
 
@@ -474,8 +474,12 @@ class ComponentPropertyIntentType(object):
 
     The direction that the associated component property is intended to be coupled: in, out, or inout.
     """
-
-    pass
+    is_open = False
+    members = [
+        "in",
+        "inout",
+        "out"
+        ]
 
 
 class ConnectionType(object):
@@ -483,8 +487,8 @@ class ConnectionType(object):
 
     The ConnectionType enumeration describes the mechanism of transport for a connection.
     """
-
-    pass
+    is_open = True
+    members = []
 
 
 class CouplingFrameworkType(object):
@@ -492,8 +496,12 @@ class CouplingFrameworkType(object):
 
     Creates and returns instance of coupling_framework_type enum.
     """
-
-    pass
+    is_open = False
+    members = [
+        "BFG",
+        "ESMF",
+        "OASIS"
+        ]
 
 
 class ModelComponentType(object):
@@ -501,8 +509,8 @@ class ModelComponentType(object):
 
     An enumeration of types of ModelComponent. This includes things like atmosphere & ocean models, radiation schemes, etc. CIM best-practice is to describe every component for which there is a named ComponentType as a separate component, even if it is not a separate unit of software (ie: even if it is embedded), instead of as a (set of) ModelParameters. This codelist is synonomous with "realm" for the purposes of CMIP5.
     """
-
-    pass
+    is_open = True
+    members = []
 
 
 class SpatialRegriddingDimensionType(object):
@@ -510,8 +518,12 @@ class SpatialRegriddingDimensionType(object):
 
     Creates and returns instance of spatial_regridding_dimension_type enum.
     """
-
-    pass
+    is_open = False
+    members = [
+        "1D",
+        "2D",
+        "3D"
+        ]
 
 
 class SpatialRegriddingStandardMethodType(object):
@@ -519,8 +531,16 @@ class SpatialRegriddingStandardMethodType(object):
 
     Creates and returns instance of spatial_regridding_standard_method_type enum.
     """
-
-    pass
+    is_open = False
+    members = [
+        "conservative",
+        "conservative-first-order",
+        "conservative-second-order",
+        "cubic",
+        "linear",
+        "near-neighbour",
+        "non-conservative"
+        ]
 
 
 class StatisticalModelComponentType(object):
@@ -528,8 +548,8 @@ class StatisticalModelComponentType(object):
 
     An enumeration of types of ProcessorComponent.  This includes things like transformers and post-processors.
     """
-
-    pass
+    is_open = True
+    members = []
 
 
 class TimeMappingType(object):
@@ -537,8 +557,8 @@ class TimeMappingType(object):
 
     Enumerates the different ways that time can be mapped when transforming from one field to another.
     """
-
-    pass
+    is_open = True
+    members = []
 
 
 class TimingUnits(object):
@@ -546,7 +566,16 @@ class TimingUnits(object):
 
     Creates and returns instance of timing_units enum.
     """
-
-    pass
+    is_open = False
+    members = [
+        "centuries",
+        "days",
+        "decades",
+        "hours",
+        "minutes",
+        "months",
+        "seconds",
+        "years"
+        ]
 
 

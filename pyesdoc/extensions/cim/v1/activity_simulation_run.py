@@ -24,9 +24,9 @@ def _set_experiment_conformances(ctx):
     """Sets conformance links."""
     ctx.ext.conformances = []
     for conformance in ctx.doc.conformances:
-    	if len(conformance.requirements_references):
-    		for requirement_reference in conformance.requirements_references:
-    			ctx.ext.conformances.append(requirement_reference.name)
+    	if len(conformance.link_to_requirements):
+    		for link_to_requirement in conformance.link_to_requirements:
+    			ctx.ext.conformances.append(link_to_requirement.name)
     ctx.ext.conformances = ", ".join(sorted(ctx.ext.conformances))
 
 

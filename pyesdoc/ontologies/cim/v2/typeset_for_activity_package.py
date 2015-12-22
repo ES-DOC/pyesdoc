@@ -187,8 +187,15 @@ class EnsembleTypes(object):
 
     Defines the various axes along which one can set up an ensemble.
     """
-
-    pass
+    is_open = False
+    members = [
+        "Forced",
+        "Initialisation Method",
+        "Initialisation",
+        "Perturbed Physics",
+        "Resolution",
+        "Staggered Start"
+        ]
 
 
 class ForcingTypes(object):
@@ -196,7 +203,12 @@ class ForcingTypes(object):
 
     Defines the possible set of forcing types for a forcing constraint.
     """
-
-    pass
+    is_open = False
+    members = [
+        "another simulation",
+        "historical",
+        "idealised",
+        "scenario"
+        ]
 
 

@@ -1,4 +1,4 @@
-{% set mods = [c for c in doc.model_reference.changes if len(c.details)] %}
+{% set mods = [c for c in doc.link_to_model.changes if len(c.details)] %}
 {% if mods %}
 <section id="{{ doc.ext.full_id }}-model-mods">
 	<header>

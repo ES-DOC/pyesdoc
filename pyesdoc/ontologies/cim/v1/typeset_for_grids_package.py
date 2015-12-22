@@ -214,8 +214,13 @@ class ArcTypeEnum(object):
 
     Creates and returns instance of arc_type_enum enum.
     """
-
-    pass
+    is_open = False
+    members = [
+        "complex",
+        "geodesic",
+        "great_circle",
+        "small_circle"
+        ]
 
 
 class DiscretizationEnum(object):
@@ -223,8 +228,16 @@ class DiscretizationEnum(object):
 
     Creates and returns instance of discretization_enum enum.
     """
-
-    pass
+    is_open = False
+    members = [
+        "logically_rectangular",
+        "other",
+        "pixel-based_catchment",
+        "spherical_harmonics",
+        "structured_triangular",
+        "unstructured_polygonal",
+        "unstructured_triangular"
+        ]
 
 
 class FeatureTypeEnum(object):
@@ -232,8 +245,11 @@ class FeatureTypeEnum(object):
 
     Creates and returns instance of feature_type_enum enum.
     """
-
-    pass
+    is_open = False
+    members = [
+        "edge",
+        "point"
+        ]
 
 
 class GeometryTypeEnum(object):
@@ -241,8 +257,12 @@ class GeometryTypeEnum(object):
 
     Creates and returns instance of geometry_type_enum enum.
     """
-
-    pass
+    is_open = False
+    members = [
+        "ellipsoid",
+        "plane",
+        "sphere"
+        ]
 
 
 class GridNodePositionEnum(object):
@@ -250,8 +270,12 @@ class GridNodePositionEnum(object):
 
     Creates and returns instance of grid_node_position_enum enum.
     """
-
-    pass
+    is_open = False
+    members = [
+        "centre",
+        "plane",
+        "sphere"
+        ]
 
 
 class GridTypeEnum(object):
@@ -259,8 +283,19 @@ class GridTypeEnum(object):
 
     Creates and returns instance of grid_type_enum enum.
     """
-
-    pass
+    is_open = False
+    members = [
+        "composite",
+        "cubed_sphere",
+        "displaced_pole",
+        "icosahedral_geodesic",
+        "other",
+        "reduced_gaussian",
+        "regular_lat_lon",
+        "spectral_gaussian",
+        "tripolar",
+        "yin_yang"
+        ]
 
 
 class HorizontalCsEnum(object):
@@ -268,8 +303,13 @@ class HorizontalCsEnum(object):
 
     Creates and returns instance of horizontal_cs_enum enum.
     """
-
-    pass
+    is_open = False
+    members = [
+        "cartesian",
+        "ellipsoidal",
+        "polar",
+        "spherical"
+        ]
 
 
 class RefinementTypeEnum(object):
@@ -277,8 +317,12 @@ class RefinementTypeEnum(object):
 
     Creates and returns instance of refinement_type_enum enum.
     """
-
-    pass
+    is_open = False
+    members = [
+        "integer",
+        "none",
+        "rational"
+        ]
 
 
 class VerticalCsEnum(object):
@@ -286,7 +330,10 @@ class VerticalCsEnum(object):
 
     Creates and returns instance of vertical_cs_enum enum.
     """
-
-    pass
+    is_open = False
+    members = [
+        "mass-based",
+        "space-based"
+        ]
 
 

@@ -175,8 +175,20 @@ class StorageSystems(object):
 
     Controlled vocabulary for storage  types (including filesystems).
     """
-
-    pass
+    is_open = False
+    members = [
+        "GPFS",
+        "Lustre",
+        "NFS",
+        "Other Disk",
+        "Panasas",
+        "Tape - Castor",
+        "Tape - MARS",
+        "Tape - MASS",
+        "Tape - Other",
+        "Unknown",
+        "isilon"
+        ]
 
 
 class VolumeUnits(object):
@@ -184,7 +196,15 @@ class VolumeUnits(object):
 
     Appropriate storage volume units.
     """
-
-    pass
+    is_open = False
+    members = [
+        "EB",
+        "EiB",
+        "GB",
+        "PB",
+        "PiB",
+        "TB",
+        "TiB"
+        ]
 
 

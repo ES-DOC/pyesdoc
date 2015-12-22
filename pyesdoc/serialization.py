@@ -104,8 +104,10 @@ def encode(target, encoding):
     except TypeError:
         _assert_encode(target, encoding)
         encoded = _CODECS[encoding].encode(target)
-        if encoded:
+        try:
             encoded = encoded.strip()
+        except AttributeError:
+            pass
         return encoded
     else:
         return [encode(d, encoding) for d in target]

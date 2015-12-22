@@ -32,19 +32,19 @@ class DocumentSet(object):
         super(DocumentSet, self).__init__()
 
         self.data = []                                    # data.DataObject
-        self.data_references = []                         # shared.DocReference
         self.ensembles = []                               # activity.Ensemble
-        self.ensembles_references = []                    # shared.DocReference
         self.experiment = None                            # activity.NumericalExperiment
-        self.experiment_reference = None                  # shared.DocReference
         self.grids = []                                   # grids.GridSpec
-        self.grids_references = []                        # shared.DocReference
+        self.link_to_data = []                            # shared.DocReference
+        self.link_to_ensembles = []                       # shared.DocReference
+        self.link_to_experiment = None                    # shared.DocReference
+        self.link_to_grids = []                           # shared.DocReference
+        self.link_to_model = None                         # shared.DocReference
+        self.link_to_platform = None                      # shared.DocReference
+        self.link_to_simulation = None                    # shared.DocReference
         self.meta = shared.DocMetaInfo()                  # shared.DocMetaInfo
         self.model = None                                 # software.ModelComponent
-        self.model_reference = None                       # shared.DocReference
         self.platform = None                              # shared.Platform
-        self.platform_reference = None                    # shared.DocReference
         self.simulation = None                            # activity.SimulationRun
-        self.simulation_reference = None                  # shared.DocReference
 
 

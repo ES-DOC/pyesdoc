@@ -17,11 +17,11 @@
 {% set connection = input.connections[0] %}
 	<tr>
 	<td class="esdoc-field-name"><b>Source</b>&nbsp;(File > Variable)</td>
-	<td class="esdoc-field-value"><b>{{ source.data_source_reference.name }}</b> > {{ connection.sources[0].data_source_reference.name }}</td>
+	<td class="esdoc-field-value"><b>{{ source.link_to_data_source.name }}</b> > {{ connection.sources[0].link_to_data_source.name }}</td>
 	</tr>
 	<tr>
 	<td class="esdoc-field-name"><b>Target</b>&nbsp;(Component > Property)</td>
-	<td class="esdoc-field-value"><b>{{ target.data_source_reference.name }}</b> > {{ connection.target.data_source_reference.name }}</td>
+	<td class="esdoc-field-value"><b>{{ target.link_to_data_source.name }}</b> > {{ connection.target.link_to_data_source.name }}</td>
 	</tr>
 	{% if input.description %}
 		<tr>
@@ -54,11 +54,11 @@
 {% set connection = input.connections[0] %}
 	<tr>
 	<td class="esdoc-field-name"><b>Source</b>&nbsp;(Component)</td>
-	<td class="esdoc-field-value"><b>{{ source.data_source_reference.name }}</b></td>
+	<td class="esdoc-field-value"><b>{{ source.link_to_data_source.name }}</b></td>
 	</tr>
 	<tr>
 	<td class="esdoc-field-name"><b>Target</b>&nbsp;(Component > Property)</td>
-	<td class="esdoc-field-value"><b>{{ target.data_source_reference.name }}</b> > {{ connection.target.data_source_reference.name }}</td>
+	<td class="esdoc-field-value"><b>{{ target.link_to_data_source.name }}</b> > {{ connection.target.link_to_data_source.name }}</td>
 	</tr>
 	<tr>
 	<td class="esdoc-field-name"><b>Description</b></td>

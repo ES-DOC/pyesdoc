@@ -75,7 +75,6 @@ class Citation(object):
         self.date_type = None                             # unicode
         self.location = None                              # unicode
         self.organisation = None                          # unicode
-        self.reference = None                             # shared.DocReference
         self.role = None                                  # unicode
         self.title = None                                 # unicode
         self.type = None                                  # unicode
@@ -502,8 +501,21 @@ class ChangePropertyType(object):
 
     Creates and returns instance of change_property_type enum.
     """
-
-    pass
+    is_open = False
+    members = [
+        "AncillaryFile",
+        "BoundaryCondition",
+        "CodeChange",
+        "Decrement",
+        "Increment",
+        "InitialCondition",
+        "InputMod",
+        "ModelMod",
+        "ParameterChange",
+        "Redistribution",
+        "Replacement",
+        "Unused"
+        ]
 
 
 class CompilerType(object):
@@ -511,8 +523,8 @@ class CompilerType(object):
 
     Creates and returns instance of compiler_type enum.
     """
-
-    pass
+    is_open = True
+    members = []
 
 
 class DataPurpose(object):
@@ -520,8 +532,12 @@ class DataPurpose(object):
 
     Purpose of the data - i.e. ancillaryFile, boundaryCondition or initialCondition.
     """
-
-    pass
+    is_open = False
+    members = [
+        "ancillaryFile",
+        "boundaryCondition",
+        "initialCondition"
+        ]
 
 
 class DocRelationshipDirectionType(object):
@@ -529,8 +545,11 @@ class DocRelationshipDirectionType(object):
 
     Creates and returns instance of relationship_direction_type enum.
     """
-
-    pass
+    is_open = False
+    members = [
+        "fromTarget",
+        "toTarget"
+        ]
 
 
 class DocRelationshipType(object):
@@ -538,8 +557,14 @@ class DocRelationshipType(object):
 
     Creates and returns instance of document_relationship_type enum.
     """
-
-    pass
+    is_open = False
+    members = [
+        "fixedVersionOf",
+        "laterVersionOf",
+        "other",
+        "previousVersionOf",
+        "similarTo"
+        ]
 
 
 class DocStatusType(object):
@@ -547,8 +572,12 @@ class DocStatusType(object):
 
     Status of cim document.
     """
-
-    pass
+    is_open = False
+    members = [
+        "complete",
+        "in-progress",
+        "incomplete"
+        ]
 
 
 class DocType(object):
@@ -556,8 +585,23 @@ class DocType(object):
 
     Creates and returns instance of doc_type enum.
     """
-
-    pass
+    is_open = False
+    members = [
+        "assimilation",
+        "cimQuality",
+        "dataObject",
+        "dataProcessing",
+        "downscalingSimulation",
+        "ensemble",
+        "gridSpec",
+        "modelComponent",
+        "numericalExperiment",
+        "platform",
+        "processorComponent",
+        "simulationComposite",
+        "simulationRun",
+        "statisticalModelComponent"
+        ]
 
 
 class InterconnectType(object):
@@ -565,8 +609,8 @@ class InterconnectType(object):
 
     A list of connectors between machines.
     """
-
-    pass
+    is_open = True
+    members = []
 
 
 class MachineType(object):
@@ -574,8 +618,12 @@ class MachineType(object):
 
     A list of known machines.
     """
-
-    pass
+    is_open = False
+    members = [
+        "Beowulf",
+        "Parallel",
+        "Vector"
+        ]
 
 
 class MachineVendorType(object):
@@ -583,8 +631,8 @@ class MachineVendorType(object):
 
     A list of organisations that create machines.
     """
-
-    pass
+    is_open = True
+    members = []
 
 
 class OperatingSystemType(object):
@@ -592,8 +640,8 @@ class OperatingSystemType(object):
 
     A list of common operating systems.
     """
-
-    pass
+    is_open = True
+    members = []
 
 
 class ProcessorType(object):
@@ -601,8 +649,8 @@ class ProcessorType(object):
 
     A list of known cpu's.
     """
-
-    pass
+    is_open = True
+    members = []
 
 
 class UnitType(object):
@@ -610,7 +658,7 @@ class UnitType(object):
 
     A list of scientific units.
     """
-
-    pass
+    is_open = True
+    members = []
 
 

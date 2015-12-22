@@ -98,8 +98,11 @@ class CimFeatureType(object):
 
     Creates and returns instance of cim_feature_type enum.
     """
-
-    pass
+    is_open = False
+    members = [
+        "diagnostic",
+        "file"
+        ]
 
 
 class CimResultType(object):
@@ -107,8 +110,12 @@ class CimResultType(object):
 
     Creates and returns instance of cim_result_type enum.
     """
-
-    pass
+    is_open = False
+    members = [
+        "document",
+        "logfile",
+        "plot"
+        ]
 
 
 class CimScopeCodeType(object):
@@ -116,8 +123,19 @@ class CimScopeCodeType(object):
 
     This would cover quality issues with the CIM itself.
     """
-
-    pass
+    is_open = False
+    members = [
+        "dataset",
+        "ensemble",
+        "experiment",
+        "file",
+        "model",
+        "modelComponent",
+        "numericalRequirement",
+        "service",
+        "simulation",
+        "software"
+        ]
 
 
 class QualityIssueType(object):
@@ -125,8 +143,14 @@ class QualityIssueType(object):
 
     Creates and returns instance of quality_issue_type enum.
     """
-
-    pass
+    is_open = False
+    members = [
+        "data_content",
+        "data_format",
+        "data_indexing",
+        "metadata",
+        "science"
+        ]
 
 
 class QualitySeverityType(object):
@@ -134,8 +158,12 @@ class QualitySeverityType(object):
 
     Creates and returns instance of quality_severity_type enum.
     """
-
-    pass
+    is_open = False
+    members = [
+        "cosmetic",
+        "major",
+        "minor"
+        ]
 
 
 class QualityStatusType(object):
@@ -143,7 +171,12 @@ class QualityStatusType(object):
 
     Creates and returns instance of quality_status_type enum.
     """
-
-    pass
+    is_open = False
+    members = [
+        "confirmed",
+        "partially_resolved",
+        "reported",
+        "resolved"
+        ]
 
 

@@ -274,8 +274,10 @@ class GridLayouts(object):
 
     Defines the set of grid layouts (e.g. Arakawa C-Grid) which are understood.
     """
-
-    pass
+    is_open = False
+    members = [
+        "Arakawa-C"
+        ]
 
 
 class GridTypes(object):
@@ -283,8 +285,12 @@ class GridTypes(object):
 
     Defines the set of grid types (e.g Cubed Sphere) which are understood.
     """
-
-    pass
+    is_open = False
+    members = [
+        "Cubed-Sphere",
+        "LatLon",
+        "Spectral-Gaussian"
+        ]
 
 
 class ModelTypes(object):
@@ -292,8 +298,18 @@ class ModelTypes(object):
 
     Defines a set of gross model classes.
     """
-
-    pass
+    is_open = False
+    members = [
+        "Atm Only",
+        "GCM",
+        "GCM-MLO",
+        "IGCM",
+        "Mesoscale",
+        "Ocean Only",
+        "Planetary",
+        "Process",
+        "Regional"
+        ]
 
 
 class SelectionCardinality(object):
@@ -301,7 +317,12 @@ class SelectionCardinality(object):
 
     Provides the possible cardinalities for selecting from a controlled vocabulary.
     """
-
-    pass
+    is_open = False
+    members = [
+        "0.1",
+        "0.N",
+        "1.1",
+        "1.N"
+        ]
 
 

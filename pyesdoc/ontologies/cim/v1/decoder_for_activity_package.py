@@ -52,6 +52,7 @@ def decode_boundary_condition(xml, nsmap):
     decodings = [
         ('description', False, 'unicode', 'child::cim:description'),
         ('id', False, 'unicode', 'child::cim:id'),
+        ('link_to_source', False, decode_doc_reference, 'child::cim:source/cim:reference'),
         ('name', False, 'unicode', 'child::cim:name'),
         ('options', True, decode_numerical_requirement_option, 'child::cim:requirementOption'),
         ('source', False, decode_component_property, 'child::cim:source/cim:source/cim:componentProperty'),
@@ -60,7 +61,6 @@ def decode_boundary_condition(xml, nsmap):
         ('source', False, decode_model_component, 'child::cim:source/cim:source/cim:softwareComponent'),
         ('source', False, decode_processor_component, 'child::cim:source/cim:source/cim:softwareComponent'),
         ('source', False, decode_statistical_model_component, 'child::cim:source/cim:source/cim:softwareComponent'),
-        ('source_reference', False, decode_doc_reference, 'child::cim:source/cim:reference'),
     ]
 
     return set_attributes(typeset.activity.BoundaryCondition(), xml, nsmap, decodings)
@@ -80,19 +80,19 @@ def decode_conformance(xml, nsmap):
         ('description', False, 'unicode', 'child::cim:description'),
         ('frequency', False, 'unicode', 'child::cim:frequency'),
         ('is_conformant', False, 'bool', '@conformant'),
+        ('link_to_requirements', True, decode_doc_reference, 'child::cim:requirement/cim:reference'),
+        ('link_to_sources', True, decode_doc_reference, 'child::cim:source/cim:reference'),
         ('requirements', True, decode_boundary_condition, 'child::cim:requirement/cim:requirement/cim:boundaryCondition'),
         ('requirements', True, decode_initial_condition, 'child::cim:requirement/cim:requirement/cim:initialCondition'),
         ('requirements', True, decode_lateral_boundary_condition, 'child::cim:requirement/cim:requirement/cim:lateralBoundaryCondition'),
         ('requirements', True, decode_output_requirement, 'child::cim:requirement/cim:requirement/cim:outputRequirement'),
         ('requirements', True, decode_spatio_temporal_constraint, 'child::cim:requirement/cim:requirement/cim:spatioTemporalConstraint'),
-        ('requirements_references', True, decode_doc_reference, 'child::cim:requirement/cim:reference'),
         ('sources', True, decode_component_property, 'child::cim:source/cim:source/cim:componentProperty'),
         ('sources', True, decode_data_content, 'child::cim:source/cim:source/cim:dataContent'),
         ('sources', True, decode_data_object, 'child::cim:source/cim:source/cim:dataObject'),
         ('sources', True, decode_model_component, 'child::cim:source/cim:source/cim:softwareComponent'),
         ('sources', True, decode_processor_component, 'child::cim:source/cim:source/cim:softwareComponent'),
         ('sources', True, decode_statistical_model_component, 'child::cim:source/cim:source/cim:softwareComponent'),
-        ('sources_references', True, decode_doc_reference, 'child::cim:source/cim:reference'),
         ('type', False, 'unicode', '@type'),
     ]
 
@@ -120,11 +120,13 @@ def decode_downscaling_simulation(xml, nsmap):
         ('downscaled_from', False, decode_model_component, 'child::cim:downscaledFrom/cim:downscaledFrom/cim:softwareComponent'),
         ('downscaled_from', False, decode_processor_component, 'child::cim:downscaledFrom/cim:downscaledFrom/cim:softwareComponent'),
         ('downscaled_from', False, decode_statistical_model_component, 'child::cim:downscaledFrom/cim:downscaledFrom/cim:softwareComponent'),
-        ('downscaled_from_reference', False, decode_doc_reference, 'child::cim:downscaledFrom/cim:reference'),
         ('downscaling_id', False, 'unicode', 'child::cim:downscalingID'),
         ('downscaling_type', False, 'unicode', 'self::cim:downscalingSimulation/@downscalingType'),
         ('funding_sources', True, 'unicode', 'child::cim:fundingSource'),
         ('inputs', True, decode_coupling, 'child::cim:input'),
+        ('link_to_downscaled_from', False, decode_doc_reference, 'child::cim:downscaledFrom/cim:reference'),
+        ('link_to_outputs', True, decode_doc_reference, 'child::cim:output/cim:reference'),
+        ('link_to_supports', True, decode_doc_reference, 'child::cim:supports/cim:reference'),
         ('long_name', False, 'unicode', 'child::cim:longName'),
         ('meta', False, decode_doc_meta_info, 'self::cim:downscalingSimulation'),
         ('outputs', True, decode_data_object, 'child::cim:output/cim:dataObject'),
@@ -133,7 +135,6 @@ def decode_downscaling_simulation(xml, nsmap):
         ('responsible_parties', True, decode_responsible_party, 'child::cim:responsibleParty'),
         ('short_name', False, 'unicode', 'child::cim:shortName'),
         ('supports', True, decode_experiment, 'child::cim:supports/cim:experiment'),
-        ('supports_references', True, decode_doc_reference, 'child::cim:supports/cim:reference'),
     ]
 
     return set_attributes(typeset.activity.DownscalingSimulation(), xml, nsmap, decodings)
@@ -152,6 +153,8 @@ def decode_ensemble(xml, nsmap):
     decodings = [
         ('description', False, 'unicode', 'child::cim:description'),
         ('funding_sources', True, 'unicode', 'child::cim:fundingSource'),
+        ('link_to_outputs', True, decode_doc_reference, 'child::cim:output/cim:reference'),
+        ('link_to_supports', True, decode_doc_reference, 'child::cim:supports/cim:reference'),
         ('long_name', False, 'unicode', 'child::cim:longName'),
         ('members', True, decode_ensemble_member, 'child::cim:ensembleMember'),
         ('meta', False, decode_doc_meta_info, 'self::cim:ensemble'),
@@ -161,13 +164,11 @@ def decode_ensemble(xml, nsmap):
         ('outputs', True, decode_model_component, 'child::cim:output/cim:output/cim:softwareComponent'),
         ('outputs', True, decode_processor_component, 'child::cim:output/cim:output/cim:softwareComponent'),
         ('outputs', True, decode_statistical_model_component, 'child::cim:output/cim:output/cim:softwareComponent'),
-        ('outputs_references', True, decode_doc_reference, 'child::cim:output/cim:reference'),
         ('projects', True, 'unicode', 'child::cim:project/@value'),
         ('rationales', True, 'unicode', 'child::cim:rationale'),
         ('responsible_parties', True, decode_responsible_party, 'child::cim:responsibleParty'),
         ('short_name', False, 'unicode', 'child::cim:shortName'),
         ('supports', True, decode_experiment, 'child::cim:supports/cim:experiment'),
-        ('supports_references', True, decode_doc_reference, 'child::cim:supports/cim:reference'),
         ('types', True, 'unicode', 'child::cim:ensembleType/@value'),
     ]
 
@@ -188,17 +189,17 @@ def decode_ensemble_member(xml, nsmap):
         ('description', False, 'unicode', 'child::cim:description'),
         ('ensemble', False, decode_ensemble, 'child::cim:ensemble/cim:ensemble'),
         ('ensemble_ids', True, decode_standard_name, 'child::cim:ensembleMemberID'),
-        ('ensemble_reference', False, decode_doc_reference, 'child::cim:ensemble/cim:reference'),
         ('funding_sources', True, 'unicode', 'child::cim:fundingSource'),
+        ('link_to_ensemble', False, decode_doc_reference, 'child::cim:ensemble/cim:reference'),
+        ('link_to_simulation', False, decode_doc_reference, 'child::cim:simulation/cim:reference'),
+        ('link_to_supports', True, decode_doc_reference, 'child::cim:supports/cim:reference'),
         ('long_name', False, 'unicode', 'child::cim:longName'),
         ('projects', True, 'unicode', 'child::cim:project/@value'),
         ('rationales', True, 'unicode', 'child::cim:rationale'),
         ('responsible_parties', True, decode_responsible_party, 'child::cim:responsibleParty'),
         ('short_name', False, 'unicode', 'child::cim:shortName'),
         ('simulation', False, decode_simulation, 'child::cim:ensemble/cim:simulation'),
-        ('simulation_reference', False, decode_doc_reference, 'child::cim:simulation/cim:reference'),
         ('supports', True, decode_experiment, 'child::cim:supports/cim:experiment'),
-        ('supports_references', True, decode_doc_reference, 'child::cim:supports/cim:reference'),
     ]
 
     return set_attributes(typeset.activity.EnsembleMember(), xml, nsmap, decodings)
@@ -269,6 +270,7 @@ def decode_initial_condition(xml, nsmap):
     decodings = [
         ('description', False, 'unicode', 'child::cim:description'),
         ('id', False, 'unicode', 'child::cim:id'),
+        ('link_to_source', False, decode_doc_reference, 'child::cim:source/cim:reference'),
         ('name', False, 'unicode', 'child::cim:name'),
         ('options', True, decode_numerical_requirement_option, 'child::cim:requirementOption'),
         ('source', False, decode_component_property, 'child::cim:source/cim:source/cim:componentProperty'),
@@ -277,7 +279,6 @@ def decode_initial_condition(xml, nsmap):
         ('source', False, decode_model_component, 'child::cim:source/cim:source/cim:softwareComponent'),
         ('source', False, decode_processor_component, 'child::cim:source/cim:source/cim:softwareComponent'),
         ('source', False, decode_statistical_model_component, 'child::cim:source/cim:source/cim:softwareComponent'),
-        ('source_reference', False, decode_doc_reference, 'child::cim:source/cim:reference'),
     ]
 
     return set_attributes(typeset.activity.InitialCondition(), xml, nsmap, decodings)
@@ -296,6 +297,7 @@ def decode_lateral_boundary_condition(xml, nsmap):
     decodings = [
         ('description', False, 'unicode', 'child::cim:description'),
         ('id', False, 'unicode', 'child::cim:id'),
+        ('link_to_source', False, decode_doc_reference, 'child::cim:source/cim:reference'),
         ('name', False, 'unicode', 'child::cim:name'),
         ('options', True, decode_numerical_requirement_option, 'child::cim:requirementOption'),
         ('source', False, decode_component_property, 'child::cim:source/cim:source/cim:componentProperty'),
@@ -304,7 +306,6 @@ def decode_lateral_boundary_condition(xml, nsmap):
         ('source', False, decode_model_component, 'child::cim:source/cim:source/cim:softwareComponent'),
         ('source', False, decode_processor_component, 'child::cim:source/cim:source/cim:softwareComponent'),
         ('source', False, decode_statistical_model_component, 'child::cim:source/cim:source/cim:softwareComponent'),
-        ('source_reference', False, decode_doc_reference, 'child::cim:source/cim:reference'),
     ]
 
     return set_attributes(typeset.activity.LateralBoundaryCondition(), xml, nsmap, decodings)
@@ -343,13 +344,13 @@ def decode_numerical_activity(xml, nsmap):
     decodings = [
         ('description', False, 'unicode', 'child::cim:description'),
         ('funding_sources', True, 'unicode', 'child::cim:fundingSource'),
+        ('link_to_supports', True, decode_doc_reference, 'child::cim:supports/cim:reference'),
         ('long_name', False, 'unicode', 'child::cim:longName'),
         ('projects', True, 'unicode', 'child::cim:project/@value'),
         ('rationales', True, 'unicode', 'child::cim:rationale'),
         ('responsible_parties', True, decode_responsible_party, 'child::cim:responsibleParty'),
         ('short_name', False, 'unicode', 'child::cim:shortName'),
         ('supports', True, decode_experiment, 'child::cim:supports/cim:experiment'),
-        ('supports_references', True, decode_doc_reference, 'child::cim:supports/cim:reference'),
     ]
 
     return set_attributes(typeset.activity.NumericalActivity(), xml, nsmap, decodings)
@@ -403,6 +404,7 @@ def decode_numerical_requirement(xml, nsmap):
     decodings = [
         ('description', False, 'unicode', 'child::cim:description'),
         ('id', False, 'unicode', 'child::cim:id'),
+        ('link_to_source', False, decode_doc_reference, 'child::cim:source/cim:reference'),
         ('name', False, 'unicode', 'child::cim:name'),
         ('options', True, decode_numerical_requirement_option, 'child::cim:requirementOption'),
         ('source', False, decode_component_property, 'child::cim:source/cim:source/cim:componentProperty'),
@@ -411,7 +413,6 @@ def decode_numerical_requirement(xml, nsmap):
         ('source', False, decode_model_component, 'child::cim:source/cim:source/cim:softwareComponent'),
         ('source', False, decode_processor_component, 'child::cim:source/cim:source/cim:softwareComponent'),
         ('source', False, decode_statistical_model_component, 'child::cim:source/cim:source/cim:softwareComponent'),
-        ('source_reference', False, decode_doc_reference, 'child::cim:source/cim:reference'),
     ]
 
     return set_attributes(typeset.activity.NumericalRequirement(), xml, nsmap, decodings)
@@ -465,6 +466,7 @@ def decode_output_requirement(xml, nsmap):
     decodings = [
         ('description', False, 'unicode', 'child::cim:description'),
         ('id', False, 'unicode', 'child::cim:id'),
+        ('link_to_source', False, decode_doc_reference, 'child::cim:source/cim:reference'),
         ('name', False, 'unicode', 'child::cim:name'),
         ('options', True, decode_numerical_requirement_option, 'child::cim:requirementOption'),
         ('source', False, decode_component_property, 'child::cim:source/cim:source/cim:componentProperty'),
@@ -473,7 +475,6 @@ def decode_output_requirement(xml, nsmap):
         ('source', False, decode_model_component, 'child::cim:source/cim:source/cim:softwareComponent'),
         ('source', False, decode_processor_component, 'child::cim:source/cim:source/cim:softwareComponent'),
         ('source', False, decode_statistical_model_component, 'child::cim:source/cim:source/cim:softwareComponent'),
-        ('source_reference', False, decode_doc_reference, 'child::cim:source/cim:reference'),
     ]
 
     return set_attributes(typeset.activity.OutputRequirement(), xml, nsmap, decodings)
@@ -493,19 +494,19 @@ def decode_physical_modification(xml, nsmap):
         ('description', False, 'unicode', 'child::cim:description'),
         ('frequency', False, 'unicode', 'child::cim:frequency'),
         ('is_conformant', False, 'bool', '@conformant'),
+        ('link_to_requirements', True, decode_doc_reference, 'child::cim:requirement/cim:reference'),
+        ('link_to_sources', True, decode_doc_reference, 'child::cim:source/cim:reference'),
         ('requirements', True, decode_boundary_condition, 'child::cim:requirement/cim:requirement/cim:boundaryCondition'),
         ('requirements', True, decode_initial_condition, 'child::cim:requirement/cim:requirement/cim:initialCondition'),
         ('requirements', True, decode_lateral_boundary_condition, 'child::cim:requirement/cim:requirement/cim:lateralBoundaryCondition'),
         ('requirements', True, decode_output_requirement, 'child::cim:requirement/cim:requirement/cim:outputRequirement'),
         ('requirements', True, decode_spatio_temporal_constraint, 'child::cim:requirement/cim:requirement/cim:spatioTemporalConstraint'),
-        ('requirements_references', True, decode_doc_reference, 'child::cim:requirement/cim:reference'),
         ('sources', True, decode_component_property, 'child::cim:source/cim:source/cim:componentProperty'),
         ('sources', True, decode_data_content, 'child::cim:source/cim:source/cim:dataContent'),
         ('sources', True, decode_data_object, 'child::cim:source/cim:source/cim:dataObject'),
         ('sources', True, decode_model_component, 'child::cim:source/cim:source/cim:softwareComponent'),
         ('sources', True, decode_processor_component, 'child::cim:source/cim:source/cim:softwareComponent'),
         ('sources', True, decode_statistical_model_component, 'child::cim:source/cim:source/cim:softwareComponent'),
-        ('sources_references', True, decode_doc_reference, 'child::cim:source/cim:reference'),
         ('type', False, 'unicode', '@type'),
     ]
 
@@ -530,11 +531,12 @@ def decode_simulation(xml, nsmap):
         ('conformances', True, decode_conformance, 'child::cim:conformance/cim:conformance'),
         ('conformances', True, decode_physical_modification, 'child::cim:conformance/cim:physicalModification'),
         ('control_simulation', False, decode_simulation, 'child::cim:controlSimulation/cim:controlSimulation'),
-        ('control_simulation_reference', False, decode_doc_reference, 'child::cim:controlSimulation/cim:reference'),
         ('deployments', True, decode_deployment, 'child::cim:deployment'),
         ('description', False, 'unicode', 'child::cim:description'),
         ('funding_sources', True, 'unicode', 'child::cim:fundingSource'),
         ('inputs', True, decode_coupling, 'child::cim:input'),
+        ('link_to_control_simulation', False, decode_doc_reference, 'child::cim:controlSimulation/cim:reference'),
+        ('link_to_supports', True, decode_doc_reference, 'child::cim:supports/cim:reference'),
         ('long_name', False, 'unicode', 'child::cim:longName'),
         ('projects', True, 'unicode', 'child::cim:project/@value'),
         ('rationales', True, 'unicode', 'child::cim:rationale'),
@@ -543,7 +545,6 @@ def decode_simulation(xml, nsmap):
         ('simulation_id', False, 'unicode', 'child::cim:simulationID'),
         ('spinup_date_range', False, decode_closed_date_range, 'child::cim:dateRange/cim:closedDateRange'),
         ('supports', True, decode_experiment, 'child::cim:supports/cim:experiment'),
-        ('supports_references', True, decode_doc_reference, 'child::cim:supports/cim:reference'),
     ]
 
     return set_attributes(typeset.activity.Simulation(), xml, nsmap, decodings)
@@ -569,13 +570,14 @@ def decode_simulation_composite(xml, nsmap):
         ('conformances', True, decode_conformance, 'child::cim:conformance/cim:conformance'),
         ('conformances', True, decode_physical_modification, 'child::cim:conformance/cim:physicalModification'),
         ('control_simulation', False, decode_simulation, 'child::cim:controlSimulation/cim:controlSimulation'),
-        ('control_simulation_reference', False, decode_doc_reference, 'child::cim:controlSimulation/cim:reference'),
         ('date_range', False, decode_closed_date_range, 'child::cim:dateRange/cim:closedDateRange'),
         ('date_range', False, decode_open_date_range, 'child::cim:dateRange/cim:openDateRange'),
         ('deployments', True, decode_deployment, 'child::cim:deployment'),
         ('description', False, 'unicode', 'child::cim:description'),
         ('funding_sources', True, 'unicode', 'child::cim:fundingSource'),
         ('inputs', True, decode_coupling, 'child::cim:input'),
+        ('link_to_control_simulation', False, decode_doc_reference, 'child::cim:controlSimulation/cim:reference'),
+        ('link_to_supports', True, decode_doc_reference, 'child::cim:supports/cim:reference'),
         ('long_name', False, 'unicode', 'child::cim:longName'),
         ('meta', False, decode_doc_meta_info, 'self::cim:simulationRun'),
         ('projects', True, 'unicode', 'child::cim:project/@value'),
@@ -586,7 +588,6 @@ def decode_simulation_composite(xml, nsmap):
         ('simulation_id', False, 'unicode', 'child::cim:simulationID'),
         ('spinup_date_range', False, decode_closed_date_range, 'child::cim:dateRange/cim:closedDateRange'),
         ('supports', True, decode_experiment, 'child::cim:supports/cim:experiment'),
-        ('supports_references', True, decode_doc_reference, 'child::cim:supports/cim:reference'),
     ]
 
     return set_attributes(typeset.activity.SimulationComposite(), xml, nsmap, decodings)
@@ -642,17 +643,18 @@ def decode_simulation_run(xml, nsmap):
         ('conformances', True, decode_conformance, 'child::cim:conformance/cim:conformance'),
         ('conformances', True, decode_physical_modification, 'child::cim:conformance/cim:physicalModification'),
         ('control_simulation', False, decode_simulation, 'child::cim:controlSimulation/cim:controlSimulation'),
-        ('control_simulation_reference', False, decode_doc_reference, 'child::cim:controlSimulation/cim:reference'),
         ('date_range', False, decode_closed_date_range, 'child::cim:dateRange/cim:closedDateRange'),
         ('date_range', False, decode_open_date_range, 'child::cim:dateRange/cim:openDateRange'),
         ('deployments', True, decode_deployment, 'child::cim:deployment'),
         ('description', False, 'unicode', 'child::cim:description'),
         ('funding_sources', True, 'unicode', 'child::cim:fundingSource'),
         ('inputs', True, decode_coupling, 'child::cim:input'),
+        ('link_to_control_simulation', False, decode_doc_reference, 'child::cim:controlSimulation/cim:reference'),
+        ('link_to_model', False, decode_doc_reference, 'child::cim:model/cim:reference'),
+        ('link_to_supports', True, decode_doc_reference, 'child::cim:supports/cim:reference'),
         ('long_name', False, 'unicode', 'child::cim:longName'),
         ('meta', False, decode_doc_meta_info, 'self::cim:simulationRun'),
         ('model', False, decode_model_component, 'child::cim:model/cim:modelComponent'),
-        ('model_reference', False, decode_doc_reference, 'child::cim:model/cim:reference'),
         ('projects', True, 'unicode', 'child::cim:project/@value'),
         ('rationales', True, 'unicode', 'child::cim:rationale'),
         ('responsible_parties', True, decode_responsible_party, 'child::cim:responsibleParty'),
@@ -660,7 +662,6 @@ def decode_simulation_run(xml, nsmap):
         ('simulation_id', False, 'unicode', 'child::cim:simulationID'),
         ('spinup_date_range', False, decode_closed_date_range, 'child::cim:dateRange/cim:closedDateRange'),
         ('supports', True, decode_experiment, 'child::cim:supports/cim:experiment'),
-        ('supports_references', True, decode_doc_reference, 'child::cim:supports/cim:reference'),
     ]
 
     return set_attributes(typeset.activity.SimulationRun(), xml, nsmap, decodings)
@@ -681,6 +682,7 @@ def decode_spatio_temporal_constraint(xml, nsmap):
         ('date_range', False, decode_open_date_range, 'child::cim:requiredDuration/cim:openDateRange'),
         ('description', False, 'unicode', 'child::cim:description'),
         ('id', False, 'unicode', 'child::cim:id'),
+        ('link_to_source', False, decode_doc_reference, 'child::cim:source/cim:reference'),
         ('name', False, 'unicode', 'child::cim:name'),
         ('options', True, decode_numerical_requirement_option, 'child::cim:requirementOption'),
         ('source', False, decode_component_property, 'child::cim:source/cim:source/cim:componentProperty'),
@@ -689,7 +691,6 @@ def decode_spatio_temporal_constraint(xml, nsmap):
         ('source', False, decode_model_component, 'child::cim:source/cim:source/cim:softwareComponent'),
         ('source', False, decode_processor_component, 'child::cim:source/cim:source/cim:softwareComponent'),
         ('source', False, decode_statistical_model_component, 'child::cim:source/cim:source/cim:softwareComponent'),
-        ('source_reference', False, decode_doc_reference, 'child::cim:source/cim:reference'),
         ('spatial_resolution', False, 'unicode', 'child::cim:spatialResolution'),
     ]
 

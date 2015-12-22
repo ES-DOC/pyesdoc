@@ -31,6 +31,6 @@ def _set_has_changes(ctx):
     """Sets a flag indicating whether ensemble has member level changes."""
     ctx.ext.has_changes = False
     for member in ctx.doc.members:
-        if member.simulation_reference.changes:
+        if member.link_to_simulation.changes:
             ctx.ext.has_changes = True
             return

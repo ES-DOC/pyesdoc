@@ -166,8 +166,16 @@ class CouplingFramework(object):
 
     The set of terms which define known coupling frameworks.
     """
-
-    pass
+    is_open = False
+    members = [
+        "Bespoke",
+        "ESMF",
+        "NUOPC",
+        "None",
+        "OASIS",
+        "OASIS3-MCT",
+        "Unknown"
+        ]
 
 
 class ProgrammingLanguage(object):
@@ -176,7 +184,12 @@ class ProgrammingLanguage(object):
     The set of terms which define programming languages used for earth
     system simulation.
     """
-
-    pass
+    is_open = False
+    members = [
+        "C",
+        "C++",
+        "Fortran",
+        "Python"
+        ]
 
 

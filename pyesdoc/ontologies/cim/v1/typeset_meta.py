@@ -146,48 +146,48 @@ activity.Conformance.type_info = (
     ('description', unicode, False, False),
     ('frequency', unicode, False, False),
     ('is_conformant', bool, True, False),
+    ('link_to_requirements', shared.DocReference, False, True),
+    ('link_to_sources', shared.DocReference, False, True),
     ('requirements', activity.NumericalRequirement, False, True),
-    ('requirements_references', shared.DocReference, False, True),
     ('sources', shared.DataSource, False, True),
-    ('sources_references', shared.DocReference, False, True),
     ('type', unicode, False, False),
 )
 
 activity.DownscalingSimulation.type_info = (
     ('calendar', shared.Calendar, True, False),
     ('downscaled_from', shared.DataSource, True, False),
-    ('downscaled_from_reference', shared.DocReference, True, False),
     ('downscaling_id', unicode, False, False),
     ('downscaling_type', unicode, False, False),
     ('inputs', software.Coupling, False, True),
+    ('link_to_downscaled_from', shared.DocReference, True, False),
+    ('link_to_outputs', shared.DocReference, False, True),
     ('meta', shared.DocMetaInfo, True, False),
-    ('output_references', shared.DocReference, False, True),
     ('outputs', data.DataObject, False, True),
 )
 
 activity.Ensemble.type_info = (
+    ('link_to_outputs', shared.DocReference, False, True),
     ('members', activity.EnsembleMember, True, True),
     ('meta', shared.DocMetaInfo, True, False),
     ('outputs', shared.DataSource, False, True),
-    ('outputs_references', shared.DocReference, False, True),
     ('types', unicode, True, True),
 )
 
 activity.EnsembleMember.type_info = (
     ('ensemble', activity.Ensemble, False, False),
     ('ensemble_ids', shared.StandardName, False, True),
-    ('ensemble_reference', shared.DocReference, False, False),
+    ('link_to_ensemble', shared.DocReference, False, False),
+    ('link_to_simulation', shared.DocReference, False, False),
     ('simulation', activity.Simulation, False, False),
-    ('simulation_reference', shared.DocReference, False, False),
 )
 
 activity.Experiment.type_info = (
     ('generates', unicode, False, True),
+    ('link_to_requires', shared.DocReference, False, True),
+    ('link_to_supports', shared.DocReference, False, True),
     ('measurement_campaigns', activity.MeasurementCampaign, False, True),
     ('requires', activity.NumericalActivity, False, True),
-    ('requires_references', shared.DocReference, False, True),
     ('supports', unicode, False, True),
-    ('supports_references', shared.DocReference, False, True),
 )
 
 activity.ExperimentRelationship.type_info = (
@@ -196,8 +196,8 @@ activity.ExperimentRelationship.type_info = (
 )
 
 activity.ExperimentRelationshipTarget.type_info = (
+    ('link_to_numerical_experiment', shared.DocReference, False, False),
     ('numerical_experiment', activity.NumericalExperiment, False, False),
-    ('reference', shared.DocReference, False, False),
 )
 
 activity.InitialCondition.type_info = (
@@ -212,10 +212,10 @@ activity.MeasurementCampaign.type_info = (
 
 activity.NumericalActivity.type_info = (
     ('description', unicode, False, False),
+    ('link_to_supports', shared.DocReference, False, True),
     ('long_name', unicode, False, False),
     ('short_name', unicode, True, False),
     ('supports', activity.Experiment, False, True),
-    ('supports_references', shared.DocReference, False, True),
 )
 
 activity.NumericalExperiment.type_info = (
@@ -230,11 +230,11 @@ activity.NumericalExperiment.type_info = (
 activity.NumericalRequirement.type_info = (
     ('description', unicode, False, False),
     ('id', unicode, False, False),
+    ('link_to_source', shared.DocReference, False, False),
     ('name', unicode, True, False),
     ('options', activity.NumericalRequirementOption, False, True),
     ('requirement_type', unicode, True, False),
     ('source', shared.DataSource, False, False),
-    ('source_reference', shared.DocReference, False, False),
 )
 
 activity.NumericalRequirementOption.type_info = (
@@ -256,17 +256,17 @@ activity.Simulation.type_info = (
     ('calendar', shared.Calendar, True, False),
     ('conformances', activity.Conformance, False, True),
     ('control_simulation', activity.Simulation, False, False),
-    ('control_simulation_reference', shared.DocReference, False, False),
     ('deployments', software.Deployment, False, True),
     ('inputs', software.Coupling, False, True),
-    ('output_references', shared.DocReference, False, True),
+    ('link_to_control_simulation', shared.DocReference, False, False),
+    ('link_to_outputs', shared.DocReference, False, True),
+    ('link_to_simulations', shared.DocReference, False, True),
+    ('link_to_spinup_simulation', shared.DocReference, False, False),
     ('outputs', data.DataObject, False, True),
-    ('restart_references', shared.DocReference, False, True),
     ('restarts', data.DataObject, False, True),
     ('simulation_id', unicode, False, False),
     ('spinup_date_range', shared.ClosedDateRange, False, False),
     ('spinup_simulation', activity.Simulation, False, False),
-    ('spinup_simulation_reference', shared.DocReference, False, False),
 )
 
 activity.SimulationComposite.type_info = (
@@ -282,15 +282,15 @@ activity.SimulationRelationship.type_info = (
 )
 
 activity.SimulationRelationshipTarget.type_info = (
-    ('reference', shared.DocReference, False, False),
+    ('link_to_simulation', shared.DocReference, False, False),
     ('target', unicode, False, False),
 )
 
 activity.SimulationRun.type_info = (
     ('date_range', shared.DateRange, True, False),
+    ('link_to_model', shared.DocReference, False, False),
     ('meta', shared.DocMetaInfo, True, False),
     ('model', software.ModelComponent, False, False),
-    ('model_reference', shared.DocReference, False, False),
 )
 
 activity.SpatioTemporalConstraint.type_info = (
@@ -353,9 +353,9 @@ data.DataObject.type_info = (
     ('geometry_model', unicode, False, False),
     ('hierarchy_level', data.DataHierarchyLevel, False, False),
     ('keyword', unicode, False, False),
+    ('link_to_parent_object', shared.DocReference, False, False),
     ('meta', shared.DocMetaInfo, True, False),
     ('parent_object', data.DataObject, False, False),
-    ('parent_object_reference', shared.DocReference, False, False),
     ('properties', data.DataProperty, False, True),
     ('purpose', unicode, False, False),
     ('restriction', data.DataRestriction, False, True),
@@ -499,20 +499,20 @@ grids.VerticalCoordinateList.type_info = (
 
 misc.DocumentSet.type_info = (
     ('data', data.DataObject, False, True),
-    ('data_references', shared.DocReference, False, True),
     ('ensembles', activity.Ensemble, False, True),
-    ('ensembles_references', shared.DocReference, False, True),
     ('experiment', activity.NumericalExperiment, False, False),
-    ('experiment_reference', shared.DocReference, False, False),
     ('grids', grids.GridSpec, False, True),
-    ('grids_references', shared.DocReference, False, True),
+    ('link_to_data', shared.DocReference, False, True),
+    ('link_to_ensembles', shared.DocReference, False, True),
+    ('link_to_experiment', shared.DocReference, False, False),
+    ('link_to_grids', shared.DocReference, False, True),
+    ('link_to_model', shared.DocReference, False, False),
+    ('link_to_platform', shared.DocReference, False, False),
+    ('link_to_simulation', shared.DocReference, False, False),
     ('meta', shared.DocMetaInfo, True, False),
     ('model', software.ModelComponent, False, False),
-    ('model_reference', shared.DocReference, False, False),
     ('platform', shared.Platform, False, False),
-    ('platform_reference', shared.DocReference, False, False),
     ('simulation', activity.SimulationRun, False, False),
-    ('simulation_reference', shared.DocReference, False, False),
 )
 
 quality.CimQuality.type_info = (
@@ -572,7 +572,6 @@ shared.Citation.type_info = (
     ('date_type', unicode, False, False),
     ('location', unicode, False, False),
     ('organisation', unicode, False, False),
-    ('reference', shared.DocReference, False, False),
     ('role', unicode, False, False),
     ('title', unicode, False, False),
     ('type', unicode, False, False),
@@ -783,8 +782,9 @@ software.Composition.type_info = (
 
 software.Connection.type_info = (
     ('description', unicode, False, False),
+    ('link_to_priming', shared.DocReference, False, False),
+    ('link_to_transformers', shared.DocReference, False, True),
     ('priming', shared.DataSource, False, False),
-    ('priming_reference', shared.DocReference, False, False),
     ('properties', software.ConnectionProperty, False, True),
     ('sources', software.ConnectionEndpoint, False, True),
     ('spatial_regridding', software.SpatialRegridding, False, True),
@@ -793,14 +793,13 @@ software.Connection.type_info = (
     ('time_profile', software.Timing, False, False),
     ('time_transformation', software.TimeTransformation, False, False),
     ('transformers', software.ProcessorComponent, False, True),
-    ('transformers_references', shared.DocReference, False, True),
     ('type', unicode, False, False),
 )
 
 software.ConnectionEndpoint.type_info = (
     ('data_source', shared.DataSource, False, False),
-    ('data_source_reference', shared.DocReference, False, False),
     ('instance_id', unicode, False, False),
+    ('link_to_data_source', shared.DocReference, False, False),
     ('properties', software.ConnectionProperty, False, True),
 )
 
@@ -811,8 +810,9 @@ software.Coupling.type_info = (
     ('connections', software.Connection, False, True),
     ('description', unicode, False, False),
     ('is_fully_specified', bool, True, False),
+    ('link_to_priming', shared.DocReference, False, False),
+    ('link_to_transformers', shared.DocReference, False, True),
     ('priming', shared.DataSource, False, False),
-    ('priming_reference', shared.DocReference, False, False),
     ('properties', software.CouplingProperty, False, True),
     ('purpose', unicode, True, False),
     ('sources', software.CouplingEndpoint, True, True),
@@ -822,14 +822,13 @@ software.Coupling.type_info = (
     ('time_profile', software.Timing, False, False),
     ('time_transformation', software.TimeTransformation, False, False),
     ('transformers', software.ProcessorComponent, False, True),
-    ('transformers_references', shared.DocReference, False, True),
     ('type', unicode, False, False),
 )
 
 software.CouplingEndpoint.type_info = (
     ('data_source', shared.DataSource, False, False),
-    ('data_source_reference', shared.DocReference, False, False),
     ('instance_id', unicode, False, False),
+    ('link_to_data_source', shared.DocReference, False, False),
     ('properties', software.CouplingProperty, False, True),
 )
 
@@ -841,9 +840,9 @@ software.Deployment.type_info = (
     ('description', unicode, False, False),
     ('executable_arguments', unicode, False, True),
     ('executable_name', unicode, False, False),
+    ('link_to_platform', shared.DocReference, False, False),
     ('parallelisation', software.Parallelisation, False, False),
     ('platform', shared.Platform, False, False),
-    ('platform_reference', shared.DocReference, False, False),
 )
 
 software.EntryPoint.type_info = (
@@ -886,7 +885,7 @@ software.SpatialRegriddingProperty.type_info = (
 
 software.SpatialRegriddingUserMethod.type_info = (
     ('file', data.DataObject, False, False),
-    ('file_reference', shared.DocReference, False, False),
+    ('link_to_file', shared.DocReference, False, False),
     ('name', unicode, True, False),
 )
 

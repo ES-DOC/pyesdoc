@@ -120,8 +120,17 @@ class DrsFrequencyTypes(object):
 
     Set of allowed DRS frequency types.
     """
-
-    pass
+    is_open = False
+    members = [
+        "3hr",
+        "6hr",
+        "day",
+        "fx",
+        "mon",
+        "monClim",
+        "subhr",
+        "yr"
+        ]
 
 
 class DrsGeographicalOperators(object):
@@ -129,8 +138,15 @@ class DrsGeographicalOperators(object):
 
     Set of permitted spatial averaging operator suffixes for drs spatial indicators (yyyy-zzzz).
     """
-
-    pass
+    is_open = False
+    members = [
+        "areaavg",
+        "lnd-areaavg",
+        "lnd-zonalavg",
+        "ocn-areaavg",
+        "ocn-zonalavg",
+        "zonalavg"
+        ]
 
 
 class DrsRealms(object):
@@ -138,8 +154,17 @@ class DrsRealms(object):
 
     Set of allowed DRS modelling realms.
     """
-
-    pass
+    is_open = False
+    members = [
+        "aerosol",
+        "atmos",
+        "atmosChem",
+        "land",
+        "landIce",
+        "ocean",
+        "ocnBgchem",
+        "seaIce"
+        ]
 
 
 class DrsTimeSuffixes(object):
@@ -147,7 +172,10 @@ class DrsTimeSuffixes(object):
 
     Set of permitted time averaging suffixes for drs temporal identifiers.
     """
-
-    pass
+    is_open = False
+    members = [
+        "avg",
+        "clim"
+        ]
 
 

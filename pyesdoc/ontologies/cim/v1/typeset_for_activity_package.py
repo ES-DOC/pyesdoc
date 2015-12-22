@@ -54,10 +54,10 @@ class Conformance(object):
         self.description = None                           # unicode
         self.frequency = None                             # activity.FrequencyType
         self.is_conformant = None                         # bool
+        self.link_to_requirements = []                    # shared.DocReference
+        self.link_to_sources = []                         # shared.DocReference
         self.requirements = []                            # activity.NumericalRequirement
-        self.requirements_references = []                 # shared.DocReference
         self.sources = []                                 # shared.DataSource
-        self.sources_references = []                      # shared.DocReference
         self.type = None                                  # activity.ConformanceType
 
 
@@ -89,8 +89,8 @@ class ExperimentRelationshipTarget(object):
         """
         super(ExperimentRelationshipTarget, self).__init__()
 
+        self.link_to_numerical_experiment = None          # shared.DocReference
         self.numerical_experiment = None                  # activity.NumericalExperiment
-        self.reference = None                             # shared.DocReference
 
 
 class NumericalRequirement(object):
@@ -109,11 +109,11 @@ class NumericalRequirement(object):
 
         self.description = None                           # unicode
         self.id = None                                    # unicode
+        self.link_to_source = None                        # shared.DocReference
         self.name = None                                  # unicode
         self.options = []                                 # activity.NumericalRequirementOption
         self.requirement_type = None                      # unicode
         self.source = None                                # shared.DataSource
-        self.source_reference = None                      # shared.DocReference
 
 
 class NumericalRequirementOption(object):
@@ -163,7 +163,7 @@ class SimulationRelationshipTarget(object):
         """
         super(SimulationRelationshipTarget, self).__init__()
 
-        self.reference = None                             # shared.DocReference
+        self.link_to_simulation = None                    # shared.DocReference
         self.target = None                                # activity.SimulationType
 
 
@@ -197,11 +197,11 @@ class Experiment(Activity):
         super(Experiment, self).__init__()
 
         self.generates = []                               # unicode
+        self.link_to_requires = []                        # shared.DocReference
+        self.link_to_supports = []                        # shared.DocReference
         self.measurement_campaigns = []                   # activity.MeasurementCampaign
         self.requires = []                                # activity.NumericalActivity
-        self.requires_references = []                     # shared.DocReference
         self.supports = []                                # unicode
-        self.supports_references = []                     # shared.DocReference
 
 
 class InitialCondition(NumericalRequirement):
@@ -264,10 +264,10 @@ class NumericalActivity(Activity):
         super(NumericalActivity, self).__init__()
 
         self.description = None                           # unicode
+        self.link_to_supports = []                        # shared.DocReference
         self.long_name = None                             # unicode
         self.short_name = None                            # unicode
         self.supports = []                                # activity.Experiment
-        self.supports_references = []                     # shared.DocReference
 
 
 class NumericalExperiment(Experiment):
@@ -337,17 +337,17 @@ class Simulation(NumericalActivity):
         self.calendar = None                              # shared.Calendar
         self.conformances = []                            # activity.Conformance
         self.control_simulation = None                    # activity.Simulation
-        self.control_simulation_reference = None          # shared.DocReference
         self.deployments = []                             # software.Deployment
         self.inputs = []                                  # software.Coupling
-        self.output_references = []                       # shared.DocReference
+        self.link_to_control_simulation = None            # shared.DocReference
+        self.link_to_outputs = []                         # shared.DocReference
+        self.link_to_simulations = []                     # shared.DocReference
+        self.link_to_spinup_simulation = None             # shared.DocReference
         self.outputs = []                                 # data.DataObject
-        self.restart_references = []                      # shared.DocReference
         self.restarts = []                                # data.DataObject
         self.simulation_id = None                         # unicode
         self.spinup_date_range = None                     # shared.ClosedDateRange
         self.spinup_simulation = None                     # activity.Simulation
-        self.spinup_simulation_reference = None           # shared.DocReference
 
 
 class SimulationComposite(Simulation):
@@ -381,9 +381,9 @@ class SimulationRun(Simulation):
         super(SimulationRun, self).__init__()
 
         self.date_range = None                            # shared.DateRange
+        self.link_to_model = None                         # shared.DocReference
         self.meta = shared.DocMetaInfo()                  # shared.DocMetaInfo
         self.model = None                                 # software.ModelComponent
-        self.model_reference = None                       # shared.DocReference
 
 
 class SpatioTemporalConstraint(NumericalRequirement):
@@ -419,12 +419,12 @@ class DownscalingSimulation(NumericalActivity):
 
         self.calendar = None                              # shared.Calendar
         self.downscaled_from = None                       # shared.DataSource
-        self.downscaled_from_reference = None             # shared.DocReference
         self.downscaling_id = None                        # unicode
         self.downscaling_type = None                      # activity.DownscalingType
         self.inputs = []                                  # software.Coupling
+        self.link_to_downscaled_from = None               # shared.DocReference
+        self.link_to_outputs = []                         # shared.DocReference
         self.meta = shared.DocMetaInfo()                  # shared.DocMetaInfo
-        self.output_references = []                       # shared.DocReference
         self.outputs = []                                 # data.DataObject
 
 
@@ -440,10 +440,10 @@ class Ensemble(NumericalActivity):
         """
         super(Ensemble, self).__init__()
 
+        self.link_to_outputs = []                         # shared.DocReference
         self.members = []                                 # activity.EnsembleMember
         self.meta = shared.DocMetaInfo()                  # shared.DocMetaInfo
         self.outputs = []                                 # shared.DataSource
-        self.outputs_references = []                      # shared.DocReference
         self.types = []                                   # activity.EnsembleType
 
 
@@ -461,9 +461,9 @@ class EnsembleMember(NumericalActivity):
 
         self.ensemble = None                              # activity.Ensemble
         self.ensemble_ids = []                            # shared.StandardName
-        self.ensemble_reference = None                    # shared.DocReference
+        self.link_to_ensemble = None                      # shared.DocReference
+        self.link_to_simulation = None                    # shared.DocReference
         self.simulation = None                            # activity.Simulation
-        self.simulation_reference = None                  # shared.DocReference
 
 
 class ConformanceType(object):
@@ -471,8 +471,15 @@ class ConformanceType(object):
 
     Creates and returns instance of conformance_type enum.
     """
-
-    pass
+    is_open = False
+    members = [
+        "combination",
+        "not conformant",
+        "not-xxx",
+        "standard config",
+        "via inputs",
+        "via model mods"
+        ]
 
 
 class DownscalingType(object):
@@ -480,8 +487,11 @@ class DownscalingType(object):
 
     Creates and returns instance of downscaling_type enum.
     """
-
-    pass
+    is_open = False
+    members = [
+        "dynamic",
+        "statistical"
+        ]
 
 
 class EnsembleType(object):
@@ -489,8 +499,8 @@ class EnsembleType(object):
 
     Creates and returns instance of ensemble_type enum.
     """
-
-    pass
+    is_open = True
+    members = []
 
 
 class ExperimentRelationshipType(object):
@@ -498,8 +508,18 @@ class ExperimentRelationshipType(object):
 
     Creates and returns instance of experiment_relationship_type enum.
     """
-
-    pass
+    is_open = False
+    members = [
+        "continuationOf",
+        "controlExperiment",
+        "extensionOf",
+        "higherResolutionVersionOf",
+        "increaseEnsembleOf",
+        "lowerResolutionVersionOf",
+        "modifiedInputMethodOf",
+        "previousRealisation",
+        "shorterVersionOf"
+        ]
 
 
 class FrequencyType(object):
@@ -507,8 +527,8 @@ class FrequencyType(object):
 
     Creates and returns instance of frequency_type enum.
     """
-
-    pass
+    is_open = True
+    members = []
 
 
 class ProjectType(object):
@@ -516,8 +536,8 @@ class ProjectType(object):
 
     Creates and returns instance of project_type enum.
     """
-
-    pass
+    is_open = True
+    members = []
 
 
 class ResolutionType(object):
@@ -525,8 +545,8 @@ class ResolutionType(object):
 
     Creates and returns instance of resolution_type enum.
     """
-
-    pass
+    is_open = True
+    members = []
 
 
 class SimulationRelationshipType(object):
@@ -534,8 +554,17 @@ class SimulationRelationshipType(object):
 
     Creates and returns instance of simulation_relationship_type enum.
     """
-
-    pass
+    is_open = False
+    members = [
+        "continuationOf",
+        "extensionOf",
+        "fixedVersionOf",
+        "followingSimulation",
+        "higherResolutionVersionOf",
+        "lowerResolutionVersionOf",
+        "previousSimulation",
+        "responseTo"
+        ]
 
 
 class SimulationType(object):
@@ -543,7 +572,11 @@ class SimulationType(object):
 
     Creates and returns instance of simulation_type enum.
     """
-
-    pass
+    is_open = False
+    members = [
+        "assimilation",
+        "simulationComposite",
+        "simulationRun"
+        ]
 
 

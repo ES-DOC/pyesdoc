@@ -126,7 +126,6 @@ class DocMetaInfo(object):
         super(DocMetaInfo, self).__init__()
 
         self.author = None                                # shared.Party
-        self.author_reference = None                      # shared.DocReference
         self.create_date = None                           # datetime.datetime
         self.drs_keys = []                                # unicode
         self.drs_path = None                              # unicode
@@ -134,7 +133,9 @@ class DocMetaInfo(object):
         self.id = None                                    # uuid.UUID
         self.institute = None                             # unicode
         self.language = None                              # unicode
+        self.link_to_author = None                        # shared.DocReference
         self.project = None                               # unicode
+        self.reviews = []                                 # shared.DocQualityReview
         self.sort_key = None                              # unicode
         self.source = None                                # unicode
         self.source_key = None                            # unicode
@@ -143,6 +144,25 @@ class DocMetaInfo(object):
         self.type_sort_key = None                         # unicode
         self.update_date = None                           # datetime.datetime
         self.version = None                               # int
+
+
+class DocQualityReview(object):
+    """A concrete class within the cim v2 type system.
+
+    A review of a documents quality.
+
+    """
+    def __init__(self):
+        """Constructor.
+
+        """
+        super(DocQualityReview, self).__init__()
+
+        self.completeness = None                          # unicode
+        self.date = None                                  # unicode
+        self.link_to_reviewer = None                      # shared.DocReference
+        self.quality = None                               # unicode
+        self.reviewer = None                              # shared.Party
 
 
 class DocReference(object):
@@ -296,7 +316,7 @@ class StandaloneDocument(object):
 class TimePeriod(object):
     """A concrete class within the cim v2 type system.
 
-    Creates a time period class aka a temporal extent.
+    A time period class aka a temporal extent.
 
     """
     def __init__(self):
@@ -365,7 +385,7 @@ class CimLink(OnlineResource):
 class IrregularDateset(DatetimeSet):
     """A concrete class within the cim v2 type system.
 
-    Creates a set of irregularly spaced times.
+    A set of irregularly spaced times.
 
     """
     def __init__(self):
@@ -394,7 +414,7 @@ class Reference(Citation):
 class RegularTimeset(DatetimeSet):
     """A concrete class within the cim v2 type system.
 
-    Creates a regularly spaced set of times.
+    A regularly spaced set of times.
 
     """
     def __init__(self):
@@ -411,19 +431,34 @@ class RegularTimeset(DatetimeSet):
 class CalendarTypes(object):
     """An enumeration within the cim v2 type system.
 
-    Create and return a calendar type enum.
+    CF calendar types as defined in CF 1.6.
     """
-
-    pass
+    is_open = False
+    members = [
+        "360_day",
+        "365_day",
+        "366_day",
+        "all_leap",
+        "gregorian",
+        "julian",
+        "noleap",
+        "none",
+        "proleptic_gregorian",
+        "standard"
+        ]
 
 
 class PeriodDateTypes(object):
     """An enumeration within the cim v2 type system.
 
-    Create and return a period date type enum (used by time_period).
+    A period date type enum (used by time_period).
     """
-
-    pass
+    is_open = False
+    members = [
+        "date is end",
+        "date is start",
+        "unused"
+        ]
 
 
 class RoleCode(object):
@@ -431,17 +466,34 @@ class RoleCode(object):
 
     Responsibility role codes.
     """
-
-    pass
+    is_open = False
+    members = [
+        "Principal Investigator",
+        "author",
+        "collaborator",
+        "custodian",
+        "distributor",
+        "originator",
+        "owner",
+        "point of contact",
+        "processor",
+        "publisher",
+        "resource provider",
+        "sponsor",
+        "user"
+        ]
 
 
 class SlicetimeUnits(object):
     """An enumeration within the cim v2 type system.
 
-    Create and return a time unit enum for just years and months.
+    Units for integers in a timeslice.
     """
-
-    pass
+    is_open = False
+    members = [
+        "monthly",
+        "yearly"
+        ]
 
 
 class TextCode(object):
@@ -450,16 +502,23 @@ class TextCode(object):
     Types of text understood by the CIM notebook. Currently only
     plaintext, but we expect safe HTML to be supported as soon as practicable.
     """
-
-    pass
+    is_open = False
+    members = [
+        "plaintext"
+        ]
 
 
 class TimeUnits(object):
     """An enumeration within the cim v2 type system.
 
-    Create and return a time unit enum.
+    Appropriate Time units for experiment durations in NWP and Climate Modelling.
     """
-
-    pass
+    is_open = False
+    members = [
+        "days",
+        "months",
+        "seconds",
+        "years"
+        ]
 
 

@@ -126,7 +126,11 @@ class DataAssociationTypes(object):
     Set of possible dataset associations.
     Selected from, and extended from,  ISO19115 (2014) DS_AssociationTypeCode.
     """
-
-    pass
+    is_open = False
+    members = [
+        "isComposedOf",
+        "partOf",
+        "revisonOf"
+        ]
 
 

@@ -162,9 +162,9 @@ class DataObject(shared.DataSource):
         self.geometry_model = None                        # unicode
         self.hierarchy_level = None                       # data.DataHierarchyLevel
         self.keyword = None                               # unicode
+        self.link_to_parent_object = None                 # shared.DocReference
         self.meta = shared.DocMetaInfo()                  # shared.DocMetaInfo
         self.parent_object = None                         # data.DataObject
-        self.parent_object_reference = None               # shared.DocReference
         self.properties = []                              # data.DataProperty
         self.purpose = None                               # unicode
         self.restriction = []                             # data.DataRestriction
@@ -299,8 +299,8 @@ class DataHierarchyType(object):
 
     Enumerates the level in the data hierarchy (constructed by the self-referential parent/child aggregations) is this DataObject.
     """
-
-    pass
+    is_open = True
+    members = []
 
 
 class DataStatusType(object):
@@ -308,7 +308,11 @@ class DataStatusType(object):
 
     Enumerates status of a data object.
     """
-
-    pass
+    is_open = False
+    members = [
+        "complete",
+        "continuouslySupplemented",
+        "metadataOnly"
+        ]
 
 

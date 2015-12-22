@@ -81,6 +81,7 @@ shared.Citation.type_key = u'cim.2.shared.Citation'
 shared.DateTime.type_key = u'cim.2.shared.DateTime'
 shared.DatetimeSet.type_key = u'cim.2.shared.DatetimeSet'
 shared.DocMetaInfo.type_key = u'cim.2.shared.DocMetaInfo'
+shared.DocQualityReview.type_key = u'cim.2.shared.DocQualityReview'
 shared.DocReference.type_key = u'cim.2.shared.DocReference'
 shared.IrregularDateset.type_key = u'cim.2.shared.IrregularDateset'
 shared.KeyFloat.type_key = u'cim.2.shared.KeyFloat'
@@ -538,7 +539,6 @@ shared.DatetimeSet.type_info = (
 
 shared.DocMetaInfo.type_info = (
     ('author', shared.Party, False, False),
-    ('author_reference', shared.DocReference, False, False),
     ('create_date', datetime.datetime, True, False),
     ('drs_keys', unicode, False, True),
     ('drs_path', unicode, False, False),
@@ -546,7 +546,9 @@ shared.DocMetaInfo.type_info = (
     ('id', uuid.UUID, True, False),
     ('institute', unicode, False, False),
     ('language', unicode, True, False),
+    ('link_to_author', shared.DocReference, False, False),
     ('project', unicode, True, False),
+    ('reviews', shared.DocQualityReview, False, True),
     ('sort_key', unicode, False, False),
     ('source', unicode, True, False),
     ('source_key', unicode, False, False),
@@ -555,6 +557,14 @@ shared.DocMetaInfo.type_info = (
     ('type_sort_key', unicode, False, False),
     ('update_date', datetime.datetime, True, False),
     ('version', int, True, False),
+)
+
+shared.DocQualityReview.type_info = (
+    ('completeness', unicode, True, False),
+    ('date', unicode, True, False),
+    ('link_to_reviewer', shared.DocReference, True, False),
+    ('quality', unicode, True, False),
+    ('reviewer', shared.Party, True, False),
 )
 
 shared.DocReference.type_info = (
