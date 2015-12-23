@@ -10,11 +10,8 @@
 		{% if doc.inputs %}
 		    <li><a href="#{{ doc.ext.full_id }}-inputs">Couplings</a></li>
 	    {% end %}
-		{% if doc.conformances %}
-		    <li><a href="#{{ doc.ext.full_id }}-conformances">Conformances</a></li>
-	    {% end %}
-		{% if doc.link_to_model and doc.link_to_model.changes %}
-		    <li><a href="#{{ doc.ext.full_id }}-model-mods">Model Modifications {{len(doc.link_to_model.changes)}}</a></li>
+		{% if isinstance(doc.model, cim.v1.DocReference) and doc.model.changes %}
+		    <li><a href="#{{ doc.ext.full_id }}-model-mods">Model Modifications {{len(doc.model.changes)}}</a></li>
 		{% end %}
     </ul>
 </nav>
@@ -29,10 +26,7 @@
 	{% if doc.inputs %}
 		{% include activity_simulation_run_inputs.html %}
 	{% end %}
-	{% if doc.conformances %}
-		{% include activity_simulation_run_conformances.html %}
-	{% end %}
-	{% if doc.link_to_model and len(doc.link_to_model.changes) %}
+	{% if isinstance(doc.model, cim.v1.DocReference) and doc.model.changes %}
 		{% include activity_simulation_run_model_mods.html %}
 	{% end %}
 

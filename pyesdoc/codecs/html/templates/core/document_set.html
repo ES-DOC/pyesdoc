@@ -47,7 +47,7 @@
 <div class="esdoc-document-set">
     {% for doc in document_set %}
         <article id="{{ doc.ext.full_id }}"
-             class="esdoc-document {{ doc.meta.project.lower() }} {{ doc.type_key.lower().replace(".", "-") }}">
+             class="esdoc-document {{ str(doc.meta.project).lower() }} {{ doc.type_key.lower().replace(".", "-") }}">
             {{ squeeze(generate_document(doc)) }}
         </article>
     {% end %}

@@ -21,12 +21,14 @@ def get_extenders():
 
 
 def _set_experiment_conformances(ctx):
-    """Sets conformance links."""
+    """Sets conformance links.
+
+    """
     ctx.ext.conformances = []
     for conformance in ctx.doc.conformances:
-    	if len(conformance.link_to_requirements):
-    		for link_to_requirement in conformance.link_to_requirements:
-    			ctx.ext.conformances.append(link_to_requirement.name)
+    	if len(conformance.requirements):
+    		for requirement in conformance.requirements:
+    			ctx.ext.conformances.append(requirement.name)
     ctx.ext.conformances = ", ".join(sorted(ctx.ext.conformances))
 
 

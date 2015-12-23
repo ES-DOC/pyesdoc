@@ -93,7 +93,12 @@ def _generate(document):
     """
     target = TEMPLATE_TYPE_MAPPINGS[type(document)]
     try:
-        return target.generate(doc=document, TemplateInfo=TemplateInfo, pyesdoc=pyesdoc, load=load)
+        return target.generate(
+            doc=document,
+            TemplateInfo=TemplateInfo,
+            pyesdoc=pyesdoc,
+            load=load,
+            cim=pyesdoc.ontologies.cim)
     except Exception as err:
         rt.log_error("Template generation error: {0}".format(err.message))
         raise err

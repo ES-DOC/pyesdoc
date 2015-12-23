@@ -68,7 +68,7 @@ ESDOC_DEFAULT_LANGUAGE = u'en'
 ESDOC_DEFAULT_PROJECT = u'--'
 
 # Default document institute.
-ESDOC_DEFAULT_INSTIUTE = u'--'
+ESDOC_DEFAULT_INSTITUTE = u'--'
 
 # Default document source.
 ESDOC_DEFAULT_SOURCE = u'scripts'

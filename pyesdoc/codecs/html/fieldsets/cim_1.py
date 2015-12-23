@@ -11,7 +11,7 @@
 
 """
 from pyesdoc.codecs.html.fieldsets.field_info import FieldInfo
-
+from pyesdoc.ontologies import cim
 
 
 def _get_grids_grid_tile_resolution(resolution):
@@ -31,8 +31,8 @@ def _get_activity_ensemble_member(member):
     """
     result = []
 
-    if member.link_to_simulation:
-        for change in member.link_to_simulation.changes:
+    if isinstance(member.simulation, cim.v1.DocReference):
+        for change in member.simulation.changes:
             result.append(FieldInfo('Change type', value=change.type))
             result.append(FieldInfo('Change name', value=change.name))
             result.append(FieldInfo('Change date', value=change.date))
@@ -80,8 +80,8 @@ FIELDSETS = {
         FieldInfo('Type', path='types'),
         FieldInfo('Description', path='description'),
         FieldInfo('Rationale', path='rationales'),
-        FieldInfo('Simulation', path='members.0.link_to_simulation.name'),
-        FieldInfo('Experiment', path='link_to_supports.0.name')
+        FieldInfo('Simulation', path='members.0.simulation.name'),
+        FieldInfo('Experiment', path='supports.0.name')
     ],
 
     'cim.1.activity.numericalexperiment-overview': [
@@ -100,7 +100,7 @@ FIELDSETS = {
         FieldInfo('Name', path='short_name'),
         FieldInfo('Long Name', path='long_name'),
         FieldInfo('ID', path='simulation_id'),
-        FieldInfo('Experiment', path='link_to_supports[0].name'),
+        FieldInfo('Experiment', path='supports[0].name'),
         FieldInfo('Experiment conformances', path='ext.conformances'),
         FieldInfo('Authors', path='authors'),
         FieldInfo('Funder', path='responsible_parties.role=funder.organisation_name',

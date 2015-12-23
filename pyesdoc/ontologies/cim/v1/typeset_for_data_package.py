@@ -162,7 +162,6 @@ class DataObject(shared.DataSource):
         self.geometry_model = None                        # unicode
         self.hierarchy_level = None                       # data.DataHierarchyLevel
         self.keyword = None                               # unicode
-        self.link_to_parent_object = None                 # shared.DocReference
         self.meta = shared.DocMetaInfo()                  # shared.DocMetaInfo
         self.parent_object = None                         # data.DataObject
         self.properties = []                              # data.DataProperty

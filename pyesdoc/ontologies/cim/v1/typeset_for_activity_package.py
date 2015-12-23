@@ -54,8 +54,6 @@ class Conformance(object):
         self.description = None                           # unicode
         self.frequency = None                             # activity.FrequencyType
         self.is_conformant = None                         # bool
-        self.link_to_requirements = []                    # shared.DocReference
-        self.link_to_sources = []                         # shared.DocReference
         self.requirements = []                            # activity.NumericalRequirement
         self.sources = []                                 # shared.DataSource
         self.type = None                                  # activity.ConformanceType
@@ -89,7 +87,6 @@ class ExperimentRelationshipTarget(object):
         """
         super(ExperimentRelationshipTarget, self).__init__()
 
-        self.link_to_numerical_experiment = None          # shared.DocReference
         self.numerical_experiment = None                  # activity.NumericalExperiment
 
 
@@ -109,7 +106,6 @@ class NumericalRequirement(object):
 
         self.description = None                           # unicode
         self.id = None                                    # unicode
-        self.link_to_source = None                        # shared.DocReference
         self.name = None                                  # unicode
         self.options = []                                 # activity.NumericalRequirementOption
         self.requirement_type = None                      # unicode
@@ -163,7 +159,7 @@ class SimulationRelationshipTarget(object):
         """
         super(SimulationRelationshipTarget, self).__init__()
 
-        self.link_to_simulation = None                    # shared.DocReference
+        self.simulation = None                            # shared.DocReference
         self.target = None                                # activity.SimulationType
 
 
@@ -197,8 +193,6 @@ class Experiment(Activity):
         super(Experiment, self).__init__()
 
         self.generates = []                               # unicode
-        self.link_to_requires = []                        # shared.DocReference
-        self.link_to_supports = []                        # shared.DocReference
         self.measurement_campaigns = []                   # activity.MeasurementCampaign
         self.requires = []                                # activity.NumericalActivity
         self.supports = []                                # unicode
@@ -264,7 +258,6 @@ class NumericalActivity(Activity):
         super(NumericalActivity, self).__init__()
 
         self.description = None                           # unicode
-        self.link_to_supports = []                        # shared.DocReference
         self.long_name = None                             # unicode
         self.short_name = None                            # unicode
         self.supports = []                                # activity.Experiment
@@ -339,10 +332,6 @@ class Simulation(NumericalActivity):
         self.control_simulation = None                    # activity.Simulation
         self.deployments = []                             # software.Deployment
         self.inputs = []                                  # software.Coupling
-        self.link_to_control_simulation = None            # shared.DocReference
-        self.link_to_outputs = []                         # shared.DocReference
-        self.link_to_simulations = []                     # shared.DocReference
-        self.link_to_spinup_simulation = None             # shared.DocReference
         self.outputs = []                                 # data.DataObject
         self.restarts = []                                # data.DataObject
         self.simulation_id = None                         # unicode
@@ -381,7 +370,6 @@ class SimulationRun(Simulation):
         super(SimulationRun, self).__init__()
 
         self.date_range = None                            # shared.DateRange
-        self.link_to_model = None                         # shared.DocReference
         self.meta = shared.DocMetaInfo()                  # shared.DocMetaInfo
         self.model = None                                 # software.ModelComponent
 
@@ -422,8 +410,6 @@ class DownscalingSimulation(NumericalActivity):
         self.downscaling_id = None                        # unicode
         self.downscaling_type = None                      # activity.DownscalingType
         self.inputs = []                                  # software.Coupling
-        self.link_to_downscaled_from = None               # shared.DocReference
-        self.link_to_outputs = []                         # shared.DocReference
         self.meta = shared.DocMetaInfo()                  # shared.DocMetaInfo
         self.outputs = []                                 # data.DataObject
 
@@ -440,7 +426,6 @@ class Ensemble(NumericalActivity):
         """
         super(Ensemble, self).__init__()
 
-        self.link_to_outputs = []                         # shared.DocReference
         self.members = []                                 # activity.EnsembleMember
         self.meta = shared.DocMetaInfo()                  # shared.DocMetaInfo
         self.outputs = []                                 # shared.DataSource
@@ -461,8 +446,6 @@ class EnsembleMember(NumericalActivity):
 
         self.ensemble = None                              # activity.Ensemble
         self.ensemble_ids = []                            # shared.StandardName
-        self.link_to_ensemble = None                      # shared.DocReference
-        self.link_to_simulation = None                    # shared.DocReference
         self.simulation = None                            # activity.Simulation
 
 

@@ -9,7 +9,6 @@
 	{% if doc.citations %}
 		{% set citations = doc.citations %}
 		{% set header = 4 %}
-		{% set section_id = "{0}-details-citations".format(doc.ext.full_id) %}
 		{% include shared_citation.html %}
 	{% end %}
 

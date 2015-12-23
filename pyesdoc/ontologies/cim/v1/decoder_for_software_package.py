@@ -137,11 +137,10 @@ def decode_connection(xml, nsmap):
     """
     decodings = [
         ('description', False, 'unicode', 'child::cim:description'),
-        ('link_to_priming', False, decode_doc_reference, 'child::cim:priming/cim:reference'),
-        ('link_to_transformers', True, decode_doc_reference, 'child::cim:transformer/cim:reference'),
         ('priming', False, decode_component_property, 'child::cim:priming/cim:priming/cim:componentProperty'),
         ('priming', False, decode_data_content, 'child::cim:priming/cim:priming/cim:dataContent'),
         ('priming', False, decode_data_object, 'child::cim:priming/cim:priming/cim:dataObject'),
+        ('priming', False, decode_doc_reference, 'child::cim:priming/cim:reference'),
         ('priming', False, decode_model_component, 'child::cim:priming/cim:priming/cim:softwareComponent'),
         ('priming', False, decode_processor_component, 'child::cim:priming/cim:priming/cim:softwareComponent'),
         ('priming', False, decode_statistical_model_component, 'child::cim:priming/cim:priming/cim:softwareComponent'),
@@ -152,6 +151,7 @@ def decode_connection(xml, nsmap):
         ('time_lag', False, 'unicode', 'child::cim:timeLag'),
         ('time_profile', False, decode_timing, 'child::cim:timeProfile'),
         ('time_transformation', False, decode_time_transformation, 'child::cim:timeTransformation'),
+        ('transformers', True, decode_doc_reference, 'child::cim:transformer/cim:reference'),
         ('transformers', True, decode_processor_component, 'child::cim:transformer/cim:processorComponent'),
         ('type', False, 'unicode', 'child::cim:type/@value'),
     ]
@@ -173,11 +173,11 @@ def decode_connection_endpoint(xml, nsmap):
         ('data_source', False, decode_component_property, 'child::cim:dataSource/cim:dataSource/cim:componentProperty'),
         ('data_source', False, decode_data_content, 'child::cim:dataSource/cim:dataSource/cim:dataContent'),
         ('data_source', False, decode_data_object, 'child::cim:dataSource/cim:dataSource/cim:dataObject'),
+        ('data_source', False, decode_doc_reference, 'child::cim:dataSource/cim:reference'),
         ('data_source', False, decode_model_component, 'child::cim:dataSource/cim:dataSource/cim:softwareComponent'),
         ('data_source', False, decode_processor_component, 'child::cim:dataSource/cim:dataSource/cim:softwareComponent'),
         ('data_source', False, decode_statistical_model_component, 'child::cim:dataSource/cim:dataSource/cim:softwareComponent'),
         ('instance_id', False, 'unicode', 'child::cim:instanceID'),
-        ('link_to_data_source', False, decode_doc_reference, 'child::cim:dataSource/cim:reference'),
         ('properties', True, decode_connection_property, 'child::cim:connectionProperty'),
     ]
 
@@ -216,11 +216,10 @@ def decode_coupling(xml, nsmap):
         ('connections', True, decode_connection, 'child::cim:connection'),
         ('description', False, 'unicode', 'child::cim:description'),
         ('is_fully_specified', False, 'bool', '@fullySpecified'),
-        ('link_to_priming', False, decode_doc_reference, 'child::cim:priming/cim:reference'),
-        ('link_to_transformers', True, decode_doc_reference, 'child::cim:transformer/cim:reference'),
         ('priming', False, decode_component_property, 'child::cim:priming/cim:priming/cim:componentProperty'),
         ('priming', False, decode_data_content, 'child::cim:priming/cim:priming/cim:dataContent'),
         ('priming', False, decode_data_object, 'child::cim:priming/cim:priming/cim:dataObject'),
+        ('priming', False, decode_doc_reference, 'child::cim:priming/cim:reference'),
         ('priming', False, decode_model_component, 'child::cim:priming/cim:priming/cim:softwareComponent'),
         ('priming', False, decode_processor_component, 'child::cim:priming/cim:priming/cim:softwareComponent'),
         ('priming', False, decode_statistical_model_component, 'child::cim:priming/cim:priming/cim:softwareComponent'),
@@ -232,6 +231,7 @@ def decode_coupling(xml, nsmap):
         ('time_lag', False, decode_time_lag, 'child::cim:timeLag'),
         ('time_profile', False, decode_timing, 'child::cim:timeProfile'),
         ('time_transformation', False, decode_time_transformation, 'child::cim:timeTransformation'),
+        ('transformers', True, decode_doc_reference, 'child::cim:transformer/cim:reference'),
         ('transformers', True, decode_processor_component, 'child::cim:transformer/cim:processorComponent'),
         ('type', False, 'unicode', 'child::cim:type/@value'),
     ]
@@ -253,11 +253,11 @@ def decode_coupling_endpoint(xml, nsmap):
         ('data_source', False, decode_component_property, 'child::cim:dataSource/cim:dataSource/cim:componentProperty'),
         ('data_source', False, decode_data_content, 'child::cim:dataSource/cim:dataSource/cim:dataContent'),
         ('data_source', False, decode_data_object, 'child::cim:dataSource/cim:dataSource/cim:dataObject'),
+        ('data_source', False, decode_doc_reference, 'child::cim:dataSource/cim:reference'),
         ('data_source', False, decode_model_component, 'child::cim:dataSource/cim:dataSource/cim:softwareComponent'),
         ('data_source', False, decode_processor_component, 'child::cim:dataSource/cim:dataSource/cim:softwareComponent'),
         ('data_source', False, decode_statistical_model_component, 'child::cim:dataSource/cim:dataSource/cim:softwareComponent'),
         ('instance_id', False, 'unicode', 'child::cim:instanceID'),
-        ('link_to_data_source', False, decode_doc_reference, 'child::cim:dataSource/cim:reference'),
         ('properties', True, decode_coupling_property, 'child::cim:couplingProperty'),
     ]
 
@@ -297,8 +297,8 @@ def decode_deployment(xml, nsmap):
         ('description', False, 'unicode', 'child::cim:description'),
         ('executable_arguments', True, 'unicode', 'child::cim:executableArgument'),
         ('executable_name', False, 'unicode', 'child::cim:executableName'),
-        ('link_to_platform', False, decode_doc_reference, 'child::cim:platform/cim:reference'),
         ('parallelisation', False, decode_parallelisation, 'child::cim:parallelisation'),
+        ('platform', False, decode_doc_reference, 'child::cim:platform/cim:reference'),
         ('platform', False, decode_platform, 'child::cim:platform/cim:platform'),
     ]
 
@@ -470,7 +470,7 @@ def decode_spatial_regridding_user_method(xml, nsmap):
     """
     decodings = [
         ('file', False, decode_data_object, 'child::cim:file/cim:dataObject'),
-        ('link_to_file', False, decode_doc_reference, 'child::cim:file/cim:reference'),
+        ('file', False, decode_doc_reference, 'child::cim:file/cim:reference'),
         ('name', False, 'unicode', 'child::cim:name'),
     ]
 

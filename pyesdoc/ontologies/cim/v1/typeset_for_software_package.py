@@ -139,8 +139,6 @@ class Connection(object):
         super(Connection, self).__init__()
 
         self.description = None                           # unicode
-        self.link_to_priming = None                       # shared.DocReference
-        self.link_to_transformers = []                    # shared.DocReference
         self.priming = None                               # shared.DataSource
         self.properties = []                              # software.ConnectionProperty
         self.sources = []                                 # software.ConnectionEndpoint
@@ -167,7 +165,6 @@ class ConnectionEndpoint(object):
 
         self.data_source = None                           # shared.DataSource
         self.instance_id = None                           # unicode
-        self.link_to_data_source = None                   # shared.DocReference
         self.properties = []                              # software.ConnectionProperty
 
 
@@ -200,8 +197,6 @@ class Coupling(object):
         self.connections = []                             # software.Connection
         self.description = None                           # unicode
         self.is_fully_specified = None                    # bool
-        self.link_to_priming = None                       # shared.DocReference
-        self.link_to_transformers = []                    # shared.DocReference
         self.priming = None                               # shared.DataSource
         self.properties = []                              # software.CouplingProperty
         self.purpose = None                               # shared.DataPurpose
@@ -229,7 +224,6 @@ class CouplingEndpoint(object):
 
         self.data_source = None                           # shared.DataSource
         self.instance_id = None                           # unicode
-        self.link_to_data_source = None                   # shared.DocReference
         self.properties = []                              # software.CouplingProperty
 
 
@@ -263,7 +257,6 @@ class Deployment(object):
         self.description = None                           # unicode
         self.executable_arguments = []                    # unicode
         self.executable_name = None                       # unicode
-        self.link_to_platform = None                      # shared.DocReference
         self.parallelisation = None                       # software.Parallelisation
         self.platform = None                              # shared.Platform
 
@@ -362,7 +355,6 @@ class SpatialRegriddingUserMethod(object):
         super(SpatialRegriddingUserMethod, self).__init__()
 
         self.file = None                                  # data.DataObject
-        self.link_to_file = None                          # shared.DocReference
         self.name = None                                  # unicode
 
 

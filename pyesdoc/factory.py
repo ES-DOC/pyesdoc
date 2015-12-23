@@ -48,7 +48,7 @@ def create(typeof,
 
     # Set defaults.
     if not institute:
-        institute = constants.ESDOC_DEFAULT_INSTIUTE
+        institute = constants.ESDOC_DEFAULT_INSTITUTE
     if not language:
         language = constants.ESDOC_DEFAULT_LANGUAGE
     if not project:

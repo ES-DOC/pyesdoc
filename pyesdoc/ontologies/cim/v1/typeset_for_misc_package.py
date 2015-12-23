@@ -35,13 +35,6 @@ class DocumentSet(object):
         self.ensembles = []                               # activity.Ensemble
         self.experiment = None                            # activity.NumericalExperiment
         self.grids = []                                   # grids.GridSpec
-        self.link_to_data = []                            # shared.DocReference
-        self.link_to_ensembles = []                       # shared.DocReference
-        self.link_to_experiment = None                    # shared.DocReference
-        self.link_to_grids = []                           # shared.DocReference
-        self.link_to_model = None                         # shared.DocReference
-        self.link_to_platform = None                      # shared.DocReference
-        self.link_to_simulation = None                    # shared.DocReference
         self.meta = shared.DocMetaInfo()                  # shared.DocMetaInfo
         self.model = None                                 # software.ModelComponent
         self.platform = None                              # shared.Platform

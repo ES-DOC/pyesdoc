@@ -217,7 +217,6 @@ class DocRelationshipTarget(object):
         """
         super(DocRelationshipTarget, self).__init__()
 
-        self.document = None                              # shared.DocType
         self.reference = None                             # shared.DocReference
 
 
