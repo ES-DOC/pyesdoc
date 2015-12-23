@@ -106,10 +106,9 @@ def _extend_component_01(ctx):
 
 
 def _extend_component_02(ctx):
-    """Sets component tree.
+    """Append component to tree of each direct ancestor.
 
     """
-    # Append component to tree of each direct ancestor.
     for a in ctx.c.ext.ancestors:
         a.ext.component_tree.append(ctx.c)
 
@@ -147,10 +146,9 @@ def _extend_component_03(ctx):
 
 
 def _extend_component_04(ctx):
-    """Process child components.
+    """Recursively extend child components.
 
     """
-    # Recursively extend child components.
     for c in ctx.c.sub_components:
         _extend_component(c, c, ctx.c, ctx.ancestors + [ctx.c])
 
@@ -168,15 +166,12 @@ def _extend_component(c, ext, parent=None, ancestors=[]):
 
     """
     ctx = _ComponentContextInfo(c, ext, parent, ancestors)
-    for func in (
-        _extend_component_00,
-        _extend_component_01,
-        _extend_component_02,
-        _extend_component_03,
-        _extend_component_04,
-        _extend_component_05,
-        ):
-        func(ctx)
+    _extend_component_00(ctx)
+    _extend_component_01(ctx)
+    _extend_component_02(ctx)
+    _extend_component_03(ctx)
+    _extend_component_04(ctx)
+    _extend_component_05(ctx)
 
 
 def _set_component_hierarchy(ctx):

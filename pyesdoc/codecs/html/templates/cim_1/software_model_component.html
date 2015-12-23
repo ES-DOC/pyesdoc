@@ -33,7 +33,7 @@
 	<section id="{{ doc.ext.full_id }}-components" class="{{ doc.ext.css_class }}-components">
 		<nav>
 			<ul class="depth-0">
-			{% for c in doc.ext.component_tree %}
+			{% for c in [c for c in doc.ext.component_tree if c.ext.depth == 1] %}
 				{% include software_model_component_hierarchy_nav.html %}
 			{% end %}
 			</ul>
