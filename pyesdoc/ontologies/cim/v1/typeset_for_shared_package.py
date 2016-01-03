@@ -32,9 +32,9 @@ class Calendar(object):
         """
         super(Calendar, self).__init__()
 
-        self.description = None                           # unicode
-        self.length = None                                # int
-        self.range = None                                 # shared.DateRange
+        self.description = None                           # unicode (0.1)
+        self.length = None                                # int (0.1)
+        self.range = None                                 # shared.DateRange (0.1)
 
 
 class Change(object):
@@ -49,12 +49,12 @@ class Change(object):
         """
         super(Change, self).__init__()
 
-        self.author = None                                # shared.ResponsibleParty
-        self.date = None                                  # datetime.datetime
-        self.description = None                           # unicode
-        self.details = []                                 # shared.ChangeProperty
-        self.name = None                                  # unicode
-        self.type = None                                  # shared.ChangePropertyType
+        self.author = None                                # shared.ResponsibleParty (0.1)
+        self.date = None                                  # datetime.datetime (0.1)
+        self.description = None                           # unicode (0.1)
+        self.details = []                                 # shared.ChangeProperty (1.N)
+        self.name = None                                  # unicode (0.1)
+        self.type = None                                  # shared.ChangePropertyType (0.1)
 
 
 class Citation(object):
@@ -69,15 +69,15 @@ class Citation(object):
         """
         super(Citation, self).__init__()
 
-        self.alternative_title = None                     # unicode
-        self.collective_title = None                      # unicode
-        self.date = None                                  # datetime.datetime
-        self.date_type = None                             # unicode
-        self.location = None                              # unicode
-        self.organisation = None                          # unicode
-        self.role = None                                  # unicode
-        self.title = None                                 # unicode
-        self.type = None                                  # unicode
+        self.alternative_title = None                     # unicode (0.1)
+        self.collective_title = None                      # unicode (0.1)
+        self.date = None                                  # datetime.datetime (0.1)
+        self.date_type = None                             # unicode (0.1)
+        self.location = None                              # unicode (0.1)
+        self.organisation = None                          # unicode (0.1)
+        self.role = None                                  # unicode (0.1)
+        self.title = None                                 # unicode (0.1)
+        self.type = None                                  # unicode (0.1)
 
 
 class Compiler(object):
@@ -92,12 +92,12 @@ class Compiler(object):
         """
         super(Compiler, self).__init__()
 
-        self.environment_variables = None                 # unicode
-        self.language = None                              # unicode
-        self.name = None                                  # unicode
-        self.options = None                               # unicode
-        self.type = None                                  # shared.CompilerType
-        self.version = None                               # unicode
+        self.environment_variables = None                 # unicode (0.1)
+        self.language = None                              # unicode (0.1)
+        self.name = None                                  # unicode (1.1)
+        self.options = None                               # unicode (0.1)
+        self.type = None                                  # shared.CompilerType (0.1)
+        self.version = None                               # unicode (1.1)
 
 
 class DataSource(object):
@@ -114,7 +114,7 @@ class DataSource(object):
         """
         super(DataSource, self).__init__()
 
-        self.purpose = None                               # shared.DataPurpose
+        self.purpose = None                               # shared.DataPurpose (0.1)
 
 
 class DateRange(object):
@@ -131,7 +131,7 @@ class DateRange(object):
         """
         super(DateRange, self).__init__()
 
-        self.duration = None                              # unicode
+        self.duration = None                              # unicode (0.1)
 
 
 class DocGenealogy(object):
@@ -146,7 +146,7 @@ class DocGenealogy(object):
         """
         super(DocGenealogy, self).__init__()
 
-        self.relationships = []                           # shared.DocRelationship
+        self.relationships = []                           # shared.DocRelationship (0.N)
 
 
 class DocMetaInfo(object):
@@ -161,25 +161,25 @@ class DocMetaInfo(object):
         """
         super(DocMetaInfo, self).__init__()
 
-        self.author = None                                # shared.ResponsibleParty
-        self.create_date = None                           # datetime.datetime
-        self.drs_keys = []                                # unicode
-        self.drs_path = None                              # unicode
-        self.external_ids = []                            # shared.StandardName
-        self.genealogy = None                             # shared.DocGenealogy
-        self.id = None                                    # uuid.UUID
-        self.institute = None                             # unicode
-        self.language = None                              # unicode
-        self.project = None                               # unicode
-        self.sort_key = None                              # unicode
-        self.source = None                                # unicode
-        self.source_key = None                            # unicode
-        self.status = None                                # shared.DocStatusType
-        self.type = None                                  # unicode
-        self.type_display_name = None                     # unicode
-        self.type_sort_key = None                         # unicode
-        self.update_date = None                           # datetime.datetime
-        self.version = None                               # int
+        self.author = None                                # shared.ResponsibleParty (0.1)
+        self.create_date = None                           # datetime.datetime (1.1)
+        self.drs_keys = []                                # unicode (0.N)
+        self.drs_path = None                              # unicode (0.1)
+        self.external_ids = []                            # shared.StandardName (0.N)
+        self.genealogy = None                             # shared.DocGenealogy (0.1)
+        self.id = None                                    # uuid.UUID (1.1)
+        self.institute = None                             # unicode (0.1)
+        self.language = None                              # unicode (1.1)
+        self.project = None                               # unicode (1.1)
+        self.sort_key = None                              # unicode (0.1)
+        self.source = None                                # unicode (1.1)
+        self.source_key = None                            # unicode (0.1)
+        self.status = None                                # shared.DocStatusType (0.1)
+        self.type = None                                  # unicode (1.1)
+        self.type_display_name = None                     # unicode (0.1)
+        self.type_sort_key = None                         # unicode (0.1)
+        self.update_date = None                           # datetime.datetime (1.1)
+        self.version = None                               # int (1.1)
         self.source = unicode("scripts")
 
 
@@ -195,14 +195,14 @@ class DocReference(object):
         """
         super(DocReference, self).__init__()
 
-        self.changes = []                                 # shared.Change
-        self.description = None                           # unicode
-        self.external_id = None                           # unicode
-        self.id = None                                    # uuid.UUID
-        self.name = None                                  # unicode
-        self.type = None                                  # unicode
-        self.url = None                                   # unicode
-        self.version = None                               # int
+        self.changes = []                                 # shared.Change (0.N)
+        self.description = None                           # unicode (0.1)
+        self.external_id = None                           # unicode (0.1)
+        self.id = None                                    # uuid.UUID (0.1)
+        self.name = None                                  # unicode (0.1)
+        self.type = None                                  # unicode (0.1)
+        self.url = None                                   # unicode (0.1)
+        self.version = None                               # int (0.1)
 
 
 class DocRelationshipTarget(object):
@@ -217,7 +217,7 @@ class DocRelationshipTarget(object):
         """
         super(DocRelationshipTarget, self).__init__()
 
-        self.reference = None                             # shared.DocReference
+        self.reference = None                             # shared.DocReference (0.1)
 
 
 class License(object):
@@ -232,10 +232,10 @@ class License(object):
         """
         super(License, self).__init__()
 
-        self.contact = None                               # unicode
-        self.description = None                           # unicode
-        self.is_unrestricted = None                       # bool
-        self.name = None                                  # unicode
+        self.contact = None                               # unicode (0.1)
+        self.description = None                           # unicode (0.1)
+        self.is_unrestricted = None                       # bool (0.1)
+        self.name = None                                  # unicode (0.1)
 
 
 class Machine(object):
@@ -250,18 +250,18 @@ class Machine(object):
         """
         super(Machine, self).__init__()
 
-        self.cores_per_processor = None                   # int
-        self.description = None                           # unicode
-        self.interconnect = None                          # shared.InterconnectType
-        self.libraries = []                               # unicode
-        self.location = None                              # unicode
-        self.maximum_processors = None                    # int
-        self.name = None                                  # unicode
-        self.operating_system = None                      # shared.OperatingSystemType
-        self.processor_type = None                        # shared.ProcessorType
-        self.system = None                                # unicode
-        self.type = None                                  # shared.MachineType
-        self.vendor = None                                # shared.MachineVendorType
+        self.cores_per_processor = None                   # int (0.1)
+        self.description = None                           # unicode (0.1)
+        self.interconnect = None                          # shared.InterconnectType (0.1)
+        self.libraries = []                               # unicode (0.N)
+        self.location = None                              # unicode (0.1)
+        self.maximum_processors = None                    # int (0.1)
+        self.name = None                                  # unicode (1.1)
+        self.operating_system = None                      # shared.OperatingSystemType (0.1)
+        self.processor_type = None                        # shared.ProcessorType (0.1)
+        self.system = None                                # unicode (0.1)
+        self.type = None                                  # shared.MachineType (0.1)
+        self.vendor = None                                # shared.MachineVendorType (0.1)
 
 
 class MachineCompilerUnit(object):
@@ -276,8 +276,8 @@ class MachineCompilerUnit(object):
         """
         super(MachineCompilerUnit, self).__init__()
 
-        self.compilers = []                               # shared.Compiler
-        self.machine = None                               # shared.Machine
+        self.compilers = []                               # shared.Compiler (0.N)
+        self.machine = None                               # shared.Machine (1.1)
 
 
 class Platform(object):
@@ -292,12 +292,12 @@ class Platform(object):
         """
         super(Platform, self).__init__()
 
-        self.contacts = []                                # shared.ResponsibleParty
-        self.description = None                           # unicode
-        self.long_name = None                             # unicode
-        self.meta = DocMetaInfo()                         # shared.DocMetaInfo
-        self.short_name = None                            # unicode
-        self.units = []                                   # shared.MachineCompilerUnit
+        self.contacts = []                                # shared.ResponsibleParty (0.N)
+        self.description = None                           # unicode (0.1)
+        self.long_name = None                             # unicode (0.1)
+        self.meta = DocMetaInfo()                         # shared.DocMetaInfo (1.1)
+        self.short_name = None                            # unicode (1.1)
+        self.units = []                                   # shared.MachineCompilerUnit (1.N)
 
 
 class Property(object):
@@ -312,8 +312,8 @@ class Property(object):
         """
         super(Property, self).__init__()
 
-        self.name = None                                  # unicode
-        self.value = None                                 # unicode
+        self.name = None                                  # unicode (0.1)
+        self.value = None                                 # unicode (0.1)
 
 
 class Relationship(object):
@@ -330,8 +330,8 @@ class Relationship(object):
         """
         super(Relationship, self).__init__()
 
-        self.description = None                           # unicode
-        self.direction = None                             # shared.DocRelationshipDirectionType
+        self.description = None                           # unicode (0.1)
+        self.direction = None                             # shared.DocRelationshipDirectionType (1.1)
 
 
 class ResponsibleParty(object):
@@ -346,13 +346,13 @@ class ResponsibleParty(object):
         """
         super(ResponsibleParty, self).__init__()
 
-        self.abbreviation = None                          # unicode
-        self.address = None                               # unicode
-        self.email = None                                 # unicode
-        self.individual_name = None                       # unicode
-        self.organisation_name = None                     # unicode
-        self.role = None                                  # unicode
-        self.url = None                                   # unicode
+        self.abbreviation = None                          # unicode (0.1)
+        self.address = None                               # unicode (0.1)
+        self.email = None                                 # unicode (0.1)
+        self.individual_name = None                       # unicode (0.1)
+        self.organisation_name = None                     # unicode (0.1)
+        self.role = None                                  # unicode (0.1)
+        self.url = None                                   # unicode (0.1)
 
 
 class Standard(object):
@@ -367,9 +367,9 @@ class Standard(object):
         """
         super(Standard, self).__init__()
 
-        self.description = None                           # unicode
-        self.name = None                                  # unicode
-        self.version = None                               # unicode
+        self.description = None                           # unicode (0.1)
+        self.name = None                                  # unicode (1.1)
+        self.version = None                               # unicode (0.1)
 
 
 class StandardName(object):
@@ -384,9 +384,9 @@ class StandardName(object):
         """
         super(StandardName, self).__init__()
 
-        self.is_open = None                               # bool
-        self.standards = []                               # shared.Standard
-        self.value = None                                 # unicode
+        self.is_open = None                               # bool (1.1)
+        self.standards = []                               # shared.Standard (0.N)
+        self.value = None                                 # unicode (1.1)
 
 
 class ChangeProperty(Property):
@@ -401,8 +401,8 @@ class ChangeProperty(Property):
         """
         super(ChangeProperty, self).__init__()
 
-        self.description = None                           # unicode
-        self.id = None                                    # unicode
+        self.description = None                           # unicode (0.1)
+        self.id = None                                    # unicode (0.1)
 
 
 class ClosedDateRange(DateRange):
@@ -417,8 +417,8 @@ class ClosedDateRange(DateRange):
         """
         super(ClosedDateRange, self).__init__()
 
-        self.end = None                                   # datetime.datetime
-        self.start = None                                 # datetime.datetime
+        self.end = None                                   # datetime.datetime (0.1)
+        self.start = None                                 # datetime.datetime (1.1)
 
 
 class Daily360(Calendar):
@@ -447,8 +447,8 @@ class DocRelationship(Relationship):
         """
         super(DocRelationship, self).__init__()
 
-        self.target = None                                # shared.DocRelationshipTarget
-        self.type = None                                  # shared.DocRelationshipType
+        self.target = None                                # shared.DocRelationshipTarget (1.1)
+        self.type = None                                  # shared.DocRelationshipType (1.1)
 
 
 class OpenDateRange(DateRange):
@@ -463,8 +463,8 @@ class OpenDateRange(DateRange):
         """
         super(OpenDateRange, self).__init__()
 
-        self.end = None                                   # datetime.datetime
-        self.start = None                                 # datetime.datetime
+        self.end = None                                   # datetime.datetime (0.1)
+        self.start = None                                 # datetime.datetime (0.1)
 
 
 class PerpetualPeriod(Calendar):

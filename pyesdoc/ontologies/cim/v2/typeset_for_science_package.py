@@ -36,11 +36,11 @@ class Algorithm(object):
         """
         super(Algorithm, self).__init__()
 
-        self.diagnostic_variables = []                    # data.VariableCollection
-        self.heading = None                               # unicode
-        self.implementation_overview = None               # unicode
-        self.prognostic_variables = []                    # data.VariableCollection
-        self.references = []                              # shared.Citation
+        self.diagnostic_variables = []                    # data.VariableCollection (0.N)
+        self.heading = None                               # unicode (1.1)
+        self.implementation_overview = None               # unicode (1.1)
+        self.prognostic_variables = []                    # data.VariableCollection (0.N)
+        self.references = []                              # shared.Citation (0.N)
 
 
 class ConservationProperties(object):
@@ -55,9 +55,9 @@ class ConservationProperties(object):
         """
         super(ConservationProperties, self).__init__()
 
-        self.corrected_conserved_prognostic_variables = None# data.VariableCollection
-        self.correction_methodology = None                # unicode
-        self.flux_correction_was_used = None              # bool
+        self.corrected_conserved_prognostic_variables = None# data.VariableCollection (0.1)
+        self.correction_methodology = None                # unicode (0.1)
+        self.flux_correction_was_used = None              # bool (1.1)
 
 
 class Extent(object):
@@ -75,15 +75,15 @@ class Extent(object):
         """
         super(Extent, self).__init__()
 
-        self.eastern_boundary = None                      # float
-        self.is_global = None                             # bool
-        self.maximum_vertical_level = None                # float
-        self.minimum_vertical_level = None                # float
-        self.northern_boundary = None                     # float
-        self.region_known_as = []                         # unicode
-        self.southern_boundary = None                     # float
-        self.western_boundary = None                      # float
-        self.z_units = None                               # unicode
+        self.eastern_boundary = None                      # float (0.1)
+        self.is_global = None                             # bool (1.1)
+        self.maximum_vertical_level = None                # float (0.1)
+        self.minimum_vertical_level = None                # float (0.1)
+        self.northern_boundary = None                     # float (0.1)
+        self.region_known_as = []                         # unicode (0.N)
+        self.southern_boundary = None                     # float (0.1)
+        self.western_boundary = None                      # float (0.1)
+        self.z_units = None                               # unicode (1.1)
 
 
 class GridSummary(object):
@@ -98,9 +98,9 @@ class GridSummary(object):
         """
         super(GridSummary, self).__init__()
 
-        self.grid_extent = None                           # science.Extent
-        self.grid_layout = None                           # science.GridLayouts
-        self.grid_type = None                             # science.GridTypes
+        self.grid_extent = None                           # science.Extent (1.1)
+        self.grid_layout = None                           # science.GridLayouts (1.1)
+        self.grid_type = None                             # science.GridTypes (1.1)
 
 
 class Model(software.ComponentBase):
@@ -117,13 +117,13 @@ class Model(software.ComponentBase):
         """
         super(Model, self).__init__()
 
-        self.category = None                              # science.ModelTypes
-        self.coupled_software_components = []             # science.Model
-        self.coupler = None                               # software.CouplingFramework
-        self.extra_conservation_properties = None         # science.ConservationProperties
-        self.internal_software_components = []            # software.SoftwareComponent
-        self.meta = shared.DocMetaInfo()                  # shared.DocMetaInfo
-        self.scientific_domain = []                       # science.ScientificDomain
+        self.category = None                              # science.ModelTypes (1.1)
+        self.coupled_software_components = []             # science.Model (0.N)
+        self.coupler = None                               # software.CouplingFramework (0.1)
+        self.extra_conservation_properties = None         # science.ConservationProperties (0.1)
+        self.internal_software_components = []            # software.SoftwareComponent (0.N)
+        self.meta = shared.DocMetaInfo()                  # shared.DocMetaInfo (1.1)
+        self.scientific_domain = []                       # science.ScientificDomain (0.N)
 
 
 class Process(object):
@@ -142,15 +142,15 @@ class Process(object):
         """
         super(Process, self).__init__()
 
-        self.algorithms = []                              # science.Algorithm
-        self.description = None                           # unicode
-        self.implementation_overview = None               # unicode
-        self.keywords = None                              # unicode
-        self.name = None                                  # unicode
-        self.properties = []                              # science.ProcessDetail
-        self.references = []                              # shared.Reference
-        self.sub_processes = []                           # science.SubProcess
-        self.time_step_in_process = None                  # float
+        self.algorithms = []                              # science.Algorithm (0.N)
+        self.description = None                           # unicode (0.1)
+        self.implementation_overview = None               # unicode (1.1)
+        self.keywords = None                              # unicode (1.1)
+        self.name = None                                  # unicode (1.1)
+        self.properties = []                              # science.ProcessDetail (0.N)
+        self.references = []                              # shared.Reference (0.N)
+        self.sub_processes = []                           # science.SubProcess (0.N)
+        self.time_step_in_process = None                  # float (0.1)
 
 
 class ProcessDetail(object):
@@ -169,11 +169,11 @@ class ProcessDetail(object):
         """
         super(ProcessDetail, self).__init__()
 
-        self.cardinality_of_selection = None              # science.SelectionCardinality
-        self.content = None                               # unicode
-        self.detail_selection = []                        # unicode
-        self.detail_vocabulary = None                     # unicode
-        self.heading = None                               # unicode
+        self.cardinality_of_selection = None              # science.SelectionCardinality (0.1)
+        self.content = None                               # unicode (0.1)
+        self.detail_selection = []                        # unicode (0.N)
+        self.detail_vocabulary = None                     # unicode (0.1)
+        self.heading = None                               # unicode (0.1)
 
 
 class Resolution(object):
@@ -192,11 +192,11 @@ class Resolution(object):
         """
         super(Resolution, self).__init__()
 
-        self.equivalent_horizontal_resolution = None      # float
-        self.is_adaptive_grid = None                      # bool
-        self.name = None                                  # unicode
-        self.number_of_levels = []                        # int
-        self.number_of_xy_gridpoints = []                 # int
+        self.equivalent_horizontal_resolution = None      # float (1.1)
+        self.is_adaptive_grid = None                      # bool (0.1)
+        self.name = None                                  # unicode (1.1)
+        self.number_of_levels = []                        # int (0.N)
+        self.number_of_xy_gridpoints = []                 # int (0.N)
 
 
 class ScientificDomain(object):
@@ -212,17 +212,17 @@ class ScientificDomain(object):
         """
         super(ScientificDomain, self).__init__()
 
-        self.extra_conservation_properties = None         # science.ConservationProperties
-        self.grid = None                                  # science.GridSummary
-        self.meta = shared.DocMetaInfo()                  # shared.DocMetaInfo
-        self.name = None                                  # unicode
-        self.overview = None                              # unicode
-        self.realm = None                                 # unicode
-        self.references = []                              # shared.Reference
-        self.resolution = None                            # science.Resolution
-        self.simulates = []                               # science.Process
-        self.time_step = None                             # float
-        self.tuning_applied = None                        # science.Tuning
+        self.extra_conservation_properties = None         # science.ConservationProperties (0.1)
+        self.grid = None                                  # science.GridSummary (0.1)
+        self.meta = shared.DocMetaInfo()                  # shared.DocMetaInfo (1.1)
+        self.name = None                                  # unicode (1.1)
+        self.overview = None                              # unicode (0.1)
+        self.realm = None                                 # unicode (0.1)
+        self.references = []                              # shared.Reference (0.N)
+        self.resolution = None                            # science.Resolution (1.1)
+        self.simulates = []                               # science.Process (1.N)
+        self.time_step = None                             # float (1.1)
+        self.tuning_applied = None                        # science.Tuning (0.1)
 
 
 class SubProcess(object):
@@ -241,12 +241,12 @@ class SubProcess(object):
         """
         super(SubProcess, self).__init__()
 
-        self.description = None                           # unicode
-        self.implementation_overview = None               # unicode
-        self.keywords = None                              # unicode
-        self.name = None                                  # unicode
-        self.properties = []                              # science.ProcessDetail
-        self.references = []                              # shared.Reference
+        self.description = None                           # unicode (0.1)
+        self.implementation_overview = None               # unicode (0.1)
+        self.keywords = None                              # unicode (0.1)
+        self.name = None                                  # unicode (1.1)
+        self.properties = []                              # science.ProcessDetail (0.N)
+        self.references = []                              # shared.Reference (0.N)
 
 
 class Tuning(object):
@@ -261,10 +261,10 @@ class Tuning(object):
         """
         super(Tuning, self).__init__()
 
-        self.description = None                           # unicode
-        self.global_mean_metrics_used = None              # data.VariableCollection
-        self.regional_metrics_used = None                 # data.VariableCollection
-        self.trend_metrics_used = None                    # data.VariableCollection
+        self.description = None                           # unicode (1.1)
+        self.global_mean_metrics_used = None              # data.VariableCollection (0.1)
+        self.regional_metrics_used = None                 # data.VariableCollection (0.1)
+        self.trend_metrics_used = None                    # data.VariableCollection (0.1)
 
 
 class GridLayouts(object):

@@ -33,10 +33,10 @@ class Activity(object):
         """
         super(Activity, self).__init__()
 
-        self.funding_sources = []                         # unicode
-        self.projects = []                                # activity.ProjectType
-        self.rationales = []                              # unicode
-        self.responsible_parties = []                     # shared.ResponsibleParty
+        self.funding_sources = []                         # unicode (0.N)
+        self.projects = []                                # activity.ProjectType (0.N)
+        self.rationales = []                              # unicode (0.N)
+        self.responsible_parties = []                     # shared.ResponsibleParty (0.N)
 
 
 class Conformance(object):
@@ -51,12 +51,12 @@ class Conformance(object):
         """
         super(Conformance, self).__init__()
 
-        self.description = None                           # unicode
-        self.frequency = None                             # activity.FrequencyType
-        self.is_conformant = None                         # bool
-        self.requirements = []                            # activity.NumericalRequirement
-        self.sources = []                                 # shared.DataSource
-        self.type = None                                  # activity.ConformanceType
+        self.description = None                           # unicode (0.1)
+        self.frequency = None                             # activity.FrequencyType (0.1)
+        self.is_conformant = None                         # bool (1.1)
+        self.requirements = []                            # activity.NumericalRequirement (0.N)
+        self.sources = []                                 # shared.DataSource (0.N)
+        self.type = None                                  # activity.ConformanceType (0.1)
 
 
 class ExperimentRelationship(shared.Relationship):
@@ -71,8 +71,8 @@ class ExperimentRelationship(shared.Relationship):
         """
         super(ExperimentRelationship, self).__init__()
 
-        self.target = None                                # activity.ExperimentRelationshipTarget
-        self.type = None                                  # activity.ExperimentRelationshipType
+        self.target = None                                # activity.ExperimentRelationshipTarget (1.1)
+        self.type = None                                  # activity.ExperimentRelationshipType (1.1)
 
 
 class ExperimentRelationshipTarget(object):
@@ -87,7 +87,7 @@ class ExperimentRelationshipTarget(object):
         """
         super(ExperimentRelationshipTarget, self).__init__()
 
-        self.numerical_experiment = None                  # activity.NumericalExperiment
+        self.numerical_experiment = None                  # activity.NumericalExperiment (0.1)
 
 
 class NumericalRequirement(object):
@@ -104,12 +104,12 @@ class NumericalRequirement(object):
         """
         super(NumericalRequirement, self).__init__()
 
-        self.description = None                           # unicode
-        self.id = None                                    # unicode
-        self.name = None                                  # unicode
-        self.options = []                                 # activity.NumericalRequirementOption
-        self.requirement_type = None                      # unicode
-        self.source = None                                # shared.DataSource
+        self.description = None                           # unicode (0.1)
+        self.id = None                                    # unicode (0.1)
+        self.name = None                                  # unicode (1.1)
+        self.options = []                                 # activity.NumericalRequirementOption (0.N)
+        self.requirement_type = None                      # unicode (1.1)
+        self.source = None                                # shared.DataSource (0.1)
 
 
 class NumericalRequirementOption(object):
@@ -124,11 +124,11 @@ class NumericalRequirementOption(object):
         """
         super(NumericalRequirementOption, self).__init__()
 
-        self.description = None                           # unicode
-        self.id = None                                    # unicode
-        self.name = None                                  # unicode
-        self.relationship = None                          # unicode
-        self.sub_options = []                             # activity.NumericalRequirementOption
+        self.description = None                           # unicode (0.1)
+        self.id = None                                    # unicode (0.1)
+        self.name = None                                  # unicode (1.1)
+        self.relationship = None                          # unicode (0.1)
+        self.sub_options = []                             # activity.NumericalRequirementOption (0.N)
 
 
 class SimulationRelationship(shared.Relationship):
@@ -143,8 +143,8 @@ class SimulationRelationship(shared.Relationship):
         """
         super(SimulationRelationship, self).__init__()
 
-        self.target = None                                # activity.SimulationRelationshipTarget
-        self.type = None                                  # activity.SimulationRelationshipType
+        self.target = None                                # activity.SimulationRelationshipTarget (1.1)
+        self.type = None                                  # activity.SimulationRelationshipType (1.1)
 
 
 class SimulationRelationshipTarget(object):
@@ -159,8 +159,8 @@ class SimulationRelationshipTarget(object):
         """
         super(SimulationRelationshipTarget, self).__init__()
 
-        self.simulation = None                            # shared.DocReference
-        self.target = None                                # activity.SimulationType
+        self.simulation = None                            # shared.DocReference (0.1)
+        self.target = None                                # activity.SimulationType (0.1)
 
 
 class BoundaryCondition(NumericalRequirement):
@@ -192,10 +192,10 @@ class Experiment(Activity):
         """
         super(Experiment, self).__init__()
 
-        self.generates = []                               # unicode
-        self.measurement_campaigns = []                   # activity.MeasurementCampaign
-        self.requires = []                                # activity.NumericalActivity
-        self.supports = []                                # unicode
+        self.generates = []                               # unicode (0.N)
+        self.measurement_campaigns = []                   # activity.MeasurementCampaign (0.N)
+        self.requires = []                                # activity.NumericalActivity (0.N)
+        self.supports = []                                # unicode (0.N)
 
 
 class InitialCondition(NumericalRequirement):
@@ -240,7 +240,7 @@ class MeasurementCampaign(Activity):
         """
         super(MeasurementCampaign, self).__init__()
 
-        self.duration = None                              # int
+        self.duration = None                              # int (1.1)
 
 
 class NumericalActivity(Activity):
@@ -257,10 +257,10 @@ class NumericalActivity(Activity):
         """
         super(NumericalActivity, self).__init__()
 
-        self.description = None                           # unicode
-        self.long_name = None                             # unicode
-        self.short_name = None                            # unicode
-        self.supports = []                                # activity.Experiment
+        self.description = None                           # unicode (0.1)
+        self.long_name = None                             # unicode (0.1)
+        self.short_name = None                            # unicode (1.1)
+        self.supports = []                                # activity.Experiment (0.N)
 
 
 class NumericalExperiment(Experiment):
@@ -275,12 +275,12 @@ class NumericalExperiment(Experiment):
         """
         super(NumericalExperiment, self).__init__()
 
-        self.description = None                           # unicode
-        self.experiment_id = None                         # unicode
-        self.long_name = None                             # unicode
-        self.meta = shared.DocMetaInfo()                  # shared.DocMetaInfo
-        self.requirements = []                            # activity.NumericalRequirement
-        self.short_name = None                            # unicode
+        self.description = None                           # unicode (0.1)
+        self.experiment_id = None                         # unicode (0.1)
+        self.long_name = None                             # unicode (0.1)
+        self.meta = shared.DocMetaInfo()                  # shared.DocMetaInfo (1.1)
+        self.requirements = []                            # activity.NumericalRequirement (0.N)
+        self.short_name = None                            # unicode (1.1)
 
 
 class OutputRequirement(NumericalRequirement):
@@ -326,17 +326,17 @@ class Simulation(NumericalActivity):
         """
         super(Simulation, self).__init__()
 
-        self.authors = None                               # unicode
-        self.calendar = None                              # shared.Calendar
-        self.conformances = []                            # activity.Conformance
-        self.control_simulation = None                    # activity.Simulation
-        self.deployments = []                             # software.Deployment
-        self.inputs = []                                  # software.Coupling
-        self.outputs = []                                 # data.DataObject
-        self.restarts = []                                # data.DataObject
-        self.simulation_id = None                         # unicode
-        self.spinup_date_range = None                     # shared.ClosedDateRange
-        self.spinup_simulation = None                     # activity.Simulation
+        self.authors = None                               # unicode (0.1)
+        self.calendar = None                              # shared.Calendar (1.1)
+        self.conformances = []                            # activity.Conformance (0.N)
+        self.control_simulation = None                    # activity.Simulation (0.1)
+        self.deployments = []                             # software.Deployment (0.N)
+        self.inputs = []                                  # software.Coupling (0.N)
+        self.outputs = []                                 # data.DataObject (0.N)
+        self.restarts = []                                # data.DataObject (0.N)
+        self.simulation_id = None                         # unicode (0.1)
+        self.spinup_date_range = None                     # shared.ClosedDateRange (0.1)
+        self.spinup_simulation = None                     # activity.Simulation (0.1)
 
 
 class SimulationComposite(Simulation):
@@ -351,10 +351,10 @@ class SimulationComposite(Simulation):
         """
         super(SimulationComposite, self).__init__()
 
-        self.child = []                                   # activity.Simulation
-        self.date_range = None                            # shared.DateRange
-        self.meta = shared.DocMetaInfo()                  # shared.DocMetaInfo
-        self.rank = None                                  # int
+        self.child = []                                   # activity.Simulation (0.N)
+        self.date_range = None                            # shared.DateRange (1.1)
+        self.meta = shared.DocMetaInfo()                  # shared.DocMetaInfo (1.1)
+        self.rank = None                                  # int (1.1)
 
 
 class SimulationRun(Simulation):
@@ -369,9 +369,9 @@ class SimulationRun(Simulation):
         """
         super(SimulationRun, self).__init__()
 
-        self.date_range = None                            # shared.DateRange
-        self.meta = shared.DocMetaInfo()                  # shared.DocMetaInfo
-        self.model = None                                 # software.ModelComponent
+        self.date_range = None                            # shared.DateRange (1.1)
+        self.meta = shared.DocMetaInfo()                  # shared.DocMetaInfo (1.1)
+        self.model = None                                 # software.ModelComponent (0.1)
 
 
 class SpatioTemporalConstraint(NumericalRequirement):
@@ -386,8 +386,8 @@ class SpatioTemporalConstraint(NumericalRequirement):
         """
         super(SpatioTemporalConstraint, self).__init__()
 
-        self.date_range = None                            # shared.DateRange
-        self.spatial_resolution = None                    # activity.ResolutionType
+        self.date_range = None                            # shared.DateRange (0.1)
+        self.spatial_resolution = None                    # activity.ResolutionType (0.1)
         self.requirement_type = unicode("spatioTemporalConstraint")
 
 
@@ -405,13 +405,13 @@ class DownscalingSimulation(NumericalActivity):
         """
         super(DownscalingSimulation, self).__init__()
 
-        self.calendar = None                              # shared.Calendar
-        self.downscaled_from = None                       # shared.DataSource
-        self.downscaling_id = None                        # unicode
-        self.downscaling_type = None                      # activity.DownscalingType
-        self.inputs = []                                  # software.Coupling
-        self.meta = shared.DocMetaInfo()                  # shared.DocMetaInfo
-        self.outputs = []                                 # data.DataObject
+        self.calendar = None                              # shared.Calendar (1.1)
+        self.downscaled_from = None                       # shared.DataSource (1.1)
+        self.downscaling_id = None                        # unicode (0.1)
+        self.downscaling_type = None                      # activity.DownscalingType (0.1)
+        self.inputs = []                                  # software.Coupling (0.N)
+        self.meta = shared.DocMetaInfo()                  # shared.DocMetaInfo (1.1)
+        self.outputs = []                                 # data.DataObject (0.N)
 
 
 class Ensemble(NumericalActivity):
@@ -426,10 +426,10 @@ class Ensemble(NumericalActivity):
         """
         super(Ensemble, self).__init__()
 
-        self.members = []                                 # activity.EnsembleMember
-        self.meta = shared.DocMetaInfo()                  # shared.DocMetaInfo
-        self.outputs = []                                 # shared.DataSource
-        self.types = []                                   # activity.EnsembleType
+        self.members = []                                 # activity.EnsembleMember (1.N)
+        self.meta = shared.DocMetaInfo()                  # shared.DocMetaInfo (1.1)
+        self.outputs = []                                 # shared.DataSource (0.N)
+        self.types = []                                   # activity.EnsembleType (1.N)
 
 
 class EnsembleMember(NumericalActivity):
@@ -444,9 +444,9 @@ class EnsembleMember(NumericalActivity):
         """
         super(EnsembleMember, self).__init__()
 
-        self.ensemble = None                              # activity.Ensemble
-        self.ensemble_ids = []                            # shared.StandardName
-        self.simulation = None                            # activity.Simulation
+        self.ensemble = None                              # activity.Ensemble (0.1)
+        self.ensemble_ids = []                            # shared.StandardName (0.N)
+        self.simulation = None                            # activity.Simulation (0.1)
 
 
 class ConformanceType(object):

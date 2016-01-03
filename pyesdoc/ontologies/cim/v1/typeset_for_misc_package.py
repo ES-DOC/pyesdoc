@@ -31,13 +31,13 @@ class DocumentSet(object):
         """
         super(DocumentSet, self).__init__()
 
-        self.data = []                                    # data.DataObject
-        self.ensembles = []                               # activity.Ensemble
-        self.experiment = None                            # activity.NumericalExperiment
-        self.grids = []                                   # grids.GridSpec
-        self.meta = shared.DocMetaInfo()                  # shared.DocMetaInfo
-        self.model = None                                 # software.ModelComponent
-        self.platform = None                              # shared.Platform
-        self.simulation = None                            # activity.SimulationRun
+        self.data = []                                    # data.DataObject (0.N)
+        self.ensembles = []                               # activity.Ensemble (0.N)
+        self.experiment = None                            # activity.NumericalExperiment (0.1)
+        self.grids = []                                   # grids.GridSpec (0.N)
+        self.meta = shared.DocMetaInfo()                  # shared.DocMetaInfo (1.1)
+        self.model = None                                 # software.ModelComponent (0.1)
+        self.platform = None                              # shared.Platform (0.1)
+        self.simulation = None                            # activity.SimulationRun (0.1)
 
 

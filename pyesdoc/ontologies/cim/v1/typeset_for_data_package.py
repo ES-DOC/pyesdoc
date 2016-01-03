@@ -31,9 +31,9 @@ class DataContent(shared.DataSource):
         """
         super(DataContent, self).__init__()
 
-        self.aggregation = None                           # unicode
-        self.frequency = None                             # unicode
-        self.topic = None                                 # data.DataTopic
+        self.aggregation = None                           # unicode (0.1)
+        self.frequency = None                             # unicode (0.1)
+        self.topic = None                                 # data.DataTopic (1.1)
 
 
 class DataDistribution(object):
@@ -48,10 +48,10 @@ class DataDistribution(object):
         """
         super(DataDistribution, self).__init__()
 
-        self.access = None                                # unicode
-        self.fee = None                                   # unicode
-        self.format = None                                # unicode
-        self.responsible_party = None                     # shared.ResponsibleParty
+        self.access = None                                # unicode (0.1)
+        self.fee = None                                   # unicode (0.1)
+        self.format = None                                # unicode (0.1)
+        self.responsible_party = None                     # shared.ResponsibleParty (0.1)
 
 
 class DataExtent(object):
@@ -66,8 +66,8 @@ class DataExtent(object):
         """
         super(DataExtent, self).__init__()
 
-        self.geographical = None                          # data.DataExtentGeographical
-        self.temporal = None                              # data.DataExtentTemporal
+        self.geographical = None                          # data.DataExtentGeographical (1.1)
+        self.temporal = None                              # data.DataExtentTemporal (1.1)
 
 
 class DataExtentGeographical(object):
@@ -82,10 +82,10 @@ class DataExtentGeographical(object):
         """
         super(DataExtentGeographical, self).__init__()
 
-        self.east = None                                  # float
-        self.north = None                                 # float
-        self.south = None                                 # float
-        self.west = None                                  # float
+        self.east = None                                  # float (0.1)
+        self.north = None                                 # float (0.1)
+        self.south = None                                 # float (0.1)
+        self.west = None                                  # float (0.1)
 
 
 class DataExtentTemporal(object):
@@ -100,9 +100,9 @@ class DataExtentTemporal(object):
         """
         super(DataExtentTemporal, self).__init__()
 
-        self.begin = None                                 # datetime.date
-        self.end = None                                   # datetime.date
-        self.time_interval = None                         # data.DataExtentTimeInterval
+        self.begin = None                                 # datetime.date (0.1)
+        self.end = None                                   # datetime.date (0.1)
+        self.time_interval = None                         # data.DataExtentTimeInterval (0.1)
 
 
 class DataExtentTimeInterval(object):
@@ -117,9 +117,9 @@ class DataExtentTimeInterval(object):
         """
         super(DataExtentTimeInterval, self).__init__()
 
-        self.factor = None                                # int
-        self.radix = None                                 # int
-        self.unit = None                                  # unicode
+        self.factor = None                                # int (0.1)
+        self.radix = None                                 # int (0.1)
+        self.unit = None                                  # unicode (0.1)
 
 
 class DataHierarchyLevel(object):
@@ -134,9 +134,9 @@ class DataHierarchyLevel(object):
         """
         super(DataHierarchyLevel, self).__init__()
 
-        self.is_open = None                               # bool
-        self.name = None                                  # data.DataHierarchyType
-        self.value = None                                 # unicode
+        self.is_open = None                               # bool (0.1)
+        self.name = None                                  # data.DataHierarchyType (0.1)
+        self.value = None                                 # unicode (0.1)
 
 
 class DataObject(shared.DataSource):
@@ -151,24 +151,24 @@ class DataObject(shared.DataSource):
         """
         super(DataObject, self).__init__()
 
-        self.acronym = None                               # unicode
-        self.child_object = []                            # data.DataObject
-        self.citations = []                               # shared.Citation
-        self.content = []                                 # data.DataContent
-        self.data_status = None                           # data.DataStatusType
-        self.description = None                           # unicode
-        self.distribution = None                          # data.DataDistribution
-        self.extent = None                                # data.DataExtent
-        self.geometry_model = None                        # unicode
-        self.hierarchy_level = None                       # data.DataHierarchyLevel
-        self.keyword = None                               # unicode
-        self.meta = shared.DocMetaInfo()                  # shared.DocMetaInfo
-        self.parent_object = None                         # data.DataObject
-        self.properties = []                              # data.DataProperty
-        self.purpose = None                               # unicode
-        self.restriction = []                             # data.DataRestriction
-        self.source_simulation = None                     # unicode
-        self.storage = []                                 # data.DataStorage
+        self.acronym = None                               # unicode (0.1)
+        self.child_object = []                            # data.DataObject (0.N)
+        self.citations = []                               # shared.Citation (0.N)
+        self.content = []                                 # data.DataContent (0.N)
+        self.data_status = None                           # data.DataStatusType (0.1)
+        self.description = None                           # unicode (0.1)
+        self.distribution = None                          # data.DataDistribution (0.1)
+        self.extent = None                                # data.DataExtent (0.1)
+        self.geometry_model = None                        # unicode (0.1)
+        self.hierarchy_level = None                       # data.DataHierarchyLevel (0.1)
+        self.keyword = None                               # unicode (0.1)
+        self.meta = shared.DocMetaInfo()                  # shared.DocMetaInfo (1.1)
+        self.parent_object = None                         # data.DataObject (0.1)
+        self.properties = []                              # data.DataProperty (0.N)
+        self.purpose = None                               # unicode (0.1)
+        self.restriction = []                             # data.DataRestriction (0.N)
+        self.source_simulation = None                     # unicode (0.1)
+        self.storage = []                                 # data.DataStorage (0.N)
 
 
 class DataProperty(shared.Property):
@@ -183,7 +183,7 @@ class DataProperty(shared.Property):
         """
         super(DataProperty, self).__init__()
 
-        self.description = None                           # unicode
+        self.description = None                           # unicode (0.1)
 
 
 class DataRestriction(object):
@@ -198,9 +198,9 @@ class DataRestriction(object):
         """
         super(DataRestriction, self).__init__()
 
-        self.license = None                               # shared.License
-        self.restriction = None                           # unicode
-        self.scope = None                                 # unicode
+        self.license = None                               # shared.License (0.1)
+        self.restriction = None                           # unicode (0.1)
+        self.scope = None                                 # unicode (0.1)
 
 
 class DataStorage(object):
@@ -217,10 +217,10 @@ class DataStorage(object):
         """
         super(DataStorage, self).__init__()
 
-        self.format = None                                # unicode
-        self.location = None                              # unicode
-        self.modification_date = None                     # datetime.datetime
-        self.size = None                                  # int
+        self.format = None                                # unicode (0.1)
+        self.location = None                              # unicode (0.1)
+        self.modification_date = None                     # datetime.datetime (0.1)
+        self.size = None                                  # int (0.1)
 
 
 class DataTopic(object):
@@ -235,9 +235,9 @@ class DataTopic(object):
         """
         super(DataTopic, self).__init__()
 
-        self.description = None                           # unicode
-        self.name = None                                  # unicode
-        self.unit = None                                  # unicode
+        self.description = None                           # unicode (0.1)
+        self.name = None                                  # unicode (0.1)
+        self.unit = None                                  # unicode (0.1)
 
 
 class DataStorageDb(DataStorage):
@@ -252,10 +252,10 @@ class DataStorageDb(DataStorage):
         """
         super(DataStorageDb, self).__init__()
 
-        self.access_string = None                         # unicode
-        self.name = None                                  # unicode
-        self.owner = None                                 # unicode
-        self.table = None                                 # unicode
+        self.access_string = None                         # unicode (0.1)
+        self.name = None                                  # unicode (0.1)
+        self.owner = None                                 # unicode (0.1)
+        self.table = None                                 # unicode (0.1)
 
 
 class DataStorageFile(DataStorage):
@@ -270,9 +270,9 @@ class DataStorageFile(DataStorage):
         """
         super(DataStorageFile, self).__init__()
 
-        self.file_name = None                             # unicode
-        self.file_system = None                           # unicode
-        self.path = None                                  # unicode
+        self.file_name = None                             # unicode (0.1)
+        self.file_system = None                           # unicode (0.1)
+        self.path = None                                  # unicode (0.1)
 
 
 class DataStorageIp(DataStorage):
@@ -287,10 +287,10 @@ class DataStorageIp(DataStorage):
         """
         super(DataStorageIp, self).__init__()
 
-        self.file_name = None                             # unicode
-        self.host = None                                  # unicode
-        self.path = None                                  # unicode
-        self.protocol = None                              # unicode
+        self.file_name = None                             # unicode (0.1)
+        self.host = None                                  # unicode (0.1)
+        self.path = None                                  # unicode (0.1)
+        self.protocol = None                              # unicode (0.1)
 
 
 class DataHierarchyType(object):

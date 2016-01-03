@@ -35,14 +35,14 @@ class ComponentBase(object):
         """
         super(ComponentBase, self).__init__()
 
-        self.description = None                           # unicode
-        self.development_history = None                   # software.DevelopmentPath
-        self.documentation = []                           # shared.Citation
-        self.long_name = None                             # unicode
-        self.name = None                                  # unicode
-        self.release_date = None                          # datetime.datetime
-        self.repository = None                            # shared.OnlineResource
-        self.version = None                               # unicode
+        self.description = None                           # unicode (0.1)
+        self.development_history = None                   # software.DevelopmentPath (0.1)
+        self.documentation = []                           # shared.Citation (0.N)
+        self.long_name = None                             # unicode (0.1)
+        self.name = None                                  # unicode (1.1)
+        self.release_date = None                          # datetime.datetime (0.1)
+        self.repository = None                            # shared.OnlineResource (0.1)
+        self.version = None                               # unicode (0.1)
 
 
 class Composition(object):
@@ -60,8 +60,8 @@ class Composition(object):
         """
         super(Composition, self).__init__()
 
-        self.couplings = []                               # unicode
-        self.description = None                           # unicode
+        self.couplings = []                               # unicode (0.N)
+        self.description = None                           # unicode (0.1)
 
 
 class DevelopmentPath(object):
@@ -76,11 +76,11 @@ class DevelopmentPath(object):
         """
         super(DevelopmentPath, self).__init__()
 
-        self.consortium_name = None                       # unicode
-        self.creators = []                                # shared.Responsibility
-        self.developed_in_house = None                    # bool
-        self.funding_sources = []                         # shared.Responsibility
-        self.previous_version = None                      # unicode
+        self.consortium_name = None                       # unicode (0.1)
+        self.creators = []                                # shared.Responsibility (0.N)
+        self.developed_in_house = None                    # bool (1.1)
+        self.funding_sources = []                         # shared.Responsibility (0.N)
+        self.previous_version = None                      # unicode (0.1)
 
 
 class EntryPoint(object):
@@ -100,7 +100,7 @@ class EntryPoint(object):
         """
         super(EntryPoint, self).__init__()
 
-        self.name = None                                  # unicode
+        self.name = None                                  # unicode (0.1)
 
 
 class Gridspec(object):
@@ -115,7 +115,7 @@ class Gridspec(object):
         """
         super(Gridspec, self).__init__()
 
-        self.description = None                           # unicode
+        self.description = None                           # unicode (1.1)
 
 
 class Variable(object):
@@ -133,9 +133,9 @@ class Variable(object):
         """
         super(Variable, self).__init__()
 
-        self.description = None                           # unicode
-        self.name = None                                  # unicode
-        self.prognostic = None                            # bool
+        self.description = None                           # unicode (0.1)
+        self.name = None                                  # unicode (1.1)
+        self.prognostic = None                            # bool (1.1)
 
 
 class SoftwareComponent(ComponentBase):
@@ -151,14 +151,14 @@ class SoftwareComponent(ComponentBase):
         """
         super(SoftwareComponent, self).__init__()
 
-        self.composition = None                           # software.Composition
-        self.connection_points = []                       # software.Variable
-        self.coupling_framework = None                    # software.CouplingFramework
-        self.dependencies = []                            # software.EntryPoint
-        self.grid = None                                  # software.Gridspec
-        self.language = None                              # software.ProgrammingLanguage
-        self.license = None                               # unicode
-        self.sub_components = []                          # software.SoftwareComponent
+        self.composition = None                           # software.Composition (0.1)
+        self.connection_points = []                       # software.Variable (0.N)
+        self.coupling_framework = None                    # software.CouplingFramework (0.1)
+        self.dependencies = []                            # software.EntryPoint (0.N)
+        self.grid = None                                  # software.Gridspec (0.1)
+        self.language = None                              # software.ProgrammingLanguage (0.1)
+        self.license = None                               # unicode (0.1)
+        self.sub_components = []                          # software.SoftwareComponent (0.N)
 
 
 class CouplingFramework(object):

@@ -32,15 +32,15 @@ class Dataset(object):
         """
         super(Dataset, self).__init__()
 
-        self.availability = []                            # shared.OnlineResource
-        self.description = None                           # unicode
-        self.drs_datasets = []                            # drs.DrsPublicationDataset
-        self.meta = shared.DocMetaInfo()                  # shared.DocMetaInfo
-        self.name = None                                  # unicode
-        self.produced_by = None                           # data.Simulation
-        self.references = []                              # shared.Citation
-        self.related_to_dataset = []                      # data.RelatedData
-        self.responsible_parties = []                     # shared.Responsibility
+        self.availability = []                            # shared.OnlineResource (0.N)
+        self.description = None                           # unicode (0.1)
+        self.drs_datasets = []                            # drs.DrsPublicationDataset (0.N)
+        self.meta = shared.DocMetaInfo()                  # shared.DocMetaInfo (1.1)
+        self.name = None                                  # unicode (1.1)
+        self.produced_by = None                           # data.Simulation (0.1)
+        self.references = []                              # shared.Citation (0.N)
+        self.related_to_dataset = []                      # data.RelatedData (0.N)
+        self.responsible_parties = []                     # shared.Responsibility (0.N)
 
 
 class RelatedData(shared.CimLink):
@@ -55,8 +55,8 @@ class RelatedData(shared.CimLink):
         """
         super(RelatedData, self).__init__()
 
-        self.other_dataset = None                         # data.Dataset
-        self.relationship = None                          # data.DataAssociationTypes
+        self.other_dataset = None                         # data.Dataset (1.1)
+        self.relationship = None                          # data.DataAssociationTypes (1.1)
 
 
 class Simulation(activity.Activity):
@@ -72,13 +72,13 @@ class Simulation(activity.Activity):
         """
         super(Simulation, self).__init__()
 
-        self.calendar = None                              # shared.Calendar
-        self.ensemble_identifier = None                   # unicode
-        self.parent_simulation = None                     # activity.ParentSimulation
-        self.part_of_project = []                         # designing.Project
-        self.primary_ensemble = None                      # activity.Ensemble
-        self.ran_for_experiments = []                     # designing.NumericalExperiment
-        self.used = None                                  # science.Model
+        self.calendar = None                              # shared.Calendar (0.1)
+        self.ensemble_identifier = None                   # unicode (1.1)
+        self.parent_simulation = None                     # activity.ParentSimulation (0.1)
+        self.part_of_project = []                         # designing.Project (1.N)
+        self.primary_ensemble = None                      # activity.Ensemble (0.1)
+        self.ran_for_experiments = []                     # designing.NumericalExperiment (1.N)
+        self.used = None                                  # science.Model (1.1)
 
 
 class VariableCollection(object):
@@ -93,8 +93,8 @@ class VariableCollection(object):
         """
         super(VariableCollection, self).__init__()
 
-        self.collection_name = None                       # unicode
-        self.variables = []                               # unicode
+        self.collection_name = None                       # unicode (0.1)
+        self.variables = []                               # unicode (1.N)
 
 
 class Downscaling(Simulation):
@@ -109,7 +109,7 @@ class Downscaling(Simulation):
         """
         super(Downscaling, self).__init__()
 
-        self.downscaled_from = None                       # data.Simulation
+        self.downscaled_from = None                       # data.Simulation (1.1)
 
 
 class DataAssociationTypes(object):

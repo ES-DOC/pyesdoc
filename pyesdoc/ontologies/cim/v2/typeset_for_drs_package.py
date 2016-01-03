@@ -30,9 +30,9 @@ class DrsEnsembleIdentifier(object):
         """
         super(DrsEnsembleIdentifier, self).__init__()
 
-        self.initialisation_method_number = None          # int
-        self.perturbation_number = None                   # int
-        self.realisation_number = None                    # int
+        self.initialisation_method_number = None          # int (1.1)
+        self.perturbation_number = None                   # int (1.1)
+        self.realisation_number = None                    # int (1.1)
 
 
 class DrsGeographicalIndicator(object):
@@ -48,9 +48,9 @@ class DrsGeographicalIndicator(object):
         """
         super(DrsGeographicalIndicator, self).__init__()
 
-        self.bounding_box = None                          # unicode
-        self.operator = None                              # drs.DrsGeographicalOperators
-        self.spatial_domain = None                        # unicode
+        self.bounding_box = None                          # unicode (0.1)
+        self.operator = None                              # drs.DrsGeographicalOperators (0.1)
+        self.spatial_domain = None                        # unicode (0.1)
 
 
 class DrsPublicationDataset(object):
@@ -65,14 +65,14 @@ class DrsPublicationDataset(object):
         """
         super(DrsPublicationDataset, self).__init__()
 
-        self.activity = None                              # unicode
-        self.experiment = None                            # unicode
-        self.frequency = None                             # drs.DrsFrequencyTypes
-        self.institute = None                             # unicode
-        self.model = None                                 # unicode
-        self.product = None                               # unicode
-        self.realm = None                                 # drs.DrsRealms
-        self.version_number = None                        # int
+        self.activity = None                              # unicode (1.1)
+        self.experiment = None                            # unicode (1.1)
+        self.frequency = None                             # drs.DrsFrequencyTypes (0.1)
+        self.institute = None                             # unicode (1.1)
+        self.model = None                                 # unicode (1.1)
+        self.product = None                               # unicode (1.1)
+        self.realm = None                                 # drs.DrsRealms (0.1)
+        self.version_number = None                        # int (0.1)
 
 
 class DrsTemporalIdentifier(object):
@@ -91,9 +91,9 @@ class DrsTemporalIdentifier(object):
         """
         super(DrsTemporalIdentifier, self).__init__()
 
-        self.end = None                                   # unicode
-        self.start = None                                 # unicode
-        self.suffix = None                                # drs.DrsTimeSuffixes
+        self.end = None                                   # unicode (0.1)
+        self.start = None                                 # unicode (1.1)
+        self.suffix = None                                # drs.DrsTimeSuffixes (0.1)
 
 
 class DrsAtomicDataset(DrsPublicationDataset):
@@ -108,11 +108,11 @@ class DrsAtomicDataset(DrsPublicationDataset):
         """
         super(DrsAtomicDataset, self).__init__()
 
-        self.ensemble_member = None                       # drs.DrsEnsembleIdentifier
-        self.geographical_constraint = None               # drs.DrsGeographicalIndicator
-        self.mip_table = None                             # unicode
-        self.temporal_constraint = None                   # drs.DrsTemporalIdentifier
-        self.variable_name = None                         # unicode
+        self.ensemble_member = None                       # drs.DrsEnsembleIdentifier (1.1)
+        self.geographical_constraint = None               # drs.DrsGeographicalIndicator (0.1)
+        self.mip_table = None                             # unicode (1.1)
+        self.temporal_constraint = None                   # drs.DrsTemporalIdentifier (0.1)
+        self.variable_name = None                         # unicode (1.1)
 
 
 class DrsFrequencyTypes(object):

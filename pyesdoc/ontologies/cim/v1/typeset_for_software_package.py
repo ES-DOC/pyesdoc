@@ -31,28 +31,28 @@ class Component(shared.DataSource):
         """
         super(Component, self).__init__()
 
-        self.citations = []                               # shared.Citation
-        self.code_access = None                           # unicode
-        self.composition = None                           # software.Composition
-        self.coupling_framework = None                    # software.CouplingFrameworkType
-        self.dependencies = []                            # software.EntryPoint
-        self.deployments = []                             # software.Deployment
-        self.description = None                           # unicode
-        self.funding_sources = []                         # unicode
-        self.grid = None                                  # grids.GridSpec
-        self.is_embedded = None                           # bool
-        self.language = None                              # software.ComponentLanguage
-        self.license = None                               # shared.License
-        self.long_name = None                             # unicode
-        self.online_resource = None                       # unicode
-        self.parent = None                                # software.Component
-        self.previous_version = None                      # unicode
-        self.properties = []                              # software.ComponentProperty
-        self.release_date = None                          # datetime.datetime
-        self.responsible_parties = []                     # shared.ResponsibleParty
-        self.short_name = None                            # unicode
-        self.sub_components = []                          # software.Component
-        self.version = None                               # unicode
+        self.citations = []                               # shared.Citation (0.N)
+        self.code_access = None                           # unicode (0.1)
+        self.composition = None                           # software.Composition (0.1)
+        self.coupling_framework = None                    # software.CouplingFrameworkType (0.1)
+        self.dependencies = []                            # software.EntryPoint (0.N)
+        self.deployments = []                             # software.Deployment (0.N)
+        self.description = None                           # unicode (0.1)
+        self.funding_sources = []                         # unicode (0.N)
+        self.grid = None                                  # grids.GridSpec (0.1)
+        self.is_embedded = None                           # bool (0.1)
+        self.language = None                              # software.ComponentLanguage (0.1)
+        self.license = None                               # shared.License (0.1)
+        self.long_name = None                             # unicode (0.1)
+        self.online_resource = None                       # unicode (0.1)
+        self.parent = None                                # software.Component (0.1)
+        self.previous_version = None                      # unicode (0.1)
+        self.properties = []                              # software.ComponentProperty (0.N)
+        self.release_date = None                          # datetime.datetime (0.1)
+        self.responsible_parties = []                     # shared.ResponsibleParty (0.N)
+        self.short_name = None                            # unicode (1.1)
+        self.sub_components = []                          # software.Component (0.N)
+        self.version = None                               # unicode (0.1)
 
 
 class ComponentLanguage(object):
@@ -67,8 +67,8 @@ class ComponentLanguage(object):
         """
         super(ComponentLanguage, self).__init__()
 
-        self.name = None                                  # unicode
-        self.properties = []                              # software.ComponentLanguageProperty
+        self.name = None                                  # unicode (1.1)
+        self.properties = []                              # software.ComponentLanguageProperty (0.N)
 
 
 class ComponentLanguageProperty(shared.Property):
@@ -97,17 +97,17 @@ class ComponentProperty(shared.DataSource):
         """
         super(ComponentProperty, self).__init__()
 
-        self.citations = []                               # shared.Citation
-        self.description = None                           # unicode
-        self.grid = None                                  # unicode
-        self.intent = None                                # software.ComponentPropertyIntentType
-        self.is_represented = None                        # bool
-        self.long_name = None                             # unicode
-        self.short_name = None                            # unicode
-        self.standard_names = []                          # unicode
-        self.sub_properties = []                          # software.ComponentProperty
-        self.units = None                                 # shared.UnitType
-        self.values = []                                  # unicode
+        self.citations = []                               # shared.Citation (0.N)
+        self.description = None                           # unicode (0.1)
+        self.grid = None                                  # unicode (0.1)
+        self.intent = None                                # software.ComponentPropertyIntentType (0.1)
+        self.is_represented = None                        # bool (1.1)
+        self.long_name = None                             # unicode (0.1)
+        self.short_name = None                            # unicode (1.1)
+        self.standard_names = []                          # unicode (0.N)
+        self.sub_properties = []                          # software.ComponentProperty (0.N)
+        self.units = None                                 # shared.UnitType (0.1)
+        self.values = []                                  # unicode (0.N)
 
 
 class Composition(object):
@@ -122,8 +122,8 @@ class Composition(object):
         """
         super(Composition, self).__init__()
 
-        self.couplings = []                               # unicode
-        self.description = None                           # unicode
+        self.couplings = []                               # unicode (0.N)
+        self.description = None                           # unicode (0.1)
 
 
 class Connection(object):
@@ -138,17 +138,17 @@ class Connection(object):
         """
         super(Connection, self).__init__()
 
-        self.description = None                           # unicode
-        self.priming = None                               # shared.DataSource
-        self.properties = []                              # software.ConnectionProperty
-        self.sources = []                                 # software.ConnectionEndpoint
-        self.spatial_regridding = []                      # software.SpatialRegridding
-        self.target = None                                # software.ConnectionEndpoint
-        self.time_lag = None                              # unicode
-        self.time_profile = None                          # software.Timing
-        self.time_transformation = None                   # software.TimeTransformation
-        self.transformers = []                            # software.ProcessorComponent
-        self.type = None                                  # software.ConnectionType
+        self.description = None                           # unicode (0.1)
+        self.priming = None                               # shared.DataSource (0.1)
+        self.properties = []                              # software.ConnectionProperty (0.N)
+        self.sources = []                                 # software.ConnectionEndpoint (0.N)
+        self.spatial_regridding = []                      # software.SpatialRegridding (0.N)
+        self.target = None                                # software.ConnectionEndpoint (0.1)
+        self.time_lag = None                              # unicode (0.1)
+        self.time_profile = None                          # software.Timing (0.1)
+        self.time_transformation = None                   # software.TimeTransformation (0.1)
+        self.transformers = []                            # software.ProcessorComponent (0.N)
+        self.type = None                                  # software.ConnectionType (0.1)
 
 
 class ConnectionEndpoint(object):
@@ -163,9 +163,9 @@ class ConnectionEndpoint(object):
         """
         super(ConnectionEndpoint, self).__init__()
 
-        self.data_source = None                           # shared.DataSource
-        self.instance_id = None                           # unicode
-        self.properties = []                              # software.ConnectionProperty
+        self.data_source = None                           # shared.DataSource (0.1)
+        self.instance_id = None                           # unicode (0.1)
+        self.properties = []                              # software.ConnectionProperty (0.N)
 
 
 class ConnectionProperty(shared.Property):
@@ -194,20 +194,20 @@ class Coupling(object):
         """
         super(Coupling, self).__init__()
 
-        self.connections = []                             # software.Connection
-        self.description = None                           # unicode
-        self.is_fully_specified = None                    # bool
-        self.priming = None                               # shared.DataSource
-        self.properties = []                              # software.CouplingProperty
-        self.purpose = None                               # shared.DataPurpose
-        self.sources = []                                 # software.CouplingEndpoint
-        self.spatial_regriddings = []                     # software.SpatialRegridding
-        self.target = None                                # software.CouplingEndpoint
-        self.time_lag = None                              # software.TimeLag
-        self.time_profile = None                          # software.Timing
-        self.time_transformation = None                   # software.TimeTransformation
-        self.transformers = []                            # software.ProcessorComponent
-        self.type = None                                  # software.ConnectionType
+        self.connections = []                             # software.Connection (0.N)
+        self.description = None                           # unicode (0.1)
+        self.is_fully_specified = None                    # bool (1.1)
+        self.priming = None                               # shared.DataSource (0.1)
+        self.properties = []                              # software.CouplingProperty (0.N)
+        self.purpose = None                               # shared.DataPurpose (1.1)
+        self.sources = []                                 # software.CouplingEndpoint (1.N)
+        self.spatial_regriddings = []                     # software.SpatialRegridding (0.N)
+        self.target = None                                # software.CouplingEndpoint (1.1)
+        self.time_lag = None                              # software.TimeLag (0.1)
+        self.time_profile = None                          # software.Timing (0.1)
+        self.time_transformation = None                   # software.TimeTransformation (0.1)
+        self.transformers = []                            # software.ProcessorComponent (0.N)
+        self.type = None                                  # software.ConnectionType (0.1)
 
 
 class CouplingEndpoint(object):
@@ -222,9 +222,9 @@ class CouplingEndpoint(object):
         """
         super(CouplingEndpoint, self).__init__()
 
-        self.data_source = None                           # shared.DataSource
-        self.instance_id = None                           # unicode
-        self.properties = []                              # software.CouplingProperty
+        self.data_source = None                           # shared.DataSource (0.1)
+        self.instance_id = None                           # unicode (0.1)
+        self.properties = []                              # software.CouplingProperty (0.N)
 
 
 class CouplingProperty(shared.Property):
@@ -253,12 +253,12 @@ class Deployment(object):
         """
         super(Deployment, self).__init__()
 
-        self.deployment_date = None                       # datetime.datetime
-        self.description = None                           # unicode
-        self.executable_arguments = []                    # unicode
-        self.executable_name = None                       # unicode
-        self.parallelisation = None                       # software.Parallelisation
-        self.platform = None                              # shared.Platform
+        self.deployment_date = None                       # datetime.datetime (0.1)
+        self.description = None                           # unicode (0.1)
+        self.executable_arguments = []                    # unicode (0.N)
+        self.executable_name = None                       # unicode (0.1)
+        self.parallelisation = None                       # software.Parallelisation (0.1)
+        self.platform = None                              # shared.Platform (0.1)
 
 
 class EntryPoint(object):
@@ -273,7 +273,7 @@ class EntryPoint(object):
         """
         super(EntryPoint, self).__init__()
 
-        self.name = None                                  # unicode
+        self.name = None                                  # unicode (0.1)
 
 
 class Parallelisation(object):
@@ -288,8 +288,8 @@ class Parallelisation(object):
         """
         super(Parallelisation, self).__init__()
 
-        self.processes = None                             # int
-        self.ranks = []                                   # software.Rank
+        self.processes = None                             # int (1.1)
+        self.ranks = []                                   # software.Rank (0.N)
 
 
 class Rank(object):
@@ -304,10 +304,10 @@ class Rank(object):
         """
         super(Rank, self).__init__()
 
-        self.increment = None                             # int
-        self.max = None                                   # int
-        self.min = None                                   # int
-        self.value = None                                 # int
+        self.increment = None                             # int (0.1)
+        self.max = None                                   # int (0.1)
+        self.min = None                                   # int (0.1)
+        self.value = None                                 # int (0.1)
 
 
 class SpatialRegridding(object):
@@ -322,10 +322,10 @@ class SpatialRegridding(object):
         """
         super(SpatialRegridding, self).__init__()
 
-        self.dimension = None                             # software.SpatialRegriddingDimensionType
-        self.properties = []                              # software.SpatialRegriddingProperty
-        self.standard_method = None                       # software.SpatialRegriddingStandardMethodType
-        self.user_method = None                           # software.SpatialRegriddingUserMethod
+        self.dimension = None                             # software.SpatialRegriddingDimensionType (0.1)
+        self.properties = []                              # software.SpatialRegriddingProperty (0.N)
+        self.standard_method = None                       # software.SpatialRegriddingStandardMethodType (0.1)
+        self.user_method = None                           # software.SpatialRegriddingUserMethod (0.1)
 
 
 class SpatialRegriddingProperty(shared.Property):
@@ -354,8 +354,8 @@ class SpatialRegriddingUserMethod(object):
         """
         super(SpatialRegriddingUserMethod, self).__init__()
 
-        self.file = None                                  # data.DataObject
-        self.name = None                                  # unicode
+        self.file = None                                  # data.DataObject (0.1)
+        self.name = None                                  # unicode (1.1)
 
 
 class TimeLag(object):
@@ -370,8 +370,8 @@ class TimeLag(object):
         """
         super(TimeLag, self).__init__()
 
-        self.units = None                                 # software.TimingUnits
-        self.value = None                                 # int
+        self.units = None                                 # software.TimingUnits (0.1)
+        self.value = None                                 # int (0.1)
 
 
 class TimeTransformation(object):
@@ -386,8 +386,8 @@ class TimeTransformation(object):
         """
         super(TimeTransformation, self).__init__()
 
-        self.description = None                           # unicode
-        self.mapping_type = None                          # software.TimeMappingType
+        self.description = None                           # unicode (0.1)
+        self.mapping_type = None                          # software.TimeMappingType (1.1)
 
 
 class Timing(object):
@@ -402,11 +402,11 @@ class Timing(object):
         """
         super(Timing, self).__init__()
 
-        self.end = None                                   # datetime.datetime
-        self.is_variable_rate = None                      # bool
-        self.rate = None                                  # int
-        self.start = None                                 # datetime.datetime
-        self.units = None                                 # software.TimingUnits
+        self.end = None                                   # datetime.datetime (0.1)
+        self.is_variable_rate = None                      # bool (0.1)
+        self.rate = None                                  # int (0.1)
+        self.start = None                                 # datetime.datetime (0.1)
+        self.units = None                                 # software.TimingUnits (0.1)
 
 
 class ModelComponent(Component):
@@ -421,11 +421,11 @@ class ModelComponent(Component):
         """
         super(ModelComponent, self).__init__()
 
-        self.activity = None                              # activity.Activity
-        self.meta = shared.DocMetaInfo()                  # shared.DocMetaInfo
-        self.timing = None                                # software.Timing
-        self.type = None                                  # software.ModelComponentType
-        self.types = []                                   # software.ModelComponentType
+        self.activity = None                              # activity.Activity (0.1)
+        self.meta = shared.DocMetaInfo()                  # shared.DocMetaInfo (1.1)
+        self.timing = None                                # software.Timing (0.1)
+        self.type = None                                  # software.ModelComponentType (0.1)
+        self.types = []                                   # software.ModelComponentType (1.N)
 
 
 class ProcessorComponent(Component):
@@ -440,7 +440,7 @@ class ProcessorComponent(Component):
         """
         super(ProcessorComponent, self).__init__()
 
-        self.meta = shared.DocMetaInfo()                  # shared.DocMetaInfo
+        self.meta = shared.DocMetaInfo()                  # shared.DocMetaInfo (1.1)
 
 
 class StatisticalModelComponent(Component):
@@ -455,10 +455,10 @@ class StatisticalModelComponent(Component):
         """
         super(StatisticalModelComponent, self).__init__()
 
-        self.meta = shared.DocMetaInfo()                  # shared.DocMetaInfo
-        self.timing = None                                # software.Timing
-        self.type = None                                  # software.StatisticalModelComponentType
-        self.types = []                                   # software.StatisticalModelComponentType
+        self.meta = shared.DocMetaInfo()                  # shared.DocMetaInfo (1.1)
+        self.timing = None                                # software.Timing (0.1)
+        self.type = None                                  # software.StatisticalModelComponentType (0.1)
+        self.types = []                                   # software.StatisticalModelComponentType (1.N)
 
 
 class ComponentPropertyIntentType(object):

@@ -33,16 +33,16 @@ class Activity(object):
         """
         super(Activity, self).__init__()
 
-        self.canonical_name = None                        # unicode
-        self.description = None                           # unicode
-        self.duration = None                              # shared.TimePeriod
-        self.keywords = []                                # unicode
-        self.long_name = None                             # unicode
-        self.meta = shared.DocMetaInfo()                  # shared.DocMetaInfo
-        self.name = None                                  # unicode
-        self.rationale = None                             # unicode
-        self.references = []                              # shared.Citation
-        self.responsible_parties = []                     # shared.Responsibility
+        self.canonical_name = None                        # unicode (0.1)
+        self.description = None                           # unicode (0.1)
+        self.duration = None                              # shared.TimePeriod (0.1)
+        self.keywords = []                                # unicode (0.N)
+        self.long_name = None                             # unicode (0.1)
+        self.meta = shared.DocMetaInfo()                  # shared.DocMetaInfo (1.1)
+        self.name = None                                  # unicode (1.1)
+        self.rationale = None                             # unicode (0.1)
+        self.references = []                              # shared.Citation (0.N)
+        self.responsible_parties = []                     # shared.Responsibility (0.N)
 
 
 class AxisMember(object):
@@ -59,9 +59,9 @@ class AxisMember(object):
         """
         super(AxisMember, self).__init__()
 
-        self.description = None                           # unicode
-        self.index = None                                 # int
-        self.value = None                                 # float
+        self.description = None                           # unicode (1.1)
+        self.index = None                                 # int (1.1)
+        self.value = None                                 # float (0.1)
 
 
 class EnsembleAxis(object):
@@ -76,10 +76,10 @@ class EnsembleAxis(object):
         """
         super(EnsembleAxis, self).__init__()
 
-        self.extra_detail = None                          # unicode
-        self.member = []                                  # activity.AxisMember
-        self.short_identifier = None                      # unicode
-        self.target_requirement = None                    # designing.NumericalRequirement
+        self.extra_detail = None                          # unicode (1.1)
+        self.member = []                                  # activity.AxisMember (1.N)
+        self.short_identifier = None                      # unicode (1.1)
+        self.target_requirement = None                    # designing.NumericalRequirement (1.1)
 
 
 class EnsembleMember(object):
@@ -96,9 +96,9 @@ class EnsembleMember(object):
         """
         super(EnsembleMember, self).__init__()
 
-        self.had_performance = None                       # platform.Performance
-        self.ran_on = None                                # platform.Machine
-        self.simulation = None                            # data.Simulation
+        self.had_performance = None                       # platform.Performance (0.1)
+        self.ran_on = None                                # platform.Machine (1.1)
+        self.simulation = None                            # data.Simulation (1.1)
 
 
 class ParentSimulation(object):
@@ -113,9 +113,9 @@ class ParentSimulation(object):
         """
         super(ParentSimulation, self).__init__()
 
-        self.branch_time_in_child = None                  # shared.DateTime
-        self.branch_time_in_parent = None                 # shared.DateTime
-        self.parent = None                                # data.Simulation
+        self.branch_time_in_child = None                  # shared.DateTime (0.1)
+        self.branch_time_in_parent = None                 # shared.DateTime (0.1)
+        self.parent = None                                # data.Simulation (1.1)
 
 
 class Conformance(Activity):
@@ -131,7 +131,7 @@ class Conformance(Activity):
         """
         super(Conformance, self).__init__()
 
-        self.target_requirement = None                    # designing.NumericalRequirement
+        self.target_requirement = None                    # designing.NumericalRequirement (1.1)
 
 
 class Ensemble(Activity):
@@ -149,11 +149,11 @@ class Ensemble(Activity):
         """
         super(Ensemble, self).__init__()
 
-        self.common_conformances = []                     # activity.Conformance
-        self.has_ensemble_axes = []                       # activity.EnsembleAxis
-        self.members = []                                 # activity.EnsembleMember
-        self.part_of = []                                 # activity.UberEnsemble
-        self.supported = []                               # designing.NumericalExperiment
+        self.common_conformances = []                     # activity.Conformance (0.N)
+        self.has_ensemble_axes = []                       # activity.EnsembleAxis (0.N)
+        self.members = []                                 # activity.EnsembleMember (1.N)
+        self.part_of = []                                 # activity.UberEnsemble (0.N)
+        self.supported = []                               # designing.NumericalExperiment (1.N)
 
 
 class UberEnsemble(Ensemble):
@@ -170,7 +170,7 @@ class UberEnsemble(Ensemble):
         """
         super(UberEnsemble, self).__init__()
 
-        self.child_ensembles = []                         # activity.Ensemble
+        self.child_ensembles = []                         # activity.Ensemble (1.N)
 
 
 class EnsembleTypes(object):

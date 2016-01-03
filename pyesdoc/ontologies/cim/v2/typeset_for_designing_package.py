@@ -31,8 +31,8 @@ class NumericalExperiment(activity.Activity):
         """
         super(NumericalExperiment, self).__init__()
 
-        self.related_experiments = []                     # designing.NumericalExperiment
-        self.requirements = []                            # designing.NumericalRequirement
+        self.related_experiments = []                     # designing.NumericalExperiment (0.N)
+        self.requirements = []                            # designing.NumericalRequirement (0.N)
 
 
 class NumericalRequirement(activity.Activity):
@@ -47,8 +47,8 @@ class NumericalRequirement(activity.Activity):
         """
         super(NumericalRequirement, self).__init__()
 
-        self.additional_requirements = []                 # designing.NumericalRequirement
-        self.conformance_is_requested = None              # bool
+        self.additional_requirements = []                 # designing.NumericalRequirement (0.N)
+        self.conformance_is_requested = None              # bool (1.1)
 
 
 class Project(activity.Activity):
@@ -63,9 +63,9 @@ class Project(activity.Activity):
         """
         super(Project, self).__init__()
 
-        self.previous_projects = []                       # designing.Project
-        self.requires_experiments = []                    # designing.NumericalExperiment
-        self.sub_projects = []                            # designing.Project
+        self.previous_projects = []                       # designing.Project (0.N)
+        self.requires_experiments = []                    # designing.NumericalExperiment (0.N)
+        self.sub_projects = []                            # designing.Project (0.N)
 
 
 class SimulationPlan(activity.Activity):
@@ -80,10 +80,10 @@ class SimulationPlan(activity.Activity):
         """
         super(SimulationPlan, self).__init__()
 
-        self.expected_model = None                        # science.Model
-        self.expected_performance_sypd = None             # float
-        self.expected_platform = None                     # platform.Machine
-        self.will_support_experiments = []                # designing.NumericalExperiment
+        self.expected_model = None                        # science.Model (1.1)
+        self.expected_performance_sypd = None             # float (0.1)
+        self.expected_platform = None                     # platform.Machine (0.1)
+        self.will_support_experiments = []                # designing.NumericalExperiment (1.N)
 
 
 class DomainProperties(NumericalRequirement):
@@ -98,8 +98,8 @@ class DomainProperties(NumericalRequirement):
         """
         super(DomainProperties, self).__init__()
 
-        self.required_extent = None                       # science.Extent
-        self.required_resolution = None                   # science.Resolution
+        self.required_extent = None                       # science.Extent (0.1)
+        self.required_resolution = None                   # science.Resolution (0.1)
 
 
 class EnsembleRequirement(NumericalRequirement):
@@ -114,9 +114,9 @@ class EnsembleRequirement(NumericalRequirement):
         """
         super(EnsembleRequirement, self).__init__()
 
-        self.ensemble_member = []                         # designing.NumericalRequirement
-        self.ensemble_type = None                         # designing.EnsembleTypes
-        self.minimum_size = None                          # int
+        self.ensemble_member = []                         # designing.NumericalRequirement (0.N)
+        self.ensemble_type = None                         # designing.EnsembleTypes (1.1)
+        self.minimum_size = None                          # int (1.1)
 
 
 class ForcingConstraint(NumericalRequirement):
@@ -131,13 +131,13 @@ class ForcingConstraint(NumericalRequirement):
         """
         super(ForcingConstraint, self).__init__()
 
-        self.additional_constraint = None                 # unicode
-        self.category = None                              # shared.VocabMember
-        self.code = None                                  # shared.VocabMember
-        self.data_link = None                             # shared.OnlineResource
-        self.forcing_type = None                          # designing.ForcingTypes
-        self.group = None                                 # shared.VocabMember
-        self.origin = None                                # shared.Citation
+        self.additional_constraint = None                 # unicode (0.1)
+        self.category = None                              # shared.VocabMember (1.1)
+        self.code = None                                  # shared.VocabMember (1.1)
+        self.data_link = None                             # shared.OnlineResource (0.1)
+        self.forcing_type = None                          # designing.ForcingTypes (1.1)
+        self.group = None                                 # shared.VocabMember (0.1)
+        self.origin = None                                # shared.Citation (0.1)
 
 
 class MultiEnsemble(NumericalRequirement):
@@ -153,7 +153,7 @@ class MultiEnsemble(NumericalRequirement):
         """
         super(MultiEnsemble, self).__init__()
 
-        self.ensemble_axis = []                           # designing.EnsembleRequirement
+        self.ensemble_axis = []                           # designing.EnsembleRequirement (1.N)
 
 
 class MultiTimeEnsemble(NumericalRequirement):
@@ -168,7 +168,7 @@ class MultiTimeEnsemble(NumericalRequirement):
         """
         super(MultiTimeEnsemble, self).__init__()
 
-        self.ensemble_members = None                      # shared.DatetimeSet
+        self.ensemble_members = None                      # shared.DatetimeSet (1.1)
 
 
 class OutputTemporalRequirement(NumericalRequirement):
@@ -187,9 +187,9 @@ class OutputTemporalRequirement(NumericalRequirement):
         """
         super(OutputTemporalRequirement, self).__init__()
 
-        self.continuous_subset = []                       # shared.TimePeriod
-        self.sliced_subset = None                         # shared.TimesliceList
-        self.throughout = None                            # bool
+        self.continuous_subset = []                       # shared.TimePeriod (0.N)
+        self.sliced_subset = None                         # shared.TimesliceList (0.1)
+        self.throughout = None                            # bool (1.1)
 
 
 class TemporalConstraint(NumericalRequirement):
@@ -204,10 +204,10 @@ class TemporalConstraint(NumericalRequirement):
         """
         super(TemporalConstraint, self).__init__()
 
-        self.required_calendar = None                     # shared.Calendar
-        self.required_duration = None                     # shared.TimePeriod
-        self.start_date = None                            # shared.DateTime
-        self.start_flexibility = None                     # shared.TimePeriod
+        self.required_calendar = None                     # shared.Calendar (0.1)
+        self.required_duration = None                     # shared.TimePeriod (0.1)
+        self.start_date = None                            # shared.DateTime (0.1)
+        self.start_flexibility = None                     # shared.TimePeriod (0.1)
 
 
 class EnsembleTypes(object):

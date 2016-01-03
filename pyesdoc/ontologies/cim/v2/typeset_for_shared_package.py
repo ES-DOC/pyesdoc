@@ -32,10 +32,10 @@ class Calendar(object):
         """
         super(Calendar, self).__init__()
 
-        self.description = None                           # unicode
-        self.month_lengths = []                           # int
-        self.name = None                                  # unicode
-        self.standard_name = None                         # shared.CalendarTypes
+        self.description = None                           # unicode (0.1)
+        self.month_lengths = []                           # int (0.N)
+        self.name = None                                  # unicode (0.1)
+        self.standard_name = None                         # shared.CalendarTypes (1.1)
 
 
 class Cimtext(object):
@@ -51,8 +51,8 @@ class Cimtext(object):
         """
         super(Cimtext, self).__init__()
 
-        self.content = None                               # unicode
-        self.content_type = None                          # shared.TextCode
+        self.content = None                               # unicode (1.1)
+        self.content_type = None                          # shared.TextCode (1.1)
 
 
 class Citation(object):
@@ -67,13 +67,13 @@ class Citation(object):
         """
         super(Citation, self).__init__()
 
-        self.abstract = None                              # unicode
-        self.citation_str = None                          # unicode
-        self.context = None                               # unicode
-        self.doi = None                                   # unicode
-        self.short_cite = None                            # unicode
-        self.title = None                                 # unicode
-        self.url = None                                   # shared.OnlineResource
+        self.abstract = None                              # unicode (0.1)
+        self.citation_str = None                          # unicode (1.1)
+        self.context = None                               # unicode (0.1)
+        self.doi = None                                   # unicode (0.1)
+        self.short_cite = None                            # unicode (0.1)
+        self.title = None                                 # unicode (0.1)
+        self.url = None                                   # shared.OnlineResource (0.1)
 
 
 class DateTime(object):
@@ -90,8 +90,8 @@ class DateTime(object):
         """
         super(DateTime, self).__init__()
 
-        self.offset = None                                # bool
-        self.value = None                                 # unicode
+        self.offset = None                                # bool (0.1)
+        self.value = None                                 # unicode (1.1)
 
 
 class DatetimeSet(object):
@@ -110,7 +110,7 @@ class DatetimeSet(object):
         """
         super(DatetimeSet, self).__init__()
 
-        self.length = None                                # int
+        self.length = None                                # int (1.1)
 
 
 class DocMetaInfo(object):
@@ -125,24 +125,24 @@ class DocMetaInfo(object):
         """
         super(DocMetaInfo, self).__init__()
 
-        self.author = None                                # shared.Party
-        self.create_date = None                           # datetime.datetime
-        self.drs_keys = []                                # unicode
-        self.drs_path = None                              # unicode
-        self.external_ids = []                            # unicode
-        self.id = None                                    # uuid.UUID
-        self.institute = None                             # unicode
-        self.language = None                              # unicode
-        self.project = None                               # unicode
-        self.reviews = []                                 # shared.DocQualityReview
-        self.sort_key = None                              # unicode
-        self.source = None                                # unicode
-        self.source_key = None                            # unicode
-        self.type = None                                  # unicode
-        self.type_display_name = None                     # unicode
-        self.type_sort_key = None                         # unicode
-        self.update_date = None                           # datetime.datetime
-        self.version = None                               # int
+        self.author = None                                # shared.Party (0.1)
+        self.create_date = None                           # datetime.datetime (1.1)
+        self.drs_keys = []                                # unicode (0.N)
+        self.drs_path = None                              # unicode (0.1)
+        self.external_ids = []                            # unicode (0.N)
+        self.id = None                                    # uuid.UUID (1.1)
+        self.institute = None                             # unicode (0.1)
+        self.language = None                              # unicode (1.1)
+        self.project = None                               # unicode (1.1)
+        self.reviews = []                                 # shared.DocQualityReview (0.N)
+        self.sort_key = None                              # unicode (0.1)
+        self.source = None                                # unicode (1.1)
+        self.source_key = None                            # unicode (0.1)
+        self.type = None                                  # unicode (1.1)
+        self.type_display_name = None                     # unicode (0.1)
+        self.type_sort_key = None                         # unicode (0.1)
+        self.update_date = None                           # datetime.datetime (1.1)
+        self.version = None                               # int (1.1)
 
 
 class DocQualityReview(object):
@@ -157,10 +157,10 @@ class DocQualityReview(object):
         """
         super(DocQualityReview, self).__init__()
 
-        self.completeness = None                          # unicode
-        self.date = None                                  # unicode
-        self.quality = None                               # unicode
-        self.reviewer = None                              # shared.Party
+        self.completeness = None                          # unicode (1.1)
+        self.date = None                                  # unicode (1.1)
+        self.quality = None                               # unicode (1.1)
+        self.reviewer = None                              # shared.Party (1.1)
 
 
 class DocReference(object):
@@ -175,12 +175,12 @@ class DocReference(object):
         """
         super(DocReference, self).__init__()
 
-        self.description = None                           # unicode
-        self.id = None                                    # uuid.UUID
-        self.name = None                                  # unicode
-        self.type = None                                  # unicode
-        self.url = None                                   # unicode
-        self.version = None                               # int
+        self.description = None                           # unicode (0.1)
+        self.id = None                                    # uuid.UUID (0.1)
+        self.name = None                                  # unicode (0.1)
+        self.type = None                                  # unicode (0.1)
+        self.url = None                                   # unicode (0.1)
+        self.version = None                               # int (0.1)
 
 
 class KeyFloat(object):
@@ -195,8 +195,8 @@ class KeyFloat(object):
         """
         super(KeyFloat, self).__init__()
 
-        self.key = None                                   # unicode
-        self.value = None                                 # float
+        self.key = None                                   # unicode (1.1)
+        self.value = None                                 # float (1.1)
 
 
 class NumberArray(object):
@@ -211,7 +211,7 @@ class NumberArray(object):
         """
         super(NumberArray, self).__init__()
 
-        self.values = None                                # unicode
+        self.values = None                                # unicode (1.1)
 
 
 class OnlineResource(object):
@@ -226,10 +226,10 @@ class OnlineResource(object):
         """
         super(OnlineResource, self).__init__()
 
-        self.description = None                           # unicode
-        self.linkage = None                               # unicode
-        self.name = None                                  # unicode
-        self.protocol = None                              # unicode
+        self.description = None                           # unicode (0.1)
+        self.linkage = None                               # unicode (1.1)
+        self.name = None                                  # unicode (1.1)
+        self.protocol = None                              # unicode (0.1)
 
 
 class Party(object):
@@ -247,12 +247,12 @@ class Party(object):
         """
         super(Party, self).__init__()
 
-        self.address = None                               # unicode
-        self.email = None                                 # unicode
-        self.meta = DocMetaInfo()                         # shared.DocMetaInfo
-        self.name = None                                  # unicode
-        self.organisation = None                          # bool
-        self.url = None                                   # shared.OnlineResource
+        self.address = None                               # unicode (0.1)
+        self.email = None                                 # unicode (0.1)
+        self.meta = DocMetaInfo()                         # shared.DocMetaInfo (1.1)
+        self.name = None                                  # unicode (0.1)
+        self.organisation = None                          # bool (0.1)
+        self.url = None                                   # shared.OnlineResource (0.1)
 
 
 class Pid(object):
@@ -267,8 +267,8 @@ class Pid(object):
         """
         super(Pid, self).__init__()
 
-        self.id = None                                    # unicode
-        self.resolution_service = None                    # shared.OnlineResource
+        self.id = None                                    # unicode (1.1)
+        self.resolution_service = None                    # shared.OnlineResource (1.1)
 
 
 class Responsibility(object):
@@ -284,9 +284,9 @@ class Responsibility(object):
         """
         super(Responsibility, self).__init__()
 
-        self.party = []                                   # shared.Party
-        self.role = None                                  # shared.RoleCode
-        self.when = None                                  # shared.TimePeriod
+        self.party = []                                   # shared.Party (1.N)
+        self.role = None                                  # shared.RoleCode (1.1)
+        self.when = None                                  # shared.TimePeriod (0.1)
 
 
 class StandaloneDocument(object):
@@ -303,11 +303,11 @@ class StandaloneDocument(object):
         """
         super(StandaloneDocument, self).__init__()
 
-        self.long_name = None                             # unicode
-        self.meta = DocMetaInfo()                         # shared.DocMetaInfo
-        self.name = None                                  # unicode
-        self.references = []                              # shared.Citation
-        self.responsible_parties = []                     # shared.Responsibility
+        self.long_name = None                             # unicode (0.1)
+        self.meta = DocMetaInfo()                         # shared.DocMetaInfo (1.1)
+        self.name = None                                  # unicode (1.1)
+        self.references = []                              # shared.Citation (0.N)
+        self.responsible_parties = []                     # shared.Responsibility (0.N)
 
 
 class TimePeriod(object):
@@ -322,11 +322,11 @@ class TimePeriod(object):
         """
         super(TimePeriod, self).__init__()
 
-        self.calendar = None                              # shared.Calendar
-        self.date = None                                  # shared.DateTime
-        self.date_type = None                             # shared.PeriodDateTypes
-        self.length = None                                # int
-        self.units = None                                 # shared.TimeUnits
+        self.calendar = None                              # shared.Calendar (0.1)
+        self.date = None                                  # shared.DateTime (0.1)
+        self.date_type = None                             # shared.PeriodDateTypes (1.1)
+        self.length = None                                # int (1.1)
+        self.units = None                                 # shared.TimeUnits (1.1)
 
 
 class TimesliceList(object):
@@ -343,8 +343,8 @@ class TimesliceList(object):
         """
         super(TimesliceList, self).__init__()
 
-        self.members = None                               # shared.NumberArray
-        self.units = None                                 # shared.SlicetimeUnits
+        self.members = None                               # shared.NumberArray (1.1)
+        self.units = None                                 # shared.SlicetimeUnits (1.1)
 
 
 class VocabMember(object):
@@ -359,9 +359,9 @@ class VocabMember(object):
         """
         super(VocabMember, self).__init__()
 
-        self.uri = None                                   # unicode
-        self.value = None                                 # unicode
-        self.vocab = None                                 # shared.Citation
+        self.uri = None                                   # unicode (0.1)
+        self.value = None                                 # unicode (1.1)
+        self.vocab = None                                 # shared.Citation (0.1)
 
 
 class CimLink(OnlineResource):
@@ -376,7 +376,7 @@ class CimLink(OnlineResource):
         """
         super(CimLink, self).__init__()
 
-        self.remote_type = None                           # unicode
+        self.remote_type = None                           # unicode (1.1)
 
 
 class IrregularDateset(DatetimeSet):
@@ -391,7 +391,7 @@ class IrregularDateset(DatetimeSet):
         """
         super(IrregularDateset, self).__init__()
 
-        self.date_set = None                              # unicode
+        self.date_set = None                              # unicode (1.1)
 
 
 class Reference(Citation):
@@ -420,9 +420,9 @@ class RegularTimeset(DatetimeSet):
         """
         super(RegularTimeset, self).__init__()
 
-        self.increment = None                             # shared.TimePeriod
-        self.length = None                                # int
-        self.start_date = None                            # shared.DateTime
+        self.increment = None                             # shared.TimePeriod (1.1)
+        self.length = None                                # int (1.1)
+        self.start_date = None                            # shared.DateTime (1.1)
 
 
 class CalendarTypes(object):

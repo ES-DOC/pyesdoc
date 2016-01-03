@@ -31,8 +31,8 @@ class CimQuality(object):
         """
         super(CimQuality, self).__init__()
 
-        self.meta = shared.DocMetaInfo()                  # shared.DocMetaInfo
-        self.reports = []                                 # quality.Report
+        self.meta = shared.DocMetaInfo()                  # shared.DocMetaInfo (1.1)
+        self.reports = []                                 # quality.Report (0.N)
 
 
 class Evaluation(object):
@@ -47,15 +47,15 @@ class Evaluation(object):
         """
         super(Evaluation, self).__init__()
 
-        self.date = None                                  # datetime.datetime
-        self.description = None                           # unicode
-        self.did_pass = None                              # bool
-        self.explanation = None                           # unicode
-        self.specification = None                         # unicode
-        self.specification_hyperlink = None               # unicode
-        self.title = None                                 # unicode
-        self.type = None                                  # unicode
-        self.type_hyperlink = None                        # unicode
+        self.date = None                                  # datetime.datetime (0.1)
+        self.description = None                           # unicode (0.1)
+        self.did_pass = None                              # bool (0.1)
+        self.explanation = None                           # unicode (0.1)
+        self.specification = None                         # unicode (0.1)
+        self.specification_hyperlink = None               # unicode (0.1)
+        self.title = None                                 # unicode (0.1)
+        self.type = None                                  # unicode (0.1)
+        self.type_hyperlink = None                        # unicode (0.1)
 
 
 class Measure(object):
@@ -70,9 +70,9 @@ class Measure(object):
         """
         super(Measure, self).__init__()
 
-        self.description = None                           # unicode
-        self.identification = None                        # unicode
-        self.name = None                                  # unicode
+        self.description = None                           # unicode (0.1)
+        self.identification = None                        # unicode (0.1)
+        self.name = None                                  # unicode (0.1)
 
 
 class Report(object):
@@ -87,10 +87,10 @@ class Report(object):
         """
         super(Report, self).__init__()
 
-        self.date = None                                  # datetime.datetime
-        self.evaluation = None                            # quality.Evaluation
-        self.evaluator = None                             # shared.ResponsibleParty
-        self.measure = None                               # quality.Measure
+        self.date = None                                  # datetime.datetime (0.1)
+        self.evaluation = None                            # quality.Evaluation (1.1)
+        self.evaluator = None                             # shared.ResponsibleParty (0.1)
+        self.measure = None                               # quality.Measure (1.1)
 
 
 class CimFeatureType(object):

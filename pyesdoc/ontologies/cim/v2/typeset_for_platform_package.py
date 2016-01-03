@@ -31,11 +31,11 @@ class ComponentPerformance(object):
         """
         super(ComponentPerformance, self).__init__()
 
-        self.component = None                             # software.SoftwareComponent
-        self.component_name = None                        # unicode
-        self.cores_used = None                            # int
-        self.nodes_used = None                            # int
-        self.speed = None                                 # float
+        self.component = None                             # software.SoftwareComponent (0.1)
+        self.component_name = None                        # unicode (1.1)
+        self.cores_used = None                            # int (0.1)
+        self.nodes_used = None                            # int (0.1)
+        self.speed = None                                 # float (1.1)
 
 
 class ComputePool(object):
@@ -50,17 +50,17 @@ class ComputePool(object):
         """
         super(ComputePool, self).__init__()
 
-        self.accelerator_type = None                      # unicode
-        self.accelerators_per_node = None                 # int
-        self.compute_cores_per_node = None                # int
-        self.cpu_type = None                              # unicode
-        self.description = None                           # unicode
-        self.interconnect = None                          # unicode
-        self.memory_per_node = None                       # platform.StorageVolume
-        self.model_number = None                          # unicode
-        self.name = None                                  # unicode
-        self.number_of_nodes = None                       # int
-        self.operating_system = None                      # unicode
+        self.accelerator_type = None                      # unicode (0.1)
+        self.accelerators_per_node = None                 # int (0.1)
+        self.compute_cores_per_node = None                # int (0.1)
+        self.cpu_type = None                              # unicode (0.1)
+        self.description = None                           # unicode (0.1)
+        self.interconnect = None                          # unicode (0.1)
+        self.memory_per_node = None                       # platform.StorageVolume (0.1)
+        self.model_number = None                          # unicode (0.1)
+        self.name = None                                  # unicode (0.1)
+        self.number_of_nodes = None                       # int (0.1)
+        self.operating_system = None                      # unicode (0.1)
 
 
 class Partition(object):
@@ -75,16 +75,16 @@ class Partition(object):
         """
         super(Partition, self).__init__()
 
-        self.compute_pools = []                           # platform.ComputePool
-        self.description = None                           # unicode
-        self.institution = None                           # shared.Party
-        self.model_number = None                          # unicode
-        self.name = None                                  # unicode
-        self.online_documentation = []                    # shared.OnlineResource
-        self.partition = []                               # platform.Partition
-        self.storage_pools = []                           # platform.StoragePool
-        self.vendor = None                                # shared.Party
-        self.when_used = None                             # shared.TimePeriod
+        self.compute_pools = []                           # platform.ComputePool (1.N)
+        self.description = None                           # unicode (0.1)
+        self.institution = None                           # shared.Party (1.1)
+        self.model_number = None                          # unicode (0.1)
+        self.name = None                                  # unicode (1.1)
+        self.online_documentation = []                    # shared.OnlineResource (0.N)
+        self.partition = []                               # platform.Partition (0.N)
+        self.storage_pools = []                           # platform.StoragePool (0.N)
+        self.vendor = None                                # shared.Party (0.1)
+        self.when_used = None                             # shared.TimePeriod (0.1)
 
 
 class Performance(object):
@@ -99,20 +99,20 @@ class Performance(object):
         """
         super(Performance, self).__init__()
 
-        self.asypd = None                                 # float
-        self.chsy = None                                  # float
-        self.compiler = None                              # unicode
-        self.coupler_load = None                          # float
-        self.io_load = None                               # float
-        self.load_imbalance = None                        # float
-        self.memory_bloat = None                          # float
-        self.meta = shared.DocMetaInfo()                  # shared.DocMetaInfo
-        self.model = None                                 # science.Model
-        self.name = None                                  # unicode
-        self.platform = None                              # platform.Machine
-        self.subcomponent_performance = None              # platform.ComponentPerformance
-        self.sypd = None                                  # float
-        self.total_nodes_used = None                      # int
+        self.asypd = None                                 # float (0.1)
+        self.chsy = None                                  # float (0.1)
+        self.compiler = None                              # unicode (0.1)
+        self.coupler_load = None                          # float (0.1)
+        self.io_load = None                               # float (0.1)
+        self.load_imbalance = None                        # float (0.1)
+        self.memory_bloat = None                          # float (0.1)
+        self.meta = shared.DocMetaInfo()                  # shared.DocMetaInfo (1.1)
+        self.model = None                                 # science.Model (1.1)
+        self.name = None                                  # unicode (0.1)
+        self.platform = None                              # platform.Machine (1.1)
+        self.subcomponent_performance = None              # platform.ComponentPerformance (0.1)
+        self.sypd = None                                  # float (0.1)
+        self.total_nodes_used = None                      # int (0.1)
 
 
 class StoragePool(object):
@@ -127,11 +127,11 @@ class StoragePool(object):
         """
         super(StoragePool, self).__init__()
 
-        self.description = None                           # unicode
-        self.name = None                                  # unicode
-        self.type = None                                  # platform.StorageSystems
-        self.vendor = None                                # shared.Party
-        self.volume_available = None                      # platform.StorageVolume
+        self.description = None                           # unicode (0.1)
+        self.name = None                                  # unicode (1.1)
+        self.type = None                                  # platform.StorageSystems (0.1)
+        self.vendor = None                                # shared.Party (0.1)
+        self.volume_available = None                      # platform.StorageVolume (1.1)
 
 
 class StorageVolume(object):
@@ -146,8 +146,8 @@ class StorageVolume(object):
         """
         super(StorageVolume, self).__init__()
 
-        self.units = None                                 # platform.VolumeUnits
-        self.volume = None                                # int
+        self.units = None                                 # platform.VolumeUnits (1.1)
+        self.volume = None                                # int (1.1)
 
 
 class Machine(Partition):
@@ -162,7 +162,7 @@ class Machine(Partition):
         """
         super(Machine, self).__init__()
 
-        self.meta = shared.DocMetaInfo()                  # shared.DocMetaInfo
+        self.meta = shared.DocMetaInfo()                  # shared.DocMetaInfo (1.1)
 
 
 class StorageSystems(object):
