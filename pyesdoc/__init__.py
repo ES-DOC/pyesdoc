@@ -12,7 +12,7 @@
 """
 # Standard package info.
 __title__ = 'pyesdoc'
-__version__ = '0.9.3.1.8'
+__version__ = '0.9.3.1.9'
 __author__ = 'ES-DOC'
 __license__ = 'GPL'
 __copyright__ = 'Copyright 2015 ???'
