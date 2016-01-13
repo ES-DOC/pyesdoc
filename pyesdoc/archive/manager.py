@@ -27,6 +27,9 @@ def init():
     """Initializes archive manager.
 
     """
+    if _FOLDERS:
+       return
+
     for project, source in config.get_project_sources():
         path = os.path.join(config.get_directory(), project)
         path = os.path.join(path, source)
@@ -302,6 +305,36 @@ def load(uid, version, encoding='json', must_exist=False):
 
     """
     return get_file_content(uid, version, encoding, must_exist)
+
+
+def load_reference(reference):
+    """Loads a referenced document.
+
+    """
+    return load_references(reference)
+
+
+def load_references(references):
+    """Loads referenced documents.
+
+    """
+    def _load(ref):
+        """Inner function to load document from archive.
+
+        """
+        try:
+            ref.meta
+        except AttributeError:
+            return read(ref.id, ref.version)
+        else:
+            return ref
+
+    try:
+        iter(references)
+    except TypeError:
+        return _load(references)
+    else:
+        return [_load(i) for i in references]
 
 
 def read(uid, version, extend=True):

@@ -119,3 +119,5 @@ def convert(fpath, to_encoding, from_encoding=None):
     fpath_out = "{0}.{1}".format(os.path.splitext(fpath)[0], to_encoding)
 
     return write(document, to_encoding, fpath_out)
+
+

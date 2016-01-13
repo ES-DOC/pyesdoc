@@ -16,22 +16,18 @@ import xml.etree.ElementTree as ET
 
 from pyesdoc import constants
 from pyesdoc import ontologies
-from pyesdoc.codecs import dictionary
-from pyesdoc.codecs import html
-from pyesdoc.codecs import json
-from pyesdoc.codecs import xml
-from pyesdoc.codecs import xml_metafor_cim_v1
-from pyesdoc.utils import runtime as rt
+from pyesdoc import codecs
 
 
 
 # Codecs mapped by encoding.
 _CODECS = {
-	constants.ESDOC_ENCODING_DICT: dictionary,
-	constants.ESDOC_ENCODING_HTML: html,
-	constants.ESDOC_ENCODING_JSON: json,
-	constants.ESDOC_ENCODING_XML: xml,
-	constants.METAFOR_CIM_XML_ENCODING: xml_metafor_cim_v1
+	constants.ESDOC_ENCODING_DICT: codecs.dictionary,
+	constants.ESDOC_ENCODING_HTML: codecs.html,
+	constants.ESDOC_ENCODING_JSON: codecs.json,
+    constants.ESDOC_ENCODING_PDF: codecs.pdf,
+	constants.ESDOC_ENCODING_XML: codecs.xml,
+	constants.METAFOR_CIM_XML_ENCODING: codecs.xml_metafor_cim_v1
 }
 
 # Map of formats to allowed input types when decoding.

@@ -17,9 +17,10 @@ import tornado.template as template
 
 import pyesdoc
 from pyesdoc.codecs.html import fieldsets
+from pyesdoc.codecs.html.templates.type_mappings import TEMPLATE_TYPE_MAPPINGS
 from pyesdoc.utils import rt
 
-from pyesdoc.codecs.html.templates.type_mappings import TEMPLATE_TYPE_MAPPINGS
+
 
 # Path to template directory.
 _DIR_TEMPLATES = os.path.join(os.path.dirname(os.path.abspath(__file__)), "templates")
@@ -109,11 +110,15 @@ def _get_group_set(document_set):
 
     """
     def get_sort_key(doc):
-        """Returns key used for document sorting."""
+        """Returns key used for document sorting.
+
+        """
         return doc.ext.full_display_name.lower()
 
     def get_group_key(doc):
-        """Returns key used for document grouping."""
+        """Returns key used for document grouping.
+
+        """
         return "{0}-{1}".format(doc.meta.type_sort_key,
                                 doc.meta.type_display_name)
 
