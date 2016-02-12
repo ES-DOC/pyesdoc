@@ -18,7 +18,7 @@ import pyesdoc
 
 # Define command line options.
 define("file", help="Path to file to be opened.")
-define("encoding", help="Encoding with which file will be opened.", default="json")
+define("encoding", help="Encoding with which file will be opened.", default=None)
 
 
 def _main():

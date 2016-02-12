@@ -6,7 +6,7 @@
 	{% for contact_id, contact in enumerate(contacts) %}
 	<section>
 		<header>
-			<h{{ header + 1 }}>{{ contact.role if contact.role else "Contact#{}".format(contact_id = 1) }}</h{{ header + 1 }}>
+			<h{{ header + 1 }}>{{ contact.role if contact.role else "Contact #{}".format(contact_id + 1) }}</h{{ header + 1 }}>
 		</header>
 		<table>
 			<tbody>
