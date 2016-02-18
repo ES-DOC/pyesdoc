@@ -13,7 +13,9 @@
 
 
 def get_extenders():
-    """Returns set of extension functions."""
+    """Returns set of extension functions.
+
+    """
     return (
         _set_display_name,
         _set_description,
@@ -23,7 +25,9 @@ def get_extenders():
 
 
 def _set_display_name(ctx):
-    """Sets document display name."""
+    """Sets document display name.
+
+    """
     if len(ctx.doc.esm_model_grids):
         ctx.ext.display_name = ctx.doc.esm_model_grids[0].short_name
     elif len(ctx.doc.esm_exchange_grids):
@@ -31,7 +35,9 @@ def _set_display_name(ctx):
 
 
 def _set_description(ctx):
-    """Sets document description."""
+    """Sets document description.
+
+    """
     if len(ctx.doc.esm_model_grids):
         ctx.ext.description = ctx.doc.esm_model_grids[0].long_name
     elif len(ctx.doc.esm_exchange_grids):
@@ -39,14 +45,18 @@ def _set_description(ctx):
 
 
 def _set_ids(ctx):
-    """Sets document id."""
+    """Sets document id.
+
+    """
     for grid in ctx.doc.esm_model_grids + ctx.doc.esm_exchange_grids:
         if not grid.id:
             grid.id = grid.short_name
 
 
 def _set_summary_fields(ctx):
-    """Sets document summary fields."""
+    """Sets document summary fields.
+
+    """
     if len(ctx.doc.esm_model_grids):
     	ctx.ext.summary_fields += (
             ctx.doc.esm_model_grids[0].short_name,
@@ -57,5 +67,3 @@ def _set_summary_fields(ctx):
             ctx.doc.esm_exchange_grids[0].short_name,
             ctx.doc.esm_exchange_grids[0].long_name
         )
-
-

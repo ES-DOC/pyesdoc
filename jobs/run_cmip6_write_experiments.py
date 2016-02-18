@@ -49,12 +49,27 @@ _WS_URL = "url"
 # Row offsets.
 _WS_ROW_OFFSETS = {
     _WS_ENSEMBLE_REQUIREMENT: 2,
-    _WS_EXPERIMENT: 2
+    _WS_EXPERIMENT: 2,
+    _WS_FORCING_CONSTRAINT: 2,
+    _WS_PARTY: 1,
+    _WS_PROJECT: 2,
+    _WS_REFERENCES: 1,
+    _WS_REQUIREMENT: 2,
+    _WS_TEMPORAL_CONSTRAINT: 2,
+    _WS_URL: 1
 }
 
 # Row offsets.
 _WS_ROW_EXCLUSIONS = {
-    _WS_EXPERIMENT: [3, 5, 7, 9, 11]
+    _WS_ENSEMBLE_REQUIREMENT: [],
+    _WS_EXPERIMENT: [3, 5, 7, 9, 11],
+    _WS_FORCING_CONSTRAINT: [],
+    _WS_PARTY: [],
+    _WS_PROJECT: [],
+    _WS_REFERENCES: [],
+    _WS_REQUIREMENT: [],
+    _WS_TEMPORAL_CONSTRAINT: [],
+    _WS_URL: []
 }
 
 # Default document project code.
@@ -76,6 +91,94 @@ _DOC_AUTHOR_REFERENCE = cim.v2.DocReference()
 _DOC_AUTHOR_REFERENCE.uid = _DOC_AUTHOR.meta.id
 _DOC_AUTHOR_REFERENCE.version = _DOC_AUTHOR.meta.version
 
+
+
+def _convert_to_bool(value):
+    """Converts a cell value to a boolean.
+
+    """
+    return unicode(value).lower() in [u'true', u't', u'yes', u'y', u"1"]
+
+
+def _convert_to_unicode(value):
+    """Converts a cell value to a boolean.
+
+    """
+    if value is None:
+        return None
+
+    # Null substitutions.
+    value = unicode(value)
+    if value.lower() in [u"n/a"]:
+        return None
+
+    # Strip superfluos suffixes.
+    value = value.strip()
+    if len(value) > 0 and value[-1] in [u":"]:
+        return value[0:-1]
+
+    return value
+
+
+def _convert_to_int(value):
+    """Converts a cell value to an integer.
+
+    """
+    if value is None:
+        return None
+
+    return int(value)
+
+
+def _convert_to_string_array(value):
+    """Converts a cell value to an array of strings.
+
+    """
+    if value is None:
+        return []
+
+    return value.split(", ")
+
+
+def _convert_to_cim_v2_calendar(value):
+    """Converts a cell value to a cim.v2.DateTime instance.
+
+    """
+    if value is None:
+        return None
+
+    return None
+
+    raise NotImplementedError("CIM v2 Calendar value needs to be converted from cell content")
+
+
+def _convert_to_cim_v2_time_period(value):
+    """Converts a cell value to a cim.v2.TimePeriod instance.
+
+    """
+    if value is None:
+        return None
+
+    instance = cim.v2.TimePeriod()
+    instance.length = int(value.split(" ")[0])
+    instance.units = value.split(" ")[1]
+    instance.date_type = u'unused'
+
+    return instance
+
+
+def _convert_to_cim_v2_date_time(value, offset):
+    """Converts a cell value to a cim.v2.DateTime instance.
+
+    """
+    if value is None:
+        return None
+
+    instance = cim.v2.DateTime()
+    instance.value = value
+    instance.offset = _convert_to_bool(offset)
+
+    return instance
 
 
 class Spreadsheet(object):
@@ -104,20 +207,13 @@ class Spreadsheet(object):
         return enumerate(self._get_worksheet(ws_name).get_rows())
 
 
-    def yield_rows(self, ws_name):
+    def _yield_rows(self, ws_name):
         """Yields rows within a named worksheet.
 
         """
-        try:
-            row_offset = _WS_ROW_OFFSETS[ws_name]
-        except KeyError:
-            row_offset = 1
-        try:
-            row_exclusions = _WS_ROW_EXCLUSIONS[ws_name]
-        except KeyError:
-            row_exclusions = []
         for idx, row in self._get_rows(ws_name):
-            if idx >= row_offset and idx not in row_exclusions and len(row[0].value) > 0:
+            if idx >= _WS_ROW_OFFSETS[ws_name] and \
+               idx not in _WS_ROW_EXCLUSIONS[ws_name]:
                 yield row
 
 
@@ -176,97 +272,8 @@ class Spreadsheet(object):
         """Returns set of CIM documents within a spreadsheet.
 
         """
-        result = list()
-        for row in self.yield_rows(ws_name):
-            result.append(self._get_document(doc_type, row, mappings))
-
-        return result
-
-
-    def _convert_to_bool(self, value):
-        """Converts a cell value to a boolean.
-
-        """
-        return unicode(value).lower() in [u'true', u't', u'yes', u'y', u"1"]
-
-
-    def _convert_to_unicode(self, value):
-        """Converts a cell value to a boolean.
-
-        """
-        if value is None:
-            return None
-
-        # Null substitutions.
-        value = unicode(value)
-        if value.lower() in [u"n/a"]:
-            return None
-
-        # Strip superfluos suffixes.
-        value = value.strip()
-        if len(value) > 0 and value[-1] in [u":"]:
-            return value[0:-1]
-
-        return value
-
-
-    def _convert_to_int(self, value):
-        """Converts a cell value to an integer.
-
-        """
-        if value is None:
-            return None
-
-        return int(value)
-
-
-    def _convert_to_string_array(self, value):
-        """Converts a cell value to an array of strings.
-
-        """
-        if value is None:
-            return []
-
-        return value.split(", ")
-
-
-    def _convert_to_cim_v2_time_period(self, value):
-        """Converts a cell value to a cim.v2.TimePeriod instance.
-
-        """
-        if value is None:
-            return None
-
-        instance = cim.v2.TimePeriod()
-        instance.length = int(value.split(" ")[0])
-        instance.units = value.split(" ")[1]
-        instance.date_type = u'unused'
-
-        return instance
-
-
-    def _convert_to_cim_v2_date_time(self, value, offset):
-        """Converts a cell value to a cim.v2.DateTime instance.
-
-        """
-        if value is None:
-            return None
-
-        instance = cim.v2.DateTime()
-        instance.value = value
-        instance.offset = self._convert_to_bool(offset)
-
-        return instance
-
-
-    def _convert_to_cim_v2_calendar(self, value):
-        """Converts a cell value to a cim.v2.DateTime instance.
-
-        """
-        if value is None:
-            return None
-
-        raise NotImplementedError("CIM v2 Calendar value needs to be converted from cell content")
+        return [self._get_document(doc_type, row, mappings)
+                for row in self._yield_rows(ws_name)]
 
 
     def get_parties(self):
@@ -277,7 +284,7 @@ class Spreadsheet(object):
             ("address", 3, None),
             ("email", 4, None),
             ("name", 1, None),
-            ("organisation", 2, self._convert_to_bool),
+            ("organisation", 2, _convert_to_bool),
             ("url", 5, None)
         ])
 
@@ -290,9 +297,27 @@ class Spreadsheet(object):
             ("abstract", 6, None),
             ("citation_str", 4, None),
             ("context", 3, None),
-            ("doi", 1, self._convert_to_unicode),
+            ("doi", 1, _convert_to_unicode),
             ("title", 2, None),
             ("url", 5, None)
+        ])
+
+
+    def get_projects(self):
+        """Gets the collection of projects defined within spreadsheet.
+
+        """
+        # TODO parties
+        # TODO citations
+        # TODO sub-projects
+        # TODO experimental requirements
+        # TODO parties
+        return self._get_documents(_WS_PROJECT, cim.v2.Project, [
+            ("canonical_name", 3, None),
+            ("long_name", 2, None),
+            ("name", 1, None),
+            ("description", 5, None),
+            ("keywords", 4, None)
         ])
 
 
@@ -318,18 +343,19 @@ class Spreadsheet(object):
             """
             if role is not None:
                 result = cim.v2.Responsibility()
-                result.role = self._convert_to_unicode(role)
+                result.role = _convert_to_unicode(role)
                 result.party = [r for r in [row(7), row(8), row(9)] if r]
                 return result
 
+        # TODO: citations
         return self._get_documents(_WS_ENSEMBLE_REQUIREMENT, cim.v2.EnsembleRequirement, [
             ("canonical_name", 3, None),
-            ("conformance_is_requested", 12, self._convert_to_bool),
+            ("conformance_is_requested", 12, _convert_to_bool),
             ("description", 5, None),
             ("ensemble_type", 13, None),
-            ("keywords", 4, self._convert_to_string_array),
+            ("keywords", 4, _convert_to_string_array),
             ("long_name", 2, None),
-            ("minimum_size", 14, self._convert_to_int),
+            ("minimum_size", 14, _convert_to_int),
             ("name", 1, None),
             ("responsible_parties", [6], _get_responsible_parties)
         ])
@@ -339,18 +365,19 @@ class Spreadsheet(object):
         """Gets the collection of temporal constraints defined within spreadsheet.
 
         """
+        # TODO: parties
         return self._get_documents(_WS_TEMPORAL_CONSTRAINT, cim.v2.TemporalConstraint, [
             ("canonical_name", 3, None),
             ("description", 5, None),
-            ("conformance_is_requested", 9, self._convert_to_bool),
-            ("required_duration", 10, self._convert_to_cim_v2_time_period),
-            ("required_calendar", 11, self._convert_to_cim_v2_calendar),
-            ("keywords", 4, self._convert_to_string_array),
+            ("conformance_is_requested", 12, _convert_to_bool),
+            ("required_duration", 13, _convert_to_cim_v2_time_period),
+            ("required_calendar", 14, _convert_to_cim_v2_calendar),
+            ("keywords", 4, _convert_to_string_array),
             ("long_name", 2, None),
             ("name", 1, None),
-            ("references", [7], None),
-            ("start_date", 12, lambda c, r: self._convert_to_cim_v2_date_time(c, r(14))),
-            ("start_flexibility", 14, self._convert_to_cim_v2_time_period)
+            ("references", [10], None),
+            ("start_date", 15, lambda c, r: _convert_to_cim_v2_date_time(c, r(16))),
+            ("start_flexibility", 17, _convert_to_cim_v2_time_period)
         ])
 
 
@@ -364,16 +391,16 @@ class Spreadsheet(object):
             """
             if role is not None:
                 result = cim.v2.Responsibility()
-                result.role = self._convert_to_unicode(role)
+                result.role = _convert_to_unicode(role)
                 result.party = [r for r in [row(7), row(8), row(9)] if r]
                 return result
 
         return self._get_documents(_WS_FORCING_CONSTRAINT, cim.v2.ForcingConstraint, [
             ("canonical_name", 3, None),
             ("description", 5, None),
-            ("conformance_is_requested", 13, self._convert_to_bool),
+            ("conformance_is_requested", 13, _convert_to_bool),
             ("forcing_type", 14, None),
-            ("keywords", 4, self._convert_to_string_array),
+            ("keywords", 4, _convert_to_string_array),
             ("long_name", 2, None),
             ("name", 1, None),
             ("references", [10, 11], None),
@@ -391,22 +418,26 @@ class Spreadsheet(object):
             """
             if role is not None:
                 result = cim.v2.Responsibility()
-                result.role = self._convert_to_unicode(role)
+                result.role = _convert_to_unicode(role)
                 result.party = [r for r in [row(7), row(8), row(9)] if r]
                 return result
 
+        # TODO set references
+        # TODO model configuration
         return self._get_documents(_WS_EXPERIMENT, cim.v2.NumericalExperiment, [
             ("canonical_name", 3, None),
             ("description", 5, None),
-            ("ensembles", [18, 19], None),
-            ("forcing_constraints", [21, 22, 23, 24, 25, 26, 27, 28, 29], None),
-            ("keywords", 4, self._convert_to_string_array),
+            ("ensembles", [21, 22], None),
+            ("forcing_constraints", [24, 25, 26, 27,
+                                     28, 29, 30, 31,
+                                     32, 33, 34, 35, 36], None),
+            ("keywords", 4, _convert_to_string_array),
             ("long_name", 2, None),
             ("name", 1, None),
             ("references", [10, 11, 12], None),
-            ("related_experiments", [14, 15, 16], None),
+            ("related_experiments", [14, 15, 16, 17, 18, 19], None),
             ("responsible_parties", [6], _get_responsible_parties),
-            ("temporal_constraint", 17, None)
+            ("temporal_constraint", 20, None)
         ])
 
 
@@ -425,6 +456,8 @@ class DocumentSet(object):
         self.forcing_constraints = spreadsheet.get_forcing_constraints()
         self.parties = spreadsheet.get_parties()
         self.temporal_constraints = spreadsheet.get_temporal_constraints()
+        self.projects = spreadsheet.get_projects()
+        self.projects = []
         self.urls = spreadsheet.get_urls()
         self._set_document_connections()
 
@@ -438,6 +471,7 @@ class DocumentSet(object):
                self.ensembles + \
                self.forcing_constraints + \
                self.parties + \
+               self.projects + \
                self.temporal_constraints
 
 
@@ -526,6 +560,8 @@ class DocumentSet(object):
         if name is None or len(name.strip()) == 0:
             return None
         for experiment in self.experiments:
+            if experiment.canonical_name.lower() == name.lower():
+                return experiment
             if experiment.name.lower() == name.lower():
                 return experiment
 
@@ -585,6 +621,9 @@ class DocumentSet(object):
         # Set citations.
         for container in self.citation_containers:
             container.references = [self._get_citation(v) for v in container.references]
+            if len([c for c in container.references if c is None]):
+                print container.name
+            container.references = [c for c in container.references if c is not None]
 
         # Set responsibility parties.
         for responsibility in self.responsible_parties:
@@ -650,17 +689,20 @@ def _main(worksheet_fpath, archive_dir):
     """Main entry point.
 
     """
-    if not os.path.isfile(worksheet_fpath):
-        raise ValueError("Worksheet file does not exist")
-    if not os.path.isdir(archive_dir):
-        raise ValueError("Archive directory does not exist")
 
-    document_set = DocumentSet(archive_dir, Spreadsheet(worksheet_fpath))
-    document_set.set_document_links()
-    document_set.write_documents()
+    ds = DocumentSet(archive_dir, Spreadsheet(worksheet_fpath))
+    ds.set_document_links()
+    ds.write_documents()
 
 
 # Entry point.
 if __name__ == '__main__':
+    # Unpack & validate arguments.
     args = _ARGS.parse_args()
+    if not os.path.isfile(args.spreadsheet_filepath):
+        raise ValueError("Worksheet file does not exist")
+    if not os.path.isdir(args.archive_dir):
+        raise ValueError("Archive directory does not exist")
+
+    # Invoke mainline.
     _main(args.spreadsheet_filepath, args.archive_dir)

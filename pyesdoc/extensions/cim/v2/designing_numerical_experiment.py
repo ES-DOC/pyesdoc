@@ -19,6 +19,7 @@ def get_extenders():
     """
     return (
         _set_related_experiment_viewer_urls,
+        _set_summary_fields
         )
 
 
@@ -32,3 +33,13 @@ def _set_related_experiment_viewer_urls(ctx):
         elif isinstance(exp, cim.v2.shared.DocReference):
             exp.viewer_url = ESDOC_VIEWER_URL.format(ctx.meta.project, exp.id, exp.version)
 
+
+def _set_summary_fields(ctx):
+    """Sets related experiment viewer urls.
+
+    """
+    ctx.ext.summary_fields += (
+        ctx.doc.canonical_name,
+        ctx.doc.name,
+        ctx.doc.long_name
+    )

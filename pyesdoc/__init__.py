@@ -10,9 +10,8 @@
 .. moduleauthor:: Earth System Documentation (ES-DOC) <dev@es-doc.org>
 
 """
-# Standard package info.
 __title__ = 'pyesdoc'
-__version__ = '0.9.3.1.9'
+__version__ = '0.9.3.2.0'
 __author__ = 'ES-DOC'
 __license__ = 'GPL'
 __copyright__ = 'Copyright 2015 ???'
@@ -53,5 +52,3 @@ from pyesdoc import publishing
 from pyesdoc import serialization
 from pyesdoc import utils
 from pyesdoc import validation
-
-
