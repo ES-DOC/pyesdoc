@@ -181,6 +181,20 @@ def _convert_to_cim_v2_date_time(value, offset):
     return instance
 
 
+def _get_responsibilty(role, row, col_idx=6):
+    """Returns experiment responsibility info.
+
+    """
+    if role is None:
+        return None
+
+    party = cim.v2.Responsibility()
+    party.role = _convert_to_unicode(role)
+    party.party = [r for r in [row(col_idx), row(col_idx + 1), row(col_idx + 2)] if r]
+
+    return party
+
+
 class Spreadsheet(object):
     """The spreadhsset from which CIM documents are to be extracted.
 
@@ -217,10 +231,11 @@ class Spreadsheet(object):
                 yield row
 
 
-    def get_cell_value(self, row, col_idx, convertor):
+    def _get_cell_value(self, row, col_idx, convertor):
         """Returns the (converted) value of a worksheet cell.
 
         """
+        # Extract raw cell value.
         value = row[col_idx - 1].value
 
         # Nullify dead text.
@@ -228,7 +243,7 @@ class Spreadsheet(object):
             value = value.strip()
             if len(value) == 0:
                 value = None
-            elif value.upper() == u"NONE":
+            elif value.upper() in {u"NONE", u"N/A"}:
                 value = None
 
         # Convert if necessary.
@@ -258,11 +273,22 @@ class Spreadsheet(object):
             pass
 
         # Set document atribute from mapped worksheet cells.
-        for attr, col_idx, convertor in mappings:
+        for mapping in mappings:
+            # Unpack mapping info.
+            try:
+                attr, col_idx, convertor = mapping
+            except ValueError:
+                attr, col_idx = mapping
+                convertor = None
+
+            # Convert cell value.
             if isinstance(col_idx, int):
-                attr_value = self.get_cell_value(row, col_idx, convertor)
+                attr_value = self._get_cell_value(row, col_idx, convertor)
             else:
-                attr_value = [i for i in (self.get_cell_value(row, i, convertor) for i in col_idx) if i]
+                attr_value = [i for i in (self._get_cell_value(row, i, convertor)
+                              for i in col_idx) if i]
+
+            # Set aattribute value.
             setattr(doc, attr, attr_value)
 
         return doc
@@ -281,11 +307,11 @@ class Spreadsheet(object):
 
         """
         return self._get_documents(_WS_PARTY, cim.v2.Party, [
-            ("address", 3, None),
-            ("email", 4, None),
-            ("name", 1, None),
+            ("address", 3),
+            ("email", 4),
+            ("name", 1),
             ("organisation", 2, _convert_to_bool),
-            ("url", 5, None)
+            ("url", 5)
         ])
 
 
@@ -294,12 +320,12 @@ class Spreadsheet(object):
 
         """
         return self._get_documents(_WS_REFERENCES, cim.v2.Citation, [
-            ("abstract", 6, None),
-            ("citation_str", 4, None),
-            ("context", 3, None),
+            ("abstract", 6),
+            ("citation_str", 4),
+            ("context", 3),
             ("doi", 1, _convert_to_unicode),
-            ("title", 2, None),
-            ("url", 5, None)
+            ("title", 2),
+            ("url", 5)
         ])
 
 
@@ -307,17 +333,16 @@ class Spreadsheet(object):
         """Gets the collection of projects defined within spreadsheet.
 
         """
-        # TODO parties
-        # TODO citations
-        # TODO sub-projects
-        # TODO experimental requirements
-        # TODO parties
         return self._get_documents(_WS_PROJECT, cim.v2.Project, [
-            ("canonical_name", 3, None),
-            ("long_name", 2, None),
-            ("name", 1, None),
-            ("description", 5, None),
-            ("keywords", 4, None)
+            ("canonical_name", 3),
+            ("description", 5),
+            ("keywords", 4),
+            ("long_name", 2),
+            ("name", 1),
+            ("references", range(10, 14)),
+            ("requires_experiments", range(22, 57)),
+            ("responsible_parties", [6], lambda x, y: _get_responsibilty(x, y, 7)),
+            ("sub_projects", range(17, 22)),
         ])
 
 
@@ -326,10 +351,10 @@ class Spreadsheet(object):
 
         """
         return self._get_documents(_WS_URL, cim.v2.OnlineResource, [
-            ("description", 4, None),
-            ("name", 1, None),
-            ("linkage", 2, None),
-            ("protocol", 3, None)
+            ("description", 4),
+            ("name", 1),
+            ("linkage", 2),
+            ("protocol", 3)
         ])
 
 
@@ -337,27 +362,17 @@ class Spreadsheet(object):
         """Gets the collection of ensemble requirements defined within spreadsheet.
 
         """
-        def _get_responsible_parties(role, row):
-            """Returns experiment responsibility info.
-
-            """
-            if role is not None:
-                result = cim.v2.Responsibility()
-                result.role = _convert_to_unicode(role)
-                result.party = [r for r in [row(7), row(8), row(9)] if r]
-                return result
-
-        # TODO: citations
         return self._get_documents(_WS_ENSEMBLE_REQUIREMENT, cim.v2.EnsembleRequirement, [
-            ("canonical_name", 3, None),
+            ("canonical_name", 3),
             ("conformance_is_requested", 12, _convert_to_bool),
-            ("description", 5, None),
-            ("ensemble_type", 13, None),
+            ("description", 5),
+            ("ensemble_type", 13),
             ("keywords", 4, _convert_to_string_array),
-            ("long_name", 2, None),
+            ("long_name", 2),
             ("minimum_size", 14, _convert_to_int),
-            ("name", 1, None),
-            ("responsible_parties", [6], _get_responsible_parties)
+            ("name", 1),
+            ("references", [10]),
+            ("responsible_parties", [6], lambda x, y: _get_responsibilty(x, y, 7))
         ])
 
 
@@ -365,17 +380,17 @@ class Spreadsheet(object):
         """Gets the collection of temporal constraints defined within spreadsheet.
 
         """
-        # TODO: parties
         return self._get_documents(_WS_TEMPORAL_CONSTRAINT, cim.v2.TemporalConstraint, [
-            ("canonical_name", 3, None),
-            ("description", 5, None),
+            ("canonical_name", 3),
+            ("description", 5),
             ("conformance_is_requested", 12, _convert_to_bool),
             ("required_duration", 13, _convert_to_cim_v2_time_period),
             ("required_calendar", 14, _convert_to_cim_v2_calendar),
             ("keywords", 4, _convert_to_string_array),
-            ("long_name", 2, None),
-            ("name", 1, None),
-            ("references", [10], None),
+            ("long_name", 2),
+            ("name", 1),
+            ("references", [10]),
+            ("responsible_parties", [6], lambda x, y: _get_responsibilty(x, y, 7)),
             ("start_date", 15, lambda c, r: _convert_to_cim_v2_date_time(c, r(16))),
             ("start_flexibility", 17, _convert_to_cim_v2_time_period)
         ])
@@ -385,26 +400,16 @@ class Spreadsheet(object):
         """Gets the collection of temporal constraints defined within spreadsheet.
 
         """
-        def _get_responsible_parties(role, row):
-            """Returns experiment responsibility info.
-
-            """
-            if role is not None:
-                result = cim.v2.Responsibility()
-                result.role = _convert_to_unicode(role)
-                result.party = [r for r in [row(7), row(8), row(9)] if r]
-                return result
-
         return self._get_documents(_WS_FORCING_CONSTRAINT, cim.v2.ForcingConstraint, [
-            ("canonical_name", 3, None),
-            ("description", 5, None),
+            ("canonical_name", 3),
+            ("description", 5),
             ("conformance_is_requested", 13, _convert_to_bool),
-            ("forcing_type", 14, None),
+            ("forcing_type", 14),
             ("keywords", 4, _convert_to_string_array),
-            ("long_name", 2, None),
-            ("name", 1, None),
-            ("references", [10, 11], None),
-            ("responsible_parties", [6], _get_responsible_parties)
+            ("long_name", 2),
+            ("name", 1),
+            ("references", range(10, 12)),
+            ("responsible_parties", [6], lambda x, y: _get_responsibilty(x, y, 7))
         ])
 
 
@@ -412,32 +417,19 @@ class Spreadsheet(object):
         """Gets the collection of experiments defined within spreadsheet.
 
         """
-        def _get_responsible_parties(role, row):
-            """Returns experiment responsibility info.
-
-            """
-            if role is not None:
-                result = cim.v2.Responsibility()
-                result.role = _convert_to_unicode(role)
-                result.party = [r for r in [row(7), row(8), row(9)] if r]
-                return result
-
-        # TODO set references
         # TODO model configuration
         return self._get_documents(_WS_EXPERIMENT, cim.v2.NumericalExperiment, [
-            ("canonical_name", 3, None),
-            ("description", 5, None),
-            ("ensembles", [21, 22], None),
-            ("forcing_constraints", [24, 25, 26, 27,
-                                     28, 29, 30, 31,
-                                     32, 33, 34, 35, 36], None),
+            ("canonical_name", 3),
+            ("description", 5),
+            ("ensembles", [21, 22]),
+            ("forcing_constraints", range(24, 37)),
             ("keywords", 4, _convert_to_string_array),
-            ("long_name", 2, None),
-            ("name", 1, None),
-            ("references", [10, 11, 12], None),
-            ("related_experiments", [14, 15, 16, 17, 18, 19], None),
-            ("responsible_parties", [6], _get_responsible_parties),
-            ("temporal_constraint", 20, None)
+            ("long_name", 2),
+            ("name", 1),
+            ("references", range(10, 13)),
+            ("related_experiments", range(14, 20)),
+            ("responsible_parties", [6], lambda x, y: _get_responsibilty(x, y, 7)),
+            ("temporal_constraint", 20)
         ])
 
 
@@ -451,15 +443,15 @@ class DocumentSet(object):
         """
         self.archive_directory = archive_directory
         self.citations = spreadsheet.get_citations()
-        self.ensembles = spreadsheet.get_ensemble_requirements()
+        self.ensemble_requirements = spreadsheet.get_ensemble_requirements()
         self.experiments = spreadsheet.get_experiments()
         self.forcing_constraints = spreadsheet.get_forcing_constraints()
         self.parties = spreadsheet.get_parties()
         self.temporal_constraints = spreadsheet.get_temporal_constraints()
         self.projects = spreadsheet.get_projects()
-        self.projects = []
         self.urls = spreadsheet.get_urls()
-        self._set_document_connections()
+        # TODO load generic requirements
+        # self.requirements = []
 
 
     @property
@@ -468,7 +460,7 @@ class DocumentSet(object):
 
         """
         return self.experiments + \
-               self.ensembles + \
+               self.ensemble_requirements + \
                self.forcing_constraints + \
                self.parties + \
                self.projects + \
@@ -480,15 +472,20 @@ class DocumentSet(object):
         """Gets full set of managed numerical requirements.
 
         """
-        return self.ensembles + \
-               self.forcing_constraints
+        return self.ensemble_requirements + \
+               self.forcing_constraints + \
+               self.temporal_constraints
 
     @property
     def citation_containers(self):
         """Gets full set of managed objects that have citation collections.
 
         """
-        return self.experiments + self.forcing_constraints + self.temporal_constraints
+        return self.ensemble_requirements + \
+               self.experiments + \
+               self.forcing_constraints + \
+               self.projects + \
+               self.temporal_constraints
 
 
     @property
@@ -500,12 +497,22 @@ class DocumentSet(object):
 
 
     @property
+    def party_containers(self):
+        """Gets full set of managed objects that have responsible partie collections.
+
+        """
+        return self.requirements + \
+               self.experiments + \
+               self.projects
+
+
+    @property
     def responsible_parties(self):
         """Gets full set of managed responsible parties.
 
         """
         result = []
-        for item in self.requirements + self.experiments:
+        for item in self.requirements + self.experiments + self.projects:
             result += item.responsible_parties
 
         return result
@@ -529,6 +536,17 @@ class DocumentSet(object):
                     break
 
             return reference
+
+
+    def _get_project(self, name):
+        """Returns a matching project.
+
+        """
+        if name is None or len(name.strip()) == 0:
+            return None
+        for project in self.projects:
+            if project.name.lower() == name.lower():
+                return project
 
 
     def _get_url(self, name):
@@ -588,13 +606,13 @@ class DocumentSet(object):
                 return forcing_constraint
 
 
-    def _get_ensemble(self, name):
+    def _get_ensemble_requirement(self, name):
         """Returns an ensemble numerical requirement.
 
         """
         if name is None or len(name.strip()) == 0:
             return None
-        for ensemble in self.ensembles:
+        for ensemble in self.ensemble_requirements:
             if ensemble.name.lower() == name.lower():
                 return ensemble
 
@@ -610,7 +628,7 @@ class DocumentSet(object):
                 return party
 
 
-    def _set_document_connections(self):
+    def set_document_connections(self):
         """Sets inter document connections.
 
         """
@@ -621,24 +639,30 @@ class DocumentSet(object):
         # Set citations.
         for container in self.citation_containers:
             container.references = [self._get_citation(v) for v in container.references]
-            if len([c for c in container.references if c is None]):
-                print container.name
             container.references = [c for c in container.references if c is not None]
 
         # Set responsibility parties.
         for responsibility in self.responsible_parties:
             responsibility.party = [self._get_party(v) for v in responsibility.party]
 
-        # Experiment related experiments.
+        # Set experiment related experiments.
         for experiment in self.experiments:
             experiment.related_experiments = [self._get_experiment(v) for v in experiment.related_experiments]
 
-        # Experiment requirements.
+        # Set experiment requirements.
         for experiment in self.experiments:
             experiment.requirements.append(self._get_temporal_constraint(experiment.temporal_constraint))
             experiment.requirements += [self._get_forcing_constraint(c) for c in experiment.forcing_constraints]
-            experiment.requirements += [self._get_ensemble(c) for c in experiment.ensembles]
+            experiment.requirements += [self._get_ensemble_requirement(c) for c in experiment.ensembles]
             experiment.requirements = [r for r in experiment.requirements if r]
+
+        # Set sub-projects.
+        for project in self.projects:
+            project.sub_projects = [self._get_project(v) for v in project.sub_projects]
+
+        # Set project required experiments.
+        for project in self.projects:
+            project.requires_experiments = [self._get_experiment(v) for v in project.requires_experiments]
 
 
     def set_document_links(self):
@@ -657,6 +681,13 @@ class DocumentSet(object):
         for exp in self.experiments:
             exp.requirements = [self._get_document_link(d) for d in exp.requirements]
 
+        # Project to sub-projects.
+        for project in self.projects:
+            project.sub_projects = [self._get_document_link(d) for d in project.sub_projects]
+
+        # Project to required experiments.
+        for project in self.projects:
+            project.requires_experiments = [self._get_document_link(d) for d in project.requires_experiments]
 
 
     def write_documents(self):
@@ -691,6 +722,7 @@ def _main(worksheet_fpath, archive_dir):
     """
 
     ds = DocumentSet(archive_dir, Spreadsheet(worksheet_fpath))
+    ds.set_document_connections()
     ds.set_document_links()
     ds.write_documents()
 
