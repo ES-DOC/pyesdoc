@@ -38,25 +38,9 @@ class Dataset(object):
         self.meta = shared.DocMetaInfo()                  # shared.DocMetaInfo (1.1)
         self.name = None                                  # unicode (1.1)
         self.produced_by = None                           # data.Simulation (0.1)
-        self.references = []                              # shared.Citation (0.N)
-        self.related_to_dataset = []                      # data.RelatedData (0.N)
+        self.references = []                              # shared.Reference (0.N)
+        self.related_to_dataset = []                      # shared.OnlineResource (0.N)
         self.responsible_parties = []                     # shared.Responsibility (0.N)
-
-
-class RelatedData(shared.CimLink):
-    """A concrete class within the cim v2 type system.
-
-    A related dataset and a controlled relationship.
-
-    """
-    def __init__(self):
-        """Constructor.
-
-        """
-        super(RelatedData, self).__init__()
-
-        self.other_dataset = None                         # data.Dataset (1.1)
-        self.relationship = None                          # data.DataAssociationTypes (1.1)
 
 
 class Simulation(activity.Activity):

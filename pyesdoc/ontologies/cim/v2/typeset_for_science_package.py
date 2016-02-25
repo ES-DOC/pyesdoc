@@ -20,29 +20,6 @@ import typeset_for_software_package as software
 
 
 
-class Algorithm(object):
-    """A concrete class within the cim v2 type system.
-
-    Used to hold information associated with an algorithm which implements some key
-    part of a process. In most cases this is quite a high level concept and isn't intended
-    to describe the gory detail of how the code implements the algorithm rather the key
-    scientific aspects of the algorithm. In particular, it provides a method
-    of grouping variables which take part in an algorithm within a process.
-
-    """
-    def __init__(self):
-        """Constructor.
-
-        """
-        super(Algorithm, self).__init__()
-
-        self.diagnostic_variables = []                    # data.VariableCollection (0.N)
-        self.heading = None                               # unicode (1.1)
-        self.implementation_overview = None               # unicode (1.1)
-        self.prognostic_variables = []                    # data.VariableCollection (0.N)
-        self.references = []                              # shared.Citation (0.N)
-
-
 class ConservationProperties(object):
     """A concrete class within the cim v2 type system.
 
@@ -86,21 +63,24 @@ class Extent(object):
         self.z_units = None                               # unicode (1.1)
 
 
-class GridSummary(object):
+class Grid(object):
     """A concrete class within the cim v2 type system.
 
-    Key scientific characteristics of the grid use to simulate a specific domain.
+    Gird summary information.
 
     """
     def __init__(self):
         """Constructor.
 
         """
-        super(GridSummary, self).__init__()
+        super(Grid, self).__init__()
 
-        self.grid_extent = None                           # science.Extent (1.1)
-        self.grid_layout = None                           # science.GridLayouts (1.1)
+        self.grid_extent = None                           # science.Extent (0.1)
+        self.grid_layout = None                           # science.GridLayouts (0.1)
         self.grid_type = None                             # science.GridTypes (1.1)
+        self.meta = shared.DocMetaInfo()                  # shared.DocMetaInfo (1.1)
+        self.name = None                                  # unicode (1.1)
+        self.resolution = None                            # science.Resolution (1.1)
 
 
 class Model(software.ComponentBase):
@@ -118,72 +98,24 @@ class Model(software.ComponentBase):
         super(Model, self).__init__()
 
         self.category = None                              # science.ModelTypes (1.1)
-        self.coupled_software_components = []             # science.Model (0.N)
+        self.coupled_components = []                      # science.Model (0.N)
         self.coupler = None                               # software.CouplingFramework (0.1)
         self.extra_conservation_properties = None         # science.ConservationProperties (0.1)
+        self.id = None                                    # unicode (0.1)
         self.internal_software_components = []            # software.SoftwareComponent (0.N)
         self.meta = shared.DocMetaInfo()                  # shared.DocMetaInfo (1.1)
-        self.scientific_domain = []                       # science.ScientificDomain (0.N)
-
-
-class Process(object):
-    """A concrete class within the cim v2 type system.
-
-    Provides structure for description of a process simulated within a particular
-    area (or domain/realm/component) of a model. This will often be subclassed
-    within a specific implementation so that constraints can be used to ensure
-    that the process details requested are consistent with project requirements
-    for information.
-
-    """
-    def __init__(self):
-        """Constructor.
-
-        """
-        super(Process, self).__init__()
-
-        self.algorithms = []                              # science.Algorithm (0.N)
-        self.description = None                           # unicode (0.1)
-        self.implementation_overview = None               # unicode (1.1)
-        self.keywords = None                              # unicode (1.1)
-        self.name = None                                  # unicode (1.1)
-        self.properties = []                              # science.ProcessDetail (0.N)
-        self.references = []                              # shared.Reference (0.N)
-        self.sub_processes = []                           # science.SubProcess (0.N)
-        self.time_step_in_process = None                  # float (0.1)
-
-
-class ProcessDetail(object):
-    """A concrete class within the cim v2 type system.
-
-    Provides detail of specific properties of a process, there are two possible specialisations
-    expected: (1) A detail_vocabulary is identified, and a cardinality is assigned to that
-    for possible responses, or (2) Process_Detail is used to provide a collection for a set of
-    properties which are defined in the sub-class. However, those properties must have a type
-    which is selected from the classmap (that is, standard 'non-es-doc' types).
-
-    """
-    def __init__(self):
-        """Constructor.
-
-        """
-        super(ProcessDetail, self).__init__()
-
-        self.cardinality_of_selection = None              # science.SelectionCardinality (0.1)
-        self.content = None                               # unicode (0.1)
-        self.detail_selection = []                        # unicode (0.N)
-        self.detail_vocabulary = None                     # unicode (0.1)
-        self.heading = None                               # unicode (0.1)
+        self.simulates = []                               # science.ScientificDomain (0.N)
 
 
 class Resolution(object):
     """A concrete class within the cim v2 type system.
 
-    Describes the computational spatial resolution of a component or process. Not intended
-        to replace or replicate the output grid description.  When it appears as part of a process
-        description, provide only properties that differ from parent domain. Note that where
-        different variables have different grids, differences in resolution can be captured by
-        repeating the number_of_ properties.
+    Describes the computational spatial resolution of a component or
+process. Not intended to replace or replicate the output grid
+description.  When it appears as part of a process description,
+provide only properties that differ from parent domain. Note that
+where different variables have different grids, differences in
+resolution can be captured by repeating the number_of_ properties.
 
     """
     def __init__(self):
@@ -192,11 +124,35 @@ class Resolution(object):
         """
         super(Resolution, self).__init__()
 
-        self.equivalent_horizontal_resolution = None      # float (1.1)
+        self.constant_cell_size_x = None                  # float (0.1)
+        self.constant_cell_size_y = None                  # float (0.1)
         self.is_adaptive_grid = None                      # bool (0.1)
         self.name = None                                  # unicode (1.1)
-        self.number_of_levels = []                        # int (0.N)
-        self.number_of_xy_gridpoints = []                 # int (0.N)
+        self.number_of_levels = None                      # int (0.1)
+        self.number_of_xy_gridpoints = None               # int (0.1)
+        self.representative_equatorial_horizontal_resolution = None# float (0.1)
+
+
+class ScienceContext(object):
+    """An abstract class within the cim v2 type system.
+
+    This is the base class for the science mixins, that is the classes which
+    we expect to be specialised and extended by project specific vocabularies.
+    It is expected that values of these will be provided within vocabulary
+    definitions.
+
+    """
+    __metaclass__ = abc.ABCMeta
+
+    def __init__(self):
+        """Constructor.
+
+        """
+        super(ScienceContext, self).__init__()
+
+        self.context = None                               # unicode (1.1)
+        self.id = None                                    # unicode (1.1)
+        self.name = None                                  # unicode (1.1)
 
 
 class ScientificDomain(object):
@@ -213,40 +169,17 @@ class ScientificDomain(object):
         super(ScientificDomain, self).__init__()
 
         self.extra_conservation_properties = None         # science.ConservationProperties (0.1)
-        self.grid = None                                  # science.GridSummary (0.1)
+        self.grid = None                                  # science.Grid (0.1)
+        self.grid_detail = None                           # unicode (0.1)
+        self.id = None                                    # unicode (0.1)
         self.meta = shared.DocMetaInfo()                  # shared.DocMetaInfo (1.1)
         self.name = None                                  # unicode (1.1)
         self.overview = None                              # unicode (0.1)
         self.realm = None                                 # unicode (0.1)
         self.references = []                              # shared.Reference (0.N)
-        self.resolution = None                            # science.Resolution (1.1)
         self.simulates = []                               # science.Process (1.N)
         self.time_step = None                             # float (1.1)
         self.tuning_applied = None                        # science.Tuning (0.1)
-
-
-class SubProcess(object):
-    """A concrete class within the cim v2 type system.
-
-    Provides structure for description of part of process simulated within a particular
-    area (or domain/realm/component) of a model. Typically this will be a part of process
-    which shares common properties. It will normally be sub classed within a specific
-    implementation so that constraints can be used to ensure that the process details requested are
-    consistent with projects requirements for information.
-
-    """
-    def __init__(self):
-        """Constructor.
-
-        """
-        super(SubProcess, self).__init__()
-
-        self.description = None                           # unicode (0.1)
-        self.implementation_overview = None               # unicode (0.1)
-        self.keywords = None                              # unicode (0.1)
-        self.name = None                                  # unicode (1.1)
-        self.properties = []                              # science.ProcessDetail (0.N)
-        self.references = []                              # shared.Reference (0.N)
 
 
 class Tuning(object):
@@ -265,6 +198,97 @@ class Tuning(object):
         self.global_mean_metrics_used = None              # data.VariableCollection (0.1)
         self.regional_metrics_used = None                 # data.VariableCollection (0.1)
         self.trend_metrics_used = None                    # data.VariableCollection (0.1)
+
+
+class Algorithm(ScienceContext):
+    """A concrete class within the cim v2 type system.
+
+    Used to hold information associated with an algorithm which implements some key
+    part of a process. In most cases this is quite a high level concept and isn't intended
+    to describe the gory detail of how the code implements the algorithm rather the key
+    scientific aspects of the algorithm. In particular, it provides a method
+    of grouping variables which take part in an algorithm within a process.
+
+    """
+    def __init__(self):
+        """Constructor.
+
+        """
+        super(Algorithm, self).__init__()
+
+        self.climatology_variables = None                 # data.VariableCollection (0.1)
+        self.diagnostic_variables = None                  # data.VariableCollection (0.1)
+        self.implementation_overview = None               # unicode (1.1)
+        self.prognostic_variables = None                  # data.VariableCollection (0.1)
+        self.references = []                              # shared.Reference (0.N)
+
+
+class Process(ScienceContext):
+    """A concrete class within the cim v2 type system.
+
+    Provides structure for description of a process simulated within a particular
+    area (or domain/realm/component) of a model. This will often be subclassed
+    within a specific implementation so that constraints can be used to ensure
+    that the process details requested are consistent with project requirements
+    for information.
+
+    """
+    def __init__(self):
+        """Constructor.
+
+        """
+        super(Process, self).__init__()
+
+        self.algorithms = []                              # science.Algorithm (0.N)
+        self.implementation_overview = None               # unicode (1.1)
+        self.keywords = None                              # unicode (0.1)
+        self.properties = []                              # science.ProcessDetail (0.N)
+        self.references = []                              # shared.Reference (0.N)
+        self.sub_processes = []                           # science.SubProcess (0.N)
+
+
+class ProcessDetail(ScienceContext):
+    """A concrete class within the cim v2 type system.
+
+    Provides detail of specific properties of a process, there are two possible specialisations
+    expected: (1) A detail_vocabulary is identified, and a cardinality is assigned to that
+    for possible responses, or (2) Process_Detail is used to provide a collection for a set of
+    properties which are defined in the sub-class. However, those properties must have a type
+    which is selected from the classmap (that is, standard 'non-es-doc' types).
+
+    """
+    def __init__(self):
+        """Constructor.
+
+        """
+        super(ProcessDetail, self).__init__()
+
+        self.content = None                               # unicode (0.1)
+        self.detail_selection = []                        # unicode (0.N)
+        self.from_vocab = None                            # unicode (0.1)
+        self.select = None                                # unicode (0.1)
+        self.with_cardinality = None                      # science.SelectionCardinality (0.1)
+
+
+class SubProcess(ScienceContext):
+    """A concrete class within the cim v2 type system.
+
+    Provides structure for description of part of process simulated within a particular
+    area (or domain/realm/component) of a model. Typically this will be a part of process
+    which shares common properties. It will normally be sub classed within a specific
+    implementation so that constraints can be used to ensure that the process details requested are
+    consistent with projects requirements for information.
+
+    """
+    def __init__(self):
+        """Constructor.
+
+        """
+        super(SubProcess, self).__init__()
+
+        self.implementation_overview = None               # unicode (1.1)
+        self.properties = []                              # science.ProcessDetail (0.N)
+        self.references = []                              # shared.Reference (0.N)
 
 
 class GridLayouts(object):

@@ -18,6 +18,31 @@ import uuid
 
 
 
+class AssociationClass(object):
+    """An abstract class within the cim v2 type system.
+
+    Provides a class for establishing relationships between entities which
+    exist in an extensible vocabulary, as opposed to an explict relationship defined
+    using a CIM property.
+    It is expected that when this class appears as a property, a controlled vocabulary
+    is used for the relationship and/or a target CIM class type is provided. In
+    the former case, the vocabulary will appear as a constraint as in the
+    NumericalExperiment.
+
+    """
+    __metaclass__ = abc.ABCMeta
+
+    def __init__(self):
+        """Constructor.
+
+        """
+        super(AssociationClass, self).__init__()
+
+        self.from_vocab = None                            # unicode (0.1)
+        self.relatonship = None                           # unicode (0.1)
+        self.target_type = None                           # shared.DocumentTypes (0.1)
+
+
 class Calendar(object):
     """A concrete class within the cim v2 type system.
 
@@ -53,27 +78,6 @@ class Cimtext(object):
 
         self.content = None                               # unicode (1.1)
         self.content_type = None                          # shared.TextCode (1.1)
-
-
-class Citation(object):
-    """A concrete class within the cim v2 type system.
-
-    Description of material suitable for citation - in the academic sense, i.e. for a journal bibliography.
-
-    """
-    def __init__(self):
-        """Constructor.
-
-        """
-        super(Citation, self).__init__()
-
-        self.abstract = None                              # unicode (0.1)
-        self.citation_str = None                          # unicode (1.1)
-        self.context = None                               # unicode (0.1)
-        self.doi = None                                   # unicode (0.1)
-        self.short_cite = None                            # unicode (0.1)
-        self.title = None                                 # unicode (0.1)
-        self.url = None                                   # shared.OnlineResource (0.1)
 
 
 class DateTime(object):
@@ -116,7 +120,8 @@ class DatetimeSet(object):
 class DocMetaInfo(object):
     """A concrete class within the cim v2 type system.
 
-    Encapsulates document meta information.
+    Encapsulates document meta information used by es-doc machinery. Will not normally be
+    populated by humans. May duplicate information held in 'visible' metadata.
 
     """
     def __init__(self):
@@ -130,11 +135,10 @@ class DocMetaInfo(object):
         self.drs_keys = []                                # unicode (0.N)
         self.drs_path = None                              # unicode (0.1)
         self.external_ids = []                            # unicode (0.N)
-        self.id = None                                    # uuid.UUID (1.1)
+        self.id = None                                    # unicode (1.1)
         self.institute = None                             # unicode (0.1)
         self.language = None                              # unicode (1.1)
         self.project = None                               # unicode (1.1)
-        self.reviews = []                                 # shared.DocQualityReview (0.N)
         self.sort_key = None                              # unicode (0.1)
         self.source = None                                # unicode (1.1)
         self.source_key = None                            # unicode (0.1)
@@ -145,42 +149,28 @@ class DocMetaInfo(object):
         self.version = None                               # int (1.1)
 
 
-class DocQualityReview(object):
+class ExternalDocument(object):
     """A concrete class within the cim v2 type system.
 
-    A review of a documents quality.
+    A real world document, could be a book, a journal article, a manual, a web page ... it might or might
+    not be online, although preferably it would be. We expect a typical citation to be built up
+    as in the following <authorship>, <date>: <title>, <publication_detail> (<doi> if present).
 
     """
     def __init__(self):
         """Constructor.
 
         """
-        super(DocQualityReview, self).__init__()
+        super(ExternalDocument, self).__init__()
 
-        self.completeness = None                          # unicode (1.1)
-        self.date = None                                  # unicode (1.1)
-        self.quality = None                               # unicode (1.1)
-        self.reviewer = None                              # shared.Party (1.1)
-
-
-class DocReference(object):
-    """A concrete class within the cim v2 type system.
-
-    A reference to another cim entity.
-
-    """
-    def __init__(self):
-        """Constructor.
-
-        """
-        super(DocReference, self).__init__()
-
-        self.description = None                           # unicode (0.1)
-        self.id = None                                    # uuid.UUID (0.1)
-        self.name = None                                  # unicode (0.1)
-        self.type = None                                  # unicode (0.1)
-        self.url = None                                   # unicode (0.1)
-        self.version = None                               # int (0.1)
+        self.authorship = None                            # unicode (0.1)
+        self.date = None                                  # unicode (0.1)
+        self.doi = None                                   # unicode (0.1)
+        self.meta = DocMetaInfo()                         # shared.DocMetaInfo (1.1)
+        self.name = None                                  # unicode (1.1)
+        self.online_at = None                             # shared.OnlineResource (0.1)
+        self.publication_detail = None                    # unicode (0.1)
+        self.title = None                                 # unicode (1.1)
 
 
 class KeyFloat(object):
@@ -217,7 +207,8 @@ class NumberArray(object):
 class OnlineResource(object):
     """A concrete class within the cim v2 type system.
 
-    An approximation of ISO19115 CI_ONLINERESOURCE.
+    A minimal approximation of ISO19115 CI_ONLINERESOURCE, provides a link and details
+    of how to use that link.
 
     """
     def __init__(self):
@@ -235,7 +226,7 @@ class OnlineResource(object):
 class Party(object):
     """A concrete class within the cim v2 type system.
 
-    Implements minimal material for an ISO19115-1 (2014) compliant party. 
+    Implements minimal material for an ISO19115-1 (2014) compliant party.
     For our purposes this is a much better animal than the previous responsibleParty 
     which munged roles together with people. Note we have collapsed CI_Contact,
     CI_Individual and CI_Organisation as well as the abstract CI_Party.
@@ -251,6 +242,7 @@ class Party(object):
         self.email = None                                 # unicode (0.1)
         self.meta = DocMetaInfo()                         # shared.DocMetaInfo (1.1)
         self.name = None                                  # unicode (0.1)
+        self.orcid_id = None                              # unicode (0.1)
         self.organisation = None                          # bool (0.1)
         self.url = None                                   # shared.OnlineResource (0.1)
 
@@ -271,11 +263,45 @@ class Pid(object):
         self.resolution_service = None                    # shared.OnlineResource (1.1)
 
 
+class QualityReview(object):
+    """A concrete class within the cim v2 type system.
+
+    Assertations as to the completeness and quality of a document.
+
+    """
+    def __init__(self):
+        """Constructor.
+
+        """
+        super(QualityReview, self).__init__()
+
+        self.date = None                                  # unicode (1.1)
+        self.metadata_reviewer = None                     # shared.Party (1.1)
+        self.quality_description = None                   # unicode (1.1)
+        self.quality_status = None                        # shared.QualityStatus (0.1)
+
+
+class Reference(object):
+    """A concrete class within the cim v2 type system.
+
+    An external document which can have a context associated with it.
+
+    """
+    def __init__(self):
+        """Constructor.
+
+        """
+        super(Reference, self).__init__()
+
+        self.context = None                               # unicode (0.1)
+        self.document = None                              # shared.ExternalDocument (1.1)
+
+
 class Responsibility(object):
     """A concrete class within the cim v2 type system.
 
     Implements the ISO19115-1 (2014) CI_Responsibility (which replaces
-    responsibleParty).
+    responsibleParty). Combines a person and their role in doing something.
 
     """
     def __init__(self):
@@ -287,27 +313,6 @@ class Responsibility(object):
         self.party = []                                   # shared.Party (1.N)
         self.role = None                                  # shared.RoleCode (1.1)
         self.when = None                                  # shared.TimePeriod (0.1)
-
-
-class StandaloneDocument(object):
-    """An abstract class within the cim v2 type system.
-
-    Raw base class for documents which are created standalone in a workflow.
-
-    """
-    __metaclass__ = abc.ABCMeta
-
-    def __init__(self):
-        """Constructor.
-
-        """
-        super(StandaloneDocument, self).__init__()
-
-        self.long_name = None                             # unicode (0.1)
-        self.meta = DocMetaInfo()                         # shared.DocMetaInfo (1.1)
-        self.name = None                                  # unicode (1.1)
-        self.references = []                              # shared.Citation (0.N)
-        self.responsible_parties = []                     # shared.Responsibility (0.N)
 
 
 class TimePeriod(object):
@@ -347,36 +352,25 @@ class TimesliceList(object):
         self.units = None                                 # shared.SlicetimeUnits (1.1)
 
 
-class VocabMember(object):
+class DocReference(OnlineResource):
     """A concrete class within the cim v2 type system.
 
-    A term in an external (to the CIM) controlled vocabulary (CV).
+    Specialisation of online resource for link between CIM documents, whether the
+    remote document exists when complete, or not.
 
     """
     def __init__(self):
         """Constructor.
 
         """
-        super(VocabMember, self).__init__()
+        super(DocReference, self).__init__()
 
-        self.uri = None                                   # unicode (0.1)
-        self.value = None                                 # unicode (1.1)
-        self.vocab = None                                 # shared.Citation (0.1)
-
-
-class CimLink(OnlineResource):
-    """A concrete class within the cim v2 type system.
-
-    Specialisation of online resource for link between CIM documents.
-
-    """
-    def __init__(self):
-        """Constructor.
-
-        """
-        super(CimLink, self).__init__()
-
-        self.remote_type = None                           # unicode (1.1)
+        self.constraint_vocabulary = None                 # unicode (0.1)
+        self.context = None                               # unicode (0.1)
+        self.id = None                                    # unicode (0.1)
+        self.relationship = None                          # unicode (0.1)
+        self.type = None                                  # unicode (1.1)
+        self.version = None                               # int (0.1)
 
 
 class IrregularDateset(DatetimeSet):
@@ -392,20 +386,6 @@ class IrregularDateset(DatetimeSet):
         super(IrregularDateset, self).__init__()
 
         self.date_set = None                              # unicode (1.1)
-
-
-class Reference(Citation):
-    """A concrete class within the cim v2 type system.
-
-    A citation which is forced to have a context provided.
-
-    """
-    def __init__(self):
-        """Constructor.
-
-        """
-        super(Reference, self).__init__()
-
 
 
 class RegularTimeset(DatetimeSet):
@@ -445,6 +425,57 @@ class CalendarTypes(object):
         ]
 
 
+class DocumentTypes(object):
+    """An enumeration within the cim v2 type system.
+
+    The complete set of CIM document types, that is, all classes which carry the
+    document metadata attributes.
+    """
+    is_open = False
+    members = [
+        "Conformance",
+        "Dataset",
+        "DomainProperties",
+        "Downscaling",
+        "Ensemble",
+        "EnsembleRequirement",
+        "ExternalDocument",
+        "ForcingConstraint",
+        "Grid",
+        "Machine",
+        "Model",
+        "MultiEnsemble",
+        "MultiTimeEnsemble",
+        "NumericalExperiment",
+        "NumericalRequirement",
+        "OutputTemporalRequirement",
+        "Party",
+        "Performance",
+        "Project",
+        "ScientificDomain",
+        "Simulation",
+        "SimulationPlan",
+        "TemporalConstraint",
+        "UberEnsemble"
+        ]
+
+
+class NilReason(object):
+    """An enumeration within the cim v2 type system.
+
+    Provides an enumeration of possible reasons why a property has not been defined
+    Based on GML nilReason as discussed here: https://www.seegrid.csiro.au/wiki/AppSchemas/NilValues.
+    """
+    is_open = False
+    members = [
+        "nil:inapplicable",
+        "nil:missing",
+        "nil:template",
+        "nil:unknown",
+        "nil:withheld"
+        ]
+
+
 class PeriodDateTypes(object):
     """An enumeration within the cim v2 type system.
 
@@ -458,10 +489,24 @@ class PeriodDateTypes(object):
         ]
 
 
+class QualityStatus(object):
+    """An enumeration within the cim v2 type system.
+
+    None
+    """
+    is_open = False
+    members = [
+        "finalised",
+        "incomplete",
+        "reviewed",
+        "under_review"
+        ]
+
+
 class RoleCode(object):
     """An enumeration within the cim v2 type system.
 
-    Responsibility role codes.
+    Responsibility role codes: roles that a party may play in delivering a responsibility.
     """
     is_open = False
     members = [
@@ -470,6 +515,8 @@ class RoleCode(object):
         "collaborator",
         "custodian",
         "distributor",
+        "metadata_author",
+        "metadata_reviewer",
         "originator",
         "owner",
         "point of contact",

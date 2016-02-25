@@ -132,12 +132,12 @@ class ForcingConstraint(NumericalRequirement):
         super(ForcingConstraint, self).__init__()
 
         self.additional_constraint = None                 # unicode (0.1)
-        self.category = None                              # shared.VocabMember (1.1)
-        self.code = None                                  # shared.VocabMember (1.1)
+        self.category = None                              # unicode (0.1)
+        self.code = None                                  # unicode (0.1)
         self.data_link = None                             # shared.OnlineResource (0.1)
         self.forcing_type = None                          # designing.ForcingTypes (1.1)
-        self.group = None                                 # shared.VocabMember (0.1)
-        self.origin = None                                # shared.Citation (0.1)
+        self.group = None                                 # unicode (0.1)
+        self.origin = None                                # shared.Reference (0.1)
 
 
 class MultiEnsemble(NumericalRequirement):
@@ -223,6 +223,20 @@ class EnsembleTypes(object):
         "Perturbed Physics",
         "Resolution",
         "Staggered Start"
+        ]
+
+
+class ExperimentalRelationships(object):
+    """An enumeration within the cim v2 type system.
+
+    Defines the canonical set of experimental relationships.
+    """
+    is_open = True
+    members = [
+        "control_for",
+        "initialisation_for",
+        "is_sibling",
+        "provides_constraints"
         ]
 
 

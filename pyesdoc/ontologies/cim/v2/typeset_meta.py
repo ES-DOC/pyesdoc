@@ -37,7 +37,6 @@ activity.ParentSimulation.type_key = u'cim.2.activity.ParentSimulation'
 activity.UberEnsemble.type_key = u'cim.2.activity.UberEnsemble'
 data.Dataset.type_key = u'cim.2.data.Dataset'
 data.Downscaling.type_key = u'cim.2.data.Downscaling'
-data.RelatedData.type_key = u'cim.2.data.RelatedData'
 data.Simulation.type_key = u'cim.2.data.Simulation'
 data.VariableCollection.type_key = u'cim.2.data.VariableCollection'
 designing.DomainProperties.type_key = u'cim.2.designing.DomainProperties'
@@ -66,36 +65,35 @@ platform.StorageVolume.type_key = u'cim.2.platform.StorageVolume'
 science.Algorithm.type_key = u'cim.2.science.Algorithm'
 science.ConservationProperties.type_key = u'cim.2.science.ConservationProperties'
 science.Extent.type_key = u'cim.2.science.Extent'
-science.GridSummary.type_key = u'cim.2.science.GridSummary'
+science.Grid.type_key = u'cim.2.science.Grid'
 science.Model.type_key = u'cim.2.science.Model'
 science.Process.type_key = u'cim.2.science.Process'
 science.ProcessDetail.type_key = u'cim.2.science.ProcessDetail'
 science.Resolution.type_key = u'cim.2.science.Resolution'
+science.ScienceContext.type_key = u'cim.2.science.ScienceContext'
 science.ScientificDomain.type_key = u'cim.2.science.ScientificDomain'
 science.SubProcess.type_key = u'cim.2.science.SubProcess'
 science.Tuning.type_key = u'cim.2.science.Tuning'
+shared.AssociationClass.type_key = u'cim.2.shared.AssociationClass'
 shared.Calendar.type_key = u'cim.2.shared.Calendar'
-shared.CimLink.type_key = u'cim.2.shared.CimLink'
 shared.Cimtext.type_key = u'cim.2.shared.Cimtext'
-shared.Citation.type_key = u'cim.2.shared.Citation'
 shared.DateTime.type_key = u'cim.2.shared.DateTime'
 shared.DatetimeSet.type_key = u'cim.2.shared.DatetimeSet'
 shared.DocMetaInfo.type_key = u'cim.2.shared.DocMetaInfo'
-shared.DocQualityReview.type_key = u'cim.2.shared.DocQualityReview'
 shared.DocReference.type_key = u'cim.2.shared.DocReference'
+shared.ExternalDocument.type_key = u'cim.2.shared.ExternalDocument'
 shared.IrregularDateset.type_key = u'cim.2.shared.IrregularDateset'
 shared.KeyFloat.type_key = u'cim.2.shared.KeyFloat'
 shared.NumberArray.type_key = u'cim.2.shared.NumberArray'
 shared.OnlineResource.type_key = u'cim.2.shared.OnlineResource'
 shared.Party.type_key = u'cim.2.shared.Party'
 shared.Pid.type_key = u'cim.2.shared.Pid'
+shared.QualityReview.type_key = u'cim.2.shared.QualityReview'
 shared.Reference.type_key = u'cim.2.shared.Reference'
 shared.RegularTimeset.type_key = u'cim.2.shared.RegularTimeset'
 shared.Responsibility.type_key = u'cim.2.shared.Responsibility'
-shared.StandaloneDocument.type_key = u'cim.2.shared.StandaloneDocument'
 shared.TimePeriod.type_key = u'cim.2.shared.TimePeriod'
 shared.TimesliceList.type_key = u'cim.2.shared.TimesliceList'
-shared.VocabMember.type_key = u'cim.2.shared.VocabMember'
 software.ComponentBase.type_key = u'cim.2.software.ComponentBase'
 software.Composition.type_key = u'cim.2.software.Composition'
 software.DevelopmentPath.type_key = u'cim.2.software.DevelopmentPath'
@@ -115,7 +113,7 @@ activity.Activity.type_info = (
     ('meta', shared.DocMetaInfo, True, False),
     ('name', unicode, True, False),
     ('rationale', unicode, False, False),
-    ('references', shared.Citation, False, True),
+    ('references', shared.Reference, False, True),
     ('responsible_parties', shared.Responsibility, False, True),
 )
 
@@ -167,18 +165,13 @@ data.Dataset.type_info = (
     ('meta', shared.DocMetaInfo, True, False),
     ('name', unicode, True, False),
     ('produced_by', data.Simulation, False, False),
-    ('references', shared.Citation, False, True),
-    ('related_to_dataset', data.RelatedData, False, True),
+    ('references', shared.Reference, False, True),
+    ('related_to_dataset', shared.OnlineResource, False, True),
     ('responsible_parties', shared.Responsibility, False, True),
 )
 
 data.Downscaling.type_info = (
     ('downscaled_from', data.Simulation, True, False),
-)
-
-data.RelatedData.type_info = (
-    ('other_dataset', data.Dataset, True, False),
-    ('relationship', unicode, True, False),
 )
 
 data.Simulation.type_info = (
@@ -209,12 +202,12 @@ designing.EnsembleRequirement.type_info = (
 
 designing.ForcingConstraint.type_info = (
     ('additional_constraint', unicode, False, False),
-    ('category', shared.VocabMember, True, False),
-    ('code', shared.VocabMember, True, False),
+    ('category', unicode, False, False),
+    ('code', unicode, False, False),
     ('data_link', shared.OnlineResource, False, False),
     ('forcing_type', unicode, True, False),
-    ('group', shared.VocabMember, False, False),
-    ('origin', shared.Citation, False, False),
+    ('group', unicode, False, False),
+    ('origin', shared.Reference, False, False),
 )
 
 designing.MultiEnsemble.type_info = (
@@ -368,11 +361,11 @@ platform.StorageVolume.type_info = (
 )
 
 science.Algorithm.type_info = (
-    ('diagnostic_variables', data.VariableCollection, False, True),
-    ('heading', unicode, True, False),
+    ('climatology_variables', data.VariableCollection, False, False),
+    ('diagnostic_variables', data.VariableCollection, False, False),
     ('implementation_overview', unicode, True, False),
-    ('prognostic_variables', data.VariableCollection, False, True),
-    ('references', shared.Citation, False, True),
+    ('prognostic_variables', data.VariableCollection, False, False),
+    ('references', shared.Reference, False, True),
 )
 
 science.ConservationProperties.type_info = (
@@ -393,69 +386,76 @@ science.Extent.type_info = (
     ('z_units', unicode, True, False),
 )
 
-science.GridSummary.type_info = (
-    ('grid_extent', science.Extent, True, False),
-    ('grid_layout', unicode, True, False),
+science.Grid.type_info = (
+    ('grid_extent', science.Extent, False, False),
+    ('grid_layout', unicode, False, False),
     ('grid_type', unicode, True, False),
+    ('meta', shared.DocMetaInfo, True, False),
+    ('name', unicode, True, False),
+    ('resolution', science.Resolution, True, False),
 )
 
 science.Model.type_info = (
     ('category', unicode, True, False),
-    ('coupled_software_components', science.Model, False, True),
+    ('coupled_components', science.Model, False, True),
     ('coupler', unicode, False, False),
     ('extra_conservation_properties', science.ConservationProperties, False, False),
+    ('id', unicode, False, False),
     ('internal_software_components', software.SoftwareComponent, False, True),
     ('meta', shared.DocMetaInfo, True, False),
-    ('scientific_domain', science.ScientificDomain, False, True),
+    ('simulates', science.ScientificDomain, False, True),
 )
 
 science.Process.type_info = (
     ('algorithms', science.Algorithm, False, True),
-    ('description', unicode, False, False),
     ('implementation_overview', unicode, True, False),
-    ('keywords', unicode, True, False),
-    ('name', unicode, True, False),
+    ('keywords', unicode, False, False),
     ('properties', science.ProcessDetail, False, True),
     ('references', shared.Reference, False, True),
     ('sub_processes', science.SubProcess, False, True),
-    ('time_step_in_process', float, False, False),
 )
 
 science.ProcessDetail.type_info = (
-    ('cardinality_of_selection', unicode, False, False),
     ('content', unicode, False, False),
     ('detail_selection', unicode, False, True),
-    ('detail_vocabulary', unicode, False, False),
-    ('heading', unicode, False, False),
+    ('from_vocab', unicode, False, False),
+    ('select', unicode, False, False),
+    ('with_cardinality', unicode, False, False),
 )
 
 science.Resolution.type_info = (
-    ('equivalent_horizontal_resolution', float, True, False),
+    ('constant_cell_size_x', float, False, False),
+    ('constant_cell_size_y', float, False, False),
     ('is_adaptive_grid', bool, False, False),
     ('name', unicode, True, False),
-    ('number_of_levels', int, False, True),
-    ('number_of_xy_gridpoints', int, False, True),
+    ('number_of_levels', int, False, False),
+    ('number_of_xy_gridpoints', int, False, False),
+    ('representative_equatorial_horizontal_resolution', float, False, False),
+)
+
+science.ScienceContext.type_info = (
+    ('context', unicode, True, False),
+    ('id', unicode, True, False),
+    ('name', unicode, True, False),
 )
 
 science.ScientificDomain.type_info = (
     ('extra_conservation_properties', science.ConservationProperties, False, False),
-    ('grid', science.GridSummary, False, False),
+    ('grid', science.Grid, False, False),
+    ('grid_detail', unicode, False, False),
+    ('id', unicode, False, False),
     ('meta', shared.DocMetaInfo, True, False),
     ('name', unicode, True, False),
     ('overview', unicode, False, False),
     ('realm', unicode, False, False),
     ('references', shared.Reference, False, True),
-    ('resolution', science.Resolution, True, False),
     ('simulates', science.Process, True, True),
     ('time_step', float, True, False),
     ('tuning_applied', science.Tuning, False, False),
 )
 
 science.SubProcess.type_info = (
-    ('description', unicode, False, False),
-    ('implementation_overview', unicode, False, False),
-    ('keywords', unicode, False, False),
-    ('name', unicode, True, False),
+    ('implementation_overview', unicode, True, False),
     ('properties', science.ProcessDetail, False, True),
     ('references', shared.Reference, False, True),
 )
@@ -467,6 +467,12 @@ science.Tuning.type_info = (
     ('trend_metrics_used', data.VariableCollection, False, False),
 )
 
+shared.AssociationClass.type_info = (
+    ('from_vocab', unicode, False, False),
+    ('relatonship', unicode, False, False),
+    ('target_type', unicode, False, False),
+)
+
 shared.Calendar.type_info = (
     ('description', unicode, False, False),
     ('month_lengths', int, False, True),
@@ -474,23 +480,9 @@ shared.Calendar.type_info = (
     ('standard_name', unicode, True, False),
 )
 
-shared.CimLink.type_info = (
-    ('remote_type', unicode, True, False),
-)
-
 shared.Cimtext.type_info = (
     ('content', unicode, True, False),
     ('content_type', unicode, True, False),
-)
-
-shared.Citation.type_info = (
-    ('abstract', unicode, False, False),
-    ('citation_str', unicode, True, False),
-    ('context', unicode, False, False),
-    ('doi', unicode, False, False),
-    ('short_cite', unicode, False, False),
-    ('title', unicode, False, False),
-    ('url', shared.OnlineResource, False, False),
 )
 
 shared.DateTime.type_info = (
@@ -508,11 +500,10 @@ shared.DocMetaInfo.type_info = (
     ('drs_keys', unicode, False, True),
     ('drs_path', unicode, False, False),
     ('external_ids', unicode, False, True),
-    ('id', uuid.UUID, True, False),
+    ('id', unicode, True, False),
     ('institute', unicode, False, False),
     ('language', unicode, True, False),
     ('project', unicode, True, False),
-    ('reviews', shared.DocQualityReview, False, True),
     ('sort_key', unicode, False, False),
     ('source', unicode, True, False),
     ('source_key', unicode, False, False),
@@ -523,20 +514,24 @@ shared.DocMetaInfo.type_info = (
     ('version', int, True, False),
 )
 
-shared.DocQualityReview.type_info = (
-    ('completeness', unicode, True, False),
-    ('date', unicode, True, False),
-    ('quality', unicode, True, False),
-    ('reviewer', shared.Party, True, False),
+shared.DocReference.type_info = (
+    ('constraint_vocabulary', unicode, False, False),
+    ('context', unicode, False, False),
+    ('id', unicode, False, False),
+    ('relationship', unicode, False, False),
+    ('type', unicode, True, False),
+    ('version', int, False, False),
 )
 
-shared.DocReference.type_info = (
-    ('description', unicode, False, False),
-    ('id', uuid.UUID, False, False),
-    ('name', unicode, False, False),
-    ('type', unicode, False, False),
-    ('url', unicode, False, False),
-    ('version', int, False, False),
+shared.ExternalDocument.type_info = (
+    ('authorship', unicode, False, False),
+    ('date', unicode, False, False),
+    ('doi', unicode, False, False),
+    ('meta', shared.DocMetaInfo, True, False),
+    ('name', unicode, True, False),
+    ('online_at', shared.OnlineResource, False, False),
+    ('publication_detail', unicode, False, False),
+    ('title', unicode, True, False),
 )
 
 shared.IrregularDateset.type_info = (
@@ -564,6 +559,7 @@ shared.Party.type_info = (
     ('email', unicode, False, False),
     ('meta', shared.DocMetaInfo, True, False),
     ('name', unicode, False, False),
+    ('orcid_id', unicode, False, False),
     ('organisation', bool, False, False),
     ('url', shared.OnlineResource, False, False),
 )
@@ -573,7 +569,16 @@ shared.Pid.type_info = (
     ('resolution_service', shared.OnlineResource, True, False),
 )
 
+shared.QualityReview.type_info = (
+    ('date', unicode, True, False),
+    ('metadata_reviewer', shared.Party, True, False),
+    ('quality_description', unicode, True, False),
+    ('quality_status', unicode, False, False),
+)
+
 shared.Reference.type_info = (
+    ('context', unicode, False, False),
+    ('document', shared.ExternalDocument, True, False),
 )
 
 shared.RegularTimeset.type_info = (
@@ -586,14 +591,6 @@ shared.Responsibility.type_info = (
     ('party', shared.Party, True, True),
     ('role', unicode, True, False),
     ('when', shared.TimePeriod, False, False),
-)
-
-shared.StandaloneDocument.type_info = (
-    ('long_name', unicode, False, False),
-    ('meta', shared.DocMetaInfo, True, False),
-    ('name', unicode, True, False),
-    ('references', shared.Citation, False, True),
-    ('responsible_parties', shared.Responsibility, False, True),
 )
 
 shared.TimePeriod.type_info = (
@@ -609,16 +606,10 @@ shared.TimesliceList.type_info = (
     ('units', unicode, True, False),
 )
 
-shared.VocabMember.type_info = (
-    ('uri', unicode, False, False),
-    ('value', unicode, True, False),
-    ('vocab', shared.Citation, False, False),
-)
-
 software.ComponentBase.type_info = (
     ('description', unicode, False, False),
     ('development_history', software.DevelopmentPath, False, False),
-    ('documentation', shared.Citation, False, True),
+    ('documentation', shared.Reference, False, True),
     ('long_name', unicode, False, False),
     ('name', unicode, True, False),
     ('release_date', datetime.datetime, False, False),

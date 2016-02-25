@@ -41,7 +41,7 @@ class Activity(object):
         self.meta = shared.DocMetaInfo()                  # shared.DocMetaInfo (1.1)
         self.name = None                                  # unicode (1.1)
         self.rationale = None                             # unicode (0.1)
-        self.references = []                              # shared.Citation (0.N)
+        self.references = []                              # shared.Reference (0.N)
         self.responsible_parties = []                     # shared.Responsibility (0.N)
 
 
