@@ -64,11 +64,12 @@ platform.StoragePool.type_key = u'cim.2.platform.StoragePool'
 platform.StorageVolume.type_key = u'cim.2.platform.StorageVolume'
 science.Algorithm.type_key = u'cim.2.science.Algorithm'
 science.ConservationProperties.type_key = u'cim.2.science.ConservationProperties'
+science.Detail.type_key = u'cim.2.science.Detail'
 science.Extent.type_key = u'cim.2.science.Extent'
 science.Grid.type_key = u'cim.2.science.Grid'
+science.KeyProperties.type_key = u'cim.2.science.KeyProperties'
 science.Model.type_key = u'cim.2.science.Model'
 science.Process.type_key = u'cim.2.science.Process'
-science.ProcessDetail.type_key = u'cim.2.science.ProcessDetail'
 science.Resolution.type_key = u'cim.2.science.Resolution'
 science.ScienceContext.type_key = u'cim.2.science.ScienceContext'
 science.ScientificDomain.type_key = u'cim.2.science.ScientificDomain'
@@ -361,8 +362,8 @@ platform.StorageVolume.type_info = (
 )
 
 science.Algorithm.type_info = (
-    ('climatology_variables', data.VariableCollection, False, False),
     ('diagnostic_variables', data.VariableCollection, False, False),
+    ('forced_variables', data.VariableCollection, False, False),
     ('implementation_overview', unicode, True, False),
     ('prognostic_variables', data.VariableCollection, False, False),
     ('references', shared.Reference, False, True),
@@ -374,48 +375,7 @@ science.ConservationProperties.type_info = (
     ('flux_correction_was_used', bool, True, False),
 )
 
-science.Extent.type_info = (
-    ('eastern_boundary', float, False, False),
-    ('is_global', bool, True, False),
-    ('maximum_vertical_level', float, False, False),
-    ('minimum_vertical_level', float, False, False),
-    ('northern_boundary', float, False, False),
-    ('region_known_as', unicode, False, True),
-    ('southern_boundary', float, False, False),
-    ('western_boundary', float, False, False),
-    ('z_units', unicode, True, False),
-)
-
-science.Grid.type_info = (
-    ('grid_extent', science.Extent, False, False),
-    ('grid_layout', unicode, False, False),
-    ('grid_type', unicode, True, False),
-    ('meta', shared.DocMetaInfo, True, False),
-    ('name', unicode, True, False),
-    ('resolution', science.Resolution, True, False),
-)
-
-science.Model.type_info = (
-    ('category', unicode, True, False),
-    ('coupled_components', science.Model, False, True),
-    ('coupler', unicode, False, False),
-    ('extra_conservation_properties', science.ConservationProperties, False, False),
-    ('id', unicode, False, False),
-    ('internal_software_components', software.SoftwareComponent, False, True),
-    ('meta', shared.DocMetaInfo, True, False),
-    ('simulates', science.ScientificDomain, False, True),
-)
-
-science.Process.type_info = (
-    ('algorithms', science.Algorithm, False, True),
-    ('implementation_overview', unicode, True, False),
-    ('keywords', unicode, False, False),
-    ('properties', science.ProcessDetail, False, True),
-    ('references', shared.Reference, False, True),
-    ('sub_processes', science.SubProcess, False, True),
-)
-
-science.ProcessDetail.type_info = (
+science.Detail.type_info = (
     ('content', unicode, False, False),
     ('detail_selection', unicode, False, True),
     ('from_vocab', unicode, False, False),
@@ -423,14 +383,66 @@ science.ProcessDetail.type_info = (
     ('with_cardinality', unicode, False, False),
 )
 
+science.Extent.type_info = (
+    ('bottom_vertical_level', float, False, False),
+    ('eastern_boundary', float, False, False),
+    ('is_global', bool, True, False),
+    ('northern_boundary', float, False, False),
+    ('region_known_as', unicode, False, True),
+    ('southern_boundary', float, False, False),
+    ('top_vertical_level', float, False, False),
+    ('western_boundary', float, False, False),
+    ('z_units', unicode, True, False),
+)
+
+science.Grid.type_info = (
+    ('additional_details', science.Detail, False, True),
+    ('grid_extent', science.Extent, False, False),
+    ('horizontal_grid_layout', unicode, False, False),
+    ('horizontal_grid_type', unicode, False, False),
+    ('meta', shared.DocMetaInfo, True, False),
+    ('name', unicode, True, False),
+    ('vertical_grid_layout', unicode, False, False),
+    ('vertical_grid_type', unicode, False, False),
+)
+
+science.KeyProperties.type_info = (
+    ('additional_detail', science.Detail, False, True),
+    ('extra_conservation_properties', science.ConservationProperties, False, False),
+    ('grid', science.Grid, True, False),
+    ('resolution', science.Resolution, True, False),
+    ('time_step', float, True, False),
+    ('tuning_applied', science.Tuning, False, False),
+)
+
+science.Model.type_info = (
+    ('category', unicode, True, False),
+    ('coupled_components', science.Model, False, True),
+    ('coupler', unicode, False, False),
+    ('id', unicode, False, False),
+    ('internal_software_components', software.SoftwareComponent, False, True),
+    ('meta', shared.DocMetaInfo, True, False),
+    ('model_default_properties', science.KeyProperties, False, False),
+    ('simulates', science.ScientificDomain, False, True),
+)
+
+science.Process.type_info = (
+    ('algorithms', science.Algorithm, False, True),
+    ('implementation_overview', unicode, True, False),
+    ('keywords', unicode, False, False),
+    ('properties', science.Detail, False, True),
+    ('references', shared.Reference, False, True),
+    ('sub_processes', science.SubProcess, False, True),
+)
+
 science.Resolution.type_info = (
-    ('constant_cell_size_x', float, False, False),
-    ('constant_cell_size_y', float, False, False),
+    ('equivalent_resolution_km', float, False, False),
     ('is_adaptive_grid', bool, False, False),
     ('name', unicode, True, False),
     ('number_of_levels', int, False, False),
     ('number_of_xy_gridpoints', int, False, False),
-    ('representative_equatorial_horizontal_resolution', float, False, False),
+    ('typical_x_degrees', float, False, False),
+    ('typical_y_degrees', float, False, False),
 )
 
 science.ScienceContext.type_info = (
@@ -440,9 +452,7 @@ science.ScienceContext.type_info = (
 )
 
 science.ScientificDomain.type_info = (
-    ('extra_conservation_properties', science.ConservationProperties, False, False),
-    ('grid', science.Grid, False, False),
-    ('grid_detail', unicode, False, False),
+    ('differing_key_properties', science.KeyProperties, False, False),
     ('id', unicode, False, False),
     ('meta', shared.DocMetaInfo, True, False),
     ('name', unicode, True, False),
@@ -450,13 +460,11 @@ science.ScientificDomain.type_info = (
     ('realm', unicode, False, False),
     ('references', shared.Reference, False, True),
     ('simulates', science.Process, True, True),
-    ('time_step', float, True, False),
-    ('tuning_applied', science.Tuning, False, False),
 )
 
 science.SubProcess.type_info = (
     ('implementation_overview', unicode, True, False),
-    ('properties', science.ProcessDetail, False, True),
+    ('properties', science.Detail, False, True),
     ('references', shared.Reference, False, True),
 )
 

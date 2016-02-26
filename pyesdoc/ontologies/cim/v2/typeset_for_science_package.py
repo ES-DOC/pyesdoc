@@ -52,13 +52,13 @@ class Extent(object):
         """
         super(Extent, self).__init__()
 
+        self.bottom_vertical_level = None                 # float (0.1)
         self.eastern_boundary = None                      # float (0.1)
         self.is_global = None                             # bool (1.1)
-        self.maximum_vertical_level = None                # float (0.1)
-        self.minimum_vertical_level = None                # float (0.1)
         self.northern_boundary = None                     # float (0.1)
         self.region_known_as = []                         # unicode (0.N)
         self.southern_boundary = None                     # float (0.1)
+        self.top_vertical_level = None                    # float (0.1)
         self.western_boundary = None                      # float (0.1)
         self.z_units = None                               # unicode (1.1)
 
@@ -66,7 +66,9 @@ class Extent(object):
 class Grid(object):
     """A concrete class within the cim v2 type system.
 
-    Gird summary information.
+    This describes the numerical grid used for the calculations.
+    It is not necessarily the grid upon which the data is output.
+    It is NOT the resolution, which is a property of a specific domain.
 
     """
     def __init__(self):
@@ -75,12 +77,35 @@ class Grid(object):
         """
         super(Grid, self).__init__()
 
+        self.additional_details = []                      # science.Detail (0.N)
         self.grid_extent = None                           # science.Extent (0.1)
-        self.grid_layout = None                           # science.GridLayouts (0.1)
-        self.grid_type = None                             # science.GridTypes (1.1)
+        self.horizontal_grid_layout = None                # unicode (0.1)
+        self.horizontal_grid_type = None                  # unicode (0.1)
         self.meta = shared.DocMetaInfo()                  # shared.DocMetaInfo (1.1)
         self.name = None                                  # unicode (1.1)
+        self.vertical_grid_layout = None                  # unicode (0.1)
+        self.vertical_grid_type = None                    # unicode (0.1)
+
+
+class KeyProperties(object):
+    """A concrete class within the cim v2 type system.
+
+    High level list of key properties. It can be specialised in
+    extension packages using the detail extensions.
+
+    """
+    def __init__(self):
+        """Constructor.
+
+        """
+        super(KeyProperties, self).__init__()
+
+        self.additional_detail = []                       # science.Detail (0.N)
+        self.extra_conservation_properties = None         # science.ConservationProperties (0.1)
+        self.grid = None                                  # science.Grid (1.1)
         self.resolution = None                            # science.Resolution (1.1)
+        self.time_step = None                             # float (1.1)
+        self.tuning_applied = None                        # science.Tuning (0.1)
 
 
 class Model(software.ComponentBase):
@@ -100,22 +125,22 @@ class Model(software.ComponentBase):
         self.category = None                              # science.ModelTypes (1.1)
         self.coupled_components = []                      # science.Model (0.N)
         self.coupler = None                               # software.CouplingFramework (0.1)
-        self.extra_conservation_properties = None         # science.ConservationProperties (0.1)
         self.id = None                                    # unicode (0.1)
         self.internal_software_components = []            # software.SoftwareComponent (0.N)
         self.meta = shared.DocMetaInfo()                  # shared.DocMetaInfo (1.1)
+        self.model_default_properties = None              # science.KeyProperties (0.1)
         self.simulates = []                               # science.ScientificDomain (0.N)
 
 
 class Resolution(object):
     """A concrete class within the cim v2 type system.
 
-    Describes the computational spatial resolution of a component or
-process. Not intended to replace or replicate the output grid
-description.  When it appears as part of a process description,
-provide only properties that differ from parent domain. Note that
-where different variables have different grids, differences in
-resolution can be captured by repeating the number_of_ properties.
+    Describes the computational spatial resolution of a component or process.
+    Not intended to replace or replicate the output grid description.
+    When it appears as part of a process description, provide only properties that differ from parent domain.
+    Note that this is supposed to capture gross features of the grid, we expect many grids will have
+    different variable layouts, those should be described in the grid description, and the exact resolution
+    is not required. Note that many properties are not appropriate for adaptive grids.
 
     """
     def __init__(self):
@@ -124,13 +149,13 @@ resolution can be captured by repeating the number_of_ properties.
         """
         super(Resolution, self).__init__()
 
-        self.constant_cell_size_x = None                  # float (0.1)
-        self.constant_cell_size_y = None                  # float (0.1)
+        self.equivalent_resolution_km = None              # float (0.1)
         self.is_adaptive_grid = None                      # bool (0.1)
         self.name = None                                  # unicode (1.1)
         self.number_of_levels = None                      # int (0.1)
         self.number_of_xy_gridpoints = None               # int (0.1)
-        self.representative_equatorial_horizontal_resolution = None# float (0.1)
+        self.typical_x_degrees = None                     # float (0.1)
+        self.typical_y_degrees = None                     # float (0.1)
 
 
 class ScienceContext(object):
@@ -168,9 +193,7 @@ class ScientificDomain(object):
         """
         super(ScientificDomain, self).__init__()
 
-        self.extra_conservation_properties = None         # science.ConservationProperties (0.1)
-        self.grid = None                                  # science.Grid (0.1)
-        self.grid_detail = None                           # unicode (0.1)
+        self.differing_key_properties = None              # science.KeyProperties (0.1)
         self.id = None                                    # unicode (0.1)
         self.meta = shared.DocMetaInfo()                  # shared.DocMetaInfo (1.1)
         self.name = None                                  # unicode (1.1)
@@ -178,8 +201,6 @@ class ScientificDomain(object):
         self.realm = None                                 # unicode (0.1)
         self.references = []                              # shared.Reference (0.N)
         self.simulates = []                               # science.Process (1.N)
-        self.time_step = None                             # float (1.1)
-        self.tuning_applied = None                        # science.Tuning (0.1)
 
 
 class Tuning(object):
@@ -216,11 +237,34 @@ class Algorithm(ScienceContext):
         """
         super(Algorithm, self).__init__()
 
-        self.climatology_variables = None                 # data.VariableCollection (0.1)
         self.diagnostic_variables = None                  # data.VariableCollection (0.1)
+        self.forced_variables = None                      # data.VariableCollection (0.1)
         self.implementation_overview = None               # unicode (1.1)
         self.prognostic_variables = None                  # data.VariableCollection (0.1)
         self.references = []                              # shared.Reference (0.N)
+
+
+class Detail(ScienceContext):
+    """A concrete class within the cim v2 type system.
+
+    Provides detail of specific properties, there are two possible specialisations
+    expected: (1) A detail_vocabulary is identified, and a cardinality is assigned to that
+    for possible responses, or (2) Detail is used to provide a collection for a set of
+    properties which are defined in the sub-class. However, those properties must have a type
+    which is selected from the classmap (that is, standard 'non-es-doc' types).
+
+    """
+    def __init__(self):
+        """Constructor.
+
+        """
+        super(Detail, self).__init__()
+
+        self.content = None                               # unicode (0.1)
+        self.detail_selection = []                        # unicode (0.N)
+        self.from_vocab = None                            # unicode (0.1)
+        self.select = None                                # unicode (0.1)
+        self.with_cardinality = None                      # science.SelectionCardinality (0.1)
 
 
 class Process(ScienceContext):
@@ -242,32 +286,9 @@ class Process(ScienceContext):
         self.algorithms = []                              # science.Algorithm (0.N)
         self.implementation_overview = None               # unicode (1.1)
         self.keywords = None                              # unicode (0.1)
-        self.properties = []                              # science.ProcessDetail (0.N)
+        self.properties = []                              # science.Detail (0.N)
         self.references = []                              # shared.Reference (0.N)
         self.sub_processes = []                           # science.SubProcess (0.N)
-
-
-class ProcessDetail(ScienceContext):
-    """A concrete class within the cim v2 type system.
-
-    Provides detail of specific properties of a process, there are two possible specialisations
-    expected: (1) A detail_vocabulary is identified, and a cardinality is assigned to that
-    for possible responses, or (2) Process_Detail is used to provide a collection for a set of
-    properties which are defined in the sub-class. However, those properties must have a type
-    which is selected from the classmap (that is, standard 'non-es-doc' types).
-
-    """
-    def __init__(self):
-        """Constructor.
-
-        """
-        super(ProcessDetail, self).__init__()
-
-        self.content = None                               # unicode (0.1)
-        self.detail_selection = []                        # unicode (0.N)
-        self.from_vocab = None                            # unicode (0.1)
-        self.select = None                                # unicode (0.1)
-        self.with_cardinality = None                      # science.SelectionCardinality (0.1)
 
 
 class SubProcess(ScienceContext):
@@ -287,32 +308,8 @@ class SubProcess(ScienceContext):
         super(SubProcess, self).__init__()
 
         self.implementation_overview = None               # unicode (1.1)
-        self.properties = []                              # science.ProcessDetail (0.N)
+        self.properties = []                              # science.Detail (0.N)
         self.references = []                              # shared.Reference (0.N)
-
-
-class GridLayouts(object):
-    """An enumeration within the cim v2 type system.
-
-    Defines the set of grid layouts (e.g. Arakawa C-Grid) which are understood.
-    """
-    is_open = False
-    members = [
-        "Arakawa-C"
-        ]
-
-
-class GridTypes(object):
-    """An enumeration within the cim v2 type system.
-
-    Defines the set of grid types (e.g Cubed Sphere) which are understood.
-    """
-    is_open = False
-    members = [
-        "Cubed-Sphere",
-        "LatLon",
-        "Spectral-Gaussian"
-        ]
 
 
 class ModelTypes(object):
