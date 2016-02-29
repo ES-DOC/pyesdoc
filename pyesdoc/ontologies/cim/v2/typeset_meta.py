@@ -103,7 +103,7 @@ software.SoftwareComponent.type_key = u'cim.2.software.SoftwareComponent'
 software.Variable.type_key = u'cim.2.software.Variable'
 
 
-# Set type info (name, type, is_required, is_iterative).
+# Set class type info (property-name, property-type, property-is-required, property-is-iterable).
 activity.Activity.type_info = (
     ('canonical_name', unicode, False, False),
     ('description', unicode, False, False),
@@ -117,6 +117,7 @@ activity.Activity.type_info = (
     ('responsible_parties', shared.Responsibility, False, True),
 )
 
+# Set class type info (property-name, property-type, property-is-required, property-is-iterable).
 activity.AxisMember.type_info = (
     ('description', unicode, True, False),
     ('extra_detail', unicode, False, False),
@@ -124,10 +125,12 @@ activity.AxisMember.type_info = (
     ('value', float, False, False),
 )
 
+# Set class type info (property-name, property-type, property-is-required, property-is-iterable).
 activity.Conformance.type_info = (
     ('target_requirement', designing.NumericalRequirement, True, False),
 )
 
+# Set class type info (property-name, property-type, property-is-required, property-is-iterable).
 activity.Ensemble.type_info = (
     ('common_conformances', activity.Conformance, False, True),
     ('documentation', shared.OnlineResource, False, True),
@@ -137,6 +140,7 @@ activity.Ensemble.type_info = (
     ('supported', designing.NumericalExperiment, True, True),
 )
 
+# Set class type info (property-name, property-type, property-is-required, property-is-iterable).
 activity.EnsembleAxis.type_info = (
     ('extra_detail', unicode, True, False),
     ('member', activity.AxisMember, True, True),
@@ -144,6 +148,7 @@ activity.EnsembleAxis.type_info = (
     ('target_requirement', designing.NumericalRequirement, True, False),
 )
 
+# Set class type info (property-name, property-type, property-is-required, property-is-iterable).
 activity.EnsembleMember.type_info = (
     ('errata', shared.OnlineResource, False, False),
     ('had_performance', platform.Performance, False, False),
@@ -152,16 +157,19 @@ activity.EnsembleMember.type_info = (
     ('variant_id', unicode, True, False),
 )
 
+# Set class type info (property-name, property-type, property-is-required, property-is-iterable).
 activity.ParentSimulation.type_info = (
     ('branch_time_in_child', shared.DateTime, False, False),
     ('branch_time_in_parent', shared.DateTime, False, False),
     ('parent', data.Simulation, True, False),
 )
 
+# Set class type info (property-name, property-type, property-is-required, property-is-iterable).
 activity.UberEnsemble.type_info = (
     ('child_ensembles', activity.Ensemble, True, True),
 )
 
+# Set class type info (property-name, property-type, property-is-required, property-is-iterable).
 data.Dataset.type_info = (
     ('availability', shared.OnlineResource, False, True),
     ('description', unicode, False, False),
@@ -174,10 +182,12 @@ data.Dataset.type_info = (
     ('responsible_parties', shared.Responsibility, False, True),
 )
 
+# Set class type info (property-name, property-type, property-is-required, property-is-iterable).
 data.Downscaling.type_info = (
     ('downscaled_from', data.Simulation, True, False),
 )
 
+# Set class type info (property-name, property-type, property-is-required, property-is-iterable).
 data.Simulation.type_info = (
     ('calendar', shared.Calendar, False, False),
     ('ensemble_identifier', unicode, True, False),
@@ -188,22 +198,26 @@ data.Simulation.type_info = (
     ('used', science.Model, True, False),
 )
 
+# Set class type info (property-name, property-type, property-is-required, property-is-iterable).
 data.VariableCollection.type_info = (
     ('collection_name', unicode, False, False),
     ('variables', unicode, True, True),
 )
 
+# Set class type info (property-name, property-type, property-is-required, property-is-iterable).
 designing.DomainProperties.type_info = (
     ('required_extent', science.Extent, False, False),
     ('required_resolution', science.Resolution, False, False),
 )
 
+# Set class type info (property-name, property-type, property-is-required, property-is-iterable).
 designing.EnsembleRequirement.type_info = (
     ('ensemble_member', designing.NumericalRequirement, False, True),
     ('ensemble_type', unicode, True, False),
     ('minimum_size', int, True, False),
 )
 
+# Set class type info (property-name, property-type, property-is-required, property-is-iterable).
 designing.ForcingConstraint.type_info = (
     ('additional_constraint', unicode, False, False),
     ('category', unicode, False, False),
@@ -214,36 +228,43 @@ designing.ForcingConstraint.type_info = (
     ('origin', shared.Reference, False, False),
 )
 
+# Set class type info (property-name, property-type, property-is-required, property-is-iterable).
 designing.MultiEnsemble.type_info = (
     ('ensemble_axis', designing.EnsembleRequirement, True, True),
 )
 
+# Set class type info (property-name, property-type, property-is-required, property-is-iterable).
 designing.MultiTimeEnsemble.type_info = (
     ('ensemble_members', shared.DatetimeSet, True, False),
 )
 
+# Set class type info (property-name, property-type, property-is-required, property-is-iterable).
 designing.NumericalExperiment.type_info = (
     ('related_experiments', designing.NumericalExperiment, False, True),
     ('requirements', designing.NumericalRequirement, False, True),
 )
 
+# Set class type info (property-name, property-type, property-is-required, property-is-iterable).
 designing.NumericalRequirement.type_info = (
     ('additional_requirements', designing.NumericalRequirement, False, True),
     ('conformance_is_requested', bool, True, False),
 )
 
+# Set class type info (property-name, property-type, property-is-required, property-is-iterable).
 designing.OutputTemporalRequirement.type_info = (
     ('continuous_subset', shared.TimePeriod, False, True),
     ('sliced_subset', shared.TimesliceList, False, False),
     ('throughout', bool, True, False),
 )
 
+# Set class type info (property-name, property-type, property-is-required, property-is-iterable).
 designing.Project.type_info = (
     ('previous_projects', designing.Project, False, True),
     ('requires_experiments', designing.NumericalExperiment, False, True),
     ('sub_projects', designing.Project, False, True),
 )
 
+# Set class type info (property-name, property-type, property-is-required, property-is-iterable).
 designing.SimulationPlan.type_info = (
     ('expected_model', science.Model, True, False),
     ('expected_performance_sypd', float, False, False),
@@ -251,6 +272,7 @@ designing.SimulationPlan.type_info = (
     ('will_support_experiments', designing.NumericalExperiment, True, True),
 )
 
+# Set class type info (property-name, property-type, property-is-required, property-is-iterable).
 designing.TemporalConstraint.type_info = (
     ('required_calendar', shared.Calendar, False, False),
     ('required_duration', shared.TimePeriod, False, False),
@@ -258,6 +280,7 @@ designing.TemporalConstraint.type_info = (
     ('start_flexibility', shared.TimePeriod, False, False),
 )
 
+# Set class type info (property-name, property-type, property-is-required, property-is-iterable).
 drs.DrsAtomicDataset.type_info = (
     ('ensemble_member', drs.DrsEnsembleIdentifier, True, False),
     ('geographical_constraint', drs.DrsGeographicalIndicator, False, False),
@@ -266,18 +289,21 @@ drs.DrsAtomicDataset.type_info = (
     ('variable_name', unicode, True, False),
 )
 
+# Set class type info (property-name, property-type, property-is-required, property-is-iterable).
 drs.DrsEnsembleIdentifier.type_info = (
     ('initialisation_method_number', int, True, False),
     ('perturbation_number', int, True, False),
     ('realisation_number', int, True, False),
 )
 
+# Set class type info (property-name, property-type, property-is-required, property-is-iterable).
 drs.DrsGeographicalIndicator.type_info = (
     ('bounding_box', unicode, False, False),
     ('operator', unicode, False, False),
     ('spatial_domain', unicode, False, False),
 )
 
+# Set class type info (property-name, property-type, property-is-required, property-is-iterable).
 drs.DrsPublicationDataset.type_info = (
     ('activity', unicode, True, False),
     ('experiment', unicode, True, False),
@@ -289,12 +315,14 @@ drs.DrsPublicationDataset.type_info = (
     ('version_number', int, False, False),
 )
 
+# Set class type info (property-name, property-type, property-is-required, property-is-iterable).
 drs.DrsTemporalIdentifier.type_info = (
     ('end', unicode, False, False),
     ('start', unicode, True, False),
     ('suffix', unicode, False, False),
 )
 
+# Set class type info (property-name, property-type, property-is-required, property-is-iterable).
 platform.ComponentPerformance.type_info = (
     ('component', software.SoftwareComponent, False, False),
     ('component_name', unicode, True, False),
@@ -303,6 +331,7 @@ platform.ComponentPerformance.type_info = (
     ('speed', float, True, False),
 )
 
+# Set class type info (property-name, property-type, property-is-required, property-is-iterable).
 platform.ComputePool.type_info = (
     ('accelerator_type', unicode, False, False),
     ('accelerators_per_node', int, False, False),
@@ -317,10 +346,12 @@ platform.ComputePool.type_info = (
     ('operating_system', unicode, False, False),
 )
 
+# Set class type info (property-name, property-type, property-is-required, property-is-iterable).
 platform.Machine.type_info = (
     ('meta', shared.DocMetaInfo, True, False),
 )
 
+# Set class type info (property-name, property-type, property-is-required, property-is-iterable).
 platform.Partition.type_info = (
     ('compute_pools', platform.ComputePool, True, True),
     ('description', unicode, False, False),
@@ -334,6 +365,7 @@ platform.Partition.type_info = (
     ('when_used', shared.TimePeriod, False, False),
 )
 
+# Set class type info (property-name, property-type, property-is-required, property-is-iterable).
 platform.Performance.type_info = (
     ('asypd', float, False, False),
     ('chsy', float, False, False),
@@ -351,6 +383,7 @@ platform.Performance.type_info = (
     ('total_nodes_used', int, False, False),
 )
 
+# Set class type info (property-name, property-type, property-is-required, property-is-iterable).
 platform.StoragePool.type_info = (
     ('description', unicode, False, False),
     ('name', unicode, True, False),
@@ -359,11 +392,13 @@ platform.StoragePool.type_info = (
     ('volume_available', platform.StorageVolume, True, False),
 )
 
+# Set class type info (property-name, property-type, property-is-required, property-is-iterable).
 platform.StorageVolume.type_info = (
     ('units', unicode, True, False),
     ('volume', int, True, False),
 )
 
+# Set class type info (property-name, property-type, property-is-required, property-is-iterable).
 science.Algorithm.type_info = (
     ('diagnostic_variables', data.VariableCollection, False, False),
     ('forced_variables', data.VariableCollection, False, False),
@@ -372,12 +407,14 @@ science.Algorithm.type_info = (
     ('references', shared.Reference, False, True),
 )
 
+# Set class type info (property-name, property-type, property-is-required, property-is-iterable).
 science.ConservationProperties.type_info = (
     ('corrected_conserved_prognostic_variables', data.VariableCollection, False, False),
     ('correction_methodology', unicode, False, False),
     ('flux_correction_was_used', bool, True, False),
 )
 
+# Set class type info (property-name, property-type, property-is-required, property-is-iterable).
 science.Detail.type_info = (
     ('content', unicode, False, False),
     ('detail_selection', unicode, False, True),
@@ -386,6 +423,7 @@ science.Detail.type_info = (
     ('with_cardinality', unicode, False, False),
 )
 
+# Set class type info (property-name, property-type, property-is-required, property-is-iterable).
 science.Extent.type_info = (
     ('bottom_vertical_level', float, False, False),
     ('eastern_boundary', float, False, False),
@@ -398,6 +436,7 @@ science.Extent.type_info = (
     ('z_units', unicode, True, False),
 )
 
+# Set class type info (property-name, property-type, property-is-required, property-is-iterable).
 science.Grid.type_info = (
     ('additional_details', science.Detail, False, True),
     ('grid_extent', science.Extent, False, False),
@@ -409,6 +448,7 @@ science.Grid.type_info = (
     ('vertical_grid_type', unicode, False, False),
 )
 
+# Set class type info (property-name, property-type, property-is-required, property-is-iterable).
 science.KeyProperties.type_info = (
     ('additional_detail', science.Detail, False, True),
     ('extra_conservation_properties', science.ConservationProperties, False, False),
@@ -418,6 +458,7 @@ science.KeyProperties.type_info = (
     ('tuning_applied', science.Tuning, False, False),
 )
 
+# Set class type info (property-name, property-type, property-is-required, property-is-iterable).
 science.Model.type_info = (
     ('category', unicode, True, False),
     ('coupled_components', science.Model, False, True),
@@ -429,6 +470,7 @@ science.Model.type_info = (
     ('simulates', science.ScientificDomain, False, True),
 )
 
+# Set class type info (property-name, property-type, property-is-required, property-is-iterable).
 science.Process.type_info = (
     ('algorithms', science.Algorithm, False, True),
     ('implementation_overview', unicode, True, False),
@@ -438,6 +480,7 @@ science.Process.type_info = (
     ('sub_processes', science.SubProcess, False, True),
 )
 
+# Set class type info (property-name, property-type, property-is-required, property-is-iterable).
 science.Resolution.type_info = (
     ('equivalent_resolution_km', float, False, False),
     ('is_adaptive_grid', bool, False, False),
@@ -448,12 +491,14 @@ science.Resolution.type_info = (
     ('typical_y_degrees', float, False, False),
 )
 
+# Set class type info (property-name, property-type, property-is-required, property-is-iterable).
 science.ScienceContext.type_info = (
     ('context', unicode, True, False),
     ('id', unicode, True, False),
     ('name', unicode, True, False),
 )
 
+# Set class type info (property-name, property-type, property-is-required, property-is-iterable).
 science.ScientificDomain.type_info = (
     ('differing_key_properties', science.KeyProperties, False, False),
     ('id', unicode, False, False),
@@ -465,12 +510,14 @@ science.ScientificDomain.type_info = (
     ('simulates', science.Process, True, True),
 )
 
+# Set class type info (property-name, property-type, property-is-required, property-is-iterable).
 science.SubProcess.type_info = (
     ('implementation_overview', unicode, True, False),
     ('properties', science.Detail, False, True),
     ('references', shared.Reference, False, True),
 )
 
+# Set class type info (property-name, property-type, property-is-required, property-is-iterable).
 science.Tuning.type_info = (
     ('description', unicode, True, False),
     ('global_mean_metrics_used', data.VariableCollection, False, False),
@@ -478,6 +525,7 @@ science.Tuning.type_info = (
     ('trend_metrics_used', data.VariableCollection, False, False),
 )
 
+# Set class type info (property-name, property-type, property-is-required, property-is-iterable).
 shared.Calendar.type_info = (
     ('description', unicode, False, False),
     ('month_lengths', int, False, True),
@@ -485,20 +533,24 @@ shared.Calendar.type_info = (
     ('standard_name', unicode, True, False),
 )
 
+# Set class type info (property-name, property-type, property-is-required, property-is-iterable).
 shared.Cimtext.type_info = (
     ('content', unicode, True, False),
     ('content_type', unicode, True, False),
 )
 
+# Set class type info (property-name, property-type, property-is-required, property-is-iterable).
 shared.DateTime.type_info = (
     ('offset', bool, False, False),
     ('value', unicode, True, False),
 )
 
+# Set class type info (property-name, property-type, property-is-required, property-is-iterable).
 shared.DatetimeSet.type_info = (
     ('length', int, True, False),
 )
 
+# Set class type info (property-name, property-type, property-is-required, property-is-iterable).
 shared.DocMetaInfo.type_info = (
     ('author', shared.Party, False, False),
     ('create_date', datetime.datetime, True, False),
@@ -519,6 +571,7 @@ shared.DocMetaInfo.type_info = (
     ('version', int, True, False),
 )
 
+# Set class type info (property-name, property-type, property-is-required, property-is-iterable).
 shared.DocReference.type_info = (
     ('constraint_vocabulary', unicode, False, False),
     ('context', unicode, False, False),
@@ -528,6 +581,7 @@ shared.DocReference.type_info = (
     ('version', int, False, False),
 )
 
+# Set class type info (property-name, property-type, property-is-required, property-is-iterable).
 shared.ExternalDocument.type_info = (
     ('authorship', unicode, False, False),
     ('date', unicode, False, False),
@@ -539,19 +593,23 @@ shared.ExternalDocument.type_info = (
     ('title', unicode, True, False),
 )
 
+# Set class type info (property-name, property-type, property-is-required, property-is-iterable).
 shared.IrregularDateset.type_info = (
     ('date_set', unicode, True, False),
 )
 
+# Set class type info (property-name, property-type, property-is-required, property-is-iterable).
 shared.KeyFloat.type_info = (
     ('key', unicode, True, False),
     ('value', float, True, False),
 )
 
+# Set class type info (property-name, property-type, property-is-required, property-is-iterable).
 shared.NumberArray.type_info = (
     ('values', unicode, True, False),
 )
 
+# Set class type info (property-name, property-type, property-is-required, property-is-iterable).
 shared.OnlineResource.type_info = (
     ('description', unicode, False, False),
     ('linkage', unicode, True, False),
@@ -559,6 +617,7 @@ shared.OnlineResource.type_info = (
     ('protocol', unicode, False, False),
 )
 
+# Set class type info (property-name, property-type, property-is-required, property-is-iterable).
 shared.Party.type_info = (
     ('address', unicode, False, False),
     ('email', unicode, False, False),
@@ -569,11 +628,13 @@ shared.Party.type_info = (
     ('url', shared.OnlineResource, False, False),
 )
 
+# Set class type info (property-name, property-type, property-is-required, property-is-iterable).
 shared.Pid.type_info = (
     ('id', unicode, True, False),
     ('resolution_service', shared.OnlineResource, True, False),
 )
 
+# Set class type info (property-name, property-type, property-is-required, property-is-iterable).
 shared.QualityReview.type_info = (
     ('date', unicode, True, False),
     ('metadata_reviewer', shared.Party, True, False),
@@ -581,23 +642,27 @@ shared.QualityReview.type_info = (
     ('quality_status', unicode, False, False),
 )
 
+# Set class type info (property-name, property-type, property-is-required, property-is-iterable).
 shared.Reference.type_info = (
     ('context', unicode, False, False),
     ('document', shared.ExternalDocument, True, False),
 )
 
+# Set class type info (property-name, property-type, property-is-required, property-is-iterable).
 shared.RegularTimeset.type_info = (
     ('increment', shared.TimePeriod, True, False),
     ('length', int, True, False),
     ('start_date', shared.DateTime, True, False),
 )
 
+# Set class type info (property-name, property-type, property-is-required, property-is-iterable).
 shared.Responsibility.type_info = (
     ('party', shared.Party, True, True),
     ('role', unicode, True, False),
     ('when', shared.TimePeriod, False, False),
 )
 
+# Set class type info (property-name, property-type, property-is-required, property-is-iterable).
 shared.TimePeriod.type_info = (
     ('calendar', shared.Calendar, False, False),
     ('date', shared.DateTime, False, False),
@@ -606,11 +671,13 @@ shared.TimePeriod.type_info = (
     ('units', unicode, True, False),
 )
 
+# Set class type info (property-name, property-type, property-is-required, property-is-iterable).
 shared.TimesliceList.type_info = (
     ('members', shared.NumberArray, True, False),
     ('units', unicode, True, False),
 )
 
+# Set class type info (property-name, property-type, property-is-required, property-is-iterable).
 software.ComponentBase.type_info = (
     ('description', unicode, False, False),
     ('development_history', software.DevelopmentPath, False, False),
@@ -622,11 +689,13 @@ software.ComponentBase.type_info = (
     ('version', unicode, False, False),
 )
 
+# Set class type info (property-name, property-type, property-is-required, property-is-iterable).
 software.Composition.type_info = (
     ('couplings', unicode, False, True),
     ('description', unicode, False, False),
 )
 
+# Set class type info (property-name, property-type, property-is-required, property-is-iterable).
 software.DevelopmentPath.type_info = (
     ('consortium_name', unicode, False, False),
     ('creators', shared.Responsibility, False, True),
@@ -635,14 +704,17 @@ software.DevelopmentPath.type_info = (
     ('previous_version', unicode, False, False),
 )
 
+# Set class type info (property-name, property-type, property-is-required, property-is-iterable).
 software.EntryPoint.type_info = (
     ('name', unicode, False, False),
 )
 
+# Set class type info (property-name, property-type, property-is-required, property-is-iterable).
 software.Gridspec.type_info = (
     ('description', unicode, True, False),
 )
 
+# Set class type info (property-name, property-type, property-is-required, property-is-iterable).
 software.SoftwareComponent.type_info = (
     ('composition', software.Composition, False, False),
     ('connection_points', software.Variable, False, True),
@@ -654,9 +726,110 @@ software.SoftwareComponent.type_info = (
     ('sub_components', software.SoftwareComponent, False, True),
 )
 
+# Set class type info (property-name, property-type, property-is-required, property-is-iterable).
 software.Variable.type_info = (
     ('description', unicode, False, False),
     ('name', unicode, True, False),
     ('prognostic', bool, True, False),
 )
+
+
+
+# Set constraint info (property-name, constraint-type, constraint-value).
+activity.Conformance.type_constraint_info = (
+    ('canonical_name', 'cardinality', '0.0'),
+    ('description', 'cardinality', '1.1'),
+    ('duration', 'cardinality', '0.0'),
+    ('keywords', 'cardinality', '0.0'),
+    ('rationale', 'cardinality', '0.0'),
+)
+
+# Set constraint info (property-name, constraint-type, constraint-value).
+activity.Ensemble.type_constraint_info = (
+    ('canonical_name', 'cardinality', '0.0'),
+    ('duration', 'cardinality', '0.0'),
+    ('keywords', 'cardinality', '0.0'),
+    ('rationale', 'cardinality', '0.0'),
+)
+
+# Set constraint info (property-name, constraint-type, constraint-value).
+activity.UberEnsemble.type_constraint_info = (
+    ('common_conformances', 'cardinality', '0.0'),
+    ('has_ensemble_axes', 'cardinality', '1.N'),
+    ('members', 'cardinality', '0.0'),
+)
+
+# Set constraint info (property-name, constraint-type, constraint-value).
+data.Downscaling.type_constraint_info = (
+    ('parent_simulation', 'cardinality', '0.0'),
+)
+
+# Set constraint info (property-name, constraint-type, constraint-value).
+data.Simulation.type_constraint_info = (
+    ('rationale', 'cardinality', '0.0'),
+)
+
+# Set constraint info (property-name, constraint-type, constraint-value).
+designing.DomainProperties.type_constraint_info = (
+    ('additional_requirements', 'cardinality', '0.0'),
+)
+
+# Set constraint info (property-name, constraint-type, constraint-value).
+designing.EnsembleRequirement.type_constraint_info = (
+    ('additional_requirements', 'cardinality', '0.0'),
+)
+
+# Set constraint info (property-name, constraint-type, constraint-value).
+designing.ForcingConstraint.type_constraint_info = (
+    ('additional_requirements', 'cardinality', '0.0'),
+)
+
+# Set constraint info (property-name, constraint-type, constraint-value).
+designing.MultiEnsemble.type_constraint_info = (
+    ('additional_requirements', 'cardinality', '0.0'),
+)
+
+# Set constraint info (property-name, constraint-type, constraint-value).
+designing.MultiTimeEnsemble.type_constraint_info = (
+    ('additional_requirements', 'cardinality', '0.0'),
+)
+
+# Set constraint info (property-name, constraint-type, constraint-value).
+designing.NumericalExperiment.type_constraint_info = (
+    ('duration', 'cardinality', '0.0'),
+    ('rationale', 'cardinality', '1.1'),
+)
+
+# Set constraint info (property-name, constraint-type, constraint-value).
+designing.NumericalRequirement.type_constraint_info = (
+    ('duration', 'cardinality', '0.0'),
+)
+
+# Set constraint info (property-name, constraint-type, constraint-value).
+designing.OutputTemporalRequirement.type_constraint_info = (
+    ('additional_requirements', 'cardinality', '0.0'),
+)
+
+# Set constraint info (property-name, constraint-type, constraint-value).
+designing.Project.type_constraint_info = (
+    ('description', 'cardinality', '1.1'),
+)
+
+# Set constraint info (property-name, constraint-type, constraint-value).
+designing.SimulationPlan.type_constraint_info = (
+    ('duration', 'cardinality', '1.1'),
+)
+
+# Set constraint info (property-name, constraint-type, constraint-value).
+designing.TemporalConstraint.type_constraint_info = (
+    ('additional_requirements', 'cardinality', '0.0'),
+)
+
+# Set constraint info (property-name, constraint-type, constraint-value).
+drs.DrsAtomicDataset.type_constraint_info = (
+    ('frequency', 'cardinality', '1.1'),
+    ('realm', 'cardinality', '1.1'),
+    ('version_number', 'cardinality', '1.1'),
+)
+
 
