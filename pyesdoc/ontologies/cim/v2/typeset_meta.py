@@ -8,7 +8,7 @@
    :synopsis: Encpasulates meta-information pertaining to the cim.v2 typeset.
 
 .. moduleauthor:: Earth System Documentation (ES-DOC) <dev@es-doc.org>
-.. note:: Code generated using esdoc_mp.
+.. note:: Code generated using the esdoc-mp framework.
 
 """
 import datetime
@@ -731,105 +731,6 @@ software.Variable.type_info = (
     ('description', unicode, False, False),
     ('name', unicode, True, False),
     ('prognostic', bool, True, False),
-)
-
-
-
-# Set constraint info (property-name, constraint-type, constraint-value).
-activity.Conformance.type_constraint_info = (
-    ('canonical_name', 'cardinality', '0.0'),
-    ('description', 'cardinality', '1.1'),
-    ('duration', 'cardinality', '0.0'),
-    ('keywords', 'cardinality', '0.0'),
-    ('rationale', 'cardinality', '0.0'),
-)
-
-# Set constraint info (property-name, constraint-type, constraint-value).
-activity.Ensemble.type_constraint_info = (
-    ('canonical_name', 'cardinality', '0.0'),
-    ('duration', 'cardinality', '0.0'),
-    ('keywords', 'cardinality', '0.0'),
-    ('rationale', 'cardinality', '0.0'),
-)
-
-# Set constraint info (property-name, constraint-type, constraint-value).
-activity.UberEnsemble.type_constraint_info = (
-    ('common_conformances', 'cardinality', '0.0'),
-    ('has_ensemble_axes', 'cardinality', '1.N'),
-    ('members', 'cardinality', '0.0'),
-)
-
-# Set constraint info (property-name, constraint-type, constraint-value).
-data.Downscaling.type_constraint_info = (
-    ('parent_simulation', 'cardinality', '0.0'),
-)
-
-# Set constraint info (property-name, constraint-type, constraint-value).
-data.Simulation.type_constraint_info = (
-    ('rationale', 'cardinality', '0.0'),
-)
-
-# Set constraint info (property-name, constraint-type, constraint-value).
-designing.DomainProperties.type_constraint_info = (
-    ('additional_requirements', 'cardinality', '0.0'),
-)
-
-# Set constraint info (property-name, constraint-type, constraint-value).
-designing.EnsembleRequirement.type_constraint_info = (
-    ('additional_requirements', 'cardinality', '0.0'),
-)
-
-# Set constraint info (property-name, constraint-type, constraint-value).
-designing.ForcingConstraint.type_constraint_info = (
-    ('additional_requirements', 'cardinality', '0.0'),
-)
-
-# Set constraint info (property-name, constraint-type, constraint-value).
-designing.MultiEnsemble.type_constraint_info = (
-    ('additional_requirements', 'cardinality', '0.0'),
-)
-
-# Set constraint info (property-name, constraint-type, constraint-value).
-designing.MultiTimeEnsemble.type_constraint_info = (
-    ('additional_requirements', 'cardinality', '0.0'),
-)
-
-# Set constraint info (property-name, constraint-type, constraint-value).
-designing.NumericalExperiment.type_constraint_info = (
-    ('duration', 'cardinality', '0.0'),
-    ('rationale', 'cardinality', '1.1'),
-)
-
-# Set constraint info (property-name, constraint-type, constraint-value).
-designing.NumericalRequirement.type_constraint_info = (
-    ('duration', 'cardinality', '0.0'),
-)
-
-# Set constraint info (property-name, constraint-type, constraint-value).
-designing.OutputTemporalRequirement.type_constraint_info = (
-    ('additional_requirements', 'cardinality', '0.0'),
-)
-
-# Set constraint info (property-name, constraint-type, constraint-value).
-designing.Project.type_constraint_info = (
-    ('description', 'cardinality', '1.1'),
-)
-
-# Set constraint info (property-name, constraint-type, constraint-value).
-designing.SimulationPlan.type_constraint_info = (
-    ('duration', 'cardinality', '1.1'),
-)
-
-# Set constraint info (property-name, constraint-type, constraint-value).
-designing.TemporalConstraint.type_constraint_info = (
-    ('additional_requirements', 'cardinality', '0.0'),
-)
-
-# Set constraint info (property-name, constraint-type, constraint-value).
-drs.DrsAtomicDataset.type_constraint_info = (
-    ('frequency', 'cardinality', '1.1'),
-    ('realm', 'cardinality', '1.1'),
-    ('version_number', 'cardinality', '1.1'),
 )
 
 

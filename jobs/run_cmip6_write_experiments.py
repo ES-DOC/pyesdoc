@@ -319,7 +319,7 @@ class Spreadsheet(object):
         """Gets the collection of citations defined within spreadsheet.
 
         """
-        return self._get_documents(_WS_REFERENCES, cim.v2.Citation, [
+        return self._get_documents(_WS_REFERENCES, cim.v2.ExternalDocument, [
             ("abstract", 6),
             ("citation_str", 4),
             ("context", 3),
@@ -443,6 +443,7 @@ class DocumentSet(object):
         """
         self.archive_directory = archive_directory
         self.citations = spreadsheet.get_citations()
+        self.citations = []
         self.ensemble_requirements = spreadsheet.get_ensemble_requirements()
         self.experiments = spreadsheet.get_experiments()
         self.forcing_constraints = spreadsheet.get_forcing_constraints()

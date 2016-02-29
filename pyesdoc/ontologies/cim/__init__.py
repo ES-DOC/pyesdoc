@@ -26,3 +26,8 @@ VERSIONS = (v1, v2)
 
 # Ontology types.
 TYPES = v1.TYPES + v2.TYPES
+
+# Ontology constraints.
+CONSTRAINTS = {}
+# CONSTRAINTS = CONSTRAINTS.update(v1.CONSTRAINTS)
+CONSTRAINTS = CONSTRAINTS.update(v2.CONSTRAINTS)
