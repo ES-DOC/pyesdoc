@@ -48,7 +48,6 @@ __all__ = [
 	# Types
     'Activity',
     'Algorithm',
-    'AssociationClass',
     'AxisMember',
     'Calendar',
     'Cimtext',
@@ -174,7 +173,6 @@ TYPES = (
     science.ScientificDomain,
     science.SubProcess,
     science.Tuning,
-    shared.AssociationClass,
     shared.Calendar,
     shared.Cimtext,
     shared.DateTime,

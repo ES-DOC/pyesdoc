@@ -18,31 +18,6 @@ import uuid
 
 
 
-class AssociationClass(object):
-    """An abstract class within the cim v2 type system.
-
-    Provides a class for establishing relationships between entities which
-    exist in an extensible vocabulary, as opposed to an explict relationship defined
-    using a CIM property.
-    It is expected that when this class appears as a property, a controlled vocabulary
-    is used for the relationship and/or a target CIM class type is provided. In
-    the former case, the vocabulary will appear as a constraint as in the
-    NumericalExperiment.
-
-    """
-    __metaclass__ = abc.ABCMeta
-
-    def __init__(self):
-        """Constructor.
-
-        """
-        super(AssociationClass, self).__init__()
-
-        self.from_vocab = None                            # unicode (0.1)
-        self.relatonship = None                           # unicode (0.1)
-        self.target_type = None                           # shared.DocumentTypes (0.1)
-
-
 class Calendar(object):
     """A concrete class within the cim v2 type system.
 
@@ -154,7 +129,7 @@ class ExternalDocument(object):
 
     A real world document, could be a book, a journal article, a manual, a web page ... it might or might
     not be online, although preferably it would be. We expect a typical citation to be built up
-    as in the following <authorship>, <date>: <title>, <publication_detail> (<doi> if present).
+    as in the following 'authorship, date: title, publication_detail (doi if present)'.
 
     """
     def __init__(self):

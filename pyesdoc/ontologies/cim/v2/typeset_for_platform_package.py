@@ -63,6 +63,22 @@ class ComputePool(object):
         self.operating_system = None                      # unicode (0.1)
 
 
+    @property
+    def total_cores(self):
+	    """Returns a computed property.
+
+	    """
+	    return self.compute_cores_per_node * self.number_of_nodes
+
+
+    @property
+    def total_memory(self):
+	    """Returns a computed property.
+
+	    """
+	    return self.memory_per_node * self.number_of_nodes
+
+
 class Partition(object):
     """A concrete class within the cim v2 type system.
 

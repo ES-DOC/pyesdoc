@@ -75,7 +75,6 @@ science.ScienceContext.type_key = u'cim.2.science.ScienceContext'
 science.ScientificDomain.type_key = u'cim.2.science.ScientificDomain'
 science.SubProcess.type_key = u'cim.2.science.SubProcess'
 science.Tuning.type_key = u'cim.2.science.Tuning'
-shared.AssociationClass.type_key = u'cim.2.shared.AssociationClass'
 shared.Calendar.type_key = u'cim.2.shared.Calendar'
 shared.Cimtext.type_key = u'cim.2.shared.Cimtext'
 shared.DateTime.type_key = u'cim.2.shared.DateTime'
@@ -120,6 +119,7 @@ activity.Activity.type_info = (
 
 activity.AxisMember.type_info = (
     ('description', unicode, True, False),
+    ('extra_detail', unicode, False, False),
     ('index', int, True, False),
     ('value', float, False, False),
 )
@@ -130,6 +130,7 @@ activity.Conformance.type_info = (
 
 activity.Ensemble.type_info = (
     ('common_conformances', activity.Conformance, False, True),
+    ('documentation', shared.OnlineResource, False, True),
     ('has_ensemble_axes', activity.EnsembleAxis, False, True),
     ('members', activity.EnsembleMember, True, True),
     ('part_of', activity.UberEnsemble, False, True),
@@ -144,9 +145,11 @@ activity.EnsembleAxis.type_info = (
 )
 
 activity.EnsembleMember.type_info = (
+    ('errata', shared.OnlineResource, False, False),
     ('had_performance', platform.Performance, False, False),
-    ('ran_on', platform.Machine, True, False),
+    ('ran_on', platform.Machine, False, False),
     ('simulation', data.Simulation, True, False),
+    ('variant_id', unicode, True, False),
 )
 
 activity.ParentSimulation.type_info = (
@@ -473,12 +476,6 @@ science.Tuning.type_info = (
     ('global_mean_metrics_used', data.VariableCollection, False, False),
     ('regional_metrics_used', data.VariableCollection, False, False),
     ('trend_metrics_used', data.VariableCollection, False, False),
-)
-
-shared.AssociationClass.type_info = (
-    ('from_vocab', unicode, False, False),
-    ('relatonship', unicode, False, False),
-    ('target_type', unicode, False, False),
 )
 
 shared.Calendar.type_info = (

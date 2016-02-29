@@ -60,6 +60,7 @@ class AxisMember(object):
         super(AxisMember, self).__init__()
 
         self.description = None                           # unicode (1.1)
+        self.extra_detail = None                          # unicode (0.1)
         self.index = None                                 # int (1.1)
         self.value = None                                 # float (0.1)
 
@@ -96,9 +97,11 @@ class EnsembleMember(object):
         """
         super(EnsembleMember, self).__init__()
 
+        self.errata = None                                # shared.OnlineResource (0.1)
         self.had_performance = None                       # platform.Performance (0.1)
-        self.ran_on = None                                # platform.Machine (1.1)
+        self.ran_on = None                                # platform.Machine (0.1)
         self.simulation = None                            # data.Simulation (1.1)
+        self.variant_id = None                            # unicode (1.1)
 
 
 class ParentSimulation(object):
@@ -150,6 +153,7 @@ class Ensemble(Activity):
         super(Ensemble, self).__init__()
 
         self.common_conformances = []                     # activity.Conformance (0.N)
+        self.documentation = []                           # shared.OnlineResource (0.N)
         self.has_ensemble_axes = []                       # activity.EnsembleAxis (0.N)
         self.members = []                                 # activity.EnsembleMember (1.N)
         self.part_of = []                                 # activity.UberEnsemble (0.N)
