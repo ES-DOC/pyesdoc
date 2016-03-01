@@ -8,7 +8,7 @@
    :synopsis: XML decoding utility functions.
 
 .. moduleauthor:: Earth System Documentation (ES-DOC) <dev@es-doc.org>
-.. note:: Code generated using esdoc_mp @ 2013-08-28 14:41:13.340289.
+.. note:: Code generated using the esdoc-mp framework. @ 2013-08-28 14:41:13.340289.
 
 """
 import uuid

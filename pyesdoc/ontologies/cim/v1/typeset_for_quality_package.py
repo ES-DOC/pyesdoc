@@ -8,7 +8,7 @@
    :synopsis: The set of types of the cim.v1.quality package.
 
 .. moduleauthor:: Earth System Documentation (ES-DOC) <dev@es-doc.org>
-.. note:: Code generated using esdoc_mp.
+.. note:: Code generated using the esdoc-mp framework.
 
 """
 import abc

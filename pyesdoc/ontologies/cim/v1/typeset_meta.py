@@ -8,7 +8,7 @@
    :synopsis: Encpasulates meta-information pertaining to the cim.v1 typeset.
 
 .. moduleauthor:: Earth System Documentation (ES-DOC) <dev@es-doc.org>
-.. note:: Code generated using esdoc_mp.
+.. note:: Code generated using the esdoc-mp framework.
 
 """
 import datetime
@@ -131,7 +131,7 @@ software.TimeTransformation.type_key = u'cim.1.software.TimeTransformation'
 software.Timing.type_key = u'cim.1.software.Timing'
 
 
-# Set type info (name, type, is_required, is_iterative).
+# Set class type info (property-name, property-type, property-is-required, property-is-iterable).
 activity.Activity.type_info = (
     ('funding_sources', unicode, False, True),
     ('projects', unicode, False, True),
@@ -139,9 +139,11 @@ activity.Activity.type_info = (
     ('responsible_parties', shared.ResponsibleParty, False, True),
 )
 
+# Set class type info (property-name, property-type, property-is-required, property-is-iterable).
 activity.BoundaryCondition.type_info = (
 )
 
+# Set class type info (property-name, property-type, property-is-required, property-is-iterable).
 activity.Conformance.type_info = (
     ('description', unicode, False, False),
     ('frequency', unicode, False, False),
@@ -151,6 +153,7 @@ activity.Conformance.type_info = (
     ('type', unicode, False, False),
 )
 
+# Set class type info (property-name, property-type, property-is-required, property-is-iterable).
 activity.DownscalingSimulation.type_info = (
     ('calendar', shared.Calendar, True, False),
     ('downscaled_from', shared.DataSource, True, False),
@@ -161,6 +164,7 @@ activity.DownscalingSimulation.type_info = (
     ('outputs', data.DataObject, False, True),
 )
 
+# Set class type info (property-name, property-type, property-is-required, property-is-iterable).
 activity.Ensemble.type_info = (
     ('members', activity.EnsembleMember, True, True),
     ('meta', shared.DocMetaInfo, True, False),
@@ -168,12 +172,14 @@ activity.Ensemble.type_info = (
     ('types', unicode, True, True),
 )
 
+# Set class type info (property-name, property-type, property-is-required, property-is-iterable).
 activity.EnsembleMember.type_info = (
     ('ensemble', activity.Ensemble, False, False),
     ('ensemble_ids', shared.StandardName, False, True),
     ('simulation', activity.Simulation, False, False),
 )
 
+# Set class type info (property-name, property-type, property-is-required, property-is-iterable).
 activity.Experiment.type_info = (
     ('generates', unicode, False, True),
     ('measurement_campaigns', activity.MeasurementCampaign, False, True),
@@ -181,25 +187,31 @@ activity.Experiment.type_info = (
     ('supports', unicode, False, True),
 )
 
+# Set class type info (property-name, property-type, property-is-required, property-is-iterable).
 activity.ExperimentRelationship.type_info = (
     ('target', activity.ExperimentRelationshipTarget, True, False),
     ('type', unicode, True, False),
 )
 
+# Set class type info (property-name, property-type, property-is-required, property-is-iterable).
 activity.ExperimentRelationshipTarget.type_info = (
     ('numerical_experiment', activity.NumericalExperiment, False, False),
 )
 
+# Set class type info (property-name, property-type, property-is-required, property-is-iterable).
 activity.InitialCondition.type_info = (
 )
 
+# Set class type info (property-name, property-type, property-is-required, property-is-iterable).
 activity.LateralBoundaryCondition.type_info = (
 )
 
+# Set class type info (property-name, property-type, property-is-required, property-is-iterable).
 activity.MeasurementCampaign.type_info = (
     ('duration', int, True, False),
 )
 
+# Set class type info (property-name, property-type, property-is-required, property-is-iterable).
 activity.NumericalActivity.type_info = (
     ('description', unicode, False, False),
     ('long_name', unicode, False, False),
@@ -207,6 +219,7 @@ activity.NumericalActivity.type_info = (
     ('supports', activity.Experiment, False, True),
 )
 
+# Set class type info (property-name, property-type, property-is-required, property-is-iterable).
 activity.NumericalExperiment.type_info = (
     ('description', unicode, False, False),
     ('experiment_id', unicode, False, False),
@@ -216,6 +229,7 @@ activity.NumericalExperiment.type_info = (
     ('short_name', unicode, True, False),
 )
 
+# Set class type info (property-name, property-type, property-is-required, property-is-iterable).
 activity.NumericalRequirement.type_info = (
     ('description', unicode, False, False),
     ('id', unicode, False, False),
@@ -225,6 +239,7 @@ activity.NumericalRequirement.type_info = (
     ('source', shared.DataSource, False, False),
 )
 
+# Set class type info (property-name, property-type, property-is-required, property-is-iterable).
 activity.NumericalRequirementOption.type_info = (
     ('description', unicode, False, False),
     ('id', unicode, False, False),
@@ -233,12 +248,15 @@ activity.NumericalRequirementOption.type_info = (
     ('sub_options', activity.NumericalRequirementOption, False, True),
 )
 
+# Set class type info (property-name, property-type, property-is-required, property-is-iterable).
 activity.OutputRequirement.type_info = (
 )
 
+# Set class type info (property-name, property-type, property-is-required, property-is-iterable).
 activity.PhysicalModification.type_info = (
 )
 
+# Set class type info (property-name, property-type, property-is-required, property-is-iterable).
 activity.Simulation.type_info = (
     ('authors', unicode, False, False),
     ('calendar', shared.Calendar, True, False),
@@ -253,6 +271,7 @@ activity.Simulation.type_info = (
     ('spinup_simulation', activity.Simulation, False, False),
 )
 
+# Set class type info (property-name, property-type, property-is-required, property-is-iterable).
 activity.SimulationComposite.type_info = (
     ('child', activity.Simulation, False, True),
     ('date_range', shared.DateRange, True, False),
@@ -260,33 +279,39 @@ activity.SimulationComposite.type_info = (
     ('rank', int, True, False),
 )
 
+# Set class type info (property-name, property-type, property-is-required, property-is-iterable).
 activity.SimulationRelationship.type_info = (
     ('target', activity.SimulationRelationshipTarget, True, False),
     ('type', unicode, True, False),
 )
 
+# Set class type info (property-name, property-type, property-is-required, property-is-iterable).
 activity.SimulationRelationshipTarget.type_info = (
     ('simulation', shared.DocReference, False, False),
     ('target', unicode, False, False),
 )
 
+# Set class type info (property-name, property-type, property-is-required, property-is-iterable).
 activity.SimulationRun.type_info = (
     ('date_range', shared.DateRange, True, False),
     ('meta', shared.DocMetaInfo, True, False),
     ('model', software.ModelComponent, False, False),
 )
 
+# Set class type info (property-name, property-type, property-is-required, property-is-iterable).
 activity.SpatioTemporalConstraint.type_info = (
     ('date_range', shared.DateRange, False, False),
     ('spatial_resolution', unicode, False, False),
 )
 
+# Set class type info (property-name, property-type, property-is-required, property-is-iterable).
 data.DataContent.type_info = (
     ('aggregation', unicode, False, False),
     ('frequency', unicode, False, False),
     ('topic', data.DataTopic, True, False),
 )
 
+# Set class type info (property-name, property-type, property-is-required, property-is-iterable).
 data.DataDistribution.type_info = (
     ('access', unicode, False, False),
     ('fee', unicode, False, False),
@@ -294,11 +319,13 @@ data.DataDistribution.type_info = (
     ('responsible_party', shared.ResponsibleParty, False, False),
 )
 
+# Set class type info (property-name, property-type, property-is-required, property-is-iterable).
 data.DataExtent.type_info = (
     ('geographical', data.DataExtentGeographical, True, False),
     ('temporal', data.DataExtentTemporal, True, False),
 )
 
+# Set class type info (property-name, property-type, property-is-required, property-is-iterable).
 data.DataExtentGeographical.type_info = (
     ('east', float, False, False),
     ('north', float, False, False),
@@ -306,24 +333,28 @@ data.DataExtentGeographical.type_info = (
     ('west', float, False, False),
 )
 
+# Set class type info (property-name, property-type, property-is-required, property-is-iterable).
 data.DataExtentTemporal.type_info = (
     ('begin', datetime.date, False, False),
     ('end', datetime.date, False, False),
     ('time_interval', data.DataExtentTimeInterval, False, False),
 )
 
+# Set class type info (property-name, property-type, property-is-required, property-is-iterable).
 data.DataExtentTimeInterval.type_info = (
     ('factor', int, False, False),
     ('radix', int, False, False),
     ('unit', unicode, False, False),
 )
 
+# Set class type info (property-name, property-type, property-is-required, property-is-iterable).
 data.DataHierarchyLevel.type_info = (
     ('is_open', bool, False, False),
     ('name', unicode, False, False),
     ('value', unicode, False, False),
 )
 
+# Set class type info (property-name, property-type, property-is-required, property-is-iterable).
 data.DataObject.type_info = (
     ('acronym', unicode, False, False),
     ('child_object', data.DataObject, False, True),
@@ -345,16 +376,19 @@ data.DataObject.type_info = (
     ('storage', data.DataStorage, False, True),
 )
 
+# Set class type info (property-name, property-type, property-is-required, property-is-iterable).
 data.DataProperty.type_info = (
     ('description', unicode, False, False),
 )
 
+# Set class type info (property-name, property-type, property-is-required, property-is-iterable).
 data.DataRestriction.type_info = (
     ('license', shared.License, False, False),
     ('restriction', unicode, False, False),
     ('scope', unicode, False, False),
 )
 
+# Set class type info (property-name, property-type, property-is-required, property-is-iterable).
 data.DataStorage.type_info = (
     ('format', unicode, False, False),
     ('location', unicode, False, False),
@@ -362,6 +396,7 @@ data.DataStorage.type_info = (
     ('size', int, False, False),
 )
 
+# Set class type info (property-name, property-type, property-is-required, property-is-iterable).
 data.DataStorageDb.type_info = (
     ('access_string', unicode, False, False),
     ('name', unicode, False, False),
@@ -369,12 +404,14 @@ data.DataStorageDb.type_info = (
     ('table', unicode, False, False),
 )
 
+# Set class type info (property-name, property-type, property-is-required, property-is-iterable).
 data.DataStorageFile.type_info = (
     ('file_name', unicode, False, False),
     ('file_system', unicode, False, False),
     ('path', unicode, False, False),
 )
 
+# Set class type info (property-name, property-type, property-is-required, property-is-iterable).
 data.DataStorageIp.type_info = (
     ('file_name', unicode, False, False),
     ('host', unicode, False, False),
@@ -382,18 +419,21 @@ data.DataStorageIp.type_info = (
     ('protocol', unicode, False, False),
 )
 
+# Set class type info (property-name, property-type, property-is-required, property-is-iterable).
 data.DataTopic.type_info = (
     ('description', unicode, False, False),
     ('name', unicode, False, False),
     ('unit', unicode, False, False),
 )
 
+# Set class type info (property-name, property-type, property-is-required, property-is-iterable).
 grids.CoordinateList.type_info = (
     ('has_constant_offset', bool, False, False),
     ('length', int, False, False),
     ('uom', unicode, False, False),
 )
 
+# Set class type info (property-name, property-type, property-is-required, property-is-iterable).
 grids.GridExtent.type_info = (
     ('maximum_latitude', unicode, True, False),
     ('maximum_longitude', unicode, True, False),
@@ -402,6 +442,7 @@ grids.GridExtent.type_info = (
     ('units', unicode, False, False),
 )
 
+# Set class type info (property-name, property-type, property-is-required, property-is-iterable).
 grids.GridMosaic.type_info = (
     ('citations', shared.Citation, False, True),
     ('description', unicode, False, False),
@@ -419,15 +460,18 @@ grids.GridMosaic.type_info = (
     ('type', unicode, True, False),
 )
 
+# Set class type info (property-name, property-type, property-is-required, property-is-iterable).
 grids.GridProperty.type_info = (
 )
 
+# Set class type info (property-name, property-type, property-is-required, property-is-iterable).
 grids.GridSpec.type_info = (
     ('esm_exchange_grids', grids.GridMosaic, False, True),
     ('esm_model_grids', grids.GridMosaic, False, True),
     ('meta', shared.DocMetaInfo, True, False),
 )
 
+# Set class type info (property-name, property-type, property-is-required, property-is-iterable).
 grids.GridTile.type_info = (
     ('area', unicode, False, False),
     ('cell_array', unicode, False, False),
@@ -459,11 +503,13 @@ grids.GridTile.type_info = (
     ('zcoords', grids.VerticalCoordinateList, False, False),
 )
 
+# Set class type info (property-name, property-type, property-is-required, property-is-iterable).
 grids.GridTileResolutionType.type_info = (
     ('description', unicode, False, False),
     ('properties', grids.GridProperty, False, True),
 )
 
+# Set class type info (property-name, property-type, property-is-required, property-is-iterable).
 grids.SimpleGridGeometry.type_info = (
     ('dim_order', unicode, False, False),
     ('is_mesh', bool, False, False),
@@ -473,12 +519,14 @@ grids.SimpleGridGeometry.type_info = (
     ('zcoords', grids.CoordinateList, False, False),
 )
 
+# Set class type info (property-name, property-type, property-is-required, property-is-iterable).
 grids.VerticalCoordinateList.type_info = (
     ('form', unicode, False, False),
     ('properties', grids.GridProperty, False, True),
     ('type', unicode, False, False),
 )
 
+# Set class type info (property-name, property-type, property-is-required, property-is-iterable).
 misc.DocumentSet.type_info = (
     ('data', data.DataObject, False, True),
     ('ensembles', activity.Ensemble, False, True),
@@ -490,11 +538,13 @@ misc.DocumentSet.type_info = (
     ('simulation', activity.SimulationRun, False, False),
 )
 
+# Set class type info (property-name, property-type, property-is-required, property-is-iterable).
 quality.CimQuality.type_info = (
     ('meta', shared.DocMetaInfo, True, False),
     ('reports', quality.Report, False, True),
 )
 
+# Set class type info (property-name, property-type, property-is-required, property-is-iterable).
 quality.Evaluation.type_info = (
     ('date', datetime.datetime, False, False),
     ('description', unicode, False, False),
@@ -507,12 +557,14 @@ quality.Evaluation.type_info = (
     ('type_hyperlink', unicode, False, False),
 )
 
+# Set class type info (property-name, property-type, property-is-required, property-is-iterable).
 quality.Measure.type_info = (
     ('description', unicode, False, False),
     ('identification', unicode, False, False),
     ('name', unicode, False, False),
 )
 
+# Set class type info (property-name, property-type, property-is-required, property-is-iterable).
 quality.Report.type_info = (
     ('date', datetime.datetime, False, False),
     ('evaluation', quality.Evaluation, True, False),
@@ -520,12 +572,14 @@ quality.Report.type_info = (
     ('measure', quality.Measure, True, False),
 )
 
+# Set class type info (property-name, property-type, property-is-required, property-is-iterable).
 shared.Calendar.type_info = (
     ('description', unicode, False, False),
     ('length', int, False, False),
     ('range', shared.DateRange, False, False),
 )
 
+# Set class type info (property-name, property-type, property-is-required, property-is-iterable).
 shared.Change.type_info = (
     ('author', shared.ResponsibleParty, False, False),
     ('date', datetime.datetime, False, False),
@@ -535,11 +589,13 @@ shared.Change.type_info = (
     ('type', unicode, False, False),
 )
 
+# Set class type info (property-name, property-type, property-is-required, property-is-iterable).
 shared.ChangeProperty.type_info = (
     ('description', unicode, False, False),
     ('id', unicode, False, False),
 )
 
+# Set class type info (property-name, property-type, property-is-required, property-is-iterable).
 shared.Citation.type_info = (
     ('alternative_title', unicode, False, False),
     ('collective_title', unicode, False, False),
@@ -552,11 +608,13 @@ shared.Citation.type_info = (
     ('type', unicode, False, False),
 )
 
+# Set class type info (property-name, property-type, property-is-required, property-is-iterable).
 shared.ClosedDateRange.type_info = (
     ('end', datetime.datetime, False, False),
     ('start', datetime.datetime, True, False),
 )
 
+# Set class type info (property-name, property-type, property-is-required, property-is-iterable).
 shared.Compiler.type_info = (
     ('environment_variables', unicode, False, False),
     ('language', unicode, False, False),
@@ -566,21 +624,26 @@ shared.Compiler.type_info = (
     ('version', unicode, True, False),
 )
 
+# Set class type info (property-name, property-type, property-is-required, property-is-iterable).
 shared.Daily360.type_info = (
 )
 
+# Set class type info (property-name, property-type, property-is-required, property-is-iterable).
 shared.DataSource.type_info = (
     ('purpose', unicode, False, False),
 )
 
+# Set class type info (property-name, property-type, property-is-required, property-is-iterable).
 shared.DateRange.type_info = (
     ('duration', unicode, False, False),
 )
 
+# Set class type info (property-name, property-type, property-is-required, property-is-iterable).
 shared.DocGenealogy.type_info = (
     ('relationships', shared.DocRelationship, False, True),
 )
 
+# Set class type info (property-name, property-type, property-is-required, property-is-iterable).
 shared.DocMetaInfo.type_info = (
     ('author', shared.ResponsibleParty, False, False),
     ('create_date', datetime.datetime, True, False),
@@ -603,6 +666,7 @@ shared.DocMetaInfo.type_info = (
     ('version', int, True, False),
 )
 
+# Set class type info (property-name, property-type, property-is-required, property-is-iterable).
 shared.DocReference.type_info = (
     ('changes', shared.Change, False, True),
     ('description', unicode, False, False),
@@ -614,15 +678,18 @@ shared.DocReference.type_info = (
     ('version', int, False, False),
 )
 
+# Set class type info (property-name, property-type, property-is-required, property-is-iterable).
 shared.DocRelationship.type_info = (
     ('target', shared.DocRelationshipTarget, True, False),
     ('type', unicode, True, False),
 )
 
+# Set class type info (property-name, property-type, property-is-required, property-is-iterable).
 shared.DocRelationshipTarget.type_info = (
     ('reference', shared.DocReference, False, False),
 )
 
+# Set class type info (property-name, property-type, property-is-required, property-is-iterable).
 shared.License.type_info = (
     ('contact', unicode, False, False),
     ('description', unicode, False, False),
@@ -630,6 +697,7 @@ shared.License.type_info = (
     ('name', unicode, False, False),
 )
 
+# Set class type info (property-name, property-type, property-is-required, property-is-iterable).
 shared.Machine.type_info = (
     ('cores_per_processor', int, False, False),
     ('description', unicode, False, False),
@@ -645,19 +713,23 @@ shared.Machine.type_info = (
     ('vendor', unicode, False, False),
 )
 
+# Set class type info (property-name, property-type, property-is-required, property-is-iterable).
 shared.MachineCompilerUnit.type_info = (
     ('compilers', shared.Compiler, False, True),
     ('machine', shared.Machine, True, False),
 )
 
+# Set class type info (property-name, property-type, property-is-required, property-is-iterable).
 shared.OpenDateRange.type_info = (
     ('end', datetime.datetime, False, False),
     ('start', datetime.datetime, False, False),
 )
 
+# Set class type info (property-name, property-type, property-is-required, property-is-iterable).
 shared.PerpetualPeriod.type_info = (
 )
 
+# Set class type info (property-name, property-type, property-is-required, property-is-iterable).
 shared.Platform.type_info = (
     ('contacts', shared.ResponsibleParty, False, True),
     ('description', unicode, False, False),
@@ -667,19 +739,23 @@ shared.Platform.type_info = (
     ('units', shared.MachineCompilerUnit, True, True),
 )
 
+# Set class type info (property-name, property-type, property-is-required, property-is-iterable).
 shared.Property.type_info = (
     ('name', unicode, False, False),
     ('value', unicode, False, False),
 )
 
+# Set class type info (property-name, property-type, property-is-required, property-is-iterable).
 shared.RealCalendar.type_info = (
 )
 
+# Set class type info (property-name, property-type, property-is-required, property-is-iterable).
 shared.Relationship.type_info = (
     ('description', unicode, False, False),
     ('direction', unicode, True, False),
 )
 
+# Set class type info (property-name, property-type, property-is-required, property-is-iterable).
 shared.ResponsibleParty.type_info = (
     ('abbreviation', unicode, False, False),
     ('address', unicode, False, False),
@@ -690,18 +766,21 @@ shared.ResponsibleParty.type_info = (
     ('url', unicode, False, False),
 )
 
+# Set class type info (property-name, property-type, property-is-required, property-is-iterable).
 shared.Standard.type_info = (
     ('description', unicode, False, False),
     ('name', unicode, True, False),
     ('version', unicode, False, False),
 )
 
+# Set class type info (property-name, property-type, property-is-required, property-is-iterable).
 shared.StandardName.type_info = (
     ('is_open', bool, True, False),
     ('standards', shared.Standard, False, True),
     ('value', unicode, True, False),
 )
 
+# Set class type info (property-name, property-type, property-is-required, property-is-iterable).
 software.Component.type_info = (
     ('citations', shared.Citation, False, True),
     ('code_access', unicode, False, False),
@@ -727,14 +806,17 @@ software.Component.type_info = (
     ('version', unicode, False, False),
 )
 
+# Set class type info (property-name, property-type, property-is-required, property-is-iterable).
 software.ComponentLanguage.type_info = (
     ('name', unicode, True, False),
     ('properties', software.ComponentLanguageProperty, False, True),
 )
 
+# Set class type info (property-name, property-type, property-is-required, property-is-iterable).
 software.ComponentLanguageProperty.type_info = (
 )
 
+# Set class type info (property-name, property-type, property-is-required, property-is-iterable).
 software.ComponentProperty.type_info = (
     ('citations', shared.Citation, False, True),
     ('description', unicode, False, False),
@@ -749,11 +831,13 @@ software.ComponentProperty.type_info = (
     ('values', unicode, False, True),
 )
 
+# Set class type info (property-name, property-type, property-is-required, property-is-iterable).
 software.Composition.type_info = (
     ('couplings', unicode, False, True),
     ('description', unicode, False, False),
 )
 
+# Set class type info (property-name, property-type, property-is-required, property-is-iterable).
 software.Connection.type_info = (
     ('description', unicode, False, False),
     ('priming', shared.DataSource, False, False),
@@ -768,15 +852,18 @@ software.Connection.type_info = (
     ('type', unicode, False, False),
 )
 
+# Set class type info (property-name, property-type, property-is-required, property-is-iterable).
 software.ConnectionEndpoint.type_info = (
     ('data_source', shared.DataSource, False, False),
     ('instance_id', unicode, False, False),
     ('properties', software.ConnectionProperty, False, True),
 )
 
+# Set class type info (property-name, property-type, property-is-required, property-is-iterable).
 software.ConnectionProperty.type_info = (
 )
 
+# Set class type info (property-name, property-type, property-is-required, property-is-iterable).
 software.Coupling.type_info = (
     ('connections', software.Connection, False, True),
     ('description', unicode, False, False),
@@ -794,15 +881,18 @@ software.Coupling.type_info = (
     ('type', unicode, False, False),
 )
 
+# Set class type info (property-name, property-type, property-is-required, property-is-iterable).
 software.CouplingEndpoint.type_info = (
     ('data_source', shared.DataSource, False, False),
     ('instance_id', unicode, False, False),
     ('properties', software.CouplingProperty, False, True),
 )
 
+# Set class type info (property-name, property-type, property-is-required, property-is-iterable).
 software.CouplingProperty.type_info = (
 )
 
+# Set class type info (property-name, property-type, property-is-required, property-is-iterable).
 software.Deployment.type_info = (
     ('deployment_date', datetime.datetime, False, False),
     ('description', unicode, False, False),
@@ -812,10 +902,12 @@ software.Deployment.type_info = (
     ('platform', shared.Platform, False, False),
 )
 
+# Set class type info (property-name, property-type, property-is-required, property-is-iterable).
 software.EntryPoint.type_info = (
     ('name', unicode, False, False),
 )
 
+# Set class type info (property-name, property-type, property-is-required, property-is-iterable).
 software.ModelComponent.type_info = (
     ('activity', activity.Activity, False, False),
     ('meta', shared.DocMetaInfo, True, False),
@@ -824,15 +916,18 @@ software.ModelComponent.type_info = (
     ('types', unicode, True, True),
 )
 
+# Set class type info (property-name, property-type, property-is-required, property-is-iterable).
 software.Parallelisation.type_info = (
     ('processes', int, True, False),
     ('ranks', software.Rank, False, True),
 )
 
+# Set class type info (property-name, property-type, property-is-required, property-is-iterable).
 software.ProcessorComponent.type_info = (
     ('meta', shared.DocMetaInfo, True, False),
 )
 
+# Set class type info (property-name, property-type, property-is-required, property-is-iterable).
 software.Rank.type_info = (
     ('increment', int, False, False),
     ('max', int, False, False),
@@ -840,6 +935,7 @@ software.Rank.type_info = (
     ('value', int, False, False),
 )
 
+# Set class type info (property-name, property-type, property-is-required, property-is-iterable).
 software.SpatialRegridding.type_info = (
     ('dimension', unicode, False, False),
     ('properties', software.SpatialRegriddingProperty, False, True),
@@ -847,14 +943,17 @@ software.SpatialRegridding.type_info = (
     ('user_method', software.SpatialRegriddingUserMethod, False, False),
 )
 
+# Set class type info (property-name, property-type, property-is-required, property-is-iterable).
 software.SpatialRegriddingProperty.type_info = (
 )
 
+# Set class type info (property-name, property-type, property-is-required, property-is-iterable).
 software.SpatialRegriddingUserMethod.type_info = (
     ('file', data.DataObject, False, False),
     ('name', unicode, True, False),
 )
 
+# Set class type info (property-name, property-type, property-is-required, property-is-iterable).
 software.StatisticalModelComponent.type_info = (
     ('meta', shared.DocMetaInfo, True, False),
     ('timing', software.Timing, False, False),
@@ -862,16 +961,19 @@ software.StatisticalModelComponent.type_info = (
     ('types', unicode, True, True),
 )
 
+# Set class type info (property-name, property-type, property-is-required, property-is-iterable).
 software.TimeLag.type_info = (
     ('units', unicode, False, False),
     ('value', int, False, False),
 )
 
+# Set class type info (property-name, property-type, property-is-required, property-is-iterable).
 software.TimeTransformation.type_info = (
     ('description', unicode, False, False),
     ('mapping_type', unicode, True, False),
 )
 
+# Set class type info (property-name, property-type, property-is-required, property-is-iterable).
 software.Timing.type_info = (
     ('end', datetime.datetime, False, False),
     ('is_variable_rate', bool, False, False),
@@ -879,4 +981,5 @@ software.Timing.type_info = (
     ('start', datetime.datetime, False, False),
     ('units', unicode, False, False),
 )
+
 
