@@ -14,6 +14,9 @@
 # Set of types.
 from typeset import *
 
+# Set of supported packages.
+from typeset import PACKAGES
+
 # Set of supported types.
 from typeset import TYPES
 

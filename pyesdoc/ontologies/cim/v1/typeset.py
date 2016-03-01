@@ -149,6 +149,18 @@ __all__ = [
 ]
 
 
+# Supported packages.
+PACKAGES = (
+    activity,
+    data,
+    grids,
+    misc,
+    quality,
+    shared,
+    software,
+)
+
+
 # Supported types.
 TYPES = (
     activity.Activity,

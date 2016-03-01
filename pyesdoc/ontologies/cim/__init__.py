@@ -24,6 +24,9 @@ NAME = 'cim'
 VERSIONS = (v1, v2)
 
 # Ontology types.
+PACKAGES = v1.PACKAGES + v2.PACKAGES
+
+# Ontology types.
 TYPES = v1.TYPES + v2.TYPES
 
 # Ontology type keys.
