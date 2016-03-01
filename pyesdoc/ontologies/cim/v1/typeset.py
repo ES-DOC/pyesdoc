@@ -11,6 +11,9 @@
 .. note:: Code generated using the esdoc-mp framework.
 
 """
+import datetime
+import uuid
+
 from typeset_for_activity_package import *
 from typeset_for_data_package import *
 from typeset_for_grids_package import *
@@ -1223,4 +1226,5 @@ software.Timing.type_info = (
     ('start', datetime.datetime, False, False),
     ('units', unicode, False, False),
 )
+
 

@@ -11,6 +11,9 @@
 .. note:: Code generated using the esdoc-mp framework.
 
 """
+import datetime
+import uuid
+
 from typeset_for_activity_package import *
 from typeset_for_data_package import *
 from typeset_for_designing_package import *
@@ -919,4 +922,5 @@ software.Variable.type_info = (
     ('name', unicode, True, False),
     ('prognostic', bool, True, False),
 )
+
 
