@@ -17,7 +17,6 @@ from v1.typeset import *
 from v2.typeset import *
 
 
-
 # Ontology name.
 NAME = 'cim'
 
@@ -26,6 +25,11 @@ VERSIONS = (v1, v2)
 
 # Ontology types.
 TYPES = v1.TYPES + v2.TYPES
+
+# Ontology type keys.
+TYPE_KEYS = {}
+# TYPE_KEYS = TYPE_KEYS.update(v1.TYPE_KEYS)
+TYPE_KEYS = TYPE_KEYS.update(v2.TYPE_KEYS)
 
 # Ontology constraints.
 CONSTRAINTS = {}

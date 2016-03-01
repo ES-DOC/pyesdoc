@@ -17,6 +17,9 @@ from typeset import *
 # Set of supported types.
 from typeset import TYPES
 
+# Set of type keys.
+from typekey import TYPE_KEYS
+
 # Set of type constraints.
 from constraints import CONSTRAINTS
 
