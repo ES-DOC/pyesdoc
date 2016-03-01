@@ -467,7 +467,7 @@ class PeriodDateTypes(object):
 class QualityStatus(object):
     """An enumeration within the cim v2 type system.
 
-    None
+    Assertion as to the review status of document.
     """
     is_open = False
     members = [
