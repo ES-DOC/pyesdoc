@@ -21,7 +21,7 @@ from typeset import PACKAGES
 from typeset import TYPES
 
 # Set of type keys.
-from typekey import TYPE_KEYS
+from typekeys import TYPE_KEYS
 
 # Set of type constraints.
 from constraints import CONSTRAINTS

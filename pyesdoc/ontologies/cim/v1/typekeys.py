@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 """
-.. module:: cim.v1.typekey.py
+.. module:: cim.v1.typekeys.py
 
    :license: GPL / CeCILL
    :platform: Unix, Windows
