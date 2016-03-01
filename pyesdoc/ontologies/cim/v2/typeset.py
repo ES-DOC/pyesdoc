@@ -123,6 +123,19 @@ __all__ = [
 ]
 
 
+# Supported packages.
+PACKAGES = (
+    activity,
+    data,
+    designing,
+    drs,
+    platform,
+    science,
+    shared,
+    software,
+)
+
+
 # Supported types.
 TYPES = (
     activity.Activity,
