@@ -159,13 +159,13 @@ HELP = {
 
 	""",
 
-	software.TimeTransformation: """
-		The coupling field used in the target at a given time corresponds to a field produced by the source at a previous time. This lag specifies the difference in time.
+	software.ModelComponent: """
+		A ModelComponent is a scientific model; it represents code which models some physical phenomena for a particular length of time.
 
 	""",
 
-	software.TimeLag: """
-		The coupling field used in the target at a given time corresponds to a field produced by the source at a previous time. This lag specifies the difference in time.
+	software.ProcessorComponent: """
+		A ModelComponent is a scientific model; it represents code which models some physical phenomena for a particular length of time.
 
 	""",
 
@@ -184,13 +184,13 @@ HELP = {
 
 	""",
 
-	software.CouplingEndpoint: """
-		The source/target of a coupling.  This is a DataSource (a SoftwareComponent or DataObject).  This is a separate class in order to associate an instanceID with the DataSource; this is used to identify which particular instance is being coupled in case the same DataSource is used more than once in a coupled model (this may be required for BFG).
+	software.SpatialRegridding: """
+		Characteristics of the scheme used to interpolate a field from one grid (source grid) to another (target grid).  Documents should use either the spatialRegriddingStandardMethod _or_ the spatialRegriddingUserMethod, but not both.
 
 	""",
 
-	software.SpatialRegridding: """
-		Characteristics of the scheme used to interpolate a field from one grid (source grid) to another (target grid).  Documents should use either the spatialRegriddingStandardMethod _or_ the spatialRegriddingUserMethod, but not both.
+	software.TimeTransformation: """
+		The coupling field used in the target at a given time corresponds to a field produced by the source at a previous time. This lag specifies the difference in time.
 
 	""",
 
@@ -204,13 +204,8 @@ HELP = {
 
 	""",
 
-	software.ProcessorComponent: """
-		A ModelComponent is a scientific model; it represents code which models some physical phenomena for a particular length of time.
-
-	""",
-
-	software.SpatialRegriddingProperty: """
-		Used for OASIS-specific regridding information (ie: masked, order, normalisation, etc.)
+	software.TimeLag: """
+		The coupling field used in the target at a given time corresponds to a field produced by the source at a previous time. This lag specifies the difference in time.
 
 	""",
 
@@ -219,13 +214,18 @@ HELP = {
 
 	""",
 
+	software.SpatialRegriddingProperty: """
+		Used for OASIS-specific regridding information (ie: masked, order, normalisation, etc.)
+
+	""",
+
 	software.ConnectionEndpoint: """
 		The source/target of a coupling.  This is a DataSource (a SoftwareComponent or DataObject).  This is a separate class in order to associate an instanceID with the DataSource; this is used to identify which particular instance is being coupled in case the same DataSource is used more than once in a coupled model (this may be required for BFG).
 
 	""",
 
-	software.ModelComponent: """
-		A ModelComponent is a scientific model; it represents code which models some physical phenomena for a particular length of time.
+	software.CouplingEndpoint: """
+		The source/target of a coupling.  This is a DataSource (a SoftwareComponent or DataObject).  This is a separate class in order to associate an instanceID with the DataSource; this is used to identify which particular instance is being coupled in case the same DataSource is used more than once in a coupled model (this may be required for BFG).
 
 	""",
 
@@ -398,11 +398,6 @@ HELP = {
 
 
 
-	grids.VerticalCoordinateList: """
-		There are some specific attributes that are associated with vertical coordinates.
-
-	""",
-
 	grids.GridSpec: """
 		This is a container class for GridSpec objects. A GridSpec object can contain one or more esmModelGrid objects, and one or more esmExchangeGrid objects. These objects may be serialised to one or possibly several files according to taste. Since GridSpec is sub-typed from GML's AbstractGeometryType it can, and should, be identified using a gml:id attribute.
 
@@ -430,6 +425,11 @@ HELP = {
 
 	grids.GridMosaic: """
 		The GridMosaic class is used to define the geometry properties of an earth system model grid or an exchange grid. Such a grid definition may then be referenced by any number of earth system models. A GridMosaic object consists either of 1 or more child GridMosaics, or one or more child GridTiles, but not both. In the latter case the isLeaf property should be set to true, indicating that the mosaic is a leaf mosaic.
+
+	""",
+
+	grids.VerticalCoordinateList: """
+		There are some specific attributes that are associated with vertical coordinates.
 
 	""",
 
@@ -837,29 +837,35 @@ HELP = {
 
 
 
-	(software.TimeTransformation, 'description'):
+	(software.ModelComponent, 'activity'):
 		None,
 
-	(software.TimeTransformation, 'mapping_type'):
+	(software.ModelComponent, 'type'):
+		"Describes the type of component. There can be multiple types.",
+
+	(software.ModelComponent, 'meta'):
+		None,
+
+	(software.ModelComponent, 'types'):
+		"Describes the type of component. There can be multiple types.",
+
+	(software.ModelComponent, 'timing'):
+		"Describes information about how this component simulates time.",
+
+
+
+	(software.ProcessorComponent, 'meta'):
 		None,
 
 
 
-	(software.TimeLag, 'units'):
-		None,
-
-	(software.TimeLag, 'value'):
-		None,
-
-
+	(software.StatisticalModelComponent, 'type'):
+		"Describes the type of component. There can be multiple types.",
 
 	(software.StatisticalModelComponent, 'meta'):
 		None,
 
 	(software.StatisticalModelComponent, 'types'):
-		"Describes the type of component. There can be multiple types.",
-
-	(software.StatisticalModelComponent, 'type'):
 		"Describes the type of component. There can be multiple types.",
 
 	(software.StatisticalModelComponent, 'timing'):
@@ -877,17 +883,6 @@ HELP = {
 
 
 
-	(software.CouplingEndpoint, 'properties'):
-		"A place to describe features specific to the source/target of a coupling",
-
-	(software.CouplingEndpoint, 'data_source'):
-		None,
-
-	(software.CouplingEndpoint, 'instance_id'):
-		"If the same datasource is used more than once in a coupled model then a method for identifying which particular instance is being referenced is needed (for BFG).",
-
-
-
 	(software.SpatialRegridding, 'standard_method'):
 		None,
 
@@ -902,11 +897,16 @@ HELP = {
 
 
 
-	(software.Connection, 'properties'):
+	(software.TimeTransformation, 'description'):
 		None,
 
-	(software.Connection, 'time_profile'):
-		"All information having to do with the rate of this connection; the times that it is active.  This overrides any rate of a Coupling.",
+	(software.TimeTransformation, 'mapping_type'):
+		None,
+
+
+
+	(software.Connection, 'properties'):
+		None,
 
 	(software.Connection, 'time_transformation'):
 		"Temporal transformation performed on the coupling field before or after regridding onto the target grid.",
@@ -917,14 +917,14 @@ HELP = {
 	(software.Connection, 'spatial_regridding'):
 		"Characteristics of the scheme used to interpolate a field from one grid (source grid) to another (target grid)",
 
+	(software.Connection, 'time_lag'):
+		"The coupling field used in the target at a given time corresponds to a field produced by the source at a previous time.",
+
 	(software.Connection, 'transformers'):
 		"An 'in-line' transformer. This references a fully-described transformer (typically that forms part of the top-level composition) used in the context of this coupling. It is used instead of separately specifying a spatialRegridding, timeTransformation, etc. here.",
 
 	(software.Connection, 'target'):
 		"The target property being connected.  This is optional to support the way that input is handled in the CMIP5 questionnaire.",
-
-	(software.Connection, 'time_lag'):
-		"The coupling field used in the target at a given time corresponds to a field produced by the source at a previous time.",
 
 	(software.Connection, 'type'):
 		"The type of Connection",
@@ -934,6 +934,9 @@ HELP = {
 
 	(software.Connection, 'description'):
 		None,
+
+	(software.Connection, 'time_profile'):
+		"All information having to do with the rate of this connection; the times that it is active.  This overrides any rate of a Coupling.",
 
 
 
@@ -958,7 +961,7 @@ HELP = {
 	(software.Component, 'license'):
 		"The license held by this piece of software.",
 
-	(software.Component, 'parent'):
+	(software.Component, 'sub_components'):
 		None,
 
 	(software.Component, 'long_name'):
@@ -970,10 +973,10 @@ HELP = {
 	(software.Component, 'release_date'):
 		"The date of publication of the software component code (as opposed to the date of publication of the metadata document, or the date of deployment of the model)",
 
-	(software.Component, 'sub_components'):
+	(software.Component, 'parent'):
 		None,
 
-	(software.Component, 'citations'):
+	(software.Component, 'previous_version'):
 		None,
 
 	(software.Component, 'properties'):
@@ -982,7 +985,7 @@ HELP = {
 	(software.Component, 'composition'):
 		None,
 
-	(software.Component, 'previous_version'):
+	(software.Component, 'citations'):
 		None,
 
 	(software.Component, 'coupling_framework'):
@@ -1005,15 +1008,18 @@ HELP = {
 
 
 
-	(software.ProcessorComponent, 'meta'):
+	(software.TimeLag, 'units'):
 		None,
 
-
+	(software.TimeLag, 'value'):
+		None,
 
 
 
 	(software.EntryPoint, 'name'):
 		None,
+
+
 
 
 
@@ -1028,20 +1034,14 @@ HELP = {
 
 
 
-	(software.ModelComponent, 'activity'):
+	(software.CouplingEndpoint, 'properties'):
+		"A place to describe features specific to the source/target of a coupling",
+
+	(software.CouplingEndpoint, 'data_source'):
 		None,
 
-	(software.ModelComponent, 'type'):
-		"Describes the type of component. There can be multiple types.",
-
-	(software.ModelComponent, 'meta'):
-		None,
-
-	(software.ModelComponent, 'types'):
-		"Describes the type of component. There can be multiple types.",
-
-	(software.ModelComponent, 'timing'):
-		"Describes information about how this component simulates time.",
+	(software.CouplingEndpoint, 'instance_id'):
+		"If the same datasource is used more than once in a coupled model then a method for identifying which particular instance is being referenced is needed (for BFG).",
 
 
 
@@ -1051,10 +1051,10 @@ HELP = {
 	(software.Timing, 'end'):
 		None,
 
-	(software.Timing, 'rate'):
+	(software.Timing, 'units'):
 		None,
 
-	(software.Timing, 'units'):
+	(software.Timing, 'rate'):
 		None,
 
 	(software.Timing, 'is_variable_rate'):
@@ -1087,14 +1087,14 @@ HELP = {
 	(software.ComponentProperty, 'is_represented'):
 		"When set to false, means that this property is not used by the component. Covers the case when, for instance, a modeler chooses not to represent some property in their model. (But still allows meaningful comparisons between components which _do_ model this property.)",
 
+	(software.ComponentProperty, 'units'):
+		"The standard name that this property is known as (for example, its CF name).",
+
 	(software.ComponentProperty, 'short_name'):
 		None,
 
-	(software.ComponentProperty, 'long_name'):
+	(software.ComponentProperty, 'description'):
 		None,
-
-	(software.ComponentProperty, 'units'):
-		"The standard name that this property is known as (for example, its CF name).",
 
 	(software.ComponentProperty, 'grid'):
 		"A reference to the grid that is used by this component.",
@@ -1102,10 +1102,10 @@ HELP = {
 	(software.ComponentProperty, 'standard_names'):
 		None,
 
-	(software.ComponentProperty, 'sub_properties'):
-		None,
+	(software.ComponentProperty, 'values'):
+		"The value of the property (not applicable to fields).",
 
-	(software.ComponentProperty, 'description'):
+	(software.ComponentProperty, 'long_name'):
 		None,
 
 	(software.ComponentProperty, 'intent'):
@@ -1114,8 +1114,8 @@ HELP = {
 	(software.ComponentProperty, 'citations'):
 		None,
 
-	(software.ComponentProperty, 'values'):
-		"The value of the property (not applicable to fields).",
+	(software.ComponentProperty, 'sub_properties'):
+		None,
 
 
 
@@ -1124,23 +1124,35 @@ HELP = {
 	(software.Coupling, 'description'):
 		"A free-text description of the coupling.",
 
+	(software.Coupling, 'time_transformation'):
+		"Temporal transformation performed on the coupling field before or after regridding onto the target grid.",
+
+	(software.Coupling, 'transformers'):
+		"An 'in-line' transformer. This references a fully-described transformer (typically that forms part of the top-level composition) used in the context of this coupling. It is used instead of separately specifying a spatialRegridding, timeTransformation, etc. here.",
+
+	(software.Coupling, 'spatial_regriddings'):
+		"Characteristics of the scheme used to interpolate a field from one grid (source grid) to another (target grid).",
+
 	(software.Coupling, 'sources'):
 		"The source component of the coupling. (note that there can be multiple sources).",
 
 	(software.Coupling, 'properties'):
 		None,
 
-	(software.Coupling, 'time_transformation'):
-		"Temporal transformation performed on the coupling field before or after regridding onto the target grid.",
-
-	(software.Coupling, 'spatial_regriddings'):
-		"Characteristics of the scheme used to interpolate a field from one grid (source grid) to another (target grid).",
-
-	(software.Coupling, 'transformers'):
-		"An 'in-line' transformer. This references a fully-described transformer (typically that forms part of the top-level composition) used in the context of this coupling. It is used instead of separately specifying a spatialRegridding, timeTransformation, etc. here.",
-
 	(software.Coupling, 'purpose'):
 		None,
+
+	(software.Coupling, 'time_lag'):
+		"The coupling field used in the target at a given time corresponds to a field produced by the source at a previous time.",
+
+	(software.Coupling, 'type'):
+		"Describes the method of coupling.",
+
+	(software.Coupling, 'target'):
+		"The target component of the coupling.",
+
+	(software.Coupling, 'time_profile'):
+		"Describes how often the coupling takes place.",
 
 	(software.Coupling, 'is_fully_specified'):
 		"If true then the coupling is fully-specified.  If false then not every Connection has been described within the coupling.",
@@ -1148,20 +1160,8 @@ HELP = {
 	(software.Coupling, 'priming'):
 		"A priming source is one that is active on the first available timestep only (before 'proper' coupling can ocurr). It can either be described here explicitly, or else a separate coupling/connection with a timing profile that is active on only the first timestep can be created.",
 
-	(software.Coupling, 'time_lag'):
-		"The coupling field used in the target at a given time corresponds to a field produced by the source at a previous time.",
-
-	(software.Coupling, 'target'):
-		"The target component of the coupling.",
-
 	(software.Coupling, 'connections'):
 		None,
-
-	(software.Coupling, 'time_profile'):
-		"Describes how often the coupling takes place.",
-
-	(software.Coupling, 'type'):
-		"Describes the method of coupling.",
 
 
 
@@ -1553,17 +1553,6 @@ HELP = {
 
 
 
-	(grids.VerticalCoordinateList, 'type'):
-		"Specifies the length of the coordinate array. This should always be the final, as-built length of the array if the hasConstantOffset property is set to true and the compact notation (start coordinate plus offset) is used.",
-
-	(grids.VerticalCoordinateList, 'form'):
-		"Units of measure used by the coordinates.",
-
-	(grids.VerticalCoordinateList, 'properties'):
-		None,
-
-
-
 	(grids.GridSpec, 'meta'):
 		None,
 
@@ -1744,6 +1733,17 @@ HELP = {
 
 
 
+	(grids.VerticalCoordinateList, 'type'):
+		"Specifies the length of the coordinate array. This should always be the final, as-built length of the array if the hasConstantOffset property is set to true and the compact notation (start coordinate plus offset) is used.",
+
+	(grids.VerticalCoordinateList, 'form'):
+		"Units of measure used by the coordinates.",
+
+	(grids.VerticalCoordinateList, 'properties'):
+		None,
+
+
+
 
 
 	(grids.GridExtent, 'units'):
@@ -1798,10 +1798,10 @@ HELP = {
 
 
 
-	(quality.Evaluation, 'title'):
+	(quality.Evaluation, 'did_pass'):
 		None,
 
-	(quality.Evaluation, 'did_pass'):
+	(quality.Evaluation, 'type_hyperlink'):
 		None,
 
 	(quality.Evaluation, 'explanation'):
@@ -1810,19 +1810,19 @@ HELP = {
 	(quality.Evaluation, 'description'):
 		None,
 
-	(quality.Evaluation, 'type_hyperlink'):
-		None,
-
-	(quality.Evaluation, 'date'):
-		None,
-
 	(quality.Evaluation, 'type'):
+		None,
+
+	(quality.Evaluation, 'specification'):
+		None,
+
+	(quality.Evaluation, 'title'):
 		None,
 
 	(quality.Evaluation, 'specification_hyperlink'):
 		None,
 
-	(quality.Evaluation, 'specification'):
+	(quality.Evaluation, 'date'):
 		None,
 
 
@@ -2153,18 +2153,13 @@ HELP = {
 
 
 
-	software.StatisticalModelComponentType: """
-		An enumeration of types of ProcessorComponent.  This includes things like transformers and post-processors.
-
-	""",
-
 	software.ModelComponentType: """
 		An enumeration of types of ModelComponent. This includes things like atmosphere & ocean models, radiation schemes, etc. CIM best-practice is to describe every component for which there is a named ComponentType as a separate component, even if it is not a separate unit of software (ie: even if it is embedded), instead of as a (set of) ModelParameters. This codelist is synonomous with 'realm' for the purposes of CMIP5.
 
 	""",
 
-	software.SpatialRegriddingStandardMethodType: """
-		Creates and returns instance of spatial_regridding_standard_method_type enum.
+	software.CouplingFrameworkType: """
+		Creates and returns instance of coupling_framework_type enum.
 
 	""",
 
@@ -2178,8 +2173,8 @@ HELP = {
 
 	""",
 
-	software.CouplingFrameworkType: """
-		Creates and returns instance of coupling_framework_type enum.
+	software.SpatialRegriddingStandardMethodType: """
+		Creates and returns instance of spatial_regridding_standard_method_type enum.
 
 	""",
 
@@ -2190,6 +2185,11 @@ HELP = {
 
 	software.TimingUnits: """
 		Creates and returns instance of timing_units enum.
+
+	""",
+
+	software.StatisticalModelComponentType: """
+		An enumeration of types of ProcessorComponent.  This includes things like transformers and post-processors.
 
 	""",
 
@@ -2329,6 +2329,11 @@ HELP = {
 
 	""",
 
+	quality.CimResultType: """
+		Creates and returns instance of cim_result_type enum.
+
+	""",
+
 	quality.QualitySeverityType: """
 		Creates and returns instance of quality_severity_type enum.
 
@@ -2336,11 +2341,6 @@ HELP = {
 
 	quality.CimFeatureType: """
 		Creates and returns instance of cim_feature_type enum.
-
-	""",
-
-	quality.CimResultType: """
-		Creates and returns instance of cim_result_type enum.
 
 	""",
 
@@ -2417,6 +2417,28 @@ HELP = {
 
 
 
+	(software.CouplingFrameworkType, 'ESMF'):
+		None,
+
+	(software.CouplingFrameworkType, 'BFG'):
+		None,
+
+	(software.CouplingFrameworkType, 'OASIS'):
+		None,
+
+
+
+	(software.SpatialRegriddingDimensionType, '2D'):
+		None,
+
+	(software.SpatialRegriddingDimensionType, '1D'):
+		None,
+
+	(software.SpatialRegriddingDimensionType, '3D'):
+		None,
+
+
+
 
 
 	(software.SpatialRegriddingStandardMethodType, 'conservative-first-order'):
@@ -2438,30 +2460,6 @@ HELP = {
 		None,
 
 	(software.SpatialRegriddingStandardMethodType, 'cubic'):
-		None,
-
-
-
-	(software.SpatialRegriddingDimensionType, '2D'):
-		None,
-
-	(software.SpatialRegriddingDimensionType, '1D'):
-		None,
-
-	(software.SpatialRegriddingDimensionType, '3D'):
-		None,
-
-
-
-
-
-	(software.CouplingFrameworkType, 'ESMF'):
-		None,
-
-	(software.CouplingFrameworkType, 'BFG'):
-		None,
-
-	(software.CouplingFrameworkType, 'OASIS'):
 		None,
 
 
@@ -2491,6 +2489,8 @@ HELP = {
 
 	(software.TimingUnits, 'seconds'):
 		None,
+
+
 
 
 
@@ -2844,16 +2844,27 @@ HELP = {
 	(quality.QualityIssueType, 'data_format'):
 		None,
 
+	(quality.QualityIssueType, 'science'):
+		None,
+
 	(quality.QualityIssueType, 'metadata'):
 		None,
 
 	(quality.QualityIssueType, 'data_content'):
 		None,
 
-	(quality.QualityIssueType, 'science'):
+	(quality.QualityIssueType, 'data_indexing'):
 		None,
 
-	(quality.QualityIssueType, 'data_indexing'):
+
+
+	(quality.CimResultType, 'document'):
+		None,
+
+	(quality.CimResultType, 'logfile'):
+		None,
+
+	(quality.CimResultType, 'plot'):
 		None,
 
 
@@ -2873,17 +2884,6 @@ HELP = {
 		None,
 
 	(quality.CimFeatureType, 'file'):
-		None,
-
-
-
-	(quality.CimResultType, 'document'):
-		None,
-
-	(quality.CimResultType, 'logfile'):
-		None,
-
-	(quality.CimResultType, 'plot'):
 		None,
 
 

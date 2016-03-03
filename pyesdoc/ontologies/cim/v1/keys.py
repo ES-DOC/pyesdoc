@@ -86,9 +86,9 @@ KEYS = {
 
     software.Parallelisation: "cim.1.software.Parallelisation",
 
-    software.TimeTransformation: "cim.1.software.TimeTransformation",
+    software.ModelComponent: "cim.1.software.ModelComponent",
 
-    software.TimeLag: "cim.1.software.TimeLag",
+    software.ProcessorComponent: "cim.1.software.ProcessorComponent",
 
     software.StatisticalModelComponent: "cim.1.software.StatisticalModelComponent",
 
@@ -96,23 +96,23 @@ KEYS = {
 
     software.CouplingProperty: "cim.1.software.CouplingProperty",
 
-    software.CouplingEndpoint: "cim.1.software.CouplingEndpoint",
-
     software.SpatialRegridding: "cim.1.software.SpatialRegridding",
+
+    software.TimeTransformation: "cim.1.software.TimeTransformation",
 
     software.Connection: "cim.1.software.Connection",
 
     software.Component: "cim.1.software.Component",
 
-    software.ProcessorComponent: "cim.1.software.ProcessorComponent",
-
-    software.SpatialRegriddingProperty: "cim.1.software.SpatialRegriddingProperty",
+    software.TimeLag: "cim.1.software.TimeLag",
 
     software.EntryPoint: "cim.1.software.EntryPoint",
 
+    software.SpatialRegriddingProperty: "cim.1.software.SpatialRegriddingProperty",
+
     software.ConnectionEndpoint: "cim.1.software.ConnectionEndpoint",
 
-    software.ModelComponent: "cim.1.software.ModelComponent",
+    software.CouplingEndpoint: "cim.1.software.CouplingEndpoint",
 
     software.Timing: "cim.1.software.Timing",
 
@@ -184,8 +184,6 @@ KEYS = {
 
 
 
-    grids.VerticalCoordinateList: "cim.1.grids.VerticalCoordinateList",
-
     grids.GridSpec: "cim.1.grids.GridSpec",
 
     grids.SimpleGridGeometry: "cim.1.grids.SimpleGridGeometry",
@@ -197,6 +195,8 @@ KEYS = {
     grids.GridTile: "cim.1.grids.GridTile",
 
     grids.GridMosaic: "cim.1.grids.GridMosaic",
+
+    grids.VerticalCoordinateList: "cim.1.grids.VerticalCoordinateList",
 
     grids.GridProperty: "cim.1.grids.GridProperty",
 
@@ -443,23 +443,27 @@ KEYS = {
 
 
 
-    (software.TimeTransformation, 'description'): "cim.1.software.TimeTransformation.description",
+    (software.ModelComponent, 'activity'): "cim.1.software.ModelComponent.activity",
 
-    (software.TimeTransformation, 'mapping_type'): "cim.1.software.TimeTransformation.mapping_type",
+    (software.ModelComponent, 'type'): "cim.1.software.ModelComponent.type",
+
+    (software.ModelComponent, 'meta'): "cim.1.software.ModelComponent.meta",
+
+    (software.ModelComponent, 'types'): "cim.1.software.ModelComponent.types",
+
+    (software.ModelComponent, 'timing'): "cim.1.software.ModelComponent.timing",
 
 
 
-    (software.TimeLag, 'units'): "cim.1.software.TimeLag.units",
-
-    (software.TimeLag, 'value'): "cim.1.software.TimeLag.value",
+    (software.ProcessorComponent, 'meta'): "cim.1.software.ProcessorComponent.meta",
 
 
+
+    (software.StatisticalModelComponent, 'type'): "cim.1.software.StatisticalModelComponent.type",
 
     (software.StatisticalModelComponent, 'meta'): "cim.1.software.StatisticalModelComponent.meta",
 
     (software.StatisticalModelComponent, 'types'): "cim.1.software.StatisticalModelComponent.types",
-
-    (software.StatisticalModelComponent, 'type'): "cim.1.software.StatisticalModelComponent.type",
 
     (software.StatisticalModelComponent, 'timing'): "cim.1.software.StatisticalModelComponent.timing",
 
@@ -473,14 +477,6 @@ KEYS = {
 
 
 
-    (software.CouplingEndpoint, 'properties'): "cim.1.software.CouplingEndpoint.properties",
-
-    (software.CouplingEndpoint, 'data_source'): "cim.1.software.CouplingEndpoint.data_source",
-
-    (software.CouplingEndpoint, 'instance_id'): "cim.1.software.CouplingEndpoint.instance_id",
-
-
-
     (software.SpatialRegridding, 'standard_method'): "cim.1.software.SpatialRegridding.standard_method",
 
     (software.SpatialRegridding, 'dimension'): "cim.1.software.SpatialRegridding.dimension",
@@ -491,9 +487,13 @@ KEYS = {
 
 
 
-    (software.Connection, 'properties'): "cim.1.software.Connection.properties",
+    (software.TimeTransformation, 'description'): "cim.1.software.TimeTransformation.description",
 
-    (software.Connection, 'time_profile'): "cim.1.software.Connection.time_profile",
+    (software.TimeTransformation, 'mapping_type'): "cim.1.software.TimeTransformation.mapping_type",
+
+
+
+    (software.Connection, 'properties'): "cim.1.software.Connection.properties",
 
     (software.Connection, 'time_transformation'): "cim.1.software.Connection.time_transformation",
 
@@ -501,17 +501,19 @@ KEYS = {
 
     (software.Connection, 'spatial_regridding'): "cim.1.software.Connection.spatial_regridding",
 
+    (software.Connection, 'time_lag'): "cim.1.software.Connection.time_lag",
+
     (software.Connection, 'transformers'): "cim.1.software.Connection.transformers",
 
     (software.Connection, 'target'): "cim.1.software.Connection.target",
-
-    (software.Connection, 'time_lag'): "cim.1.software.Connection.time_lag",
 
     (software.Connection, 'type'): "cim.1.software.Connection.type",
 
     (software.Connection, 'sources'): "cim.1.software.Connection.sources",
 
     (software.Connection, 'description'): "cim.1.software.Connection.description",
+
+    (software.Connection, 'time_profile'): "cim.1.software.Connection.time_profile",
 
 
 
@@ -529,7 +531,7 @@ KEYS = {
 
     (software.Component, 'license'): "cim.1.software.Component.license",
 
-    (software.Component, 'parent'): "cim.1.software.Component.parent",
+    (software.Component, 'sub_components'): "cim.1.software.Component.sub_components",
 
     (software.Component, 'long_name'): "cim.1.software.Component.long_name",
 
@@ -537,15 +539,15 @@ KEYS = {
 
     (software.Component, 'release_date'): "cim.1.software.Component.release_date",
 
-    (software.Component, 'sub_components'): "cim.1.software.Component.sub_components",
+    (software.Component, 'parent'): "cim.1.software.Component.parent",
 
-    (software.Component, 'citations'): "cim.1.software.Component.citations",
+    (software.Component, 'previous_version'): "cim.1.software.Component.previous_version",
 
     (software.Component, 'properties'): "cim.1.software.Component.properties",
 
     (software.Component, 'composition'): "cim.1.software.Component.composition",
 
-    (software.Component, 'previous_version'): "cim.1.software.Component.previous_version",
+    (software.Component, 'citations'): "cim.1.software.Component.citations",
 
     (software.Component, 'coupling_framework'): "cim.1.software.Component.coupling_framework",
 
@@ -561,13 +563,15 @@ KEYS = {
 
 
 
-    (software.ProcessorComponent, 'meta'): "cim.1.software.ProcessorComponent.meta",
+    (software.TimeLag, 'units'): "cim.1.software.TimeLag.units",
 
-
+    (software.TimeLag, 'value'): "cim.1.software.TimeLag.value",
 
 
 
     (software.EntryPoint, 'name'): "cim.1.software.EntryPoint.name",
+
+
 
 
 
@@ -579,15 +583,11 @@ KEYS = {
 
 
 
-    (software.ModelComponent, 'activity'): "cim.1.software.ModelComponent.activity",
+    (software.CouplingEndpoint, 'properties'): "cim.1.software.CouplingEndpoint.properties",
 
-    (software.ModelComponent, 'type'): "cim.1.software.ModelComponent.type",
+    (software.CouplingEndpoint, 'data_source'): "cim.1.software.CouplingEndpoint.data_source",
 
-    (software.ModelComponent, 'meta'): "cim.1.software.ModelComponent.meta",
-
-    (software.ModelComponent, 'types'): "cim.1.software.ModelComponent.types",
-
-    (software.ModelComponent, 'timing'): "cim.1.software.ModelComponent.timing",
+    (software.CouplingEndpoint, 'instance_id'): "cim.1.software.CouplingEndpoint.instance_id",
 
 
 
@@ -595,9 +595,9 @@ KEYS = {
 
     (software.Timing, 'end'): "cim.1.software.Timing.end",
 
-    (software.Timing, 'rate'): "cim.1.software.Timing.rate",
-
     (software.Timing, 'units'): "cim.1.software.Timing.units",
+
+    (software.Timing, 'rate'): "cim.1.software.Timing.rate",
 
     (software.Timing, 'is_variable_rate'): "cim.1.software.Timing.is_variable_rate",
 
@@ -621,25 +621,25 @@ KEYS = {
 
     (software.ComponentProperty, 'is_represented'): "cim.1.software.ComponentProperty.is_represented",
 
+    (software.ComponentProperty, 'units'): "cim.1.software.ComponentProperty.units",
+
     (software.ComponentProperty, 'short_name'): "cim.1.software.ComponentProperty.short_name",
 
-    (software.ComponentProperty, 'long_name'): "cim.1.software.ComponentProperty.long_name",
-
-    (software.ComponentProperty, 'units'): "cim.1.software.ComponentProperty.units",
+    (software.ComponentProperty, 'description'): "cim.1.software.ComponentProperty.description",
 
     (software.ComponentProperty, 'grid'): "cim.1.software.ComponentProperty.grid",
 
     (software.ComponentProperty, 'standard_names'): "cim.1.software.ComponentProperty.standard_names",
 
-    (software.ComponentProperty, 'sub_properties'): "cim.1.software.ComponentProperty.sub_properties",
+    (software.ComponentProperty, 'values'): "cim.1.software.ComponentProperty.values",
 
-    (software.ComponentProperty, 'description'): "cim.1.software.ComponentProperty.description",
+    (software.ComponentProperty, 'long_name'): "cim.1.software.ComponentProperty.long_name",
 
     (software.ComponentProperty, 'intent'): "cim.1.software.ComponentProperty.intent",
 
     (software.ComponentProperty, 'citations'): "cim.1.software.ComponentProperty.citations",
 
-    (software.ComponentProperty, 'values'): "cim.1.software.ComponentProperty.values",
+    (software.ComponentProperty, 'sub_properties'): "cim.1.software.ComponentProperty.sub_properties",
 
 
 
@@ -647,31 +647,31 @@ KEYS = {
 
     (software.Coupling, 'description'): "cim.1.software.Coupling.description",
 
+    (software.Coupling, 'time_transformation'): "cim.1.software.Coupling.time_transformation",
+
+    (software.Coupling, 'transformers'): "cim.1.software.Coupling.transformers",
+
+    (software.Coupling, 'spatial_regriddings'): "cim.1.software.Coupling.spatial_regriddings",
+
     (software.Coupling, 'sources'): "cim.1.software.Coupling.sources",
 
     (software.Coupling, 'properties'): "cim.1.software.Coupling.properties",
 
-    (software.Coupling, 'time_transformation'): "cim.1.software.Coupling.time_transformation",
-
-    (software.Coupling, 'spatial_regriddings'): "cim.1.software.Coupling.spatial_regriddings",
-
-    (software.Coupling, 'transformers'): "cim.1.software.Coupling.transformers",
-
     (software.Coupling, 'purpose'): "cim.1.software.Coupling.purpose",
+
+    (software.Coupling, 'time_lag'): "cim.1.software.Coupling.time_lag",
+
+    (software.Coupling, 'type'): "cim.1.software.Coupling.type",
+
+    (software.Coupling, 'target'): "cim.1.software.Coupling.target",
+
+    (software.Coupling, 'time_profile'): "cim.1.software.Coupling.time_profile",
 
     (software.Coupling, 'is_fully_specified'): "cim.1.software.Coupling.is_fully_specified",
 
     (software.Coupling, 'priming'): "cim.1.software.Coupling.priming",
 
-    (software.Coupling, 'time_lag'): "cim.1.software.Coupling.time_lag",
-
-    (software.Coupling, 'target'): "cim.1.software.Coupling.target",
-
     (software.Coupling, 'connections'): "cim.1.software.Coupling.connections",
-
-    (software.Coupling, 'time_profile'): "cim.1.software.Coupling.time_profile",
-
-    (software.Coupling, 'type'): "cim.1.software.Coupling.type",
 
 
 
@@ -953,14 +953,6 @@ KEYS = {
 
 
 
-    (grids.VerticalCoordinateList, 'type'): "cim.1.grids.VerticalCoordinateList.type",
-
-    (grids.VerticalCoordinateList, 'form'): "cim.1.grids.VerticalCoordinateList.form",
-
-    (grids.VerticalCoordinateList, 'properties'): "cim.1.grids.VerticalCoordinateList.properties",
-
-
-
     (grids.GridSpec, 'meta'): "cim.1.grids.GridSpec.meta",
 
     (grids.GridSpec, 'esm_exchange_grids'): "cim.1.grids.GridSpec.esm_exchange_grids",
@@ -1085,6 +1077,14 @@ KEYS = {
 
 
 
+    (grids.VerticalCoordinateList, 'type'): "cim.1.grids.VerticalCoordinateList.type",
+
+    (grids.VerticalCoordinateList, 'form'): "cim.1.grids.VerticalCoordinateList.form",
+
+    (grids.VerticalCoordinateList, 'properties'): "cim.1.grids.VerticalCoordinateList.properties",
+
+
+
 
 
     (grids.GridExtent, 'units'): "cim.1.grids.GridExtent.units",
@@ -1125,23 +1125,23 @@ KEYS = {
 
 
 
-    (quality.Evaluation, 'title'): "cim.1.quality.Evaluation.title",
-
     (quality.Evaluation, 'did_pass'): "cim.1.quality.Evaluation.did_pass",
+
+    (quality.Evaluation, 'type_hyperlink'): "cim.1.quality.Evaluation.type_hyperlink",
 
     (quality.Evaluation, 'explanation'): "cim.1.quality.Evaluation.explanation",
 
     (quality.Evaluation, 'description'): "cim.1.quality.Evaluation.description",
 
-    (quality.Evaluation, 'type_hyperlink'): "cim.1.quality.Evaluation.type_hyperlink",
-
-    (quality.Evaluation, 'date'): "cim.1.quality.Evaluation.date",
-
     (quality.Evaluation, 'type'): "cim.1.quality.Evaluation.type",
+
+    (quality.Evaluation, 'specification'): "cim.1.quality.Evaluation.specification",
+
+    (quality.Evaluation, 'title'): "cim.1.quality.Evaluation.title",
 
     (quality.Evaluation, 'specification_hyperlink'): "cim.1.quality.Evaluation.specification_hyperlink",
 
-    (quality.Evaluation, 'specification'): "cim.1.quality.Evaluation.specification",
+    (quality.Evaluation, 'date'): "cim.1.quality.Evaluation.date",
 
 
 
@@ -1380,21 +1380,21 @@ KEYS = {
 
 
 
-    software.StatisticalModelComponentType: "cim.1.software.StatisticalModelComponentType",
-
     software.ModelComponentType: "cim.1.software.ModelComponentType",
 
-    software.SpatialRegriddingStandardMethodType: "cim.1.software.SpatialRegriddingStandardMethodType",
+    software.CouplingFrameworkType: "cim.1.software.CouplingFrameworkType",
 
     software.SpatialRegriddingDimensionType: "cim.1.software.SpatialRegriddingDimensionType",
 
     software.ConnectionType: "cim.1.software.ConnectionType",
 
-    software.CouplingFrameworkType: "cim.1.software.CouplingFrameworkType",
+    software.SpatialRegriddingStandardMethodType: "cim.1.software.SpatialRegriddingStandardMethodType",
 
     software.TimeMappingType: "cim.1.software.TimeMappingType",
 
     software.TimingUnits: "cim.1.software.TimingUnits",
+
+    software.StatisticalModelComponentType: "cim.1.software.StatisticalModelComponentType",
 
     software.ComponentPropertyIntentType: "cim.1.software.ComponentPropertyIntentType",
 
@@ -1454,11 +1454,11 @@ KEYS = {
 
     quality.QualityIssueType: "cim.1.quality.QualityIssueType",
 
+    quality.CimResultType: "cim.1.quality.CimResultType",
+
     quality.QualitySeverityType: "cim.1.quality.QualitySeverityType",
 
     quality.CimFeatureType: "cim.1.quality.CimFeatureType",
-
-    quality.CimResultType: "cim.1.quality.CimResultType",
 
 
 
@@ -1503,6 +1503,22 @@ KEYS = {
 
 
 
+    (software.CouplingFrameworkType, 'ESMF'): "cim.1.software.CouplingFrameworkType.ESMF",
+
+    (software.CouplingFrameworkType, 'BFG'): "cim.1.software.CouplingFrameworkType.BFG",
+
+    (software.CouplingFrameworkType, 'OASIS'): "cim.1.software.CouplingFrameworkType.OASIS",
+
+
+
+    (software.SpatialRegriddingDimensionType, '2D'): "cim.1.software.SpatialRegriddingDimensionType.2D",
+
+    (software.SpatialRegriddingDimensionType, '1D'): "cim.1.software.SpatialRegriddingDimensionType.1D",
+
+    (software.SpatialRegriddingDimensionType, '3D'): "cim.1.software.SpatialRegriddingDimensionType.3D",
+
+
+
 
 
     (software.SpatialRegriddingStandardMethodType, 'conservative-first-order'): "cim.1.software.SpatialRegriddingStandardMethodType.conservative-first-order",
@@ -1518,24 +1534,6 @@ KEYS = {
     (software.SpatialRegriddingStandardMethodType, 'near-neighbour'): "cim.1.software.SpatialRegriddingStandardMethodType.near-neighbour",
 
     (software.SpatialRegriddingStandardMethodType, 'cubic'): "cim.1.software.SpatialRegriddingStandardMethodType.cubic",
-
-
-
-    (software.SpatialRegriddingDimensionType, '2D'): "cim.1.software.SpatialRegriddingDimensionType.2D",
-
-    (software.SpatialRegriddingDimensionType, '1D'): "cim.1.software.SpatialRegriddingDimensionType.1D",
-
-    (software.SpatialRegriddingDimensionType, '3D'): "cim.1.software.SpatialRegriddingDimensionType.3D",
-
-
-
-
-
-    (software.CouplingFrameworkType, 'ESMF'): "cim.1.software.CouplingFrameworkType.ESMF",
-
-    (software.CouplingFrameworkType, 'BFG'): "cim.1.software.CouplingFrameworkType.BFG",
-
-    (software.CouplingFrameworkType, 'OASIS'): "cim.1.software.CouplingFrameworkType.OASIS",
 
 
 
@@ -1556,6 +1554,8 @@ KEYS = {
     (software.TimingUnits, 'centuries'): "cim.1.software.TimingUnits.centuries",
 
     (software.TimingUnits, 'seconds'): "cim.1.software.TimingUnits.seconds",
+
+
 
 
 
@@ -1811,13 +1811,21 @@ KEYS = {
 
     (quality.QualityIssueType, 'data_format'): "cim.1.quality.QualityIssueType.data_format",
 
+    (quality.QualityIssueType, 'science'): "cim.1.quality.QualityIssueType.science",
+
     (quality.QualityIssueType, 'metadata'): "cim.1.quality.QualityIssueType.metadata",
 
     (quality.QualityIssueType, 'data_content'): "cim.1.quality.QualityIssueType.data_content",
 
-    (quality.QualityIssueType, 'science'): "cim.1.quality.QualityIssueType.science",
-
     (quality.QualityIssueType, 'data_indexing'): "cim.1.quality.QualityIssueType.data_indexing",
+
+
+
+    (quality.CimResultType, 'document'): "cim.1.quality.CimResultType.document",
+
+    (quality.CimResultType, 'logfile'): "cim.1.quality.CimResultType.logfile",
+
+    (quality.CimResultType, 'plot'): "cim.1.quality.CimResultType.plot",
 
 
 
@@ -1832,14 +1840,6 @@ KEYS = {
     (quality.CimFeatureType, 'diagnostic'): "cim.1.quality.CimFeatureType.diagnostic",
 
     (quality.CimFeatureType, 'file'): "cim.1.quality.CimFeatureType.file",
-
-
-
-    (quality.CimResultType, 'document'): "cim.1.quality.CimResultType.document",
-
-    (quality.CimResultType, 'logfile'): "cim.1.quality.CimResultType.logfile",
-
-    (quality.CimResultType, 'plot'): "cim.1.quality.CimResultType.plot",
 
 
 

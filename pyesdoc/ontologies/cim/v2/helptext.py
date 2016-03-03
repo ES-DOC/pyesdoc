@@ -94,11 +94,6 @@ HELP = {
 
 	""",
 
-	designing.EnsembleRequirement: """
-		Defines an experiment ensemble.
-
-	""",
-
 	designing.NumericalRequirement: """
 		A numerical requirement associated with a numerical experiment.
 
@@ -106,6 +101,11 @@ HELP = {
 
 	designing.SimulationPlan: """
 		Describes a simulation that needs to be run.
+
+	""",
+
+	designing.EnsembleRequirement: """
+		Defines an experiment ensemble.
 
 	""",
 
@@ -250,8 +250,10 @@ HELP = {
 
 	""",
 
-	activity.EnsembleAxis: """
-		Defines the meaning of r/i/p indices in an ensemble.
+	activity.EnsembleMember: """
+		An ensemble may be a complicated interplay of axes, for example, r/i/p, not all of which
+    are populated, so we need a list of the actual simulations and how they map onto the ensemble
+    axes.
 
 	""",
 
@@ -270,10 +272,8 @@ HELP = {
 
 	""",
 
-	activity.EnsembleMember: """
-		An ensemble may be a complicated interplay of axes, for example, r/i/p, not all of which
-    are populated, so we need a list of the actual simulations and how they map onto the ensemble
-    axes.
+	activity.EnsembleAxis: """
+		Defines the meaning of r/i/p indices in an ensemble.
 
 	""",
 
@@ -292,16 +292,16 @@ HELP = {
 
 	""",
 
-	software.DevelopmentPath: """
-		Describes the software development path for this model/component.
-
-	""",
-
 	software.ComponentBase: """
 		Base class for software component properties, whether a top level model,
     or a specific piece of code known as a component. In software terms, a
     component is a discrete set of code that takes input data and generates output data.
     Components may or may not have scientific descriptions.
+
+	""",
+
+	software.DevelopmentPath: """
+		Describes the software development path for this model/component.
 
 	""",
 
@@ -331,30 +331,12 @@ HELP = {
 
 
 
-	science.ScienceContext: """
-		This is the base class for the science mixins, that is the classes which
-    we expect to be specialised and extended by project specific vocabularies.
-    It is expected that values of these will be provided within vocabulary
-    definitions.
-
-	""",
-
 	science.SubProcess: """
 		Provides structure for description of part of process simulated within a particular
     area (or domain/realm/component) of a model. Typically this will be a part of process
     which shares common properties. It will normally be sub classed within a specific
     implementation so that constraints can be used to ensure that the process details requested are
     consistent with projects requirements for information.
-
-	""",
-
-	science.Resolution: """
-		Describes the computational spatial resolution of a component or process.
-    Not intended to replace or replicate the output grid description.
-    When it appears as part of a process description, provide only properties that differ from parent domain.
-    Note that this is supposed to capture gross features of the grid, we expect many grids will have
-    different variable layouts, those should be described in the grid description, and the exact resolution
-    is not required. Note that many properties are not appropriate for adaptive grids.
 
 	""",
 
@@ -372,6 +354,14 @@ HELP = {
 
 	""",
 
+	science.ScienceContext: """
+		This is the base class for the science mixins, that is the classes which
+    we expect to be specialised and extended by project specific vocabularies.
+    It is expected that values of these will be provided within vocabulary
+    definitions.
+
+	""",
+
 	science.Model: """
 		A model component: can be executed standalone, and has as scientific
     description available via a link to a science.domain document. (A configured model can
@@ -379,8 +369,13 @@ HELP = {
 
 	""",
 
-	science.Tuning: """
-		Method used to optimise equation parameters in model component (aka 'tuning').
+	science.Resolution: """
+		Describes the computational spatial resolution of a component or process.
+    Not intended to replace or replicate the output grid description.
+    When it appears as part of a process description, provide only properties that differ from parent domain.
+    Note that this is supposed to capture gross features of the grid, we expect many grids will have
+    different variable layouts, those should be described in the grid description, and the exact resolution
+    is not required. Note that many properties are not appropriate for adaptive grids.
 
 	""",
 
@@ -399,6 +394,11 @@ HELP = {
     for possible responses, or (2) Detail is used to provide a collection for a set of
     properties which are defined in the sub-class. However, those properties must have a type
     which is selected from the classmap (that is, standard 'non-es-doc' types).
+
+	""",
+
+	science.Tuning: """
+		Method used to optimise equation parameters in model component (aka 'tuning').
 
 	""",
 
@@ -469,11 +469,6 @@ HELP = {
 
 	""",
 
-	shared.Pid: """
-		A permanent identifier (with a resolution service).
-
-	""",
-
 	shared.OnlineResource: """
 		A minimal approximation of ISO19115 CI_ONLINERESOURCE, provides a link and details
     of how to use that link.
@@ -485,8 +480,8 @@ HELP = {
 
 	""",
 
-	shared.QualityReview: """
-		Assertations as to the completeness and quality of a document.
+	shared.Pid: """
+		A permanent identifier (with a resolution service).
 
 	""",
 
@@ -521,8 +516,8 @@ HELP = {
 
 	""",
 
-	shared.TimePeriod: """
-		A time period class aka a temporal extent.
+	shared.QualityReview: """
+		Assertations as to the completeness and quality of a document.
 
 	""",
 
@@ -536,6 +531,11 @@ HELP = {
 	shared.Cimtext: """
 		Provides a text class which supports plaintext, html, and
     friends (or will do).
+
+	""",
+
+	shared.TimePeriod: """
+		A time period class aka a temporal extent.
 
 	""",
 
@@ -564,11 +564,11 @@ HELP = {
 	(designing.TemporalConstraint, 'start_date'):
 		"Required start date.",
 
-	(designing.TemporalConstraint, 'start_flexibility'):
-		"Amount of time before required start date that it is permissible to begin integration.",
-
 	(designing.TemporalConstraint, 'required_calendar'):
 		"Required calendar (e.g. for paleo simulations).",
+
+	(designing.TemporalConstraint, 'start_flexibility'):
+		"Amount of time before required start date that it is permissible to begin integration.",
 
 	(designing.TemporalConstraint, 'required_duration'):
 		"Constraint on time or length of simulation.",
@@ -578,14 +578,14 @@ HELP = {
 	(designing.ForcingConstraint, 'data_link'):
 		"Link to actual data record if possible.",
 
-	(designing.ForcingConstraint, 'origin'):
-		"Pointer to origin, e.g. CMIP6 RCP database.",
-
 	(designing.ForcingConstraint, 'forcing_type'):
 		"Type of integration.",
 
 	(designing.ForcingConstraint, 'additional_constraint'):
 		"Additional information, e.g. hold constant from 2100-01-01.",
+
+	(designing.ForcingConstraint, 'origin'):
+		"Pointer to origin, e.g. CMIP6 RCP database.",
 
 	(designing.ForcingConstraint, 'group'):
 		"Sub-Category (e.g. GHG).",
@@ -595,17 +595,6 @@ HELP = {
 
 	(designing.ForcingConstraint, 'category'):
 		"Category to which this belongs (from a CV, e.g. GASES).",
-
-
-
-	(designing.EnsembleRequirement, 'ensemble_type'):
-		"Type of ensemble.",
-
-	(designing.EnsembleRequirement, 'ensemble_member'):
-		"Constraint on each ensemble member.",
-
-	(designing.EnsembleRequirement, 'minimum_size'):
-		"Minimum number of members.",
 
 
 
@@ -628,6 +617,17 @@ HELP = {
 
 	(designing.SimulationPlan, 'expected_performance_sypd'):
 		"Expected performance in simulated years per real day.",
+
+
+
+	(designing.EnsembleRequirement, 'ensemble_type'):
+		"Type of ensemble.",
+
+	(designing.EnsembleRequirement, 'ensemble_member'):
+		"Constraint on each ensemble member.",
+
+	(designing.EnsembleRequirement, 'minimum_size'):
+		"Minimum number of members.",
 
 
 
@@ -679,14 +679,14 @@ HELP = {
 
 
 
-	(data.Dataset, 'availability'):
-		"Where the data is located, and how it is accessed.",
-
 	(data.Dataset, 'references'):
 		"Relevant reference document.",
 
 	(data.Dataset, 'responsible_parties'):
 		"Individuals and organisations reponsible for the data.",
+
+	(data.Dataset, 'availability'):
+		"Where the data is located, and how it is accessed.",
 
 	(data.Dataset, 'meta'):
 		"Metadata describing the creation of this dataset description document.",
@@ -743,49 +743,49 @@ HELP = {
 
 
 
-	(platform.ComputePool, 'cpu_type'):
-		"CPU type.",
-
 	(platform.ComputePool, 'number_of_nodes'):
 		"Number of nodes.",
 
-	(platform.ComputePool, 'name'):
-		"Name of compute pool within a machine.",
-
-	(platform.ComputePool, 'memory_per_node'):
-		"Memory per node.",
+	(platform.ComputePool, 'cpu_type'):
+		"CPU type.",
 
 	(platform.ComputePool, 'accelerators_per_node'):
 		"Number of accelerator units on a node.",
 
-	(platform.ComputePool, 'description'):
-		"Textural description of pool.",
+	(platform.ComputePool, 'accelerator_type'):
+		"Type of accelerator.",
 
-	(platform.ComputePool, 'interconnect'):
-		"Interconnect used.",
+	(platform.ComputePool, 'memory_per_node'):
+		"Memory per node.",
+
+	(platform.ComputePool, 'name'):
+		"Name of compute pool within a machine.",
 
 	(platform.ComputePool, 'operating_system'):
 		"Operating system.",
 
-	(platform.ComputePool, 'model_number'):
-		"Model/Board number/type.",
+	(platform.ComputePool, 'interconnect'):
+		"Interconnect used.",
 
-	(platform.ComputePool, 'accelerator_type'):
-		"Type of accelerator.",
+	(platform.ComputePool, 'description'):
+		"Textural description of pool.",
 
 	(platform.ComputePool, 'compute_cores_per_node'):
 		"Number of CPU cores per node.",
 
+	(platform.ComputePool, 'model_number'):
+		"Model/Board number/type.",
 
 
-	(platform.ComponentPerformance, 'speed'):
-		"Time taken to simulate one real day (s).",
 
 	(platform.ComponentPerformance, 'cores_used'):
 		"Number of cores used for this component.",
 
 	(platform.ComponentPerformance, 'nodes_used'):
 		"Number of nodes used for this component.",
+
+	(platform.ComponentPerformance, 'speed'):
+		"Time taken to simulate one real day (s).",
 
 	(platform.ComponentPerformance, 'component'):
 		"Link to a CIM software component description.",
@@ -795,20 +795,20 @@ HELP = {
 
 
 
+	(platform.Performance, 'total_nodes_used'):
+		"Number of nodes used.",
+
+	(platform.Performance, 'compiler'):
+		"Compiler used.",
+
 	(platform.Performance, 'meta'):
 		"Document metadata.",
 
 	(platform.Performance, 'subcomponent_performance'):
 		"Describes the performance of each subcomponent.",
 
-	(platform.Performance, 'compiler'):
-		"Compiler used.",
-
-	(platform.Performance, 'total_nodes_used'):
-		"Number of nodes used.",
-
-	(platform.Performance, 'model'):
-		"Model for which performance was tested.",
+	(platform.Performance, 'name'):
+		"Short name for performance (experiment/test/whatever).",
 
 	(platform.Performance, 'coupler_load'):
 		"Percentage of time spent in coupler.",
@@ -816,20 +816,20 @@ HELP = {
 	(platform.Performance, 'chsy'):
 		"Core-Hours per simulated year.",
 
+	(platform.Performance, 'io_load'):
+		"Percentage of time spent in I/O.",
+
+	(platform.Performance, 'sypd'):
+		"Simulated years per wall-clock day.",
+
 	(platform.Performance, 'memory_bloat'):
 		"Percentage of extra memory needed.",
 
 	(platform.Performance, 'platform'):
 		"Platform on which performance was tested.",
 
-	(platform.Performance, 'io_load'):
-		"Percentage of time spent in I/O.",
-
-	(platform.Performance, 'name'):
-		"Short name for performance (experiment/test/whatever).",
-
-	(platform.Performance, 'sypd'):
-		"Simulated years per wall-clock day.",
+	(platform.Performance, 'model'):
+		"Model for which performance was tested.",
 
 	(platform.Performance, 'load_imbalance'):
 		"Load imbalance.",
@@ -859,23 +859,20 @@ HELP = {
 	(platform.Partition, 'name'):
 		"Name of partition (or machine).",
 
-	(platform.Partition, 'storage_pools'):
-		"Storage resource available.",
-
-	(platform.Partition, 'when_used'):
-		"If no longer in use, the time period it was in use.",
-
 	(platform.Partition, 'partition'):
 		"If machine is partitioned, treat subpartitions as machines.",
 
 	(platform.Partition, 'description'):
 		"Textural description of machine.",
 
+	(platform.Partition, 'storage_pools'):
+		"Storage resource available.",
+
+	(platform.Partition, 'when_used'):
+		"If no longer in use, the time period it was in use.",
+
 	(platform.Partition, 'institution'):
 		"Institutional location.",
-
-	(platform.Partition, 'vendor'):
-		"The system integrator or vendor.",
 
 	(platform.Partition, 'online_documentation'):
 		"Links to documentation.",
@@ -885,6 +882,9 @@ HELP = {
 
 	(platform.Partition, 'compute_pools'):
 		"Layout of compute nodes.",
+
+	(platform.Partition, 'vendor'):
+		"The system integrator or vendor.",
 
 
 
@@ -963,11 +963,11 @@ HELP = {
 
 
 
-	(drs.DrsEnsembleIdentifier, 'realisation_number'):
-		"Standard ensemble axis realisation number (usually an initial condition ensemble).",
-
 	(drs.DrsEnsembleIdentifier, 'initialisation_method_number'):
 		"Identifies which method of initialisation was used, if multiple methods used.",
+
+	(drs.DrsEnsembleIdentifier, 'realisation_number'):
+		"Standard ensemble axis realisation number (usually an initial condition ensemble).",
 
 	(drs.DrsEnsembleIdentifier, 'perturbation_number'):
 		"Identifies different members of a perturbed physics ensemble.",
@@ -1004,8 +1004,11 @@ HELP = {
 	(activity.Activity, 'keywords'):
 		"User defined keywords.",
 
-	(activity.Activity, 'rationale'):
-		"Explanation of why this activity was carried out and/or what it was intended to achieve.",
+	(activity.Activity, 'name'):
+		"Short name or abbreviation.",
+
+	(activity.Activity, 'references'):
+		"Relevant documentation.",
 
 	(activity.Activity, 'long_name'):
 		"Longer version of activity name.",
@@ -1013,20 +1016,17 @@ HELP = {
 	(activity.Activity, 'canonical_name'):
 		"Community defined identifier or name.",
 
-	(activity.Activity, 'meta'):
-		"Metadata describing how this document was created.",
-
-	(activity.Activity, 'references'):
-		"Relevant documentation.",
-
 	(activity.Activity, 'responsible_parties'):
 		"People or organisations responsible for activity.",
 
+	(activity.Activity, 'meta'):
+		"Metadata describing how this document was created.",
+
+	(activity.Activity, 'rationale'):
+		"Explanation of why this activity was carried out and/or what it was intended to achieve.",
+
 	(activity.Activity, 'duration'):
 		"Time the activity was (or will be) active.",
-
-	(activity.Activity, 'name'):
-		"Short name or abbreviation.",
 
 	(activity.Activity, 'description'):
 		"Description of what is to be done (or was done).",
@@ -1038,17 +1038,20 @@ HELP = {
 
 
 
-	(activity.EnsembleAxis, 'target_requirement'):
-		"URI of the target numerical requirement.",
+	(activity.EnsembleMember, 'variant_id'):
+		"A string which concatenates axis member short identiers (e.g r1i1p1f1).",
 
-	(activity.EnsembleAxis, 'short_identifier'):
-		"e.g. 'r' or 'i' or 'p' to conform with simulation ensemble variant identifiers.",
+	(activity.EnsembleMember, 'errata'):
+		"Link to errata associated with this simulation.",
 
-	(activity.EnsembleAxis, 'extra_detail'):
-		"Any extra detail required to describe how this ensemble axis was delivered.",
+	(activity.EnsembleMember, 'had_performance'):
+		"Performance of the simulation.",
 
-	(activity.EnsembleAxis, 'member'):
-		"Individual member descriptions along axis.",
+	(activity.EnsembleMember, 'simulation'):
+		"Actual simulation description for an ensemble member.",
+
+	(activity.EnsembleMember, 'ran_on'):
+		"The machine on which the simulation was run.",
 
 
 
@@ -1077,20 +1080,17 @@ HELP = {
 
 
 
-	(activity.EnsembleMember, 'errata'):
-		"Link to errata associated with this simulation.",
+	(activity.EnsembleAxis, 'target_requirement'):
+		"URI of the target numerical requirement.",
 
-	(activity.EnsembleMember, 'simulation'):
-		"Actual simulation description for an ensemble member.",
+	(activity.EnsembleAxis, 'short_identifier'):
+		"e.g. 'r' or 'i' or 'p' to conform with simulation ensemble variant identifiers.",
 
-	(activity.EnsembleMember, 'variant_id'):
-		"A string which concatenates axis member short identiers (e.g r1i1p1f1).",
+	(activity.EnsembleAxis, 'extra_detail'):
+		"Any extra detail required to describe how this ensemble axis was delivered.",
 
-	(activity.EnsembleMember, 'had_performance'):
-		"Performance of the simulation.",
-
-	(activity.EnsembleMember, 'ran_on'):
-		"The machine on which the simulation was run.",
+	(activity.EnsembleAxis, 'member'):
+		"Individual member descriptions along axis.",
 
 
 
@@ -1101,14 +1101,40 @@ HELP = {
 
 
 
-	(software.Variable, 'prognostic'):
-		"Whether or not prognostic or diagnostic.",
-
 	(software.Variable, 'description'):
 		"Description of how the variable is being used in the s/w.",
 
+	(software.Variable, 'prognostic'):
+		"Whether or not prognostic or diagnostic.",
+
 	(software.Variable, 'name'):
 		"Short name for the variable.",
+
+
+
+	(software.ComponentBase, 'documentation'):
+		"Descriptions of the component functionality.",
+
+	(software.ComponentBase, 'name'):
+		"Short name of component.",
+
+	(software.ComponentBase, 'long_name'):
+		"Long name for component.",
+
+	(software.ComponentBase, 'repository'):
+		"Location of code for this component.",
+
+	(software.ComponentBase, 'description'):
+		"Textural description of component.",
+
+	(software.ComponentBase, 'development_history'):
+		"History of the development of this component.",
+
+	(software.ComponentBase, 'release_date'):
+		"The date of publication of the component code (as opposed to the date of publication of the metadata document, or the date of deployment of the model).",
+
+	(software.ComponentBase, 'version'):
+		"Version identifier.",
 
 
 
@@ -1126,32 +1152,6 @@ HELP = {
 
 	(software.DevelopmentPath, 'creators'):
 		"Those responsible for creating this component.",
-
-
-
-	(software.ComponentBase, 'documentation'):
-		"Descriptions of the component functionality.",
-
-	(software.ComponentBase, 'repository'):
-		"Location of code for this component.",
-
-	(software.ComponentBase, 'name'):
-		"Short name of component.",
-
-	(software.ComponentBase, 'long_name'):
-		"Long name for component.",
-
-	(software.ComponentBase, 'description'):
-		"Textural description of component.",
-
-	(software.ComponentBase, 'version'):
-		"Version identifier.",
-
-	(software.ComponentBase, 'development_history'):
-		"History of the development of this component.",
-
-	(software.ComponentBase, 'release_date'):
-		"The date of publication of the component code (as opposed to the date of publication of the metadata document, or the date of deployment of the model).",
 
 
 
@@ -1196,6 +1196,72 @@ HELP = {
 
 
 
+	(science.SubProcess, 'implementation_overview'):
+		"General overview description of the implementation of this part of the process.",
+
+	(science.SubProcess, 'references'):
+		"Any relevant references describing this part of the process and/or it's implementation.",
+
+	(science.SubProcess, 'properties'):
+		"Sets of properties for this process.",
+
+
+
+	(science.ScientificDomain, 'name'):
+		"Name of the scientific domain (e.g. ocean).",
+
+	(science.ScientificDomain, 'id'):
+		"Vocabulary identifier, where this domain description was constructed via a  controlled vocabulary.",
+
+	(science.ScientificDomain, 'differing_key_properties'):
+		"Key properties for the domain which differ from model defaults (grid, timestep etc).",
+
+	(science.ScientificDomain, 'references'):
+		"Any relevant references describing the implementation of this domain in a relevant model.",
+
+	(science.ScientificDomain, 'realm'):
+		"Canonical name for the domain of this scientific area.",
+
+	(science.ScientificDomain, 'overview'):
+		"Free text overview description of key properties of domain.",
+
+	(science.ScientificDomain, 'meta'):
+		"Metadata describing the construction of this domain description.",
+
+	(science.ScientificDomain, 'simulates'):
+		"Processes simulated within the domain.",
+
+
+
+	(science.Extent, 'is_global'):
+		"True if horizontal coverage is global.",
+
+	(science.Extent, 'western_boundary'):
+		"If not global, western boundary in degrees of longitude.",
+
+	(science.Extent, 'northern_boundary'):
+		"If not global, northern boundary in degrees of latitude.",
+
+	(science.Extent, 'eastern_boundary'):
+		"If not global, eastern boundary in degrees of longitude.",
+
+	(science.Extent, 'z_units'):
+		"Units of vertical measure (e.g. m, Pa, sigma_level.",
+
+	(science.Extent, 'region_known_as'):
+		"Identifier or identifiers for the region covered by the extent.",
+
+	(science.Extent, 'top_vertical_level'):
+		"Top vertical level centre (e.g. level at TOA or level near ocean surface).",
+
+	(science.Extent, 'southern_boundary'):
+		"If not global, southern boundary in degrees of latitude.",
+
+	(science.Extent, 'bottom_vertical_level'):
+		"Bottom vertical level centre (e.g. level near land surface or level ocean floor).",
+
+
+
 	(science.ScienceContext, 'context'):
 		"Scientific context for which this description is provided.",
 
@@ -1207,14 +1273,29 @@ HELP = {
 
 
 
-	(science.SubProcess, 'implementation_overview'):
-		"General overview description of the implementation of this part of the process.",
+	(science.Model, 'id'):
+		"Vocabulary identifier, where this model description was constructed via a controlled vocabulary.",
 
-	(science.SubProcess, 'references'):
-		"Any relevant references describing this part of the process and/or it's implementation.",
+	(science.Model, 'model_default_properties'):
+		"Model default key properties (may be over-ridden in domain properties).",
 
-	(science.SubProcess, 'properties'):
-		"Sets of properties for this process.",
+	(science.Model, 'category'):
+		"Generic type for this model.",
+
+	(science.Model, 'internal_software_components'):
+		"Software modules which together provide the functionality for this model.",
+
+	(science.Model, 'meta'):
+		"Metadata about how the model description was constructed.",
+
+	(science.Model, 'simulates'):
+		"The scientific domains which this model simulates.",
+
+	(science.Model, 'coupler'):
+		"Overarching coupling framework for model.",
+
+	(science.Model, 'coupled_components'):
+		"Software components which are linked together using a coupler to deliver this model.",
 
 
 
@@ -1241,101 +1322,6 @@ HELP = {
 
 
 
-	(science.ScientificDomain, 'name'):
-		"Name of the scientific domain (e.g. ocean).",
-
-	(science.ScientificDomain, 'references'):
-		"Any relevant references describing the implementation of this domain in a relevant model.",
-
-	(science.ScientificDomain, 'id'):
-		"Vocabulary identifier, where this domain description was constructed via a  controlled vocabulary.",
-
-	(science.ScientificDomain, 'differing_key_properties'):
-		"Key properties for the domain which differ from model defaults (grid, timestep etc).",
-
-	(science.ScientificDomain, 'realm'):
-		"Canonical name for the domain of this scientific area.",
-
-	(science.ScientificDomain, 'overview'):
-		"Free text overview description of key properties of domain.",
-
-	(science.ScientificDomain, 'meta'):
-		"Metadata describing the construction of this domain description.",
-
-	(science.ScientificDomain, 'simulates'):
-		"Processes simulated within the domain.",
-
-
-
-	(science.Extent, 'western_boundary'):
-		"If not global, western boundary in degrees of longitude.",
-
-	(science.Extent, 'is_global'):
-		"True if horizontal coverage is global.",
-
-	(science.Extent, 'z_units'):
-		"Units of vertical measure (e.g. m, Pa, sigma_level.",
-
-	(science.Extent, 'northern_boundary'):
-		"If not global, northern boundary in degrees of latitude.",
-
-	(science.Extent, 'eastern_boundary'):
-		"If not global, eastern boundary in degrees of longitude.",
-
-	(science.Extent, 'top_vertical_level'):
-		"Top vertical level centre (e.g. level at TOA or level near ocean surface).",
-
-	(science.Extent, 'region_known_as'):
-		"Identifier or identifiers for the region covered by the extent.",
-
-	(science.Extent, 'southern_boundary'):
-		"If not global, southern boundary in degrees of latitude.",
-
-	(science.Extent, 'bottom_vertical_level'):
-		"Bottom vertical level centre (e.g. level near land surface or level ocean floor).",
-
-
-
-	(science.Model, 'model_default_properties'):
-		"Model default key properties (may be over-ridden in domain properties).",
-
-	(science.Model, 'id'):
-		"Vocabulary identifier, where this model description was constructed via a controlled vocabulary.",
-
-	(science.Model, 'internal_software_components'):
-		"Software modules which together provide the functionality for this model.",
-
-	(science.Model, 'category'):
-		"Generic type for this model.",
-
-	(science.Model, 'simulates'):
-		"The scientific domains which this model simulates.",
-
-	(science.Model, 'meta'):
-		"Metadata about how the model description was constructed.",
-
-	(science.Model, 'coupler'):
-		"Overarching coupling framework for model.",
-
-	(science.Model, 'coupled_components'):
-		"Software components which are linked together using a coupler to deliver this model.",
-
-
-
-	(science.Tuning, 'regional_metrics_used'):
-		"Which regional metrics of mean state (e.g Monsoons, tropical means etc) have been used in tuning.",
-
-	(science.Tuning, 'trend_metrics_used'):
-		"Which observed trend metrics have been used in tuning model parameters.",
-
-	(science.Tuning, 'description'):
-		"Brief description of tuning methodology. Include information about observational period(s) used.",
-
-	(science.Tuning, 'global_mean_metrics_used'):
-		"Set of metrics of the global mean state used in tuning model parameters.",
-
-
-
 	(science.Process, 'references'):
 		"Any relevant references describing this process and/or it's implementation.",
 
@@ -1356,11 +1342,11 @@ HELP = {
 
 
 
-	(science.Detail, 'from_vocab'):
-		"Name of an enumeration vocabulary of possible detail options.",
-
 	(science.Detail, 'with_cardinality'):
 		"Required cardinality of selection from vocabulary.",
+
+	(science.Detail, 'from_vocab'):
+		"Name of an enumeration vocabulary of possible detail options.",
 
 	(science.Detail, 'select'):
 		"Name of property to be selected from vocab.",
@@ -1370,6 +1356,20 @@ HELP = {
 
 	(science.Detail, 'detail_selection'):
 		"List of choices from the vocabulary of possible detailed options.",
+
+
+
+	(science.Tuning, 'regional_metrics_used'):
+		"Which regional metrics of mean state (e.g Monsoons, tropical means etc) have been used in tuning.",
+
+	(science.Tuning, 'trend_metrics_used'):
+		"Which observed trend metrics have been used in tuning model parameters.",
+
+	(science.Tuning, 'description'):
+		"Brief description of tuning methodology. Include information about observational period(s) used.",
+
+	(science.Tuning, 'global_mean_metrics_used'):
+		"Set of metrics of the global mean state used in tuning model parameters.",
 
 
 
@@ -1393,23 +1393,23 @@ HELP = {
 	(science.Grid, 'name'):
 		"This is a string usually used by the modelling group to describe the grid.(e.g. the ENDGAME/New Dynamics dynamical cores have their own grids describing variable layouts.",
 
+	(science.Grid, 'vertical_grid_layout'):
+		"Type of vertical grid-layout (e.g. Charney-Phillips.",
+
 	(science.Grid, 'horizontal_grid_layout'):
 		"Type of horizontal grid-layout (e.g. Arakawa C-Grid.",
+
+	(science.Grid, 'additional_details'):
+		"Additional grid properties.",
+
+	(science.Grid, 'horizontal_grid_type'):
+		"Description of basic horizontal grid (e.g. 'cubed-sphere').",
 
 	(science.Grid, 'vertical_grid_type'):
 		"Description of basic vertical grid (e.g. 'atmosphere_hybrid_height_coordinate').",
 
 	(science.Grid, 'meta'):
 		"Metadata about how the model description was constructed.",
-
-	(science.Grid, 'horizontal_grid_type'):
-		"Description of basic horizontal grid (e.g. 'cubed-sphere').",
-
-	(science.Grid, 'additional_details'):
-		"Additional grid properties.",
-
-	(science.Grid, 'vertical_grid_layout'):
-		"Type of vertical grid-layout (e.g. Charney-Phillips.",
 
 	(science.Grid, 'grid_extent'):
 		"Key geographic characteristics of the grid use to simulate a specific domain.",
@@ -1466,11 +1466,11 @@ HELP = {
 	(shared.ExternalDocument, 'publication_detail'):
 		"Journal/publisher, page and volume information as appropriate.",
 
-	(shared.ExternalDocument, 'meta'):
-		"Metadata about the creation of this document description.",
-
 	(shared.ExternalDocument, 'online_at'):
 		"Location of electronic version.",
+
+	(shared.ExternalDocument, 'meta'):
+		"Metadata about the creation of this document description.",
 
 	(shared.ExternalDocument, 'title'):
 		"Title or name of the document.",
@@ -1480,44 +1480,11 @@ HELP = {
 
 
 
-	(shared.DocMetaInfo, 'drs_path'):
-		"DRS related path to support documents with datasets.",
-
-	(shared.DocMetaInfo, 'sort_key'):
-		"Document sort key.",
-
-	(shared.DocMetaInfo, 'create_date'):
-		"Date upon which the instance was created.",
-
-	(shared.DocMetaInfo, 'author'):
-		"Author of the metadata in the parent document.",
-
-	(shared.DocMetaInfo, 'source_key'):
-		"Key of application that created the instance.",
-
-	(shared.DocMetaInfo, 'update_date'):
-		"Date upon which the instance was last updated.",
-
-	(shared.DocMetaInfo, 'project'):
-		"Name of project with which instance is associated with.",
-
-	(shared.DocMetaInfo, 'type_sort_key'):
-		"Document type sort key.",
-
-	(shared.DocMetaInfo, 'id'):
-		"Universal document identifier (normally a UUID).",
-
-	(shared.DocMetaInfo, 'source'):
-		"Name of application that created the instance.",
-
-	(shared.DocMetaInfo, 'external_ids'):
-		"Set of identifiers used to reference the document by external parties.",
-
 	(shared.DocMetaInfo, 'institute'):
 		"Name of institute with which instance is associated with.",
 
-	(shared.DocMetaInfo, 'drs_keys'):
-		"DRS related keys to support correlation of documents with datasets.",
+	(shared.DocMetaInfo, 'drs_path'):
+		"DRS related path to support documents with datasets.",
 
 	(shared.DocMetaInfo, 'type'):
 		"Document ontology type.",
@@ -1528,8 +1495,41 @@ HELP = {
 	(shared.DocMetaInfo, 'language'):
 		"Language with which instance is associated with.",
 
+	(shared.DocMetaInfo, 'create_date'):
+		"Date upon which the instance was created.",
+
+	(shared.DocMetaInfo, 'author'):
+		"Author of the metadata in the parent document.",
+
 	(shared.DocMetaInfo, 'type_display_name'):
 		"Document type display name.",
+
+	(shared.DocMetaInfo, 'source'):
+		"Name of application that created the instance.",
+
+	(shared.DocMetaInfo, 'id'):
+		"Universal document identifier (normally a UUID).",
+
+	(shared.DocMetaInfo, 'source_key'):
+		"Key of application that created the instance.",
+
+	(shared.DocMetaInfo, 'update_date'):
+		"Date upon which the instance was last updated.",
+
+	(shared.DocMetaInfo, 'project'):
+		"Name of project with which instance is associated with.",
+
+	(shared.DocMetaInfo, 'external_ids'):
+		"Set of identifiers used to reference the document by external parties.",
+
+	(shared.DocMetaInfo, 'drs_keys'):
+		"DRS related keys to support correlation of documents with datasets.",
+
+	(shared.DocMetaInfo, 'type_sort_key'):
+		"Document type sort key.",
+
+	(shared.DocMetaInfo, 'sort_key'):
+		"Document sort key.",
 
 
 
@@ -1563,22 +1563,14 @@ HELP = {
 
 
 
-	(shared.Pid, 'id'):
-		"The identifier.",
-
-	(shared.Pid, 'resolution_service'):
-		"The resolution service.",
-
-
+	(shared.OnlineResource, 'protocol'):
+		"Protocol to use at the linkage.",
 
 	(shared.OnlineResource, 'description'):
 		"Detail of how to access the resource.",
 
 	(shared.OnlineResource, 'name'):
 		"Name of online resource.",
-
-	(shared.OnlineResource, 'protocol'):
-		"Protocol to use at the linkage.",
 
 	(shared.OnlineResource, 'linkage'):
 		"A URL.",
@@ -1590,17 +1582,11 @@ HELP = {
 
 
 
-	(shared.QualityReview, 'quality_status'):
-		"Status from a controlled vocabulary.",
+	(shared.Pid, 'id'):
+		"The identifier.",
 
-	(shared.QualityReview, 'date'):
-		"Date upon which review was made.",
-
-	(shared.QualityReview, 'quality_description'):
-		"Assessment of quality of this document.",
-
-	(shared.QualityReview, 'metadata_reviewer'):
-		"Party who made the metadata quality assessment.",
+	(shared.Pid, 'resolution_service'):
+		"The resolution service.",
 
 
 
@@ -1668,6 +1654,42 @@ HELP = {
 
 
 
+	(shared.QualityReview, 'quality_status'):
+		"Status from a controlled vocabulary.",
+
+	(shared.QualityReview, 'date'):
+		"Date upon which review was made.",
+
+	(shared.QualityReview, 'quality_description'):
+		"Assessment of quality of this document.",
+
+	(shared.QualityReview, 'metadata_reviewer'):
+		"Party who made the metadata quality assessment.",
+
+
+
+	(shared.Calendar, 'standard_name'):
+		"Type of calendar used.",
+
+	(shared.Calendar, 'name'):
+		"Can be used to name a special calendar type.",
+
+	(shared.Calendar, 'description'):
+		"Extra information about the calendar.",
+
+	(shared.Calendar, 'month_lengths'):
+		"Used for special calendars to provide month lengths.",
+
+
+
+	(shared.Cimtext, 'content'):
+		"Raw content (including markup).",
+
+	(shared.Cimtext, 'content_type'):
+		"Type of content.",
+
+
+
 	(shared.TimePeriod, 'length'):
 		"Duration of the time period.",
 
@@ -1682,28 +1704,6 @@ HELP = {
 
 	(shared.TimePeriod, 'date'):
 		"Optional start/end date of time period.",
-
-
-
-	(shared.Calendar, 'standard_name'):
-		"Type of calendar used.",
-
-	(shared.Calendar, 'description'):
-		"Extra information about the calendar.",
-
-	(shared.Calendar, 'name'):
-		"Can be used to name a special calendar type.",
-
-	(shared.Calendar, 'month_lengths'):
-		"Used for special calendars to provide month lengths.",
-
-
-
-	(shared.Cimtext, 'content'):
-		"Raw content (including markup).",
-
-	(shared.Cimtext, 'content_type'):
-		"Type of content.",
 
 
 
@@ -1821,12 +1821,6 @@ HELP = {
 
 	""",
 
-	shared.NilReason: """
-		Provides an enumeration of possible reasons why a property has not been defined
-    Based on GML nilReason as discussed here: https://www.seegrid.csiro.au/wiki/AppSchemas/NilValues.
-
-	""",
-
 	shared.SlicetimeUnits: """
 		Units for integers in a timeslice.
 
@@ -1834,6 +1828,12 @@ HELP = {
 
 	shared.TimeUnits: """
 		Appropriate Time units for experiment durations in NWP and Climate Modelling.
+
+	""",
+
+	shared.NilReason: """
+		Provides an enumeration of possible reasons why a property has not been defined
+    Based on GML nilReason as discussed here: https://www.seegrid.csiro.au/wiki/AppSchemas/NilValues.
 
 	""",
 
@@ -2112,13 +2112,13 @@ HELP = {
 
 
 
+	(software.ProgrammingLanguage, 'Python'):
+		None,
+
 	(software.ProgrammingLanguage, 'C'):
 		None,
 
 	(software.ProgrammingLanguage, 'C++'):
-		None,
-
-	(software.ProgrammingLanguage, 'Python'):
 		None,
 
 	(software.ProgrammingLanguage, 'Fortran'):
@@ -2207,23 +2207,6 @@ HELP = {
 
 
 
-	(shared.NilReason, 'nil:withheld'):
-		"The value is not divulged",
-
-	(shared.NilReason, 'nil:inapplicable'):
-		"There is no value",
-
-	(shared.NilReason, 'nil:unknown'):
-		"The correct value is not known at this time. However, a correct value probably exists",
-
-	(shared.NilReason, 'nil:missing'):
-		"The correct value is not available. Furthermore, a correct value may not exist",
-
-	(shared.NilReason, 'nil:template'):
-		"The value will be available later",
-
-
-
 	(shared.SlicetimeUnits, 'monthly'):
 		None,
 
@@ -2243,6 +2226,23 @@ HELP = {
 
 	(shared.TimeUnits, 'seconds'):
 		None,
+
+
+
+	(shared.NilReason, 'nil:withheld'):
+		"The value is not divulged",
+
+	(shared.NilReason, 'nil:inapplicable'):
+		"There is no value",
+
+	(shared.NilReason, 'nil:unknown'):
+		"The correct value is not known at this time. However, a correct value probably exists",
+
+	(shared.NilReason, 'nil:missing'):
+		"The correct value is not available. Furthermore, a correct value may not exist",
+
+	(shared.NilReason, 'nil:template'):
+		"The value will be available later",
 
 
 
@@ -2355,9 +2355,6 @@ HELP = {
 	(shared.RoleCode, 'user'):
 		"Party who uses the resource",
 
-	(shared.RoleCode, 'sponsor'):
-		"Party who has invested in the production of the resource",
-
 	(shared.RoleCode, 'author'):
 		"Party who created (or co-created) resource",
 
@@ -2367,20 +2364,20 @@ HELP = {
 	(shared.RoleCode, 'collaborator'):
 		"Contributor to the production of the resource",
 
+	(shared.RoleCode, 'sponsor'):
+		"Party who has invested in the production of the resource",
+
 	(shared.RoleCode, 'custodian'):
 		"Party that accepts accountability and responsibility for the source resource",
+
+	(shared.RoleCode, 'resource provider'):
+		"Party that supplies the resource",
 
 	(shared.RoleCode, 'publisher'):
 		"Party who published the resource",
 
 	(shared.RoleCode, 'metadata_reviewer'):
 		"Party who carried out an independent review of (this) documentation",
-
-	(shared.RoleCode, 'resource provider'):
-		"Party that supplies the resource",
-
-	(shared.RoleCode, 'processor'):
-		"Party who has taken part in the workflow that resulted in this resource",
 
 	(shared.RoleCode, 'metadata_author'):
 		"Party who created (this) documentation",
@@ -2390,6 +2387,9 @@ HELP = {
 
 	(shared.RoleCode, 'Principal Investigator'):
 		"Key party responsible for the existence of the resource",
+
+	(shared.RoleCode, 'processor'):
+		"Party who has taken part in the workflow that resulted in this resource",
 
 	(shared.RoleCode, 'originator'):
 		"Original source for the resource if obtained from elsewhere",

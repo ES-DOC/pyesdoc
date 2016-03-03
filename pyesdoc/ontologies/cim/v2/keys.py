@@ -59,11 +59,11 @@ KEYS = {
 
     designing.ForcingConstraint: "cim.2.designing.ForcingConstraint",
 
-    designing.EnsembleRequirement: "cim.2.designing.EnsembleRequirement",
-
     designing.NumericalRequirement: "cim.2.designing.NumericalRequirement",
 
     designing.SimulationPlan: "cim.2.designing.SimulationPlan",
+
+    designing.EnsembleRequirement: "cim.2.designing.EnsembleRequirement",
 
     designing.DomainProperties: "cim.2.designing.DomainProperties",
 
@@ -121,13 +121,13 @@ KEYS = {
 
     activity.Conformance: "cim.2.activity.Conformance",
 
-    activity.EnsembleAxis: "cim.2.activity.EnsembleAxis",
+    activity.EnsembleMember: "cim.2.activity.EnsembleMember",
 
     activity.Ensemble: "cim.2.activity.Ensemble",
 
     activity.UberEnsemble: "cim.2.activity.UberEnsemble",
 
-    activity.EnsembleMember: "cim.2.activity.EnsembleMember",
+    activity.EnsembleAxis: "cim.2.activity.EnsembleAxis",
 
 
 
@@ -135,9 +135,9 @@ KEYS = {
 
     software.Variable: "cim.2.software.Variable",
 
-    software.DevelopmentPath: "cim.2.software.DevelopmentPath",
-
     software.ComponentBase: "cim.2.software.ComponentBase",
+
+    software.DevelopmentPath: "cim.2.software.DevelopmentPath",
 
     software.SoftwareComponent: "cim.2.software.SoftwareComponent",
 
@@ -147,23 +147,23 @@ KEYS = {
 
 
 
-    science.ScienceContext: "cim.2.science.ScienceContext",
-
     science.SubProcess: "cim.2.science.SubProcess",
-
-    science.Resolution: "cim.2.science.Resolution",
 
     science.ScientificDomain: "cim.2.science.ScientificDomain",
 
     science.Extent: "cim.2.science.Extent",
 
+    science.ScienceContext: "cim.2.science.ScienceContext",
+
     science.Model: "cim.2.science.Model",
 
-    science.Tuning: "cim.2.science.Tuning",
+    science.Resolution: "cim.2.science.Resolution",
 
     science.Process: "cim.2.science.Process",
 
     science.Detail: "cim.2.science.Detail",
+
+    science.Tuning: "cim.2.science.Tuning",
 
     science.Algorithm: "cim.2.science.Algorithm",
 
@@ -187,13 +187,11 @@ KEYS = {
 
     shared.RegularTimeset: "cim.2.shared.RegularTimeset",
 
-    shared.Pid: "cim.2.shared.Pid",
-
     shared.OnlineResource: "cim.2.shared.OnlineResource",
 
     shared.NumberArray: "cim.2.shared.NumberArray",
 
-    shared.QualityReview: "cim.2.shared.QualityReview",
+    shared.Pid: "cim.2.shared.Pid",
 
     shared.DocReference: "cim.2.shared.DocReference",
 
@@ -205,11 +203,13 @@ KEYS = {
 
     shared.TimesliceList: "cim.2.shared.TimesliceList",
 
-    shared.TimePeriod: "cim.2.shared.TimePeriod",
+    shared.QualityReview: "cim.2.shared.QualityReview",
 
     shared.Calendar: "cim.2.shared.Calendar",
 
     shared.Cimtext: "cim.2.shared.Cimtext",
+
+    shared.TimePeriod: "cim.2.shared.TimePeriod",
 
     shared.KeyFloat: "cim.2.shared.KeyFloat",
 
@@ -230,9 +230,9 @@ KEYS = {
 
     (designing.TemporalConstraint, 'start_date'): "cim.2.designing.TemporalConstraint.start_date",
 
-    (designing.TemporalConstraint, 'start_flexibility'): "cim.2.designing.TemporalConstraint.start_flexibility",
-
     (designing.TemporalConstraint, 'required_calendar'): "cim.2.designing.TemporalConstraint.required_calendar",
+
+    (designing.TemporalConstraint, 'start_flexibility'): "cim.2.designing.TemporalConstraint.start_flexibility",
 
     (designing.TemporalConstraint, 'required_duration'): "cim.2.designing.TemporalConstraint.required_duration",
 
@@ -240,25 +240,17 @@ KEYS = {
 
     (designing.ForcingConstraint, 'data_link'): "cim.2.designing.ForcingConstraint.data_link",
 
-    (designing.ForcingConstraint, 'origin'): "cim.2.designing.ForcingConstraint.origin",
-
     (designing.ForcingConstraint, 'forcing_type'): "cim.2.designing.ForcingConstraint.forcing_type",
 
     (designing.ForcingConstraint, 'additional_constraint'): "cim.2.designing.ForcingConstraint.additional_constraint",
+
+    (designing.ForcingConstraint, 'origin'): "cim.2.designing.ForcingConstraint.origin",
 
     (designing.ForcingConstraint, 'group'): "cim.2.designing.ForcingConstraint.group",
 
     (designing.ForcingConstraint, 'code'): "cim.2.designing.ForcingConstraint.code",
 
     (designing.ForcingConstraint, 'category'): "cim.2.designing.ForcingConstraint.category",
-
-
-
-    (designing.EnsembleRequirement, 'ensemble_type'): "cim.2.designing.EnsembleRequirement.ensemble_type",
-
-    (designing.EnsembleRequirement, 'ensemble_member'): "cim.2.designing.EnsembleRequirement.ensemble_member",
-
-    (designing.EnsembleRequirement, 'minimum_size'): "cim.2.designing.EnsembleRequirement.minimum_size",
 
 
 
@@ -275,6 +267,14 @@ KEYS = {
     (designing.SimulationPlan, 'expected_platform'): "cim.2.designing.SimulationPlan.expected_platform",
 
     (designing.SimulationPlan, 'expected_performance_sypd'): "cim.2.designing.SimulationPlan.expected_performance_sypd",
+
+
+
+    (designing.EnsembleRequirement, 'ensemble_type'): "cim.2.designing.EnsembleRequirement.ensemble_type",
+
+    (designing.EnsembleRequirement, 'ensemble_member'): "cim.2.designing.EnsembleRequirement.ensemble_member",
+
+    (designing.EnsembleRequirement, 'minimum_size'): "cim.2.designing.EnsembleRequirement.minimum_size",
 
 
 
@@ -314,11 +314,11 @@ KEYS = {
 
 
 
-    (data.Dataset, 'availability'): "cim.2.data.Dataset.availability",
-
     (data.Dataset, 'references'): "cim.2.data.Dataset.references",
 
     (data.Dataset, 'responsible_parties'): "cim.2.data.Dataset.responsible_parties",
+
+    (data.Dataset, 'availability'): "cim.2.data.Dataset.availability",
 
     (data.Dataset, 'meta'): "cim.2.data.Dataset.meta",
 
@@ -360,35 +360,35 @@ KEYS = {
 
 
 
-    (platform.ComputePool, 'cpu_type'): "cim.2.platform.ComputePool.cpu_type",
-
     (platform.ComputePool, 'number_of_nodes'): "cim.2.platform.ComputePool.number_of_nodes",
 
-    (platform.ComputePool, 'name'): "cim.2.platform.ComputePool.name",
-
-    (platform.ComputePool, 'memory_per_node'): "cim.2.platform.ComputePool.memory_per_node",
+    (platform.ComputePool, 'cpu_type'): "cim.2.platform.ComputePool.cpu_type",
 
     (platform.ComputePool, 'accelerators_per_node'): "cim.2.platform.ComputePool.accelerators_per_node",
 
-    (platform.ComputePool, 'description'): "cim.2.platform.ComputePool.description",
+    (platform.ComputePool, 'accelerator_type'): "cim.2.platform.ComputePool.accelerator_type",
 
-    (platform.ComputePool, 'interconnect'): "cim.2.platform.ComputePool.interconnect",
+    (platform.ComputePool, 'memory_per_node'): "cim.2.platform.ComputePool.memory_per_node",
+
+    (platform.ComputePool, 'name'): "cim.2.platform.ComputePool.name",
 
     (platform.ComputePool, 'operating_system'): "cim.2.platform.ComputePool.operating_system",
 
-    (platform.ComputePool, 'model_number'): "cim.2.platform.ComputePool.model_number",
+    (platform.ComputePool, 'interconnect'): "cim.2.platform.ComputePool.interconnect",
 
-    (platform.ComputePool, 'accelerator_type'): "cim.2.platform.ComputePool.accelerator_type",
+    (platform.ComputePool, 'description'): "cim.2.platform.ComputePool.description",
 
     (platform.ComputePool, 'compute_cores_per_node'): "cim.2.platform.ComputePool.compute_cores_per_node",
 
+    (platform.ComputePool, 'model_number'): "cim.2.platform.ComputePool.model_number",
 
 
-    (platform.ComponentPerformance, 'speed'): "cim.2.platform.ComponentPerformance.speed",
 
     (platform.ComponentPerformance, 'cores_used'): "cim.2.platform.ComponentPerformance.cores_used",
 
     (platform.ComponentPerformance, 'nodes_used'): "cim.2.platform.ComponentPerformance.nodes_used",
+
+    (platform.ComponentPerformance, 'speed'): "cim.2.platform.ComponentPerformance.speed",
 
     (platform.ComponentPerformance, 'component'): "cim.2.platform.ComponentPerformance.component",
 
@@ -396,29 +396,29 @@ KEYS = {
 
 
 
+    (platform.Performance, 'total_nodes_used'): "cim.2.platform.Performance.total_nodes_used",
+
+    (platform.Performance, 'compiler'): "cim.2.platform.Performance.compiler",
+
     (platform.Performance, 'meta'): "cim.2.platform.Performance.meta",
 
     (platform.Performance, 'subcomponent_performance'): "cim.2.platform.Performance.subcomponent_performance",
 
-    (platform.Performance, 'compiler'): "cim.2.platform.Performance.compiler",
-
-    (platform.Performance, 'total_nodes_used'): "cim.2.platform.Performance.total_nodes_used",
-
-    (platform.Performance, 'model'): "cim.2.platform.Performance.model",
+    (platform.Performance, 'name'): "cim.2.platform.Performance.name",
 
     (platform.Performance, 'coupler_load'): "cim.2.platform.Performance.coupler_load",
 
     (platform.Performance, 'chsy'): "cim.2.platform.Performance.chsy",
 
+    (platform.Performance, 'io_load'): "cim.2.platform.Performance.io_load",
+
+    (platform.Performance, 'sypd'): "cim.2.platform.Performance.sypd",
+
     (platform.Performance, 'memory_bloat'): "cim.2.platform.Performance.memory_bloat",
 
     (platform.Performance, 'platform'): "cim.2.platform.Performance.platform",
 
-    (platform.Performance, 'io_load'): "cim.2.platform.Performance.io_load",
-
-    (platform.Performance, 'name'): "cim.2.platform.Performance.name",
-
-    (platform.Performance, 'sypd'): "cim.2.platform.Performance.sypd",
+    (platform.Performance, 'model'): "cim.2.platform.Performance.model",
 
     (platform.Performance, 'load_imbalance'): "cim.2.platform.Performance.load_imbalance",
 
@@ -440,23 +440,23 @@ KEYS = {
 
     (platform.Partition, 'name'): "cim.2.platform.Partition.name",
 
-    (platform.Partition, 'storage_pools'): "cim.2.platform.Partition.storage_pools",
-
-    (platform.Partition, 'when_used'): "cim.2.platform.Partition.when_used",
-
     (platform.Partition, 'partition'): "cim.2.platform.Partition.partition",
 
     (platform.Partition, 'description'): "cim.2.platform.Partition.description",
 
-    (platform.Partition, 'institution'): "cim.2.platform.Partition.institution",
+    (platform.Partition, 'storage_pools'): "cim.2.platform.Partition.storage_pools",
 
-    (platform.Partition, 'vendor'): "cim.2.platform.Partition.vendor",
+    (platform.Partition, 'when_used'): "cim.2.platform.Partition.when_used",
+
+    (platform.Partition, 'institution'): "cim.2.platform.Partition.institution",
 
     (platform.Partition, 'online_documentation'): "cim.2.platform.Partition.online_documentation",
 
     (platform.Partition, 'model_number'): "cim.2.platform.Partition.model_number",
 
     (platform.Partition, 'compute_pools'): "cim.2.platform.Partition.compute_pools",
+
+    (platform.Partition, 'vendor'): "cim.2.platform.Partition.vendor",
 
 
 
@@ -514,9 +514,9 @@ KEYS = {
 
 
 
-    (drs.DrsEnsembleIdentifier, 'realisation_number'): "cim.2.drs.DrsEnsembleIdentifier.realisation_number",
-
     (drs.DrsEnsembleIdentifier, 'initialisation_method_number'): "cim.2.drs.DrsEnsembleIdentifier.initialisation_method_number",
+
+    (drs.DrsEnsembleIdentifier, 'realisation_number'): "cim.2.drs.DrsEnsembleIdentifier.realisation_number",
 
     (drs.DrsEnsembleIdentifier, 'perturbation_number'): "cim.2.drs.DrsEnsembleIdentifier.perturbation_number",
 
@@ -544,21 +544,21 @@ KEYS = {
 
     (activity.Activity, 'keywords'): "cim.2.activity.Activity.keywords",
 
-    (activity.Activity, 'rationale'): "cim.2.activity.Activity.rationale",
+    (activity.Activity, 'name'): "cim.2.activity.Activity.name",
+
+    (activity.Activity, 'references'): "cim.2.activity.Activity.references",
 
     (activity.Activity, 'long_name'): "cim.2.activity.Activity.long_name",
 
     (activity.Activity, 'canonical_name'): "cim.2.activity.Activity.canonical_name",
 
-    (activity.Activity, 'meta'): "cim.2.activity.Activity.meta",
-
-    (activity.Activity, 'references'): "cim.2.activity.Activity.references",
-
     (activity.Activity, 'responsible_parties'): "cim.2.activity.Activity.responsible_parties",
 
-    (activity.Activity, 'duration'): "cim.2.activity.Activity.duration",
+    (activity.Activity, 'meta'): "cim.2.activity.Activity.meta",
 
-    (activity.Activity, 'name'): "cim.2.activity.Activity.name",
+    (activity.Activity, 'rationale'): "cim.2.activity.Activity.rationale",
+
+    (activity.Activity, 'duration'): "cim.2.activity.Activity.duration",
 
     (activity.Activity, 'description'): "cim.2.activity.Activity.description",
 
@@ -568,13 +568,15 @@ KEYS = {
 
 
 
-    (activity.EnsembleAxis, 'target_requirement'): "cim.2.activity.EnsembleAxis.target_requirement",
+    (activity.EnsembleMember, 'variant_id'): "cim.2.activity.EnsembleMember.variant_id",
 
-    (activity.EnsembleAxis, 'short_identifier'): "cim.2.activity.EnsembleAxis.short_identifier",
+    (activity.EnsembleMember, 'errata'): "cim.2.activity.EnsembleMember.errata",
 
-    (activity.EnsembleAxis, 'extra_detail'): "cim.2.activity.EnsembleAxis.extra_detail",
+    (activity.EnsembleMember, 'had_performance'): "cim.2.activity.EnsembleMember.had_performance",
 
-    (activity.EnsembleAxis, 'member'): "cim.2.activity.EnsembleAxis.member",
+    (activity.EnsembleMember, 'simulation'): "cim.2.activity.EnsembleMember.simulation",
+
+    (activity.EnsembleMember, 'ran_on'): "cim.2.activity.EnsembleMember.ran_on",
 
 
 
@@ -596,15 +598,13 @@ KEYS = {
 
 
 
-    (activity.EnsembleMember, 'errata'): "cim.2.activity.EnsembleMember.errata",
+    (activity.EnsembleAxis, 'target_requirement'): "cim.2.activity.EnsembleAxis.target_requirement",
 
-    (activity.EnsembleMember, 'simulation'): "cim.2.activity.EnsembleMember.simulation",
+    (activity.EnsembleAxis, 'short_identifier'): "cim.2.activity.EnsembleAxis.short_identifier",
 
-    (activity.EnsembleMember, 'variant_id'): "cim.2.activity.EnsembleMember.variant_id",
+    (activity.EnsembleAxis, 'extra_detail'): "cim.2.activity.EnsembleAxis.extra_detail",
 
-    (activity.EnsembleMember, 'had_performance'): "cim.2.activity.EnsembleMember.had_performance",
-
-    (activity.EnsembleMember, 'ran_on'): "cim.2.activity.EnsembleMember.ran_on",
+    (activity.EnsembleAxis, 'member'): "cim.2.activity.EnsembleAxis.member",
 
 
 
@@ -614,11 +614,29 @@ KEYS = {
 
 
 
-    (software.Variable, 'prognostic'): "cim.2.software.Variable.prognostic",
-
     (software.Variable, 'description'): "cim.2.software.Variable.description",
 
+    (software.Variable, 'prognostic'): "cim.2.software.Variable.prognostic",
+
     (software.Variable, 'name'): "cim.2.software.Variable.name",
+
+
+
+    (software.ComponentBase, 'documentation'): "cim.2.software.ComponentBase.documentation",
+
+    (software.ComponentBase, 'name'): "cim.2.software.ComponentBase.name",
+
+    (software.ComponentBase, 'long_name'): "cim.2.software.ComponentBase.long_name",
+
+    (software.ComponentBase, 'repository'): "cim.2.software.ComponentBase.repository",
+
+    (software.ComponentBase, 'description'): "cim.2.software.ComponentBase.description",
+
+    (software.ComponentBase, 'development_history'): "cim.2.software.ComponentBase.development_history",
+
+    (software.ComponentBase, 'release_date'): "cim.2.software.ComponentBase.release_date",
+
+    (software.ComponentBase, 'version'): "cim.2.software.ComponentBase.version",
 
 
 
@@ -631,24 +649,6 @@ KEYS = {
     (software.DevelopmentPath, 'previous_version'): "cim.2.software.DevelopmentPath.previous_version",
 
     (software.DevelopmentPath, 'creators'): "cim.2.software.DevelopmentPath.creators",
-
-
-
-    (software.ComponentBase, 'documentation'): "cim.2.software.ComponentBase.documentation",
-
-    (software.ComponentBase, 'repository'): "cim.2.software.ComponentBase.repository",
-
-    (software.ComponentBase, 'name'): "cim.2.software.ComponentBase.name",
-
-    (software.ComponentBase, 'long_name'): "cim.2.software.ComponentBase.long_name",
-
-    (software.ComponentBase, 'description'): "cim.2.software.ComponentBase.description",
-
-    (software.ComponentBase, 'version'): "cim.2.software.ComponentBase.version",
-
-    (software.ComponentBase, 'development_history'): "cim.2.software.ComponentBase.development_history",
-
-    (software.ComponentBase, 'release_date'): "cim.2.software.ComponentBase.release_date",
 
 
 
@@ -682,6 +682,52 @@ KEYS = {
 
 
 
+    (science.SubProcess, 'implementation_overview'): "cim.2.science.SubProcess.implementation_overview",
+
+    (science.SubProcess, 'references'): "cim.2.science.SubProcess.references",
+
+    (science.SubProcess, 'properties'): "cim.2.science.SubProcess.properties",
+
+
+
+    (science.ScientificDomain, 'name'): "cim.2.science.ScientificDomain.name",
+
+    (science.ScientificDomain, 'id'): "cim.2.science.ScientificDomain.id",
+
+    (science.ScientificDomain, 'differing_key_properties'): "cim.2.science.ScientificDomain.differing_key_properties",
+
+    (science.ScientificDomain, 'references'): "cim.2.science.ScientificDomain.references",
+
+    (science.ScientificDomain, 'realm'): "cim.2.science.ScientificDomain.realm",
+
+    (science.ScientificDomain, 'overview'): "cim.2.science.ScientificDomain.overview",
+
+    (science.ScientificDomain, 'meta'): "cim.2.science.ScientificDomain.meta",
+
+    (science.ScientificDomain, 'simulates'): "cim.2.science.ScientificDomain.simulates",
+
+
+
+    (science.Extent, 'is_global'): "cim.2.science.Extent.is_global",
+
+    (science.Extent, 'western_boundary'): "cim.2.science.Extent.western_boundary",
+
+    (science.Extent, 'northern_boundary'): "cim.2.science.Extent.northern_boundary",
+
+    (science.Extent, 'eastern_boundary'): "cim.2.science.Extent.eastern_boundary",
+
+    (science.Extent, 'z_units'): "cim.2.science.Extent.z_units",
+
+    (science.Extent, 'region_known_as'): "cim.2.science.Extent.region_known_as",
+
+    (science.Extent, 'top_vertical_level'): "cim.2.science.Extent.top_vertical_level",
+
+    (science.Extent, 'southern_boundary'): "cim.2.science.Extent.southern_boundary",
+
+    (science.Extent, 'bottom_vertical_level'): "cim.2.science.Extent.bottom_vertical_level",
+
+
+
     (science.ScienceContext, 'context'): "cim.2.science.ScienceContext.context",
 
     (science.ScienceContext, 'name'): "cim.2.science.ScienceContext.name",
@@ -690,11 +736,21 @@ KEYS = {
 
 
 
-    (science.SubProcess, 'implementation_overview'): "cim.2.science.SubProcess.implementation_overview",
+    (science.Model, 'id'): "cim.2.science.Model.id",
 
-    (science.SubProcess, 'references'): "cim.2.science.SubProcess.references",
+    (science.Model, 'model_default_properties'): "cim.2.science.Model.model_default_properties",
 
-    (science.SubProcess, 'properties'): "cim.2.science.SubProcess.properties",
+    (science.Model, 'category'): "cim.2.science.Model.category",
+
+    (science.Model, 'internal_software_components'): "cim.2.science.Model.internal_software_components",
+
+    (science.Model, 'meta'): "cim.2.science.Model.meta",
+
+    (science.Model, 'simulates'): "cim.2.science.Model.simulates",
+
+    (science.Model, 'coupler'): "cim.2.science.Model.coupler",
+
+    (science.Model, 'coupled_components'): "cim.2.science.Model.coupled_components",
 
 
 
@@ -714,72 +770,6 @@ KEYS = {
 
 
 
-    (science.ScientificDomain, 'name'): "cim.2.science.ScientificDomain.name",
-
-    (science.ScientificDomain, 'references'): "cim.2.science.ScientificDomain.references",
-
-    (science.ScientificDomain, 'id'): "cim.2.science.ScientificDomain.id",
-
-    (science.ScientificDomain, 'differing_key_properties'): "cim.2.science.ScientificDomain.differing_key_properties",
-
-    (science.ScientificDomain, 'realm'): "cim.2.science.ScientificDomain.realm",
-
-    (science.ScientificDomain, 'overview'): "cim.2.science.ScientificDomain.overview",
-
-    (science.ScientificDomain, 'meta'): "cim.2.science.ScientificDomain.meta",
-
-    (science.ScientificDomain, 'simulates'): "cim.2.science.ScientificDomain.simulates",
-
-
-
-    (science.Extent, 'western_boundary'): "cim.2.science.Extent.western_boundary",
-
-    (science.Extent, 'is_global'): "cim.2.science.Extent.is_global",
-
-    (science.Extent, 'z_units'): "cim.2.science.Extent.z_units",
-
-    (science.Extent, 'northern_boundary'): "cim.2.science.Extent.northern_boundary",
-
-    (science.Extent, 'eastern_boundary'): "cim.2.science.Extent.eastern_boundary",
-
-    (science.Extent, 'top_vertical_level'): "cim.2.science.Extent.top_vertical_level",
-
-    (science.Extent, 'region_known_as'): "cim.2.science.Extent.region_known_as",
-
-    (science.Extent, 'southern_boundary'): "cim.2.science.Extent.southern_boundary",
-
-    (science.Extent, 'bottom_vertical_level'): "cim.2.science.Extent.bottom_vertical_level",
-
-
-
-    (science.Model, 'model_default_properties'): "cim.2.science.Model.model_default_properties",
-
-    (science.Model, 'id'): "cim.2.science.Model.id",
-
-    (science.Model, 'internal_software_components'): "cim.2.science.Model.internal_software_components",
-
-    (science.Model, 'category'): "cim.2.science.Model.category",
-
-    (science.Model, 'simulates'): "cim.2.science.Model.simulates",
-
-    (science.Model, 'meta'): "cim.2.science.Model.meta",
-
-    (science.Model, 'coupler'): "cim.2.science.Model.coupler",
-
-    (science.Model, 'coupled_components'): "cim.2.science.Model.coupled_components",
-
-
-
-    (science.Tuning, 'regional_metrics_used'): "cim.2.science.Tuning.regional_metrics_used",
-
-    (science.Tuning, 'trend_metrics_used'): "cim.2.science.Tuning.trend_metrics_used",
-
-    (science.Tuning, 'description'): "cim.2.science.Tuning.description",
-
-    (science.Tuning, 'global_mean_metrics_used'): "cim.2.science.Tuning.global_mean_metrics_used",
-
-
-
     (science.Process, 'references'): "cim.2.science.Process.references",
 
     (science.Process, 'sub_processes'): "cim.2.science.Process.sub_processes",
@@ -794,15 +784,25 @@ KEYS = {
 
 
 
-    (science.Detail, 'from_vocab'): "cim.2.science.Detail.from_vocab",
-
     (science.Detail, 'with_cardinality'): "cim.2.science.Detail.with_cardinality",
+
+    (science.Detail, 'from_vocab'): "cim.2.science.Detail.from_vocab",
 
     (science.Detail, 'select'): "cim.2.science.Detail.select",
 
     (science.Detail, 'content'): "cim.2.science.Detail.content",
 
     (science.Detail, 'detail_selection'): "cim.2.science.Detail.detail_selection",
+
+
+
+    (science.Tuning, 'regional_metrics_used'): "cim.2.science.Tuning.regional_metrics_used",
+
+    (science.Tuning, 'trend_metrics_used'): "cim.2.science.Tuning.trend_metrics_used",
+
+    (science.Tuning, 'description'): "cim.2.science.Tuning.description",
+
+    (science.Tuning, 'global_mean_metrics_used'): "cim.2.science.Tuning.global_mean_metrics_used",
 
 
 
@@ -820,17 +820,17 @@ KEYS = {
 
     (science.Grid, 'name'): "cim.2.science.Grid.name",
 
+    (science.Grid, 'vertical_grid_layout'): "cim.2.science.Grid.vertical_grid_layout",
+
     (science.Grid, 'horizontal_grid_layout'): "cim.2.science.Grid.horizontal_grid_layout",
+
+    (science.Grid, 'additional_details'): "cim.2.science.Grid.additional_details",
+
+    (science.Grid, 'horizontal_grid_type'): "cim.2.science.Grid.horizontal_grid_type",
 
     (science.Grid, 'vertical_grid_type'): "cim.2.science.Grid.vertical_grid_type",
 
     (science.Grid, 'meta'): "cim.2.science.Grid.meta",
-
-    (science.Grid, 'horizontal_grid_type'): "cim.2.science.Grid.horizontal_grid_type",
-
-    (science.Grid, 'additional_details'): "cim.2.science.Grid.additional_details",
-
-    (science.Grid, 'vertical_grid_layout'): "cim.2.science.Grid.vertical_grid_layout",
 
     (science.Grid, 'grid_extent'): "cim.2.science.Grid.grid_extent",
 
@@ -872,9 +872,9 @@ KEYS = {
 
     (shared.ExternalDocument, 'publication_detail'): "cim.2.shared.ExternalDocument.publication_detail",
 
-    (shared.ExternalDocument, 'meta'): "cim.2.shared.ExternalDocument.meta",
-
     (shared.ExternalDocument, 'online_at'): "cim.2.shared.ExternalDocument.online_at",
+
+    (shared.ExternalDocument, 'meta'): "cim.2.shared.ExternalDocument.meta",
 
     (shared.ExternalDocument, 'title'): "cim.2.shared.ExternalDocument.title",
 
@@ -882,31 +882,9 @@ KEYS = {
 
 
 
-    (shared.DocMetaInfo, 'drs_path'): "cim.2.shared.DocMetaInfo.drs_path",
-
-    (shared.DocMetaInfo, 'sort_key'): "cim.2.shared.DocMetaInfo.sort_key",
-
-    (shared.DocMetaInfo, 'create_date'): "cim.2.shared.DocMetaInfo.create_date",
-
-    (shared.DocMetaInfo, 'author'): "cim.2.shared.DocMetaInfo.author",
-
-    (shared.DocMetaInfo, 'source_key'): "cim.2.shared.DocMetaInfo.source_key",
-
-    (shared.DocMetaInfo, 'update_date'): "cim.2.shared.DocMetaInfo.update_date",
-
-    (shared.DocMetaInfo, 'project'): "cim.2.shared.DocMetaInfo.project",
-
-    (shared.DocMetaInfo, 'type_sort_key'): "cim.2.shared.DocMetaInfo.type_sort_key",
-
-    (shared.DocMetaInfo, 'id'): "cim.2.shared.DocMetaInfo.id",
-
-    (shared.DocMetaInfo, 'source'): "cim.2.shared.DocMetaInfo.source",
-
-    (shared.DocMetaInfo, 'external_ids'): "cim.2.shared.DocMetaInfo.external_ids",
-
     (shared.DocMetaInfo, 'institute'): "cim.2.shared.DocMetaInfo.institute",
 
-    (shared.DocMetaInfo, 'drs_keys'): "cim.2.shared.DocMetaInfo.drs_keys",
+    (shared.DocMetaInfo, 'drs_path'): "cim.2.shared.DocMetaInfo.drs_path",
 
     (shared.DocMetaInfo, 'type'): "cim.2.shared.DocMetaInfo.type",
 
@@ -914,7 +892,29 @@ KEYS = {
 
     (shared.DocMetaInfo, 'language'): "cim.2.shared.DocMetaInfo.language",
 
+    (shared.DocMetaInfo, 'create_date'): "cim.2.shared.DocMetaInfo.create_date",
+
+    (shared.DocMetaInfo, 'author'): "cim.2.shared.DocMetaInfo.author",
+
     (shared.DocMetaInfo, 'type_display_name'): "cim.2.shared.DocMetaInfo.type_display_name",
+
+    (shared.DocMetaInfo, 'source'): "cim.2.shared.DocMetaInfo.source",
+
+    (shared.DocMetaInfo, 'id'): "cim.2.shared.DocMetaInfo.id",
+
+    (shared.DocMetaInfo, 'source_key'): "cim.2.shared.DocMetaInfo.source_key",
+
+    (shared.DocMetaInfo, 'update_date'): "cim.2.shared.DocMetaInfo.update_date",
+
+    (shared.DocMetaInfo, 'project'): "cim.2.shared.DocMetaInfo.project",
+
+    (shared.DocMetaInfo, 'external_ids'): "cim.2.shared.DocMetaInfo.external_ids",
+
+    (shared.DocMetaInfo, 'drs_keys'): "cim.2.shared.DocMetaInfo.drs_keys",
+
+    (shared.DocMetaInfo, 'type_sort_key'): "cim.2.shared.DocMetaInfo.type_sort_key",
+
+    (shared.DocMetaInfo, 'sort_key'): "cim.2.shared.DocMetaInfo.sort_key",
 
 
 
@@ -940,17 +940,11 @@ KEYS = {
 
 
 
-    (shared.Pid, 'id'): "cim.2.shared.Pid.id",
-
-    (shared.Pid, 'resolution_service'): "cim.2.shared.Pid.resolution_service",
-
-
+    (shared.OnlineResource, 'protocol'): "cim.2.shared.OnlineResource.protocol",
 
     (shared.OnlineResource, 'description'): "cim.2.shared.OnlineResource.description",
 
     (shared.OnlineResource, 'name'): "cim.2.shared.OnlineResource.name",
-
-    (shared.OnlineResource, 'protocol'): "cim.2.shared.OnlineResource.protocol",
 
     (shared.OnlineResource, 'linkage'): "cim.2.shared.OnlineResource.linkage",
 
@@ -960,13 +954,9 @@ KEYS = {
 
 
 
-    (shared.QualityReview, 'quality_status'): "cim.2.shared.QualityReview.quality_status",
+    (shared.Pid, 'id'): "cim.2.shared.Pid.id",
 
-    (shared.QualityReview, 'date'): "cim.2.shared.QualityReview.date",
-
-    (shared.QualityReview, 'quality_description'): "cim.2.shared.QualityReview.quality_description",
-
-    (shared.QualityReview, 'metadata_reviewer'): "cim.2.shared.QualityReview.metadata_reviewer",
+    (shared.Pid, 'resolution_service'): "cim.2.shared.Pid.resolution_service",
 
 
 
@@ -1016,6 +1006,32 @@ KEYS = {
 
 
 
+    (shared.QualityReview, 'quality_status'): "cim.2.shared.QualityReview.quality_status",
+
+    (shared.QualityReview, 'date'): "cim.2.shared.QualityReview.date",
+
+    (shared.QualityReview, 'quality_description'): "cim.2.shared.QualityReview.quality_description",
+
+    (shared.QualityReview, 'metadata_reviewer'): "cim.2.shared.QualityReview.metadata_reviewer",
+
+
+
+    (shared.Calendar, 'standard_name'): "cim.2.shared.Calendar.standard_name",
+
+    (shared.Calendar, 'name'): "cim.2.shared.Calendar.name",
+
+    (shared.Calendar, 'description'): "cim.2.shared.Calendar.description",
+
+    (shared.Calendar, 'month_lengths'): "cim.2.shared.Calendar.month_lengths",
+
+
+
+    (shared.Cimtext, 'content'): "cim.2.shared.Cimtext.content",
+
+    (shared.Cimtext, 'content_type'): "cim.2.shared.Cimtext.content_type",
+
+
+
     (shared.TimePeriod, 'length'): "cim.2.shared.TimePeriod.length",
 
     (shared.TimePeriod, 'units'): "cim.2.shared.TimePeriod.units",
@@ -1025,22 +1041,6 @@ KEYS = {
     (shared.TimePeriod, 'date_type'): "cim.2.shared.TimePeriod.date_type",
 
     (shared.TimePeriod, 'date'): "cim.2.shared.TimePeriod.date",
-
-
-
-    (shared.Calendar, 'standard_name'): "cim.2.shared.Calendar.standard_name",
-
-    (shared.Calendar, 'description'): "cim.2.shared.Calendar.description",
-
-    (shared.Calendar, 'name'): "cim.2.shared.Calendar.name",
-
-    (shared.Calendar, 'month_lengths'): "cim.2.shared.Calendar.month_lengths",
-
-
-
-    (shared.Cimtext, 'content'): "cim.2.shared.Cimtext.content",
-
-    (shared.Cimtext, 'content_type'): "cim.2.shared.Cimtext.content_type",
 
 
 
@@ -1103,11 +1103,11 @@ KEYS = {
 
     shared.PeriodDateTypes: "cim.2.shared.PeriodDateTypes",
 
-    shared.NilReason: "cim.2.shared.NilReason",
-
     shared.SlicetimeUnits: "cim.2.shared.SlicetimeUnits",
 
     shared.TimeUnits: "cim.2.shared.TimeUnits",
+
+    shared.NilReason: "cim.2.shared.NilReason",
 
     shared.DocumentTypes: "cim.2.shared.DocumentTypes",
 
@@ -1298,11 +1298,11 @@ KEYS = {
 
 
 
+    (software.ProgrammingLanguage, 'Python'): "cim.2.software.ProgrammingLanguage.Python",
+
     (software.ProgrammingLanguage, 'C'): "cim.2.software.ProgrammingLanguage.C",
 
     (software.ProgrammingLanguage, 'C++'): "cim.2.software.ProgrammingLanguage.C++",
-
-    (software.ProgrammingLanguage, 'Python'): "cim.2.software.ProgrammingLanguage.Python",
 
     (software.ProgrammingLanguage, 'Fortran'): "cim.2.software.ProgrammingLanguage.Fortran",
 
@@ -1366,18 +1366,6 @@ KEYS = {
 
 
 
-    (shared.NilReason, 'nil:withheld'): "cim.2.shared.NilReason.nil:withheld",
-
-    (shared.NilReason, 'nil:inapplicable'): "cim.2.shared.NilReason.nil:inapplicable",
-
-    (shared.NilReason, 'nil:unknown'): "cim.2.shared.NilReason.nil:unknown",
-
-    (shared.NilReason, 'nil:missing'): "cim.2.shared.NilReason.nil:missing",
-
-    (shared.NilReason, 'nil:template'): "cim.2.shared.NilReason.nil:template",
-
-
-
     (shared.SlicetimeUnits, 'monthly'): "cim.2.shared.SlicetimeUnits.monthly",
 
     (shared.SlicetimeUnits, 'yearly'): "cim.2.shared.SlicetimeUnits.yearly",
@@ -1391,6 +1379,18 @@ KEYS = {
     (shared.TimeUnits, 'days'): "cim.2.shared.TimeUnits.days",
 
     (shared.TimeUnits, 'seconds'): "cim.2.shared.TimeUnits.seconds",
+
+
+
+    (shared.NilReason, 'nil:withheld'): "cim.2.shared.NilReason.nil:withheld",
+
+    (shared.NilReason, 'nil:inapplicable'): "cim.2.shared.NilReason.nil:inapplicable",
+
+    (shared.NilReason, 'nil:unknown'): "cim.2.shared.NilReason.nil:unknown",
+
+    (shared.NilReason, 'nil:missing'): "cim.2.shared.NilReason.nil:missing",
+
+    (shared.NilReason, 'nil:template'): "cim.2.shared.NilReason.nil:template",
 
 
 
@@ -1468,29 +1468,29 @@ KEYS = {
 
     (shared.RoleCode, 'user'): "cim.2.shared.RoleCode.user",
 
-    (shared.RoleCode, 'sponsor'): "cim.2.shared.RoleCode.sponsor",
-
     (shared.RoleCode, 'author'): "cim.2.shared.RoleCode.author",
 
     (shared.RoleCode, 'owner'): "cim.2.shared.RoleCode.owner",
 
     (shared.RoleCode, 'collaborator'): "cim.2.shared.RoleCode.collaborator",
 
+    (shared.RoleCode, 'sponsor'): "cim.2.shared.RoleCode.sponsor",
+
     (shared.RoleCode, 'custodian'): "cim.2.shared.RoleCode.custodian",
+
+    (shared.RoleCode, 'resource provider'): "cim.2.shared.RoleCode.resource-provider",
 
     (shared.RoleCode, 'publisher'): "cim.2.shared.RoleCode.publisher",
 
     (shared.RoleCode, 'metadata_reviewer'): "cim.2.shared.RoleCode.metadata_reviewer",
-
-    (shared.RoleCode, 'resource provider'): "cim.2.shared.RoleCode.resource-provider",
-
-    (shared.RoleCode, 'processor'): "cim.2.shared.RoleCode.processor",
 
     (shared.RoleCode, 'metadata_author'): "cim.2.shared.RoleCode.metadata_author",
 
     (shared.RoleCode, 'distributor'): "cim.2.shared.RoleCode.distributor",
 
     (shared.RoleCode, 'Principal Investigator'): "cim.2.shared.RoleCode.Principal-Investigator",
+
+    (shared.RoleCode, 'processor'): "cim.2.shared.RoleCode.processor",
 
     (shared.RoleCode, 'originator'): "cim.2.shared.RoleCode.originator",
 
