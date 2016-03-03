@@ -123,7 +123,7 @@ def validate(doc):
 
     """
     graph = ValidationGraph(doc)
-    for node in graph.nodes:
+    for node in graph:
         _validate_node(node)
 
     return graph.invalid_nodes

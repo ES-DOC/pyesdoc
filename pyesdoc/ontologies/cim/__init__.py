@@ -10,6 +10,8 @@
 .. note:: Code generated using esdoc_mp @ 2013-04-17 13:14:13.903808.
 
 """
+from collections import defaultdict
+
 import v1
 import v2
 
@@ -36,15 +38,46 @@ CLASSES = tuple(i for i in (j for j in (v.CLASSES for v in VERSIONS)))
 # Ontology enum.
 ENUMS = tuple(i for i in (j for j in (v.ENUMS for v in VERSIONS)))
 
+# Class properties.
+CLASS_PROPERTIES = {}
+for v in VERSIONS:
+    CLASS_PROPERTIES.update(v.CLASS_PROPERTIES)
+
+# Class own properties.
+CLASS_OWN_PROPERTIES = {}
+for v in VERSIONS:
+    CLASS_OWN_PROPERTIES.update(v.CLASS_OWN_PROPERTIES)
+
+# Base classes.
+BASE_CLASSES = defaultdict(tuple)
+for v in VERSIONS:
+    BASE_CLASSES.update(v.BASE_CLASSES)
+
+# Classes with base classes.
+BASE_CLASSED = tuple(i for i in (j for j in (v.BASE_CLASSED for v in VERSIONS)))
+
+# Sub classes.
+SUB_CLASSES = defaultdict(tuple)
+for v in VERSIONS:
+    SUB_CLASSES.update(v.SUB_CLASSES)
+
+# Classes that have been sub classed.
+SUB_CLASSED = tuple(i for i in (j for j in (v.SUB_CLASSED for v in VERSIONS)))
+
 # Ontology type keys.
 KEYS = {}
-KEYS.update(v1.KEYS)
-KEYS.update(v2.KEYS)
+for v in VERSIONS:
+    KEYS.update(v.KEYS)
 
 # Ontology constraints.
 CONSTRAINTS = {}
-CONSTRAINTS.update(v1.CONSTRAINTS)
-CONSTRAINTS.update(v2.CONSTRAINTS)
+for v in VERSIONS:
+    CONSTRAINTS.update(v.CONSTRAINTS)
+
+# Help text.
+HELP = {}
+for v in VERSIONS:
+    HELP.update({k: v.strip() if v else None for k, v in v.HELP.items()})
 
 # Map of document types to display names.
 DISPLAY_NAMES = {
@@ -72,7 +105,5 @@ SORT_KEYS = {
     v2.designing.NumericalExperiment: u"AB"
 }
 
-# Help text.
-HELP = {}
-for v in VERSIONS:
-    HELP.update({k: v.strip() if v else None for k, v in v.HELP.items()})
+del v
+del defaultdict

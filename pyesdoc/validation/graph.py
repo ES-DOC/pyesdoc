@@ -82,11 +82,11 @@ class _ValidationNode(object):
         """Gets a flag indicating whether node has children or not.
 
         """
-        return \
-            self.type in ontologies.TYPES and \
-            not isinstance(self.value, list) and \
-            self.value is not None and \
-            type(self.value) == self.type
+        if self.type in ontologies.TYPES and \
+           not isinstance(self.value, list) and \
+           self.value is not None and \
+           type(self.value) == self.type:
+           return True
 
 
     def _set_children(self):
@@ -193,9 +193,17 @@ class ValidationGraph(_ValidationNode):
         return reduce(lambda r, n: r + "\n{0}".format(n), self.nodes, self.path)
 
 
+    def __iter__(self):
+        """Instance iterator initializer.
+
+        """
+        return iter(self.nodes)
+
+
     @property
     def invalid_nodes(self):
         """Get set of invalid nodes.
 
         """
         return [n for n in self.nodes if n.is_invalid]
+
