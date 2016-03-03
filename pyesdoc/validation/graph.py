@@ -13,7 +13,7 @@ from pyesdoc import ontologies
 
 
 
-class _DocumentValidationNode(object):
+class _ValidationNode(object):
     """A node within a validation graph.
 
     """
@@ -30,7 +30,7 @@ class _DocumentValidationNode(object):
         :param str path: Node path.
         :param class typeof: Type used during type checking.
         :param bool is_required: Indicates whether a value is required.
-        :param _DocumentValidationNode parent: Parent node.
+        :param _ValidationNode parent: Parent node.
 
         """
         self.children = []
@@ -93,6 +93,50 @@ class _DocumentValidationNode(object):
         """Sets collection of child node from type information.
 
         """
+        for name, constraints in ontologies.get_validation_info(self.type):
+            val = getattr(self.value, name)
+            path = self.path + "." + name
+            # Create child node.
+            _ValidationNode(
+                val,
+                path,
+                self,
+                self.root,
+                constraints
+                )
+
+            # Continue if not processing a collection.
+            if not isinstance(val, list):
+                continue
+
+            # Create child nodes for collections.
+            for idx, item in enumerate([i for i in val if i is not None]):
+                _ValidationNode(
+                    item,
+                    "{0}[{1}]".format(path, idx),
+                    type(item),
+                    False,
+                    self,
+                    self.root
+                    )
+
+                _ValidationNode(
+                    item,
+                    "{0}[{1}]".format(path, idx),
+                    self,
+                    self.root,
+                    constraints
+                    )
+
+    def __init__(self,
+                 value,
+                 path,
+                 typeof=None,
+                 is_required=False,
+                 parent=None,
+                 root=None):
+
+
         for type_info in ontologies.get_type_info(self.type):
             # Unpack type info.
             is_required = type_info[2]
@@ -104,7 +148,7 @@ class _DocumentValidationNode(object):
             value = getattr(self.value, name)
 
             # Create child node.
-            _DocumentValidationNode(
+            _ValidationNode(
                 value,
                 path,
                 typeof,
@@ -116,7 +160,7 @@ class _DocumentValidationNode(object):
             # Create child nodes for list items.
             if isinstance(value, list):
                 for idx, item in enumerate([i for i in value if i is not None]):
-                    _DocumentValidationNode(
+                    _ValidationNode(
                         item,
                         "{0}[{1}]".format(path, idx),
                         type(item),
@@ -126,7 +170,7 @@ class _DocumentValidationNode(object):
                         )
 
 
-class DocumentValidationGraph(_DocumentValidationNode):
+class ValidationGraph(_ValidationNode):
     """A document validation graph.
 
     A set of heirarchical nodes processed by a validator.
@@ -139,7 +183,7 @@ class DocumentValidationGraph(_DocumentValidationNode):
 
         """
         self.nodes = []
-        super(DocumentValidationGraph, self).__init__(doc, "doc")
+        super(ValidationGraph, self).__init__(doc, "doc")
 
 
     def __repr__(self):

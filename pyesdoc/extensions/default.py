@@ -15,35 +15,6 @@ from pyesdoc.ontologies import cim
 
 
 
-# Map of document types to type display names.
-_TYPE_DISPLAY_NAMES = {
-    cim.v1.activity.NumericalExperiment: u"Experiment",
-    cim.v1.activity.SimulationRun: u"Simulation",
-    cim.v1.data.DataObject: u"Data Object",
-    cim.v1.grids.GridSpec: u"Grid Spec",
-    cim.v1.misc.DocumentSet: u"Simulation",
-    cim.v1.quality.CimQuality: u"Dataset QC",
-    cim.v1.software.ModelComponent: u"Model",
-
-    cim.v2.designing.NumericalExperiment: u"Experiment"
-}
-
-# Map of document types to type sort keys.
-_TYPE_SORT_KEYS = {
-    cim.v1.activity.Ensemble: u"BC",
-    cim.v1.activity.NumericalExperiment: u"AB",
-    cim.v1.activity.SimulationRun: u"AC",
-    cim.v1.data.DataObject: u"CA",
-    cim.v1.grids.GridSpec: u"BB",
-    cim.v1.misc.DocumentSet: u"AC",
-    cim.v1.quality.CimQuality: u"CB",
-    cim.v1.shared.Platform: u"BA",
-    cim.v1.software.ModelComponent: u"AA",
-
-    cim.v2.designing.NumericalExperiment: u"AB"
-}
-
-
 def _set_full_id(ctx):
     """Sets full document identifier.
 
@@ -59,11 +30,11 @@ def _set_type_info(ctx):
     ctx.meta.type = ctx.ext.type = ctx.doc.__class__.type_key
     ctx.ext.css_class = ctx.ext.type.lower().replace(".", "-")
     try:
-        ctx.meta.type_display_name = _TYPE_DISPLAY_NAMES[type(ctx.doc)]
+        ctx.meta.type_display_name = cim.DISPLAY_NAMES[type(ctx.doc)]
     except KeyError:
         ctx.meta.type_display_name = ctx.meta.type.split(".")[-1]
     try:
-        ctx.meta.type_sort_key = _TYPE_SORT_KEYS[type(ctx.doc)]
+        ctx.meta.type_sort_key = cim.SORT_KEYS[type(ctx.doc)]
     except KeyError:
         ctx.meta.type_sort_key = u"ZZ"
 

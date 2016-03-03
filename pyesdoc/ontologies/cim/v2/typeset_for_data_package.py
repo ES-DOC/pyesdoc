@@ -27,7 +27,7 @@ class Dataset(object):
 
     """
     def __init__(self):
-        """Constructor.
+        """Instance constructor.
 
         """
         super(Dataset, self).__init__()
@@ -51,7 +51,7 @@ class Simulation(activity.Activity):
 
     """
     def __init__(self):
-        """Constructor.
+        """Instance constructor.
 
         """
         super(Simulation, self).__init__()
@@ -72,7 +72,7 @@ class VariableCollection(object):
 
     """
     def __init__(self):
-        """Constructor.
+        """Instance constructor.
 
         """
         super(VariableCollection, self).__init__()
@@ -88,7 +88,7 @@ class Downscaling(Simulation):
 
     """
     def __init__(self):
-        """Constructor.
+        """Instance constructor.
 
         """
         super(Downscaling, self).__init__()

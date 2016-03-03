@@ -23,12 +23,12 @@ def _get_doc(obj, doc_type):
     """Returns document.
 
     """
-    if doc_type.type_key != obj['ontology_type_key']:
+    if ontologies.get_type_key(doc_type) != obj['ontology_type_key']:
         doc_type = ontologies.get_type_from_key(obj['ontology_type_key'])
     if doc_type is None:
         raise ValueError('Decoding type is unrecognized')
 
-    return doc_type(), ontologies.get_type_info(doc_type)
+    return doc_type(), ontologies.get_decoder_info(doc_type)
 
 
 def _decode_simple(value, target_type, iterable):
@@ -49,7 +49,7 @@ def _decode(value, doc_type, iterable):
         doc, doc_type_info = _get_doc(obj, doc_type)
 
         # Set doc attributes.
-        for _name, _type, _required, _iterable in doc_type_info:
+        for _name, _type, _iterable in doc_type_info:
             # ... set placeholders
             if _name not in obj:
                 continue
@@ -77,11 +77,16 @@ def decode(as_dict):
     """
     # Format keys.
     as_dict = convert.dict_keys(as_dict, convert.str_to_underscore_case)
-    if 'ontology_type_key' not in as_dict:
+
+    # Get document type key.
+    try:
+        doc_type_key = as_dict['ontology_type_key']
+    except KeyError:
         raise KeyError('ontology_type_key is unspecified and therefore the document cannot be decoded.')
 
     # Get document type.
-    doc_type_key = as_dict['ontology_type_key']
     doc_type = ontologies.get_type_from_key(doc_type_key)
+    if doc_type is None:
+        raise ValueError('ontology_type_key cannot be mapped to a supported ontology type.')
 
     return _decode(as_dict, doc_type, False)

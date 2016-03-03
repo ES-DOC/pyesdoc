@@ -27,7 +27,7 @@ class ConservationProperties(object):
 
     """
     def __init__(self):
-        """Constructor.
+        """Instance constructor.
 
         """
         super(ConservationProperties, self).__init__()
@@ -47,7 +47,7 @@ class Extent(object):
 
     """
     def __init__(self):
-        """Constructor.
+        """Instance constructor.
 
         """
         super(Extent, self).__init__()
@@ -72,7 +72,7 @@ class Grid(object):
 
     """
     def __init__(self):
-        """Constructor.
+        """Instance constructor.
 
         """
         super(Grid, self).__init__()
@@ -95,7 +95,7 @@ class KeyProperties(object):
 
     """
     def __init__(self):
-        """Constructor.
+        """Instance constructor.
 
         """
         super(KeyProperties, self).__init__()
@@ -117,7 +117,7 @@ class Model(software.ComponentBase):
 
     """
     def __init__(self):
-        """Constructor.
+        """Instance constructor.
 
         """
         super(Model, self).__init__()
@@ -144,7 +144,7 @@ class Resolution(object):
 
     """
     def __init__(self):
-        """Constructor.
+        """Instance constructor.
 
         """
         super(Resolution, self).__init__()
@@ -170,7 +170,7 @@ class ScienceContext(object):
     __metaclass__ = abc.ABCMeta
 
     def __init__(self):
-        """Constructor.
+        """Instance constructor.
 
         """
         super(ScienceContext, self).__init__()
@@ -188,7 +188,7 @@ class ScientificDomain(object):
 
     """
     def __init__(self):
-        """Constructor.
+        """Instance constructor.
 
         """
         super(ScientificDomain, self).__init__()
@@ -210,7 +210,7 @@ class Tuning(object):
 
     """
     def __init__(self):
-        """Constructor.
+        """Instance constructor.
 
         """
         super(Tuning, self).__init__()
@@ -232,7 +232,7 @@ class Algorithm(ScienceContext):
 
     """
     def __init__(self):
-        """Constructor.
+        """Instance constructor.
 
         """
         super(Algorithm, self).__init__()
@@ -255,7 +255,7 @@ class Detail(ScienceContext):
 
     """
     def __init__(self):
-        """Constructor.
+        """Instance constructor.
 
         """
         super(Detail, self).__init__()
@@ -278,7 +278,7 @@ class Process(ScienceContext):
 
     """
     def __init__(self):
-        """Constructor.
+        """Instance constructor.
 
         """
         super(Process, self).__init__()
@@ -302,7 +302,7 @@ class SubProcess(ScienceContext):
 
     """
     def __init__(self):
-        """Constructor.
+        """Instance constructor.
 
         """
         super(SubProcess, self).__init__()

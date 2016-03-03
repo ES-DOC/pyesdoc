@@ -27,7 +27,7 @@ class Calendar(object):
     __metaclass__ = abc.ABCMeta
 
     def __init__(self):
-        """Constructor.
+        """Instance constructor.
 
         """
         super(Calendar, self).__init__()
@@ -44,7 +44,7 @@ class Change(object):
 
     """
     def __init__(self):
-        """Constructor.
+        """Instance constructor.
 
         """
         super(Change, self).__init__()
@@ -64,7 +64,7 @@ class Citation(object):
 
     """
     def __init__(self):
-        """Constructor.
+        """Instance constructor.
 
         """
         super(Citation, self).__init__()
@@ -87,7 +87,7 @@ class Compiler(object):
 
     """
     def __init__(self):
-        """Constructor.
+        """Instance constructor.
 
         """
         super(Compiler, self).__init__()
@@ -109,7 +109,7 @@ class DataSource(object):
     __metaclass__ = abc.ABCMeta
 
     def __init__(self):
-        """Constructor.
+        """Instance constructor.
 
         """
         super(DataSource, self).__init__()
@@ -126,7 +126,7 @@ class DateRange(object):
     __metaclass__ = abc.ABCMeta
 
     def __init__(self):
-        """Constructor.
+        """Instance constructor.
 
         """
         super(DateRange, self).__init__()
@@ -141,7 +141,7 @@ class DocGenealogy(object):
 
     """
     def __init__(self):
-        """Constructor.
+        """Instance constructor.
 
         """
         super(DocGenealogy, self).__init__()
@@ -156,7 +156,7 @@ class DocMetaInfo(object):
 
     """
     def __init__(self):
-        """Constructor.
+        """Instance constructor.
 
         """
         super(DocMetaInfo, self).__init__()
@@ -190,7 +190,7 @@ class DocReference(object):
 
     """
     def __init__(self):
-        """Constructor.
+        """Instance constructor.
 
         """
         super(DocReference, self).__init__()
@@ -212,7 +212,7 @@ class DocRelationshipTarget(object):
 
     """
     def __init__(self):
-        """Constructor.
+        """Instance constructor.
 
         """
         super(DocRelationshipTarget, self).__init__()
@@ -227,7 +227,7 @@ class License(object):
 
     """
     def __init__(self):
-        """Constructor.
+        """Instance constructor.
 
         """
         super(License, self).__init__()
@@ -245,7 +245,7 @@ class Machine(object):
 
     """
     def __init__(self):
-        """Constructor.
+        """Instance constructor.
 
         """
         super(Machine, self).__init__()
@@ -271,7 +271,7 @@ class MachineCompilerUnit(object):
 
     """
     def __init__(self):
-        """Constructor.
+        """Instance constructor.
 
         """
         super(MachineCompilerUnit, self).__init__()
@@ -287,7 +287,7 @@ class Platform(object):
 
     """
     def __init__(self):
-        """Constructor.
+        """Instance constructor.
 
         """
         super(Platform, self).__init__()
@@ -307,7 +307,7 @@ class Property(object):
 
     """
     def __init__(self):
-        """Constructor.
+        """Instance constructor.
 
         """
         super(Property, self).__init__()
@@ -325,7 +325,7 @@ class Relationship(object):
     __metaclass__ = abc.ABCMeta
 
     def __init__(self):
-        """Constructor.
+        """Instance constructor.
 
         """
         super(Relationship, self).__init__()
@@ -341,7 +341,7 @@ class ResponsibleParty(object):
 
     """
     def __init__(self):
-        """Constructor.
+        """Instance constructor.
 
         """
         super(ResponsibleParty, self).__init__()
@@ -362,7 +362,7 @@ class Standard(object):
 
     """
     def __init__(self):
-        """Constructor.
+        """Instance constructor.
 
         """
         super(Standard, self).__init__()
@@ -379,7 +379,7 @@ class StandardName(object):
 
     """
     def __init__(self):
-        """Constructor.
+        """Instance constructor.
 
         """
         super(StandardName, self).__init__()
@@ -396,7 +396,7 @@ class ChangeProperty(Property):
 
     """
     def __init__(self):
-        """Constructor.
+        """Instance constructor.
 
         """
         super(ChangeProperty, self).__init__()
@@ -412,7 +412,7 @@ class ClosedDateRange(DateRange):
 
     """
     def __init__(self):
-        """Constructor.
+        """Instance constructor.
 
         """
         super(ClosedDateRange, self).__init__()
@@ -428,7 +428,7 @@ class Daily360(Calendar):
 
     """
     def __init__(self):
-        """Constructor.
+        """Instance constructor.
 
         """
         super(Daily360, self).__init__()
@@ -442,7 +442,7 @@ class DocRelationship(Relationship):
 
     """
     def __init__(self):
-        """Constructor.
+        """Instance constructor.
 
         """
         super(DocRelationship, self).__init__()
@@ -458,7 +458,7 @@ class OpenDateRange(DateRange):
 
     """
     def __init__(self):
-        """Constructor.
+        """Instance constructor.
 
         """
         super(OpenDateRange, self).__init__()
@@ -474,7 +474,7 @@ class PerpetualPeriod(Calendar):
 
     """
     def __init__(self):
-        """Constructor.
+        """Instance constructor.
 
         """
         super(PerpetualPeriod, self).__init__()
@@ -488,7 +488,7 @@ class RealCalendar(Calendar):
 
     """
     def __init__(self):
-        """Constructor.
+        """Instance constructor.
 
         """
         super(RealCalendar, self).__init__()

@@ -26,7 +26,7 @@ class CoordinateList(object):
 
     """
     def __init__(self):
-        """Constructor.
+        """Instance constructor.
 
         """
         super(CoordinateList, self).__init__()
@@ -43,7 +43,7 @@ class GridExtent(object):
 
     """
     def __init__(self):
-        """Constructor.
+        """Instance constructor.
 
         """
         super(GridExtent, self).__init__()
@@ -62,7 +62,7 @@ class GridMosaic(object):
 
     """
     def __init__(self):
-        """Constructor.
+        """Instance constructor.
 
         """
         super(GridMosaic, self).__init__()
@@ -90,7 +90,7 @@ class GridProperty(shared.Property):
 
     """
     def __init__(self):
-        """Constructor.
+        """Instance constructor.
 
         """
         super(GridProperty, self).__init__()
@@ -104,7 +104,7 @@ class GridSpec(object):
 
     """
     def __init__(self):
-        """Constructor.
+        """Instance constructor.
 
         """
         super(GridSpec, self).__init__()
@@ -121,7 +121,7 @@ class GridTile(object):
 
     """
     def __init__(self):
-        """Constructor.
+        """Instance constructor.
 
         """
         super(GridTile, self).__init__()
@@ -163,7 +163,7 @@ class GridTileResolutionType(object):
 
     """
     def __init__(self):
-        """Constructor.
+        """Instance constructor.
 
         """
         super(GridTileResolutionType, self).__init__()
@@ -179,7 +179,7 @@ class SimpleGridGeometry(object):
 
     """
     def __init__(self):
-        """Constructor.
+        """Instance constructor.
 
         """
         super(SimpleGridGeometry, self).__init__()
@@ -199,7 +199,7 @@ class VerticalCoordinateList(CoordinateList):
 
     """
     def __init__(self):
-        """Constructor.
+        """Instance constructor.
 
         """
         super(VerticalCoordinateList, self).__init__()

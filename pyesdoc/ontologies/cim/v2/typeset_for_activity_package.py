@@ -28,7 +28,7 @@ class Activity(object):
     __metaclass__ = abc.ABCMeta
 
     def __init__(self):
-        """Constructor.
+        """Instance constructor.
 
         """
         super(Activity, self).__init__()
@@ -54,7 +54,7 @@ class AxisMember(object):
 
     """
     def __init__(self):
-        """Constructor.
+        """Instance constructor.
 
         """
         super(AxisMember, self).__init__()
@@ -72,7 +72,7 @@ class EnsembleAxis(object):
 
     """
     def __init__(self):
-        """Constructor.
+        """Instance constructor.
 
         """
         super(EnsembleAxis, self).__init__()
@@ -92,7 +92,7 @@ class EnsembleMember(object):
 
     """
     def __init__(self):
-        """Constructor.
+        """Instance constructor.
 
         """
         super(EnsembleMember, self).__init__()
@@ -111,7 +111,7 @@ class ParentSimulation(object):
 
     """
     def __init__(self):
-        """Constructor.
+        """Instance constructor.
 
         """
         super(ParentSimulation, self).__init__()
@@ -129,7 +129,7 @@ class Conformance(Activity):
 
     """
     def __init__(self):
-        """Constructor.
+        """Instance constructor.
 
         """
         super(Conformance, self).__init__()
@@ -147,7 +147,7 @@ class Ensemble(Activity):
 
     """
     def __init__(self):
-        """Constructor.
+        """Instance constructor.
 
         """
         super(Ensemble, self).__init__()
@@ -169,7 +169,7 @@ class UberEnsemble(Ensemble):
 
     """
     def __init__(self):
-        """Constructor.
+        """Instance constructor.
 
         """
         super(UberEnsemble, self).__init__()

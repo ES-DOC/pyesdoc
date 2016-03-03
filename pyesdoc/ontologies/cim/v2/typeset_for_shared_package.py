@@ -27,7 +27,7 @@ class Calendar(object):
 
     """
     def __init__(self):
-        """Constructor.
+        """Instance constructor.
 
         """
         super(Calendar, self).__init__()
@@ -46,7 +46,7 @@ class Cimtext(object):
 
     """
     def __init__(self):
-        """Constructor.
+        """Instance constructor.
 
         """
         super(Cimtext, self).__init__()
@@ -64,7 +64,7 @@ class DateTime(object):
 
     """
     def __init__(self):
-        """Constructor.
+        """Instance constructor.
 
         """
         super(DateTime, self).__init__()
@@ -84,7 +84,7 @@ class DatetimeSet(object):
     __metaclass__ = abc.ABCMeta
 
     def __init__(self):
-        """Constructor.
+        """Instance constructor.
 
         """
         super(DatetimeSet, self).__init__()
@@ -100,7 +100,7 @@ class DocMetaInfo(object):
 
     """
     def __init__(self):
-        """Constructor.
+        """Instance constructor.
 
         """
         super(DocMetaInfo, self).__init__()
@@ -133,7 +133,7 @@ class ExternalDocument(object):
 
     """
     def __init__(self):
-        """Constructor.
+        """Instance constructor.
 
         """
         super(ExternalDocument, self).__init__()
@@ -155,7 +155,7 @@ class KeyFloat(object):
 
     """
     def __init__(self):
-        """Constructor.
+        """Instance constructor.
 
         """
         super(KeyFloat, self).__init__()
@@ -171,7 +171,7 @@ class NumberArray(object):
 
     """
     def __init__(self):
-        """Constructor.
+        """Instance constructor.
 
         """
         super(NumberArray, self).__init__()
@@ -187,7 +187,7 @@ class OnlineResource(object):
 
     """
     def __init__(self):
-        """Constructor.
+        """Instance constructor.
 
         """
         super(OnlineResource, self).__init__()
@@ -208,7 +208,7 @@ class Party(object):
 
     """
     def __init__(self):
-        """Constructor.
+        """Instance constructor.
 
         """
         super(Party, self).__init__()
@@ -229,7 +229,7 @@ class Pid(object):
 
     """
     def __init__(self):
-        """Constructor.
+        """Instance constructor.
 
         """
         super(Pid, self).__init__()
@@ -245,7 +245,7 @@ class QualityReview(object):
 
     """
     def __init__(self):
-        """Constructor.
+        """Instance constructor.
 
         """
         super(QualityReview, self).__init__()
@@ -263,7 +263,7 @@ class Reference(object):
 
     """
     def __init__(self):
-        """Constructor.
+        """Instance constructor.
 
         """
         super(Reference, self).__init__()
@@ -280,7 +280,7 @@ class Responsibility(object):
 
     """
     def __init__(self):
-        """Constructor.
+        """Instance constructor.
 
         """
         super(Responsibility, self).__init__()
@@ -297,7 +297,7 @@ class TimePeriod(object):
 
     """
     def __init__(self):
-        """Constructor.
+        """Instance constructor.
 
         """
         super(TimePeriod, self).__init__()
@@ -318,7 +318,7 @@ class TimesliceList(object):
 
     """
     def __init__(self):
-        """Constructor.
+        """Instance constructor.
 
         """
         super(TimesliceList, self).__init__()
@@ -335,7 +335,7 @@ class DocReference(OnlineResource):
 
     """
     def __init__(self):
-        """Constructor.
+        """Instance constructor.
 
         """
         super(DocReference, self).__init__()
@@ -355,7 +355,7 @@ class IrregularDateset(DatetimeSet):
 
     """
     def __init__(self):
-        """Constructor.
+        """Instance constructor.
 
         """
         super(IrregularDateset, self).__init__()
@@ -370,7 +370,7 @@ class RegularTimeset(DatetimeSet):
 
     """
     def __init__(self):
-        """Constructor.
+        """Instance constructor.
 
         """
         super(RegularTimeset, self).__init__()

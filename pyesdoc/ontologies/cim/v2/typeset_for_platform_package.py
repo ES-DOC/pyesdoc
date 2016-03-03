@@ -26,7 +26,7 @@ class ComponentPerformance(object):
 
     """
     def __init__(self):
-        """Constructor.
+        """Instance constructor.
 
         """
         super(ComponentPerformance, self).__init__()
@@ -45,7 +45,7 @@ class ComputePool(object):
 
     """
     def __init__(self):
-        """Constructor.
+        """Instance constructor.
 
         """
         super(ComputePool, self).__init__()
@@ -86,7 +86,7 @@ class Partition(object):
 
     """
     def __init__(self):
-        """Constructor.
+        """Instance constructor.
 
         """
         super(Partition, self).__init__()
@@ -110,7 +110,7 @@ class Performance(object):
 
     """
     def __init__(self):
-        """Constructor.
+        """Instance constructor.
 
         """
         super(Performance, self).__init__()
@@ -138,7 +138,7 @@ class StoragePool(object):
 
     """
     def __init__(self):
-        """Constructor.
+        """Instance constructor.
 
         """
         super(StoragePool, self).__init__()
@@ -157,7 +157,7 @@ class StorageVolume(object):
 
     """
     def __init__(self):
-        """Constructor.
+        """Instance constructor.
 
         """
         super(StorageVolume, self).__init__()
@@ -173,7 +173,7 @@ class Machine(Partition):
 
     """
     def __init__(self):
-        """Constructor.
+        """Instance constructor.
 
         """
         super(Machine, self).__init__()

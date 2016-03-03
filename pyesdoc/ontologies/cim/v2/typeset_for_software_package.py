@@ -30,7 +30,7 @@ class ComponentBase(object):
     __metaclass__ = abc.ABCMeta
 
     def __init__(self):
-        """Constructor.
+        """Instance constructor.
 
         """
         super(ComponentBase, self).__init__()
@@ -55,7 +55,7 @@ class Composition(object):
 
     """
     def __init__(self):
-        """Constructor.
+        """Instance constructor.
 
         """
         super(Composition, self).__init__()
@@ -71,7 +71,7 @@ class DevelopmentPath(object):
 
     """
     def __init__(self):
-        """Constructor.
+        """Instance constructor.
 
         """
         super(DevelopmentPath, self).__init__()
@@ -95,7 +95,7 @@ class EntryPoint(object):
 
     """
     def __init__(self):
-        """Constructor.
+        """Instance constructor.
 
         """
         super(EntryPoint, self).__init__()
@@ -110,7 +110,7 @@ class Gridspec(object):
 
     """
     def __init__(self):
-        """Constructor.
+        """Instance constructor.
 
         """
         super(Gridspec, self).__init__()
@@ -128,7 +128,7 @@ class Variable(object):
 
     """
     def __init__(self):
-        """Constructor.
+        """Instance constructor.
 
         """
         super(Variable, self).__init__()
@@ -146,7 +146,7 @@ class SoftwareComponent(ComponentBase):
 
     """
     def __init__(self):
-        """Constructor.
+        """Instance constructor.
 
         """
         super(SoftwareComponent, self).__init__()

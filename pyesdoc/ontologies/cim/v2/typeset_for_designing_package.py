@@ -26,7 +26,7 @@ class NumericalExperiment(activity.Activity):
 
     """
     def __init__(self):
-        """Constructor.
+        """Instance constructor.
 
         """
         super(NumericalExperiment, self).__init__()
@@ -42,7 +42,7 @@ class NumericalRequirement(activity.Activity):
 
     """
     def __init__(self):
-        """Constructor.
+        """Instance constructor.
 
         """
         super(NumericalRequirement, self).__init__()
@@ -58,7 +58,7 @@ class Project(activity.Activity):
 
     """
     def __init__(self):
-        """Constructor.
+        """Instance constructor.
 
         """
         super(Project, self).__init__()
@@ -75,7 +75,7 @@ class SimulationPlan(activity.Activity):
 
     """
     def __init__(self):
-        """Constructor.
+        """Instance constructor.
 
         """
         super(SimulationPlan, self).__init__()
@@ -93,7 +93,7 @@ class DomainProperties(NumericalRequirement):
 
     """
     def __init__(self):
-        """Constructor.
+        """Instance constructor.
 
         """
         super(DomainProperties, self).__init__()
@@ -109,7 +109,7 @@ class EnsembleRequirement(NumericalRequirement):
 
     """
     def __init__(self):
-        """Constructor.
+        """Instance constructor.
 
         """
         super(EnsembleRequirement, self).__init__()
@@ -126,7 +126,7 @@ class ForcingConstraint(NumericalRequirement):
 
     """
     def __init__(self):
-        """Constructor.
+        """Instance constructor.
 
         """
         super(ForcingConstraint, self).__init__()
@@ -148,7 +148,7 @@ class MultiEnsemble(NumericalRequirement):
 
     """
     def __init__(self):
-        """Constructor.
+        """Instance constructor.
 
         """
         super(MultiEnsemble, self).__init__()
@@ -163,7 +163,7 @@ class MultiTimeEnsemble(NumericalRequirement):
 
     """
     def __init__(self):
-        """Constructor.
+        """Instance constructor.
 
         """
         super(MultiTimeEnsemble, self).__init__()
@@ -182,7 +182,7 @@ class OutputTemporalRequirement(NumericalRequirement):
 
     """
     def __init__(self):
-        """Constructor.
+        """Instance constructor.
 
         """
         super(OutputTemporalRequirement, self).__init__()
@@ -199,7 +199,7 @@ class TemporalConstraint(NumericalRequirement):
 
     """
     def __init__(self):
-        """Constructor.
+        """Instance constructor.
 
         """
         super(TemporalConstraint, self).__init__()

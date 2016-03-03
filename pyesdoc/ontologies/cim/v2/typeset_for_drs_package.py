@@ -25,7 +25,7 @@ class DrsEnsembleIdentifier(object):
 
     """
     def __init__(self):
-        """Constructor.
+        """Instance constructor.
 
         """
         super(DrsEnsembleIdentifier, self).__init__()
@@ -43,7 +43,7 @@ class DrsGeographicalIndicator(object):
 
     """
     def __init__(self):
-        """Constructor.
+        """Instance constructor.
 
         """
         super(DrsGeographicalIndicator, self).__init__()
@@ -60,7 +60,7 @@ class DrsPublicationDataset(object):
 
     """
     def __init__(self):
-        """Constructor.
+        """Instance constructor.
 
         """
         super(DrsPublicationDataset, self).__init__()
@@ -86,7 +86,7 @@ class DrsTemporalIdentifier(object):
 
     """
     def __init__(self):
-        """Constructor.
+        """Instance constructor.
 
         """
         super(DrsTemporalIdentifier, self).__init__()
@@ -103,7 +103,7 @@ class DrsAtomicDataset(DrsPublicationDataset):
 
     """
     def __init__(self):
-        """Constructor.
+        """Instance constructor.
 
         """
         super(DrsAtomicDataset, self).__init__()

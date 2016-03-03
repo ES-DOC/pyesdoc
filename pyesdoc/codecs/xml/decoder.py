@@ -27,12 +27,12 @@ def _get_doc(xml, doc_type):
 
     """
     type_key = xml.get('ontologyTypeKey')
-    if type_key and doc_type.type_key != type_key:
-        doc_type = ontologies.get_type_from_key(xml.get('ontologyTypeKey'))
+    if type_key and ontologies.get_type_key(doc_type) != type_key:
+        doc_type = ontologies.get_type_from_key(type_key)
     if doc_type is None:
         raise ValueError('Decoding type is unrecognized')
 
-    return doc_type(), ontologies.get_type_info(doc_type)
+    return doc_type(), ontologies.get_decoder_info(doc_type)
 
 
 def _decode_simple(v, type, iterable):
@@ -54,7 +54,7 @@ def _decode_complex(val, doc_type, iterable):
         doc, doc_type_info = _get_doc(xml, doc_type)
 
         # Set doc attributes.
-        for _name, _type, _required, _iterable in doc_type_info:
+        for _name, _type, _iterable in doc_type_info:
             # ... get xml element
             elem = xml.find(convert.str_to_camel_case(_name))
 
@@ -83,13 +83,15 @@ def decode(as_xml):
         as_xml = ET.fromstring(convert.unicode_to_str(as_xml))
     elif isinstance(as_xml, str):
         as_xml = ET.fromstring(as_xml)
-
-    # Verify etree.
     if not isinstance(as_xml, ET.Element):
         raise TypeError("Cannot decode non xml documents")
 
-    # Get target type.
+    # Get document type.
     doc_type_key = as_xml.get("ontologyTypeKey")
+
+    # Get target type.
     doc_type = ontologies.get_type_from_key(doc_type_key)
+    if doc_type is None:
+        raise ValueError('ontology_type_key cannot be mapped to a supported ontology type.')
 
     return  _decode_complex(as_xml, doc_type, False)

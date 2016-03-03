@@ -31,7 +31,6 @@ def _get_file_filterset():
     return result
 
 
-
 class ArchiveFolderInfo(object):
     """An archive folder.
 

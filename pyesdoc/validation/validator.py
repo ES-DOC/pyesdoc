@@ -9,7 +9,7 @@
 
 
 """
-from pyesdoc.validation.graph import DocumentValidationGraph
+from pyesdoc.validation.graph import ValidationGraph
 
 
 
@@ -22,6 +22,22 @@ _ERR_ITEM_IS_EMPTY_TEXT = "is zero length"
 
 # Type of document references.
 _DOCUMENT_REFERENCE_TYPE = "DocReference"
+
+
+def __validate_cardinality():
+    pass
+
+
+def __validate_type():
+    pass
+
+
+def __validate_regex():
+    pass
+
+
+def __validate_constant():
+    pass
 
 
 def _is_type_mismatch(instance, expected_type):
@@ -79,7 +95,9 @@ def _validate_item_node(node):
 
 
 def _validate_node(node):
-    """Validates a node within a validation graph."""
+    """Validates a node within a validation graph.
+
+    """
     # Reset error state.
     node.error = None
 
@@ -104,14 +122,10 @@ def validate(doc):
     :rtype: list
 
     """
-    # Instantiate validation graph.
-    graph = DocumentValidationGraph(doc)
-
-    # Validate nodes.
+    graph = ValidationGraph(doc)
     for node in graph.nodes:
         _validate_node(node)
 
-    # Return invalid nodes.
     return graph.invalid_nodes
 
 

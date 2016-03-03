@@ -1,3 +1,4 @@
+
 # -*- coding: utf-8 -*-
 
 """
@@ -11,19 +12,51 @@
 .. note:: Code generated using the esdoc-mp framework.
 
 """
-# Set of types.
-from typeset import *
+from typeset_for_shared_package import *
+from typeset_for_platform_package import *
+from typeset_for_data_package import *
+from typeset_for_activity_package import *
+from typeset_for_drs_package import *
+from typeset_for_software_package import *
+from typeset_for_science_package import *
+from typeset_for_designing_package import *
+
+
+import typeset_for_shared_package as shared
+import typeset_for_platform_package as platform
+import typeset_for_data_package as data
+import typeset_for_activity_package as activity
+import typeset_for_drs_package as drs
+import typeset_for_software_package as software
+import typeset_for_science_package as science
+import typeset_for_designing_package as designing
+
+
+
 
 # Set of supported packages.
 from typeset import PACKAGES
 
+# Set of supported document types.
+from typeset import DOCUMENT_TYPES
+
+# Set of supported packages.
+from typeset import CLASSES
+
+# Set of supported packages.
+from typeset import ENUMS
+
 # Set of supported types.
-from typeset import TYPES
+TYPES = CLASSES + ENUMS
+
+# Help text.
+from helptext import HELP
 
 # Set of type keys.
-from typekeys import TYPE_KEYS
+from keys import KEYS
 
 # Set of type constraints.
+# TODO class & property constraints
 from constraints import CONSTRAINTS
 
 try:
@@ -32,5 +65,8 @@ except ImportError:
 	pass
 import typeset
 
+# Ontology name.
+NAME = 'cim'
+
 # Version identifier.
-ID = '2'
+VERSION = '2'

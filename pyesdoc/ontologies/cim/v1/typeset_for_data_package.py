@@ -26,7 +26,7 @@ class DataContent(shared.DataSource):
 
     """
     def __init__(self):
-        """Constructor.
+        """Instance constructor.
 
         """
         super(DataContent, self).__init__()
@@ -43,7 +43,7 @@ class DataDistribution(object):
 
     """
     def __init__(self):
-        """Constructor.
+        """Instance constructor.
 
         """
         super(DataDistribution, self).__init__()
@@ -61,7 +61,7 @@ class DataExtent(object):
 
     """
     def __init__(self):
-        """Constructor.
+        """Instance constructor.
 
         """
         super(DataExtent, self).__init__()
@@ -77,7 +77,7 @@ class DataExtentGeographical(object):
 
     """
     def __init__(self):
-        """Constructor.
+        """Instance constructor.
 
         """
         super(DataExtentGeographical, self).__init__()
@@ -95,7 +95,7 @@ class DataExtentTemporal(object):
 
     """
     def __init__(self):
-        """Constructor.
+        """Instance constructor.
 
         """
         super(DataExtentTemporal, self).__init__()
@@ -112,7 +112,7 @@ class DataExtentTimeInterval(object):
 
     """
     def __init__(self):
-        """Constructor.
+        """Instance constructor.
 
         """
         super(DataExtentTimeInterval, self).__init__()
@@ -129,7 +129,7 @@ class DataHierarchyLevel(object):
 
     """
     def __init__(self):
-        """Constructor.
+        """Instance constructor.
 
         """
         super(DataHierarchyLevel, self).__init__()
@@ -146,7 +146,7 @@ class DataObject(shared.DataSource):
 
     """
     def __init__(self):
-        """Constructor.
+        """Instance constructor.
 
         """
         super(DataObject, self).__init__()
@@ -178,7 +178,7 @@ class DataProperty(shared.Property):
 
     """
     def __init__(self):
-        """Constructor.
+        """Instance constructor.
 
         """
         super(DataProperty, self).__init__()
@@ -193,7 +193,7 @@ class DataRestriction(object):
 
     """
     def __init__(self):
-        """Constructor.
+        """Instance constructor.
 
         """
         super(DataRestriction, self).__init__()
@@ -212,7 +212,7 @@ class DataStorage(object):
     __metaclass__ = abc.ABCMeta
 
     def __init__(self):
-        """Constructor.
+        """Instance constructor.
 
         """
         super(DataStorage, self).__init__()
@@ -230,7 +230,7 @@ class DataTopic(object):
 
     """
     def __init__(self):
-        """Constructor.
+        """Instance constructor.
 
         """
         super(DataTopic, self).__init__()
@@ -247,7 +247,7 @@ class DataStorageDb(DataStorage):
 
     """
     def __init__(self):
-        """Constructor.
+        """Instance constructor.
 
         """
         super(DataStorageDb, self).__init__()
@@ -265,7 +265,7 @@ class DataStorageFile(DataStorage):
 
     """
     def __init__(self):
-        """Constructor.
+        """Instance constructor.
 
         """
         super(DataStorageFile, self).__init__()
@@ -282,7 +282,7 @@ class DataStorageIp(DataStorage):
 
     """
     def __init__(self):
-        """Constructor.
+        """Instance constructor.
 
         """
         super(DataStorageIp, self).__init__()

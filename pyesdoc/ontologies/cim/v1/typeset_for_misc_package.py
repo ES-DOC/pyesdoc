@@ -26,7 +26,7 @@ class DocumentSet(object):
 
     """
     def __init__(self):
-        """Constructor.
+        """Instance constructor.
 
         """
         super(DocumentSet, self).__init__()

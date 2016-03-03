@@ -28,7 +28,7 @@ class Activity(object):
     __metaclass__ = abc.ABCMeta
 
     def __init__(self):
-        """Constructor.
+        """Instance constructor.
 
         """
         super(Activity, self).__init__()
@@ -46,7 +46,7 @@ class Conformance(object):
 
     """
     def __init__(self):
-        """Constructor.
+        """Instance constructor.
 
         """
         super(Conformance, self).__init__()
@@ -66,7 +66,7 @@ class ExperimentRelationship(shared.Relationship):
 
     """
     def __init__(self):
-        """Constructor.
+        """Instance constructor.
 
         """
         super(ExperimentRelationship, self).__init__()
@@ -82,7 +82,7 @@ class ExperimentRelationshipTarget(object):
 
     """
     def __init__(self):
-        """Constructor.
+        """Instance constructor.
 
         """
         super(ExperimentRelationshipTarget, self).__init__()
@@ -99,7 +99,7 @@ class NumericalRequirement(object):
     __metaclass__ = abc.ABCMeta
 
     def __init__(self):
-        """Constructor.
+        """Instance constructor.
 
         """
         super(NumericalRequirement, self).__init__()
@@ -119,7 +119,7 @@ class NumericalRequirementOption(object):
 
     """
     def __init__(self):
-        """Constructor.
+        """Instance constructor.
 
         """
         super(NumericalRequirementOption, self).__init__()
@@ -138,7 +138,7 @@ class SimulationRelationship(shared.Relationship):
 
     """
     def __init__(self):
-        """Constructor.
+        """Instance constructor.
 
         """
         super(SimulationRelationship, self).__init__()
@@ -154,7 +154,7 @@ class SimulationRelationshipTarget(object):
 
     """
     def __init__(self):
-        """Constructor.
+        """Instance constructor.
 
         """
         super(SimulationRelationshipTarget, self).__init__()
@@ -170,7 +170,7 @@ class BoundaryCondition(NumericalRequirement):
 
     """
     def __init__(self):
-        """Constructor.
+        """Instance constructor.
 
         """
         super(BoundaryCondition, self).__init__()
@@ -187,7 +187,7 @@ class Experiment(Activity):
     __metaclass__ = abc.ABCMeta
 
     def __init__(self):
-        """Constructor.
+        """Instance constructor.
 
         """
         super(Experiment, self).__init__()
@@ -205,7 +205,7 @@ class InitialCondition(NumericalRequirement):
 
     """
     def __init__(self):
-        """Constructor.
+        """Instance constructor.
 
         """
         super(InitialCondition, self).__init__()
@@ -220,7 +220,7 @@ class LateralBoundaryCondition(NumericalRequirement):
 
     """
     def __init__(self):
-        """Constructor.
+        """Instance constructor.
 
         """
         super(LateralBoundaryCondition, self).__init__()
@@ -235,7 +235,7 @@ class MeasurementCampaign(Activity):
 
     """
     def __init__(self):
-        """Constructor.
+        """Instance constructor.
 
         """
         super(MeasurementCampaign, self).__init__()
@@ -252,7 +252,7 @@ class NumericalActivity(Activity):
     __metaclass__ = abc.ABCMeta
 
     def __init__(self):
-        """Constructor.
+        """Instance constructor.
 
         """
         super(NumericalActivity, self).__init__()
@@ -270,7 +270,7 @@ class NumericalExperiment(Experiment):
 
     """
     def __init__(self):
-        """Constructor.
+        """Instance constructor.
 
         """
         super(NumericalExperiment, self).__init__()
@@ -290,7 +290,7 @@ class OutputRequirement(NumericalRequirement):
 
     """
     def __init__(self):
-        """Constructor.
+        """Instance constructor.
 
         """
         super(OutputRequirement, self).__init__()
@@ -305,7 +305,7 @@ class PhysicalModification(Conformance):
 
     """
     def __init__(self):
-        """Constructor.
+        """Instance constructor.
 
         """
         super(PhysicalModification, self).__init__()
@@ -321,7 +321,7 @@ class Simulation(NumericalActivity):
     __metaclass__ = abc.ABCMeta
 
     def __init__(self):
-        """Constructor.
+        """Instance constructor.
 
         """
         super(Simulation, self).__init__()
@@ -346,7 +346,7 @@ class SimulationComposite(Simulation):
 
     """
     def __init__(self):
-        """Constructor.
+        """Instance constructor.
 
         """
         super(SimulationComposite, self).__init__()
@@ -364,7 +364,7 @@ class SimulationRun(Simulation):
 
     """
     def __init__(self):
-        """Constructor.
+        """Instance constructor.
 
         """
         super(SimulationRun, self).__init__()
@@ -381,7 +381,7 @@ class SpatioTemporalConstraint(NumericalRequirement):
 
     """
     def __init__(self):
-        """Constructor.
+        """Instance constructor.
 
         """
         super(SpatioTemporalConstraint, self).__init__()
@@ -400,7 +400,7 @@ class DownscalingSimulation(NumericalActivity):
     __metaclass__ = abc.ABCMeta
 
     def __init__(self):
-        """Constructor.
+        """Instance constructor.
 
         """
         super(DownscalingSimulation, self).__init__()
@@ -421,7 +421,7 @@ class Ensemble(NumericalActivity):
 
     """
     def __init__(self):
-        """Constructor.
+        """Instance constructor.
 
         """
         super(Ensemble, self).__init__()
@@ -439,7 +439,7 @@ class EnsembleMember(NumericalActivity):
 
     """
     def __init__(self):
-        """Constructor.
+        """Instance constructor.
 
         """
         super(EnsembleMember, self).__init__()

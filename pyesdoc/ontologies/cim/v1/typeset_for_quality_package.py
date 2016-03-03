@@ -26,7 +26,7 @@ class CimQuality(object):
 
     """
     def __init__(self):
-        """Constructor.
+        """Instance constructor.
 
         """
         super(CimQuality, self).__init__()
@@ -42,7 +42,7 @@ class Evaluation(object):
 
     """
     def __init__(self):
-        """Constructor.
+        """Instance constructor.
 
         """
         super(Evaluation, self).__init__()
@@ -65,7 +65,7 @@ class Measure(object):
 
     """
     def __init__(self):
-        """Constructor.
+        """Instance constructor.
 
         """
         super(Measure, self).__init__()
@@ -82,7 +82,7 @@ class Report(object):
 
     """
     def __init__(self):
-        """Constructor.
+        """Instance constructor.
 
         """
         super(Report, self).__init__()
