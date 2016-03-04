@@ -35,7 +35,7 @@ _ARGS.add_argument(
 
 
 
-# Name of relevant worksheets to be found within workbook.
+# Name of relevant worksheets to be found within spreadsheet.
 _WS_ENSEMBLE_REQUIREMENT = "EnsembleRequirement"
 _WS_EXPERIMENT = "experiment"
 _WS_FORCING_CONSTRAINT = "ForcingConstraint"
@@ -231,22 +231,21 @@ class Spreadsheet(object):
         """Instance constructor.
 
         """
-        self.worksheet_fpath = worksheet_fpath
-        self.workbook = xlrd.open_workbook(worksheet_fpath)
+        self.spreadsheet = xlrd.open_workbook(worksheet_fpath)
 
 
-    def _get_worksheet(self, ws_name):
+    def _get_sheet(self, ws_name):
         """Returns pointer to a named worksheet.
 
         """
-        return self.workbook.sheet_by_name(ws_name)
+        return self.spreadsheet.sheet_by_name(ws_name)
 
 
     def _get_rows(self, ws_name):
         """Returns collection of rows within a named worksheet.
 
         """
-        return enumerate(self._get_worksheet(ws_name).get_rows())
+        return enumerate(self._get_sheet(ws_name).get_rows())
 
 
     def _yield_rows(self, ws_name):
@@ -750,7 +749,7 @@ def _main(spreadsheet_filepath, archive_dir):
 
     """
     if not os.path.isfile(spreadsheet_filepath):
-        raise ValueError("Worksheet file does not exist")
+        raise ValueError("Spreadsheet file does not exist")
     if not os.path.isdir(archive_dir):
         raise ValueError("Archive directory does not exist")
 
