@@ -181,7 +181,7 @@ def _convert_to_cim_v2_date_time(value, offset):
     return instance
 
 
-def _get_responsibilty(role, row, col_idx=6):
+def _convert_to_cim_2_responsibilty(role, row, col_idx=6):
     """Returns experiment responsibility info.
 
     """
@@ -193,6 +193,34 @@ def _get_responsibilty(role, row, col_idx=6):
     party.party = [r for r in [row(col_idx), row(col_idx + 1), row(col_idx + 2)] if r]
 
     return party
+
+
+def _get_doc(collection, name):
+    """Retrieves a document from a collection.
+
+    """
+    if not collection or name is None or len(name.strip()) == 0:
+        return None
+
+    name = name.lower()
+    for item in collection:
+        for attr in ["citation_str", "canonical_name", "name"]:
+            try:
+                item_name = getattr(item, attr)
+            except AttributeError:
+                continue
+            else:
+                if name == item_name.lower():
+                    return item
+
+
+def _get_docs(names, collection):
+    """Retrieves a document from a collection.
+
+    """
+    result = [_get_doc(collection, n) for n in names]
+
+    return [d for d in result if d]
 
 
 class Spreadsheet(object):
@@ -341,7 +369,7 @@ class Spreadsheet(object):
             ("name", 1),
             ("references", range(10, 14)),
             ("requires_experiments", range(22, 57)),
-            ("responsible_parties", [6], lambda x, y: _get_responsibilty(x, y, 7)),
+            ("responsible_parties", [6], lambda x, y: _convert_to_cim_2_responsibilty(x, y, 7)),
             ("sub_projects", range(17, 22)),
         ])
 
@@ -372,7 +400,7 @@ class Spreadsheet(object):
             ("minimum_size", 14, _convert_to_int),
             ("name", 1),
             ("references", [10]),
-            ("responsible_parties", [6], lambda x, y: _get_responsibilty(x, y, 7))
+            ("responsible_parties", [6], lambda x, y: _convert_to_cim_2_responsibilty(x, y, 7))
         ])
 
 
@@ -390,7 +418,7 @@ class Spreadsheet(object):
             ("long_name", 2),
             ("name", 1),
             ("references", [10]),
-            ("responsible_parties", [6], lambda x, y: _get_responsibilty(x, y, 7)),
+            ("responsible_parties", [6], lambda x, y: _convert_to_cim_2_responsibilty(x, y, 7)),
             ("start_date", 15, lambda c, r: _convert_to_cim_v2_date_time(c, r(16))),
             ("start_flexibility", 17, _convert_to_cim_v2_time_period)
         ])
@@ -409,7 +437,7 @@ class Spreadsheet(object):
             ("long_name", 2),
             ("name", 1),
             ("references", range(10, 12)),
-            ("responsible_parties", [6], lambda x, y: _get_responsibilty(x, y, 7))
+            ("responsible_parties", [6], lambda x, y: _convert_to_cim_2_responsibilty(x, y, 7))
         ])
 
 
@@ -428,7 +456,7 @@ class Spreadsheet(object):
             ("name", 1),
             ("references", range(10, 13)),
             ("related_experiments", range(14, 20)),
-            ("responsible_parties", [6], lambda x, y: _get_responsibilty(x, y, 7)),
+            ("responsible_parties", [6], lambda x, y: _convert_to_cim_2_responsibilty(x, y, 7)),
             ("temporal_constraint", 20)
         ])
 
