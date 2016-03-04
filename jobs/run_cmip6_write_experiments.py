@@ -745,12 +745,16 @@ class DocumentSet(object):
             _write(doc, pyesdoc.ESDOC_ENCODING_XML)
 
 
-def _main(worksheet_fpath, archive_dir):
+def _main(spreadsheet_filepath, archive_dir):
     """Main entry point.
 
     """
+    if not os.path.isfile(spreadsheet_filepath):
+        raise ValueError("Worksheet file does not exist")
+    if not os.path.isdir(archive_dir):
+        raise ValueError("Archive directory does not exist")
 
-    ds = DocumentSet(archive_dir, Spreadsheet(worksheet_fpath))
+    ds = DocumentSet(archive_dir, Spreadsheet(spreadsheet_filepath))
     ds.set_document_connections()
     ds.set_document_links()
     ds.write_documents()
@@ -758,12 +762,5 @@ def _main(worksheet_fpath, archive_dir):
 
 # Entry point.
 if __name__ == '__main__':
-    # Unpack & validate arguments.
     args = _ARGS.parse_args()
-    if not os.path.isfile(args.spreadsheet_filepath):
-        raise ValueError("Worksheet file does not exist")
-    if not os.path.isdir(args.archive_dir):
-        raise ValueError("Archive directory does not exist")
-
-    # Invoke mainline.
     _main(args.spreadsheet_filepath, args.archive_dir)
