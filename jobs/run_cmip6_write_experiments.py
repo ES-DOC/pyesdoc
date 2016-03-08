@@ -11,6 +11,7 @@
 """
 import argparse
 import os
+from collections import defaultdict
 
 import pyesdoc
 import pyesdoc.ontologies.cim as cim
@@ -21,9 +22,9 @@ import xlrd
 # Define command line options.
 _ARGS = argparse.ArgumentParser("Publishes CIM documents extracted from CMIP6 experiment spreadsheet.")
 _ARGS.add_argument(
-    "--archive-dir",
+    "--io-dir",
     help="Path to a directory into which documents will be written.",
-    dest="archive_dir",
+    dest="io_dir",
     type=str
     )
 _ARGS.add_argument(
@@ -35,7 +36,7 @@ _ARGS.add_argument(
 
 
 
-# Name of relevant worksheets to be found within spreadsheet.
+# Spreadsheet worksheet names.
 _WS_ENSEMBLE_REQUIREMENT = "EnsembleRequirement"
 _WS_EXPERIMENT = "experiment"
 _WS_FORCING_CONSTRAINT = "ForcingConstraint"
@@ -46,7 +47,7 @@ _WS_REQUIREMENT = "requirement"
 _WS_TEMPORAL_CONSTRAINT = "TemporalConstraint"
 _WS_URL = "url"
 
-# Row offsets.
+# Spreadsheet row offsets.
 _WS_ROW_OFFSETS = {
     _WS_ENSEMBLE_REQUIREMENT: 2,
     _WS_EXPERIMENT: 2,
@@ -59,18 +60,9 @@ _WS_ROW_OFFSETS = {
     _WS_URL: 1
 }
 
-# Row offsets.
-_WS_ROW_EXCLUSIONS = {
-    _WS_ENSEMBLE_REQUIREMENT: [],
-    _WS_EXPERIMENT: [3, 5, 7, 9, 11],
-    _WS_FORCING_CONSTRAINT: [],
-    _WS_PARTY: [],
-    _WS_PROJECT: [],
-    _WS_REFERENCES: [],
-    _WS_REQUIREMENT: [],
-    _WS_TEMPORAL_CONSTRAINT: [],
-    _WS_URL: []
-}
+# Spreadsheet row exclusions.
+_WS_ROW_EXCLUSIONS = defaultdict(list)
+_WS_ROW_EXCLUSIONS[_WS_EXPERIMENT] = [3, 5, 7, 9, 11]
 
 # Default document project code.
 _DOC_PROJECT = 'CMIP6-DRAFT'
@@ -104,13 +96,14 @@ def _convert_to_unicode(value):
     """Converts a cell value to a boolean.
 
     """
-    if value is None:
-        return None
+    if value is not None:
+        return
+
+    value = unicode(value)
 
     # Null substitutions.
-    value = unicode(value)
     if value.lower() in [u"n/a"]:
-        return None
+        return
 
     # Strip superfluos suffixes.
     value = value.strip()
@@ -124,20 +117,14 @@ def _convert_to_int(value):
     """Converts a cell value to an integer.
 
     """
-    if value is None:
-        return None
-
-    return int(value)
+    return None if value is None else int(value)
 
 
 def _convert_to_string_array(value):
     """Converts a cell value to an array of strings.
 
     """
-    if value is None:
-        return []
-
-    return value.split(", ")
+    return [] if value is None else value.split(", ")
 
 
 def _convert_to_cim_v2_calendar(value):
@@ -145,10 +132,10 @@ def _convert_to_cim_v2_calendar(value):
 
     """
     if value is None:
-        return None
+        return
 
-    return None
-
+    # TODO
+    return
     raise NotImplementedError("CIM v2 Calendar value needs to be converted from cell content")
 
 
@@ -157,7 +144,7 @@ def _convert_to_cim_v2_time_period(value):
 
     """
     if value is None:
-        return None
+        return
 
     instance = cim.v2.TimePeriod()
     instance.length = int(value.split(" ")[0])
@@ -172,7 +159,7 @@ def _convert_to_cim_v2_date_time(value, offset):
 
     """
     if value is None:
-        return None
+        return
 
     instance = cim.v2.DateTime()
     instance.value = value
@@ -186,7 +173,7 @@ def _convert_to_cim_2_responsibilty(role, row, col_idx=6):
 
     """
     if role is None:
-        return None
+        return
 
     party = cim.v2.Responsibility()
     party.role = _convert_to_unicode(role)
@@ -195,12 +182,22 @@ def _convert_to_cim_2_responsibilty(role, row, col_idx=6):
     return party
 
 
-def _get_doc(collection, name):
+def _convert_name(name, collection):
     """Retrieves a document from a collection.
 
     """
-    if not collection or name is None or len(name.strip()) == 0:
-        return None
+    if not collection or name is None:
+        return
+
+    try:
+        float(name)
+    except:
+        pass
+    else:
+        name = str(name).split('.')[0]
+    finally:
+        if len(name.strip()) == 0:
+            return
 
     name = name.lower()
     for item in collection:
@@ -210,17 +207,104 @@ def _get_doc(collection, name):
             except AttributeError:
                 continue
             else:
-                if name == item_name.lower():
+                if name == unicode(item_name).lower():
                     return item
 
 
-def _get_docs(names, collection):
-    """Retrieves a document from a collection.
+def _convert_names(names, collection):
+    """Converts a set of names to a set of document.
 
     """
-    result = [_get_doc(collection, n) for n in names]
+    result = [_convert_name(n, collection) for n in names]
 
     return [d for d in result if d]
+
+
+# Maps of worksheet to cim type & columns.
+_WS_MAPS = {
+    _WS_PARTY: (cim.v2.Party, [
+            ("address", 3),
+            ("email", 4),
+            ("name", 1),
+            ("organisation", 2, _convert_to_bool),
+            ("url", 5)
+        ]),
+    _WS_REFERENCES: (cim.v2.ExternalDocument, [
+            ("abstract", 6),
+            ("citation_str", 4),
+            ("context", 3),
+            ("doi", 1, _convert_to_unicode),
+            ("title", 2),
+            ("url", 5)
+        ]),
+    _WS_PROJECT: (cim.v2.Project, [
+            ("canonical_name", 3),
+            ("description", 5),
+            ("keywords", 4),
+            ("long_name", 2),
+            ("name", 1),
+            ("references", range(10, 14)),
+            ("requires_experiments", range(22, 57)),
+            ("responsible_parties", [6], lambda x, y: _convert_to_cim_2_responsibilty(x, y, 7)),
+            ("sub_projects", range(17, 22)),
+        ]),
+    _WS_URL: (cim.v2.OnlineResource, [
+            ("description", 4),
+            ("name", 1),
+            ("linkage", 2),
+            ("protocol", 3)
+        ]),
+    _WS_ENSEMBLE_REQUIREMENT: (cim.v2.EnsembleRequirement, [
+            ("canonical_name", 3),
+            ("conformance_is_requested", 12, _convert_to_bool),
+            ("description", 5),
+            ("ensemble_type", 13),
+            ("keywords", 4, _convert_to_string_array),
+            ("long_name", 2),
+            ("minimum_size", 14, _convert_to_int),
+            ("name", 1),
+            ("references", [10]),
+            ("responsible_parties", [6], lambda x, y: _convert_to_cim_2_responsibilty(x, y, 7))
+        ]),
+    _WS_TEMPORAL_CONSTRAINT: (cim.v2.TemporalConstraint, [
+            ("canonical_name", 3),
+            ("description", 5),
+            ("conformance_is_requested", 12, _convert_to_bool),
+            ("required_duration", 13, _convert_to_cim_v2_time_period),
+            ("required_calendar", 14, _convert_to_cim_v2_calendar),
+            ("keywords", 4, _convert_to_string_array),
+            ("long_name", 2),
+            ("name", 1),
+            ("references", [10]),
+            ("responsible_parties", [6], lambda x, y: _convert_to_cim_2_responsibilty(x, y, 7)),
+            ("start_date", 15, lambda c, r: _convert_to_cim_v2_date_time(c, r(16))),
+            ("start_flexibility", 17, _convert_to_cim_v2_time_period)
+        ]),
+    _WS_FORCING_CONSTRAINT: (cim.v2.ForcingConstraint, [
+            ("canonical_name", 3),
+            ("description", 5),
+            ("conformance_is_requested", 13, _convert_to_bool),
+            ("forcing_type", 14),
+            ("keywords", 4, _convert_to_string_array),
+            ("long_name", 2),
+            ("name", 1),
+            ("references", range(10, 12)),
+            ("responsible_parties", [6], lambda x, y: _convert_to_cim_2_responsibilty(x, y, 7))
+        ]),
+    _WS_EXPERIMENT: (cim.v2.NumericalExperiment, [
+            ("canonical_name", 3),
+            ("description", 5),
+            ("ensembles", [21, 22]),
+            ("forcing_constraints", range(24, 37)),
+            ("keywords", 4, _convert_to_string_array),
+            ("long_name", 2),
+            ("name", 1),
+            ("references", range(10, 13)),
+            ("related_experiments", range(14, 20)),
+            ("responsible_parties", [6], lambda x, y: _convert_to_cim_2_responsibilty(x, y, 7)),
+            ("temporal_constraint", 20)
+        ])
+}
 
 
 class Spreadsheet(object):
@@ -231,14 +315,14 @@ class Spreadsheet(object):
         """Instance constructor.
 
         """
-        self.spreadsheet = xlrd.open_workbook(worksheet_fpath)
+        self._spreadsheet = xlrd.open_workbook(worksheet_fpath)
 
 
     def _get_sheet(self, ws_name):
         """Returns pointer to a named worksheet.
 
         """
-        return self.spreadsheet.sheet_by_name(ws_name)
+        return self._spreadsheet.sheet_by_name(ws_name)
 
 
     def _get_rows(self, ws_name):
@@ -283,6 +367,16 @@ class Spreadsheet(object):
         return value
 
 
+    def __getitem__(self, ws_name):
+        """Returns a child table attribute.
+
+        """
+        doc_type, mappings = _WS_MAPS[ws_name]
+
+        return [self._get_document(doc_type, row, mappings)
+                for row in self._yield_rows(ws_name)]
+
+
     def _get_document(self, doc_type, row, mappings):
         """Returns a CIM document from a spreadsheet row.
 
@@ -321,163 +415,26 @@ class Spreadsheet(object):
         return doc
 
 
-    def _get_documents(self, ws_name, doc_type, mappings):
-        """Returns set of CIM documents within a spreadsheet.
-
-        """
-        return [self._get_document(doc_type, row, mappings)
-                for row in self._yield_rows(ws_name)]
-
-
-    def get_parties(self):
-        """Gets the collection of parties defined within spreadsheet.
-
-        """
-        return self._get_documents(_WS_PARTY, cim.v2.Party, [
-            ("address", 3),
-            ("email", 4),
-            ("name", 1),
-            ("organisation", 2, _convert_to_bool),
-            ("url", 5)
-        ])
-
-
-    def get_citations(self):
-        """Gets the collection of citations defined within spreadsheet.
-
-        """
-        return self._get_documents(_WS_REFERENCES, cim.v2.ExternalDocument, [
-            ("abstract", 6),
-            ("citation_str", 4),
-            ("context", 3),
-            ("doi", 1, _convert_to_unicode),
-            ("title", 2),
-            ("url", 5)
-        ])
-
-
-    def get_projects(self):
-        """Gets the collection of projects defined within spreadsheet.
-
-        """
-        return self._get_documents(_WS_PROJECT, cim.v2.Project, [
-            ("canonical_name", 3),
-            ("description", 5),
-            ("keywords", 4),
-            ("long_name", 2),
-            ("name", 1),
-            ("references", range(10, 14)),
-            ("requires_experiments", range(22, 57)),
-            ("responsible_parties", [6], lambda x, y: _convert_to_cim_2_responsibilty(x, y, 7)),
-            ("sub_projects", range(17, 22)),
-        ])
-
-
-    def get_urls(self):
-        """Gets the collection of urls defined within spreadsheet.
-
-        """
-        return self._get_documents(_WS_URL, cim.v2.OnlineResource, [
-            ("description", 4),
-            ("name", 1),
-            ("linkage", 2),
-            ("protocol", 3)
-        ])
-
-
-    def get_ensemble_requirements(self):
-        """Gets the collection of ensemble requirements defined within spreadsheet.
-
-        """
-        return self._get_documents(_WS_ENSEMBLE_REQUIREMENT, cim.v2.EnsembleRequirement, [
-            ("canonical_name", 3),
-            ("conformance_is_requested", 12, _convert_to_bool),
-            ("description", 5),
-            ("ensemble_type", 13),
-            ("keywords", 4, _convert_to_string_array),
-            ("long_name", 2),
-            ("minimum_size", 14, _convert_to_int),
-            ("name", 1),
-            ("references", [10]),
-            ("responsible_parties", [6], lambda x, y: _convert_to_cim_2_responsibilty(x, y, 7))
-        ])
-
-
-    def get_temporal_constraints(self):
-        """Gets the collection of temporal constraints defined within spreadsheet.
-
-        """
-        return self._get_documents(_WS_TEMPORAL_CONSTRAINT, cim.v2.TemporalConstraint, [
-            ("canonical_name", 3),
-            ("description", 5),
-            ("conformance_is_requested", 12, _convert_to_bool),
-            ("required_duration", 13, _convert_to_cim_v2_time_period),
-            ("required_calendar", 14, _convert_to_cim_v2_calendar),
-            ("keywords", 4, _convert_to_string_array),
-            ("long_name", 2),
-            ("name", 1),
-            ("references", [10]),
-            ("responsible_parties", [6], lambda x, y: _convert_to_cim_2_responsibilty(x, y, 7)),
-            ("start_date", 15, lambda c, r: _convert_to_cim_v2_date_time(c, r(16))),
-            ("start_flexibility", 17, _convert_to_cim_v2_time_period)
-        ])
-
-
-    def get_forcing_constraints(self):
-        """Gets the collection of temporal constraints defined within spreadsheet.
-
-        """
-        return self._get_documents(_WS_FORCING_CONSTRAINT, cim.v2.ForcingConstraint, [
-            ("canonical_name", 3),
-            ("description", 5),
-            ("conformance_is_requested", 13, _convert_to_bool),
-            ("forcing_type", 14),
-            ("keywords", 4, _convert_to_string_array),
-            ("long_name", 2),
-            ("name", 1),
-            ("references", range(10, 12)),
-            ("responsible_parties", [6], lambda x, y: _convert_to_cim_2_responsibilty(x, y, 7))
-        ])
-
-
-    def get_experiments(self):
-        """Gets the collection of experiments defined within spreadsheet.
-
-        """
-        # TODO model configuration
-        return self._get_documents(_WS_EXPERIMENT, cim.v2.NumericalExperiment, [
-            ("canonical_name", 3),
-            ("description", 5),
-            ("ensembles", [21, 22]),
-            ("forcing_constraints", range(24, 37)),
-            ("keywords", 4, _convert_to_string_array),
-            ("long_name", 2),
-            ("name", 1),
-            ("references", range(10, 13)),
-            ("related_experiments", range(14, 20)),
-            ("responsible_parties", [6], lambda x, y: _convert_to_cim_2_responsibilty(x, y, 7)),
-            ("temporal_constraint", 20)
-        ])
-
-
 class DocumentSet(object):
     """The set of documents extracted from the workwheet.
 
     """
-    def __init__(self, archive_directory, spreadsheet):
+    def __init__(self, spreadsheet):
         """Instance constructor.
 
         """
-        self.archive_directory = archive_directory
-        self.citations = spreadsheet.get_citations()
+        self.citations = spreadsheet[_WS_REFERENCES]
+        self.ensemble_requirements = spreadsheet[_WS_ENSEMBLE_REQUIREMENT]
+        self.experiments = spreadsheet[_WS_EXPERIMENT]
+        self.forcing_constraints = spreadsheet[_WS_FORCING_CONSTRAINT]
+        self.parties = spreadsheet[_WS_PARTY]
+        self.temporal_constraints = spreadsheet[_WS_TEMPORAL_CONSTRAINT]
+        self.projects = spreadsheet[_WS_PROJECT]
+        self.urls = spreadsheet[_WS_URL]
+
+        # TODO rebuild citations after citation review is complete
         self.citations = []
-        self.ensemble_requirements = spreadsheet.get_ensemble_requirements()
-        self.experiments = spreadsheet.get_experiments()
-        self.forcing_constraints = spreadsheet.get_forcing_constraints()
-        self.parties = spreadsheet.get_parties()
-        self.temporal_constraints = spreadsheet.get_temporal_constraints()
-        self.projects = spreadsheet.get_projects()
-        self.urls = spreadsheet.get_urls()
+
         # TODO load generic requirements
         # self.requirements = []
 
@@ -525,7 +482,7 @@ class DocumentSet(object):
 
 
     @property
-    def party_containers(self):
+    def responsible_party_containers(self):
         """Gets full set of managed objects that have responsible partie collections.
 
         """
@@ -540,7 +497,7 @@ class DocumentSet(object):
 
         """
         result = []
-        for item in self.requirements + self.experiments + self.projects:
+        for item in self.responsible_party_containers:
             result += item.responsible_parties
 
         return result
@@ -550,110 +507,22 @@ class DocumentSet(object):
         """Returns a document link.
 
         """
-        if doc:
-            reference = cim.v2.DocReference()
-            reference.id = doc.meta.id
-            reference.version = doc.meta.version
-            reference.type = doc.type_key
-            for attr in ["canonical_name", "name"]:
-                try:
-                    reference.name = getattr(doc, attr)
-                except AttributeError:
-                    pass
-                else:
-                    break
+        if not doc:
+            return
 
-            return reference
+        reference = cim.v2.DocReference()
+        reference.id = doc.meta.id
+        reference.version = doc.meta.version
+        reference.type = doc.type_key
+        for attr in ["canonical_name", "name"]:
+            try:
+                reference.name = getattr(doc, attr)
+            except AttributeError:
+                pass
+            else:
+                break
 
-
-    def _get_project(self, name):
-        """Returns a matching project.
-
-        """
-        if name is None or len(name.strip()) == 0:
-            return None
-        for project in self.projects:
-            if project.name.lower() == name.lower():
-                return project
-
-
-    def _get_url(self, name):
-        """Returns a matching URL.
-
-        """
-        if name is None or len(name.strip()) == 0:
-            return None
-        for url in self.urls:
-            if url.name.lower() == name.lower():
-                return url
-
-
-    def _get_citation(self, name):
-        """Returns matching citation.
-
-        """
-        if name is None or len(name.strip()) == 0:
-            return None
-        for citation in self.citations:
-            if citation.citation_str.lower() == name.lower():
-                return citation
-
-
-    def _get_experiment(self, name):
-        """Returns a matching experiment.
-
-        """
-        if name is None or len(name.strip()) == 0:
-            return None
-        for experiment in self.experiments:
-            if experiment.canonical_name.lower() == name.lower():
-                return experiment
-            if experiment.name.lower() == name.lower():
-                return experiment
-
-
-    def _get_temporal_constraint(self, name):
-        """Returns a temporal constraint numerical requirement.
-
-        """
-        if name is None or len(name.strip()) == 0:
-            return None
-        for temporal_constraint in self.temporal_constraints:
-            if temporal_constraint.name.lower() == name.lower():
-                return temporal_constraint
-
-
-    def _get_forcing_constraint(self, name):
-        """Returns a forcing constraint numerical requirement.
-
-        """
-        if name is None or len(name.strip()) == 0:
-            return None
-        for forcing_constraint in self.forcing_constraints:
-            if forcing_constraint.name.lower() == name.lower():
-                return forcing_constraint
-
-
-    def _get_ensemble_requirement(self, name):
-        """Returns an ensemble numerical requirement.
-
-        """
-        if name is None or len(name.strip()) == 0:
-            return None
-        for ensemble in self.ensemble_requirements:
-            if ensemble.name.lower() == name.lower():
-                return ensemble
-
-
-    def _get_party(self, name):
-        """Returns a matching responsible party.
-
-        """
-        if name is None or len(name.strip()) == 0:
-            return None
-        for party in self.parties:
-            if party.name.lower() == name.lower():
-                return party
+        return reference
 
 
     def set_document_connections(self):
@@ -662,35 +531,36 @@ class DocumentSet(object):
         """
         # Set urls.
         for container in self.url_containers:
-            container.url = self._get_url(container.url)
+            container.url = _convert_name(container.url, self.urls)
 
         # Set citations.
         for container in self.citation_containers:
-            container.references = [self._get_citation(v) for v in container.references]
-            container.references = [c for c in container.references if c is not None]
+            container.references = _convert_names(container.references, self.citations)
 
         # Set responsibility parties.
         for responsibility in self.responsible_parties:
-            responsibility.party = [self._get_party(v) for v in responsibility.party]
+            responsibility.party = _convert_names(responsibility.party, self.parties)
 
         # Set experiment related experiments.
         for experiment in self.experiments:
-            experiment.related_experiments = [self._get_experiment(v) for v in experiment.related_experiments]
+            experiment.related_experiments = _convert_names(experiment.related_experiments, self.experiments)
 
         # Set experiment requirements.
         for experiment in self.experiments:
-            experiment.requirements.append(self._get_temporal_constraint(experiment.temporal_constraint))
-            experiment.requirements += [self._get_forcing_constraint(c) for c in experiment.forcing_constraints]
-            experiment.requirements += [self._get_ensemble_requirement(c) for c in experiment.ensembles]
-            experiment.requirements = [r for r in experiment.requirements if r]
+            experiment.requirements.append(
+                _convert_name(experiment.temporal_constraint, self.temporal_constraints))
+            experiment.requirements += \
+                _convert_names(experiment.forcing_constraints, self.forcing_constraints)
+            experiment.requirements += \
+                _convert_names(experiment.ensembles, self.ensemble_requirements)
 
         # Set sub-projects.
         for project in self.projects:
-            project.sub_projects = [self._get_project(v) for v in project.sub_projects]
+            project.sub_projects = _convert_names(project.sub_projects, self.projects)
 
         # Set project required experiments.
         for project in self.projects:
-            project.requires_experiments = [self._get_experiment(v) for v in project.requires_experiments]
+            project.requires_experiments = _convert_names(project.requires_experiments, self.experiments)
 
 
     def set_document_links(self):
@@ -718,7 +588,7 @@ class DocumentSet(object):
             project.requires_experiments = [self._get_document_link(d) for d in project.requires_experiments]
 
 
-    def write_documents(self):
+    def write(self, io_dir):
         """Writes documents to file system.
 
         """
@@ -727,7 +597,7 @@ class DocumentSet(object):
 
             """
             fname = pyesdoc.get_filename(doc, encoding)
-            fpath = os.path.join(self.archive_directory, fname)
+            fpath = os.path.join(io_dir, fname)
 
             return fpath
 
@@ -744,22 +614,22 @@ class DocumentSet(object):
             _write(doc, pyesdoc.ESDOC_ENCODING_XML)
 
 
-def _main(spreadsheet_filepath, archive_dir):
+def _main(spreadsheet_filepath, io_dir):
     """Main entry point.
 
     """
     if not os.path.isfile(spreadsheet_filepath):
         raise ValueError("Spreadsheet file does not exist")
-    if not os.path.isdir(archive_dir):
+    if not os.path.isdir(io_dir):
         raise ValueError("Archive directory does not exist")
 
-    ds = DocumentSet(archive_dir, Spreadsheet(spreadsheet_filepath))
+    ds = DocumentSet(Spreadsheet(spreadsheet_filepath))
     ds.set_document_connections()
     ds.set_document_links()
-    ds.write_documents()
+    ds.write(io_dir)
 
 
 # Entry point.
 if __name__ == '__main__':
     args = _ARGS.parse_args()
-    _main(args.spreadsheet_filepath, args.archive_dir)
+    _main(args.spreadsheet_filepath, args.io_dir)
