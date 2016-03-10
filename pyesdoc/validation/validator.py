@@ -10,34 +10,109 @@
 
 """
 from pyesdoc.validation.graph import ValidationGraph
+from pyesdoc import ontologies
+from pyesdoc import constants
 
 
 
 # Validation error text.
 _ERR_LIST_IS_EMPTY = "is an empty list"
 _ERR_LIST_CONTAINS_INVALID_ITEM_TYPES = "list contains item(s) of invalid type"
+_ERR_LIST_TYPE = "is of invalid type (actual = {0}, expected=list)"
 _ERR_ITEM_IS_NULL = "is null"
 _ERR_ITEM_TYPE = "is of invalid type (actual = {0}, expected={1})"
 _ERR_ITEM_IS_EMPTY_TEXT = "is zero length"
+_ERR_ITEM_IS_LIST = "is a list, expected a complex or ximple type"
 
 # Type of document references.
 _DOCUMENT_REFERENCE_TYPE = "DocReference"
 
 
-def __validate_cardinality():
-    pass
+def _validate_cardinality(node):
+    """Cardinality constraint validator.
+
+    """
+    if node.expected_cardinality == constants.CARDINALITY_TYPE_0_0:
+        if node.value not in (None, []):
+            return "Hidden attribute has been assigned"
+
+    elif node.expected_cardinality == constants.CARDINALITY_TYPE_0_1:
+        if node.value_type == list:
+            return _ERR_ITEM_IS_LIST
+
+    elif node.expected_cardinality == constants.CARDINALITY_TYPE_1_1:
+        if node.value_type == list:
+            return _ERR_ITEM_IS_LIST
+        if node.value is None:
+            return _ERR_ITEM_IS_NULL
+
+    elif node.expected_cardinality == constants.CARDINALITY_TYPE_1_N:
+        if node.value_type != list:
+            return _ERR_LIST_TYPE.format(node.value_type)
+        if len(node.value) == 0:
+            return _ERR_LIST_IS_EMPTY
+
+    elif node.expected_cardinality == constants.CARDINALITY_TYPE_0_N:
+        if node.value_type != list:
+            return _ERR_LIST_TYPE.format(node.value_type)
 
 
-def __validate_type():
-    pass
+def _validate_constant(node):
+    """Constant constraint validator.
+
+    """
+    if not node.expected_constant:
+        return
+
+    elif node.value != node.expected_constant:
+        return "Constant value has been overwritten"
 
 
-def __validate_regex():
-    pass
+def _validate_regex(node):
+    """Regular expression constraint validator.
+
+    """
+    if not node.regex:
+        return
+
+    print "TODO: validate regex"
 
 
-def __validate_constant():
-    pass
+def _validate_typeof(node):
+    """Type constraint validator.
+
+    """
+    return
+    # Escape if unncessary.
+    if node.value is None:
+        return
+
+    # Validate collections.
+    elif node.typeof == list:
+        if [i for i in node.value if _is_type_mismatch(i, node.expected_type)]:
+            return _ERR_LIST_CONTAINS_INVALID_ITEM_TYPES
+
+    # Assert valid type (non text).
+    elif node.typeof not in (str, unicode):
+        if _is_type_mismatch(node.value, node.typeof):
+            return _ERR_ITEM_TYPE.format(type(node.value), node.type)
+
+    # Assert valid type (text).
+    elif not isinstance(node.value, (str, unicode)):
+        return _ERR_ITEM_TYPE.format(type(node.value), node.type)
+
+    # Assert valid text length.
+    elif len(node.value) == 0:
+        return _ERR_ITEM_IS_EMPTY_TEXT
+
+
+# Set of node validators.
+_VALIDATORS = (
+    _validate_cardinality,
+    _validate_constant,
+    _validate_regex,
+    _validate_typeof,
+)
 
 
 def _is_type_mismatch(instance, expected_type):
@@ -53,47 +128,6 @@ def _is_type_mismatch(instance, expected_type):
     return True
 
 
-def _validate_list_node(node):
-    """Validates a node that represents a list.
-
-    """
-    if node.is_required and len(node.value) == 0:
-        node.error = _ERR_LIST_IS_EMPTY
-    else:
-        for i in node.value:
-            if _is_type_mismatch(i, node.type):
-                node.error = _ERR_LIST_CONTAINS_INVALID_ITEM_TYPES
-
-
-def _validate_item_node(node):
-    """Validates a node that represents an item.
-
-    """
-    # Escape if unncessary.
-    if not node.is_required and node.value is None:
-        return
-
-    # Assert required.
-    if node.is_required and node.value is None:
-        node.error = _ERR_ITEM_IS_NULL
-        return
-
-    # Assert valid type (non text).
-    if node.type not in (str, unicode):
-        if _is_type_mismatch(node.value, node.type):
-            node.error = _ERR_ITEM_TYPE.format(type(node.value), node.type)
-        return
-
-    # Assert valid type (text).
-    if not isinstance(node.value, (str, unicode)):
-        node.error = _ERR_ITEM_TYPE.format(type(node.value), node.type)
-        return
-
-    # Assert valid text length.
-    if len(node.value) == 0:
-        node.error = _ERR_ITEM_IS_EMPTY_TEXT
-
-
 def _validate_node(node):
     """Validates a node within a validation graph.
 
@@ -105,11 +139,11 @@ def _validate_node(node):
     if node.parent and node.parent.is_invalid:
         return
 
-    # Validate according to type.
-    if isinstance(node.value, list):
-        _validate_list_node(node)
-    else:
-        _validate_item_node(node)
+    # Execute validators.
+    for validator in _VALIDATORS:
+        node.error = validator(node)
+        if node.error:
+            break
 
 
 def validate(doc):
@@ -123,7 +157,7 @@ def validate(doc):
 
     """
     graph = ValidationGraph(doc)
-    for node in graph:
+    for node in [n for n in graph.nodes if n.constraints]:
         _validate_node(node)
 
     return graph.invalid_nodes

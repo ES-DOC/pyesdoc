@@ -327,12 +327,11 @@ def get_validation_info(doc_type):
     :rtype: tuple
 
     """
-    result = dict()
-    for name, _, _ in CONSTRAINTS[doc_type]:
-        if name not in result:
-            result[name] = CONSTRAINTS[doc_type, name]
+    result = defaultdict(set)
+    for name, typeof, value in CONSTRAINTS[doc_type]:
+        result[name].add((typeof, value))
 
-    return result.values()
+    return result.items()
 
 
 def get_constraints(doc_type, type_filter=None):

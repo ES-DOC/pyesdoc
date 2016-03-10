@@ -10,6 +10,7 @@
 
 """
 from pyesdoc import ontologies
+from pyesdoc import constants
 
 
 
@@ -17,37 +18,53 @@ class _ValidationNode(object):
     """A node within a validation graph.
 
     """
-    def __init__(self,
-                 value,
-                 path,
-                 typeof=None,
-                 is_required=False,
-                 parent=None,
-                 root=None):
+    def __init__(self, parent, value, name, idx=None, constraints=[]):
         """Object constructor.
 
+        :param _ValidationNode parent: Parent node within graph.
         :param object value: Current node value.
         :param str path: Node path.
         :param class typeof: Type used during type checking.
-        :param bool is_required: Indicates whether a value is required.
         :param _ValidationNode parent: Parent node.
 
         """
         self.children = []
+        self.constraints = constraints
         self.error = None
-        self.is_required = is_required
-        self.parent = parent
-        self.path = path
-        self.root = self if root is None else root
-        self.type = type(value) if typeof is None else typeof
+        self.idx = idx
+        self.name = name
         self.value = value
-        if parent is not None:
-            parent.children.append(self)
-        if root is not None:
-            root.nodes.append(self)
+        self.value_type = type(value)
+        self.parent = parent
+        self.root = self if parent is None else parent.root
 
-        # Set children if necessary.
-        if self._has_children:
+        # Set information derived from constraints.
+        self.expected_cardinality = \
+            self._get_constraint(constants.CONSTRAINT_TYPE_CARDINALITY)
+        self.expected_type = \
+            self._get_constraint(constants.CONSTRAINT_TYPE_TYPEOF)
+        self.expected_constant = \
+            self._get_constraint(constants.CONSTRAINT_TYPE_CONSTANT)
+        self.regex = \
+            self._get_constraint(constants.CONSTRAINT_TYPE_REGEX)
+
+        # Set path used for reporting purposes.
+        if parent is None:
+            self.path = name
+        else:
+            self.path = "{}.{}".format(parent.path, name)
+        if idx is not None:
+            self.path = "{}[{}]".format(self.path, idx)
+
+        # Append node to parent/root.
+        if parent is not None:
+            self.root.nodes.append(self)
+            parent.children.append(self)
+
+        # Set child nodes.
+        if self.value is not None and not \
+           isinstance(self.value, list) and \
+           self.value_type in ontologies.TYPES:
             self._set_children()
 
 
@@ -62,112 +79,36 @@ class _ValidationNode(object):
 
 
     @property
-    def is_valid(self):
-        """Gets a flag indicating whether node is valid.
-
-        """
-        return self.error is None
-
-
-    @property
     def is_invalid(self):
         """Gets a flag indicating whether node is valid.
 
         """
-        return not self.is_valid
+        return self.error is not None
 
 
-    @property
-    def _has_children(self):
-        """Gets a flag indicating whether node has children or not.
+    def _get_constraint(self, constraint_type):
+        """Returns an associated node constraint.
 
         """
-        if self.type in ontologies.TYPES and \
-           not isinstance(self.value, list) and \
-           self.value is not None and \
-           type(self.value) == self.type:
-           return True
+        for typeof, value in self.constraints:
+            if typeof == constraint_type:
+                return value
 
 
     def _set_children(self):
         """Sets collection of child node from type information.
 
         """
-        for name, constraints in ontologies.get_validation_info(self.type):
+        for name in ontologies.CLASS_PROPERTIES[self.value_type]:
             val = getattr(self.value, name)
-            path = self.path + "." + name
-            # Create child node.
-            _ValidationNode(
-                val,
-                path,
-                self,
-                self.root,
-                constraints
+            _ValidationNode(self, val, name,
+                constraints=ontologies.CONSTRAINTS[(self.value_type, name)]
                 )
-
-            # Continue if not processing a collection.
-            if not isinstance(val, list):
-                continue
 
             # Create child nodes for collections.
-            for idx, item in enumerate([i for i in val if i is not None]):
-                _ValidationNode(
-                    item,
-                    "{0}[{1}]".format(path, idx),
-                    type(item),
-                    False,
-                    self,
-                    self.root
-                    )
-
-                _ValidationNode(
-                    item,
-                    "{0}[{1}]".format(path, idx),
-                    self,
-                    self.root,
-                    constraints
-                    )
-
-    def __init__(self,
-                 value,
-                 path,
-                 typeof=None,
-                 is_required=False,
-                 parent=None,
-                 root=None):
-
-
-        for type_info in ontologies.get_type_info(self.type):
-            # Unpack type info.
-            is_required = type_info[2]
-            name = type_info[0]
-            typeof = type_info[1]
-
-            # Set derived variables.
-            path = self.path + "." + name
-            value = getattr(self.value, name)
-
-            # Create child node.
-            _ValidationNode(
-                value,
-                path,
-                typeof,
-                is_required,
-                self,
-                self.root
-                )
-
-            # Create child nodes for list items.
-            if isinstance(value, list):
-                for idx, item in enumerate([i for i in value if i is not None]):
-                    _ValidationNode(
-                        item,
-                        "{0}[{1}]".format(path, idx),
-                        type(item),
-                        False,
-                        self,
-                        self.root
-                        )
+            if isinstance(val, list):
+                for idx, item in enumerate([i for i in val if i is not None]):
+                    _ValidationNode(self, item, name, idx)
 
 
 class ValidationGraph(_ValidationNode):
@@ -183,7 +124,7 @@ class ValidationGraph(_ValidationNode):
 
         """
         self.nodes = []
-        super(ValidationGraph, self).__init__(doc, "doc")
+        super(ValidationGraph, self).__init__(None, doc, "doc")
 
 
     def __repr__(self):
