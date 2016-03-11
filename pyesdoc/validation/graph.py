@@ -62,9 +62,9 @@ class _ValidationNode(object):
             parent.children.append(self)
 
         # Set child nodes.
-        if self.value is not None and not \
-           isinstance(self.value, list) and \
-           self.value_type in ontologies.TYPES:
+        if self.parent is None:
+            self._set_children()
+        elif self.value_type in ontologies.TYPES:
             self._set_children()
 
 
@@ -127,13 +127,6 @@ class ValidationGraph(_ValidationNode):
         super(ValidationGraph, self).__init__(None, doc, "doc")
 
 
-    def __repr__(self):
-        """Object representation.
-
-        """
-        return reduce(lambda r, n: r + "\n{0}".format(n), self.nodes, self.path)
-
-
     def __iter__(self):
         """Instance iterator initializer.
 
@@ -147,4 +140,3 @@ class ValidationGraph(_ValidationNode):
 
         """
         return [n for n in self.nodes if n.is_invalid]
-

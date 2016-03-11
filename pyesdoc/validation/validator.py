@@ -9,6 +9,8 @@
 
 
 """
+import re
+
 from pyesdoc.validation.graph import ValidationGraph
 from pyesdoc import ontologies
 from pyesdoc import constants
@@ -23,9 +25,13 @@ _ERR_ITEM_IS_NULL = "is null"
 _ERR_ITEM_TYPE = "is of invalid type (actual = {0}, expected={1})"
 _ERR_ITEM_IS_EMPTY_TEXT = "is zero length"
 _ERR_ITEM_IS_LIST = "is a list, expected a complex or ximple type"
+_ERR_HIDDEN = "Hidden attribute has been assigned"
 
 # Type of document references.
 _DOCUMENT_REFERENCE_TYPE = "DocReference"
+
+# Set of text types.
+_TEXT_TYPES = {str, unicode}
 
 
 def _validate_cardinality(node):
@@ -34,7 +40,7 @@ def _validate_cardinality(node):
     """
     if node.expected_cardinality == constants.CARDINALITY_TYPE_0_0:
         if node.value not in (None, []):
-            return "Hidden attribute has been assigned"
+            _ERR_HIDDEN
 
     elif node.expected_cardinality == constants.CARDINALITY_TYPE_0_1:
         if node.value_type == list:
@@ -78,40 +84,39 @@ def _validate_regex(node):
     print "TODO: validate regex"
 
 
-def _validate_typeof(node):
+def _validate_type(node):
     """Type constraint validator.
 
     """
-    return
     # Escape if unncessary.
-    if node.value is None:
+    if node.value in (None, []):
         return
 
     # Validate collections.
-    elif node.typeof == list:
+    if node.value_type == list:
         if [i for i in node.value if _is_type_mismatch(i, node.expected_type)]:
             return _ERR_LIST_CONTAINS_INVALID_ITEM_TYPES
 
-    # Assert valid type (non text).
-    elif node.typeof not in (str, unicode):
-        if _is_type_mismatch(node.value, node.typeof):
-            return _ERR_ITEM_TYPE.format(type(node.value), node.type)
+    # Assert non text.
+    elif node.expected_type not in _TEXT_TYPES:
+        if _is_type_mismatch(node.value, node.expected_type):
+            return _ERR_ITEM_TYPE.format(node.value_type, node.expected_type)
 
-    # Assert valid type (text).
-    elif not isinstance(node.value, (str, unicode)):
-        return _ERR_ITEM_TYPE.format(type(node.value), node.type)
+    # Assert text.
+    elif node.value_type not in _TEXT_TYPES:
+        return _ERR_ITEM_TYPE.format(node.value_type, node.expected_type)
 
-    # Assert valid text length.
-    elif len(node.value) == 0:
+    # Assert text length.
+    elif len(node.value.strip()) == 0:
         return _ERR_ITEM_IS_EMPTY_TEXT
 
 
 # Set of node validators.
 _VALIDATORS = (
     _validate_cardinality,
+    _validate_type,
     _validate_constant,
     _validate_regex,
-    _validate_typeof,
 )
 
 
@@ -122,7 +127,8 @@ def _is_type_mismatch(instance, expected_type):
     if isinstance(instance, expected_type):
         return False
 
-    if type(instance).__name__.split(".")[-1] == _DOCUMENT_REFERENCE_TYPE:
+    if expected_type in ontologies.TYPES and \
+       type(instance).__name__.split(".")[-1] == _DOCUMENT_REFERENCE_TYPE:
         return False
 
     return True
