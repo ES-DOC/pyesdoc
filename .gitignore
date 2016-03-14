@@ -20,3 +20,4 @@ pyesdoc.egg-info
 *-checkpoint.ipynb
 src/pyesdoc/archive/documents
 pyesdoc/TODO.txt
+tmp.ipynb
