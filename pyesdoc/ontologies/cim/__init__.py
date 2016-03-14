@@ -105,5 +105,3 @@ SORT_KEYS = {
     v2.designing.NumericalExperiment: u"AB"
 }
 
-del v
-del defaultdict
