@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 """
-.. module:: cim.v1.keys.py
+.. module:: cim.v1.type_keys.py
 
    :license: GPL / CeCILL
    :platform: Unix, Windows
@@ -41,105 +41,105 @@ KEYS = {
     # Classes.
     # ------------------------------------------------
 
-    shared.DocReference: "cim.1.shared.DocReference",
-
-    shared.Compiler: "cim.1.shared.Compiler",
-
-    shared.DateRange: "cim.1.shared.DateRange",
+    shared.StandardName: "cim.1.shared.StandardName",
 
     shared.Change: "cim.1.shared.Change",
 
-    shared.Standard: "cim.1.shared.Standard",
-
-    shared.DocRelationship: "cim.1.shared.DocRelationship",
-
-    shared.Citation: "cim.1.shared.Citation",
-
-    shared.RealCalendar: "cim.1.shared.RealCalendar",
-
-    shared.DocRelationshipTarget: "cim.1.shared.DocRelationshipTarget",
-
-    shared.Property: "cim.1.shared.Property",
-
-    shared.License: "cim.1.shared.License",
-
-    shared.Machine: "cim.1.shared.Machine",
+    shared.ChangeProperty: "cim.1.shared.ChangeProperty",
 
     shared.DataSource: "cim.1.shared.DataSource",
+
+    shared.Daily360: "cim.1.shared.Daily360",
+
+    shared.ResponsibleParty: "cim.1.shared.ResponsibleParty",
 
     shared.DocGenealogy: "cim.1.shared.DocGenealogy",
 
     shared.MachineCompilerUnit: "cim.1.shared.MachineCompilerUnit",
 
-    shared.Relationship: "cim.1.shared.Relationship",
+    shared.DateRange: "cim.1.shared.DateRange",
+
+    shared.Compiler: "cim.1.shared.Compiler",
+
+    shared.License: "cim.1.shared.License",
+
+    shared.DocReference: "cim.1.shared.DocReference",
+
+    shared.DocMetaInfo: "cim.1.shared.DocMetaInfo",
+
+    shared.Standard: "cim.1.shared.Standard",
 
     shared.Calendar: "cim.1.shared.Calendar",
+
+    shared.Citation: "cim.1.shared.Citation",
+
+    shared.DocRelationshipTarget: "cim.1.shared.DocRelationshipTarget",
+
+    shared.OpenDateRange: "cim.1.shared.OpenDateRange",
 
     shared.PerpetualPeriod: "cim.1.shared.PerpetualPeriod",
 
     shared.Platform: "cim.1.shared.Platform",
 
+    shared.DocRelationship: "cim.1.shared.DocRelationship",
+
+    shared.Property: "cim.1.shared.Property",
+
+    shared.Relationship: "cim.1.shared.Relationship",
+
     shared.ClosedDateRange: "cim.1.shared.ClosedDateRange",
 
-    shared.ResponsibleParty: "cim.1.shared.ResponsibleParty",
+    shared.RealCalendar: "cim.1.shared.RealCalendar",
 
-    shared.StandardName: "cim.1.shared.StandardName",
-
-    shared.DocMetaInfo: "cim.1.shared.DocMetaInfo",
-
-    shared.ChangeProperty: "cim.1.shared.ChangeProperty",
-
-    shared.Daily360: "cim.1.shared.Daily360",
-
-    shared.OpenDateRange: "cim.1.shared.OpenDateRange",
-
-    software.Rank: "cim.1.software.Rank",
-
-    software.Timing: "cim.1.software.Timing",
-
-    software.Parallelisation: "cim.1.software.Parallelisation",
-
-    software.EntryPoint: "cim.1.software.EntryPoint",
-
-    software.ConnectionProperty: "cim.1.software.ConnectionProperty",
-
-    software.Coupling: "cim.1.software.Coupling",
-
-    software.ProcessorComponent: "cim.1.software.ProcessorComponent",
-
-    software.ComponentLanguage: "cim.1.software.ComponentLanguage",
-
-    software.Composition: "cim.1.software.Composition",
-
-    software.SpatialRegriddingUserMethod: "cim.1.software.SpatialRegriddingUserMethod",
-
-    software.ComponentLanguageProperty: "cim.1.software.ComponentLanguageProperty",
-
-    software.SpatialRegriddingProperty: "cim.1.software.SpatialRegriddingProperty",
-
-    software.ComponentProperty: "cim.1.software.ComponentProperty",
-
-    software.StatisticalModelComponent: "cim.1.software.StatisticalModelComponent",
-
-    software.TimeTransformation: "cim.1.software.TimeTransformation",
-
-    software.CouplingEndpoint: "cim.1.software.CouplingEndpoint",
-
-    software.Deployment: "cim.1.software.Deployment",
-
-    software.Component: "cim.1.software.Component",
-
-    software.ModelComponent: "cim.1.software.ModelComponent",
-
-    software.TimeLag: "cim.1.software.TimeLag",
-
-    software.CouplingProperty: "cim.1.software.CouplingProperty",
+    shared.Machine: "cim.1.shared.Machine",
 
     software.Connection: "cim.1.software.Connection",
 
     software.ConnectionEndpoint: "cim.1.software.ConnectionEndpoint",
 
+    software.SpatialRegriddingUserMethod: "cim.1.software.SpatialRegriddingUserMethod",
+
+    software.EntryPoint: "cim.1.software.EntryPoint",
+
+    software.ConnectionProperty: "cim.1.software.ConnectionProperty",
+
+    software.Timing: "cim.1.software.Timing",
+
+    software.ComponentLanguageProperty: "cim.1.software.ComponentLanguageProperty",
+
+    software.SpatialRegriddingProperty: "cim.1.software.SpatialRegriddingProperty",
+
+    software.Parallelisation: "cim.1.software.Parallelisation",
+
+    software.CouplingEndpoint: "cim.1.software.CouplingEndpoint",
+
+    software.ComponentLanguage: "cim.1.software.ComponentLanguage",
+
+    software.CouplingProperty: "cim.1.software.CouplingProperty",
+
+    software.Component: "cim.1.software.Component",
+
+    software.StatisticalModelComponent: "cim.1.software.StatisticalModelComponent",
+
+    software.TimeTransformation: "cim.1.software.TimeTransformation",
+
+    software.ProcessorComponent: "cim.1.software.ProcessorComponent",
+
     software.SpatialRegridding: "cim.1.software.SpatialRegridding",
+
+    software.TimeLag: "cim.1.software.TimeLag",
+
+    software.ComponentProperty: "cim.1.software.ComponentProperty",
+
+    software.Coupling: "cim.1.software.Coupling",
+
+    software.Deployment: "cim.1.software.Deployment",
+
+    software.Composition: "cim.1.software.Composition",
+
+    software.Rank: "cim.1.software.Rank",
+
+    software.ModelComponent: "cim.1.software.ModelComponent",
 
     grids.GridTileResolutionType: "cim.1.grids.GridTileResolutionType",
 
@@ -197,53 +197,53 @@ KEYS = {
 
     data.DataStorageDb: "cim.1.data.DataStorageDb",
 
-    activity.Experiment: "cim.1.activity.Experiment",
-
-    activity.SimulationRelationship: "cim.1.activity.SimulationRelationship",
-
-    activity.EnsembleMember: "cim.1.activity.EnsembleMember",
-
-    activity.NumericalRequirement: "cim.1.activity.NumericalRequirement",
-
-    activity.LateralBoundaryCondition: "cim.1.activity.LateralBoundaryCondition",
-
-    activity.DownscalingSimulation: "cim.1.activity.DownscalingSimulation",
-
-    activity.NumericalActivity: "cim.1.activity.NumericalActivity",
-
     activity.Simulation: "cim.1.activity.Simulation",
-
-    activity.ExperimentRelationship: "cim.1.activity.ExperimentRelationship",
-
-    activity.ExperimentRelationshipTarget: "cim.1.activity.ExperimentRelationshipTarget",
-
-    activity.NumericalRequirementOption: "cim.1.activity.NumericalRequirementOption",
 
     activity.Activity: "cim.1.activity.Activity",
 
-    activity.MeasurementCampaign: "cim.1.activity.MeasurementCampaign",
+    activity.NumericalRequirementOption: "cim.1.activity.NumericalRequirementOption",
+
+    activity.SimulationRun: "cim.1.activity.SimulationRun",
 
     activity.SimulationRelationshipTarget: "cim.1.activity.SimulationRelationshipTarget",
 
-    activity.SimulationRun: "cim.1.activity.SimulationRun",
+    activity.ExperimentRelationship: "cim.1.activity.ExperimentRelationship",
+
+    activity.SimulationComposite: "cim.1.activity.SimulationComposite",
+
+    activity.BoundaryCondition: "cim.1.activity.BoundaryCondition",
+
+    activity.NumericalActivity: "cim.1.activity.NumericalActivity",
+
+    activity.ExperimentRelationshipTarget: "cim.1.activity.ExperimentRelationshipTarget",
+
+    activity.EnsembleMember: "cim.1.activity.EnsembleMember",
+
+    activity.DownscalingSimulation: "cim.1.activity.DownscalingSimulation",
+
+    activity.NumericalExperiment: "cim.1.activity.NumericalExperiment",
+
+    activity.Experiment: "cim.1.activity.Experiment",
+
+    activity.SpatioTemporalConstraint: "cim.1.activity.SpatioTemporalConstraint",
 
     activity.OutputRequirement: "cim.1.activity.OutputRequirement",
 
     activity.Conformance: "cim.1.activity.Conformance",
 
-    activity.BoundaryCondition: "cim.1.activity.BoundaryCondition",
+    activity.MeasurementCampaign: "cim.1.activity.MeasurementCampaign",
 
     activity.Ensemble: "cim.1.activity.Ensemble",
 
     activity.PhysicalModification: "cim.1.activity.PhysicalModification",
 
-    activity.SimulationComposite: "cim.1.activity.SimulationComposite",
-
     activity.InitialCondition: "cim.1.activity.InitialCondition",
 
-    activity.NumericalExperiment: "cim.1.activity.NumericalExperiment",
+    activity.SimulationRelationship: "cim.1.activity.SimulationRelationship",
 
-    activity.SpatioTemporalConstraint: "cim.1.activity.SpatioTemporalConstraint",
+    activity.NumericalRequirement: "cim.1.activity.NumericalRequirement",
+
+    activity.LateralBoundaryCondition: "cim.1.activity.LateralBoundaryCondition",
 
     misc.DocumentSet: "cim.1.misc.DocumentSet",
 
@@ -251,35 +251,11 @@ KEYS = {
     # Class properties.
     # ------------------------------------------------
 
-    (shared.DocReference, 'version'): "cim.1.shared.DocReference.version",
+    (shared.StandardName, 'is_open'): "cim.1.shared.StandardName.is_open",
 
-    (shared.DocReference, 'name'): "cim.1.shared.DocReference.name",
+    (shared.StandardName, 'value'): "cim.1.shared.StandardName.value",
 
-    (shared.DocReference, 'type'): "cim.1.shared.DocReference.type",
-
-    (shared.DocReference, 'description'): "cim.1.shared.DocReference.description",
-
-    (shared.DocReference, 'url'): "cim.1.shared.DocReference.url",
-
-    (shared.DocReference, 'external_id'): "cim.1.shared.DocReference.external_id",
-
-    (shared.DocReference, 'id'): "cim.1.shared.DocReference.id",
-
-    (shared.DocReference, 'changes'): "cim.1.shared.DocReference.changes",
-
-    (shared.Compiler, 'language'): "cim.1.shared.Compiler.language",
-
-    (shared.Compiler, 'version'): "cim.1.shared.Compiler.version",
-
-    (shared.Compiler, 'name'): "cim.1.shared.Compiler.name",
-
-    (shared.Compiler, 'options'): "cim.1.shared.Compiler.options",
-
-    (shared.Compiler, 'type'): "cim.1.shared.Compiler.type",
-
-    (shared.Compiler, 'environment_variables'): "cim.1.shared.Compiler.environment_variables",
-
-    (shared.DateRange, 'duration'): "cim.1.shared.DateRange.duration",
+    (shared.StandardName, 'standards'): "cim.1.shared.StandardName.standards",
 
     (shared.Change, 'details'): "cim.1.shared.Change.details",
 
@@ -293,73 +269,25 @@ KEYS = {
 
     (shared.Change, 'date'): "cim.1.shared.Change.date",
 
-    (shared.Standard, 'description'): "cim.1.shared.Standard.description",
+    (shared.ChangeProperty, 'description'): "cim.1.shared.ChangeProperty.description",
 
-    (shared.Standard, 'version'): "cim.1.shared.Standard.version",
-
-    (shared.Standard, 'name'): "cim.1.shared.Standard.name",
-
-    (shared.DocRelationship, 'target'): "cim.1.shared.DocRelationship.target",
-
-    (shared.DocRelationship, 'type'): "cim.1.shared.DocRelationship.type",
-
-    (shared.Citation, 'type'): "cim.1.shared.Citation.type",
-
-    (shared.Citation, 'collective_title'): "cim.1.shared.Citation.collective_title",
-
-    (shared.Citation, 'organisation'): "cim.1.shared.Citation.organisation",
-
-    (shared.Citation, 'location'): "cim.1.shared.Citation.location",
-
-    (shared.Citation, 'alternative_title'): "cim.1.shared.Citation.alternative_title",
-
-    (shared.Citation, 'role'): "cim.1.shared.Citation.role",
-
-    (shared.Citation, 'date'): "cim.1.shared.Citation.date",
-
-    (shared.Citation, 'title'): "cim.1.shared.Citation.title",
-
-    (shared.Citation, 'date_type'): "cim.1.shared.Citation.date_type",
-
-    (shared.DocRelationshipTarget, 'reference'): "cim.1.shared.DocRelationshipTarget.reference",
-
-    (shared.Property, 'name'): "cim.1.shared.Property.name",
-
-    (shared.Property, 'value'): "cim.1.shared.Property.value",
-
-    (shared.License, 'name'): "cim.1.shared.License.name",
-
-    (shared.License, 'contact'): "cim.1.shared.License.contact",
-
-    (shared.License, 'is_unrestricted'): "cim.1.shared.License.is_unrestricted",
-
-    (shared.License, 'description'): "cim.1.shared.License.description",
-
-    (shared.Machine, 'system'): "cim.1.shared.Machine.system",
-
-    (shared.Machine, 'location'): "cim.1.shared.Machine.location",
-
-    (shared.Machine, 'interconnect'): "cim.1.shared.Machine.interconnect",
-
-    (shared.Machine, 'type'): "cim.1.shared.Machine.type",
-
-    (shared.Machine, 'maximum_processors'): "cim.1.shared.Machine.maximum_processors",
-
-    (shared.Machine, 'cores_per_processor'): "cim.1.shared.Machine.cores_per_processor",
-
-    (shared.Machine, 'vendor'): "cim.1.shared.Machine.vendor",
-
-    (shared.Machine, 'name'): "cim.1.shared.Machine.name",
-
-    (shared.Machine, 'operating_system'): "cim.1.shared.Machine.operating_system",
-
-    (shared.Machine, 'processor_type'): "cim.1.shared.Machine.processor_type",
-
-    (shared.Machine, 'libraries'): "cim.1.shared.Machine.libraries",
-
-    (shared.Machine, 'description'): "cim.1.shared.Machine.description",
+    (shared.ChangeProperty, 'id'): "cim.1.shared.ChangeProperty.id",
 
     (shared.DataSource, 'purpose'): "cim.1.shared.DataSource.purpose",
+
+    (shared.ResponsibleParty, 'role'): "cim.1.shared.ResponsibleParty.role",
+
+    (shared.ResponsibleParty, 'url'): "cim.1.shared.ResponsibleParty.url",
+
+    (shared.ResponsibleParty, 'email'): "cim.1.shared.ResponsibleParty.email",
+
+    (shared.ResponsibleParty, 'abbreviation'): "cim.1.shared.ResponsibleParty.abbreviation",
+
+    (shared.ResponsibleParty, 'individual_name'): "cim.1.shared.ResponsibleParty.individual_name",
+
+    (shared.ResponsibleParty, 'organisation_name'): "cim.1.shared.ResponsibleParty.organisation_name",
+
+    (shared.ResponsibleParty, 'address'): "cim.1.shared.ResponsibleParty.address",
 
     (shared.DocGenealogy, 'relationships'): "cim.1.shared.DocGenealogy.relationships",
 
@@ -367,15 +295,117 @@ KEYS = {
 
     (shared.MachineCompilerUnit, 'machine'): "cim.1.shared.MachineCompilerUnit.machine",
 
-    (shared.Relationship, 'description'): "cim.1.shared.Relationship.description",
+    (shared.DateRange, 'duration'): "cim.1.shared.DateRange.duration",
 
-    (shared.Relationship, 'direction'): "cim.1.shared.Relationship.direction",
+    (shared.Compiler, 'name'): "cim.1.shared.Compiler.name",
 
-    (shared.Calendar, 'description'): "cim.1.shared.Calendar.description",
+    (shared.Compiler, 'type'): "cim.1.shared.Compiler.type",
+
+    (shared.Compiler, 'options'): "cim.1.shared.Compiler.options",
+
+    (shared.Compiler, 'environment_variables'): "cim.1.shared.Compiler.environment_variables",
+
+    (shared.Compiler, 'language'): "cim.1.shared.Compiler.language",
+
+    (shared.Compiler, 'version'): "cim.1.shared.Compiler.version",
+
+    (shared.License, 'contact'): "cim.1.shared.License.contact",
+
+    (shared.License, 'name'): "cim.1.shared.License.name",
+
+    (shared.License, 'is_unrestricted'): "cim.1.shared.License.is_unrestricted",
+
+    (shared.License, 'description'): "cim.1.shared.License.description",
+
+    (shared.DocReference, 'url'): "cim.1.shared.DocReference.url",
+
+    (shared.DocReference, 'id'): "cim.1.shared.DocReference.id",
+
+    (shared.DocReference, 'version'): "cim.1.shared.DocReference.version",
+
+    (shared.DocReference, 'name'): "cim.1.shared.DocReference.name",
+
+    (shared.DocReference, 'changes'): "cim.1.shared.DocReference.changes",
+
+    (shared.DocReference, 'type'): "cim.1.shared.DocReference.type",
+
+    (shared.DocReference, 'external_id'): "cim.1.shared.DocReference.external_id",
+
+    (shared.DocReference, 'description'): "cim.1.shared.DocReference.description",
+
+    (shared.DocMetaInfo, 'source_key'): "cim.1.shared.DocMetaInfo.source_key",
+
+    (shared.DocMetaInfo, 'id'): "cim.1.shared.DocMetaInfo.id",
+
+    (shared.DocMetaInfo, 'genealogy'): "cim.1.shared.DocMetaInfo.genealogy",
+
+    (shared.DocMetaInfo, 'update_date'): "cim.1.shared.DocMetaInfo.update_date",
+
+    (shared.DocMetaInfo, 'type'): "cim.1.shared.DocMetaInfo.type",
+
+    (shared.DocMetaInfo, 'project'): "cim.1.shared.DocMetaInfo.project",
+
+    (shared.DocMetaInfo, 'drs_path'): "cim.1.shared.DocMetaInfo.drs_path",
+
+    (shared.DocMetaInfo, 'language'): "cim.1.shared.DocMetaInfo.language",
+
+    (shared.DocMetaInfo, 'author'): "cim.1.shared.DocMetaInfo.author",
+
+    (shared.DocMetaInfo, 'version'): "cim.1.shared.DocMetaInfo.version",
+
+    (shared.DocMetaInfo, 'sort_key'): "cim.1.shared.DocMetaInfo.sort_key",
+
+    (shared.DocMetaInfo, 'institute'): "cim.1.shared.DocMetaInfo.institute",
+
+    (shared.DocMetaInfo, 'drs_keys'): "cim.1.shared.DocMetaInfo.drs_keys",
+
+    (shared.DocMetaInfo, 'type_sort_key'): "cim.1.shared.DocMetaInfo.type_sort_key",
+
+    (shared.DocMetaInfo, 'status'): "cim.1.shared.DocMetaInfo.status",
+
+    (shared.DocMetaInfo, 'source'): "cim.1.shared.DocMetaInfo.source",
+
+    (shared.DocMetaInfo, 'type_display_name'): "cim.1.shared.DocMetaInfo.type_display_name",
+
+    (shared.DocMetaInfo, 'external_ids'): "cim.1.shared.DocMetaInfo.external_ids",
+
+    (shared.DocMetaInfo, 'create_date'): "cim.1.shared.DocMetaInfo.create_date",
+
+    (shared.Standard, 'description'): "cim.1.shared.Standard.description",
+
+    (shared.Standard, 'version'): "cim.1.shared.Standard.version",
+
+    (shared.Standard, 'name'): "cim.1.shared.Standard.name",
 
     (shared.Calendar, 'range'): "cim.1.shared.Calendar.range",
 
+    (shared.Calendar, 'description'): "cim.1.shared.Calendar.description",
+
     (shared.Calendar, 'length'): "cim.1.shared.Calendar.length",
+
+    (shared.Citation, 'location'): "cim.1.shared.Citation.location",
+
+    (shared.Citation, 'role'): "cim.1.shared.Citation.role",
+
+    (shared.Citation, 'type'): "cim.1.shared.Citation.type",
+
+    (shared.Citation, 'date'): "cim.1.shared.Citation.date",
+
+    (shared.Citation, 'collective_title'): "cim.1.shared.Citation.collective_title",
+
+    (shared.Citation, 'date_type'): "cim.1.shared.Citation.date_type",
+
+    (shared.Citation, 'title'): "cim.1.shared.Citation.title",
+
+    (shared.Citation, 'organisation'): "cim.1.shared.Citation.organisation",
+
+    (shared.Citation, 'alternative_title'): "cim.1.shared.Citation.alternative_title",
+
+    (shared.DocRelationshipTarget, 'reference'): "cim.1.shared.DocRelationshipTarget.reference",
+
+    (shared.OpenDateRange, 'end'): "cim.1.shared.OpenDateRange.end",
+
+    (shared.OpenDateRange, 'start'): "cim.1.shared.OpenDateRange.start",
 
     (shared.Platform, 'meta'): "cim.1.shared.Platform.meta",
 
@@ -389,89 +419,85 @@ KEYS = {
 
     (shared.Platform, 'long_name'): "cim.1.shared.Platform.long_name",
 
+    (shared.DocRelationship, 'target'): "cim.1.shared.DocRelationship.target",
+
+    (shared.DocRelationship, 'type'): "cim.1.shared.DocRelationship.type",
+
+    (shared.Property, 'name'): "cim.1.shared.Property.name",
+
+    (shared.Property, 'value'): "cim.1.shared.Property.value",
+
+    (shared.Relationship, 'description'): "cim.1.shared.Relationship.description",
+
+    (shared.Relationship, 'direction'): "cim.1.shared.Relationship.direction",
+
     (shared.ClosedDateRange, 'end'): "cim.1.shared.ClosedDateRange.end",
 
     (shared.ClosedDateRange, 'start'): "cim.1.shared.ClosedDateRange.start",
 
-    (shared.ResponsibleParty, 'individual_name'): "cim.1.shared.ResponsibleParty.individual_name",
+    (shared.Machine, 'processor_type'): "cim.1.shared.Machine.processor_type",
 
-    (shared.ResponsibleParty, 'abbreviation'): "cim.1.shared.ResponsibleParty.abbreviation",
+    (shared.Machine, 'cores_per_processor'): "cim.1.shared.Machine.cores_per_processor",
 
-    (shared.ResponsibleParty, 'organisation_name'): "cim.1.shared.ResponsibleParty.organisation_name",
+    (shared.Machine, 'libraries'): "cim.1.shared.Machine.libraries",
 
-    (shared.ResponsibleParty, 'address'): "cim.1.shared.ResponsibleParty.address",
+    (shared.Machine, 'system'): "cim.1.shared.Machine.system",
 
-    (shared.ResponsibleParty, 'role'): "cim.1.shared.ResponsibleParty.role",
+    (shared.Machine, 'location'): "cim.1.shared.Machine.location",
 
-    (shared.ResponsibleParty, 'email'): "cim.1.shared.ResponsibleParty.email",
+    (shared.Machine, 'description'): "cim.1.shared.Machine.description",
 
-    (shared.ResponsibleParty, 'url'): "cim.1.shared.ResponsibleParty.url",
+    (shared.Machine, 'type'): "cim.1.shared.Machine.type",
 
-    (shared.StandardName, 'is_open'): "cim.1.shared.StandardName.is_open",
+    (shared.Machine, 'maximum_processors'): "cim.1.shared.Machine.maximum_processors",
 
-    (shared.StandardName, 'value'): "cim.1.shared.StandardName.value",
+    (shared.Machine, 'operating_system'): "cim.1.shared.Machine.operating_system",
 
-    (shared.StandardName, 'standards'): "cim.1.shared.StandardName.standards",
+    (shared.Machine, 'vendor'): "cim.1.shared.Machine.vendor",
 
-    (shared.DocMetaInfo, 'version'): "cim.1.shared.DocMetaInfo.version",
+    (shared.Machine, 'name'): "cim.1.shared.Machine.name",
 
-    (shared.DocMetaInfo, 'id'): "cim.1.shared.DocMetaInfo.id",
+    (shared.Machine, 'interconnect'): "cim.1.shared.Machine.interconnect",
 
-    (shared.DocMetaInfo, 'project'): "cim.1.shared.DocMetaInfo.project",
+    (software.Connection, 'time_profile'): "cim.1.software.Connection.time_profile",
 
-    (shared.DocMetaInfo, 'update_date'): "cim.1.shared.DocMetaInfo.update_date",
+    (software.Connection, 'transformers'): "cim.1.software.Connection.transformers",
 
-    (shared.DocMetaInfo, 'language'): "cim.1.shared.DocMetaInfo.language",
+    (software.Connection, 'properties'): "cim.1.software.Connection.properties",
 
-    (shared.DocMetaInfo, 'status'): "cim.1.shared.DocMetaInfo.status",
+    (software.Connection, 'spatial_regridding'): "cim.1.software.Connection.spatial_regridding",
 
-    (shared.DocMetaInfo, 'drs_keys'): "cim.1.shared.DocMetaInfo.drs_keys",
+    (software.Connection, 'sources'): "cim.1.software.Connection.sources",
 
-    (shared.DocMetaInfo, 'type_sort_key'): "cim.1.shared.DocMetaInfo.type_sort_key",
+    (software.Connection, 'time_lag'): "cim.1.software.Connection.time_lag",
 
-    (shared.DocMetaInfo, 'author'): "cim.1.shared.DocMetaInfo.author",
+    (software.Connection, 'time_transformation'): "cim.1.software.Connection.time_transformation",
 
-    (shared.DocMetaInfo, 'source'): "cim.1.shared.DocMetaInfo.source",
+    (software.Connection, 'target'): "cim.1.software.Connection.target",
 
-    (shared.DocMetaInfo, 'type_display_name'): "cim.1.shared.DocMetaInfo.type_display_name",
+    (software.Connection, 'type'): "cim.1.software.Connection.type",
 
-    (shared.DocMetaInfo, 'external_ids'): "cim.1.shared.DocMetaInfo.external_ids",
+    (software.Connection, 'description'): "cim.1.software.Connection.description",
 
-    (shared.DocMetaInfo, 'create_date'): "cim.1.shared.DocMetaInfo.create_date",
+    (software.Connection, 'priming'): "cim.1.software.Connection.priming",
 
-    (shared.DocMetaInfo, 'institute'): "cim.1.shared.DocMetaInfo.institute",
+    (software.ConnectionEndpoint, 'properties'): "cim.1.software.ConnectionEndpoint.properties",
 
-    (shared.DocMetaInfo, 'source_key'): "cim.1.shared.DocMetaInfo.source_key",
+    (software.ConnectionEndpoint, 'data_source'): "cim.1.software.ConnectionEndpoint.data_source",
 
-    (shared.DocMetaInfo, 'genealogy'): "cim.1.shared.DocMetaInfo.genealogy",
+    (software.ConnectionEndpoint, 'instance_id'): "cim.1.software.ConnectionEndpoint.instance_id",
 
-    (shared.DocMetaInfo, 'drs_path'): "cim.1.shared.DocMetaInfo.drs_path",
+    (software.SpatialRegriddingUserMethod, 'file'): "cim.1.software.SpatialRegriddingUserMethod.file",
 
-    (shared.DocMetaInfo, 'sort_key'): "cim.1.shared.DocMetaInfo.sort_key",
+    (software.SpatialRegriddingUserMethod, 'name'): "cim.1.software.SpatialRegriddingUserMethod.name",
 
-    (shared.DocMetaInfo, 'type'): "cim.1.shared.DocMetaInfo.type",
-
-    (shared.ChangeProperty, 'description'): "cim.1.shared.ChangeProperty.description",
-
-    (shared.ChangeProperty, 'id'): "cim.1.shared.ChangeProperty.id",
-
-    (shared.OpenDateRange, 'end'): "cim.1.shared.OpenDateRange.end",
-
-    (shared.OpenDateRange, 'start'): "cim.1.shared.OpenDateRange.start",
-
-    (software.Rank, 'value'): "cim.1.software.Rank.value",
-
-    (software.Rank, 'increment'): "cim.1.software.Rank.increment",
-
-    (software.Rank, 'min'): "cim.1.software.Rank.min",
-
-    (software.Rank, 'max'): "cim.1.software.Rank.max",
-
-    (software.Timing, 'start'): "cim.1.software.Timing.start",
+    (software.EntryPoint, 'name'): "cim.1.software.EntryPoint.name",
 
     (software.Timing, 'end'): "cim.1.software.Timing.end",
 
     (software.Timing, 'units'): "cim.1.software.Timing.units",
+
+    (software.Timing, 'start'): "cim.1.software.Timing.start",
 
     (software.Timing, 'rate'): "cim.1.software.Timing.rate",
 
@@ -481,111 +507,15 @@ KEYS = {
 
     (software.Parallelisation, 'ranks'): "cim.1.software.Parallelisation.ranks",
 
-    (software.EntryPoint, 'name'): "cim.1.software.EntryPoint.name",
+    (software.CouplingEndpoint, 'properties'): "cim.1.software.CouplingEndpoint.properties",
 
-    (software.Coupling, 'priming'): "cim.1.software.Coupling.priming",
+    (software.CouplingEndpoint, 'data_source'): "cim.1.software.CouplingEndpoint.data_source",
 
-    (software.Coupling, 'time_lag'): "cim.1.software.Coupling.time_lag",
-
-    (software.Coupling, 'sources'): "cim.1.software.Coupling.sources",
-
-    (software.Coupling, 'spatial_regriddings'): "cim.1.software.Coupling.spatial_regriddings",
-
-    (software.Coupling, 'is_fully_specified'): "cim.1.software.Coupling.is_fully_specified",
-
-    (software.Coupling, 'connections'): "cim.1.software.Coupling.connections",
-
-    (software.Coupling, 'transformers'): "cim.1.software.Coupling.transformers",
-
-    (software.Coupling, 'properties'): "cim.1.software.Coupling.properties",
-
-    (software.Coupling, 'type'): "cim.1.software.Coupling.type",
-
-    (software.Coupling, 'target'): "cim.1.software.Coupling.target",
-
-    (software.Coupling, 'time_profile'): "cim.1.software.Coupling.time_profile",
-
-    (software.Coupling, 'description'): "cim.1.software.Coupling.description",
-
-    (software.Coupling, 'purpose'): "cim.1.software.Coupling.purpose",
-
-    (software.Coupling, 'time_transformation'): "cim.1.software.Coupling.time_transformation",
-
-    (software.ProcessorComponent, 'meta'): "cim.1.software.ProcessorComponent.meta",
+    (software.CouplingEndpoint, 'instance_id'): "cim.1.software.CouplingEndpoint.instance_id",
 
     (software.ComponentLanguage, 'name'): "cim.1.software.ComponentLanguage.name",
 
     (software.ComponentLanguage, 'properties'): "cim.1.software.ComponentLanguage.properties",
-
-    (software.Composition, 'couplings'): "cim.1.software.Composition.couplings",
-
-    (software.Composition, 'description'): "cim.1.software.Composition.description",
-
-    (software.SpatialRegriddingUserMethod, 'file'): "cim.1.software.SpatialRegriddingUserMethod.file",
-
-    (software.SpatialRegriddingUserMethod, 'name'): "cim.1.software.SpatialRegriddingUserMethod.name",
-
-    (software.ComponentProperty, 'short_name'): "cim.1.software.ComponentProperty.short_name",
-
-    (software.ComponentProperty, 'grid'): "cim.1.software.ComponentProperty.grid",
-
-    (software.ComponentProperty, 'is_represented'): "cim.1.software.ComponentProperty.is_represented",
-
-    (software.ComponentProperty, 'intent'): "cim.1.software.ComponentProperty.intent",
-
-    (software.ComponentProperty, 'values'): "cim.1.software.ComponentProperty.values",
-
-    (software.ComponentProperty, 'sub_properties'): "cim.1.software.ComponentProperty.sub_properties",
-
-    (software.ComponentProperty, 'standard_names'): "cim.1.software.ComponentProperty.standard_names",
-
-    (software.ComponentProperty, 'citations'): "cim.1.software.ComponentProperty.citations",
-
-    (software.ComponentProperty, 'description'): "cim.1.software.ComponentProperty.description",
-
-    (software.ComponentProperty, 'long_name'): "cim.1.software.ComponentProperty.long_name",
-
-    (software.ComponentProperty, 'units'): "cim.1.software.ComponentProperty.units",
-
-    (software.StatisticalModelComponent, 'type'): "cim.1.software.StatisticalModelComponent.type",
-
-    (software.StatisticalModelComponent, 'types'): "cim.1.software.StatisticalModelComponent.types",
-
-    (software.StatisticalModelComponent, 'meta'): "cim.1.software.StatisticalModelComponent.meta",
-
-    (software.StatisticalModelComponent, 'timing'): "cim.1.software.StatisticalModelComponent.timing",
-
-    (software.TimeTransformation, 'description'): "cim.1.software.TimeTransformation.description",
-
-    (software.TimeTransformation, 'mapping_type'): "cim.1.software.TimeTransformation.mapping_type",
-
-    (software.CouplingEndpoint, 'data_source'): "cim.1.software.CouplingEndpoint.data_source",
-
-    (software.CouplingEndpoint, 'properties'): "cim.1.software.CouplingEndpoint.properties",
-
-    (software.CouplingEndpoint, 'instance_id'): "cim.1.software.CouplingEndpoint.instance_id",
-
-    (software.Deployment, 'parallelisation'): "cim.1.software.Deployment.parallelisation",
-
-    (software.Deployment, 'executable_name'): "cim.1.software.Deployment.executable_name",
-
-    (software.Deployment, 'platform'): "cim.1.software.Deployment.platform",
-
-    (software.Deployment, 'deployment_date'): "cim.1.software.Deployment.deployment_date",
-
-    (software.Deployment, 'description'): "cim.1.software.Deployment.description",
-
-    (software.Deployment, 'executable_arguments'): "cim.1.software.Deployment.executable_arguments",
-
-    (software.Component, 'dependencies'): "cim.1.software.Component.dependencies",
-
-    (software.Component, 'version'): "cim.1.software.Component.version",
-
-    (software.Component, 'deployments'): "cim.1.software.Component.deployments",
-
-    (software.Component, 'description'): "cim.1.software.Component.description",
-
-    (software.Component, 'funding_sources'): "cim.1.software.Component.funding_sources",
 
     (software.Component, 'grid'): "cim.1.software.Component.grid",
 
@@ -621,47 +551,29 @@ KEYS = {
 
     (software.Component, 'short_name'): "cim.1.software.Component.short_name",
 
-    (software.ModelComponent, 'meta'): "cim.1.software.ModelComponent.meta",
+    (software.Component, 'version'): "cim.1.software.Component.version",
 
-    (software.ModelComponent, 'type'): "cim.1.software.ModelComponent.type",
+    (software.Component, 'dependencies'): "cim.1.software.Component.dependencies",
 
-    (software.ModelComponent, 'types'): "cim.1.software.ModelComponent.types",
+    (software.Component, 'deployments'): "cim.1.software.Component.deployments",
 
-    (software.ModelComponent, 'activity'): "cim.1.software.ModelComponent.activity",
+    (software.Component, 'description'): "cim.1.software.Component.description",
 
-    (software.ModelComponent, 'timing'): "cim.1.software.ModelComponent.timing",
+    (software.Component, 'funding_sources'): "cim.1.software.Component.funding_sources",
 
-    (software.TimeLag, 'units'): "cim.1.software.TimeLag.units",
+    (software.StatisticalModelComponent, 'types'): "cim.1.software.StatisticalModelComponent.types",
 
-    (software.TimeLag, 'value'): "cim.1.software.TimeLag.value",
+    (software.StatisticalModelComponent, 'meta'): "cim.1.software.StatisticalModelComponent.meta",
 
-    (software.Connection, 'time_lag'): "cim.1.software.Connection.time_lag",
+    (software.StatisticalModelComponent, 'type'): "cim.1.software.StatisticalModelComponent.type",
 
-    (software.Connection, 'time_transformation'): "cim.1.software.Connection.time_transformation",
+    (software.StatisticalModelComponent, 'timing'): "cim.1.software.StatisticalModelComponent.timing",
 
-    (software.Connection, 'type'): "cim.1.software.Connection.type",
+    (software.TimeTransformation, 'description'): "cim.1.software.TimeTransformation.description",
 
-    (software.Connection, 'description'): "cim.1.software.Connection.description",
+    (software.TimeTransformation, 'mapping_type'): "cim.1.software.TimeTransformation.mapping_type",
 
-    (software.Connection, 'properties'): "cim.1.software.Connection.properties",
-
-    (software.Connection, 'priming'): "cim.1.software.Connection.priming",
-
-    (software.Connection, 'time_profile'): "cim.1.software.Connection.time_profile",
-
-    (software.Connection, 'transformers'): "cim.1.software.Connection.transformers",
-
-    (software.Connection, 'spatial_regridding'): "cim.1.software.Connection.spatial_regridding",
-
-    (software.Connection, 'target'): "cim.1.software.Connection.target",
-
-    (software.Connection, 'sources'): "cim.1.software.Connection.sources",
-
-    (software.ConnectionEndpoint, 'data_source'): "cim.1.software.ConnectionEndpoint.data_source",
-
-    (software.ConnectionEndpoint, 'properties'): "cim.1.software.ConnectionEndpoint.properties",
-
-    (software.ConnectionEndpoint, 'instance_id'): "cim.1.software.ConnectionEndpoint.instance_id",
+    (software.ProcessorComponent, 'meta'): "cim.1.software.ProcessorComponent.meta",
 
     (software.SpatialRegridding, 'user_method'): "cim.1.software.SpatialRegridding.user_method",
 
@@ -670,6 +582,94 @@ KEYS = {
     (software.SpatialRegridding, 'standard_method'): "cim.1.software.SpatialRegridding.standard_method",
 
     (software.SpatialRegridding, 'properties'): "cim.1.software.SpatialRegridding.properties",
+
+    (software.TimeLag, 'units'): "cim.1.software.TimeLag.units",
+
+    (software.TimeLag, 'value'): "cim.1.software.TimeLag.value",
+
+    (software.ComponentProperty, 'intent'): "cim.1.software.ComponentProperty.intent",
+
+    (software.ComponentProperty, 'standard_names'): "cim.1.software.ComponentProperty.standard_names",
+
+    (software.ComponentProperty, 'description'): "cim.1.software.ComponentProperty.description",
+
+    (software.ComponentProperty, 'citations'): "cim.1.software.ComponentProperty.citations",
+
+    (software.ComponentProperty, 'short_name'): "cim.1.software.ComponentProperty.short_name",
+
+    (software.ComponentProperty, 'long_name'): "cim.1.software.ComponentProperty.long_name",
+
+    (software.ComponentProperty, 'units'): "cim.1.software.ComponentProperty.units",
+
+    (software.ComponentProperty, 'is_represented'): "cim.1.software.ComponentProperty.is_represented",
+
+    (software.ComponentProperty, 'grid'): "cim.1.software.ComponentProperty.grid",
+
+    (software.ComponentProperty, 'values'): "cim.1.software.ComponentProperty.values",
+
+    (software.ComponentProperty, 'sub_properties'): "cim.1.software.ComponentProperty.sub_properties",
+
+    (software.Coupling, 'priming'): "cim.1.software.Coupling.priming",
+
+    (software.Coupling, 'connections'): "cim.1.software.Coupling.connections",
+
+    (software.Coupling, 'time_profile'): "cim.1.software.Coupling.time_profile",
+
+    (software.Coupling, 'description'): "cim.1.software.Coupling.description",
+
+    (software.Coupling, 'type'): "cim.1.software.Coupling.type",
+
+    (software.Coupling, 'time_lag'): "cim.1.software.Coupling.time_lag",
+
+    (software.Coupling, 'properties'): "cim.1.software.Coupling.properties",
+
+    (software.Coupling, 'time_transformation'): "cim.1.software.Coupling.time_transformation",
+
+    (software.Coupling, 'is_fully_specified'): "cim.1.software.Coupling.is_fully_specified",
+
+    (software.Coupling, 'sources'): "cim.1.software.Coupling.sources",
+
+    (software.Coupling, 'spatial_regriddings'): "cim.1.software.Coupling.spatial_regriddings",
+
+    (software.Coupling, 'purpose'): "cim.1.software.Coupling.purpose",
+
+    (software.Coupling, 'target'): "cim.1.software.Coupling.target",
+
+    (software.Coupling, 'transformers'): "cim.1.software.Coupling.transformers",
+
+    (software.Deployment, 'platform'): "cim.1.software.Deployment.platform",
+
+    (software.Deployment, 'deployment_date'): "cim.1.software.Deployment.deployment_date",
+
+    (software.Deployment, 'executable_name'): "cim.1.software.Deployment.executable_name",
+
+    (software.Deployment, 'description'): "cim.1.software.Deployment.description",
+
+    (software.Deployment, 'executable_arguments'): "cim.1.software.Deployment.executable_arguments",
+
+    (software.Deployment, 'parallelisation'): "cim.1.software.Deployment.parallelisation",
+
+    (software.Composition, 'couplings'): "cim.1.software.Composition.couplings",
+
+    (software.Composition, 'description'): "cim.1.software.Composition.description",
+
+    (software.Rank, 'min'): "cim.1.software.Rank.min",
+
+    (software.Rank, 'value'): "cim.1.software.Rank.value",
+
+    (software.Rank, 'increment'): "cim.1.software.Rank.increment",
+
+    (software.Rank, 'max'): "cim.1.software.Rank.max",
+
+    (software.ModelComponent, 'meta'): "cim.1.software.ModelComponent.meta",
+
+    (software.ModelComponent, 'type'): "cim.1.software.ModelComponent.type",
+
+    (software.ModelComponent, 'activity'): "cim.1.software.ModelComponent.activity",
+
+    (software.ModelComponent, 'types'): "cim.1.software.ModelComponent.types",
+
+    (software.ModelComponent, 'timing'): "cim.1.software.ModelComponent.timing",
 
     (grids.GridTileResolutionType, 'description'): "cim.1.grids.GridTileResolutionType.description",
 
@@ -857,6 +857,8 @@ KEYS = {
 
     (data.DataObject, 'purpose'): "cim.1.data.DataObject.purpose",
 
+    (data.DataObject, 'restriction'): "cim.1.data.DataObject.restriction",
+
     (data.DataObject, 'citations'): "cim.1.data.DataObject.citations",
 
     (data.DataObject, 'distribution'): "cim.1.data.DataObject.distribution",
@@ -865,13 +867,11 @@ KEYS = {
 
     (data.DataObject, 'extent'): "cim.1.data.DataObject.extent",
 
-    (data.DataObject, 'restriction'): "cim.1.data.DataObject.restriction",
+    (data.DataObject, 'source_simulation'): "cim.1.data.DataObject.source_simulation",
 
     (data.DataObject, 'content'): "cim.1.data.DataObject.content",
 
     (data.DataObject, 'parent_object'): "cim.1.data.DataObject.parent_object",
-
-    (data.DataObject, 'source_simulation'): "cim.1.data.DataObject.source_simulation",
 
     (data.DataObject, 'acronym'): "cim.1.data.DataObject.acronym",
 
@@ -889,9 +889,9 @@ KEYS = {
 
     (data.DataStorage, 'format'): "cim.1.data.DataStorage.format",
 
-    (data.DataStorage, 'modification_date'): "cim.1.data.DataStorage.modification_date",
-
     (data.DataStorage, 'size'): "cim.1.data.DataStorage.size",
+
+    (data.DataStorage, 'modification_date'): "cim.1.data.DataStorage.modification_date",
 
     (data.DataStorage, 'location'): "cim.1.data.DataStorage.location",
 
@@ -959,58 +959,6 @@ KEYS = {
 
     (data.DataStorageDb, 'name'): "cim.1.data.DataStorageDb.name",
 
-    (activity.Experiment, 'generates'): "cim.1.activity.Experiment.generates",
-
-    (activity.Experiment, 'supports'): "cim.1.activity.Experiment.supports",
-
-    (activity.Experiment, 'measurement_campaigns'): "cim.1.activity.Experiment.measurement_campaigns",
-
-    (activity.Experiment, 'requires'): "cim.1.activity.Experiment.requires",
-
-    (activity.SimulationRelationship, 'target'): "cim.1.activity.SimulationRelationship.target",
-
-    (activity.SimulationRelationship, 'type'): "cim.1.activity.SimulationRelationship.type",
-
-    (activity.EnsembleMember, 'ensemble'): "cim.1.activity.EnsembleMember.ensemble",
-
-    (activity.EnsembleMember, 'simulation'): "cim.1.activity.EnsembleMember.simulation",
-
-    (activity.EnsembleMember, 'ensemble_ids'): "cim.1.activity.EnsembleMember.ensemble_ids",
-
-    (activity.NumericalRequirement, 'requirement_type'): "cim.1.activity.NumericalRequirement.requirement_type",
-
-    (activity.NumericalRequirement, 'source'): "cim.1.activity.NumericalRequirement.source",
-
-    (activity.NumericalRequirement, 'id'): "cim.1.activity.NumericalRequirement.id",
-
-    (activity.NumericalRequirement, 'name'): "cim.1.activity.NumericalRequirement.name",
-
-    (activity.NumericalRequirement, 'options'): "cim.1.activity.NumericalRequirement.options",
-
-    (activity.NumericalRequirement, 'description'): "cim.1.activity.NumericalRequirement.description",
-
-    (activity.DownscalingSimulation, 'downscaling_type'): "cim.1.activity.DownscalingSimulation.downscaling_type",
-
-    (activity.DownscalingSimulation, 'outputs'): "cim.1.activity.DownscalingSimulation.outputs",
-
-    (activity.DownscalingSimulation, 'downscaling_id'): "cim.1.activity.DownscalingSimulation.downscaling_id",
-
-    (activity.DownscalingSimulation, 'meta'): "cim.1.activity.DownscalingSimulation.meta",
-
-    (activity.DownscalingSimulation, 'calendar'): "cim.1.activity.DownscalingSimulation.calendar",
-
-    (activity.DownscalingSimulation, 'inputs'): "cim.1.activity.DownscalingSimulation.inputs",
-
-    (activity.DownscalingSimulation, 'downscaled_from'): "cim.1.activity.DownscalingSimulation.downscaled_from",
-
-    (activity.NumericalActivity, 'supports'): "cim.1.activity.NumericalActivity.supports",
-
-    (activity.NumericalActivity, 'description'): "cim.1.activity.NumericalActivity.description",
-
-    (activity.NumericalActivity, 'short_name'): "cim.1.activity.NumericalActivity.short_name",
-
-    (activity.NumericalActivity, 'long_name'): "cim.1.activity.NumericalActivity.long_name",
-
     (activity.Simulation, 'inputs'): "cim.1.activity.Simulation.inputs",
 
     (activity.Simulation, 'spinup_date_range'): "cim.1.activity.Simulation.spinup_date_range",
@@ -1033,41 +981,99 @@ KEYS = {
 
     (activity.Simulation, 'outputs'): "cim.1.activity.Simulation.outputs",
 
-    (activity.ExperimentRelationship, 'target'): "cim.1.activity.ExperimentRelationship.target",
+    (activity.Activity, 'funding_sources'): "cim.1.activity.Activity.funding_sources",
 
-    (activity.ExperimentRelationship, 'type'): "cim.1.activity.ExperimentRelationship.type",
+    (activity.Activity, 'rationales'): "cim.1.activity.Activity.rationales",
 
-    (activity.ExperimentRelationshipTarget, 'numerical_experiment'): "cim.1.activity.ExperimentRelationshipTarget.numerical_experiment",
+    (activity.Activity, 'responsible_parties'): "cim.1.activity.Activity.responsible_parties",
 
-    (activity.NumericalRequirementOption, 'sub_options'): "cim.1.activity.NumericalRequirementOption.sub_options",
-
-    (activity.NumericalRequirementOption, 'description'): "cim.1.activity.NumericalRequirementOption.description",
+    (activity.Activity, 'projects'): "cim.1.activity.Activity.projects",
 
     (activity.NumericalRequirementOption, 'name'): "cim.1.activity.NumericalRequirementOption.name",
 
     (activity.NumericalRequirementOption, 'relationship'): "cim.1.activity.NumericalRequirementOption.relationship",
 
+    (activity.NumericalRequirementOption, 'sub_options'): "cim.1.activity.NumericalRequirementOption.sub_options",
+
+    (activity.NumericalRequirementOption, 'description'): "cim.1.activity.NumericalRequirementOption.description",
+
     (activity.NumericalRequirementOption, 'id'): "cim.1.activity.NumericalRequirementOption.id",
 
-    (activity.Activity, 'responsible_parties'): "cim.1.activity.Activity.responsible_parties",
+    (activity.SimulationRun, 'date_range'): "cim.1.activity.SimulationRun.date_range",
 
-    (activity.Activity, 'funding_sources'): "cim.1.activity.Activity.funding_sources",
+    (activity.SimulationRun, 'model'): "cim.1.activity.SimulationRun.model",
 
-    (activity.Activity, 'rationales'): "cim.1.activity.Activity.rationales",
-
-    (activity.Activity, 'projects'): "cim.1.activity.Activity.projects",
-
-    (activity.MeasurementCampaign, 'duration'): "cim.1.activity.MeasurementCampaign.duration",
+    (activity.SimulationRun, 'meta'): "cim.1.activity.SimulationRun.meta",
 
     (activity.SimulationRelationshipTarget, 'simulation'): "cim.1.activity.SimulationRelationshipTarget.simulation",
 
     (activity.SimulationRelationshipTarget, 'target'): "cim.1.activity.SimulationRelationshipTarget.target",
 
-    (activity.SimulationRun, 'model'): "cim.1.activity.SimulationRun.model",
+    (activity.ExperimentRelationship, 'target'): "cim.1.activity.ExperimentRelationship.target",
 
-    (activity.SimulationRun, 'date_range'): "cim.1.activity.SimulationRun.date_range",
+    (activity.ExperimentRelationship, 'type'): "cim.1.activity.ExperimentRelationship.type",
 
-    (activity.SimulationRun, 'meta'): "cim.1.activity.SimulationRun.meta",
+    (activity.SimulationComposite, 'date_range'): "cim.1.activity.SimulationComposite.date_range",
+
+    (activity.SimulationComposite, 'rank'): "cim.1.activity.SimulationComposite.rank",
+
+    (activity.SimulationComposite, 'child'): "cim.1.activity.SimulationComposite.child",
+
+    (activity.SimulationComposite, 'meta'): "cim.1.activity.SimulationComposite.meta",
+
+    (activity.NumericalActivity, 'supports'): "cim.1.activity.NumericalActivity.supports",
+
+    (activity.NumericalActivity, 'description'): "cim.1.activity.NumericalActivity.description",
+
+    (activity.NumericalActivity, 'short_name'): "cim.1.activity.NumericalActivity.short_name",
+
+    (activity.NumericalActivity, 'long_name'): "cim.1.activity.NumericalActivity.long_name",
+
+    (activity.ExperimentRelationshipTarget, 'numerical_experiment'): "cim.1.activity.ExperimentRelationshipTarget.numerical_experiment",
+
+    (activity.EnsembleMember, 'simulation'): "cim.1.activity.EnsembleMember.simulation",
+
+    (activity.EnsembleMember, 'ensemble'): "cim.1.activity.EnsembleMember.ensemble",
+
+    (activity.EnsembleMember, 'ensemble_ids'): "cim.1.activity.EnsembleMember.ensemble_ids",
+
+    (activity.DownscalingSimulation, 'calendar'): "cim.1.activity.DownscalingSimulation.calendar",
+
+    (activity.DownscalingSimulation, 'downscaling_type'): "cim.1.activity.DownscalingSimulation.downscaling_type",
+
+    (activity.DownscalingSimulation, 'downscaled_from'): "cim.1.activity.DownscalingSimulation.downscaled_from",
+
+    (activity.DownscalingSimulation, 'inputs'): "cim.1.activity.DownscalingSimulation.inputs",
+
+    (activity.DownscalingSimulation, 'outputs'): "cim.1.activity.DownscalingSimulation.outputs",
+
+    (activity.DownscalingSimulation, 'meta'): "cim.1.activity.DownscalingSimulation.meta",
+
+    (activity.DownscalingSimulation, 'downscaling_id'): "cim.1.activity.DownscalingSimulation.downscaling_id",
+
+    (activity.NumericalExperiment, 'long_name'): "cim.1.activity.NumericalExperiment.long_name",
+
+    (activity.NumericalExperiment, 'requirements'): "cim.1.activity.NumericalExperiment.requirements",
+
+    (activity.NumericalExperiment, 'description'): "cim.1.activity.NumericalExperiment.description",
+
+    (activity.NumericalExperiment, 'short_name'): "cim.1.activity.NumericalExperiment.short_name",
+
+    (activity.NumericalExperiment, 'meta'): "cim.1.activity.NumericalExperiment.meta",
+
+    (activity.NumericalExperiment, 'experiment_id'): "cim.1.activity.NumericalExperiment.experiment_id",
+
+    (activity.Experiment, 'supports'): "cim.1.activity.Experiment.supports",
+
+    (activity.Experiment, 'measurement_campaigns'): "cim.1.activity.Experiment.measurement_campaigns",
+
+    (activity.Experiment, 'generates'): "cim.1.activity.Experiment.generates",
+
+    (activity.Experiment, 'requires'): "cim.1.activity.Experiment.requires",
+
+    (activity.SpatioTemporalConstraint, 'date_range'): "cim.1.activity.SpatioTemporalConstraint.date_range",
+
+    (activity.SpatioTemporalConstraint, 'spatial_resolution'): "cim.1.activity.SpatioTemporalConstraint.spatial_resolution",
 
     (activity.Conformance, 'description'): "cim.1.activity.Conformance.description",
 
@@ -1081,6 +1087,8 @@ KEYS = {
 
     (activity.Conformance, 'requirements'): "cim.1.activity.Conformance.requirements",
 
+    (activity.MeasurementCampaign, 'duration'): "cim.1.activity.MeasurementCampaign.duration",
+
     (activity.Ensemble, 'outputs'): "cim.1.activity.Ensemble.outputs",
 
     (activity.Ensemble, 'members'): "cim.1.activity.Ensemble.members",
@@ -1089,29 +1097,21 @@ KEYS = {
 
     (activity.Ensemble, 'meta'): "cim.1.activity.Ensemble.meta",
 
-    (activity.SimulationComposite, 'date_range'): "cim.1.activity.SimulationComposite.date_range",
+    (activity.SimulationRelationship, 'target'): "cim.1.activity.SimulationRelationship.target",
 
-    (activity.SimulationComposite, 'rank'): "cim.1.activity.SimulationComposite.rank",
+    (activity.SimulationRelationship, 'type'): "cim.1.activity.SimulationRelationship.type",
 
-    (activity.SimulationComposite, 'child'): "cim.1.activity.SimulationComposite.child",
+    (activity.NumericalRequirement, 'options'): "cim.1.activity.NumericalRequirement.options",
 
-    (activity.SimulationComposite, 'meta'): "cim.1.activity.SimulationComposite.meta",
+    (activity.NumericalRequirement, 'description'): "cim.1.activity.NumericalRequirement.description",
 
-    (activity.NumericalExperiment, 'description'): "cim.1.activity.NumericalExperiment.description",
+    (activity.NumericalRequirement, 'requirement_type'): "cim.1.activity.NumericalRequirement.requirement_type",
 
-    (activity.NumericalExperiment, 'short_name'): "cim.1.activity.NumericalExperiment.short_name",
+    (activity.NumericalRequirement, 'id'): "cim.1.activity.NumericalRequirement.id",
 
-    (activity.NumericalExperiment, 'experiment_id'): "cim.1.activity.NumericalExperiment.experiment_id",
+    (activity.NumericalRequirement, 'source'): "cim.1.activity.NumericalRequirement.source",
 
-    (activity.NumericalExperiment, 'requirements'): "cim.1.activity.NumericalExperiment.requirements",
-
-    (activity.NumericalExperiment, 'long_name'): "cim.1.activity.NumericalExperiment.long_name",
-
-    (activity.NumericalExperiment, 'meta'): "cim.1.activity.NumericalExperiment.meta",
-
-    (activity.SpatioTemporalConstraint, 'date_range'): "cim.1.activity.SpatioTemporalConstraint.date_range",
-
-    (activity.SpatioTemporalConstraint, 'spatial_resolution'): "cim.1.activity.SpatioTemporalConstraint.spatial_resolution",
+    (activity.NumericalRequirement, 'name'): "cim.1.activity.NumericalRequirement.name",
 
     (misc.DocumentSet, 'model'): "cim.1.misc.DocumentSet.model",
 
@@ -1163,13 +1163,13 @@ KEYS = {
 
     software.SpatialRegriddingStandardMethodType: "cim.1.software.SpatialRegriddingStandardMethodType",
 
-    software.StatisticalModelComponentType: "cim.1.software.StatisticalModelComponentType",
-
     software.CouplingFrameworkType: "cim.1.software.CouplingFrameworkType",
 
     software.ComponentPropertyIntentType: "cim.1.software.ComponentPropertyIntentType",
 
     software.ConnectionType: "cim.1.software.ConnectionType",
+
+    software.StatisticalModelComponentType: "cim.1.software.StatisticalModelComponentType",
 
     software.TimeMappingType: "cim.1.software.TimeMappingType",
 
@@ -1179,21 +1179,21 @@ KEYS = {
 
     grids.HorizontalCsEnum: "cim.1.grids.HorizontalCsEnum",
 
-    grids.GridNodePositionEnum: "cim.1.grids.GridNodePositionEnum",
+    grids.GridTypeEnum: "cim.1.grids.GridTypeEnum",
 
     grids.DiscretizationEnum: "cim.1.grids.DiscretizationEnum",
+
+    grids.RefinementTypeEnum: "cim.1.grids.RefinementTypeEnum",
 
     grids.FeatureTypeEnum: "cim.1.grids.FeatureTypeEnum",
 
     grids.ArcTypeEnum: "cim.1.grids.ArcTypeEnum",
 
-    grids.RefinementTypeEnum: "cim.1.grids.RefinementTypeEnum",
-
     grids.GeometryTypeEnum: "cim.1.grids.GeometryTypeEnum",
 
     grids.VerticalCsEnum: "cim.1.grids.VerticalCsEnum",
 
-    grids.GridTypeEnum: "cim.1.grids.GridTypeEnum",
+    grids.GridNodePositionEnum: "cim.1.grids.GridNodePositionEnum",
 
     quality.CimResultType: "cim.1.quality.CimResultType",
 
@@ -1211,19 +1211,19 @@ KEYS = {
 
     data.DataHierarchyType: "cim.1.data.DataHierarchyType",
 
-    activity.ExperimentRelationshipType: "cim.1.activity.ExperimentRelationshipType",
-
-    activity.DownscalingType: "cim.1.activity.DownscalingType",
-
-    activity.SimulationRelationshipType: "cim.1.activity.SimulationRelationshipType",
+    activity.ConformanceType: "cim.1.activity.ConformanceType",
 
     activity.FrequencyType: "cim.1.activity.FrequencyType",
 
     activity.ProjectType: "cim.1.activity.ProjectType",
 
+    activity.SimulationRelationshipType: "cim.1.activity.SimulationRelationshipType",
+
+    activity.DownscalingType: "cim.1.activity.DownscalingType",
+
     activity.ResolutionType: "cim.1.activity.ResolutionType",
 
-    activity.ConformanceType: "cim.1.activity.ConformanceType",
+    activity.ExperimentRelationshipType: "cim.1.activity.ExperimentRelationshipType",
 
     activity.EnsembleType: "cim.1.activity.EnsembleType",
 
@@ -1373,11 +1373,25 @@ KEYS = {
 
     (grids.HorizontalCsEnum, 'polar'): "cim.1.grids.HorizontalCsEnum.polar",
 
-    (grids.GridNodePositionEnum, 'centre'): "cim.1.grids.GridNodePositionEnum.centre",
+    (grids.GridTypeEnum, 'tripolar'): "cim.1.grids.GridTypeEnum.tripolar",
 
-    (grids.GridNodePositionEnum, 'plane'): "cim.1.grids.GridNodePositionEnum.plane",
+    (grids.GridTypeEnum, 'other'): "cim.1.grids.GridTypeEnum.other",
 
-    (grids.GridNodePositionEnum, 'sphere'): "cim.1.grids.GridNodePositionEnum.sphere",
+    (grids.GridTypeEnum, 'cubed_sphere'): "cim.1.grids.GridTypeEnum.cubed_sphere",
+
+    (grids.GridTypeEnum, 'composite'): "cim.1.grids.GridTypeEnum.composite",
+
+    (grids.GridTypeEnum, 'displaced_pole'): "cim.1.grids.GridTypeEnum.displaced_pole",
+
+    (grids.GridTypeEnum, 'icosahedral_geodesic'): "cim.1.grids.GridTypeEnum.icosahedral_geodesic",
+
+    (grids.GridTypeEnum, 'reduced_gaussian'): "cim.1.grids.GridTypeEnum.reduced_gaussian",
+
+    (grids.GridTypeEnum, 'yin_yang'): "cim.1.grids.GridTypeEnum.yin_yang",
+
+    (grids.GridTypeEnum, 'regular_lat_lon'): "cim.1.grids.GridTypeEnum.regular_lat_lon",
+
+    (grids.GridTypeEnum, 'spectral_gaussian'): "cim.1.grids.GridTypeEnum.spectral_gaussian",
 
     (grids.DiscretizationEnum, 'unstructured_triangular'): "cim.1.grids.DiscretizationEnum.unstructured_triangular",
 
@@ -1393,6 +1407,12 @@ KEYS = {
 
     (grids.DiscretizationEnum, 'structured_triangular'): "cim.1.grids.DiscretizationEnum.structured_triangular",
 
+    (grids.RefinementTypeEnum, 'none'): "cim.1.grids.RefinementTypeEnum.none",
+
+    (grids.RefinementTypeEnum, 'integer'): "cim.1.grids.RefinementTypeEnum.integer",
+
+    (grids.RefinementTypeEnum, 'rational'): "cim.1.grids.RefinementTypeEnum.rational",
+
     (grids.FeatureTypeEnum, 'point'): "cim.1.grids.FeatureTypeEnum.point",
 
     (grids.FeatureTypeEnum, 'edge'): "cim.1.grids.FeatureTypeEnum.edge",
@@ -1405,12 +1425,6 @@ KEYS = {
 
     (grids.ArcTypeEnum, 'great_circle'): "cim.1.grids.ArcTypeEnum.great_circle",
 
-    (grids.RefinementTypeEnum, 'integer'): "cim.1.grids.RefinementTypeEnum.integer",
-
-    (grids.RefinementTypeEnum, 'none'): "cim.1.grids.RefinementTypeEnum.none",
-
-    (grids.RefinementTypeEnum, 'rational'): "cim.1.grids.RefinementTypeEnum.rational",
-
     (grids.GeometryTypeEnum, 'ellipsoid'): "cim.1.grids.GeometryTypeEnum.ellipsoid",
 
     (grids.GeometryTypeEnum, 'plane'): "cim.1.grids.GeometryTypeEnum.plane",
@@ -1421,25 +1435,11 @@ KEYS = {
 
     (grids.VerticalCsEnum, 'mass-based'): "cim.1.grids.VerticalCsEnum.mass-based",
 
-    (grids.GridTypeEnum, 'icosahedral_geodesic'): "cim.1.grids.GridTypeEnum.icosahedral_geodesic",
+    (grids.GridNodePositionEnum, 'centre'): "cim.1.grids.GridNodePositionEnum.centre",
 
-    (grids.GridTypeEnum, 'reduced_gaussian'): "cim.1.grids.GridTypeEnum.reduced_gaussian",
+    (grids.GridNodePositionEnum, 'plane'): "cim.1.grids.GridNodePositionEnum.plane",
 
-    (grids.GridTypeEnum, 'regular_lat_lon'): "cim.1.grids.GridTypeEnum.regular_lat_lon",
-
-    (grids.GridTypeEnum, 'spectral_gaussian'): "cim.1.grids.GridTypeEnum.spectral_gaussian",
-
-    (grids.GridTypeEnum, 'displaced_pole'): "cim.1.grids.GridTypeEnum.displaced_pole",
-
-    (grids.GridTypeEnum, 'tripolar'): "cim.1.grids.GridTypeEnum.tripolar",
-
-    (grids.GridTypeEnum, 'yin_yang'): "cim.1.grids.GridTypeEnum.yin_yang",
-
-    (grids.GridTypeEnum, 'cubed_sphere'): "cim.1.grids.GridTypeEnum.cubed_sphere",
-
-    (grids.GridTypeEnum, 'composite'): "cim.1.grids.GridTypeEnum.composite",
-
-    (grids.GridTypeEnum, 'other'): "cim.1.grids.GridTypeEnum.other",
+    (grids.GridNodePositionEnum, 'sphere'): "cim.1.grids.GridNodePositionEnum.sphere",
 
     (quality.CimResultType, 'document'): "cim.1.quality.CimResultType.document",
 
@@ -1501,29 +1501,17 @@ KEYS = {
 
     (data.DataStatusType, 'continuouslySupplemented'): "cim.1.data.DataStatusType.continuouslySupplemented",
 
-    (activity.ExperimentRelationshipType, 'shorterVersionOf'): "cim.1.activity.ExperimentRelationshipType.shorterVersionOf",
+    (activity.ConformanceType, 'not-xxx'): "cim.1.activity.ConformanceType.not-xxx",
 
-    (activity.ExperimentRelationshipType, 'extensionOf'): "cim.1.activity.ExperimentRelationshipType.extensionOf",
+    (activity.ConformanceType, 'not conformant'): "cim.1.activity.ConformanceType.not-conformant",
 
-    (activity.ExperimentRelationshipType, 'continuationOf'): "cim.1.activity.ExperimentRelationshipType.continuationOf",
+    (activity.ConformanceType, 'standard config'): "cim.1.activity.ConformanceType.standard-config",
 
-    (activity.ExperimentRelationshipType, 'controlExperiment'): "cim.1.activity.ExperimentRelationshipType.controlExperiment",
+    (activity.ConformanceType, 'via inputs'): "cim.1.activity.ConformanceType.via-inputs",
 
-    (activity.ExperimentRelationshipType, 'higherResolutionVersionOf'): "cim.1.activity.ExperimentRelationshipType.higherResolutionVersionOf",
+    (activity.ConformanceType, 'via model mods'): "cim.1.activity.ConformanceType.via-model-mods",
 
-    (activity.ExperimentRelationshipType, 'lowerResolutionVersionOf'): "cim.1.activity.ExperimentRelationshipType.lowerResolutionVersionOf",
-
-    (activity.ExperimentRelationshipType, 'increaseEnsembleOf'): "cim.1.activity.ExperimentRelationshipType.increaseEnsembleOf",
-
-    (activity.ExperimentRelationshipType, 'modifiedInputMethodOf'): "cim.1.activity.ExperimentRelationshipType.modifiedInputMethodOf",
-
-    (activity.ExperimentRelationshipType, 'previousRealisation'): "cim.1.activity.ExperimentRelationshipType.previousRealisation",
-
-    (activity.DownscalingType, 'statistical'): "cim.1.activity.DownscalingType.statistical",
-
-    (activity.DownscalingType, 'dynamic'): "cim.1.activity.DownscalingType.dynamic",
-
-    (activity.SimulationRelationshipType, 'previousSimulation'): "cim.1.activity.SimulationRelationshipType.previousSimulation",
+    (activity.ConformanceType, 'combination'): "cim.1.activity.ConformanceType.combination",
 
     (activity.SimulationRelationshipType, 'higherResolutionVersionOf'): "cim.1.activity.SimulationRelationshipType.higherResolutionVersionOf",
 
@@ -1539,17 +1527,29 @@ KEYS = {
 
     (activity.SimulationRelationshipType, 'continuationOf'): "cim.1.activity.SimulationRelationshipType.continuationOf",
 
-    (activity.ConformanceType, 'standard config'): "cim.1.activity.ConformanceType.standard-config",
+    (activity.SimulationRelationshipType, 'previousSimulation'): "cim.1.activity.SimulationRelationshipType.previousSimulation",
 
-    (activity.ConformanceType, 'via inputs'): "cim.1.activity.ConformanceType.via-inputs",
+    (activity.DownscalingType, 'statistical'): "cim.1.activity.DownscalingType.statistical",
 
-    (activity.ConformanceType, 'via model mods'): "cim.1.activity.ConformanceType.via-model-mods",
+    (activity.DownscalingType, 'dynamic'): "cim.1.activity.DownscalingType.dynamic",
 
-    (activity.ConformanceType, 'combination'): "cim.1.activity.ConformanceType.combination",
+    (activity.ExperimentRelationshipType, 'extensionOf'): "cim.1.activity.ExperimentRelationshipType.extensionOf",
 
-    (activity.ConformanceType, 'not-xxx'): "cim.1.activity.ConformanceType.not-xxx",
+    (activity.ExperimentRelationshipType, 'continuationOf'): "cim.1.activity.ExperimentRelationshipType.continuationOf",
 
-    (activity.ConformanceType, 'not conformant'): "cim.1.activity.ConformanceType.not-conformant",
+    (activity.ExperimentRelationshipType, 'previousRealisation'): "cim.1.activity.ExperimentRelationshipType.previousRealisation",
+
+    (activity.ExperimentRelationshipType, 'controlExperiment'): "cim.1.activity.ExperimentRelationshipType.controlExperiment",
+
+    (activity.ExperimentRelationshipType, 'higherResolutionVersionOf'): "cim.1.activity.ExperimentRelationshipType.higherResolutionVersionOf",
+
+    (activity.ExperimentRelationshipType, 'lowerResolutionVersionOf'): "cim.1.activity.ExperimentRelationshipType.lowerResolutionVersionOf",
+
+    (activity.ExperimentRelationshipType, 'increaseEnsembleOf'): "cim.1.activity.ExperimentRelationshipType.increaseEnsembleOf",
+
+    (activity.ExperimentRelationshipType, 'modifiedInputMethodOf'): "cim.1.activity.ExperimentRelationshipType.modifiedInputMethodOf",
+
+    (activity.ExperimentRelationshipType, 'shorterVersionOf'): "cim.1.activity.ExperimentRelationshipType.shorterVersionOf",
 
     (activity.SimulationType, 'simulationComposite'): "cim.1.activity.SimulationType.simulationComposite",
 

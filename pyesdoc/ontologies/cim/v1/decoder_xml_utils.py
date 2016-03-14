@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 """
-.. module:: decoder_utils.py
+.. module:: decoder_xml_utils.py
 
    :license: GPL / CeCILL
    :platform: Unix, Windows
