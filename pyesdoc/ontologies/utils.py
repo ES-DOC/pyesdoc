@@ -100,20 +100,20 @@ def register(o):
         pass
 
     for v in o.VERSIONS:
-        PACKAGES += v.PACKAGES
-        TYPES += v.TYPES
-        DOCUMENT_TYPES += v.DOCUMENT_TYPES
-        CLASSES += v.CLASSES
-        CLASS_PROPERTIES.update(v.CLASS_PROPERTIES)
-        CLASS_OWN_PROPERTIES.update(v.CLASS_OWN_PROPERTIES)
-        BASE_CLASSES.update(v.BASE_CLASSES)
-        BASE_CLASSED += v.BASE_CLASSED
-        SUB_CLASSES.update(v.SUB_CLASSES)
-        SUB_CLASSED += v.SUB_CLASSED
-        ENUMS += v.ENUMS
-        KEYS.update(v.KEYS)
-        CONSTRAINTS.update(v.CONSTRAINTS)
-        HELP.update(v.HELP)
+        PACKAGES += v.type_info.PACKAGES
+        TYPES += v.type_info.TYPES
+        DOCUMENT_TYPES += v.type_info.DOCUMENT_TYPES
+        CLASSES += v.type_info.CLASSES
+        CLASS_PROPERTIES.update(v.type_info.CLASS_PROPERTIES)
+        CLASS_OWN_PROPERTIES.update(v.type_info.CLASS_OWN_PROPERTIES)
+        BASE_CLASSES.update(v.type_info.BASE_CLASSES)
+        BASE_CLASSED += v.type_info.BASE_CLASSED
+        SUB_CLASSES.update(v.type_info.SUB_CLASSES)
+        SUB_CLASSED += v.type_info.SUB_CLASSED
+        ENUMS += v.type_info.ENUMS
+        KEYS.update(v.type_info.KEYS)
+        CONSTRAINTS.update(v.type_info.CONSTRAINTS)
+        HELP.update(v.type_info.HELP)
 
 
 def get_types(name=None, version=None):
@@ -132,7 +132,7 @@ def get_types(name=None, version=None):
         if name is None or name == o.NAME:
             for v in o.VERSIONS:
                 if version is None or version == v.ID:
-                    result += v.TYPES
+                    result += v.type_info.TYPES
 
     return result
 

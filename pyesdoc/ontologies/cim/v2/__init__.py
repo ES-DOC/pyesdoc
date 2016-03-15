@@ -12,62 +12,128 @@
 .. note:: Code generated using the esdoc-mp framework.
 
 """
-from typeset_for_designing_package import *
-from typeset_for_shared_package import *
-from typeset_for_activity_package import *
-from typeset_for_software_package import *
-from typeset_for_science_package import *
-from typeset_for_data_package import *
-from typeset_for_drs_package import *
-from typeset_for_platform_package import *
-
-
-import typeset_for_designing_package as designing
-import typeset_for_shared_package as shared
-import typeset_for_activity_package as activity
-import typeset_for_software_package as software
-import typeset_for_science_package as science
-import typeset_for_data_package as data
-import typeset_for_drs_package as drs
-import typeset_for_platform_package as platform
-
-
-
-
-try:
-	import decoder
-except ImportError:
-	pass
-import typeset
-import type_info as TYPE_INFO
-from type_help import HELP
-from type_keys import KEYS
-
-# Typeinfo constants - to be removed.
-from type_info import PACKAGES
-from type_info import DOCUMENT_TYPES
-from type_info import CLASSES
-from type_info import CLASS_PROPERTIES
-from type_info import CLASS_OWN_PROPERTIES
-from type_info import SUB_CLASSES
-from type_info import SUB_CLASSED
-from type_info import BASE_CLASSES
-from type_info import BASE_CLASSED
-from type_info import CLASS_HIERACHY_DEPTH
-from type_info import ENUMS
-from type_info import TOTAL_CLASS_PROPERTIES
-from type_info import TOTAL_ENUM_MEMBERS
-from type_info import CONSTRAINTS
-from type_info import TOTAL_CONSTRAINTS
-from type_info import TYPES
-
-
-
 # Ontology name.
 NAME = 'cim'
 
 # Version identifier.
 VERSION = '2'
 
-# Full ontology name.
-FULL_NAME = 'cim.2'
+# Packages.
+import typeset_for_drs_package as drs
+import typeset_for_designing_package as designing
+import typeset_for_software_package as software
+import typeset_for_shared_package as shared
+import typeset_for_science_package as science
+import typeset_for_platform_package as platform
+import typeset_for_data_package as data
+import typeset_for_activity_package as activity
+
+# Classes.
+from typeset_for_drs_package import DrsAtomicDataset
+from typeset_for_drs_package import DrsPublicationDataset
+from typeset_for_drs_package import DrsEnsembleIdentifier
+from typeset_for_drs_package import DrsTemporalIdentifier
+from typeset_for_drs_package import DrsGeographicalIndicator
+from typeset_for_designing_package import TemporalConstraint
+from typeset_for_designing_package import NumericalExperiment
+from typeset_for_designing_package import MultiTimeEnsemble
+from typeset_for_designing_package import NumericalRequirement
+from typeset_for_designing_package import OutputTemporalRequirement
+from typeset_for_designing_package import EnsembleRequirement
+from typeset_for_designing_package import MultiEnsemble
+from typeset_for_designing_package import Project
+from typeset_for_designing_package import DomainProperties
+from typeset_for_designing_package import SimulationPlan
+from typeset_for_designing_package import ForcingConstraint
+from typeset_for_software_package import DevelopmentPath
+from typeset_for_software_package import Composition
+from typeset_for_software_package import SoftwareComponent
+from typeset_for_software_package import Variable
+from typeset_for_software_package import EntryPoint
+from typeset_for_software_package import ComponentBase
+from typeset_for_software_package import Gridspec
+from typeset_for_shared_package import IrregularDateset
+from typeset_for_shared_package import NumberArray
+from typeset_for_shared_package import Calendar
+from typeset_for_shared_package import DocReference
+from typeset_for_shared_package import Reference
+from typeset_for_shared_package import Pid
+from typeset_for_shared_package import DatetimeSet
+from typeset_for_shared_package import Party
+from typeset_for_shared_package import QualityReview
+from typeset_for_shared_package import TimesliceList
+from typeset_for_shared_package import DateTime
+from typeset_for_shared_package import TimePeriod
+from typeset_for_shared_package import RegularTimeset
+from typeset_for_shared_package import DocMetaInfo
+from typeset_for_shared_package import KeyFloat
+from typeset_for_shared_package import OnlineResource
+from typeset_for_shared_package import Responsibility
+from typeset_for_shared_package import ExternalDocument
+from typeset_for_shared_package import Cimtext
+from typeset_for_science_package import Extent
+from typeset_for_science_package import ScientificDomain
+from typeset_for_science_package import Tuning
+from typeset_for_science_package import Process
+from typeset_for_science_package import SubProcess
+from typeset_for_science_package import ScienceContext
+from typeset_for_science_package import Algorithm
+from typeset_for_science_package import Grid
+from typeset_for_science_package import Resolution
+from typeset_for_science_package import Model
+from typeset_for_science_package import KeyProperties
+from typeset_for_science_package import Detail
+from typeset_for_science_package import ConservationProperties
+from typeset_for_platform_package import StoragePool
+from typeset_for_platform_package import ComputePool
+from typeset_for_platform_package import Machine
+from typeset_for_platform_package import Partition
+from typeset_for_platform_package import ComponentPerformance
+from typeset_for_platform_package import Performance
+from typeset_for_platform_package import StorageVolume
+from typeset_for_data_package import VariableCollection
+from typeset_for_data_package import Simulation
+from typeset_for_data_package import Dataset
+from typeset_for_data_package import Downscaling
+from typeset_for_activity_package import Activity
+from typeset_for_activity_package import Conformance
+from typeset_for_activity_package import Ensemble
+from typeset_for_activity_package import UberEnsemble
+from typeset_for_activity_package import EnsembleMember
+from typeset_for_activity_package import ParentSimulation
+from typeset_for_activity_package import AxisMember
+from typeset_for_activity_package import EnsembleAxis
+
+# Enums.
+from typeset_for_drs_package import DrsRealms
+from typeset_for_drs_package import DrsTimeSuffixes
+from typeset_for_drs_package import DrsFrequencyTypes
+from typeset_for_drs_package import DrsGeographicalOperators
+from typeset_for_designing_package import EnsembleTypes
+from typeset_for_designing_package import ExperimentalRelationships
+from typeset_for_designing_package import ForcingTypes
+from typeset_for_software_package import CouplingFramework
+from typeset_for_software_package import ProgrammingLanguage
+from typeset_for_shared_package import TextCode
+from typeset_for_shared_package import NilReason
+from typeset_for_shared_package import RoleCode
+from typeset_for_shared_package import SlicetimeUnits
+from typeset_for_shared_package import CalendarTypes
+from typeset_for_shared_package import PeriodDateTypes
+from typeset_for_shared_package import DocumentTypes
+from typeset_for_shared_package import TimeUnits
+from typeset_for_shared_package import QualityStatus
+from typeset_for_science_package import ModelTypes
+from typeset_for_science_package import SelectionCardinality
+from typeset_for_platform_package import StorageSystems
+from typeset_for_platform_package import VolumeUnits
+from typeset_for_data_package import DataAssociationTypes
+from typeset_for_activity_package import EnsembleTypes
+from typeset_for_activity_package import ForcingTypes
+
+import type_info
+import typeset
+try:
+	import decoder
+except ImportError:
+	pass
