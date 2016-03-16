@@ -61,116 +61,180 @@ PACKAGES = (
 
 # Supported classes.
 CLASSES = (
-    shared.Relationship,
-    software.Deployment,
-    shared.DocRelationshipTarget,
-    data.DataStorage,
-    grids.VerticalCoordinateList,
-    software.Rank,
-    data.DataContent,
-    shared.PerpetualPeriod,
-    quality.Evaluation,
-    shared.ChangeProperty,
-    software.TimeLag,
     shared.Calendar,
-    software.CouplingEndpoint,
-    grids.GridTileResolutionType,
-    shared.RealCalendar,
-    activity.LateralBoundaryCondition,
-    activity.InitialCondition,
-    data.DataHierarchyLevel,
-    shared.Platform,
-    data.DataProperty,
-    activity.NumericalActivity,
-    shared.OpenDateRange,
-    software.Composition,
-    software.Coupling,
-    data.DataStorageIp,
-    shared.Property,
-    data.DataObject,
-    shared.Compiler,
-    activity.NumericalExperiment,
-    activity.MeasurementCampaign,
-    shared.DocReference,
-    grids.GridSpec,
-    activity.Experiment,
-    software.Timing,
-    shared.StandardName,
-    shared.Change,
-    software.StatisticalModelComponent,
     activity.ExperimentRelationship,
-    quality.CimQuality,
-    activity.Conformance,
-    software.SpatialRegridding,
-    shared.ResponsibleParty,
-    activity.BoundaryCondition,
-    shared.Citation,
-    misc.DocumentSet,
-    activity.Ensemble,
-    data.DataExtentGeographical,
-    grids.GridMosaic,
-    activity.EnsembleMember,
-    grids.CoordinateList,
-    activity.SimulationRelationship,
-    activity.ExperimentRelationshipTarget,
-    activity.SimulationRun,
-    shared.Daily360,
-    shared.Machine,
+    data.DataStorage,
     software.CouplingProperty,
-    shared.DocRelationship,
-    data.DataExtentTimeInterval,
-    shared.DataSource,
-    activity.Activity,
-    shared.ClosedDateRange,
-    data.DataExtentTemporal,
-    shared.Standard,
-    software.ComponentProperty,
-    grids.GridTile,
-    software.Connection,
-    software.Parallelisation,
-    software.ConnectionEndpoint,
-    shared.DateRange,
-    software.ComponentLanguageProperty,
-    shared.DocMetaInfo,
-    software.SpatialRegriddingProperty,
-    data.DataDistribution,
-    software.ConnectionProperty,
-    activity.Simulation,
+    activity.SimulationRun,
+    activity.BoundaryCondition,
     software.EntryPoint,
-    quality.Measure,
-    software.Component,
-    activity.NumericalRequirementOption,
-    data.DataRestriction,
-    software.ProcessorComponent,
-    shared.License,
-    activity.SimulationRelationshipTarget,
-    data.DataStorageFile,
-    grids.GridProperty,
-    quality.Report,
-    data.DataStorageDb,
-    activity.OutputRequirement,
-    data.DataTopic,
-    software.ComponentLanguage,
     software.SpatialRegriddingUserMethod,
-    grids.SimpleGridGeometry,
-    shared.DocGenealogy,
-    activity.NumericalRequirement,
-    software.ModelComponent,
-    activity.PhysicalModification,
-    activity.SimulationComposite,
-    grids.GridExtent,
-    shared.MachineCompilerUnit,
-    activity.DownscalingSimulation,
+    activity.SimulationRelationshipTarget,
+    software.ComponentLanguage,
+    software.Deployment,
+    grids.GridTileResolutionType,
+    shared.Daily360,
+    software.Component,
+    shared.DateRange,
+    data.DataHierarchyLevel,
+    data.DataTopic,
+    activity.NumericalActivity,
+    activity.EnsembleMember,
+    shared.Machine,
+    activity.ExperimentRelationshipTarget,
+    activity.NumericalRequirementOption,
     activity.SpatioTemporalConstraint,
-    software.TimeTransformation,
+    data.DataStorageIp,
+    software.SpatialRegriddingProperty,
+    shared.Platform,
+    activity.NumericalExperiment,
+    software.Parallelisation,
+    activity.MeasurementCampaign,
+    grids.GridSpec,
+    shared.ResponsibleParty,
+    activity.Experiment,
+    shared.Citation,
     data.DataExtent,
+    software.TimeLag,
+    shared.PerpetualPeriod,
+    shared.DocGenealogy,
+    activity.Conformance,
+    software.Timing,
+    misc.DocumentSet,
+    shared.RealCalendar,
+    activity.Ensemble,
+    data.DataProperty,
+    software.ConnectionProperty,
+    data.DataExtentGeographical,
+    software.StatisticalModelComponent,
+    grids.GridMosaic,
+    grids.CoordinateList,
+    software.ProcessorComponent,
+    activity.SimulationRelationship,
+    data.DataRestriction,
+    data.DataStorageDb,
+    data.DataContent,
+    shared.ChangeProperty,
+    shared.DocRelationshipTarget,
+    data.DataExtentTimeInterval,
+    shared.Standard,
+    software.Composition,
+    grids.VerticalCoordinateList,
+    data.DataExtentTemporal,
+    shared.Property,
+    shared.Change,
+    grids.GridTile,
+    quality.Evaluation,
+    software.ComponentLanguageProperty,
+    data.DataObject,
+    software.Rank,
+    software.ConnectionEndpoint,
+    shared.DataSource,
+    activity.SimulationComposite,
+    data.DataDistribution,
+    grids.GridProperty,
+    shared.MachineCompilerUnit,
+    activity.Simulation,
+    shared.DocReference,
+    quality.CimQuality,
+    activity.DownscalingSimulation,
+    shared.Compiler,
+    shared.License,
+    data.DataStorageFile,
+    software.CouplingEndpoint,
+    shared.DocMetaInfo,
+    shared.Relationship,
+    activity.Activity,
+    software.ModelComponent,
+    software.ComponentProperty,
+    activity.OutputRequirement,
+    grids.GridExtent,
+    software.Connection,
+    software.TimeTransformation,
+    quality.Report,
+    shared.DocRelationship,
+    shared.StandardName,
+    grids.SimpleGridGeometry,
+    activity.NumericalRequirement,
+    activity.PhysicalModification,
+    activity.InitialCondition,
+    shared.ClosedDateRange,
+    shared.OpenDateRange,
+    quality.Measure,
+    activity.LateralBoundaryCondition,
+    software.Coupling,
+    software.SpatialRegridding,
 )
 
 # Supported class properties.
 CLASS_PROPERTIES = { 
-    shared.Relationship: (
+    shared.Calendar: (
+        'length',
+        'range',
+        'description',
+    ),
+    activity.ExperimentRelationship: (
+        'target',
         'description',
         'direction',
+        'type',
+    ),
+    data.DataStorage: (
+        'format',
+        'size',
+        'location',
+        'modification_date',
+    ),
+    software.CouplingProperty: (
+        'name',
+        'value',
+    ),
+    activity.SimulationRun: (
+        'calendar',
+        'spinup_date_range',
+        'responsible_parties',
+        'meta',
+        'funding_sources',
+        'spinup_simulation',
+        'supports',
+        'date_range',
+        'rationales',
+        'model',
+        'short_name',
+        'inputs',
+        'conformances',
+        'outputs',
+        'restarts',
+        'description',
+        'control_simulation',
+        'authors',
+        'deployments',
+        'simulation_id',
+        'projects',
+        'long_name',
+    ),
+    activity.BoundaryCondition: (
+        'requirement_type',
+        'id',
+        'options',
+        'source',
+        'description',
+        'name',
+    ),
+    software.EntryPoint: (
+        'name',
+    ),
+    software.SpatialRegriddingUserMethod: (
+        'file',
+        'name',
+    ),
+    activity.SimulationRelationshipTarget: (
+        'simulation',
+        'target',
+    ),
+    software.ComponentLanguage: (
+        'name',
+        'properties',
     ),
     software.Deployment: (
         'platform',
@@ -180,148 +244,109 @@ CLASS_PROPERTIES = {
         'deployment_date',
         'executable_name',
     ),
-    shared.DocRelationshipTarget: (
-        'reference',
-    ),
-    data.DataStorage: (
-        'location',
-        'format',
-        'size',
-        'modification_date',
-    ),
-    grids.VerticalCoordinateList: (
-        'has_constant_offset',
-        'form',
-        'length',
-        'uom',
-        'properties',
-        'type',
-    ),
-    software.Rank: (
-        'increment',
-        'max',
-        'min',
-        'value',
-    ),
-    data.DataContent: (
-        'aggregation',
-        'purpose',
-        'topic',
-        'frequency',
-    ),
-    shared.PerpetualPeriod: (
-        'description',
-        'range',
-        'length',
-    ),
-    quality.Evaluation: (
-        'specification_hyperlink',
-        'specification',
-        'date',
-        'type',
-        'did_pass',
-        'explanation',
-        'description',
-        'title',
-        'type_hyperlink',
-    ),
-    shared.ChangeProperty: (
-        'name',
-        'value',
-        'description',
-        'id',
-    ),
-    software.TimeLag: (
-        'units',
-        'value',
-    ),
-    shared.Calendar: (
-        'description',
-        'length',
-        'range',
-    ),
-    software.CouplingEndpoint: (
-        'data_source',
-        'instance_id',
-        'properties',
-    ),
     grids.GridTileResolutionType: (
         'description',
         'properties',
     ),
-    shared.RealCalendar: (
+    shared.Daily360: (
         'description',
-        'range',
         'length',
+        'range',
     ),
-    activity.LateralBoundaryCondition: (
-        'requirement_type',
-        'id',
-        'options',
-        'source',
+    software.Component: (
+        'grid',
+        'code_access',
+        'properties',
+        'is_embedded',
+        'composition',
+        'language',
+        'coupling_framework',
+        'previous_version',
+        'license',
+        'short_name',
+        'release_date',
+        'long_name',
+        'purpose',
+        'parent',
+        'responsible_parties',
+        'online_resource',
+        'version',
         'description',
-        'name',
+        'sub_components',
+        'deployments',
+        'funding_sources',
+        'dependencies',
+        'citations',
     ),
-    activity.InitialCondition: (
-        'requirement_type',
-        'id',
-        'options',
-        'source',
-        'description',
-        'name',
+    shared.DateRange: (
+        'duration',
     ),
     data.DataHierarchyLevel: (
         'is_open',
         'name',
         'value',
     ),
-    shared.Platform: (
-        'short_name',
-        'meta',
-        'units',
-        'contacts',
-        'long_name',
+    data.DataTopic: (
         'description',
-    ),
-    data.DataProperty: (
-        'description',
-        'value',
         'name',
+        'unit',
     ),
     activity.NumericalActivity: (
-        'rationales',
-        'short_name',
-        'supports',
-        'funding_sources',
         'responsible_parties',
-        'description',
-        'long_name',
+        'short_name',
+        'funding_sources',
+        'supports',
         'projects',
-    ),
-    shared.OpenDateRange: (
-        'duration',
-        'end',
-        'start',
-    ),
-    software.Composition: (
-        'couplings',
         'description',
+        'rationales',
+        'long_name',
     ),
-    software.Coupling: (
-        'is_fully_specified',
-        'connections',
-        'time_profile',
-        'priming',
-        'purpose',
-        'sources',
-        'time_lag',
-        'transformers',
-        'time_transformation',
-        'spatial_regriddings',
-        'target',
+    activity.EnsembleMember: (
+        'responsible_parties',
+        'ensemble_ids',
+        'funding_sources',
+        'simulation',
+        'supports',
+        'projects',
+        'long_name',
         'description',
-        'properties',
+        'rationales',
+        'ensemble',
+        'short_name',
+    ),
+    shared.Machine: (
+        'location',
         'type',
+        'description',
+        'maximum_processors',
+        'cores_per_processor',
+        'vendor',
+        'name',
+        'processor_type',
+        'interconnect',
+        'libraries',
+        'system',
+        'operating_system',
+    ),
+    activity.ExperimentRelationshipTarget: (
+        'numerical_experiment',
+    ),
+    activity.NumericalRequirementOption: (
+        'description',
+        'sub_options',
+        'name',
+        'id',
+        'relationship',
+    ),
+    activity.SpatioTemporalConstraint: (
+        'spatial_resolution',
+        'options',
+        'description',
+        'name',
+        'requirement_type',
+        'id',
+        'source',
+        'date_range',
     ),
     data.DataStorageIp: (
         'protocol',
@@ -333,187 +358,110 @@ CLASS_PROPERTIES = {
         'file_name',
         'modification_date',
     ),
-    shared.Property: (
+    software.SpatialRegriddingProperty: (
         'name',
         'value',
     ),
-    data.DataObject: (
-        'content',
-        'purpose',
-        'restriction',
-        'data_status',
-        'properties',
-        'purpose',
-        'distribution',
-        'meta',
+    shared.Platform: (
         'description',
-        'acronym',
-        'storage',
-        'hierarchy_level',
-        'child_object',
-        'source_simulation',
-        'geometry_model',
-        'citations',
-        'extent',
-        'parent_object',
-        'keyword',
-    ),
-    shared.Compiler: (
-        'language',
-        'version',
-        'options',
-        'name',
-        'environment_variables',
-        'type',
+        'short_name',
+        'long_name',
+        'meta',
+        'units',
+        'contacts',
     ),
     activity.NumericalExperiment: (
         'long_name',
-        'responsible_parties',
         'generates',
-        'measurement_campaigns',
+        'responsible_parties',
         'meta',
-        'supports',
         'funding_sources',
+        'supports',
+        'rationales',
         'description',
         'short_name',
+        'measurement_campaigns',
         'requirements',
         'experiment_id',
-        'rationales',
-        'requires',
         'projects',
+        'requires',
+    ),
+    software.Parallelisation: (
+        'processes',
+        'ranks',
     ),
     activity.MeasurementCampaign: (
-        'projects',
+        'funding_sources',
         'responsible_parties',
         'rationales',
         'duration',
-        'funding_sources',
-    ),
-    shared.DocReference: (
-        'external_id',
-        'id',
-        'changes',
-        'name',
-        'description',
-        'type',
-        'url',
-        'version',
+        'projects',
     ),
     grids.GridSpec: (
         'esm_exchange_grids',
         'esm_model_grids',
         'meta',
     ),
+    shared.ResponsibleParty: (
+        'address',
+        'email',
+        'organisation_name',
+        'abbreviation',
+        'url',
+        'role',
+        'individual_name',
+    ),
     activity.Experiment: (
-        'rationales',
-        'generates',
-        'supports',
-        'funding_sources',
-        'measurement_campaigns',
-        'projects',
-        'requires',
         'responsible_parties',
+        'generates',
+        'projects',
+        'funding_sources',
+        'supports',
+        'measurement_campaigns',
+        'rationales',
+        'requires',
     ),
-    software.Timing: (
+    shared.Citation: (
+        'location',
+        'alternative_title',
+        'date_type',
+        'date',
+        'title',
+        'type',
+        'organisation',
+        'collective_title',
+        'role',
+    ),
+    data.DataExtent: (
+        'temporal',
+        'geographical',
+    ),
+    software.TimeLag: (
         'units',
-        'is_variable_rate',
-        'end',
-        'start',
-        'rate',
-    ),
-    shared.StandardName: (
-        'standards',
-        'is_open',
         'value',
     ),
-    shared.Change: (
-        'details',
+    shared.PerpetualPeriod: (
         'description',
-        'date',
-        'type',
-        'author',
-        'name',
+        'length',
+        'range',
     ),
-    software.StatisticalModelComponent: (
-        'funding_sources',
-        'parent',
-        'grid',
-        'properties',
-        'code_access',
-        'composition',
-        'short_name',
-        'meta',
-        'coupling_framework',
-        'language',
-        'previous_version',
-        'type',
-        'citations',
-        'license',
-        'deployments',
-        'types',
-        'version',
-        'responsible_parties',
-        'timing',
-        'long_name',
-        'is_embedded',
-        'online_resource',
-        'dependencies',
-        'purpose',
-        'description',
-        'sub_components',
-        'release_date',
-    ),
-    activity.ExperimentRelationship: (
-        'description',
-        'target',
-        'direction',
-        'type',
-    ),
-    quality.CimQuality: (
-        'meta',
-        'reports',
+    shared.DocGenealogy: (
+        'relationships',
     ),
     activity.Conformance: (
         'description',
+        'requirements',
         'sources',
         'is_conformant',
         'frequency',
-        'requirements',
         'type',
     ),
-    software.SpatialRegridding: (
-        'properties',
-        'dimension',
-        'user_method',
-        'standard_method',
-    ),
-    shared.ResponsibleParty: (
-        'address',
-        'individual_name',
-        'email',
-        'abbreviation',
-        'url',
-        'organisation_name',
-        'role',
-    ),
-    activity.BoundaryCondition: (
-        'requirement_type',
-        'id',
-        'options',
-        'source',
-        'description',
-        'name',
-    ),
-    shared.Citation: (
-        'title',
-        'alternative_title',
-        'date_type',
-        'collective_title',
-        'organisation',
-        'location',
-        'type',
-        'role',
-        'date',
+    software.Timing: (
+        'end',
+        'is_variable_rate',
+        'units',
+        'start',
+        'rate',
     ),
     misc.DocumentSet: (
         'model',
@@ -525,19 +473,33 @@ CLASS_PROPERTIES = {
         'simulation',
         'data',
     ),
+    shared.RealCalendar: (
+        'description',
+        'length',
+        'range',
+    ),
     activity.Ensemble: (
-        'funding_sources',
+        'responsible_parties',
         'description',
         'outputs',
+        'funding_sources',
         'meta',
         'supports',
-        'rationales',
         'projects',
-        'responsible_parties',
         'long_name',
         'members',
+        'rationales',
         'types',
         'short_name',
+    ),
+    data.DataProperty: (
+        'description',
+        'name',
+        'value',
+    ),
+    software.ConnectionProperty: (
+        'name',
+        'value',
     ),
     data.DataExtentGeographical: (
         'north',
@@ -545,144 +507,156 @@ CLASS_PROPERTIES = {
         'south',
         'east',
     ),
+    software.StatisticalModelComponent: (
+        'grid',
+        'code_access',
+        'long_name',
+        'properties',
+        'is_embedded',
+        'responsible_parties',
+        'funding_sources',
+        'composition',
+        'language',
+        'coupling_framework',
+        'license',
+        'meta',
+        'description',
+        'type',
+        'purpose',
+        'parent',
+        'types',
+        'version',
+        'deployments',
+        'timing',
+        'sub_components',
+        'online_resource',
+        'release_date',
+        'previous_version',
+        'short_name',
+        'dependencies',
+        'citations',
+    ),
     grids.GridMosaic: (
         'mosaic_count',
-        'has_congruent_tiles',
-        'citations',
-        'is_leaf',
         'long_name',
-        'description',
-        'tiles',
+        'citations',
         'type',
-        'short_name',
+        'description',
         'mosaics',
+        'short_name',
+        'has_congruent_tiles',
+        'tiles',
+        'is_leaf',
         'mnemonic',
         'tile_count',
         'extent',
         'id',
-    ),
-    activity.EnsembleMember: (
-        'funding_sources',
-        'ensemble_ids',
-        'simulation',
-        'supports',
-        'rationales',
-        'projects',
-        'responsible_parties',
-        'long_name',
-        'description',
-        'ensemble',
-        'short_name',
     ),
     grids.CoordinateList: (
         'length',
         'uom',
         'has_constant_offset',
     ),
+    software.ProcessorComponent: (
+        'grid',
+        'code_access',
+        'properties',
+        'is_embedded',
+        'funding_sources',
+        'composition',
+        'language',
+        'coupling_framework',
+        'short_name',
+        'license',
+        'description',
+        'long_name',
+        'meta',
+        'responsible_parties',
+        'purpose',
+        'version',
+        'deployments',
+        'parent',
+        'sub_components',
+        'online_resource',
+        'release_date',
+        'previous_version',
+        'dependencies',
+        'citations',
+    ),
     activity.SimulationRelationship: (
         'target',
-        'direction',
         'description',
+        'direction',
         'type',
     ),
-    activity.ExperimentRelationshipTarget: (
-        'numerical_experiment',
+    data.DataRestriction: (
+        'restriction',
+        'scope',
+        'license',
     ),
-    activity.SimulationRun: (
-        'calendar',
-        'date_range',
-        'control_simulation',
-        'spinup_simulation',
-        'model',
-        'supports',
-        'funding_sources',
-        'conformances',
-        'projects',
-        'authors',
-        'deployments',
-        'rationales',
-        'short_name',
-        'spinup_date_range',
-        'inputs',
-        'responsible_parties',
-        'outputs',
-        'long_name',
-        'restarts',
-        'description',
-        'simulation_id',
-        'meta',
-    ),
-    shared.Daily360: (
-        'description',
-        'range',
-        'length',
-    ),
-    shared.Machine: (
-        'system',
+    data.DataStorageDb: (
+        'name',
+        'owner',
+        'size',
+        'table',
         'location',
-        'libraries',
-        'type',
-        'interconnect',
-        'maximum_processors',
-        'vendor',
-        'name',
-        'description',
-        'processor_type',
-        'cores_per_processor',
-        'operating_system',
+        'modification_date',
+        'access_string',
+        'format',
     ),
-    software.CouplingProperty: (
-        'name',
+    data.DataContent: (
+        'aggregation',
+        'purpose',
+        'topic',
+        'frequency',
+    ),
+    shared.ChangeProperty: (
         'value',
-    ),
-    shared.DocRelationship: (
-        'target',
-        'direction',
-        'type',
         'description',
+        'name',
+        'id',
+    ),
+    shared.DocRelationshipTarget: (
+        'reference',
     ),
     data.DataExtentTimeInterval: (
         'radix',
         'unit',
         'factor',
     ),
-    shared.DataSource: (
-        'purpose',
+    shared.Standard: (
+        'description',
+        'name',
+        'version',
     ),
-    activity.Activity: (
-        'funding_sources',
-        'projects',
-        'rationales',
-        'responsible_parties',
+    software.Composition: (
+        'couplings',
+        'description',
     ),
-    shared.ClosedDateRange: (
-        'duration',
-        'end',
-        'start',
+    grids.VerticalCoordinateList: (
+        'has_constant_offset',
+        'form',
+        'length',
+        'uom',
+        'properties',
+        'type',
     ),
     data.DataExtentTemporal: (
         'begin',
         'time_interval',
         'end',
     ),
-    shared.Standard: (
+    shared.Property: (
         'name',
-        'version',
-        'description',
+        'value',
     ),
-    software.ComponentProperty: (
-        'long_name',
-        'values',
-        'short_name',
-        'grid',
-        'is_represented',
-        'purpose',
-        'sub_properties',
-        'standard_names',
-        'citations',
-        'units',
-        'intent',
+    shared.Change: (
+        'details',
+        'date',
         'description',
+        'name',
+        'type',
+        'author',
     ),
     grids.GridTile: (
         'horizontal_crs',
@@ -698,8 +672,8 @@ CLASS_PROPERTIES = {
         'is_conformal',
         'mnemonic',
         'cell_array',
-        'refinement_scheme',
         'is_regular',
+        'refinement_scheme',
         'short_name',
         'cell_ref_array',
         'description',
@@ -714,171 +688,160 @@ CLASS_PROPERTIES = {
         'long_name',
         'ny',
     ),
-    software.Connection: (
-        'properties',
-        'time_transformation',
-        'priming',
-        'sources',
-        'spatial_regridding',
-        'description',
+    quality.Evaluation: (
+        'specification_hyperlink',
+        'specification',
+        'date',
         'type',
-        'transformers',
-        'time_profile',
-        'time_lag',
-        'target',
+        'did_pass',
+        'explanation',
+        'description',
+        'title',
+        'type_hyperlink',
     ),
-    software.Parallelisation: (
-        'processes',
-        'ranks',
+    software.ComponentLanguageProperty: (
+        'name',
+        'value',
+    ),
+    data.DataObject: (
+        'content',
+        'acronym',
+        'restriction',
+        'parent_object',
+        'purpose',
+        'properties',
+        'distribution',
+        'purpose',
+        'meta',
+        'description',
+        'source_simulation',
+        'geometry_model',
+        'storage',
+        'hierarchy_level',
+        'child_object',
+        'data_status',
+        'citations',
+        'extent',
+        'keyword',
+    ),
+    software.Rank: (
+        'max',
+        'value',
+        'min',
+        'increment',
     ),
     software.ConnectionEndpoint: (
         'instance_id',
         'properties',
         'data_source',
     ),
-    shared.DateRange: (
-        'duration',
+    shared.DataSource: (
+        'purpose',
     ),
-    software.ComponentLanguageProperty: (
-        'name',
-        'value',
-    ),
-    shared.DocMetaInfo: (
-        'update_date',
-        'project',
-        'drs_path',
-        'id',
-        'version',
-        'drs_keys',
-        'language',
-        'source_key',
-        'status',
-        'genealogy',
-        'source',
-        'type',
-        'external_ids',
-        'institute',
-        'author',
-        'sort_key',
-        'type_sort_key',
-        'create_date',
-        'type_display_name',
-    ),
-    software.SpatialRegriddingProperty: (
-        'name',
-        'value',
+    activity.SimulationComposite: (
+        'calendar',
+        'spinup_date_range',
+        'responsible_parties',
+        'date_range',
+        'funding_sources',
+        'spinup_simulation',
+        'supports',
+        'rank',
+        'deployments',
+        'rationales',
+        'short_name',
+        'inputs',
+        'conformances',
+        'outputs',
+        'long_name',
+        'restarts',
+        'meta',
+        'control_simulation',
+        'authors',
+        'simulation_id',
+        'projects',
+        'child',
+        'description',
     ),
     data.DataDistribution: (
-        'responsible_party',
-        'format',
-        'fee',
         'access',
+        'responsible_party',
+        'fee',
+        'format',
     ),
-    software.ConnectionProperty: (
+    grids.GridProperty: (
         'name',
         'value',
     ),
+    shared.MachineCompilerUnit: (
+        'compilers',
+        'machine',
+    ),
     activity.Simulation: (
-        'funding_sources',
         'inputs',
-        'responsible_parties',
         'spinup_date_range',
         'calendar',
         'control_simulation',
         'restarts',
+        'funding_sources',
         'spinup_simulation',
         'supports',
-        'projects',
         'conformances',
         'long_name',
         'description',
-        'simulation_id',
-        'authors',
-        'deployments',
-        'outputs',
         'rationales',
-        'short_name',
-    ),
-    software.EntryPoint: (
-        'name',
-    ),
-    quality.Measure: (
-        'identification',
-        'name',
-        'description',
-    ),
-    software.Component: (
-        'license',
-        'funding_sources',
-        'grid',
-        'properties',
-        'code_access',
-        'composition',
-        'language',
-        'previous_version',
-        'citations',
-        'short_name',
-        'dependencies',
-        'online_resource',
-        'version',
-        'responsible_parties',
-        'sub_components',
         'deployments',
-        'long_name',
-        'coupling_framework',
-        'release_date',
-        'purpose',
-        'description',
-        'parent',
-        'is_embedded',
+        'authors',
+        'simulation_id',
+        'outputs',
+        'projects',
+        'responsible_parties',
+        'short_name',
     ),
-    activity.NumericalRequirementOption: (
-        'description',
-        'sub_options',
-        'relationship',
+    shared.DocReference: (
+        'external_id',
         'id',
-        'name',
-    ),
-    data.DataRestriction: (
-        'restriction',
-        'scope',
-        'license',
-    ),
-    software.ProcessorComponent: (
-        'funding_sources',
-        'parent',
-        'grid',
-        'properties',
-        'code_access',
-        'composition',
-        'previous_version',
-        'short_name',
-        'coupling_framework',
-        'language',
-        'license',
-        'citations',
-        'meta',
-        'dependencies',
         'version',
-        'responsible_parties',
-        'deployments',
-        'long_name',
-        'is_embedded',
-        'online_resource',
-        'purpose',
+        'name',
+        'changes',
+        'type',
+        'url',
         'description',
-        'sub_components',
-        'release_date',
+    ),
+    quality.CimQuality: (
+        'meta',
+        'reports',
+    ),
+    activity.DownscalingSimulation: (
+        'calendar',
+        'short_name',
+        'downscaled_from',
+        'inputs',
+        'funding_sources',
+        'supports',
+        'long_name',
+        'outputs',
+        'description',
+        'rationales',
+        'downscaling_type',
+        'downscaling_id',
+        'meta',
+        'projects',
+        'responsible_parties',
+    ),
+    shared.Compiler: (
+        'name',
+        'environment_variables',
+        'type',
+        'options',
+        'version',
+        'language',
     ),
     shared.License: (
         'contact',
-        'is_unrestricted',
         'description',
+        'is_unrestricted',
         'name',
-    ),
-    activity.SimulationRelationshipTarget: (
-        'simulation',
-        'target',
     ),
     data.DataStorageFile: (
         'size',
@@ -889,25 +852,85 @@ CLASS_PROPERTIES = {
         'path',
         'file_system',
     ),
-    grids.GridProperty: (
-        'name',
-        'value',
+    software.CouplingEndpoint: (
+        'instance_id',
+        'properties',
+        'data_source',
     ),
-    quality.Report: (
-        'date',
-        'measure',
-        'evaluation',
-        'evaluator',
+    shared.DocMetaInfo: (
+        'id',
+        'institute',
+        'type_display_name',
+        'author',
+        'type_sort_key',
+        'create_date',
+        'update_date',
+        'type',
+        'drs_path',
+        'sort_key',
+        'version',
+        'drs_keys',
+        'source',
+        'project',
+        'external_ids',
+        'source_key',
+        'genealogy',
+        'status',
+        'language',
     ),
-    data.DataStorageDb: (
-        'name',
-        'format',
-        'owner',
-        'size',
-        'table',
-        'modification_date',
-        'access_string',
-        'location',
+    shared.Relationship: (
+        'description',
+        'direction',
+    ),
+    activity.Activity: (
+        'funding_sources',
+        'projects',
+        'responsible_parties',
+        'rationales',
+    ),
+    software.ModelComponent: (
+        'grid',
+        'activity',
+        'properties',
+        'is_embedded',
+        'funding_sources',
+        'composition',
+        'language',
+        'coupling_framework',
+        'previous_version',
+        'meta',
+        'description',
+        'code_access',
+        'type',
+        'purpose',
+        'responsible_parties',
+        'long_name',
+        'version',
+        'deployments',
+        'types',
+        'parent',
+        'sub_components',
+        'online_resource',
+        'release_date',
+        'license',
+        'timing',
+        'short_name',
+        'dependencies',
+        'citations',
+    ),
+    software.ComponentProperty: (
+        'intent',
+        'standard_names',
+        'values',
+        'is_represented',
+        'purpose',
+        'description',
+        'long_name',
+        'short_name',
+        'units',
+        'grid',
+        'sub_properties',
+        'citations',
     ),
     activity.OutputRequirement: (
         'requirement_type',
@@ -917,18 +940,46 @@ CLASS_PROPERTIES = {
         'description',
         'name',
     ),
-    data.DataTopic: (
-        'description',
-        'name',
-        'unit',
+    grids.GridExtent: (
+        'maximum_latitude',
+        'maximum_longitude',
+        'minimum_latitude',
+        'units',
+        'minimum_longitude',
     ),
-    software.ComponentLanguage: (
-        'name',
+    software.Connection: (
         'properties',
+        'description',
+        'priming',
+        'spatial_regridding',
+        'sources',
+        'type',
+        'transformers',
+        'time_profile',
+        'time_lag',
+        'time_transformation',
+        'target',
     ),
-    software.SpatialRegriddingUserMethod: (
-        'file',
-        'name',
+    software.TimeTransformation: (
+        'description',
+        'mapping_type',
+    ),
+    quality.Report: (
+        'date',
+        'measure',
+        'evaluation',
+        'evaluator',
+    ),
+    shared.DocRelationship: (
+        'type',
+        'direction',
+        'target',
+        'description',
+    ),
+    shared.StandardName: (
+        'standards',
+        'value',
+        'is_open',
     ),
     grids.SimpleGridGeometry: (
         'is_mesh',
@@ -938,9 +989,6 @@ CLASS_PROPERTIES = {
         'ycoords',
         'zcoords',
     ),
-    shared.DocGenealogy: (
-        'relationships',
-    ),
     activity.NumericalRequirement: (
         'requirement_type',
         'id',
@@ -949,122 +997,109 @@ CLASS_PROPERTIES = {
         'description',
         'name',
     ),
-    software.ModelComponent: (
-        'activity',
-        'version',
-        'parent',
-        'grid',
-        'properties',
-        'code_access',
-        'composition',
-        'previous_version',
-        'short_name',
-        'meta',
-        'coupling_framework',
-        'language',
-        'funding_sources',
-        'type',
-        'citations',
-        'license',
-        'dependencies',
-        'types',
-        'responsible_parties',
-        'deployments',
-        'long_name',
-        'is_embedded',
-        'online_resource',
-        'purpose',
-        'timing',
-        'description',
-        'sub_components',
-        'release_date',
-    ),
     activity.PhysicalModification: (
         'description',
+        'frequency',
         'sources',
         'is_conformant',
-        'frequency',
         'requirements',
         'type',
     ),
-    activity.SimulationComposite: (
-        'calendar',
-        'spinup_date_range',
-        'date_range',
-        'funding_sources',
-        'supports',
-        'spinup_simulation',
-        'rank',
-        'projects',
-        'authors',
-        'deployments',
-        'rationales',
-        'short_name',
-        'inputs',
-        'responsible_parties',
-        'conformances',
-        'outputs',
-        'long_name',
-        'restarts',
-        'meta',
-        'control_simulation',
-        'simulation_id',
-        'child',
-        'description',
-    ),
-    grids.GridExtent: (
-        'maximum_longitude',
-        'minimum_longitude',
-        'minimum_latitude',
-        'units',
-        'maximum_latitude',
-    ),
-    shared.MachineCompilerUnit: (
-        'compilers',
-        'machine',
-    ),
-    activity.DownscalingSimulation: (
-        'rationales',
-        'downscaling_type',
-        'description',
-        'outputs',
-        'downscaling_id',
-        'supports',
-        'meta',
-        'projects',
-        'responsible_parties',
-        'long_name',
-        'funding_sources',
-        'calendar',
-        'inputs',
-        'short_name',
-        'downscaled_from',
-    ),
-    activity.SpatioTemporalConstraint: (
-        'spatial_resolution',
-        'options',
-        'description',
-        'name',
+    activity.InitialCondition: (
         'requirement_type',
         'id',
+        'options',
         'source',
-        'date_range',
-    ),
-    software.TimeTransformation: (
         'description',
-        'mapping_type',
+        'name',
     ),
-    data.DataExtent: (
-        'temporal',
-        'geographical',
+    shared.ClosedDateRange: (
+        'end',
+        'start',
+        'duration',
+    ),
+    shared.OpenDateRange: (
+        'duration',
+        'end',
+        'start',
+    ),
+    quality.Measure: (
+        'identification',
+        'name',
+        'description',
+    ),
+    activity.LateralBoundaryCondition: (
+        'requirement_type',
+        'id',
+        'options',
+        'source',
+        'description',
+        'name',
+    ),
+    software.Coupling: (
+        'spatial_regriddings',
+        'connections',
+        'priming',
+        'description',
+        'properties',
+        'type',
+        'time_profile',
+        'target',
+        'purpose',
+        'is_fully_specified',
+        'sources',
+        'time_transformation',
+        'time_lag',
+        'transformers',
+    ),
+    software.SpatialRegridding: (
+        'dimension',
+        'standard_method',
+        'properties',
+        'user_method',
     ),
 }
 
 # Supported class own properties.
 CLASS_OWN_PROPERTIES = { 
-    shared.Relationship: (
+    shared.Calendar: (
+        'range',
         'description',
-        'direction',
+        'length',
+    ),
+    activity.ExperimentRelationship: (
+        'target',
+        'type',
+    ),
+    data.DataStorage: (
+        'size',
+        'modification_date',
+        'format',
+        'location',
+    ),
+    software.CouplingProperty: (
+    ),
+    activity.SimulationRun: (
+        'date_range',
+        'model',
+        'meta',
+    ),
+    activity.BoundaryCondition: (
+    ),
+    software.EntryPoint: (
+        'name',
+    ),
+    software.SpatialRegriddingUserMethod: (
+        'file',
+        'name',
+    ),
+    activity.SimulationRelationshipTarget: (
+        'simulation',
+        'target',
+    ),
+    software.ComponentLanguage: (
+        'name',
+        'properties',
     ),
     software.Deployment: (
         'platform',
@@ -1074,76 +1109,95 @@ CLASS_OWN_PROPERTIES = {
         'executable_name',
         'parallelisation',
     ),
-    shared.DocRelationshipTarget: (
-        'reference',
-    ),
-    data.DataStorage: (
-        'size',
-        'modification_date',
-        'format',
-        'location',
-    ),
-    grids.VerticalCoordinateList: (
-        'form',
-        'type',
-        'properties',
-    ),
-    software.Rank: (
-        'increment',
-        'value',
-        'min',
-        'max',
-    ),
-    data.DataContent: (
-        'aggregation',
-        'topic',
-        'frequency',
-    ),
-    shared.PerpetualPeriod: (
-    ),
-    quality.Evaluation: (
-        'specification_hyperlink',
-        'type',
-        'did_pass',
-        'title',
-        'date',
-        'explanation',
-        'specification',
-        'type_hyperlink',
-        'description',
-    ),
-    shared.ChangeProperty: (
-        'description',
-        'id',
-    ),
-    software.TimeLag: (
-        'units',
-        'value',
-    ),
-    shared.Calendar: (
-        'description',
-        'range',
-        'length',
-    ),
-    software.CouplingEndpoint: (
-        'data_source',
-        'properties',
-        'instance_id',
-    ),
     grids.GridTileResolutionType: (
         'description',
         'properties',
     ),
-    shared.RealCalendar: (
+    shared.Daily360: (
     ),
-    activity.LateralBoundaryCondition: (
+    software.Component: (
+        'grid',
+        'is_embedded',
+        'language',
+        'license',
+        'long_name',
+        'online_resource',
+        'parent',
+        'sub_components',
+        'previous_version',
+        'citations',
+        'properties',
+        'code_access',
+        'version',
+        'release_date',
+        'composition',
+        'responsible_parties',
+        'coupling_framework',
+        'short_name',
+        'dependencies',
+        'deployments',
+        'description',
+        'funding_sources',
     ),
-    activity.InitialCondition: (
+    shared.DateRange: (
+        'duration',
     ),
     data.DataHierarchyLevel: (
         'is_open',
         'value',
         'name',
+    ),
+    data.DataTopic: (
+        'description',
+        'unit',
+        'name',
+    ),
+    activity.NumericalActivity: (
+        'supports',
+        'description',
+        'short_name',
+        'long_name',
+    ),
+    activity.EnsembleMember: (
+        'simulation',
+        'ensemble',
+        'ensemble_ids',
+    ),
+    shared.Machine: (
+        'location',
+        'type',
+        'description',
+        'maximum_processors',
+        'interconnect',
+        'vendor',
+        'name',
+        'processor_type',
+        'libraries',
+        'cores_per_processor',
+        'system',
+        'operating_system',
+    ),
+    activity.ExperimentRelationshipTarget: (
+        'numerical_experiment',
+    ),
+    activity.NumericalRequirementOption: (
+        'name',
+        'relationship',
+        'sub_options',
+        'description',
+        'id',
+    ),
+    activity.SpatioTemporalConstraint: (
+        'date_range',
+        'spatial_resolution',
+    ),
+    data.DataStorageIp: (
+        'file_name',
+        'protocol',
+        'path',
+        'host',
+    ),
+    software.SpatialRegriddingProperty: (
     ),
     shared.Platform: (
         'short_name',
@@ -1153,142 +1207,64 @@ CLASS_OWN_PROPERTIES = {
         'units',
         'long_name',
     ),
-    data.DataProperty: (
-        'description',
-    ),
-    activity.NumericalActivity: (
-        'supports',
-        'description',
-        'short_name',
-        'long_name',
-    ),
-    shared.OpenDateRange: (
-        'end',
-        'start',
-    ),
-    software.Composition: (
-        'couplings',
-        'description',
-    ),
-    software.Coupling: (
-        'time_profile',
-        'type',
-        'time_transformation',
-        'properties',
-        'purpose',
-        'sources',
-        'description',
-        'time_lag',
-        'transformers',
-        'priming',
-        'spatial_regriddings',
-        'connections',
-        'target',
-        'is_fully_specified',
-    ),
-    data.DataStorageIp: (
-        'file_name',
-        'protocol',
-        'path',
-        'host',
-    ),
-    shared.Property: (
-        'name',
-        'value',
-    ),
-    data.DataObject: (
-        'content',
-        'purpose',
-        'storage',
-        'child_object',
-        'acronym',
-        'distribution',
-        'geometry_model',
-        'properties',
-        'restriction',
-        'description',
-        'meta',
-        'source_simulation',
-        'data_status',
-        'citations',
-        'extent',
-        'parent_object',
-        'keyword',
-        'hierarchy_level',
-    ),
-    shared.Compiler: (
-        'language',
-        'version',
-        'name',
-        'options',
-        'type',
-        'environment_variables',
-    ),
     activity.NumericalExperiment: (
         'long_name',
-        'meta',
+        'requirements',
         'description',
         'short_name',
-        'requirements',
+        'meta',
         'experiment_id',
+    ),
+    software.Parallelisation: (
+        'processes',
+        'ranks',
     ),
     activity.MeasurementCampaign: (
         'duration',
-    ),
-    shared.DocReference: (
-        'url',
-        'id',
-        'changes',
-        'name',
-        'version',
-        'type',
-        'external_id',
-        'description',
     ),
     grids.GridSpec: (
         'esm_exchange_grids',
         'meta',
         'esm_model_grids',
     ),
+    shared.ResponsibleParty: (
+        'email',
+        'url',
+        'organisation_name',
+        'individual_name',
+        'abbreviation',
+        'address',
+        'role',
+    ),
     activity.Experiment: (
-        'supports',
         'measurement_campaigns',
         'generates',
+        'supports',
         'requires',
     ),
-    software.Timing: (
-        'start',
-        'rate',
-        'units',
-        'end',
-        'is_variable_rate',
-    ),
-    shared.StandardName: (
-        'is_open',
-        'value',
-        'standards',
-    ),
-    shared.Change: (
-        'details',
-        'author',
-        'name',
+    shared.Citation: (
+        'location',
+        'role',
         'type',
-        'description',
         'date',
+        'collective_title',
+        'date_type',
+        'title',
+        'organisation',
+        'alternative_title',
     ),
-    software.StatisticalModelComponent: (
-        'meta',
-        'types',
-        'type',
-        'timing',
+    data.DataExtent: (
+        'temporal',
+        'geographical',
     ),
-    activity.ExperimentRelationship: (
-        'target',
-        'type',
+    software.TimeLag: (
+        'units',
+        'value',
     ),
-    quality.CimQuality: (
-        'meta',
-        'reports',
+    shared.PerpetualPeriod: (
+    ),
+    shared.DocGenealogy: (
+        'relationships',
     ),
     activity.Conformance: (
         'description',
@@ -1298,33 +1274,12 @@ CLASS_OWN_PROPERTIES = {
         'is_conformant',
         'requirements',
     ),
-    software.SpatialRegridding: (
-        'user_method',
-        'dimension',
-        'standard_method',
-        'properties',
-    ),
-    shared.ResponsibleParty: (
-        'individual_name',
-        'abbreviation',
-        'organisation_name',
-        'address',
-        'role',
-        'email',
-        'url',
-    ),
-    activity.BoundaryCondition: (
-    ),
-    shared.Citation: (
-        'title',
-        'alternative_title',
-        'date_type',
-        'collective_title',
-        'organisation',
-        'location',
-        'type',
-        'role',
-        'date',
+    software.Timing: (
+        'units',
+        'rate',
+        'end',
+        'start',
+        'is_variable_rate',
     ),
     misc.DocumentSet: (
         'model',
@@ -1336,11 +1291,18 @@ CLASS_OWN_PROPERTIES = {
         'simulation',
         'grids',
     ),
+    shared.RealCalendar: (
+    ),
     activity.Ensemble: (
         'outputs',
-        'types',
         'members',
+        'types',
         'meta',
+    ),
+    data.DataProperty: (
+        'description',
+    ),
+    software.ConnectionProperty: (
     ),
     data.DataExtentGeographical: (
         'west',
@@ -1348,106 +1310,98 @@ CLASS_OWN_PROPERTIES = {
         'south',
         'north',
     ),
+    software.StatisticalModelComponent: (
+        'meta',
+        'type',
+        'types',
+        'timing',
+    ),
     grids.GridMosaic: (
         'mosaic_count',
         'citations',
-        'tiles',
+        'type',
         'id',
         'is_leaf',
         'short_name',
         'mnemonic',
         'mosaics',
         'extent',
-        'type',
+        'tiles',
         'description',
         'has_congruent_tiles',
         'tile_count',
         'long_name',
-    ),
-    activity.EnsembleMember: (
-        'simulation',
-        'ensemble',
-        'ensemble_ids',
     ),
     grids.CoordinateList: (
         'uom',
         'has_constant_offset',
         'length',
     ),
+    software.ProcessorComponent: (
+        'meta',
+    ),
     activity.SimulationRelationship: (
         'target',
         'type',
     ),
-    activity.ExperimentRelationshipTarget: (
-        'numerical_experiment',
+    data.DataRestriction: (
+        'scope',
+        'license',
+        'restriction',
     ),
-    activity.SimulationRun: (
-        'model',
-        'date_range',
-        'meta',
-    ),
-    shared.Daily360: (
-    ),
-    shared.Machine: (
-        'system',
-        'location',
-        'interconnect',
-        'type',
-        'maximum_processors',
-        'cores_per_processor',
-        'vendor',
+    data.DataStorageDb: (
+        'owner',
+        'table',
+        'access_string',
         'name',
-        'operating_system',
-        'processor_type',
-        'libraries',
+    ),
+    data.DataContent: (
+        'aggregation',
+        'topic',
+        'frequency',
+    ),
+    shared.ChangeProperty: (
         'description',
+        'id',
     ),
-    software.CouplingProperty: (
-    ),
-    shared.DocRelationship: (
-        'target',
-        'type',
+    shared.DocRelationshipTarget: (
+        'reference',
     ),
     data.DataExtentTimeInterval: (
         'unit',
         'factor',
         'radix',
     ),
-    shared.DataSource: (
-        'purpose',
+    shared.Standard: (
+        'description',
+        'version',
+        'name',
     ),
-    activity.Activity: (
-        'rationales',
-        'responsible_parties',
-        'funding_sources',
-        'projects',
+    software.Composition: (
+        'couplings',
+        'description',
     ),
-    shared.ClosedDateRange: (
-        'end',
-        'start',
+    grids.VerticalCoordinateList: (
+        'type',
+        'form',
+        'properties',
     ),
     data.DataExtentTemporal: (
         'begin',
         'time_interval',
         'end',
     ),
-    shared.Standard: (
-        'version',
-        'description',
+    shared.Property: (
         'name',
+        'value',
     ),
-    software.ComponentProperty: (
-        'values',
-        'long_name',
-        'short_name',
-        'sub_properties',
-        'grid',
-        'citations',
-        'units',
-        'intent',
-        'standard_names',
-        'is_represented',
+    shared.Change: (
+        'details',
+        'name',
+        'author',
+        'type',
         'description',
+        'date',
     ),
     grids.GridTile: (
         'zcoords',
@@ -1479,63 +1433,70 @@ CLASS_OWN_PROPERTIES = {
         'vertical_resolution',
         'geometry_type',
     ),
-    software.Connection: (
-        'properties',
+    quality.Evaluation: (
+        'specification_hyperlink',
         'type',
-        'priming',
-        'sources',
-        'time_profile',
-        'transformers',
-        'target',
-        'spatial_regridding',
+        'did_pass',
+        'title',
+        'date',
+        'explanation',
+        'specification',
+        'type_hyperlink',
         'description',
-        'time_lag',
-        'time_transformation',
     ),
-    software.Parallelisation: (
-        'processes',
-        'ranks',
+    software.ComponentLanguageProperty: (
+    ),
+    data.DataObject: (
+        'content',
+        'parent_object',
+        'source_simulation',
+        'child_object',
+        'acronym',
+        'distribution',
+        'geometry_model',
+        'properties',
+        'restriction',
+        'description',
+        'meta',
+        'storage',
+        'purpose',
+        'data_status',
+        'citations',
+        'extent',
+        'hierarchy_level',
+        'keyword',
+    ),
+    software.Rank: (
+        'value',
+        'increment',
+        'min',
+        'max',
     ),
     software.ConnectionEndpoint: (
         'properties',
         'data_source',
         'instance_id',
     ),
-    shared.DateRange: (
-        'duration',
+    shared.DataSource: (
+        'purpose',
     ),
-    software.ComponentLanguageProperty: (
-    ),
-    shared.DocMetaInfo: (
-        'update_date',
-        'genealogy',
-        'source_key',
-        'institute',
-        'drs_path',
-        'type_sort_key',
-        'language',
-        'sort_key',
-        'type',
-        'version',
-        'drs_keys',
-        'author',
-        'source',
-        'id',
-        'external_ids',
-        'type_display_name',
-        'create_date',
-        'project',
-        'status',
-    ),
-    software.SpatialRegriddingProperty: (
+    activity.SimulationComposite: (
+        'date_range',
+        'rank',
+        'child',
+        'meta',
     ),
     data.DataDistribution: (
-        'responsible_party',
         'access',
         'format',
+        'responsible_party',
         'fee',
     ),
-    software.ConnectionProperty: (
+    grids.GridProperty: (
+    ),
+    shared.MachineCompilerUnit: (
+        'compilers',
+        'machine',
     ),
     activity.Simulation: (
         'inputs',
@@ -1546,56 +1507,40 @@ CLASS_OWN_PROPERTIES = {
         'spinup_simulation',
         'conformances',
         'deployments',
-        'simulation_id',
         'authors',
+        'simulation_id',
         'outputs',
     ),
-    software.EntryPoint: (
-        'name',
-    ),
-    quality.Measure: (
-        'name',
-        'description',
-        'identification',
-    ),
-    software.Component: (
-        'funding_sources',
-        'grid',
-        'is_embedded',
-        'language',
-        'previous_version',
-        'license',
-        'long_name',
-        'coupling_framework',
-        'online_resource',
-        'sub_components',
-        'citations',
-        'properties',
-        'code_access',
-        'release_date',
-        'responsible_parties',
-        'short_name',
-        'dependencies',
-        'version',
-        'parent',
-        'deployments',
-        'description',
-        'composition',
-    ),
-    activity.NumericalRequirementOption: (
-        'description',
-        'name',
-        'relationship',
-        'sub_options',
+    shared.DocReference: (
+        'url',
         'id',
+        'version',
+        'name',
+        'changes',
+        'type',
+        'external_id',
+        'description',
     ),
-    data.DataRestriction: (
-        'scope',
-        'license',
-        'restriction',
-    ),
-    software.ProcessorComponent: (
+    quality.CimQuality: (
         'meta',
+        'reports',
+    ),
+    activity.DownscalingSimulation: (
+        'calendar',
+        'downscaled_from',
+        'inputs',
+        'downscaling_type',
+        'outputs',
+        'meta',
+        'downscaling_id',
+    ),
+    shared.Compiler: (
+        'type',
+        'version',
+        'language',
+        'name',
+        'options',
+        'environment_variables',
     ),
     shared.License: (
         'contact',
@@ -1603,16 +1548,92 @@ CLASS_OWN_PROPERTIES = {
         'is_unrestricted',
         'description',
     ),
-    activity.SimulationRelationshipTarget: (
-        'simulation',
-        'target',
-    ),
     data.DataStorageFile: (
         'path',
         'file_name',
         'file_system',
     ),
-    grids.GridProperty: (
+    software.CouplingEndpoint: (
+        'properties',
+        'data_source',
+        'instance_id',
+    ),
+    shared.DocMetaInfo: (
+        'drs_path',
+        'source_key',
+        'version',
+        'id',
+        'author',
+        'type_sort_key',
+        'drs_keys',
+        'institute',
+        'type',
+        'source',
+        'external_ids',
+        'status',
+        'language',
+        'create_date',
+        'update_date',
+        'genealogy',
+        'project',
+        'type_display_name',
+        'sort_key',
+    ),
+    shared.Relationship: (
+        'description',
+        'direction',
+    ),
+    activity.Activity: (
+        'funding_sources',
+        'rationales',
+        'responsible_parties',
+        'projects',
+    ),
+    software.ModelComponent: (
+        'meta',
+        'type',
+        'types',
+        'activity',
+        'timing',
+    ),
+    software.ComponentProperty: (
+        'standard_names',
+        'values',
+        'is_represented',
+        'sub_properties',
+        'long_name',
+        'description',
+        'short_name',
+        'units',
+        'grid',
+        'intent',
+        'citations',
+    ),
+    activity.OutputRequirement: (
+    ),
+    grids.GridExtent: (
+        'maximum_latitude',
+        'minimum_longitude',
+        'minimum_latitude',
+        'units',
+        'maximum_longitude',
+    ),
+    software.Connection: (
+        'properties',
+        'type',
+        'priming',
+        'spatial_regridding',
+        'time_profile',
+        'transformers',
+        'target',
+        'sources',
+        'description',
+        'time_lag',
+        'time_transformation',
+    ),
+    software.TimeTransformation: (
+        'description',
+        'mapping_type',
     ),
     quality.Report: (
         'date',
@@ -1620,26 +1641,14 @@ CLASS_OWN_PROPERTIES = {
         'measure',
         'evaluation',
     ),
-    data.DataStorageDb: (
-        'owner',
-        'table',
-        'access_string',
-        'name',
+    shared.DocRelationship: (
+        'type',
+        'target',
     ),
-    activity.OutputRequirement: (
-    ),
-    data.DataTopic: (
-        'description',
-        'unit',
-        'name',
-    ),
-    software.ComponentLanguage: (
-        'name',
-        'properties',
-    ),
-    software.SpatialRegriddingUserMethod: (
-        'file',
-        'name',
+    shared.StandardName: (
+        'value',
+        'is_open',
+        'standards',
     ),
     grids.SimpleGridGeometry: (
         'xcoords',
@@ -1649,9 +1658,6 @@ CLASS_OWN_PROPERTIES = {
         'zcoords',
         'num_dims',
     ),
-    shared.DocGenealogy: (
-        'relationships',
-    ),
     activity.NumericalRequirement: (
         'options',
         'description',
@@ -1660,52 +1666,46 @@ CLASS_OWN_PROPERTIES = {
         'source',
         'name',
     ),
-    software.ModelComponent: (
-        'meta',
-        'type',
-        'types',
-        'activity',
-        'timing',
-    ),
     activity.PhysicalModification: (
     ),
-    activity.SimulationComposite: (
-        'date_range',
-        'rank',
-        'child',
-        'meta',
+    activity.InitialCondition: (
     ),
-    grids.GridExtent: (
-        'minimum_longitude',
-        'maximum_latitude',
-        'minimum_latitude',
-        'units',
-        'maximum_longitude',
+    shared.ClosedDateRange: (
+        'end',
+        'start',
     ),
-    shared.MachineCompilerUnit: (
-        'compilers',
-        'machine',
+    shared.OpenDateRange: (
+        'end',
+        'start',
     ),
-    activity.DownscalingSimulation: (
-        'meta',
-        'outputs',
-        'downscaling_id',
-        'inputs',
-        'calendar',
-        'downscaling_type',
-        'downscaled_from',
-    ),
-    activity.SpatioTemporalConstraint: (
-        'date_range',
-        'spatial_resolution',
-    ),
-    software.TimeTransformation: (
+    quality.Measure: (
+        'name',
         'description',
-        'mapping_type',
+        'identification',
     ),
-    data.DataExtent: (
-        'temporal',
-        'geographical',
+    activity.LateralBoundaryCondition: (
+    ),
+    software.Coupling: (
+        'type',
+        'connections',
+        'time_transformation',
+        'target',
+        'is_fully_specified',
+        'time_profile',
+        'properties',
+        'transformers',
+        'purpose',
+        'time_lag',
+        'sources',
+        'priming',
+        'spatial_regriddings',
+        'description',
+    ),
+    software.SpatialRegridding: (
+        'dimension',
+        'standard_method',
+        'user_method',
+        'properties',
     ),
 }
 
@@ -1718,53 +1718,53 @@ TOTAL_CLASS_PROPERTIES = sum(len(i) for i in CLASS_OWN_PROPERTIES.values())
 
 # Supported enums.
 ENUMS = (
-    shared.DocRelationshipType,
     shared.DocRelationshipDirectionType,
-    activity.FrequencyType,
-    activity.ProjectType,
-    activity.ResolutionType,
-    activity.SimulationType,
+    shared.CompilerType,
+    shared.DocStatusType,
+    software.CouplingFrameworkType,
+    software.ConnectionType,
+    grids.FeatureTypeEnum,
+    quality.CimScopeCodeType,
+    shared.InterconnectType,
     grids.VerticalCsEnum,
-    shared.UnitType,
     software.ModelComponentType,
     software.SpatialRegriddingDimensionType,
-    activity.DownscalingType,
-    software.SpatialRegriddingStandardMethodType,
-    quality.QualityStatusType,
-    grids.FeatureTypeEnum,
+    activity.FrequencyType,
+    shared.ChangePropertyType,
+    shared.MachineVendorType,
+    activity.ResolutionType,
+    activity.SimulationType,
     quality.CimFeatureType,
-    activity.SimulationRelationshipType,
+    software.SpatialRegriddingStandardMethodType,
+    data.DataHierarchyType,
     grids.DiscretizationEnum,
-    shared.CompilerType,
-    shared.MachineType,
+    shared.DataPurpose,
+    shared.ProcessorType,
+    shared.DocRelationshipType,
     quality.CimResultType,
     grids.GeometryTypeEnum,
     data.DataStatusType,
     grids.ArcTypeEnum,
     grids.HorizontalCsEnum,
-    shared.DocStatusType,
-    quality.CimScopeCodeType,
-    software.CouplingFrameworkType,
-    software.StatisticalModelComponentType,
+    activity.ProjectType,
+    activity.SimulationRelationshipType,
     quality.QualitySeverityType,
+    software.StatisticalModelComponentType,
+    software.ComponentPropertyIntentType,
     software.TimeMappingType,
-    shared.ProcessorType,
-    shared.InterconnectType,
     software.TimingUnits,
     activity.EnsembleType,
     grids.GridNodePositionEnum,
-    activity.ExperimentRelationshipType,
-    grids.GridTypeEnum,
-    shared.ChangePropertyType,
-    software.ConnectionType,
-    data.DataHierarchyType,
-    shared.OperatingSystemType,
-    shared.MachineVendorType,
-    shared.DocType,
-    shared.DataPurpose,
-    quality.QualityIssueType,
     activity.ConformanceType,
-    software.ComponentPropertyIntentType,
+    shared.UnitType,
+    grids.GridTypeEnum,
+    shared.OperatingSystemType,
+    activity.DownscalingType,
+    shared.DocType,
+    quality.QualityStatusType,
+    quality.QualityIssueType,
+    shared.MachineType,
+    activity.ExperimentRelationshipType,
     grids.RefinementTypeEnum,
 )
 
@@ -1797,67 +1797,92 @@ DOCUMENT_TYPES = (
 
 # Base classes.
 BASE_CLASSES = defaultdict(tuple)
-BASE_CLASSES[grids.VerticalCoordinateList] = (grids.CoordinateList, )
-BASE_CLASSES[data.DataContent] = (shared.DataSource, )
-BASE_CLASSES[shared.PerpetualPeriod] = (shared.Calendar, )
-BASE_CLASSES[shared.ChangeProperty] = (shared.Property, )
-BASE_CLASSES[shared.RealCalendar] = (shared.Calendar, )
-BASE_CLASSES[activity.LateralBoundaryCondition] = (activity.NumericalRequirement, )
-BASE_CLASSES[activity.InitialCondition] = (activity.NumericalRequirement, )
-BASE_CLASSES[data.DataProperty] = (shared.Property, )
+BASE_CLASSES[activity.ExperimentRelationship] = (shared.Relationship, )
+BASE_CLASSES[software.CouplingProperty] = (shared.Property, )
+BASE_CLASSES[activity.SimulationRun] = (activity.Simulation, activity.NumericalActivity, activity.Activity, )
+BASE_CLASSES[activity.BoundaryCondition] = (activity.NumericalRequirement, )
+BASE_CLASSES[shared.Daily360] = (shared.Calendar, )
+BASE_CLASSES[software.Component] = (shared.DataSource, )
 BASE_CLASSES[activity.NumericalActivity] = (activity.Activity, )
-BASE_CLASSES[shared.OpenDateRange] = (shared.DateRange, )
+BASE_CLASSES[activity.EnsembleMember] = (activity.NumericalActivity, activity.Activity, )
+BASE_CLASSES[activity.SpatioTemporalConstraint] = (activity.NumericalRequirement, )
 BASE_CLASSES[data.DataStorageIp] = (data.DataStorage, )
-BASE_CLASSES[data.DataObject] = (shared.DataSource, )
+BASE_CLASSES[software.SpatialRegriddingProperty] = (shared.Property, )
 BASE_CLASSES[activity.NumericalExperiment] = (activity.Experiment, activity.Activity, )
 BASE_CLASSES[activity.MeasurementCampaign] = (activity.Activity, )
 BASE_CLASSES[activity.Experiment] = (activity.Activity, )
-BASE_CLASSES[software.StatisticalModelComponent] = (software.Component, shared.DataSource, )
-BASE_CLASSES[activity.ExperimentRelationship] = (shared.Relationship, )
-BASE_CLASSES[activity.BoundaryCondition] = (activity.NumericalRequirement, )
+BASE_CLASSES[shared.PerpetualPeriod] = (shared.Calendar, )
+BASE_CLASSES[shared.RealCalendar] = (shared.Calendar, )
 BASE_CLASSES[activity.Ensemble] = (activity.NumericalActivity, activity.Activity, )
-BASE_CLASSES[activity.EnsembleMember] = (activity.NumericalActivity, activity.Activity, )
-BASE_CLASSES[activity.SimulationRelationship] = (shared.Relationship, )
-BASE_CLASSES[activity.SimulationRun] = (activity.Simulation, activity.NumericalActivity, activity.Activity, )
-BASE_CLASSES[shared.Daily360] = (shared.Calendar, )
-BASE_CLASSES[software.CouplingProperty] = (shared.Property, )
-BASE_CLASSES[shared.DocRelationship] = (shared.Relationship, )
-BASE_CLASSES[shared.ClosedDateRange] = (shared.DateRange, )
-BASE_CLASSES[software.ComponentProperty] = (shared.DataSource, )
-BASE_CLASSES[software.ComponentLanguageProperty] = (shared.Property, )
-BASE_CLASSES[software.SpatialRegriddingProperty] = (shared.Property, )
+BASE_CLASSES[data.DataProperty] = (shared.Property, )
 BASE_CLASSES[software.ConnectionProperty] = (shared.Property, )
-BASE_CLASSES[activity.Simulation] = (activity.NumericalActivity, activity.Activity, )
-BASE_CLASSES[software.Component] = (shared.DataSource, )
+BASE_CLASSES[software.StatisticalModelComponent] = (software.Component, shared.DataSource, )
 BASE_CLASSES[software.ProcessorComponent] = (software.Component, shared.DataSource, )
-BASE_CLASSES[data.DataStorageFile] = (data.DataStorage, )
-BASE_CLASSES[grids.GridProperty] = (shared.Property, )
+BASE_CLASSES[activity.SimulationRelationship] = (shared.Relationship, )
 BASE_CLASSES[data.DataStorageDb] = (data.DataStorage, )
-BASE_CLASSES[activity.OutputRequirement] = (activity.NumericalRequirement, )
-BASE_CLASSES[software.ModelComponent] = (software.Component, shared.DataSource, )
-BASE_CLASSES[activity.PhysicalModification] = (activity.Conformance, )
+BASE_CLASSES[data.DataContent] = (shared.DataSource, )
+BASE_CLASSES[shared.ChangeProperty] = (shared.Property, )
+BASE_CLASSES[grids.VerticalCoordinateList] = (grids.CoordinateList, )
+BASE_CLASSES[software.ComponentLanguageProperty] = (shared.Property, )
+BASE_CLASSES[data.DataObject] = (shared.DataSource, )
 BASE_CLASSES[activity.SimulationComposite] = (activity.Simulation, activity.NumericalActivity, activity.Activity, )
+BASE_CLASSES[grids.GridProperty] = (shared.Property, )
+BASE_CLASSES[activity.Simulation] = (activity.NumericalActivity, activity.Activity, )
 BASE_CLASSES[activity.DownscalingSimulation] = (activity.NumericalActivity, activity.Activity, )
-BASE_CLASSES[activity.SpatioTemporalConstraint] = (activity.NumericalRequirement, )
+BASE_CLASSES[data.DataStorageFile] = (data.DataStorage, )
+BASE_CLASSES[software.ModelComponent] = (software.Component, shared.DataSource, )
+BASE_CLASSES[software.ComponentProperty] = (shared.DataSource, )
+BASE_CLASSES[activity.OutputRequirement] = (activity.NumericalRequirement, )
+BASE_CLASSES[shared.DocRelationship] = (shared.Relationship, )
+BASE_CLASSES[activity.PhysicalModification] = (activity.Conformance, )
+BASE_CLASSES[activity.InitialCondition] = (activity.NumericalRequirement, )
+BASE_CLASSES[shared.ClosedDateRange] = (shared.DateRange, )
+BASE_CLASSES[shared.OpenDateRange] = (shared.DateRange, )
+BASE_CLASSES[activity.LateralBoundaryCondition] = (activity.NumericalRequirement, )
 
 # Classes with base classes.
 BASE_CLASSED = tuple(BASE_CLASSES.keys())
 
 # Sub classes.
 SUB_CLASSES = defaultdict(tuple)
+SUB_CLASSES[shared.Calendar] = (
+    shared.PerpetualPeriod,
+    shared.RealCalendar,
+    shared.Daily360,
+    )
 SUB_CLASSES[shared.DataSource] = (
     data.DataContent,
     data.DataObject,
-    software.ComponentProperty,
     software.Component,
+    software.ComponentProperty,
     software.ModelComponent,
     software.ProcessorComponent,
     software.StatisticalModelComponent,
+    )
+SUB_CLASSES[activity.NumericalActivity] = (
+    activity.Ensemble,
+    activity.Simulation,
+    activity.EnsembleMember,
+    activity.DownscalingSimulation,
+    activity.SimulationComposite,
+    activity.SimulationRun,
+    )
+SUB_CLASSES[data.DataStorage] = (
+    data.DataStorageIp,
+    data.DataStorageDb,
+    data.DataStorageFile,
+    )
+SUB_CLASSES[shared.DateRange] = (
+    shared.ClosedDateRange,
+    shared.OpenDateRange,
     )
 SUB_CLASSES[shared.Relationship] = (
     activity.SimulationRelationship,
     activity.ExperimentRelationship,
     shared.DocRelationship,
+    )
+SUB_CLASSES[activity.Experiment] = (
+    activity.NumericalExperiment,
     )
 SUB_CLASSES[shared.Property] = (
     data.DataProperty,
@@ -1868,8 +1893,27 @@ SUB_CLASSES[shared.Property] = (
     grids.GridProperty,
     shared.ChangeProperty,
     )
+SUB_CLASSES[software.Component] = (
+    software.ModelComponent,
+    software.ProcessorComponent,
+    software.StatisticalModelComponent,
+    )
+SUB_CLASSES[activity.Simulation] = (
+    activity.SimulationComposite,
+    activity.SimulationRun,
+    )
+SUB_CLASSES[activity.NumericalRequirement] = (
+    activity.OutputRequirement,
+    activity.BoundaryCondition,
+    activity.InitialCondition,
+    activity.LateralBoundaryCondition,
+    activity.SpatioTemporalConstraint,
+    )
 SUB_CLASSES[grids.CoordinateList] = (
     grids.VerticalCoordinateList,
+    )
+SUB_CLASSES[activity.Conformance] = (
+    activity.PhysicalModification,
     )
 SUB_CLASSES[activity.Activity] = (
     activity.MeasurementCampaign,
@@ -1882,50 +1926,6 @@ SUB_CLASSES[activity.Activity] = (
     activity.DownscalingSimulation,
     activity.SimulationComposite,
     activity.SimulationRun,
-    )
-SUB_CLASSES[activity.Experiment] = (
-    activity.NumericalExperiment,
-    )
-SUB_CLASSES[shared.Calendar] = (
-    shared.PerpetualPeriod,
-    shared.RealCalendar,
-    shared.Daily360,
-    )
-SUB_CLASSES[activity.NumericalActivity] = (
-    activity.Ensemble,
-    activity.Simulation,
-    activity.EnsembleMember,
-    activity.DownscalingSimulation,
-    activity.SimulationComposite,
-    activity.SimulationRun,
-    )
-SUB_CLASSES[activity.Simulation] = (
-    activity.SimulationComposite,
-    activity.SimulationRun,
-    )
-SUB_CLASSES[data.DataStorage] = (
-    data.DataStorageIp,
-    data.DataStorageDb,
-    data.DataStorageFile,
-    )
-SUB_CLASSES[software.Component] = (
-    software.ModelComponent,
-    software.ProcessorComponent,
-    software.StatisticalModelComponent,
-    )
-SUB_CLASSES[activity.NumericalRequirement] = (
-    activity.OutputRequirement,
-    activity.BoundaryCondition,
-    activity.InitialCondition,
-    activity.LateralBoundaryCondition,
-    activity.SpatioTemporalConstraint,
-    )
-SUB_CLASSES[activity.Conformance] = (
-    activity.PhysicalModification,
-    )
-SUB_CLASSES[shared.DateRange] = (
-    shared.ClosedDateRange,
-    shared.OpenDateRange,
     )
 
 # Classes that have been sub classed.
@@ -1944,631 +1944,15 @@ CONSTRAINTS = {
     # Classes.
     # ------------------------------------------------
 
-    shared.Relationship: (
-
-        ('direction', 'type', unicode),
-        ('description', 'type', unicode),
-
-        ('direction', 'cardinality', "1.1"),
-        ('description', 'cardinality', "0.1"),
-
-    ),
-    software.Deployment: (
-
-        ('executable_arguments', 'type', unicode),
-        ('description', 'type', unicode),
-        ('parallelisation', 'type', software.Parallelisation),
-        ('deployment_date', 'type', datetime.datetime),
-        ('platform', 'type', shared.Platform),
-        ('executable_name', 'type', unicode),
-
-        ('executable_arguments', 'cardinality', "0.N"),
-        ('description', 'cardinality', "0.1"),
-        ('parallelisation', 'cardinality', "0.1"),
-        ('deployment_date', 'cardinality', "0.1"),
-        ('platform', 'cardinality', "0.1"),
-        ('executable_name', 'cardinality', "0.1"),
-
-    ),
-    shared.DocRelationshipTarget: (
-
-        ('reference', 'type', shared.DocReference),
-
-        ('reference', 'cardinality', "0.1"),
-
-    ),
-    data.DataStorage: (
-
-        ('size', 'type', int),
-        ('location', 'type', unicode),
-        ('modification_date', 'type', datetime.datetime),
-        ('format', 'type', unicode),
-
-        ('size', 'cardinality', "0.1"),
-        ('location', 'cardinality', "0.1"),
-        ('modification_date', 'cardinality', "0.1"),
-        ('format', 'cardinality', "0.1"),
-
-    ),
-    grids.VerticalCoordinateList: (
-
-        ('has_constant_offset', 'type', bool),
-        ('form', 'type', unicode),
-        ('length', 'type', int),
-        ('type', 'type', unicode),
-        ('properties', 'type', grids.GridProperty),
-        ('uom', 'type', unicode),
-
-        ('has_constant_offset', 'cardinality', "0.1"),
-        ('form', 'cardinality', "0.1"),
-        ('length', 'cardinality', "0.1"),
-        ('type', 'cardinality', "0.1"),
-        ('properties', 'cardinality', "0.N"),
-        ('uom', 'cardinality', "0.1"),
-
-    ),
-    software.Rank: (
-
-        ('max', 'type', int),
-        ('value', 'type', int),
-        ('increment', 'type', int),
-        ('min', 'type', int),
-
-        ('max', 'cardinality', "0.1"),
-        ('value', 'cardinality', "0.1"),
-        ('increment', 'cardinality', "0.1"),
-        ('min', 'cardinality', "0.1"),
-
-    ),
-    data.DataContent: (
-
-        ('topic', 'type', data.DataTopic),
-        ('frequency', 'type', unicode),
-        ('purpose', 'type', unicode),
-        ('aggregation', 'type', unicode),
-
-        ('topic', 'cardinality', "1.1"),
-        ('frequency', 'cardinality', "0.1"),
-        ('purpose', 'cardinality', "0.1"),
-        ('aggregation', 'cardinality', "0.1"),
-
-    ),
-    shared.PerpetualPeriod: (
-
-        ('range', 'type', shared.DateRange),
-        ('length', 'type', int),
-        ('description', 'type', unicode),
-
-        ('range', 'cardinality', "0.1"),
-        ('length', 'cardinality', "0.1"),
-        ('description', 'cardinality', "0.1"),
-
-    ),
-    quality.Evaluation: (
-
-        ('description', 'type', unicode),
-        ('specification_hyperlink', 'type', unicode),
-        ('specification', 'type', unicode),
-        ('title', 'type', unicode),
-        ('did_pass', 'type', bool),
-        ('type_hyperlink', 'type', unicode),
-        ('date', 'type', datetime.datetime),
-        ('type', 'type', unicode),
-        ('explanation', 'type', unicode),
-
-        ('description', 'cardinality', "0.1"),
-        ('specification_hyperlink', 'cardinality', "0.1"),
-        ('specification', 'cardinality', "0.1"),
-        ('title', 'cardinality', "0.1"),
-        ('did_pass', 'cardinality', "0.1"),
-        ('type_hyperlink', 'cardinality', "0.1"),
-        ('date', 'cardinality', "0.1"),
-        ('type', 'cardinality', "0.1"),
-        ('explanation', 'cardinality', "0.1"),
-
-    ),
-    shared.ChangeProperty: (
-
-        ('id', 'type', unicode),
-        ('name', 'type', unicode),
-        ('value', 'type', unicode),
-        ('description', 'type', unicode),
-
-        ('id', 'cardinality', "0.1"),
-        ('name', 'cardinality', "0.1"),
-        ('value', 'cardinality', "0.1"),
-        ('description', 'cardinality', "0.1"),
-
-    ),
-    software.TimeLag: (
-
-        ('units', 'type', unicode),
-        ('value', 'type', int),
-
-        ('units', 'cardinality', "0.1"),
-        ('value', 'cardinality', "0.1"),
-
-    ),
     shared.Calendar: (
 
-        ('range', 'type', shared.DateRange),
         ('length', 'type', int),
-        ('description', 'type', unicode),
-
-        ('range', 'cardinality', "0.1"),
-        ('length', 'cardinality', "0.1"),
-        ('description', 'cardinality', "0.1"),
-
-    ),
-    software.CouplingEndpoint: (
-
-        ('instance_id', 'type', unicode),
-        ('data_source', 'type', shared.DataSource),
-        ('properties', 'type', software.CouplingProperty),
-
-        ('instance_id', 'cardinality', "0.1"),
-        ('data_source', 'cardinality', "0.1"),
-        ('properties', 'cardinality', "0.N"),
-
-    ),
-    grids.GridTileResolutionType: (
-
-        ('description', 'type', unicode),
-        ('properties', 'type', grids.GridProperty),
-
-        ('description', 'cardinality', "0.1"),
-        ('properties', 'cardinality', "0.N"),
-
-    ),
-    shared.RealCalendar: (
-
         ('range', 'type', shared.DateRange),
-        ('length', 'type', int),
         ('description', 'type', unicode),
 
-        ('range', 'cardinality', "0.1"),
         ('length', 'cardinality', "0.1"),
+        ('range', 'cardinality', "0.1"),
         ('description', 'cardinality', "0.1"),
-
-    ),
-    activity.LateralBoundaryCondition: (
-
-        ('description', 'type', unicode),
-        ('options', 'type', activity.NumericalRequirementOption),
-        ('source', 'type', shared.DataSource),
-        ('requirement_type', 'type', unicode),
-        ('id', 'type', unicode),
-        ('name', 'type', unicode),
-
-        ('description', 'cardinality', "0.1"),
-        ('options', 'cardinality', "0.N"),
-        ('source', 'cardinality', "0.1"),
-        ('requirement_type', 'cardinality', "1.1"),
-        ('id', 'cardinality', "0.1"),
-        ('name', 'cardinality', "1.1"),
-
-        ('requirement_type', 'constant', "lateralBoundaryCondition"),
-    ),
-    activity.InitialCondition: (
-
-        ('description', 'type', unicode),
-        ('options', 'type', activity.NumericalRequirementOption),
-        ('source', 'type', shared.DataSource),
-        ('requirement_type', 'type', unicode),
-        ('id', 'type', unicode),
-        ('name', 'type', unicode),
-
-        ('description', 'cardinality', "0.1"),
-        ('options', 'cardinality', "0.N"),
-        ('source', 'cardinality', "0.1"),
-        ('requirement_type', 'cardinality', "1.1"),
-        ('id', 'cardinality', "0.1"),
-        ('name', 'cardinality', "1.1"),
-
-        ('requirement_type', 'constant', "initialCondition"),
-    ),
-    data.DataHierarchyLevel: (
-
-        ('is_open', 'type', bool),
-        ('name', 'type', unicode),
-        ('value', 'type', unicode),
-
-        ('is_open', 'cardinality', "0.1"),
-        ('name', 'cardinality', "0.1"),
-        ('value', 'cardinality', "0.1"),
-
-    ),
-    shared.Platform: (
-
-        ('description', 'type', unicode),
-        ('short_name', 'type', unicode),
-        ('contacts', 'type', shared.ResponsibleParty),
-        ('long_name', 'type', unicode),
-        ('meta', 'type', shared.DocMetaInfo),
-        ('units', 'type', shared.MachineCompilerUnit),
-
-        ('description', 'cardinality', "0.1"),
-        ('short_name', 'cardinality', "1.1"),
-        ('contacts', 'cardinality', "0.N"),
-        ('long_name', 'cardinality', "0.1"),
-        ('meta', 'cardinality', "1.1"),
-        ('units', 'cardinality', "1.N"),
-
-    ),
-    data.DataProperty: (
-
-        ('name', 'type', unicode),
-        ('value', 'type', unicode),
-        ('description', 'type', unicode),
-
-        ('name', 'cardinality', "0.1"),
-        ('value', 'cardinality', "0.1"),
-        ('description', 'cardinality', "0.1"),
-
-    ),
-    activity.NumericalActivity: (
-
-        ('funding_sources', 'type', unicode),
-        ('rationales', 'type', unicode),
-        ('description', 'type', unicode),
-        ('short_name', 'type', unicode),
-        ('responsible_parties', 'type', shared.ResponsibleParty),
-        ('long_name', 'type', unicode),
-        ('supports', 'type', activity.Experiment),
-        ('projects', 'type', unicode),
-
-        ('funding_sources', 'cardinality', "0.N"),
-        ('rationales', 'cardinality', "0.N"),
-        ('description', 'cardinality', "0.1"),
-        ('short_name', 'cardinality', "1.1"),
-        ('responsible_parties', 'cardinality', "0.N"),
-        ('long_name', 'cardinality', "0.1"),
-        ('supports', 'cardinality', "0.N"),
-        ('projects', 'cardinality', "0.N"),
-
-    ),
-    shared.OpenDateRange: (
-
-        ('duration', 'type', unicode),
-        ('start', 'type', datetime.datetime),
-        ('end', 'type', datetime.datetime),
-
-        ('duration', 'cardinality', "0.1"),
-        ('start', 'cardinality', "0.1"),
-        ('end', 'cardinality', "0.1"),
-
-    ),
-    software.Composition: (
-
-        ('couplings', 'type', unicode),
-        ('description', 'type', unicode),
-
-        ('couplings', 'cardinality', "0.N"),
-        ('description', 'cardinality', "0.1"),
-
-    ),
-    software.Coupling: (
-
-        ('transformers', 'type', software.ProcessorComponent),
-        ('target', 'type', software.CouplingEndpoint),
-        ('type', 'type', unicode),
-        ('time_transformation', 'type', software.TimeTransformation),
-        ('description', 'type', unicode),
-        ('connections', 'type', software.Connection),
-        ('sources', 'type', software.CouplingEndpoint),
-        ('spatial_regriddings', 'type', software.SpatialRegridding),
-        ('purpose', 'type', unicode),
-        ('time_profile', 'type', software.Timing),
-        ('is_fully_specified', 'type', bool),
-        ('properties', 'type', software.CouplingProperty),
-        ('time_lag', 'type', software.TimeLag),
-        ('priming', 'type', shared.DataSource),
-
-        ('transformers', 'cardinality', "0.N"),
-        ('target', 'cardinality', "1.1"),
-        ('type', 'cardinality', "0.1"),
-        ('time_transformation', 'cardinality', "0.1"),
-        ('description', 'cardinality', "0.1"),
-        ('connections', 'cardinality', "0.N"),
-        ('sources', 'cardinality', "1.N"),
-        ('spatial_regriddings', 'cardinality', "0.N"),
-        ('purpose', 'cardinality', "1.1"),
-        ('time_profile', 'cardinality', "0.1"),
-        ('is_fully_specified', 'cardinality', "1.1"),
-        ('properties', 'cardinality', "0.N"),
-        ('time_lag', 'cardinality', "0.1"),
-        ('priming', 'cardinality', "0.1"),
-
-    ),
-    data.DataStorageIp: (
-
-        ('protocol', 'type', unicode),
-        ('modification_date', 'type', datetime.datetime),
-        ('format', 'type', unicode),
-        ('file_name', 'type', unicode),
-        ('host', 'type', unicode),
-        ('location', 'type', unicode),
-        ('path', 'type', unicode),
-        ('size', 'type', int),
-
-        ('protocol', 'cardinality', "0.1"),
-        ('modification_date', 'cardinality', "0.1"),
-        ('format', 'cardinality', "0.1"),
-        ('file_name', 'cardinality', "0.1"),
-        ('host', 'cardinality', "0.1"),
-        ('location', 'cardinality', "0.1"),
-        ('path', 'cardinality', "0.1"),
-        ('size', 'cardinality', "0.1"),
-
-    ),
-    shared.Property: (
-
-        ('name', 'type', unicode),
-        ('value', 'type', unicode),
-
-        ('name', 'cardinality', "0.1"),
-        ('value', 'cardinality', "0.1"),
-
-    ),
-    data.DataObject: (
-
-        ('restriction', 'type', data.DataRestriction),
-        ('source_simulation', 'type', unicode),
-        ('description', 'type', unicode),
-        ('keyword', 'type', unicode),
-        ('hierarchy_level', 'type', data.DataHierarchyLevel),
-        ('acronym', 'type', unicode),
-        ('child_object', 'type', data.DataObject),
-        ('storage', 'type', data.DataStorage),
-        ('citations', 'type', shared.Citation),
-        ('content', 'type', data.DataContent),
-        ('geometry_model', 'type', unicode),
-        ('meta', 'type', shared.DocMetaInfo),
-        ('purpose', 'type', unicode),
-        ('extent', 'type', data.DataExtent),
-        ('distribution', 'type', data.DataDistribution),
-        ('parent_object', 'type', data.DataObject),
-        ('properties', 'type', data.DataProperty),
-        ('data_status', 'type', unicode),
-
-        ('restriction', 'cardinality', "0.N"),
-        ('source_simulation', 'cardinality', "0.1"),
-        ('description', 'cardinality', "0.1"),
-        ('keyword', 'cardinality', "0.1"),
-        ('hierarchy_level', 'cardinality', "0.1"),
-        ('acronym', 'cardinality', "0.1"),
-        ('child_object', 'cardinality', "0.N"),
-        ('storage', 'cardinality', "0.N"),
-        ('citations', 'cardinality', "0.N"),
-        ('content', 'cardinality', "0.N"),
-        ('geometry_model', 'cardinality', "0.1"),
-        ('meta', 'cardinality', "1.1"),
-        ('purpose', 'cardinality', "0.1"),
-        ('extent', 'cardinality', "0.1"),
-        ('distribution', 'cardinality', "0.1"),
-        ('parent_object', 'cardinality', "0.1"),
-        ('properties', 'cardinality', "0.N"),
-        ('data_status', 'cardinality', "0.1"),
-
-    ),
-    shared.Compiler: (
-
-        ('name', 'type', unicode),
-        ('language', 'type', unicode),
-        ('version', 'type', unicode),
-        ('environment_variables', 'type', unicode),
-        ('type', 'type', unicode),
-        ('options', 'type', unicode),
-
-        ('name', 'cardinality', "1.1"),
-        ('language', 'cardinality', "0.1"),
-        ('version', 'cardinality', "1.1"),
-        ('environment_variables', 'cardinality', "0.1"),
-        ('type', 'cardinality', "0.1"),
-        ('options', 'cardinality', "0.1"),
-
-    ),
-    activity.NumericalExperiment: (
-
-        ('funding_sources', 'type', unicode),
-        ('rationales', 'type', unicode),
-        ('generates', 'type', unicode),
-        ('short_name', 'type', unicode),
-        ('long_name', 'type', unicode),
-        ('supports', 'type', unicode),
-        ('responsible_parties', 'type', shared.ResponsibleParty),
-        ('measurement_campaigns', 'type', activity.MeasurementCampaign),
-        ('meta', 'type', shared.DocMetaInfo),
-        ('experiment_id', 'type', unicode),
-        ('requirements', 'type', activity.NumericalRequirement),
-        ('requires', 'type', activity.NumericalActivity),
-        ('projects', 'type', unicode),
-        ('description', 'type', unicode),
-
-        ('funding_sources', 'cardinality', "0.N"),
-        ('rationales', 'cardinality', "0.N"),
-        ('generates', 'cardinality', "0.N"),
-        ('short_name', 'cardinality', "1.1"),
-        ('long_name', 'cardinality', "0.1"),
-        ('supports', 'cardinality', "0.N"),
-        ('responsible_parties', 'cardinality', "0.N"),
-        ('measurement_campaigns', 'cardinality', "0.N"),
-        ('meta', 'cardinality', "1.1"),
-        ('experiment_id', 'cardinality', "0.1"),
-        ('requirements', 'cardinality', "0.N"),
-        ('requires', 'cardinality', "0.N"),
-        ('projects', 'cardinality', "0.N"),
-        ('description', 'cardinality', "0.1"),
-
-    ),
-    activity.MeasurementCampaign: (
-
-        ('duration', 'type', int),
-        ('funding_sources', 'type', unicode),
-        ('rationales', 'type', unicode),
-        ('projects', 'type', unicode),
-        ('responsible_parties', 'type', shared.ResponsibleParty),
-
-        ('duration', 'cardinality', "1.1"),
-        ('funding_sources', 'cardinality', "0.N"),
-        ('rationales', 'cardinality', "0.N"),
-        ('projects', 'cardinality', "0.N"),
-        ('responsible_parties', 'cardinality', "0.N"),
-
-    ),
-    shared.DocReference: (
-
-        ('description', 'type', unicode),
-        ('url', 'type', unicode),
-        ('external_id', 'type', unicode),
-        ('version', 'type', int),
-        ('type', 'type', unicode),
-        ('changes', 'type', shared.Change),
-        ('id', 'type', uuid.UUID),
-        ('name', 'type', unicode),
-
-        ('description', 'cardinality', "0.1"),
-        ('url', 'cardinality', "0.1"),
-        ('external_id', 'cardinality', "0.1"),
-        ('version', 'cardinality', "0.1"),
-        ('type', 'cardinality', "0.1"),
-        ('changes', 'cardinality', "0.N"),
-        ('id', 'cardinality', "0.1"),
-        ('name', 'cardinality', "0.1"),
-
-    ),
-    grids.GridSpec: (
-
-        ('esm_exchange_grids', 'type', grids.GridMosaic),
-        ('meta', 'type', shared.DocMetaInfo),
-        ('esm_model_grids', 'type', grids.GridMosaic),
-
-        ('esm_exchange_grids', 'cardinality', "0.N"),
-        ('meta', 'cardinality', "1.1"),
-        ('esm_model_grids', 'cardinality', "0.N"),
-
-    ),
-    activity.Experiment: (
-
-        ('funding_sources', 'type', unicode),
-        ('rationales', 'type', unicode),
-        ('generates', 'type', unicode),
-        ('requires', 'type', activity.NumericalActivity),
-        ('responsible_parties', 'type', shared.ResponsibleParty),
-        ('measurement_campaigns', 'type', activity.MeasurementCampaign),
-        ('supports', 'type', unicode),
-        ('projects', 'type', unicode),
-
-        ('funding_sources', 'cardinality', "0.N"),
-        ('rationales', 'cardinality', "0.N"),
-        ('generates', 'cardinality', "0.N"),
-        ('requires', 'cardinality', "0.N"),
-        ('responsible_parties', 'cardinality', "0.N"),
-        ('measurement_campaigns', 'cardinality', "0.N"),
-        ('supports', 'cardinality', "0.N"),
-        ('projects', 'cardinality', "0.N"),
-
-    ),
-    software.Timing: (
-
-        ('units', 'type', unicode),
-        ('end', 'type', datetime.datetime),
-        ('rate', 'type', int),
-        ('is_variable_rate', 'type', bool),
-        ('start', 'type', datetime.datetime),
-
-        ('units', 'cardinality', "0.1"),
-        ('end', 'cardinality', "0.1"),
-        ('rate', 'cardinality', "0.1"),
-        ('is_variable_rate', 'cardinality', "0.1"),
-        ('start', 'cardinality', "0.1"),
-
-    ),
-    shared.StandardName: (
-
-        ('is_open', 'type', bool),
-        ('value', 'type', unicode),
-        ('standards', 'type', shared.Standard),
-
-        ('is_open', 'cardinality', "1.1"),
-        ('value', 'cardinality', "1.1"),
-        ('standards', 'cardinality', "0.N"),
-
-    ),
-    shared.Change: (
-
-        ('name', 'type', unicode),
-        ('author', 'type', shared.ResponsibleParty),
-        ('details', 'type', shared.ChangeProperty),
-        ('date', 'type', datetime.datetime),
-        ('type', 'type', unicode),
-        ('description', 'type', unicode),
-
-        ('name', 'cardinality', "0.1"),
-        ('author', 'cardinality', "0.1"),
-        ('details', 'cardinality', "1.N"),
-        ('date', 'cardinality', "0.1"),
-        ('type', 'cardinality', "0.1"),
-        ('description', 'cardinality', "0.1"),
-
-    ),
-    software.StatisticalModelComponent: (
-
-        ('funding_sources', 'type', unicode),
-        ('version', 'type', unicode),
-        ('long_name', 'type', unicode),
-        ('meta', 'type', shared.DocMetaInfo),
-        ('responsible_parties', 'type', shared.ResponsibleParty),
-        ('short_name', 'type', unicode),
-        ('previous_version', 'type', unicode),
-        ('is_embedded', 'type', bool),
-        ('deployments', 'type', software.Deployment),
-        ('citations', 'type', shared.Citation),
-        ('type', 'type', unicode),
-        ('composition', 'type', software.Composition),
-        ('coupling_framework', 'type', unicode),
-        ('description', 'type', unicode),
-        ('parent', 'type', software.Component),
-        ('sub_components', 'type', software.Component),
-        ('dependencies', 'type', software.EntryPoint),
-        ('grid', 'type', grids.GridSpec),
-        ('purpose', 'type', unicode),
-        ('online_resource', 'type', unicode),
-        ('timing', 'type', software.Timing),
-        ('properties', 'type', software.ComponentProperty),
-        ('types', 'type', unicode),
-        ('language', 'type', software.ComponentLanguage),
-        ('license', 'type', shared.License),
-        ('release_date', 'type', datetime.datetime),
-        ('code_access', 'type', unicode),
-
-        ('funding_sources', 'cardinality', "0.N"),
-        ('version', 'cardinality', "0.1"),
-        ('long_name', 'cardinality', "0.1"),
-        ('meta', 'cardinality', "1.1"),
-        ('responsible_parties', 'cardinality', "0.N"),
-        ('short_name', 'cardinality', "1.1"),
-        ('previous_version', 'cardinality', "0.1"),
-        ('is_embedded', 'cardinality', "0.1"),
-        ('deployments', 'cardinality', "0.N"),
-        ('citations', 'cardinality', "0.N"),
-        ('type', 'cardinality', "0.1"),
-        ('composition', 'cardinality', "0.1"),
-        ('coupling_framework', 'cardinality', "0.1"),
-        ('description', 'cardinality', "0.1"),
-        ('parent', 'cardinality', "0.1"),
-        ('sub_components', 'cardinality', "0.N"),
-        ('dependencies', 'cardinality', "0.N"),
-        ('grid', 'cardinality', "0.1"),
-        ('purpose', 'cardinality', "0.1"),
-        ('online_resource', 'cardinality', "0.1"),
-        ('timing', 'cardinality', "0.1"),
-        ('properties', 'cardinality', "0.N"),
-        ('types', 'cardinality', "1.N"),
-        ('language', 'cardinality', "0.1"),
-        ('license', 'cardinality', "0.1"),
-        ('release_date', 'cardinality', "0.1"),
-        ('code_access', 'cardinality', "0.1"),
 
     ),
     activity.ExperimentRelationship: (
@@ -2584,257 +1968,26 @@ CONSTRAINTS = {
         ('target', 'cardinality', "1.1"),
 
     ),
-    quality.CimQuality: (
+    data.DataStorage: (
 
-        ('meta', 'type', shared.DocMetaInfo),
-        ('reports', 'type', quality.Report),
-
-        ('meta', 'cardinality', "1.1"),
-        ('reports', 'cardinality', "0.N"),
-
-    ),
-    activity.Conformance: (
-
-        ('requirements', 'type', activity.NumericalRequirement),
-        ('description', 'type', unicode),
-        ('sources', 'type', shared.DataSource),
-        ('frequency', 'type', unicode),
-        ('is_conformant', 'type', bool),
-        ('type', 'type', unicode),
-
-        ('requirements', 'cardinality', "0.N"),
-        ('description', 'cardinality', "0.1"),
-        ('sources', 'cardinality', "0.N"),
-        ('frequency', 'cardinality', "0.1"),
-        ('is_conformant', 'cardinality', "1.1"),
-        ('type', 'cardinality', "0.1"),
-
-    ),
-    software.SpatialRegridding: (
-
-        ('user_method', 'type', software.SpatialRegriddingUserMethod),
-        ('properties', 'type', software.SpatialRegriddingProperty),
-        ('standard_method', 'type', unicode),
-        ('dimension', 'type', unicode),
-
-        ('user_method', 'cardinality', "0.1"),
-        ('properties', 'cardinality', "0.N"),
-        ('standard_method', 'cardinality', "0.1"),
-        ('dimension', 'cardinality', "0.1"),
-
-    ),
-    shared.ResponsibleParty: (
-
-        ('url', 'type', unicode),
-        ('organisation_name', 'type', unicode),
-        ('abbreviation', 'type', unicode),
-        ('individual_name', 'type', unicode),
-        ('role', 'type', unicode),
-        ('address', 'type', unicode),
-        ('email', 'type', unicode),
-
-        ('url', 'cardinality', "0.1"),
-        ('organisation_name', 'cardinality', "0.1"),
-        ('abbreviation', 'cardinality', "0.1"),
-        ('individual_name', 'cardinality', "0.1"),
-        ('role', 'cardinality', "0.1"),
-        ('address', 'cardinality', "0.1"),
-        ('email', 'cardinality', "0.1"),
-
-    ),
-    activity.BoundaryCondition: (
-
-        ('description', 'type', unicode),
-        ('options', 'type', activity.NumericalRequirementOption),
-        ('source', 'type', shared.DataSource),
-        ('requirement_type', 'type', unicode),
-        ('id', 'type', unicode),
-        ('name', 'type', unicode),
-
-        ('description', 'cardinality', "0.1"),
-        ('options', 'cardinality', "0.N"),
-        ('source', 'cardinality', "0.1"),
-        ('requirement_type', 'cardinality', "1.1"),
-        ('id', 'cardinality', "0.1"),
-        ('name', 'cardinality', "1.1"),
-
-        ('requirement_type', 'constant', "boundaryCondition"),
-    ),
-    shared.Citation: (
-
-        ('alternative_title', 'type', unicode),
-        ('date_type', 'type', unicode),
-        ('collective_title', 'type', unicode),
-        ('role', 'type', unicode),
+        ('size', 'type', int),
         ('location', 'type', unicode),
-        ('date', 'type', datetime.datetime),
-        ('title', 'type', unicode),
-        ('type', 'type', unicode),
-        ('organisation', 'type', unicode),
+        ('modification_date', 'type', datetime.datetime),
+        ('format', 'type', unicode),
 
-        ('alternative_title', 'cardinality', "0.1"),
-        ('date_type', 'cardinality', "0.1"),
-        ('collective_title', 'cardinality', "0.1"),
-        ('role', 'cardinality', "0.1"),
+        ('size', 'cardinality', "0.1"),
         ('location', 'cardinality', "0.1"),
-        ('date', 'cardinality', "0.1"),
-        ('title', 'cardinality', "0.1"),
-        ('type', 'cardinality', "0.1"),
-        ('organisation', 'cardinality', "0.1"),
+        ('modification_date', 'cardinality', "0.1"),
+        ('format', 'cardinality', "0.1"),
 
     ),
-    misc.DocumentSet: (
+    software.CouplingProperty: (
 
-        ('ensembles', 'type', activity.Ensemble),
-        ('grids', 'type', grids.GridSpec),
-        ('simulation', 'type', activity.SimulationRun),
-        ('platform', 'type', shared.Platform),
-        ('experiment', 'type', activity.NumericalExperiment),
-        ('meta', 'type', shared.DocMetaInfo),
-        ('model', 'type', software.ModelComponent),
-        ('data', 'type', data.DataObject),
+        ('name', 'type', unicode),
+        ('value', 'type', unicode),
 
-        ('ensembles', 'cardinality', "0.N"),
-        ('grids', 'cardinality', "0.N"),
-        ('simulation', 'cardinality', "0.1"),
-        ('platform', 'cardinality', "0.1"),
-        ('experiment', 'cardinality', "0.1"),
-        ('meta', 'cardinality', "1.1"),
-        ('model', 'cardinality', "0.1"),
-        ('data', 'cardinality', "0.N"),
-
-    ),
-    activity.Ensemble: (
-
-        ('funding_sources', 'type', unicode),
-        ('rationales', 'type', unicode),
-        ('description', 'type', unicode),
-        ('short_name', 'type', unicode),
-        ('outputs', 'type', shared.DataSource),
-        ('responsible_parties', 'type', shared.ResponsibleParty),
-        ('long_name', 'type', unicode),
-        ('meta', 'type', shared.DocMetaInfo),
-        ('types', 'type', unicode),
-        ('members', 'type', activity.EnsembleMember),
-        ('supports', 'type', activity.Experiment),
-        ('projects', 'type', unicode),
-
-        ('funding_sources', 'cardinality', "0.N"),
-        ('rationales', 'cardinality', "0.N"),
-        ('description', 'cardinality', "0.1"),
-        ('short_name', 'cardinality', "1.1"),
-        ('outputs', 'cardinality', "0.N"),
-        ('responsible_parties', 'cardinality', "0.N"),
-        ('long_name', 'cardinality', "0.1"),
-        ('meta', 'cardinality', "1.1"),
-        ('types', 'cardinality', "1.N"),
-        ('members', 'cardinality', "1.N"),
-        ('supports', 'cardinality', "0.N"),
-        ('projects', 'cardinality', "0.N"),
-
-    ),
-    data.DataExtentGeographical: (
-
-        ('west', 'type', float),
-        ('east', 'type', float),
-        ('north', 'type', float),
-        ('south', 'type', float),
-
-        ('west', 'cardinality', "0.1"),
-        ('east', 'cardinality', "0.1"),
-        ('north', 'cardinality', "0.1"),
-        ('south', 'cardinality', "0.1"),
-
-    ),
-    grids.GridMosaic: (
-
-        ('mosaic_count', 'type', int),
-        ('is_leaf', 'type', bool),
-        ('tiles', 'type', grids.GridTile),
-        ('description', 'type', unicode),
-        ('short_name', 'type', unicode),
-        ('mosaics', 'type', grids.GridMosaic),
-        ('tile_count', 'type', int),
-        ('long_name', 'type', unicode),
-        ('mnemonic', 'type', unicode),
-        ('citations', 'type', shared.Citation),
-        ('extent', 'type', grids.GridExtent),
-        ('has_congruent_tiles', 'type', bool),
-        ('type', 'type', unicode),
-        ('id', 'type', unicode),
-
-        ('mosaic_count', 'cardinality', "0.1"),
-        ('is_leaf', 'cardinality', "1.1"),
-        ('tiles', 'cardinality', "0.N"),
-        ('description', 'cardinality', "0.1"),
-        ('short_name', 'cardinality', "1.1"),
-        ('mosaics', 'cardinality', "0.N"),
-        ('tile_count', 'cardinality', "0.1"),
-        ('long_name', 'cardinality', "0.1"),
-        ('mnemonic', 'cardinality', "0.1"),
-        ('citations', 'cardinality', "0.N"),
-        ('extent', 'cardinality', "0.1"),
-        ('has_congruent_tiles', 'cardinality', "0.1"),
-        ('type', 'cardinality', "1.1"),
-        ('id', 'cardinality', "1.1"),
-
-    ),
-    activity.EnsembleMember: (
-
-        ('ensemble_ids', 'type', shared.StandardName),
-        ('funding_sources', 'type', unicode),
-        ('rationales', 'type', unicode),
-        ('description', 'type', unicode),
-        ('short_name', 'type', unicode),
-        ('responsible_parties', 'type', shared.ResponsibleParty),
-        ('simulation', 'type', activity.Simulation),
-        ('long_name', 'type', unicode),
-        ('supports', 'type', activity.Experiment),
-        ('ensemble', 'type', activity.Ensemble),
-        ('projects', 'type', unicode),
-
-        ('ensemble_ids', 'cardinality', "0.N"),
-        ('funding_sources', 'cardinality', "0.N"),
-        ('rationales', 'cardinality', "0.N"),
-        ('description', 'cardinality', "0.1"),
-        ('short_name', 'cardinality', "1.1"),
-        ('responsible_parties', 'cardinality', "0.N"),
-        ('simulation', 'cardinality', "0.1"),
-        ('long_name', 'cardinality', "0.1"),
-        ('supports', 'cardinality', "0.N"),
-        ('ensemble', 'cardinality', "0.1"),
-        ('projects', 'cardinality', "0.N"),
-
-    ),
-    grids.CoordinateList: (
-
-        ('has_constant_offset', 'type', bool),
-        ('length', 'type', int),
-        ('uom', 'type', unicode),
-
-        ('has_constant_offset', 'cardinality', "0.1"),
-        ('length', 'cardinality', "0.1"),
-        ('uom', 'cardinality', "0.1"),
-
-    ),
-    activity.SimulationRelationship: (
-
-        ('direction', 'type', unicode),
-        ('type', 'type', unicode),
-        ('description', 'type', unicode),
-        ('target', 'type', activity.SimulationRelationshipTarget),
-
-        ('direction', 'cardinality', "1.1"),
-        ('type', 'cardinality', "1.1"),
-        ('description', 'cardinality', "0.1"),
-        ('target', 'cardinality', "1.1"),
-
-    ),
-    activity.ExperimentRelationshipTarget: (
-
-        ('numerical_experiment', 'type', activity.NumericalExperiment),
-
-        ('numerical_experiment', 'cardinality', "0.1"),
+        ('name', 'cardinality', "0.1"),
+        ('value', 'cardinality', "0.1"),
 
     ),
     activity.SimulationRun: (
@@ -2886,47 +2039,318 @@ CONSTRAINTS = {
         ('model', 'cardinality', "0.1"),
 
     ),
+    activity.BoundaryCondition: (
+
+        ('description', 'type', unicode),
+        ('options', 'type', activity.NumericalRequirementOption),
+        ('source', 'type', shared.DataSource),
+        ('requirement_type', 'type', unicode),
+        ('id', 'type', unicode),
+        ('name', 'type', unicode),
+
+        ('description', 'cardinality', "0.1"),
+        ('options', 'cardinality', "0.N"),
+        ('source', 'cardinality', "0.1"),
+        ('requirement_type', 'cardinality', "1.1"),
+        ('id', 'cardinality', "0.1"),
+        ('name', 'cardinality', "1.1"),
+
+        ('requirement_type', 'constant', "boundaryCondition"),
+    ),
+    software.EntryPoint: (
+
+        ('name', 'type', unicode),
+
+        ('name', 'cardinality', "0.1"),
+
+    ),
+    software.SpatialRegriddingUserMethod: (
+
+        ('name', 'type', unicode),
+        ('file', 'type', data.DataObject),
+
+        ('name', 'cardinality', "1.1"),
+        ('file', 'cardinality', "0.1"),
+
+    ),
+    activity.SimulationRelationshipTarget: (
+
+        ('target', 'type', unicode),
+        ('simulation', 'type', shared.DocReference),
+
+        ('target', 'cardinality', "0.1"),
+        ('simulation', 'cardinality', "0.1"),
+
+    ),
+    software.ComponentLanguage: (
+
+        ('name', 'type', unicode),
+        ('properties', 'type', software.ComponentLanguageProperty),
+
+        ('name', 'cardinality', "1.1"),
+        ('properties', 'cardinality', "0.N"),
+
+    ),
+    software.Deployment: (
+
+        ('executable_arguments', 'type', unicode),
+        ('description', 'type', unicode),
+        ('parallelisation', 'type', software.Parallelisation),
+        ('deployment_date', 'type', datetime.datetime),
+        ('platform', 'type', shared.Platform),
+        ('executable_name', 'type', unicode),
+
+        ('executable_arguments', 'cardinality', "0.N"),
+        ('description', 'cardinality', "0.1"),
+        ('parallelisation', 'cardinality', "0.1"),
+        ('deployment_date', 'cardinality', "0.1"),
+        ('platform', 'cardinality', "0.1"),
+        ('executable_name', 'cardinality', "0.1"),
+
+    ),
+    grids.GridTileResolutionType: (
+
+        ('description', 'type', unicode),
+        ('properties', 'type', grids.GridProperty),
+
+        ('description', 'cardinality', "0.1"),
+        ('properties', 'cardinality', "0.N"),
+
+    ),
     shared.Daily360: (
 
-        ('range', 'type', shared.DateRange),
         ('length', 'type', int),
+        ('range', 'type', shared.DateRange),
         ('description', 'type', unicode),
 
-        ('range', 'cardinality', "0.1"),
         ('length', 'cardinality', "0.1"),
+        ('range', 'cardinality', "0.1"),
         ('description', 'cardinality', "0.1"),
+
+    ),
+    software.Component: (
+
+        ('funding_sources', 'type', unicode),
+        ('long_name', 'type', unicode),
+        ('responsible_parties', 'type', shared.ResponsibleParty),
+        ('short_name', 'type', unicode),
+        ('previous_version', 'type', unicode),
+        ('citations', 'type', shared.Citation),
+        ('is_embedded', 'type', bool),
+        ('deployments', 'type', software.Deployment),
+        ('version', 'type', unicode),
+        ('composition', 'type', software.Composition),
+        ('coupling_framework', 'type', unicode),
+        ('description', 'type', unicode),
+        ('parent', 'type', software.Component),
+        ('sub_components', 'type', software.Component),
+        ('dependencies', 'type', software.EntryPoint),
+        ('grid', 'type', grids.GridSpec),
+        ('purpose', 'type', unicode),
+        ('online_resource', 'type', unicode),
+        ('properties', 'type', software.ComponentProperty),
+        ('language', 'type', software.ComponentLanguage),
+        ('license', 'type', shared.License),
+        ('release_date', 'type', datetime.datetime),
+        ('code_access', 'type', unicode),
+
+        ('funding_sources', 'cardinality', "0.N"),
+        ('long_name', 'cardinality', "0.1"),
+        ('responsible_parties', 'cardinality', "0.N"),
+        ('short_name', 'cardinality', "1.1"),
+        ('previous_version', 'cardinality', "0.1"),
+        ('citations', 'cardinality', "0.N"),
+        ('is_embedded', 'cardinality', "0.1"),
+        ('deployments', 'cardinality', "0.N"),
+        ('version', 'cardinality', "0.1"),
+        ('composition', 'cardinality', "0.1"),
+        ('coupling_framework', 'cardinality', "0.1"),
+        ('description', 'cardinality', "0.1"),
+        ('parent', 'cardinality', "0.1"),
+        ('sub_components', 'cardinality', "0.N"),
+        ('dependencies', 'cardinality', "0.N"),
+        ('grid', 'cardinality', "0.1"),
+        ('purpose', 'cardinality', "0.1"),
+        ('online_resource', 'cardinality', "0.1"),
+        ('properties', 'cardinality', "0.N"),
+        ('language', 'cardinality', "0.1"),
+        ('license', 'cardinality', "0.1"),
+        ('release_date', 'cardinality', "0.1"),
+        ('code_access', 'cardinality', "0.1"),
+
+    ),
+    shared.DateRange: (
+
+        ('duration', 'type', unicode),
+
+        ('duration', 'cardinality', "0.1"),
+
+    ),
+    data.DataHierarchyLevel: (
+
+        ('is_open', 'type', bool),
+        ('name', 'type', unicode),
+        ('value', 'type', unicode),
+
+        ('is_open', 'cardinality', "0.1"),
+        ('name', 'cardinality', "0.1"),
+        ('value', 'cardinality', "0.1"),
+
+    ),
+    data.DataTopic: (
+
+        ('description', 'type', unicode),
+        ('unit', 'type', unicode),
+        ('name', 'type', unicode),
+
+        ('description', 'cardinality', "0.1"),
+        ('unit', 'cardinality', "0.1"),
+        ('name', 'cardinality', "0.1"),
+
+    ),
+    activity.NumericalActivity: (
+
+        ('funding_sources', 'type', unicode),
+        ('rationales', 'type', unicode),
+        ('description', 'type', unicode),
+        ('short_name', 'type', unicode),
+        ('responsible_parties', 'type', shared.ResponsibleParty),
+        ('long_name', 'type', unicode),
+        ('supports', 'type', activity.Experiment),
+        ('projects', 'type', unicode),
+
+        ('funding_sources', 'cardinality', "0.N"),
+        ('rationales', 'cardinality', "0.N"),
+        ('description', 'cardinality', "0.1"),
+        ('short_name', 'cardinality', "1.1"),
+        ('responsible_parties', 'cardinality', "0.N"),
+        ('long_name', 'cardinality', "0.1"),
+        ('supports', 'cardinality', "0.N"),
+        ('projects', 'cardinality', "0.N"),
+
+    ),
+    activity.EnsembleMember: (
+
+        ('ensemble_ids', 'type', shared.StandardName),
+        ('funding_sources', 'type', unicode),
+        ('rationales', 'type', unicode),
+        ('description', 'type', unicode),
+        ('short_name', 'type', unicode),
+        ('responsible_parties', 'type', shared.ResponsibleParty),
+        ('simulation', 'type', activity.Simulation),
+        ('long_name', 'type', unicode),
+        ('supports', 'type', activity.Experiment),
+        ('ensemble', 'type', activity.Ensemble),
+        ('projects', 'type', unicode),
+
+        ('ensemble_ids', 'cardinality', "0.N"),
+        ('funding_sources', 'cardinality', "0.N"),
+        ('rationales', 'cardinality', "0.N"),
+        ('description', 'cardinality', "0.1"),
+        ('short_name', 'cardinality', "1.1"),
+        ('responsible_parties', 'cardinality', "0.N"),
+        ('simulation', 'cardinality', "0.1"),
+        ('long_name', 'cardinality', "0.1"),
+        ('supports', 'cardinality', "0.N"),
+        ('ensemble', 'cardinality', "0.1"),
+        ('projects', 'cardinality', "0.N"),
 
     ),
     shared.Machine: (
 
         ('processor_type', 'type', unicode),
-        ('interconnect', 'type', unicode),
-        ('name', 'type', unicode),
-        ('cores_per_processor', 'type', int),
-        ('system', 'type', unicode),
         ('vendor', 'type', unicode),
+        ('description', 'type', unicode),
+        ('cores_per_processor', 'type', int),
+        ('interconnect', 'type', unicode),
+        ('system', 'type', unicode),
         ('libraries', 'type', unicode),
         ('operating_system', 'type', unicode),
         ('location', 'type', unicode),
         ('maximum_processors', 'type', int),
         ('type', 'type', unicode),
-        ('description', 'type', unicode),
+        ('name', 'type', unicode),
 
         ('processor_type', 'cardinality', "0.1"),
-        ('interconnect', 'cardinality', "0.1"),
-        ('name', 'cardinality', "1.1"),
-        ('cores_per_processor', 'cardinality', "0.1"),
-        ('system', 'cardinality', "0.1"),
         ('vendor', 'cardinality', "0.1"),
+        ('description', 'cardinality', "0.1"),
+        ('cores_per_processor', 'cardinality', "0.1"),
+        ('interconnect', 'cardinality', "0.1"),
+        ('system', 'cardinality', "0.1"),
         ('libraries', 'cardinality', "0.N"),
         ('operating_system', 'cardinality', "0.1"),
         ('location', 'cardinality', "0.1"),
         ('maximum_processors', 'cardinality', "0.1"),
         ('type', 'cardinality', "0.1"),
-        ('description', 'cardinality', "0.1"),
+        ('name', 'cardinality', "1.1"),
 
     ),
-    software.CouplingProperty: (
+    activity.ExperimentRelationshipTarget: (
+
+        ('numerical_experiment', 'type', activity.NumericalExperiment),
+
+        ('numerical_experiment', 'cardinality', "0.1"),
+
+    ),
+    activity.NumericalRequirementOption: (
+
+        ('id', 'type', unicode),
+        ('sub_options', 'type', activity.NumericalRequirementOption),
+        ('description', 'type', unicode),
+        ('relationship', 'type', unicode),
+        ('name', 'type', unicode),
+
+        ('id', 'cardinality', "0.1"),
+        ('sub_options', 'cardinality', "0.N"),
+        ('description', 'cardinality', "0.1"),
+        ('relationship', 'cardinality', "0.1"),
+        ('name', 'cardinality', "1.1"),
+
+    ),
+    activity.SpatioTemporalConstraint: (
+
+        ('description', 'type', unicode),
+        ('options', 'type', activity.NumericalRequirementOption),
+        ('date_range', 'type', shared.DateRange),
+        ('source', 'type', shared.DataSource),
+        ('spatial_resolution', 'type', unicode),
+        ('requirement_type', 'type', unicode),
+        ('id', 'type', unicode),
+        ('name', 'type', unicode),
+
+        ('description', 'cardinality', "0.1"),
+        ('options', 'cardinality', "0.N"),
+        ('date_range', 'cardinality', "0.1"),
+        ('source', 'cardinality', "0.1"),
+        ('spatial_resolution', 'cardinality', "0.1"),
+        ('requirement_type', 'cardinality', "1.1"),
+        ('id', 'cardinality', "0.1"),
+        ('name', 'cardinality', "1.1"),
+
+        ('requirement_type', 'constant', "spatioTemporalConstraint"),
+    ),
+    data.DataStorageIp: (
+
+        ('protocol', 'type', unicode),
+        ('modification_date', 'type', datetime.datetime),
+        ('format', 'type', unicode),
+        ('file_name', 'type', unicode),
+        ('host', 'type', unicode),
+        ('location', 'type', unicode),
+        ('path', 'type', unicode),
+        ('size', 'type', int),
+
+        ('protocol', 'cardinality', "0.1"),
+        ('modification_date', 'cardinality', "0.1"),
+        ('format', 'cardinality', "0.1"),
+        ('file_name', 'cardinality', "0.1"),
+        ('host', 'cardinality', "0.1"),
+        ('location', 'cardinality', "0.1"),
+        ('path', 'cardinality', "0.1"),
+        ('size', 'cardinality', "0.1"),
+
+    ),
+    software.SpatialRegriddingProperty: (
 
         ('name', 'type', unicode),
         ('value', 'type', unicode),
@@ -2935,17 +2359,548 @@ CONSTRAINTS = {
         ('value', 'cardinality', "0.1"),
 
     ),
-    shared.DocRelationship: (
+    shared.Platform: (
+
+        ('description', 'type', unicode),
+        ('short_name', 'type', unicode),
+        ('contacts', 'type', shared.ResponsibleParty),
+        ('long_name', 'type', unicode),
+        ('meta', 'type', shared.DocMetaInfo),
+        ('units', 'type', shared.MachineCompilerUnit),
+
+        ('description', 'cardinality', "0.1"),
+        ('short_name', 'cardinality', "1.1"),
+        ('contacts', 'cardinality', "0.N"),
+        ('long_name', 'cardinality', "0.1"),
+        ('meta', 'cardinality', "1.1"),
+        ('units', 'cardinality', "1.N"),
+
+    ),
+    activity.NumericalExperiment: (
+
+        ('funding_sources', 'type', unicode),
+        ('rationales', 'type', unicode),
+        ('generates', 'type', unicode),
+        ('short_name', 'type', unicode),
+        ('long_name', 'type', unicode),
+        ('supports', 'type', unicode),
+        ('responsible_parties', 'type', shared.ResponsibleParty),
+        ('measurement_campaigns', 'type', activity.MeasurementCampaign),
+        ('meta', 'type', shared.DocMetaInfo),
+        ('experiment_id', 'type', unicode),
+        ('requirements', 'type', activity.NumericalRequirement),
+        ('requires', 'type', activity.NumericalActivity),
+        ('projects', 'type', unicode),
+        ('description', 'type', unicode),
+
+        ('funding_sources', 'cardinality', "0.N"),
+        ('rationales', 'cardinality', "0.N"),
+        ('generates', 'cardinality', "0.N"),
+        ('short_name', 'cardinality', "1.1"),
+        ('long_name', 'cardinality', "0.1"),
+        ('supports', 'cardinality', "0.N"),
+        ('responsible_parties', 'cardinality', "0.N"),
+        ('measurement_campaigns', 'cardinality', "0.N"),
+        ('meta', 'cardinality', "1.1"),
+        ('experiment_id', 'cardinality', "0.1"),
+        ('requirements', 'cardinality', "0.N"),
+        ('requires', 'cardinality', "0.N"),
+        ('projects', 'cardinality', "0.N"),
+        ('description', 'cardinality', "0.1"),
+
+    ),
+    software.Parallelisation: (
+
+        ('ranks', 'type', software.Rank),
+        ('processes', 'type', int),
+
+        ('ranks', 'cardinality', "0.N"),
+        ('processes', 'cardinality', "1.1"),
+
+    ),
+    activity.MeasurementCampaign: (
+
+        ('duration', 'type', int),
+        ('funding_sources', 'type', unicode),
+        ('rationales', 'type', unicode),
+        ('projects', 'type', unicode),
+        ('responsible_parties', 'type', shared.ResponsibleParty),
+
+        ('duration', 'cardinality', "1.1"),
+        ('funding_sources', 'cardinality', "0.N"),
+        ('rationales', 'cardinality', "0.N"),
+        ('projects', 'cardinality', "0.N"),
+        ('responsible_parties', 'cardinality', "0.N"),
+
+    ),
+    grids.GridSpec: (
+
+        ('esm_exchange_grids', 'type', grids.GridMosaic),
+        ('meta', 'type', shared.DocMetaInfo),
+        ('esm_model_grids', 'type', grids.GridMosaic),
+
+        ('esm_exchange_grids', 'cardinality', "0.N"),
+        ('meta', 'cardinality', "1.1"),
+        ('esm_model_grids', 'cardinality', "0.N"),
+
+    ),
+    shared.ResponsibleParty: (
+
+        ('url', 'type', unicode),
+        ('email', 'type', unicode),
+        ('abbreviation', 'type', unicode),
+        ('individual_name', 'type', unicode),
+        ('role', 'type', unicode),
+        ('address', 'type', unicode),
+        ('organisation_name', 'type', unicode),
+
+        ('url', 'cardinality', "0.1"),
+        ('email', 'cardinality', "0.1"),
+        ('abbreviation', 'cardinality', "0.1"),
+        ('individual_name', 'cardinality', "0.1"),
+        ('role', 'cardinality', "0.1"),
+        ('address', 'cardinality', "0.1"),
+        ('organisation_name', 'cardinality', "0.1"),
+
+    ),
+    activity.Experiment: (
+
+        ('funding_sources', 'type', unicode),
+        ('rationales', 'type', unicode),
+        ('generates', 'type', unicode),
+        ('requires', 'type', activity.NumericalActivity),
+        ('responsible_parties', 'type', shared.ResponsibleParty),
+        ('measurement_campaigns', 'type', activity.MeasurementCampaign),
+        ('supports', 'type', unicode),
+        ('projects', 'type', unicode),
+
+        ('funding_sources', 'cardinality', "0.N"),
+        ('rationales', 'cardinality', "0.N"),
+        ('generates', 'cardinality', "0.N"),
+        ('requires', 'cardinality', "0.N"),
+        ('responsible_parties', 'cardinality', "0.N"),
+        ('measurement_campaigns', 'cardinality', "0.N"),
+        ('supports', 'cardinality', "0.N"),
+        ('projects', 'cardinality', "0.N"),
+
+    ),
+    shared.Citation: (
+
+        ('collective_title', 'type', unicode),
+        ('title', 'type', unicode),
+        ('date_type', 'type', unicode),
+        ('alternative_title', 'type', unicode),
+        ('role', 'type', unicode),
+        ('location', 'type', unicode),
+        ('date', 'type', datetime.datetime),
+        ('type', 'type', unicode),
+        ('organisation', 'type', unicode),
+
+        ('collective_title', 'cardinality', "0.1"),
+        ('title', 'cardinality', "0.1"),
+        ('date_type', 'cardinality', "0.1"),
+        ('alternative_title', 'cardinality', "0.1"),
+        ('role', 'cardinality', "0.1"),
+        ('location', 'cardinality', "0.1"),
+        ('date', 'cardinality', "0.1"),
+        ('type', 'cardinality', "0.1"),
+        ('organisation', 'cardinality', "0.1"),
+
+    ),
+    data.DataExtent: (
+
+        ('temporal', 'type', data.DataExtentTemporal),
+        ('geographical', 'type', data.DataExtentGeographical),
+
+        ('temporal', 'cardinality', "1.1"),
+        ('geographical', 'cardinality', "1.1"),
+
+    ),
+    software.TimeLag: (
+
+        ('units', 'type', unicode),
+        ('value', 'type', int),
+
+        ('units', 'cardinality', "0.1"),
+        ('value', 'cardinality', "0.1"),
+
+    ),
+    shared.PerpetualPeriod: (
+
+        ('length', 'type', int),
+        ('range', 'type', shared.DateRange),
+        ('description', 'type', unicode),
+
+        ('length', 'cardinality', "0.1"),
+        ('range', 'cardinality', "0.1"),
+        ('description', 'cardinality', "0.1"),
+
+    ),
+    shared.DocGenealogy: (
+
+        ('relationships', 'type', shared.DocRelationship),
+
+        ('relationships', 'cardinality', "0.N"),
+
+    ),
+    activity.Conformance: (
+
+        ('requirements', 'type', activity.NumericalRequirement),
+        ('description', 'type', unicode),
+        ('sources', 'type', shared.DataSource),
+        ('frequency', 'type', unicode),
+        ('is_conformant', 'type', bool),
+        ('type', 'type', unicode),
+
+        ('requirements', 'cardinality', "0.N"),
+        ('description', 'cardinality', "0.1"),
+        ('sources', 'cardinality', "0.N"),
+        ('frequency', 'cardinality', "0.1"),
+        ('is_conformant', 'cardinality', "1.1"),
+        ('type', 'cardinality', "0.1"),
+
+    ),
+    software.Timing: (
+
+        ('units', 'type', unicode),
+        ('is_variable_rate', 'type', bool),
+        ('rate', 'type', int),
+        ('end', 'type', datetime.datetime),
+        ('start', 'type', datetime.datetime),
+
+        ('units', 'cardinality', "0.1"),
+        ('is_variable_rate', 'cardinality', "0.1"),
+        ('rate', 'cardinality', "0.1"),
+        ('end', 'cardinality', "0.1"),
+        ('start', 'cardinality', "0.1"),
+
+    ),
+    misc.DocumentSet: (
+
+        ('ensembles', 'type', activity.Ensemble),
+        ('grids', 'type', grids.GridSpec),
+        ('simulation', 'type', activity.SimulationRun),
+        ('platform', 'type', shared.Platform),
+        ('experiment', 'type', activity.NumericalExperiment),
+        ('meta', 'type', shared.DocMetaInfo),
+        ('model', 'type', software.ModelComponent),
+        ('data', 'type', data.DataObject),
+
+        ('ensembles', 'cardinality', "0.N"),
+        ('grids', 'cardinality', "0.N"),
+        ('simulation', 'cardinality', "0.1"),
+        ('platform', 'cardinality', "0.1"),
+        ('experiment', 'cardinality', "0.1"),
+        ('meta', 'cardinality', "1.1"),
+        ('model', 'cardinality', "0.1"),
+        ('data', 'cardinality', "0.N"),
+
+    ),
+    shared.RealCalendar: (
+
+        ('length', 'type', int),
+        ('range', 'type', shared.DateRange),
+        ('description', 'type', unicode),
+
+        ('length', 'cardinality', "0.1"),
+        ('range', 'cardinality', "0.1"),
+        ('description', 'cardinality', "0.1"),
+
+    ),
+    activity.Ensemble: (
+
+        ('funding_sources', 'type', unicode),
+        ('rationales', 'type', unicode),
+        ('description', 'type', unicode),
+        ('short_name', 'type', unicode),
+        ('outputs', 'type', shared.DataSource),
+        ('responsible_parties', 'type', shared.ResponsibleParty),
+        ('long_name', 'type', unicode),
+        ('meta', 'type', shared.DocMetaInfo),
+        ('types', 'type', unicode),
+        ('members', 'type', activity.EnsembleMember),
+        ('supports', 'type', activity.Experiment),
+        ('projects', 'type', unicode),
+
+        ('funding_sources', 'cardinality', "0.N"),
+        ('rationales', 'cardinality', "0.N"),
+        ('description', 'cardinality', "0.1"),
+        ('short_name', 'cardinality', "1.1"),
+        ('outputs', 'cardinality', "0.N"),
+        ('responsible_parties', 'cardinality', "0.N"),
+        ('long_name', 'cardinality', "0.1"),
+        ('meta', 'cardinality', "1.1"),
+        ('types', 'cardinality', "1.N"),
+        ('members', 'cardinality', "1.N"),
+        ('supports', 'cardinality', "0.N"),
+        ('projects', 'cardinality', "0.N"),
+
+    ),
+    data.DataProperty: (
+
+        ('name', 'type', unicode),
+        ('value', 'type', unicode),
+        ('description', 'type', unicode),
+
+        ('name', 'cardinality', "0.1"),
+        ('value', 'cardinality', "0.1"),
+        ('description', 'cardinality', "0.1"),
+
+    ),
+    software.ConnectionProperty: (
+
+        ('name', 'type', unicode),
+        ('value', 'type', unicode),
+
+        ('name', 'cardinality', "0.1"),
+        ('value', 'cardinality', "0.1"),
+
+    ),
+    data.DataExtentGeographical: (
+
+        ('west', 'type', float),
+        ('east', 'type', float),
+        ('north', 'type', float),
+        ('south', 'type', float),
+
+        ('west', 'cardinality', "0.1"),
+        ('east', 'cardinality', "0.1"),
+        ('north', 'cardinality', "0.1"),
+        ('south', 'cardinality', "0.1"),
+
+    ),
+    software.StatisticalModelComponent: (
+
+        ('funding_sources', 'type', unicode),
+        ('version', 'type', unicode),
+        ('long_name', 'type', unicode),
+        ('meta', 'type', shared.DocMetaInfo),
+        ('is_embedded', 'type', bool),
+        ('short_name', 'type', unicode),
+        ('previous_version', 'type', unicode),
+        ('responsible_parties', 'type', shared.ResponsibleParty),
+        ('deployments', 'type', software.Deployment),
+        ('citations', 'type', shared.Citation),
+        ('type', 'type', unicode),
+        ('composition', 'type', software.Composition),
+        ('coupling_framework', 'type', unicode),
+        ('description', 'type', unicode),
+        ('parent', 'type', software.Component),
+        ('sub_components', 'type', software.Component),
+        ('dependencies', 'type', software.EntryPoint),
+        ('grid', 'type', grids.GridSpec),
+        ('purpose', 'type', unicode),
+        ('online_resource', 'type', unicode),
+        ('timing', 'type', software.Timing),
+        ('properties', 'type', software.ComponentProperty),
+        ('types', 'type', unicode),
+        ('language', 'type', software.ComponentLanguage),
+        ('license', 'type', shared.License),
+        ('release_date', 'type', datetime.datetime),
+        ('code_access', 'type', unicode),
+
+        ('funding_sources', 'cardinality', "0.N"),
+        ('version', 'cardinality', "0.1"),
+        ('long_name', 'cardinality', "0.1"),
+        ('meta', 'cardinality', "1.1"),
+        ('is_embedded', 'cardinality', "0.1"),
+        ('short_name', 'cardinality', "1.1"),
+        ('previous_version', 'cardinality', "0.1"),
+        ('responsible_parties', 'cardinality', "0.N"),
+        ('deployments', 'cardinality', "0.N"),
+        ('citations', 'cardinality', "0.N"),
+        ('type', 'cardinality', "0.1"),
+        ('composition', 'cardinality', "0.1"),
+        ('coupling_framework', 'cardinality', "0.1"),
+        ('description', 'cardinality', "0.1"),
+        ('parent', 'cardinality', "0.1"),
+        ('sub_components', 'cardinality', "0.N"),
+        ('dependencies', 'cardinality', "0.N"),
+        ('grid', 'cardinality', "0.1"),
+        ('purpose', 'cardinality', "0.1"),
+        ('online_resource', 'cardinality', "0.1"),
+        ('timing', 'cardinality', "0.1"),
+        ('properties', 'cardinality', "0.N"),
+        ('types', 'cardinality', "1.N"),
+        ('language', 'cardinality', "0.1"),
+        ('license', 'cardinality', "0.1"),
+        ('release_date', 'cardinality', "0.1"),
+        ('code_access', 'cardinality', "0.1"),
+
+    ),
+    grids.GridMosaic: (
+
+        ('mosaic_count', 'type', int),
+        ('is_leaf', 'type', bool),
+        ('tiles', 'type', grids.GridTile),
+        ('description', 'type', unicode),
+        ('short_name', 'type', unicode),
+        ('mosaics', 'type', grids.GridMosaic),
+        ('tile_count', 'type', int),
+        ('long_name', 'type', unicode),
+        ('mnemonic', 'type', unicode),
+        ('citations', 'type', shared.Citation),
+        ('extent', 'type', grids.GridExtent),
+        ('has_congruent_tiles', 'type', bool),
+        ('type', 'type', unicode),
+        ('id', 'type', unicode),
+
+        ('mosaic_count', 'cardinality', "0.1"),
+        ('is_leaf', 'cardinality', "1.1"),
+        ('tiles', 'cardinality', "0.N"),
+        ('description', 'cardinality', "0.1"),
+        ('short_name', 'cardinality', "1.1"),
+        ('mosaics', 'cardinality', "0.N"),
+        ('tile_count', 'cardinality', "0.1"),
+        ('long_name', 'cardinality', "0.1"),
+        ('mnemonic', 'cardinality', "0.1"),
+        ('citations', 'cardinality', "0.N"),
+        ('extent', 'cardinality', "0.1"),
+        ('has_congruent_tiles', 'cardinality', "0.1"),
+        ('type', 'cardinality', "1.1"),
+        ('id', 'cardinality', "1.1"),
+
+    ),
+    grids.CoordinateList: (
+
+        ('has_constant_offset', 'type', bool),
+        ('length', 'type', int),
+        ('uom', 'type', unicode),
+
+        ('has_constant_offset', 'cardinality', "0.1"),
+        ('length', 'cardinality', "0.1"),
+        ('uom', 'cardinality', "0.1"),
+
+    ),
+    software.ProcessorComponent: (
+
+        ('funding_sources', 'type', unicode),
+        ('version', 'type', unicode),
+        ('long_name', 'type', unicode),
+        ('meta', 'type', shared.DocMetaInfo),
+        ('is_embedded', 'type', bool),
+        ('short_name', 'type', unicode),
+        ('previous_version', 'type', unicode),
+        ('responsible_parties', 'type', shared.ResponsibleParty),
+        ('deployments', 'type', software.Deployment),
+        ('citations', 'type', shared.Citation),
+        ('composition', 'type', software.Composition),
+        ('coupling_framework', 'type', unicode),
+        ('description', 'type', unicode),
+        ('parent', 'type', software.Component),
+        ('sub_components', 'type', software.Component),
+        ('dependencies', 'type', software.EntryPoint),
+        ('grid', 'type', grids.GridSpec),
+        ('purpose', 'type', unicode),
+        ('online_resource', 'type', unicode),
+        ('properties', 'type', software.ComponentProperty),
+        ('language', 'type', software.ComponentLanguage),
+        ('license', 'type', shared.License),
+        ('release_date', 'type', datetime.datetime),
+        ('code_access', 'type', unicode),
+
+        ('funding_sources', 'cardinality', "0.N"),
+        ('version', 'cardinality', "0.1"),
+        ('long_name', 'cardinality', "0.1"),
+        ('meta', 'cardinality', "1.1"),
+        ('is_embedded', 'cardinality', "0.1"),
+        ('short_name', 'cardinality', "1.1"),
+        ('previous_version', 'cardinality', "0.1"),
+        ('responsible_parties', 'cardinality', "0.N"),
+        ('deployments', 'cardinality', "0.N"),
+        ('citations', 'cardinality', "0.N"),
+        ('composition', 'cardinality', "0.1"),
+        ('coupling_framework', 'cardinality', "0.1"),
+        ('description', 'cardinality', "0.1"),
+        ('parent', 'cardinality', "0.1"),
+        ('sub_components', 'cardinality', "0.N"),
+        ('dependencies', 'cardinality', "0.N"),
+        ('grid', 'cardinality', "0.1"),
+        ('purpose', 'cardinality', "0.1"),
+        ('online_resource', 'cardinality', "0.1"),
+        ('properties', 'cardinality', "0.N"),
+        ('language', 'cardinality', "0.1"),
+        ('license', 'cardinality', "0.1"),
+        ('release_date', 'cardinality', "0.1"),
+        ('code_access', 'cardinality', "0.1"),
+
+    ),
+    activity.SimulationRelationship: (
 
         ('direction', 'type', unicode),
         ('type', 'type', unicode),
         ('description', 'type', unicode),
-        ('target', 'type', shared.DocRelationshipTarget),
+        ('target', 'type', activity.SimulationRelationshipTarget),
 
         ('direction', 'cardinality', "1.1"),
         ('type', 'cardinality', "1.1"),
         ('description', 'cardinality', "0.1"),
         ('target', 'cardinality', "1.1"),
+
+    ),
+    data.DataRestriction: (
+
+        ('restriction', 'type', unicode),
+        ('license', 'type', shared.License),
+        ('scope', 'type', unicode),
+
+        ('restriction', 'cardinality', "0.1"),
+        ('license', 'cardinality', "0.1"),
+        ('scope', 'cardinality', "0.1"),
+
+    ),
+    data.DataStorageDb: (
+
+        ('name', 'type', unicode),
+        ('modification_date', 'type', datetime.datetime),
+        ('format', 'type', unicode),
+        ('location', 'type', unicode),
+        ('owner', 'type', unicode),
+        ('table', 'type', unicode),
+        ('access_string', 'type', unicode),
+        ('size', 'type', int),
+
+        ('name', 'cardinality', "0.1"),
+        ('modification_date', 'cardinality', "0.1"),
+        ('format', 'cardinality', "0.1"),
+        ('location', 'cardinality', "0.1"),
+        ('owner', 'cardinality', "0.1"),
+        ('table', 'cardinality', "0.1"),
+        ('access_string', 'cardinality', "0.1"),
+        ('size', 'cardinality', "0.1"),
+
+    ),
+    data.DataContent: (
+
+        ('topic', 'type', data.DataTopic),
+        ('frequency', 'type', unicode),
+        ('purpose', 'type', unicode),
+        ('aggregation', 'type', unicode),
+
+        ('topic', 'cardinality', "1.1"),
+        ('frequency', 'cardinality', "0.1"),
+        ('purpose', 'cardinality', "0.1"),
+        ('aggregation', 'cardinality', "0.1"),
+
+    ),
+    shared.ChangeProperty: (
+
+        ('id', 'type', unicode),
+        ('name', 'type', unicode),
+        ('value', 'type', unicode),
+        ('description', 'type', unicode),
+
+        ('id', 'cardinality', "0.1"),
+        ('name', 'cardinality', "0.1"),
+        ('value', 'cardinality', "0.1"),
+        ('description', 'cardinality', "0.1"),
+
+    ),
+    shared.DocRelationshipTarget: (
+
+        ('reference', 'type', shared.DocReference),
+
+        ('reference', 'cardinality', "0.1"),
 
     ),
     data.DataExtentTimeInterval: (
@@ -2959,35 +2914,41 @@ CONSTRAINTS = {
         ('factor', 'cardinality', "0.1"),
 
     ),
-    shared.DataSource: (
+    shared.Standard: (
 
-        ('purpose', 'type', unicode),
+        ('version', 'type', unicode),
+        ('description', 'type', unicode),
+        ('name', 'type', unicode),
 
-        ('purpose', 'cardinality', "0.1"),
-
-    ),
-    activity.Activity: (
-
-        ('funding_sources', 'type', unicode),
-        ('rationales', 'type', unicode),
-        ('responsible_parties', 'type', shared.ResponsibleParty),
-        ('projects', 'type', unicode),
-
-        ('funding_sources', 'cardinality', "0.N"),
-        ('rationales', 'cardinality', "0.N"),
-        ('responsible_parties', 'cardinality', "0.N"),
-        ('projects', 'cardinality', "0.N"),
+        ('version', 'cardinality', "0.1"),
+        ('description', 'cardinality', "0.1"),
+        ('name', 'cardinality', "1.1"),
 
     ),
-    shared.ClosedDateRange: (
+    software.Composition: (
 
-        ('duration', 'type', unicode),
-        ('start', 'type', datetime.datetime),
-        ('end', 'type', datetime.datetime),
+        ('couplings', 'type', unicode),
+        ('description', 'type', unicode),
 
-        ('duration', 'cardinality', "0.1"),
-        ('start', 'cardinality', "1.1"),
-        ('end', 'cardinality', "0.1"),
+        ('couplings', 'cardinality', "0.N"),
+        ('description', 'cardinality', "0.1"),
+
+    ),
+    grids.VerticalCoordinateList: (
+
+        ('has_constant_offset', 'type', bool),
+        ('form', 'type', unicode),
+        ('length', 'type', int),
+        ('type', 'type', unicode),
+        ('properties', 'type', grids.GridProperty),
+        ('uom', 'type', unicode),
+
+        ('has_constant_offset', 'cardinality', "0.1"),
+        ('form', 'cardinality', "0.1"),
+        ('length', 'cardinality', "0.1"),
+        ('type', 'cardinality', "0.1"),
+        ('properties', 'cardinality', "0.N"),
+        ('uom', 'cardinality', "0.1"),
 
     ),
     data.DataExtentTemporal: (
@@ -3001,44 +2962,30 @@ CONSTRAINTS = {
         ('end', 'cardinality', "0.1"),
 
     ),
-    shared.Standard: (
+    shared.Property: (
 
-        ('version', 'type', unicode),
         ('name', 'type', unicode),
-        ('description', 'type', unicode),
+        ('value', 'type', unicode),
 
-        ('version', 'cardinality', "0.1"),
-        ('name', 'cardinality', "1.1"),
-        ('description', 'cardinality', "0.1"),
+        ('name', 'cardinality', "0.1"),
+        ('value', 'cardinality', "0.1"),
 
     ),
-    software.ComponentProperty: (
+    shared.Change: (
 
-        ('standard_names', 'type', unicode),
-        ('sub_properties', 'type', software.ComponentProperty),
+        ('name', 'type', unicode),
+        ('author', 'type', shared.ResponsibleParty),
+        ('details', 'type', shared.ChangeProperty),
+        ('date', 'type', datetime.datetime),
+        ('type', 'type', unicode),
         ('description', 'type', unicode),
-        ('short_name', 'type', unicode),
-        ('is_represented', 'type', bool),
-        ('long_name', 'type', unicode),
-        ('citations', 'type', shared.Citation),
-        ('grid', 'type', unicode),
-        ('purpose', 'type', unicode),
-        ('units', 'type', unicode),
-        ('values', 'type', unicode),
-        ('intent', 'type', unicode),
 
-        ('standard_names', 'cardinality', "0.N"),
-        ('sub_properties', 'cardinality', "0.N"),
+        ('name', 'cardinality', "0.1"),
+        ('author', 'cardinality', "0.1"),
+        ('details', 'cardinality', "1.N"),
+        ('date', 'cardinality', "0.1"),
+        ('type', 'cardinality', "0.1"),
         ('description', 'cardinality', "0.1"),
-        ('short_name', 'cardinality', "1.1"),
-        ('is_represented', 'cardinality', "1.1"),
-        ('long_name', 'cardinality', "0.1"),
-        ('citations', 'cardinality', "0.N"),
-        ('grid', 'cardinality', "0.1"),
-        ('purpose', 'cardinality', "0.1"),
-        ('units', 'cardinality', "0.1"),
-        ('values', 'cardinality', "0.N"),
-        ('intent', 'cardinality', "0.1"),
 
     ),
     grids.GridTile: (
@@ -3102,40 +3049,90 @@ CONSTRAINTS = {
         ('grid_north_pole', 'cardinality', "0.1"),
 
     ),
-    software.Connection: (
+    quality.Evaluation: (
 
-        ('transformers', 'type', software.ProcessorComponent),
         ('description', 'type', unicode),
-        ('time_transformation', 'type', software.TimeTransformation),
-        ('spatial_regridding', 'type', software.SpatialRegridding),
-        ('sources', 'type', software.ConnectionEndpoint),
-        ('target', 'type', software.ConnectionEndpoint),
-        ('time_profile', 'type', software.Timing),
+        ('specification_hyperlink', 'type', unicode),
+        ('specification', 'type', unicode),
+        ('title', 'type', unicode),
+        ('did_pass', 'type', bool),
+        ('type_hyperlink', 'type', unicode),
+        ('date', 'type', datetime.datetime),
         ('type', 'type', unicode),
-        ('properties', 'type', software.ConnectionProperty),
-        ('time_lag', 'type', unicode),
-        ('priming', 'type', shared.DataSource),
+        ('explanation', 'type', unicode),
 
-        ('transformers', 'cardinality', "0.N"),
         ('description', 'cardinality', "0.1"),
-        ('time_transformation', 'cardinality', "0.1"),
-        ('spatial_regridding', 'cardinality', "0.N"),
-        ('sources', 'cardinality', "0.N"),
-        ('target', 'cardinality', "0.1"),
-        ('time_profile', 'cardinality', "0.1"),
+        ('specification_hyperlink', 'cardinality', "0.1"),
+        ('specification', 'cardinality', "0.1"),
+        ('title', 'cardinality', "0.1"),
+        ('did_pass', 'cardinality', "0.1"),
+        ('type_hyperlink', 'cardinality', "0.1"),
+        ('date', 'cardinality', "0.1"),
         ('type', 'cardinality', "0.1"),
-        ('properties', 'cardinality', "0.N"),
-        ('time_lag', 'cardinality', "0.1"),
-        ('priming', 'cardinality', "0.1"),
+        ('explanation', 'cardinality', "0.1"),
 
     ),
-    software.Parallelisation: (
+    software.ComponentLanguageProperty: (
 
-        ('ranks', 'type', software.Rank),
-        ('processes', 'type', int),
+        ('name', 'type', unicode),
+        ('value', 'type', unicode),
 
-        ('ranks', 'cardinality', "0.N"),
-        ('processes', 'cardinality', "1.1"),
+        ('name', 'cardinality', "0.1"),
+        ('value', 'cardinality', "0.1"),
+
+    ),
+    data.DataObject: (
+
+        ('restriction', 'type', data.DataRestriction),
+        ('source_simulation', 'type', unicode),
+        ('description', 'type', unicode),
+        ('keyword', 'type', unicode),
+        ('hierarchy_level', 'type', data.DataHierarchyLevel),
+        ('acronym', 'type', unicode),
+        ('child_object', 'type', data.DataObject),
+        ('storage', 'type', data.DataStorage),
+        ('citations', 'type', shared.Citation),
+        ('content', 'type', data.DataContent),
+        ('geometry_model', 'type', unicode),
+        ('meta', 'type', shared.DocMetaInfo),
+        ('purpose', 'type', unicode),
+        ('extent', 'type', data.DataExtent),
+        ('distribution', 'type', data.DataDistribution),
+        ('parent_object', 'type', data.DataObject),
+        ('properties', 'type', data.DataProperty),
+        ('data_status', 'type', unicode),
+
+        ('restriction', 'cardinality', "0.N"),
+        ('source_simulation', 'cardinality', "0.1"),
+        ('description', 'cardinality', "0.1"),
+        ('keyword', 'cardinality', "0.1"),
+        ('hierarchy_level', 'cardinality', "0.1"),
+        ('acronym', 'cardinality', "0.1"),
+        ('child_object', 'cardinality', "0.N"),
+        ('storage', 'cardinality', "0.N"),
+        ('citations', 'cardinality', "0.N"),
+        ('content', 'cardinality', "0.N"),
+        ('geometry_model', 'cardinality', "0.1"),
+        ('meta', 'cardinality', "1.1"),
+        ('purpose', 'cardinality', "0.1"),
+        ('extent', 'cardinality', "0.1"),
+        ('distribution', 'cardinality', "0.1"),
+        ('parent_object', 'cardinality', "0.1"),
+        ('properties', 'cardinality', "0.N"),
+        ('data_status', 'cardinality', "0.1"),
+
+    ),
+    software.Rank: (
+
+        ('max', 'type', int),
+        ('increment', 'type', int),
+        ('value', 'type', int),
+        ('min', 'type', int),
+
+        ('max', 'cardinality', "0.1"),
+        ('increment', 'cardinality', "0.1"),
+        ('value', 'cardinality', "0.1"),
+        ('min', 'cardinality', "0.1"),
 
     ),
     software.ConnectionEndpoint: (
@@ -3149,536 +3146,11 @@ CONSTRAINTS = {
         ('properties', 'cardinality', "0.N"),
 
     ),
-    shared.DateRange: (
+    shared.DataSource: (
 
-        ('duration', 'type', unicode),
-
-        ('duration', 'cardinality', "0.1"),
-
-    ),
-    software.ComponentLanguageProperty: (
-
-        ('name', 'type', unicode),
-        ('value', 'type', unicode),
-
-        ('name', 'cardinality', "0.1"),
-        ('value', 'cardinality', "0.1"),
-
-    ),
-    shared.DocMetaInfo: (
-
-        ('drs_keys', 'type', unicode),
-        ('update_date', 'type', datetime.datetime),
-        ('create_date', 'type', datetime.datetime),
-        ('genealogy', 'type', shared.DocGenealogy),
-        ('language', 'type', unicode),
-        ('drs_path', 'type', unicode),
-        ('institute', 'type', unicode),
-        ('author', 'type', shared.ResponsibleParty),
-        ('sort_key', 'type', unicode),
-        ('source_key', 'type', unicode),
-        ('project', 'type', unicode),
-        ('source', 'type', unicode),
-        ('version', 'type', int),
-        ('status', 'type', unicode),
-        ('type_sort_key', 'type', unicode),
-        ('external_ids', 'type', shared.StandardName),
-        ('type', 'type', unicode),
-        ('id', 'type', uuid.UUID),
-        ('type_display_name', 'type', unicode),
-
-        ('drs_keys', 'cardinality', "0.N"),
-        ('update_date', 'cardinality', "1.1"),
-        ('create_date', 'cardinality', "1.1"),
-        ('genealogy', 'cardinality', "0.1"),
-        ('language', 'cardinality', "1.1"),
-        ('drs_path', 'cardinality', "0.1"),
-        ('institute', 'cardinality', "0.1"),
-        ('author', 'cardinality', "0.1"),
-        ('sort_key', 'cardinality', "0.1"),
-        ('source_key', 'cardinality', "0.1"),
-        ('project', 'cardinality', "1.1"),
-        ('source', 'cardinality', "1.1"),
-        ('version', 'cardinality', "1.1"),
-        ('status', 'cardinality', "0.1"),
-        ('type_sort_key', 'cardinality', "0.1"),
-        ('external_ids', 'cardinality', "0.N"),
-        ('type', 'cardinality', "1.1"),
-        ('id', 'cardinality', "1.1"),
-        ('type_display_name', 'cardinality', "0.1"),
-
-        ('source', 'constant', "scripts"),
-    ),
-    software.SpatialRegriddingProperty: (
-
-        ('name', 'type', unicode),
-        ('value', 'type', unicode),
-
-        ('name', 'cardinality', "0.1"),
-        ('value', 'cardinality', "0.1"),
-
-    ),
-    data.DataDistribution: (
-
-        ('access', 'type', unicode),
-        ('fee', 'type', unicode),
-        ('responsible_party', 'type', shared.ResponsibleParty),
-        ('format', 'type', unicode),
-
-        ('access', 'cardinality', "0.1"),
-        ('fee', 'cardinality', "0.1"),
-        ('responsible_party', 'cardinality', "0.1"),
-        ('format', 'cardinality', "0.1"),
-
-    ),
-    software.ConnectionProperty: (
-
-        ('name', 'type', unicode),
-        ('value', 'type', unicode),
-
-        ('name', 'cardinality', "0.1"),
-        ('value', 'cardinality', "0.1"),
-
-    ),
-    activity.Simulation: (
-
-        ('inputs', 'type', software.Coupling),
-        ('simulation_id', 'type', unicode),
-        ('funding_sources', 'type', unicode),
-        ('rationales', 'type', unicode),
-        ('description', 'type', unicode),
-        ('short_name', 'type', unicode),
-        ('control_simulation', 'type', activity.Simulation),
-        ('spinup_simulation', 'type', activity.Simulation),
-        ('spinup_date_range', 'type', shared.ClosedDateRange),
-        ('responsible_parties', 'type', shared.ResponsibleParty),
-        ('deployments', 'type', software.Deployment),
-        ('restarts', 'type', data.DataObject),
-        ('long_name', 'type', unicode),
-        ('outputs', 'type', data.DataObject),
-        ('authors', 'type', unicode),
-        ('calendar', 'type', shared.Calendar),
-        ('supports', 'type', activity.Experiment),
-        ('conformances', 'type', activity.Conformance),
-        ('projects', 'type', unicode),
-
-        ('inputs', 'cardinality', "0.N"),
-        ('simulation_id', 'cardinality', "0.1"),
-        ('funding_sources', 'cardinality', "0.N"),
-        ('rationales', 'cardinality', "0.N"),
-        ('description', 'cardinality', "0.1"),
-        ('short_name', 'cardinality', "1.1"),
-        ('control_simulation', 'cardinality', "0.1"),
-        ('spinup_simulation', 'cardinality', "0.1"),
-        ('spinup_date_range', 'cardinality', "0.1"),
-        ('responsible_parties', 'cardinality', "0.N"),
-        ('deployments', 'cardinality', "0.N"),
-        ('restarts', 'cardinality', "0.N"),
-        ('long_name', 'cardinality', "0.1"),
-        ('outputs', 'cardinality', "0.N"),
-        ('authors', 'cardinality', "0.1"),
-        ('calendar', 'cardinality', "1.1"),
-        ('supports', 'cardinality', "0.N"),
-        ('conformances', 'cardinality', "0.N"),
-        ('projects', 'cardinality', "0.N"),
-
-    ),
-    software.EntryPoint: (
-
-        ('name', 'type', unicode),
-
-        ('name', 'cardinality', "0.1"),
-
-    ),
-    quality.Measure: (
-
-        ('identification', 'type', unicode),
-        ('name', 'type', unicode),
-        ('description', 'type', unicode),
-
-        ('identification', 'cardinality', "0.1"),
-        ('name', 'cardinality', "0.1"),
-        ('description', 'cardinality', "0.1"),
-
-    ),
-    software.Component: (
-
-        ('funding_sources', 'type', unicode),
-        ('version', 'type', unicode),
-        ('long_name', 'type', unicode),
-        ('is_embedded', 'type', bool),
-        ('short_name', 'type', unicode),
-        ('previous_version', 'type', unicode),
-        ('responsible_parties', 'type', shared.ResponsibleParty),
-        ('deployments', 'type', software.Deployment),
-        ('citations', 'type', shared.Citation),
-        ('composition', 'type', software.Composition),
-        ('coupling_framework', 'type', unicode),
-        ('description', 'type', unicode),
-        ('parent', 'type', software.Component),
-        ('sub_components', 'type', software.Component),
-        ('dependencies', 'type', software.EntryPoint),
-        ('grid', 'type', grids.GridSpec),
         ('purpose', 'type', unicode),
-        ('online_resource', 'type', unicode),
-        ('properties', 'type', software.ComponentProperty),
-        ('license', 'type', shared.License),
-        ('language', 'type', software.ComponentLanguage),
-        ('release_date', 'type', datetime.datetime),
-        ('code_access', 'type', unicode),
 
-        ('funding_sources', 'cardinality', "0.N"),
-        ('version', 'cardinality', "0.1"),
-        ('long_name', 'cardinality', "0.1"),
-        ('is_embedded', 'cardinality', "0.1"),
-        ('short_name', 'cardinality', "1.1"),
-        ('previous_version', 'cardinality', "0.1"),
-        ('responsible_parties', 'cardinality', "0.N"),
-        ('deployments', 'cardinality', "0.N"),
-        ('citations', 'cardinality', "0.N"),
-        ('composition', 'cardinality', "0.1"),
-        ('coupling_framework', 'cardinality', "0.1"),
-        ('description', 'cardinality', "0.1"),
-        ('parent', 'cardinality', "0.1"),
-        ('sub_components', 'cardinality', "0.N"),
-        ('dependencies', 'cardinality', "0.N"),
-        ('grid', 'cardinality', "0.1"),
         ('purpose', 'cardinality', "0.1"),
-        ('online_resource', 'cardinality', "0.1"),
-        ('properties', 'cardinality', "0.N"),
-        ('license', 'cardinality', "0.1"),
-        ('language', 'cardinality', "0.1"),
-        ('release_date', 'cardinality', "0.1"),
-        ('code_access', 'cardinality', "0.1"),
-
-    ),
-    activity.NumericalRequirementOption: (
-
-        ('name', 'type', unicode),
-        ('sub_options', 'type', activity.NumericalRequirementOption),
-        ('description', 'type', unicode),
-        ('relationship', 'type', unicode),
-        ('id', 'type', unicode),
-
-        ('name', 'cardinality', "1.1"),
-        ('sub_options', 'cardinality', "0.N"),
-        ('description', 'cardinality', "0.1"),
-        ('relationship', 'cardinality', "0.1"),
-        ('id', 'cardinality', "0.1"),
-
-    ),
-    data.DataRestriction: (
-
-        ('restriction', 'type', unicode),
-        ('license', 'type', shared.License),
-        ('scope', 'type', unicode),
-
-        ('restriction', 'cardinality', "0.1"),
-        ('license', 'cardinality', "0.1"),
-        ('scope', 'cardinality', "0.1"),
-
-    ),
-    software.ProcessorComponent: (
-
-        ('funding_sources', 'type', unicode),
-        ('version', 'type', unicode),
-        ('long_name', 'type', unicode),
-        ('meta', 'type', shared.DocMetaInfo),
-        ('responsible_parties', 'type', shared.ResponsibleParty),
-        ('short_name', 'type', unicode),
-        ('previous_version', 'type', unicode),
-        ('is_embedded', 'type', bool),
-        ('deployments', 'type', software.Deployment),
-        ('citations', 'type', shared.Citation),
-        ('composition', 'type', software.Composition),
-        ('coupling_framework', 'type', unicode),
-        ('description', 'type', unicode),
-        ('parent', 'type', software.Component),
-        ('sub_components', 'type', software.Component),
-        ('dependencies', 'type', software.EntryPoint),
-        ('grid', 'type', grids.GridSpec),
-        ('purpose', 'type', unicode),
-        ('online_resource', 'type', unicode),
-        ('properties', 'type', software.ComponentProperty),
-        ('language', 'type', software.ComponentLanguage),
-        ('license', 'type', shared.License),
-        ('release_date', 'type', datetime.datetime),
-        ('code_access', 'type', unicode),
-
-        ('funding_sources', 'cardinality', "0.N"),
-        ('version', 'cardinality', "0.1"),
-        ('long_name', 'cardinality', "0.1"),
-        ('meta', 'cardinality', "1.1"),
-        ('responsible_parties', 'cardinality', "0.N"),
-        ('short_name', 'cardinality', "1.1"),
-        ('previous_version', 'cardinality', "0.1"),
-        ('is_embedded', 'cardinality', "0.1"),
-        ('deployments', 'cardinality', "0.N"),
-        ('citations', 'cardinality', "0.N"),
-        ('composition', 'cardinality', "0.1"),
-        ('coupling_framework', 'cardinality', "0.1"),
-        ('description', 'cardinality', "0.1"),
-        ('parent', 'cardinality', "0.1"),
-        ('sub_components', 'cardinality', "0.N"),
-        ('dependencies', 'cardinality', "0.N"),
-        ('grid', 'cardinality', "0.1"),
-        ('purpose', 'cardinality', "0.1"),
-        ('online_resource', 'cardinality', "0.1"),
-        ('properties', 'cardinality', "0.N"),
-        ('language', 'cardinality', "0.1"),
-        ('license', 'cardinality', "0.1"),
-        ('release_date', 'cardinality', "0.1"),
-        ('code_access', 'cardinality', "0.1"),
-
-    ),
-    shared.License: (
-
-        ('contact', 'type', unicode),
-        ('description', 'type', unicode),
-        ('is_unrestricted', 'type', bool),
-        ('name', 'type', unicode),
-
-        ('contact', 'cardinality', "0.1"),
-        ('description', 'cardinality', "0.1"),
-        ('is_unrestricted', 'cardinality', "0.1"),
-        ('name', 'cardinality', "0.1"),
-
-    ),
-    activity.SimulationRelationshipTarget: (
-
-        ('target', 'type', unicode),
-        ('simulation', 'type', shared.DocReference),
-
-        ('target', 'cardinality', "0.1"),
-        ('simulation', 'cardinality', "0.1"),
-
-    ),
-    data.DataStorageFile: (
-
-        ('modification_date', 'type', datetime.datetime),
-        ('format', 'type', unicode),
-        ('file_name', 'type', unicode),
-        ('location', 'type', unicode),
-        ('path', 'type', unicode),
-        ('file_system', 'type', unicode),
-        ('size', 'type', int),
-
-        ('modification_date', 'cardinality', "0.1"),
-        ('format', 'cardinality', "0.1"),
-        ('file_name', 'cardinality', "0.1"),
-        ('location', 'cardinality', "0.1"),
-        ('path', 'cardinality', "0.1"),
-        ('file_system', 'cardinality', "0.1"),
-        ('size', 'cardinality', "0.1"),
-
-    ),
-    grids.GridProperty: (
-
-        ('name', 'type', unicode),
-        ('value', 'type', unicode),
-
-        ('name', 'cardinality', "0.1"),
-        ('value', 'cardinality', "0.1"),
-
-    ),
-    quality.Report: (
-
-        ('date', 'type', datetime.datetime),
-        ('evaluator', 'type', shared.ResponsibleParty),
-        ('evaluation', 'type', quality.Evaluation),
-        ('measure', 'type', quality.Measure),
-
-        ('date', 'cardinality', "0.1"),
-        ('evaluator', 'cardinality', "0.1"),
-        ('evaluation', 'cardinality', "1.1"),
-        ('measure', 'cardinality', "1.1"),
-
-    ),
-    data.DataStorageDb: (
-
-        ('name', 'type', unicode),
-        ('modification_date', 'type', datetime.datetime),
-        ('format', 'type', unicode),
-        ('location', 'type', unicode),
-        ('owner', 'type', unicode),
-        ('table', 'type', unicode),
-        ('access_string', 'type', unicode),
-        ('size', 'type', int),
-
-        ('name', 'cardinality', "0.1"),
-        ('modification_date', 'cardinality', "0.1"),
-        ('format', 'cardinality', "0.1"),
-        ('location', 'cardinality', "0.1"),
-        ('owner', 'cardinality', "0.1"),
-        ('table', 'cardinality', "0.1"),
-        ('access_string', 'cardinality', "0.1"),
-        ('size', 'cardinality', "0.1"),
-
-    ),
-    activity.OutputRequirement: (
-
-        ('description', 'type', unicode),
-        ('options', 'type', activity.NumericalRequirementOption),
-        ('source', 'type', shared.DataSource),
-        ('requirement_type', 'type', unicode),
-        ('id', 'type', unicode),
-        ('name', 'type', unicode),
-
-        ('description', 'cardinality', "0.1"),
-        ('options', 'cardinality', "0.N"),
-        ('source', 'cardinality', "0.1"),
-        ('requirement_type', 'cardinality', "1.1"),
-        ('id', 'cardinality', "0.1"),
-        ('name', 'cardinality', "1.1"),
-
-        ('requirement_type', 'constant', "outputRequirement"),
-    ),
-    data.DataTopic: (
-
-        ('description', 'type', unicode),
-        ('unit', 'type', unicode),
-        ('name', 'type', unicode),
-
-        ('description', 'cardinality', "0.1"),
-        ('unit', 'cardinality', "0.1"),
-        ('name', 'cardinality', "0.1"),
-
-    ),
-    software.ComponentLanguage: (
-
-        ('name', 'type', unicode),
-        ('properties', 'type', software.ComponentLanguageProperty),
-
-        ('name', 'cardinality', "1.1"),
-        ('properties', 'cardinality', "0.N"),
-
-    ),
-    software.SpatialRegriddingUserMethod: (
-
-        ('name', 'type', unicode),
-        ('file', 'type', data.DataObject),
-
-        ('name', 'cardinality', "1.1"),
-        ('file', 'cardinality', "0.1"),
-
-    ),
-    grids.SimpleGridGeometry: (
-
-        ('dim_order', 'type', unicode),
-        ('num_dims', 'type', int),
-        ('xcoords', 'type', grids.CoordinateList),
-        ('is_mesh', 'type', bool),
-        ('ycoords', 'type', grids.CoordinateList),
-        ('zcoords', 'type', grids.CoordinateList),
-
-        ('dim_order', 'cardinality', "0.1"),
-        ('num_dims', 'cardinality', "1.1"),
-        ('xcoords', 'cardinality', "1.1"),
-        ('is_mesh', 'cardinality', "0.1"),
-        ('ycoords', 'cardinality', "1.1"),
-        ('zcoords', 'cardinality', "0.1"),
-
-    ),
-    shared.DocGenealogy: (
-
-        ('relationships', 'type', shared.DocRelationship),
-
-        ('relationships', 'cardinality', "0.N"),
-
-    ),
-    activity.NumericalRequirement: (
-
-        ('description', 'type', unicode),
-        ('options', 'type', activity.NumericalRequirementOption),
-        ('source', 'type', shared.DataSource),
-        ('requirement_type', 'type', unicode),
-        ('id', 'type', unicode),
-        ('name', 'type', unicode),
-
-        ('description', 'cardinality', "0.1"),
-        ('options', 'cardinality', "0.N"),
-        ('source', 'cardinality', "0.1"),
-        ('requirement_type', 'cardinality', "1.1"),
-        ('id', 'cardinality', "0.1"),
-        ('name', 'cardinality', "1.1"),
-
-    ),
-    software.ModelComponent: (
-
-        ('funding_sources', 'type', unicode),
-        ('version', 'type', unicode),
-        ('long_name', 'type', unicode),
-        ('meta', 'type', shared.DocMetaInfo),
-        ('responsible_parties', 'type', shared.ResponsibleParty),
-        ('short_name', 'type', unicode),
-        ('previous_version', 'type', unicode),
-        ('is_embedded', 'type', bool),
-        ('deployments', 'type', software.Deployment),
-        ('citations', 'type', shared.Citation),
-        ('type', 'type', unicode),
-        ('composition', 'type', software.Composition),
-        ('coupling_framework', 'type', unicode),
-        ('description', 'type', unicode),
-        ('parent', 'type', software.Component),
-        ('sub_components', 'type', software.Component),
-        ('dependencies', 'type', software.EntryPoint),
-        ('grid', 'type', grids.GridSpec),
-        ('purpose', 'type', unicode),
-        ('online_resource', 'type', unicode),
-        ('timing', 'type', software.Timing),
-        ('properties', 'type', software.ComponentProperty),
-        ('types', 'type', unicode),
-        ('language', 'type', software.ComponentLanguage),
-        ('license', 'type', shared.License),
-        ('release_date', 'type', datetime.datetime),
-        ('code_access', 'type', unicode),
-        ('activity', 'type', activity.Activity),
-
-        ('funding_sources', 'cardinality', "0.N"),
-        ('version', 'cardinality', "0.1"),
-        ('long_name', 'cardinality', "0.1"),
-        ('meta', 'cardinality', "1.1"),
-        ('responsible_parties', 'cardinality', "0.N"),
-        ('short_name', 'cardinality', "1.1"),
-        ('previous_version', 'cardinality', "0.1"),
-        ('is_embedded', 'cardinality', "0.1"),
-        ('deployments', 'cardinality', "0.N"),
-        ('citations', 'cardinality', "0.N"),
-        ('type', 'cardinality', "0.1"),
-        ('composition', 'cardinality', "0.1"),
-        ('coupling_framework', 'cardinality', "0.1"),
-        ('description', 'cardinality', "0.1"),
-        ('parent', 'cardinality', "0.1"),
-        ('sub_components', 'cardinality', "0.N"),
-        ('dependencies', 'cardinality', "0.N"),
-        ('grid', 'cardinality', "0.1"),
-        ('purpose', 'cardinality', "0.1"),
-        ('online_resource', 'cardinality', "0.1"),
-        ('timing', 'cardinality', "0.1"),
-        ('properties', 'cardinality', "0.N"),
-        ('types', 'cardinality', "1.N"),
-        ('language', 'cardinality', "0.1"),
-        ('license', 'cardinality', "0.1"),
-        ('release_date', 'cardinality', "0.1"),
-        ('code_access', 'cardinality', "0.1"),
-        ('activity', 'cardinality', "0.1"),
-
-    ),
-    activity.PhysicalModification: (
-
-        ('requirements', 'type', activity.NumericalRequirement),
-        ('description', 'type', unicode),
-        ('sources', 'type', shared.DataSource),
-        ('frequency', 'type', unicode),
-        ('is_conformant', 'type', bool),
-        ('type', 'type', unicode),
-
-        ('requirements', 'cardinality', "0.N"),
-        ('description', 'cardinality', "0.1"),
-        ('sources', 'cardinality', "0.N"),
-        ('frequency', 'cardinality', "0.1"),
-        ('is_conformant', 'cardinality', "1.1"),
-        ('type', 'cardinality', "0.1"),
 
     ),
     activity.SimulationComposite: (
@@ -3732,19 +3204,26 @@ CONSTRAINTS = {
         ('spinup_simulation', 'cardinality', "0.1"),
 
     ),
-    grids.GridExtent: (
+    data.DataDistribution: (
 
-        ('units', 'type', unicode),
-        ('maximum_latitude', 'type', unicode),
-        ('minimum_latitude', 'type', unicode),
-        ('maximum_longitude', 'type', unicode),
-        ('minimum_longitude', 'type', unicode),
+        ('access', 'type', unicode),
+        ('fee', 'type', unicode),
+        ('responsible_party', 'type', shared.ResponsibleParty),
+        ('format', 'type', unicode),
 
-        ('units', 'cardinality', "0.1"),
-        ('maximum_latitude', 'cardinality', "1.1"),
-        ('minimum_latitude', 'cardinality', "1.1"),
-        ('maximum_longitude', 'cardinality', "1.1"),
-        ('minimum_longitude', 'cardinality', "1.1"),
+        ('access', 'cardinality', "0.1"),
+        ('fee', 'cardinality', "0.1"),
+        ('responsible_party', 'cardinality', "0.1"),
+        ('format', 'cardinality', "0.1"),
+
+    ),
+    grids.GridProperty: (
+
+        ('name', 'type', unicode),
+        ('value', 'type', unicode),
+
+        ('name', 'cardinality', "0.1"),
+        ('value', 'cardinality', "0.1"),
 
     ),
     shared.MachineCompilerUnit: (
@@ -3754,6 +3233,79 @@ CONSTRAINTS = {
 
         ('machine', 'cardinality', "1.1"),
         ('compilers', 'cardinality', "0.N"),
+
+    ),
+    activity.Simulation: (
+
+        ('inputs', 'type', software.Coupling),
+        ('simulation_id', 'type', unicode),
+        ('funding_sources', 'type', unicode),
+        ('rationales', 'type', unicode),
+        ('description', 'type', unicode),
+        ('short_name', 'type', unicode),
+        ('control_simulation', 'type', activity.Simulation),
+        ('spinup_simulation', 'type', activity.Simulation),
+        ('spinup_date_range', 'type', shared.ClosedDateRange),
+        ('responsible_parties', 'type', shared.ResponsibleParty),
+        ('deployments', 'type', software.Deployment),
+        ('restarts', 'type', data.DataObject),
+        ('long_name', 'type', unicode),
+        ('outputs', 'type', data.DataObject),
+        ('authors', 'type', unicode),
+        ('calendar', 'type', shared.Calendar),
+        ('supports', 'type', activity.Experiment),
+        ('conformances', 'type', activity.Conformance),
+        ('projects', 'type', unicode),
+
+        ('inputs', 'cardinality', "0.N"),
+        ('simulation_id', 'cardinality', "0.1"),
+        ('funding_sources', 'cardinality', "0.N"),
+        ('rationales', 'cardinality', "0.N"),
+        ('description', 'cardinality', "0.1"),
+        ('short_name', 'cardinality', "1.1"),
+        ('control_simulation', 'cardinality', "0.1"),
+        ('spinup_simulation', 'cardinality', "0.1"),
+        ('spinup_date_range', 'cardinality', "0.1"),
+        ('responsible_parties', 'cardinality', "0.N"),
+        ('deployments', 'cardinality', "0.N"),
+        ('restarts', 'cardinality', "0.N"),
+        ('long_name', 'cardinality', "0.1"),
+        ('outputs', 'cardinality', "0.N"),
+        ('authors', 'cardinality', "0.1"),
+        ('calendar', 'cardinality', "1.1"),
+        ('supports', 'cardinality', "0.N"),
+        ('conformances', 'cardinality', "0.N"),
+        ('projects', 'cardinality', "0.N"),
+
+    ),
+    shared.DocReference: (
+
+        ('external_id', 'type', unicode),
+        ('url', 'type', unicode),
+        ('type', 'type', unicode),
+        ('description', 'type', unicode),
+        ('version', 'type', int),
+        ('changes', 'type', shared.Change),
+        ('id', 'type', uuid.UUID),
+        ('name', 'type', unicode),
+
+        ('external_id', 'cardinality', "0.1"),
+        ('url', 'cardinality', "0.1"),
+        ('type', 'cardinality', "0.1"),
+        ('description', 'cardinality', "0.1"),
+        ('version', 'cardinality', "0.1"),
+        ('changes', 'cardinality', "0.N"),
+        ('id', 'cardinality', "0.1"),
+        ('name', 'cardinality', "0.1"),
+
+    ),
+    quality.CimQuality: (
+
+        ('meta', 'type', shared.DocMetaInfo),
+        ('reports', 'type', quality.Report),
+
+        ('meta', 'cardinality', "1.1"),
+        ('reports', 'cardinality', "0.N"),
 
     ),
     activity.DownscalingSimulation: (
@@ -3791,27 +3343,281 @@ CONSTRAINTS = {
         ('projects', 'cardinality', "0.N"),
 
     ),
-    activity.SpatioTemporalConstraint: (
+    shared.Compiler: (
+
+        ('name', 'type', unicode),
+        ('language', 'type', unicode),
+        ('version', 'type', unicode),
+        ('environment_variables', 'type', unicode),
+        ('type', 'type', unicode),
+        ('options', 'type', unicode),
+
+        ('name', 'cardinality', "1.1"),
+        ('language', 'cardinality', "0.1"),
+        ('version', 'cardinality', "1.1"),
+        ('environment_variables', 'cardinality', "0.1"),
+        ('type', 'cardinality', "0.1"),
+        ('options', 'cardinality', "0.1"),
+
+    ),
+    shared.License: (
+
+        ('contact', 'type', unicode),
+        ('description', 'type', unicode),
+        ('is_unrestricted', 'type', bool),
+        ('name', 'type', unicode),
+
+        ('contact', 'cardinality', "0.1"),
+        ('description', 'cardinality', "0.1"),
+        ('is_unrestricted', 'cardinality', "0.1"),
+        ('name', 'cardinality', "0.1"),
+
+    ),
+    data.DataStorageFile: (
+
+        ('modification_date', 'type', datetime.datetime),
+        ('format', 'type', unicode),
+        ('file_name', 'type', unicode),
+        ('location', 'type', unicode),
+        ('path', 'type', unicode),
+        ('file_system', 'type', unicode),
+        ('size', 'type', int),
+
+        ('modification_date', 'cardinality', "0.1"),
+        ('format', 'cardinality', "0.1"),
+        ('file_name', 'cardinality', "0.1"),
+        ('location', 'cardinality', "0.1"),
+        ('path', 'cardinality', "0.1"),
+        ('file_system', 'cardinality', "0.1"),
+        ('size', 'cardinality', "0.1"),
+
+    ),
+    software.CouplingEndpoint: (
+
+        ('instance_id', 'type', unicode),
+        ('data_source', 'type', shared.DataSource),
+        ('properties', 'type', software.CouplingProperty),
+
+        ('instance_id', 'cardinality', "0.1"),
+        ('data_source', 'cardinality', "0.1"),
+        ('properties', 'cardinality', "0.N"),
+
+    ),
+    shared.DocMetaInfo: (
+
+        ('drs_keys', 'type', unicode),
+        ('update_date', 'type', datetime.datetime),
+        ('language', 'type', unicode),
+        ('create_date', 'type', datetime.datetime),
+        ('drs_path', 'type', unicode),
+        ('genealogy', 'type', shared.DocGenealogy),
+        ('author', 'type', shared.ResponsibleParty),
+        ('institute', 'type', unicode),
+        ('source_key', 'type', unicode),
+        ('project', 'type', unicode),
+        ('sort_key', 'type', unicode),
+        ('version', 'type', int),
+        ('status', 'type', unicode),
+        ('source', 'type', unicode),
+        ('type_sort_key', 'type', unicode),
+        ('external_ids', 'type', shared.StandardName),
+        ('type', 'type', unicode),
+        ('id', 'type', uuid.UUID),
+        ('type_display_name', 'type', unicode),
+
+        ('drs_keys', 'cardinality', "0.N"),
+        ('update_date', 'cardinality', "1.1"),
+        ('language', 'cardinality', "1.1"),
+        ('create_date', 'cardinality', "1.1"),
+        ('drs_path', 'cardinality', "0.1"),
+        ('genealogy', 'cardinality', "0.1"),
+        ('author', 'cardinality', "0.1"),
+        ('institute', 'cardinality', "0.1"),
+        ('source_key', 'cardinality', "0.1"),
+        ('project', 'cardinality', "1.1"),
+        ('sort_key', 'cardinality', "0.1"),
+        ('version', 'cardinality', "1.1"),
+        ('status', 'cardinality', "0.1"),
+        ('source', 'cardinality', "1.1"),
+        ('type_sort_key', 'cardinality', "0.1"),
+        ('external_ids', 'cardinality', "0.N"),
+        ('type', 'cardinality', "1.1"),
+        ('id', 'cardinality', "1.1"),
+        ('type_display_name', 'cardinality', "0.1"),
+
+        ('source', 'constant', "scripts"),
+    ),
+    shared.Relationship: (
+
+        ('direction', 'type', unicode),
+        ('description', 'type', unicode),
+
+        ('direction', 'cardinality', "1.1"),
+        ('description', 'cardinality', "0.1"),
+
+    ),
+    activity.Activity: (
+
+        ('funding_sources', 'type', unicode),
+        ('rationales', 'type', unicode),
+        ('responsible_parties', 'type', shared.ResponsibleParty),
+        ('projects', 'type', unicode),
+
+        ('funding_sources', 'cardinality', "0.N"),
+        ('rationales', 'cardinality', "0.N"),
+        ('responsible_parties', 'cardinality', "0.N"),
+        ('projects', 'cardinality', "0.N"),
+
+    ),
+    software.ModelComponent: (
+
+        ('funding_sources', 'type', unicode),
+        ('version', 'type', unicode),
+        ('long_name', 'type', unicode),
+        ('meta', 'type', shared.DocMetaInfo),
+        ('is_embedded', 'type', bool),
+        ('short_name', 'type', unicode),
+        ('previous_version', 'type', unicode),
+        ('responsible_parties', 'type', shared.ResponsibleParty),
+        ('deployments', 'type', software.Deployment),
+        ('citations', 'type', shared.Citation),
+        ('type', 'type', unicode),
+        ('composition', 'type', software.Composition),
+        ('coupling_framework', 'type', unicode),
+        ('description', 'type', unicode),
+        ('parent', 'type', software.Component),
+        ('sub_components', 'type', software.Component),
+        ('dependencies', 'type', software.EntryPoint),
+        ('grid', 'type', grids.GridSpec),
+        ('purpose', 'type', unicode),
+        ('online_resource', 'type', unicode),
+        ('timing', 'type', software.Timing),
+        ('properties', 'type', software.ComponentProperty),
+        ('types', 'type', unicode),
+        ('language', 'type', software.ComponentLanguage),
+        ('license', 'type', shared.License),
+        ('release_date', 'type', datetime.datetime),
+        ('code_access', 'type', unicode),
+        ('activity', 'type', activity.Activity),
+
+        ('funding_sources', 'cardinality', "0.N"),
+        ('version', 'cardinality', "0.1"),
+        ('long_name', 'cardinality', "0.1"),
+        ('meta', 'cardinality', "1.1"),
+        ('is_embedded', 'cardinality', "0.1"),
+        ('short_name', 'cardinality', "1.1"),
+        ('previous_version', 'cardinality', "0.1"),
+        ('responsible_parties', 'cardinality', "0.N"),
+        ('deployments', 'cardinality', "0.N"),
+        ('citations', 'cardinality', "0.N"),
+        ('type', 'cardinality', "0.1"),
+        ('composition', 'cardinality', "0.1"),
+        ('coupling_framework', 'cardinality', "0.1"),
+        ('description', 'cardinality', "0.1"),
+        ('parent', 'cardinality', "0.1"),
+        ('sub_components', 'cardinality', "0.N"),
+        ('dependencies', 'cardinality', "0.N"),
+        ('grid', 'cardinality', "0.1"),
+        ('purpose', 'cardinality', "0.1"),
+        ('online_resource', 'cardinality', "0.1"),
+        ('timing', 'cardinality', "0.1"),
+        ('properties', 'cardinality', "0.N"),
+        ('types', 'cardinality', "1.N"),
+        ('language', 'cardinality', "0.1"),
+        ('license', 'cardinality', "0.1"),
+        ('release_date', 'cardinality', "0.1"),
+        ('code_access', 'cardinality', "0.1"),
+        ('activity', 'cardinality', "0.1"),
+
+    ),
+    software.ComponentProperty: (
+
+        ('standard_names', 'type', unicode),
+        ('sub_properties', 'type', software.ComponentProperty),
+        ('grid', 'type', unicode),
+        ('description', 'type', unicode),
+        ('short_name', 'type', unicode),
+        ('is_represented', 'type', bool),
+        ('long_name', 'type', unicode),
+        ('citations', 'type', shared.Citation),
+        ('values', 'type', unicode),
+        ('purpose', 'type', unicode),
+        ('units', 'type', unicode),
+        ('intent', 'type', unicode),
+
+        ('standard_names', 'cardinality', "0.N"),
+        ('sub_properties', 'cardinality', "0.N"),
+        ('grid', 'cardinality', "0.1"),
+        ('description', 'cardinality', "0.1"),
+        ('short_name', 'cardinality', "1.1"),
+        ('is_represented', 'cardinality', "1.1"),
+        ('long_name', 'cardinality', "0.1"),
+        ('citations', 'cardinality', "0.N"),
+        ('values', 'cardinality', "0.N"),
+        ('purpose', 'cardinality', "0.1"),
+        ('units', 'cardinality', "0.1"),
+        ('intent', 'cardinality', "0.1"),
+
+    ),
+    activity.OutputRequirement: (
 
         ('description', 'type', unicode),
         ('options', 'type', activity.NumericalRequirementOption),
-        ('date_range', 'type', shared.DateRange),
         ('source', 'type', shared.DataSource),
-        ('spatial_resolution', 'type', unicode),
         ('requirement_type', 'type', unicode),
         ('id', 'type', unicode),
         ('name', 'type', unicode),
 
         ('description', 'cardinality', "0.1"),
         ('options', 'cardinality', "0.N"),
-        ('date_range', 'cardinality', "0.1"),
         ('source', 'cardinality', "0.1"),
-        ('spatial_resolution', 'cardinality', "0.1"),
         ('requirement_type', 'cardinality', "1.1"),
         ('id', 'cardinality', "0.1"),
         ('name', 'cardinality', "1.1"),
 
-        ('requirement_type', 'constant', "spatioTemporalConstraint"),
+        ('requirement_type', 'constant', "outputRequirement"),
+    ),
+    grids.GridExtent: (
+
+        ('units', 'type', unicode),
+        ('maximum_latitude', 'type', unicode),
+        ('minimum_latitude', 'type', unicode),
+        ('maximum_longitude', 'type', unicode),
+        ('minimum_longitude', 'type', unicode),
+
+        ('units', 'cardinality', "0.1"),
+        ('maximum_latitude', 'cardinality', "1.1"),
+        ('minimum_latitude', 'cardinality', "1.1"),
+        ('maximum_longitude', 'cardinality', "1.1"),
+        ('minimum_longitude', 'cardinality', "1.1"),
+
+    ),
+    software.Connection: (
+
+        ('transformers', 'type', software.ProcessorComponent),
+        ('description', 'type', unicode),
+        ('time_transformation', 'type', software.TimeTransformation),
+        ('spatial_regridding', 'type', software.SpatialRegridding),
+        ('sources', 'type', software.ConnectionEndpoint),
+        ('target', 'type', software.ConnectionEndpoint),
+        ('time_profile', 'type', software.Timing),
+        ('type', 'type', unicode),
+        ('properties', 'type', software.ConnectionProperty),
+        ('time_lag', 'type', unicode),
+        ('priming', 'type', shared.DataSource),
+
+        ('transformers', 'cardinality', "0.N"),
+        ('description', 'cardinality', "0.1"),
+        ('time_transformation', 'cardinality', "0.1"),
+        ('spatial_regridding', 'cardinality', "0.N"),
+        ('sources', 'cardinality', "0.N"),
+        ('target', 'cardinality', "0.1"),
+        ('time_profile', 'cardinality', "0.1"),
+        ('type', 'cardinality', "0.1"),
+        ('properties', 'cardinality', "0.N"),
+        ('time_lag', 'cardinality', "0.1"),
+        ('priming', 'cardinality', "0.1"),
+
     ),
     software.TimeTransformation: (
 
@@ -3822,13 +3628,207 @@ CONSTRAINTS = {
         ('mapping_type', 'cardinality', "1.1"),
 
     ),
-    data.DataExtent: (
+    quality.Report: (
 
-        ('temporal', 'type', data.DataExtentTemporal),
-        ('geographical', 'type', data.DataExtentGeographical),
+        ('date', 'type', datetime.datetime),
+        ('evaluator', 'type', shared.ResponsibleParty),
+        ('evaluation', 'type', quality.Evaluation),
+        ('measure', 'type', quality.Measure),
 
-        ('temporal', 'cardinality', "1.1"),
-        ('geographical', 'cardinality', "1.1"),
+        ('date', 'cardinality', "0.1"),
+        ('evaluator', 'cardinality', "0.1"),
+        ('evaluation', 'cardinality', "1.1"),
+        ('measure', 'cardinality', "1.1"),
+
+    ),
+    shared.DocRelationship: (
+
+        ('direction', 'type', unicode),
+        ('type', 'type', unicode),
+        ('description', 'type', unicode),
+        ('target', 'type', shared.DocRelationshipTarget),
+
+        ('direction', 'cardinality', "1.1"),
+        ('type', 'cardinality', "1.1"),
+        ('description', 'cardinality', "0.1"),
+        ('target', 'cardinality', "1.1"),
+
+    ),
+    shared.StandardName: (
+
+        ('is_open', 'type', bool),
+        ('value', 'type', unicode),
+        ('standards', 'type', shared.Standard),
+
+        ('is_open', 'cardinality', "1.1"),
+        ('value', 'cardinality', "1.1"),
+        ('standards', 'cardinality', "0.N"),
+
+    ),
+    grids.SimpleGridGeometry: (
+
+        ('dim_order', 'type', unicode),
+        ('num_dims', 'type', int),
+        ('xcoords', 'type', grids.CoordinateList),
+        ('is_mesh', 'type', bool),
+        ('ycoords', 'type', grids.CoordinateList),
+        ('zcoords', 'type', grids.CoordinateList),
+
+        ('dim_order', 'cardinality', "0.1"),
+        ('num_dims', 'cardinality', "1.1"),
+        ('xcoords', 'cardinality', "1.1"),
+        ('is_mesh', 'cardinality', "0.1"),
+        ('ycoords', 'cardinality', "1.1"),
+        ('zcoords', 'cardinality', "0.1"),
+
+    ),
+    activity.NumericalRequirement: (
+
+        ('description', 'type', unicode),
+        ('options', 'type', activity.NumericalRequirementOption),
+        ('source', 'type', shared.DataSource),
+        ('requirement_type', 'type', unicode),
+        ('id', 'type', unicode),
+        ('name', 'type', unicode),
+
+        ('description', 'cardinality', "0.1"),
+        ('options', 'cardinality', "0.N"),
+        ('source', 'cardinality', "0.1"),
+        ('requirement_type', 'cardinality', "1.1"),
+        ('id', 'cardinality', "0.1"),
+        ('name', 'cardinality', "1.1"),
+
+    ),
+    activity.PhysicalModification: (
+
+        ('requirements', 'type', activity.NumericalRequirement),
+        ('description', 'type', unicode),
+        ('sources', 'type', shared.DataSource),
+        ('frequency', 'type', unicode),
+        ('is_conformant', 'type', bool),
+        ('type', 'type', unicode),
+
+        ('requirements', 'cardinality', "0.N"),
+        ('description', 'cardinality', "0.1"),
+        ('sources', 'cardinality', "0.N"),
+        ('frequency', 'cardinality', "0.1"),
+        ('is_conformant', 'cardinality', "1.1"),
+        ('type', 'cardinality', "0.1"),
+
+    ),
+    activity.InitialCondition: (
+
+        ('description', 'type', unicode),
+        ('options', 'type', activity.NumericalRequirementOption),
+        ('source', 'type', shared.DataSource),
+        ('requirement_type', 'type', unicode),
+        ('id', 'type', unicode),
+        ('name', 'type', unicode),
+
+        ('description', 'cardinality', "0.1"),
+        ('options', 'cardinality', "0.N"),
+        ('source', 'cardinality', "0.1"),
+        ('requirement_type', 'cardinality', "1.1"),
+        ('id', 'cardinality', "0.1"),
+        ('name', 'cardinality', "1.1"),
+
+        ('requirement_type', 'constant', "initialCondition"),
+    ),
+    shared.ClosedDateRange: (
+
+        ('duration', 'type', unicode),
+        ('start', 'type', datetime.datetime),
+        ('end', 'type', datetime.datetime),
+
+        ('duration', 'cardinality', "0.1"),
+        ('start', 'cardinality', "1.1"),
+        ('end', 'cardinality', "0.1"),
+
+    ),
+    shared.OpenDateRange: (
+
+        ('duration', 'type', unicode),
+        ('start', 'type', datetime.datetime),
+        ('end', 'type', datetime.datetime),
+
+        ('duration', 'cardinality', "0.1"),
+        ('start', 'cardinality', "0.1"),
+        ('end', 'cardinality', "0.1"),
+
+    ),
+    quality.Measure: (
+
+        ('identification', 'type', unicode),
+        ('name', 'type', unicode),
+        ('description', 'type', unicode),
+
+        ('identification', 'cardinality', "0.1"),
+        ('name', 'cardinality', "0.1"),
+        ('description', 'cardinality', "0.1"),
+
+    ),
+    activity.LateralBoundaryCondition: (
+
+        ('description', 'type', unicode),
+        ('options', 'type', activity.NumericalRequirementOption),
+        ('source', 'type', shared.DataSource),
+        ('requirement_type', 'type', unicode),
+        ('id', 'type', unicode),
+        ('name', 'type', unicode),
+
+        ('description', 'cardinality', "0.1"),
+        ('options', 'cardinality', "0.N"),
+        ('source', 'cardinality', "0.1"),
+        ('requirement_type', 'cardinality', "1.1"),
+        ('id', 'cardinality', "0.1"),
+        ('name', 'cardinality', "1.1"),
+
+        ('requirement_type', 'constant', "lateralBoundaryCondition"),
+    ),
+    software.Coupling: (
+
+        ('transformers', 'type', software.ProcessorComponent),
+        ('description', 'type', unicode),
+        ('is_fully_specified', 'type', bool),
+        ('time_transformation', 'type', software.TimeTransformation),
+        ('connections', 'type', software.Connection),
+        ('sources', 'type', software.CouplingEndpoint),
+        ('spatial_regriddings', 'type', software.SpatialRegridding),
+        ('purpose', 'type', unicode),
+        ('target', 'type', software.CouplingEndpoint),
+        ('time_profile', 'type', software.Timing),
+        ('type', 'type', unicode),
+        ('properties', 'type', software.CouplingProperty),
+        ('time_lag', 'type', software.TimeLag),
+        ('priming', 'type', shared.DataSource),
+
+        ('transformers', 'cardinality', "0.N"),
+        ('description', 'cardinality', "0.1"),
+        ('is_fully_specified', 'cardinality', "1.1"),
+        ('time_transformation', 'cardinality', "0.1"),
+        ('connections', 'cardinality', "0.N"),
+        ('sources', 'cardinality', "1.N"),
+        ('spatial_regriddings', 'cardinality', "0.N"),
+        ('purpose', 'cardinality', "1.1"),
+        ('target', 'cardinality', "1.1"),
+        ('time_profile', 'cardinality', "0.1"),
+        ('type', 'cardinality', "0.1"),
+        ('properties', 'cardinality', "0.N"),
+        ('time_lag', 'cardinality', "0.1"),
+        ('priming', 'cardinality', "0.1"),
+
+    ),
+    software.SpatialRegridding: (
+
+        ('user_method', 'type', software.SpatialRegriddingUserMethod),
+        ('dimension', 'type', unicode),
+        ('standard_method', 'type', unicode),
+        ('properties', 'type', software.SpatialRegriddingProperty),
+
+        ('user_method', 'cardinality', "0.1"),
+        ('dimension', 'cardinality', "0.1"),
+        ('standard_method', 'cardinality', "0.1"),
+        ('properties', 'cardinality', "0.N"),
 
     ),
     # ------------------------------------------------
@@ -3836,18 +3836,350 @@ CONSTRAINTS = {
     # ------------------------------------------------
 
 
-    (shared.Relationship, 'description'): (
+    (shared.Calendar, 'length'): (
+
+        ('type', int),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (shared.Calendar, 'range'): (
+
+        ('type', shared.DateRange),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (shared.Calendar, 'description'): (
 
         ('type', unicode),
 
         ('cardinality', "0.1"),
 
     ),
-    (shared.Relationship, 'direction'): (
+
+    (activity.ExperimentRelationship, 'target'): (
+
+        ('type', activity.ExperimentRelationshipTarget),
+
+        ('cardinality', "1.1"),
+
+    ),
+    (activity.ExperimentRelationship, 'description'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (activity.ExperimentRelationship, 'direction'): (
 
         ('type', unicode),
 
         ('cardinality', "1.1"),
+
+    ),
+    (activity.ExperimentRelationship, 'type'): (
+
+        ('type', unicode),
+
+        ('cardinality', "1.1"),
+
+    ),
+
+    (data.DataStorage, 'format'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (data.DataStorage, 'size'): (
+
+        ('type', int),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (data.DataStorage, 'location'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (data.DataStorage, 'modification_date'): (
+
+        ('type', datetime.datetime),
+
+        ('cardinality', "0.1"),
+
+    ),
+
+    (software.CouplingProperty, 'name'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (software.CouplingProperty, 'value'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+
+    (activity.SimulationRun, 'calendar'): (
+
+        ('type', shared.Calendar),
+
+        ('cardinality', "1.1"),
+
+    ),
+    (activity.SimulationRun, 'spinup_date_range'): (
+
+        ('type', shared.ClosedDateRange),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (activity.SimulationRun, 'responsible_parties'): (
+
+        ('type', shared.ResponsibleParty),
+
+        ('cardinality', "0.N"),
+
+    ),
+    (activity.SimulationRun, 'meta'): (
+
+        ('type', shared.DocMetaInfo),
+
+        ('cardinality', "1.1"),
+
+    ),
+    (activity.SimulationRun, 'funding_sources'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.N"),
+
+    ),
+    (activity.SimulationRun, 'spinup_simulation'): (
+
+        ('type', activity.Simulation),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (activity.SimulationRun, 'supports'): (
+
+        ('type', activity.Experiment),
+
+        ('cardinality', "0.N"),
+
+    ),
+    (activity.SimulationRun, 'date_range'): (
+
+        ('type', shared.DateRange),
+
+        ('cardinality', "1.1"),
+
+    ),
+    (activity.SimulationRun, 'rationales'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.N"),
+
+    ),
+    (activity.SimulationRun, 'model'): (
+
+        ('type', software.ModelComponent),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (activity.SimulationRun, 'short_name'): (
+
+        ('type', unicode),
+
+        ('cardinality', "1.1"),
+
+    ),
+    (activity.SimulationRun, 'inputs'): (
+
+        ('type', software.Coupling),
+
+        ('cardinality', "0.N"),
+
+    ),
+    (activity.SimulationRun, 'conformances'): (
+
+        ('type', activity.Conformance),
+
+        ('cardinality', "0.N"),
+
+    ),
+    (activity.SimulationRun, 'outputs'): (
+
+        ('type', data.DataObject),
+
+        ('cardinality', "0.N"),
+
+    ),
+    (activity.SimulationRun, 'restarts'): (
+
+        ('type', data.DataObject),
+
+        ('cardinality', "0.N"),
+
+    ),
+    (activity.SimulationRun, 'description'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (activity.SimulationRun, 'control_simulation'): (
+
+        ('type', activity.Simulation),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (activity.SimulationRun, 'authors'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (activity.SimulationRun, 'deployments'): (
+
+        ('type', software.Deployment),
+
+        ('cardinality', "0.N"),
+
+    ),
+    (activity.SimulationRun, 'simulation_id'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (activity.SimulationRun, 'projects'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.N"),
+
+    ),
+    (activity.SimulationRun, 'long_name'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+
+    (activity.BoundaryCondition, 'requirement_type'): (
+
+        ('type', unicode),
+
+        ('cardinality', "1.1"),
+
+        ('constant', "boundaryCondition"),
+    ),
+    (activity.BoundaryCondition, 'id'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (activity.BoundaryCondition, 'options'): (
+
+        ('type', activity.NumericalRequirementOption),
+
+        ('cardinality', "0.N"),
+
+    ),
+    (activity.BoundaryCondition, 'source'): (
+
+        ('type', shared.DataSource),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (activity.BoundaryCondition, 'description'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (activity.BoundaryCondition, 'name'): (
+
+        ('type', unicode),
+
+        ('cardinality', "1.1"),
+
+    ),
+
+    (software.EntryPoint, 'name'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+
+    (software.SpatialRegriddingUserMethod, 'file'): (
+
+        ('type', data.DataObject),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (software.SpatialRegriddingUserMethod, 'name'): (
+
+        ('type', unicode),
+
+        ('cardinality', "1.1"),
+
+    ),
+
+    (activity.SimulationRelationshipTarget, 'simulation'): (
+
+        ('type', shared.DocReference),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (activity.SimulationRelationshipTarget, 'target'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+
+    (software.ComponentLanguage, 'name'): (
+
+        ('type', unicode),
+
+        ('cardinality', "1.1"),
+
+    ),
+    (software.ComponentLanguage, 'properties'): (
+
+        ('type', software.ComponentLanguageProperty),
+
+        ('cardinality', "0.N"),
 
     ),
 
@@ -3894,318 +4226,6 @@ CONSTRAINTS = {
 
     ),
 
-    (shared.DocRelationshipTarget, 'reference'): (
-
-        ('type', shared.DocReference),
-
-        ('cardinality', "0.1"),
-
-    ),
-
-    (data.DataStorage, 'location'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (data.DataStorage, 'format'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (data.DataStorage, 'size'): (
-
-        ('type', int),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (data.DataStorage, 'modification_date'): (
-
-        ('type', datetime.datetime),
-
-        ('cardinality', "0.1"),
-
-    ),
-
-    (grids.VerticalCoordinateList, 'has_constant_offset'): (
-
-        ('type', bool),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (grids.VerticalCoordinateList, 'form'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (grids.VerticalCoordinateList, 'length'): (
-
-        ('type', int),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (grids.VerticalCoordinateList, 'uom'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (grids.VerticalCoordinateList, 'properties'): (
-
-        ('type', grids.GridProperty),
-
-        ('cardinality', "0.N"),
-
-    ),
-    (grids.VerticalCoordinateList, 'type'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-
-    (software.Rank, 'increment'): (
-
-        ('type', int),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (software.Rank, 'max'): (
-
-        ('type', int),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (software.Rank, 'min'): (
-
-        ('type', int),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (software.Rank, 'value'): (
-
-        ('type', int),
-
-        ('cardinality', "0.1"),
-
-    ),
-
-    (data.DataContent, 'aggregation'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (data.DataContent, 'purpose'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (data.DataContent, 'topic'): (
-
-        ('type', data.DataTopic),
-
-        ('cardinality', "1.1"),
-
-    ),
-    (data.DataContent, 'frequency'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-
-    (shared.PerpetualPeriod, 'description'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (shared.PerpetualPeriod, 'range'): (
-
-        ('type', shared.DateRange),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (shared.PerpetualPeriod, 'length'): (
-
-        ('type', int),
-
-        ('cardinality', "0.1"),
-
-    ),
-
-    (quality.Evaluation, 'specification_hyperlink'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (quality.Evaluation, 'specification'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (quality.Evaluation, 'date'): (
-
-        ('type', datetime.datetime),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (quality.Evaluation, 'type'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (quality.Evaluation, 'did_pass'): (
-
-        ('type', bool),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (quality.Evaluation, 'explanation'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (quality.Evaluation, 'description'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (quality.Evaluation, 'title'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (quality.Evaluation, 'type_hyperlink'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-
-    (shared.ChangeProperty, 'name'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (shared.ChangeProperty, 'value'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (shared.ChangeProperty, 'description'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (shared.ChangeProperty, 'id'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-
-    (software.TimeLag, 'units'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (software.TimeLag, 'value'): (
-
-        ('type', int),
-
-        ('cardinality', "0.1"),
-
-    ),
-
-    (shared.Calendar, 'description'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (shared.Calendar, 'length'): (
-
-        ('type', int),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (shared.Calendar, 'range'): (
-
-        ('type', shared.DateRange),
-
-        ('cardinality', "0.1"),
-
-    ),
-
-    (software.CouplingEndpoint, 'data_source'): (
-
-        ('type', shared.DataSource),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (software.CouplingEndpoint, 'instance_id'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (software.CouplingEndpoint, 'properties'): (
-
-        ('type', software.CouplingProperty),
-
-        ('cardinality', "0.N"),
-
-    ),
-
     (grids.GridTileResolutionType, 'description'): (
 
         ('type', unicode),
@@ -4221,113 +4241,195 @@ CONSTRAINTS = {
 
     ),
 
-    (shared.RealCalendar, 'description'): (
+    (shared.Daily360, 'description'): (
 
         ('type', unicode),
 
         ('cardinality', "0.1"),
 
     ),
-    (shared.RealCalendar, 'range'): (
-
-        ('type', shared.DateRange),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (shared.RealCalendar, 'length'): (
+    (shared.Daily360, 'length'): (
 
         ('type', int),
 
         ('cardinality', "0.1"),
 
     ),
+    (shared.Daily360, 'range'): (
 
-    (activity.LateralBoundaryCondition, 'requirement_type'): (
+        ('type', shared.DateRange),
 
-        ('type', unicode),
+        ('cardinality', "0.1"),
 
-        ('cardinality', "1.1"),
-
-        ('constant', "lateralBoundaryCondition"),
     ),
-    (activity.LateralBoundaryCondition, 'id'): (
+
+    (software.Component, 'grid'): (
+
+        ('type', grids.GridSpec),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (software.Component, 'code_access'): (
 
         ('type', unicode),
 
         ('cardinality', "0.1"),
 
     ),
-    (activity.LateralBoundaryCondition, 'options'): (
+    (software.Component, 'properties'): (
 
-        ('type', activity.NumericalRequirementOption),
+        ('type', software.ComponentProperty),
 
         ('cardinality', "0.N"),
 
     ),
-    (activity.LateralBoundaryCondition, 'source'): (
+    (software.Component, 'is_embedded'): (
 
-        ('type', shared.DataSource),
+        ('type', bool),
 
         ('cardinality', "0.1"),
 
     ),
-    (activity.LateralBoundaryCondition, 'description'): (
+    (software.Component, 'composition'): (
+
+        ('type', software.Composition),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (software.Component, 'language'): (
+
+        ('type', software.ComponentLanguage),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (software.Component, 'coupling_framework'): (
 
         ('type', unicode),
 
         ('cardinality', "0.1"),
 
     ),
-    (activity.LateralBoundaryCondition, 'name'): (
+    (software.Component, 'previous_version'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (software.Component, 'license'): (
+
+        ('type', shared.License),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (software.Component, 'short_name'): (
 
         ('type', unicode),
 
         ('cardinality', "1.1"),
 
     ),
+    (software.Component, 'release_date'): (
 
-    (activity.InitialCondition, 'requirement_type'): (
+        ('type', datetime.datetime),
 
-        ('type', unicode),
+        ('cardinality', "0.1"),
 
-        ('cardinality', "1.1"),
-
-        ('constant', "initialCondition"),
     ),
-    (activity.InitialCondition, 'id'): (
+    (software.Component, 'long_name'): (
 
         ('type', unicode),
 
         ('cardinality', "0.1"),
 
     ),
-    (activity.InitialCondition, 'options'): (
+    (software.Component, 'purpose'): (
 
-        ('type', activity.NumericalRequirementOption),
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (software.Component, 'parent'): (
+
+        ('type', software.Component),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (software.Component, 'responsible_parties'): (
+
+        ('type', shared.ResponsibleParty),
 
         ('cardinality', "0.N"),
 
     ),
-    (activity.InitialCondition, 'source'): (
-
-        ('type', shared.DataSource),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (activity.InitialCondition, 'description'): (
+    (software.Component, 'online_resource'): (
 
         ('type', unicode),
 
         ('cardinality', "0.1"),
 
     ),
-    (activity.InitialCondition, 'name'): (
+    (software.Component, 'version'): (
 
         ('type', unicode),
 
-        ('cardinality', "1.1"),
+        ('cardinality', "0.1"),
+
+    ),
+    (software.Component, 'description'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (software.Component, 'sub_components'): (
+
+        ('type', software.Component),
+
+        ('cardinality', "0.N"),
+
+    ),
+    (software.Component, 'deployments'): (
+
+        ('type', software.Deployment),
+
+        ('cardinality', "0.N"),
+
+    ),
+    (software.Component, 'funding_sources'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.N"),
+
+    ),
+    (software.Component, 'dependencies'): (
+
+        ('type', software.EntryPoint),
+
+        ('cardinality', "0.N"),
+
+    ),
+    (software.Component, 'citations'): (
+
+        ('type', shared.Citation),
+
+        ('cardinality', "0.N"),
+
+    ),
+
+    (shared.DateRange, 'duration'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
 
     ),
 
@@ -4353,74 +4455,31 @@ CONSTRAINTS = {
 
     ),
 
-    (shared.Platform, 'short_name'): (
+    (data.DataTopic, 'description'): (
 
         ('type', unicode),
 
-        ('cardinality', "1.1"),
+        ('cardinality', "0.1"),
 
     ),
-    (shared.Platform, 'meta'): (
+    (data.DataTopic, 'name'): (
 
-        ('type', shared.DocMetaInfo),
+        ('type', unicode),
 
-        ('cardinality', "1.1"),
-
-    ),
-    (shared.Platform, 'units'): (
-
-        ('type', shared.MachineCompilerUnit),
-
-        ('cardinality', "1.N"),
+        ('cardinality', "0.1"),
 
     ),
-    (shared.Platform, 'contacts'): (
+    (data.DataTopic, 'unit'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+
+    (activity.NumericalActivity, 'responsible_parties'): (
 
         ('type', shared.ResponsibleParty),
-
-        ('cardinality', "0.N"),
-
-    ),
-    (shared.Platform, 'long_name'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (shared.Platform, 'description'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-
-    (data.DataProperty, 'description'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (data.DataProperty, 'value'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (data.DataProperty, 'name'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-
-    (activity.NumericalActivity, 'rationales'): (
-
-        ('type', unicode),
 
         ('cardinality', "0.N"),
 
@@ -4432,13 +4491,6 @@ CONSTRAINTS = {
         ('cardinality', "1.1"),
 
     ),
-    (activity.NumericalActivity, 'supports'): (
-
-        ('type', activity.Experiment),
-
-        ('cardinality', "0.N"),
-
-    ),
     (activity.NumericalActivity, 'funding_sources'): (
 
         ('type', unicode),
@@ -4446,9 +4498,16 @@ CONSTRAINTS = {
         ('cardinality', "0.N"),
 
     ),
-    (activity.NumericalActivity, 'responsible_parties'): (
+    (activity.NumericalActivity, 'supports'): (
 
-        ('type', shared.ResponsibleParty),
+        ('type', activity.Experiment),
+
+        ('cardinality', "0.N"),
+
+    ),
+    (activity.NumericalActivity, 'projects'): (
+
+        ('type', unicode),
 
         ('cardinality', "0.N"),
 
@@ -4460,6 +4519,13 @@ CONSTRAINTS = {
         ('cardinality', "0.1"),
 
     ),
+    (activity.NumericalActivity, 'rationales'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.N"),
+
+    ),
     (activity.NumericalActivity, 'long_name'): (
 
         ('type', unicode),
@@ -4467,145 +4533,267 @@ CONSTRAINTS = {
         ('cardinality', "0.1"),
 
     ),
-    (activity.NumericalActivity, 'projects'): (
+
+    (activity.EnsembleMember, 'responsible_parties'): (
+
+        ('type', shared.ResponsibleParty),
+
+        ('cardinality', "0.N"),
+
+    ),
+    (activity.EnsembleMember, 'ensemble_ids'): (
+
+        ('type', shared.StandardName),
+
+        ('cardinality', "0.N"),
+
+    ),
+    (activity.EnsembleMember, 'funding_sources'): (
 
         ('type', unicode),
 
         ('cardinality', "0.N"),
 
     ),
+    (activity.EnsembleMember, 'simulation'): (
 
-    (shared.OpenDateRange, 'duration'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (shared.OpenDateRange, 'end'): (
-
-        ('type', datetime.datetime),
+        ('type', activity.Simulation),
 
         ('cardinality', "0.1"),
 
     ),
-    (shared.OpenDateRange, 'start'): (
+    (activity.EnsembleMember, 'supports'): (
 
-        ('type', datetime.datetime),
+        ('type', activity.Experiment),
 
-        ('cardinality', "0.1"),
+        ('cardinality', "0.N"),
 
     ),
-
-    (software.Composition, 'couplings'): (
+    (activity.EnsembleMember, 'projects'): (
 
         ('type', unicode),
 
         ('cardinality', "0.N"),
 
     ),
-    (software.Composition, 'description'): (
+    (activity.EnsembleMember, 'long_name'): (
 
         ('type', unicode),
 
         ('cardinality', "0.1"),
 
     ),
+    (activity.EnsembleMember, 'description'): (
 
-    (software.Coupling, 'is_fully_specified'): (
+        ('type', unicode),
 
-        ('type', bool),
+        ('cardinality', "0.1"),
+
+    ),
+    (activity.EnsembleMember, 'rationales'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.N"),
+
+    ),
+    (activity.EnsembleMember, 'ensemble'): (
+
+        ('type', activity.Ensemble),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (activity.EnsembleMember, 'short_name'): (
+
+        ('type', unicode),
 
         ('cardinality', "1.1"),
 
     ),
-    (software.Coupling, 'connections'): (
 
-        ('type', software.Connection),
+    (shared.Machine, 'location'): (
 
-        ('cardinality', "0.N"),
-
-    ),
-    (software.Coupling, 'time_profile'): (
-
-        ('type', software.Timing),
+        ('type', unicode),
 
         ('cardinality', "0.1"),
 
     ),
-    (software.Coupling, 'priming'): (
+    (shared.Machine, 'type'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (shared.Machine, 'description'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (shared.Machine, 'maximum_processors'): (
+
+        ('type', int),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (shared.Machine, 'cores_per_processor'): (
+
+        ('type', int),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (shared.Machine, 'vendor'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (shared.Machine, 'name'): (
+
+        ('type', unicode),
+
+        ('cardinality', "1.1"),
+
+    ),
+    (shared.Machine, 'processor_type'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (shared.Machine, 'interconnect'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (shared.Machine, 'libraries'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.N"),
+
+    ),
+    (shared.Machine, 'system'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (shared.Machine, 'operating_system'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+
+    (activity.ExperimentRelationshipTarget, 'numerical_experiment'): (
+
+        ('type', activity.NumericalExperiment),
+
+        ('cardinality', "0.1"),
+
+    ),
+
+    (activity.NumericalRequirementOption, 'description'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (activity.NumericalRequirementOption, 'sub_options'): (
+
+        ('type', activity.NumericalRequirementOption),
+
+        ('cardinality', "0.N"),
+
+    ),
+    (activity.NumericalRequirementOption, 'name'): (
+
+        ('type', unicode),
+
+        ('cardinality', "1.1"),
+
+    ),
+    (activity.NumericalRequirementOption, 'id'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (activity.NumericalRequirementOption, 'relationship'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+
+    (activity.SpatioTemporalConstraint, 'spatial_resolution'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (activity.SpatioTemporalConstraint, 'options'): (
+
+        ('type', activity.NumericalRequirementOption),
+
+        ('cardinality', "0.N"),
+
+    ),
+    (activity.SpatioTemporalConstraint, 'description'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (activity.SpatioTemporalConstraint, 'name'): (
+
+        ('type', unicode),
+
+        ('cardinality', "1.1"),
+
+    ),
+    (activity.SpatioTemporalConstraint, 'requirement_type'): (
+
+        ('type', unicode),
+
+        ('cardinality', "1.1"),
+
+        ('constant', "spatioTemporalConstraint"),
+    ),
+    (activity.SpatioTemporalConstraint, 'id'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (activity.SpatioTemporalConstraint, 'source'): (
 
         ('type', shared.DataSource),
 
         ('cardinality', "0.1"),
 
     ),
-    (software.Coupling, 'purpose'): (
+    (activity.SpatioTemporalConstraint, 'date_range'): (
 
-        ('type', unicode),
-
-        ('cardinality', "1.1"),
-
-    ),
-    (software.Coupling, 'sources'): (
-
-        ('type', software.CouplingEndpoint),
-
-        ('cardinality', "1.N"),
-
-    ),
-    (software.Coupling, 'time_lag'): (
-
-        ('type', software.TimeLag),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (software.Coupling, 'transformers'): (
-
-        ('type', software.ProcessorComponent),
-
-        ('cardinality', "0.N"),
-
-    ),
-    (software.Coupling, 'time_transformation'): (
-
-        ('type', software.TimeTransformation),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (software.Coupling, 'spatial_regriddings'): (
-
-        ('type', software.SpatialRegridding),
-
-        ('cardinality', "0.N"),
-
-    ),
-    (software.Coupling, 'target'): (
-
-        ('type', software.CouplingEndpoint),
-
-        ('cardinality', "1.1"),
-
-    ),
-    (software.Coupling, 'description'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (software.Coupling, 'properties'): (
-
-        ('type', software.CouplingProperty),
-
-        ('cardinality', "0.N"),
-
-    ),
-    (software.Coupling, 'type'): (
-
-        ('type', unicode),
+        ('type', shared.DateRange),
 
         ('cardinality', "0.1"),
 
@@ -4668,14 +4856,14 @@ CONSTRAINTS = {
 
     ),
 
-    (shared.Property, 'name'): (
+    (software.SpatialRegriddingProperty, 'name'): (
 
         ('type', unicode),
 
         ('cardinality', "0.1"),
 
     ),
-    (shared.Property, 'value'): (
+    (software.SpatialRegriddingProperty, 'value'): (
 
         ('type', unicode),
 
@@ -4683,180 +4871,46 @@ CONSTRAINTS = {
 
     ),
 
-    (data.DataObject, 'content'): (
-
-        ('type', data.DataContent),
-
-        ('cardinality', "0.N"),
-
-    ),
-    (data.DataObject, 'purpose'): (
+    (shared.Platform, 'description'): (
 
         ('type', unicode),
 
         ('cardinality', "0.1"),
 
     ),
-    (data.DataObject, 'restriction'): (
+    (shared.Platform, 'short_name'): (
 
-        ('type', data.DataRestriction),
+        ('type', unicode),
 
-        ('cardinality', "0.N"),
+        ('cardinality', "1.1"),
 
     ),
-    (data.DataObject, 'data_status'): (
+    (shared.Platform, 'long_name'): (
 
         ('type', unicode),
 
         ('cardinality', "0.1"),
 
     ),
-    (data.DataObject, 'properties'): (
-
-        ('type', data.DataProperty),
-
-        ('cardinality', "0.N"),
-
-    ),
-    (data.DataObject, 'purpose'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (data.DataObject, 'distribution'): (
-
-        ('type', data.DataDistribution),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (data.DataObject, 'meta'): (
+    (shared.Platform, 'meta'): (
 
         ('type', shared.DocMetaInfo),
 
         ('cardinality', "1.1"),
 
     ),
-    (data.DataObject, 'description'): (
+    (shared.Platform, 'units'): (
 
-        ('type', unicode),
+        ('type', shared.MachineCompilerUnit),
 
-        ('cardinality', "0.1"),
-
-    ),
-    (data.DataObject, 'acronym'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
+        ('cardinality', "1.N"),
 
     ),
-    (data.DataObject, 'storage'): (
+    (shared.Platform, 'contacts'): (
 
-        ('type', data.DataStorage),
+        ('type', shared.ResponsibleParty),
 
         ('cardinality', "0.N"),
-
-    ),
-    (data.DataObject, 'hierarchy_level'): (
-
-        ('type', data.DataHierarchyLevel),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (data.DataObject, 'child_object'): (
-
-        ('type', data.DataObject),
-
-        ('cardinality', "0.N"),
-
-    ),
-    (data.DataObject, 'source_simulation'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (data.DataObject, 'geometry_model'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (data.DataObject, 'citations'): (
-
-        ('type', shared.Citation),
-
-        ('cardinality', "0.N"),
-
-    ),
-    (data.DataObject, 'extent'): (
-
-        ('type', data.DataExtent),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (data.DataObject, 'parent_object'): (
-
-        ('type', data.DataObject),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (data.DataObject, 'keyword'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-
-    (shared.Compiler, 'language'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (shared.Compiler, 'version'): (
-
-        ('type', unicode),
-
-        ('cardinality', "1.1"),
-
-    ),
-    (shared.Compiler, 'options'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (shared.Compiler, 'name'): (
-
-        ('type', unicode),
-
-        ('cardinality', "1.1"),
-
-    ),
-    (shared.Compiler, 'environment_variables'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (shared.Compiler, 'type'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
 
     ),
 
@@ -4867,13 +4921,6 @@ CONSTRAINTS = {
         ('cardinality', "0.1"),
 
     ),
-    (activity.NumericalExperiment, 'responsible_parties'): (
-
-        ('type', shared.ResponsibleParty),
-
-        ('cardinality', "0.N"),
-
-    ),
     (activity.NumericalExperiment, 'generates'): (
 
         ('type', unicode),
@@ -4881,9 +4928,9 @@ CONSTRAINTS = {
         ('cardinality', "0.N"),
 
     ),
-    (activity.NumericalExperiment, 'measurement_campaigns'): (
+    (activity.NumericalExperiment, 'responsible_parties'): (
 
-        ('type', activity.MeasurementCampaign),
+        ('type', shared.ResponsibleParty),
 
         ('cardinality', "0.N"),
 
@@ -4895,6 +4942,13 @@ CONSTRAINTS = {
         ('cardinality', "1.1"),
 
     ),
+    (activity.NumericalExperiment, 'funding_sources'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.N"),
+
+    ),
     (activity.NumericalExperiment, 'supports'): (
 
         ('type', unicode),
@@ -4902,7 +4956,7 @@ CONSTRAINTS = {
         ('cardinality', "0.N"),
 
     ),
-    (activity.NumericalExperiment, 'funding_sources'): (
+    (activity.NumericalExperiment, 'rationales'): (
 
         ('type', unicode),
 
@@ -4923,6 +4977,13 @@ CONSTRAINTS = {
         ('cardinality', "1.1"),
 
     ),
+    (activity.NumericalExperiment, 'measurement_campaigns'): (
+
+        ('type', activity.MeasurementCampaign),
+
+        ('cardinality', "0.N"),
+
+    ),
     (activity.NumericalExperiment, 'requirements'): (
 
         ('type', activity.NumericalRequirement),
@@ -4937,7 +4998,7 @@ CONSTRAINTS = {
         ('cardinality', "0.1"),
 
     ),
-    (activity.NumericalExperiment, 'rationales'): (
+    (activity.NumericalExperiment, 'projects'): (
 
         ('type', unicode),
 
@@ -4951,15 +5012,23 @@ CONSTRAINTS = {
         ('cardinality', "0.N"),
 
     ),
-    (activity.NumericalExperiment, 'projects'): (
 
-        ('type', unicode),
+    (software.Parallelisation, 'processes'): (
+
+        ('type', int),
+
+        ('cardinality', "1.1"),
+
+    ),
+    (software.Parallelisation, 'ranks'): (
+
+        ('type', software.Rank),
 
         ('cardinality', "0.N"),
 
     ),
 
-    (activity.MeasurementCampaign, 'projects'): (
+    (activity.MeasurementCampaign, 'funding_sources'): (
 
         ('type', unicode),
 
@@ -4987,68 +5056,11 @@ CONSTRAINTS = {
         ('cardinality', "1.1"),
 
     ),
-    (activity.MeasurementCampaign, 'funding_sources'): (
+    (activity.MeasurementCampaign, 'projects'): (
 
         ('type', unicode),
 
         ('cardinality', "0.N"),
-
-    ),
-
-    (shared.DocReference, 'external_id'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (shared.DocReference, 'id'): (
-
-        ('type', uuid.UUID),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (shared.DocReference, 'changes'): (
-
-        ('type', shared.Change),
-
-        ('cardinality', "0.N"),
-
-    ),
-    (shared.DocReference, 'name'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (shared.DocReference, 'description'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (shared.DocReference, 'type'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (shared.DocReference, 'url'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (shared.DocReference, 'version'): (
-
-        ('type', int),
-
-        ('cardinality', "0.1"),
 
     ),
 
@@ -5074,9 +5086,59 @@ CONSTRAINTS = {
 
     ),
 
-    (activity.Experiment, 'rationales'): (
+    (shared.ResponsibleParty, 'address'): (
 
         ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (shared.ResponsibleParty, 'email'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (shared.ResponsibleParty, 'organisation_name'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (shared.ResponsibleParty, 'abbreviation'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (shared.ResponsibleParty, 'url'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (shared.ResponsibleParty, 'role'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (shared.ResponsibleParty, 'individual_name'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+
+    (activity.Experiment, 'responsible_parties'): (
+
+        ('type', shared.ResponsibleParty),
 
         ('cardinality', "0.N"),
 
@@ -5088,7 +5150,7 @@ CONSTRAINTS = {
         ('cardinality', "0.N"),
 
     ),
-    (activity.Experiment, 'supports'): (
+    (activity.Experiment, 'projects'): (
 
         ('type', unicode),
 
@@ -5102,6 +5164,13 @@ CONSTRAINTS = {
         ('cardinality', "0.N"),
 
     ),
+    (activity.Experiment, 'supports'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.N"),
+
+    ),
     (activity.Experiment, 'measurement_campaigns'): (
 
         ('type', activity.MeasurementCampaign),
@@ -5109,7 +5178,7 @@ CONSTRAINTS = {
         ('cardinality', "0.N"),
 
     ),
-    (activity.Experiment, 'projects'): (
+    (activity.Experiment, 'rationales'): (
 
         ('type', unicode),
 
@@ -5123,43 +5192,94 @@ CONSTRAINTS = {
         ('cardinality', "0.N"),
 
     ),
-    (activity.Experiment, 'responsible_parties'): (
 
-        ('type', shared.ResponsibleParty),
-
-        ('cardinality', "0.N"),
-
-    ),
-
-    (software.Timing, 'units'): (
+    (shared.Citation, 'location'): (
 
         ('type', unicode),
 
         ('cardinality', "0.1"),
 
     ),
-    (software.Timing, 'is_variable_rate'): (
+    (shared.Citation, 'alternative_title'): (
 
-        ('type', bool),
+        ('type', unicode),
 
         ('cardinality', "0.1"),
 
     ),
-    (software.Timing, 'end'): (
+    (shared.Citation, 'date_type'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (shared.Citation, 'date'): (
 
         ('type', datetime.datetime),
 
         ('cardinality', "0.1"),
 
     ),
-    (software.Timing, 'start'): (
+    (shared.Citation, 'title'): (
 
-        ('type', datetime.datetime),
+        ('type', unicode),
 
         ('cardinality', "0.1"),
 
     ),
-    (software.Timing, 'rate'): (
+    (shared.Citation, 'type'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (shared.Citation, 'organisation'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (shared.Citation, 'collective_title'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (shared.Citation, 'role'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+
+    (data.DataExtent, 'temporal'): (
+
+        ('type', data.DataExtentTemporal),
+
+        ('cardinality', "1.1"),
+
+    ),
+    (data.DataExtent, 'geographical'): (
+
+        ('type', data.DataExtentGeographical),
+
+        ('cardinality', "1.1"),
+
+    ),
+
+    (software.TimeLag, 'units'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (software.TimeLag, 'value'): (
 
         ('type', int),
 
@@ -5167,300 +5287,31 @@ CONSTRAINTS = {
 
     ),
 
-    (shared.StandardName, 'standards'): (
-
-        ('type', shared.Standard),
-
-        ('cardinality', "0.N"),
-
-    ),
-    (shared.StandardName, 'is_open'): (
-
-        ('type', bool),
-
-        ('cardinality', "1.1"),
-
-    ),
-    (shared.StandardName, 'value'): (
-
-        ('type', unicode),
-
-        ('cardinality', "1.1"),
-
-    ),
-
-    (shared.Change, 'details'): (
-
-        ('type', shared.ChangeProperty),
-
-        ('cardinality', "1.N"),
-
-    ),
-    (shared.Change, 'description'): (
+    (shared.PerpetualPeriod, 'description'): (
 
         ('type', unicode),
 
         ('cardinality', "0.1"),
 
     ),
-    (shared.Change, 'date'): (
+    (shared.PerpetualPeriod, 'length'): (
 
-        ('type', datetime.datetime),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (shared.Change, 'type'): (
-
-        ('type', unicode),
+        ('type', int),
 
         ('cardinality', "0.1"),
 
     ),
-    (shared.Change, 'author'): (
+    (shared.PerpetualPeriod, 'range'): (
 
-        ('type', shared.ResponsibleParty),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (shared.Change, 'name'): (
-
-        ('type', unicode),
+        ('type', shared.DateRange),
 
         ('cardinality', "0.1"),
 
     ),
 
-    (software.StatisticalModelComponent, 'funding_sources'): (
+    (shared.DocGenealogy, 'relationships'): (
 
-        ('type', unicode),
-
-        ('cardinality', "0.N"),
-
-    ),
-    (software.StatisticalModelComponent, 'parent'): (
-
-        ('type', software.Component),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (software.StatisticalModelComponent, 'grid'): (
-
-        ('type', grids.GridSpec),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (software.StatisticalModelComponent, 'properties'): (
-
-        ('type', software.ComponentProperty),
-
-        ('cardinality', "0.N"),
-
-    ),
-    (software.StatisticalModelComponent, 'code_access'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (software.StatisticalModelComponent, 'composition'): (
-
-        ('type', software.Composition),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (software.StatisticalModelComponent, 'short_name'): (
-
-        ('type', unicode),
-
-        ('cardinality', "1.1"),
-
-    ),
-    (software.StatisticalModelComponent, 'meta'): (
-
-        ('type', shared.DocMetaInfo),
-
-        ('cardinality', "1.1"),
-
-    ),
-    (software.StatisticalModelComponent, 'coupling_framework'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (software.StatisticalModelComponent, 'language'): (
-
-        ('type', software.ComponentLanguage),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (software.StatisticalModelComponent, 'previous_version'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (software.StatisticalModelComponent, 'type'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (software.StatisticalModelComponent, 'citations'): (
-
-        ('type', shared.Citation),
-
-        ('cardinality', "0.N"),
-
-    ),
-    (software.StatisticalModelComponent, 'license'): (
-
-        ('type', shared.License),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (software.StatisticalModelComponent, 'deployments'): (
-
-        ('type', software.Deployment),
-
-        ('cardinality', "0.N"),
-
-    ),
-    (software.StatisticalModelComponent, 'types'): (
-
-        ('type', unicode),
-
-        ('cardinality', "1.N"),
-
-    ),
-    (software.StatisticalModelComponent, 'version'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (software.StatisticalModelComponent, 'responsible_parties'): (
-
-        ('type', shared.ResponsibleParty),
-
-        ('cardinality', "0.N"),
-
-    ),
-    (software.StatisticalModelComponent, 'timing'): (
-
-        ('type', software.Timing),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (software.StatisticalModelComponent, 'long_name'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (software.StatisticalModelComponent, 'is_embedded'): (
-
-        ('type', bool),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (software.StatisticalModelComponent, 'online_resource'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (software.StatisticalModelComponent, 'dependencies'): (
-
-        ('type', software.EntryPoint),
-
-        ('cardinality', "0.N"),
-
-    ),
-    (software.StatisticalModelComponent, 'purpose'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (software.StatisticalModelComponent, 'description'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (software.StatisticalModelComponent, 'sub_components'): (
-
-        ('type', software.Component),
-
-        ('cardinality', "0.N"),
-
-    ),
-    (software.StatisticalModelComponent, 'release_date'): (
-
-        ('type', datetime.datetime),
-
-        ('cardinality', "0.1"),
-
-    ),
-
-    (activity.ExperimentRelationship, 'description'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (activity.ExperimentRelationship, 'target'): (
-
-        ('type', activity.ExperimentRelationshipTarget),
-
-        ('cardinality', "1.1"),
-
-    ),
-    (activity.ExperimentRelationship, 'direction'): (
-
-        ('type', unicode),
-
-        ('cardinality', "1.1"),
-
-    ),
-    (activity.ExperimentRelationship, 'type'): (
-
-        ('type', unicode),
-
-        ('cardinality', "1.1"),
-
-    ),
-
-    (quality.CimQuality, 'meta'): (
-
-        ('type', shared.DocMetaInfo),
-
-        ('cardinality', "1.1"),
-
-    ),
-    (quality.CimQuality, 'reports'): (
-
-        ('type', quality.Report),
+        ('type', shared.DocRelationship),
 
         ('cardinality', "0.N"),
 
@@ -5471,6 +5322,13 @@ CONSTRAINTS = {
         ('type', unicode),
 
         ('cardinality', "0.1"),
+
+    ),
+    (activity.Conformance, 'requirements'): (
+
+        ('type', activity.NumericalRequirement),
+
+        ('cardinality', "0.N"),
 
     ),
     (activity.Conformance, 'sources'): (
@@ -5494,13 +5352,6 @@ CONSTRAINTS = {
         ('cardinality', "0.1"),
 
     ),
-    (activity.Conformance, 'requirements'): (
-
-        ('type', activity.NumericalRequirement),
-
-        ('cardinality', "0.N"),
-
-    ),
     (activity.Conformance, 'type'): (
 
         ('type', unicode),
@@ -5509,188 +5360,37 @@ CONSTRAINTS = {
 
     ),
 
-    (software.SpatialRegridding, 'properties'): (
-
-        ('type', software.SpatialRegriddingProperty),
-
-        ('cardinality', "0.N"),
-
-    ),
-    (software.SpatialRegridding, 'dimension'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (software.SpatialRegridding, 'user_method'): (
-
-        ('type', software.SpatialRegriddingUserMethod),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (software.SpatialRegridding, 'standard_method'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-
-    (shared.ResponsibleParty, 'address'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (shared.ResponsibleParty, 'individual_name'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (shared.ResponsibleParty, 'email'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (shared.ResponsibleParty, 'abbreviation'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (shared.ResponsibleParty, 'url'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (shared.ResponsibleParty, 'organisation_name'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (shared.ResponsibleParty, 'role'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-
-    (activity.BoundaryCondition, 'requirement_type'): (
-
-        ('type', unicode),
-
-        ('cardinality', "1.1"),
-
-        ('constant', "boundaryCondition"),
-    ),
-    (activity.BoundaryCondition, 'id'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (activity.BoundaryCondition, 'options'): (
-
-        ('type', activity.NumericalRequirementOption),
-
-        ('cardinality', "0.N"),
-
-    ),
-    (activity.BoundaryCondition, 'source'): (
-
-        ('type', shared.DataSource),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (activity.BoundaryCondition, 'description'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (activity.BoundaryCondition, 'name'): (
-
-        ('type', unicode),
-
-        ('cardinality', "1.1"),
-
-    ),
-
-    (shared.Citation, 'title'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (shared.Citation, 'alternative_title'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (shared.Citation, 'date_type'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (shared.Citation, 'collective_title'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (shared.Citation, 'organisation'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (shared.Citation, 'location'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (shared.Citation, 'type'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (shared.Citation, 'role'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (shared.Citation, 'date'): (
+    (software.Timing, 'end'): (
 
         ('type', datetime.datetime),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (software.Timing, 'is_variable_rate'): (
+
+        ('type', bool),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (software.Timing, 'units'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (software.Timing, 'start'): (
+
+        ('type', datetime.datetime),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (software.Timing, 'rate'): (
+
+        ('type', int),
 
         ('cardinality', "0.1"),
 
@@ -5753,9 +5453,31 @@ CONSTRAINTS = {
 
     ),
 
-    (activity.Ensemble, 'funding_sources'): (
+    (shared.RealCalendar, 'description'): (
 
         ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (shared.RealCalendar, 'length'): (
+
+        ('type', int),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (shared.RealCalendar, 'range'): (
+
+        ('type', shared.DateRange),
+
+        ('cardinality', "0.1"),
+
+    ),
+
+    (activity.Ensemble, 'responsible_parties'): (
+
+        ('type', shared.ResponsibleParty),
 
         ('cardinality', "0.N"),
 
@@ -5774,6 +5496,13 @@ CONSTRAINTS = {
         ('cardinality', "0.N"),
 
     ),
+    (activity.Ensemble, 'funding_sources'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.N"),
+
+    ),
     (activity.Ensemble, 'meta'): (
 
         ('type', shared.DocMetaInfo),
@@ -5788,23 +5517,9 @@ CONSTRAINTS = {
         ('cardinality', "0.N"),
 
     ),
-    (activity.Ensemble, 'rationales'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.N"),
-
-    ),
     (activity.Ensemble, 'projects'): (
 
         ('type', unicode),
-
-        ('cardinality', "0.N"),
-
-    ),
-    (activity.Ensemble, 'responsible_parties'): (
-
-        ('type', shared.ResponsibleParty),
 
         ('cardinality', "0.N"),
 
@@ -5823,6 +5538,13 @@ CONSTRAINTS = {
         ('cardinality', "1.N"),
 
     ),
+    (activity.Ensemble, 'rationales'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.N"),
+
+    ),
     (activity.Ensemble, 'types'): (
 
         ('type', unicode),
@@ -5835,6 +5557,43 @@ CONSTRAINTS = {
         ('type', unicode),
 
         ('cardinality', "1.1"),
+
+    ),
+
+    (data.DataProperty, 'description'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (data.DataProperty, 'name'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (data.DataProperty, 'value'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+
+    (software.ConnectionProperty, 'name'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (software.ConnectionProperty, 'value'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
 
     ),
 
@@ -5867,6 +5626,196 @@ CONSTRAINTS = {
 
     ),
 
+    (software.StatisticalModelComponent, 'grid'): (
+
+        ('type', grids.GridSpec),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (software.StatisticalModelComponent, 'code_access'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (software.StatisticalModelComponent, 'long_name'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (software.StatisticalModelComponent, 'properties'): (
+
+        ('type', software.ComponentProperty),
+
+        ('cardinality', "0.N"),
+
+    ),
+    (software.StatisticalModelComponent, 'is_embedded'): (
+
+        ('type', bool),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (software.StatisticalModelComponent, 'responsible_parties'): (
+
+        ('type', shared.ResponsibleParty),
+
+        ('cardinality', "0.N"),
+
+    ),
+    (software.StatisticalModelComponent, 'funding_sources'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.N"),
+
+    ),
+    (software.StatisticalModelComponent, 'composition'): (
+
+        ('type', software.Composition),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (software.StatisticalModelComponent, 'language'): (
+
+        ('type', software.ComponentLanguage),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (software.StatisticalModelComponent, 'coupling_framework'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (software.StatisticalModelComponent, 'license'): (
+
+        ('type', shared.License),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (software.StatisticalModelComponent, 'meta'): (
+
+        ('type', shared.DocMetaInfo),
+
+        ('cardinality', "1.1"),
+
+    ),
+    (software.StatisticalModelComponent, 'description'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (software.StatisticalModelComponent, 'type'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (software.StatisticalModelComponent, 'purpose'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (software.StatisticalModelComponent, 'parent'): (
+
+        ('type', software.Component),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (software.StatisticalModelComponent, 'types'): (
+
+        ('type', unicode),
+
+        ('cardinality', "1.N"),
+
+    ),
+    (software.StatisticalModelComponent, 'version'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (software.StatisticalModelComponent, 'deployments'): (
+
+        ('type', software.Deployment),
+
+        ('cardinality', "0.N"),
+
+    ),
+    (software.StatisticalModelComponent, 'timing'): (
+
+        ('type', software.Timing),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (software.StatisticalModelComponent, 'sub_components'): (
+
+        ('type', software.Component),
+
+        ('cardinality', "0.N"),
+
+    ),
+    (software.StatisticalModelComponent, 'online_resource'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (software.StatisticalModelComponent, 'release_date'): (
+
+        ('type', datetime.datetime),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (software.StatisticalModelComponent, 'previous_version'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (software.StatisticalModelComponent, 'short_name'): (
+
+        ('type', unicode),
+
+        ('cardinality', "1.1"),
+
+    ),
+    (software.StatisticalModelComponent, 'dependencies'): (
+
+        ('type', software.EntryPoint),
+
+        ('cardinality', "0.N"),
+
+    ),
+    (software.StatisticalModelComponent, 'citations'): (
+
+        ('type', shared.Citation),
+
+        ('cardinality', "0.N"),
+
+    ),
+
     (grids.GridMosaic, 'mosaic_count'): (
 
         ('type', int),
@@ -5874,9 +5823,9 @@ CONSTRAINTS = {
         ('cardinality', "0.1"),
 
     ),
-    (grids.GridMosaic, 'has_congruent_tiles'): (
+    (grids.GridMosaic, 'long_name'): (
 
-        ('type', bool),
+        ('type', unicode),
 
         ('cardinality', "0.1"),
 
@@ -5888,23 +5837,37 @@ CONSTRAINTS = {
         ('cardinality', "0.N"),
 
     ),
-    (grids.GridMosaic, 'is_leaf'): (
+    (grids.GridMosaic, 'type'): (
 
-        ('type', bool),
+        ('type', unicode),
 
         ('cardinality', "1.1"),
 
     ),
-    (grids.GridMosaic, 'long_name'): (
+    (grids.GridMosaic, 'description'): (
 
         ('type', unicode),
 
         ('cardinality', "0.1"),
 
     ),
-    (grids.GridMosaic, 'description'): (
+    (grids.GridMosaic, 'mosaics'): (
+
+        ('type', grids.GridMosaic),
+
+        ('cardinality', "0.N"),
+
+    ),
+    (grids.GridMosaic, 'short_name'): (
 
         ('type', unicode),
+
+        ('cardinality', "1.1"),
+
+    ),
+    (grids.GridMosaic, 'has_congruent_tiles'): (
+
+        ('type', bool),
 
         ('cardinality', "0.1"),
 
@@ -5916,25 +5879,11 @@ CONSTRAINTS = {
         ('cardinality', "0.N"),
 
     ),
-    (grids.GridMosaic, 'type'): (
+    (grids.GridMosaic, 'is_leaf'): (
 
-        ('type', unicode),
-
-        ('cardinality', "1.1"),
-
-    ),
-    (grids.GridMosaic, 'short_name'): (
-
-        ('type', unicode),
+        ('type', bool),
 
         ('cardinality', "1.1"),
-
-    ),
-    (grids.GridMosaic, 'mosaics'): (
-
-        ('type', grids.GridMosaic),
-
-        ('cardinality', "0.N"),
 
     ),
     (grids.GridMosaic, 'mnemonic'): (
@@ -5966,84 +5915,6 @@ CONSTRAINTS = {
 
     ),
 
-    (activity.EnsembleMember, 'funding_sources'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.N"),
-
-    ),
-    (activity.EnsembleMember, 'ensemble_ids'): (
-
-        ('type', shared.StandardName),
-
-        ('cardinality', "0.N"),
-
-    ),
-    (activity.EnsembleMember, 'simulation'): (
-
-        ('type', activity.Simulation),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (activity.EnsembleMember, 'supports'): (
-
-        ('type', activity.Experiment),
-
-        ('cardinality', "0.N"),
-
-    ),
-    (activity.EnsembleMember, 'rationales'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.N"),
-
-    ),
-    (activity.EnsembleMember, 'projects'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.N"),
-
-    ),
-    (activity.EnsembleMember, 'responsible_parties'): (
-
-        ('type', shared.ResponsibleParty),
-
-        ('cardinality', "0.N"),
-
-    ),
-    (activity.EnsembleMember, 'long_name'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (activity.EnsembleMember, 'description'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (activity.EnsembleMember, 'ensemble'): (
-
-        ('type', activity.Ensemble),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (activity.EnsembleMember, 'short_name'): (
-
-        ('type', unicode),
-
-        ('cardinality', "1.1"),
-
-    ),
-
     (grids.CoordinateList, 'length'): (
 
         ('type', int),
@@ -6066,16 +5937,178 @@ CONSTRAINTS = {
 
     ),
 
-    (activity.SimulationRelationship, 'target'): (
+    (software.ProcessorComponent, 'grid'): (
 
-        ('type', activity.SimulationRelationshipTarget),
+        ('type', grids.GridSpec),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (software.ProcessorComponent, 'code_access'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (software.ProcessorComponent, 'properties'): (
+
+        ('type', software.ComponentProperty),
+
+        ('cardinality', "0.N"),
+
+    ),
+    (software.ProcessorComponent, 'is_embedded'): (
+
+        ('type', bool),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (software.ProcessorComponent, 'funding_sources'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.N"),
+
+    ),
+    (software.ProcessorComponent, 'composition'): (
+
+        ('type', software.Composition),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (software.ProcessorComponent, 'language'): (
+
+        ('type', software.ComponentLanguage),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (software.ProcessorComponent, 'coupling_framework'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (software.ProcessorComponent, 'short_name'): (
+
+        ('type', unicode),
 
         ('cardinality', "1.1"),
 
     ),
-    (activity.SimulationRelationship, 'direction'): (
+    (software.ProcessorComponent, 'license'): (
+
+        ('type', shared.License),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (software.ProcessorComponent, 'description'): (
 
         ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (software.ProcessorComponent, 'long_name'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (software.ProcessorComponent, 'meta'): (
+
+        ('type', shared.DocMetaInfo),
+
+        ('cardinality', "1.1"),
+
+    ),
+    (software.ProcessorComponent, 'responsible_parties'): (
+
+        ('type', shared.ResponsibleParty),
+
+        ('cardinality', "0.N"),
+
+    ),
+    (software.ProcessorComponent, 'purpose'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (software.ProcessorComponent, 'version'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (software.ProcessorComponent, 'deployments'): (
+
+        ('type', software.Deployment),
+
+        ('cardinality', "0.N"),
+
+    ),
+    (software.ProcessorComponent, 'parent'): (
+
+        ('type', software.Component),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (software.ProcessorComponent, 'sub_components'): (
+
+        ('type', software.Component),
+
+        ('cardinality', "0.N"),
+
+    ),
+    (software.ProcessorComponent, 'online_resource'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (software.ProcessorComponent, 'release_date'): (
+
+        ('type', datetime.datetime),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (software.ProcessorComponent, 'previous_version'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (software.ProcessorComponent, 'dependencies'): (
+
+        ('type', software.EntryPoint),
+
+        ('cardinality', "0.N"),
+
+    ),
+    (software.ProcessorComponent, 'citations'): (
+
+        ('type', shared.Citation),
+
+        ('cardinality', "0.N"),
+
+    ),
+
+    (activity.SimulationRelationship, 'target'): (
+
+        ('type', activity.SimulationRelationshipTarget),
 
         ('cardinality', "1.1"),
 
@@ -6087,6 +6120,13 @@ CONSTRAINTS = {
         ('cardinality', "0.1"),
 
     ),
+    (activity.SimulationRelationship, 'direction'): (
+
+        ('type', unicode),
+
+        ('cardinality', "1.1"),
+
+    ),
     (activity.SimulationRelationship, 'type'): (
 
         ('type', unicode),
@@ -6095,269 +6135,107 @@ CONSTRAINTS = {
 
     ),
 
-    (activity.ExperimentRelationshipTarget, 'numerical_experiment'): (
-
-        ('type', activity.NumericalExperiment),
-
-        ('cardinality', "0.1"),
-
-    ),
-
-    (activity.SimulationRun, 'calendar'): (
-
-        ('type', shared.Calendar),
-
-        ('cardinality', "1.1"),
-
-    ),
-    (activity.SimulationRun, 'date_range'): (
-
-        ('type', shared.DateRange),
-
-        ('cardinality', "1.1"),
-
-    ),
-    (activity.SimulationRun, 'control_simulation'): (
-
-        ('type', activity.Simulation),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (activity.SimulationRun, 'spinup_simulation'): (
-
-        ('type', activity.Simulation),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (activity.SimulationRun, 'model'): (
-
-        ('type', software.ModelComponent),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (activity.SimulationRun, 'supports'): (
-
-        ('type', activity.Experiment),
-
-        ('cardinality', "0.N"),
-
-    ),
-    (activity.SimulationRun, 'funding_sources'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.N"),
-
-    ),
-    (activity.SimulationRun, 'conformances'): (
-
-        ('type', activity.Conformance),
-
-        ('cardinality', "0.N"),
-
-    ),
-    (activity.SimulationRun, 'projects'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.N"),
-
-    ),
-    (activity.SimulationRun, 'authors'): (
+    (data.DataRestriction, 'restriction'): (
 
         ('type', unicode),
 
         ('cardinality', "0.1"),
 
     ),
-    (activity.SimulationRun, 'deployments'): (
-
-        ('type', software.Deployment),
-
-        ('cardinality', "0.N"),
-
-    ),
-    (activity.SimulationRun, 'rationales'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.N"),
-
-    ),
-    (activity.SimulationRun, 'short_name'): (
-
-        ('type', unicode),
-
-        ('cardinality', "1.1"),
-
-    ),
-    (activity.SimulationRun, 'spinup_date_range'): (
-
-        ('type', shared.ClosedDateRange),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (activity.SimulationRun, 'inputs'): (
-
-        ('type', software.Coupling),
-
-        ('cardinality', "0.N"),
-
-    ),
-    (activity.SimulationRun, 'responsible_parties'): (
-
-        ('type', shared.ResponsibleParty),
-
-        ('cardinality', "0.N"),
-
-    ),
-    (activity.SimulationRun, 'outputs'): (
-
-        ('type', data.DataObject),
-
-        ('cardinality', "0.N"),
-
-    ),
-    (activity.SimulationRun, 'long_name'): (
+    (data.DataRestriction, 'scope'): (
 
         ('type', unicode),
 
         ('cardinality', "0.1"),
 
     ),
-    (activity.SimulationRun, 'restarts'): (
+    (data.DataRestriction, 'license'): (
 
-        ('type', data.DataObject),
+        ('type', shared.License),
 
-        ('cardinality', "0.N"),
+        ('cardinality', "0.1"),
 
     ),
-    (activity.SimulationRun, 'description'): (
+
+    (data.DataStorageDb, 'name'): (
 
         ('type', unicode),
 
         ('cardinality', "0.1"),
 
     ),
-    (activity.SimulationRun, 'simulation_id'): (
+    (data.DataStorageDb, 'owner'): (
 
         ('type', unicode),
 
         ('cardinality', "0.1"),
 
     ),
-    (activity.SimulationRun, 'meta'): (
-
-        ('type', shared.DocMetaInfo),
-
-        ('cardinality', "1.1"),
-
-    ),
-
-    (shared.Daily360, 'description'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (shared.Daily360, 'range'): (
-
-        ('type', shared.DateRange),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (shared.Daily360, 'length'): (
+    (data.DataStorageDb, 'size'): (
 
         ('type', int),
 
         ('cardinality', "0.1"),
 
     ),
-
-    (shared.Machine, 'system'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (shared.Machine, 'location'): (
+    (data.DataStorageDb, 'table'): (
 
         ('type', unicode),
 
         ('cardinality', "0.1"),
 
     ),
-    (shared.Machine, 'libraries'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.N"),
-
-    ),
-    (shared.Machine, 'type'): (
+    (data.DataStorageDb, 'location'): (
 
         ('type', unicode),
 
         ('cardinality', "0.1"),
 
     ),
-    (shared.Machine, 'interconnect'): (
+    (data.DataStorageDb, 'modification_date'): (
+
+        ('type', datetime.datetime),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (data.DataStorageDb, 'access_string'): (
 
         ('type', unicode),
 
         ('cardinality', "0.1"),
 
     ),
-    (shared.Machine, 'maximum_processors'): (
-
-        ('type', int),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (shared.Machine, 'vendor'): (
+    (data.DataStorageDb, 'format'): (
 
         ('type', unicode),
 
         ('cardinality', "0.1"),
 
     ),
-    (shared.Machine, 'name'): (
+
+    (data.DataContent, 'aggregation'): (
 
         ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (data.DataContent, 'purpose'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (data.DataContent, 'topic'): (
+
+        ('type', data.DataTopic),
 
         ('cardinality', "1.1"),
 
     ),
-    (shared.Machine, 'description'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (shared.Machine, 'processor_type'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (shared.Machine, 'cores_per_processor'): (
-
-        ('type', int),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (shared.Machine, 'operating_system'): (
+    (data.DataContent, 'frequency'): (
 
         ('type', unicode),
 
@@ -6365,14 +6243,28 @@ CONSTRAINTS = {
 
     ),
 
-    (software.CouplingProperty, 'name'): (
+    (shared.ChangeProperty, 'value'): (
 
         ('type', unicode),
 
         ('cardinality', "0.1"),
 
     ),
-    (software.CouplingProperty, 'value'): (
+    (shared.ChangeProperty, 'description'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (shared.ChangeProperty, 'name'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (shared.ChangeProperty, 'id'): (
 
         ('type', unicode),
 
@@ -6380,30 +6272,9 @@ CONSTRAINTS = {
 
     ),
 
-    (shared.DocRelationship, 'target'): (
+    (shared.DocRelationshipTarget, 'reference'): (
 
-        ('type', shared.DocRelationshipTarget),
-
-        ('cardinality', "1.1"),
-
-    ),
-    (shared.DocRelationship, 'direction'): (
-
-        ('type', unicode),
-
-        ('cardinality', "1.1"),
-
-    ),
-    (shared.DocRelationship, 'type'): (
-
-        ('type', unicode),
-
-        ('cardinality', "1.1"),
-
-    ),
-    (shared.DocRelationship, 'description'): (
-
-        ('type', unicode),
+        ('type', shared.DocReference),
 
         ('cardinality', "0.1"),
 
@@ -6431,62 +6302,83 @@ CONSTRAINTS = {
 
     ),
 
-    (shared.DataSource, 'purpose'): (
+    (shared.Standard, 'description'): (
 
         ('type', unicode),
 
         ('cardinality', "0.1"),
 
     ),
-
-    (activity.Activity, 'funding_sources'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.N"),
-
-    ),
-    (activity.Activity, 'projects'): (
+    (shared.Standard, 'name'): (
 
         ('type', unicode),
-
-        ('cardinality', "0.N"),
-
-    ),
-    (activity.Activity, 'rationales'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.N"),
-
-    ),
-    (activity.Activity, 'responsible_parties'): (
-
-        ('type', shared.ResponsibleParty),
-
-        ('cardinality', "0.N"),
-
-    ),
-
-    (shared.ClosedDateRange, 'duration'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (shared.ClosedDateRange, 'end'): (
-
-        ('type', datetime.datetime),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (shared.ClosedDateRange, 'start'): (
-
-        ('type', datetime.datetime),
 
         ('cardinality', "1.1"),
+
+    ),
+    (shared.Standard, 'version'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+
+    (software.Composition, 'couplings'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.N"),
+
+    ),
+    (software.Composition, 'description'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+
+    (grids.VerticalCoordinateList, 'has_constant_offset'): (
+
+        ('type', bool),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (grids.VerticalCoordinateList, 'form'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (grids.VerticalCoordinateList, 'length'): (
+
+        ('type', int),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (grids.VerticalCoordinateList, 'uom'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (grids.VerticalCoordinateList, 'properties'): (
+
+        ('type', grids.GridProperty),
+
+        ('cardinality', "0.N"),
+
+    ),
+    (grids.VerticalCoordinateList, 'type'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
 
     ),
 
@@ -6512,21 +6404,14 @@ CONSTRAINTS = {
 
     ),
 
-    (shared.Standard, 'name'): (
-
-        ('type', unicode),
-
-        ('cardinality', "1.1"),
-
-    ),
-    (shared.Standard, 'version'): (
+    (shared.Property, 'name'): (
 
         ('type', unicode),
 
         ('cardinality', "0.1"),
 
     ),
-    (shared.Standard, 'description'): (
+    (shared.Property, 'value'): (
 
         ('type', unicode),
 
@@ -6534,86 +6419,44 @@ CONSTRAINTS = {
 
     ),
 
-    (software.ComponentProperty, 'long_name'): (
+    (shared.Change, 'details'): (
+
+        ('type', shared.ChangeProperty),
+
+        ('cardinality', "1.N"),
+
+    ),
+    (shared.Change, 'date'): (
+
+        ('type', datetime.datetime),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (shared.Change, 'description'): (
 
         ('type', unicode),
 
         ('cardinality', "0.1"),
 
     ),
-    (software.ComponentProperty, 'values'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.N"),
-
-    ),
-    (software.ComponentProperty, 'short_name'): (
-
-        ('type', unicode),
-
-        ('cardinality', "1.1"),
-
-    ),
-    (software.ComponentProperty, 'grid'): (
+    (shared.Change, 'name'): (
 
         ('type', unicode),
 
         ('cardinality', "0.1"),
 
     ),
-    (software.ComponentProperty, 'is_represented'): (
-
-        ('type', bool),
-
-        ('cardinality', "1.1"),
-
-    ),
-    (software.ComponentProperty, 'purpose'): (
+    (shared.Change, 'type'): (
 
         ('type', unicode),
 
         ('cardinality', "0.1"),
 
     ),
-    (software.ComponentProperty, 'sub_properties'): (
+    (shared.Change, 'author'): (
 
-        ('type', software.ComponentProperty),
-
-        ('cardinality', "0.N"),
-
-    ),
-    (software.ComponentProperty, 'standard_names'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.N"),
-
-    ),
-    (software.ComponentProperty, 'citations'): (
-
-        ('type', shared.Citation),
-
-        ('cardinality', "0.N"),
-
-    ),
-    (software.ComponentProperty, 'units'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (software.ComponentProperty, 'intent'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (software.ComponentProperty, 'description'): (
-
-        ('type', unicode),
+        ('type', shared.ResponsibleParty),
 
         ('cardinality', "0.1"),
 
@@ -6710,16 +6553,16 @@ CONSTRAINTS = {
         ('cardinality', "0.1"),
 
     ),
-    (grids.GridTile, 'refinement_scheme'): (
+    (grids.GridTile, 'is_regular'): (
 
-        ('type', unicode),
+        ('type', bool),
 
         ('cardinality', "0.1"),
 
     ),
-    (grids.GridTile, 'is_regular'): (
+    (grids.GridTile, 'refinement_scheme'): (
 
-        ('type', bool),
+        ('type', unicode),
 
         ('cardinality', "0.1"),
 
@@ -6816,96 +6659,245 @@ CONSTRAINTS = {
 
     ),
 
-    (software.Connection, 'properties'): (
-
-        ('type', software.ConnectionProperty),
-
-        ('cardinality', "0.N"),
-
-    ),
-    (software.Connection, 'time_transformation'): (
-
-        ('type', software.TimeTransformation),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (software.Connection, 'priming'): (
-
-        ('type', shared.DataSource),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (software.Connection, 'sources'): (
-
-        ('type', software.ConnectionEndpoint),
-
-        ('cardinality', "0.N"),
-
-    ),
-    (software.Connection, 'spatial_regridding'): (
-
-        ('type', software.SpatialRegridding),
-
-        ('cardinality', "0.N"),
-
-    ),
-    (software.Connection, 'description'): (
+    (quality.Evaluation, 'specification_hyperlink'): (
 
         ('type', unicode),
 
         ('cardinality', "0.1"),
 
     ),
-    (software.Connection, 'type'): (
+    (quality.Evaluation, 'specification'): (
 
         ('type', unicode),
 
         ('cardinality', "0.1"),
 
     ),
-    (software.Connection, 'transformers'): (
+    (quality.Evaluation, 'date'): (
 
-        ('type', software.ProcessorComponent),
+        ('type', datetime.datetime),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (quality.Evaluation, 'type'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (quality.Evaluation, 'did_pass'): (
+
+        ('type', bool),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (quality.Evaluation, 'explanation'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (quality.Evaluation, 'description'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (quality.Evaluation, 'title'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (quality.Evaluation, 'type_hyperlink'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+
+    (software.ComponentLanguageProperty, 'name'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (software.ComponentLanguageProperty, 'value'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+
+    (data.DataObject, 'content'): (
+
+        ('type', data.DataContent),
 
         ('cardinality', "0.N"),
 
     ),
-    (software.Connection, 'time_profile'): (
-
-        ('type', software.Timing),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (software.Connection, 'time_lag'): (
+    (data.DataObject, 'acronym'): (
 
         ('type', unicode),
 
         ('cardinality', "0.1"),
 
     ),
-    (software.Connection, 'target'): (
+    (data.DataObject, 'restriction'): (
 
-        ('type', software.ConnectionEndpoint),
+        ('type', data.DataRestriction),
+
+        ('cardinality', "0.N"),
+
+    ),
+    (data.DataObject, 'parent_object'): (
+
+        ('type', data.DataObject),
 
         ('cardinality', "0.1"),
 
     ),
+    (data.DataObject, 'purpose'): (
 
-    (software.Parallelisation, 'processes'): (
+        ('type', unicode),
 
-        ('type', int),
+        ('cardinality', "0.1"),
+
+    ),
+    (data.DataObject, 'properties'): (
+
+        ('type', data.DataProperty),
+
+        ('cardinality', "0.N"),
+
+    ),
+    (data.DataObject, 'distribution'): (
+
+        ('type', data.DataDistribution),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (data.DataObject, 'purpose'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (data.DataObject, 'meta'): (
+
+        ('type', shared.DocMetaInfo),
 
         ('cardinality', "1.1"),
 
     ),
-    (software.Parallelisation, 'ranks'): (
+    (data.DataObject, 'description'): (
 
-        ('type', software.Rank),
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (data.DataObject, 'source_simulation'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (data.DataObject, 'geometry_model'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (data.DataObject, 'storage'): (
+
+        ('type', data.DataStorage),
 
         ('cardinality', "0.N"),
+
+    ),
+    (data.DataObject, 'hierarchy_level'): (
+
+        ('type', data.DataHierarchyLevel),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (data.DataObject, 'child_object'): (
+
+        ('type', data.DataObject),
+
+        ('cardinality', "0.N"),
+
+    ),
+    (data.DataObject, 'data_status'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (data.DataObject, 'citations'): (
+
+        ('type', shared.Citation),
+
+        ('cardinality', "0.N"),
+
+    ),
+    (data.DataObject, 'extent'): (
+
+        ('type', data.DataExtent),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (data.DataObject, 'keyword'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+
+    (software.Rank, 'max'): (
+
+        ('type', int),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (software.Rank, 'value'): (
+
+        ('type', int),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (software.Rank, 'min'): (
+
+        ('type', int),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (software.Rank, 'increment'): (
+
+        ('type', int),
+
+        ('cardinality', "0.1"),
 
     ),
 
@@ -6931,7 +6923,7 @@ CONSTRAINTS = {
 
     ),
 
-    (shared.DateRange, 'duration'): (
+    (shared.DataSource, 'purpose'): (
 
         ('type', unicode),
 
@@ -6939,149 +6931,161 @@ CONSTRAINTS = {
 
     ),
 
-    (software.ComponentLanguageProperty, 'name'): (
+    (activity.SimulationComposite, 'calendar'): (
 
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (software.ComponentLanguageProperty, 'value'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-
-    (shared.DocMetaInfo, 'update_date'): (
-
-        ('type', datetime.datetime),
+        ('type', shared.Calendar),
 
         ('cardinality', "1.1"),
 
     ),
-    (shared.DocMetaInfo, 'project'): (
+    (activity.SimulationComposite, 'spinup_date_range'): (
 
-        ('type', unicode),
-
-        ('cardinality', "1.1"),
-
-    ),
-    (shared.DocMetaInfo, 'drs_path'): (
-
-        ('type', unicode),
+        ('type', shared.ClosedDateRange),
 
         ('cardinality', "0.1"),
 
     ),
-    (shared.DocMetaInfo, 'id'): (
+    (activity.SimulationComposite, 'responsible_parties'): (
 
-        ('type', uuid.UUID),
+        ('type', shared.ResponsibleParty),
+
+        ('cardinality', "0.N"),
+
+    ),
+    (activity.SimulationComposite, 'date_range'): (
+
+        ('type', shared.DateRange),
 
         ('cardinality', "1.1"),
 
     ),
-    (shared.DocMetaInfo, 'version'): (
+    (activity.SimulationComposite, 'funding_sources'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.N"),
+
+    ),
+    (activity.SimulationComposite, 'spinup_simulation'): (
+
+        ('type', activity.Simulation),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (activity.SimulationComposite, 'supports'): (
+
+        ('type', activity.Experiment),
+
+        ('cardinality', "0.N"),
+
+    ),
+    (activity.SimulationComposite, 'rank'): (
 
         ('type', int),
 
         ('cardinality', "1.1"),
 
     ),
-    (shared.DocMetaInfo, 'drs_keys'): (
+    (activity.SimulationComposite, 'deployments'): (
+
+        ('type', software.Deployment),
+
+        ('cardinality', "0.N"),
+
+    ),
+    (activity.SimulationComposite, 'rationales'): (
 
         ('type', unicode),
 
         ('cardinality', "0.N"),
 
     ),
-    (shared.DocMetaInfo, 'language'): (
+    (activity.SimulationComposite, 'short_name'): (
 
         ('type', unicode),
 
         ('cardinality', "1.1"),
 
     ),
-    (shared.DocMetaInfo, 'source_key'): (
+    (activity.SimulationComposite, 'inputs'): (
 
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (shared.DocMetaInfo, 'status'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (shared.DocMetaInfo, 'genealogy'): (
-
-        ('type', shared.DocGenealogy),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (shared.DocMetaInfo, 'source'): (
-
-        ('type', unicode),
-
-        ('cardinality', "1.1"),
-
-        ('constant', "scripts"),
-    ),
-    (shared.DocMetaInfo, 'type'): (
-
-        ('type', unicode),
-
-        ('cardinality', "1.1"),
-
-    ),
-    (shared.DocMetaInfo, 'external_ids'): (
-
-        ('type', shared.StandardName),
+        ('type', software.Coupling),
 
         ('cardinality', "0.N"),
 
     ),
-    (shared.DocMetaInfo, 'institute'): (
+    (activity.SimulationComposite, 'conformances'): (
+
+        ('type', activity.Conformance),
+
+        ('cardinality', "0.N"),
+
+    ),
+    (activity.SimulationComposite, 'outputs'): (
+
+        ('type', data.DataObject),
+
+        ('cardinality', "0.N"),
+
+    ),
+    (activity.SimulationComposite, 'long_name'): (
 
         ('type', unicode),
 
         ('cardinality', "0.1"),
 
     ),
-    (shared.DocMetaInfo, 'author'): (
+    (activity.SimulationComposite, 'restarts'): (
 
-        ('type', shared.ResponsibleParty),
+        ('type', data.DataObject),
 
-        ('cardinality', "0.1"),
-
-    ),
-    (shared.DocMetaInfo, 'sort_key'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
+        ('cardinality', "0.N"),
 
     ),
-    (shared.DocMetaInfo, 'type_sort_key'): (
+    (activity.SimulationComposite, 'meta'): (
 
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (shared.DocMetaInfo, 'create_date'): (
-
-        ('type', datetime.datetime),
+        ('type', shared.DocMetaInfo),
 
         ('cardinality', "1.1"),
 
     ),
-    (shared.DocMetaInfo, 'type_display_name'): (
+    (activity.SimulationComposite, 'control_simulation'): (
+
+        ('type', activity.Simulation),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (activity.SimulationComposite, 'authors'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (activity.SimulationComposite, 'simulation_id'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (activity.SimulationComposite, 'projects'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.N"),
+
+    ),
+    (activity.SimulationComposite, 'child'): (
+
+        ('type', activity.Simulation),
+
+        ('cardinality', "0.N"),
+
+    ),
+    (activity.SimulationComposite, 'description'): (
 
         ('type', unicode),
 
@@ -7089,31 +7093,16 @@ CONSTRAINTS = {
 
     ),
 
-    (software.SpatialRegriddingProperty, 'name'): (
+    (data.DataDistribution, 'access'): (
 
         ('type', unicode),
 
         ('cardinality', "0.1"),
 
     ),
-    (software.SpatialRegriddingProperty, 'value'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-
     (data.DataDistribution, 'responsible_party'): (
 
         ('type', shared.ResponsibleParty),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (data.DataDistribution, 'format'): (
-
-        ('type', unicode),
 
         ('cardinality', "0.1"),
 
@@ -7125,7 +7114,7 @@ CONSTRAINTS = {
         ('cardinality', "0.1"),
 
     ),
-    (data.DataDistribution, 'access'): (
+    (data.DataDistribution, 'format'): (
 
         ('type', unicode),
 
@@ -7133,14 +7122,14 @@ CONSTRAINTS = {
 
     ),
 
-    (software.ConnectionProperty, 'name'): (
+    (grids.GridProperty, 'name'): (
 
         ('type', unicode),
 
         ('cardinality', "0.1"),
 
     ),
-    (software.ConnectionProperty, 'value'): (
+    (grids.GridProperty, 'value'): (
 
         ('type', unicode),
 
@@ -7148,23 +7137,24 @@ CONSTRAINTS = {
 
     ),
 
-    (activity.Simulation, 'funding_sources'): (
+    (shared.MachineCompilerUnit, 'compilers'): (
 
-        ('type', unicode),
+        ('type', shared.Compiler),
 
         ('cardinality', "0.N"),
 
     ),
+    (shared.MachineCompilerUnit, 'machine'): (
+
+        ('type', shared.Machine),
+
+        ('cardinality', "1.1"),
+
+    ),
+
     (activity.Simulation, 'inputs'): (
 
         ('type', software.Coupling),
-
-        ('cardinality', "0.N"),
-
-    ),
-    (activity.Simulation, 'responsible_parties'): (
-
-        ('type', shared.ResponsibleParty),
 
         ('cardinality', "0.N"),
 
@@ -7197,6 +7187,13 @@ CONSTRAINTS = {
         ('cardinality', "0.N"),
 
     ),
+    (activity.Simulation, 'funding_sources'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.N"),
+
+    ),
     (activity.Simulation, 'spinup_simulation'): (
 
         ('type', activity.Simulation),
@@ -7207,13 +7204,6 @@ CONSTRAINTS = {
     (activity.Simulation, 'supports'): (
 
         ('type', activity.Experiment),
-
-        ('cardinality', "0.N"),
-
-    ),
-    (activity.Simulation, 'projects'): (
-
-        ('type', unicode),
 
         ('cardinality', "0.N"),
 
@@ -7239,18 +7229,11 @@ CONSTRAINTS = {
         ('cardinality', "0.1"),
 
     ),
-    (activity.Simulation, 'simulation_id'): (
+    (activity.Simulation, 'rationales'): (
 
         ('type', unicode),
 
-        ('cardinality', "0.1"),
-
-    ),
-    (activity.Simulation, 'authors'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
+        ('cardinality', "0.N"),
 
     ),
     (activity.Simulation, 'deployments'): (
@@ -7260,6 +7243,20 @@ CONSTRAINTS = {
         ('cardinality', "0.N"),
 
     ),
+    (activity.Simulation, 'authors'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (activity.Simulation, 'simulation_id'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
     (activity.Simulation, 'outputs'): (
 
         ('type', data.DataObject),
@@ -7267,9 +7264,16 @@ CONSTRAINTS = {
         ('cardinality', "0.N"),
 
     ),
-    (activity.Simulation, 'rationales'): (
+    (activity.Simulation, 'projects'): (
 
         ('type', unicode),
+
+        ('cardinality', "0.N"),
+
+    ),
+    (activity.Simulation, 'responsible_parties'): (
+
+        ('type', shared.ResponsibleParty),
 
         ('cardinality', "0.N"),
 
@@ -7282,426 +7286,235 @@ CONSTRAINTS = {
 
     ),
 
-    (software.EntryPoint, 'name'): (
+    (shared.DocReference, 'external_id'): (
 
         ('type', unicode),
 
         ('cardinality', "0.1"),
 
     ),
+    (shared.DocReference, 'id'): (
 
-    (quality.Measure, 'identification'): (
+        ('type', uuid.UUID),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (shared.DocReference, 'version'): (
+
+        ('type', int),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (shared.DocReference, 'name'): (
 
         ('type', unicode),
 
         ('cardinality', "0.1"),
 
     ),
-    (quality.Measure, 'name'): (
+    (shared.DocReference, 'changes'): (
 
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (quality.Measure, 'description'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-
-    (software.Component, 'license'): (
-
-        ('type', shared.License),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (software.Component, 'funding_sources'): (
-
-        ('type', unicode),
+        ('type', shared.Change),
 
         ('cardinality', "0.N"),
 
     ),
-    (software.Component, 'grid'): (
-
-        ('type', grids.GridSpec),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (software.Component, 'properties'): (
-
-        ('type', software.ComponentProperty),
-
-        ('cardinality', "0.N"),
-
-    ),
-    (software.Component, 'code_access'): (
+    (shared.DocReference, 'type'): (
 
         ('type', unicode),
 
         ('cardinality', "0.1"),
 
     ),
-    (software.Component, 'composition'): (
-
-        ('type', software.Composition),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (software.Component, 'language'): (
-
-        ('type', software.ComponentLanguage),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (software.Component, 'previous_version'): (
+    (shared.DocReference, 'url'): (
 
         ('type', unicode),
 
         ('cardinality', "0.1"),
 
     ),
-    (software.Component, 'citations'): (
-
-        ('type', shared.Citation),
-
-        ('cardinality', "0.N"),
-
-    ),
-    (software.Component, 'short_name'): (
-
-        ('type', unicode),
-
-        ('cardinality', "1.1"),
-
-    ),
-    (software.Component, 'dependencies'): (
-
-        ('type', software.EntryPoint),
-
-        ('cardinality', "0.N"),
-
-    ),
-    (software.Component, 'online_resource'): (
+    (shared.DocReference, 'description'): (
 
         ('type', unicode),
 
         ('cardinality', "0.1"),
 
     ),
-    (software.Component, 'version'): (
 
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (software.Component, 'responsible_parties'): (
-
-        ('type', shared.ResponsibleParty),
-
-        ('cardinality', "0.N"),
-
-    ),
-    (software.Component, 'sub_components'): (
-
-        ('type', software.Component),
-
-        ('cardinality', "0.N"),
-
-    ),
-    (software.Component, 'deployments'): (
-
-        ('type', software.Deployment),
-
-        ('cardinality', "0.N"),
-
-    ),
-    (software.Component, 'long_name'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (software.Component, 'coupling_framework'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (software.Component, 'release_date'): (
-
-        ('type', datetime.datetime),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (software.Component, 'purpose'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (software.Component, 'description'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (software.Component, 'parent'): (
-
-        ('type', software.Component),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (software.Component, 'is_embedded'): (
-
-        ('type', bool),
-
-        ('cardinality', "0.1"),
-
-    ),
-
-    (activity.NumericalRequirementOption, 'description'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (activity.NumericalRequirementOption, 'sub_options'): (
-
-        ('type', activity.NumericalRequirementOption),
-
-        ('cardinality', "0.N"),
-
-    ),
-    (activity.NumericalRequirementOption, 'relationship'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (activity.NumericalRequirementOption, 'id'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (activity.NumericalRequirementOption, 'name'): (
-
-        ('type', unicode),
-
-        ('cardinality', "1.1"),
-
-    ),
-
-    (data.DataRestriction, 'restriction'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (data.DataRestriction, 'scope'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (data.DataRestriction, 'license'): (
-
-        ('type', shared.License),
-
-        ('cardinality', "0.1"),
-
-    ),
-
-    (software.ProcessorComponent, 'funding_sources'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.N"),
-
-    ),
-    (software.ProcessorComponent, 'parent'): (
-
-        ('type', software.Component),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (software.ProcessorComponent, 'grid'): (
-
-        ('type', grids.GridSpec),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (software.ProcessorComponent, 'properties'): (
-
-        ('type', software.ComponentProperty),
-
-        ('cardinality', "0.N"),
-
-    ),
-    (software.ProcessorComponent, 'code_access'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (software.ProcessorComponent, 'composition'): (
-
-        ('type', software.Composition),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (software.ProcessorComponent, 'previous_version'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (software.ProcessorComponent, 'short_name'): (
-
-        ('type', unicode),
-
-        ('cardinality', "1.1"),
-
-    ),
-    (software.ProcessorComponent, 'coupling_framework'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (software.ProcessorComponent, 'language'): (
-
-        ('type', software.ComponentLanguage),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (software.ProcessorComponent, 'license'): (
-
-        ('type', shared.License),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (software.ProcessorComponent, 'citations'): (
-
-        ('type', shared.Citation),
-
-        ('cardinality', "0.N"),
-
-    ),
-    (software.ProcessorComponent, 'meta'): (
+    (quality.CimQuality, 'meta'): (
 
         ('type', shared.DocMetaInfo),
 
         ('cardinality', "1.1"),
 
     ),
-    (software.ProcessorComponent, 'dependencies'): (
+    (quality.CimQuality, 'reports'): (
 
-        ('type', software.EntryPoint),
+        ('type', quality.Report),
 
         ('cardinality', "0.N"),
 
     ),
-    (software.ProcessorComponent, 'version'): (
+
+    (activity.DownscalingSimulation, 'calendar'): (
+
+        ('type', shared.Calendar),
+
+        ('cardinality', "1.1"),
+
+    ),
+    (activity.DownscalingSimulation, 'short_name'): (
+
+        ('type', unicode),
+
+        ('cardinality', "1.1"),
+
+    ),
+    (activity.DownscalingSimulation, 'downscaled_from'): (
+
+        ('type', shared.DataSource),
+
+        ('cardinality', "1.1"),
+
+    ),
+    (activity.DownscalingSimulation, 'inputs'): (
+
+        ('type', software.Coupling),
+
+        ('cardinality', "0.N"),
+
+    ),
+    (activity.DownscalingSimulation, 'funding_sources'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.N"),
+
+    ),
+    (activity.DownscalingSimulation, 'supports'): (
+
+        ('type', activity.Experiment),
+
+        ('cardinality', "0.N"),
+
+    ),
+    (activity.DownscalingSimulation, 'long_name'): (
 
         ('type', unicode),
 
         ('cardinality', "0.1"),
 
     ),
-    (software.ProcessorComponent, 'responsible_parties'): (
+    (activity.DownscalingSimulation, 'outputs'): (
+
+        ('type', data.DataObject),
+
+        ('cardinality', "0.N"),
+
+    ),
+    (activity.DownscalingSimulation, 'description'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (activity.DownscalingSimulation, 'rationales'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.N"),
+
+    ),
+    (activity.DownscalingSimulation, 'downscaling_type'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (activity.DownscalingSimulation, 'downscaling_id'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (activity.DownscalingSimulation, 'meta'): (
+
+        ('type', shared.DocMetaInfo),
+
+        ('cardinality', "1.1"),
+
+    ),
+    (activity.DownscalingSimulation, 'projects'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.N"),
+
+    ),
+    (activity.DownscalingSimulation, 'responsible_parties'): (
 
         ('type', shared.ResponsibleParty),
 
         ('cardinality', "0.N"),
 
     ),
-    (software.ProcessorComponent, 'deployments'): (
 
-        ('type', software.Deployment),
+    (shared.Compiler, 'name'): (
 
-        ('cardinality', "0.N"),
+        ('type', unicode),
+
+        ('cardinality', "1.1"),
 
     ),
-    (software.ProcessorComponent, 'long_name'): (
+    (shared.Compiler, 'environment_variables'): (
 
         ('type', unicode),
 
         ('cardinality', "0.1"),
 
     ),
-    (software.ProcessorComponent, 'is_embedded'): (
-
-        ('type', bool),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (software.ProcessorComponent, 'online_resource'): (
+    (shared.Compiler, 'type'): (
 
         ('type', unicode),
 
         ('cardinality', "0.1"),
 
     ),
-    (software.ProcessorComponent, 'purpose'): (
+    (shared.Compiler, 'options'): (
 
         ('type', unicode),
 
         ('cardinality', "0.1"),
 
     ),
-    (software.ProcessorComponent, 'description'): (
+    (shared.Compiler, 'version'): (
 
         ('type', unicode),
 
-        ('cardinality', "0.1"),
+        ('cardinality', "1.1"),
 
     ),
-    (software.ProcessorComponent, 'sub_components'): (
+    (shared.Compiler, 'language'): (
 
-        ('type', software.Component),
-
-        ('cardinality', "0.N"),
-
-    ),
-    (software.ProcessorComponent, 'release_date'): (
-
-        ('type', datetime.datetime),
+        ('type', unicode),
 
         ('cardinality', "0.1"),
 
     ),
 
     (shared.License, 'contact'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (shared.License, 'description'): (
 
         ('type', unicode),
 
@@ -7715,29 +7528,7 @@ CONSTRAINTS = {
         ('cardinality', "0.1"),
 
     ),
-    (shared.License, 'description'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
     (shared.License, 'name'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-
-    (activity.SimulationRelationshipTarget, 'simulation'): (
-
-        ('type', shared.DocReference),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (activity.SimulationRelationshipTarget, 'target'): (
 
         ('type', unicode),
 
@@ -7795,104 +7586,486 @@ CONSTRAINTS = {
 
     ),
 
-    (grids.GridProperty, 'name'): (
+    (software.CouplingEndpoint, 'instance_id'): (
 
         ('type', unicode),
 
         ('cardinality', "0.1"),
 
     ),
-    (grids.GridProperty, 'value'): (
+    (software.CouplingEndpoint, 'properties'): (
+
+        ('type', software.CouplingProperty),
+
+        ('cardinality', "0.N"),
+
+    ),
+    (software.CouplingEndpoint, 'data_source'): (
+
+        ('type', shared.DataSource),
+
+        ('cardinality', "0.1"),
+
+    ),
+
+    (shared.DocMetaInfo, 'id'): (
+
+        ('type', uuid.UUID),
+
+        ('cardinality', "1.1"),
+
+    ),
+    (shared.DocMetaInfo, 'institute'): (
 
         ('type', unicode),
 
         ('cardinality', "0.1"),
 
     ),
+    (shared.DocMetaInfo, 'type_display_name'): (
 
-    (quality.Report, 'date'): (
-
-        ('type', datetime.datetime),
+        ('type', unicode),
 
         ('cardinality', "0.1"),
 
     ),
-    (quality.Report, 'measure'): (
-
-        ('type', quality.Measure),
-
-        ('cardinality', "1.1"),
-
-    ),
-    (quality.Report, 'evaluation'): (
-
-        ('type', quality.Evaluation),
-
-        ('cardinality', "1.1"),
-
-    ),
-    (quality.Report, 'evaluator'): (
+    (shared.DocMetaInfo, 'author'): (
 
         ('type', shared.ResponsibleParty),
 
         ('cardinality', "0.1"),
 
     ),
-
-    (data.DataStorageDb, 'name'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (data.DataStorageDb, 'format'): (
+    (shared.DocMetaInfo, 'type_sort_key'): (
 
         ('type', unicode),
 
         ('cardinality', "0.1"),
 
     ),
-    (data.DataStorageDb, 'owner'): (
+    (shared.DocMetaInfo, 'create_date'): (
+
+        ('type', datetime.datetime),
+
+        ('cardinality', "1.1"),
+
+    ),
+    (shared.DocMetaInfo, 'update_date'): (
+
+        ('type', datetime.datetime),
+
+        ('cardinality', "1.1"),
+
+    ),
+    (shared.DocMetaInfo, 'type'): (
+
+        ('type', unicode),
+
+        ('cardinality', "1.1"),
+
+    ),
+    (shared.DocMetaInfo, 'drs_path'): (
 
         ('type', unicode),
 
         ('cardinality', "0.1"),
 
     ),
-    (data.DataStorageDb, 'size'): (
+    (shared.DocMetaInfo, 'sort_key'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (shared.DocMetaInfo, 'version'): (
 
         ('type', int),
 
-        ('cardinality', "0.1"),
+        ('cardinality', "1.1"),
 
     ),
-    (data.DataStorageDb, 'table'): (
+    (shared.DocMetaInfo, 'drs_keys'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.N"),
+
+    ),
+    (shared.DocMetaInfo, 'source'): (
+
+        ('type', unicode),
+
+        ('cardinality', "1.1"),
+
+        ('constant', "scripts"),
+    ),
+    (shared.DocMetaInfo, 'project'): (
+
+        ('type', unicode),
+
+        ('cardinality', "1.1"),
+
+    ),
+    (shared.DocMetaInfo, 'external_ids'): (
+
+        ('type', shared.StandardName),
+
+        ('cardinality', "0.N"),
+
+    ),
+    (shared.DocMetaInfo, 'source_key'): (
 
         ('type', unicode),
 
         ('cardinality', "0.1"),
 
     ),
-    (data.DataStorageDb, 'modification_date'): (
+    (shared.DocMetaInfo, 'genealogy'): (
+
+        ('type', shared.DocGenealogy),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (shared.DocMetaInfo, 'status'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (shared.DocMetaInfo, 'language'): (
+
+        ('type', unicode),
+
+        ('cardinality', "1.1"),
+
+    ),
+
+    (shared.Relationship, 'description'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (shared.Relationship, 'direction'): (
+
+        ('type', unicode),
+
+        ('cardinality', "1.1"),
+
+    ),
+
+    (activity.Activity, 'funding_sources'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.N"),
+
+    ),
+    (activity.Activity, 'projects'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.N"),
+
+    ),
+    (activity.Activity, 'responsible_parties'): (
+
+        ('type', shared.ResponsibleParty),
+
+        ('cardinality', "0.N"),
+
+    ),
+    (activity.Activity, 'rationales'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.N"),
+
+    ),
+
+    (software.ModelComponent, 'grid'): (
+
+        ('type', grids.GridSpec),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (software.ModelComponent, 'activity'): (
+
+        ('type', activity.Activity),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (software.ModelComponent, 'properties'): (
+
+        ('type', software.ComponentProperty),
+
+        ('cardinality', "0.N"),
+
+    ),
+    (software.ModelComponent, 'is_embedded'): (
+
+        ('type', bool),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (software.ModelComponent, 'funding_sources'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.N"),
+
+    ),
+    (software.ModelComponent, 'composition'): (
+
+        ('type', software.Composition),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (software.ModelComponent, 'language'): (
+
+        ('type', software.ComponentLanguage),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (software.ModelComponent, 'coupling_framework'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (software.ModelComponent, 'previous_version'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (software.ModelComponent, 'meta'): (
+
+        ('type', shared.DocMetaInfo),
+
+        ('cardinality', "1.1"),
+
+    ),
+    (software.ModelComponent, 'description'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (software.ModelComponent, 'code_access'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (software.ModelComponent, 'type'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (software.ModelComponent, 'purpose'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (software.ModelComponent, 'responsible_parties'): (
+
+        ('type', shared.ResponsibleParty),
+
+        ('cardinality', "0.N"),
+
+    ),
+    (software.ModelComponent, 'long_name'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (software.ModelComponent, 'version'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (software.ModelComponent, 'deployments'): (
+
+        ('type', software.Deployment),
+
+        ('cardinality', "0.N"),
+
+    ),
+    (software.ModelComponent, 'types'): (
+
+        ('type', unicode),
+
+        ('cardinality', "1.N"),
+
+    ),
+    (software.ModelComponent, 'parent'): (
+
+        ('type', software.Component),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (software.ModelComponent, 'sub_components'): (
+
+        ('type', software.Component),
+
+        ('cardinality', "0.N"),
+
+    ),
+    (software.ModelComponent, 'online_resource'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (software.ModelComponent, 'release_date'): (
 
         ('type', datetime.datetime),
 
         ('cardinality', "0.1"),
 
     ),
-    (data.DataStorageDb, 'access_string'): (
+    (software.ModelComponent, 'license'): (
+
+        ('type', shared.License),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (software.ModelComponent, 'timing'): (
+
+        ('type', software.Timing),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (software.ModelComponent, 'short_name'): (
+
+        ('type', unicode),
+
+        ('cardinality', "1.1"),
+
+    ),
+    (software.ModelComponent, 'dependencies'): (
+
+        ('type', software.EntryPoint),
+
+        ('cardinality', "0.N"),
+
+    ),
+    (software.ModelComponent, 'citations'): (
+
+        ('type', shared.Citation),
+
+        ('cardinality', "0.N"),
+
+    ),
+
+    (software.ComponentProperty, 'intent'): (
 
         ('type', unicode),
 
         ('cardinality', "0.1"),
 
     ),
-    (data.DataStorageDb, 'location'): (
+    (software.ComponentProperty, 'standard_names'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.N"),
+
+    ),
+    (software.ComponentProperty, 'values'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.N"),
+
+    ),
+    (software.ComponentProperty, 'is_represented'): (
+
+        ('type', bool),
+
+        ('cardinality', "1.1"),
+
+    ),
+    (software.ComponentProperty, 'purpose'): (
 
         ('type', unicode),
 
         ('cardinality', "0.1"),
+
+    ),
+    (software.ComponentProperty, 'description'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (software.ComponentProperty, 'long_name'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (software.ComponentProperty, 'short_name'): (
+
+        ('type', unicode),
+
+        ('cardinality', "1.1"),
+
+    ),
+    (software.ComponentProperty, 'units'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (software.ComponentProperty, 'grid'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (software.ComponentProperty, 'sub_properties'): (
+
+        ('type', software.ComponentProperty),
+
+        ('cardinality', "0.N"),
+
+    ),
+    (software.ComponentProperty, 'citations'): (
+
+        ('type', shared.Citation),
+
+        ('cardinality', "0.N"),
 
     ),
 
@@ -7940,53 +8113,210 @@ CONSTRAINTS = {
 
     ),
 
-    (data.DataTopic, 'description'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (data.DataTopic, 'name'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (data.DataTopic, 'unit'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-
-    (software.ComponentLanguage, 'name'): (
+    (grids.GridExtent, 'maximum_latitude'): (
 
         ('type', unicode),
 
         ('cardinality', "1.1"),
 
     ),
-    (software.ComponentLanguage, 'properties'): (
+    (grids.GridExtent, 'maximum_longitude'): (
 
-        ('type', software.ComponentLanguageProperty),
+        ('type', unicode),
 
-        ('cardinality', "0.N"),
+        ('cardinality', "1.1"),
 
     ),
+    (grids.GridExtent, 'minimum_latitude'): (
 
-    (software.SpatialRegriddingUserMethod, 'file'): (
+        ('type', unicode),
 
-        ('type', data.DataObject),
+        ('cardinality', "1.1"),
+
+    ),
+    (grids.GridExtent, 'units'): (
+
+        ('type', unicode),
 
         ('cardinality', "0.1"),
 
     ),
-    (software.SpatialRegriddingUserMethod, 'name'): (
+    (grids.GridExtent, 'minimum_longitude'): (
 
         ('type', unicode),
+
+        ('cardinality', "1.1"),
+
+    ),
+
+    (software.Connection, 'properties'): (
+
+        ('type', software.ConnectionProperty),
+
+        ('cardinality', "0.N"),
+
+    ),
+    (software.Connection, 'description'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (software.Connection, 'priming'): (
+
+        ('type', shared.DataSource),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (software.Connection, 'spatial_regridding'): (
+
+        ('type', software.SpatialRegridding),
+
+        ('cardinality', "0.N"),
+
+    ),
+    (software.Connection, 'sources'): (
+
+        ('type', software.ConnectionEndpoint),
+
+        ('cardinality', "0.N"),
+
+    ),
+    (software.Connection, 'type'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (software.Connection, 'transformers'): (
+
+        ('type', software.ProcessorComponent),
+
+        ('cardinality', "0.N"),
+
+    ),
+    (software.Connection, 'time_profile'): (
+
+        ('type', software.Timing),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (software.Connection, 'time_lag'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (software.Connection, 'time_transformation'): (
+
+        ('type', software.TimeTransformation),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (software.Connection, 'target'): (
+
+        ('type', software.ConnectionEndpoint),
+
+        ('cardinality', "0.1"),
+
+    ),
+
+    (software.TimeTransformation, 'description'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (software.TimeTransformation, 'mapping_type'): (
+
+        ('type', unicode),
+
+        ('cardinality', "1.1"),
+
+    ),
+
+    (quality.Report, 'date'): (
+
+        ('type', datetime.datetime),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (quality.Report, 'measure'): (
+
+        ('type', quality.Measure),
+
+        ('cardinality', "1.1"),
+
+    ),
+    (quality.Report, 'evaluation'): (
+
+        ('type', quality.Evaluation),
+
+        ('cardinality', "1.1"),
+
+    ),
+    (quality.Report, 'evaluator'): (
+
+        ('type', shared.ResponsibleParty),
+
+        ('cardinality', "0.1"),
+
+    ),
+
+    (shared.DocRelationship, 'type'): (
+
+        ('type', unicode),
+
+        ('cardinality', "1.1"),
+
+    ),
+    (shared.DocRelationship, 'direction'): (
+
+        ('type', unicode),
+
+        ('cardinality', "1.1"),
+
+    ),
+    (shared.DocRelationship, 'target'): (
+
+        ('type', shared.DocRelationshipTarget),
+
+        ('cardinality', "1.1"),
+
+    ),
+    (shared.DocRelationship, 'description'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+
+    (shared.StandardName, 'standards'): (
+
+        ('type', shared.Standard),
+
+        ('cardinality', "0.N"),
+
+    ),
+    (shared.StandardName, 'value'): (
+
+        ('type', unicode),
+
+        ('cardinality', "1.1"),
+
+    ),
+    (shared.StandardName, 'is_open'): (
+
+        ('type', bool),
 
         ('cardinality', "1.1"),
 
@@ -8035,14 +8365,6 @@ CONSTRAINTS = {
 
     ),
 
-    (shared.DocGenealogy, 'relationships'): (
-
-        ('type', shared.DocRelationship),
-
-        ('cardinality', "0.N"),
-
-    ),
-
     (activity.NumericalRequirement, 'requirement_type'): (
 
         ('type', unicode),
@@ -8086,204 +8408,14 @@ CONSTRAINTS = {
 
     ),
 
-    (software.ModelComponent, 'activity'): (
-
-        ('type', activity.Activity),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (software.ModelComponent, 'version'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (software.ModelComponent, 'parent'): (
-
-        ('type', software.Component),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (software.ModelComponent, 'grid'): (
-
-        ('type', grids.GridSpec),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (software.ModelComponent, 'properties'): (
-
-        ('type', software.ComponentProperty),
-
-        ('cardinality', "0.N"),
-
-    ),
-    (software.ModelComponent, 'code_access'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (software.ModelComponent, 'composition'): (
-
-        ('type', software.Composition),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (software.ModelComponent, 'previous_version'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (software.ModelComponent, 'short_name'): (
-
-        ('type', unicode),
-
-        ('cardinality', "1.1"),
-
-    ),
-    (software.ModelComponent, 'meta'): (
-
-        ('type', shared.DocMetaInfo),
-
-        ('cardinality', "1.1"),
-
-    ),
-    (software.ModelComponent, 'coupling_framework'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (software.ModelComponent, 'language'): (
-
-        ('type', software.ComponentLanguage),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (software.ModelComponent, 'funding_sources'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.N"),
-
-    ),
-    (software.ModelComponent, 'type'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (software.ModelComponent, 'citations'): (
-
-        ('type', shared.Citation),
-
-        ('cardinality', "0.N"),
-
-    ),
-    (software.ModelComponent, 'license'): (
-
-        ('type', shared.License),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (software.ModelComponent, 'dependencies'): (
-
-        ('type', software.EntryPoint),
-
-        ('cardinality', "0.N"),
-
-    ),
-    (software.ModelComponent, 'types'): (
-
-        ('type', unicode),
-
-        ('cardinality', "1.N"),
-
-    ),
-    (software.ModelComponent, 'responsible_parties'): (
-
-        ('type', shared.ResponsibleParty),
-
-        ('cardinality', "0.N"),
-
-    ),
-    (software.ModelComponent, 'deployments'): (
-
-        ('type', software.Deployment),
-
-        ('cardinality', "0.N"),
-
-    ),
-    (software.ModelComponent, 'long_name'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (software.ModelComponent, 'is_embedded'): (
-
-        ('type', bool),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (software.ModelComponent, 'online_resource'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (software.ModelComponent, 'purpose'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (software.ModelComponent, 'timing'): (
-
-        ('type', software.Timing),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (software.ModelComponent, 'description'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (software.ModelComponent, 'sub_components'): (
-
-        ('type', software.Component),
-
-        ('cardinality', "0.N"),
-
-    ),
-    (software.ModelComponent, 'release_date'): (
-
-        ('type', datetime.datetime),
-
-        ('cardinality', "0.1"),
-
-    ),
-
     (activity.PhysicalModification, 'description'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (activity.PhysicalModification, 'frequency'): (
 
         ('type', unicode),
 
@@ -8304,13 +8436,6 @@ CONSTRAINTS = {
         ('cardinality', "1.1"),
 
     ),
-    (activity.PhysicalModification, 'frequency'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
     (activity.PhysicalModification, 'requirements'): (
 
         ('type', activity.NumericalRequirement),
@@ -8326,391 +8451,43 @@ CONSTRAINTS = {
 
     ),
 
-    (activity.SimulationComposite, 'calendar'): (
-
-        ('type', shared.Calendar),
-
-        ('cardinality', "1.1"),
-
-    ),
-    (activity.SimulationComposite, 'spinup_date_range'): (
-
-        ('type', shared.ClosedDateRange),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (activity.SimulationComposite, 'date_range'): (
-
-        ('type', shared.DateRange),
-
-        ('cardinality', "1.1"),
-
-    ),
-    (activity.SimulationComposite, 'funding_sources'): (
+    (activity.InitialCondition, 'requirement_type'): (
 
         ('type', unicode),
 
-        ('cardinality', "0.N"),
-
-    ),
-    (activity.SimulationComposite, 'supports'): (
-
-        ('type', activity.Experiment),
-
-        ('cardinality', "0.N"),
-
-    ),
-    (activity.SimulationComposite, 'spinup_simulation'): (
-
-        ('type', activity.Simulation),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (activity.SimulationComposite, 'rank'): (
-
-        ('type', int),
-
         ('cardinality', "1.1"),
 
+        ('constant', "initialCondition"),
     ),
-    (activity.SimulationComposite, 'projects'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.N"),
-
-    ),
-    (activity.SimulationComposite, 'authors'): (
+    (activity.InitialCondition, 'id'): (
 
         ('type', unicode),
 
         ('cardinality', "0.1"),
 
     ),
-    (activity.SimulationComposite, 'deployments'): (
-
-        ('type', software.Deployment),
-
-        ('cardinality', "0.N"),
-
-    ),
-    (activity.SimulationComposite, 'rationales'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.N"),
-
-    ),
-    (activity.SimulationComposite, 'short_name'): (
-
-        ('type', unicode),
-
-        ('cardinality', "1.1"),
-
-    ),
-    (activity.SimulationComposite, 'inputs'): (
-
-        ('type', software.Coupling),
-
-        ('cardinality', "0.N"),
-
-    ),
-    (activity.SimulationComposite, 'responsible_parties'): (
-
-        ('type', shared.ResponsibleParty),
-
-        ('cardinality', "0.N"),
-
-    ),
-    (activity.SimulationComposite, 'conformances'): (
-
-        ('type', activity.Conformance),
-
-        ('cardinality', "0.N"),
-
-    ),
-    (activity.SimulationComposite, 'outputs'): (
-
-        ('type', data.DataObject),
-
-        ('cardinality', "0.N"),
-
-    ),
-    (activity.SimulationComposite, 'long_name'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (activity.SimulationComposite, 'restarts'): (
-
-        ('type', data.DataObject),
-
-        ('cardinality', "0.N"),
-
-    ),
-    (activity.SimulationComposite, 'meta'): (
-
-        ('type', shared.DocMetaInfo),
-
-        ('cardinality', "1.1"),
-
-    ),
-    (activity.SimulationComposite, 'control_simulation'): (
-
-        ('type', activity.Simulation),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (activity.SimulationComposite, 'simulation_id'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (activity.SimulationComposite, 'child'): (
-
-        ('type', activity.Simulation),
-
-        ('cardinality', "0.N"),
-
-    ),
-    (activity.SimulationComposite, 'description'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-
-    (grids.GridExtent, 'maximum_longitude'): (
-
-        ('type', unicode),
-
-        ('cardinality', "1.1"),
-
-    ),
-    (grids.GridExtent, 'minimum_longitude'): (
-
-        ('type', unicode),
-
-        ('cardinality', "1.1"),
-
-    ),
-    (grids.GridExtent, 'minimum_latitude'): (
-
-        ('type', unicode),
-
-        ('cardinality', "1.1"),
-
-    ),
-    (grids.GridExtent, 'units'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (grids.GridExtent, 'maximum_latitude'): (
-
-        ('type', unicode),
-
-        ('cardinality', "1.1"),
-
-    ),
-
-    (shared.MachineCompilerUnit, 'compilers'): (
-
-        ('type', shared.Compiler),
-
-        ('cardinality', "0.N"),
-
-    ),
-    (shared.MachineCompilerUnit, 'machine'): (
-
-        ('type', shared.Machine),
-
-        ('cardinality', "1.1"),
-
-    ),
-
-    (activity.DownscalingSimulation, 'rationales'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.N"),
-
-    ),
-    (activity.DownscalingSimulation, 'downscaling_type'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (activity.DownscalingSimulation, 'description'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (activity.DownscalingSimulation, 'outputs'): (
-
-        ('type', data.DataObject),
-
-        ('cardinality', "0.N"),
-
-    ),
-    (activity.DownscalingSimulation, 'downscaling_id'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (activity.DownscalingSimulation, 'supports'): (
-
-        ('type', activity.Experiment),
-
-        ('cardinality', "0.N"),
-
-    ),
-    (activity.DownscalingSimulation, 'meta'): (
-
-        ('type', shared.DocMetaInfo),
-
-        ('cardinality', "1.1"),
-
-    ),
-    (activity.DownscalingSimulation, 'projects'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.N"),
-
-    ),
-    (activity.DownscalingSimulation, 'responsible_parties'): (
-
-        ('type', shared.ResponsibleParty),
-
-        ('cardinality', "0.N"),
-
-    ),
-    (activity.DownscalingSimulation, 'long_name'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (activity.DownscalingSimulation, 'funding_sources'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.N"),
-
-    ),
-    (activity.DownscalingSimulation, 'calendar'): (
-
-        ('type', shared.Calendar),
-
-        ('cardinality', "1.1"),
-
-    ),
-    (activity.DownscalingSimulation, 'inputs'): (
-
-        ('type', software.Coupling),
-
-        ('cardinality', "0.N"),
-
-    ),
-    (activity.DownscalingSimulation, 'short_name'): (
-
-        ('type', unicode),
-
-        ('cardinality', "1.1"),
-
-    ),
-    (activity.DownscalingSimulation, 'downscaled_from'): (
-
-        ('type', shared.DataSource),
-
-        ('cardinality', "1.1"),
-
-    ),
-
-    (activity.SpatioTemporalConstraint, 'spatial_resolution'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (activity.SpatioTemporalConstraint, 'options'): (
+    (activity.InitialCondition, 'options'): (
 
         ('type', activity.NumericalRequirementOption),
 
         ('cardinality', "0.N"),
 
     ),
-    (activity.SpatioTemporalConstraint, 'description'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (activity.SpatioTemporalConstraint, 'name'): (
-
-        ('type', unicode),
-
-        ('cardinality', "1.1"),
-
-    ),
-    (activity.SpatioTemporalConstraint, 'requirement_type'): (
-
-        ('type', unicode),
-
-        ('cardinality', "1.1"),
-
-        ('constant', "spatioTemporalConstraint"),
-    ),
-    (activity.SpatioTemporalConstraint, 'id'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (activity.SpatioTemporalConstraint, 'source'): (
+    (activity.InitialCondition, 'source'): (
 
         ('type', shared.DataSource),
 
         ('cardinality', "0.1"),
 
     ),
-    (activity.SpatioTemporalConstraint, 'date_range'): (
-
-        ('type', shared.DateRange),
-
-        ('cardinality', "0.1"),
-
-    ),
-
-    (software.TimeTransformation, 'description'): (
+    (activity.InitialCondition, 'description'): (
 
         ('type', unicode),
 
         ('cardinality', "0.1"),
 
     ),
-    (software.TimeTransformation, 'mapping_type'): (
+    (activity.InitialCondition, 'name'): (
 
         ('type', unicode),
 
@@ -8718,18 +8495,241 @@ CONSTRAINTS = {
 
     ),
 
-    (data.DataExtent, 'temporal'): (
+    (shared.ClosedDateRange, 'end'): (
 
-        ('type', data.DataExtentTemporal),
+        ('type', datetime.datetime),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (shared.ClosedDateRange, 'start'): (
+
+        ('type', datetime.datetime),
 
         ('cardinality', "1.1"),
 
     ),
-    (data.DataExtent, 'geographical'): (
+    (shared.ClosedDateRange, 'duration'): (
 
-        ('type', data.DataExtentGeographical),
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+
+    (shared.OpenDateRange, 'duration'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (shared.OpenDateRange, 'end'): (
+
+        ('type', datetime.datetime),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (shared.OpenDateRange, 'start'): (
+
+        ('type', datetime.datetime),
+
+        ('cardinality', "0.1"),
+
+    ),
+
+    (quality.Measure, 'identification'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (quality.Measure, 'name'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (quality.Measure, 'description'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+
+    (activity.LateralBoundaryCondition, 'requirement_type'): (
+
+        ('type', unicode),
 
         ('cardinality', "1.1"),
+
+        ('constant', "lateralBoundaryCondition"),
+    ),
+    (activity.LateralBoundaryCondition, 'id'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (activity.LateralBoundaryCondition, 'options'): (
+
+        ('type', activity.NumericalRequirementOption),
+
+        ('cardinality', "0.N"),
+
+    ),
+    (activity.LateralBoundaryCondition, 'source'): (
+
+        ('type', shared.DataSource),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (activity.LateralBoundaryCondition, 'description'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (activity.LateralBoundaryCondition, 'name'): (
+
+        ('type', unicode),
+
+        ('cardinality', "1.1"),
+
+    ),
+
+    (software.Coupling, 'spatial_regriddings'): (
+
+        ('type', software.SpatialRegridding),
+
+        ('cardinality', "0.N"),
+
+    ),
+    (software.Coupling, 'connections'): (
+
+        ('type', software.Connection),
+
+        ('cardinality', "0.N"),
+
+    ),
+    (software.Coupling, 'priming'): (
+
+        ('type', shared.DataSource),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (software.Coupling, 'description'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (software.Coupling, 'properties'): (
+
+        ('type', software.CouplingProperty),
+
+        ('cardinality', "0.N"),
+
+    ),
+    (software.Coupling, 'type'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (software.Coupling, 'time_profile'): (
+
+        ('type', software.Timing),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (software.Coupling, 'target'): (
+
+        ('type', software.CouplingEndpoint),
+
+        ('cardinality', "1.1"),
+
+    ),
+    (software.Coupling, 'purpose'): (
+
+        ('type', unicode),
+
+        ('cardinality', "1.1"),
+
+    ),
+    (software.Coupling, 'is_fully_specified'): (
+
+        ('type', bool),
+
+        ('cardinality', "1.1"),
+
+    ),
+    (software.Coupling, 'sources'): (
+
+        ('type', software.CouplingEndpoint),
+
+        ('cardinality', "1.N"),
+
+    ),
+    (software.Coupling, 'time_transformation'): (
+
+        ('type', software.TimeTransformation),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (software.Coupling, 'time_lag'): (
+
+        ('type', software.TimeLag),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (software.Coupling, 'transformers'): (
+
+        ('type', software.ProcessorComponent),
+
+        ('cardinality', "0.N"),
+
+    ),
+
+    (software.SpatialRegridding, 'dimension'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (software.SpatialRegridding, 'standard_method'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (software.SpatialRegridding, 'properties'): (
+
+        ('type', software.SpatialRegriddingProperty),
+
+        ('cardinality', "0.N"),
+
+    ),
+    (software.SpatialRegridding, 'user_method'): (
+
+        ('type', software.SpatialRegriddingUserMethod),
+
+        ('cardinality', "0.1"),
 
     ),
 }
@@ -8757,39 +8757,7 @@ HELP = {
     # Classes.
     # ------------------------------------------------
 
-    shared.DocReference: """
-        A reference to another cim entity.
-
-    """,
-    shared.MachineCompilerUnit: """
-        Associates a machine with a [set of] compilers.  This is a separate class in case a platform needs to specify more than one machine/compiler pair.
-
-    """,
-    shared.DocRelationship: """
-        Contains the set of relationships supported by a Document.
-
-    """,
-    shared.RealCalendar: """
-        Creates and returns instance of real_calendar class.
-
-    """,
-    shared.DocRelationshipTarget: """
-        Creates and returns instance of doc_relationship_target class.
-
-    """,
     shared.Standard: """
-        Describes a name given to an entity from a recognised standard.  The CIM records the standard and the name.  For example, the standard might be CF and the name might be atmospheric_pressure.
-
-    """,
-    shared.Calendar: """
-        Describes a method of calculating a span of dates.
-
-    """,
-    shared.Property: """
-        A simple name/value pair representing a property of some entity or other.
-
-    """,
-    shared.StandardName: """
         Describes a name given to an entity from a recognised standard.  The CIM records the standard and the name.  For example, the standard might be CF and the name might be atmospheric_pressure.
 
     """,
@@ -8797,28 +8765,72 @@ HELP = {
         A description of [a set of] changes applied at a particular time, by a particular party, to a particular unit of metadata.
 
     """,
-    shared.OpenDateRange: """
-        A date range without a specified start and/or end point.
-
-    """,
-    shared.DataSource: """
-        A DataSource can be realised by either a DataObject (file), a DataContent (variable), a Component (model), or a ComponentProperty (variable); all of those can supply data.
-
-    """,
     shared.License: """
         A description of a license restricting access to a unit of data or software.
+
+    """,
+    shared.Property: """
+        A simple name/value pair representing a property of some entity or other.
+
+    """,
+    shared.Machine: """
+        A description of a machine used by a particular platform.
+
+    """,
+    shared.StandardName: """
+        Describes a name given to an entity from a recognised standard.  The CIM records the standard and the name.  For example, the standard might be CF and the name might be atmospheric_pressure.
 
     """,
     shared.DocGenealogy: """
         A record of a document's history. A genealogy element contains a textual description and a set of relationships. Each relationship has a type and a reference to some target. There are different relationships for different document types.
 
     """,
+    shared.DataSource: """
+        A DataSource can be realised by either a DataObject (file), a DataContent (variable), a Component (model), or a ComponentProperty (variable); all of those can supply data.
+
+    """,
+    shared.DateRange: """
+        Creates and returns instance of date_range class.
+
+    """,
+    shared.ChangeProperty: """
+        A description of a single change applied to a single target.  Every ChangeProperty has a description, and may also have a name from a controlled vocabulary and a value.
+
+    """,
+    shared.MachineCompilerUnit: """
+        Associates a machine with a [set of] compilers.  This is a separate class in case a platform needs to specify more than one machine/compiler pair.
+
+    """,
+    shared.Relationship: """
+        A record of a relationship between one document and another. This class is abstract; specific document types must specialise this class for their relationshipTypes to be included in a document's genealogy.
+
+    """,
+    shared.DocReference: """
+        A reference to another cim entity.
+
+    """,
+    shared.OpenDateRange: """
+        A date range without a specified start and/or end point.
+
+    """,
     shared.Compiler: """
         A description of a compiler used on a particular platform.
 
     """,
-    shared.Machine: """
-        A description of a machine used by a particular platform.
+    shared.Calendar: """
+        Describes a method of calculating a span of dates.
+
+    """,
+    shared.ResponsibleParty: """
+        A person/organsiation responsible for some aspect of a climate science artefact.
+
+    """,
+    shared.DocMetaInfo: """
+        Encapsulates document meta information.
+
+    """,
+    shared.Citation: """
+        An academic reference to published work.
 
     """,
     shared.PerpetualPeriod: """
@@ -8829,32 +8841,20 @@ HELP = {
         A platform is a description of resources used to deploy a component/simulation.  A platform pairs a machine with a (set of) compilers.  There is also a point of contact for the platform.
 
     """,
-    shared.Citation: """
-        An academic reference to published work.
+    shared.RealCalendar: """
+        Creates and returns instance of real_calendar class.
 
     """,
-    shared.ResponsibleParty: """
-        A person/organsiation responsible for some aspect of a climate science artefact.
-
-    """,
-    shared.Relationship: """
-        A record of a relationship between one document and another. This class is abstract; specific document types must specialise this class for their relationshipTypes to be included in a document's genealogy.
+    shared.DocRelationshipTarget: """
+        Creates and returns instance of doc_relationship_target class.
 
     """,
     shared.ClosedDateRange: """
         A date range with specified start and end points.
 
     """,
-    shared.DocMetaInfo: """
-        Encapsulates document meta information.
-
-    """,
-    shared.DateRange: """
-        Creates and returns instance of date_range class.
-
-    """,
-    shared.ChangeProperty: """
-        A description of a single change applied to a single target.  Every ChangeProperty has a description, and may also have a name from a controlled vocabulary and a value.
+    shared.DocRelationship: """
+        Contains the set of relationships supported by a Document.
 
     """,
     shared.Daily360: """
@@ -8869,24 +8869,52 @@ HELP = {
         The set of Couplings used by a Component. Couplings can only occur between child components. That is, a composition must belong to an ancestor component of the components whose fields are being connected.
 
     """,
-    software.ConnectionProperty: """
-        A ConnectionProperty is a name/value pair used to specify OASIS-specific properties.
+    software.ComponentLanguage: """
+        Details of the programming language a component is written in. There is an assumption that all EntryPoints use the same ComponentLanguage.
 
     """,
     software.CouplingProperty: """
         A CouplingProperty is a name/value pair used to specify OASIS-specific properties.
 
     """,
-    software.Connection: """
-        A Connection represents a link from a source DataSource to a target DataSource.  These can either be ComponentProperties (ie: the values come from an internal component) or DataObjects (ie: the values come from an external file).   It can be associated with another software component (a transformer).  If present, the rate, lag, timeTransformation, and spatialRegridding override that of the parent coupling.  Note that there is the potential for multiple connectionSource & connectionTarget and multiple couplingSources & couplingTargets.  This may lead users to wonder how to match up a connection source (a ComponentProperty) with its coupling source (a SoftwareComponent). Clever logic is not required though; because the sources and targets are listed by reference, they can be found in a CIM document and the parent can be navigated to from there - there is no need to consult the source or target of the coupling.
+    software.Timing: """
+        Provides information about the rate of couplings and connections and/or the timing characteristics of individual components - for example, the start and stop times that the component was run for or the units of time that a component is able to model (in a single timestep).
+
+    """,
+    software.EntryPoint: """
+        Describes a function or subroutine of a SoftwareComponent. BFG will use these EntryPoints to define a schedule of subroutine calls for a coupled model. Currently, a very basic schedule can be approximated by using the 'proceeds' and 'follows' attributes, however a more complete system is required for full BFG compatibility. Every EntryPoint can have a set of arguments associated with it. These reference (previously defined) ComponentProperties.
+
+    """,
+    software.ComponentLanguageProperty: """
+        This provides a place to include language-specific information. Every property is basically a name/value pair, where the names are things like: moduleName, reservedUnits, reservedNames (these are all examples of Fortran-specific properties).
+
+    """,
+    software.ConnectionProperty: """
+        A ConnectionProperty is a name/value pair used to specify OASIS-specific properties.
+
+    """,
+    software.SpatialRegridding: """
+        Characteristics of the scheme used to interpolate a field from one grid (source grid) to another (target grid).  Documents should use either the spatialRegriddingStandardMethod _or_ the spatialRegriddingUserMethod, but not both.
+
+    """,
+    software.Parallelisation: """
+        Describes how a deployment has been parallelised across a computing platform.
 
     """,
     software.ConnectionEndpoint: """
         The source/target of a coupling.  This is a DataSource (a SoftwareComponent or DataObject).  This is a separate class in order to associate an instanceID with the DataSource; this is used to identify which particular instance is being coupled in case the same DataSource is used more than once in a coupled model (this may be required for BFG).
 
     """,
-    software.ComponentLanguageProperty: """
-        This provides a place to include language-specific information. Every property is basically a name/value pair, where the names are things like: moduleName, reservedUnits, reservedNames (these are all examples of Fortran-specific properties).
+    software.Connection: """
+        A Connection represents a link from a source DataSource to a target DataSource.  These can either be ComponentProperties (ie: the values come from an internal component) or DataObjects (ie: the values come from an external file).   It can be associated with another software component (a transformer).  If present, the rate, lag, timeTransformation, and spatialRegridding override that of the parent coupling.  Note that there is the potential for multiple connectionSource & connectionTarget and multiple couplingSources & couplingTargets.  This may lead users to wonder how to match up a connection source (a ComponentProperty) with its coupling source (a SoftwareComponent). Clever logic is not required though; because the sources and targets are listed by reference, they can be found in a CIM document and the parent can be navigated to from there - there is no need to consult the source or target of the coupling.
+
+    """,
+    software.Component: """
+        A SofwareComponent is an abstract component from which all other components derive. It represents an element that takes input data and generates output data. A SoftwareCompnent can include nested 'child' components. Every component can have 'componentProperties' which describe the scientific properties that a component simulates (for example, temperature, pressure, etc.) and the numerical properties that influence how a component performs its simulation (for example, the force of gravity). A SoftwareComponent can also have a Deployment, which describes how software is deployed onto computing resources. And a SoftwareComponent can have a composition, which describes how ComponentProperties are coupled together either to/from other SoftwareComponents or external data files. The properties specified by a component's composition must be owned by that component or a child of that component; child components cannot couple together their parents' properties.
+
+    """,
+    software.TimeLag: """
+        The coupling field used in the target at a given time corresponds to a field produced by the source at a previous time. This lag specifies the difference in time.
 
     """,
     software.SpatialRegriddingProperty: """
@@ -8897,60 +8925,32 @@ HELP = {
         Creates and returns instance of rank class.
 
     """,
-    software.TimeLag: """
-        The coupling field used in the target at a given time corresponds to a field produced by the source at a previous time. This lag specifies the difference in time.
-
-    """,
-    software.ComponentProperty: """
-        ComponentProperties include things that a component simulates (ie: pressure, humidity) and things that prescribe that simulation (ie: gravity, choice of advection scheme). Note that this is a specialisation of shared::DataSource. data::DataObject is also a specialisation of shared::DataSource. This allows software::Connections and/or activity::Conformance to refer to either ComponentProperties or DataObjects.
-
-    """,
-    software.ProcessorComponent: """
-        A ModelComponent is a scientific model; it represents code which models some physical phenomena for a particular length of time.
-
-    """,
-    software.Coupling: """
-        A coupling represents a set of Connections between a source and target component. Couplings can be complete or incomplete. If they are complete then they must include all Connections between model properties. If they are incomplete then the connections can be underspecified or not listed at all.
-
-    """,
-    software.Parallelisation: """
-        Describes how a deployment has been parallelised across a computing platform.
-
-    """,
     software.SpatialRegriddingUserMethod: """
         Characteristics of the scheme used to interpolate a field from one grid (source grid) to another (target grid).  Documents should use either the spatialRegriddingStandardMethod _or_ the spatialRegriddingUserMethod, but not both.
-
-    """,
-    software.EntryPoint: """
-        Describes a function or subroutine of a SoftwareComponent. BFG will use these EntryPoints to define a schedule of subroutine calls for a coupled model. Currently, a very basic schedule can be approximated by using the 'proceeds' and 'follows' attributes, however a more complete system is required for full BFG compatibility. Every EntryPoint can have a set of arguments associated with it. These reference (previously defined) ComponentProperties.
-
-    """,
-    software.Timing: """
-        Provides information about the rate of couplings and connections and/or the timing characteristics of individual components - for example, the start and stop times that the component was run for or the units of time that a component is able to model (in a single timestep).
-
-    """,
-    software.StatisticalModelComponent: """
-        Creates and returns instance of statistical_model_component class.
-
-    """,
-    software.Component: """
-        A SofwareComponent is an abstract component from which all other components derive. It represents an element that takes input data and generates output data. A SoftwareCompnent can include nested 'child' components. Every component can have 'componentProperties' which describe the scientific properties that a component simulates (for example, temperature, pressure, etc.) and the numerical properties that influence how a component performs its simulation (for example, the force of gravity). A SoftwareComponent can also have a Deployment, which describes how software is deployed onto computing resources. And a SoftwareComponent can have a composition, which describes how ComponentProperties are coupled together either to/from other SoftwareComponents or external data files. The properties specified by a component's composition must be owned by that component or a child of that component; child components cannot couple together their parents' properties.
-
-    """,
-    software.SpatialRegridding: """
-        Characteristics of the scheme used to interpolate a field from one grid (source grid) to another (target grid).  Documents should use either the spatialRegriddingStandardMethod _or_ the spatialRegriddingUserMethod, but not both.
-
-    """,
-    software.ComponentLanguage: """
-        Details of the programming language a component is written in. There is an assumption that all EntryPoints use the same ComponentLanguage.
 
     """,
     software.CouplingEndpoint: """
         The source/target of a coupling.  This is a DataSource (a SoftwareComponent or DataObject).  This is a separate class in order to associate an instanceID with the DataSource; this is used to identify which particular instance is being coupled in case the same DataSource is used more than once in a coupled model (this may be required for BFG).
 
     """,
+    software.StatisticalModelComponent: """
+        Creates and returns instance of statistical_model_component class.
+
+    """,
     software.TimeTransformation: """
         The coupling field used in the target at a given time corresponds to a field produced by the source at a previous time. This lag specifies the difference in time.
+
+    """,
+    software.ProcessorComponent: """
+        A ModelComponent is a scientific model; it represents code which models some physical phenomena for a particular length of time.
+
+    """,
+    software.ComponentProperty: """
+        ComponentProperties include things that a component simulates (ie: pressure, humidity) and things that prescribe that simulation (ie: gravity, choice of advection scheme). Note that this is a specialisation of shared::DataSource. data::DataObject is also a specialisation of shared::DataSource. This allows software::Connections and/or activity::Conformance to refer to either ComponentProperties or DataObjects.
+
+    """,
+    software.Coupling: """
+        A coupling represents a set of Connections between a source and target component. Couplings can be complete or incomplete. If they are complete then they must include all Connections between model properties. If they are incomplete then the connections can be underspecified or not listed at all.
 
     """,
     software.ModelComponent: """
@@ -9029,6 +9029,10 @@ HELP = {
         Describes the content of a data object: the variable name, units, etc.
 
     """,
+    data.DataStorageIp: """
+        Contains attributes to describe a DataObject stored as a database file.
+
+    """,
     data.DataDistribution: """
         Describes how a DataObject is distributed.
 
@@ -9037,16 +9041,12 @@ HELP = {
         A property of a DataObject. Currently this is intended to be used to record CF specific information (like packing, scaling, etc.) for OASIS4.
 
     """,
-    data.DataExtentTemporal: """
-        A data object temporal extent represents the temporal coverage associated with a data object.
-
-    """,
     data.DataExtentGeographical: """
         A data object geographical extent represents the geographical coverage associated with a data object.
 
     """,
-    data.DataStorageIp: """
-        Contains attributes to describe a DataObject stored as a database file.
+    data.DataExtentTemporal: """
+        A data object temporal extent represents the temporal coverage associated with a data object.
 
     """,
     data.DataContent: """
@@ -9073,20 +9073,28 @@ HELP = {
         An abstract class used as the parent of MeasurementCampaigns, Projects, Experiments, and NumericalActivities.
 
     """,
-    activity.NumericalRequirement: """
-        A description of the requirements of particular experiments.  Numerical Requirements can be initial conditions, boundary conditions, or physical modificiations.
+    activity.NumericalRequirementOption: """
+        A NumericalRequirement that is being used as a set of related requirements; For example if a requirement is to use 1 of 3 boundary conditions, then that 'parent' requirement would have three 'child' RequirmentOptions (each of one with the XOR optionRelationship).
 
     """,
-    activity.LateralBoundaryCondition: """
+    activity.SimulationRun: """
+        A SimulationRun is, as the name implies, one single model run. A SimulationRun is a Simulation. There is a one to one association between SimulationRun and (a top-level) SoftwarePackage::ModelComponent.
+
+    """,
+    activity.SimulationRelationshipTarget: """
+        Creates and returns instance of simulation_relationship_target class.
+
+    """,
+    activity.ExperimentRelationship: """
+        Contains a set of relationship types specific to a experiment document that can be used to describe its genealogy.
+
+    """,
+    activity.SimulationComposite: """
+        A SimulationComposite is an aggregation of Simulations. With the aggreation connector between Simulation and SimulationComposite(SC) the SC can be made up of both SimulationRuns and SCs. The SimulationComposite is the new name for the concept of SimulationCollection: A simulation can be made up of 'child' simulations aggregated together to form a 'simulation composite'.  The 'parent' simulation can be made up of whole or partial child simulations and the SimulationComposite attributes need to be able to capture this.
+
+    """,
+    activity.BoundaryCondition: """
         A boundary condition is a numerical requirement which looks like a variable imposed on the model evolution (i.e. it might - or might not - evolve with time, but is seen by the model at various times during its evolution) as opposed to an initial condition (at model time zero).
-
-    """,
-    activity.InitialCondition: """
-        An initial condition is a numerical requirement on a model prognostic variable value at time zero.
-
-    """,
-    activity.SpatioTemporalConstraint: """
-        Contains a set of relationship types specific to a simulation document that can be used to describe its genealogy.
 
     """,
     activity.NumericalActivity: """
@@ -9097,12 +9105,12 @@ HELP = {
         A simulation is the implementation of a numerical experiment.  A simulation can be made up of 'child' simulations aggregated together to form a simulation composite.  The parent simulation can be made up of whole or partial child simulations, the simulation attributes need to be able to capture this.
 
     """,
-    activity.ExperimentRelationship: """
-        Contains a set of relationship types specific to a experiment document that can be used to describe its genealogy.
+    activity.EnsembleMember: """
+        A simulation is the implementation of a numerical experiment.  A simulation can be made up of 'child' simulations aggregated together to form a 'simulation composite'.  The 'parent' simulation can be made up of whole or partial child simulations, the simulation attributes need to be able to capture this.
 
     """,
-    activity.NumericalRequirementOption: """
-        A NumericalRequirement that is being used as a set of related requirements; For example if a requirement is to use 1 of 3 boundary conditions, then that 'parent' requirement would have three 'child' RequirmentOptions (each of one with the XOR optionRelationship).
+    activity.ExperimentRelationshipTarget: """
+        Creates and returns instance of experiment_relationship_target class.
 
     """,
     activity.DownscalingSimulation: """
@@ -9113,20 +9121,12 @@ HELP = {
         A numerical experiment may be generated by an experiment, in which case it is inSupportOf the experiment. But a numerical experiment may also exist as an activity in its own right (as it might be if it were needed for a MIP). Examples: AR4 individual experiments, AR5 individual experiments, RAPID THC experiments etc.
 
     """,
-    activity.MeasurementCampaign: """
-        Creates and returns instance of measurement_campaign class.
-
-    """,
-    activity.SimulationRelationshipTarget: """
-        Creates and returns instance of simulation_relationship_target class.
-
-    """,
     activity.Experiment: """
         An experiment might be an activity which is both observational and numerical in focus, for example, a measurement campaign and numerical experiments for an alpine experiment.  It is a place for the scientific description of the reason why an experiment was made.
 
     """,
-    activity.EnsembleMember: """
-        A simulation is the implementation of a numerical experiment.  A simulation can be made up of 'child' simulations aggregated together to form a 'simulation composite'.  The 'parent' simulation can be made up of whole or partial child simulations, the simulation attributes need to be able to capture this.
+    activity.SpatioTemporalConstraint: """
+        Contains a set of relationship types specific to a simulation document that can be used to describe its genealogy.
 
     """,
     activity.OutputRequirement: """
@@ -9137,8 +9137,8 @@ HELP = {
         A conformance class maps how a configured model component met a specific numerical requirement.  For example, for a double CO2 boundary condition, a model component might read a CO2 dataset in which CO2 has been doubled, or it might modify a parameterisation (presumably with a factor of two somewhere).  So, the conformance links a requirement to a DataSource (which can be either an actual DataObject or a property of a model component).  In some cases a model/simulation may _naturally_ conform to a requirement.  In this case there would be no reference to a DataSource but the conformant attribute would be true.  If something is purpopsefully non-conformant then the conformant attribute would be false.
 
     """,
-    activity.BoundaryCondition: """
-        A boundary condition is a numerical requirement which looks like a variable imposed on the model evolution (i.e. it might - or might not - evolve with time, but is seen by the model at various times during its evolution) as opposed to an initial condition (at model time zero).
+    activity.MeasurementCampaign: """
+        Creates and returns instance of measurement_campaign class.
 
     """,
     activity.Ensemble: """
@@ -9149,20 +9149,20 @@ HELP = {
         Physical modification is the implementation of a boundary condition numerical requirement that is achieved within the model code rather than from some external source file. It  might include, for example,  a specific rate constant within a chemical reaction, or coefficient value(s) in a parameterisation.  For example, one might require a numerical experiment where specific chemical reactions were turned off - e.g. no heterogeneous chemistry.
 
     """,
-    activity.SimulationComposite: """
-        A SimulationComposite is an aggregation of Simulations. With the aggreation connector between Simulation and SimulationComposite(SC) the SC can be made up of both SimulationRuns and SCs. The SimulationComposite is the new name for the concept of SimulationCollection: A simulation can be made up of 'child' simulations aggregated together to form a 'simulation composite'.  The 'parent' simulation can be made up of whole or partial child simulations and the SimulationComposite attributes need to be able to capture this.
+    activity.InitialCondition: """
+        An initial condition is a numerical requirement on a model prognostic variable value at time zero.
 
     """,
     activity.SimulationRelationship: """
         Contains a set of relationship types specific to a simulation document that can be used to describe its genealogy.
 
     """,
-    activity.ExperimentRelationshipTarget: """
-        Creates and returns instance of experiment_relationship_target class.
+    activity.NumericalRequirement: """
+        A description of the requirements of particular experiments.  Numerical Requirements can be initial conditions, boundary conditions, or physical modificiations.
 
     """,
-    activity.SimulationRun: """
-        A SimulationRun is, as the name implies, one single model run. A SimulationRun is a Simulation. There is a one to one association between SimulationRun and (a top-level) SoftwarePackage::ModelComponent.
+    activity.LateralBoundaryCondition: """
+        A boundary condition is a numerical requirement which looks like a variable imposed on the model evolution (i.e. it might - or might not - evolve with time, but is seen by the model at various times during its evolution) as opposed to an initial condition (at model time zero).
 
     """,
     misc.DocumentSet: """
@@ -9174,72 +9174,24 @@ HELP = {
     # Class properties.
     # ------------------------------------------------
 
-    (shared.DocReference, 'url'):
-        "A URL associated witht he document reference.",
-    (shared.DocReference, 'id'):
-        "The ID of the element being referenced.",
-    (shared.DocReference, 'changes'):
-        "An optional description of how the item being referenced has been modified.  This is particularly useful for dealing with Ensembles (a set of simulations where something about each simulation has changed) or Conformances.",
-    (shared.DocReference, 'name'):
-        "The name of the element being referenced.",
-    (shared.DocReference, 'version'):
-        "The version of the element being referenced.",
-    (shared.DocReference, 'type'):
-        "The type of the element being referenced.",
-    (shared.DocReference, 'external_id'):
-        "A non-CIM (non-GUID) id used to reference the element in question.",
-    (shared.DocReference, 'description'):
-        "A description of the element being referenced, in the context of the current class.",
-    (shared.MachineCompilerUnit, 'compilers'):
-        None,
-    (shared.MachineCompilerUnit, 'machine'):
-        None,
-    (shared.DocRelationship, 'target'):
-        None,
-    (shared.DocRelationship, 'type'):
-        None,
-    (shared.DocRelationshipTarget, 'reference'):
-        None,
-    (shared.Standard, 'version'):
-        "The version of the standard",
     (shared.Standard, 'description'):
+        "The version of the standard",
+    (shared.Standard, 'version'):
         "The version of the standard",
     (shared.Standard, 'name'):
         "The name of the standard",
-    (shared.Calendar, 'description'):
-        "Describes the finer details of the calendar, in case they are not-obvious.  For example, if an experiment has changing conditions within it (ie: 1% CO2 increase until 2100, then hold fixed for the remaining period of the  experment)",
-    (shared.Calendar, 'range'):
-        None,
-    (shared.Calendar, 'length'):
-        None,
-    (shared.Property, 'name'):
-        None,
-    (shared.Property, 'value'):
-        None,
-    (shared.StandardName, 'is_open'):
-        None,
-    (shared.StandardName, 'value'):
-        None,
-    (shared.StandardName, 'standards'):
-        "Details of the standard being used.",
     (shared.Change, 'details'):
         None,
-    (shared.Change, 'author'):
-        "The person that made the change.",
     (shared.Change, 'name'):
         "A mnemonic for describing a particular change.",
+    (shared.Change, 'author'):
+        "The person that made the change.",
     (shared.Change, 'type'):
         None,
     (shared.Change, 'description'):
         None,
     (shared.Change, 'date'):
         "The date the change was implemented.",
-    (shared.OpenDateRange, 'end'):
-        None,
-    (shared.OpenDateRange, 'start'):
-        None,
-    (shared.DataSource, 'purpose'):
-        None,
     (shared.License, 'contact'):
         "The point of contact for access to this artifact; may be either a person or an institution.",
     (shared.License, 'name'):
@@ -9248,43 +9200,165 @@ HELP = {
         "If unrestricted='true' then the artifact can be downloaded with no restrictions (ie: there are no administrative steps for the user to deal with; code or data can be downloaded and used directly).",
     (shared.License, 'description'):
         "A textual description of the license; might be the full text of the license, more likely to be a brief summary",
-    (shared.DocGenealogy, 'relationships'):
+    (shared.Property, 'name'):
         None,
-    (shared.Compiler, 'language'):
-        None,
-    (shared.Compiler, 'version'):
-        None,
-    (shared.Compiler, 'name'):
-        None,
-    (shared.Compiler, 'options'):
-        "The set of options used during compilation (recorded here as a single string rather than separate elements)",
-    (shared.Compiler, 'type'):
-        None,
-    (shared.Compiler, 'environment_variables'):
-        "The set of environment_variables used during compilation (recorded here as a single string rather than separate elements)",
-    (shared.Machine, 'system'):
+    (shared.Property, 'value'):
         None,
     (shared.Machine, 'location'):
         None,
-    (shared.Machine, 'interconnect'):
-        None,
     (shared.Machine, 'type'):
+        None,
+    (shared.Machine, 'description'):
         None,
     (shared.Machine, 'maximum_processors'):
         None,
-    (shared.Machine, 'cores_per_processor'):
+    (shared.Machine, 'interconnect'):
         None,
     (shared.Machine, 'vendor'):
         None,
     (shared.Machine, 'name'):
         None,
-    (shared.Machine, 'operating_system'):
-        None,
     (shared.Machine, 'processor_type'):
         None,
     (shared.Machine, 'libraries'):
         "The libraries residing on this machine.",
-    (shared.Machine, 'description'):
+    (shared.Machine, 'cores_per_processor'):
+        None,
+    (shared.Machine, 'system'):
+        None,
+    (shared.Machine, 'operating_system'):
+        None,
+    (shared.StandardName, 'value'):
+        None,
+    (shared.StandardName, 'is_open'):
+        None,
+    (shared.StandardName, 'standards'):
+        "Details of the standard being used.",
+    (shared.DocGenealogy, 'relationships'):
+        None,
+    (shared.DataSource, 'purpose'):
+        None,
+    (shared.DateRange, 'duration'):
+        None,
+    (shared.ChangeProperty, 'description'):
+        "A text description of the change.  May be used in addition to, or instead of, the more formal description provided by the 'value' attribute.",
+    (shared.ChangeProperty, 'id'):
+        None,
+    (shared.MachineCompilerUnit, 'compilers'):
+        None,
+    (shared.MachineCompilerUnit, 'machine'):
+        None,
+    (shared.Relationship, 'description'):
+        None,
+    (shared.Relationship, 'direction'):
+        None,
+    (shared.DocReference, 'url'):
+        "A URL associated witht he document reference.",
+    (shared.DocReference, 'id'):
+        "The ID of the element being referenced.",
+    (shared.DocReference, 'version'):
+        "The version of the element being referenced.",
+    (shared.DocReference, 'name'):
+        "The name of the element being referenced.",
+    (shared.DocReference, 'changes'):
+        "An optional description of how the item being referenced has been modified.  This is particularly useful for dealing with Ensembles (a set of simulations where something about each simulation has changed) or Conformances.",
+    (shared.DocReference, 'type'):
+        "The type of the element being referenced.",
+    (shared.DocReference, 'external_id'):
+        "A non-CIM (non-GUID) id used to reference the element in question.",
+    (shared.DocReference, 'description'):
+        "A description of the element being referenced, in the context of the current class.",
+    (shared.OpenDateRange, 'end'):
+        None,
+    (shared.OpenDateRange, 'start'):
+        None,
+    (shared.Compiler, 'type'):
+        None,
+    (shared.Compiler, 'version'):
+        None,
+    (shared.Compiler, 'language'):
+        None,
+    (shared.Compiler, 'name'):
+        None,
+    (shared.Compiler, 'options'):
+        "The set of options used during compilation (recorded here as a single string rather than separate elements)",
+    (shared.Compiler, 'environment_variables'):
+        "The set of environment_variables used during compilation (recorded here as a single string rather than separate elements)",
+    (shared.Calendar, 'range'):
+        None,
+    (shared.Calendar, 'description'):
+        "Describes the finer details of the calendar, in case they are not-obvious.  For example, if an experiment has changing conditions within it (ie: 1% CO2 increase until 2100, then hold fixed for the remaining period of the  experment)",
+    (shared.Calendar, 'length'):
+        None,
+    (shared.ResponsibleParty, 'email'):
+        None,
+    (shared.ResponsibleParty, 'url'):
+        None,
+    (shared.ResponsibleParty, 'organisation_name'):
+        None,
+    (shared.ResponsibleParty, 'individual_name'):
+        None,
+    (shared.ResponsibleParty, 'abbreviation'):
+        None,
+    (shared.ResponsibleParty, 'address'):
+        None,
+    (shared.ResponsibleParty, 'role'):
+        None,
+    (shared.DocMetaInfo, 'drs_path'):
+        "DRS related path to support documents with datasets.",
+    (shared.DocMetaInfo, 'source_key'):
+        "Key of application that created the instance.",
+    (shared.DocMetaInfo, 'version'):
+        "Document version identifier.",
+    (shared.DocMetaInfo, 'id'):
+        "Universal document identifier.",
+    (shared.DocMetaInfo, 'author'):
+        "Associated document author.",
+    (shared.DocMetaInfo, 'type_sort_key'):
+        "Document type sort key.",
+    (shared.DocMetaInfo, 'drs_keys'):
+        "DRS related keys to support correlation of documents with datasets.",
+    (shared.DocMetaInfo, 'institute'):
+        "Name of institute with which instance is associated with.",
+    (shared.DocMetaInfo, 'type'):
+        "Document ontology type.",
+    (shared.DocMetaInfo, 'source'):
+        "Application that created the instance.",
+    (shared.DocMetaInfo, 'external_ids'):
+        "Set of identifiers used to reference the document by external parties.",
+    (shared.DocMetaInfo, 'status'):
+        "Document status.",
+    (shared.DocMetaInfo, 'language'):
+        "Language with which instance is associated with.",
+    (shared.DocMetaInfo, 'create_date'):
+        "Date upon which the instance was created",
+    (shared.DocMetaInfo, 'update_date'):
+        "Date upon which the instance was last updated",
+    (shared.DocMetaInfo, 'genealogy'):
+        "Specifies the relationship of this document with another document. Various relationship types (depending on the type of document; ie: simulation, component, etc.) are supported.",
+    (shared.DocMetaInfo, 'project'):
+        "Name of project with which instance is associated with.",
+    (shared.DocMetaInfo, 'type_display_name'):
+        "Document type display name.",
+    (shared.DocMetaInfo, 'sort_key'):
+        "Document sort key.",
+    (shared.Citation, 'location'):
+        None,
+    (shared.Citation, 'role'):
+        None,
+    (shared.Citation, 'type'):
+        None,
+    (shared.Citation, 'date'):
+        None,
+    (shared.Citation, 'collective_title'):
+        None,
+    (shared.Citation, 'date_type'):
+        None,
+    (shared.Citation, 'title'):
+        None,
+    (shared.Citation, 'organisation'):
+        None,
+    (shared.Citation, 'alternative_title'):
         None,
     (shared.Platform, 'short_name'):
         None,
@@ -9298,89 +9372,15 @@ HELP = {
         None,
     (shared.Platform, 'long_name'):
         None,
-    (shared.Citation, 'title'):
-        None,
-    (shared.Citation, 'alternative_title'):
-        None,
-    (shared.Citation, 'date_type'):
-        None,
-    (shared.Citation, 'collective_title'):
-        None,
-    (shared.Citation, 'organisation'):
-        None,
-    (shared.Citation, 'location'):
-        None,
-    (shared.Citation, 'type'):
-        None,
-    (shared.Citation, 'role'):
-        None,
-    (shared.Citation, 'date'):
-        None,
-    (shared.ResponsibleParty, 'individual_name'):
-        None,
-    (shared.ResponsibleParty, 'abbreviation'):
-        None,
-    (shared.ResponsibleParty, 'organisation_name'):
-        None,
-    (shared.ResponsibleParty, 'address'):
-        None,
-    (shared.ResponsibleParty, 'role'):
-        None,
-    (shared.ResponsibleParty, 'email'):
-        None,
-    (shared.ResponsibleParty, 'url'):
-        None,
-    (shared.Relationship, 'description'):
-        None,
-    (shared.Relationship, 'direction'):
+    (shared.DocRelationshipTarget, 'reference'):
         None,
     (shared.ClosedDateRange, 'end'):
         "End date is optional becuase the length of a ClosedDateRange can be calculated from the StartDate plus the Duration element.",
     (shared.ClosedDateRange, 'start'):
         None,
-    (shared.DocMetaInfo, 'update_date'):
-        "Date upon which the instance was last updated",
-    (shared.DocMetaInfo, 'genealogy'):
-        "Specifies the relationship of this document with another document. Various relationship types (depending on the type of document; ie: simulation, component, etc.) are supported.",
-    (shared.DocMetaInfo, 'source_key'):
-        "Key of application that created the instance.",
-    (shared.DocMetaInfo, 'institute'):
-        "Name of institute with which instance is associated with.",
-    (shared.DocMetaInfo, 'drs_path'):
-        "DRS related path to support documents with datasets.",
-    (shared.DocMetaInfo, 'type_sort_key'):
-        "Document type sort key.",
-    (shared.DocMetaInfo, 'language'):
-        "Language with which instance is associated with.",
-    (shared.DocMetaInfo, 'sort_key'):
-        "Document sort key.",
-    (shared.DocMetaInfo, 'type'):
-        "Document ontology type.",
-    (shared.DocMetaInfo, 'version'):
-        "Document version identifier.",
-    (shared.DocMetaInfo, 'drs_keys'):
-        "DRS related keys to support correlation of documents with datasets.",
-    (shared.DocMetaInfo, 'author'):
-        "Associated document author.",
-    (shared.DocMetaInfo, 'source'):
-        "Application that created the instance.",
-    (shared.DocMetaInfo, 'id'):
-        "Universal document identifier.",
-    (shared.DocMetaInfo, 'external_ids'):
-        "Set of identifiers used to reference the document by external parties.",
-    (shared.DocMetaInfo, 'type_display_name'):
-        "Document type display name.",
-    (shared.DocMetaInfo, 'create_date'):
-        "Date upon which the instance was created",
-    (shared.DocMetaInfo, 'project'):
-        "Name of project with which instance is associated with.",
-    (shared.DocMetaInfo, 'status'):
-        "Document status.",
-    (shared.DateRange, 'duration'):
+    (shared.DocRelationship, 'type'):
         None,
-    (shared.ChangeProperty, 'description'):
-        "A text description of the change.  May be used in addition to, or instead of, the more formal description provided by the 'value' attribute.",
-    (shared.ChangeProperty, 'id'):
+    (shared.DocRelationship, 'target'):
         None,
     (software.Deployment, 'platform'):
         "The platform that this deployment has been run on. It is optional to allow for 'unconfigured' models, that nonetheless specify their parallelisation constraints (a feature needed by OASIS).",
@@ -9398,145 +9398,79 @@ HELP = {
         None,
     (software.Composition, 'description'):
         None,
-    (software.Connection, 'properties'):
+    (software.ComponentLanguage, 'name'):
+        "The name of the language.",
+    (software.ComponentLanguage, 'properties'):
         None,
-    (software.Connection, 'type'):
-        "The type of Connection",
-    (software.Connection, 'priming'):
-        "A priming source is one that is active on the first available timestep only (before 'proper' coupling can ocurr). It can either be described here explicitly, or else a separate coupling/connection with a timing profile that is active on only the first timestep can be created.",
-    (software.Connection, 'sources'):
-        "The source property being connected.  (note that there can be multiple sources)  This is optional; the file/component source may have already been specified by the couplingSource.",
-    (software.Connection, 'time_profile'):
-        "All information having to do with the rate of this connection; the times that it is active.  This overrides any rate of a Coupling.",
-    (software.Connection, 'transformers'):
-        "An 'in-line' transformer. This references a fully-described transformer (typically that forms part of the top-level composition) used in the context of this coupling. It is used instead of separately specifying a spatialRegridding, timeTransformation, etc. here.",
-    (software.Connection, 'target'):
-        "The target property being connected.  This is optional to support the way that input is handled in the CMIP5 questionnaire.",
-    (software.Connection, 'spatial_regridding'):
-        "Characteristics of the scheme used to interpolate a field from one grid (source grid) to another (target grid)",
-    (software.Connection, 'description'):
+    (software.Timing, 'units'):
         None,
-    (software.Connection, 'time_lag'):
-        "The coupling field used in the target at a given time corresponds to a field produced by the source at a previous time.",
-    (software.Connection, 'time_transformation'):
-        "Temporal transformation performed on the coupling field before or after regridding onto the target grid.",
+    (software.Timing, 'rate'):
+        None,
+    (software.Timing, 'end'):
+        None,
+    (software.Timing, 'start'):
+        None,
+    (software.Timing, 'is_variable_rate'):
+        "Describes whether or not the model supports a variable timestep. If set to true, then rate should not be specified.",
+    (software.EntryPoint, 'name'):
+        None,
+    (software.SpatialRegridding, 'dimension'):
+        None,
+    (software.SpatialRegridding, 'standard_method'):
+        None,
+    (software.SpatialRegridding, 'user_method'):
+        None,
+    (software.SpatialRegridding, 'properties'):
+        None,
+    (software.Parallelisation, 'processes'):
+        None,
+    (software.Parallelisation, 'ranks'):
+        None,
     (software.ConnectionEndpoint, 'properties'):
         "The place to describe features specific to the source/target of a connection.",
     (software.ConnectionEndpoint, 'data_source'):
         None,
     (software.ConnectionEndpoint, 'instance_id'):
         "If the same datasource is used more than once in a coupled model then a method for identifying which particular instance is being referenced is needed (for BFG).",
-    (software.Rank, 'increment'):
+    (software.Connection, 'properties'):
         None,
-    (software.Rank, 'value'):
-        None,
-    (software.Rank, 'min'):
-        None,
-    (software.Rank, 'max'):
-        None,
-    (software.TimeLag, 'units'):
-        None,
-    (software.TimeLag, 'value'):
-        None,
-    (software.ComponentProperty, 'values'):
-        "The value of the property (not applicable to fields).",
-    (software.ComponentProperty, 'long_name'):
-        None,
-    (software.ComponentProperty, 'short_name'):
-        None,
-    (software.ComponentProperty, 'sub_properties'):
-        None,
-    (software.ComponentProperty, 'grid'):
-        "A reference to the grid that is used by this component.",
-    (software.ComponentProperty, 'citations'):
-        None,
-    (software.ComponentProperty, 'units'):
-        "The standard name that this property is known as (for example, its CF name).",
-    (software.ComponentProperty, 'intent'):
-        "The direction that this property is intended to be coupled: in, out, or inout.",
-    (software.ComponentProperty, 'standard_names'):
-        None,
-    (software.ComponentProperty, 'is_represented'):
-        "When set to false, means that this property is not used by the component. Covers the case when, for instance, a modeler chooses not to represent some property in their model. (But still allows meaningful comparisons between components which _do_ model this property.)",
-    (software.ComponentProperty, 'description'):
-        None,
-    (software.ProcessorComponent, 'meta'):
-        None,
-    (software.Coupling, 'time_profile'):
-        "Describes how often the coupling takes place.",
-    (software.Coupling, 'type'):
-        "Describes the method of coupling.",
-    (software.Coupling, 'time_transformation'):
-        "Temporal transformation performed on the coupling field before or after regridding onto the target grid.",
-    (software.Coupling, 'properties'):
-        None,
-    (software.Coupling, 'purpose'):
-        None,
-    (software.Coupling, 'sources'):
-        "The source component of the coupling. (note that there can be multiple sources).",
-    (software.Coupling, 'description'):
-        "A free-text description of the coupling.",
-    (software.Coupling, 'time_lag'):
-        "The coupling field used in the target at a given time corresponds to a field produced by the source at a previous time.",
-    (software.Coupling, 'transformers'):
-        "An 'in-line' transformer. This references a fully-described transformer (typically that forms part of the top-level composition) used in the context of this coupling. It is used instead of separately specifying a spatialRegridding, timeTransformation, etc. here.",
-    (software.Coupling, 'priming'):
+    (software.Connection, 'type'):
+        "The type of Connection",
+    (software.Connection, 'priming'):
         "A priming source is one that is active on the first available timestep only (before 'proper' coupling can ocurr). It can either be described here explicitly, or else a separate coupling/connection with a timing profile that is active on only the first timestep can be created.",
-    (software.Coupling, 'spatial_regriddings'):
-        "Characteristics of the scheme used to interpolate a field from one grid (source grid) to another (target grid).",
-    (software.Coupling, 'connections'):
+    (software.Connection, 'spatial_regridding'):
+        "Characteristics of the scheme used to interpolate a field from one grid (source grid) to another (target grid)",
+    (software.Connection, 'time_profile'):
+        "All information having to do with the rate of this connection; the times that it is active.  This overrides any rate of a Coupling.",
+    (software.Connection, 'transformers'):
+        "An 'in-line' transformer. This references a fully-described transformer (typically that forms part of the top-level composition) used in the context of this coupling. It is used instead of separately specifying a spatialRegridding, timeTransformation, etc. here.",
+    (software.Connection, 'target'):
+        "The target property being connected.  This is optional to support the way that input is handled in the CMIP5 questionnaire.",
+    (software.Connection, 'sources'):
+        "The source property being connected.  (note that there can be multiple sources)  This is optional; the file/component source may have already been specified by the couplingSource.",
+    (software.Connection, 'description'):
         None,
-    (software.Coupling, 'target'):
-        "The target component of the coupling.",
-    (software.Coupling, 'is_fully_specified'):
-        "If true then the coupling is fully-specified.  If false then not every Connection has been described within the coupling.",
-    (software.Parallelisation, 'processes'):
-        None,
-    (software.Parallelisation, 'ranks'):
-        None,
-    (software.SpatialRegriddingUserMethod, 'file'):
-        None,
-    (software.SpatialRegriddingUserMethod, 'name'):
-        None,
-    (software.EntryPoint, 'name'):
-        None,
-    (software.Timing, 'start'):
-        None,
-    (software.Timing, 'rate'):
-        None,
-    (software.Timing, 'units'):
-        None,
-    (software.Timing, 'end'):
-        None,
-    (software.Timing, 'is_variable_rate'):
-        "Describes whether or not the model supports a variable timestep. If set to true, then rate should not be specified.",
-    (software.StatisticalModelComponent, 'meta'):
-        None,
-    (software.StatisticalModelComponent, 'types'):
-        "Describes the type of component. There can be multiple types.",
-    (software.StatisticalModelComponent, 'type'):
-        "Describes the type of component. There can be multiple types.",
-    (software.StatisticalModelComponent, 'timing'):
-        "Describes information about how this component simulates time.",
-    (software.Component, 'funding_sources'):
-        "The entities that funded this software component.",
+    (software.Connection, 'time_lag'):
+        "The coupling field used in the target at a given time corresponds to a field produced by the source at a previous time.",
+    (software.Connection, 'time_transformation'):
+        "Temporal transformation performed on the coupling field before or after regridding onto the target grid.",
     (software.Component, 'grid'):
         "A reference to the grid that is used by this component.",
     (software.Component, 'is_embedded'):
         "An embedded component cannot exist on its own as an atomic piece of software; instead it is embedded within another (parent) component. When embedded equals 'true', the SoftwareComponent has a corresponding piece of software (otherwise it is acting as a 'virtual' component which may be inexorably nested within a piece of software along with several other virtual components).",
     (software.Component, 'language'):
         None,
-    (software.Component, 'previous_version'):
-        None,
     (software.Component, 'license'):
         "The license held by this piece of software.",
     (software.Component, 'long_name'):
         "The name of the model (that is recognized externally).",
-    (software.Component, 'coupling_framework'):
-        "The coupling framework that this entire component conforms to.",
     (software.Component, 'online_resource'):
         "Provides a URL location for this model.",
+    (software.Component, 'parent'):
+        None,
     (software.Component, 'sub_components'):
+        None,
+    (software.Component, 'previous_version'):
         None,
     (software.Component, 'citations'):
         None,
@@ -9544,46 +9478,112 @@ HELP = {
         "The properties that this model simulates and/or couples.",
     (software.Component, 'code_access'):
         "Instructions on how to access the source code for this component.",
+    (software.Component, 'version'):
+        "A free text description of the component version #.",
     (software.Component, 'release_date'):
         "The date of publication of the software component code (as opposed to the date of publication of the metadata document, or the date of deployment of the model)",
+    (software.Component, 'composition'):
+        None,
     (software.Component, 'responsible_parties'):
         None,
+    (software.Component, 'coupling_framework'):
+        "The coupling framework that this entire component conforms to.",
     (software.Component, 'short_name'):
         "The name of the model (that is used internally).",
     (software.Component, 'dependencies'):
-        None,
-    (software.Component, 'version'):
-        "A free text description of the component version #.",
-    (software.Component, 'parent'):
         None,
     (software.Component, 'deployments'):
         None,
     (software.Component, 'description'):
         "A free-text description of the component.",
-    (software.Component, 'composition'):
+    (software.Component, 'funding_sources'):
+        "The entities that funded this software component.",
+    (software.TimeLag, 'units'):
         None,
-    (software.SpatialRegridding, 'user_method'):
+    (software.TimeLag, 'value'):
         None,
-    (software.SpatialRegridding, 'dimension'):
+    (software.Rank, 'value'):
         None,
-    (software.SpatialRegridding, 'standard_method'):
+    (software.Rank, 'increment'):
         None,
-    (software.SpatialRegridding, 'properties'):
+    (software.Rank, 'min'):
         None,
-    (software.ComponentLanguage, 'name'):
-        "The name of the language.",
-    (software.ComponentLanguage, 'properties'):
+    (software.Rank, 'max'):
         None,
-    (software.CouplingEndpoint, 'data_source'):
+    (software.SpatialRegriddingUserMethod, 'file'):
+        None,
+    (software.SpatialRegriddingUserMethod, 'name'):
         None,
     (software.CouplingEndpoint, 'properties'):
         "A place to describe features specific to the source/target of a coupling",
+    (software.CouplingEndpoint, 'data_source'):
+        None,
     (software.CouplingEndpoint, 'instance_id'):
         "If the same datasource is used more than once in a coupled model then a method for identifying which particular instance is being referenced is needed (for BFG).",
+    (software.StatisticalModelComponent, 'meta'):
+        None,
+    (software.StatisticalModelComponent, 'type'):
+        "Describes the type of component. There can be multiple types.",
+    (software.StatisticalModelComponent, 'types'):
+        "Describes the type of component. There can be multiple types.",
+    (software.StatisticalModelComponent, 'timing'):
+        "Describes information about how this component simulates time.",
     (software.TimeTransformation, 'description'):
         None,
     (software.TimeTransformation, 'mapping_type'):
         None,
+    (software.ProcessorComponent, 'meta'):
+        None,
+    (software.ComponentProperty, 'standard_names'):
+        None,
+    (software.ComponentProperty, 'values'):
+        "The value of the property (not applicable to fields).",
+    (software.ComponentProperty, 'is_represented'):
+        "When set to false, means that this property is not used by the component. Covers the case when, for instance, a modeler chooses not to represent some property in their model. (But still allows meaningful comparisons between components which _do_ model this property.)",
+    (software.ComponentProperty, 'sub_properties'):
+        None,
+    (software.ComponentProperty, 'long_name'):
+        None,
+    (software.ComponentProperty, 'description'):
+        None,
+    (software.ComponentProperty, 'short_name'):
+        None,
+    (software.ComponentProperty, 'units'):
+        "The standard name that this property is known as (for example, its CF name).",
+    (software.ComponentProperty, 'grid'):
+        "A reference to the grid that is used by this component.",
+    (software.ComponentProperty, 'intent'):
+        "The direction that this property is intended to be coupled: in, out, or inout.",
+    (software.ComponentProperty, 'citations'):
+        None,
+    (software.Coupling, 'type'):
+        "Describes the method of coupling.",
+    (software.Coupling, 'connections'):
+        None,
+    (software.Coupling, 'time_transformation'):
+        "Temporal transformation performed on the coupling field before or after regridding onto the target grid.",
+    (software.Coupling, 'target'):
+        "The target component of the coupling.",
+    (software.Coupling, 'is_fully_specified'):
+        "If true then the coupling is fully-specified.  If false then not every Connection has been described within the coupling.",
+    (software.Coupling, 'time_profile'):
+        "Describes how often the coupling takes place.",
+    (software.Coupling, 'properties'):
+        None,
+    (software.Coupling, 'transformers'):
+        "An 'in-line' transformer. This references a fully-described transformer (typically that forms part of the top-level composition) used in the context of this coupling. It is used instead of separately specifying a spatialRegridding, timeTransformation, etc. here.",
+    (software.Coupling, 'purpose'):
+        None,
+    (software.Coupling, 'time_lag'):
+        "The coupling field used in the target at a given time corresponds to a field produced by the source at a previous time.",
+    (software.Coupling, 'sources'):
+        "The source component of the coupling. (note that there can be multiple sources).",
+    (software.Coupling, 'priming'):
+        "A priming source is one that is active on the first available timestep only (before 'proper' coupling can ocurr). It can either be described here explicitly, or else a separate coupling/connection with a timing profile that is active on only the first timestep can be created.",
+    (software.Coupling, 'spatial_regriddings'):
+        "Characteristics of the scheme used to interpolate a field from one grid (source grid) to another (target grid).",
+    (software.Coupling, 'description'):
+        "A free-text description of the coupling.",
     (software.ModelComponent, 'meta'):
         None,
     (software.ModelComponent, 'type'):
@@ -9602,8 +9602,8 @@ HELP = {
         "Specifies the number of mosaics associated with a non-leaf grid mosaic. Set to zero if the grid mosaic is a leaf mosaic, i.e. it contains child grid tiles not mosaics.",
     (grids.GridMosaic, 'citations'):
         "Optional container element for specifying a list of references that describe the grid.",
-    (grids.GridMosaic, 'tiles'):
-        None,
+    (grids.GridMosaic, 'type'):
+        "Specifies the type of all the grid tiles contained in a grid mosaic. It is assumed that all of the tiles comprising a given grid mosaic are of the same type. The value domain is as per the specified enumeration list.",
     (grids.GridMosaic, 'id'):
         "Specifies a globally unique identifier for a grid mosaic instance. By globally we mean across all GridSpec instances/records within a given modelling activity (such as CMIP5).",
     (grids.GridMosaic, 'is_leaf'):
@@ -9616,8 +9616,8 @@ HELP = {
         None,
     (grids.GridMosaic, 'extent'):
         None,
-    (grids.GridMosaic, 'type'):
-        "Specifies the type of all the grid tiles contained in a grid mosaic. It is assumed that all of the tiles comprising a given grid mosaic are of the same type. The value domain is as per the specified enumeration list.",
+    (grids.GridMosaic, 'tiles'):
+        None,
     (grids.GridMosaic, 'description'):
         "A free-text description of a grid mosaic.",
     (grids.GridMosaic, 'has_congruent_tiles'):
@@ -9626,10 +9626,10 @@ HELP = {
         "Specifies the number of tiles associated with a leaf grid mosaic. Set to zero if the grid mosaic is not a leaf mosaic, i.e. it contains child grid mosaics rather than tiles. (Added to align with equivalent ESG/Curator property.)",
     (grids.GridMosaic, 'long_name'):
         "Specifies the long name associated with a grid mosaic. The long name will typically be a human-readable string, with acronyms expanded, used for labelling purposes.",
-    (grids.VerticalCoordinateList, 'form'):
-        "Units of measure used by the coordinates.",
     (grids.VerticalCoordinateList, 'type'):
         "Specifies the length of the coordinate array. This should always be the final, as-built length of the array if the hasConstantOffset property is set to true and the compact notation (start coordinate plus offset) is used.",
+    (grids.VerticalCoordinateList, 'form'):
+        "Units of measure used by the coordinates.",
     (grids.VerticalCoordinateList, 'properties'):
         None,
     (grids.GridSpec, 'esm_exchange_grids'):
@@ -9638,9 +9638,9 @@ HELP = {
         None,
     (grids.GridSpec, 'esm_model_grids'):
         None,
-    (grids.GridExtent, 'minimum_longitude'):
-        None,
     (grids.GridExtent, 'maximum_latitude'):
+        None,
+    (grids.GridExtent, 'minimum_longitude'):
         None,
     (grids.GridExtent, 'minimum_latitude'):
         None,
@@ -9760,9 +9760,9 @@ HELP = {
         None,
     (data.DataObject, 'content'):
         "The content of a DataObject corresponds to a variable (in THREDDS, ...etc.)",
-    (data.DataObject, 'purpose'):
+    (data.DataObject, 'parent_object'):
         None,
-    (data.DataObject, 'storage'):
+    (data.DataObject, 'source_simulation'):
         None,
     (data.DataObject, 'child_object'):
         None,
@@ -9780,7 +9780,9 @@ HELP = {
         None,
     (data.DataObject, 'meta'):
         None,
-    (data.DataObject, 'source_simulation'):
+    (data.DataObject, 'storage'):
+        None,
+    (data.DataObject, 'purpose'):
         None,
     (data.DataObject, 'data_status'):
         None,
@@ -9788,11 +9790,9 @@ HELP = {
         None,
     (data.DataObject, 'extent'):
         None,
-    (data.DataObject, 'parent_object'):
+    (data.DataObject, 'hierarchy_level'):
         None,
     (data.DataObject, 'keyword'):
-        None,
-    (data.DataObject, 'hierarchy_level'):
         None,
     (data.DataStorageFile, 'path'):
         None,
@@ -9820,21 +9820,23 @@ HELP = {
         None,
     (data.DataTopic, 'name'):
         None,
-    (data.DataDistribution, 'responsible_party'):
+    (data.DataStorageIp, 'file_name'):
+        None,
+    (data.DataStorageIp, 'protocol'):
+        None,
+    (data.DataStorageIp, 'path'):
+        None,
+    (data.DataStorageIp, 'host'):
         None,
     (data.DataDistribution, 'access'):
         None,
     (data.DataDistribution, 'format'):
         None,
+    (data.DataDistribution, 'responsible_party'):
+        None,
     (data.DataDistribution, 'fee'):
         None,
     (data.DataProperty, 'description'):
-        None,
-    (data.DataExtentTemporal, 'begin'):
-        None,
-    (data.DataExtentTemporal, 'time_interval'):
-        None,
-    (data.DataExtentTemporal, 'end'):
         None,
     (data.DataExtentGeographical, 'west'):
         None,
@@ -9844,13 +9846,11 @@ HELP = {
         None,
     (data.DataExtentGeographical, 'north'):
         None,
-    (data.DataStorageIp, 'file_name'):
+    (data.DataExtentTemporal, 'begin'):
         None,
-    (data.DataStorageIp, 'protocol'):
+    (data.DataExtentTemporal, 'time_interval'):
         None,
-    (data.DataStorageIp, 'path'):
-        None,
-    (data.DataStorageIp, 'host'):
+    (data.DataExtentTemporal, 'end'):
         None,
     (data.DataContent, 'aggregation'):
         "Describes how the content has been aggregated together: sum, min, mean, max, ...",
@@ -9882,29 +9882,45 @@ HELP = {
         None,
     (data.DataExtent, 'geographical'):
         None,
+    (activity.Activity, 'funding_sources'):
+        "The entities that funded this activity.",
     (activity.Activity, 'rationales'):
         "For what purpose is this activity being performed?",
     (activity.Activity, 'responsible_parties'):
         "The point of contact(s) for this activity.This includes, among others, the principle investigator.",
-    (activity.Activity, 'funding_sources'):
-        "The entities that funded this activity.",
     (activity.Activity, 'projects'):
         "The project(s) that this activity is associated with (ie: CMIP5, AMIP, etc).",
-    (activity.NumericalRequirement, 'options'):
+    (activity.NumericalRequirementOption, 'name'):
         None,
-    (activity.NumericalRequirement, 'description'):
+    (activity.NumericalRequirementOption, 'relationship'):
+        "Describes how this optional (child) requirement is related to its sibling requirements.  For example, a NumericalRequirement could consist of a set of optional requirements each with an 'OR' relationship meaning use this boundary condition _or_ that one.",
+    (activity.NumericalRequirementOption, 'sub_options'):
         None,
-    (activity.NumericalRequirement, 'requirement_type'):
-        "Type of reqirement to which the experiment must conform.",
-    (activity.NumericalRequirement, 'id'):
+    (activity.NumericalRequirementOption, 'description'):
         None,
-    (activity.NumericalRequirement, 'source'):
+    (activity.NumericalRequirementOption, 'id'):
         None,
-    (activity.NumericalRequirement, 'name'):
+    (activity.SimulationRun, 'date_range'):
         None,
-    (activity.SpatioTemporalConstraint, 'date_range'):
+    (activity.SimulationRun, 'model'):
         None,
-    (activity.SpatioTemporalConstraint, 'spatial_resolution'):
+    (activity.SimulationRun, 'meta'):
+        None,
+    (activity.SimulationRelationshipTarget, 'simulation'):
+        None,
+    (activity.SimulationRelationshipTarget, 'target'):
+        None,
+    (activity.ExperimentRelationship, 'target'):
+        None,
+    (activity.ExperimentRelationship, 'type'):
+        None,
+    (activity.SimulationComposite, 'date_range'):
+        None,
+    (activity.SimulationComposite, 'rank'):
+        "Position of a simulation in the SimulationComposite timeline. eg:  Is this the first (rank = 1) or second (rank = 2) simulation",
+    (activity.SimulationComposite, 'child'):
+        None,
+    (activity.SimulationComposite, 'meta'):
         None,
     (activity.NumericalActivity, 'supports'):
         None,
@@ -9930,71 +9946,57 @@ HELP = {
         None,
     (activity.Simulation, 'deployments'):
         None,
-    (activity.Simulation, 'simulation_id'):
-        None,
     (activity.Simulation, 'authors'):
         "List of associated authors.",
+    (activity.Simulation, 'simulation_id'):
+        None,
     (activity.Simulation, 'outputs'):
-        None,
-    (activity.ExperimentRelationship, 'target'):
-        None,
-    (activity.ExperimentRelationship, 'type'):
-        None,
-    (activity.NumericalRequirementOption, 'description'):
-        None,
-    (activity.NumericalRequirementOption, 'name'):
-        None,
-    (activity.NumericalRequirementOption, 'relationship'):
-        "Describes how this optional (child) requirement is related to its sibling requirements.  For example, a NumericalRequirement could consist of a set of optional requirements each with an 'OR' relationship meaning use this boundary condition _or_ that one.",
-    (activity.NumericalRequirementOption, 'sub_options'):
-        None,
-    (activity.NumericalRequirementOption, 'id'):
-        None,
-    (activity.DownscalingSimulation, 'meta'):
-        None,
-    (activity.DownscalingSimulation, 'outputs'):
-        None,
-    (activity.DownscalingSimulation, 'downscaling_id'):
-        None,
-    (activity.DownscalingSimulation, 'inputs'):
-        "Implemented as a mapping from a source to target; can be a forcing file, a boundary condition, etc.",
-    (activity.DownscalingSimulation, 'calendar'):
-        None,
-    (activity.DownscalingSimulation, 'downscaling_type'):
-        None,
-    (activity.DownscalingSimulation, 'downscaled_from'):
-        None,
-    (activity.NumericalExperiment, 'long_name'):
-        "The name of the experiment (that is recognized externally).",
-    (activity.NumericalExperiment, 'meta'):
-        None,
-    (activity.NumericalExperiment, 'description'):
-        "A free-text description of the experiment.",
-    (activity.NumericalExperiment, 'short_name'):
-        "The name of the experiment (that is used internally).",
-    (activity.NumericalExperiment, 'requirements'):
-        "The name of the experiment (that is used internally).",
-    (activity.NumericalExperiment, 'experiment_id'):
-        "An experiment ID takes the form <number>.<number>[-<letter>].",
-    (activity.MeasurementCampaign, 'duration'):
-        None,
-    (activity.SimulationRelationshipTarget, 'simulation'):
-        None,
-    (activity.SimulationRelationshipTarget, 'target'):
-        None,
-    (activity.Experiment, 'supports'):
-        None,
-    (activity.Experiment, 'measurement_campaigns'):
-        None,
-    (activity.Experiment, 'generates'):
-        None,
-    (activity.Experiment, 'requires'):
         None,
     (activity.EnsembleMember, 'simulation'):
         None,
     (activity.EnsembleMember, 'ensemble'):
         None,
     (activity.EnsembleMember, 'ensemble_ids'):
+        None,
+    (activity.ExperimentRelationshipTarget, 'numerical_experiment'):
+        None,
+    (activity.DownscalingSimulation, 'calendar'):
+        None,
+    (activity.DownscalingSimulation, 'downscaled_from'):
+        None,
+    (activity.DownscalingSimulation, 'inputs'):
+        "Implemented as a mapping from a source to target; can be a forcing file, a boundary condition, etc.",
+    (activity.DownscalingSimulation, 'downscaling_type'):
+        None,
+    (activity.DownscalingSimulation, 'outputs'):
+        None,
+    (activity.DownscalingSimulation, 'meta'):
+        None,
+    (activity.DownscalingSimulation, 'downscaling_id'):
+        None,
+    (activity.NumericalExperiment, 'long_name'):
+        "The name of the experiment (that is recognized externally).",
+    (activity.NumericalExperiment, 'requirements'):
+        "The name of the experiment (that is used internally).",
+    (activity.NumericalExperiment, 'description'):
+        "A free-text description of the experiment.",
+    (activity.NumericalExperiment, 'short_name'):
+        "The name of the experiment (that is used internally).",
+    (activity.NumericalExperiment, 'meta'):
+        None,
+    (activity.NumericalExperiment, 'experiment_id'):
+        "An experiment ID takes the form <number>.<number>[-<letter>].",
+    (activity.Experiment, 'measurement_campaigns'):
+        None,
+    (activity.Experiment, 'generates'):
+        None,
+    (activity.Experiment, 'supports'):
+        None,
+    (activity.Experiment, 'requires'):
+        None,
+    (activity.SpatioTemporalConstraint, 'date_range'):
+        None,
+    (activity.SpatioTemporalConstraint, 'spatial_resolution'):
         None,
     (activity.Conformance, 'description'):
         None,
@@ -10008,33 +10010,31 @@ HELP = {
         "Records whether or not this conformance satisfies the requirement.  A simulation should have at least one conformance mapping to every experimental requirement.  If a simulation satisfies the requirement - the usual case - then conformant should have a value of true.  If conformant is true but there is no reference to a source for the conformance, then we can assume that the simulation conforms to the requirement _naturally_, that is without having to modify code or inputs. If a simulation does not conform to a requirement then conformant should be set to false.",
     (activity.Conformance, 'requirements'):
         "Points to the NumericalRequirement that the simulation in question is conforming to.",
+    (activity.MeasurementCampaign, 'duration'):
+        None,
     (activity.Ensemble, 'outputs'):
         "Points to the DataSource used to conform to a particular Requirement.   This may be part of an activity::simulation or a software::component.  It can be either a DataObject or a SoftwareComponent or a ComponentProperty.  It could also be by using particular attributes of, say, a SoftwareComponent, but in that case the recommended practise is to reference the component and add appropriate text in the conformance description attribute.",
-    (activity.Ensemble, 'types'):
-        None,
     (activity.Ensemble, 'members'):
         None,
+    (activity.Ensemble, 'types'):
+        None,
     (activity.Ensemble, 'meta'):
-        None,
-    (activity.SimulationComposite, 'date_range'):
-        None,
-    (activity.SimulationComposite, 'rank'):
-        "Position of a simulation in the SimulationComposite timeline. eg:  Is this the first (rank = 1) or second (rank = 2) simulation",
-    (activity.SimulationComposite, 'child'):
-        None,
-    (activity.SimulationComposite, 'meta'):
         None,
     (activity.SimulationRelationship, 'target'):
         None,
     (activity.SimulationRelationship, 'type'):
         None,
-    (activity.ExperimentRelationshipTarget, 'numerical_experiment'):
+    (activity.NumericalRequirement, 'options'):
         None,
-    (activity.SimulationRun, 'model'):
+    (activity.NumericalRequirement, 'description'):
         None,
-    (activity.SimulationRun, 'date_range'):
+    (activity.NumericalRequirement, 'requirement_type'):
+        "Type of reqirement to which the experiment must conform.",
+    (activity.NumericalRequirement, 'id'):
         None,
-    (activity.SimulationRun, 'meta'):
+    (activity.NumericalRequirement, 'source'):
+        None,
+    (activity.NumericalRequirement, 'name'):
         None,
     (misc.DocumentSet, 'model'):
         "Associated model component.",
@@ -10061,6 +10061,10 @@ HELP = {
         Creates and returns instance of relationship_direction_type enum.
 
     """,
+    shared.UnitType: """
+        A list of scientific units.
+
+    """,
     shared.DocStatusType: """
         Status of cim document.
 
@@ -10071,10 +10075,6 @@ HELP = {
     """,
     shared.CompilerType: """
         Creates and returns instance of compiler_type enum.
-
-    """,
-    shared.OperatingSystemType: """
-        A list of common operating systems.
 
     """,
     shared.DocRelationshipType: """
@@ -10089,16 +10089,16 @@ HELP = {
         A list of organisations that create machines.
 
     """,
+    shared.OperatingSystemType: """
+        A list of common operating systems.
+
+    """,
     shared.ChangePropertyType: """
         Creates and returns instance of change_property_type enum.
 
     """,
     shared.ProcessorType: """
         A list of known cpu's.
-
-    """,
-    shared.UnitType: """
-        A list of scientific units.
 
     """,
     shared.InterconnectType: """
@@ -10149,8 +10149,8 @@ HELP = {
         Creates and returns instance of horizontal_cs_enum enum.
 
     """,
-    grids.GridNodePositionEnum: """
-        Creates and returns instance of grid_node_position_enum enum.
+    grids.GridTypeEnum: """
+        Creates and returns instance of grid_type_enum enum.
 
     """,
     grids.DiscretizationEnum: """
@@ -10177,8 +10177,8 @@ HELP = {
         Creates and returns instance of vertical_cs_enum enum.
 
     """,
-    grids.GridTypeEnum: """
-        Creates and returns instance of grid_type_enum enum.
+    grids.GridNodePositionEnum: """
+        Creates and returns instance of grid_node_position_enum enum.
 
     """,
     quality.QualityStatusType: """
@@ -10213,32 +10213,12 @@ HELP = {
         Enumerates the level in the data hierarchy (constructed by the self-referential parent/child aggregations) is this DataObject.
 
     """,
-    activity.ExperimentRelationshipType: """
-        Creates and returns instance of experiment_relationship_type enum.
-
-    """,
-    activity.DownscalingType: """
-        Creates and returns instance of downscaling_type enum.
-
-    """,
-    activity.SimulationRelationshipType: """
-        Creates and returns instance of simulation_relationship_type enum.
+    activity.ConformanceType: """
+        Creates and returns instance of conformance_type enum.
 
     """,
     activity.FrequencyType: """
         Creates and returns instance of frequency_type enum.
-
-    """,
-    activity.ProjectType: """
-        Creates and returns instance of project_type enum.
-
-    """,
-    activity.ResolutionType: """
-        Creates and returns instance of resolution_type enum.
-
-    """,
-    activity.ConformanceType: """
-        Creates and returns instance of conformance_type enum.
 
     """,
     activity.EnsembleType: """
@@ -10247,6 +10227,26 @@ HELP = {
     """,
     activity.SimulationType: """
         Creates and returns instance of simulation_type enum.
+
+    """,
+    activity.ProjectType: """
+        Creates and returns instance of project_type enum.
+
+    """,
+    activity.SimulationRelationshipType: """
+        Creates and returns instance of simulation_relationship_type enum.
+
+    """,
+    activity.DownscalingType: """
+        Creates and returns instance of downscaling_type enum.
+
+    """,
+    activity.ResolutionType: """
+        Creates and returns instance of resolution_type enum.
+
+    """,
+    activity.ExperimentRelationshipType: """
+        Creates and returns instance of experiment_relationship_type enum.
 
     """,
 
@@ -10270,13 +10270,13 @@ HELP = {
         None,
     (shared.MachineType, 'Parallel'):
         None,
+    (shared.DocRelationshipType, 'similarTo'):
+        None,
     (shared.DocRelationshipType, 'fixedVersionOf'):
         None,
     (shared.DocRelationshipType, 'previousVersionOf'):
         None,
     (shared.DocRelationshipType, 'other'):
-        None,
-    (shared.DocRelationshipType, 'similarTo'):
         None,
     (shared.DocRelationshipType, 'laterVersionOf'):
         None,
@@ -10312,6 +10312,8 @@ HELP = {
         None,
     (shared.DocType, 'gridSpec'):
         None,
+    (shared.DocType, 'simulationRun'):
+        None,
     (shared.DocType, 'cimQuality'):
         None,
     (shared.DocType, 'numericalExperiment'):
@@ -10326,17 +10328,15 @@ HELP = {
         None,
     (shared.DocType, 'dataProcessing'):
         None,
-    (shared.DocType, 'downscalingSimulation'):
-        None,
     (shared.DocType, 'ensemble'):
+        None,
+    (shared.DocType, 'downscalingSimulation'):
         None,
     (shared.DocType, 'statisticalModelComponent'):
         None,
     (shared.DocType, 'dataObject'):
         None,
     (shared.DocType, 'platform'):
-        None,
-    (shared.DocType, 'simulationRun'):
         None,
     (software.SpatialRegriddingDimensionType, '2D'):
         None,
@@ -10386,19 +10386,33 @@ HELP = {
         None,
     (software.TimingUnits, 'seconds'):
         None,
-    (grids.HorizontalCsEnum, 'spherical'):
-        None,
     (grids.HorizontalCsEnum, 'ellipsoidal'):
         None,
     (grids.HorizontalCsEnum, 'cartesian'):
         None,
+    (grids.HorizontalCsEnum, 'spherical'):
+        None,
     (grids.HorizontalCsEnum, 'polar'):
         None,
-    (grids.GridNodePositionEnum, 'centre'):
+    (grids.GridTypeEnum, 'tripolar'):
         None,
-    (grids.GridNodePositionEnum, 'plane'):
+    (grids.GridTypeEnum, 'other'):
         None,
-    (grids.GridNodePositionEnum, 'sphere'):
+    (grids.GridTypeEnum, 'cubed_sphere'):
+        None,
+    (grids.GridTypeEnum, 'composite'):
+        None,
+    (grids.GridTypeEnum, 'displaced_pole'):
+        None,
+    (grids.GridTypeEnum, 'icosahedral_geodesic'):
+        None,
+    (grids.GridTypeEnum, 'reduced_gaussian'):
+        None,
+    (grids.GridTypeEnum, 'yin_yang'):
+        None,
+    (grids.GridTypeEnum, 'regular_lat_lon'):
+        None,
+    (grids.GridTypeEnum, 'spectral_gaussian'):
         None,
     (grids.DiscretizationEnum, 'unstructured_triangular'):
         None,
@@ -10442,29 +10456,15 @@ HELP = {
         None,
     (grids.VerticalCsEnum, 'mass-based'):
         None,
-    (grids.GridTypeEnum, 'tripolar'):
+    (grids.GridNodePositionEnum, 'centre'):
         None,
-    (grids.GridTypeEnum, 'other'):
+    (grids.GridNodePositionEnum, 'plane'):
         None,
-    (grids.GridTypeEnum, 'cubed_sphere'):
-        None,
-    (grids.GridTypeEnum, 'composite'):
-        None,
-    (grids.GridTypeEnum, 'displaced_pole'):
-        None,
-    (grids.GridTypeEnum, 'icosahedral_geodesic'):
-        None,
-    (grids.GridTypeEnum, 'reduced_gaussian'):
-        None,
-    (grids.GridTypeEnum, 'yin_yang'):
-        None,
-    (grids.GridTypeEnum, 'regular_lat_lon'):
-        None,
-    (grids.GridTypeEnum, 'spectral_gaussian'):
-        None,
-    (quality.QualityStatusType, 'resolved'):
+    (grids.GridNodePositionEnum, 'sphere'):
         None,
     (quality.QualityStatusType, 'confirmed'):
+        None,
+    (quality.QualityStatusType, 'resolved'):
         None,
     (quality.QualityStatusType, 'partially_resolved'):
         None,
@@ -10522,29 +10522,23 @@ HELP = {
         "This DataObject is complete.",
     (data.DataStatusType, 'continuouslySupplemented'):
         "This DataObject's actual data is continuously updated.",
-    (activity.ExperimentRelationshipType, 'shorterVersionOf'):
+    (activity.ConformanceType, 'not-xxx'):
         None,
-    (activity.ExperimentRelationshipType, 'extensionOf'):
+    (activity.ConformanceType, 'not conformant'):
+        "Describes a simulation that is purpefully non-conformant to an experimental requirement.",
+    (activity.ConformanceType, 'standard config'):
+        "Describes a simulation that is 'naturally' conformant to an experimental requirement.",
+    (activity.ConformanceType, 'via inputs'):
+        "Describes a simulation that conforms to an experimental requirement by using particular inputs.",
+    (activity.ConformanceType, 'via model mods'):
+        "Describes a simulation that conforms to an experimental requirement by changing the configuration of the software model implementing that simulation.",
+    (activity.ConformanceType, 'combination'):
+        "Describes a simulation that conforms to an experimental requirement by using more than one method.",
+    (activity.SimulationType, 'simulationComposite'):
         None,
-    (activity.ExperimentRelationshipType, 'continuationOf'):
+    (activity.SimulationType, 'assimilation'):
         None,
-    (activity.ExperimentRelationshipType, 'controlExperiment'):
-        None,
-    (activity.ExperimentRelationshipType, 'higherResolutionVersionOf'):
-        None,
-    (activity.ExperimentRelationshipType, 'lowerResolutionVersionOf'):
-        None,
-    (activity.ExperimentRelationshipType, 'increaseEnsembleOf'):
-        None,
-    (activity.ExperimentRelationshipType, 'modifiedInputMethodOf'):
-        None,
-    (activity.ExperimentRelationshipType, 'previousRealisation'):
-        None,
-    (activity.DownscalingType, 'statistical'):
-        None,
-    (activity.DownscalingType, 'dynamic'):
-        None,
-    (activity.SimulationRelationshipType, 'previousSimulation'):
+    (activity.SimulationType, 'simulationRun'):
         None,
     (activity.SimulationRelationshipType, 'higherResolutionVersionOf'):
         None,
@@ -10560,23 +10554,29 @@ HELP = {
         None,
     (activity.SimulationRelationshipType, 'continuationOf'):
         None,
-    (activity.ConformanceType, 'standard config'):
-        "Describes a simulation that is 'naturally' conformant to an experimental requirement.",
-    (activity.ConformanceType, 'via inputs'):
-        "Describes a simulation that conforms to an experimental requirement by using particular inputs.",
-    (activity.ConformanceType, 'via model mods'):
-        "Describes a simulation that conforms to an experimental requirement by changing the configuration of the software model implementing that simulation.",
-    (activity.ConformanceType, 'combination'):
-        "Describes a simulation that conforms to an experimental requirement by using more than one method.",
-    (activity.ConformanceType, 'not-xxx'):
+    (activity.SimulationRelationshipType, 'previousSimulation'):
         None,
-    (activity.ConformanceType, 'not conformant'):
-        "Describes a simulation that is purpefully non-conformant to an experimental requirement.",
-    (activity.SimulationType, 'simulationComposite'):
+    (activity.DownscalingType, 'statistical'):
         None,
-    (activity.SimulationType, 'assimilation'):
+    (activity.DownscalingType, 'dynamic'):
         None,
-    (activity.SimulationType, 'simulationRun'):
+    (activity.ExperimentRelationshipType, 'extensionOf'):
+        None,
+    (activity.ExperimentRelationshipType, 'continuationOf'):
+        None,
+    (activity.ExperimentRelationshipType, 'previousRealisation'):
+        None,
+    (activity.ExperimentRelationshipType, 'controlExperiment'):
+        None,
+    (activity.ExperimentRelationshipType, 'higherResolutionVersionOf'):
+        None,
+    (activity.ExperimentRelationshipType, 'lowerResolutionVersionOf'):
+        None,
+    (activity.ExperimentRelationshipType, 'increaseEnsembleOf'):
+        None,
+    (activity.ExperimentRelationshipType, 'modifiedInputMethodOf'):
+        None,
+    (activity.ExperimentRelationshipType, 'shorterVersionOf'):
         None,
 }
 
@@ -10602,55 +10602,55 @@ KEYS = {
     # Classes.
     # ------------------------------------------------
 
-    shared.DocReference: "cim.1.shared.DocReference",
-    shared.MachineCompilerUnit: "cim.1.shared.MachineCompilerUnit",
-    shared.DocRelationship: "cim.1.shared.DocRelationship",
-    shared.RealCalendar: "cim.1.shared.RealCalendar",
-    shared.DocRelationshipTarget: "cim.1.shared.DocRelationshipTarget",
     shared.Standard: "cim.1.shared.Standard",
-    shared.Calendar: "cim.1.shared.Calendar",
-    shared.Property: "cim.1.shared.Property",
-    shared.StandardName: "cim.1.shared.StandardName",
     shared.Change: "cim.1.shared.Change",
-    shared.OpenDateRange: "cim.1.shared.OpenDateRange",
-    shared.DataSource: "cim.1.shared.DataSource",
     shared.License: "cim.1.shared.License",
-    shared.DocGenealogy: "cim.1.shared.DocGenealogy",
-    shared.Compiler: "cim.1.shared.Compiler",
+    shared.Property: "cim.1.shared.Property",
     shared.Machine: "cim.1.shared.Machine",
-    shared.PerpetualPeriod: "cim.1.shared.PerpetualPeriod",
-    shared.Platform: "cim.1.shared.Platform",
-    shared.Citation: "cim.1.shared.Citation",
-    shared.ResponsibleParty: "cim.1.shared.ResponsibleParty",
-    shared.Relationship: "cim.1.shared.Relationship",
-    shared.ClosedDateRange: "cim.1.shared.ClosedDateRange",
-    shared.DocMetaInfo: "cim.1.shared.DocMetaInfo",
+    shared.StandardName: "cim.1.shared.StandardName",
+    shared.DocGenealogy: "cim.1.shared.DocGenealogy",
+    shared.DataSource: "cim.1.shared.DataSource",
     shared.DateRange: "cim.1.shared.DateRange",
     shared.ChangeProperty: "cim.1.shared.ChangeProperty",
+    shared.MachineCompilerUnit: "cim.1.shared.MachineCompilerUnit",
+    shared.Relationship: "cim.1.shared.Relationship",
+    shared.DocReference: "cim.1.shared.DocReference",
+    shared.OpenDateRange: "cim.1.shared.OpenDateRange",
+    shared.Compiler: "cim.1.shared.Compiler",
+    shared.Calendar: "cim.1.shared.Calendar",
+    shared.ResponsibleParty: "cim.1.shared.ResponsibleParty",
+    shared.DocMetaInfo: "cim.1.shared.DocMetaInfo",
+    shared.Citation: "cim.1.shared.Citation",
+    shared.PerpetualPeriod: "cim.1.shared.PerpetualPeriod",
+    shared.Platform: "cim.1.shared.Platform",
+    shared.RealCalendar: "cim.1.shared.RealCalendar",
+    shared.DocRelationshipTarget: "cim.1.shared.DocRelationshipTarget",
+    shared.ClosedDateRange: "cim.1.shared.ClosedDateRange",
+    shared.DocRelationship: "cim.1.shared.DocRelationship",
     shared.Daily360: "cim.1.shared.Daily360",
     software.Deployment: "cim.1.software.Deployment",
     software.Composition: "cim.1.software.Composition",
-    software.ConnectionProperty: "cim.1.software.ConnectionProperty",
+    software.ComponentLanguage: "cim.1.software.ComponentLanguage",
     software.CouplingProperty: "cim.1.software.CouplingProperty",
-    software.Connection: "cim.1.software.Connection",
-    software.ConnectionEndpoint: "cim.1.software.ConnectionEndpoint",
+    software.Timing: "cim.1.software.Timing",
+    software.EntryPoint: "cim.1.software.EntryPoint",
     software.ComponentLanguageProperty: "cim.1.software.ComponentLanguageProperty",
+    software.ConnectionProperty: "cim.1.software.ConnectionProperty",
+    software.SpatialRegridding: "cim.1.software.SpatialRegridding",
+    software.Parallelisation: "cim.1.software.Parallelisation",
+    software.ConnectionEndpoint: "cim.1.software.ConnectionEndpoint",
+    software.Connection: "cim.1.software.Connection",
+    software.Component: "cim.1.software.Component",
+    software.TimeLag: "cim.1.software.TimeLag",
     software.SpatialRegriddingProperty: "cim.1.software.SpatialRegriddingProperty",
     software.Rank: "cim.1.software.Rank",
-    software.TimeLag: "cim.1.software.TimeLag",
-    software.ComponentProperty: "cim.1.software.ComponentProperty",
-    software.ProcessorComponent: "cim.1.software.ProcessorComponent",
-    software.Coupling: "cim.1.software.Coupling",
-    software.Parallelisation: "cim.1.software.Parallelisation",
     software.SpatialRegriddingUserMethod: "cim.1.software.SpatialRegriddingUserMethod",
-    software.EntryPoint: "cim.1.software.EntryPoint",
-    software.Timing: "cim.1.software.Timing",
-    software.StatisticalModelComponent: "cim.1.software.StatisticalModelComponent",
-    software.Component: "cim.1.software.Component",
-    software.SpatialRegridding: "cim.1.software.SpatialRegridding",
-    software.ComponentLanguage: "cim.1.software.ComponentLanguage",
     software.CouplingEndpoint: "cim.1.software.CouplingEndpoint",
+    software.StatisticalModelComponent: "cim.1.software.StatisticalModelComponent",
     software.TimeTransformation: "cim.1.software.TimeTransformation",
+    software.ProcessorComponent: "cim.1.software.ProcessorComponent",
+    software.ComponentProperty: "cim.1.software.ComponentProperty",
+    software.Coupling: "cim.1.software.Coupling",
     software.ModelComponent: "cim.1.software.ModelComponent",
     grids.GridTileResolutionType: "cim.1.grids.GridTileResolutionType",
     grids.GridMosaic: "cim.1.grids.GridMosaic",
@@ -10670,150 +10670,150 @@ KEYS = {
     data.DataStorage: "cim.1.data.DataStorage",
     data.DataExtentTimeInterval: "cim.1.data.DataExtentTimeInterval",
     data.DataTopic: "cim.1.data.DataTopic",
+    data.DataStorageIp: "cim.1.data.DataStorageIp",
     data.DataDistribution: "cim.1.data.DataDistribution",
     data.DataProperty: "cim.1.data.DataProperty",
-    data.DataExtentTemporal: "cim.1.data.DataExtentTemporal",
     data.DataExtentGeographical: "cim.1.data.DataExtentGeographical",
-    data.DataStorageIp: "cim.1.data.DataStorageIp",
+    data.DataExtentTemporal: "cim.1.data.DataExtentTemporal",
     data.DataContent: "cim.1.data.DataContent",
     data.DataRestriction: "cim.1.data.DataRestriction",
     data.DataStorageDb: "cim.1.data.DataStorageDb",
     data.DataHierarchyLevel: "cim.1.data.DataHierarchyLevel",
     data.DataExtent: "cim.1.data.DataExtent",
     activity.Activity: "cim.1.activity.Activity",
-    activity.NumericalRequirement: "cim.1.activity.NumericalRequirement",
-    activity.LateralBoundaryCondition: "cim.1.activity.LateralBoundaryCondition",
-    activity.InitialCondition: "cim.1.activity.InitialCondition",
-    activity.SpatioTemporalConstraint: "cim.1.activity.SpatioTemporalConstraint",
+    activity.NumericalRequirementOption: "cim.1.activity.NumericalRequirementOption",
+    activity.SimulationRun: "cim.1.activity.SimulationRun",
+    activity.SimulationRelationshipTarget: "cim.1.activity.SimulationRelationshipTarget",
+    activity.ExperimentRelationship: "cim.1.activity.ExperimentRelationship",
+    activity.SimulationComposite: "cim.1.activity.SimulationComposite",
+    activity.BoundaryCondition: "cim.1.activity.BoundaryCondition",
     activity.NumericalActivity: "cim.1.activity.NumericalActivity",
     activity.Simulation: "cim.1.activity.Simulation",
-    activity.ExperimentRelationship: "cim.1.activity.ExperimentRelationship",
-    activity.NumericalRequirementOption: "cim.1.activity.NumericalRequirementOption",
+    activity.EnsembleMember: "cim.1.activity.EnsembleMember",
+    activity.ExperimentRelationshipTarget: "cim.1.activity.ExperimentRelationshipTarget",
     activity.DownscalingSimulation: "cim.1.activity.DownscalingSimulation",
     activity.NumericalExperiment: "cim.1.activity.NumericalExperiment",
-    activity.MeasurementCampaign: "cim.1.activity.MeasurementCampaign",
-    activity.SimulationRelationshipTarget: "cim.1.activity.SimulationRelationshipTarget",
     activity.Experiment: "cim.1.activity.Experiment",
-    activity.EnsembleMember: "cim.1.activity.EnsembleMember",
+    activity.SpatioTemporalConstraint: "cim.1.activity.SpatioTemporalConstraint",
     activity.OutputRequirement: "cim.1.activity.OutputRequirement",
     activity.Conformance: "cim.1.activity.Conformance",
-    activity.BoundaryCondition: "cim.1.activity.BoundaryCondition",
+    activity.MeasurementCampaign: "cim.1.activity.MeasurementCampaign",
     activity.Ensemble: "cim.1.activity.Ensemble",
     activity.PhysicalModification: "cim.1.activity.PhysicalModification",
-    activity.SimulationComposite: "cim.1.activity.SimulationComposite",
+    activity.InitialCondition: "cim.1.activity.InitialCondition",
     activity.SimulationRelationship: "cim.1.activity.SimulationRelationship",
-    activity.ExperimentRelationshipTarget: "cim.1.activity.ExperimentRelationshipTarget",
-    activity.SimulationRun: "cim.1.activity.SimulationRun",
+    activity.NumericalRequirement: "cim.1.activity.NumericalRequirement",
+    activity.LateralBoundaryCondition: "cim.1.activity.LateralBoundaryCondition",
     misc.DocumentSet: "cim.1.misc.DocumentSet",
 
     # ------------------------------------------------
     # Class properties.
     # ------------------------------------------------
 
-    (shared.DocReference, 'url'): "cim.1.shared.DocReference.url",
-    (shared.DocReference, 'id'): "cim.1.shared.DocReference.id",
-    (shared.DocReference, 'changes'): "cim.1.shared.DocReference.changes",
-    (shared.DocReference, 'name'): "cim.1.shared.DocReference.name",
-    (shared.DocReference, 'version'): "cim.1.shared.DocReference.version",
-    (shared.DocReference, 'type'): "cim.1.shared.DocReference.type",
-    (shared.DocReference, 'external_id'): "cim.1.shared.DocReference.external_id",
-    (shared.DocReference, 'description'): "cim.1.shared.DocReference.description",
-    (shared.MachineCompilerUnit, 'compilers'): "cim.1.shared.MachineCompilerUnit.compilers",
-    (shared.MachineCompilerUnit, 'machine'): "cim.1.shared.MachineCompilerUnit.machine",
-    (shared.DocRelationship, 'target'): "cim.1.shared.DocRelationship.target",
-    (shared.DocRelationship, 'type'): "cim.1.shared.DocRelationship.type",
-    (shared.DocRelationshipTarget, 'reference'): "cim.1.shared.DocRelationshipTarget.reference",
-    (shared.Standard, 'version'): "cim.1.shared.Standard.version",
     (shared.Standard, 'description'): "cim.1.shared.Standard.description",
+    (shared.Standard, 'version'): "cim.1.shared.Standard.version",
     (shared.Standard, 'name'): "cim.1.shared.Standard.name",
-    (shared.Calendar, 'description'): "cim.1.shared.Calendar.description",
-    (shared.Calendar, 'range'): "cim.1.shared.Calendar.range",
-    (shared.Calendar, 'length'): "cim.1.shared.Calendar.length",
-    (shared.Property, 'name'): "cim.1.shared.Property.name",
-    (shared.Property, 'value'): "cim.1.shared.Property.value",
-    (shared.StandardName, 'is_open'): "cim.1.shared.StandardName.is_open",
-    (shared.StandardName, 'value'): "cim.1.shared.StandardName.value",
-    (shared.StandardName, 'standards'): "cim.1.shared.StandardName.standards",
     (shared.Change, 'details'): "cim.1.shared.Change.details",
-    (shared.Change, 'author'): "cim.1.shared.Change.author",
     (shared.Change, 'name'): "cim.1.shared.Change.name",
+    (shared.Change, 'author'): "cim.1.shared.Change.author",
     (shared.Change, 'type'): "cim.1.shared.Change.type",
     (shared.Change, 'description'): "cim.1.shared.Change.description",
     (shared.Change, 'date'): "cim.1.shared.Change.date",
-    (shared.OpenDateRange, 'end'): "cim.1.shared.OpenDateRange.end",
-    (shared.OpenDateRange, 'start'): "cim.1.shared.OpenDateRange.start",
-    (shared.DataSource, 'purpose'): "cim.1.shared.DataSource.purpose",
     (shared.License, 'contact'): "cim.1.shared.License.contact",
     (shared.License, 'name'): "cim.1.shared.License.name",
     (shared.License, 'is_unrestricted'): "cim.1.shared.License.is_unrestricted",
     (shared.License, 'description'): "cim.1.shared.License.description",
-    (shared.DocGenealogy, 'relationships'): "cim.1.shared.DocGenealogy.relationships",
-    (shared.Compiler, 'language'): "cim.1.shared.Compiler.language",
-    (shared.Compiler, 'version'): "cim.1.shared.Compiler.version",
-    (shared.Compiler, 'name'): "cim.1.shared.Compiler.name",
-    (shared.Compiler, 'options'): "cim.1.shared.Compiler.options",
-    (shared.Compiler, 'type'): "cim.1.shared.Compiler.type",
-    (shared.Compiler, 'environment_variables'): "cim.1.shared.Compiler.environment_variables",
-    (shared.Machine, 'system'): "cim.1.shared.Machine.system",
+    (shared.Property, 'name'): "cim.1.shared.Property.name",
+    (shared.Property, 'value'): "cim.1.shared.Property.value",
     (shared.Machine, 'location'): "cim.1.shared.Machine.location",
-    (shared.Machine, 'interconnect'): "cim.1.shared.Machine.interconnect",
     (shared.Machine, 'type'): "cim.1.shared.Machine.type",
+    (shared.Machine, 'description'): "cim.1.shared.Machine.description",
     (shared.Machine, 'maximum_processors'): "cim.1.shared.Machine.maximum_processors",
-    (shared.Machine, 'cores_per_processor'): "cim.1.shared.Machine.cores_per_processor",
+    (shared.Machine, 'interconnect'): "cim.1.shared.Machine.interconnect",
     (shared.Machine, 'vendor'): "cim.1.shared.Machine.vendor",
     (shared.Machine, 'name'): "cim.1.shared.Machine.name",
-    (shared.Machine, 'operating_system'): "cim.1.shared.Machine.operating_system",
     (shared.Machine, 'processor_type'): "cim.1.shared.Machine.processor_type",
     (shared.Machine, 'libraries'): "cim.1.shared.Machine.libraries",
-    (shared.Machine, 'description'): "cim.1.shared.Machine.description",
+    (shared.Machine, 'cores_per_processor'): "cim.1.shared.Machine.cores_per_processor",
+    (shared.Machine, 'system'): "cim.1.shared.Machine.system",
+    (shared.Machine, 'operating_system'): "cim.1.shared.Machine.operating_system",
+    (shared.StandardName, 'value'): "cim.1.shared.StandardName.value",
+    (shared.StandardName, 'is_open'): "cim.1.shared.StandardName.is_open",
+    (shared.StandardName, 'standards'): "cim.1.shared.StandardName.standards",
+    (shared.DocGenealogy, 'relationships'): "cim.1.shared.DocGenealogy.relationships",
+    (shared.DataSource, 'purpose'): "cim.1.shared.DataSource.purpose",
+    (shared.DateRange, 'duration'): "cim.1.shared.DateRange.duration",
+    (shared.ChangeProperty, 'description'): "cim.1.shared.ChangeProperty.description",
+    (shared.ChangeProperty, 'id'): "cim.1.shared.ChangeProperty.id",
+    (shared.MachineCompilerUnit, 'compilers'): "cim.1.shared.MachineCompilerUnit.compilers",
+    (shared.MachineCompilerUnit, 'machine'): "cim.1.shared.MachineCompilerUnit.machine",
+    (shared.Relationship, 'description'): "cim.1.shared.Relationship.description",
+    (shared.Relationship, 'direction'): "cim.1.shared.Relationship.direction",
+    (shared.DocReference, 'url'): "cim.1.shared.DocReference.url",
+    (shared.DocReference, 'id'): "cim.1.shared.DocReference.id",
+    (shared.DocReference, 'version'): "cim.1.shared.DocReference.version",
+    (shared.DocReference, 'name'): "cim.1.shared.DocReference.name",
+    (shared.DocReference, 'changes'): "cim.1.shared.DocReference.changes",
+    (shared.DocReference, 'type'): "cim.1.shared.DocReference.type",
+    (shared.DocReference, 'external_id'): "cim.1.shared.DocReference.external_id",
+    (shared.DocReference, 'description'): "cim.1.shared.DocReference.description",
+    (shared.OpenDateRange, 'end'): "cim.1.shared.OpenDateRange.end",
+    (shared.OpenDateRange, 'start'): "cim.1.shared.OpenDateRange.start",
+    (shared.Compiler, 'type'): "cim.1.shared.Compiler.type",
+    (shared.Compiler, 'version'): "cim.1.shared.Compiler.version",
+    (shared.Compiler, 'language'): "cim.1.shared.Compiler.language",
+    (shared.Compiler, 'name'): "cim.1.shared.Compiler.name",
+    (shared.Compiler, 'options'): "cim.1.shared.Compiler.options",
+    (shared.Compiler, 'environment_variables'): "cim.1.shared.Compiler.environment_variables",
+    (shared.Calendar, 'range'): "cim.1.shared.Calendar.range",
+    (shared.Calendar, 'description'): "cim.1.shared.Calendar.description",
+    (shared.Calendar, 'length'): "cim.1.shared.Calendar.length",
+    (shared.ResponsibleParty, 'email'): "cim.1.shared.ResponsibleParty.email",
+    (shared.ResponsibleParty, 'url'): "cim.1.shared.ResponsibleParty.url",
+    (shared.ResponsibleParty, 'organisation_name'): "cim.1.shared.ResponsibleParty.organisation_name",
+    (shared.ResponsibleParty, 'individual_name'): "cim.1.shared.ResponsibleParty.individual_name",
+    (shared.ResponsibleParty, 'abbreviation'): "cim.1.shared.ResponsibleParty.abbreviation",
+    (shared.ResponsibleParty, 'address'): "cim.1.shared.ResponsibleParty.address",
+    (shared.ResponsibleParty, 'role'): "cim.1.shared.ResponsibleParty.role",
+    (shared.DocMetaInfo, 'drs_path'): "cim.1.shared.DocMetaInfo.drs_path",
+    (shared.DocMetaInfo, 'source_key'): "cim.1.shared.DocMetaInfo.source_key",
+    (shared.DocMetaInfo, 'version'): "cim.1.shared.DocMetaInfo.version",
+    (shared.DocMetaInfo, 'id'): "cim.1.shared.DocMetaInfo.id",
+    (shared.DocMetaInfo, 'author'): "cim.1.shared.DocMetaInfo.author",
+    (shared.DocMetaInfo, 'type_sort_key'): "cim.1.shared.DocMetaInfo.type_sort_key",
+    (shared.DocMetaInfo, 'drs_keys'): "cim.1.shared.DocMetaInfo.drs_keys",
+    (shared.DocMetaInfo, 'institute'): "cim.1.shared.DocMetaInfo.institute",
+    (shared.DocMetaInfo, 'type'): "cim.1.shared.DocMetaInfo.type",
+    (shared.DocMetaInfo, 'source'): "cim.1.shared.DocMetaInfo.source",
+    (shared.DocMetaInfo, 'external_ids'): "cim.1.shared.DocMetaInfo.external_ids",
+    (shared.DocMetaInfo, 'status'): "cim.1.shared.DocMetaInfo.status",
+    (shared.DocMetaInfo, 'language'): "cim.1.shared.DocMetaInfo.language",
+    (shared.DocMetaInfo, 'create_date'): "cim.1.shared.DocMetaInfo.create_date",
+    (shared.DocMetaInfo, 'update_date'): "cim.1.shared.DocMetaInfo.update_date",
+    (shared.DocMetaInfo, 'genealogy'): "cim.1.shared.DocMetaInfo.genealogy",
+    (shared.DocMetaInfo, 'project'): "cim.1.shared.DocMetaInfo.project",
+    (shared.DocMetaInfo, 'type_display_name'): "cim.1.shared.DocMetaInfo.type_display_name",
+    (shared.DocMetaInfo, 'sort_key'): "cim.1.shared.DocMetaInfo.sort_key",
+    (shared.Citation, 'location'): "cim.1.shared.Citation.location",
+    (shared.Citation, 'role'): "cim.1.shared.Citation.role",
+    (shared.Citation, 'type'): "cim.1.shared.Citation.type",
+    (shared.Citation, 'date'): "cim.1.shared.Citation.date",
+    (shared.Citation, 'collective_title'): "cim.1.shared.Citation.collective_title",
+    (shared.Citation, 'date_type'): "cim.1.shared.Citation.date_type",
+    (shared.Citation, 'title'): "cim.1.shared.Citation.title",
+    (shared.Citation, 'organisation'): "cim.1.shared.Citation.organisation",
+    (shared.Citation, 'alternative_title'): "cim.1.shared.Citation.alternative_title",
     (shared.Platform, 'short_name'): "cim.1.shared.Platform.short_name",
     (shared.Platform, 'meta'): "cim.1.shared.Platform.meta",
     (shared.Platform, 'contacts'): "cim.1.shared.Platform.contacts",
     (shared.Platform, 'description'): "cim.1.shared.Platform.description",
     (shared.Platform, 'units'): "cim.1.shared.Platform.units",
     (shared.Platform, 'long_name'): "cim.1.shared.Platform.long_name",
-    (shared.Citation, 'title'): "cim.1.shared.Citation.title",
-    (shared.Citation, 'alternative_title'): "cim.1.shared.Citation.alternative_title",
-    (shared.Citation, 'date_type'): "cim.1.shared.Citation.date_type",
-    (shared.Citation, 'collective_title'): "cim.1.shared.Citation.collective_title",
-    (shared.Citation, 'organisation'): "cim.1.shared.Citation.organisation",
-    (shared.Citation, 'location'): "cim.1.shared.Citation.location",
-    (shared.Citation, 'type'): "cim.1.shared.Citation.type",
-    (shared.Citation, 'role'): "cim.1.shared.Citation.role",
-    (shared.Citation, 'date'): "cim.1.shared.Citation.date",
-    (shared.ResponsibleParty, 'individual_name'): "cim.1.shared.ResponsibleParty.individual_name",
-    (shared.ResponsibleParty, 'abbreviation'): "cim.1.shared.ResponsibleParty.abbreviation",
-    (shared.ResponsibleParty, 'organisation_name'): "cim.1.shared.ResponsibleParty.organisation_name",
-    (shared.ResponsibleParty, 'address'): "cim.1.shared.ResponsibleParty.address",
-    (shared.ResponsibleParty, 'role'): "cim.1.shared.ResponsibleParty.role",
-    (shared.ResponsibleParty, 'email'): "cim.1.shared.ResponsibleParty.email",
-    (shared.ResponsibleParty, 'url'): "cim.1.shared.ResponsibleParty.url",
-    (shared.Relationship, 'description'): "cim.1.shared.Relationship.description",
-    (shared.Relationship, 'direction'): "cim.1.shared.Relationship.direction",
+    (shared.DocRelationshipTarget, 'reference'): "cim.1.shared.DocRelationshipTarget.reference",
     (shared.ClosedDateRange, 'end'): "cim.1.shared.ClosedDateRange.end",
     (shared.ClosedDateRange, 'start'): "cim.1.shared.ClosedDateRange.start",
-    (shared.DocMetaInfo, 'update_date'): "cim.1.shared.DocMetaInfo.update_date",
-    (shared.DocMetaInfo, 'genealogy'): "cim.1.shared.DocMetaInfo.genealogy",
-    (shared.DocMetaInfo, 'source_key'): "cim.1.shared.DocMetaInfo.source_key",
-    (shared.DocMetaInfo, 'institute'): "cim.1.shared.DocMetaInfo.institute",
-    (shared.DocMetaInfo, 'drs_path'): "cim.1.shared.DocMetaInfo.drs_path",
-    (shared.DocMetaInfo, 'type_sort_key'): "cim.1.shared.DocMetaInfo.type_sort_key",
-    (shared.DocMetaInfo, 'language'): "cim.1.shared.DocMetaInfo.language",
-    (shared.DocMetaInfo, 'sort_key'): "cim.1.shared.DocMetaInfo.sort_key",
-    (shared.DocMetaInfo, 'type'): "cim.1.shared.DocMetaInfo.type",
-    (shared.DocMetaInfo, 'version'): "cim.1.shared.DocMetaInfo.version",
-    (shared.DocMetaInfo, 'drs_keys'): "cim.1.shared.DocMetaInfo.drs_keys",
-    (shared.DocMetaInfo, 'author'): "cim.1.shared.DocMetaInfo.author",
-    (shared.DocMetaInfo, 'source'): "cim.1.shared.DocMetaInfo.source",
-    (shared.DocMetaInfo, 'id'): "cim.1.shared.DocMetaInfo.id",
-    (shared.DocMetaInfo, 'external_ids'): "cim.1.shared.DocMetaInfo.external_ids",
-    (shared.DocMetaInfo, 'type_display_name'): "cim.1.shared.DocMetaInfo.type_display_name",
-    (shared.DocMetaInfo, 'create_date'): "cim.1.shared.DocMetaInfo.create_date",
-    (shared.DocMetaInfo, 'project'): "cim.1.shared.DocMetaInfo.project",
-    (shared.DocMetaInfo, 'status'): "cim.1.shared.DocMetaInfo.status",
-    (shared.DateRange, 'duration'): "cim.1.shared.DateRange.duration",
-    (shared.ChangeProperty, 'description'): "cim.1.shared.ChangeProperty.description",
-    (shared.ChangeProperty, 'id'): "cim.1.shared.ChangeProperty.id",
+    (shared.DocRelationship, 'type'): "cim.1.shared.DocRelationship.type",
+    (shared.DocRelationship, 'target'): "cim.1.shared.DocRelationship.target",
     (software.Deployment, 'platform'): "cim.1.software.Deployment.platform",
     (software.Deployment, 'description'): "cim.1.software.Deployment.description",
     (software.Deployment, 'deployment_date'): "cim.1.software.Deployment.deployment_date",
@@ -10822,99 +10822,99 @@ KEYS = {
     (software.Deployment, 'parallelisation'): "cim.1.software.Deployment.parallelisation",
     (software.Composition, 'couplings'): "cim.1.software.Composition.couplings",
     (software.Composition, 'description'): "cim.1.software.Composition.description",
-    (software.Connection, 'properties'): "cim.1.software.Connection.properties",
-    (software.Connection, 'type'): "cim.1.software.Connection.type",
-    (software.Connection, 'priming'): "cim.1.software.Connection.priming",
-    (software.Connection, 'sources'): "cim.1.software.Connection.sources",
-    (software.Connection, 'time_profile'): "cim.1.software.Connection.time_profile",
-    (software.Connection, 'transformers'): "cim.1.software.Connection.transformers",
-    (software.Connection, 'target'): "cim.1.software.Connection.target",
-    (software.Connection, 'spatial_regridding'): "cim.1.software.Connection.spatial_regridding",
-    (software.Connection, 'description'): "cim.1.software.Connection.description",
-    (software.Connection, 'time_lag'): "cim.1.software.Connection.time_lag",
-    (software.Connection, 'time_transformation'): "cim.1.software.Connection.time_transformation",
+    (software.ComponentLanguage, 'name'): "cim.1.software.ComponentLanguage.name",
+    (software.ComponentLanguage, 'properties'): "cim.1.software.ComponentLanguage.properties",
+    (software.Timing, 'units'): "cim.1.software.Timing.units",
+    (software.Timing, 'rate'): "cim.1.software.Timing.rate",
+    (software.Timing, 'end'): "cim.1.software.Timing.end",
+    (software.Timing, 'start'): "cim.1.software.Timing.start",
+    (software.Timing, 'is_variable_rate'): "cim.1.software.Timing.is_variable_rate",
+    (software.EntryPoint, 'name'): "cim.1.software.EntryPoint.name",
+    (software.SpatialRegridding, 'dimension'): "cim.1.software.SpatialRegridding.dimension",
+    (software.SpatialRegridding, 'standard_method'): "cim.1.software.SpatialRegridding.standard_method",
+    (software.SpatialRegridding, 'user_method'): "cim.1.software.SpatialRegridding.user_method",
+    (software.SpatialRegridding, 'properties'): "cim.1.software.SpatialRegridding.properties",
+    (software.Parallelisation, 'processes'): "cim.1.software.Parallelisation.processes",
+    (software.Parallelisation, 'ranks'): "cim.1.software.Parallelisation.ranks",
     (software.ConnectionEndpoint, 'properties'): "cim.1.software.ConnectionEndpoint.properties",
     (software.ConnectionEndpoint, 'data_source'): "cim.1.software.ConnectionEndpoint.data_source",
     (software.ConnectionEndpoint, 'instance_id'): "cim.1.software.ConnectionEndpoint.instance_id",
-    (software.Rank, 'increment'): "cim.1.software.Rank.increment",
-    (software.Rank, 'value'): "cim.1.software.Rank.value",
-    (software.Rank, 'min'): "cim.1.software.Rank.min",
-    (software.Rank, 'max'): "cim.1.software.Rank.max",
-    (software.TimeLag, 'units'): "cim.1.software.TimeLag.units",
-    (software.TimeLag, 'value'): "cim.1.software.TimeLag.value",
-    (software.ComponentProperty, 'values'): "cim.1.software.ComponentProperty.values",
-    (software.ComponentProperty, 'long_name'): "cim.1.software.ComponentProperty.long_name",
-    (software.ComponentProperty, 'short_name'): "cim.1.software.ComponentProperty.short_name",
-    (software.ComponentProperty, 'sub_properties'): "cim.1.software.ComponentProperty.sub_properties",
-    (software.ComponentProperty, 'grid'): "cim.1.software.ComponentProperty.grid",
-    (software.ComponentProperty, 'citations'): "cim.1.software.ComponentProperty.citations",
-    (software.ComponentProperty, 'units'): "cim.1.software.ComponentProperty.units",
-    (software.ComponentProperty, 'intent'): "cim.1.software.ComponentProperty.intent",
-    (software.ComponentProperty, 'standard_names'): "cim.1.software.ComponentProperty.standard_names",
-    (software.ComponentProperty, 'is_represented'): "cim.1.software.ComponentProperty.is_represented",
-    (software.ComponentProperty, 'description'): "cim.1.software.ComponentProperty.description",
-    (software.ProcessorComponent, 'meta'): "cim.1.software.ProcessorComponent.meta",
-    (software.Coupling, 'time_profile'): "cim.1.software.Coupling.time_profile",
-    (software.Coupling, 'type'): "cim.1.software.Coupling.type",
-    (software.Coupling, 'time_transformation'): "cim.1.software.Coupling.time_transformation",
-    (software.Coupling, 'properties'): "cim.1.software.Coupling.properties",
-    (software.Coupling, 'purpose'): "cim.1.software.Coupling.purpose",
-    (software.Coupling, 'sources'): "cim.1.software.Coupling.sources",
-    (software.Coupling, 'description'): "cim.1.software.Coupling.description",
-    (software.Coupling, 'time_lag'): "cim.1.software.Coupling.time_lag",
-    (software.Coupling, 'transformers'): "cim.1.software.Coupling.transformers",
-    (software.Coupling, 'priming'): "cim.1.software.Coupling.priming",
-    (software.Coupling, 'spatial_regriddings'): "cim.1.software.Coupling.spatial_regriddings",
-    (software.Coupling, 'connections'): "cim.1.software.Coupling.connections",
-    (software.Coupling, 'target'): "cim.1.software.Coupling.target",
-    (software.Coupling, 'is_fully_specified'): "cim.1.software.Coupling.is_fully_specified",
-    (software.Parallelisation, 'processes'): "cim.1.software.Parallelisation.processes",
-    (software.Parallelisation, 'ranks'): "cim.1.software.Parallelisation.ranks",
-    (software.SpatialRegriddingUserMethod, 'file'): "cim.1.software.SpatialRegriddingUserMethod.file",
-    (software.SpatialRegriddingUserMethod, 'name'): "cim.1.software.SpatialRegriddingUserMethod.name",
-    (software.EntryPoint, 'name'): "cim.1.software.EntryPoint.name",
-    (software.Timing, 'start'): "cim.1.software.Timing.start",
-    (software.Timing, 'rate'): "cim.1.software.Timing.rate",
-    (software.Timing, 'units'): "cim.1.software.Timing.units",
-    (software.Timing, 'end'): "cim.1.software.Timing.end",
-    (software.Timing, 'is_variable_rate'): "cim.1.software.Timing.is_variable_rate",
-    (software.StatisticalModelComponent, 'meta'): "cim.1.software.StatisticalModelComponent.meta",
-    (software.StatisticalModelComponent, 'types'): "cim.1.software.StatisticalModelComponent.types",
-    (software.StatisticalModelComponent, 'type'): "cim.1.software.StatisticalModelComponent.type",
-    (software.StatisticalModelComponent, 'timing'): "cim.1.software.StatisticalModelComponent.timing",
-    (software.Component, 'funding_sources'): "cim.1.software.Component.funding_sources",
+    (software.Connection, 'properties'): "cim.1.software.Connection.properties",
+    (software.Connection, 'type'): "cim.1.software.Connection.type",
+    (software.Connection, 'priming'): "cim.1.software.Connection.priming",
+    (software.Connection, 'spatial_regridding'): "cim.1.software.Connection.spatial_regridding",
+    (software.Connection, 'time_profile'): "cim.1.software.Connection.time_profile",
+    (software.Connection, 'transformers'): "cim.1.software.Connection.transformers",
+    (software.Connection, 'target'): "cim.1.software.Connection.target",
+    (software.Connection, 'sources'): "cim.1.software.Connection.sources",
+    (software.Connection, 'description'): "cim.1.software.Connection.description",
+    (software.Connection, 'time_lag'): "cim.1.software.Connection.time_lag",
+    (software.Connection, 'time_transformation'): "cim.1.software.Connection.time_transformation",
     (software.Component, 'grid'): "cim.1.software.Component.grid",
     (software.Component, 'is_embedded'): "cim.1.software.Component.is_embedded",
     (software.Component, 'language'): "cim.1.software.Component.language",
-    (software.Component, 'previous_version'): "cim.1.software.Component.previous_version",
     (software.Component, 'license'): "cim.1.software.Component.license",
     (software.Component, 'long_name'): "cim.1.software.Component.long_name",
-    (software.Component, 'coupling_framework'): "cim.1.software.Component.coupling_framework",
     (software.Component, 'online_resource'): "cim.1.software.Component.online_resource",
+    (software.Component, 'parent'): "cim.1.software.Component.parent",
     (software.Component, 'sub_components'): "cim.1.software.Component.sub_components",
+    (software.Component, 'previous_version'): "cim.1.software.Component.previous_version",
     (software.Component, 'citations'): "cim.1.software.Component.citations",
     (software.Component, 'properties'): "cim.1.software.Component.properties",
     (software.Component, 'code_access'): "cim.1.software.Component.code_access",
+    (software.Component, 'version'): "cim.1.software.Component.version",
     (software.Component, 'release_date'): "cim.1.software.Component.release_date",
+    (software.Component, 'composition'): "cim.1.software.Component.composition",
     (software.Component, 'responsible_parties'): "cim.1.software.Component.responsible_parties",
+    (software.Component, 'coupling_framework'): "cim.1.software.Component.coupling_framework",
     (software.Component, 'short_name'): "cim.1.software.Component.short_name",
     (software.Component, 'dependencies'): "cim.1.software.Component.dependencies",
-    (software.Component, 'version'): "cim.1.software.Component.version",
-    (software.Component, 'parent'): "cim.1.software.Component.parent",
     (software.Component, 'deployments'): "cim.1.software.Component.deployments",
     (software.Component, 'description'): "cim.1.software.Component.description",
-    (software.Component, 'composition'): "cim.1.software.Component.composition",
-    (software.SpatialRegridding, 'user_method'): "cim.1.software.SpatialRegridding.user_method",
-    (software.SpatialRegridding, 'dimension'): "cim.1.software.SpatialRegridding.dimension",
-    (software.SpatialRegridding, 'standard_method'): "cim.1.software.SpatialRegridding.standard_method",
-    (software.SpatialRegridding, 'properties'): "cim.1.software.SpatialRegridding.properties",
-    (software.ComponentLanguage, 'name'): "cim.1.software.ComponentLanguage.name",
-    (software.ComponentLanguage, 'properties'): "cim.1.software.ComponentLanguage.properties",
-    (software.CouplingEndpoint, 'data_source'): "cim.1.software.CouplingEndpoint.data_source",
+    (software.Component, 'funding_sources'): "cim.1.software.Component.funding_sources",
+    (software.TimeLag, 'units'): "cim.1.software.TimeLag.units",
+    (software.TimeLag, 'value'): "cim.1.software.TimeLag.value",
+    (software.Rank, 'value'): "cim.1.software.Rank.value",
+    (software.Rank, 'increment'): "cim.1.software.Rank.increment",
+    (software.Rank, 'min'): "cim.1.software.Rank.min",
+    (software.Rank, 'max'): "cim.1.software.Rank.max",
+    (software.SpatialRegriddingUserMethod, 'file'): "cim.1.software.SpatialRegriddingUserMethod.file",
+    (software.SpatialRegriddingUserMethod, 'name'): "cim.1.software.SpatialRegriddingUserMethod.name",
     (software.CouplingEndpoint, 'properties'): "cim.1.software.CouplingEndpoint.properties",
+    (software.CouplingEndpoint, 'data_source'): "cim.1.software.CouplingEndpoint.data_source",
     (software.CouplingEndpoint, 'instance_id'): "cim.1.software.CouplingEndpoint.instance_id",
+    (software.StatisticalModelComponent, 'meta'): "cim.1.software.StatisticalModelComponent.meta",
+    (software.StatisticalModelComponent, 'type'): "cim.1.software.StatisticalModelComponent.type",
+    (software.StatisticalModelComponent, 'types'): "cim.1.software.StatisticalModelComponent.types",
+    (software.StatisticalModelComponent, 'timing'): "cim.1.software.StatisticalModelComponent.timing",
     (software.TimeTransformation, 'description'): "cim.1.software.TimeTransformation.description",
     (software.TimeTransformation, 'mapping_type'): "cim.1.software.TimeTransformation.mapping_type",
+    (software.ProcessorComponent, 'meta'): "cim.1.software.ProcessorComponent.meta",
+    (software.ComponentProperty, 'standard_names'): "cim.1.software.ComponentProperty.standard_names",
+    (software.ComponentProperty, 'values'): "cim.1.software.ComponentProperty.values",
+    (software.ComponentProperty, 'is_represented'): "cim.1.software.ComponentProperty.is_represented",
+    (software.ComponentProperty, 'sub_properties'): "cim.1.software.ComponentProperty.sub_properties",
+    (software.ComponentProperty, 'long_name'): "cim.1.software.ComponentProperty.long_name",
+    (software.ComponentProperty, 'description'): "cim.1.software.ComponentProperty.description",
+    (software.ComponentProperty, 'short_name'): "cim.1.software.ComponentProperty.short_name",
+    (software.ComponentProperty, 'units'): "cim.1.software.ComponentProperty.units",
+    (software.ComponentProperty, 'grid'): "cim.1.software.ComponentProperty.grid",
+    (software.ComponentProperty, 'intent'): "cim.1.software.ComponentProperty.intent",
+    (software.ComponentProperty, 'citations'): "cim.1.software.ComponentProperty.citations",
+    (software.Coupling, 'type'): "cim.1.software.Coupling.type",
+    (software.Coupling, 'connections'): "cim.1.software.Coupling.connections",
+    (software.Coupling, 'time_transformation'): "cim.1.software.Coupling.time_transformation",
+    (software.Coupling, 'target'): "cim.1.software.Coupling.target",
+    (software.Coupling, 'is_fully_specified'): "cim.1.software.Coupling.is_fully_specified",
+    (software.Coupling, 'time_profile'): "cim.1.software.Coupling.time_profile",
+    (software.Coupling, 'properties'): "cim.1.software.Coupling.properties",
+    (software.Coupling, 'transformers'): "cim.1.software.Coupling.transformers",
+    (software.Coupling, 'purpose'): "cim.1.software.Coupling.purpose",
+    (software.Coupling, 'time_lag'): "cim.1.software.Coupling.time_lag",
+    (software.Coupling, 'sources'): "cim.1.software.Coupling.sources",
+    (software.Coupling, 'priming'): "cim.1.software.Coupling.priming",
+    (software.Coupling, 'spatial_regriddings'): "cim.1.software.Coupling.spatial_regriddings",
+    (software.Coupling, 'description'): "cim.1.software.Coupling.description",
     (software.ModelComponent, 'meta'): "cim.1.software.ModelComponent.meta",
     (software.ModelComponent, 'type'): "cim.1.software.ModelComponent.type",
     (software.ModelComponent, 'types'): "cim.1.software.ModelComponent.types",
@@ -10924,26 +10924,26 @@ KEYS = {
     (grids.GridTileResolutionType, 'properties'): "cim.1.grids.GridTileResolutionType.properties",
     (grids.GridMosaic, 'mosaic_count'): "cim.1.grids.GridMosaic.mosaic_count",
     (grids.GridMosaic, 'citations'): "cim.1.grids.GridMosaic.citations",
-    (grids.GridMosaic, 'tiles'): "cim.1.grids.GridMosaic.tiles",
+    (grids.GridMosaic, 'type'): "cim.1.grids.GridMosaic.type",
     (grids.GridMosaic, 'id'): "cim.1.grids.GridMosaic.id",
     (grids.GridMosaic, 'is_leaf'): "cim.1.grids.GridMosaic.is_leaf",
     (grids.GridMosaic, 'short_name'): "cim.1.grids.GridMosaic.short_name",
     (grids.GridMosaic, 'mnemonic'): "cim.1.grids.GridMosaic.mnemonic",
     (grids.GridMosaic, 'mosaics'): "cim.1.grids.GridMosaic.mosaics",
     (grids.GridMosaic, 'extent'): "cim.1.grids.GridMosaic.extent",
-    (grids.GridMosaic, 'type'): "cim.1.grids.GridMosaic.type",
+    (grids.GridMosaic, 'tiles'): "cim.1.grids.GridMosaic.tiles",
     (grids.GridMosaic, 'description'): "cim.1.grids.GridMosaic.description",
     (grids.GridMosaic, 'has_congruent_tiles'): "cim.1.grids.GridMosaic.has_congruent_tiles",
     (grids.GridMosaic, 'tile_count'): "cim.1.grids.GridMosaic.tile_count",
     (grids.GridMosaic, 'long_name'): "cim.1.grids.GridMosaic.long_name",
-    (grids.VerticalCoordinateList, 'form'): "cim.1.grids.VerticalCoordinateList.form",
     (grids.VerticalCoordinateList, 'type'): "cim.1.grids.VerticalCoordinateList.type",
+    (grids.VerticalCoordinateList, 'form'): "cim.1.grids.VerticalCoordinateList.form",
     (grids.VerticalCoordinateList, 'properties'): "cim.1.grids.VerticalCoordinateList.properties",
     (grids.GridSpec, 'esm_exchange_grids'): "cim.1.grids.GridSpec.esm_exchange_grids",
     (grids.GridSpec, 'meta'): "cim.1.grids.GridSpec.meta",
     (grids.GridSpec, 'esm_model_grids'): "cim.1.grids.GridSpec.esm_model_grids",
-    (grids.GridExtent, 'minimum_longitude'): "cim.1.grids.GridExtent.minimum_longitude",
     (grids.GridExtent, 'maximum_latitude'): "cim.1.grids.GridExtent.maximum_latitude",
+    (grids.GridExtent, 'minimum_longitude'): "cim.1.grids.GridExtent.minimum_longitude",
     (grids.GridExtent, 'minimum_latitude'): "cim.1.grids.GridExtent.minimum_latitude",
     (grids.GridExtent, 'units'): "cim.1.grids.GridExtent.units",
     (grids.GridExtent, 'maximum_longitude'): "cim.1.grids.GridExtent.maximum_longitude",
@@ -11003,8 +11003,8 @@ KEYS = {
     (quality.Evaluation, 'type_hyperlink'): "cim.1.quality.Evaluation.type_hyperlink",
     (quality.Evaluation, 'description'): "cim.1.quality.Evaluation.description",
     (data.DataObject, 'content'): "cim.1.data.DataObject.content",
-    (data.DataObject, 'purpose'): "cim.1.data.DataObject.purpose",
-    (data.DataObject, 'storage'): "cim.1.data.DataObject.storage",
+    (data.DataObject, 'parent_object'): "cim.1.data.DataObject.parent_object",
+    (data.DataObject, 'source_simulation'): "cim.1.data.DataObject.source_simulation",
     (data.DataObject, 'child_object'): "cim.1.data.DataObject.child_object",
     (data.DataObject, 'acronym'): "cim.1.data.DataObject.acronym",
     (data.DataObject, 'distribution'): "cim.1.data.DataObject.distribution",
@@ -11013,13 +11013,13 @@ KEYS = {
     (data.DataObject, 'restriction'): "cim.1.data.DataObject.restriction",
     (data.DataObject, 'description'): "cim.1.data.DataObject.description",
     (data.DataObject, 'meta'): "cim.1.data.DataObject.meta",
-    (data.DataObject, 'source_simulation'): "cim.1.data.DataObject.source_simulation",
+    (data.DataObject, 'storage'): "cim.1.data.DataObject.storage",
+    (data.DataObject, 'purpose'): "cim.1.data.DataObject.purpose",
     (data.DataObject, 'data_status'): "cim.1.data.DataObject.data_status",
     (data.DataObject, 'citations'): "cim.1.data.DataObject.citations",
     (data.DataObject, 'extent'): "cim.1.data.DataObject.extent",
-    (data.DataObject, 'parent_object'): "cim.1.data.DataObject.parent_object",
-    (data.DataObject, 'keyword'): "cim.1.data.DataObject.keyword",
     (data.DataObject, 'hierarchy_level'): "cim.1.data.DataObject.hierarchy_level",
+    (data.DataObject, 'keyword'): "cim.1.data.DataObject.keyword",
     (data.DataStorageFile, 'path'): "cim.1.data.DataStorageFile.path",
     (data.DataStorageFile, 'file_name'): "cim.1.data.DataStorageFile.file_name",
     (data.DataStorageFile, 'file_system'): "cim.1.data.DataStorageFile.file_system",
@@ -11033,22 +11033,22 @@ KEYS = {
     (data.DataTopic, 'description'): "cim.1.data.DataTopic.description",
     (data.DataTopic, 'unit'): "cim.1.data.DataTopic.unit",
     (data.DataTopic, 'name'): "cim.1.data.DataTopic.name",
-    (data.DataDistribution, 'responsible_party'): "cim.1.data.DataDistribution.responsible_party",
-    (data.DataDistribution, 'access'): "cim.1.data.DataDistribution.access",
-    (data.DataDistribution, 'format'): "cim.1.data.DataDistribution.format",
-    (data.DataDistribution, 'fee'): "cim.1.data.DataDistribution.fee",
-    (data.DataProperty, 'description'): "cim.1.data.DataProperty.description",
-    (data.DataExtentTemporal, 'begin'): "cim.1.data.DataExtentTemporal.begin",
-    (data.DataExtentTemporal, 'time_interval'): "cim.1.data.DataExtentTemporal.time_interval",
-    (data.DataExtentTemporal, 'end'): "cim.1.data.DataExtentTemporal.end",
-    (data.DataExtentGeographical, 'west'): "cim.1.data.DataExtentGeographical.west",
-    (data.DataExtentGeographical, 'east'): "cim.1.data.DataExtentGeographical.east",
-    (data.DataExtentGeographical, 'south'): "cim.1.data.DataExtentGeographical.south",
-    (data.DataExtentGeographical, 'north'): "cim.1.data.DataExtentGeographical.north",
     (data.DataStorageIp, 'file_name'): "cim.1.data.DataStorageIp.file_name",
     (data.DataStorageIp, 'protocol'): "cim.1.data.DataStorageIp.protocol",
     (data.DataStorageIp, 'path'): "cim.1.data.DataStorageIp.path",
     (data.DataStorageIp, 'host'): "cim.1.data.DataStorageIp.host",
+    (data.DataDistribution, 'access'): "cim.1.data.DataDistribution.access",
+    (data.DataDistribution, 'format'): "cim.1.data.DataDistribution.format",
+    (data.DataDistribution, 'responsible_party'): "cim.1.data.DataDistribution.responsible_party",
+    (data.DataDistribution, 'fee'): "cim.1.data.DataDistribution.fee",
+    (data.DataProperty, 'description'): "cim.1.data.DataProperty.description",
+    (data.DataExtentGeographical, 'west'): "cim.1.data.DataExtentGeographical.west",
+    (data.DataExtentGeographical, 'east'): "cim.1.data.DataExtentGeographical.east",
+    (data.DataExtentGeographical, 'south'): "cim.1.data.DataExtentGeographical.south",
+    (data.DataExtentGeographical, 'north'): "cim.1.data.DataExtentGeographical.north",
+    (data.DataExtentTemporal, 'begin'): "cim.1.data.DataExtentTemporal.begin",
+    (data.DataExtentTemporal, 'time_interval'): "cim.1.data.DataExtentTemporal.time_interval",
+    (data.DataExtentTemporal, 'end'): "cim.1.data.DataExtentTemporal.end",
     (data.DataContent, 'aggregation'): "cim.1.data.DataContent.aggregation",
     (data.DataContent, 'topic'): "cim.1.data.DataContent.topic",
     (data.DataContent, 'frequency'): "cim.1.data.DataContent.frequency",
@@ -11064,18 +11064,26 @@ KEYS = {
     (data.DataHierarchyLevel, 'name'): "cim.1.data.DataHierarchyLevel.name",
     (data.DataExtent, 'temporal'): "cim.1.data.DataExtent.temporal",
     (data.DataExtent, 'geographical'): "cim.1.data.DataExtent.geographical",
+    (activity.Activity, 'funding_sources'): "cim.1.activity.Activity.funding_sources",
     (activity.Activity, 'rationales'): "cim.1.activity.Activity.rationales",
     (activity.Activity, 'responsible_parties'): "cim.1.activity.Activity.responsible_parties",
-    (activity.Activity, 'funding_sources'): "cim.1.activity.Activity.funding_sources",
     (activity.Activity, 'projects'): "cim.1.activity.Activity.projects",
-    (activity.NumericalRequirement, 'options'): "cim.1.activity.NumericalRequirement.options",
-    (activity.NumericalRequirement, 'description'): "cim.1.activity.NumericalRequirement.description",
-    (activity.NumericalRequirement, 'requirement_type'): "cim.1.activity.NumericalRequirement.requirement_type",
-    (activity.NumericalRequirement, 'id'): "cim.1.activity.NumericalRequirement.id",
-    (activity.NumericalRequirement, 'source'): "cim.1.activity.NumericalRequirement.source",
-    (activity.NumericalRequirement, 'name'): "cim.1.activity.NumericalRequirement.name",
-    (activity.SpatioTemporalConstraint, 'date_range'): "cim.1.activity.SpatioTemporalConstraint.date_range",
-    (activity.SpatioTemporalConstraint, 'spatial_resolution'): "cim.1.activity.SpatioTemporalConstraint.spatial_resolution",
+    (activity.NumericalRequirementOption, 'name'): "cim.1.activity.NumericalRequirementOption.name",
+    (activity.NumericalRequirementOption, 'relationship'): "cim.1.activity.NumericalRequirementOption.relationship",
+    (activity.NumericalRequirementOption, 'sub_options'): "cim.1.activity.NumericalRequirementOption.sub_options",
+    (activity.NumericalRequirementOption, 'description'): "cim.1.activity.NumericalRequirementOption.description",
+    (activity.NumericalRequirementOption, 'id'): "cim.1.activity.NumericalRequirementOption.id",
+    (activity.SimulationRun, 'date_range'): "cim.1.activity.SimulationRun.date_range",
+    (activity.SimulationRun, 'model'): "cim.1.activity.SimulationRun.model",
+    (activity.SimulationRun, 'meta'): "cim.1.activity.SimulationRun.meta",
+    (activity.SimulationRelationshipTarget, 'simulation'): "cim.1.activity.SimulationRelationshipTarget.simulation",
+    (activity.SimulationRelationshipTarget, 'target'): "cim.1.activity.SimulationRelationshipTarget.target",
+    (activity.ExperimentRelationship, 'target'): "cim.1.activity.ExperimentRelationship.target",
+    (activity.ExperimentRelationship, 'type'): "cim.1.activity.ExperimentRelationship.type",
+    (activity.SimulationComposite, 'date_range'): "cim.1.activity.SimulationComposite.date_range",
+    (activity.SimulationComposite, 'rank'): "cim.1.activity.SimulationComposite.rank",
+    (activity.SimulationComposite, 'child'): "cim.1.activity.SimulationComposite.child",
+    (activity.SimulationComposite, 'meta'): "cim.1.activity.SimulationComposite.meta",
     (activity.NumericalActivity, 'supports'): "cim.1.activity.NumericalActivity.supports",
     (activity.NumericalActivity, 'description'): "cim.1.activity.NumericalActivity.description",
     (activity.NumericalActivity, 'short_name'): "cim.1.activity.NumericalActivity.short_name",
@@ -11088,59 +11096,51 @@ KEYS = {
     (activity.Simulation, 'spinup_simulation'): "cim.1.activity.Simulation.spinup_simulation",
     (activity.Simulation, 'conformances'): "cim.1.activity.Simulation.conformances",
     (activity.Simulation, 'deployments'): "cim.1.activity.Simulation.deployments",
-    (activity.Simulation, 'simulation_id'): "cim.1.activity.Simulation.simulation_id",
     (activity.Simulation, 'authors'): "cim.1.activity.Simulation.authors",
+    (activity.Simulation, 'simulation_id'): "cim.1.activity.Simulation.simulation_id",
     (activity.Simulation, 'outputs'): "cim.1.activity.Simulation.outputs",
-    (activity.ExperimentRelationship, 'target'): "cim.1.activity.ExperimentRelationship.target",
-    (activity.ExperimentRelationship, 'type'): "cim.1.activity.ExperimentRelationship.type",
-    (activity.NumericalRequirementOption, 'description'): "cim.1.activity.NumericalRequirementOption.description",
-    (activity.NumericalRequirementOption, 'name'): "cim.1.activity.NumericalRequirementOption.name",
-    (activity.NumericalRequirementOption, 'relationship'): "cim.1.activity.NumericalRequirementOption.relationship",
-    (activity.NumericalRequirementOption, 'sub_options'): "cim.1.activity.NumericalRequirementOption.sub_options",
-    (activity.NumericalRequirementOption, 'id'): "cim.1.activity.NumericalRequirementOption.id",
-    (activity.DownscalingSimulation, 'meta'): "cim.1.activity.DownscalingSimulation.meta",
-    (activity.DownscalingSimulation, 'outputs'): "cim.1.activity.DownscalingSimulation.outputs",
-    (activity.DownscalingSimulation, 'downscaling_id'): "cim.1.activity.DownscalingSimulation.downscaling_id",
-    (activity.DownscalingSimulation, 'inputs'): "cim.1.activity.DownscalingSimulation.inputs",
-    (activity.DownscalingSimulation, 'calendar'): "cim.1.activity.DownscalingSimulation.calendar",
-    (activity.DownscalingSimulation, 'downscaling_type'): "cim.1.activity.DownscalingSimulation.downscaling_type",
-    (activity.DownscalingSimulation, 'downscaled_from'): "cim.1.activity.DownscalingSimulation.downscaled_from",
-    (activity.NumericalExperiment, 'long_name'): "cim.1.activity.NumericalExperiment.long_name",
-    (activity.NumericalExperiment, 'meta'): "cim.1.activity.NumericalExperiment.meta",
-    (activity.NumericalExperiment, 'description'): "cim.1.activity.NumericalExperiment.description",
-    (activity.NumericalExperiment, 'short_name'): "cim.1.activity.NumericalExperiment.short_name",
-    (activity.NumericalExperiment, 'requirements'): "cim.1.activity.NumericalExperiment.requirements",
-    (activity.NumericalExperiment, 'experiment_id'): "cim.1.activity.NumericalExperiment.experiment_id",
-    (activity.MeasurementCampaign, 'duration'): "cim.1.activity.MeasurementCampaign.duration",
-    (activity.SimulationRelationshipTarget, 'simulation'): "cim.1.activity.SimulationRelationshipTarget.simulation",
-    (activity.SimulationRelationshipTarget, 'target'): "cim.1.activity.SimulationRelationshipTarget.target",
-    (activity.Experiment, 'supports'): "cim.1.activity.Experiment.supports",
-    (activity.Experiment, 'measurement_campaigns'): "cim.1.activity.Experiment.measurement_campaigns",
-    (activity.Experiment, 'generates'): "cim.1.activity.Experiment.generates",
-    (activity.Experiment, 'requires'): "cim.1.activity.Experiment.requires",
     (activity.EnsembleMember, 'simulation'): "cim.1.activity.EnsembleMember.simulation",
     (activity.EnsembleMember, 'ensemble'): "cim.1.activity.EnsembleMember.ensemble",
     (activity.EnsembleMember, 'ensemble_ids'): "cim.1.activity.EnsembleMember.ensemble_ids",
+    (activity.ExperimentRelationshipTarget, 'numerical_experiment'): "cim.1.activity.ExperimentRelationshipTarget.numerical_experiment",
+    (activity.DownscalingSimulation, 'calendar'): "cim.1.activity.DownscalingSimulation.calendar",
+    (activity.DownscalingSimulation, 'downscaled_from'): "cim.1.activity.DownscalingSimulation.downscaled_from",
+    (activity.DownscalingSimulation, 'inputs'): "cim.1.activity.DownscalingSimulation.inputs",
+    (activity.DownscalingSimulation, 'downscaling_type'): "cim.1.activity.DownscalingSimulation.downscaling_type",
+    (activity.DownscalingSimulation, 'outputs'): "cim.1.activity.DownscalingSimulation.outputs",
+    (activity.DownscalingSimulation, 'meta'): "cim.1.activity.DownscalingSimulation.meta",
+    (activity.DownscalingSimulation, 'downscaling_id'): "cim.1.activity.DownscalingSimulation.downscaling_id",
+    (activity.NumericalExperiment, 'long_name'): "cim.1.activity.NumericalExperiment.long_name",
+    (activity.NumericalExperiment, 'requirements'): "cim.1.activity.NumericalExperiment.requirements",
+    (activity.NumericalExperiment, 'description'): "cim.1.activity.NumericalExperiment.description",
+    (activity.NumericalExperiment, 'short_name'): "cim.1.activity.NumericalExperiment.short_name",
+    (activity.NumericalExperiment, 'meta'): "cim.1.activity.NumericalExperiment.meta",
+    (activity.NumericalExperiment, 'experiment_id'): "cim.1.activity.NumericalExperiment.experiment_id",
+    (activity.Experiment, 'measurement_campaigns'): "cim.1.activity.Experiment.measurement_campaigns",
+    (activity.Experiment, 'generates'): "cim.1.activity.Experiment.generates",
+    (activity.Experiment, 'supports'): "cim.1.activity.Experiment.supports",
+    (activity.Experiment, 'requires'): "cim.1.activity.Experiment.requires",
+    (activity.SpatioTemporalConstraint, 'date_range'): "cim.1.activity.SpatioTemporalConstraint.date_range",
+    (activity.SpatioTemporalConstraint, 'spatial_resolution'): "cim.1.activity.SpatioTemporalConstraint.spatial_resolution",
     (activity.Conformance, 'description'): "cim.1.activity.Conformance.description",
     (activity.Conformance, 'sources'): "cim.1.activity.Conformance.sources",
     (activity.Conformance, 'frequency'): "cim.1.activity.Conformance.frequency",
     (activity.Conformance, 'type'): "cim.1.activity.Conformance.type",
     (activity.Conformance, 'is_conformant'): "cim.1.activity.Conformance.is_conformant",
     (activity.Conformance, 'requirements'): "cim.1.activity.Conformance.requirements",
+    (activity.MeasurementCampaign, 'duration'): "cim.1.activity.MeasurementCampaign.duration",
     (activity.Ensemble, 'outputs'): "cim.1.activity.Ensemble.outputs",
-    (activity.Ensemble, 'types'): "cim.1.activity.Ensemble.types",
     (activity.Ensemble, 'members'): "cim.1.activity.Ensemble.members",
+    (activity.Ensemble, 'types'): "cim.1.activity.Ensemble.types",
     (activity.Ensemble, 'meta'): "cim.1.activity.Ensemble.meta",
-    (activity.SimulationComposite, 'date_range'): "cim.1.activity.SimulationComposite.date_range",
-    (activity.SimulationComposite, 'rank'): "cim.1.activity.SimulationComposite.rank",
-    (activity.SimulationComposite, 'child'): "cim.1.activity.SimulationComposite.child",
-    (activity.SimulationComposite, 'meta'): "cim.1.activity.SimulationComposite.meta",
     (activity.SimulationRelationship, 'target'): "cim.1.activity.SimulationRelationship.target",
     (activity.SimulationRelationship, 'type'): "cim.1.activity.SimulationRelationship.type",
-    (activity.ExperimentRelationshipTarget, 'numerical_experiment'): "cim.1.activity.ExperimentRelationshipTarget.numerical_experiment",
-    (activity.SimulationRun, 'model'): "cim.1.activity.SimulationRun.model",
-    (activity.SimulationRun, 'date_range'): "cim.1.activity.SimulationRun.date_range",
-    (activity.SimulationRun, 'meta'): "cim.1.activity.SimulationRun.meta",
+    (activity.NumericalRequirement, 'options'): "cim.1.activity.NumericalRequirement.options",
+    (activity.NumericalRequirement, 'description'): "cim.1.activity.NumericalRequirement.description",
+    (activity.NumericalRequirement, 'requirement_type'): "cim.1.activity.NumericalRequirement.requirement_type",
+    (activity.NumericalRequirement, 'id'): "cim.1.activity.NumericalRequirement.id",
+    (activity.NumericalRequirement, 'source'): "cim.1.activity.NumericalRequirement.source",
+    (activity.NumericalRequirement, 'name'): "cim.1.activity.NumericalRequirement.name",
     (misc.DocumentSet, 'model'): "cim.1.misc.DocumentSet.model",
     (misc.DocumentSet, 'experiment'): "cim.1.misc.DocumentSet.experiment",
     (misc.DocumentSet, 'meta'): "cim.1.misc.DocumentSet.meta",
@@ -11155,16 +11155,16 @@ KEYS = {
     # ------------------------------------------------
 
     shared.DocRelationshipDirectionType: "cim.1.shared.DocRelationshipDirectionType",
+    shared.UnitType: "cim.1.shared.UnitType",
     shared.DocStatusType: "cim.1.shared.DocStatusType",
     shared.MachineType: "cim.1.shared.MachineType",
     shared.CompilerType: "cim.1.shared.CompilerType",
-    shared.OperatingSystemType: "cim.1.shared.OperatingSystemType",
     shared.DocRelationshipType: "cim.1.shared.DocRelationshipType",
     shared.DataPurpose: "cim.1.shared.DataPurpose",
     shared.MachineVendorType: "cim.1.shared.MachineVendorType",
+    shared.OperatingSystemType: "cim.1.shared.OperatingSystemType",
     shared.ChangePropertyType: "cim.1.shared.ChangePropertyType",
     shared.ProcessorType: "cim.1.shared.ProcessorType",
-    shared.UnitType: "cim.1.shared.UnitType",
     shared.InterconnectType: "cim.1.shared.InterconnectType",
     shared.DocType: "cim.1.shared.DocType",
     software.SpatialRegriddingDimensionType: "cim.1.software.SpatialRegriddingDimensionType",
@@ -11177,14 +11177,14 @@ KEYS = {
     software.TimingUnits: "cim.1.software.TimingUnits",
     software.ModelComponentType: "cim.1.software.ModelComponentType",
     grids.HorizontalCsEnum: "cim.1.grids.HorizontalCsEnum",
-    grids.GridNodePositionEnum: "cim.1.grids.GridNodePositionEnum",
+    grids.GridTypeEnum: "cim.1.grids.GridTypeEnum",
     grids.DiscretizationEnum: "cim.1.grids.DiscretizationEnum",
     grids.RefinementTypeEnum: "cim.1.grids.RefinementTypeEnum",
     grids.FeatureTypeEnum: "cim.1.grids.FeatureTypeEnum",
     grids.ArcTypeEnum: "cim.1.grids.ArcTypeEnum",
     grids.GeometryTypeEnum: "cim.1.grids.GeometryTypeEnum",
     grids.VerticalCsEnum: "cim.1.grids.VerticalCsEnum",
-    grids.GridTypeEnum: "cim.1.grids.GridTypeEnum",
+    grids.GridNodePositionEnum: "cim.1.grids.GridNodePositionEnum",
     quality.QualityStatusType: "cim.1.quality.QualityStatusType",
     quality.QualitySeverityType: "cim.1.quality.QualitySeverityType",
     quality.CimScopeCodeType: "cim.1.quality.CimScopeCodeType",
@@ -11193,15 +11193,15 @@ KEYS = {
     quality.CimFeatureType: "cim.1.quality.CimFeatureType",
     data.DataStatusType: "cim.1.data.DataStatusType",
     data.DataHierarchyType: "cim.1.data.DataHierarchyType",
-    activity.ExperimentRelationshipType: "cim.1.activity.ExperimentRelationshipType",
-    activity.DownscalingType: "cim.1.activity.DownscalingType",
-    activity.SimulationRelationshipType: "cim.1.activity.SimulationRelationshipType",
-    activity.FrequencyType: "cim.1.activity.FrequencyType",
-    activity.ProjectType: "cim.1.activity.ProjectType",
-    activity.ResolutionType: "cim.1.activity.ResolutionType",
     activity.ConformanceType: "cim.1.activity.ConformanceType",
+    activity.FrequencyType: "cim.1.activity.FrequencyType",
     activity.EnsembleType: "cim.1.activity.EnsembleType",
     activity.SimulationType: "cim.1.activity.SimulationType",
+    activity.ProjectType: "cim.1.activity.ProjectType",
+    activity.SimulationRelationshipType: "cim.1.activity.SimulationRelationshipType",
+    activity.DownscalingType: "cim.1.activity.DownscalingType",
+    activity.ResolutionType: "cim.1.activity.ResolutionType",
+    activity.ExperimentRelationshipType: "cim.1.activity.ExperimentRelationshipType",
 
     # ------------------------------------------------
     # Enum members.
@@ -11215,10 +11215,10 @@ KEYS = {
     (shared.MachineType, 'Vector'): "cim.1.shared.MachineType.Vector",
     (shared.MachineType, 'Beowulf'): "cim.1.shared.MachineType.Beowulf",
     (shared.MachineType, 'Parallel'): "cim.1.shared.MachineType.Parallel",
+    (shared.DocRelationshipType, 'similarTo'): "cim.1.shared.DocRelationshipType.similarTo",
     (shared.DocRelationshipType, 'fixedVersionOf'): "cim.1.shared.DocRelationshipType.fixedVersionOf",
     (shared.DocRelationshipType, 'previousVersionOf'): "cim.1.shared.DocRelationshipType.previousVersionOf",
     (shared.DocRelationshipType, 'other'): "cim.1.shared.DocRelationshipType.other",
-    (shared.DocRelationshipType, 'similarTo'): "cim.1.shared.DocRelationshipType.similarTo",
     (shared.DocRelationshipType, 'laterVersionOf'): "cim.1.shared.DocRelationshipType.laterVersionOf",
     (shared.DataPurpose, 'ancillaryFile'): "cim.1.shared.DataPurpose.ancillaryFile",
     (shared.DataPurpose, 'boundaryCondition'): "cim.1.shared.DataPurpose.boundaryCondition",
@@ -11236,6 +11236,7 @@ KEYS = {
     (shared.ChangePropertyType, 'BoundaryCondition'): "cim.1.shared.ChangePropertyType.BoundaryCondition",
     (shared.ChangePropertyType, 'Unused'): "cim.1.shared.ChangePropertyType.Unused",
     (shared.DocType, 'gridSpec'): "cim.1.shared.DocType.gridSpec",
+    (shared.DocType, 'simulationRun'): "cim.1.shared.DocType.simulationRun",
     (shared.DocType, 'cimQuality'): "cim.1.shared.DocType.cimQuality",
     (shared.DocType, 'numericalExperiment'): "cim.1.shared.DocType.numericalExperiment",
     (shared.DocType, 'assimilation'): "cim.1.shared.DocType.assimilation",
@@ -11243,12 +11244,11 @@ KEYS = {
     (shared.DocType, 'simulationComposite'): "cim.1.shared.DocType.simulationComposite",
     (shared.DocType, 'modelComponent'): "cim.1.shared.DocType.modelComponent",
     (shared.DocType, 'dataProcessing'): "cim.1.shared.DocType.dataProcessing",
-    (shared.DocType, 'downscalingSimulation'): "cim.1.shared.DocType.downscalingSimulation",
     (shared.DocType, 'ensemble'): "cim.1.shared.DocType.ensemble",
+    (shared.DocType, 'downscalingSimulation'): "cim.1.shared.DocType.downscalingSimulation",
     (shared.DocType, 'statisticalModelComponent'): "cim.1.shared.DocType.statisticalModelComponent",
     (shared.DocType, 'dataObject'): "cim.1.shared.DocType.dataObject",
     (shared.DocType, 'platform'): "cim.1.shared.DocType.platform",
-    (shared.DocType, 'simulationRun'): "cim.1.shared.DocType.simulationRun",
     (software.SpatialRegriddingDimensionType, '2D'): "cim.1.software.SpatialRegriddingDimensionType.2D",
     (software.SpatialRegriddingDimensionType, '1D'): "cim.1.software.SpatialRegriddingDimensionType.1D",
     (software.SpatialRegriddingDimensionType, '3D'): "cim.1.software.SpatialRegriddingDimensionType.3D",
@@ -11273,13 +11273,20 @@ KEYS = {
     (software.TimingUnits, 'decades'): "cim.1.software.TimingUnits.decades",
     (software.TimingUnits, 'centuries'): "cim.1.software.TimingUnits.centuries",
     (software.TimingUnits, 'seconds'): "cim.1.software.TimingUnits.seconds",
-    (grids.HorizontalCsEnum, 'spherical'): "cim.1.grids.HorizontalCsEnum.spherical",
     (grids.HorizontalCsEnum, 'ellipsoidal'): "cim.1.grids.HorizontalCsEnum.ellipsoidal",
     (grids.HorizontalCsEnum, 'cartesian'): "cim.1.grids.HorizontalCsEnum.cartesian",
+    (grids.HorizontalCsEnum, 'spherical'): "cim.1.grids.HorizontalCsEnum.spherical",
     (grids.HorizontalCsEnum, 'polar'): "cim.1.grids.HorizontalCsEnum.polar",
-    (grids.GridNodePositionEnum, 'centre'): "cim.1.grids.GridNodePositionEnum.centre",
-    (grids.GridNodePositionEnum, 'plane'): "cim.1.grids.GridNodePositionEnum.plane",
-    (grids.GridNodePositionEnum, 'sphere'): "cim.1.grids.GridNodePositionEnum.sphere",
+    (grids.GridTypeEnum, 'tripolar'): "cim.1.grids.GridTypeEnum.tripolar",
+    (grids.GridTypeEnum, 'other'): "cim.1.grids.GridTypeEnum.other",
+    (grids.GridTypeEnum, 'cubed_sphere'): "cim.1.grids.GridTypeEnum.cubed_sphere",
+    (grids.GridTypeEnum, 'composite'): "cim.1.grids.GridTypeEnum.composite",
+    (grids.GridTypeEnum, 'displaced_pole'): "cim.1.grids.GridTypeEnum.displaced_pole",
+    (grids.GridTypeEnum, 'icosahedral_geodesic'): "cim.1.grids.GridTypeEnum.icosahedral_geodesic",
+    (grids.GridTypeEnum, 'reduced_gaussian'): "cim.1.grids.GridTypeEnum.reduced_gaussian",
+    (grids.GridTypeEnum, 'yin_yang'): "cim.1.grids.GridTypeEnum.yin_yang",
+    (grids.GridTypeEnum, 'regular_lat_lon'): "cim.1.grids.GridTypeEnum.regular_lat_lon",
+    (grids.GridTypeEnum, 'spectral_gaussian'): "cim.1.grids.GridTypeEnum.spectral_gaussian",
     (grids.DiscretizationEnum, 'unstructured_triangular'): "cim.1.grids.DiscretizationEnum.unstructured_triangular",
     (grids.DiscretizationEnum, 'pixel-based_catchment'): "cim.1.grids.DiscretizationEnum.pixel-based_catchment",
     (grids.DiscretizationEnum, 'unstructured_polygonal'): "cim.1.grids.DiscretizationEnum.unstructured_polygonal",
@@ -11301,18 +11308,11 @@ KEYS = {
     (grids.GeometryTypeEnum, 'sphere'): "cim.1.grids.GeometryTypeEnum.sphere",
     (grids.VerticalCsEnum, 'space-based'): "cim.1.grids.VerticalCsEnum.space-based",
     (grids.VerticalCsEnum, 'mass-based'): "cim.1.grids.VerticalCsEnum.mass-based",
-    (grids.GridTypeEnum, 'tripolar'): "cim.1.grids.GridTypeEnum.tripolar",
-    (grids.GridTypeEnum, 'other'): "cim.1.grids.GridTypeEnum.other",
-    (grids.GridTypeEnum, 'cubed_sphere'): "cim.1.grids.GridTypeEnum.cubed_sphere",
-    (grids.GridTypeEnum, 'composite'): "cim.1.grids.GridTypeEnum.composite",
-    (grids.GridTypeEnum, 'displaced_pole'): "cim.1.grids.GridTypeEnum.displaced_pole",
-    (grids.GridTypeEnum, 'icosahedral_geodesic'): "cim.1.grids.GridTypeEnum.icosahedral_geodesic",
-    (grids.GridTypeEnum, 'reduced_gaussian'): "cim.1.grids.GridTypeEnum.reduced_gaussian",
-    (grids.GridTypeEnum, 'yin_yang'): "cim.1.grids.GridTypeEnum.yin_yang",
-    (grids.GridTypeEnum, 'regular_lat_lon'): "cim.1.grids.GridTypeEnum.regular_lat_lon",
-    (grids.GridTypeEnum, 'spectral_gaussian'): "cim.1.grids.GridTypeEnum.spectral_gaussian",
-    (quality.QualityStatusType, 'resolved'): "cim.1.quality.QualityStatusType.resolved",
+    (grids.GridNodePositionEnum, 'centre'): "cim.1.grids.GridNodePositionEnum.centre",
+    (grids.GridNodePositionEnum, 'plane'): "cim.1.grids.GridNodePositionEnum.plane",
+    (grids.GridNodePositionEnum, 'sphere'): "cim.1.grids.GridNodePositionEnum.sphere",
     (quality.QualityStatusType, 'confirmed'): "cim.1.quality.QualityStatusType.confirmed",
+    (quality.QualityStatusType, 'resolved'): "cim.1.quality.QualityStatusType.resolved",
     (quality.QualityStatusType, 'partially_resolved'): "cim.1.quality.QualityStatusType.partially_resolved",
     (quality.QualityStatusType, 'reported'): "cim.1.quality.QualityStatusType.reported",
     (quality.QualitySeverityType, 'cosmetic'): "cim.1.quality.QualitySeverityType.cosmetic",
@@ -11341,18 +11341,15 @@ KEYS = {
     (data.DataStatusType, 'metadataOnly'): "cim.1.data.DataStatusType.metadataOnly",
     (data.DataStatusType, 'complete'): "cim.1.data.DataStatusType.complete",
     (data.DataStatusType, 'continuouslySupplemented'): "cim.1.data.DataStatusType.continuouslySupplemented",
-    (activity.ExperimentRelationshipType, 'shorterVersionOf'): "cim.1.activity.ExperimentRelationshipType.shorterVersionOf",
-    (activity.ExperimentRelationshipType, 'extensionOf'): "cim.1.activity.ExperimentRelationshipType.extensionOf",
-    (activity.ExperimentRelationshipType, 'continuationOf'): "cim.1.activity.ExperimentRelationshipType.continuationOf",
-    (activity.ExperimentRelationshipType, 'controlExperiment'): "cim.1.activity.ExperimentRelationshipType.controlExperiment",
-    (activity.ExperimentRelationshipType, 'higherResolutionVersionOf'): "cim.1.activity.ExperimentRelationshipType.higherResolutionVersionOf",
-    (activity.ExperimentRelationshipType, 'lowerResolutionVersionOf'): "cim.1.activity.ExperimentRelationshipType.lowerResolutionVersionOf",
-    (activity.ExperimentRelationshipType, 'increaseEnsembleOf'): "cim.1.activity.ExperimentRelationshipType.increaseEnsembleOf",
-    (activity.ExperimentRelationshipType, 'modifiedInputMethodOf'): "cim.1.activity.ExperimentRelationshipType.modifiedInputMethodOf",
-    (activity.ExperimentRelationshipType, 'previousRealisation'): "cim.1.activity.ExperimentRelationshipType.previousRealisation",
-    (activity.DownscalingType, 'statistical'): "cim.1.activity.DownscalingType.statistical",
-    (activity.DownscalingType, 'dynamic'): "cim.1.activity.DownscalingType.dynamic",
-    (activity.SimulationRelationshipType, 'previousSimulation'): "cim.1.activity.SimulationRelationshipType.previousSimulation",
+    (activity.ConformanceType, 'not-xxx'): "cim.1.activity.ConformanceType.not-xxx",
+    (activity.ConformanceType, 'not conformant'): "cim.1.activity.ConformanceType.not-conformant",
+    (activity.ConformanceType, 'standard config'): "cim.1.activity.ConformanceType.standard-config",
+    (activity.ConformanceType, 'via inputs'): "cim.1.activity.ConformanceType.via-inputs",
+    (activity.ConformanceType, 'via model mods'): "cim.1.activity.ConformanceType.via-model-mods",
+    (activity.ConformanceType, 'combination'): "cim.1.activity.ConformanceType.combination",
+    (activity.SimulationType, 'simulationComposite'): "cim.1.activity.SimulationType.simulationComposite",
+    (activity.SimulationType, 'assimilation'): "cim.1.activity.SimulationType.assimilation",
+    (activity.SimulationType, 'simulationRun'): "cim.1.activity.SimulationType.simulationRun",
     (activity.SimulationRelationshipType, 'higherResolutionVersionOf'): "cim.1.activity.SimulationRelationshipType.higherResolutionVersionOf",
     (activity.SimulationRelationshipType, 'lowerResolutionVersionOf'): "cim.1.activity.SimulationRelationshipType.lowerResolutionVersionOf",
     (activity.SimulationRelationshipType, 'fixedVersionOf'): "cim.1.activity.SimulationRelationshipType.fixedVersionOf",
@@ -11360,15 +11357,18 @@ KEYS = {
     (activity.SimulationRelationshipType, 'extensionOf'): "cim.1.activity.SimulationRelationshipType.extensionOf",
     (activity.SimulationRelationshipType, 'responseTo'): "cim.1.activity.SimulationRelationshipType.responseTo",
     (activity.SimulationRelationshipType, 'continuationOf'): "cim.1.activity.SimulationRelationshipType.continuationOf",
-    (activity.ConformanceType, 'standard config'): "cim.1.activity.ConformanceType.standard-config",
-    (activity.ConformanceType, 'via inputs'): "cim.1.activity.ConformanceType.via-inputs",
-    (activity.ConformanceType, 'via model mods'): "cim.1.activity.ConformanceType.via-model-mods",
-    (activity.ConformanceType, 'combination'): "cim.1.activity.ConformanceType.combination",
-    (activity.ConformanceType, 'not-xxx'): "cim.1.activity.ConformanceType.not-xxx",
-    (activity.ConformanceType, 'not conformant'): "cim.1.activity.ConformanceType.not-conformant",
-    (activity.SimulationType, 'simulationComposite'): "cim.1.activity.SimulationType.simulationComposite",
-    (activity.SimulationType, 'assimilation'): "cim.1.activity.SimulationType.assimilation",
-    (activity.SimulationType, 'simulationRun'): "cim.1.activity.SimulationType.simulationRun",
+    (activity.SimulationRelationshipType, 'previousSimulation'): "cim.1.activity.SimulationRelationshipType.previousSimulation",
+    (activity.DownscalingType, 'statistical'): "cim.1.activity.DownscalingType.statistical",
+    (activity.DownscalingType, 'dynamic'): "cim.1.activity.DownscalingType.dynamic",
+    (activity.ExperimentRelationshipType, 'extensionOf'): "cim.1.activity.ExperimentRelationshipType.extensionOf",
+    (activity.ExperimentRelationshipType, 'continuationOf'): "cim.1.activity.ExperimentRelationshipType.continuationOf",
+    (activity.ExperimentRelationshipType, 'previousRealisation'): "cim.1.activity.ExperimentRelationshipType.previousRealisation",
+    (activity.ExperimentRelationshipType, 'controlExperiment'): "cim.1.activity.ExperimentRelationshipType.controlExperiment",
+    (activity.ExperimentRelationshipType, 'higherResolutionVersionOf'): "cim.1.activity.ExperimentRelationshipType.higherResolutionVersionOf",
+    (activity.ExperimentRelationshipType, 'lowerResolutionVersionOf'): "cim.1.activity.ExperimentRelationshipType.lowerResolutionVersionOf",
+    (activity.ExperimentRelationshipType, 'increaseEnsembleOf'): "cim.1.activity.ExperimentRelationshipType.increaseEnsembleOf",
+    (activity.ExperimentRelationshipType, 'modifiedInputMethodOf'): "cim.1.activity.ExperimentRelationshipType.modifiedInputMethodOf",
+    (activity.ExperimentRelationshipType, 'shorterVersionOf'): "cim.1.activity.ExperimentRelationshipType.shorterVersionOf",
 }
 
 # Set inline type keys.
@@ -11391,12 +11391,12 @@ data.DataStorageFile.type_key = KEYS[data.DataStorageFile]
 software.ModelComponent.type_key = KEYS[software.ModelComponent]
 software.ConnectionProperty.type_key = KEYS[software.ConnectionProperty]
 software.ProcessorComponent.type_key = KEYS[software.ProcessorComponent]
-software.ComponentProperty.type_key = KEYS[software.ComponentProperty]
 software.Component.type_key = KEYS[software.Component]
 software.ComponentLanguageProperty.type_key = KEYS[software.ComponentLanguageProperty]
+software.SpatialRegriddingUserMethod.type_key = KEYS[software.SpatialRegriddingUserMethod]
 software.SpatialRegriddingProperty.type_key = KEYS[software.SpatialRegriddingProperty]
 software.Rank.type_key = KEYS[software.Rank]
-software.SpatialRegriddingUserMethod.type_key = KEYS[software.SpatialRegriddingUserMethod]
+software.ComponentProperty.type_key = KEYS[software.ComponentProperty]
 software.Deployment.type_key = KEYS[software.Deployment]
 software.StatisticalModelComponent.type_key = KEYS[software.StatisticalModelComponent]
 software.Composition.type_key = KEYS[software.Composition]
@@ -11404,13 +11404,13 @@ software.Connection.type_key = KEYS[software.Connection]
 software.Parallelisation.type_key = KEYS[software.Parallelisation]
 software.Timing.type_key = KEYS[software.Timing]
 software.ConnectionEndpoint.type_key = KEYS[software.ConnectionEndpoint]
-software.ComponentLanguage.type_key = KEYS[software.ComponentLanguage]
 software.TimeTransformation.type_key = KEYS[software.TimeTransformation]
-software.TimeLag.type_key = KEYS[software.TimeLag]
 software.Coupling.type_key = KEYS[software.Coupling]
 software.CouplingEndpoint.type_key = KEYS[software.CouplingEndpoint]
 software.CouplingProperty.type_key = KEYS[software.CouplingProperty]
 software.EntryPoint.type_key = KEYS[software.EntryPoint]
+software.ComponentLanguage.type_key = KEYS[software.ComponentLanguage]
+software.TimeLag.type_key = KEYS[software.TimeLag]
 software.SpatialRegridding.type_key = KEYS[software.SpatialRegridding]
 quality.Evaluation.type_key = KEYS[quality.Evaluation]
 quality.Measure.type_key = KEYS[quality.Measure]
@@ -11438,7 +11438,6 @@ activity.EnsembleMember.type_key = KEYS[activity.EnsembleMember]
 activity.NumericalRequirement.type_key = KEYS[activity.NumericalRequirement]
 activity.Experiment.type_key = KEYS[activity.Experiment]
 activity.SimulationRelationship.type_key = KEYS[activity.SimulationRelationship]
-activity.Activity.type_key = KEYS[activity.Activity]
 activity.NumericalRequirementOption.type_key = KEYS[activity.NumericalRequirementOption]
 activity.ExperimentRelationship.type_key = KEYS[activity.ExperimentRelationship]
 activity.SimulationRelationshipTarget.type_key = KEYS[activity.SimulationRelationshipTarget]
@@ -11448,31 +11447,32 @@ activity.SimulationRun.type_key = KEYS[activity.SimulationRun]
 activity.DownscalingSimulation.type_key = KEYS[activity.DownscalingSimulation]
 activity.InitialCondition.type_key = KEYS[activity.InitialCondition]
 activity.LateralBoundaryCondition.type_key = KEYS[activity.LateralBoundaryCondition]
+activity.Activity.type_key = KEYS[activity.Activity]
 activity.SpatioTemporalConstraint.type_key = KEYS[activity.SpatioTemporalConstraint]
 shared.Change.type_key = KEYS[shared.Change]
 shared.PerpetualPeriod.type_key = KEYS[shared.PerpetualPeriod]
 shared.Platform.type_key = KEYS[shared.Platform]
-shared.Standard.type_key = KEYS[shared.Standard]
+shared.Relationship.type_key = KEYS[shared.Relationship]
 shared.Compiler.type_key = KEYS[shared.Compiler]
 shared.RealCalendar.type_key = KEYS[shared.RealCalendar]
-shared.DocRelationshipTarget.type_key = KEYS[shared.DocRelationshipTarget]
 shared.Machine.type_key = KEYS[shared.Machine]
-shared.Relationship.type_key = KEYS[shared.Relationship]
 shared.ResponsibleParty.type_key = KEYS[shared.ResponsibleParty]
 shared.StandardName.type_key = KEYS[shared.StandardName]
-shared.ChangeProperty.type_key = KEYS[shared.ChangeProperty]
+shared.Standard.type_key = KEYS[shared.Standard]
+shared.DocRelationshipTarget.type_key = KEYS[shared.DocRelationshipTarget]
 shared.DocRelationship.type_key = KEYS[shared.DocRelationship]
 shared.DataSource.type_key = KEYS[shared.DataSource]
-shared.License.type_key = KEYS[shared.License]
+shared.MachineCompilerUnit.type_key = KEYS[shared.MachineCompilerUnit]
 shared.DocMetaInfo.type_key = KEYS[shared.DocMetaInfo]
 shared.Property.type_key = KEYS[shared.Property]
-shared.DocGenealogy.type_key = KEYS[shared.DocGenealogy]
+shared.ChangeProperty.type_key = KEYS[shared.ChangeProperty]
+shared.DocReference.type_key = KEYS[shared.DocReference]
+shared.License.type_key = KEYS[shared.License]
 shared.Citation.type_key = KEYS[shared.Citation]
 shared.Calendar.type_key = KEYS[shared.Calendar]
-shared.DocReference.type_key = KEYS[shared.DocReference]
 shared.ClosedDateRange.type_key = KEYS[shared.ClosedDateRange]
 shared.Daily360.type_key = KEYS[shared.Daily360]
-shared.MachineCompilerUnit.type_key = KEYS[shared.MachineCompilerUnit]
+shared.DocGenealogy.type_key = KEYS[shared.DocGenealogy]
 shared.DateRange.type_key = KEYS[shared.DateRange]
 shared.OpenDateRange.type_key = KEYS[shared.OpenDateRange]
 data.DataHierarchyType.type_key = KEYS[data.DataHierarchyType]
@@ -11502,14 +11502,14 @@ grids.HorizontalCsEnum.type_key = KEYS[grids.HorizontalCsEnum]
 grids.GeometryTypeEnum.type_key = KEYS[grids.GeometryTypeEnum]
 grids.ArcTypeEnum.type_key = KEYS[grids.ArcTypeEnum]
 activity.EnsembleType.type_key = KEYS[activity.EnsembleType]
+activity.ConformanceType.type_key = KEYS[activity.ConformanceType]
 activity.ExperimentRelationshipType.type_key = KEYS[activity.ExperimentRelationshipType]
 activity.FrequencyType.type_key = KEYS[activity.FrequencyType]
-activity.ProjectType.type_key = KEYS[activity.ProjectType]
 activity.ResolutionType.type_key = KEYS[activity.ResolutionType]
 activity.SimulationType.type_key = KEYS[activity.SimulationType]
 activity.DownscalingType.type_key = KEYS[activity.DownscalingType]
+activity.ProjectType.type_key = KEYS[activity.ProjectType]
 activity.SimulationRelationshipType.type_key = KEYS[activity.SimulationRelationshipType]
-activity.ConformanceType.type_key = KEYS[activity.ConformanceType]
 shared.ChangePropertyType.type_key = KEYS[shared.ChangePropertyType]
 shared.CompilerType.type_key = KEYS[shared.CompilerType]
 shared.DataPurpose.type_key = KEYS[shared.DataPurpose]

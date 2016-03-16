@@ -63,121 +63,118 @@ PACKAGES = (
 
 # Supported classes.
 CLASSES = (
-    drs.DrsGeographicalIndicator,
-    drs.DrsAtomicDataset,
+    shared.Party,
     activity.Ensemble,
+    science.KeyProperties,
     data.Dataset,
     shared.QualityReview,
-    activity.EnsembleMember,
-    designing.NumericalRequirement,
-    platform.Machine,
+    science.ScientificDomain,
     designing.SimulationPlan,
     science.ConservationProperties,
+    activity.EnsembleMember,
     software.Variable,
     science.SubProcess,
-    designing.MultiEnsemble,
     shared.Reference,
-    science.Detail,
-    data.VariableCollection,
+    software.SoftwareComponent,
+    science.Process,
+    shared.IrregularDateset,
     shared.TimesliceList,
-    designing.Project,
     drs.DrsTemporalIdentifier,
     drs.DrsPublicationDataset,
+    software.Gridspec,
+    platform.StoragePool,
+    software.ComponentBase,
+    science.Detail,
+    platform.Machine,
+    data.VariableCollection,
+    designing.Project,
     data.Downscaling,
-    science.ScientificDomain,
-    shared.IrregularDateset,
-    designing.MultiTimeEnsemble,
-    shared.Party,
-    platform.Performance,
-    science.Tuning,
     science.Resolution,
-    software.Composition,
-    designing.DomainProperties,
-    software.SoftwareComponent,
+    designing.MultiTimeEnsemble,
+    science.ScienceContext,
     designing.NumericalExperiment,
-    software.DevelopmentPath,
-    designing.OutputTemporalRequirement,
-    shared.OnlineResource,
+    shared.Cimtext,
+    drs.DrsGeographicalIndicator,
+    software.Composition,
     platform.StorageVolume,
     shared.Responsibility,
+    shared.DocReference,
     shared.Pid,
-    platform.StoragePool,
-    activity.UberEnsemble,
     shared.Calendar,
+    designing.DomainProperties,
+    activity.UberEnsemble,
+    drs.DrsAtomicDataset,
     platform.ComputePool,
     shared.DocMetaInfo,
     activity.ParentSimulation,
+    designing.NumericalRequirement,
     science.Grid,
-    activity.EnsembleAxis,
-    science.ScienceContext,
-    software.Gridspec,
+    science.Extent,
+    platform.Partition,
+    science.Tuning,
     shared.TimePeriod,
-    platform.ComponentPerformance,
+    designing.MultiEnsemble,
+    shared.OnlineResource,
     shared.RegularTimeset,
     shared.NumberArray,
     activity.AxisMember,
     activity.Conformance,
-    science.Extent,
     designing.ForcingConstraint,
+    platform.ComponentPerformance,
     shared.ExternalDocument,
     designing.TemporalConstraint,
     designing.EnsembleRequirement,
     shared.DateTime,
-    software.ComponentBase,
-    shared.DocReference,
-    platform.Partition,
-    activity.Activity,
-    shared.KeyFloat,
-    shared.DatetimeSet,
     science.Algorithm,
-    software.EntryPoint,
-    science.Process,
+    software.DevelopmentPath,
+    shared.KeyFloat,
     science.Model,
+    shared.DatetimeSet,
+    software.EntryPoint,
     drs.DrsEnsembleIdentifier,
+    platform.Performance,
+    designing.OutputTemporalRequirement,
     data.Simulation,
-    shared.Cimtext,
-    science.KeyProperties,
+    activity.Activity,
+    activity.EnsembleAxis,
 )
 
 # Supported class properties.
 CLASS_PROPERTIES = { 
-    drs.DrsGeographicalIndicator: (
-        'bounding_box',
-        'spatial_domain',
-        'operator',
-    ),
-    drs.DrsAtomicDataset: (
-        'ensemble_member',
-        'temporal_constraint',
-        'institute',
-        'model',
-        'geographical_constraint',
-        'realm',
-        'variable_name',
-        'frequency',
-        'mip_table',
-        'activity',
-        'experiment',
-        'product',
-        'version_number',
+    shared.Party: (
+        'url',
+        'meta',
+        'address',
+        'organisation',
+        'name',
+        'orcid_id',
+        'email',
     ),
     activity.Ensemble: (
         'canonical_name',
-        'references',
+        'long_name',
         'common_conformances',
-        'description',
         'duration',
-        'responsible_parties',
         'documentation',
         'rationale',
+        'description',
         'keywords',
-        'long_name',
+        'responsible_parties',
         'has_ensemble_axes',
         'name',
         'members',
+        'references',
         'part_of',
         'meta',
         'supported',
+    ),
+    science.KeyProperties: (
+        'extra_conservation_properties',
+        'resolution',
+        'additional_detail',
+        'tuning_applied',
+        'grid',
+        'time_step',
     ),
     data.Dataset: (
         'meta',
@@ -196,54 +193,30 @@ CLASS_PROPERTIES = {
         'quality_status',
         'quality_description',
     ),
-    activity.EnsembleMember: (
-        'errata',
-        'variant_id',
-        'simulation',
-        'ran_on',
-        'had_performance',
-    ),
-    designing.NumericalRequirement: (
-        'canonical_name',
-        'conformance_is_requested',
+    science.ScientificDomain: (
+        'meta',
+        'overview',
+        'simulates',
+        'differing_key_properties',
         'references',
-        'meta',
-        'rationale',
-        'description',
-        'duration',
-        'responsible_parties',
-        'long_name',
-        'keywords',
-        'additional_requirements',
+        'realm',
         'name',
-    ),
-    platform.Machine: (
-        'online_documentation',
-        'name',
-        'when_used',
-        'vendor',
-        'institution',
-        'model_number',
-        'description',
-        'compute_pools',
-        'storage_pools',
-        'meta',
-        'partition',
+        'id',
     ),
     designing.SimulationPlan: (
         'canonical_name',
         'expected_performance_sypd',
-        'references',
         'long_name',
-        'meta',
         'rationale',
+        'meta',
+        'references',
         'expected_platform',
         'duration',
-        'responsible_parties',
         'will_support_experiments',
         'description',
-        'keywords',
         'name',
+        'keywords',
+        'responsible_parties',
         'expected_model',
     ),
     science.ConservationProperties: (
@@ -251,70 +224,66 @@ CLASS_PROPERTIES = {
         'flux_correction_was_used',
         'corrected_conserved_prognostic_variables',
     ),
+    activity.EnsembleMember: (
+        'errata',
+        'had_performance',
+        'ran_on',
+        'variant_id',
+        'simulation',
+    ),
     software.Variable: (
         'description',
         'name',
         'prognostic',
     ),
     science.SubProcess: (
-        'name',
-        'properties',
         'context',
         'id',
+        'properties',
+        'name',
         'implementation_overview',
         'references',
-    ),
-    designing.MultiEnsemble: (
-        'canonical_name',
-        'conformance_is_requested',
-        'keywords',
-        'references',
-        'meta',
-        'additional_requirements',
-        'description',
-        'duration',
-        'responsible_parties',
-        'name',
-        'rationale',
-        'ensemble_axis',
-        'long_name',
     ),
     shared.Reference: (
         'context',
         'document',
     ),
-    science.Detail: (
-        'detail_selection',
-        'from_vocab',
-        'with_cardinality',
-        'select',
-        'context',
+    software.SoftwareComponent: (
+        'repository',
+        'coupling_framework',
+        'documentation',
         'name',
-        'content',
-        'id',
+        'license',
+        'version',
+        'description',
+        'dependencies',
+        'connection_points',
+        'sub_components',
+        'grid',
+        'development_history',
+        'release_date',
+        'language',
+        'long_name',
+        'composition',
     ),
-    data.VariableCollection: (
-        'collection_name',
-        'variables',
+    science.Process: (
+        'references',
+        'id',
+        'context',
+        'implementation_overview',
+        'name',
+        'properties',
+        'sub_processes',
+        'algorithms',
+        'keywords',
+    ),
+    shared.IrregularDateset: (
+        'date_set',
+        'length',
     ),
     shared.TimesliceList: (
         'members',
         'units',
-    ),
-    designing.Project: (
-        'duration',
-        'canonical_name',
-        'references',
-        'previous_projects',
-        'rationale',
-        'description',
-        'requires_experiments',
-        'responsible_parties',
-        'long_name',
-        'meta',
-        'keywords',
-        'name',
-        'sub_projects',
     ),
     drs.DrsTemporalIdentifier: (
         'start',
@@ -324,12 +293,74 @@ CLASS_PROPERTIES = {
     drs.DrsPublicationDataset: (
         'institute',
         'product',
-        'model',
-        'frequency',
-        'experiment',
-        'activity',
-        'realm',
         'version_number',
+        'activity',
+        'experiment',
+        'frequency',
+        'model',
+        'realm',
+    ),
+    software.Gridspec: (
+        'description',
+    ),
+    platform.StoragePool: (
+        'vendor',
+        'name',
+        'description',
+        'type',
+        'volume_available',
+    ),
+    software.ComponentBase: (
+        'repository',
+        'name',
+        'development_history',
+        'long_name',
+        'description',
+        'version',
+        'release_date',
+        'documentation',
+    ),
+    science.Detail: (
+        'context',
+        'name',
+        'detail_selection',
+        'from_vocab',
+        'with_cardinality',
+        'select',
+        'content',
+        'id',
+    ),
+    platform.Machine: (
+        'online_documentation',
+        'description',
+        'institution',
+        'when_used',
+        'compute_pools',
+        'vendor',
+        'storage_pools',
+        'name',
+        'partition',
+        'meta',
+        'model_number',
+    ),
+    data.VariableCollection: (
+        'collection_name',
+        'variables',
+    ),
+    designing.Project: (
+        'canonical_name',
+        'name',
+        'long_name',
+        'duration',
+        'previous_projects',
+        'references',
+        'requires_experiments',
+        'rationale',
+        'meta',
+        'description',
+        'keywords',
+        'responsible_parties',
+        'sub_projects',
     ),
     data.Downscaling: (
         'canonical_name',
@@ -351,156 +382,61 @@ CLASS_PROPERTIES = {
         'primary_ensemble',
         'part_of_project',
     ),
-    science.ScientificDomain: (
-        'meta',
-        'differing_key_properties',
+    science.Resolution: (
+        'typical_x_degrees',
         'name',
-        'realm',
-        'overview',
-        'simulates',
-        'id',
-        'references',
-    ),
-    shared.IrregularDateset: (
-        'date_set',
-        'length',
+        'number_of_xy_gridpoints',
+        'is_adaptive_grid',
+        'typical_y_degrees',
+        'number_of_levels',
+        'equivalent_resolution_km',
     ),
     designing.MultiTimeEnsemble: (
         'canonical_name',
         'conformance_is_requested',
-        'references',
+        'long_name',
+        'duration',
         'meta',
+        'references',
         'ensemble_members',
         'additional_requirements',
-        'keywords',
-        'duration',
-        'responsible_parties',
         'name',
+        'keywords',
         'description',
         'rationale',
+        'responsible_parties',
+    ),
+    science.ScienceContext: (
+        'id',
+        'name',
+        'context',
+    ),
+    designing.NumericalExperiment: (
+        'canonical_name',
+        'name',
         'long_name',
-    ),
-    shared.Party: (
-        'organisation',
-        'address',
-        'url',
-        'email',
-        'name',
-        'orcid_id',
+        'rationale',
+        'related_experiments',
+        'references',
+        'duration',
+        'requirements',
         'meta',
-    ),
-    platform.Performance: (
-        'io_load',
-        'sypd',
-        'platform',
-        'chsy',
-        'coupler_load',
-        'total_nodes_used',
-        'subcomponent_performance',
-        'memory_bloat',
-        'load_imbalance',
-        'name',
-        'meta',
-        'compiler',
-        'asypd',
-        'model',
-    ),
-    science.Tuning: (
-        'global_mean_metrics_used',
-        'trend_metrics_used',
-        'regional_metrics_used',
         'description',
+        'keywords',
+        'responsible_parties',
     ),
-    science.Resolution: (
-        'typical_x_degrees',
-        'name',
-        'equivalent_resolution_km',
-        'is_adaptive_grid',
-        'typical_y_degrees',
-        'number_of_xy_gridpoints',
-        'number_of_levels',
+    shared.Cimtext: (
+        'content',
+        'content_type',
+    ),
+    drs.DrsGeographicalIndicator: (
+        'bounding_box',
+        'spatial_domain',
+        'operator',
     ),
     software.Composition: (
         'couplings',
         'description',
-    ),
-    designing.DomainProperties: (
-        'required_resolution',
-        'references',
-        'conformance_is_requested',
-        'keywords',
-        'canonical_name',
-        'meta',
-        'additional_requirements',
-        'description',
-        'duration',
-        'responsible_parties',
-        'name',
-        'rationale',
-        'required_extent',
-        'long_name',
-    ),
-    software.SoftwareComponent: (
-        'repository',
-        'coupling_framework',
-        'name',
-        'license',
-        'dependencies',
-        'connection_points',
-        'version',
-        'sub_components',
-        'grid',
-        'long_name',
-        'development_history',
-        'release_date',
-        'description',
-        'language',
-        'documentation',
-        'composition',
-    ),
-    designing.NumericalExperiment: (
-        'canonical_name',
-        'references',
-        'long_name',
-        'related_experiments',
-        'rationale',
-        'description',
-        'duration',
-        'responsible_parties',
-        'requirements',
-        'meta',
-        'keywords',
-        'name',
-    ),
-    software.DevelopmentPath: (
-        'consortium_name',
-        'creators',
-        'developed_in_house',
-        'funding_sources',
-        'previous_version',
-    ),
-    designing.OutputTemporalRequirement: (
-        'duration',
-        'sliced_subset',
-        'references',
-        'conformance_is_requested',
-        'keywords',
-        'canonical_name',
-        'throughout',
-        'additional_requirements',
-        'description',
-        'rationale',
-        'responsible_parties',
-        'name',
-        'meta',
-        'continuous_subset',
-        'long_name',
-    ),
-    shared.OnlineResource: (
-        'description',
-        'name',
-        'protocol',
-        'linkage',
     ),
     platform.StorageVolume: (
         'units',
@@ -511,49 +447,85 @@ CLASS_PROPERTIES = {
         'when',
         'party',
     ),
+    shared.DocReference: (
+        'relationship',
+        'id',
+        'description',
+        'protocol',
+        'type',
+        'version',
+        'context',
+        'constraint_vocabulary',
+        'name',
+        'linkage',
+    ),
     shared.Pid: (
         'id',
         'resolution_service',
     ),
-    platform.StoragePool: (
-        'vendor',
+    shared.Calendar: (
+        'month_lengths',
         'description',
-        'type',
+        'standard_name',
         'name',
-        'volume_available',
+    ),
+    designing.DomainProperties: (
+        'required_resolution',
+        'description',
+        'conformance_is_requested',
+        'canonical_name',
+        'meta',
+        'long_name',
+        'references',
+        'additional_requirements',
+        'name',
+        'duration',
+        'rationale',
+        'keywords',
+        'required_extent',
+        'responsible_parties',
     ),
     activity.UberEnsemble: (
         'canonical_name',
-        'references',
-        'common_conformances',
+        'has_ensemble_axes',
         'meta',
+        'common_conformances',
         'child_ensembles',
         'duration',
-        'responsible_parties',
         'documentation',
         'supported',
         'keywords',
-        'has_ensemble_axes',
+        'responsible_parties',
         'long_name',
         'part_of',
         'members',
+        'references',
         'name',
         'description',
         'rationale',
     ),
-    shared.Calendar: (
-        'description',
-        'month_lengths',
-        'name',
-        'standard_name',
+    drs.DrsAtomicDataset: (
+        'ensemble_member',
+        'temporal_constraint',
+        'product',
+        'institute',
+        'version_number',
+        'activity',
+        'geographical_constraint',
+        'variable_name',
+        'realm',
+        'model',
+        'frequency',
+        'mip_table',
+        'experiment',
     ),
     platform.ComputePool: (
         'compute_cores_per_node',
         'memory_per_node',
-        'description',
+        'accelerator_type',
         'cpu_type',
         'model_number',
-        'accelerator_type',
+        'description',
         'name',
         'interconnect',
         'accelerators_per_node',
@@ -563,26 +535,40 @@ CLASS_PROPERTIES = {
     shared.DocMetaInfo: (
         'drs_keys',
         'author',
-        'version',
+        'external_ids',
         'drs_path',
         'source_key',
-        'external_ids',
+        'type',
         'update_date',
         'type_display_name',
         'source',
         'institute',
         'type_sort_key',
         'language',
-        'create_date',
+        'sort_key',
         'project',
         'id',
-        'sort_key',
-        'type',
+        'create_date',
+        'version',
     ),
     activity.ParentSimulation: (
         'branch_time_in_parent',
         'parent',
         'branch_time_in_child',
+    ),
+    designing.NumericalRequirement: (
+        'canonical_name',
+        'name',
+        'conformance_is_requested',
+        'long_name',
+        'rationale',
+        'meta',
+        'references',
+        'duration',
+        'keywords',
+        'description',
+        'additional_requirements',
+        'responsible_parties',
     ),
     science.Grid: (
         'name',
@@ -594,33 +580,62 @@ CLASS_PROPERTIES = {
         'meta',
         'grid_extent',
     ),
-    activity.EnsembleAxis: (
-        'extra_detail',
-        'member',
-        'short_identifier',
-        'target_requirement',
+    science.Extent: (
+        'bottom_vertical_level',
+        'region_known_as',
+        'is_global',
+        'southern_boundary',
+        'eastern_boundary',
+        'top_vertical_level',
+        'northern_boundary',
+        'western_boundary',
+        'z_units',
     ),
-    science.ScienceContext: (
-        'id',
+    platform.Partition: (
+        'online_documentation',
+        'description',
+        'institution',
+        'when_used',
         'name',
-        'context',
+        'vendor',
+        'storage_pools',
+        'partition',
+        'compute_pools',
+        'model_number',
     ),
-    software.Gridspec: (
+    science.Tuning: (
+        'global_mean_metrics_used',
+        'trend_metrics_used',
+        'regional_metrics_used',
         'description',
     ),
     shared.TimePeriod: (
         'calendar',
-        'length',
         'units',
         'date',
+        'length',
         'date_type',
     ),
-    platform.ComponentPerformance: (
-        'nodes_used',
-        'cores_used',
-        'speed',
-        'component_name',
-        'component',
+    designing.MultiEnsemble: (
+        'canonical_name',
+        'description',
+        'conformance_is_requested',
+        'long_name',
+        'duration',
+        'meta',
+        'references',
+        'additional_requirements',
+        'name',
+        'rationale',
+        'keywords',
+        'ensemble_axis',
+        'responsible_parties',
+    ),
+    shared.OnlineResource: (
+        'description',
+        'name',
+        'protocol',
+        'linkage',
     ),
     shared.RegularTimeset: (
         'increment',
@@ -640,47 +655,43 @@ CLASS_PROPERTIES = {
     activity.Conformance: (
         'canonical_name',
         'target_requirement',
-        'references',
-        'meta',
-        'rationale',
-        'duration',
-        'responsible_parties',
         'long_name',
+        'rationale',
+        'meta',
+        'references',
+        'duration',
         'description',
-        'keywords',
         'name',
-    ),
-    science.Extent: (
-        'bottom_vertical_level',
-        'region_known_as',
-        'northern_boundary',
-        'southern_boundary',
-        'eastern_boundary',
-        'top_vertical_level',
-        'is_global',
-        'western_boundary',
-        'z_units',
+        'keywords',
+        'responsible_parties',
     ),
     designing.ForcingConstraint: (
         'canonical_name',
         'conformance_is_requested',
-        'references',
+        'long_name',
         'code',
         'additional_requirements',
-        'description',
         'data_link',
-        'responsible_parties',
         'keywords',
+        'description',
         'forcing_type',
-        'long_name',
+        'responsible_parties',
         'group',
         'duration',
         'origin',
+        'references',
         'name',
         'additional_constraint',
         'meta',
         'rationale',
         'category',
+    ),
+    platform.ComponentPerformance: (
+        'nodes_used',
+        'cores_used',
+        'speed',
+        'component_name',
+        'component',
     ),
     shared.ExternalDocument: (
         'doi',
@@ -695,94 +706,41 @@ CLASS_PROPERTIES = {
     designing.TemporalConstraint: (
         'canonical_name',
         'conformance_is_requested',
-        'references',
+        'long_name',
         'description',
         'additional_requirements',
         'required_calendar',
-        'responsible_parties',
         'keywords',
         'required_duration',
-        'long_name',
+        'responsible_parties',
         'start_date',
         'duration',
         'start_flexibility',
+        'references',
         'name',
         'meta',
         'rationale',
     ),
     designing.EnsembleRequirement: (
         'ensemble_type',
-        'references',
-        'conformance_is_requested',
         'keywords',
+        'conformance_is_requested',
         'canonical_name',
-        'name',
-        'minimum_size',
-        'additional_requirements',
-        'description',
         'duration',
-        'responsible_parties',
+        'minimum_size',
+        'references',
+        'additional_requirements',
+        'name',
         'ensemble_member',
         'meta',
-        'rationale',
         'long_name',
+        'rationale',
+        'responsible_parties',
+        'description',
     ),
     shared.DateTime: (
         'offset',
         'value',
-    ),
-    software.ComponentBase: (
-        'repository',
-        'name',
-        'development_history',
-        'long_name',
-        'description',
-        'version',
-        'release_date',
-        'documentation',
-    ),
-    shared.DocReference: (
-        'id',
-        'description',
-        'protocol',
-        'type',
-        'relationship',
-        'version',
-        'constraint_vocabulary',
-        'context',
-        'name',
-        'linkage',
-    ),
-    platform.Partition: (
-        'online_documentation',
-        'institution',
-        'compute_pools',
-        'when_used',
-        'vendor',
-        'partition',
-        'model_number',
-        'description',
-        'storage_pools',
-        'name',
-    ),
-    activity.Activity: (
-        'canonical_name',
-        'keywords',
-        'references',
-        'meta',
-        'description',
-        'duration',
-        'name',
-        'responsible_parties',
-        'rationale',
-        'long_name',
-    ),
-    shared.KeyFloat: (
-        'key',
-        'value',
-    ),
-    shared.DatetimeSet: (
-        'length',
     ),
     science.Algorithm: (
         'implementation_overview',
@@ -794,42 +752,78 @@ CLASS_PROPERTIES = {
         'forced_variables',
         'context',
     ),
-    software.EntryPoint: (
-        'name',
+    software.DevelopmentPath: (
+        'consortium_name',
+        'developed_in_house',
+        'creators',
+        'previous_version',
+        'funding_sources',
     ),
-    science.Process: (
-        'references',
-        'name',
-        'context',
-        'implementation_overview',
-        'properties',
-        'sub_processes',
-        'id',
-        'algorithms',
-        'keywords',
+    shared.KeyFloat: (
+        'key',
+        'value',
     ),
     science.Model: (
-        'repository',
         'coupler',
-        'coupled_components',
-        'release_date',
-        'development_history',
-        'simulates',
-        'id',
-        'name',
-        'internal_software_components',
-        'long_name',
-        'version',
+        'repository',
         'model_default_properties',
-        'description',
-        'meta',
         'documentation',
+        'long_name',
+        'development_history',
+        'version',
+        'id',
+        'simulates',
+        'name',
         'category',
+        'description',
+        'release_date',
+        'coupled_components',
+        'meta',
+        'internal_software_components',
+    ),
+    shared.DatetimeSet: (
+        'length',
+    ),
+    software.EntryPoint: (
+        'name',
     ),
     drs.DrsEnsembleIdentifier: (
         'perturbation_number',
         'realisation_number',
         'initialisation_method_number',
+    ),
+    platform.Performance: (
+        'io_load',
+        'compiler',
+        'memory_bloat',
+        'model',
+        'chsy',
+        'total_nodes_used',
+        'platform',
+        'coupler_load',
+        'load_imbalance',
+        'subcomponent_performance',
+        'name',
+        'meta',
+        'asypd',
+        'sypd',
+    ),
+    designing.OutputTemporalRequirement: (
+        'sliced_subset',
+        'keywords',
+        'conformance_is_requested',
+        'canonical_name',
+        'meta',
+        'throughout',
+        'references',
+        'additional_requirements',
+        'name',
+        'duration',
+        'rationale',
+        'long_name',
+        'continuous_subset',
+        'responsible_parties',
+        'description',
     ),
     data.Simulation: (
         'canonical_name',
@@ -850,33 +844,36 @@ CLASS_PROPERTIES = {
         'rationale',
         'primary_ensemble',
     ),
-    shared.Cimtext: (
-        'content',
-        'content_type',
+    activity.Activity: (
+        'canonical_name',
+        'keywords',
+        'long_name',
+        'meta',
+        'references',
+        'duration',
+        'description',
+        'name',
+        'rationale',
+        'responsible_parties',
     ),
-    science.KeyProperties: (
-        'extra_conservation_properties',
-        'resolution',
-        'additional_detail',
-        'tuning_applied',
-        'grid',
-        'time_step',
+    activity.EnsembleAxis: (
+        'extra_detail',
+        'member',
+        'short_identifier',
+        'target_requirement',
     ),
 }
 
 # Supported class own properties.
 CLASS_OWN_PROPERTIES = { 
-    drs.DrsGeographicalIndicator: (
-        'bounding_box',
-        'spatial_domain',
-        'operator',
-    ),
-    drs.DrsAtomicDataset: (
-        'ensemble_member',
-        'temporal_constraint',
-        'geographical_constraint',
-        'variable_name',
-        'mip_table',
+    shared.Party: (
+        'meta',
+        'name',
+        'email',
+        'url',
+        'orcid_id',
+        'organisation',
+        'address',
     ),
     activity.Ensemble: (
         'has_ensemble_axes',
@@ -885,6 +882,14 @@ CLASS_OWN_PROPERTIES = {
         'documentation',
         'members',
         'supported',
+    ),
+    science.KeyProperties: (
+        'extra_conservation_properties',
+        'tuning_applied',
+        'grid',
+        'resolution',
+        'additional_detail',
+        'time_step',
     ),
     data.Dataset: (
         'meta',
@@ -903,19 +908,15 @@ CLASS_OWN_PROPERTIES = {
         'date',
         'metadata_reviewer',
     ),
-    activity.EnsembleMember: (
-        'errata',
-        'simulation',
-        'had_performance',
-        'variant_id',
-        'ran_on',
-    ),
-    designing.NumericalRequirement: (
-        'additional_requirements',
-        'conformance_is_requested',
-    ),
-    platform.Machine: (
+    science.ScientificDomain: (
         'meta',
+        'simulates',
+        'differing_key_properties',
+        'name',
+        'overview',
+        'references',
+        'id',
+        'realm',
     ),
     designing.SimulationPlan: (
         'expected_platform',
@@ -928,6 +929,13 @@ CLASS_OWN_PROPERTIES = {
         'corrected_conserved_prognostic_variables',
         'correction_methodology',
     ),
+    activity.EnsembleMember: (
+        'variant_id',
+        'errata',
+        'simulation',
+        'had_performance',
+        'ran_on',
+    ),
     software.Variable: (
         'description',
         'prognostic',
@@ -938,114 +946,9 @@ CLASS_OWN_PROPERTIES = {
         'implementation_overview',
         'properties',
     ),
-    designing.MultiEnsemble: (
-        'ensemble_axis',
-    ),
     shared.Reference: (
         'context',
         'document',
-    ),
-    science.Detail: (
-        'from_vocab',
-        'select',
-        'content',
-        'with_cardinality',
-        'detail_selection',
-    ),
-    data.VariableCollection: (
-        'collection_name',
-        'variables',
-    ),
-    shared.TimesliceList: (
-        'members',
-        'units',
-    ),
-    designing.Project: (
-        'previous_projects',
-        'sub_projects',
-        'requires_experiments',
-    ),
-    drs.DrsTemporalIdentifier: (
-        'suffix',
-        'end',
-        'start',
-    ),
-    drs.DrsPublicationDataset: (
-        'institute',
-        'experiment',
-        'model',
-        'realm',
-        'product',
-        'activity',
-        'frequency',
-        'version_number',
-    ),
-    data.Downscaling: (
-        'downscaled_from',
-    ),
-    science.ScientificDomain: (
-        'meta',
-        'overview',
-        'name',
-        'simulates',
-        'differing_key_properties',
-        'id',
-        'realm',
-        'references',
-    ),
-    shared.IrregularDateset: (
-        'date_set',
-    ),
-    designing.MultiTimeEnsemble: (
-        'ensemble_members',
-    ),
-    shared.Party: (
-        'url',
-        'meta',
-        'name',
-        'email',
-        'orcid_id',
-        'organisation',
-        'address',
-    ),
-    platform.Performance: (
-        'io_load',
-        'sypd',
-        'memory_bloat',
-        'platform',
-        'chsy',
-        'meta',
-        'name',
-        'total_nodes_used',
-        'compiler',
-        'load_imbalance',
-        'subcomponent_performance',
-        'coupler_load',
-        'asypd',
-        'model',
-    ),
-    science.Tuning: (
-        'trend_metrics_used',
-        'description',
-        'regional_metrics_used',
-        'global_mean_metrics_used',
-    ),
-    science.Resolution: (
-        'typical_x_degrees',
-        'typical_y_degrees',
-        'is_adaptive_grid',
-        'name',
-        'number_of_levels',
-        'number_of_xy_gridpoints',
-        'equivalent_resolution_km',
-    ),
-    software.Composition: (
-        'couplings',
-        'description',
-    ),
-    designing.DomainProperties: (
-        'required_extent',
-        'required_resolution',
     ),
     software.SoftwareComponent: (
         'coupling_framework',
@@ -1057,27 +960,111 @@ CLASS_OWN_PROPERTIES = {
         'language',
         'composition',
     ),
+    science.Process: (
+        'properties',
+        'algorithms',
+        'references',
+        'implementation_overview',
+        'sub_processes',
+        'keywords',
+    ),
+    shared.IrregularDateset: (
+        'date_set',
+    ),
+    shared.TimesliceList: (
+        'members',
+        'units',
+    ),
+    drs.DrsTemporalIdentifier: (
+        'suffix',
+        'end',
+        'start',
+    ),
+    drs.DrsPublicationDataset: (
+        'institute',
+        'experiment',
+        'version_number',
+        'activity',
+        'product',
+        'realm',
+        'model',
+        'frequency',
+    ),
+    software.Gridspec: (
+        'description',
+    ),
+    platform.StoragePool: (
+        'type',
+        'volume_available',
+        'vendor',
+        'description',
+        'name',
+    ),
+    software.ComponentBase: (
+        'repository',
+        'long_name',
+        'development_history',
+        'name',
+        'description',
+        'version',
+        'release_date',
+        'documentation',
+    ),
+    science.Detail: (
+        'select',
+        'from_vocab',
+        'with_cardinality',
+        'content',
+        'detail_selection',
+    ),
+    platform.Machine: (
+        'meta',
+    ),
+    data.VariableCollection: (
+        'collection_name',
+        'variables',
+    ),
+    designing.Project: (
+        'previous_projects',
+        'sub_projects',
+        'requires_experiments',
+    ),
+    data.Downscaling: (
+        'downscaled_from',
+    ),
+    science.Resolution: (
+        'typical_x_degrees',
+        'typical_y_degrees',
+        'is_adaptive_grid',
+        'name',
+        'number_of_levels',
+        'number_of_xy_gridpoints',
+        'equivalent_resolution_km',
+    ),
+    designing.MultiTimeEnsemble: (
+        'ensemble_members',
+    ),
+    science.ScienceContext: (
+        'name',
+        'context',
+        'id',
+    ),
     designing.NumericalExperiment: (
         'related_experiments',
         'requirements',
     ),
-    software.DevelopmentPath: (
-        'consortium_name',
-        'previous_version',
-        'funding_sources',
-        'developed_in_house',
-        'creators',
+    shared.Cimtext: (
+        'content',
+        'content_type',
     ),
-    designing.OutputTemporalRequirement: (
-        'continuous_subset',
-        'throughout',
-        'sliced_subset',
+    drs.DrsGeographicalIndicator: (
+        'bounding_box',
+        'spatial_domain',
+        'operator',
     ),
-    shared.OnlineResource: (
+    software.Composition: (
+        'couplings',
         'description',
-        'protocol',
-        'linkage',
-        'name',
     ),
     platform.StorageVolume: (
         'units',
@@ -1088,33 +1075,45 @@ CLASS_OWN_PROPERTIES = {
         'party',
         'role',
     ),
+    shared.DocReference: (
+        'id',
+        'type',
+        'relationship',
+        'constraint_vocabulary',
+        'context',
+        'version',
+    ),
     shared.Pid: (
         'id',
         'resolution_service',
     ),
-    platform.StoragePool: (
-        'type',
-        'volume_available',
-        'vendor',
-        'description',
+    shared.Calendar: (
+        'standard_name',
         'name',
+        'description',
+        'month_lengths',
+    ),
+    designing.DomainProperties: (
+        'required_extent',
+        'required_resolution',
     ),
     activity.UberEnsemble: (
         'child_ensembles',
     ),
-    shared.Calendar: (
-        'name',
-        'standard_name',
-        'description',
-        'month_lengths',
+    drs.DrsAtomicDataset: (
+        'ensemble_member',
+        'temporal_constraint',
+        'geographical_constraint',
+        'variable_name',
+        'mip_table',
     ),
     platform.ComputePool: (
         'compute_cores_per_node',
         'memory_per_node',
-        'accelerator_type',
+        'description',
         'cpu_type',
         'model_number',
-        'description',
+        'accelerator_type',
         'name',
         'accelerators_per_node',
         'interconnect',
@@ -1122,21 +1121,21 @@ CLASS_OWN_PROPERTIES = {
         'operating_system',
     ),
     shared.DocMetaInfo: (
-        'sort_key',
+        'project',
         'drs_keys',
-        'type_display_name',
+        'type',
         'institute',
         'source',
         'type_sort_key',
+        'version',
         'drs_path',
         'create_date',
-        'project',
+        'sort_key',
         'external_ids',
-        'type',
+        'type_display_name',
         'language',
         'source_key',
         'update_date',
-        'version',
         'id',
         'author',
     ),
@@ -1144,6 +1143,10 @@ CLASS_OWN_PROPERTIES = {
         'parent',
         'branch_time_in_child',
         'branch_time_in_parent',
+    ),
+    designing.NumericalRequirement: (
+        'additional_requirements',
+        'conformance_is_requested',
     ),
     science.Grid: (
         'name',
@@ -1155,33 +1158,50 @@ CLASS_OWN_PROPERTIES = {
         'meta',
         'grid_extent',
     ),
-    activity.EnsembleAxis: (
-        'extra_detail',
-        'target_requirement',
-        'short_identifier',
-        'member',
+    science.Extent: (
+        'bottom_vertical_level',
+        'top_vertical_level',
+        'z_units',
+        'southern_boundary',
+        'eastern_boundary',
+        'is_global',
+        'western_boundary',
+        'northern_boundary',
+        'region_known_as',
     ),
-    science.ScienceContext: (
-        'name',
-        'context',
-        'id',
-    ),
-    software.Gridspec: (
+    platform.Partition: (
+        'storage_pools',
+        'online_documentation',
         'description',
+        'institution',
+        'when_used',
+        'partition',
+        'model_number',
+        'compute_pools',
+        'vendor',
+        'name',
+    ),
+    science.Tuning: (
+        'trend_metrics_used',
+        'description',
+        'regional_metrics_used',
+        'global_mean_metrics_used',
     ),
     shared.TimePeriod: (
-        'units',
-        'date_type',
-        'calendar',
         'length',
+        'date_type',
+        'units',
+        'calendar',
         'date',
     ),
-    platform.ComponentPerformance: (
-        'cores_used',
-        'component',
-        'nodes_used',
-        'speed',
-        'component_name',
+    designing.MultiEnsemble: (
+        'ensemble_axis',
+    ),
+    shared.OnlineResource: (
+        'description',
+        'protocol',
+        'linkage',
+        'name',
     ),
     shared.RegularTimeset: (
         'increment',
@@ -1200,17 +1220,6 @@ CLASS_OWN_PROPERTIES = {
     activity.Conformance: (
         'target_requirement',
     ),
-    science.Extent: (
-        'bottom_vertical_level',
-        'top_vertical_level',
-        'z_units',
-        'southern_boundary',
-        'eastern_boundary',
-        'is_global',
-        'western_boundary',
-        'northern_boundary',
-        'region_known_as',
-    ),
     designing.ForcingConstraint: (
         'group',
         'code',
@@ -1219,6 +1228,13 @@ CLASS_OWN_PROPERTIES = {
         'origin',
         'forcing_type',
         'category',
+    ),
+    platform.ComponentPerformance: (
+        'cores_used',
+        'component',
+        'nodes_used',
+        'speed',
+        'component_name',
     ),
     shared.ExternalDocument: (
         'doi',
@@ -1245,55 +1261,6 @@ CLASS_OWN_PROPERTIES = {
         'offset',
         'value',
     ),
-    software.ComponentBase: (
-        'repository',
-        'long_name',
-        'development_history',
-        'name',
-        'description',
-        'version',
-        'release_date',
-        'documentation',
-    ),
-    shared.DocReference: (
-        'id',
-        'type',
-        'relationship',
-        'constraint_vocabulary',
-        'context',
-        'version',
-    ),
-    platform.Partition: (
-        'online_documentation',
-        'when_used',
-        'description',
-        'partition',
-        'institution',
-        'model_number',
-        'name',
-        'storage_pools',
-        'compute_pools',
-        'vendor',
-    ),
-    activity.Activity: (
-        'canonical_name',
-        'references',
-        'long_name',
-        'meta',
-        'rationale',
-        'duration',
-        'responsible_parties',
-        'description',
-        'keywords',
-        'name',
-    ),
-    shared.KeyFloat: (
-        'key',
-        'value',
-    ),
-    shared.DatetimeSet: (
-        'length',
-    ),
     science.Algorithm: (
         'implementation_overview',
         'diagnostic_variables',
@@ -1301,31 +1268,58 @@ CLASS_OWN_PROPERTIES = {
         'references',
         'forced_variables',
     ),
-    software.EntryPoint: (
-        'name',
+    software.DevelopmentPath: (
+        'consortium_name',
+        'funding_sources',
+        'previous_version',
+        'developed_in_house',
+        'creators',
     ),
-    science.Process: (
-        'properties',
-        'algorithms',
-        'references',
-        'implementation_overview',
-        'sub_processes',
-        'keywords',
+    shared.KeyFloat: (
+        'key',
+        'value',
     ),
     science.Model: (
+        'model_default_properties',
         'coupler',
-        'simulates',
         'id',
         'coupled_components',
+        'simulates',
         'internal_software_components',
-        'model_default_properties',
         'meta',
         'category',
+    ),
+    shared.DatetimeSet: (
+        'length',
+    ),
+    software.EntryPoint: (
+        'name',
     ),
     drs.DrsEnsembleIdentifier: (
         'realisation_number',
         'initialisation_method_number',
         'perturbation_number',
+    ),
+    platform.Performance: (
+        'io_load',
+        'platform',
+        'model',
+        'memory_bloat',
+        'chsy',
+        'total_nodes_used',
+        'compiler',
+        'meta',
+        'name',
+        'load_imbalance',
+        'subcomponent_performance',
+        'coupler_load',
+        'asypd',
+        'sypd',
+    ),
+    designing.OutputTemporalRequirement: (
+        'continuous_subset',
+        'throughout',
+        'sliced_subset',
     ),
     data.Simulation: (
         'ran_for_experiments',
@@ -1336,17 +1330,23 @@ CLASS_OWN_PROPERTIES = {
         'primary_ensemble',
         'ensemble_identifier',
     ),
-    shared.Cimtext: (
-        'content',
-        'content_type',
+    activity.Activity: (
+        'canonical_name',
+        'long_name',
+        'rationale',
+        'meta',
+        'references',
+        'duration',
+        'description',
+        'name',
+        'keywords',
+        'responsible_parties',
     ),
-    science.KeyProperties: (
-        'extra_conservation_properties',
-        'tuning_applied',
-        'grid',
-        'resolution',
-        'additional_detail',
-        'time_step',
+    activity.EnsembleAxis: (
+        'extra_detail',
+        'target_requirement',
+        'short_identifier',
+        'member',
     ),
 }
 
@@ -1365,24 +1365,24 @@ ENUMS = (
     drs.DrsTimeSuffixes,
     shared.NilReason,
     shared.PeriodDateTypes,
+    platform.StorageSystems,
     designing.EnsembleTypes,
+    shared.QualityStatus,
     drs.DrsGeographicalOperators,
-    shared.TimeUnits,
     science.ModelTypes,
     activity.EnsembleTypes,
-    shared.QualityStatus,
     activity.ForcingTypes,
-    software.CouplingFramework,
+    shared.TimeUnits,
     science.SelectionCardinality,
-    platform.VolumeUnits,
+    drs.DrsFrequencyTypes,
     shared.RoleCode,
     shared.CalendarTypes,
     shared.TextCode,
-    data.DataAssociationTypes,
+    software.CouplingFramework,
     designing.ExperimentalRelationships,
-    drs.DrsFrequencyTypes,
     shared.DocumentTypes,
-    platform.StorageSystems,
+    data.DataAssociationTypes,
+    platform.VolumeUnits,
     shared.SlicetimeUnits,
 )
 
@@ -1427,32 +1427,32 @@ DOCUMENT_TYPES = (
 
 # Base classes.
 BASE_CLASSES = defaultdict(tuple)
-BASE_CLASSES[drs.DrsAtomicDataset] = (drs.DrsPublicationDataset, )
 BASE_CLASSES[activity.Ensemble] = (activity.Activity, )
-BASE_CLASSES[designing.NumericalRequirement] = (activity.Activity, )
-BASE_CLASSES[platform.Machine] = (platform.Partition, )
 BASE_CLASSES[designing.SimulationPlan] = (activity.Activity, )
 BASE_CLASSES[science.SubProcess] = (science.ScienceContext, )
-BASE_CLASSES[designing.MultiEnsemble] = (designing.NumericalRequirement, activity.Activity, )
+BASE_CLASSES[software.SoftwareComponent] = (software.ComponentBase, )
+BASE_CLASSES[science.Process] = (science.ScienceContext, )
+BASE_CLASSES[shared.IrregularDateset] = (shared.DatetimeSet, )
 BASE_CLASSES[science.Detail] = (science.ScienceContext, )
+BASE_CLASSES[platform.Machine] = (platform.Partition, )
 BASE_CLASSES[designing.Project] = (activity.Activity, )
 BASE_CLASSES[data.Downscaling] = (data.Simulation, activity.Activity, )
-BASE_CLASSES[shared.IrregularDateset] = (shared.DatetimeSet, )
 BASE_CLASSES[designing.MultiTimeEnsemble] = (designing.NumericalRequirement, activity.Activity, )
-BASE_CLASSES[designing.DomainProperties] = (designing.NumericalRequirement, activity.Activity, )
-BASE_CLASSES[software.SoftwareComponent] = (software.ComponentBase, )
 BASE_CLASSES[designing.NumericalExperiment] = (activity.Activity, )
-BASE_CLASSES[designing.OutputTemporalRequirement] = (designing.NumericalRequirement, activity.Activity, )
+BASE_CLASSES[shared.DocReference] = (shared.OnlineResource, )
+BASE_CLASSES[designing.DomainProperties] = (designing.NumericalRequirement, activity.Activity, )
 BASE_CLASSES[activity.UberEnsemble] = (activity.Ensemble, activity.Activity, )
+BASE_CLASSES[drs.DrsAtomicDataset] = (drs.DrsPublicationDataset, )
+BASE_CLASSES[designing.NumericalRequirement] = (activity.Activity, )
+BASE_CLASSES[designing.MultiEnsemble] = (designing.NumericalRequirement, activity.Activity, )
 BASE_CLASSES[shared.RegularTimeset] = (shared.DatetimeSet, )
 BASE_CLASSES[activity.Conformance] = (activity.Activity, )
 BASE_CLASSES[designing.ForcingConstraint] = (designing.NumericalRequirement, activity.Activity, )
 BASE_CLASSES[designing.TemporalConstraint] = (designing.NumericalRequirement, activity.Activity, )
 BASE_CLASSES[designing.EnsembleRequirement] = (designing.NumericalRequirement, activity.Activity, )
-BASE_CLASSES[shared.DocReference] = (shared.OnlineResource, )
 BASE_CLASSES[science.Algorithm] = (science.ScienceContext, )
-BASE_CLASSES[science.Process] = (science.ScienceContext, )
 BASE_CLASSES[science.Model] = (software.ComponentBase, )
+BASE_CLASSES[designing.OutputTemporalRequirement] = (designing.NumericalRequirement, activity.Activity, )
 BASE_CLASSES[data.Simulation] = (activity.Activity, )
 
 # Classes with base classes.
@@ -1460,40 +1460,12 @@ BASE_CLASSED = tuple(BASE_CLASSES.keys())
 
 # Sub classes.
 SUB_CLASSES = defaultdict(tuple)
-SUB_CLASSES[designing.NumericalRequirement] = (
-    designing.MultiTimeEnsemble,
-    designing.ForcingConstraint,
-    designing.DomainProperties,
-    designing.TemporalConstraint,
-    designing.EnsembleRequirement,
-    designing.OutputTemporalRequirement,
-    designing.MultiEnsemble,
-    )
 SUB_CLASSES[activity.Ensemble] = (
     activity.UberEnsemble,
     )
 SUB_CLASSES[shared.DatetimeSet] = (
     shared.RegularTimeset,
     shared.IrregularDateset,
-    )
-SUB_CLASSES[drs.DrsPublicationDataset] = (
-    drs.DrsAtomicDataset,
-    )
-SUB_CLASSES[shared.OnlineResource] = (
-    shared.DocReference,
-    )
-SUB_CLASSES[science.ScienceContext] = (
-    science.Detail,
-    science.Process,
-    science.Algorithm,
-    science.SubProcess,
-    )
-SUB_CLASSES[software.ComponentBase] = (
-    software.SoftwareComponent,
-    science.Model,
-    )
-SUB_CLASSES[data.Simulation] = (
-    data.Downscaling,
     )
 SUB_CLASSES[activity.Activity] = (
     activity.Ensemble,
@@ -1513,8 +1485,36 @@ SUB_CLASSES[activity.Activity] = (
     designing.OutputTemporalRequirement,
     designing.MultiEnsemble,
     )
+SUB_CLASSES[shared.OnlineResource] = (
+    shared.DocReference,
+    )
 SUB_CLASSES[platform.Partition] = (
     platform.Machine,
+    )
+SUB_CLASSES[software.ComponentBase] = (
+    software.SoftwareComponent,
+    science.Model,
+    )
+SUB_CLASSES[science.ScienceContext] = (
+    science.Detail,
+    science.Process,
+    science.Algorithm,
+    science.SubProcess,
+    )
+SUB_CLASSES[data.Simulation] = (
+    data.Downscaling,
+    )
+SUB_CLASSES[drs.DrsPublicationDataset] = (
+    drs.DrsAtomicDataset,
+    )
+SUB_CLASSES[designing.NumericalRequirement] = (
+    designing.MultiTimeEnsemble,
+    designing.ForcingConstraint,
+    designing.DomainProperties,
+    designing.TemporalConstraint,
+    designing.EnsembleRequirement,
+    designing.OutputTemporalRequirement,
+    designing.MultiEnsemble,
     )
 
 # Classes that have been sub classed.
@@ -1533,46 +1533,23 @@ CONSTRAINTS = {
     # Classes.
     # ------------------------------------------------
 
-    drs.DrsGeographicalIndicator: (
+    shared.Party: (
 
-        ('operator', 'type', unicode),
-        ('bounding_box', 'type', unicode),
-        ('spatial_domain', 'type', unicode),
+        ('name', 'type', unicode),
+        ('url', 'type', shared.OnlineResource),
+        ('organisation', 'type', bool),
+        ('meta', 'type', shared.DocMetaInfo),
+        ('address', 'type', unicode),
+        ('email', 'type', unicode),
+        ('orcid_id', 'type', unicode),
 
-        ('operator', 'cardinality', "0.1"),
-        ('bounding_box', 'cardinality', "0.1"),
-        ('spatial_domain', 'cardinality', "0.1"),
-
-    ),
-    drs.DrsAtomicDataset: (
-
-        ('product', 'type', unicode),
-        ('realm', 'type', unicode),
-        ('experiment', 'type', unicode),
-        ('institute', 'type', unicode),
-        ('geographical_constraint', 'type', drs.DrsGeographicalIndicator),
-        ('version_number', 'type', int),
-        ('mip_table', 'type', unicode),
-        ('variable_name', 'type', unicode),
-        ('frequency', 'type', unicode),
-        ('activity', 'type', unicode),
-        ('ensemble_member', 'type', drs.DrsEnsembleIdentifier),
-        ('model', 'type', unicode),
-        ('temporal_constraint', 'type', drs.DrsTemporalIdentifier),
-
-        ('version_number', 'cardinality', "1.1"),
-        ('realm', 'cardinality', "1.1"),
-        ('institute', 'cardinality', "1.1"),
-        ('geographical_constraint', 'cardinality', "0.1"),
-        ('product', 'cardinality', "1.1"),
-        ('mip_table', 'cardinality', "1.1"),
-        ('variable_name', 'cardinality', "1.1"),
-        ('experiment', 'cardinality', "1.1"),
-        ('frequency', 'cardinality', "1.1"),
-        ('activity', 'cardinality', "1.1"),
-        ('ensemble_member', 'cardinality', "1.1"),
-        ('model', 'cardinality', "1.1"),
-        ('temporal_constraint', 'cardinality', "0.1"),
+        ('name', 'cardinality', "0.1"),
+        ('url', 'cardinality', "0.1"),
+        ('organisation', 'cardinality', "0.1"),
+        ('meta', 'cardinality', "1.1"),
+        ('address', 'cardinality', "0.1"),
+        ('email', 'cardinality', "0.1"),
+        ('orcid_id', 'cardinality', "0.1"),
 
     ),
     activity.Ensemble: (
@@ -1612,6 +1589,23 @@ CONSTRAINTS = {
         ('name', 'cardinality', "1.1"),
 
     ),
+    science.KeyProperties: (
+
+        ('extra_conservation_properties', 'type', science.ConservationProperties),
+        ('additional_detail', 'type', science.Detail),
+        ('grid', 'type', science.Grid),
+        ('tuning_applied', 'type', science.Tuning),
+        ('time_step', 'type', float),
+        ('resolution', 'type', science.Resolution),
+
+        ('extra_conservation_properties', 'cardinality', "0.1"),
+        ('additional_detail', 'cardinality', "0.N"),
+        ('grid', 'cardinality', "1.1"),
+        ('tuning_applied', 'cardinality', "0.1"),
+        ('time_step', 'cardinality', "1.1"),
+        ('resolution', 'cardinality', "1.1"),
+
+    ),
     data.Dataset: (
 
         ('related_to_dataset', 'type', shared.OnlineResource),
@@ -1648,75 +1642,25 @@ CONSTRAINTS = {
         ('quality_description', 'cardinality', "1.1"),
 
     ),
-    activity.EnsembleMember: (
+    science.ScientificDomain: (
 
-        ('ran_on', 'type', platform.Machine),
-        ('simulation', 'type', data.Simulation),
-        ('errata', 'type', shared.OnlineResource),
-        ('had_performance', 'type', platform.Performance),
-        ('variant_id', 'type', unicode),
-
-        ('ran_on', 'cardinality', "0.1"),
-        ('simulation', 'cardinality', "1.1"),
-        ('errata', 'cardinality', "0.1"),
-        ('had_performance', 'cardinality', "0.1"),
-        ('variant_id', 'cardinality', "1.1"),
-
-    ),
-    designing.NumericalRequirement: (
-
-        ('description', 'type', unicode),
-        ('keywords', 'type', unicode),
-        ('additional_requirements', 'type', designing.NumericalRequirement),
-        ('responsible_parties', 'type', shared.Responsibility),
-        ('long_name', 'type', unicode),
-        ('canonical_name', 'type', unicode),
+        ('simulates', 'type', science.Process),
+        ('differing_key_properties', 'type', science.KeyProperties),
+        ('name', 'type', unicode),
+        ('overview', 'type', unicode),
         ('meta', 'type', shared.DocMetaInfo),
         ('references', 'type', shared.Reference),
-        ('rationale', 'type', unicode),
-        ('duration', 'type', shared.TimePeriod),
-        ('conformance_is_requested', 'type', bool),
-        ('name', 'type', unicode),
+        ('realm', 'type', unicode),
+        ('id', 'type', unicode),
 
-        ('description', 'cardinality', "0.1"),
-        ('keywords', 'cardinality', "0.N"),
-        ('additional_requirements', 'cardinality', "0.N"),
-        ('responsible_parties', 'cardinality', "0.N"),
-        ('long_name', 'cardinality', "0.1"),
-        ('canonical_name', 'cardinality', "0.1"),
+        ('simulates', 'cardinality', "1.N"),
+        ('differing_key_properties', 'cardinality', "0.1"),
+        ('name', 'cardinality', "1.1"),
+        ('overview', 'cardinality', "0.1"),
         ('meta', 'cardinality', "1.1"),
         ('references', 'cardinality', "0.N"),
-        ('rationale', 'cardinality', "0.1"),
-        ('duration', 'cardinality', "0.0"),
-        ('conformance_is_requested', 'cardinality', "1.1"),
-        ('name', 'cardinality', "1.1"),
-
-    ),
-    platform.Machine: (
-
-        ('vendor', 'type', shared.Party),
-        ('description', 'type', unicode),
-        ('partition', 'type', platform.Partition),
-        ('model_number', 'type', unicode),
-        ('online_documentation', 'type', shared.OnlineResource),
-        ('meta', 'type', shared.DocMetaInfo),
-        ('storage_pools', 'type', platform.StoragePool),
-        ('when_used', 'type', shared.TimePeriod),
-        ('institution', 'type', shared.Party),
-        ('compute_pools', 'type', platform.ComputePool),
-        ('name', 'type', unicode),
-
-        ('vendor', 'cardinality', "0.1"),
-        ('description', 'cardinality', "0.1"),
-        ('partition', 'cardinality', "0.N"),
-        ('model_number', 'cardinality', "0.1"),
-        ('online_documentation', 'cardinality', "0.N"),
-        ('meta', 'cardinality', "1.1"),
-        ('storage_pools', 'cardinality', "0.N"),
-        ('when_used', 'cardinality', "0.1"),
-        ('institution', 'cardinality', "1.1"),
-        ('compute_pools', 'cardinality', "1.N"),
-        ('name', 'cardinality', "1.1"),
+        ('realm', 'cardinality', "0.1"),
+        ('id', 'cardinality', "0.1"),
 
     ),
     designing.SimulationPlan: (
@@ -1763,6 +1707,21 @@ CONSTRAINTS = {
         ('correction_methodology', 'cardinality', "0.1"),
 
     ),
+    activity.EnsembleMember: (
+
+        ('variant_id', 'type', unicode),
+        ('simulation', 'type', data.Simulation),
+        ('ran_on', 'type', platform.Machine),
+        ('errata', 'type', shared.OnlineResource),
+        ('had_performance', 'type', platform.Performance),
+
+        ('variant_id', 'cardinality', "1.1"),
+        ('simulation', 'cardinality', "1.1"),
+        ('ran_on', 'cardinality', "0.1"),
+        ('errata', 'cardinality', "0.1"),
+        ('had_performance', 'cardinality', "0.1"),
+
+    ),
     software.Variable: (
 
         ('description', 'type', unicode),
@@ -1791,37 +1750,6 @@ CONSTRAINTS = {
         ('properties', 'cardinality', "0.N"),
 
     ),
-    designing.MultiEnsemble: (
-
-        ('ensemble_axis', 'type', designing.EnsembleRequirement),
-        ('description', 'type', unicode),
-        ('duration', 'type', shared.TimePeriod),
-        ('additional_requirements', 'type', designing.NumericalRequirement),
-        ('responsible_parties', 'type', shared.Responsibility),
-        ('long_name', 'type', unicode),
-        ('canonical_name', 'type', unicode),
-        ('meta', 'type', shared.DocMetaInfo),
-        ('references', 'type', shared.Reference),
-        ('rationale', 'type', unicode),
-        ('keywords', 'type', unicode),
-        ('conformance_is_requested', 'type', bool),
-        ('name', 'type', unicode),
-
-        ('ensemble_axis', 'cardinality', "1.N"),
-        ('description', 'cardinality', "0.1"),
-        ('duration', 'cardinality', "0.0"),
-        ('additional_requirements', 'cardinality', "0.0"),
-        ('responsible_parties', 'cardinality', "0.N"),
-        ('long_name', 'cardinality', "0.1"),
-        ('canonical_name', 'cardinality', "0.1"),
-        ('meta', 'cardinality', "1.1"),
-        ('references', 'cardinality', "0.N"),
-        ('rationale', 'cardinality', "0.1"),
-        ('keywords', 'cardinality', "0.N"),
-        ('conformance_is_requested', 'cardinality', "1.1"),
-        ('name', 'cardinality', "1.1"),
-
-    ),
     shared.Reference: (
 
         ('document', 'type', shared.ExternalDocument),
@@ -1829,6 +1757,159 @@ CONSTRAINTS = {
 
         ('document', 'cardinality', "1.1"),
         ('context', 'cardinality', "0.1"),
+
+    ),
+    software.SoftwareComponent: (
+
+        ('license', 'type', unicode),
+        ('coupling_framework', 'type', unicode),
+        ('description', 'type', unicode),
+        ('repository', 'type', shared.OnlineResource),
+        ('language', 'type', unicode),
+        ('release_date', 'type', datetime.datetime),
+        ('documentation', 'type', shared.Reference),
+        ('development_history', 'type', software.DevelopmentPath),
+        ('sub_components', 'type', software.SoftwareComponent),
+        ('long_name', 'type', unicode),
+        ('version', 'type', unicode),
+        ('grid', 'type', software.Gridspec),
+        ('dependencies', 'type', software.EntryPoint),
+        ('composition', 'type', software.Composition),
+        ('connection_points', 'type', software.Variable),
+        ('name', 'type', unicode),
+
+        ('license', 'cardinality', "0.1"),
+        ('coupling_framework', 'cardinality', "0.1"),
+        ('description', 'cardinality', "0.1"),
+        ('repository', 'cardinality', "0.1"),
+        ('language', 'cardinality', "0.1"),
+        ('release_date', 'cardinality', "0.1"),
+        ('documentation', 'cardinality', "0.N"),
+        ('development_history', 'cardinality', "0.1"),
+        ('sub_components', 'cardinality', "0.N"),
+        ('long_name', 'cardinality', "0.1"),
+        ('version', 'cardinality', "0.1"),
+        ('grid', 'cardinality', "0.1"),
+        ('dependencies', 'cardinality', "0.N"),
+        ('composition', 'cardinality', "0.1"),
+        ('connection_points', 'cardinality', "0.N"),
+        ('name', 'cardinality', "1.1"),
+
+    ),
+    science.Process: (
+
+        ('name', 'type', unicode),
+        ('sub_processes', 'type', science.SubProcess),
+        ('id', 'type', unicode),
+        ('references', 'type', shared.Reference),
+        ('context', 'type', unicode),
+        ('implementation_overview', 'type', unicode),
+        ('keywords', 'type', unicode),
+        ('algorithms', 'type', science.Algorithm),
+        ('properties', 'type', science.Detail),
+
+        ('name', 'cardinality', "1.1"),
+        ('sub_processes', 'cardinality', "0.N"),
+        ('id', 'cardinality', "1.1"),
+        ('references', 'cardinality', "0.N"),
+        ('context', 'cardinality', "1.1"),
+        ('implementation_overview', 'cardinality', "1.1"),
+        ('keywords', 'cardinality', "0.1"),
+        ('algorithms', 'cardinality', "0.N"),
+        ('properties', 'cardinality', "0.N"),
+
+    ),
+    shared.IrregularDateset: (
+
+        ('length', 'type', int),
+        ('date_set', 'type', unicode),
+
+        ('length', 'cardinality', "1.1"),
+        ('date_set', 'cardinality', "1.1"),
+
+    ),
+    shared.TimesliceList: (
+
+        ('units', 'type', unicode),
+        ('members', 'type', shared.NumberArray),
+
+        ('units', 'cardinality', "1.1"),
+        ('members', 'cardinality', "1.1"),
+
+    ),
+    drs.DrsTemporalIdentifier: (
+
+        ('start', 'type', unicode),
+        ('end', 'type', unicode),
+        ('suffix', 'type', unicode),
+
+        ('start', 'cardinality', "1.1"),
+        ('end', 'cardinality', "0.1"),
+        ('suffix', 'cardinality', "0.1"),
+
+    ),
+    drs.DrsPublicationDataset: (
+
+        ('product', 'type', unicode),
+        ('realm', 'type', unicode),
+        ('institute', 'type', unicode),
+        ('version_number', 'type', int),
+        ('experiment', 'type', unicode),
+        ('frequency', 'type', unicode),
+        ('activity', 'type', unicode),
+        ('model', 'type', unicode),
+
+        ('product', 'cardinality', "1.1"),
+        ('realm', 'cardinality', "0.1"),
+        ('institute', 'cardinality', "1.1"),
+        ('version_number', 'cardinality', "0.1"),
+        ('experiment', 'cardinality', "1.1"),
+        ('frequency', 'cardinality', "0.1"),
+        ('activity', 'cardinality', "1.1"),
+        ('model', 'cardinality', "1.1"),
+
+    ),
+    software.Gridspec: (
+
+        ('description', 'type', unicode),
+
+        ('description', 'cardinality', "1.1"),
+
+    ),
+    platform.StoragePool: (
+
+        ('type', 'type', unicode),
+        ('volume_available', 'type', platform.StorageVolume),
+        ('vendor', 'type', shared.Party),
+        ('name', 'type', unicode),
+        ('description', 'type', unicode),
+
+        ('type', 'cardinality', "0.1"),
+        ('volume_available', 'cardinality', "1.1"),
+        ('vendor', 'cardinality', "0.1"),
+        ('name', 'cardinality', "1.1"),
+        ('description', 'cardinality', "0.1"),
+
+    ),
+    software.ComponentBase: (
+
+        ('description', 'type', unicode),
+        ('repository', 'type', shared.OnlineResource),
+        ('release_date', 'type', datetime.datetime),
+        ('documentation', 'type', shared.Reference),
+        ('development_history', 'type', software.DevelopmentPath),
+        ('long_name', 'type', unicode),
+        ('version', 'type', unicode),
+        ('name', 'type', unicode),
+
+        ('description', 'cardinality', "0.1"),
+        ('repository', 'cardinality', "0.1"),
+        ('release_date', 'cardinality', "0.1"),
+        ('documentation', 'cardinality', "0.N"),
+        ('development_history', 'cardinality', "0.1"),
+        ('long_name', 'cardinality', "0.1"),
+        ('version', 'cardinality', "0.1"),
+        ('name', 'cardinality', "1.1"),
 
     ),
     science.Detail: (
@@ -1852,6 +1933,33 @@ CONSTRAINTS = {
         ('name', 'cardinality', "1.1"),
 
     ),
+    platform.Machine: (
+
+        ('vendor', 'type', shared.Party),
+        ('name', 'type', unicode),
+        ('partition', 'type', platform.Partition),
+        ('model_number', 'type', unicode),
+        ('online_documentation', 'type', shared.OnlineResource),
+        ('meta', 'type', shared.DocMetaInfo),
+        ('storage_pools', 'type', platform.StoragePool),
+        ('when_used', 'type', shared.TimePeriod),
+        ('institution', 'type', shared.Party),
+        ('compute_pools', 'type', platform.ComputePool),
+        ('description', 'type', unicode),
+
+        ('vendor', 'cardinality', "0.1"),
+        ('name', 'cardinality', "1.1"),
+        ('partition', 'cardinality', "0.N"),
+        ('model_number', 'cardinality', "0.1"),
+        ('online_documentation', 'cardinality', "0.N"),
+        ('meta', 'cardinality', "1.1"),
+        ('storage_pools', 'cardinality', "0.N"),
+        ('when_used', 'cardinality', "0.1"),
+        ('institution', 'cardinality', "1.1"),
+        ('compute_pools', 'cardinality', "1.N"),
+        ('description', 'cardinality', "0.1"),
+
+    ),
     data.VariableCollection: (
 
         ('collection_name', 'type', unicode),
@@ -1859,15 +1967,6 @@ CONSTRAINTS = {
 
         ('collection_name', 'cardinality', "0.1"),
         ('variables', 'cardinality', "1.N"),
-
-    ),
-    shared.TimesliceList: (
-
-        ('units', 'type', unicode),
-        ('members', 'type', shared.NumberArray),
-
-        ('units', 'cardinality', "1.1"),
-        ('members', 'cardinality', "1.1"),
 
     ),
     designing.Project: (
@@ -1899,38 +1998,6 @@ CONSTRAINTS = {
         ('duration', 'cardinality', "0.1"),
         ('sub_projects', 'cardinality', "0.N"),
         ('name', 'cardinality', "1.1"),
-
-    ),
-    drs.DrsTemporalIdentifier: (
-
-        ('start', 'type', unicode),
-        ('end', 'type', unicode),
-        ('suffix', 'type', unicode),
-
-        ('start', 'cardinality', "1.1"),
-        ('end', 'cardinality', "0.1"),
-        ('suffix', 'cardinality', "0.1"),
-
-    ),
-    drs.DrsPublicationDataset: (
-
-        ('product', 'type', unicode),
-        ('realm', 'type', unicode),
-        ('experiment', 'type', unicode),
-        ('institute', 'type', unicode),
-        ('version_number', 'type', int),
-        ('frequency', 'type', unicode),
-        ('activity', 'type', unicode),
-        ('model', 'type', unicode),
-
-        ('product', 'cardinality', "1.1"),
-        ('realm', 'cardinality', "0.1"),
-        ('experiment', 'cardinality', "1.1"),
-        ('institute', 'cardinality', "1.1"),
-        ('version_number', 'cardinality', "0.1"),
-        ('frequency', 'cardinality', "0.1"),
-        ('activity', 'cardinality', "1.1"),
-        ('model', 'cardinality', "1.1"),
 
     ),
     data.Downscaling: (
@@ -1974,34 +2041,23 @@ CONSTRAINTS = {
         ('name', 'cardinality', "1.1"),
 
     ),
-    science.ScientificDomain: (
+    science.Resolution: (
 
-        ('simulates', 'type', science.Process),
-        ('realm', 'type', unicode),
+        ('number_of_levels', 'type', int),
         ('name', 'type', unicode),
-        ('overview', 'type', unicode),
-        ('meta', 'type', shared.DocMetaInfo),
-        ('references', 'type', shared.Reference),
-        ('differing_key_properties', 'type', science.KeyProperties),
-        ('id', 'type', unicode),
+        ('equivalent_resolution_km', 'type', float),
+        ('typical_y_degrees', 'type', float),
+        ('number_of_xy_gridpoints', 'type', int),
+        ('is_adaptive_grid', 'type', bool),
+        ('typical_x_degrees', 'type', float),
 
-        ('simulates', 'cardinality', "1.N"),
-        ('realm', 'cardinality', "0.1"),
+        ('number_of_levels', 'cardinality', "0.1"),
         ('name', 'cardinality', "1.1"),
-        ('overview', 'cardinality', "0.1"),
-        ('meta', 'cardinality', "1.1"),
-        ('references', 'cardinality', "0.N"),
-        ('differing_key_properties', 'cardinality', "0.1"),
-        ('id', 'cardinality', "0.1"),
-
-    ),
-    shared.IrregularDateset: (
-
-        ('length', 'type', int),
-        ('date_set', 'type', unicode),
-
-        ('length', 'cardinality', "1.1"),
-        ('date_set', 'cardinality', "1.1"),
+        ('equivalent_resolution_km', 'cardinality', "0.1"),
+        ('typical_y_degrees', 'cardinality', "0.1"),
+        ('number_of_xy_gridpoints', 'cardinality', "0.1"),
+        ('is_adaptive_grid', 'cardinality', "0.1"),
+        ('typical_x_degrees', 'cardinality', "0.1"),
 
     ),
     designing.MultiTimeEnsemble: (
@@ -2035,88 +2091,64 @@ CONSTRAINTS = {
         ('name', 'cardinality', "1.1"),
 
     ),
-    shared.Party: (
+    science.ScienceContext: (
 
+        ('id', 'type', unicode),
+        ('context', 'type', unicode),
         ('name', 'type', unicode),
-        ('url', 'type', shared.OnlineResource),
-        ('organisation', 'type', bool),
-        ('meta', 'type', shared.DocMetaInfo),
-        ('address', 'type', unicode),
-        ('email', 'type', unicode),
-        ('orcid_id', 'type', unicode),
 
-        ('name', 'cardinality', "0.1"),
-        ('url', 'cardinality', "0.1"),
-        ('organisation', 'cardinality', "0.1"),
-        ('meta', 'cardinality', "1.1"),
-        ('address', 'cardinality', "0.1"),
-        ('email', 'cardinality', "0.1"),
-        ('orcid_id', 'cardinality', "0.1"),
-
-    ),
-    platform.Performance: (
-
-        ('io_load', 'type', float),
-        ('asypd', 'type', float),
-        ('memory_bloat', 'type', float),
-        ('name', 'type', unicode),
-        ('subcomponent_performance', 'type', platform.ComponentPerformance),
-        ('total_nodes_used', 'type', int),
-        ('chsy', 'type', float),
-        ('sypd', 'type', float),
-        ('platform', 'type', platform.Machine),
-        ('meta', 'type', shared.DocMetaInfo),
-        ('load_imbalance', 'type', float),
-        ('coupler_load', 'type', float),
-        ('model', 'type', science.Model),
-        ('compiler', 'type', unicode),
-
-        ('io_load', 'cardinality', "0.1"),
-        ('asypd', 'cardinality', "0.1"),
-        ('memory_bloat', 'cardinality', "0.1"),
-        ('name', 'cardinality', "0.1"),
-        ('subcomponent_performance', 'cardinality', "0.1"),
-        ('total_nodes_used', 'cardinality', "0.1"),
-        ('chsy', 'cardinality', "0.1"),
-        ('sypd', 'cardinality', "0.1"),
-        ('platform', 'cardinality', "1.1"),
-        ('meta', 'cardinality', "1.1"),
-        ('load_imbalance', 'cardinality', "0.1"),
-        ('coupler_load', 'cardinality', "0.1"),
-        ('model', 'cardinality', "1.1"),
-        ('compiler', 'cardinality', "0.1"),
-
-    ),
-    science.Tuning: (
-
-        ('regional_metrics_used', 'type', data.VariableCollection),
-        ('trend_metrics_used', 'type', data.VariableCollection),
-        ('description', 'type', unicode),
-        ('global_mean_metrics_used', 'type', data.VariableCollection),
-
-        ('regional_metrics_used', 'cardinality', "0.1"),
-        ('trend_metrics_used', 'cardinality', "0.1"),
-        ('description', 'cardinality', "1.1"),
-        ('global_mean_metrics_used', 'cardinality', "0.1"),
-
-    ),
-    science.Resolution: (
-
-        ('number_of_levels', 'type', int),
-        ('name', 'type', unicode),
-        ('equivalent_resolution_km', 'type', float),
-        ('typical_y_degrees', 'type', float),
-        ('number_of_xy_gridpoints', 'type', int),
-        ('is_adaptive_grid', 'type', bool),
-        ('typical_x_degrees', 'type', float),
-
-        ('number_of_levels', 'cardinality', "0.1"),
+        ('id', 'cardinality', "1.1"),
+        ('context', 'cardinality', "1.1"),
         ('name', 'cardinality', "1.1"),
-        ('equivalent_resolution_km', 'cardinality', "0.1"),
-        ('typical_y_degrees', 'cardinality', "0.1"),
-        ('number_of_xy_gridpoints', 'cardinality', "0.1"),
-        ('is_adaptive_grid', 'cardinality', "0.1"),
-        ('typical_x_degrees', 'cardinality', "0.1"),
+
+    ),
+    designing.NumericalExperiment: (
+
+        ('requirements', 'type', designing.NumericalRequirement),
+        ('description', 'type', unicode),
+        ('keywords', 'type', unicode),
+        ('responsible_parties', 'type', shared.Responsibility),
+        ('long_name', 'type', unicode),
+        ('canonical_name', 'type', unicode),
+        ('meta', 'type', shared.DocMetaInfo),
+        ('references', 'type', shared.Reference),
+        ('rationale', 'type', unicode),
+        ('related_experiments', 'type', designing.NumericalExperiment),
+        ('duration', 'type', shared.TimePeriod),
+        ('name', 'type', unicode),
+
+        ('requirements', 'cardinality', "0.N"),
+        ('description', 'cardinality', "0.1"),
+        ('keywords', 'cardinality', "0.N"),
+        ('responsible_parties', 'cardinality', "0.N"),
+        ('long_name', 'cardinality', "0.1"),
+        ('canonical_name', 'cardinality', "0.1"),
+        ('meta', 'cardinality', "1.1"),
+        ('references', 'cardinality', "0.N"),
+        ('rationale', 'cardinality', "1.1"),
+        ('related_experiments', 'cardinality', "0.N"),
+        ('duration', 'cardinality', "0.0"),
+        ('name', 'cardinality', "1.1"),
+
+    ),
+    shared.Cimtext: (
+
+        ('content', 'type', unicode),
+        ('content_type', 'type', unicode),
+
+        ('content', 'cardinality', "1.1"),
+        ('content_type', 'cardinality', "1.1"),
+
+    ),
+    drs.DrsGeographicalIndicator: (
+
+        ('operator', 'type', unicode),
+        ('bounding_box', 'type', unicode),
+        ('spatial_domain', 'type', unicode),
+
+        ('operator', 'cardinality', "0.1"),
+        ('bounding_box', 'cardinality', "0.1"),
+        ('spatial_domain', 'cardinality', "0.1"),
 
     ),
     software.Composition: (
@@ -2125,6 +2157,73 @@ CONSTRAINTS = {
         ('description', 'type', unicode),
 
         ('couplings', 'cardinality', "0.N"),
+        ('description', 'cardinality', "0.1"),
+
+    ),
+    platform.StorageVolume: (
+
+        ('units', 'type', unicode),
+        ('volume', 'type', int),
+
+        ('units', 'cardinality', "1.1"),
+        ('volume', 'cardinality', "1.1"),
+
+    ),
+    shared.Responsibility: (
+
+        ('when', 'type', shared.TimePeriod),
+        ('role', 'type', unicode),
+        ('party', 'type', shared.Party),
+
+        ('when', 'cardinality', "0.1"),
+        ('role', 'cardinality', "1.1"),
+        ('party', 'cardinality', "1.N"),
+
+    ),
+    shared.DocReference: (
+
+        ('constraint_vocabulary', 'type', unicode),
+        ('protocol', 'type', unicode),
+        ('description', 'type', unicode),
+        ('relationship', 'type', unicode),
+        ('version', 'type', int),
+        ('context', 'type', unicode),
+        ('type', 'type', unicode),
+        ('id', 'type', unicode),
+        ('linkage', 'type', unicode),
+        ('name', 'type', unicode),
+
+        ('constraint_vocabulary', 'cardinality', "0.1"),
+        ('protocol', 'cardinality', "0.1"),
+        ('description', 'cardinality', "0.1"),
+        ('relationship', 'cardinality', "0.1"),
+        ('version', 'cardinality', "0.1"),
+        ('context', 'cardinality', "0.1"),
+        ('type', 'cardinality', "1.1"),
+        ('id', 'cardinality', "0.1"),
+        ('linkage', 'cardinality', "1.1"),
+        ('name', 'cardinality', "1.1"),
+
+    ),
+    shared.Pid: (
+
+        ('resolution_service', 'type', shared.OnlineResource),
+        ('id', 'type', unicode),
+
+        ('resolution_service', 'cardinality', "1.1"),
+        ('id', 'cardinality', "1.1"),
+
+    ),
+    shared.Calendar: (
+
+        ('standard_name', 'type', unicode),
+        ('month_lengths', 'type', int),
+        ('name', 'type', unicode),
+        ('description', 'type', unicode),
+
+        ('standard_name', 'cardinality', "1.1"),
+        ('month_lengths', 'cardinality', "0.N"),
+        ('name', 'cardinality', "0.1"),
         ('description', 'cardinality', "0.1"),
 
     ),
@@ -2158,179 +2257,6 @@ CONSTRAINTS = {
         ('rationale', 'cardinality', "0.1"),
         ('keywords', 'cardinality', "0.N"),
         ('conformance_is_requested', 'cardinality', "1.1"),
-        ('name', 'cardinality', "1.1"),
-
-    ),
-    software.SoftwareComponent: (
-
-        ('license', 'type', unicode),
-        ('coupling_framework', 'type', unicode),
-        ('description', 'type', unicode),
-        ('repository', 'type', shared.OnlineResource),
-        ('language', 'type', unicode),
-        ('release_date', 'type', datetime.datetime),
-        ('documentation', 'type', shared.Reference),
-        ('development_history', 'type', software.DevelopmentPath),
-        ('sub_components', 'type', software.SoftwareComponent),
-        ('long_name', 'type', unicode),
-        ('version', 'type', unicode),
-        ('grid', 'type', software.Gridspec),
-        ('dependencies', 'type', software.EntryPoint),
-        ('composition', 'type', software.Composition),
-        ('connection_points', 'type', software.Variable),
-        ('name', 'type', unicode),
-
-        ('license', 'cardinality', "0.1"),
-        ('coupling_framework', 'cardinality', "0.1"),
-        ('description', 'cardinality', "0.1"),
-        ('repository', 'cardinality', "0.1"),
-        ('language', 'cardinality', "0.1"),
-        ('release_date', 'cardinality', "0.1"),
-        ('documentation', 'cardinality', "0.N"),
-        ('development_history', 'cardinality', "0.1"),
-        ('sub_components', 'cardinality', "0.N"),
-        ('long_name', 'cardinality', "0.1"),
-        ('version', 'cardinality', "0.1"),
-        ('grid', 'cardinality', "0.1"),
-        ('dependencies', 'cardinality', "0.N"),
-        ('composition', 'cardinality', "0.1"),
-        ('connection_points', 'cardinality', "0.N"),
-        ('name', 'cardinality', "1.1"),
-
-    ),
-    designing.NumericalExperiment: (
-
-        ('requirements', 'type', designing.NumericalRequirement),
-        ('description', 'type', unicode),
-        ('keywords', 'type', unicode),
-        ('responsible_parties', 'type', shared.Responsibility),
-        ('long_name', 'type', unicode),
-        ('canonical_name', 'type', unicode),
-        ('meta', 'type', shared.DocMetaInfo),
-        ('references', 'type', shared.Reference),
-        ('rationale', 'type', unicode),
-        ('related_experiments', 'type', designing.NumericalExperiment),
-        ('duration', 'type', shared.TimePeriod),
-        ('name', 'type', unicode),
-
-        ('requirements', 'cardinality', "0.N"),
-        ('description', 'cardinality', "0.1"),
-        ('keywords', 'cardinality', "0.N"),
-        ('responsible_parties', 'cardinality', "0.N"),
-        ('long_name', 'cardinality', "0.1"),
-        ('canonical_name', 'cardinality', "0.1"),
-        ('meta', 'cardinality', "1.1"),
-        ('references', 'cardinality', "0.N"),
-        ('rationale', 'cardinality', "1.1"),
-        ('related_experiments', 'cardinality', "0.N"),
-        ('duration', 'cardinality', "0.0"),
-        ('name', 'cardinality', "1.1"),
-
-    ),
-    software.DevelopmentPath: (
-
-        ('consortium_name', 'type', unicode),
-        ('funding_sources', 'type', shared.Responsibility),
-        ('creators', 'type', shared.Responsibility),
-        ('developed_in_house', 'type', bool),
-        ('previous_version', 'type', unicode),
-
-        ('consortium_name', 'cardinality', "0.1"),
-        ('funding_sources', 'cardinality', "0.N"),
-        ('creators', 'cardinality', "0.N"),
-        ('developed_in_house', 'cardinality', "1.1"),
-        ('previous_version', 'cardinality', "0.1"),
-
-    ),
-    designing.OutputTemporalRequirement: (
-
-        ('throughout', 'type', bool),
-        ('description', 'type', unicode),
-        ('duration', 'type', shared.TimePeriod),
-        ('continuous_subset', 'type', shared.TimePeriod),
-        ('additional_requirements', 'type', designing.NumericalRequirement),
-        ('responsible_parties', 'type', shared.Responsibility),
-        ('long_name', 'type', unicode),
-        ('canonical_name', 'type', unicode),
-        ('meta', 'type', shared.DocMetaInfo),
-        ('references', 'type', shared.Reference),
-        ('sliced_subset', 'type', shared.TimesliceList),
-        ('rationale', 'type', unicode),
-        ('keywords', 'type', unicode),
-        ('conformance_is_requested', 'type', bool),
-        ('name', 'type', unicode),
-
-        ('throughout', 'cardinality', "1.1"),
-        ('description', 'cardinality', "0.1"),
-        ('duration', 'cardinality', "0.0"),
-        ('continuous_subset', 'cardinality', "0.N"),
-        ('additional_requirements', 'cardinality', "0.0"),
-        ('responsible_parties', 'cardinality', "0.N"),
-        ('long_name', 'cardinality', "0.1"),
-        ('canonical_name', 'cardinality', "0.1"),
-        ('meta', 'cardinality', "1.1"),
-        ('references', 'cardinality', "0.N"),
-        ('sliced_subset', 'cardinality', "0.1"),
-        ('rationale', 'cardinality', "0.1"),
-        ('keywords', 'cardinality', "0.N"),
-        ('conformance_is_requested', 'cardinality', "1.1"),
-        ('name', 'cardinality', "1.1"),
-
-    ),
-    shared.OnlineResource: (
-
-        ('protocol', 'type', unicode),
-        ('description', 'type', unicode),
-        ('linkage', 'type', unicode),
-        ('name', 'type', unicode),
-
-        ('protocol', 'cardinality', "0.1"),
-        ('description', 'cardinality', "0.1"),
-        ('linkage', 'cardinality', "1.1"),
-        ('name', 'cardinality', "1.1"),
-
-    ),
-    platform.StorageVolume: (
-
-        ('units', 'type', unicode),
-        ('volume', 'type', int),
-
-        ('units', 'cardinality', "1.1"),
-        ('volume', 'cardinality', "1.1"),
-
-    ),
-    shared.Responsibility: (
-
-        ('when', 'type', shared.TimePeriod),
-        ('role', 'type', unicode),
-        ('party', 'type', shared.Party),
-
-        ('when', 'cardinality', "0.1"),
-        ('role', 'cardinality', "1.1"),
-        ('party', 'cardinality', "1.N"),
-
-    ),
-    shared.Pid: (
-
-        ('resolution_service', 'type', shared.OnlineResource),
-        ('id', 'type', unicode),
-
-        ('resolution_service', 'cardinality', "1.1"),
-        ('id', 'cardinality', "1.1"),
-
-    ),
-    platform.StoragePool: (
-
-        ('type', 'type', unicode),
-        ('volume_available', 'type', platform.StorageVolume),
-        ('vendor', 'type', shared.Party),
-        ('description', 'type', unicode),
-        ('name', 'type', unicode),
-
-        ('type', 'cardinality', "0.1"),
-        ('volume_available', 'cardinality', "1.1"),
-        ('vendor', 'cardinality', "0.1"),
-        ('description', 'cardinality', "0.1"),
         ('name', 'cardinality', "1.1"),
 
     ),
@@ -2373,17 +2299,35 @@ CONSTRAINTS = {
         ('documentation', 'cardinality', "0.N"),
 
     ),
-    shared.Calendar: (
+    drs.DrsAtomicDataset: (
 
-        ('standard_name', 'type', unicode),
-        ('description', 'type', unicode),
-        ('name', 'type', unicode),
-        ('month_lengths', 'type', int),
+        ('product', 'type', unicode),
+        ('realm', 'type', unicode),
+        ('experiment', 'type', unicode),
+        ('institute', 'type', unicode),
+        ('geographical_constraint', 'type', drs.DrsGeographicalIndicator),
+        ('version_number', 'type', int),
+        ('mip_table', 'type', unicode),
+        ('variable_name', 'type', unicode),
+        ('frequency', 'type', unicode),
+        ('activity', 'type', unicode),
+        ('ensemble_member', 'type', drs.DrsEnsembleIdentifier),
+        ('model', 'type', unicode),
+        ('temporal_constraint', 'type', drs.DrsTemporalIdentifier),
 
-        ('standard_name', 'cardinality', "1.1"),
-        ('description', 'cardinality', "0.1"),
-        ('name', 'cardinality', "0.1"),
-        ('month_lengths', 'cardinality', "0.N"),
+        ('version_number', 'cardinality', "1.1"),
+        ('realm', 'cardinality', "1.1"),
+        ('experiment', 'cardinality', "1.1"),
+        ('institute', 'cardinality', "1.1"),
+        ('geographical_constraint', 'cardinality', "0.1"),
+        ('product', 'cardinality', "1.1"),
+        ('mip_table', 'cardinality', "1.1"),
+        ('variable_name', 'cardinality', "1.1"),
+        ('frequency', 'cardinality', "1.1"),
+        ('activity', 'cardinality', "1.1"),
+        ('ensemble_member', 'cardinality', "1.1"),
+        ('model', 'cardinality', "1.1"),
+        ('temporal_constraint', 'cardinality', "0.1"),
 
     ),
     platform.ComputePool: (
@@ -2463,6 +2407,35 @@ CONSTRAINTS = {
         ('parent', 'cardinality', "1.1"),
 
     ),
+    designing.NumericalRequirement: (
+
+        ('description', 'type', unicode),
+        ('keywords', 'type', unicode),
+        ('additional_requirements', 'type', designing.NumericalRequirement),
+        ('responsible_parties', 'type', shared.Responsibility),
+        ('long_name', 'type', unicode),
+        ('canonical_name', 'type', unicode),
+        ('meta', 'type', shared.DocMetaInfo),
+        ('references', 'type', shared.Reference),
+        ('rationale', 'type', unicode),
+        ('duration', 'type', shared.TimePeriod),
+        ('conformance_is_requested', 'type', bool),
+        ('name', 'type', unicode),
+
+        ('description', 'cardinality', "0.1"),
+        ('keywords', 'cardinality', "0.N"),
+        ('additional_requirements', 'cardinality', "0.N"),
+        ('responsible_parties', 'cardinality', "0.N"),
+        ('long_name', 'cardinality', "0.1"),
+        ('canonical_name', 'cardinality', "0.1"),
+        ('meta', 'cardinality', "1.1"),
+        ('references', 'cardinality', "0.N"),
+        ('rationale', 'cardinality', "0.1"),
+        ('duration', 'cardinality', "0.0"),
+        ('conformance_is_requested', 'cardinality', "1.1"),
+        ('name', 'cardinality', "1.1"),
+
+    ),
     science.Grid: (
 
         ('horizontal_grid_layout', 'type', unicode),
@@ -2484,35 +2457,65 @@ CONSTRAINTS = {
         ('vertical_grid_layout', 'cardinality', "0.1"),
 
     ),
-    activity.EnsembleAxis: (
+    science.Extent: (
 
-        ('member', 'type', activity.AxisMember),
-        ('extra_detail', 'type', unicode),
-        ('short_identifier', 'type', unicode),
-        ('target_requirement', 'type', designing.NumericalRequirement),
+        ('is_global', 'type', bool),
+        ('bottom_vertical_level', 'type', float),
+        ('eastern_boundary', 'type', float),
+        ('region_known_as', 'type', unicode),
+        ('northern_boundary', 'type', float),
+        ('southern_boundary', 'type', float),
+        ('top_vertical_level', 'type', float),
+        ('z_units', 'type', unicode),
+        ('western_boundary', 'type', float),
 
-        ('member', 'cardinality', "1.N"),
-        ('extra_detail', 'cardinality', "1.1"),
-        ('short_identifier', 'cardinality', "1.1"),
-        ('target_requirement', 'cardinality', "1.1"),
+        ('is_global', 'cardinality', "1.1"),
+        ('bottom_vertical_level', 'cardinality', "0.1"),
+        ('eastern_boundary', 'cardinality', "0.1"),
+        ('region_known_as', 'cardinality', "0.N"),
+        ('northern_boundary', 'cardinality', "0.1"),
+        ('southern_boundary', 'cardinality', "0.1"),
+        ('top_vertical_level', 'cardinality', "0.1"),
+        ('z_units', 'cardinality', "1.1"),
+        ('western_boundary', 'cardinality', "0.1"),
 
     ),
-    science.ScienceContext: (
+    platform.Partition: (
 
-        ('id', 'type', unicode),
-        ('context', 'type', unicode),
+        ('vendor', 'type', shared.Party),
         ('name', 'type', unicode),
-
-        ('id', 'cardinality', "1.1"),
-        ('context', 'cardinality', "1.1"),
-        ('name', 'cardinality', "1.1"),
-
-    ),
-    software.Gridspec: (
-
+        ('partition', 'type', platform.Partition),
+        ('model_number', 'type', unicode),
+        ('online_documentation', 'type', shared.OnlineResource),
+        ('storage_pools', 'type', platform.StoragePool),
+        ('when_used', 'type', shared.TimePeriod),
+        ('institution', 'type', shared.Party),
+        ('compute_pools', 'type', platform.ComputePool),
         ('description', 'type', unicode),
 
+        ('vendor', 'cardinality', "0.1"),
+        ('name', 'cardinality', "1.1"),
+        ('partition', 'cardinality', "0.N"),
+        ('model_number', 'cardinality', "0.1"),
+        ('online_documentation', 'cardinality', "0.N"),
+        ('storage_pools', 'cardinality', "0.N"),
+        ('when_used', 'cardinality', "0.1"),
+        ('institution', 'cardinality', "1.1"),
+        ('compute_pools', 'cardinality', "1.N"),
+        ('description', 'cardinality', "0.1"),
+
+    ),
+    science.Tuning: (
+
+        ('regional_metrics_used', 'type', data.VariableCollection),
+        ('trend_metrics_used', 'type', data.VariableCollection),
+        ('description', 'type', unicode),
+        ('global_mean_metrics_used', 'type', data.VariableCollection),
+
+        ('regional_metrics_used', 'cardinality', "0.1"),
+        ('trend_metrics_used', 'cardinality', "0.1"),
         ('description', 'cardinality', "1.1"),
+        ('global_mean_metrics_used', 'cardinality', "0.1"),
 
     ),
     shared.TimePeriod: (
@@ -2530,19 +2533,48 @@ CONSTRAINTS = {
         ('date_type', 'cardinality', "1.1"),
 
     ),
-    platform.ComponentPerformance: (
+    designing.MultiEnsemble: (
 
-        ('component', 'type', software.SoftwareComponent),
-        ('component_name', 'type', unicode),
-        ('speed', 'type', float),
-        ('cores_used', 'type', int),
-        ('nodes_used', 'type', int),
+        ('ensemble_axis', 'type', designing.EnsembleRequirement),
+        ('description', 'type', unicode),
+        ('duration', 'type', shared.TimePeriod),
+        ('additional_requirements', 'type', designing.NumericalRequirement),
+        ('responsible_parties', 'type', shared.Responsibility),
+        ('long_name', 'type', unicode),
+        ('canonical_name', 'type', unicode),
+        ('meta', 'type', shared.DocMetaInfo),
+        ('references', 'type', shared.Reference),
+        ('rationale', 'type', unicode),
+        ('keywords', 'type', unicode),
+        ('conformance_is_requested', 'type', bool),
+        ('name', 'type', unicode),
 
-        ('component', 'cardinality', "0.1"),
-        ('component_name', 'cardinality', "1.1"),
-        ('speed', 'cardinality', "1.1"),
-        ('cores_used', 'cardinality', "0.1"),
-        ('nodes_used', 'cardinality', "0.1"),
+        ('ensemble_axis', 'cardinality', "1.N"),
+        ('description', 'cardinality', "0.1"),
+        ('duration', 'cardinality', "0.0"),
+        ('additional_requirements', 'cardinality', "0.0"),
+        ('responsible_parties', 'cardinality', "0.N"),
+        ('long_name', 'cardinality', "0.1"),
+        ('canonical_name', 'cardinality', "0.1"),
+        ('meta', 'cardinality', "1.1"),
+        ('references', 'cardinality', "0.N"),
+        ('rationale', 'cardinality', "0.1"),
+        ('keywords', 'cardinality', "0.N"),
+        ('conformance_is_requested', 'cardinality', "1.1"),
+        ('name', 'cardinality', "1.1"),
+
+    ),
+    shared.OnlineResource: (
+
+        ('protocol', 'type', unicode),
+        ('description', 'type', unicode),
+        ('linkage', 'type', unicode),
+        ('name', 'type', unicode),
+
+        ('protocol', 'cardinality', "0.1"),
+        ('description', 'cardinality', "0.1"),
+        ('linkage', 'cardinality', "1.1"),
+        ('name', 'cardinality', "1.1"),
 
     ),
     shared.RegularTimeset: (
@@ -2603,29 +2635,6 @@ CONSTRAINTS = {
         ('name', 'cardinality', "1.1"),
 
     ),
-    science.Extent: (
-
-        ('is_global', 'type', bool),
-        ('bottom_vertical_level', 'type', float),
-        ('eastern_boundary', 'type', float),
-        ('region_known_as', 'type', unicode),
-        ('northern_boundary', 'type', float),
-        ('southern_boundary', 'type', float),
-        ('top_vertical_level', 'type', float),
-        ('z_units', 'type', unicode),
-        ('western_boundary', 'type', float),
-
-        ('is_global', 'cardinality', "1.1"),
-        ('bottom_vertical_level', 'cardinality', "0.1"),
-        ('eastern_boundary', 'cardinality', "0.1"),
-        ('region_known_as', 'cardinality', "0.N"),
-        ('northern_boundary', 'cardinality', "0.1"),
-        ('southern_boundary', 'cardinality', "0.1"),
-        ('top_vertical_level', 'cardinality', "0.1"),
-        ('z_units', 'cardinality', "1.1"),
-        ('western_boundary', 'cardinality', "0.1"),
-
-    ),
     designing.ForcingConstraint: (
 
         ('origin', 'type', shared.Reference),
@@ -2667,6 +2676,21 @@ CONSTRAINTS = {
         ('conformance_is_requested', 'cardinality', "1.1"),
         ('data_link', 'cardinality', "0.1"),
         ('name', 'cardinality', "1.1"),
+
+    ),
+    platform.ComponentPerformance: (
+
+        ('component', 'type', software.SoftwareComponent),
+        ('component_name', 'type', unicode),
+        ('speed', 'type', float),
+        ('cores_used', 'type', int),
+        ('nodes_used', 'type', int),
+
+        ('component', 'cardinality', "0.1"),
+        ('component_name', 'cardinality', "1.1"),
+        ('speed', 'cardinality', "1.1"),
+        ('cores_used', 'cardinality', "0.1"),
+        ('nodes_used', 'cardinality', "0.1"),
 
     ),
     shared.ExternalDocument: (
@@ -2771,118 +2795,6 @@ CONSTRAINTS = {
         ('offset', 'cardinality', "0.1"),
 
     ),
-    software.ComponentBase: (
-
-        ('description', 'type', unicode),
-        ('repository', 'type', shared.OnlineResource),
-        ('release_date', 'type', datetime.datetime),
-        ('documentation', 'type', shared.Reference),
-        ('development_history', 'type', software.DevelopmentPath),
-        ('long_name', 'type', unicode),
-        ('version', 'type', unicode),
-        ('name', 'type', unicode),
-
-        ('description', 'cardinality', "0.1"),
-        ('repository', 'cardinality', "0.1"),
-        ('release_date', 'cardinality', "0.1"),
-        ('documentation', 'cardinality', "0.N"),
-        ('development_history', 'cardinality', "0.1"),
-        ('long_name', 'cardinality', "0.1"),
-        ('version', 'cardinality', "0.1"),
-        ('name', 'cardinality', "1.1"),
-
-    ),
-    shared.DocReference: (
-
-        ('constraint_vocabulary', 'type', unicode),
-        ('protocol', 'type', unicode),
-        ('description', 'type', unicode),
-        ('relationship', 'type', unicode),
-        ('version', 'type', int),
-        ('context', 'type', unicode),
-        ('type', 'type', unicode),
-        ('id', 'type', unicode),
-        ('linkage', 'type', unicode),
-        ('name', 'type', unicode),
-
-        ('constraint_vocabulary', 'cardinality', "0.1"),
-        ('protocol', 'cardinality', "0.1"),
-        ('description', 'cardinality', "0.1"),
-        ('relationship', 'cardinality', "0.1"),
-        ('version', 'cardinality', "0.1"),
-        ('context', 'cardinality', "0.1"),
-        ('type', 'cardinality', "1.1"),
-        ('id', 'cardinality', "0.1"),
-        ('linkage', 'cardinality', "1.1"),
-        ('name', 'cardinality', "1.1"),
-
-    ),
-    platform.Partition: (
-
-        ('vendor', 'type', shared.Party),
-        ('description', 'type', unicode),
-        ('partition', 'type', platform.Partition),
-        ('model_number', 'type', unicode),
-        ('online_documentation', 'type', shared.OnlineResource),
-        ('storage_pools', 'type', platform.StoragePool),
-        ('when_used', 'type', shared.TimePeriod),
-        ('institution', 'type', shared.Party),
-        ('compute_pools', 'type', platform.ComputePool),
-        ('name', 'type', unicode),
-
-        ('vendor', 'cardinality', "0.1"),
-        ('description', 'cardinality', "0.1"),
-        ('partition', 'cardinality', "0.N"),
-        ('model_number', 'cardinality', "0.1"),
-        ('online_documentation', 'cardinality', "0.N"),
-        ('storage_pools', 'cardinality', "0.N"),
-        ('when_used', 'cardinality', "0.1"),
-        ('institution', 'cardinality', "1.1"),
-        ('compute_pools', 'cardinality', "1.N"),
-        ('name', 'cardinality', "1.1"),
-
-    ),
-    activity.Activity: (
-
-        ('description', 'type', unicode),
-        ('long_name', 'type', unicode),
-        ('responsible_parties', 'type', shared.Responsibility),
-        ('duration', 'type', shared.TimePeriod),
-        ('canonical_name', 'type', unicode),
-        ('meta', 'type', shared.DocMetaInfo),
-        ('references', 'type', shared.Reference),
-        ('rationale', 'type', unicode),
-        ('keywords', 'type', unicode),
-        ('name', 'type', unicode),
-
-        ('description', 'cardinality', "0.1"),
-        ('long_name', 'cardinality', "0.1"),
-        ('responsible_parties', 'cardinality', "0.N"),
-        ('duration', 'cardinality', "0.1"),
-        ('canonical_name', 'cardinality', "0.1"),
-        ('meta', 'cardinality', "1.1"),
-        ('references', 'cardinality', "0.N"),
-        ('rationale', 'cardinality', "0.1"),
-        ('keywords', 'cardinality', "0.N"),
-        ('name', 'cardinality', "1.1"),
-
-    ),
-    shared.KeyFloat: (
-
-        ('value', 'type', float),
-        ('key', 'type', unicode),
-
-        ('value', 'cardinality', "1.1"),
-        ('key', 'cardinality', "1.1"),
-
-    ),
-    shared.DatetimeSet: (
-
-        ('length', 'type', int),
-
-        ('length', 'cardinality', "1.1"),
-
-    ),
     science.Algorithm: (
 
         ('name', 'type', unicode),
@@ -2904,34 +2816,28 @@ CONSTRAINTS = {
         ('id', 'cardinality', "1.1"),
 
     ),
-    software.EntryPoint: (
+    software.DevelopmentPath: (
 
-        ('name', 'type', unicode),
+        ('consortium_name', 'type', unicode),
+        ('funding_sources', 'type', shared.Responsibility),
+        ('creators', 'type', shared.Responsibility),
+        ('developed_in_house', 'type', bool),
+        ('previous_version', 'type', unicode),
 
-        ('name', 'cardinality', "0.1"),
+        ('consortium_name', 'cardinality', "0.1"),
+        ('funding_sources', 'cardinality', "0.N"),
+        ('creators', 'cardinality', "0.N"),
+        ('developed_in_house', 'cardinality', "1.1"),
+        ('previous_version', 'cardinality', "0.1"),
 
     ),
-    science.Process: (
+    shared.KeyFloat: (
 
-        ('name', 'type', unicode),
-        ('sub_processes', 'type', science.SubProcess),
-        ('id', 'type', unicode),
-        ('references', 'type', shared.Reference),
-        ('context', 'type', unicode),
-        ('implementation_overview', 'type', unicode),
-        ('keywords', 'type', unicode),
-        ('algorithms', 'type', science.Algorithm),
-        ('properties', 'type', science.Detail),
+        ('value', 'type', float),
+        ('key', 'type', unicode),
 
-        ('name', 'cardinality', "1.1"),
-        ('sub_processes', 'cardinality', "0.N"),
-        ('id', 'cardinality', "1.1"),
-        ('references', 'cardinality', "0.N"),
-        ('context', 'cardinality', "1.1"),
-        ('implementation_overview', 'cardinality', "1.1"),
-        ('keywords', 'cardinality', "0.1"),
-        ('algorithms', 'cardinality', "0.N"),
-        ('properties', 'cardinality', "0.N"),
+        ('value', 'cardinality', "1.1"),
+        ('key', 'cardinality', "1.1"),
 
     ),
     science.Model: (
@@ -2971,6 +2877,20 @@ CONSTRAINTS = {
         ('name', 'cardinality', "1.1"),
 
     ),
+    shared.DatetimeSet: (
+
+        ('length', 'type', int),
+
+        ('length', 'cardinality', "1.1"),
+
+    ),
+    software.EntryPoint: (
+
+        ('name', 'type', unicode),
+
+        ('name', 'cardinality', "0.1"),
+
+    ),
     drs.DrsEnsembleIdentifier: (
 
         ('perturbation_number', 'type', int),
@@ -2980,6 +2900,74 @@ CONSTRAINTS = {
         ('perturbation_number', 'cardinality', "1.1"),
         ('initialisation_method_number', 'cardinality', "1.1"),
         ('realisation_number', 'cardinality', "1.1"),
+
+    ),
+    platform.Performance: (
+
+        ('io_load', 'type', float),
+        ('asypd', 'type', float),
+        ('memory_bloat', 'type', float),
+        ('name', 'type', unicode),
+        ('subcomponent_performance', 'type', platform.ComponentPerformance),
+        ('load_imbalance', 'type', float),
+        ('total_nodes_used', 'type', int),
+        ('chsy', 'type', float),
+        ('sypd', 'type', float),
+        ('platform', 'type', platform.Machine),
+        ('meta', 'type', shared.DocMetaInfo),
+        ('coupler_load', 'type', float),
+        ('model', 'type', science.Model),
+        ('compiler', 'type', unicode),
+
+        ('io_load', 'cardinality', "0.1"),
+        ('asypd', 'cardinality', "0.1"),
+        ('memory_bloat', 'cardinality', "0.1"),
+        ('name', 'cardinality', "0.1"),
+        ('subcomponent_performance', 'cardinality', "0.1"),
+        ('load_imbalance', 'cardinality', "0.1"),
+        ('total_nodes_used', 'cardinality', "0.1"),
+        ('chsy', 'cardinality', "0.1"),
+        ('sypd', 'cardinality', "0.1"),
+        ('platform', 'cardinality', "1.1"),
+        ('meta', 'cardinality', "1.1"),
+        ('coupler_load', 'cardinality', "0.1"),
+        ('model', 'cardinality', "1.1"),
+        ('compiler', 'cardinality', "0.1"),
+
+    ),
+    designing.OutputTemporalRequirement: (
+
+        ('throughout', 'type', bool),
+        ('description', 'type', unicode),
+        ('duration', 'type', shared.TimePeriod),
+        ('continuous_subset', 'type', shared.TimePeriod),
+        ('additional_requirements', 'type', designing.NumericalRequirement),
+        ('responsible_parties', 'type', shared.Responsibility),
+        ('long_name', 'type', unicode),
+        ('canonical_name', 'type', unicode),
+        ('meta', 'type', shared.DocMetaInfo),
+        ('references', 'type', shared.Reference),
+        ('sliced_subset', 'type', shared.TimesliceList),
+        ('rationale', 'type', unicode),
+        ('keywords', 'type', unicode),
+        ('conformance_is_requested', 'type', bool),
+        ('name', 'type', unicode),
+
+        ('throughout', 'cardinality', "1.1"),
+        ('description', 'cardinality', "0.1"),
+        ('duration', 'cardinality', "0.0"),
+        ('continuous_subset', 'cardinality', "0.N"),
+        ('additional_requirements', 'cardinality', "0.0"),
+        ('responsible_parties', 'cardinality', "0.N"),
+        ('long_name', 'cardinality', "0.1"),
+        ('canonical_name', 'cardinality', "0.1"),
+        ('meta', 'cardinality', "1.1"),
+        ('references', 'cardinality', "0.N"),
+        ('sliced_subset', 'cardinality', "0.1"),
+        ('rationale', 'cardinality', "0.1"),
+        ('keywords', 'cardinality', "0.N"),
+        ('conformance_is_requested', 'cardinality', "1.1"),
+        ('name', 'cardinality', "1.1"),
 
     ),
     data.Simulation: (
@@ -3021,30 +3009,42 @@ CONSTRAINTS = {
         ('name', 'cardinality', "1.1"),
 
     ),
-    shared.Cimtext: (
+    activity.Activity: (
 
-        ('content', 'type', unicode),
-        ('content_type', 'type', unicode),
+        ('description', 'type', unicode),
+        ('duration', 'type', shared.TimePeriod),
+        ('responsible_parties', 'type', shared.Responsibility),
+        ('long_name', 'type', unicode),
+        ('canonical_name', 'type', unicode),
+        ('meta', 'type', shared.DocMetaInfo),
+        ('references', 'type', shared.Reference),
+        ('rationale', 'type', unicode),
+        ('keywords', 'type', unicode),
+        ('name', 'type', unicode),
 
-        ('content', 'cardinality', "1.1"),
-        ('content_type', 'cardinality', "1.1"),
+        ('description', 'cardinality', "0.1"),
+        ('duration', 'cardinality', "0.1"),
+        ('responsible_parties', 'cardinality', "0.N"),
+        ('long_name', 'cardinality', "0.1"),
+        ('canonical_name', 'cardinality', "0.1"),
+        ('meta', 'cardinality', "1.1"),
+        ('references', 'cardinality', "0.N"),
+        ('rationale', 'cardinality', "0.1"),
+        ('keywords', 'cardinality', "0.N"),
+        ('name', 'cardinality', "1.1"),
 
     ),
-    science.KeyProperties: (
+    activity.EnsembleAxis: (
 
-        ('extra_conservation_properties', 'type', science.ConservationProperties),
-        ('additional_detail', 'type', science.Detail),
-        ('grid', 'type', science.Grid),
-        ('tuning_applied', 'type', science.Tuning),
-        ('time_step', 'type', float),
-        ('resolution', 'type', science.Resolution),
+        ('member', 'type', activity.AxisMember),
+        ('extra_detail', 'type', unicode),
+        ('short_identifier', 'type', unicode),
+        ('target_requirement', 'type', designing.NumericalRequirement),
 
-        ('extra_conservation_properties', 'cardinality', "0.1"),
-        ('additional_detail', 'cardinality', "0.N"),
-        ('grid', 'cardinality', "1.1"),
-        ('tuning_applied', 'cardinality', "0.1"),
-        ('time_step', 'cardinality', "1.1"),
-        ('resolution', 'cardinality', "1.1"),
+        ('member', 'cardinality', "1.N"),
+        ('extra_detail', 'cardinality', "1.1"),
+        ('short_identifier', 'cardinality', "1.1"),
+        ('target_requirement', 'cardinality', "1.1"),
 
     ),
     # ------------------------------------------------
@@ -3052,117 +3052,53 @@ CONSTRAINTS = {
     # ------------------------------------------------
 
 
-    (drs.DrsGeographicalIndicator, 'bounding_box'): (
+    (shared.Party, 'url'): (
+
+        ('type', shared.OnlineResource),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (shared.Party, 'meta'): (
+
+        ('type', shared.DocMetaInfo),
+
+        ('cardinality', "1.1"),
+
+    ),
+    (shared.Party, 'address'): (
 
         ('type', unicode),
 
         ('cardinality', "0.1"),
 
     ),
-    (drs.DrsGeographicalIndicator, 'spatial_domain'): (
+    (shared.Party, 'organisation'): (
+
+        ('type', bool),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (shared.Party, 'name'): (
 
         ('type', unicode),
 
         ('cardinality', "0.1"),
 
     ),
-    (drs.DrsGeographicalIndicator, 'operator'): (
+    (shared.Party, 'orcid_id'): (
 
         ('type', unicode),
 
         ('cardinality', "0.1"),
 
     ),
+    (shared.Party, 'email'): (
 
-    (drs.DrsAtomicDataset, 'ensemble_member'): (
-
-        ('type', drs.DrsEnsembleIdentifier),
-
-        ('cardinality', "1.1"),
-
-    ),
-    (drs.DrsAtomicDataset, 'temporal_constraint'): (
-
-        ('type', drs.DrsTemporalIdentifier),
+        ('type', unicode),
 
         ('cardinality', "0.1"),
-
-    ),
-    (drs.DrsAtomicDataset, 'institute'): (
-
-        ('type', unicode),
-
-        ('cardinality', "1.1"),
-
-    ),
-    (drs.DrsAtomicDataset, 'model'): (
-
-        ('type', unicode),
-
-        ('cardinality', "1.1"),
-
-    ),
-    (drs.DrsAtomicDataset, 'geographical_constraint'): (
-
-        ('type', drs.DrsGeographicalIndicator),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (drs.DrsAtomicDataset, 'realm'): (
-
-        ('type', unicode),
-
-        ('cardinality', "1.1"),
-
-    ),
-    (drs.DrsAtomicDataset, 'variable_name'): (
-
-        ('type', unicode),
-
-        ('cardinality', "1.1"),
-
-    ),
-    (drs.DrsAtomicDataset, 'frequency'): (
-
-        ('type', unicode),
-
-        ('cardinality', "1.1"),
-
-    ),
-    (drs.DrsAtomicDataset, 'mip_table'): (
-
-        ('type', unicode),
-
-        ('cardinality', "1.1"),
-
-    ),
-    (drs.DrsAtomicDataset, 'activity'): (
-
-        ('type', unicode),
-
-        ('cardinality', "1.1"),
-
-    ),
-    (drs.DrsAtomicDataset, 'experiment'): (
-
-        ('type', unicode),
-
-        ('cardinality', "1.1"),
-
-    ),
-    (drs.DrsAtomicDataset, 'product'): (
-
-        ('type', unicode),
-
-        ('cardinality', "1.1"),
-
-    ),
-    (drs.DrsAtomicDataset, 'version_number'): (
-
-        ('type', int),
-
-        ('cardinality', "1.1"),
 
     ),
 
@@ -3173,11 +3109,11 @@ CONSTRAINTS = {
         ('cardinality', "0.0"),
 
     ),
-    (activity.Ensemble, 'references'): (
+    (activity.Ensemble, 'long_name'): (
 
-        ('type', shared.Reference),
+        ('type', unicode),
 
-        ('cardinality', "0.N"),
+        ('cardinality', "0.1"),
 
     ),
     (activity.Ensemble, 'common_conformances'): (
@@ -3187,25 +3123,11 @@ CONSTRAINTS = {
         ('cardinality', "0.N"),
 
     ),
-    (activity.Ensemble, 'description'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
     (activity.Ensemble, 'duration'): (
 
         ('type', shared.TimePeriod),
 
         ('cardinality', "0.0"),
-
-    ),
-    (activity.Ensemble, 'responsible_parties'): (
-
-        ('type', shared.Responsibility),
-
-        ('cardinality', "0.N"),
 
     ),
     (activity.Ensemble, 'documentation'): (
@@ -3222,6 +3144,13 @@ CONSTRAINTS = {
         ('cardinality', "0.0"),
 
     ),
+    (activity.Ensemble, 'description'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
     (activity.Ensemble, 'keywords'): (
 
         ('type', unicode),
@@ -3229,11 +3158,11 @@ CONSTRAINTS = {
         ('cardinality', "0.0"),
 
     ),
-    (activity.Ensemble, 'long_name'): (
+    (activity.Ensemble, 'responsible_parties'): (
 
-        ('type', unicode),
+        ('type', shared.Responsibility),
 
-        ('cardinality', "0.1"),
+        ('cardinality', "0.N"),
 
     ),
     (activity.Ensemble, 'has_ensemble_axes'): (
@@ -3257,6 +3186,13 @@ CONSTRAINTS = {
         ('cardinality', "1.N"),
 
     ),
+    (activity.Ensemble, 'references'): (
+
+        ('type', shared.Reference),
+
+        ('cardinality', "0.N"),
+
+    ),
     (activity.Ensemble, 'part_of'): (
 
         ('type', activity.UberEnsemble),
@@ -3276,6 +3212,49 @@ CONSTRAINTS = {
         ('type', designing.NumericalExperiment),
 
         ('cardinality', "1.N"),
+
+    ),
+
+    (science.KeyProperties, 'extra_conservation_properties'): (
+
+        ('type', science.ConservationProperties),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (science.KeyProperties, 'resolution'): (
+
+        ('type', science.Resolution),
+
+        ('cardinality', "1.1"),
+
+    ),
+    (science.KeyProperties, 'additional_detail'): (
+
+        ('type', science.Detail),
+
+        ('cardinality', "0.N"),
+
+    ),
+    (science.KeyProperties, 'tuning_applied'): (
+
+        ('type', science.Tuning),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (science.KeyProperties, 'grid'): (
+
+        ('type', science.Grid),
+
+        ('cardinality', "1.1"),
+
+    ),
+    (science.KeyProperties, 'time_step'): (
+
+        ('type', float),
+
+        ('cardinality', "1.1"),
 
     ),
 
@@ -3372,202 +3351,60 @@ CONSTRAINTS = {
 
     ),
 
-    (activity.EnsembleMember, 'errata'): (
+    (science.ScientificDomain, 'meta'): (
 
-        ('type', shared.OnlineResource),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (activity.EnsembleMember, 'variant_id'): (
-
-        ('type', unicode),
+        ('type', shared.DocMetaInfo),
 
         ('cardinality', "1.1"),
 
     ),
-    (activity.EnsembleMember, 'simulation'): (
-
-        ('type', data.Simulation),
-
-        ('cardinality', "1.1"),
-
-    ),
-    (activity.EnsembleMember, 'ran_on'): (
-
-        ('type', platform.Machine),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (activity.EnsembleMember, 'had_performance'): (
-
-        ('type', platform.Performance),
-
-        ('cardinality', "0.1"),
-
-    ),
-
-    (designing.NumericalRequirement, 'canonical_name'): (
+    (science.ScientificDomain, 'overview'): (
 
         ('type', unicode),
 
         ('cardinality', "0.1"),
 
     ),
-    (designing.NumericalRequirement, 'conformance_is_requested'): (
+    (science.ScientificDomain, 'simulates'): (
 
-        ('type', bool),
+        ('type', science.Process),
 
-        ('cardinality', "1.1"),
+        ('cardinality', "1.N"),
 
     ),
-    (designing.NumericalRequirement, 'references'): (
+    (science.ScientificDomain, 'differing_key_properties'): (
+
+        ('type', science.KeyProperties),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (science.ScientificDomain, 'references'): (
 
         ('type', shared.Reference),
 
         ('cardinality', "0.N"),
 
     ),
-    (designing.NumericalRequirement, 'meta'): (
-
-        ('type', shared.DocMetaInfo),
-
-        ('cardinality', "1.1"),
-
-    ),
-    (designing.NumericalRequirement, 'rationale'): (
+    (science.ScientificDomain, 'realm'): (
 
         ('type', unicode),
 
         ('cardinality', "0.1"),
 
     ),
-    (designing.NumericalRequirement, 'description'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (designing.NumericalRequirement, 'duration'): (
-
-        ('type', shared.TimePeriod),
-
-        ('cardinality', "0.0"),
-
-    ),
-    (designing.NumericalRequirement, 'responsible_parties'): (
-
-        ('type', shared.Responsibility),
-
-        ('cardinality', "0.N"),
-
-    ),
-    (designing.NumericalRequirement, 'long_name'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (designing.NumericalRequirement, 'keywords'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.N"),
-
-    ),
-    (designing.NumericalRequirement, 'additional_requirements'): (
-
-        ('type', designing.NumericalRequirement),
-
-        ('cardinality', "0.N"),
-
-    ),
-    (designing.NumericalRequirement, 'name'): (
+    (science.ScientificDomain, 'name'): (
 
         ('type', unicode),
 
         ('cardinality', "1.1"),
 
     ),
-
-    (platform.Machine, 'online_documentation'): (
-
-        ('type', shared.OnlineResource),
-
-        ('cardinality', "0.N"),
-
-    ),
-    (platform.Machine, 'name'): (
-
-        ('type', unicode),
-
-        ('cardinality', "1.1"),
-
-    ),
-    (platform.Machine, 'when_used'): (
-
-        ('type', shared.TimePeriod),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (platform.Machine, 'vendor'): (
-
-        ('type', shared.Party),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (platform.Machine, 'institution'): (
-
-        ('type', shared.Party),
-
-        ('cardinality', "1.1"),
-
-    ),
-    (platform.Machine, 'model_number'): (
+    (science.ScientificDomain, 'id'): (
 
         ('type', unicode),
 
         ('cardinality', "0.1"),
-
-    ),
-    (platform.Machine, 'description'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (platform.Machine, 'compute_pools'): (
-
-        ('type', platform.ComputePool),
-
-        ('cardinality', "1.N"),
-
-    ),
-    (platform.Machine, 'storage_pools'): (
-
-        ('type', platform.StoragePool),
-
-        ('cardinality', "0.N"),
-
-    ),
-    (platform.Machine, 'meta'): (
-
-        ('type', shared.DocMetaInfo),
-
-        ('cardinality', "1.1"),
-
-    ),
-    (platform.Machine, 'partition'): (
-
-        ('type', platform.Partition),
-
-        ('cardinality', "0.N"),
 
     ),
 
@@ -3585,14 +3422,14 @@ CONSTRAINTS = {
         ('cardinality', "0.1"),
 
     ),
-    (designing.SimulationPlan, 'references'): (
+    (designing.SimulationPlan, 'long_name'): (
 
-        ('type', shared.Reference),
+        ('type', unicode),
 
-        ('cardinality', "0.N"),
+        ('cardinality', "0.1"),
 
     ),
-    (designing.SimulationPlan, 'long_name'): (
+    (designing.SimulationPlan, 'rationale'): (
 
         ('type', unicode),
 
@@ -3606,11 +3443,11 @@ CONSTRAINTS = {
         ('cardinality', "1.1"),
 
     ),
-    (designing.SimulationPlan, 'rationale'): (
+    (designing.SimulationPlan, 'references'): (
 
-        ('type', unicode),
+        ('type', shared.Reference),
 
-        ('cardinality', "0.1"),
+        ('cardinality', "0.N"),
 
     ),
     (designing.SimulationPlan, 'expected_platform'): (
@@ -3627,13 +3464,6 @@ CONSTRAINTS = {
         ('cardinality', "1.1"),
 
     ),
-    (designing.SimulationPlan, 'responsible_parties'): (
-
-        ('type', shared.Responsibility),
-
-        ('cardinality', "0.N"),
-
-    ),
     (designing.SimulationPlan, 'will_support_experiments'): (
 
         ('type', designing.NumericalExperiment),
@@ -3648,6 +3478,13 @@ CONSTRAINTS = {
         ('cardinality', "0.1"),
 
     ),
+    (designing.SimulationPlan, 'name'): (
+
+        ('type', unicode),
+
+        ('cardinality', "1.1"),
+
+    ),
     (designing.SimulationPlan, 'keywords'): (
 
         ('type', unicode),
@@ -3655,11 +3492,11 @@ CONSTRAINTS = {
         ('cardinality', "0.N"),
 
     ),
-    (designing.SimulationPlan, 'name'): (
+    (designing.SimulationPlan, 'responsible_parties'): (
 
-        ('type', unicode),
+        ('type', shared.Responsibility),
 
-        ('cardinality', "1.1"),
+        ('cardinality', "0.N"),
 
     ),
     (designing.SimulationPlan, 'expected_model'): (
@@ -3692,6 +3529,42 @@ CONSTRAINTS = {
 
     ),
 
+    (activity.EnsembleMember, 'errata'): (
+
+        ('type', shared.OnlineResource),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (activity.EnsembleMember, 'had_performance'): (
+
+        ('type', platform.Performance),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (activity.EnsembleMember, 'ran_on'): (
+
+        ('type', platform.Machine),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (activity.EnsembleMember, 'variant_id'): (
+
+        ('type', unicode),
+
+        ('cardinality', "1.1"),
+
+    ),
+    (activity.EnsembleMember, 'simulation'): (
+
+        ('type', data.Simulation),
+
+        ('cardinality', "1.1"),
+
+    ),
+
     (software.Variable, 'description'): (
 
         ('type', unicode),
@@ -3714,7 +3587,14 @@ CONSTRAINTS = {
 
     ),
 
-    (science.SubProcess, 'name'): (
+    (science.SubProcess, 'context'): (
+
+        ('type', unicode),
+
+        ('cardinality', "1.1"),
+
+    ),
+    (science.SubProcess, 'id'): (
 
         ('type', unicode),
 
@@ -3728,14 +3608,7 @@ CONSTRAINTS = {
         ('cardinality', "0.N"),
 
     ),
-    (science.SubProcess, 'context'): (
-
-        ('type', unicode),
-
-        ('cardinality', "1.1"),
-
-    ),
-    (science.SubProcess, 'id'): (
+    (science.SubProcess, 'name'): (
 
         ('type', unicode),
 
@@ -3757,98 +3630,6 @@ CONSTRAINTS = {
 
     ),
 
-    (designing.MultiEnsemble, 'canonical_name'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (designing.MultiEnsemble, 'conformance_is_requested'): (
-
-        ('type', bool),
-
-        ('cardinality', "1.1"),
-
-    ),
-    (designing.MultiEnsemble, 'keywords'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.N"),
-
-    ),
-    (designing.MultiEnsemble, 'references'): (
-
-        ('type', shared.Reference),
-
-        ('cardinality', "0.N"),
-
-    ),
-    (designing.MultiEnsemble, 'meta'): (
-
-        ('type', shared.DocMetaInfo),
-
-        ('cardinality', "1.1"),
-
-    ),
-    (designing.MultiEnsemble, 'additional_requirements'): (
-
-        ('type', designing.NumericalRequirement),
-
-        ('cardinality', "0.0"),
-
-    ),
-    (designing.MultiEnsemble, 'description'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (designing.MultiEnsemble, 'duration'): (
-
-        ('type', shared.TimePeriod),
-
-        ('cardinality', "0.0"),
-
-    ),
-    (designing.MultiEnsemble, 'responsible_parties'): (
-
-        ('type', shared.Responsibility),
-
-        ('cardinality', "0.N"),
-
-    ),
-    (designing.MultiEnsemble, 'name'): (
-
-        ('type', unicode),
-
-        ('cardinality', "1.1"),
-
-    ),
-    (designing.MultiEnsemble, 'rationale'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (designing.MultiEnsemble, 'ensemble_axis'): (
-
-        ('type', designing.EnsembleRequirement),
-
-        ('cardinality', "1.N"),
-
-    ),
-    (designing.MultiEnsemble, 'long_name'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-
     (shared.Reference, 'context'): (
 
         ('type', unicode),
@@ -3864,75 +3645,195 @@ CONSTRAINTS = {
 
     ),
 
-    (science.Detail, 'detail_selection'): (
+    (software.SoftwareComponent, 'repository'): (
+
+        ('type', shared.OnlineResource),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (software.SoftwareComponent, 'coupling_framework'): (
 
         ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (software.SoftwareComponent, 'documentation'): (
+
+        ('type', shared.Reference),
 
         ('cardinality', "0.N"),
 
     ),
-    (science.Detail, 'from_vocab'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (science.Detail, 'with_cardinality'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (science.Detail, 'select'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (science.Detail, 'context'): (
+    (software.SoftwareComponent, 'name'): (
 
         ('type', unicode),
 
         ('cardinality', "1.1"),
 
     ),
-    (science.Detail, 'name'): (
-
-        ('type', unicode),
-
-        ('cardinality', "1.1"),
-
-    ),
-    (science.Detail, 'content'): (
+    (software.SoftwareComponent, 'license'): (
 
         ('type', unicode),
 
         ('cardinality', "0.1"),
 
     ),
-    (science.Detail, 'id'): (
-
-        ('type', unicode),
-
-        ('cardinality', "1.1"),
-
-    ),
-
-    (data.VariableCollection, 'collection_name'): (
+    (software.SoftwareComponent, 'version'): (
 
         ('type', unicode),
 
         ('cardinality', "0.1"),
 
     ),
-    (data.VariableCollection, 'variables'): (
+    (software.SoftwareComponent, 'description'): (
 
         ('type', unicode),
 
-        ('cardinality', "1.N"),
+        ('cardinality', "0.1"),
+
+    ),
+    (software.SoftwareComponent, 'dependencies'): (
+
+        ('type', software.EntryPoint),
+
+        ('cardinality', "0.N"),
+
+    ),
+    (software.SoftwareComponent, 'connection_points'): (
+
+        ('type', software.Variable),
+
+        ('cardinality', "0.N"),
+
+    ),
+    (software.SoftwareComponent, 'sub_components'): (
+
+        ('type', software.SoftwareComponent),
+
+        ('cardinality', "0.N"),
+
+    ),
+    (software.SoftwareComponent, 'grid'): (
+
+        ('type', software.Gridspec),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (software.SoftwareComponent, 'development_history'): (
+
+        ('type', software.DevelopmentPath),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (software.SoftwareComponent, 'release_date'): (
+
+        ('type', datetime.datetime),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (software.SoftwareComponent, 'language'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (software.SoftwareComponent, 'long_name'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (software.SoftwareComponent, 'composition'): (
+
+        ('type', software.Composition),
+
+        ('cardinality', "0.1"),
+
+    ),
+
+    (science.Process, 'references'): (
+
+        ('type', shared.Reference),
+
+        ('cardinality', "0.N"),
+
+    ),
+    (science.Process, 'id'): (
+
+        ('type', unicode),
+
+        ('cardinality', "1.1"),
+
+    ),
+    (science.Process, 'context'): (
+
+        ('type', unicode),
+
+        ('cardinality', "1.1"),
+
+    ),
+    (science.Process, 'implementation_overview'): (
+
+        ('type', unicode),
+
+        ('cardinality', "1.1"),
+
+    ),
+    (science.Process, 'name'): (
+
+        ('type', unicode),
+
+        ('cardinality', "1.1"),
+
+    ),
+    (science.Process, 'properties'): (
+
+        ('type', science.Detail),
+
+        ('cardinality', "0.N"),
+
+    ),
+    (science.Process, 'sub_processes'): (
+
+        ('type', science.SubProcess),
+
+        ('cardinality', "0.N"),
+
+    ),
+    (science.Process, 'algorithms'): (
+
+        ('type', science.Algorithm),
+
+        ('cardinality', "0.N"),
+
+    ),
+    (science.Process, 'keywords'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+
+    (shared.IrregularDateset, 'date_set'): (
+
+        ('type', unicode),
+
+        ('cardinality', "1.1"),
+
+    ),
+    (shared.IrregularDateset, 'length'): (
+
+        ('type', int),
+
+        ('cardinality', "1.1"),
 
     ),
 
@@ -3948,98 +3849,6 @@ CONSTRAINTS = {
         ('type', unicode),
 
         ('cardinality', "1.1"),
-
-    ),
-
-    (designing.Project, 'duration'): (
-
-        ('type', shared.TimePeriod),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (designing.Project, 'canonical_name'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (designing.Project, 'references'): (
-
-        ('type', shared.Reference),
-
-        ('cardinality', "0.N"),
-
-    ),
-    (designing.Project, 'previous_projects'): (
-
-        ('type', designing.Project),
-
-        ('cardinality', "0.N"),
-
-    ),
-    (designing.Project, 'rationale'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (designing.Project, 'description'): (
-
-        ('type', unicode),
-
-        ('cardinality', "1.1"),
-
-    ),
-    (designing.Project, 'requires_experiments'): (
-
-        ('type', designing.NumericalExperiment),
-
-        ('cardinality', "0.N"),
-
-    ),
-    (designing.Project, 'responsible_parties'): (
-
-        ('type', shared.Responsibility),
-
-        ('cardinality', "0.N"),
-
-    ),
-    (designing.Project, 'long_name'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (designing.Project, 'meta'): (
-
-        ('type', shared.DocMetaInfo),
-
-        ('cardinality', "1.1"),
-
-    ),
-    (designing.Project, 'keywords'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.N"),
-
-    ),
-    (designing.Project, 'name'): (
-
-        ('type', unicode),
-
-        ('cardinality', "1.1"),
-
-    ),
-    (designing.Project, 'sub_projects'): (
-
-        ('type', designing.Project),
-
-        ('cardinality', "0.N"),
 
     ),
 
@@ -4079,7 +3888,21 @@ CONSTRAINTS = {
         ('cardinality', "1.1"),
 
     ),
-    (drs.DrsPublicationDataset, 'model'): (
+    (drs.DrsPublicationDataset, 'version_number'): (
+
+        ('type', int),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (drs.DrsPublicationDataset, 'activity'): (
+
+        ('type', unicode),
+
+        ('cardinality', "1.1"),
+
+    ),
+    (drs.DrsPublicationDataset, 'experiment'): (
 
         ('type', unicode),
 
@@ -4093,14 +3916,7 @@ CONSTRAINTS = {
         ('cardinality', "0.1"),
 
     ),
-    (drs.DrsPublicationDataset, 'experiment'): (
-
-        ('type', unicode),
-
-        ('cardinality', "1.1"),
-
-    ),
-    (drs.DrsPublicationDataset, 'activity'): (
+    (drs.DrsPublicationDataset, 'model'): (
 
         ('type', unicode),
 
@@ -4114,11 +3930,347 @@ CONSTRAINTS = {
         ('cardinality', "0.1"),
 
     ),
-    (drs.DrsPublicationDataset, 'version_number'): (
 
-        ('type', int),
+    (software.Gridspec, 'description'): (
+
+        ('type', unicode),
+
+        ('cardinality', "1.1"),
+
+    ),
+
+    (platform.StoragePool, 'vendor'): (
+
+        ('type', shared.Party),
 
         ('cardinality', "0.1"),
+
+    ),
+    (platform.StoragePool, 'name'): (
+
+        ('type', unicode),
+
+        ('cardinality', "1.1"),
+
+    ),
+    (platform.StoragePool, 'description'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (platform.StoragePool, 'type'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (platform.StoragePool, 'volume_available'): (
+
+        ('type', platform.StorageVolume),
+
+        ('cardinality', "1.1"),
+
+    ),
+
+    (software.ComponentBase, 'repository'): (
+
+        ('type', shared.OnlineResource),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (software.ComponentBase, 'name'): (
+
+        ('type', unicode),
+
+        ('cardinality', "1.1"),
+
+    ),
+    (software.ComponentBase, 'development_history'): (
+
+        ('type', software.DevelopmentPath),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (software.ComponentBase, 'long_name'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (software.ComponentBase, 'description'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (software.ComponentBase, 'version'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (software.ComponentBase, 'release_date'): (
+
+        ('type', datetime.datetime),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (software.ComponentBase, 'documentation'): (
+
+        ('type', shared.Reference),
+
+        ('cardinality', "0.N"),
+
+    ),
+
+    (science.Detail, 'context'): (
+
+        ('type', unicode),
+
+        ('cardinality', "1.1"),
+
+    ),
+    (science.Detail, 'name'): (
+
+        ('type', unicode),
+
+        ('cardinality', "1.1"),
+
+    ),
+    (science.Detail, 'detail_selection'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.N"),
+
+    ),
+    (science.Detail, 'from_vocab'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (science.Detail, 'with_cardinality'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (science.Detail, 'select'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (science.Detail, 'content'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (science.Detail, 'id'): (
+
+        ('type', unicode),
+
+        ('cardinality', "1.1"),
+
+    ),
+
+    (platform.Machine, 'online_documentation'): (
+
+        ('type', shared.OnlineResource),
+
+        ('cardinality', "0.N"),
+
+    ),
+    (platform.Machine, 'description'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (platform.Machine, 'institution'): (
+
+        ('type', shared.Party),
+
+        ('cardinality', "1.1"),
+
+    ),
+    (platform.Machine, 'when_used'): (
+
+        ('type', shared.TimePeriod),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (platform.Machine, 'compute_pools'): (
+
+        ('type', platform.ComputePool),
+
+        ('cardinality', "1.N"),
+
+    ),
+    (platform.Machine, 'vendor'): (
+
+        ('type', shared.Party),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (platform.Machine, 'storage_pools'): (
+
+        ('type', platform.StoragePool),
+
+        ('cardinality', "0.N"),
+
+    ),
+    (platform.Machine, 'name'): (
+
+        ('type', unicode),
+
+        ('cardinality', "1.1"),
+
+    ),
+    (platform.Machine, 'partition'): (
+
+        ('type', platform.Partition),
+
+        ('cardinality', "0.N"),
+
+    ),
+    (platform.Machine, 'meta'): (
+
+        ('type', shared.DocMetaInfo),
+
+        ('cardinality', "1.1"),
+
+    ),
+    (platform.Machine, 'model_number'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+
+    (data.VariableCollection, 'collection_name'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (data.VariableCollection, 'variables'): (
+
+        ('type', unicode),
+
+        ('cardinality', "1.N"),
+
+    ),
+
+    (designing.Project, 'canonical_name'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (designing.Project, 'name'): (
+
+        ('type', unicode),
+
+        ('cardinality', "1.1"),
+
+    ),
+    (designing.Project, 'long_name'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (designing.Project, 'duration'): (
+
+        ('type', shared.TimePeriod),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (designing.Project, 'previous_projects'): (
+
+        ('type', designing.Project),
+
+        ('cardinality', "0.N"),
+
+    ),
+    (designing.Project, 'references'): (
+
+        ('type', shared.Reference),
+
+        ('cardinality', "0.N"),
+
+    ),
+    (designing.Project, 'requires_experiments'): (
+
+        ('type', designing.NumericalExperiment),
+
+        ('cardinality', "0.N"),
+
+    ),
+    (designing.Project, 'rationale'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (designing.Project, 'meta'): (
+
+        ('type', shared.DocMetaInfo),
+
+        ('cardinality', "1.1"),
+
+    ),
+    (designing.Project, 'description'): (
+
+        ('type', unicode),
+
+        ('cardinality', "1.1"),
+
+    ),
+    (designing.Project, 'keywords'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.N"),
+
+    ),
+    (designing.Project, 'responsible_parties'): (
+
+        ('type', shared.Responsibility),
+
+        ('cardinality', "0.N"),
+
+    ),
+    (designing.Project, 'sub_projects'): (
+
+        ('type', designing.Project),
+
+        ('cardinality', "0.N"),
 
     ),
 
@@ -4249,348 +4401,6 @@ CONSTRAINTS = {
 
     ),
 
-    (science.ScientificDomain, 'meta'): (
-
-        ('type', shared.DocMetaInfo),
-
-        ('cardinality', "1.1"),
-
-    ),
-    (science.ScientificDomain, 'differing_key_properties'): (
-
-        ('type', science.KeyProperties),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (science.ScientificDomain, 'name'): (
-
-        ('type', unicode),
-
-        ('cardinality', "1.1"),
-
-    ),
-    (science.ScientificDomain, 'realm'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (science.ScientificDomain, 'overview'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (science.ScientificDomain, 'simulates'): (
-
-        ('type', science.Process),
-
-        ('cardinality', "1.N"),
-
-    ),
-    (science.ScientificDomain, 'id'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (science.ScientificDomain, 'references'): (
-
-        ('type', shared.Reference),
-
-        ('cardinality', "0.N"),
-
-    ),
-
-    (shared.IrregularDateset, 'date_set'): (
-
-        ('type', unicode),
-
-        ('cardinality', "1.1"),
-
-    ),
-    (shared.IrregularDateset, 'length'): (
-
-        ('type', int),
-
-        ('cardinality', "1.1"),
-
-    ),
-
-    (designing.MultiTimeEnsemble, 'canonical_name'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (designing.MultiTimeEnsemble, 'conformance_is_requested'): (
-
-        ('type', bool),
-
-        ('cardinality', "1.1"),
-
-    ),
-    (designing.MultiTimeEnsemble, 'references'): (
-
-        ('type', shared.Reference),
-
-        ('cardinality', "0.N"),
-
-    ),
-    (designing.MultiTimeEnsemble, 'meta'): (
-
-        ('type', shared.DocMetaInfo),
-
-        ('cardinality', "1.1"),
-
-    ),
-    (designing.MultiTimeEnsemble, 'ensemble_members'): (
-
-        ('type', shared.DatetimeSet),
-
-        ('cardinality', "1.1"),
-
-    ),
-    (designing.MultiTimeEnsemble, 'additional_requirements'): (
-
-        ('type', designing.NumericalRequirement),
-
-        ('cardinality', "0.0"),
-
-    ),
-    (designing.MultiTimeEnsemble, 'keywords'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.N"),
-
-    ),
-    (designing.MultiTimeEnsemble, 'duration'): (
-
-        ('type', shared.TimePeriod),
-
-        ('cardinality', "0.0"),
-
-    ),
-    (designing.MultiTimeEnsemble, 'responsible_parties'): (
-
-        ('type', shared.Responsibility),
-
-        ('cardinality', "0.N"),
-
-    ),
-    (designing.MultiTimeEnsemble, 'name'): (
-
-        ('type', unicode),
-
-        ('cardinality', "1.1"),
-
-    ),
-    (designing.MultiTimeEnsemble, 'description'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (designing.MultiTimeEnsemble, 'rationale'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (designing.MultiTimeEnsemble, 'long_name'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-
-    (shared.Party, 'organisation'): (
-
-        ('type', bool),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (shared.Party, 'address'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (shared.Party, 'url'): (
-
-        ('type', shared.OnlineResource),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (shared.Party, 'email'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (shared.Party, 'name'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (shared.Party, 'orcid_id'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (shared.Party, 'meta'): (
-
-        ('type', shared.DocMetaInfo),
-
-        ('cardinality', "1.1"),
-
-    ),
-
-    (platform.Performance, 'io_load'): (
-
-        ('type', float),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (platform.Performance, 'sypd'): (
-
-        ('type', float),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (platform.Performance, 'platform'): (
-
-        ('type', platform.Machine),
-
-        ('cardinality', "1.1"),
-
-    ),
-    (platform.Performance, 'chsy'): (
-
-        ('type', float),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (platform.Performance, 'coupler_load'): (
-
-        ('type', float),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (platform.Performance, 'total_nodes_used'): (
-
-        ('type', int),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (platform.Performance, 'subcomponent_performance'): (
-
-        ('type', platform.ComponentPerformance),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (platform.Performance, 'memory_bloat'): (
-
-        ('type', float),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (platform.Performance, 'load_imbalance'): (
-
-        ('type', float),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (platform.Performance, 'name'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (platform.Performance, 'meta'): (
-
-        ('type', shared.DocMetaInfo),
-
-        ('cardinality', "1.1"),
-
-    ),
-    (platform.Performance, 'compiler'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (platform.Performance, 'asypd'): (
-
-        ('type', float),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (platform.Performance, 'model'): (
-
-        ('type', science.Model),
-
-        ('cardinality', "1.1"),
-
-    ),
-
-    (science.Tuning, 'global_mean_metrics_used'): (
-
-        ('type', data.VariableCollection),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (science.Tuning, 'trend_metrics_used'): (
-
-        ('type', data.VariableCollection),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (science.Tuning, 'regional_metrics_used'): (
-
-        ('type', data.VariableCollection),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (science.Tuning, 'description'): (
-
-        ('type', unicode),
-
-        ('cardinality', "1.1"),
-
-    ),
-
     (science.Resolution, 'typical_x_degrees'): (
 
         ('type', float),
@@ -4605,9 +4415,9 @@ CONSTRAINTS = {
         ('cardinality', "1.1"),
 
     ),
-    (science.Resolution, 'equivalent_resolution_km'): (
+    (science.Resolution, 'number_of_xy_gridpoints'): (
 
-        ('type', float),
+        ('type', int),
 
         ('cardinality', "0.1"),
 
@@ -4626,16 +4436,252 @@ CONSTRAINTS = {
         ('cardinality', "0.1"),
 
     ),
-    (science.Resolution, 'number_of_xy_gridpoints'): (
+    (science.Resolution, 'number_of_levels'): (
 
         ('type', int),
 
         ('cardinality', "0.1"),
 
     ),
-    (science.Resolution, 'number_of_levels'): (
+    (science.Resolution, 'equivalent_resolution_km'): (
 
-        ('type', int),
+        ('type', float),
+
+        ('cardinality', "0.1"),
+
+    ),
+
+    (designing.MultiTimeEnsemble, 'canonical_name'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (designing.MultiTimeEnsemble, 'conformance_is_requested'): (
+
+        ('type', bool),
+
+        ('cardinality', "1.1"),
+
+    ),
+    (designing.MultiTimeEnsemble, 'long_name'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (designing.MultiTimeEnsemble, 'duration'): (
+
+        ('type', shared.TimePeriod),
+
+        ('cardinality', "0.0"),
+
+    ),
+    (designing.MultiTimeEnsemble, 'meta'): (
+
+        ('type', shared.DocMetaInfo),
+
+        ('cardinality', "1.1"),
+
+    ),
+    (designing.MultiTimeEnsemble, 'references'): (
+
+        ('type', shared.Reference),
+
+        ('cardinality', "0.N"),
+
+    ),
+    (designing.MultiTimeEnsemble, 'ensemble_members'): (
+
+        ('type', shared.DatetimeSet),
+
+        ('cardinality', "1.1"),
+
+    ),
+    (designing.MultiTimeEnsemble, 'additional_requirements'): (
+
+        ('type', designing.NumericalRequirement),
+
+        ('cardinality', "0.0"),
+
+    ),
+    (designing.MultiTimeEnsemble, 'name'): (
+
+        ('type', unicode),
+
+        ('cardinality', "1.1"),
+
+    ),
+    (designing.MultiTimeEnsemble, 'keywords'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.N"),
+
+    ),
+    (designing.MultiTimeEnsemble, 'description'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (designing.MultiTimeEnsemble, 'rationale'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (designing.MultiTimeEnsemble, 'responsible_parties'): (
+
+        ('type', shared.Responsibility),
+
+        ('cardinality', "0.N"),
+
+    ),
+
+    (science.ScienceContext, 'id'): (
+
+        ('type', unicode),
+
+        ('cardinality', "1.1"),
+
+    ),
+    (science.ScienceContext, 'name'): (
+
+        ('type', unicode),
+
+        ('cardinality', "1.1"),
+
+    ),
+    (science.ScienceContext, 'context'): (
+
+        ('type', unicode),
+
+        ('cardinality', "1.1"),
+
+    ),
+
+    (designing.NumericalExperiment, 'canonical_name'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (designing.NumericalExperiment, 'name'): (
+
+        ('type', unicode),
+
+        ('cardinality', "1.1"),
+
+    ),
+    (designing.NumericalExperiment, 'long_name'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (designing.NumericalExperiment, 'rationale'): (
+
+        ('type', unicode),
+
+        ('cardinality', "1.1"),
+
+    ),
+    (designing.NumericalExperiment, 'related_experiments'): (
+
+        ('type', designing.NumericalExperiment),
+
+        ('cardinality', "0.N"),
+
+    ),
+    (designing.NumericalExperiment, 'references'): (
+
+        ('type', shared.Reference),
+
+        ('cardinality', "0.N"),
+
+    ),
+    (designing.NumericalExperiment, 'duration'): (
+
+        ('type', shared.TimePeriod),
+
+        ('cardinality', "0.0"),
+
+    ),
+    (designing.NumericalExperiment, 'requirements'): (
+
+        ('type', designing.NumericalRequirement),
+
+        ('cardinality', "0.N"),
+
+    ),
+    (designing.NumericalExperiment, 'meta'): (
+
+        ('type', shared.DocMetaInfo),
+
+        ('cardinality', "1.1"),
+
+    ),
+    (designing.NumericalExperiment, 'description'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (designing.NumericalExperiment, 'keywords'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.N"),
+
+    ),
+    (designing.NumericalExperiment, 'responsible_parties'): (
+
+        ('type', shared.Responsibility),
+
+        ('cardinality', "0.N"),
+
+    ),
+
+    (shared.Cimtext, 'content'): (
+
+        ('type', unicode),
+
+        ('cardinality', "1.1"),
+
+    ),
+    (shared.Cimtext, 'content_type'): (
+
+        ('type', unicode),
+
+        ('cardinality', "1.1"),
+
+    ),
+
+    (drs.DrsGeographicalIndicator, 'bounding_box'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (drs.DrsGeographicalIndicator, 'spatial_domain'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (drs.DrsGeographicalIndicator, 'operator'): (
+
+        ('type', unicode),
 
         ('cardinality', "0.1"),
 
@@ -4653,474 +4699,6 @@ CONSTRAINTS = {
         ('type', unicode),
 
         ('cardinality', "0.1"),
-
-    ),
-
-    (designing.DomainProperties, 'required_resolution'): (
-
-        ('type', science.Resolution),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (designing.DomainProperties, 'references'): (
-
-        ('type', shared.Reference),
-
-        ('cardinality', "0.N"),
-
-    ),
-    (designing.DomainProperties, 'conformance_is_requested'): (
-
-        ('type', bool),
-
-        ('cardinality', "1.1"),
-
-    ),
-    (designing.DomainProperties, 'keywords'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.N"),
-
-    ),
-    (designing.DomainProperties, 'canonical_name'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (designing.DomainProperties, 'meta'): (
-
-        ('type', shared.DocMetaInfo),
-
-        ('cardinality', "1.1"),
-
-    ),
-    (designing.DomainProperties, 'additional_requirements'): (
-
-        ('type', designing.NumericalRequirement),
-
-        ('cardinality', "0.0"),
-
-    ),
-    (designing.DomainProperties, 'description'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (designing.DomainProperties, 'duration'): (
-
-        ('type', shared.TimePeriod),
-
-        ('cardinality', "0.0"),
-
-    ),
-    (designing.DomainProperties, 'responsible_parties'): (
-
-        ('type', shared.Responsibility),
-
-        ('cardinality', "0.N"),
-
-    ),
-    (designing.DomainProperties, 'name'): (
-
-        ('type', unicode),
-
-        ('cardinality', "1.1"),
-
-    ),
-    (designing.DomainProperties, 'rationale'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (designing.DomainProperties, 'required_extent'): (
-
-        ('type', science.Extent),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (designing.DomainProperties, 'long_name'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-
-    (software.SoftwareComponent, 'repository'): (
-
-        ('type', shared.OnlineResource),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (software.SoftwareComponent, 'coupling_framework'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (software.SoftwareComponent, 'name'): (
-
-        ('type', unicode),
-
-        ('cardinality', "1.1"),
-
-    ),
-    (software.SoftwareComponent, 'license'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (software.SoftwareComponent, 'dependencies'): (
-
-        ('type', software.EntryPoint),
-
-        ('cardinality', "0.N"),
-
-    ),
-    (software.SoftwareComponent, 'connection_points'): (
-
-        ('type', software.Variable),
-
-        ('cardinality', "0.N"),
-
-    ),
-    (software.SoftwareComponent, 'version'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (software.SoftwareComponent, 'sub_components'): (
-
-        ('type', software.SoftwareComponent),
-
-        ('cardinality', "0.N"),
-
-    ),
-    (software.SoftwareComponent, 'grid'): (
-
-        ('type', software.Gridspec),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (software.SoftwareComponent, 'long_name'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (software.SoftwareComponent, 'development_history'): (
-
-        ('type', software.DevelopmentPath),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (software.SoftwareComponent, 'release_date'): (
-
-        ('type', datetime.datetime),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (software.SoftwareComponent, 'description'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (software.SoftwareComponent, 'language'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (software.SoftwareComponent, 'documentation'): (
-
-        ('type', shared.Reference),
-
-        ('cardinality', "0.N"),
-
-    ),
-    (software.SoftwareComponent, 'composition'): (
-
-        ('type', software.Composition),
-
-        ('cardinality', "0.1"),
-
-    ),
-
-    (designing.NumericalExperiment, 'canonical_name'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (designing.NumericalExperiment, 'references'): (
-
-        ('type', shared.Reference),
-
-        ('cardinality', "0.N"),
-
-    ),
-    (designing.NumericalExperiment, 'long_name'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (designing.NumericalExperiment, 'related_experiments'): (
-
-        ('type', designing.NumericalExperiment),
-
-        ('cardinality', "0.N"),
-
-    ),
-    (designing.NumericalExperiment, 'rationale'): (
-
-        ('type', unicode),
-
-        ('cardinality', "1.1"),
-
-    ),
-    (designing.NumericalExperiment, 'description'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (designing.NumericalExperiment, 'duration'): (
-
-        ('type', shared.TimePeriod),
-
-        ('cardinality', "0.0"),
-
-    ),
-    (designing.NumericalExperiment, 'responsible_parties'): (
-
-        ('type', shared.Responsibility),
-
-        ('cardinality', "0.N"),
-
-    ),
-    (designing.NumericalExperiment, 'requirements'): (
-
-        ('type', designing.NumericalRequirement),
-
-        ('cardinality', "0.N"),
-
-    ),
-    (designing.NumericalExperiment, 'meta'): (
-
-        ('type', shared.DocMetaInfo),
-
-        ('cardinality', "1.1"),
-
-    ),
-    (designing.NumericalExperiment, 'keywords'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.N"),
-
-    ),
-    (designing.NumericalExperiment, 'name'): (
-
-        ('type', unicode),
-
-        ('cardinality', "1.1"),
-
-    ),
-
-    (software.DevelopmentPath, 'consortium_name'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (software.DevelopmentPath, 'creators'): (
-
-        ('type', shared.Responsibility),
-
-        ('cardinality', "0.N"),
-
-    ),
-    (software.DevelopmentPath, 'developed_in_house'): (
-
-        ('type', bool),
-
-        ('cardinality', "1.1"),
-
-    ),
-    (software.DevelopmentPath, 'funding_sources'): (
-
-        ('type', shared.Responsibility),
-
-        ('cardinality', "0.N"),
-
-    ),
-    (software.DevelopmentPath, 'previous_version'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-
-    (designing.OutputTemporalRequirement, 'duration'): (
-
-        ('type', shared.TimePeriod),
-
-        ('cardinality', "0.0"),
-
-    ),
-    (designing.OutputTemporalRequirement, 'sliced_subset'): (
-
-        ('type', shared.TimesliceList),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (designing.OutputTemporalRequirement, 'references'): (
-
-        ('type', shared.Reference),
-
-        ('cardinality', "0.N"),
-
-    ),
-    (designing.OutputTemporalRequirement, 'conformance_is_requested'): (
-
-        ('type', bool),
-
-        ('cardinality', "1.1"),
-
-    ),
-    (designing.OutputTemporalRequirement, 'keywords'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.N"),
-
-    ),
-    (designing.OutputTemporalRequirement, 'canonical_name'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (designing.OutputTemporalRequirement, 'throughout'): (
-
-        ('type', bool),
-
-        ('cardinality', "1.1"),
-
-    ),
-    (designing.OutputTemporalRequirement, 'additional_requirements'): (
-
-        ('type', designing.NumericalRequirement),
-
-        ('cardinality', "0.0"),
-
-    ),
-    (designing.OutputTemporalRequirement, 'description'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (designing.OutputTemporalRequirement, 'rationale'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (designing.OutputTemporalRequirement, 'responsible_parties'): (
-
-        ('type', shared.Responsibility),
-
-        ('cardinality', "0.N"),
-
-    ),
-    (designing.OutputTemporalRequirement, 'name'): (
-
-        ('type', unicode),
-
-        ('cardinality', "1.1"),
-
-    ),
-    (designing.OutputTemporalRequirement, 'meta'): (
-
-        ('type', shared.DocMetaInfo),
-
-        ('cardinality', "1.1"),
-
-    ),
-    (designing.OutputTemporalRequirement, 'continuous_subset'): (
-
-        ('type', shared.TimePeriod),
-
-        ('cardinality', "0.N"),
-
-    ),
-    (designing.OutputTemporalRequirement, 'long_name'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-
-    (shared.OnlineResource, 'description'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (shared.OnlineResource, 'name'): (
-
-        ('type', unicode),
-
-        ('cardinality', "1.1"),
-
-    ),
-    (shared.OnlineResource, 'protocol'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (shared.OnlineResource, 'linkage'): (
-
-        ('type', unicode),
-
-        ('cardinality', "1.1"),
 
     ),
 
@@ -5161,6 +4739,77 @@ CONSTRAINTS = {
 
     ),
 
+    (shared.DocReference, 'relationship'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (shared.DocReference, 'id'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (shared.DocReference, 'description'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (shared.DocReference, 'protocol'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (shared.DocReference, 'type'): (
+
+        ('type', unicode),
+
+        ('cardinality', "1.1"),
+
+    ),
+    (shared.DocReference, 'version'): (
+
+        ('type', int),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (shared.DocReference, 'context'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (shared.DocReference, 'constraint_vocabulary'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (shared.DocReference, 'name'): (
+
+        ('type', unicode),
+
+        ('cardinality', "1.1"),
+
+    ),
+    (shared.DocReference, 'linkage'): (
+
+        ('type', unicode),
+
+        ('cardinality', "1.1"),
+
+    ),
+
     (shared.Pid, 'id'): (
 
         ('type', unicode),
@@ -5176,39 +4825,131 @@ CONSTRAINTS = {
 
     ),
 
-    (platform.StoragePool, 'vendor'): (
+    (shared.Calendar, 'month_lengths'): (
 
-        ('type', shared.Party),
+        ('type', int),
 
-        ('cardinality', "0.1"),
+        ('cardinality', "0.N"),
 
     ),
-    (platform.StoragePool, 'description'): (
+    (shared.Calendar, 'description'): (
 
         ('type', unicode),
 
         ('cardinality', "0.1"),
 
     ),
-    (platform.StoragePool, 'type'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (platform.StoragePool, 'name'): (
+    (shared.Calendar, 'standard_name'): (
 
         ('type', unicode),
 
         ('cardinality', "1.1"),
 
     ),
-    (platform.StoragePool, 'volume_available'): (
+    (shared.Calendar, 'name'): (
 
-        ('type', platform.StorageVolume),
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+
+    (designing.DomainProperties, 'required_resolution'): (
+
+        ('type', science.Resolution),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (designing.DomainProperties, 'description'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (designing.DomainProperties, 'conformance_is_requested'): (
+
+        ('type', bool),
 
         ('cardinality', "1.1"),
+
+    ),
+    (designing.DomainProperties, 'canonical_name'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (designing.DomainProperties, 'meta'): (
+
+        ('type', shared.DocMetaInfo),
+
+        ('cardinality', "1.1"),
+
+    ),
+    (designing.DomainProperties, 'long_name'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (designing.DomainProperties, 'references'): (
+
+        ('type', shared.Reference),
+
+        ('cardinality', "0.N"),
+
+    ),
+    (designing.DomainProperties, 'additional_requirements'): (
+
+        ('type', designing.NumericalRequirement),
+
+        ('cardinality', "0.0"),
+
+    ),
+    (designing.DomainProperties, 'name'): (
+
+        ('type', unicode),
+
+        ('cardinality', "1.1"),
+
+    ),
+    (designing.DomainProperties, 'duration'): (
+
+        ('type', shared.TimePeriod),
+
+        ('cardinality', "0.0"),
+
+    ),
+    (designing.DomainProperties, 'rationale'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (designing.DomainProperties, 'keywords'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.N"),
+
+    ),
+    (designing.DomainProperties, 'required_extent'): (
+
+        ('type', science.Extent),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (designing.DomainProperties, 'responsible_parties'): (
+
+        ('type', shared.Responsibility),
+
+        ('cardinality', "0.N"),
 
     ),
 
@@ -5219,18 +4960,11 @@ CONSTRAINTS = {
         ('cardinality', "0.0"),
 
     ),
-    (activity.UberEnsemble, 'references'): (
+    (activity.UberEnsemble, 'has_ensemble_axes'): (
 
-        ('type', shared.Reference),
+        ('type', activity.EnsembleAxis),
 
-        ('cardinality', "0.N"),
-
-    ),
-    (activity.UberEnsemble, 'common_conformances'): (
-
-        ('type', activity.Conformance),
-
-        ('cardinality', "0.0"),
+        ('cardinality', "1.N"),
 
     ),
     (activity.UberEnsemble, 'meta'): (
@@ -5238,6 +4972,13 @@ CONSTRAINTS = {
         ('type', shared.DocMetaInfo),
 
         ('cardinality', "1.1"),
+
+    ),
+    (activity.UberEnsemble, 'common_conformances'): (
+
+        ('type', activity.Conformance),
+
+        ('cardinality', "0.0"),
 
     ),
     (activity.UberEnsemble, 'child_ensembles'): (
@@ -5252,13 +4993,6 @@ CONSTRAINTS = {
         ('type', shared.TimePeriod),
 
         ('cardinality', "0.0"),
-
-    ),
-    (activity.UberEnsemble, 'responsible_parties'): (
-
-        ('type', shared.Responsibility),
-
-        ('cardinality', "0.N"),
 
     ),
     (activity.UberEnsemble, 'documentation'): (
@@ -5282,11 +5016,11 @@ CONSTRAINTS = {
         ('cardinality', "0.0"),
 
     ),
-    (activity.UberEnsemble, 'has_ensemble_axes'): (
+    (activity.UberEnsemble, 'responsible_parties'): (
 
-        ('type', activity.EnsembleAxis),
+        ('type', shared.Responsibility),
 
-        ('cardinality', "1.N"),
+        ('cardinality', "0.N"),
 
     ),
     (activity.UberEnsemble, 'long_name'): (
@@ -5308,6 +5042,13 @@ CONSTRAINTS = {
         ('type', activity.EnsembleMember),
 
         ('cardinality', "0.0"),
+
+    ),
+    (activity.UberEnsemble, 'references'): (
+
+        ('type', shared.Reference),
+
+        ('cardinality', "0.N"),
 
     ),
     (activity.UberEnsemble, 'name'): (
@@ -5332,28 +5073,91 @@ CONSTRAINTS = {
 
     ),
 
-    (shared.Calendar, 'description'): (
+    (drs.DrsAtomicDataset, 'ensemble_member'): (
 
-        ('type', unicode),
+        ('type', drs.DrsEnsembleIdentifier),
+
+        ('cardinality', "1.1"),
+
+    ),
+    (drs.DrsAtomicDataset, 'temporal_constraint'): (
+
+        ('type', drs.DrsTemporalIdentifier),
 
         ('cardinality', "0.1"),
 
     ),
-    (shared.Calendar, 'month_lengths'): (
+    (drs.DrsAtomicDataset, 'product'): (
+
+        ('type', unicode),
+
+        ('cardinality', "1.1"),
+
+    ),
+    (drs.DrsAtomicDataset, 'institute'): (
+
+        ('type', unicode),
+
+        ('cardinality', "1.1"),
+
+    ),
+    (drs.DrsAtomicDataset, 'version_number'): (
 
         ('type', int),
 
-        ('cardinality', "0.N"),
+        ('cardinality', "1.1"),
 
     ),
-    (shared.Calendar, 'name'): (
+    (drs.DrsAtomicDataset, 'activity'): (
 
         ('type', unicode),
+
+        ('cardinality', "1.1"),
+
+    ),
+    (drs.DrsAtomicDataset, 'geographical_constraint'): (
+
+        ('type', drs.DrsGeographicalIndicator),
 
         ('cardinality', "0.1"),
 
     ),
-    (shared.Calendar, 'standard_name'): (
+    (drs.DrsAtomicDataset, 'variable_name'): (
+
+        ('type', unicode),
+
+        ('cardinality', "1.1"),
+
+    ),
+    (drs.DrsAtomicDataset, 'realm'): (
+
+        ('type', unicode),
+
+        ('cardinality', "1.1"),
+
+    ),
+    (drs.DrsAtomicDataset, 'model'): (
+
+        ('type', unicode),
+
+        ('cardinality', "1.1"),
+
+    ),
+    (drs.DrsAtomicDataset, 'frequency'): (
+
+        ('type', unicode),
+
+        ('cardinality', "1.1"),
+
+    ),
+    (drs.DrsAtomicDataset, 'mip_table'): (
+
+        ('type', unicode),
+
+        ('cardinality', "1.1"),
+
+    ),
+    (drs.DrsAtomicDataset, 'experiment'): (
 
         ('type', unicode),
 
@@ -5375,7 +5179,7 @@ CONSTRAINTS = {
         ('cardinality', "0.1"),
 
     ),
-    (platform.ComputePool, 'description'): (
+    (platform.ComputePool, 'accelerator_type'): (
 
         ('type', unicode),
 
@@ -5396,7 +5200,7 @@ CONSTRAINTS = {
         ('cardinality', "0.1"),
 
     ),
-    (platform.ComputePool, 'accelerator_type'): (
+    (platform.ComputePool, 'description'): (
 
         ('type', unicode),
 
@@ -5453,11 +5257,11 @@ CONSTRAINTS = {
         ('cardinality', "0.1"),
 
     ),
-    (shared.DocMetaInfo, 'version'): (
+    (shared.DocMetaInfo, 'external_ids'): (
 
-        ('type', int),
+        ('type', unicode),
 
-        ('cardinality', "1.1"),
+        ('cardinality', "0.N"),
 
     ),
     (shared.DocMetaInfo, 'drs_path'): (
@@ -5474,11 +5278,11 @@ CONSTRAINTS = {
         ('cardinality', "0.1"),
 
     ),
-    (shared.DocMetaInfo, 'external_ids'): (
+    (shared.DocMetaInfo, 'type'): (
 
         ('type', unicode),
 
-        ('cardinality', "0.N"),
+        ('cardinality', "1.1"),
 
     ),
     (shared.DocMetaInfo, 'update_date'): (
@@ -5523,11 +5327,11 @@ CONSTRAINTS = {
         ('cardinality', "1.1"),
 
     ),
-    (shared.DocMetaInfo, 'create_date'): (
+    (shared.DocMetaInfo, 'sort_key'): (
 
-        ('type', datetime.datetime),
+        ('type', unicode),
 
-        ('cardinality', "1.1"),
+        ('cardinality', "0.1"),
 
     ),
     (shared.DocMetaInfo, 'project'): (
@@ -5544,16 +5348,16 @@ CONSTRAINTS = {
         ('cardinality', "1.1"),
 
     ),
-    (shared.DocMetaInfo, 'sort_key'): (
+    (shared.DocMetaInfo, 'create_date'): (
 
-        ('type', unicode),
+        ('type', datetime.datetime),
 
-        ('cardinality', "0.1"),
+        ('cardinality', "1.1"),
 
     ),
-    (shared.DocMetaInfo, 'type'): (
+    (shared.DocMetaInfo, 'version'): (
 
-        ('type', unicode),
+        ('type', int),
 
         ('cardinality', "1.1"),
 
@@ -5578,6 +5382,91 @@ CONSTRAINTS = {
         ('type', shared.DateTime),
 
         ('cardinality', "0.1"),
+
+    ),
+
+    (designing.NumericalRequirement, 'canonical_name'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (designing.NumericalRequirement, 'name'): (
+
+        ('type', unicode),
+
+        ('cardinality', "1.1"),
+
+    ),
+    (designing.NumericalRequirement, 'conformance_is_requested'): (
+
+        ('type', bool),
+
+        ('cardinality', "1.1"),
+
+    ),
+    (designing.NumericalRequirement, 'long_name'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (designing.NumericalRequirement, 'rationale'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (designing.NumericalRequirement, 'meta'): (
+
+        ('type', shared.DocMetaInfo),
+
+        ('cardinality', "1.1"),
+
+    ),
+    (designing.NumericalRequirement, 'references'): (
+
+        ('type', shared.Reference),
+
+        ('cardinality', "0.N"),
+
+    ),
+    (designing.NumericalRequirement, 'duration'): (
+
+        ('type', shared.TimePeriod),
+
+        ('cardinality', "0.0"),
+
+    ),
+    (designing.NumericalRequirement, 'keywords'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.N"),
+
+    ),
+    (designing.NumericalRequirement, 'description'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (designing.NumericalRequirement, 'additional_requirements'): (
+
+        ('type', designing.NumericalRequirement),
+
+        ('cardinality', "0.N"),
+
+    ),
+    (designing.NumericalRequirement, 'responsible_parties'): (
+
+        ('type', shared.Responsibility),
+
+        ('cardinality', "0.N"),
 
     ),
 
@@ -5638,58 +5527,163 @@ CONSTRAINTS = {
 
     ),
 
-    (activity.EnsembleAxis, 'extra_detail'): (
+    (science.Extent, 'bottom_vertical_level'): (
+
+        ('type', float),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (science.Extent, 'region_known_as'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.N"),
+
+    ),
+    (science.Extent, 'is_global'): (
+
+        ('type', bool),
+
+        ('cardinality', "1.1"),
+
+    ),
+    (science.Extent, 'southern_boundary'): (
+
+        ('type', float),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (science.Extent, 'eastern_boundary'): (
+
+        ('type', float),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (science.Extent, 'top_vertical_level'): (
+
+        ('type', float),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (science.Extent, 'northern_boundary'): (
+
+        ('type', float),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (science.Extent, 'western_boundary'): (
+
+        ('type', float),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (science.Extent, 'z_units'): (
 
         ('type', unicode),
 
         ('cardinality', "1.1"),
 
     ),
-    (activity.EnsembleAxis, 'member'): (
 
-        ('type', activity.AxisMember),
+    (platform.Partition, 'online_documentation'): (
+
+        ('type', shared.OnlineResource),
+
+        ('cardinality', "0.N"),
+
+    ),
+    (platform.Partition, 'description'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (platform.Partition, 'institution'): (
+
+        ('type', shared.Party),
+
+        ('cardinality', "1.1"),
+
+    ),
+    (platform.Partition, 'when_used'): (
+
+        ('type', shared.TimePeriod),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (platform.Partition, 'name'): (
+
+        ('type', unicode),
+
+        ('cardinality', "1.1"),
+
+    ),
+    (platform.Partition, 'vendor'): (
+
+        ('type', shared.Party),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (platform.Partition, 'storage_pools'): (
+
+        ('type', platform.StoragePool),
+
+        ('cardinality', "0.N"),
+
+    ),
+    (platform.Partition, 'partition'): (
+
+        ('type', platform.Partition),
+
+        ('cardinality', "0.N"),
+
+    ),
+    (platform.Partition, 'compute_pools'): (
+
+        ('type', platform.ComputePool),
 
         ('cardinality', "1.N"),
 
     ),
-    (activity.EnsembleAxis, 'short_identifier'): (
+    (platform.Partition, 'model_number'): (
 
         ('type', unicode),
 
-        ('cardinality', "1.1"),
-
-    ),
-    (activity.EnsembleAxis, 'target_requirement'): (
-
-        ('type', designing.NumericalRequirement),
-
-        ('cardinality', "1.1"),
+        ('cardinality', "0.1"),
 
     ),
 
-    (science.ScienceContext, 'id'): (
+    (science.Tuning, 'global_mean_metrics_used'): (
 
-        ('type', unicode),
+        ('type', data.VariableCollection),
 
-        ('cardinality', "1.1"),
-
-    ),
-    (science.ScienceContext, 'name'): (
-
-        ('type', unicode),
-
-        ('cardinality', "1.1"),
+        ('cardinality', "0.1"),
 
     ),
-    (science.ScienceContext, 'context'): (
+    (science.Tuning, 'trend_metrics_used'): (
 
-        ('type', unicode),
+        ('type', data.VariableCollection),
 
-        ('cardinality', "1.1"),
+        ('cardinality', "0.1"),
 
     ),
+    (science.Tuning, 'regional_metrics_used'): (
 
-    (software.Gridspec, 'description'): (
+        ('type', data.VariableCollection),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (science.Tuning, 'description'): (
 
         ('type', unicode),
 
@@ -5702,13 +5696,6 @@ CONSTRAINTS = {
         ('type', shared.Calendar),
 
         ('cardinality', "0.1"),
-
-    ),
-    (shared.TimePeriod, 'length'): (
-
-        ('type', int),
-
-        ('cardinality', "1.1"),
 
     ),
     (shared.TimePeriod, 'units'): (
@@ -5725,6 +5712,13 @@ CONSTRAINTS = {
         ('cardinality', "0.1"),
 
     ),
+    (shared.TimePeriod, 'length'): (
+
+        ('type', int),
+
+        ('cardinality', "1.1"),
+
+    ),
     (shared.TimePeriod, 'date_type'): (
 
         ('type', unicode),
@@ -5733,39 +5727,124 @@ CONSTRAINTS = {
 
     ),
 
-    (platform.ComponentPerformance, 'nodes_used'): (
+    (designing.MultiEnsemble, 'canonical_name'): (
 
-        ('type', int),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (platform.ComponentPerformance, 'cores_used'): (
-
-        ('type', int),
+        ('type', unicode),
 
         ('cardinality', "0.1"),
 
     ),
-    (platform.ComponentPerformance, 'speed'): (
+    (designing.MultiEnsemble, 'description'): (
 
-        ('type', float),
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (designing.MultiEnsemble, 'conformance_is_requested'): (
+
+        ('type', bool),
 
         ('cardinality', "1.1"),
 
     ),
-    (platform.ComponentPerformance, 'component_name'): (
+    (designing.MultiEnsemble, 'long_name'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (designing.MultiEnsemble, 'duration'): (
+
+        ('type', shared.TimePeriod),
+
+        ('cardinality', "0.0"),
+
+    ),
+    (designing.MultiEnsemble, 'meta'): (
+
+        ('type', shared.DocMetaInfo),
+
+        ('cardinality', "1.1"),
+
+    ),
+    (designing.MultiEnsemble, 'references'): (
+
+        ('type', shared.Reference),
+
+        ('cardinality', "0.N"),
+
+    ),
+    (designing.MultiEnsemble, 'additional_requirements'): (
+
+        ('type', designing.NumericalRequirement),
+
+        ('cardinality', "0.0"),
+
+    ),
+    (designing.MultiEnsemble, 'name'): (
 
         ('type', unicode),
 
         ('cardinality', "1.1"),
 
     ),
-    (platform.ComponentPerformance, 'component'): (
+    (designing.MultiEnsemble, 'rationale'): (
 
-        ('type', software.SoftwareComponent),
+        ('type', unicode),
 
         ('cardinality', "0.1"),
+
+    ),
+    (designing.MultiEnsemble, 'keywords'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.N"),
+
+    ),
+    (designing.MultiEnsemble, 'ensemble_axis'): (
+
+        ('type', designing.EnsembleRequirement),
+
+        ('cardinality', "1.N"),
+
+    ),
+    (designing.MultiEnsemble, 'responsible_parties'): (
+
+        ('type', shared.Responsibility),
+
+        ('cardinality', "0.N"),
+
+    ),
+
+    (shared.OnlineResource, 'description'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (shared.OnlineResource, 'name'): (
+
+        ('type', unicode),
+
+        ('cardinality', "1.1"),
+
+    ),
+    (shared.OnlineResource, 'protocol'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (shared.OnlineResource, 'linkage'): (
+
+        ('type', unicode),
+
+        ('cardinality', "1.1"),
 
     ),
 
@@ -5849,18 +5928,11 @@ CONSTRAINTS = {
         ('cardinality', "1.1"),
 
     ),
-    (activity.Conformance, 'references'): (
+    (activity.Conformance, 'long_name'): (
 
-        ('type', shared.Reference),
+        ('type', unicode),
 
-        ('cardinality', "0.N"),
-
-    ),
-    (activity.Conformance, 'meta'): (
-
-        ('type', shared.DocMetaInfo),
-
-        ('cardinality', "1.1"),
+        ('cardinality', "0.1"),
 
     ),
     (activity.Conformance, 'rationale'): (
@@ -5870,6 +5942,20 @@ CONSTRAINTS = {
         ('cardinality', "0.0"),
 
     ),
+    (activity.Conformance, 'meta'): (
+
+        ('type', shared.DocMetaInfo),
+
+        ('cardinality', "1.1"),
+
+    ),
+    (activity.Conformance, 'references'): (
+
+        ('type', shared.Reference),
+
+        ('cardinality', "0.N"),
+
+    ),
     (activity.Conformance, 'duration'): (
 
         ('type', shared.TimePeriod),
@@ -5877,21 +5963,14 @@ CONSTRAINTS = {
         ('cardinality', "0.0"),
 
     ),
-    (activity.Conformance, 'responsible_parties'): (
-
-        ('type', shared.Responsibility),
-
-        ('cardinality', "0.N"),
-
-    ),
-    (activity.Conformance, 'long_name'): (
+    (activity.Conformance, 'description'): (
 
         ('type', unicode),
 
-        ('cardinality', "0.1"),
+        ('cardinality', "1.1"),
 
     ),
-    (activity.Conformance, 'description'): (
+    (activity.Conformance, 'name'): (
 
         ('type', unicode),
 
@@ -5905,75 +5984,11 @@ CONSTRAINTS = {
         ('cardinality', "0.0"),
 
     ),
-    (activity.Conformance, 'name'): (
+    (activity.Conformance, 'responsible_parties'): (
 
-        ('type', unicode),
-
-        ('cardinality', "1.1"),
-
-    ),
-
-    (science.Extent, 'bottom_vertical_level'): (
-
-        ('type', float),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (science.Extent, 'region_known_as'): (
-
-        ('type', unicode),
+        ('type', shared.Responsibility),
 
         ('cardinality', "0.N"),
-
-    ),
-    (science.Extent, 'northern_boundary'): (
-
-        ('type', float),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (science.Extent, 'southern_boundary'): (
-
-        ('type', float),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (science.Extent, 'eastern_boundary'): (
-
-        ('type', float),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (science.Extent, 'top_vertical_level'): (
-
-        ('type', float),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (science.Extent, 'is_global'): (
-
-        ('type', bool),
-
-        ('cardinality', "1.1"),
-
-    ),
-    (science.Extent, 'western_boundary'): (
-
-        ('type', float),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (science.Extent, 'z_units'): (
-
-        ('type', unicode),
-
-        ('cardinality', "1.1"),
 
     ),
 
@@ -5991,11 +6006,11 @@ CONSTRAINTS = {
         ('cardinality', "1.1"),
 
     ),
-    (designing.ForcingConstraint, 'references'): (
+    (designing.ForcingConstraint, 'long_name'): (
 
-        ('type', shared.Reference),
+        ('type', unicode),
 
-        ('cardinality', "0.N"),
+        ('cardinality', "0.1"),
 
     ),
     (designing.ForcingConstraint, 'code'): (
@@ -6012,25 +6027,11 @@ CONSTRAINTS = {
         ('cardinality', "0.0"),
 
     ),
-    (designing.ForcingConstraint, 'description'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
     (designing.ForcingConstraint, 'data_link'): (
 
         ('type', shared.OnlineResource),
 
         ('cardinality', "0.1"),
-
-    ),
-    (designing.ForcingConstraint, 'responsible_parties'): (
-
-        ('type', shared.Responsibility),
-
-        ('cardinality', "0.N"),
 
     ),
     (designing.ForcingConstraint, 'keywords'): (
@@ -6040,6 +6041,13 @@ CONSTRAINTS = {
         ('cardinality', "0.N"),
 
     ),
+    (designing.ForcingConstraint, 'description'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
     (designing.ForcingConstraint, 'forcing_type'): (
 
         ('type', unicode),
@@ -6047,11 +6055,11 @@ CONSTRAINTS = {
         ('cardinality', "1.1"),
 
     ),
-    (designing.ForcingConstraint, 'long_name'): (
+    (designing.ForcingConstraint, 'responsible_parties'): (
 
-        ('type', unicode),
+        ('type', shared.Responsibility),
 
-        ('cardinality', "0.1"),
+        ('cardinality', "0.N"),
 
     ),
     (designing.ForcingConstraint, 'group'): (
@@ -6073,6 +6081,13 @@ CONSTRAINTS = {
         ('type', shared.Reference),
 
         ('cardinality', "0.1"),
+
+    ),
+    (designing.ForcingConstraint, 'references'): (
+
+        ('type', shared.Reference),
+
+        ('cardinality', "0.N"),
 
     ),
     (designing.ForcingConstraint, 'name'): (
@@ -6106,6 +6121,42 @@ CONSTRAINTS = {
     (designing.ForcingConstraint, 'category'): (
 
         ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+
+    (platform.ComponentPerformance, 'nodes_used'): (
+
+        ('type', int),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (platform.ComponentPerformance, 'cores_used'): (
+
+        ('type', int),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (platform.ComponentPerformance, 'speed'): (
+
+        ('type', float),
+
+        ('cardinality', "1.1"),
+
+    ),
+    (platform.ComponentPerformance, 'component_name'): (
+
+        ('type', unicode),
+
+        ('cardinality', "1.1"),
+
+    ),
+    (platform.ComponentPerformance, 'component'): (
+
+        ('type', software.SoftwareComponent),
 
         ('cardinality', "0.1"),
 
@@ -6182,11 +6233,11 @@ CONSTRAINTS = {
         ('cardinality', "1.1"),
 
     ),
-    (designing.TemporalConstraint, 'references'): (
+    (designing.TemporalConstraint, 'long_name'): (
 
-        ('type', shared.Reference),
+        ('type', unicode),
 
-        ('cardinality', "0.N"),
+        ('cardinality', "0.1"),
 
     ),
     (designing.TemporalConstraint, 'description'): (
@@ -6210,13 +6261,6 @@ CONSTRAINTS = {
         ('cardinality', "0.1"),
 
     ),
-    (designing.TemporalConstraint, 'responsible_parties'): (
-
-        ('type', shared.Responsibility),
-
-        ('cardinality', "0.N"),
-
-    ),
     (designing.TemporalConstraint, 'keywords'): (
 
         ('type', unicode),
@@ -6231,11 +6275,11 @@ CONSTRAINTS = {
         ('cardinality', "0.1"),
 
     ),
-    (designing.TemporalConstraint, 'long_name'): (
+    (designing.TemporalConstraint, 'responsible_parties'): (
 
-        ('type', unicode),
+        ('type', shared.Responsibility),
 
-        ('cardinality', "0.1"),
+        ('cardinality', "0.N"),
 
     ),
     (designing.TemporalConstraint, 'start_date'): (
@@ -6257,6 +6301,13 @@ CONSTRAINTS = {
         ('type', shared.TimePeriod),
 
         ('cardinality', "0.1"),
+
+    ),
+    (designing.TemporalConstraint, 'references'): (
+
+        ('type', shared.Reference),
+
+        ('cardinality', "0.N"),
 
     ),
     (designing.TemporalConstraint, 'name'): (
@@ -6288,9 +6339,9 @@ CONSTRAINTS = {
         ('cardinality', "1.1"),
 
     ),
-    (designing.EnsembleRequirement, 'references'): (
+    (designing.EnsembleRequirement, 'keywords'): (
 
-        ('type', shared.Reference),
+        ('type', unicode),
 
         ('cardinality', "0.N"),
 
@@ -6302,42 +6353,7 @@ CONSTRAINTS = {
         ('cardinality', "1.1"),
 
     ),
-    (designing.EnsembleRequirement, 'keywords'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.N"),
-
-    ),
     (designing.EnsembleRequirement, 'canonical_name'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (designing.EnsembleRequirement, 'name'): (
-
-        ('type', unicode),
-
-        ('cardinality', "1.1"),
-
-    ),
-    (designing.EnsembleRequirement, 'minimum_size'): (
-
-        ('type', int),
-
-        ('cardinality', "1.1"),
-
-    ),
-    (designing.EnsembleRequirement, 'additional_requirements'): (
-
-        ('type', designing.NumericalRequirement),
-
-        ('cardinality', "0.0"),
-
-    ),
-    (designing.EnsembleRequirement, 'description'): (
 
         ('type', unicode),
 
@@ -6351,11 +6367,32 @@ CONSTRAINTS = {
         ('cardinality', "0.0"),
 
     ),
-    (designing.EnsembleRequirement, 'responsible_parties'): (
+    (designing.EnsembleRequirement, 'minimum_size'): (
 
-        ('type', shared.Responsibility),
+        ('type', int),
+
+        ('cardinality', "1.1"),
+
+    ),
+    (designing.EnsembleRequirement, 'references'): (
+
+        ('type', shared.Reference),
 
         ('cardinality', "0.N"),
+
+    ),
+    (designing.EnsembleRequirement, 'additional_requirements'): (
+
+        ('type', designing.NumericalRequirement),
+
+        ('cardinality', "0.0"),
+
+    ),
+    (designing.EnsembleRequirement, 'name'): (
+
+        ('type', unicode),
+
+        ('cardinality', "1.1"),
 
     ),
     (designing.EnsembleRequirement, 'ensemble_member'): (
@@ -6372,6 +6409,13 @@ CONSTRAINTS = {
         ('cardinality', "1.1"),
 
     ),
+    (designing.EnsembleRequirement, 'long_name'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
     (designing.EnsembleRequirement, 'rationale'): (
 
         ('type', unicode),
@@ -6379,7 +6423,14 @@ CONSTRAINTS = {
         ('cardinality', "0.1"),
 
     ),
-    (designing.EnsembleRequirement, 'long_name'): (
+    (designing.EnsembleRequirement, 'responsible_parties'): (
+
+        ('type', shared.Responsibility),
+
+        ('cardinality', "0.N"),
+
+    ),
+    (designing.EnsembleRequirement, 'description'): (
 
         ('type', unicode),
 
@@ -6397,299 +6448,6 @@ CONSTRAINTS = {
     (shared.DateTime, 'value'): (
 
         ('type', unicode),
-
-        ('cardinality', "1.1"),
-
-    ),
-
-    (software.ComponentBase, 'repository'): (
-
-        ('type', shared.OnlineResource),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (software.ComponentBase, 'name'): (
-
-        ('type', unicode),
-
-        ('cardinality', "1.1"),
-
-    ),
-    (software.ComponentBase, 'development_history'): (
-
-        ('type', software.DevelopmentPath),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (software.ComponentBase, 'long_name'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (software.ComponentBase, 'description'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (software.ComponentBase, 'version'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (software.ComponentBase, 'release_date'): (
-
-        ('type', datetime.datetime),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (software.ComponentBase, 'documentation'): (
-
-        ('type', shared.Reference),
-
-        ('cardinality', "0.N"),
-
-    ),
-
-    (shared.DocReference, 'id'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (shared.DocReference, 'description'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (shared.DocReference, 'protocol'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (shared.DocReference, 'type'): (
-
-        ('type', unicode),
-
-        ('cardinality', "1.1"),
-
-    ),
-    (shared.DocReference, 'relationship'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (shared.DocReference, 'version'): (
-
-        ('type', int),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (shared.DocReference, 'constraint_vocabulary'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (shared.DocReference, 'context'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (shared.DocReference, 'name'): (
-
-        ('type', unicode),
-
-        ('cardinality', "1.1"),
-
-    ),
-    (shared.DocReference, 'linkage'): (
-
-        ('type', unicode),
-
-        ('cardinality', "1.1"),
-
-    ),
-
-    (platform.Partition, 'online_documentation'): (
-
-        ('type', shared.OnlineResource),
-
-        ('cardinality', "0.N"),
-
-    ),
-    (platform.Partition, 'institution'): (
-
-        ('type', shared.Party),
-
-        ('cardinality', "1.1"),
-
-    ),
-    (platform.Partition, 'compute_pools'): (
-
-        ('type', platform.ComputePool),
-
-        ('cardinality', "1.N"),
-
-    ),
-    (platform.Partition, 'when_used'): (
-
-        ('type', shared.TimePeriod),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (platform.Partition, 'vendor'): (
-
-        ('type', shared.Party),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (platform.Partition, 'partition'): (
-
-        ('type', platform.Partition),
-
-        ('cardinality', "0.N"),
-
-    ),
-    (platform.Partition, 'model_number'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (platform.Partition, 'description'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (platform.Partition, 'storage_pools'): (
-
-        ('type', platform.StoragePool),
-
-        ('cardinality', "0.N"),
-
-    ),
-    (platform.Partition, 'name'): (
-
-        ('type', unicode),
-
-        ('cardinality', "1.1"),
-
-    ),
-
-    (activity.Activity, 'canonical_name'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (activity.Activity, 'keywords'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.N"),
-
-    ),
-    (activity.Activity, 'references'): (
-
-        ('type', shared.Reference),
-
-        ('cardinality', "0.N"),
-
-    ),
-    (activity.Activity, 'meta'): (
-
-        ('type', shared.DocMetaInfo),
-
-        ('cardinality', "1.1"),
-
-    ),
-    (activity.Activity, 'description'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (activity.Activity, 'duration'): (
-
-        ('type', shared.TimePeriod),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (activity.Activity, 'name'): (
-
-        ('type', unicode),
-
-        ('cardinality', "1.1"),
-
-    ),
-    (activity.Activity, 'responsible_parties'): (
-
-        ('type', shared.Responsibility),
-
-        ('cardinality', "0.N"),
-
-    ),
-    (activity.Activity, 'rationale'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (activity.Activity, 'long_name'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-
-    (shared.KeyFloat, 'key'): (
-
-        ('type', unicode),
-
-        ('cardinality', "1.1"),
-
-    ),
-    (shared.KeyFloat, 'value'): (
-
-        ('type', float),
-
-        ('cardinality', "1.1"),
-
-    ),
-
-    (shared.DatetimeSet, 'length'): (
-
-        ('type', int),
 
         ('cardinality', "1.1"),
 
@@ -6752,85 +6510,57 @@ CONSTRAINTS = {
 
     ),
 
-    (software.EntryPoint, 'name'): (
+    (software.DevelopmentPath, 'consortium_name'): (
 
         ('type', unicode),
 
         ('cardinality', "0.1"),
 
     ),
+    (software.DevelopmentPath, 'developed_in_house'): (
 
-    (science.Process, 'references'): (
-
-        ('type', shared.Reference),
-
-        ('cardinality', "0.N"),
-
-    ),
-    (science.Process, 'name'): (
-
-        ('type', unicode),
+        ('type', bool),
 
         ('cardinality', "1.1"),
 
     ),
-    (science.Process, 'context'): (
+    (software.DevelopmentPath, 'creators'): (
 
-        ('type', unicode),
-
-        ('cardinality', "1.1"),
-
-    ),
-    (science.Process, 'implementation_overview'): (
-
-        ('type', unicode),
-
-        ('cardinality', "1.1"),
-
-    ),
-    (science.Process, 'properties'): (
-
-        ('type', science.Detail),
+        ('type', shared.Responsibility),
 
         ('cardinality', "0.N"),
 
     ),
-    (science.Process, 'sub_processes'): (
-
-        ('type', science.SubProcess),
-
-        ('cardinality', "0.N"),
-
-    ),
-    (science.Process, 'id'): (
-
-        ('type', unicode),
-
-        ('cardinality', "1.1"),
-
-    ),
-    (science.Process, 'algorithms'): (
-
-        ('type', science.Algorithm),
-
-        ('cardinality', "0.N"),
-
-    ),
-    (science.Process, 'keywords'): (
+    (software.DevelopmentPath, 'previous_version'): (
 
         ('type', unicode),
 
         ('cardinality', "0.1"),
 
     ),
+    (software.DevelopmentPath, 'funding_sources'): (
 
-    (science.Model, 'repository'): (
+        ('type', shared.Responsibility),
 
-        ('type', shared.OnlineResource),
-
-        ('cardinality', "0.1"),
+        ('cardinality', "0.N"),
 
     ),
+
+    (shared.KeyFloat, 'key'): (
+
+        ('type', unicode),
+
+        ('cardinality', "1.1"),
+
+    ),
+    (shared.KeyFloat, 'value'): (
+
+        ('type', float),
+
+        ('cardinality', "1.1"),
+
+    ),
+
     (science.Model, 'coupler'): (
 
         ('type', unicode),
@@ -6838,65 +6568,9 @@ CONSTRAINTS = {
         ('cardinality', "0.1"),
 
     ),
-    (science.Model, 'coupled_components'): (
+    (science.Model, 'repository'): (
 
-        ('type', science.Model),
-
-        ('cardinality', "0.N"),
-
-    ),
-    (science.Model, 'release_date'): (
-
-        ('type', datetime.datetime),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (science.Model, 'development_history'): (
-
-        ('type', software.DevelopmentPath),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (science.Model, 'simulates'): (
-
-        ('type', science.ScientificDomain),
-
-        ('cardinality', "0.N"),
-
-    ),
-    (science.Model, 'id'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (science.Model, 'name'): (
-
-        ('type', unicode),
-
-        ('cardinality', "1.1"),
-
-    ),
-    (science.Model, 'internal_software_components'): (
-
-        ('type', software.SoftwareComponent),
-
-        ('cardinality', "0.N"),
-
-    ),
-    (science.Model, 'long_name'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (science.Model, 'version'): (
-
-        ('type', unicode),
+        ('type', shared.OnlineResource),
 
         ('cardinality', "0.1"),
 
@@ -6908,11 +6582,81 @@ CONSTRAINTS = {
         ('cardinality', "0.1"),
 
     ),
+    (science.Model, 'documentation'): (
+
+        ('type', shared.Reference),
+
+        ('cardinality', "0.N"),
+
+    ),
+    (science.Model, 'long_name'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (science.Model, 'development_history'): (
+
+        ('type', software.DevelopmentPath),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (science.Model, 'version'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (science.Model, 'id'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (science.Model, 'simulates'): (
+
+        ('type', science.ScientificDomain),
+
+        ('cardinality', "0.N"),
+
+    ),
+    (science.Model, 'name'): (
+
+        ('type', unicode),
+
+        ('cardinality', "1.1"),
+
+    ),
+    (science.Model, 'category'): (
+
+        ('type', unicode),
+
+        ('cardinality', "1.1"),
+
+    ),
     (science.Model, 'description'): (
 
         ('type', unicode),
 
         ('cardinality', "0.1"),
+
+    ),
+    (science.Model, 'release_date'): (
+
+        ('type', datetime.datetime),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (science.Model, 'coupled_components'): (
+
+        ('type', science.Model),
+
+        ('cardinality', "0.N"),
 
     ),
     (science.Model, 'meta'): (
@@ -6922,18 +6666,27 @@ CONSTRAINTS = {
         ('cardinality', "1.1"),
 
     ),
-    (science.Model, 'documentation'): (
+    (science.Model, 'internal_software_components'): (
 
-        ('type', shared.Reference),
+        ('type', software.SoftwareComponent),
 
         ('cardinality', "0.N"),
 
     ),
-    (science.Model, 'category'): (
+
+    (shared.DatetimeSet, 'length'): (
+
+        ('type', int),
+
+        ('cardinality', "1.1"),
+
+    ),
+
+    (software.EntryPoint, 'name'): (
 
         ('type', unicode),
 
-        ('cardinality', "1.1"),
+        ('cardinality', "0.1"),
 
     ),
 
@@ -6956,6 +6709,211 @@ CONSTRAINTS = {
         ('type', int),
 
         ('cardinality', "1.1"),
+
+    ),
+
+    (platform.Performance, 'io_load'): (
+
+        ('type', float),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (platform.Performance, 'compiler'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (platform.Performance, 'memory_bloat'): (
+
+        ('type', float),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (platform.Performance, 'model'): (
+
+        ('type', science.Model),
+
+        ('cardinality', "1.1"),
+
+    ),
+    (platform.Performance, 'chsy'): (
+
+        ('type', float),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (platform.Performance, 'total_nodes_used'): (
+
+        ('type', int),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (platform.Performance, 'platform'): (
+
+        ('type', platform.Machine),
+
+        ('cardinality', "1.1"),
+
+    ),
+    (platform.Performance, 'coupler_load'): (
+
+        ('type', float),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (platform.Performance, 'load_imbalance'): (
+
+        ('type', float),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (platform.Performance, 'subcomponent_performance'): (
+
+        ('type', platform.ComponentPerformance),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (platform.Performance, 'name'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (platform.Performance, 'meta'): (
+
+        ('type', shared.DocMetaInfo),
+
+        ('cardinality', "1.1"),
+
+    ),
+    (platform.Performance, 'asypd'): (
+
+        ('type', float),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (platform.Performance, 'sypd'): (
+
+        ('type', float),
+
+        ('cardinality', "0.1"),
+
+    ),
+
+    (designing.OutputTemporalRequirement, 'sliced_subset'): (
+
+        ('type', shared.TimesliceList),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (designing.OutputTemporalRequirement, 'keywords'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.N"),
+
+    ),
+    (designing.OutputTemporalRequirement, 'conformance_is_requested'): (
+
+        ('type', bool),
+
+        ('cardinality', "1.1"),
+
+    ),
+    (designing.OutputTemporalRequirement, 'canonical_name'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (designing.OutputTemporalRequirement, 'meta'): (
+
+        ('type', shared.DocMetaInfo),
+
+        ('cardinality', "1.1"),
+
+    ),
+    (designing.OutputTemporalRequirement, 'throughout'): (
+
+        ('type', bool),
+
+        ('cardinality', "1.1"),
+
+    ),
+    (designing.OutputTemporalRequirement, 'references'): (
+
+        ('type', shared.Reference),
+
+        ('cardinality', "0.N"),
+
+    ),
+    (designing.OutputTemporalRequirement, 'additional_requirements'): (
+
+        ('type', designing.NumericalRequirement),
+
+        ('cardinality', "0.0"),
+
+    ),
+    (designing.OutputTemporalRequirement, 'name'): (
+
+        ('type', unicode),
+
+        ('cardinality', "1.1"),
+
+    ),
+    (designing.OutputTemporalRequirement, 'duration'): (
+
+        ('type', shared.TimePeriod),
+
+        ('cardinality', "0.0"),
+
+    ),
+    (designing.OutputTemporalRequirement, 'rationale'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (designing.OutputTemporalRequirement, 'long_name'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (designing.OutputTemporalRequirement, 'continuous_subset'): (
+
+        ('type', shared.TimePeriod),
+
+        ('cardinality', "0.N"),
+
+    ),
+    (designing.OutputTemporalRequirement, 'responsible_parties'): (
+
+        ('type', shared.Responsibility),
+
+        ('cardinality', "0.N"),
+
+    ),
+    (designing.OutputTemporalRequirement, 'description'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
 
     ),
 
@@ -7079,59 +7037,101 @@ CONSTRAINTS = {
 
     ),
 
-    (shared.Cimtext, 'content'): (
+    (activity.Activity, 'canonical_name'): (
 
         ('type', unicode),
-
-        ('cardinality', "1.1"),
-
-    ),
-    (shared.Cimtext, 'content_type'): (
-
-        ('type', unicode),
-
-        ('cardinality', "1.1"),
-
-    ),
-
-    (science.KeyProperties, 'extra_conservation_properties'): (
-
-        ('type', science.ConservationProperties),
 
         ('cardinality', "0.1"),
 
     ),
-    (science.KeyProperties, 'resolution'): (
+    (activity.Activity, 'keywords'): (
 
-        ('type', science.Resolution),
-
-        ('cardinality', "1.1"),
-
-    ),
-    (science.KeyProperties, 'additional_detail'): (
-
-        ('type', science.Detail),
+        ('type', unicode),
 
         ('cardinality', "0.N"),
 
     ),
-    (science.KeyProperties, 'tuning_applied'): (
+    (activity.Activity, 'long_name'): (
 
-        ('type', science.Tuning),
+        ('type', unicode),
 
         ('cardinality', "0.1"),
 
     ),
-    (science.KeyProperties, 'grid'): (
+    (activity.Activity, 'meta'): (
 
-        ('type', science.Grid),
+        ('type', shared.DocMetaInfo),
 
         ('cardinality', "1.1"),
 
     ),
-    (science.KeyProperties, 'time_step'): (
+    (activity.Activity, 'references'): (
 
-        ('type', float),
+        ('type', shared.Reference),
+
+        ('cardinality', "0.N"),
+
+    ),
+    (activity.Activity, 'duration'): (
+
+        ('type', shared.TimePeriod),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (activity.Activity, 'description'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (activity.Activity, 'name'): (
+
+        ('type', unicode),
+
+        ('cardinality', "1.1"),
+
+    ),
+    (activity.Activity, 'rationale'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (activity.Activity, 'responsible_parties'): (
+
+        ('type', shared.Responsibility),
+
+        ('cardinality', "0.N"),
+
+    ),
+
+    (activity.EnsembleAxis, 'extra_detail'): (
+
+        ('type', unicode),
+
+        ('cardinality', "1.1"),
+
+    ),
+    (activity.EnsembleAxis, 'member'): (
+
+        ('type', activity.AxisMember),
+
+        ('cardinality', "1.N"),
+
+    ),
+    (activity.EnsembleAxis, 'short_identifier'): (
+
+        ('type', unicode),
+
+        ('cardinality', "1.1"),
+
+    ),
+    (activity.EnsembleAxis, 'target_requirement'): (
+
+        ('type', designing.NumericalRequirement),
 
         ('cardinality', "1.1"),
 
@@ -7162,10 +7162,6 @@ HELP = {
     # Classes.
     # ------------------------------------------------
 
-    designing.Project: """
-        Describes a scientific project.
-
-    """,
     designing.NumericalExperiment: """
         Defines a numerical experiment.
 
@@ -7178,12 +7174,16 @@ HELP = {
         Defines an experiment ensemble with multiple start dates.
 
     """,
+    designing.SimulationPlan: """
+        Describes a simulation that needs to be run.
+
+    """,
     designing.TemporalConstraint: """
         A temporal constraint on a numerical experiment.
 
     """,
-    designing.SimulationPlan: """
-        Describes a simulation that needs to be run.
+    designing.Project: """
+        Describes a scientific project.
 
     """,
     designing.EnsembleRequirement: """
@@ -7211,13 +7211,20 @@ HELP = {
         Properties of the domain which needs to be simulated, extend and/or resolution.
 
     """,
+    software.Gridspec: """
+        Fully defines the computational grid used.
+
+    """,
     software.SoftwareComponent: """
         An embedded piece of software that does not normally function as a standalone model (although
     it may be used standalone in a test harness).
 
     """,
-    software.Gridspec: """
-        Fully defines the computational grid used.
+    software.Variable: """
+        An instance of a model software variable which may be prognostic or diagnostic, and which is
+    available as a connection to other software components. Note that these variables may only exist
+    within the software workflow as interim quantities or coupling endpoints. Input and output
+    variables will be a subset of these software variables.
 
     """,
     software.EntryPoint: """
@@ -7227,13 +7234,6 @@ HELP = {
     however a more complete system is required for full BFG compatibility.
     Every EntryPoint can have a set of arguments associated with it.
     These reference (previously defined) variables.
-
-    """,
-    software.Composition: """
-        Describes how component variables are coupled together either to/from other
-    SoftwareComponents or external data files. The variables specified by a component's
-    composition must be owned by that component, or a  child of that component;
-    child components cannot couple together parent variables.
 
     """,
     software.ComponentBase: """
@@ -7247,11 +7247,11 @@ HELP = {
         Describes the software development path for this model/component.
 
     """,
-    software.Variable: """
-        An instance of a model software variable which may be prognostic or diagnostic, and which is
-    available as a connection to other software components. Note that these variables may only exist
-    within the software workflow as interim quantities or coupling endpoints. Input and output
-    variables will be a subset of these software variables.
+    software.Composition: """
+        Describes how component variables are coupled together either to/from other
+    SoftwareComponents or external data files. The variables specified by a component's
+    composition must be owned by that component, or a  child of that component;
+    child components cannot couple together parent variables.
 
     """,
     shared.Calendar: """
@@ -7265,6 +7265,13 @@ HELP = {
     responsibleParty). Combines a person and their role in doing something.
 
     """,
+    shared.Party: """
+        Implements minimal material for an ISO19115-1 (2014) compliant party.
+    For our purposes this is a much better animal than the previous responsibleParty 
+    which munged roles together with people. Note we have collapsed CI_Contact,
+    CI_Individual and CI_Organisation as well as the abstract CI_Party.
+
+    """,
     shared.ExternalDocument: """
         A real world document, could be a book, a journal article, a manual, a web page ... it might or might
     not be online, although preferably it would be. We expect a typical citation to be built up
@@ -7273,13 +7280,6 @@ HELP = {
     """,
     shared.KeyFloat: """
         Holds a key and a float value.
-
-    """,
-    shared.Party: """
-        Implements minimal material for an ISO19115-1 (2014) compliant party.
-    For our purposes this is a much better animal than the previous responsibleParty 
-    which munged roles together with people. Note we have collapsed CI_Contact,
-    CI_Individual and CI_Organisation as well as the abstract CI_Party.
 
     """,
     shared.DatetimeSet: """
@@ -7435,14 +7435,6 @@ HELP = {
         Defines a downscaling activity.
 
     """,
-    drs.DrsEnsembleIdentifier: """
-        Identifies an ensemble realisation.
-
-    """,
-    drs.DrsPublicationDataset: """
-        A collection of atomic datasets which share a single combination of DRS component values.
-
-    """,
     drs.DrsTemporalIdentifier: """
         Provides information about temporal subsetting and/or averaging.
     If only N1 is present, it a temporal instant,
@@ -7451,8 +7443,16 @@ HELP = {
     the period.
 
     """,
+    drs.DrsEnsembleIdentifier: """
+        Identifies an ensemble realisation.
+
+    """,
     drs.DrsAtomicDataset: """
         An entity in a DRS file system.
+
+    """,
+    drs.DrsPublicationDataset: """
+        A collection of atomic datasets which share a single combination of DRS component values.
 
     """,
     drs.DrsGeographicalIndicator: """
@@ -7497,15 +7497,6 @@ HELP = {
     of grouping variables which take part in an algorithm within a process.
 
     """,
-    science.Resolution: """
-        Describes the computational spatial resolution of a component or process.
-    Not intended to replace or replicate the output grid description.
-    When it appears as part of a process description, provide only properties that differ from parent domain.
-    Note that this is supposed to capture gross features of the grid, we expect many grids will have
-    different variable layouts, those should be described in the grid description, and the exact resolution
-    is not required. Note that many properties are not appropriate for adaptive grids.
-
-    """,
     science.ScientificDomain: """
         Scientific area of a numerical model - usually a sub-model or component.
     Can also be known as a realm.
@@ -7513,6 +7504,12 @@ HELP = {
     """,
     science.ConservationProperties: """
         Describes how prognostic variables are conserved.
+
+    """,
+    science.Model: """
+        A model component: can be executed standalone, and has as scientific
+    description available via a link to a science.domain document. (A configured model can
+     be understood in terms of a simulation, a model, and a configuration.).
 
     """,
     science.KeyProperties: """
@@ -7539,10 +7536,13 @@ HELP = {
         Method used to optimise equation parameters in model component (aka 'tuning').
 
     """,
-    science.Model: """
-        A model component: can be executed standalone, and has as scientific
-    description available via a link to a science.domain document. (A configured model can
-     be understood in terms of a simulation, a model, and a configuration.).
+    science.Resolution: """
+        Describes the computational spatial resolution of a component or process.
+    Not intended to replace or replicate the output grid description.
+    When it appears as part of a process description, provide only properties that differ from parent domain.
+    Note that this is supposed to capture gross features of the grid, we expect many grids will have
+    different variable layouts, those should be described in the grid description, and the exact resolution
+    is not required. Note that many properties are not appropriate for adaptive grids.
 
     """,
 
@@ -7550,12 +7550,6 @@ HELP = {
     # Class properties.
     # ------------------------------------------------
 
-    (designing.Project, 'previous_projects'):
-        "Previous projects with similar aims.",
-    (designing.Project, 'sub_projects'):
-        "Activities within the project with their own name and aim(s).",
-    (designing.Project, 'requires_experiments'):
-        "Experiments required to deliver project.",
     (designing.NumericalExperiment, 'related_experiments'):
         "A related experiment.",
     (designing.NumericalExperiment, 'requirements'):
@@ -7576,14 +7570,6 @@ HELP = {
         "Category to which this belongs (from a CV, e.g. GASES).",
     (designing.MultiTimeEnsemble, 'ensemble_members'):
         "Description of date or time set of start dates.",
-    (designing.TemporalConstraint, 'required_calendar'):
-        "Required calendar (e.g. for paleo simulations).",
-    (designing.TemporalConstraint, 'start_date'):
-        "Required start date.",
-    (designing.TemporalConstraint, 'start_flexibility'):
-        "Amount of time before required start date that it is permissible to begin integration.",
-    (designing.TemporalConstraint, 'required_duration'):
-        "Constraint on time or length of simulation.",
     (designing.SimulationPlan, 'expected_platform'):
         "The machine on which the simulation will be run.",
     (designing.SimulationPlan, 'will_support_experiments'):
@@ -7592,6 +7578,20 @@ HELP = {
         "The model used to run the simulation.",
     (designing.SimulationPlan, 'expected_performance_sypd'):
         "Expected performance in simulated years per real day.",
+    (designing.TemporalConstraint, 'required_calendar'):
+        "Required calendar (e.g. for paleo simulations).",
+    (designing.TemporalConstraint, 'start_date'):
+        "Required start date.",
+    (designing.TemporalConstraint, 'start_flexibility'):
+        "Amount of time before required start date that it is permissible to begin integration.",
+    (designing.TemporalConstraint, 'required_duration'):
+        "Constraint on time or length of simulation.",
+    (designing.Project, 'previous_projects'):
+        "Previous projects with similar aims.",
+    (designing.Project, 'sub_projects'):
+        "Activities within the project with their own name and aim(s).",
+    (designing.Project, 'requires_experiments'):
+        "Experiments required to deliver project.",
     (designing.EnsembleRequirement, 'ensemble_type'):
         "Type of ensemble.",
     (designing.EnsembleRequirement, 'ensemble_member'):
@@ -7614,6 +7614,8 @@ HELP = {
         "Constraint on extent of domain to be simulated.",
     (designing.DomainProperties, 'required_resolution'):
         "Constraint on resolution required in simulated domain.",
+    (software.Gridspec, 'description'):
+        "Textural description.",
     (software.SoftwareComponent, 'coupling_framework'):
         "The coupling framework that this entire component conforms to.",
     (software.SoftwareComponent, 'license'):
@@ -7630,13 +7632,13 @@ HELP = {
         "Language the component is written in.",
     (software.SoftwareComponent, 'composition'):
         "#FIXME.",
-    (software.Gridspec, 'description'):
-        "Textural description.",
+    (software.Variable, 'description'):
+        "Description of how the variable is being used in the s/w.",
+    (software.Variable, 'prognostic'):
+        "Whether or not prognostic or diagnostic.",
+    (software.Variable, 'name'):
+        "Short name for the variable.",
     (software.EntryPoint, 'name'):
-        "#FIXME.",
-    (software.Composition, 'couplings'):
-        "#FIXME.",
-    (software.Composition, 'description'):
         "#FIXME.",
     (software.ComponentBase, 'repository'):
         "Location of code for this component.",
@@ -7656,24 +7658,22 @@ HELP = {
         "Descriptions of the component functionality.",
     (software.DevelopmentPath, 'consortium_name'):
         "If model/component is developed as part of a consortium, provide consortium name.",
-    (software.DevelopmentPath, 'previous_version'):
-        "Name of a previous version.",
     (software.DevelopmentPath, 'funding_sources'):
         "The entities that funded this software component.",
+    (software.DevelopmentPath, 'previous_version'):
+        "Name of a previous version.",
     (software.DevelopmentPath, 'developed_in_house'):
         "Model or component was mostly developed in house.",
     (software.DevelopmentPath, 'creators'):
         "Those responsible for creating this component.",
-    (software.Variable, 'description'):
-        "Description of how the variable is being used in the s/w.",
-    (software.Variable, 'prognostic'):
-        "Whether or not prognostic or diagnostic.",
-    (software.Variable, 'name'):
-        "Short name for the variable.",
-    (shared.Calendar, 'name'):
-        "Can be used to name a special calendar type.",
+    (software.Composition, 'couplings'):
+        "#FIXME.",
+    (software.Composition, 'description'):
+        "#FIXME.",
     (shared.Calendar, 'standard_name'):
         "Type of calendar used.",
+    (shared.Calendar, 'name'):
+        "Can be used to name a special calendar type.",
     (shared.Calendar, 'description'):
         "Extra information about the calendar.",
     (shared.Calendar, 'month_lengths'):
@@ -7684,6 +7684,20 @@ HELP = {
         "Parties delivering responsibility.",
     (shared.Responsibility, 'role'):
         "Role that the party plays or played.",
+    (shared.Party, 'meta'):
+        "Provides a unique identifier for the party.",
+    (shared.Party, 'name'):
+        "Name of person or organisation.",
+    (shared.Party, 'email'):
+        "Email address.",
+    (shared.Party, 'url'):
+        "URL of person or institution.",
+    (shared.Party, 'orcid_id'):
+        "Orcid ID if available.",
+    (shared.Party, 'organisation'):
+        "True if an organisation not a person.",
+    (shared.Party, 'address'):
+        "Institutional address.",
     (shared.ExternalDocument, 'doi'):
         "Digital Object Identifier, if it exists.",
     (shared.ExternalDocument, 'name'):
@@ -7704,20 +7718,6 @@ HELP = {
         "User defined key.",
     (shared.KeyFloat, 'value'):
         "Value associated with a key (real number).",
-    (shared.Party, 'url'):
-        "URL of person or institution.",
-    (shared.Party, 'meta'):
-        "Provides a unique identifier for the party.",
-    (shared.Party, 'name'):
-        "Name of person or organisation.",
-    (shared.Party, 'email'):
-        "Email address.",
-    (shared.Party, 'orcid_id'):
-        "Orcid ID if available.",
-    (shared.Party, 'organisation'):
-        "True if an organisation not a person.",
-    (shared.Party, 'address'):
-        "Institutional address.",
     (shared.DatetimeSet, 'length'):
         "Number of times in set.",
     (shared.NumberArray, 'values'):
@@ -7738,36 +7738,36 @@ HELP = {
         "Date is offset from start of an integration.",
     (shared.DateTime, 'value'):
         "Date or time - some of (from left to right): yyyy-mm-dd:hh:mm:ss.",
-    (shared.DocMetaInfo, 'sort_key'):
-        "Document sort key.",
+    (shared.DocMetaInfo, 'project'):
+        "Name of project with which instance is associated with.",
     (shared.DocMetaInfo, 'drs_keys'):
         "DRS related keys to support correlation of documents with datasets.",
-    (shared.DocMetaInfo, 'type_display_name'):
-        "Document type display name.",
+    (shared.DocMetaInfo, 'type'):
+        "Document ontology type.",
     (shared.DocMetaInfo, 'institute'):
         "Name of institute with which instance is associated with.",
     (shared.DocMetaInfo, 'source'):
         "Name of application that created the instance.",
     (shared.DocMetaInfo, 'type_sort_key'):
         "Document type sort key.",
+    (shared.DocMetaInfo, 'version'):
+        "Document version identifier.",
     (shared.DocMetaInfo, 'drs_path'):
         "DRS related path to support documents with datasets.",
     (shared.DocMetaInfo, 'create_date'):
         "Date upon which the instance was created.",
-    (shared.DocMetaInfo, 'project'):
-        "Name of project with which instance is associated with.",
+    (shared.DocMetaInfo, 'sort_key'):
+        "Document sort key.",
     (shared.DocMetaInfo, 'external_ids'):
         "Set of identifiers used to reference the document by external parties.",
-    (shared.DocMetaInfo, 'type'):
-        "Document ontology type.",
+    (shared.DocMetaInfo, 'type_display_name'):
+        "Document type display name.",
     (shared.DocMetaInfo, 'language'):
         "Language with which instance is associated with.",
     (shared.DocMetaInfo, 'source_key'):
         "Key of application that created the instance.",
     (shared.DocMetaInfo, 'update_date'):
         "Date upon which the instance was last updated.",
-    (shared.DocMetaInfo, 'version'):
-        "Document version identifier.",
     (shared.DocMetaInfo, 'id'):
         "Universal document identifier (normally a UUID).",
     (shared.DocMetaInfo, 'author'):
@@ -7798,14 +7798,14 @@ HELP = {
         "Brief text description of why this resource is being cited.",
     (shared.Reference, 'document'):
         "Reference Target.",
-    (shared.TimePeriod, 'units'):
-        "Appropriate time units.",
-    (shared.TimePeriod, 'date_type'):
-        "Describes how the date is used to define the period.",
-    (shared.TimePeriod, 'calendar'):
-        "Calendar, default is standard aka gregorian.",
     (shared.TimePeriod, 'length'):
         "Duration of the time period.",
+    (shared.TimePeriod, 'date_type'):
+        "Describes how the date is used to define the period.",
+    (shared.TimePeriod, 'units'):
+        "Appropriate time units.",
+    (shared.TimePeriod, 'calendar'):
+        "Calendar, default is standard aka gregorian.",
     (shared.TimePeriod, 'date'):
         "Optional start/end date of time period.",
     (shared.RegularTimeset, 'increment'):
@@ -7838,14 +7838,14 @@ HELP = {
         "Experiments with which the ensemble is associated (may differ from constituent simulations).",
     (activity.UberEnsemble, 'child_ensembles'):
         "Ensemble which are aggregated into this one.",
+    (activity.EnsembleMember, 'variant_id'):
+        "A string which concatenates axis member short identiers (e.g r1i1p1f1).",
     (activity.EnsembleMember, 'errata'):
         "Link to errata associated with this simulation.",
     (activity.EnsembleMember, 'simulation'):
         "Actual simulation description for an ensemble member.",
     (activity.EnsembleMember, 'had_performance'):
         "Performance of the simulation.",
-    (activity.EnsembleMember, 'variant_id'):
-        "A string which concatenates axis member short identiers (e.g r1i1p1f1).",
     (activity.EnsembleMember, 'ran_on'):
         "The machine on which the simulation was run.",
     (activity.ParentSimulation, 'parent'):
@@ -7864,24 +7864,24 @@ HELP = {
         "Individual member descriptions along axis.",
     (activity.Activity, 'canonical_name'):
         "Community defined identifier or name.",
-    (activity.Activity, 'references'):
-        "Relevant documentation.",
     (activity.Activity, 'long_name'):
         "Longer version of activity name.",
-    (activity.Activity, 'meta'):
-        "Metadata describing how this document was created.",
     (activity.Activity, 'rationale'):
         "Explanation of why this activity was carried out and/or what it was intended to achieve.",
+    (activity.Activity, 'meta'):
+        "Metadata describing how this document was created.",
+    (activity.Activity, 'references'):
+        "Relevant documentation.",
     (activity.Activity, 'duration'):
         "Time the activity was (or will be) active.",
-    (activity.Activity, 'responsible_parties'):
-        "People or organisations responsible for activity.",
     (activity.Activity, 'description'):
         "Description of what is to be done (or was done).",
-    (activity.Activity, 'keywords'):
-        "User defined keywords.",
     (activity.Activity, 'name'):
         "Short name or abbreviation.",
+    (activity.Activity, 'keywords'):
+        "User defined keywords.",
+    (activity.Activity, 'responsible_parties'):
+        "People or organisations responsible for activity.",
     (activity.AxisMember, 'description'):
         "Description of the member (or name of parameter varied).",
     (activity.AxisMember, 'index'):
@@ -7910,14 +7910,14 @@ HELP = {
         "Number of CPU cores per node.",
     (platform.ComputePool, 'memory_per_node'):
         "Memory per node.",
-    (platform.ComputePool, 'accelerator_type'):
-        "Type of accelerator.",
+    (platform.ComputePool, 'description'):
+        "Textural description of pool.",
     (platform.ComputePool, 'cpu_type'):
         "CPU type.",
     (platform.ComputePool, 'model_number'):
         "Model/Board number/type.",
-    (platform.ComputePool, 'description'):
-        "Textural description of pool.",
+    (platform.ComputePool, 'accelerator_type'):
+        "Type of accelerator.",
     (platform.ComputePool, 'name'):
         "Name of compute pool within a machine.",
     (platform.ComputePool, 'accelerators_per_node'):
@@ -7940,22 +7940,22 @@ HELP = {
         "Short name of component.",
     (platform.Performance, 'io_load'):
         "Percentage of time spent in I/O.",
-    (platform.Performance, 'sypd'):
-        "Simulated years per wall-clock day.",
-    (platform.Performance, 'memory_bloat'):
-        "Percentage of extra memory needed.",
     (platform.Performance, 'platform'):
         "Platform on which performance was tested.",
+    (platform.Performance, 'model'):
+        "Model for which performance was tested.",
+    (platform.Performance, 'memory_bloat'):
+        "Percentage of extra memory needed.",
     (platform.Performance, 'chsy'):
         "Core-Hours per simulated year.",
-    (platform.Performance, 'meta'):
-        "Document metadata.",
-    (platform.Performance, 'name'):
-        "Short name for performance (experiment/test/whatever).",
     (platform.Performance, 'total_nodes_used'):
         "Number of nodes used.",
     (platform.Performance, 'compiler'):
         "Compiler used.",
+    (platform.Performance, 'meta'):
+        "Document metadata.",
+    (platform.Performance, 'name'):
+        "Short name for performance (experiment/test/whatever).",
     (platform.Performance, 'load_imbalance'):
         "Load imbalance.",
     (platform.Performance, 'subcomponent_performance'):
@@ -7964,28 +7964,28 @@ HELP = {
         "Percentage of time spent in coupler.",
     (platform.Performance, 'asypd'):
         "Actual simulated years per wall-clock day, all-in.",
-    (platform.Performance, 'model'):
-        "Model for which performance was tested.",
-    (platform.Partition, 'online_documentation'):
-        "Links to documentation.",
-    (platform.Partition, 'when_used'):
-        "If no longer in use, the time period it was in use.",
-    (platform.Partition, 'description'):
-        "Textural description of machine.",
-    (platform.Partition, 'partition'):
-        "If machine is partitioned, treat subpartitions as machines.",
-    (platform.Partition, 'institution'):
-        "Institutional location.",
-    (platform.Partition, 'model_number'):
-        "Vendor's model number/name - if it exists.",
-    (platform.Partition, 'name'):
-        "Name of partition (or machine).",
+    (platform.Performance, 'sypd'):
+        "Simulated years per wall-clock day.",
     (platform.Partition, 'storage_pools'):
         "Storage resource available.",
+    (platform.Partition, 'online_documentation'):
+        "Links to documentation.",
+    (platform.Partition, 'description'):
+        "Textural description of machine.",
+    (platform.Partition, 'institution'):
+        "Institutional location.",
+    (platform.Partition, 'when_used'):
+        "If no longer in use, the time period it was in use.",
+    (platform.Partition, 'partition'):
+        "If machine is partitioned, treat subpartitions as machines.",
+    (platform.Partition, 'model_number'):
+        "Vendor's model number/name - if it exists.",
     (platform.Partition, 'compute_pools'):
         "Layout of compute nodes.",
     (platform.Partition, 'vendor'):
         "The system integrator or vendor.",
+    (platform.Partition, 'name'):
+        "Name of partition (or machine).",
     (data.Dataset, 'meta'):
         "Metadata describing the creation of this dataset description document.",
     (data.Dataset, 'availability'):
@@ -8024,34 +8024,18 @@ HELP = {
         "Set of variable names.",
     (data.Downscaling, 'downscaled_from'):
         "The simulation that was downscaled by this downscaling activity.",
-    (drs.DrsEnsembleIdentifier, 'realisation_number'):
-        "Standard ensemble axis realisation number (usually an initial condition ensemble).",
-    (drs.DrsEnsembleIdentifier, 'initialisation_method_number'):
-        "Identifies which method of initialisation was used, if multiple methods used.",
-    (drs.DrsEnsembleIdentifier, 'perturbation_number'):
-        "Identifies different members of a perturbed physics ensemble.",
-    (drs.DrsPublicationDataset, 'institute'):
-        "The institute responsible for this data entity.",
-    (drs.DrsPublicationDataset, 'experiment'):
-        "An experiment (or experiment family and type, e.g. rcp45).",
-    (drs.DrsPublicationDataset, 'model'):
-        "A model identifier (sans blanks/periods and parenthesis).",
-    (drs.DrsPublicationDataset, 'realm'):
-        "Modelling realm.",
-    (drs.DrsPublicationDataset, 'product'):
-        "Used to provide categories of data products within the activity.",
-    (drs.DrsPublicationDataset, 'activity'):
-        "A model intercomparison activity or other project which aggregates or collects data.",
-    (drs.DrsPublicationDataset, 'frequency'):
-        "Frequency of data stored in this entity.",
-    (drs.DrsPublicationDataset, 'version_number'):
-        "Uniquely identifies a particular version of a publication level dataset.",
     (drs.DrsTemporalIdentifier, 'suffix'):
         "If present, used to indicate climatology or average.",
     (drs.DrsTemporalIdentifier, 'end'):
         "N2, required to indicate a period.",
     (drs.DrsTemporalIdentifier, 'start'):
         "N1,  of the form yyyy[MM[dd[hh[mm[ss]]]]].",
+    (drs.DrsEnsembleIdentifier, 'realisation_number'):
+        "Standard ensemble axis realisation number (usually an initial condition ensemble).",
+    (drs.DrsEnsembleIdentifier, 'initialisation_method_number'):
+        "Identifies which method of initialisation was used, if multiple methods used.",
+    (drs.DrsEnsembleIdentifier, 'perturbation_number'):
+        "Identifies different members of a perturbed physics ensemble.",
     (drs.DrsAtomicDataset, 'ensemble_member'):
         "Unambiguously identifiers ensemble realisation information.",
     (drs.DrsAtomicDataset, 'temporal_constraint'):
@@ -8062,6 +8046,22 @@ HELP = {
         "Identifies the physical quantity (when used in conjunction with the MIP table).",
     (drs.DrsAtomicDataset, 'mip_table'):
         "The MIP table, together with the variable defines the physical quantity.",
+    (drs.DrsPublicationDataset, 'institute'):
+        "The institute responsible for this data entity.",
+    (drs.DrsPublicationDataset, 'experiment'):
+        "An experiment (or experiment family and type, e.g. rcp45).",
+    (drs.DrsPublicationDataset, 'version_number'):
+        "Uniquely identifies a particular version of a publication level dataset.",
+    (drs.DrsPublicationDataset, 'activity'):
+        "A model intercomparison activity or other project which aggregates or collects data.",
+    (drs.DrsPublicationDataset, 'product'):
+        "Used to provide categories of data products within the activity.",
+    (drs.DrsPublicationDataset, 'realm'):
+        "Modelling realm.",
+    (drs.DrsPublicationDataset, 'model'):
+        "A model identifier (sans blanks/periods and parenthesis).",
+    (drs.DrsPublicationDataset, 'frequency'):
+        "Frequency of data stored in this entity.",
     (drs.DrsGeographicalIndicator, 'bounding_box'):
         "DRS bounding box of the form 'latJHJJHHlonMZMMZZ' where H, HH, Z, ZZ are from {NS} {EW} respectively.",
     (drs.DrsGeographicalIndicator, 'spatial_domain'):
@@ -8130,42 +8130,44 @@ HELP = {
         "Relevant references.",
     (science.Algorithm, 'forced_variables'):
         "Variables held constant within algorithm.",
-    (science.Resolution, 'typical_x_degrees'):
-        "Horizontal X resolution in degrees of grid cells, if applicable eg. 3.75.",
-    (science.Resolution, 'typical_y_degrees'):
-        "Horizontal Y resolution in degrees of grid cells, if applicable eg. 2.5.",
-    (science.Resolution, 'is_adaptive_grid'):
-        "Default is False. Set true if grid resolution changes during execution.",
-    (science.Resolution, 'name'):
-        "This is a string usually used by the modelling group to describe the resolution of this grid,  e.g. N512L180 or T512L70 etc.",
-    (science.Resolution, 'number_of_levels'):
-        "Number of vertical levels resolved.",
-    (science.Resolution, 'number_of_xy_gridpoints'):
-        "Total number of horizontal points on computational grids.",
-    (science.Resolution, 'equivalent_resolution_km'):
-        "Resolution in km of 'typical grid cell' (at the equator, for gross comparisons of resolution), eg. 50.",
     (science.ScientificDomain, 'meta'):
         "Metadata describing the construction of this domain description.",
-    (science.ScientificDomain, 'overview'):
-        "Free text overview description of key properties of domain.",
-    (science.ScientificDomain, 'name'):
-        "Name of the scientific domain (e.g. ocean).",
     (science.ScientificDomain, 'simulates'):
         "Processes simulated within the domain.",
     (science.ScientificDomain, 'differing_key_properties'):
         "Key properties for the domain which differ from model defaults (grid, timestep etc).",
+    (science.ScientificDomain, 'name'):
+        "Name of the scientific domain (e.g. ocean).",
+    (science.ScientificDomain, 'overview'):
+        "Free text overview description of key properties of domain.",
+    (science.ScientificDomain, 'references'):
+        "Any relevant references describing the implementation of this domain in a relevant model.",
     (science.ScientificDomain, 'id'):
         "Vocabulary identifier, where this domain description was constructed via a  controlled vocabulary.",
     (science.ScientificDomain, 'realm'):
         "Canonical name for the domain of this scientific area.",
-    (science.ScientificDomain, 'references'):
-        "Any relevant references describing the implementation of this domain in a relevant model.",
     (science.ConservationProperties, 'flux_correction_was_used'):
         "Flag to indicate if correction involved flux correction.",
     (science.ConservationProperties, 'corrected_conserved_prognostic_variables'):
         "Set of variables which are conserved by *more* than the numerical scheme alone.",
     (science.ConservationProperties, 'correction_methodology'):
         "Description of method by which correction was achieved.",
+    (science.Model, 'model_default_properties'):
+        "Model default key properties (may be over-ridden in domain properties).",
+    (science.Model, 'coupler'):
+        "Overarching coupling framework for model.",
+    (science.Model, 'id'):
+        "Vocabulary identifier, where this model description was constructed via a controlled vocabulary.",
+    (science.Model, 'coupled_components'):
+        "Software components which are linked together using a coupler to deliver this model.",
+    (science.Model, 'simulates'):
+        "The scientific domains which this model simulates.",
+    (science.Model, 'internal_software_components'):
+        "Software modules which together provide the functionality for this model.",
+    (science.Model, 'meta'):
+        "Metadata about how the model description was constructed.",
+    (science.Model, 'category'):
+        "Generic type for this model.",
     (science.KeyProperties, 'extra_conservation_properties'):
         "Details of methodology needed to conserve variables between processes.",
     (science.KeyProperties, 'tuning_applied'):
@@ -8184,14 +8186,14 @@ HELP = {
         "Scientific context for which this description is provided.",
     (science.ScienceContext, 'id'):
         "Identifier for this collection of properties.",
-    (science.Detail, 'from_vocab'):
-        "Name of an enumeration vocabulary of possible detail options.",
     (science.Detail, 'select'):
         "Name of property to be selected from vocab.",
-    (science.Detail, 'content'):
-        "Free text description of process detail (if required).",
+    (science.Detail, 'from_vocab'):
+        "Name of an enumeration vocabulary of possible detail options.",
     (science.Detail, 'with_cardinality'):
         "Required cardinality of selection from vocabulary.",
+    (science.Detail, 'content'):
+        "Free text description of process detail (if required).",
     (science.Detail, 'detail_selection'):
         "List of choices from the vocabulary of possible detailed options.",
     (science.Tuning, 'trend_metrics_used'):
@@ -8202,22 +8204,20 @@ HELP = {
         "Which regional metrics of mean state (e.g Monsoons, tropical means etc) have been used in tuning.",
     (science.Tuning, 'global_mean_metrics_used'):
         "Set of metrics of the global mean state used in tuning model parameters.",
-    (science.Model, 'coupler'):
-        "Overarching coupling framework for model.",
-    (science.Model, 'simulates'):
-        "The scientific domains which this model simulates.",
-    (science.Model, 'id'):
-        "Vocabulary identifier, where this model description was constructed via a controlled vocabulary.",
-    (science.Model, 'coupled_components'):
-        "Software components which are linked together using a coupler to deliver this model.",
-    (science.Model, 'internal_software_components'):
-        "Software modules which together provide the functionality for this model.",
-    (science.Model, 'model_default_properties'):
-        "Model default key properties (may be over-ridden in domain properties).",
-    (science.Model, 'meta'):
-        "Metadata about how the model description was constructed.",
-    (science.Model, 'category'):
-        "Generic type for this model.",
+    (science.Resolution, 'typical_x_degrees'):
+        "Horizontal X resolution in degrees of grid cells, if applicable eg. 3.75.",
+    (science.Resolution, 'typical_y_degrees'):
+        "Horizontal Y resolution in degrees of grid cells, if applicable eg. 2.5.",
+    (science.Resolution, 'is_adaptive_grid'):
+        "Default is False. Set true if grid resolution changes during execution.",
+    (science.Resolution, 'name'):
+        "This is a string usually used by the modelling group to describe the resolution of this grid,  e.g. N512L180 or T512L70 etc.",
+    (science.Resolution, 'number_of_levels'):
+        "Number of vertical levels resolved.",
+    (science.Resolution, 'number_of_xy_gridpoints'):
+        "Total number of horizontal points on computational grids.",
+    (science.Resolution, 'equivalent_resolution_km'):
+        "Resolution in km of 'typical grid cell' (at the equator, for gross comparisons of resolution), eg. 50.",
 
     # ------------------------------------------------
     # Enums.
@@ -8395,30 +8395,30 @@ HELP = {
         "Party who carried out an independent review of (this) documentation",
     (shared.RoleCode, 'metadata_author'):
         "Party who created (this) documentation",
-    (shared.RoleCode, 'sponsor'):
-        "Party who has invested in the production of the resource",
+    (shared.RoleCode, 'processor'):
+        "Party who has taken part in the workflow that resulted in this resource",
     (shared.RoleCode, 'owner'):
         "Party with legal ownership of the resource",
     (shared.RoleCode, 'distributor'):
         "Party who distributes the resource",
     (shared.RoleCode, 'Principal Investigator'):
         "Key party responsible for the existence of the resource",
+    (shared.RoleCode, 'user'):
+        "Party who uses the resource",
     (shared.RoleCode, 'publisher'):
         "Party who published the resource",
     (shared.RoleCode, 'originator'):
         "Original source for the resource if obtained from elsewhere",
     (shared.RoleCode, 'author'):
         "Party who created (or co-created) resource",
-    (shared.RoleCode, 'processor'):
-        "Party who has taken part in the workflow that resulted in this resource",
+    (shared.RoleCode, 'sponsor'):
+        "Party who has invested in the production of the resource",
     (shared.RoleCode, 'resource provider'):
         "Party that supplies the resource",
     (shared.RoleCode, 'collaborator'):
         "Contributor to the production of the resource",
     (shared.RoleCode, 'custodian'):
         "Party that accepts accountability and responsibility for the source resource",
-    (shared.RoleCode, 'user'):
-        "Party who uses the resource",
     (shared.RoleCode, 'point of contact'):
         "Party who can be contacted for acquiring knowledge about or acquisition of the resource",
     (shared.NilReason, 'nil:inapplicable'):
@@ -8511,10 +8511,10 @@ HELP = {
         None,
     (shared.SlicetimeUnits, 'yearly'):
         None,
-    (shared.QualityStatus, 'under_review'):
-        "Document is being reviewed",
     (shared.QualityStatus, 'finalised'):
         "Author has completed document, prior to review",
+    (shared.QualityStatus, 'under_review'):
+        "Document is being reviewed",
     (shared.QualityStatus, 'incomplete'):
         "Currently being worked on",
     (shared.QualityStatus, 'reviewed'):
@@ -8680,29 +8680,29 @@ KEYS = {
     # Classes.
     # ------------------------------------------------
 
-    designing.Project: "cim.2.designing.Project",
     designing.NumericalExperiment: "cim.2.designing.NumericalExperiment",
     designing.ForcingConstraint: "cim.2.designing.ForcingConstraint",
     designing.MultiTimeEnsemble: "cim.2.designing.MultiTimeEnsemble",
-    designing.TemporalConstraint: "cim.2.designing.TemporalConstraint",
     designing.SimulationPlan: "cim.2.designing.SimulationPlan",
+    designing.TemporalConstraint: "cim.2.designing.TemporalConstraint",
+    designing.Project: "cim.2.designing.Project",
     designing.EnsembleRequirement: "cim.2.designing.EnsembleRequirement",
     designing.MultiEnsemble: "cim.2.designing.MultiEnsemble",
     designing.NumericalRequirement: "cim.2.designing.NumericalRequirement",
     designing.OutputTemporalRequirement: "cim.2.designing.OutputTemporalRequirement",
     designing.DomainProperties: "cim.2.designing.DomainProperties",
-    software.SoftwareComponent: "cim.2.software.SoftwareComponent",
     software.Gridspec: "cim.2.software.Gridspec",
+    software.SoftwareComponent: "cim.2.software.SoftwareComponent",
+    software.Variable: "cim.2.software.Variable",
     software.EntryPoint: "cim.2.software.EntryPoint",
-    software.Composition: "cim.2.software.Composition",
     software.ComponentBase: "cim.2.software.ComponentBase",
     software.DevelopmentPath: "cim.2.software.DevelopmentPath",
-    software.Variable: "cim.2.software.Variable",
+    software.Composition: "cim.2.software.Composition",
     shared.Calendar: "cim.2.shared.Calendar",
     shared.Responsibility: "cim.2.shared.Responsibility",
+    shared.Party: "cim.2.shared.Party",
     shared.ExternalDocument: "cim.2.shared.ExternalDocument",
     shared.KeyFloat: "cim.2.shared.KeyFloat",
-    shared.Party: "cim.2.shared.Party",
     shared.DatetimeSet: "cim.2.shared.DatetimeSet",
     shared.NumberArray: "cim.2.shared.NumberArray",
     shared.DocReference: "cim.2.shared.DocReference",
@@ -8736,32 +8736,29 @@ KEYS = {
     data.Simulation: "cim.2.data.Simulation",
     data.VariableCollection: "cim.2.data.VariableCollection",
     data.Downscaling: "cim.2.data.Downscaling",
-    drs.DrsEnsembleIdentifier: "cim.2.drs.DrsEnsembleIdentifier",
-    drs.DrsPublicationDataset: "cim.2.drs.DrsPublicationDataset",
     drs.DrsTemporalIdentifier: "cim.2.drs.DrsTemporalIdentifier",
+    drs.DrsEnsembleIdentifier: "cim.2.drs.DrsEnsembleIdentifier",
     drs.DrsAtomicDataset: "cim.2.drs.DrsAtomicDataset",
+    drs.DrsPublicationDataset: "cim.2.drs.DrsPublicationDataset",
     drs.DrsGeographicalIndicator: "cim.2.drs.DrsGeographicalIndicator",
     science.SubProcess: "cim.2.science.SubProcess",
     science.Extent: "cim.2.science.Extent",
     science.Grid: "cim.2.science.Grid",
     science.Process: "cim.2.science.Process",
     science.Algorithm: "cim.2.science.Algorithm",
-    science.Resolution: "cim.2.science.Resolution",
     science.ScientificDomain: "cim.2.science.ScientificDomain",
     science.ConservationProperties: "cim.2.science.ConservationProperties",
+    science.Model: "cim.2.science.Model",
     science.KeyProperties: "cim.2.science.KeyProperties",
     science.ScienceContext: "cim.2.science.ScienceContext",
     science.Detail: "cim.2.science.Detail",
     science.Tuning: "cim.2.science.Tuning",
-    science.Model: "cim.2.science.Model",
+    science.Resolution: "cim.2.science.Resolution",
 
     # ------------------------------------------------
     # Class properties.
     # ------------------------------------------------
 
-    (designing.Project, 'previous_projects'): "cim.2.designing.Project.previous_projects",
-    (designing.Project, 'sub_projects'): "cim.2.designing.Project.sub_projects",
-    (designing.Project, 'requires_experiments'): "cim.2.designing.Project.requires_experiments",
     (designing.NumericalExperiment, 'related_experiments'): "cim.2.designing.NumericalExperiment.related_experiments",
     (designing.NumericalExperiment, 'requirements'): "cim.2.designing.NumericalExperiment.requirements",
     (designing.ForcingConstraint, 'group'): "cim.2.designing.ForcingConstraint.group",
@@ -8772,14 +8769,17 @@ KEYS = {
     (designing.ForcingConstraint, 'forcing_type'): "cim.2.designing.ForcingConstraint.forcing_type",
     (designing.ForcingConstraint, 'category'): "cim.2.designing.ForcingConstraint.category",
     (designing.MultiTimeEnsemble, 'ensemble_members'): "cim.2.designing.MultiTimeEnsemble.ensemble_members",
-    (designing.TemporalConstraint, 'required_calendar'): "cim.2.designing.TemporalConstraint.required_calendar",
-    (designing.TemporalConstraint, 'start_date'): "cim.2.designing.TemporalConstraint.start_date",
-    (designing.TemporalConstraint, 'start_flexibility'): "cim.2.designing.TemporalConstraint.start_flexibility",
-    (designing.TemporalConstraint, 'required_duration'): "cim.2.designing.TemporalConstraint.required_duration",
     (designing.SimulationPlan, 'expected_platform'): "cim.2.designing.SimulationPlan.expected_platform",
     (designing.SimulationPlan, 'will_support_experiments'): "cim.2.designing.SimulationPlan.will_support_experiments",
     (designing.SimulationPlan, 'expected_model'): "cim.2.designing.SimulationPlan.expected_model",
     (designing.SimulationPlan, 'expected_performance_sypd'): "cim.2.designing.SimulationPlan.expected_performance_sypd",
+    (designing.TemporalConstraint, 'required_calendar'): "cim.2.designing.TemporalConstraint.required_calendar",
+    (designing.TemporalConstraint, 'start_date'): "cim.2.designing.TemporalConstraint.start_date",
+    (designing.TemporalConstraint, 'start_flexibility'): "cim.2.designing.TemporalConstraint.start_flexibility",
+    (designing.TemporalConstraint, 'required_duration'): "cim.2.designing.TemporalConstraint.required_duration",
+    (designing.Project, 'previous_projects'): "cim.2.designing.Project.previous_projects",
+    (designing.Project, 'sub_projects'): "cim.2.designing.Project.sub_projects",
+    (designing.Project, 'requires_experiments'): "cim.2.designing.Project.requires_experiments",
     (designing.EnsembleRequirement, 'ensemble_type'): "cim.2.designing.EnsembleRequirement.ensemble_type",
     (designing.EnsembleRequirement, 'ensemble_member'): "cim.2.designing.EnsembleRequirement.ensemble_member",
     (designing.EnsembleRequirement, 'minimum_size'): "cim.2.designing.EnsembleRequirement.minimum_size",
@@ -8791,6 +8791,7 @@ KEYS = {
     (designing.OutputTemporalRequirement, 'sliced_subset'): "cim.2.designing.OutputTemporalRequirement.sliced_subset",
     (designing.DomainProperties, 'required_extent'): "cim.2.designing.DomainProperties.required_extent",
     (designing.DomainProperties, 'required_resolution'): "cim.2.designing.DomainProperties.required_resolution",
+    (software.Gridspec, 'description'): "cim.2.software.Gridspec.description",
     (software.SoftwareComponent, 'coupling_framework'): "cim.2.software.SoftwareComponent.coupling_framework",
     (software.SoftwareComponent, 'license'): "cim.2.software.SoftwareComponent.license",
     (software.SoftwareComponent, 'dependencies'): "cim.2.software.SoftwareComponent.dependencies",
@@ -8799,10 +8800,10 @@ KEYS = {
     (software.SoftwareComponent, 'grid'): "cim.2.software.SoftwareComponent.grid",
     (software.SoftwareComponent, 'language'): "cim.2.software.SoftwareComponent.language",
     (software.SoftwareComponent, 'composition'): "cim.2.software.SoftwareComponent.composition",
-    (software.Gridspec, 'description'): "cim.2.software.Gridspec.description",
+    (software.Variable, 'description'): "cim.2.software.Variable.description",
+    (software.Variable, 'prognostic'): "cim.2.software.Variable.prognostic",
+    (software.Variable, 'name'): "cim.2.software.Variable.name",
     (software.EntryPoint, 'name'): "cim.2.software.EntryPoint.name",
-    (software.Composition, 'couplings'): "cim.2.software.Composition.couplings",
-    (software.Composition, 'description'): "cim.2.software.Composition.description",
     (software.ComponentBase, 'repository'): "cim.2.software.ComponentBase.repository",
     (software.ComponentBase, 'long_name'): "cim.2.software.ComponentBase.long_name",
     (software.ComponentBase, 'development_history'): "cim.2.software.ComponentBase.development_history",
@@ -8812,20 +8813,26 @@ KEYS = {
     (software.ComponentBase, 'release_date'): "cim.2.software.ComponentBase.release_date",
     (software.ComponentBase, 'documentation'): "cim.2.software.ComponentBase.documentation",
     (software.DevelopmentPath, 'consortium_name'): "cim.2.software.DevelopmentPath.consortium_name",
-    (software.DevelopmentPath, 'previous_version'): "cim.2.software.DevelopmentPath.previous_version",
     (software.DevelopmentPath, 'funding_sources'): "cim.2.software.DevelopmentPath.funding_sources",
+    (software.DevelopmentPath, 'previous_version'): "cim.2.software.DevelopmentPath.previous_version",
     (software.DevelopmentPath, 'developed_in_house'): "cim.2.software.DevelopmentPath.developed_in_house",
     (software.DevelopmentPath, 'creators'): "cim.2.software.DevelopmentPath.creators",
-    (software.Variable, 'description'): "cim.2.software.Variable.description",
-    (software.Variable, 'prognostic'): "cim.2.software.Variable.prognostic",
-    (software.Variable, 'name'): "cim.2.software.Variable.name",
-    (shared.Calendar, 'name'): "cim.2.shared.Calendar.name",
+    (software.Composition, 'couplings'): "cim.2.software.Composition.couplings",
+    (software.Composition, 'description'): "cim.2.software.Composition.description",
     (shared.Calendar, 'standard_name'): "cim.2.shared.Calendar.standard_name",
+    (shared.Calendar, 'name'): "cim.2.shared.Calendar.name",
     (shared.Calendar, 'description'): "cim.2.shared.Calendar.description",
     (shared.Calendar, 'month_lengths'): "cim.2.shared.Calendar.month_lengths",
     (shared.Responsibility, 'when'): "cim.2.shared.Responsibility.when",
     (shared.Responsibility, 'party'): "cim.2.shared.Responsibility.party",
     (shared.Responsibility, 'role'): "cim.2.shared.Responsibility.role",
+    (shared.Party, 'meta'): "cim.2.shared.Party.meta",
+    (shared.Party, 'name'): "cim.2.shared.Party.name",
+    (shared.Party, 'email'): "cim.2.shared.Party.email",
+    (shared.Party, 'url'): "cim.2.shared.Party.url",
+    (shared.Party, 'orcid_id'): "cim.2.shared.Party.orcid_id",
+    (shared.Party, 'organisation'): "cim.2.shared.Party.organisation",
+    (shared.Party, 'address'): "cim.2.shared.Party.address",
     (shared.ExternalDocument, 'doi'): "cim.2.shared.ExternalDocument.doi",
     (shared.ExternalDocument, 'name'): "cim.2.shared.ExternalDocument.name",
     (shared.ExternalDocument, 'meta'): "cim.2.shared.ExternalDocument.meta",
@@ -8836,13 +8843,6 @@ KEYS = {
     (shared.ExternalDocument, 'publication_detail'): "cim.2.shared.ExternalDocument.publication_detail",
     (shared.KeyFloat, 'key'): "cim.2.shared.KeyFloat.key",
     (shared.KeyFloat, 'value'): "cim.2.shared.KeyFloat.value",
-    (shared.Party, 'url'): "cim.2.shared.Party.url",
-    (shared.Party, 'meta'): "cim.2.shared.Party.meta",
-    (shared.Party, 'name'): "cim.2.shared.Party.name",
-    (shared.Party, 'email'): "cim.2.shared.Party.email",
-    (shared.Party, 'orcid_id'): "cim.2.shared.Party.orcid_id",
-    (shared.Party, 'organisation'): "cim.2.shared.Party.organisation",
-    (shared.Party, 'address'): "cim.2.shared.Party.address",
     (shared.DatetimeSet, 'length'): "cim.2.shared.DatetimeSet.length",
     (shared.NumberArray, 'values'): "cim.2.shared.NumberArray.values",
     (shared.DocReference, 'id'): "cim.2.shared.DocReference.id",
@@ -8853,21 +8853,21 @@ KEYS = {
     (shared.DocReference, 'version'): "cim.2.shared.DocReference.version",
     (shared.DateTime, 'offset'): "cim.2.shared.DateTime.offset",
     (shared.DateTime, 'value'): "cim.2.shared.DateTime.value",
-    (shared.DocMetaInfo, 'sort_key'): "cim.2.shared.DocMetaInfo.sort_key",
+    (shared.DocMetaInfo, 'project'): "cim.2.shared.DocMetaInfo.project",
     (shared.DocMetaInfo, 'drs_keys'): "cim.2.shared.DocMetaInfo.drs_keys",
-    (shared.DocMetaInfo, 'type_display_name'): "cim.2.shared.DocMetaInfo.type_display_name",
+    (shared.DocMetaInfo, 'type'): "cim.2.shared.DocMetaInfo.type",
     (shared.DocMetaInfo, 'institute'): "cim.2.shared.DocMetaInfo.institute",
     (shared.DocMetaInfo, 'source'): "cim.2.shared.DocMetaInfo.source",
     (shared.DocMetaInfo, 'type_sort_key'): "cim.2.shared.DocMetaInfo.type_sort_key",
+    (shared.DocMetaInfo, 'version'): "cim.2.shared.DocMetaInfo.version",
     (shared.DocMetaInfo, 'drs_path'): "cim.2.shared.DocMetaInfo.drs_path",
     (shared.DocMetaInfo, 'create_date'): "cim.2.shared.DocMetaInfo.create_date",
-    (shared.DocMetaInfo, 'project'): "cim.2.shared.DocMetaInfo.project",
+    (shared.DocMetaInfo, 'sort_key'): "cim.2.shared.DocMetaInfo.sort_key",
     (shared.DocMetaInfo, 'external_ids'): "cim.2.shared.DocMetaInfo.external_ids",
-    (shared.DocMetaInfo, 'type'): "cim.2.shared.DocMetaInfo.type",
+    (shared.DocMetaInfo, 'type_display_name'): "cim.2.shared.DocMetaInfo.type_display_name",
     (shared.DocMetaInfo, 'language'): "cim.2.shared.DocMetaInfo.language",
     (shared.DocMetaInfo, 'source_key'): "cim.2.shared.DocMetaInfo.source_key",
     (shared.DocMetaInfo, 'update_date'): "cim.2.shared.DocMetaInfo.update_date",
-    (shared.DocMetaInfo, 'version'): "cim.2.shared.DocMetaInfo.version",
     (shared.DocMetaInfo, 'id'): "cim.2.shared.DocMetaInfo.id",
     (shared.DocMetaInfo, 'author'): "cim.2.shared.DocMetaInfo.author",
     (shared.IrregularDateset, 'date_set'): "cim.2.shared.IrregularDateset.date_set",
@@ -8883,10 +8883,10 @@ KEYS = {
     (shared.TimesliceList, 'units'): "cim.2.shared.TimesliceList.units",
     (shared.Reference, 'context'): "cim.2.shared.Reference.context",
     (shared.Reference, 'document'): "cim.2.shared.Reference.document",
-    (shared.TimePeriod, 'units'): "cim.2.shared.TimePeriod.units",
-    (shared.TimePeriod, 'date_type'): "cim.2.shared.TimePeriod.date_type",
-    (shared.TimePeriod, 'calendar'): "cim.2.shared.TimePeriod.calendar",
     (shared.TimePeriod, 'length'): "cim.2.shared.TimePeriod.length",
+    (shared.TimePeriod, 'date_type'): "cim.2.shared.TimePeriod.date_type",
+    (shared.TimePeriod, 'units'): "cim.2.shared.TimePeriod.units",
+    (shared.TimePeriod, 'calendar'): "cim.2.shared.TimePeriod.calendar",
     (shared.TimePeriod, 'date'): "cim.2.shared.TimePeriod.date",
     (shared.RegularTimeset, 'increment'): "cim.2.shared.RegularTimeset.increment",
     (shared.RegularTimeset, 'start_date'): "cim.2.shared.RegularTimeset.start_date",
@@ -8903,10 +8903,10 @@ KEYS = {
     (activity.Ensemble, 'members'): "cim.2.activity.Ensemble.members",
     (activity.Ensemble, 'supported'): "cim.2.activity.Ensemble.supported",
     (activity.UberEnsemble, 'child_ensembles'): "cim.2.activity.UberEnsemble.child_ensembles",
+    (activity.EnsembleMember, 'variant_id'): "cim.2.activity.EnsembleMember.variant_id",
     (activity.EnsembleMember, 'errata'): "cim.2.activity.EnsembleMember.errata",
     (activity.EnsembleMember, 'simulation'): "cim.2.activity.EnsembleMember.simulation",
     (activity.EnsembleMember, 'had_performance'): "cim.2.activity.EnsembleMember.had_performance",
-    (activity.EnsembleMember, 'variant_id'): "cim.2.activity.EnsembleMember.variant_id",
     (activity.EnsembleMember, 'ran_on'): "cim.2.activity.EnsembleMember.ran_on",
     (activity.ParentSimulation, 'parent'): "cim.2.activity.ParentSimulation.parent",
     (activity.ParentSimulation, 'branch_time_in_child'): "cim.2.activity.ParentSimulation.branch_time_in_child",
@@ -8916,15 +8916,15 @@ KEYS = {
     (activity.EnsembleAxis, 'short_identifier'): "cim.2.activity.EnsembleAxis.short_identifier",
     (activity.EnsembleAxis, 'member'): "cim.2.activity.EnsembleAxis.member",
     (activity.Activity, 'canonical_name'): "cim.2.activity.Activity.canonical_name",
-    (activity.Activity, 'references'): "cim.2.activity.Activity.references",
     (activity.Activity, 'long_name'): "cim.2.activity.Activity.long_name",
-    (activity.Activity, 'meta'): "cim.2.activity.Activity.meta",
     (activity.Activity, 'rationale'): "cim.2.activity.Activity.rationale",
+    (activity.Activity, 'meta'): "cim.2.activity.Activity.meta",
+    (activity.Activity, 'references'): "cim.2.activity.Activity.references",
     (activity.Activity, 'duration'): "cim.2.activity.Activity.duration",
-    (activity.Activity, 'responsible_parties'): "cim.2.activity.Activity.responsible_parties",
     (activity.Activity, 'description'): "cim.2.activity.Activity.description",
-    (activity.Activity, 'keywords'): "cim.2.activity.Activity.keywords",
     (activity.Activity, 'name'): "cim.2.activity.Activity.name",
+    (activity.Activity, 'keywords'): "cim.2.activity.Activity.keywords",
+    (activity.Activity, 'responsible_parties'): "cim.2.activity.Activity.responsible_parties",
     (activity.AxisMember, 'description'): "cim.2.activity.AxisMember.description",
     (activity.AxisMember, 'index'): "cim.2.activity.AxisMember.index",
     (activity.AxisMember, 'value'): "cim.2.activity.AxisMember.value",
@@ -8939,10 +8939,10 @@ KEYS = {
     (platform.Machine, 'meta'): "cim.2.platform.Machine.meta",
     (platform.ComputePool, 'compute_cores_per_node'): "cim.2.platform.ComputePool.compute_cores_per_node",
     (platform.ComputePool, 'memory_per_node'): "cim.2.platform.ComputePool.memory_per_node",
-    (platform.ComputePool, 'accelerator_type'): "cim.2.platform.ComputePool.accelerator_type",
+    (platform.ComputePool, 'description'): "cim.2.platform.ComputePool.description",
     (platform.ComputePool, 'cpu_type'): "cim.2.platform.ComputePool.cpu_type",
     (platform.ComputePool, 'model_number'): "cim.2.platform.ComputePool.model_number",
-    (platform.ComputePool, 'description'): "cim.2.platform.ComputePool.description",
+    (platform.ComputePool, 'accelerator_type'): "cim.2.platform.ComputePool.accelerator_type",
     (platform.ComputePool, 'name'): "cim.2.platform.ComputePool.name",
     (platform.ComputePool, 'accelerators_per_node'): "cim.2.platform.ComputePool.accelerators_per_node",
     (platform.ComputePool, 'interconnect'): "cim.2.platform.ComputePool.interconnect",
@@ -8954,29 +8954,29 @@ KEYS = {
     (platform.ComponentPerformance, 'speed'): "cim.2.platform.ComponentPerformance.speed",
     (platform.ComponentPerformance, 'component_name'): "cim.2.platform.ComponentPerformance.component_name",
     (platform.Performance, 'io_load'): "cim.2.platform.Performance.io_load",
-    (platform.Performance, 'sypd'): "cim.2.platform.Performance.sypd",
-    (platform.Performance, 'memory_bloat'): "cim.2.platform.Performance.memory_bloat",
     (platform.Performance, 'platform'): "cim.2.platform.Performance.platform",
+    (platform.Performance, 'model'): "cim.2.platform.Performance.model",
+    (platform.Performance, 'memory_bloat'): "cim.2.platform.Performance.memory_bloat",
     (platform.Performance, 'chsy'): "cim.2.platform.Performance.chsy",
-    (platform.Performance, 'meta'): "cim.2.platform.Performance.meta",
-    (platform.Performance, 'name'): "cim.2.platform.Performance.name",
     (platform.Performance, 'total_nodes_used'): "cim.2.platform.Performance.total_nodes_used",
     (platform.Performance, 'compiler'): "cim.2.platform.Performance.compiler",
+    (platform.Performance, 'meta'): "cim.2.platform.Performance.meta",
+    (platform.Performance, 'name'): "cim.2.platform.Performance.name",
     (platform.Performance, 'load_imbalance'): "cim.2.platform.Performance.load_imbalance",
     (platform.Performance, 'subcomponent_performance'): "cim.2.platform.Performance.subcomponent_performance",
     (platform.Performance, 'coupler_load'): "cim.2.platform.Performance.coupler_load",
     (platform.Performance, 'asypd'): "cim.2.platform.Performance.asypd",
-    (platform.Performance, 'model'): "cim.2.platform.Performance.model",
-    (platform.Partition, 'online_documentation'): "cim.2.platform.Partition.online_documentation",
-    (platform.Partition, 'when_used'): "cim.2.platform.Partition.when_used",
-    (platform.Partition, 'description'): "cim.2.platform.Partition.description",
-    (platform.Partition, 'partition'): "cim.2.platform.Partition.partition",
-    (platform.Partition, 'institution'): "cim.2.platform.Partition.institution",
-    (platform.Partition, 'model_number'): "cim.2.platform.Partition.model_number",
-    (platform.Partition, 'name'): "cim.2.platform.Partition.name",
+    (platform.Performance, 'sypd'): "cim.2.platform.Performance.sypd",
     (platform.Partition, 'storage_pools'): "cim.2.platform.Partition.storage_pools",
+    (platform.Partition, 'online_documentation'): "cim.2.platform.Partition.online_documentation",
+    (platform.Partition, 'description'): "cim.2.platform.Partition.description",
+    (platform.Partition, 'institution'): "cim.2.platform.Partition.institution",
+    (platform.Partition, 'when_used'): "cim.2.platform.Partition.when_used",
+    (platform.Partition, 'partition'): "cim.2.platform.Partition.partition",
+    (platform.Partition, 'model_number'): "cim.2.platform.Partition.model_number",
     (platform.Partition, 'compute_pools'): "cim.2.platform.Partition.compute_pools",
     (platform.Partition, 'vendor'): "cim.2.platform.Partition.vendor",
+    (platform.Partition, 'name'): "cim.2.platform.Partition.name",
     (data.Dataset, 'meta'): "cim.2.data.Dataset.meta",
     (data.Dataset, 'availability'): "cim.2.data.Dataset.availability",
     (data.Dataset, 'name'): "cim.2.data.Dataset.name",
@@ -8996,25 +8996,25 @@ KEYS = {
     (data.VariableCollection, 'collection_name'): "cim.2.data.VariableCollection.collection_name",
     (data.VariableCollection, 'variables'): "cim.2.data.VariableCollection.variables",
     (data.Downscaling, 'downscaled_from'): "cim.2.data.Downscaling.downscaled_from",
-    (drs.DrsEnsembleIdentifier, 'realisation_number'): "cim.2.drs.DrsEnsembleIdentifier.realisation_number",
-    (drs.DrsEnsembleIdentifier, 'initialisation_method_number'): "cim.2.drs.DrsEnsembleIdentifier.initialisation_method_number",
-    (drs.DrsEnsembleIdentifier, 'perturbation_number'): "cim.2.drs.DrsEnsembleIdentifier.perturbation_number",
-    (drs.DrsPublicationDataset, 'institute'): "cim.2.drs.DrsPublicationDataset.institute",
-    (drs.DrsPublicationDataset, 'experiment'): "cim.2.drs.DrsPublicationDataset.experiment",
-    (drs.DrsPublicationDataset, 'model'): "cim.2.drs.DrsPublicationDataset.model",
-    (drs.DrsPublicationDataset, 'realm'): "cim.2.drs.DrsPublicationDataset.realm",
-    (drs.DrsPublicationDataset, 'product'): "cim.2.drs.DrsPublicationDataset.product",
-    (drs.DrsPublicationDataset, 'activity'): "cim.2.drs.DrsPublicationDataset.activity",
-    (drs.DrsPublicationDataset, 'frequency'): "cim.2.drs.DrsPublicationDataset.frequency",
-    (drs.DrsPublicationDataset, 'version_number'): "cim.2.drs.DrsPublicationDataset.version_number",
     (drs.DrsTemporalIdentifier, 'suffix'): "cim.2.drs.DrsTemporalIdentifier.suffix",
     (drs.DrsTemporalIdentifier, 'end'): "cim.2.drs.DrsTemporalIdentifier.end",
     (drs.DrsTemporalIdentifier, 'start'): "cim.2.drs.DrsTemporalIdentifier.start",
+    (drs.DrsEnsembleIdentifier, 'realisation_number'): "cim.2.drs.DrsEnsembleIdentifier.realisation_number",
+    (drs.DrsEnsembleIdentifier, 'initialisation_method_number'): "cim.2.drs.DrsEnsembleIdentifier.initialisation_method_number",
+    (drs.DrsEnsembleIdentifier, 'perturbation_number'): "cim.2.drs.DrsEnsembleIdentifier.perturbation_number",
     (drs.DrsAtomicDataset, 'ensemble_member'): "cim.2.drs.DrsAtomicDataset.ensemble_member",
     (drs.DrsAtomicDataset, 'temporal_constraint'): "cim.2.drs.DrsAtomicDataset.temporal_constraint",
     (drs.DrsAtomicDataset, 'geographical_constraint'): "cim.2.drs.DrsAtomicDataset.geographical_constraint",
     (drs.DrsAtomicDataset, 'variable_name'): "cim.2.drs.DrsAtomicDataset.variable_name",
     (drs.DrsAtomicDataset, 'mip_table'): "cim.2.drs.DrsAtomicDataset.mip_table",
+    (drs.DrsPublicationDataset, 'institute'): "cim.2.drs.DrsPublicationDataset.institute",
+    (drs.DrsPublicationDataset, 'experiment'): "cim.2.drs.DrsPublicationDataset.experiment",
+    (drs.DrsPublicationDataset, 'version_number'): "cim.2.drs.DrsPublicationDataset.version_number",
+    (drs.DrsPublicationDataset, 'activity'): "cim.2.drs.DrsPublicationDataset.activity",
+    (drs.DrsPublicationDataset, 'product'): "cim.2.drs.DrsPublicationDataset.product",
+    (drs.DrsPublicationDataset, 'realm'): "cim.2.drs.DrsPublicationDataset.realm",
+    (drs.DrsPublicationDataset, 'model'): "cim.2.drs.DrsPublicationDataset.model",
+    (drs.DrsPublicationDataset, 'frequency'): "cim.2.drs.DrsPublicationDataset.frequency",
     (drs.DrsGeographicalIndicator, 'bounding_box'): "cim.2.drs.DrsGeographicalIndicator.bounding_box",
     (drs.DrsGeographicalIndicator, 'spatial_domain'): "cim.2.drs.DrsGeographicalIndicator.spatial_domain",
     (drs.DrsGeographicalIndicator, 'operator'): "cim.2.drs.DrsGeographicalIndicator.operator",
@@ -9049,24 +9049,25 @@ KEYS = {
     (science.Algorithm, 'prognostic_variables'): "cim.2.science.Algorithm.prognostic_variables",
     (science.Algorithm, 'references'): "cim.2.science.Algorithm.references",
     (science.Algorithm, 'forced_variables'): "cim.2.science.Algorithm.forced_variables",
-    (science.Resolution, 'typical_x_degrees'): "cim.2.science.Resolution.typical_x_degrees",
-    (science.Resolution, 'typical_y_degrees'): "cim.2.science.Resolution.typical_y_degrees",
-    (science.Resolution, 'is_adaptive_grid'): "cim.2.science.Resolution.is_adaptive_grid",
-    (science.Resolution, 'name'): "cim.2.science.Resolution.name",
-    (science.Resolution, 'number_of_levels'): "cim.2.science.Resolution.number_of_levels",
-    (science.Resolution, 'number_of_xy_gridpoints'): "cim.2.science.Resolution.number_of_xy_gridpoints",
-    (science.Resolution, 'equivalent_resolution_km'): "cim.2.science.Resolution.equivalent_resolution_km",
     (science.ScientificDomain, 'meta'): "cim.2.science.ScientificDomain.meta",
-    (science.ScientificDomain, 'overview'): "cim.2.science.ScientificDomain.overview",
-    (science.ScientificDomain, 'name'): "cim.2.science.ScientificDomain.name",
     (science.ScientificDomain, 'simulates'): "cim.2.science.ScientificDomain.simulates",
     (science.ScientificDomain, 'differing_key_properties'): "cim.2.science.ScientificDomain.differing_key_properties",
+    (science.ScientificDomain, 'name'): "cim.2.science.ScientificDomain.name",
+    (science.ScientificDomain, 'overview'): "cim.2.science.ScientificDomain.overview",
+    (science.ScientificDomain, 'references'): "cim.2.science.ScientificDomain.references",
     (science.ScientificDomain, 'id'): "cim.2.science.ScientificDomain.id",
     (science.ScientificDomain, 'realm'): "cim.2.science.ScientificDomain.realm",
-    (science.ScientificDomain, 'references'): "cim.2.science.ScientificDomain.references",
     (science.ConservationProperties, 'flux_correction_was_used'): "cim.2.science.ConservationProperties.flux_correction_was_used",
     (science.ConservationProperties, 'corrected_conserved_prognostic_variables'): "cim.2.science.ConservationProperties.corrected_conserved_prognostic_variables",
     (science.ConservationProperties, 'correction_methodology'): "cim.2.science.ConservationProperties.correction_methodology",
+    (science.Model, 'model_default_properties'): "cim.2.science.Model.model_default_properties",
+    (science.Model, 'coupler'): "cim.2.science.Model.coupler",
+    (science.Model, 'id'): "cim.2.science.Model.id",
+    (science.Model, 'coupled_components'): "cim.2.science.Model.coupled_components",
+    (science.Model, 'simulates'): "cim.2.science.Model.simulates",
+    (science.Model, 'internal_software_components'): "cim.2.science.Model.internal_software_components",
+    (science.Model, 'meta'): "cim.2.science.Model.meta",
+    (science.Model, 'category'): "cim.2.science.Model.category",
     (science.KeyProperties, 'extra_conservation_properties'): "cim.2.science.KeyProperties.extra_conservation_properties",
     (science.KeyProperties, 'tuning_applied'): "cim.2.science.KeyProperties.tuning_applied",
     (science.KeyProperties, 'grid'): "cim.2.science.KeyProperties.grid",
@@ -9076,23 +9077,22 @@ KEYS = {
     (science.ScienceContext, 'name'): "cim.2.science.ScienceContext.name",
     (science.ScienceContext, 'context'): "cim.2.science.ScienceContext.context",
     (science.ScienceContext, 'id'): "cim.2.science.ScienceContext.id",
-    (science.Detail, 'from_vocab'): "cim.2.science.Detail.from_vocab",
     (science.Detail, 'select'): "cim.2.science.Detail.select",
-    (science.Detail, 'content'): "cim.2.science.Detail.content",
+    (science.Detail, 'from_vocab'): "cim.2.science.Detail.from_vocab",
     (science.Detail, 'with_cardinality'): "cim.2.science.Detail.with_cardinality",
+    (science.Detail, 'content'): "cim.2.science.Detail.content",
     (science.Detail, 'detail_selection'): "cim.2.science.Detail.detail_selection",
     (science.Tuning, 'trend_metrics_used'): "cim.2.science.Tuning.trend_metrics_used",
     (science.Tuning, 'description'): "cim.2.science.Tuning.description",
     (science.Tuning, 'regional_metrics_used'): "cim.2.science.Tuning.regional_metrics_used",
     (science.Tuning, 'global_mean_metrics_used'): "cim.2.science.Tuning.global_mean_metrics_used",
-    (science.Model, 'coupler'): "cim.2.science.Model.coupler",
-    (science.Model, 'simulates'): "cim.2.science.Model.simulates",
-    (science.Model, 'id'): "cim.2.science.Model.id",
-    (science.Model, 'coupled_components'): "cim.2.science.Model.coupled_components",
-    (science.Model, 'internal_software_components'): "cim.2.science.Model.internal_software_components",
-    (science.Model, 'model_default_properties'): "cim.2.science.Model.model_default_properties",
-    (science.Model, 'meta'): "cim.2.science.Model.meta",
-    (science.Model, 'category'): "cim.2.science.Model.category",
+    (science.Resolution, 'typical_x_degrees'): "cim.2.science.Resolution.typical_x_degrees",
+    (science.Resolution, 'typical_y_degrees'): "cim.2.science.Resolution.typical_y_degrees",
+    (science.Resolution, 'is_adaptive_grid'): "cim.2.science.Resolution.is_adaptive_grid",
+    (science.Resolution, 'name'): "cim.2.science.Resolution.name",
+    (science.Resolution, 'number_of_levels'): "cim.2.science.Resolution.number_of_levels",
+    (science.Resolution, 'number_of_xy_gridpoints'): "cim.2.science.Resolution.number_of_xy_gridpoints",
+    (science.Resolution, 'equivalent_resolution_km'): "cim.2.science.Resolution.equivalent_resolution_km",
 
     # ------------------------------------------------
     # Enums.
@@ -9159,18 +9159,18 @@ KEYS = {
     (shared.TimeUnits, 'seconds'): "cim.2.shared.TimeUnits.seconds",
     (shared.RoleCode, 'metadata_reviewer'): "cim.2.shared.RoleCode.metadata_reviewer",
     (shared.RoleCode, 'metadata_author'): "cim.2.shared.RoleCode.metadata_author",
-    (shared.RoleCode, 'sponsor'): "cim.2.shared.RoleCode.sponsor",
+    (shared.RoleCode, 'processor'): "cim.2.shared.RoleCode.processor",
     (shared.RoleCode, 'owner'): "cim.2.shared.RoleCode.owner",
     (shared.RoleCode, 'distributor'): "cim.2.shared.RoleCode.distributor",
     (shared.RoleCode, 'Principal Investigator'): "cim.2.shared.RoleCode.Principal-Investigator",
+    (shared.RoleCode, 'user'): "cim.2.shared.RoleCode.user",
     (shared.RoleCode, 'publisher'): "cim.2.shared.RoleCode.publisher",
     (shared.RoleCode, 'originator'): "cim.2.shared.RoleCode.originator",
     (shared.RoleCode, 'author'): "cim.2.shared.RoleCode.author",
-    (shared.RoleCode, 'processor'): "cim.2.shared.RoleCode.processor",
+    (shared.RoleCode, 'sponsor'): "cim.2.shared.RoleCode.sponsor",
     (shared.RoleCode, 'resource provider'): "cim.2.shared.RoleCode.resource-provider",
     (shared.RoleCode, 'collaborator'): "cim.2.shared.RoleCode.collaborator",
     (shared.RoleCode, 'custodian'): "cim.2.shared.RoleCode.custodian",
-    (shared.RoleCode, 'user'): "cim.2.shared.RoleCode.user",
     (shared.RoleCode, 'point of contact'): "cim.2.shared.RoleCode.point-of-contact",
     (shared.NilReason, 'nil:inapplicable'): "cim.2.shared.NilReason.nil:inapplicable",
     (shared.NilReason, 'nil:unknown'): "cim.2.shared.NilReason.nil:unknown",
@@ -9217,8 +9217,8 @@ KEYS = {
     (shared.DocumentTypes, 'Performance'): "cim.2.shared.DocumentTypes.Performance",
     (shared.SlicetimeUnits, 'monthly'): "cim.2.shared.SlicetimeUnits.monthly",
     (shared.SlicetimeUnits, 'yearly'): "cim.2.shared.SlicetimeUnits.yearly",
-    (shared.QualityStatus, 'under_review'): "cim.2.shared.QualityStatus.under_review",
     (shared.QualityStatus, 'finalised'): "cim.2.shared.QualityStatus.finalised",
+    (shared.QualityStatus, 'under_review'): "cim.2.shared.QualityStatus.under_review",
     (shared.QualityStatus, 'incomplete'): "cim.2.shared.QualityStatus.incomplete",
     (shared.QualityStatus, 'reviewed'): "cim.2.shared.QualityStatus.reviewed",
     (activity.ForcingTypes, 'another simulation'): "cim.2.activity.ForcingTypes.another-simulation",
