@@ -37,7 +37,7 @@ def _get_file_path(doc):
     fpath = "{0}-{1}.{2}".format(
         doc.meta.project.upper(),
         doc.__class__.type_key.upper().replace(".", "-"),
-        pyesdoc.ESDOC_ENCODING_HTML)
+        pyesdoc.ENCODING_HTML)
 
     return join(options.outdir, fpath)
 
@@ -47,7 +47,7 @@ def _write(doc):
 
     """
     with open(_get_file_path(doc), 'w') as op_file:
-        doc = pyesdoc.encode(doc, pyesdoc.ESDOC_ENCODING_HTML)
+        doc = pyesdoc.encode(doc, pyesdoc.ENCODING_HTML)
         doc = _TEMPLATE.generate(body=doc)
         op_file.write(doc)
 

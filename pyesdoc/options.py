@@ -11,7 +11,6 @@
 
 """
 import pyesdoc
-from pyesdoc.utils import runtime as rt
 
 
 

@@ -14,19 +14,13 @@ import pyesdoc
 from pyesdoc.extensions import cim
 from pyesdoc.extensions import default
 from pyesdoc.utils import runtime as rt
-from pyesdoc.ontologies import get_types
+from pyesdoc.ontologies import type_info
 
 
-
-# Set of extenders mapped by ontology.
-_ONTOLOGIES = {cim}
-
-# Set of ontology types.
-_TYPES = get_types()
 
 # Supported extenders keyed by document type.
 SUPPORTED = {}
-for o in _ONTOLOGIES:
+for o in {cim.v1, cim.v2}:
     for doc_type, doc_extender in o.SUPPORTED.iteritems():
         SUPPORTED[doc_type] = doc_extender
 
@@ -78,7 +72,7 @@ def extend(doc):
         return
 
     # Verify that document type is supported.
-    if type(doc) not in _TYPES:
+    if type(doc) not in type_info.TYPES:
         raise TypeError("Unsupported document type: {0}.".format(type(doc)))
 
     # Initialize document extension information.

@@ -43,18 +43,18 @@ def create(typeof,
 
     """
     # Validate document type.
-    if typeof not in ontologies.get_types():
+    if typeof not in ontologies.type_info.TYPES:
         raise exceptions.InvalidDocumentTypeException(typeof)
 
     # Set defaults.
     if not institute:
-        institute = constants.ESDOC_DEFAULT_INSTITUTE
+        institute = constants.DEFAULT_INSTITUTE
     if not language:
-        language = constants.ESDOC_DEFAULT_LANGUAGE
+        language = constants.DEFAULT_LANGUAGE
     if not project:
-        project = constants.ESDOC_DEFAULT_PROJECT
+        project = constants.DEFAULT_PROJECT
     if not source:
-        source = constants.ESDOC_DEFAULT_SOURCE
+        source = constants.DEFAULT_SOURCE
     if not uid:
         uid = uuid.uuid4()
     if not version:

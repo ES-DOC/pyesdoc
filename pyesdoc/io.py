@@ -29,7 +29,7 @@ def get_filename(doc, encoding=None):
 
     """
     if encoding is None:
-        encoding = pyesdoc.constants.ESDOC_ENCODING_JSON
+        encoding = pyesdoc.constants.ENCODING_JSON
 
     return '{0}_{1}_{2}.{3}'.format(doc.__class__.type_key,
                                     str(doc.meta.id),
@@ -57,7 +57,7 @@ def write(document, encoding=None, fpath=None):
 
     """
     if encoding is None:
-        encoding = pyesdoc.constants.ESDOC_ENCODING_JSON
+        encoding = pyesdoc.constants.ENCODING_JSON
     if fpath is None:
         fpath = _get_filepath(document, encoding)
     content = pyesdoc.encode(document, encoding)

@@ -22,19 +22,19 @@ from pyesdoc import codecs
 
 # Codecs mapped by encoding.
 _CODECS = {
-	constants.ESDOC_ENCODING_DICT: codecs.dictionary,
-	constants.ESDOC_ENCODING_HTML: codecs.html,
-	constants.ESDOC_ENCODING_JSON: codecs.json,
-    constants.ESDOC_ENCODING_PDF: codecs.pdf,
-	constants.ESDOC_ENCODING_XML: codecs.xml,
+	constants.ENCODING_DICT: codecs.dictionary,
+	constants.ENCODING_HTML: codecs.html,
+	constants.ENCODING_JSON: codecs.json,
+    constants.ENCODING_PDF: codecs.pdf,
+	constants.ENCODING_XML: codecs.xml,
 	constants.METAFOR_CIM_XML_ENCODING: codecs.xml_metafor_cim_v1
 }
 
 # Map of formats to allowed input types when decoding.
 _DECODE_TYPE_WHITELIST = {
-    constants.ESDOC_ENCODING_DICT : (dict, ),
-    constants.ESDOC_ENCODING_JSON : (str, unicode),
-    constants.ESDOC_ENCODING_XML : (str, unicode, ET.Element),
+    constants.ENCODING_DICT : (dict, ),
+    constants.ENCODING_JSON : (str, unicode),
+    constants.ENCODING_XML : (str, unicode, ET.Element),
     constants.METAFOR_CIM_XML_ENCODING : (str, unicode, ET.Element, et, ete),
 }
 

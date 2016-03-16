@@ -9,7 +9,7 @@
 
 
 """
-from pyesdoc.constants import ESDOC_VIEWER_URL
+from pyesdoc.constants import VIEWER_URL
 from pyesdoc.ontologies import cim
 
 
@@ -29,9 +29,9 @@ def _set_related_experiment_viewer_urls(ctx):
     """
     for exp in ctx.doc.related_experiments:
         if isinstance(exp, cim.v2.designing.NumericalExperiment):
-            exp.viewer_url = ESDOC_VIEWER_URL.format(ctx.meta.project, exp.meta.id, exp.meta.version)
+            exp.viewer_url = VIEWER_URL.format(ctx.meta.project, exp.meta.id, exp.meta.version)
         elif isinstance(exp, cim.v2.shared.DocReference):
-            exp.viewer_url = ESDOC_VIEWER_URL.format(ctx.meta.project, exp.id, exp.version)
+            exp.viewer_url = VIEWER_URL.format(ctx.meta.project, exp.id, exp.version)
 
 
 def _set_summary_fields(ctx):

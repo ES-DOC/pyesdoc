@@ -148,7 +148,7 @@ def _parse_api_response(resp, error_on_404=True):
         _throw_uncontrolled_server_error(resp)
 
 
-def retrieve(uid, version=constants.ESDOC_DOC_VERSION_LATEST):
+def retrieve(uid, version=constants.DOC_VERSION_LATEST):
     """Retrieves a document from remote repository.
 
     :param str|uuid.UUID uid: Document unique identifier.
@@ -164,12 +164,12 @@ def retrieve(uid, version=constants.ESDOC_DOC_VERSION_LATEST):
             uid = uuid.UUID(uid)
         except ValueError:
             _throw_invalid_doc_id()
-    if version != constants.ESDOC_DOC_VERSION_LATEST and \
+    if version != constants.DOC_VERSION_LATEST and \
        not isinstance(version, int):
         _throw_invalid_doc_version()
 
     # Issue HTTP GET.
-    url = _get_doc_url('retrieve', uid, version, constants.ESDOC_ENCODING_JSON)
+    url = _get_doc_url('retrieve', uid, version, constants.ENCODING_JSON)
     resp = _invoke_api(requests.get, url)
 
     # Process HTTP response.
@@ -177,7 +177,7 @@ def retrieve(uid, version=constants.ESDOC_DOC_VERSION_LATEST):
 
     # Return decoded document.
     if resp.text:
-        return extend(decode(resp.json(), constants.ESDOC_ENCODING_DICT))
+        return extend(decode(resp.json(), constants.ENCODING_DICT))
     else:
         return None
 
@@ -203,7 +203,7 @@ def publish(doc):
 
     # Set HTTP operation parameters.
     url = _get_api_url('create')
-    data = encode(doc, constants.ESDOC_ENCODING_JSON)
+    data = encode(doc, constants.ENCODING_JSON)
 
     # Invoke HTTP operation.
     resp = _invoke_api(requests.post, url, data)
@@ -212,7 +212,7 @@ def publish(doc):
     _parse_api_response(resp)
 
 
-def unpublish(uid, version=constants.ESDOC_DOC_VERSION_ALL):
+def unpublish(uid, version=constants.DOC_VERSION_ALL):
     """Unpublishes a document from remote repository.
 
     :param str|uuid.UUID uid: Document unique identifier.
@@ -225,8 +225,8 @@ def unpublish(uid, version=constants.ESDOC_DOC_VERSION_ALL):
             uid = uuid.UUID(uid)
         except ValueError:
             _throw_invalid_doc_id()
-    if not version == constants.ESDOC_DOC_VERSION_ALL and \
-       not version == constants.ESDOC_DOC_VERSION_LATEST and \
+    if not version == constants.DOC_VERSION_ALL and \
+       not version == constants.DOC_VERSION_LATEST and \
        not isinstance(version, int):
         _throw_invalid_doc_version()
 

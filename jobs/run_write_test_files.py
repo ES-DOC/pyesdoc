@@ -52,7 +52,7 @@ def _main():
     """
     for mod in tt.MODULES:
         doc = tu.get_doc(mod)
-        for encoding in pyesdoc.ESDOC_ENCODINGS_FILE:
+        for encoding in pyesdoc.ENCODINGS_FILE:
             try:
                 _write_file(mod, doc, encoding)
             except Exception as err:

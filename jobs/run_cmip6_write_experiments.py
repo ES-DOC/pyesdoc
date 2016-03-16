@@ -610,8 +610,8 @@ class DocumentSet(object):
 
 
         for doc in self.documents:
-            _write(doc, pyesdoc.ESDOC_ENCODING_JSON)
-            _write(doc, pyesdoc.ESDOC_ENCODING_XML)
+            _write(doc, pyesdoc.ENCODING_JSON)
+            _write(doc, pyesdoc.ENCODING_XML)
 
 
 def _main(spreadsheet_filepath, io_dir):

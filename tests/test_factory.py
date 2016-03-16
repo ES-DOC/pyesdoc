@@ -39,9 +39,9 @@ def _assert_doc(doc, typeof=None):
     tu.assert_object(doc, typeof)
     if hasattr(doc, 'meta'):
         tu.assert_str(doc.meta.institute, _INSTITUTE.lower())
-        tu.assert_str(doc.meta.language, pyesdoc.ESDOC_DEFAULT_LANGUAGE)
+        tu.assert_str(doc.meta.language, pyesdoc.DEFAULT_LANGUAGE)
         tu.assert_str(doc.meta.project, _PROJECT.lower())
-        tu.assert_str(doc.meta.source, pyesdoc.ESDOC_DEFAULT_SOURCE)
+        tu.assert_str(doc.meta.source, pyesdoc.DEFAULT_SOURCE)
         if typeof is not None:
             tu.assert_str(doc.meta.type, typeof.type_key)
 

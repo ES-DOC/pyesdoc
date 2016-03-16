@@ -89,7 +89,7 @@ def _test(mod):
     mod.assert_doc_updates(doc)
 
     # Retrieve latest.
-    doc = pyesdoc.retrieve(mod.DOC_ID, pyesdoc.ESDOC_DOC_VERSION_LATEST)
+    doc = pyesdoc.retrieve(mod.DOC_ID, pyesdoc.DOC_VERSION_LATEST)
     mod.assert_doc(doc, True)
     mod.assert_doc_updates(doc)
     return
@@ -104,7 +104,7 @@ def _test(mod):
     mod.assert_doc(doc)
 
     # Retrieve latest.
-    doc = pyesdoc.retrieve(mod.DOC_ID, pyesdoc.ESDOC_DOC_VERSION_LATEST)
+    doc = pyesdoc.retrieve(mod.DOC_ID, pyesdoc.DOC_VERSION_LATEST)
     mod.assert_doc(doc)
 
     # Unpublish (will delete document altogether).

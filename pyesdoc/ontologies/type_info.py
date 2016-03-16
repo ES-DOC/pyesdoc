@@ -47,7 +47,7 @@ ENUMS = ()
 TYPES = ()
 
 # Help text.
-HELP = {}
+DOC_STRINGS = {}
 
 # Map of types to keys.
 KEYS = {}
@@ -57,9 +57,6 @@ CONSTRAINTS = {}
 
 # Set of registered document types.
 DOCUMENT_TYPES = ()
-
-# Map of types to sort keys.
-SORT_KEYS = {}
 
 
 def register(o):
@@ -82,11 +79,6 @@ def register(o):
         return
 
     ONTOLOGIES += (o,)
-    try:
-        SORT_KEYS.update(o.SORT_KEYS)
-    except AttributeError:
-        pass
-
     for v in [v.type_info for v in o.VERSIONS]:
         PACKAGES += v.PACKAGES
         TYPES += v.TYPES
@@ -101,7 +93,156 @@ def register(o):
         ENUMS += v.ENUMS
         KEYS.update(v.KEYS)
         CONSTRAINTS.update(v.CONSTRAINTS)
-        HELP.update(v.HELP)
+        DOC_STRINGS.update(v.DOC_STRINGS)
+
+
+def _get_type(target):
+    """Returns type from target.
+
+    """
+    if target in TYPES:
+        return target
+    return type(target)
+
+
+def get_own_properties(kls):
+    """Returns set of class own properties.
+
+    :param kls: A class or class instance within one of the registered ontologies.
+
+    :returns: Set of a class's own properties.
+    :rtype: set
+
+    """
+    kls = _get_type(kls)
+
+    return set(CLASS_OWN_PROPERTIES.get(kls, []))
+
+
+def get_properties(kls):
+    """Returns set of class properties.
+
+    :param kls: A class or class instance within one of the registered ontologies.
+
+    :returns: Set of class properties.
+    :rtype: set
+
+    """
+    kls = _get_type(kls)
+
+    return set(CLASS_PROPERTIES.get(kls, []))
+
+
+def get_is_document_type(kls):
+    """Returns flag indicating whether a class is a document type.
+
+    :param kls: A class or class instance within one of the registered ontologies.
+
+    :returns: True if class is considered to be a "document".
+    :rtype: bool
+
+    """
+    kls = _get_type(kls)
+
+    return kls in DOCUMENT_TYPES
+
+
+def get_sub_classes(kls):
+    """Returns set of sub-classes.
+
+    """
+    kls = _get_type(kls)
+
+    return [KEYS[i] for i in SUB_CLASSES[kls]]
+
+
+def get_is_sub_classed(kls):
+    """Returns flag indicating whether a class is sub-classed or not.
+
+    :param kls: A class or class instance within one of the registered ontologies.
+
+    :returns: True if class is sub-classed.
+    :rtype: bool
+
+    """
+    kls = _get_type(kls)
+
+    return kls in SUB_CLASSED
+
+
+def get_bases(kls):
+    """Returns set of base classes.
+
+    """
+    kls = _get_type(kls)
+
+    return [KEYS[i] for i in BASE_CLASSES[kls]]
+
+
+def get_has_base_class(kls):
+    """Returns flag indicating whether a class has a base class or not.
+
+    :param kls: A class or class instance within one of the registered ontologies.
+
+    :returns: True if class has a base class.
+    :rtype: bool
+
+    """
+    kls = _get_type(kls)
+
+    return kls in BASE_CLASSED
+
+
+def get_doc_string(typeof, attribute=None):
+    """Returns a documentation string.
+
+    :param typeof: A type within one of the registered ontologies.
+    :param attribute: Name of either a class property or an enum member.
+
+    :returns: A documentation string.
+    :rtype: str
+
+    """
+    typeof = _get_type(typeof)
+
+    if attribute:
+        return DOC_STRINGS.get((typeof, attribute), "").strip()
+    return DOC_STRINGS.get(typeof, "").strip()
+
+
+def get_key(typeof, attribute=None):
+    """Returns a type's key.
+
+    :param typeof: A type within one of the registered ontologies.
+    :param attribute: Name of either a class property or an enum member.
+
+    :returns: A key.
+    :rtype: str
+
+    """
+    typeof = _get_type(typeof)
+
+    if attribute:
+        return KEYS.get((typeof, attribute), "").strip()
+    return KEYS.get(typeof, "").strip()
+
+
+def get_constraints(typeof, attribute=None):
+    """Returns a type's constraints.
+
+    :param typeof: A type within one of the registered ontologies.
+    :param attribute: Name of either a class property or an enum member.
+
+    :returns: A key.
+    :rtype: str
+
+    """
+    typeof = _get_type(typeof)
+
+    if attribute:
+        return set(CONSTRAINTS.get((typeof, attribute), ""))
+
+    return {p: get_constraints(typeof, p) for p in get_properties(typeof)}
 
 
 # Auto register cim.

@@ -14,7 +14,7 @@ import inspect
 
 
 
-class PYESDOC_Exception(Exception):
+class LibraryBaseException(Exception):
     """Default library exception class.
 
     """
@@ -36,7 +36,7 @@ class PYESDOC_Exception(Exception):
         return u"ES-DOC PY-CLIENT EXCEPTION : {0}".format(repr(self.message))
 
 
-class ObsoleteException(PYESDOC_Exception):
+class ObsoleteException(LibraryBaseException):
     """Raised when an obsolete documents is being processed.
 
     """
@@ -47,7 +47,7 @@ class ObsoleteException(PYESDOC_Exception):
         super(ObsoleteException, self).__init__("WARNING :: obsolete document :: {0}".format(message))
 
 
-class DecodingException(PYESDOC_Exception):
+class DecodingException(LibraryBaseException):
     """Raised when document decoding fails.
 
     """
@@ -58,7 +58,7 @@ class DecodingException(PYESDOC_Exception):
         super(DecodingException, self).__init__("Document decoding failed.")
 
 
-class InvalidOptionException(PYESDOC_Exception):
+class InvalidOptionException(LibraryBaseException):
     """Raised when an attempt to access an invalid library option occurs.
 
     """
@@ -69,7 +69,7 @@ class InvalidOptionException(PYESDOC_Exception):
         super(InvalidOptionException, self).__init__("Option {} is unsupported.".format(option))
 
 
-class ExtendingException(PYESDOC_Exception):
+class ExtendingException(LibraryBaseException):
     """Exception raised when document extension fails.
 
     """
@@ -84,7 +84,7 @@ class ExtendingException(PYESDOC_Exception):
         super(ExtendingException, self).__init__(err)
 
 
-class InvalidDocumentTypeException(PYESDOC_Exception):
+class InvalidDocumentTypeException(LibraryBaseException):
     """Exception raised when an invalid document type is declared.
 
     """
@@ -96,7 +96,7 @@ class InvalidDocumentTypeException(PYESDOC_Exception):
         super(InvalidDocumentTypeException, self).__init__(err)
 
 
-class LoadingException(PYESDOC_Exception):
+class LoadingException(LibraryBaseException):
     """Exception raised when document loading fails.
 
     """
@@ -108,7 +108,7 @@ class LoadingException(PYESDOC_Exception):
         super(LoadingException, self).__init__(err)
 
 
-class ParsingException(PYESDOC_Exception):
+class ParsingException(LibraryBaseException):
     """Exception raised when document parsing fails.
 
     """
@@ -120,7 +120,7 @@ class ParsingException(PYESDOC_Exception):
         super(ParsingException, self).__init__(err)
 
 
-class WebServiceException(PYESDOC_Exception):
+class WebServiceException(LibraryBaseException):
     """Exception raised when a web service operation fails.
 
     """

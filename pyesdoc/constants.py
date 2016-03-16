@@ -10,74 +10,71 @@
 
 
 """
-
-
-
 # Supported ESDOC encodings.
-ESDOC_ENCODING_DICT = 'dict'
-ESDOC_ENCODING_JSON = 'json'
-ESDOC_ENCODING_XML = 'xml'
-ESDOC_ENCODING_HTML = 'html'
-ESDOC_ENCODING_PDF = 'pdf'
+ENCODING_DICT = 'dict'
+ENCODING_JSON = 'json'
+ENCODING_XML = 'xml'
+ENCODING_HTML = 'html'
+ENCODING_PDF = 'pdf'
 METAFOR_CIM_XML_ENCODING = 'xml-metafor-cim-v1'
 
 # Standard ESDOC encodings.
-ESDOC_ENCODINGS = (
-    ESDOC_ENCODING_DICT,
-    ESDOC_ENCODING_HTML,
-    ESDOC_ENCODING_JSON,
-    ESDOC_ENCODING_PDF,
-    ESDOC_ENCODING_XML,
+ENCODINGS = (
+    ENCODING_DICT,
+    ENCODING_HTML,
+    ENCODING_JSON,
+    ENCODING_PDF,
+    ENCODING_XML,
 )
 
 # Standard ESDOC file encodings.
-ESDOC_ENCODINGS_FILE = (
-    ESDOC_ENCODING_JSON,
-    ESDOC_ENCODING_XML,
-    ESDOC_ENCODING_HTML,
+ENCODINGS_FILE = (
+    ENCODING_JSON,
+    ENCODING_XML,
+    ENCODING_HTML,
 )
 
 # Custom ESDOC encodings.
-ESDOC_ENCODINGS_CUSTOM = (
+ENCODINGS_CUSTOM = (
     METAFOR_CIM_XML_ENCODING,
 )
 
 # Custom ESDOC file encodings.
-ESDOC_ENCODINGS_FILE_CUSTOM = (
+ENCODINGS_FILE_CUSTOM = (
     METAFOR_CIM_XML_ENCODING,
 )
 
 # Map of standard ESDOC encodings to MIME types.
-ESDOC_ENCODING_HTTP_MEDIA_TYPES = {
-    ESDOC_ENCODING_JSON : "application/json",
-    ESDOC_ENCODING_XML : "application/xml",
-    ESDOC_ENCODING_HTML : "text/html",
-    ESDOC_ENCODING_PDF : "application/pdf"
+ENCODING_HTTP_MEDIA_TYPES = {
+    ENCODING_JSON : "application/json",
+    ENCODING_XML : "application/xml",
+    ENCODING_HTML : "text/html",
+    ENCODING_PDF : "application/pdf"
 }
 
 # Latest document version label.
-ESDOC_DOC_VERSION_LATEST = 'latest'
+DOC_VERSION_LATEST = 'latest'
 
 # All document versions label.
-ESDOC_DOC_VERSION_ALL = 'all'
+DOC_VERSION_ALL = 'all'
 
 # Default document encoding.
-ESDOC_DEFAULT_ENCODING = 'json'
+DEFAULT_ENCODING = 'json'
 
 # Default document language.
-ESDOC_DEFAULT_LANGUAGE = u'en'
+DEFAULT_LANGUAGE = u'en'
 
 # Default document project.
-ESDOC_DEFAULT_PROJECT = u'--'
+DEFAULT_PROJECT = u'--'
 
 # Default document institute.
-ESDOC_DEFAULT_INSTITUTE = u'--'
+DEFAULT_INSTITUTE = u'--'
 
 # Default document source.
-ESDOC_DEFAULT_SOURCE = u'scripts'
+DEFAULT_SOURCE = u'scripts'
 
 # Document viewer url.
-ESDOC_VIEWER_URL = u"index.html?renderMethod=id&project={0}&id={1}&version={2}"
+VIEWER_URL = u"index.html?renderMethod=id&project={0}&id={1}&version={2}"
 
 # Cardinality constraint.
 CONSTRAINT_TYPE_CARDINALITY = 'cardinality'

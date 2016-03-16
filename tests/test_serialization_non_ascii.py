@@ -56,12 +56,12 @@ def _do_test(encoding):
 
 def _test_xml_serialization():
     """Test xml serialization of a document containing non-ascii characters."""
-    _do_test(pyesdoc.ESDOC_ENCODING_XML)
+    _do_test(pyesdoc.ENCODING_XML)
 
 
 def _test_json_serialization():
     """Test json serialization of a document containing non-ascii characters."""
-    _do_test(pyesdoc.ESDOC_ENCODING_JSON)
+    _do_test(pyesdoc.ENCODING_JSON)
 
 
 def test():

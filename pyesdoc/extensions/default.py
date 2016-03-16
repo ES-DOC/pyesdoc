@@ -38,7 +38,7 @@ def _set_language(ctx):
 
     """
     if not ctx.meta.language:
-        ctx.meta.language = constants.ESDOC_DEFAULT_LANGUAGE
+        ctx.meta.language = constants.DEFAULT_LANGUAGE
     ctx.ext.language = ctx.meta.language
 
 
@@ -49,7 +49,7 @@ def _set_institute(ctx):
     if ctx.meta.institute:
         ctx.meta.institute = ctx.meta.institute.upper()
     else:
-        ctx.meta.institute = constants.ESDOC_DEFAULT_INSTITUTE
+        ctx.meta.institute = constants.DEFAULT_INSTITUTE
 
 
 def _set_project(ctx):
@@ -59,7 +59,7 @@ def _set_project(ctx):
     if ctx.meta.project:
         ctx.meta.project = ctx.meta.project.upper()
     else:
-        ctx.meta.institute = constants.ESDOC_DEFAULT_PROJECT
+        ctx.meta.institute = constants.DEFAULT_PROJECT
 
 
 def _set_summary_fields(ctx):
@@ -102,7 +102,7 @@ def _set_viewer_url(ctx):
     """Sets document viewer URL.
 
     """
-    ctx.ext.viewer_url = constants.ESDOC_VIEWER_URL.format(ctx.meta.project,
+    ctx.ext.viewer_url = constants.VIEWER_URL.format(ctx.meta.project,
                                                            ctx.meta.id,
                                                            ctx.meta.version)
 

@@ -111,16 +111,16 @@ pyesdoc.associate(simulation, 'model_reference', model)
 # **********************************************************************
 
 # ... encode as json
-model_as_json = pyesdoc.encode(model, pyesdoc.ESDOC_ENCODING_JSON)
-simulation_as_json = pyesdoc.encode(simulation, pyesdoc.ESDOC_ENCODING_JSON)
+model_as_json = pyesdoc.encode(model, pyesdoc.ENCODING_JSON)
+simulation_as_json = pyesdoc.encode(simulation, pyesdoc.ENCODING_JSON)
 
 # ... encode as xml
-model_as_XML = pyesdoc.encode(model, pyesdoc.ESDOC_ENCODING_XML)
-simulation_as_XML = pyesdoc.encode(simulation, pyesdoc.ESDOC_ENCODING_XML)
+model_as_XML = pyesdoc.encode(model, pyesdoc.ENCODING_XML)
+simulation_as_XML = pyesdoc.encode(simulation, pyesdoc.ENCODING_XML)
 
 # ... decode from json
-model = pyesdoc.decode(model_as_json, pyesdoc.ESDOC_ENCODING_JSON)
-simulation = pyesdoc.decode(simulation_as_json, pyesdoc.ESDOC_ENCODING_JSON)
+model = pyesdoc.decode(model_as_json, pyesdoc.ENCODING_JSON)
+simulation = pyesdoc.decode(simulation_as_json, pyesdoc.ENCODING_JSON)
 
 
 # **********************************************************************
@@ -129,7 +129,7 @@ simulation = pyesdoc.decode(simulation_as_json, pyesdoc.ESDOC_ENCODING_JSON)
 def _do_io(doc):
 	"""Performs document io."""
 	# Write to file system.
-	fpath = pyesdoc.write(model, pyesdoc.ESDOC_ENCODING_JSON)
+	fpath = pyesdoc.write(model, pyesdoc.ENCODING_JSON)
 
 	# Read from file system.
 	doc = pyesdoc.read(fpath)

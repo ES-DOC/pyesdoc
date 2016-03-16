@@ -50,7 +50,7 @@ def _test_metafor_xml(doc):
 def _test_html(mod, doc):
     """Perform html serialization tests."""
     try:
-        tu.encode(doc, pyesdoc.ESDOC_ENCODING_HTML)
+        tu.encode(doc, pyesdoc.ENCODING_HTML)
     except KeyError as err:
         if mod.DOC_TYPE.type_key.lower() in (
             "cim.1.misc.documentset",
@@ -68,11 +68,11 @@ def test():
 
         # Test json.
         tu.init(_test, 'serialization', mod, 'JSON')
-        yield _test, mod, doc, pyesdoc.ESDOC_ENCODING_JSON
+        yield _test, mod, doc, pyesdoc.ENCODING_JSON
 
         # Test xml.
         tu.init(_test, 'serialization', mod, 'XML')
-        yield _test, mod, doc, pyesdoc.ESDOC_ENCODING_XML
+        yield _test, mod, doc, pyesdoc.ENCODING_XML
 
         # Test metafor cim v1 xml.
         tu.init(_test_metafor_xml, 'serialization', mod, 'XML Metafor CIM v1')

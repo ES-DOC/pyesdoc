@@ -41,19 +41,19 @@ import pyesdoc.ontologies.cim as cim
 # **********************************************************************
 
 # ... encode as json
-experiment_as_json = pyesdoc.encode(experiment, pyesdoc.ESDOC_ENCODING_JSON)
+experiment_as_json = pyesdoc.encode(experiment, pyesdoc.ENCODING_JSON)
 
 # ... encode as xml
-experiment_as_xml = pyesdoc.encode(experiment, pyesdoc.ESDOC_ENCODING_XML)
+experiment_as_xml = pyesdoc.encode(experiment, pyesdoc.ENCODING_XML)
 
 # ... encode as html
-experiment_as_html = pyesdoc.encode(experiment, pyesdoc.ESDOC_ENCODING_HTML)
+experiment_as_html = pyesdoc.encode(experiment, pyesdoc.ENCODING_HTML)
 
 # ... decode from json
-experiment = pyesdoc.decode(experiment_as_json, pyesdoc.ESDOC_ENCODING_JSON)
+experiment = pyesdoc.decode(experiment_as_json, pyesdoc.ENCODING_JSON)
 
 # ... decode from xml
-experiment = pyesdoc.decode(experiment_as_xml, pyesdoc.ESDOC_ENCODING_JSON)
+experiment = pyesdoc.decode(experiment_as_xml, pyesdoc.ENCODING_JSON)
 
 # **********************************************************************
 # Step 3 : I/O
@@ -63,7 +63,7 @@ experiment = pyesdoc.decode(experiment_as_xml, pyesdoc.ESDOC_ENCODING_JSON)
 pyesdoc.set_option("output_dir", _OUTPUT_DIR)
 
 # Write to file system.
-experiment_fpath = pyesdoc.write(experiment, pyesdoc.ESDOC_ENCODING_JSON)
+experiment_fpath = pyesdoc.write(experiment, pyesdoc.ENCODING_JSON)
 
 # Read from file system.
 experiment = pyesdoc.read(experiment_fpath)
