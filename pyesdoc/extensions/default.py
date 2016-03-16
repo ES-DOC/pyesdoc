@@ -29,14 +29,8 @@ def _set_type_info(ctx):
     """
     ctx.meta.type = ctx.ext.type = ctx.doc.__class__.type_key
     ctx.ext.css_class = ctx.ext.type.lower().replace(".", "-")
-    try:
-        ctx.meta.type_display_name = cim.DISPLAY_NAMES[type(ctx.doc)]
-    except KeyError:
-        ctx.meta.type_display_name = ctx.meta.type.split(".")[-1]
-    try:
-        ctx.meta.type_sort_key = cim.SORT_KEYS[type(ctx.doc)]
-    except KeyError:
-        ctx.meta.type_sort_key = u"ZZ"
+    ctx.meta.type_display_name = cim.constants.DISPLAY_NAMES.get(type(ctx.doc), ctx.meta.type.split(".")[-1])
+    ctx.meta.type_sort_key = cim.constants.SORT_KEYS.get(type(ctx.doc), u"ZZ")
 
 
 def _set_language(ctx):

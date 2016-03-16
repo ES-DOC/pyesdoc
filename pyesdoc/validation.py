@@ -11,7 +11,7 @@
 """
 import re
 
-from pyesdoc.ontologies import GraphParser
+from pyesdoc.ontologies.graph_parser import GraphParser
 from pyesdoc import ontologies
 from pyesdoc import constants
 
@@ -98,7 +98,7 @@ def _validate_type(value, expected_type):
         if isinstance(instance, expected_type):
             return False
 
-        if expected_type in ontologies.TYPES and \
+        if expected_type in ontologies.type_info.TYPES and \
            type(instance).__name__.split(".")[-1] == _DOCUMENT_REFERENCE_TYPE:
             return False
 

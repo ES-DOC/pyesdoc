@@ -12,5 +12,8 @@
 """
 import v1
 import v2
-from type_info import *
+import constants
 
+
+# Supported version of this ontology.
+VERSIONS = (v1, v2)

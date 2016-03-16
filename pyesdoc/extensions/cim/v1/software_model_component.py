@@ -32,7 +32,7 @@ def get_extenders():
 
 # Mappings between component type & component type display name.
 _COMPONENT_TYPE_DISPLAY_NAMES = \
-    {k:v.split(">")[-1].strip() for k, v in iter(METAFOR_ESDOC_MODEL_COMPONENT_MAP.items())}
+    {k: v.split(">")[-1].strip() for k, v in iter(METAFOR_ESDOC_MODEL_COMPONENT_MAP.items())}
 
 
 # Component extension context information.

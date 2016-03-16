@@ -1,61 +1,21 @@
+# -*- coding: utf-8 -*-
+"""
+.. module:: pyesdoc.ontologies.utils.py
+   :license: GPL/CeCIL
+   :platform: Unix, Windows
+   :synopsis: Encpasulates utility functions related to registered ontologies.
+
+.. moduleauthor:: Mark Conway-Greenslade <momipsl@ipsl.jussieu.fr>
+
+
+"""
 from collections import defaultdict
 
 import cim
 from pyesdoc import constants
+from pyesdoc.ontologies import type_info
 
 
-
-
-# Set of registered ontologies.
-ONTOLOGIES = ()
-
-# Set of registered packages.
-PACKAGES = ()
-
-# Set of registered classes.
-CLASSES = ()
-
-# Class properties.
-CLASS_PROPERTIES = {}
-
-# Class own properties.
-CLASS_OWN_PROPERTIES = {}
-
-# Base classes.
-BASE_CLASSES = defaultdict(tuple)
-
-# Classes with base classes.
-BASE_CLASSED = ()
-
-# Sub classes.
-SUB_CLASSES = defaultdict(tuple)
-
-# Classes that have been sub classed.
-SUB_CLASSED = ()
-
-# Set of registered enums.
-ENUMS = ()
-
-# Set of registered types.
-TYPES = ()
-
-# Help text.
-HELP = {}
-
-# Map of types to keys.
-KEYS = {}
-
-# Map of types to constraints.
-CONSTRAINTS = {}
-
-# Set of registered document types.
-DOCUMENT_TYPES = ()
-
-# Map of types to sort keys.
-SORT_KEYS = {}
-
-# Map of types to display names.
-DISPLAY_NAMES = {}
 
 
 def get_type_key(name, version, package, typeof):
@@ -70,52 +30,6 @@ def get_type_key(name, version, package, typeof):
     return "{0}.{1}.{2}.{3}".format(name, version, package, typeof).lower()
 
 
-def register(o):
-    """Registers an ontology for use.
-
-    :param o: Ontology being registered.
-    :type o: module
-
-    """
-    global BASE_CLASSED
-    global SUB_CLASSED
-    global ONTOLOGIES
-    global PACKAGES
-    global TYPES
-    global DOCUMENT_TYPES
-    global CLASSES
-    global ENUMS
-
-    if o in ONTOLOGIES:
-        return
-
-    ONTOLOGIES += (o,)
-    try:
-        SORT_KEYS.update(o.SORT_KEYS)
-    except AttributeError:
-        pass
-    try:
-        DISPLAY_NAMES.update(o.DISPLAY_NAMES)
-    except AttributeError:
-        pass
-
-    for v in o.VERSIONS:
-        PACKAGES += v.type_info.PACKAGES
-        TYPES += v.type_info.TYPES
-        DOCUMENT_TYPES += v.type_info.DOCUMENT_TYPES
-        CLASSES += v.type_info.CLASSES
-        CLASS_PROPERTIES.update(v.type_info.CLASS_PROPERTIES)
-        CLASS_OWN_PROPERTIES.update(v.type_info.CLASS_OWN_PROPERTIES)
-        BASE_CLASSES.update(v.type_info.BASE_CLASSES)
-        BASE_CLASSED += v.type_info.BASE_CLASSED
-        SUB_CLASSES.update(v.type_info.SUB_CLASSES)
-        SUB_CLASSED += v.type_info.SUB_CLASSED
-        ENUMS += v.type_info.ENUMS
-        KEYS.update(v.type_info.KEYS)
-        CONSTRAINTS.update(v.type_info.CONSTRAINTS)
-        HELP.update(v.type_info.HELP)
-
-
 def get_types(name=None, version=None):
     """Returns set of supported types.
 
@@ -128,7 +42,7 @@ def get_types(name=None, version=None):
     """
     result = ()
 
-    for o in ONTOLOGIES:
+    for o in type_info.ONTOLOGIES:
         if name is None or name == o.NAME:
             for v in o.VERSIONS:
                 if version is None or version == v.ID:
@@ -183,7 +97,7 @@ def get_doc_type_keyset():
     :rtype: set
 
     """
-    return KEYS.values()
+    return type_info.KEYS.values()
 
 
 def get_type(name, version, package, typeof):
@@ -210,7 +124,7 @@ def get_type_key(doc_type):
     :rtype: str or None
 
     """
-    return KEYS.get(doc_type, None)
+    return type_info.KEYS.get(doc_type, None)
 
 
 def get_type_sortkey(doc_type):
@@ -222,19 +136,7 @@ def get_type_sortkey(doc_type):
     :rtype: str
 
     """
-    return SORT_KEYS.get(doc_type, u"")
-
-
-def get_type_display_name(doc_type):
-    """Returns a document type display name.
-
-    :param class doc_type: A document type for which meta-information is to be returned.
-
-    :returns: A type disaply name (if found).
-    :rtype: str
-
-    """
-    return DISPLAY_NAMES.get(doc_type, u"")
+    return type_info.SORT_KEYS.get(doc_type, u"")
 
 
 def get_type_from_key(key):
@@ -247,8 +149,8 @@ def get_type_from_key(key):
 
     """
     type_key = str(key).lower()
-    for t in TYPES:
-        if KEYS[t].lower() == type_key:
+    for t in type_info.TYPES:
+        if type_info.KEYS[t].lower() == type_key:
             return t
 
 
@@ -317,7 +219,7 @@ def get_validation_info(doc_type):
 
     """
     result = defaultdict(set)
-    for name, typeof, value in CONSTRAINTS[doc_type]:
+    for name, typeof, value in type_info.CONSTRAINTS[doc_type]:
         result[name].add((typeof, value))
 
     return result.items()
@@ -349,9 +251,9 @@ def get_constraints(doc_type, type_filter=None):
 
     """
     if type_filter:
-        return [ct for ct in CONSTRAINTS[doc_type] if ct[1] == type_filter]
+        return [ct for ct in type_info.CONSTRAINTS[doc_type] if ct[1] == type_filter]
 
-    return CONSTRAINTS[doc_type]
+    return type_info.CONSTRAINTS[doc_type]
 
 
 def get_property_constraint(container, name, typeof):
@@ -365,7 +267,7 @@ def get_property_constraint(container, name, typeof):
     :rtype: tuple
 
     """
-    return get_constraint(CONSTRAINTS[type(container), name], typeof)
+    return get_constraint(type_info.CONSTRAINTS[type(container), name], typeof)
 
 
 def get_property_constraints(container, name):
@@ -378,7 +280,7 @@ def get_property_constraints(container, name):
     :rtype: tuple
 
     """
-    constraints = CONSTRAINTS[type(container), name]
+    constraints = type_info.CONSTRAINTS[type(container), name]
 
     return get_constraint(constraints, constants.CONSTRAINT_TYPE_CARDINALITY), \
            get_constraint(constraints, constants.CONSTRAINT_TYPE_TYPEOF), \
@@ -418,7 +320,3 @@ def associate(left, attr, right):
     setattr(left, attr, ref)
 
     return ref
-
-
-# Auto register cim.
-register(cim)

@@ -9,8 +9,8 @@
 
 
 """
-from pyesdoc.ontologies.utils import CLASSES
-from pyesdoc.ontologies.utils import CLASS_PROPERTIES
+from pyesdoc.ontologies.type_info import CLASSES
+from pyesdoc.ontologies.type_info import CLASS_PROPERTIES
 
 
 
