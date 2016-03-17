@@ -16,6 +16,23 @@ import datetime
 import uuid
 
 import typeset_for_activity_package as activity
+import typeset_for_activity_package as activity
+import typeset_for_activity_package as activity
+import typeset_for_activity_package as activity
+
+
+
+class AxisMember(object):
+    """A concrete class within the cim v2 type system.
+
+    PLACEHOLDER for the real axis_member.
+
+    """
+    def __init__(self):
+        """Instance constructor.
+
+        """
+        super(AxisMember, self).__init__()
 
 
 
@@ -89,7 +106,7 @@ class SimulationPlan(activity.Activity):
 class DomainProperties(NumericalRequirement):
     """A concrete class within the cim v2 type system.
 
-    Properties of the domain which needs to be simulated, extend and/or resolution.
+    Properties of the domain which needs to be simulated, extent and/or resolution.
 
     """
     def __init__(self):
@@ -156,21 +173,6 @@ class MultiEnsemble(NumericalRequirement):
         self.ensemble_axis = []                           # designing.EnsembleRequirement (1.N)
 
 
-class MultiTimeEnsemble(NumericalRequirement):
-    """A concrete class within the cim v2 type system.
-
-    Defines an experiment ensemble with multiple start dates.
-
-    """
-    def __init__(self):
-        """Instance constructor.
-
-        """
-        super(MultiTimeEnsemble, self).__init__()
-
-        self.ensemble_members = None                      # shared.DatetimeSet (1.1)
-
-
 class OutputTemporalRequirement(NumericalRequirement):
     """A concrete class within the cim v2 type system.
 
@@ -190,6 +192,21 @@ class OutputTemporalRequirement(NumericalRequirement):
         self.continuous_subset = []                       # shared.TimePeriod (0.N)
         self.sliced_subset = None                         # shared.TimesliceList (0.1)
         self.throughout = None                            # bool (1.1)
+
+
+class StartDateEnsemble(NumericalRequirement):
+    """A concrete class within the cim v2 type system.
+
+    Defines an experiment ensemble with multiple start dates.
+
+    """
+    def __init__(self):
+        """Instance constructor.
+
+        """
+        super(StartDateEnsemble, self).__init__()
+
+        self.ensemble_members = None                      # shared.DatetimeSet (1.1)
 
 
 class TemporalConstraint(NumericalRequirement):
@@ -213,16 +230,19 @@ class TemporalConstraint(NumericalRequirement):
 class EnsembleTypes(object):
     """An enumeration within the cim v2 type system.
 
-    Defines the various axes along which one can set up an ensemble.
+    Defines the various axes along which one can set up an ensemble, whether
+     as an experiment designer, or in designing a 'response' ensemble around an
+     experiment.
     """
     is_open = False
     members = [
+        "Driven",
         "Forced",
         "Initialisation Method",
-        "Initialisation",
         "Perturbed Physics",
+        "Realization",
         "Resolution",
-        "Staggered Start"
+        "Start Date"
         ]
 
 
@@ -247,7 +267,7 @@ class ForcingTypes(object):
     """
     is_open = False
     members = [
-        "another simulation",
+        "driven",
         "historical",
         "idealised",
         "scenario"

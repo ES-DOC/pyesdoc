@@ -18,10 +18,31 @@ import uuid
 
 
 
+class DrsAtomicDataset(object):
+    """A concrete class within the cim v2 type system.
+
+    An entity in a DRS file system.
+
+    """
+    def __init__(self):
+        """Instance constructor.
+
+        """
+        super(DrsAtomicDataset, self).__init__()
+
+        self.frequency = None                             # drs.DrsFrequencyTypes (1.1)
+        self.geographical_constraint = None               # drs.DrsGeographicalIndicator (0.1)
+        self.mip_table = None                             # unicode (1.1)
+        self.realm = None                                 # drs.DrsRealms (0.1)
+        self.temporal_constraint = None                   # drs.DrsTemporalIdentifier (0.1)
+        self.variable_name = None                         # unicode (1.1)
+        self.version_number = None                        # int (0.1)
+
+
 class DrsEnsembleIdentifier(object):
     """A concrete class within the cim v2 type system.
 
-    Identifies an ensemble realisation.
+    Identifies a 'response ensemble' realisation using the semantic content ofa 'run_variant_id'.
 
     """
     def __init__(self):
@@ -30,9 +51,27 @@ class DrsEnsembleIdentifier(object):
         """
         super(DrsEnsembleIdentifier, self).__init__()
 
+        self.forcing_number = None                        # int (0.1)
         self.initialisation_method_number = None          # int (1.1)
         self.perturbation_number = None                   # int (1.1)
         self.realisation_number = None                    # int (1.1)
+
+
+class DrsExperiment(object):
+    """A concrete class within the cim v2 type system.
+
+    An encoding of a drs experiment_id.
+
+    """
+    def __init__(self):
+        """Instance constructor.
+
+        """
+        super(DrsExperiment, self).__init__()
+
+        self.axis_identifer = None                        # designing.AxisMember (0.1)
+        self.axis_type = None                             # designing.EnsembleTypes (0.1)
+        self.family = None                                # unicode (1.1)
 
 
 class DrsGeographicalIndicator(object):
@@ -56,7 +95,7 @@ class DrsGeographicalIndicator(object):
 class DrsPublicationDataset(object):
     """A concrete class within the cim v2 type system.
 
-    A collection of atomic datasets which share a single combination of DRS component values.
+    PLACEHOLDER for the real drs_publication_dataset.
 
     """
     def __init__(self):
@@ -65,14 +104,23 @@ class DrsPublicationDataset(object):
         """
         super(DrsPublicationDataset, self).__init__()
 
-        self.activity = None                              # unicode (1.1)
-        self.experiment = None                            # unicode (1.1)
-        self.frequency = None                             # drs.DrsFrequencyTypes (0.1)
+
+
+class DrsSimulationIdentifier(object):
+    """A concrete class within the cim v2 type system.
+
+    That part of the DRS which identifies the response to the experiment: the simulation.
+
+    """
+    def __init__(self):
+        """Instance constructor.
+
+        """
+        super(DrsSimulationIdentifier, self).__init__()
+
         self.institute = None                             # unicode (1.1)
         self.model = None                                 # unicode (1.1)
-        self.product = None                               # unicode (1.1)
-        self.realm = None                                 # drs.DrsRealms (0.1)
-        self.version_number = None                        # int (0.1)
+        self.run_variant_id = None                        # drs.DrsEnsembleIdentifier (1.1)
 
 
 class DrsTemporalIdentifier(object):
@@ -94,25 +142,6 @@ class DrsTemporalIdentifier(object):
         self.end = None                                   # unicode (0.1)
         self.start = None                                 # unicode (1.1)
         self.suffix = None                                # drs.DrsTimeSuffixes (0.1)
-
-
-class DrsAtomicDataset(DrsPublicationDataset):
-    """A concrete class within the cim v2 type system.
-
-    An entity in a DRS file system.
-
-    """
-    def __init__(self):
-        """Instance constructor.
-
-        """
-        super(DrsAtomicDataset, self).__init__()
-
-        self.ensemble_member = None                       # drs.DrsEnsembleIdentifier (1.1)
-        self.geographical_constraint = None               # drs.DrsGeographicalIndicator (0.1)
-        self.mip_table = None                             # unicode (1.1)
-        self.temporal_constraint = None                   # drs.DrsTemporalIdentifier (0.1)
-        self.variable_name = None                         # unicode (1.1)
 
 
 class DrsFrequencyTypes(object):

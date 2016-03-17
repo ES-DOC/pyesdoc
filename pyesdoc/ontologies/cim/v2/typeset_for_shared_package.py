@@ -55,6 +55,27 @@ class Cimtext(object):
         self.content_type = None                          # shared.TextCode (1.1)
 
 
+class CitationTarget(object):
+    """A concrete class within the cim v2 type system.
+
+    A real world document, could be a book, a journal article, a manual, a web page ... it might or might
+    not be online, although preferably it would be.
+
+    """
+    def __init__(self):
+        """Instance constructor.
+
+        """
+        super(CitationTarget, self).__init__()
+
+        self.citation_detail = None                       # unicode (0.1)
+        self.doi = None                                   # unicode (0.1)
+        self.meta = DocMetaInfo()                         # shared.DocMetaInfo (1.1)
+        self.name = None                                  # unicode (1.1)
+        self.online_at = None                             # shared.OnlineResource (0.1)
+        self.title = None                                 # unicode (1.1)
+
+
 class DateTime(object):
     """A concrete class within the cim v2 type system.
 
@@ -122,30 +143,6 @@ class DocMetaInfo(object):
         self.type_sort_key = None                         # unicode (0.1)
         self.update_date = None                           # datetime.datetime (1.1)
         self.version = None                               # int (1.1)
-
-
-class ExternalDocument(object):
-    """A concrete class within the cim v2 type system.
-
-    A real world document, could be a book, a journal article, a manual, a web page ... it might or might
-    not be online, although preferably it would be. We expect a typical citation to be built up
-    as in the following 'authorship, date: title, publication_detail (doi if present)'.
-
-    """
-    def __init__(self):
-        """Instance constructor.
-
-        """
-        super(ExternalDocument, self).__init__()
-
-        self.authorship = None                            # unicode (0.1)
-        self.date = None                                  # unicode (0.1)
-        self.doi = None                                   # unicode (0.1)
-        self.meta = DocMetaInfo()                         # shared.DocMetaInfo (1.1)
-        self.name = None                                  # unicode (1.1)
-        self.online_at = None                             # shared.OnlineResource (0.1)
-        self.publication_detail = None                    # unicode (0.1)
-        self.title = None                                 # unicode (1.1)
 
 
 class KeyFloat(object):
@@ -251,15 +248,17 @@ class QualityReview(object):
         super(QualityReview, self).__init__()
 
         self.date = None                                  # unicode (1.1)
+        self.meta = DocMetaInfo()                         # shared.DocMetaInfo (1.1)
         self.metadata_reviewer = None                     # shared.Party (1.1)
         self.quality_description = None                   # unicode (1.1)
         self.quality_status = None                        # shared.QualityStatus (0.1)
+        self.target_document = None                       # shared.DocReference (1.1)
 
 
 class Reference(object):
     """A concrete class within the cim v2 type system.
 
-    An external document which can have a context associated with it.
+    An external citation target which can have a context associated with it.
 
     """
     def __init__(self):
@@ -269,7 +268,7 @@ class Reference(object):
         super(Reference, self).__init__()
 
         self.context = None                               # unicode (0.1)
-        self.document = None                              # shared.ExternalDocument (1.1)
+        self.document = None                              # shared.CitationTarget (1.1)
 
 
 class Responsibility(object):
@@ -427,6 +426,7 @@ class DocumentTypes(object):
         "Party",
         "Performance",
         "Project",
+        "QualityReview",
         "ScientificDomain",
         "Simulation",
         "SimulationPlan",

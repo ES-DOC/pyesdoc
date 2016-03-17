@@ -177,33 +177,3 @@ class UberEnsemble(Ensemble):
         self.child_ensembles = []                         # activity.Ensemble (1.N)
 
 
-class EnsembleTypes(object):
-    """An enumeration within the cim v2 type system.
-
-    Defines the various axes along which one can set up an ensemble.
-    """
-    is_open = False
-    members = [
-        "Forced",
-        "Initialisation Method",
-        "Initialisation",
-        "Perturbed Physics",
-        "Resolution",
-        "Staggered Start"
-        ]
-
-
-class ForcingTypes(object):
-    """An enumeration within the cim v2 type system.
-
-    Defines the possible set of forcing types for a forcing constraint.
-    """
-    is_open = False
-    members = [
-        "another simulation",
-        "historical",
-        "idealised",
-        "scenario"
-        ]
-
-
