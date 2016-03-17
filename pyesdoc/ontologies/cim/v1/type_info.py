@@ -1845,39 +1845,17 @@ BASE_CLASSED = tuple(BASE_CLASSES.keys())
 
 # Sub classes.
 SUB_CLASSES = defaultdict(tuple)
-SUB_CLASSES[grids.CoordinateList] = (
-    grids.VerticalCoordinateList,
-    )
-SUB_CLASSES[activity.Simulation] = (
-    activity.SimulationComposite,
-    activity.SimulationRun,
-    )
-SUB_CLASSES[activity.NumericalActivity] = (
-    activity.Simulation,
-    activity.DownscalingSimulation,
-    activity.Ensemble,
-    activity.EnsembleMember,
-    activity.SimulationComposite,
-    activity.SimulationRun,
-    )
 SUB_CLASSES[activity.Activity] = (
-    activity.NumericalActivity,
-    activity.MeasurementCampaign,
     activity.Experiment,
-    activity.Simulation,
-    activity.NumericalExperiment,
+    activity.MeasurementCampaign,
+    activity.NumericalActivity,
     activity.DownscalingSimulation,
     activity.Ensemble,
     activity.EnsembleMember,
+    activity.NumericalExperiment,
+    activity.Simulation,
     activity.SimulationComposite,
     activity.SimulationRun,
-    )
-SUB_CLASSES[activity.NumericalRequirement] = (
-    activity.LateralBoundaryCondition,
-    activity.InitialCondition,
-    activity.BoundaryCondition,
-    activity.SpatioTemporalConstraint,
-    activity.OutputRequirement,
     )
 SUB_CLASSES[activity.Conformance] = (
     activity.PhysicalModification,
@@ -1885,42 +1863,64 @@ SUB_CLASSES[activity.Conformance] = (
 SUB_CLASSES[activity.Experiment] = (
     activity.NumericalExperiment,
     )
-SUB_CLASSES[shared.Property] = (
-    grids.GridProperty,
-    shared.ChangeProperty,
-    data.DataProperty,
-    software.ConnectionProperty,
-    software.SpatialRegriddingProperty,
-    software.CouplingProperty,
-    software.ComponentLanguageProperty,
+SUB_CLASSES[activity.NumericalActivity] = (
+    activity.DownscalingSimulation,
+    activity.Ensemble,
+    activity.EnsembleMember,
+    activity.Simulation,
+    activity.SimulationComposite,
+    activity.SimulationRun,
+    )
+SUB_CLASSES[activity.NumericalRequirement] = (
+    activity.BoundaryCondition,
+    activity.InitialCondition,
+    activity.LateralBoundaryCondition,
+    activity.OutputRequirement,
+    activity.SpatioTemporalConstraint,
+    )
+SUB_CLASSES[activity.Simulation] = (
+    activity.SimulationComposite,
+    activity.SimulationRun,
+    )
+SUB_CLASSES[data.DataStorage] = (
+    data.DataStorageDb,
+    data.DataStorageFile,
+    data.DataStorageIp,
+    )
+SUB_CLASSES[grids.CoordinateList] = (
+    grids.VerticalCoordinateList,
+    )
+SUB_CLASSES[shared.Calendar] = (
+    shared.Daily360,
+    shared.PerpetualPeriod,
+    shared.RealCalendar,
     )
 SUB_CLASSES[shared.DataSource] = (
-    data.DataObject,
     data.DataContent,
-    software.ComponentProperty,
+    data.DataObject,
     software.Component,
+    software.ComponentProperty,
     software.ModelComponent,
     software.ProcessorComponent,
     software.StatisticalModelComponent,
     )
-SUB_CLASSES[shared.Relationship] = (
-    activity.SimulationRelationship,
-    activity.ExperimentRelationship,
-    shared.DocRelationship,
-    )
-SUB_CLASSES[shared.Calendar] = (
-    shared.PerpetualPeriod,
-    shared.RealCalendar,
-    shared.Daily360,
-    )
 SUB_CLASSES[shared.DateRange] = (
-    shared.OpenDateRange,
     shared.ClosedDateRange,
+    shared.OpenDateRange,
     )
-SUB_CLASSES[data.DataStorage] = (
-    data.DataStorageFile,
-    data.DataStorageIp,
-    data.DataStorageDb,
+SUB_CLASSES[shared.Property] = (
+    data.DataProperty,
+    grids.GridProperty,
+    shared.ChangeProperty,
+    software.ComponentLanguageProperty,
+    software.ConnectionProperty,
+    software.CouplingProperty,
+    software.SpatialRegriddingProperty,
+    )
+SUB_CLASSES[shared.Relationship] = (
+    activity.ExperimentRelationship,
+    activity.SimulationRelationship,
+    shared.DocRelationship,
     )
 SUB_CLASSES[software.Component] = (
     software.ModelComponent,
