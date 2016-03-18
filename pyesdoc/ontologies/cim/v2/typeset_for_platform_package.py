@@ -38,6 +38,14 @@ class ComponentPerformance(object):
         self.speed = None                                 # float (1.1)
 
 
+    @property
+    def __str__(self):
+	    """Instrance string representation.
+
+	    """
+	    return "speed {} s/day".format(self.speed)
+
+
 class ComputePool(object):
     """A concrete class within the cim v2 type system.
 
@@ -131,6 +139,14 @@ class Performance(object):
         self.total_nodes_used = None                      # int (0.1)
 
 
+    @property
+    def __str__(self):
+	    """Instrance string representation.
+
+	    """
+	    return "{} (sypd:{})".format(self.name, self.sypd)
+
+
 class StoragePool(object):
     """A concrete class within the cim v2 type system.
 
@@ -164,6 +180,14 @@ class StorageVolume(object):
 
         self.units = None                                 # platform.VolumeUnits (1.1)
         self.volume = None                                # int (1.1)
+
+
+    @property
+    def __str__(self):
+	    """Instrance string representation.
+
+	    """
+	    return "{} {}".format(self.volume, self.units)
 
 
 class Machine(Partition):

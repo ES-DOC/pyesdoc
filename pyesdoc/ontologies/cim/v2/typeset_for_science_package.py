@@ -251,6 +251,14 @@ class Extent(SubProcess):
         self.region_known_as = []                         # unicode (0.N)
 
 
+    @property
+    def __str__(self):
+	    """Instrance string representation.
+
+	    """
+	    return "{}".format(self.region_known_as)
+
+
 class KeyProperties(Process):
     """A concrete class within the cim v2 type system.
 

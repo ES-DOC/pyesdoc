@@ -38,6 +38,14 @@ class Calendar(object):
         self.standard_name = None                         # shared.CalendarTypes (1.1)
 
 
+    @property
+    def __str__(self):
+	    """Instrance string representation.
+
+	    """
+	    return "{}".format(self.standard_name)
+
+
 class Cimtext(object):
     """A concrete class within the cim v2 type system.
 
@@ -53,6 +61,14 @@ class Cimtext(object):
 
         self.content = None                               # unicode (1.1)
         self.content_type = None                          # shared.TextCode (1.1)
+
+
+    @property
+    def __str__(self):
+	    """Instrance string representation.
+
+	    """
+	    return "{}".format(self.content)
 
 
 class CitationTarget(object):
@@ -76,6 +92,14 @@ class CitationTarget(object):
         self.title = None                                 # unicode (1.1)
 
 
+    @property
+    def __str__(self):
+	    """Instrance string representation.
+
+	    """
+	    return "{}".format(self.name)
+
+
 class DateTime(object):
     """A concrete class within the cim v2 type system.
 
@@ -92,6 +116,14 @@ class DateTime(object):
 
         self.offset = None                                # bool (0.1)
         self.value = None                                 # unicode (1.1)
+
+
+    @property
+    def __str__(self):
+	    """Instrance string representation.
+
+	    """
+	    return "{}(offset {})".format(self.value, self.offset)
 
 
 class DatetimeSet(object):
@@ -161,6 +193,14 @@ class KeyFloat(object):
         self.value = None                                 # float (1.1)
 
 
+    @property
+    def __str__(self):
+	    """Instrance string representation.
+
+	    """
+	    return "{}: {}".format(self.key, self.value)
+
+
 class NumberArray(object):
     """A concrete class within the cim v2 type system.
 
@@ -174,6 +214,14 @@ class NumberArray(object):
         super(NumberArray, self).__init__()
 
         self.values = None                                # unicode (1.1)
+
+
+    @property
+    def __str__(self):
+	    """Instrance string representation.
+
+	    """
+	    return "{}".format(self.values)
 
 
 class OnlineResource(object):
@@ -289,6 +337,14 @@ class Responsibility(object):
         self.when = None                                  # shared.TimePeriod (0.1)
 
 
+    @property
+    def __str__(self):
+	    """Instrance string representation.
+
+	    """
+	    return "{}:{}".format(self.role, self.party)
+
+
 class TimePeriod(object):
     """A concrete class within the cim v2 type system.
 
@@ -306,6 +362,14 @@ class TimePeriod(object):
         self.date_type = None                             # shared.PeriodDateTypes (1.1)
         self.length = None                                # int (1.1)
         self.units = None                                 # shared.TimeUnits (1.1)
+
+
+    @property
+    def __str__(self):
+	    """Instrance string representation.
+
+	    """
+	    return "{} {}".format(self.length, self.units)
 
 
 class TimesliceList(object):
@@ -377,6 +441,14 @@ class RegularTimeset(DatetimeSet):
         self.increment = None                             # shared.TimePeriod (1.1)
         self.length = None                                # int (1.1)
         self.start_date = None                            # shared.DateTime (1.1)
+
+
+    @property
+    def __str__(self):
+	    """Instrance string representation.
+
+	    """
+	    return "{} times from {} at {} intervals".format(self.length, self.start_date, self.increment)
 
 
 class CalendarTypes(object):

@@ -83,6 +83,14 @@ class EnsembleAxis(object):
         self.target_requirement = None                    # designing.NumericalRequirement (1.1)
 
 
+    @property
+    def __str__(self):
+	    """Instrance string representation.
+
+	    """
+	    return "{}".format(self.axis)
+
+
 class EnsembleMember(object):
     """A concrete class within the cim v2 type system.
 
