@@ -726,6 +726,7 @@ CLASS_PROPERTIES = {
         'source',
         'source_key',
         'status',
+        'sub_project',
         'type',
         'type_display_name',
         'type_sort_key',
@@ -1463,6 +1464,7 @@ CLASS_OWN_PROPERTIES = {
         'source',
         'source_key',
         'status',
+        'sub_project',
         'type',
         'type_display_name',
         'type_sort_key',
@@ -3105,6 +3107,7 @@ CONSTRAINTS = {
         ('genealogy', 'type', shared.DocGenealogy),
         ('author', 'type', shared.ResponsibleParty),
         ('institute', 'type', unicode),
+        ('sub_project', 'type', unicode),
         ('source_key', 'type', unicode),
         ('project', 'type', unicode),
         ('sort_key', 'type', unicode),
@@ -3125,6 +3128,7 @@ CONSTRAINTS = {
         ('genealogy', 'cardinality', "0.1"),
         ('author', 'cardinality', "0.1"),
         ('institute', 'cardinality', "0.1"),
+        ('sub_project', 'cardinality', "1.1"),
         ('source_key', 'cardinality', "0.1"),
         ('project', 'cardinality', "1.1"),
         ('sort_key', 'cardinality', "0.1"),
@@ -6922,6 +6926,13 @@ CONSTRAINTS = {
         ('cardinality', "0.1"),
 
     ),
+    (shared.DocMetaInfo, 'sub_project'): (
+
+        ('type', unicode),
+
+        ('cardinality', "1.1"),
+
+    ),
     (shared.DocMetaInfo, 'type'): (
 
         ('type', unicode),
@@ -9722,6 +9733,8 @@ DOC_STRINGS = {
         "Key of application that created the instance.",
     (shared.DocMetaInfo, 'status'):
         "Document status.",
+    (shared.DocMetaInfo, 'sub_project'):
+        None,
     (shared.DocMetaInfo, 'type'):
         "Document ontology type.",
     (shared.DocMetaInfo, 'type_display_name'):
@@ -10984,6 +10997,7 @@ KEYS = {
     (shared.DocMetaInfo, 'source'): "cim.1.shared.DocMetaInfo.source",
     (shared.DocMetaInfo, 'source_key'): "cim.1.shared.DocMetaInfo.source_key",
     (shared.DocMetaInfo, 'status'): "cim.1.shared.DocMetaInfo.status",
+    (shared.DocMetaInfo, 'sub_project'): "cim.1.shared.DocMetaInfo.sub_project",
     (shared.DocMetaInfo, 'type'): "cim.1.shared.DocMetaInfo.type",
     (shared.DocMetaInfo, 'type_display_name'): "cim.1.shared.DocMetaInfo.type_display_name",
     (shared.DocMetaInfo, 'type_sort_key'): "cim.1.shared.DocMetaInfo.type_sort_key",

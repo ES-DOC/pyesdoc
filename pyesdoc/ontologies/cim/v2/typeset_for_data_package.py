@@ -56,7 +56,7 @@ class Simulation(activity.Activity):
         """
         super(Simulation, self).__init__()
 
-        self.calendar = None                              # shared.Calendar (0.1)
+        self.calendar = None                              # time.Calendar (0.1)
         self.ensemble_identifier = None                   # unicode (1.1)
         self.parent_simulation = None                     # activity.ParentSimulation (0.1)
         self.part_of_project = []                         # designing.Project (1.N)

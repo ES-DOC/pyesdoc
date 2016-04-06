@@ -20,6 +20,7 @@ from typeset_for_platform_package import *
 from typeset_for_science_package import *
 from typeset_for_shared_package import *
 from typeset_for_software_package import *
+from typeset_for_time_package import *
 
 
 import typeset_for_activity_package as activity
@@ -30,6 +31,7 @@ import typeset_for_platform_package as platform
 import typeset_for_science_package as science
 import typeset_for_shared_package as shared
 import typeset_for_software_package as software
+import typeset_for_time_package as time
 
 
 
@@ -44,6 +46,7 @@ __all__ = [
     science,
     shared,
     software,
+    time,
     # Classes
     Activity,
     AxisMember,
@@ -58,13 +61,13 @@ __all__ = [
     Simulation,
     VariableCollection,
     AxisMember,
-    DomainProperties,
+    DomainRequirements,
     EnsembleRequirement,
     ForcingConstraint,
     MultiEnsemble,
     NumericalExperiment,
     NumericalRequirement,
-    OutputTemporalRequirement,
+    OutputRequirement,
     Project,
     SimulationPlan,
     StartDateEnsemble,
@@ -88,33 +91,24 @@ __all__ = [
     Discretisation,
     Extent,
     Grid,
+    IsoExtent,
     KeyProperties,
     Model,
     Process,
     Resolution,
     ScienceContext,
-    ScientificDomain,
+    ScientificRealm,
     SubProcess,
     Tuning,
-    Calendar,
     Cimtext,
     CitationTarget,
-    DateTime,
-    DatetimeSet,
     DocMetaInfo,
     DocReference,
-    IrregularDateset,
-    KeyFloat,
-    NumberArray,
     OnlineResource,
     Party,
-    Pid,
     QualityReview,
     Reference,
-    RegularTimeset,
     Responsibility,
-    TimePeriod,
-    TimesliceList,
     ComponentBase,
     Composition,
     DevelopmentPath,
@@ -122,7 +116,14 @@ __all__ = [
     Gridspec,
     SoftwareComponent,
     Variable,
+    Calendar,
+    DateTime,
+    DatetimeSet,
+    IrregularDateset,
+    RegularTimeset,
+    TimePeriod,
     # Enums
+    ConformanceType,
     DataAssociationTypes,
     EnsembleTypes,
     ExperimentalRelationships,
@@ -135,16 +136,15 @@ __all__ = [
     VolumeUnits,
     ModelTypes,
     SelectionCardinality,
-    CalendarTypes,
     DocumentTypes,
     NilReason,
-    PeriodDateTypes,
     QualityStatus,
     RoleCode,
-    SlicetimeUnits,
     TextCode,
-    TimeUnits,
     CouplingFramework,
     ProgrammingLanguage,
+    CalendarTypes,
+    PeriodDateTypes,
+    TimeUnits,
 ]
 

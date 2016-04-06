@@ -55,7 +55,7 @@ class Grid(object):
         self.discretisation = None                        # science.Discretisation (0.1)
         self.meta = shared.DocMetaInfo()                  # shared.DocMetaInfo (1.1)
         self.name = None                                  # unicode (1.1)
-        self.properites = None                            # science.Detail (0.1)
+        self.properties = None                            # science.Detail (0.1)
         self.references = []                              # shared.Reference (0.N)
 
 
@@ -81,7 +81,7 @@ class Model(software.ComponentBase):
         self.internal_software_components = []            # software.SoftwareComponent (0.N)
         self.meta = shared.DocMetaInfo()                  # shared.DocMetaInfo (1.1)
         self.model_key_properties = None                  # science.KeyProperties (0.1)
-        self.simulates = []                               # science.ScientificDomain (0.N)
+        self.simulates = []                               # science.ScientificRealm (0.N)
 
 
 class ScienceContext(object):
@@ -106,7 +106,7 @@ class ScienceContext(object):
         self.short_name = None                            # unicode (1.1)
 
 
-class ScientificDomain(object):
+class ScientificRealm(object):
     """A concrete class within the cim v2 type system.
 
     Scientific area of a numerical model - usually a sub-model or
@@ -117,7 +117,7 @@ class ScientificDomain(object):
         """Instance constructor.
 
         """
-        super(ScientificDomain, self).__init__()
+        super(ScientificRealm, self).__init__()
 
         self.differing_key_properties = None              # science.KeyProperties (0.1)
         self.grid = None                                  # science.Grid (0.1)
@@ -259,6 +259,24 @@ class Extent(SubProcess):
 	    return "{}".format(self.region_known_as)
 
 
+class IsoExtent(Extent):
+    """A concrete class within the cim v2 type system.
+
+    Extent on a latitude-longitudinal grid - to aid traditional cartesian discovery.
+
+    """
+    def __init__(self):
+        """Instance constructor.
+
+        """
+        super(IsoExtent, self).__init__()
+
+        self.eastern_boundary = None                      # float (0.1)
+        self.northern_boundary = None                     # float (0.1)
+        self.southern_boundary = None                     # float (0.1)
+        self.western_boundary = None                      # float (0.1)
+
+
 class KeyProperties(Process):
     """A concrete class within the cim v2 type system.
 
@@ -299,8 +317,11 @@ class Resolution(SubProcess):
         """
         super(Resolution, self).__init__()
 
+        self.canonical_horizontal_resolution = None       # unicode (0.1)
         self.is_adaptive_grid = None                      # bool (0.1)
         self.name = None                                  # unicode (1.1)
+        self.number_of_horizontal_gridpoints = None       # int (0.1)
+        self.number_of_vertical_levels = None             # int (0.1)
 
 
 class ModelTypes(object):

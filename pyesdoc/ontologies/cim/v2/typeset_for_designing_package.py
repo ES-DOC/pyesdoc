@@ -45,8 +45,10 @@ class NumericalExperiment(activity.Activity):
         """
         super(NumericalExperiment, self).__init__()
 
+        self.other_requirements = []                      # designing.NumericalRequirement (0.N)
         self.related_experiments = []                     # designing.NumericalExperiment (0.N)
-        self.requirements = []                            # designing.NumericalRequirement (0.N)
+        self.related_experiments = []                     # designing.NumericalExperiment (0.N)
+        self.required_period = None                       # designing.TemporalConstraint (1.1)
 
 
 class NumericalRequirement(activity.Activity):
@@ -62,7 +64,7 @@ class NumericalRequirement(activity.Activity):
         super(NumericalRequirement, self).__init__()
 
         self.additional_requirements = []                 # designing.NumericalRequirement (0.N)
-        self.conformance_is_requested = None              # bool (1.1)
+        self.is_conformance_requested = None              # bool (1.1)
 
 
 class Project(activity.Activity):
@@ -100,7 +102,7 @@ class SimulationPlan(activity.Activity):
         self.will_support_experiments = []                # designing.NumericalExperiment (1.N)
 
 
-class DomainProperties(NumericalRequirement):
+class DomainRequirements(NumericalRequirement):
     """A concrete class within the cim v2 type system.
 
     Properties of the domain which needs to be simulated, extent and/or resolution.
@@ -110,7 +112,7 @@ class DomainProperties(NumericalRequirement):
         """Instance constructor.
 
         """
-        super(DomainProperties, self).__init__()
+        super(DomainRequirements, self).__init__()
 
         self.required_extent = None                       # science.Extent (0.1)
         self.required_resolution = None                   # science.Resolution (0.1)
@@ -170,25 +172,19 @@ class MultiEnsemble(NumericalRequirement):
         self.ensemble_axis = []                           # designing.EnsembleRequirement (1.N)
 
 
-class OutputTemporalRequirement(NumericalRequirement):
+class OutputRequirement(NumericalRequirement):
     """A concrete class within the cim v2 type system.
 
-    Provides details of when output is required from an experiment.
-    Typically output will be required in one of three modes:
-    (1) continuous,
-    (2) continuous for a set of subset periods, or
-    (3) sliced for a set of months in a year or days in a month.
+    Provides details of what output is required and when from an experiment.
 
     """
     def __init__(self):
         """Instance constructor.
 
         """
-        super(OutputTemporalRequirement, self).__init__()
+        super(OutputRequirement, self).__init__()
 
-        self.continuous_subset = []                       # shared.TimePeriod (0.N)
-        self.sliced_subset = None                         # shared.TimesliceList (0.1)
-        self.throughout = None                            # bool (1.1)
+        self.formal_data_request = None                   # shared.OnlineResource (0.1)
 
 
 class StartDateEnsemble(NumericalRequirement):
@@ -203,7 +199,7 @@ class StartDateEnsemble(NumericalRequirement):
         """
         super(StartDateEnsemble, self).__init__()
 
-        self.ensemble_members = None                      # shared.DatetimeSet (1.1)
+        self.ensemble_members = None                      # time.DatetimeSet (1.1)
 
 
 class TemporalConstraint(NumericalRequirement):
@@ -218,10 +214,10 @@ class TemporalConstraint(NumericalRequirement):
         """
         super(TemporalConstraint, self).__init__()
 
-        self.required_calendar = None                     # shared.Calendar (0.1)
-        self.required_duration = None                     # shared.TimePeriod (0.1)
-        self.start_date = None                            # shared.DateTime (0.1)
-        self.start_flexibility = None                     # shared.TimePeriod (0.1)
+        self.required_calendar = None                     # time.Calendar (0.1)
+        self.required_duration = None                     # time.TimePeriod (0.1)
+        self.start_date = None                            # time.DateTime (0.1)
+        self.start_flexibility = None                     # time.TimePeriod (0.1)
 
 
 class EnsembleTypes(object):

@@ -108,7 +108,7 @@ class Partition(object):
         self.partition = []                               # platform.Partition (0.N)
         self.storage_pools = []                           # platform.StoragePool (0.N)
         self.vendor = None                                # shared.Party (0.1)
-        self.when_used = None                             # shared.TimePeriod (0.1)
+        self.when_used = None                             # time.TimePeriod (0.1)
 
 
 class Performance(object):
@@ -216,12 +216,12 @@ class StorageSystems(object):
         "Lustre",
         "NFS",
         "Other Disk",
-        "Panasas",
+        "PanFS",
+        "S3",
         "Tape - Castor",
         "Tape - MARS",
         "Tape - MASS",
         "Tape - Other",
-        "Unknown",
         "isilon"
         ]
 

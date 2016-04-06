@@ -40,6 +40,7 @@ _ARGS.add_argument(
 _WS_ENSEMBLE_REQUIREMENT = "EnsembleRequirement"
 _WS_EXPERIMENT = "experiment"
 _WS_FORCING_CONSTRAINT = "ForcingConstraint"
+_WS_MULTI_ENSEMBLE = "MultiEnsemble"
 _WS_PARTY = "party"
 _WS_PROJECT = "project"
 _WS_REFERENCES = "references"
@@ -52,6 +53,7 @@ _WS_ROW_OFFSETS = {
     _WS_ENSEMBLE_REQUIREMENT: 2,
     _WS_EXPERIMENT: 2,
     _WS_FORCING_CONSTRAINT: 2,
+    _WS_MULTI_ENSEMBLE: 2,
     _WS_PARTY: 1,
     _WS_PROJECT: 2,
     _WS_REFERENCES: 1,
@@ -229,7 +231,7 @@ _WS_MAPS = {
             ("organisation", 2, _convert_to_bool),
             ("url", 5)
         ]),
-    _WS_REFERENCES: (cim.v2.ExternalDocument, [
+    _WS_REFERENCES: (cim.v2.CitationTarget, [
             ("abstract", 6),
             ("citation_str", 4),
             ("context", 3),
@@ -243,10 +245,11 @@ _WS_MAPS = {
             ("keywords", 4),
             ("long_name", 2),
             ("name", 1),
-            ("references", range(10, 14)),
-            ("requires_experiments", range(22, 57)),
-            ("responsible_parties", [6], lambda x, y: _convert_to_cim_2_responsibilty(x, y, 7)),
-            ("sub_projects", range(17, 22)),
+            ("rationale", 6),
+            ("references", range(11, 15)),
+            ("requires_experiments", range(36, 69)),
+            ("responsible_parties", [7], lambda x, y: _convert_to_cim_2_responsibilty(x, y, 8)),
+            ("sub_projects", range(18, 35)),
         ]),
     _WS_URL: (cim.v2.OnlineResource, [
             ("description", 4),
@@ -254,9 +257,10 @@ _WS_MAPS = {
             ("linkage", 2),
             ("protocol", 3)
         ]),
+    # TODO: ensemble-member, cols 15, 16, 17
     _WS_ENSEMBLE_REQUIREMENT: (cim.v2.EnsembleRequirement, [
             ("canonical_name", 3),
-            ("conformance_is_requested", 12, _convert_to_bool),
+            ("is_conformance_requested", 12, _convert_to_bool),
             ("description", 5),
             ("ensemble_type", 13),
             ("keywords", 4, _convert_to_string_array),
@@ -269,7 +273,7 @@ _WS_MAPS = {
     _WS_TEMPORAL_CONSTRAINT: (cim.v2.TemporalConstraint, [
             ("canonical_name", 3),
             ("description", 5),
-            ("conformance_is_requested", 12, _convert_to_bool),
+            ("is_conformance_requested", 12, _convert_to_bool),
             ("required_duration", 13, _convert_to_cim_v2_time_period),
             ("required_calendar", 14, _convert_to_cim_v2_calendar),
             ("keywords", 4, _convert_to_string_array),
@@ -283,26 +287,43 @@ _WS_MAPS = {
     _WS_FORCING_CONSTRAINT: (cim.v2.ForcingConstraint, [
             ("canonical_name", 3),
             ("description", 5),
-            ("conformance_is_requested", 13, _convert_to_bool),
-            ("forcing_type", 14),
+            ("is_conformance_requested", 16, _convert_to_bool),
+            ("forcing_type", 17),
             ("keywords", 4, _convert_to_string_array),
             ("long_name", 2),
             ("name", 1),
-            ("references", range(10, 12)),
-            ("responsible_parties", [6], lambda x, y: _convert_to_cim_2_responsibilty(x, y, 7))
+            ("rationale", 6),
+            ("references", range(11, 14)),
+            ("responsible_parties", [7], lambda x, y: _convert_to_cim_2_responsibilty(x, y, 8))
+        ]),
+    # TODO: additional requirements
+    _WS_REQUIREMENT: (cim.v2.NumericalRequirement, [
+            ("additional_requirements", range(15, 25)),
+            ("canonical_name", 3),
+            ("description", 5),
+            ("is_conformance_requested", 14, _convert_to_bool),
+            ("keywords", 4, _convert_to_string_array),
+            ("long_name", 2),
+            ("name", 1),
+            ("rationale", 6),
+            ("references", range(11, 13)),
+            ("responsible_parties", [7], lambda x, y: _convert_to_cim_2_responsibilty(x, y, 8))
         ]),
     _WS_EXPERIMENT: (cim.v2.NumericalExperiment, [
             ("canonical_name", 3),
             ("description", 5),
-            ("ensembles", [21, 22]),
-            ("forcing_constraints", range(24, 37)),
+            ("ensembles", range(26, 30)),
+            ("forcing_constraints", range(36, 49)),
             ("keywords", 4, _convert_to_string_array),
             ("long_name", 2),
+            ("model_configurations", range(31, 36)),
+            ("multi_ensemble", 30),
             ("name", 1),
-            ("references", range(10, 13)),
-            ("related_experiments", range(14, 20)),
-            ("responsible_parties", [6], lambda x, y: _convert_to_cim_2_responsibilty(x, y, 7)),
-            ("temporal_constraint", 20)
+            ("rationale", 6),
+            ("references", range(11, 17)),
+            ("related_experiments", range(18, 24)),
+            ("responsible_parties", [7], lambda x, y: _convert_to_cim_2_responsibilty(x, y, 8)),
+            ("temporal_constraints", range(24, 26))
         ])
 }
 
@@ -377,6 +398,28 @@ class Spreadsheet(object):
                 for row in self._yield_rows(ws_name)]
 
 
+    def _set_document_attribute(self, doc, row, mapping):
+        """Asssigns a document attribute form a mapping.
+
+        """
+        # Unpack mapping info.
+        try:
+            attr, col_idx, convertor = mapping
+        except ValueError:
+            attr, col_idx = mapping
+            convertor = None
+
+        # Convert cell value.
+        if isinstance(col_idx, int):
+            attr_value = self._get_cell_value(row, col_idx, convertor)
+        else:
+            attr_value = [i for i in (self._get_cell_value(row, i, convertor)
+                          for i in col_idx) if i]
+
+        # Set aattribute value.
+        setattr(doc, attr, attr_value)
+
+
     def _get_document(self, doc_type, row, mappings):
         """Returns a CIM document from a spreadsheet row.
 
@@ -393,24 +436,9 @@ class Spreadsheet(object):
         except AttributeError:
             pass
 
-        # Set document atribute from mapped worksheet cells.
+        # Set document attributes from mapped worksheet cells.
         for mapping in mappings:
-            # Unpack mapping info.
-            try:
-                attr, col_idx, convertor = mapping
-            except ValueError:
-                attr, col_idx = mapping
-                convertor = None
-
-            # Convert cell value.
-            if isinstance(col_idx, int):
-                attr_value = self._get_cell_value(row, col_idx, convertor)
-            else:
-                attr_value = [i for i in (self._get_cell_value(row, i, convertor)
-                              for i in col_idx) if i]
-
-            # Set aattribute value.
-            setattr(doc, attr, attr_value)
+            self._set_document_attribute(doc, row, mapping)
 
         return doc
 
@@ -430,13 +458,11 @@ class DocumentSet(object):
         self.parties = spreadsheet[_WS_PARTY]
         self.temporal_constraints = spreadsheet[_WS_TEMPORAL_CONSTRAINT]
         self.projects = spreadsheet[_WS_PROJECT]
+        self.requirements = spreadsheet[_WS_REQUIREMENT]
         self.urls = spreadsheet[_WS_URL]
 
         # TODO rebuild citations after citation review is complete
         self.citations = []
-
-        # TODO load generic requirements
-        # self.requirements = []
 
 
     @property
@@ -444,33 +470,32 @@ class DocumentSet(object):
         """Gets full set of managed documents.
 
         """
-        return self.experiments + \
-               self.ensemble_requirements + \
-               self.forcing_constraints + \
+        return self.citations + \
+               self.experiments + \
+               self.numerical_requirements + \
                self.parties + \
-               self.projects + \
-               self.temporal_constraints
+               self.projects
 
 
     @property
-    def requirements(self):
+    def numerical_requirements(self):
         """Gets full set of managed numerical requirements.
 
         """
         return self.ensemble_requirements + \
                self.forcing_constraints + \
+               self.requirements + \
                self.temporal_constraints
+
 
     @property
     def citation_containers(self):
         """Gets full set of managed objects that have citation collections.
 
         """
-        return self.ensemble_requirements + \
-               self.experiments + \
-               self.forcing_constraints + \
-               self.projects + \
-               self.temporal_constraints
+        return self.experiments + \
+               self.numerical_requirements + \
+               self.projects
 
 
     @property
@@ -486,7 +511,7 @@ class DocumentSet(object):
         """Gets full set of managed objects that have responsible partie collections.
 
         """
-        return self.requirements + \
+        return self.numerical_requirements + \
                self.experiments + \
                self.projects
 
@@ -547,12 +572,18 @@ class DocumentSet(object):
 
         # Set experiment requirements.
         for experiment in self.experiments:
-            experiment.requirements.append(
-                _convert_name(experiment.temporal_constraint, self.temporal_constraints))
+            experiment.requirements += \
+                _convert_names(experiment.temporal_constraints, self.temporal_constraints)
             experiment.requirements += \
                 _convert_names(experiment.forcing_constraints, self.forcing_constraints)
             experiment.requirements += \
                 _convert_names(experiment.ensembles, self.ensemble_requirements)
+            experiment.requirements += \
+                _convert_names(experiment.model_configurations, self.requirements)
+
+        # Set additional experimental requirements.
+        for requirement in self.requirements:
+            requirement.additional_requirements = _convert_names(requirement.additional_requirements, self.numerical_requirements)
 
         # Set sub-projects.
         for project in self.projects:
@@ -578,6 +609,12 @@ class DocumentSet(object):
         # Experiment to requirement references.
         for exp in self.experiments:
             exp.requirements = [self._get_document_link(d) for d in exp.requirements]
+            # if exp.name == "DECK1":
+            #     print exp.meta.id
+
+        # Set additional experimental requirements.
+        for requirement in self.requirements:
+            requirement.additional_requirements = [self._get_document_link(d) for d in requirement.additional_requirements]
 
         # Project to sub-projects.
         for project in self.projects:
@@ -608,10 +645,15 @@ class DocumentSet(object):
             """
             pyesdoc.write(doc, encoding=encoding, fpath=_get_filepath(doc, encoding))
 
+        # Remove helper attributes that do not need to be serialzed.
+        for experiment in self.experiments:
+            del experiment.temporal_constraints
+            del experiment.forcing_constraints
+            del experiment.ensembles
+            del experiment.model_configurations
 
         for doc in self.documents:
             _write(doc, pyesdoc.ENCODING_JSON)
-            _write(doc, pyesdoc.ENCODING_XML)
 
 
 def _main(spreadsheet_filepath, io_dir):

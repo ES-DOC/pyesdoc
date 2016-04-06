@@ -35,11 +35,12 @@ class Activity(object):
 
         self.canonical_name = None                        # unicode (0.1)
         self.description = None                           # unicode (0.1)
-        self.duration = None                              # shared.TimePeriod (0.1)
-        self.keywords = []                                # unicode (0.N)
+        self.duration = None                              # time.TimePeriod (0.1)
+        self.keywords = None                              # unicode (0.1)
         self.long_name = None                             # unicode (0.1)
         self.meta = shared.DocMetaInfo()                  # shared.DocMetaInfo (1.1)
         self.name = None                                  # unicode (1.1)
+        self.previously_known_as = []                     # unicode (0.N)
         self.rationale = None                             # unicode (0.1)
         self.references = []                              # shared.Reference (0.N)
         self.responsible_parties = []                     # shared.Responsibility (0.N)
@@ -124,8 +125,8 @@ class ParentSimulation(object):
         """
         super(ParentSimulation, self).__init__()
 
-        self.branch_time_in_child = None                  # shared.DateTime (0.1)
-        self.branch_time_in_parent = None                 # shared.DateTime (0.1)
+        self.branch_time_in_child = None                  # time.DateTime (0.1)
+        self.branch_time_in_parent = None                 # time.DateTime (0.1)
         self.parent = None                                # data.Simulation (1.1)
 
 
@@ -142,6 +143,7 @@ class Conformance(Activity):
         """
         super(Conformance, self).__init__()
 
+        self.conformance_achieved = None                  # activity.ConformanceType (1.1)
         self.target_requirement = None                    # designing.NumericalRequirement (1.1)
 
 
@@ -183,5 +185,19 @@ class UberEnsemble(Ensemble):
         super(UberEnsemble, self).__init__()
 
         self.child_ensembles = []                         # activity.Ensemble (1.N)
+
+
+class ConformanceType(object):
+    """An enumeration within the cim v2 type system.
+
+    Standardised set of conformance responses.
+    """
+    is_open = True
+    members = [
+        "Conformed",
+        "Not Applicable",
+        "Not Conformed",
+        "Partially Conformed"
+        ]
 
 
