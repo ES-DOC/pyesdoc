@@ -23,7 +23,7 @@ FIELDSETS = {
         FieldInfo('Name', path='canonical_name'),
         FieldInfo('Long Name', path='long_name'),
         FieldInfo('Description', path='description'),
-        FieldInfo('Keywords', path='keywords', input_formatter=lambda v: " | ".join(v)),
+        FieldInfo('Keywords', path='keywords', input_formatter=lambda v: " | ".join(v.split(','))),
         FieldInfo('Related Experiments',
                   link_factory=lambda exp: [(i.name, i.viewer_url) for i in \
                                             sorted(exp.related_experiments, key=lambda v: v.name)])
@@ -34,16 +34,16 @@ FIELDSETS = {
         FieldInfo('Description', path='description'),
         FieldInfo('Ensemble Type', path='ensemble_type'),
         FieldInfo('Minimum Size', path='minimum_size'),
-        FieldInfo('Conformance Requested ?', path='conformance_is_requested'),
-        FieldInfo('Keywords', path='keywords', input_formatter=lambda v: " | ".join(v))
+        FieldInfo('Conformance Requested ?', path='is_conformance_requested'),
+        FieldInfo('Keywords', path='keywords', input_formatter=lambda v: " | ".join(v.split(',')))
     ],
 
     str(cim.v2.designing.ForcingConstraint) : [
         FieldInfo('Name', path='canonical_name'),
         FieldInfo('Description', path='description'),
         FieldInfo('Forcing Type', path='forcing_type'),
-        FieldInfo('Conformance Requested ?', path='conformance_is_requested'),
-        FieldInfo('Keywords', path='keywords', input_formatter=lambda v: " | ".join(v))
+        FieldInfo('Conformance Requested ?', path='is_conformance_requested'),
+        FieldInfo('Keywords', path='keywords', input_formatter=lambda v: " | ".join(v.split(',')))
     ],
 
     str(cim.v2.designing.TemporalConstraint) : [
@@ -51,8 +51,8 @@ FIELDSETS = {
         FieldInfo('Required Duration', path='required_duration',
           input_formatter=lambda v: "{} {}".format(v.length, v.units)),
         FieldInfo('Description', path='description'),
-        FieldInfo('Conformance Requested ?', path='conformance_is_requested'),
-        FieldInfo('Keywords', path='keywords', input_formatter=lambda v: " | ".join(v))
+        FieldInfo('Conformance Requested ?', path='is_conformance_requested'),
+        FieldInfo('Keywords', path='keywords', input_formatter=lambda v: " | ".join(v.split(',')))
     ],
 
     'cim.2.shared.citation' : [

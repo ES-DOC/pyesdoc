@@ -60,7 +60,7 @@ def _set_requirement(doc, req):
 			('Description', req.description),
 			('Ensemble Type', req.ensemble_type),
 			('Minimum Size', req.minimum_size),
-			('Conformance Requested ?', req.conformance_is_requested),
+			('Conformance Requested ?', req.is_conformance_requested),
 			('Description', req.description),
 			('Keywords', "  |  ".join(req.keywords))
 			]
@@ -71,7 +71,7 @@ def _set_requirement(doc, req):
 			('Name', req.canonical_name),
 			('Description', req.description),
 			('Forcing Type', req.forcing_type),
-			('Conformance Requested ?', req.conformance_is_requested),
+			('Conformance Requested ?', req.is_conformance_requested),
 			('Keywords', "  |  ".join(req.keywords))
 			]
 
@@ -80,7 +80,7 @@ def _set_requirement(doc, req):
 			('Start Date', req.start_date.value),
 			('Required Duration', "{} {}".format(req.required_duration.length, req.required_duration.units)),
 			('Description', req.description),
-			('Conformance Requested ?', req.conformance_is_requested),
+			('Conformance Requested ?', req.is_conformance_requested),
 			('Keywords', "  |  ".join(req.keywords))
 			]
 
