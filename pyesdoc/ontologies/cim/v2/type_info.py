@@ -81,6 +81,7 @@ CLASSES = (
     designing.DomainRequirements,
     designing.EnsembleRequirement,
     designing.ForcingConstraint,
+    designing.InitialisationRequirement,
     designing.MultiEnsemble,
     designing.NumericalExperiment,
     designing.NumericalRequirement,
@@ -349,6 +350,24 @@ CLASS_PROPERTIES = {
         'references',
         'responsible_parties',
     ),
+    designing.InitialisationRequirement: (
+        'branch_time_in_initialisation_source',
+        'initialise_from_data',
+        'initialise_from_experiment',
+        'additional_requirements',
+        'is_conformance_requested',
+        'canonical_name',
+        'description',
+        'duration',
+        'keywords',
+        'long_name',
+        'meta',
+        'name',
+        'previously_known_as',
+        'rationale',
+        'references',
+        'responsible_parties',
+    ),
     designing.MultiEnsemble: (
         'ensemble_axis',
         'additional_requirements',
@@ -366,10 +385,9 @@ CLASS_PROPERTIES = {
         'responsible_parties',
     ),
     designing.NumericalExperiment: (
-        'other_requirements',
-        'related_experiments',
         'related_experiments',
         'required_period',
+        'requirements',
         'canonical_name',
         'description',
         'duration',
@@ -991,14 +1009,18 @@ CLASS_OWN_PROPERTIES = {
         'group',
         'origin',
     ),
+    designing.InitialisationRequirement: (
+        'branch_time_in_initialisation_source',
+        'initialise_from_data',
+        'initialise_from_experiment',
+    ),
     designing.MultiEnsemble: (
         'ensemble_axis',
     ),
     designing.NumericalExperiment: (
-        'other_requirements',
-        'related_experiments',
         'related_experiments',
         'required_period',
+        'requirements',
     ),
     designing.NumericalRequirement: (
         'additional_requirements',
@@ -1411,6 +1433,7 @@ DOCUMENT_TYPES = (
     designing.DomainRequirements,
     designing.EnsembleRequirement,
     designing.ForcingConstraint,
+    designing.InitialisationRequirement,
     designing.MultiEnsemble,
     designing.NumericalExperiment,
     designing.NumericalRequirement,
@@ -1439,6 +1462,7 @@ BASE_CLASSES[data.Simulation] = (activity.Activity, )
 BASE_CLASSES[designing.DomainRequirements] = (designing.NumericalRequirement, activity.Activity, )
 BASE_CLASSES[designing.EnsembleRequirement] = (designing.NumericalRequirement, activity.Activity, )
 BASE_CLASSES[designing.ForcingConstraint] = (designing.NumericalRequirement, activity.Activity, )
+BASE_CLASSES[designing.InitialisationRequirement] = (designing.NumericalRequirement, activity.Activity, )
 BASE_CLASSES[designing.MultiEnsemble] = (designing.NumericalRequirement, activity.Activity, )
 BASE_CLASSES[designing.NumericalExperiment] = (activity.Activity, )
 BASE_CLASSES[designing.NumericalRequirement] = (activity.Activity, )
@@ -1481,6 +1505,7 @@ SUB_CLASSES[activity.Activity] = (
     designing.DomainRequirements,
     designing.EnsembleRequirement,
     designing.ForcingConstraint,
+    designing.InitialisationRequirement,
     designing.MultiEnsemble,
     designing.OutputRequirement,
     designing.StartDateEnsemble,
@@ -1496,6 +1521,7 @@ SUB_CLASSES[designing.NumericalRequirement] = (
     designing.DomainRequirements,
     designing.EnsembleRequirement,
     designing.ForcingConstraint,
+    designing.InitialisationRequirement,
     designing.MultiEnsemble,
     designing.OutputRequirement,
     designing.StartDateEnsemble,
@@ -1984,6 +2010,43 @@ CONSTRAINTS = {
         ('name', 'cardinality', "1.1"),
 
     ),
+    designing.InitialisationRequirement: (
+
+        ('description', 'type', unicode),
+        ('keywords', 'type', unicode),
+        ('additional_requirements', 'type', designing.NumericalRequirement),
+        ('responsible_parties', 'type', shared.Responsibility),
+        ('previously_known_as', 'type', unicode),
+        ('initialise_from_experiment', 'type', designing.NumericalExperiment),
+        ('long_name', 'type', unicode),
+        ('canonical_name', 'type', unicode),
+        ('meta', 'type', shared.DocMetaInfo),
+        ('references', 'type', shared.Reference),
+        ('branch_time_in_initialisation_source', 'type', time.DateTime),
+        ('rationale', 'type', unicode),
+        ('duration', 'type', time.TimePeriod),
+        ('is_conformance_requested', 'type', bool),
+        ('initialise_from_data', 'type', data.Dataset),
+        ('name', 'type', unicode),
+
+        ('description', 'cardinality', "0.1"),
+        ('duration', 'cardinality', "0.0"),
+        ('additional_requirements', 'cardinality', "0.N"),
+        ('responsible_parties', 'cardinality', "0.N"),
+        ('previously_known_as', 'cardinality', "0.N"),
+        ('initialise_from_experiment', 'cardinality', "0.1"),
+        ('long_name', 'cardinality', "0.1"),
+        ('canonical_name', 'cardinality', "0.1"),
+        ('meta', 'cardinality', "1.1"),
+        ('references', 'cardinality', "0.N"),
+        ('branch_time_in_initialisation_source', 'cardinality', "0.1"),
+        ('rationale', 'cardinality', "0.1"),
+        ('keywords', 'cardinality', "0.1"),
+        ('is_conformance_requested', 'cardinality', "1.1"),
+        ('initialise_from_data', 'cardinality', "0.1"),
+        ('name', 'cardinality', "1.1"),
+
+    ),
     designing.MultiEnsemble: (
 
         ('ensemble_axis', 'type', designing.EnsembleRequirement),
@@ -2019,7 +2082,7 @@ CONSTRAINTS = {
     ),
     designing.NumericalExperiment: (
 
-        ('other_requirements', 'type', designing.NumericalRequirement),
+        ('requirements', 'type', designing.NumericalRequirement),
         ('description', 'type', unicode),
         ('duration', 'type', time.TimePeriod),
         ('canonical_name', 'type', unicode),
@@ -2034,7 +2097,7 @@ CONSTRAINTS = {
         ('keywords', 'type', unicode),
         ('name', 'type', unicode),
 
-        ('other_requirements', 'cardinality', "0.N"),
+        ('requirements', 'cardinality', "0.N"),
         ('description', 'cardinality', "0.1"),
         ('keywords', 'cardinality', "0.1"),
         ('canonical_name', 'cardinality', "0.1"),
@@ -4353,6 +4416,119 @@ CONSTRAINTS = {
 
     ),
 
+    (designing.InitialisationRequirement, 'branch_time_in_initialisation_source'): (
+
+        ('type', time.DateTime),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (designing.InitialisationRequirement, 'initialise_from_data'): (
+
+        ('type', data.Dataset),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (designing.InitialisationRequirement, 'initialise_from_experiment'): (
+
+        ('type', designing.NumericalExperiment),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (designing.InitialisationRequirement, 'additional_requirements'): (
+
+        ('type', designing.NumericalRequirement),
+
+        ('cardinality', "0.N"),
+
+    ),
+    (designing.InitialisationRequirement, 'is_conformance_requested'): (
+
+        ('type', bool),
+
+        ('cardinality', "1.1"),
+
+    ),
+    (designing.InitialisationRequirement, 'canonical_name'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (designing.InitialisationRequirement, 'description'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (designing.InitialisationRequirement, 'duration'): (
+
+        ('type', time.TimePeriod),
+
+        ('cardinality', "0.0"),
+
+    ),
+    (designing.InitialisationRequirement, 'keywords'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (designing.InitialisationRequirement, 'long_name'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (designing.InitialisationRequirement, 'meta'): (
+
+        ('type', shared.DocMetaInfo),
+
+        ('cardinality', "1.1"),
+
+    ),
+    (designing.InitialisationRequirement, 'name'): (
+
+        ('type', unicode),
+
+        ('cardinality', "1.1"),
+
+    ),
+    (designing.InitialisationRequirement, 'previously_known_as'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.N"),
+
+    ),
+    (designing.InitialisationRequirement, 'rationale'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (designing.InitialisationRequirement, 'references'): (
+
+        ('type', shared.Reference),
+
+        ('cardinality', "0.N"),
+
+    ),
+    (designing.InitialisationRequirement, 'responsible_parties'): (
+
+        ('type', shared.Responsibility),
+
+        ('cardinality', "0.N"),
+
+    ),
+
     (designing.MultiEnsemble, 'ensemble_axis'): (
 
         ('type', designing.EnsembleRequirement),
@@ -4452,20 +4628,6 @@ CONSTRAINTS = {
 
     ),
 
-    (designing.NumericalExperiment, 'other_requirements'): (
-
-        ('type', designing.NumericalRequirement),
-
-        ('cardinality', "0.N"),
-
-    ),
-    (designing.NumericalExperiment, 'related_experiments'): (
-
-        ('type', designing.NumericalExperiment),
-
-        ('cardinality', "0.N"),
-
-    ),
     (designing.NumericalExperiment, 'related_experiments'): (
 
         ('type', designing.NumericalExperiment),
@@ -4478,6 +4640,13 @@ CONSTRAINTS = {
         ('type', designing.TemporalConstraint),
 
         ('cardinality', "1.1"),
+
+    ),
+    (designing.NumericalExperiment, 'requirements'): (
+
+        ('type', designing.NumericalRequirement),
+
+        ('cardinality', "0.N"),
 
     ),
     (designing.NumericalExperiment, 'canonical_name'): (
@@ -7473,6 +7642,10 @@ DOC_STRINGS = {
         Identifies a model forcing constraint.
 
     """,
+    designing.InitialisationRequirement: """
+        A requirement on how a particular simulation should be initialised.
+
+    """,
     designing.MultiEnsemble: """
         In the case of multiple ensemble axes, defines how they
     are set up and ordered.
@@ -7583,7 +7756,7 @@ DOC_STRINGS = {
 
     """,
     science.Discretisation: """
-        None
+        Collection of properties related to method of process discretisation.
 
     """,
     science.Extent: """
@@ -7923,16 +8096,20 @@ DOC_STRINGS = {
         "Sub-Category (e.g. GHG).",
     (designing.ForcingConstraint, 'origin'):
         "Pointer to origin, e.g. CMIP6 RCP database.",
+    (designing.InitialisationRequirement, 'branch_time_in_initialisation_source'):
+        "If appropriate,  the time in the initialisation_source (whether observed or simulated).",
+    (designing.InitialisationRequirement, 'initialise_from_data'):
+        "Initialisation should use this primary dataset.",
+    (designing.InitialisationRequirement, 'initialise_from_experiment'):
+        "This experiment should be initialised from the output of this experiment.",
     (designing.MultiEnsemble, 'ensemble_axis'):
         "List of orthogonal ensembles.",
-    (designing.NumericalExperiment, 'other_requirements'):
-        "Requirements that conformant simulations need to satisfy.",
-    (designing.NumericalExperiment, 'related_experiments'):
-        "A related experiment.",
     (designing.NumericalExperiment, 'related_experiments'):
         "Other experiments which have defined relationships to this one.",
     (designing.NumericalExperiment, 'required_period'):
         "Constraint on start date and duration.",
+    (designing.NumericalExperiment, 'requirements'):
+        "Additional requirements that conformant simulations need to satisfy.",
     (designing.NumericalRequirement, 'additional_requirements'):
         "Additional detail for this requirement.",
     (designing.NumericalRequirement, 'is_conformance_requested'):
@@ -7986,7 +8163,7 @@ DOC_STRINGS = {
     (drs.DrsEnsembleIdentifier, 'realisation_number'):
         "Standard ensemble axis realisation number (usually an initial condition ensemble).",
     (drs.DrsExperiment, 'axis_identifer'):
-        "None",
+        "FIXME.",
     (drs.DrsExperiment, 'axis_type'):
         "Type of experimental family ensemble required.",
     (drs.DrsExperiment, 'family'):
@@ -8877,6 +9054,7 @@ KEYS = {
     designing.DomainRequirements: "cim.2.designing.DomainRequirements",
     designing.EnsembleRequirement: "cim.2.designing.EnsembleRequirement",
     designing.ForcingConstraint: "cim.2.designing.ForcingConstraint",
+    designing.InitialisationRequirement: "cim.2.designing.InitialisationRequirement",
     designing.MultiEnsemble: "cim.2.designing.MultiEnsemble",
     designing.NumericalExperiment: "cim.2.designing.NumericalExperiment",
     designing.NumericalRequirement: "cim.2.designing.NumericalRequirement",
@@ -9007,11 +9185,13 @@ KEYS = {
     (designing.ForcingConstraint, 'forcing_type'): "cim.2.designing.ForcingConstraint.forcing_type",
     (designing.ForcingConstraint, 'group'): "cim.2.designing.ForcingConstraint.group",
     (designing.ForcingConstraint, 'origin'): "cim.2.designing.ForcingConstraint.origin",
+    (designing.InitialisationRequirement, 'branch_time_in_initialisation_source'): "cim.2.designing.InitialisationRequirement.branch_time_in_initialisation_source",
+    (designing.InitialisationRequirement, 'initialise_from_data'): "cim.2.designing.InitialisationRequirement.initialise_from_data",
+    (designing.InitialisationRequirement, 'initialise_from_experiment'): "cim.2.designing.InitialisationRequirement.initialise_from_experiment",
     (designing.MultiEnsemble, 'ensemble_axis'): "cim.2.designing.MultiEnsemble.ensemble_axis",
-    (designing.NumericalExperiment, 'other_requirements'): "cim.2.designing.NumericalExperiment.other_requirements",
-    (designing.NumericalExperiment, 'related_experiments'): "cim.2.designing.NumericalExperiment.related_experiments",
     (designing.NumericalExperiment, 'related_experiments'): "cim.2.designing.NumericalExperiment.related_experiments",
     (designing.NumericalExperiment, 'required_period'): "cim.2.designing.NumericalExperiment.required_period",
+    (designing.NumericalExperiment, 'requirements'): "cim.2.designing.NumericalExperiment.requirements",
     (designing.NumericalRequirement, 'additional_requirements'): "cim.2.designing.NumericalRequirement.additional_requirements",
     (designing.NumericalRequirement, 'is_conformance_requested'): "cim.2.designing.NumericalRequirement.is_conformance_requested",
     (designing.OutputRequirement, 'formal_data_request'): "cim.2.designing.OutputRequirement.formal_data_request",
@@ -9465,6 +9645,7 @@ designing.EnsembleTypes.type_key = KEYS[designing.EnsembleTypes]
 designing.ExperimentalRelationships.type_key = KEYS[designing.ExperimentalRelationships]
 designing.ForcingConstraint.type_key = KEYS[designing.ForcingConstraint]
 designing.ForcingTypes.type_key = KEYS[designing.ForcingTypes]
+designing.InitialisationRequirement.type_key = KEYS[designing.InitialisationRequirement]
 designing.MultiEnsemble.type_key = KEYS[designing.MultiEnsemble]
 designing.NumericalExperiment.type_key = KEYS[designing.NumericalExperiment]
 designing.NumericalRequirement.type_key = KEYS[designing.NumericalRequirement]

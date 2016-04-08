@@ -64,6 +64,7 @@ __all__ = [
     DomainRequirements,
     EnsembleRequirement,
     ForcingConstraint,
+    InitialisationRequirement,
     MultiEnsemble,
     NumericalExperiment,
     NumericalRequirement,

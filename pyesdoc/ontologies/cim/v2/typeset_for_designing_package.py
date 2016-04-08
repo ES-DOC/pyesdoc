@@ -45,10 +45,9 @@ class NumericalExperiment(activity.Activity):
         """
         super(NumericalExperiment, self).__init__()
 
-        self.other_requirements = []                      # designing.NumericalRequirement (0.N)
-        self.related_experiments = []                     # designing.NumericalExperiment (0.N)
         self.related_experiments = []                     # designing.NumericalExperiment (0.N)
         self.required_period = None                       # designing.TemporalConstraint (1.1)
+        self.requirements = []                            # designing.NumericalRequirement (0.N)
 
 
 class NumericalRequirement(activity.Activity):
@@ -154,6 +153,23 @@ class ForcingConstraint(NumericalRequirement):
         self.forcing_type = None                          # designing.ForcingTypes (1.1)
         self.group = None                                 # unicode (0.1)
         self.origin = None                                # shared.Reference (0.1)
+
+
+class InitialisationRequirement(NumericalRequirement):
+    """A concrete class within the cim v2 type system.
+
+    A requirement on how a particular simulation should be initialised.
+
+    """
+    def __init__(self):
+        """Instance constructor.
+
+        """
+        super(InitialisationRequirement, self).__init__()
+
+        self.branch_time_in_initialisation_source = None  # time.DateTime (0.1)
+        self.initialise_from_data = None                  # data.Dataset (0.1)
+        self.initialise_from_experiment = None            # designing.NumericalExperiment (0.1)
 
 
 class MultiEnsemble(NumericalRequirement):

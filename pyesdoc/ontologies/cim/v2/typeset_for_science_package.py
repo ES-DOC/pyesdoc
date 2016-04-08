@@ -220,7 +220,7 @@ class Tuning(SubProcess):
 class Discretisation(SubProcess):
     """A concrete class within the cim v2 type system.
 
-    None
+    Collection of properties related to method of process discretisation.
 
     """
     def __init__(self):
