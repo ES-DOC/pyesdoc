@@ -775,7 +775,7 @@ CLASS_PROPERTIES = {
         'sort_key',
         'source',
         'source_key',
-        'sub_project',
+        'sub_projects',
         'type',
         'type_display_name',
         'type_sort_key',
@@ -1258,7 +1258,7 @@ CLASS_OWN_PROPERTIES = {
         'sort_key',
         'source',
         'source_key',
-        'sub_project',
+        'sub_projects',
         'type',
         'type_display_name',
         'type_sort_key',
@@ -2879,7 +2879,6 @@ CONSTRAINTS = {
         ('language', 'type', unicode),
         ('author', 'type', shared.Party),
         ('institute', 'type', unicode),
-        ('sub_project', 'type', unicode),
         ('source_key', 'type', unicode),
         ('project', 'type', unicode),
         ('sort_key', 'type', unicode),
@@ -2888,6 +2887,7 @@ CONSTRAINTS = {
         ('type_sort_key', 'type', unicode),
         ('update_date', 'type', datetime.datetime),
         ('external_ids', 'type', unicode),
+        ('sub_projects', 'type', unicode),
         ('type', 'type', unicode),
         ('id', 'type', unicode),
         ('type_display_name', 'type', unicode),
@@ -2898,7 +2898,6 @@ CONSTRAINTS = {
         ('language', 'cardinality', "1.1"),
         ('author', 'cardinality', "0.1"),
         ('institute', 'cardinality', "0.1"),
-        ('sub_project', 'cardinality', "1.1"),
         ('source_key', 'cardinality', "0.1"),
         ('project', 'cardinality', "1.1"),
         ('sort_key', 'cardinality', "0.1"),
@@ -2907,6 +2906,7 @@ CONSTRAINTS = {
         ('type_sort_key', 'cardinality', "0.1"),
         ('update_date', 'cardinality', "1.1"),
         ('external_ids', 'cardinality', "0.N"),
+        ('sub_projects', 'cardinality', "0.N"),
         ('type', 'cardinality', "1.1"),
         ('id', 'cardinality', "1.1"),
         ('type_display_name', 'cardinality', "0.1"),
@@ -6877,11 +6877,11 @@ CONSTRAINTS = {
         ('cardinality', "0.1"),
 
     ),
-    (shared.DocMetaInfo, 'sub_project'): (
+    (shared.DocMetaInfo, 'sub_projects'): (
 
         ('type', unicode),
 
-        ('cardinality', "1.1"),
+        ('cardinality', "0.N"),
 
     ),
     (shared.DocMetaInfo, 'type'): (
@@ -8436,8 +8436,8 @@ DOC_STRINGS = {
         "Name of application that created the instance.",
     (shared.DocMetaInfo, 'source_key'):
         "Key of application that created the instance.",
-    (shared.DocMetaInfo, 'sub_project'):
-        "Name of sub-project with which instance is associated with.",
+    (shared.DocMetaInfo, 'sub_projects'):
+        "Set of sub-projects with which instance is associated with.",
     (shared.DocMetaInfo, 'type'):
         "Document ontology type.",
     (shared.DocMetaInfo, 'type_display_name'):
@@ -9355,7 +9355,7 @@ KEYS = {
     (shared.DocMetaInfo, 'sort_key'): "cim.2.shared.DocMetaInfo.sort_key",
     (shared.DocMetaInfo, 'source'): "cim.2.shared.DocMetaInfo.source",
     (shared.DocMetaInfo, 'source_key'): "cim.2.shared.DocMetaInfo.source_key",
-    (shared.DocMetaInfo, 'sub_project'): "cim.2.shared.DocMetaInfo.sub_project",
+    (shared.DocMetaInfo, 'sub_projects'): "cim.2.shared.DocMetaInfo.sub_projects",
     (shared.DocMetaInfo, 'type'): "cim.2.shared.DocMetaInfo.type",
     (shared.DocMetaInfo, 'type_display_name'): "cim.2.shared.DocMetaInfo.type_display_name",
     (shared.DocMetaInfo, 'type_sort_key'): "cim.2.shared.DocMetaInfo.type_sort_key",

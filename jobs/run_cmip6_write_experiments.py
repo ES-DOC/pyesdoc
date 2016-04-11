@@ -581,6 +581,14 @@ class DocumentSet(object):
             experiment.requirements += \
                 _convert_names(experiment.model_configurations, self.requirements)
 
+        # Set experiment sub-projects.
+        for experiment in self.experiments:
+            for project in self.projects:
+                if experiment.canonical_name in project.requires_experiments:
+                    experiment.meta.sub_projects.append(project.name)
+            if experiment.meta.sub_projects:
+                experiment.meta.sub_projects = sorted(experiment.meta.sub_projects)
+
         # Set additional experimental requirements.
         for requirement in self.requirements:
             requirement.additional_requirements = _convert_names(requirement.additional_requirements, self.numerical_requirements)
