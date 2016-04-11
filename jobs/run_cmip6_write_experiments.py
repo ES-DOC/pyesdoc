@@ -13,9 +13,10 @@ import argparse
 import os
 from collections import defaultdict
 
+import xlrd
+
 import pyesdoc
 import pyesdoc.ontologies.cim as cim
-import xlrd
 
 
 
