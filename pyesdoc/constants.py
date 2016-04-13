@@ -44,6 +44,9 @@ ENCODINGS_FILE_CUSTOM = (
     METAFOR_CIM_XML_ENCODING,
 )
 
+# All ESDOC encodings.
+ENCODINGS_ALL = ENCODINGS + ENCODINGS_CUSTOM
+
 # Map of standard ESDOC encodings to MIME types.
 ENCODING_HTTP_MEDIA_TYPES = {
     ENCODING_JSON : "application/json",
