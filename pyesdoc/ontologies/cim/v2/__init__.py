@@ -90,6 +90,7 @@ from typeset_for_shared_package import Cimtext
 from typeset_for_shared_package import CitationTarget
 from typeset_for_shared_package import DocMetaInfo
 from typeset_for_shared_package import DocReference
+from typeset_for_shared_package import ExtraAttribute
 from typeset_for_shared_package import OnlineResource
 from typeset_for_shared_package import Party
 from typeset_for_shared_package import QualityReview

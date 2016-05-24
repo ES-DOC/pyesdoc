@@ -122,6 +122,7 @@ CLASSES = (
     shared.CitationTarget,
     shared.DocMetaInfo,
     shared.DocReference,
+    shared.ExtraAttribute,
     shared.OnlineResource,
     shared.Party,
     shared.QualityReview,
@@ -248,13 +249,54 @@ CLASS_PROPERTIES = {
     ),
     data.Downscaling: (
         'downscaled_from',
+        'activity_id',
+        'branch_method',
+        'branch_time_in_child',
+        'branch_time_in_parent',
         'calendar',
+        'comment',
+        'contact',
+        'conventions',
+        'data_specs_version',
         'ensemble_identifier',
+        'experiment_id',
+        'experisment',
+        'extra_attributes',
+        'forcing_index',
+        'frequency',
+        'further_info_url',
+        'grid',
+        'grid_label',
+        'grid_resolution',
+        'initialization_index',
+        'insitution',
+        'institution_id',
+        'mip_era',
+        'parent_activity_id',
+        'parent_experiment_id',
+        'parent_mip_era',
         'parent_simulation',
+        'parent_source_id',
+        'parent_sub_experiment_id',
+        'parent_time_units',
+        'parent_variant_label',
         'part_of_project',
+        'physics_index',
         'primary_ensemble',
+        'product',
         'ran_for_experiments',
+        'realization_index',
+        'realm',
+        'references',
+        'source',
+        'source_id',
+        'source_type',
+        'sub_eperiment',
+        'sub_eperiment_id',
+        'table_id',
         'used',
+        'variant_info',
+        'variant_label',
         'canonical_name',
         'description',
         'duration',
@@ -268,13 +310,54 @@ CLASS_PROPERTIES = {
         'responsible_parties',
     ),
     data.Simulation: (
+        'activity_id',
+        'branch_method',
+        'branch_time_in_child',
+        'branch_time_in_parent',
         'calendar',
+        'comment',
+        'contact',
+        'conventions',
+        'data_specs_version',
         'ensemble_identifier',
+        'experiment_id',
+        'experisment',
+        'extra_attributes',
+        'forcing_index',
+        'frequency',
+        'further_info_url',
+        'grid',
+        'grid_label',
+        'grid_resolution',
+        'initialization_index',
+        'insitution',
+        'institution_id',
+        'mip_era',
+        'parent_activity_id',
+        'parent_experiment_id',
+        'parent_mip_era',
         'parent_simulation',
+        'parent_source_id',
+        'parent_sub_experiment_id',
+        'parent_time_units',
+        'parent_variant_label',
         'part_of_project',
+        'physics_index',
         'primary_ensemble',
+        'product',
         'ran_for_experiments',
+        'realization_index',
+        'realm',
+        'references',
+        'source',
+        'source_id',
+        'source_type',
+        'sub_eperiment',
+        'sub_eperiment_id',
+        'table_id',
         'used',
+        'variant_info',
+        'variant_label',
         'canonical_name',
         'description',
         'duration',
@@ -610,8 +693,13 @@ CLASS_PROPERTIES = {
     ),
     science.ConservationProperties: (
         'corrected_conserved_prognostic_variables',
-        'correction_methodology',
         'flux_correction_was_used',
+        'details',
+        'implementation_overview',
+        'references',
+        'description',
+        'id',
+        'short_name',
     ),
     science.Detail: (
         'description',
@@ -638,10 +726,10 @@ CLASS_PROPERTIES = {
     ),
     science.Grid: (
         'description',
+        'details',
         'discretisation',
         'meta',
         'name',
-        'properties',
         'references',
     ),
     science.IsoExtent: (
@@ -720,9 +808,9 @@ CLASS_PROPERTIES = {
         'short_name',
     ),
     science.ScientificRealm: (
-        'differing_key_properties',
         'grid',
         'id',
+        'key_properties',
         'meta',
         'name',
         'overview',
@@ -775,7 +863,6 @@ CLASS_PROPERTIES = {
         'sort_key',
         'source',
         'source_key',
-        'sub_projects',
         'type',
         'type_display_name',
         'type_sort_key',
@@ -793,6 +880,12 @@ CLASS_PROPERTIES = {
         'linkage',
         'name',
         'protocol',
+    ),
+    shared.ExtraAttribute: (
+        'doc',
+        'key',
+        'type',
+        'value',
     ),
     shared.OnlineResource: (
         'description',
@@ -977,13 +1070,54 @@ CLASS_OWN_PROPERTIES = {
         'downscaled_from',
     ),
     data.Simulation: (
+        'activity_id',
+        'branch_method',
+        'branch_time_in_child',
+        'branch_time_in_parent',
         'calendar',
+        'comment',
+        'contact',
+        'conventions',
+        'data_specs_version',
         'ensemble_identifier',
+        'experiment_id',
+        'experisment',
+        'extra_attributes',
+        'forcing_index',
+        'frequency',
+        'further_info_url',
+        'grid',
+        'grid_label',
+        'grid_resolution',
+        'initialization_index',
+        'insitution',
+        'institution_id',
+        'mip_era',
+        'parent_activity_id',
+        'parent_experiment_id',
+        'parent_mip_era',
         'parent_simulation',
+        'parent_source_id',
+        'parent_sub_experiment_id',
+        'parent_time_units',
+        'parent_variant_label',
         'part_of_project',
+        'physics_index',
         'primary_ensemble',
+        'product',
         'ran_for_experiments',
+        'realization_index',
+        'realm',
+        'references',
+        'source',
+        'source_id',
+        'source_type',
+        'sub_eperiment',
+        'sub_eperiment_id',
+        'table_id',
         'used',
+        'variant_info',
+        'variant_label',
     ),
     data.VariableCollection: (
         'collection_name',
@@ -1150,7 +1284,6 @@ CLASS_OWN_PROPERTIES = {
     ),
     science.ConservationProperties: (
         'corrected_conserved_prognostic_variables',
-        'correction_methodology',
         'flux_correction_was_used',
     ),
     science.Detail: (
@@ -1163,10 +1296,10 @@ CLASS_OWN_PROPERTIES = {
     ),
     science.Grid: (
         'description',
+        'details',
         'discretisation',
         'meta',
         'name',
-        'properties',
         'references',
     ),
     science.IsoExtent: (
@@ -1212,9 +1345,9 @@ CLASS_OWN_PROPERTIES = {
         'short_name',
     ),
     science.ScientificRealm: (
-        'differing_key_properties',
         'grid',
         'id',
+        'key_properties',
         'meta',
         'name',
         'overview',
@@ -1258,7 +1391,6 @@ CLASS_OWN_PROPERTIES = {
         'sort_key',
         'source',
         'source_key',
-        'sub_projects',
         'type',
         'type_display_name',
         'type_sort_key',
@@ -1272,6 +1404,12 @@ CLASS_OWN_PROPERTIES = {
         'relationship',
         'type',
         'version',
+    ),
+    shared.ExtraAttribute: (
+        'doc',
+        'key',
+        'type',
+        'value',
     ),
     shared.OnlineResource: (
         'description',
@@ -1472,6 +1610,7 @@ BASE_CLASSES[designing.SimulationPlan] = (activity.Activity, )
 BASE_CLASSES[designing.StartDateEnsemble] = (designing.NumericalRequirement, activity.Activity, )
 BASE_CLASSES[designing.TemporalConstraint] = (designing.NumericalRequirement, activity.Activity, )
 BASE_CLASSES[platform.Machine] = (platform.Partition, )
+BASE_CLASSES[science.ConservationProperties] = (science.SubProcess, science.ScienceContext, )
 BASE_CLASSES[science.Detail] = (science.ScienceContext, )
 BASE_CLASSES[science.Discretisation] = (science.SubProcess, science.ScienceContext, )
 BASE_CLASSES[science.Extent] = (science.SubProcess, science.ScienceContext, )
@@ -1540,6 +1679,7 @@ SUB_CLASSES[science.ScienceContext] = (
     science.Detail,
     science.Process,
     science.SubProcess,
+    science.ConservationProperties,
     science.Discretisation,
     science.Extent,
     science.KeyProperties,
@@ -1548,6 +1688,7 @@ SUB_CLASSES[science.ScienceContext] = (
     science.IsoExtent,
     )
 SUB_CLASSES[science.SubProcess] = (
+    science.ConservationProperties,
     science.Discretisation,
     science.Extent,
     science.Resolution,
@@ -1676,18 +1817,18 @@ CONSTRAINTS = {
         ('part_of', 'cardinality', "0.N"),
         ('common_conformances', 'cardinality', "0.N"),
         ('description', 'cardinality', "0.1"),
-        ('long_name', 'cardinality', "0.1"),
         ('supported', 'cardinality', "1.N"),
+        ('duration', 'cardinality', "0.1"),
         ('documentation', 'cardinality', "0.N"),
-        ('previously_known_as', 'cardinality', "0.N"),
+        ('canonical_name', 'cardinality', "0.1"),
         ('responsible_parties', 'cardinality', "0.N"),
         ('members', 'cardinality', "1.N"),
-        ('keywords', 'cardinality', "0.0"),
-        ('canonical_name', 'cardinality', "0.0"),
+        ('long_name', 'cardinality', "0.1"),
+        ('previously_known_as', 'cardinality', "0.N"),
         ('meta', 'cardinality', "1.1"),
         ('references', 'cardinality', "0.N"),
-        ('rationale', 'cardinality', "0.0"),
-        ('duration', 'cardinality', "0.0"),
+        ('rationale', 'cardinality', "0.1"),
+        ('keywords', 'cardinality', "0.1"),
         ('has_ensemble_axes', 'cardinality', "0.N"),
         ('name', 'cardinality', "1.1"),
 
@@ -1754,21 +1895,21 @@ CONSTRAINTS = {
 
         ('child_ensembles', 'cardinality', "1.N"),
         ('part_of', 'cardinality', "0.N"),
-        ('common_conformances', 'cardinality', "0.0"),
+        ('common_conformances', 'cardinality', "0.N"),
         ('description', 'cardinality', "0.1"),
-        ('rationale', 'cardinality', "0.0"),
-        ('supported', 'cardinality', "1.N"),
-        ('canonical_name', 'cardinality', "0.0"),
-        ('responsible_parties', 'cardinality', "0.N"),
         ('name', 'cardinality', "1.1"),
-        ('long_name', 'cardinality', "0.1"),
+        ('rationale', 'cardinality', "0.1"),
+        ('supported', 'cardinality', "1.N"),
         ('previously_known_as', 'cardinality', "0.N"),
+        ('responsible_parties', 'cardinality', "0.N"),
+        ('keywords', 'cardinality', "0.1"),
+        ('long_name', 'cardinality', "0.1"),
+        ('canonical_name', 'cardinality', "0.1"),
         ('meta', 'cardinality', "1.1"),
         ('references', 'cardinality', "0.N"),
-        ('members', 'cardinality', "0.0"),
-        ('keywords', 'cardinality', "0.0"),
-        ('has_ensemble_axes', 'cardinality', "1.N"),
-        ('duration', 'cardinality', "0.0"),
+        ('members', 'cardinality', "1.N"),
+        ('duration', 'cardinality', "0.1"),
+        ('has_ensemble_axes', 'cardinality', "0.N"),
         ('documentation', 'cardinality', "0.N"),
 
     ),
@@ -1797,86 +1938,246 @@ CONSTRAINTS = {
     ),
     data.Downscaling: (
 
-        ('ensemble_identifier', 'type', unicode),
-        ('used', 'type', science.Model),
-        ('description', 'type', unicode),
-        ('part_of_project', 'type', designing.Project),
-        ('parent_simulation', 'type', activity.ParentSimulation),
-        ('primary_ensemble', 'type', activity.Ensemble),
-        ('previously_known_as', 'type', unicode),
-        ('responsible_parties', 'type', shared.Responsibility),
-        ('keywords', 'type', unicode),
+        ('comment', 'type', unicode),
+        ('activity_id', 'type', unicode),
+        ('rationale', 'type', unicode),
+        ('parent_source_id', 'type', unicode),
+        ('realization_index', 'type', int),
+        ('variant_info', 'type', unicode),
+        ('experisment', 'type', unicode),
+        ('product', 'type', unicode),
+        ('conventions', 'type', unicode),
         ('long_name', 'type', unicode),
-        ('canonical_name', 'type', unicode),
+        ('downscaled_from', 'type', data.Simulation),
         ('meta', 'type', shared.DocMetaInfo),
         ('references', 'type', shared.Reference),
-        ('ran_for_experiments', 'type', designing.NumericalExperiment),
-        ('rationale', 'type', unicode),
-        ('downscaled_from', 'type', data.Simulation),
+        ('sub_eperiment', 'type', unicode),
+        ('physics_index', 'type', int),
         ('duration', 'type', time.TimePeriod),
         ('calendar', 'type', time.Calendar),
+        ('initialization_index', 'type', int),
+        ('forcing_index', 'type', int),
+        ('realm', 'type', unicode),
+        ('source', 'type', unicode),
+        ('primary_ensemble', 'type', activity.Ensemble),
+        ('canonical_name', 'type', unicode),
+        ('responsible_parties', 'type', shared.Responsibility),
+        ('sub_eperiment_id', 'type', unicode),
+        ('insitution', 'type', unicode),
+        ('previously_known_as', 'type', unicode),
+        ('part_of_project', 'type', designing.Project),
+        ('grid_label', 'type', unicode),
+        ('parent_experiment_id', 'type', unicode),
+        ('used', 'type', science.Model),
+        ('description', 'type', unicode),
+        ('branch_method', 'type', unicode),
+        ('extra_attributes', 'type', shared.ExtraAttribute),
+        ('parent_activity_id', 'type', unicode),
+        ('parent_sub_experiment_id', 'type', unicode),
+        ('institution_id', 'type', unicode),
+        ('source_type', 'type', unicode),
+        ('grid', 'type', unicode),
+        ('branch_time_in_child', 'type', float),
+        ('mip_era', 'type', unicode),
         ('name', 'type', unicode),
+        ('branch_time_in_parent', 'type', float),
+        ('parent_time_units', 'type', unicode),
+        ('grid_resolution', 'type', unicode),
+        ('parent_variant_label', 'type', unicode),
+        ('further_info_url', 'type', unicode),
+        ('parent_simulation', 'type', activity.ParentSimulation),
+        ('variant_label', 'type', unicode),
+        ('data_specs_version', 'type', unicode),
+        ('ensemble_identifier', 'type', unicode),
+        ('parent_mip_era', 'type', unicode),
+        ('contact', 'type', unicode),
+        ('table_id', 'type', unicode),
+        ('experiment_id', 'type', unicode),
+        ('keywords', 'type', unicode),
+        ('source_id', 'type', unicode),
+        ('frequency', 'type', unicode),
+        ('ran_for_experiments', 'type', designing.NumericalExperiment),
 
-        ('ensemble_identifier', 'cardinality', "1.1"),
-        ('used', 'cardinality', "1.1"),
-        ('description', 'cardinality', "0.1"),
-        ('part_of_project', 'cardinality', "1.N"),
-        ('parent_simulation', 'cardinality', "0.0"),
-        ('primary_ensemble', 'cardinality', "0.1"),
-        ('previously_known_as', 'cardinality', "0.N"),
-        ('responsible_parties', 'cardinality', "0.N"),
-        ('keywords', 'cardinality', "0.1"),
+        ('comment', 'cardinality', "0.1"),
+        ('activity_id', 'cardinality', "0.1"),
+        ('rationale', 'cardinality', "0.1"),
+        ('parent_source_id', 'cardinality', "0.1"),
+        ('realization_index', 'cardinality', "0.1"),
+        ('variant_info', 'cardinality', "0.1"),
+        ('experisment', 'cardinality', "0.1"),
+        ('product', 'cardinality', "0.1"),
+        ('conventions', 'cardinality', "0.1"),
         ('long_name', 'cardinality', "0.1"),
-        ('canonical_name', 'cardinality', "0.1"),
+        ('downscaled_from', 'cardinality', "1.1"),
         ('meta', 'cardinality', "1.1"),
         ('references', 'cardinality', "0.N"),
-        ('ran_for_experiments', 'cardinality', "1.N"),
-        ('rationale', 'cardinality', "0.0"),
-        ('downscaled_from', 'cardinality', "1.1"),
+        ('sub_eperiment', 'cardinality', "0.1"),
+        ('physics_index', 'cardinality', "0.1"),
         ('duration', 'cardinality', "0.1"),
         ('calendar', 'cardinality', "0.1"),
+        ('initialization_index', 'cardinality', "0.1"),
+        ('forcing_index', 'cardinality', "0.1"),
+        ('realm', 'cardinality', "0.1"),
+        ('source', 'cardinality', "0.1"),
+        ('primary_ensemble', 'cardinality', "0.1"),
+        ('canonical_name', 'cardinality', "0.1"),
+        ('responsible_parties', 'cardinality', "0.N"),
+        ('sub_eperiment_id', 'cardinality', "0.1"),
+        ('insitution', 'cardinality', "0.1"),
+        ('previously_known_as', 'cardinality', "0.N"),
+        ('part_of_project', 'cardinality', "1.N"),
+        ('grid_label', 'cardinality', "0.1"),
+        ('parent_experiment_id', 'cardinality', "0.1"),
+        ('used', 'cardinality', "1.1"),
+        ('description', 'cardinality', "0.1"),
+        ('branch_method', 'cardinality', "0.1"),
+        ('extra_attributes', 'cardinality', "0.N"),
+        ('parent_activity_id', 'cardinality', "0.1"),
+        ('parent_sub_experiment_id', 'cardinality', "0.1"),
+        ('institution_id', 'cardinality', "0.1"),
+        ('source_type', 'cardinality', "0.1"),
+        ('grid', 'cardinality', "0.1"),
+        ('branch_time_in_child', 'cardinality', "0.1"),
+        ('mip_era', 'cardinality', "0.1"),
         ('name', 'cardinality', "1.1"),
+        ('branch_time_in_parent', 'cardinality', "0.1"),
+        ('parent_time_units', 'cardinality', "0.1"),
+        ('grid_resolution', 'cardinality', "0.1"),
+        ('parent_variant_label', 'cardinality', "0.1"),
+        ('further_info_url', 'cardinality', "0.1"),
+        ('parent_simulation', 'cardinality', "0.1"),
+        ('variant_label', 'cardinality', "0.1"),
+        ('data_specs_version', 'cardinality', "0.1"),
+        ('ensemble_identifier', 'cardinality', "1.1"),
+        ('parent_mip_era', 'cardinality', "0.1"),
+        ('contact', 'cardinality', "0.1"),
+        ('table_id', 'cardinality', "0.1"),
+        ('experiment_id', 'cardinality', "0.1"),
+        ('keywords', 'cardinality', "0.1"),
+        ('source_id', 'cardinality', "0.1"),
+        ('frequency', 'cardinality', "0.1"),
+        ('ran_for_experiments', 'cardinality', "1.N"),
 
     ),
     data.Simulation: (
 
-        ('ensemble_identifier', 'type', unicode),
-        ('used', 'type', science.Model),
-        ('description', 'type', unicode),
-        ('part_of_project', 'type', designing.Project),
-        ('duration', 'type', time.TimePeriod),
+        ('comment', 'type', unicode),
         ('parent_simulation', 'type', activity.ParentSimulation),
-        ('primary_ensemble', 'type', activity.Ensemble),
-        ('canonical_name', 'type', unicode),
-        ('responsible_parties', 'type', shared.Responsibility),
+        ('parent_source_id', 'type', unicode),
+        ('mip_era', 'type', unicode),
+        ('insitution', 'type', unicode),
+        ('realization_index', 'type', int),
+        ('variant_info', 'type', unicode),
+        ('experisment', 'type', unicode),
+        ('parent_experiment_id', 'type', unicode),
+        ('conventions', 'type', unicode),
+        ('product', 'type', unicode),
         ('long_name', 'type', unicode),
-        ('previously_known_as', 'type', unicode),
         ('meta', 'type', shared.DocMetaInfo),
         ('references', 'type', shared.Reference),
+        ('grid_resolution', 'type', unicode),
+        ('physics_index', 'type', int),
+        ('duration', 'type', time.TimePeriod),
+        ('calendar', 'type', time.Calendar),
+        ('sub_eperiment_id', 'type', unicode),
+        ('realm', 'type', unicode),
+        ('source', 'type', unicode),
+        ('primary_ensemble', 'type', activity.Ensemble),
+        ('previously_known_as', 'type', unicode),
+        ('responsible_parties', 'type', shared.Responsibility),
+        ('forcing_index', 'type', int),
+        ('branch_time_in_child', 'type', float),
+        ('canonical_name', 'type', unicode),
+        ('parent_variant_label', 'type', unicode),
+        ('part_of_project', 'type', designing.Project),
+        ('grid_label', 'type', unicode),
+        ('activity_id', 'type', unicode),
+        ('used', 'type', science.Model),
+        ('description', 'type', unicode),
+        ('extra_attributes', 'type', shared.ExtraAttribute),
+        ('parent_activity_id', 'type', unicode),
+        ('parent_sub_experiment_id', 'type', unicode),
+        ('institution_id', 'type', unicode),
+        ('source_type', 'type', unicode),
+        ('grid', 'type', unicode),
         ('ran_for_experiments', 'type', designing.NumericalExperiment),
         ('rationale', 'type', unicode),
-        ('keywords', 'type', unicode),
-        ('calendar', 'type', time.Calendar),
         ('name', 'type', unicode),
+        ('branch_time_in_parent', 'type', float),
+        ('parent_time_units', 'type', unicode),
+        ('ensemble_identifier', 'type', unicode),
+        ('branch_method', 'type', unicode),
+        ('further_info_url', 'type', unicode),
+        ('keywords', 'type', unicode),
+        ('variant_label', 'type', unicode),
+        ('data_specs_version', 'type', unicode),
+        ('initialization_index', 'type', int),
+        ('parent_mip_era', 'type', unicode),
+        ('contact', 'type', unicode),
+        ('table_id', 'type', unicode),
+        ('experiment_id', 'type', unicode),
+        ('source_id', 'type', unicode),
+        ('frequency', 'type', unicode),
+        ('sub_eperiment', 'type', unicode),
 
-        ('ensemble_identifier', 'cardinality', "1.1"),
-        ('used', 'cardinality', "1.1"),
-        ('description', 'cardinality', "0.1"),
-        ('part_of_project', 'cardinality', "1.N"),
-        ('duration', 'cardinality', "0.1"),
+        ('comment', 'cardinality', "0.1"),
         ('parent_simulation', 'cardinality', "0.1"),
-        ('primary_ensemble', 'cardinality', "0.1"),
-        ('canonical_name', 'cardinality', "0.1"),
-        ('responsible_parties', 'cardinality', "0.N"),
+        ('parent_source_id', 'cardinality', "0.1"),
+        ('mip_era', 'cardinality', "0.1"),
+        ('insitution', 'cardinality', "0.1"),
+        ('realization_index', 'cardinality', "0.1"),
+        ('variant_info', 'cardinality', "0.1"),
+        ('experisment', 'cardinality', "0.1"),
+        ('parent_experiment_id', 'cardinality', "0.1"),
+        ('conventions', 'cardinality', "0.1"),
+        ('product', 'cardinality', "0.1"),
         ('long_name', 'cardinality', "0.1"),
-        ('previously_known_as', 'cardinality', "0.N"),
         ('meta', 'cardinality', "1.1"),
         ('references', 'cardinality', "0.N"),
-        ('ran_for_experiments', 'cardinality', "1.N"),
-        ('rationale', 'cardinality', "0.0"),
-        ('keywords', 'cardinality', "0.1"),
+        ('grid_resolution', 'cardinality', "0.1"),
+        ('physics_index', 'cardinality', "0.1"),
+        ('duration', 'cardinality', "0.1"),
         ('calendar', 'cardinality', "0.1"),
+        ('sub_eperiment_id', 'cardinality', "0.1"),
+        ('realm', 'cardinality', "0.1"),
+        ('source', 'cardinality', "0.1"),
+        ('primary_ensemble', 'cardinality', "0.1"),
+        ('previously_known_as', 'cardinality', "0.N"),
+        ('responsible_parties', 'cardinality', "0.N"),
+        ('forcing_index', 'cardinality', "0.1"),
+        ('branch_time_in_child', 'cardinality', "0.1"),
+        ('canonical_name', 'cardinality', "0.1"),
+        ('parent_variant_label', 'cardinality', "0.1"),
+        ('part_of_project', 'cardinality', "1.N"),
+        ('grid_label', 'cardinality', "0.1"),
+        ('activity_id', 'cardinality', "0.1"),
+        ('used', 'cardinality', "1.1"),
+        ('description', 'cardinality', "0.1"),
+        ('extra_attributes', 'cardinality', "0.N"),
+        ('parent_activity_id', 'cardinality', "0.1"),
+        ('parent_sub_experiment_id', 'cardinality', "0.1"),
+        ('institution_id', 'cardinality', "0.1"),
+        ('source_type', 'cardinality', "0.1"),
+        ('grid', 'cardinality', "0.1"),
+        ('ran_for_experiments', 'cardinality', "1.N"),
+        ('rationale', 'cardinality', "0.1"),
         ('name', 'cardinality', "1.1"),
+        ('branch_time_in_parent', 'cardinality', "0.1"),
+        ('parent_time_units', 'cardinality', "0.1"),
+        ('ensemble_identifier', 'cardinality', "1.1"),
+        ('branch_method', 'cardinality', "0.1"),
+        ('further_info_url', 'cardinality', "0.1"),
+        ('keywords', 'cardinality', "0.1"),
+        ('variant_label', 'cardinality', "0.1"),
+        ('data_specs_version', 'cardinality', "0.1"),
+        ('initialization_index', 'cardinality', "0.1"),
+        ('parent_mip_era', 'cardinality', "0.1"),
+        ('contact', 'cardinality', "0.1"),
+        ('table_id', 'cardinality', "0.1"),
+        ('experiment_id', 'cardinality', "0.1"),
+        ('source_id', 'cardinality', "0.1"),
+        ('frequency', 'cardinality', "0.1"),
+        ('sub_eperiment', 'cardinality', "0.1"),
 
     ),
     data.VariableCollection: (
@@ -1913,8 +2214,8 @@ CONSTRAINTS = {
 
         ('required_resolution', 'cardinality', "0.1"),
         ('description', 'cardinality', "0.1"),
-        ('duration', 'cardinality', "0.0"),
-        ('additional_requirements', 'cardinality', "0.0"),
+        ('keywords', 'cardinality', "0.1"),
+        ('additional_requirements', 'cardinality', "0.N"),
         ('responsible_parties', 'cardinality', "0.N"),
         ('previously_known_as', 'cardinality', "0.N"),
         ('long_name', 'cardinality', "0.1"),
@@ -1923,7 +2224,7 @@ CONSTRAINTS = {
         ('references', 'cardinality', "0.N"),
         ('required_extent', 'cardinality', "0.1"),
         ('rationale', 'cardinality', "0.1"),
-        ('keywords', 'cardinality', "0.1"),
+        ('duration', 'cardinality', "0.1"),
         ('is_conformance_requested', 'cardinality', "1.1"),
         ('name', 'cardinality', "1.1"),
 
@@ -1949,8 +2250,8 @@ CONSTRAINTS = {
 
         ('minimum_size', 'cardinality', "1.1"),
         ('description', 'cardinality', "0.1"),
-        ('duration', 'cardinality', "0.0"),
-        ('additional_requirements', 'cardinality', "0.0"),
+        ('keywords', 'cardinality', "0.1"),
+        ('additional_requirements', 'cardinality', "0.N"),
         ('responsible_parties', 'cardinality', "0.N"),
         ('previously_known_as', 'cardinality', "0.N"),
         ('long_name', 'cardinality', "0.1"),
@@ -1959,7 +2260,7 @@ CONSTRAINTS = {
         ('references', 'cardinality', "0.N"),
         ('ensemble_type', 'cardinality', "1.1"),
         ('rationale', 'cardinality', "0.1"),
-        ('keywords', 'cardinality', "0.1"),
+        ('duration', 'cardinality', "0.1"),
         ('ensemble_member', 'cardinality', "0.N"),
         ('is_conformance_requested', 'cardinality', "1.1"),
         ('name', 'cardinality', "1.1"),
@@ -1993,9 +2294,9 @@ CONSTRAINTS = {
         ('code', 'cardinality', "0.1"),
         ('group', 'cardinality', "0.1"),
         ('description', 'cardinality', "0.1"),
-        ('data_link', 'cardinality', "0.1"),
-        ('duration', 'cardinality', "0.0"),
-        ('additional_requirements', 'cardinality', "0.0"),
+        ('additional_constraint', 'cardinality', "0.1"),
+        ('keywords', 'cardinality', "0.1"),
+        ('additional_requirements', 'cardinality', "0.N"),
         ('responsible_parties', 'cardinality', "0.N"),
         ('previously_known_as', 'cardinality', "0.N"),
         ('long_name', 'cardinality', "0.1"),
@@ -2003,10 +2304,10 @@ CONSTRAINTS = {
         ('meta', 'cardinality', "1.1"),
         ('references', 'cardinality', "0.N"),
         ('rationale', 'cardinality', "0.1"),
-        ('keywords', 'cardinality', "0.1"),
+        ('duration', 'cardinality', "0.1"),
         ('is_conformance_requested', 'cardinality', "1.1"),
         ('forcing_type', 'cardinality', "1.1"),
-        ('additional_constraint', 'cardinality', "0.1"),
+        ('data_link', 'cardinality', "0.1"),
         ('name', 'cardinality', "1.1"),
 
     ),
@@ -2030,7 +2331,7 @@ CONSTRAINTS = {
         ('name', 'type', unicode),
 
         ('description', 'cardinality', "0.1"),
-        ('duration', 'cardinality', "0.0"),
+        ('keywords', 'cardinality', "0.1"),
         ('additional_requirements', 'cardinality', "0.N"),
         ('responsible_parties', 'cardinality', "0.N"),
         ('previously_known_as', 'cardinality', "0.N"),
@@ -2041,7 +2342,7 @@ CONSTRAINTS = {
         ('references', 'cardinality', "0.N"),
         ('branch_time_in_initialisation_source', 'cardinality', "0.1"),
         ('rationale', 'cardinality', "0.1"),
-        ('keywords', 'cardinality', "0.1"),
+        ('duration', 'cardinality', "0.1"),
         ('is_conformance_requested', 'cardinality', "1.1"),
         ('initialise_from_data', 'cardinality', "0.1"),
         ('name', 'cardinality', "1.1"),
@@ -2066,8 +2367,8 @@ CONSTRAINTS = {
 
         ('ensemble_axis', 'cardinality', "1.N"),
         ('description', 'cardinality', "0.1"),
-        ('duration', 'cardinality', "0.0"),
-        ('additional_requirements', 'cardinality', "0.0"),
+        ('keywords', 'cardinality', "0.1"),
+        ('additional_requirements', 'cardinality', "0.N"),
         ('responsible_parties', 'cardinality', "0.N"),
         ('previously_known_as', 'cardinality', "0.N"),
         ('long_name', 'cardinality', "0.1"),
@@ -2075,7 +2376,7 @@ CONSTRAINTS = {
         ('meta', 'cardinality', "1.1"),
         ('references', 'cardinality', "0.N"),
         ('rationale', 'cardinality', "0.1"),
-        ('keywords', 'cardinality', "0.1"),
+        ('duration', 'cardinality', "0.1"),
         ('is_conformance_requested', 'cardinality', "1.1"),
         ('name', 'cardinality', "1.1"),
 
@@ -2099,7 +2400,7 @@ CONSTRAINTS = {
 
         ('requirements', 'cardinality', "0.N"),
         ('description', 'cardinality', "0.1"),
-        ('keywords', 'cardinality', "0.1"),
+        ('duration', 'cardinality', "0.1"),
         ('canonical_name', 'cardinality', "0.1"),
         ('responsible_parties', 'cardinality', "0.N"),
         ('long_name', 'cardinality', "0.1"),
@@ -2107,9 +2408,9 @@ CONSTRAINTS = {
         ('meta', 'cardinality', "1.1"),
         ('references', 'cardinality', "0.N"),
         ('required_period', 'cardinality', "1.1"),
-        ('rationale', 'cardinality', "1.1"),
+        ('rationale', 'cardinality', "0.1"),
         ('related_experiments', 'cardinality', "0.N"),
-        ('duration', 'cardinality', "0.0"),
+        ('keywords', 'cardinality', "0.1"),
         ('name', 'cardinality', "1.1"),
 
     ),
@@ -2129,8 +2430,8 @@ CONSTRAINTS = {
         ('is_conformance_requested', 'type', bool),
         ('name', 'type', unicode),
 
-        ('rationale', 'cardinality', "0.1"),
         ('description', 'cardinality', "0.1"),
+        ('duration', 'cardinality', "0.1"),
         ('canonical_name', 'cardinality', "0.1"),
         ('responsible_parties', 'cardinality', "0.N"),
         ('additional_requirements', 'cardinality', "0.N"),
@@ -2138,8 +2439,8 @@ CONSTRAINTS = {
         ('previously_known_as', 'cardinality', "0.N"),
         ('meta', 'cardinality', "1.1"),
         ('references', 'cardinality', "0.N"),
+        ('rationale', 'cardinality', "0.1"),
         ('keywords', 'cardinality', "0.1"),
-        ('duration', 'cardinality', "0.0"),
         ('is_conformance_requested', 'cardinality', "1.1"),
         ('name', 'cardinality', "1.1"),
 
@@ -2163,8 +2464,8 @@ CONSTRAINTS = {
 
         ('formal_data_request', 'cardinality', "0.1"),
         ('description', 'cardinality', "0.1"),
-        ('duration', 'cardinality', "0.0"),
-        ('additional_requirements', 'cardinality', "0.0"),
+        ('keywords', 'cardinality', "0.1"),
+        ('additional_requirements', 'cardinality', "0.N"),
         ('responsible_parties', 'cardinality', "0.N"),
         ('previously_known_as', 'cardinality', "0.N"),
         ('long_name', 'cardinality', "0.1"),
@@ -2172,7 +2473,7 @@ CONSTRAINTS = {
         ('meta', 'cardinality', "1.1"),
         ('references', 'cardinality', "0.N"),
         ('rationale', 'cardinality', "0.1"),
-        ('keywords', 'cardinality', "0.1"),
+        ('duration', 'cardinality', "0.1"),
         ('is_conformance_requested', 'cardinality', "1.1"),
         ('name', 'cardinality', "1.1"),
 
@@ -2195,7 +2496,7 @@ CONSTRAINTS = {
         ('name', 'type', unicode),
 
         ('requires_experiments', 'cardinality', "0.N"),
-        ('description', 'cardinality', "1.1"),
+        ('description', 'cardinality', "0.1"),
         ('duration', 'cardinality', "0.1"),
         ('canonical_name', 'cardinality', "0.1"),
         ('responsible_parties', 'cardinality', "0.N"),
@@ -2228,8 +2529,8 @@ CONSTRAINTS = {
         ('will_support_experiments', 'type', designing.NumericalExperiment),
         ('name', 'type', unicode),
 
-        ('rationale', 'cardinality', "0.1"),
         ('description', 'cardinality', "0.1"),
+        ('duration', 'cardinality', "0.1"),
         ('expected_performance_sypd', 'cardinality', "0.1"),
         ('canonical_name', 'cardinality', "0.1"),
         ('responsible_parties', 'cardinality', "0.N"),
@@ -2237,9 +2538,9 @@ CONSTRAINTS = {
         ('previously_known_as', 'cardinality', "0.N"),
         ('meta', 'cardinality', "1.1"),
         ('references', 'cardinality', "0.N"),
-        ('keywords', 'cardinality', "0.1"),
+        ('rationale', 'cardinality', "0.1"),
         ('expected_model', 'cardinality', "1.1"),
-        ('duration', 'cardinality', "1.1"),
+        ('keywords', 'cardinality', "0.1"),
         ('expected_platform', 'cardinality', "0.1"),
         ('will_support_experiments', 'cardinality', "1.N"),
         ('name', 'cardinality', "1.1"),
@@ -2264,8 +2565,8 @@ CONSTRAINTS = {
 
         ('ensemble_members', 'cardinality', "1.1"),
         ('description', 'cardinality', "0.1"),
-        ('duration', 'cardinality', "0.0"),
-        ('additional_requirements', 'cardinality', "0.0"),
+        ('keywords', 'cardinality', "0.1"),
+        ('additional_requirements', 'cardinality', "0.N"),
         ('responsible_parties', 'cardinality', "0.N"),
         ('previously_known_as', 'cardinality', "0.N"),
         ('long_name', 'cardinality', "0.1"),
@@ -2273,7 +2574,7 @@ CONSTRAINTS = {
         ('meta', 'cardinality', "1.1"),
         ('references', 'cardinality', "0.N"),
         ('rationale', 'cardinality', "0.1"),
-        ('keywords', 'cardinality', "0.1"),
+        ('duration', 'cardinality', "0.1"),
         ('is_conformance_requested', 'cardinality', "1.1"),
         ('name', 'cardinality', "1.1"),
 
@@ -2298,10 +2599,10 @@ CONSTRAINTS = {
         ('required_calendar', 'type', time.Calendar),
         ('name', 'type', unicode),
 
-        ('description', 'cardinality', "0.1"),
-        ('duration', 'cardinality', "0.0"),
         ('required_duration', 'cardinality', "0.1"),
-        ('additional_requirements', 'cardinality', "0.0"),
+        ('description', 'cardinality', "0.1"),
+        ('keywords', 'cardinality', "0.1"),
+        ('additional_requirements', 'cardinality', "0.N"),
         ('responsible_parties', 'cardinality', "0.N"),
         ('previously_known_as', 'cardinality', "0.N"),
         ('long_name', 'cardinality', "0.1"),
@@ -2311,7 +2612,7 @@ CONSTRAINTS = {
         ('start_date', 'cardinality', "0.1"),
         ('rationale', 'cardinality', "0.1"),
         ('start_flexibility', 'cardinality', "0.1"),
-        ('keywords', 'cardinality', "0.1"),
+        ('duration', 'cardinality', "0.1"),
         ('is_conformance_requested', 'cardinality', "1.1"),
         ('required_calendar', 'cardinality', "0.1"),
         ('name', 'cardinality', "1.1"),
@@ -2551,13 +2852,23 @@ CONSTRAINTS = {
     ),
     science.ConservationProperties: (
 
+        ('description', 'type', unicode),
+        ('short_name', 'type', unicode),
         ('corrected_conserved_prognostic_variables', 'type', data.VariableCollection),
+        ('references', 'type', shared.Reference),
+        ('details', 'type', science.Detail),
+        ('implementation_overview', 'type', unicode),
         ('flux_correction_was_used', 'type', bool),
-        ('correction_methodology', 'type', unicode),
+        ('id', 'type', unicode),
 
+        ('description', 'cardinality', "1.1"),
+        ('short_name', 'cardinality', "1.1"),
         ('corrected_conserved_prognostic_variables', 'cardinality', "0.1"),
-        ('flux_correction_was_used', 'cardinality', "1.1"),
-        ('correction_methodology', 'cardinality', "0.1"),
+        ('references', 'cardinality', "0.N"),
+        ('details', 'cardinality', "0.N"),
+        ('implementation_overview', 'cardinality', "1.1"),
+        ('flux_correction_was_used', 'cardinality', "0.1"),
+        ('id', 'cardinality', "1.1"),
 
     ),
     science.Detail: (
@@ -2615,14 +2926,14 @@ CONSTRAINTS = {
         ('meta', 'type', shared.DocMetaInfo),
         ('references', 'type', shared.Reference),
         ('discretisation', 'type', science.Discretisation),
-        ('properties', 'type', science.Detail),
+        ('details', 'type', science.Detail),
         ('name', 'type', unicode),
 
         ('description', 'cardinality', "1.1"),
         ('meta', 'cardinality', "1.1"),
         ('references', 'cardinality', "0.N"),
         ('discretisation', 'cardinality', "0.1"),
-        ('properties', 'cardinality', "0.1"),
+        ('details', 'cardinality', "0.N"),
         ('name', 'cardinality', "1.1"),
 
     ),
@@ -2785,23 +3096,23 @@ CONSTRAINTS = {
     science.ScientificRealm: (
 
         ('simulates', 'type', science.Process),
-        ('differing_key_properties', 'type', science.KeyProperties),
+        ('realm', 'type', unicode),
         ('name', 'type', unicode),
         ('overview', 'type', unicode),
         ('meta', 'type', shared.DocMetaInfo),
         ('grid', 'type', science.Grid),
         ('references', 'type', shared.Reference),
-        ('realm', 'type', unicode),
+        ('key_properties', 'type', science.KeyProperties),
         ('id', 'type', unicode),
 
         ('simulates', 'cardinality', "1.N"),
-        ('differing_key_properties', 'cardinality', "0.1"),
+        ('realm', 'cardinality', "0.1"),
         ('name', 'cardinality', "1.1"),
         ('overview', 'cardinality', "0.1"),
         ('meta', 'cardinality', "1.1"),
         ('grid', 'cardinality', "0.1"),
         ('references', 'cardinality', "0.N"),
-        ('realm', 'cardinality', "0.1"),
+        ('key_properties', 'cardinality', "0.1"),
         ('id', 'cardinality', "0.1"),
 
     ),
@@ -2887,7 +3198,6 @@ CONSTRAINTS = {
         ('type_sort_key', 'type', unicode),
         ('update_date', 'type', datetime.datetime),
         ('external_ids', 'type', unicode),
-        ('sub_projects', 'type', unicode),
         ('type', 'type', unicode),
         ('id', 'type', unicode),
         ('type_display_name', 'type', unicode),
@@ -2906,7 +3216,6 @@ CONSTRAINTS = {
         ('type_sort_key', 'cardinality', "0.1"),
         ('update_date', 'cardinality', "1.1"),
         ('external_ids', 'cardinality', "0.N"),
-        ('sub_projects', 'cardinality', "0.N"),
         ('type', 'cardinality', "1.1"),
         ('id', 'cardinality', "1.1"),
         ('type_display_name', 'cardinality', "0.1"),
@@ -2935,6 +3244,19 @@ CONSTRAINTS = {
         ('id', 'cardinality', "0.1"),
         ('linkage', 'cardinality', "1.1"),
         ('name', 'cardinality', "1.1"),
+
+    ),
+    shared.ExtraAttribute: (
+
+        ('doc', 'type', unicode),
+        ('type', 'type', unicode),
+        ('value', 'type', unicode),
+        ('key', 'type', unicode),
+
+        ('doc', 'cardinality', "0.1"),
+        ('type', 'cardinality', "0.1"),
+        ('value', 'cardinality', "1.1"),
+        ('key', 'cardinality', "1.1"),
 
     ),
     shared.OnlineResource: (
@@ -3427,7 +3749,7 @@ CONSTRAINTS = {
 
         ('type', unicode),
 
-        ('cardinality', "0.0"),
+        ('cardinality', "0.1"),
 
     ),
     (activity.Ensemble, 'description'): (
@@ -3441,14 +3763,14 @@ CONSTRAINTS = {
 
         ('type', time.TimePeriod),
 
-        ('cardinality', "0.0"),
+        ('cardinality', "0.1"),
 
     ),
     (activity.Ensemble, 'keywords'): (
 
         ('type', unicode),
 
-        ('cardinality', "0.0"),
+        ('cardinality', "0.1"),
 
     ),
     (activity.Ensemble, 'long_name'): (
@@ -3483,7 +3805,7 @@ CONSTRAINTS = {
 
         ('type', unicode),
 
-        ('cardinality', "0.0"),
+        ('cardinality', "0.1"),
 
     ),
     (activity.Ensemble, 'references'): (
@@ -3599,7 +3921,7 @@ CONSTRAINTS = {
 
         ('type', activity.Conformance),
 
-        ('cardinality', "0.0"),
+        ('cardinality', "0.N"),
 
     ),
     (activity.UberEnsemble, 'documentation'): (
@@ -3613,14 +3935,14 @@ CONSTRAINTS = {
 
         ('type', activity.EnsembleAxis),
 
-        ('cardinality', "1.N"),
+        ('cardinality', "0.N"),
 
     ),
     (activity.UberEnsemble, 'members'): (
 
         ('type', activity.EnsembleMember),
 
-        ('cardinality', "0.0"),
+        ('cardinality', "1.N"),
 
     ),
     (activity.UberEnsemble, 'part_of'): (
@@ -3641,7 +3963,7 @@ CONSTRAINTS = {
 
         ('type', unicode),
 
-        ('cardinality', "0.0"),
+        ('cardinality', "0.1"),
 
     ),
     (activity.UberEnsemble, 'description'): (
@@ -3655,14 +3977,14 @@ CONSTRAINTS = {
 
         ('type', time.TimePeriod),
 
-        ('cardinality', "0.0"),
+        ('cardinality', "0.1"),
 
     ),
     (activity.UberEnsemble, 'keywords'): (
 
         ('type', unicode),
 
-        ('cardinality', "0.0"),
+        ('cardinality', "0.1"),
 
     ),
     (activity.UberEnsemble, 'long_name'): (
@@ -3697,7 +4019,7 @@ CONSTRAINTS = {
 
         ('type', unicode),
 
-        ('cardinality', "0.0"),
+        ('cardinality', "0.1"),
 
     ),
     (activity.UberEnsemble, 'references'): (
@@ -3786,9 +4108,65 @@ CONSTRAINTS = {
         ('cardinality', "1.1"),
 
     ),
+    (data.Downscaling, 'activity_id'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (data.Downscaling, 'branch_method'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (data.Downscaling, 'branch_time_in_child'): (
+
+        ('type', float),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (data.Downscaling, 'branch_time_in_parent'): (
+
+        ('type', float),
+
+        ('cardinality', "0.1"),
+
+    ),
     (data.Downscaling, 'calendar'): (
 
         ('type', time.Calendar),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (data.Downscaling, 'comment'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (data.Downscaling, 'contact'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (data.Downscaling, 'conventions'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (data.Downscaling, 'data_specs_version'): (
+
+        ('type', unicode),
 
         ('cardinality', "0.1"),
 
@@ -3800,11 +4178,151 @@ CONSTRAINTS = {
         ('cardinality', "1.1"),
 
     ),
+    (data.Downscaling, 'experiment_id'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (data.Downscaling, 'experisment'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (data.Downscaling, 'extra_attributes'): (
+
+        ('type', shared.ExtraAttribute),
+
+        ('cardinality', "0.N"),
+
+    ),
+    (data.Downscaling, 'forcing_index'): (
+
+        ('type', int),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (data.Downscaling, 'frequency'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (data.Downscaling, 'further_info_url'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (data.Downscaling, 'grid'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (data.Downscaling, 'grid_label'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (data.Downscaling, 'grid_resolution'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (data.Downscaling, 'initialization_index'): (
+
+        ('type', int),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (data.Downscaling, 'insitution'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (data.Downscaling, 'institution_id'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (data.Downscaling, 'mip_era'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (data.Downscaling, 'parent_activity_id'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (data.Downscaling, 'parent_experiment_id'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (data.Downscaling, 'parent_mip_era'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
     (data.Downscaling, 'parent_simulation'): (
 
         ('type', activity.ParentSimulation),
 
-        ('cardinality', "0.0"),
+        ('cardinality', "0.1"),
+
+    ),
+    (data.Downscaling, 'parent_source_id'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (data.Downscaling, 'parent_sub_experiment_id'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (data.Downscaling, 'parent_time_units'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (data.Downscaling, 'parent_variant_label'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
 
     ),
     (data.Downscaling, 'part_of_project'): (
@@ -3814,9 +4332,23 @@ CONSTRAINTS = {
         ('cardinality', "1.N"),
 
     ),
+    (data.Downscaling, 'physics_index'): (
+
+        ('type', int),
+
+        ('cardinality', "0.1"),
+
+    ),
     (data.Downscaling, 'primary_ensemble'): (
 
         ('type', activity.Ensemble),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (data.Downscaling, 'product'): (
+
+        ('type', unicode),
 
         ('cardinality', "0.1"),
 
@@ -3828,11 +4360,88 @@ CONSTRAINTS = {
         ('cardinality', "1.N"),
 
     ),
+    (data.Downscaling, 'realization_index'): (
+
+        ('type', int),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (data.Downscaling, 'realm'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (data.Downscaling, 'references'): (
+
+        ('type', shared.Reference),
+
+        ('cardinality', "0.N"),
+
+    ),
+    (data.Downscaling, 'source'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (data.Downscaling, 'source_id'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (data.Downscaling, 'source_type'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (data.Downscaling, 'sub_eperiment'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (data.Downscaling, 'sub_eperiment_id'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (data.Downscaling, 'table_id'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
     (data.Downscaling, 'used'): (
 
         ('type', science.Model),
 
         ('cardinality', "1.1"),
+
+    ),
+    (data.Downscaling, 'variant_info'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (data.Downscaling, 'variant_label'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
 
     ),
     (data.Downscaling, 'canonical_name'): (
@@ -3895,7 +4504,7 @@ CONSTRAINTS = {
 
         ('type', unicode),
 
-        ('cardinality', "0.0"),
+        ('cardinality', "0.1"),
 
     ),
     (data.Downscaling, 'references'): (
@@ -3913,9 +4522,65 @@ CONSTRAINTS = {
 
     ),
 
+    (data.Simulation, 'activity_id'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (data.Simulation, 'branch_method'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (data.Simulation, 'branch_time_in_child'): (
+
+        ('type', float),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (data.Simulation, 'branch_time_in_parent'): (
+
+        ('type', float),
+
+        ('cardinality', "0.1"),
+
+    ),
     (data.Simulation, 'calendar'): (
 
         ('type', time.Calendar),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (data.Simulation, 'comment'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (data.Simulation, 'contact'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (data.Simulation, 'conventions'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (data.Simulation, 'data_specs_version'): (
+
+        ('type', unicode),
 
         ('cardinality', "0.1"),
 
@@ -3927,9 +4592,149 @@ CONSTRAINTS = {
         ('cardinality', "1.1"),
 
     ),
+    (data.Simulation, 'experiment_id'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (data.Simulation, 'experisment'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (data.Simulation, 'extra_attributes'): (
+
+        ('type', shared.ExtraAttribute),
+
+        ('cardinality', "0.N"),
+
+    ),
+    (data.Simulation, 'forcing_index'): (
+
+        ('type', int),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (data.Simulation, 'frequency'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (data.Simulation, 'further_info_url'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (data.Simulation, 'grid'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (data.Simulation, 'grid_label'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (data.Simulation, 'grid_resolution'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (data.Simulation, 'initialization_index'): (
+
+        ('type', int),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (data.Simulation, 'insitution'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (data.Simulation, 'institution_id'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (data.Simulation, 'mip_era'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (data.Simulation, 'parent_activity_id'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (data.Simulation, 'parent_experiment_id'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (data.Simulation, 'parent_mip_era'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
     (data.Simulation, 'parent_simulation'): (
 
         ('type', activity.ParentSimulation),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (data.Simulation, 'parent_source_id'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (data.Simulation, 'parent_sub_experiment_id'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (data.Simulation, 'parent_time_units'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (data.Simulation, 'parent_variant_label'): (
+
+        ('type', unicode),
 
         ('cardinality', "0.1"),
 
@@ -3941,9 +4746,23 @@ CONSTRAINTS = {
         ('cardinality', "1.N"),
 
     ),
+    (data.Simulation, 'physics_index'): (
+
+        ('type', int),
+
+        ('cardinality', "0.1"),
+
+    ),
     (data.Simulation, 'primary_ensemble'): (
 
         ('type', activity.Ensemble),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (data.Simulation, 'product'): (
+
+        ('type', unicode),
 
         ('cardinality', "0.1"),
 
@@ -3955,11 +4774,88 @@ CONSTRAINTS = {
         ('cardinality', "1.N"),
 
     ),
+    (data.Simulation, 'realization_index'): (
+
+        ('type', int),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (data.Simulation, 'realm'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (data.Simulation, 'references'): (
+
+        ('type', shared.Reference),
+
+        ('cardinality', "0.N"),
+
+    ),
+    (data.Simulation, 'source'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (data.Simulation, 'source_id'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (data.Simulation, 'source_type'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (data.Simulation, 'sub_eperiment'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (data.Simulation, 'sub_eperiment_id'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (data.Simulation, 'table_id'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
     (data.Simulation, 'used'): (
 
         ('type', science.Model),
 
         ('cardinality', "1.1"),
+
+    ),
+    (data.Simulation, 'variant_info'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (data.Simulation, 'variant_label'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
 
     ),
     (data.Simulation, 'canonical_name'): (
@@ -4022,7 +4918,7 @@ CONSTRAINTS = {
 
         ('type', unicode),
 
-        ('cardinality', "0.0"),
+        ('cardinality', "0.1"),
 
     ),
     (data.Simulation, 'references'): (
@@ -4074,7 +4970,7 @@ CONSTRAINTS = {
 
         ('type', designing.NumericalRequirement),
 
-        ('cardinality', "0.0"),
+        ('cardinality', "0.N"),
 
     ),
     (designing.DomainRequirements, 'is_conformance_requested'): (
@@ -4102,7 +4998,7 @@ CONSTRAINTS = {
 
         ('type', time.TimePeriod),
 
-        ('cardinality', "0.0"),
+        ('cardinality', "0.1"),
 
     ),
     (designing.DomainRequirements, 'keywords'): (
@@ -4187,7 +5083,7 @@ CONSTRAINTS = {
 
         ('type', designing.NumericalRequirement),
 
-        ('cardinality', "0.0"),
+        ('cardinality', "0.N"),
 
     ),
     (designing.EnsembleRequirement, 'is_conformance_requested'): (
@@ -4215,7 +5111,7 @@ CONSTRAINTS = {
 
         ('type', time.TimePeriod),
 
-        ('cardinality', "0.0"),
+        ('cardinality', "0.1"),
 
     ),
     (designing.EnsembleRequirement, 'keywords'): (
@@ -4328,7 +5224,7 @@ CONSTRAINTS = {
 
         ('type', designing.NumericalRequirement),
 
-        ('cardinality', "0.0"),
+        ('cardinality', "0.N"),
 
     ),
     (designing.ForcingConstraint, 'is_conformance_requested'): (
@@ -4356,7 +5252,7 @@ CONSTRAINTS = {
 
         ('type', time.TimePeriod),
 
-        ('cardinality', "0.0"),
+        ('cardinality', "0.1"),
 
     ),
     (designing.ForcingConstraint, 'keywords'): (
@@ -4469,7 +5365,7 @@ CONSTRAINTS = {
 
         ('type', time.TimePeriod),
 
-        ('cardinality', "0.0"),
+        ('cardinality', "0.1"),
 
     ),
     (designing.InitialisationRequirement, 'keywords'): (
@@ -4540,7 +5436,7 @@ CONSTRAINTS = {
 
         ('type', designing.NumericalRequirement),
 
-        ('cardinality', "0.0"),
+        ('cardinality', "0.N"),
 
     ),
     (designing.MultiEnsemble, 'is_conformance_requested'): (
@@ -4568,7 +5464,7 @@ CONSTRAINTS = {
 
         ('type', time.TimePeriod),
 
-        ('cardinality', "0.0"),
+        ('cardinality', "0.1"),
 
     ),
     (designing.MultiEnsemble, 'keywords'): (
@@ -4667,7 +5563,7 @@ CONSTRAINTS = {
 
         ('type', time.TimePeriod),
 
-        ('cardinality', "0.0"),
+        ('cardinality', "0.1"),
 
     ),
     (designing.NumericalExperiment, 'keywords'): (
@@ -4709,7 +5605,7 @@ CONSTRAINTS = {
 
         ('type', unicode),
 
-        ('cardinality', "1.1"),
+        ('cardinality', "0.1"),
 
     ),
     (designing.NumericalExperiment, 'references'): (
@@ -4759,7 +5655,7 @@ CONSTRAINTS = {
 
         ('type', time.TimePeriod),
 
-        ('cardinality', "0.0"),
+        ('cardinality', "0.1"),
 
     ),
     (designing.NumericalRequirement, 'keywords'): (
@@ -4830,7 +5726,7 @@ CONSTRAINTS = {
 
         ('type', designing.NumericalRequirement),
 
-        ('cardinality', "0.0"),
+        ('cardinality', "0.N"),
 
     ),
     (designing.OutputRequirement, 'is_conformance_requested'): (
@@ -4858,7 +5754,7 @@ CONSTRAINTS = {
 
         ('type', time.TimePeriod),
 
-        ('cardinality', "0.0"),
+        ('cardinality', "0.1"),
 
     ),
     (designing.OutputRequirement, 'keywords'): (
@@ -4950,7 +5846,7 @@ CONSTRAINTS = {
 
         ('type', unicode),
 
-        ('cardinality', "1.1"),
+        ('cardinality', "0.1"),
 
     ),
     (designing.Project, 'duration'): (
@@ -5063,7 +5959,7 @@ CONSTRAINTS = {
 
         ('type', time.TimePeriod),
 
-        ('cardinality', "1.1"),
+        ('cardinality', "0.1"),
 
     ),
     (designing.SimulationPlan, 'keywords'): (
@@ -5134,7 +6030,7 @@ CONSTRAINTS = {
 
         ('type', designing.NumericalRequirement),
 
-        ('cardinality', "0.0"),
+        ('cardinality', "0.N"),
 
     ),
     (designing.StartDateEnsemble, 'is_conformance_requested'): (
@@ -5162,7 +6058,7 @@ CONSTRAINTS = {
 
         ('type', time.TimePeriod),
 
-        ('cardinality', "0.0"),
+        ('cardinality', "0.1"),
 
     ),
     (designing.StartDateEnsemble, 'keywords'): (
@@ -5254,7 +6150,7 @@ CONSTRAINTS = {
 
         ('type', designing.NumericalRequirement),
 
-        ('cardinality', "0.0"),
+        ('cardinality', "0.N"),
 
     ),
     (designing.TemporalConstraint, 'is_conformance_requested'): (
@@ -5282,7 +6178,7 @@ CONSTRAINTS = {
 
         ('type', time.TimePeriod),
 
-        ('cardinality', "0.0"),
+        ('cardinality', "0.1"),
 
     ),
     (designing.TemporalConstraint, 'keywords'): (
@@ -5930,16 +6826,51 @@ CONSTRAINTS = {
         ('cardinality', "0.1"),
 
     ),
-    (science.ConservationProperties, 'correction_methodology'): (
+    (science.ConservationProperties, 'flux_correction_was_used'): (
 
-        ('type', unicode),
+        ('type', bool),
 
         ('cardinality', "0.1"),
 
     ),
-    (science.ConservationProperties, 'flux_correction_was_used'): (
+    (science.ConservationProperties, 'details'): (
 
-        ('type', bool),
+        ('type', science.Detail),
+
+        ('cardinality', "0.N"),
+
+    ),
+    (science.ConservationProperties, 'implementation_overview'): (
+
+        ('type', unicode),
+
+        ('cardinality', "1.1"),
+
+    ),
+    (science.ConservationProperties, 'references'): (
+
+        ('type', shared.Reference),
+
+        ('cardinality', "0.N"),
+
+    ),
+    (science.ConservationProperties, 'description'): (
+
+        ('type', unicode),
+
+        ('cardinality', "1.1"),
+
+    ),
+    (science.ConservationProperties, 'id'): (
+
+        ('type', unicode),
+
+        ('cardinality', "1.1"),
+
+    ),
+    (science.ConservationProperties, 'short_name'): (
+
+        ('type', unicode),
 
         ('cardinality', "1.1"),
 
@@ -6074,6 +7005,13 @@ CONSTRAINTS = {
         ('cardinality', "1.1"),
 
     ),
+    (science.Grid, 'details'): (
+
+        ('type', science.Detail),
+
+        ('cardinality', "0.N"),
+
+    ),
     (science.Grid, 'discretisation'): (
 
         ('type', science.Discretisation),
@@ -6093,13 +7031,6 @@ CONSTRAINTS = {
         ('type', unicode),
 
         ('cardinality', "1.1"),
-
-    ),
-    (science.Grid, 'properties'): (
-
-        ('type', science.Detail),
-
-        ('cardinality', "0.1"),
 
     ),
     (science.Grid, 'references'): (
@@ -6557,13 +7488,6 @@ CONSTRAINTS = {
 
     ),
 
-    (science.ScientificRealm, 'differing_key_properties'): (
-
-        ('type', science.KeyProperties),
-
-        ('cardinality', "0.1"),
-
-    ),
     (science.ScientificRealm, 'grid'): (
 
         ('type', science.Grid),
@@ -6574,6 +7498,13 @@ CONSTRAINTS = {
     (science.ScientificRealm, 'id'): (
 
         ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (science.ScientificRealm, 'key_properties'): (
+
+        ('type', science.KeyProperties),
 
         ('cardinality', "0.1"),
 
@@ -6877,13 +7808,6 @@ CONSTRAINTS = {
         ('cardinality', "0.1"),
 
     ),
-    (shared.DocMetaInfo, 'sub_projects'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.N"),
-
-    ),
     (shared.DocMetaInfo, 'type'): (
 
         ('type', unicode),
@@ -6988,6 +7912,35 @@ CONSTRAINTS = {
         ('type', unicode),
 
         ('cardinality', "0.1"),
+
+    ),
+
+    (shared.ExtraAttribute, 'doc'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (shared.ExtraAttribute, 'key'): (
+
+        ('type', unicode),
+
+        ('cardinality', "1.1"),
+
+    ),
+    (shared.ExtraAttribute, 'type'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (shared.ExtraAttribute, 'value'): (
+
+        ('type', unicode),
+
+        ('cardinality', "1.1"),
 
     ),
 
@@ -7857,6 +8810,12 @@ DOC_STRINGS = {
     remote document exists when complete, or not.
 
     """,
+    shared.ExtraAttribute: """
+        An extra attribute with key and value needed to encode further information
+    not in the CIM2 domain model or specialisation. Typical use case: in parsing
+    data and encoding attributes found in data.
+
+    """,
     shared.OnlineResource: """
         A minimal approximation of ISO19115 CI_ONLINERESOURCE, provides a link and details
     of how to use that link.
@@ -8054,20 +9013,102 @@ DOC_STRINGS = {
         "Individuals and organisations reponsible for the data.",
     (data.Downscaling, 'downscaled_from'):
         "The simulation that was downscaled by this downscaling activity.",
+    (data.Simulation, 'activity_id'):
+        "activity  labels, e.g. 'CMIP'.",
+    (data.Simulation, 'branch_method'):
+        "branching procedure, e.g. 'standard'.",
+    (data.Simulation, 'branch_time_in_child'):
+        "branch time with respect to child time axis, e.g. 365.0.",
+    (data.Simulation, 'branch_time_in_parent'):
+        "branch time with respect to parent time axis, e.g. 3650.0.",
     (data.Simulation, 'calendar'):
         "The calendar used in the simulation.",
+    (data.Simulation, 'comment'):
+        "Miscellaneous information about the data or methods used to produce it.",
+    (data.Simulation, 'contact'):
+        "None",
+    (data.Simulation, 'conventions'):
+        "convention version, e.g. 'CF-1.7 CMIP6-6.0'.",
+    (data.Simulation, 'data_specs_version'):
+        "version identifier, e.g. '1.3.15'.",
     (data.Simulation, 'ensemble_identifier'):
         "String that can be used to extract ensemble axis membership from the primary ensemble(e.g. cmip6 run_variant_id as in the DRS).",
+    (data.Simulation, 'experiment_id'):
+        "root experiment identifier, e.g. 'historical'.",
+    (data.Simulation, 'experisment'):
+        "short experiment description, e.g. 'pre-industrial control'.",
+    (data.Simulation, 'extra_attributes'):
+        "Additional attributes provided with simulation.",
+    (data.Simulation, 'forcing_index'):
+        "index for variant of forcing, e.g. 2.",
+    (data.Simulation, 'frequency'):
+        "sampling frequency, e.g. 'day'.",
+    (data.Simulation, 'further_info_url'):
+        "location of documentation.",
+    (data.Simulation, 'grid'):
+        "briefly describes output grid characteristics.",
+    (data.Simulation, 'grid_label'):
+        "grid identifier, e.g. 'gs1x1'.",
+    (data.Simulation, 'grid_resolution'):
+        "approximate horizontal resolution, e.g. '50 km'.",
+    (data.Simulation, 'initialization_index'):
+        "Index variant of initialization method, e.g. 1.",
+    (data.Simulation, 'insitution'):
+        "institution name, e.g. 'Meteorological Research Institute'.",
+    (data.Simulation, 'institution_id'):
+        "institution label, e.g. 'IPSL'.",
+    (data.Simulation, 'mip_era'):
+        "activity's associated CMIP cycle, e.g. 'CMIP6'.",
+    (data.Simulation, 'parent_activity_id'):
+        "parent activity label, e.g. 'CMIP'.",
+    (data.Simulation, 'parent_experiment_id'):
+        "parent experiment label, e.g. 'piControl'.",
+    (data.Simulation, 'parent_mip_era'):
+        "parent\s associated MIP cycle, e.g. 'CMIP6'.",
     (data.Simulation, 'parent_simulation'):
         "If appropriate, detailed information about how this simulation branched from a previous one.",
+    (data.Simulation, 'parent_source_id'):
+        "parent source label, e.g. 'CanCM4'.",
+    (data.Simulation, 'parent_sub_experiment_id'):
+        "parent sub-experiment label.",
+    (data.Simulation, 'parent_time_units'):
+        "time units used in parents.",
+    (data.Simulation, 'parent_variant_label'):
+        "parent variant label, e.g. 'r1i2p22f3'.",
     (data.Simulation, 'part_of_project'):
         "Project or projects for which simulation was run.",
+    (data.Simulation, 'physics_index'):
+        "index for model physics, e.g. 3.",
     (data.Simulation, 'primary_ensemble'):
         "Primary Ensemble (ensemble for which this simulation was first run).",
+    (data.Simulation, 'product'):
+        "product type, e.g. 'output'.",
     (data.Simulation, 'ran_for_experiments'):
         "One or more experiments with which the simulation is associated.",
+    (data.Simulation, 'realization_index'):
+        "realization number, e.g. 5.",
+    (data.Simulation, 'realm'):
+        "realm(s) where variable is defined, e.g. 'atmos'.",
+    (data.Simulation, 'references'):
+        "Published or web-based references that describe the data or methods used to produce it.",
+    (data.Simulation, 'source'):
+        "source title, e.g. 'GFDL CM2.1: cycle 2.1.14'.",
+    (data.Simulation, 'source_id'):
+        "source label, e.g. 'GFDL-CM2.1'.",
+    (data.Simulation, 'source_type'):
+        "type of model used, e.g. 'AOGCM'.",
+    (data.Simulation, 'sub_eperiment'):
+        "description of sub-experiment.",
+    (data.Simulation, 'sub_eperiment_id'):
+        "sub-experiment label, e.g. 's1960'.",
+    (data.Simulation, 'table_id'):
+        "table label, e.g. Amon.",
     (data.Simulation, 'used'):
         "The model used to run the simulation.",
+    (data.Simulation, 'variant_info'):
+        "description of run variant differences, e.g. 'forcing: black carbon aerosol only'.",
+    (data.Simulation, 'variant_label'):
+        "variant label, e.g. 'r1i1p1f1'.",
     (data.VariableCollection, 'collection_name'):
         "Name for this variable collection.",
     (data.VariableCollection, 'variables'):
@@ -8284,8 +9325,6 @@ DOC_STRINGS = {
         "Numeric value.",
     (science.ConservationProperties, 'corrected_conserved_prognostic_variables'):
         "Set of variables which are conserved by *more* than the numerical scheme alone.",
-    (science.ConservationProperties, 'correction_methodology'):
-        "Description of method by which correction was achieved.",
     (science.ConservationProperties, 'flux_correction_was_used'):
         "Flag to indicate if correction involved flux correction.",
     (science.Extent, 'is_global'):
@@ -8294,14 +9333,14 @@ DOC_STRINGS = {
         "Identifier(s) for the region covered by the extent.",
     (science.Grid, 'description'):
         "Abstract description of grid.",
+    (science.Grid, 'details'):
+        "Specific grid properties.",
     (science.Grid, 'discretisation'):
         "Description of the numerics of the discretisation.",
     (science.Grid, 'meta'):
         "Metadata about how the model description was constructed.",
     (science.Grid, 'name'):
         "This is a string usually used by the modelling group to describe the overall grid.(e.g. the ENDGAME/New Dynamics dynamical cores have their own grids describing variable layouts.",
-    (science.Grid, 'properties'):
-        "Specific grid properties.",
     (science.Grid, 'references'):
         "Any relevant references describing this grid and/or it's implementation.",
     (science.IsoExtent, 'eastern_boundary'):
@@ -8364,12 +9403,12 @@ DOC_STRINGS = {
         "Identifier for this collection of properties.",
     (science.ScienceContext, 'short_name'):
         "The name of this process/algorithm/sub-process/detail.",
-    (science.ScientificRealm, 'differing_key_properties'):
-        "Key properties for the domain which differ from model defaults (grid, timestep etc).",
     (science.ScientificRealm, 'grid'):
         "The grid used to layout the variables (e.g. the Global ENDGAME-grid).",
     (science.ScientificRealm, 'id'):
         "Vocabulary identifier, where this domain description was constructed via a  controlled vocabulary.",
+    (science.ScientificRealm, 'key_properties'):
+        "Key properties for the domain which differ from model defaults (grid, timestep etc).",
     (science.ScientificRealm, 'meta'):
         "Metadata describing the construction of this domain description.",
     (science.ScientificRealm, 'name'):
@@ -8436,8 +9475,6 @@ DOC_STRINGS = {
         "Name of application that created the instance.",
     (shared.DocMetaInfo, 'source_key'):
         "Key of application that created the instance.",
-    (shared.DocMetaInfo, 'sub_projects'):
-        "Set of sub-projects with which instance is associated with.",
     (shared.DocMetaInfo, 'type'):
         "Document ontology type.",
     (shared.DocMetaInfo, 'type_display_name'):
@@ -8460,6 +9497,14 @@ DOC_STRINGS = {
         "The type of the remote record.",
     (shared.DocReference, 'version'):
         "The version of the remote record.",
+    (shared.ExtraAttribute, 'doc'):
+        "Documentation associated with this key.",
+    (shared.ExtraAttribute, 'key'):
+        "Name of attribute.",
+    (shared.ExtraAttribute, 'type'):
+        "If a non-string type, provide type.",
+    (shared.ExtraAttribute, 'value'):
+        "Value associated with key.",
     (shared.OnlineResource, 'description'):
         "Detail of how to access the resource.",
     (shared.OnlineResource, 'linkage'):
@@ -9095,6 +10140,7 @@ KEYS = {
     shared.CitationTarget: "cim.2.shared.CitationTarget",
     shared.DocMetaInfo: "cim.2.shared.DocMetaInfo",
     shared.DocReference: "cim.2.shared.DocReference",
+    shared.ExtraAttribute: "cim.2.shared.ExtraAttribute",
     shared.OnlineResource: "cim.2.shared.OnlineResource",
     shared.Party: "cim.2.shared.Party",
     shared.QualityReview: "cim.2.shared.QualityReview",
@@ -9164,13 +10210,54 @@ KEYS = {
     (data.Dataset, 'related_to_dataset'): "cim.2.data.Dataset.related_to_dataset",
     (data.Dataset, 'responsible_parties'): "cim.2.data.Dataset.responsible_parties",
     (data.Downscaling, 'downscaled_from'): "cim.2.data.Downscaling.downscaled_from",
+    (data.Simulation, 'activity_id'): "cim.2.data.Simulation.activity_id",
+    (data.Simulation, 'branch_method'): "cim.2.data.Simulation.branch_method",
+    (data.Simulation, 'branch_time_in_child'): "cim.2.data.Simulation.branch_time_in_child",
+    (data.Simulation, 'branch_time_in_parent'): "cim.2.data.Simulation.branch_time_in_parent",
     (data.Simulation, 'calendar'): "cim.2.data.Simulation.calendar",
+    (data.Simulation, 'comment'): "cim.2.data.Simulation.comment",
+    (data.Simulation, 'contact'): "cim.2.data.Simulation.contact",
+    (data.Simulation, 'conventions'): "cim.2.data.Simulation.conventions",
+    (data.Simulation, 'data_specs_version'): "cim.2.data.Simulation.data_specs_version",
     (data.Simulation, 'ensemble_identifier'): "cim.2.data.Simulation.ensemble_identifier",
+    (data.Simulation, 'experiment_id'): "cim.2.data.Simulation.experiment_id",
+    (data.Simulation, 'experisment'): "cim.2.data.Simulation.experisment",
+    (data.Simulation, 'extra_attributes'): "cim.2.data.Simulation.extra_attributes",
+    (data.Simulation, 'forcing_index'): "cim.2.data.Simulation.forcing_index",
+    (data.Simulation, 'frequency'): "cim.2.data.Simulation.frequency",
+    (data.Simulation, 'further_info_url'): "cim.2.data.Simulation.further_info_url",
+    (data.Simulation, 'grid'): "cim.2.data.Simulation.grid",
+    (data.Simulation, 'grid_label'): "cim.2.data.Simulation.grid_label",
+    (data.Simulation, 'grid_resolution'): "cim.2.data.Simulation.grid_resolution",
+    (data.Simulation, 'initialization_index'): "cim.2.data.Simulation.initialization_index",
+    (data.Simulation, 'insitution'): "cim.2.data.Simulation.insitution",
+    (data.Simulation, 'institution_id'): "cim.2.data.Simulation.institution_id",
+    (data.Simulation, 'mip_era'): "cim.2.data.Simulation.mip_era",
+    (data.Simulation, 'parent_activity_id'): "cim.2.data.Simulation.parent_activity_id",
+    (data.Simulation, 'parent_experiment_id'): "cim.2.data.Simulation.parent_experiment_id",
+    (data.Simulation, 'parent_mip_era'): "cim.2.data.Simulation.parent_mip_era",
     (data.Simulation, 'parent_simulation'): "cim.2.data.Simulation.parent_simulation",
+    (data.Simulation, 'parent_source_id'): "cim.2.data.Simulation.parent_source_id",
+    (data.Simulation, 'parent_sub_experiment_id'): "cim.2.data.Simulation.parent_sub_experiment_id",
+    (data.Simulation, 'parent_time_units'): "cim.2.data.Simulation.parent_time_units",
+    (data.Simulation, 'parent_variant_label'): "cim.2.data.Simulation.parent_variant_label",
     (data.Simulation, 'part_of_project'): "cim.2.data.Simulation.part_of_project",
+    (data.Simulation, 'physics_index'): "cim.2.data.Simulation.physics_index",
     (data.Simulation, 'primary_ensemble'): "cim.2.data.Simulation.primary_ensemble",
+    (data.Simulation, 'product'): "cim.2.data.Simulation.product",
     (data.Simulation, 'ran_for_experiments'): "cim.2.data.Simulation.ran_for_experiments",
+    (data.Simulation, 'realization_index'): "cim.2.data.Simulation.realization_index",
+    (data.Simulation, 'realm'): "cim.2.data.Simulation.realm",
+    (data.Simulation, 'references'): "cim.2.data.Simulation.references",
+    (data.Simulation, 'source'): "cim.2.data.Simulation.source",
+    (data.Simulation, 'source_id'): "cim.2.data.Simulation.source_id",
+    (data.Simulation, 'source_type'): "cim.2.data.Simulation.source_type",
+    (data.Simulation, 'sub_eperiment'): "cim.2.data.Simulation.sub_eperiment",
+    (data.Simulation, 'sub_eperiment_id'): "cim.2.data.Simulation.sub_eperiment_id",
+    (data.Simulation, 'table_id'): "cim.2.data.Simulation.table_id",
     (data.Simulation, 'used'): "cim.2.data.Simulation.used",
+    (data.Simulation, 'variant_info'): "cim.2.data.Simulation.variant_info",
+    (data.Simulation, 'variant_label'): "cim.2.data.Simulation.variant_label",
     (data.VariableCollection, 'collection_name'): "cim.2.data.VariableCollection.collection_name",
     (data.VariableCollection, 'variables'): "cim.2.data.VariableCollection.variables",
     (designing.DomainRequirements, 'required_extent'): "cim.2.designing.DomainRequirements.required_extent",
@@ -9279,15 +10366,14 @@ KEYS = {
     (platform.StorageVolume, 'units'): "cim.2.platform.StorageVolume.units",
     (platform.StorageVolume, 'volume'): "cim.2.platform.StorageVolume.volume",
     (science.ConservationProperties, 'corrected_conserved_prognostic_variables'): "cim.2.science.ConservationProperties.corrected_conserved_prognostic_variables",
-    (science.ConservationProperties, 'correction_methodology'): "cim.2.science.ConservationProperties.correction_methodology",
     (science.ConservationProperties, 'flux_correction_was_used'): "cim.2.science.ConservationProperties.flux_correction_was_used",
     (science.Extent, 'is_global'): "cim.2.science.Extent.is_global",
     (science.Extent, 'region_known_as'): "cim.2.science.Extent.region_known_as",
     (science.Grid, 'description'): "cim.2.science.Grid.description",
+    (science.Grid, 'details'): "cim.2.science.Grid.details",
     (science.Grid, 'discretisation'): "cim.2.science.Grid.discretisation",
     (science.Grid, 'meta'): "cim.2.science.Grid.meta",
     (science.Grid, 'name'): "cim.2.science.Grid.name",
-    (science.Grid, 'properties'): "cim.2.science.Grid.properties",
     (science.Grid, 'references'): "cim.2.science.Grid.references",
     (science.IsoExtent, 'eastern_boundary'): "cim.2.science.IsoExtent.eastern_boundary",
     (science.IsoExtent, 'northern_boundary'): "cim.2.science.IsoExtent.northern_boundary",
@@ -9319,9 +10405,9 @@ KEYS = {
     (science.ScienceContext, 'description'): "cim.2.science.ScienceContext.description",
     (science.ScienceContext, 'id'): "cim.2.science.ScienceContext.id",
     (science.ScienceContext, 'short_name'): "cim.2.science.ScienceContext.short_name",
-    (science.ScientificRealm, 'differing_key_properties'): "cim.2.science.ScientificRealm.differing_key_properties",
     (science.ScientificRealm, 'grid'): "cim.2.science.ScientificRealm.grid",
     (science.ScientificRealm, 'id'): "cim.2.science.ScientificRealm.id",
+    (science.ScientificRealm, 'key_properties'): "cim.2.science.ScientificRealm.key_properties",
     (science.ScientificRealm, 'meta'): "cim.2.science.ScientificRealm.meta",
     (science.ScientificRealm, 'name'): "cim.2.science.ScientificRealm.name",
     (science.ScientificRealm, 'overview'): "cim.2.science.ScientificRealm.overview",
@@ -9355,7 +10441,6 @@ KEYS = {
     (shared.DocMetaInfo, 'sort_key'): "cim.2.shared.DocMetaInfo.sort_key",
     (shared.DocMetaInfo, 'source'): "cim.2.shared.DocMetaInfo.source",
     (shared.DocMetaInfo, 'source_key'): "cim.2.shared.DocMetaInfo.source_key",
-    (shared.DocMetaInfo, 'sub_projects'): "cim.2.shared.DocMetaInfo.sub_projects",
     (shared.DocMetaInfo, 'type'): "cim.2.shared.DocMetaInfo.type",
     (shared.DocMetaInfo, 'type_display_name'): "cim.2.shared.DocMetaInfo.type_display_name",
     (shared.DocMetaInfo, 'type_sort_key'): "cim.2.shared.DocMetaInfo.type_sort_key",
@@ -9367,6 +10452,10 @@ KEYS = {
     (shared.DocReference, 'relationship'): "cim.2.shared.DocReference.relationship",
     (shared.DocReference, 'type'): "cim.2.shared.DocReference.type",
     (shared.DocReference, 'version'): "cim.2.shared.DocReference.version",
+    (shared.ExtraAttribute, 'doc'): "cim.2.shared.ExtraAttribute.doc",
+    (shared.ExtraAttribute, 'key'): "cim.2.shared.ExtraAttribute.key",
+    (shared.ExtraAttribute, 'type'): "cim.2.shared.ExtraAttribute.type",
+    (shared.ExtraAttribute, 'value'): "cim.2.shared.ExtraAttribute.value",
     (shared.OnlineResource, 'description'): "cim.2.shared.OnlineResource.description",
     (shared.OnlineResource, 'linkage'): "cim.2.shared.OnlineResource.linkage",
     (shared.OnlineResource, 'name'): "cim.2.shared.OnlineResource.name",
@@ -9695,6 +10784,7 @@ shared.CitationTarget.type_key = KEYS[shared.CitationTarget]
 shared.DocMetaInfo.type_key = KEYS[shared.DocMetaInfo]
 shared.DocReference.type_key = KEYS[shared.DocReference]
 shared.DocumentTypes.type_key = KEYS[shared.DocumentTypes]
+shared.ExtraAttribute.type_key = KEYS[shared.ExtraAttribute]
 shared.NilReason.type_key = KEYS[shared.NilReason]
 shared.OnlineResource.type_key = KEYS[shared.OnlineResource]
 shared.Party.type_key = KEYS[shared.Party]

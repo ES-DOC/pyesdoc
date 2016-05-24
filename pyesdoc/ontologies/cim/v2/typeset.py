@@ -105,6 +105,7 @@ __all__ = [
     CitationTarget,
     DocMetaInfo,
     DocReference,
+    ExtraAttribute,
     OnlineResource,
     Party,
     QualityReview,

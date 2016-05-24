@@ -20,23 +20,6 @@ import typeset_for_software_package as software
 
 
 
-class ConservationProperties(object):
-    """A concrete class within the cim v2 type system.
-
-    Describes how prognostic variables are conserved.
-
-    """
-    def __init__(self):
-        """Instance constructor.
-
-        """
-        super(ConservationProperties, self).__init__()
-
-        self.corrected_conserved_prognostic_variables = None# data.VariableCollection (0.1)
-        self.correction_methodology = None                # unicode (0.1)
-        self.flux_correction_was_used = None              # bool (1.1)
-
-
 class Grid(object):
     """A concrete class within the cim v2 type system.
 
@@ -52,10 +35,10 @@ class Grid(object):
         super(Grid, self).__init__()
 
         self.description = None                           # unicode (1.1)
+        self.details = []                                 # science.Detail (0.N)
         self.discretisation = None                        # science.Discretisation (0.1)
         self.meta = shared.DocMetaInfo()                  # shared.DocMetaInfo (1.1)
         self.name = None                                  # unicode (1.1)
-        self.properties = None                            # science.Detail (0.1)
         self.references = []                              # shared.Reference (0.N)
 
 
@@ -119,9 +102,9 @@ class ScientificRealm(object):
         """
         super(ScientificRealm, self).__init__()
 
-        self.differing_key_properties = None              # science.KeyProperties (0.1)
         self.grid = None                                  # science.Grid (0.1)
         self.id = None                                    # unicode (0.1)
+        self.key_properties = None                        # science.KeyProperties (0.1)
         self.meta = shared.DocMetaInfo()                  # shared.DocMetaInfo (1.1)
         self.name = None                                  # unicode (1.1)
         self.overview = None                              # unicode (0.1)
@@ -215,6 +198,22 @@ class Tuning(SubProcess):
         self.global_mean_metrics_used = None              # data.VariableCollection (0.1)
         self.regional_metrics_used = None                 # data.VariableCollection (0.1)
         self.trend_metrics_used = None                    # data.VariableCollection (0.1)
+
+
+class ConservationProperties(SubProcess):
+    """A concrete class within the cim v2 type system.
+
+    Describes how prognostic variables are conserved.
+
+    """
+    def __init__(self):
+        """Instance constructor.
+
+        """
+        super(ConservationProperties, self).__init__()
+
+        self.corrected_conserved_prognostic_variables = None# data.VariableCollection (0.1)
+        self.flux_correction_was_used = None              # bool (0.1)
 
 
 class Discretisation(SubProcess):

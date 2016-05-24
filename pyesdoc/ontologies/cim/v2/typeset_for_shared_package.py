@@ -97,12 +97,39 @@ class DocMetaInfo(object):
         self.sort_key = None                              # unicode (0.1)
         self.source = None                                # unicode (1.1)
         self.source_key = None                            # unicode (0.1)
-        self.sub_projects = []                            # unicode (0.N)
         self.type = None                                  # unicode (1.1)
         self.type_display_name = None                     # unicode (0.1)
         self.type_sort_key = None                         # unicode (0.1)
         self.update_date = None                           # datetime.datetime (1.1)
         self.version = None                               # int (1.1)
+
+
+class ExtraAttribute(object):
+    """A concrete class within the cim v2 type system.
+
+    An extra attribute with key and value needed to encode further information
+    not in the CIM2 domain model or specialisation. Typical use case: in parsing
+    data and encoding attributes found in data.
+
+    """
+    def __init__(self):
+        """Instance constructor.
+
+        """
+        super(ExtraAttribute, self).__init__()
+
+        self.doc = None                                   # unicode (0.1)
+        self.key = None                                   # unicode (1.1)
+        self.type = None                                  # unicode (0.1)
+        self.value = None                                 # unicode (1.1)
+
+
+    @property
+    def __str__(self):
+	    """Instrance string representation.
+
+	    """
+	    return "{}:{}".format(self.key, self.value)
 
 
 class OnlineResource(object):
