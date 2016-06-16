@@ -21,7 +21,7 @@ import shutil
 _parser = argparse.ArgumentParser("Archives CIM documents extracted from CMIP6 experiment spreadsheet.")
 _parser.add_argument(
     "--source-dir",
-    help="Path to a directory from whcih documents will be archived.",
+    help="Path to a directory from which documents will be archived.",
     dest="source_dir",
     type=str
     )

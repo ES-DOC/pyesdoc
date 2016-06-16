@@ -9720,11 +9720,11 @@ DOC_STRINGS = {
     (shared.DocMetaInfo, 'id'):
         "Universal document identifier.",
     (shared.DocMetaInfo, 'institute'):
-        "Name of institute with which instance is associated with.",
+        "Name of institute with which instance is associated.",
     (shared.DocMetaInfo, 'language'):
-        "Language with which instance is associated with.",
+        "Language with which instance is associated.",
     (shared.DocMetaInfo, 'project'):
-        "Name of project with which instance is associated with.",
+        "Name of project with which instance is associated.",
     (shared.DocMetaInfo, 'sort_key'):
         "Document sort key.",
     (shared.DocMetaInfo, 'source'):
@@ -9734,7 +9734,7 @@ DOC_STRINGS = {
     (shared.DocMetaInfo, 'status'):
         "Document status.",
     (shared.DocMetaInfo, 'sub_projects'):
-        None,
+        "Set of sub-projects with which instance is associated.",
     (shared.DocMetaInfo, 'type'):
         "Document ontology type.",
     (shared.DocMetaInfo, 'type_display_name'):

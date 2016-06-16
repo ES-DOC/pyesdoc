@@ -97,6 +97,7 @@ class DocMetaInfo(object):
         self.sort_key = None                              # unicode (0.1)
         self.source = None                                # unicode (1.1)
         self.source_key = None                            # unicode (0.1)
+        self.sub_projects = []                            # unicode (0.N)
         self.type = None                                  # unicode (1.1)
         self.type_display_name = None                     # unicode (0.1)
         self.type_sort_key = None                         # unicode (0.1)
