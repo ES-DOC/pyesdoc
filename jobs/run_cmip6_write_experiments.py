@@ -351,7 +351,7 @@ _WS_MAPS = {
             ("responsible_parties", [6], lambda x, y: _convert_to_cim_2_responsibilty(x, y, 7)),
             ("references", range(10, 10 + 1)),
             ("is_conformance_requested", 14, _convert_to_bool),
-            ("ensemble_axis", range(14, 15 + 1))
+            ("ensemble_axis", range(13, 14 + 1))
         ]),
 
     # TODO: map to cim type
@@ -698,6 +698,10 @@ class DocumentSet(object):
         # Set project required experiments.
         for project in self[_WS_PROJECT]:
             project.requires_experiments = _convert_names(project.requires_experiments, self[_WS_EXPERIMENT])
+
+        # Set multi-ensemble axis.
+        for me in self[_WS_MULTI_ENSEMBLE]:
+            me.ensemble_axis = _convert_names(me.ensemble_axis, self.numerical_requirements)
 
 
     def set_document_links(self):
