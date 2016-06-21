@@ -28,6 +28,7 @@ _INSTITUTE_OVERRIDES = {
     'NASA' : 'NASA-GISS',
     'NIMR/KMA' : 'NIMR-KMA',
     'STEVE' : 'CSIRO-QCCCE',
+    'ESPS-TEAM': None
 }
 
 # Model name overrides.

@@ -653,51 +653,55 @@ class DocumentSet(object):
 
         """
         # Set urls.
-        for container in self.url_containers:
-            container.url = _convert_name(container.url, self[_WS_URL])
+        for x in self.url_containers:
+            x.url = _convert_name(x.url, self[_WS_URL])
 
         # Set citations.
-        for container in self.citation_containers:
-            container.references = _convert_names(container.references, self[_WS_REFERENCES])
+        for x in self.citation_containers:
+            x.references = _convert_names(x.references, self[_WS_REFERENCES])
 
         # Set responsibility parties.
-        for responsibility in self.responsible_parties:
-            responsibility.party = _convert_names(responsibility.party, self[_WS_PARTY])
+        for rp in self.responsible_parties:
+            rp.party = _convert_names(rp.party, self[_WS_PARTY])
 
         # Set experiment related experiments.
-        for experiment in self[_WS_EXPERIMENT]:
-            experiment.related_experiments = _convert_names(experiment.related_experiments, self[_WS_EXPERIMENT])
+        for e in self[_WS_EXPERIMENT]:
+            e.related_experiments = _convert_names(e.related_experiments, self[_WS_EXPERIMENT])
 
         # Set experiment requirements.
-        for experiment in self[_WS_EXPERIMENT]:
-            experiment.requirements += \
-                _convert_names(experiment.temporal_constraints, self[_WS_TEMPORAL_CONSTRAINT])
-            experiment.requirements += \
-                _convert_names(experiment.forcing_constraints, self[_WS_FORCING_CONSTRAINT])
-            experiment.requirements += \
-                _convert_names(experiment.ensembles, self[_WS_ENSEMBLE_REQUIREMENT])
-            experiment.requirements += \
-                _convert_names(experiment.model_configurations, self[_WS_REQUIREMENT])
+        for e in self[_WS_EXPERIMENT]:
+            e.requirements += \
+                _convert_names(e.temporal_constraints, self[_WS_TEMPORAL_CONSTRAINT])
+            e.requirements += \
+                _convert_names(e.forcing_constraints, self[_WS_FORCING_CONSTRAINT])
+            e.requirements += \
+                _convert_names(e.ensembles, self[_WS_ENSEMBLE_REQUIREMENT])
+            e.requirements += \
+                _convert_names(e.model_configurations, self[_WS_REQUIREMENT])
+
+        # Set project sub-projects.
+        for p in self[_WS_PROJECT]:
+            pass
 
         # Set experiment sub-projects.
-        for experiment in self[_WS_EXPERIMENT]:
+        for e in self[_WS_EXPERIMENT]:
             for project in self[_WS_PROJECT]:
-                if experiment.canonical_name in project.requires_experiments:
-                    experiment.meta.sub_projects.append(project.name)
-            if experiment.meta.sub_projects:
-                experiment.meta.sub_projects = sorted(experiment.meta.sub_projects)
+                if e.canonical_name in project.requires_experiments:
+                    e.meta.sub_projects.append(project.name)
+            e.meta.sub_projects = sorted(e.meta.sub_projects)
 
         # Set additional experimental requirements.
-        for requirement in self[_WS_REQUIREMENT]:
-            requirement.additional_requirements = _convert_names(requirement.additional_requirements, self.numerical_requirements)
+        for rq in self[_WS_REQUIREMENT]:
+            rq.additional_requirements = _convert_names(rq.additional_requirements, self.numerical_requirements)
 
         # Set sub-projects.
-        for project in self[_WS_PROJECT]:
-            project.sub_projects = _convert_names(project.sub_projects, self[_WS_PROJECT])
+        for p in self[_WS_PROJECT]:
+            p.meta.sub_projects = sorted(p.sub_projects)
+            p.sub_projects = _convert_names(p.sub_projects, self[_WS_PROJECT])
 
         # Set project required experiments.
-        for project in self[_WS_PROJECT]:
-            project.requires_experiments = _convert_names(project.requires_experiments, self[_WS_EXPERIMENT])
+        for p in self[_WS_PROJECT]:
+            p.requires_experiments = _convert_names(p.requires_experiments, self[_WS_EXPERIMENT])
 
         # Set multi-ensemble axis.
         for me in self[_WS_MULTI_ENSEMBLE]:
