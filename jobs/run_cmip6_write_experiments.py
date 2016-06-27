@@ -269,7 +269,7 @@ _WS_MAPS = {
             ("name", 1),
             ("long_name", 2),
             ("canonical_name", 3),
-            ("other_names", 4),
+            ("previously_known_as", 4, lambda v, _: [] if not v else [i.strip() for i in v.split(",")]),
             ("keywords", 5),
             ("description", 6),
             ("rationale", 7),

@@ -19,11 +19,16 @@ from pyesdoc.ontologies import cim
 FIELDSETS = {
     'cim.2.designing.numericalexperiment-overview': [
         FieldInfo('Project', path='meta.project'),
+        FieldInfo('Sub Projects', path='meta.sub_projects',
+                  input_formatter=lambda v: " | ".join(v)),
         FieldInfo('Institute', path='meta.institute'),
-        FieldInfo('Name', path='canonical_name'),
+        FieldInfo('Canonical Name', path='canonical_name'),
+        FieldInfo('Alternative Name', path='name'),
+        FieldInfo('Other Names', path='previously_known_as'),
         FieldInfo('Long Name', path='long_name'),
         FieldInfo('Description', path='description'),
-        FieldInfo('Keywords', path='keywords', input_formatter=lambda v: " | ".join(v.split(','))),
+        FieldInfo('Keywords', path='keywords',
+                  input_formatter=lambda v: " | ".join(v.split(','))),
         FieldInfo('Related Experiments',
                   link_factory=lambda exp: [(i.name, i.viewer_url) for i in \
                                             sorted(exp.related_experiments, key=lambda v: v.name)])
