@@ -19,7 +19,9 @@
 {% comment Sub-section: forcing constraints 		    	  %}
 {% comment ************************************************** %}
 {% set requirements = [r for r in doc.requirements if isinstance(r, pyesdoc.ontologies.cim.v2.ForcingConstraint)] %}
-{% set requirements += [r for r in doc.requirements if r.meta.type.endswith("forcing_constraint")] %}
+{% for r in [r for r in doc.requirements if r.meta.type.endswith("forcing_constraint")] %}
+{% set requirements +=  load(r.additional_requirements) %}
+{% end %}
 {% set description = "Forcing Constraints" %}
 {% include designing_numerical_experiment_requirement_group.html %}
 
@@ -30,5 +32,4 @@
 {% set requirements = [r for r in doc.requirements if isinstance(r, pyesdoc.ontologies.cim.v2.EnsembleRequirement)] %}
 {% set description = "Ensemble Requirements" %}
 {% include designing_numerical_experiment_requirement_group.html %}
-
 

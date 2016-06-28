@@ -21,12 +21,11 @@ _SEPARATOR = "  |  "
 # Document field sets.
 FIELDSETS = {
     'cim.2.designing.numericalexperiment-overview': [
-        FieldInfo('Project', path='meta.project'),
-        FieldInfo('Sub Projects', path='meta.sub_projects',
+        FieldInfo('MIP Era', path='meta.project'),
+        FieldInfo('Sub MIPs', path='meta.sub_projects',
                   input_formatter=lambda v: _SEPARATOR.join(v)),
         FieldInfo('Institute', path='meta.institute'),
         FieldInfo('Canonical Name', path='canonical_name'),
-        FieldInfo('Name', path='name'),
         FieldInfo('Alternative Names', path='previously_known_as',
                   input_formatter=lambda v: _SEPARATOR.join(v)),
         FieldInfo('Long Name', path='long_name'),
