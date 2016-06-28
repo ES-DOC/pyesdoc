@@ -54,7 +54,10 @@ def load(reference):
         try:
             ref.meta
         except AttributeError:
-            return pyesdoc.archive.read(ref.id, ref.version)
+            doc = pyesdoc.archive.read(ref.id, ref.version)
+            if doc.meta.type != ref.type:
+                doc.meta.type = ref.type
+            return doc
         else:
             return ref
 

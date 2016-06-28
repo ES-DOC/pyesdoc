@@ -7,6 +7,7 @@
 	{% set field_value = ctx.field.get_value() %}
 	{% set field_value_css = "" %}
 {% end %}
+{% set _SEPARATOR = "  |  " %}
 
 <tr class="esdoc-field {{ ctx.fieldset_type }} {{ field_value_css }}">
 	{% if ctx.fieldset_type == "namevalue" %}
@@ -15,7 +16,7 @@
 			{% if ctx.field.link_factory is not None %}
 				{% for link_idx, link_info in enumerate(field_value) %}
 				{% if link_idx > 0 %}
-				<span>|</span>
+				<span>{{ _SEPARATOR }}</span>
 				{% end %}
 				<a class="esdoc-field-hyperlink" href="{{ link_info[1] }}">{{ link_info[0] }}</a>
 				{% end %}

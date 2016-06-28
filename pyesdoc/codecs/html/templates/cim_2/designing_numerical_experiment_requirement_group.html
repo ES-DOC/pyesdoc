@@ -1,0 +1,22 @@
+{% if requirements %}
+{% set requirements = sorted(requirements, key=lambda r: r.name.lower() if r.name else str()) %}
+<section>
+	<header>
+		<h{{ header }}>{{ description }}</h{{ header }}>
+	</header>
+	{% for requirement in requirements %}
+	{% set ctx = TemplateInfo(requirement, fieldset=str(type(requirement))) %}
+	<section>
+		<header>
+			<h{{ header + 1 }}>{{ requirement.long_name }}</h{{ header + 1 }}>
+		</header>
+		<table>
+			<tbody>
+			{% include ../core/fieldset.html %}
+			</tbody>
+		</table>
+	</section>
+	{% end %}
+</section>
+{% end %}
+

@@ -279,7 +279,7 @@ _WS_MAPS = {
             ("temporal_constraints", range(25, 26 + 1)),
             ("ensembles", range(27, 30 + 1)),
             ("multi_ensemble", range(31, 32 + 1)),
-            ("model_configurations", range(34, 38 + 1)),
+            ("model_configurations", range(33, 37 + 1)),
             ("forcing_constraints", range(38, 50 + 1))
         ]),
 
@@ -626,7 +626,7 @@ class DocumentSet(object):
         return reduce(add, [i.responsible_parties for i in self.responsible_party_containers])
 
 
-    def _get_document_link(self, doc):
+    def _get_doc_link(self, doc, type_note=None):
         """Returns a document link.
 
         """
@@ -636,14 +636,17 @@ class DocumentSet(object):
         reference = cim.v2.DocReference()
         reference.id = doc.meta.id
         reference.version = doc.meta.version
-        reference.type = doc.type_key
+        if type_note:
+            reference.type = "{}:{}".format(doc.type_key, type_note)
+        else:
+            reference.type = doc.type_key
         for attr in ["canonical_name", "name"]:
             try:
-                getattr(doc, attr)
+                reference.name = getattr(doc, attr)
             except AttributeError:
                 pass
             else:
-                reference.name = getattr(doc, attr)
+                break
 
         return reference
 
@@ -670,13 +673,16 @@ class DocumentSet(object):
 
         # Set experiment requirements.
         for e in self[_WS_EXPERIMENT]:
-            e.requirements += \
+            e.temporal_constraints = \
                 _convert_names(e.temporal_constraints, self[_WS_TEMPORAL_CONSTRAINT])
-            e.requirements += \
-                _convert_names(e.forcing_constraints, self[_WS_FORCING_CONSTRAINT])
-            e.requirements += \
+            forcing_constraints = e.forcing_constraints
+            e.forcing_constraints = \
+                _convert_names(forcing_constraints, self[_WS_FORCING_CONSTRAINT])
+            e.forcing_constraints += \
+                _convert_names(forcing_constraints, self[_WS_REQUIREMENT])
+            e.ensembles = \
                 _convert_names(e.ensembles, self[_WS_ENSEMBLE_REQUIREMENT])
-            e.requirements += \
+            e.model_configurations = \
                 _convert_names(e.model_configurations, self[_WS_REQUIREMENT])
 
         # Set project sub-projects.
@@ -708,33 +714,40 @@ class DocumentSet(object):
             me.ensemble_axis = _convert_names(me.ensemble_axis, self.numerical_requirements)
 
 
-    def set_document_links(self):
+    def set_doc_links(self):
         """Sets inter document references.
 
         """
         # Responsibility to party references.
         for rp in self.responsible_parties:
-            rp.party = [self._get_document_link(d) for d in rp.party]
+            rp.party = [self._get_doc_link(d) for d in rp.party]
 
         # Experiment to related experiment references.
         for e in self[_WS_EXPERIMENT]:
-            e.related_experiments = [self._get_document_link(d) for d in e.related_experiments]
+            e.related_experiments = [self._get_doc_link(d) for d in e.related_experiments]
 
         # Experiment to requirement references.
         for e in self[_WS_EXPERIMENT]:
-            e.requirements = [self._get_document_link(d) for d in e.requirements]
+            e.requirements += [self._get_doc_link(d) for d in e.temporal_constraints]
+            for fc in e.forcing_constraints:
+                if isinstance(fc, cim.v2.ForcingConstraint):
+                    e.requirements.append(self._get_doc_link(fc))
+                else:
+                    e.requirements.append(self._get_doc_link(fc, "forcing_constraint"))
+            e.requirements += [self._get_doc_link(d) for d in e.ensembles]
+            e.requirements += [self._get_doc_link(d, "model_configuration") for d in e.model_configurations]
 
         # Set additional experimental requirements.
         for r in self[_WS_REQUIREMENT]:
-            r.additional_requirements = [self._get_document_link(d) for d in r.additional_requirements]
+            r.additional_requirements = [self._get_doc_link(d) for d in r.additional_requirements]
 
         # Project to sub-projects.
         for p in self[_WS_PROJECT]:
-            p.sub_projects = [self._get_document_link(d) for d in p.sub_projects]
+            p.sub_projects = [self._get_doc_link(d) for d in p.sub_projects]
 
         # Project to required experiments.
         for p in self[_WS_PROJECT]:
-            p.requires_experiments = [self._get_document_link(d) for d in p.requires_experiments]
+            p.requires_experiments = [self._get_doc_link(d) for d in p.requires_experiments]
 
 
     def write(self, io_dir):
@@ -781,7 +794,7 @@ def _main(args):
         Spreadsheet(args.spreadsheet_filepath, DocumentIdentifiers(args.identifiers))
             )
     docs.set_document_connections()
-    docs.set_document_links()
+    docs.set_doc_links()
     docs.write(args.io_dir)
 
 
