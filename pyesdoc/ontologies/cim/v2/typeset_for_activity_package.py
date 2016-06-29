@@ -33,9 +33,11 @@ class Activity(object):
         """
         super(Activity, self).__init__()
 
+        self.alternative_names = []                       # unicode (0.N)
         self.canonical_name = None                        # unicode (0.1)
         self.description = None                           # unicode (0.1)
         self.duration = None                              # time.TimePeriod (0.1)
+        self.internal_name = None                         # unicode (1.1)
         self.keywords = None                              # unicode (0.1)
         self.long_name = None                             # unicode (0.1)
         self.meta = shared.DocMetaInfo()                  # shared.DocMetaInfo (1.1)

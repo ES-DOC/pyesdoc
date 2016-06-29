@@ -266,10 +266,11 @@ _WS_MAPS = {
         ]),
 
     _WS_EXPERIMENT: (cim.v2.NumericalExperiment, [
-            ("name", 1),
+            ("internal_name", 1),
             ("long_name", 2),
+            ("name", 3),
             ("canonical_name", 3),
-            ("previously_known_as", 4, lambda v, _: [] if not v else [i.strip() for i in v.split(",")]),
+            ("alternative_names", 4, lambda v, _: [] if not v else [i.strip() for i in v.split(",")]),
             ("keywords", 5),
             ("description", 6),
             ("rationale", 7),

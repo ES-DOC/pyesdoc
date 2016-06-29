@@ -19,8 +19,7 @@ def get_extenders():
     """
     return (
         _set_related_experiment_viewer_urls,
-        _set_summary_fields,
-        _set_full_display_name
+        _set_summary_fields
         )
 
 
@@ -45,20 +44,3 @@ def _set_summary_fields(ctx):
         ctx.doc.long_name
     )
 
-
-def _set_full_display_name(ctx):
-    """Sets document full display name.
-
-    """
-    name = u""
-    if ctx.meta.project:
-        name += ctx.meta.project.upper()
-        name += u" "
-    name += ctx.meta.type_display_name
-    name += u" : "
-    name += ctx.doc.canonical_name
-    name += u" ("
-    name += ctx.doc.name
-    name += u")"
-
-    ctx.ext.full_display_name = name.strip()
