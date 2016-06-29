@@ -74,9 +74,9 @@ FIELDSETS = {
     ],
 
     'cim.2.shared.citation' : [
-        FieldInfo('Long Title', path='citation_str', link_path="url.linkage"),
-        FieldInfo('Context', path='context'),
         FieldInfo('DOI', path='doi', link_path=lambda v: "https://doi.org/{}".format(v.doi)),
+        FieldInfo('Long Title', path='citation_detail', link_path="url.linkage"),
+        FieldInfo('Context', path='context'),
         FieldInfo('Abstract', path='abstract'),
     ],
 

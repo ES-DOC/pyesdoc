@@ -85,6 +85,8 @@ def _set_display_name(ctx):
         ctx.ext.display_name = ctx.doc.short_name
     elif hasattr(ctx.doc, "name") and ctx.doc.name:
         ctx.ext.display_name = ctx.doc.name
+    elif hasattr(ctx.doc, "title") and ctx.doc.title:
+        ctx.ext.display_name = ctx.doc.title
 
 
 def _set_description(ctx):

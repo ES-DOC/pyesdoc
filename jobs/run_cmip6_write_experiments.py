@@ -231,7 +231,7 @@ def _convert_name(name, collection):
 
     name = name.lower()
     for item in collection:
-        for attr in ["citation_str", "canonical_name", "name"]:
+        for attr in ["citation_detail", "canonical_name", "name"]:
             try:
                 item_name = getattr(item, attr)
             except AttributeError:
@@ -371,11 +371,11 @@ _WS_MAPS = {
             ("irregular_dateset", 16),
         ]),
 
-    _WS_REFERENCES: (cim.v2.CitationTarget, [
-            ("doi", 1, _convert_to_unicode),
+    _WS_REFERENCES: (cim.v2.Citation, [
+            ("doi", 1),
             ("title", 2),
             ("context", 3),
-            ("citation_str", 4),
+            ("citation_detail", 4),
             ("url", 5),
             ("abstract", 6)
         ]),
@@ -547,8 +547,6 @@ class DocumentSet(object):
         self.docs = defaultdict(list)
         for sheet in _WS_SHEETS:
             self[sheet] = spreadsheet[sheet]
-        print "TODO rebuild citations after citation review is complete"
-        self[_WS_REFERENCES] = []
 
 
     def __getitem__(self, ws_name):
@@ -613,8 +611,8 @@ class DocumentSet(object):
         """Gets full set of managed objects that have responsible partie collections.
 
         """
-        return self.numerical_requirements + \
-               self[_WS_EXPERIMENT] + \
+        return self[_WS_EXPERIMENT] + \
+               self.numerical_requirements + \
                self[_WS_PROJECT]
 
 
@@ -624,6 +622,14 @@ class DocumentSet(object):
 
         """
         return reduce(add, [i.responsible_parties for i in self.responsible_party_containers])
+
+
+    @property
+    def urls(self):
+        """Gets full set of managed url's.
+
+        """
+        return reduce(add, [i.url for i in self.url_containers])
 
 
     def _get_doc_link(self, doc, type_note=None):
@@ -714,6 +720,7 @@ class DocumentSet(object):
             me.ensemble_axis = _convert_names(me.ensemble_axis, self.numerical_requirements)
 
 
+
     def set_doc_links(self):
         """Sets inter document references.
 
@@ -721,6 +728,10 @@ class DocumentSet(object):
         # Responsibility to party references.
         for rp in self.responsible_parties:
             rp.party = [self._get_doc_link(d) for d in rp.party]
+
+        # Responsibility to party references.
+        for c in self.citation_containers:
+            c.references = [self._get_doc_link(d) for d in c.references]
 
         # Experiment to related experiment references.
         for e in self[_WS_EXPERIMENT]:

@@ -33,7 +33,7 @@
 	{% comment Sub-section: citations   		    			  %}
 	{% comment ************************************************** %}
 	{% if doc.references %}
-		{% set citations = doc.references %}
+		{% set citations = load(doc.references) %}
 		{% set header = 3 %}
 		{% include shared_citation.html %}
 	{% end %}

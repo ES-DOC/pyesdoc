@@ -1,4 +1,3 @@
-{% if responsible_parties %}
 <section>
 	<header>
 		<h{{ header }}>Responsible Parties</h{{ header }}>
@@ -8,7 +7,11 @@
 	{% set ctx = TemplateInfo(party, fieldset='cim.2.shared.party') %}
 	<section>
 		<header>
+			{% if responsible.role %}
 			<h{{ header + 1 }}>{{ responsible.role }}&nbsp;-->&nbsp;{{ party.name }}</h{{ header + 1}}>
+			{% else %}
+			<h{{ header + 1 }}>{{ party.name }}</h{{ header + 1}}>
+			{% end %}
 		</header>
 		<table>
 			<tbody>
@@ -19,4 +22,3 @@
 	{% end %}
 	{% end %}
 </section>
-{% end %}
