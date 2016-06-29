@@ -43,6 +43,28 @@ class Cimtext(object):
 	    return "{}".format(self.content)
 
 
+class Citation(object):
+    """A concrete class within the cim v2 type system.
+
+    An academic reference to published work.
+
+    """
+    def __init__(self):
+        """Instance constructor.
+
+        """
+        super(Citation, self).__init__()
+
+        self.abstract = None                              # unicode (0.1)
+        self.citation_detail = None                       # unicode (0.1)
+        self.collective_title = None                      # unicode (0.1)
+        self.context = None                               # unicode (0.1)
+        self.doi = None                                   # unicode (0.1)
+        self.meta = DocMetaInfo()                         # shared.DocMetaInfo (1.1)
+        self.title = None                                 # unicode (0.1)
+        self.type = None                                  # unicode (0.1)
+
+
 class CitationTarget(object):
     """A concrete class within the cim v2 type system.
 

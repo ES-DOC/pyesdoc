@@ -87,6 +87,7 @@ from typeset_for_science_package import ScientificRealm
 from typeset_for_science_package import SubProcess
 from typeset_for_science_package import Tuning
 from typeset_for_shared_package import Cimtext
+from typeset_for_shared_package import Citation
 from typeset_for_shared_package import CitationTarget
 from typeset_for_shared_package import DocMetaInfo
 from typeset_for_shared_package import DocReference

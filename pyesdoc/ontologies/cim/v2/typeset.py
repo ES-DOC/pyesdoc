@@ -102,6 +102,7 @@ __all__ = [
     SubProcess,
     Tuning,
     Cimtext,
+    Citation,
     CitationTarget,
     DocMetaInfo,
     DocReference,

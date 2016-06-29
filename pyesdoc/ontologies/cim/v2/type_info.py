@@ -119,6 +119,7 @@ CLASSES = (
     science.SubProcess,
     science.Tuning,
     shared.Cimtext,
+    shared.Citation,
     shared.CitationTarget,
     shared.DocMetaInfo,
     shared.DocReference,
@@ -842,6 +843,16 @@ CLASS_PROPERTIES = {
         'content',
         'content_type',
     ),
+    shared.Citation: (
+        'abstract',
+        'citation_detail',
+        'collective_title',
+        'context',
+        'doi',
+        'meta',
+        'title',
+        'type',
+    ),
     shared.CitationTarget: (
         'citation_detail',
         'doi',
@@ -1371,6 +1382,16 @@ CLASS_OWN_PROPERTIES = {
         'content',
         'content_type',
     ),
+    shared.Citation: (
+        'abstract',
+        'citation_detail',
+        'collective_title',
+        'context',
+        'doi',
+        'meta',
+        'title',
+        'type',
+    ),
     shared.CitationTarget: (
         'citation_detail',
         'doi',
@@ -1587,6 +1608,7 @@ DOCUMENT_TYPES = (
     science.Grid,
     science.Model,
     science.ScientificRealm,
+    shared.Citation,
     shared.CitationTarget,
     shared.Party,
     shared.QualityReview,
@@ -3165,6 +3187,27 @@ CONSTRAINTS = {
 
         ('content', 'cardinality', "1.1"),
         ('content_type', 'cardinality', "1.1"),
+
+    ),
+    shared.Citation: (
+
+        ('doi', 'type', unicode),
+        ('title', 'type', unicode),
+        ('abstract', 'type', unicode),
+        ('collective_title', 'type', unicode),
+        ('meta', 'type', shared.DocMetaInfo),
+        ('context', 'type', unicode),
+        ('type', 'type', unicode),
+        ('citation_detail', 'type', unicode),
+
+        ('doi', 'cardinality', "0.1"),
+        ('title', 'cardinality', "0.1"),
+        ('abstract', 'cardinality', "0.1"),
+        ('collective_title', 'cardinality', "0.1"),
+        ('meta', 'cardinality', "1.1"),
+        ('context', 'cardinality', "0.1"),
+        ('type', 'cardinality', "0.1"),
+        ('citation_detail', 'cardinality', "0.1"),
 
     ),
     shared.CitationTarget: (
@@ -7685,6 +7728,63 @@ CONSTRAINTS = {
 
     ),
 
+    (shared.Citation, 'abstract'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (shared.Citation, 'citation_detail'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (shared.Citation, 'collective_title'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (shared.Citation, 'context'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (shared.Citation, 'doi'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (shared.Citation, 'meta'): (
+
+        ('type', shared.DocMetaInfo),
+
+        ('cardinality', "1.1"),
+
+    ),
+    (shared.Citation, 'title'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (shared.Citation, 'type'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+
     (shared.CitationTarget, 'citation_detail'): (
 
         ('type', unicode),
@@ -8806,6 +8906,10 @@ DOC_STRINGS = {
     friends (or will do).
 
     """,
+    shared.Citation: """
+        An academic reference to published work.
+
+    """,
     shared.CitationTarget: """
         A real world document, could be a book, a journal article, a manual, a web page ... it might or might
     not be online, although preferably it would be.
@@ -9450,6 +9554,22 @@ DOC_STRINGS = {
         "Raw content (including markup).",
     (shared.Cimtext, 'content_type'):
         "Type of content.",
+    (shared.Citation, 'abstract'):
+        "Abstract providing high level reference overview.",
+    (shared.Citation, 'citation_detail'):
+        "Complete citation string as would appear in a bibliography.",
+    (shared.Citation, 'collective_title'):
+        "Citation collective title, i.e. with all authors declared",
+    (shared.Citation, 'context'):
+        "Brief text description of why this resource is being cited.",
+    (shared.Citation, 'doi'):
+        "Digital Object Identifier, if it exists.",
+    (shared.Citation, 'meta'):
+        "Metadata about the creation of this document description.",
+    (shared.Citation, 'title'):
+        None,
+    (shared.Citation, 'type'):
+        None,
     (shared.CitationTarget, 'citation_detail'):
         "Complete citation string as would appear in a bibliography.",
     (shared.CitationTarget, 'doi'):
@@ -10150,6 +10270,7 @@ KEYS = {
     science.SubProcess: "cim.2.science.SubProcess",
     science.Tuning: "cim.2.science.Tuning",
     shared.Cimtext: "cim.2.shared.Cimtext",
+    shared.Citation: "cim.2.shared.Citation",
     shared.CitationTarget: "cim.2.shared.CitationTarget",
     shared.DocMetaInfo: "cim.2.shared.DocMetaInfo",
     shared.DocReference: "cim.2.shared.DocReference",
@@ -10436,6 +10557,14 @@ KEYS = {
     (science.Tuning, 'trend_metrics_used'): "cim.2.science.Tuning.trend_metrics_used",
     (shared.Cimtext, 'content'): "cim.2.shared.Cimtext.content",
     (shared.Cimtext, 'content_type'): "cim.2.shared.Cimtext.content_type",
+    (shared.Citation, 'abstract'): "cim.2.shared.Citation.abstract",
+    (shared.Citation, 'citation_detail'): "cim.2.shared.Citation.citation_detail",
+    (shared.Citation, 'collective_title'): "cim.2.shared.Citation.collective_title",
+    (shared.Citation, 'context'): "cim.2.shared.Citation.context",
+    (shared.Citation, 'doi'): "cim.2.shared.Citation.doi",
+    (shared.Citation, 'meta'): "cim.2.shared.Citation.meta",
+    (shared.Citation, 'title'): "cim.2.shared.Citation.title",
+    (shared.Citation, 'type'): "cim.2.shared.Citation.type",
     (shared.CitationTarget, 'citation_detail'): "cim.2.shared.CitationTarget.citation_detail",
     (shared.CitationTarget, 'doi'): "cim.2.shared.CitationTarget.doi",
     (shared.CitationTarget, 'meta'): "cim.2.shared.CitationTarget.meta",
@@ -10794,6 +10923,7 @@ science.SelectionCardinality.type_key = KEYS[science.SelectionCardinality]
 science.SubProcess.type_key = KEYS[science.SubProcess]
 science.Tuning.type_key = KEYS[science.Tuning]
 shared.Cimtext.type_key = KEYS[shared.Cimtext]
+shared.Citation.type_key = KEYS[shared.Citation]
 shared.CitationTarget.type_key = KEYS[shared.CitationTarget]
 shared.DocMetaInfo.type_key = KEYS[shared.DocMetaInfo]
 shared.DocReference.type_key = KEYS[shared.DocReference]
