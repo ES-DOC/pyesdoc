@@ -63,6 +63,7 @@ class Citation(object):
         self.meta = DocMetaInfo()                         # shared.DocMetaInfo (1.1)
         self.title = None                                 # unicode (0.1)
         self.type = None                                  # unicode (0.1)
+        self.url = None                                   # shared.OnlineResource (0.1)
 
 
 class CitationTarget(object):

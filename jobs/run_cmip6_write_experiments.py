@@ -279,7 +279,7 @@ _WS_MAPS = {
             ("related_experiments", range(19, 24 + 1)),
             ("temporal_constraints", range(25, 26 + 1)),
             ("ensembles", range(27, 30 + 1)),
-            ("multi_ensemble", range(31, 32 + 1)),
+            ("multi_ensembles", range(31, 32 + 1)),
             ("model_configurations", range(33, 37 + 1)),
             ("forcing_constraints", range(38, 50 + 1))
         ]),
@@ -691,6 +691,8 @@ class DocumentSet(object):
                 _convert_names(e.ensembles, self[_WS_ENSEMBLE_REQUIREMENT])
             e.model_configurations = \
                 _convert_names(e.model_configurations, self[_WS_REQUIREMENT])
+            e.multi_ensembles = \
+                _convert_names(e.multi_ensembles, self[_WS_MULTI_ENSEMBLE])
 
         # Set project sub-projects.
         for p in self[_WS_PROJECT]:
@@ -721,7 +723,6 @@ class DocumentSet(object):
             me.ensemble_axis = _convert_names(me.ensemble_axis, self.numerical_requirements)
 
 
-
     def set_doc_links(self):
         """Sets inter document references.
 
@@ -748,6 +749,7 @@ class DocumentSet(object):
                     e.requirements.append(self._get_doc_link(fc, "forcing_constraint"))
             e.requirements += [self._get_doc_link(d) for d in e.ensembles]
             e.requirements += [self._get_doc_link(d, "model_configuration") for d in e.model_configurations]
+            e.requirements += [self._get_doc_link(d) for d in e.multi_ensembles]
 
         # Set additional experimental requirements.
         for r in self[_WS_REQUIREMENT]:
@@ -788,6 +790,7 @@ class DocumentSet(object):
             del experiment.forcing_constraints
             del experiment.ensembles
             del experiment.model_configurations
+            del experiment.multi_ensembles
 
         for doc in self.documents:
             _write(doc, pyesdoc.ENCODING_JSON)

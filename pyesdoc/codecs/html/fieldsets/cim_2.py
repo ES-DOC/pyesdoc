@@ -22,7 +22,7 @@ _SEPARATOR = "  |  "
 FIELDSETS = {
     'cim.2.designing.numericalexperiment-overview': [
         FieldInfo('MIP Era', path='meta.project'),
-        FieldInfo('Sub MIPs', path='meta.sub_projects',
+        FieldInfo('Sub MIP', path='meta.sub_projects',
                   input_formatter=lambda v: _SEPARATOR.join(v)),
         FieldInfo('Institute', path='meta.institute'),
         FieldInfo('Canonical Name', path='canonical_name'),
@@ -56,6 +56,14 @@ FIELDSETS = {
         FieldInfo('Keywords', path='keywords', input_formatter=lambda v: _SEPARATOR.join(v.split(',')))
     ],
 
+    str(cim.v2.designing.MultiEnsemble) : [
+        FieldInfo('Name', path='canonical_name'),
+        FieldInfo('Description', path='description'),
+        FieldInfo('Forcing Type', path='forcing_type'),
+        FieldInfo('Conformance Requested ?', path='is_conformance_requested'),
+        FieldInfo('Keywords', path='keywords', input_formatter=lambda v: _SEPARATOR.join(v.split(',')))
+    ],
+
     str(cim.v2.designing.NumericalRequirement) : [
         FieldInfo('Name', path='canonical_name'),
         FieldInfo('Description', path='description'),
@@ -75,8 +83,9 @@ FIELDSETS = {
     ],
 
     'cim.2.shared.citation' : [
-        FieldInfo('DOI', path='doi', link_path=lambda v: "https://doi.org/{}".format(v.doi)),
-        FieldInfo('Long Title', path='citation_detail', link_path="url.linkage"),
+        FieldInfo('DOI', path='doi',
+                  link_path=lambda v: "https://doi.org/{}".format(v.doi)),
+        FieldInfo('Title', path='citation_detail', link_path="url.linkage"),
         FieldInfo('Context', path='context'),
         FieldInfo('Abstract', path='abstract'),
     ],

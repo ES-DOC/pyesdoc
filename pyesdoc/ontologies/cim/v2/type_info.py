@@ -888,6 +888,7 @@ CLASS_PROPERTIES = {
         'meta',
         'title',
         'type',
+        'url',
     ),
     shared.CitationTarget: (
         'citation_detail',
@@ -1429,6 +1430,7 @@ CLASS_OWN_PROPERTIES = {
         'meta',
         'title',
         'type',
+        'url',
     ),
     shared.CitationTarget: (
         'citation_detail',
@@ -3303,6 +3305,7 @@ CONSTRAINTS = {
 
         ('doi', 'type', unicode),
         ('title', 'type', unicode),
+        ('url', 'type', shared.OnlineResource),
         ('abstract', 'type', unicode),
         ('collective_title', 'type', unicode),
         ('meta', 'type', shared.DocMetaInfo),
@@ -3312,6 +3315,7 @@ CONSTRAINTS = {
 
         ('doi', 'cardinality', "0.1"),
         ('title', 'cardinality', "0.1"),
+        ('url', 'cardinality', "0.1"),
         ('abstract', 'cardinality', "0.1"),
         ('collective_title', 'cardinality', "0.1"),
         ('meta', 'cardinality', "1.1"),
@@ -8146,6 +8150,13 @@ CONSTRAINTS = {
         ('cardinality', "0.1"),
 
     ),
+    (shared.Citation, 'url'): (
+
+        ('type', shared.OnlineResource),
+
+        ('cardinality', "0.1"),
+
+    ),
 
     (shared.CitationTarget, 'citation_detail'): (
 
@@ -9936,6 +9947,8 @@ DOC_STRINGS = {
         None,
     (shared.Citation, 'type'):
         None,
+    (shared.Citation, 'url'):
+        "Location of electronic version.",
     (shared.CitationTarget, 'citation_detail'):
         "Complete citation string as would appear in a bibliography.",
     (shared.CitationTarget, 'doi'):
@@ -10933,6 +10946,7 @@ KEYS = {
     (shared.Citation, 'meta'): "cim.2.shared.Citation.meta",
     (shared.Citation, 'title'): "cim.2.shared.Citation.title",
     (shared.Citation, 'type'): "cim.2.shared.Citation.type",
+    (shared.Citation, 'url'): "cim.2.shared.Citation.url",
     (shared.CitationTarget, 'citation_detail'): "cim.2.shared.CitationTarget.citation_detail",
     (shared.CitationTarget, 'doi'): "cim.2.shared.CitationTarget.doi",
     (shared.CitationTarget, 'meta'): "cim.2.shared.CitationTarget.meta",
