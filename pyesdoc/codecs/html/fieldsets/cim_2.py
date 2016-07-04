@@ -88,10 +88,10 @@ FIELDSETS = {
         FieldInfo('Long Name', path='long_name'),
         FieldInfo('Description', path='description'),
         FieldInfo('Rationale', path='rationale'),
-        FieldInfo('Keywords', path='keywords', input_formatter=lambda v: _SEPARATOR.join(v.split(','))),
         FieldInfo('Related Experiments',
                   link_factory=lambda exp: [(i.name, i.viewer_url) for i in \
-                                            sorted(exp.requires_experiments, key=lambda v: v.name)])
+                                            sorted(exp.requires_experiments, key=lambda v: v.name)]),
+        FieldInfo('Keywords', path='keywords', input_formatter=lambda v: _SEPARATOR.join(v.split(',')))
     ],
 
     'cim.2.shared.citation' : [
