@@ -26,6 +26,7 @@ def _get_file_filterset():
     """
     result = constants.FILE_FILTER_SET
     for doc_type in pyesdoc.ontologies.get_doc_type_keyset():
+        print doc_type
         result.add("{}_*.*".format(doc_type.replace(".", "-").lower()))
 
     return result
@@ -45,11 +46,13 @@ class ArchiveFolderInfo(object):
         self._paths = \
             { ff: os.path.join(path, ff) for ff in _get_file_filterset() }
 
+
     def __repr__(self):
         """Instance representation.
 
         """
         return "{0}".format(self.path)
+
 
     @property
     def exists(self):
@@ -58,12 +61,14 @@ class ArchiveFolderInfo(object):
         """
         return os.path.exists(self.path)
 
+
     def delete(self):
         """Deletes underlying folder from local file system.
 
         """
         if self.exists:
             os.remove(self.path)
+
 
     def get_count(self, file_filter=None):
         """Returns file count.
@@ -72,6 +77,7 @@ class ArchiveFolderInfo(object):
         if not file_filter:
             file_filter = constants.FILE_FILTER_ALL
         return len(glob.glob(self._paths[file_filter]))
+
 
     def yield_documents(self, file_filter=None):
         """Yields set of documents.
@@ -84,6 +90,7 @@ class ArchiveFolderInfo(object):
         """
         for file_info in self.yield_files(file_filter):
             yield extend_doc(read_doc(file_info.path))
+
 
     def yield_files(self, file_filter=None):
         """Yields set of files.
@@ -100,6 +107,7 @@ class ArchiveFolderInfo(object):
             file_filter = "{}_*.*".format(file_filter)
         for fpath in glob.iglob(self._paths[file_filter]):
             yield ArchiveFileInfo(self, fpath)
+
 
     def find_file(self, uid, version):
         """Yields files for processing.

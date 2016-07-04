@@ -1812,7 +1812,7 @@ CONSTRAINTS = {
         ('canonical_name', 'cardinality', "0.1"),
         ('meta', 'cardinality', "1.1"),
         ('references', 'cardinality', "0.N"),
-        ('internal_name', 'cardinality', "1.1"),
+        ('internal_name', 'cardinality', "0.1"),
         ('duration', 'cardinality', "0.1"),
         ('alternative_names', 'cardinality', "0.N"),
         ('name', 'cardinality', "1.1"),
@@ -1854,7 +1854,7 @@ CONSTRAINTS = {
         ('conformance_achieved', 'cardinality', "1.1"),
         ('previously_known_as', 'cardinality', "0.N"),
         ('responsible_parties', 'cardinality', "0.N"),
-        ('internal_name', 'cardinality', "1.1"),
+        ('internal_name', 'cardinality', "0.1"),
         ('keywords', 'cardinality', "0.0"),
         ('canonical_name', 'cardinality', "0.0"),
         ('meta', 'cardinality', "1.1"),
@@ -1896,7 +1896,7 @@ CONSTRAINTS = {
         ('documentation', 'cardinality', "0.N"),
         ('canonical_name', 'cardinality', "0.1"),
         ('responsible_parties', 'cardinality', "0.N"),
-        ('internal_name', 'cardinality', "1.1"),
+        ('internal_name', 'cardinality', "0.1"),
         ('members', 'cardinality', "1.N"),
         ('long_name', 'cardinality', "0.1"),
         ('previously_known_as', 'cardinality', "0.N"),
@@ -1986,7 +1986,7 @@ CONSTRAINTS = {
         ('canonical_name', 'cardinality', "0.1"),
         ('meta', 'cardinality', "1.1"),
         ('references', 'cardinality', "0.N"),
-        ('internal_name', 'cardinality', "1.1"),
+        ('internal_name', 'cardinality', "0.1"),
         ('duration', 'cardinality', "0.1"),
         ('has_ensemble_axes', 'cardinality', "0.N"),
         ('alternative_names', 'cardinality', "0.N"),
@@ -2109,7 +2109,7 @@ CONSTRAINTS = {
         ('insitution', 'cardinality', "0.1"),
         ('previously_known_as', 'cardinality', "0.N"),
         ('part_of_project', 'cardinality', "1.N"),
-        ('internal_name', 'cardinality', "1.1"),
+        ('internal_name', 'cardinality', "0.1"),
         ('grid_label', 'cardinality', "0.1"),
         ('parent_experiment_id', 'cardinality', "0.1"),
         ('used', 'cardinality', "1.1"),
@@ -2233,7 +2233,7 @@ CONSTRAINTS = {
         ('branch_time_in_child', 'cardinality', "0.1"),
         ('canonical_name', 'cardinality', "0.1"),
         ('parent_variant_label', 'cardinality', "0.1"),
-        ('internal_name', 'cardinality', "1.1"),
+        ('internal_name', 'cardinality', "0.1"),
         ('grid_label', 'cardinality', "0.1"),
         ('activity_id', 'cardinality', "0.1"),
         ('used', 'cardinality', "1.1"),
@@ -2313,7 +2313,7 @@ CONSTRAINTS = {
         ('meta', 'cardinality', "1.1"),
         ('references', 'cardinality', "0.N"),
         ('required_extent', 'cardinality', "0.1"),
-        ('internal_name', 'cardinality', "1.1"),
+        ('internal_name', 'cardinality', "0.1"),
         ('duration', 'cardinality', "0.1"),
         ('required_resolution', 'cardinality', "0.1"),
         ('is_conformance_requested', 'cardinality', "1.1"),
@@ -2354,7 +2354,7 @@ CONSTRAINTS = {
         ('meta', 'cardinality', "1.1"),
         ('references', 'cardinality', "0.N"),
         ('ensemble_type', 'cardinality', "1.1"),
-        ('internal_name', 'cardinality', "1.1"),
+        ('internal_name', 'cardinality', "0.1"),
         ('duration', 'cardinality', "0.1"),
         ('ensemble_member', 'cardinality', "0.N"),
         ('is_conformance_requested', 'cardinality', "1.1"),
@@ -2402,7 +2402,7 @@ CONSTRAINTS = {
         ('responsible_parties', 'cardinality', "0.N"),
         ('forcing_type', 'cardinality', "1.1"),
         ('previously_known_as', 'cardinality', "0.N"),
-        ('internal_name', 'cardinality', "1.1"),
+        ('internal_name', 'cardinality', "0.1"),
         ('description', 'cardinality', "0.1"),
         ('duration', 'cardinality', "0.1"),
         ('rationale', 'cardinality', "0.1"),
@@ -2444,7 +2444,7 @@ CONSTRAINTS = {
         ('meta', 'cardinality', "1.1"),
         ('references', 'cardinality', "0.N"),
         ('branch_time_in_initialisation_source', 'cardinality', "0.1"),
-        ('internal_name', 'cardinality', "1.1"),
+        ('internal_name', 'cardinality', "0.1"),
         ('duration', 'cardinality', "0.1"),
         ('is_conformance_requested', 'cardinality', "1.1"),
         ('alternative_names', 'cardinality', "0.N"),
@@ -2482,7 +2482,7 @@ CONSTRAINTS = {
         ('canonical_name', 'cardinality', "0.1"),
         ('meta', 'cardinality', "1.1"),
         ('references', 'cardinality', "0.N"),
-        ('internal_name', 'cardinality', "1.1"),
+        ('internal_name', 'cardinality', "0.1"),
         ('duration', 'cardinality', "0.1"),
         ('is_conformance_requested', 'cardinality', "1.1"),
         ('alternative_names', 'cardinality', "0.N"),
@@ -2513,7 +2513,7 @@ CONSTRAINTS = {
         ('duration', 'cardinality', "0.1"),
         ('canonical_name', 'cardinality', "0.1"),
         ('responsible_parties', 'cardinality', "0.N"),
-        ('internal_name', 'cardinality', "1.1"),
+        ('internal_name', 'cardinality', "0.1"),
         ('long_name', 'cardinality', "0.1"),
         ('previously_known_as', 'cardinality', "0.N"),
         ('meta', 'cardinality', "1.1"),
@@ -2549,7 +2549,7 @@ CONSTRAINTS = {
         ('additional_requirements', 'cardinality', "0.N"),
         ('canonical_name', 'cardinality', "0.1"),
         ('responsible_parties', 'cardinality', "0.N"),
-        ('internal_name', 'cardinality', "1.1"),
+        ('internal_name', 'cardinality', "0.1"),
         ('long_name', 'cardinality', "0.1"),
         ('previously_known_as', 'cardinality', "0.N"),
         ('meta', 'cardinality', "1.1"),
@@ -2591,7 +2591,7 @@ CONSTRAINTS = {
         ('canonical_name', 'cardinality', "0.1"),
         ('meta', 'cardinality', "1.1"),
         ('references', 'cardinality', "0.N"),
-        ('internal_name', 'cardinality', "1.1"),
+        ('internal_name', 'cardinality', "0.1"),
         ('duration', 'cardinality', "0.1"),
         ('is_conformance_requested', 'cardinality', "1.1"),
         ('alternative_names', 'cardinality', "0.N"),
@@ -2623,7 +2623,7 @@ CONSTRAINTS = {
         ('duration', 'cardinality', "0.1"),
         ('canonical_name', 'cardinality', "0.1"),
         ('responsible_parties', 'cardinality', "0.N"),
-        ('internal_name', 'cardinality', "1.1"),
+        ('internal_name', 'cardinality', "0.1"),
         ('long_name', 'cardinality', "0.1"),
         ('previously_known_as', 'cardinality', "0.N"),
         ('meta', 'cardinality', "1.1"),
@@ -2660,7 +2660,7 @@ CONSTRAINTS = {
         ('expected_performance_sypd', 'cardinality', "0.1"),
         ('canonical_name', 'cardinality', "0.1"),
         ('responsible_parties', 'cardinality', "0.N"),
-        ('internal_name', 'cardinality', "1.1"),
+        ('internal_name', 'cardinality', "0.1"),
         ('long_name', 'cardinality', "0.1"),
         ('previously_known_as', 'cardinality', "0.N"),
         ('meta', 'cardinality', "1.1"),
@@ -2704,7 +2704,7 @@ CONSTRAINTS = {
         ('canonical_name', 'cardinality', "0.1"),
         ('meta', 'cardinality', "1.1"),
         ('references', 'cardinality', "0.N"),
-        ('internal_name', 'cardinality', "1.1"),
+        ('internal_name', 'cardinality', "0.1"),
         ('duration', 'cardinality', "0.1"),
         ('is_conformance_requested', 'cardinality', "1.1"),
         ('alternative_names', 'cardinality', "0.N"),
@@ -2746,7 +2746,7 @@ CONSTRAINTS = {
         ('meta', 'cardinality', "1.1"),
         ('references', 'cardinality', "0.N"),
         ('required_calendar', 'cardinality', "0.1"),
-        ('internal_name', 'cardinality', "1.1"),
+        ('internal_name', 'cardinality', "0.1"),
         ('start_flexibility', 'cardinality', "0.1"),
         ('duration', 'cardinality', "0.1"),
         ('is_conformance_requested', 'cardinality', "1.1"),
@@ -3697,7 +3697,7 @@ CONSTRAINTS = {
 
         ('type', unicode),
 
-        ('cardinality', "1.1"),
+        ('cardinality', "0.1"),
 
     ),
     (activity.Activity, 'keywords'): (
@@ -3832,7 +3832,7 @@ CONSTRAINTS = {
 
         ('type', unicode),
 
-        ('cardinality', "1.1"),
+        ('cardinality', "0.1"),
 
     ),
     (activity.Conformance, 'keywords'): (
@@ -3966,7 +3966,7 @@ CONSTRAINTS = {
 
         ('type', unicode),
 
-        ('cardinality', "1.1"),
+        ('cardinality', "0.1"),
 
     ),
     (activity.Ensemble, 'keywords'): (
@@ -4194,7 +4194,7 @@ CONSTRAINTS = {
 
         ('type', unicode),
 
-        ('cardinality', "1.1"),
+        ('cardinality', "0.1"),
 
     ),
     (activity.UberEnsemble, 'keywords'): (
@@ -4693,7 +4693,7 @@ CONSTRAINTS = {
 
         ('type', unicode),
 
-        ('cardinality', "1.1"),
+        ('cardinality', "0.1"),
 
     ),
     (data.Downscaling, 'keywords'): (
@@ -5121,7 +5121,7 @@ CONSTRAINTS = {
 
         ('type', unicode),
 
-        ('cardinality', "1.1"),
+        ('cardinality', "0.1"),
 
     ),
     (data.Simulation, 'keywords'): (
@@ -5257,7 +5257,7 @@ CONSTRAINTS = {
 
         ('type', unicode),
 
-        ('cardinality', "1.1"),
+        ('cardinality', "0.1"),
 
     ),
     (designing.DomainRequirements, 'keywords'): (
@@ -5384,7 +5384,7 @@ CONSTRAINTS = {
 
         ('type', unicode),
 
-        ('cardinality', "1.1"),
+        ('cardinality', "0.1"),
 
     ),
     (designing.EnsembleRequirement, 'keywords'): (
@@ -5539,7 +5539,7 @@ CONSTRAINTS = {
 
         ('type', unicode),
 
-        ('cardinality', "1.1"),
+        ('cardinality', "0.1"),
 
     ),
     (designing.ForcingConstraint, 'keywords'): (
@@ -5666,7 +5666,7 @@ CONSTRAINTS = {
 
         ('type', unicode),
 
-        ('cardinality', "1.1"),
+        ('cardinality', "0.1"),
 
     ),
     (designing.InitialisationRequirement, 'keywords'): (
@@ -5779,7 +5779,7 @@ CONSTRAINTS = {
 
         ('type', unicode),
 
-        ('cardinality', "1.1"),
+        ('cardinality', "0.1"),
 
     ),
     (designing.MultiEnsemble, 'keywords'): (
@@ -5892,7 +5892,7 @@ CONSTRAINTS = {
 
         ('type', unicode),
 
-        ('cardinality', "1.1"),
+        ('cardinality', "0.1"),
 
     ),
     (designing.NumericalExperiment, 'keywords'): (
@@ -5998,7 +5998,7 @@ CONSTRAINTS = {
 
         ('type', unicode),
 
-        ('cardinality', "1.1"),
+        ('cardinality', "0.1"),
 
     ),
     (designing.NumericalRequirement, 'keywords'): (
@@ -6111,7 +6111,7 @@ CONSTRAINTS = {
 
         ('type', unicode),
 
-        ('cardinality', "1.1"),
+        ('cardinality', "0.1"),
 
     ),
     (designing.OutputRequirement, 'keywords'): (
@@ -6224,7 +6224,7 @@ CONSTRAINTS = {
 
         ('type', unicode),
 
-        ('cardinality', "1.1"),
+        ('cardinality', "0.1"),
 
     ),
     (designing.Project, 'keywords'): (
@@ -6344,7 +6344,7 @@ CONSTRAINTS = {
 
         ('type', unicode),
 
-        ('cardinality', "1.1"),
+        ('cardinality', "0.1"),
 
     ),
     (designing.SimulationPlan, 'keywords'): (
@@ -6457,7 +6457,7 @@ CONSTRAINTS = {
 
         ('type', unicode),
 
-        ('cardinality', "1.1"),
+        ('cardinality', "0.1"),
 
     ),
     (designing.StartDateEnsemble, 'keywords'): (
@@ -6591,7 +6591,7 @@ CONSTRAINTS = {
 
         ('type', unicode),
 
-        ('cardinality', "1.1"),
+        ('cardinality', "0.1"),
 
     ),
     (designing.TemporalConstraint, 'keywords'): (
