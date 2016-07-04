@@ -22,8 +22,9 @@ _SEPARATOR = "  |  "
 FIELDSETS = {
     'cim.2.designing.numericalexperiment-overview': [
         FieldInfo('MIP Era', path='meta.project'),
-        FieldInfo('Sub MIP', path='meta.sub_projects',
-                  input_formatter=lambda v: _SEPARATOR.join(v)),
+        FieldInfo('Related MIPs',
+                  link_factory=lambda exp: [(i.name, i.viewer_url) for i in \
+                                            sorted(exp.related_mips, key=lambda v: v.name)]),
         FieldInfo('Institute', path='meta.institute'),
         FieldInfo('Canonical Name', path='canonical_name'),
         FieldInfo('Alternative Names', path='alternative_names',
@@ -80,6 +81,17 @@ FIELDSETS = {
         FieldInfo('Description', path='description'),
         FieldInfo('Conformance Requested ?', path='is_conformance_requested'),
         FieldInfo('Keywords', path='keywords', input_formatter=lambda v: _SEPARATOR.join(v.split(',')))
+    ],
+
+    'cim.2.designing.project-overview' : [
+        FieldInfo('Name', path='name'),
+        FieldInfo('Long Name', path='long_name'),
+        FieldInfo('Description', path='description'),
+        FieldInfo('Rationale', path='rationale'),
+        FieldInfo('Keywords', path='keywords', input_formatter=lambda v: _SEPARATOR.join(v.split(','))),
+        FieldInfo('Related Experiments',
+                  link_factory=lambda exp: [(i.name, i.viewer_url) for i in \
+                                            sorted(exp.requires_experiments, key=lambda v: v.name)])
     ],
 
     'cim.2.shared.citation' : [

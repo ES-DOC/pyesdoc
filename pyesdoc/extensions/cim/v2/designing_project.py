@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 
 """
-.. module:: designing_numerical_experiment.py
+.. module:: designing_project.py
    :platform: Unix, Windows
-   :synopsis: Extends a cim.v1.designing.numerical_experiment document.
+   :synopsis: Extends a cim.v1.designing.project document.
 
 .. moduleauthor:: Mark Conway-Greenslade <momipsl@ipsl.jussieu.fr>
 
@@ -25,16 +25,14 @@ def get_extenders():
 
 
 def _set_viewer_urls(ctx):
-    """Sets related experiment viewer urls.
+    """Sets viewer urls.
 
     """
-    for i in ctx.doc.related_experiments + ctx.doc.related_mips:
-        try:
-            i.meta
-        except AttributeError:
-            i.viewer_url = VIEWER_URL_BY_ID.format(ctx.meta.project, i.id, i.version)
-        else:
-            i.viewer_url = VIEWER_URL_BY_ID.format(ctx.meta.project, i.meta.id, i.meta.version)
+    for exp in ctx.doc.requires_experiments:
+        if isinstance(exp, cim.v2.designing.NumericalExperiment):
+            exp.viewer_url = VIEWER_URL_BY_ID.format(ctx.meta.project, exp.meta.id, exp.meta.version)
+        elif isinstance(exp, cim.v2.shared.DocReference):
+            exp.viewer_url = VIEWER_URL_BY_ID.format(ctx.meta.project, exp.id, exp.version)
 
 
 def _set_summary_fields(ctx):

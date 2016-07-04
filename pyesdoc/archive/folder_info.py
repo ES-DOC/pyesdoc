@@ -26,7 +26,6 @@ def _get_file_filterset():
     """
     result = constants.FILE_FILTER_SET
     for doc_type in pyesdoc.ontologies.get_doc_type_keyset():
-        print doc_type
         result.add("{}_*.*".format(doc_type.replace(".", "-").lower()))
 
     return result

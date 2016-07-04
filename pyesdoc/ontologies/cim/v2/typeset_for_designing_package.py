@@ -46,6 +46,7 @@ class NumericalExperiment(activity.Activity):
         super(NumericalExperiment, self).__init__()
 
         self.related_experiments = []                     # designing.NumericalExperiment (0.N)
+        self.related_mips = []                            # designing.Project (0.N)
         self.required_period = None                       # designing.TemporalConstraint (1.1)
         self.requirements = []                            # designing.NumericalRequirement (0.N)
 

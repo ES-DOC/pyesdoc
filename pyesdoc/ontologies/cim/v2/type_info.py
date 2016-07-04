@@ -492,6 +492,7 @@ CLASS_PROPERTIES = {
     ),
     designing.NumericalExperiment: (
         'related_experiments',
+        'related_mips',
         'required_period',
         'requirements',
         'alternative_names',
@@ -1204,6 +1205,7 @@ CLASS_OWN_PROPERTIES = {
     ),
     designing.NumericalExperiment: (
         'related_experiments',
+        'related_mips',
         'required_period',
         'requirements',
     ),
@@ -2494,6 +2496,7 @@ CONSTRAINTS = {
         ('requirements', 'type', designing.NumericalRequirement),
         ('description', 'type', unicode),
         ('duration', 'type', time.TimePeriod),
+        ('required_period', 'type', designing.TemporalConstraint),
         ('canonical_name', 'type', unicode),
         ('responsible_parties', 'type', shared.Responsibility),
         ('internal_name', 'type', unicode),
@@ -2501,7 +2504,7 @@ CONSTRAINTS = {
         ('previously_known_as', 'type', unicode),
         ('meta', 'type', shared.DocMetaInfo),
         ('references', 'type', shared.Reference),
-        ('required_period', 'type', designing.TemporalConstraint),
+        ('related_mips', 'type', designing.Project),
         ('rationale', 'type', unicode),
         ('related_experiments', 'type', designing.NumericalExperiment),
         ('keywords', 'type', unicode),
@@ -2511,6 +2514,7 @@ CONSTRAINTS = {
         ('requirements', 'cardinality', "0.N"),
         ('description', 'cardinality', "0.1"),
         ('duration', 'cardinality', "0.1"),
+        ('required_period', 'cardinality', "1.1"),
         ('canonical_name', 'cardinality', "0.1"),
         ('responsible_parties', 'cardinality', "0.N"),
         ('internal_name', 'cardinality', "0.1"),
@@ -2518,7 +2522,7 @@ CONSTRAINTS = {
         ('previously_known_as', 'cardinality', "0.N"),
         ('meta', 'cardinality', "1.1"),
         ('references', 'cardinality', "0.N"),
-        ('required_period', 'cardinality', "1.1"),
+        ('related_mips', 'cardinality', "0.N"),
         ('rationale', 'cardinality', "0.1"),
         ('related_experiments', 'cardinality', "0.N"),
         ('keywords', 'cardinality', "0.1"),
@@ -5842,6 +5846,13 @@ CONSTRAINTS = {
     (designing.NumericalExperiment, 'related_experiments'): (
 
         ('type', designing.NumericalExperiment),
+
+        ('cardinality', "0.N"),
+
+    ),
+    (designing.NumericalExperiment, 'related_mips'): (
+
+        ('type', designing.Project),
 
         ('cardinality', "0.N"),
 
@@ -9639,6 +9650,8 @@ DOC_STRINGS = {
         "List of orthogonal ensembles.",
     (designing.NumericalExperiment, 'related_experiments'):
         "Other experiments which have defined relationships to this one.",
+    (designing.NumericalExperiment, 'related_mips'):
+        "MIP's that require this experiment.",
     (designing.NumericalExperiment, 'required_period'):
         "Constraint on start date and duration.",
     (designing.NumericalExperiment, 'requirements'):
@@ -10792,6 +10805,7 @@ KEYS = {
     (designing.InitialisationRequirement, 'initialise_from_experiment'): "cim.2.designing.InitialisationRequirement.initialise_from_experiment",
     (designing.MultiEnsemble, 'ensemble_axis'): "cim.2.designing.MultiEnsemble.ensemble_axis",
     (designing.NumericalExperiment, 'related_experiments'): "cim.2.designing.NumericalExperiment.related_experiments",
+    (designing.NumericalExperiment, 'related_mips'): "cim.2.designing.NumericalExperiment.related_mips",
     (designing.NumericalExperiment, 'required_period'): "cim.2.designing.NumericalExperiment.required_period",
     (designing.NumericalExperiment, 'requirements'): "cim.2.designing.NumericalExperiment.requirements",
     (designing.NumericalRequirement, 'additional_requirements'): "cim.2.designing.NumericalRequirement.additional_requirements",

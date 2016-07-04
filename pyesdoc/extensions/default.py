@@ -104,7 +104,7 @@ def _set_viewer_url(ctx):
     """Sets document viewer URL.
 
     """
-    ctx.ext.viewer_url = constants.VIEWER_URL.format(ctx.meta.project,
+    ctx.ext.viewer_url = constants.VIEWER_URL_BY_ID.format(ctx.meta.project,
                                                            ctx.meta.id,
                                                            ctx.meta.version)
 

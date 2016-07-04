@@ -77,7 +77,7 @@ DEFAULT_INSTITUTE = u'--'
 DEFAULT_SOURCE = u'scripts'
 
 # Document viewer url.
-VIEWER_URL = u"index.html?renderMethod=id&project={0}&id={1}&version={2}"
+VIEWER_URL_BY_ID = u"index.html?renderMethod=id&project={0}&id={1}&version={2}"
 
 # Cardinality constraint.
 CONSTRAINT_TYPE_CARDINALITY = 'cardinality'

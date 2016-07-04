@@ -24,7 +24,8 @@ DISPLAY_NAMES = {
     v1.misc.DocumentSet: u"Simulation",
     v1.quality.CimQuality: u"Dataset QC",
     v1.software.ModelComponent: u"Model",
-    v2.designing.NumericalExperiment: u"Experiment"
+    v2.designing.NumericalExperiment: u"Experiment",
+    v2.designing.Project: u"Sub MIP"
 }
 
 # Map of document types to sort keys.
@@ -38,5 +39,6 @@ SORT_KEYS = {
     v1.quality.CimQuality: u"CB",
     v1.shared.Platform: u"BA",
     v1.software.ModelComponent: u"AA",
-    v2.designing.NumericalExperiment: u"AB"
+    v2.designing.NumericalExperiment: u"AB",
+    v2.designing.Project: u"AA"
 }

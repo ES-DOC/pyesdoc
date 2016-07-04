@@ -42,12 +42,12 @@ def _get_filepath(io_dir, doc, encoding):
     return os.path.join(io_dir, get_filename(doc, encoding))
 
 
-def write(document, encoding=pyesdoc.constants.ENCODING_JSON, io_dir=None):
+def write(document, io_dir, encoding=pyesdoc.constants.ENCODING_JSON):
     """Writes a document to the file system.
 
     :param object document: A pyesdoc document instance.
-    :param str encoding: Document encoding.
     :param str io_dir: I/O directory path.
+    :param str encoding: Document encoding.
 
     :returns: Path to created file.
     :rtype: str
