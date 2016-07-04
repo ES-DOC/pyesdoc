@@ -113,13 +113,15 @@ def extend(doc):
 
 
 def is_extendable(doc):
-    """Returns flag indicating whether document extension is supported.
+    """Returns flag indicating whether a document is extensible or not.
 
     :param doc: pyesdoc document instance or type key.
     :type doc: object | str
 
+    :returns: A flag indicating whether a document is extensible or not.
+    :rtype: boolean
+
     """
-    # Defensive programming.
     if not isinstance(doc, str):
         rt.assert_doc(doc)
 

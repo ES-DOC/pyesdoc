@@ -11,7 +11,7 @@
 
 """
 __title__ = 'pyesdoc'
-__version__ = '0.9.4.6.0'
+__version__ = '0.9.4.7.0'
 __author__ = 'ES-DOC'
 __license__ = 'GPL'
 __copyright__ = 'Copyright 2015 ???'
@@ -26,10 +26,6 @@ from pyesdoc.io import convert as convert_file
 from pyesdoc.io import get_filename
 from pyesdoc.io import read
 from pyesdoc.io import write
-
-from pyesdoc.options import set_option
-from pyesdoc.options import get_option
-from pyesdoc.options import list_options
 
 from pyesdoc.extensions import extend
 from pyesdoc.extensions import is_extendable
@@ -48,10 +44,12 @@ from pyesdoc.utils import config
 from pyesdoc.validation import is_valid
 from pyesdoc.validation import validate
 
+from pyesdoc.utils.help import list_constants
+from pyesdoc.utils.help import list_functions
+
 from pyesdoc import archive
 from pyesdoc import io
 from pyesdoc import ontologies
-from pyesdoc import options
 from pyesdoc import publishing
 from pyesdoc import serialization
 from pyesdoc import utils

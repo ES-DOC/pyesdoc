@@ -10,22 +10,22 @@
 
 
 """
+import os
 import uuid
 
 import requests
 
 import pyesdoc
 from pyesdoc import constants
-from pyesdoc import options
-from pyesdoc.serialization import encode, decode
+from pyesdoc.serialization import decode
+from pyesdoc.serialization import encode
 from pyesdoc.extensions import extend
-from pyesdoc.utils import rt
 from pyesdoc.validation import is_valid
 
 
 
 # API url option name.
-_OPT_API_URL = 'api_url'
+_API_URL = os.getenv("ESDOC_API")
 
 # Publishing API endpoint.
 _EP_PUBLISHING = 'publishing'
@@ -55,8 +55,7 @@ def _throw_invalid_doc_version():
     """Throws an error.
 
     """
-    raise TypeError("Invalid document version (must be either \
-                     'all', 'latest' or an integer.")
+    raise TypeError("Invalid document version (must be either 'all', 'latest' or an integer.")
 
 
 def _throw_connection_error():
@@ -120,7 +119,7 @@ def _get_api_url(verb):
     """Helper function to return api endpoint url.
 
     """
-    return options.get_option(_OPT_API_URL) + '/2/document/{0}'.format(verb)
+    return "{}/2/document/{}".format(_API_URL, verb)
 
 
 def _get_doc_url(verb, uid, version, encoding=None):
@@ -149,7 +148,7 @@ def _parse_api_response(resp, error_on_404=True):
 
 
 def retrieve(uid, version=constants.DOC_VERSION_LATEST):
-    """Retrieves a document from remote repository.
+    """Retrieves a document from web service.
 
     :param str|uuid.UUID uid: Document unique identifier.
     :param str|int version: Document version.
@@ -183,7 +182,7 @@ def retrieve(uid, version=constants.DOC_VERSION_LATEST):
 
 
 def publish(doc):
-    """Publishes a document to remote repository.
+    """Publishes a document to web service.
 
     :param doc: Document being published.
     :type doc: object
@@ -213,7 +212,7 @@ def publish(doc):
 
 
 def unpublish(uid, version=constants.DOC_VERSION_ALL):
-    """Unpublishes a document from remote repository.
+    """Unpublishes a document from web service.
 
     :param str|uuid.UUID uid: Document unique identifier.
     :param str|int version: Document version.

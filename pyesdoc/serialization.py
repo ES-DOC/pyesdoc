@@ -56,7 +56,7 @@ def _assert_decode(target, encoding):
 
 
 def decode(target, encoding):
-    """Returns a decoded pyesdoc document.
+    """Decodes a document from a text blob.
 
     :param target: A document representation (e.g. json).
     :type target: utf-8 encoded str | unicode
@@ -86,7 +86,7 @@ def _assert_encode(target, encoding):
 
 
 def encode(target, encoding):
-    """Returns an encoded pyesdoc document instance.
+    """Encodes a document.
 
     :param object target: pyesdoc document instance.
     :param str encoding: A document encoding.
@@ -110,7 +110,7 @@ def encode(target, encoding):
 
 
 def convert(doc, encoding_from, encoding_to):
-    """Converts one encoding to another.
+    """Converts a document.
 
     :param unicode doc: A document representation (e.g. json).
     :param str encoding_from: A document encoding (dict|json|xml).
