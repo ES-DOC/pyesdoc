@@ -129,13 +129,16 @@ def _format_value(v, input_formatter=None, output_formatter=None):
             if output_formatter:
                 s = output_formatter(s)
 
+        if s and len(s):
+            s = s.strip()
+
         return s
 
     if input_formatter:
         v = input_formatter(v)
 
     if isinstance(v, list):
-        return "  ".join(map(_format, v)).strip()
+        return [_format(i) for i in v]
     else:
         return _format(v)
 

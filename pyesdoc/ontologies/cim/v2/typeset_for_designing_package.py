@@ -79,6 +79,8 @@ class Project(activity.Activity):
         """
         super(Project, self).__init__()
 
+        self.homepage = None                              # unicode (0.1)
+        self.objectives = []                              # unicode (0.N)
         self.previous_projects = []                       # designing.Project (0.N)
         self.requires_experiments = []                    # designing.NumericalExperiment (0.N)
         self.sub_projects = []                            # designing.Project (0.N)

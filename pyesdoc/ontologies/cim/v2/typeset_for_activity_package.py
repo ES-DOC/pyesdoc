@@ -112,7 +112,6 @@ class EnsembleMember(object):
         self.had_performance = None                       # platform.Performance (0.1)
         self.ran_on = None                                # platform.Machine (0.1)
         self.simulation = None                            # data.Simulation (1.1)
-        self.variant_id = None                            # unicode (1.1)
 
 
 class ParentSimulation(object):
@@ -127,6 +126,7 @@ class ParentSimulation(object):
         """
         super(ParentSimulation, self).__init__()
 
+        self.branch_method = None                         # unicode (0.1)
         self.branch_time_in_child = None                  # time.DateTime (0.1)
         self.branch_time_in_parent = None                 # time.DateTime (0.1)
         self.parent = None                                # data.Simulation (1.1)

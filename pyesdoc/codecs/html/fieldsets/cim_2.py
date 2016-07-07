@@ -86,8 +86,10 @@ FIELDSETS = {
     'cim.2.designing.project-overview' : [
         FieldInfo('Name', path='name'),
         FieldInfo('Long Name', path='long_name'),
+        FieldInfo('Homepage', path='homepage'),
         FieldInfo('Description', path='description'),
         FieldInfo('Rationale', path='rationale'),
+        FieldInfo('Objectives', path='objectives'),
         FieldInfo('Related Experiments',
                   link_factory=lambda exp: [(i.name, i.viewer_url) for i in \
                                             sorted(exp.requires_experiments, key=lambda v: v.name)]),

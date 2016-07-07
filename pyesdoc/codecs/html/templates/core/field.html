@@ -26,6 +26,12 @@
 				<a class="esdoc-field-email" href="mailto:{{ ctx.field.get_email(ctx.data) }}?subject=ES-DOC :: subject goes here">{{ field_value }}</a>
 			{% elif ctx.field.link %}
 				<a class="esdoc-field-hyperlink" href="{{ ctx.field.link }}">{{ field_value }}</a>
+			{% elif isinstance(field_value, list) %}
+				<ol>
+					{% for field_item_value in field_value %}
+					<li>{{ field_item_value }}</li>
+					{% end %}
+				</ol>
 			{% else %}
 				{{ field_value }}
 			{% end %}
