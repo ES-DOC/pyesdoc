@@ -1947,7 +1947,7 @@ CONSTRAINTS = {
         ('physics_index', 'type', int),
         ('duration', 'type', time.TimePeriod),
         ('calendar', 'type', time.Calendar),
-        ('sub_experiment', 'type', designing.NumericalExperiment),
+        ('sub_experiment', 'type', unicode),
         ('primary_ensemble', 'type', activity.Ensemble),
         ('previously_known_as', 'type', unicode),
         ('responsible_parties', 'type', shared.Responsibility),
@@ -2015,7 +2015,7 @@ CONSTRAINTS = {
         ('physics_index', 'type', int),
         ('duration', 'type', time.TimePeriod),
         ('calendar', 'type', time.Calendar),
-        ('sub_experiment', 'type', designing.NumericalExperiment),
+        ('sub_experiment', 'type', unicode),
         ('primary_ensemble', 'type', activity.Ensemble),
         ('previously_known_as', 'type', unicode),
         ('responsible_parties', 'type', shared.Responsibility),
@@ -4248,7 +4248,7 @@ CONSTRAINTS = {
     ),
     (data.Downscaling, 'sub_experiment'): (
 
-        ('type', designing.NumericalExperiment),
+        ('type', unicode),
 
         ('cardinality', "0.1"),
 
@@ -4473,7 +4473,7 @@ CONSTRAINTS = {
     ),
     (data.Simulation, 'sub_experiment'): (
 
-        ('type', designing.NumericalExperiment),
+        ('type', unicode),
 
         ('cardinality', "0.1"),
 
@@ -8537,7 +8537,7 @@ DOC_STRINGS = {
 
     """,
     designing.TemporalConstraint: """
-        A temporal constraint on a numerical experiment.
+        A spatio-temporal constraint on a numerical experiment.
 
     """,
     drs.DrsAtomicDataset: """
@@ -8598,7 +8598,7 @@ DOC_STRINGS = {
 
     """,
     platform.StorageVolume: """
-        Volume and units.
+        Platform storage volume and units.
 
     """,
     science.ConservationProperties: """

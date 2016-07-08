@@ -72,7 +72,7 @@ class Simulation(activity.Activity):
         self.realization_index = None                     # int (0.1)
         self.references = None                            # unicode (0.1)
         self.start_time = None                            # time.DateTime (0.1)
-        self.sub_experiment = None                        # designing.NumericalExperiment (0.1)
+        self.sub_experiment = None                        # unicode (0.1)
         self.used = None                                  # science.Model (1.1)
         self.variant_info = None                          # unicode (0.1)
 

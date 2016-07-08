@@ -224,7 +224,7 @@ class StartDateEnsemble(NumericalRequirement):
 class TemporalConstraint(NumericalRequirement):
     """A concrete class within the cim v2 type system.
 
-    A temporal constraint on a numerical experiment.
+    A spatio-temporal constraint on a numerical experiment.
 
     """
     def __init__(self):

@@ -108,6 +108,5 @@ FIELDSETS = {
         FieldInfo('Name', path='name', link_path="url.linkage"),
         FieldInfo('Address', path='address'),
         FieldInfo('Email', path='email', email_path='email'),
-
     ]
 }

@@ -169,7 +169,7 @@ class StoragePool(object):
 class StorageVolume(object):
     """A concrete class within the cim v2 type system.
 
-    Volume and units.
+    Platform storage volume and units.
 
     """
     def __init__(self):
