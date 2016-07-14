@@ -23,19 +23,25 @@ from pyesdoc.archive.folder_info import ArchiveFolderInfo
 _FOLDERS = set()
 
 
+def _create_folder(project, source):
+    """Creates & returns a wrapped archive folder.
+
+    """
+    path = os.path.join(config.get_directory(), project)
+    path = os.path.join(path, source)
+    if not os.path.exists(path):
+        os.makedirs(path)
+
+    return ArchiveFolderInfo(project, source, path)
+
+
 def init():
     """Initializes archive manager.
 
     """
-    if _FOLDERS:
-       return
-
-    for project, source in config.get_project_sources():
-        path = os.path.join(config.get_directory(), project)
-        path = os.path.join(path, source)
-        if not os.path.exists(path):
-            os.makedirs(path)
-        _FOLDERS.add(ArchiveFolderInfo(project, source, path))
+    if not _FOLDERS:
+        for project, source in config.get_project_sources():
+            _FOLDERS.add(_create_folder(project, source))
 
 
 def delete_error_files(project=None, source=None):
@@ -144,17 +150,24 @@ def get_file(project, source, name, encoding):
     return ArchiveFileInfo(folder, path)
 
 
-def get_folder(project, source):
+def get_folder(project, source, create=False):
     """Returns an archive folder wrapper.
 
     :param str project: Name of a supported project (e.g. cmip6).
     :param str source: Name of a document source (e.g. esdoc-q).
+    :param bool create: Flag indicating whether the folder should be created or not.
 
     :returns: A folder wrapper for processing.
     :rtype: pyesdoc.archive.ArchiveFolderInfo
 
     """
-    for folder in yield_folders(project, source):
+    for folder in _FOLDERS:
+        if folder.project == project and folder.source == source:
+            return folder
+
+    if create:
+        folder = _create_folder(project, source)
+        _FOLDERS.add(folder)
         return folder
 
 
@@ -349,13 +362,3 @@ def read(uid, version, extend=True):
 
     """
     return get_file_document(uid, version, extend)
-
-
-def write(doc):
-    """Writes a document to archive.
-
-    :returns: File information.
-    :rtype: pyesdoc.archive.ArchiveFileInfo
-
-    """
-    raise NotImplementedError("TODO - archive write")
