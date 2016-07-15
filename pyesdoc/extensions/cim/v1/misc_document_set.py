@@ -13,7 +13,9 @@
 
 
 def get_extenders():
-    """Returns set of extension functions."""
+    """Returns set of extension functions.
+
+    """
     return (
         _propogate_institute,
         _set_meta_info,
@@ -22,7 +24,9 @@ def get_extenders():
 
 
 def unpack_children(ctx):
-    """Unpacks child documents."""
+    """Unpacks child documents.
+
+    """
     children = [
         ctx.doc.experiment,
         ctx.doc.model,
@@ -37,7 +41,9 @@ def unpack_children(ctx):
 
 
 def _set_meta_info(ctx):
-    """Sets document meta information."""
+    """Sets document meta information.
+
+    """
     if ctx.doc.simulation:
         simulation = ctx.doc.simulation
         ctx.meta.create_date = simulation.meta.create_date
@@ -47,20 +53,24 @@ def _set_meta_info(ctx):
 
 
 def _set_ext_info(ctx):
-    """Sets document extension information."""
-    # Copy across simulation extension information.
+    """Sets document extension information.
+
+    """
     if ctx.doc.simulation:
         simulation = ctx.doc.simulation
         for field in (
             'display_name',
             'description',
             'summary_fields',
-            'full_display_name'):
+            'full_display_name'
+            ):
             setattr(ctx.ext, field, getattr(simulation.ext, field))
 
 
 def _propogate_institute(ctx):
-    """Sets child meta attributes."""
+    """Sets child meta attributes.
+
+    """
     for child in ctx.ext.children:
         if not child.meta.institute:
             child.meta.institute = ctx.doc.meta.institute

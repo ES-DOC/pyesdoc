@@ -13,7 +13,9 @@
 
 
 def get_extenders():
-    """Returns set of extension functions."""
+    """Returns set of extension functions.
+
+    """
     return (
         _set_display_name,
         _set_description,
@@ -22,7 +24,9 @@ def get_extenders():
 
 
 def _set_display_name(ctx):
-    """Sets document display name."""
+    """Sets document display name.
+
+    """
     name = ""
     if ctx.meta.project:
         name += ctx.meta.project.upper()
@@ -33,13 +37,17 @@ def _set_display_name(ctx):
 
 
 def _set_description(ctx):
-    """Sets document description."""
+    """Sets document description.
+
+    """
     if len(ctx.doc.reports) and ctx.doc.reports[0].measure is not None:
         ctx.ext.description = ctx.doc.reports[0].measure.name
 
 
 def _set_summary_fields(ctx):
-    """Sets document summary fields."""
+    """Sets document summary fields.
+
+    """
     if len(ctx.meta.external_ids):
         ctx.ext.summary_fields += (
             ctx.meta.external_ids[0].value,

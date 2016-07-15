@@ -13,7 +13,9 @@
 
 
 def get_extenders():
-    """Returns set of extension functions."""
+    """Returns set of extension functions.
+
+    """
     return (
         _set_experiment_conformances,
         _set_responsible_parties
@@ -33,7 +35,9 @@ def _set_experiment_conformances(ctx):
 
 
 def _set_responsible_parties(ctx):
-    """Sets sorted contacts list."""
+    """Sets sorted contacts list.
+
+    """
     ctx.doc.responsible_parties = \
         sorted(ctx.doc.responsible_parties, key=lambda rp: rp.role)
 

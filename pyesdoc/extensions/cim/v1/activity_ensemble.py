@@ -14,7 +14,9 @@ from pyesdoc.ontologies import cim
 
 
 def get_extenders():
-    """Returns set of extension functions."""
+    """Returns set of extension functions.
+
+    """
     return (
         _set_member_short_name,
         _set_has_changes

@@ -22,7 +22,9 @@ _ExtensionContextInfo = \
 
 
 class _PropertyExtensionInfo(object):
-    """Property extension properties."""
+    """Property extension properties.
+
+    """
     def __init__(self):
         self.display_name = unicode()
         self.full_display_name = unicode()
@@ -31,7 +33,9 @@ class _PropertyExtensionInfo(object):
 
 
 def _extend_property_01(ctx):
-    """Sets property extension properties."""
+    """Sets property extension properties.
+
+    """
     ctx.p.ext = _PropertyExtensionInfo()
     ctx.p.ext.ancestors = ctx.ancestors
     ctx.p.ext.depth = len(ctx.ancestors)
@@ -39,7 +43,9 @@ def _extend_property_01(ctx):
 
 
 def _extend_property_02(ctx):
-    """Formats property values."""
+    """Formats property values.
+
+    """
     ctx.p.values = filter(None, ctx.p.values)
     ctx.p.values = map(str_to_unicode, ctx.p.values)
     ctx.p.values = filter(len, ctx.p.values)
@@ -47,7 +53,9 @@ def _extend_property_02(ctx):
 
 
 def _extend_property_03(ctx):
-    """Sets property display names."""
+    """Sets property display names.
+
+    """
     # Short name.
     name = ctx.p.short_name
     if len(name) and not name[0].isdigit():
@@ -82,7 +90,9 @@ def _extend_property_03(ctx):
 
 
 def _extend_property_04(ctx):
-    """Process child properties."""
+    """Process child properties.
+
+    """
     for p in ctx.p.sub_properties:
         extend(ctx.c, p, ctx.p, ctx.ancestors + [ctx.p])
 

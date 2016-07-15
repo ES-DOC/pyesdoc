@@ -44,4 +44,3 @@ def _set_summary_fields(ctx):
         ctx.doc.name,
         ctx.doc.long_name
     )
-

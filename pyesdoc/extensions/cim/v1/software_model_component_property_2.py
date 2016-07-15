@@ -61,12 +61,6 @@ def _set_standard_properties_descriptive(c, p_tree):
 def _set_standard_properties_pi(c, p_tree):
     """Sets principal investigator standard properties.
 
-    :param c: A model component.
-    :type c: pyesdoc.ontologies.cim.v1.software.ModelComponent
-
-    :param p_tree: A set of component properties.
-    :type p_tree: list
-
     """
     # Set PI.
     pi = None
@@ -88,7 +82,9 @@ def _set_standard_properties_pi(c, p_tree):
 
 
 def _set_standard_properties_citations(c, p_tree):
-    """Sets citation standard properties."""
+    """Sets citation standard properties.
+
+    """
     def get_citation_title(citation):
         return citation.title.strip()
 
