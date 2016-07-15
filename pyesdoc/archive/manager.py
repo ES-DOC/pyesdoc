@@ -18,7 +18,6 @@ from pyesdoc.archive.file_info import ArchiveFileInfo
 from pyesdoc.archive.folder_info import ArchiveFolderInfo
 
 
-
 # Set of managed folders.
 _FOLDERS = set()
 
@@ -362,3 +361,20 @@ def read(uid, version, extend=True):
 
     """
     return get_file_document(uid, version, extend)
+
+
+
+def write(doc):
+    """Writes a document to the archive.
+
+    :param object doc: Document to be written.
+
+    :returns: Pointer to archive file.
+    :rtype: pyesdoc.archive.FileInfo
+
+    """
+    # Get associated archive folder.
+    folder = get_folder(doc.meta.project, doc.meta.source, True)
+
+    # Write document.
+    return folder.write(doc)

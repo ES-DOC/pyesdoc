@@ -16,8 +16,10 @@ import os
 import pyesdoc
 from pyesdoc.archive import constants
 from pyesdoc.archive.file_info import ArchiveFileInfo
+from pyesdoc.constants import DEFAULT_ENCODING
 from pyesdoc.extensions import extend as extend_doc
 from pyesdoc.io import read as read_doc
+
 
 
 def _get_file_filterset():
@@ -122,3 +124,27 @@ class ArchiveFolderInfo(object):
         files = glob.glob(os.path.join(self.path, file_filter))
         if files:
             return ArchiveFileInfo(self, files[0])
+
+
+    def write(self, doc):
+        """Writes a document to the archive.
+
+        :param object doc: Document to be written.
+
+        :returns: Pointer to archive file.
+        :rtype: pyesdoc.archive.ArchiveFileInfo
+
+        """
+        # Ensure document is extended.
+        extend_doc(doc)
+
+        # Set file path.
+        fname = "{}_{}_{}.{}".format(doc.meta.type, doc.meta.id, doc.meta.version, DEFAULT_ENCODING)
+        fpath = os.path.join(self.path, fname)
+
+        # Write to file system.
+        with open(fpath, 'w') as fstream:
+            fstream.write(pyesdoc.encode(doc, DEFAULT_ENCODING))
+
+        # Return file wrapper.
+        return ArchiveFileInfo(self, fpath)

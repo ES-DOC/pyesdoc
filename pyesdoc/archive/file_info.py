@@ -14,7 +14,6 @@ import glob
 import os
 
 import pyesdoc
-from pyesdoc.archive.parsing import parse
 
 
 
