@@ -34,7 +34,7 @@ FIELDSETS = {
         FieldInfo('Description', path='description'),
         FieldInfo('Rationale', path='rationale'),
         FieldInfo('Keywords', path='keywords',
-                  input_formatter=lambda v: _SEPARATOR.join(v.split(','))),
+                  input_formatter=lambda v: _SEPARATOR.join(v.split(',')) if v else None),
         FieldInfo('Related Experiments',
                   link_factory=lambda exp: [(i.name, i.viewer_url) for i in \
                                             sorted(exp.related_experiments, key=lambda v: v.name)])

@@ -43,6 +43,13 @@ def _init_templates():
         TEMPLATE_TYPE_MAPPINGS[doc_type] = loader.load(template_path)
 
 
+def _log(msg):
+    """Emits a template logging message - used for debugging.
+
+    """
+    print "TEMPLATE:", msg
+
+
 def load(reference):
     """Loads a referenced document.
 
@@ -102,7 +109,9 @@ def _generate(document):
             TemplateInfo=TemplateInfo,
             pyesdoc=pyesdoc,
             load=load,
-            cim=pyesdoc.ontologies.cim)
+            cim=pyesdoc.ontologies.cim,
+            log=_log
+            )
     except Exception as err:
         rt.log_error("Template generation error: {0}".format(err.message))
         raise err

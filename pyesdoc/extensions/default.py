@@ -57,7 +57,7 @@ def _set_project(ctx):
 
     """
     if ctx.meta.project:
-        ctx.meta.project = ctx.meta.project.upper()
+        ctx.meta.project = ctx.meta.project.lower()
     else:
         ctx.meta.institute = constants.DEFAULT_PROJECT
 
