@@ -34,6 +34,13 @@ ENCODINGS_FILE = (
     ENCODING_HTML,
 )
 
+# Standard ESDOC http encodings.
+ENCODINGS_HTTP = (
+    ENCODING_JSON,
+    ENCODING_XML,
+    ENCODING_HTML,
+)
+
 # Custom ESDOC encodings.
 ENCODINGS_CUSTOM = (
     METAFOR_CIM_XML_ENCODING,
