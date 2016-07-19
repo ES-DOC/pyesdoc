@@ -2,7 +2,7 @@
 	<header>
 		<h{{ header }}>Responsible Parties</h{{ header }}>
 	</header>
-	{% for responsible in responsible_parties %}
+	{% for responsible in parties %}
 	{% for party in sorted(load(responsible.party), key=lambda i: i.name.split(" ")[-1]) %}
 	{% set ctx = TemplateInfo(party, fieldset='cim.2.shared.party') %}
 	<section>

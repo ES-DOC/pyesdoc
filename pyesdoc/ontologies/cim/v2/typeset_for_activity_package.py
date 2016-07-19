@@ -43,9 +43,9 @@ class Activity(object):
         self.long_name = None                             # unicode (0.1)
         self.meta = shared.DocMetaInfo()                  # shared.DocMetaInfo (1.1)
         self.name = None                                  # unicode (1.1)
+        self.parties = []                                 # shared.Responsibility (0.N)
         self.previously_known_as = []                     # unicode (0.N)
         self.rationale = None                             # unicode (0.1)
-        self.responsible_parties = []                     # shared.Responsibility (0.N)
 
 
 class AxisMember(object):

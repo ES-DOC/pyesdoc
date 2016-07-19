@@ -103,8 +103,10 @@ FIELDSETS = {
         FieldInfo('Experiment', path='supports[0].name'),
         FieldInfo('Experiment conformances', path='ext.conformances'),
         FieldInfo('Authors', path='authors'),
-        FieldInfo('Funder', path='responsible_parties.role=funder.organisation_name',
-                            link_path='responsible_parties.role=funder.url'),
+        FieldInfo('Funder',
+            path='responsible_parties.role=funder.organisation_name',
+            link_path='responsible_parties.role=funder.url'
+            ),
         FieldInfo('RIP Value', path='simulation_id'),
         FieldInfo('Spinup start', path='spinup_date_range.start'),
         FieldInfo('Spinup duration', path='spinup_date_range.duration')
@@ -236,8 +238,14 @@ FIELDSETS = {
         FieldInfo('Long Name', path='long_name'),
         FieldInfo('Home Page', path='online_resource', link_path='online_resource'),
         FieldInfo('Type', path='ext.type_display_name'),
-        FieldInfo('Funder', path='responsible_parties.role=funder.organisation_name', link_path='responsible_parties.role=funder.url'),
-        FieldInfo('Principal Investigator', path='responsible_parties.role=pi.individual_name', email_path='responsible_parties.role=pi.email'),
+        FieldInfo('Funder',
+            path='responsible_parties.role=funder.organisation_name',
+            link_path='responsible_parties.role=funder.url'
+            ),
+        FieldInfo('Principal Investigator',
+            path='responsible_parties.role=pi.individual_name',
+            email_path='responsible_parties.role=pi.email'
+            ),
         FieldInfo('Release Date', path='release_date'),
         FieldInfo('Version', path='version'),
         FieldInfo('Previous Version', path='previous_version'),

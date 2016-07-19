@@ -38,9 +38,9 @@ class Dataset(object):
         self.drs_datasets = []                            # drs.DrsPublicationDataset (0.N)
         self.meta = shared.DocMetaInfo()                  # shared.DocMetaInfo (1.1)
         self.name = None                                  # unicode (1.1)
+        self.parties = []                                 # shared.Responsibility (0.N)
         self.produced_by = None                           # data.Simulation (0.1)
         self.related_to_dataset = []                      # shared.OnlineResource (0.N)
-        self.responsible_parties = []                     # shared.Responsibility (0.N)
 
 
 class Simulation(activity.Activity):
@@ -57,7 +57,6 @@ class Simulation(activity.Activity):
         super(Simulation, self).__init__()
 
         self.calendar = None                              # time.Calendar (0.1)
-        self.contact = None                               # unicode (0.1)
         self.end_time = None                              # time.DateTime (0.1)
         self.extra_attributes = []                        # shared.ExtraAttribute (0.N)
         self.forcing_index = None                         # int (0.1)
@@ -71,7 +70,7 @@ class Simulation(activity.Activity):
         self.ran_for_experiments = []                     # designing.NumericalExperiment (1.N)
         self.realization_index = None                     # int (0.1)
         self.start_time = None                            # time.DateTime (0.1)
-        self.sub_experiment = None                        # unicode (0.1)
+        self.sub_experiment = None                        # designing.NumericalExperiment (0.1)
         self.used = None                                  # science.Model (1.1)
         self.variant_info = None                          # unicode (0.1)
 
@@ -111,6 +110,7 @@ class DataAssociationTypes(object):
     """An enumeration within the cim v2 type system.
 
     Set of possible dataset associations.
+
     Selected from, and extended from,  ISO19115 (2014) DS_AssociationTypeCode.
     """
     is_open = False

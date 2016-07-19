@@ -32,19 +32,19 @@
 	{% comment ************************************************** %}
 	{% comment Sub-section: citations   		    			  %}
 	{% comment ************************************************** %}
-	{% if doc.references %}
-		{% set citations = load(doc.references) %}
+	{% if doc.citations %}
+		{% set citations = load(doc.citations) %}
 		{% set header = 3 %}
 		{% include shared_citation.html %}
 	{% end %}
 
 	{% comment ************************************************** %}
-	{% comment Sub-section: responsible parties   		    	  %}
+	{% comment Sub-section: parties   		    	  %}
 	{% comment ************************************************** %}
-	{% if doc.responsible_parties %}
-		{% set responsible_parties = doc.responsible_parties %}
+	{% if doc.parties %}
+		{% set parties = doc.parties %}
 		{% set header = 3 %}
-		{% include shared_responsible_parties.html %}
+		{% include shared_parties.html %}
 	{% end %}
 
 {% end %}
