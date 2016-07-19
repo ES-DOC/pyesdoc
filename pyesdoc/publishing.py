@@ -205,7 +205,11 @@ def publish(doc):
     data = encode(doc, constants.ENCODING_JSON)
 
     # Invoke HTTP operation.
-    resp = _invoke_api(requests.post, url, data)
+    if doc.meta.version > 1:
+        verb = requests.put
+    else:
+        verb = requests.post
+    resp = _invoke_api(verb, url, data)
 
     # Process HTTP response.
     _parse_api_response(resp)
