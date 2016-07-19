@@ -34,12 +34,12 @@ class Grid(object):
         """
         super(Grid, self).__init__()
 
+        self.citations = []                               # shared.Citation (0.N)
         self.description = None                           # unicode (1.1)
         self.details = []                                 # science.Detail (0.N)
         self.discretisation = None                        # science.Discretisation (0.1)
         self.meta = shared.DocMetaInfo()                  # shared.DocMetaInfo (1.1)
         self.name = None                                  # unicode (1.1)
-        self.references = []                              # shared.Reference (0.N)
 
 
 class Model(software.ComponentBase):
@@ -102,6 +102,7 @@ class ScientificRealm(object):
         """
         super(ScientificRealm, self).__init__()
 
+        self.citations = []                               # shared.Citation (0.N)
         self.grid = None                                  # science.Grid (0.1)
         self.id = None                                    # unicode (0.1)
         self.key_properties = None                        # science.KeyProperties (0.1)
@@ -109,7 +110,6 @@ class ScientificRealm(object):
         self.name = None                                  # unicode (1.1)
         self.overview = None                              # unicode (0.1)
         self.realm = None                                 # unicode (0.1)
-        self.references = []                              # shared.Reference (0.N)
         self.simulates = []                               # science.Process (1.N)
 
 
@@ -151,10 +151,10 @@ class Process(ScienceContext):
         """
         super(Process, self).__init__()
 
+        self.citations = []                               # shared.Citation (0.N)
         self.details = []                                 # science.Detail (0.N)
         self.implementation_overview = None               # unicode (1.1)
         self.keywords = None                              # unicode (0.1)
-        self.references = []                              # shared.Reference (0.N)
         self.sub_processes = []                           # science.SubProcess (0.N)
 
 
@@ -176,9 +176,9 @@ class SubProcess(ScienceContext):
         """
         super(SubProcess, self).__init__()
 
+        self.citations = []                               # shared.Citation (0.N)
         self.details = []                                 # science.Detail (0.N)
         self.implementation_overview = None               # unicode (1.1)
-        self.references = []                              # shared.Reference (0.N)
 
 
 class Tuning(SubProcess):

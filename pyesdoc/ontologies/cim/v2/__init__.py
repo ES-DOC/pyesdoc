@@ -88,14 +88,12 @@ from typeset_for_science_package import SubProcess
 from typeset_for_science_package import Tuning
 from typeset_for_shared_package import Cimtext
 from typeset_for_shared_package import Citation
-from typeset_for_shared_package import CitationTarget
 from typeset_for_shared_package import DocMetaInfo
 from typeset_for_shared_package import DocReference
 from typeset_for_shared_package import ExtraAttribute
 from typeset_for_shared_package import OnlineResource
 from typeset_for_shared_package import Party
 from typeset_for_shared_package import QualityReview
-from typeset_for_shared_package import Reference
 from typeset_for_shared_package import Responsibility
 from typeset_for_software_package import ComponentBase
 from typeset_for_software_package import Composition

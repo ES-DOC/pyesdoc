@@ -35,9 +35,9 @@ class ComponentBase(object):
         """
         super(ComponentBase, self).__init__()
 
+        self.citations = []                               # shared.Citation (0.N)
         self.description = None                           # unicode (0.1)
         self.development_history = None                   # software.DevelopmentPath (0.1)
-        self.documentation = []                           # shared.Reference (0.N)
         self.long_name = None                             # unicode (0.1)
         self.name = None                                  # unicode (1.1)
         self.release_date = None                          # datetime.datetime (0.1)

@@ -66,35 +66,6 @@ class Citation(object):
         self.url = None                                   # shared.OnlineResource (0.1)
 
 
-class CitationTarget(object):
-    """A concrete class within the cim v2 type system.
-
-    A real world document, could be a book, a journal article, a manual, a web page ... it might or might
-    not be online, although preferably it would be.
-
-    """
-    def __init__(self):
-        """Instance constructor.
-
-        """
-        super(CitationTarget, self).__init__()
-
-        self.citation_detail = None                       # unicode (0.1)
-        self.doi = None                                   # unicode (0.1)
-        self.meta = DocMetaInfo()                         # shared.DocMetaInfo (1.1)
-        self.name = None                                  # unicode (1.1)
-        self.online_at = None                             # shared.OnlineResource (0.1)
-        self.title = None                                 # unicode (1.1)
-
-
-    @property
-    def __str__(self):
-	    """Instrance string representation.
-
-	    """
-	    return "{}".format(self.name)
-
-
 class DocMetaInfo(object):
     """A concrete class within the cim v2 type system.
 
@@ -217,22 +188,6 @@ class QualityReview(object):
         self.quality_description = None                   # unicode (1.1)
         self.quality_status = None                        # shared.QualityStatus (0.1)
         self.target_document = None                       # shared.DocReference (1.1)
-
-
-class Reference(object):
-    """A concrete class within the cim v2 type system.
-
-    An external citation target which can have a context associated with it.
-
-    """
-    def __init__(self):
-        """Instance constructor.
-
-        """
-        super(Reference, self).__init__()
-
-        self.context = None                               # unicode (0.1)
-        self.document = None                              # shared.CitationTarget (1.1)
 
 
 class Responsibility(object):

@@ -35,6 +35,7 @@ class Activity(object):
 
         self.alternative_names = []                       # unicode (0.N)
         self.canonical_name = None                        # unicode (0.1)
+        self.citations = []                               # shared.Citation (0.N)
         self.description = None                           # unicode (0.1)
         self.duration = None                              # time.TimePeriod (0.1)
         self.internal_name = None                         # unicode (0.1)
@@ -44,7 +45,6 @@ class Activity(object):
         self.name = None                                  # unicode (1.1)
         self.previously_known_as = []                     # unicode (0.N)
         self.rationale = None                             # unicode (0.1)
-        self.references = []                              # shared.Reference (0.N)
         self.responsible_parties = []                     # shared.Responsibility (0.N)
 
 

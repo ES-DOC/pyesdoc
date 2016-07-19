@@ -33,12 +33,12 @@ class Dataset(object):
         super(Dataset, self).__init__()
 
         self.availability = []                            # shared.OnlineResource (0.N)
+        self.citations = []                               # shared.Citation (0.N)
         self.description = None                           # unicode (0.1)
         self.drs_datasets = []                            # drs.DrsPublicationDataset (0.N)
         self.meta = shared.DocMetaInfo()                  # shared.DocMetaInfo (1.1)
         self.name = None                                  # unicode (1.1)
         self.produced_by = None                           # data.Simulation (0.1)
-        self.references = []                              # shared.Reference (0.N)
         self.related_to_dataset = []                      # shared.OnlineResource (0.N)
         self.responsible_parties = []                     # shared.Responsibility (0.N)
 
@@ -70,7 +70,6 @@ class Simulation(activity.Activity):
         self.primary_ensemble = None                      # activity.Ensemble (0.1)
         self.ran_for_experiments = []                     # designing.NumericalExperiment (1.N)
         self.realization_index = None                     # int (0.1)
-        self.references = None                            # unicode (0.1)
         self.start_time = None                            # time.DateTime (0.1)
         self.sub_experiment = None                        # unicode (0.1)
         self.used = None                                  # science.Model (1.1)

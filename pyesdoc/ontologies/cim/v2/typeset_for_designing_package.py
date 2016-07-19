@@ -155,7 +155,7 @@ class ForcingConstraint(NumericalRequirement):
         self.data_link = None                             # shared.OnlineResource (0.1)
         self.forcing_type = None                          # designing.ForcingTypes (1.1)
         self.group = None                                 # unicode (0.1)
-        self.origin = None                                # shared.Reference (0.1)
+        self.origin = None                                # shared.Citation (0.1)
 
 
 class InitialisationRequirement(NumericalRequirement):
