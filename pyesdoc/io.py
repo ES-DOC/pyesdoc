@@ -9,6 +9,7 @@
 .. moduleauthor:: Mark Conway-Greenslade <momipsl@ipsl.jussieu.fr>
 
 """
+import json
 import os
 
 import pyesdoc
@@ -109,3 +110,28 @@ def convert(fpath, to_encoding, from_encoding=None):
     fpath = "{0}.{1}".format(os.path.splitext(fpath)[0], to_encoding)
 
     return write(document, to_encoding, fpath)
+
+
+def save_notebook_output(obj):
+    """Saves output from an IPython notebook.
+
+    """
+    # Format params.
+    mip_era = obj['MIP_ERA'].lower()
+    institute = obj['INSTITUTE'].lower()
+    model = obj['MODEL'].lower()
+    realm = obj['REALM'].lower()
+
+    # Set output file path.
+    fpath = os.path.join(os.getenv('ESDOC_HOME'), 'repos/esdoc-docs')
+    fpath = os.path.join(fpath, mip_era)
+    fpath = os.path.join(fpath, 'models/notebooks-output')
+    fpath = os.path.join(fpath, institute)
+    fpath = os.path.join(fpath, model)
+    if not os.path.isdir(fpath):
+        os.makedirs(fpath)
+    fpath = os.path.join(fpath, realm)
+
+    # Write as simple JSON.
+    with open("{}.json".format(fpath), 'w') as fstream:
+        fstream.write(json.dumps(obj, indent=4))

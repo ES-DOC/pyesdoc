@@ -21,11 +21,13 @@ from pyesdoc.constants import *
 from pyesdoc.exceptions import *
 
 from pyesdoc.factory import create
+from pyesdoc.factory import create_notebook_output
 
 from pyesdoc.io import convert as convert_file
 from pyesdoc.io import get_filename
 from pyesdoc.io import read
 from pyesdoc.io import write
+from pyesdoc.io import save_notebook_output
 
 from pyesdoc.extensions import extend
 from pyesdoc.extensions import is_extendable

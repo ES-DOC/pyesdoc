@@ -10,6 +10,7 @@
 
 
 """
+import collections
 import datetime
 import uuid
 
@@ -82,5 +83,16 @@ def create(typeof,
         doc.meta.source = source
         doc.meta.type = doc.__class__.type_key
         doc.meta.update_date = now
+
+    return doc
+
+
+def create_notebook_output(obj):
+    """Returns output for an IPython notebook.
+
+    """
+    doc = collections.OrderedDict()
+    for k in sorted(obj.keys()):
+        doc[k] = obj[k]
 
     return doc
