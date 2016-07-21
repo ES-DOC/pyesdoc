@@ -125,7 +125,7 @@ def save_notebook_output(obj):
     # Set output file path.
     fpath = os.path.join(os.getenv('ESDOC_HOME'), 'repos/esdoc-docs')
     fpath = os.path.join(fpath, mip_era)
-    fpath = os.path.join(fpath, 'models/notebooks-output')
+    fpath = os.path.join(fpath, 'models/notebooks')
     fpath = os.path.join(fpath, institute)
     fpath = os.path.join(fpath, model)
     if not os.path.isdir(fpath):
