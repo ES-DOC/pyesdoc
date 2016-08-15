@@ -1,5 +1,11 @@
 # -*- coding: utf-8 -*-
-
+#                            __
+#  _ __  _   _  ___  ___  __| | ___   ___
+# | '_ \| | | |/ _ \/ __|/ _` |/ _ \ / __|
+# | |_) | |_| |  __/\__ \ (_| | (_) | (__
+# | .__/ \__, |\___||___/\__,_|\___/ \___|
+# |_|    |___/
+#
 """
 .. module:: pyesdoc.__init__.py
 
@@ -11,7 +17,7 @@
 
 """
 __title__ = 'pyesdoc'
-__version__ = '0.9.5.0.2'
+__version__ = '0.9.5.0.3'
 __author__ = 'ES-DOC'
 __license__ = 'GPL'
 __copyright__ = 'Copyright 2015 ???'
@@ -42,12 +48,11 @@ from pyesdoc.serialization import encode
 
 from pyesdoc.utils import runtime as rt
 from pyesdoc.utils import config
+from pyesdoc.utils.help import list_constants
+from pyesdoc.utils.help import list_functions
 
 from pyesdoc.validation import is_valid
 from pyesdoc.validation import validate
-
-from pyesdoc.utils.help import list_constants
-from pyesdoc.utils.help import list_functions
 
 from pyesdoc import archive
 from pyesdoc import io

@@ -28,6 +28,7 @@ def list_functions():
 	"""Lists pyesdoc functions.
 
 	"""
-	members = [n for n, m in inspect.getmembers(pyesdoc) if n.upper() != n and not n.startswith('_') and inspect.isfunction(m)]
+	members = [n for n, m in inspect.getmembers(pyesdoc)
+			   if n.upper() != n and not n.startswith('_') and inspect.isfunction(m)]
 	for member in sorted(members):
 	    print "{}\n\t{}\n".format(member, getattr(pyesdoc, member).__doc__.split(".")[0])
