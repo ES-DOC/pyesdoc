@@ -155,6 +155,7 @@ class SoftwareComponent(ComponentBase):
         self.connection_points = []                       # software.Variable (0.N)
         self.coupling_framework = None                    # software.CouplingFramework (0.1)
         self.dependencies = []                            # software.EntryPoint (0.N)
+        self.depends_on = []                              # software.SoftwareComponent (0.N)
         self.grid = None                                  # software.Gridspec (0.1)
         self.language = None                              # software.ProgrammingLanguage (0.1)
         self.license = None                               # unicode (0.1)

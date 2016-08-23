@@ -107,7 +107,7 @@ class TimePeriod(object):
         self.calendar = None                              # time.Calendar (0.1)
         self.date = None                                  # time.DateTime (0.1)
         self.date_type = None                             # time.PeriodDateTypes (1.1)
-        self.length = None                                # int (1.1)
+        self.length = None                                # unicode (1.1)
         self.units = None                                 # time.TimeUnits (1.1)
 
 

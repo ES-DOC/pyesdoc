@@ -102,6 +102,7 @@ CLASSES = (
     platform.Machine,
     platform.Partition,
     platform.Performance,
+    platform.PerformanceOrg,
     platform.StoragePool,
     platform.StorageVolume,
     science.ConservationProperties,
@@ -605,6 +606,8 @@ CLASS_PROPERTIES = {
     platform.ComputePool: (
         'accelerator_type',
         'accelerators_per_node',
+        'clock_cycle_concurrency',
+        'clock_speed',
         'compute_cores_per_node',
         'cpu_type',
         'description',
@@ -641,6 +644,31 @@ CLASS_PROPERTIES = {
         'when_used',
     ),
     platform.Performance: (
+        'actual_simulated_years_per_day',
+        'asypd',
+        'chsy',
+        'compiler',
+        'complexity',
+        'core_hours_per_simulated_year',
+        'coupler_load',
+        'coupling_cost',
+        'data_intensity',
+        'data_output_cost',
+        'io_load',
+        'joules_per_simulated_year',
+        'load_imbalance',
+        'memory_bloat',
+        'memory_bloat',
+        'meta',
+        'model',
+        'name',
+        'parallelization',
+        'platform',
+        'resolution',
+        'simulated_years_per_day',
+        'subcomponent_performance',
+    ),
+    platform.PerformanceOrg: (
         'asypd',
         'chsy',
         'compiler',
@@ -661,7 +689,6 @@ CLASS_PROPERTIES = {
         'name',
         'type',
         'vendor',
-        'volume_available',
     ),
     platform.StorageVolume: (
         'units',
@@ -927,6 +954,7 @@ CLASS_PROPERTIES = {
         'connection_points',
         'coupling_framework',
         'dependencies',
+        'depends_on',
         'grid',
         'language',
         'license',
@@ -1180,6 +1208,8 @@ CLASS_OWN_PROPERTIES = {
     platform.ComputePool: (
         'accelerator_type',
         'accelerators_per_node',
+        'clock_cycle_concurrency',
+        'clock_speed',
         'compute_cores_per_node',
         'cpu_type',
         'description',
@@ -1206,6 +1236,31 @@ CLASS_OWN_PROPERTIES = {
         'when_used',
     ),
     platform.Performance: (
+        'actual_simulated_years_per_day',
+        'asypd',
+        'chsy',
+        'compiler',
+        'complexity',
+        'core_hours_per_simulated_year',
+        'coupler_load',
+        'coupling_cost',
+        'data_intensity',
+        'data_output_cost',
+        'io_load',
+        'joules_per_simulated_year',
+        'load_imbalance',
+        'memory_bloat',
+        'memory_bloat',
+        'meta',
+        'model',
+        'name',
+        'parallelization',
+        'platform',
+        'resolution',
+        'simulated_years_per_day',
+        'subcomponent_performance',
+    ),
+    platform.PerformanceOrg: (
         'asypd',
         'chsy',
         'compiler',
@@ -1226,7 +1281,6 @@ CLASS_OWN_PROPERTIES = {
         'name',
         'type',
         'vendor',
-        'volume_available',
     ),
     platform.StorageVolume: (
         'units',
@@ -1425,6 +1479,7 @@ CLASS_OWN_PROPERTIES = {
         'connection_points',
         'coupling_framework',
         'dependencies',
+        'depends_on',
         'grid',
         'language',
         'license',
@@ -1532,6 +1587,7 @@ DOCUMENT_TYPES = (
     designing.TemporalConstraint,
     platform.Machine,
     platform.Performance,
+    platform.PerformanceOrg,
     science.Grid,
     science.Model,
     science.ScientificRealm,
@@ -2628,24 +2684,28 @@ CONSTRAINTS = {
         ('interconnect', 'type', unicode),
         ('description', 'type', unicode),
         ('memory_per_node', 'type', platform.StorageVolume),
+        ('clock_speed', 'type', float),
         ('model_number', 'type', unicode),
         ('compute_cores_per_node', 'type', int),
         ('accelerator_type', 'type', unicode),
         ('cpu_type', 'type', unicode),
         ('number_of_nodes', 'type', int),
         ('accelerators_per_node', 'type', int),
+        ('clock_cycle_concurrency', 'type', int),
         ('name', 'type', unicode),
 
         ('operating_system', 'cardinality', "0.1"),
         ('interconnect', 'cardinality', "0.1"),
         ('description', 'cardinality', "0.1"),
         ('memory_per_node', 'cardinality', "0.1"),
+        ('clock_speed', 'cardinality', "0.1"),
         ('model_number', 'cardinality', "0.1"),
         ('compute_cores_per_node', 'cardinality', "0.1"),
         ('accelerator_type', 'cardinality', "0.1"),
         ('cpu_type', 'cardinality', "0.1"),
         ('number_of_nodes', 'cardinality', "0.1"),
         ('accelerators_per_node', 'cardinality', "0.1"),
+        ('clock_cycle_concurrency', 'cardinality', "0.1"),
         ('name', 'cardinality', "0.1"),
 
     ),
@@ -2703,6 +2763,55 @@ CONSTRAINTS = {
     ),
     platform.Performance: (
 
+        ('load_imbalance', 'type', float),
+        ('simulated_years_per_day', 'type', float),
+        ('coupling_cost', 'type', float),
+        ('meta', 'type', shared.DocMetaInfo),
+        ('data_intensity', 'type', float),
+        ('parallelization', 'type', float),
+        ('subcomponent_performance', 'type', platform.ComponentPerformance),
+        ('platform', 'type', platform.Machine),
+        ('core_hours_per_simulated_year', 'type', float),
+        ('io_load', 'type', float),
+        ('joules_per_simulated_year', 'type', float),
+        ('actual_simulated_years_per_day', 'type', float),
+        ('coupler_load', 'type', float),
+        ('data_output_cost', 'type', float),
+        ('compiler', 'type', unicode),
+        ('asypd', 'type', float),
+        ('memory_bloat', 'type', float),
+        ('name', 'type', unicode),
+        ('chsy', 'type', float),
+        ('complexity', 'type', int),
+        ('model', 'type', science.Model),
+        ('resolution', 'type', int),
+
+        ('load_imbalance', 'cardinality', "0.1"),
+        ('simulated_years_per_day', 'cardinality', "0.1"),
+        ('coupling_cost', 'cardinality', "0.1"),
+        ('meta', 'cardinality', "1.1"),
+        ('data_intensity', 'cardinality', "0.1"),
+        ('parallelization', 'cardinality', "0.1"),
+        ('subcomponent_performance', 'cardinality', "0.1"),
+        ('platform', 'cardinality', "1.1"),
+        ('core_hours_per_simulated_year', 'cardinality', "0.1"),
+        ('io_load', 'cardinality', "0.1"),
+        ('joules_per_simulated_year', 'cardinality', "0.1"),
+        ('actual_simulated_years_per_day', 'cardinality', "0.1"),
+        ('coupler_load', 'cardinality', "0.1"),
+        ('data_output_cost', 'cardinality', "0.1"),
+        ('compiler', 'cardinality', "0.1"),
+        ('asypd', 'cardinality', "0.1"),
+        ('memory_bloat', 'cardinality', "0.1"),
+        ('name', 'cardinality', "0.1"),
+        ('chsy', 'cardinality', "0.1"),
+        ('complexity', 'cardinality', "0.1"),
+        ('model', 'cardinality', "1.1"),
+        ('resolution', 'cardinality', "0.1"),
+
+    ),
+    platform.PerformanceOrg: (
+
         ('asypd', 'type', float),
         ('io_load', 'type', float),
         ('memory_bloat', 'type', float),
@@ -2737,13 +2846,11 @@ CONSTRAINTS = {
     platform.StoragePool: (
 
         ('vendor', 'type', shared.Party),
-        ('volume_available', 'type', platform.StorageVolume),
         ('type', 'type', unicode),
         ('description', 'type', unicode),
         ('name', 'type', unicode),
 
         ('vendor', 'cardinality', "0.1"),
-        ('volume_available', 'cardinality', "1.1"),
         ('type', 'cardinality', "0.1"),
         ('description', 'cardinality', "0.1"),
         ('name', 'cardinality', "1.1"),
@@ -3301,6 +3408,7 @@ CONSTRAINTS = {
         ('description', 'type', unicode),
         ('repository', 'type', shared.OnlineResource),
         ('language', 'type', unicode),
+        ('depends_on', 'type', software.SoftwareComponent),
         ('release_date', 'type', datetime.datetime),
         ('development_history', 'type', software.DevelopmentPath),
         ('sub_components', 'type', software.SoftwareComponent),
@@ -3318,6 +3426,7 @@ CONSTRAINTS = {
         ('description', 'cardinality', "0.1"),
         ('repository', 'cardinality', "0.1"),
         ('language', 'cardinality', "0.1"),
+        ('depends_on', 'cardinality', "0.N"),
         ('release_date', 'cardinality', "0.1"),
         ('development_history', 'cardinality', "0.1"),
         ('sub_components', 'cardinality', "0.N"),
@@ -3394,7 +3503,7 @@ CONSTRAINTS = {
     time.TimePeriod: (
 
         ('date', 'type', time.DateTime),
-        ('length', 'type', int),
+        ('length', 'type', unicode),
         ('calendar', 'type', time.Calendar),
         ('units', 'type', unicode),
         ('date_type', 'type', unicode),
@@ -6202,6 +6311,20 @@ CONSTRAINTS = {
         ('cardinality', "0.1"),
 
     ),
+    (platform.ComputePool, 'clock_cycle_concurrency'): (
+
+        ('type', int),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (platform.ComputePool, 'clock_speed'): (
+
+        ('type', float),
+
+        ('cardinality', "0.1"),
+
+    ),
     (platform.ComputePool, 'compute_cores_per_node'): (
 
         ('type', int),
@@ -6415,6 +6538,13 @@ CONSTRAINTS = {
 
     ),
 
+    (platform.Performance, 'actual_simulated_years_per_day'): (
+
+        ('type', float),
+
+        ('cardinality', "0.1"),
+
+    ),
     (platform.Performance, 'asypd'): (
 
         ('type', float),
@@ -6436,7 +6566,42 @@ CONSTRAINTS = {
         ('cardinality', "0.1"),
 
     ),
+    (platform.Performance, 'complexity'): (
+
+        ('type', int),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (platform.Performance, 'core_hours_per_simulated_year'): (
+
+        ('type', float),
+
+        ('cardinality', "0.1"),
+
+    ),
     (platform.Performance, 'coupler_load'): (
+
+        ('type', float),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (platform.Performance, 'coupling_cost'): (
+
+        ('type', float),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (platform.Performance, 'data_intensity'): (
+
+        ('type', float),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (platform.Performance, 'data_output_cost'): (
 
         ('type', float),
 
@@ -6450,7 +6615,21 @@ CONSTRAINTS = {
         ('cardinality', "0.1"),
 
     ),
+    (platform.Performance, 'joules_per_simulated_year'): (
+
+        ('type', float),
+
+        ('cardinality', "0.1"),
+
+    ),
     (platform.Performance, 'load_imbalance'): (
+
+        ('type', float),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (platform.Performance, 'memory_bloat'): (
 
         ('type', float),
 
@@ -6485,11 +6664,32 @@ CONSTRAINTS = {
         ('cardinality', "0.1"),
 
     ),
+    (platform.Performance, 'parallelization'): (
+
+        ('type', float),
+
+        ('cardinality', "0.1"),
+
+    ),
     (platform.Performance, 'platform'): (
 
         ('type', platform.Machine),
 
         ('cardinality', "1.1"),
+
+    ),
+    (platform.Performance, 'resolution'): (
+
+        ('type', int),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (platform.Performance, 'simulated_years_per_day'): (
+
+        ('type', float),
+
+        ('cardinality', "0.1"),
 
     ),
     (platform.Performance, 'subcomponent_performance'): (
@@ -6499,14 +6699,99 @@ CONSTRAINTS = {
         ('cardinality', "0.1"),
 
     ),
-    (platform.Performance, 'sypd'): (
+
+    (platform.PerformanceOrg, 'asypd'): (
 
         ('type', float),
 
         ('cardinality', "0.1"),
 
     ),
-    (platform.Performance, 'total_nodes_used'): (
+    (platform.PerformanceOrg, 'chsy'): (
+
+        ('type', float),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (platform.PerformanceOrg, 'compiler'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (platform.PerformanceOrg, 'coupler_load'): (
+
+        ('type', float),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (platform.PerformanceOrg, 'io_load'): (
+
+        ('type', float),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (platform.PerformanceOrg, 'load_imbalance'): (
+
+        ('type', float),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (platform.PerformanceOrg, 'memory_bloat'): (
+
+        ('type', float),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (platform.PerformanceOrg, 'meta'): (
+
+        ('type', shared.DocMetaInfo),
+
+        ('cardinality', "1.1"),
+
+    ),
+    (platform.PerformanceOrg, 'model'): (
+
+        ('type', science.Model),
+
+        ('cardinality', "1.1"),
+
+    ),
+    (platform.PerformanceOrg, 'name'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (platform.PerformanceOrg, 'platform'): (
+
+        ('type', platform.Machine),
+
+        ('cardinality', "1.1"),
+
+    ),
+    (platform.PerformanceOrg, 'subcomponent_performance'): (
+
+        ('type', platform.ComponentPerformance),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (platform.PerformanceOrg, 'sypd'): (
+
+        ('type', float),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (platform.PerformanceOrg, 'total_nodes_used'): (
 
         ('type', int),
 
@@ -6540,13 +6825,6 @@ CONSTRAINTS = {
         ('type', shared.Party),
 
         ('cardinality', "0.1"),
-
-    ),
-    (platform.StoragePool, 'volume_available'): (
-
-        ('type', platform.StorageVolume),
-
-        ('cardinality', "1.1"),
 
     ),
 
@@ -8014,6 +8292,13 @@ CONSTRAINTS = {
         ('cardinality', "0.N"),
 
     ),
+    (software.SoftwareComponent, 'depends_on'): (
+
+        ('type', software.SoftwareComponent),
+
+        ('cardinality', "0.N"),
+
+    ),
     (software.SoftwareComponent, 'grid'): (
 
         ('type', software.Gridspec),
@@ -8240,7 +8525,7 @@ CONSTRAINTS = {
     ),
     (time.TimePeriod, 'length'): (
 
-        ('type', int),
+        ('type', unicode),
 
         ('cardinality', "1.1"),
 
@@ -8330,8 +8615,9 @@ DOC_STRINGS = {
 
     """,
     data.Simulation: """
-        Simulation class provides the integrating link about what models were run and wny.
-    In many cases this should be auto-generated from output file headers.
+        Simulation class provides the integrating link about what models
+    were run and wny.  In many cases this should be auto-generated
+    from output file headers.
 
     """,
     data.VariableCollection: """
@@ -8441,6 +8727,10 @@ DOC_STRINGS = {
 
     """,
     platform.Performance: """
+        Describes the properties of a performance of a configured model on a particular system/machine.
+
+    """,
+    platform.PerformanceOrg: """
         Describes the properties of a performance of a configured model on a particular system/machine.
 
     """,
@@ -8943,6 +9233,10 @@ DOC_STRINGS = {
         "Type of accelerator.",
     (platform.ComputePool, 'accelerators_per_node'):
         "Number of accelerator units on a node.",
+    (platform.ComputePool, 'clock_cycle_concurrency'):
+        "The number of operations which can be carried out concurrently in a single clock cycle of a single core. E.g. 4.",
+    (platform.ComputePool, 'clock_speed'):
+        "The clock speed of a single core, in units of GHz. E.g. 3.6.",
     (platform.ComputePool, 'compute_cores_per_node'):
         "Number of CPU cores per node.",
     (platform.ComputePool, 'cpu_type'):
@@ -8983,18 +9277,34 @@ DOC_STRINGS = {
         "The system integrator or vendor.",
     (platform.Partition, 'when_used'):
         "If no longer in use, the time period it was in use.",
+    (platform.Performance, 'actual_simulated_years_per_day'):
+        "Actual simulated years per day (ASYPD) in a 24h period on the given platform obtained from a typical long-running simulation with the model. Inclusive of system interruptions, queue wait time, or issues with the model workflow, etc.",
     (platform.Performance, 'asypd'):
         "Actual simulated years per wall-clock day, all-in.",
     (platform.Performance, 'chsy'):
         "Core-Hours per simulated year.",
     (platform.Performance, 'compiler'):
         "Compiler used.",
+    (platform.Performance, 'complexity'):
+        "Complexity measured as the number of prognostic variables per component with an independent discretization",
+    (platform.Performance, 'core_hours_per_simulated_year'):
+        "Core-hours per simulated year (CHSY). This is measured as the product of the model runtime for 1 SY, and the numbers of cores allocated. Note that if allocations are done on a node basis then all cores on a node are charged against the allocation, regardless of whether or not they are used.",
     (platform.Performance, 'coupler_load'):
         "Percentage of time spent in coupler.",
+    (platform.Performance, 'coupling_cost'):
+        "Coupling cost measures the overhead caused by coupling. This can include the cost of the coupling algorithm itself (which may involve grid interpolation and computation of transfer coefficients for conservative coupling) as well as load imbalance. It is the normalized difference between the time-processor integral for the whole model versus the sum of individual concurrent components",
+    (platform.Performance, 'data_intensity'):
+        "Data intensity the amount of data produced per compute-hour, in units GB per compute-hour.",
+    (platform.Performance, 'data_output_cost'):
+        "Data output cost is the cost of performing I/O, and is the ratio of CHSY with and without I/O.",
     (platform.Performance, 'io_load'):
         "Percentage of time spent in I/O.",
+    (platform.Performance, 'joules_per_simulated_year'):
+        "The energy cost of a simulation, measured in joules per simulated year (JPSY). Given the energy E in joules consumed over a budgeting interval T (generally 1 month or 1 year, in units of hours), JPSY=CHSY*E*T/NP",
     (platform.Performance, 'load_imbalance'):
         "Load imbalance.",
+    (platform.Performance, 'memory_bloat'):
+        "Memory bloat is the ratio of the actual memory size to the ideal memory size (the size of the complete model state, which in theory is all you need to hold in memory)Mi, defined below.",
     (platform.Performance, 'memory_bloat'):
         "Percentage of extra memory needed.",
     (platform.Performance, 'meta'):
@@ -9003,13 +9313,43 @@ DOC_STRINGS = {
         "Model for which performance was tested.",
     (platform.Performance, 'name'):
         "Short name for performance (experiment/test/whatever).",
+    (platform.Performance, 'parallelization'):
+        "Parallelization measured as the total number of cores (NP) allocated for the run, regardless of whether or or all cores were used. Note that NP=CHSY*SYPD/24.",
     (platform.Performance, 'platform'):
         "Platform on which performance was tested.",
+    (platform.Performance, 'resolution'):
+        "Resolution measured as the number of gridpoints (or more generally, spatial degrees of freedom) NX x NY x NZ per component with an independent discretization",
+    (platform.Performance, 'simulated_years_per_day'):
+        "Simulated years per day (SYPD) in a 24h period on the given platform",
     (platform.Performance, 'subcomponent_performance'):
         "Describes the performance of each subcomponent.",
-    (platform.Performance, 'sypd'):
+    (platform.PerformanceOrg, 'asypd'):
+        "Actual simulated years per wall-clock day, all-in.",
+    (platform.PerformanceOrg, 'chsy'):
+        "Core-Hours per simulated year.",
+    (platform.PerformanceOrg, 'compiler'):
+        "Compiler used.",
+    (platform.PerformanceOrg, 'coupler_load'):
+        "Percentage of time spent in coupler.",
+    (platform.PerformanceOrg, 'io_load'):
+        "Percentage of time spent in I/O.",
+    (platform.PerformanceOrg, 'load_imbalance'):
+        "Load imbalance.",
+    (platform.PerformanceOrg, 'memory_bloat'):
+        "Percentage of extra memory needed.",
+    (platform.PerformanceOrg, 'meta'):
+        "Document metadata.",
+    (platform.PerformanceOrg, 'model'):
+        "Model for which performance was tested.",
+    (platform.PerformanceOrg, 'name'):
+        "Short name for performance (experiment/test/whatever).",
+    (platform.PerformanceOrg, 'platform'):
+        "Platform on which performance was tested.",
+    (platform.PerformanceOrg, 'subcomponent_performance'):
+        "Describes the performance of each subcomponent.",
+    (platform.PerformanceOrg, 'sypd'):
         "Simulated years per wall-clock day.",
-    (platform.Performance, 'total_nodes_used'):
+    (platform.PerformanceOrg, 'total_nodes_used'):
         "Number of nodes used.",
     (platform.StoragePool, 'description'):
         "Description of the technology used.",
@@ -9018,9 +9358,7 @@ DOC_STRINGS = {
     (platform.StoragePool, 'type'):
         "Type of storage.",
     (platform.StoragePool, 'vendor'):
-        "Vendor of the storage unit.",
-    (platform.StoragePool, 'volume_available'):
-        "Storage capacity.",
+        "Vendor of storage hardware.",
     (platform.StorageVolume, 'units'):
         "Volume units.",
     (platform.StorageVolume, 'volume'):
@@ -9297,6 +9635,8 @@ DOC_STRINGS = {
         "The coupling framework that this entire component conforms to.",
     (software.SoftwareComponent, 'dependencies'):
         "#FIXME.",
+    (software.SoftwareComponent, 'depends_on'):
+        "The software components whose outputs are inputs to this software component.",
     (software.SoftwareComponent, 'grid'):
         "A reference to the grid that is used by this component.",
     (software.SoftwareComponent, 'language'):
@@ -9827,6 +10167,7 @@ KEYS = {
     platform.Machine: "cim.2.platform.Machine",
     platform.Partition: "cim.2.platform.Partition",
     platform.Performance: "cim.2.platform.Performance",
+    platform.PerformanceOrg: "cim.2.platform.PerformanceOrg",
     platform.StoragePool: "cim.2.platform.StoragePool",
     platform.StorageVolume: "cim.2.platform.StorageVolume",
     science.ConservationProperties: "cim.2.science.ConservationProperties",
@@ -10004,6 +10345,8 @@ KEYS = {
     (platform.ComponentPerformance, 'speed'): "cim.2.platform.ComponentPerformance.speed",
     (platform.ComputePool, 'accelerator_type'): "cim.2.platform.ComputePool.accelerator_type",
     (platform.ComputePool, 'accelerators_per_node'): "cim.2.platform.ComputePool.accelerators_per_node",
+    (platform.ComputePool, 'clock_cycle_concurrency'): "cim.2.platform.ComputePool.clock_cycle_concurrency",
+    (platform.ComputePool, 'clock_speed'): "cim.2.platform.ComputePool.clock_speed",
     (platform.ComputePool, 'compute_cores_per_node'): "cim.2.platform.ComputePool.compute_cores_per_node",
     (platform.ComputePool, 'cpu_type'): "cim.2.platform.ComputePool.cpu_type",
     (platform.ComputePool, 'description'): "cim.2.platform.ComputePool.description",
@@ -10024,25 +10367,47 @@ KEYS = {
     (platform.Partition, 'storage_pools'): "cim.2.platform.Partition.storage_pools",
     (platform.Partition, 'vendor'): "cim.2.platform.Partition.vendor",
     (platform.Partition, 'when_used'): "cim.2.platform.Partition.when_used",
+    (platform.Performance, 'actual_simulated_years_per_day'): "cim.2.platform.Performance.actual_simulated_years_per_day",
     (platform.Performance, 'asypd'): "cim.2.platform.Performance.asypd",
     (platform.Performance, 'chsy'): "cim.2.platform.Performance.chsy",
     (platform.Performance, 'compiler'): "cim.2.platform.Performance.compiler",
+    (platform.Performance, 'complexity'): "cim.2.platform.Performance.complexity",
+    (platform.Performance, 'core_hours_per_simulated_year'): "cim.2.platform.Performance.core_hours_per_simulated_year",
     (platform.Performance, 'coupler_load'): "cim.2.platform.Performance.coupler_load",
+    (platform.Performance, 'coupling_cost'): "cim.2.platform.Performance.coupling_cost",
+    (platform.Performance, 'data_intensity'): "cim.2.platform.Performance.data_intensity",
+    (platform.Performance, 'data_output_cost'): "cim.2.platform.Performance.data_output_cost",
     (platform.Performance, 'io_load'): "cim.2.platform.Performance.io_load",
+    (platform.Performance, 'joules_per_simulated_year'): "cim.2.platform.Performance.joules_per_simulated_year",
     (platform.Performance, 'load_imbalance'): "cim.2.platform.Performance.load_imbalance",
+    (platform.Performance, 'memory_bloat'): "cim.2.platform.Performance.memory_bloat",
     (platform.Performance, 'memory_bloat'): "cim.2.platform.Performance.memory_bloat",
     (platform.Performance, 'meta'): "cim.2.platform.Performance.meta",
     (platform.Performance, 'model'): "cim.2.platform.Performance.model",
     (platform.Performance, 'name'): "cim.2.platform.Performance.name",
+    (platform.Performance, 'parallelization'): "cim.2.platform.Performance.parallelization",
     (platform.Performance, 'platform'): "cim.2.platform.Performance.platform",
+    (platform.Performance, 'resolution'): "cim.2.platform.Performance.resolution",
+    (platform.Performance, 'simulated_years_per_day'): "cim.2.platform.Performance.simulated_years_per_day",
     (platform.Performance, 'subcomponent_performance'): "cim.2.platform.Performance.subcomponent_performance",
-    (platform.Performance, 'sypd'): "cim.2.platform.Performance.sypd",
-    (platform.Performance, 'total_nodes_used'): "cim.2.platform.Performance.total_nodes_used",
+    (platform.PerformanceOrg, 'asypd'): "cim.2.platform.PerformanceOrg.asypd",
+    (platform.PerformanceOrg, 'chsy'): "cim.2.platform.PerformanceOrg.chsy",
+    (platform.PerformanceOrg, 'compiler'): "cim.2.platform.PerformanceOrg.compiler",
+    (platform.PerformanceOrg, 'coupler_load'): "cim.2.platform.PerformanceOrg.coupler_load",
+    (platform.PerformanceOrg, 'io_load'): "cim.2.platform.PerformanceOrg.io_load",
+    (platform.PerformanceOrg, 'load_imbalance'): "cim.2.platform.PerformanceOrg.load_imbalance",
+    (platform.PerformanceOrg, 'memory_bloat'): "cim.2.platform.PerformanceOrg.memory_bloat",
+    (platform.PerformanceOrg, 'meta'): "cim.2.platform.PerformanceOrg.meta",
+    (platform.PerformanceOrg, 'model'): "cim.2.platform.PerformanceOrg.model",
+    (platform.PerformanceOrg, 'name'): "cim.2.platform.PerformanceOrg.name",
+    (platform.PerformanceOrg, 'platform'): "cim.2.platform.PerformanceOrg.platform",
+    (platform.PerformanceOrg, 'subcomponent_performance'): "cim.2.platform.PerformanceOrg.subcomponent_performance",
+    (platform.PerformanceOrg, 'sypd'): "cim.2.platform.PerformanceOrg.sypd",
+    (platform.PerformanceOrg, 'total_nodes_used'): "cim.2.platform.PerformanceOrg.total_nodes_used",
     (platform.StoragePool, 'description'): "cim.2.platform.StoragePool.description",
     (platform.StoragePool, 'name'): "cim.2.platform.StoragePool.name",
     (platform.StoragePool, 'type'): "cim.2.platform.StoragePool.type",
     (platform.StoragePool, 'vendor'): "cim.2.platform.StoragePool.vendor",
-    (platform.StoragePool, 'volume_available'): "cim.2.platform.StoragePool.volume_available",
     (platform.StorageVolume, 'units'): "cim.2.platform.StorageVolume.units",
     (platform.StorageVolume, 'volume'): "cim.2.platform.StorageVolume.volume",
     (science.ConservationProperties, 'corrected_conserved_prognostic_variables'): "cim.2.science.ConservationProperties.corrected_conserved_prognostic_variables",
@@ -10181,6 +10546,7 @@ KEYS = {
     (software.SoftwareComponent, 'connection_points'): "cim.2.software.SoftwareComponent.connection_points",
     (software.SoftwareComponent, 'coupling_framework'): "cim.2.software.SoftwareComponent.coupling_framework",
     (software.SoftwareComponent, 'dependencies'): "cim.2.software.SoftwareComponent.dependencies",
+    (software.SoftwareComponent, 'depends_on'): "cim.2.software.SoftwareComponent.depends_on",
     (software.SoftwareComponent, 'grid'): "cim.2.software.SoftwareComponent.grid",
     (software.SoftwareComponent, 'language'): "cim.2.software.SoftwareComponent.language",
     (software.SoftwareComponent, 'license'): "cim.2.software.SoftwareComponent.license",
@@ -10441,6 +10807,7 @@ platform.ComputePool.type_key = KEYS[platform.ComputePool]
 platform.Machine.type_key = KEYS[platform.Machine]
 platform.Partition.type_key = KEYS[platform.Partition]
 platform.Performance.type_key = KEYS[platform.Performance]
+platform.PerformanceOrg.type_key = KEYS[platform.PerformanceOrg]
 platform.StoragePool.type_key = KEYS[platform.StoragePool]
 platform.StorageSystems.type_key = KEYS[platform.StorageSystems]
 platform.StorageVolume.type_key = KEYS[platform.StorageVolume]

@@ -60,6 +60,8 @@ class ComputePool(object):
 
         self.accelerator_type = None                      # unicode (0.1)
         self.accelerators_per_node = None                 # int (0.1)
+        self.clock_cycle_concurrency = None               # int (0.1)
+        self.clock_speed = None                           # float (0.1)
         self.compute_cores_per_node = None                # int (0.1)
         self.cpu_type = None                              # unicode (0.1)
         self.description = None                           # unicode (0.1)
@@ -123,6 +125,51 @@ class Performance(object):
         """
         super(Performance, self).__init__()
 
+        self.actual_simulated_years_per_day = None        # float (0.1)
+        self.asypd = None                                 # float (0.1)
+        self.chsy = None                                  # float (0.1)
+        self.compiler = None                              # unicode (0.1)
+        self.complexity = None                            # int (0.1)
+        self.core_hours_per_simulated_year = None         # float (0.1)
+        self.coupler_load = None                          # float (0.1)
+        self.coupling_cost = None                         # float (0.1)
+        self.data_intensity = None                        # float (0.1)
+        self.data_output_cost = None                      # float (0.1)
+        self.io_load = None                               # float (0.1)
+        self.joules_per_simulated_year = None             # float (0.1)
+        self.load_imbalance = None                        # float (0.1)
+        self.memory_bloat = None                          # float (0.1)
+        self.memory_bloat = None                          # float (0.1)
+        self.meta = shared.DocMetaInfo()                  # shared.DocMetaInfo (1.1)
+        self.model = None                                 # science.Model (1.1)
+        self.name = None                                  # unicode (0.1)
+        self.parallelization = None                       # float (0.1)
+        self.platform = None                              # platform.Machine (1.1)
+        self.resolution = None                            # int (0.1)
+        self.simulated_years_per_day = None               # float (0.1)
+        self.subcomponent_performance = None              # platform.ComponentPerformance (0.1)
+
+
+    @property
+    def __str__(self):
+	    """Instrance string representation.
+
+	    """
+	    return "{} (sypd:{})".format(self.name, self.sypd)
+
+
+class PerformanceOrg(object):
+    """A concrete class within the cim v2 type system.
+
+    Describes the properties of a performance of a configured model on a particular system/machine.
+
+    """
+    def __init__(self):
+        """Instance constructor.
+
+        """
+        super(PerformanceOrg, self).__init__()
+
         self.asypd = None                                 # float (0.1)
         self.chsy = None                                  # float (0.1)
         self.compiler = None                              # unicode (0.1)
@@ -163,7 +210,6 @@ class StoragePool(object):
         self.name = None                                  # unicode (1.1)
         self.type = None                                  # platform.StorageSystems (0.1)
         self.vendor = None                                # shared.Party (0.1)
-        self.volume_available = None                      # platform.StorageVolume (1.1)
 
 
 class StorageVolume(object):

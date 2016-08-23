@@ -46,8 +46,9 @@ class Dataset(object):
 class Simulation(activity.Activity):
     """A concrete class within the cim v2 type system.
 
-    Simulation class provides the integrating link about what models were run and wny.
-    In many cases this should be auto-generated from output file headers.
+    Simulation class provides the integrating link about what models
+    were run and wny.  In many cases this should be auto-generated
+    from output file headers.
 
     """
     def __init__(self):
