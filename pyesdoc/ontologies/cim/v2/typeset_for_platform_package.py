@@ -22,7 +22,11 @@ import typeset_for_shared_package as shared
 class ComponentPerformance(object):
     """A concrete class within the cim v2 type system.
 
-    Describes the simulation rate of a component in seconds per model day.
+    Describes the simulation rate of a component in seconds per model
+day.
+
+Based on "CPMIP: Measurements of Real Computational Performance of
+Earth System Models" (Balaji et. al.)
 
     """
     def __init__(self):
@@ -31,11 +35,12 @@ class ComponentPerformance(object):
         """
         super(ComponentPerformance, self).__init__()
 
+        self.actual_simulated_years_per_day = None        # float (0.1)
         self.component = None                             # software.SoftwareComponent (0.1)
         self.component_name = None                        # unicode (1.1)
-        self.cores_used = None                            # int (0.1)
-        self.nodes_used = None                            # int (0.1)
-        self.speed = None                                 # float (1.1)
+        self.core_hours_per_simulated_year = None         # float (0.1)
+        self.parallelization = None                       # float (0.1)
+        self.simulated_years_per_day = None               # float (0.1)
 
 
     @property
@@ -116,7 +121,11 @@ class Partition(object):
 class Performance(object):
     """A concrete class within the cim v2 type system.
 
-    Describes the properties of a performance of a configured model on a particular system/machine.
+    Describes the properties of a performance of a configured model on
+a particular system/machine.
+
+Based on "CPMIP: Measurements of Real Computational Performance of
+Earth System Models" (Balaji et. al.)
 
     """
     def __init__(self):
@@ -126,19 +135,13 @@ class Performance(object):
         super(Performance, self).__init__()
 
         self.actual_simulated_years_per_day = None        # float (0.1)
-        self.asypd = None                                 # float (0.1)
-        self.chsy = None                                  # float (0.1)
         self.compiler = None                              # unicode (0.1)
         self.complexity = None                            # int (0.1)
         self.core_hours_per_simulated_year = None         # float (0.1)
-        self.coupler_load = None                          # float (0.1)
         self.coupling_cost = None                         # float (0.1)
         self.data_intensity = None                        # float (0.1)
         self.data_output_cost = None                      # float (0.1)
-        self.io_load = None                               # float (0.1)
         self.joules_per_simulated_year = None             # float (0.1)
-        self.load_imbalance = None                        # float (0.1)
-        self.memory_bloat = None                          # float (0.1)
         self.memory_bloat = None                          # float (0.1)
         self.meta = shared.DocMetaInfo()                  # shared.DocMetaInfo (1.1)
         self.model = None                                 # science.Model (1.1)
@@ -147,43 +150,7 @@ class Performance(object):
         self.platform = None                              # platform.Machine (1.1)
         self.resolution = None                            # int (0.1)
         self.simulated_years_per_day = None               # float (0.1)
-        self.subcomponent_performance = None              # platform.ComponentPerformance (0.1)
-
-
-    @property
-    def __str__(self):
-	    """Instrance string representation.
-
-	    """
-	    return "{} (sypd:{})".format(self.name, self.sypd)
-
-
-class PerformanceOrg(object):
-    """A concrete class within the cim v2 type system.
-
-    Describes the properties of a performance of a configured model on a particular system/machine.
-
-    """
-    def __init__(self):
-        """Instance constructor.
-
-        """
-        super(PerformanceOrg, self).__init__()
-
-        self.asypd = None                                 # float (0.1)
-        self.chsy = None                                  # float (0.1)
-        self.compiler = None                              # unicode (0.1)
-        self.coupler_load = None                          # float (0.1)
-        self.io_load = None                               # float (0.1)
-        self.load_imbalance = None                        # float (0.1)
-        self.memory_bloat = None                          # float (0.1)
-        self.meta = shared.DocMetaInfo()                  # shared.DocMetaInfo (1.1)
-        self.model = None                                 # science.Model (1.1)
-        self.name = None                                  # unicode (0.1)
-        self.platform = None                              # platform.Machine (1.1)
-        self.subcomponent_performance = None              # platform.ComponentPerformance (0.1)
-        self.sypd = None                                  # float (0.1)
-        self.total_nodes_used = None                      # int (0.1)
+        self.subcomponent_performance = []                # platform.ComponentPerformance (0.N)
 
 
     @property

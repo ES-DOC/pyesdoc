@@ -85,7 +85,6 @@ __all__ = [
     Machine,
     Partition,
     Performance,
-    PerformanceOrg,
     StoragePool,
     StorageVolume,
     ConservationProperties,

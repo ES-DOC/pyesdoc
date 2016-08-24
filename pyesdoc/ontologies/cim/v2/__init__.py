@@ -70,7 +70,6 @@ from typeset_for_platform_package import ComputePool
 from typeset_for_platform_package import Machine
 from typeset_for_platform_package import Partition
 from typeset_for_platform_package import Performance
-from typeset_for_platform_package import PerformanceOrg
 from typeset_for_platform_package import StoragePool
 from typeset_for_platform_package import StorageVolume
 from typeset_for_science_package import ConservationProperties
