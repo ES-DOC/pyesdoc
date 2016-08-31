@@ -371,7 +371,7 @@ class DetailProperty(Specialization):
         """
         try:
             int(self.cardinality.split(".")[1])
-        except TypeError:
+        except ValueError:
             return True
         else:
             return False
