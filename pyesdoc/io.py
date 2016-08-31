@@ -9,10 +9,14 @@
 .. moduleauthor:: Mark Conway-Greenslade <momipsl@ipsl.jussieu.fr>
 
 """
+import collections
+import datetime as dt
 import json
 import os
 
 import pyesdoc
+from pyesdoc import exceptions
+from pyesdoc.validation import is_valid_notebook_output
 from pyesdoc.utils.convert import str_to_unicode
 
 
@@ -112,15 +116,29 @@ def convert(fpath, to_encoding, from_encoding=None):
     return write(document, to_encoding, fpath)
 
 
-def save_notebook_output(obj):
+def write_notebook_output(obj):
     """Saves output from an IPython notebook.
 
+    :param dict obj: Output from an IPython notebook.
+
+    :returns: Path to written output.
+    :rtype: str
+
     """
+    # Ensure is valid.
+    if not is_valid_notebook_output(obj):
+        raise exceptions.InvalidNoteBookOutputError()
+
     # Format params.
     mip_era = obj['MIP_ERA'].lower()
     institute = obj['INSTITUTE'].lower()
     model = obj['MODEL'].lower()
     realm = obj['REALM'].lower()
+
+    # Convert to ordered dictionary.
+    output = collections.OrderedDict()
+    for k in sorted(obj.keys()):
+        output[k] = obj[k]
 
     # Set output file path.
     fpath = os.path.join(os.getenv('ESDOC_HOME'), 'repos/esdoc-docs')
@@ -134,4 +152,6 @@ def save_notebook_output(obj):
 
     # Write as simple JSON.
     with open("{}.json".format(fpath), 'w') as fstream:
-        fstream.write(json.dumps(obj, indent=4))
+        fstream.write(json.dumps(output, indent=4))
+
+    return fpath

@@ -84,7 +84,7 @@ setup(
     packages=_PACKAGES,
     include_package_data=True,
     install_requires=_REQUIRES,
-    license='GPL',
+    license='GPL/CeCILL-2.1',
     zip_safe=False,
     distclass=_BinaryDistribution,
     classifiers=[

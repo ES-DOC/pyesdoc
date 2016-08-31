@@ -17,7 +17,7 @@
 
 """
 __title__ = 'pyesdoc'
-__version__ = '0.9.5.0.4'
+__version__ = '0.9.5.1.0'
 __author__ = 'ES-DOC'
 __license__ = 'GPL'
 __copyright__ = 'Copyright 2015 ???'
@@ -33,7 +33,7 @@ from pyesdoc.io import convert as convert_file
 from pyesdoc.io import get_filename
 from pyesdoc.io import read
 from pyesdoc.io import write
-from pyesdoc.io import save_notebook_output
+from pyesdoc.io import write_notebook_output
 
 from pyesdoc.extensions import extend
 from pyesdoc.extensions import is_extendable
@@ -50,9 +50,13 @@ from pyesdoc.utils import runtime as rt
 from pyesdoc.utils import config
 from pyesdoc.utils.help import list_constants
 from pyesdoc.utils.help import list_functions
+from pyesdoc.utils.runtime import log
 
 from pyesdoc.validation import is_valid
+from pyesdoc.validation import is_valid_notebook_output
+from pyesdoc.validation import list_notebook_output_errors
 from pyesdoc.validation import validate
+from pyesdoc.validation import validate_notebook_output
 
 from pyesdoc import archive
 from pyesdoc import io

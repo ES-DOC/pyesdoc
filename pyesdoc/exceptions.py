@@ -96,6 +96,18 @@ class InvalidDocumentTypeException(LibraryBaseException):
         super(InvalidDocumentTypeException, self).__init__(err)
 
 
+class InvalidNoteBookOutputError(LibraryBaseException):
+    """Exception raised when invalid notebook outbook is declared.
+
+    """
+    def __init__(self):
+        """Instance constructor.
+
+        """
+        err = "Notebook outbook is invalid."
+        super(InvalidNoteBookOutputError, self).__init__(err)
+
+
 class LoadingException(LibraryBaseException):
     """Exception raised when document loading fails.
 
