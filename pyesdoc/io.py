@@ -47,11 +47,11 @@ def _get_filepath(io_dir, doc, encoding):
     return os.path.join(io_dir, get_filename(doc, encoding))
 
 
-def write(document, io_dir, encoding=pyesdoc.constants.ENCODING_JSON):
+def write(document, fpath, encoding=pyesdoc.constants.ENCODING_JSON):
     """Writes a document to the file system.
 
     :param object document: A pyesdoc document instance.
-    :param str io_dir: I/O directory path.
+    :param str fpath: Path to I/O directory or file.
     :param str encoding: Document encoding.
 
     :returns: Path to created file.
@@ -59,10 +59,9 @@ def write(document, io_dir, encoding=pyesdoc.constants.ENCODING_JSON):
 
     """
     # Validate I/O directory.
-    if not os.path.isdir(io_dir):
-        raise ValueError("Output directory does not exist.")
+    if os.path.isdir(fpath):
+        fpath = _get_filepath(fpath, document, encoding)
 
-    fpath = _get_filepath(io_dir, document, encoding)
     with open(fpath, 'w') as fstream:
         fstream.write(pyesdoc.encode(document, encoding))
 
@@ -113,7 +112,7 @@ def convert(fpath, to_encoding, from_encoding=None):
     document = read(fpath, from_encoding)
     fpath = "{0}.{1}".format(os.path.splitext(fpath)[0], to_encoding)
 
-    return write(document, to_encoding, fpath)
+    return write(document, fpath, to_encoding)
 
 
 def write_notebook_output(obj):
