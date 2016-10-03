@@ -123,7 +123,7 @@ class Realm(SpecializationModule):
     """Wraps a realm specialization.
 
     """
-    def __init__(self, specializations):
+    def __init__(self, specializations, sort_collections=False):
         """Instance constructor.
 
         :param tuple specializations: Set of realm related specialization.
@@ -136,21 +136,21 @@ class Realm(SpecializationModule):
 
         self.grid = Grid(self, grid) if grid else None
         self.key_properties = KeyProperties(self, key_properties) if key_properties else None
-        self.processes = [Process(self, i) for i in processes]
+        self.processes = [Process(self, i, sort_collections) for i in processes]
 
 
 class Process(SpecializationModule):
     """Wraps a process specialization.
 
     """
-    def __init__(self, realm, mod):
+    def __init__(self, realm, mod, sort_collections):
         """Instance constructor.
 
         """
         super(Process, self).__init__(realm, mod, "process")
 
         try:
-            self.sub_processes = [SubProcess(self, i, j) for i, j in mod.SUB_PROCESSES.items()]
+            self.sub_processes = [SubProcess(self, i, j, sort_collections) for i, j in mod.SUB_PROCESSES.items()]
         except AttributeError:
             self.sub_processes = []
 
@@ -260,7 +260,7 @@ class SubProcess(Specialization):
     """Wraps a sub-process specialization.
 
     """
-    def __init__(self, process, name, obj):
+    def __init__(self, process, name, obj, sort_collections):
         """Instance constructor.
 
         """
