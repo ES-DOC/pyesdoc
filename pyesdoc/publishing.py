@@ -27,9 +27,6 @@ from pyesdoc.validation import is_valid
 # API url option name.
 _API_URL = os.getenv("ESDOC_API")
 
-# Publishing API endpoint.
-_EP_PUBLISHING = 'publishing'
-
 # HTTP response codes.
 HTTP_RESPONSE_STATUS_200 = 200
 HTTP_RESPONSE_STATUS_404 = 404
