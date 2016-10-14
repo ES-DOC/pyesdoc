@@ -97,6 +97,34 @@ class DocMetaInfo(object):
         self.type_sort_key = None                         # unicode (0.1)
         self.update_date = None                           # datetime.datetime (1.1)
         self.version = None                               # int (1.1)
+        self.source = unicode("scripts")
+
+
+class DocReference(object):
+    """A concrete class within the cim v2 type system.
+
+    A reference to another cim entity.
+
+    """
+    def __init__(self):
+        """Instance constructor.
+
+        """
+        super(DocReference, self).__init__()
+
+        self.constraint_vocabulary = None                 # unicode (0.1)
+        self.context = None                               # unicode (0.1)
+        self.description = None                           # unicode (0.1)
+        self.external_id = None                           # unicode (0.1)
+        self.id = None                                    # unicode (0.1)
+        self.institute = None                             # unicode (0.1)
+        self.linkage = None                               # unicode (1.1)
+        self.name = None                                  # unicode (1.1)
+        self.protocol = None                              # unicode (0.1)
+        self.relationship = None                          # unicode (0.1)
+        self.type = None                                  # unicode (1.1)
+        self.url = None                                   # unicode (0.1)
+        self.version = None                               # int (0.1)
 
 
 class ExtraAttribute(object):
@@ -214,64 +242,6 @@ class Responsibility(object):
 
 	    """
 	    return "{}:{}".format(self.role, self.party)
-
-
-class DocReference(OnlineResource):
-    """A concrete class within the cim v2 type system.
-
-    Specialisation of online resource for link between CIM documents, whether the
-    remote document exists when complete, or not.
-
-    """
-    def __init__(self):
-        """Instance constructor.
-
-        """
-        super(DocReference, self).__init__()
-
-        self.constraint_vocabulary = None                 # unicode (0.1)
-        self.context = None                               # unicode (0.1)
-        self.id = None                                    # unicode (0.1)
-        self.institute = None                             # unicode (0.1)
-        self.relationship = None                          # unicode (0.1)
-        self.type = None                                  # unicode (1.1)
-        self.version = None                               # int (0.1)
-
-
-class DocumentTypes(object):
-    """An enumeration within the cim v2 type system.
-
-    The complete set of CIM document types, that is, all classes which carry the
-    document metadata attributes.
-    """
-    is_open = False
-    members = [
-        "Conformance",
-        "Dataset",
-        "DomainProperties",
-        "Downscaling",
-        "Ensemble",
-        "EnsembleRequirement",
-        "ExternalDocument",
-        "ForcingConstraint",
-        "Grid",
-        "Machine",
-        "Model",
-        "MultiEnsemble",
-        "MultiTimeEnsemble",
-        "NumericalExperiment",
-        "NumericalRequirement",
-        "OutputTemporalRequirement",
-        "Party",
-        "Performance",
-        "Project",
-        "QualityReview",
-        "ScientificDomain",
-        "Simulation",
-        "SimulationPlan",
-        "TemporalConstraint",
-        "UberEnsemble"
-        ]
 
 
 class NilReason(object):

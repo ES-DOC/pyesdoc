@@ -867,15 +867,17 @@ CLASS_PROPERTIES = {
     shared.DocReference: (
         'constraint_vocabulary',
         'context',
+        'description',
+        'external_id',
         'id',
         'institute',
-        'relationship',
-        'type',
-        'version',
-        'description',
         'linkage',
         'name',
         'protocol',
+        'relationship',
+        'type',
+        'url',
+        'version',
     ),
     shared.ExtraAttribute: (
         'doc',
@@ -1384,10 +1386,16 @@ CLASS_OWN_PROPERTIES = {
     shared.DocReference: (
         'constraint_vocabulary',
         'context',
+        'description',
+        'external_id',
         'id',
         'institute',
+        'linkage',
+        'name',
+        'protocol',
         'relationship',
         'type',
+        'url',
         'version',
     ),
     shared.ExtraAttribute: (
@@ -1519,7 +1527,6 @@ ENUMS = (
     platform.VolumeUnits,
     science.ModelTypes,
     science.SelectionCardinality,
-    shared.DocumentTypes,
     shared.NilReason,
     shared.QualityStatus,
     shared.RoleCode,
@@ -1603,7 +1610,6 @@ BASE_CLASSES[science.Process] = (science.ScienceContext, )
 BASE_CLASSES[science.Resolution] = (science.SubProcess, science.ScienceContext, )
 BASE_CLASSES[science.SubProcess] = (science.ScienceContext, )
 BASE_CLASSES[science.Tuning] = (science.SubProcess, science.ScienceContext, )
-BASE_CLASSES[shared.DocReference] = (shared.OnlineResource, )
 BASE_CLASSES[software.SoftwareComponent] = (software.ComponentBase, )
 BASE_CLASSES[time.IrregularDateset] = (time.DatetimeSet, )
 BASE_CLASSES[time.RegularTimeset] = (time.DatetimeSet, )
@@ -1676,9 +1682,6 @@ SUB_CLASSES[science.SubProcess] = (
     science.Resolution,
     science.Tuning,
     science.IsoExtent,
-    )
-SUB_CLASSES[shared.OnlineResource] = (
-    shared.DocReference,
     )
 SUB_CLASSES[software.ComponentBase] = (
     science.Model,
@@ -3195,6 +3198,7 @@ CONSTRAINTS = {
         ('id', 'cardinality', "1.1"),
         ('type_display_name', 'cardinality', "0.1"),
 
+        ('source', 'constant', "scripts"),
     ),
     shared.DocReference: (
 
@@ -3203,9 +3207,11 @@ CONSTRAINTS = {
         ('description', 'type', unicode),
         ('relationship', 'type', unicode),
         ('institute', 'type', unicode),
+        ('type', 'type', unicode),
+        ('url', 'type', unicode),
         ('version', 'type', int),
         ('context', 'type', unicode),
-        ('type', 'type', unicode),
+        ('external_id', 'type', unicode),
         ('id', 'type', unicode),
         ('linkage', 'type', unicode),
         ('name', 'type', unicode),
@@ -3215,9 +3221,11 @@ CONSTRAINTS = {
         ('description', 'cardinality', "0.1"),
         ('relationship', 'cardinality', "0.1"),
         ('institute', 'cardinality', "0.1"),
+        ('type', 'cardinality', "1.1"),
+        ('url', 'cardinality', "0.1"),
         ('version', 'cardinality', "0.1"),
         ('context', 'cardinality', "0.1"),
-        ('type', 'cardinality', "1.1"),
+        ('external_id', 'cardinality', "0.1"),
         ('id', 'cardinality', "0.1"),
         ('linkage', 'cardinality', "1.1"),
         ('name', 'cardinality', "1.1"),
@@ -7715,6 +7723,7 @@ CONSTRAINTS = {
 
         ('cardinality', "1.1"),
 
+        ('constant', "scripts"),
     ),
     (shared.DocMetaInfo, 'source_key'): (
 
@@ -7780,6 +7789,20 @@ CONSTRAINTS = {
         ('cardinality', "0.1"),
 
     ),
+    (shared.DocReference, 'description'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (shared.DocReference, 'external_id'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
     (shared.DocReference, 'id'): (
 
         ('type', unicode),
@@ -7788,34 +7811,6 @@ CONSTRAINTS = {
 
     ),
     (shared.DocReference, 'institute'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (shared.DocReference, 'relationship'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (shared.DocReference, 'type'): (
-
-        ('type', unicode),
-
-        ('cardinality', "1.1"),
-
-    ),
-    (shared.DocReference, 'version'): (
-
-        ('type', int),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (shared.DocReference, 'description'): (
 
         ('type', unicode),
 
@@ -7839,6 +7834,34 @@ CONSTRAINTS = {
     (shared.DocReference, 'protocol'): (
 
         ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (shared.DocReference, 'relationship'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (shared.DocReference, 'type'): (
+
+        ('type', unicode),
+
+        ('cardinality', "1.1"),
+
+    ),
+    (shared.DocReference, 'url'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (shared.DocReference, 'version'): (
+
+        ('type', int),
 
         ('cardinality', "0.1"),
 
@@ -8742,8 +8765,7 @@ http://www.geosci-model-dev-discuss.net/gmd-2016-197/)
 
     """,
     shared.DocReference: """
-        Specialisation of online resource for link between CIM documents, whether the
-    remote document exists when complete, or not.
+        A reference to another cim entity.
 
     """,
     shared.ExtraAttribute: """
@@ -8870,7 +8892,7 @@ http://www.geosci-model-dev-discuss.net/gmd-2016-197/)
     (activity.Activity, 'long_name'):
         "Longer version of activity name.",
     (activity.Activity, 'meta'):
-        "Metadata describing how this document was created.",
+        "Injected document metadata.",
     (activity.Activity, 'name'):
         "Short name or abbreviation.",
     (activity.Activity, 'previously_known_as'):
@@ -8944,7 +8966,7 @@ http://www.geosci-model-dev-discuss.net/gmd-2016-197/)
     (data.Dataset, 'drs_datasets'):
         "Data available in the DRS.",
     (data.Dataset, 'meta'):
-        "Metadata describing the creation of this dataset description document.",
+        "Injected document metadata.",
     (data.Dataset, 'name'):
         "Name of dataset.",
     (data.Dataset, 'produced_by'):
@@ -9156,7 +9178,7 @@ http://www.geosci-model-dev-discuss.net/gmd-2016-197/)
     (platform.ComputePool, 'operating_system'):
         "Operating system.",
     (platform.Machine, 'meta'):
-        "Document description.",
+        "Injected document metadata.",
     (platform.Partition, 'compute_pools'):
         "Layout of compute nodes.",
     (platform.Partition, 'description'):
@@ -9196,7 +9218,7 @@ http://www.geosci-model-dev-discuss.net/gmd-2016-197/)
     (platform.Performance, 'memory_bloat'):
         "Memory bloat is the ratio of the actual memory size to the ideal memory size (the size of the complete model state, which in theory is all you need to hold in memory)Mi, defined below.",
     (platform.Performance, 'meta'):
-        "Document metadata.",
+        "Injected document metadata.",
     (platform.Performance, 'model'):
         "Model for which performance was tested.",
     (platform.Performance, 'name'):
@@ -9242,7 +9264,7 @@ http://www.geosci-model-dev-discuss.net/gmd-2016-197/)
     (science.Grid, 'discretisation'):
         "Description of the numerics of the discretisation.",
     (science.Grid, 'meta'):
-        "Metadata about how the model description was constructed.",
+        "Injected document metadata.",
     (science.Grid, 'name'):
         "This is a string usually used by the modelling group to describe the overall grid.(e.g. the ENDGAME/New Dynamics dynamical cores have their own grids describing variable layouts.",
     (science.IsoExtent, 'eastern_boundary'):
@@ -9274,7 +9296,7 @@ http://www.geosci-model-dev-discuss.net/gmd-2016-197/)
     (science.Model, 'internal_software_components'):
         "Software modules which together provide the functionality for this model.",
     (science.Model, 'meta'):
-        "Metadata about how the model description was constructed.",
+        "Injected document metadata.",
     (science.Model, 'model_key_properties'):
         "Model default key properties (may be over-ridden in coupled component and scientific realm properties).",
     (science.Model, 'simulates'):
@@ -9314,7 +9336,7 @@ http://www.geosci-model-dev-discuss.net/gmd-2016-197/)
     (science.ScientificRealm, 'key_properties'):
         "Key properties for the domain which differ from model defaults (grid, timestep etc).",
     (science.ScientificRealm, 'meta'):
-        "Metadata describing the construction of this domain description.",
+        "Injected document metadata.",
     (science.ScientificRealm, 'name'):
         "Name of the scientific domain (e.g. ocean).",
     (science.ScientificRealm, 'overview'):
@@ -9352,7 +9374,7 @@ http://www.geosci-model-dev-discuss.net/gmd-2016-197/)
     (shared.Citation, 'doi'):
         "Digital Object Identifier, if it exists.",
     (shared.Citation, 'meta'):
-        "Metadata about the creation of this document description.",
+        "Injected document metadata.",
     (shared.Citation, 'title'):
         "Citation short title.",
     (shared.Citation, 'type'):
@@ -9370,7 +9392,7 @@ http://www.geosci-model-dev-discuss.net/gmd-2016-197/)
     (shared.DocMetaInfo, 'external_ids'):
         "Set of identifiers used to reference the document by external parties.",
     (shared.DocMetaInfo, 'id'):
-        "Universal document identifier (normally a UUID).",
+        "Universal document identifier (must be a valid UUID).",
     (shared.DocMetaInfo, 'institute'):
         "Name of institute with which instance is associated.",
     (shared.DocMetaInfo, 'language'):
@@ -9399,16 +9421,28 @@ http://www.geosci-model-dev-discuss.net/gmd-2016-197/)
         "A constraint vocabulary for the relationship.",
     (shared.DocReference, 'context'):
         "Information about remote record in context of reference.",
+    (shared.DocReference, 'description'):
+        "Detail of how to access the resource.",
+    (shared.DocReference, 'external_id'):
+        "External identifier of remote resource, if known.",
     (shared.DocReference, 'id'):
         "Identifier of remote resource, if known.",
     (shared.DocReference, 'institute'):
         "Canonical institute name of referenced document.",
+    (shared.DocReference, 'linkage'):
+        "A URL.",
+    (shared.DocReference, 'name'):
+        "Name of online resource.",
+    (shared.DocReference, 'protocol'):
+        "Protocol to use at the linkage.",
     (shared.DocReference, 'relationship'):
         "Predicate - relationship of the object target as seen from the subject resource.",
     (shared.DocReference, 'type'):
-        "The type of the remote record.",
+        "The type of remote document.",
+    (shared.DocReference, 'url'):
+        "The URL of the remote document.",
     (shared.DocReference, 'version'):
-        "The version of the remote record.",
+        "The version of the remote document.",
     (shared.ExtraAttribute, 'doc'):
         "Documentation associated with this key.",
     (shared.ExtraAttribute, 'key'):
@@ -9430,7 +9464,7 @@ http://www.geosci-model-dev-discuss.net/gmd-2016-197/)
     (shared.Party, 'email'):
         "Email address.",
     (shared.Party, 'meta'):
-        "Provides a unique identifier for the party.",
+        "Injected document metadata.",
     (shared.Party, 'name'):
         "Name of person or organisation.",
     (shared.Party, 'orcid_id'):
@@ -9442,7 +9476,7 @@ http://www.geosci-model-dev-discuss.net/gmd-2016-197/)
     (shared.QualityReview, 'date'):
         "Date upon which review was made.",
     (shared.QualityReview, 'meta'):
-        "Metadata about the creation of this document description.",
+        "Injected document metadata.",
     (shared.QualityReview, 'metadata_reviewer'):
         "Party who made the metadata quality assessment.",
     (shared.QualityReview, 'quality_description'):
@@ -9607,11 +9641,6 @@ http://www.geosci-model-dev-discuss.net/gmd-2016-197/)
     science.SelectionCardinality: """
         Provides the possible cardinalities for selecting from a controlled
     vocabulary.
-
-    """,
-    shared.DocumentTypes: """
-        The complete set of CIM document types, that is, all classes which carry the
-    document metadata attributes.
 
     """,
     shared.NilReason: """
@@ -9812,56 +9841,6 @@ http://www.geosci-model-dev-discuss.net/gmd-2016-197/)
         "One and only one selection is required",
     (science.SelectionCardinality, '1.N'):
         "At least one, and possibly many, selections are required",
-    (shared.DocumentTypes, 'Conformance'):
-        "Used to hold information about how simulations and ensemble met experimental requirements",
-    (shared.DocumentTypes, 'Dataset'):
-        "An Atomic Dataset description, that is the minimal set of files with common publication characteristics.",
-    (shared.DocumentTypes, 'DomainProperties'):
-        "SpatioTemporal domain requirements for a numerical experiment.",
-    (shared.DocumentTypes, 'Downscaling'):
-        "Description of the techniques and software used to downscale data.",
-    (shared.DocumentTypes, 'Ensemble'):
-        "Parent  description for set of runs conforming to a numerical experiment.",
-    (shared.DocumentTypes, 'EnsembleRequirement'):
-        "Description of the ensemble requirements of a numerical experiment.",
-    (shared.DocumentTypes, 'ExternalDocument'):
-        "A document held outside of es-doc.",
-    (shared.DocumentTypes, 'ForcingConstraint'):
-        "A constraint on how a model must be forced to meet the requirements of a numerical experiment.",
-    (shared.DocumentTypes, 'Grid'):
-        "The sampling discretisation used by a model or dataset.",
-    (shared.DocumentTypes, 'Machine'):
-        "A computer used for numerical experimentation (and/or post-processing).",
-    (shared.DocumentTypes, 'Model'):
-        "A piece of software used to carry out simulations.",
-    (shared.DocumentTypes, 'MultiEnsemble'):
-        "An ensemble requirement describing multiple ensemble axes.",
-    (shared.DocumentTypes, 'MultiTimeEnsemble'):
-        "An ensemble requirement with multple time axes.",
-    (shared.DocumentTypes, 'NumericalExperiment'):
-        "The scientific description of a numerical experiment",
-    (shared.DocumentTypes, 'NumericalRequirement'):
-        "A numerical requirement of a numerical experiment.",
-    (shared.DocumentTypes, 'OutputTemporalRequirement'):
-        "The output requirements for one or more numerical experiments",
-    (shared.DocumentTypes, 'Party'):
-        "A person or organisation which has a role in the documentation of the simulation workflow",
-    (shared.DocumentTypes, 'Performance'):
-        "A formal set of criteria describing how a model performed on a given machine.",
-    (shared.DocumentTypes, 'Project'):
-        "An umbrella for a set of numerical experiments (e.g. a MIP)",
-    (shared.DocumentTypes, 'QualityReview'):
-        "A quality control assessment for another CIM artifact",
-    (shared.DocumentTypes, 'ScientificDomain'):
-        "A scientifically coherent realm of a numerical model (typically modelled independently).",
-    (shared.DocumentTypes, 'Simulation'):
-        "A simulation carried out as part of an ensemble for a numerical experiment.",
-    (shared.DocumentTypes, 'SimulationPlan'):
-        "A plan to carry out a simulations for a numerical experiment.",
-    (shared.DocumentTypes, 'TemporalConstraint'):
-        "A constraint on the real time simulations need to represent for a numerical experiment.",
-    (shared.DocumentTypes, 'UberEnsemble'):
-        "An ensemble description that crosses multiple modelling groups.",
     (shared.NilReason, 'nil:inapplicable'):
         "There is no value",
     (shared.NilReason, 'nil:missing'):
@@ -10348,10 +10327,16 @@ KEYS = {
     (shared.DocMetaInfo, 'version'): "cim.2.shared.DocMetaInfo.version",
     (shared.DocReference, 'constraint_vocabulary'): "cim.2.shared.DocReference.constraint_vocabulary",
     (shared.DocReference, 'context'): "cim.2.shared.DocReference.context",
+    (shared.DocReference, 'description'): "cim.2.shared.DocReference.description",
+    (shared.DocReference, 'external_id'): "cim.2.shared.DocReference.external_id",
     (shared.DocReference, 'id'): "cim.2.shared.DocReference.id",
     (shared.DocReference, 'institute'): "cim.2.shared.DocReference.institute",
+    (shared.DocReference, 'linkage'): "cim.2.shared.DocReference.linkage",
+    (shared.DocReference, 'name'): "cim.2.shared.DocReference.name",
+    (shared.DocReference, 'protocol'): "cim.2.shared.DocReference.protocol",
     (shared.DocReference, 'relationship'): "cim.2.shared.DocReference.relationship",
     (shared.DocReference, 'type'): "cim.2.shared.DocReference.type",
+    (shared.DocReference, 'url'): "cim.2.shared.DocReference.url",
     (shared.DocReference, 'version'): "cim.2.shared.DocReference.version",
     (shared.ExtraAttribute, 'doc'): "cim.2.shared.ExtraAttribute.doc",
     (shared.ExtraAttribute, 'key'): "cim.2.shared.ExtraAttribute.key",
@@ -10440,7 +10425,6 @@ KEYS = {
     platform.VolumeUnits: "cim.2.platform.VolumeUnits",
     science.ModelTypes: "cim.2.science.ModelTypes",
     science.SelectionCardinality: "cim.2.science.SelectionCardinality",
-    shared.DocumentTypes: "cim.2.shared.DocumentTypes",
     shared.NilReason: "cim.2.shared.NilReason",
     shared.QualityStatus: "cim.2.shared.QualityStatus",
     shared.RoleCode: "cim.2.shared.RoleCode",
@@ -10532,31 +10516,6 @@ KEYS = {
     (science.SelectionCardinality, '0.N'): "cim.2.science.SelectionCardinality.0.N",
     (science.SelectionCardinality, '1.1'): "cim.2.science.SelectionCardinality.1.1",
     (science.SelectionCardinality, '1.N'): "cim.2.science.SelectionCardinality.1.N",
-    (shared.DocumentTypes, 'Conformance'): "cim.2.shared.DocumentTypes.Conformance",
-    (shared.DocumentTypes, 'Dataset'): "cim.2.shared.DocumentTypes.Dataset",
-    (shared.DocumentTypes, 'DomainProperties'): "cim.2.shared.DocumentTypes.DomainProperties",
-    (shared.DocumentTypes, 'Downscaling'): "cim.2.shared.DocumentTypes.Downscaling",
-    (shared.DocumentTypes, 'Ensemble'): "cim.2.shared.DocumentTypes.Ensemble",
-    (shared.DocumentTypes, 'EnsembleRequirement'): "cim.2.shared.DocumentTypes.EnsembleRequirement",
-    (shared.DocumentTypes, 'ExternalDocument'): "cim.2.shared.DocumentTypes.ExternalDocument",
-    (shared.DocumentTypes, 'ForcingConstraint'): "cim.2.shared.DocumentTypes.ForcingConstraint",
-    (shared.DocumentTypes, 'Grid'): "cim.2.shared.DocumentTypes.Grid",
-    (shared.DocumentTypes, 'Machine'): "cim.2.shared.DocumentTypes.Machine",
-    (shared.DocumentTypes, 'Model'): "cim.2.shared.DocumentTypes.Model",
-    (shared.DocumentTypes, 'MultiEnsemble'): "cim.2.shared.DocumentTypes.MultiEnsemble",
-    (shared.DocumentTypes, 'MultiTimeEnsemble'): "cim.2.shared.DocumentTypes.MultiTimeEnsemble",
-    (shared.DocumentTypes, 'NumericalExperiment'): "cim.2.shared.DocumentTypes.NumericalExperiment",
-    (shared.DocumentTypes, 'NumericalRequirement'): "cim.2.shared.DocumentTypes.NumericalRequirement",
-    (shared.DocumentTypes, 'OutputTemporalRequirement'): "cim.2.shared.DocumentTypes.OutputTemporalRequirement",
-    (shared.DocumentTypes, 'Party'): "cim.2.shared.DocumentTypes.Party",
-    (shared.DocumentTypes, 'Performance'): "cim.2.shared.DocumentTypes.Performance",
-    (shared.DocumentTypes, 'Project'): "cim.2.shared.DocumentTypes.Project",
-    (shared.DocumentTypes, 'QualityReview'): "cim.2.shared.DocumentTypes.QualityReview",
-    (shared.DocumentTypes, 'ScientificDomain'): "cim.2.shared.DocumentTypes.ScientificDomain",
-    (shared.DocumentTypes, 'Simulation'): "cim.2.shared.DocumentTypes.Simulation",
-    (shared.DocumentTypes, 'SimulationPlan'): "cim.2.shared.DocumentTypes.SimulationPlan",
-    (shared.DocumentTypes, 'TemporalConstraint'): "cim.2.shared.DocumentTypes.TemporalConstraint",
-    (shared.DocumentTypes, 'UberEnsemble'): "cim.2.shared.DocumentTypes.UberEnsemble",
     (shared.NilReason, 'nil:inapplicable'): "cim.2.shared.NilReason.nil:inapplicable",
     (shared.NilReason, 'nil:missing'): "cim.2.shared.NilReason.nil:missing",
     (shared.NilReason, 'nil:template'): "cim.2.shared.NilReason.nil:template",
@@ -10684,7 +10643,6 @@ shared.Cimtext.type_key = KEYS[shared.Cimtext]
 shared.Citation.type_key = KEYS[shared.Citation]
 shared.DocMetaInfo.type_key = KEYS[shared.DocMetaInfo]
 shared.DocReference.type_key = KEYS[shared.DocReference]
-shared.DocumentTypes.type_key = KEYS[shared.DocumentTypes]
 shared.ExtraAttribute.type_key = KEYS[shared.ExtraAttribute]
 shared.NilReason.type_key = KEYS[shared.NilReason]
 shared.OnlineResource.type_key = KEYS[shared.OnlineResource]

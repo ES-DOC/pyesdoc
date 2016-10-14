@@ -124,7 +124,6 @@ from typeset_for_platform_package import StorageSystems
 from typeset_for_platform_package import VolumeUnits
 from typeset_for_science_package import ModelTypes
 from typeset_for_science_package import SelectionCardinality
-from typeset_for_shared_package import DocumentTypes
 from typeset_for_shared_package import NilReason
 from typeset_for_shared_package import QualityStatus
 from typeset_for_shared_package import RoleCode

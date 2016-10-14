@@ -134,25 +134,11 @@ class DateRange(object):
         self.duration = None                              # unicode (0.1)
 
 
-class DocGenealogy(object):
-    """A concrete class within the cim v1 type system.
-
-    A record of a document's history. A genealogy element contains a textual description and a set of relationships. Each relationship has a type and a reference to some target. There are different relationships for different document types.
-
-    """
-    def __init__(self):
-        """Instance constructor.
-
-        """
-        super(DocGenealogy, self).__init__()
-
-        self.relationships = []                           # shared.DocRelationship (0.N)
-
-
 class DocMetaInfo(object):
     """A concrete class within the cim v1 type system.
 
-    Encapsulates document meta information.
+    Encapsulates document meta information used by es-doc machinery. Will not normally be
+    populated by humans. May duplicate information held in 'visible' metadata.
 
     """
     def __init__(self):
@@ -161,20 +147,18 @@ class DocMetaInfo(object):
         """
         super(DocMetaInfo, self).__init__()
 
-        self.author = None                                # shared.ResponsibleParty (0.1)
+        self.author = None                                # shared.Party (0.1)
         self.create_date = None                           # datetime.datetime (1.1)
         self.drs_keys = []                                # unicode (0.N)
         self.drs_path = None                              # unicode (0.1)
-        self.external_ids = []                            # shared.StandardName (0.N)
-        self.genealogy = None                             # shared.DocGenealogy (0.1)
-        self.id = None                                    # uuid.UUID (1.1)
+        self.external_ids = []                            # unicode (0.N)
+        self.id = None                                    # unicode (1.1)
         self.institute = None                             # unicode (0.1)
         self.language = None                              # unicode (1.1)
         self.project = None                               # unicode (1.1)
         self.sort_key = None                              # unicode (0.1)
         self.source = None                                # unicode (1.1)
         self.source_key = None                            # unicode (0.1)
-        self.status = None                                # shared.DocStatusType (0.1)
         self.sub_projects = []                            # unicode (0.N)
         self.type = None                                  # unicode (1.1)
         self.type_display_name = None                     # unicode (0.1)
@@ -196,29 +180,19 @@ class DocReference(object):
         """
         super(DocReference, self).__init__()
 
-        self.changes = []                                 # shared.Change (0.N)
+        self.constraint_vocabulary = None                 # unicode (0.1)
+        self.context = None                               # unicode (0.1)
         self.description = None                           # unicode (0.1)
         self.external_id = None                           # unicode (0.1)
-        self.id = None                                    # uuid.UUID (0.1)
-        self.name = None                                  # unicode (0.1)
-        self.type = None                                  # unicode (0.1)
+        self.id = None                                    # unicode (0.1)
+        self.institute = None                             # unicode (0.1)
+        self.linkage = None                               # unicode (1.1)
+        self.name = None                                  # unicode (1.1)
+        self.protocol = None                              # unicode (0.1)
+        self.relationship = None                          # unicode (0.1)
+        self.type = None                                  # unicode (1.1)
         self.url = None                                   # unicode (0.1)
         self.version = None                               # int (0.1)
-
-
-class DocRelationshipTarget(object):
-    """A concrete class within the cim v1 type system.
-
-    Creates and returns instance of doc_relationship_target class.
-
-    """
-    def __init__(self):
-        """Instance constructor.
-
-        """
-        super(DocRelationshipTarget, self).__init__()
-
-        self.reference = None                             # shared.DocReference (0.1)
 
 
 class License(object):
@@ -332,7 +306,6 @@ class Relationship(object):
         super(Relationship, self).__init__()
 
         self.description = None                           # unicode (0.1)
-        self.direction = None                             # shared.DocRelationshipDirectionType (1.1)
 
 
 class ResponsibleParty(object):
@@ -436,22 +409,6 @@ class Daily360(Calendar):
 
 
 
-class DocRelationship(Relationship):
-    """A concrete class within the cim v1 type system.
-
-    Contains the set of relationships supported by a Document.
-
-    """
-    def __init__(self):
-        """Instance constructor.
-
-        """
-        super(DocRelationship, self).__init__()
-
-        self.target = None                                # shared.DocRelationshipTarget (1.1)
-        self.type = None                                  # shared.DocRelationshipType (1.1)
-
-
 class OpenDateRange(DateRange):
     """A concrete class within the cim v1 type system.
 
@@ -537,70 +494,6 @@ class DataPurpose(object):
         "ancillaryFile",
         "boundaryCondition",
         "initialCondition"
-        ]
-
-
-class DocRelationshipDirectionType(object):
-    """An enumeration within the cim v1 type system.
-
-    Creates and returns instance of relationship_direction_type enum.
-    """
-    is_open = False
-    members = [
-        "fromTarget",
-        "toTarget"
-        ]
-
-
-class DocRelationshipType(object):
-    """An enumeration within the cim v1 type system.
-
-    Creates and returns instance of document_relationship_type enum.
-    """
-    is_open = False
-    members = [
-        "fixedVersionOf",
-        "laterVersionOf",
-        "other",
-        "previousVersionOf",
-        "similarTo"
-        ]
-
-
-class DocStatusType(object):
-    """An enumeration within the cim v1 type system.
-
-    Status of cim document.
-    """
-    is_open = False
-    members = [
-        "complete",
-        "in-progress",
-        "incomplete"
-        ]
-
-
-class DocType(object):
-    """An enumeration within the cim v1 type system.
-
-    Creates and returns instance of doc_type enum.
-    """
-    is_open = False
-    members = [
-        "assimilation",
-        "cimQuality",
-        "dataObject",
-        "dataProcessing",
-        "downscalingSimulation",
-        "ensemble",
-        "gridSpec",
-        "modelComponent",
-        "numericalExperiment",
-        "platform",
-        "processorComponent",
-        "simulationComposite",
-        "simulationRun",
-        "statisticalModelComponent"
         ]
 
 

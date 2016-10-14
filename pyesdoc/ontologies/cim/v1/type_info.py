@@ -123,11 +123,8 @@ CLASSES = (
     shared.Daily360,
     shared.DataSource,
     shared.DateRange,
-    shared.DocGenealogy,
     shared.DocMetaInfo,
     shared.DocReference,
-    shared.DocRelationship,
-    shared.DocRelationshipTarget,
     shared.License,
     shared.Machine,
     shared.MachineCompilerUnit,
@@ -248,7 +245,6 @@ CLASS_PROPERTIES = {
         'target',
         'type',
         'description',
-        'direction',
     ),
     activity.ExperimentRelationshipTarget: (
         'numerical_experiment',
@@ -383,7 +379,6 @@ CLASS_PROPERTIES = {
         'target',
         'type',
         'description',
-        'direction',
     ),
     activity.SimulationRelationshipTarget: (
         'simulation',
@@ -708,16 +703,12 @@ CLASS_PROPERTIES = {
     shared.DateRange: (
         'duration',
     ),
-    shared.DocGenealogy: (
-        'relationships',
-    ),
     shared.DocMetaInfo: (
         'author',
         'create_date',
         'drs_keys',
         'drs_path',
         'external_ids',
-        'genealogy',
         'id',
         'institute',
         'language',
@@ -725,7 +716,6 @@ CLASS_PROPERTIES = {
         'sort_key',
         'source',
         'source_key',
-        'status',
         'sub_projects',
         'type',
         'type_display_name',
@@ -734,23 +724,19 @@ CLASS_PROPERTIES = {
         'version',
     ),
     shared.DocReference: (
-        'changes',
+        'constraint_vocabulary',
+        'context',
         'description',
         'external_id',
         'id',
+        'institute',
+        'linkage',
         'name',
+        'protocol',
+        'relationship',
         'type',
         'url',
         'version',
-    ),
-    shared.DocRelationship: (
-        'target',
-        'type',
-        'description',
-        'direction',
-    ),
-    shared.DocRelationshipTarget: (
-        'reference',
     ),
     shared.License: (
         'contact',
@@ -805,7 +791,6 @@ CLASS_PROPERTIES = {
     ),
     shared.Relationship: (
         'description',
-        'direction',
     ),
     shared.ResponsibleParty: (
         'abbreviation',
@@ -1446,16 +1431,12 @@ CLASS_OWN_PROPERTIES = {
     shared.DateRange: (
         'duration',
     ),
-    shared.DocGenealogy: (
-        'relationships',
-    ),
     shared.DocMetaInfo: (
         'author',
         'create_date',
         'drs_keys',
         'drs_path',
         'external_ids',
-        'genealogy',
         'id',
         'institute',
         'language',
@@ -1463,7 +1444,6 @@ CLASS_OWN_PROPERTIES = {
         'sort_key',
         'source',
         'source_key',
-        'status',
         'sub_projects',
         'type',
         'type_display_name',
@@ -1472,21 +1452,19 @@ CLASS_OWN_PROPERTIES = {
         'version',
     ),
     shared.DocReference: (
-        'changes',
+        'constraint_vocabulary',
+        'context',
         'description',
         'external_id',
         'id',
+        'institute',
+        'linkage',
         'name',
+        'protocol',
+        'relationship',
         'type',
         'url',
         'version',
-    ),
-    shared.DocRelationship: (
-        'target',
-        'type',
-    ),
-    shared.DocRelationshipTarget: (
-        'reference',
     ),
     shared.License: (
         'contact',
@@ -1534,7 +1512,6 @@ CLASS_OWN_PROPERTIES = {
     ),
     shared.Relationship: (
         'description',
-        'direction',
     ),
     shared.ResponsibleParty: (
         'abbreviation',
@@ -1749,10 +1726,6 @@ ENUMS = (
     shared.ChangePropertyType,
     shared.CompilerType,
     shared.DataPurpose,
-    shared.DocRelationshipDirectionType,
-    shared.DocRelationshipType,
-    shared.DocStatusType,
-    shared.DocType,
     shared.InterconnectType,
     shared.MachineType,
     shared.MachineVendorType,
@@ -1828,7 +1801,6 @@ BASE_CLASSES[grids.VerticalCoordinateList] = (grids.CoordinateList, )
 BASE_CLASSES[shared.ChangeProperty] = (shared.Property, )
 BASE_CLASSES[shared.ClosedDateRange] = (shared.DateRange, )
 BASE_CLASSES[shared.Daily360] = (shared.Calendar, )
-BASE_CLASSES[shared.DocRelationship] = (shared.Relationship, )
 BASE_CLASSES[shared.OpenDateRange] = (shared.DateRange, )
 BASE_CLASSES[shared.PerpetualPeriod] = (shared.Calendar, )
 BASE_CLASSES[shared.RealCalendar] = (shared.Calendar, )
@@ -1922,7 +1894,6 @@ SUB_CLASSES[shared.Property] = (
 SUB_CLASSES[shared.Relationship] = (
     activity.ExperimentRelationship,
     activity.SimulationRelationship,
-    shared.DocRelationship,
     )
 SUB_CLASSES[software.Component] = (
     software.ModelComponent,
@@ -2108,12 +2079,10 @@ CONSTRAINTS = {
     ),
     activity.ExperimentRelationship: (
 
-        ('direction', 'type', unicode),
         ('type', 'type', unicode),
         ('description', 'type', unicode),
         ('target', 'type', activity.ExperimentRelationshipTarget),
 
-        ('direction', 'cardinality', "1.1"),
         ('type', 'cardinality', "1.1"),
         ('description', 'cardinality', "0.1"),
         ('target', 'cardinality', "1.1"),
@@ -2394,12 +2363,10 @@ CONSTRAINTS = {
     ),
     activity.SimulationRelationship: (
 
-        ('direction', 'type', unicode),
         ('type', 'type', unicode),
         ('description', 'type', unicode),
         ('target', 'type', activity.SimulationRelationshipTarget),
 
-        ('direction', 'cardinality', "1.1"),
         ('type', 'cardinality', "1.1"),
         ('description', 'cardinality', "0.1"),
         ('target', 'cardinality', "1.1"),
@@ -3091,48 +3058,37 @@ CONSTRAINTS = {
         ('duration', 'cardinality', "0.1"),
 
     ),
-    shared.DocGenealogy: (
-
-        ('relationships', 'type', shared.DocRelationship),
-
-        ('relationships', 'cardinality', "0.N"),
-
-    ),
     shared.DocMetaInfo: (
 
         ('drs_keys', 'type', unicode),
         ('drs_path', 'type', unicode),
         ('create_date', 'type', datetime.datetime),
         ('language', 'type', unicode),
-        ('genealogy', 'type', shared.DocGenealogy),
-        ('author', 'type', shared.ResponsibleParty),
+        ('author', 'type', unicode),
         ('institute', 'type', unicode),
         ('source_key', 'type', unicode),
         ('project', 'type', unicode),
         ('sort_key', 'type', unicode),
         ('version', 'type', int),
-        ('status', 'type', unicode),
         ('source', 'type', unicode),
         ('type_sort_key', 'type', unicode),
         ('update_date', 'type', datetime.datetime),
-        ('external_ids', 'type', shared.StandardName),
+        ('external_ids', 'type', unicode),
         ('sub_projects', 'type', unicode),
         ('type', 'type', unicode),
-        ('id', 'type', uuid.UUID),
+        ('id', 'type', unicode),
         ('type_display_name', 'type', unicode),
 
         ('drs_keys', 'cardinality', "0.N"),
         ('drs_path', 'cardinality', "0.1"),
         ('create_date', 'cardinality', "1.1"),
         ('language', 'cardinality', "1.1"),
-        ('genealogy', 'cardinality', "0.1"),
         ('author', 'cardinality', "0.1"),
         ('institute', 'cardinality', "0.1"),
         ('source_key', 'cardinality', "0.1"),
         ('project', 'cardinality', "1.1"),
         ('sort_key', 'cardinality', "0.1"),
         ('version', 'cardinality', "1.1"),
-        ('status', 'cardinality', "0.1"),
         ('source', 'cardinality', "1.1"),
         ('type_sort_key', 'cardinality', "0.1"),
         ('update_date', 'cardinality', "1.1"),
@@ -3146,43 +3102,33 @@ CONSTRAINTS = {
     ),
     shared.DocReference: (
 
+        ('constraint_vocabulary', 'type', unicode),
+        ('protocol', 'type', unicode),
         ('description', 'type', unicode),
-        ('url', 'type', unicode),
+        ('relationship', 'type', unicode),
+        ('institute', 'type', unicode),
         ('type', 'type', unicode),
+        ('url', 'type', unicode),
         ('version', 'type', int),
-        ('changes', 'type', shared.Change),
+        ('context', 'type', unicode),
         ('external_id', 'type', unicode),
-        ('id', 'type', uuid.UUID),
+        ('id', 'type', unicode),
+        ('linkage', 'type', unicode),
         ('name', 'type', unicode),
 
+        ('constraint_vocabulary', 'cardinality', "0.1"),
+        ('protocol', 'cardinality', "0.1"),
         ('description', 'cardinality', "0.1"),
+        ('relationship', 'cardinality', "0.1"),
+        ('institute', 'cardinality', "0.1"),
+        ('type', 'cardinality', "1.1"),
         ('url', 'cardinality', "0.1"),
-        ('type', 'cardinality', "0.1"),
         ('version', 'cardinality', "0.1"),
-        ('changes', 'cardinality', "0.N"),
+        ('context', 'cardinality', "0.1"),
         ('external_id', 'cardinality', "0.1"),
         ('id', 'cardinality', "0.1"),
-        ('name', 'cardinality', "0.1"),
-
-    ),
-    shared.DocRelationship: (
-
-        ('direction', 'type', unicode),
-        ('type', 'type', unicode),
-        ('description', 'type', unicode),
-        ('target', 'type', shared.DocRelationshipTarget),
-
-        ('direction', 'cardinality', "1.1"),
-        ('type', 'cardinality', "1.1"),
-        ('description', 'cardinality', "0.1"),
-        ('target', 'cardinality', "1.1"),
-
-    ),
-    shared.DocRelationshipTarget: (
-
-        ('reference', 'type', shared.DocReference),
-
-        ('reference', 'cardinality', "0.1"),
+        ('linkage', 'cardinality', "1.1"),
+        ('name', 'cardinality', "1.1"),
 
     ),
     shared.License: (
@@ -3297,10 +3243,8 @@ CONSTRAINTS = {
     ),
     shared.Relationship: (
 
-        ('direction', 'type', unicode),
         ('description', 'type', unicode),
 
-        ('direction', 'cardinality', "1.1"),
         ('description', 'cardinality', "0.1"),
 
     ),
@@ -4303,13 +4247,6 @@ CONSTRAINTS = {
         ('cardinality', "0.1"),
 
     ),
-    (activity.ExperimentRelationship, 'direction'): (
-
-        ('type', unicode),
-
-        ('cardinality', "1.1"),
-
-    ),
 
     (activity.ExperimentRelationshipTarget, 'numerical_experiment'): (
 
@@ -5080,13 +5017,6 @@ CONSTRAINTS = {
         ('type', unicode),
 
         ('cardinality', "0.1"),
-
-    ),
-    (activity.SimulationRelationship, 'direction'): (
-
-        ('type', unicode),
-
-        ('cardinality', "1.1"),
 
     ),
 
@@ -6819,17 +6749,9 @@ CONSTRAINTS = {
 
     ),
 
-    (shared.DocGenealogy, 'relationships'): (
-
-        ('type', shared.DocRelationship),
-
-        ('cardinality', "0.N"),
-
-    ),
-
     (shared.DocMetaInfo, 'author'): (
 
-        ('type', shared.ResponsibleParty),
+        ('type', unicode),
 
         ('cardinality', "0.1"),
 
@@ -6857,21 +6779,14 @@ CONSTRAINTS = {
     ),
     (shared.DocMetaInfo, 'external_ids'): (
 
-        ('type', shared.StandardName),
+        ('type', unicode),
 
         ('cardinality', "0.N"),
 
     ),
-    (shared.DocMetaInfo, 'genealogy'): (
-
-        ('type', shared.DocGenealogy),
-
-        ('cardinality', "0.1"),
-
-    ),
     (shared.DocMetaInfo, 'id'): (
 
-        ('type', uuid.UUID),
+        ('type', unicode),
 
         ('cardinality', "1.1"),
 
@@ -6913,13 +6828,6 @@ CONSTRAINTS = {
         ('constant', "scripts"),
     ),
     (shared.DocMetaInfo, 'source_key'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (shared.DocMetaInfo, 'status'): (
 
         ('type', unicode),
 
@@ -6969,11 +6877,18 @@ CONSTRAINTS = {
 
     ),
 
-    (shared.DocReference, 'changes'): (
+    (shared.DocReference, 'constraint_vocabulary'): (
 
-        ('type', shared.Change),
+        ('type', unicode),
 
-        ('cardinality', "0.N"),
+        ('cardinality', "0.1"),
+
+    ),
+    (shared.DocReference, 'context'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
 
     ),
     (shared.DocReference, 'description'): (
@@ -6992,12 +6907,40 @@ CONSTRAINTS = {
     ),
     (shared.DocReference, 'id'): (
 
-        ('type', uuid.UUID),
+        ('type', unicode),
 
         ('cardinality', "0.1"),
 
     ),
+    (shared.DocReference, 'institute'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (shared.DocReference, 'linkage'): (
+
+        ('type', unicode),
+
+        ('cardinality', "1.1"),
+
+    ),
     (shared.DocReference, 'name'): (
+
+        ('type', unicode),
+
+        ('cardinality', "1.1"),
+
+    ),
+    (shared.DocReference, 'protocol'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (shared.DocReference, 'relationship'): (
 
         ('type', unicode),
 
@@ -7008,7 +6951,7 @@ CONSTRAINTS = {
 
         ('type', unicode),
 
-        ('cardinality', "0.1"),
+        ('cardinality', "1.1"),
 
     ),
     (shared.DocReference, 'url'): (
@@ -7021,43 +6964,6 @@ CONSTRAINTS = {
     (shared.DocReference, 'version'): (
 
         ('type', int),
-
-        ('cardinality', "0.1"),
-
-    ),
-
-    (shared.DocRelationship, 'target'): (
-
-        ('type', shared.DocRelationshipTarget),
-
-        ('cardinality', "1.1"),
-
-    ),
-    (shared.DocRelationship, 'type'): (
-
-        ('type', unicode),
-
-        ('cardinality', "1.1"),
-
-    ),
-    (shared.DocRelationship, 'description'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (shared.DocRelationship, 'direction'): (
-
-        ('type', unicode),
-
-        ('cardinality', "1.1"),
-
-    ),
-
-    (shared.DocRelationshipTarget, 'reference'): (
-
-        ('type', shared.DocReference),
 
         ('cardinality', "0.1"),
 
@@ -7321,13 +7227,6 @@ CONSTRAINTS = {
         ('type', unicode),
 
         ('cardinality', "0.1"),
-
-    ),
-    (shared.Relationship, 'direction'): (
-
-        ('type', unicode),
-
-        ('cardinality', "1.1"),
 
     ),
 
@@ -9016,24 +8915,13 @@ DOC_STRINGS = {
         Creates and returns instance of date_range class.
 
     """,
-    shared.DocGenealogy: """
-        A record of a document's history. A genealogy element contains a textual description and a set of relationships. Each relationship has a type and a reference to some target. There are different relationships for different document types.
-
-    """,
     shared.DocMetaInfo: """
-        Encapsulates document meta information.
+        Encapsulates document meta information used by es-doc machinery. Will not normally be
+    populated by humans. May duplicate information held in 'visible' metadata.
 
     """,
     shared.DocReference: """
         A reference to another cim entity.
-
-    """,
-    shared.DocRelationship: """
-        Contains the set of relationships supported by a Document.
-
-    """,
-    shared.DocRelationshipTarget: """
-        Creates and returns instance of doc_relationship_target class.
 
     """,
     shared.License: """
@@ -9216,13 +9104,13 @@ DOC_STRINGS = {
     (activity.DownscalingSimulation, 'inputs'):
         "Implemented as a mapping from a source to target; can be a forcing file, a boundary condition, etc.",
     (activity.DownscalingSimulation, 'meta'):
-        None,
+        "Injected document metadata.",
     (activity.DownscalingSimulation, 'outputs'):
         None,
     (activity.Ensemble, 'members'):
         None,
     (activity.Ensemble, 'meta'):
-        None,
+        "Injected document metadata.",
     (activity.Ensemble, 'outputs'):
         "Points to the DataSource used to conform to a particular Requirement.   This may be part of an activity::simulation or a software::component.  It can be either a DataObject or a SoftwareComponent or a ComponentProperty.  It could also be by using particular attributes of, say, a SoftwareComponent, but in that case the recommended practise is to reference the component and add appropriate text in the conformance description attribute.",
     (activity.Ensemble, 'types'):
@@ -9264,7 +9152,7 @@ DOC_STRINGS = {
     (activity.NumericalExperiment, 'long_name'):
         "The name of the experiment (that is recognized externally).",
     (activity.NumericalExperiment, 'meta'):
-        None,
+        "Injected document metadata.",
     (activity.NumericalExperiment, 'requirements'):
         "The name of the experiment (that is used internally).",
     (activity.NumericalExperiment, 'short_name'):
@@ -9318,7 +9206,7 @@ DOC_STRINGS = {
     (activity.SimulationComposite, 'date_range'):
         None,
     (activity.SimulationComposite, 'meta'):
-        None,
+        "Injected document metadata.",
     (activity.SimulationComposite, 'rank'):
         "Position of a simulation in the SimulationComposite timeline. eg:  Is this the first (rank = 1) or second (rank = 2) simulation",
     (activity.SimulationRelationship, 'target'):
@@ -9332,7 +9220,7 @@ DOC_STRINGS = {
     (activity.SimulationRun, 'date_range'):
         None,
     (activity.SimulationRun, 'meta'):
-        None,
+        "Injected document metadata.",
     (activity.SimulationRun, 'model'):
         None,
     (activity.SpatioTemporalConstraint, 'date_range'):
@@ -9406,7 +9294,7 @@ DOC_STRINGS = {
     (data.DataObject, 'keyword'):
         None,
     (data.DataObject, 'meta'):
-        None,
+        "Injected document metadata.",
     (data.DataObject, 'parent_object'):
         None,
     (data.DataObject, 'properties'):
@@ -9512,7 +9400,7 @@ DOC_STRINGS = {
     (grids.GridSpec, 'esm_model_grids'):
         None,
     (grids.GridSpec, 'meta'):
-        None,
+        "Injected document metadata.",
     (grids.GridTile, 'area'):
         "gml:MeasureType:Specifies the area of the grid tile in the units defined by the uom attribute that is attached to the GML MeasureType data type.",
     (grids.GridTile, 'cell_array'):
@@ -9600,7 +9488,7 @@ DOC_STRINGS = {
     (misc.DocumentSet, 'grids'):
         "Associated grid-spec.",
     (misc.DocumentSet, 'meta'):
-        None,
+        "Injected document metadata.",
     (misc.DocumentSet, 'model'):
         "Associated model component.",
     (misc.DocumentSet, 'platform'):
@@ -9608,7 +9496,7 @@ DOC_STRINGS = {
     (misc.DocumentSet, 'simulation'):
         "Associated simulation run.",
     (quality.CimQuality, 'meta'):
-        None,
+        "Injected document metadata.",
     (quality.CimQuality, 'reports'):
         None,
     (quality.Evaluation, 'date'):
@@ -9703,22 +9591,18 @@ DOC_STRINGS = {
         None,
     (shared.DateRange, 'duration'):
         None,
-    (shared.DocGenealogy, 'relationships'):
-        None,
     (shared.DocMetaInfo, 'author'):
-        "Associated document author.",
+        "Author of the metadata in the parent document.",
     (shared.DocMetaInfo, 'create_date'):
-        "Date upon which the instance was created",
+        "Date upon which the instance was created.",
     (shared.DocMetaInfo, 'drs_keys'):
         "DRS related keys to support correlation of documents with datasets.",
     (shared.DocMetaInfo, 'drs_path'):
         "DRS related path to support documents with datasets.",
     (shared.DocMetaInfo, 'external_ids'):
         "Set of identifiers used to reference the document by external parties.",
-    (shared.DocMetaInfo, 'genealogy'):
-        "Specifies the relationship of this document with another document. Various relationship types (depending on the type of document; ie: simulation, component, etc.) are supported.",
     (shared.DocMetaInfo, 'id'):
-        "Universal document identifier.",
+        "Universal document identifier (must be a valid UUID).",
     (shared.DocMetaInfo, 'institute'):
         "Name of institute with which instance is associated.",
     (shared.DocMetaInfo, 'language'):
@@ -9728,11 +9612,9 @@ DOC_STRINGS = {
     (shared.DocMetaInfo, 'sort_key'):
         "Document sort key.",
     (shared.DocMetaInfo, 'source'):
-        "Application that created the instance.",
+        "Name of application that created the instance.",
     (shared.DocMetaInfo, 'source_key'):
         "Key of application that created the instance.",
-    (shared.DocMetaInfo, 'status'):
-        "Document status.",
     (shared.DocMetaInfo, 'sub_projects'):
         "Set of sub-projects with which instance is associated.",
     (shared.DocMetaInfo, 'type'):
@@ -9742,31 +9624,35 @@ DOC_STRINGS = {
     (shared.DocMetaInfo, 'type_sort_key'):
         "Document type sort key.",
     (shared.DocMetaInfo, 'update_date'):
-        "Date upon which the instance was last updated",
+        "Date upon which the instance was last updated.",
     (shared.DocMetaInfo, 'version'):
         "Document version identifier.",
-    (shared.DocReference, 'changes'):
-        "An optional description of how the item being referenced has been modified.  This is particularly useful for dealing with Ensembles (a set of simulations where something about each simulation has changed) or Conformances.",
+    (shared.DocReference, 'constraint_vocabulary'):
+        "A constraint vocabulary for the relationship.",
+    (shared.DocReference, 'context'):
+        "Information about remote record in context of reference.",
     (shared.DocReference, 'description'):
-        "A description of the element being referenced, in the context of the current class.",
+        "Detail of how to access the resource.",
     (shared.DocReference, 'external_id'):
-        "A non-CIM (non-GUID) id used to reference the element in question.",
+        "External identifier of remote resource, if known.",
     (shared.DocReference, 'id'):
-        "The ID of the element being referenced.",
+        "Identifier of remote resource, if known.",
+    (shared.DocReference, 'institute'):
+        "Canonical institute name of referenced document.",
+    (shared.DocReference, 'linkage'):
+        "A URL.",
     (shared.DocReference, 'name'):
-        "The name of the element being referenced.",
+        "Name of online resource.",
+    (shared.DocReference, 'protocol'):
+        "Protocol to use at the linkage.",
+    (shared.DocReference, 'relationship'):
+        "Predicate - relationship of the object target as seen from the subject resource.",
     (shared.DocReference, 'type'):
-        "The type of the element being referenced.",
+        "The type of remote document.",
     (shared.DocReference, 'url'):
-        "A URL associated witht he document reference.",
+        "The URL of the remote document.",
     (shared.DocReference, 'version'):
-        "The version of the element being referenced.",
-    (shared.DocRelationship, 'target'):
-        None,
-    (shared.DocRelationship, 'type'):
-        None,
-    (shared.DocRelationshipTarget, 'reference'):
-        None,
+        "The version of the remote document.",
     (shared.License, 'contact'):
         "The point of contact for access to this artifact; may be either a person or an institution.",
     (shared.License, 'description'):
@@ -9814,7 +9700,7 @@ DOC_STRINGS = {
     (shared.Platform, 'long_name'):
         None,
     (shared.Platform, 'meta'):
-        None,
+        "Injected document metadata.",
     (shared.Platform, 'short_name'):
         None,
     (shared.Platform, 'units'):
@@ -9824,8 +9710,6 @@ DOC_STRINGS = {
     (shared.Property, 'value'):
         None,
     (shared.Relationship, 'description'):
-        None,
-    (shared.Relationship, 'direction'):
         None,
     (shared.ResponsibleParty, 'abbreviation'):
         None,
@@ -10006,7 +9890,7 @@ DOC_STRINGS = {
     (software.ModelComponent, 'activity'):
         None,
     (software.ModelComponent, 'meta'):
-        None,
+        "Injected document metadata.",
     (software.ModelComponent, 'timing'):
         "Describes information about how this component simulates time.",
     (software.ModelComponent, 'type'):
@@ -10018,7 +9902,7 @@ DOC_STRINGS = {
     (software.Parallelisation, 'ranks'):
         None,
     (software.ProcessorComponent, 'meta'):
-        None,
+        "Injected document metadata.",
     (software.Rank, 'increment'):
         None,
     (software.Rank, 'max'):
@@ -10040,7 +9924,7 @@ DOC_STRINGS = {
     (software.SpatialRegriddingUserMethod, 'name'):
         None,
     (software.StatisticalModelComponent, 'meta'):
-        None,
+        "Injected document metadata.",
     (software.StatisticalModelComponent, 'timing'):
         "Describes information about how this component simulates time.",
     (software.StatisticalModelComponent, 'type'):
@@ -10184,22 +10068,6 @@ DOC_STRINGS = {
     """,
     shared.DataPurpose: """
         Purpose of the data - i.e. ancillaryFile, boundaryCondition or initialCondition.
-
-    """,
-    shared.DocRelationshipDirectionType: """
-        Creates and returns instance of relationship_direction_type enum.
-
-    """,
-    shared.DocRelationshipType: """
-        Creates and returns instance of document_relationship_type enum.
-
-    """,
-    shared.DocStatusType: """
-        Status of cim document.
-
-    """,
-    shared.DocType: """
-        Creates and returns instance of doc_type enum.
 
     """,
     shared.InterconnectType: """
@@ -10489,54 +10357,6 @@ DOC_STRINGS = {
         None,
     (shared.DataPurpose, 'initialCondition'):
         None,
-    (shared.DocRelationshipDirectionType, 'fromTarget'):
-        None,
-    (shared.DocRelationshipDirectionType, 'toTarget'):
-        None,
-    (shared.DocRelationshipType, 'fixedVersionOf'):
-        None,
-    (shared.DocRelationshipType, 'laterVersionOf'):
-        None,
-    (shared.DocRelationshipType, 'other'):
-        None,
-    (shared.DocRelationshipType, 'previousVersionOf'):
-        None,
-    (shared.DocRelationshipType, 'similarTo'):
-        None,
-    (shared.DocStatusType, 'complete'):
-        None,
-    (shared.DocStatusType, 'in-progress'):
-        None,
-    (shared.DocStatusType, 'incomplete'):
-        None,
-    (shared.DocType, 'assimilation'):
-        None,
-    (shared.DocType, 'cimQuality'):
-        None,
-    (shared.DocType, 'dataObject'):
-        None,
-    (shared.DocType, 'dataProcessing'):
-        None,
-    (shared.DocType, 'downscalingSimulation'):
-        None,
-    (shared.DocType, 'ensemble'):
-        None,
-    (shared.DocType, 'gridSpec'):
-        None,
-    (shared.DocType, 'modelComponent'):
-        None,
-    (shared.DocType, 'numericalExperiment'):
-        None,
-    (shared.DocType, 'platform'):
-        None,
-    (shared.DocType, 'processorComponent'):
-        None,
-    (shared.DocType, 'simulationComposite'):
-        None,
-    (shared.DocType, 'simulationRun'):
-        None,
-    (shared.DocType, 'statisticalModelComponent'):
-        None,
     (shared.MachineType, 'Beowulf'):
         None,
     (shared.MachineType, 'Parallel'):
@@ -10677,11 +10497,8 @@ KEYS = {
     shared.Daily360: "cim.1.shared.Daily360",
     shared.DataSource: "cim.1.shared.DataSource",
     shared.DateRange: "cim.1.shared.DateRange",
-    shared.DocGenealogy: "cim.1.shared.DocGenealogy",
     shared.DocMetaInfo: "cim.1.shared.DocMetaInfo",
     shared.DocReference: "cim.1.shared.DocReference",
-    shared.DocRelationship: "cim.1.shared.DocRelationship",
-    shared.DocRelationshipTarget: "cim.1.shared.DocRelationshipTarget",
     shared.License: "cim.1.shared.License",
     shared.Machine: "cim.1.shared.Machine",
     shared.MachineCompilerUnit: "cim.1.shared.MachineCompilerUnit",
@@ -10982,13 +10799,11 @@ KEYS = {
     (shared.Compiler, 'version'): "cim.1.shared.Compiler.version",
     (shared.DataSource, 'purpose'): "cim.1.shared.DataSource.purpose",
     (shared.DateRange, 'duration'): "cim.1.shared.DateRange.duration",
-    (shared.DocGenealogy, 'relationships'): "cim.1.shared.DocGenealogy.relationships",
     (shared.DocMetaInfo, 'author'): "cim.1.shared.DocMetaInfo.author",
     (shared.DocMetaInfo, 'create_date'): "cim.1.shared.DocMetaInfo.create_date",
     (shared.DocMetaInfo, 'drs_keys'): "cim.1.shared.DocMetaInfo.drs_keys",
     (shared.DocMetaInfo, 'drs_path'): "cim.1.shared.DocMetaInfo.drs_path",
     (shared.DocMetaInfo, 'external_ids'): "cim.1.shared.DocMetaInfo.external_ids",
-    (shared.DocMetaInfo, 'genealogy'): "cim.1.shared.DocMetaInfo.genealogy",
     (shared.DocMetaInfo, 'id'): "cim.1.shared.DocMetaInfo.id",
     (shared.DocMetaInfo, 'institute'): "cim.1.shared.DocMetaInfo.institute",
     (shared.DocMetaInfo, 'language'): "cim.1.shared.DocMetaInfo.language",
@@ -10996,24 +10811,25 @@ KEYS = {
     (shared.DocMetaInfo, 'sort_key'): "cim.1.shared.DocMetaInfo.sort_key",
     (shared.DocMetaInfo, 'source'): "cim.1.shared.DocMetaInfo.source",
     (shared.DocMetaInfo, 'source_key'): "cim.1.shared.DocMetaInfo.source_key",
-    (shared.DocMetaInfo, 'status'): "cim.1.shared.DocMetaInfo.status",
     (shared.DocMetaInfo, 'sub_projects'): "cim.1.shared.DocMetaInfo.sub_projects",
     (shared.DocMetaInfo, 'type'): "cim.1.shared.DocMetaInfo.type",
     (shared.DocMetaInfo, 'type_display_name'): "cim.1.shared.DocMetaInfo.type_display_name",
     (shared.DocMetaInfo, 'type_sort_key'): "cim.1.shared.DocMetaInfo.type_sort_key",
     (shared.DocMetaInfo, 'update_date'): "cim.1.shared.DocMetaInfo.update_date",
     (shared.DocMetaInfo, 'version'): "cim.1.shared.DocMetaInfo.version",
-    (shared.DocReference, 'changes'): "cim.1.shared.DocReference.changes",
+    (shared.DocReference, 'constraint_vocabulary'): "cim.1.shared.DocReference.constraint_vocabulary",
+    (shared.DocReference, 'context'): "cim.1.shared.DocReference.context",
     (shared.DocReference, 'description'): "cim.1.shared.DocReference.description",
     (shared.DocReference, 'external_id'): "cim.1.shared.DocReference.external_id",
     (shared.DocReference, 'id'): "cim.1.shared.DocReference.id",
+    (shared.DocReference, 'institute'): "cim.1.shared.DocReference.institute",
+    (shared.DocReference, 'linkage'): "cim.1.shared.DocReference.linkage",
     (shared.DocReference, 'name'): "cim.1.shared.DocReference.name",
+    (shared.DocReference, 'protocol'): "cim.1.shared.DocReference.protocol",
+    (shared.DocReference, 'relationship'): "cim.1.shared.DocReference.relationship",
     (shared.DocReference, 'type'): "cim.1.shared.DocReference.type",
     (shared.DocReference, 'url'): "cim.1.shared.DocReference.url",
     (shared.DocReference, 'version'): "cim.1.shared.DocReference.version",
-    (shared.DocRelationship, 'target'): "cim.1.shared.DocRelationship.target",
-    (shared.DocRelationship, 'type'): "cim.1.shared.DocRelationship.type",
-    (shared.DocRelationshipTarget, 'reference'): "cim.1.shared.DocRelationshipTarget.reference",
     (shared.License, 'contact'): "cim.1.shared.License.contact",
     (shared.License, 'description'): "cim.1.shared.License.description",
     (shared.License, 'is_unrestricted'): "cim.1.shared.License.is_unrestricted",
@@ -11043,7 +10859,6 @@ KEYS = {
     (shared.Property, 'name'): "cim.1.shared.Property.name",
     (shared.Property, 'value'): "cim.1.shared.Property.value",
     (shared.Relationship, 'description'): "cim.1.shared.Relationship.description",
-    (shared.Relationship, 'direction'): "cim.1.shared.Relationship.direction",
     (shared.ResponsibleParty, 'abbreviation'): "cim.1.shared.ResponsibleParty.abbreviation",
     (shared.ResponsibleParty, 'address'): "cim.1.shared.ResponsibleParty.address",
     (shared.ResponsibleParty, 'email'): "cim.1.shared.ResponsibleParty.email",
@@ -11197,10 +11012,6 @@ KEYS = {
     shared.ChangePropertyType: "cim.1.shared.ChangePropertyType",
     shared.CompilerType: "cim.1.shared.CompilerType",
     shared.DataPurpose: "cim.1.shared.DataPurpose",
-    shared.DocRelationshipDirectionType: "cim.1.shared.DocRelationshipDirectionType",
-    shared.DocRelationshipType: "cim.1.shared.DocRelationshipType",
-    shared.DocStatusType: "cim.1.shared.DocStatusType",
-    shared.DocType: "cim.1.shared.DocType",
     shared.InterconnectType: "cim.1.shared.InterconnectType",
     shared.MachineType: "cim.1.shared.MachineType",
     shared.MachineVendorType: "cim.1.shared.MachineVendorType",
@@ -11332,30 +11143,6 @@ KEYS = {
     (shared.DataPurpose, 'ancillaryFile'): "cim.1.shared.DataPurpose.ancillaryFile",
     (shared.DataPurpose, 'boundaryCondition'): "cim.1.shared.DataPurpose.boundaryCondition",
     (shared.DataPurpose, 'initialCondition'): "cim.1.shared.DataPurpose.initialCondition",
-    (shared.DocRelationshipDirectionType, 'fromTarget'): "cim.1.shared.DocRelationshipDirectionType.fromTarget",
-    (shared.DocRelationshipDirectionType, 'toTarget'): "cim.1.shared.DocRelationshipDirectionType.toTarget",
-    (shared.DocRelationshipType, 'fixedVersionOf'): "cim.1.shared.DocRelationshipType.fixedVersionOf",
-    (shared.DocRelationshipType, 'laterVersionOf'): "cim.1.shared.DocRelationshipType.laterVersionOf",
-    (shared.DocRelationshipType, 'other'): "cim.1.shared.DocRelationshipType.other",
-    (shared.DocRelationshipType, 'previousVersionOf'): "cim.1.shared.DocRelationshipType.previousVersionOf",
-    (shared.DocRelationshipType, 'similarTo'): "cim.1.shared.DocRelationshipType.similarTo",
-    (shared.DocStatusType, 'complete'): "cim.1.shared.DocStatusType.complete",
-    (shared.DocStatusType, 'in-progress'): "cim.1.shared.DocStatusType.in-progress",
-    (shared.DocStatusType, 'incomplete'): "cim.1.shared.DocStatusType.incomplete",
-    (shared.DocType, 'assimilation'): "cim.1.shared.DocType.assimilation",
-    (shared.DocType, 'cimQuality'): "cim.1.shared.DocType.cimQuality",
-    (shared.DocType, 'dataObject'): "cim.1.shared.DocType.dataObject",
-    (shared.DocType, 'dataProcessing'): "cim.1.shared.DocType.dataProcessing",
-    (shared.DocType, 'downscalingSimulation'): "cim.1.shared.DocType.downscalingSimulation",
-    (shared.DocType, 'ensemble'): "cim.1.shared.DocType.ensemble",
-    (shared.DocType, 'gridSpec'): "cim.1.shared.DocType.gridSpec",
-    (shared.DocType, 'modelComponent'): "cim.1.shared.DocType.modelComponent",
-    (shared.DocType, 'numericalExperiment'): "cim.1.shared.DocType.numericalExperiment",
-    (shared.DocType, 'platform'): "cim.1.shared.DocType.platform",
-    (shared.DocType, 'processorComponent'): "cim.1.shared.DocType.processorComponent",
-    (shared.DocType, 'simulationComposite'): "cim.1.shared.DocType.simulationComposite",
-    (shared.DocType, 'simulationRun'): "cim.1.shared.DocType.simulationRun",
-    (shared.DocType, 'statisticalModelComponent'): "cim.1.shared.DocType.statisticalModelComponent",
     (shared.MachineType, 'Beowulf'): "cim.1.shared.MachineType.Beowulf",
     (shared.MachineType, 'Parallel'): "cim.1.shared.MachineType.Parallel",
     (shared.MachineType, 'Vector'): "cim.1.shared.MachineType.Vector",
@@ -11477,15 +11264,8 @@ shared.Daily360.type_key = KEYS[shared.Daily360]
 shared.DataPurpose.type_key = KEYS[shared.DataPurpose]
 shared.DataSource.type_key = KEYS[shared.DataSource]
 shared.DateRange.type_key = KEYS[shared.DateRange]
-shared.DocGenealogy.type_key = KEYS[shared.DocGenealogy]
 shared.DocMetaInfo.type_key = KEYS[shared.DocMetaInfo]
 shared.DocReference.type_key = KEYS[shared.DocReference]
-shared.DocRelationship.type_key = KEYS[shared.DocRelationship]
-shared.DocRelationshipDirectionType.type_key = KEYS[shared.DocRelationshipDirectionType]
-shared.DocRelationshipTarget.type_key = KEYS[shared.DocRelationshipTarget]
-shared.DocRelationshipType.type_key = KEYS[shared.DocRelationshipType]
-shared.DocStatusType.type_key = KEYS[shared.DocStatusType]
-shared.DocType.type_key = KEYS[shared.DocType]
 shared.InterconnectType.type_key = KEYS[shared.InterconnectType]
 shared.License.type_key = KEYS[shared.License]
 shared.Machine.type_key = KEYS[shared.Machine]

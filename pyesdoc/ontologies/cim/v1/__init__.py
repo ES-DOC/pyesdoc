@@ -93,11 +93,8 @@ from typeset_for_shared_package import Compiler
 from typeset_for_shared_package import Daily360
 from typeset_for_shared_package import DataSource
 from typeset_for_shared_package import DateRange
-from typeset_for_shared_package import DocGenealogy
 from typeset_for_shared_package import DocMetaInfo
 from typeset_for_shared_package import DocReference
-from typeset_for_shared_package import DocRelationship
-from typeset_for_shared_package import DocRelationshipTarget
 from typeset_for_shared_package import License
 from typeset_for_shared_package import Machine
 from typeset_for_shared_package import MachineCompilerUnit
@@ -165,10 +162,6 @@ from typeset_for_quality_package import QualityStatusType
 from typeset_for_shared_package import ChangePropertyType
 from typeset_for_shared_package import CompilerType
 from typeset_for_shared_package import DataPurpose
-from typeset_for_shared_package import DocRelationshipDirectionType
-from typeset_for_shared_package import DocRelationshipType
-from typeset_for_shared_package import DocStatusType
-from typeset_for_shared_package import DocType
 from typeset_for_shared_package import InterconnectType
 from typeset_for_shared_package import MachineType
 from typeset_for_shared_package import MachineVendorType

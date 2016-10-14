@@ -138,7 +138,6 @@ __all__ = [
     VolumeUnits,
     ModelTypes,
     SelectionCardinality,
-    DocumentTypes,
     NilReason,
     QualityStatus,
     RoleCode,
