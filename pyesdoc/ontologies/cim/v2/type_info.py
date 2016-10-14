@@ -9276,9 +9276,9 @@ http://www.geosci-model-dev-discuss.net/gmd-2016-197/)
     (science.Model, 'meta'):
         "Metadata about how the model description was constructed.",
     (science.Model, 'model_key_properties'):
-        "Model default key properties (may be over-ridden in domain properties).",
+        "Model default key properties (may be over-ridden in coupled component and scientific realm properties).",
     (science.Model, 'simulates'):
-        "The scientific domains which this model simulates.",
+        "The scientific realms which this model simulates internally, i.e. those which are not linked together using a coupler.",
     (science.Process, 'citations'):
         "Set of pertinent citations.",
     (science.Process, 'details'):
