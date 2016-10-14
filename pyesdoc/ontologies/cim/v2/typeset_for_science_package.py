@@ -213,6 +213,7 @@ class ConservationProperties(SubProcess):
         super(ConservationProperties, self).__init__()
 
         self.corrected_conserved_prognostic_variables = None# data.VariableCollection (0.1)
+        self.description = None                           # unicode (1.1)
         self.flux_correction_was_used = None              # bool (0.1)
 
 

@@ -10,6 +10,7 @@
 
 
 """
+import datetime
 import os
 import uuid
 
@@ -154,7 +155,7 @@ def retrieve(uid, version=constants.DOC_VERSION_LATEST):
     :rtype: object | None
 
     """
-    # Defensive programming.
+    # Validate inputs.
     if not isinstance(uid, uuid.UUID):
         try:
             uid = uuid.UUID(uid)
@@ -188,24 +189,22 @@ def publish(doc):
     :rtype: object
 
     """
-    # Defensive programming.
+    # Validate inputs.
     if doc is None:
         raise TypeError("Cannot publish null documents.")
     if not is_valid(doc):
         raise ValueError("Cannot publish invalid documents.")
 
-    # Increment version.
+    # Increment version / update date.
     doc.meta.version = doc.meta.version + 1
+    doc.meta.update_date = datetime.datetime.now()
 
     # Set HTTP operation parameters.
     url = _get_api_url('create')
     data = encode(doc, constants.ENCODING_JSON)
 
     # Invoke HTTP operation.
-    if doc.meta.version > 1:
-        verb = requests.put
-    else:
-        verb = requests.post
+    verb = requests.put if doc.meta.version > 1 else requests.post
     resp = _invoke_api(verb, url, data)
 
     # Process HTTP response.
@@ -219,7 +218,7 @@ def unpublish(uid, version=constants.DOC_VERSION_ALL):
     :param str|int version: Document version.
 
     """
-    # Defensive programming.
+    # Validate inputs.
     if not isinstance(uid, uuid.UUID):
         try:
             uid = uuid.UUID(uid)
@@ -236,4 +235,3 @@ def unpublish(uid, version=constants.DOC_VERSION_ALL):
 
     # Process HTTP response.
     _parse_api_response(resp)
-

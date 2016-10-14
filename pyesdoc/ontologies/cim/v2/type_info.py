@@ -75,6 +75,7 @@ CLASSES = (
     activity.UberEnsemble,
     data.Dataset,
     data.Downscaling,
+    data.InputDataset,
     data.Simulation,
     data.VariableCollection,
     designing.AxisMember,
@@ -155,9 +156,9 @@ CLASS_PROPERTIES = {
         'long_name',
         'meta',
         'name',
-        'parties',
         'previously_known_as',
         'rationale',
+        'responsible_parties',
     ),
     activity.AxisMember: (
         'description',
@@ -167,6 +168,8 @@ CLASS_PROPERTIES = {
     ),
     activity.Conformance: (
         'conformance_achieved',
+        'datasets',
+        'models',
         'target_requirement',
         'alternative_names',
         'canonical_name',
@@ -178,12 +181,13 @@ CLASS_PROPERTIES = {
         'long_name',
         'meta',
         'name',
-        'parties',
         'previously_known_as',
         'rationale',
+        'responsible_parties',
     ),
     activity.Ensemble: (
         'common_conformances',
+        'common_performance',
         'documentation',
         'has_ensemble_axes',
         'members',
@@ -199,9 +203,9 @@ CLASS_PROPERTIES = {
         'long_name',
         'meta',
         'name',
-        'parties',
         'previously_known_as',
         'rationale',
+        'responsible_parties',
     ),
     activity.EnsembleAxis: (
         'extra_detail',
@@ -224,6 +228,7 @@ CLASS_PROPERTIES = {
     activity.UberEnsemble: (
         'child_ensembles',
         'common_conformances',
+        'common_performance',
         'documentation',
         'has_ensemble_axes',
         'members',
@@ -239,9 +244,9 @@ CLASS_PROPERTIES = {
         'long_name',
         'meta',
         'name',
-        'parties',
         'previously_known_as',
         'rationale',
+        'responsible_parties',
     ),
     data.Dataset: (
         'availability',
@@ -250,9 +255,9 @@ CLASS_PROPERTIES = {
         'drs_datasets',
         'meta',
         'name',
-        'parties',
         'produced_by',
         'related_to_dataset',
+        'responsible_parties',
     ),
     data.Downscaling: (
         'downscaled_from',
@@ -283,9 +288,13 @@ CLASS_PROPERTIES = {
         'long_name',
         'meta',
         'name',
-        'parties',
         'previously_known_as',
         'rationale',
+        'responsible_parties',
+    ),
+    data.InputDataset: (
+        'modifications_applied',
+        'original_data',
     ),
     data.Simulation: (
         'calendar',
@@ -315,9 +324,9 @@ CLASS_PROPERTIES = {
         'long_name',
         'meta',
         'name',
-        'parties',
         'previously_known_as',
         'rationale',
+        'responsible_parties',
     ),
     data.VariableCollection: (
         'collection_name',
@@ -340,9 +349,9 @@ CLASS_PROPERTIES = {
         'long_name',
         'meta',
         'name',
-        'parties',
         'previously_known_as',
         'rationale',
+        'responsible_parties',
     ),
     designing.EnsembleRequirement: (
         'ensemble_member',
@@ -360,9 +369,9 @@ CLASS_PROPERTIES = {
         'long_name',
         'meta',
         'name',
-        'parties',
         'previously_known_as',
         'rationale',
+        'responsible_parties',
     ),
     designing.ForcingConstraint: (
         'additional_constraint',
@@ -384,9 +393,9 @@ CLASS_PROPERTIES = {
         'long_name',
         'meta',
         'name',
-        'parties',
         'previously_known_as',
         'rationale',
+        'responsible_parties',
     ),
     designing.InitialisationRequirement: (
         'branch_time_in_initialisation_source',
@@ -404,9 +413,9 @@ CLASS_PROPERTIES = {
         'long_name',
         'meta',
         'name',
-        'parties',
         'previously_known_as',
         'rationale',
+        'responsible_parties',
     ),
     designing.MultiEnsemble: (
         'ensemble_axis',
@@ -422,9 +431,9 @@ CLASS_PROPERTIES = {
         'long_name',
         'meta',
         'name',
-        'parties',
         'previously_known_as',
         'rationale',
+        'responsible_parties',
     ),
     designing.NumericalExperiment: (
         'related_experiments',
@@ -441,9 +450,9 @@ CLASS_PROPERTIES = {
         'long_name',
         'meta',
         'name',
-        'parties',
         'previously_known_as',
         'rationale',
+        'responsible_parties',
     ),
     designing.NumericalRequirement: (
         'additional_requirements',
@@ -458,9 +467,9 @@ CLASS_PROPERTIES = {
         'long_name',
         'meta',
         'name',
-        'parties',
         'previously_known_as',
         'rationale',
+        'responsible_parties',
     ),
     designing.OutputRequirement: (
         'formal_data_request',
@@ -476,9 +485,9 @@ CLASS_PROPERTIES = {
         'long_name',
         'meta',
         'name',
-        'parties',
         'previously_known_as',
         'rationale',
+        'responsible_parties',
     ),
     designing.Project: (
         'homepage',
@@ -496,9 +505,9 @@ CLASS_PROPERTIES = {
         'long_name',
         'meta',
         'name',
-        'parties',
         'previously_known_as',
         'rationale',
+        'responsible_parties',
     ),
     designing.SimulationPlan: (
         'expected_model',
@@ -515,9 +524,9 @@ CLASS_PROPERTIES = {
         'long_name',
         'meta',
         'name',
-        'parties',
         'previously_known_as',
         'rationale',
+        'responsible_parties',
     ),
     designing.StartDateEnsemble: (
         'ensemble_members',
@@ -533,9 +542,9 @@ CLASS_PROPERTIES = {
         'long_name',
         'meta',
         'name',
-        'parties',
         'previously_known_as',
         'rationale',
+        'responsible_parties',
     ),
     designing.TemporalConstraint: (
         'required_calendar',
@@ -554,9 +563,9 @@ CLASS_PROPERTIES = {
         'long_name',
         'meta',
         'name',
-        'parties',
         'previously_known_as',
         'rationale',
+        'responsible_parties',
     ),
     drs.DrsAtomicDataset: (
         'frequency',
@@ -674,6 +683,7 @@ CLASS_PROPERTIES = {
     ),
     science.ConservationProperties: (
         'corrected_conserved_prognostic_variables',
+        'description',
         'flux_correction_was_used',
         'citations',
         'details',
@@ -858,6 +868,7 @@ CLASS_PROPERTIES = {
         'constraint_vocabulary',
         'context',
         'id',
+        'institute',
         'relationship',
         'type',
         'version',
@@ -996,9 +1007,9 @@ CLASS_OWN_PROPERTIES = {
         'long_name',
         'meta',
         'name',
-        'parties',
         'previously_known_as',
         'rationale',
+        'responsible_parties',
     ),
     activity.AxisMember: (
         'description',
@@ -1008,10 +1019,13 @@ CLASS_OWN_PROPERTIES = {
     ),
     activity.Conformance: (
         'conformance_achieved',
+        'datasets',
+        'models',
         'target_requirement',
     ),
     activity.Ensemble: (
         'common_conformances',
+        'common_performance',
         'documentation',
         'has_ensemble_axes',
         'members',
@@ -1046,12 +1060,16 @@ CLASS_OWN_PROPERTIES = {
         'drs_datasets',
         'meta',
         'name',
-        'parties',
         'produced_by',
         'related_to_dataset',
+        'responsible_parties',
     ),
     data.Downscaling: (
         'downscaled_from',
+    ),
+    data.InputDataset: (
+        'modifications_applied',
+        'original_data',
     ),
     data.Simulation: (
         'calendar',
@@ -1245,6 +1263,7 @@ CLASS_OWN_PROPERTIES = {
     ),
     science.ConservationProperties: (
         'corrected_conserved_prognostic_variables',
+        'description',
         'flux_correction_was_used',
     ),
     science.Detail: (
@@ -1366,6 +1385,7 @@ CLASS_OWN_PROPERTIES = {
         'constraint_vocabulary',
         'context',
         'id',
+        'institute',
         'relationship',
         'type',
         'version',
@@ -1691,12 +1711,12 @@ CONSTRAINTS = {
         ('description', 'type', unicode),
         ('long_name', 'type', unicode),
         ('previously_known_as', 'type', unicode),
+        ('responsible_parties', 'type', shared.Responsibility),
         ('keywords', 'type', unicode),
         ('canonical_name', 'type', unicode),
         ('citations', 'type', shared.Citation),
         ('meta', 'type', shared.DocMetaInfo),
         ('internal_name', 'type', unicode),
-        ('parties', 'type', shared.Responsibility),
         ('duration', 'type', time.TimePeriod),
         ('alternative_names', 'type', unicode),
         ('name', 'type', unicode),
@@ -1705,12 +1725,12 @@ CONSTRAINTS = {
         ('description', 'cardinality', "0.1"),
         ('long_name', 'cardinality', "0.1"),
         ('previously_known_as', 'cardinality', "0.N"),
+        ('responsible_parties', 'cardinality', "0.N"),
         ('keywords', 'cardinality', "0.1"),
         ('canonical_name', 'cardinality', "0.1"),
         ('citations', 'cardinality', "0.N"),
         ('meta', 'cardinality', "1.1"),
         ('internal_name', 'cardinality', "0.1"),
-        ('parties', 'cardinality', "0.N"),
         ('duration', 'cardinality', "0.1"),
         ('alternative_names', 'cardinality', "0.N"),
         ('name', 'cardinality', "1.1"),
@@ -1731,33 +1751,37 @@ CONSTRAINTS = {
     ),
     activity.Conformance: (
 
+        ('datasets', 'type', data.InputDataset),
         ('description', 'type', unicode),
+        ('models', 'type', science.Model),
         ('conformance_achieved', 'type', unicode),
         ('duration', 'type', time.TimePeriod),
         ('canonical_name', 'type', unicode),
+        ('responsible_parties', 'type', shared.Responsibility),
         ('internal_name', 'type', unicode),
         ('long_name', 'type', unicode),
         ('previously_known_as', 'type', unicode),
         ('citations', 'type', shared.Citation),
         ('meta', 'type', shared.DocMetaInfo),
         ('rationale', 'type', unicode),
-        ('parties', 'type', shared.Responsibility),
         ('keywords', 'type', unicode),
         ('target_requirement', 'type', designing.NumericalRequirement),
         ('alternative_names', 'type', unicode),
         ('name', 'type', unicode),
 
+        ('datasets', 'cardinality', "0.N"),
         ('description', 'cardinality', "0.1"),
+        ('models', 'cardinality', "1.N"),
         ('conformance_achieved', 'cardinality', "1.1"),
         ('duration', 'cardinality', "0.1"),
         ('canonical_name', 'cardinality', "0.1"),
+        ('responsible_parties', 'cardinality', "0.N"),
         ('internal_name', 'cardinality', "0.1"),
         ('long_name', 'cardinality', "0.1"),
         ('previously_known_as', 'cardinality', "0.N"),
         ('citations', 'cardinality', "0.N"),
         ('meta', 'cardinality', "1.1"),
         ('rationale', 'cardinality', "0.1"),
-        ('parties', 'cardinality', "0.N"),
         ('keywords', 'cardinality', "0.1"),
         ('target_requirement', 'cardinality', "1.1"),
         ('alternative_names', 'cardinality', "0.N"),
@@ -1773,6 +1797,7 @@ CONSTRAINTS = {
         ('duration', 'type', time.TimePeriod),
         ('documentation', 'type', shared.OnlineResource),
         ('canonical_name', 'type', unicode),
+        ('responsible_parties', 'type', shared.Responsibility),
         ('internal_name', 'type', unicode),
         ('members', 'type', activity.EnsembleMember),
         ('long_name', 'type', unicode),
@@ -1780,10 +1805,10 @@ CONSTRAINTS = {
         ('citations', 'type', shared.Citation),
         ('meta', 'type', shared.DocMetaInfo),
         ('rationale', 'type', unicode),
-        ('parties', 'type', shared.Responsibility),
         ('keywords', 'type', unicode),
         ('has_ensemble_axes', 'type', activity.EnsembleAxis),
         ('alternative_names', 'type', unicode),
+        ('common_performance', 'type', platform.Performance),
         ('name', 'type', unicode),
 
         ('part_of', 'cardinality', "0.N"),
@@ -1793,6 +1818,7 @@ CONSTRAINTS = {
         ('duration', 'cardinality', "0.1"),
         ('documentation', 'cardinality', "0.N"),
         ('canonical_name', 'cardinality', "0.1"),
+        ('responsible_parties', 'cardinality', "0.N"),
         ('internal_name', 'cardinality', "0.1"),
         ('members', 'cardinality', "1.N"),
         ('long_name', 'cardinality', "0.1"),
@@ -1800,10 +1826,10 @@ CONSTRAINTS = {
         ('citations', 'cardinality', "0.N"),
         ('meta', 'cardinality', "1.1"),
         ('rationale', 'cardinality', "0.1"),
-        ('parties', 'cardinality', "0.N"),
         ('keywords', 'cardinality', "0.1"),
         ('has_ensemble_axes', 'cardinality', "0.N"),
         ('alternative_names', 'cardinality', "0.N"),
+        ('common_performance', 'cardinality', "0.1"),
         ('name', 'cardinality', "1.1"),
 
     ),
@@ -1856,6 +1882,7 @@ CONSTRAINTS = {
         ('rationale', 'type', unicode),
         ('supported', 'type', designing.NumericalExperiment),
         ('previously_known_as', 'type', unicode),
+        ('responsible_parties', 'type', shared.Responsibility),
         ('keywords', 'type', unicode),
         ('members', 'type', activity.EnsembleMember),
         ('long_name', 'type', unicode),
@@ -1863,10 +1890,10 @@ CONSTRAINTS = {
         ('citations', 'type', shared.Citation),
         ('meta', 'type', shared.DocMetaInfo),
         ('internal_name', 'type', unicode),
-        ('parties', 'type', shared.Responsibility),
         ('duration', 'type', time.TimePeriod),
         ('has_ensemble_axes', 'type', activity.EnsembleAxis),
         ('alternative_names', 'type', unicode),
+        ('common_performance', 'type', platform.Performance),
         ('documentation', 'type', shared.OnlineResource),
 
         ('child_ensembles', 'cardinality', "1.N"),
@@ -1877,6 +1904,7 @@ CONSTRAINTS = {
         ('rationale', 'cardinality', "0.1"),
         ('supported', 'cardinality', "1.N"),
         ('previously_known_as', 'cardinality', "0.N"),
+        ('responsible_parties', 'cardinality', "0.N"),
         ('keywords', 'cardinality', "0.1"),
         ('members', 'cardinality', "1.N"),
         ('long_name', 'cardinality', "0.1"),
@@ -1884,10 +1912,10 @@ CONSTRAINTS = {
         ('citations', 'cardinality', "0.N"),
         ('meta', 'cardinality', "1.1"),
         ('internal_name', 'cardinality', "0.1"),
-        ('parties', 'cardinality', "0.N"),
         ('duration', 'cardinality', "0.1"),
         ('has_ensemble_axes', 'cardinality', "0.N"),
         ('alternative_names', 'cardinality', "0.N"),
+        ('common_performance', 'cardinality', "0.1"),
         ('documentation', 'cardinality', "0.N"),
 
     ),
@@ -1898,8 +1926,8 @@ CONSTRAINTS = {
         ('produced_by', 'type', data.Simulation),
         ('citations', 'type', shared.Citation),
         ('drs_datasets', 'type', drs.DrsPublicationDataset),
+        ('responsible_parties', 'type', shared.Responsibility),
         ('meta', 'type', shared.DocMetaInfo),
-        ('parties', 'type', shared.Responsibility),
         ('availability', 'type', shared.OnlineResource),
         ('description', 'type', unicode),
 
@@ -1908,8 +1936,8 @@ CONSTRAINTS = {
         ('produced_by', 'cardinality', "0.1"),
         ('citations', 'cardinality', "0.N"),
         ('drs_datasets', 'cardinality', "0.N"),
+        ('responsible_parties', 'cardinality', "0.N"),
         ('meta', 'cardinality', "1.1"),
-        ('parties', 'cardinality', "0.N"),
         ('availability', 'cardinality', "0.N"),
         ('description', 'cardinality', "0.1"),
 
@@ -1919,16 +1947,16 @@ CONSTRAINTS = {
         ('insitution', 'type', shared.Party),
         ('realization_index', 'type', int),
         ('variant_info', 'type', unicode),
-        ('physics_index', 'type', int),
         ('long_name', 'type', unicode),
         ('downscaled_from', 'type', data.Simulation),
         ('meta', 'type', shared.DocMetaInfo),
-        ('parties', 'type', shared.Responsibility),
+        ('physics_index', 'type', int),
         ('duration', 'type', time.TimePeriod),
         ('calendar', 'type', time.Calendar),
         ('sub_experiment', 'type', designing.NumericalExperiment),
         ('primary_ensemble', 'type', activity.Ensemble),
         ('previously_known_as', 'type', unicode),
+        ('responsible_parties', 'type', shared.Responsibility),
         ('forcing_index', 'type', int),
         ('part_of_project', 'type', designing.Project),
         ('canonical_name', 'type', unicode),
@@ -1951,16 +1979,16 @@ CONSTRAINTS = {
         ('insitution', 'cardinality', "0.1"),
         ('realization_index', 'cardinality', "0.1"),
         ('variant_info', 'cardinality', "0.1"),
-        ('physics_index', 'cardinality', "0.1"),
         ('long_name', 'cardinality', "0.1"),
         ('downscaled_from', 'cardinality', "1.1"),
         ('meta', 'cardinality', "1.1"),
-        ('parties', 'cardinality', "0.N"),
+        ('physics_index', 'cardinality', "0.1"),
         ('duration', 'cardinality', "0.1"),
         ('calendar', 'cardinality', "0.1"),
         ('sub_experiment', 'cardinality', "0.1"),
         ('primary_ensemble', 'cardinality', "0.1"),
         ('previously_known_as', 'cardinality', "0.N"),
+        ('responsible_parties', 'cardinality', "0.N"),
         ('forcing_index', 'cardinality', "0.1"),
         ('part_of_project', 'cardinality', "1.N"),
         ('canonical_name', 'cardinality', "0.1"),
@@ -1981,20 +2009,29 @@ CONSTRAINTS = {
         ('alternative_names', 'cardinality', "0.N"),
 
     ),
+    data.InputDataset: (
+
+        ('modifications_applied', 'type', unicode),
+        ('original_data', 'type', data.Dataset),
+
+        ('modifications_applied', 'cardinality', "1.1"),
+        ('original_data', 'cardinality', "1.1"),
+
+    ),
     data.Simulation: (
 
         ('insitution', 'type', shared.Party),
         ('realization_index', 'type', int),
         ('variant_info', 'type', unicode),
-        ('physics_index', 'type', int),
         ('long_name', 'type', unicode),
         ('meta', 'type', shared.DocMetaInfo),
-        ('parties', 'type', shared.Responsibility),
+        ('physics_index', 'type', int),
         ('duration', 'type', time.TimePeriod),
         ('calendar', 'type', time.Calendar),
         ('sub_experiment', 'type', designing.NumericalExperiment),
         ('primary_ensemble', 'type', activity.Ensemble),
         ('previously_known_as', 'type', unicode),
+        ('responsible_parties', 'type', shared.Responsibility),
         ('forcing_index', 'type', int),
         ('part_of_project', 'type', designing.Project),
         ('canonical_name', 'type', unicode),
@@ -2017,15 +2054,15 @@ CONSTRAINTS = {
         ('insitution', 'cardinality', "0.1"),
         ('realization_index', 'cardinality', "0.1"),
         ('variant_info', 'cardinality', "0.1"),
-        ('physics_index', 'cardinality', "0.1"),
         ('long_name', 'cardinality', "0.1"),
         ('meta', 'cardinality', "1.1"),
-        ('parties', 'cardinality', "0.N"),
+        ('physics_index', 'cardinality', "0.1"),
         ('duration', 'cardinality', "0.1"),
         ('calendar', 'cardinality', "0.1"),
         ('sub_experiment', 'cardinality', "0.1"),
         ('primary_ensemble', 'cardinality', "0.1"),
         ('previously_known_as', 'cardinality', "0.N"),
+        ('responsible_parties', 'cardinality', "0.N"),
         ('forcing_index', 'cardinality', "0.1"),
         ('part_of_project', 'cardinality', "1.N"),
         ('canonical_name', 'cardinality', "0.1"),
@@ -2066,6 +2103,7 @@ CONSTRAINTS = {
         ('description', 'type', unicode),
         ('keywords', 'type', unicode),
         ('additional_requirements', 'type', designing.NumericalRequirement),
+        ('responsible_parties', 'type', shared.Responsibility),
         ('previously_known_as', 'type', unicode),
         ('long_name', 'type', unicode),
         ('canonical_name', 'type', unicode),
@@ -2073,7 +2111,6 @@ CONSTRAINTS = {
         ('meta', 'type', shared.DocMetaInfo),
         ('required_extent', 'type', science.Extent),
         ('internal_name', 'type', unicode),
-        ('parties', 'type', shared.Responsibility),
         ('duration', 'type', time.TimePeriod),
         ('required_resolution', 'type', science.Resolution),
         ('is_conformance_requested', 'type', bool),
@@ -2084,6 +2121,7 @@ CONSTRAINTS = {
         ('description', 'cardinality', "0.1"),
         ('keywords', 'cardinality', "0.1"),
         ('additional_requirements', 'cardinality', "0.N"),
+        ('responsible_parties', 'cardinality', "0.N"),
         ('previously_known_as', 'cardinality', "0.N"),
         ('long_name', 'cardinality', "0.1"),
         ('canonical_name', 'cardinality', "0.1"),
@@ -2091,7 +2129,6 @@ CONSTRAINTS = {
         ('meta', 'cardinality', "1.1"),
         ('required_extent', 'cardinality', "0.1"),
         ('internal_name', 'cardinality', "0.1"),
-        ('parties', 'cardinality', "0.N"),
         ('duration', 'cardinality', "0.1"),
         ('required_resolution', 'cardinality', "0.1"),
         ('is_conformance_requested', 'cardinality', "1.1"),
@@ -2106,6 +2143,7 @@ CONSTRAINTS = {
         ('description', 'type', unicode),
         ('keywords', 'type', unicode),
         ('additional_requirements', 'type', designing.NumericalRequirement),
+        ('responsible_parties', 'type', shared.Responsibility),
         ('previously_known_as', 'type', unicode),
         ('long_name', 'type', unicode),
         ('canonical_name', 'type', unicode),
@@ -2113,7 +2151,6 @@ CONSTRAINTS = {
         ('meta', 'type', shared.DocMetaInfo),
         ('ensemble_type', 'type', unicode),
         ('internal_name', 'type', unicode),
-        ('parties', 'type', shared.Responsibility),
         ('duration', 'type', time.TimePeriod),
         ('ensemble_member', 'type', designing.NumericalRequirement),
         ('is_conformance_requested', 'type', bool),
@@ -2125,6 +2162,7 @@ CONSTRAINTS = {
         ('description', 'cardinality', "0.1"),
         ('keywords', 'cardinality', "0.1"),
         ('additional_requirements', 'cardinality', "0.N"),
+        ('responsible_parties', 'cardinality', "0.N"),
         ('previously_known_as', 'cardinality', "0.N"),
         ('long_name', 'cardinality', "0.1"),
         ('canonical_name', 'cardinality', "0.1"),
@@ -2132,7 +2170,6 @@ CONSTRAINTS = {
         ('meta', 'cardinality', "1.1"),
         ('ensemble_type', 'cardinality', "1.1"),
         ('internal_name', 'cardinality', "0.1"),
-        ('parties', 'cardinality', "0.N"),
         ('duration', 'cardinality', "0.1"),
         ('ensemble_member', 'cardinality', "0.N"),
         ('is_conformance_requested', 'cardinality', "1.1"),
@@ -2147,13 +2184,13 @@ CONSTRAINTS = {
         ('additional_constraint', 'type', unicode),
         ('long_name', 'type', unicode),
         ('meta', 'type', shared.DocMetaInfo),
-        ('parties', 'type', shared.Responsibility),
         ('keywords', 'type', unicode),
         ('is_conformance_requested', 'type', bool),
         ('category', 'type', unicode),
         ('group', 'type', unicode),
         ('data_link', 'type', shared.OnlineResource),
         ('canonical_name', 'type', unicode),
+        ('responsible_parties', 'type', shared.Responsibility),
         ('forcing_type', 'type', unicode),
         ('previously_known_as', 'type', unicode),
         ('citations', 'type', shared.Citation),
@@ -2170,13 +2207,13 @@ CONSTRAINTS = {
         ('additional_constraint', 'cardinality', "0.1"),
         ('long_name', 'cardinality', "0.1"),
         ('meta', 'cardinality', "1.1"),
-        ('parties', 'cardinality', "0.N"),
         ('keywords', 'cardinality', "0.1"),
         ('is_conformance_requested', 'cardinality', "1.1"),
         ('category', 'cardinality', "0.1"),
         ('group', 'cardinality', "0.1"),
         ('data_link', 'cardinality', "0.1"),
         ('canonical_name', 'cardinality', "0.1"),
+        ('responsible_parties', 'cardinality', "0.N"),
         ('forcing_type', 'cardinality', "1.1"),
         ('previously_known_as', 'cardinality', "0.N"),
         ('citations', 'cardinality', "0.N"),
@@ -2195,15 +2232,15 @@ CONSTRAINTS = {
         ('description', 'type', unicode),
         ('keywords', 'type', unicode),
         ('additional_requirements', 'type', designing.NumericalRequirement),
-        ('branch_time_in_initialisation_source', 'type', time.DateTime),
+        ('responsible_parties', 'type', shared.Responsibility),
         ('previously_known_as', 'type', unicode),
         ('initialise_from_experiment', 'type', designing.NumericalExperiment),
         ('long_name', 'type', unicode),
         ('canonical_name', 'type', unicode),
         ('citations', 'type', shared.Citation),
         ('meta', 'type', shared.DocMetaInfo),
+        ('branch_time_in_initialisation_source', 'type', time.DateTime),
         ('internal_name', 'type', unicode),
-        ('parties', 'type', shared.Responsibility),
         ('duration', 'type', time.TimePeriod),
         ('is_conformance_requested', 'type', bool),
         ('alternative_names', 'type', unicode),
@@ -2214,15 +2251,15 @@ CONSTRAINTS = {
         ('description', 'cardinality', "0.1"),
         ('keywords', 'cardinality', "0.1"),
         ('additional_requirements', 'cardinality', "0.N"),
-        ('branch_time_in_initialisation_source', 'cardinality', "0.1"),
+        ('responsible_parties', 'cardinality', "0.N"),
         ('previously_known_as', 'cardinality', "0.N"),
         ('initialise_from_experiment', 'cardinality', "0.1"),
         ('long_name', 'cardinality', "0.1"),
         ('canonical_name', 'cardinality', "0.1"),
         ('citations', 'cardinality', "0.N"),
         ('meta', 'cardinality', "1.1"),
+        ('branch_time_in_initialisation_source', 'cardinality', "0.1"),
         ('internal_name', 'cardinality', "0.1"),
-        ('parties', 'cardinality', "0.N"),
         ('duration', 'cardinality', "0.1"),
         ('is_conformance_requested', 'cardinality', "1.1"),
         ('alternative_names', 'cardinality', "0.N"),
@@ -2237,13 +2274,13 @@ CONSTRAINTS = {
         ('description', 'type', unicode),
         ('keywords', 'type', unicode),
         ('additional_requirements', 'type', designing.NumericalRequirement),
+        ('responsible_parties', 'type', shared.Responsibility),
         ('previously_known_as', 'type', unicode),
         ('long_name', 'type', unicode),
         ('canonical_name', 'type', unicode),
         ('citations', 'type', shared.Citation),
         ('meta', 'type', shared.DocMetaInfo),
         ('internal_name', 'type', unicode),
-        ('parties', 'type', shared.Responsibility),
         ('duration', 'type', time.TimePeriod),
         ('is_conformance_requested', 'type', bool),
         ('alternative_names', 'type', unicode),
@@ -2254,13 +2291,13 @@ CONSTRAINTS = {
         ('description', 'cardinality', "0.1"),
         ('keywords', 'cardinality', "0.1"),
         ('additional_requirements', 'cardinality', "0.N"),
+        ('responsible_parties', 'cardinality', "0.N"),
         ('previously_known_as', 'cardinality', "0.N"),
         ('long_name', 'cardinality', "0.1"),
         ('canonical_name', 'cardinality', "0.1"),
         ('citations', 'cardinality', "0.N"),
         ('meta', 'cardinality', "1.1"),
         ('internal_name', 'cardinality', "0.1"),
-        ('parties', 'cardinality', "0.N"),
         ('duration', 'cardinality', "0.1"),
         ('is_conformance_requested', 'cardinality', "1.1"),
         ('alternative_names', 'cardinality', "0.N"),
@@ -2272,9 +2309,9 @@ CONSTRAINTS = {
         ('requirements', 'type', designing.NumericalRequirement),
         ('description', 'type', unicode),
         ('duration', 'type', time.TimePeriod),
-        ('related_experiments', 'type', designing.NumericalExperiment),
-        ('canonical_name', 'type', unicode),
         ('required_period', 'type', designing.TemporalConstraint),
+        ('canonical_name', 'type', unicode),
+        ('responsible_parties', 'type', shared.Responsibility),
         ('internal_name', 'type', unicode),
         ('long_name', 'type', unicode),
         ('previously_known_as', 'type', unicode),
@@ -2282,7 +2319,7 @@ CONSTRAINTS = {
         ('meta', 'type', shared.DocMetaInfo),
         ('related_mips', 'type', designing.Project),
         ('rationale', 'type', unicode),
-        ('parties', 'type', shared.Responsibility),
+        ('related_experiments', 'type', designing.NumericalExperiment),
         ('keywords', 'type', unicode),
         ('alternative_names', 'type', unicode),
         ('name', 'type', unicode),
@@ -2290,9 +2327,9 @@ CONSTRAINTS = {
         ('requirements', 'cardinality', "0.N"),
         ('description', 'cardinality', "0.1"),
         ('duration', 'cardinality', "0.1"),
-        ('related_experiments', 'cardinality', "0.N"),
-        ('canonical_name', 'cardinality', "0.1"),
         ('required_period', 'cardinality', "1.1"),
+        ('canonical_name', 'cardinality', "0.1"),
+        ('responsible_parties', 'cardinality', "0.N"),
         ('internal_name', 'cardinality', "0.1"),
         ('long_name', 'cardinality', "0.1"),
         ('previously_known_as', 'cardinality', "0.N"),
@@ -2300,7 +2337,7 @@ CONSTRAINTS = {
         ('meta', 'cardinality', "1.1"),
         ('related_mips', 'cardinality', "0.N"),
         ('rationale', 'cardinality', "0.1"),
-        ('parties', 'cardinality', "0.N"),
+        ('related_experiments', 'cardinality', "0.N"),
         ('keywords', 'cardinality', "0.1"),
         ('alternative_names', 'cardinality', "0.N"),
         ('name', 'cardinality', "1.1"),
@@ -2312,13 +2349,13 @@ CONSTRAINTS = {
         ('duration', 'type', time.TimePeriod),
         ('additional_requirements', 'type', designing.NumericalRequirement),
         ('canonical_name', 'type', unicode),
+        ('responsible_parties', 'type', shared.Responsibility),
         ('internal_name', 'type', unicode),
         ('long_name', 'type', unicode),
         ('previously_known_as', 'type', unicode),
         ('citations', 'type', shared.Citation),
         ('meta', 'type', shared.DocMetaInfo),
         ('rationale', 'type', unicode),
-        ('parties', 'type', shared.Responsibility),
         ('keywords', 'type', unicode),
         ('is_conformance_requested', 'type', bool),
         ('alternative_names', 'type', unicode),
@@ -2328,13 +2365,13 @@ CONSTRAINTS = {
         ('duration', 'cardinality', "0.1"),
         ('additional_requirements', 'cardinality', "0.N"),
         ('canonical_name', 'cardinality', "0.1"),
+        ('responsible_parties', 'cardinality', "0.N"),
         ('internal_name', 'cardinality', "0.1"),
         ('long_name', 'cardinality', "0.1"),
         ('previously_known_as', 'cardinality', "0.N"),
         ('citations', 'cardinality', "0.N"),
         ('meta', 'cardinality', "1.1"),
         ('rationale', 'cardinality', "0.1"),
-        ('parties', 'cardinality', "0.N"),
         ('keywords', 'cardinality', "0.1"),
         ('is_conformance_requested', 'cardinality', "1.1"),
         ('alternative_names', 'cardinality', "0.N"),
@@ -2348,13 +2385,13 @@ CONSTRAINTS = {
         ('description', 'type', unicode),
         ('keywords', 'type', unicode),
         ('additional_requirements', 'type', designing.NumericalRequirement),
+        ('responsible_parties', 'type', shared.Responsibility),
         ('previously_known_as', 'type', unicode),
         ('long_name', 'type', unicode),
         ('canonical_name', 'type', unicode),
         ('citations', 'type', shared.Citation),
         ('meta', 'type', shared.DocMetaInfo),
         ('internal_name', 'type', unicode),
-        ('parties', 'type', shared.Responsibility),
         ('duration', 'type', time.TimePeriod),
         ('is_conformance_requested', 'type', bool),
         ('alternative_names', 'type', unicode),
@@ -2365,13 +2402,13 @@ CONSTRAINTS = {
         ('description', 'cardinality', "0.1"),
         ('keywords', 'cardinality', "0.1"),
         ('additional_requirements', 'cardinality', "0.N"),
+        ('responsible_parties', 'cardinality', "0.N"),
         ('previously_known_as', 'cardinality', "0.N"),
         ('long_name', 'cardinality', "0.1"),
         ('canonical_name', 'cardinality', "0.1"),
         ('citations', 'cardinality', "0.N"),
         ('meta', 'cardinality', "1.1"),
         ('internal_name', 'cardinality', "0.1"),
-        ('parties', 'cardinality', "0.N"),
         ('duration', 'cardinality', "0.1"),
         ('is_conformance_requested', 'cardinality', "1.1"),
         ('alternative_names', 'cardinality', "0.N"),
@@ -2386,13 +2423,13 @@ CONSTRAINTS = {
         ('sub_projects', 'type', designing.Project),
         ('duration', 'type', time.TimePeriod),
         ('canonical_name', 'type', unicode),
+        ('responsible_parties', 'type', shared.Responsibility),
         ('internal_name', 'type', unicode),
         ('long_name', 'type', unicode),
         ('previously_known_as', 'type', unicode),
         ('citations', 'type', shared.Citation),
         ('meta', 'type', shared.DocMetaInfo),
         ('rationale', 'type', unicode),
-        ('parties', 'type', shared.Responsibility),
         ('keywords', 'type', unicode),
         ('objectives', 'type', unicode),
         ('homepage', 'type', unicode),
@@ -2405,13 +2442,13 @@ CONSTRAINTS = {
         ('sub_projects', 'cardinality', "0.N"),
         ('duration', 'cardinality', "0.1"),
         ('canonical_name', 'cardinality', "0.1"),
+        ('responsible_parties', 'cardinality', "0.N"),
         ('internal_name', 'cardinality', "0.1"),
         ('long_name', 'cardinality', "0.1"),
         ('previously_known_as', 'cardinality', "0.N"),
         ('citations', 'cardinality', "0.N"),
         ('meta', 'cardinality', "1.1"),
         ('rationale', 'cardinality', "0.1"),
-        ('parties', 'cardinality', "0.N"),
         ('keywords', 'cardinality', "0.1"),
         ('objectives', 'cardinality', "0.N"),
         ('homepage', 'cardinality', "0.1"),
@@ -2425,6 +2462,7 @@ CONSTRAINTS = {
         ('duration', 'type', time.TimePeriod),
         ('expected_performance_sypd', 'type', float),
         ('canonical_name', 'type', unicode),
+        ('responsible_parties', 'type', shared.Responsibility),
         ('internal_name', 'type', unicode),
         ('long_name', 'type', unicode),
         ('previously_known_as', 'type', unicode),
@@ -2432,10 +2470,9 @@ CONSTRAINTS = {
         ('meta', 'type', shared.DocMetaInfo),
         ('will_support_experiments', 'type', designing.NumericalExperiment),
         ('rationale', 'type', unicode),
-        ('parties', 'type', shared.Responsibility),
+        ('expected_model', 'type', science.Model),
         ('keywords', 'type', unicode),
         ('expected_platform', 'type', platform.Machine),
-        ('expected_model', 'type', science.Model),
         ('alternative_names', 'type', unicode),
         ('name', 'type', unicode),
 
@@ -2443,6 +2480,7 @@ CONSTRAINTS = {
         ('duration', 'cardinality', "0.1"),
         ('expected_performance_sypd', 'cardinality', "0.1"),
         ('canonical_name', 'cardinality', "0.1"),
+        ('responsible_parties', 'cardinality', "0.N"),
         ('internal_name', 'cardinality', "0.1"),
         ('long_name', 'cardinality', "0.1"),
         ('previously_known_as', 'cardinality', "0.N"),
@@ -2450,10 +2488,9 @@ CONSTRAINTS = {
         ('meta', 'cardinality', "1.1"),
         ('will_support_experiments', 'cardinality', "1.N"),
         ('rationale', 'cardinality', "0.1"),
-        ('parties', 'cardinality', "0.N"),
+        ('expected_model', 'cardinality', "1.1"),
         ('keywords', 'cardinality', "0.1"),
         ('expected_platform', 'cardinality', "0.1"),
-        ('expected_model', 'cardinality', "1.1"),
         ('alternative_names', 'cardinality', "0.N"),
         ('name', 'cardinality', "1.1"),
 
@@ -2465,13 +2502,13 @@ CONSTRAINTS = {
         ('description', 'type', unicode),
         ('keywords', 'type', unicode),
         ('additional_requirements', 'type', designing.NumericalRequirement),
+        ('responsible_parties', 'type', shared.Responsibility),
         ('previously_known_as', 'type', unicode),
         ('long_name', 'type', unicode),
         ('canonical_name', 'type', unicode),
         ('citations', 'type', shared.Citation),
         ('meta', 'type', shared.DocMetaInfo),
         ('internal_name', 'type', unicode),
-        ('parties', 'type', shared.Responsibility),
         ('duration', 'type', time.TimePeriod),
         ('is_conformance_requested', 'type', bool),
         ('alternative_names', 'type', unicode),
@@ -2482,13 +2519,13 @@ CONSTRAINTS = {
         ('description', 'cardinality', "0.1"),
         ('keywords', 'cardinality', "0.1"),
         ('additional_requirements', 'cardinality', "0.N"),
+        ('responsible_parties', 'cardinality', "0.N"),
         ('previously_known_as', 'cardinality', "0.N"),
         ('long_name', 'cardinality', "0.1"),
         ('canonical_name', 'cardinality', "0.1"),
         ('citations', 'cardinality', "0.N"),
         ('meta', 'cardinality', "1.1"),
         ('internal_name', 'cardinality', "0.1"),
-        ('parties', 'cardinality', "0.N"),
         ('duration', 'cardinality', "0.1"),
         ('is_conformance_requested', 'cardinality', "1.1"),
         ('alternative_names', 'cardinality', "0.N"),
@@ -2497,13 +2534,13 @@ CONSTRAINTS = {
     ),
     designing.TemporalConstraint: (
 
-        ('start_flexibility', 'type', time.TimePeriod),
         ('rationale', 'type', unicode),
         ('description', 'type', unicode),
         ('required_duration', 'type', time.TimePeriod),
         ('start_date', 'type', time.DateTime),
         ('keywords', 'type', unicode),
         ('additional_requirements', 'type', designing.NumericalRequirement),
+        ('responsible_parties', 'type', shared.Responsibility),
         ('previously_known_as', 'type', unicode),
         ('long_name', 'type', unicode),
         ('canonical_name', 'type', unicode),
@@ -2511,19 +2548,19 @@ CONSTRAINTS = {
         ('meta', 'type', shared.DocMetaInfo),
         ('required_calendar', 'type', time.Calendar),
         ('internal_name', 'type', unicode),
-        ('parties', 'type', shared.Responsibility),
+        ('start_flexibility', 'type', time.TimePeriod),
         ('duration', 'type', time.TimePeriod),
         ('is_conformance_requested', 'type', bool),
         ('alternative_names', 'type', unicode),
         ('name', 'type', unicode),
 
-        ('start_flexibility', 'cardinality', "0.1"),
         ('rationale', 'cardinality', "0.1"),
         ('description', 'cardinality', "0.1"),
         ('required_duration', 'cardinality', "0.1"),
         ('start_date', 'cardinality', "0.1"),
         ('keywords', 'cardinality', "0.1"),
         ('additional_requirements', 'cardinality', "0.N"),
+        ('responsible_parties', 'cardinality', "0.N"),
         ('previously_known_as', 'cardinality', "0.N"),
         ('long_name', 'cardinality', "0.1"),
         ('canonical_name', 'cardinality', "0.1"),
@@ -2531,7 +2568,7 @@ CONSTRAINTS = {
         ('meta', 'cardinality', "1.1"),
         ('required_calendar', 'cardinality', "0.1"),
         ('internal_name', 'cardinality', "0.1"),
-        ('parties', 'cardinality', "0.N"),
+        ('start_flexibility', 'cardinality', "0.1"),
         ('duration', 'cardinality', "0.1"),
         ('is_conformance_requested', 'cardinality', "1.1"),
         ('alternative_names', 'cardinality', "0.N"),
@@ -3165,6 +3202,7 @@ CONSTRAINTS = {
         ('protocol', 'type', unicode),
         ('description', 'type', unicode),
         ('relationship', 'type', unicode),
+        ('institute', 'type', unicode),
         ('version', 'type', int),
         ('context', 'type', unicode),
         ('type', 'type', unicode),
@@ -3176,6 +3214,7 @@ CONSTRAINTS = {
         ('protocol', 'cardinality', "0.1"),
         ('description', 'cardinality', "0.1"),
         ('relationship', 'cardinality', "0.1"),
+        ('institute', 'cardinality', "0.1"),
         ('version', 'cardinality', "0.1"),
         ('context', 'cardinality', "0.1"),
         ('type', 'cardinality', "1.1"),
@@ -3505,13 +3544,6 @@ CONSTRAINTS = {
         ('cardinality', "1.1"),
 
     ),
-    (activity.Activity, 'parties'): (
-
-        ('type', shared.Responsibility),
-
-        ('cardinality', "0.N"),
-
-    ),
     (activity.Activity, 'previously_known_as'): (
 
         ('type', unicode),
@@ -3524,6 +3556,13 @@ CONSTRAINTS = {
         ('type', unicode),
 
         ('cardinality', "0.1"),
+
+    ),
+    (activity.Activity, 'responsible_parties'): (
+
+        ('type', shared.Responsibility),
+
+        ('cardinality', "0.N"),
 
     ),
 
@@ -3561,6 +3600,20 @@ CONSTRAINTS = {
         ('type', unicode),
 
         ('cardinality', "1.1"),
+
+    ),
+    (activity.Conformance, 'datasets'): (
+
+        ('type', data.InputDataset),
+
+        ('cardinality', "0.N"),
+
+    ),
+    (activity.Conformance, 'models'): (
+
+        ('type', science.Model),
+
+        ('cardinality', "1.N"),
 
     ),
     (activity.Conformance, 'target_requirement'): (
@@ -3640,13 +3693,6 @@ CONSTRAINTS = {
         ('cardinality', "1.1"),
 
     ),
-    (activity.Conformance, 'parties'): (
-
-        ('type', shared.Responsibility),
-
-        ('cardinality', "0.N"),
-
-    ),
     (activity.Conformance, 'previously_known_as'): (
 
         ('type', unicode),
@@ -3661,12 +3707,26 @@ CONSTRAINTS = {
         ('cardinality', "0.1"),
 
     ),
+    (activity.Conformance, 'responsible_parties'): (
+
+        ('type', shared.Responsibility),
+
+        ('cardinality', "0.N"),
+
+    ),
 
     (activity.Ensemble, 'common_conformances'): (
 
         ('type', activity.Conformance),
 
         ('cardinality', "0.N"),
+
+    ),
+    (activity.Ensemble, 'common_performance'): (
+
+        ('type', platform.Performance),
+
+        ('cardinality', "0.1"),
 
     ),
     (activity.Ensemble, 'documentation'): (
@@ -3774,13 +3834,6 @@ CONSTRAINTS = {
         ('cardinality', "1.1"),
 
     ),
-    (activity.Ensemble, 'parties'): (
-
-        ('type', shared.Responsibility),
-
-        ('cardinality', "0.N"),
-
-    ),
     (activity.Ensemble, 'previously_known_as'): (
 
         ('type', unicode),
@@ -3793,6 +3846,13 @@ CONSTRAINTS = {
         ('type', unicode),
 
         ('cardinality', "0.1"),
+
+    ),
+    (activity.Ensemble, 'responsible_parties'): (
+
+        ('type', shared.Responsibility),
+
+        ('cardinality', "0.N"),
 
     ),
 
@@ -3895,6 +3955,13 @@ CONSTRAINTS = {
         ('type', activity.Conformance),
 
         ('cardinality', "0.N"),
+
+    ),
+    (activity.UberEnsemble, 'common_performance'): (
+
+        ('type', platform.Performance),
+
+        ('cardinality', "0.1"),
 
     ),
     (activity.UberEnsemble, 'documentation'): (
@@ -4002,13 +4069,6 @@ CONSTRAINTS = {
         ('cardinality', "1.1"),
 
     ),
-    (activity.UberEnsemble, 'parties'): (
-
-        ('type', shared.Responsibility),
-
-        ('cardinality', "0.N"),
-
-    ),
     (activity.UberEnsemble, 'previously_known_as'): (
 
         ('type', unicode),
@@ -4021,6 +4081,13 @@ CONSTRAINTS = {
         ('type', unicode),
 
         ('cardinality', "0.1"),
+
+    ),
+    (activity.UberEnsemble, 'responsible_parties'): (
+
+        ('type', shared.Responsibility),
+
+        ('cardinality', "0.N"),
 
     ),
 
@@ -4066,13 +4133,6 @@ CONSTRAINTS = {
         ('cardinality', "1.1"),
 
     ),
-    (data.Dataset, 'parties'): (
-
-        ('type', shared.Responsibility),
-
-        ('cardinality', "0.N"),
-
-    ),
     (data.Dataset, 'produced_by'): (
 
         ('type', data.Simulation),
@@ -4083,6 +4143,13 @@ CONSTRAINTS = {
     (data.Dataset, 'related_to_dataset'): (
 
         ('type', shared.OnlineResource),
+
+        ('cardinality', "0.N"),
+
+    ),
+    (data.Dataset, 'responsible_parties'): (
+
+        ('type', shared.Responsibility),
 
         ('cardinality', "0.N"),
 
@@ -4284,13 +4351,6 @@ CONSTRAINTS = {
         ('cardinality', "1.1"),
 
     ),
-    (data.Downscaling, 'parties'): (
-
-        ('type', shared.Responsibility),
-
-        ('cardinality', "0.N"),
-
-    ),
     (data.Downscaling, 'previously_known_as'): (
 
         ('type', unicode),
@@ -4303,6 +4363,28 @@ CONSTRAINTS = {
         ('type', unicode),
 
         ('cardinality', "0.1"),
+
+    ),
+    (data.Downscaling, 'responsible_parties'): (
+
+        ('type', shared.Responsibility),
+
+        ('cardinality', "0.N"),
+
+    ),
+
+    (data.InputDataset, 'modifications_applied'): (
+
+        ('type', unicode),
+
+        ('cardinality', "1.1"),
+
+    ),
+    (data.InputDataset, 'original_data'): (
+
+        ('type', data.Dataset),
+
+        ('cardinality', "1.1"),
 
     ),
 
@@ -4495,13 +4577,6 @@ CONSTRAINTS = {
         ('cardinality', "1.1"),
 
     ),
-    (data.Simulation, 'parties'): (
-
-        ('type', shared.Responsibility),
-
-        ('cardinality', "0.N"),
-
-    ),
     (data.Simulation, 'previously_known_as'): (
 
         ('type', unicode),
@@ -4514,6 +4589,13 @@ CONSTRAINTS = {
         ('type', unicode),
 
         ('cardinality', "0.1"),
+
+    ),
+    (data.Simulation, 'responsible_parties'): (
+
+        ('type', shared.Responsibility),
+
+        ('cardinality', "0.N"),
 
     ),
 
@@ -4631,13 +4713,6 @@ CONSTRAINTS = {
         ('cardinality', "1.1"),
 
     ),
-    (designing.DomainRequirements, 'parties'): (
-
-        ('type', shared.Responsibility),
-
-        ('cardinality', "0.N"),
-
-    ),
     (designing.DomainRequirements, 'previously_known_as'): (
 
         ('type', unicode),
@@ -4650,6 +4725,13 @@ CONSTRAINTS = {
         ('type', unicode),
 
         ('cardinality', "0.1"),
+
+    ),
+    (designing.DomainRequirements, 'responsible_parties'): (
+
+        ('type', shared.Responsibility),
+
+        ('cardinality', "0.N"),
 
     ),
 
@@ -4758,13 +4840,6 @@ CONSTRAINTS = {
         ('cardinality', "1.1"),
 
     ),
-    (designing.EnsembleRequirement, 'parties'): (
-
-        ('type', shared.Responsibility),
-
-        ('cardinality', "0.N"),
-
-    ),
     (designing.EnsembleRequirement, 'previously_known_as'): (
 
         ('type', unicode),
@@ -4777,6 +4852,13 @@ CONSTRAINTS = {
         ('type', unicode),
 
         ('cardinality', "0.1"),
+
+    ),
+    (designing.EnsembleRequirement, 'responsible_parties'): (
+
+        ('type', shared.Responsibility),
+
+        ('cardinality', "0.N"),
 
     ),
 
@@ -4913,13 +4995,6 @@ CONSTRAINTS = {
         ('cardinality', "1.1"),
 
     ),
-    (designing.ForcingConstraint, 'parties'): (
-
-        ('type', shared.Responsibility),
-
-        ('cardinality', "0.N"),
-
-    ),
     (designing.ForcingConstraint, 'previously_known_as'): (
 
         ('type', unicode),
@@ -4932,6 +5007,13 @@ CONSTRAINTS = {
         ('type', unicode),
 
         ('cardinality', "0.1"),
+
+    ),
+    (designing.ForcingConstraint, 'responsible_parties'): (
+
+        ('type', shared.Responsibility),
+
+        ('cardinality', "0.N"),
 
     ),
 
@@ -5040,13 +5122,6 @@ CONSTRAINTS = {
         ('cardinality', "1.1"),
 
     ),
-    (designing.InitialisationRequirement, 'parties'): (
-
-        ('type', shared.Responsibility),
-
-        ('cardinality', "0.N"),
-
-    ),
     (designing.InitialisationRequirement, 'previously_known_as'): (
 
         ('type', unicode),
@@ -5059,6 +5134,13 @@ CONSTRAINTS = {
         ('type', unicode),
 
         ('cardinality', "0.1"),
+
+    ),
+    (designing.InitialisationRequirement, 'responsible_parties'): (
+
+        ('type', shared.Responsibility),
+
+        ('cardinality', "0.N"),
 
     ),
 
@@ -5153,13 +5235,6 @@ CONSTRAINTS = {
         ('cardinality', "1.1"),
 
     ),
-    (designing.MultiEnsemble, 'parties'): (
-
-        ('type', shared.Responsibility),
-
-        ('cardinality', "0.N"),
-
-    ),
     (designing.MultiEnsemble, 'previously_known_as'): (
 
         ('type', unicode),
@@ -5172,6 +5247,13 @@ CONSTRAINTS = {
         ('type', unicode),
 
         ('cardinality', "0.1"),
+
+    ),
+    (designing.MultiEnsemble, 'responsible_parties'): (
+
+        ('type', shared.Responsibility),
+
+        ('cardinality', "0.N"),
 
     ),
 
@@ -5273,13 +5355,6 @@ CONSTRAINTS = {
         ('cardinality', "1.1"),
 
     ),
-    (designing.NumericalExperiment, 'parties'): (
-
-        ('type', shared.Responsibility),
-
-        ('cardinality', "0.N"),
-
-    ),
     (designing.NumericalExperiment, 'previously_known_as'): (
 
         ('type', unicode),
@@ -5292,6 +5367,13 @@ CONSTRAINTS = {
         ('type', unicode),
 
         ('cardinality', "0.1"),
+
+    ),
+    (designing.NumericalExperiment, 'responsible_parties'): (
+
+        ('type', shared.Responsibility),
+
+        ('cardinality', "0.N"),
 
     ),
 
@@ -5379,13 +5461,6 @@ CONSTRAINTS = {
         ('cardinality', "1.1"),
 
     ),
-    (designing.NumericalRequirement, 'parties'): (
-
-        ('type', shared.Responsibility),
-
-        ('cardinality', "0.N"),
-
-    ),
     (designing.NumericalRequirement, 'previously_known_as'): (
 
         ('type', unicode),
@@ -5398,6 +5473,13 @@ CONSTRAINTS = {
         ('type', unicode),
 
         ('cardinality', "0.1"),
+
+    ),
+    (designing.NumericalRequirement, 'responsible_parties'): (
+
+        ('type', shared.Responsibility),
+
+        ('cardinality', "0.N"),
 
     ),
 
@@ -5492,13 +5574,6 @@ CONSTRAINTS = {
         ('cardinality', "1.1"),
 
     ),
-    (designing.OutputRequirement, 'parties'): (
-
-        ('type', shared.Responsibility),
-
-        ('cardinality', "0.N"),
-
-    ),
     (designing.OutputRequirement, 'previously_known_as'): (
 
         ('type', unicode),
@@ -5511,6 +5586,13 @@ CONSTRAINTS = {
         ('type', unicode),
 
         ('cardinality', "0.1"),
+
+    ),
+    (designing.OutputRequirement, 'responsible_parties'): (
+
+        ('type', shared.Responsibility),
+
+        ('cardinality', "0.N"),
 
     ),
 
@@ -5619,13 +5701,6 @@ CONSTRAINTS = {
         ('cardinality', "1.1"),
 
     ),
-    (designing.Project, 'parties'): (
-
-        ('type', shared.Responsibility),
-
-        ('cardinality', "0.N"),
-
-    ),
     (designing.Project, 'previously_known_as'): (
 
         ('type', unicode),
@@ -5638,6 +5713,13 @@ CONSTRAINTS = {
         ('type', unicode),
 
         ('cardinality', "0.1"),
+
+    ),
+    (designing.Project, 'responsible_parties'): (
+
+        ('type', shared.Responsibility),
+
+        ('cardinality', "0.N"),
 
     ),
 
@@ -5739,13 +5821,6 @@ CONSTRAINTS = {
         ('cardinality', "1.1"),
 
     ),
-    (designing.SimulationPlan, 'parties'): (
-
-        ('type', shared.Responsibility),
-
-        ('cardinality', "0.N"),
-
-    ),
     (designing.SimulationPlan, 'previously_known_as'): (
 
         ('type', unicode),
@@ -5758,6 +5833,13 @@ CONSTRAINTS = {
         ('type', unicode),
 
         ('cardinality', "0.1"),
+
+    ),
+    (designing.SimulationPlan, 'responsible_parties'): (
+
+        ('type', shared.Responsibility),
+
+        ('cardinality', "0.N"),
 
     ),
 
@@ -5852,13 +5934,6 @@ CONSTRAINTS = {
         ('cardinality', "1.1"),
 
     ),
-    (designing.StartDateEnsemble, 'parties'): (
-
-        ('type', shared.Responsibility),
-
-        ('cardinality', "0.N"),
-
-    ),
     (designing.StartDateEnsemble, 'previously_known_as'): (
 
         ('type', unicode),
@@ -5871,6 +5946,13 @@ CONSTRAINTS = {
         ('type', unicode),
 
         ('cardinality', "0.1"),
+
+    ),
+    (designing.StartDateEnsemble, 'responsible_parties'): (
+
+        ('type', shared.Responsibility),
+
+        ('cardinality', "0.N"),
 
     ),
 
@@ -5986,13 +6068,6 @@ CONSTRAINTS = {
         ('cardinality', "1.1"),
 
     ),
-    (designing.TemporalConstraint, 'parties'): (
-
-        ('type', shared.Responsibility),
-
-        ('cardinality', "0.N"),
-
-    ),
     (designing.TemporalConstraint, 'previously_known_as'): (
 
         ('type', unicode),
@@ -6005,6 +6080,13 @@ CONSTRAINTS = {
         ('type', unicode),
 
         ('cardinality', "0.1"),
+
+    ),
+    (designing.TemporalConstraint, 'responsible_parties'): (
+
+        ('type', shared.Responsibility),
+
+        ('cardinality', "0.N"),
 
     ),
 
@@ -6629,6 +6711,13 @@ CONSTRAINTS = {
         ('type', data.VariableCollection),
 
         ('cardinality', "0.1"),
+
+    ),
+    (science.ConservationProperties, 'description'): (
+
+        ('type', unicode),
+
+        ('cardinality', "1.1"),
 
     ),
     (science.ConservationProperties, 'flux_correction_was_used'): (
@@ -7698,6 +7787,13 @@ CONSTRAINTS = {
         ('cardinality', "0.1"),
 
     ),
+    (shared.DocReference, 'institute'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
     (shared.DocReference, 'relationship'): (
 
         ('type', unicode),
@@ -8395,6 +8491,12 @@ DOC_STRINGS = {
         Defines a downscaling activity.
 
     """,
+    data.InputDataset: """
+        An input dataset is used as within another component (such as a
+model). It comprises an original, source dataset plus any
+modifications requirted to use it in the relevant component.
+
+    """,
     data.Simulation: """
         Simulation class provides the integrating link about what models
     were run and wny.  In many cases this should be auto-generated
@@ -8516,7 +8618,8 @@ Earth System Models' (Balaji et. al.)
 a particular system/machine.
 
 Based on 'CPMIP: Measurements of Real Computational Performance of
-Earth System Models' (Balaji et. al.)
+Earth System Models' (Balaji et. al. 2016, doi:10.5194/gmd-2016-197,
+http://www.geosci-model-dev-discuss.net/gmd-2016-197/)
 
     """,
     platform.StoragePool: """
@@ -8770,12 +8873,12 @@ Earth System Models' (Balaji et. al.)
         "Metadata describing how this document was created.",
     (activity.Activity, 'name'):
         "Short name or abbreviation.",
-    (activity.Activity, 'parties'):
-        "People or organisations responsible for activity.",
     (activity.Activity, 'previously_known_as'):
         "List of names by which the activity was formerly known.",
     (activity.Activity, 'rationale'):
         "Explanation of why this activity was carried out and/or what it was intended to achieve.",
+    (activity.Activity, 'responsible_parties'):
+        "People or organisations responsible for activity.",
     (activity.AxisMember, 'description'):
         "Description of the member (or name of parameter varied).",
     (activity.AxisMember, 'extra_detail'):
@@ -8786,10 +8889,16 @@ Earth System Models' (Balaji et. al.)
         "If parameter varied, value thereof for this member.",
     (activity.Conformance, 'conformance_achieved'):
         "Summary of conformance status.",
+    (activity.Conformance, 'datasets'):
+        "The datasets (including any modifications made to them) used for conforming to the target requirement.",
+    (activity.Conformance, 'models'):
+        "The models to which this conformance applies.",
     (activity.Conformance, 'target_requirement'):
         "URI of the target numerical requirement.",
     (activity.Ensemble, 'common_conformances'):
         "Conformance documents for requirements common across ensemble.",
+    (activity.Ensemble, 'common_performance'):
+        "Representative model performance across ensemble.",
     (activity.Ensemble, 'documentation'):
         "Links to web-pages and other ensemble specific documentation (including workflow descriptions).",
     (activity.Ensemble, 'has_ensemble_axes'):
@@ -8838,14 +8947,18 @@ Earth System Models' (Balaji et. al.)
         "Metadata describing the creation of this dataset description document.",
     (data.Dataset, 'name'):
         "Name of dataset.",
-    (data.Dataset, 'parties'):
-        "Individuals and organisations reponsible for the data.",
     (data.Dataset, 'produced_by'):
         "Makes a link back to originating activity.",
     (data.Dataset, 'related_to_dataset'):
         "Related dataset.",
+    (data.Dataset, 'responsible_parties'):
+        "Individuals and organisations reponsible for the data.",
     (data.Downscaling, 'downscaled_from'):
         "The simulation that was downscaled by this downscaling activity.",
+    (data.InputDataset, 'modifications_applied'):
+        "Describe modifications (if any) applied to the dataset prior to use. E.g. spatial interpolation, temporal averaging, etc.",
+    (data.InputDataset, 'original_data'):
+        "The source dataset, prior to any modifications",
     (data.Simulation, 'calendar'):
         "The calendar used in the simulation",
     (data.Simulation, 'end_time'):
@@ -9112,6 +9225,8 @@ Earth System Models' (Balaji et. al.)
         "Numeric value.",
     (science.ConservationProperties, 'corrected_conserved_prognostic_variables'):
         "Set of variables which are conserved by *more* than the numerical scheme alone.",
+    (science.ConservationProperties, 'description'):
+        "Brief description of conservation methodology",
     (science.ConservationProperties, 'flux_correction_was_used'):
         "Flag to indicate if correction involved flux correction.",
     (science.Extent, 'is_global'):
@@ -9286,6 +9401,8 @@ Earth System Models' (Balaji et. al.)
         "Information about remote record in context of reference.",
     (shared.DocReference, 'id'):
         "Identifier of remote resource, if known.",
+    (shared.DocReference, 'institute'):
+        "Canonical institute name of referenced document.",
     (shared.DocReference, 'relationship'):
         "Predicate - relationship of the object target as seen from the subject resource.",
     (shared.DocReference, 'type'):
@@ -9887,6 +10004,7 @@ KEYS = {
     activity.UberEnsemble: "cim.2.activity.UberEnsemble",
     data.Dataset: "cim.2.data.Dataset",
     data.Downscaling: "cim.2.data.Downscaling",
+    data.InputDataset: "cim.2.data.InputDataset",
     data.Simulation: "cim.2.data.Simulation",
     data.VariableCollection: "cim.2.data.VariableCollection",
     designing.AxisMember: "cim.2.designing.AxisMember",
@@ -9967,16 +10085,19 @@ KEYS = {
     (activity.Activity, 'long_name'): "cim.2.activity.Activity.long_name",
     (activity.Activity, 'meta'): "cim.2.activity.Activity.meta",
     (activity.Activity, 'name'): "cim.2.activity.Activity.name",
-    (activity.Activity, 'parties'): "cim.2.activity.Activity.parties",
     (activity.Activity, 'previously_known_as'): "cim.2.activity.Activity.previously_known_as",
     (activity.Activity, 'rationale'): "cim.2.activity.Activity.rationale",
+    (activity.Activity, 'responsible_parties'): "cim.2.activity.Activity.responsible_parties",
     (activity.AxisMember, 'description'): "cim.2.activity.AxisMember.description",
     (activity.AxisMember, 'extra_detail'): "cim.2.activity.AxisMember.extra_detail",
     (activity.AxisMember, 'index'): "cim.2.activity.AxisMember.index",
     (activity.AxisMember, 'value'): "cim.2.activity.AxisMember.value",
     (activity.Conformance, 'conformance_achieved'): "cim.2.activity.Conformance.conformance_achieved",
+    (activity.Conformance, 'datasets'): "cim.2.activity.Conformance.datasets",
+    (activity.Conformance, 'models'): "cim.2.activity.Conformance.models",
     (activity.Conformance, 'target_requirement'): "cim.2.activity.Conformance.target_requirement",
     (activity.Ensemble, 'common_conformances'): "cim.2.activity.Ensemble.common_conformances",
+    (activity.Ensemble, 'common_performance'): "cim.2.activity.Ensemble.common_performance",
     (activity.Ensemble, 'documentation'): "cim.2.activity.Ensemble.documentation",
     (activity.Ensemble, 'has_ensemble_axes'): "cim.2.activity.Ensemble.has_ensemble_axes",
     (activity.Ensemble, 'members'): "cim.2.activity.Ensemble.members",
@@ -10001,10 +10122,12 @@ KEYS = {
     (data.Dataset, 'drs_datasets'): "cim.2.data.Dataset.drs_datasets",
     (data.Dataset, 'meta'): "cim.2.data.Dataset.meta",
     (data.Dataset, 'name'): "cim.2.data.Dataset.name",
-    (data.Dataset, 'parties'): "cim.2.data.Dataset.parties",
     (data.Dataset, 'produced_by'): "cim.2.data.Dataset.produced_by",
     (data.Dataset, 'related_to_dataset'): "cim.2.data.Dataset.related_to_dataset",
+    (data.Dataset, 'responsible_parties'): "cim.2.data.Dataset.responsible_parties",
     (data.Downscaling, 'downscaled_from'): "cim.2.data.Downscaling.downscaled_from",
+    (data.InputDataset, 'modifications_applied'): "cim.2.data.InputDataset.modifications_applied",
+    (data.InputDataset, 'original_data'): "cim.2.data.InputDataset.original_data",
     (data.Simulation, 'calendar'): "cim.2.data.Simulation.calendar",
     (data.Simulation, 'end_time'): "cim.2.data.Simulation.end_time",
     (data.Simulation, 'extra_attributes'): "cim.2.data.Simulation.extra_attributes",
@@ -10138,6 +10261,7 @@ KEYS = {
     (platform.StorageVolume, 'units'): "cim.2.platform.StorageVolume.units",
     (platform.StorageVolume, 'volume'): "cim.2.platform.StorageVolume.volume",
     (science.ConservationProperties, 'corrected_conserved_prognostic_variables'): "cim.2.science.ConservationProperties.corrected_conserved_prognostic_variables",
+    (science.ConservationProperties, 'description'): "cim.2.science.ConservationProperties.description",
     (science.ConservationProperties, 'flux_correction_was_used'): "cim.2.science.ConservationProperties.flux_correction_was_used",
     (science.Extent, 'is_global'): "cim.2.science.Extent.is_global",
     (science.Extent, 'region_known_as'): "cim.2.science.Extent.region_known_as",
@@ -10225,6 +10349,7 @@ KEYS = {
     (shared.DocReference, 'constraint_vocabulary'): "cim.2.shared.DocReference.constraint_vocabulary",
     (shared.DocReference, 'context'): "cim.2.shared.DocReference.context",
     (shared.DocReference, 'id'): "cim.2.shared.DocReference.id",
+    (shared.DocReference, 'institute'): "cim.2.shared.DocReference.institute",
     (shared.DocReference, 'relationship'): "cim.2.shared.DocReference.relationship",
     (shared.DocReference, 'type'): "cim.2.shared.DocReference.type",
     (shared.DocReference, 'version'): "cim.2.shared.DocReference.version",
@@ -10500,6 +10625,7 @@ activity.UberEnsemble.type_key = KEYS[activity.UberEnsemble]
 data.DataAssociationTypes.type_key = KEYS[data.DataAssociationTypes]
 data.Dataset.type_key = KEYS[data.Dataset]
 data.Downscaling.type_key = KEYS[data.Downscaling]
+data.InputDataset.type_key = KEYS[data.InputDataset]
 data.Simulation.type_key = KEYS[data.Simulation]
 data.VariableCollection.type_key = KEYS[data.VariableCollection]
 designing.AxisMember.type_key = KEYS[designing.AxisMember]

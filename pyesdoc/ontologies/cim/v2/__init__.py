@@ -43,6 +43,7 @@ from typeset_for_activity_package import ParentSimulation
 from typeset_for_activity_package import UberEnsemble
 from typeset_for_data_package import Dataset
 from typeset_for_data_package import Downscaling
+from typeset_for_data_package import InputDataset
 from typeset_for_data_package import Simulation
 from typeset_for_data_package import VariableCollection
 from typeset_for_designing_package import AxisMember

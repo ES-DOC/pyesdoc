@@ -38,9 +38,27 @@ class Dataset(object):
         self.drs_datasets = []                            # drs.DrsPublicationDataset (0.N)
         self.meta = shared.DocMetaInfo()                  # shared.DocMetaInfo (1.1)
         self.name = None                                  # unicode (1.1)
-        self.parties = []                                 # shared.Responsibility (0.N)
         self.produced_by = None                           # data.Simulation (0.1)
         self.related_to_dataset = []                      # shared.OnlineResource (0.N)
+        self.responsible_parties = []                     # shared.Responsibility (0.N)
+
+
+class InputDataset(object):
+    """A concrete class within the cim v2 type system.
+
+    An input dataset is used as within another component (such as a
+model). It comprises an original, source dataset plus any
+modifications requirted to use it in the relevant component.
+
+    """
+    def __init__(self):
+        """Instance constructor.
+
+        """
+        super(InputDataset, self).__init__()
+
+        self.modifications_applied = None                 # unicode (1.1)
+        self.original_data = None                         # data.Dataset (1.1)
 
 
 class Simulation(activity.Activity):

@@ -43,9 +43,9 @@ class Activity(object):
         self.long_name = None                             # unicode (0.1)
         self.meta = shared.DocMetaInfo()                  # shared.DocMetaInfo (1.1)
         self.name = None                                  # unicode (1.1)
-        self.parties = []                                 # shared.Responsibility (0.N)
         self.previously_known_as = []                     # unicode (0.N)
         self.rationale = None                             # unicode (0.1)
+        self.responsible_parties = []                     # shared.Responsibility (0.N)
 
 
 class AxisMember(object):
@@ -146,6 +146,8 @@ class Conformance(Activity):
         super(Conformance, self).__init__()
 
         self.conformance_achieved = None                  # activity.ConformanceType (1.1)
+        self.datasets = []                                # data.InputDataset (0.N)
+        self.models = []                                  # science.Model (1.N)
         self.target_requirement = None                    # designing.NumericalRequirement (1.1)
 
 
@@ -165,6 +167,7 @@ class Ensemble(Activity):
         super(Ensemble, self).__init__()
 
         self.common_conformances = []                     # activity.Conformance (0.N)
+        self.common_performance = None                    # platform.Performance (0.1)
         self.documentation = []                           # shared.OnlineResource (0.N)
         self.has_ensemble_axes = []                       # activity.EnsembleAxis (0.N)
         self.members = []                                 # activity.EnsembleMember (1.N)

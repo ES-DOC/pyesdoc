@@ -39,12 +39,12 @@
 	{% end %}
 
 	{% comment ************************************************** %}
-	{% comment Sub-section: parties   		    	  %}
+	{% comment Sub-section: responsible_parties     		      %}
 	{% comment ************************************************** %}
-	{% if doc.parties %}
-		{% set parties = doc.parties %}
+	{% if doc.responsible_parties %}
+		{% set responsible_parties = doc.responsible_parties %}
 		{% set header = 3 %}
-		{% include shared_parties.html %}
+		{% include shared_responsible_parties.html %}
 	{% end %}
 
 {% end %}

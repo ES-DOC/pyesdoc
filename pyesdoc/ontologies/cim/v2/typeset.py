@@ -58,6 +58,7 @@ __all__ = [
     UberEnsemble,
     Dataset,
     Downscaling,
+    InputDataset,
     Simulation,
     VariableCollection,
     AxisMember,

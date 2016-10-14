@@ -232,6 +232,7 @@ class DocReference(OnlineResource):
         self.constraint_vocabulary = None                 # unicode (0.1)
         self.context = None                               # unicode (0.1)
         self.id = None                                    # unicode (0.1)
+        self.institute = None                             # unicode (0.1)
         self.relationship = None                          # unicode (0.1)
         self.type = None                                  # unicode (1.1)
         self.version = None                               # int (0.1)

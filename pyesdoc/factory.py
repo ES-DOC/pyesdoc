@@ -55,7 +55,10 @@ def create(typeof,
     if not project:
         project = constants.DEFAULT_PROJECT
     if not source:
-        source = constants.DEFAULT_SOURCE
+        if institute != constants.DEFAULT_INSTITUTE:
+            source = institute
+        else:
+            source = constants.DEFAULT_SOURCE
     if not uid:
         uid = uuid.uuid4()
     if not version:
@@ -66,23 +69,26 @@ def create(typeof,
     language = unicode(language).lower()
     project = unicode(project).lower()
     source = unicode(source).lower()
-    if not isinstance(uid, uuid.UUID):
-        uid = uuid.UUID(uid)
+    uid = unicode(uid)
+
+    # Verify uid.
+    try:
+        uuid.UUID(uid)
+    except ValueError:
+        raise ValueError("Document identifiers must be UUID's.")
 
     # Instantiate & initialize meta info (if necessary).
     doc = typeof()
     if hasattr(doc, 'meta'):
-        now = datetime.datetime.now()
         doc.meta.author = author
         doc.meta.id = uid
         doc.meta.version = version
-        doc.meta.create_date = now
+        doc.meta.create_date = datetime.datetime.now()
         doc.meta.institute = institute
         doc.meta.language = language
         doc.meta.project = project
         doc.meta.source = source
         doc.meta.type = doc.__class__.type_key
-        doc.meta.update_date = now
 
     return doc
 
