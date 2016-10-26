@@ -210,7 +210,7 @@ def decode_doc_meta_info(xml, nsmap):
 
     """
     decodings = [
-        ('author', False, 'unicode', 'child::cim:documentAuthor'),
+        ('author', False, decode_responsible_party, 'child::cim:documentAuthor'),
         ('create_date', False, 'datetime.datetime', 'child::cim:documentCreationDate'),
         ('external_ids', True, 'unicode', 'child::cim:externalID'),
         ('id', False, 'unicode', 'child::cim:documentID'),
@@ -233,6 +233,7 @@ def decode_doc_reference(xml, nsmap):
 
     """
     decodings = [
+        ('changes', True, decode_change, 'child::cim:change'),
         ('description', False, 'unicode', 'child::cim:description'),
         ('external_id', False, 'unicode', 'child::cim:externalID'),
         ('id', False, 'unicode', 'child::cim:id'),

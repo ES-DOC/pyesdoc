@@ -332,6 +332,7 @@ class ModelTypes(object):
     is_open = False
     members = [
         "Atm Only",
+        "ESM",
         "GCM",
         "GCM-MLO",
         "IGCM",

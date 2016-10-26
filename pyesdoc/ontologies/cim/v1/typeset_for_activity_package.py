@@ -54,7 +54,7 @@ class Conformance(object):
         self.description = None                           # unicode (0.1)
         self.frequency = None                             # activity.FrequencyType (0.1)
         self.is_conformant = None                         # bool (1.1)
-        self.requirements = []                            # activity.NumericalRequirement (0.N)
+        self.requirements = []                            # activity.NumericalRequirement (1.N)
         self.sources = []                                 # shared.DataSource (0.N)
         self.type = None                                  # activity.ConformanceType (0.1)
 

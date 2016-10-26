@@ -87,7 +87,6 @@ from typeset_for_science_package import ScienceContext
 from typeset_for_science_package import ScientificRealm
 from typeset_for_science_package import SubProcess
 from typeset_for_science_package import Tuning
-from typeset_for_shared_package import Cimtext
 from typeset_for_shared_package import Citation
 from typeset_for_shared_package import DocMetaInfo
 from typeset_for_shared_package import DocReference
@@ -96,6 +95,7 @@ from typeset_for_shared_package import OnlineResource
 from typeset_for_shared_package import Party
 from typeset_for_shared_package import QualityReview
 from typeset_for_shared_package import Responsibility
+from typeset_for_shared_package import TextBlob
 from typeset_for_software_package import ComponentBase
 from typeset_for_software_package import Composition
 from typeset_for_software_package import DevelopmentPath
@@ -127,7 +127,7 @@ from typeset_for_science_package import SelectionCardinality
 from typeset_for_shared_package import NilReason
 from typeset_for_shared_package import QualityStatus
 from typeset_for_shared_package import RoleCode
-from typeset_for_shared_package import TextCode
+from typeset_for_shared_package import TextBlobEncoding
 from typeset_for_software_package import CouplingFramework
 from typeset_for_software_package import ProgrammingLanguage
 from typeset_for_time_package import CalendarTypes

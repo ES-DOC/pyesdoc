@@ -119,7 +119,6 @@ CLASSES = (
     science.ScientificRealm,
     science.SubProcess,
     science.Tuning,
-    shared.Cimtext,
     shared.Citation,
     shared.DocMetaInfo,
     shared.DocReference,
@@ -128,6 +127,7 @@ CLASSES = (
     shared.Party,
     shared.QualityReview,
     shared.Responsibility,
+    shared.TextBlob,
     software.ComponentBase,
     software.Composition,
     software.DevelopmentPath,
@@ -829,10 +829,6 @@ CLASS_PROPERTIES = {
         'id',
         'short_name',
     ),
-    shared.Cimtext: (
-        'content',
-        'content_type',
-    ),
     shared.Citation: (
         'abstract',
         'citation_detail',
@@ -852,7 +848,6 @@ CLASS_PROPERTIES = {
         'external_ids',
         'id',
         'institute',
-        'language',
         'project',
         'sort_key',
         'source',
@@ -912,6 +907,10 @@ CLASS_PROPERTIES = {
         'party',
         'role',
         'when',
+    ),
+    shared.TextBlob: (
+        'content',
+        'encoding',
     ),
     software.ComponentBase: (
         'citations',
@@ -1348,10 +1347,6 @@ CLASS_OWN_PROPERTIES = {
         'regional_metrics_used',
         'trend_metrics_used',
     ),
-    shared.Cimtext: (
-        'content',
-        'content_type',
-    ),
     shared.Citation: (
         'abstract',
         'citation_detail',
@@ -1371,7 +1366,6 @@ CLASS_OWN_PROPERTIES = {
         'external_ids',
         'id',
         'institute',
-        'language',
         'project',
         'sort_key',
         'source',
@@ -1431,6 +1425,10 @@ CLASS_OWN_PROPERTIES = {
         'party',
         'role',
         'when',
+    ),
+    shared.TextBlob: (
+        'content',
+        'encoding',
     ),
     software.ComponentBase: (
         'citations',
@@ -1530,7 +1528,7 @@ ENUMS = (
     shared.NilReason,
     shared.QualityStatus,
     shared.RoleCode,
-    shared.TextCode,
+    shared.TextBlobEncoding,
     software.CouplingFramework,
     software.ProgrammingLanguage,
     time.CalendarTypes,
@@ -3126,15 +3124,6 @@ CONSTRAINTS = {
         ('id', 'cardinality', "1.1"),
 
     ),
-    shared.Cimtext: (
-
-        ('content', 'type', unicode),
-        ('content_type', 'type', unicode),
-
-        ('content', 'cardinality', "1.1"),
-        ('content_type', 'cardinality', "1.1"),
-
-    ),
     shared.Citation: (
 
         ('doi', 'type', unicode),
@@ -3163,7 +3152,6 @@ CONSTRAINTS = {
         ('drs_keys', 'type', unicode),
         ('drs_path', 'type', unicode),
         ('create_date', 'type', datetime.datetime),
-        ('language', 'type', unicode),
         ('author', 'type', shared.Party),
         ('institute', 'type', unicode),
         ('source_key', 'type', unicode),
@@ -3182,23 +3170,21 @@ CONSTRAINTS = {
         ('drs_keys', 'cardinality', "0.N"),
         ('drs_path', 'cardinality', "0.1"),
         ('create_date', 'cardinality', "1.1"),
-        ('language', 'cardinality', "1.1"),
         ('author', 'cardinality', "0.1"),
         ('institute', 'cardinality', "0.1"),
         ('source_key', 'cardinality', "0.1"),
-        ('project', 'cardinality', "1.1"),
+        ('project', 'cardinality', "0.1"),
         ('sort_key', 'cardinality', "0.1"),
         ('version', 'cardinality', "1.1"),
         ('source', 'cardinality', "1.1"),
         ('type_sort_key', 'cardinality', "0.1"),
-        ('update_date', 'cardinality', "1.1"),
+        ('update_date', 'cardinality', "0.1"),
         ('external_ids', 'cardinality', "0.N"),
         ('sub_projects', 'cardinality', "0.N"),
         ('type', 'cardinality', "1.1"),
         ('id', 'cardinality', "1.1"),
         ('type_display_name', 'cardinality', "0.1"),
 
-        ('source', 'constant', "scripts"),
     ),
     shared.DocReference: (
 
@@ -3302,6 +3288,15 @@ CONSTRAINTS = {
         ('party', 'cardinality', "1.N"),
         ('when', 'cardinality', "0.1"),
         ('role', 'cardinality', "1.1"),
+
+    ),
+    shared.TextBlob: (
+
+        ('content', 'type', unicode),
+        ('encoding', 'type', unicode),
+
+        ('content', 'cardinality', "1.1"),
+        ('encoding', 'cardinality', "1.1"),
 
     ),
     software.ComponentBase: (
@@ -7568,21 +7563,6 @@ CONSTRAINTS = {
 
     ),
 
-    (shared.Cimtext, 'content'): (
-
-        ('type', unicode),
-
-        ('cardinality', "1.1"),
-
-    ),
-    (shared.Cimtext, 'content_type'): (
-
-        ('type', unicode),
-
-        ('cardinality', "1.1"),
-
-    ),
-
     (shared.Citation, 'abstract'): (
 
         ('type', unicode),
@@ -7696,18 +7676,11 @@ CONSTRAINTS = {
         ('cardinality', "0.1"),
 
     ),
-    (shared.DocMetaInfo, 'language'): (
-
-        ('type', unicode),
-
-        ('cardinality', "1.1"),
-
-    ),
     (shared.DocMetaInfo, 'project'): (
 
         ('type', unicode),
 
-        ('cardinality', "1.1"),
+        ('cardinality', "0.1"),
 
     ),
     (shared.DocMetaInfo, 'sort_key'): (
@@ -7723,7 +7696,6 @@ CONSTRAINTS = {
 
         ('cardinality', "1.1"),
 
-        ('constant', "scripts"),
     ),
     (shared.DocMetaInfo, 'source_key'): (
 
@@ -7764,7 +7736,7 @@ CONSTRAINTS = {
 
         ('type', datetime.datetime),
 
-        ('cardinality', "1.1"),
+        ('cardinality', "0.1"),
 
     ),
     (shared.DocMetaInfo, 'version'): (
@@ -8037,6 +8009,21 @@ CONSTRAINTS = {
         ('type', time.TimePeriod),
 
         ('cardinality', "0.1"),
+
+    ),
+
+    (shared.TextBlob, 'content'): (
+
+        ('type', unicode),
+
+        ('cardinality', "1.1"),
+
+    ),
+    (shared.TextBlob, 'encoding'): (
+
+        ('type', unicode),
+
+        ('cardinality', "1.1"),
 
     ),
 
@@ -8750,11 +8737,6 @@ http://www.geosci-model-dev-discuss.net/gmd-2016-197/)
     (aka 'tuning').
 
     """,
-    shared.Cimtext: """
-        Provides a text class which supports plaintext, html, and
-    friends (or will do).
-
-    """,
     shared.Citation: """
         An academic reference to published work.
 
@@ -8793,6 +8775,11 @@ http://www.geosci-model-dev-discuss.net/gmd-2016-197/)
     shared.Responsibility: """
         Implements the ISO19115-1 (2014) CI_Responsibility (which replaces
     responsibleParty). Combines a person and their role in doing something.
+
+    """,
+    shared.TextBlob: """
+        Provides a text class which supports plaintext, html, and
+    friends (or will do).
 
     """,
     software.ComponentBase: """
@@ -9010,7 +8997,7 @@ http://www.geosci-model-dev-discuss.net/gmd-2016-197/)
     (data.Simulation, 'start_time'):
         "The start date-time of the simulation. e.g. 2012-04-01 00:00:00",
     (data.Simulation, 'sub_experiment'):
-        "For start-date ensembles, this will indicate the beginning year; for offline models driven by output from another model, this will provide the source_id and variant_label for the “driving” model.",
+        "For start-date ensembles, this will indicate the beginning year; for offline models driven by output from another model, this will provide the source_id and variant_label for the 'driving' model.",
     (data.Simulation, 'used'):
         "The model used to run the simulation",
     (data.Simulation, 'variant_info'):
@@ -9359,10 +9346,6 @@ http://www.geosci-model-dev-discuss.net/gmd-2016-197/)
         "Which regional metrics of mean state (e.g Monsoons, tropical means etc) have been used in tuning.",
     (science.Tuning, 'trend_metrics_used'):
         "Which observed trend metrics have been used in tuning model parameters.",
-    (shared.Cimtext, 'content'):
-        "Raw content (including markup).",
-    (shared.Cimtext, 'content_type'):
-        "Type of content.",
     (shared.Citation, 'abstract'):
         "Abstract providing high level reference overview.",
     (shared.Citation, 'citation_detail'):
@@ -9395,8 +9378,6 @@ http://www.geosci-model-dev-discuss.net/gmd-2016-197/)
         "Universal document identifier (must be a valid UUID).",
     (shared.DocMetaInfo, 'institute'):
         "Name of institute with which instance is associated.",
-    (shared.DocMetaInfo, 'language'):
-        "Language with which instance is associated.",
     (shared.DocMetaInfo, 'project'):
         "Name of project with which instance is associated.",
     (shared.DocMetaInfo, 'sort_key'):
@@ -9408,7 +9389,7 @@ http://www.geosci-model-dev-discuss.net/gmd-2016-197/)
     (shared.DocMetaInfo, 'sub_projects'):
         "Set of sub-projects with which instance is associated.",
     (shared.DocMetaInfo, 'type'):
-        "Document ontology type.",
+        "Document ontology type key.",
     (shared.DocMetaInfo, 'type_display_name'):
         "Document type display name.",
     (shared.DocMetaInfo, 'type_sort_key'):
@@ -9491,6 +9472,10 @@ http://www.geosci-model-dev-discuss.net/gmd-2016-197/)
         "Role that the party plays or played.",
     (shared.Responsibility, 'when'):
         "Period when role was active, if no longer.",
+    (shared.TextBlob, 'content'):
+        "Raw content (including markup).",
+    (shared.TextBlob, 'encoding'):
+        "Content encoding.",
     (software.ComponentBase, 'citations'):
         "Set of pertinent citations.",
     (software.ComponentBase, 'description'):
@@ -9656,7 +9641,7 @@ http://www.geosci-model-dev-discuss.net/gmd-2016-197/)
         Responsibility role codes: roles that a party may play in delivering a responsibility.
 
     """,
-    shared.TextCode: """
+    shared.TextBlobEncoding: """
         Types of text understood by the CIM notebook. Currently only
     plaintext, but we expect safe HTML to be supported as soon as practicable.
 
@@ -9817,6 +9802,8 @@ http://www.geosci-model-dev-discuss.net/gmd-2016-197/)
         "Tebibytes (1024^4)",
     (science.ModelTypes, 'Atm Only'):
         "Atmosphere Only",
+    (science.ModelTypes, 'ESM'):
+        "Earth System Model (Atmosphere, Ocean, Land, Sea-ice and cycles)",
     (science.ModelTypes, 'GCM'):
         "Global Climate Model (Atmosphere, Ocean, no carbon cycle)",
     (science.ModelTypes, 'GCM-MLO'):
@@ -9889,7 +9876,7 @@ http://www.geosci-model-dev-discuss.net/gmd-2016-197/)
         "Party who has invested in the production of the resource",
     (shared.RoleCode, 'user'):
         "Party who uses the resource",
-    (shared.TextCode, 'plaintext'):
+    (shared.TextBlobEncoding, 'ascii'):
         "Normal plain text",
     (software.CouplingFramework, 'Bespoke'):
         "Customised coupler developed for this model",
@@ -10027,7 +10014,6 @@ KEYS = {
     science.ScientificRealm: "cim.2.science.ScientificRealm",
     science.SubProcess: "cim.2.science.SubProcess",
     science.Tuning: "cim.2.science.Tuning",
-    shared.Cimtext: "cim.2.shared.Cimtext",
     shared.Citation: "cim.2.shared.Citation",
     shared.DocMetaInfo: "cim.2.shared.DocMetaInfo",
     shared.DocReference: "cim.2.shared.DocReference",
@@ -10036,6 +10022,7 @@ KEYS = {
     shared.Party: "cim.2.shared.Party",
     shared.QualityReview: "cim.2.shared.QualityReview",
     shared.Responsibility: "cim.2.shared.Responsibility",
+    shared.TextBlob: "cim.2.shared.TextBlob",
     software.ComponentBase: "cim.2.software.ComponentBase",
     software.Composition: "cim.2.software.Composition",
     software.DevelopmentPath: "cim.2.software.DevelopmentPath",
@@ -10296,8 +10283,6 @@ KEYS = {
     (science.Tuning, 'global_mean_metrics_used'): "cim.2.science.Tuning.global_mean_metrics_used",
     (science.Tuning, 'regional_metrics_used'): "cim.2.science.Tuning.regional_metrics_used",
     (science.Tuning, 'trend_metrics_used'): "cim.2.science.Tuning.trend_metrics_used",
-    (shared.Cimtext, 'content'): "cim.2.shared.Cimtext.content",
-    (shared.Cimtext, 'content_type'): "cim.2.shared.Cimtext.content_type",
     (shared.Citation, 'abstract'): "cim.2.shared.Citation.abstract",
     (shared.Citation, 'citation_detail'): "cim.2.shared.Citation.citation_detail",
     (shared.Citation, 'collective_title'): "cim.2.shared.Citation.collective_title",
@@ -10314,7 +10299,6 @@ KEYS = {
     (shared.DocMetaInfo, 'external_ids'): "cim.2.shared.DocMetaInfo.external_ids",
     (shared.DocMetaInfo, 'id'): "cim.2.shared.DocMetaInfo.id",
     (shared.DocMetaInfo, 'institute'): "cim.2.shared.DocMetaInfo.institute",
-    (shared.DocMetaInfo, 'language'): "cim.2.shared.DocMetaInfo.language",
     (shared.DocMetaInfo, 'project'): "cim.2.shared.DocMetaInfo.project",
     (shared.DocMetaInfo, 'sort_key'): "cim.2.shared.DocMetaInfo.sort_key",
     (shared.DocMetaInfo, 'source'): "cim.2.shared.DocMetaInfo.source",
@@ -10362,6 +10346,8 @@ KEYS = {
     (shared.Responsibility, 'party'): "cim.2.shared.Responsibility.party",
     (shared.Responsibility, 'role'): "cim.2.shared.Responsibility.role",
     (shared.Responsibility, 'when'): "cim.2.shared.Responsibility.when",
+    (shared.TextBlob, 'content'): "cim.2.shared.TextBlob.content",
+    (shared.TextBlob, 'encoding'): "cim.2.shared.TextBlob.encoding",
     (software.ComponentBase, 'citations'): "cim.2.software.ComponentBase.citations",
     (software.ComponentBase, 'description'): "cim.2.software.ComponentBase.description",
     (software.ComponentBase, 'development_history'): "cim.2.software.ComponentBase.development_history",
@@ -10428,7 +10414,7 @@ KEYS = {
     shared.NilReason: "cim.2.shared.NilReason",
     shared.QualityStatus: "cim.2.shared.QualityStatus",
     shared.RoleCode: "cim.2.shared.RoleCode",
-    shared.TextCode: "cim.2.shared.TextCode",
+    shared.TextBlobEncoding: "cim.2.shared.TextBlobEncoding",
     software.CouplingFramework: "cim.2.software.CouplingFramework",
     software.ProgrammingLanguage: "cim.2.software.ProgrammingLanguage",
     time.CalendarTypes: "cim.2.time.CalendarTypes",
@@ -10504,6 +10490,7 @@ KEYS = {
     (platform.VolumeUnits, 'TB'): "cim.2.platform.VolumeUnits.TB",
     (platform.VolumeUnits, 'TiB'): "cim.2.platform.VolumeUnits.TiB",
     (science.ModelTypes, 'Atm Only'): "cim.2.science.ModelTypes.Atm-Only",
+    (science.ModelTypes, 'ESM'): "cim.2.science.ModelTypes.ESM",
     (science.ModelTypes, 'GCM'): "cim.2.science.ModelTypes.GCM",
     (science.ModelTypes, 'GCM-MLO'): "cim.2.science.ModelTypes.GCM-MLO",
     (science.ModelTypes, 'IGCM'): "cim.2.science.ModelTypes.IGCM",
@@ -10540,7 +10527,7 @@ KEYS = {
     (shared.RoleCode, 'resource provider'): "cim.2.shared.RoleCode.resource-provider",
     (shared.RoleCode, 'sponsor'): "cim.2.shared.RoleCode.sponsor",
     (shared.RoleCode, 'user'): "cim.2.shared.RoleCode.user",
-    (shared.TextCode, 'plaintext'): "cim.2.shared.TextCode.plaintext",
+    (shared.TextBlobEncoding, 'ascii'): "cim.2.shared.TextBlobEncoding.ascii",
     (software.CouplingFramework, 'Bespoke'): "cim.2.software.CouplingFramework.Bespoke",
     (software.CouplingFramework, 'ESMF'): "cim.2.software.CouplingFramework.ESMF",
     (software.CouplingFramework, 'NUOPC'): "cim.2.software.CouplingFramework.NUOPC",
@@ -10639,7 +10626,6 @@ science.ScientificRealm.type_key = KEYS[science.ScientificRealm]
 science.SelectionCardinality.type_key = KEYS[science.SelectionCardinality]
 science.SubProcess.type_key = KEYS[science.SubProcess]
 science.Tuning.type_key = KEYS[science.Tuning]
-shared.Cimtext.type_key = KEYS[shared.Cimtext]
 shared.Citation.type_key = KEYS[shared.Citation]
 shared.DocMetaInfo.type_key = KEYS[shared.DocMetaInfo]
 shared.DocReference.type_key = KEYS[shared.DocReference]
@@ -10651,7 +10637,8 @@ shared.QualityReview.type_key = KEYS[shared.QualityReview]
 shared.QualityStatus.type_key = KEYS[shared.QualityStatus]
 shared.Responsibility.type_key = KEYS[shared.Responsibility]
 shared.RoleCode.type_key = KEYS[shared.RoleCode]
-shared.TextCode.type_key = KEYS[shared.TextCode]
+shared.TextBlob.type_key = KEYS[shared.TextBlob]
+shared.TextBlobEncoding.type_key = KEYS[shared.TextBlobEncoding]
 software.ComponentBase.type_key = KEYS[software.ComponentBase]
 software.Composition.type_key = KEYS[software.Composition]
 software.CouplingFramework.type_key = KEYS[software.CouplingFramework]

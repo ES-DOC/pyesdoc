@@ -711,7 +711,6 @@ CLASS_PROPERTIES = {
         'external_ids',
         'id',
         'institute',
-        'language',
         'project',
         'sort_key',
         'source',
@@ -724,6 +723,7 @@ CLASS_PROPERTIES = {
         'version',
     ),
     shared.DocReference: (
+        'changes',
         'constraint_vocabulary',
         'context',
         'description',
@@ -1439,7 +1439,6 @@ CLASS_OWN_PROPERTIES = {
         'external_ids',
         'id',
         'institute',
-        'language',
         'project',
         'sort_key',
         'source',
@@ -1452,6 +1451,7 @@ CLASS_OWN_PROPERTIES = {
         'version',
     ),
     shared.DocReference: (
+        'changes',
         'constraint_vocabulary',
         'context',
         'description',
@@ -1957,7 +1957,7 @@ CONSTRAINTS = {
         ('is_conformant', 'type', bool),
         ('type', 'type', unicode),
 
-        ('requirements', 'cardinality', "0.N"),
+        ('requirements', 'cardinality', "1.N"),
         ('description', 'cardinality', "0.1"),
         ('sources', 'cardinality', "0.N"),
         ('frequency', 'cardinality', "0.1"),
@@ -2259,7 +2259,7 @@ CONSTRAINTS = {
         ('is_conformant', 'type', bool),
         ('type', 'type', unicode),
 
-        ('requirements', 'cardinality', "0.N"),
+        ('requirements', 'cardinality', "1.N"),
         ('description', 'cardinality', "0.1"),
         ('sources', 'cardinality', "0.N"),
         ('frequency', 'cardinality', "0.1"),
@@ -3063,8 +3063,7 @@ CONSTRAINTS = {
         ('drs_keys', 'type', unicode),
         ('drs_path', 'type', unicode),
         ('create_date', 'type', datetime.datetime),
-        ('language', 'type', unicode),
-        ('author', 'type', unicode),
+        ('author', 'type', shared.ResponsibleParty),
         ('institute', 'type', unicode),
         ('source_key', 'type', unicode),
         ('project', 'type', unicode),
@@ -3082,23 +3081,21 @@ CONSTRAINTS = {
         ('drs_keys', 'cardinality', "0.N"),
         ('drs_path', 'cardinality', "0.1"),
         ('create_date', 'cardinality', "1.1"),
-        ('language', 'cardinality', "1.1"),
         ('author', 'cardinality', "0.1"),
         ('institute', 'cardinality', "0.1"),
         ('source_key', 'cardinality', "0.1"),
-        ('project', 'cardinality', "1.1"),
+        ('project', 'cardinality', "0.1"),
         ('sort_key', 'cardinality', "0.1"),
         ('version', 'cardinality', "1.1"),
         ('source', 'cardinality', "1.1"),
         ('type_sort_key', 'cardinality', "0.1"),
-        ('update_date', 'cardinality', "1.1"),
+        ('update_date', 'cardinality', "0.1"),
         ('external_ids', 'cardinality', "0.N"),
         ('sub_projects', 'cardinality', "0.N"),
         ('type', 'cardinality', "1.1"),
         ('id', 'cardinality', "1.1"),
         ('type_display_name', 'cardinality', "0.1"),
 
-        ('source', 'constant', "scripts"),
     ),
     shared.DocReference: (
 
@@ -3107,11 +3104,12 @@ CONSTRAINTS = {
         ('description', 'type', unicode),
         ('relationship', 'type', unicode),
         ('institute', 'type', unicode),
-        ('type', 'type', unicode),
+        ('external_id', 'type', unicode),
         ('url', 'type', unicode),
         ('version', 'type', int),
         ('context', 'type', unicode),
-        ('external_id', 'type', unicode),
+        ('type', 'type', unicode),
+        ('changes', 'type', shared.Change),
         ('id', 'type', unicode),
         ('linkage', 'type', unicode),
         ('name', 'type', unicode),
@@ -3121,11 +3119,12 @@ CONSTRAINTS = {
         ('description', 'cardinality', "0.1"),
         ('relationship', 'cardinality', "0.1"),
         ('institute', 'cardinality', "0.1"),
-        ('type', 'cardinality', "1.1"),
+        ('external_id', 'cardinality', "0.1"),
         ('url', 'cardinality', "0.1"),
         ('version', 'cardinality', "0.1"),
         ('context', 'cardinality', "0.1"),
-        ('external_id', 'cardinality', "0.1"),
+        ('type', 'cardinality', "1.1"),
+        ('changes', 'cardinality', "0.N"),
         ('id', 'cardinality', "0.1"),
         ('linkage', 'cardinality', "1.1"),
         ('name', 'cardinality', "1.1"),
@@ -3882,7 +3881,7 @@ CONSTRAINTS = {
 
         ('type', activity.NumericalRequirement),
 
-        ('cardinality', "0.N"),
+        ('cardinality', "1.N"),
 
     ),
     (activity.Conformance, 'sources'): (
@@ -4684,7 +4683,7 @@ CONSTRAINTS = {
 
         ('type', activity.NumericalRequirement),
 
-        ('cardinality', "0.N"),
+        ('cardinality', "1.N"),
 
     ),
     (activity.PhysicalModification, 'sources'): (
@@ -6751,7 +6750,7 @@ CONSTRAINTS = {
 
     (shared.DocMetaInfo, 'author'): (
 
-        ('type', unicode),
+        ('type', shared.ResponsibleParty),
 
         ('cardinality', "0.1"),
 
@@ -6798,18 +6797,11 @@ CONSTRAINTS = {
         ('cardinality', "0.1"),
 
     ),
-    (shared.DocMetaInfo, 'language'): (
-
-        ('type', unicode),
-
-        ('cardinality', "1.1"),
-
-    ),
     (shared.DocMetaInfo, 'project'): (
 
         ('type', unicode),
 
-        ('cardinality', "1.1"),
+        ('cardinality', "0.1"),
 
     ),
     (shared.DocMetaInfo, 'sort_key'): (
@@ -6825,7 +6817,6 @@ CONSTRAINTS = {
 
         ('cardinality', "1.1"),
 
-        ('constant', "scripts"),
     ),
     (shared.DocMetaInfo, 'source_key'): (
 
@@ -6866,7 +6857,7 @@ CONSTRAINTS = {
 
         ('type', datetime.datetime),
 
-        ('cardinality', "1.1"),
+        ('cardinality', "0.1"),
 
     ),
     (shared.DocMetaInfo, 'version'): (
@@ -6877,6 +6868,13 @@ CONSTRAINTS = {
 
     ),
 
+    (shared.DocReference, 'changes'): (
+
+        ('type', shared.Change),
+
+        ('cardinality', "0.N"),
+
+    ),
     (shared.DocReference, 'constraint_vocabulary'): (
 
         ('type', unicode),
@@ -9605,8 +9603,6 @@ DOC_STRINGS = {
         "Universal document identifier (must be a valid UUID).",
     (shared.DocMetaInfo, 'institute'):
         "Name of institute with which instance is associated.",
-    (shared.DocMetaInfo, 'language'):
-        "Language with which instance is associated.",
     (shared.DocMetaInfo, 'project'):
         "Name of project with which instance is associated.",
     (shared.DocMetaInfo, 'sort_key'):
@@ -9618,7 +9614,7 @@ DOC_STRINGS = {
     (shared.DocMetaInfo, 'sub_projects'):
         "Set of sub-projects with which instance is associated.",
     (shared.DocMetaInfo, 'type'):
-        "Document ontology type.",
+        "Document ontology type key.",
     (shared.DocMetaInfo, 'type_display_name'):
         "Document type display name.",
     (shared.DocMetaInfo, 'type_sort_key'):
@@ -9627,6 +9623,8 @@ DOC_STRINGS = {
         "Date upon which the instance was last updated.",
     (shared.DocMetaInfo, 'version'):
         "Document version identifier.",
+    (shared.DocReference, 'changes'):
+        "An optional description of how the item being referenced has been modified.  This is particularly useful for dealing with Ensembles (a set of simulations where something about each simulation has changed) or Conformances.",
     (shared.DocReference, 'constraint_vocabulary'):
         "A constraint vocabulary for the relationship.",
     (shared.DocReference, 'context'):
@@ -10806,7 +10804,6 @@ KEYS = {
     (shared.DocMetaInfo, 'external_ids'): "cim.1.shared.DocMetaInfo.external_ids",
     (shared.DocMetaInfo, 'id'): "cim.1.shared.DocMetaInfo.id",
     (shared.DocMetaInfo, 'institute'): "cim.1.shared.DocMetaInfo.institute",
-    (shared.DocMetaInfo, 'language'): "cim.1.shared.DocMetaInfo.language",
     (shared.DocMetaInfo, 'project'): "cim.1.shared.DocMetaInfo.project",
     (shared.DocMetaInfo, 'sort_key'): "cim.1.shared.DocMetaInfo.sort_key",
     (shared.DocMetaInfo, 'source'): "cim.1.shared.DocMetaInfo.source",
@@ -10817,6 +10814,7 @@ KEYS = {
     (shared.DocMetaInfo, 'type_sort_key'): "cim.1.shared.DocMetaInfo.type_sort_key",
     (shared.DocMetaInfo, 'update_date'): "cim.1.shared.DocMetaInfo.update_date",
     (shared.DocMetaInfo, 'version'): "cim.1.shared.DocMetaInfo.version",
+    (shared.DocReference, 'changes'): "cim.1.shared.DocReference.changes",
     (shared.DocReference, 'constraint_vocabulary'): "cim.1.shared.DocReference.constraint_vocabulary",
     (shared.DocReference, 'context'): "cim.1.shared.DocReference.context",
     (shared.DocReference, 'description'): "cim.1.shared.DocReference.description",

@@ -18,31 +18,6 @@ import uuid
 
 
 
-class Cimtext(object):
-    """A concrete class within the cim v2 type system.
-
-    Provides a text class which supports plaintext, html, and
-    friends (or will do).
-
-    """
-    def __init__(self):
-        """Instance constructor.
-
-        """
-        super(Cimtext, self).__init__()
-
-        self.content = None                               # unicode (1.1)
-        self.content_type = None                          # shared.TextCode (1.1)
-
-
-    @property
-    def __str__(self):
-	    """Instrance string representation.
-
-	    """
-	    return "{}".format(self.content)
-
-
 class Citation(object):
     """A concrete class within the cim v2 type system.
 
@@ -86,8 +61,7 @@ class DocMetaInfo(object):
         self.external_ids = []                            # unicode (0.N)
         self.id = None                                    # unicode (1.1)
         self.institute = None                             # unicode (0.1)
-        self.language = None                              # unicode (1.1)
-        self.project = None                               # unicode (1.1)
+        self.project = None                               # unicode (0.1)
         self.sort_key = None                              # unicode (0.1)
         self.source = None                                # unicode (1.1)
         self.source_key = None                            # unicode (0.1)
@@ -95,9 +69,8 @@ class DocMetaInfo(object):
         self.type = None                                  # unicode (1.1)
         self.type_display_name = None                     # unicode (0.1)
         self.type_sort_key = None                         # unicode (0.1)
-        self.update_date = None                           # datetime.datetime (1.1)
+        self.update_date = None                           # datetime.datetime (0.1)
         self.version = None                               # int (1.1)
-        self.source = unicode("scripts")
 
 
 class DocReference(object):
@@ -244,6 +217,31 @@ class Responsibility(object):
 	    return "{}:{}".format(self.role, self.party)
 
 
+class TextBlob(object):
+    """A concrete class within the cim v2 type system.
+
+    Provides a text class which supports plaintext, html, and
+    friends (or will do).
+
+    """
+    def __init__(self):
+        """Instance constructor.
+
+        """
+        super(TextBlob, self).__init__()
+
+        self.content = None                               # unicode (1.1)
+        self.encoding = None                              # shared.TextBlobEncoding (1.1)
+
+
+    @property
+    def __str__(self):
+	    """Instrance string representation.
+
+	    """
+	    return "{}".format(self.content)
+
+
 class NilReason(object):
     """An enumeration within the cim v2 type system.
 
@@ -299,7 +297,7 @@ class RoleCode(object):
         ]
 
 
-class TextCode(object):
+class TextBlobEncoding(object):
     """An enumeration within the cim v2 type system.
 
     Types of text understood by the CIM notebook. Currently only
@@ -307,7 +305,7 @@ class TextCode(object):
     """
     is_open = False
     members = [
-        "plaintext"
+        "ascii"
         ]
 
 

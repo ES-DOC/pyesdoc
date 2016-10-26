@@ -147,15 +147,14 @@ class DocMetaInfo(object):
         """
         super(DocMetaInfo, self).__init__()
 
-        self.author = None                                # shared.Party (0.1)
+        self.author = None                                # shared.ResponsibleParty (0.1)
         self.create_date = None                           # datetime.datetime (1.1)
         self.drs_keys = []                                # unicode (0.N)
         self.drs_path = None                              # unicode (0.1)
         self.external_ids = []                            # unicode (0.N)
         self.id = None                                    # unicode (1.1)
         self.institute = None                             # unicode (0.1)
-        self.language = None                              # unicode (1.1)
-        self.project = None                               # unicode (1.1)
+        self.project = None                               # unicode (0.1)
         self.sort_key = None                              # unicode (0.1)
         self.source = None                                # unicode (1.1)
         self.source_key = None                            # unicode (0.1)
@@ -163,9 +162,8 @@ class DocMetaInfo(object):
         self.type = None                                  # unicode (1.1)
         self.type_display_name = None                     # unicode (0.1)
         self.type_sort_key = None                         # unicode (0.1)
-        self.update_date = None                           # datetime.datetime (1.1)
+        self.update_date = None                           # datetime.datetime (0.1)
         self.version = None                               # int (1.1)
-        self.source = unicode("scripts")
 
 
 class DocReference(object):
@@ -180,6 +178,7 @@ class DocReference(object):
         """
         super(DocReference, self).__init__()
 
+        self.changes = []                                 # shared.Change (0.N)
         self.constraint_vocabulary = None                 # unicode (0.1)
         self.context = None                               # unicode (0.1)
         self.description = None                           # unicode (0.1)
