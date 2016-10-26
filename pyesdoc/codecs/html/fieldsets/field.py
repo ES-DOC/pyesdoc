@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 """
-.. module:: field_info.py
+.. module:: field.py
 
    :license: GPL / CeCILL
    :platform: Unix, Windows
@@ -18,23 +18,25 @@ from pyesdoc.utils import runtime as rt
 
 
 
-class FieldInfo(object):
+class Field(object):
     """Document field processing information.
 
     """
-    def __init__(self,
-                 name,
-                 email=None,
-                 email_path=None,
-                 input_formatter=None,
-                 output_formatter=None,
-                 link=None,
-                 link_factory=None,
-                 link_path=None,
-                 path=None,
-                 tag_id=None,
-                 value=None):
-        """Object constructor.
+    def __init__(
+        self,
+        name,
+        email=None,
+        email_path=None,
+        input_formatter=None,
+        output_formatter=None,
+        link=None,
+        link_factory=None,
+        link_path=None,
+        path=None,
+        tag_id=None,
+        value=None
+        ):
+        """Instance constructor.
 
         """
         self.name = name

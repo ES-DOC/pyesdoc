@@ -235,9 +235,8 @@ def _set_component_meta_info(ctx):
     """Extends component meta info.
 
     """
-    fields = ('language', 'project', 'source', 'type')
     for c in ctx.doc.ext.component_tree:
-        for field in fields:
+        for field in ('project', 'source', 'type'):
             if not getattr(c.meta, field):
                 setattr(c.meta, field, getattr(ctx.doc.meta, field))
 

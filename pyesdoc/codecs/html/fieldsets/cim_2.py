@@ -10,7 +10,7 @@
 .. moduleauthor:: Earth System Documentation (ES-DOC) <dev@es-doc.org>
 
 """
-from pyesdoc.codecs.html.fieldsets.field_info import FieldInfo
+from pyesdoc.codecs.html.fieldsets.field import Field
 from pyesdoc.ontologies import cim
 
 
@@ -21,92 +21,98 @@ _SEPARATOR = "  |  "
 # Document field sets.
 FIELDSETS = {
     'cim.2.designing.numericalexperiment-overview': [
-        FieldInfo('MIP Era', path='meta.project'),
-        FieldInfo('Related MIPs',
-                  link_factory=lambda exp: [(i.name, i.viewer_url) for i in \
-                                            sorted(exp.related_mips, key=lambda v: v.name)]),
-        FieldInfo('Institute', path='meta.institute'),
-        FieldInfo('Canonical Name', path='canonical_name'),
-        FieldInfo('Alternative Names', path='alternative_names',
-                  input_formatter=lambda v: _SEPARATOR.join(v)),
-        FieldInfo('Internal Name', path='internal_name'),
-        FieldInfo('Long Name', path='long_name'),
-        FieldInfo('Description', path='description'),
-        FieldInfo('Rationale', path='rationale'),
-        FieldInfo('Keywords', path='keywords',
-                  input_formatter=lambda v: _SEPARATOR.join(v.split(',')) if v else None),
-        FieldInfo('Related Experiments',
-                  link_factory=lambda exp: [(i.name, i.viewer_url) for i in \
-                                            sorted(exp.related_experiments, key=lambda v: v.name)])
+        Field('MIP Era', path='meta.project'),
+        Field('Related MIPs',
+            link_factory=lambda exp: [(i.name, i.viewer_url) for i in \
+                                      sorted(exp.related_mips, key=lambda v: v.name)]),
+        Field('Institute', path='meta.institute'),
+        Field('Canonical Name', path='canonical_name'),
+        Field('Alternative Names', path='alternative_names',
+            input_formatter=lambda v: _SEPARATOR.join(v)),
+        Field('Internal Name', path='internal_name'),
+        Field('Long Name', path='long_name'),
+        Field('Description', path='description'),
+        Field('Rationale', path='rationale'),
+        Field('Keywords', path='keywords',
+            input_formatter=lambda v: _SEPARATOR.join(v.split(',')) if v else None),
+        Field('Related Experiments',
+            link_factory=lambda exp: [(i.name, i.viewer_url) for i in \
+                                      sorted(exp.related_experiments, key=lambda v: v.name)])
     ],
 
     str(cim.v2.designing.EnsembleRequirement) : [
-        FieldInfo('Name', path='canonical_name'),
-        FieldInfo('Description', path='description'),
-        FieldInfo('Ensemble Type', path='ensemble_type'),
-        FieldInfo('Minimum Size', path='minimum_size'),
-        FieldInfo('Conformance Requested ?', path='is_conformance_requested'),
-        FieldInfo('Keywords', path='keywords', input_formatter=lambda v: _SEPARATOR.join(v.split(',')))
+        Field('Name', path='canonical_name'),
+        Field('Description', path='description'),
+        Field('Ensemble Type', path='ensemble_type'),
+        Field('Minimum Size', path='minimum_size'),
+        Field('Conformance Requested ?', path='is_conformance_requested'),
+        Field('Keywords', path='keywords',
+            input_formatter=lambda v: _SEPARATOR.join(v.split(',')))
     ],
 
     str(cim.v2.designing.ForcingConstraint) : [
-        FieldInfo('Name', path='canonical_name'),
-        FieldInfo('Description', path='description'),
-        FieldInfo('Forcing Type', path='forcing_type'),
-        FieldInfo('Conformance Requested ?', path='is_conformance_requested'),
-        FieldInfo('Keywords', path='keywords', input_formatter=lambda v: _SEPARATOR.join(v.split(',')))
+        Field('Name', path='canonical_name'),
+        Field('Description', path='description'),
+        Field('Forcing Type', path='forcing_type'),
+        Field('Conformance Requested ?', path='is_conformance_requested'),
+        Field('Keywords', path='keywords',
+            input_formatter=lambda v: _SEPARATOR.join(v.split(',')))
     ],
 
     str(cim.v2.designing.MultiEnsemble) : [
-        FieldInfo('Name', path='canonical_name'),
-        FieldInfo('Description', path='description'),
-        FieldInfo('Forcing Type', path='forcing_type'),
-        FieldInfo('Conformance Requested ?', path='is_conformance_requested'),
-        FieldInfo('Keywords', path='keywords', input_formatter=lambda v: _SEPARATOR.join(v.split(',')))
+        Field('Name', path='canonical_name'),
+        Field('Description', path='description'),
+        Field('Forcing Type', path='forcing_type'),
+        Field('Conformance Requested ?', path='is_conformance_requested'),
+        Field('Keywords', path='keywords',
+            input_formatter=lambda v: _SEPARATOR.join(v.split(',')))
     ],
 
     str(cim.v2.designing.NumericalRequirement) : [
-        FieldInfo('Name', path='canonical_name'),
-        FieldInfo('Description', path='description'),
-        FieldInfo('Ensemble Type', path='ensemble_type'),
-        FieldInfo('Minimum Size', path='minimum_size'),
-        FieldInfo('Conformance Requested ?', path='is_conformance_requested'),
-        FieldInfo('Keywords', path='keywords', input_formatter=lambda v: _SEPARATOR.join(v.split(',')))
+        Field('Name', path='canonical_name'),
+        Field('Description', path='description'),
+        Field('Ensemble Type', path='ensemble_type'),
+        Field('Minimum Size', path='minimum_size'),
+        Field('Conformance Requested ?', path='is_conformance_requested'),
+        Field('Keywords', path='keywords',
+            input_formatter=lambda v: _SEPARATOR.join(v.split(',')))
     ],
 
     str(cim.v2.designing.TemporalConstraint) : [
-        FieldInfo('Start Date', path='start_date.value'),
-        FieldInfo('Required Duration', path='required_duration',
-          input_formatter=lambda v: "{} {}".format(v.length, v.units)),
-        FieldInfo('Description', path='description'),
-        FieldInfo('Conformance Requested ?', path='is_conformance_requested'),
-        FieldInfo('Keywords', path='keywords', input_formatter=lambda v: _SEPARATOR.join(v.split(',')))
+        Field('Start Date', path='start_date.value'),
+        Field('Required Duration', path='required_duration',
+            input_formatter=lambda v: "{} {}".format(v.length, v.units)),
+        Field('Description', path='description'),
+        Field('Conformance Requested ?', path='is_conformance_requested'),
+        Field('Keywords', path='keywords',
+            input_formatter=lambda v: _SEPARATOR.join(v.split(',')))
     ],
 
     'cim.2.designing.project-overview' : [
-        FieldInfo('Name', path='name'),
-        FieldInfo('Long Name', path='long_name'),
-        FieldInfo('Homepage', path='homepage'),
-        FieldInfo('Description', path='description'),
-        FieldInfo('Rationale', path='rationale'),
-        FieldInfo('Objectives', path='objectives'),
-        FieldInfo('Related Experiments',
-                  link_factory=lambda exp: [(i.name, i.viewer_url) for i in \
-                                            sorted(exp.requires_experiments, key=lambda v: v.name)]),
-        FieldInfo('Keywords', path='keywords', input_formatter=lambda v: _SEPARATOR.join(v.split(',')))
+        Field('Name', path='name'),
+        Field('Long Name', path='long_name'),
+        Field('Homepage', path='homepage'),
+        Field('Description', path='description'),
+        Field('Rationale', path='rationale'),
+        Field('Objectives', path='objectives'),
+        Field('Related Experiments',
+            link_factory=lambda exp: [(i.name, i.viewer_url) for i in \
+                                      sorted(exp.requires_experiments, key=lambda v: v.name)]),
+        Field('Keywords', path='keywords',
+            input_formatter=lambda v: _SEPARATOR.join(v.split(',')))
     ],
 
     'cim.2.shared.citation' : [
-        FieldInfo('DOI', path='doi',
-                  link_path=lambda v: "https://doi.org/{}".format(v.doi)),
-        FieldInfo('Title', path='citation_detail', link_path="url.linkage"),
-        FieldInfo('Context', path='context'),
-        FieldInfo('Abstract', path='abstract'),
+        Field('DOI', path='doi',
+            link_path=lambda v: "https://doi.org/{}".format(v.doi)),
+        Field('Title', path='citation_detail', link_path="url.linkage"),
+        Field('Context', path='context'),
+        Field('Abstract', path='abstract'),
     ],
 
     'cim.2.shared.party' : [
-        FieldInfo('Name', path='name', link_path="url.linkage"),
-        FieldInfo('Address', path='address'),
-        FieldInfo('Email', path='email', email_path='email'),
+        Field('Name', path='name', link_path="url.linkage"),
+        Field('Address', path='address'),
+        Field('Email', path='email', email_path='email'),
     ]
 }

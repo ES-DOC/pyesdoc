@@ -58,6 +58,17 @@ class DecodingException(LibraryBaseException):
         super(DecodingException, self).__init__("Document decoding failed.")
 
 
+class EncodingException(LibraryBaseException):
+    """Raised when document encoding fails.
+
+    """
+    def __init__(self, encoding):
+        """Instance constructor.
+
+        """
+        super(EncodingException, self).__init__("Document {} encoding failed.".format(encoding.upper()))
+
+
 class InvalidOptionException(LibraryBaseException):
     """Raised when an attempt to access an invalid library option occurs.
 

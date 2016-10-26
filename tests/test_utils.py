@@ -255,7 +255,6 @@ def assert_doc(mod, doc):
     if hasattr(doc, "ext"):
         ext = doc.ext
         assert_str(mod.DOC_TYPE_KEY, ext.type, True)
-        assert_str(ext.language, pyesdoc.constants.DEFAULT_LANGUAGE)
         if hasattr(mod, "assert_extension_info"):
             mod.assert_extension_info(ext)
 

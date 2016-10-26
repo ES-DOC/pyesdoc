@@ -14,7 +14,6 @@ import xml.etree.ElementTree as ET
 
 from pyesdoc import ontologies
 from pyesdoc.utils import convert
-from pyesdoc.utils import runtime as rt
 
 
 
@@ -22,11 +21,11 @@ from pyesdoc.utils import runtime as rt
 _TYPES = ontologies.get_types()
 
 
-def _get_doc(xml, doc_type):
-    """Returns document.
+def _create_doc(elem, doc_type):
+    """Creates & returns a document to be hydrated from an xml element.
 
     """
-    type_key = xml.get('ontologyTypeKey')
+    type_key = elem.get('ontologyTypeKey')
     if type_key and ontologies.get_type_key(doc_type) != type_key:
         doc_type = ontologies.get_type_from_key(type_key)
     if doc_type is None:
@@ -35,37 +34,43 @@ def _get_doc(xml, doc_type):
     return doc_type(), ontologies.get_decoder_info(doc_type)
 
 
-def _decode_simple(v, type, iterable):
+def _decode_simple(elem, typeof, is_iterable):
     """Decodes a simple type value.
 
     """
-    if iterable:
-        return [convert.text_to_typed_value(i.text, type) for i in v]
-    else:
-        return convert.text_to_typed_value(v.text, type)
+    if is_iterable:
+        return [convert.text_to_typed_value(i.text, typeof) for i in elem]
+    return convert.text_to_typed_value(elem.text, typeof)
 
 
-def _decode_complex(val, doc_type, iterable):
+def _decode(elem, doc_type, is_iterable):
     """Decodes a complex type value.
 
     """
-    def _decode(xml):
+    def _do(xml):
         # Set doc.
-        doc, doc_type_info = _get_doc(xml, doc_type)
+        doc, doc_type_info = _create_doc(xml, doc_type)
 
-        # Set doc attributes.
-        for _name, _type, _iterable in doc_type_info:
-            # ... get xml element
-            elem = xml.find(convert.str_to_camel_case(_name))
+        # Set doc attributes:
+        for _name, _type, _is_iterable in doc_type_info:
+            # ... set xml element;
+            _elem = xml.find(convert.str_to_camel_case(_name))
 
-            # ... set attribute
-            if elem is not None:
-                decoder = _decode_complex if _type in _TYPES else _decode_simple
-                setattr(doc, _name, decoder(elem, _type, _iterable))
+            # ... skip placeholders;
+            if _elem is None:
+                continue
+
+            # ... complex types;
+            elif _type in _TYPES:
+                setattr(doc, _name, _decode(_elem, _type, _is_iterable))
+
+            # ... simple types;
+            else:
+                setattr(doc, _name, _decode_simple(_elem, _type, _is_iterable))
 
         return doc
 
-    return [_decode(i) for i in val] if iterable else _decode(val)
+    return [_do(i) for i in elem] if is_iterable else _do(elem)
 
 
 def decode(as_xml):
@@ -86,12 +91,12 @@ def decode(as_xml):
     if not isinstance(as_xml, ET.Element):
         raise TypeError("Cannot decode non xml documents")
 
-    # Get document type.
-    doc_type_key = as_xml.get("ontologyTypeKey")
+    # Get document type key.
+    doc_type_key = as_xml.find('meta/type').text
 
-    # Get target type.
+    # Get document type.
     doc_type = ontologies.get_type_from_key(doc_type_key)
     if doc_type is None:
-        raise ValueError('ontology_type_key cannot be mapped to a supported ontology type.')
+        raise ValueError('meta.type key cannot be mapped to an ontology type.')
 
-    return  _decode_complex(as_xml, doc_type, False)
+    return _decode(as_xml, doc_type, False)

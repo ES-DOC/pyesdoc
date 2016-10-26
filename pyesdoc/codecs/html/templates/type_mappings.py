@@ -27,5 +27,7 @@ TEMPLATE_TYPE_MAPPINGS = {
     cim.v1.quality.CimQuality: "cim_1/quality_cimquality.html",
     # CIM v2 templates.
     cim.v2.designing.NumericalExperiment: "cim_2/designing_numerical_experiment.html",
-    cim.v2.designing.Project: "cim_2/designing_project.html"
+    cim.v2.designing.Project: "cim_2/designing_project.html",
+    cim.v2.shared.Citation: "cim_2/shared_citation.html",
+    cim.v2.shared.Party: "cim_2/shared_party.html"
 }

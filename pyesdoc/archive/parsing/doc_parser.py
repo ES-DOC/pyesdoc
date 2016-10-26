@@ -89,8 +89,6 @@ def _set_defaults(doc):
     """
     if doc.meta.institute is None:
         doc.meta.institute = u"--"
-    if doc.meta.language is None:
-        doc.meta.language = u"en"
 
 
 def _get_parsers(project, source):

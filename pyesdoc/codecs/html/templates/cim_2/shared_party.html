@@ -1,0 +1,20 @@
+{% extends "../core/document.html" %}
+
+{% comment ***************** %}
+{% comment Emit content      %}
+{% comment ***************** %}
+{% block doc-content %}
+
+{% set ctx = TemplateInfo(doc, fieldset='cim.2.shared.party') %}
+<section>
+	<header>
+		<h3>Overview</h3>
+	</header>
+	<table>
+		<tbody>
+		{% include ../core/fieldset.html %}
+		</tbody>
+	</table>
+</section>
+
+{% end %}

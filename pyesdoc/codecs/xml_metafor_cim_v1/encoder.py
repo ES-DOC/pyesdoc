@@ -21,4 +21,4 @@ def encode(doc):
     :rtype: unicode
 
     """
-    raise NotImplementedError()
+    raise NotImplementedError("Metafor XML endoing does not require an encoder.")

@@ -11,7 +11,7 @@
 		    <li><a href="#{{ doc.ext.full_id }}-inputs">Couplings</a></li>
 	    {% end %}
 		{% if isinstance(doc.model, cim.v1.DocReference) and doc.model.changes %}
-		    <li><a href="#{{ doc.ext.full_id }}-model-mods">Model Modifications {{len(doc.model.changes)}}</a></li>
+		    <li><a href="#{{ doc.ext.full_id }}-model-mods">Model Modifications</a></li>
 		{% end %}
     </ul>
 </nav>

@@ -559,7 +559,7 @@ def text_to_typed_value(text, target_type):
     :rtype: object
 
     """
-    # Encode.
+    # Encode text.
     if text is not None:
         text = str_to_unicode(text) if isinstance(text, str) else unicode(text)
 

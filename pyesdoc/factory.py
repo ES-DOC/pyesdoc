@@ -20,24 +20,23 @@ from pyesdoc import ontologies
 
 
 
-def create(typeof,
-           project=None,
-           institute=None,
-           language=None,
-           source=None,
-           author=None,
-           uid=None,
-           version=None):
+def create(
+    typeof,
+    project=None,
+    institute=None,
+    source=None,
+    author=None,
+    uid=None,
+    version=0
+    ):
     """Creates a document.
 
     :param class typeof: Ontology type, e.g. cim.1.software.ModelComponent.
     :param str project: Project wih which instance is associated.
     :param str institute: Institute wih which instance is associated.
-    :param str language: Language wih which instance is associated.
     :param str source: Source application with which instance is associated.
     :param str author: Author wih which instance is associated.
     :param uuid.UUID uid: Document unique identifier.
-    :param int version: Document version.
 
     :returns: A pyesdoc document instance.
     :rtype: pyesdoc object
@@ -48,27 +47,20 @@ def create(typeof,
         raise exceptions.InvalidDocumentTypeException(typeof)
 
     # Set defaults.
-    if not institute:
-        institute = constants.DEFAULT_INSTITUTE
-    if not language:
-        language = constants.DEFAULT_LANGUAGE
-    if not project:
-        project = constants.DEFAULT_PROJECT
-    if not source:
-        if institute != constants.DEFAULT_INSTITUTE:
-            source = institute
-        else:
-            source = constants.DEFAULT_SOURCE
     if not uid:
         uid = uuid.uuid4()
-    if not version:
-        version = 0
 
     # Reformat.
-    institute = unicode(institute).lower()
-    language = unicode(language).lower()
-    project = unicode(project).lower()
-    source = unicode(source).lower()
+    if institute:
+        institute = unicode(institute).lower()
+    if project:
+        project = unicode(project).lower()
+    if source:
+        source = unicode(source).lower()
+    elif institute:
+        source = institute
+    elif project:
+        source = project
     uid = unicode(uid)
 
     # Verify uid.
@@ -84,11 +76,13 @@ def create(typeof,
         doc.meta.id = uid
         doc.meta.version = version
         doc.meta.create_date = datetime.datetime.now()
-        doc.meta.institute = institute
-        doc.meta.language = language
-        doc.meta.project = project
-        doc.meta.source = source
-        doc.meta.type = doc.__class__.type_key
+        if institute:
+            doc.meta.institute = institute
+        if project:
+            doc.meta.project = project
+        if source:
+            doc.meta.source = source
+        doc.meta.type = typeof.type_key
 
     return doc
 

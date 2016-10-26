@@ -19,8 +19,7 @@ def _set_full_id(ctx):
     """Sets full document identifier.
 
     """
-    ctx.ext.full_id = "{0}-{1}-{2}".format(
-        ctx.meta.project, ctx.meta.id, ctx.meta.version)
+    ctx.ext.full_id = "{}-{}".format(ctx.meta.id, ctx.meta.version)
 
 
 def _set_type_info(ctx):
@@ -31,15 +30,6 @@ def _set_type_info(ctx):
     ctx.ext.css_class = ctx.ext.type.lower().replace(".", "-")
     ctx.meta.type_display_name = cim.constants.DISPLAY_NAMES.get(type(ctx.doc), ctx.meta.type.split(".")[-1])
     ctx.meta.type_sort_key = cim.constants.SORT_KEYS.get(type(ctx.doc), u"ZZ")
-
-
-def _set_language(ctx):
-    """Sets document language.
-
-    """
-    if not ctx.meta.language:
-        ctx.meta.language = constants.DEFAULT_LANGUAGE
-    ctx.ext.language = ctx.meta.language
 
 
 def _set_institute(ctx):
@@ -145,7 +135,6 @@ def _set_sort_key(ctx):
 PRE_EXTENDERS = (
     _set_full_id,
     _set_type_info,
-    _set_language,
     _set_institute,
     _set_project,
     _set_display_name,

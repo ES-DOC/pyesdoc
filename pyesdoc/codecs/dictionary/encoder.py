@@ -14,11 +14,11 @@ from pyesdoc import ontologies
 
 
 
-def _is_encodable(obj):
-    """Returns flag indicating whether an object is encodable or not.
+def _is_pyesdoc_type(obj):
+    """Returns flag indicating whether an object is a pyesdoc type.
 
     """
-    return type(obj) in ontologies.get_types()
+    return isinstance(obj, ontologies.get_types())
 
 
 def _is_encodable_attribute(name):
@@ -28,36 +28,6 @@ def _is_encodable_attribute(name):
     if name.startswith("_") or name.startswith("__") or name == "ext":
         return False
     return True
-
-
-def _encode(doc):
-    """Encodes an object to a deep dictionary.
-
-    """
-    # Initialise result (note - type key is necessary to decode).
-    d = {
-        'ontology_type_key' : type(doc).type_key
-    }
-
-    for k, v in doc.__dict__.items():
-        if not _is_encodable_attribute(k):
-            continue
-        try:
-            iter(v)
-        except TypeError:
-            if _is_encodable(v):
-                d[k] = _encode(v)
-            elif v is not None:
-                d[k] = v
-        else:
-            if len(v) == 0:
-                pass
-            elif type(v) in (str, unicode,):
-                d[k] = v
-            else:
-                d[k] = map(lambda i : _encode(i) if _is_encodable(i) else i, v)
-
-    return d
 
 
 def encode(doc):
@@ -70,4 +40,40 @@ def encode(doc):
     :rtype: dict
 
     """
-    return _encode(doc)
+    obj = dict()
+
+    for key, val in doc.__dict__.items():
+        # Escape private/magic properties.
+        if not _is_encodable_attribute(key):
+            continue
+
+        # Process iterables / non-iterables differently.
+        try:
+            iter(val)
+
+        # Encode non-iterables:
+        except TypeError:
+            # ... pyesdoc types;
+            if _is_pyesdoc_type(val):
+                obj[key] = encode(val)
+            # ... simple types;
+            elif val is not None:
+                obj[key] = val
+
+        # Encode iterables:
+        else:
+            if len(val) > 0:
+                # ... string types;
+                if isinstance(val, (str, unicode)):
+                    obj[key] = val
+                # ... collections;
+                else:
+                    obj[key] = [encode(i) if _is_pyesdoc_type(i) else i for i in val]
+
+    # Inject type info to simplify decoding.
+    if doc.__class__.__name__ != "DocMetaInfo":
+        if 'meta' not in obj:
+            obj['meta'] = {}
+        obj['meta']['type'] = type(doc).type_key
+
+    return obj

@@ -71,9 +71,6 @@ DOC_VERSION_ALL = 'all'
 # Default document encoding.
 DEFAULT_ENCODING = 'json'
 
-# Default document language.
-DEFAULT_LANGUAGE = u'en'
-
 # Default document project.
 DEFAULT_PROJECT = u'--'
 

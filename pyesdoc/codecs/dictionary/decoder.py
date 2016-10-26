@@ -10,60 +10,71 @@
 .. moduleauthor:: Earth System Documentation (ES-DOC) <dev@es-doc.org>
 
 """
-import datetime
-import uuid
-
 from pyesdoc import ontologies
 from pyesdoc.utils import convert
-from pyesdoc.utils import runtime as rt
 
 
 
-def _get_doc(obj, doc_type):
-    """Returns document.
+def _create_doc(obj, doc_type):
+    """Creates & returns a document to be hydrated from a dictionary.
 
     """
-    if ontologies.get_type_key(doc_type) != obj['ontology_type_key']:
-        doc_type = ontologies.get_type_from_key(obj['ontology_type_key'])
-    if doc_type is None:
-        raise ValueError('Decoding type is unrecognized')
+    try:
+        obj['meta']
+    # ... only DocMetaInfo objects do not have a meta section.
+    except KeyError:
+        doc_type = ontologies.get_type_from_key('cim.2.shared.DocMetaInfo')
+    else:
+        if ontologies.get_type_key(doc_type) != obj['meta']['type']:
+            doc_type = ontologies.get_type_from_key(obj['meta']['type'])
+    finally:
+        if doc_type is None:
+            raise ValueError('Target decoding type is unrecognized')
 
     return doc_type(), ontologies.get_decoder_info(doc_type)
 
 
-def _decode_simple(value, target_type, iterable):
+def _decode_simple(value, target_type, is_iterable):
     """Decodes a simple value.
 
     """
-    if iterable:
+    if is_iterable:
         return [convert.text_to_typed_value(i, target_type) for i in value]
     return convert.text_to_typed_value(value, target_type)
 
 
-def _decode(value, doc_type, iterable):
+def _decode(value, doc_type, is_iterable):
     """Decodes a dictionary.
 
     """
     def _do(obj):
         # Create doc.
-        doc, doc_type_info = _get_doc(obj, doc_type)
+        doc, doc_type_info = _create_doc(obj, doc_type)
 
-        # Set doc attributes.
-        for _name, _type, _iterable in doc_type_info:
-            # ... set placeholders
+        # Set doc attributes:
+        for _name, _type, _is_iterable in doc_type_info:
+            # ... skip placeholders;
             if _name not in obj:
                 continue
-            # ... set nulls
-            elif obj[_name] is None:
-                setattr(doc, _name, [] if _iterable else None)
-            # ... set simple / complex types
+
+            # ... set incoming value;
+            _val = obj[_name]
+
+            # ... nulls;
+            if _val is None:
+                setattr(doc, _name, [] if _is_iterable else None)
+
+            # ... complex types;
+            elif _type in ontologies.get_types():
+                setattr(doc, _name, _decode(_val, _type, _is_iterable))
+
+            # ... simple types;
             else:
-                decoder = _decode if _type in ontologies.get_types() else _decode_simple
-                setattr(doc, _name, decoder(obj[_name], _type, _iterable))
+                setattr(doc, _name, _decode_simple(_val, _type, _is_iterable))
 
         return doc
 
-    return _do(value) if not iterable else [_do(i) for i in value]
+    return _do(value) if not is_iterable else [_do(i) for i in value]
 
 
 def decode(as_dict):
@@ -80,13 +91,13 @@ def decode(as_dict):
 
     # Get document type key.
     try:
-        doc_type_key = as_dict['ontology_type_key']
+        doc_type_key = as_dict['meta']['type']
     except KeyError:
-        raise KeyError('ontology_type_key is unspecified and therefore the document cannot be decoded.')
+        raise KeyError('Document pyesdoc type key is invalid.')
 
     # Get document type.
     doc_type = ontologies.get_type_from_key(doc_type_key)
     if doc_type is None:
-        raise ValueError('ontology_type_key cannot be mapped to a supported ontology type.')
+        raise ValueError('Document pyesdoc type key is invalid.')
 
     return _decode(as_dict, doc_type, False)

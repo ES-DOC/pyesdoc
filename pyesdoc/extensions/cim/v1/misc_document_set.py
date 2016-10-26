@@ -18,8 +18,8 @@ def get_extenders():
     """
     return (
         _propogate_institute,
-        _set_meta_info,
-        _set_ext_info,
+        _propogate_meta_info,
+        _propogate_ext_info,
         )
 
 
@@ -40,8 +40,8 @@ def unpack_children(ctx):
     ctx.ext.children = [c for c in children if c]
 
 
-def _set_meta_info(ctx):
-    """Sets document meta information.
+def _propogate_meta_info(ctx):
+    """Propogates document meta information.
 
     """
     if ctx.doc.simulation:
@@ -52,8 +52,8 @@ def _set_meta_info(ctx):
         ctx.meta.version = simulation.meta.version
 
 
-def _set_ext_info(ctx):
-    """Sets document extension information.
+def _propogate_ext_info(ctx):
+    """Propogates document extension information.
 
     """
     if ctx.doc.simulation:
@@ -68,7 +68,7 @@ def _set_ext_info(ctx):
 
 
 def _propogate_institute(ctx):
-    """Sets child meta attributes.
+    """Propogates institute code.
 
     """
     for child in ctx.ext.children:

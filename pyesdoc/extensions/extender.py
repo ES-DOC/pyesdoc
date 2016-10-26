@@ -51,7 +51,6 @@ class DocumentExtensionInfo(object):
         self.description = unicode()
         self.display_name = unicode()
         self.full_display_name = unicode()
-        self.language = unicode()
         self.summary_fields = []
         self.type = unicode()
         self.viewer_url = unicode()

@@ -34,8 +34,6 @@ def _init_templates():
 
     """
     global _DOCUMENT_SET_TEMPLATE
-    if not isinstance(_DOCUMENT_SET_TEMPLATE, str):
-        return
 
     loader = template.Loader(_DIR_TEMPLATES)
     _DOCUMENT_SET_TEMPLATE = loader.load(_DOCUMENT_SET_TEMPLATE)
@@ -74,7 +72,6 @@ def load(reference):
         return _load(reference)
     else:
         return [_load(i) for i in reference]
-
 
 
 class TemplateInfo(object):
@@ -156,26 +153,37 @@ def encode(doc):
     :rtype: str
 
     """
-    # Convert to sorted iterable.
+    # Convert to iterable.
     try:
         iter(doc)
     except TypeError:
         document_set = [doc]
     else:
-        document_set = sorted(doc, key=lambda d: d.meta.sort_key)
+        document_set = doc
 
-    # Filter out documents without a matching template.
-    document_set = [d for d in document_set if type(doc) in TEMPLATE_TYPE_MAPPINGS]
+    # Filter out fragments & non-templated documents.
+    document_set = [d for d in document_set if hasattr(d, "meta")]
+    document_set = [d for d in document_set if type(d) in TEMPLATE_TYPE_MAPPINGS]
 
-    # Ensure that documents are extended.
+    # Escape if no documents.
+    if not document_set:
+        return
+
+    # Sort.
+    document_set = sorted(document_set, key=lambda d: d.meta.sort_key)
+
+    # Ensure documents are extended.
     for document in document_set:
         pyesdoc.extend(document)
 
     # Ensure templates are initialized.
-    _init_templates()
+    if isinstance(_DOCUMENT_SET_TEMPLATE, str):
+        _init_templates()
 
     # Return generated template.
     return _DOCUMENT_SET_TEMPLATE.generate(
         document_set=document_set,
         document_group_set=_get_group_set(document_set),
-        generate_document=_generate)
+        generate_document=_generate,
+        pyesdoc=pyesdoc
+        )

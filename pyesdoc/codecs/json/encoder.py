@@ -25,8 +25,7 @@ def encode(doc):
     :rtype: unicode
 
     """
-    # Encode as dictionary.
-    d = dict_encoder.encode(doc)
-
-    # Convert dictionary to json.
-    return convert.dict_to_json(d, convert.str_to_camel_case)
+    return convert.dict_to_json(
+      dict_encoder.encode(doc),
+      convert.str_to_camel_case
+      )

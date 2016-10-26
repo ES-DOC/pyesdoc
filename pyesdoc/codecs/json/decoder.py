@@ -31,8 +31,5 @@ def decode(as_json):
     # Convert to dictionary.
     as_dict = convert.json_to_dict(as_json)
 
-    # Format dictionary keys.
-    as_dict = convert.dict_keys(as_dict, convert.str_to_underscore_case)
-
     # Decode from dictionary.
     return dict_decoder.decode(as_dict)
