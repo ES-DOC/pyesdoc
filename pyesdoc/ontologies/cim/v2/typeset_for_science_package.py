@@ -64,7 +64,7 @@ class Model(software.ComponentBase):
         self.internal_software_components = []            # software.SoftwareComponent (0.N)
         self.meta = shared.DocMetaInfo()                  # shared.DocMetaInfo (1.1)
         self.model_key_properties = None                  # science.KeyProperties (0.1)
-        self.simulates = []                               # science.ScientificRealm (0.N)
+        self.realms = []                                  # science.ScientificRealm (0.N)
 
 
 class ScienceContext(object):
@@ -109,8 +109,8 @@ class ScientificRealm(object):
         self.meta = shared.DocMetaInfo()                  # shared.DocMetaInfo (1.1)
         self.name = None                                  # unicode (1.1)
         self.overview = None                              # unicode (0.1)
+        self.processes = []                               # science.Process (1.N)
         self.realm = None                                 # unicode (0.1)
-        self.simulates = []                               # science.Process (1.N)
 
 
 class Detail(ScienceContext):

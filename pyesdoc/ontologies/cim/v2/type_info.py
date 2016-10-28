@@ -760,7 +760,7 @@ CLASS_PROPERTIES = {
         'internal_software_components',
         'meta',
         'model_key_properties',
-        'simulates',
+        'realms',
         'citations',
         'description',
         'development_history',
@@ -806,8 +806,8 @@ CLASS_PROPERTIES = {
         'meta',
         'name',
         'overview',
+        'processes',
         'realm',
-        'simulates',
     ),
     science.SubProcess: (
         'citations',
@@ -1304,7 +1304,7 @@ CLASS_OWN_PROPERTIES = {
         'internal_software_components',
         'meta',
         'model_key_properties',
-        'simulates',
+        'realms',
     ),
     science.Process: (
         'citations',
@@ -1333,8 +1333,8 @@ CLASS_OWN_PROPERTIES = {
         'meta',
         'name',
         'overview',
+        'processes',
         'realm',
-        'simulates',
     ),
     science.SubProcess: (
         'citations',
@@ -2968,8 +2968,8 @@ CONSTRAINTS = {
     science.Model: (
 
         ('category', 'type', unicode),
-        ('simulates', 'type', science.ScientificRealm),
         ('model_key_properties', 'type', science.KeyProperties),
+        ('realms', 'type', science.ScientificRealm),
         ('description', 'type', unicode),
         ('repository', 'type', shared.OnlineResource),
         ('coupler', 'type', unicode),
@@ -2985,8 +2985,8 @@ CONSTRAINTS = {
         ('name', 'type', unicode),
 
         ('category', 'cardinality', "1.1"),
-        ('simulates', 'cardinality', "0.N"),
         ('model_key_properties', 'cardinality', "0.1"),
+        ('realms', 'cardinality', "0.N"),
         ('description', 'cardinality', "0.1"),
         ('repository', 'cardinality', "0.1"),
         ('coupler', 'cardinality', "0.1"),
@@ -3063,7 +3063,7 @@ CONSTRAINTS = {
     ),
     science.ScientificRealm: (
 
-        ('simulates', 'type', science.Process),
+        ('processes', 'type', science.Process),
         ('realm', 'type', unicode),
         ('name', 'type', unicode),
         ('citations', 'type', shared.Citation),
@@ -3073,7 +3073,7 @@ CONSTRAINTS = {
         ('key_properties', 'type', science.KeyProperties),
         ('id', 'type', unicode),
 
-        ('simulates', 'cardinality', "1.N"),
+        ('processes', 'cardinality', "1.N"),
         ('realm', 'cardinality', "0.1"),
         ('name', 'cardinality', "1.1"),
         ('citations', 'cardinality', "0.N"),
@@ -7164,7 +7164,7 @@ CONSTRAINTS = {
         ('cardinality', "0.1"),
 
     ),
-    (science.Model, 'simulates'): (
+    (science.Model, 'realms'): (
 
         ('type', science.ScientificRealm),
 
@@ -7434,18 +7434,18 @@ CONSTRAINTS = {
         ('cardinality', "0.1"),
 
     ),
+    (science.ScientificRealm, 'processes'): (
+
+        ('type', science.Process),
+
+        ('cardinality', "1.N"),
+
+    ),
     (science.ScientificRealm, 'realm'): (
 
         ('type', unicode),
 
         ('cardinality', "0.1"),
-
-    ),
-    (science.ScientificRealm, 'simulates'): (
-
-        ('type', science.Process),
-
-        ('cardinality', "1.N"),
 
     ),
 
@@ -9286,7 +9286,7 @@ http://www.geosci-model-dev-discuss.net/gmd-2016-197/)
         "Injected document metadata.",
     (science.Model, 'model_key_properties'):
         "Model default key properties (may be over-ridden in coupled component and scientific realm properties).",
-    (science.Model, 'simulates'):
+    (science.Model, 'realms'):
         "The scientific realms which this model simulates internally, i.e. those which are not linked together using a coupler.",
     (science.Process, 'citations'):
         "Set of pertinent citations.",
@@ -9328,10 +9328,10 @@ http://www.geosci-model-dev-discuss.net/gmd-2016-197/)
         "Name of the scientific domain (e.g. ocean).",
     (science.ScientificRealm, 'overview'):
         "Free text overview description of key properties of domain.",
+    (science.ScientificRealm, 'processes'):
+        "Processes simulated within the domain.",
     (science.ScientificRealm, 'realm'):
         "Canonical name for the domain of this scientific area.",
-    (science.ScientificRealm, 'simulates'):
-        "Processes simulated within the domain.",
     (science.SubProcess, 'citations'):
         "Set of pertinent citations.",
     (science.SubProcess, 'details'):
@@ -10253,7 +10253,7 @@ KEYS = {
     (science.Model, 'internal_software_components'): "cim.2.science.Model.internal_software_components",
     (science.Model, 'meta'): "cim.2.science.Model.meta",
     (science.Model, 'model_key_properties'): "cim.2.science.Model.model_key_properties",
-    (science.Model, 'simulates'): "cim.2.science.Model.simulates",
+    (science.Model, 'realms'): "cim.2.science.Model.realms",
     (science.Process, 'citations'): "cim.2.science.Process.citations",
     (science.Process, 'details'): "cim.2.science.Process.details",
     (science.Process, 'implementation_overview'): "cim.2.science.Process.implementation_overview",
@@ -10274,8 +10274,8 @@ KEYS = {
     (science.ScientificRealm, 'meta'): "cim.2.science.ScientificRealm.meta",
     (science.ScientificRealm, 'name'): "cim.2.science.ScientificRealm.name",
     (science.ScientificRealm, 'overview'): "cim.2.science.ScientificRealm.overview",
+    (science.ScientificRealm, 'processes'): "cim.2.science.ScientificRealm.processes",
     (science.ScientificRealm, 'realm'): "cim.2.science.ScientificRealm.realm",
-    (science.ScientificRealm, 'simulates'): "cim.2.science.ScientificRealm.simulates",
     (science.SubProcess, 'citations'): "cim.2.science.SubProcess.citations",
     (science.SubProcess, 'details'): "cim.2.science.SubProcess.details",
     (science.SubProcess, 'implementation_overview'): "cim.2.science.SubProcess.implementation_overview",

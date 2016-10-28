@@ -1,8 +1,8 @@
 """
-.. module:: utils.py
+.. module:: loader.py
    :license: GPL/CeCIL
    :platform: Unix, Windows
-   :synopsis: CMIP6 specialization validation utility functions.
+   :synopsis: Loads CMIP6 specialization from file system.
 
 .. moduleauthor:: Mark Conway-Greenslade <momipsl@ipsl.jussieu.fr>
 
