@@ -116,6 +116,7 @@ from typeset_for_data_package import DataAssociationTypes
 from typeset_for_designing_package import EnsembleTypes
 from typeset_for_designing_package import ExperimentalRelationships
 from typeset_for_designing_package import ForcingTypes
+from typeset_for_designing_package import NumericalRequirementScope
 from typeset_for_drs_package import DrsFrequencyTypes
 from typeset_for_drs_package import DrsGeographicalOperators
 from typeset_for_drs_package import DrsRealms

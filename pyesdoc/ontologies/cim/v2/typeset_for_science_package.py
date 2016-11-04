@@ -60,11 +60,11 @@ class Model(software.ComponentBase):
         self.category = None                              # science.ModelTypes (1.1)
         self.coupled_components = []                      # science.Model (0.N)
         self.coupler = None                               # software.CouplingFramework (0.1)
-        self.id = None                                    # unicode (0.1)
         self.internal_software_components = []            # software.SoftwareComponent (0.N)
+        self.key_properties = None                        # science.KeyProperties (0.1)
         self.meta = shared.DocMetaInfo()                  # shared.DocMetaInfo (1.1)
-        self.model_key_properties = None                  # science.KeyProperties (0.1)
         self.realms = []                                  # science.ScientificRealm (0.N)
+        self.vocab_id = None                              # unicode (0.1)
 
 
 class ScienceContext(object):
@@ -85,8 +85,8 @@ class ScienceContext(object):
         super(ScienceContext, self).__init__()
 
         self.description = None                           # unicode (1.1)
-        self.id = None                                    # unicode (1.1)
         self.short_name = None                            # unicode (1.1)
+        self.vocab_id = None                              # unicode (1.1)
 
 
 class ScientificRealm(object):
@@ -104,13 +104,13 @@ class ScientificRealm(object):
 
         self.citations = []                               # shared.Citation (0.N)
         self.grid = None                                  # science.Grid (0.1)
-        self.id = None                                    # unicode (0.1)
         self.key_properties = None                        # science.KeyProperties (0.1)
         self.meta = shared.DocMetaInfo()                  # shared.DocMetaInfo (1.1)
         self.name = None                                  # unicode (1.1)
         self.overview = None                              # unicode (0.1)
         self.processes = []                               # science.Process (1.N)
         self.realm = None                                 # unicode (0.1)
+        self.vocab_id = None                              # unicode (0.1)
 
 
 class Detail(ScienceContext):
@@ -214,7 +214,7 @@ class ConservationProperties(SubProcess):
 
         self.corrected_conserved_prognostic_variables = None# data.VariableCollection (0.1)
         self.description = None                           # unicode (1.1)
-        self.flux_correction_was_used = None              # bool (0.1)
+        self.was_flux_correction_used = None              # bool (0.1)
 
 
 class Discretisation(SubProcess):

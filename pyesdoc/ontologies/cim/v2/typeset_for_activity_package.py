@@ -169,10 +169,10 @@ class Ensemble(Activity):
         self.common_conformances = []                     # activity.Conformance (0.N)
         self.common_performance = None                    # platform.Performance (0.1)
         self.documentation = []                           # shared.OnlineResource (0.N)
-        self.has_ensemble_axes = []                       # activity.EnsembleAxis (0.N)
+        self.ensemble_axes = []                           # activity.EnsembleAxis (0.N)
+        self.experiments = []                             # designing.NumericalExperiment (1.N)
         self.members = []                                 # activity.EnsembleMember (1.N)
-        self.part_of = []                                 # activity.UberEnsemble (0.N)
-        self.supported = []                               # designing.NumericalExperiment (1.N)
+        self.uber_ensembles = []                          # activity.UberEnsemble (0.N)
 
 
 class UberEnsemble(Ensemble):

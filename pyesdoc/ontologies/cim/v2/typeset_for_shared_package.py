@@ -164,10 +164,10 @@ class Party(object):
 
         self.address = None                               # unicode (0.1)
         self.email = None                                 # unicode (0.1)
+        self.is_organisation = None                       # bool (0.1)
         self.meta = DocMetaInfo()                         # shared.DocMetaInfo (1.1)
         self.name = None                                  # unicode (0.1)
         self.orcid_id = None                              # unicode (0.1)
-        self.organisation = None                          # bool (0.1)
         self.url = None                                   # shared.OnlineResource (0.1)
 
 
@@ -204,7 +204,7 @@ class Responsibility(object):
         """
         super(Responsibility, self).__init__()
 
-        self.party = []                                   # shared.Party (1.N)
+        self.parties = []                                 # shared.Party (1.N)
         self.role = None                                  # shared.RoleCode (1.1)
         self.when = None                                  # time.TimePeriod (0.1)
 
@@ -214,7 +214,7 @@ class Responsibility(object):
 	    """Instrance string representation.
 
 	    """
-	    return "{}:{}".format(self.role, self.party)
+	    return "{}:{}".format(self.role, self.parties)
 
 
 class TextBlob(object):

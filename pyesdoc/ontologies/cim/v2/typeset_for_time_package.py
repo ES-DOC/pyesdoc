@@ -60,7 +60,7 @@ class DateTime(object):
         """
         super(DateTime, self).__init__()
 
-        self.offset = None                                # bool (0.1)
+        self.is_offset = None                             # bool (0.1)
         self.value = None                                 # unicode (1.1)
 
 

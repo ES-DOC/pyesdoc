@@ -78,9 +78,9 @@ class DevelopmentPath(object):
 
         self.consortium_name = None                       # unicode (0.1)
         self.creators = []                                # shared.Responsibility (0.N)
-        self.developed_in_house = None                    # bool (1.1)
         self.funding_sources = []                         # shared.Responsibility (0.N)
         self.previous_version = None                      # unicode (0.1)
+        self.was_developed_in_house = None                # bool (1.1)
 
 
 class EntryPoint(object):
@@ -134,8 +134,8 @@ class Variable(object):
         super(Variable, self).__init__()
 
         self.description = None                           # unicode (0.1)
+        self.is_prognostic = None                         # bool (1.1)
         self.name = None                                  # unicode (1.1)
-        self.prognostic = None                            # bool (1.1)
 
 
 class SoftwareComponent(ComponentBase):

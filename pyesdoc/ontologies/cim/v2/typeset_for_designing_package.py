@@ -65,6 +65,7 @@ class NumericalRequirement(activity.Activity):
 
         self.additional_requirements = []                 # designing.NumericalRequirement (0.N)
         self.is_conformance_requested = None              # bool (1.1)
+        self.scope = None                                 # designing.NumericalRequirementScope (0.1)
 
 
 class Project(activity.Activity):
@@ -283,6 +284,20 @@ class ForcingTypes(object):
         "historical",
         "idealised",
         "scenario"
+        ]
+
+
+class NumericalRequirementScope(object):
+    """An enumeration within the cim v2 type system.
+
+    The scope to which a numerical requirement may or may not apply.
+    """
+    is_open = False
+    members = [
+        "experiment",
+        "mip",
+        "mip-era",
+        "mip-group"
         ]
 
 

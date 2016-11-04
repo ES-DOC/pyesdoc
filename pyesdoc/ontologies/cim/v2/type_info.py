@@ -189,10 +189,10 @@ CLASS_PROPERTIES = {
         'common_conformances',
         'common_performance',
         'documentation',
-        'has_ensemble_axes',
+        'ensemble_axes',
+        'experiments',
         'members',
-        'part_of',
-        'supported',
+        'uber_ensembles',
         'alternative_names',
         'canonical_name',
         'citations',
@@ -230,10 +230,10 @@ CLASS_PROPERTIES = {
         'common_conformances',
         'common_performance',
         'documentation',
-        'has_ensemble_axes',
+        'ensemble_axes',
+        'experiments',
         'members',
-        'part_of',
-        'supported',
+        'uber_ensembles',
         'alternative_names',
         'canonical_name',
         'citations',
@@ -339,6 +339,7 @@ CLASS_PROPERTIES = {
         'required_resolution',
         'additional_requirements',
         'is_conformance_requested',
+        'scope',
         'alternative_names',
         'canonical_name',
         'citations',
@@ -359,6 +360,7 @@ CLASS_PROPERTIES = {
         'minimum_size',
         'additional_requirements',
         'is_conformance_requested',
+        'scope',
         'alternative_names',
         'canonical_name',
         'citations',
@@ -383,6 +385,7 @@ CLASS_PROPERTIES = {
         'origin',
         'additional_requirements',
         'is_conformance_requested',
+        'scope',
         'alternative_names',
         'canonical_name',
         'citations',
@@ -403,6 +406,7 @@ CLASS_PROPERTIES = {
         'initialise_from_experiment',
         'additional_requirements',
         'is_conformance_requested',
+        'scope',
         'alternative_names',
         'canonical_name',
         'citations',
@@ -421,6 +425,7 @@ CLASS_PROPERTIES = {
         'ensemble_axis',
         'additional_requirements',
         'is_conformance_requested',
+        'scope',
         'alternative_names',
         'canonical_name',
         'citations',
@@ -457,6 +462,7 @@ CLASS_PROPERTIES = {
     designing.NumericalRequirement: (
         'additional_requirements',
         'is_conformance_requested',
+        'scope',
         'alternative_names',
         'canonical_name',
         'citations',
@@ -475,6 +481,7 @@ CLASS_PROPERTIES = {
         'formal_data_request',
         'additional_requirements',
         'is_conformance_requested',
+        'scope',
         'alternative_names',
         'canonical_name',
         'citations',
@@ -532,6 +539,7 @@ CLASS_PROPERTIES = {
         'ensemble_members',
         'additional_requirements',
         'is_conformance_requested',
+        'scope',
         'alternative_names',
         'canonical_name',
         'citations',
@@ -553,6 +561,7 @@ CLASS_PROPERTIES = {
         'start_flexibility',
         'additional_requirements',
         'is_conformance_requested',
+        'scope',
         'alternative_names',
         'canonical_name',
         'citations',
@@ -684,26 +693,26 @@ CLASS_PROPERTIES = {
     science.ConservationProperties: (
         'corrected_conserved_prognostic_variables',
         'description',
-        'flux_correction_was_used',
+        'was_flux_correction_used',
         'citations',
         'details',
         'implementation_overview',
         'description',
-        'id',
         'short_name',
+        'vocab_id',
     ),
     science.Detail: (
         'description',
-        'id',
         'short_name',
+        'vocab_id',
     ),
     science.Discretisation: (
         'citations',
         'details',
         'implementation_overview',
         'description',
-        'id',
         'short_name',
+        'vocab_id',
     ),
     science.Extent: (
         'is_global',
@@ -712,8 +721,8 @@ CLASS_PROPERTIES = {
         'details',
         'implementation_overview',
         'description',
-        'id',
         'short_name',
+        'vocab_id',
     ),
     science.Grid: (
         'citations',
@@ -734,8 +743,8 @@ CLASS_PROPERTIES = {
         'details',
         'implementation_overview',
         'description',
-        'id',
         'short_name',
+        'vocab_id',
     ),
     science.KeyProperties: (
         'extent',
@@ -749,18 +758,18 @@ CLASS_PROPERTIES = {
         'keywords',
         'sub_processes',
         'description',
-        'id',
         'short_name',
+        'vocab_id',
     ),
     science.Model: (
         'category',
         'coupled_components',
         'coupler',
-        'id',
         'internal_software_components',
+        'key_properties',
         'meta',
-        'model_key_properties',
         'realms',
+        'vocab_id',
         'citations',
         'description',
         'development_history',
@@ -777,8 +786,8 @@ CLASS_PROPERTIES = {
         'keywords',
         'sub_processes',
         'description',
-        'id',
         'short_name',
+        'vocab_id',
     ),
     science.Resolution: (
         'canonical_horizontal_resolution',
@@ -790,32 +799,32 @@ CLASS_PROPERTIES = {
         'details',
         'implementation_overview',
         'description',
-        'id',
         'short_name',
+        'vocab_id',
     ),
     science.ScienceContext: (
         'description',
-        'id',
         'short_name',
+        'vocab_id',
     ),
     science.ScientificRealm: (
         'citations',
         'grid',
-        'id',
         'key_properties',
         'meta',
         'name',
         'overview',
         'processes',
         'realm',
+        'vocab_id',
     ),
     science.SubProcess: (
         'citations',
         'details',
         'implementation_overview',
         'description',
-        'id',
         'short_name',
+        'vocab_id',
     ),
     science.Tuning: (
         'description',
@@ -826,8 +835,8 @@ CLASS_PROPERTIES = {
         'details',
         'implementation_overview',
         'description',
-        'id',
         'short_name',
+        'vocab_id',
     ),
     shared.Citation: (
         'abstract',
@@ -889,10 +898,10 @@ CLASS_PROPERTIES = {
     shared.Party: (
         'address',
         'email',
+        'is_organisation',
         'meta',
         'name',
         'orcid_id',
-        'organisation',
         'url',
     ),
     shared.QualityReview: (
@@ -904,7 +913,7 @@ CLASS_PROPERTIES = {
         'target_document',
     ),
     shared.Responsibility: (
-        'party',
+        'parties',
         'role',
         'when',
     ),
@@ -929,9 +938,9 @@ CLASS_PROPERTIES = {
     software.DevelopmentPath: (
         'consortium_name',
         'creators',
-        'developed_in_house',
         'funding_sources',
         'previous_version',
+        'was_developed_in_house',
     ),
     software.EntryPoint: (
         'name',
@@ -960,8 +969,8 @@ CLASS_PROPERTIES = {
     ),
     software.Variable: (
         'description',
+        'is_prognostic',
         'name',
-        'prognostic',
     ),
     time.Calendar: (
         'description',
@@ -970,7 +979,7 @@ CLASS_PROPERTIES = {
         'standard_name',
     ),
     time.DateTime: (
-        'offset',
+        'is_offset',
         'value',
     ),
     time.DatetimeSet: (
@@ -1028,10 +1037,10 @@ CLASS_OWN_PROPERTIES = {
         'common_conformances',
         'common_performance',
         'documentation',
-        'has_ensemble_axes',
+        'ensemble_axes',
+        'experiments',
         'members',
-        'part_of',
-        'supported',
+        'uber_ensembles',
     ),
     activity.EnsembleAxis: (
         'extra_detail',
@@ -1132,6 +1141,7 @@ CLASS_OWN_PROPERTIES = {
     designing.NumericalRequirement: (
         'additional_requirements',
         'is_conformance_requested',
+        'scope',
     ),
     designing.OutputRequirement: (
         'formal_data_request',
@@ -1265,7 +1275,7 @@ CLASS_OWN_PROPERTIES = {
     science.ConservationProperties: (
         'corrected_conserved_prognostic_variables',
         'description',
-        'flux_correction_was_used',
+        'was_flux_correction_used',
     ),
     science.Detail: (
     ),
@@ -1300,11 +1310,11 @@ CLASS_OWN_PROPERTIES = {
         'category',
         'coupled_components',
         'coupler',
-        'id',
         'internal_software_components',
+        'key_properties',
         'meta',
-        'model_key_properties',
         'realms',
+        'vocab_id',
     ),
     science.Process: (
         'citations',
@@ -1322,19 +1332,19 @@ CLASS_OWN_PROPERTIES = {
     ),
     science.ScienceContext: (
         'description',
-        'id',
         'short_name',
+        'vocab_id',
     ),
     science.ScientificRealm: (
         'citations',
         'grid',
-        'id',
         'key_properties',
         'meta',
         'name',
         'overview',
         'processes',
         'realm',
+        'vocab_id',
     ),
     science.SubProcess: (
         'citations',
@@ -1407,10 +1417,10 @@ CLASS_OWN_PROPERTIES = {
     shared.Party: (
         'address',
         'email',
+        'is_organisation',
         'meta',
         'name',
         'orcid_id',
-        'organisation',
         'url',
     ),
     shared.QualityReview: (
@@ -1422,7 +1432,7 @@ CLASS_OWN_PROPERTIES = {
         'target_document',
     ),
     shared.Responsibility: (
-        'party',
+        'parties',
         'role',
         'when',
     ),
@@ -1447,9 +1457,9 @@ CLASS_OWN_PROPERTIES = {
     software.DevelopmentPath: (
         'consortium_name',
         'creators',
-        'developed_in_house',
         'funding_sources',
         'previous_version',
+        'was_developed_in_house',
     ),
     software.EntryPoint: (
         'name',
@@ -1470,8 +1480,8 @@ CLASS_OWN_PROPERTIES = {
     ),
     software.Variable: (
         'description',
+        'is_prognostic',
         'name',
-        'prognostic',
     ),
     time.Calendar: (
         'description',
@@ -1480,7 +1490,7 @@ CLASS_OWN_PROPERTIES = {
         'standard_name',
     ),
     time.DateTime: (
-        'offset',
+        'is_offset',
         'value',
     ),
     time.DatetimeSet: (
@@ -1517,6 +1527,7 @@ ENUMS = (
     designing.EnsembleTypes,
     designing.ExperimentalRelationships,
     designing.ForcingTypes,
+    designing.NumericalRequirementScope,
     drs.DrsFrequencyTypes,
     drs.DrsGeographicalOperators,
     drs.DrsRealms,
@@ -1791,44 +1802,44 @@ CONSTRAINTS = {
     ),
     activity.Ensemble: (
 
-        ('part_of', 'type', activity.UberEnsemble),
+        ('ensemble_axes', 'type', activity.EnsembleAxis),
         ('common_conformances', 'type', activity.Conformance),
+        ('uber_ensembles', 'type', activity.UberEnsemble),
         ('description', 'type', unicode),
-        ('supported', 'type', designing.NumericalExperiment),
         ('duration', 'type', time.TimePeriod),
         ('documentation', 'type', shared.OnlineResource),
         ('canonical_name', 'type', unicode),
         ('responsible_parties', 'type', shared.Responsibility),
         ('internal_name', 'type', unicode),
-        ('members', 'type', activity.EnsembleMember),
+        ('experiments', 'type', designing.NumericalExperiment),
         ('long_name', 'type', unicode),
         ('previously_known_as', 'type', unicode),
         ('citations', 'type', shared.Citation),
         ('meta', 'type', shared.DocMetaInfo),
         ('rationale', 'type', unicode),
         ('keywords', 'type', unicode),
-        ('has_ensemble_axes', 'type', activity.EnsembleAxis),
+        ('members', 'type', activity.EnsembleMember),
         ('alternative_names', 'type', unicode),
         ('common_performance', 'type', platform.Performance),
         ('name', 'type', unicode),
 
-        ('part_of', 'cardinality', "0.N"),
+        ('ensemble_axes', 'cardinality', "0.N"),
         ('common_conformances', 'cardinality', "0.N"),
+        ('uber_ensembles', 'cardinality', "0.N"),
         ('description', 'cardinality', "0.1"),
-        ('supported', 'cardinality', "1.N"),
         ('duration', 'cardinality', "0.1"),
         ('documentation', 'cardinality', "0.N"),
         ('canonical_name', 'cardinality', "0.1"),
         ('responsible_parties', 'cardinality', "0.N"),
         ('internal_name', 'cardinality', "0.1"),
-        ('members', 'cardinality', "1.N"),
+        ('experiments', 'cardinality', "1.N"),
         ('long_name', 'cardinality', "0.1"),
         ('previously_known_as', 'cardinality', "0.N"),
         ('citations', 'cardinality', "0.N"),
         ('meta', 'cardinality', "1.1"),
         ('rationale', 'cardinality', "0.1"),
         ('keywords', 'cardinality', "0.1"),
-        ('has_ensemble_axes', 'cardinality', "0.N"),
+        ('members', 'cardinality', "1.N"),
         ('alternative_names', 'cardinality', "0.N"),
         ('common_performance', 'cardinality', "0.1"),
         ('name', 'cardinality', "1.1"),
@@ -1876,48 +1887,48 @@ CONSTRAINTS = {
     activity.UberEnsemble: (
 
         ('child_ensembles', 'type', activity.Ensemble),
-        ('part_of', 'type', activity.UberEnsemble),
+        ('ensemble_axes', 'type', activity.EnsembleAxis),
         ('common_conformances', 'type', activity.Conformance),
         ('description', 'type', unicode),
-        ('name', 'type', unicode),
+        ('citations', 'type', shared.Citation),
         ('rationale', 'type', unicode),
-        ('supported', 'type', designing.NumericalExperiment),
+        ('documentation', 'type', shared.OnlineResource),
         ('previously_known_as', 'type', unicode),
         ('responsible_parties', 'type', shared.Responsibility),
         ('keywords', 'type', unicode),
-        ('members', 'type', activity.EnsembleMember),
+        ('experiments', 'type', designing.NumericalExperiment),
         ('long_name', 'type', unicode),
         ('canonical_name', 'type', unicode),
-        ('citations', 'type', shared.Citation),
+        ('uber_ensembles', 'type', activity.UberEnsemble),
         ('meta', 'type', shared.DocMetaInfo),
         ('internal_name', 'type', unicode),
         ('duration', 'type', time.TimePeriod),
-        ('has_ensemble_axes', 'type', activity.EnsembleAxis),
+        ('members', 'type', activity.EnsembleMember),
         ('alternative_names', 'type', unicode),
         ('common_performance', 'type', platform.Performance),
-        ('documentation', 'type', shared.OnlineResource),
+        ('name', 'type', unicode),
 
         ('child_ensembles', 'cardinality', "1.N"),
-        ('part_of', 'cardinality', "0.N"),
+        ('ensemble_axes', 'cardinality', "0.N"),
         ('common_conformances', 'cardinality', "0.N"),
         ('description', 'cardinality', "0.1"),
-        ('name', 'cardinality', "1.1"),
+        ('citations', 'cardinality', "0.N"),
         ('rationale', 'cardinality', "0.1"),
-        ('supported', 'cardinality', "1.N"),
+        ('documentation', 'cardinality', "0.N"),
         ('previously_known_as', 'cardinality', "0.N"),
         ('responsible_parties', 'cardinality', "0.N"),
         ('keywords', 'cardinality', "0.1"),
-        ('members', 'cardinality', "1.N"),
+        ('experiments', 'cardinality', "1.N"),
         ('long_name', 'cardinality', "0.1"),
         ('canonical_name', 'cardinality', "0.1"),
-        ('citations', 'cardinality', "0.N"),
+        ('uber_ensembles', 'cardinality', "0.N"),
         ('meta', 'cardinality', "1.1"),
         ('internal_name', 'cardinality', "0.1"),
         ('duration', 'cardinality', "0.1"),
-        ('has_ensemble_axes', 'cardinality', "0.N"),
+        ('members', 'cardinality', "1.N"),
         ('alternative_names', 'cardinality', "0.N"),
         ('common_performance', 'cardinality', "0.1"),
-        ('documentation', 'cardinality', "0.N"),
+        ('name', 'cardinality', "1.1"),
 
     ),
     data.Dataset: (
@@ -2113,6 +2124,7 @@ CONSTRAINTS = {
         ('required_extent', 'type', science.Extent),
         ('internal_name', 'type', unicode),
         ('duration', 'type', time.TimePeriod),
+        ('scope', 'type', unicode),
         ('required_resolution', 'type', science.Resolution),
         ('is_conformance_requested', 'type', bool),
         ('alternative_names', 'type', unicode),
@@ -2131,6 +2143,7 @@ CONSTRAINTS = {
         ('required_extent', 'cardinality', "0.1"),
         ('internal_name', 'cardinality', "0.1"),
         ('duration', 'cardinality', "0.1"),
+        ('scope', 'cardinality', "0.1"),
         ('required_resolution', 'cardinality', "0.1"),
         ('is_conformance_requested', 'cardinality', "1.1"),
         ('alternative_names', 'cardinality', "0.N"),
@@ -2152,8 +2165,9 @@ CONSTRAINTS = {
         ('meta', 'type', shared.DocMetaInfo),
         ('ensemble_type', 'type', unicode),
         ('internal_name', 'type', unicode),
-        ('duration', 'type', time.TimePeriod),
         ('ensemble_member', 'type', designing.NumericalRequirement),
+        ('duration', 'type', time.TimePeriod),
+        ('scope', 'type', unicode),
         ('is_conformance_requested', 'type', bool),
         ('alternative_names', 'type', unicode),
         ('name', 'type', unicode),
@@ -2171,8 +2185,9 @@ CONSTRAINTS = {
         ('meta', 'cardinality', "1.1"),
         ('ensemble_type', 'cardinality', "1.1"),
         ('internal_name', 'cardinality', "0.1"),
-        ('duration', 'cardinality', "0.1"),
         ('ensemble_member', 'cardinality', "0.N"),
+        ('duration', 'cardinality', "0.1"),
+        ('scope', 'cardinality', "0.1"),
         ('is_conformance_requested', 'cardinality', "1.1"),
         ('alternative_names', 'cardinality', "0.N"),
         ('name', 'cardinality', "1.1"),
@@ -2196,6 +2211,7 @@ CONSTRAINTS = {
         ('previously_known_as', 'type', unicode),
         ('citations', 'type', shared.Citation),
         ('internal_name', 'type', unicode),
+        ('scope', 'type', unicode),
         ('description', 'type', unicode),
         ('duration', 'type', time.TimePeriod),
         ('rationale', 'type', unicode),
@@ -2219,6 +2235,7 @@ CONSTRAINTS = {
         ('previously_known_as', 'cardinality', "0.N"),
         ('citations', 'cardinality', "0.N"),
         ('internal_name', 'cardinality', "0.1"),
+        ('scope', 'cardinality', "0.1"),
         ('description', 'cardinality', "0.1"),
         ('duration', 'cardinality', "0.1"),
         ('rationale', 'cardinality', "0.1"),
@@ -2243,6 +2260,7 @@ CONSTRAINTS = {
         ('branch_time_in_initialisation_source', 'type', time.DateTime),
         ('internal_name', 'type', unicode),
         ('duration', 'type', time.TimePeriod),
+        ('scope', 'type', unicode),
         ('is_conformance_requested', 'type', bool),
         ('alternative_names', 'type', unicode),
         ('initialise_from_data', 'type', data.Dataset),
@@ -2262,6 +2280,7 @@ CONSTRAINTS = {
         ('branch_time_in_initialisation_source', 'cardinality', "0.1"),
         ('internal_name', 'cardinality', "0.1"),
         ('duration', 'cardinality', "0.1"),
+        ('scope', 'cardinality', "0.1"),
         ('is_conformance_requested', 'cardinality', "1.1"),
         ('alternative_names', 'cardinality', "0.N"),
         ('initialise_from_data', 'cardinality', "0.1"),
@@ -2283,6 +2302,7 @@ CONSTRAINTS = {
         ('meta', 'type', shared.DocMetaInfo),
         ('internal_name', 'type', unicode),
         ('duration', 'type', time.TimePeriod),
+        ('scope', 'type', unicode),
         ('is_conformance_requested', 'type', bool),
         ('alternative_names', 'type', unicode),
         ('name', 'type', unicode),
@@ -2300,6 +2320,7 @@ CONSTRAINTS = {
         ('meta', 'cardinality', "1.1"),
         ('internal_name', 'cardinality', "0.1"),
         ('duration', 'cardinality', "0.1"),
+        ('scope', 'cardinality', "0.1"),
         ('is_conformance_requested', 'cardinality', "1.1"),
         ('alternative_names', 'cardinality', "0.N"),
         ('name', 'cardinality', "1.1"),
@@ -2358,6 +2379,7 @@ CONSTRAINTS = {
         ('meta', 'type', shared.DocMetaInfo),
         ('rationale', 'type', unicode),
         ('keywords', 'type', unicode),
+        ('scope', 'type', unicode),
         ('is_conformance_requested', 'type', bool),
         ('alternative_names', 'type', unicode),
         ('name', 'type', unicode),
@@ -2374,6 +2396,7 @@ CONSTRAINTS = {
         ('meta', 'cardinality', "1.1"),
         ('rationale', 'cardinality', "0.1"),
         ('keywords', 'cardinality', "0.1"),
+        ('scope', 'cardinality', "0.1"),
         ('is_conformance_requested', 'cardinality', "1.1"),
         ('alternative_names', 'cardinality', "0.N"),
         ('name', 'cardinality', "1.1"),
@@ -2394,6 +2417,7 @@ CONSTRAINTS = {
         ('meta', 'type', shared.DocMetaInfo),
         ('internal_name', 'type', unicode),
         ('duration', 'type', time.TimePeriod),
+        ('scope', 'type', unicode),
         ('is_conformance_requested', 'type', bool),
         ('alternative_names', 'type', unicode),
         ('name', 'type', unicode),
@@ -2411,6 +2435,7 @@ CONSTRAINTS = {
         ('meta', 'cardinality', "1.1"),
         ('internal_name', 'cardinality', "0.1"),
         ('duration', 'cardinality', "0.1"),
+        ('scope', 'cardinality', "0.1"),
         ('is_conformance_requested', 'cardinality', "1.1"),
         ('alternative_names', 'cardinality', "0.N"),
         ('name', 'cardinality', "1.1"),
@@ -2511,6 +2536,7 @@ CONSTRAINTS = {
         ('meta', 'type', shared.DocMetaInfo),
         ('internal_name', 'type', unicode),
         ('duration', 'type', time.TimePeriod),
+        ('scope', 'type', unicode),
         ('is_conformance_requested', 'type', bool),
         ('alternative_names', 'type', unicode),
         ('name', 'type', unicode),
@@ -2528,6 +2554,7 @@ CONSTRAINTS = {
         ('meta', 'cardinality', "1.1"),
         ('internal_name', 'cardinality', "0.1"),
         ('duration', 'cardinality', "0.1"),
+        ('scope', 'cardinality', "0.1"),
         ('is_conformance_requested', 'cardinality', "1.1"),
         ('alternative_names', 'cardinality', "0.N"),
         ('name', 'cardinality', "1.1"),
@@ -2551,6 +2578,7 @@ CONSTRAINTS = {
         ('internal_name', 'type', unicode),
         ('start_flexibility', 'type', time.TimePeriod),
         ('duration', 'type', time.TimePeriod),
+        ('scope', 'type', unicode),
         ('is_conformance_requested', 'type', bool),
         ('alternative_names', 'type', unicode),
         ('name', 'type', unicode),
@@ -2571,6 +2599,7 @@ CONSTRAINTS = {
         ('internal_name', 'cardinality', "0.1"),
         ('start_flexibility', 'cardinality', "0.1"),
         ('duration', 'cardinality', "0.1"),
+        ('scope', 'cardinality', "0.1"),
         ('is_conformance_requested', 'cardinality', "1.1"),
         ('alternative_names', 'cardinality', "0.N"),
         ('name', 'cardinality', "1.1"),
@@ -2822,49 +2851,49 @@ CONSTRAINTS = {
 
         ('description', 'type', unicode),
         ('short_name', 'type', unicode),
+        ('vocab_id', 'type', unicode),
         ('corrected_conserved_prognostic_variables', 'type', data.VariableCollection),
+        ('was_flux_correction_used', 'type', bool),
         ('citations', 'type', shared.Citation),
         ('details', 'type', science.Detail),
         ('implementation_overview', 'type', unicode),
-        ('flux_correction_was_used', 'type', bool),
-        ('id', 'type', unicode),
 
         ('description', 'cardinality', "1.1"),
         ('short_name', 'cardinality', "1.1"),
+        ('vocab_id', 'cardinality', "1.1"),
         ('corrected_conserved_prognostic_variables', 'cardinality', "0.1"),
+        ('was_flux_correction_used', 'cardinality', "0.1"),
         ('citations', 'cardinality', "0.N"),
         ('details', 'cardinality', "0.N"),
         ('implementation_overview', 'cardinality', "1.1"),
-        ('flux_correction_was_used', 'cardinality', "0.1"),
-        ('id', 'cardinality', "1.1"),
 
     ),
     science.Detail: (
 
         ('description', 'type', unicode),
         ('short_name', 'type', unicode),
-        ('id', 'type', unicode),
+        ('vocab_id', 'type', unicode),
 
         ('description', 'cardinality', "1.1"),
         ('short_name', 'cardinality', "1.1"),
-        ('id', 'cardinality', "1.1"),
+        ('vocab_id', 'cardinality', "1.1"),
 
     ),
     science.Discretisation: (
 
         ('description', 'type', unicode),
         ('short_name', 'type', unicode),
+        ('vocab_id', 'type', unicode),
         ('citations', 'type', shared.Citation),
         ('details', 'type', science.Detail),
         ('implementation_overview', 'type', unicode),
-        ('id', 'type', unicode),
 
         ('description', 'cardinality', "1.1"),
         ('short_name', 'cardinality', "1.1"),
+        ('vocab_id', 'cardinality', "1.1"),
         ('citations', 'cardinality', "0.N"),
         ('details', 'cardinality', "0.N"),
         ('implementation_overview', 'cardinality', "1.1"),
-        ('id', 'cardinality', "1.1"),
 
     ),
     science.Extent: (
@@ -2872,20 +2901,20 @@ CONSTRAINTS = {
         ('is_global', 'type', bool),
         ('description', 'type', unicode),
         ('short_name', 'type', unicode),
+        ('vocab_id', 'type', unicode),
         ('region_known_as', 'type', unicode),
         ('citations', 'type', shared.Citation),
         ('details', 'type', science.Detail),
         ('implementation_overview', 'type', unicode),
-        ('id', 'type', unicode),
 
         ('is_global', 'cardinality', "1.1"),
         ('description', 'cardinality', "1.1"),
         ('short_name', 'cardinality', "1.1"),
+        ('vocab_id', 'cardinality', "1.1"),
         ('region_known_as', 'cardinality', "0.N"),
         ('citations', 'cardinality', "0.N"),
         ('details', 'cardinality', "0.N"),
         ('implementation_overview', 'cardinality', "1.1"),
-        ('id', 'cardinality', "1.1"),
 
     ),
     science.Grid: (
@@ -2910,6 +2939,7 @@ CONSTRAINTS = {
         ('is_global', 'type', bool),
         ('description', 'type', unicode),
         ('short_name', 'type', unicode),
+        ('vocab_id', 'type', unicode),
         ('region_known_as', 'type', unicode),
         ('northern_boundary', 'type', float),
         ('southern_boundary', 'type', float),
@@ -2917,12 +2947,12 @@ CONSTRAINTS = {
         ('details', 'type', science.Detail),
         ('implementation_overview', 'type', unicode),
         ('western_boundary', 'type', float),
-        ('id', 'type', unicode),
         ('eastern_boundary', 'type', float),
 
         ('is_global', 'cardinality', "1.1"),
         ('description', 'cardinality', "1.1"),
         ('short_name', 'cardinality', "1.1"),
+        ('vocab_id', 'cardinality', "1.1"),
         ('region_known_as', 'cardinality', "0.N"),
         ('northern_boundary', 'cardinality', "0.1"),
         ('southern_boundary', 'cardinality', "0.1"),
@@ -2930,7 +2960,6 @@ CONSTRAINTS = {
         ('details', 'cardinality', "0.N"),
         ('implementation_overview', 'cardinality', "1.1"),
         ('western_boundary', 'cardinality', "0.1"),
-        ('id', 'cardinality', "1.1"),
         ('eastern_boundary', 'cardinality', "0.1"),
 
     ),
@@ -2939,6 +2968,7 @@ CONSTRAINTS = {
         ('extra_conservation_properties', 'type', science.ConservationProperties),
         ('description', 'type', unicode),
         ('short_name', 'type', unicode),
+        ('vocab_id', 'type', unicode),
         ('tuning_applied', 'type', science.Tuning),
         ('sub_processes', 'type', science.SubProcess),
         ('citations', 'type', shared.Citation),
@@ -2948,11 +2978,11 @@ CONSTRAINTS = {
         ('keywords', 'type', unicode),
         ('time_step', 'type', float),
         ('resolution', 'type', science.Resolution),
-        ('id', 'type', unicode),
 
         ('extra_conservation_properties', 'cardinality', "0.1"),
         ('description', 'cardinality', "1.1"),
         ('short_name', 'cardinality', "1.1"),
+        ('vocab_id', 'cardinality', "1.1"),
         ('tuning_applied', 'cardinality', "0.1"),
         ('sub_processes', 'cardinality', "0.N"),
         ('citations', 'cardinality', "0.N"),
@@ -2962,43 +2992,42 @@ CONSTRAINTS = {
         ('keywords', 'cardinality', "0.1"),
         ('time_step', 'cardinality', "0.1"),
         ('resolution', 'cardinality', "0.1"),
-        ('id', 'cardinality', "1.1"),
 
     ),
     science.Model: (
 
         ('category', 'type', unicode),
-        ('model_key_properties', 'type', science.KeyProperties),
         ('realms', 'type', science.ScientificRealm),
         ('description', 'type', unicode),
         ('repository', 'type', shared.OnlineResource),
         ('coupler', 'type', unicode),
         ('coupled_components', 'type', science.Model),
         ('release_date', 'type', datetime.datetime),
+        ('vocab_id', 'type', unicode),
         ('internal_software_components', 'type', software.SoftwareComponent),
         ('development_history', 'type', software.DevelopmentPath),
         ('long_name', 'type', unicode),
         ('citations', 'type', shared.Citation),
         ('meta', 'type', shared.DocMetaInfo),
         ('version', 'type', unicode),
-        ('id', 'type', unicode),
+        ('key_properties', 'type', science.KeyProperties),
         ('name', 'type', unicode),
 
         ('category', 'cardinality', "1.1"),
-        ('model_key_properties', 'cardinality', "0.1"),
         ('realms', 'cardinality', "0.N"),
         ('description', 'cardinality', "0.1"),
         ('repository', 'cardinality', "0.1"),
         ('coupler', 'cardinality', "0.1"),
         ('coupled_components', 'cardinality', "0.N"),
         ('release_date', 'cardinality', "0.1"),
+        ('vocab_id', 'cardinality', "0.1"),
         ('internal_software_components', 'cardinality', "0.N"),
         ('development_history', 'cardinality', "0.1"),
         ('long_name', 'cardinality', "0.1"),
         ('citations', 'cardinality', "0.N"),
         ('meta', 'cardinality', "1.1"),
         ('version', 'cardinality', "0.1"),
-        ('id', 'cardinality', "0.1"),
+        ('key_properties', 'cardinality', "0.1"),
         ('name', 'cardinality', "1.1"),
 
     ),
@@ -3006,21 +3035,21 @@ CONSTRAINTS = {
 
         ('description', 'type', unicode),
         ('short_name', 'type', unicode),
+        ('vocab_id', 'type', unicode),
         ('sub_processes', 'type', science.SubProcess),
         ('citations', 'type', shared.Citation),
         ('details', 'type', science.Detail),
         ('implementation_overview', 'type', unicode),
         ('keywords', 'type', unicode),
-        ('id', 'type', unicode),
 
         ('description', 'cardinality', "1.1"),
         ('short_name', 'cardinality', "1.1"),
+        ('vocab_id', 'cardinality', "1.1"),
         ('sub_processes', 'cardinality', "0.N"),
         ('citations', 'cardinality', "0.N"),
         ('details', 'cardinality', "0.N"),
         ('implementation_overview', 'cardinality', "1.1"),
         ('keywords', 'cardinality', "0.1"),
-        ('id', 'cardinality', "1.1"),
 
     ),
     science.Resolution: (
@@ -3028,25 +3057,25 @@ CONSTRAINTS = {
         ('canonical_horizontal_resolution', 'type', unicode),
         ('description', 'type', unicode),
         ('short_name', 'type', unicode),
-        ('number_of_horizontal_gridpoints', 'type', int),
+        ('vocab_id', 'type', unicode),
         ('citations', 'type', shared.Citation),
         ('is_adaptive_grid', 'type', bool),
         ('details', 'type', science.Detail),
         ('implementation_overview', 'type', unicode),
+        ('number_of_horizontal_gridpoints', 'type', int),
         ('number_of_vertical_levels', 'type', int),
-        ('id', 'type', unicode),
         ('name', 'type', unicode),
 
         ('canonical_horizontal_resolution', 'cardinality', "0.1"),
         ('description', 'cardinality', "1.1"),
         ('short_name', 'cardinality', "1.1"),
-        ('number_of_horizontal_gridpoints', 'cardinality', "0.1"),
+        ('vocab_id', 'cardinality', "1.1"),
         ('citations', 'cardinality', "0.N"),
         ('is_adaptive_grid', 'cardinality', "0.1"),
         ('details', 'cardinality', "0.N"),
         ('implementation_overview', 'cardinality', "1.1"),
+        ('number_of_horizontal_gridpoints', 'cardinality', "0.1"),
         ('number_of_vertical_levels', 'cardinality', "0.1"),
-        ('id', 'cardinality', "1.1"),
         ('name', 'cardinality', "1.1"),
 
     ),
@@ -3054,11 +3083,11 @@ CONSTRAINTS = {
 
         ('description', 'type', unicode),
         ('short_name', 'type', unicode),
-        ('id', 'type', unicode),
+        ('vocab_id', 'type', unicode),
 
         ('description', 'cardinality', "1.1"),
         ('short_name', 'cardinality', "1.1"),
-        ('id', 'cardinality', "1.1"),
+        ('vocab_id', 'cardinality', "1.1"),
 
     ),
     science.ScientificRealm: (
@@ -3066,62 +3095,62 @@ CONSTRAINTS = {
         ('processes', 'type', science.Process),
         ('realm', 'type', unicode),
         ('name', 'type', unicode),
+        ('vocab_id', 'type', unicode),
         ('citations', 'type', shared.Citation),
         ('meta', 'type', shared.DocMetaInfo),
         ('grid', 'type', science.Grid),
         ('overview', 'type', unicode),
         ('key_properties', 'type', science.KeyProperties),
-        ('id', 'type', unicode),
 
         ('processes', 'cardinality', "1.N"),
         ('realm', 'cardinality', "0.1"),
         ('name', 'cardinality', "1.1"),
+        ('vocab_id', 'cardinality', "0.1"),
         ('citations', 'cardinality', "0.N"),
         ('meta', 'cardinality', "1.1"),
         ('grid', 'cardinality', "0.1"),
         ('overview', 'cardinality', "0.1"),
         ('key_properties', 'cardinality', "0.1"),
-        ('id', 'cardinality', "0.1"),
 
     ),
     science.SubProcess: (
 
         ('description', 'type', unicode),
         ('short_name', 'type', unicode),
+        ('vocab_id', 'type', unicode),
         ('citations', 'type', shared.Citation),
         ('details', 'type', science.Detail),
         ('implementation_overview', 'type', unicode),
-        ('id', 'type', unicode),
 
         ('description', 'cardinality', "1.1"),
         ('short_name', 'cardinality', "1.1"),
+        ('vocab_id', 'cardinality', "1.1"),
         ('citations', 'cardinality', "0.N"),
         ('details', 'cardinality', "0.N"),
         ('implementation_overview', 'cardinality', "1.1"),
-        ('id', 'cardinality', "1.1"),
 
     ),
     science.Tuning: (
 
         ('description', 'type', unicode),
         ('short_name', 'type', unicode),
+        ('vocab_id', 'type', unicode),
         ('trend_metrics_used', 'type', data.VariableCollection),
         ('global_mean_metrics_used', 'type', data.VariableCollection),
         ('regional_metrics_used', 'type', data.VariableCollection),
         ('citations', 'type', shared.Citation),
         ('details', 'type', science.Detail),
         ('implementation_overview', 'type', unicode),
-        ('id', 'type', unicode),
 
         ('description', 'cardinality', "1.1"),
         ('short_name', 'cardinality', "1.1"),
+        ('vocab_id', 'cardinality', "1.1"),
         ('trend_metrics_used', 'cardinality', "0.1"),
         ('global_mean_metrics_used', 'cardinality', "0.1"),
         ('regional_metrics_used', 'cardinality', "0.1"),
         ('citations', 'cardinality', "0.N"),
         ('details', 'cardinality', "0.N"),
         ('implementation_overview', 'cardinality', "1.1"),
-        ('id', 'cardinality', "1.1"),
 
     ),
     shared.Citation: (
@@ -3247,7 +3276,7 @@ CONSTRAINTS = {
 
         ('name', 'type', unicode),
         ('url', 'type', shared.OnlineResource),
-        ('organisation', 'type', bool),
+        ('is_organisation', 'type', bool),
         ('meta', 'type', shared.DocMetaInfo),
         ('address', 'type', unicode),
         ('email', 'type', unicode),
@@ -3255,7 +3284,7 @@ CONSTRAINTS = {
 
         ('name', 'cardinality', "0.1"),
         ('url', 'cardinality', "0.1"),
-        ('organisation', 'cardinality', "0.1"),
+        ('is_organisation', 'cardinality', "0.1"),
         ('meta', 'cardinality', "1.1"),
         ('address', 'cardinality', "0.1"),
         ('email', 'cardinality', "0.1"),
@@ -3281,13 +3310,13 @@ CONSTRAINTS = {
     ),
     shared.Responsibility: (
 
-        ('party', 'type', shared.Party),
         ('when', 'type', time.TimePeriod),
         ('role', 'type', unicode),
+        ('parties', 'type', shared.Party),
 
-        ('party', 'cardinality', "1.N"),
         ('when', 'cardinality', "0.1"),
         ('role', 'cardinality', "1.1"),
+        ('parties', 'cardinality', "1.N"),
 
     ),
     shared.TextBlob: (
@@ -3332,15 +3361,15 @@ CONSTRAINTS = {
     software.DevelopmentPath: (
 
         ('consortium_name', 'type', unicode),
+        ('was_developed_in_house', 'type', bool),
         ('funding_sources', 'type', shared.Responsibility),
         ('creators', 'type', shared.Responsibility),
-        ('developed_in_house', 'type', bool),
         ('previous_version', 'type', unicode),
 
         ('consortium_name', 'cardinality', "0.1"),
+        ('was_developed_in_house', 'cardinality', "1.1"),
         ('funding_sources', 'cardinality', "0.N"),
         ('creators', 'cardinality', "0.N"),
-        ('developed_in_house', 'cardinality', "1.1"),
         ('previous_version', 'cardinality', "0.1"),
 
     ),
@@ -3399,12 +3428,12 @@ CONSTRAINTS = {
     ),
     software.Variable: (
 
+        ('is_prognostic', 'type', bool),
         ('description', 'type', unicode),
-        ('prognostic', 'type', bool),
         ('name', 'type', unicode),
 
+        ('is_prognostic', 'cardinality', "1.1"),
         ('description', 'cardinality', "0.1"),
-        ('prognostic', 'cardinality', "1.1"),
         ('name', 'cardinality', "1.1"),
 
     ),
@@ -3424,10 +3453,10 @@ CONSTRAINTS = {
     time.DateTime: (
 
         ('value', 'type', unicode),
-        ('offset', 'type', bool),
+        ('is_offset', 'type', bool),
 
         ('value', 'cardinality', "1.1"),
-        ('offset', 'cardinality', "0.1"),
+        ('is_offset', 'cardinality', "0.1"),
 
     ),
     time.DatetimeSet: (
@@ -3739,11 +3768,18 @@ CONSTRAINTS = {
         ('cardinality', "0.N"),
 
     ),
-    (activity.Ensemble, 'has_ensemble_axes'): (
+    (activity.Ensemble, 'ensemble_axes'): (
 
         ('type', activity.EnsembleAxis),
 
         ('cardinality', "0.N"),
+
+    ),
+    (activity.Ensemble, 'experiments'): (
+
+        ('type', designing.NumericalExperiment),
+
+        ('cardinality', "1.N"),
 
     ),
     (activity.Ensemble, 'members'): (
@@ -3753,18 +3789,11 @@ CONSTRAINTS = {
         ('cardinality', "1.N"),
 
     ),
-    (activity.Ensemble, 'part_of'): (
+    (activity.Ensemble, 'uber_ensembles'): (
 
         ('type', activity.UberEnsemble),
 
         ('cardinality', "0.N"),
-
-    ),
-    (activity.Ensemble, 'supported'): (
-
-        ('type', designing.NumericalExperiment),
-
-        ('cardinality', "1.N"),
 
     ),
     (activity.Ensemble, 'alternative_names'): (
@@ -3974,11 +4003,18 @@ CONSTRAINTS = {
         ('cardinality', "0.N"),
 
     ),
-    (activity.UberEnsemble, 'has_ensemble_axes'): (
+    (activity.UberEnsemble, 'ensemble_axes'): (
 
         ('type', activity.EnsembleAxis),
 
         ('cardinality', "0.N"),
+
+    ),
+    (activity.UberEnsemble, 'experiments'): (
+
+        ('type', designing.NumericalExperiment),
+
+        ('cardinality', "1.N"),
 
     ),
     (activity.UberEnsemble, 'members'): (
@@ -3988,18 +4024,11 @@ CONSTRAINTS = {
         ('cardinality', "1.N"),
 
     ),
-    (activity.UberEnsemble, 'part_of'): (
+    (activity.UberEnsemble, 'uber_ensembles'): (
 
         ('type', activity.UberEnsemble),
 
         ('cardinality', "0.N"),
-
-    ),
-    (activity.UberEnsemble, 'supported'): (
-
-        ('type', designing.NumericalExperiment),
-
-        ('cardinality', "1.N"),
 
     ),
     (activity.UberEnsemble, 'alternative_names'): (
@@ -4646,6 +4675,13 @@ CONSTRAINTS = {
         ('cardinality', "1.1"),
 
     ),
+    (designing.DomainRequirements, 'scope'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
     (designing.DomainRequirements, 'alternative_names'): (
 
         ('type', unicode),
@@ -4771,6 +4807,13 @@ CONSTRAINTS = {
         ('type', bool),
 
         ('cardinality', "1.1"),
+
+    ),
+    (designing.EnsembleRequirement, 'scope'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
 
     ),
     (designing.EnsembleRequirement, 'alternative_names'): (
@@ -4928,6 +4971,13 @@ CONSTRAINTS = {
         ('cardinality', "1.1"),
 
     ),
+    (designing.ForcingConstraint, 'scope'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
     (designing.ForcingConstraint, 'alternative_names'): (
 
         ('type', unicode),
@@ -5055,6 +5105,13 @@ CONSTRAINTS = {
         ('cardinality', "1.1"),
 
     ),
+    (designing.InitialisationRequirement, 'scope'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
     (designing.InitialisationRequirement, 'alternative_names'): (
 
         ('type', unicode),
@@ -5166,6 +5223,13 @@ CONSTRAINTS = {
         ('type', bool),
 
         ('cardinality', "1.1"),
+
+    ),
+    (designing.MultiEnsemble, 'scope'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
 
     ),
     (designing.MultiEnsemble, 'alternative_names'): (
@@ -5394,6 +5458,13 @@ CONSTRAINTS = {
         ('cardinality', "1.1"),
 
     ),
+    (designing.NumericalRequirement, 'scope'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
     (designing.NumericalRequirement, 'alternative_names'): (
 
         ('type', unicode),
@@ -5505,6 +5576,13 @@ CONSTRAINTS = {
         ('type', bool),
 
         ('cardinality', "1.1"),
+
+    ),
+    (designing.OutputRequirement, 'scope'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
 
     ),
     (designing.OutputRequirement, 'alternative_names'): (
@@ -5867,6 +5945,13 @@ CONSTRAINTS = {
         ('cardinality', "1.1"),
 
     ),
+    (designing.StartDateEnsemble, 'scope'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
     (designing.StartDateEnsemble, 'alternative_names'): (
 
         ('type', unicode),
@@ -5999,6 +6084,13 @@ CONSTRAINTS = {
         ('type', bool),
 
         ('cardinality', "1.1"),
+
+    ),
+    (designing.TemporalConstraint, 'scope'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
 
     ),
     (designing.TemporalConstraint, 'alternative_names'): (
@@ -6723,7 +6815,7 @@ CONSTRAINTS = {
         ('cardinality', "1.1"),
 
     ),
-    (science.ConservationProperties, 'flux_correction_was_used'): (
+    (science.ConservationProperties, 'was_flux_correction_used'): (
 
         ('type', bool),
 
@@ -6758,14 +6850,14 @@ CONSTRAINTS = {
         ('cardinality', "1.1"),
 
     ),
-    (science.ConservationProperties, 'id'): (
+    (science.ConservationProperties, 'short_name'): (
 
         ('type', unicode),
 
         ('cardinality', "1.1"),
 
     ),
-    (science.ConservationProperties, 'short_name'): (
+    (science.ConservationProperties, 'vocab_id'): (
 
         ('type', unicode),
 
@@ -6780,14 +6872,14 @@ CONSTRAINTS = {
         ('cardinality', "1.1"),
 
     ),
-    (science.Detail, 'id'): (
+    (science.Detail, 'short_name'): (
 
         ('type', unicode),
 
         ('cardinality', "1.1"),
 
     ),
-    (science.Detail, 'short_name'): (
+    (science.Detail, 'vocab_id'): (
 
         ('type', unicode),
 
@@ -6823,14 +6915,14 @@ CONSTRAINTS = {
         ('cardinality', "1.1"),
 
     ),
-    (science.Discretisation, 'id'): (
+    (science.Discretisation, 'short_name'): (
 
         ('type', unicode),
 
         ('cardinality', "1.1"),
 
     ),
-    (science.Discretisation, 'short_name'): (
+    (science.Discretisation, 'vocab_id'): (
 
         ('type', unicode),
 
@@ -6880,14 +6972,14 @@ CONSTRAINTS = {
         ('cardinality', "1.1"),
 
     ),
-    (science.Extent, 'id'): (
+    (science.Extent, 'short_name'): (
 
         ('type', unicode),
 
         ('cardinality', "1.1"),
 
     ),
-    (science.Extent, 'short_name'): (
+    (science.Extent, 'vocab_id'): (
 
         ('type', unicode),
 
@@ -7008,14 +7100,14 @@ CONSTRAINTS = {
         ('cardinality', "1.1"),
 
     ),
-    (science.IsoExtent, 'id'): (
+    (science.IsoExtent, 'short_name'): (
 
         ('type', unicode),
 
         ('cardinality', "1.1"),
 
     ),
-    (science.IsoExtent, 'short_name'): (
+    (science.IsoExtent, 'vocab_id'): (
 
         ('type', unicode),
 
@@ -7100,14 +7192,14 @@ CONSTRAINTS = {
         ('cardinality', "1.1"),
 
     ),
-    (science.KeyProperties, 'id'): (
+    (science.KeyProperties, 'short_name'): (
 
         ('type', unicode),
 
         ('cardinality', "1.1"),
 
     ),
-    (science.KeyProperties, 'short_name'): (
+    (science.KeyProperties, 'vocab_id'): (
 
         ('type', unicode),
 
@@ -7136,18 +7228,18 @@ CONSTRAINTS = {
         ('cardinality', "0.1"),
 
     ),
-    (science.Model, 'id'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
     (science.Model, 'internal_software_components'): (
 
         ('type', software.SoftwareComponent),
 
         ('cardinality', "0.N"),
+
+    ),
+    (science.Model, 'key_properties'): (
+
+        ('type', science.KeyProperties),
+
+        ('cardinality', "0.1"),
 
     ),
     (science.Model, 'meta'): (
@@ -7157,18 +7249,18 @@ CONSTRAINTS = {
         ('cardinality', "1.1"),
 
     ),
-    (science.Model, 'model_key_properties'): (
-
-        ('type', science.KeyProperties),
-
-        ('cardinality', "0.1"),
-
-    ),
     (science.Model, 'realms'): (
 
         ('type', science.ScientificRealm),
 
         ('cardinality', "0.N"),
+
+    ),
+    (science.Model, 'vocab_id'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
 
     ),
     (science.Model, 'citations'): (
@@ -7270,14 +7362,14 @@ CONSTRAINTS = {
         ('cardinality', "1.1"),
 
     ),
-    (science.Process, 'id'): (
+    (science.Process, 'short_name'): (
 
         ('type', unicode),
 
         ('cardinality', "1.1"),
 
     ),
-    (science.Process, 'short_name'): (
+    (science.Process, 'vocab_id'): (
 
         ('type', unicode),
 
@@ -7348,14 +7440,14 @@ CONSTRAINTS = {
         ('cardinality', "1.1"),
 
     ),
-    (science.Resolution, 'id'): (
+    (science.Resolution, 'short_name'): (
 
         ('type', unicode),
 
         ('cardinality', "1.1"),
 
     ),
-    (science.Resolution, 'short_name'): (
+    (science.Resolution, 'vocab_id'): (
 
         ('type', unicode),
 
@@ -7370,14 +7462,14 @@ CONSTRAINTS = {
         ('cardinality', "1.1"),
 
     ),
-    (science.ScienceContext, 'id'): (
+    (science.ScienceContext, 'short_name'): (
 
         ('type', unicode),
 
         ('cardinality', "1.1"),
 
     ),
-    (science.ScienceContext, 'short_name'): (
+    (science.ScienceContext, 'vocab_id'): (
 
         ('type', unicode),
 
@@ -7395,13 +7487,6 @@ CONSTRAINTS = {
     (science.ScientificRealm, 'grid'): (
 
         ('type', science.Grid),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (science.ScientificRealm, 'id'): (
-
-        ('type', unicode),
 
         ('cardinality', "0.1"),
 
@@ -7448,6 +7533,13 @@ CONSTRAINTS = {
         ('cardinality', "0.1"),
 
     ),
+    (science.ScientificRealm, 'vocab_id'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
 
     (science.SubProcess, 'citations'): (
 
@@ -7477,14 +7569,14 @@ CONSTRAINTS = {
         ('cardinality', "1.1"),
 
     ),
-    (science.SubProcess, 'id'): (
+    (science.SubProcess, 'short_name'): (
 
         ('type', unicode),
 
         ('cardinality', "1.1"),
 
     ),
-    (science.SubProcess, 'short_name'): (
+    (science.SubProcess, 'vocab_id'): (
 
         ('type', unicode),
 
@@ -7548,14 +7640,14 @@ CONSTRAINTS = {
         ('cardinality', "1.1"),
 
     ),
-    (science.Tuning, 'id'): (
+    (science.Tuning, 'short_name'): (
 
         ('type', unicode),
 
         ('cardinality', "1.1"),
 
     ),
-    (science.Tuning, 'short_name'): (
+    (science.Tuning, 'vocab_id'): (
 
         ('type', unicode),
 
@@ -7911,6 +8003,13 @@ CONSTRAINTS = {
         ('cardinality', "0.1"),
 
     ),
+    (shared.Party, 'is_organisation'): (
+
+        ('type', bool),
+
+        ('cardinality', "0.1"),
+
+    ),
     (shared.Party, 'meta'): (
 
         ('type', shared.DocMetaInfo),
@@ -7928,13 +8027,6 @@ CONSTRAINTS = {
     (shared.Party, 'orcid_id'): (
 
         ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (shared.Party, 'organisation'): (
-
-        ('type', bool),
 
         ('cardinality', "0.1"),
 
@@ -7990,7 +8082,7 @@ CONSTRAINTS = {
 
     ),
 
-    (shared.Responsibility, 'party'): (
+    (shared.Responsibility, 'parties'): (
 
         ('type', shared.Party),
 
@@ -8113,13 +8205,6 @@ CONSTRAINTS = {
         ('cardinality', "0.N"),
 
     ),
-    (software.DevelopmentPath, 'developed_in_house'): (
-
-        ('type', bool),
-
-        ('cardinality', "1.1"),
-
-    ),
     (software.DevelopmentPath, 'funding_sources'): (
 
         ('type', shared.Responsibility),
@@ -8132,6 +8217,13 @@ CONSTRAINTS = {
         ('type', unicode),
 
         ('cardinality', "0.1"),
+
+    ),
+    (software.DevelopmentPath, 'was_developed_in_house'): (
+
+        ('type', bool),
+
+        ('cardinality', "1.1"),
 
     ),
 
@@ -8278,16 +8370,16 @@ CONSTRAINTS = {
         ('cardinality', "0.1"),
 
     ),
-    (software.Variable, 'name'): (
+    (software.Variable, 'is_prognostic'): (
 
-        ('type', unicode),
+        ('type', bool),
 
         ('cardinality', "1.1"),
 
     ),
-    (software.Variable, 'prognostic'): (
+    (software.Variable, 'name'): (
 
-        ('type', bool),
+        ('type', unicode),
 
         ('cardinality', "1.1"),
 
@@ -8322,7 +8414,7 @@ CONSTRAINTS = {
 
     ),
 
-    (time.DateTime, 'offset'): (
+    (time.DateTime, 'is_offset'): (
 
         ('type', bool),
 
@@ -8875,7 +8967,7 @@ http://www.geosci-model-dev-discuss.net/gmd-2016-197/)
     (activity.Activity, 'internal_name'):
         "A name used for internal purposes.",
     (activity.Activity, 'keywords'):
-        "Comma separated user defined keywords.",
+        "User defined keywords.",
     (activity.Activity, 'long_name'):
         "Longer version of activity name.",
     (activity.Activity, 'meta'):
@@ -8910,14 +9002,14 @@ http://www.geosci-model-dev-discuss.net/gmd-2016-197/)
         "Representative model performance across ensemble.",
     (activity.Ensemble, 'documentation'):
         "Links to web-pages and other ensemble specific documentation (including workflow descriptions).",
-    (activity.Ensemble, 'has_ensemble_axes'):
+    (activity.Ensemble, 'ensemble_axes'):
         "Set of axes for the ensemble.",
+    (activity.Ensemble, 'experiments'):
+        "Experiments with which the ensemble is associated (may differ from constituent simulations).",
     (activity.Ensemble, 'members'):
         "The set of ensemble members.",
-    (activity.Ensemble, 'part_of'):
+    (activity.Ensemble, 'uber_ensembles'):
         "Link to one or more over-arching ensembles that might includes this one.",
-    (activity.Ensemble, 'supported'):
-        "Experiments with which the ensemble is associated (may differ from constituent simulations).",
     (activity.EnsembleAxis, 'extra_detail'):
         "Any extra detail required to describe how this ensemble axis was delivered.",
     (activity.EnsembleAxis, 'member'):
@@ -9050,6 +9142,8 @@ http://www.geosci-model-dev-discuss.net/gmd-2016-197/)
         "Additional detail for this requirement.",
     (designing.NumericalRequirement, 'is_conformance_requested'):
         "Indicator as to whether ensemble documentation should include conformance information for this requirement.",
+    (designing.NumericalRequirement, 'scope'):
+        "Scope allows us to categorise a requirement in terms of how widely it is shared.",
     (designing.OutputRequirement, 'formal_data_request'):
         "If available, link to a 'cmip' style online request.",
     (designing.Project, 'homepage'):
@@ -9236,7 +9330,7 @@ http://www.geosci-model-dev-discuss.net/gmd-2016-197/)
         "Set of variables which are conserved by *more* than the numerical scheme alone.",
     (science.ConservationProperties, 'description'):
         "Brief description of conservation methodology",
-    (science.ConservationProperties, 'flux_correction_was_used'):
+    (science.ConservationProperties, 'was_flux_correction_used'):
         "Flag to indicate if correction involved flux correction.",
     (science.Extent, 'is_global'):
         "True if horizontal coverage is global.",
@@ -9263,7 +9357,7 @@ http://www.geosci-model-dev-discuss.net/gmd-2016-197/)
     (science.IsoExtent, 'western_boundary'):
         "Western boundary in degrees of longitude.",
     (science.KeyProperties, 'extent'):
-        "DESCRIPTION.",
+        "Key scientific characteristics of the grid use to simulate a specific domain.",
     (science.KeyProperties, 'extra_conservation_properties'):
         "Details of methodology needed to conserve variables between processes.",
     (science.KeyProperties, 'resolution'):
@@ -9278,16 +9372,16 @@ http://www.geosci-model-dev-discuss.net/gmd-2016-197/)
         "Software components which are linked together using a coupler to deliver this model.",
     (science.Model, 'coupler'):
         "Overarching coupling framework for model.",
-    (science.Model, 'id'):
-        "Vocabulary identifier, where this model description was constructed via a controlled vocabulary.",
     (science.Model, 'internal_software_components'):
         "Software modules which together provide the functionality for this model.",
+    (science.Model, 'key_properties'):
+        "Model default key properties (may be over-ridden in coupled component and scientific realm properties).",
     (science.Model, 'meta'):
         "Injected document metadata.",
-    (science.Model, 'model_key_properties'):
-        "Model default key properties (may be over-ridden in coupled component and scientific realm properties).",
     (science.Model, 'realms'):
         "The scientific realms which this model simulates internally, i.e. those which are not linked together using a coupler.",
+    (science.Model, 'vocab_id'):
+        "Vocabulary identifier, where this model description was constructed via a controlled vocabulary.",
     (science.Process, 'citations'):
         "Set of pertinent citations.",
     (science.Process, 'details'):
@@ -9310,16 +9404,14 @@ http://www.geosci-model-dev-discuss.net/gmd-2016-197/)
         "Number of vertical levels resolved on computational grid.",
     (science.ScienceContext, 'description'):
         "Scientific context for which this description is provided.",
-    (science.ScienceContext, 'id'):
-        "Identifier for this collection of properties.",
     (science.ScienceContext, 'short_name'):
         "The name of this process/algorithm/sub-process/detail.",
+    (science.ScienceContext, 'vocab_id'):
+        "Identifier for this collection of properties.",
     (science.ScientificRealm, 'citations'):
         "Set of pertinent citations.",
     (science.ScientificRealm, 'grid'):
         "The grid used to layout the variables (e.g. the Global ENDGAME-grid).",
-    (science.ScientificRealm, 'id'):
-        "Vocabulary identifier, where this domain description was constructed via a  controlled vocabulary.",
     (science.ScientificRealm, 'key_properties'):
         "Key properties for the domain which differ from model defaults (grid, timestep etc).",
     (science.ScientificRealm, 'meta'):
@@ -9332,6 +9424,8 @@ http://www.geosci-model-dev-discuss.net/gmd-2016-197/)
         "Processes simulated within the domain.",
     (science.ScientificRealm, 'realm'):
         "Canonical name for the domain of this scientific area.",
+    (science.ScientificRealm, 'vocab_id'):
+        "Vocabulary identifier, where this domain description was constructed via a  controlled vocabulary.",
     (science.SubProcess, 'citations'):
         "Set of pertinent citations.",
     (science.SubProcess, 'details'):
@@ -9444,14 +9538,14 @@ http://www.geosci-model-dev-discuss.net/gmd-2016-197/)
         "Institutional address.",
     (shared.Party, 'email'):
         "Email address.",
+    (shared.Party, 'is_organisation'):
+        "True if an organisation not a person.",
     (shared.Party, 'meta'):
         "Injected document metadata.",
     (shared.Party, 'name'):
         "Name of person or organisation.",
     (shared.Party, 'orcid_id'):
         "Orcid ID if available.",
-    (shared.Party, 'organisation'):
-        "True if an organisation not a person.",
     (shared.Party, 'url'):
         "URL of person or institution.",
     (shared.QualityReview, 'date'):
@@ -9466,7 +9560,7 @@ http://www.geosci-model-dev-discuss.net/gmd-2016-197/)
         "Status from a controlled vocabulary.",
     (shared.QualityReview, 'target_document'):
         "This is the document about which quality is asserted.",
-    (shared.Responsibility, 'party'):
+    (shared.Responsibility, 'parties'):
         "Parties delivering responsibility.",
     (shared.Responsibility, 'role'):
         "Role that the party plays or played.",
@@ -9500,12 +9594,12 @@ http://www.geosci-model-dev-discuss.net/gmd-2016-197/)
         "If model/component is developed as part of a consortium, provide consortium name.",
     (software.DevelopmentPath, 'creators'):
         "Those responsible for creating this component.",
-    (software.DevelopmentPath, 'developed_in_house'):
-        "Model or component was mostly developed in house.",
     (software.DevelopmentPath, 'funding_sources'):
         "The entities that funded this software component.",
     (software.DevelopmentPath, 'previous_version'):
         "Name of a previous version.",
+    (software.DevelopmentPath, 'was_developed_in_house'):
+        "Model or component was mostly developed in house.",
     (software.EntryPoint, 'name'):
         "#FIXME.",
     (software.Gridspec, 'description'):
@@ -9530,10 +9624,10 @@ http://www.geosci-model-dev-discuss.net/gmd-2016-197/)
         "Internal software sub-components of this component.",
     (software.Variable, 'description'):
         "Description of how the variable is being used in the s/w.",
+    (software.Variable, 'is_prognostic'):
+        "Whether or not prognostic or diagnostic.",
     (software.Variable, 'name'):
         "Short name for the variable.",
-    (software.Variable, 'prognostic'):
-        "Whether or not prognostic or diagnostic.",
     (time.Calendar, 'description'):
         "Extra information about the calendar.",
     (time.Calendar, 'month_lengths'):
@@ -9542,7 +9636,7 @@ http://www.geosci-model-dev-discuss.net/gmd-2016-197/)
         "Can be used to name a special calendar type.",
     (time.Calendar, 'standard_name'):
         "Type of calendar used.",
-    (time.DateTime, 'offset'):
+    (time.DateTime, 'is_offset'):
         "Date is offset from start of an integration.",
     (time.DateTime, 'value'):
         "Date or time - some of (from left to right): yyyy-mm-dd:hh:mm:ss.",
@@ -9593,6 +9687,10 @@ http://www.geosci-model-dev-discuss.net/gmd-2016-197/)
     """,
     designing.ForcingTypes: """
         Defines the possible set of forcing types for a forcing constraint.
+
+    """,
+    designing.NumericalRequirementScope: """
+        The scope to which a numerical requirement may or may not apply.
 
     """,
     drs.DrsFrequencyTypes: """
@@ -9716,6 +9814,14 @@ http://www.geosci-model-dev-discuss.net/gmd-2016-197/)
         "Simplified and/or exemplar, e.g. 1%C02",
     (designing.ForcingTypes, 'scenario'):
         "Intended to represent a possible future, e.g. RCP4.5",
+    (designing.NumericalRequirementScope, 'experiment'):
+        "Applies to a single experiment e.g. CFMIP 'zonally uniform SST plus 4K'",
+    (designing.NumericalRequirementScope, 'mip'):
+        "Shared within a single MIP e.g. spin-up protocol for land surface experiments in LUMIP.",
+    (designing.NumericalRequirementScope, 'mip-era'):
+        "MIP era wide e.g. 'concentration of pre-industrial CO2' & 'Impose AMIP SSTs'",
+    (designing.NumericalRequirementScope, 'mip-group'):
+        "Shared across a group of MIPs e.g. aerosol forcing in GeoMIP and AerChemMIP.",
     (drs.DrsFrequencyTypes, '3hr'):
         "Every three hours",
     (drs.DrsFrequencyTypes, '6hr'):
@@ -10065,10 +10171,10 @@ KEYS = {
     (activity.Ensemble, 'common_conformances'): "cim.2.activity.Ensemble.common_conformances",
     (activity.Ensemble, 'common_performance'): "cim.2.activity.Ensemble.common_performance",
     (activity.Ensemble, 'documentation'): "cim.2.activity.Ensemble.documentation",
-    (activity.Ensemble, 'has_ensemble_axes'): "cim.2.activity.Ensemble.has_ensemble_axes",
+    (activity.Ensemble, 'ensemble_axes'): "cim.2.activity.Ensemble.ensemble_axes",
+    (activity.Ensemble, 'experiments'): "cim.2.activity.Ensemble.experiments",
     (activity.Ensemble, 'members'): "cim.2.activity.Ensemble.members",
-    (activity.Ensemble, 'part_of'): "cim.2.activity.Ensemble.part_of",
-    (activity.Ensemble, 'supported'): "cim.2.activity.Ensemble.supported",
+    (activity.Ensemble, 'uber_ensembles'): "cim.2.activity.Ensemble.uber_ensembles",
     (activity.EnsembleAxis, 'extra_detail'): "cim.2.activity.EnsembleAxis.extra_detail",
     (activity.EnsembleAxis, 'member'): "cim.2.activity.EnsembleAxis.member",
     (activity.EnsembleAxis, 'short_identifier'): "cim.2.activity.EnsembleAxis.short_identifier",
@@ -10135,6 +10241,7 @@ KEYS = {
     (designing.NumericalExperiment, 'requirements'): "cim.2.designing.NumericalExperiment.requirements",
     (designing.NumericalRequirement, 'additional_requirements'): "cim.2.designing.NumericalRequirement.additional_requirements",
     (designing.NumericalRequirement, 'is_conformance_requested'): "cim.2.designing.NumericalRequirement.is_conformance_requested",
+    (designing.NumericalRequirement, 'scope'): "cim.2.designing.NumericalRequirement.scope",
     (designing.OutputRequirement, 'formal_data_request'): "cim.2.designing.OutputRequirement.formal_data_request",
     (designing.Project, 'homepage'): "cim.2.designing.Project.homepage",
     (designing.Project, 'objectives'): "cim.2.designing.Project.objectives",
@@ -10228,7 +10335,7 @@ KEYS = {
     (platform.StorageVolume, 'volume'): "cim.2.platform.StorageVolume.volume",
     (science.ConservationProperties, 'corrected_conserved_prognostic_variables'): "cim.2.science.ConservationProperties.corrected_conserved_prognostic_variables",
     (science.ConservationProperties, 'description'): "cim.2.science.ConservationProperties.description",
-    (science.ConservationProperties, 'flux_correction_was_used'): "cim.2.science.ConservationProperties.flux_correction_was_used",
+    (science.ConservationProperties, 'was_flux_correction_used'): "cim.2.science.ConservationProperties.was_flux_correction_used",
     (science.Extent, 'is_global'): "cim.2.science.Extent.is_global",
     (science.Extent, 'region_known_as'): "cim.2.science.Extent.region_known_as",
     (science.Grid, 'citations'): "cim.2.science.Grid.citations",
@@ -10249,11 +10356,11 @@ KEYS = {
     (science.Model, 'category'): "cim.2.science.Model.category",
     (science.Model, 'coupled_components'): "cim.2.science.Model.coupled_components",
     (science.Model, 'coupler'): "cim.2.science.Model.coupler",
-    (science.Model, 'id'): "cim.2.science.Model.id",
     (science.Model, 'internal_software_components'): "cim.2.science.Model.internal_software_components",
+    (science.Model, 'key_properties'): "cim.2.science.Model.key_properties",
     (science.Model, 'meta'): "cim.2.science.Model.meta",
-    (science.Model, 'model_key_properties'): "cim.2.science.Model.model_key_properties",
     (science.Model, 'realms'): "cim.2.science.Model.realms",
+    (science.Model, 'vocab_id'): "cim.2.science.Model.vocab_id",
     (science.Process, 'citations'): "cim.2.science.Process.citations",
     (science.Process, 'details'): "cim.2.science.Process.details",
     (science.Process, 'implementation_overview'): "cim.2.science.Process.implementation_overview",
@@ -10265,17 +10372,17 @@ KEYS = {
     (science.Resolution, 'number_of_horizontal_gridpoints'): "cim.2.science.Resolution.number_of_horizontal_gridpoints",
     (science.Resolution, 'number_of_vertical_levels'): "cim.2.science.Resolution.number_of_vertical_levels",
     (science.ScienceContext, 'description'): "cim.2.science.ScienceContext.description",
-    (science.ScienceContext, 'id'): "cim.2.science.ScienceContext.id",
     (science.ScienceContext, 'short_name'): "cim.2.science.ScienceContext.short_name",
+    (science.ScienceContext, 'vocab_id'): "cim.2.science.ScienceContext.vocab_id",
     (science.ScientificRealm, 'citations'): "cim.2.science.ScientificRealm.citations",
     (science.ScientificRealm, 'grid'): "cim.2.science.ScientificRealm.grid",
-    (science.ScientificRealm, 'id'): "cim.2.science.ScientificRealm.id",
     (science.ScientificRealm, 'key_properties'): "cim.2.science.ScientificRealm.key_properties",
     (science.ScientificRealm, 'meta'): "cim.2.science.ScientificRealm.meta",
     (science.ScientificRealm, 'name'): "cim.2.science.ScientificRealm.name",
     (science.ScientificRealm, 'overview'): "cim.2.science.ScientificRealm.overview",
     (science.ScientificRealm, 'processes'): "cim.2.science.ScientificRealm.processes",
     (science.ScientificRealm, 'realm'): "cim.2.science.ScientificRealm.realm",
+    (science.ScientificRealm, 'vocab_id'): "cim.2.science.ScientificRealm.vocab_id",
     (science.SubProcess, 'citations'): "cim.2.science.SubProcess.citations",
     (science.SubProcess, 'details'): "cim.2.science.SubProcess.details",
     (science.SubProcess, 'implementation_overview'): "cim.2.science.SubProcess.implementation_overview",
@@ -10332,10 +10439,10 @@ KEYS = {
     (shared.OnlineResource, 'protocol'): "cim.2.shared.OnlineResource.protocol",
     (shared.Party, 'address'): "cim.2.shared.Party.address",
     (shared.Party, 'email'): "cim.2.shared.Party.email",
+    (shared.Party, 'is_organisation'): "cim.2.shared.Party.is_organisation",
     (shared.Party, 'meta'): "cim.2.shared.Party.meta",
     (shared.Party, 'name'): "cim.2.shared.Party.name",
     (shared.Party, 'orcid_id'): "cim.2.shared.Party.orcid_id",
-    (shared.Party, 'organisation'): "cim.2.shared.Party.organisation",
     (shared.Party, 'url'): "cim.2.shared.Party.url",
     (shared.QualityReview, 'date'): "cim.2.shared.QualityReview.date",
     (shared.QualityReview, 'meta'): "cim.2.shared.QualityReview.meta",
@@ -10343,7 +10450,7 @@ KEYS = {
     (shared.QualityReview, 'quality_description'): "cim.2.shared.QualityReview.quality_description",
     (shared.QualityReview, 'quality_status'): "cim.2.shared.QualityReview.quality_status",
     (shared.QualityReview, 'target_document'): "cim.2.shared.QualityReview.target_document",
-    (shared.Responsibility, 'party'): "cim.2.shared.Responsibility.party",
+    (shared.Responsibility, 'parties'): "cim.2.shared.Responsibility.parties",
     (shared.Responsibility, 'role'): "cim.2.shared.Responsibility.role",
     (shared.Responsibility, 'when'): "cim.2.shared.Responsibility.when",
     (shared.TextBlob, 'content'): "cim.2.shared.TextBlob.content",
@@ -10360,9 +10467,9 @@ KEYS = {
     (software.Composition, 'description'): "cim.2.software.Composition.description",
     (software.DevelopmentPath, 'consortium_name'): "cim.2.software.DevelopmentPath.consortium_name",
     (software.DevelopmentPath, 'creators'): "cim.2.software.DevelopmentPath.creators",
-    (software.DevelopmentPath, 'developed_in_house'): "cim.2.software.DevelopmentPath.developed_in_house",
     (software.DevelopmentPath, 'funding_sources'): "cim.2.software.DevelopmentPath.funding_sources",
     (software.DevelopmentPath, 'previous_version'): "cim.2.software.DevelopmentPath.previous_version",
+    (software.DevelopmentPath, 'was_developed_in_house'): "cim.2.software.DevelopmentPath.was_developed_in_house",
     (software.EntryPoint, 'name'): "cim.2.software.EntryPoint.name",
     (software.Gridspec, 'description'): "cim.2.software.Gridspec.description",
     (software.SoftwareComponent, 'composition'): "cim.2.software.SoftwareComponent.composition",
@@ -10375,13 +10482,13 @@ KEYS = {
     (software.SoftwareComponent, 'license'): "cim.2.software.SoftwareComponent.license",
     (software.SoftwareComponent, 'sub_components'): "cim.2.software.SoftwareComponent.sub_components",
     (software.Variable, 'description'): "cim.2.software.Variable.description",
+    (software.Variable, 'is_prognostic'): "cim.2.software.Variable.is_prognostic",
     (software.Variable, 'name'): "cim.2.software.Variable.name",
-    (software.Variable, 'prognostic'): "cim.2.software.Variable.prognostic",
     (time.Calendar, 'description'): "cim.2.time.Calendar.description",
     (time.Calendar, 'month_lengths'): "cim.2.time.Calendar.month_lengths",
     (time.Calendar, 'name'): "cim.2.time.Calendar.name",
     (time.Calendar, 'standard_name'): "cim.2.time.Calendar.standard_name",
-    (time.DateTime, 'offset'): "cim.2.time.DateTime.offset",
+    (time.DateTime, 'is_offset'): "cim.2.time.DateTime.is_offset",
     (time.DateTime, 'value'): "cim.2.time.DateTime.value",
     (time.DatetimeSet, 'length'): "cim.2.time.DatetimeSet.length",
     (time.IrregularDateset, 'date_set'): "cim.2.time.IrregularDateset.date_set",
@@ -10403,6 +10510,7 @@ KEYS = {
     designing.EnsembleTypes: "cim.2.designing.EnsembleTypes",
     designing.ExperimentalRelationships: "cim.2.designing.ExperimentalRelationships",
     designing.ForcingTypes: "cim.2.designing.ForcingTypes",
+    designing.NumericalRequirementScope: "cim.2.designing.NumericalRequirementScope",
     drs.DrsFrequencyTypes: "cim.2.drs.DrsFrequencyTypes",
     drs.DrsGeographicalOperators: "cim.2.drs.DrsGeographicalOperators",
     drs.DrsRealms: "cim.2.drs.DrsRealms",
@@ -10447,6 +10555,10 @@ KEYS = {
     (designing.ForcingTypes, 'historical'): "cim.2.designing.ForcingTypes.historical",
     (designing.ForcingTypes, 'idealised'): "cim.2.designing.ForcingTypes.idealised",
     (designing.ForcingTypes, 'scenario'): "cim.2.designing.ForcingTypes.scenario",
+    (designing.NumericalRequirementScope, 'experiment'): "cim.2.designing.NumericalRequirementScope.experiment",
+    (designing.NumericalRequirementScope, 'mip'): "cim.2.designing.NumericalRequirementScope.mip",
+    (designing.NumericalRequirementScope, 'mip-era'): "cim.2.designing.NumericalRequirementScope.mip-era",
+    (designing.NumericalRequirementScope, 'mip-group'): "cim.2.designing.NumericalRequirementScope.mip-group",
     (drs.DrsFrequencyTypes, '3hr'): "cim.2.drs.DrsFrequencyTypes.3hr",
     (drs.DrsFrequencyTypes, '6hr'): "cim.2.drs.DrsFrequencyTypes.6hr",
     (drs.DrsFrequencyTypes, 'day'): "cim.2.drs.DrsFrequencyTypes.day",
@@ -10585,6 +10697,7 @@ designing.InitialisationRequirement.type_key = KEYS[designing.InitialisationRequ
 designing.MultiEnsemble.type_key = KEYS[designing.MultiEnsemble]
 designing.NumericalExperiment.type_key = KEYS[designing.NumericalExperiment]
 designing.NumericalRequirement.type_key = KEYS[designing.NumericalRequirement]
+designing.NumericalRequirementScope.type_key = KEYS[designing.NumericalRequirementScope]
 designing.OutputRequirement.type_key = KEYS[designing.OutputRequirement]
 designing.Project.type_key = KEYS[designing.Project]
 designing.SimulationPlan.type_key = KEYS[designing.SimulationPlan]
