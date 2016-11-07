@@ -64,7 +64,7 @@ class Model(software.ComponentBase):
         self.key_properties = None                        # science.KeyProperties (0.1)
         self.meta = shared.DocMetaInfo()                  # shared.DocMetaInfo (1.1)
         self.realms = []                                  # science.ScientificRealm (0.N)
-        self.vocab_id = None                              # unicode (0.1)
+        self.specialization_id = None                     # unicode (0.1)
 
 
 class ScienceContext(object):
@@ -86,14 +86,13 @@ class ScienceContext(object):
 
         self.description = None                           # unicode (1.1)
         self.short_name = None                            # unicode (1.1)
-        self.vocab_id = None                              # unicode (1.1)
+        self.specialization_id = None                     # unicode (1.1)
 
 
 class ScientificRealm(object):
     """A concrete class within the cim v2 type system.
 
-    Scientific area of a numerical model - usually a sub-model or
-    component.  Can also be known as a realm.
+    Scientific area of a numerical model - usually a sub-model or component.
 
     """
     def __init__(self):
@@ -110,7 +109,7 @@ class ScientificRealm(object):
         self.overview = None                              # unicode (0.1)
         self.processes = []                               # science.Process (1.N)
         self.realm = None                                 # unicode (0.1)
-        self.vocab_id = None                              # unicode (0.1)
+        self.specialization_id = None                     # unicode (0.1)
 
 
 class Detail(ScienceContext):

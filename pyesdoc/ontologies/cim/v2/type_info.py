@@ -699,12 +699,12 @@ CLASS_PROPERTIES = {
         'implementation_overview',
         'description',
         'short_name',
-        'vocab_id',
+        'specialization_id',
     ),
     science.Detail: (
         'description',
         'short_name',
-        'vocab_id',
+        'specialization_id',
     ),
     science.Discretisation: (
         'citations',
@@ -712,7 +712,7 @@ CLASS_PROPERTIES = {
         'implementation_overview',
         'description',
         'short_name',
-        'vocab_id',
+        'specialization_id',
     ),
     science.Extent: (
         'is_global',
@@ -722,7 +722,7 @@ CLASS_PROPERTIES = {
         'implementation_overview',
         'description',
         'short_name',
-        'vocab_id',
+        'specialization_id',
     ),
     science.Grid: (
         'citations',
@@ -744,7 +744,7 @@ CLASS_PROPERTIES = {
         'implementation_overview',
         'description',
         'short_name',
-        'vocab_id',
+        'specialization_id',
     ),
     science.KeyProperties: (
         'extent',
@@ -759,7 +759,7 @@ CLASS_PROPERTIES = {
         'sub_processes',
         'description',
         'short_name',
-        'vocab_id',
+        'specialization_id',
     ),
     science.Model: (
         'category',
@@ -769,7 +769,7 @@ CLASS_PROPERTIES = {
         'key_properties',
         'meta',
         'realms',
-        'vocab_id',
+        'specialization_id',
         'citations',
         'description',
         'development_history',
@@ -787,7 +787,7 @@ CLASS_PROPERTIES = {
         'sub_processes',
         'description',
         'short_name',
-        'vocab_id',
+        'specialization_id',
     ),
     science.Resolution: (
         'canonical_horizontal_resolution',
@@ -800,12 +800,12 @@ CLASS_PROPERTIES = {
         'implementation_overview',
         'description',
         'short_name',
-        'vocab_id',
+        'specialization_id',
     ),
     science.ScienceContext: (
         'description',
         'short_name',
-        'vocab_id',
+        'specialization_id',
     ),
     science.ScientificRealm: (
         'citations',
@@ -816,7 +816,7 @@ CLASS_PROPERTIES = {
         'overview',
         'processes',
         'realm',
-        'vocab_id',
+        'specialization_id',
     ),
     science.SubProcess: (
         'citations',
@@ -824,7 +824,7 @@ CLASS_PROPERTIES = {
         'implementation_overview',
         'description',
         'short_name',
-        'vocab_id',
+        'specialization_id',
     ),
     science.Tuning: (
         'description',
@@ -836,7 +836,7 @@ CLASS_PROPERTIES = {
         'implementation_overview',
         'description',
         'short_name',
-        'vocab_id',
+        'specialization_id',
     ),
     shared.Citation: (
         'abstract',
@@ -1314,7 +1314,7 @@ CLASS_OWN_PROPERTIES = {
         'key_properties',
         'meta',
         'realms',
-        'vocab_id',
+        'specialization_id',
     ),
     science.Process: (
         'citations',
@@ -1333,7 +1333,7 @@ CLASS_OWN_PROPERTIES = {
     science.ScienceContext: (
         'description',
         'short_name',
-        'vocab_id',
+        'specialization_id',
     ),
     science.ScientificRealm: (
         'citations',
@@ -1344,7 +1344,7 @@ CLASS_OWN_PROPERTIES = {
         'overview',
         'processes',
         'realm',
-        'vocab_id',
+        'specialization_id',
     ),
     science.SubProcess: (
         'citations',
@@ -2851,8 +2851,8 @@ CONSTRAINTS = {
 
         ('description', 'type', unicode),
         ('short_name', 'type', unicode),
-        ('vocab_id', 'type', unicode),
         ('corrected_conserved_prognostic_variables', 'type', data.VariableCollection),
+        ('specialization_id', 'type', unicode),
         ('was_flux_correction_used', 'type', bool),
         ('citations', 'type', shared.Citation),
         ('details', 'type', science.Detail),
@@ -2860,8 +2860,8 @@ CONSTRAINTS = {
 
         ('description', 'cardinality', "1.1"),
         ('short_name', 'cardinality', "1.1"),
-        ('vocab_id', 'cardinality', "1.1"),
         ('corrected_conserved_prognostic_variables', 'cardinality', "0.1"),
+        ('specialization_id', 'cardinality', "1.1"),
         ('was_flux_correction_used', 'cardinality', "0.1"),
         ('citations', 'cardinality', "0.N"),
         ('details', 'cardinality', "0.N"),
@@ -2870,27 +2870,27 @@ CONSTRAINTS = {
     ),
     science.Detail: (
 
+        ('specialization_id', 'type', unicode),
         ('description', 'type', unicode),
         ('short_name', 'type', unicode),
-        ('vocab_id', 'type', unicode),
 
+        ('specialization_id', 'cardinality', "1.1"),
         ('description', 'cardinality', "1.1"),
         ('short_name', 'cardinality', "1.1"),
-        ('vocab_id', 'cardinality', "1.1"),
 
     ),
     science.Discretisation: (
 
         ('description', 'type', unicode),
         ('short_name', 'type', unicode),
-        ('vocab_id', 'type', unicode),
+        ('specialization_id', 'type', unicode),
         ('citations', 'type', shared.Citation),
         ('details', 'type', science.Detail),
         ('implementation_overview', 'type', unicode),
 
         ('description', 'cardinality', "1.1"),
         ('short_name', 'cardinality', "1.1"),
-        ('vocab_id', 'cardinality', "1.1"),
+        ('specialization_id', 'cardinality', "1.1"),
         ('citations', 'cardinality', "0.N"),
         ('details', 'cardinality', "0.N"),
         ('implementation_overview', 'cardinality', "1.1"),
@@ -2901,8 +2901,8 @@ CONSTRAINTS = {
         ('is_global', 'type', bool),
         ('description', 'type', unicode),
         ('short_name', 'type', unicode),
-        ('vocab_id', 'type', unicode),
         ('region_known_as', 'type', unicode),
+        ('specialization_id', 'type', unicode),
         ('citations', 'type', shared.Citation),
         ('details', 'type', science.Detail),
         ('implementation_overview', 'type', unicode),
@@ -2910,8 +2910,8 @@ CONSTRAINTS = {
         ('is_global', 'cardinality', "1.1"),
         ('description', 'cardinality', "1.1"),
         ('short_name', 'cardinality', "1.1"),
-        ('vocab_id', 'cardinality', "1.1"),
         ('region_known_as', 'cardinality', "0.N"),
+        ('specialization_id', 'cardinality', "1.1"),
         ('citations', 'cardinality', "0.N"),
         ('details', 'cardinality', "0.N"),
         ('implementation_overview', 'cardinality', "1.1"),
@@ -2939,9 +2939,9 @@ CONSTRAINTS = {
         ('is_global', 'type', bool),
         ('description', 'type', unicode),
         ('short_name', 'type', unicode),
-        ('vocab_id', 'type', unicode),
         ('region_known_as', 'type', unicode),
         ('northern_boundary', 'type', float),
+        ('specialization_id', 'type', unicode),
         ('southern_boundary', 'type', float),
         ('citations', 'type', shared.Citation),
         ('details', 'type', science.Detail),
@@ -2952,9 +2952,9 @@ CONSTRAINTS = {
         ('is_global', 'cardinality', "1.1"),
         ('description', 'cardinality', "1.1"),
         ('short_name', 'cardinality', "1.1"),
-        ('vocab_id', 'cardinality', "1.1"),
         ('region_known_as', 'cardinality', "0.N"),
         ('northern_boundary', 'cardinality', "0.1"),
+        ('specialization_id', 'cardinality', "1.1"),
         ('southern_boundary', 'cardinality', "0.1"),
         ('citations', 'cardinality', "0.N"),
         ('details', 'cardinality', "0.N"),
@@ -2968,8 +2968,8 @@ CONSTRAINTS = {
         ('extra_conservation_properties', 'type', science.ConservationProperties),
         ('description', 'type', unicode),
         ('short_name', 'type', unicode),
-        ('vocab_id', 'type', unicode),
         ('tuning_applied', 'type', science.Tuning),
+        ('specialization_id', 'type', unicode),
         ('sub_processes', 'type', science.SubProcess),
         ('citations', 'type', shared.Citation),
         ('details', 'type', science.Detail),
@@ -2982,8 +2982,8 @@ CONSTRAINTS = {
         ('extra_conservation_properties', 'cardinality', "0.1"),
         ('description', 'cardinality', "1.1"),
         ('short_name', 'cardinality', "1.1"),
-        ('vocab_id', 'cardinality', "1.1"),
         ('tuning_applied', 'cardinality', "0.1"),
+        ('specialization_id', 'cardinality', "1.1"),
         ('sub_processes', 'cardinality', "0.N"),
         ('citations', 'cardinality', "0.N"),
         ('details', 'cardinality', "0.N"),
@@ -2997,13 +2997,13 @@ CONSTRAINTS = {
     science.Model: (
 
         ('category', 'type', unicode),
+        ('specialization_id', 'type', unicode),
         ('realms', 'type', science.ScientificRealm),
         ('description', 'type', unicode),
         ('repository', 'type', shared.OnlineResource),
         ('coupler', 'type', unicode),
         ('coupled_components', 'type', science.Model),
         ('release_date', 'type', datetime.datetime),
-        ('vocab_id', 'type', unicode),
         ('internal_software_components', 'type', software.SoftwareComponent),
         ('development_history', 'type', software.DevelopmentPath),
         ('long_name', 'type', unicode),
@@ -3014,13 +3014,13 @@ CONSTRAINTS = {
         ('name', 'type', unicode),
 
         ('category', 'cardinality', "1.1"),
+        ('specialization_id', 'cardinality', "0.1"),
         ('realms', 'cardinality', "0.N"),
         ('description', 'cardinality', "0.1"),
         ('repository', 'cardinality', "0.1"),
         ('coupler', 'cardinality', "0.1"),
         ('coupled_components', 'cardinality', "0.N"),
         ('release_date', 'cardinality', "0.1"),
-        ('vocab_id', 'cardinality', "0.1"),
         ('internal_software_components', 'cardinality', "0.N"),
         ('development_history', 'cardinality', "0.1"),
         ('long_name', 'cardinality', "0.1"),
@@ -3035,7 +3035,7 @@ CONSTRAINTS = {
 
         ('description', 'type', unicode),
         ('short_name', 'type', unicode),
-        ('vocab_id', 'type', unicode),
+        ('specialization_id', 'type', unicode),
         ('sub_processes', 'type', science.SubProcess),
         ('citations', 'type', shared.Citation),
         ('details', 'type', science.Detail),
@@ -3044,7 +3044,7 @@ CONSTRAINTS = {
 
         ('description', 'cardinality', "1.1"),
         ('short_name', 'cardinality', "1.1"),
-        ('vocab_id', 'cardinality', "1.1"),
+        ('specialization_id', 'cardinality', "1.1"),
         ('sub_processes', 'cardinality', "0.N"),
         ('citations', 'cardinality', "0.N"),
         ('details', 'cardinality', "0.N"),
@@ -3057,37 +3057,37 @@ CONSTRAINTS = {
         ('canonical_horizontal_resolution', 'type', unicode),
         ('description', 'type', unicode),
         ('short_name', 'type', unicode),
-        ('vocab_id', 'type', unicode),
+        ('number_of_horizontal_gridpoints', 'type', int),
+        ('specialization_id', 'type', unicode),
         ('citations', 'type', shared.Citation),
         ('is_adaptive_grid', 'type', bool),
         ('details', 'type', science.Detail),
         ('implementation_overview', 'type', unicode),
-        ('number_of_horizontal_gridpoints', 'type', int),
         ('number_of_vertical_levels', 'type', int),
         ('name', 'type', unicode),
 
         ('canonical_horizontal_resolution', 'cardinality', "0.1"),
         ('description', 'cardinality', "1.1"),
         ('short_name', 'cardinality', "1.1"),
-        ('vocab_id', 'cardinality', "1.1"),
+        ('number_of_horizontal_gridpoints', 'cardinality', "0.1"),
+        ('specialization_id', 'cardinality', "1.1"),
         ('citations', 'cardinality', "0.N"),
         ('is_adaptive_grid', 'cardinality', "0.1"),
         ('details', 'cardinality', "0.N"),
         ('implementation_overview', 'cardinality', "1.1"),
-        ('number_of_horizontal_gridpoints', 'cardinality', "0.1"),
         ('number_of_vertical_levels', 'cardinality', "0.1"),
         ('name', 'cardinality', "1.1"),
 
     ),
     science.ScienceContext: (
 
+        ('specialization_id', 'type', unicode),
         ('description', 'type', unicode),
         ('short_name', 'type', unicode),
-        ('vocab_id', 'type', unicode),
 
+        ('specialization_id', 'cardinality', "1.1"),
         ('description', 'cardinality', "1.1"),
         ('short_name', 'cardinality', "1.1"),
-        ('vocab_id', 'cardinality', "1.1"),
 
     ),
     science.ScientificRealm: (
@@ -3095,8 +3095,8 @@ CONSTRAINTS = {
         ('processes', 'type', science.Process),
         ('realm', 'type', unicode),
         ('name', 'type', unicode),
-        ('vocab_id', 'type', unicode),
         ('citations', 'type', shared.Citation),
+        ('specialization_id', 'type', unicode),
         ('meta', 'type', shared.DocMetaInfo),
         ('grid', 'type', science.Grid),
         ('overview', 'type', unicode),
@@ -3105,8 +3105,8 @@ CONSTRAINTS = {
         ('processes', 'cardinality', "1.N"),
         ('realm', 'cardinality', "0.1"),
         ('name', 'cardinality', "1.1"),
-        ('vocab_id', 'cardinality', "0.1"),
         ('citations', 'cardinality', "0.N"),
+        ('specialization_id', 'cardinality', "0.1"),
         ('meta', 'cardinality', "1.1"),
         ('grid', 'cardinality', "0.1"),
         ('overview', 'cardinality', "0.1"),
@@ -3117,14 +3117,14 @@ CONSTRAINTS = {
 
         ('description', 'type', unicode),
         ('short_name', 'type', unicode),
-        ('vocab_id', 'type', unicode),
+        ('specialization_id', 'type', unicode),
         ('citations', 'type', shared.Citation),
         ('details', 'type', science.Detail),
         ('implementation_overview', 'type', unicode),
 
         ('description', 'cardinality', "1.1"),
         ('short_name', 'cardinality', "1.1"),
-        ('vocab_id', 'cardinality', "1.1"),
+        ('specialization_id', 'cardinality', "1.1"),
         ('citations', 'cardinality', "0.N"),
         ('details', 'cardinality', "0.N"),
         ('implementation_overview', 'cardinality', "1.1"),
@@ -3134,8 +3134,8 @@ CONSTRAINTS = {
 
         ('description', 'type', unicode),
         ('short_name', 'type', unicode),
-        ('vocab_id', 'type', unicode),
         ('trend_metrics_used', 'type', data.VariableCollection),
+        ('specialization_id', 'type', unicode),
         ('global_mean_metrics_used', 'type', data.VariableCollection),
         ('regional_metrics_used', 'type', data.VariableCollection),
         ('citations', 'type', shared.Citation),
@@ -3144,8 +3144,8 @@ CONSTRAINTS = {
 
         ('description', 'cardinality', "1.1"),
         ('short_name', 'cardinality', "1.1"),
-        ('vocab_id', 'cardinality', "1.1"),
         ('trend_metrics_used', 'cardinality', "0.1"),
+        ('specialization_id', 'cardinality', "1.1"),
         ('global_mean_metrics_used', 'cardinality', "0.1"),
         ('regional_metrics_used', 'cardinality', "0.1"),
         ('citations', 'cardinality', "0.N"),
@@ -6857,7 +6857,7 @@ CONSTRAINTS = {
         ('cardinality', "1.1"),
 
     ),
-    (science.ConservationProperties, 'vocab_id'): (
+    (science.ConservationProperties, 'specialization_id'): (
 
         ('type', unicode),
 
@@ -6879,7 +6879,7 @@ CONSTRAINTS = {
         ('cardinality', "1.1"),
 
     ),
-    (science.Detail, 'vocab_id'): (
+    (science.Detail, 'specialization_id'): (
 
         ('type', unicode),
 
@@ -6922,7 +6922,7 @@ CONSTRAINTS = {
         ('cardinality', "1.1"),
 
     ),
-    (science.Discretisation, 'vocab_id'): (
+    (science.Discretisation, 'specialization_id'): (
 
         ('type', unicode),
 
@@ -6979,7 +6979,7 @@ CONSTRAINTS = {
         ('cardinality', "1.1"),
 
     ),
-    (science.Extent, 'vocab_id'): (
+    (science.Extent, 'specialization_id'): (
 
         ('type', unicode),
 
@@ -7107,7 +7107,7 @@ CONSTRAINTS = {
         ('cardinality', "1.1"),
 
     ),
-    (science.IsoExtent, 'vocab_id'): (
+    (science.IsoExtent, 'specialization_id'): (
 
         ('type', unicode),
 
@@ -7199,7 +7199,7 @@ CONSTRAINTS = {
         ('cardinality', "1.1"),
 
     ),
-    (science.KeyProperties, 'vocab_id'): (
+    (science.KeyProperties, 'specialization_id'): (
 
         ('type', unicode),
 
@@ -7256,7 +7256,7 @@ CONSTRAINTS = {
         ('cardinality', "0.N"),
 
     ),
-    (science.Model, 'vocab_id'): (
+    (science.Model, 'specialization_id'): (
 
         ('type', unicode),
 
@@ -7369,7 +7369,7 @@ CONSTRAINTS = {
         ('cardinality', "1.1"),
 
     ),
-    (science.Process, 'vocab_id'): (
+    (science.Process, 'specialization_id'): (
 
         ('type', unicode),
 
@@ -7447,7 +7447,7 @@ CONSTRAINTS = {
         ('cardinality', "1.1"),
 
     ),
-    (science.Resolution, 'vocab_id'): (
+    (science.Resolution, 'specialization_id'): (
 
         ('type', unicode),
 
@@ -7469,7 +7469,7 @@ CONSTRAINTS = {
         ('cardinality', "1.1"),
 
     ),
-    (science.ScienceContext, 'vocab_id'): (
+    (science.ScienceContext, 'specialization_id'): (
 
         ('type', unicode),
 
@@ -7533,7 +7533,7 @@ CONSTRAINTS = {
         ('cardinality', "0.1"),
 
     ),
-    (science.ScientificRealm, 'vocab_id'): (
+    (science.ScientificRealm, 'specialization_id'): (
 
         ('type', unicode),
 
@@ -7576,7 +7576,7 @@ CONSTRAINTS = {
         ('cardinality', "1.1"),
 
     ),
-    (science.SubProcess, 'vocab_id'): (
+    (science.SubProcess, 'specialization_id'): (
 
         ('type', unicode),
 
@@ -7647,7 +7647,7 @@ CONSTRAINTS = {
         ('cardinality', "1.1"),
 
     ),
-    (science.Tuning, 'vocab_id'): (
+    (science.Tuning, 'specialization_id'): (
 
         ('type', unicode),
 
@@ -8810,8 +8810,7 @@ http://www.geosci-model-dev-discuss.net/gmd-2016-197/)
 
     """,
     science.ScientificRealm: """
-        Scientific area of a numerical model - usually a sub-model or
-    component.  Can also be known as a realm.
+        Scientific area of a numerical model - usually a sub-model or component.
 
     """,
     science.SubProcess: """
@@ -9380,8 +9379,8 @@ http://www.geosci-model-dev-discuss.net/gmd-2016-197/)
         "Injected document metadata.",
     (science.Model, 'realms'):
         "The scientific realms which this model simulates internally, i.e. those which are not linked together using a coupler.",
-    (science.Model, 'vocab_id'):
-        "Vocabulary identifier, where this model description was constructed via a controlled vocabulary.",
+    (science.Model, 'specialization_id'):
+        "Specialization identifier, where this model description was constructed via a controlled specialization.",
     (science.Process, 'citations'):
         "Set of pertinent citations.",
     (science.Process, 'details'):
@@ -9406,26 +9405,26 @@ http://www.geosci-model-dev-discuss.net/gmd-2016-197/)
         "Scientific context for which this description is provided.",
     (science.ScienceContext, 'short_name'):
         "The name of this process/algorithm/sub-process/detail.",
-    (science.ScienceContext, 'vocab_id'):
-        "Identifier for this collection of properties.",
+    (science.ScienceContext, 'specialization_id'):
+        "Specialization identifier for this collection of properties.",
     (science.ScientificRealm, 'citations'):
         "Set of pertinent citations.",
     (science.ScientificRealm, 'grid'):
         "The grid used to layout the variables (e.g. the Global ENDGAME-grid).",
     (science.ScientificRealm, 'key_properties'):
-        "Key properties for the domain which differ from model defaults (grid, timestep etc).",
+        "Realm key properties which differ from model defaults (grid, timestep etc).",
     (science.ScientificRealm, 'meta'):
         "Injected document metadata.",
     (science.ScientificRealm, 'name'):
-        "Name of the scientific domain (e.g. ocean).",
+        "Name of the scientific realm (e.g. ocean).",
     (science.ScientificRealm, 'overview'):
-        "Free text overview description of key properties of domain.",
+        "Free text overview description of realm key properties.",
     (science.ScientificRealm, 'processes'):
-        "Processes simulated within the domain.",
+        "Processes simulated within the realm.",
     (science.ScientificRealm, 'realm'):
-        "Canonical name for the domain of this scientific area.",
-    (science.ScientificRealm, 'vocab_id'):
-        "Vocabulary identifier, where this domain description was constructed via a  controlled vocabulary.",
+        "Canonical name for the realm.",
+    (science.ScientificRealm, 'specialization_id'):
+        "Specialization identifier, where this realm description was constructed via a controlled specialization.",
     (science.SubProcess, 'citations'):
         "Set of pertinent citations.",
     (science.SubProcess, 'details'):
@@ -10360,7 +10359,7 @@ KEYS = {
     (science.Model, 'key_properties'): "cim.2.science.Model.key_properties",
     (science.Model, 'meta'): "cim.2.science.Model.meta",
     (science.Model, 'realms'): "cim.2.science.Model.realms",
-    (science.Model, 'vocab_id'): "cim.2.science.Model.vocab_id",
+    (science.Model, 'specialization_id'): "cim.2.science.Model.specialization_id",
     (science.Process, 'citations'): "cim.2.science.Process.citations",
     (science.Process, 'details'): "cim.2.science.Process.details",
     (science.Process, 'implementation_overview'): "cim.2.science.Process.implementation_overview",
@@ -10373,7 +10372,7 @@ KEYS = {
     (science.Resolution, 'number_of_vertical_levels'): "cim.2.science.Resolution.number_of_vertical_levels",
     (science.ScienceContext, 'description'): "cim.2.science.ScienceContext.description",
     (science.ScienceContext, 'short_name'): "cim.2.science.ScienceContext.short_name",
-    (science.ScienceContext, 'vocab_id'): "cim.2.science.ScienceContext.vocab_id",
+    (science.ScienceContext, 'specialization_id'): "cim.2.science.ScienceContext.specialization_id",
     (science.ScientificRealm, 'citations'): "cim.2.science.ScientificRealm.citations",
     (science.ScientificRealm, 'grid'): "cim.2.science.ScientificRealm.grid",
     (science.ScientificRealm, 'key_properties'): "cim.2.science.ScientificRealm.key_properties",
@@ -10382,7 +10381,7 @@ KEYS = {
     (science.ScientificRealm, 'overview'): "cim.2.science.ScientificRealm.overview",
     (science.ScientificRealm, 'processes'): "cim.2.science.ScientificRealm.processes",
     (science.ScientificRealm, 'realm'): "cim.2.science.ScientificRealm.realm",
-    (science.ScientificRealm, 'vocab_id'): "cim.2.science.ScientificRealm.vocab_id",
+    (science.ScientificRealm, 'specialization_id'): "cim.2.science.ScientificRealm.specialization_id",
     (science.SubProcess, 'citations'): "cim.2.science.SubProcess.citations",
     (science.SubProcess, 'details'): "cim.2.science.SubProcess.details",
     (science.SubProcess, 'implementation_overview'): "cim.2.science.SubProcess.implementation_overview",
