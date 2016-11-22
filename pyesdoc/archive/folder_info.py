@@ -120,10 +120,15 @@ class ArchiveFolderInfo(object):
         :rtype: pyesdoc.archive.ArchiveFileInfo
 
         """
-        file_filter = "*_{0}_{1}_*.*".format(uid, version)
+        try:
+            int(version)
+        except ValueError:
+            file_filter = "*_{}_*.*".format(uid)
+        else:
+            file_filter = "*_{}_{}_*.*".format(uid, version)
         files = glob.glob(os.path.join(self.path, file_filter))
         if files:
-            return ArchiveFileInfo(self, files[0])
+            return ArchiveFileInfo(self, sorted(files)[-1])
 
 
     def write(self, doc):

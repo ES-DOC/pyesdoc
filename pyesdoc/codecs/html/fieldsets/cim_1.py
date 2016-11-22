@@ -32,12 +32,13 @@ def _get_activity_ensemble_member(member):
     """
     result = []
 
-    if isinstance(member.simulation, cim.v1.DocReference):
-        for change in member.simulation.changes:
-            result.append(Field('Change type', value=change.type))
-            result.append(Field('Change name', value=change.name))
-            result.append(Field('Change date', value=change.date))
-            result.append(Field('Change description', value=change.details[0].description))
+    for change in member.simulation.changes:
+        result.append(Field('Change type', value=change.type))
+        result.append(Field('Change name', value=change.name))
+        result.append(Field('Change date', value=change.date))
+        result.append(Field('Change description', value=change.details[0].description))
+
+    return result
 
 
 def _get_activity_simulation_run_model_mods(mods):

@@ -19,6 +19,7 @@ import pyesdoc
 from pyesdoc.codecs.html import fieldsets
 from pyesdoc.codecs.html.templates.type_mappings import TEMPLATE_TYPE_MAPPINGS
 from pyesdoc.utils import rt
+from pyesdoc.exceptions import EncodingException
 
 
 
@@ -181,9 +182,12 @@ def encode(doc):
         _init_templates()
 
     # Return generated template.
-    return _DOCUMENT_SET_TEMPLATE.generate(
-        document_set=document_set,
-        document_group_set=_get_group_set(document_set),
-        generate_document=_generate,
-        pyesdoc=pyesdoc
-        )
+    try:
+        return _DOCUMENT_SET_TEMPLATE.generate(
+            document_set=document_set,
+            document_group_set=_get_group_set(document_set),
+            generate_document=_generate,
+            pyesdoc=pyesdoc
+            )
+    except Exception as error:
+        raise EncodingException('html', doc, error)

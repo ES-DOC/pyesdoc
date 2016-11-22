@@ -62,11 +62,11 @@ class EncodingException(LibraryBaseException):
     """Raised when document encoding fails.
 
     """
-    def __init__(self, encoding):
+    def __init__(self, encoding, doc, error):
         """Instance constructor.
 
         """
-        super(EncodingException, self).__init__("Document {} encoding failed.".format(encoding.upper()))
+        super(EncodingException, self).__init__("Document {} encoding failed :: Doc Type = {} :: Error = {}".format(encoding.upper(), type(doc), error))
 
 
 class InvalidOptionException(LibraryBaseException):
