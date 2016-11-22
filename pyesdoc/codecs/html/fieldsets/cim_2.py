@@ -56,6 +56,7 @@ FIELDSETS = {
         Field('Forcing Type', path='forcing_type', capitalize_value=True),
         Field('Conformance Requested ?', path='is_conformance_requested'),
         Field('Scope', path='scope', capitalize_value=True),
+        Field('Delivery Order', path='delivery_order', capitalize_value=True),
         Field('Keywords', path='keywords',
             input_formatter=lambda v: _SEPARATOR.join(v.split(',')))
     ],
