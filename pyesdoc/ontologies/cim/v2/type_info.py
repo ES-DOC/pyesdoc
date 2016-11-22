@@ -133,6 +133,7 @@ CLASSES = (
     software.DevelopmentPath,
     software.EntryPoint,
     software.Gridspec,
+    software.Implementation,
     software.SoftwareComponent,
     software.Variable,
     time.Calendar,
@@ -614,12 +615,24 @@ CLASS_PROPERTIES = {
         'suffix',
     ),
     platform.ComponentPerformance: (
-        'actual_simulated_years_per_day',
         'component',
-        'component_name',
+        'actual_simulated_years_per_day',
+        'compiler',
+        'complexity',
         'core_hours_per_simulated_year',
+        'coupling_cost',
+        'data_intensity',
+        'data_output_cost',
+        'joules_per_simulated_year',
+        'memory_bloat',
+        'meta',
+        'model',
+        'name',
         'parallelization',
+        'platform',
+        'resolution',
         'simulated_years_per_day',
+        'subcomponent_performance',
     ),
     platform.ComputePool: (
         'accelerator_type',
@@ -770,6 +783,7 @@ CLASS_PROPERTIES = {
         'meta',
         'realms',
         'specialization_id',
+        'canonical_id',
         'citations',
         'description',
         'development_history',
@@ -922,6 +936,7 @@ CLASS_PROPERTIES = {
         'encoding',
     ),
     software.ComponentBase: (
+        'canonical_id',
         'citations',
         'description',
         'development_history',
@@ -948,6 +963,17 @@ CLASS_PROPERTIES = {
     software.Gridspec: (
         'description',
     ),
+    software.Implementation: (
+        'canonical_id',
+        'citations',
+        'description',
+        'development_history',
+        'long_name',
+        'name',
+        'release_date',
+        'repository',
+        'version',
+    ),
     software.SoftwareComponent: (
         'composition',
         'connection_points',
@@ -958,6 +984,7 @@ CLASS_PROPERTIES = {
         'language',
         'license',
         'sub_components',
+        'canonical_id',
         'citations',
         'description',
         'development_history',
@@ -1206,12 +1233,7 @@ CLASS_OWN_PROPERTIES = {
         'suffix',
     ),
     platform.ComponentPerformance: (
-        'actual_simulated_years_per_day',
         'component',
-        'component_name',
-        'core_hours_per_simulated_year',
-        'parallelization',
-        'simulated_years_per_day',
     ),
     platform.ComputePool: (
         'accelerator_type',
@@ -1441,6 +1463,7 @@ CLASS_OWN_PROPERTIES = {
         'encoding',
     ),
     software.ComponentBase: (
+        'canonical_id',
         'citations',
         'description',
         'development_history',
@@ -1466,6 +1489,17 @@ CLASS_OWN_PROPERTIES = {
     ),
     software.Gridspec: (
         'description',
+    ),
+    software.Implementation: (
+        'canonical_id',
+        'citations',
+        'description',
+        'development_history',
+        'long_name',
+        'name',
+        'release_date',
+        'repository',
+        'version',
     ),
     software.SoftwareComponent: (
         'composition',
@@ -1578,6 +1612,7 @@ DOCUMENT_TYPES = (
     designing.SimulationPlan,
     designing.StartDateEnsemble,
     designing.TemporalConstraint,
+    platform.ComponentPerformance,
     platform.Machine,
     platform.Performance,
     science.Grid,
@@ -1607,6 +1642,7 @@ BASE_CLASSES[designing.Project] = (activity.Activity, )
 BASE_CLASSES[designing.SimulationPlan] = (activity.Activity, )
 BASE_CLASSES[designing.StartDateEnsemble] = (designing.NumericalRequirement, activity.Activity, )
 BASE_CLASSES[designing.TemporalConstraint] = (designing.NumericalRequirement, activity.Activity, )
+BASE_CLASSES[platform.ComponentPerformance] = (platform.Performance, )
 BASE_CLASSES[platform.Machine] = (platform.Partition, )
 BASE_CLASSES[science.ConservationProperties] = (science.SubProcess, science.ScienceContext, )
 BASE_CLASSES[science.Detail] = (science.ScienceContext, )
@@ -1665,6 +1701,9 @@ SUB_CLASSES[designing.NumericalRequirement] = (
     )
 SUB_CLASSES[platform.Partition] = (
     platform.Machine,
+    )
+SUB_CLASSES[platform.Performance] = (
+    platform.ComponentPerformance,
     )
 SUB_CLASSES[science.Extent] = (
     science.IsoExtent,
@@ -2688,19 +2727,43 @@ CONSTRAINTS = {
     ),
     platform.ComponentPerformance: (
 
+        ('data_intensity', 'type', float),
+        ('memory_bloat', 'type', float),
+        ('name', 'type', unicode),
         ('parallelization', 'type', float),
-        ('component', 'type', software.SoftwareComponent),
+        ('data_output_cost', 'type', float),
+        ('joules_per_simulated_year', 'type', float),
+        ('subcomponent_performance', 'type', platform.ComponentPerformance),
         ('simulated_years_per_day', 'type', float),
+        ('complexity', 'type', int),
+        ('platform', 'type', platform.Machine),
+        ('coupling_cost', 'type', float),
+        ('meta', 'type', shared.DocMetaInfo),
+        ('component', 'type', software.SoftwareComponent),
         ('actual_simulated_years_per_day', 'type', float),
+        ('model', 'type', science.Model),
         ('core_hours_per_simulated_year', 'type', float),
-        ('component_name', 'type', unicode),
+        ('resolution', 'type', int),
+        ('compiler', 'type', unicode),
 
+        ('data_intensity', 'cardinality', "0.1"),
+        ('memory_bloat', 'cardinality', "0.1"),
+        ('name', 'cardinality', "0.1"),
         ('parallelization', 'cardinality', "0.1"),
-        ('component', 'cardinality', "0.1"),
+        ('data_output_cost', 'cardinality', "0.1"),
+        ('joules_per_simulated_year', 'cardinality', "0.1"),
+        ('subcomponent_performance', 'cardinality', "0.N"),
         ('simulated_years_per_day', 'cardinality', "0.1"),
+        ('complexity', 'cardinality', "0.1"),
+        ('platform', 'cardinality', "1.1"),
+        ('coupling_cost', 'cardinality', "0.1"),
+        ('meta', 'cardinality', "1.1"),
+        ('component', 'cardinality', "1.1"),
         ('actual_simulated_years_per_day', 'cardinality', "0.1"),
+        ('model', 'cardinality', "1.1"),
         ('core_hours_per_simulated_year', 'cardinality', "0.1"),
-        ('component_name', 'cardinality', "1.1"),
+        ('resolution', 'cardinality', "0.1"),
+        ('compiler', 'cardinality', "0.1"),
 
     ),
     platform.ComputePool: (
@@ -3007,6 +3070,7 @@ CONSTRAINTS = {
         ('internal_software_components', 'type', software.SoftwareComponent),
         ('development_history', 'type', software.DevelopmentPath),
         ('long_name', 'type', unicode),
+        ('canonical_id', 'type', unicode),
         ('citations', 'type', shared.Citation),
         ('meta', 'type', shared.DocMetaInfo),
         ('version', 'type', unicode),
@@ -3024,6 +3088,7 @@ CONSTRAINTS = {
         ('internal_software_components', 'cardinality', "0.N"),
         ('development_history', 'cardinality', "0.1"),
         ('long_name', 'cardinality', "0.1"),
+        ('canonical_id', 'cardinality', "0.1"),
         ('citations', 'cardinality', "0.N"),
         ('meta', 'cardinality', "1.1"),
         ('version', 'cardinality', "0.1"),
@@ -3335,6 +3400,7 @@ CONSTRAINTS = {
         ('release_date', 'type', datetime.datetime),
         ('development_history', 'type', software.DevelopmentPath),
         ('long_name', 'type', unicode),
+        ('canonical_id', 'type', unicode),
         ('citations', 'type', shared.Citation),
         ('version', 'type', unicode),
         ('name', 'type', unicode),
@@ -3344,6 +3410,7 @@ CONSTRAINTS = {
         ('release_date', 'cardinality', "0.1"),
         ('development_history', 'cardinality', "0.1"),
         ('long_name', 'cardinality', "0.1"),
+        ('canonical_id', 'cardinality', "0.1"),
         ('citations', 'cardinality', "0.N"),
         ('version', 'cardinality', "0.1"),
         ('name', 'cardinality', "1.1"),
@@ -3387,6 +3454,29 @@ CONSTRAINTS = {
         ('description', 'cardinality', "1.1"),
 
     ),
+    software.Implementation: (
+
+        ('description', 'type', unicode),
+        ('repository', 'type', shared.OnlineResource),
+        ('release_date', 'type', datetime.datetime),
+        ('development_history', 'type', software.DevelopmentPath),
+        ('long_name', 'type', unicode),
+        ('canonical_id', 'type', unicode),
+        ('citations', 'type', shared.Citation),
+        ('version', 'type', unicode),
+        ('name', 'type', unicode),
+
+        ('description', 'cardinality', "0.1"),
+        ('repository', 'cardinality', "0.1"),
+        ('release_date', 'cardinality', "0.1"),
+        ('development_history', 'cardinality', "0.1"),
+        ('long_name', 'cardinality', "0.1"),
+        ('canonical_id', 'cardinality', "0.1"),
+        ('citations', 'cardinality', "0.N"),
+        ('version', 'cardinality', "0.1"),
+        ('name', 'cardinality', "1.1"),
+
+    ),
     software.SoftwareComponent: (
 
         ('license', 'type', unicode),
@@ -3399,6 +3489,7 @@ CONSTRAINTS = {
         ('development_history', 'type', software.DevelopmentPath),
         ('sub_components', 'type', software.SoftwareComponent),
         ('long_name', 'type', unicode),
+        ('canonical_id', 'type', unicode),
         ('citations', 'type', shared.Citation),
         ('grid', 'type', software.Gridspec),
         ('version', 'type', unicode),
@@ -3417,6 +3508,7 @@ CONSTRAINTS = {
         ('development_history', 'cardinality', "0.1"),
         ('sub_components', 'cardinality', "0.N"),
         ('long_name', 'cardinality', "0.1"),
+        ('canonical_id', 'cardinality', "0.1"),
         ('citations', 'cardinality', "0.N"),
         ('grid', 'cardinality', "0.1"),
         ('version', 'cardinality', "0.1"),
@@ -6353,6 +6445,13 @@ CONSTRAINTS = {
 
     ),
 
+    (platform.ComponentPerformance, 'component'): (
+
+        ('type', software.SoftwareComponent),
+
+        ('cardinality', "1.1"),
+
+    ),
     (platform.ComponentPerformance, 'actual_simulated_years_per_day'): (
 
         ('type', float),
@@ -6360,23 +6459,79 @@ CONSTRAINTS = {
         ('cardinality', "0.1"),
 
     ),
-    (platform.ComponentPerformance, 'component'): (
+    (platform.ComponentPerformance, 'compiler'): (
 
-        ('type', software.SoftwareComponent),
+        ('type', unicode),
 
         ('cardinality', "0.1"),
 
     ),
-    (platform.ComponentPerformance, 'component_name'): (
+    (platform.ComponentPerformance, 'complexity'): (
 
-        ('type', unicode),
+        ('type', int),
 
-        ('cardinality', "1.1"),
+        ('cardinality', "0.1"),
 
     ),
     (platform.ComponentPerformance, 'core_hours_per_simulated_year'): (
 
         ('type', float),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (platform.ComponentPerformance, 'coupling_cost'): (
+
+        ('type', float),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (platform.ComponentPerformance, 'data_intensity'): (
+
+        ('type', float),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (platform.ComponentPerformance, 'data_output_cost'): (
+
+        ('type', float),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (platform.ComponentPerformance, 'joules_per_simulated_year'): (
+
+        ('type', float),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (platform.ComponentPerformance, 'memory_bloat'): (
+
+        ('type', float),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (platform.ComponentPerformance, 'meta'): (
+
+        ('type', shared.DocMetaInfo),
+
+        ('cardinality', "1.1"),
+
+    ),
+    (platform.ComponentPerformance, 'model'): (
+
+        ('type', science.Model),
+
+        ('cardinality', "1.1"),
+
+    ),
+    (platform.ComponentPerformance, 'name'): (
+
+        ('type', unicode),
 
         ('cardinality', "0.1"),
 
@@ -6388,11 +6543,32 @@ CONSTRAINTS = {
         ('cardinality', "0.1"),
 
     ),
+    (platform.ComponentPerformance, 'platform'): (
+
+        ('type', platform.Machine),
+
+        ('cardinality', "1.1"),
+
+    ),
+    (platform.ComponentPerformance, 'resolution'): (
+
+        ('type', int),
+
+        ('cardinality', "0.1"),
+
+    ),
     (platform.ComponentPerformance, 'simulated_years_per_day'): (
 
         ('type', float),
 
         ('cardinality', "0.1"),
+
+    ),
+    (platform.ComponentPerformance, 'subcomponent_performance'): (
+
+        ('type', platform.ComponentPerformance),
+
+        ('cardinality', "0.N"),
 
     ),
 
@@ -7263,6 +7439,13 @@ CONSTRAINTS = {
         ('cardinality', "0.1"),
 
     ),
+    (science.Model, 'canonical_id'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
     (science.Model, 'citations'): (
 
         ('type', shared.Citation),
@@ -8119,6 +8302,13 @@ CONSTRAINTS = {
 
     ),
 
+    (software.ComponentBase, 'canonical_id'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
     (software.ComponentBase, 'citations'): (
 
         ('type', shared.Citation),
@@ -8243,6 +8433,70 @@ CONSTRAINTS = {
 
     ),
 
+    (software.Implementation, 'canonical_id'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (software.Implementation, 'citations'): (
+
+        ('type', shared.Citation),
+
+        ('cardinality', "0.N"),
+
+    ),
+    (software.Implementation, 'description'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (software.Implementation, 'development_history'): (
+
+        ('type', software.DevelopmentPath),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (software.Implementation, 'long_name'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (software.Implementation, 'name'): (
+
+        ('type', unicode),
+
+        ('cardinality', "1.1"),
+
+    ),
+    (software.Implementation, 'release_date'): (
+
+        ('type', datetime.datetime),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (software.Implementation, 'repository'): (
+
+        ('type', shared.OnlineResource),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (software.Implementation, 'version'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+
     (software.SoftwareComponent, 'composition'): (
 
         ('type', software.Composition),
@@ -8304,6 +8558,13 @@ CONSTRAINTS = {
         ('type', software.SoftwareComponent),
 
         ('cardinality', "0.N"),
+
+    ),
+    (software.SoftwareComponent, 'canonical_id'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
 
     ),
     (software.SoftwareComponent, 'citations'): (
@@ -8696,11 +8957,11 @@ modifications requirted to use it in the relevant component.
 
     """,
     platform.ComponentPerformance: """
-        Describes the simulation rate of a component in seconds per model
-day.
+        Describes the simulation rate of a model component.
 
 Based on 'CPMIP: Measurements of Real Computational Performance of
-Earth System Models' (Balaji et. al.)
+Earth System Models' (Balaji et. al. 2016, doi:10.5194/gmd-2016-197,
+http://www.geosci-model-dev-discuss.net/gmd-2016-197/)
 
     """,
     platform.ComputePool: """
@@ -8902,6 +9163,13 @@ http://www.geosci-model-dev-discuss.net/gmd-2016-197/)
     """,
     software.Gridspec: """
         Fully defines the computational grid used.
+
+    """,
+    software.Implementation: """
+        Implementation information for a software framework/component, whether a top level model,
+    or a specific piece of code known as a 'component'. In software terms, a
+    software framework/component is a discrete set of code that takes input data and generates output data.
+    Software frameworks/components may or may not have scientific descriptions.
 
     """,
     software.SoftwareComponent: """
@@ -9219,18 +9487,8 @@ http://www.geosci-model-dev-discuss.net/gmd-2016-197/)
         "N1,  of the form yyyy[MM[dd[hh[mm[ss]]]]].",
     (drs.DrsTemporalIdentifier, 'suffix'):
         "If present, used to indicate climatology or average.",
-    (platform.ComponentPerformance, 'actual_simulated_years_per_day'):
-        "Actual simulated years per day (ASYPD) in a 24h period on the given platform obtained from a typical long-running simulation with the component. Inclusive of system interruptions, queue wait time, or issues with the model workflow, etc.",
     (platform.ComponentPerformance, 'component'):
         "Link to a CIM software component description.",
-    (platform.ComponentPerformance, 'component_name'):
-        "Short name of component.",
-    (platform.ComponentPerformance, 'core_hours_per_simulated_year'):
-        "Core-hours per simulated year (CHSY). This is measured as the product of the component runtime for 1 SY, and the numbers of cores allocated. Note that if allocations are done on a node basis then all cores on a node are charged against the allocation, regardless of whether or not they are used.",
-    (platform.ComponentPerformance, 'parallelization'):
-        "Parallelization measured as the total number of cores (NP) allocated for the component, regardless of whether or or all cores were used. Note that NP=CHSY*SYPD/24.",
-    (platform.ComponentPerformance, 'simulated_years_per_day'):
-        "Simulated years per day (SYPD) in a 24h period on the given platform",
     (platform.ComputePool, 'accelerator_type'):
         "Type of accelerator.",
     (platform.ComputePool, 'accelerators_per_node'):
@@ -9569,6 +9827,8 @@ http://www.geosci-model-dev-discuss.net/gmd-2016-197/)
         "Raw content (including markup).",
     (shared.TextBlob, 'encoding'):
         "Content encoding.",
+    (software.ComponentBase, 'canonical_id'):
+        "Vocabulary identifier, where this framework/component description was constructed via a controlled vocabulary.",
     (software.ComponentBase, 'citations'):
         "Set of pertinent citations.",
     (software.ComponentBase, 'description'):
@@ -9603,6 +9863,24 @@ http://www.geosci-model-dev-discuss.net/gmd-2016-197/)
         "#FIXME.",
     (software.Gridspec, 'description'):
         "Textural description.",
+    (software.Implementation, 'canonical_id'):
+        "Vocabulary identifier, where this framework/component description was constructed via a controlled vocabulary.",
+    (software.Implementation, 'citations'):
+        "Set of pertinent citations.",
+    (software.Implementation, 'description'):
+        "Textural description of framework/component.",
+    (software.Implementation, 'development_history'):
+        "History of the development of this framework/component.",
+    (software.Implementation, 'long_name'):
+        "Long name for framework/component.",
+    (software.Implementation, 'name'):
+        "Short name of framework/component.",
+    (software.Implementation, 'release_date'):
+        "The date of publication of the framework/component code.",
+    (software.Implementation, 'repository'):
+        "Location of code for this framework/component.",
+    (software.Implementation, 'version'):
+        "Version identifier.",
     (software.SoftwareComponent, 'composition'):
         "#FIXME.",
     (software.SoftwareComponent, 'connection_points'):
@@ -9771,160 +10049,160 @@ http://www.geosci-model-dev-discuss.net/gmd-2016-197/)
 
     (activity.ConformanceType, 'Conformed'):
         "Simulation (or ensemble) conformed to requirement",
-    (activity.ConformanceType, 'Not Applicable'):
-        "Requirement is not relevant",
-    (activity.ConformanceType, 'Not Conformed'):
-        "Simulation (or ensemble) was unable to conform to requirement",
     (activity.ConformanceType, 'Partially Conformed'):
         "Simulation (or ensemble) partially conformed to requirement - details in description",
-    (data.DataAssociationTypes, 'isComposedOf'):
-        "This dataset is composed from the target",
-    (data.DataAssociationTypes, 'partOf'):
-        "This dataset forms part of the target",
+    (activity.ConformanceType, 'Not Conformed'):
+        "Simulation (or ensemble) was unable to conform to requirement",
+    (activity.ConformanceType, 'Not Applicable'):
+        "Requirement is not relevant",
     (data.DataAssociationTypes, 'revisonOf'):
         "This dataset was revised from the target",
-    (designing.EnsembleTypes, 'Driven'):
-        "Members are/should-be driven by different models.",
-    (designing.EnsembleTypes, 'Forced'):
-        "Members have differing forcing data.",
-    (designing.EnsembleTypes, 'Initialisation Method'):
-        "Members differ in how they are initialised.",
+    (data.DataAssociationTypes, 'partOf'):
+        "This dataset forms part of the target",
+    (data.DataAssociationTypes, 'isComposedOf'):
+        "This dataset is composed from the target",
     (designing.EnsembleTypes, 'Perturbed Physics'):
         "Members differ in some aspects of their physics.",
+    (designing.EnsembleTypes, 'Initialisation Method'):
+        "Members differ in how they are initialised.",
     (designing.EnsembleTypes, 'Realization'):
         "Members initialised to sample possible initial conditions.",
-    (designing.EnsembleTypes, 'Resolution'):
-        "Members are/should-be run at different resolutions.",
     (designing.EnsembleTypes, 'Start Date'):
         "Members initialised at different starting dates.",
+    (designing.EnsembleTypes, 'Forced'):
+        "Members have differing forcing data.",
+    (designing.EnsembleTypes, 'Resolution'):
+        "Members are/should-be run at different resolutions.",
+    (designing.EnsembleTypes, 'Driven'):
+        "Members are/should-be driven by different models.",
     (designing.ExperimentalRelationships, 'control_for'):
         "This experiment provides a control for the target experiment",
     (designing.ExperimentalRelationships, 'initialisation_for'):
         "This experiment provides initialisation for the target experiment",
-    (designing.ExperimentalRelationships, 'is_sibling'):
-        "Part of a family (e.g. experiments where solar forcing is either increased or reduced)",
     (designing.ExperimentalRelationships, 'provides_constraints'):
         "This experiment provides constraint(s) for the target experiment (e.g SST forcing)",
-    (designing.ForcingTypes, 'driven'):
-        "Driven from another simulation",
+    (designing.ExperimentalRelationships, 'is_sibling'):
+        "Part of a family (e.g. experiments where solar forcing is either increased or reduced)",
     (designing.ForcingTypes, 'historical'):
         "Best estimates of actual state (included synthesized)",
     (designing.ForcingTypes, 'idealised'):
         "Simplified and/or exemplar, e.g. 1%C02",
     (designing.ForcingTypes, 'scenario'):
         "Intended to represent a possible future, e.g. RCP4.5",
-    (designing.NumericalRequirementScope, 'experiment'):
-        "Applies to a single experiment e.g. CFMIP 'zonally uniform SST plus 4K'",
-    (designing.NumericalRequirementScope, 'mip'):
-        "Shared within a single MIP e.g. spin-up protocol for land surface experiments in LUMIP.",
+    (designing.ForcingTypes, 'driven'):
+        "Driven from another simulation",
     (designing.NumericalRequirementScope, 'mip-era'):
         "MIP era wide e.g. 'concentration of pre-industrial CO2' & 'Impose AMIP SSTs'",
     (designing.NumericalRequirementScope, 'mip-group'):
         "Shared across a group of MIPs e.g. aerosol forcing in GeoMIP and AerChemMIP.",
-    (drs.DrsFrequencyTypes, '3hr'):
-        "Every three hours",
-    (drs.DrsFrequencyTypes, '6hr'):
-        "Every six hours",
-    (drs.DrsFrequencyTypes, 'day'):
-        "Daily",
-    (drs.DrsFrequencyTypes, 'fx'):
-        "Fixed Time independent",
-    (drs.DrsFrequencyTypes, 'mon'):
-        "Monthly",
-    (drs.DrsFrequencyTypes, 'monClim'):
-        "Climatological Monthly Mean",
-    (drs.DrsFrequencyTypes, 'subhr'):
-        "Sampling frequency less than an hour",
+    (designing.NumericalRequirementScope, 'mip'):
+        "Shared within a single MIP e.g. spin-up protocol for land surface experiments in LUMIP.",
+    (designing.NumericalRequirementScope, 'experiment'):
+        "Applies to a single experiment e.g. CFMIP 'zonally uniform SST plus 4K'",
     (drs.DrsFrequencyTypes, 'yr'):
         "Yearly",
+    (drs.DrsFrequencyTypes, 'mon'):
+        "Monthly",
+    (drs.DrsFrequencyTypes, 'day'):
+        "Daily",
+    (drs.DrsFrequencyTypes, '6hr'):
+        "Every six hours",
+    (drs.DrsFrequencyTypes, '3hr'):
+        "Every three hours",
+    (drs.DrsFrequencyTypes, 'subhr'):
+        "Sampling frequency less than an hour",
+    (drs.DrsFrequencyTypes, 'monClim'):
+        "Climatological Monthly Mean",
+    (drs.DrsFrequencyTypes, 'fx'):
+        "Fixed Time independent",
+    (drs.DrsGeographicalOperators, 'zonalavg'):
+        "Data is zonally averaged",
+    (drs.DrsGeographicalOperators, 'lnd-zonalavg'):
+        "Data is zonally averaged over land in region",
+    (drs.DrsGeographicalOperators, 'ocn-zonalavg'):
+        "Data is zonally averaged over oceans in region",
     (drs.DrsGeographicalOperators, 'areaavg'):
         "Data is averaged over the area of the region",
     (drs.DrsGeographicalOperators, 'lnd-areaavg'):
         "Data is averaged over the land area of the region",
-    (drs.DrsGeographicalOperators, 'lnd-zonalavg'):
-        "Data is zonally averaged over land in region",
     (drs.DrsGeographicalOperators, 'ocn-areaavg'):
         "Data is averaged over the ocean area of the region",
-    (drs.DrsGeographicalOperators, 'ocn-zonalavg'):
-        "Data is zonally averaged over oceans in region",
-    (drs.DrsGeographicalOperators, 'zonalavg'):
-        "Data is zonally averaged",
-    (drs.DrsRealms, 'aerosol'):
-        "Aerosol",
     (drs.DrsRealms, 'atmos'):
         "Atmosphere",
-    (drs.DrsRealms, 'atmosChem'):
-        "Atmospheric Chemistry",
+    (drs.DrsRealms, 'ocean'):
+        "Ocean",
     (drs.DrsRealms, 'land'):
         "Land",
     (drs.DrsRealms, 'landIce'):
         "Land Ice",
-    (drs.DrsRealms, 'ocean'):
-        "Ocean",
-    (drs.DrsRealms, 'ocnBgchem'):
-        "Ocean Biogeochemistry",
     (drs.DrsRealms, 'seaIce'):
         "Sea Ice",
+    (drs.DrsRealms, 'aerosol'):
+        "Aerosol",
+    (drs.DrsRealms, 'atmosChem'):
+        "Atmospheric Chemistry",
+    (drs.DrsRealms, 'ocnBgchem'):
+        "Ocean Biogeochemistry",
     (drs.DrsTimeSuffixes, 'avg'):
         "Indicates data is a single average of DRS frequency data across temporal period N1-N2",
     (drs.DrsTimeSuffixes, 'clim'):
         "Indicates data is climatological average data at the DRS frequency from the period N1-N2",
-    (platform.StorageSystems, 'GPFS'):
-        "IBM GPFS (also known as IBM Spectral Scale",
     (platform.StorageSystems, 'Lustre'):
         "Lustre parallel file system",
+    (platform.StorageSystems, 'GPFS'):
+        "IBM GPFS (also known as IBM Spectral Scale",
+    (platform.StorageSystems, 'isilon'):
+        "The EMC scaleout NAS solution",
     (platform.StorageSystems, 'NFS'):
         "Generic Network File System",
-    (platform.StorageSystems, 'Other Disk'):
-        "Other disk based file system",
-    (platform.StorageSystems, 'PanFS'):
-        "Panasas Parallel File system",
     (platform.StorageSystems, 'S3'):
         "Object file system exposing the AWS S3 interface",
-    (platform.StorageSystems, 'Tape - Castor'):
-        "Tape storage sytsem using CERN Castor",
+    (platform.StorageSystems, 'PanFS'):
+        "Panasas Parallel File system",
+    (platform.StorageSystems, 'Other Disk'):
+        "Other disk based file system",
     (platform.StorageSystems, 'Tape - MARS'):
         "Tape storage system using ECMWF MARS",
     (platform.StorageSystems, 'Tape - MASS'):
         "Tape storage system using Met Office MASS",
+    (platform.StorageSystems, 'Tape - Castor'):
+        "Tape storage sytsem using CERN Castor",
     (platform.StorageSystems, 'Tape - Other'):
         "Other tape based system",
-    (platform.StorageSystems, 'isilon'):
-        "The EMC scaleout NAS solution",
-    (platform.VolumeUnits, 'EB'):
-        "Exabytes (1000^6)",
-    (platform.VolumeUnits, 'EiB'):
-        "Exbibytes (1024^6)",
     (platform.VolumeUnits, 'GB'):
         "Gigabytes (1000^3)",
-    (platform.VolumeUnits, 'PB'):
-        "Petabytes (1000^5)",
-    (platform.VolumeUnits, 'PiB'):
-        "Pebibytes (1024^5)",
     (platform.VolumeUnits, 'TB'):
         "Terabytes (1000^4)",
+    (platform.VolumeUnits, 'PB'):
+        "Petabytes (1000^5)",
+    (platform.VolumeUnits, 'EB'):
+        "Exabytes (1000^6)",
     (platform.VolumeUnits, 'TiB'):
         "Tebibytes (1024^4)",
+    (platform.VolumeUnits, 'PiB'):
+        "Pebibytes (1024^5)",
+    (platform.VolumeUnits, 'EiB'):
+        "Exbibytes (1024^6)",
     (science.ModelTypes, 'Atm Only'):
         "Atmosphere Only",
+    (science.ModelTypes, 'Ocean Only'):
+        "Ocean Only",
+    (science.ModelTypes, 'Regional'):
+        "Regional Model",
     (science.ModelTypes, 'ESM'):
         "Earth System Model (Atmosphere, Ocean, Land, Sea-ice and cycles)",
     (science.ModelTypes, 'GCM'):
         "Global Climate Model (Atmosphere, Ocean, no carbon cycle)",
-    (science.ModelTypes, 'GCM-MLO'):
-        "GCM with mixed layer ocean",
     (science.ModelTypes, 'IGCM'):
         "Intermediate Complexity GCM",
+    (science.ModelTypes, 'GCM-MLO'):
+        "GCM with mixed layer ocean",
     (science.ModelTypes, 'Mesoscale'):
         "Mesoscale Model",
-    (science.ModelTypes, 'Ocean Only'):
-        "Ocean Only",
-    (science.ModelTypes, 'Planetary'):
-        "Non-Earth model",
     (science.ModelTypes, 'Process'):
         "Limited Area process model",
-    (science.ModelTypes, 'Regional'):
-        "Regional Model",
+    (science.ModelTypes, 'Planetary'):
+        "Non-Earth model",
     (science.SelectionCardinality, '0.1'):
         "Zero or one selections are permitted",
     (science.SelectionCardinality, '0.N'):
@@ -9943,102 +10221,102 @@ http://www.geosci-model-dev-discuss.net/gmd-2016-197/)
         "The correct value is not known at this time. However, a correct value probably exists",
     (shared.NilReason, 'nil:withheld'):
         "The value is not divulged",
-    (shared.QualityStatus, 'finalised'):
-        "Author has completed document, prior to review",
     (shared.QualityStatus, 'incomplete'):
         "Currently being worked on",
-    (shared.QualityStatus, 'reviewed'):
-        "Document has been formally reviewed and assessed as complete and accurate",
+    (shared.QualityStatus, 'finalised'):
+        "Author has completed document, prior to review",
     (shared.QualityStatus, 'under_review'):
         "Document is being reviewed",
+    (shared.QualityStatus, 'reviewed'):
+        "Document has been formally reviewed and assessed as complete and accurate",
     (shared.RoleCode, 'Principal Investigator'):
         "Key party responsible for the existence of the resource",
+    (shared.RoleCode, 'originator'):
+        "Original source for the resource if obtained from elsewhere",
     (shared.RoleCode, 'author'):
         "Party who created (or co-created) resource",
     (shared.RoleCode, 'collaborator'):
         "Contributor to the production of the resource",
-    (shared.RoleCode, 'custodian'):
-        "Party that accepts accountability and responsibility for the source resource",
-    (shared.RoleCode, 'distributor'):
-        "Party who distributes the resource",
-    (shared.RoleCode, 'metadata_author'):
-        "Party who created (this) documentation",
-    (shared.RoleCode, 'metadata_reviewer'):
-        "Party who carried out an independent review of (this) documentation",
-    (shared.RoleCode, 'originator'):
-        "Original source for the resource if obtained from elsewhere",
-    (shared.RoleCode, 'owner'):
-        "Party with legal ownership of the resource",
-    (shared.RoleCode, 'point of contact'):
-        "Party who can be contacted for acquiring knowledge about or acquisition of the resource",
-    (shared.RoleCode, 'processor'):
-        "Party who has taken part in the workflow that resulted in this resource",
     (shared.RoleCode, 'publisher'):
         "Party who published the resource",
-    (shared.RoleCode, 'resource provider'):
-        "Party that supplies the resource",
+    (shared.RoleCode, 'owner'):
+        "Party with legal ownership of the resource",
+    (shared.RoleCode, 'processor'):
+        "Party who has taken part in the workflow that resulted in this resource",
+    (shared.RoleCode, 'distributor'):
+        "Party who distributes the resource",
     (shared.RoleCode, 'sponsor'):
         "Party who has invested in the production of the resource",
     (shared.RoleCode, 'user'):
         "Party who uses the resource",
+    (shared.RoleCode, 'point of contact'):
+        "Party who can be contacted for acquiring knowledge about or acquisition of the resource",
+    (shared.RoleCode, 'resource provider'):
+        "Party that supplies the resource",
+    (shared.RoleCode, 'custodian'):
+        "Party that accepts accountability and responsibility for the source resource",
+    (shared.RoleCode, 'metadata_reviewer'):
+        "Party who carried out an independent review of (this) documentation",
+    (shared.RoleCode, 'metadata_author'):
+        "Party who created (this) documentation",
     (shared.TextBlobEncoding, 'ascii'):
         "Normal plain text",
-    (software.CouplingFramework, 'Bespoke'):
-        "Customised coupler developed for this model",
-    (software.CouplingFramework, 'ESMF'):
-        "Vanilla Earth System Modelling Framework",
-    (software.CouplingFramework, 'NUOPC'):
-        "National Unified Operational Prediction Capability variant of ESMF",
-    (software.CouplingFramework, 'None'):
-        "No coupler is used",
     (software.CouplingFramework, 'OASIS'):
         "The OASIS coupler - prior to OASIS-MCT",
     (software.CouplingFramework, 'OASIS3-MCT'):
         "The MCT variant of the OASIS coupler",
+    (software.CouplingFramework, 'ESMF'):
+        "Vanilla Earth System Modelling Framework",
+    (software.CouplingFramework, 'NUOPC'):
+        "National Unified Operational Prediction Capability variant of ESMF",
+    (software.CouplingFramework, 'Bespoke'):
+        "Customised coupler developed for this model",
     (software.CouplingFramework, 'Unknown'):
         "It is not known what/if-a coupler is used",
+    (software.CouplingFramework, 'None'):
+        "No coupler is used",
+    (software.ProgrammingLanguage, 'Fortran'):
+        "Fortran Programming Language",
     (software.ProgrammingLanguage, 'C'):
         "C Programmming Language",
     (software.ProgrammingLanguage, 'C++'):
         "C++ Programming Language",
-    (software.ProgrammingLanguage, 'Fortran'):
-        "Fortran Programming Language",
     (software.ProgrammingLanguage, 'Python'):
         "Python Programming Language",
-    (time.CalendarTypes, '360_day'):
-        "All years are 360 days divided into 30 day months.",
-    (time.CalendarTypes, '365_day'):
-        "Synonym for noleap:Gregorian calendar without leap years, i.e., all years are 365 days long.",
-    (time.CalendarTypes, '366_day'):
-        "Synonym for all_leap:Gregorian calendar with every year being a leap year, i.e., all years are 366 days long.",
-    (time.CalendarTypes, 'all_leap'):
-        "Gregorian calendar with every year being a leap year, i.e., all years are 366 days long.",
     (time.CalendarTypes, 'gregorian'):
         "Mixed Gregorian/Julian calendar as defined by Udunits",
-    (time.CalendarTypes, 'julian'):
-        "Julian Calendar",
-    (time.CalendarTypes, 'noleap'):
-        "Gregorian calendar without leap years, i.e., all years are 365 days long.",
-    (time.CalendarTypes, 'none'):
-        "Perpetual time axis",
-    (time.CalendarTypes, 'proleptic_gregorian'):
-        "A Gregorian calendar extended to dates before 1582-10-15. That is, a year is a leap year if either (i) it is divisible by 4 but not by 100 or (ii) it is divisible by 400.",
     (time.CalendarTypes, 'standard'):
         "Synonym for gregorian: Mixed Gregorian/Julian calendar as defined by Udunits",
-    (time.PeriodDateTypes, 'date is end'):
-        "The date is the end of the period",
-    (time.PeriodDateTypes, 'date is start'):
-        "The date defines the start of the period",
+    (time.CalendarTypes, 'proleptic_gregorian'):
+        "A Gregorian calendar extended to dates before 1582-10-15. That is, a year is a leap year if either (i) it is divisible by 4 but not by 100 or (ii) it is divisible by 400.",
+    (time.CalendarTypes, 'noleap'):
+        "Gregorian calendar without leap years, i.e., all years are 365 days long.",
+    (time.CalendarTypes, '365_day'):
+        "Synonym for noleap:Gregorian calendar without leap years, i.e., all years are 365 days long.",
+    (time.CalendarTypes, 'all_leap'):
+        "Gregorian calendar with every year being a leap year, i.e., all years are 366 days long.",
+    (time.CalendarTypes, '366_day'):
+        "Synonym for all_leap:Gregorian calendar with every year being a leap year, i.e., all years are 366 days long.",
+    (time.CalendarTypes, '360_day'):
+        "All years are 360 days divided into 30 day months.",
+    (time.CalendarTypes, 'julian'):
+        "Julian Calendar",
+    (time.CalendarTypes, 'none'):
+        "Perpetual time axis",
     (time.PeriodDateTypes, 'unused'):
         "Date is not used",
-    (time.TimeUnits, 'days'):
-        "86400 seconds",
-    (time.TimeUnits, 'months'):
-        "Months in the current calendar",
-    (time.TimeUnits, 'seconds'):
-        "Standard metric seconds",
+    (time.PeriodDateTypes, 'date is start'):
+        "The date defines the start of the period",
+    (time.PeriodDateTypes, 'date is end'):
+        "The date is the end of the period",
     (time.TimeUnits, 'years'):
         "Years in current calendar",
+    (time.TimeUnits, 'months'):
+        "Months in the current calendar",
+    (time.TimeUnits, 'days'):
+        "86400 seconds",
+    (time.TimeUnits, 'seconds'):
+        "Standard metric seconds",
 }
 
 # ------------------------------------------------
@@ -10133,6 +10411,7 @@ KEYS = {
     software.DevelopmentPath: "cim.2.software.DevelopmentPath",
     software.EntryPoint: "cim.2.software.EntryPoint",
     software.Gridspec: "cim.2.software.Gridspec",
+    software.Implementation: "cim.2.software.Implementation",
     software.SoftwareComponent: "cim.2.software.SoftwareComponent",
     software.Variable: "cim.2.software.Variable",
     time.Calendar: "cim.2.time.Calendar",
@@ -10279,12 +10558,7 @@ KEYS = {
     (drs.DrsTemporalIdentifier, 'end'): "cim.2.drs.DrsTemporalIdentifier.end",
     (drs.DrsTemporalIdentifier, 'start'): "cim.2.drs.DrsTemporalIdentifier.start",
     (drs.DrsTemporalIdentifier, 'suffix'): "cim.2.drs.DrsTemporalIdentifier.suffix",
-    (platform.ComponentPerformance, 'actual_simulated_years_per_day'): "cim.2.platform.ComponentPerformance.actual_simulated_years_per_day",
     (platform.ComponentPerformance, 'component'): "cim.2.platform.ComponentPerformance.component",
-    (platform.ComponentPerformance, 'component_name'): "cim.2.platform.ComponentPerformance.component_name",
-    (platform.ComponentPerformance, 'core_hours_per_simulated_year'): "cim.2.platform.ComponentPerformance.core_hours_per_simulated_year",
-    (platform.ComponentPerformance, 'parallelization'): "cim.2.platform.ComponentPerformance.parallelization",
-    (platform.ComponentPerformance, 'simulated_years_per_day'): "cim.2.platform.ComponentPerformance.simulated_years_per_day",
     (platform.ComputePool, 'accelerator_type'): "cim.2.platform.ComputePool.accelerator_type",
     (platform.ComputePool, 'accelerators_per_node'): "cim.2.platform.ComputePool.accelerators_per_node",
     (platform.ComputePool, 'clock_cycle_concurrency'): "cim.2.platform.ComputePool.clock_cycle_concurrency",
@@ -10454,6 +10728,7 @@ KEYS = {
     (shared.Responsibility, 'when'): "cim.2.shared.Responsibility.when",
     (shared.TextBlob, 'content'): "cim.2.shared.TextBlob.content",
     (shared.TextBlob, 'encoding'): "cim.2.shared.TextBlob.encoding",
+    (software.ComponentBase, 'canonical_id'): "cim.2.software.ComponentBase.canonical_id",
     (software.ComponentBase, 'citations'): "cim.2.software.ComponentBase.citations",
     (software.ComponentBase, 'description'): "cim.2.software.ComponentBase.description",
     (software.ComponentBase, 'development_history'): "cim.2.software.ComponentBase.development_history",
@@ -10471,6 +10746,15 @@ KEYS = {
     (software.DevelopmentPath, 'was_developed_in_house'): "cim.2.software.DevelopmentPath.was_developed_in_house",
     (software.EntryPoint, 'name'): "cim.2.software.EntryPoint.name",
     (software.Gridspec, 'description'): "cim.2.software.Gridspec.description",
+    (software.Implementation, 'canonical_id'): "cim.2.software.Implementation.canonical_id",
+    (software.Implementation, 'citations'): "cim.2.software.Implementation.citations",
+    (software.Implementation, 'description'): "cim.2.software.Implementation.description",
+    (software.Implementation, 'development_history'): "cim.2.software.Implementation.development_history",
+    (software.Implementation, 'long_name'): "cim.2.software.Implementation.long_name",
+    (software.Implementation, 'name'): "cim.2.software.Implementation.name",
+    (software.Implementation, 'release_date'): "cim.2.software.Implementation.release_date",
+    (software.Implementation, 'repository'): "cim.2.software.Implementation.repository",
+    (software.Implementation, 'version'): "cim.2.software.Implementation.version",
     (software.SoftwareComponent, 'composition'): "cim.2.software.SoftwareComponent.composition",
     (software.SoftwareComponent, 'connection_points'): "cim.2.software.SoftwareComponent.connection_points",
     (software.SoftwareComponent, 'coupling_framework'): "cim.2.software.SoftwareComponent.coupling_framework",
@@ -10533,83 +10817,83 @@ KEYS = {
     # ------------------------------------------------
 
     (activity.ConformanceType, 'Conformed'): "cim.2.activity.ConformanceType.Conformed",
-    (activity.ConformanceType, 'Not Applicable'): "cim.2.activity.ConformanceType.Not-Applicable",
-    (activity.ConformanceType, 'Not Conformed'): "cim.2.activity.ConformanceType.Not-Conformed",
     (activity.ConformanceType, 'Partially Conformed'): "cim.2.activity.ConformanceType.Partially-Conformed",
-    (data.DataAssociationTypes, 'isComposedOf'): "cim.2.data.DataAssociationTypes.isComposedOf",
-    (data.DataAssociationTypes, 'partOf'): "cim.2.data.DataAssociationTypes.partOf",
+    (activity.ConformanceType, 'Not Conformed'): "cim.2.activity.ConformanceType.Not-Conformed",
+    (activity.ConformanceType, 'Not Applicable'): "cim.2.activity.ConformanceType.Not-Applicable",
     (data.DataAssociationTypes, 'revisonOf'): "cim.2.data.DataAssociationTypes.revisonOf",
-    (designing.EnsembleTypes, 'Driven'): "cim.2.designing.EnsembleTypes.Driven",
-    (designing.EnsembleTypes, 'Forced'): "cim.2.designing.EnsembleTypes.Forced",
-    (designing.EnsembleTypes, 'Initialisation Method'): "cim.2.designing.EnsembleTypes.Initialisation-Method",
+    (data.DataAssociationTypes, 'partOf'): "cim.2.data.DataAssociationTypes.partOf",
+    (data.DataAssociationTypes, 'isComposedOf'): "cim.2.data.DataAssociationTypes.isComposedOf",
     (designing.EnsembleTypes, 'Perturbed Physics'): "cim.2.designing.EnsembleTypes.Perturbed-Physics",
+    (designing.EnsembleTypes, 'Initialisation Method'): "cim.2.designing.EnsembleTypes.Initialisation-Method",
     (designing.EnsembleTypes, 'Realization'): "cim.2.designing.EnsembleTypes.Realization",
-    (designing.EnsembleTypes, 'Resolution'): "cim.2.designing.EnsembleTypes.Resolution",
     (designing.EnsembleTypes, 'Start Date'): "cim.2.designing.EnsembleTypes.Start-Date",
+    (designing.EnsembleTypes, 'Forced'): "cim.2.designing.EnsembleTypes.Forced",
+    (designing.EnsembleTypes, 'Resolution'): "cim.2.designing.EnsembleTypes.Resolution",
+    (designing.EnsembleTypes, 'Driven'): "cim.2.designing.EnsembleTypes.Driven",
     (designing.ExperimentalRelationships, 'control_for'): "cim.2.designing.ExperimentalRelationships.control_for",
     (designing.ExperimentalRelationships, 'initialisation_for'): "cim.2.designing.ExperimentalRelationships.initialisation_for",
-    (designing.ExperimentalRelationships, 'is_sibling'): "cim.2.designing.ExperimentalRelationships.is_sibling",
     (designing.ExperimentalRelationships, 'provides_constraints'): "cim.2.designing.ExperimentalRelationships.provides_constraints",
-    (designing.ForcingTypes, 'driven'): "cim.2.designing.ForcingTypes.driven",
+    (designing.ExperimentalRelationships, 'is_sibling'): "cim.2.designing.ExperimentalRelationships.is_sibling",
     (designing.ForcingTypes, 'historical'): "cim.2.designing.ForcingTypes.historical",
     (designing.ForcingTypes, 'idealised'): "cim.2.designing.ForcingTypes.idealised",
     (designing.ForcingTypes, 'scenario'): "cim.2.designing.ForcingTypes.scenario",
-    (designing.NumericalRequirementScope, 'experiment'): "cim.2.designing.NumericalRequirementScope.experiment",
-    (designing.NumericalRequirementScope, 'mip'): "cim.2.designing.NumericalRequirementScope.mip",
+    (designing.ForcingTypes, 'driven'): "cim.2.designing.ForcingTypes.driven",
     (designing.NumericalRequirementScope, 'mip-era'): "cim.2.designing.NumericalRequirementScope.mip-era",
     (designing.NumericalRequirementScope, 'mip-group'): "cim.2.designing.NumericalRequirementScope.mip-group",
-    (drs.DrsFrequencyTypes, '3hr'): "cim.2.drs.DrsFrequencyTypes.3hr",
-    (drs.DrsFrequencyTypes, '6hr'): "cim.2.drs.DrsFrequencyTypes.6hr",
-    (drs.DrsFrequencyTypes, 'day'): "cim.2.drs.DrsFrequencyTypes.day",
-    (drs.DrsFrequencyTypes, 'fx'): "cim.2.drs.DrsFrequencyTypes.fx",
-    (drs.DrsFrequencyTypes, 'mon'): "cim.2.drs.DrsFrequencyTypes.mon",
-    (drs.DrsFrequencyTypes, 'monClim'): "cim.2.drs.DrsFrequencyTypes.monClim",
-    (drs.DrsFrequencyTypes, 'subhr'): "cim.2.drs.DrsFrequencyTypes.subhr",
+    (designing.NumericalRequirementScope, 'mip'): "cim.2.designing.NumericalRequirementScope.mip",
+    (designing.NumericalRequirementScope, 'experiment'): "cim.2.designing.NumericalRequirementScope.experiment",
     (drs.DrsFrequencyTypes, 'yr'): "cim.2.drs.DrsFrequencyTypes.yr",
+    (drs.DrsFrequencyTypes, 'mon'): "cim.2.drs.DrsFrequencyTypes.mon",
+    (drs.DrsFrequencyTypes, 'day'): "cim.2.drs.DrsFrequencyTypes.day",
+    (drs.DrsFrequencyTypes, '6hr'): "cim.2.drs.DrsFrequencyTypes.6hr",
+    (drs.DrsFrequencyTypes, '3hr'): "cim.2.drs.DrsFrequencyTypes.3hr",
+    (drs.DrsFrequencyTypes, 'subhr'): "cim.2.drs.DrsFrequencyTypes.subhr",
+    (drs.DrsFrequencyTypes, 'monClim'): "cim.2.drs.DrsFrequencyTypes.monClim",
+    (drs.DrsFrequencyTypes, 'fx'): "cim.2.drs.DrsFrequencyTypes.fx",
+    (drs.DrsGeographicalOperators, 'zonalavg'): "cim.2.drs.DrsGeographicalOperators.zonalavg",
+    (drs.DrsGeographicalOperators, 'lnd-zonalavg'): "cim.2.drs.DrsGeographicalOperators.lnd-zonalavg",
+    (drs.DrsGeographicalOperators, 'ocn-zonalavg'): "cim.2.drs.DrsGeographicalOperators.ocn-zonalavg",
     (drs.DrsGeographicalOperators, 'areaavg'): "cim.2.drs.DrsGeographicalOperators.areaavg",
     (drs.DrsGeographicalOperators, 'lnd-areaavg'): "cim.2.drs.DrsGeographicalOperators.lnd-areaavg",
-    (drs.DrsGeographicalOperators, 'lnd-zonalavg'): "cim.2.drs.DrsGeographicalOperators.lnd-zonalavg",
     (drs.DrsGeographicalOperators, 'ocn-areaavg'): "cim.2.drs.DrsGeographicalOperators.ocn-areaavg",
-    (drs.DrsGeographicalOperators, 'ocn-zonalavg'): "cim.2.drs.DrsGeographicalOperators.ocn-zonalavg",
-    (drs.DrsGeographicalOperators, 'zonalavg'): "cim.2.drs.DrsGeographicalOperators.zonalavg",
-    (drs.DrsRealms, 'aerosol'): "cim.2.drs.DrsRealms.aerosol",
     (drs.DrsRealms, 'atmos'): "cim.2.drs.DrsRealms.atmos",
-    (drs.DrsRealms, 'atmosChem'): "cim.2.drs.DrsRealms.atmosChem",
+    (drs.DrsRealms, 'ocean'): "cim.2.drs.DrsRealms.ocean",
     (drs.DrsRealms, 'land'): "cim.2.drs.DrsRealms.land",
     (drs.DrsRealms, 'landIce'): "cim.2.drs.DrsRealms.landIce",
-    (drs.DrsRealms, 'ocean'): "cim.2.drs.DrsRealms.ocean",
-    (drs.DrsRealms, 'ocnBgchem'): "cim.2.drs.DrsRealms.ocnBgchem",
     (drs.DrsRealms, 'seaIce'): "cim.2.drs.DrsRealms.seaIce",
+    (drs.DrsRealms, 'aerosol'): "cim.2.drs.DrsRealms.aerosol",
+    (drs.DrsRealms, 'atmosChem'): "cim.2.drs.DrsRealms.atmosChem",
+    (drs.DrsRealms, 'ocnBgchem'): "cim.2.drs.DrsRealms.ocnBgchem",
     (drs.DrsTimeSuffixes, 'avg'): "cim.2.drs.DrsTimeSuffixes.avg",
     (drs.DrsTimeSuffixes, 'clim'): "cim.2.drs.DrsTimeSuffixes.clim",
-    (platform.StorageSystems, 'GPFS'): "cim.2.platform.StorageSystems.GPFS",
     (platform.StorageSystems, 'Lustre'): "cim.2.platform.StorageSystems.Lustre",
+    (platform.StorageSystems, 'GPFS'): "cim.2.platform.StorageSystems.GPFS",
+    (platform.StorageSystems, 'isilon'): "cim.2.platform.StorageSystems.isilon",
     (platform.StorageSystems, 'NFS'): "cim.2.platform.StorageSystems.NFS",
-    (platform.StorageSystems, 'Other Disk'): "cim.2.platform.StorageSystems.Other-Disk",
-    (platform.StorageSystems, 'PanFS'): "cim.2.platform.StorageSystems.PanFS",
     (platform.StorageSystems, 'S3'): "cim.2.platform.StorageSystems.S3",
-    (platform.StorageSystems, 'Tape - Castor'): "cim.2.platform.StorageSystems.Tape---Castor",
+    (platform.StorageSystems, 'PanFS'): "cim.2.platform.StorageSystems.PanFS",
+    (platform.StorageSystems, 'Other Disk'): "cim.2.platform.StorageSystems.Other-Disk",
     (platform.StorageSystems, 'Tape - MARS'): "cim.2.platform.StorageSystems.Tape---MARS",
     (platform.StorageSystems, 'Tape - MASS'): "cim.2.platform.StorageSystems.Tape---MASS",
+    (platform.StorageSystems, 'Tape - Castor'): "cim.2.platform.StorageSystems.Tape---Castor",
     (platform.StorageSystems, 'Tape - Other'): "cim.2.platform.StorageSystems.Tape---Other",
-    (platform.StorageSystems, 'isilon'): "cim.2.platform.StorageSystems.isilon",
-    (platform.VolumeUnits, 'EB'): "cim.2.platform.VolumeUnits.EB",
-    (platform.VolumeUnits, 'EiB'): "cim.2.platform.VolumeUnits.EiB",
     (platform.VolumeUnits, 'GB'): "cim.2.platform.VolumeUnits.GB",
-    (platform.VolumeUnits, 'PB'): "cim.2.platform.VolumeUnits.PB",
-    (platform.VolumeUnits, 'PiB'): "cim.2.platform.VolumeUnits.PiB",
     (platform.VolumeUnits, 'TB'): "cim.2.platform.VolumeUnits.TB",
+    (platform.VolumeUnits, 'PB'): "cim.2.platform.VolumeUnits.PB",
+    (platform.VolumeUnits, 'EB'): "cim.2.platform.VolumeUnits.EB",
     (platform.VolumeUnits, 'TiB'): "cim.2.platform.VolumeUnits.TiB",
+    (platform.VolumeUnits, 'PiB'): "cim.2.platform.VolumeUnits.PiB",
+    (platform.VolumeUnits, 'EiB'): "cim.2.platform.VolumeUnits.EiB",
     (science.ModelTypes, 'Atm Only'): "cim.2.science.ModelTypes.Atm-Only",
+    (science.ModelTypes, 'Ocean Only'): "cim.2.science.ModelTypes.Ocean-Only",
+    (science.ModelTypes, 'Regional'): "cim.2.science.ModelTypes.Regional",
     (science.ModelTypes, 'ESM'): "cim.2.science.ModelTypes.ESM",
     (science.ModelTypes, 'GCM'): "cim.2.science.ModelTypes.GCM",
-    (science.ModelTypes, 'GCM-MLO'): "cim.2.science.ModelTypes.GCM-MLO",
     (science.ModelTypes, 'IGCM'): "cim.2.science.ModelTypes.IGCM",
+    (science.ModelTypes, 'GCM-MLO'): "cim.2.science.ModelTypes.GCM-MLO",
     (science.ModelTypes, 'Mesoscale'): "cim.2.science.ModelTypes.Mesoscale",
-    (science.ModelTypes, 'Ocean Only'): "cim.2.science.ModelTypes.Ocean-Only",
-    (science.ModelTypes, 'Planetary'): "cim.2.science.ModelTypes.Planetary",
     (science.ModelTypes, 'Process'): "cim.2.science.ModelTypes.Process",
-    (science.ModelTypes, 'Regional'): "cim.2.science.ModelTypes.Regional",
+    (science.ModelTypes, 'Planetary'): "cim.2.science.ModelTypes.Planetary",
     (science.SelectionCardinality, '0.1'): "cim.2.science.SelectionCardinality.0.1",
     (science.SelectionCardinality, '0.N'): "cim.2.science.SelectionCardinality.0.N",
     (science.SelectionCardinality, '1.1'): "cim.2.science.SelectionCardinality.1.1",
@@ -10619,54 +10903,54 @@ KEYS = {
     (shared.NilReason, 'nil:template'): "cim.2.shared.NilReason.nil:template",
     (shared.NilReason, 'nil:unknown'): "cim.2.shared.NilReason.nil:unknown",
     (shared.NilReason, 'nil:withheld'): "cim.2.shared.NilReason.nil:withheld",
-    (shared.QualityStatus, 'finalised'): "cim.2.shared.QualityStatus.finalised",
     (shared.QualityStatus, 'incomplete'): "cim.2.shared.QualityStatus.incomplete",
-    (shared.QualityStatus, 'reviewed'): "cim.2.shared.QualityStatus.reviewed",
+    (shared.QualityStatus, 'finalised'): "cim.2.shared.QualityStatus.finalised",
     (shared.QualityStatus, 'under_review'): "cim.2.shared.QualityStatus.under_review",
+    (shared.QualityStatus, 'reviewed'): "cim.2.shared.QualityStatus.reviewed",
     (shared.RoleCode, 'Principal Investigator'): "cim.2.shared.RoleCode.Principal-Investigator",
+    (shared.RoleCode, 'originator'): "cim.2.shared.RoleCode.originator",
     (shared.RoleCode, 'author'): "cim.2.shared.RoleCode.author",
     (shared.RoleCode, 'collaborator'): "cim.2.shared.RoleCode.collaborator",
-    (shared.RoleCode, 'custodian'): "cim.2.shared.RoleCode.custodian",
-    (shared.RoleCode, 'distributor'): "cim.2.shared.RoleCode.distributor",
-    (shared.RoleCode, 'metadata_author'): "cim.2.shared.RoleCode.metadata_author",
-    (shared.RoleCode, 'metadata_reviewer'): "cim.2.shared.RoleCode.metadata_reviewer",
-    (shared.RoleCode, 'originator'): "cim.2.shared.RoleCode.originator",
-    (shared.RoleCode, 'owner'): "cim.2.shared.RoleCode.owner",
-    (shared.RoleCode, 'point of contact'): "cim.2.shared.RoleCode.point-of-contact",
-    (shared.RoleCode, 'processor'): "cim.2.shared.RoleCode.processor",
     (shared.RoleCode, 'publisher'): "cim.2.shared.RoleCode.publisher",
-    (shared.RoleCode, 'resource provider'): "cim.2.shared.RoleCode.resource-provider",
+    (shared.RoleCode, 'owner'): "cim.2.shared.RoleCode.owner",
+    (shared.RoleCode, 'processor'): "cim.2.shared.RoleCode.processor",
+    (shared.RoleCode, 'distributor'): "cim.2.shared.RoleCode.distributor",
     (shared.RoleCode, 'sponsor'): "cim.2.shared.RoleCode.sponsor",
     (shared.RoleCode, 'user'): "cim.2.shared.RoleCode.user",
+    (shared.RoleCode, 'point of contact'): "cim.2.shared.RoleCode.point-of-contact",
+    (shared.RoleCode, 'resource provider'): "cim.2.shared.RoleCode.resource-provider",
+    (shared.RoleCode, 'custodian'): "cim.2.shared.RoleCode.custodian",
+    (shared.RoleCode, 'metadata_reviewer'): "cim.2.shared.RoleCode.metadata_reviewer",
+    (shared.RoleCode, 'metadata_author'): "cim.2.shared.RoleCode.metadata_author",
     (shared.TextBlobEncoding, 'ascii'): "cim.2.shared.TextBlobEncoding.ascii",
-    (software.CouplingFramework, 'Bespoke'): "cim.2.software.CouplingFramework.Bespoke",
-    (software.CouplingFramework, 'ESMF'): "cim.2.software.CouplingFramework.ESMF",
-    (software.CouplingFramework, 'NUOPC'): "cim.2.software.CouplingFramework.NUOPC",
-    (software.CouplingFramework, 'None'): "cim.2.software.CouplingFramework.None",
     (software.CouplingFramework, 'OASIS'): "cim.2.software.CouplingFramework.OASIS",
     (software.CouplingFramework, 'OASIS3-MCT'): "cim.2.software.CouplingFramework.OASIS3-MCT",
+    (software.CouplingFramework, 'ESMF'): "cim.2.software.CouplingFramework.ESMF",
+    (software.CouplingFramework, 'NUOPC'): "cim.2.software.CouplingFramework.NUOPC",
+    (software.CouplingFramework, 'Bespoke'): "cim.2.software.CouplingFramework.Bespoke",
     (software.CouplingFramework, 'Unknown'): "cim.2.software.CouplingFramework.Unknown",
+    (software.CouplingFramework, 'None'): "cim.2.software.CouplingFramework.None",
+    (software.ProgrammingLanguage, 'Fortran'): "cim.2.software.ProgrammingLanguage.Fortran",
     (software.ProgrammingLanguage, 'C'): "cim.2.software.ProgrammingLanguage.C",
     (software.ProgrammingLanguage, 'C++'): "cim.2.software.ProgrammingLanguage.C++",
-    (software.ProgrammingLanguage, 'Fortran'): "cim.2.software.ProgrammingLanguage.Fortran",
     (software.ProgrammingLanguage, 'Python'): "cim.2.software.ProgrammingLanguage.Python",
-    (time.CalendarTypes, '360_day'): "cim.2.time.CalendarTypes.360_day",
-    (time.CalendarTypes, '365_day'): "cim.2.time.CalendarTypes.365_day",
-    (time.CalendarTypes, '366_day'): "cim.2.time.CalendarTypes.366_day",
-    (time.CalendarTypes, 'all_leap'): "cim.2.time.CalendarTypes.all_leap",
     (time.CalendarTypes, 'gregorian'): "cim.2.time.CalendarTypes.gregorian",
-    (time.CalendarTypes, 'julian'): "cim.2.time.CalendarTypes.julian",
-    (time.CalendarTypes, 'noleap'): "cim.2.time.CalendarTypes.noleap",
-    (time.CalendarTypes, 'none'): "cim.2.time.CalendarTypes.none",
-    (time.CalendarTypes, 'proleptic_gregorian'): "cim.2.time.CalendarTypes.proleptic_gregorian",
     (time.CalendarTypes, 'standard'): "cim.2.time.CalendarTypes.standard",
-    (time.PeriodDateTypes, 'date is end'): "cim.2.time.PeriodDateTypes.date-is-end",
-    (time.PeriodDateTypes, 'date is start'): "cim.2.time.PeriodDateTypes.date-is-start",
+    (time.CalendarTypes, 'proleptic_gregorian'): "cim.2.time.CalendarTypes.proleptic_gregorian",
+    (time.CalendarTypes, 'noleap'): "cim.2.time.CalendarTypes.noleap",
+    (time.CalendarTypes, '365_day'): "cim.2.time.CalendarTypes.365_day",
+    (time.CalendarTypes, 'all_leap'): "cim.2.time.CalendarTypes.all_leap",
+    (time.CalendarTypes, '366_day'): "cim.2.time.CalendarTypes.366_day",
+    (time.CalendarTypes, '360_day'): "cim.2.time.CalendarTypes.360_day",
+    (time.CalendarTypes, 'julian'): "cim.2.time.CalendarTypes.julian",
+    (time.CalendarTypes, 'none'): "cim.2.time.CalendarTypes.none",
     (time.PeriodDateTypes, 'unused'): "cim.2.time.PeriodDateTypes.unused",
-    (time.TimeUnits, 'days'): "cim.2.time.TimeUnits.days",
-    (time.TimeUnits, 'months'): "cim.2.time.TimeUnits.months",
-    (time.TimeUnits, 'seconds'): "cim.2.time.TimeUnits.seconds",
+    (time.PeriodDateTypes, 'date is start'): "cim.2.time.PeriodDateTypes.date-is-start",
+    (time.PeriodDateTypes, 'date is end'): "cim.2.time.PeriodDateTypes.date-is-end",
     (time.TimeUnits, 'years'): "cim.2.time.TimeUnits.years",
+    (time.TimeUnits, 'months'): "cim.2.time.TimeUnits.months",
+    (time.TimeUnits, 'days'): "cim.2.time.TimeUnits.days",
+    (time.TimeUnits, 'seconds'): "cim.2.time.TimeUnits.seconds",
 }
 
 # Set inline type keys.
@@ -10757,6 +11041,7 @@ software.CouplingFramework.type_key = KEYS[software.CouplingFramework]
 software.DevelopmentPath.type_key = KEYS[software.DevelopmentPath]
 software.EntryPoint.type_key = KEYS[software.EntryPoint]
 software.Gridspec.type_key = KEYS[software.Gridspec]
+software.Implementation.type_key = KEYS[software.Implementation]
 software.ProgrammingLanguage.type_key = KEYS[software.ProgrammingLanguage]
 software.SoftwareComponent.type_key = KEYS[software.SoftwareComponent]
 software.Variable.type_key = KEYS[software.Variable]

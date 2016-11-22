@@ -472,6 +472,20 @@ class ChangePropertyType(object):
         "Replacement",
         "Unused"
         ]
+    descriptions = [
+        "A specific type of ModelMod",
+        "A specific type of ModelMod",
+        "A specific type of ModelMod",
+        "A specific type of ModelMod",
+        "A specific type of ModelMod",
+        "None",
+        "None",
+        "None",
+        "None",
+        "None",
+        "None",
+        "None"
+        ]
 
 
 class CompilerType(object):
@@ -481,6 +495,7 @@ class CompilerType(object):
     """
     is_open = True
     members = []
+    descriptions = []
 
 
 class DataPurpose(object):
@@ -494,6 +509,11 @@ class DataPurpose(object):
         "boundaryCondition",
         "initialCondition"
         ]
+    descriptions = [
+        "None",
+        "None",
+        "None"
+        ]
 
 
 class InterconnectType(object):
@@ -503,6 +523,7 @@ class InterconnectType(object):
     """
     is_open = True
     members = []
+    descriptions = []
 
 
 class MachineType(object):
@@ -516,6 +537,11 @@ class MachineType(object):
         "Parallel",
         "Vector"
         ]
+    descriptions = [
+        "None",
+        "None",
+        "None"
+        ]
 
 
 class MachineVendorType(object):
@@ -525,6 +551,7 @@ class MachineVendorType(object):
     """
     is_open = True
     members = []
+    descriptions = []
 
 
 class OperatingSystemType(object):
@@ -534,6 +561,7 @@ class OperatingSystemType(object):
     """
     is_open = True
     members = []
+    descriptions = []
 
 
 class ProcessorType(object):
@@ -543,6 +571,7 @@ class ProcessorType(object):
     """
     is_open = True
     members = []
+    descriptions = []
 
 
 class UnitType(object):
@@ -552,5 +581,6 @@ class UnitType(object):
     """
     is_open = True
     members = []
+    descriptions = []
 
 

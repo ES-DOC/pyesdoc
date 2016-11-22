@@ -200,9 +200,15 @@ class ConformanceType(object):
     is_open = True
     members = [
         "Conformed",
-        "Not Applicable",
+        "Partially Conformed",
         "Not Conformed",
-        "Partially Conformed"
+        "Not Applicable"
+        ]
+    descriptions = [
+        "Simulation (or ensemble) conformed to requirement",
+        "Simulation (or ensemble) partially conformed to requirement - details in description",
+        "Simulation (or ensemble) was unable to conform to requirement",
+        "Requirement is not relevant"
         ]
 
 

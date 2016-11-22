@@ -1,28 +1,8 @@
 {% comment ************************************************** %}
-{% comment Sub-section: model configurations 		    	  %}
-{% comment ************************************************** %}
-{% set requirements = [r for r in doc.requirements if isinstance(r, pyesdoc.ontologies.cim.v2.NumericalRequirement)] %}
-{% set requirements = [r for r in requirements if r.meta.type.endswith("model_configuration")] %}
-{% set description = "Model Configuration" %}
-{% include designing_numerical_experiment_requirement_group.html %}
-
-
-{% comment ************************************************** %}
 {% comment Sub-section: temporal constraints 		    	  %}
 {% comment ************************************************** %}
 {% set requirements = [r for r in doc.requirements if isinstance(r, pyesdoc.ontologies.cim.v2.TemporalConstraint)] %}
 {% set description = "Temporal Constraints" %}
-{% include designing_numerical_experiment_requirement_group.html %}
-
-
-{% comment ************************************************** %}
-{% comment Sub-section: forcing constraints 		    	  %}
-{% comment ************************************************** %}
-{% set requirements = [r for r in doc.requirements if isinstance(r, pyesdoc.ontologies.cim.v2.ForcingConstraint)] %}
-{% for r in [r for r in doc.requirements if r.meta.type.endswith("forcing_constraint")] %}
-{% set requirements +=  load(r.additional_requirements) %}
-{% end %}
-{% set description = "Forcing Constraints" %}
 {% include designing_numerical_experiment_requirement_group.html %}
 
 
@@ -39,4 +19,28 @@
 {% comment ************************************************** %}
 {% set requirements = [r for r in doc.requirements if isinstance(r, pyesdoc.ontologies.cim.v2.MultiEnsemble)] %}
 {% set description = "Multi-Ensemble Requirements" %}
+{% include designing_numerical_experiment_requirement_group.html %}
+
+
+{% comment ************************************************** %}
+{% comment Sub-section: model configurations 		    	  %}
+{% comment ************************************************** %}
+{% set requirements = [r for r in doc.requirements if isinstance(r, pyesdoc.ontologies.cim.v2.NumericalRequirement)] %}
+{% set requirements = [r for r in requirements if r.meta.type.endswith("model_configuration")] %}
+{% set description = "Model Configuration" %}
+{% include designing_numerical_experiment_requirement_group.html %}
+
+
+{% comment ************************************************** %}
+{% comment Sub-section: forcing constraints 		    	  %}
+{% comment ************************************************** %}
+{% set requirements = [] %}
+{% for r in doc.requirements %}
+	{% if isinstance(r, pyesdoc.ontologies.cim.v2.ForcingConstraint) %}
+		{% set requirements += [r] %}
+	{% elif r.meta.type.endswith(":forcing_constraint") %}
+		{% set requirements += load(r.additional_requirements) %}
+	{% end %}
+{% end %}
+{% set description = "Forcing Constraints" %}
 {% include designing_numerical_experiment_requirement_group.html %}

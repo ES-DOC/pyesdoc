@@ -116,6 +116,7 @@ __all__ = [
     DevelopmentPath,
     EntryPoint,
     Gridspec,
+    Implementation,
     SoftwareComponent,
     Variable,
     Calendar,

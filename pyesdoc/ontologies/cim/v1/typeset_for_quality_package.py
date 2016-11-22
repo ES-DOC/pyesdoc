@@ -103,6 +103,10 @@ class CimFeatureType(object):
         "diagnostic",
         "file"
         ]
+    descriptions = [
+        "None",
+        "None"
+        ]
 
 
 class CimResultType(object):
@@ -115,6 +119,11 @@ class CimResultType(object):
         "document",
         "logfile",
         "plot"
+        ]
+    descriptions = [
+        "None",
+        "None",
+        "None"
         ]
 
 
@@ -136,6 +145,18 @@ class CimScopeCodeType(object):
         "simulation",
         "software"
         ]
+    descriptions = [
+        "None",
+        "None",
+        "None",
+        "None",
+        "None",
+        "None",
+        "None",
+        "None",
+        "None",
+        "None"
+        ]
 
 
 class QualityIssueType(object):
@@ -151,6 +172,13 @@ class QualityIssueType(object):
         "metadata",
         "science"
         ]
+    descriptions = [
+        "None",
+        "None",
+        "None",
+        "None",
+        "None"
+        ]
 
 
 class QualitySeverityType(object):
@@ -163,6 +191,11 @@ class QualitySeverityType(object):
         "cosmetic",
         "major",
         "minor"
+        ]
+    descriptions = [
+        "None",
+        "None",
+        "None"
         ]
 
 
@@ -177,6 +210,12 @@ class QualityStatusType(object):
         "partially_resolved",
         "reported",
         "resolved"
+        ]
+    descriptions = [
+        "None",
+        "None",
+        "None",
+        "None"
         ]
 
 

@@ -101,6 +101,7 @@ from typeset_for_software_package import Composition
 from typeset_for_software_package import DevelopmentPath
 from typeset_for_software_package import EntryPoint
 from typeset_for_software_package import Gridspec
+from typeset_for_software_package import Implementation
 from typeset_for_software_package import SoftwareComponent
 from typeset_for_software_package import Variable
 from typeset_for_time_package import Calendar

@@ -37,7 +37,7 @@ FIELDSETS = {
             input_formatter=lambda v: _SEPARATOR.join(v.split(',')) if v else None),
         Field('Related Experiments',
             link_factory=lambda exp: [(i.name, i.viewer_url) for i in \
-                                      sorted(exp.related_experiments, key=lambda v: v.name)])
+                                      exp.related_experiments])
     ],
 
     str(cim.v2.designing.EnsembleRequirement) : [
@@ -53,8 +53,9 @@ FIELDSETS = {
     str(cim.v2.designing.ForcingConstraint) : [
         Field('Name', path='canonical_name'),
         Field('Description', path='description'),
-        Field('Forcing Type', path='forcing_type'),
+        Field('Forcing Type', path='forcing_type', capitalize_value=True),
         Field('Conformance Requested ?', path='is_conformance_requested'),
+        Field('Scope', path='scope', capitalize_value=True),
         Field('Keywords', path='keywords',
             input_formatter=lambda v: _SEPARATOR.join(v.split(',')))
     ],
@@ -95,9 +96,10 @@ FIELDSETS = {
         Field('Description', path='description'),
         Field('Rationale', path='rationale'),
         Field('Objectives', path='objectives'),
-        Field('Related Experiments',
-            link_factory=lambda exp: [(i.name, i.viewer_url) for i in \
-                                      sorted(exp.requires_experiments, key=lambda v: v.name)]),
+        Field('Sub Projects',
+            link_factory=lambda p: [(i.name, i.viewer_url) for i in p.sub_projects]),
+        Field('Required Experiments',
+            link_factory=lambda e: [(i.name, i.viewer_url) for i in e.requires_experiments]),
         Field('Keywords', path='keywords',
             input_formatter=lambda v: _SEPARATOR.join(v.split(',')))
     ],

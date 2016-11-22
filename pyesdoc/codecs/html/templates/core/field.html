@@ -14,7 +14,9 @@
 <tr class="esdoc-field {{ ctx.fieldset_type }} {{ field_value_css }}">
 	{% if ctx.fieldset_type == "namevalue" %}
 		<td class="esdoc-field-name"><b>{{ field_name }}</b></td>
-		<td class="esdoc-field-value" id="{% raw '' if not ctx.field.tag_id else ctx.field.tag_id %}">
+		<td class="esdoc-field-value"
+		    {% if ctx.field.tag_id %}id="{{ ctx.field.tag_id }}"{% end %}
+		    style="{% if ctx.field.capitalize_value %}text-transform: capitalize;{% end %}">
 			{% if not bool(field_value) %}
 				--
 
@@ -44,6 +46,7 @@
 
 			{% else %}
 				{{ field_value }}
+
 			{% end %}
 		</td>
 

@@ -34,7 +34,8 @@ class Field(object):
         link_path=None,
         path=None,
         tag_id=None,
-        value=None
+        value=None,
+        capitalize_value=False
         ):
         """Instance constructor.
 
@@ -50,6 +51,7 @@ class Field(object):
         self.path = path
         self.tag_id = tag_id
         self.value = value
+        self.capitalize_value = capitalize_value
 
 
     def get_name(self):

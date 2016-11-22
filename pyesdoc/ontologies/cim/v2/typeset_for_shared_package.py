@@ -256,6 +256,13 @@ class NilReason(object):
         "nil:unknown",
         "nil:withheld"
         ]
+    descriptions = [
+        "There is no value",
+        "The correct value is not available. Furthermore, a correct value may not exist",
+        "The value will be available later",
+        "The correct value is not known at this time. However, a correct value probably exists",
+        "The value is not divulged"
+        ]
 
 
 class QualityStatus(object):
@@ -265,10 +272,16 @@ class QualityStatus(object):
     """
     is_open = False
     members = [
-        "finalised",
         "incomplete",
-        "reviewed",
-        "under_review"
+        "finalised",
+        "under_review",
+        "reviewed"
+        ]
+    descriptions = [
+        "Currently being worked on",
+        "Author has completed document, prior to review",
+        "Document is being reviewed",
+        "Document has been formally reviewed and assessed as complete and accurate"
         ]
 
 
@@ -280,20 +293,37 @@ class RoleCode(object):
     is_open = False
     members = [
         "Principal Investigator",
+        "originator",
         "author",
         "collaborator",
-        "custodian",
-        "distributor",
-        "metadata_author",
-        "metadata_reviewer",
-        "originator",
-        "owner",
-        "point of contact",
-        "processor",
         "publisher",
-        "resource provider",
+        "owner",
+        "processor",
+        "distributor",
         "sponsor",
-        "user"
+        "user",
+        "point of contact",
+        "resource provider",
+        "custodian",
+        "metadata_reviewer",
+        "metadata_author"
+        ]
+    descriptions = [
+        "Key party responsible for the existence of the resource",
+        "Original source for the resource if obtained from elsewhere",
+        "Party who created (or co-created) resource",
+        "Contributor to the production of the resource",
+        "Party who published the resource",
+        "Party with legal ownership of the resource",
+        "Party who has taken part in the workflow that resulted in this resource",
+        "Party who distributes the resource",
+        "Party who has invested in the production of the resource",
+        "Party who uses the resource",
+        "Party who can be contacted for acquiring knowledge about or acquisition of the resource",
+        "Party that supplies the resource",
+        "Party that accepts accountability and responsibility for the source resource",
+        "Party who carried out an independent review of (this) documentation",
+        "Party who created (this) documentation"
         ]
 
 
@@ -306,6 +336,9 @@ class TextBlobEncoding(object):
     is_open = False
     members = [
         "ascii"
+        ]
+    descriptions = [
+        "Normal plain text"
         ]
 
 

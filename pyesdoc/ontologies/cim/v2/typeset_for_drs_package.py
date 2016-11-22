@@ -151,14 +151,24 @@ class DrsFrequencyTypes(object):
     """
     is_open = False
     members = [
-        "3hr",
-        "6hr",
-        "day",
-        "fx",
+        "yr",
         "mon",
-        "monClim",
+        "day",
+        "6hr",
+        "3hr",
         "subhr",
-        "yr"
+        "monClim",
+        "fx"
+        ]
+    descriptions = [
+        "Yearly",
+        "Monthly",
+        "Daily",
+        "Every six hours",
+        "Every three hours",
+        "Sampling frequency less than an hour",
+        "Climatological Monthly Mean",
+        "Fixed Time independent"
         ]
 
 
@@ -169,12 +179,20 @@ class DrsGeographicalOperators(object):
     """
     is_open = False
     members = [
+        "zonalavg",
+        "lnd-zonalavg",
+        "ocn-zonalavg",
         "areaavg",
         "lnd-areaavg",
-        "lnd-zonalavg",
-        "ocn-areaavg",
-        "ocn-zonalavg",
-        "zonalavg"
+        "ocn-areaavg"
+        ]
+    descriptions = [
+        "Data is zonally averaged",
+        "Data is zonally averaged over land in region",
+        "Data is zonally averaged over oceans in region",
+        "Data is averaged over the area of the region",
+        "Data is averaged over the land area of the region",
+        "Data is averaged over the ocean area of the region"
         ]
 
 
@@ -185,14 +203,24 @@ class DrsRealms(object):
     """
     is_open = False
     members = [
-        "aerosol",
         "atmos",
-        "atmosChem",
+        "ocean",
         "land",
         "landIce",
-        "ocean",
-        "ocnBgchem",
-        "seaIce"
+        "seaIce",
+        "aerosol",
+        "atmosChem",
+        "ocnBgchem"
+        ]
+    descriptions = [
+        "Atmosphere",
+        "Ocean",
+        "Land",
+        "Land Ice",
+        "Sea Ice",
+        "Aerosol",
+        "Atmospheric Chemistry",
+        "Ocean Biogeochemistry"
         ]
 
 
@@ -205,6 +233,10 @@ class DrsTimeSuffixes(object):
     members = [
         "avg",
         "clim"
+        ]
+    descriptions = [
+        "Indicates data is a single average of DRS frequency data across temporal period N1-N2",
+        "Indicates data is climatological average data at the DRS frequency from the period N1-N2"
         ]
 
 

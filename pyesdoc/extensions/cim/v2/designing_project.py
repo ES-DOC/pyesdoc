@@ -33,6 +33,11 @@ def _set_viewer_urls(ctx):
             exp.viewer_url = VIEWER_URL_BY_ID.format(ctx.meta.project, exp.meta.id, exp.meta.version)
         elif isinstance(exp, cim.v2.shared.DocReference):
             exp.viewer_url = VIEWER_URL_BY_ID.format(ctx.meta.project, exp.id, exp.version)
+    for p in ctx.doc.sub_projects:
+        if isinstance(p, cim.v2.designing.Project):
+            p.viewer_url = VIEWER_URL_BY_ID.format(ctx.meta.project, p.meta.id, p.meta.version)
+        elif isinstance(p, cim.v2.shared.DocReference):
+            p.viewer_url = VIEWER_URL_BY_ID.format(ctx.meta.project, p.id, p.version)
 
 
 def _set_summary_fields(ctx):

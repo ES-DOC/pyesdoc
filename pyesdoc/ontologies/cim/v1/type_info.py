@@ -10133,93 +10133,93 @@ DOC_STRINGS = {
     # Enum members.
     # ------------------------------------------------
 
-    (activity.ConformanceType, 'combination'):
-        "Describes a simulation that conforms to an experimental requirement by using more than one method.",
-    (activity.ConformanceType, 'not conformant'):
-        "Describes a simulation that is purpefully non-conformant to an experimental requirement.",
     (activity.ConformanceType, 'not-xxx'):
         None,
+    (activity.ConformanceType, 'not conformant'):
+        "Describes a simulation that is purpefully non-conformant to an experimental requirement.",
     (activity.ConformanceType, 'standard config'):
-        "Describes a simulation that is 'naturally' conformant to an experimental requirement.",
+        "Describes a simulation that is naturally conformant to an experimental requirement.",
     (activity.ConformanceType, 'via inputs'):
         "Describes a simulation that conforms to an experimental requirement by using particular inputs.",
     (activity.ConformanceType, 'via model mods'):
         "Describes a simulation that conforms to an experimental requirement by changing the configuration of the software model implementing that simulation.",
+    (activity.ConformanceType, 'combination'):
+        "Describes a simulation that conforms to an experimental requirement by using more than one method.",
+    (activity.DownscalingType, 'statistical'):
+        None,
     (activity.DownscalingType, 'dynamic'):
         None,
-    (activity.DownscalingType, 'statistical'):
+    (activity.ExperimentRelationshipType, 'previousRealisation'):
         None,
     (activity.ExperimentRelationshipType, 'continuationOf'):
         None,
     (activity.ExperimentRelationshipType, 'controlExperiment'):
         None,
-    (activity.ExperimentRelationshipType, 'extensionOf'):
-        None,
     (activity.ExperimentRelationshipType, 'higherResolutionVersionOf'):
-        None,
-    (activity.ExperimentRelationshipType, 'increaseEnsembleOf'):
         None,
     (activity.ExperimentRelationshipType, 'lowerResolutionVersionOf'):
         None,
-    (activity.ExperimentRelationshipType, 'modifiedInputMethodOf'):
+    (activity.ExperimentRelationshipType, 'increaseEnsembleOf'):
         None,
-    (activity.ExperimentRelationshipType, 'previousRealisation'):
+    (activity.ExperimentRelationshipType, 'modifiedInputMethodOf'):
         None,
     (activity.ExperimentRelationshipType, 'shorterVersionOf'):
         None,
-    (activity.SimulationRelationshipType, 'continuationOf'):
+    (activity.ExperimentRelationshipType, 'extensionOf'):
         None,
     (activity.SimulationRelationshipType, 'extensionOf'):
         None,
-    (activity.SimulationRelationshipType, 'fixedVersionOf'):
+    (activity.SimulationRelationshipType, 'responseTo'):
         None,
-    (activity.SimulationRelationshipType, 'followingSimulation'):
+    (activity.SimulationRelationshipType, 'continuationOf'):
+        None,
+    (activity.SimulationRelationshipType, 'previousSimulation'):
         None,
     (activity.SimulationRelationshipType, 'higherResolutionVersionOf'):
         None,
     (activity.SimulationRelationshipType, 'lowerResolutionVersionOf'):
         None,
-    (activity.SimulationRelationshipType, 'previousSimulation'):
+    (activity.SimulationRelationshipType, 'fixedVersionOf'):
         None,
-    (activity.SimulationRelationshipType, 'responseTo'):
+    (activity.SimulationRelationshipType, 'followingSimulation'):
+        None,
+    (activity.SimulationType, 'simulationRun'):
         None,
     (activity.SimulationType, 'assimilation'):
         None,
     (activity.SimulationType, 'simulationComposite'):
         None,
-    (activity.SimulationType, 'simulationRun'):
-        None,
     (data.DataStatusType, 'complete'):
         "This DataObject is complete.",
-    (data.DataStatusType, 'continuouslySupplemented'):
-        "This DataObject's actual data is continuously updated.",
     (data.DataStatusType, 'metadataOnly'):
         "This DataObject is incomplete - it is described in metadata but the actual data has not yet been linked to it.",
-    (grids.ArcTypeEnum, 'complex'):
-        None,
+    (data.DataStatusType, 'continuouslySupplemented'):
+        "This DataObject's actual data is continuously updated.",
     (grids.ArcTypeEnum, 'geodesic'):
         None,
     (grids.ArcTypeEnum, 'great_circle'):
         None,
     (grids.ArcTypeEnum, 'small_circle'):
         None,
+    (grids.ArcTypeEnum, 'complex'):
+        None,
     (grids.DiscretizationEnum, 'logically_rectangular'):
-        None,
-    (grids.DiscretizationEnum, 'other'):
-        None,
-    (grids.DiscretizationEnum, 'pixel-based_catchment'):
-        None,
-    (grids.DiscretizationEnum, 'spherical_harmonics'):
         None,
     (grids.DiscretizationEnum, 'structured_triangular'):
         None,
-    (grids.DiscretizationEnum, 'unstructured_polygonal'):
-        None,
     (grids.DiscretizationEnum, 'unstructured_triangular'):
         None,
-    (grids.FeatureTypeEnum, 'edge'):
+    (grids.DiscretizationEnum, 'pixel-based_catchment'):
+        None,
+    (grids.DiscretizationEnum, 'unstructured_polygonal'):
+        None,
+    (grids.DiscretizationEnum, 'spherical_harmonics'):
+        None,
+    (grids.DiscretizationEnum, 'other'):
         None,
     (grids.FeatureTypeEnum, 'point'):
+        None,
+    (grids.FeatureTypeEnum, 'edge'):
         None,
     (grids.GeometryTypeEnum, 'ellipsoid'):
         None,
@@ -10233,15 +10233,11 @@ DOC_STRINGS = {
         None,
     (grids.GridNodePositionEnum, 'sphere'):
         None,
-    (grids.GridTypeEnum, 'composite'):
-        None,
     (grids.GridTypeEnum, 'cubed_sphere'):
         None,
     (grids.GridTypeEnum, 'displaced_pole'):
         None,
     (grids.GridTypeEnum, 'icosahedral_geodesic'):
-        None,
-    (grids.GridTypeEnum, 'other'):
         None,
     (grids.GridTypeEnum, 'reduced_gaussian'):
         None,
@@ -10253,6 +10249,10 @@ DOC_STRINGS = {
         None,
     (grids.GridTypeEnum, 'yin_yang'):
         None,
+    (grids.GridTypeEnum, 'composite'):
+        None,
+    (grids.GridTypeEnum, 'other'):
+        None,
     (grids.HorizontalCsEnum, 'cartesian'):
         None,
     (grids.HorizontalCsEnum, 'ellipsoidal'):
@@ -10261,92 +10261,92 @@ DOC_STRINGS = {
         None,
     (grids.HorizontalCsEnum, 'spherical'):
         None,
-    (grids.RefinementTypeEnum, 'integer'):
-        "The refinement is integer when grid lines from the coarser grid are continuous on the finer grid, but not vice versa.",
     (grids.RefinementTypeEnum, 'none'):
         "Tile boundaries have no refinement when the grid lines meeting at the tile boundary are continuous.",
+    (grids.RefinementTypeEnum, 'integer'):
+        "The refinement is integer when grid lines from the coarser grid are continuous on the finer grid, but not vice versa.",
     (grids.RefinementTypeEnum, 'rational'):
         "The refinement is rational when the adjacent or overlapping grid tiles have grid line counts that are coprime (i.e. no common factor other than 1).",
     (grids.VerticalCsEnum, 'mass-based'):
         None,
     (grids.VerticalCsEnum, 'space-based'):
         None,
+    (quality.CimFeatureType, 'file'):
+        None,
     (quality.CimFeatureType, 'diagnostic'):
         None,
-    (quality.CimFeatureType, 'file'):
+    (quality.CimResultType, 'plot'):
         None,
     (quality.CimResultType, 'document'):
         None,
     (quality.CimResultType, 'logfile'):
         None,
-    (quality.CimResultType, 'plot'):
-        None,
     (quality.CimScopeCodeType, 'dataset'):
         None,
-    (quality.CimScopeCodeType, 'ensemble'):
+    (quality.CimScopeCodeType, 'software'):
         None,
-    (quality.CimScopeCodeType, 'experiment'):
-        None,
-    (quality.CimScopeCodeType, 'file'):
+    (quality.CimScopeCodeType, 'service'):
         None,
     (quality.CimScopeCodeType, 'model'):
         None,
     (quality.CimScopeCodeType, 'modelComponent'):
         None,
-    (quality.CimScopeCodeType, 'numericalRequirement'):
-        None,
-    (quality.CimScopeCodeType, 'service'):
-        None,
     (quality.CimScopeCodeType, 'simulation'):
         None,
-    (quality.CimScopeCodeType, 'software'):
+    (quality.CimScopeCodeType, 'experiment'):
         None,
-    (quality.QualityIssueType, 'data_content'):
+    (quality.CimScopeCodeType, 'numericalRequirement'):
+        None,
+    (quality.CimScopeCodeType, 'ensemble'):
+        None,
+    (quality.CimScopeCodeType, 'file'):
+        None,
+    (quality.QualityIssueType, 'metadata'):
         None,
     (quality.QualityIssueType, 'data_format'):
         None,
-    (quality.QualityIssueType, 'data_indexing'):
+    (quality.QualityIssueType, 'data_content'):
         None,
-    (quality.QualityIssueType, 'metadata'):
+    (quality.QualityIssueType, 'data_indexing'):
         None,
     (quality.QualityIssueType, 'science'):
         None,
     (quality.QualitySeverityType, 'cosmetic'):
         None,
+    (quality.QualitySeverityType, 'minor'):
+        None,
     (quality.QualitySeverityType, 'major'):
         None,
-    (quality.QualitySeverityType, 'minor'):
+    (quality.QualityStatusType, 'reported'):
         None,
     (quality.QualityStatusType, 'confirmed'):
         None,
     (quality.QualityStatusType, 'partially_resolved'):
         None,
-    (quality.QualityStatusType, 'reported'):
-        None,
     (quality.QualityStatusType, 'resolved'):
         None,
-    (shared.ChangePropertyType, 'AncillaryFile'):
-        "A specific type of ModelMod",
-    (shared.ChangePropertyType, 'BoundaryCondition'):
-        "A specific type of ModelMod",
-    (shared.ChangePropertyType, 'CodeChange'):
-        "A specific type of ModelMod",
-    (shared.ChangePropertyType, 'Decrement'):
-        None,
-    (shared.ChangePropertyType, 'Increment'):
-        None,
-    (shared.ChangePropertyType, 'InitialCondition'):
-        "A specific type of ModelMod",
     (shared.ChangePropertyType, 'InputMod'):
         None,
     (shared.ChangePropertyType, 'ModelMod'):
         None,
-    (shared.ChangePropertyType, 'ParameterChange'):
-        "A specific type of ModelMod",
+    (shared.ChangePropertyType, 'Decrement'):
+        None,
+    (shared.ChangePropertyType, 'Increment'):
+        None,
     (shared.ChangePropertyType, 'Redistribution'):
         None,
     (shared.ChangePropertyType, 'Replacement'):
         None,
+    (shared.ChangePropertyType, 'ParameterChange'):
+        "A specific type of ModelMod",
+    (shared.ChangePropertyType, 'CodeChange'):
+        "A specific type of ModelMod",
+    (shared.ChangePropertyType, 'AncillaryFile'):
+        "A specific type of ModelMod",
+    (shared.ChangePropertyType, 'BoundaryCondition'):
+        "A specific type of ModelMod",
+    (shared.ChangePropertyType, 'InitialCondition'):
+        "A specific type of ModelMod",
     (shared.ChangePropertyType, 'Unused'):
         None,
     (shared.DataPurpose, 'ancillaryFile'):
@@ -10355,17 +10355,17 @@ DOC_STRINGS = {
         None,
     (shared.DataPurpose, 'initialCondition'):
         None,
-    (shared.MachineType, 'Beowulf'):
-        None,
     (shared.MachineType, 'Parallel'):
         None,
     (shared.MachineType, 'Vector'):
         None,
+    (shared.MachineType, 'Beowulf'):
+        None,
     (software.ComponentPropertyIntentType, 'in'):
         None,
-    (software.ComponentPropertyIntentType, 'inout'):
-        None,
     (software.ComponentPropertyIntentType, 'out'):
+        None,
+    (software.ComponentPropertyIntentType, 'inout'):
         None,
     (software.CouplingFrameworkType, 'BFG'):
         None,
@@ -10379,35 +10379,35 @@ DOC_STRINGS = {
         None,
     (software.SpatialRegriddingDimensionType, '3D'):
         None,
-    (software.SpatialRegriddingStandardMethodType, 'conservative'):
+    (software.SpatialRegriddingStandardMethodType, 'linear'):
+        None,
+    (software.SpatialRegriddingStandardMethodType, 'near-neighbour'):
+        None,
+    (software.SpatialRegriddingStandardMethodType, 'cubic'):
         None,
     (software.SpatialRegriddingStandardMethodType, 'conservative-first-order'):
         None,
     (software.SpatialRegriddingStandardMethodType, 'conservative-second-order'):
         None,
-    (software.SpatialRegriddingStandardMethodType, 'cubic'):
-        None,
-    (software.SpatialRegriddingStandardMethodType, 'linear'):
-        None,
-    (software.SpatialRegriddingStandardMethodType, 'near-neighbour'):
+    (software.SpatialRegriddingStandardMethodType, 'conservative'):
         None,
     (software.SpatialRegriddingStandardMethodType, 'non-conservative'):
         None,
-    (software.TimingUnits, 'centuries'):
-        None,
-    (software.TimingUnits, 'days'):
-        None,
-    (software.TimingUnits, 'decades'):
-        None,
-    (software.TimingUnits, 'hours'):
+    (software.TimingUnits, 'seconds'):
         None,
     (software.TimingUnits, 'minutes'):
         None,
+    (software.TimingUnits, 'hours'):
+        None,
+    (software.TimingUnits, 'days'):
+        None,
     (software.TimingUnits, 'months'):
         None,
-    (software.TimingUnits, 'seconds'):
-        None,
     (software.TimingUnits, 'years'):
+        None,
+    (software.TimingUnits, 'decades'):
+        None,
+    (software.TimingUnits, 'centuries'):
         None,
 }
 
@@ -11030,144 +11030,144 @@ KEYS = {
     # Enum members.
     # ------------------------------------------------
 
-    (activity.ConformanceType, 'combination'): "cim.1.activity.ConformanceType.combination",
-    (activity.ConformanceType, 'not conformant'): "cim.1.activity.ConformanceType.not-conformant",
     (activity.ConformanceType, 'not-xxx'): "cim.1.activity.ConformanceType.not-xxx",
+    (activity.ConformanceType, 'not conformant'): "cim.1.activity.ConformanceType.not-conformant",
     (activity.ConformanceType, 'standard config'): "cim.1.activity.ConformanceType.standard-config",
     (activity.ConformanceType, 'via inputs'): "cim.1.activity.ConformanceType.via-inputs",
     (activity.ConformanceType, 'via model mods'): "cim.1.activity.ConformanceType.via-model-mods",
-    (activity.DownscalingType, 'dynamic'): "cim.1.activity.DownscalingType.dynamic",
+    (activity.ConformanceType, 'combination'): "cim.1.activity.ConformanceType.combination",
     (activity.DownscalingType, 'statistical'): "cim.1.activity.DownscalingType.statistical",
+    (activity.DownscalingType, 'dynamic'): "cim.1.activity.DownscalingType.dynamic",
+    (activity.ExperimentRelationshipType, 'previousRealisation'): "cim.1.activity.ExperimentRelationshipType.previousRealisation",
     (activity.ExperimentRelationshipType, 'continuationOf'): "cim.1.activity.ExperimentRelationshipType.continuationOf",
     (activity.ExperimentRelationshipType, 'controlExperiment'): "cim.1.activity.ExperimentRelationshipType.controlExperiment",
-    (activity.ExperimentRelationshipType, 'extensionOf'): "cim.1.activity.ExperimentRelationshipType.extensionOf",
     (activity.ExperimentRelationshipType, 'higherResolutionVersionOf'): "cim.1.activity.ExperimentRelationshipType.higherResolutionVersionOf",
-    (activity.ExperimentRelationshipType, 'increaseEnsembleOf'): "cim.1.activity.ExperimentRelationshipType.increaseEnsembleOf",
     (activity.ExperimentRelationshipType, 'lowerResolutionVersionOf'): "cim.1.activity.ExperimentRelationshipType.lowerResolutionVersionOf",
+    (activity.ExperimentRelationshipType, 'increaseEnsembleOf'): "cim.1.activity.ExperimentRelationshipType.increaseEnsembleOf",
     (activity.ExperimentRelationshipType, 'modifiedInputMethodOf'): "cim.1.activity.ExperimentRelationshipType.modifiedInputMethodOf",
-    (activity.ExperimentRelationshipType, 'previousRealisation'): "cim.1.activity.ExperimentRelationshipType.previousRealisation",
     (activity.ExperimentRelationshipType, 'shorterVersionOf'): "cim.1.activity.ExperimentRelationshipType.shorterVersionOf",
-    (activity.SimulationRelationshipType, 'continuationOf'): "cim.1.activity.SimulationRelationshipType.continuationOf",
+    (activity.ExperimentRelationshipType, 'extensionOf'): "cim.1.activity.ExperimentRelationshipType.extensionOf",
     (activity.SimulationRelationshipType, 'extensionOf'): "cim.1.activity.SimulationRelationshipType.extensionOf",
-    (activity.SimulationRelationshipType, 'fixedVersionOf'): "cim.1.activity.SimulationRelationshipType.fixedVersionOf",
-    (activity.SimulationRelationshipType, 'followingSimulation'): "cim.1.activity.SimulationRelationshipType.followingSimulation",
+    (activity.SimulationRelationshipType, 'responseTo'): "cim.1.activity.SimulationRelationshipType.responseTo",
+    (activity.SimulationRelationshipType, 'continuationOf'): "cim.1.activity.SimulationRelationshipType.continuationOf",
+    (activity.SimulationRelationshipType, 'previousSimulation'): "cim.1.activity.SimulationRelationshipType.previousSimulation",
     (activity.SimulationRelationshipType, 'higherResolutionVersionOf'): "cim.1.activity.SimulationRelationshipType.higherResolutionVersionOf",
     (activity.SimulationRelationshipType, 'lowerResolutionVersionOf'): "cim.1.activity.SimulationRelationshipType.lowerResolutionVersionOf",
-    (activity.SimulationRelationshipType, 'previousSimulation'): "cim.1.activity.SimulationRelationshipType.previousSimulation",
-    (activity.SimulationRelationshipType, 'responseTo'): "cim.1.activity.SimulationRelationshipType.responseTo",
+    (activity.SimulationRelationshipType, 'fixedVersionOf'): "cim.1.activity.SimulationRelationshipType.fixedVersionOf",
+    (activity.SimulationRelationshipType, 'followingSimulation'): "cim.1.activity.SimulationRelationshipType.followingSimulation",
+    (activity.SimulationType, 'simulationRun'): "cim.1.activity.SimulationType.simulationRun",
     (activity.SimulationType, 'assimilation'): "cim.1.activity.SimulationType.assimilation",
     (activity.SimulationType, 'simulationComposite'): "cim.1.activity.SimulationType.simulationComposite",
-    (activity.SimulationType, 'simulationRun'): "cim.1.activity.SimulationType.simulationRun",
     (data.DataStatusType, 'complete'): "cim.1.data.DataStatusType.complete",
-    (data.DataStatusType, 'continuouslySupplemented'): "cim.1.data.DataStatusType.continuouslySupplemented",
     (data.DataStatusType, 'metadataOnly'): "cim.1.data.DataStatusType.metadataOnly",
-    (grids.ArcTypeEnum, 'complex'): "cim.1.grids.ArcTypeEnum.complex",
+    (data.DataStatusType, 'continuouslySupplemented'): "cim.1.data.DataStatusType.continuouslySupplemented",
     (grids.ArcTypeEnum, 'geodesic'): "cim.1.grids.ArcTypeEnum.geodesic",
     (grids.ArcTypeEnum, 'great_circle'): "cim.1.grids.ArcTypeEnum.great_circle",
     (grids.ArcTypeEnum, 'small_circle'): "cim.1.grids.ArcTypeEnum.small_circle",
+    (grids.ArcTypeEnum, 'complex'): "cim.1.grids.ArcTypeEnum.complex",
     (grids.DiscretizationEnum, 'logically_rectangular'): "cim.1.grids.DiscretizationEnum.logically_rectangular",
-    (grids.DiscretizationEnum, 'other'): "cim.1.grids.DiscretizationEnum.other",
-    (grids.DiscretizationEnum, 'pixel-based_catchment'): "cim.1.grids.DiscretizationEnum.pixel-based_catchment",
-    (grids.DiscretizationEnum, 'spherical_harmonics'): "cim.1.grids.DiscretizationEnum.spherical_harmonics",
     (grids.DiscretizationEnum, 'structured_triangular'): "cim.1.grids.DiscretizationEnum.structured_triangular",
-    (grids.DiscretizationEnum, 'unstructured_polygonal'): "cim.1.grids.DiscretizationEnum.unstructured_polygonal",
     (grids.DiscretizationEnum, 'unstructured_triangular'): "cim.1.grids.DiscretizationEnum.unstructured_triangular",
-    (grids.FeatureTypeEnum, 'edge'): "cim.1.grids.FeatureTypeEnum.edge",
+    (grids.DiscretizationEnum, 'pixel-based_catchment'): "cim.1.grids.DiscretizationEnum.pixel-based_catchment",
+    (grids.DiscretizationEnum, 'unstructured_polygonal'): "cim.1.grids.DiscretizationEnum.unstructured_polygonal",
+    (grids.DiscretizationEnum, 'spherical_harmonics'): "cim.1.grids.DiscretizationEnum.spherical_harmonics",
+    (grids.DiscretizationEnum, 'other'): "cim.1.grids.DiscretizationEnum.other",
     (grids.FeatureTypeEnum, 'point'): "cim.1.grids.FeatureTypeEnum.point",
+    (grids.FeatureTypeEnum, 'edge'): "cim.1.grids.FeatureTypeEnum.edge",
     (grids.GeometryTypeEnum, 'ellipsoid'): "cim.1.grids.GeometryTypeEnum.ellipsoid",
     (grids.GeometryTypeEnum, 'plane'): "cim.1.grids.GeometryTypeEnum.plane",
     (grids.GeometryTypeEnum, 'sphere'): "cim.1.grids.GeometryTypeEnum.sphere",
     (grids.GridNodePositionEnum, 'centre'): "cim.1.grids.GridNodePositionEnum.centre",
     (grids.GridNodePositionEnum, 'plane'): "cim.1.grids.GridNodePositionEnum.plane",
     (grids.GridNodePositionEnum, 'sphere'): "cim.1.grids.GridNodePositionEnum.sphere",
-    (grids.GridTypeEnum, 'composite'): "cim.1.grids.GridTypeEnum.composite",
     (grids.GridTypeEnum, 'cubed_sphere'): "cim.1.grids.GridTypeEnum.cubed_sphere",
     (grids.GridTypeEnum, 'displaced_pole'): "cim.1.grids.GridTypeEnum.displaced_pole",
     (grids.GridTypeEnum, 'icosahedral_geodesic'): "cim.1.grids.GridTypeEnum.icosahedral_geodesic",
-    (grids.GridTypeEnum, 'other'): "cim.1.grids.GridTypeEnum.other",
     (grids.GridTypeEnum, 'reduced_gaussian'): "cim.1.grids.GridTypeEnum.reduced_gaussian",
     (grids.GridTypeEnum, 'regular_lat_lon'): "cim.1.grids.GridTypeEnum.regular_lat_lon",
     (grids.GridTypeEnum, 'spectral_gaussian'): "cim.1.grids.GridTypeEnum.spectral_gaussian",
     (grids.GridTypeEnum, 'tripolar'): "cim.1.grids.GridTypeEnum.tripolar",
     (grids.GridTypeEnum, 'yin_yang'): "cim.1.grids.GridTypeEnum.yin_yang",
+    (grids.GridTypeEnum, 'composite'): "cim.1.grids.GridTypeEnum.composite",
+    (grids.GridTypeEnum, 'other'): "cim.1.grids.GridTypeEnum.other",
     (grids.HorizontalCsEnum, 'cartesian'): "cim.1.grids.HorizontalCsEnum.cartesian",
     (grids.HorizontalCsEnum, 'ellipsoidal'): "cim.1.grids.HorizontalCsEnum.ellipsoidal",
     (grids.HorizontalCsEnum, 'polar'): "cim.1.grids.HorizontalCsEnum.polar",
     (grids.HorizontalCsEnum, 'spherical'): "cim.1.grids.HorizontalCsEnum.spherical",
-    (grids.RefinementTypeEnum, 'integer'): "cim.1.grids.RefinementTypeEnum.integer",
     (grids.RefinementTypeEnum, 'none'): "cim.1.grids.RefinementTypeEnum.none",
+    (grids.RefinementTypeEnum, 'integer'): "cim.1.grids.RefinementTypeEnum.integer",
     (grids.RefinementTypeEnum, 'rational'): "cim.1.grids.RefinementTypeEnum.rational",
     (grids.VerticalCsEnum, 'mass-based'): "cim.1.grids.VerticalCsEnum.mass-based",
     (grids.VerticalCsEnum, 'space-based'): "cim.1.grids.VerticalCsEnum.space-based",
-    (quality.CimFeatureType, 'diagnostic'): "cim.1.quality.CimFeatureType.diagnostic",
     (quality.CimFeatureType, 'file'): "cim.1.quality.CimFeatureType.file",
+    (quality.CimFeatureType, 'diagnostic'): "cim.1.quality.CimFeatureType.diagnostic",
+    (quality.CimResultType, 'plot'): "cim.1.quality.CimResultType.plot",
     (quality.CimResultType, 'document'): "cim.1.quality.CimResultType.document",
     (quality.CimResultType, 'logfile'): "cim.1.quality.CimResultType.logfile",
-    (quality.CimResultType, 'plot'): "cim.1.quality.CimResultType.plot",
     (quality.CimScopeCodeType, 'dataset'): "cim.1.quality.CimScopeCodeType.dataset",
-    (quality.CimScopeCodeType, 'ensemble'): "cim.1.quality.CimScopeCodeType.ensemble",
-    (quality.CimScopeCodeType, 'experiment'): "cim.1.quality.CimScopeCodeType.experiment",
-    (quality.CimScopeCodeType, 'file'): "cim.1.quality.CimScopeCodeType.file",
+    (quality.CimScopeCodeType, 'software'): "cim.1.quality.CimScopeCodeType.software",
+    (quality.CimScopeCodeType, 'service'): "cim.1.quality.CimScopeCodeType.service",
     (quality.CimScopeCodeType, 'model'): "cim.1.quality.CimScopeCodeType.model",
     (quality.CimScopeCodeType, 'modelComponent'): "cim.1.quality.CimScopeCodeType.modelComponent",
-    (quality.CimScopeCodeType, 'numericalRequirement'): "cim.1.quality.CimScopeCodeType.numericalRequirement",
-    (quality.CimScopeCodeType, 'service'): "cim.1.quality.CimScopeCodeType.service",
     (quality.CimScopeCodeType, 'simulation'): "cim.1.quality.CimScopeCodeType.simulation",
-    (quality.CimScopeCodeType, 'software'): "cim.1.quality.CimScopeCodeType.software",
-    (quality.QualityIssueType, 'data_content'): "cim.1.quality.QualityIssueType.data_content",
-    (quality.QualityIssueType, 'data_format'): "cim.1.quality.QualityIssueType.data_format",
-    (quality.QualityIssueType, 'data_indexing'): "cim.1.quality.QualityIssueType.data_indexing",
+    (quality.CimScopeCodeType, 'experiment'): "cim.1.quality.CimScopeCodeType.experiment",
+    (quality.CimScopeCodeType, 'numericalRequirement'): "cim.1.quality.CimScopeCodeType.numericalRequirement",
+    (quality.CimScopeCodeType, 'ensemble'): "cim.1.quality.CimScopeCodeType.ensemble",
+    (quality.CimScopeCodeType, 'file'): "cim.1.quality.CimScopeCodeType.file",
     (quality.QualityIssueType, 'metadata'): "cim.1.quality.QualityIssueType.metadata",
+    (quality.QualityIssueType, 'data_format'): "cim.1.quality.QualityIssueType.data_format",
+    (quality.QualityIssueType, 'data_content'): "cim.1.quality.QualityIssueType.data_content",
+    (quality.QualityIssueType, 'data_indexing'): "cim.1.quality.QualityIssueType.data_indexing",
     (quality.QualityIssueType, 'science'): "cim.1.quality.QualityIssueType.science",
     (quality.QualitySeverityType, 'cosmetic'): "cim.1.quality.QualitySeverityType.cosmetic",
-    (quality.QualitySeverityType, 'major'): "cim.1.quality.QualitySeverityType.major",
     (quality.QualitySeverityType, 'minor'): "cim.1.quality.QualitySeverityType.minor",
+    (quality.QualitySeverityType, 'major'): "cim.1.quality.QualitySeverityType.major",
+    (quality.QualityStatusType, 'reported'): "cim.1.quality.QualityStatusType.reported",
     (quality.QualityStatusType, 'confirmed'): "cim.1.quality.QualityStatusType.confirmed",
     (quality.QualityStatusType, 'partially_resolved'): "cim.1.quality.QualityStatusType.partially_resolved",
-    (quality.QualityStatusType, 'reported'): "cim.1.quality.QualityStatusType.reported",
     (quality.QualityStatusType, 'resolved'): "cim.1.quality.QualityStatusType.resolved",
-    (shared.ChangePropertyType, 'AncillaryFile'): "cim.1.shared.ChangePropertyType.AncillaryFile",
-    (shared.ChangePropertyType, 'BoundaryCondition'): "cim.1.shared.ChangePropertyType.BoundaryCondition",
-    (shared.ChangePropertyType, 'CodeChange'): "cim.1.shared.ChangePropertyType.CodeChange",
-    (shared.ChangePropertyType, 'Decrement'): "cim.1.shared.ChangePropertyType.Decrement",
-    (shared.ChangePropertyType, 'Increment'): "cim.1.shared.ChangePropertyType.Increment",
-    (shared.ChangePropertyType, 'InitialCondition'): "cim.1.shared.ChangePropertyType.InitialCondition",
     (shared.ChangePropertyType, 'InputMod'): "cim.1.shared.ChangePropertyType.InputMod",
     (shared.ChangePropertyType, 'ModelMod'): "cim.1.shared.ChangePropertyType.ModelMod",
-    (shared.ChangePropertyType, 'ParameterChange'): "cim.1.shared.ChangePropertyType.ParameterChange",
+    (shared.ChangePropertyType, 'Decrement'): "cim.1.shared.ChangePropertyType.Decrement",
+    (shared.ChangePropertyType, 'Increment'): "cim.1.shared.ChangePropertyType.Increment",
     (shared.ChangePropertyType, 'Redistribution'): "cim.1.shared.ChangePropertyType.Redistribution",
     (shared.ChangePropertyType, 'Replacement'): "cim.1.shared.ChangePropertyType.Replacement",
+    (shared.ChangePropertyType, 'ParameterChange'): "cim.1.shared.ChangePropertyType.ParameterChange",
+    (shared.ChangePropertyType, 'CodeChange'): "cim.1.shared.ChangePropertyType.CodeChange",
+    (shared.ChangePropertyType, 'AncillaryFile'): "cim.1.shared.ChangePropertyType.AncillaryFile",
+    (shared.ChangePropertyType, 'BoundaryCondition'): "cim.1.shared.ChangePropertyType.BoundaryCondition",
+    (shared.ChangePropertyType, 'InitialCondition'): "cim.1.shared.ChangePropertyType.InitialCondition",
     (shared.ChangePropertyType, 'Unused'): "cim.1.shared.ChangePropertyType.Unused",
     (shared.DataPurpose, 'ancillaryFile'): "cim.1.shared.DataPurpose.ancillaryFile",
     (shared.DataPurpose, 'boundaryCondition'): "cim.1.shared.DataPurpose.boundaryCondition",
     (shared.DataPurpose, 'initialCondition'): "cim.1.shared.DataPurpose.initialCondition",
-    (shared.MachineType, 'Beowulf'): "cim.1.shared.MachineType.Beowulf",
     (shared.MachineType, 'Parallel'): "cim.1.shared.MachineType.Parallel",
     (shared.MachineType, 'Vector'): "cim.1.shared.MachineType.Vector",
+    (shared.MachineType, 'Beowulf'): "cim.1.shared.MachineType.Beowulf",
     (software.ComponentPropertyIntentType, 'in'): "cim.1.software.ComponentPropertyIntentType.in",
-    (software.ComponentPropertyIntentType, 'inout'): "cim.1.software.ComponentPropertyIntentType.inout",
     (software.ComponentPropertyIntentType, 'out'): "cim.1.software.ComponentPropertyIntentType.out",
+    (software.ComponentPropertyIntentType, 'inout'): "cim.1.software.ComponentPropertyIntentType.inout",
     (software.CouplingFrameworkType, 'BFG'): "cim.1.software.CouplingFrameworkType.BFG",
     (software.CouplingFrameworkType, 'ESMF'): "cim.1.software.CouplingFrameworkType.ESMF",
     (software.CouplingFrameworkType, 'OASIS'): "cim.1.software.CouplingFrameworkType.OASIS",
     (software.SpatialRegriddingDimensionType, '1D'): "cim.1.software.SpatialRegriddingDimensionType.1D",
     (software.SpatialRegriddingDimensionType, '2D'): "cim.1.software.SpatialRegriddingDimensionType.2D",
     (software.SpatialRegriddingDimensionType, '3D'): "cim.1.software.SpatialRegriddingDimensionType.3D",
-    (software.SpatialRegriddingStandardMethodType, 'conservative'): "cim.1.software.SpatialRegriddingStandardMethodType.conservative",
-    (software.SpatialRegriddingStandardMethodType, 'conservative-first-order'): "cim.1.software.SpatialRegriddingStandardMethodType.conservative-first-order",
-    (software.SpatialRegriddingStandardMethodType, 'conservative-second-order'): "cim.1.software.SpatialRegriddingStandardMethodType.conservative-second-order",
-    (software.SpatialRegriddingStandardMethodType, 'cubic'): "cim.1.software.SpatialRegriddingStandardMethodType.cubic",
     (software.SpatialRegriddingStandardMethodType, 'linear'): "cim.1.software.SpatialRegriddingStandardMethodType.linear",
     (software.SpatialRegriddingStandardMethodType, 'near-neighbour'): "cim.1.software.SpatialRegriddingStandardMethodType.near-neighbour",
+    (software.SpatialRegriddingStandardMethodType, 'cubic'): "cim.1.software.SpatialRegriddingStandardMethodType.cubic",
+    (software.SpatialRegriddingStandardMethodType, 'conservative-first-order'): "cim.1.software.SpatialRegriddingStandardMethodType.conservative-first-order",
+    (software.SpatialRegriddingStandardMethodType, 'conservative-second-order'): "cim.1.software.SpatialRegriddingStandardMethodType.conservative-second-order",
+    (software.SpatialRegriddingStandardMethodType, 'conservative'): "cim.1.software.SpatialRegriddingStandardMethodType.conservative",
     (software.SpatialRegriddingStandardMethodType, 'non-conservative'): "cim.1.software.SpatialRegriddingStandardMethodType.non-conservative",
-    (software.TimingUnits, 'centuries'): "cim.1.software.TimingUnits.centuries",
-    (software.TimingUnits, 'days'): "cim.1.software.TimingUnits.days",
-    (software.TimingUnits, 'decades'): "cim.1.software.TimingUnits.decades",
-    (software.TimingUnits, 'hours'): "cim.1.software.TimingUnits.hours",
-    (software.TimingUnits, 'minutes'): "cim.1.software.TimingUnits.minutes",
-    (software.TimingUnits, 'months'): "cim.1.software.TimingUnits.months",
     (software.TimingUnits, 'seconds'): "cim.1.software.TimingUnits.seconds",
+    (software.TimingUnits, 'minutes'): "cim.1.software.TimingUnits.minutes",
+    (software.TimingUnits, 'hours'): "cim.1.software.TimingUnits.hours",
+    (software.TimingUnits, 'days'): "cim.1.software.TimingUnits.days",
+    (software.TimingUnits, 'months'): "cim.1.software.TimingUnits.months",
     (software.TimingUnits, 'years'): "cim.1.software.TimingUnits.years",
+    (software.TimingUnits, 'decades'): "cim.1.software.TimingUnits.decades",
+    (software.TimingUnits, 'centuries'): "cim.1.software.TimingUnits.centuries",
 }
 
 # Set inline type keys.

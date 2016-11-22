@@ -1,10 +1,11 @@
 {% if requirements %}
-{% set requirements = sorted(requirements, key=lambda r: r.name.lower() if r.name else str()) %}
 <section>
 	<header>
 		<h{{ header }}>{{ description }}</h{{ header }}>
 	</header>
+	{% set processed_requirements = [] %}
 	{% for requirement in requirements %}
+	{% if requirement.long_name not in processed_requirements %}
 	{% set ctx = TemplateInfo(requirement, fieldset=str(type(requirement))) %}
 	<section>
 		<header>
@@ -16,6 +17,8 @@
 			</tbody>
 		</table>
 	</section>
+	{% set processed_requirements += [requirement.long_name] %}
+	{% end %}
 	{% end %}
 </section>
 {% end %}

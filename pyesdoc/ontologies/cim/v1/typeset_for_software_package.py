@@ -472,6 +472,11 @@ class ComponentPropertyIntentType(object):
         "inout",
         "out"
         ]
+    descriptions = [
+        "None",
+        "None",
+        "None"
+        ]
 
 
 class ConnectionType(object):
@@ -481,6 +486,7 @@ class ConnectionType(object):
     """
     is_open = True
     members = []
+    descriptions = []
 
 
 class CouplingFrameworkType(object):
@@ -494,6 +500,11 @@ class CouplingFrameworkType(object):
         "ESMF",
         "OASIS"
         ]
+    descriptions = [
+        "None",
+        "None",
+        "None"
+        ]
 
 
 class ModelComponentType(object):
@@ -503,6 +514,7 @@ class ModelComponentType(object):
     """
     is_open = True
     members = []
+    descriptions = []
 
 
 class SpatialRegriddingDimensionType(object):
@@ -515,6 +527,11 @@ class SpatialRegriddingDimensionType(object):
         "1D",
         "2D",
         "3D"
+        ]
+    descriptions = [
+        "None",
+        "None",
+        "None"
         ]
 
 
@@ -533,6 +550,15 @@ class SpatialRegriddingStandardMethodType(object):
         "near-neighbour",
         "non-conservative"
         ]
+    descriptions = [
+        "None",
+        "None",
+        "None",
+        "None",
+        "None",
+        "None",
+        "None"
+        ]
 
 
 class StatisticalModelComponentType(object):
@@ -542,6 +568,7 @@ class StatisticalModelComponentType(object):
     """
     is_open = True
     members = []
+    descriptions = []
 
 
 class TimeMappingType(object):
@@ -551,6 +578,7 @@ class TimeMappingType(object):
     """
     is_open = True
     members = []
+    descriptions = []
 
 
 class TimingUnits(object):
@@ -568,6 +596,16 @@ class TimingUnits(object):
         "months",
         "seconds",
         "years"
+        ]
+    descriptions = [
+        "None",
+        "None",
+        "None",
+        "None",
+        "None",
+        "None",
+        "None",
+        "None"
         ]
 
 

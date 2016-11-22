@@ -134,9 +134,14 @@ class DataAssociationTypes(object):
     """
     is_open = False
     members = [
-        "isComposedOf",
+        "revisonOf",
         "partOf",
-        "revisonOf"
+        "isComposedOf"
+        ]
+    descriptions = [
+        "This dataset was revised from the target",
+        "This dataset forms part of the target",
+        "This dataset is composed from the target"
         ]
 
 

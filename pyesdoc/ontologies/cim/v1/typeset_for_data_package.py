@@ -300,6 +300,7 @@ class DataHierarchyType(object):
     """
     is_open = True
     members = []
+    descriptions = []
 
 
 class DataStatusType(object):
@@ -312,6 +313,11 @@ class DataStatusType(object):
         "complete",
         "continuouslySupplemented",
         "metadataOnly"
+        ]
+    descriptions = [
+        "This DataObject is complete.",
+        "This DataObject is incomplete - it is described in metadata but the actual data has not yet been linked to it.",
+        "This DataObject's actual data is continuously updated."
         ]
 
 

@@ -221,6 +221,12 @@ class ArcTypeEnum(object):
         "great_circle",
         "small_circle"
         ]
+    descriptions = [
+        "None",
+        "None",
+        "None",
+        "None"
+        ]
 
 
 class DiscretizationEnum(object):
@@ -238,6 +244,15 @@ class DiscretizationEnum(object):
         "unstructured_polygonal",
         "unstructured_triangular"
         ]
+    descriptions = [
+        "None",
+        "None",
+        "None",
+        "None",
+        "None",
+        "None",
+        "None"
+        ]
 
 
 class FeatureTypeEnum(object):
@@ -249,6 +264,10 @@ class FeatureTypeEnum(object):
     members = [
         "edge",
         "point"
+        ]
+    descriptions = [
+        "None",
+        "None"
         ]
 
 
@@ -263,6 +282,11 @@ class GeometryTypeEnum(object):
         "plane",
         "sphere"
         ]
+    descriptions = [
+        "None",
+        "None",
+        "None"
+        ]
 
 
 class GridNodePositionEnum(object):
@@ -275,6 +299,11 @@ class GridNodePositionEnum(object):
         "centre",
         "plane",
         "sphere"
+        ]
+    descriptions = [
+        "None",
+        "None",
+        "None"
         ]
 
 
@@ -296,6 +325,18 @@ class GridTypeEnum(object):
         "tripolar",
         "yin_yang"
         ]
+    descriptions = [
+        "None",
+        "None",
+        "None",
+        "None",
+        "None",
+        "None",
+        "None",
+        "None",
+        "None",
+        "None"
+        ]
 
 
 class HorizontalCsEnum(object):
@@ -310,6 +351,12 @@ class HorizontalCsEnum(object):
         "polar",
         "spherical"
         ]
+    descriptions = [
+        "None",
+        "None",
+        "None",
+        "None"
+        ]
 
 
 class RefinementTypeEnum(object):
@@ -323,6 +370,11 @@ class RefinementTypeEnum(object):
         "none",
         "rational"
         ]
+    descriptions = [
+        "The refinement is integer when grid lines from the coarser grid are continuous on the finer grid, but not vice versa.",
+        "The refinement is rational when the adjacent or overlapping grid tiles have grid line counts that are coprime (i.e. no common factor other than 1).",
+        "Tile boundaries have no refinement when the grid lines meeting at the tile boundary are continuous."
+        ]
 
 
 class VerticalCsEnum(object):
@@ -334,6 +386,10 @@ class VerticalCsEnum(object):
     members = [
         "mass-based",
         "space-based"
+        ]
+    descriptions = [
+        "None",
+        "None"
         ]
 
 

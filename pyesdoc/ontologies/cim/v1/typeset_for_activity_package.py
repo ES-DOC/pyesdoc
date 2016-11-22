@@ -463,6 +463,14 @@ class ConformanceType(object):
         "via inputs",
         "via model mods"
         ]
+    descriptions = [
+        "Describes a simulation that conforms to an experimental requirement by changing the configuration of the software model implementing that simulation.",
+        "Describes a simulation that conforms to an experimental requirement by using more than one method.",
+        "Describes a simulation that conforms to an experimental requirement by using particular inputs.",
+        "Describes a simulation that is naturally conformant to an experimental requirement.",
+        "Describes a simulation that is purpefully non-conformant to an experimental requirement.",
+        "None"
+        ]
 
 
 class DownscalingType(object):
@@ -475,6 +483,10 @@ class DownscalingType(object):
         "dynamic",
         "statistical"
         ]
+    descriptions = [
+        "None",
+        "None"
+        ]
 
 
 class EnsembleType(object):
@@ -484,6 +496,7 @@ class EnsembleType(object):
     """
     is_open = True
     members = []
+    descriptions = []
 
 
 class ExperimentRelationshipType(object):
@@ -503,6 +516,17 @@ class ExperimentRelationshipType(object):
         "previousRealisation",
         "shorterVersionOf"
         ]
+    descriptions = [
+        "None",
+        "None",
+        "None",
+        "None",
+        "None",
+        "None",
+        "None",
+        "None",
+        "None"
+        ]
 
 
 class FrequencyType(object):
@@ -512,6 +536,7 @@ class FrequencyType(object):
     """
     is_open = True
     members = []
+    descriptions = []
 
 
 class ProjectType(object):
@@ -521,6 +546,7 @@ class ProjectType(object):
     """
     is_open = True
     members = []
+    descriptions = []
 
 
 class ResolutionType(object):
@@ -530,6 +556,7 @@ class ResolutionType(object):
     """
     is_open = True
     members = []
+    descriptions = []
 
 
 class SimulationRelationshipType(object):
@@ -548,6 +575,16 @@ class SimulationRelationshipType(object):
         "previousSimulation",
         "responseTo"
         ]
+    descriptions = [
+        "None",
+        "None",
+        "None",
+        "None",
+        "None",
+        "None",
+        "None",
+        "None"
+        ]
 
 
 class SimulationType(object):
@@ -560,6 +597,11 @@ class SimulationType(object):
         "assimilation",
         "simulationComposite",
         "simulationRun"
+        ]
+    descriptions = [
+        "None",
+        "None",
+        "None"
         ]
 
 

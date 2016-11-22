@@ -249,13 +249,22 @@ class EnsembleTypes(object):
     """
     is_open = False
     members = [
-        "Driven",
-        "Forced",
-        "Initialisation Method",
         "Perturbed Physics",
+        "Initialisation Method",
         "Realization",
+        "Start Date",
+        "Forced",
         "Resolution",
-        "Start Date"
+        "Driven"
+        ]
+    descriptions = [
+        "Members differ in some aspects of their physics.",
+        "Members differ in how they are initialised.",
+        "Members initialised to sample possible initial conditions.",
+        "Members initialised at different starting dates.",
+        "Members have differing forcing data.",
+        "Members are/should-be run at different resolutions.",
+        "Members are/should-be driven by different models."
         ]
 
 
@@ -268,8 +277,14 @@ class ExperimentalRelationships(object):
     members = [
         "control_for",
         "initialisation_for",
-        "is_sibling",
-        "provides_constraints"
+        "provides_constraints",
+        "is_sibling"
+        ]
+    descriptions = [
+        "This experiment provides a control for the target experiment",
+        "This experiment provides initialisation for the target experiment",
+        "This experiment provides constraint(s) for the target experiment (e.g SST forcing)",
+        "Part of a family (e.g. experiments where solar forcing is either increased or reduced)"
         ]
 
 
@@ -280,10 +295,16 @@ class ForcingTypes(object):
     """
     is_open = False
     members = [
-        "driven",
         "historical",
         "idealised",
-        "scenario"
+        "scenario",
+        "driven"
+        ]
+    descriptions = [
+        "Best estimates of actual state (included synthesized)",
+        "Simplified and/or exemplar, e.g. 1%C02",
+        "Intended to represent a possible future, e.g. RCP4.5",
+        "Driven from another simulation"
         ]
 
 
@@ -294,10 +315,16 @@ class NumericalRequirementScope(object):
     """
     is_open = False
     members = [
-        "experiment",
-        "mip",
         "mip-era",
-        "mip-group"
+        "mip-group",
+        "mip",
+        "experiment"
+        ]
+    descriptions = [
+        "MIP era wide e.g. 'concentration of pre-industrial CO2' & 'Impose AMIP SSTs'",
+        "Shared across a group of MIPs e.g. aerosol forcing in GeoMIP and AerChemMIP.",
+        "Shared within a single MIP e.g. spin-up protocol for land surface experiments in LUMIP.",
+        "Applies to a single experiment e.g. CFMIP 'zonally uniform SST plus 4K'"
         ]
 
 

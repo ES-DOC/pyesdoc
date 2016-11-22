@@ -167,16 +167,28 @@ class CalendarTypes(object):
     """
     is_open = False
     members = [
-        "360_day",
-        "365_day",
-        "366_day",
-        "all_leap",
         "gregorian",
-        "julian",
-        "noleap",
-        "none",
+        "standard",
         "proleptic_gregorian",
-        "standard"
+        "noleap",
+        "365_day",
+        "all_leap",
+        "366_day",
+        "360_day",
+        "julian",
+        "none"
+        ]
+    descriptions = [
+        "Mixed Gregorian/Julian calendar as defined by Udunits",
+        "Synonym for gregorian: Mixed Gregorian/Julian calendar as defined by Udunits",
+        "A Gregorian calendar extended to dates before 1582-10-15. That is, a year is a leap year if either (i) it is divisible by 4 but not by 100 or (ii) it is divisible by 400.",
+        "Gregorian calendar without leap years, i.e., all years are 365 days long.",
+        "Synonym for noleap:Gregorian calendar without leap years, i.e., all years are 365 days long.",
+        "Gregorian calendar with every year being a leap year, i.e., all years are 366 days long.",
+        "Synonym for all_leap:Gregorian calendar with every year being a leap year, i.e., all years are 366 days long.",
+        "All years are 360 days divided into 30 day months.",
+        "Julian Calendar",
+        "Perpetual time axis"
         ]
 
 
@@ -187,9 +199,14 @@ class PeriodDateTypes(object):
     """
     is_open = False
     members = [
-        "date is end",
+        "unused",
         "date is start",
-        "unused"
+        "date is end"
+        ]
+    descriptions = [
+        "Date is not used",
+        "The date defines the start of the period",
+        "The date is the end of the period"
         ]
 
 
@@ -200,10 +217,16 @@ class TimeUnits(object):
     """
     is_open = False
     members = [
-        "days",
+        "years",
         "months",
-        "seconds",
-        "years"
+        "days",
+        "seconds"
+        ]
+    descriptions = [
+        "Years in current calendar",
+        "Months in the current calendar",
+        "86400 seconds",
+        "Standard metric seconds"
         ]
 
 

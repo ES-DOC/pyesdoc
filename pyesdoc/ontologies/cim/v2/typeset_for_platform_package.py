@@ -19,38 +19,6 @@ import typeset_for_shared_package as shared
 
 
 
-class ComponentPerformance(object):
-    """A concrete class within the cim v2 type system.
-
-    Describes the simulation rate of a component in seconds per model
-day.
-
-Based on "CPMIP: Measurements of Real Computational Performance of
-Earth System Models" (Balaji et. al.)
-
-    """
-    def __init__(self):
-        """Instance constructor.
-
-        """
-        super(ComponentPerformance, self).__init__()
-
-        self.actual_simulated_years_per_day = None        # float (0.1)
-        self.component = None                             # software.SoftwareComponent (0.1)
-        self.component_name = None                        # unicode (1.1)
-        self.core_hours_per_simulated_year = None         # float (0.1)
-        self.parallelization = None                       # float (0.1)
-        self.simulated_years_per_day = None               # float (0.1)
-
-
-    @property
-    def __str__(self):
-	    """Instrance string representation.
-
-	    """
-	    return "speed {} s/day".format(self.speed)
-
-
 class ComputePool(object):
     """A concrete class within the cim v2 type system.
 
@@ -204,6 +172,33 @@ class StorageVolume(object):
 	    return "{} {}".format(self.volume, self.units)
 
 
+class ComponentPerformance(Performance):
+    """A concrete class within the cim v2 type system.
+
+    Describes the simulation rate of a model component.
+
+Based on "CPMIP: Measurements of Real Computational Performance of
+Earth System Models" (Balaji et. al. 2016, doi:10.5194/gmd-2016-197,
+http://www.geosci-model-dev-discuss.net/gmd-2016-197/)
+
+    """
+    def __init__(self):
+        """Instance constructor.
+
+        """
+        super(ComponentPerformance, self).__init__()
+
+        self.component = None                             # software.SoftwareComponent (1.1)
+
+
+    @property
+    def __str__(self):
+	    """Instrance string representation.
+
+	    """
+	    return "{} (sypd:{})".format(self.name, self.sypd)
+
+
 class Machine(Partition):
     """A concrete class within the cim v2 type system.
 
@@ -226,17 +221,30 @@ class StorageSystems(object):
     """
     is_open = False
     members = [
-        "GPFS",
         "Lustre",
+        "GPFS",
+        "isilon",
         "NFS",
-        "Other Disk",
-        "PanFS",
         "S3",
-        "Tape - Castor",
+        "PanFS",
+        "Other Disk",
         "Tape - MARS",
         "Tape - MASS",
-        "Tape - Other",
-        "isilon"
+        "Tape - Castor",
+        "Tape - Other"
+        ]
+    descriptions = [
+        "Lustre parallel file system",
+        "IBM GPFS (also known as IBM Spectral Scale",
+        "The EMC scaleout NAS solution",
+        "Generic Network File System",
+        "Object file system exposing the AWS S3 interface",
+        "Panasas Parallel File system",
+        "Other disk based file system",
+        "Tape storage system using ECMWF MARS",
+        "Tape storage system using Met Office MASS",
+        "Tape storage sytsem using CERN Castor",
+        "Other tape based system"
         ]
 
 
@@ -247,13 +255,22 @@ class VolumeUnits(object):
     """
     is_open = False
     members = [
-        "EB",
-        "EiB",
         "GB",
-        "PB",
-        "PiB",
         "TB",
-        "TiB"
+        "PB",
+        "EB",
+        "TiB",
+        "PiB",
+        "EiB"
+        ]
+    descriptions = [
+        "Gigabytes (1000^3)",
+        "Terabytes (1000^4)",
+        "Petabytes (1000^5)",
+        "Exabytes (1000^6)",
+        "Tebibytes (1024^4)",
+        "Pebibytes (1024^5)",
+        "Exbibytes (1024^6)"
         ]
 
 

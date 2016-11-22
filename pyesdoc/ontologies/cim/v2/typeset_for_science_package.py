@@ -331,15 +331,27 @@ class ModelTypes(object):
     is_open = False
     members = [
         "Atm Only",
+        "Ocean Only",
+        "Regional",
         "ESM",
         "GCM",
-        "GCM-MLO",
         "IGCM",
+        "GCM-MLO",
         "Mesoscale",
-        "Ocean Only",
-        "Planetary",
         "Process",
-        "Regional"
+        "Planetary"
+        ]
+    descriptions = [
+        "Atmosphere Only",
+        "Ocean Only",
+        "Regional Model",
+        "Earth System Model (Atmosphere, Ocean, Land, Sea-ice and cycles)",
+        "Global Climate Model (Atmosphere, Ocean, no carbon cycle)",
+        "Intermediate Complexity GCM",
+        "GCM with mixed layer ocean",
+        "Mesoscale Model",
+        "Limited Area process model",
+        "Non-Earth model"
         ]
 
 
@@ -355,6 +367,12 @@ class SelectionCardinality(object):
         "0.N",
         "1.1",
         "1.N"
+        ]
+    descriptions = [
+        "Zero or one selections are permitted",
+        "Zero or many selections are permitted",
+        "One and only one selection is required",
+        "At least one, and possibly many, selections are required"
         ]
 
 
