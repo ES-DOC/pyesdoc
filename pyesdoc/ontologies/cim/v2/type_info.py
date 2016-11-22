@@ -133,7 +133,6 @@ CLASSES = (
     software.DevelopmentPath,
     software.EntryPoint,
     software.Gridspec,
-    software.Implementation,
     software.SoftwareComponent,
     software.Variable,
     time.Calendar,
@@ -339,6 +338,7 @@ CLASS_PROPERTIES = {
         'required_extent',
         'required_resolution',
         'additional_requirements',
+        'delivery_order',
         'is_conformance_requested',
         'scope',
         'alternative_names',
@@ -360,6 +360,7 @@ CLASS_PROPERTIES = {
         'ensemble_type',
         'minimum_size',
         'additional_requirements',
+        'delivery_order',
         'is_conformance_requested',
         'scope',
         'alternative_names',
@@ -385,6 +386,7 @@ CLASS_PROPERTIES = {
         'group',
         'origin',
         'additional_requirements',
+        'delivery_order',
         'is_conformance_requested',
         'scope',
         'alternative_names',
@@ -406,6 +408,7 @@ CLASS_PROPERTIES = {
         'initialise_from_data',
         'initialise_from_experiment',
         'additional_requirements',
+        'delivery_order',
         'is_conformance_requested',
         'scope',
         'alternative_names',
@@ -425,6 +428,7 @@ CLASS_PROPERTIES = {
     designing.MultiEnsemble: (
         'ensemble_axis',
         'additional_requirements',
+        'delivery_order',
         'is_conformance_requested',
         'scope',
         'alternative_names',
@@ -462,6 +466,7 @@ CLASS_PROPERTIES = {
     ),
     designing.NumericalRequirement: (
         'additional_requirements',
+        'delivery_order',
         'is_conformance_requested',
         'scope',
         'alternative_names',
@@ -481,6 +486,7 @@ CLASS_PROPERTIES = {
     designing.OutputRequirement: (
         'formal_data_request',
         'additional_requirements',
+        'delivery_order',
         'is_conformance_requested',
         'scope',
         'alternative_names',
@@ -539,6 +545,7 @@ CLASS_PROPERTIES = {
     designing.StartDateEnsemble: (
         'ensemble_members',
         'additional_requirements',
+        'delivery_order',
         'is_conformance_requested',
         'scope',
         'alternative_names',
@@ -561,6 +568,7 @@ CLASS_PROPERTIES = {
         'start_date',
         'start_flexibility',
         'additional_requirements',
+        'delivery_order',
         'is_conformance_requested',
         'scope',
         'alternative_names',
@@ -783,7 +791,6 @@ CLASS_PROPERTIES = {
         'meta',
         'realms',
         'specialization_id',
-        'canonical_id',
         'citations',
         'description',
         'development_history',
@@ -936,7 +943,6 @@ CLASS_PROPERTIES = {
         'encoding',
     ),
     software.ComponentBase: (
-        'canonical_id',
         'citations',
         'description',
         'development_history',
@@ -963,17 +969,6 @@ CLASS_PROPERTIES = {
     software.Gridspec: (
         'description',
     ),
-    software.Implementation: (
-        'canonical_id',
-        'citations',
-        'description',
-        'development_history',
-        'long_name',
-        'name',
-        'release_date',
-        'repository',
-        'version',
-    ),
     software.SoftwareComponent: (
         'composition',
         'connection_points',
@@ -984,7 +979,6 @@ CLASS_PROPERTIES = {
         'language',
         'license',
         'sub_components',
-        'canonical_id',
         'citations',
         'description',
         'development_history',
@@ -1167,6 +1161,7 @@ CLASS_OWN_PROPERTIES = {
     ),
     designing.NumericalRequirement: (
         'additional_requirements',
+        'delivery_order',
         'is_conformance_requested',
         'scope',
     ),
@@ -1463,7 +1458,6 @@ CLASS_OWN_PROPERTIES = {
         'encoding',
     ),
     software.ComponentBase: (
-        'canonical_id',
         'citations',
         'description',
         'development_history',
@@ -1489,17 +1483,6 @@ CLASS_OWN_PROPERTIES = {
     ),
     software.Gridspec: (
         'description',
-    ),
-    software.Implementation: (
-        'canonical_id',
-        'citations',
-        'description',
-        'development_history',
-        'long_name',
-        'name',
-        'release_date',
-        'repository',
-        'version',
     ),
     software.SoftwareComponent: (
         'composition',
@@ -1561,6 +1544,7 @@ ENUMS = (
     designing.EnsembleTypes,
     designing.ExperimentalRelationships,
     designing.ForcingTypes,
+    designing.NumericalRequirementDeliveryOrder,
     designing.NumericalRequirementScope,
     drs.DrsFrequencyTypes,
     drs.DrsGeographicalOperators,
@@ -2152,13 +2136,14 @@ CONSTRAINTS = {
 
         ('rationale', 'type', unicode),
         ('description', 'type', unicode),
+        ('citations', 'type', shared.Citation),
         ('keywords', 'type', unicode),
         ('additional_requirements', 'type', designing.NumericalRequirement),
         ('responsible_parties', 'type', shared.Responsibility),
         ('previously_known_as', 'type', unicode),
         ('long_name', 'type', unicode),
         ('canonical_name', 'type', unicode),
-        ('citations', 'type', shared.Citation),
+        ('delivery_order', 'type', unicode),
         ('meta', 'type', shared.DocMetaInfo),
         ('required_extent', 'type', science.Extent),
         ('internal_name', 'type', unicode),
@@ -2171,13 +2156,14 @@ CONSTRAINTS = {
 
         ('rationale', 'cardinality', "0.1"),
         ('description', 'cardinality', "0.1"),
+        ('citations', 'cardinality', "0.N"),
         ('keywords', 'cardinality', "0.1"),
         ('additional_requirements', 'cardinality', "0.N"),
         ('responsible_parties', 'cardinality', "0.N"),
         ('previously_known_as', 'cardinality', "0.N"),
         ('long_name', 'cardinality', "0.1"),
         ('canonical_name', 'cardinality', "0.1"),
-        ('citations', 'cardinality', "0.N"),
+        ('delivery_order', 'cardinality', "0.1"),
         ('meta', 'cardinality', "1.1"),
         ('required_extent', 'cardinality', "0.1"),
         ('internal_name', 'cardinality', "0.1"),
@@ -2194,13 +2180,14 @@ CONSTRAINTS = {
         ('rationale', 'type', unicode),
         ('minimum_size', 'type', int),
         ('description', 'type', unicode),
+        ('citations', 'type', shared.Citation),
         ('keywords', 'type', unicode),
         ('additional_requirements', 'type', designing.NumericalRequirement),
         ('responsible_parties', 'type', shared.Responsibility),
         ('previously_known_as', 'type', unicode),
         ('long_name', 'type', unicode),
         ('canonical_name', 'type', unicode),
-        ('citations', 'type', shared.Citation),
+        ('delivery_order', 'type', unicode),
         ('meta', 'type', shared.DocMetaInfo),
         ('ensemble_type', 'type', unicode),
         ('internal_name', 'type', unicode),
@@ -2214,13 +2201,14 @@ CONSTRAINTS = {
         ('rationale', 'cardinality', "0.1"),
         ('minimum_size', 'cardinality', "1.1"),
         ('description', 'cardinality', "0.1"),
+        ('citations', 'cardinality', "0.N"),
         ('keywords', 'cardinality', "0.1"),
         ('additional_requirements', 'cardinality', "0.N"),
         ('responsible_parties', 'cardinality', "0.N"),
         ('previously_known_as', 'cardinality', "0.N"),
         ('long_name', 'cardinality', "0.1"),
         ('canonical_name', 'cardinality', "0.1"),
-        ('citations', 'cardinality', "0.N"),
+        ('delivery_order', 'cardinality', "0.1"),
         ('meta', 'cardinality', "1.1"),
         ('ensemble_type', 'cardinality', "1.1"),
         ('internal_name', 'cardinality', "0.1"),
@@ -2253,6 +2241,7 @@ CONSTRAINTS = {
         ('scope', 'type', unicode),
         ('description', 'type', unicode),
         ('duration', 'type', time.TimePeriod),
+        ('delivery_order', 'type', unicode),
         ('rationale', 'type', unicode),
         ('name', 'type', unicode),
         ('additional_requirements', 'type', designing.NumericalRequirement),
@@ -2277,6 +2266,7 @@ CONSTRAINTS = {
         ('scope', 'cardinality', "0.1"),
         ('description', 'cardinality', "0.1"),
         ('duration', 'cardinality', "0.1"),
+        ('delivery_order', 'cardinality', "0.1"),
         ('rationale', 'cardinality', "0.1"),
         ('name', 'cardinality', "1.1"),
         ('additional_requirements', 'cardinality', "0.N"),
@@ -2287,6 +2277,7 @@ CONSTRAINTS = {
 
         ('rationale', 'type', unicode),
         ('description', 'type', unicode),
+        ('citations', 'type', shared.Citation),
         ('keywords', 'type', unicode),
         ('additional_requirements', 'type', designing.NumericalRequirement),
         ('responsible_parties', 'type', shared.Responsibility),
@@ -2294,7 +2285,7 @@ CONSTRAINTS = {
         ('initialise_from_experiment', 'type', designing.NumericalExperiment),
         ('long_name', 'type', unicode),
         ('canonical_name', 'type', unicode),
-        ('citations', 'type', shared.Citation),
+        ('delivery_order', 'type', unicode),
         ('meta', 'type', shared.DocMetaInfo),
         ('branch_time_in_initialisation_source', 'type', time.DateTime),
         ('internal_name', 'type', unicode),
@@ -2307,6 +2298,7 @@ CONSTRAINTS = {
 
         ('rationale', 'cardinality', "0.1"),
         ('description', 'cardinality', "0.1"),
+        ('citations', 'cardinality', "0.N"),
         ('keywords', 'cardinality', "0.1"),
         ('additional_requirements', 'cardinality', "0.N"),
         ('responsible_parties', 'cardinality', "0.N"),
@@ -2314,7 +2306,7 @@ CONSTRAINTS = {
         ('initialise_from_experiment', 'cardinality', "0.1"),
         ('long_name', 'cardinality', "0.1"),
         ('canonical_name', 'cardinality', "0.1"),
-        ('citations', 'cardinality', "0.N"),
+        ('delivery_order', 'cardinality', "0.1"),
         ('meta', 'cardinality', "1.1"),
         ('branch_time_in_initialisation_source', 'cardinality', "0.1"),
         ('internal_name', 'cardinality', "0.1"),
@@ -2331,13 +2323,14 @@ CONSTRAINTS = {
         ('ensemble_axis', 'type', designing.EnsembleRequirement),
         ('rationale', 'type', unicode),
         ('description', 'type', unicode),
+        ('citations', 'type', shared.Citation),
         ('keywords', 'type', unicode),
         ('additional_requirements', 'type', designing.NumericalRequirement),
         ('responsible_parties', 'type', shared.Responsibility),
         ('previously_known_as', 'type', unicode),
         ('long_name', 'type', unicode),
         ('canonical_name', 'type', unicode),
-        ('citations', 'type', shared.Citation),
+        ('delivery_order', 'type', unicode),
         ('meta', 'type', shared.DocMetaInfo),
         ('internal_name', 'type', unicode),
         ('duration', 'type', time.TimePeriod),
@@ -2349,13 +2342,14 @@ CONSTRAINTS = {
         ('ensemble_axis', 'cardinality', "1.N"),
         ('rationale', 'cardinality', "0.1"),
         ('description', 'cardinality', "0.1"),
+        ('citations', 'cardinality', "0.N"),
         ('keywords', 'cardinality', "0.1"),
         ('additional_requirements', 'cardinality', "0.N"),
         ('responsible_parties', 'cardinality', "0.N"),
         ('previously_known_as', 'cardinality', "0.N"),
         ('long_name', 'cardinality', "0.1"),
         ('canonical_name', 'cardinality', "0.1"),
-        ('citations', 'cardinality', "0.N"),
+        ('delivery_order', 'cardinality', "0.1"),
         ('meta', 'cardinality', "1.1"),
         ('internal_name', 'cardinality', "0.1"),
         ('duration', 'cardinality', "0.1"),
@@ -2406,6 +2400,7 @@ CONSTRAINTS = {
     ),
     designing.NumericalRequirement: (
 
+        ('delivery_order', 'type', unicode),
         ('description', 'type', unicode),
         ('duration', 'type', time.TimePeriod),
         ('additional_requirements', 'type', designing.NumericalRequirement),
@@ -2423,6 +2418,7 @@ CONSTRAINTS = {
         ('alternative_names', 'type', unicode),
         ('name', 'type', unicode),
 
+        ('delivery_order', 'cardinality', "0.1"),
         ('description', 'cardinality', "0.1"),
         ('duration', 'cardinality', "0.1"),
         ('additional_requirements', 'cardinality', "0.N"),
@@ -2446,13 +2442,14 @@ CONSTRAINTS = {
         ('formal_data_request', 'type', shared.OnlineResource),
         ('rationale', 'type', unicode),
         ('description', 'type', unicode),
+        ('citations', 'type', shared.Citation),
         ('keywords', 'type', unicode),
         ('additional_requirements', 'type', designing.NumericalRequirement),
         ('responsible_parties', 'type', shared.Responsibility),
         ('previously_known_as', 'type', unicode),
         ('long_name', 'type', unicode),
         ('canonical_name', 'type', unicode),
-        ('citations', 'type', shared.Citation),
+        ('delivery_order', 'type', unicode),
         ('meta', 'type', shared.DocMetaInfo),
         ('internal_name', 'type', unicode),
         ('duration', 'type', time.TimePeriod),
@@ -2464,13 +2461,14 @@ CONSTRAINTS = {
         ('formal_data_request', 'cardinality', "0.1"),
         ('rationale', 'cardinality', "0.1"),
         ('description', 'cardinality', "0.1"),
+        ('citations', 'cardinality', "0.N"),
         ('keywords', 'cardinality', "0.1"),
         ('additional_requirements', 'cardinality', "0.N"),
         ('responsible_parties', 'cardinality', "0.N"),
         ('previously_known_as', 'cardinality', "0.N"),
         ('long_name', 'cardinality', "0.1"),
         ('canonical_name', 'cardinality', "0.1"),
-        ('citations', 'cardinality', "0.N"),
+        ('delivery_order', 'cardinality', "0.1"),
         ('meta', 'cardinality', "1.1"),
         ('internal_name', 'cardinality', "0.1"),
         ('duration', 'cardinality', "0.1"),
@@ -2565,13 +2563,14 @@ CONSTRAINTS = {
         ('ensemble_members', 'type', time.DatetimeSet),
         ('rationale', 'type', unicode),
         ('description', 'type', unicode),
+        ('citations', 'type', shared.Citation),
         ('keywords', 'type', unicode),
         ('additional_requirements', 'type', designing.NumericalRequirement),
         ('responsible_parties', 'type', shared.Responsibility),
         ('previously_known_as', 'type', unicode),
         ('long_name', 'type', unicode),
         ('canonical_name', 'type', unicode),
-        ('citations', 'type', shared.Citation),
+        ('delivery_order', 'type', unicode),
         ('meta', 'type', shared.DocMetaInfo),
         ('internal_name', 'type', unicode),
         ('duration', 'type', time.TimePeriod),
@@ -2583,13 +2582,14 @@ CONSTRAINTS = {
         ('ensemble_members', 'cardinality', "1.1"),
         ('rationale', 'cardinality', "0.1"),
         ('description', 'cardinality', "0.1"),
+        ('citations', 'cardinality', "0.N"),
         ('keywords', 'cardinality', "0.1"),
         ('additional_requirements', 'cardinality', "0.N"),
         ('responsible_parties', 'cardinality', "0.N"),
         ('previously_known_as', 'cardinality', "0.N"),
         ('long_name', 'cardinality', "0.1"),
         ('canonical_name', 'cardinality', "0.1"),
-        ('citations', 'cardinality', "0.N"),
+        ('delivery_order', 'cardinality', "0.1"),
         ('meta', 'cardinality', "1.1"),
         ('internal_name', 'cardinality', "0.1"),
         ('duration', 'cardinality', "0.1"),
@@ -2604,6 +2604,7 @@ CONSTRAINTS = {
         ('rationale', 'type', unicode),
         ('description', 'type', unicode),
         ('required_duration', 'type', time.TimePeriod),
+        ('citations', 'type', shared.Citation),
         ('start_date', 'type', time.DateTime),
         ('keywords', 'type', unicode),
         ('additional_requirements', 'type', designing.NumericalRequirement),
@@ -2611,7 +2612,7 @@ CONSTRAINTS = {
         ('previously_known_as', 'type', unicode),
         ('long_name', 'type', unicode),
         ('canonical_name', 'type', unicode),
-        ('citations', 'type', shared.Citation),
+        ('delivery_order', 'type', unicode),
         ('meta', 'type', shared.DocMetaInfo),
         ('required_calendar', 'type', time.Calendar),
         ('internal_name', 'type', unicode),
@@ -2625,6 +2626,7 @@ CONSTRAINTS = {
         ('rationale', 'cardinality', "0.1"),
         ('description', 'cardinality', "0.1"),
         ('required_duration', 'cardinality', "0.1"),
+        ('citations', 'cardinality', "0.N"),
         ('start_date', 'cardinality', "0.1"),
         ('keywords', 'cardinality', "0.1"),
         ('additional_requirements', 'cardinality', "0.N"),
@@ -2632,7 +2634,7 @@ CONSTRAINTS = {
         ('previously_known_as', 'cardinality', "0.N"),
         ('long_name', 'cardinality', "0.1"),
         ('canonical_name', 'cardinality', "0.1"),
-        ('citations', 'cardinality', "0.N"),
+        ('delivery_order', 'cardinality', "0.1"),
         ('meta', 'cardinality', "1.1"),
         ('required_calendar', 'cardinality', "0.1"),
         ('internal_name', 'cardinality', "0.1"),
@@ -3070,7 +3072,6 @@ CONSTRAINTS = {
         ('internal_software_components', 'type', software.SoftwareComponent),
         ('development_history', 'type', software.DevelopmentPath),
         ('long_name', 'type', unicode),
-        ('canonical_id', 'type', unicode),
         ('citations', 'type', shared.Citation),
         ('meta', 'type', shared.DocMetaInfo),
         ('version', 'type', unicode),
@@ -3088,7 +3089,6 @@ CONSTRAINTS = {
         ('internal_software_components', 'cardinality', "0.N"),
         ('development_history', 'cardinality', "0.1"),
         ('long_name', 'cardinality', "0.1"),
-        ('canonical_id', 'cardinality', "0.1"),
         ('citations', 'cardinality', "0.N"),
         ('meta', 'cardinality', "1.1"),
         ('version', 'cardinality', "0.1"),
@@ -3400,7 +3400,6 @@ CONSTRAINTS = {
         ('release_date', 'type', datetime.datetime),
         ('development_history', 'type', software.DevelopmentPath),
         ('long_name', 'type', unicode),
-        ('canonical_id', 'type', unicode),
         ('citations', 'type', shared.Citation),
         ('version', 'type', unicode),
         ('name', 'type', unicode),
@@ -3410,7 +3409,6 @@ CONSTRAINTS = {
         ('release_date', 'cardinality', "0.1"),
         ('development_history', 'cardinality', "0.1"),
         ('long_name', 'cardinality', "0.1"),
-        ('canonical_id', 'cardinality', "0.1"),
         ('citations', 'cardinality', "0.N"),
         ('version', 'cardinality', "0.1"),
         ('name', 'cardinality', "1.1"),
@@ -3454,29 +3452,6 @@ CONSTRAINTS = {
         ('description', 'cardinality', "1.1"),
 
     ),
-    software.Implementation: (
-
-        ('description', 'type', unicode),
-        ('repository', 'type', shared.OnlineResource),
-        ('release_date', 'type', datetime.datetime),
-        ('development_history', 'type', software.DevelopmentPath),
-        ('long_name', 'type', unicode),
-        ('canonical_id', 'type', unicode),
-        ('citations', 'type', shared.Citation),
-        ('version', 'type', unicode),
-        ('name', 'type', unicode),
-
-        ('description', 'cardinality', "0.1"),
-        ('repository', 'cardinality', "0.1"),
-        ('release_date', 'cardinality', "0.1"),
-        ('development_history', 'cardinality', "0.1"),
-        ('long_name', 'cardinality', "0.1"),
-        ('canonical_id', 'cardinality', "0.1"),
-        ('citations', 'cardinality', "0.N"),
-        ('version', 'cardinality', "0.1"),
-        ('name', 'cardinality', "1.1"),
-
-    ),
     software.SoftwareComponent: (
 
         ('license', 'type', unicode),
@@ -3489,7 +3464,6 @@ CONSTRAINTS = {
         ('development_history', 'type', software.DevelopmentPath),
         ('sub_components', 'type', software.SoftwareComponent),
         ('long_name', 'type', unicode),
-        ('canonical_id', 'type', unicode),
         ('citations', 'type', shared.Citation),
         ('grid', 'type', software.Gridspec),
         ('version', 'type', unicode),
@@ -3508,7 +3482,6 @@ CONSTRAINTS = {
         ('development_history', 'cardinality', "0.1"),
         ('sub_components', 'cardinality', "0.N"),
         ('long_name', 'cardinality', "0.1"),
-        ('canonical_id', 'cardinality', "0.1"),
         ('citations', 'cardinality', "0.N"),
         ('grid', 'cardinality', "0.1"),
         ('version', 'cardinality', "0.1"),
@@ -4760,6 +4733,13 @@ CONSTRAINTS = {
         ('cardinality', "0.N"),
 
     ),
+    (designing.DomainRequirements, 'delivery_order'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
     (designing.DomainRequirements, 'is_conformance_requested'): (
 
         ('type', bool),
@@ -4892,6 +4872,13 @@ CONSTRAINTS = {
         ('type', designing.NumericalRequirement),
 
         ('cardinality', "0.N"),
+
+    ),
+    (designing.EnsembleRequirement, 'delivery_order'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
 
     ),
     (designing.EnsembleRequirement, 'is_conformance_requested'): (
@@ -5056,6 +5043,13 @@ CONSTRAINTS = {
         ('cardinality', "0.N"),
 
     ),
+    (designing.ForcingConstraint, 'delivery_order'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
     (designing.ForcingConstraint, 'is_conformance_requested'): (
 
         ('type', bool),
@@ -5190,6 +5184,13 @@ CONSTRAINTS = {
         ('cardinality', "0.N"),
 
     ),
+    (designing.InitialisationRequirement, 'delivery_order'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
     (designing.InitialisationRequirement, 'is_conformance_requested'): (
 
         ('type', bool),
@@ -5308,6 +5309,13 @@ CONSTRAINTS = {
         ('type', designing.NumericalRequirement),
 
         ('cardinality', "0.N"),
+
+    ),
+    (designing.MultiEnsemble, 'delivery_order'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
 
     ),
     (designing.MultiEnsemble, 'is_conformance_requested'): (
@@ -5543,6 +5551,13 @@ CONSTRAINTS = {
         ('cardinality', "0.N"),
 
     ),
+    (designing.NumericalRequirement, 'delivery_order'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
     (designing.NumericalRequirement, 'is_conformance_requested'): (
 
         ('type', bool),
@@ -5661,6 +5676,13 @@ CONSTRAINTS = {
         ('type', designing.NumericalRequirement),
 
         ('cardinality', "0.N"),
+
+    ),
+    (designing.OutputRequirement, 'delivery_order'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
 
     ),
     (designing.OutputRequirement, 'is_conformance_requested'): (
@@ -6030,6 +6052,13 @@ CONSTRAINTS = {
         ('cardinality', "0.N"),
 
     ),
+    (designing.StartDateEnsemble, 'delivery_order'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
     (designing.StartDateEnsemble, 'is_conformance_requested'): (
 
         ('type', bool),
@@ -6169,6 +6198,13 @@ CONSTRAINTS = {
         ('type', designing.NumericalRequirement),
 
         ('cardinality', "0.N"),
+
+    ),
+    (designing.TemporalConstraint, 'delivery_order'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
 
     ),
     (designing.TemporalConstraint, 'is_conformance_requested'): (
@@ -7439,13 +7475,6 @@ CONSTRAINTS = {
         ('cardinality', "0.1"),
 
     ),
-    (science.Model, 'canonical_id'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
     (science.Model, 'citations'): (
 
         ('type', shared.Citation),
@@ -8302,13 +8331,6 @@ CONSTRAINTS = {
 
     ),
 
-    (software.ComponentBase, 'canonical_id'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
     (software.ComponentBase, 'citations'): (
 
         ('type', shared.Citation),
@@ -8433,70 +8455,6 @@ CONSTRAINTS = {
 
     ),
 
-    (software.Implementation, 'canonical_id'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (software.Implementation, 'citations'): (
-
-        ('type', shared.Citation),
-
-        ('cardinality', "0.N"),
-
-    ),
-    (software.Implementation, 'description'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (software.Implementation, 'development_history'): (
-
-        ('type', software.DevelopmentPath),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (software.Implementation, 'long_name'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (software.Implementation, 'name'): (
-
-        ('type', unicode),
-
-        ('cardinality', "1.1"),
-
-    ),
-    (software.Implementation, 'release_date'): (
-
-        ('type', datetime.datetime),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (software.Implementation, 'repository'): (
-
-        ('type', shared.OnlineResource),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (software.Implementation, 'version'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-
     (software.SoftwareComponent, 'composition'): (
 
         ('type', software.Composition),
@@ -8558,13 +8516,6 @@ CONSTRAINTS = {
         ('type', software.SoftwareComponent),
 
         ('cardinality', "0.N"),
-
-    ),
-    (software.SoftwareComponent, 'canonical_id'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
 
     ),
     (software.SoftwareComponent, 'citations'): (
@@ -9165,13 +9116,6 @@ http://www.geosci-model-dev-discuss.net/gmd-2016-197/)
         Fully defines the computational grid used.
 
     """,
-    software.Implementation: """
-        Implementation information for a software framework/component, whether a top level model,
-    or a specific piece of code known as a 'component'. In software terms, a
-    software framework/component is a discrete set of code that takes input data and generates output data.
-    Software frameworks/components may or may not have scientific descriptions.
-
-    """,
     software.SoftwareComponent: """
         An embedded piece of software that does not normally function as a standalone model (although
     it may be used standalone in a test harness).
@@ -9407,6 +9351,8 @@ http://www.geosci-model-dev-discuss.net/gmd-2016-197/)
         "Additional requirements that conformant simulations need to satisfy.",
     (designing.NumericalRequirement, 'additional_requirements'):
         "Additional detail for this requirement.",
+    (designing.NumericalRequirement, 'delivery_order'):
+        "Describes whether confirmance informance can be provided pre or post simulation run.",
     (designing.NumericalRequirement, 'is_conformance_requested'):
         "Indicator as to whether ensemble documentation should include conformance information for this requirement.",
     (designing.NumericalRequirement, 'scope'):
@@ -9827,8 +9773,6 @@ http://www.geosci-model-dev-discuss.net/gmd-2016-197/)
         "Raw content (including markup).",
     (shared.TextBlob, 'encoding'):
         "Content encoding.",
-    (software.ComponentBase, 'canonical_id'):
-        "Vocabulary identifier, where this framework/component description was constructed via a controlled vocabulary.",
     (software.ComponentBase, 'citations'):
         "Set of pertinent citations.",
     (software.ComponentBase, 'description'):
@@ -9863,24 +9807,6 @@ http://www.geosci-model-dev-discuss.net/gmd-2016-197/)
         "#FIXME.",
     (software.Gridspec, 'description'):
         "Textural description.",
-    (software.Implementation, 'canonical_id'):
-        "Vocabulary identifier, where this framework/component description was constructed via a controlled vocabulary.",
-    (software.Implementation, 'citations'):
-        "Set of pertinent citations.",
-    (software.Implementation, 'description'):
-        "Textural description of framework/component.",
-    (software.Implementation, 'development_history'):
-        "History of the development of this framework/component.",
-    (software.Implementation, 'long_name'):
-        "Long name for framework/component.",
-    (software.Implementation, 'name'):
-        "Short name of framework/component.",
-    (software.Implementation, 'release_date'):
-        "The date of publication of the framework/component code.",
-    (software.Implementation, 'repository'):
-        "Location of code for this framework/component.",
-    (software.Implementation, 'version'):
-        "Version identifier.",
     (software.SoftwareComponent, 'composition'):
         "#FIXME.",
     (software.SoftwareComponent, 'connection_points'):
@@ -9964,6 +9890,10 @@ http://www.geosci-model-dev-discuss.net/gmd-2016-197/)
     """,
     designing.ForcingTypes: """
         Defines the possible set of forcing types for a forcing constraint.
+
+    """,
+    designing.NumericalRequirementDeliveryOrder: """
+        The order in which a confirmance must be delivered.
 
     """,
     designing.NumericalRequirementScope: """
@@ -10091,6 +10021,10 @@ http://www.geosci-model-dev-discuss.net/gmd-2016-197/)
         "Intended to represent a possible future, e.g. RCP4.5",
     (designing.ForcingTypes, 'driven'):
         "Driven from another simulation",
+    (designing.NumericalRequirementDeliveryOrder, 'pre-simulation'):
+        "Conformance information can be provided before simulations have been run",
+    (designing.NumericalRequirementDeliveryOrder, 'post-simulation'):
+        "Conformance information can only be provided after simulations have been run",
     (designing.NumericalRequirementScope, 'mip-era'):
         "MIP era wide e.g. 'concentration of pre-industrial CO2' & 'Impose AMIP SSTs'",
     (designing.NumericalRequirementScope, 'mip-group'):
@@ -10411,7 +10345,6 @@ KEYS = {
     software.DevelopmentPath: "cim.2.software.DevelopmentPath",
     software.EntryPoint: "cim.2.software.EntryPoint",
     software.Gridspec: "cim.2.software.Gridspec",
-    software.Implementation: "cim.2.software.Implementation",
     software.SoftwareComponent: "cim.2.software.SoftwareComponent",
     software.Variable: "cim.2.software.Variable",
     time.Calendar: "cim.2.time.Calendar",
@@ -10518,6 +10451,7 @@ KEYS = {
     (designing.NumericalExperiment, 'required_period'): "cim.2.designing.NumericalExperiment.required_period",
     (designing.NumericalExperiment, 'requirements'): "cim.2.designing.NumericalExperiment.requirements",
     (designing.NumericalRequirement, 'additional_requirements'): "cim.2.designing.NumericalRequirement.additional_requirements",
+    (designing.NumericalRequirement, 'delivery_order'): "cim.2.designing.NumericalRequirement.delivery_order",
     (designing.NumericalRequirement, 'is_conformance_requested'): "cim.2.designing.NumericalRequirement.is_conformance_requested",
     (designing.NumericalRequirement, 'scope'): "cim.2.designing.NumericalRequirement.scope",
     (designing.OutputRequirement, 'formal_data_request'): "cim.2.designing.OutputRequirement.formal_data_request",
@@ -10728,7 +10662,6 @@ KEYS = {
     (shared.Responsibility, 'when'): "cim.2.shared.Responsibility.when",
     (shared.TextBlob, 'content'): "cim.2.shared.TextBlob.content",
     (shared.TextBlob, 'encoding'): "cim.2.shared.TextBlob.encoding",
-    (software.ComponentBase, 'canonical_id'): "cim.2.software.ComponentBase.canonical_id",
     (software.ComponentBase, 'citations'): "cim.2.software.ComponentBase.citations",
     (software.ComponentBase, 'description'): "cim.2.software.ComponentBase.description",
     (software.ComponentBase, 'development_history'): "cim.2.software.ComponentBase.development_history",
@@ -10746,15 +10679,6 @@ KEYS = {
     (software.DevelopmentPath, 'was_developed_in_house'): "cim.2.software.DevelopmentPath.was_developed_in_house",
     (software.EntryPoint, 'name'): "cim.2.software.EntryPoint.name",
     (software.Gridspec, 'description'): "cim.2.software.Gridspec.description",
-    (software.Implementation, 'canonical_id'): "cim.2.software.Implementation.canonical_id",
-    (software.Implementation, 'citations'): "cim.2.software.Implementation.citations",
-    (software.Implementation, 'description'): "cim.2.software.Implementation.description",
-    (software.Implementation, 'development_history'): "cim.2.software.Implementation.development_history",
-    (software.Implementation, 'long_name'): "cim.2.software.Implementation.long_name",
-    (software.Implementation, 'name'): "cim.2.software.Implementation.name",
-    (software.Implementation, 'release_date'): "cim.2.software.Implementation.release_date",
-    (software.Implementation, 'repository'): "cim.2.software.Implementation.repository",
-    (software.Implementation, 'version'): "cim.2.software.Implementation.version",
     (software.SoftwareComponent, 'composition'): "cim.2.software.SoftwareComponent.composition",
     (software.SoftwareComponent, 'connection_points'): "cim.2.software.SoftwareComponent.connection_points",
     (software.SoftwareComponent, 'coupling_framework'): "cim.2.software.SoftwareComponent.coupling_framework",
@@ -10793,6 +10717,7 @@ KEYS = {
     designing.EnsembleTypes: "cim.2.designing.EnsembleTypes",
     designing.ExperimentalRelationships: "cim.2.designing.ExperimentalRelationships",
     designing.ForcingTypes: "cim.2.designing.ForcingTypes",
+    designing.NumericalRequirementDeliveryOrder: "cim.2.designing.NumericalRequirementDeliveryOrder",
     designing.NumericalRequirementScope: "cim.2.designing.NumericalRequirementScope",
     drs.DrsFrequencyTypes: "cim.2.drs.DrsFrequencyTypes",
     drs.DrsGeographicalOperators: "cim.2.drs.DrsGeographicalOperators",
@@ -10838,6 +10763,8 @@ KEYS = {
     (designing.ForcingTypes, 'idealised'): "cim.2.designing.ForcingTypes.idealised",
     (designing.ForcingTypes, 'scenario'): "cim.2.designing.ForcingTypes.scenario",
     (designing.ForcingTypes, 'driven'): "cim.2.designing.ForcingTypes.driven",
+    (designing.NumericalRequirementDeliveryOrder, 'pre-simulation'): "cim.2.designing.NumericalRequirementDeliveryOrder.pre-simulation",
+    (designing.NumericalRequirementDeliveryOrder, 'post-simulation'): "cim.2.designing.NumericalRequirementDeliveryOrder.post-simulation",
     (designing.NumericalRequirementScope, 'mip-era'): "cim.2.designing.NumericalRequirementScope.mip-era",
     (designing.NumericalRequirementScope, 'mip-group'): "cim.2.designing.NumericalRequirementScope.mip-group",
     (designing.NumericalRequirementScope, 'mip'): "cim.2.designing.NumericalRequirementScope.mip",
@@ -10980,6 +10907,7 @@ designing.InitialisationRequirement.type_key = KEYS[designing.InitialisationRequ
 designing.MultiEnsemble.type_key = KEYS[designing.MultiEnsemble]
 designing.NumericalExperiment.type_key = KEYS[designing.NumericalExperiment]
 designing.NumericalRequirement.type_key = KEYS[designing.NumericalRequirement]
+designing.NumericalRequirementDeliveryOrder.type_key = KEYS[designing.NumericalRequirementDeliveryOrder]
 designing.NumericalRequirementScope.type_key = KEYS[designing.NumericalRequirementScope]
 designing.OutputRequirement.type_key = KEYS[designing.OutputRequirement]
 designing.Project.type_key = KEYS[designing.Project]
@@ -11041,7 +10969,6 @@ software.CouplingFramework.type_key = KEYS[software.CouplingFramework]
 software.DevelopmentPath.type_key = KEYS[software.DevelopmentPath]
 software.EntryPoint.type_key = KEYS[software.EntryPoint]
 software.Gridspec.type_key = KEYS[software.Gridspec]
-software.Implementation.type_key = KEYS[software.Implementation]
 software.ProgrammingLanguage.type_key = KEYS[software.ProgrammingLanguage]
 software.SoftwareComponent.type_key = KEYS[software.SoftwareComponent]
 software.Variable.type_key = KEYS[software.Variable]

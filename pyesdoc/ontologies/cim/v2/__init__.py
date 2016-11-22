@@ -101,7 +101,6 @@ from typeset_for_software_package import Composition
 from typeset_for_software_package import DevelopmentPath
 from typeset_for_software_package import EntryPoint
 from typeset_for_software_package import Gridspec
-from typeset_for_software_package import Implementation
 from typeset_for_software_package import SoftwareComponent
 from typeset_for_software_package import Variable
 from typeset_for_time_package import Calendar
@@ -117,6 +116,7 @@ from typeset_for_data_package import DataAssociationTypes
 from typeset_for_designing_package import EnsembleTypes
 from typeset_for_designing_package import ExperimentalRelationships
 from typeset_for_designing_package import ForcingTypes
+from typeset_for_designing_package import NumericalRequirementDeliveryOrder
 from typeset_for_designing_package import NumericalRequirementScope
 from typeset_for_drs_package import DrsFrequencyTypes
 from typeset_for_drs_package import DrsGeographicalOperators
