@@ -82,13 +82,11 @@ def init():
             WARNING :: pyesdoc configuration file not found.
             If running pyesdoc within ES-DOC shell the config file location should be:
                 SHELL-HOME/ops/config/pyesdoc.conf.
-            If running pyesdoc within ES-DOC notebook-shell the config file location should be:
-                SHELL-HOME/pyesdoc.conf.
             If running pyesdoc in standalone mode the config file location should be:
                 $HOME/.pyesdoc
             Otherwise:
                 1.  Download the following default configuration file:
-                    http://bit.ly/1MjRS5n
+                    http://bit.ly/2g3NUmQ
                 2.  Copy downloaded file to $HOME/.pyesdoc
             If this problem persists them contact es-doc-support@list.woc.noaa.gov
         """)

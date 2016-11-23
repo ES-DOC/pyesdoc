@@ -15,7 +15,6 @@ ENCODING_DICT = 'dict'
 ENCODING_JSON = 'json'
 ENCODING_XML = 'xml'
 ENCODING_HTML = 'html'
-ENCODING_PDF = 'pdf'
 METAFOR_CIM_XML_ENCODING = 'xml-metafor-cim-v1'
 
 # Standard ESDOC encodings.
@@ -23,7 +22,6 @@ ENCODINGS = (
     ENCODING_DICT,
     ENCODING_HTML,
     ENCODING_JSON,
-    ENCODING_PDF,
     ENCODING_XML,
 )
 
@@ -58,8 +56,7 @@ ENCODINGS_ALL = set(ENCODINGS + ENCODINGS_CUSTOM)
 ENCODING_HTTP_MEDIA_TYPES = {
     ENCODING_JSON : "application/json",
     ENCODING_XML : "application/xml",
-    ENCODING_HTML : "text/html",
-    ENCODING_PDF : "application/pdf"
+    ENCODING_HTML : "text/html"
 }
 
 # Latest document version label.
