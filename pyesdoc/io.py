@@ -10,12 +10,15 @@
 
 """
 import collections
-import datetime as dt
+import glob
 import json
+import operator
 import os
+import uuid
 
 import pyesdoc
 from pyesdoc import exceptions
+from pyesdoc import ontologies
 from pyesdoc.validation import is_valid_notebook_output
 from pyesdoc.utils.convert import str_to_unicode
 
@@ -58,10 +61,8 @@ def write(document, fpath, encoding=pyesdoc.constants.ENCODING_JSON):
     :rtype: str
 
     """
-    # Validate I/O directory.
     if os.path.isdir(fpath):
         fpath = _get_filepath(fpath, document, encoding)
-
     with open(fpath, 'w') as fstream:
         fstream.write(pyesdoc.encode(document, encoding))
 
@@ -93,6 +94,75 @@ def read(fpath, encoding=None, decode=True):
 
     # Decode upon request.
     return pyesdoc.decode(fcontent, encoding) if decode else fcontent
+
+
+def seek(io_dir, filter=None, latest=False):
+    """Reads a document from file system.
+
+    :param str io_dir: Path to a directory within documents exist.
+    :param object filter: Filter to apply when seeking.
+
+    :returns: A pyesdoc document instance.
+    :rtype: object
+
+    """
+    if not os.path.isdir(io_dir):
+        raise ValueError("I/O directory is invalid")
+
+    # Set search targets.
+    targets = collections.defaultdict(dict)
+    for uid, version, fpath in [(i.split("_")[-2], int(i.split("_")[-1].split(".")[0]), i)
+               for i in glob.glob(os.path.join(io_dir, "*.*"))]:
+        targets[uid][version] = fpath
+
+    # Document collection - all.
+    if filter is None and not latest:
+        docs = sum([i.values() for i in targets.values()], [])
+        return [read(i) for i in docs]
+
+    # Document collection - latest.
+    elif filter is None and latest:
+        docs = [i[max(i.keys())] for i in targets.values()]
+        return [read(i) for i in docs]
+
+    # Document collection (typed) - all.
+    elif filter in ontologies.type_info.TYPES and not latest:
+        docs = sum([i.values() for i in targets.values()], [])
+        docs = [i for i in docs if i.find(filter.type_key) > -1]
+        return [read(i) for i in docs]
+
+    # Document collection (typed) - latest.
+    elif filter in ontologies.type_info.TYPES and latest:
+        docs = [i[max(i.keys())] for i in targets.values()]
+        docs = [i for i in docs if i.find(filter.type_key) > -1]
+        return [read(i) for i in docs]
+
+    # Specific document - specific version.
+    elif isinstance(filter, tuple) and len(filter) == 2 and isinstance(filter[1], int):
+        try:
+            doc = targets[filter[0]][filter[1]]
+        except AttributeError:
+            return None
+        else:
+            return read(doc)
+
+    # Specific document - latest version.
+    elif latest:
+        try:
+            docs = targets[filter]
+        except AttributeError:
+            return None
+        else:
+            return read(docs[max(docs.keys())])
+
+    # Specific document - all versions.
+    else:
+        try:
+            docs = targets[filter]
+        except AttributeError:
+            return None
+        else:
+            return [read(i) for i in docs.values()]
 
 
 def convert(fpath, to_encoding, from_encoding=None):

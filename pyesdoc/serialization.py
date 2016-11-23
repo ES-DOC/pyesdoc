@@ -25,7 +25,6 @@ _CODECS = {
 	constants.ENCODING_DICT: codecs.dictionary,
 	constants.ENCODING_HTML: codecs.html,
 	constants.ENCODING_JSON: codecs.json,
-    constants.ENCODING_PDF: codecs.pdf,
 	constants.ENCODING_XML: codecs.xml,
 	constants.METAFOR_CIM_XML_ENCODING: codecs.xml_metafor_cim_v1
 }
