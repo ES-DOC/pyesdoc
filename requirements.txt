@@ -1,10 +1,6 @@
 arrow
-dreq
 feedparser
-ipython
 lxml
 nose
-reportlab
 requests
 tornado
-xlrd
