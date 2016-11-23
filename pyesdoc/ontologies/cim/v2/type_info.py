@@ -3301,14 +3301,14 @@ CONSTRAINTS = {
         ('description', 'cardinality', "0.1"),
         ('relationship', 'cardinality', "0.1"),
         ('institute', 'cardinality', "0.1"),
-        ('type', 'cardinality', "1.1"),
+        ('type', 'cardinality', "0.1"),
         ('url', 'cardinality', "0.1"),
         ('version', 'cardinality', "0.1"),
         ('context', 'cardinality', "0.1"),
         ('external_id', 'cardinality', "0.1"),
         ('id', 'cardinality', "0.1"),
-        ('linkage', 'cardinality', "1.1"),
-        ('name', 'cardinality', "1.1"),
+        ('linkage', 'cardinality', "0.1"),
+        ('name', 'cardinality', "0.1"),
 
     ),
     shared.ExtraAttribute: (
@@ -8097,14 +8097,14 @@ CONSTRAINTS = {
 
         ('type', unicode),
 
-        ('cardinality', "1.1"),
+        ('cardinality', "0.1"),
 
     ),
     (shared.DocReference, 'name'): (
 
         ('type', unicode),
 
-        ('cardinality', "1.1"),
+        ('cardinality', "0.1"),
 
     ),
     (shared.DocReference, 'protocol'): (
@@ -8125,7 +8125,7 @@ CONSTRAINTS = {
 
         ('type', unicode),
 
-        ('cardinality', "1.1"),
+        ('cardinality', "0.1"),
 
     ),
     (shared.DocReference, 'url'): (
@@ -9710,7 +9710,7 @@ http://www.geosci-model-dev-discuss.net/gmd-2016-197/)
     (shared.DocReference, 'linkage'):
         "A URL.",
     (shared.DocReference, 'name'):
-        "Name of online resource.",
+        "Canonical name given to document.",
     (shared.DocReference, 'protocol'):
         "Protocol to use at the linkage.",
     (shared.DocReference, 'relationship'):

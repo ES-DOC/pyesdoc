@@ -26,12 +26,18 @@ __copyright__ = 'Copyright 2015 ???'
 from pyesdoc.constants import *
 from pyesdoc.exceptions import *
 
+from pyesdoc.associating import associate
+from pyesdoc.associating import associate_by_id
+from pyesdoc.associating import associate_by_id_and_version
+from pyesdoc.associating import associate_by_name
+
 from pyesdoc.factory import create
 from pyesdoc.factory import create_notebook_output
 
 from pyesdoc.io import convert as convert_file
 from pyesdoc.io import get_filename
 from pyesdoc.io import read
+from pyesdoc.io import seek
 from pyesdoc.io import write
 from pyesdoc.io import write_notebook_output
 

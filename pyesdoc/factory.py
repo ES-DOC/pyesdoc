@@ -14,7 +14,6 @@ import collections
 import datetime
 import uuid
 
-from pyesdoc import constants
 from pyesdoc import exceptions
 from pyesdoc import ontologies
 
@@ -23,6 +22,7 @@ from pyesdoc import ontologies
 def create(
     typeof,
     project=None,
+    sub_projects=None,
     institute=None,
     source=None,
     author=None,
@@ -33,6 +33,7 @@ def create(
 
     :param class typeof: Ontology type, e.g. cim.1.software.ModelComponent.
     :param str project: Project wih which instance is associated.
+    :param list|str sub_projects: Sub-project(s) with which instance is associated.
     :param str institute: Institute wih which instance is associated.
     :param str source: Source application with which instance is associated.
     :param str author: Author wih which instance is associated.
@@ -62,6 +63,10 @@ def create(
     elif project:
         source = project
     uid = unicode(uid)
+    if sub_projects:
+        if isinstance(sub_projects, (str, unicode)):
+            sub_projects = [sub_projects]
+        sub_projects = [unicode(i).lower() for i in sub_projects]
 
     # Verify uid.
     try:
@@ -76,12 +81,10 @@ def create(
         doc.meta.id = uid
         doc.meta.version = version
         doc.meta.create_date = datetime.datetime.now()
-        if institute:
-            doc.meta.institute = institute
-        if project:
-            doc.meta.project = project
-        if source:
-            doc.meta.source = source
+        doc.meta.institute = institute or None
+        doc.meta.project = project or None
+        doc.meta.sub_projects = sub_projects or []
+        doc.meta.source = source or None
         doc.meta.type = typeof.type_key
 
     return doc
