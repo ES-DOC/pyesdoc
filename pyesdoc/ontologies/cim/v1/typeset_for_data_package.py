@@ -311,8 +311,8 @@ class DataStatusType(object):
     is_open = False
     members = [
         "complete",
-        "continuouslySupplemented",
-        "metadataOnly"
+        "metadataOnly",
+        "continuouslySupplemented"
         ]
     descriptions = [
         "This DataObject is complete.",

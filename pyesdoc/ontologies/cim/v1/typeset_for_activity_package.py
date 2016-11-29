@@ -456,20 +456,20 @@ class ConformanceType(object):
     """
     is_open = False
     members = [
-        "combination",
-        "not conformant",
         "not-xxx",
+        "not conformant",
         "standard config",
         "via inputs",
-        "via model mods"
+        "via model mods",
+        "combination"
         ]
     descriptions = [
-        "Describes a simulation that conforms to an experimental requirement by changing the configuration of the software model implementing that simulation.",
-        "Describes a simulation that conforms to an experimental requirement by using more than one method.",
-        "Describes a simulation that conforms to an experimental requirement by using particular inputs.",
-        "Describes a simulation that is naturally conformant to an experimental requirement.",
+        "None",
         "Describes a simulation that is purpefully non-conformant to an experimental requirement.",
-        "None"
+        "Describes a simulation that is naturally conformant to an experimental requirement.",
+        "Describes a simulation that conforms to an experimental requirement by using particular inputs.",
+        "Describes a simulation that conforms to an experimental requirement by changing the configuration of the software model implementing that simulation.",
+        "Describes a simulation that conforms to an experimental requirement by using more than one method."
         ]
 
 
@@ -480,8 +480,8 @@ class DownscalingType(object):
     """
     is_open = False
     members = [
-        "dynamic",
-        "statistical"
+        "statistical",
+        "dynamic"
         ]
     descriptions = [
         "None",
@@ -506,15 +506,15 @@ class ExperimentRelationshipType(object):
     """
     is_open = False
     members = [
+        "previousRealisation",
         "continuationOf",
         "controlExperiment",
-        "extensionOf",
         "higherResolutionVersionOf",
-        "increaseEnsembleOf",
         "lowerResolutionVersionOf",
+        "increaseEnsembleOf",
         "modifiedInputMethodOf",
-        "previousRealisation",
-        "shorterVersionOf"
+        "shorterVersionOf",
+        "extensionOf"
         ]
     descriptions = [
         "None",
@@ -566,14 +566,14 @@ class SimulationRelationshipType(object):
     """
     is_open = False
     members = [
-        "continuationOf",
         "extensionOf",
-        "fixedVersionOf",
-        "followingSimulation",
+        "responseTo",
+        "continuationOf",
+        "previousSimulation",
         "higherResolutionVersionOf",
         "lowerResolutionVersionOf",
-        "previousSimulation",
-        "responseTo"
+        "fixedVersionOf",
+        "followingSimulation"
         ]
     descriptions = [
         "None",
@@ -594,9 +594,9 @@ class SimulationType(object):
     """
     is_open = False
     members = [
+        "simulationRun",
         "assimilation",
-        "simulationComposite",
-        "simulationRun"
+        "simulationComposite"
         ]
     descriptions = [
         "None",

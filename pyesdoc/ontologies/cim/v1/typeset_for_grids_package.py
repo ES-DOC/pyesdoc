@@ -216,10 +216,10 @@ class ArcTypeEnum(object):
     """
     is_open = False
     members = [
-        "complex",
         "geodesic",
         "great_circle",
-        "small_circle"
+        "small_circle",
+        "complex"
         ]
     descriptions = [
         "None",
@@ -237,12 +237,12 @@ class DiscretizationEnum(object):
     is_open = False
     members = [
         "logically_rectangular",
-        "other",
-        "pixel-based_catchment",
-        "spherical_harmonics",
         "structured_triangular",
+        "unstructured_triangular",
+        "pixel-based_catchment",
         "unstructured_polygonal",
-        "unstructured_triangular"
+        "spherical_harmonics",
+        "other"
         ]
     descriptions = [
         "None",
@@ -262,8 +262,8 @@ class FeatureTypeEnum(object):
     """
     is_open = False
     members = [
-        "edge",
-        "point"
+        "point",
+        "edge"
         ]
     descriptions = [
         "None",
@@ -314,16 +314,16 @@ class GridTypeEnum(object):
     """
     is_open = False
     members = [
-        "composite",
         "cubed_sphere",
         "displaced_pole",
         "icosahedral_geodesic",
-        "other",
         "reduced_gaussian",
         "regular_lat_lon",
         "spectral_gaussian",
         "tripolar",
-        "yin_yang"
+        "yin_yang",
+        "composite",
+        "other"
         ]
     descriptions = [
         "None",
@@ -366,14 +366,14 @@ class RefinementTypeEnum(object):
     """
     is_open = False
     members = [
-        "integer",
         "none",
+        "integer",
         "rational"
         ]
     descriptions = [
+        "Tile boundaries have no refinement when the grid lines meeting at the tile boundary are continuous.",
         "The refinement is integer when grid lines from the coarser grid are continuous on the finer grid, but not vice versa.",
-        "The refinement is rational when the adjacent or overlapping grid tiles have grid line counts that are coprime (i.e. no common factor other than 1).",
-        "Tile boundaries have no refinement when the grid lines meeting at the tile boundary are continuous."
+        "The refinement is rational when the adjacent or overlapping grid tiles have grid line counts that are coprime (i.e. no common factor other than 1)."
         ]
 
 

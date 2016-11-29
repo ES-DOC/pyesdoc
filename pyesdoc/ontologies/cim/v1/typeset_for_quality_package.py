@@ -100,8 +100,8 @@ class CimFeatureType(object):
     """
     is_open = False
     members = [
-        "diagnostic",
-        "file"
+        "file",
+        "diagnostic"
         ]
     descriptions = [
         "None",
@@ -116,9 +116,9 @@ class CimResultType(object):
     """
     is_open = False
     members = [
+        "plot",
         "document",
-        "logfile",
-        "plot"
+        "logfile"
         ]
     descriptions = [
         "None",
@@ -135,15 +135,15 @@ class CimScopeCodeType(object):
     is_open = False
     members = [
         "dataset",
-        "ensemble",
-        "experiment",
-        "file",
+        "software",
+        "service",
         "model",
         "modelComponent",
-        "numericalRequirement",
-        "service",
         "simulation",
-        "software"
+        "experiment",
+        "numericalRequirement",
+        "ensemble",
+        "file"
         ]
     descriptions = [
         "None",
@@ -166,10 +166,10 @@ class QualityIssueType(object):
     """
     is_open = False
     members = [
-        "data_content",
-        "data_format",
-        "data_indexing",
         "metadata",
+        "data_format",
+        "data_content",
+        "data_indexing",
         "science"
         ]
     descriptions = [
@@ -189,8 +189,8 @@ class QualitySeverityType(object):
     is_open = False
     members = [
         "cosmetic",
-        "major",
-        "minor"
+        "minor",
+        "major"
         ]
     descriptions = [
         "None",
@@ -206,9 +206,9 @@ class QualityStatusType(object):
     """
     is_open = False
     members = [
+        "reported",
         "confirmed",
         "partially_resolved",
-        "reported",
         "resolved"
         ]
     descriptions = [

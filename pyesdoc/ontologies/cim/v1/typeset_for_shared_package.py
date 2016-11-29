@@ -459,31 +459,31 @@ class ChangePropertyType(object):
     """
     is_open = False
     members = [
-        "AncillaryFile",
-        "BoundaryCondition",
-        "CodeChange",
-        "Decrement",
-        "Increment",
-        "InitialCondition",
         "InputMod",
         "ModelMod",
-        "ParameterChange",
+        "Decrement",
+        "Increment",
         "Redistribution",
         "Replacement",
+        "ParameterChange",
+        "CodeChange",
+        "AncillaryFile",
+        "BoundaryCondition",
+        "InitialCondition",
         "Unused"
         ]
     descriptions = [
+        "None",
+        "None",
+        "None",
+        "None",
+        "None",
+        "None",
         "A specific type of ModelMod",
         "A specific type of ModelMod",
         "A specific type of ModelMod",
         "A specific type of ModelMod",
         "A specific type of ModelMod",
-        "None",
-        "None",
-        "None",
-        "None",
-        "None",
-        "None",
         "None"
         ]
 
@@ -533,9 +533,9 @@ class MachineType(object):
     """
     is_open = False
     members = [
-        "Beowulf",
         "Parallel",
-        "Vector"
+        "Vector",
+        "Beowulf"
         ]
     descriptions = [
         "None",

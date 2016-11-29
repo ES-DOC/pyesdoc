@@ -469,8 +469,8 @@ class ComponentPropertyIntentType(object):
     is_open = False
     members = [
         "in",
-        "inout",
-        "out"
+        "out",
+        "inout"
         ]
     descriptions = [
         "None",
@@ -542,12 +542,12 @@ class SpatialRegriddingStandardMethodType(object):
     """
     is_open = False
     members = [
-        "conservative",
-        "conservative-first-order",
-        "conservative-second-order",
-        "cubic",
         "linear",
         "near-neighbour",
+        "cubic",
+        "conservative-first-order",
+        "conservative-second-order",
+        "conservative",
         "non-conservative"
         ]
     descriptions = [
@@ -588,14 +588,14 @@ class TimingUnits(object):
     """
     is_open = False
     members = [
-        "centuries",
-        "days",
-        "decades",
-        "hours",
-        "minutes",
-        "months",
         "seconds",
-        "years"
+        "minutes",
+        "hours",
+        "days",
+        "months",
+        "years",
+        "decades",
+        "centuries"
         ]
     descriptions = [
         "None",
