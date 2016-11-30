@@ -45,6 +45,7 @@ class NumericalExperiment(activity.Activity):
         """
         super(NumericalExperiment, self).__init__()
 
+        self.governing_mips = []                          # designing.Project (0.N)
         self.related_experiments = []                     # designing.NumericalExperiment (0.N)
         self.related_mips = []                            # designing.Project (0.N)
         self.required_period = None                       # designing.TemporalConstraint (1.1)
@@ -276,16 +277,22 @@ class ExperimentalRelationships(object):
     """
     is_open = True
     members = [
-        "control_for",
-        "initialisation_for",
-        "provides_constraints",
-        "is_sibling"
+        "is_constrained_by",
+        "is_constrainer_of",
+        "is_perturbation_from",
+        "is_control_for",
+        "is_initialized_by",
+        "is_initializer_of",
+        "is_sibling_of"
         ]
     descriptions = [
-        "This experiment provides a control for the target experiment",
-        "This experiment provides initialisation for the target experiment",
-        "This experiment provides constraint(s) for the target experiment (e.g SST forcing)",
-        "Part of a family (e.g. experiments where solar forcing is either increased or reduced)"
+        "The experiment that provides constraint(s) for the target experiment (e.g SST forcing).",
+        "The set of experiments constrained by the experiment.",
+        "The experiment that provides a control for the target experiment.",
+        "The set of experiments that use the experiment as a control.",
+        "The experiment providing initialization for the experiment.",
+        "The set of experiments initialized by the experiment.",
+        "Part of a family (e.g. experiments where solar forcing is either increased or reduced)."
         ]
 
 

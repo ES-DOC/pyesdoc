@@ -264,7 +264,6 @@ FIELDSETS = {
     'cim.1.software.modelcomponent-properties': \
         _get_software_modelcomponent_properties,
 
-
     'cim.1.software.timing': [
         Field('Rate', path='rate'),
         Field('Units', path='units'),

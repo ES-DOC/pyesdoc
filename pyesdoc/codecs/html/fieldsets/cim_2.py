@@ -17,28 +17,59 @@ from pyesdoc.ontologies import cim
 
 _SEPARATOR = "  |  "
 
+# Experimental relationship types and their labels.
+_EXPERIMENTAL_RELATIONSHIPS = [
+    ("is_initialized_by", "Parent Experiment"),
+    ("is_sibling_of", "Related Experiments"),
+    ("is_initializer_of", "Child Experiments"),
+    ("is_perturbation_from", "Control Experiment"),
+    ("is_control_for", "Provides control to"),
+    ("is_constrained_by", "Boundary Conditions From"),
+    ("is_constrainer_of", "Provides constraints to"),
+]
 
-# Document field sets.
-FIELDSETS = {
-    'cim.2.designing.numericalexperiment-overview': [
+
+def _get_related_experiments(e, r_type):
+    result = []
+    for i in sorted(e.related_experiments, key=lambda i: i.name):
+        if i.relationship == r_type:
+            result.append((i.name, i.viewer_url))
+
+    return result
+
+
+def _get_designing_numericalexperiment_overview(e):
+    """Fieldset factory.
+
+    """
+    def get_related(r):
+        """Returns set of related experiments."""
+        return [i for i in e.related_experiments if i.relationship == r]
+
+    fs = [
         Field('MIP Era', path='meta.project'),
         Field('Related MIPs',
-            link_factory=lambda exp: [(i.name, i.viewer_url) for i in \
-                                      sorted(exp.related_mips, key=lambda v: v.name)]),
+            link_factory=[(i.name, i.viewer_url) for i in sorted(e.related_mips, key=lambda v: v.name)]),
         Field('Institute', path='meta.institute'),
         Field('Canonical Name', path='canonical_name'),
-        Field('Alternative Names', path='alternative_names',
-            input_formatter=lambda v: _SEPARATOR.join(v)),
+        Field('Alternative Names', value=_SEPARATOR.join(e.alternative_names)),
         Field('Internal Name', path='internal_name'),
         Field('Long Name', path='long_name'),
         Field('Description', path='description'),
         Field('Rationale', path='rationale'),
-        Field('Keywords', path='keywords',
-            input_formatter=lambda v: _SEPARATOR.join(v.split(',')) if v else None),
-        Field('Related Experiments',
-            link_factory=lambda exp: [(i.name, i.viewer_url) for i in \
-                                      exp.related_experiments])
-    ],
+        Field('Keywords', value=_SEPARATOR.join(e.keywords.split(','))),
+    ]
+    for typeof, label in _EXPERIMENTAL_RELATIONSHIPS:
+        if get_related(typeof):
+            fs.append(Field(label, link_factory=_get_related_experiments(e, typeof)))
+
+    return fs
+
+
+# Document field sets.
+FIELDSETS = {
+    'cim.2.designing.numericalexperiment-overview':
+        _get_designing_numericalexperiment_overview,
 
     str(cim.v2.designing.EnsembleRequirement) : [
         Field('Name', path='canonical_name'),

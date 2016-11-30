@@ -71,7 +71,9 @@ class Field(object):
 
         """
         if self.link_factory:
-            return self.link_factory(data)
+            if inspect.isfunction(self.link_factory):
+                return self.link_factory(data)
+            return self.link_factory
 
         v = _get_value(data, self.path) if self.path else self.value
         v = _format_value(v, self.input_formatter, self.output_formatter)

@@ -446,6 +446,7 @@ CLASS_PROPERTIES = {
         'responsible_parties',
     ),
     designing.NumericalExperiment: (
+        'governing_mips',
         'related_experiments',
         'related_mips',
         'required_period',
@@ -1154,6 +1155,7 @@ CLASS_OWN_PROPERTIES = {
         'ensemble_axis',
     ),
     designing.NumericalExperiment: (
+        'governing_mips',
         'related_experiments',
         'related_mips',
         'required_period',
@@ -2361,6 +2363,7 @@ CONSTRAINTS = {
     ),
     designing.NumericalExperiment: (
 
+        ('governing_mips', 'type', designing.Project),
         ('requirements', 'type', designing.NumericalRequirement),
         ('description', 'type', unicode),
         ('duration', 'type', time.TimePeriod),
@@ -2379,6 +2382,7 @@ CONSTRAINTS = {
         ('alternative_names', 'type', unicode),
         ('name', 'type', unicode),
 
+        ('governing_mips', 'cardinality', "0.N"),
         ('requirements', 'cardinality', "0.N"),
         ('description', 'cardinality', "0.1"),
         ('duration', 'cardinality', "0.1"),
@@ -5424,6 +5428,13 @@ CONSTRAINTS = {
 
     ),
 
+    (designing.NumericalExperiment, 'governing_mips'): (
+
+        ('type', designing.Project),
+
+        ('cardinality', "0.N"),
+
+    ),
     (designing.NumericalExperiment, 'related_experiments'): (
 
         ('type', designing.NumericalExperiment),
@@ -9341,6 +9352,8 @@ http://www.geosci-model-dev-discuss.net/gmd-2016-197/)
         "This experiment should be initialised from the output of this experiment.",
     (designing.MultiEnsemble, 'ensemble_axis'):
         "List of orthogonal ensembles.",
+    (designing.NumericalExperiment, 'governing_mips'):
+        "MIP(s) overseeing experimental design protocol.",
     (designing.NumericalExperiment, 'related_experiments'):
         "Other experiments which have defined relationships to this one.",
     (designing.NumericalExperiment, 'related_mips'):
@@ -10005,14 +10018,20 @@ http://www.geosci-model-dev-discuss.net/gmd-2016-197/)
         "Members are/should-be run at different resolutions.",
     (designing.EnsembleTypes, 'Driven'):
         "Members are/should-be driven by different models.",
-    (designing.ExperimentalRelationships, 'control_for'):
-        "This experiment provides a control for the target experiment",
-    (designing.ExperimentalRelationships, 'initialisation_for'):
-        "This experiment provides initialisation for the target experiment",
-    (designing.ExperimentalRelationships, 'provides_constraints'):
-        "This experiment provides constraint(s) for the target experiment (e.g SST forcing)",
-    (designing.ExperimentalRelationships, 'is_sibling'):
-        "Part of a family (e.g. experiments where solar forcing is either increased or reduced)",
+    (designing.ExperimentalRelationships, 'is_constrained_by'):
+        "The experiment that provides constraint(s) for the target experiment (e.g SST forcing).",
+    (designing.ExperimentalRelationships, 'is_constrainer_of'):
+        "The set of experiments constrained by the experiment.",
+    (designing.ExperimentalRelationships, 'is_perturbation_from'):
+        "The experiment that provides a control for the target experiment.",
+    (designing.ExperimentalRelationships, 'is_control_for'):
+        "The set of experiments that use the experiment as a control.",
+    (designing.ExperimentalRelationships, 'is_initialized_by'):
+        "The experiment providing initialization for the experiment.",
+    (designing.ExperimentalRelationships, 'is_initializer_of'):
+        "The set of experiments initialized by the experiment.",
+    (designing.ExperimentalRelationships, 'is_sibling_of'):
+        "Part of a family (e.g. experiments where solar forcing is either increased or reduced).",
     (designing.ForcingTypes, 'historical'):
         "Best estimates of actual state (included synthesized)",
     (designing.ForcingTypes, 'idealised'):
@@ -10446,6 +10465,7 @@ KEYS = {
     (designing.InitialisationRequirement, 'initialise_from_data'): "cim.2.designing.InitialisationRequirement.initialise_from_data",
     (designing.InitialisationRequirement, 'initialise_from_experiment'): "cim.2.designing.InitialisationRequirement.initialise_from_experiment",
     (designing.MultiEnsemble, 'ensemble_axis'): "cim.2.designing.MultiEnsemble.ensemble_axis",
+    (designing.NumericalExperiment, 'governing_mips'): "cim.2.designing.NumericalExperiment.governing_mips",
     (designing.NumericalExperiment, 'related_experiments'): "cim.2.designing.NumericalExperiment.related_experiments",
     (designing.NumericalExperiment, 'related_mips'): "cim.2.designing.NumericalExperiment.related_mips",
     (designing.NumericalExperiment, 'required_period'): "cim.2.designing.NumericalExperiment.required_period",
@@ -10755,10 +10775,13 @@ KEYS = {
     (designing.EnsembleTypes, 'Forced'): "cim.2.designing.EnsembleTypes.Forced",
     (designing.EnsembleTypes, 'Resolution'): "cim.2.designing.EnsembleTypes.Resolution",
     (designing.EnsembleTypes, 'Driven'): "cim.2.designing.EnsembleTypes.Driven",
-    (designing.ExperimentalRelationships, 'control_for'): "cim.2.designing.ExperimentalRelationships.control_for",
-    (designing.ExperimentalRelationships, 'initialisation_for'): "cim.2.designing.ExperimentalRelationships.initialisation_for",
-    (designing.ExperimentalRelationships, 'provides_constraints'): "cim.2.designing.ExperimentalRelationships.provides_constraints",
-    (designing.ExperimentalRelationships, 'is_sibling'): "cim.2.designing.ExperimentalRelationships.is_sibling",
+    (designing.ExperimentalRelationships, 'is_constrained_by'): "cim.2.designing.ExperimentalRelationships.is_constrained_by",
+    (designing.ExperimentalRelationships, 'is_constrainer_of'): "cim.2.designing.ExperimentalRelationships.is_constrainer_of",
+    (designing.ExperimentalRelationships, 'is_perturbation_from'): "cim.2.designing.ExperimentalRelationships.is_perturbation_from",
+    (designing.ExperimentalRelationships, 'is_control_for'): "cim.2.designing.ExperimentalRelationships.is_control_for",
+    (designing.ExperimentalRelationships, 'is_initialized_by'): "cim.2.designing.ExperimentalRelationships.is_initialized_by",
+    (designing.ExperimentalRelationships, 'is_initializer_of'): "cim.2.designing.ExperimentalRelationships.is_initializer_of",
+    (designing.ExperimentalRelationships, 'is_sibling_of'): "cim.2.designing.ExperimentalRelationships.is_sibling_of",
     (designing.ForcingTypes, 'historical'): "cim.2.designing.ForcingTypes.historical",
     (designing.ForcingTypes, 'idealised'): "cim.2.designing.ForcingTypes.idealised",
     (designing.ForcingTypes, 'scenario'): "cim.2.designing.ForcingTypes.scenario",

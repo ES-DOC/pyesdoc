@@ -11,6 +11,7 @@
 
 """
 import collections
+import inspect
 import os
 
 import tornado.template as template
@@ -85,6 +86,8 @@ class TemplateInfo(object):
                  fieldset_type=None):
         self.field = None
         self.fieldset = fieldsets.create(fieldset)
+        if inspect.isfunction(self.fieldset):
+            self.fieldset = self.fieldset(data)
         self.fieldset_type = fieldset_type or "namevalue"
         try:
             iter(data)
