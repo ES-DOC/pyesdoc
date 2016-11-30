@@ -85,6 +85,7 @@ class DocReference(object):
         """
         super(DocReference, self).__init__()
 
+        self.canonical_name = None                        # unicode (0.1)
         self.constraint_vocabulary = None                 # unicode (0.1)
         self.context = None                               # unicode (0.1)
         self.description = None                           # unicode (0.1)

@@ -723,6 +723,7 @@ CLASS_PROPERTIES = {
         'version',
     ),
     shared.DocReference: (
+        'canonical_name',
         'changes',
         'constraint_vocabulary',
         'context',
@@ -1451,6 +1452,7 @@ CLASS_OWN_PROPERTIES = {
         'version',
     ),
     shared.DocReference: (
+        'canonical_name',
         'changes',
         'constraint_vocabulary',
         'context',
@@ -3106,6 +3108,7 @@ CONSTRAINTS = {
         ('institute', 'type', unicode),
         ('external_id', 'type', unicode),
         ('url', 'type', unicode),
+        ('canonical_name', 'type', unicode),
         ('version', 'type', int),
         ('context', 'type', unicode),
         ('type', 'type', unicode),
@@ -3121,6 +3124,7 @@ CONSTRAINTS = {
         ('institute', 'cardinality', "0.1"),
         ('external_id', 'cardinality', "0.1"),
         ('url', 'cardinality', "0.1"),
+        ('canonical_name', 'cardinality', "0.1"),
         ('version', 'cardinality', "0.1"),
         ('context', 'cardinality', "0.1"),
         ('type', 'cardinality', "1.1"),
@@ -6868,6 +6872,13 @@ CONSTRAINTS = {
 
     ),
 
+    (shared.DocReference, 'canonical_name'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
     (shared.DocReference, 'changes'): (
 
         ('type', shared.Change),
@@ -9623,6 +9634,8 @@ DOC_STRINGS = {
         "Date upon which the instance was last updated.",
     (shared.DocMetaInfo, 'version'):
         "Document version identifier.",
+    (shared.DocReference, 'canonical_name'):
+        "Canonical name given to document.",
     (shared.DocReference, 'changes'):
         "An optional description of how the item being referenced has been modified.  This is particularly useful for dealing with Ensembles (a set of simulations where something about each simulation has changed) or Conformances.",
     (shared.DocReference, 'constraint_vocabulary'):
@@ -9640,7 +9653,7 @@ DOC_STRINGS = {
     (shared.DocReference, 'linkage'):
         "A URL.",
     (shared.DocReference, 'name'):
-        "Name of online resource.",
+        "A user friendly name given to document.",
     (shared.DocReference, 'protocol'):
         "Protocol to use at the linkage.",
     (shared.DocReference, 'relationship'):
@@ -10814,6 +10827,7 @@ KEYS = {
     (shared.DocMetaInfo, 'type_sort_key'): "cim.1.shared.DocMetaInfo.type_sort_key",
     (shared.DocMetaInfo, 'update_date'): "cim.1.shared.DocMetaInfo.update_date",
     (shared.DocMetaInfo, 'version'): "cim.1.shared.DocMetaInfo.version",
+    (shared.DocReference, 'canonical_name'): "cim.1.shared.DocReference.canonical_name",
     (shared.DocReference, 'changes'): "cim.1.shared.DocReference.changes",
     (shared.DocReference, 'constraint_vocabulary'): "cim.1.shared.DocReference.constraint_vocabulary",
     (shared.DocReference, 'context'): "cim.1.shared.DocReference.context",

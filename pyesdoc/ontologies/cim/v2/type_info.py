@@ -891,6 +891,7 @@ CLASS_PROPERTIES = {
         'version',
     ),
     shared.DocReference: (
+        'canonical_name',
         'constraint_vocabulary',
         'context',
         'description',
@@ -1407,6 +1408,7 @@ CLASS_OWN_PROPERTIES = {
         'version',
     ),
     shared.DocReference: (
+        'canonical_name',
         'constraint_vocabulary',
         'context',
         'description',
@@ -3293,6 +3295,7 @@ CONSTRAINTS = {
         ('institute', 'type', unicode),
         ('type', 'type', unicode),
         ('url', 'type', unicode),
+        ('canonical_name', 'type', unicode),
         ('version', 'type', int),
         ('context', 'type', unicode),
         ('external_id', 'type', unicode),
@@ -3307,6 +3310,7 @@ CONSTRAINTS = {
         ('institute', 'cardinality', "0.1"),
         ('type', 'cardinality', "0.1"),
         ('url', 'cardinality', "0.1"),
+        ('canonical_name', 'cardinality', "0.1"),
         ('version', 'cardinality', "0.1"),
         ('context', 'cardinality', "0.1"),
         ('external_id', 'cardinality', "0.1"),
@@ -8062,6 +8066,13 @@ CONSTRAINTS = {
 
     ),
 
+    (shared.DocReference, 'canonical_name'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
     (shared.DocReference, 'constraint_vocabulary'): (
 
         ('type', unicode),
@@ -9708,6 +9719,8 @@ http://www.geosci-model-dev-discuss.net/gmd-2016-197/)
         "Date upon which the instance was last updated.",
     (shared.DocMetaInfo, 'version'):
         "Document version identifier.",
+    (shared.DocReference, 'canonical_name'):
+        "Canonical name given to document.",
     (shared.DocReference, 'constraint_vocabulary'):
         "A constraint vocabulary for the relationship.",
     (shared.DocReference, 'context'):
@@ -9723,7 +9736,7 @@ http://www.geosci-model-dev-discuss.net/gmd-2016-197/)
     (shared.DocReference, 'linkage'):
         "A URL.",
     (shared.DocReference, 'name'):
-        "Canonical name given to document.",
+        "A user friendly name given to document.",
     (shared.DocReference, 'protocol'):
         "Protocol to use at the linkage.",
     (shared.DocReference, 'relationship'):
@@ -10643,6 +10656,7 @@ KEYS = {
     (shared.DocMetaInfo, 'type_sort_key'): "cim.2.shared.DocMetaInfo.type_sort_key",
     (shared.DocMetaInfo, 'update_date'): "cim.2.shared.DocMetaInfo.update_date",
     (shared.DocMetaInfo, 'version'): "cim.2.shared.DocMetaInfo.version",
+    (shared.DocReference, 'canonical_name'): "cim.2.shared.DocReference.canonical_name",
     (shared.DocReference, 'constraint_vocabulary'): "cim.2.shared.DocReference.constraint_vocabulary",
     (shared.DocReference, 'context'): "cim.2.shared.DocReference.context",
     (shared.DocReference, 'description'): "cim.2.shared.DocReference.description",
