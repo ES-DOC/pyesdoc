@@ -53,7 +53,6 @@ def _get_designing_numericalexperiment_overview(e):
         Field('Institute', path='meta.institute'),
         Field('Canonical Name', path='canonical_name'),
         Field('Alternative Names', value=_SEPARATOR.join(e.alternative_names)),
-        Field('Internal Name', path='internal_name'),
         Field('Long Name', path='long_name'),
         Field('Description', path='description'),
         Field('Rationale', path='rationale'),
