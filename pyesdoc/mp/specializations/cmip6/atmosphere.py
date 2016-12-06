@@ -14,17 +14,17 @@ ENUMERATIONS = OrderedDict()
 # --------------------------------------------------------------------
 # CONTACT: Set to realm specialization co-ordinator.
 # --------------------------------------------------------------------
-CONTACT = 'Eric Guilyardi'
+CONTACT = 'Charlotte Pascoe'
 
 # --------------------------------------------------------------------
 # AUTHORS: Set to realm specialization authors (comma delimited).
 # --------------------------------------------------------------------
-AUTHORS = 'Eric Guilyardi, David Hassell, Mark Greenslade'
+AUTHORS = 'Charlotte Pascoe'
 
 # --------------------------------------------------------------------
 # CONTRIBUTORS: Set to realm specialization contributors (comma delimited).
 # --------------------------------------------------------------------
-CONTRIBUTORS = 'CMIP5 version +, Julie Dehayes (LOCEAN/IPSL), Steve Griffies (GFDL), Gokhan Danabasoglu (NCAR)'
+CONTRIBUTORS = ''
 
 # --------------------------------------------------------------------
 # QUALITY CONTROL STATUS: Set to 'draft' or 'complete'
@@ -35,51 +35,41 @@ QC_STATUS = 'draft'
 # CHANGE HISTORY: Set to list: (version, date, comment, who).
 # --------------------------------------------------------------------
 CHANGE_HISTORY = [
-    ("0.1.0", "2016-07-01", "Eric Guilyardi",
-        "Initialised"),
-    ("0.2.0", "2016-08-30", "Eric Guilyardi",
-        "Update science following inputs fron Gokhan Danabasoglu and Steve Griffies", ),
-    ("0.3.0", "2016-09-05", "David Hassell",
-        "Added hidden CIM2 properties to key_properties and timestepping_framework", ),
-    ("0.4.0", "2016-11-08", "Eric Guilyardi et al.",
-        "Changed syntax to simplify and remove CIM2 dependencies"),
-    ("0.5.0", "2016-11-25", "Mark Greenslade.",
-        "Syntax simplification in respect of process/sub-process"),
-    ]
+	("0.1.0", "2016-11-29", "Initialised", "Mark Greenslade"),
+    ("0.2.0", "2016-12-02", "Updated process names and descriptions, added enumeration TODOs", "Charlotte Pascoe")
+]
 
 # --------------------------------------------------------------------
 # DESCRIPTION: Scientific context of this scientific realm
 # --------------------------------------------------------------------
-DESCRIPTION = 'Ocean Realm'
+DESCRIPTION = 'Atmosphere realm specialization'
+
+# --------------------------------------------------------------------
+# REALM: Canonical name for the domain of this scientific realm
+# --------------------------------------------------------------------
+REALM = 'atmosphere'
 
 # --------------------------------------------------------------------
 # GRID: The grid used to layout the variables
 # --------------------------------------------------------------------
-GRID = 'ocean_grid'
+GRID = 'atmosphere_grid'
 
 # --------------------------------------------------------------------
 # KEY PROPERTIES: Key properties for the realm which differ from model defaults (grid, timestep etc)
 # --------------------------------------------------------------------
-KEY_PROPERTIES = 'ocean_key_properties'
+KEY_PROPERTIES = 'atmosphere_key_properties'
 
 # --------------------------------------------------------------------
 # PROCESSES: Processes simulated within the realm
 # --------------------------------------------------------------------
 PROCESSES = [
-    'ocean_timestepping_framework',
-    'ocean_advection',
-    'ocean_lateral_physics',
-    'ocean_vertical_physics',
-    'ocean_uplow_boundaries',
-    'ocean_boundary_forcing',
+    'atmosphere_dynamical_core',
+    'atmosphere_radiation',
+    'atmosphere_turbulence_convection',
+    'atmosphere_microphysics_precipitation',
+	'atmosphere_cloud_scheme',
+    'atmosphere_cloud_simulator',
+    'atmosphere_gravity_waves',
+    'atmosphere_solar',
+    'atmosphere_volcanos',
     ]
-
-# --------------------------------------------------------------------
-# REALM: top level details
-# --------------------------------------------------------------------
-DETAILS = OrderedDict()
-
-# --------------------------------------------------------------------
-# REALM: ENUMERATIONS
-# --------------------------------------------------------------------
-ENUMERATIONS = OrderedDict()

@@ -14,17 +14,17 @@ ENUMERATIONS = OrderedDict()
 # --------------------------------------------------------------------
 # CONTACT: Set to realm specialization co-ordinator.
 # --------------------------------------------------------------------
-CONTACT = 'Eric Guilyardi'
+CONTACT = 'Ruth Petrie'
 
 # --------------------------------------------------------------------
 # AUTHORS: Set to realm specialization authors (comma delimited).
 # --------------------------------------------------------------------
-AUTHORS = 'Eric Guilyardi, David Hassell, Mark Greenslade'
+AUTHORS = 'Ruth Petrie, Bryan Lawrence, David Hassell, Mark Greenslade'
 
 # --------------------------------------------------------------------
 # CONTRIBUTORS: Set to realm specialization contributors (comma delimited).
 # --------------------------------------------------------------------
-CONTRIBUTORS = 'CMIP5 version +, Julie Dehayes (LOCEAN/IPSL), Steve Griffies (GFDL), Gokhan Danabasoglu (NCAR)'
+CONTRIBUTORS = 'Jamie Rae (UKMO), Martin Vancopppenolle (IPSL), Alexandra Jahn (University of Colorado)'
 
 # --------------------------------------------------------------------
 # QUALITY CONTROL STATUS: Set to 'draft' or 'complete'
@@ -35,44 +35,43 @@ QC_STATUS = 'draft'
 # CHANGE HISTORY: Set to list: (version, date, comment, who).
 # --------------------------------------------------------------------
 CHANGE_HISTORY = [
-    ("0.1.0", "2016-07-01", "Eric Guilyardi",
-        "Initialised"),
-    ("0.2.0", "2016-08-30", "Eric Guilyardi",
-        "Update science following inputs fron Gokhan Danabasoglu and Steve Griffies", ),
-    ("0.3.0", "2016-09-05", "David Hassell",
-        "Added hidden CIM2 properties to key_properties and timestepping_framework", ),
-    ("0.4.0", "2016-11-08", "Eric Guilyardi et al.",
-        "Changed syntax to simplify and remove CIM2 dependencies"),
-    ("0.5.0", "2016-11-25", "Mark Greenslade.",
-        "Syntax simplification in respect of process/sub-process"),
-    ]
+	("0.1.0", "2016-05-24", "Initialised", "David Hassell"),
+	("0.1.1", "2016-09-28", "Modified to include work done by Bryan Lawerence", "Petrie"),
+	("0.1.2", "2016-11-07", "Updated on the basis of discussion with Jamie Rae (UKMO)", "Ruth Petrie"),
+    ("0.1.3", "2016-11-15", "Refactored based to fit in the new schema", "Mark Greenslade"),
+    ("0.1.4", "2016-11-17", "Update DETAILS and SUBPROCESS names", "Ruth Petrie"),
+    ("0.1.5", "2016-11-18", "Update based on discussions with Martin Vancopppenolle (IPSL)", "Ruth Petrie"),
+    ("0.1.6", "2016-11-23", "Update based on discussions with Alexandra Jahn (University of Colorado)", "Ruth Petrie"),
+]
 
 # --------------------------------------------------------------------
 # DESCRIPTION: Scientific context of this scientific realm
 # --------------------------------------------------------------------
-DESCRIPTION = 'Ocean Realm'
+DESCRIPTION = 'Sea ice realm specialization'
+
+# --------------------------------------------------------------------
+# REALM: Canonical name for the domain of this scientific realm
+# --------------------------------------------------------------------
+REALM = 'seaice'
 
 # --------------------------------------------------------------------
 # GRID: The grid used to layout the variables
 # --------------------------------------------------------------------
-GRID = 'ocean_grid'
+GRID = 'seaice_grid'
 
 # --------------------------------------------------------------------
 # KEY PROPERTIES: Key properties for the realm which differ from model defaults (grid, timestep etc)
 # --------------------------------------------------------------------
-KEY_PROPERTIES = 'ocean_key_properties'
+KEY_PROPERTIES = 'seaice_key_properties'
 
 # --------------------------------------------------------------------
 # PROCESSES: Processes simulated within the realm
 # --------------------------------------------------------------------
 PROCESSES = [
-    'ocean_timestepping_framework',
-    'ocean_advection',
-    'ocean_lateral_physics',
-    'ocean_vertical_physics',
-    'ocean_uplow_boundaries',
-    'ocean_boundary_forcing',
-    ]
+    'seaice_dynamics',
+    'seaice_thermodynamics',
+    'seaice_radiative_processes',
+]
 
 # --------------------------------------------------------------------
 # REALM: top level details
@@ -83,3 +82,4 @@ DETAILS = OrderedDict()
 # REALM: ENUMERATIONS
 # --------------------------------------------------------------------
 ENUMERATIONS = OrderedDict()
+

@@ -1,7 +1,7 @@
-"""A realm process sepecialization.
+"""
+A realm process sepecialization.
 
 For further information goto http://wordpress.es-doc.org/cmip6-model-specializations.
-
 """
 # --------------------------------------------------------------------
 # INTERNAL (do not change)
@@ -14,12 +14,12 @@ ENUMERATIONS = OrderedDict()
 # --------------------------------------------------------------------
 # CONTACT: Set to realm specialization co-ordinator.
 # --------------------------------------------------------------------
-CONTACT = 'Eric Guilyardi'
+CONTACT = 'Ruth Petrie'
 
 # --------------------------------------------------------------------
 # AUTHORS: Set to realm specialization authors (comma delimited).
 # --------------------------------------------------------------------
-AUTHORS = 'Eric Guilyardi'
+AUTHORS = 'Ruth Petrie, Bryan Lawrence'
 
 # --------------------------------------------------------------------
 # QUALITY CONTROL STATUS: Set to 'draft' or 'complete'
@@ -29,54 +29,40 @@ QC_STATUS = 'draft'
 # --------------------------------------------------------------------
 # DESCRIPTION: Short description of the specialization.
 # --------------------------------------------------------------------
-DESCRIPTION = 'Ocean upper / lower boundaries'
+DESCRIPTION = 'Sea Ice Radiative Processes'
 
 # --------------------------------------------------------------------
-# PROCESS: top level
+# PROCESS: top level properties
 # --------------------------------------------------------------------
-DETAILS['toplevel:free_surface'] = {
-    'description': 'Properties of free surface in ocean',
+DETAILS['toplevel'] = {
+    'description': "Radiative processes in sea ice",
     'properties': [
-        ('scheme', 'ENUM:free_surface_types', '1.1',
-            'Free surface scheme in ocean'),
-        ('embeded_seaice', 'bool', '1.1',
-            'Is the sea-ice embeded in the ocean model (instead of levitating) ?'),
-        ]
-    }
-
-DETAILS['toplevel:bottom_boundary_layer'] = {
-    'description': 'Properties of bottom boundary layer in ocean',
-    'properties': [
-        ('type_of_bbl', 'ENUM:bottom_bl_types', '1.1',
-            'Type of bottom boundary layer in ocean'),
-        ('lateral_mixing_coef', 'int', '0.1',
-            'If bottom BL is diffusive, specify value of lateral mixing coefficient (in m2/s)'),
-        ('sill_overflow', 'str', '1.1',
-            'Describe any specific treatment of sill overflows')
+        ('surface_albedo', 'ENUM:seaice_albedo', '1.1',
+            "Method used to handle surface albedo."),
+        ('ice_radiation_transmission', 'ENUM:ice_trans', '1.N',
+            "Method by which solar radiation through sea ice is handled."),
         ]
     }
 
 # --------------------------------------------------------------------
-# ENUMERATIONS
+# PROCESS: ENUMERATIONS
 # --------------------------------------------------------------------
-ENUMERATIONS['free_surface_types'] = {
-    'description': 'Type of free surface in ocean',
+ENUMERATIONS['seaice_albedo'] = {
+    'description': "Surface albedo of sea ice component",
     'is_open': True,
     'members': [
-        ('Linear implicit', None),
-        ('Linear filtered', None),
-        ('Linear semi-explicit', None),
-        ('Non-linear implicit', None),
-        ('Non-linear filtered', None),
-        ('Non-linear semi-explicit', None)
-        ]
-    }
+        ('Delta-Eddington', None),
+        ('Parameterized', 'Sea ice albedo is parameterized'),
+        ('Multi-band albedo', 'Albedo value has a spectral dependence'),
+    ]
+}
 
-ENUMERATIONS['bottom_bl_types'] = {
-    'description': 'Type of bottom boundary layer in ocean',
+ENUMERATIONS['ice_trans'] = {
+    'description': "Surface albedo of sea ice component",
     'is_open': True,
     'members': [
-        ('Diffusive', None),
-        ('Acvective', None)
-        ]
-    }
+        ('Delta-Eddington', None),
+        ('Exponential attenuation', None),
+        ('Ice radiation transmission per category', 'Radiation transmission through ice is different for each sea ice category')
+    ]
+}

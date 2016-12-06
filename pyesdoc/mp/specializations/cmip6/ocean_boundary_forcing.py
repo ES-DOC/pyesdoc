@@ -3,49 +3,39 @@
 For further information goto http://wordpress.es-doc.org/cmip6-model-specializations.
 
 """
-
 # --------------------------------------------------------------------
 # INTERNAL (do not change)
 # --------------------------------------------------------------------
 from collections import OrderedDict
 
+DETAILS = OrderedDict()
+ENUMERATIONS = OrderedDict()
+
 # --------------------------------------------------------------------
-# CONTACT
-#
-# Set to realm specialization co-ordinator.
+# CONTACT: Set to realm specialization co-ordinator.
 # --------------------------------------------------------------------
 CONTACT = 'Eric Guilyardi'
 
 # --------------------------------------------------------------------
-# AUTHORS
-#
-# Set to realm specialization authors (comma delimited).
+# AUTHORS: Set to realm specialization authors (comma delimited).
 # --------------------------------------------------------------------
 AUTHORS = 'Eric Guilyardi'
 
 # --------------------------------------------------------------------
-# QUALITY CONTROL STATUS
-#
-# Set to 'draft' or 'complete'
+# QUALITY CONTROL STATUS: Set to 'draft' or 'complete'
 # --------------------------------------------------------------------
 QC_STATUS = 'draft'
 
 # --------------------------------------------------------------------
-# PROCESS: DESCRIPTION
-#
-# Scientific context of the process
+# DESCRIPTION: Short description of the specialization.
 # --------------------------------------------------------------------
-DESCRIPTION = 'Properties of boundary forcing within the ocean component'
+DESCRIPTION = 'Ocean boundary forcing'
 
 # --------------------------------------------------------------------
-# PROCESS: DETAILS
-#
-# Sets of details for the process
+# PROCESS: top level properties
 # --------------------------------------------------------------------
-DETAILS = OrderedDict()
-
-DETAILS['boundary_forcing_details'] = {
-    'description': 'Properties of boundary forcing',
+DETAILS['toplevel'] = {
+    'description': 'Top level properties of boundary forcing',
     'properties': [
         ('surface_pressure', 'str', '1.1',
             'Describe how surface pressure is transmitted to ocean (via sea-ice, nothing specific,...)'),
@@ -60,88 +50,75 @@ DETAILS['boundary_forcing_details'] = {
         ('geothermal_heating', 'str', '1.1',
             'Describe if/how geothermal heating is present at ocean bottom.'),
         ]
-}
+    }
 
 # --------------------------------------------------------------------
-# PROCESS: SUB PROCESSES
-#
-# Sets of discrete portions of the process
+# SUB-PROCESS: Momentum.
 # --------------------------------------------------------------------
-SUB_PROCESSES = OrderedDict()
-
-SUB_PROCESSES['momentum'] = {
+DETAILS['momentum'] = {
     'description': 'Key properties of momentum boundary forcing in the ocean',
-    'details': [
+    'properties': [],
+    'detail_sets': [
         'bottom_friction',
         'lateral_friction'
         ]
-}
+    }
 
-SUB_PROCESSES['tracers'] = {
-    'description': 'Key properties of tracer boundary forcing in the ocean',
-    'details': [
-        'sunlight_penetration',
-        'surface_salinity_atmos',
-        'surface_salinity_seaice'
-        ]
-}
-
-# --------------------------------------------------------------------
-# PROCESS: SUB PROCESSES: DETAILS
-#
-# Sets of details for the sub processes
-# --------------------------------------------------------------------
-SUB_PROCESS_DETAILS = OrderedDict()
-
-SUB_PROCESS_DETAILS['momentum:bottom_friction'] = {
+DETAILS['momentum:bottom_friction'] = {
     'description': 'Properties of momentum bottom friction in ocean',
     'properties': [
         ('type', 'ENUM:mom_bottom_friction_types', '1.1',
             'Type of momentum bottom friction in ocean'),
         ]
-}
+    }
 
-SUB_PROCESS_DETAILS['momentum:lateral_friction'] = {
+DETAILS['momentum:lateral_friction'] = {
    'description': 'Properties of momentum lateral friction in ocean',
     'properties': [
         ('type', 'ENUM:mom_lateral_friction_types', '1.1',
             'Type of momentum lateral friction in ocean'),
         ]
-}
+    }
 
-SUB_PROCESS_DETAILS['tracers:sunlight_penetration'] = {
+# --------------------------------------------------------------------
+# SUB-PROCESS: Tracers.
+# --------------------------------------------------------------------
+DETAILS['tracers'] = {
+    'description': 'Key properties of tracer boundary forcing in the ocean',
+    'properties': [],
+    'detail_sets': [
+        'sunlight_penetration',
+        'fresh_water_forcing',
+        ]
+    }
+
+DETAILS['tracers:sunlight_penetration'] = {
     'description': 'Properties of sunlight penetration scheme in ocean',
     'properties': [
          ('scheme', 'ENUM:sunlight_penetration_scheme_types', '1.1',
             'Type of sunlight penetration scheme in ocean'),
-         ('tracers_sun_ocean_colour', 'bool', '1.1',
+         ('ocean_colour', 'bool', '1.1',
             'Is the ocean sunlight penetration scheme ocean colour dependent ?'),
-         ('tracers_sun_extinct_depth', 'str', '0.1',
+         ('extinction_depth', 'str', '0.1',
             'Describe and list extinctions depths for sunlight penetration scheme (if applicable).'),
         ]
-}
+    }
 
-SUB_PROCESS_DETAILS['tracers:surface_salinity_atmos'] = {
-    'description': 'Properties of surface salinity forcing from atmos in ocean',
+DETAILS['tracers:fresh_water_forcing'] = {
+    'description': 'Properties of surface fresh water forcing in ocean',
     'properties': [
-        ('scheme', 'ENUM:surface_salinity_forcing_types', '1.1',
-            'Type of surface salinity forcing from atmos in ocean'),
+        ('from_atmopshere', 'ENUM:surface_fresh_water_forcing_atmos_types', '1.1',
+            'Type of surface fresh water forcing from atmos in ocean'),
+        ('from_sea_ice', 'ENUM:surface_fresh_water_forcing_seaice_types', '1.1',
+            'Type of surface fresh water forcing from sea-ice in ocean'),
+        ('forced_mode_restoring', 'str', '1.1',
+            'Type of surface salinity restoring in forced mode (OMIP)'),
         ]
-}
-
-SUB_PROCESS_DETAILS['tracers:surface_salinity_seaice'] = {
-    'description': 'Properties of surface salinity forcing from sea ice in ocean',
-    'properties': [
-        ('scheme', 'ENUM:surface_salinity_forcing_types', '1.1',
-            'Type of surface salinity forcing from sea ice in ocean'),
-        ]
-}
+    }
 
 # --------------------------------------------------------------------
 # ENUMERATIONS
 # --------------------------------------------------------------------
-ENUMERATIONS = OrderedDict()
-
 ENUMERATIONS['mom_bottom_friction_types'] = {
     'description': 'Type of momentum bottom friction in ocean',
     'is_open': True,
@@ -152,7 +129,7 @@ ENUMERATIONS['mom_bottom_friction_types'] = {
         ('Constant drag coefficient', None),
         ('None', None),
         ]
-}
+    }
 
 ENUMERATIONS['mom_lateral_friction_types'] = {
     'description': 'Type of momentum lateral friction in ocean',
@@ -162,7 +139,7 @@ ENUMERATIONS['mom_lateral_friction_types'] = {
         ('Free-slip', None),
         ('No-slip', None),
         ]
-}
+    }
 
 ENUMERATIONS['sunlight_penetration_scheme_types'] = {
     'description': 'Type of sunlight penetration scheme in ocean',
@@ -172,13 +149,23 @@ ENUMERATIONS['sunlight_penetration_scheme_types'] = {
         ('2 extinction depth', None),
         ('3 extinction depth', None),
         ]
-}
+    }
 
-ENUMERATIONS['surface_salinity_forcing_types'] = {
-    'description': 'ype of surface salinity forcing in ocean',
+ENUMERATIONS['surface_fresh_water_forcing_atmos_types'] = {
+    'description': 'Types of surface fresh water forcing from atmosphere in ocean',
     'is_open': True,
     'members': [
         ('Freshwater flux', None),
         ('Virtual salt flux', None),
         ]
-}
+    }
+
+ENUMERATIONS['surface_fresh_water_forcing_seaice_types'] = {
+    'description': 'Types of surface fresh water forcing from sea-ice in ocean',
+    'is_open': True,
+    'members': [
+        ('Freshwater flux', None),
+        ('Virtual salt flux', None),
+        ('Real salt flux', None),
+        ]
+    }

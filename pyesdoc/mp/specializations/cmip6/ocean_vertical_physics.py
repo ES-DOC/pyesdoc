@@ -3,90 +3,56 @@
 For further information goto http://wordpress.es-doc.org/cmip6-model-specializations.
 
 """
-
 # --------------------------------------------------------------------
 # INTERNAL (do not change)
 # --------------------------------------------------------------------
 from collections import OrderedDict
 
+DETAILS = OrderedDict()
+ENUMERATIONS = OrderedDict()
+
 # --------------------------------------------------------------------
-# CONTACT
-#
-# Set to realm specialization co-ordinator.
+# CONTACT: Set to realm specialization co-ordinator.
 # --------------------------------------------------------------------
 CONTACT = 'Eric Guilyardi'
 
 # --------------------------------------------------------------------
-# AUTHORS
-#
-# Set to realm specialization authors (comma delimited).
+# AUTHORS: Set to realm specialization authors (comma delimited).
 # --------------------------------------------------------------------
 AUTHORS = 'Eric Guilyardi'
 
 # --------------------------------------------------------------------
-# QUALITY CONTROL STATUS
-#
-# Set to 'draft' or 'complete'
+# QUALITY CONTROL STATUS: Set to 'draft' or 'complete'
 # --------------------------------------------------------------------
 QC_STATUS = 'draft'
 
 # --------------------------------------------------------------------
-# PROCESS: DESCRIPTION
-#
-# Scientific context of the process
+# DESCRIPTION: Short description of the specialization.
 # --------------------------------------------------------------------
-DESCRIPTION = 'Characteristics of ocean vertical physics'
+DESCRIPTION = 'Ocean Vertical Physics'
 
 # --------------------------------------------------------------------
-# PROCESS: DETAILS
-#
-# Sets of details for the process
+# SUB-PROCESS: Boundary Layer Mixing.
 # --------------------------------------------------------------------
-DETAILS = OrderedDict()
+DETAILS['boundary_layer_mixing'] = {
+    'description': 'Properties of boundary layer mixing in the ocean (aka mixed layer)',
+    'properties': [],
+    'detail_sets': [
+        'details',
+        'tracers',
+        'momentum'
+        ]
+    }
 
-DETAILS['vertical_physics_details'] = {
+DETAILS['boundary_layer_mixing:details'] = {
     'description': 'Properties of vertical physics in ocean',
     'properties': [
-        ('convection_type', 'ENUM:vertphys_convection_types', '1.1',
-            'Type of vertical convection in ocean'),
-        ('tide_induced_mixing', 'str', '1.1',
-            'Describe how tide induced mixing is modelled (barotropic, baroclinic, none)'),
         ('langmuir_cells_mixing', 'bool', '1.1',
             'Is there Langmuir cells mixing in upper ocean ?'),
         ]
-}
+    }
 
-# --------------------------------------------------------------------
-# PROCESS: SUB PROCESSES
-#
-# Sets of discrete portions of the process
-# --------------------------------------------------------------------
-SUB_PROCESSES = OrderedDict()
-
-SUB_PROCESSES['boundary_layer_mixing'] = {
-    'description': 'Properties of boundary layer mixing in the ocean (aka mixed layer)',
-    'details': [
-        'tracers',
-        'momentum'
-        ]
-}
-
-SUB_PROCESSES['interior_mixing'] = {
-    'description': 'Properties of interior vertical mixing in the ocean',
-    'details': [
-        'tracers',
-        'momentum'
-        ]
-}
-
-# --------------------------------------------------------------------
-# PROCESS: SUB PROCESSES: DETAILS
-#
-# Sets of details for the sub processes
-# --------------------------------------------------------------------
-SUB_PROCESS_DETAILS = OrderedDict()
-
-SUB_PROCESS_DETAILS['boundary_layer_mixing:tracers'] = {
+DETAILS['boundary_layer_mixing:tracers'] = {
     'description': 'Properties of boundary layer (BL) mixing on tracers in the ocean ',
     'properties': [
         ('type', 'ENUM:bndlayer_mixing_types', '1.1',
@@ -98,9 +64,9 @@ SUB_PROCESS_DETAILS['boundary_layer_mixing:tracers'] = {
         ('background', 'str', '1.1',
             'Background BL mixing of tracers coefficient, (schema and value in m2/s - may by none)'),
         ]
-}
+    }
 
-SUB_PROCESS_DETAILS['boundary_layer_mixing:momentum'] = {
+DETAILS['boundary_layer_mixing:momentum'] = {
     'description': 'Properties of boundary layer (BL) mixing on momentum in the ocean ',
     'properties': [
         ('type', 'ENUM:bndlayer_mixing_types', '1.1',
@@ -111,10 +77,38 @@ SUB_PROCESS_DETAILS['boundary_layer_mixing:momentum'] = {
             'If constant BL mixing of momentum, specific coefficient (m2/s)'),
         ('background', 'str', '1.1',
             'Background BL mixing of momentum coefficient, (schema and value in m2/s - may by none)'),
-        ]
-}
 
-SUB_PROCESS_DETAILS['interior_mixing:tracers'] = {
+        ]
+    }
+
+# --------------------------------------------------------------------
+# SUB-PROCESS: Interior Layer Mixing.
+# --------------------------------------------------------------------
+DETAILS['interior_mixing'] = {
+    'description': 'Properties of interior vertical mixing in the ocean',
+    'properties': [],
+    'detail_sets': [
+        'details',
+        'tracers',
+        'momentum'
+        ]
+    }
+
+DETAILS['interior_mixing:details'] = {
+    'description': 'Properties of interior mixing in the ocean ',
+    'properties': [
+        ('convection_type', 'ENUM:vertphys_convection_types', '1.1',
+            'Type of vertical convection in ocean'),
+        ('tide_induced_mixing', 'str', '1.1',
+            'Describe how tide induced mixing is modelled (barotropic, baroclinic, none)'),
+        ('double_diffusion', 'bool', '1.1',
+            'Is there double diffusion'),
+        ('shear_mixing', 'bool', '1.1',
+            'Is there interior shear mixing'),
+        ]
+    }
+
+DETAILS['interior_mixing:tracers'] = {
     'description': 'Properties of interior mixing on tracers in the ocean ',
     'properties': [
         ('type', 'ENUM:interior_mixing_types', '1.1',
@@ -126,9 +120,9 @@ SUB_PROCESS_DETAILS['interior_mixing:tracers'] = {
         ('background', 'str', '1.1',
             'Background interior mixing of tracers coefficient, (schema and value in m2/s - may by none)'),
         ]
-}
+    }
 
-SUB_PROCESS_DETAILS['interior_mixing:momentum'] = {
+DETAILS['interior_mixing:momentum'] = {
     'description': 'Properties of interior mixing on momentum in the ocean ',
     'properties': [
         ('type', 'ENUM:interior_mixing_types', '1.1',
@@ -140,13 +134,11 @@ SUB_PROCESS_DETAILS['interior_mixing:momentum'] = {
         ('background', 'str', '1.1',
             'Background interior mixing of momentum coefficient, (schema and value in m2/s - may by none)'),
         ]
-}
+    }
 
 # --------------------------------------------------------------------
 # ENUMERATIONS
 # --------------------------------------------------------------------
-ENUMERATIONS = OrderedDict()
-
 ENUMERATIONS['vertphys_convection_types'] = {
     'description': 'Types of convection scheme in ocean',
     'is_open': True,
@@ -155,7 +147,7 @@ ENUMERATIONS['vertphys_convection_types'] = {
         ('Enhanced vertical diffusion', None),
         ('Included in turbulence closure', None)
         ]
-}
+    }
 
 ENUMERATIONS['bndlayer_mixing_types'] = {
     'description': 'Types of boundary layer mixing in ocean',
@@ -170,7 +162,7 @@ ENUMERATIONS['bndlayer_mixing_types'] = {
         ('Richardson number dependent - KT', None),
         ('Imbeded as isopycnic vertical coordinate', None)
         ]
-}
+    }
 
 ENUMERATIONS['interior_mixing_types'] = {
     'description': 'Types of interior mixing in ocean',
@@ -183,4 +175,4 @@ ENUMERATIONS['interior_mixing_types'] = {
         ('Richardson number dependent - KT', None),
         ('Imbeded as isopycnic vertical coordinate', None)
         ]
-}
+    }
