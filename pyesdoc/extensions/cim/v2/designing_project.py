@@ -28,7 +28,7 @@ def _set_viewer_urls(ctx):
     """Sets viewer urls.
 
     """
-    for exp in ctx.doc.requires_experiments:
+    for exp in ctx.doc.required_experiments + ctx.doc.governed_experiments:
         if isinstance(exp, cim.v2.designing.NumericalExperiment):
             exp.viewer_url = VIEWER_URL_BY_ID.format(ctx.meta.project, exp.meta.id, exp.meta.version)
         elif isinstance(exp, cim.v2.shared.DocReference):

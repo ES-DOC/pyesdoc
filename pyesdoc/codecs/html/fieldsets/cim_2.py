@@ -18,7 +18,7 @@ from pyesdoc.ontologies import cim
 _SEPARATOR = "  |  "
 
 # Experimental relationship types and their labels.
-_EXPERIMENTAL_RELATIONSHIPS = [
+_EXPERIMENTAL_RELATIONSHIP_LABELS = [
     ("is_initialized_by", "Parent Experiment"),
     ("is_sibling_of", "Related Experiments"),
     ("is_initializer_of", "Child Experiments"),
@@ -58,7 +58,7 @@ def _get_designing_numericalexperiment_overview(e):
         Field('Rationale', path='rationale'),
         Field('Keywords', value=_SEPARATOR.join(e.keywords.split(','))),
     ]
-    for typeof, label in _EXPERIMENTAL_RELATIONSHIPS:
+    for typeof, label in _EXPERIMENTAL_RELATIONSHIP_LABELS:
         if get_related(typeof):
             fs.append(Field(label, link_factory=_get_related_experiments(e, typeof)))
 
@@ -130,7 +130,9 @@ FIELDSETS = {
         Field('Sub Projects',
             link_factory=lambda p: [(i.name, i.viewer_url) for i in p.sub_projects]),
         Field('Required Experiments',
-            link_factory=lambda e: [(i.name, i.viewer_url) for i in e.requires_experiments]),
+            link_factory=lambda p: [(i.name, i.viewer_url) for i in p.required_experiments]),
+        Field('Governed Experiments',
+            link_factory=lambda p: [(i.name, i.viewer_url) for i in p.governed_experiments]),
         Field('Keywords', path='keywords',
             input_formatter=lambda v: _SEPARATOR.join(v.split(',')))
     ],
