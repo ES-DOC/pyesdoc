@@ -9,7 +9,7 @@
    :synopsis: The cim v2 package initialisor.
 
 .. moduleauthor:: Earth System Documentation (ES-DOC) <dev@es-doc.org>
-.. note:: Code generated using the esdoc-mp framework.
+.. note:: Code generated using the pyesdoc framework.
 
 """
 # Ontology name.

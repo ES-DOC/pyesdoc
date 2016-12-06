@@ -9,7 +9,7 @@
    :synopsis: Typeset information for the cim v2 ontology.
 
 .. moduleauthor:: Earth System Documentation (ES-DOC) <dev@es-doc.org>
-.. note:: Code generated using the esdoc-mp framework.
+.. note:: Code generated using the pyesdoc framework.
 
 """
 from collections import defaultdict
@@ -505,10 +505,11 @@ CLASS_PROPERTIES = {
         'responsible_parties',
     ),
     designing.Project: (
+        'governed_experiments',
         'homepage',
         'objectives',
         'previous_projects',
-        'requires_experiments',
+        'required_experiments',
         'sub_projects',
         'alternative_names',
         'canonical_name',
@@ -1172,10 +1173,11 @@ CLASS_OWN_PROPERTIES = {
         'formal_data_request',
     ),
     designing.Project: (
+        'governed_experiments',
         'homepage',
         'objectives',
         'previous_projects',
-        'requires_experiments',
+        'required_experiments',
         'sub_projects',
     ),
     designing.SimulationPlan: (
@@ -2486,14 +2488,15 @@ CONSTRAINTS = {
     ),
     designing.Project: (
 
-        ('requires_experiments', 'type', designing.NumericalExperiment),
-        ('previous_projects', 'type', designing.Project),
+        ('required_experiments', 'type', designing.NumericalExperiment),
+        ('governed_experiments', 'type', designing.NumericalExperiment),
         ('description', 'type', unicode),
         ('sub_projects', 'type', designing.Project),
         ('duration', 'type', time.TimePeriod),
         ('canonical_name', 'type', unicode),
         ('responsible_parties', 'type', shared.Responsibility),
         ('internal_name', 'type', unicode),
+        ('previous_projects', 'type', designing.Project),
         ('long_name', 'type', unicode),
         ('previously_known_as', 'type', unicode),
         ('citations', 'type', shared.Citation),
@@ -2505,14 +2508,15 @@ CONSTRAINTS = {
         ('alternative_names', 'type', unicode),
         ('name', 'type', unicode),
 
-        ('requires_experiments', 'cardinality', "0.N"),
-        ('previous_projects', 'cardinality', "0.N"),
+        ('required_experiments', 'cardinality', "0.N"),
+        ('governed_experiments', 'cardinality', "0.N"),
         ('description', 'cardinality', "0.1"),
         ('sub_projects', 'cardinality', "0.N"),
         ('duration', 'cardinality', "0.1"),
         ('canonical_name', 'cardinality', "0.1"),
         ('responsible_parties', 'cardinality', "0.N"),
         ('internal_name', 'cardinality', "0.1"),
+        ('previous_projects', 'cardinality', "0.N"),
         ('long_name', 'cardinality', "0.1"),
         ('previously_known_as', 'cardinality', "0.N"),
         ('citations', 'cardinality', "0.N"),
@@ -5806,6 +5810,13 @@ CONSTRAINTS = {
 
     ),
 
+    (designing.Project, 'governed_experiments'): (
+
+        ('type', designing.NumericalExperiment),
+
+        ('cardinality', "0.N"),
+
+    ),
     (designing.Project, 'homepage'): (
 
         ('type', unicode),
@@ -5827,7 +5838,7 @@ CONSTRAINTS = {
         ('cardinality', "0.N"),
 
     ),
-    (designing.Project, 'requires_experiments'): (
+    (designing.Project, 'required_experiments'): (
 
         ('type', designing.NumericalExperiment),
 
@@ -9383,13 +9394,15 @@ http://www.geosci-model-dev-discuss.net/gmd-2016-197/)
         "Scope allows us to categorise a requirement in terms of how widely it is shared.",
     (designing.OutputRequirement, 'formal_data_request'):
         "If available, link to a 'cmip' style online request.",
+    (designing.Project, 'governed_experiments'):
+        "Experiments governed by this project.",
     (designing.Project, 'homepage'):
         "Project homepage.",
     (designing.Project, 'objectives'):
         "Project objectives.",
     (designing.Project, 'previous_projects'):
         "Previous projects with similar aims.",
-    (designing.Project, 'requires_experiments'):
+    (designing.Project, 'required_experiments'):
         "Experiments required to deliver project.",
     (designing.Project, 'sub_projects'):
         "Activities within the project with their own name and aim(s).",
@@ -10488,10 +10501,11 @@ KEYS = {
     (designing.NumericalRequirement, 'is_conformance_requested'): "cim.2.designing.NumericalRequirement.is_conformance_requested",
     (designing.NumericalRequirement, 'scope'): "cim.2.designing.NumericalRequirement.scope",
     (designing.OutputRequirement, 'formal_data_request'): "cim.2.designing.OutputRequirement.formal_data_request",
+    (designing.Project, 'governed_experiments'): "cim.2.designing.Project.governed_experiments",
     (designing.Project, 'homepage'): "cim.2.designing.Project.homepage",
     (designing.Project, 'objectives'): "cim.2.designing.Project.objectives",
     (designing.Project, 'previous_projects'): "cim.2.designing.Project.previous_projects",
-    (designing.Project, 'requires_experiments'): "cim.2.designing.Project.requires_experiments",
+    (designing.Project, 'required_experiments'): "cim.2.designing.Project.required_experiments",
     (designing.Project, 'sub_projects'): "cim.2.designing.Project.sub_projects",
     (designing.SimulationPlan, 'expected_model'): "cim.2.designing.SimulationPlan.expected_model",
     (designing.SimulationPlan, 'expected_performance_sypd'): "cim.2.designing.SimulationPlan.expected_performance_sypd",

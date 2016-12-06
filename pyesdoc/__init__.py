@@ -66,6 +66,7 @@ from pyesdoc.validation import validate_notebook_output
 
 from pyesdoc import archive
 from pyesdoc import io
+from pyesdoc import mp
 from pyesdoc import ontologies
 from pyesdoc import publishing
 from pyesdoc import serialization

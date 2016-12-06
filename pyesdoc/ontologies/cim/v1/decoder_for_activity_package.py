@@ -8,7 +8,7 @@
    :synopsis: A set of cim 1 decoders.
 
 .. moduleauthor:: Earth System Documentation (ES-DOC) <dev@es-doc.org>
-.. note:: Code generated using the esdoc-mp framework.
+.. note:: Code generated using the pyesdoc framework.
 
 """
 from decoder_xml_utils import set_attributes

@@ -8,7 +8,7 @@
    :synopsis: The set of types of the cim.v2.science package.
 
 .. moduleauthor:: Earth System Documentation (ES-DOC) <dev@es-doc.org>
-.. note:: Code generated using the esdoc-mp framework.
+.. note:: Code generated using the pyesdoc framework.
 
 """
 import abc
