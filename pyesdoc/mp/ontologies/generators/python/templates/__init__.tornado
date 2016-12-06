@@ -1,0 +1,38 @@
+{% autoescape None %}
+# -*- coding: utf-8 -*-
+
+"""
+.. module:: {ontology-name}.v{ontology-version-packagename}.{file-name}
+
+   :license: GPL / CeCILL
+   :platform: Unix, Windows
+   :synopsis: The {ontology-name} v{ontology-version} package initialisor.
+
+.. moduleauthor:: Earth System Documentation (ES-DOC) <dev@es-doc.org>
+.. note:: Code generated using the pyesdoc framework.
+
+"""
+# Ontology name.
+NAME = '{ontology-name}'
+
+# Ontology Version.
+VERSION = '{ontology-version}'
+
+# Ontology full name.
+FULL_NAME = '{}.{}'.format(NAME, VERSION)
+
+# Ontology packag set.{% for p in o.packages %}
+import typeset_for_{{ p.name }}_package as {{ p.name }}{% end %}
+
+# Ontology class set.{% for p in o.packages %}{% for c in p.classes %}
+from typeset_for_{{ p.name }}_package import {{ c.op_name }}{% end %}{% end %}
+
+# Ontology enum set.{% for p in o.packages %}{% for e in p.enums %}
+from typeset_for_{{ p.name }}_package import {{ e.op_name }}{% end %}{% end %}
+
+import type_info
+import typeset
+try:
+	import decoder
+except ImportError:
+	pass

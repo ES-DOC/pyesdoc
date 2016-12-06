@@ -1,0 +1,47 @@
+{% autoescape None %}
+# -*- coding: utf-8 -*-
+
+"""
+.. module:: {ontology-name}.v{ontology-version-packagename}.{file-name}
+
+   :license: GPL / CeCILL
+   :platform: Unix, Windows
+   :synopsis: Schema information for the {ontology-name} v{ontology-version} ontology.
+
+.. moduleauthor:: Earth System Documentation (ES-DOC) <dev@es-doc.org>
+.. note:: Code generated using the pyesdoc framework.
+
+"""
+{% for c in pkg.classes %}
+
+def {{ c.name }}():
+    """{{ c.doc_string }}
+
+	"""
+    return {
+        'type': 'class',
+        'base': {{ '"{}"'.format(c.base) if c.base else None }},{% if c.base %}
+        'base-hierarchy': [{% for bc in c.bases %}
+            '{{ bc }}'{% if bc != c.bases[-1] %},{% end %}{% end %}
+            ],
+        'base-hierarchy-depth': {{ len(c.bases) }},{% end %}{% if c.sub_classes %}
+        'sub-classes': [{% for sc in sorted(c.sub_classes, key=lambda i: i.name) %}
+            '{{ sc }}'{% if sc != c.sub_classes[-1] %},{% end %}{% end %}
+        ],{% end %}
+        'is_abstract': {{ c.is_abstract }},
+        'is_document': {{ c.is_entity }},
+        'properties': [{% for cp in c.properties %}
+            ('{{ cp.name }}', '{{ cp.type }}', '{{ cp.cardinality }}',
+                "{{ cp.doc_string }}"),{% end %}
+            ]{% if c.base %},
+        'properties-all': [{% for p in sorted(c.all_properties, key=lambda i: i.name) %}
+            '{{ p.name }}',{% end %}
+            ],
+        'properties-inherited': [{% for p in sorted(c.inherited_properties, key=lambda i: i.name) %}
+            '{{ p.name }} :: {{ p.cls }}',{% end %}
+            ]{% end %}
+    }
+{% end %}
+
+
+

@@ -1,0 +1,8 @@
+class {enum-name}(object):
+    """An enumeration within the {ontology-name} v{ontology-version} type system.
+
+    {enum-doc-string}
+    """
+    is_open = {enum-is-open}
+    members = [{enum-members}]
+    descriptions = [{enum-descriptions}]

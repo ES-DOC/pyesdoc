@@ -1,0 +1,21 @@
+# -*- coding: utf-8 -*-
+
+"""
+.. module:: {ontology-name}.v{ontology-version-packagename}.{file-name}
+
+   :license: GPL / CeCILL
+   :platform: Unix, Windows
+   :synopsis: The set of types of the {ontology-name}.v{ontology-version-packagename}.{package-name} package.
+
+.. moduleauthor:: Earth System Documentation (ES-DOC) <dev@es-doc.org>
+.. note:: Code generated using the pyesdoc framework.
+
+"""
+import abc
+import datetime
+import uuid
+
+{imports}
+
+
+{types}

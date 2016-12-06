@@ -1,0 +1,14 @@
+def decode_{class-function-name}(xml, nsmap):
+    """Decodes an instance of the following type: {class-doc-name}.
+
+    :param lxml.etree xml: XML from which type is to be decoded.
+    :param dict nsmap: XML namespace mappings.
+
+    :returns: A decoded type instance.
+    :rtype: {ontology-name}.v{ontology-version-packagename}.typeset.{package-name}.{class-name}
+
+    """
+    decodings = [{class-decodings}
+    ]
+
+    return set_attributes(typeset.{package-name}.{class-name}(), xml, nsmap, decodings)

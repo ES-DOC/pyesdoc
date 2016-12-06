@@ -1,0 +1,243 @@
+{% autoescape None %}
+# -*- coding: utf-8 -*-
+
+"""
+.. module:: {ontology-name}.v{ontology-version-packagename}.{file-name}
+
+   :license: GPL / CeCILL
+   :platform: Unix, Windows
+   :synopsis: Typeset information for the {ontology-name} v{ontology-version} ontology.
+
+.. moduleauthor:: Earth System Documentation (ES-DOC) <dev@es-doc.org>
+.. note:: Code generated using the pyesdoc framework.
+
+"""
+from collections import defaultdict
+import datetime
+import uuid
+
+
+{% for p in o.packages %}import typeset_for_{{ p.name }}_package as {{ p.name }}
+{% end %}
+
+
+# Module exports.
+__all__ = [
+    'PACKAGES',
+    'DOCUMENT_TYPES',
+    'CLASSES',
+    'CLASS_PROPERTIES',
+    'CLASS_OWN_PROPERTIES',
+    'BASE_CLASSES',
+    'BASE_CLASSED',
+    'SUB_CLASSED',
+    'SUB_CLASSES',
+    'ENUMS',
+    'CONSTRAINTS',
+    'KEYS',
+    'DOC_STRINGS'
+    ]
+
+# Supported packages.
+PACKAGES = (
+{% for p in o.packages %}    {{ p.op_name }},
+{% end %})
+
+# ------------------------------------------------
+# Classes.
+# ------------------------------------------------
+
+# Supported classes.
+CLASSES = (
+{% for c in o.classes %}    {{ c.op_full_name }},
+{% end %})
+
+# Supported class properties.
+CLASS_PROPERTIES = { {% for c in o.classes %}
+    {{ c.op_full_name }}: ({% for cp in c.all_properties %}
+        '{{ cp.name }}',{% end %}
+    ),{% end %}
+}
+
+# Supported class own properties.
+CLASS_OWN_PROPERTIES = { {% for c in o.classes %}
+    {{ c.op_full_name }}: ({% for cp in c.properties %}
+        '{{ cp.name }}',{% end %}
+    ),{% end %}
+}
+
+# Total class properties.
+TOTAL_CLASS_PROPERTIES = sum(len(i) for i in CLASS_OWN_PROPERTIES.values())
+
+# ------------------------------------------------
+# Enum.
+# ------------------------------------------------
+
+# Supported enums.
+ENUMS = (
+{% for e in o.enums %}    {{ e.op_full_name }},
+{% end %})
+
+# Total enum members across all enums.
+TOTAL_ENUM_MEMBERS = sum(len(e.members) for e in ENUMS)
+
+# ------------------------------------------------
+# Type hierarchies.
+# ------------------------------------------------
+
+# Set of supported types.
+TYPES = CLASSES + ENUMS
+
+# Supported document types.
+DOCUMENT_TYPES = (
+{% for et in o.entities %}    {{ et.op_full_name }},
+{% end %})
+
+# Base classes.
+BASE_CLASSES = defaultdict(tuple){% for c in [c for c in o.classes if c.base] %}
+BASE_CLASSES[{{ c.op_full_name }}] = ({% for bc in c.bases %}{{ bc.op_full_name }}, {% end %}){% end %}
+
+# Classes with base classes.
+BASE_CLASSED = tuple(BASE_CLASSES.keys())
+
+# Sub classes.
+SUB_CLASSES = defaultdict(tuple){% for c in [c for c in o.sub_classed] %}
+SUB_CLASSES[{{ c.op_full_name }}] = ({% for sc in c.sub_classes %}
+    {{ sc.op_full_name }},{% end %}
+    ){% end %}
+
+# Classes that have been sub classed.
+SUB_CLASSED = tuple(SUB_CLASSES.keys())
+
+# Maximum class depth in hierarchy.
+CLASS_HIERACHY_DEPTH = max(len(v) for v in BASE_CLASSES.values())
+
+# ------------------------------------------------
+# Type constraints.
+# ------------------------------------------------
+
+# Map of ontology types to constraints.
+CONSTRAINTS = {
+    # ------------------------------------------------
+    # Classes.
+    # ------------------------------------------------
+{% for c in o.classes %}
+    {{ c.op_full_name }}: (
+{% for n, t, v in [ct for ct in c.all_constraints if ct[1] == 'type'] %}
+        ('{{ n }}', '{{ t }}', {{ lu.get_type_functional_name(v, True) }}),{% end %}
+{% for n, t, v in [ct for ct in c.all_constraints if ct[1] == 'cardinality'] %}
+        ('{{ n }}', '{{ t }}', "{{ v }}"),{% end %}
+{% for n, t, v in [ct for ct in c.all_constraints if ct[1] == 'constant'] %}
+        ('{{ n }}', '{{ t }}', {{ '"{}"'.format(v) if isinstance(v, (str, unicode)) else v }}),{% end %}
+{% for n, t, v in [ct for ct in c.all_constraints if ct[1] == 'regex'] %}
+        ('{{ n }}', '{{ t }}', "{{ v }}"),{% end %}    ),{% end %}
+    # ------------------------------------------------
+    # Class properties.
+    # ------------------------------------------------
+{% for c in o.classes %}
+{% for cp in c.all_properties %}
+    ({{ c.op_full_name }}, '{{ cp.name }}'): (
+{% for n, t, v in [ct for ct in c.all_constraints if (ct[1] == 'type' and ct[0] == cp.name)] %}
+        ('{{ t }}', {{ lu.get_type_functional_name(v, True) }}),{% end %}
+{% for n, t, v in [ct for ct in c.all_constraints if (ct[1] == 'cardinality' and ct[0] == cp.name)] %}
+        ('{{ t }}', "{{ v }}"),{% end %}
+{% for n, t, v in [ct for ct in c.all_constraints if (ct[1] == 'constant' and ct[0] == cp.name)] %}
+        ('{{ t }}', {{ '"{}"'.format(v) if isinstance(v, (str, unicode)) else v }}),{% end %}
+{% for n, t, v in [ct for ct in c.all_constraints if (ct[1] == 'regex' and ct[0] == cp.name)] %}
+        ('{{ t }}', "{{ v }}"),{% end %}    ),{% end %}{% end %}
+}
+
+# Count of class constraints.
+TOTAL_CONSTRAINTS = sum(len(CONSTRAINTS[c]) for c in CLASSES)
+
+# ------------------------------------------------
+# Type documentation strings.
+# ------------------------------------------------
+DOC_STRINGS = {
+    # ------------------------------------------------
+    # Packages.
+    # ------------------------------------------------
+{% for p in o.packages %}
+    {{ p.name }}: "{{ escape(p.doc_string) }}",{% end %}
+
+    # ------------------------------------------------
+    # Classes.
+    # ------------------------------------------------
+{% for p in o.packages %}{% for c in p.classes %}
+    {{ c.op_full_name }}: """
+        {{ escape(c.doc_string) }}
+
+    """,{% end %}{% end %}
+
+    # ------------------------------------------------
+    # Class properties.
+    # ------------------------------------------------
+{% for p in o.packages %}{% for c in p.classes %}{% for cp in c.properties %}
+    ({{ c.op_full_name }}, '{{ cp.name }}'):
+        {{ '"{}"'.format(escape(cp.doc_string)) if cp.doc_string else None }},{% end %}{% end %}{% end %}
+
+    # ------------------------------------------------
+    # Enums.
+    # ------------------------------------------------
+{% for p in o.packages %}{% for e in p.enums %}
+    {{ e.op_full_name }}: """
+        {{ escape(e.doc_string) }}
+
+    """,{% end %}{% end %}
+
+    # ------------------------------------------------
+    # Enum members.
+    # ------------------------------------------------
+{% for p in o.packages %}{% for e in p.enums %}{% for em in e.members %}
+    ({{ e.op_full_name }}, '{{ em.name }}'):
+        {{ '"{}"'.format(escape(em.doc_string)) if em.doc_string else None }},{% end %}{% end %}{% end %}
+}
+
+# ------------------------------------------------
+# Type keys.
+# ------------------------------------------------
+
+# Map of ontology types to type keys.
+KEYS = {
+    # ------------------------------------------------
+    # Packages.
+    # ------------------------------------------------
+{% for p in o.packages %}
+    {{ p.name }}: "{{ o.op_name }}.{{ o.op_version }}.{{ p.op_name }}",{% end %}
+
+    # ------------------------------------------------
+    # Classes.
+    # ------------------------------------------------
+{% for p in o.packages %}{% for c in p.classes %}
+    {{ c.op_full_name }}: "{{ o.op_name }}.{{ o.op_version }}.{{ c.op_full_name }}",{% end %}{% end %}
+
+    # ------------------------------------------------
+    # Class properties.
+    # ------------------------------------------------
+{% for p in o.packages %}{% for c in p.classes %}{% for cp in c.properties %}
+    ({{ c.op_full_name }}, '{{ cp.name }}'): "{{ o.op_name }}.{{ o.op_version }}.{{ c.op_full_name }}.{{ cp.name }}",{% end %}{% end %}{% end %}
+
+    # ------------------------------------------------
+    # Enums.
+    # ------------------------------------------------
+{% for p in o.packages %}{% for e in p.enums %}
+    {{ e.op_full_name }}: "{{ o.op_name }}.{{ o.op_version }}.{{ e.op_full_name }}",{% end %}{% end %}
+
+    # ------------------------------------------------
+    # Enum members.
+    # ------------------------------------------------
+{% for p in o.packages %}{% for e in p.enums %}{% for em in e.members %}
+    ({{ e.op_full_name }}, '{{ em.name }}'): "{{ o.op_name }}.{{ o.op_version }}.{{ e.op_full_name }}.{{ em.name.replace(' ', '-') }}",{% end %}{% end %}{% end %}
+}
+
+# Set inline type keys.
+{% for t in o.types %}{{ t.op_full_name }}.type_key = KEYS[{{ t.op_full_name }}]
+{% end %}
+
+
+# Remove import dross.
+del defaultdict
+del datetime
+del uuid
+{% for p in o.packages %}del {{ p.name }}
+{% end %}

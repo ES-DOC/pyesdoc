@@ -1,0 +1,16 @@
+# -*- coding: utf-8 -*-
+
+"""
+.. module:: pyesdoc.ontologies.{ontology-name}.v{ontology-version-packagename}.{file-name}
+
+   :license: GPL / CeCILL
+   :platform: Unix, Windows
+   :synopsis: A set of {ontology-name} {ontology-version} decoders.
+
+.. moduleauthor:: Earth System Documentation (ES-DOC) <dev@es-doc.org>
+.. note:: Code generated using the pyesdoc framework.
+
+"""
+{module-imports}
+
+

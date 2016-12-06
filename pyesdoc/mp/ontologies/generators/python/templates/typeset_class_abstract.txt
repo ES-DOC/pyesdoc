@@ -1,0 +1,11 @@
+class {class-name}({base-class-name}):
+    """An abstract class within the {ontology-name} v{ontology-version} type system.{class-doc-string}"""
+    __metaclass__ = abc.ABCMeta
+
+    def __init__(self):
+        """Instance constructor.
+
+        """
+        super({class-name}, self).__init__()
+
+{class-properties}{class_constants}{class-pstr}{class-computed-properties}

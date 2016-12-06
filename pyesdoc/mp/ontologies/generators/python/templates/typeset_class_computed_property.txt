@@ -1,0 +1,8 @@
+
+
+    @property
+    def {computed-property-name}(self):
+	    """Returns a computed property.
+
+	    """
+	    return {computed-property-computation}
