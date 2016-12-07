@@ -4,3 +4,4 @@ lxml
 nose
 requests
 tornado
+xlsxwriter

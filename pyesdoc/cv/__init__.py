@@ -16,7 +16,7 @@ from pyesdoc.cv.constants import *
 from pyesdoc.cv.exceptions import *
 from pyesdoc.cv.partition import Partition
 from pyesdoc.cv.term import Term
-from pyesdoc.cv.termset import Termset
+from pyesdoc.cv.term_collection import TermCollection
 
 
 
@@ -24,7 +24,7 @@ from pyesdoc.cv.termset import Termset
 Facet = Term
 
 # Synonyms for the masses.
-Facetset = Termset
+Facetset = TermCollection
 
 
 # Managed partitions.

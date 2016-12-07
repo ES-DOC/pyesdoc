@@ -13,7 +13,7 @@
 """
 from pyesdoc.cv.exceptions import EncodingError
 from pyesdoc.cv.term import Term
-from pyesdoc.cv.termset import Termset
+from pyesdoc.cv.term_collection import TermCollection
 
 
 
@@ -28,7 +28,7 @@ def encode(data):
     """
     if isinstance(data, Term):
         return _encode_term(data)
-    elif isinstance(data, Termset):
+    elif isinstance(data, TermCollection):
         return _encode_termset(data)
 
     raise EncodingError(data)

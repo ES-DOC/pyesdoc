@@ -14,7 +14,7 @@
 import arrow
 
 from pyesdoc.cv.term import Term
-from pyesdoc.cv.termset import Termset
+from pyesdoc.cv.term_collection import TermCollection
 
 
 
@@ -63,7 +63,7 @@ def _decode_termset(obj):
     """Decodes a termset from a dictionary.
 
     """
-    termset = Termset()
+    termset = TermCollection()
     termset.create_date = arrow.get(obj["create_date"]).datetime
     termset.domain = obj["domain"]
     termset.kind = obj["type"]

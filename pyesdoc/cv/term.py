@@ -25,28 +25,28 @@ class Term(object):
     """A vocabulary term.
 
     """
-    def __init__(self, domain, kind, name, status=None):
+    def __init__(self):
         """Instance constructor.
 
         """
+
         # Meta attributes.
-        self.create_date = arrow.utcnow().datetime
-        self.domain = domain
+        self.create_date = None
         self.idx = None
-        self.kind = kind
-        self.status = status or constants.GOVERNANCE_STATUS_PENDING
-        self.uid = unicode(uuid.uuid4())
+        self.status = None
+        self.uid = None
 
         # Name related attributes.
-        self.name = name
+        self.name = None
         self.alternative_name = None
-        self.aliases = []
+        self.aliases = list()
 
         # UI related.
-        self.labels = {}
+        self.labels = dict()
 
         # Relationship attributes.
         self.associations = set()
+        self.collection = None
         self.parent = None
 
         # Other attributes.
@@ -62,7 +62,31 @@ class Term(object):
         """Instance representation.
 
         """
-        return u"{0} -> {1} -> [{2}]".format(self.namespace, self.name, self.status).lower()
+        return u"{} -> [{}]".format(self.namespace, self.status)
+
+
+    @property
+    def authority(self):
+        """Gets associated governing authority.
+
+        """
+        return self.scope.authority
+
+
+    @property
+    def scope(self):
+        """Gets associated scope.
+
+        """
+        return self.collection.scope
+
+
+    @property
+    def namespace(self):
+        """Returns full namespace of the term set.
+
+        """
+        return ":".join([self.authority.name, self.scope.name, self.collection.name, self.name])
 
 
     @property
@@ -122,14 +146,6 @@ class Term(object):
 
         """
         return validator.validate(self)
-
-
-    @property
-    def namespace(self):
-        """Returns full namespace of the term set.
-
-        """
-        return ":".join([self.domain, self.kind])
 
 
     @property
