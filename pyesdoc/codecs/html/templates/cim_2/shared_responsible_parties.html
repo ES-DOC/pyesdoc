@@ -8,7 +8,7 @@
 	<section>
 		<header>
 			{% if responsible.role %}
-			<h{{ header + 1 }}>{{ responsible.role }}&nbsp;-->&nbsp;{{ party.name }}</h{{ header + 1}}>
+			<h{{ header + 1 }}>{{ responsible.role.strip() }}&nbsp;>&nbsp;{{ party.name }}</h{{ header + 1}}>
 			{% else %}
 			<h{{ header + 1 }}>{{ party.name }}</h{{ header + 1}}>
 			{% end %}
