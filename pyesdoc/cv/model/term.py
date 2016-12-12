@@ -30,6 +30,7 @@ class Term(Entity):
         self.associations = set()       # associated terms
         self.collection = None          # collection of which term is a member
         self.create_date = None         # date term was created
+        self.data = None                # associated data
         self.description = None         # descriptive text
         self.idx = None                 # term integer based identifier
         self.io_path = None             # file system path

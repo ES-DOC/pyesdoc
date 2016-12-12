@@ -111,6 +111,7 @@ def _decode_term(obj):
     instance.alternative_name = obj['alternative_name']
     instance.alternative_url = obj['alternative_url']
     instance.create_date = arrow.get(obj['create_date']).datetime
+    instance.data = obj['data']
     instance.description = obj['description']
     instance.idx = obj['idx']
     instance.labels = dict()

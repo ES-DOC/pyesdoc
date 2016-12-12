@@ -10,7 +10,8 @@
 .. moduleauthor:: IPSL (ES-DOC) <dev@esdocumentation.org>
 
 """
-from pyesdoc.cv import io_manager as io
+from pyesdoc.cv.io_mgr import read_authority
+from pyesdoc.cv.io_mgr import write_authority
 from pyesdoc.cv.codecs import from_dict
 from pyesdoc.cv.codecs import from_json
 from pyesdoc.cv.codecs import to_dict

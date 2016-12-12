@@ -1,0 +1,91 @@
+# -*- coding: utf-8 -*-
+
+"""
+.. module:: pyesdoc.cv.io.read.py
+   :copyright: Copyright "December 01, 2016", IPSL
+   :license: GPL/CeCIL
+   :platform: Unix, Windows
+   :synopsis: Reads an authority's vocabularies from file sytem.
+
+.. moduleauthor:: Mark Conway-Greenslade <momipsl@ipsl.jussieu.fr>
+
+
+"""
+import glob
+import json
+import os
+
+from pyesdoc.cv import constants
+from pyesdoc.cv.codecs import from_json
+
+
+# Manifest file name.
+_MANIFEST = "MANIFEST"
+
+
+def read_authority(dpath):
+    """Reads authority CV data from file system.
+
+    :param str dpath: Path to directory to which a CV hierarchy has been written.
+
+    :returns: Authority CV data.
+    :rtype: pyesdoc.cv.Authority
+
+    """
+    if not os.path.isdir(dpath):
+        raise OSError("Invalid directory.")
+    if not os.path.isfile(os.path.join(dpath, _MANIFEST)):
+        raise OSError("Invalid MANIFEST.")
+
+    # Read authority from manifest.
+    with open(os.path.join(dpath, _MANIFEST), "r") as fstream:
+        authority = from_json(fstream.read())
+
+    # Read terms.
+    for scope in authority.scopes:
+        for collection in scope.collections:
+            collection.terms = []
+            collection.terms += _read_terms(dpath, scope, collection)
+
+    # Set inter-concept hierachy.
+    terms = {}
+    for scope in authority.scopes:
+        scope.authority = authority
+        for collection in scope.collections:
+            collection.scope = scope
+            for term in collection.terms:
+                term.collection = collection
+                terms[term.uid] = term
+
+    # Set inter-term hierarchies.
+    for term in terms.values():
+        if term.parent in terms:
+            term.parent = terms[term.parent]
+
+    # Set intra-term hierarchies.
+    for term in [i for i in terms.values() if i.associations]:
+        term.associations = [terms[i] if i in terms else i for i in term.associations]
+
+    return authority
+
+
+def _read_terms(dpath, scope, collection):
+    """Reads terms from file system.
+
+    """
+    dpath = os.path.join(dpath, scope.name)
+    dpath = os.path.join(dpath, collection.name)
+    dpath = os.path.join(dpath, "*")
+
+    return [_read_term(i) for i in glob.iglob(dpath)]
+
+
+def _read_term(fpath):
+    """Reads terms from file system.
+
+    """
+    # Decode term from JSON file.
+    with open(fpath, "r") as fstream:
+        term = from_json(fstream.read())
+
+    return term
