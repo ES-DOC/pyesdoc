@@ -216,6 +216,14 @@ def validate_scope_url(url):
     validate_url(url, "url")
 
 
+def validate_term_data(data):
+    """Validates a term's data.
+
+    """
+    if not isinstance(data, dict):
+        raise ValueError("invalid term data")
+
+
 def validate_term_name(name):
     """Validates a term's name.
 

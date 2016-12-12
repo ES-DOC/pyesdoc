@@ -120,13 +120,19 @@ def create_collection(scope, name, description):
 	return i
 
 
-def create_term(collection, name):
+def create_term(collection, name, data=None):
 	"""Instantiates, initialises & returns a term.
+
+	param: pyesdoc.cv.Collection collection: The collection to which the term belongs.
+	param: str name: Name of term.
+	param: dict data: Arbitrary data associated with term.
 
 	"""
 	# Validate inputs.
 	v.validate(collection)
 	v.validate_term_name(name)
+	if data is not None:
+		v.validate_term_data(data)
 
 	# Format inputs.
 	name = unicode(name).strip()
@@ -139,6 +145,7 @@ def create_term(collection, name):
 	i.name = name.lower()
 	i.status = constants.GOVERNANCE_STATUS_PENDING
 	i.uid = uuid.uuid4()
+	i.data = data
 
 	# Append to parent & set idx.
 	collection.terms.append(i)

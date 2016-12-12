@@ -25,4 +25,3 @@ from pyesdoc.cv.model import Term
 from pyesdoc.cv.model import Authority
 from pyesdoc.cv.model import Collection
 from pyesdoc.cv.model import Scope
-

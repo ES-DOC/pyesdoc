@@ -18,7 +18,6 @@ import os
 from pyesdoc.cv import validation
 from pyesdoc.cv import constants
 from pyesdoc.cv.model import Authority
-from pyesdoc.cv.codecs import to_dict
 from pyesdoc.cv.codecs import to_json
 from pyesdoc.cv.codecs import from_json
 
@@ -58,10 +57,30 @@ def write(dpath, authority):
 
 
 def _write_term(dpath, term):
-    """Writes a term file to the file system.
+    """Writes a term to the file system.
 
     """
-    # Set term directory path.
+    dpath = _get_term_dpath(dpath, term)
+    fname = "{}.json".format(term.name)
+    with open(os.path.join(dpath, fname), "w") as fstream:
+        fstream.write(to_json(term))
+    if term.data:
+        _write_term_data(dpath, term)
+
+
+def _write_term_data(dpath, term):
+    """Writes a term's data to the file system.
+
+    """
+    fname = "{}.json.data".format(term.name)
+    with open(os.path.join(dpath, fname), "w") as fstream:
+        fstream.write(json.dumps(term.data, indent=4, sort_keys=True))
+
+
+def _get_term_dpath(dpath, term):
+    """Returns directory path to which term files will be written.
+
+    """
     dpath = os.path.join(dpath, term.scope.name)
     dpath = os.path.join(dpath, term.collection.name)
     dpath = os.path.join(dpath, term.status)
@@ -70,9 +89,7 @@ def _write_term(dpath, term):
     except OSError:
         pass
 
-    # Write term file.
-    with open(os.path.join(dpath, term.name), "w") as fstream:
-        fstream.write(to_json(term))
+    return dpath
 
 
 def read(dpath):
@@ -86,13 +103,6 @@ def read(dpath):
     if not os.path.isfile(os.path.join(dpath, _MANIFEST)):
         raise OSError("Invalid MANIFEST.")
 
-
-    authority = None
-    scope = None
-    collection = None
-    term = None
-    terms = {}
-
     # Read authority from manifest.
     with open(os.path.join(dpath, _MANIFEST), "r") as fstream:
         authority = from_json(fstream.read())
@@ -104,7 +114,8 @@ def read(dpath):
             for status in constants.GOVERNANCE_STATUS_SET:
                 collection.terms += _read_terms(dpath, scope, collection, status)
 
-    # Wire hierachy.
+    # Set inter-concept hierachy.
+    terms = {}
     for scope in authority.scopes:
         scope.authority = authority
         for collection in scope.collections:
@@ -113,12 +124,12 @@ def read(dpath):
                 term.collection = collection
                 terms[term.uid] = term
 
-    # Write inter-collection hierarchies.
+    # Set inter-term hierarchies.
     for term in terms.values():
         if term.parent in terms:
             term.parent = terms[term.parent]
 
-    # Write intra-collection hierarchies.
+    # Set intra-term hierarchies.
     for term in [i for i in terms.values() if i.associations]:
         term.associations = [terms[i] if i in terms else i for i in term.associations]
 
