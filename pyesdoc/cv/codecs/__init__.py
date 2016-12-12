@@ -11,96 +11,82 @@
 
 
 """
-from pyesdoc.cv import constants
 from pyesdoc.cv.codecs import dictionary
 from pyesdoc.cv.codecs import json
+from pyesdoc.cv.constants import ENCODING_DICT
+from pyesdoc.cv.constants import ENCODING_JSON
+from pyesdoc.cv.model import TYPES
 
 
 
 # Codecs mapped by encoding.
 _CODECS = {
-	constants.ENCODING_DICT: dictionary,
-	constants.ENCODING_JSON: json
+	ENCODING_DICT: dictionary,
+	ENCODING_JSON: json
 }
 
 # Map of encodings to allowed input types when decoding.
 _DECODE_TYPE_WHITELIST = {
-    constants.ENCODING_DICT : (dict, ),
-    constants.ENCODING_JSON : (str, unicode)
+    ENCODING_DICT : (dict, ),
+    ENCODING_JSON : (str, unicode)
 }
 
 
-def _assert_decode(target, encoding):
-    """Asserts decode input parameters.
+def _decode(target, encoding=ENCODING_JSON):
+    """Returns a decoded domain model class instance.
+
+    :param basestring|dict target: A domain model class instance representation.
+    :param str encoding: A supported encoding (dict|json).
+
+    :returns: A domain model class instance.
+    :rtype: object
 
     """
     if target is None:
         raise ValueError("Cannot decode a null pointer.")
     if not encoding in _CODECS:
         raise NotImplementedError('Unsupported term encoding :: {0}.'.format(encoding))
-
-    if type(target) not in _DECODE_TYPE_WHITELIST[encoding]:
-        err = "Term representation type ({0}) is unsupported, it must be one of {1}."
-        err = err.format(type(target), _DECODE_TYPE_WHITELIST[encoding])
+    if not isinstance(target, _DECODE_TYPE_WHITELIST[encoding]):
+        err = "Representation unsupported: must be one of {}."
+        err = err.format(_DECODE_TYPE_WHITELIST[encoding])
         raise TypeError(err)
-
-
-def decode(target, encoding):
-    """Returns a decoded pyesdoc document.
-
-    :param target: A document representation (e.g. json).
-    :type target: utf-8 encoded str | unicode
-    :param str encoding: A document encoding (dict|json|xml|metafor-cim-1-xml).
-
-    :returns: A pyesdoc document instance.
-    :rtype: object
-
-    """
-    _assert_decode(target, encoding)
 
     return _CODECS[encoding].decode(target)
 
 
-def _assert_encode(target, encoding):
-    """Asserts encode input parameters.
+def _encode(target, encoding=ENCODING_JSON):
+    """Returns an encoded domain model class instance|collection.
+
+    :param object|list target: Domain model class instance|collection.
+    :param str encoding: A supported encoding (dict|json).
+
+    :returns: Target encoded accordingly.
+    :rtype: unicode|dict|list
 
     """
     if target is None:
-        raise ValueError("Cannot encode a null pointer.")
-    if not encoding in _CODECS:
-        raise NotImplementedError('Unsupported term encoding :: {0}.'.format(encoding))
+        raise ValueError("Null encoding error")
+    if encoding not in _CODECS:
+        raise NotImplementedError('Invalid encoding: {}'.format(encoding))
 
-
-def encode(target, encoding):
-    """Returns an encoded term instance.
-
-    :param object target: Term instance.
-    :param str encoding: A document encoding.
-
-    :returns: A formatted representation of a term.
-    :rtype: object
-
-    """
-    try:
-        iter(target)
-    except TypeError:
-        _assert_encode(target, encoding)
+    if isinstance(target, TYPES):
         encoded = _CODECS[encoding].encode(target)
-        return encoded.strip() if isinstance(encoded, basestring) else encoded
+        if isinstance(encoded, basestring):
+            encoded = encoded.strip()
+        return encoded
+
     else:
-        return [encode(d, encoding) for d in target]
+        return [_encode(d, encoding) for d in target]
 
 
-def convert(doc, encoding_from, encoding_to):
-    """Converts one encoding to another.
+def from_json(representation):
+    return _decode(representation, ENCODING_JSON)
 
-    :param unicode doc: A document representation (e.g. json).
-    :param str encoding_from: A document encoding (dict|json|xml).
-    :param str encoding_to: A document encoding (dict|json|xml).
+def from_dict(representation):
+    return _decode(representation, ENCODING_DICT)
 
-    :returns: A pyesdoc document representation.
-    :rtype: unicode | dict
+def to_json(instance):
+    return _encode(instance, ENCODING_JSON)
 
-    """
-    return encode(decode(doc, encoding_from), encoding_to)
-
+def to_dict(instance):
+    return _encode(instance, ENCODING_DICT)

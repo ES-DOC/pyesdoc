@@ -2,7 +2,7 @@
 
 """
 .. module:: pyesdoc.cv.partitions.py
-   :copyright: Copyright "December 01, 2014", IPSL
+   :copyright: Copyright "December 01, 2016", IPSL
    :license: GPL/CeCIL
    :platform: Unix, Windows
    :synopsis: Set of partitions being managed by client.

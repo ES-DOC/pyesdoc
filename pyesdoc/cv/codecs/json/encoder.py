@@ -16,17 +16,17 @@ from pyesdoc.cv.utils import convert
 
 
 
-def encode(term):
-    """Converts input dictionary to json.
+def encode(instance):
+    """Encodes an instance of a domain model class as a JSON text blob.
 
-    :param pyesdoc.cv.Term term: Term to be written to file system.
+    :param pyesdoc.cv.Entity instance: A domain model class instance to be encoded as a JSON text blob.
 
-    :returns: JSON encoded string.
-    :rtype: str
+    :returns: Instance encoded as a JSON text blob.
+    :rtype: unicode
 
     """
     # Convert to dictionary.
-    as_dict = dict_encoder.encode(term)
+    as_dict = dict_encoder.encode(instance)
 
     # Return JSON.
     return convert.dict_to_json(as_dict)

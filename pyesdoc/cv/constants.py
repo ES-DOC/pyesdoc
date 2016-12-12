@@ -2,7 +2,7 @@
 
 """
 .. module:: pyesdoc.cv.constants.py
-   :copyright: Copyright "December 01, 2014", IPSL
+   :copyright: Copyright "December 01, 2016", IPSL
    :license: GPL/CeCIL
    :platform: Unix, Windows
    :synopsis: Package constants.
@@ -49,3 +49,11 @@ GOVERNANCE_STATUS_SET = set([
     GOVERNANCE_STATUS_DEPRECATED
 ])
 
+# Regular expression for validating a canonical name.
+REGEX_CANONICAL_NAME = u"/&"
+
+# Regular expression for validating a label.
+REGEX_LABEL = u"/&"
+
+# Regular expression for validating a url.
+REGEX_URL = u""

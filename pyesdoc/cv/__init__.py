@@ -10,64 +10,19 @@
 .. moduleauthor:: IPSL (ES-DOC) <dev@esdocumentation.org>
 
 """
-from pyesdoc.cv.codecs import decode
-from pyesdoc.cv.codecs import encode
+from pyesdoc.cv import io_manager as io
+from pyesdoc.cv.codecs import from_dict
+from pyesdoc.cv.codecs import from_json
+from pyesdoc.cv.codecs import to_dict
+from pyesdoc.cv.codecs import to_json
 from pyesdoc.cv.constants import *
 from pyesdoc.cv.exceptions import *
-from pyesdoc.cv.partition import Partition
-from pyesdoc.cv.term import Term
-from pyesdoc.cv.term_collection import TermCollection
-
-
-
-# Synonyms for the masses.
-Facet = Term
-
-# Synonyms for the masses.
-Facetset = TermCollection
-
-
-# Managed partitions.
-_PARTITIONS = dict()
-
-
-def create_partition(domain, io_dir):
-    """Creates & returns a partition.
-
-    :param str domain: Partition domain.
-    :param str io_dir: Partition io directory.
-
-    :returns: A partition ready for action.
-    :rtype: pyesdoc.cv.partition.Partition
-
-    """
-    namespace = u"{}".format(domain).lower()
-
-    _PARTITIONS[namespace] = Partition(domain, io_dir)
-
-    return _PARTITIONS[namespace]
-
-
-def get_partition(domain):
-    """Returns a vocabulary partition.
-
-    :param str domain: Partition domain.
-
-    :returns: Partition information.
-    :rtype: pyesdoc.cv.partitions.Partition
-
-    """
-    namespace = "{}".format(domain).lower()
-
-    return _PARTITIONS[namespace]
-
-
-def show_partitions():
-    """Writes to stdout the set of partitions.
-
-    """
-    for idx, partition in enumerate(_PARTITIONS.values()):
-        print("{} PARTITION #{}:".format(__title__.upper(), idx + 1))
-        print("\tdomain = {}".format(partition.domain))
-        print("\tio-dir = {}".format(partition.io.root_dir))
+from pyesdoc.cv.factory import create_authority
+from pyesdoc.cv.factory import create_scope
+from pyesdoc.cv.factory import create_collection
+from pyesdoc.cv.factory import create_term
+from pyesdoc.cv.model import Term
+from pyesdoc.cv.model import Authority
+from pyesdoc.cv.model import Collection
+from pyesdoc.cv.model import Scope
 

@@ -2,7 +2,7 @@
 
 """
 .. module:: pyesdoc.cv._partition_io.py
-   :copyright: Copyright "December 01, 2014", IPSL
+   :copyright: Copyright "December 01, 2016", IPSL
    :license: GPL/CeCIL
    :platform: Unix, Windows
    :synopsis: Manages partition terms I/O.
@@ -13,8 +13,8 @@
 import os
 
 from pyesdoc.cv import constants
-from pyesdoc.cv.codecs import decode
-from pyesdoc.cv.codecs import encode
+from pyesdoc.cv.codecs import from_json
+from pyesdoc.cv.codecs import to_json
 from pyesdoc.cv.utils.logger import log
 
 
@@ -82,7 +82,7 @@ class PartitionIO(object):
         # Write new.
         path = self._get_term_io_path(term)
         with open(path, 'w') as fstream:
-            fstream.write(encode(term, 'json'))
+            fstream.write(to_json(term))
 
         # Remove old (if ncessary).
         if term.io_path is not None and term.io_path != path:
@@ -104,7 +104,7 @@ class PartitionIO(object):
 
         """
         with open(path, 'r') as file_in:
-            return decode(file_in.read(), constants.ENCODING_JSON)
+            return from_json(file_in.read())
 
 
     def yield_all(self):

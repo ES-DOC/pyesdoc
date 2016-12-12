@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
 """
-.. module:: pyesdoc.cv.term_scope.py
-   :copyright: Copyright "December 01, 2014", IPSL
+.. module:: pyesdoc.cv.model.scope.py
+   :copyright: Copyright "December 01, 2016", IPSL
    :license: GPL/CeCIL
    :platform: Unix, Windows
    :synopsis: A vocabulary scope, e.g. CMIP6.
@@ -11,7 +11,13 @@
 
 
 """
-class TermScope(object):
+import uuid
+
+from pyesdoc.cv.model.entity import Entity
+
+
+
+class Scope(Entity):
     """A scope managed by an authority.
 
     """
@@ -22,11 +28,11 @@ class TermScope(object):
         self.authority = None
         self.collections = list()
         self.description = None
-        self.homepage = None
         self.idx = None
         self.label = None
         self.name = None
         self.uid = None
+        self.url = None
 
 
     def __repr__(self):
@@ -41,4 +47,13 @@ class TermScope(object):
         """Returns full namespace of the term set.
 
         """
-        return ":".join([self.authority.name, self.name])
+        return u":".join([self.authority.name, self.name])
+
+
+    @property
+    def full_idx(self):
+        """Gets full computed idx.
+
+        """
+        return unicode(self.idx)
+

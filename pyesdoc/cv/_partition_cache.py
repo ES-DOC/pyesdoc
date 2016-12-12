@@ -2,7 +2,7 @@
 
 """
 .. module:: pyesdoc.cv._partition_cache.py
-   :copyright: Copyright "December 01, 2014", IPSL
+   :copyright: Copyright "December 01, 2016", IPSL
    :license: GPL/CeCIL
    :platform: Unix, Windows
    :synopsis: Manages a cache of partition terms.

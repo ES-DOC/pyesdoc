@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
 """
-.. module:: pyesdoc.cv.term_authority.py
-   :copyright: Copyright "December 01, 2014", IPSL
+.. module:: pyesdoc.cv.model.authority.py
+   :copyright: Copyright "December 01, 2016", IPSL
    :license: GPL/CeCIL
    :platform: Unix, Windows
    :synopsis: A vocabulary authority, e.g. WGCM.
@@ -11,8 +11,11 @@
 
 
 """
+from pyesdoc.cv.model.entity import Entity
 
-class TermAuthority(object):
+
+
+class Authority(Entity):
     """An authority assuming responsibity for governance of vocabularies.
 
     """
@@ -22,9 +25,9 @@ class TermAuthority(object):
         """
         self.description = None
         self.label = None
-        self.homepage = None
         self.name = None
         self.scopes = list()
+        self.url = None
 
 
     def __repr__(self):

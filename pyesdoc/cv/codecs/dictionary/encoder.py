@@ -11,68 +11,99 @@
 
 
 """
-from pyesdoc.cv.exceptions import EncodingError
-from pyesdoc.cv.term import Term
-from pyesdoc.cv.term_collection import TermCollection
+from pyesdoc.cv.model import Term
+from pyesdoc.cv.model import Authority
+from pyesdoc.cv.model import Collection
+from pyesdoc.cv.model import Scope
 
 
 
-def encode(data):
-    """Encodes a term as a dictionary.
+def encode(instance):
+    """Encodes an instance of a domain model class as a dictionary.
 
-    :param pyesdoc.cv.Term term: Term to be encoded.
+    :param pyesdoc.cv.Entity instance: A domain model class instance to be encoded as a dictionary.
 
-    :returns: Dictionary encoded term.
+    :returns: Instance encoded as a simple dictionary.
     :rtype: dict
 
-    """
-    if isinstance(data, Term):
-        return _encode_term(data)
-    elif isinstance(data, TermCollection):
-        return _encode_termset(data)
-
-    raise EncodingError(data)
-
-
-def _encode_termset(termset):
-    """Encodes a termset as a dictionary.
+    :raises TypeError: If instance is a domain model class instance.
 
     """
-    return {
-        "create_date": termset.create_date,
-        "domain": termset.domain,
-        "type": termset.kind,
-        "uid": termset.uid,
-        "description": termset.description
-    }
+    try:
+        _ENCODERS[type(instance)]
+    except KeyError:
+        raise TypeError("Type encoding unsupported: {}".format(type(instance)))
+
+    obj = _ENCODERS[type(instance)](instance)
+    obj['_type'] = unicode(instance.__module__)
+
+    return obj
 
 
-def _encode_term(term):
+def _encode_authority(instance):
+    """Encodes a term authority as a dictionary.
+
+    """
+    obj = dict()
+    obj['description'] = instance.description
+    obj['label'] = instance.label
+    obj['name'] = instance.name
+    obj['scopes'] = [_encode_scope(i) for i in instance.scopes]
+    obj['url'] = instance.url
+
+    return obj
+
+
+def _encode_scope(instance):
+    """Encodes a term scope as a dictionary.
+
+    """
+    obj = dict()
+    obj['collections'] = [_encode_collection(i) for i in instance.collections]
+    obj['description'] = instance.description
+    obj['idx'] = instance.idx
+    obj['label'] = instance.label
+    obj['name'] = instance.name
+    obj['uid'] = instance.uid
+    obj['url'] = instance.url
+
+    return obj
+
+
+def _encode_collection(instance):
+    """Encodes a term collection as a dictionary.
+
+    """
+    obj = dict()
+    obj['create_date'] = instance.create_date
+    obj['description'] = instance.description
+    obj['idx'] = instance.idx
+    obj['label'] = instance.label
+    obj['name'] = instance.name
+    obj['terms'] = ["{}:{}".format(i.name, i.uid) for i in instance.terms]
+    obj['uid'] = instance.uid
+    obj['url'] = instance.url
+
+    return obj
+
+
+def _encode_term(instance):
     """Encodes a term as a dictionary.
 
     """
-    return {
-        "labels": term.labels,
-        "meta": {
-            "create_date": term.create_date,
-            "domain": term.domain,
-            "idx": term.idx,
-            "status": term.status,
-            "type": term.kind,
-            "uid": term.uid
-        },
-        "names": {
-            "aliases": sorted(term.aliases),
-            "alternative": term.alternative_name,
-            "preferred": term.name
-        },
-        "other": {
-            "alternativeURL": term.alternative_url,
-            "description": term.description,
-            "url": term.url
-        },
-        "relations": {
-            "associations": sorted(term.associations),
-            "parent": term.parent
-        }
-    }
+    obj = instance.__dict__.copy()
+    del obj['collection']
+    del obj['io_path']
+    obj['parent'] = None if instance.parent is None else instance.parent.uid
+    obj['associations'] = [i.uid for i in instance.associations]
+
+    return obj
+
+
+# Map of supported types to encoding functions.
+_ENCODERS = {
+    Authority: _encode_authority,
+    Collection: _encode_collection,
+    Scope: _encode_scope,
+    Term: _encode_term,
+}

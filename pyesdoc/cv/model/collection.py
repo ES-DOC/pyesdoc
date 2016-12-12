@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
 
 """
-.. module:: pyesdoc.cv.term_collection.py
-   :copyright: Copyright "December 01, 2014", IPSL
+.. module:: pyesdoc.cv.model.collection.py
+   :copyright: Copyright "December 01, 2016", IPSL
    :license: GPL/CeCIL
    :platform: Unix, Windows
-   :synopsis: A vocabulary term collection.
+   :synopsis: A vocabulary collection, e.g. institute-id.
 
 .. moduleauthor:: Mark Conway-Greenslade <momipsl@ipsl.jussieu.fr>
 
@@ -15,10 +15,11 @@ import uuid
 
 import pyesdoc
 from pyesdoc.cv import constants
+from pyesdoc.cv.model.entity import Entity
 
 
 
-class TermCollection(object):
+class Collection(Entity):
     """A vocabulary term collection.
 
     """
@@ -28,12 +29,13 @@ class TermCollection(object):
         """
         self.create_date = None
         self.description = None
-        self.terms = list()
-        self.label = None
         self.idx = None
+        self.label = None
         self.name = None
         self.scope = None
+        self.terms = list()
         self.uid = None
+        self.url = None
 
 
     def __repr__(self):
@@ -85,10 +87,24 @@ class TermCollection(object):
 
     @property
     def namespace(self):
-        """Returns full namespace of the term set.
+        """Gets namespace.
 
         """
-        return ":".join([self.authority.name, self.scope.name, self.name])
+        return ":".join([
+            self.scope.namespace,
+            self.name,
+            ])
+
+
+    @property
+    def full_idx(self):
+        """Gets full computed idx.
+
+        """
+        return u"{}.{}".format(
+            self.scope.idx,
+            self.idx
+            )
 
 
     @property
@@ -97,17 +113,3 @@ class TermCollection(object):
 
         """
         return pyesdoc.cv.get_partition(self.namespace)
-
-
-    def as_dict(self):
-        """Returns dictionary representation of term.
-
-        """
-        return pyesdoc.cv.encode(self, constants.ENCODING_DICT)
-
-
-    def as_json(self):
-        """Returns json representation of term.
-
-        """
-        return pyesdoc.cv.encode(self, constants.ENCODING_JSON)

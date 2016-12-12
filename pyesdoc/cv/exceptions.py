@@ -2,7 +2,7 @@
 
 """
 .. module:: pyesdoc.cv.exceptions.py
-   :copyright: Copyright "December 01, 2014", IPSL
+   :copyright: Copyright "December 01, 2016", IPSL
    :license: GPL/CeCIL
    :platform: Unix, Windows
    :synopsis: Package exceptions.
@@ -56,15 +56,3 @@ class InvalidAssociationError(ValueError):
 		"""
 		msg = "Unsupported association: {}".format(association)
 		super(InvalidAssociationError, self).__init__(msg)
-
-
-class EncodingError(ValueError):
-	"""An error raised when an encoding error occurs.
-
-	"""
-	def __init__(self, data):
-		"""Object constructor.
-
-		"""
-		msg = "Unsupported encoding target: {}".format(type(data))
-		super(EncodingError, self).__init__(msg)

@@ -1,59 +1,88 @@
+# -*- coding: utf-8 -*-
+
+"""
+.. module:: pyesdoc.cv.factory.py
+   :copyright: Copyright "December 01, 2016", IPSL
+   :license: GPL/CeCIL
+   :platform: Unix, Windows
+   :synopsis: Encapsulates creation of domain model class instances.
+
+.. moduleauthor:: Mark Conway-Greenslade <momipsl@ipsl.jussieu.fr>
+
+"""
 import arrow
 import re
 import uuid
 
 from pyesdoc.cv import constants
-from pyesdoc.cv.term import Term
-from pyesdoc.cv.term_authority import TermAuthority
-from pyesdoc.cv.term_collection import TermCollection
-from pyesdoc.cv.term_scope import TermScope
+from pyesdoc.cv import validation as v
+from pyesdoc.cv.exceptions import ValidationError
+from pyesdoc.cv.model import Term
+from pyesdoc.cv.model import Authority
+from pyesdoc.cv.model import Collection
+from pyesdoc.cv.model import Scope
 
 
 
-def create_authority(name, description, homepage):
+def create_authority(name, description, url):
 	"""Instantiates, initialises & returns a term authority.
 
 	"""
-	assert isinstance(name, (str, unicode)) and len(name)
-	assert isinstance(description, (str, unicode)) and len(description)
-	assert isinstance(homepage, (str, unicode)) and len(homepage)
+	# Validate inputs.
+	v.validate_authority_name(name)
+	v.validate_authority_description(description)
+	v.validate_authority_url(url)
 
+	# Format inputs.
 	name = unicode(name).strip()
 	description = unicode(description).strip()
-	homepage = unicode(homepage).strip()
+	url = unicode(url).strip()
 
-	i = TermAuthority()
+	# Instantiate.
+	i = Authority()
 	i.description = description
-	i.homepage = homepage
 	i.label = name
 	i.name = name.lower()
+	i.url = url
+
+	# Raise validation exception (if appropriate).
+	if not i.is_valid:
+		raise ValidationError(i.errors)
 
 	return i
 
 
-def create_scope(authority, name, description, homepage):
+def create_scope(authority, name, description, url):
 	"""Instantiates, initialises & returns a term scope.
 
 	"""
-	assert isinstance(authority, TermAuthority)
-	assert isinstance(name, (str, unicode)) and len(name)
-	assert isinstance(description, (str, unicode)) and len(description)
-	assert isinstance(homepage, (str, unicode)) and len(homepage)
+	# Validate inputs.
+	v.validate(authority)
+	v.validate_scope_name(name)
+	v.validate_scope_description(description)
+	v.validate_scope_url(url)
 
+	# Format inputs.
 	name = unicode(name).strip()
 	description = unicode(description).strip()
-	homepage = unicode(homepage).strip()
+	url = unicode(url).strip()
 
-	i = TermScope()
+	# Instantiate.
+	i = Scope()
 	i.authority = authority
 	i.description = description
-	i.homepage = homepage
 	i.label = name
 	i.name = name.lower()
 	i.uid = uuid.uuid4()
+	i.url = url
 
+	# Append to parent & set idx.
 	authority.scopes.append(i)
-	i.idx = unicode(len(authority.scopes))
+	i.idx = len(authority.scopes)
+
+	# Raise validation exception (if appropriate).
+	if not i.is_valid:
+		raise ValidationError(i.errors)
 
 	return i
 
@@ -62,14 +91,17 @@ def create_collection(scope, name, description):
 	"""Instantiates, initialises & returns a term collection.
 
 	"""
-	assert isinstance(scope, TermScope)
-	assert isinstance(name, (str, unicode)) and len(name)
-	assert isinstance(description, (str, unicode)) and len(description)
+	# Validate inputs.
+	v.validate(scope)
+	v.validate_collection_name(name)
+	v.validate_collection_description(description)
 
+	# Format inputs.
 	name = unicode(name).strip()
 	description = unicode(description).strip()
 
-	i = TermCollection()
+	# Instantiate.
+	i = Collection()
 	i.create_date = arrow.utcnow().datetime
 	i.description = description
 	i.label = name
@@ -77,36 +109,43 @@ def create_collection(scope, name, description):
 	i.scope = scope
 	i.uid = uuid.uuid4()
 
+	# Append to parent & set idx.
 	scope.collections.append(i)
-	i.idx = u"{}.{}".format(scope.idx, len(scope.collections))
+	i.idx = len(scope.collections)
+
+	# Raise validation exception (if appropriate).
+	if not i.is_valid:
+		raise ValidationError(i.errors)
 
 	return i
 
 
-def create_term(collection, name, description=None):
+def create_term(collection, name):
 	"""Instantiates, initialises & returns a term.
 
 	"""
-	assert isinstance(collection, TermCollection)
-	assert isinstance(name, (str, unicode)) and len(name)
-	if description is not None:
-		assert isinstance(description, (str, unicode)) and len(description)
+	# Validate inputs.
+	v.validate(collection)
+	v.validate_term_name(name)
 
+	# Format inputs.
 	name = unicode(name).strip()
-	if description is not None:
-		description = unicode(description).strip()
 
+	# Instantiate.
 	i = Term()
 	i.collection = collection
 	i.create_date = arrow.utcnow().datetime
-	if description is not None:
-		i.description = description
 	i.labels[constants.DEFAULT_LANGUAGE] = name
 	i.name = name.lower()
 	i.status = constants.GOVERNANCE_STATUS_PENDING
 	i.uid = uuid.uuid4()
 
+	# Append to parent & set idx.
 	collection.terms.append(i)
-	i.idx = u"{}.{}".format(collection.idx, len(collection.terms))
+	i.idx = len(collection.terms)
+
+	# Raise validation exception (if appropriate).
+	if not i.is_valid:
+		raise ValidationError(i.errors)
 
 	return i

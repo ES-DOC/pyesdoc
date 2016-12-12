@@ -12,9 +12,12 @@
 
 """
 import arrow
+import uuid
 
-from pyesdoc.cv.term import Term
-from pyesdoc.cv.term_collection import TermCollection
+from pyesdoc.cv.model import Term
+from pyesdoc.cv.model import Authority
+from pyesdoc.cv.model import Scope
+from pyesdoc.cv.model import Collection
 
 
 
@@ -27,47 +30,105 @@ def decode(obj):
     :rtype: pyesdoc.cv.Term
 
     """
-    if 'meta' in obj:
-        return _decode_term(obj)
-    else:
-        return _decode_termset(obj)
+    try:
+        _DECODERS[obj['_type']]
+    except KeyError:
+        raise TypeError("Decoding type unsupported: {}".format(obj['_type']))
+
+    return _DECODERS[obj['_type']](obj)
+
+
+def _decode_authority(obj):
+    """Decodes a termset from a dictionary.
+
+    """
+    instance = Authority()
+    instance.description = obj['description']
+    instance.label = obj['label']
+    instance.name = obj['name']
+    instance.scopes = [_decode_scope(i) if isinstance(i, dict) else i
+                       for i in obj['scopes']]
+    instance.url = obj['url']
+
+    # Wire hierarchy.
+    for scope in instance.scopes:
+        if isinstance(scope, Scope):
+            scope.authority = instance
+
+    return instance
+
+
+def _decode_scope(obj):
+    """Decodes a termset from a dictionary.
+
+    """
+    instance = Scope()
+    instance.collections = [_decode_collection(i) if isinstance(i, dict) else i
+                            for i in obj['collections']]
+    instance.description = obj['description']
+    instance.idx = obj['idx']
+    instance.label = obj['label']
+    instance.name = obj['name']
+    instance.uid = uuid.UUID(unicode(obj['uid']))
+    instance.url = obj['url']
+
+    # Wire hierarchy.
+    for collection in instance.collections:
+        if isinstance(collection, Collection):
+            collection.scope = instance
+
+    return instance
+
+
+def _decode_collection(obj):
+    """Decodes a termset from a dictionary.
+
+    """
+    instance = Collection()
+    instance.create_date = arrow.get(obj['create_date']).datetime
+    instance.description = obj['description']
+    instance.idx = obj['idx']
+    instance.label = obj['label']
+    instance.name = obj['name']
+    instance.terms = [_decode_term(i) if isinstance(i, dict) else i
+                      for i in obj['terms']]
+    instance.uid = uuid.UUID(unicode(obj['uid']))
+    instance.url = obj['url']
+
+    # Wire hierarchy.
+    for term in instance.terms:
+        if isinstance(term, Term):
+            term.collection = instance
+
+    return instance
 
 
 def _decode_term(obj):
     """Decodes a term from a dictionary.
 
     """
-    term = Term(
-        obj["meta"]["domain"],
-        obj["meta"]["type"],
-        obj["names"]["preferred"],
-        obj["meta"]["status"]
-        )
-    term.aliases = obj["names"]["aliases"]
-    term.alternative_name = obj["names"]["alternative"]
-    term.alternative_url = obj["other"].get('alternativeURL')
-    term.associations = obj["relations"]["associations"]
-    term.create_date = arrow.get(obj["meta"]["create_date"]).datetime
-    term.description = obj["other"].get('description')
-    term.idx = obj["meta"]["idx"]
-    term.labels = obj["labels"]
-    term.parent = obj["relations"]["parent"]
-    term.status = obj["meta"]["status"]
-    term.uid = obj["meta"]["uid"]
-    term.url = obj["other"].get('url')
+    instance = Term()
+    instance.alternative_name = obj['alternative_name']
+    instance.alternative_url = obj['alternative_url']
+    instance.create_date = arrow.get(obj['create_date']).datetime
+    instance.description = obj['description']
+    instance.idx = obj['idx']
+    instance.labels = dict()
+    instance.name = obj['name']
+    instance.status = obj['status']
+    instance.synonyms = obj['synonyms']
+    instance.uid = uuid.UUID(unicode(obj['uid']))
+    instance.url = obj['url']
+    if instance.parent:
+        instance.parent = uuid.UUID(unicode(obj['parent']))
 
-    return term
+    return instance
 
 
-def _decode_termset(obj):
-    """Decodes a termset from a dictionary.
-
-    """
-    termset = TermCollection()
-    termset.create_date = arrow.get(obj["create_date"]).datetime
-    termset.domain = obj["domain"]
-    termset.kind = obj["type"]
-    termset.description = obj.get("description")
-    termset.uid = obj["uid"]
-
-    return termset
+# Map of supported type keys to decoding functions.
+_DECODERS = {
+    Authority.__module__: _decode_authority,
+    Collection.__module__: _decode_collection,
+    Scope.__module__: _decode_scope,
+    Term.__module__: _decode_term
+}
