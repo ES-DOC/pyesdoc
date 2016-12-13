@@ -70,3 +70,4 @@ class TableAttribute(object):
 
         """
         return "{}".format(self.label)
+

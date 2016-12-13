@@ -47,7 +47,7 @@ class Table(object):
         """Instance representation.
 
         """
-        return self.label
+        return self.label_pythonic
 
 
     def __len__(self):
@@ -77,15 +77,12 @@ class Table(object):
         """Returns a child table attribute.
 
         """
-        try:
-            int(key)
-        except ValueError:
-            key = str(key).strip().lower()
-            for attribute in self.attributes:
-                if attribute.label.lower() == key:
-                    return attribute
-        else:
+        if isinstance(key, int):
             return self.attributes[key]
+        key = str(key).strip().lower()
+        for attribute in self.attributes:
+            if attribute.label.lower() == key:
+                return attribute
 
 
     @property

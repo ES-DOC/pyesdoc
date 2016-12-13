@@ -1,10 +1,20 @@
+# -*- coding: utf-8 -*-
+
+"""
+.. module:: pyesdoc.cv.io.delete.py
+   :copyright: Copyright "December 01, 2016", IPSL
+   :license: GPL/CeCIL
+   :platform: Unix, Windows
+   :synopsis: Encapsulates deleting terms from file sytem.
+
+.. moduleauthor:: Mark Conway-Greenslade <momipsl@ipsl.jussieu.fr>
+
+
+"""
 import os
 
 from pyesdoc.cv.model import Authority
 from pyesdoc.cv.model import Term
-from pyesdoc.cv.io_mgr.read import read_authority
-from pyesdoc.cv.io_mgr.write import write_authority
-
 
 
 
@@ -28,5 +38,4 @@ def delete_term(term):
 
     if term.io_path:
         os.remove(term.io_path)
-
 

@@ -12,10 +12,8 @@
 
 """
 import glob
-import json
 import os
 
-from pyesdoc.cv import constants
 from pyesdoc.cv.codecs import from_json
 
 
@@ -38,22 +36,24 @@ def read_authority(dpath):
         raise OSError("Invalid MANIFEST.")
 
     # Read authority from manifest.
-    with open(os.path.join(dpath, _MANIFEST), "r") as fstream:
+    fpath = os.path.join(dpath, _MANIFEST)
+    with open(fpath, "r") as fstream:
         authority = from_json(fstream.read())
+        authority.io_path = fpath
 
     # Read terms.
-    for scope in authority.scopes:
-        for collection in scope.collections:
+    for scope in authority:
+        for collection in scope:
             collection.terms = []
             collection.terms += _read_terms(dpath, scope, collection)
 
     # Set inter-concept hierachy.
     terms = {}
-    for scope in authority.scopes:
+    for scope in authority:
         scope.authority = authority
-        for collection in scope.collections:
+        for collection in scope:
             collection.scope = scope
-            for term in collection.terms:
+            for term in collection:
                 term.collection = collection
                 terms[term.uid] = term
 
@@ -87,5 +87,6 @@ def _read_term(fpath):
     # Decode term from JSON file.
     with open(fpath, "r") as fstream:
         term = from_json(fstream.read())
+    term.io_path = fpath
 
     return term

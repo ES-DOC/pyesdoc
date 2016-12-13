@@ -30,7 +30,6 @@ class Section(object):
 
         self._iter_idx = None
         self.cfg = cfg
-        self.elem = elem
         self.items = []
         self.label = cfg.label
         self.label_pythonic = cfg.label_pythonic
@@ -40,7 +39,7 @@ class Section(object):
         """Instance representation.
 
         """
-        return self.label
+        return self.label_pythonic
 
 
     def __len__(self):
@@ -61,15 +60,14 @@ class Section(object):
         """Returns a child section item.
 
         """
-        try:
-            int(key)
-        except ValueError:
-            key = str(key).strip().lower()
-            for item in self.items:
-                if item.label.lower() == key:
-                    return item
-        else:
+        if isinstance(key, slice):
             return self.items[key]
+        elif isinstance(key, int):
+            return self.items[key]
+        key = str(key).strip().lower()
+        for item in self.items:
+            if item.label.lower() == key:
+                return item
 
 
     def get_item(self, name):

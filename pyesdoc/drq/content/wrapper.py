@@ -11,7 +11,6 @@
 
 
 """
-
 class Wrapper(object):
     """Wraps dreq.xml.
 
@@ -24,8 +23,14 @@ class Wrapper(object):
         """
         self.sections = sorted(sections, key=lambda i: i.label.lower())
         for section in sections:
-            setattr(self, section.label, section)
-            setattr(self, section.label_pythonic, section)
+            setattr(self, section.label_pythonic or section.label, section)
+
+
+    def __repr__(self):
+        """Instance representation.
+
+        """
+        return unicode(self.sections)
 
 
     def __len__(self):
@@ -55,12 +60,10 @@ class Wrapper(object):
         """Returns a child section.
 
         """
-        try:
-            int(key)
-        except ValueError:
-            key = str(key).strip().lower()
-            for section in self.sections:
-                if section.label.lower() == key or section.label_pythonic.lower() == key :
-                    return section
-        else:
+        if isinstance(key, int):
             return self.sections[key]
+        key = str(key).strip().lower()
+        for section in self.sections:
+            if section.label.lower() == key or \
+               section.label_pythonic.lower() == key:
+                return section

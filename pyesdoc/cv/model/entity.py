@@ -11,6 +11,8 @@
 
 
 """
+import uuid
+
 import pyesdoc
 from pyesdoc.cv.constants import ENCODING_DICT
 from pyesdoc.cv.constants import ENCODING_JSON
@@ -72,3 +74,37 @@ class Entity(object):
 
         """
         return pyesdoc.cv.decode(encoded, ENCODING_JSON)
+
+
+    @staticmethod
+    def getiter(items):
+        """Returns an iterator over a managed collection.
+
+        """
+        return iter(sorted(items, key=lambda i: i if isinstance(i, (str, unicode)) else i.name))
+
+
+    @staticmethod
+    def getitem(items, key):
+        """Returns an item from a managed collections.
+
+        """
+        # Set comparator to be used.
+        if isinstance(key, int):
+            comparator = lambda i: i.idx
+        elif isinstance(key, uuid.UUID):
+            comparator = lambda i: i.uid
+        else:
+            key = unicode(key).strip().lower()
+            try:
+                uuid.UUID(key)
+            except ValueError:
+                comparator = lambda i: i.name
+            else:
+                comparator = lambda i: unicode(i.uid)
+
+        # Return first matching item.
+        for item in items:
+            if comparator(item) == key:
+                return item
+

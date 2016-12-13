@@ -13,29 +13,14 @@ from pyesdoc.cv.model.term import Term
 
 # Set of supported types.
 TYPES = (
-	Authority,
-	Collection,
-	Scope,
-	Term,
+    Authority,
+    Collection,
+    Scope,
+    Term,
 )
 
 # Map of types to tuples containing validation info.
 TYPE_INFO = {
-    Term: {
-        ("alternative_name", unicode, "0.1", REGEX_CANONICAL_NAME),
-        ("alternative_url", unicode, "0.1", REGEX_URL),
-        ("collection", Collection, "1.1"),
-        ("create_date", datetime.datetime, "1.1"),
-        ("description", unicode, "0.1"),
-        ("idx", int, "1.1"),
-        ("labels", dict, "1.1"),
-        ("name", unicode, "1.1", REGEX_CANONICAL_NAME),
-        ("parent", Term, "0.1"),
-        ("status", unicode, "1.1", tuple(GOVERNANCE_STATUS_SET)),
-        ("synonyms", unicode, "0.N", REGEX_CANONICAL_NAME),
-        ("uid", uuid.UUID, "1.1"),
-        ("url", unicode, "0.1", REGEX_URL),
-    },
     Authority: {
         ("description", unicode, "1.1"),
         ("label", unicode, "0.1", REGEX_LABEL),
@@ -63,5 +48,20 @@ TYPE_INFO = {
         ("name", unicode, "1.1", REGEX_CANONICAL_NAME),
         ("uid", uuid.UUID, "1.1"),
         ("url", unicode, "1.1", REGEX_URL),
-        }
+    },
+    Term: {
+        ("alternative_name", unicode, "0.1", REGEX_CANONICAL_NAME),
+        ("alternative_url", unicode, "0.1", REGEX_URL),
+        ("collection", Collection, "1.1"),
+        ("create_date", datetime.datetime, "1.1"),
+        ("description", unicode, "0.1"),
+        ("idx", int, "1.1"),
+        ("label", unicode, "1.1"),
+        ("name", unicode, "1.1", REGEX_CANONICAL_NAME),
+        ("parent", Term, "0.1"),
+        ("status", unicode, "1.1", tuple(GOVERNANCE_STATUS_SET)),
+        ("synonyms", unicode, "0.N", REGEX_CANONICAL_NAME),
+        ("uid", uuid.UUID, "1.1"),
+        ("url", unicode, "0.1", REGEX_URL),
     }
+}

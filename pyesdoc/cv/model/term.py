@@ -12,7 +12,6 @@
 
 """
 import pyesdoc.cv
-from pyesdoc.cv import constants
 from pyesdoc.cv.model.entity import Entity
 
 
@@ -32,9 +31,10 @@ class Term(Entity):
         self.create_date = None         # date term was created
         self.data = None                # associated data
         self.description = None         # descriptive text
+        self.io_path = None             # Path to I/O.
         self.idx = None                 # term integer based identifier
         self.io_path = None             # file system path
-        self.labels = dict()            # user interface labels keyed by language
+        self.label = None               # user interface label
         self.name = None                # canonical name
         self.parent = None              # parent term within collection
         self.status = None              # governance status
@@ -150,25 +150,6 @@ class Term(Entity):
 
         # Save term.
         # self.partition.save(self)
-
-
-    def set_label(self, language, label):
-        """Sets a user interface label.
-
-        """
-        # TODO validate language
-        # TODO validate label
-        self.labels[language] = label
-
-
-    def get_label(self, language=constants.DEFAULT_LANGUAGE):
-        """Gets a user interface label.
-
-        """
-        try:
-            return self.labels[language]
-        except KeyError:
-            raise KeyError("Label language invalid: {}".format(language))
 
 
     @property

@@ -11,10 +11,7 @@
 
 
 """
-import uuid
-
 import pyesdoc
-from pyesdoc.cv import constants
 from pyesdoc.cv.model.entity import Entity
 
 
@@ -56,25 +53,14 @@ class Collection(Entity):
         """Instance iterator initializer.
 
         """
-        return iter(self.terms)
+        return Entity.getiter(self.terms)
 
 
     def __getitem__(self, key):
         """Returns a child section item.
 
         """
-        if isinstance(key, int):
-            return self.terms[key]
-        key = unicode(key).strip().lower()
-        try:
-            uuid.UUID(key)
-        except ValueError:
-            get_key = lambda i: i.name
-        else:
-            get_key = lambda i: i.uid
-        for item in self.terms:
-            if key == get_key(item).lower():
-                return item
+        return Entity.getitem(self.terms, key)
 
 
     @property

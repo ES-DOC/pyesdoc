@@ -23,8 +23,14 @@ class Wrapper(object):
         """
         self.tables = sorted(tables, key=lambda i: i.label.lower())
         for table in tables:
-            setattr(self, table.label, table)
-            setattr(self, table.label_pythonic, table)
+            setattr(self, table.label_pythonic or table.label, table)
+
+
+    def __repr__(self):
+        """Instance representation.
+
+        """
+        return unicode(self.tables)
 
 
     def __len__(self):

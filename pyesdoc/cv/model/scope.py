@@ -11,8 +11,6 @@
 
 
 """
-import uuid
-
 from pyesdoc.cv.model.entity import Entity
 
 
@@ -40,6 +38,27 @@ class Scope(Entity):
 
         """
         return self.namespace
+
+
+    def __len__(self):
+        """Returns number of items in managed collection.
+
+        """
+        return len(self.collections)
+
+
+    def __iter__(self):
+        """Instance iterator initializer.
+
+        """
+        return Entity.getiter(self.collections)
+
+
+    def __getitem__(self, key):
+        """Returns a child section item.
+
+        """
+        return Entity.getitem(self.collections, key)
 
 
     @property

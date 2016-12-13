@@ -148,16 +148,16 @@ class Partition(object):
                     return term.name
 
 
-    def add_alias(self, kind, name, new_alias):
-        """Appends an alias to a term's set of aliases.
+    def add_synonym(self, kind, name, new_synonym):
+        """Appends a synonym to a term's set of synonyms.
 
         :param str kind: Term kind (e.g. model)
         :param str name: Term preferred name (e.g. ipsl-cm5a-lr)
-        :param str new_alias: A new alias for the term (e.g. IPSL-LR)
+        :param str new_synonym: A new synonym for the term (e.g. IPSL-LR)
 
         """
         term = self.cache.query(kind, name)
         if term is None:
             raise ValueError("Term could not be found: {} :: {}".format(kind, name))
 
-        term.add_alias(new_alias)
+        term.add_synonym(new_synonym)

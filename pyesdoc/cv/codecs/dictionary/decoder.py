@@ -51,7 +51,7 @@ def _decode_authority(obj):
     instance.url = obj['url']
 
     # Wire hierarchy.
-    for scope in instance.scopes:
+    for scope in instance:
         if isinstance(scope, Scope):
             scope.authority = instance
 
@@ -73,7 +73,7 @@ def _decode_scope(obj):
     instance.url = obj['url']
 
     # Wire hierarchy.
-    for collection in instance.collections:
+    for collection in instance:
         if isinstance(collection, Collection):
             collection.scope = instance
 
@@ -96,7 +96,7 @@ def _decode_collection(obj):
     instance.url = obj['url']
 
     # Wire hierarchy.
-    for term in instance.terms:
+    for term in instance:
         if isinstance(term, Term):
             term.collection = instance
 
@@ -114,7 +114,7 @@ def _decode_term(obj):
     instance.data = obj['data']
     instance.description = obj['description']
     instance.idx = obj['idx']
-    instance.labels = dict()
+    instance.label = obj['label']
     instance.name = obj['name']
     instance.status = obj['status']
     instance.synonyms = obj['synonyms']

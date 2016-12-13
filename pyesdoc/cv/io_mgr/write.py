@@ -34,7 +34,7 @@ def write_authority(dpath, authority):
     if not os.path.isdir(dpath):
         raise OSError("Invalid directory.")
     if not isinstance(authority, Authority):
-        raise NotImplementedError("Invalid authority: unknown type")
+        raise ValueError("Invalid authority: unknown type")
     if not validation.is_valid(authority):
         raise ValueError("Invalid authority: has validation errors")
 
@@ -43,9 +43,9 @@ def write_authority(dpath, authority):
         fstream.write(to_json(authority))
 
     # Write terms.
-    for scope in authority.scopes:
-        for collection in scope.collections:
-            for term in collection.terms:
+    for scope in authority:
+        for collection in scope:
+            for term in collection:
                 _write_term(dpath, term)
 
 

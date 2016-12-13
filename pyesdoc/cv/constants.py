@@ -11,12 +11,6 @@
 
 
 """
-# Default i18n language code.
-DEFAULT_LANGUAGE = "en"
-
-# Default domain.
-DEFAULT_DOMAIN = u"earth-system.modelling"
-
 # Dictionary encoding.
 ENCODING_DICT = "dict"
 

@@ -20,6 +20,7 @@ CONTENT_FILENAME = "dreq.xml"
 # Map of section pythonic label map.
 LABEL_MAP = {
     # Content section names.
+    'cellMethods': 'cell_methods',
     'CMORvar': 'cmor_variable',
     'exptgroup': 'experiment_group',
     'modelConfig': 'model_config',

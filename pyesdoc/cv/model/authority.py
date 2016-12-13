@@ -37,6 +37,27 @@ class Authority(Entity):
         return self.namespace
 
 
+    def __len__(self):
+        """Returns number of items in managed collection.
+
+        """
+        return len(self.scopes)
+
+
+    def __iter__(self):
+        """Instance iterator initializer.
+
+        """
+        return Entity.getiter(self.scopes)
+
+
+    def __getitem__(self, key):
+        """Returns a child section item.
+
+        """
+        return Entity.getitem(self.scopes, key)
+
+
     @property
     def namespace(self):
         """Returns namespace used in I/O scenarios.
