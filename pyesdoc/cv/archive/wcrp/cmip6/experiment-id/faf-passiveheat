@@ -1,0 +1,43 @@
+{
+    "_type": "pyesdoc.cv.model.term", 
+    "alternativeName": null, 
+    "alternativeUrl": null, 
+    "associations": [], 
+    "createDate": "2016-12-12 21:57:04.760782+00:00", 
+    "data": {
+        "activityID": [
+            "FAFMIP"
+        ], 
+        "additionalAllowedModelComponents": [
+            "AER", 
+            "CHEM", 
+            "BGC"
+        ], 
+        "description": "1xCO2 experiment, parallel to piControl, with a flux of passive tracer added at the ocean surface at the same rate as the surface net heat flux anomaly applied in the FAFMIP heat experiment", 
+        "endYear": "", 
+        "experiment": "control plus surface flux of passive heat tracer into ocean", 
+        "minNumberYrsPerSim": "70", 
+        "parentActivityID": [
+            "CMIP"
+        ], 
+        "parentExperimentID": [
+            "piControl"
+        ], 
+        "requiredModelComponents": [
+            "AOGCM"
+        ], 
+        "startYear": "", 
+        "subExperiment": "none", 
+        "subExperimentID": "none", 
+        "tier": "2"
+    }, 
+    "description": null, 
+    "idx": 30, 
+    "label": "faf-passiveheat", 
+    "name": "faf-passiveheat", 
+    "parent": null, 
+    "status": "pending", 
+    "synonyms": [], 
+    "uid": "0576a8db-f49e-4b4d-8c85-72c63c87f405", 
+    "url": null
+}

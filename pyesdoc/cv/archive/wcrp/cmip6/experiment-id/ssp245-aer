@@ -1,0 +1,43 @@
+{
+    "_type": "pyesdoc.cv.model.term", 
+    "alternativeName": null, 
+    "alternativeUrl": null, 
+    "associations": [], 
+    "createDate": "2016-12-12 21:57:04.771855+00:00", 
+    "data": {
+        "activityID": [
+            "DAMIP"
+        ], 
+        "additionalAllowedModelComponents": [
+            "AER", 
+            "CHEM", 
+            "BGC"
+        ], 
+        "description": "Extension of aerosol-only run under SSP2-4.5", 
+        "endYear": "2100", 
+        "experiment": "aerosol-only SSP2-4.5 run", 
+        "minNumberYrsPerSim": "80", 
+        "parentActivityID": [
+            "DAMIP"
+        ], 
+        "parentExperimentID": [
+            "hist-aer"
+        ], 
+        "requiredModelComponents": [
+            "AOGCM"
+        ], 
+        "startYear": "2021", 
+        "subExperiment": "none", 
+        "subExperimentID": "none", 
+        "tier": "3"
+    }, 
+    "description": null, 
+    "idx": 147, 
+    "label": "ssp245-aer", 
+    "name": "ssp245-aer", 
+    "parent": null, 
+    "status": "pending", 
+    "synonyms": [], 
+    "uid": "b282dc49-59bd-4fe3-a5d3-963cff9b820a", 
+    "url": null
+}

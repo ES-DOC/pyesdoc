@@ -1,0 +1,42 @@
+{
+    "_type": "pyesdoc.cv.model.term", 
+    "alternativeName": null, 
+    "alternativeUrl": null, 
+    "associations": [], 
+    "createDate": "2016-12-12 21:57:04.777253+00:00", 
+    "data": {
+        "activityID": [
+            "HighResMIP"
+        ], 
+        "additionalAllowedModelComponents": [
+            "AER", 
+            "CHEM"
+        ], 
+        "description": "Similar to CFMIP amip-p4K, add a uniform warming of 4K to highresSST-present SSTs and run the experiment parallel to years 2005-2014 of highresSST-present", 
+        "endYear": "2014", 
+        "experiment": "uniform 4K warming of highresSST-present SST", 
+        "minNumberYrsPerSim": "64", 
+        "parentActivityID": [
+            "HighResMIP"
+        ], 
+        "parentExperimentID": [
+            "highresSST-present"
+        ], 
+        "requiredModelComponents": [
+            "AGCM"
+        ], 
+        "startYear": "1951", 
+        "subExperiment": "none", 
+        "subExperimentID": "none", 
+        "tier": "1"
+    }, 
+    "description": null, 
+    "idx": 201, 
+    "label": "highresSST-p4K", 
+    "name": "highressst-p4k", 
+    "parent": null, 
+    "status": "pending", 
+    "synonyms": [], 
+    "uid": "bd7497f6-f09d-4804-a227-f9118eca253a", 
+    "url": null
+}

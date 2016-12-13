@@ -1,0 +1,38 @@
+{
+    "_type": "pyesdoc.cv.model.term", 
+    "alternativeName": null, 
+    "alternativeUrl": null, 
+    "associations": [], 
+    "createDate": "2016-12-12 21:57:04.778181+00:00", 
+    "data": {
+        "activityID": [
+            "CFMIP"
+        ], 
+        "additionalAllowedModelComponents": [
+            "AER", 
+            "CHEM"
+        ], 
+        "description": "An AGCM experiment with monthly-varying SSTs, sea-ice, atmospheric constituents and any other necessary boundary conditions (e.g. vegetation if required) taken from each model's own piControl run (using the 30 years of piControl that are parallel to years 111-140 of its abrupt4xCO2 run). Dynamic vegetation should be turned off in all the piSST set of experiments", 
+        "endYear": "Year 111-140 of piControl", 
+        "experiment": "experiment forced with pre-industrial SSTs, sea ice and atmospheric constituents", 
+        "minNumberYrsPerSim": "30", 
+        "parentActivityID": "", 
+        "parentExperimentID": "", 
+        "requiredModelComponents": [
+            "AGCM"
+        ], 
+        "startYear": "Year 111-140 of piControl", 
+        "subExperiment": "none", 
+        "subExperimentID": "none", 
+        "tier": "2"
+    }, 
+    "description": null, 
+    "idx": 210, 
+    "label": "piSST", 
+    "name": "pisst", 
+    "parent": null, 
+    "status": "pending", 
+    "synonyms": [], 
+    "uid": "3345aedf-34f3-4b64-8d81-27a2e417e6cc", 
+    "url": null
+}

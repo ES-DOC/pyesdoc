@@ -1,0 +1,39 @@
+{
+    "_type": "pyesdoc.cv.model.term", 
+    "alternativeName": null, 
+    "alternativeUrl": null, 
+    "associations": [], 
+    "createDate": "2016-12-12 21:57:04.777454+00:00", 
+    "data": {
+        "activityID": [
+            "DCPP"
+        ], 
+        "additionalAllowedModelComponents": [
+            "AER", 
+            "CHEM", 
+            "BGC"
+        ], 
+        "description": "Mechanisms and predictability of the hiatus and of similar long timescale variations of both signs", 
+        "endYear": "", 
+        "experiment": "idealized negative northern extratropical IPV anomaly pattern", 
+        "minNumberYrsPerSim": "", 
+        "parentActivityID": "", 
+        "parentExperimentID": "", 
+        "requiredModelComponents": [
+            "AOGCM"
+        ], 
+        "startYear": "", 
+        "subExperiment": "initialized near end of year YYYY", 
+        "subExperimentID": "of form: \"sYYYY\"", 
+        "tier": "2"
+    }, 
+    "description": null, 
+    "idx": 203, 
+    "label": "dcppC-ipv-nextrop-minus", 
+    "name": "dcppc-ipv-nextrop-minus", 
+    "parent": null, 
+    "status": "pending", 
+    "synonyms": [], 
+    "uid": "dc0197c9-5520-4a9a-a50d-cba1d275d061", 
+    "url": null
+}

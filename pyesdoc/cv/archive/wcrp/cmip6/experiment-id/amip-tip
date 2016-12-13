@@ -1,0 +1,38 @@
+{
+    "_type": "pyesdoc.cv.model.term", 
+    "alternativeName": null, 
+    "alternativeUrl": null, 
+    "associations": [], 
+    "createDate": "2016-12-12 21:57:04.768193+00:00", 
+    "data": {
+        "activityID": [
+            "GMMIP"
+        ], 
+        "additionalAllowedModelComponents": [
+            "AER", 
+            "CHEM"
+        ], 
+        "description": "The topography of the TIP is modified by setting surface elevations to 500m; to understand the combined thermal and mechanical forcing of the TIP. Same model as DECK", 
+        "endYear": "2014", 
+        "experiment": "same as \"amip\" run, but surface elevations of the Tibetan-Iranian Plateau and Himalayas reduced to 500m", 
+        "minNumberYrsPerSim": "35", 
+        "parentActivityID": "", 
+        "parentExperimentID": "", 
+        "requiredModelComponents": [
+            "AGCM"
+        ], 
+        "startYear": "1979", 
+        "subExperiment": "none", 
+        "subExperimentID": "none", 
+        "tier": "3"
+    }, 
+    "description": null, 
+    "idx": 110, 
+    "label": "amip-TIP", 
+    "name": "amip-tip", 
+    "parent": null, 
+    "status": "pending", 
+    "synonyms": [], 
+    "uid": "27e32d40-7086-4b49-878b-d482490fd856", 
+    "url": null
+}

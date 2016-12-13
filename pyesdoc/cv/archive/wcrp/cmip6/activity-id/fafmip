@@ -1,0 +1,17 @@
+{
+    "_type": "pyesdoc.cv.model.term", 
+    "alternativeName": null, 
+    "alternativeUrl": null, 
+    "associations": [], 
+    "createDate": "2016-12-12 21:57:04.752227+00:00", 
+    "data": null, 
+    "description": null, 
+    "idx": 7, 
+    "label": "FAFMIP", 
+    "name": "fafmip", 
+    "parent": null, 
+    "status": "pending", 
+    "synonyms": [], 
+    "uid": "1725e4eb-40ce-47d7-943c-c043dcbba1a4", 
+    "url": null
+}

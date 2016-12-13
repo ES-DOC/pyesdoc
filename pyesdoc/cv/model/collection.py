@@ -63,6 +63,13 @@ class Collection(Entity):
         return Entity.getitem(self.terms, key)
 
 
+    def __contains__(self, key):
+        """Instance membership predicate.
+
+        """
+        return self[key] is not None
+
+
     @property
     def authority(self):
         """Gets associated governing authority.

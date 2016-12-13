@@ -1,0 +1,17 @@
+{
+    "_type": "pyesdoc.cv.model.term", 
+    "alternativeName": null, 
+    "alternativeUrl": null, 
+    "associations": [], 
+    "createDate": "2016-12-12 21:57:04.750874+00:00", 
+    "data": null, 
+    "description": null, 
+    "idx": 4, 
+    "label": "BGCM", 
+    "name": "bgcm", 
+    "parent": null, 
+    "status": "pending", 
+    "synonyms": [], 
+    "uid": "2a01377b-b4ea-4125-bda8-1b2fa925221c", 
+    "url": null
+}

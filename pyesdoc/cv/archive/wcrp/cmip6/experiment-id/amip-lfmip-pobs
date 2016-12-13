@@ -1,0 +1,38 @@
+{
+    "_type": "pyesdoc.cv.model.term", 
+    "alternativeName": null, 
+    "alternativeUrl": null, 
+    "associations": [], 
+    "createDate": "2016-12-12 21:57:04.771655+00:00", 
+    "data": {
+        "activityID": [
+            "LS3MIP"
+        ], 
+        "additionalAllowedModelComponents": [
+            "AER", 
+            "CHEM"
+        ], 
+        "description": "Land-hist land conditions; AMIP SSTs", 
+        "endYear": "2100", 
+        "experiment": "prescribed land (from pseudo-observations) and AMIP SSTs", 
+        "minNumberYrsPerSim": "121", 
+        "parentActivityID": "", 
+        "parentExperimentID": "", 
+        "requiredModelComponents": [
+            "AGCM"
+        ], 
+        "startYear": "1980", 
+        "subExperiment": "none", 
+        "subExperimentID": "none", 
+        "tier": "2"
+    }, 
+    "description": null, 
+    "idx": 145, 
+    "label": "amip-lfmip-pObs", 
+    "name": "amip-lfmip-pobs", 
+    "parent": null, 
+    "status": "pending", 
+    "synonyms": [], 
+    "uid": "58b9bd20-507a-446d-a53e-26091e5578d2", 
+    "url": null
+}

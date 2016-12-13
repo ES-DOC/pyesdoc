@@ -1,0 +1,42 @@
+{
+    "_type": "pyesdoc.cv.model.term", 
+    "alternativeName": null, 
+    "alternativeUrl": null, 
+    "associations": [], 
+    "createDate": "2016-12-12 21:57:04.772147+00:00", 
+    "data": {
+        "activityID": [
+            "HighResMIP"
+        ], 
+        "additionalAllowedModelComponents": [
+            "AER", 
+            "CHEM"
+        ], 
+        "description": "Forced global atmosphere-land simulations as highresSST-present, but using smoothed SST to investigate impact of SST variability", 
+        "endYear": "2014", 
+        "experiment": "smoothed SST version of highresSST-present", 
+        "minNumberYrsPerSim": "64", 
+        "parentActivityID": [
+            "HighResMIP"
+        ], 
+        "parentExperimentID": [
+            "highresSST-present"
+        ], 
+        "requiredModelComponents": [
+            "AGCM"
+        ], 
+        "startYear": "1951", 
+        "subExperiment": "none", 
+        "subExperimentID": "none", 
+        "tier": "1"
+    }, 
+    "description": null, 
+    "idx": 150, 
+    "label": "highresSST-smoothed", 
+    "name": "highressst-smoothed", 
+    "parent": null, 
+    "status": "pending", 
+    "synonyms": [], 
+    "uid": "4de0d901-bc86-49c2-a6b6-1d50e3bdda08", 
+    "url": null
+}

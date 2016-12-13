@@ -1,0 +1,35 @@
+{
+    "_type": "pyesdoc.cv.model.term", 
+    "alternativeName": null, 
+    "alternativeUrl": null, 
+    "associations": [], 
+    "createDate": "2016-12-12 21:57:04.778391+00:00", 
+    "data": {
+        "activityID": [
+            "OMIP"
+        ], 
+        "additionalAllowedModelComponents": "", 
+        "description": "Global ocean - sea-ice coupled experiment forced with the JRA-55 inter-annually varying atmospheric and river data sets for years 1958-2016. Initial ocean tracer fields are based on observations. All Priority=1 OMIP diagnostics are requested for all five cycles of the 59-year forcing to quantify drift. All OMIP diagnostics (Priority=1,2,3) are requested for the 5th cycle", 
+        "endYear": "310", 
+        "experiment": "OMIP experiment forced by JRA-55 atmospheric data set and initialized with observed physical and biogeochemical ocean data", 
+        "minNumberYrsPerSim": "310", 
+        "parentActivityID": "", 
+        "parentExperimentID": "", 
+        "requiredModelComponents": [
+            "OGCM"
+        ], 
+        "startYear": "1", 
+        "subExperiment": "none", 
+        "subExperimentID": "none", 
+        "tier": "3"
+    }, 
+    "description": null, 
+    "idx": 212, 
+    "label": "omip2", 
+    "name": "omip2", 
+    "parent": null, 
+    "status": "pending", 
+    "synonyms": [], 
+    "uid": "25b4d6d7-8960-46c6-a25d-204c35cf94da", 
+    "url": null
+}

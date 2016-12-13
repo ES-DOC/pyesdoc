@@ -1,0 +1,38 @@
+{
+    "_type": "pyesdoc.cv.model.term", 
+    "alternativeName": null, 
+    "alternativeUrl": null, 
+    "associations": [], 
+    "createDate": "2016-12-12 21:57:04.780822+00:00", 
+    "data": {
+        "activityID": [
+            "CFMIP"
+        ], 
+        "additionalAllowedModelComponents": [
+            "AER", 
+            "CHEM"
+        ], 
+        "description": "As aqua-p4K experiment, but with cloud-radiative effects switched off in the LW radiation code", 
+        "endYear": "", 
+        "experiment": "aquaplanet with uniform 4K SST increase and with longwave cloud radiative effects off", 
+        "minNumberYrsPerSim": "10", 
+        "parentActivityID": "", 
+        "parentExperimentID": "", 
+        "requiredModelComponents": [
+            "AGCM"
+        ], 
+        "startYear": "", 
+        "subExperiment": "none", 
+        "subExperimentID": "none", 
+        "tier": "2"
+    }, 
+    "description": null, 
+    "idx": 235, 
+    "label": "aqua-p4K-lwoff", 
+    "name": "aqua-p4k-lwoff", 
+    "parent": null, 
+    "status": "pending", 
+    "synonyms": [], 
+    "uid": "19636227-576d-4f79-a403-78f56cca7ebb", 
+    "url": null
+}

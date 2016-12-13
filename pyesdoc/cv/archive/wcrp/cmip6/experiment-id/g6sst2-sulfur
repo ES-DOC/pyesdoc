@@ -1,0 +1,38 @@
+{
+    "_type": "pyesdoc.cv.model.term", 
+    "alternativeName": null, 
+    "alternativeUrl": null, 
+    "associations": [], 
+    "createDate": "2016-12-12 21:57:04.762951+00:00", 
+    "data": {
+        "activityID": [
+            "GeoMIP"
+        ], 
+        "additionalAllowedModelComponents": [
+            "AER", 
+            "CHEM"
+        ], 
+        "description": "Time slice at 2100 (G6sulfur)", 
+        "endYear": "", 
+        "experiment": "SSTs from year 2020 of SSP5-8.5; forcings and other prescribed conditions from year 2100 of G6sulfur", 
+        "minNumberYrsPerSim": "10", 
+        "parentActivityID": "", 
+        "parentExperimentID": "", 
+        "requiredModelComponents": [
+            "AGCM"
+        ], 
+        "startYear": "", 
+        "subExperiment": "none", 
+        "subExperimentID": "none", 
+        "tier": "2"
+    }, 
+    "description": null, 
+    "idx": 54, 
+    "label": "G6SST2-sulfur", 
+    "name": "g6sst2-sulfur", 
+    "parent": null, 
+    "status": "pending", 
+    "synonyms": [], 
+    "uid": "6468d039-4d27-46d9-9925-5edc78221771", 
+    "url": null
+}

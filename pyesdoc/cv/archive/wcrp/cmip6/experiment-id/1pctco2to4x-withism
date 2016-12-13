@@ -1,0 +1,44 @@
+{
+    "_type": "pyesdoc.cv.model.term", 
+    "alternativeName": null, 
+    "alternativeUrl": null, 
+    "associations": [], 
+    "createDate": "2016-12-12 21:57:04.767534+00:00", 
+    "data": {
+        "activityID": [
+            "ISMIP6"
+        ], 
+        "additionalAllowedModelComponents": [
+            "AER", 
+            "CHEM", 
+            "BGC"
+        ], 
+        "description": "Idealized 1%/yr CO2 increase to 4xC02 over 140yrs and kept constant at 4xCO2 for an additional 200 to 400 yrs simulation that includes interactive ice sheets", 
+        "endYear": "", 
+        "experiment": "simulation with interactive ice sheet forced by 1 percent per year increase in CO2 to 4xCO2 (subsequently held fixed)", 
+        "minNumberYrsPerSim": "350", 
+        "parentActivityID": [
+            "ISMIP6"
+        ], 
+        "parentExperimentID": [
+            "piControl-withism"
+        ], 
+        "requiredModelComponents": [
+            "AOGCM", 
+            "ISM"
+        ], 
+        "startYear": "", 
+        "subExperiment": "none", 
+        "subExperimentID": "none", 
+        "tier": "1"
+    }, 
+    "description": null, 
+    "idx": 103, 
+    "label": "1pctCO2to4x-withism", 
+    "name": "1pctco2to4x-withism", 
+    "parent": null, 
+    "status": "pending", 
+    "synonyms": [], 
+    "uid": "d0a6fefb-09b0-45f1-b912-8484e134bc94", 
+    "url": null
+}

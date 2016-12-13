@@ -1,0 +1,19 @@
+{
+    "_type": "pyesdoc.cv.model.term", 
+    "alternativeName": null, 
+    "alternativeUrl": null, 
+    "associations": [], 
+    "createDate": "2016-12-12 21:57:04.783616+00:00", 
+    "data": {
+        "postalAddress": "Meteorological Research Institute, Tsukuba, Ibaraki 305-0052, Japan"
+    }, 
+    "description": null, 
+    "idx": 18, 
+    "label": "MRI", 
+    "name": "mri", 
+    "parent": null, 
+    "status": "pending", 
+    "synonyms": [], 
+    "uid": "4cde3584-bbb9-4f4d-b872-4d60be2e4b25", 
+    "url": null
+}

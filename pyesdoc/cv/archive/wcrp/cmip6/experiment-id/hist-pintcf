@@ -1,0 +1,43 @@
+{
+    "_type": "pyesdoc.cv.model.term", 
+    "alternativeName": null, 
+    "alternativeUrl": null, 
+    "associations": [], 
+    "createDate": "2016-12-12 21:57:04.766353+00:00", 
+    "data": {
+        "activityID": [
+            "AerChemMIP"
+        ], 
+        "additionalAllowedModelComponents": [
+            "CHEM", 
+            "BGC"
+        ], 
+        "description": "Historical WMGHG and halocarbons concentrations, 1850 NTCF emissions", 
+        "endYear": "2014", 
+        "experiment": "historical forcing, but with pre-industrial NTCF emissions", 
+        "minNumberYrsPerSim": "165", 
+        "parentActivityID": [
+            "CMIP"
+        ], 
+        "parentExperimentID": [
+            "piControl"
+        ], 
+        "requiredModelComponents": [
+            "AOGCM", 
+            "AER"
+        ], 
+        "startYear": "1850", 
+        "subExperiment": "none", 
+        "subExperimentID": "none", 
+        "tier": "1"
+    }, 
+    "description": null, 
+    "idx": 91, 
+    "label": "hist-piNTCF", 
+    "name": "hist-pintcf", 
+    "parent": null, 
+    "status": "pending", 
+    "synonyms": [], 
+    "uid": "5fab8847-bd61-4633-8da9-366dd79ef534", 
+    "url": null
+}

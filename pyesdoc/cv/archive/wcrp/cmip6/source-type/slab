@@ -1,0 +1,17 @@
+{
+    "_type": "pyesdoc.cv.model.term", 
+    "alternativeName": null, 
+    "alternativeUrl": null, 
+    "associations": [], 
+    "createDate": "2016-12-12 21:57:04.751480+00:00", 
+    "data": null, 
+    "description": null, 
+    "idx": 11, 
+    "label": "SLAB", 
+    "name": "slab", 
+    "parent": null, 
+    "status": "pending", 
+    "synonyms": [], 
+    "uid": "6812e92b-7923-43e4-ab40-8368c5ed6e6e", 
+    "url": null
+}

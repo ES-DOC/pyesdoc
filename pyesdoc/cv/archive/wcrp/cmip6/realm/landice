@@ -1,0 +1,17 @@
+{
+    "_type": "pyesdoc.cv.model.term", 
+    "alternativeName": null, 
+    "alternativeUrl": null, 
+    "associations": [], 
+    "createDate": "2016-12-12 21:57:04.750122+00:00", 
+    "data": null, 
+    "description": null, 
+    "idx": 5, 
+    "label": "landIce", 
+    "name": "landice", 
+    "parent": null, 
+    "status": "pending", 
+    "synonyms": [], 
+    "uid": "e6df20ac-b0f1-47a0-8280-7d93f1221d97", 
+    "url": null
+}

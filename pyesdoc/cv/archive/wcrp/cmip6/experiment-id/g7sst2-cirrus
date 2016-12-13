@@ -1,0 +1,38 @@
+{
+    "_type": "pyesdoc.cv.model.term", 
+    "alternativeName": null, 
+    "alternativeUrl": null, 
+    "associations": [], 
+    "createDate": "2016-12-12 21:57:04.775718+00:00", 
+    "data": {
+        "activityID": [
+            "GeoMIP"
+        ], 
+        "additionalAllowedModelComponents": [
+            "AER", 
+            "CHEM"
+        ], 
+        "description": "Time slice at 2100 (ScenarioMIP Tier 1 high forcing scenario and cirrus thinning according to G7cirrus)", 
+        "endYear": "", 
+        "experiment": "SSTs from year 2100 of SSP5-8.5; forcings and other prescribed conditions from year 2100 of G7cirrus", 
+        "minNumberYrsPerSim": "10", 
+        "parentActivityID": "", 
+        "parentExperimentID": "", 
+        "requiredModelComponents": [
+            "AGCM"
+        ], 
+        "startYear": "", 
+        "subExperiment": "none", 
+        "subExperimentID": "none", 
+        "tier": "2"
+    }, 
+    "description": null, 
+    "idx": 186, 
+    "label": "G7SST2-cirrus", 
+    "name": "g7sst2-cirrus", 
+    "parent": null, 
+    "status": "pending", 
+    "synonyms": [], 
+    "uid": "420736e4-8a69-4faf-8c8c-9300c45990c1", 
+    "url": null
+}

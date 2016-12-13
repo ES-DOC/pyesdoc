@@ -1,0 +1,39 @@
+{
+    "_type": "pyesdoc.cv.model.term", 
+    "alternativeName": null, 
+    "alternativeUrl": null, 
+    "associations": [], 
+    "createDate": "2016-12-12 21:57:04.760262+00:00", 
+    "data": {
+        "activityID": [
+            "DCPP"
+        ], 
+        "additionalAllowedModelComponents": [
+            "AER", 
+            "CHEM", 
+            "BGC"
+        ], 
+        "description": "Mechanisms and predictability of the hiatus and of similar long timescale variations of both signs", 
+        "endYear": "2015", 
+        "experiment": "idealized positive AMV anomaly pattern", 
+        "minNumberYrsPerSim": "66", 
+        "parentActivityID": "", 
+        "parentExperimentID": "", 
+        "requiredModelComponents": [
+            "AOGCM"
+        ], 
+        "startYear": "1950 (from 1920 if possible)", 
+        "subExperiment": "initialized near end of year YYYY", 
+        "subExperimentID": "of form: \"sYYYY\"", 
+        "tier": "1"
+    }, 
+    "description": null, 
+    "idx": 25, 
+    "label": "dcppC-amv-plus", 
+    "name": "dcppc-amv-plus", 
+    "parent": null, 
+    "status": "pending", 
+    "synonyms": [], 
+    "uid": "50a40079-61ef-4e98-9afb-a7691fa08eaf", 
+    "url": null
+}

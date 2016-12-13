@@ -1,0 +1,17 @@
+{
+    "_type": "pyesdoc.cv.model.term", 
+    "alternativeName": null, 
+    "alternativeUrl": null, 
+    "associations": [], 
+    "createDate": "2016-12-12 21:57:04.751311+00:00", 
+    "data": null, 
+    "description": null, 
+    "idx": 9, 
+    "label": "OGCM", 
+    "name": "ogcm", 
+    "parent": null, 
+    "status": "pending", 
+    "synonyms": [], 
+    "uid": "5ee4c252-24c4-4ebd-9b56-1ea7aa9a28b5", 
+    "url": null
+}

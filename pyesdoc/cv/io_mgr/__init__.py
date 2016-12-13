@@ -7,7 +7,6 @@ from pyesdoc.cv.io_mgr.write import write_authority
 
 
 
-
 def delete_authority(authority):
     """Deletes authority CV data from file system.
 

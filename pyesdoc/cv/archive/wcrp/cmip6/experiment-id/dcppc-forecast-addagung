@@ -1,0 +1,44 @@
+{
+    "_type": "pyesdoc.cv.model.term", 
+    "alternativeName": null, 
+    "alternativeUrl": null, 
+    "associations": [], 
+    "createDate": "2016-12-12 21:57:04.779624+00:00", 
+    "data": {
+        "activityID": [
+            "DCPP"
+        ], 
+        "additionalAllowedModelComponents": [
+            "AER", 
+            "CHEM", 
+            "BGC"
+        ], 
+        "description": "Effects of volcanoes on decadal prediction and predictability of forced and internal variability components", 
+        "endYear": "2015", 
+        "experiment": "2015 forecast with added Agung forcing", 
+        "minNumberYrsPerSim": "5", 
+        "parentActivityID": [
+            "DCPP"
+        ], 
+        "parentExperimentID": [
+            "dcppA-assim", 
+            ""
+        ], 
+        "requiredModelComponents": [
+            "AOGCM"
+        ], 
+        "startYear": "2015", 
+        "subExperiment": "initialized near end of year YYYY", 
+        "subExperimentID": "of form: \"sYYYY\"", 
+        "tier": "3"
+    }, 
+    "description": null, 
+    "idx": 224, 
+    "label": "dcppC-forecast-addAgung", 
+    "name": "dcppc-forecast-addagung", 
+    "parent": null, 
+    "status": "pending", 
+    "synonyms": [], 
+    "uid": "f04542f7-83fb-4045-a726-68e77a115961", 
+    "url": null
+}

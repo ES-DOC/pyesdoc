@@ -1,0 +1,38 @@
+{
+    "_type": "pyesdoc.cv.model.term", 
+    "alternativeName": null, 
+    "alternativeUrl": null, 
+    "associations": [], 
+    "createDate": "2016-12-12 21:57:04.777963+00:00", 
+    "data": {
+        "activityID": [
+            "HighResMIP"
+        ], 
+        "additionalAllowedModelComponents": [
+            "AER", 
+            "CHEM"
+        ], 
+        "description": "Forced global atmosphere-land simulations using daily 1/4 degree SST and sea-ice forcings, and aerosol concentrations (not emissions) to constrain model spread", 
+        "endYear": "2014", 
+        "experiment": "forced atmosphere experiment for 1950-2014", 
+        "minNumberYrsPerSim": "64", 
+        "parentActivityID": "", 
+        "parentExperimentID": "", 
+        "requiredModelComponents": [
+            "AGCM"
+        ], 
+        "startYear": "1951", 
+        "subExperiment": "none", 
+        "subExperimentID": "none", 
+        "tier": "1"
+    }, 
+    "description": null, 
+    "idx": 208, 
+    "label": "highresSST-present", 
+    "name": "highressst-present", 
+    "parent": null, 
+    "status": "pending", 
+    "synonyms": [], 
+    "uid": "21659f12-efab-487a-abcf-043f8f8174cb", 
+    "url": null
+}

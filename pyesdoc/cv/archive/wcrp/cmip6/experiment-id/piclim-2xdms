@@ -1,0 +1,38 @@
+{
+    "_type": "pyesdoc.cv.model.term", 
+    "alternativeName": null, 
+    "alternativeUrl": null, 
+    "associations": [], 
+    "createDate": "2016-12-12 21:57:04.758853+00:00", 
+    "data": {
+        "activityID": [
+            "AerChemMIP"
+        ], 
+        "additionalAllowedModelComponents": [
+            "CHEM"
+        ], 
+        "description": "1850 control with doubled emissions of DMS", 
+        "endYear": "", 
+        "experiment": "pre-industrial climatological SSTs and forcing, but with doubled emissions of DMS", 
+        "minNumberYrsPerSim": "30", 
+        "parentActivityID": "", 
+        "parentExperimentID": "", 
+        "requiredModelComponents": [
+            "AGCM", 
+            "AER"
+        ], 
+        "startYear": "", 
+        "subExperiment": "none", 
+        "subExperimentID": "none", 
+        "tier": "3"
+    }, 
+    "description": null, 
+    "idx": 9, 
+    "label": "piClim-2xDMS", 
+    "name": "piclim-2xdms", 
+    "parent": null, 
+    "status": "pending", 
+    "synonyms": [], 
+    "uid": "ec18a432-8fa0-472f-8979-835abb26ef6e", 
+    "url": null
+}

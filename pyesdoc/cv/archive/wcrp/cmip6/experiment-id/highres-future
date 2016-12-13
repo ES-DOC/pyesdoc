@@ -1,0 +1,43 @@
+{
+    "_type": "pyesdoc.cv.model.term", 
+    "alternativeName": null, 
+    "alternativeUrl": null, 
+    "associations": [], 
+    "createDate": "2016-12-12 21:57:04.775216+00:00", 
+    "data": {
+        "activityID": [
+            "HighResMIP"
+        ], 
+        "additionalAllowedModelComponents": [
+            "AER", 
+            "CHEM", 
+            "BGC"
+        ], 
+        "description": "Coupled integrations, at least one with constant 1950\"s forcing (CTL) and one or more with historic and then RCP4.5 (as in Forced_Atmos_Land, EXP)", 
+        "endYear": "2050", 
+        "experiment": "coupled future 2015-2050 using a scenario as close to CMIP5 RCP8.5 as possible within CMIP6", 
+        "minNumberYrsPerSim": "100", 
+        "parentActivityID": [
+            "HighResMIP"
+        ], 
+        "parentExperimentID": [
+            "hist-1950"
+        ], 
+        "requiredModelComponents": [
+            "AOGCM"
+        ], 
+        "startYear": "1951", 
+        "subExperiment": "none", 
+        "subExperimentID": "none", 
+        "tier": "2"
+    }, 
+    "description": null, 
+    "idx": 181, 
+    "label": "highres-future", 
+    "name": "highres-future", 
+    "parent": null, 
+    "status": "pending", 
+    "synonyms": [], 
+    "uid": "77bac498-ab64-46f7-a3f7-c894ada849df", 
+    "url": null
+}

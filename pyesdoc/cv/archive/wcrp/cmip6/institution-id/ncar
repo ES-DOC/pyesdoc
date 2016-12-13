@@ -1,0 +1,19 @@
+{
+    "_type": "pyesdoc.cv.model.term", 
+    "alternativeName": null, 
+    "alternativeUrl": null, 
+    "associations": [], 
+    "createDate": "2016-12-12 21:57:04.783092+00:00", 
+    "data": {
+        "postalAddress": "National Center for Atmospheric Research, Boulder, CO 80307, USA"
+    }, 
+    "description": null, 
+    "idx": 12, 
+    "label": "NCAR", 
+    "name": "ncar", 
+    "parent": null, 
+    "status": "pending", 
+    "synonyms": [], 
+    "uid": "8718cb68-6f54-4d53-a1ec-c2fbce91068e", 
+    "url": null
+}

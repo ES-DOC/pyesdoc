@@ -1,0 +1,17 @@
+{
+    "_type": "pyesdoc.cv.model.term", 
+    "alternativeName": null, 
+    "alternativeUrl": null, 
+    "associations": [], 
+    "createDate": "2016-12-12 21:57:04.750697+00:00", 
+    "data": null, 
+    "description": null, 
+    "idx": 2, 
+    "label": "AGCM", 
+    "name": "agcm", 
+    "parent": null, 
+    "status": "pending", 
+    "synonyms": [], 
+    "uid": "7a110271-8a4a-49ea-a55c-a7ea5e2eb4ce", 
+    "url": null
+}

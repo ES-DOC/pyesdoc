@@ -1,0 +1,17 @@
+{
+    "_type": "pyesdoc.cv.model.term", 
+    "alternativeName": null, 
+    "alternativeUrl": null, 
+    "associations": [], 
+    "createDate": "2016-12-12 21:57:04.752313+00:00", 
+    "data": null, 
+    "description": null, 
+    "idx": 8, 
+    "label": "GMMIP", 
+    "name": "gmmip", 
+    "parent": null, 
+    "status": "pending", 
+    "synonyms": [], 
+    "uid": "ba1ba930-9286-4733-8fb0-357e0124071f", 
+    "url": null
+}

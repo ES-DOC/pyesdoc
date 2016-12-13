@@ -1,0 +1,39 @@
+{
+    "_type": "pyesdoc.cv.model.term", 
+    "alternativeName": null, 
+    "alternativeUrl": null, 
+    "associations": [], 
+    "createDate": "2016-12-12 21:57:04.777862+00:00", 
+    "data": {
+        "activityID": [
+            "DCPP"
+        ], 
+        "additionalAllowedModelComponents": [
+            "AER", 
+            "CHEM", 
+            "BGC"
+        ], 
+        "description": "Mechanisms and predictability of the hiatus and of similar long timescale variations of both signs", 
+        "endYear": "2015", 
+        "experiment": "idealized Atlantic control", 
+        "minNumberYrsPerSim": "66", 
+        "parentActivityID": "", 
+        "parentExperimentID": "", 
+        "requiredModelComponents": [
+            "AOGCM"
+        ], 
+        "startYear": "1950 (from 1920 if possible)", 
+        "subExperiment": "initialized near end of year YYYY", 
+        "subExperimentID": "of form: \"sYYYY\"", 
+        "tier": "1"
+    }, 
+    "description": null, 
+    "idx": 207, 
+    "label": "dcppC-atl-control", 
+    "name": "dcppc-atl-control", 
+    "parent": null, 
+    "status": "pending", 
+    "synonyms": [], 
+    "uid": "8339ed13-ff2b-4f88-8c26-91b8ff696ecf", 
+    "url": null
+}

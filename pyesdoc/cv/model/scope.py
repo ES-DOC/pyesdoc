@@ -61,6 +61,13 @@ class Scope(Entity):
         return Entity.getitem(self.collections, key)
 
 
+    def __contains__(self, key):
+        """Instance membership predicate.
+
+        """
+        return self[key] is not None
+
+
     @property
     def namespace(self):
         """Returns full namespace of the term set.

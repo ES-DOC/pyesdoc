@@ -58,6 +58,13 @@ class Authority(Entity):
         return Entity.getitem(self.scopes, key)
 
 
+    def __contains__(self, key):
+        """Instance membership predicate.
+
+        """
+        return self[key] is not None
+
+
     @property
     def namespace(self):
         """Returns namespace used in I/O scenarios.

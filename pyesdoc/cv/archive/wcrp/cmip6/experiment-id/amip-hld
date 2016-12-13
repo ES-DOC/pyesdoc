@@ -1,0 +1,38 @@
+{
+    "_type": "pyesdoc.cv.model.term", 
+    "alternativeName": null, 
+    "alternativeUrl": null, 
+    "associations": [], 
+    "createDate": "2016-12-12 21:57:04.769963+00:00", 
+    "data": {
+        "activityID": [
+            "GMMIP"
+        ], 
+        "additionalAllowedModelComponents": [
+            "AER", 
+            "CHEM"
+        ], 
+        "description": "The topography of the highlands in Africa, N. America and S. America TP is modified by setting surface elevations to a certain height (500m). Same model as DECK", 
+        "endYear": "2014", 
+        "experiment": "same as \"amip\" run, but surface elevations of the East African Highlands in Africa, Sierra Madre in N. America and Andes in S. America reduced to 500m", 
+        "minNumberYrsPerSim": "35", 
+        "parentActivityID": "", 
+        "parentExperimentID": "", 
+        "requiredModelComponents": [
+            "AGCM"
+        ], 
+        "startYear": "1979", 
+        "subExperiment": "none", 
+        "subExperimentID": "none", 
+        "tier": "3"
+    }, 
+    "description": null, 
+    "idx": 128, 
+    "label": "amip-hld", 
+    "name": "amip-hld", 
+    "parent": null, 
+    "status": "pending", 
+    "synonyms": [], 
+    "uid": "d4698b82-482b-4bb3-864e-00767933c6d7", 
+    "url": null
+}

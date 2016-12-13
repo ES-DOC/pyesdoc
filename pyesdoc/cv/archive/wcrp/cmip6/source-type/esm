@@ -1,0 +1,17 @@
+{
+    "_type": "pyesdoc.cv.model.term", 
+    "alternativeName": null, 
+    "alternativeUrl": null, 
+    "associations": [], 
+    "createDate": "2016-12-12 21:57:04.751045+00:00", 
+    "data": null, 
+    "description": null, 
+    "idx": 6, 
+    "label": "ESM", 
+    "name": "esm", 
+    "parent": null, 
+    "status": "pending", 
+    "synonyms": [], 
+    "uid": "233924ef-da7b-4885-8d01-0406e1d1b04b", 
+    "url": null
+}

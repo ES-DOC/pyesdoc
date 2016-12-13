@@ -1,0 +1,19 @@
+{
+    "_type": "pyesdoc.cv.model.term", 
+    "alternativeName": null, 
+    "alternativeUrl": null, 
+    "associations": [], 
+    "createDate": "2016-12-12 21:57:04.783793+00:00", 
+    "data": {
+        "postalAddress": "Program for Climate Model Diagnosis and Intercomparison, Lawrence Livermore National Laboratory, Livermore, CA 94550, USA"
+    }, 
+    "description": null, 
+    "idx": 20, 
+    "label": "PCMDI", 
+    "name": "pcmdi", 
+    "parent": null, 
+    "status": "pending", 
+    "synonyms": [], 
+    "uid": "5fe4b34f-e21a-4fe7-8dd0-aadc07e61335", 
+    "url": null
+}

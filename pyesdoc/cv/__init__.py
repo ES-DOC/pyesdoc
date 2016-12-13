@@ -10,6 +10,7 @@
 .. moduleauthor:: IPSL (ES-DOC) <dev@esdocumentation.org>
 
 """
+from pyesdoc.cv import archive
 from pyesdoc.cv.io_mgr import read_authority
 from pyesdoc.cv.io_mgr import write_authority
 from pyesdoc.cv.codecs import from_dict
@@ -26,3 +27,5 @@ from pyesdoc.cv.model import Term
 from pyesdoc.cv.model import Authority
 from pyesdoc.cv.model import Collection
 from pyesdoc.cv.model import Scope
+
+

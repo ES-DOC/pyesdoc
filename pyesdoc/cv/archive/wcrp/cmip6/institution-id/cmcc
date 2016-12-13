@@ -1,0 +1,19 @@
+{
+    "_type": "pyesdoc.cv.model.term", 
+    "alternativeName": null, 
+    "alternativeUrl": null, 
+    "associations": [], 
+    "createDate": "2016-12-12 21:57:04.782743+00:00", 
+    "data": {
+        "postalAddress": "Centro Euro-Mediterraneo per i Cambiamenti Climatici, Bologna 40127, Italy"
+    }, 
+    "description": null, 
+    "idx": 8, 
+    "label": "CMCC", 
+    "name": "cmcc", 
+    "parent": null, 
+    "status": "pending", 
+    "synonyms": [], 
+    "uid": "bbc8e552-1e72-4726-8c8c-3672aa86a9e0", 
+    "url": null
+}

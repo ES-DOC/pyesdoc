@@ -1,0 +1,42 @@
+{
+    "_type": "pyesdoc.cv.model.term", 
+    "alternativeName": null, 
+    "alternativeUrl": null, 
+    "associations": [], 
+    "createDate": "2016-12-12 21:57:04.768385+00:00", 
+    "data": {
+        "activityID": [
+            "HighResMIP"
+        ], 
+        "additionalAllowedModelComponents": [
+            "AER", 
+            "CHEM"
+        ], 
+        "description": "Forced global atmosphere-land simulations as highresSST-present, but using an common LAI dataset across models", 
+        "endYear": "2014", 
+        "experiment": "common LAI dataset within the highresSST-present experiment", 
+        "minNumberYrsPerSim": "64", 
+        "parentActivityID": [
+            "HighResMIP"
+        ], 
+        "parentExperimentID": [
+            "highresSST-present"
+        ], 
+        "requiredModelComponents": [
+            "AGCM"
+        ], 
+        "startYear": "1951", 
+        "subExperiment": "none", 
+        "subExperimentID": "none", 
+        "tier": "1"
+    }, 
+    "description": null, 
+    "idx": 112, 
+    "label": "highresSST-LAI", 
+    "name": "highressst-lai", 
+    "parent": null, 
+    "status": "pending", 
+    "synonyms": [], 
+    "uid": "ce752649-ed7a-457d-a4c8-e0e1cb8dafbb", 
+    "url": null
+}

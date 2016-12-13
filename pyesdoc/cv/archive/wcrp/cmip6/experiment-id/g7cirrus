@@ -1,0 +1,43 @@
+{
+    "_type": "pyesdoc.cv.model.term", 
+    "alternativeName": null, 
+    "alternativeUrl": null, 
+    "associations": [], 
+    "createDate": "2016-12-12 21:57:04.768958+00:00", 
+    "data": {
+        "activityID": [
+            "GeoMIP"
+        ], 
+        "additionalAllowedModelComponents": [
+            "AER", 
+            "CHEM", 
+            "BGC"
+        ], 
+        "description": "Against a background of the ScenarioMIP high forcing, reduce cirrus cloud optical depth by a constant amount", 
+        "endYear": "2100", 
+        "experiment": "increase cirrus ice crystal fall speed to reduce net forcing in SSP585 by 1 W m-2", 
+        "minNumberYrsPerSim": "81", 
+        "parentActivityID": [
+            "CMIP"
+        ], 
+        "parentExperimentID": [
+            "historical"
+        ], 
+        "requiredModelComponents": [
+            "AOGCM"
+        ], 
+        "startYear": "2020", 
+        "subExperiment": "none", 
+        "subExperimentID": "none", 
+        "tier": "1"
+    }, 
+    "description": null, 
+    "idx": 118, 
+    "label": "G7cirrus", 
+    "name": "g7cirrus", 
+    "parent": null, 
+    "status": "pending", 
+    "synonyms": [], 
+    "uid": "c62b9dc9-ecb2-4d29-ad42-6d82c5db0894", 
+    "url": null
+}

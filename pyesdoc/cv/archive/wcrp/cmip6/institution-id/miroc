@@ -1,0 +1,19 @@
+{
+    "_type": "pyesdoc.cv.model.term", 
+    "alternativeName": null, 
+    "alternativeUrl": null, 
+    "associations": [], 
+    "createDate": "2016-12-12 21:57:04.782376+00:00", 
+    "data": {
+        "postalAddress": "JAMSTEC (Japan Agency for Marine-Earth Science and Technology, Kanagawa 236-0001, Japan), AORI (Atmosphere and Ocean Research Institute, The University of Tokyo, Chiba 277-8564, Japan), NIES (National Institute for Environmental Studies, Ibaraki 305-8506, Japan), and AICS (RIKEN Advanced Institute for Computational Science, Hyogo 650-0047, Japan)"
+    }, 
+    "description": null, 
+    "idx": 4, 
+    "label": "MIROC", 
+    "name": "miroc", 
+    "parent": null, 
+    "status": "pending", 
+    "synonyms": [], 
+    "uid": "a7cc939b-76ed-490f-be9a-b032563b48ff", 
+    "url": null
+}

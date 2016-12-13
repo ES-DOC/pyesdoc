@@ -1,0 +1,36 @@
+{
+    "_type": "pyesdoc.cv.model.term", 
+    "alternativeName": null, 
+    "alternativeUrl": null, 
+    "associations": [], 
+    "createDate": "2016-12-12 21:57:04.754036+00:00", 
+    "data": {
+        "aerosol": "CLASSIC (v1.0)", 
+        "atmosphere": "HadGAM2 (r1.1; 192 x 145 N96; 38 levels; top level 39255m)", 
+        "atmosphericChemistry": "None", 
+        "cohort": [
+            "CMIP5"
+        ], 
+        "institutionID": [
+            "CSIRO-BOM"
+        ], 
+        "label": "ACCESS 1.0", 
+        "labelExtended": "ACCESS 1.0 (This entry is free text for users to contribute verbose information)", 
+        "landIce": "None", 
+        "landSurface": "MOSES2.2", 
+        "ocean": "ACCESS-OM (MOM4p1; tripolar primarily 1deg latitude/longitude; 50 levels; top grid cell 0-10m)", 
+        "oceanBiogeochemistry": "None", 
+        "releaseYear": "2011", 
+        "seaIce": "CICE4.1", 
+        "sourceID": "ACCESS-1-0"
+    }, 
+    "description": null, 
+    "idx": 6, 
+    "label": "ACCESS-1-0", 
+    "name": "access-1-0", 
+    "parent": null, 
+    "status": "pending", 
+    "synonyms": [], 
+    "uid": "a2adcbdd-5189-4554-9fd0-f8bc7cd0c5f6", 
+    "url": null
+}

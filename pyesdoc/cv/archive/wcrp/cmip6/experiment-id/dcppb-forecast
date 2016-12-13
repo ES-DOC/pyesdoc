@@ -1,0 +1,44 @@
+{
+    "_type": "pyesdoc.cv.model.term", 
+    "alternativeName": null, 
+    "alternativeUrl": null, 
+    "associations": [], 
+    "createDate": "2016-12-12 21:57:04.772246+00:00", 
+    "data": {
+        "activityID": [
+            "DCPP"
+        ], 
+        "additionalAllowedModelComponents": [
+            "AER", 
+            "CHEM", 
+            "BGC"
+        ], 
+        "description": "Ongoing decadal forecasts", 
+        "endYear": "ongoing each year", 
+        "experiment": "year 1-5 forecast initialized from observations", 
+        "minNumberYrsPerSim": "5", 
+        "parentActivityID": [
+            "DCPP"
+        ], 
+        "parentExperimentID": [
+            "dcppA-assim", 
+            ""
+        ], 
+        "requiredModelComponents": [
+            "AOGCM"
+        ], 
+        "startYear": "present", 
+        "subExperiment": "initialized near end of year YYYY", 
+        "subExperimentID": "of form: \"sYYYY\"", 
+        "tier": "1"
+    }, 
+    "description": null, 
+    "idx": 151, 
+    "label": "dcppB-forecast", 
+    "name": "dcppb-forecast", 
+    "parent": null, 
+    "status": "pending", 
+    "synonyms": [], 
+    "uid": "d2757114-dcde-42e6-a859-e1cd0ed6e165", 
+    "url": null
+}

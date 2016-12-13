@@ -1,0 +1,43 @@
+{
+    "_type": "pyesdoc.cv.model.term", 
+    "alternativeName": null, 
+    "alternativeUrl": null, 
+    "associations": [], 
+    "createDate": "2016-12-12 21:57:04.771459+00:00", 
+    "data": {
+        "activityID": [
+            "DAMIP"
+        ], 
+        "additionalAllowedModelComponents": [
+            "AER", 
+            "CHEM", 
+            "BGC"
+        ], 
+        "description": "Historical solar-only transient simulation using settings from CMIP6 historical simulation but fixed GHG&ODS (1850 level)", 
+        "endYear": "2020", 
+        "experiment": "historical solar-only run", 
+        "minNumberYrsPerSim": "171", 
+        "parentActivityID": [
+            "CMIP"
+        ], 
+        "parentExperimentID": [
+            "piControl"
+        ], 
+        "requiredModelComponents": [
+            "AOGCM"
+        ], 
+        "startYear": "1850", 
+        "subExperiment": "none", 
+        "subExperimentID": "none", 
+        "tier": "3"
+    }, 
+    "description": null, 
+    "idx": 143, 
+    "label": "hist-sol", 
+    "name": "hist-sol", 
+    "parent": null, 
+    "status": "pending", 
+    "synonyms": [], 
+    "uid": "4c324dd4-790a-47c4-87a5-1caee2a07551", 
+    "url": null
+}

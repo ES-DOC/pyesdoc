@@ -1,0 +1,39 @@
+{
+    "_type": "pyesdoc.cv.model.term", 
+    "alternativeName": null, 
+    "alternativeUrl": null, 
+    "associations": [], 
+    "createDate": "2016-12-12 21:57:04.768008+00:00", 
+    "data": {
+        "activityID": [
+            "PMIP"
+        ], 
+        "additionalAllowedModelComponents": [
+            "AER", 
+            "CHEM", 
+            "BGC"
+        ], 
+        "description": "main forcings : trace gases, orbital parameters, dust", 
+        "endYear": "", 
+        "experiment": "mid-Holocene", 
+        "minNumberYrsPerSim": "200", 
+        "parentActivityID": "", 
+        "parentExperimentID": "", 
+        "requiredModelComponents": [
+            "AOGCM"
+        ], 
+        "startYear": "", 
+        "subExperiment": "none", 
+        "subExperimentID": "none", 
+        "tier": "1"
+    }, 
+    "description": null, 
+    "idx": 108, 
+    "label": "midHolocene", 
+    "name": "midholocene", 
+    "parent": null, 
+    "status": "pending", 
+    "synonyms": [], 
+    "uid": "2a6a453d-97bd-4a12-b828-4b9e54137dbe", 
+    "url": null
+}

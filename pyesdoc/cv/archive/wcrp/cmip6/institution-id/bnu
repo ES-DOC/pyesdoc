@@ -1,0 +1,19 @@
+{
+    "_type": "pyesdoc.cv.model.term", 
+    "alternativeName": null, 
+    "alternativeUrl": null, 
+    "associations": [], 
+    "createDate": "2016-12-12 21:57:04.783352+00:00", 
+    "data": {
+        "postalAddress": "Beijing Normal University, Beijing 100875, China"
+    }, 
+    "description": null, 
+    "idx": 15, 
+    "label": "BNU", 
+    "name": "bnu", 
+    "parent": null, 
+    "status": "pending", 
+    "synonyms": [], 
+    "uid": "d9bdbcc5-aa30-442a-8b5a-c93e1c1f5bd2", 
+    "url": null
+}

@@ -1,0 +1,38 @@
+{
+    "_type": "pyesdoc.cv.model.term", 
+    "alternativeName": null, 
+    "alternativeUrl": null, 
+    "associations": [], 
+    "createDate": "2016-12-12 21:57:04.762295+00:00", 
+    "data": {
+        "activityID": [
+            "LS3MIP"
+        ], 
+        "additionalAllowedModelComponents": [
+            "AER", 
+            "CHEM"
+        ], 
+        "description": "Prescribed land conditions 30yr running mean; AMIP SSTs", 
+        "endYear": "2100", 
+        "experiment": "prescribed land conditions (from running mean climatology) and AMIP SSTs", 
+        "minNumberYrsPerSim": "121", 
+        "parentActivityID": "", 
+        "parentExperimentID": "", 
+        "requiredModelComponents": [
+            "AGCM"
+        ], 
+        "startYear": "1980", 
+        "subExperiment": "none", 
+        "subExperimentID": "none", 
+        "tier": "2"
+    }, 
+    "description": null, 
+    "idx": 47, 
+    "label": "amip-lfmip-rmLC", 
+    "name": "amip-lfmip-rmlc", 
+    "parent": null, 
+    "status": "pending", 
+    "synonyms": [], 
+    "uid": "55f03c41-3a8f-49c2-95af-a790d1e069d4", 
+    "url": null
+}

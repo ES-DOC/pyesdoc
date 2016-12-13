@@ -1,0 +1,43 @@
+{
+    "_type": "pyesdoc.cv.model.term", 
+    "alternativeName": null, 
+    "alternativeUrl": null, 
+    "associations": [], 
+    "createDate": "2016-12-12 21:57:04.765236+00:00", 
+    "data": {
+        "activityID": [
+            "GMMIP"
+        ], 
+        "additionalAllowedModelComponents": [
+            "AER", 
+            "CHEM", 
+            "BGC"
+        ], 
+        "description": "Pacemaker 20th century historical run that includes all forcing as used in CMIP6 Historical Simulation, and the observational historical SST is restored in the tropical lobe of the IPO domain (20degS-20degN, 175degE-75degW). The HadISST data will be used", 
+        "endYear": "2014", 
+        "experiment": "initialized from \"historical\" run year 1870 and SSTs in tropical lobe of the IPO domain (20degS-20degN, 175degE-75degW) restored to AMIP SSTs with historical forcings", 
+        "minNumberYrsPerSim": "144", 
+        "parentActivityID": [
+            "CMIP"
+        ], 
+        "parentExperimentID": [
+            "piControl"
+        ], 
+        "requiredModelComponents": [
+            "AOGCM"
+        ], 
+        "startYear": "1870", 
+        "subExperiment": "none", 
+        "subExperimentID": "none", 
+        "tier": "2"
+    }, 
+    "description": null, 
+    "idx": 79, 
+    "label": "hist-resIPO", 
+    "name": "hist-resipo", 
+    "parent": null, 
+    "status": "pending", 
+    "synonyms": [], 
+    "uid": "b38bc46d-662b-45a5-ba2d-7ef8d0b0fe64", 
+    "url": null
+}

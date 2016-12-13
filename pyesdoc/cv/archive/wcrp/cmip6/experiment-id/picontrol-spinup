@@ -1,0 +1,39 @@
+{
+    "_type": "pyesdoc.cv.model.term", 
+    "alternativeName": null, 
+    "alternativeUrl": null, 
+    "associations": [], 
+    "createDate": "2016-12-12 21:57:04.771755+00:00", 
+    "data": {
+        "activityID": [
+            "CMIP"
+        ], 
+        "additionalAllowedModelComponents": [
+            "AER", 
+            "CHEM", 
+            "BGC"
+        ], 
+        "description": "DECK: spin-up portion of the control", 
+        "endYear": "", 
+        "experiment": "pre-industrial control (spin-up)", 
+        "minNumberYrsPerSim": "100", 
+        "parentActivityID": "", 
+        "parentExperimentID": "", 
+        "requiredModelComponents": [
+            "AOGCM"
+        ], 
+        "startYear": "", 
+        "subExperiment": "none", 
+        "subExperimentID": "none", 
+        "tier": "2"
+    }, 
+    "description": null, 
+    "idx": 146, 
+    "label": "piControl-spinup", 
+    "name": "picontrol-spinup", 
+    "parent": null, 
+    "status": "pending", 
+    "synonyms": [], 
+    "uid": "d61bec97-0ca1-4b7a-b90d-2bcb7fb8becc", 
+    "url": null
+}

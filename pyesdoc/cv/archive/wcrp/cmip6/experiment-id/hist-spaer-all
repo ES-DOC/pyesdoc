@@ -1,0 +1,39 @@
+{
+    "_type": "pyesdoc.cv.model.term", 
+    "alternativeName": null, 
+    "alternativeUrl": null, 
+    "associations": [], 
+    "createDate": "2016-12-12 21:57:04.773919+00:00", 
+    "data": {
+        "activityID": [
+            "RFMIP"
+        ], 
+        "additionalAllowedModelComponents": "", 
+        "description": "Prescribed anthropogenic aerosol optical properties. All forcings", 
+        "endYear": "2014", 
+        "experiment": "historical simulation with specified anthropogenic aerosols", 
+        "minNumberYrsPerSim": "165", 
+        "parentActivityID": [
+            "CMIP"
+        ], 
+        "parentExperimentID": [
+            "piControl"
+        ], 
+        "requiredModelComponents": [
+            "AOGCM"
+        ], 
+        "startYear": "1850", 
+        "subExperiment": "none", 
+        "subExperimentID": "none", 
+        "tier": "1"
+    }, 
+    "description": null, 
+    "idx": 168, 
+    "label": "hist-spAer-all", 
+    "name": "hist-spaer-all", 
+    "parent": null, 
+    "status": "pending", 
+    "synonyms": [], 
+    "uid": "ebdd0ae1-5adf-4d6b-be2f-2f68751a5137", 
+    "url": null
+}

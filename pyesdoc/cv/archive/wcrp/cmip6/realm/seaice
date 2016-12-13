@@ -1,0 +1,17 @@
+{
+    "_type": "pyesdoc.cv.model.term", 
+    "alternativeName": null, 
+    "alternativeUrl": null, 
+    "associations": [], 
+    "createDate": "2016-12-12 21:57:04.750381+00:00", 
+    "data": null, 
+    "description": null, 
+    "idx": 8, 
+    "label": "seaIce", 
+    "name": "seaice", 
+    "parent": null, 
+    "status": "pending", 
+    "synonyms": [], 
+    "uid": "0bb6a6e0-e66b-401c-9483-040d9a910c15", 
+    "url": null
+}

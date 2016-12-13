@@ -1,0 +1,36 @@
+{
+    "_type": "pyesdoc.cv.model.term", 
+    "alternativeName": null, 
+    "alternativeUrl": null, 
+    "associations": [], 
+    "createDate": "2016-12-12 21:57:04.753585+00:00", 
+    "data": {
+        "aerosol": "Rotstayn-1.0", 
+        "atmosphere": "VCAM-1.0 (192 x 192 x 6 C192; 35 levels; top level 35km)", 
+        "atmosphericChemistry": "None", 
+        "cohort": [
+            ""
+        ], 
+        "institutionID": [
+            "CSIR-CSIRO"
+        ], 
+        "label": "VRESM 1.0", 
+        "labelExtended": "VRESM 1.0 (Variable-resolution Earth System Model 1.0)", 
+        "landIce": "None", 
+        "landSurface": "CABLE v2.2.3", 
+        "ocean": "VCOM-1.0 (192 x 192 x 6 C192; 35 levels; top grid cell 0-10m)", 
+        "oceanBiogeochemistry": "PISCES v3.4socco", 
+        "releaseYear": "2016", 
+        "seaIce": "CSIR-ICE (visco-plastic)", 
+        "sourceID": "VRESM-1-0"
+    }, 
+    "description": null, 
+    "idx": 1, 
+    "label": "VRESM-1-0", 
+    "name": "vresm-1-0", 
+    "parent": null, 
+    "status": "pending", 
+    "synonyms": [], 
+    "uid": "61e93cba-b468-486f-86cc-48c0a8c82ce8", 
+    "url": null
+}

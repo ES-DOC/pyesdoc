@@ -1,0 +1,35 @@
+{
+    "_type": "pyesdoc.cv.model.term", 
+    "alternativeName": null, 
+    "alternativeUrl": null, 
+    "associations": [], 
+    "createDate": "2016-12-12 21:57:04.766542+00:00", 
+    "data": {
+        "activityID": [
+            "LUMIP"
+        ], 
+        "additionalAllowedModelComponents": "", 
+        "description": "Same as land-hist but with irrigated area held at 1850 levels", 
+        "endYear": "2014", 
+        "experiment": "historical land-only with no irrigation", 
+        "minNumberYrsPerSim": "165", 
+        "parentActivityID": "", 
+        "parentExperimentID": "", 
+        "requiredModelComponents": [
+            "LAND"
+        ], 
+        "startYear": "1850 or 1700", 
+        "subExperiment": "none", 
+        "subExperimentID": "none", 
+        "tier": "2"
+    }, 
+    "description": null, 
+    "idx": 93, 
+    "label": "land-crop-noIrrig", 
+    "name": "land-crop-noirrig", 
+    "parent": null, 
+    "status": "pending", 
+    "synonyms": [], 
+    "uid": "cc248288-1fc2-4ddf-8aeb-e400d1574a4c", 
+    "url": null
+}

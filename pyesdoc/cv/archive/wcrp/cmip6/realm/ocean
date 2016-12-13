@@ -1,0 +1,17 @@
+{
+    "_type": "pyesdoc.cv.model.term", 
+    "alternativeName": null, 
+    "alternativeUrl": null, 
+    "associations": [], 
+    "createDate": "2016-12-12 21:57:04.750208+00:00", 
+    "data": null, 
+    "description": null, 
+    "idx": 6, 
+    "label": "ocean", 
+    "name": "ocean", 
+    "parent": null, 
+    "status": "pending", 
+    "synonyms": [], 
+    "uid": "3956bb60-026c-4061-8f92-043679b26598", 
+    "url": null
+}

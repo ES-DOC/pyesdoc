@@ -1,0 +1,43 @@
+{
+    "_type": "pyesdoc.cv.model.term", 
+    "alternativeName": null, 
+    "alternativeUrl": null, 
+    "associations": [], 
+    "createDate": "2016-12-12 21:57:04.778495+00:00", 
+    "data": {
+        "activityID": [
+            "C4MIP"
+        ], 
+        "additionalAllowedModelComponents": [
+            "AER", 
+            "CHEM"
+        ], 
+        "description": "Concentration-driven future scenario simulation, biogeochemically-coupled", 
+        "endYear": "2100", 
+        "experiment": "biogeochemically-coupled version of the RCP8.5 based on SSP5", 
+        "minNumberYrsPerSim": "85", 
+        "parentActivityID": [
+            "C4MIP"
+        ], 
+        "parentExperimentID": [
+            "hist-bgc"
+        ], 
+        "requiredModelComponents": [
+            "AOGCM", 
+            "BGC"
+        ], 
+        "startYear": "2015", 
+        "subExperiment": "none", 
+        "subExperimentID": "none", 
+        "tier": "2"
+    }, 
+    "description": null, 
+    "idx": 213, 
+    "label": "ssp585-bgc", 
+    "name": "ssp585-bgc", 
+    "parent": null, 
+    "status": "pending", 
+    "synonyms": [], 
+    "uid": "1907edb1-0f42-4fab-9656-944532bbcf6a", 
+    "url": null
+}

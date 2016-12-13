@@ -1,0 +1,43 @@
+{
+    "_type": "pyesdoc.cv.model.term", 
+    "alternativeName": null, 
+    "alternativeUrl": null, 
+    "associations": [], 
+    "createDate": "2016-12-12 21:57:04.758128+00:00", 
+    "data": {
+        "activityID": [
+            "DAMIP"
+        ], 
+        "additionalAllowedModelComponents": [
+            "AER", 
+            "CHEM", 
+            "BGC"
+        ], 
+        "description": "Extension of well-mixed GHG-only run under SSP2-4.5. Models with interactive chemistry schemes should either turn off the chemistry or use a preindustrial climatology of stratospheric and tropospheric ozone in their radiation schemes", 
+        "endYear": "2100", 
+        "experiment": "well-mixed GHG-only SSP2-4.5 run", 
+        "minNumberYrsPerSim": "80", 
+        "parentActivityID": [
+            "DAMIP"
+        ], 
+        "parentExperimentID": [
+            "hist-GHG"
+        ], 
+        "requiredModelComponents": [
+            "AOGCM"
+        ], 
+        "startYear": "2021", 
+        "subExperiment": "none", 
+        "subExperimentID": "none", 
+        "tier": "2"
+    }, 
+    "description": null, 
+    "idx": 1, 
+    "label": "ssp245-GHG", 
+    "name": "ssp245-ghg", 
+    "parent": null, 
+    "status": "pending", 
+    "synonyms": [], 
+    "uid": "56c7ac8a-39cb-473b-b9e2-ca1801213d21", 
+    "url": null
+}

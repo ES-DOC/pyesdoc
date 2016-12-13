@@ -1,0 +1,43 @@
+{
+    "_type": "pyesdoc.cv.model.term", 
+    "alternativeName": null, 
+    "alternativeUrl": null, 
+    "associations": [], 
+    "createDate": "2016-12-12 21:57:04.765793+00:00", 
+    "data": {
+        "activityID": [
+            "DAMIP"
+        ], 
+        "additionalAllowedModelComponents": [
+            "AER", 
+            "CHEM", 
+            "BGC"
+        ], 
+        "description": "Extension of natural-only run under SSP2-4.5", 
+        "endYear": "2100", 
+        "experiment": "natural-only SSP2-4.5 run", 
+        "minNumberYrsPerSim": "80", 
+        "parentActivityID": [
+            "DAMIP"
+        ], 
+        "parentExperimentID": [
+            "hist-nat"
+        ], 
+        "requiredModelComponents": [
+            "AOGCM"
+        ], 
+        "startYear": "2021", 
+        "subExperiment": "none", 
+        "subExperimentID": "none", 
+        "tier": "3"
+    }, 
+    "description": null, 
+    "idx": 85, 
+    "label": "ssp245-nat", 
+    "name": "ssp245-nat", 
+    "parent": null, 
+    "status": "pending", 
+    "synonyms": [], 
+    "uid": "4a083640-d5a8-4682-8899-e37112154f19", 
+    "url": null
+}

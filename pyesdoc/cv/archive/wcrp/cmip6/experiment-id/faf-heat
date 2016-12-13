@@ -1,0 +1,43 @@
+{
+    "_type": "pyesdoc.cv.model.term", 
+    "alternativeName": null, 
+    "alternativeUrl": null, 
+    "associations": [], 
+    "createDate": "2016-12-12 21:57:04.760175+00:00", 
+    "data": {
+        "activityID": [
+            "FAFMIP"
+        ], 
+        "additionalAllowedModelComponents": [
+            "AER", 
+            "CHEM", 
+            "BGC"
+        ], 
+        "description": "1xCO2 experiment, parallel to piControl, forced over the ocean by surface net heat flux anomalies obtained from the CMIP5 ensemble mean of 1pctCO2 experiments at the time of 2xCO2, using a passive tracer to prevent negative climate feedback on the heat flux applied", 
+        "endYear": "", 
+        "experiment": "control plus perturbative surface flux of heat into ocean", 
+        "minNumberYrsPerSim": "70", 
+        "parentActivityID": [
+            "CMIP"
+        ], 
+        "parentExperimentID": [
+            "piControl"
+        ], 
+        "requiredModelComponents": [
+            "AOGCM"
+        ], 
+        "startYear": "", 
+        "subExperiment": "none", 
+        "subExperimentID": "none", 
+        "tier": "1"
+    }, 
+    "description": null, 
+    "idx": 24, 
+    "label": "faf-heat", 
+    "name": "faf-heat", 
+    "parent": null, 
+    "status": "pending", 
+    "synonyms": [], 
+    "uid": "717cbe68-37aa-47cc-8eff-6e8ca3ce1da7", 
+    "url": null
+}

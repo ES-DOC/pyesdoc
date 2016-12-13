@@ -1,0 +1,43 @@
+{
+    "_type": "pyesdoc.cv.model.term", 
+    "alternativeName": null, 
+    "alternativeUrl": null, 
+    "associations": [], 
+    "createDate": "2016-12-12 21:57:04.764140+00:00", 
+    "data": {
+        "activityID": [
+            "VolMIP"
+        ], 
+        "additionalAllowedModelComponents": [
+            "AER", 
+            "CHEM", 
+            "BGC"
+        ], 
+        "description": "Idealized equatorial eruption corresponding to an initial emission of 56.2 Tg of SO2. The eruption magnitude corresponds to recent estimates for the 1815 Tambora eruption (Sigl et al., 2015), the largest historical tropical eruption, which was linked to the so-called \"year without a summer\" in 1816. Experiment initialized from PiControl", 
+        "endYear": "", 
+        "experiment": "idealized equatorial volcanic eruption emitting 56.2 Tg SO2", 
+        "minNumberYrsPerSim": "20", 
+        "parentActivityID": [
+            "CMIP"
+        ], 
+        "parentExperimentID": [
+            "piControl"
+        ], 
+        "requiredModelComponents": [
+            "AOGCM"
+        ], 
+        "startYear": "", 
+        "subExperiment": "none", 
+        "subExperimentID": "none", 
+        "tier": "1"
+    }, 
+    "description": null, 
+    "idx": 67, 
+    "label": "volc-long-eq", 
+    "name": "volc-long-eq", 
+    "parent": null, 
+    "status": "pending", 
+    "synonyms": [], 
+    "uid": "c0fcbad2-7a26-4942-a6b8-6789f0113522", 
+    "url": null
+}

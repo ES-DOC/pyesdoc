@@ -1,0 +1,36 @@
+{
+    "_type": "pyesdoc.cv.model.term", 
+    "alternativeName": null, 
+    "alternativeUrl": null, 
+    "associations": [], 
+    "createDate": "2016-12-12 21:57:04.754208+00:00", 
+    "data": {
+        "aerosol": "unnamed (prescribed MAC-v2)", 
+        "atmosphere": "GFS (192 x 94 T62; 64 levels; top level 0.2 mb)", 
+        "atmosphericChemistry": "None", 
+        "cohort": [
+            ""
+        ], 
+        "institutionID": [
+            "CCCR-IITM"
+        ], 
+        "label": "IITM-ESM", 
+        "labelExtended": "IITM-ESM", 
+        "landIce": "None", 
+        "landSurface": "NOAH LSM", 
+        "ocean": "MOM4p1 (tripolar, 360x200; 50 levels; top grid cell 5m)", 
+        "oceanBiogeochemistry": "TOPAZ", 
+        "releaseYear": "2015", 
+        "seaIce": "SIS", 
+        "sourceID": "IITM-ESM"
+    }, 
+    "description": null, 
+    "idx": 8, 
+    "label": "IITM-ESM", 
+    "name": "iitm-esm", 
+    "parent": null, 
+    "status": "pending", 
+    "synonyms": [], 
+    "uid": "7d0e8590-8542-415e-8e6e-99a972dada47", 
+    "url": null
+}

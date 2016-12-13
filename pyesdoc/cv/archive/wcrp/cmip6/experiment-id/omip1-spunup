@@ -1,0 +1,35 @@
+{
+    "_type": "pyesdoc.cv.model.term", 
+    "alternativeName": null, 
+    "alternativeUrl": null, 
+    "associations": [], 
+    "createDate": "2016-12-12 21:57:04.763317+00:00", 
+    "data": {
+        "activityID": [
+            "OMIP"
+        ], 
+        "additionalAllowedModelComponents": "", 
+        "description": "Same as the omipv1 experiment except that it is not initialized with observed climatologies; rather it is initialized with results from at least a 2000-year spin up of the coupled physical-biogeochemical models. Also it includes radiocarbon to evaluate deep-ocean circulation", 
+        "endYear": "310", 
+        "experiment": "OMIP experiment forced by Large and Yeager (CORE-2, NCEP) atmospheric data set and initialized from at least a 2000-year spin up of the coupled physical-biogeochemical model", 
+        "minNumberYrsPerSim": "310", 
+        "parentActivityID": "", 
+        "parentExperimentID": "", 
+        "requiredModelComponents": [
+            "OGCM"
+        ], 
+        "startYear": "1", 
+        "subExperiment": "none", 
+        "subExperimentID": "none", 
+        "tier": "2"
+    }, 
+    "description": null, 
+    "idx": 58, 
+    "label": "omip1-spunup", 
+    "name": "omip1-spunup", 
+    "parent": null, 
+    "status": "pending", 
+    "synonyms": [], 
+    "uid": "2ce8235b-ae8d-4c29-82a3-b5d5a81f2424", 
+    "url": null
+}

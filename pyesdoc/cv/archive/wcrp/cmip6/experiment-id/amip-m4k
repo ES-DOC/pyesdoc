@@ -1,0 +1,38 @@
+{
+    "_type": "pyesdoc.cv.model.term", 
+    "alternativeName": null, 
+    "alternativeUrl": null, 
+    "associations": [], 
+    "createDate": "2016-12-12 21:57:04.765891+00:00", 
+    "data": {
+        "activityID": [
+            "CFMIP"
+        ], 
+        "additionalAllowedModelComponents": [
+            "AER", 
+            "CHEM"
+        ], 
+        "description": "As amip experiment but SSTs are subject to a uniform cooling of 4K", 
+        "endYear": "2014", 
+        "experiment": "AMIP with uniform 4K SST decrease", 
+        "minNumberYrsPerSim": "36", 
+        "parentActivityID": "", 
+        "parentExperimentID": "", 
+        "requiredModelComponents": [
+            "AGCM"
+        ], 
+        "startYear": "1979", 
+        "subExperiment": "none", 
+        "subExperimentID": "none", 
+        "tier": "2"
+    }, 
+    "description": null, 
+    "idx": 86, 
+    "label": "amip-m4K", 
+    "name": "amip-m4k", 
+    "parent": null, 
+    "status": "pending", 
+    "synonyms": [], 
+    "uid": "f37ba39e-27e3-41c8-8f11-06dd938e269b", 
+    "url": null
+}

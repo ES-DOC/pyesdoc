@@ -1,0 +1,38 @@
+{
+    "_type": "pyesdoc.cv.model.term", 
+    "alternativeName": null, 
+    "alternativeUrl": null, 
+    "associations": [], 
+    "createDate": "2016-12-12 21:57:04.760873+00:00", 
+    "data": {
+        "activityID": [
+            "RFMIP"
+        ], 
+        "additionalAllowedModelComponents": [
+            "AER", 
+            "CHEM"
+        ], 
+        "description": "Time-varying forcing by GHGs. SST and sea ice fixed at preindustrial control. Interactive vegetation", 
+        "endYear": "2100", 
+        "experiment": "transient effective radiative forcing by greenhouse gases", 
+        "minNumberYrsPerSim": "251", 
+        "parentActivityID": "", 
+        "parentExperimentID": "", 
+        "requiredModelComponents": [
+            "AGCM"
+        ], 
+        "startYear": "1850", 
+        "subExperiment": "none", 
+        "subExperimentID": "none", 
+        "tier": "2"
+    }, 
+    "description": null, 
+    "idx": 31, 
+    "label": "piClim-histghg", 
+    "name": "piclim-histghg", 
+    "parent": null, 
+    "status": "pending", 
+    "synonyms": [], 
+    "uid": "98bf9318-0770-4382-96d0-080eaa0a76b3", 
+    "url": null
+}

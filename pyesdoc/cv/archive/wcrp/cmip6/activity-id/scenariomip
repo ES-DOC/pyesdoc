@@ -1,0 +1,17 @@
+{
+    "_type": "pyesdoc.cv.model.term", 
+    "alternativeName": null, 
+    "alternativeUrl": null, 
+    "associations": [], 
+    "createDate": "2016-12-12 21:57:04.753107+00:00", 
+    "data": null, 
+    "description": null, 
+    "idx": 17, 
+    "label": "ScenarioMIP", 
+    "name": "scenariomip", 
+    "parent": null, 
+    "status": "pending", 
+    "synonyms": [], 
+    "uid": "a5cb24d8-10e6-4d37-a54f-4a96d2fa5cc3", 
+    "url": null
+}

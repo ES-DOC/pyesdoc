@@ -1,0 +1,17 @@
+{
+    "_type": "pyesdoc.cv.model.term", 
+    "alternativeName": null, 
+    "alternativeUrl": null, 
+    "associations": [], 
+    "createDate": "2016-12-12 21:57:04.750959+00:00", 
+    "data": null, 
+    "description": null, 
+    "idx": 5, 
+    "label": "CHEM", 
+    "name": "chem", 
+    "parent": null, 
+    "status": "pending", 
+    "synonyms": [], 
+    "uid": "0267a4e9-fdfb-4266-a945-3d6561e76d2f", 
+    "url": null
+}

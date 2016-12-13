@@ -1,0 +1,38 @@
+{
+    "_type": "pyesdoc.cv.model.term", 
+    "alternativeName": null, 
+    "alternativeUrl": null, 
+    "associations": [], 
+    "createDate": "2016-12-12 21:57:04.776224+00:00", 
+    "data": {
+        "activityID": [
+            "CFMIP"
+        ], 
+        "additionalAllowedModelComponents": [
+            "AER", 
+            "CHEM"
+        ], 
+        "description": "As amip experiment, but with cloud-radiative effects switched off in the LW radiation code", 
+        "endYear": "2014", 
+        "experiment": "AMIP experiment with longwave cloud-radiative effects off", 
+        "minNumberYrsPerSim": "36", 
+        "parentActivityID": "", 
+        "parentExperimentID": "", 
+        "requiredModelComponents": [
+            "AGCM"
+        ], 
+        "startYear": "1979", 
+        "subExperiment": "none", 
+        "subExperimentID": "none", 
+        "tier": "2"
+    }, 
+    "description": null, 
+    "idx": 191, 
+    "label": "amip-lwoff", 
+    "name": "amip-lwoff", 
+    "parent": null, 
+    "status": "pending", 
+    "synonyms": [], 
+    "uid": "9e45d2cb-3328-470e-84d9-94ea0050b50f", 
+    "url": null
+}

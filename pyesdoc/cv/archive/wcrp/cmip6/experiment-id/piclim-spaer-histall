@@ -1,0 +1,35 @@
+{
+    "_type": "pyesdoc.cv.model.term", 
+    "alternativeName": null, 
+    "alternativeUrl": null, 
+    "associations": [], 
+    "createDate": "2016-12-12 21:57:04.771952+00:00", 
+    "data": {
+        "activityID": [
+            "RFMIP"
+        ], 
+        "additionalAllowedModelComponents": "", 
+        "description": "Prescribed anthropogenic aerosol optical properties. Aerosol and ozone forcings", 
+        "endYear": "2014", 
+        "experiment": "transient effective radiative forcing with specified anthropogenic aerosol optical properties, all forcings", 
+        "minNumberYrsPerSim": "165", 
+        "parentActivityID": "", 
+        "parentExperimentID": "", 
+        "requiredModelComponents": [
+            "AGCM"
+        ], 
+        "startYear": "1850", 
+        "subExperiment": "none", 
+        "subExperimentID": "none", 
+        "tier": "2"
+    }, 
+    "description": null, 
+    "idx": 148, 
+    "label": "piClim-spAer-histall", 
+    "name": "piclim-spaer-histall", 
+    "parent": null, 
+    "status": "pending", 
+    "synonyms": [], 
+    "uid": "34838b8e-7cbc-4aed-8ee8-383c0280d2f4", 
+    "url": null
+}

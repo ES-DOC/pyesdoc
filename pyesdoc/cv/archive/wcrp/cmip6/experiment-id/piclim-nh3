@@ -1,0 +1,37 @@
+{
+    "_type": "pyesdoc.cv.model.term", 
+    "alternativeName": null, 
+    "alternativeUrl": null, 
+    "associations": [], 
+    "createDate": "2016-12-12 21:57:04.758412+00:00", 
+    "data": {
+        "activityID": "AerChemMIP", 
+        "additionalAllowedModelComponents": [
+            "AGCM", 
+            "CHEM"
+        ], 
+        "description": "Perturbation from 1850 control using 2014 NH3 emissions", 
+        "endYear": "", 
+        "experiment": "pre-industrial climatological SSTs and forcing, but with 2014 ammonia emissions", 
+        "minNumberYrsPerSim": "30", 
+        "parentActivityID": "", 
+        "parentExperimentID": "", 
+        "requiredModelComponents": [
+            "AGCM", 
+            "AER"
+        ], 
+        "startYear": "", 
+        "subExperiment": "none", 
+        "subExperimentID": "none", 
+        "tier": "3"
+    }, 
+    "description": null, 
+    "idx": 4, 
+    "label": "piClim-NH3", 
+    "name": "piclim-nh3", 
+    "parent": null, 
+    "status": "pending", 
+    "synonyms": [], 
+    "uid": "b4cf55de-b4c7-4612-a044-946bda6241b0", 
+    "url": null
+}

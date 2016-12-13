@@ -1,0 +1,43 @@
+{
+    "_type": "pyesdoc.cv.model.term", 
+    "alternativeName": null, 
+    "alternativeUrl": null, 
+    "associations": [], 
+    "createDate": "2016-12-12 21:57:04.765422+00:00", 
+    "data": {
+        "activityID": [
+            "DAMIP"
+        ], 
+        "additionalAllowedModelComponents": [
+            "AER", 
+            "CHEM", 
+            "BGC"
+        ], 
+        "description": "Historical well-mixed GHG-only run. Models with interactive chemistry schemes should either turn off the chemistry or use a preindustrial climatology of stratospheric and tropospheric ozone in their radiation schemes. This will ensure that ozone is fixed in all these simulations, and simulated responses in models with and without coupled chemistry are comparable", 
+        "endYear": "2020", 
+        "experiment": "historical well-mixed GHG-only run", 
+        "minNumberYrsPerSim": "171", 
+        "parentActivityID": [
+            "CMIP"
+        ], 
+        "parentExperimentID": [
+            "piControl"
+        ], 
+        "requiredModelComponents": [
+            "AOGCM"
+        ], 
+        "startYear": "1850", 
+        "subExperiment": "none", 
+        "subExperimentID": "none", 
+        "tier": "1"
+    }, 
+    "description": null, 
+    "idx": 81, 
+    "label": "hist-GHG", 
+    "name": "hist-ghg", 
+    "parent": null, 
+    "status": "pending", 
+    "synonyms": [], 
+    "uid": "39c5fdc1-e5bf-4e65-a35c-6819f156f741", 
+    "url": null
+}

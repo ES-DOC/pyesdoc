@@ -1,0 +1,36 @@
+{
+    "_type": "pyesdoc.cv.model.term", 
+    "alternativeName": null, 
+    "alternativeUrl": null, 
+    "associations": [], 
+    "createDate": "2016-12-12 21:57:04.754295+00:00", 
+    "data": {
+        "aerosol": "OsloAero", 
+        "atmosphere": "CAM-OSLO (0.25 degree resolution; 1152 x 768; 32 levels; top level 3 mb)", 
+        "atmosphericChemistry": "OsloChemSimp", 
+        "cohort": [
+            ""
+        ], 
+        "institutionID": [
+            "NCC"
+        ], 
+        "label": "NorESM2-HH", 
+        "labelExtended": "NorESM2-HH (high atmosphere-high ocean resolution, GHG concentration driven)", 
+        "landIce": "CISM", 
+        "landSurface": "CLM", 
+        "ocean": "MICOM (0.25 degree resolution; 1440 x 1152; 70 levels; top grid cell minimum 0-2.5 m [native model uses hybrid density and generic upper-layer coordinate interpolated to z-level for contributed data])", 
+        "oceanBiogeochemistry": "HAMOCC", 
+        "releaseYear": "2018", 
+        "seaIce": "CICE", 
+        "sourceID": "NorESM2-HH"
+    }, 
+    "description": null, 
+    "idx": 9, 
+    "label": "NorESM2-HH", 
+    "name": "noresm2-hh", 
+    "parent": null, 
+    "status": "pending", 
+    "synonyms": [], 
+    "uid": "417fabfd-aacc-4caa-b6c1-b137f75c7d3a", 
+    "url": null
+}

@@ -1,0 +1,39 @@
+{
+    "_type": "pyesdoc.cv.model.term", 
+    "alternativeName": null, 
+    "alternativeUrl": null, 
+    "associations": [], 
+    "createDate": "2016-12-12 21:57:04.780928+00:00", 
+    "data": {
+        "activityID": [
+            "DCPP"
+        ], 
+        "additionalAllowedModelComponents": [
+            "AER", 
+            "CHEM", 
+            "BGC"
+        ], 
+        "description": "Historical and future uninitialized simulations to assess the impact of initialization", 
+        "endYear": "2030", 
+        "experiment": "climate simulation initialized from control with forcing prescribed from the historical period and future scenario as in A1", 
+        "minNumberYrsPerSim": "170", 
+        "parentActivityID": "", 
+        "parentExperimentID": "", 
+        "requiredModelComponents": [
+            "AOGCM"
+        ], 
+        "startYear": "1850", 
+        "subExperiment": "initialized near end of year YYYY", 
+        "subExperimentID": "of form: \"sYYYY\"", 
+        "tier": "2"
+    }, 
+    "description": null, 
+    "idx": 236, 
+    "label": "dcppA-historical", 
+    "name": "dcppa-historical", 
+    "parent": null, 
+    "status": "pending", 
+    "synonyms": [], 
+    "uid": "03a0b467-8c12-4609-b72c-d7c432e580bf", 
+    "url": null
+}

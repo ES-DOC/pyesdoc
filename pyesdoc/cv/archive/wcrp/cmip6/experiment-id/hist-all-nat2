@@ -1,0 +1,43 @@
+{
+    "_type": "pyesdoc.cv.model.term", 
+    "alternativeName": null, 
+    "alternativeUrl": null, 
+    "associations": [], 
+    "createDate": "2016-12-12 21:57:04.775416+00:00", 
+    "data": {
+        "activityID": [
+            "DAMIP"
+        ], 
+        "additionalAllowedModelComponents": [
+            "AER", 
+            "CHEM", 
+            "BGC"
+        ], 
+        "description": "Historical ALL forcing run with alternates estimate of solar and volcanic forcing", 
+        "endYear": "2020", 
+        "experiment": "historical ALL-forcing run with alternate estimates of natural forcing", 
+        "minNumberYrsPerSim": "171", 
+        "parentActivityID": [
+            "CMIP"
+        ], 
+        "parentExperimentID": [
+            "piControl"
+        ], 
+        "requiredModelComponents": [
+            "AOGCM"
+        ], 
+        "startYear": "1850", 
+        "subExperiment": "none", 
+        "subExperimentID": "none", 
+        "tier": "3"
+    }, 
+    "description": null, 
+    "idx": 183, 
+    "label": "hist-all-nat2", 
+    "name": "hist-all-nat2", 
+    "parent": null, 
+    "status": "pending", 
+    "synonyms": [], 
+    "uid": "f7d30396-b914-463e-85e0-56a173845cce", 
+    "url": null
+}

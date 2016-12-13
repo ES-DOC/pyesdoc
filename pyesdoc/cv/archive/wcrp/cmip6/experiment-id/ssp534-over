@@ -1,0 +1,43 @@
+{
+    "_type": "pyesdoc.cv.model.term", 
+    "alternativeName": null, 
+    "alternativeUrl": null, 
+    "associations": [], 
+    "createDate": "2016-12-12 21:57:04.779726+00:00", 
+    "data": {
+        "activityID": [
+            "ScenarioMIP"
+        ], 
+        "additionalAllowedModelComponents": [
+            "AER", 
+            "CHEM", 
+            "BGC"
+        ], 
+        "description": "21st century overshoot scenario relative to SSP5_34. Branches from SS5_85 at 2040 with emissions reduced to zero by 2070 and negative thereafter", 
+        "endYear": "2100", 
+        "experiment": "overshoot of 3.4 W/m**2 branching from ssp585 in 2040", 
+        "minNumberYrsPerSim": "86", 
+        "parentActivityID": [
+            "ScenarioMIP"
+        ], 
+        "parentExperimentID": [
+            "ssp585"
+        ], 
+        "requiredModelComponents": [
+            "AOGCM"
+        ], 
+        "startYear": "2015", 
+        "subExperiment": "none", 
+        "subExperimentID": "none", 
+        "tier": "2"
+    }, 
+    "description": null, 
+    "idx": 225, 
+    "label": "ssp534-over", 
+    "name": "ssp534-over", 
+    "parent": null, 
+    "status": "pending", 
+    "synonyms": [], 
+    "uid": "2a27751f-69f5-4769-a400-bfa033bfd116", 
+    "url": null
+}

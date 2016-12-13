@@ -1,0 +1,35 @@
+{
+    "_type": "pyesdoc.cv.model.term", 
+    "alternativeName": null, 
+    "alternativeUrl": null, 
+    "associations": [], 
+    "createDate": "2016-12-12 21:57:04.767157+00:00", 
+    "data": {
+        "activityID": [
+            "ISMIP6"
+        ], 
+        "additionalAllowedModelComponents": "", 
+        "description": "Present-day control simulation for \"offline\" ice sheets", 
+        "endYear": "", 
+        "experiment": "offline ice sheet forced by ISMIP6-specified AOGCM pdControl output", 
+        "minNumberYrsPerSim": "451", 
+        "parentActivityID": "", 
+        "parentExperimentID": "", 
+        "requiredModelComponents": [
+            "ISM"
+        ], 
+        "startYear": "", 
+        "subExperiment": "none", 
+        "subExperimentID": "none", 
+        "tier": "1"
+    }, 
+    "description": null, 
+    "idx": 99, 
+    "label": "ism-pdControl-std", 
+    "name": "ism-pdcontrol-std", 
+    "parent": null, 
+    "status": "pending", 
+    "synonyms": [], 
+    "uid": "b9ed6116-d2dd-4788-a1ae-bb8d3d5c5383", 
+    "url": null
+}

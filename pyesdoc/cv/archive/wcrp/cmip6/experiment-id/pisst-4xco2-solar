@@ -1,0 +1,38 @@
+{
+    "_type": "pyesdoc.cv.model.term", 
+    "alternativeName": null, 
+    "alternativeUrl": null, 
+    "associations": [], 
+    "createDate": "2016-12-12 21:57:04.759030+00:00", 
+    "data": {
+        "activityID": [
+            "GeoMIP"
+        ], 
+        "additionalAllowedModelComponents": [
+            "AER", 
+            "CHEM"
+        ], 
+        "description": "Time slice at 1850 (picontrol) for G1ext to examine radiative forcing of abrupt4xCO2", 
+        "endYear": "", 
+        "experiment": "preindustrial control SSTs with quadrupled CO2 and solar reduction", 
+        "minNumberYrsPerSim": "10", 
+        "parentActivityID": "", 
+        "parentExperimentID": "", 
+        "requiredModelComponents": [
+            "AGCM"
+        ], 
+        "startYear": "", 
+        "subExperiment": "none", 
+        "subExperimentID": "none", 
+        "tier": "2"
+    }, 
+    "description": null, 
+    "idx": 11, 
+    "label": "piSST-4xCO2-solar", 
+    "name": "pisst-4xco2-solar", 
+    "parent": null, 
+    "status": "pending", 
+    "synonyms": [], 
+    "uid": "9fecc50f-4ba3-4558-b23e-1770f46cdaf4", 
+    "url": null
+}

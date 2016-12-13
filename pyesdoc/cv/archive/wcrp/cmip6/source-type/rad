@@ -1,0 +1,17 @@
+{
+    "_type": "pyesdoc.cv.model.term", 
+    "alternativeName": null, 
+    "alternativeUrl": null, 
+    "associations": [], 
+    "createDate": "2016-12-12 21:57:04.751396+00:00", 
+    "data": null, 
+    "description": null, 
+    "idx": 10, 
+    "label": "RAD", 
+    "name": "rad", 
+    "parent": null, 
+    "status": "pending", 
+    "synonyms": [], 
+    "uid": "a9ce5df1-8015-4334-b14f-84e8cac8bb69", 
+    "url": null
+}

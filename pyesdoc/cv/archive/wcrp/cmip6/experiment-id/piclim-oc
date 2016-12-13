@@ -1,0 +1,37 @@
+{
+    "_type": "pyesdoc.cv.model.term", 
+    "alternativeName": null, 
+    "alternativeUrl": null, 
+    "associations": [], 
+    "createDate": "2016-12-12 21:57:04.758499+00:00", 
+    "data": {
+        "activityID": "AerChemMIP", 
+        "additionalAllowedModelComponents": [
+            "AGCM", 
+            "CHEM"
+        ], 
+        "description": "Perturbation from 1850 control using 2014 OC emissions", 
+        "endYear": "", 
+        "experiment": "pre-industrial climatological SSTs and forcing, but with 2014 organic carbon emissions", 
+        "minNumberYrsPerSim": "30", 
+        "parentActivityID": "", 
+        "parentExperimentID": "", 
+        "requiredModelComponents": [
+            "AGCM", 
+            "AER"
+        ], 
+        "startYear": "", 
+        "subExperiment": "none", 
+        "subExperimentID": "none", 
+        "tier": "3"
+    }, 
+    "description": null, 
+    "idx": 5, 
+    "label": "piClim-OC", 
+    "name": "piclim-oc", 
+    "parent": null, 
+    "status": "pending", 
+    "synonyms": [], 
+    "uid": "f60a99bc-8277-49d8-bdab-5ccd722fedca", 
+    "url": null
+}

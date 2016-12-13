@@ -50,6 +50,15 @@ class Term(Entity):
         return u"{} -> [{}]".format(self.namespace, self.status)
 
 
+    def __contains__(self, key):
+        """Instance membership predicate.
+
+        """
+        key = unicode(key).strip().lower()
+
+        return key in self.all_names
+
+
     @property
     def authority(self):
         """Gets associated governing authority.

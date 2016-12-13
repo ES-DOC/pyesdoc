@@ -1,0 +1,43 @@
+{
+    "_type": "pyesdoc.cv.model.term", 
+    "alternativeName": null, 
+    "alternativeUrl": null, 
+    "associations": [], 
+    "createDate": "2016-12-12 21:57:04.776530+00:00", 
+    "data": {
+        "activityID": [
+            "GeoMIP"
+        ], 
+        "additionalAllowedModelComponents": [
+            "AER", 
+            "CHEM", 
+            "BGC"
+        ], 
+        "description": "Using equatorial SO2 injection, return the radiative forcing from a background of the ScenarioMIP high forcing to the ScenarioMIP middle forcing", 
+        "endYear": "2100", 
+        "experiment": "stratospheric sulfate aerosol injection to reduce net forcing from SSP585 to SSP245", 
+        "minNumberYrsPerSim": "81", 
+        "parentActivityID": [
+            "CMIP"
+        ], 
+        "parentExperimentID": [
+            "historical"
+        ], 
+        "requiredModelComponents": [
+            "AOGCM"
+        ], 
+        "startYear": "2020", 
+        "subExperiment": "none", 
+        "subExperimentID": "none", 
+        "tier": "1"
+    }, 
+    "description": null, 
+    "idx": 194, 
+    "label": "G6sulfur", 
+    "name": "g6sulfur", 
+    "parent": null, 
+    "status": "pending", 
+    "synonyms": [], 
+    "uid": "f8b90064-7b7e-4d2c-bfbb-dbffa445142f", 
+    "url": null
+}

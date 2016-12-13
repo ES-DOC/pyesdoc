@@ -1,0 +1,17 @@
+{
+    "_type": "pyesdoc.cv.model.term", 
+    "alternativeName": null, 
+    "alternativeUrl": null, 
+    "associations": [], 
+    "createDate": "2016-12-12 21:57:04.752671+00:00", 
+    "data": null, 
+    "description": null, 
+    "idx": 12, 
+    "label": "LS3MIP", 
+    "name": "ls3mip", 
+    "parent": null, 
+    "status": "pending", 
+    "synonyms": [], 
+    "uid": "fdd1092b-c4cf-4f07-9d48-5d88b7aa7b37", 
+    "url": null
+}

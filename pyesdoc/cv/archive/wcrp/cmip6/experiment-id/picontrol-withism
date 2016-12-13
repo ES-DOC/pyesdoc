@@ -1,0 +1,40 @@
+{
+    "_type": "pyesdoc.cv.model.term", 
+    "alternativeName": null, 
+    "alternativeUrl": null, 
+    "associations": [], 
+    "createDate": "2016-12-12 21:57:04.775017+00:00", 
+    "data": {
+        "activityID": [
+            "ISMIP6"
+        ], 
+        "additionalAllowedModelComponents": [
+            "AER", 
+            "CHEM", 
+            "BGC"
+        ], 
+        "description": "Pre-industrial control simulation that includes interactive ice sheets", 
+        "endYear": "", 
+        "experiment": "preindustrial control with interactive ice sheet", 
+        "minNumberYrsPerSim": "451", 
+        "parentActivityID": "", 
+        "parentExperimentID": "", 
+        "requiredModelComponents": [
+            "AOGCM", 
+            "ISM"
+        ], 
+        "startYear": "", 
+        "subExperiment": "none", 
+        "subExperimentID": "none", 
+        "tier": "1"
+    }, 
+    "description": null, 
+    "idx": 179, 
+    "label": "piControl-withism", 
+    "name": "picontrol-withism", 
+    "parent": null, 
+    "status": "pending", 
+    "synonyms": [], 
+    "uid": "ab769974-43f9-4456-8cfd-86b873879cbd", 
+    "url": null
+}
