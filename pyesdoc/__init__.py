@@ -17,7 +17,7 @@
 
 """
 __title__ = 'pyesdoc'
-__version__ = '0.9.5.3.5'
+__version__ = '0.9.5.3.6'
 __author__ = 'ES-DOC'
 __license__ = 'GPL'
 __copyright__ = 'Copyright 2015 ???'
@@ -57,6 +57,7 @@ from pyesdoc.utils import config
 from pyesdoc.utils.help import list_constants
 from pyesdoc.utils.help import list_functions
 from pyesdoc.utils.runtime import log
+from pyesdoc.utils.runtime import log_error
 
 from pyesdoc.validation import is_valid
 from pyesdoc.validation import is_valid_notebook_output

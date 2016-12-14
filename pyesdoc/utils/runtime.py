@@ -52,7 +52,10 @@ def log_error(err):
     :param Exception err: Exception to be logged.
 
     """
-    msg = "!!! RUNTIME ERROR !!! :: {0} :: {1}.".format(err.__class__, err)
+    if isinstance(err, basestring):
+        msg = "!!! RUNTIME ERROR !!! :: {}.".format(err)
+    else:
+        msg = "!!! RUNTIME ERROR !!! :: {} :: {}.".format(err.__class__, err)
     log(msg, level=LOG_LEVEL_ERROR)
 
 
