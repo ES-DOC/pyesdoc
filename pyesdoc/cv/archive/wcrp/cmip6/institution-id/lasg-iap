@@ -3,7 +3,7 @@
     "alternativeName": null, 
     "alternativeUrl": null, 
     "associations": [], 
-    "createDate": "2016-12-12 21:57:04.784057+00:00", 
+    "createDate": "2016-12-14 12:53:36.315665+00:00", 
     "data": {
         "postalAddress": "Institute of Atmospheric Physics, Chinese Academy of Sciences, Beijing 100029, China"
     }, 
@@ -14,6 +14,6 @@
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "c8cd8e5b-b2ad-4a54-91ae-2c9f463ccc85", 
+    "uid": "4ea8575b-e700-4d37-a6ac-6494e30711e0", 
     "url": null
 }

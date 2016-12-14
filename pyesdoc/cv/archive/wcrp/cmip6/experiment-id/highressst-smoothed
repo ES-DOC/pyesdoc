@@ -3,7 +3,7 @@
     "alternativeName": null, 
     "alternativeUrl": null, 
     "associations": [], 
-    "createDate": "2016-12-12 21:57:04.772147+00:00", 
+    "createDate": "2016-12-14 12:53:36.298125+00:00", 
     "data": {
         "activityID": [
             "HighResMIP"
@@ -37,6 +37,6 @@
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "4de0d901-bc86-49c2-a6b6-1d50e3bdda08", 
+    "uid": "4e4655aa-6290-4b17-b958-fec7002317b2", 
     "url": null
 }

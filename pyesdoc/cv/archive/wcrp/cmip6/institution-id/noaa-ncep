@@ -3,7 +3,7 @@
     "alternativeName": null, 
     "alternativeUrl": null, 
     "associations": [], 
-    "createDate": "2016-12-12 21:57:04.783439+00:00", 
+    "createDate": "2016-12-14 12:53:36.315041+00:00", 
     "data": {
         "postalAddress": "National Oceanic and Atmospheric Administration, National Centers for Environmental Prediction, Camp Springs, MD 20746, USA"
     }, 
@@ -14,6 +14,6 @@
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "b20651d7-6278-4652-91da-ea1346e5c9f4", 
+    "uid": "3947cfb1-6ebd-4f56-b1a0-5774d74a3464", 
     "url": null
 }

@@ -3,7 +3,7 @@
     "alternativeName": null, 
     "alternativeUrl": null, 
     "associations": [], 
-    "createDate": "2016-12-12 21:57:04.754036+00:00", 
+    "createDate": "2016-12-14 12:53:36.312695+00:00", 
     "data": {
         "aerosol": "CLASSIC (v1.0)", 
         "atmosphere": "HadGAM2 (r1.1; 192 x 145 N96; 38 levels; top level 39255m)", 
@@ -31,6 +31,6 @@
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "a2adcbdd-5189-4554-9fd0-f8bc7cd0c5f6", 
+    "uid": "522ea9b7-f0a2-4580-97f1-8b5deac29e45", 
     "url": null
 }

@@ -3,7 +3,7 @@
     "alternativeName": null, 
     "alternativeUrl": null, 
     "associations": [], 
-    "createDate": "2016-12-12 21:57:04.783969+00:00", 
+    "createDate": "2016-12-14 12:53:36.315575+00:00", 
     "data": {
         "postalAddress": "National Oceanic and Atmospheric Administration, Geophysical Fluid Dynamics Laboratory, Princeton, NJ 08540, USA"
     }, 
@@ -14,6 +14,6 @@
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "d89db814-2457-41a5-80b3-d3b1126bcf2b", 
+    "uid": "b565afa9-5689-4f6b-b3f8-e45fb1c590d0", 
     "url": null
 }

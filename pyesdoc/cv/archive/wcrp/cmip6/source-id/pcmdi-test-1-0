@@ -3,7 +3,7 @@
     "alternativeName": null, 
     "alternativeUrl": null, 
     "associations": [], 
-    "createDate": "2016-12-12 21:57:04.753857+00:00", 
+    "createDate": "2016-12-14 12:53:36.312482+00:00", 
     "data": {
         "aerosol": "None", 
         "atmosphere": "Earth1.0-gettingHotter (360x180; 50 levels; top level 0.1 mb)", 
@@ -31,6 +31,6 @@
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "de847ed4-6cb5-46a4-9b5e-ab19d01889ff", 
+    "uid": "4867d306-f934-41fd-9055-6877c61dbe2d", 
     "url": null
 }

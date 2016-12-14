@@ -3,7 +3,7 @@
     "alternativeName": null, 
     "alternativeUrl": null, 
     "associations": [], 
-    "createDate": "2016-12-12 21:57:04.782568+00:00", 
+    "createDate": "2016-12-14 12:53:36.314166+00:00", 
     "data": {
         "postalAddress": "Institut Pierre Simon Laplace, Paris 75252, France"
     }, 
@@ -14,6 +14,6 @@
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "db603390-ec8e-483d-8574-7a82de30480f", 
+    "uid": "9f74dd76-f510-4e39-8b4e-56d6ada1ab0a", 
     "url": null
 }

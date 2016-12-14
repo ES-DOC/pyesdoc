@@ -3,7 +3,7 @@
     "alternativeName": null, 
     "alternativeUrl": null, 
     "associations": [], 
-    "createDate": "2016-12-12 21:57:04.783005+00:00", 
+    "createDate": "2016-12-14 12:53:36.314604+00:00", 
     "data": {
         "postalAddress": "Max Planck Institute for Meteorology, Hamburg 20146, Germany"
     }, 
@@ -14,6 +14,6 @@
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "80dabc42-d95a-4fd6-8b5e-4dc77c767697", 
+    "uid": "6d4104d4-3910-4260-8583-822025ab6b32", 
     "url": null
 }

@@ -3,7 +3,7 @@
     "alternativeName": null, 
     "alternativeUrl": null, 
     "associations": [], 
-    "createDate": "2016-12-12 21:57:04.767065+00:00", 
+    "createDate": "2016-12-14 12:53:36.293005+00:00", 
     "data": {
         "activityID": [
             "LUMIP"
@@ -30,6 +30,6 @@
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "b094ab8f-1d81-490d-8e50-6aab4ee01a03", 
+    "uid": "fa6bd1f8-0192-447b-9117-c02d792ae9c8", 
     "url": null
 }

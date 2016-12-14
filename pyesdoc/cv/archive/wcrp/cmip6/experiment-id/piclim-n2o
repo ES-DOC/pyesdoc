@@ -3,7 +3,7 @@
     "alternativeName": null, 
     "alternativeUrl": null, 
     "associations": [], 
-    "createDate": "2016-12-12 21:57:04.765144+00:00", 
+    "createDate": "2016-12-14 12:53:36.291016+00:00", 
     "data": {
         "activityID": [
             "AerChemMIP"
@@ -32,6 +32,6 @@
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "e00fec64-d588-41b2-a8a6-b7f6e1f9ddfe", 
+    "uid": "500874eb-96ef-496b-8938-075a0c8e8c11", 
     "url": null
 }

@@ -3,7 +3,7 @@
     "alternativeName": null, 
     "alternativeUrl": null, 
     "associations": [], 
-    "createDate": "2016-12-12 21:57:04.765985+00:00", 
+    "createDate": "2016-12-14 12:53:36.291915+00:00", 
     "data": {
         "activityID": [
             "CMIP"
@@ -38,6 +38,6 @@
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "9949a966-7b50-46a6-a84e-d331208e8d41", 
+    "uid": "5749b7a6-2dc0-4c22-bc30-b4adb7b017a9", 
     "url": null
 }

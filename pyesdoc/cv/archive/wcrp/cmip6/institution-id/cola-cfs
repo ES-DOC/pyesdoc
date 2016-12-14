@@ -3,7 +3,7 @@
     "alternativeName": null, 
     "alternativeUrl": null, 
     "associations": [], 
-    "createDate": "2016-12-12 21:57:04.782913+00:00", 
+    "createDate": "2016-12-14 12:53:36.314518+00:00", 
     "data": {
         "postalAddress": "Center for Ocean-Land-Atmosphere Studies, Fairfax, VA 22030, USA"
     }, 
@@ -14,6 +14,6 @@
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "4a9b5931-cee7-48bf-a7cf-249695a9fa79", 
+    "uid": "01bdcc75-5912-4c7c-83ab-4e4886ce9532", 
     "url": null
 }
