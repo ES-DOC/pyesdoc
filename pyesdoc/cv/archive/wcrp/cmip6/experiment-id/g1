@@ -3,7 +3,7 @@
     "alternativeName": null, 
     "alternativeUrl": null, 
     "associations": [], 
-    "createDate": "2016-12-14 12:53:36.285563+00:00", 
+    "createDate": "2016-12-14 12:00:00+00:00", 
     "data": {
         "activityID": [
             "GeoMIP"
@@ -38,6 +38,6 @@
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "06c344b1-63ae-4ab6-835a-8107e2e02f0f", 
+    "uid": "a7d02a29-0e79-4d48-86e2-ceb67b046218", 
     "url": null
 }

@@ -3,7 +3,7 @@
     "alternativeName": null, 
     "alternativeUrl": null, 
     "associations": [], 
-    "createDate": "2016-12-14 12:53:36.312908+00:00", 
+    "createDate": "2016-12-14 12:00:00+00:00", 
     "data": {
         "aerosol": "unnamed (prescribed MAC-v2)", 
         "atmosphere": "GFS (192 x 94 T62; 64 levels; top level 0.2 mb)", 
@@ -31,6 +31,6 @@
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "e9ccb718-92a9-439e-8b9f-b170dd518a35", 
+    "uid": "b5d32325-2ec0-4cdd-b822-04a012eb3064", 
     "url": null
 }

@@ -3,7 +3,7 @@
     "alternativeName": null, 
     "alternativeUrl": null, 
     "associations": [], 
-    "createDate": "2016-12-14 12:53:36.315308+00:00", 
+    "createDate": "2016-12-14 12:00:00+00:00", 
     "data": {
         "postalAddress": "Goddard Institute for Space Studies, New York, NY 10025, USA"
     }, 
@@ -14,6 +14,6 @@
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "5a97b48d-24b7-4a9c-92a6-e505d346b8d1", 
+    "uid": "6e6ff088-3b29-4286-8251-102f67dc254e", 
     "url": null
 }

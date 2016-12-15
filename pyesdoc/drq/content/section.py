@@ -11,7 +11,8 @@
 
 
 """
-from pyesdoc.drq import _utils as utils
+from pyesdoc.drq import utils
+from pyesdoc.drq import constants
 
 
 
@@ -22,14 +23,14 @@ class Section(object):
     def __init__(self, cfg, elem):
         """Instance constructor.
 
-        :param dreq.config.Table cfg: Associated config info.
+        :param dreq.definition.Table cfg: Associated config info.
         :param xml.etree.ElementTree elem: Content section xml element.
 
         """
-        utils.init_from_xml(self, elem, elem.keys())
+        utils.init_from_xml(constants.LABEL_MAP, self, elem, elem.keys())
 
-        self._iter_idx = None
-        self.cfg = cfg
+        self._dfn = cfg
+        self._sort_key = cfg.label.lower()
         self.items = []
         self.label = cfg.label
         self.label_pythonic = cfg.label_pythonic
@@ -53,7 +54,7 @@ class Section(object):
         """Instance iterator initializer.
 
         """
-        return iter(self.items)
+        return iter(sorted(self.items, key=lambda i: i._sort_key))
 
 
     def __getitem__(self, key):

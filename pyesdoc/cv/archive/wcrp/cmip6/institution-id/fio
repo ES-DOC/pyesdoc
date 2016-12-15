@@ -3,7 +3,7 @@
     "alternativeName": null, 
     "alternativeUrl": null, 
     "associations": [], 
-    "createDate": "2016-12-14 12:53:36.315487+00:00", 
+    "createDate": "2016-12-14 12:00:00+00:00", 
     "data": {
         "postalAddress": "The First Institution of Oceanography (SOA), Qingdao, China"
     }, 
@@ -14,6 +14,6 @@
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "88456338-6681-44e8-bd35-35a16da8577f", 
+    "uid": "2481cebc-5a4e-4a06-8990-87b213a21261", 
     "url": null
 }

@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 """
-.. module:: pyesdoc.drq.config.xml_parser.py
+.. module:: pyesdoc.drq.definition.xml_parser.py
    :copyright: Copyright "February 27, 2016", IPSL
    :license: GPL/CeCIL
    :platform: Unix, Windows
@@ -11,8 +11,8 @@
 
 
 """
-from pyesdoc.drq import options
-from pyesdoc.drq import _utils as utils
+from pyesdoc.drq import constants
+from pyesdoc.drq import utils
 
 
 
@@ -25,11 +25,11 @@ class XMLParser(object):
 
         """
         self.on_parse_begin()
-        xml = utils.load_xml(options.CONFIG_FPATH)
-        for table_elem in xml.findall('./table'):
-            self.on_parse_table_element(table_elem)
-            for row_elem in table_elem.findall('./rowAttribute'):
-                self.on_parse_table_attribute_element(table_elem, row_elem)
+        xml = utils.load_xml(constants.DEFINITION_FPATH)
+        for t_elem in xml.findall('./table'):
+            self.on_parse_table_element(t_elem)
+            for tra_elem in t_elem.findall('./rowAttribute'):
+                self.on_parse_table_row_attribute_element(t_elem, tra_elem)
         self.on_parse_complete()
 
 
@@ -49,8 +49,8 @@ class XMLParser(object):
         pass
 
 
-    def on_parse_table_attribute_element(self, table_elem, elem):
-        """On table attribute element parse event handler.
+    def on_parse_table_row_attribute_element(self, table_elem, elem):
+        """On table attribute row element parse event handler.
 
         """
         # Sub-class will handle.

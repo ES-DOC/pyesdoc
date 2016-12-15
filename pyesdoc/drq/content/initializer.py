@@ -12,6 +12,7 @@
 
 """
 import pyesdoc
+from pyesdoc.drq.content import cache
 from pyesdoc.drq.content.section import Section
 from pyesdoc.drq.content.section_item import SectionItem
 from pyesdoc.drq.content.wrapper import Wrapper
@@ -19,7 +20,7 @@ from pyesdoc.drq.content.xml_parser import XMLParser
 
 
 
-class Initializer(XMLParser):
+class _Parser(XMLParser):
     """Initialises library with parsed content.
 
     """
@@ -27,24 +28,27 @@ class Initializer(XMLParser):
         """Instance constructor.
 
         """
-        super(Initializer, self).__init__()
+        super(_Parser, self).__init__()
         self.sections = {}
-        self.execute()
 
 
     def on_parse_section(self, cfg, elem):
         """On table element parse event handler.
 
         """
-        self.sections[elem] = Section(cfg, elem)
+        s = Section(cfg, elem)
+        cache.add(s)
+        self.sections[elem] = s
 
 
     def on_parse_section_item(self, section_elem, elem):
         """On table section item element parse event handler.
 
         """
-        section = self.sections[section_elem]
-        section.items.append(SectionItem(section, elem))
+        s = self.sections[section_elem]
+        si = SectionItem(s, elem)
+        s.items.append(si)
+        cache.add(si)
 
 
     def on_parse_complete(self):
@@ -64,3 +68,11 @@ class Initializer(XMLParser):
         # requestItem --> timeslice
 
         setattr(pyesdoc.drq, "content", wrapper)
+
+
+def execute():
+    """Execute initialization process.
+
+    """
+    parser = _Parser()
+    parser.execute()

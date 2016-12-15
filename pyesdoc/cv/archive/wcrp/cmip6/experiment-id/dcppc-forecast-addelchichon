@@ -3,7 +3,7 @@
     "alternativeName": null, 
     "alternativeUrl": null, 
     "associations": [], 
-    "createDate": "2016-12-14 12:53:36.302873+00:00", 
+    "createDate": "2016-12-14 12:00:00+00:00", 
     "data": {
         "activityID": [
             "DCPP"
@@ -39,6 +39,6 @@
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "04853609-8c68-455b-9d5b-42c391c09b19", 
+    "uid": "c5ec9a0d-942b-4573-a2e3-ec2895a118f3", 
     "url": null
 }

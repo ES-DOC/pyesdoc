@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 """
-.. module:: pyesdoc.drq._utils.py
+.. module:: pyesdoc.drq.utils.py
    :copyright: Copyright "February 27, 2016", IPSL
    :license: GPL/CeCIL
    :platform: Unix, Windows
@@ -14,13 +14,44 @@
 import os
 import xml.etree.ElementTree as ET
 
-from pyesdoc.drq import constants
 
 
 
-def init_from_xml(instance, elem, names, convertors=None, from_xml_attribute=True):
+class _State(object):
+    """Encpasulates mutable module state.
+
+    """
+    # Flag indicating whether state has been initialized.
+    _is_initialized = False
+
+
+def initialize():
+    """Loads & parses dreq2Defn.xml & dreq.xml files.
+
+    """
+    if _State._is_initialized:
+        return
+
+    from pyesdoc.drq.definition import initializer
+    initializer.execute()
+
+    from pyesdoc.drq.content import initializer
+    initializer.execute()
+
+    _State._is_initialized = True
+
+
+def init_from_xml(
+    label_map,
+    instance,
+    elem,
+    names,
+    convertors=None,
+    from_xml_attribute=True
+    ):
     """Initialises set of class instance attributes from an xml element.
 
+    :param dict: Map of data request labels to pythonic labels.
     :param object obj: Class instance to be hydrated.
     :param xml.etree.Element elem: XML element used to hydrate class instance.
     :param list names: Set of class attribute names.
@@ -28,7 +59,7 @@ def init_from_xml(instance, elem, names, convertors=None, from_xml_attribute=Tru
     :param bool from_xml_attribute: Flag indicating whether obtaining value from an xml attribute.
 
     """
-    names = [n if n not in constants.LABEL_MAP else "{}:{}".format(n, constants.LABEL_MAP[n]) for n in names]
+    names = [n if n not in label_map else "{}:{}".format(n, label_map[n]) for n in names]
     for name in names:
         # Derive xml name & python name.
         try:
@@ -45,12 +76,12 @@ def init_from_xml(instance, elem, names, convertors=None, from_xml_attribute=Tru
             if child_elem:
                 val = child_elem.text
 
-        if val == '':
+        if val and unicode(val).strip() in {u'', u'none'}:
             val = None
 
         if convertors and name_py in convertors:
             try:
-                val =  convertors[name_py](val)
+                val = convertors[name_py](val)
             except TypeError:
                 if val is None:
                     val = convertors[name_py]()

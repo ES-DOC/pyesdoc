@@ -3,7 +3,7 @@
     "alternativeName": null, 
     "alternativeUrl": null, 
     "associations": [], 
-    "createDate": "2016-12-14 12:53:36.312375+00:00", 
+    "createDate": "2016-12-14 12:00:00+00:00", 
     "data": {
         "aerosol": "CAM-chem; semi-interactive", 
         "atmosphere": "CAM4 (FV, 144 x 96; 26 levels; top level 2.194 mb)", 
@@ -31,6 +31,6 @@
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "f17e2301-1bbf-4a65-95e5-ab5ff279af02", 
+    "uid": "8507ac29-461d-4240-87b7-b00d62ce13a5", 
     "url": null
 }

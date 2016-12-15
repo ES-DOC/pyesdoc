@@ -12,8 +12,8 @@
 
 """
 import pyesdoc
-from pyesdoc.drq import options
-from pyesdoc.drq import _utils as utils
+from pyesdoc.drq import constants
+from pyesdoc.drq import utils
 
 
 
@@ -28,10 +28,10 @@ class XMLParser(object):
         self.on_parse_begin()
 
         # Load xml to be parsed.
-        xml = utils.load_xml(options.CONTENT_FPATH)
+        xml = utils.load_xml(constants.CONTENT_FPATH)
 
         # Iterate config tables & parse content sections.
-        for table in pyesdoc.drq.config.tables:
+        for table in pyesdoc.drq.definition.tables:
             section_elem = xml.find('./main/{}'.format(table.label))
             self.on_parse_section(table, section_elem)
             for item_elem in section_elem.findall('./item'):

@@ -3,7 +3,7 @@
     "alternativeName": null, 
     "alternativeUrl": null, 
     "associations": [], 
-    "createDate": "2016-12-14 12:53:36.287389+00:00", 
+    "createDate": "2016-12-14 12:00:00+00:00", 
     "data": {
         "activityID": [
             "LS3MIP"
@@ -38,6 +38,6 @@
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "9a0b8b6a-d8e2-49dc-a436-30281c4280e9", 
+    "uid": "f963e72c-e10f-47da-8805-dbda73f39d3e", 
     "url": null
 }

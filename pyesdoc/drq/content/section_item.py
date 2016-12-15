@@ -11,7 +11,10 @@
 
 
 """
-from pyesdoc.drq import _utils as utils
+from pyesdoc.drq import constants
+from pyesdoc.drq import utils
+from pyesdoc.drq.definition.table_row_attribute import TableRowAttribute
+
 
 
 
@@ -26,15 +29,16 @@ class SectionItem(object):
         :param xml.etree.ElementTree elem: Section item xml info.
 
         """
-        self.section = section
-        self.cfg = section.cfg
-        # utils.init_from_xml(self, elem, section.cfg.attribute_names.union(elem.keys()))
+        self._section = section
+        self._dfn = section._dfn
         utils.init_from_xml(
-          self,
-          elem,
-          section.cfg.attribute_names,
-          section.cfg.attribute_convertors
-          )
+            constants.LABEL_MAP, 
+            self,
+            elem,
+            section._dfn.attribute_names,
+            section._dfn.attribute_convertors
+            )
+        self._sort_key = self.label.lower()
 
 
     def __repr__(self):
@@ -48,14 +52,14 @@ class SectionItem(object):
         """Returns number of item attributes.
 
         """
-        return len(self.cfg.attributes)
+        return len(self._dfn.attributes)
 
 
     def __iter__(self):
         """Instance iterator initializer.
 
         """
-        return iter(self.cfg.attributes)
+        return iter([(i, self[i]) for i in self._dfn])
 
 
     def __getitem__(self, key):
@@ -63,13 +67,16 @@ class SectionItem(object):
 
         """
         attr = None
-        if isinstance(key, int):
-            attr = self.cfg.attributes[key]
+        if isinstance(key, TableRowAttribute):
+            attr = key
+        elif isinstance(key, int):
+            attr = self._dfn[key]
         else:
             key = str(key).strip().lower()
-            for attribute in self.cfg.attributes:
+            for attribute in self._dfn:
                 if attribute.label.lower() == key:
                     attr = attribute
                     break
         if attr is not None:
             return getattr(self, attr.name)
+

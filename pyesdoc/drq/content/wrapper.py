@@ -21,7 +21,7 @@ class Wrapper(object):
         :param list sections: Collection of content sections.
 
         """
-        self.sections = sorted(sections, key=lambda i: i.label.lower())
+        self.sections = sections
         for section in sections:
             setattr(self, section.label_pythonic or section.label, section)
 
@@ -53,7 +53,7 @@ class Wrapper(object):
         """Instance iterator initializer.
 
         """
-        return iter(self.sections)
+        return iter(sorted(self.sections, key=lambda i: i._sort_key))
 
 
     def __getitem__(self, key):

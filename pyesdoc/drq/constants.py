@@ -11,13 +11,23 @@
 
 
 """
-# Configuration filename.
-CONFIG_FILENAME = "dreq2Defn.xml"
+from pyesdoc.drq import utils
 
-# Content filename.
-CONTENT_FILENAME = "dreq.xml"
 
-# Map of section pythonic label map.
+
+# Data request definition file name.
+DEFINITION_FNAME = "dreq2Defn.xml"
+
+# Data request definition file path.
+DEFINITION_FPATH = utils.get_fpath(DEFINITION_FNAME, "definition")
+
+# Data request content file name.
+CONTENT_FNAME = "dreq.xml"
+
+# Data request content file path.
+CONTENT_FPATH = utils.get_fpath(CONTENT_FNAME, "content")
+
+# Maps data request labels to pythonic labels.
 LABEL_MAP = {
     # Content section names.
     'cellMethods': 'cell_methods',
@@ -47,14 +57,6 @@ LABEL_MAP = {
     "techNote": "tech_note",
     "useClass":"use_class"
 }
-
-# Set of prologue fields.
-PROLOGUE_FIELDS = set([
-    'title',
-    'description',
-    'creator',
-    'date'
-    ])
 
 # Set of section item field names as extracted from pyesdoc.drq.xml.
 SECTION_ITEM_FIELDS = set([

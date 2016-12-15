@@ -84,11 +84,8 @@ def _cache_authority(name):
 
 	"""
 	if name not in _CACHE:
-		dpath = os.path.join(os.path.dirname(__file__))
+		dpath = os.path.dirname(__file__)
 		dpath = os.path.join(dpath, name)
 		authority = read_authority(dpath)
 		if authority is not None:
 			_CACHE[name] = authority
-
-
-

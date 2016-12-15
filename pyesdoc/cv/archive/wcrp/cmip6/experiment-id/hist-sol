@@ -3,7 +3,7 @@
     "alternativeName": null, 
     "alternativeUrl": null, 
     "associations": [], 
-    "createDate": "2016-12-14 12:53:36.297437+00:00", 
+    "createDate": "2016-12-14 12:00:00+00:00", 
     "data": {
         "activityID": [
             "DAMIP"
@@ -38,6 +38,6 @@
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "4dbba09b-5c27-4fa4-9fc9-b1b07c54f02e", 
+    "uid": "d203a036-3fc4-4d0a-a989-43016d0a20b7", 
     "url": null
 }

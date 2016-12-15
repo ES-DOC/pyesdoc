@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 """
-.. module:: pyesdoc.drq.config.table.py
+.. module:: pyesdoc.drq.definition.table.py
    :copyright: Copyright "February 27, 2016", IPSL
    :license: GPL/CeCIL
    :platform: Unix, Windows
@@ -12,7 +12,7 @@
 
 """
 from pyesdoc.drq import constants
-from pyesdoc.drq import _utils as utils
+from pyesdoc.drq import utils
 
 
 
@@ -35,7 +35,7 @@ class Table(object):
         :param xml.etree.Element elem: XML element declared within data request configuration.
 
         """
-        utils.init_from_xml(self, elem, elem.keys(), _CONVERTORS)
+        utils.init_from_xml(constants.LABEL_MAP, self, elem, elem.keys(), _CONVERTORS)
         try:
             self.label_pythonic = constants.LABEL_MAP[self.label]
         except KeyError:
@@ -61,16 +61,14 @@ class Table(object):
         """Returns flag indicating whether an attribute of the matching name exists or not.
 
         """
-        if target in self.attributes:
-            return True
-        return self[target] is not None
+        return (target in self.attributes) or (self[target] is not None)
 
 
     def __iter__(self):
         """Instance iterator initializer.
 
         """
-        return iter(self.attributes)
+        return iter(sorted(self.attributes, key=lambda i: i._sort_key))
 
 
     def __getitem__(self, key):

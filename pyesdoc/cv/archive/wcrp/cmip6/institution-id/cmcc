@@ -3,7 +3,7 @@
     "alternativeName": null, 
     "alternativeUrl": null, 
     "associations": [], 
-    "createDate": "2016-12-14 12:53:36.314343+00:00", 
+    "createDate": "2016-12-14 12:00:00+00:00", 
     "data": {
         "postalAddress": "Centro Euro-Mediterraneo per i Cambiamenti Climatici, Bologna 40127, Italy"
     }, 
@@ -14,6 +14,6 @@
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "f8e31699-e5f3-44e4-acbf-793cfd167195", 
+    "uid": "f5eb5791-bf4c-4e82-a89b-5fbd38a29969", 
     "url": null
 }

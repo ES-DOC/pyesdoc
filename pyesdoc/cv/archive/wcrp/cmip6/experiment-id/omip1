@@ -3,7 +3,7 @@
     "alternativeName": null, 
     "alternativeUrl": null, 
     "associations": [], 
-    "createDate": "2016-12-14 12:53:36.304300+00:00", 
+    "createDate": "2016-12-14 12:00:00+00:00", 
     "data": {
         "activityID": [
             "OMIP"
@@ -30,6 +30,6 @@
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "4ea41863-69e1-4cc9-8377-37bb7c69a4eb", 
+    "uid": "01734604-292c-4cb2-82b6-780b21ebdcaf", 
     "url": null
 }

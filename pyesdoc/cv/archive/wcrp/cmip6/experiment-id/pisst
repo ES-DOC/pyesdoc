@@ -3,7 +3,7 @@
     "alternativeName": null, 
     "alternativeUrl": null, 
     "associations": [], 
-    "createDate": "2016-12-14 12:53:36.304200+00:00", 
+    "createDate": "2016-12-14 12:00:00+00:00", 
     "data": {
         "activityID": [
             "CFMIP"
@@ -33,6 +33,6 @@
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "ed6bd8c7-6572-4c7f-8f25-da0b195917eb", 
+    "uid": "c3e6b11c-0dfd-4051-907e-323f78ca42a2", 
     "url": null
 }

@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 """
-.. module:: pyesdoc.drq.config.wrapper.py
+.. module:: pyesdoc.drq.definition.wrapper.py
    :copyright: Copyright "February 27, 2016", IPSL
    :license: GPL/CeCIL
    :platform: Unix, Windows

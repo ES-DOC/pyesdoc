@@ -3,7 +3,7 @@
     "alternativeName": null, 
     "alternativeUrl": null, 
     "associations": [], 
-    "createDate": "2016-12-14 12:53:36.310243+00:00", 
+    "createDate": "2016-12-14 12:00:00+00:00", 
     "data": null, 
     "description": null, 
     "idx": 2, 
@@ -12,6 +12,6 @@
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "c88b466e-01e0-417a-b3ea-d6436de71632", 
+    "uid": "88ba8d3a-f3d5-48f3-b78c-5b226fc862c1", 
     "url": null
 }
