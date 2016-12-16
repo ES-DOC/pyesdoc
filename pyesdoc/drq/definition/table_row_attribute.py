@@ -54,11 +54,16 @@ class TableRowAttribute(object):
         :param xml.etree.Element elem: XML element declared within data request configuration.
 
         """
-        utils.init_from_xml(constants.LABEL_MAP, self, elem, elem.keys(), _CONVERTORS)
+        self._table = table
+        utils.init_from_xml(
+            constants.LABEL_MAP,
+            self,
+            elem,
+            elem.keys(),
+            _CONVERTORS
+            )
         self._sort_key = self.label.lower()
         self.default_value = _DEFAULT_VALUE_MAP.get(self.type)
-        self.name = self.label
-        self.table = table
         self.type_python = _TYPE_MAP[self.type]
 
 
@@ -68,3 +73,13 @@ class TableRowAttribute(object):
         """
         return "{}".format(self.label)
 
+
+    @property
+    def key(self):
+        """Gets attribute mapped key.
+
+        """
+        try:
+            return constants.LABEL_MAP[self.label]
+        except KeyError:
+            return self.label

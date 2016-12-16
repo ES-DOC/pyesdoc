@@ -27,9 +27,13 @@ class Section(object):
         :param xml.etree.ElementTree elem: Content section xml element.
 
         """
-        utils.init_from_xml(constants.LABEL_MAP, self, elem, elem.keys())
-
         self._dfn = cfg
+        utils.init_from_xml(
+            constants.LABEL_MAP,
+            self,
+            elem,
+            elem.keys()
+            )
         self._sort_key = cfg.label.lower()
         self.items = []
         self.label = cfg.label

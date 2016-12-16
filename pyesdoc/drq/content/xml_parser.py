@@ -32,10 +32,10 @@ class XMLParser(object):
 
         # Iterate config tables & parse content sections.
         for table in pyesdoc.drq.definition.tables:
-            section_elem = xml.find('./main/{}'.format(table.label))
-            self.on_parse_section(table, section_elem)
-            for item_elem in section_elem.findall('./item'):
-                self.on_parse_section_item(section_elem, item_elem)
+            s_xml = xml.find('./main/{}'.format(table.label))
+            self.on_parse_section(table, s_xml)
+            for si_xml in s_xml.findall('./item'):
+                self.on_parse_section_item(s_xml, si_xml)
 
         self.on_parse_complete()
 

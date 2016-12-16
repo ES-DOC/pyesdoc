@@ -78,5 +78,4 @@ class SectionItem(object):
                     attr = attribute
                     break
         if attr is not None:
-            return getattr(self, attr.name)
-
+            return getattr(self, attr.key)

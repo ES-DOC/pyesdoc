@@ -44,7 +44,7 @@ class _Parser(XMLParser):
         """
         t = self.tables[table_elem]
         tra = TableRowAttribute(t, elem)
-        duplicates = [i for i in t if i.name == tra.name]
+        duplicates = [i for i in t if i.key == tra.key]
         if not duplicates:
             t.attributes.append(tra)
 

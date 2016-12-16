@@ -35,11 +35,13 @@ class Table(object):
         :param xml.etree.Element elem: XML element declared within data request configuration.
 
         """
-        utils.init_from_xml(constants.LABEL_MAP, self, elem, elem.keys(), _CONVERTORS)
-        try:
-            self.label_pythonic = constants.LABEL_MAP[self.label]
-        except KeyError:
-            self.label_pythonic = self.label
+        utils.init_from_xml(
+            constants.LABEL_MAP,
+            self,
+            elem,
+            elem.keys(),
+            _CONVERTORS
+            )
         self.attributes = []
 
 
@@ -84,6 +86,17 @@ class Table(object):
 
 
     @property
+    def label_pythonic(self):
+        """Returns pythonic label.
+
+        """
+        try:
+            return constants.LABEL_MAP[self.label]
+        except KeyError:
+            return self.label
+
+
+    @property
     def attribute_names(self):
         """Returns set of unique attribute names.
 
@@ -96,20 +109,4 @@ class Table(object):
         """Returns set of attribute value convertors.
 
         """
-        return {i.name: i.type_python for i in self if i.type_python != list}
-
-
-    @property
-    def required_attributes(self):
-        """Returns set of required attributes.
-
-        """
-        return [i for i in self if i.required]
-
-
-    @property
-    def scalar_attributes(self):
-        """Returns set of scalar attributes.
-
-        """
-        return [i for i in self if i.type_python != list]
+        return {i.key: i.type_python for i in self if i.type_python != list}
