@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 """
-.. module:: pyesdoc.drq.definition.table_row_attribute.py
+.. module:: pyesdoc.drq.definition.table_attribute.py
    :copyright: Copyright "February 27, 2016", IPSL
    :license: GPL/CeCIL
    :platform: Unix, Windows
@@ -12,7 +12,6 @@
 
 """
 from pyesdoc.drq import utils
-from pyesdoc.drq import constants
 
 
 
@@ -43,43 +42,51 @@ _DEFAULT_VALUE_MAP = {
 }
 
 
-class TableRowAttribute(object):
+class TableAttribute(object):
     """Wraps a table attribute defined within dreq2Defn.xml.
 
     """
     def __init__(self, table, elem):
         """Instance constructor.
 
-        :param dreq.definition.table.Table table: Associated configuration table.
-        :param xml.etree.Element elem: XML element declared within data request configuration.
+        :param dreq.definition.table.Table table: Associated definition table.
+        :param xml.etree.Element elem: XML element declared within data request definition.
 
         """
-        self._table = table
-        utils.init_from_xml(
-            constants.LABEL_MAP,
-            self,
-            elem,
-            elem.keys(),
-            _CONVERTORS
-            )
+        # Initialize from XML.
+        utils.init_from_xml(self, elem, elem.keys(), _CONVERTORS)
+
+        # Switch to pythonic labels.
+        self.label_drq = self.label
+        self.label = utils.get_label(self.label)
         self._sort_key = self.label.lower()
+
+        # Map drq types.
         self.default_value = _DEFAULT_VALUE_MAP.get(self.type)
         self.type_python = _TYPE_MAP[self.type]
+
+        # Format use_class field.
+        try:
+            self.use_class
+        except AttributeError:
+            self.use_class = None
+        else:
+            if self.use_class == "":
+                self.use_class == None
 
 
     def __repr__(self):
         """Instance representation.
 
         """
-        return "{}".format(self.label)
+        return self.label
 
 
     @property
-    def key(self):
-        """Gets attribute mapped key.
+    def is_internal_link(self):
+        """Gets flag indicating whether the attribute is an internal link or not.
 
         """
-        try:
-            return constants.LABEL_MAP[self.label]
-        except KeyError:
-            return self.label
+        return self.use_class == "internalLink"
+
+

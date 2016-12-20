@@ -11,74 +11,62 @@
 
 
 """
-from pyesdoc.drq import utils
-from pyesdoc.drq import constants
-
-
-
 class Section(object):
     """Wraps a section defined within dreq.xml.
 
     """
-    def __init__(self, cfg, elem):
+    def __init__(self, table):
         """Instance constructor.
 
-        :param dreq.definition.Table cfg: Associated config info.
-        :param xml.etree.ElementTree elem: Content section xml element.
+        :param dreq.definition.Table table: Associated definition info.
 
         """
-        self._dfn = cfg
-        utils.init_from_xml(
-            constants.LABEL_MAP,
-            self,
-            elem,
-            elem.keys()
-            )
-        self._sort_key = cfg.label.lower()
-        self.items = []
-        self.label = cfg.label
-        self.label_pythonic = cfg.label_pythonic
+        self._TABLE = table
+        self._items = []
 
 
     def __repr__(self):
         """Instance representation.
 
         """
-        return self.label_pythonic
+        return repr(self._TABLE)
 
 
     def __len__(self):
         """Returns number of items in managed collection.
 
         """
-        return len(self.items)
+        return len(self._items)
 
 
     def __iter__(self):
         """Instance iterator initializer.
 
         """
-        return iter(sorted(self.items, key=lambda i: i._sort_key))
+        return iter(sorted(self._items, key=lambda i: i._sort_key))
+
+
+    def __getattr__(self, key):
+        """Returns a child section item.
+
+        """
+        return self._get_item(key)
 
 
     def __getitem__(self, key):
         """Returns a child section item.
 
         """
-        if isinstance(key, slice):
-            return self.items[key]
-        elif isinstance(key, int):
-            return self.items[key]
-        key = str(key).strip().lower()
-        for item in self.items:
-            if item.label.lower() == key:
-                return item
+        return self._get_item(key)
 
 
-    def get_item(self, name):
-        """Returns a item.
+    def _get_item(self, key):
+        """Returns a wrapped keyed value.
 
         """
-        for item in self.items:
-            if item.label == name:
+        if isinstance(key, (slice, int)):
+            return self._items[key]
+        key = unicode(key).strip().lower()
+        for item in self._items:
+            if item.label.lower() == key:
                 return item

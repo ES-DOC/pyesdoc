@@ -21,30 +21,30 @@ class Wrapper(object):
         :param list sections: Collection of content sections.
 
         """
-        self.sections = sections
+        self._sections = sorted(sections, key=lambda i: i._TABLE.label.lower())
         for section in sections:
-            setattr(self, section.label_pythonic or section.label, section)
+            setattr(self, str(section), section)
 
 
     def __repr__(self):
         """Instance representation.
 
         """
-        return unicode(self.sections)
+        return unicode(self._sections)
 
 
     def __len__(self):
         """Returns number of sections in managed collection.
 
         """
-        return len(self.sections)
+        return len(self._sections)
 
 
     def __contains__(self, key):
         """Returns flag indicating whether a certain section exists or not.
 
         """
-        if key in self.sections:
+        if key in self._sections:
             return True
         return self[key] is not None
 
@@ -53,17 +53,31 @@ class Wrapper(object):
         """Instance iterator initializer.
 
         """
-        return iter(sorted(self.sections, key=lambda i: i._sort_key))
+        return iter(self._sections)
+
+
+    def __getattr__(self, key):
+        """Returns a section.
+
+        """
+        return self._get_section(key)
 
 
     def __getitem__(self, key):
-        """Returns a child section.
+        """Returns a section.
 
         """
-        if isinstance(key, int):
-            return self.sections[key]
-        key = str(key).strip().lower()
-        for section in self.sections:
-            if section.label.lower() == key or \
-               section.label_pythonic.lower() == key:
+        return self._get_section(key)
+
+
+    def _get_section(self, key):
+        """Returns a section.
+
+        """
+        if isinstance(key, (slice, int)):
+            return self._sections[key]
+        key = unicode(key).strip().lower()
+        for section in self._sections:
+            if section._TABLE.label.lower() == key or \
+               section._TABLE.label_drq.lower() == key:
                 return section

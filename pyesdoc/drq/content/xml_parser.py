@@ -27,15 +27,16 @@ class XMLParser(object):
         """
         self.on_parse_begin()
 
-        # Load xml to be parsed.
-        xml = utils.load_xml(constants.CONTENT_FPATH)
+        # Load content xml file.
+        fpath = utils.get_fpath(constants.CONTENT_FNAME, "content")
+        xml = utils.load_xml(fpath)
 
-        # Iterate config tables & parse content sections.
-        for table in pyesdoc.drq.definition.tables:
-            s_xml = xml.find('./main/{}'.format(table.label))
-            self.on_parse_section(table, s_xml)
-            for si_xml in s_xml.findall('./item'):
-                self.on_parse_section_item(s_xml, si_xml)
+        # Parse.
+        for table in pyesdoc.drq.definition:
+            elem = xml.find('./main/{}'.format(table.label_drq))
+            self.on_parse_section(table, elem)
+            for sub_elem in elem.findall('./item'):
+                self.on_parse_section_item(elem, sub_elem)
 
         self.on_parse_complete()
 
@@ -48,7 +49,7 @@ class XMLParser(object):
         pass
 
 
-    def on_parse_section(self, cfg, elem):
+    def on_parse_section(self, table, elem):
         """On section element parse event handler.
 
         """
@@ -57,7 +58,7 @@ class XMLParser(object):
 
 
     def on_parse_section_item(self, section_elem, elem):
-        """On table section item element parse event handler.
+        """On section item element parse event handler.
 
         """
         # Sub-class will handle.

@@ -12,8 +12,10 @@
 
 """
 import os
+import re
 import xml.etree.ElementTree as ET
 
+from pyesdoc.drq import constants
 
 
 
@@ -42,43 +44,37 @@ def initialize():
 
 
 def init_from_xml(
-    label_map,
     instance,
     elem,
     names,
-    convertors=None,
-    from_xml_attribute=True
+    convertors=None
     ):
     """Initialises set of class instance attributes from an xml element.
 
-    :param dict: Map of data request labels to pythonic labels.
-    :param object obj: Class instance to be hydrated.
+    :param object instance: Class instance to be initialized.
     :param xml.etree.Element elem: XML element used to hydrate class instance.
     :param list names: Set of class attribute names.
     :param dict convertors: Map of value convertors keyed by attribute name.
-    :param bool from_xml_attribute: Flag indicating whether obtaining value from an xml attribute.
 
     """
-    names = [n if n not in label_map else "{}:{}".format(n, label_map[n]) for n in names]
-    for name in names:
-        # Derive xml name & python name.
-        try:
-            name_xml, name_py = name.split(':')
-        except ValueError:
-            name_xml = name_py = name
-
+    names = [(n, get_label(n)) for n in names]
+    for name_xml, name_py in names:
         # Set value.
         val = None
-        if from_xml_attribute:
-            val = elem.get(name_xml)
-        else:
+        try:
+            elem.get
+        except AttributeError:
             child_elem = elem.find('./{}'.format(name_xml))
             if child_elem:
                 val = child_elem.text
+        else:
+            val = elem.get(name_xml)
 
-        if val and unicode(val).strip() in {u'', u'none'}:
+        # Set value to None.
+        if val and unicode(val).strip().lower() in {u'', u'none'}:
             val = None
 
+        # Convert value.
         if convertors and name_py in convertors:
             try:
                 val = convertors[name_py](val)
@@ -86,7 +82,7 @@ def init_from_xml(
                 if val is None:
                     val = convertors[name_py]()
 
-        # Set instance attribute.
+        # Set instance attribute using pythonic name.
         setattr(instance, name_py, val)
 
 
@@ -114,3 +110,48 @@ def get_fpath(fname, subfolder):
     fpath = os.path.join(fpath, fname)
 
     return fpath
+
+
+def get_label(label):
+    """Returns a reformatted label.
+
+    """
+    if label in constants.LABEL_MAP:
+        return constants.LABEL_MAP[label]
+    elif label != label.lower():
+        return str_to_underscore_case(label)
+    return label
+
+
+_CACHE = set()
+def get_link_labels(label):
+    """Returns a reformatted link label.
+
+    """
+    try:
+        return constants.LINK_MAP[label]
+    except KeyError:
+        if label not in _CACHE:
+            _CACHE.add(label)
+            print 666, label
+        return label, label
+
+
+def str_to_underscore_case(target):
+    """Helper function to convert a from camel case string to an underscore case string.
+
+    :param target: A string for conversion.
+    :type target: str
+
+    :returns: A string converted to underscore case, e.g. account_number.
+    :rtype: str
+
+    """
+    if target is None or not len(target):
+        return ''
+
+    r = re.sub('(.)([A-Z][a-z]+)', r'\1_\2', target)
+    r = re.sub('([a-z0-9])([A-Z])', r'\1_\2', r)
+    r = r.lower()
+
+    return r

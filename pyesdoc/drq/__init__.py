@@ -16,4 +16,4 @@ from pyesdoc.drq.content.query import pluck as query
 from pyesdoc.drq.content.section import Section
 from pyesdoc.drq.content.section_item import SectionItem
 from pyesdoc.drq.definition.table import Table
-from pyesdoc.drq.definition.table_row_attribute import TableRowAttribute
+from pyesdoc.drq.definition.table_attribute import TableAttribute

@@ -18,7 +18,7 @@ from pyesdoc.drq import utils
 
 # Map of table xml attribute names to value covertors.
 _CONVERTORS = {
-    'is_lab_unique': lambda v: False if v == "No" else True,
+    'is_label_unique': lambda v: False if v == "No" else True,
     'level': int,
     'max_occurs': int
 }
@@ -32,24 +32,20 @@ class Table(object):
     def __init__(self, elem):
         """Instance constructor.
 
-        :param xml.etree.Element elem: XML element declared within data request configuration.
+        :param xml.etree.Element elem: XML element declared within data request definition.
 
         """
-        utils.init_from_xml(
-            constants.LABEL_MAP,
-            self,
-            elem,
-            elem.keys(),
-            _CONVERTORS
-            )
+        utils.init_from_xml(self, elem, elem.keys(), _CONVERTORS)
         self.attributes = []
+        self.label_drq = self.label
+        self.label = utils.get_label(self.label)
 
 
     def __repr__(self):
         """Instance representation.
 
         """
-        return self.label_pythonic
+        return self.label
 
 
     def __len__(self):
@@ -81,32 +77,6 @@ class Table(object):
             return self.attributes[key]
         key = str(key).strip().lower()
         for attribute in self.attributes:
-            if attribute.label.lower() == key:
+            if attribute.label.lower() == key or \
+               attribute.label_drq.lower() == key:
                 return attribute
-
-
-    @property
-    def label_pythonic(self):
-        """Returns pythonic label.
-
-        """
-        try:
-            return constants.LABEL_MAP[self.label]
-        except KeyError:
-            return self.label
-
-
-    @property
-    def attribute_names(self):
-        """Returns set of unique attribute names.
-
-        """
-        return {i.label for i in self}
-
-
-    @property
-    def attribute_convertors(self):
-        """Returns set of attribute value convertors.
-
-        """
-        return {i.key: i.type_python for i in self if i.type_python != list}

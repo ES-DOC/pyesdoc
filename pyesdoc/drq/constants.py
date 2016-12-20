@@ -11,164 +11,61 @@
 
 
 """
-from pyesdoc.drq import utils
-
-
-
 # Data request definition file name.
 DEFINITION_FNAME = "dreq2Defn.xml"
-
-# Data request definition file path.
-DEFINITION_FPATH = utils.get_fpath(DEFINITION_FNAME, "definition")
 
 # Data request content file name.
 CONTENT_FNAME = "dreq.xml"
 
-# Data request content file path.
-CONTENT_FPATH = utils.get_fpath(CONTENT_FNAME, "content")
-
 # Maps data request labels to pythonic labels.
 LABEL_MAP = {
-    # Content section names.
-    'cellMethods': 'cell_methods',
+    # Definition table labels.
     'CMORvar': 'cmor_variable',
     'exptgroup': 'experiment_group',
-    'modelConfig': 'model_config',
-    'objectiveLink': 'objective_link',
-    'requestItem': 'request_item',
-    'requestLink': 'request_link',
-    'requestVar': 'request_variable',
-    'requestVarGroup': 'request_variable_group',
-    'spatialShape': 'spatial_shape',
+    'miptable': 'mip_table',
     'standardname': 'standard_name',
-    'tableSection': 'table_section',
-    'temporalShape': 'temporal_shape',
-    'timeSlice': 'time_slice',
-    'varChoice': 'var_choice',
     'varChoiceLinkC': 'var_choice_link_c',
     'varChoiceLinkR': 'var_choice_link_r',
 
-    # Config table fields.
-    "itemLabelMode": "item_label_mode",
-    "labUnique": "is_lab_unique",
-    "maxOccurs": "max_occurs",
+    # Definition table fieldslabels.
+    "labUnique": "is_label_unique",
 
-    # Config table atribute fields.
-    "techNote": "tech_note",
-    "useClass":"use_class"
+    # Definition table attribute fields.
+    "altLabel": "alternative_label",
+    "MIPs": "mips",
+    "procComment": "processing_comment",
+    "procNote": "processing_note",
+    "provNote": "provenance_note",
+    "refNote": "reference_note",
+    "sliceLen": "slice_length",
+    "sliceLenUnit": "slice_length_unit",
+    "techNote": "technical_note",
 }
 
-# Set of section item field names as extracted from pyesdoc.drq.xml.
-SECTION_ITEM_FIELDS = set([
-    "MIPs"
-    "altLabel"
-    "axis"
-    "bounds"
-    "boundsRequested"
-    "boundsValues"
-    "cell_measures"
-    "cell_methods"
-    "cfg"
-    "cfgid"
-    "cid"
-    "class"
-    "comment"
-    "coords"
-    "defaultPriority"
-    "deflate"
-    "deflate_level"
-    "description"
-    "dimensions"
-    "direction"
-    "egid"
-    "end"
-    "endy"
-    "ensz"
-    "esid"
-    "esidComment"
-    "expt"
-    "flag_meanings"
-    "flag_values"
-    "frequency"
-    "gpid"
-    "grid"
-    "gridreq"
-    "isGrid"
-    "isIndex"
-    "label"
-    "levelFlag"
-    "levels"
-    "mcfg"
-    "mip"
-    "mipTable"
-    "mipTableSection"
-    "modeling_realm"
-    "nenmax"
-    "nexmax"
-    "nstart"
-    "ntot"
-    "ny"
-    "nyears"
-    "nymax"
-    "objective"
-    "odims"
-    "oid"
-    "ok_max_mean_abs"
-    "ok_min_mean_abs"
-    "opar"
-    "opt"
-    "optionList"
-    "positive"
-    "preset"
-    "priority"
-    "procComment"
-    "procNote"
-    "procnote"
-    "prov"
-    "provNote"
-    "provmip"
-    "qid"
-    "range"
-    "rank"
-    "ref"
-    "refNote"
-    "refid"
-    "requested"
-    "rid"
-    "rlid"
-    "rowIndex"
-    "shape"
-    "shuffle"
-    "sliceLen"
-    "sn"
-    "spid"
-    "standardName"
-    "start"
-    "starty"
-    "step"
-    "stid"
-    "tab"
-    "tables"
-    "tattr"
-    "techNote"
-    "tid"
-    "tier"
-    "tierMin"
-    "title"
-    "tmid"
-    "tolRequested"
-    "treset"
-    "tslice"
-    "type"
-    "uid"
-    "units"
-    "url"
-    "usage"
-    "valid_max"
-    "valid_min"
-    "value"
-    "varList"
-    "vgid"
-    "vid"
-    "yps"
-    ])
+# Map of attribute names to link short/long names.
+LINK_MAP = {
+    "cfgid": ("cfg", "config_option"),
+    "cid": ("c", "config_value"),
+    "cmid": ("cm", "cell_methods"),
+    "dimid": ("dim", None),
+    "egid": ("eg", "experiment_group"),
+    "esid": ("es", "experiments"),
+    "gpid": ("gp", None),
+    "mip": ("mip", None),
+    "mtid": ("mt", "mip_table"),
+    "oid": ("o", "objective"),
+    "provmip": ("provmip", "provenance_mip"),
+    "refid": ("ref", None),
+    "rid": ("r", "request"),
+    "rlid": ("rl", "request"),
+    "sn": ("sn", "standard_name"),
+    "snid": ("sn", "standard_name"),
+    "spid": ("sp", "spatial_shape"),
+    "stid": ("st", "structure"),
+    "tid": ("t", None),
+    "tmid": ("tm", "temporal_shape"),
+    "tslice": ("tslice", "timeslice"),
+    "unid": ("un", "units"),
+    "vgid": ("vg", "var_group"),
+    "vid": ("v", "var")
+}

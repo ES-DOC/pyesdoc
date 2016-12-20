@@ -5,7 +5,7 @@
    :copyright: Copyright "February 27, 2016", IPSL
    :license: GPL/CeCIL
    :platform: Unix, Windows
-   :synopsis: Encapsulates parsing over the data request configuration XML file.
+   :synopsis: Encapsulates parsing over the data request definition XML file.
 
 .. moduleauthor:: Mark Conway-Greenslade <momipsl@ipsl.jussieu.fr>
 
@@ -17,7 +17,7 @@ from pyesdoc.drq import utils
 
 
 class XMLParser(object):
-    """Event driven data request configuration XML file parser.
+    """Event driven data request definition XML file parser.
 
     """
     def execute(self):
@@ -25,11 +25,17 @@ class XMLParser(object):
 
         """
         self.on_parse_begin()
-        xml = utils.load_xml(constants.DEFINITION_FPATH)
-        for t_elem in xml.findall('./table'):
-            self.on_parse_table_element(t_elem)
-            for tra_elem in t_elem.findall('./rowAttribute'):
-                self.on_parse_table_row_attribute_element(t_elem, tra_elem)
+
+        # Load definition xml file.
+        fpath = utils.get_fpath(constants.DEFINITION_FNAME, "definition")
+        xml = utils.load_xml(fpath)
+
+        # Parse.
+        for elem in xml.findall('./table'):
+            self.on_parse_table_element(elem)
+            for sub_elem in elem.findall('./rowAttribute'):
+                self.on_parse_table_attribute_element(elem, sub_elem)
+
         self.on_parse_complete()
 
 
@@ -37,7 +43,6 @@ class XMLParser(object):
         """On parse begin event handler.
 
         """
-        # Sub-class will handle.
         pass
 
 
@@ -45,15 +50,13 @@ class XMLParser(object):
         """On table element parse event handler.
 
         """
-        # Sub-class will handle.
         pass
 
 
-    def on_parse_table_row_attribute_element(self, table_elem, elem):
+    def on_parse_table_attribute_element(self, table_elem, elem):
         """On table attribute row element parse event handler.
 
         """
-        # Sub-class will handle.
         pass
 
 
@@ -61,6 +64,4 @@ class XMLParser(object):
         """On parse complete event handler.
 
         """
-        # Sub-class will handle.
         pass
-

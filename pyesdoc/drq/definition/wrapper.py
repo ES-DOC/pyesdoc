@@ -18,33 +18,33 @@ class Wrapper(object):
     def __init__(self, tables):
         """Instance constructor.
 
-        :param list tables: Collection of configuration tables.
+        :param list tables: Collection of definition tables.
 
         """
-        self.tables = sorted(tables, key=lambda i: i.label.lower())
+        self._tables = sorted(tables, key=lambda i: i.label.lower())
         for table in tables:
-            setattr(self, table.label_pythonic or table.label, table)
+            setattr(self, str(table), table)
 
 
     def __repr__(self):
         """Instance representation.
 
         """
-        return unicode(self.tables)
+        return unicode(self._tables)
 
 
     def __len__(self):
         """Returns number of attributes in managed collection.
 
         """
-        return len(self.tables)
+        return len(self._tables)
 
 
     def __contains__(self, key):
         """Returns flag indicating whether a certain table exists or not.
 
         """
-        if key in self.tables:
+        if key in self._tables:
             return True
         return self[key] is not None
 
@@ -53,7 +53,7 @@ class Wrapper(object):
         """Instance iterator initializer.
 
         """
-        return iter(self.tables)
+        return iter(self._tables)
 
 
     def __getitem__(self, key):
@@ -64,9 +64,10 @@ class Wrapper(object):
             int(key)
         except ValueError:
             key = str(key).strip().lower()
-            for table in self.tables:
-                if table.label.lower() == key or table.label_pythonic.lower() == key:
+            for table in self._tables:
+                if table.label.lower() == key or \
+                   table.label_drq.lower() == key:
                     return table
         else:
-            return self.tables[key]
+            return self._tables[key]
 

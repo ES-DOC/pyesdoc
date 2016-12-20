@@ -11,10 +11,8 @@
 
 
 """
-from pyesdoc.drq import constants
 from pyesdoc.drq import utils
-from pyesdoc.drq.definition.table_row_attribute import TableRowAttribute
-
+from pyesdoc.drq.definition.table_attribute import TableAttribute
 
 
 
@@ -22,23 +20,22 @@ class SectionItem(object):
     """Wraps a section item defined within dreq.xml.
 
     """
-    def __init__(self, section, elem):
+    def __init__(self, table, elem):
         """Instance constructor.
 
-        :param dreq.content.Section section: Associated section.
+        :param dreq.definition.Table table: Associated definition table.
         :param xml.etree.ElementTree elem: Section item xml info.
 
         """
-        self._section = section
-        self._dfn = section._dfn
+        self._TABLE = table
         utils.init_from_xml(
-            constants.LABEL_MAP, 
             self,
             elem,
-            section._dfn.attribute_names,
-            section._dfn.attribute_convertors
+            sorted([i.label for i in table]),
+            {i.label: i.type_python for i in table if i.type_python != list}
             )
         self._sort_key = self.label.lower()
+        self.links = SectionItemLinks(self)
 
 
     def __repr__(self):
@@ -52,14 +49,14 @@ class SectionItem(object):
         """Returns number of item attributes.
 
         """
-        return len(self._dfn.attributes)
+        return len(self._TABLE.attributes)
 
 
     def __iter__(self):
         """Instance iterator initializer.
 
         """
-        return iter([(i, self[i]) for i in self._dfn])
+        return iter([(i, self[i]) for i in self._TABLE])
 
 
     def __getitem__(self, key):
@@ -67,15 +64,33 @@ class SectionItem(object):
 
         """
         attr = None
-        if isinstance(key, TableRowAttribute):
+        if isinstance(key, TableAttribute):
             attr = key
         elif isinstance(key, int):
-            attr = self._dfn[key]
+            attr = self._TABLE[key]
         else:
             key = str(key).strip().lower()
-            for attribute in self._dfn:
+            for attribute in self._TABLE:
                 if attribute.label.lower() == key:
                     attr = attribute
                     break
         if attr is not None:
-            return getattr(self, attr.key)
+            return getattr(self, attr.label)
+
+
+class SectionItemLinks(object):
+    """Wraps the collection of linked data request sections.
+
+    """
+    def __init__(self, item):
+        """Instance constructor.
+
+        :param dreq.content.SectionItem item: Associated section item.
+
+        """
+        for attr in [i for i in item._TABLE if i.is_internal_link]:
+            short_name, long_name = utils.get_link_labels(attr.label)
+            if short_name is not None:
+                setattr(self, short_name, None)
+            if short_name != long_name and long_name is not None:
+                setattr(self, long_name, None)
