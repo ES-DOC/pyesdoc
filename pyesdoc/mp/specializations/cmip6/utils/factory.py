@@ -40,7 +40,6 @@ def _create_topic(parent, spec, type_key, key=None, typeof=TopicSpecialization):
 
     """
     topic = typeof()
-    topic.cfg_section = type_key
     topic.type_key = type_key
     topic.spec = spec
 

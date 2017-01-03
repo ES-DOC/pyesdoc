@@ -18,7 +18,6 @@ class TopicSpecialization(object):
 
         """
         self.authors = None
-        self.cfg_section = None
         self.contact = None
         self.contributors = None
         self.description = None
@@ -55,7 +54,6 @@ class TopicPropertySetSpecialization(object):
         """
         super(TopicPropertySetSpecialization, self).__init__()
 
-        self.cfg_section = "property-set"
         self.description = None
         self.id = None
         self.name = None
@@ -63,6 +61,7 @@ class TopicPropertySetSpecialization(object):
         self.properties = []
         self.property_sets = []
         self.topic = None
+        self.type_key = "property-set"
 
 
 class TopicPropertySpecialization(object):
@@ -76,7 +75,6 @@ class TopicPropertySpecialization(object):
         super(TopicPropertySpecialization, self).__init__()
 
         self.cardinality = None
-        self.cfg_section = "property"
         self.description = None
         self.enum = None
         self.id = None
@@ -84,6 +82,7 @@ class TopicPropertySpecialization(object):
         self.owner = None
         self.topic = None
         self.typeof = None
+        self.type_key = "property"
 
 
     @property
@@ -131,13 +130,13 @@ class EnumSpecialization(object):
         """Instance initializer.
 
         """
-        self.cfg_section = "enum"
         self.choices = []
         self.description = None
         self.id = None
         self.is_open = False
         self.label = None
         self.name = None
+        self.type_key = "enum"
 
 
 class EnumChoiceSpecialization(object):
@@ -148,12 +147,12 @@ class EnumChoiceSpecialization(object):
         """Instance initializer.
 
         """
-        self.cfg_section = "enum-choice"
         self.description = None
         self.enum = None
         self.id = None
         self.value = None
         self.is_other = None
+        self.type_key = "enum-choice"
 
 
 class RealmSpecialization(TopicSpecialization):
