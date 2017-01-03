@@ -86,20 +86,23 @@ DETAILS['non_orographic_gravity_waves'] = {
 # PROCESS: ENUMERATIONS
 # --------------------------------------------------------------------
 
-# TODO: enumeration needs members or to become a string attribute type
 ENUMERATIONS['sponge_layer_attributes'] = {
     'description': 'Gravity waves sponge layer attributes',
     'is_open': True,
-    'members': []
+    'members': [
+        ('Rayleigh friction', None),
+        ('Diffusive sponge layer', None)
+        ]
     }
 
-
-# TODO: enumeration needs members or to become a string attribute type
 ENUMERATIONS['background_attributes'] = {
     'description': 'Gravity waves background attributes',
     'is_open': True,
-    'members': []
-}
+    'members': [
+        ('continuous spectrum', None),
+        ('discrete spectrum', None),
+        ]
+    }
 
 ENUMERATIONS['subgrid_scale_orography_attributes'] = {
     'description': 'Gravity waves subgrid scale orography attributes',
@@ -107,16 +110,18 @@ ENUMERATIONS['subgrid_scale_orography_attributes'] = {
     'members': [
         ('effect on drag', None),
         ('effect on lifting', None),
+        ('enhanced topography', 'To enhance the generation of long waves in the atmosphere'),
         ]
     }
 
 ENUMERATIONS['orographic_gravity_wave_source_mechanisms'] = {
-    'description': 'Physical mechanisms generatic orographic gravity waves.',
+    'description': 'Physical mechanisms generating orographic gravity waves.',
     'is_open': True,
     'members': [
         ('linear mountain waves', None),
         ('hydraulic jump', None),
         ('envelope orography', None),
+        ('low level flow blocking', None),
         ('statistical sub-grid scale variance', None),
         ]
     }

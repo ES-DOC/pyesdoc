@@ -71,7 +71,7 @@ DETAILS['lateral_boundary'] = {
 DETAILS['diffusion_horizontal'] = {
     'description': 'Horizontal diffusion scheme',
     'properties': [
-        ('scheme_name', 'ENUM:diffusion_horizontal_scheme_name', '1.1',
+        ('scheme_name', 'str', '1.1',
              'Horizontal diffusion scheme name'),
         ('scheme_method', 'ENUM:diffusion_horizontal_scheme_method', '1.1',
              'Horizontal diffusion scheme method'),
@@ -115,7 +115,7 @@ ENUMERATIONS['timestepping_type'] = {
     'description': 'Type of time stepping scheme',
     'is_open': True,
     'members': [
-        ('Adam Bashford', None),
+        ('Adams-Bashforth', None),
         ('explicit', None),
         ('implicit', None),
         ('semi-implicit', None),
@@ -164,19 +164,19 @@ ENUMERATIONS['prognostic_variables'] = {
         ]
     }
 
-# TODO: enumeration needs members or to become a string attribute type
-ENUMERATIONS['diffusion_horizontal_scheme_name'] = {
-    'description': 'Commonly used name for the horizontal diffusion scheme',
-    'is_open': True,
-    'members': []
-    }
+# Made this a string attribute: no obvious convention for consistent scheme naming convention
+# ENUMERATIONS['diffusion_horizontal_scheme_name'] = {
+#    'description': 'Commonly used name for the horizontal diffusion scheme',
+#    'is_open': True,
+#    'members': []
+#    }
 
-# TODO: enumeration needs more members or to become a string attribute type
 ENUMERATIONS['diffusion_horizontal_scheme_method'] = {
     'description': 'Numerical method used by the horizontal diffusion scheme',
     'is_open': True,
     'members': [
         ('iterated Laplacian', None),
+        ('bi-harmonic', None)
         ]
     }
 
@@ -211,19 +211,22 @@ ENUMERATIONS['advection_tracers_scheme_characteristics'] = {
         ]
     }
 
-# TODO: enumeration needs members or to become a string attribute type
+# TODO: is this information nescessary?
 ENUMERATIONS['advection_tracers_conserved_quantities'] = {
     'description': 'Quantities conserved through the tracers advection scheme',
     'is_open': True,
-    'members': []
+    'members': [
+        ('dry mass', None)
+        ]
     }
 
-# TODO: enumeration needs members or to become a string attribute type
+# TODO: is this information nescessary?
 ENUMERATIONS['advection_tracers_conservation_method'] = {
     'description': 'Method used to ensure conservation in the tracers advection scheme',
     'is_open': True,
     'members': [
         ('conservation fixer', None),
+        ('Priestley algorithm', None),
         ]
     }
 
@@ -273,9 +276,9 @@ ENUMERATIONS['advection_momentum_conserved_quantities'] = {
         ]
     }
 
-# TODO: enumeration needs more members or to become a string attribute type
+# TODO: is this information nescessary?
 ENUMERATIONS['advection_momentum_conservation_method'] = {
-    'description': 'Method used to ensure conservation in the tracers advection scheme',
+    'description': 'Method used to ensure conservation in the momentum advection scheme',
     'is_open': True,
     'members': [
             ('conservation fixer', None),

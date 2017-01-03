@@ -35,6 +35,7 @@ class ComponentBase(object):
         """
         super(ComponentBase, self).__init__()
 
+        self.canonical_id = None                          # unicode (0.1)
         self.citations = []                               # shared.Citation (0.N)
         self.description = None                           # unicode (0.1)
         self.development_history = None                   # software.DevelopmentPath (0.1)
@@ -116,6 +117,32 @@ class Gridspec(object):
         super(Gridspec, self).__init__()
 
         self.description = None                           # unicode (1.1)
+
+
+class Implementation(object):
+    """A concrete class within the cim v2 type system.
+
+    Implementation information for a software framework/component, whether a top level model,
+    or a specific piece of code known as a 'component'. In software terms, a
+    software framework/component is a discrete set of code that takes input data and generates output data.
+    Software frameworks/components may or may not have scientific descriptions.
+
+    """
+    def __init__(self):
+        """Instance constructor.
+
+        """
+        super(Implementation, self).__init__()
+
+        self.canonical_id = None                          # unicode (0.1)
+        self.citations = []                               # shared.Citation (0.N)
+        self.description = None                           # unicode (0.1)
+        self.development_history = None                   # software.DevelopmentPath (0.1)
+        self.long_name = None                             # unicode (0.1)
+        self.name = None                                  # unicode (1.1)
+        self.release_date = None                          # datetime.datetime (0.1)
+        self.repository = None                            # shared.OnlineResource (0.1)
+        self.version = None                               # unicode (0.1)
 
 
 class Variable(object):

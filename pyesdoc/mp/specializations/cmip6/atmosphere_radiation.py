@@ -77,6 +77,18 @@ DETAILS['shortwave_radiation'] = {
         ]
     }
 
+
+# --------------------------------------------------------------------
+# SUB-PROCESS: single_scattering_properties
+# --------------------------------------------------------------------
+DETAILS['single_scattering_properties'] = {
+    'description': 'Single scattering properties of ice clouds',
+    'properties': [
+        ('single_scattering', 'ENUM:single_scattering_properties_methods', '0.N',
+            'Methods for calculating single scattering properties of ice crystals'),
+        ]
+    }
+
 # --------------------------------------------------------------------
 # PROCESS: ENUMERATIONS
 # --------------------------------------------------------------------
@@ -118,18 +130,53 @@ ENUMERATIONS['ghg_types'] = {
     }
 
 
-# TODO: enumeration needs members or to become a string attribute type
 ENUMERATIONS['cloud_ice_properties'] = {
     'description': 'Radiative properties of ice crystals in clouds',
     'is_open': True,
-    'members': []
+    'members': [
+        ('treated as spherical particles', None),
+        ('effective crystal radius', None),
+        ('treated as non-spherical particles', None),
+        ('mean projected area',
+            'randomly oriented irregular ice crystals present a greater mean projected area than spheres'),
+        ('bi-modal size distribution',
+            'small mode diameters: a few tens of microns, large mode diameters: typically hundreds of microns'),
+        ('ensemble of ice crystals', 'complex shapes represented with an ensemble of symmetric shapes'),
+        ('ice water path', 'Integrated ice water path through the cloud kg m-2',),
+        ('crystal asymmetry', None),
+        ('crystal aspect ratio', None),
+        ('emissivity', None),
+        ('absorption', None),
+        ('backward scattering', None),
+        ('side scattering', None),
+        ]
     }
 
-# TODO: enumeration needs members or to become a string attribute type
+ENUMERATIONS['single_scattering_properties_methods'] = {
+    'description': 'Methods for calculating single scattering properties of ice crystals',
+    'is_open': True,
+    'members': [
+        ('T-Matrix', 'an exact method'),
+        ('geometrical optics', 'for particles that are much larger than the wavelength of light'),
+        ('finite difference time domain', 'FDTD'),
+        ('anomalous diffraction approximation', 'ADA'),
+    ]
+}
+
 ENUMERATIONS['cloud_liquid_properties'] = {
     'description': 'Radiative properties of liquid droplets in clouds',
     'is_open': True,
-    'members': []
+    'members': [
+        ('droplet scattering', None),
+        ('droplet absorption', None),
+        ('cloud droplet number concentration', 'CDNC'),
+        ('effective cloud droplet radii', None),
+        ('droplet size distribution', None),
+        ('liquid water path', 'Integrated liquid water path through the cloud kg m-2',),
+        ('broadband reflectivity', 'albedo'),
+        ('broadband transmissivity', None),
+        ('broadband absorbtivity', None),
+        ]
     }
 
 ENUMERATIONS['longwave_scheme_type'] = {
@@ -149,6 +196,7 @@ ENUMERATIONS['longwave_scheme_method'] = {
     'members': [
         ('two-stream', None),
         ('layer interaction', None),
+        ('adaptive', 'exploits spatial and temporal correlations in optical characteristics')
         ]
     }
 
@@ -158,5 +206,8 @@ ENUMERATIONS['shortwave_scheme_type'] = {
     'members': [
         ('wide-band model', None),
         ('wide-band model (Fouquart)', None),
+        ('bulk-scheme', 'highly parameterized methods that use bulk expressions'),
+        ('two-stream', None),
+        ('two-stream (delta-Eddington)', 'approximation for solar radiation calculations'),
         ]
     }

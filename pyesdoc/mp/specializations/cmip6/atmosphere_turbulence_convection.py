@@ -46,7 +46,7 @@ DETAILS['boundary_layer_turbulence'] = {
     'properties': [
         ('scheme_name', 'ENUM:boundary_layer_turbulence_scheme_name', '1.1',
              'Boundary layer turbulence scheme name'),
-        ('scheme_type', 'ENUM:boundary_layer_turbulence_scheme_type', '1.1',
+        ('scheme_type', 'ENUM:boundary_layer_turbulence_scheme_type', '1.N',
              'Boundary layer turbulence scheme type'),
         ('closure_order', 'int', '1.1',
              'Boundary layer turbulence scheme closure order'),
@@ -63,7 +63,7 @@ DETAILS['deep_convection'] = {
     'properties': [
         ('scheme_name', 'str', '1.1',
              'Deep convection scheme name'),
-        ('scheme_type', 'ENUM:deep_convection_scheme_type', '1.1',
+        ('scheme_type', 'ENUM:deep_convection_scheme_type', '1.N',
              'Deep convection scheme type'),
         ('scheme_method', 'ENUM:deep_convection_scheme_method', '1.N',
              'Deep convection scheme method'),
@@ -80,7 +80,7 @@ DETAILS['shallow_convection'] = {
     'properties': [
         ('scheme_method', 'ENUM:shallow_convection_scheme_method', '1.1',
              'shallow convection scheme method'),
-        ('scheme_type', 'ENUM:shallow_convection_scheme_type', '1.1',
+        ('scheme_type', 'ENUM:shallow_convection_scheme_type', '1.N',
              'shallow convection scheme type'),
         ('scheme_name', 'str', '1.1',
              'Shallow convection scheme name'),
@@ -107,12 +107,13 @@ DETAILS['shallow_convection'] = {
 # --------------------------------------------------------------------
 
 
-# TODO: enumeration needs more members or to become a string attribute type
 ENUMERATIONS['boundary_layer_turbulence_scheme_name'] = {
     'description': 'Commonly used name for the boundary layer turbulence scheme.',
     'is_open': True,
     'members': [
         ('Mellor-Yamada', None),
+        ('Holtslag-Boville', None),
+        ('EDMF', 'Combined Eddy Diffusivity Mass-Flux')
         ]
     }
 
@@ -124,6 +125,12 @@ ENUMERATIONS['boundary_layer_turbulence_scheme_type'] = {
         ('TKE diagnostic', None),
         ('TKE coupled with water', None),
         ('vertical profile of Kz', None),
+        ('non-local diffusion', None),
+        ('Monin-Obukhov similarity', None),
+        ('Coastal Buddy Scheme', 'separate components for coastal near surface winds over ocean and land'),
+        ('Coupled with convection', None),
+        ('Coupled with gravity waves', None),
+        ('Depth capped at cloud base', 'boundary layer capped at cloud base when convection is diagnosed')
         ]
     }
 
@@ -133,15 +140,17 @@ ENUMERATIONS['deep_convection_scheme_type'] = {
     'members': [
         ('mass-flux', None),
         ('adjustment', None),
+        ('plume ensemble', 'Zhang-McFarlane')
         ]
     }
 
 ENUMERATIONS['deep_convection_scheme_method'] = {
-    'description': 'If deep convection uses a mass-flux scheme enter the method used.',
+    'description': 'Method used for deep convection.',
     'is_open': True,
     'members': [
         ('CAPE', 'Mass flux determined by CAPE'),
         ('bulk', 'A bulk mass flux scheme is used'),
+        ('ensemble', 'Summation over an ensemble of convective clouds with differing characteristics')
         ]
     }
 
@@ -151,16 +160,16 @@ ENUMERATIONS['shallow_convection_scheme_method'] = {
     'members': [
         ('same as deep (unified)', None),
         ('included in boundary layer turbulence', None),
-        ('separated', None),
+        ('separate diagnosis', 'Deep and Shallow convection schemes use different thermodynamic closure criteria'),
         ]
     }
 
-# TODO: enumeration needs members or to become a string attribute type
 ENUMERATIONS['shallow_convection_scheme_type'] = {
     'description': 'Type of scheme used for the parameterisation of shallow convection.',
     'is_open': True,
     'members': [
         ('mass-flux', None),
+        ('cumulus-capped boundary layer', None)
         ]
     }
 
@@ -173,16 +182,21 @@ ENUMERATIONS['deep_convection_scheme_processes'] = {
         ('entrainment', None),
         ('detrainment', None),
         ('penetrative convection', None),
-        ('updrafts and downdrafts', None),
+        ('updrafts', None),
+        ('downdrafts', None),
         ('radiative effect of anvils', None),
         ]
     }
 
-# TODO: enumeration needs members or to become a string attribute type
 ENUMERATIONS['shallow_convection_scheme_processes'] = {
     'description': 'Processes taken into account by the shallow convection scheme',
     'is_open': True,
-    'members': []
+    'members': [
+        ('convective momentum transport', None),
+        ('entrainment', None),
+        ('detrainment', None),
+        ('penetrative convection', None),
+    ]
     }
 
 #ENUMERATIONS['other_convection_scheme_type'] = {

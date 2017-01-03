@@ -86,12 +86,13 @@ ENUMERATIONS['sub_grid_scale_water_distribution_convection'] = {
         ]
     }
 
-# TODO: enumeration needs members or to become a string attribute type
 ENUMERATIONS['cloud_overlap_method'] = {
     'description': 'Cloud scheme cloud overlap method',
     'is_open': True,
     'members': [
         ('random', None),
+        ('maximum', None),
+        ('arbitrary', 'combination of maximum and random overlap between clouds'),
         ]
     }
 
@@ -104,3 +105,5 @@ ENUMERATIONS['processes_attributes'] = {
         ('bulk cloud', None),
         ]
     }
+
+#TODO include horizontal cloud inhomogeneity? Tripple cloud scheme Shank et al 2010

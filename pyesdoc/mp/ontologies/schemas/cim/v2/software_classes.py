@@ -21,6 +21,8 @@ def component_base():
         'properties': [
             ('citations', 'shared.citation', '0.N',
                 "Set of pertinent citations."),
+            ('canonical_id', 'str', '0.1',
+                "Vocabulary identifier, where this framework/component description was constructed via a controlled vocabulary."),
             ('description', 'str', '0.1',
                 "Textural description of component."),
             ('development_history', 'software.development_path', '0.1',
@@ -33,6 +35,41 @@ def component_base():
                 "The date of publication of the component code (as opposed to the date of publication of the metadata document, or the date of deployment of the model)."),
             ('repository', 'shared.online_resource', '0.1',
                 "Location of code for this component."),
+            ('version', 'str', '0.1',
+                "Version identifier."),
+        ]
+    }
+
+
+
+def implementation():
+    """Implementation information for a software framework/component, whether a top level model,
+    or a specific piece of code known as a 'component'. In software terms, a
+    software framework/component is a discrete set of code that takes input data and generates output data.
+    Software frameworks/components may or may not have scientific descriptions.
+
+    """
+    return {
+        'type': 'class',
+        'base': None,
+        'is_abstract': False,
+        'properties': [
+            ('citations', 'shared.citation', '0.N',
+                "Set of pertinent citations."),
+            ('canonical_id', 'str', '0.1',
+                "Vocabulary identifier, where this framework/component description was constructed via a controlled vocabulary."),
+            ('description', 'str', '0.1',
+                "Textural description of framework/component."),
+            ('development_history', 'software.development_path', '0.1',
+                "History of the development of this framework/component."),
+            ('long_name', 'str', '0.1',
+                "Long name for framework/component."),
+            ('name', 'str', '1.1',
+                "Short name of framework/component."),
+            ('release_date', 'datetime', '0.1',
+                "The date of publication of the framework/component code."),
+            ('repository', 'shared.online_resource', '0.1',
+                "Location of code for this framework/component."),
             ('version', 'str', '0.1',
                 "Version identifier.")
         ]

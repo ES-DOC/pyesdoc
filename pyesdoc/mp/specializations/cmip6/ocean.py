@@ -75,11 +75,11 @@ PROCESSES = [
     ]
 
 # --------------------------------------------------------------------
-# REALM: top level details
+# DETAILS: top level realm details
 # --------------------------------------------------------------------
 DETAILS = OrderedDict()
 
 # --------------------------------------------------------------------
-# REALM: ENUMERATIONS
+# ENUMERATIONS: top level realm enumerations
 # --------------------------------------------------------------------
 ENUMERATIONS = OrderedDict()

@@ -105,20 +105,12 @@ CLASSES = (
     platform.Performance,
     platform.StoragePool,
     platform.StorageVolume,
-    science.ConservationProperties,
-    science.Detail,
-    science.Discretisation,
-    science.Extent,
-    science.Grid,
-    science.IsoExtent,
-    science.KeyProperties,
     science.Model,
     science.Process,
-    science.Resolution,
-    science.ScienceContext,
-    science.ScientificRealm,
-    science.SubProcess,
-    science.Tuning,
+    science.Realm,
+    science.Topic,
+    science.TopicProperty,
+    science.TopicPropertySet,
     shared.Citation,
     shared.DocMetaInfo,
     shared.DocReference,
@@ -133,6 +125,7 @@ CLASSES = (
     software.DevelopmentPath,
     software.EntryPoint,
     software.Gridspec,
+    software.Implementation,
     software.SoftwareComponent,
     software.Variable,
     time.Calendar,
@@ -713,86 +706,15 @@ CLASS_PROPERTIES = {
         'units',
         'volume',
     ),
-    science.ConservationProperties: (
-        'corrected_conserved_prognostic_variables',
-        'description',
-        'was_flux_correction_used',
-        'citations',
-        'details',
-        'implementation_overview',
-        'description',
-        'short_name',
-        'specialization_id',
-    ),
-    science.Detail: (
-        'description',
-        'short_name',
-        'specialization_id',
-    ),
-    science.Discretisation: (
-        'citations',
-        'details',
-        'implementation_overview',
-        'description',
-        'short_name',
-        'specialization_id',
-    ),
-    science.Extent: (
-        'is_global',
-        'region_known_as',
-        'citations',
-        'details',
-        'implementation_overview',
-        'description',
-        'short_name',
-        'specialization_id',
-    ),
-    science.Grid: (
-        'citations',
-        'description',
-        'details',
-        'discretisation',
-        'meta',
-        'name',
-    ),
-    science.IsoExtent: (
-        'eastern_boundary',
-        'northern_boundary',
-        'southern_boundary',
-        'western_boundary',
-        'is_global',
-        'region_known_as',
-        'citations',
-        'details',
-        'implementation_overview',
-        'description',
-        'short_name',
-        'specialization_id',
-    ),
-    science.KeyProperties: (
-        'extent',
-        'extra_conservation_properties',
-        'resolution',
-        'time_step',
-        'tuning_applied',
-        'citations',
-        'details',
-        'implementation_overview',
-        'keywords',
-        'sub_processes',
-        'description',
-        'short_name',
-        'specialization_id',
-    ),
     science.Model: (
-        'category',
         'coupled_components',
         'coupler',
         'internal_software_components',
         'key_properties',
         'meta',
+        'model_type',
         'realms',
-        'specialization_id',
+        'canonical_id',
         'citations',
         'description',
         'development_history',
@@ -803,61 +725,52 @@ CLASS_PROPERTIES = {
         'version',
     ),
     science.Process: (
-        'citations',
-        'details',
-        'implementation_overview',
-        'keywords',
         'sub_processes',
-        'description',
-        'short_name',
-        'specialization_id',
-    ),
-    science.Resolution: (
-        'canonical_horizontal_resolution',
-        'is_adaptive_grid',
-        'name',
-        'number_of_horizontal_gridpoints',
-        'number_of_vertical_levels',
         'citations',
-        'details',
-        'implementation_overview',
         'description',
+        'keywords',
+        'overview',
+        'properties',
+        'property_sets',
+        'responsible_parties',
         'short_name',
         'specialization_id',
     ),
-    science.ScienceContext: (
-        'description',
-        'short_name',
-        'specialization_id',
-    ),
-    science.ScientificRealm: (
-        'citations',
+    science.Realm: (
         'grid',
         'key_properties',
         'meta',
-        'name',
-        'overview',
         'processes',
-        'realm',
-        'specialization_id',
-    ),
-    science.SubProcess: (
+        'realm_type',
+        'software_frameworks',
         'citations',
-        'details',
-        'implementation_overview',
         'description',
+        'keywords',
+        'overview',
+        'properties',
+        'property_sets',
+        'responsible_parties',
         'short_name',
         'specialization_id',
     ),
-    science.Tuning: (
-        'description',
-        'global_mean_metrics_used',
-        'regional_metrics_used',
-        'trend_metrics_used',
+    science.Topic: (
         'citations',
-        'details',
-        'implementation_overview',
         'description',
+        'keywords',
+        'overview',
+        'properties',
+        'property_sets',
+        'responsible_parties',
+        'short_name',
+        'specialization_id',
+    ),
+    science.TopicProperty: (
+        'specialization_id',
+        'value',
+    ),
+    science.TopicPropertySet: (
+        'description',
+        'properties',
         'short_name',
         'specialization_id',
     ),
@@ -946,6 +859,7 @@ CLASS_PROPERTIES = {
         'encoding',
     ),
     software.ComponentBase: (
+        'canonical_id',
         'citations',
         'description',
         'development_history',
@@ -972,6 +886,17 @@ CLASS_PROPERTIES = {
     software.Gridspec: (
         'description',
     ),
+    software.Implementation: (
+        'canonical_id',
+        'citations',
+        'description',
+        'development_history',
+        'long_name',
+        'name',
+        'release_date',
+        'repository',
+        'version',
+    ),
     software.SoftwareComponent: (
         'composition',
         'connection_points',
@@ -982,6 +907,7 @@ CLASS_PROPERTIES = {
         'language',
         'license',
         'sub_components',
+        'canonical_id',
         'citations',
         'description',
         'development_history',
@@ -1294,90 +1220,46 @@ CLASS_OWN_PROPERTIES = {
         'units',
         'volume',
     ),
-    science.ConservationProperties: (
-        'corrected_conserved_prognostic_variables',
-        'description',
-        'was_flux_correction_used',
-    ),
-    science.Detail: (
-    ),
-    science.Discretisation: (
-    ),
-    science.Extent: (
-        'is_global',
-        'region_known_as',
-    ),
-    science.Grid: (
-        'citations',
-        'description',
-        'details',
-        'discretisation',
-        'meta',
-        'name',
-    ),
-    science.IsoExtent: (
-        'eastern_boundary',
-        'northern_boundary',
-        'southern_boundary',
-        'western_boundary',
-    ),
-    science.KeyProperties: (
-        'extent',
-        'extra_conservation_properties',
-        'resolution',
-        'time_step',
-        'tuning_applied',
-    ),
     science.Model: (
-        'category',
         'coupled_components',
         'coupler',
         'internal_software_components',
         'key_properties',
         'meta',
+        'model_type',
         'realms',
-        'specialization_id',
     ),
     science.Process: (
-        'citations',
-        'details',
-        'implementation_overview',
-        'keywords',
         'sub_processes',
     ),
-    science.Resolution: (
-        'canonical_horizontal_resolution',
-        'is_adaptive_grid',
-        'name',
-        'number_of_horizontal_gridpoints',
-        'number_of_vertical_levels',
-    ),
-    science.ScienceContext: (
-        'description',
-        'short_name',
-        'specialization_id',
-    ),
-    science.ScientificRealm: (
-        'citations',
+    science.Realm: (
         'grid',
         'key_properties',
         'meta',
-        'name',
-        'overview',
         'processes',
-        'realm',
+        'realm_type',
+        'software_frameworks',
+    ),
+    science.Topic: (
+        'citations',
+        'description',
+        'keywords',
+        'overview',
+        'properties',
+        'property_sets',
+        'responsible_parties',
+        'short_name',
         'specialization_id',
     ),
-    science.SubProcess: (
-        'citations',
-        'details',
-        'implementation_overview',
+    science.TopicProperty: (
+        'specialization_id',
+        'value',
     ),
-    science.Tuning: (
+    science.TopicPropertySet: (
         'description',
-        'global_mean_metrics_used',
-        'regional_metrics_used',
-        'trend_metrics_used',
+        'properties',
+        'short_name',
+        'specialization_id',
     ),
     shared.Citation: (
         'abstract',
@@ -1464,6 +1346,7 @@ CLASS_OWN_PROPERTIES = {
         'encoding',
     ),
     software.ComponentBase: (
+        'canonical_id',
         'citations',
         'description',
         'development_history',
@@ -1489,6 +1372,17 @@ CLASS_OWN_PROPERTIES = {
     ),
     software.Gridspec: (
         'description',
+    ),
+    software.Implementation: (
+        'canonical_id',
+        'citations',
+        'description',
+        'development_history',
+        'long_name',
+        'name',
+        'release_date',
+        'repository',
+        'version',
     ),
     software.SoftwareComponent: (
         'composition',
@@ -1559,7 +1453,6 @@ ENUMS = (
     platform.StorageSystems,
     platform.VolumeUnits,
     science.ModelTypes,
-    science.SelectionCardinality,
     shared.NilReason,
     shared.QualityStatus,
     shared.RoleCode,
@@ -1605,9 +1498,8 @@ DOCUMENT_TYPES = (
     platform.ComponentPerformance,
     platform.Machine,
     platform.Performance,
-    science.Grid,
     science.Model,
-    science.ScientificRealm,
+    science.Realm,
     shared.Citation,
     shared.Party,
     shared.QualityReview,
@@ -1634,17 +1526,9 @@ BASE_CLASSES[designing.StartDateEnsemble] = (designing.NumericalRequirement, act
 BASE_CLASSES[designing.TemporalConstraint] = (designing.NumericalRequirement, activity.Activity, )
 BASE_CLASSES[platform.ComponentPerformance] = (platform.Performance, )
 BASE_CLASSES[platform.Machine] = (platform.Partition, )
-BASE_CLASSES[science.ConservationProperties] = (science.SubProcess, science.ScienceContext, )
-BASE_CLASSES[science.Detail] = (science.ScienceContext, )
-BASE_CLASSES[science.Discretisation] = (science.SubProcess, science.ScienceContext, )
-BASE_CLASSES[science.Extent] = (science.SubProcess, science.ScienceContext, )
-BASE_CLASSES[science.IsoExtent] = (science.Extent, science.SubProcess, science.ScienceContext, )
-BASE_CLASSES[science.KeyProperties] = (science.Process, science.ScienceContext, )
 BASE_CLASSES[science.Model] = (software.ComponentBase, )
-BASE_CLASSES[science.Process] = (science.ScienceContext, )
-BASE_CLASSES[science.Resolution] = (science.SubProcess, science.ScienceContext, )
-BASE_CLASSES[science.SubProcess] = (science.ScienceContext, )
-BASE_CLASSES[science.Tuning] = (science.SubProcess, science.ScienceContext, )
+BASE_CLASSES[science.Process] = (science.Topic, )
+BASE_CLASSES[science.Realm] = (science.Topic, )
 BASE_CLASSES[software.SoftwareComponent] = (software.ComponentBase, )
 BASE_CLASSES[time.IrregularDateset] = (time.DatetimeSet, )
 BASE_CLASSES[time.RegularTimeset] = (time.DatetimeSet, )
@@ -1695,31 +1579,9 @@ SUB_CLASSES[platform.Partition] = (
 SUB_CLASSES[platform.Performance] = (
     platform.ComponentPerformance,
     )
-SUB_CLASSES[science.Extent] = (
-    science.IsoExtent,
-    )
-SUB_CLASSES[science.Process] = (
-    science.KeyProperties,
-    )
-SUB_CLASSES[science.ScienceContext] = (
-    science.Detail,
+SUB_CLASSES[science.Topic] = (
     science.Process,
-    science.SubProcess,
-    science.ConservationProperties,
-    science.Discretisation,
-    science.Extent,
-    science.KeyProperties,
-    science.Resolution,
-    science.Tuning,
-    science.IsoExtent,
-    )
-SUB_CLASSES[science.SubProcess] = (
-    science.ConservationProperties,
-    science.Discretisation,
-    science.Extent,
-    science.Resolution,
-    science.Tuning,
-    science.IsoExtent,
+    science.Realm,
     )
 SUB_CLASSES[software.ComponentBase] = (
     science.Model,
@@ -2151,11 +2013,11 @@ CONSTRAINTS = {
         ('canonical_name', 'type', unicode),
         ('delivery_order', 'type', unicode),
         ('meta', 'type', shared.DocMetaInfo),
-        ('required_extent', 'type', science.Extent),
+        ('required_extent', 'type', science.Topic),
         ('internal_name', 'type', unicode),
         ('duration', 'type', time.TimePeriod),
         ('scope', 'type', unicode),
-        ('required_resolution', 'type', science.Resolution),
+        ('required_resolution', 'type', science.Topic),
         ('is_conformance_requested', 'type', bool),
         ('alternative_names', 'type', unicode),
         ('name', 'type', unicode),
@@ -2922,158 +2784,9 @@ CONSTRAINTS = {
         ('volume', 'cardinality', "1.1"),
 
     ),
-    science.ConservationProperties: (
-
-        ('description', 'type', unicode),
-        ('short_name', 'type', unicode),
-        ('corrected_conserved_prognostic_variables', 'type', data.VariableCollection),
-        ('specialization_id', 'type', unicode),
-        ('was_flux_correction_used', 'type', bool),
-        ('citations', 'type', shared.Citation),
-        ('details', 'type', science.Detail),
-        ('implementation_overview', 'type', unicode),
-
-        ('description', 'cardinality', "1.1"),
-        ('short_name', 'cardinality', "1.1"),
-        ('corrected_conserved_prognostic_variables', 'cardinality', "0.1"),
-        ('specialization_id', 'cardinality', "1.1"),
-        ('was_flux_correction_used', 'cardinality', "0.1"),
-        ('citations', 'cardinality', "0.N"),
-        ('details', 'cardinality', "0.N"),
-        ('implementation_overview', 'cardinality', "1.1"),
-
-    ),
-    science.Detail: (
-
-        ('specialization_id', 'type', unicode),
-        ('description', 'type', unicode),
-        ('short_name', 'type', unicode),
-
-        ('specialization_id', 'cardinality', "1.1"),
-        ('description', 'cardinality', "1.1"),
-        ('short_name', 'cardinality', "1.1"),
-
-    ),
-    science.Discretisation: (
-
-        ('description', 'type', unicode),
-        ('short_name', 'type', unicode),
-        ('specialization_id', 'type', unicode),
-        ('citations', 'type', shared.Citation),
-        ('details', 'type', science.Detail),
-        ('implementation_overview', 'type', unicode),
-
-        ('description', 'cardinality', "1.1"),
-        ('short_name', 'cardinality', "1.1"),
-        ('specialization_id', 'cardinality', "1.1"),
-        ('citations', 'cardinality', "0.N"),
-        ('details', 'cardinality', "0.N"),
-        ('implementation_overview', 'cardinality', "1.1"),
-
-    ),
-    science.Extent: (
-
-        ('is_global', 'type', bool),
-        ('description', 'type', unicode),
-        ('short_name', 'type', unicode),
-        ('region_known_as', 'type', unicode),
-        ('specialization_id', 'type', unicode),
-        ('citations', 'type', shared.Citation),
-        ('details', 'type', science.Detail),
-        ('implementation_overview', 'type', unicode),
-
-        ('is_global', 'cardinality', "1.1"),
-        ('description', 'cardinality', "1.1"),
-        ('short_name', 'cardinality', "1.1"),
-        ('region_known_as', 'cardinality', "0.N"),
-        ('specialization_id', 'cardinality', "1.1"),
-        ('citations', 'cardinality', "0.N"),
-        ('details', 'cardinality', "0.N"),
-        ('implementation_overview', 'cardinality', "1.1"),
-
-    ),
-    science.Grid: (
-
-        ('description', 'type', unicode),
-        ('citations', 'type', shared.Citation),
-        ('meta', 'type', shared.DocMetaInfo),
-        ('discretisation', 'type', science.Discretisation),
-        ('details', 'type', science.Detail),
-        ('name', 'type', unicode),
-
-        ('description', 'cardinality', "1.1"),
-        ('citations', 'cardinality', "0.N"),
-        ('meta', 'cardinality', "1.1"),
-        ('discretisation', 'cardinality', "0.1"),
-        ('details', 'cardinality', "0.N"),
-        ('name', 'cardinality', "1.1"),
-
-    ),
-    science.IsoExtent: (
-
-        ('is_global', 'type', bool),
-        ('description', 'type', unicode),
-        ('short_name', 'type', unicode),
-        ('region_known_as', 'type', unicode),
-        ('northern_boundary', 'type', float),
-        ('specialization_id', 'type', unicode),
-        ('southern_boundary', 'type', float),
-        ('citations', 'type', shared.Citation),
-        ('details', 'type', science.Detail),
-        ('implementation_overview', 'type', unicode),
-        ('western_boundary', 'type', float),
-        ('eastern_boundary', 'type', float),
-
-        ('is_global', 'cardinality', "1.1"),
-        ('description', 'cardinality', "1.1"),
-        ('short_name', 'cardinality', "1.1"),
-        ('region_known_as', 'cardinality', "0.N"),
-        ('northern_boundary', 'cardinality', "0.1"),
-        ('specialization_id', 'cardinality', "1.1"),
-        ('southern_boundary', 'cardinality', "0.1"),
-        ('citations', 'cardinality', "0.N"),
-        ('details', 'cardinality', "0.N"),
-        ('implementation_overview', 'cardinality', "1.1"),
-        ('western_boundary', 'cardinality', "0.1"),
-        ('eastern_boundary', 'cardinality', "0.1"),
-
-    ),
-    science.KeyProperties: (
-
-        ('extra_conservation_properties', 'type', science.ConservationProperties),
-        ('description', 'type', unicode),
-        ('short_name', 'type', unicode),
-        ('tuning_applied', 'type', science.Tuning),
-        ('specialization_id', 'type', unicode),
-        ('sub_processes', 'type', science.SubProcess),
-        ('citations', 'type', shared.Citation),
-        ('details', 'type', science.Detail),
-        ('extent', 'type', science.Extent),
-        ('implementation_overview', 'type', unicode),
-        ('keywords', 'type', unicode),
-        ('time_step', 'type', float),
-        ('resolution', 'type', science.Resolution),
-
-        ('extra_conservation_properties', 'cardinality', "0.1"),
-        ('description', 'cardinality', "1.1"),
-        ('short_name', 'cardinality', "1.1"),
-        ('tuning_applied', 'cardinality', "0.1"),
-        ('specialization_id', 'cardinality', "1.1"),
-        ('sub_processes', 'cardinality', "0.N"),
-        ('citations', 'cardinality', "0.N"),
-        ('details', 'cardinality', "0.N"),
-        ('extent', 'cardinality', "0.1"),
-        ('implementation_overview', 'cardinality', "1.1"),
-        ('keywords', 'cardinality', "0.1"),
-        ('time_step', 'cardinality', "0.1"),
-        ('resolution', 'cardinality', "0.1"),
-
-    ),
     science.Model: (
 
-        ('category', 'type', unicode),
-        ('specialization_id', 'type', unicode),
-        ('realms', 'type', science.ScientificRealm),
+        ('realms', 'type', science.Realm),
         ('description', 'type', unicode),
         ('repository', 'type', shared.OnlineResource),
         ('coupler', 'type', unicode),
@@ -3082,14 +2795,14 @@ CONSTRAINTS = {
         ('internal_software_components', 'type', software.SoftwareComponent),
         ('development_history', 'type', software.DevelopmentPath),
         ('long_name', 'type', unicode),
+        ('canonical_id', 'type', unicode),
         ('citations', 'type', shared.Citation),
         ('meta', 'type', shared.DocMetaInfo),
         ('version', 'type', unicode),
-        ('key_properties', 'type', science.KeyProperties),
+        ('model_type', 'type', unicode),
+        ('key_properties', 'type', science.Process),
         ('name', 'type', unicode),
 
-        ('category', 'cardinality', "1.1"),
-        ('specialization_id', 'cardinality', "0.1"),
         ('realms', 'cardinality', "0.N"),
         ('description', 'cardinality', "0.1"),
         ('repository', 'cardinality', "0.1"),
@@ -3099,9 +2812,11 @@ CONSTRAINTS = {
         ('internal_software_components', 'cardinality', "0.N"),
         ('development_history', 'cardinality', "0.1"),
         ('long_name', 'cardinality', "0.1"),
+        ('canonical_id', 'cardinality', "0.1"),
         ('citations', 'cardinality', "0.N"),
         ('meta', 'cardinality', "1.1"),
         ('version', 'cardinality', "0.1"),
+        ('model_type', 'cardinality', "1.1"),
         ('key_properties', 'cardinality', "0.1"),
         ('name', 'cardinality', "1.1"),
 
@@ -3111,121 +2826,104 @@ CONSTRAINTS = {
         ('description', 'type', unicode),
         ('short_name', 'type', unicode),
         ('specialization_id', 'type', unicode),
-        ('sub_processes', 'type', science.SubProcess),
+        ('overview', 'type', unicode),
+        ('property_sets', 'type', science.TopicPropertySet),
+        ('sub_processes', 'type', science.Topic),
+        ('responsible_parties', 'type', shared.Responsibility),
         ('citations', 'type', shared.Citation),
-        ('details', 'type', science.Detail),
-        ('implementation_overview', 'type', unicode),
         ('keywords', 'type', unicode),
+        ('properties', 'type', science.TopicProperty),
 
-        ('description', 'cardinality', "1.1"),
-        ('short_name', 'cardinality', "1.1"),
-        ('specialization_id', 'cardinality', "1.1"),
+        ('description', 'cardinality', "0.1"),
+        ('short_name', 'cardinality', "0.1"),
+        ('specialization_id', 'cardinality', "0.1"),
+        ('overview', 'cardinality', "0.1"),
+        ('property_sets', 'cardinality', "1.N"),
         ('sub_processes', 'cardinality', "0.N"),
+        ('responsible_parties', 'cardinality', "0.N"),
         ('citations', 'cardinality', "0.N"),
-        ('details', 'cardinality', "0.N"),
-        ('implementation_overview', 'cardinality', "1.1"),
-        ('keywords', 'cardinality', "0.1"),
+        ('keywords', 'cardinality', "0.N"),
+        ('properties', 'cardinality', "1.N"),
 
     ),
-    science.Resolution: (
-
-        ('canonical_horizontal_resolution', 'type', unicode),
-        ('description', 'type', unicode),
-        ('short_name', 'type', unicode),
-        ('number_of_horizontal_gridpoints', 'type', int),
-        ('specialization_id', 'type', unicode),
-        ('citations', 'type', shared.Citation),
-        ('is_adaptive_grid', 'type', bool),
-        ('details', 'type', science.Detail),
-        ('implementation_overview', 'type', unicode),
-        ('number_of_vertical_levels', 'type', int),
-        ('name', 'type', unicode),
-
-        ('canonical_horizontal_resolution', 'cardinality', "0.1"),
-        ('description', 'cardinality', "1.1"),
-        ('short_name', 'cardinality', "1.1"),
-        ('number_of_horizontal_gridpoints', 'cardinality', "0.1"),
-        ('specialization_id', 'cardinality', "1.1"),
-        ('citations', 'cardinality', "0.N"),
-        ('is_adaptive_grid', 'cardinality', "0.1"),
-        ('details', 'cardinality', "0.N"),
-        ('implementation_overview', 'cardinality', "1.1"),
-        ('number_of_vertical_levels', 'cardinality', "0.1"),
-        ('name', 'cardinality', "1.1"),
-
-    ),
-    science.ScienceContext: (
-
-        ('specialization_id', 'type', unicode),
-        ('description', 'type', unicode),
-        ('short_name', 'type', unicode),
-
-        ('specialization_id', 'cardinality', "1.1"),
-        ('description', 'cardinality', "1.1"),
-        ('short_name', 'cardinality', "1.1"),
-
-    ),
-    science.ScientificRealm: (
+    science.Realm: (
 
         ('processes', 'type', science.Process),
-        ('realm', 'type', unicode),
-        ('name', 'type', unicode),
-        ('citations', 'type', shared.Citation),
+        ('description', 'type', unicode),
+        ('short_name', 'type', unicode),
         ('specialization_id', 'type', unicode),
-        ('meta', 'type', shared.DocMetaInfo),
-        ('grid', 'type', science.Grid),
         ('overview', 'type', unicode),
-        ('key_properties', 'type', science.KeyProperties),
+        ('software_frameworks', 'type', software.Implementation),
+        ('meta', 'type', shared.DocMetaInfo),
+        ('property_sets', 'type', science.TopicPropertySet),
+        ('responsible_parties', 'type', shared.Responsibility),
+        ('citations', 'type', shared.Citation),
+        ('grid', 'type', science.Process),
+        ('keywords', 'type', unicode),
+        ('key_properties', 'type', science.Process),
+        ('properties', 'type', science.TopicProperty),
+        ('realm_type', 'type', unicode),
 
         ('processes', 'cardinality', "1.N"),
-        ('realm', 'cardinality', "0.1"),
-        ('name', 'cardinality', "1.1"),
-        ('citations', 'cardinality', "0.N"),
+        ('description', 'cardinality', "0.1"),
+        ('short_name', 'cardinality', "0.1"),
         ('specialization_id', 'cardinality', "0.1"),
-        ('meta', 'cardinality', "1.1"),
-        ('grid', 'cardinality', "0.1"),
         ('overview', 'cardinality', "0.1"),
+        ('software_frameworks', 'cardinality', "0.N"),
+        ('meta', 'cardinality', "1.1"),
+        ('property_sets', 'cardinality', "1.N"),
+        ('responsible_parties', 'cardinality', "0.N"),
+        ('citations', 'cardinality', "0.N"),
+        ('grid', 'cardinality', "0.1"),
+        ('keywords', 'cardinality', "0.N"),
         ('key_properties', 'cardinality', "0.1"),
+        ('properties', 'cardinality', "1.N"),
+        ('realm_type', 'cardinality', "0.1"),
 
     ),
-    science.SubProcess: (
+    science.Topic: (
 
         ('description', 'type', unicode),
         ('short_name', 'type', unicode),
         ('specialization_id', 'type', unicode),
+        ('overview', 'type', unicode),
+        ('property_sets', 'type', science.TopicPropertySet),
+        ('responsible_parties', 'type', shared.Responsibility),
         ('citations', 'type', shared.Citation),
-        ('details', 'type', science.Detail),
-        ('implementation_overview', 'type', unicode),
+        ('keywords', 'type', unicode),
+        ('properties', 'type', science.TopicProperty),
 
-        ('description', 'cardinality', "1.1"),
-        ('short_name', 'cardinality', "1.1"),
-        ('specialization_id', 'cardinality', "1.1"),
+        ('description', 'cardinality', "0.1"),
+        ('short_name', 'cardinality', "0.1"),
+        ('specialization_id', 'cardinality', "0.1"),
+        ('overview', 'cardinality', "0.1"),
+        ('property_sets', 'cardinality', "1.N"),
+        ('responsible_parties', 'cardinality', "0.N"),
         ('citations', 'cardinality', "0.N"),
-        ('details', 'cardinality', "0.N"),
-        ('implementation_overview', 'cardinality', "1.1"),
+        ('keywords', 'cardinality', "0.N"),
+        ('properties', 'cardinality', "1.N"),
 
     ),
-    science.Tuning: (
+    science.TopicProperty: (
 
+        ('specialization_id', 'type', unicode),
+        ('value', 'type', unicode),
+
+        ('specialization_id', 'cardinality', "0.1"),
+        ('value', 'cardinality', "1.1"),
+
+    ),
+    science.TopicPropertySet: (
+
+        ('specialization_id', 'type', unicode),
         ('description', 'type', unicode),
         ('short_name', 'type', unicode),
-        ('trend_metrics_used', 'type', data.VariableCollection),
-        ('specialization_id', 'type', unicode),
-        ('global_mean_metrics_used', 'type', data.VariableCollection),
-        ('regional_metrics_used', 'type', data.VariableCollection),
-        ('citations', 'type', shared.Citation),
-        ('details', 'type', science.Detail),
-        ('implementation_overview', 'type', unicode),
+        ('properties', 'type', science.TopicProperty),
 
-        ('description', 'cardinality', "1.1"),
-        ('short_name', 'cardinality', "1.1"),
-        ('trend_metrics_used', 'cardinality', "0.1"),
-        ('specialization_id', 'cardinality', "1.1"),
-        ('global_mean_metrics_used', 'cardinality', "0.1"),
-        ('regional_metrics_used', 'cardinality', "0.1"),
-        ('citations', 'cardinality', "0.N"),
-        ('details', 'cardinality', "0.N"),
-        ('implementation_overview', 'cardinality', "1.1"),
+        ('specialization_id', 'cardinality', "0.1"),
+        ('description', 'cardinality', "0.1"),
+        ('short_name', 'cardinality', "0.1"),
+        ('properties', 'cardinality', "1.N"),
 
     ),
     shared.Citation: (
@@ -3412,6 +3110,7 @@ CONSTRAINTS = {
         ('release_date', 'type', datetime.datetime),
         ('development_history', 'type', software.DevelopmentPath),
         ('long_name', 'type', unicode),
+        ('canonical_id', 'type', unicode),
         ('citations', 'type', shared.Citation),
         ('version', 'type', unicode),
         ('name', 'type', unicode),
@@ -3421,6 +3120,7 @@ CONSTRAINTS = {
         ('release_date', 'cardinality', "0.1"),
         ('development_history', 'cardinality', "0.1"),
         ('long_name', 'cardinality', "0.1"),
+        ('canonical_id', 'cardinality', "0.1"),
         ('citations', 'cardinality', "0.N"),
         ('version', 'cardinality', "0.1"),
         ('name', 'cardinality', "1.1"),
@@ -3464,6 +3164,29 @@ CONSTRAINTS = {
         ('description', 'cardinality', "1.1"),
 
     ),
+    software.Implementation: (
+
+        ('description', 'type', unicode),
+        ('repository', 'type', shared.OnlineResource),
+        ('release_date', 'type', datetime.datetime),
+        ('development_history', 'type', software.DevelopmentPath),
+        ('long_name', 'type', unicode),
+        ('canonical_id', 'type', unicode),
+        ('citations', 'type', shared.Citation),
+        ('version', 'type', unicode),
+        ('name', 'type', unicode),
+
+        ('description', 'cardinality', "0.1"),
+        ('repository', 'cardinality', "0.1"),
+        ('release_date', 'cardinality', "0.1"),
+        ('development_history', 'cardinality', "0.1"),
+        ('long_name', 'cardinality', "0.1"),
+        ('canonical_id', 'cardinality', "0.1"),
+        ('citations', 'cardinality', "0.N"),
+        ('version', 'cardinality', "0.1"),
+        ('name', 'cardinality', "1.1"),
+
+    ),
     software.SoftwareComponent: (
 
         ('license', 'type', unicode),
@@ -3476,6 +3199,7 @@ CONSTRAINTS = {
         ('development_history', 'type', software.DevelopmentPath),
         ('sub_components', 'type', software.SoftwareComponent),
         ('long_name', 'type', unicode),
+        ('canonical_id', 'type', unicode),
         ('citations', 'type', shared.Citation),
         ('grid', 'type', software.Gridspec),
         ('version', 'type', unicode),
@@ -3494,6 +3218,7 @@ CONSTRAINTS = {
         ('development_history', 'cardinality', "0.1"),
         ('sub_components', 'cardinality', "0.N"),
         ('long_name', 'cardinality', "0.1"),
+        ('canonical_id', 'cardinality', "0.1"),
         ('citations', 'cardinality', "0.N"),
         ('grid', 'cardinality', "0.1"),
         ('version', 'cardinality', "0.1"),
@@ -4726,14 +4451,14 @@ CONSTRAINTS = {
 
     (designing.DomainRequirements, 'required_extent'): (
 
-        ('type', science.Extent),
+        ('type', science.Topic),
 
         ('cardinality', "0.1"),
 
     ),
     (designing.DomainRequirements, 'required_resolution'): (
 
-        ('type', science.Resolution),
+        ('type', science.Topic),
 
         ('cardinality', "0.1"),
 
@@ -7039,419 +6764,6 @@ CONSTRAINTS = {
 
     ),
 
-    (science.ConservationProperties, 'corrected_conserved_prognostic_variables'): (
-
-        ('type', data.VariableCollection),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (science.ConservationProperties, 'description'): (
-
-        ('type', unicode),
-
-        ('cardinality', "1.1"),
-
-    ),
-    (science.ConservationProperties, 'was_flux_correction_used'): (
-
-        ('type', bool),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (science.ConservationProperties, 'citations'): (
-
-        ('type', shared.Citation),
-
-        ('cardinality', "0.N"),
-
-    ),
-    (science.ConservationProperties, 'details'): (
-
-        ('type', science.Detail),
-
-        ('cardinality', "0.N"),
-
-    ),
-    (science.ConservationProperties, 'implementation_overview'): (
-
-        ('type', unicode),
-
-        ('cardinality', "1.1"),
-
-    ),
-    (science.ConservationProperties, 'description'): (
-
-        ('type', unicode),
-
-        ('cardinality', "1.1"),
-
-    ),
-    (science.ConservationProperties, 'short_name'): (
-
-        ('type', unicode),
-
-        ('cardinality', "1.1"),
-
-    ),
-    (science.ConservationProperties, 'specialization_id'): (
-
-        ('type', unicode),
-
-        ('cardinality', "1.1"),
-
-    ),
-
-    (science.Detail, 'description'): (
-
-        ('type', unicode),
-
-        ('cardinality', "1.1"),
-
-    ),
-    (science.Detail, 'short_name'): (
-
-        ('type', unicode),
-
-        ('cardinality', "1.1"),
-
-    ),
-    (science.Detail, 'specialization_id'): (
-
-        ('type', unicode),
-
-        ('cardinality', "1.1"),
-
-    ),
-
-    (science.Discretisation, 'citations'): (
-
-        ('type', shared.Citation),
-
-        ('cardinality', "0.N"),
-
-    ),
-    (science.Discretisation, 'details'): (
-
-        ('type', science.Detail),
-
-        ('cardinality', "0.N"),
-
-    ),
-    (science.Discretisation, 'implementation_overview'): (
-
-        ('type', unicode),
-
-        ('cardinality', "1.1"),
-
-    ),
-    (science.Discretisation, 'description'): (
-
-        ('type', unicode),
-
-        ('cardinality', "1.1"),
-
-    ),
-    (science.Discretisation, 'short_name'): (
-
-        ('type', unicode),
-
-        ('cardinality', "1.1"),
-
-    ),
-    (science.Discretisation, 'specialization_id'): (
-
-        ('type', unicode),
-
-        ('cardinality', "1.1"),
-
-    ),
-
-    (science.Extent, 'is_global'): (
-
-        ('type', bool),
-
-        ('cardinality', "1.1"),
-
-    ),
-    (science.Extent, 'region_known_as'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.N"),
-
-    ),
-    (science.Extent, 'citations'): (
-
-        ('type', shared.Citation),
-
-        ('cardinality', "0.N"),
-
-    ),
-    (science.Extent, 'details'): (
-
-        ('type', science.Detail),
-
-        ('cardinality', "0.N"),
-
-    ),
-    (science.Extent, 'implementation_overview'): (
-
-        ('type', unicode),
-
-        ('cardinality', "1.1"),
-
-    ),
-    (science.Extent, 'description'): (
-
-        ('type', unicode),
-
-        ('cardinality', "1.1"),
-
-    ),
-    (science.Extent, 'short_name'): (
-
-        ('type', unicode),
-
-        ('cardinality', "1.1"),
-
-    ),
-    (science.Extent, 'specialization_id'): (
-
-        ('type', unicode),
-
-        ('cardinality', "1.1"),
-
-    ),
-
-    (science.Grid, 'citations'): (
-
-        ('type', shared.Citation),
-
-        ('cardinality', "0.N"),
-
-    ),
-    (science.Grid, 'description'): (
-
-        ('type', unicode),
-
-        ('cardinality', "1.1"),
-
-    ),
-    (science.Grid, 'details'): (
-
-        ('type', science.Detail),
-
-        ('cardinality', "0.N"),
-
-    ),
-    (science.Grid, 'discretisation'): (
-
-        ('type', science.Discretisation),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (science.Grid, 'meta'): (
-
-        ('type', shared.DocMetaInfo),
-
-        ('cardinality', "1.1"),
-
-    ),
-    (science.Grid, 'name'): (
-
-        ('type', unicode),
-
-        ('cardinality', "1.1"),
-
-    ),
-
-    (science.IsoExtent, 'eastern_boundary'): (
-
-        ('type', float),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (science.IsoExtent, 'northern_boundary'): (
-
-        ('type', float),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (science.IsoExtent, 'southern_boundary'): (
-
-        ('type', float),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (science.IsoExtent, 'western_boundary'): (
-
-        ('type', float),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (science.IsoExtent, 'is_global'): (
-
-        ('type', bool),
-
-        ('cardinality', "1.1"),
-
-    ),
-    (science.IsoExtent, 'region_known_as'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.N"),
-
-    ),
-    (science.IsoExtent, 'citations'): (
-
-        ('type', shared.Citation),
-
-        ('cardinality', "0.N"),
-
-    ),
-    (science.IsoExtent, 'details'): (
-
-        ('type', science.Detail),
-
-        ('cardinality', "0.N"),
-
-    ),
-    (science.IsoExtent, 'implementation_overview'): (
-
-        ('type', unicode),
-
-        ('cardinality', "1.1"),
-
-    ),
-    (science.IsoExtent, 'description'): (
-
-        ('type', unicode),
-
-        ('cardinality', "1.1"),
-
-    ),
-    (science.IsoExtent, 'short_name'): (
-
-        ('type', unicode),
-
-        ('cardinality', "1.1"),
-
-    ),
-    (science.IsoExtent, 'specialization_id'): (
-
-        ('type', unicode),
-
-        ('cardinality', "1.1"),
-
-    ),
-
-    (science.KeyProperties, 'extent'): (
-
-        ('type', science.Extent),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (science.KeyProperties, 'extra_conservation_properties'): (
-
-        ('type', science.ConservationProperties),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (science.KeyProperties, 'resolution'): (
-
-        ('type', science.Resolution),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (science.KeyProperties, 'time_step'): (
-
-        ('type', float),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (science.KeyProperties, 'tuning_applied'): (
-
-        ('type', science.Tuning),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (science.KeyProperties, 'citations'): (
-
-        ('type', shared.Citation),
-
-        ('cardinality', "0.N"),
-
-    ),
-    (science.KeyProperties, 'details'): (
-
-        ('type', science.Detail),
-
-        ('cardinality', "0.N"),
-
-    ),
-    (science.KeyProperties, 'implementation_overview'): (
-
-        ('type', unicode),
-
-        ('cardinality', "1.1"),
-
-    ),
-    (science.KeyProperties, 'keywords'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (science.KeyProperties, 'sub_processes'): (
-
-        ('type', science.SubProcess),
-
-        ('cardinality', "0.N"),
-
-    ),
-    (science.KeyProperties, 'description'): (
-
-        ('type', unicode),
-
-        ('cardinality', "1.1"),
-
-    ),
-    (science.KeyProperties, 'short_name'): (
-
-        ('type', unicode),
-
-        ('cardinality', "1.1"),
-
-    ),
-    (science.KeyProperties, 'specialization_id'): (
-
-        ('type', unicode),
-
-        ('cardinality', "1.1"),
-
-    ),
-
-    (science.Model, 'category'): (
-
-        ('type', unicode),
-
-        ('cardinality', "1.1"),
-
-    ),
     (science.Model, 'coupled_components'): (
 
         ('type', science.Model),
@@ -7475,7 +6787,7 @@ CONSTRAINTS = {
     ),
     (science.Model, 'key_properties'): (
 
-        ('type', science.KeyProperties),
+        ('type', science.Process),
 
         ('cardinality', "0.1"),
 
@@ -7487,14 +6799,21 @@ CONSTRAINTS = {
         ('cardinality', "1.1"),
 
     ),
+    (science.Model, 'model_type'): (
+
+        ('type', unicode),
+
+        ('cardinality', "1.1"),
+
+    ),
     (science.Model, 'realms'): (
 
-        ('type', science.ScientificRealm),
+        ('type', science.Realm),
 
         ('cardinality', "0.N"),
 
     ),
-    (science.Model, 'specialization_id'): (
+    (science.Model, 'canonical_id'): (
 
         ('type', unicode),
 
@@ -7558,37 +6877,16 @@ CONSTRAINTS = {
 
     ),
 
+    (science.Process, 'sub_processes'): (
+
+        ('type', science.Topic),
+
+        ('cardinality', "0.N"),
+
+    ),
     (science.Process, 'citations'): (
 
         ('type', shared.Citation),
-
-        ('cardinality', "0.N"),
-
-    ),
-    (science.Process, 'details'): (
-
-        ('type', science.Detail),
-
-        ('cardinality', "0.N"),
-
-    ),
-    (science.Process, 'implementation_overview'): (
-
-        ('type', unicode),
-
-        ('cardinality', "1.1"),
-
-    ),
-    (science.Process, 'keywords'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (science.Process, 'sub_processes'): (
-
-        ('type', science.SubProcess),
 
         ('cardinality', "0.N"),
 
@@ -7597,299 +6895,270 @@ CONSTRAINTS = {
 
         ('type', unicode),
 
-        ('cardinality', "1.1"),
+        ('cardinality', "0.1"),
+
+    ),
+    (science.Process, 'keywords'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.N"),
+
+    ),
+    (science.Process, 'overview'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (science.Process, 'properties'): (
+
+        ('type', science.TopicProperty),
+
+        ('cardinality', "1.N"),
+
+    ),
+    (science.Process, 'property_sets'): (
+
+        ('type', science.TopicPropertySet),
+
+        ('cardinality', "1.N"),
+
+    ),
+    (science.Process, 'responsible_parties'): (
+
+        ('type', shared.Responsibility),
+
+        ('cardinality', "0.N"),
 
     ),
     (science.Process, 'short_name'): (
 
         ('type', unicode),
 
-        ('cardinality', "1.1"),
+        ('cardinality', "0.1"),
 
     ),
     (science.Process, 'specialization_id'): (
 
         ('type', unicode),
 
-        ('cardinality', "1.1"),
+        ('cardinality', "0.1"),
 
     ),
 
-    (science.Resolution, 'canonical_horizontal_resolution'): (
+    (science.Realm, 'grid'): (
 
-        ('type', unicode),
+        ('type', science.Process),
 
         ('cardinality', "0.1"),
 
     ),
-    (science.Resolution, 'is_adaptive_grid'): (
+    (science.Realm, 'key_properties'): (
 
-        ('type', bool),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (science.Resolution, 'name'): (
-
-        ('type', unicode),
-
-        ('cardinality', "1.1"),
-
-    ),
-    (science.Resolution, 'number_of_horizontal_gridpoints'): (
-
-        ('type', int),
+        ('type', science.Process),
 
         ('cardinality', "0.1"),
 
     ),
-    (science.Resolution, 'number_of_vertical_levels'): (
-
-        ('type', int),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (science.Resolution, 'citations'): (
-
-        ('type', shared.Citation),
-
-        ('cardinality', "0.N"),
-
-    ),
-    (science.Resolution, 'details'): (
-
-        ('type', science.Detail),
-
-        ('cardinality', "0.N"),
-
-    ),
-    (science.Resolution, 'implementation_overview'): (
-
-        ('type', unicode),
-
-        ('cardinality', "1.1"),
-
-    ),
-    (science.Resolution, 'description'): (
-
-        ('type', unicode),
-
-        ('cardinality', "1.1"),
-
-    ),
-    (science.Resolution, 'short_name'): (
-
-        ('type', unicode),
-
-        ('cardinality', "1.1"),
-
-    ),
-    (science.Resolution, 'specialization_id'): (
-
-        ('type', unicode),
-
-        ('cardinality', "1.1"),
-
-    ),
-
-    (science.ScienceContext, 'description'): (
-
-        ('type', unicode),
-
-        ('cardinality', "1.1"),
-
-    ),
-    (science.ScienceContext, 'short_name'): (
-
-        ('type', unicode),
-
-        ('cardinality', "1.1"),
-
-    ),
-    (science.ScienceContext, 'specialization_id'): (
-
-        ('type', unicode),
-
-        ('cardinality', "1.1"),
-
-    ),
-
-    (science.ScientificRealm, 'citations'): (
-
-        ('type', shared.Citation),
-
-        ('cardinality', "0.N"),
-
-    ),
-    (science.ScientificRealm, 'grid'): (
-
-        ('type', science.Grid),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (science.ScientificRealm, 'key_properties'): (
-
-        ('type', science.KeyProperties),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (science.ScientificRealm, 'meta'): (
+    (science.Realm, 'meta'): (
 
         ('type', shared.DocMetaInfo),
 
         ('cardinality', "1.1"),
 
     ),
-    (science.ScientificRealm, 'name'): (
-
-        ('type', unicode),
-
-        ('cardinality', "1.1"),
-
-    ),
-    (science.ScientificRealm, 'overview'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (science.ScientificRealm, 'processes'): (
+    (science.Realm, 'processes'): (
 
         ('type', science.Process),
 
         ('cardinality', "1.N"),
 
     ),
-    (science.ScientificRealm, 'realm'): (
+    (science.Realm, 'realm_type'): (
 
         ('type', unicode),
 
         ('cardinality', "0.1"),
 
     ),
-    (science.ScientificRealm, 'specialization_id'): (
+    (science.Realm, 'software_frameworks'): (
 
-        ('type', unicode),
+        ('type', software.Implementation),
 
-        ('cardinality', "0.1"),
+        ('cardinality', "0.N"),
 
     ),
-
-    (science.SubProcess, 'citations'): (
+    (science.Realm, 'citations'): (
 
         ('type', shared.Citation),
 
         ('cardinality', "0.N"),
 
     ),
-    (science.SubProcess, 'details'): (
+    (science.Realm, 'description'): (
 
-        ('type', science.Detail),
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (science.Realm, 'keywords'): (
+
+        ('type', unicode),
 
         ('cardinality', "0.N"),
 
     ),
-    (science.SubProcess, 'implementation_overview'): (
+    (science.Realm, 'overview'): (
 
         ('type', unicode),
-
-        ('cardinality', "1.1"),
-
-    ),
-    (science.SubProcess, 'description'): (
-
-        ('type', unicode),
-
-        ('cardinality', "1.1"),
-
-    ),
-    (science.SubProcess, 'short_name'): (
-
-        ('type', unicode),
-
-        ('cardinality', "1.1"),
-
-    ),
-    (science.SubProcess, 'specialization_id'): (
-
-        ('type', unicode),
-
-        ('cardinality', "1.1"),
-
-    ),
-
-    (science.Tuning, 'description'): (
-
-        ('type', unicode),
-
-        ('cardinality', "1.1"),
-
-    ),
-    (science.Tuning, 'global_mean_metrics_used'): (
-
-        ('type', data.VariableCollection),
 
         ('cardinality', "0.1"),
 
     ),
-    (science.Tuning, 'regional_metrics_used'): (
+    (science.Realm, 'properties'): (
 
-        ('type', data.VariableCollection),
+        ('type', science.TopicProperty),
+
+        ('cardinality', "1.N"),
+
+    ),
+    (science.Realm, 'property_sets'): (
+
+        ('type', science.TopicPropertySet),
+
+        ('cardinality', "1.N"),
+
+    ),
+    (science.Realm, 'responsible_parties'): (
+
+        ('type', shared.Responsibility),
+
+        ('cardinality', "0.N"),
+
+    ),
+    (science.Realm, 'short_name'): (
+
+        ('type', unicode),
 
         ('cardinality', "0.1"),
 
     ),
-    (science.Tuning, 'trend_metrics_used'): (
+    (science.Realm, 'specialization_id'): (
 
-        ('type', data.VariableCollection),
+        ('type', unicode),
 
         ('cardinality', "0.1"),
 
     ),
-    (science.Tuning, 'citations'): (
+
+    (science.Topic, 'citations'): (
 
         ('type', shared.Citation),
 
         ('cardinality', "0.N"),
 
     ),
-    (science.Tuning, 'details'): (
+    (science.Topic, 'description'): (
 
-        ('type', science.Detail),
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (science.Topic, 'keywords'): (
+
+        ('type', unicode),
 
         ('cardinality', "0.N"),
 
     ),
-    (science.Tuning, 'implementation_overview'): (
+    (science.Topic, 'overview'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (science.Topic, 'properties'): (
+
+        ('type', science.TopicProperty),
+
+        ('cardinality', "1.N"),
+
+    ),
+    (science.Topic, 'property_sets'): (
+
+        ('type', science.TopicPropertySet),
+
+        ('cardinality', "1.N"),
+
+    ),
+    (science.Topic, 'responsible_parties'): (
+
+        ('type', shared.Responsibility),
+
+        ('cardinality', "0.N"),
+
+    ),
+    (science.Topic, 'short_name'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (science.Topic, 'specialization_id'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+
+    (science.TopicProperty, 'specialization_id'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (science.TopicProperty, 'value'): (
 
         ('type', unicode),
 
         ('cardinality', "1.1"),
 
     ),
-    (science.Tuning, 'description'): (
+
+    (science.TopicPropertySet, 'description'): (
 
         ('type', unicode),
 
-        ('cardinality', "1.1"),
+        ('cardinality', "0.1"),
 
     ),
-    (science.Tuning, 'short_name'): (
+    (science.TopicPropertySet, 'properties'): (
 
-        ('type', unicode),
+        ('type', science.TopicProperty),
 
-        ('cardinality', "1.1"),
+        ('cardinality', "1.N"),
 
     ),
-    (science.Tuning, 'specialization_id'): (
+    (science.TopicPropertySet, 'short_name'): (
 
         ('type', unicode),
 
-        ('cardinality', "1.1"),
+        ('cardinality', "0.1"),
+
+    ),
+    (science.TopicPropertySet, 'specialization_id'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
 
     ),
 
@@ -8364,6 +7633,13 @@ CONSTRAINTS = {
 
     ),
 
+    (software.ComponentBase, 'canonical_id'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
     (software.ComponentBase, 'citations'): (
 
         ('type', shared.Citation),
@@ -8488,6 +7764,70 @@ CONSTRAINTS = {
 
     ),
 
+    (software.Implementation, 'canonical_id'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (software.Implementation, 'citations'): (
+
+        ('type', shared.Citation),
+
+        ('cardinality', "0.N"),
+
+    ),
+    (software.Implementation, 'description'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (software.Implementation, 'development_history'): (
+
+        ('type', software.DevelopmentPath),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (software.Implementation, 'long_name'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (software.Implementation, 'name'): (
+
+        ('type', unicode),
+
+        ('cardinality', "1.1"),
+
+    ),
+    (software.Implementation, 'release_date'): (
+
+        ('type', datetime.datetime),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (software.Implementation, 'repository'): (
+
+        ('type', shared.OnlineResource),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (software.Implementation, 'version'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+
     (software.SoftwareComponent, 'composition'): (
 
         ('type', software.Composition),
@@ -8549,6 +7889,13 @@ CONSTRAINTS = {
         ('type', software.SoftwareComponent),
 
         ('cardinality', "0.N"),
+
+    ),
+    (software.SoftwareComponent, 'canonical_id'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
 
     ),
     (software.SoftwareComponent, 'citations'): (
@@ -8977,48 +8324,6 @@ http://www.geosci-model-dev-discuss.net/gmd-2016-197/)
         Platform storage volume and units.
 
     """,
-    science.ConservationProperties: """
-        Describes how prognostic variables are conserved.
-
-    """,
-    science.Detail: """
-        Provides details of specific properties of a process, sub-process,
-    key properties, etc., there are two possible specialisations
-    expected: (1) A detail_vocabulary is identified, and a cardinality
-    is assigned to that for possible responses, or (2) Detail is used
-    to provide a collection for a set of properties which are defined
-    in the sub-class. However, those properties must have a type which
-    is selected from the classmap (that is, standard 'non-es-doc'
-    types).
-
-    """,
-    science.Discretisation: """
-        Collection of properties related to method of process discretisation.
-
-    """,
-    science.Extent: """
-        Key scientific characteristics of the grid use to simulate a
-    specific domain.  Note that the extent does not itself describe a
-    grid, so, for example, a polar stereographic grid may have an
-    extent of northern boundary 90N, southern boundary 45N, but the
-    fact that it is PS comes from the grid_type.
-
-    """,
-    science.Grid: """
-        This describes the numerical grid used for the calculations.  It
-    is not necessarily the grid upon which the data is output.  It is
-    NOT the resolution, which is a property of a specific domain.
-
-    """,
-    science.IsoExtent: """
-        Extent on a latitude-longitudinal grid - to aid traditional cartesian discovery.
-
-    """,
-    science.KeyProperties: """
-        High level list of key properties. It can be specialised in
-    extension packages using the detail extensions.
-
-    """,
     science.Model: """
         A model component: can be executed standalone, and has as
     scientific description available via a link to a science.domain
@@ -9035,42 +8340,21 @@ http://www.geosci-model-dev-discuss.net/gmd-2016-197/)
     information.
 
     """,
-    science.Resolution: """
-        Describes the computational spatial resolution of a component or
-    process.  Not intended to replace or replicate the output grid
-    description.  When it appears as part of a process description,
-    provide only properties that differ from parent domain.  Note that
-    this is supposed to capture gross features of the grid, we expect
-    many grids will have different variable layouts, those should be
-    described in the grid description, and the exact resolution is not
-    required. Note that many properties are not appropriate for
-    adaptive grids.
-
-    """,
-    science.ScienceContext: """
-        This is the base class for the science mixins, that is the classes
-    which we expect to be specialised and extended by project specific
-    vocabularies.  It is expected that values of these will be
-    provided within vocabulary definitions.
-
-    """,
-    science.ScientificRealm: """
+    science.Realm: """
         Scientific area of a numerical model - usually a sub-model or component.
 
     """,
-    science.SubProcess: """
-        Provides structure for description of part of process simulated
-    within a particular area (or domain/realm/component) of a
-    model. Typically this will be a part of process which shares
-    common properties. It will normally be sub classed within a
-    specific implementation so that constraints can be used to ensure
-    that the process details requested are consistent with projects
-    requirements for information.
+    science.Topic: """
+        An organized collection of details upon a specific topic, e.g. model key properties.
 
     """,
-    science.Tuning: """
-        Method used to optimise equation parameters in model component
-    (aka 'tuning').
+    science.TopicProperty: """
+        A specialized question asked of the scientic community.
+
+    """,
+    science.TopicPropertySet: """
+        Provides specific details related to a topic (i.e. process, sub-process,
+    grid, key properties, etc).
 
     """,
     shared.Citation: """
@@ -9147,6 +8431,13 @@ http://www.geosci-model-dev-discuss.net/gmd-2016-197/)
     """,
     software.Gridspec: """
         Fully defines the computational grid used.
+
+    """,
+    software.Implementation: """
+        Implementation information for a software framework/component, whether a top level model,
+    or a specific piece of code known as a 'component'. In software terms, a
+    software framework/component is a discrete set of code that takes input data and generates output data.
+    Software frameworks/components may or may not have scientific descriptions.
 
     """,
     software.SoftwareComponent: """
@@ -9566,48 +8857,6 @@ http://www.geosci-model-dev-discuss.net/gmd-2016-197/)
         "Volume units.",
     (platform.StorageVolume, 'volume'):
         "Numeric value.",
-    (science.ConservationProperties, 'corrected_conserved_prognostic_variables'):
-        "Set of variables which are conserved by *more* than the numerical scheme alone.",
-    (science.ConservationProperties, 'description'):
-        "Brief description of conservation methodology",
-    (science.ConservationProperties, 'was_flux_correction_used'):
-        "Flag to indicate if correction involved flux correction.",
-    (science.Extent, 'is_global'):
-        "True if horizontal coverage is global.",
-    (science.Extent, 'region_known_as'):
-        "Identifier(s) for the region covered by the extent.",
-    (science.Grid, 'citations'):
-        "Set of pertinent citations.",
-    (science.Grid, 'description'):
-        "Abstract description of grid.",
-    (science.Grid, 'details'):
-        "Specific grid properties.",
-    (science.Grid, 'discretisation'):
-        "Description of the numerics of the discretisation.",
-    (science.Grid, 'meta'):
-        "Injected document metadata.",
-    (science.Grid, 'name'):
-        "This is a string usually used by the modelling group to describe the overall grid.(e.g. the ENDGAME/New Dynamics dynamical cores have their own grids describing variable layouts.",
-    (science.IsoExtent, 'eastern_boundary'):
-        "Eastern boundary in degrees of longitude.",
-    (science.IsoExtent, 'northern_boundary'):
-        "Northern boundary in degrees of latitude.",
-    (science.IsoExtent, 'southern_boundary'):
-        "Southern boundary in degrees of latitude.",
-    (science.IsoExtent, 'western_boundary'):
-        "Western boundary in degrees of longitude.",
-    (science.KeyProperties, 'extent'):
-        "Key scientific characteristics of the grid use to simulate a specific domain.",
-    (science.KeyProperties, 'extra_conservation_properties'):
-        "Details of methodology needed to conserve variables between processes.",
-    (science.KeyProperties, 'resolution'):
-        "The resolution of the grid (e.g. N512L180).",
-    (science.KeyProperties, 'time_step'):
-        "Timestep (in seconds) of overall component.",
-    (science.KeyProperties, 'tuning_applied'):
-        "Describe any tuning used to optimise the parameters in this domain.",
-    (science.Model, 'category'):
-        "Generic type for this model.",
     (science.Model, 'coupled_components'):
         "Software components which are linked together using a coupler to deliver this model.",
     (science.Model, 'coupler'):
@@ -9615,71 +8864,57 @@ http://www.geosci-model-dev-discuss.net/gmd-2016-197/)
     (science.Model, 'internal_software_components'):
         "Software modules which together provide the functionality for this model.",
     (science.Model, 'key_properties'):
-        "Model default key properties (may be over-ridden in coupled component and scientific realm properties).",
+        "Model default key properties (may be over-ridden in coupled component and realm properties).",
     (science.Model, 'meta'):
         "Injected document metadata.",
+    (science.Model, 'model_type'):
+        "Generic type for this model.",
     (science.Model, 'realms'):
         "The scientific realms which this model simulates internally, i.e. those which are not linked together using a coupler.",
-    (science.Model, 'specialization_id'):
-        "Specialization identifier, where this model description was constructed via a controlled specialization.",
-    (science.Process, 'citations'):
-        "Set of pertinent citations.",
-    (science.Process, 'details'):
-        "Sets of properties for this process.",
-    (science.Process, 'implementation_overview'):
-        "General overview description of the implementation of this process.",
-    (science.Process, 'keywords'):
-        "keywords to help re-use and discovery of this information.",
     (science.Process, 'sub_processes'):
         "Discrete portion of a process with common process details.",
-    (science.Resolution, 'canonical_horizontal_resolution'):
-        "Expression quoted for gross comparisons of resolution, eg. 50km or 0.1 degrees etc.",
-    (science.Resolution, 'is_adaptive_grid'):
-        "Default is False. Set true if grid resolution changes during execution.",
-    (science.Resolution, 'name'):
-        "This is a string usually used by the modelling group to describe the resolution of this grid,  e.g. N512L180 or T512L70 etc.",
-    (science.Resolution, 'number_of_horizontal_gridpoints'):
-        "Total number of horizontal points (or degrees of freedom) on computational grid.",
-    (science.Resolution, 'number_of_vertical_levels'):
-        "Number of vertical levels resolved on computational grid.",
-    (science.ScienceContext, 'description'):
-        "Scientific context for which this description is provided.",
-    (science.ScienceContext, 'short_name'):
-        "The name of this process/algorithm/sub-process/detail.",
-    (science.ScienceContext, 'specialization_id'):
-        "Specialization identifier for this collection of properties.",
-    (science.ScientificRealm, 'citations'):
-        "Set of pertinent citations.",
-    (science.ScientificRealm, 'grid'):
+    (science.Realm, 'grid'):
         "The grid used to layout the variables (e.g. the Global ENDGAME-grid).",
-    (science.ScientificRealm, 'key_properties'):
+    (science.Realm, 'key_properties'):
         "Realm key properties which differ from model defaults (grid, timestep etc).",
-    (science.ScientificRealm, 'meta'):
+    (science.Realm, 'meta'):
         "Injected document metadata.",
-    (science.ScientificRealm, 'name'):
-        "Name of the scientific realm (e.g. ocean).",
-    (science.ScientificRealm, 'overview'):
-        "Free text overview description of realm key properties.",
-    (science.ScientificRealm, 'processes'):
+    (science.Realm, 'processes'):
         "Processes simulated within the realm.",
-    (science.ScientificRealm, 'realm'):
+    (science.Realm, 'realm_type'):
         "Canonical name for the realm.",
-    (science.ScientificRealm, 'specialization_id'):
-        "Specialization identifier, where this realm description was constructed via a controlled specialization.",
-    (science.SubProcess, 'citations'):
+    (science.Realm, 'software_frameworks'):
+        "Software framework(s) of the realm.",
+    (science.Topic, 'citations'):
         "Set of pertinent citations.",
-    (science.SubProcess, 'details'):
-        "Sets of properties for this process.",
-    (science.SubProcess, 'implementation_overview'):
-        "General overview description of the implementation of this part of the process.",
-    (science.Tuning, 'description'):
-        "Brief description of tuning methodology. Include information about observational period(s) used.",
-    (science.Tuning, 'global_mean_metrics_used'):
-        "Set of metrics of the global mean state used in tuning model parameters.",
-    (science.Tuning, 'regional_metrics_used'):
-        "Which regional metrics of mean state (e.g Monsoons, tropical means etc) have been used in tuning.",
-    (science.Tuning, 'trend_metrics_used'):
-        "Which observed trend metrics have been used in tuning model parameters.",
+    (science.Topic, 'description'):
+        "A description (possibly derived from specialization).",
+    (science.Topic, 'keywords'):
+        "Keywords to help re-use and discovery of this information.",
+    (science.Topic, 'overview'):
+        "General implementation overview.",
+    (science.Topic, 'properties'):
+        "Set of associated specialized properties.",
+    (science.Topic, 'property_sets'):
+        "Set of associated specialized detail attributes.",
+    (science.Topic, 'responsible_parties'):
+        "People or organisations responsible for providing this information.",
+    (science.Topic, 'short_name'):
+        "A short-name / key (possibly derived from specialization).",
+    (science.Topic, 'specialization_id'):
+        "Specialization identifier (derived from specialization).",
+    (science.TopicProperty, 'specialization_id'):
+        "Specialization identifier (derived from specialization).",
+    (science.TopicProperty, 'value'):
+        "User value.",
+    (science.TopicPropertySet, 'description'):
+        "A description (possibly derived from specialization).",
+    (science.TopicPropertySet, 'properties'):
+        "Set of associated specialized properties.",
+    (science.TopicPropertySet, 'short_name'):
+        "A short-name / key (possibly derived from specialization).",
+    (science.TopicPropertySet, 'specialization_id'):
+        "Specialization identifier (derived from specialization).",
     (shared.Citation, 'abstract'):
         "Abstract providing high level reference overview.",
     (shared.Citation, 'citation_detail'):
@@ -9812,6 +9047,8 @@ http://www.geosci-model-dev-discuss.net/gmd-2016-197/)
         "Raw content (including markup).",
     (shared.TextBlob, 'encoding'):
         "Content encoding.",
+    (software.ComponentBase, 'canonical_id'):
+        "Vocabulary identifier, where this framework/component description was constructed via a controlled vocabulary.",
     (software.ComponentBase, 'citations'):
         "Set of pertinent citations.",
     (software.ComponentBase, 'description'):
@@ -9846,6 +9083,24 @@ http://www.geosci-model-dev-discuss.net/gmd-2016-197/)
         "#FIXME.",
     (software.Gridspec, 'description'):
         "Textural description.",
+    (software.Implementation, 'canonical_id'):
+        "Vocabulary identifier, where this framework/component description was constructed via a controlled vocabulary.",
+    (software.Implementation, 'citations'):
+        "Set of pertinent citations.",
+    (software.Implementation, 'description'):
+        "Textural description of framework/component.",
+    (software.Implementation, 'development_history'):
+        "History of the development of this framework/component.",
+    (software.Implementation, 'long_name'):
+        "Long name for framework/component.",
+    (software.Implementation, 'name'):
+        "Short name of framework/component.",
+    (software.Implementation, 'release_date'):
+        "The date of publication of the framework/component code.",
+    (software.Implementation, 'repository'):
+        "Location of code for this framework/component.",
+    (software.Implementation, 'version'):
+        "Version identifier.",
     (software.SoftwareComponent, 'composition'):
         "#FIXME.",
     (software.SoftwareComponent, 'connection_points'):
@@ -9965,11 +9220,6 @@ http://www.geosci-model-dev-discuss.net/gmd-2016-197/)
     """,
     science.ModelTypes: """
         Defines a set of gross model classes.
-
-    """,
-    science.SelectionCardinality: """
-        Provides the possible cardinalities for selecting from a controlled
-    vocabulary.
 
     """,
     shared.NilReason: """
@@ -10182,14 +9432,6 @@ http://www.geosci-model-dev-discuss.net/gmd-2016-197/)
         "Limited Area process model",
     (science.ModelTypes, 'Planetary'):
         "Non-Earth model",
-    (science.SelectionCardinality, '0.1'):
-        "Zero or one selections are permitted",
-    (science.SelectionCardinality, '0.N'):
-        "Zero or many selections are permitted",
-    (science.SelectionCardinality, '1.1'):
-        "One and only one selection is required",
-    (science.SelectionCardinality, '1.N'):
-        "At least one, and possibly many, selections are required",
     (shared.NilReason, 'nil:inapplicable'):
         "There is no value",
     (shared.NilReason, 'nil:missing'):
@@ -10362,20 +9604,12 @@ KEYS = {
     platform.Performance: "cim.2.platform.Performance",
     platform.StoragePool: "cim.2.platform.StoragePool",
     platform.StorageVolume: "cim.2.platform.StorageVolume",
-    science.ConservationProperties: "cim.2.science.ConservationProperties",
-    science.Detail: "cim.2.science.Detail",
-    science.Discretisation: "cim.2.science.Discretisation",
-    science.Extent: "cim.2.science.Extent",
-    science.Grid: "cim.2.science.Grid",
-    science.IsoExtent: "cim.2.science.IsoExtent",
-    science.KeyProperties: "cim.2.science.KeyProperties",
     science.Model: "cim.2.science.Model",
     science.Process: "cim.2.science.Process",
-    science.Resolution: "cim.2.science.Resolution",
-    science.ScienceContext: "cim.2.science.ScienceContext",
-    science.ScientificRealm: "cim.2.science.ScientificRealm",
-    science.SubProcess: "cim.2.science.SubProcess",
-    science.Tuning: "cim.2.science.Tuning",
+    science.Realm: "cim.2.science.Realm",
+    science.Topic: "cim.2.science.Topic",
+    science.TopicProperty: "cim.2.science.TopicProperty",
+    science.TopicPropertySet: "cim.2.science.TopicPropertySet",
     shared.Citation: "cim.2.shared.Citation",
     shared.DocMetaInfo: "cim.2.shared.DocMetaInfo",
     shared.DocReference: "cim.2.shared.DocReference",
@@ -10390,6 +9624,7 @@ KEYS = {
     software.DevelopmentPath: "cim.2.software.DevelopmentPath",
     software.EntryPoint: "cim.2.software.EntryPoint",
     software.Gridspec: "cim.2.software.Gridspec",
+    software.Implementation: "cim.2.software.Implementation",
     software.SoftwareComponent: "cim.2.software.SoftwareComponent",
     software.Variable: "cim.2.software.Variable",
     time.Calendar: "cim.2.time.Calendar",
@@ -10587,63 +9822,35 @@ KEYS = {
     (platform.StoragePool, 'vendor'): "cim.2.platform.StoragePool.vendor",
     (platform.StorageVolume, 'units'): "cim.2.platform.StorageVolume.units",
     (platform.StorageVolume, 'volume'): "cim.2.platform.StorageVolume.volume",
-    (science.ConservationProperties, 'corrected_conserved_prognostic_variables'): "cim.2.science.ConservationProperties.corrected_conserved_prognostic_variables",
-    (science.ConservationProperties, 'description'): "cim.2.science.ConservationProperties.description",
-    (science.ConservationProperties, 'was_flux_correction_used'): "cim.2.science.ConservationProperties.was_flux_correction_used",
-    (science.Extent, 'is_global'): "cim.2.science.Extent.is_global",
-    (science.Extent, 'region_known_as'): "cim.2.science.Extent.region_known_as",
-    (science.Grid, 'citations'): "cim.2.science.Grid.citations",
-    (science.Grid, 'description'): "cim.2.science.Grid.description",
-    (science.Grid, 'details'): "cim.2.science.Grid.details",
-    (science.Grid, 'discretisation'): "cim.2.science.Grid.discretisation",
-    (science.Grid, 'meta'): "cim.2.science.Grid.meta",
-    (science.Grid, 'name'): "cim.2.science.Grid.name",
-    (science.IsoExtent, 'eastern_boundary'): "cim.2.science.IsoExtent.eastern_boundary",
-    (science.IsoExtent, 'northern_boundary'): "cim.2.science.IsoExtent.northern_boundary",
-    (science.IsoExtent, 'southern_boundary'): "cim.2.science.IsoExtent.southern_boundary",
-    (science.IsoExtent, 'western_boundary'): "cim.2.science.IsoExtent.western_boundary",
-    (science.KeyProperties, 'extent'): "cim.2.science.KeyProperties.extent",
-    (science.KeyProperties, 'extra_conservation_properties'): "cim.2.science.KeyProperties.extra_conservation_properties",
-    (science.KeyProperties, 'resolution'): "cim.2.science.KeyProperties.resolution",
-    (science.KeyProperties, 'time_step'): "cim.2.science.KeyProperties.time_step",
-    (science.KeyProperties, 'tuning_applied'): "cim.2.science.KeyProperties.tuning_applied",
-    (science.Model, 'category'): "cim.2.science.Model.category",
     (science.Model, 'coupled_components'): "cim.2.science.Model.coupled_components",
     (science.Model, 'coupler'): "cim.2.science.Model.coupler",
     (science.Model, 'internal_software_components'): "cim.2.science.Model.internal_software_components",
     (science.Model, 'key_properties'): "cim.2.science.Model.key_properties",
     (science.Model, 'meta'): "cim.2.science.Model.meta",
+    (science.Model, 'model_type'): "cim.2.science.Model.model_type",
     (science.Model, 'realms'): "cim.2.science.Model.realms",
-    (science.Model, 'specialization_id'): "cim.2.science.Model.specialization_id",
-    (science.Process, 'citations'): "cim.2.science.Process.citations",
-    (science.Process, 'details'): "cim.2.science.Process.details",
-    (science.Process, 'implementation_overview'): "cim.2.science.Process.implementation_overview",
-    (science.Process, 'keywords'): "cim.2.science.Process.keywords",
     (science.Process, 'sub_processes'): "cim.2.science.Process.sub_processes",
-    (science.Resolution, 'canonical_horizontal_resolution'): "cim.2.science.Resolution.canonical_horizontal_resolution",
-    (science.Resolution, 'is_adaptive_grid'): "cim.2.science.Resolution.is_adaptive_grid",
-    (science.Resolution, 'name'): "cim.2.science.Resolution.name",
-    (science.Resolution, 'number_of_horizontal_gridpoints'): "cim.2.science.Resolution.number_of_horizontal_gridpoints",
-    (science.Resolution, 'number_of_vertical_levels'): "cim.2.science.Resolution.number_of_vertical_levels",
-    (science.ScienceContext, 'description'): "cim.2.science.ScienceContext.description",
-    (science.ScienceContext, 'short_name'): "cim.2.science.ScienceContext.short_name",
-    (science.ScienceContext, 'specialization_id'): "cim.2.science.ScienceContext.specialization_id",
-    (science.ScientificRealm, 'citations'): "cim.2.science.ScientificRealm.citations",
-    (science.ScientificRealm, 'grid'): "cim.2.science.ScientificRealm.grid",
-    (science.ScientificRealm, 'key_properties'): "cim.2.science.ScientificRealm.key_properties",
-    (science.ScientificRealm, 'meta'): "cim.2.science.ScientificRealm.meta",
-    (science.ScientificRealm, 'name'): "cim.2.science.ScientificRealm.name",
-    (science.ScientificRealm, 'overview'): "cim.2.science.ScientificRealm.overview",
-    (science.ScientificRealm, 'processes'): "cim.2.science.ScientificRealm.processes",
-    (science.ScientificRealm, 'realm'): "cim.2.science.ScientificRealm.realm",
-    (science.ScientificRealm, 'specialization_id'): "cim.2.science.ScientificRealm.specialization_id",
-    (science.SubProcess, 'citations'): "cim.2.science.SubProcess.citations",
-    (science.SubProcess, 'details'): "cim.2.science.SubProcess.details",
-    (science.SubProcess, 'implementation_overview'): "cim.2.science.SubProcess.implementation_overview",
-    (science.Tuning, 'description'): "cim.2.science.Tuning.description",
-    (science.Tuning, 'global_mean_metrics_used'): "cim.2.science.Tuning.global_mean_metrics_used",
-    (science.Tuning, 'regional_metrics_used'): "cim.2.science.Tuning.regional_metrics_used",
-    (science.Tuning, 'trend_metrics_used'): "cim.2.science.Tuning.trend_metrics_used",
+    (science.Realm, 'grid'): "cim.2.science.Realm.grid",
+    (science.Realm, 'key_properties'): "cim.2.science.Realm.key_properties",
+    (science.Realm, 'meta'): "cim.2.science.Realm.meta",
+    (science.Realm, 'processes'): "cim.2.science.Realm.processes",
+    (science.Realm, 'realm_type'): "cim.2.science.Realm.realm_type",
+    (science.Realm, 'software_frameworks'): "cim.2.science.Realm.software_frameworks",
+    (science.Topic, 'citations'): "cim.2.science.Topic.citations",
+    (science.Topic, 'description'): "cim.2.science.Topic.description",
+    (science.Topic, 'keywords'): "cim.2.science.Topic.keywords",
+    (science.Topic, 'overview'): "cim.2.science.Topic.overview",
+    (science.Topic, 'properties'): "cim.2.science.Topic.properties",
+    (science.Topic, 'property_sets'): "cim.2.science.Topic.property_sets",
+    (science.Topic, 'responsible_parties'): "cim.2.science.Topic.responsible_parties",
+    (science.Topic, 'short_name'): "cim.2.science.Topic.short_name",
+    (science.Topic, 'specialization_id'): "cim.2.science.Topic.specialization_id",
+    (science.TopicProperty, 'specialization_id'): "cim.2.science.TopicProperty.specialization_id",
+    (science.TopicProperty, 'value'): "cim.2.science.TopicProperty.value",
+    (science.TopicPropertySet, 'description'): "cim.2.science.TopicPropertySet.description",
+    (science.TopicPropertySet, 'properties'): "cim.2.science.TopicPropertySet.properties",
+    (science.TopicPropertySet, 'short_name'): "cim.2.science.TopicPropertySet.short_name",
+    (science.TopicPropertySet, 'specialization_id'): "cim.2.science.TopicPropertySet.specialization_id",
     (shared.Citation, 'abstract'): "cim.2.shared.Citation.abstract",
     (shared.Citation, 'citation_detail'): "cim.2.shared.Citation.citation_detail",
     (shared.Citation, 'collective_title'): "cim.2.shared.Citation.collective_title",
@@ -10710,6 +9917,7 @@ KEYS = {
     (shared.Responsibility, 'when'): "cim.2.shared.Responsibility.when",
     (shared.TextBlob, 'content'): "cim.2.shared.TextBlob.content",
     (shared.TextBlob, 'encoding'): "cim.2.shared.TextBlob.encoding",
+    (software.ComponentBase, 'canonical_id'): "cim.2.software.ComponentBase.canonical_id",
     (software.ComponentBase, 'citations'): "cim.2.software.ComponentBase.citations",
     (software.ComponentBase, 'description'): "cim.2.software.ComponentBase.description",
     (software.ComponentBase, 'development_history'): "cim.2.software.ComponentBase.development_history",
@@ -10727,6 +9935,15 @@ KEYS = {
     (software.DevelopmentPath, 'was_developed_in_house'): "cim.2.software.DevelopmentPath.was_developed_in_house",
     (software.EntryPoint, 'name'): "cim.2.software.EntryPoint.name",
     (software.Gridspec, 'description'): "cim.2.software.Gridspec.description",
+    (software.Implementation, 'canonical_id'): "cim.2.software.Implementation.canonical_id",
+    (software.Implementation, 'citations'): "cim.2.software.Implementation.citations",
+    (software.Implementation, 'description'): "cim.2.software.Implementation.description",
+    (software.Implementation, 'development_history'): "cim.2.software.Implementation.development_history",
+    (software.Implementation, 'long_name'): "cim.2.software.Implementation.long_name",
+    (software.Implementation, 'name'): "cim.2.software.Implementation.name",
+    (software.Implementation, 'release_date'): "cim.2.software.Implementation.release_date",
+    (software.Implementation, 'repository'): "cim.2.software.Implementation.repository",
+    (software.Implementation, 'version'): "cim.2.software.Implementation.version",
     (software.SoftwareComponent, 'composition'): "cim.2.software.SoftwareComponent.composition",
     (software.SoftwareComponent, 'connection_points'): "cim.2.software.SoftwareComponent.connection_points",
     (software.SoftwareComponent, 'coupling_framework'): "cim.2.software.SoftwareComponent.coupling_framework",
@@ -10774,7 +9991,6 @@ KEYS = {
     platform.StorageSystems: "cim.2.platform.StorageSystems",
     platform.VolumeUnits: "cim.2.platform.VolumeUnits",
     science.ModelTypes: "cim.2.science.ModelTypes",
-    science.SelectionCardinality: "cim.2.science.SelectionCardinality",
     shared.NilReason: "cim.2.shared.NilReason",
     shared.QualityStatus: "cim.2.shared.QualityStatus",
     shared.RoleCode: "cim.2.shared.RoleCode",
@@ -10872,10 +10088,6 @@ KEYS = {
     (science.ModelTypes, 'Mesoscale'): "cim.2.science.ModelTypes.Mesoscale",
     (science.ModelTypes, 'Process'): "cim.2.science.ModelTypes.Process",
     (science.ModelTypes, 'Planetary'): "cim.2.science.ModelTypes.Planetary",
-    (science.SelectionCardinality, '0.1'): "cim.2.science.SelectionCardinality.0.1",
-    (science.SelectionCardinality, '0.N'): "cim.2.science.SelectionCardinality.0.N",
-    (science.SelectionCardinality, '1.1'): "cim.2.science.SelectionCardinality.1.1",
-    (science.SelectionCardinality, '1.N'): "cim.2.science.SelectionCardinality.1.N",
     (shared.NilReason, 'nil:inapplicable'): "cim.2.shared.NilReason.nil:inapplicable",
     (shared.NilReason, 'nil:missing'): "cim.2.shared.NilReason.nil:missing",
     (shared.NilReason, 'nil:template'): "cim.2.shared.NilReason.nil:template",
@@ -10985,22 +10197,13 @@ platform.StoragePool.type_key = KEYS[platform.StoragePool]
 platform.StorageSystems.type_key = KEYS[platform.StorageSystems]
 platform.StorageVolume.type_key = KEYS[platform.StorageVolume]
 platform.VolumeUnits.type_key = KEYS[platform.VolumeUnits]
-science.ConservationProperties.type_key = KEYS[science.ConservationProperties]
-science.Detail.type_key = KEYS[science.Detail]
-science.Discretisation.type_key = KEYS[science.Discretisation]
-science.Extent.type_key = KEYS[science.Extent]
-science.Grid.type_key = KEYS[science.Grid]
-science.IsoExtent.type_key = KEYS[science.IsoExtent]
-science.KeyProperties.type_key = KEYS[science.KeyProperties]
 science.Model.type_key = KEYS[science.Model]
 science.ModelTypes.type_key = KEYS[science.ModelTypes]
 science.Process.type_key = KEYS[science.Process]
-science.Resolution.type_key = KEYS[science.Resolution]
-science.ScienceContext.type_key = KEYS[science.ScienceContext]
-science.ScientificRealm.type_key = KEYS[science.ScientificRealm]
-science.SelectionCardinality.type_key = KEYS[science.SelectionCardinality]
-science.SubProcess.type_key = KEYS[science.SubProcess]
-science.Tuning.type_key = KEYS[science.Tuning]
+science.Realm.type_key = KEYS[science.Realm]
+science.Topic.type_key = KEYS[science.Topic]
+science.TopicProperty.type_key = KEYS[science.TopicProperty]
+science.TopicPropertySet.type_key = KEYS[science.TopicPropertySet]
 shared.Citation.type_key = KEYS[shared.Citation]
 shared.DocMetaInfo.type_key = KEYS[shared.DocMetaInfo]
 shared.DocReference.type_key = KEYS[shared.DocReference]
@@ -11020,6 +10223,7 @@ software.CouplingFramework.type_key = KEYS[software.CouplingFramework]
 software.DevelopmentPath.type_key = KEYS[software.DevelopmentPath]
 software.EntryPoint.type_key = KEYS[software.EntryPoint]
 software.Gridspec.type_key = KEYS[software.Gridspec]
+software.Implementation.type_key = KEYS[software.Implementation]
 software.ProgrammingLanguage.type_key = KEYS[software.ProgrammingLanguage]
 software.SoftwareComponent.type_key = KEYS[software.SoftwareComponent]
 software.Variable.type_key = KEYS[software.Variable]

@@ -120,8 +120,8 @@ class DomainRequirements(NumericalRequirement):
         """
         super(DomainRequirements, self).__init__()
 
-        self.required_extent = None                       # science.Extent (0.1)
-        self.required_resolution = None                   # science.Resolution (0.1)
+        self.required_extent = None                       # science.Topic (0.1)
+        self.required_resolution = None                   # science.Topic (0.1)
 
 
 class EnsembleRequirement(NumericalRequirement):

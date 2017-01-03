@@ -29,9 +29,9 @@ def domain_requirements():
         'base': 'designing.numerical_requirement',
         'is_abstract': False,
         'properties': [
-            ('required_extent', 'science.extent', '0.1',
+            ('required_extent', 'science.topic', '0.1',
                 "Constraint on extent of domain to be simulated."),
-            ('required_resolution', 'science.resolution', '0.1',
+            ('required_resolution', 'science.topic', '0.1',
                 "Constraint on resolution required in simulated domain.")
         ],
         'constraints': [

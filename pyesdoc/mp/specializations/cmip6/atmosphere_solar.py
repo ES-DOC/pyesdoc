@@ -36,6 +36,17 @@ QC_STATUS = 'draft'
 DESCRIPTION = 'Top of atmosphere solar insolation characteristics'
 
 # --------------------------------------------------------------------
+# SUB-PROCESS: solar_forcing_pathways
+# --------------------------------------------------------------------
+DETAILS['solar_pathways'] = {
+    'description': "Pathways for solar forcing of the atmosphere",
+    'properties': [
+        ('pathways', 'ENUM:solar_forcing_pathways', '1.N',
+            'Pathways for the solar forcing of the atmosphere model domain'),
+        ]
+    }
+
+# --------------------------------------------------------------------
 # SUB-PROCESS: solar_constant
 # --------------------------------------------------------------------
 DETAILS['solar_constant'] = {
@@ -81,6 +92,18 @@ DETAILS['insolation_ozone'] = {
 # --------------------------------------------------------------------
 # ENUMERATIONS
 # --------------------------------------------------------------------
+
+ENUMERATIONS['solar_forcing_pathways'] = {
+    'description': "Pathways for solar forcing of the atmosphere",
+    'is_open': True,
+    'members': [
+        ('SW radiation', None),
+        ('precipitating energetic particles', 'Precipitating energetic particles from the sun (predominantly protons) '
+                            'and the magnetosphere (predominantly electrons) affect the ionization levels in the polar '
+                            'middle and upper atmosphere, leading to significant changes of the chemical composition'),
+        ('cosmic rays', 'Cosmic rays are the main source of ionization in the troposphere and lower stratosphere.')
+    ]
+}
 
 ENUMERATIONS['top_insolation_solar_constant_type'] = {
     'description': "Time adaptation of the solar constant",
