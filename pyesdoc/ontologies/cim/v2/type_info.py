@@ -106,7 +106,6 @@ CLASSES = (
     platform.StoragePool,
     platform.StorageVolume,
     science.Model,
-    science.Process,
     science.Realm,
     science.Topic,
     science.TopicProperty,
@@ -724,24 +723,12 @@ CLASS_PROPERTIES = {
         'repository',
         'version',
     ),
-    science.Process: (
-        'sub_processes',
-        'citations',
-        'description',
-        'keywords',
-        'overview',
-        'properties',
-        'property_sets',
-        'responsible_parties',
-        'short_name',
-        'specialization_id',
-    ),
     science.Realm: (
+        'canonical_name',
         'grid',
         'key_properties',
         'meta',
         'processes',
-        'realm_type',
         'software_frameworks',
         'citations',
         'description',
@@ -752,6 +739,7 @@ CLASS_PROPERTIES = {
         'responsible_parties',
         'short_name',
         'specialization_id',
+        'sub_topics',
     ),
     science.Topic: (
         'citations',
@@ -763,6 +751,7 @@ CLASS_PROPERTIES = {
         'responsible_parties',
         'short_name',
         'specialization_id',
+        'sub_topics',
     ),
     science.TopicProperty: (
         'specialization_id',
@@ -1229,15 +1218,12 @@ CLASS_OWN_PROPERTIES = {
         'model_type',
         'realms',
     ),
-    science.Process: (
-        'sub_processes',
-    ),
     science.Realm: (
+        'canonical_name',
         'grid',
         'key_properties',
         'meta',
         'processes',
-        'realm_type',
         'software_frameworks',
     ),
     science.Topic: (
@@ -1250,6 +1236,7 @@ CLASS_OWN_PROPERTIES = {
         'responsible_parties',
         'short_name',
         'specialization_id',
+        'sub_topics',
     ),
     science.TopicProperty: (
         'specialization_id',
@@ -1527,7 +1514,6 @@ BASE_CLASSES[designing.TemporalConstraint] = (designing.NumericalRequirement, ac
 BASE_CLASSES[platform.ComponentPerformance] = (platform.Performance, )
 BASE_CLASSES[platform.Machine] = (platform.Partition, )
 BASE_CLASSES[science.Model] = (software.ComponentBase, )
-BASE_CLASSES[science.Process] = (science.Topic, )
 BASE_CLASSES[science.Realm] = (science.Topic, )
 BASE_CLASSES[software.SoftwareComponent] = (software.ComponentBase, )
 BASE_CLASSES[time.IrregularDateset] = (time.DatetimeSet, )
@@ -1580,7 +1566,6 @@ SUB_CLASSES[platform.Performance] = (
     platform.ComponentPerformance,
     )
 SUB_CLASSES[science.Topic] = (
-    science.Process,
     science.Realm,
     )
 SUB_CLASSES[software.ComponentBase] = (
@@ -2800,7 +2785,7 @@ CONSTRAINTS = {
         ('meta', 'type', shared.DocMetaInfo),
         ('version', 'type', unicode),
         ('model_type', 'type', unicode),
-        ('key_properties', 'type', science.Process),
+        ('key_properties', 'type', science.Topic),
         ('name', 'type', unicode),
 
         ('realms', 'cardinality', "0.N"),
@@ -2821,34 +2806,10 @@ CONSTRAINTS = {
         ('name', 'cardinality', "1.1"),
 
     ),
-    science.Process: (
-
-        ('description', 'type', unicode),
-        ('short_name', 'type', unicode),
-        ('specialization_id', 'type', unicode),
-        ('overview', 'type', unicode),
-        ('property_sets', 'type', science.TopicPropertySet),
-        ('sub_processes', 'type', science.Topic),
-        ('responsible_parties', 'type', shared.Responsibility),
-        ('citations', 'type', shared.Citation),
-        ('keywords', 'type', unicode),
-        ('properties', 'type', science.TopicProperty),
-
-        ('description', 'cardinality', "0.1"),
-        ('short_name', 'cardinality', "0.1"),
-        ('specialization_id', 'cardinality', "0.1"),
-        ('overview', 'cardinality', "0.1"),
-        ('property_sets', 'cardinality', "1.N"),
-        ('sub_processes', 'cardinality', "0.N"),
-        ('responsible_parties', 'cardinality', "0.N"),
-        ('citations', 'cardinality', "0.N"),
-        ('keywords', 'cardinality', "0.N"),
-        ('properties', 'cardinality', "1.N"),
-
-    ),
     science.Realm: (
 
-        ('processes', 'type', science.Process),
+        ('processes', 'type', science.Topic),
+        ('sub_topics', 'type', science.Topic),
         ('description', 'type', unicode),
         ('short_name', 'type', unicode),
         ('specialization_id', 'type', unicode),
@@ -2857,32 +2818,34 @@ CONSTRAINTS = {
         ('meta', 'type', shared.DocMetaInfo),
         ('property_sets', 'type', science.TopicPropertySet),
         ('responsible_parties', 'type', shared.Responsibility),
+        ('canonical_name', 'type', unicode),
         ('citations', 'type', shared.Citation),
-        ('grid', 'type', science.Process),
+        ('grid', 'type', science.Topic),
         ('keywords', 'type', unicode),
-        ('key_properties', 'type', science.Process),
+        ('key_properties', 'type', science.Topic),
         ('properties', 'type', science.TopicProperty),
-        ('realm_type', 'type', unicode),
 
         ('processes', 'cardinality', "1.N"),
-        ('description', 'cardinality', "0.1"),
-        ('short_name', 'cardinality', "0.1"),
-        ('specialization_id', 'cardinality', "0.1"),
+        ('sub_topics', 'cardinality', "0.N"),
+        ('description', 'cardinality', "1.1"),
+        ('short_name', 'cardinality', "1.1"),
+        ('specialization_id', 'cardinality', "1.1"),
         ('overview', 'cardinality', "0.1"),
         ('software_frameworks', 'cardinality', "0.N"),
         ('meta', 'cardinality', "1.1"),
-        ('property_sets', 'cardinality', "1.N"),
+        ('property_sets', 'cardinality', "0.N"),
         ('responsible_parties', 'cardinality', "0.N"),
+        ('canonical_name', 'cardinality', "0.1"),
         ('citations', 'cardinality', "0.N"),
         ('grid', 'cardinality', "0.1"),
         ('keywords', 'cardinality', "0.N"),
         ('key_properties', 'cardinality', "0.1"),
-        ('properties', 'cardinality', "1.N"),
-        ('realm_type', 'cardinality', "0.1"),
+        ('properties', 'cardinality', "0.N"),
 
     ),
     science.Topic: (
 
+        ('sub_topics', 'type', science.Topic),
         ('description', 'type', unicode),
         ('short_name', 'type', unicode),
         ('specialization_id', 'type', unicode),
@@ -2893,15 +2856,16 @@ CONSTRAINTS = {
         ('keywords', 'type', unicode),
         ('properties', 'type', science.TopicProperty),
 
-        ('description', 'cardinality', "0.1"),
-        ('short_name', 'cardinality', "0.1"),
-        ('specialization_id', 'cardinality', "0.1"),
+        ('sub_topics', 'cardinality', "0.N"),
+        ('description', 'cardinality', "1.1"),
+        ('short_name', 'cardinality', "1.1"),
+        ('specialization_id', 'cardinality', "1.1"),
         ('overview', 'cardinality', "0.1"),
-        ('property_sets', 'cardinality', "1.N"),
+        ('property_sets', 'cardinality', "0.N"),
         ('responsible_parties', 'cardinality', "0.N"),
         ('citations', 'cardinality', "0.N"),
         ('keywords', 'cardinality', "0.N"),
-        ('properties', 'cardinality', "1.N"),
+        ('properties', 'cardinality', "0.N"),
 
     ),
     science.TopicProperty: (
@@ -2909,7 +2873,7 @@ CONSTRAINTS = {
         ('specialization_id', 'type', unicode),
         ('value', 'type', unicode),
 
-        ('specialization_id', 'cardinality', "0.1"),
+        ('specialization_id', 'cardinality', "1.1"),
         ('value', 'cardinality', "1.1"),
 
     ),
@@ -2920,9 +2884,9 @@ CONSTRAINTS = {
         ('short_name', 'type', unicode),
         ('properties', 'type', science.TopicProperty),
 
-        ('specialization_id', 'cardinality', "0.1"),
-        ('description', 'cardinality', "0.1"),
-        ('short_name', 'cardinality', "0.1"),
+        ('specialization_id', 'cardinality', "1.1"),
+        ('description', 'cardinality', "1.1"),
+        ('short_name', 'cardinality', "1.1"),
         ('properties', 'cardinality', "1.N"),
 
     ),
@@ -6787,7 +6751,7 @@ CONSTRAINTS = {
     ),
     (science.Model, 'key_properties'): (
 
-        ('type', science.Process),
+        ('type', science.Topic),
 
         ('cardinality', "0.1"),
 
@@ -6877,87 +6841,23 @@ CONSTRAINTS = {
 
     ),
 
-    (science.Process, 'sub_processes'): (
-
-        ('type', science.Topic),
-
-        ('cardinality', "0.N"),
-
-    ),
-    (science.Process, 'citations'): (
-
-        ('type', shared.Citation),
-
-        ('cardinality', "0.N"),
-
-    ),
-    (science.Process, 'description'): (
+    (science.Realm, 'canonical_name'): (
 
         ('type', unicode),
 
         ('cardinality', "0.1"),
 
     ),
-    (science.Process, 'keywords'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.N"),
-
-    ),
-    (science.Process, 'overview'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (science.Process, 'properties'): (
-
-        ('type', science.TopicProperty),
-
-        ('cardinality', "1.N"),
-
-    ),
-    (science.Process, 'property_sets'): (
-
-        ('type', science.TopicPropertySet),
-
-        ('cardinality', "1.N"),
-
-    ),
-    (science.Process, 'responsible_parties'): (
-
-        ('type', shared.Responsibility),
-
-        ('cardinality', "0.N"),
-
-    ),
-    (science.Process, 'short_name'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (science.Process, 'specialization_id'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-
     (science.Realm, 'grid'): (
 
-        ('type', science.Process),
+        ('type', science.Topic),
 
         ('cardinality', "0.1"),
 
     ),
     (science.Realm, 'key_properties'): (
 
-        ('type', science.Process),
+        ('type', science.Topic),
 
         ('cardinality', "0.1"),
 
@@ -6971,16 +6871,9 @@ CONSTRAINTS = {
     ),
     (science.Realm, 'processes'): (
 
-        ('type', science.Process),
+        ('type', science.Topic),
 
         ('cardinality', "1.N"),
-
-    ),
-    (science.Realm, 'realm_type'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
 
     ),
     (science.Realm, 'software_frameworks'): (
@@ -7001,7 +6894,7 @@ CONSTRAINTS = {
 
         ('type', unicode),
 
-        ('cardinality', "0.1"),
+        ('cardinality', "1.1"),
 
     ),
     (science.Realm, 'keywords'): (
@@ -7022,14 +6915,14 @@ CONSTRAINTS = {
 
         ('type', science.TopicProperty),
 
-        ('cardinality', "1.N"),
+        ('cardinality', "0.N"),
 
     ),
     (science.Realm, 'property_sets'): (
 
         ('type', science.TopicPropertySet),
 
-        ('cardinality', "1.N"),
+        ('cardinality', "0.N"),
 
     ),
     (science.Realm, 'responsible_parties'): (
@@ -7043,14 +6936,21 @@ CONSTRAINTS = {
 
         ('type', unicode),
 
-        ('cardinality', "0.1"),
+        ('cardinality', "1.1"),
 
     ),
     (science.Realm, 'specialization_id'): (
 
         ('type', unicode),
 
-        ('cardinality', "0.1"),
+        ('cardinality', "1.1"),
+
+    ),
+    (science.Realm, 'sub_topics'): (
+
+        ('type', science.Topic),
+
+        ('cardinality', "0.N"),
 
     ),
 
@@ -7065,7 +6965,7 @@ CONSTRAINTS = {
 
         ('type', unicode),
 
-        ('cardinality', "0.1"),
+        ('cardinality', "1.1"),
 
     ),
     (science.Topic, 'keywords'): (
@@ -7086,14 +6986,14 @@ CONSTRAINTS = {
 
         ('type', science.TopicProperty),
 
-        ('cardinality', "1.N"),
+        ('cardinality', "0.N"),
 
     ),
     (science.Topic, 'property_sets'): (
 
         ('type', science.TopicPropertySet),
 
-        ('cardinality', "1.N"),
+        ('cardinality', "0.N"),
 
     ),
     (science.Topic, 'responsible_parties'): (
@@ -7107,14 +7007,21 @@ CONSTRAINTS = {
 
         ('type', unicode),
 
-        ('cardinality', "0.1"),
+        ('cardinality', "1.1"),
 
     ),
     (science.Topic, 'specialization_id'): (
 
         ('type', unicode),
 
-        ('cardinality', "0.1"),
+        ('cardinality', "1.1"),
+
+    ),
+    (science.Topic, 'sub_topics'): (
+
+        ('type', science.Topic),
+
+        ('cardinality', "0.N"),
 
     ),
 
@@ -7122,7 +7029,7 @@ CONSTRAINTS = {
 
         ('type', unicode),
 
-        ('cardinality', "0.1"),
+        ('cardinality', "1.1"),
 
     ),
     (science.TopicProperty, 'value'): (
@@ -7137,7 +7044,7 @@ CONSTRAINTS = {
 
         ('type', unicode),
 
-        ('cardinality', "0.1"),
+        ('cardinality', "1.1"),
 
     ),
     (science.TopicPropertySet, 'properties'): (
@@ -7151,14 +7058,14 @@ CONSTRAINTS = {
 
         ('type', unicode),
 
-        ('cardinality', "0.1"),
+        ('cardinality', "1.1"),
 
     ),
     (science.TopicPropertySet, 'specialization_id'): (
 
         ('type', unicode),
 
-        ('cardinality', "0.1"),
+        ('cardinality', "1.1"),
 
     ),
 
@@ -8331,15 +8238,6 @@ http://www.geosci-model-dev-discuss.net/gmd-2016-197/)
     simulation, a model, and a configuration.).
 
     """,
-    science.Process: """
-        Provides structure for description of a process simulated within a
-    particular area (or domain/realm/component) of a model. This will
-    often be subclassed within a specific implementation so that
-    constraints can be used to ensure that the process details
-    requested are consistent with project requirements for
-    information.
-
-    """,
     science.Realm: """
         Scientific area of a numerical model - usually a sub-model or component.
 
@@ -8871,8 +8769,8 @@ http://www.geosci-model-dev-discuss.net/gmd-2016-197/)
         "Generic type for this model.",
     (science.Model, 'realms'):
         "The scientific realms which this model simulates internally, i.e. those which are not linked together using a coupler.",
-    (science.Process, 'sub_processes'):
-        "Discrete portion of a process with common process details.",
+    (science.Realm, 'canonical_name'):
+        "Canonical name for the realm.",
     (science.Realm, 'grid'):
         "The grid used to layout the variables (e.g. the Global ENDGAME-grid).",
     (science.Realm, 'key_properties'):
@@ -8881,38 +8779,38 @@ http://www.geosci-model-dev-discuss.net/gmd-2016-197/)
         "Injected document metadata.",
     (science.Realm, 'processes'):
         "Processes simulated within the realm.",
-    (science.Realm, 'realm_type'):
-        "Canonical name for the realm.",
     (science.Realm, 'software_frameworks'):
         "Software framework(s) of the realm.",
     (science.Topic, 'citations'):
         "Set of pertinent citations.",
     (science.Topic, 'description'):
-        "A description (possibly derived from specialization).",
+        "A description (derived from specialization).",
     (science.Topic, 'keywords'):
         "Keywords to help re-use and discovery of this information.",
     (science.Topic, 'overview'):
-        "General implementation overview.",
+        "An overview of topic being described.",
     (science.Topic, 'properties'):
         "Set of associated specialized properties.",
     (science.Topic, 'property_sets'):
-        "Set of associated specialized detail attributes.",
+        "Grouped specialized properties.",
     (science.Topic, 'responsible_parties'):
         "People or organisations responsible for providing this information.",
     (science.Topic, 'short_name'):
-        "A short-name / key (possibly derived from specialization).",
+        "A short-name / key (derived from specialization).",
     (science.Topic, 'specialization_id'):
         "Specialization identifier (derived from specialization).",
+    (science.Topic, 'sub_topics'):
+        "Discrete sub-topic with details.",
     (science.TopicProperty, 'specialization_id'):
         "Specialization identifier (derived from specialization).",
     (science.TopicProperty, 'value'):
         "User value.",
     (science.TopicPropertySet, 'description'):
-        "A description (possibly derived from specialization).",
+        "A description (derived from specialization).",
     (science.TopicPropertySet, 'properties'):
         "Set of associated specialized properties.",
     (science.TopicPropertySet, 'short_name'):
-        "A short-name / key (possibly derived from specialization).",
+        "A short-name / key (derived from specialization).",
     (science.TopicPropertySet, 'specialization_id'):
         "Specialization identifier (derived from specialization).",
     (shared.Citation, 'abstract'):
@@ -9605,7 +9503,6 @@ KEYS = {
     platform.StoragePool: "cim.2.platform.StoragePool",
     platform.StorageVolume: "cim.2.platform.StorageVolume",
     science.Model: "cim.2.science.Model",
-    science.Process: "cim.2.science.Process",
     science.Realm: "cim.2.science.Realm",
     science.Topic: "cim.2.science.Topic",
     science.TopicProperty: "cim.2.science.TopicProperty",
@@ -9829,12 +9726,11 @@ KEYS = {
     (science.Model, 'meta'): "cim.2.science.Model.meta",
     (science.Model, 'model_type'): "cim.2.science.Model.model_type",
     (science.Model, 'realms'): "cim.2.science.Model.realms",
-    (science.Process, 'sub_processes'): "cim.2.science.Process.sub_processes",
+    (science.Realm, 'canonical_name'): "cim.2.science.Realm.canonical_name",
     (science.Realm, 'grid'): "cim.2.science.Realm.grid",
     (science.Realm, 'key_properties'): "cim.2.science.Realm.key_properties",
     (science.Realm, 'meta'): "cim.2.science.Realm.meta",
     (science.Realm, 'processes'): "cim.2.science.Realm.processes",
-    (science.Realm, 'realm_type'): "cim.2.science.Realm.realm_type",
     (science.Realm, 'software_frameworks'): "cim.2.science.Realm.software_frameworks",
     (science.Topic, 'citations'): "cim.2.science.Topic.citations",
     (science.Topic, 'description'): "cim.2.science.Topic.description",
@@ -9845,6 +9741,7 @@ KEYS = {
     (science.Topic, 'responsible_parties'): "cim.2.science.Topic.responsible_parties",
     (science.Topic, 'short_name'): "cim.2.science.Topic.short_name",
     (science.Topic, 'specialization_id'): "cim.2.science.Topic.specialization_id",
+    (science.Topic, 'sub_topics'): "cim.2.science.Topic.sub_topics",
     (science.TopicProperty, 'specialization_id'): "cim.2.science.TopicProperty.specialization_id",
     (science.TopicProperty, 'value'): "cim.2.science.TopicProperty.value",
     (science.TopicPropertySet, 'description'): "cim.2.science.TopicPropertySet.description",
@@ -10199,7 +10096,6 @@ platform.StorageVolume.type_key = KEYS[platform.StorageVolume]
 platform.VolumeUnits.type_key = KEYS[platform.VolumeUnits]
 science.Model.type_key = KEYS[science.Model]
 science.ModelTypes.type_key = KEYS[science.ModelTypes]
-science.Process.type_key = KEYS[science.Process]
 science.Realm.type_key = KEYS[science.Realm]
 science.Topic.type_key = KEYS[science.Topic]
 science.TopicProperty.type_key = KEYS[science.TopicProperty]

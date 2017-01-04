@@ -74,7 +74,6 @@ from typeset_for_platform_package import Performance
 from typeset_for_platform_package import StoragePool
 from typeset_for_platform_package import StorageVolume
 from typeset_for_science_package import Model
-from typeset_for_science_package import Process
 from typeset_for_science_package import Realm
 from typeset_for_science_package import Topic
 from typeset_for_science_package import TopicProperty

@@ -8,17 +8,20 @@
 
 
 """
-from model import TopicPropertySpecialization
-from model import TopicPropertySetSpecialization
-from model import EnumSpecialization
-from model import EnumChoiceSpecialization
-from model import RealmSpecialization
-from model import ProcessSpecialization
-from model import TopicSpecialization
+from utils_model import TopicPropertySpecialization
+from utils_model import TopicPropertySetSpecialization
+from utils_model import EnumSpecialization
+from utils_model import EnumChoiceSpecialization
+from utils_model import RealmSpecialization
+from utils_model import TopicSpecialization
 
 
 
-def create_specialization(spec):
+# Map of specializations by id.
+CACHE = dict()
+
+
+def create_realm_specialization(specs):
     """Returns a realm specialization wrapper.
 
     :param spec: 4 member tuple of python modules: realm, grid, key-properties, processes.
@@ -27,10 +30,10 @@ def create_specialization(spec):
     :rtype: TopicSpecialization
 
     """
-    r = _create_topic(None, spec[0], "realm", typeof=RealmSpecialization)
-    r.grid = _create_topic(r, spec[1], "grid", typeof=ProcessSpecialization)
-    r.key_properties = _create_topic(r, spec[2], "key-properties", typeof=ProcessSpecialization)
-    r.processes = [_create_topic(r, i, "process", typeof=ProcessSpecialization) for i in spec[3]]
+    r = _create_topic(None, specs[0], "realm", typeof=RealmSpecialization)
+    r.key_properties = _create_topic(r, specs[2], "key-properties")
+    r.grid = _create_topic(r, specs[1], "grid")
+    r.processes = [_create_topic(r, i, "process") for i in specs[3]]
 
     return r
 
@@ -52,12 +55,10 @@ def _create_topic(parent, spec, type_key, key=None, typeof=TopicSpecialization):
     topic.name_camel_case_spaced = _to_camel_case_spaced(topic.name)
     if parent:
         topic.parent = parent
-        try:
-            parent.sub_processes
-        except AttributeError:
-            pass
-        else:
-            parent.sub_processes.append(topic)
+        parent.sub_topics.append(topic)
+
+    # Cache.
+    CACHE[topic.id] = topic
 
     return topic
 
@@ -81,36 +82,26 @@ def _set_topic_from_module(parent, topic):
         topic.name = topic.spec.__name__
         topic.id = "cmip6.{}".format(topic.name)
 
-    # Assign detail / detail sets.
+    # Assign properties / property sets.
     for key, obj in topic.spec.DETAILS.items():
-        # ... topic toplevel details
+        # ... topic toplevel properties
         if key == "toplevel":
             _set_property_collection(topic, key, obj, topic.spec.ENUMERATIONS)
 
-        # ... topic toplevel detail sets
+        # ... topic toplevel property sets
         elif key.startswith("toplevel"):
             _set_property_set(topic, key, obj, topic.spec.ENUMERATIONS)
 
-        # ... sub-process
-        elif topic.type_key == "process" and len(key.split(":")) == 1:
-            _create_topic(topic, obj, "sub-process", key, typeof=ProcessSpecialization)
-            _set_property_collection(topic.sub_processes[-1], key, obj, topic.spec.ENUMERATIONS)
-
-        # ... sub-process detail set
-        elif topic.type_key == "process" and len(key.split(":")) == 2:
-            for sp in topic.sub_processes:
-                if sp.name == key.split(":")[0]:
-                    _set_property_set(sp, key, obj, topic.spec.ENUMERATIONS)
-
-        # ... grid / key-properties top-level property set
+        # ... sub-topic properties
         elif len(key.split(":")) == 1:
-            _set_property_set(topic, key, obj, topic.spec.ENUMERATIONS)
+            _create_topic(topic, obj, "sub-process", key)
+            _set_property_collection(topic.sub_topics[-1], key, obj, topic.spec.ENUMERATIONS)
 
-        # ... grid / key-properties property set
+        # ... sub-topic property sets
         elif len(key.split(":")) == 2:
-            for ps in topic.property_sets:
-                if ps.name == key.split(":")[0]:
-                    _set_property_set(ps, key, obj, topic.spec.ENUMERATIONS)
+            for st in topic.sub_topics:
+                if st.name == key.split(":")[0]:
+                    _set_property_set(st, key, obj, topic.spec.ENUMERATIONS)
 
 
 def _set_topic_from_dict(parent, topic, name):
@@ -136,10 +127,15 @@ def _set_property_set(owner, key, obj, enumerations):
     ps.id = "{}.{}".format(owner.id, key.split(":")[-1])
     ps.key = key
     ps.name = key.split(":")[-1]
+    ps.name_camel_case = _to_camel_case(ps.name)
+    ps.name_camel_case_spaced = _to_camel_case_spaced(ps.name)
     ps.owner = owner
     _set_property_collection(ps, key, obj, enumerations)
 
     owner.property_sets.append(ps)
+
+    # Cache.
+    CACHE[ps.id] = ps
 
 
 def _set_property_collection(owner, key, obj, enumerations):
@@ -147,17 +143,22 @@ def _set_property_collection(owner, key, obj, enumerations):
 
     """
     for name, typeof, cardinality, description in obj['properties']:
-        d = TopicPropertySpecialization()
-        d.cardinality = cardinality
-        d.description = description
-        d.enum = _create_enum(d, typeof, enumerations) if typeof.startswith("ENUM:") else None
-        d.id = "{}.{}".format(owner.id, name)
-        d.key = name
-        d.name = name
-        d.owner = owner
-        d.typeof = typeof
+        p = TopicPropertySpecialization()
+        p.cardinality = cardinality
+        p.description = description
+        p.enum = _create_enum(p, typeof, enumerations) if typeof.startswith("ENUM:") else None
+        p.id = "{}.{}".format(owner.id, name)
+        p.key = name
+        p.name = name
+        p.name_camel_case = _to_camel_case(name)
+        p.name_camel_case_spaced = _to_camel_case_spaced(name)
+        p.owner = owner
+        p.typeof = typeof
 
-        owner.properties.append(d)
+        owner.properties.append(p)
+
+        # Cache.
+        CACHE[p.id] = p
 
 
 def _create_enum(detail, typeof, enumerations):

@@ -38,7 +38,7 @@ class Model(software.ComponentBase):
         self.coupled_components = []                      # science.Model (0.N)
         self.coupler = None                               # software.CouplingFramework (0.1)
         self.internal_software_components = []            # software.SoftwareComponent (0.N)
-        self.key_properties = None                        # science.Process (0.1)
+        self.key_properties = None                        # science.Topic (0.1)
         self.meta = shared.DocMetaInfo()                  # shared.DocMetaInfo (1.1)
         self.model_type = None                            # science.ModelTypes (1.1)
         self.realms = []                                  # science.Realm (0.N)
@@ -57,14 +57,15 @@ class Topic(object):
         super(Topic, self).__init__()
 
         self.citations = []                               # shared.Citation (0.N)
-        self.description = None                           # unicode (0.1)
+        self.description = None                           # unicode (1.1)
         self.keywords = []                                # unicode (0.N)
         self.overview = None                              # unicode (0.1)
-        self.properties = []                              # science.TopicProperty (1.N)
-        self.property_sets = []                           # science.TopicPropertySet (1.N)
+        self.properties = []                              # science.TopicProperty (0.N)
+        self.property_sets = []                           # science.TopicPropertySet (0.N)
         self.responsible_parties = []                     # shared.Responsibility (0.N)
-        self.short_name = None                            # unicode (0.1)
-        self.specialization_id = None                     # unicode (0.1)
+        self.short_name = None                            # unicode (1.1)
+        self.specialization_id = None                     # unicode (1.1)
+        self.sub_topics = []                              # science.Topic (0.N)
 
 
 class TopicProperty(object):
@@ -79,7 +80,7 @@ class TopicProperty(object):
         """
         super(TopicProperty, self).__init__()
 
-        self.specialization_id = None                     # unicode (0.1)
+        self.specialization_id = None                     # unicode (1.1)
         self.value = None                                 # unicode (1.1)
 
 
@@ -96,30 +97,10 @@ class TopicPropertySet(object):
         """
         super(TopicPropertySet, self).__init__()
 
-        self.description = None                           # unicode (0.1)
+        self.description = None                           # unicode (1.1)
         self.properties = []                              # science.TopicProperty (1.N)
-        self.short_name = None                            # unicode (0.1)
-        self.specialization_id = None                     # unicode (0.1)
-
-
-class Process(Topic):
-    """A concrete class within the cim v2 type system.
-
-    Provides structure for description of a process simulated within a
-    particular area (or domain/realm/component) of a model. This will
-    often be subclassed within a specific implementation so that
-    constraints can be used to ensure that the process details
-    requested are consistent with project requirements for
-    information.
-
-    """
-    def __init__(self):
-        """Instance constructor.
-
-        """
-        super(Process, self).__init__()
-
-        self.sub_processes = []                           # science.Topic (0.N)
+        self.short_name = None                            # unicode (1.1)
+        self.specialization_id = None                     # unicode (1.1)
 
 
 class Realm(Topic):
@@ -134,11 +115,11 @@ class Realm(Topic):
         """
         super(Realm, self).__init__()
 
-        self.grid = None                                  # science.Process (0.1)
-        self.key_properties = None                        # science.Process (0.1)
+        self.canonical_name = None                        # unicode (0.1)
+        self.grid = None                                  # science.Topic (0.1)
+        self.key_properties = None                        # science.Topic (0.1)
         self.meta = shared.DocMetaInfo()                  # shared.DocMetaInfo (1.1)
-        self.processes = []                               # science.Process (1.N)
-        self.realm_type = None                            # unicode (0.1)
+        self.processes = []                               # science.Topic (1.N)
         self.software_frameworks = []                     # software.Implementation (0.N)
 
 

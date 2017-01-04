@@ -46,7 +46,7 @@ DETAILS['toplevel'] = {
         ]
     }
 
-DETAILS['seawater_properties'] = {
+DETAILS['toplevel:seawater_properties'] = {
     'description': 'Physical properties of seawater in ocean',
     'properties' : [
         ('eos_type', 'ENUM:seawater_eos_types', '1.1',
@@ -66,7 +66,7 @@ DETAILS['seawater_properties'] = {
         ]
     }
 
-DETAILS['bathymetry'] = {
+DETAILS['toplevel:bathymetry'] = {
     'description': 'Properties of bathymetry in ocean',
     'properties' : [
         ('reference_dates', 'ENUM:bathymetry_ref_dates', '1.1',
@@ -80,7 +80,7 @@ DETAILS['bathymetry'] = {
         ]
     }
 
-DETAILS['nonoceanic_waters'] = {
+DETAILS['toplevel:nonoceanic_waters'] = {
     'description': 'Non oceanic waters treatement in ocean',
     'properties': [
         ('isolated_seas','str', '0.1',
@@ -91,7 +91,7 @@ DETAILS['nonoceanic_waters'] = {
     }
 
 # --------------------------------------------------------------------
-# RESOLUTION: The resolution of the grid.
+# SUB-PROCESS: RESOLUTION: The resolution of the grid.
 # --------------------------------------------------------------------
 DETAILS['resolution'] = {
     'description': 'Resolution in the ocean grid',
@@ -112,7 +112,7 @@ DETAILS['resolution'] = {
     }
 
 # --------------------------------------------------------------------
-# TUNING APPLIED: Any tuning used to optimise the parameters in this realm
+# SUB-PROCESS: TUNING APPLIED: Any tuning used to optimise the parameters in this realm
 # --------------------------------------------------------------------
 DETAILS['tuning_applied'] = {
     'description': 'Tuning methodology for ocean component',
@@ -132,7 +132,7 @@ DETAILS['tuning_applied'] = {
     }
 
 # --------------------------------------------------------------------
-# CONSERVATION PROPERTIES: Details of methodology needed to conserve variables between processes
+# SUB-PROCESS: CONSERVATION PROPERTIES: Details of methodology needed to conserve variables between processes
 # --------------------------------------------------------------------
 DETAILS['conservation'] = {
     'description': 'Conservation in the ocean component',
