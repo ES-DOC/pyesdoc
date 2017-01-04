@@ -51,6 +51,48 @@ class TopicSpecialization(object):
 
 
     @property
+    def all_properties(self):
+        """Returns all properties within realm.
+
+        """
+        result = []
+        for t in self.all_sub_topics:
+            result += t.properties
+            for ps in t.property_sets:
+                result += ps.properties
+
+        return result
+
+
+    @property
+    def all_required_properties(self):
+        """Returns all required properties within realm.
+
+        """
+        result = []
+        for t in self.all_sub_topics:
+            result += [i for i in t.properties if i.is_required]
+            for ps in t.property_sets:
+                result += [i for i in ps.properties if i.is_required]
+
+        return result
+
+
+    @property
+    def all_optional_properties(self):
+        """Returns all optional properties within realm.
+
+        """
+        result = []
+        for t in self.all_sub_topics:
+            result += [i for i in t.properties if not i.is_required]
+            for ps in t.property_sets:
+                result += [i for i in ps.properties if not i.is_required]
+
+        return result
+
+
+    @property
     def ENUMS(self):
         """Gets associated enumeration definitions.
 
@@ -136,7 +178,7 @@ class TopicPropertySpecialization(object):
 
 
     @property
-    def is_mandatory(self):
+    def is_required(self):
         """Gets flag indicating whether cardinality is mandatory or not.
 
         """
@@ -272,7 +314,6 @@ class RealmSpecialization(TopicSpecialization):
         self.grid = None
         self.key_properties = None
         self.processes = None
-
 
 
 def _to_camel_case_spaced(name, separator='_'):
