@@ -19,7 +19,6 @@ import uuid
 import pyesdoc
 from pyesdoc import exceptions
 from pyesdoc import ontologies
-from pyesdoc.validation import is_valid_notebook_output
 from pyesdoc.utils.convert import str_to_unicode
 
 
@@ -185,19 +184,15 @@ def convert(fpath, to_encoding, from_encoding=None):
     return write(document, fpath, to_encoding)
 
 
-def write_notebook_output(obj):
+def write_notebook_output(data):
     """Saves output from an IPython notebook.
 
-    :param dict obj: Output from an IPython notebook.
+    :param object data: IPython notebook output data.
 
     :returns: Path to written output.
     :rtype: str
 
     """
-    # Ensure is valid.
-    if not is_valid_notebook_output(obj):
-        raise exceptions.InvalidNoteBookOutputError()
-
     # Format params.
     mip_era = obj['MIP_ERA'].lower()
     institute = obj['INSTITUTE'].lower()

@@ -185,38 +185,3 @@ def is_valid(doc):
     """
     return len(validate(doc)) == 0
 
-
-def validate_notebook_output(obj):
-    """Validates output from an IPython notebook.
-
-    :param dict obj: Output from an IPython notebook.
-
-    :returns: A list of validation errors.
-    :rtype: list
-
-    """
-    return []
-
-
-def is_valid_notebook_output(obj):
-    """Returns validation status of output from an IPython notebook.
-
-    :param dict obj: Output from an IPython notebook.
-
-    :returns: The document's validation state.
-    :rtype: bool
-
-    """
-    return len(validate_notebook_output(obj)) == 0
-
-
-def list_notebook_output_errors(obj):
-    """Outputs notebook output errors to stdout.
-
-    :param dict obj: Output from an IPython notebook.
-
-    """
-    for idx, error in enumerate(validate_notebook_output(obj)):
-        if idx == 0:
-            print "NOTEBOOK OUTPUT VALIDATION ERRORS:"
-        print "/t{}.  {}".format(idx + 1, error)

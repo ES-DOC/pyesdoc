@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 """
-.. module:: model_realm_notebook.py
+.. module:: model_realm.py
    :license: GPL/CeCIL
    :platform: Unix, Windows
    :synopsis: Model realm notebook helper.
@@ -16,7 +16,7 @@ from pyesdoc.mp.specializations import get_property_specialization
 
 
 class NotebookData(object):
-    """Encpasulates model realm data being edited in an IPython notebook.
+    """Model realm ipython data manager.
 
     """
     def __init__(self, mip_era, institute, source_id, realm):

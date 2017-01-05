@@ -60,10 +60,7 @@ from pyesdoc.utils.runtime import log
 from pyesdoc.utils.runtime import log_error
 
 from pyesdoc.validation import is_valid
-from pyesdoc.validation import is_valid_notebook_output
-from pyesdoc.validation import list_notebook_output_errors
 from pyesdoc.validation import validate
-from pyesdoc.validation import validate_notebook_output
 
 from pyesdoc import archive
 from pyesdoc import cv
