@@ -59,8 +59,7 @@ DETAILS['resolution'] = {
     'description': "Resolution in the sea ice grid",
     'properties': [
         ('name', 'str', '1.1',
-          """This is a string usually used by the modelling group to describe the resolution of this grid
-               e.g. N512L180, T512L70, ORCA025 etc."""),
+            "This is a string usually used by the modelling group to describe the resolution of this grid e.g. N512L180, T512L70, ORCA025 etc."),
         ('canonical_horizontal_resolution', 'str', '1.1',
             "Expression quoted for gross comparisons of resolution, eg. 50km or 0.1 degrees etc."),
         ('number_of_horizontal_gridpoints', 'int', '1.1',
@@ -75,10 +74,7 @@ DETAILS['tuning_applied'] = {
     'description': "Tuning applied to sea ice model component",
     'properties': [
         ('description', 'str', '1.1',
-            """General overview description of tuning: explain and motivate the main targets and metrics retained.
-               Document the relative weight given to climate performance metrics versus process oriented metrics,
-               and on the possible conflicts with parameterization level tuning. In particular describe any struggle
-               with a parameter value that required pushing it to its limits to solve a particular model deficiency."""),
+            "General overview description of tuning: explain and motivate the main targets and metrics retained.  Document the relative weight given to climate performance metrics versus process oriented metrics, and on the possible conflicts with parameterization level tuning. In particular describe any struggle with a parameter value that required pushing it to its limits to solve a particular model deficiency."),
         ('target', 'str', '1.1',
             "What was the aim of tuning, e.g. correct sea ice minima, correct seasonal cycle."),
         ('simulations', 'str', '1.1',
@@ -101,8 +97,7 @@ DETAILS['assumptions'] = {
         ('on_diagnostic_variables', 'str', '1.N',
             "Note any assumptions that specifically affect the CMIP6 diagnostic sea ice variables."),
         ('missing_processes', 'str', '1.N',
-             """List any *key* processes missing in this model configuration? Provide full details
-             where this affects the CMIP6 diagnostic sea ice variables?"""),
+             "List any *key* processes missing in this model configuration? Provide full details where this affects the CMIP6 diagnostic sea ice variables?"),
         ]
     }
 
