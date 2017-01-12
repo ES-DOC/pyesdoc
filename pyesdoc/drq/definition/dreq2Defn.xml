@@ -51,6 +51,8 @@ xsi:schemaLocation="http://w3id.org/cmip6dr/ns vocabFrameworkSchema_v01beta.xsd"
   <rowAttribute label="description" type="xs:string" title="Description" useClass="" techNote="" description="" uid="ATTRIBUTE::miptable.description" superclass="" required="true"/>
   <rowAttribute label="frequency" type="xs:string" title="Frequency" useClass="" techNote="" description="" uid="ATTRIBUTE::miptable.frequency" superclass="" required="true"/>
   <rowAttribute label="prov" type="xs:string" title="Provenance" useClass="" techNote="" description="" uid="ATTRIBUTE::miptable.prov" superclass="" required="true"/>
+  <rowAttribute label="altLabel" type="xs:string" title="Alternative Label" useClass="" techNote="" description="" uid="ATTRIBUTE::miptable.altLabel" superclass="" required="true"/>
+  <rowAttribute label="comment" type="xs:string" title="Comment" useClass="" techNote="" description="" uid="ATTRIBUTE::miptable.comment" superclass="" required="true"/>
 </table>
 <table label="CMORvar" uid="SECTION:CMORvar" title="1.3 CMOR Variable" id="cmv" itemLabelMode="def" level="1" maxOccurs="1" labUnique="No" description="Each Output variable record corresponds to a MIP table variable specification. In a change from the August draft, this record does not contain the 'priority' attribute: the priority is now set in the 'Request Variable' record. The other change is that a collection of attributes specifying dimensions etc have been moved into the 'structure' record, and each CMOR Variable record links to one structure record. This will fa-cilitate provision of clear and consistent definitions of output formats.">
   <rowAttribute label="label" type="xs:string" title="Record Label" description="Mnemonic label for record" uid="ATTRIBUTE::CMORvar.label" required="True"/>
@@ -338,6 +340,7 @@ xsi:schemaLocation="http://w3id.org/cmip6dr/ns vocabFrameworkSchema_v01beta.xsd"
   <rowAttribute label="title" type="xs:string" title="Record Title" useClass="" techNote="" description="" uid="ATTRIBUTE::cellMethods.title" superclass="" required="true"/>
   <rowAttribute label="uid" type="aa:st__uid" title="Record Identifier" useClass="recordId" techNote="" description="" uid="ATTRIBUTE::cellMethods.uid" superclass="" required="true"/>
   <rowAttribute label="cell_methods" type="xs:string" title="Cell Methods String" useClass="" techNote="" description="The string to be used in the NetCDF cell_methods attribute" uid="ATTRIBUTE::cellMethods.cell_methods" superclass="" required="true"/>
+  <rowAttribute label="description" type="xs:string" title="Record Description" useClass="" techNote="" description="" uid="ATTRIBUTE::cellMethods.description" superclass="" required="false"/>
 </table>
 <annextable label="tags" uid="SECTION:_tags" title="6.1 Tags" id="tag" itemLabelMode="def" level="6" maxOccurs="1" labUnique="Yes" description="A set of labels which can be used to tag variables.">
   <rowAttribute label="label" type="xs:string" title="Record Label" description="Mnemonic label for record" uid="ATTRIBUTE::_tags.label" required="True"/>
