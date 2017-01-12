@@ -193,12 +193,7 @@ class RootGenerator(Generator):
         """
 
         root_node = et.Element("ontology")
-        comment_node = et.Comment(
-            " created by esdoc-mp at {0} ".format(
-                datetime.datetime.now().strftime("%Y-%m-%d-%H%M")
-            )
-        )
-
+        comment_node = et.Comment(" created by esdoc-mp ")
         root_node.append(comment_node)
         ctx.set_node(root_node)
 
