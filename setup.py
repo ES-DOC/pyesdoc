@@ -23,12 +23,13 @@ from setuptools.dist import Distribution
 _REQUIRES = [
     'arrow',
     'feedparser',
-    'ipython',
     'lxml',
     'nose',
     'requests',
     'tornado',
-    'xlrd'
+    'xlsxwriter',
+    'xlrd',
+    'jupyter'
     ]
 
 
