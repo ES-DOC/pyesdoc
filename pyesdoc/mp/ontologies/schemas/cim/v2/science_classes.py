@@ -52,6 +52,8 @@ def realm():
                 "The grid used to layout the variables (e.g. the Global ENDGAME-grid)."),
             ('key_properties', 'science.topic', '0.1',
                 "Realm key properties which differ from model defaults (grid, timestep etc)."),
+            ('model', 'science.model', '1.1',
+                "Associated model."),
             ('processes', 'science.topic', '1.N',
                 "Processes simulated within the realm."),
 
@@ -126,9 +128,11 @@ def topic_property():
         'base': None,
         'is_abstract': False,
         'properties': [
+            ('qc_status', 'int', '1.1',
+                "Quality control status of entered values."),
             ('specialization_id', 'str', '1.1',
                 "Specialization identifier (derived from specialization)."),
-            ('value', 'str', '1.1',
-                "User value."),
+            ('values', 'str', '1.N',
+                "User value(s)."),
         ]
     }

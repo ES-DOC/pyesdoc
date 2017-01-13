@@ -80,8 +80,9 @@ class TopicProperty(object):
         """
         super(TopicProperty, self).__init__()
 
+        self.qc_status = None                             # int (1.1)
         self.specialization_id = None                     # unicode (1.1)
-        self.value = None                                 # unicode (1.1)
+        self.values = []                                  # unicode (1.N)
 
 
 class TopicPropertySet(object):
@@ -119,6 +120,7 @@ class Realm(Topic):
         self.grid = None                                  # science.Topic (0.1)
         self.key_properties = None                        # science.Topic (0.1)
         self.meta = shared.DocMetaInfo()                  # shared.DocMetaInfo (1.1)
+        self.model = None                                 # science.Model (1.1)
         self.processes = []                               # science.Topic (1.N)
         self.software_frameworks = []                     # software.Implementation (0.N)
 

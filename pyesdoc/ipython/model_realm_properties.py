@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 
 """
-.. module:: model_realm.py
+.. module:: model_realm_properties.py
    :license: GPL/CeCIL
    :platform: Unix, Windows
-   :synopsis: Model realm notebook helper.
+   :synopsis: Model realm properties notebook data wrapper.
 
 .. moduleauthor:: Mark Conway-Greenslade <momipsl@ipsl.jussieu.fr>
 
@@ -14,14 +14,14 @@ import collections
 import json
 import os
 
+from pyesdoc.ipython import constants
 from pyesdoc.mp.specializations import get_model_realm_specialization
 from pyesdoc.mp.specializations import get_property_specialization
-from pyesdoc.ipython import constants
 
 
 
 class NotebookData(object):
-    """Model realm ipython data manager.
+    """Model realm properties ipython data wrapper.
 
     """
     def __init__(self, mip_era, institute, source_id, realm):
@@ -31,12 +31,12 @@ class NotebookData(object):
         self.authors = list()
         self.contributors = list()
         self.content = dict()
-        self.institute = institute
-        self.mip_era = mip_era
+        self.institute = unicode(institute).strip().lower()
+        self.mip_era = unicode(mip_era).strip().lower()
         self.prop = None
         self.prop_specialization = None
-        self.realm = realm
-        self.source_id = source_id
+        self.realm = unicode(realm).strip().lower()
+        self.source_id = unicode(source_id).strip().lower()
         self.specialization = get_model_realm_specialization(mip_era, realm)
 
 
@@ -60,7 +60,17 @@ class NotebookData(object):
         """Adds an author to managed collection.
 
         """
+        if name is not None:
+            name = unicode(name).strip()
+        if email is not None:
+            email = unicode(email).strip()
+
+        if name is None or len(name) == 0:
+            raise ValueError("Invalid author name")
+        if email is None or len(email) == 0:
+            raise ValueError("Invalid author email")
         # TODO: validate with reg-ex.
+
         self.authors.append((name, email))
 
 
@@ -68,7 +78,17 @@ class NotebookData(object):
         """Adds a contributor to managed collection.
 
         """
-        # TODO: validate contributor with reg-ex.
+        if name is not None:
+            name = unicode(name).strip()
+        if email is not None:
+            email = unicode(email).strip()
+
+        if name is None or len(name) == 0:
+            raise ValueError("Invalid contributor name")
+        if email is None or len(email) == 0:
+            raise ValueError("Invalid contributor email")
+        # TODO: validate with reg-ex.
+
         self.contributors.append((name, email))
 
 
@@ -90,6 +110,7 @@ class NotebookData(object):
         """
         if qc_status not in constants.QC_STATES:
             raise ValueError("Invalid QC status")
+
         self.prop['qc_status'] = qc_status
 
 

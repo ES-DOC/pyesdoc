@@ -728,6 +728,7 @@ CLASS_PROPERTIES = {
         'grid',
         'key_properties',
         'meta',
+        'model',
         'processes',
         'software_frameworks',
         'citations',
@@ -754,8 +755,9 @@ CLASS_PROPERTIES = {
         'sub_topics',
     ),
     science.TopicProperty: (
+        'qc_status',
         'specialization_id',
-        'value',
+        'values',
     ),
     science.TopicPropertySet: (
         'description',
@@ -1223,6 +1225,7 @@ CLASS_OWN_PROPERTIES = {
         'grid',
         'key_properties',
         'meta',
+        'model',
         'processes',
         'software_frameworks',
     ),
@@ -1239,8 +1242,9 @@ CLASS_OWN_PROPERTIES = {
         'sub_topics',
     ),
     science.TopicProperty: (
+        'qc_status',
         'specialization_id',
-        'value',
+        'values',
     ),
     science.TopicPropertySet: (
         'description',
@@ -2823,6 +2827,7 @@ CONSTRAINTS = {
         ('grid', 'type', science.Topic),
         ('keywords', 'type', unicode),
         ('key_properties', 'type', science.Topic),
+        ('model', 'type', science.Model),
         ('properties', 'type', science.TopicProperty),
 
         ('processes', 'cardinality', "1.N"),
@@ -2840,6 +2845,7 @@ CONSTRAINTS = {
         ('grid', 'cardinality', "0.1"),
         ('keywords', 'cardinality', "0.N"),
         ('key_properties', 'cardinality', "0.1"),
+        ('model', 'cardinality', "1.1"),
         ('properties', 'cardinality', "0.N"),
 
     ),
@@ -2870,11 +2876,13 @@ CONSTRAINTS = {
     ),
     science.TopicProperty: (
 
+        ('values', 'type', unicode),
         ('specialization_id', 'type', unicode),
-        ('value', 'type', unicode),
+        ('qc_status', 'type', int),
 
+        ('values', 'cardinality', "1.N"),
         ('specialization_id', 'cardinality', "1.1"),
-        ('value', 'cardinality', "1.1"),
+        ('qc_status', 'cardinality', "1.1"),
 
     ),
     science.TopicPropertySet: (
@@ -6869,6 +6877,13 @@ CONSTRAINTS = {
         ('cardinality', "1.1"),
 
     ),
+    (science.Realm, 'model'): (
+
+        ('type', science.Model),
+
+        ('cardinality', "1.1"),
+
+    ),
     (science.Realm, 'processes'): (
 
         ('type', science.Topic),
@@ -7025,6 +7040,13 @@ CONSTRAINTS = {
 
     ),
 
+    (science.TopicProperty, 'qc_status'): (
+
+        ('type', int),
+
+        ('cardinality', "1.1"),
+
+    ),
     (science.TopicProperty, 'specialization_id'): (
 
         ('type', unicode),
@@ -7032,11 +7054,11 @@ CONSTRAINTS = {
         ('cardinality', "1.1"),
 
     ),
-    (science.TopicProperty, 'value'): (
+    (science.TopicProperty, 'values'): (
 
         ('type', unicode),
 
-        ('cardinality', "1.1"),
+        ('cardinality', "1.N"),
 
     ),
 
@@ -8777,6 +8799,8 @@ http://www.geosci-model-dev-discuss.net/gmd-2016-197/)
         "Realm key properties which differ from model defaults (grid, timestep etc).",
     (science.Realm, 'meta'):
         "Injected document metadata.",
+    (science.Realm, 'model'):
+        "Associated model.",
     (science.Realm, 'processes'):
         "Processes simulated within the realm.",
     (science.Realm, 'software_frameworks'):
@@ -8801,10 +8825,12 @@ http://www.geosci-model-dev-discuss.net/gmd-2016-197/)
         "Specialization identifier (derived from specialization).",
     (science.Topic, 'sub_topics'):
         "Discrete sub-topic with details.",
+    (science.TopicProperty, 'qc_status'):
+        "Quality control status of entered values.",
     (science.TopicProperty, 'specialization_id'):
         "Specialization identifier (derived from specialization).",
-    (science.TopicProperty, 'value'):
-        "User value.",
+    (science.TopicProperty, 'values'):
+        "User value(s).",
     (science.TopicPropertySet, 'description'):
         "A description (derived from specialization).",
     (science.TopicPropertySet, 'properties'):
@@ -9730,6 +9756,7 @@ KEYS = {
     (science.Realm, 'grid'): "cim.2.science.Realm.grid",
     (science.Realm, 'key_properties'): "cim.2.science.Realm.key_properties",
     (science.Realm, 'meta'): "cim.2.science.Realm.meta",
+    (science.Realm, 'model'): "cim.2.science.Realm.model",
     (science.Realm, 'processes'): "cim.2.science.Realm.processes",
     (science.Realm, 'software_frameworks'): "cim.2.science.Realm.software_frameworks",
     (science.Topic, 'citations'): "cim.2.science.Topic.citations",
@@ -9742,8 +9769,9 @@ KEYS = {
     (science.Topic, 'short_name'): "cim.2.science.Topic.short_name",
     (science.Topic, 'specialization_id'): "cim.2.science.Topic.specialization_id",
     (science.Topic, 'sub_topics'): "cim.2.science.Topic.sub_topics",
+    (science.TopicProperty, 'qc_status'): "cim.2.science.TopicProperty.qc_status",
     (science.TopicProperty, 'specialization_id'): "cim.2.science.TopicProperty.specialization_id",
-    (science.TopicProperty, 'value'): "cim.2.science.TopicProperty.value",
+    (science.TopicProperty, 'values'): "cim.2.science.TopicProperty.values",
     (science.TopicPropertySet, 'description'): "cim.2.science.TopicPropertySet.description",
     (science.TopicPropertySet, 'properties'): "cim.2.science.TopicPropertySet.properties",
     (science.TopicPropertySet, 'short_name'): "cim.2.science.TopicPropertySet.short_name",

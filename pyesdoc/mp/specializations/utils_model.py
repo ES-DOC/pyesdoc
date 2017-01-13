@@ -9,6 +9,10 @@
 
 
 """
+from itertools import chain
+
+
+
 class TopicSpecialization(object):
     """Wraps a topic specialization.
 
@@ -34,15 +38,21 @@ class TopicSpecialization(object):
         self.type_key = None
 
 
+    def __repr__(self):
+        """Instance representation.
+
+        """
+        return self.id
+
+
     @property
-    def all_sub_topics(self):
+    def all_topics(self):
         """Returns a flattened topic hierarchy.
 
         """
         def _get(container):
-            result = []
+            result = [container]
             for topic in container.sub_topics:
-                result.append(topic)
                 result += _get(topic)
 
             return result
@@ -51,17 +61,31 @@ class TopicSpecialization(object):
 
 
     @property
+    def all_property_containers(self):
+        """Returns flattened list of all property containers, i.e. topics & proeprty-sets.
+
+        """
+        result = []
+        for t in self.all_topics:
+            result += [t] + t.property_sets
+
+        return [i for i in result if i.properties]
+
+
+    @property
+    def all_sub_topics(self):
+        """Returns a flattened topic hierarchy.
+
+        """
+        return self.all_topics[1:]
+
+
+    @property
     def all_properties(self):
         """Returns all properties within realm.
 
         """
-        result = []
-        for t in self.all_sub_topics:
-            result += t.properties
-            for ps in t.property_sets:
-                result += ps.properties
-
-        return result
+        return list(chain.from_iterable(i.properties for i in self.all_property_containers))
 
 
     @property
@@ -69,13 +93,7 @@ class TopicSpecialization(object):
         """Returns all required properties within realm.
 
         """
-        result = []
-        for t in self.all_sub_topics:
-            result += [i for i in t.properties if i.is_required]
-            for ps in t.property_sets:
-                result += [i for i in ps.properties if i.is_required]
-
-        return result
+        return [i for i in self.all_properties if i.is_required]
 
 
     @property
@@ -83,13 +101,7 @@ class TopicSpecialization(object):
         """Returns all optional properties within realm.
 
         """
-        result = []
-        for t in self.all_sub_topics:
-            result += [i for i in t.properties if not i.is_required]
-            for ps in t.property_sets:
-                result += [i for i in ps.properties if not i.is_required]
-
-        return result
+        return self.all_properties - self.all_required_properties
 
 
     @property
@@ -141,6 +153,13 @@ class TopicPropertySetSpecialization(object):
         self.type_key = "property-set"
 
 
+    def __repr__(self):
+        """Instance representation.
+
+        """
+        return self.id
+
+
     def names(self, offset=None, seperator=" --> ", convertor=None):
         """Returns set of topic names derived from topic specialization id.
 
@@ -175,6 +194,13 @@ class TopicPropertySpecialization(object):
         self.topic = None
         self.typeof = None
         self.type_key = "property"
+
+
+    def __repr__(self):
+        """Instance representation.
+
+        """
+        return self.id
 
 
     @property
@@ -258,6 +284,13 @@ class EnumSpecialization(object):
         self.type_key = "enum"
 
 
+    def __repr__(self):
+        """Instance representation.
+
+        """
+        return self.id
+
+
     def is_a_member(self, val):
         """Returns flag indicating whether vlue is a member of the enumeration.
 
@@ -300,6 +333,13 @@ class EnumChoiceSpecialization(object):
         self.value = None
         self.is_other = None
         self.type_key = "enum-choice"
+
+
+    def __repr__(self):
+        """Instance representation.
+
+        """
+        return self.id
 
 
 class RealmSpecialization(TopicSpecialization):

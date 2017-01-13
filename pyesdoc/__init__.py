@@ -17,7 +17,7 @@
 
 """
 __title__ = 'pyesdoc'
-__version__ = '0.9.6.0.1'
+__version__ = '0.9.6.0.2'
 __author__ = 'ES-DOC'
 __license__ = 'GPL'
 __copyright__ = 'Copyright 2015 ???'
@@ -31,6 +31,9 @@ from pyesdoc.associating import associate_by_id
 from pyesdoc.associating import associate_by_id_and_version
 from pyesdoc.associating import associate_by_name
 
+from pyesdoc.extensions import extend
+from pyesdoc.extensions import is_extendable
+
 from pyesdoc.factory import create
 from pyesdoc.factory import create_notebook_output
 
@@ -41,8 +44,8 @@ from pyesdoc.io import seek
 from pyesdoc.io import write
 from pyesdoc.io import write_notebook_output
 
-from pyesdoc.extensions import extend
-from pyesdoc.extensions import is_extendable
+from pyesdoc.mp.specializations import get_model_realm_specialization
+from pyesdoc.mp.specializations import get_property_specialization
 
 from pyesdoc.publishing import publish
 from pyesdoc.publishing import retrieve
