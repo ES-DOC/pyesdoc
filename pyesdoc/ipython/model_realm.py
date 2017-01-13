@@ -102,6 +102,10 @@ class NotebookData(object):
            len(self.prop['values']) >= 1:
             raise ValueError("Invalid property: only one value can be added")
 
+        # Error if adding a duplicate value.
+        if val in self.prop['values']:
+            raise ValueError("Invalid property: cannot add duplicate values")
+
         # Delegate validation to specialization.
         self.prop_specialization.validate_value(val)
 
