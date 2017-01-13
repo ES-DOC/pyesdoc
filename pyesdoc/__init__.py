@@ -17,7 +17,7 @@
 
 """
 __title__ = 'pyesdoc'
-__version__ = '0.9.6.0.0'
+__version__ = '0.9.6.0.1'
 __author__ = 'ES-DOC'
 __license__ = 'GPL'
 __copyright__ = 'Copyright 2015 ???'
@@ -66,6 +66,7 @@ from pyesdoc import archive
 from pyesdoc import cv
 from pyesdoc import drq
 from pyesdoc import io
+from pyesdoc import ipython
 from pyesdoc import mp
 from pyesdoc import ontologies
 from pyesdoc import publishing

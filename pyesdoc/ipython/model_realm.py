@@ -10,8 +10,13 @@
 
 
 """
+import collections
+import json
+import os
+
 from pyesdoc.mp.specializations import get_model_realm_specialization
 from pyesdoc.mp.specializations import get_property_specialization
+from pyesdoc.ipython import constants
 
 
 
@@ -33,6 +38,22 @@ class NotebookData(object):
         self.realm = realm
         self.source_id = source_id
         self.specialization = get_model_realm_specialization(mip_era, realm)
+
+
+    @property
+    def notebook_filename(self):
+        """Gets notebook file name.
+
+        """
+        return "{}--{}--{}.ipynb".format(self.institute, self.source_id, self.realm)
+
+
+    @property
+    def output_filename(self):
+        """Gets output file name.
+
+        """
+        return "{}--{}--{}.json".format(self.institute, self.source_id, self.realm)
 
 
     def set_author(self, name, email):
@@ -67,7 +88,7 @@ class NotebookData(object):
         """Sets qc-status of specialized property being edited.
 
         """
-        if qc_status not in {0, 1, 2}:
+        if qc_status not in constants.QC_STATES:
             raise ValueError("Invalid QC status")
         self.prop['qc_status'] = qc_status
 
@@ -81,10 +102,10 @@ class NotebookData(object):
            len(self.prop['values']) >= 1:
             raise ValueError("Invalid property: only one value can be added")
 
-        # Delegate to specialization.
+        # Delegate validation to specialization.
         self.prop_specialization.validate_value(val)
 
-        # TODO: validate value
+        # Accept value.
         self.prop['values'].append(val)
 
 
@@ -92,34 +113,67 @@ class NotebookData(object):
         """Returns a set of values.
 
         """
-        return []
+        return self.content.get(specialization_id, dict()).get('values', [])
 
 
     def get_qc_status(self, specialization_id):
         """Returns a property qc status.
 
         """
-        return 0
+        return self.content.get(specialization_id, dict()).get('qc_status', 0)
 
 
-    def list_errors(self):
-        """Lists outstanding validation errors.
-
-        """
-        raise NotImplementedError()
-
-
-    def persist(self):
-        """Persists to file system.
+    def read(self, output_dir):
+        """Initialises state from previously saved output.
 
         """
-        raise NotImplementedError()
+        fpath = os.path.join(output_dir, self.output_filename)
+        if os.path.isfile(fpath):
+            with open(fpath, 'r') as fstream:
+                self._from_dict(json.loads(fstream.read()))
 
 
-    def from_dict(self, obj):
-        pass
+    def write(self, output_dir=None):
+        """Persists state to file system.
+
+        """
+        if output_dir is None:
+            output_dir = os.getcwd()
+            output_dir = output_dir.replace('notebooks', 'output')
+        output_filepath = os.path.join(output_dir, self.output_filename)
+        with open(output_filepath, 'w') as fstream:
+            fstream.write(json.dumps(self._to_dict(), indent=4))
 
 
-    def to_dict(self):
-        pass
+    def _from_dict(self, obj):
+        """Initialises internal state from a dictionary.
+
+        """
+        self.mip_era = obj['MIP_ERA']
+        self.institute = obj['INSTITUTE']
+        self.source_id = obj['SOURCE_ID']
+        self.realm = obj['REALM']
+        self.authors = [(i['name'], i['email']) for i in obj['AUTHORS']]
+        self.contributors = [(i['name'], i['email']) for i in obj['CONTRIBUTORS']]
+        self.content = obj['CONTENT']
+
+
+    def _to_dict(self):
+        """Returns a dictionary representation of internal state.
+
+        """
+        obj = collections.OrderedDict()
+        obj['MIP_ERA'] = self.mip_era
+        obj['INSTITUTE'] = self.institute
+        obj['SOURCE_ID'] = self.source_id
+        obj['REALM'] = self.realm
+        obj['AUTHORS'] = [{'name': i[0], 'email': i[1]} for i in self.authors]
+        obj['CONTRIBUTORS'] = [{'name': i[0], 'email': i[1]} for i in self.contributors]
+        obj['CONTENT'] = collections.OrderedDict()
+        for specialization_id in sorted(self.content.keys()):
+            specialization_obj = self.content[specialization_id]
+            if specialization_obj['qc_status'] or specialization_obj['values']:
+                obj['CONTENT'][specialization_id] = self.content[specialization_id]
+
+        return obj
 

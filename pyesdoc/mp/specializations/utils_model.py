@@ -182,7 +182,7 @@ class TopicPropertySpecialization(object):
         """Gets flag indicating whether cardinality is mandatory or not.
 
         """
-        return self.cardinality.split(".")[0] == "0"
+        return self.cardinality.split(".")[0] != "0"
 
 
     @property
