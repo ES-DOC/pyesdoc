@@ -42,6 +42,9 @@ def _create_topic(parent, spec, type_key, key=None, typeof=TopicSpecialization):
     """Creates & returns a topic specialization wrapper.
 
     """
+    if spec is None:
+        return None
+
     topic = typeof()
     topic.type_key = type_key
     topic.spec = spec
@@ -177,8 +180,6 @@ def _create_enum(detail, typeof, enumerations):
     e.name = key
     e.id = key
     e.choices = [_create_enum_choice(e, i[0], i[1]) for i in obj.get('members', [])]
-    if e.is_open:
-        e.choices.append(_create_enum_choice(e, "Other", None))
 
     return e
 
@@ -191,7 +192,6 @@ def _create_enum_choice(enum, value, description):
     ec.description = description
     ec.enum = enum
     ec.id = "{}.{}".format(enum.id, value)
-    ec.is_other = (value == 'Other')
     ec.value = value
 
     return ec

@@ -85,7 +85,7 @@ class TopicSpecialization(object):
         """Returns all properties within realm.
 
         """
-        return list(chain.from_iterable(i.properties for i in self.all_property_containers))
+        return set(chain.from_iterable(i.properties for i in self.all_property_containers))
 
 
     @property
@@ -93,7 +93,7 @@ class TopicSpecialization(object):
         """Returns all required properties within realm.
 
         """
-        return [i for i in self.all_properties if i.is_required]
+        return set([i for i in self.all_properties if i.is_required])
 
 
     @property
@@ -128,6 +128,7 @@ class TopicSpecialization(object):
         if offset is not None:
             names = names[offset:]
         names = [convertor(i) for i in names]
+
         return seperator.join(names)
 
 
@@ -331,8 +332,9 @@ class EnumChoiceSpecialization(object):
         self.enum = None
         self.id = None
         self.value = None
-        self.is_other = None
         self.type_key = "enum-choice"
+
+        self.is_other = False
 
 
     def __repr__(self):
