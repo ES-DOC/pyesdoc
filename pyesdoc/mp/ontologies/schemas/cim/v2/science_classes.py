@@ -14,6 +14,7 @@ def model():
     """
     return {
         'type': 'class',
+        # TODO: review whether science.topic works better.
         'base': 'software.component_base',
         'is_abstract': False,
         'is_document': True,
@@ -22,6 +23,8 @@ def model():
                 "Generic type for this model."),
             ('key_properties', 'science.topic', '0.1',
                 "Model default key properties (may be over-ridden in coupled component and realm properties)."),
+            ('activity_properties', 'science.topic', '0.1',
+                "Properties specific to the modelling activity in question, e.g. radiative forcing agents for CMIP6."),
             ('realms', 'linked_to(science.realm)', '0.N',
                 "The scientific realms which this model simulates internally, i.e. those which are not linked together using a coupler."),
 
@@ -32,6 +35,7 @@ def model():
                 "Overarching coupling framework for model."),
             ('internal_software_components', 'software.software_component', '0.N',
                 "Software modules which together provide the functionality for this model."),
+
         ]
     }
 

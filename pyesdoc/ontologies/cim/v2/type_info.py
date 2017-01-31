@@ -706,6 +706,7 @@ CLASS_PROPERTIES = {
         'volume',
     ),
     science.Model: (
+        'activity_properties',
         'coupled_components',
         'coupler',
         'internal_software_components',
@@ -1212,6 +1213,7 @@ CLASS_OWN_PROPERTIES = {
         'volume',
     ),
     science.Model: (
+        'activity_properties',
         'coupled_components',
         'coupler',
         'internal_software_components',
@@ -2775,6 +2777,7 @@ CONSTRAINTS = {
     ),
     science.Model: (
 
+        ('activity_properties', 'type', science.Topic),
         ('realms', 'type', science.Realm),
         ('description', 'type', unicode),
         ('repository', 'type', shared.OnlineResource),
@@ -2792,6 +2795,7 @@ CONSTRAINTS = {
         ('key_properties', 'type', science.Topic),
         ('name', 'type', unicode),
 
+        ('activity_properties', 'cardinality', "0.1"),
         ('realms', 'cardinality', "0.N"),
         ('description', 'cardinality', "0.1"),
         ('repository', 'cardinality', "0.1"),
@@ -6736,6 +6740,13 @@ CONSTRAINTS = {
 
     ),
 
+    (science.Model, 'activity_properties'): (
+
+        ('type', science.Topic),
+
+        ('cardinality', "0.1"),
+
+    ),
     (science.Model, 'coupled_components'): (
 
         ('type', science.Model),
@@ -8777,6 +8788,8 @@ http://www.geosci-model-dev-discuss.net/gmd-2016-197/)
         "Volume units.",
     (platform.StorageVolume, 'volume'):
         "Numeric value.",
+    (science.Model, 'activity_properties'):
+        "Properties specific to the modelling activity in question, e.g. radiative forcing agents for CMIP6.",
     (science.Model, 'coupled_components'):
         "Software components which are linked together using a coupler to deliver this model.",
     (science.Model, 'coupler'):
@@ -9745,6 +9758,7 @@ KEYS = {
     (platform.StoragePool, 'vendor'): "cim.2.platform.StoragePool.vendor",
     (platform.StorageVolume, 'units'): "cim.2.platform.StorageVolume.units",
     (platform.StorageVolume, 'volume'): "cim.2.platform.StorageVolume.volume",
+    (science.Model, 'activity_properties'): "cim.2.science.Model.activity_properties",
     (science.Model, 'coupled_components'): "cim.2.science.Model.coupled_components",
     (science.Model, 'coupler'): "cim.2.science.Model.coupler",
     (science.Model, 'internal_software_components'): "cim.2.science.Model.internal_software_components",
