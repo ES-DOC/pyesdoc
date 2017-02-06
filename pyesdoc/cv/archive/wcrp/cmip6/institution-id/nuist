@@ -3,17 +3,17 @@
     "alternativeName": null, 
     "alternativeUrl": null, 
     "associations": [], 
-    "createDate": "2016-12-14 12:00:00+00:00", 
+    "createDate": "0167-03-21 00:00:00+00:00", 
     "data": {
         "postalAddress": "Nanjing University of Information Science & Technology, Nanjing, 210044, China"
     }, 
     "description": null, 
-    "idx": 26, 
+    "idx": 27, 
     "label": "NUIST", 
     "name": "nuist", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "52cc4ac6-8310-4ec1-be8b-d9263c65e4db", 
+    "uid": "2345465a-5d8d-4868-9c6e-2a737a228e52", 
     "url": null
 }

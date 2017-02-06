@@ -1,0 +1,17 @@
+{
+    "_type": "pyesdoc.cv.model.term", 
+    "alternativeName": null, 
+    "alternativeUrl": null, 
+    "associations": [], 
+    "createDate": "0167-03-21 00:00:00+00:00", 
+    "data": null, 
+    "description": null, 
+    "idx": 26, 
+    "label": "Esubhr", 
+    "name": "esubhr", 
+    "parent": null, 
+    "status": "pending", 
+    "synonyms": [], 
+    "uid": "19ae17d5-2473-4690-a319-12a6c0a930a1", 
+    "url": null
+}

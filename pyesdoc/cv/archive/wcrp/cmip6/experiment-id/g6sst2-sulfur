@@ -3,7 +3,7 @@
     "alternativeName": null, 
     "alternativeUrl": null, 
     "associations": [], 
-    "createDate": "2016-12-14 12:00:00+00:00", 
+    "createDate": "0167-03-21 00:00:00+00:00", 
     "data": {
         "activityID": [
             "GeoMIP"
@@ -27,12 +27,12 @@
         "tier": "2"
     }, 
     "description": null, 
-    "idx": 54, 
+    "idx": 52, 
     "label": "G6SST2-sulfur", 
     "name": "g6sst2-sulfur", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "619a895d-cdb7-4deb-8209-d2c8c7dd2158", 
+    "uid": "443a045e-f483-495a-adea-9669bbb3bca8", 
     "url": null
 }

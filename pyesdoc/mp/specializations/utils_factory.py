@@ -1,5 +1,5 @@
 """
-.. module:: factory.py
+.. module:: utils_factory.py
    :license: GPL/CeCIL
    :platform: Unix, Windows
    :synopsis: Takes specialization modules and returns instances of wrapper classes.

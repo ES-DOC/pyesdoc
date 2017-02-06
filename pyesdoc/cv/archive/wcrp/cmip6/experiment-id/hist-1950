@@ -3,7 +3,7 @@
     "alternativeName": null, 
     "alternativeUrl": null, 
     "associations": [], 
-    "createDate": "2016-12-14 12:00:00+00:00", 
+    "createDate": "0167-03-21 00:00:00+00:00", 
     "data": {
         "activityID": [
             "HighResMIP"
@@ -21,7 +21,7 @@
             "HighResMIP"
         ], 
         "parentExperimentID": [
-            "control-1950"
+            "spinup-1950"
         ], 
         "requiredModelComponents": [
             "AOGCM"
@@ -32,12 +32,12 @@
         "tier": "2"
     }, 
     "description": null, 
-    "idx": 32, 
+    "idx": 31, 
     "label": "hist-1950", 
     "name": "hist-1950", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "45e194f6-28c4-4de5-a32d-8d26035b491a", 
+    "uid": "6ec0fe57-d0c6-4a0b-96af-1b4f6c391f7c", 
     "url": null
 }

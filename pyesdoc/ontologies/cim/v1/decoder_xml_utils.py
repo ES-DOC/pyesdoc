@@ -17,7 +17,7 @@ import types
 import arrow
 from lxml import etree as et
 
-import pyesdoc
+from pyesdoc import exceptions
 from pyesdoc.utils import convert
 
 
@@ -270,7 +270,7 @@ def decode_xml(decoder, xml, nsmap, is_iterable):
         return collection
 
     # otherwise exception
-    raise pyesdoc.DecodingException("xml cannot be decoded.")
+    raise exceptions.DecodingException("xml cannot be decoded.")
 
 
 def load_xml(xml, return_nsmap=False, default_ns='cim'):
@@ -286,7 +286,7 @@ def load_xml(xml, return_nsmap=False, default_ns='cim'):
     """
     # Defensive programming.
     if xml is None:
-        raise pyesdoc.DecodingException("XML is undefined.")
+        raise exceptions.DecodingException("XML is undefined.")
 
     # ... etree elements.
     nsmap = None
@@ -314,13 +314,13 @@ def load_xml(xml, return_nsmap=False, default_ns='cim'):
                 try:
                     xml = et.fromstring(xml)
                 except Exception as err:
-                    raise pyesdoc.DecodingException("Invalid xml string.")
+                    raise exceptions.DecodingException("Invalid xml string.")
                 else:
                     nsmap = xml.nsmap
 
             # Unsupported
             else:
-                raise pyesdoc.DecodingException("Unsupported xml type, must be either a string, file, url or etree.")
+                raise exceptions.DecodingException("Unsupported xml type, must be either a string, file, url or etree.")
 
 
     # Set default namespace.

@@ -3,7 +3,7 @@
     "alternativeName": null, 
     "alternativeUrl": null, 
     "associations": [], 
-    "createDate": "2016-12-14 12:00:00+00:00", 
+    "createDate": "0167-03-21 00:00:00+00:00", 
     "data": {
         "activityID": [
             "CFMIP"
@@ -27,12 +27,12 @@
         "tier": "2"
     }, 
     "description": null, 
-    "idx": 70, 
+    "idx": 68, 
     "label": "amip-p4K-lwoff", 
     "name": "amip-p4k-lwoff", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "3c88bdda-9f95-4732-b877-b2c1118a43e9", 
+    "uid": "434d1db0-c3f3-456c-bee2-8d083861c974", 
     "url": null
 }

@@ -3,7 +3,7 @@
     "alternativeName": null, 
     "alternativeUrl": null, 
     "associations": [], 
-    "createDate": "2016-12-14 12:00:00+00:00", 
+    "createDate": "0167-03-21 00:00:00+00:00", 
     "data": {
         "activityID": [
             "CFMIP"
@@ -27,12 +27,12 @@
         "tier": "1"
     }, 
     "description": null, 
-    "idx": 130, 
+    "idx": 128, 
     "label": "amip-4xCO2", 
     "name": "amip-4xco2", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "8d4dd7a9-4742-4612-90d1-374df66ff763", 
+    "uid": "7fdfefa7-a2f1-4043-a7ef-348cfd493132", 
     "url": null
 }

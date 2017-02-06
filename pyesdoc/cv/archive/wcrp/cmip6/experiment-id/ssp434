@@ -3,7 +3,7 @@
     "alternativeName": null, 
     "alternativeUrl": null, 
     "associations": [], 
-    "createDate": "2016-12-14 12:00:00+00:00", 
+    "createDate": "0167-03-21 00:00:00+00:00", 
     "data": {
         "activityID": [
             "ScenarioMIP"
@@ -32,12 +32,12 @@
         "tier": "2"
     }, 
     "description": null, 
-    "idx": 7, 
+    "idx": 6, 
     "label": "ssp434", 
     "name": "ssp434", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "a97e1579-ee05-4dde-8571-2cc025581a86", 
+    "uid": "1039d125-2025-4b7b-a065-ea10ac2faad7", 
     "url": null
 }

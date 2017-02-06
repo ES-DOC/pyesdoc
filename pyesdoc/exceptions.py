@@ -69,17 +69,6 @@ class EncodingException(LibraryBaseException):
         super(EncodingException, self).__init__("Document {} encoding failed :: Doc Type = {} :: Error = {}".format(encoding.upper(), type(doc), error))
 
 
-class InvalidOptionException(LibraryBaseException):
-    """Raised when an attempt to access an invalid library option occurs.
-
-    """
-    def __init__(self, option):
-        """Instance constructor.
-
-        """
-        super(InvalidOptionException, self).__init__("Option {} is unsupported.".format(option))
-
-
 class ExtendingException(LibraryBaseException):
     """Exception raised when document extension fails.
 
@@ -105,18 +94,6 @@ class InvalidDocumentTypeException(LibraryBaseException):
         """
         err = "Document type [{}] is unsupported.".format(doc_type)
         super(InvalidDocumentTypeException, self).__init__(err)
-
-
-class InvalidNoteBookOutputError(LibraryBaseException):
-    """Exception raised when invalid notebook outbook is declared.
-
-    """
-    def __init__(self):
-        """Instance constructor.
-
-        """
-        err = "Notebook outbook is invalid."
-        super(InvalidNoteBookOutputError, self).__init__(err)
 
 
 class LoadingException(LibraryBaseException):

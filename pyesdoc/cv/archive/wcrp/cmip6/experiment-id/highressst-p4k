@@ -3,7 +3,7 @@
     "alternativeName": null, 
     "alternativeUrl": null, 
     "associations": [], 
-    "createDate": "2016-12-14 12:00:00+00:00", 
+    "createDate": "0167-03-21 00:00:00+00:00", 
     "data": {
         "activityID": [
             "HighResMIP"
@@ -31,12 +31,12 @@
         "tier": "1"
     }, 
     "description": null, 
-    "idx": 201, 
+    "idx": 200, 
     "label": "highresSST-p4K", 
     "name": "highressst-p4k", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "180bd9f3-9398-4d66-b25c-a2046718471d", 
+    "uid": "6880a89d-9766-4199-97aa-938629a5f1fd", 
     "url": null
 }

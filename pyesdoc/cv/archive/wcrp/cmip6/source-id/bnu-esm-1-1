@@ -3,7 +3,7 @@
     "alternativeName": null, 
     "alternativeUrl": null, 
     "associations": [], 
-    "createDate": "2016-12-14 12:00:00+00:00", 
+    "createDate": "0167-03-21 00:00:00+00:00", 
     "data": {
         "aerosol": "CAM-chem; semi-interactive", 
         "atmosphere": "CAM4 (FV, 144 x 96; 26 levels; top level 2.194 mb)", 
@@ -25,12 +25,12 @@
         "sourceID": "BNU-ESM-1-1"
     }, 
     "description": null, 
-    "idx": 3, 
+    "idx": 22, 
     "label": "BNU-ESM-1-1", 
     "name": "bnu-esm-1-1", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "8507ac29-461d-4240-87b7-b00d62ce13a5", 
+    "uid": "eeea91a7-3dca-4d95-8132-c24482c62af3", 
     "url": null
 }

@@ -35,7 +35,6 @@ def model():
                 "Overarching coupling framework for model."),
             ('internal_software_components', 'software.software_component', '0.N',
                 "Software modules which together provide the functionality for this model."),
-
         ]
     }
 

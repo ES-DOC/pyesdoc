@@ -3,7 +3,7 @@
     "alternativeName": null, 
     "alternativeUrl": null, 
     "associations": [], 
-    "createDate": "2016-12-14 12:00:00+00:00", 
+    "createDate": "0167-03-21 00:00:00+00:00", 
     "data": {
         "activityID": [
             "HighResMIP"
@@ -31,12 +31,12 @@
         "tier": "1"
     }, 
     "description": null, 
-    "idx": 150, 
+    "idx": 149, 
     "label": "highresSST-smoothed", 
     "name": "highressst-smoothed", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "bd3683f2-d5d3-45c3-99c3-a05ba3818738", 
+    "uid": "60c8adb7-1af1-46cc-8ec2-1b41667a3485", 
     "url": null
 }

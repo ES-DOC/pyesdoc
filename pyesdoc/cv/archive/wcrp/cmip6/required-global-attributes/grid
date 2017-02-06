@@ -1,0 +1,17 @@
+{
+    "_type": "pyesdoc.cv.model.term", 
+    "alternativeName": null, 
+    "alternativeUrl": null, 
+    "associations": [], 
+    "createDate": "0167-03-21 00:00:00+00:00", 
+    "data": null, 
+    "description": null, 
+    "idx": 11, 
+    "label": "grid", 
+    "name": "grid", 
+    "parent": null, 
+    "status": "pending", 
+    "synonyms": [], 
+    "uid": "fda5c378-ceb4-4cc2-8237-dd8b6bbc2f93", 
+    "url": null
+}

@@ -50,6 +50,7 @@ class NumericalExperiment(activity.Activity):
         self.related_mips = []                            # designing.Project (0.N)
         self.required_period = None                       # designing.TemporalConstraint (1.1)
         self.requirements = []                            # designing.NumericalRequirement (0.N)
+        self.tier = None                                  # int (0.1)
 
 
 class NumericalRequirement(activity.Activity):

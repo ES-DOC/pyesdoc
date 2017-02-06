@@ -3,7 +3,7 @@
     "alternativeName": null, 
     "alternativeUrl": null, 
     "associations": [], 
-    "createDate": "2016-12-14 12:00:00+00:00", 
+    "createDate": "0167-03-21 00:00:00+00:00", 
     "data": {
         "activityID": [
             "VolMIP"
@@ -33,12 +33,12 @@
         "tier": "3"
     }, 
     "description": null, 
-    "idx": 82, 
+    "idx": 79, 
     "label": "volc-pinatubo-slab", 
     "name": "volc-pinatubo-slab", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "60c99e64-b506-4408-8982-f90e323883cd", 
+    "uid": "aaf99987-eaa4-4df4-9e89-089fc7f80568", 
     "url": null
 }

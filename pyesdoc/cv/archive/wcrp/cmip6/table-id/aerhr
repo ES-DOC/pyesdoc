@@ -1,0 +1,17 @@
+{
+    "_type": "pyesdoc.cv.model.term", 
+    "alternativeName": null, 
+    "alternativeUrl": null, 
+    "associations": [], 
+    "createDate": "0167-03-21 00:00:00+00:00", 
+    "data": null, 
+    "description": null, 
+    "idx": 7, 
+    "label": "AERhr", 
+    "name": "aerhr", 
+    "parent": null, 
+    "status": "pending", 
+    "synonyms": [], 
+    "uid": "7215ac32-a7c7-4988-bf1c-e52306200fc2", 
+    "url": null
+}

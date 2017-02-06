@@ -1,0 +1,36 @@
+{
+    "_type": "pyesdoc.cv.model.term", 
+    "alternativeName": null, 
+    "alternativeUrl": null, 
+    "associations": [], 
+    "createDate": "0167-03-21 00:00:00+00:00", 
+    "data": {
+        "aerosol": "None, prescribed MACv2-SP", 
+        "atmosphere": "ICON-AES (icosahedral/triangles; 160 km; 47 levels; top level 80 km)", 
+        "atmosphericChemistry": "None", 
+        "cohort": [
+            ""
+        ], 
+        "institutionID": [
+            "MPI-M"
+        ], 
+        "label": "MPIESM2", 
+        "labelExtended": "MPIESM2", 
+        "landIce": "None/prescribed", 
+        "landSurface": "JSBACH4.2", 
+        "ocean": "ICON-OES (icosahedral/triangles; 40 km; 40 levels; top grid cell 0-12 m)", 
+        "oceanBiogeochemistry": "HAMOCC", 
+        "releaseYear": "2017", 
+        "seaIce": "thermodynamic (Semtner zero-layer) dynamic (Hibler 79) sea ice model", 
+        "sourceID": "MPIESM-2-LR"
+    }, 
+    "description": null, 
+    "idx": 36, 
+    "label": "MPIESM-2-LR", 
+    "name": "mpiesm-2-lr", 
+    "parent": null, 
+    "status": "pending", 
+    "synonyms": [], 
+    "uid": "095b0d6a-6145-4b7b-8deb-a5cc0fbbec60", 
+    "url": null
+}

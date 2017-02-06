@@ -90,6 +90,7 @@ class DocReference(object):
         self.context = None                               # unicode (0.1)
         self.description = None                           # unicode (0.1)
         self.external_id = None                           # unicode (0.1)
+        self.further_info = None                          # unicode (0.1)
         self.id = None                                    # unicode (0.1)
         self.institute = None                             # unicode (0.1)
         self.linkage = None                               # unicode (0.1)

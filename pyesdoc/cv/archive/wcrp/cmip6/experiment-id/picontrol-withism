@@ -3,7 +3,7 @@
     "alternativeName": null, 
     "alternativeUrl": null, 
     "associations": [], 
-    "createDate": "2016-12-14 12:00:00+00:00", 
+    "createDate": "0167-03-21 00:00:00+00:00", 
     "data": {
         "activityID": [
             "ISMIP6"
@@ -16,7 +16,7 @@
         "description": "Pre-industrial control simulation that includes interactive ice sheets", 
         "endYear": "", 
         "experiment": "preindustrial control with interactive ice sheet", 
-        "minNumberYrsPerSim": "451", 
+        "minNumberYrsPerSim": "500", 
         "parentActivityID": "", 
         "parentExperimentID": "", 
         "requiredModelComponents": [
@@ -35,6 +35,6 @@
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "6d15c05e-f794-498e-9b88-10c2594542e0", 
+    "uid": "4e2f1fa6-6b43-431b-afd9-622a6b89c776", 
     "url": null
 }

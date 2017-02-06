@@ -186,6 +186,27 @@ def yield_files(project=None, source=None, file_filter=None):
             yield file_
 
 
+def yield_latest_documents(project=None, source=None, file_filter=None):
+    """Yields latest documents for processing.
+
+    :param str project: Name of a supported project (e.g. cmip6).
+    :param str source: Name of a document source (e.g. esdoc-q).
+    :param str file_filter: A file filter to be applied.
+
+    :returns: Set of latest documents for processing.
+    :rtype: generator
+
+    """
+    latest = dict()
+    for i in yield_files(project, source, file_filter):
+        if i.uid not in latest or \
+           (i.uid in latest and latest[i.uid].version < i.version):
+            latest[i.uid] = i
+
+    for i in latest.values():
+        yield i.get_document()
+
+
 def yield_folders(project=None, source=None):
     """Yields set of folders for processing.
 
@@ -361,7 +382,6 @@ def read(uid, version, extend=True):
 
     """
     return get_file_document(uid, version, extend)
-
 
 
 def write(doc):

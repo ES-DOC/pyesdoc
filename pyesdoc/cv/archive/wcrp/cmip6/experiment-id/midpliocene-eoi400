@@ -3,7 +3,7 @@
     "alternativeName": null, 
     "alternativeUrl": null, 
     "associations": [], 
-    "createDate": "2016-12-14 12:00:00+00:00", 
+    "createDate": "0167-03-21 00:00:00+00:00", 
     "data": {
         "activityID": [
             "PMIP"
@@ -28,12 +28,12 @@
         "tier": "1"
     }, 
     "description": null, 
-    "idx": 171, 
+    "idx": 170, 
     "label": "midPliocene-eoi400", 
     "name": "midpliocene-eoi400", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "7669f8fa-64e9-482c-8328-95a7ad60b550", 
+    "uid": "2256ab57-5b60-4944-8247-3286a485e60d", 
     "url": null
 }

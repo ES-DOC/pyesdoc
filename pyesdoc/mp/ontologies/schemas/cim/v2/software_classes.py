@@ -29,6 +29,8 @@ def component_base():
                 "Long name for component."),
             ('name', 'str', '1.1',
                 "Short name of component."),
+            ('responsible_parties', 'shared.responsibility', '0.N',
+                "People or organisations responsible for providing this information."),
 
             ('development_history', 'software.development_path', '0.1',
                 "History of the development of this component."),

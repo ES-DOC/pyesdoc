@@ -1,0 +1,58 @@
+{% if ctx.fieldset_type == "namevalue" %}
+	{% set field_name = ctx.field.get_name() %}
+	{% set field_value = ctx.field.get_value(ctx.data) %}
+	{% set field_value = "--" if field_value is None else field_value %}
+	{% set field_value_css = "" if field_value != "--" else "esdoc-null-field" %}
+{% elif ctx.fieldset_type == "property" %}
+	{% set field_name = ctx.field.get_name() %}
+	{% set field_value = ctx.field.get_value() %}
+	{% set field_value_css = "" %}
+{% end %}
+{% set _SEPARATOR = "  |  " %}
+
+
+<tr class="esdoc-field {{ ctx.fieldset_type }} {{ field_value_css }}">
+	{% if ctx.fieldset_type == "namevalue" %}
+		<td class="esdoc-field-name"><b>{{ field_name }}</b></td>
+		<td class="esdoc-field-value"
+		    {% if ctx.field.tag_id %}id="{{ ctx.field.tag_id }}"{% end %}
+		    style="{% if ctx.field.capitalize_value %}text-transform: capitalize;{% end %}">
+			{% if not bool(field_value) %}
+				--
+
+			{% elif ctx.field.link_factory %}
+				{% for link_idx, link_info in enumerate(field_value) %}
+				{% if link_idx > 0 %}
+				<span>{{ _SEPARATOR }}</span>
+				{% end %}
+				<a class="esdoc-field-hyperlink" href="{{ link_info[1] }}">{{ link_info[0] }}</a>
+				{% end %}
+
+			{% elif ctx.field.link_path and ctx.field.get_link(ctx.data) %}
+				<a class="esdoc-field-hyperlink" href="{{ ctx.field.get_link(ctx.data) }}">{{ field_value }}</a>
+
+			{% elif ctx.field.email_path and ctx.field.get_email(ctx.data) %}
+				<a class="esdoc-field-email" href="mailto:{{ ctx.field.get_email(ctx.data) }}?subject=ES-DOC :: subject goes here">{{ field_value }}</a>
+
+			{% elif ctx.field.link %}
+				<a class="esdoc-field-hyperlink" href="{{ ctx.field.link }}">{{ field_value }}</a>
+
+			{% elif isinstance(field_value, list) %}
+				<ul>
+					{% for field_item_value in field_value %}
+					<li>{{ field_item_value }}</li>
+					{% end %}
+				</ul>
+
+			{% else %}
+				{{ field_value }}
+
+			{% end %}
+		</td>
+
+	{% elif ctx.fieldset_type == "property" %}
+		<td>
+			<b>{{ field_name }}</b>: {{ field_value }}
+		</td>
+	{% end %}
+</tr>

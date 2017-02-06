@@ -1,0 +1,17 @@
+{
+    "_type": "pyesdoc.cv.model.term", 
+    "alternativeName": null, 
+    "alternativeUrl": null, 
+    "associations": [], 
+    "createDate": "0167-03-21 00:00:00+00:00", 
+    "data": null, 
+    "description": null, 
+    "idx": 3, 
+    "label": "branch_method", 
+    "name": "branch_method", 
+    "parent": null, 
+    "status": "pending", 
+    "synonyms": [], 
+    "uid": "c74908bd-1b7b-4be7-8d07-432e15cc0b8f", 
+    "url": null
+}

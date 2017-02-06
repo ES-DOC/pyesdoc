@@ -3,7 +3,7 @@
     "alternativeName": null, 
     "alternativeUrl": null, 
     "associations": [], 
-    "createDate": "2016-12-14 12:00:00+00:00", 
+    "createDate": "0167-03-21 00:00:00+00:00", 
     "data": {
         "activityID": [
             "ISMIP6"
@@ -12,7 +12,7 @@
         "description": "Present-day control simulation for \"offline\" ice sheets", 
         "endYear": "", 
         "experiment": "offline ice sheet forced by ISMIP6-specified AOGCM pdControl output", 
-        "minNumberYrsPerSim": "451", 
+        "minNumberYrsPerSim": "100", 
         "parentActivityID": "", 
         "parentExperimentID": "", 
         "requiredModelComponents": [
@@ -24,12 +24,12 @@
         "tier": "1"
     }, 
     "description": null, 
-    "idx": 99, 
+    "idx": 96, 
     "label": "ism-pdControl-std", 
     "name": "ism-pdcontrol-std", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "d9752ced-6110-4730-b665-f2de04270f75", 
+    "uid": "0f256643-933a-4909-9434-4d8ee589fc55", 
     "url": null
 }

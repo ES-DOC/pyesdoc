@@ -9,7 +9,7 @@
 
 
 """
-from pyesdoc.exceptions import ObsoleteException
+from pyesdoc import exceptions
 
 
 
@@ -28,7 +28,7 @@ def _reject_obsolete(content):
 
     """
     if content.find(CIM_V1_4) != -1:
-        raise ObsoleteException("cim schema = 1.4")
+        raise exceptions.ObsoleteException("cim schema = 1.4")
 
 
 def _correct_schema_reference(content):

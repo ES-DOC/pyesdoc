@@ -1,0 +1,17 @@
+{
+    "_type": "pyesdoc.cv.model.term", 
+    "alternativeName": null, 
+    "alternativeUrl": null, 
+    "associations": [], 
+    "createDate": "0167-03-21 00:00:00+00:00", 
+    "data": null, 
+    "description": null, 
+    "idx": 14, 
+    "label": "CFsubhr", 
+    "name": "cfsubhr", 
+    "parent": null, 
+    "status": "pending", 
+    "synonyms": [], 
+    "uid": "eae54661-4096-4c9b-8cb3-9b5a4cd32390", 
+    "url": null
+}

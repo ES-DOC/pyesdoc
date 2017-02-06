@@ -24,7 +24,7 @@ from pyesdoc.cv.model import Scope
 
 
 
-def create_authority(name, description, url):
+def create_authority(name, description, url, create_date=None):
 	"""Instantiates, initialises & returns a term authority.
 
 	"""
@@ -40,6 +40,7 @@ def create_authority(name, description, url):
 
 	# Instantiate.
 	i = Authority()
+	i.create_date = create_date or arrow.utcnow().datetime
 	i.description = description
 	i.label = name
 	i.name = name.lower()
@@ -52,8 +53,14 @@ def create_authority(name, description, url):
 	return i
 
 
-def create_scope(authority, name, description, url):
+def create_scope(authority, name, description, url, create_date=None):
 	"""Instantiates, initialises & returns a term scope.
+
+	param: pyesdoc.cv.Authority authority: CV authority to which scope is bound.
+	param: str name: Scope name (must be unique within authority).
+	param: str description: Scope description.
+	param: str url: Scope URL for further information.
+	param: datetime create_date: Date upon which scope was created.
 
 	"""
 	# Validate inputs.
@@ -70,6 +77,7 @@ def create_scope(authority, name, description, url):
 	# Instantiate.
 	i = Scope()
 	i.authority = authority
+	i.create_date = create_date or arrow.utcnow().datetime
 	i.description = description
 	i.label = name
 	i.name = name.lower()
@@ -87,8 +95,13 @@ def create_scope(authority, name, description, url):
 	return i
 
 
-def create_collection(scope, name, description):
+def create_collection(scope, name, description, create_date=None):
 	"""Instantiates, initialises & returns a term collection.
+
+	param: pyesdoc.cv.Scope scope: CV scope to which collection is bound.
+	param: str name: Collection name (must be unique within scope).
+	param: str description: Collection description.
+	param: datetime create_date: Date upon which collection was created.
 
 	"""
 	# Validate inputs.
@@ -102,7 +115,7 @@ def create_collection(scope, name, description):
 
 	# Instantiate.
 	i = Collection()
-	i.create_date = arrow.utcnow().datetime
+	i.create_date = create_date or arrow.utcnow().datetime
 	i.description = description
 	i.label = name
 	i.name = name.lower()
@@ -120,12 +133,13 @@ def create_collection(scope, name, description):
 	return i
 
 
-def create_term(collection, name, data=None):
+def create_term(collection, name, data=None, create_date=None):
 	"""Instantiates, initialises & returns a term.
 
 	param: pyesdoc.cv.Collection collection: The collection to which the term belongs.
 	param: str name: Name of term.
 	param: dict data: Arbitrary data associated with term.
+	param: datetime create_date: Date upon which term was created.
 
 	"""
 	# Validate inputs.
@@ -140,7 +154,7 @@ def create_term(collection, name, data=None):
 	# Instantiate.
 	i = Term()
 	i.collection = collection
-	i.create_date = arrow.utcnow().datetime
+	i.create_date = create_date or arrow.utcnow().datetime
 	i.label = name
 	i.name = name.lower()
 	i.status = constants.GOVERNANCE_STATUS_PENDING

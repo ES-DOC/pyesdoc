@@ -1,0 +1,19 @@
+{
+    "_type": "pyesdoc.cv.model.term", 
+    "alternativeName": null, 
+    "alternativeUrl": null, 
+    "associations": [], 
+    "createDate": "0167-03-21 00:00:00+00:00", 
+    "data": {
+        "postalAddress": "Alfred Wegener Institute, Helmholtz Centre for Polar and Marine Research, Am Handelshafen 12, 27570 Bremerhaven, Germany"
+    }, 
+    "description": null, 
+    "idx": 12, 
+    "label": "AWI", 
+    "name": "awi", 
+    "parent": null, 
+    "status": "pending", 
+    "synonyms": [], 
+    "uid": "51e3ea3d-2c00-4bfc-a959-9e99c6e49af7", 
+    "url": null
+}

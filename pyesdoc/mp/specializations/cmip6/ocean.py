@@ -45,6 +45,9 @@ CHANGE_HISTORY = [
         "Changed syntax to simplify and remove CIM2 dependencies"),
     ("0.5.0", "2016-11-25", "Mark Greenslade.",
         "Syntax simplification in respect of process/sub-process"),
+    ("0.6.0", "2017-01-13", "Eric Guilyardi",
+        "Added ocean_short_table.py"),
+
     ]
 
 # --------------------------------------------------------------------

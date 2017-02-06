@@ -1,0 +1,17 @@
+{
+    "_type": "pyesdoc.cv.model.term", 
+    "alternativeName": null, 
+    "alternativeUrl": null, 
+    "associations": [], 
+    "createDate": "0167-03-21 00:00:00+00:00", 
+    "data": null, 
+    "description": null, 
+    "idx": 2, 
+    "label": "1 km", 
+    "name": "1 km", 
+    "parent": null, 
+    "status": "pending", 
+    "synonyms": [], 
+    "uid": "9ce621b6-8bd3-4b29-bd95-8555e1544e9a", 
+    "url": null
+}

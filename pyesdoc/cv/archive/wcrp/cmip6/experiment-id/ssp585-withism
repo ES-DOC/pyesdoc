@@ -3,7 +3,7 @@
     "alternativeName": null, 
     "alternativeUrl": null, 
     "associations": [], 
-    "createDate": "2016-12-14 12:00:00+00:00", 
+    "createDate": "0167-03-21 00:00:00+00:00", 
     "data": {
         "activityID": [
             "ISMIP6"
@@ -16,7 +16,7 @@
         "description": "Future climate from ScenarioMIP SSP5-8.5 simulation that includes interactive ice sheets. Set up follows the standard SSP5-8.5 experiment", 
         "endYear": "2300", 
         "experiment": "ssp585 with interactive ice sheet", 
-        "minNumberYrsPerSim": "286", 
+        "minNumberYrsPerSim": "85", 
         "parentActivityID": [
             "ISMIP6"
         ], 
@@ -33,12 +33,12 @@
         "tier": "2"
     }, 
     "description": null, 
-    "idx": 200, 
+    "idx": 199, 
     "label": "ssp585-withism", 
     "name": "ssp585-withism", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "4c3fa985-3475-4567-b811-e9d352116a39", 
+    "uid": "840c1229-c307-49d1-96e5-a2962cdf401b", 
     "url": null
 }

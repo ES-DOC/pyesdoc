@@ -1,0 +1,17 @@
+{
+    "_type": "pyesdoc.cv.model.term", 
+    "alternativeName": null, 
+    "alternativeUrl": null, 
+    "associations": [], 
+    "createDate": "0167-03-21 00:00:00+00:00", 
+    "data": null, 
+    "description": null, 
+    "idx": 1, 
+    "label": "Conventions", 
+    "name": "conventions", 
+    "parent": null, 
+    "status": "pending", 
+    "synonyms": [], 
+    "uid": "93c1cc11-07f8-470a-9ecf-0b1947ec815e", 
+    "url": null
+}
