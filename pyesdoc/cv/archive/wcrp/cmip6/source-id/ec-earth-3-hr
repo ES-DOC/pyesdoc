@@ -3,7 +3,7 @@
     "alternativeName": null, 
     "alternativeUrl": null, 
     "associations": [], 
-    "createDate": "2016-12-14 12:00:00+00:00", 
+    "createDate": "0167-03-21 00:00:00+00:00", 
     "data": {
         "aerosol": "None", 
         "atmosphere": "IFS cy36r4 (TL511, linearly reduced Gaussian grid equivalent to 1024 x 512; 91 levels; top level 1 Pa)", 
@@ -25,12 +25,12 @@
         "sourceID": "EC-Earth-3-HR"
     }, 
     "description": null, 
-    "idx": 7, 
+    "idx": 26, 
     "label": "EC-Earth-3-HR", 
     "name": "ec-earth-3-hr", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "8a78cdb7-55f7-43bb-a054-f06ab004b56c", 
+    "uid": "af7f7e8b-2ad4-4a85-b352-1dd1aff8f930", 
     "url": null
 }

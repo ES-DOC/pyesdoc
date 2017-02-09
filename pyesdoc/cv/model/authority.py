@@ -23,6 +23,7 @@ class Authority(Entity):
         """Instance constructor.
 
         """
+        self.create_date = None
         self.description = None
         self.label = None
         self.name = None

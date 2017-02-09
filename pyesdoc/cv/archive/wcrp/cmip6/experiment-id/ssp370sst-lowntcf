@@ -3,7 +3,7 @@
     "alternativeName": null, 
     "alternativeUrl": null, 
     "associations": [], 
-    "createDate": "2016-12-14 12:00:00+00:00", 
+    "createDate": "0167-03-21 00:00:00+00:00", 
     "data": {
         "activityID": [
             "AerChemMIP"
@@ -28,12 +28,12 @@
         "tier": "1"
     }, 
     "description": null, 
-    "idx": 173, 
+    "idx": 172, 
     "label": "ssp370SST-lowNTCF", 
     "name": "ssp370sst-lowntcf", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "5c49c6a6-b8b9-454f-a0eb-25b90d602afd", 
+    "uid": "028ab60f-7125-4467-9326-e36106c52f0d", 
     "url": null
 }

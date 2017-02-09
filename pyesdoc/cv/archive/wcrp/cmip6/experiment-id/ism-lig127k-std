@@ -3,7 +3,7 @@
     "alternativeName": null, 
     "alternativeUrl": null, 
     "associations": [], 
-    "createDate": "2016-12-14 12:00:00+00:00", 
+    "createDate": "0167-03-21 00:00:00+00:00", 
     "data": {
         "activityID": [
             "ISMIP6"
@@ -12,7 +12,7 @@
         "description": "Last interglacial simulation of ice sheet evolution driven by PMIP lig127k", 
         "endYear": "", 
         "experiment": "offline ice sheet forced by ISMIP6-specified AGCM last interglacial output", 
-        "minNumberYrsPerSim": "", 
+        "minNumberYrsPerSim": "20000", 
         "parentActivityID": "", 
         "parentExperimentID": "", 
         "requiredModelComponents": [
@@ -24,12 +24,12 @@
         "tier": "3"
     }, 
     "description": null, 
-    "idx": 64, 
+    "idx": 62, 
     "label": "ism-lig127k-std", 
     "name": "ism-lig127k-std", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "179dd79a-8d31-4415-864e-8e54a5411054", 
+    "uid": "3a59a5b9-71de-47bb-a9bc-40f59d40eb5c", 
     "url": null
 }

@@ -35,6 +35,7 @@ class Model(software.ComponentBase):
         """
         super(Model, self).__init__()
 
+        self.activity_properties = None                   # science.Topic (0.1)
         self.coupled_components = []                      # science.Model (0.N)
         self.coupler = None                               # software.CouplingFramework (0.1)
         self.internal_software_components = []            # software.SoftwareComponent (0.N)

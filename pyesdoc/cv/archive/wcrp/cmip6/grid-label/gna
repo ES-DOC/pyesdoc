@@ -1,0 +1,17 @@
+{
+    "_type": "pyesdoc.cv.model.term", 
+    "alternativeName": null, 
+    "alternativeUrl": null, 
+    "associations": [], 
+    "createDate": "0167-03-21 00:00:00+00:00", 
+    "data": null, 
+    "description": null, 
+    "idx": 3, 
+    "label": "gna", 
+    "name": "gna", 
+    "parent": null, 
+    "status": "pending", 
+    "synonyms": [], 
+    "uid": "86a89285-b8f6-4084-9619-9108a102e6e3", 
+    "url": null
+}

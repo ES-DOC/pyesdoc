@@ -3,7 +3,7 @@
     "alternativeName": null, 
     "alternativeUrl": null, 
     "associations": [], 
-    "createDate": "2016-12-14 12:00:00+00:00", 
+    "createDate": "0167-03-21 00:00:00+00:00", 
     "data": {
         "activityID": [
             "HighResMIP"
@@ -31,12 +31,12 @@
         "tier": "1"
     }, 
     "description": null, 
-    "idx": 112, 
+    "idx": 108, 
     "label": "highresSST-LAI", 
     "name": "highressst-lai", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "940a647e-441f-4fe7-a033-89b0a89e92a3", 
+    "uid": "9a51989d-768b-46c6-ae70-165762f2578b", 
     "url": null
 }

@@ -124,6 +124,7 @@ def get_label(label):
 
 
 _CACHE = set()
+
 def get_link_labels(label):
     """Returns a reformatted link label.
 
@@ -133,7 +134,6 @@ def get_link_labels(label):
     except KeyError:
         if label not in _CACHE:
             _CACHE.add(label)
-            print 666, label
         return label, label
 
 

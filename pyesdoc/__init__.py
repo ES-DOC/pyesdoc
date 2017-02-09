@@ -17,64 +17,53 @@
 
 """
 __title__ = 'pyesdoc'
-__version__ = '0.9.6.0.2'
+__version__ = '0.9.6.2.0'
 __author__ = 'ES-DOC'
 __license__ = 'GPL'
 __copyright__ = 'Copyright 2015 ???'
 
 
-from pyesdoc.constants import *
-from pyesdoc.exceptions import *
+from pyesdoc import archive
+from pyesdoc import constants
+from pyesdoc import cv
+from pyesdoc import drq
+from pyesdoc import exceptions
+from pyesdoc import ipython
+from pyesdoc import mp
+from pyesdoc import ontologies
+from pyesdoc import utils
 
-from pyesdoc.associating import associate
-from pyesdoc.associating import associate_by_id
-from pyesdoc.associating import associate_by_id_and_version
-from pyesdoc.associating import associate_by_name
+from pyesdoc._associating import associate
+from pyesdoc._associating import associate_by_id
+from pyesdoc._associating import associate_by_id_and_version
+from pyesdoc._associating import associate_by_name
 
-from pyesdoc.extensions import extend
-from pyesdoc.extensions import is_extendable
+from pyesdoc._extensions import extend
+from pyesdoc._extensions import is_extendable
 
-from pyesdoc.factory import create
-from pyesdoc.factory import create_notebook_output
+from pyesdoc._factory import create
 
-from pyesdoc.io import convert as convert_file
-from pyesdoc.io import get_filename
-from pyesdoc.io import read
-from pyesdoc.io import seek
-from pyesdoc.io import write
-from pyesdoc.io import write_notebook_output
+from pyesdoc._io import convert as convert_file
+from pyesdoc._io import get_filename
+from pyesdoc._io import read
+from pyesdoc._io import seek
+from pyesdoc._io import write
 
 from pyesdoc.mp.specializations import get_model_realm_specialization
 from pyesdoc.mp.specializations import get_property_specialization
 
-from pyesdoc.publishing import publish
-from pyesdoc.publishing import retrieve
-from pyesdoc.publishing import unpublish
+from pyesdoc._publishing import publish
+from pyesdoc._publishing import retrieve
+from pyesdoc._publishing import unpublish
 
-from pyesdoc.serialization import convert
-from pyesdoc.serialization import decode
-from pyesdoc.serialization import encode
+from pyesdoc._serialization import convert
+from pyesdoc._serialization import decode
+from pyesdoc._serialization import encode
 
-from pyesdoc.utils import runtime as rt
 from pyesdoc.utils import config
-from pyesdoc.utils.help import list_constants
-from pyesdoc.utils.help import list_functions
 from pyesdoc.utils.runtime import log
 from pyesdoc.utils.runtime import log_error
 
-from pyesdoc.validation import is_valid
-from pyesdoc.validation import validate
+from pyesdoc._validation import is_valid
+from pyesdoc._validation import validate
 
-from pyesdoc import archive
-from pyesdoc import cv
-from pyesdoc import drq
-from pyesdoc import io
-from pyesdoc import ipython
-from pyesdoc import mp
-from pyesdoc import ontologies
-from pyesdoc import publishing
-from pyesdoc import serialization
-from pyesdoc import utils
-from pyesdoc import validation
-
-from pyesdoc.ontologies import type_info

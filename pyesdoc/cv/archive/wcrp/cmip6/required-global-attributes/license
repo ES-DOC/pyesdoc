@@ -1,0 +1,17 @@
+{
+    "_type": "pyesdoc.cv.model.term", 
+    "alternativeName": null, 
+    "alternativeUrl": null, 
+    "associations": [], 
+    "createDate": "0167-03-21 00:00:00+00:00", 
+    "data": null, 
+    "description": null, 
+    "idx": 16, 
+    "label": "license", 
+    "name": "license", 
+    "parent": null, 
+    "status": "pending", 
+    "synonyms": [], 
+    "uid": "e497f235-c5e3-4f14-870b-b0695a5215cd", 
+    "url": null
+}

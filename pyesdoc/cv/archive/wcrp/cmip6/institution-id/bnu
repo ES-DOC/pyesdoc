@@ -3,17 +3,17 @@
     "alternativeName": null, 
     "alternativeUrl": null, 
     "associations": [], 
-    "createDate": "2016-12-14 12:00:00+00:00", 
+    "createDate": "0167-03-21 00:00:00+00:00", 
     "data": {
         "postalAddress": "Beijing Normal University, Beijing 100875, China"
     }, 
     "description": null, 
-    "idx": 15, 
+    "idx": 16, 
     "label": "BNU", 
     "name": "bnu", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "4ee31296-e1d9-4546-959f-b76b82c50b9e", 
+    "uid": "fef48619-9ed1-43c8-afe9-cda0b6c801c1", 
     "url": null
 }

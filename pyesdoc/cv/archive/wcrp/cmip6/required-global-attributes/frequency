@@ -1,0 +1,17 @@
+{
+    "_type": "pyesdoc.cv.model.term", 
+    "alternativeName": null, 
+    "alternativeUrl": null, 
+    "associations": [], 
+    "createDate": "0167-03-21 00:00:00+00:00", 
+    "data": null, 
+    "description": null, 
+    "idx": 9, 
+    "label": "frequency", 
+    "name": "frequency", 
+    "parent": null, 
+    "status": "pending", 
+    "synonyms": [], 
+    "uid": "4341bb17-b6f0-4e59-9487-52dadf8caf5e", 
+    "url": null
+}

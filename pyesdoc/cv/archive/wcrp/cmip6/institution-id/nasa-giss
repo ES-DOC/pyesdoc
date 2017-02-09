@@ -3,17 +3,17 @@
     "alternativeName": null, 
     "alternativeUrl": null, 
     "associations": [], 
-    "createDate": "2016-12-14 12:00:00+00:00", 
+    "createDate": "0167-03-21 00:00:00+00:00", 
     "data": {
         "postalAddress": "Goddard Institute for Space Studies, New York, NY 10025, USA"
     }, 
     "description": null, 
-    "idx": 19, 
+    "idx": 20, 
     "label": "NASA-GISS", 
     "name": "nasa-giss", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "6e6ff088-3b29-4286-8251-102f67dc254e", 
+    "uid": "17087772-89d2-4d2d-bcad-18c386d868f4", 
     "url": null
 }

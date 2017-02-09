@@ -9,10 +9,6 @@
 
 
 """
-from pyesdoc.utils import runtime as rt
-
-
-
 # CIM v1 type keys.
 _TYPE_KEY_MODEL_COMPONENT = 'cim.1.software.modelcomponent'
 _TYPE_KEY_SIMULATION_RUN = 'cim.1.activity.simulationrun'

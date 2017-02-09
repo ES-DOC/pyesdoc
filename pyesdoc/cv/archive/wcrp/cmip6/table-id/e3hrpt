@@ -1,0 +1,17 @@
+{
+    "_type": "pyesdoc.cv.model.term", 
+    "alternativeName": null, 
+    "alternativeUrl": null, 
+    "associations": [], 
+    "createDate": "0167-03-21 00:00:00+00:00", 
+    "data": null, 
+    "description": null, 
+    "idx": 19, 
+    "label": "E3hrPt", 
+    "name": "e3hrpt", 
+    "parent": null, 
+    "status": "pending", 
+    "synonyms": [], 
+    "uid": "30d960d2-abcd-473e-a5d5-40e65480469f", 
+    "url": null
+}

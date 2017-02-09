@@ -14,6 +14,7 @@ import glob
 import os
 
 import pyesdoc
+from pyesdoc import exceptions
 
 
 
@@ -36,8 +37,8 @@ class ArchiveFileInfo(object):
         self.path = path
         self.path_error = "{}.ERROR".format(path.split('.')[0])
         self.type = parts[0] if len(parts) == 4 else None
-        self.uid = parts[2] if len(parts) == 4 else None
-        self.version = parts[1] if len(parts) == 4 else None
+        self.uid = parts[1] if len(parts) == 4 else None
+        self.version = parts[2] if len(parts) == 4 else None
 
 
     def __repr__(self):
@@ -100,22 +101,22 @@ class ArchiveFileInfo(object):
         try:
             document = pyesdoc.read(self.path)
         except Exception as err:
-            raise pyesdoc.LoadingException(err)
+            raise exceptions.LoadingException(err)
 
         # Parse - performs project/source specific processing.
         try:
             pyesdoc.archive.parse(document, self.encoding, self.project, self.source)
         except Exception as err:
-            raise pyesdoc.ParsingException(err)
+            raise exceptions.ParsingException(err)
 
         # Extend - performs generic processing.
         if extend:
             try:
                 pyesdoc.extend(document)
-            except pyesdoc.ExtendingException as err:
+            except exceptions.ExtendingException as err:
                 raise err
             except Exception as err:
-                raise pyesdoc.ExtendingException(err)
+                raise exceptions.ExtendingException(err)
 
         return document
 

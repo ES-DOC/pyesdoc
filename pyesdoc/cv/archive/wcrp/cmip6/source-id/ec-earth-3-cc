@@ -1,0 +1,36 @@
+{
+    "_type": "pyesdoc.cv.model.term", 
+    "alternativeName": null, 
+    "alternativeUrl": null, 
+    "associations": [], 
+    "createDate": "0167-03-21 00:00:00+00:00", 
+    "data": {
+        "aerosol": "None", 
+        "atmosphere": "IFS cy36r4 (TL255 (N128); 91 levels; top level 1 Pa)", 
+        "atmosphericChemistry": "TM5", 
+        "cohort": [
+            ""
+        ], 
+        "institutionID": [
+            "EC-Earth-Consortium"
+        ], 
+        "label": "EC-Earth-3-CC", 
+        "labelExtended": "EC-Earth-3-CC", 
+        "landIce": "None", 
+        "landSurface": "LPJ-Guess", 
+        "ocean": "NEMO3.6 (ORCA1: tripolar, 360x200; 75 levels; top grid cell 5m)", 
+        "oceanBiogeochemistry": "PISCES", 
+        "releaseYear": "2017", 
+        "seaIce": "LIM3 (same version as ocean)", 
+        "sourceID": "EC-Earth-3-CC"
+    }, 
+    "description": null, 
+    "idx": 13, 
+    "label": "EC-Earth-3-CC", 
+    "name": "ec-earth-3-cc", 
+    "parent": null, 
+    "status": "pending", 
+    "synonyms": [], 
+    "uid": "7f124064-bc89-43ab-bbcd-ded00af658c4", 
+    "url": null
+}

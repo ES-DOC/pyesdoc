@@ -20,11 +20,11 @@ from pyesdoc.mp.specializations import get_property_specialization
 
 
 
-class NotebookData(object):
+class NotebookOutput(object):
     """Model realm properties ipython data wrapper.
 
     """
-    def __init__(self, mip_era, institute, source_id, realm):
+    def __init__(self, mip_era, institute, source_id, realm, output_dir=None):
         """Instance initialiser.
 
         """
@@ -39,21 +39,37 @@ class NotebookData(object):
         self.source_id = unicode(source_id).strip().lower()
         self.specialization = get_model_realm_specialization(mip_era, realm)
 
-
-    @property
-    def notebook_filename(self):
-        """Gets notebook file name.
-
-        """
-        return "{}--{}--{}.ipynb".format(self.institute, self.source_id, self.realm)
+        # Auto-initialise state.
+        self._init(output_dir)
 
 
-    @property
-    def output_filename(self):
-        """Gets output file name.
+    def _init(self, output_dir):
+        """Initialises state from previously saved output.
 
         """
-        return "{}--{}--{}.json".format(self.institute, self.source_id, self.realm)
+        # Initialise output directory.
+        if output_dir is None:
+            output_dir = os.getcwd()
+            output_dir = output_dir.replace('notebooks', 'output')
+        else:
+            output_dir = os.path.join(output_dir, self.institute)
+            output_dir = os.path.join(output_dir, self.source_id)
+        if not os.path.isdir(output_dir):
+            os.makedirs(output_dir)
+
+        # Initialise state from previously saved output file.
+        self.fpath = os.path.join(output_dir, "{}.json".format(self.realm))
+        if os.path.exists(self.fpath):
+            with open(self.fpath, 'r') as fstream:
+                self._from_dict(json.loads(fstream.read()))
+
+
+    def write(self):
+        """Persists state to file system.
+
+        """
+        with open(self.fpath, 'w') as fstream:
+            fstream.write(json.dumps(self._to_dict(), indent=4))
 
 
     def set_author(self, name, email):
@@ -146,28 +162,6 @@ class NotebookData(object):
 
         """
         return self.content.get(specialization_id, dict()).get('qc_status', 0)
-
-
-    def read(self, output_dir):
-        """Initialises state from previously saved output.
-
-        """
-        fpath = os.path.join(output_dir, self.output_filename)
-        if os.path.isfile(fpath):
-            with open(fpath, 'r') as fstream:
-                self._from_dict(json.loads(fstream.read()))
-
-
-    def write(self, output_dir=None):
-        """Persists state to file system.
-
-        """
-        if output_dir is None:
-            output_dir = os.getcwd()
-            output_dir = output_dir.replace('notebooks', 'output')
-        output_filepath = os.path.join(output_dir, self.output_filename)
-        with open(output_filepath, 'w') as fstream:
-            fstream.write(json.dumps(self._to_dict(), indent=4))
 
 
     def _from_dict(self, obj):

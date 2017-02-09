@@ -1,0 +1,36 @@
+{
+    "_type": "pyesdoc.cv.model.term", 
+    "alternativeName": null, 
+    "alternativeUrl": null, 
+    "associations": [], 
+    "createDate": "0167-03-21 00:00:00+00:00", 
+    "data": {
+        "aerosol": "MASINGAR mk2r4", 
+        "atmosphere": "MRI-AGCM3.5 (320 x 160 TL159; 80 levels; top level 0.01 hPa)", 
+        "atmosphericChemistry": "MRI-CCM2.1", 
+        "cohort": [
+            ""
+        ], 
+        "institutionID": [
+            "MRI"
+        ], 
+        "label": "MRI-ESM2.0", 
+        "labelExtended": "MRI-ESM2.0", 
+        "landIce": "None", 
+        "landSurface": "HAL 1.0", 
+        "ocean": "MRI.COM4.2 (tripolar primarily 0.5 deg latitude/1 deg longitude with meridional refinement down to 0.3 deg within 10 degrees north and south of the equator; 61 levels; top grid cell 0-2 m)", 
+        "oceanBiogeochemistry": "None", 
+        "releaseYear": "2017", 
+        "seaIce": "MRI.COM4.2", 
+        "sourceID": "MRI-ESM2-0"
+    }, 
+    "description": null, 
+    "idx": 10, 
+    "label": "MRI-ESM2-0", 
+    "name": "mri-esm2-0", 
+    "parent": null, 
+    "status": "pending", 
+    "synonyms": [], 
+    "uid": "c364d761-55cd-423f-8f1c-8b27812a0fae", 
+    "url": null
+}

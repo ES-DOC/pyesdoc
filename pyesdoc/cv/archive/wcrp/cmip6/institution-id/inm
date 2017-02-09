@@ -3,17 +3,17 @@
     "alternativeName": null, 
     "alternativeUrl": null, 
     "associations": [], 
-    "createDate": "2016-12-14 12:00:00+00:00", 
+    "createDate": "0167-03-21 00:00:00+00:00", 
     "data": {
         "postalAddress": "Institute for Numerical Mathematics, Moscow 119991, Russia"
     }, 
     "description": null, 
-    "idx": 24, 
+    "idx": 25, 
     "label": "INM", 
     "name": "inm", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "07986cfc-8abd-4087-8f54-330849767360", 
+    "uid": "99e0906a-e128-4265-b2ac-c10a5fe57534", 
     "url": null
 }

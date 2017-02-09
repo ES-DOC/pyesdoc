@@ -3,7 +3,7 @@
     "alternativeName": null, 
     "alternativeUrl": null, 
     "associations": [], 
-    "createDate": "2016-12-14 12:00:00+00:00", 
+    "createDate": "0167-03-21 00:00:00+00:00", 
     "data": {
         "activityID": [
             "VolMIP"
@@ -29,12 +29,12 @@
         "tier": "3"
     }, 
     "description": null, 
-    "idx": 60, 
+    "idx": 58, 
     "label": "control-slab", 
     "name": "control-slab", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "a51595df-4954-4021-9521-aaceec56e9bb", 
+    "uid": "670c9a6e-ee5a-417e-8bd4-5c61008698f9", 
     "url": null
 }

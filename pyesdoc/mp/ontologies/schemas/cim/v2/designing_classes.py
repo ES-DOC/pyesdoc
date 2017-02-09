@@ -179,6 +179,8 @@ def numerical_experiment():
         'base': 'activity.activity',
         'is_abstract': False,
         'properties': [
+            ('tier', 'int', '0.1',
+                "Relative importance of experiment within a MIP."),
             ('related_experiments', 'designing.numerical_experiment', '0.N',
                 "Other experiments which have defined relationships to this one."),
             ('governing_mips', 'linked_to(designing.project)', '0.N',

@@ -1,4 +1,4 @@
-"""A realm key-properties sepecialization.
+"""A realm key-properties specialization.
 
 For further information goto http://wordpress.es-doc.org/cmip6-model-specializations.
 
@@ -37,6 +37,8 @@ DESCRIPTION = 'Ocean key properties'
 DETAILS['toplevel'] = {
     'description': 'General key properties in ocean',
     'properties': [
+        ('model_name', 'str', '1.1',
+            'Name of ocean model code (NEMO 3.6, MOM 5.0,...)'),
         ('model_family', 'ENUM:model_family_types', '1.1',
             'Type of ocean model.'),
         ('basic_approximations', 'ENUM:ocean_basic_approx_types', '1.N',
@@ -89,6 +91,18 @@ DETAILS['toplevel:nonoceanic_waters'] = {
             'Describe if/how river mouth mixing or estuaries specific treatment is performed'),
        ]
     }
+
+DETAILS['software_properties'] = {
+    'description': 'Software properties of ocean code',
+    'properties':[
+        ('repository','str', '0.1',
+            "Location of code for this component."),
+        ('code_version','str', '0.1',
+            "Code version identifier."),
+        ('code_languages','str', '0.N',
+            "Code language(s)."),
+    ]
+}
 
 # --------------------------------------------------------------------
 # SUB-PROCESS: RESOLUTION: The resolution of the grid.

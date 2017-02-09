@@ -43,6 +43,7 @@ class ComponentBase(object):
         self.name = None                                  # unicode (1.1)
         self.release_date = None                          # datetime.datetime (0.1)
         self.repository = None                            # shared.OnlineResource (0.1)
+        self.responsible_parties = []                     # shared.Responsibility (0.N)
         self.version = None                               # unicode (0.1)
 
 

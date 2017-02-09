@@ -1,0 +1,17 @@
+{
+    "_type": "pyesdoc.cv.model.term", 
+    "alternativeName": null, 
+    "alternativeUrl": null, 
+    "associations": [], 
+    "createDate": "0167-03-21 00:00:00+00:00", 
+    "data": null, 
+    "description": null, 
+    "idx": 35, 
+    "label": "gr8", 
+    "name": "gr8", 
+    "parent": null, 
+    "status": "pending", 
+    "synonyms": [], 
+    "uid": "d4d7c140-8d66-49b7-b055-b971472d05e4", 
+    "url": null
+}

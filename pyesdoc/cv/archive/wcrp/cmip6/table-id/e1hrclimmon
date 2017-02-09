@@ -1,0 +1,17 @@
+{
+    "_type": "pyesdoc.cv.model.term", 
+    "alternativeName": null, 
+    "alternativeUrl": null, 
+    "associations": [], 
+    "createDate": "0167-03-21 00:00:00+00:00", 
+    "data": null, 
+    "description": null, 
+    "idx": 17, 
+    "label": "E1hrClimMon", 
+    "name": "e1hrclimmon", 
+    "parent": null, 
+    "status": "pending", 
+    "synonyms": [], 
+    "uid": "09abb4be-dcd0-42ff-9727-71e58eb3c063", 
+    "url": null
+}

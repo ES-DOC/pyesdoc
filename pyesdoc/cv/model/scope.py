@@ -25,6 +25,7 @@ class Scope(Entity):
         """
         self.authority = None
         self.collections = list()
+        self.create_date = None
         self.description = None
         self.idx = None
         self.label = None

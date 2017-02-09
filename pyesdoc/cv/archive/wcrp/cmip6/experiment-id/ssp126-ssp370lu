@@ -3,7 +3,7 @@
     "alternativeName": null, 
     "alternativeUrl": null, 
     "associations": [], 
-    "createDate": "2016-12-14 12:00:00+00:00", 
+    "createDate": "0167-03-21 00:00:00+00:00", 
     "data": {
         "activityID": [
             "LUMIP"
@@ -32,12 +32,12 @@
         "tier": "1"
     }, 
     "description": null, 
-    "idx": 144, 
+    "idx": 142, 
     "label": "ssp126-ssp370Lu", 
     "name": "ssp126-ssp370lu", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "bbf477d6-65f0-4fcc-bfab-361dac07cd46", 
+    "uid": "27514379-c717-49d1-aad2-5f82f3250fa6", 
     "url": null
 }

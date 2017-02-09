@@ -1,0 +1,36 @@
+{
+    "_type": "pyesdoc.cv.model.term", 
+    "alternativeName": null, 
+    "alternativeUrl": null, 
+    "associations": [], 
+    "createDate": "0167-03-21 00:00:00+00:00", 
+    "data": {
+        "aerosol": "TACTIC (v2.0)", 
+        "atmosphere": "Arpege 6.2 (Tl359; 91 levels; top level 78.4 km)", 
+        "atmosphericChemistry": "OZL_v2", 
+        "cohort": [
+            ""
+        ], 
+        "institutionID": [
+            "CNRM-CERFACS"
+        ], 
+        "label": "CNRM-ESM2-1-HR", 
+        "labelExtended": "CNRM-ESM2-1-HR", 
+        "landIce": "None", 
+        "landSurface": "Surfex 8.0c", 
+        "ocean": "Nemo 3.6 (eORCA025; tripolar primarily 1/4deg latitude/longitude; 75 levels; top grid cell 0-1 m)", 
+        "oceanBiogeochemistry": "Pisces 2.s", 
+        "releaseYear": "2016", 
+        "seaIce": "Gelato 6.1", 
+        "sourceID": "CNRM-ESM2-1-HR"
+    }, 
+    "description": null, 
+    "idx": 33, 
+    "label": "CNRM-ESM2-1-HR", 
+    "name": "cnrm-esm2-1-hr", 
+    "parent": null, 
+    "status": "pending", 
+    "synonyms": [], 
+    "uid": "aabdc108-16fb-4ef3-91ab-6250fe0a5478", 
+    "url": null
+}

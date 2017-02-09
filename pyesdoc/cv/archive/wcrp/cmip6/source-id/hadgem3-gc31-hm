@@ -1,0 +1,36 @@
+{
+    "_type": "pyesdoc.cv.model.term", 
+    "alternativeName": null, 
+    "alternativeUrl": null, 
+    "associations": [], 
+    "createDate": "0167-03-21 00:00:00+00:00", 
+    "data": {
+        "aerosol": "UKCA-GLOMAP-mode", 
+        "atmosphere": "MetUM-HadGEM3-GA7.1 (1024 x 768 N512; 85 levels; top level 85km)", 
+        "atmosphericChemistry": "None", 
+        "cohort": [
+            ""
+        ], 
+        "institutionID": [
+            "MOHC"
+        ], 
+        "label": "HadGEM3-GC31-HM", 
+        "labelExtended": "HadGEM3-GC3.1-N512ORCA025", 
+        "landIce": "None", 
+        "landSurface": "JULES-HadGEM3-GL7.1", 
+        "ocean": "NEMO-HadGEM3-GO6.0 (ORCA025 tripolar primarily 0.25 deg latitude/longitude; 75 levels; top grid cell 0-1m)", 
+        "oceanBiogeochemistry": "None", 
+        "releaseYear": "2016", 
+        "seaIce": "CICE-HadGEM3-GSI8 (ORCA025 tripolar primarily 0.25 deg latitude/longitude)", 
+        "sourceID": "HadGEM3-GC31-HM"
+    }, 
+    "description": null, 
+    "idx": 1, 
+    "label": "HadGEM3-GC31-HM", 
+    "name": "hadgem3-gc31-hm", 
+    "parent": null, 
+    "status": "pending", 
+    "synonyms": [], 
+    "uid": "2d2dbc96-1f78-412e-a4bd-33ed8fda3195", 
+    "url": null
+}

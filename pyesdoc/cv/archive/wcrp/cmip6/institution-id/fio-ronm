@@ -1,0 +1,19 @@
+{
+    "_type": "pyesdoc.cv.model.term", 
+    "alternativeName": null, 
+    "alternativeUrl": null, 
+    "associations": [], 
+    "createDate": "0167-03-21 00:00:00+00:00", 
+    "data": {
+        "postalAddress": "FIO (First Institute of Oceanography, State Oceanic Administration, Qingdao 266061, China), RONM (Laboratory for Regional Oceanography and Numerical Modeling, Qingdao National Laboratory for Marine Science and Technology, Qingdao 266237, China)"
+    }, 
+    "description": null, 
+    "idx": 28, 
+    "label": "FIO-RONM", 
+    "name": "fio-ronm", 
+    "parent": null, 
+    "status": "pending", 
+    "synonyms": [], 
+    "uid": "1a8097bc-1139-4cae-b71d-686285f7e9d6", 
+    "url": null
+}

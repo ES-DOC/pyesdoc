@@ -1,0 +1,17 @@
+{
+    "_type": "pyesdoc.cv.model.term", 
+    "alternativeName": null, 
+    "alternativeUrl": null, 
+    "associations": [], 
+    "createDate": "0167-03-21 00:00:00+00:00", 
+    "data": null, 
+    "description": null, 
+    "idx": 7, 
+    "label": "decadal", 
+    "name": "decadal", 
+    "parent": null, 
+    "status": "pending", 
+    "synonyms": [], 
+    "uid": "377c7935-ca4d-46cc-98b3-dad3b0f3c001", 
+    "url": null
+}

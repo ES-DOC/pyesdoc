@@ -1,0 +1,17 @@
+{
+    "_type": "pyesdoc.cv.model.term", 
+    "alternativeName": null, 
+    "alternativeUrl": null, 
+    "associations": [], 
+    "createDate": "0167-03-21 00:00:00+00:00", 
+    "data": null, 
+    "description": null, 
+    "idx": 8, 
+    "label": "AERmon", 
+    "name": "aermon", 
+    "parent": null, 
+    "status": "pending", 
+    "synonyms": [], 
+    "uid": "ee64e659-de7f-4fac-99e4-b6ebd8deac9a", 
+    "url": null
+}

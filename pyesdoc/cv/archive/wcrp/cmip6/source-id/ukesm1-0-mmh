@@ -1,0 +1,37 @@
+{
+    "_type": "pyesdoc.cv.model.term", 
+    "alternativeName": null, 
+    "alternativeUrl": null, 
+    "associations": [], 
+    "createDate": "0167-03-21 00:00:00+00:00", 
+    "data": {
+        "aerosol": "UKCA-GLOMAP-mode (horizontal resolution degraded relative to that used for atmosphere physics)", 
+        "atmosphere": "MetUM-HadGEM3-GA7.1 (432 x 324 N216; 85 levels; top level 85km)", 
+        "atmosphericChemistry": "UKCA-StratTrop (horizontal resolution degraded relative to that used for atmosphere physics)", 
+        "cohort": [
+            ""
+        ], 
+        "institutionID": [
+            "MOHC", 
+            "NERC"
+        ], 
+        "label": "UKESM1.0-MMh", 
+        "labelExtended": "UKESM1.0-N216ORCA025hybrid", 
+        "landIce": "BISICLES (only active in ISMIP experiments)", 
+        "landSurface": "JULES-HadGEM3-GL7.1", 
+        "ocean": "NEMO-HadGEM3-GO6.0 (ORCA025 tripolar primarily 0.25 deg latitude/longitude; 75 levels; top grid cell 0-1m)", 
+        "oceanBiogeochemistry": "MEDUSA2 (horizontal resolution degraded relative to that used for ocean physics)", 
+        "releaseYear": "2018", 
+        "seaIce": "CICE-HadGEM3-GSI8 (ORCA025 tripolar primarily 0.25 deg latitude/longitude)", 
+        "sourceID": "UKESM1-0-MMh"
+    }, 
+    "description": null, 
+    "idx": 34, 
+    "label": "UKESM1-0-MMh", 
+    "name": "ukesm1-0-mmh", 
+    "parent": null, 
+    "status": "pending", 
+    "synonyms": [], 
+    "uid": "b86c37f3-0551-4278-9b69-d454380ac368", 
+    "url": null
+}

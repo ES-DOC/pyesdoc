@@ -75,6 +75,8 @@ def doc_reference():
                 "The type of remote document."),
             ('version', 'int', '0.1',
                 "The version of the remote document."),
+            ('further_info', 'str', '0.1',
+                "A further piece of information used in ad-hoc contexts."),
 
             # TODO verify whether really needed
             ('url', 'str', '0.1',

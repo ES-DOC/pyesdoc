@@ -17,8 +17,8 @@ import pyesdoc
 from pyesdoc.archive import constants
 from pyesdoc.archive.file_info import ArchiveFileInfo
 from pyesdoc.constants import DEFAULT_ENCODING
-from pyesdoc.extensions import extend as extend_doc
-from pyesdoc.io import read as read_doc
+from pyesdoc._extensions import extend as extend_doc
+from pyesdoc._io import read as read_doc
 
 
 

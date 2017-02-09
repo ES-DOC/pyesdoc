@@ -3,7 +3,7 @@
     "alternativeName": null, 
     "alternativeUrl": null, 
     "associations": [], 
-    "createDate": "2016-12-14 12:00:00+00:00", 
+    "createDate": "0167-03-21 00:00:00+00:00", 
     "data": {
         "aerosol": "OsloAero", 
         "atmosphere": "CAM-OSLO (0.25 degree resolution; 1152 x 768; 32 levels; top level 3 mb)", 
@@ -31,6 +31,6 @@
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "7d98d904-f761-4459-bf58-7e3791b5b5ac", 
+    "uid": "7931313a-a211-42dd-a112-08ed2c9525ad", 
     "url": null
 }

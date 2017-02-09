@@ -1,0 +1,17 @@
+{
+    "_type": "pyesdoc.cv.model.term", 
+    "alternativeName": null, 
+    "alternativeUrl": null, 
+    "associations": [], 
+    "createDate": "0167-03-21 00:00:00+00:00", 
+    "data": null, 
+    "description": null, 
+    "idx": 33, 
+    "label": "IyrGre", 
+    "name": "iyrgre", 
+    "parent": null, 
+    "status": "pending", 
+    "synonyms": [], 
+    "uid": "9ccd4ab7-e7d9-4b9e-a296-17127a7262e1", 
+    "url": null
+}

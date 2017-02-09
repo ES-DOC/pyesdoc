@@ -1,0 +1,43 @@
+{
+    "_type": "pyesdoc.cv.model.term", 
+    "alternativeName": null, 
+    "alternativeUrl": null, 
+    "associations": [], 
+    "createDate": "0167-03-21 00:00:00+00:00", 
+    "data": {
+        "activityID": [
+            "HighResMIP"
+        ], 
+        "additionalAllowedModelComponents": [
+            "AER", 
+            "CHEM", 
+            "BGC"
+        ], 
+        "description": "Coupled integration from ocean rest state using recommended HighResMIP protocol spinup with 1950 ocean temperature and salinity, using constant 1950s forcing", 
+        "endYear": "", 
+        "experiment": "coupled spinup with fixed 1950s forcings from 1950 initial conditions (with ocean at rest) to provide initial condition for control-1950 and hist-1950", 
+        "minNumberYrsPerSim": "30", 
+        "parentActivityID": [
+            "HighResMIP"
+        ], 
+        "parentExperimentID": [
+            "None"
+        ], 
+        "requiredModelComponents": [
+            "AOGCM"
+        ], 
+        "startYear": "", 
+        "subExperiment": "none", 
+        "subExperimentID": "none", 
+        "tier": "2"
+    }, 
+    "description": null, 
+    "idx": 11, 
+    "label": "spinup-1950", 
+    "name": "spinup-1950", 
+    "parent": null, 
+    "status": "pending", 
+    "synonyms": [], 
+    "uid": "523b060d-856f-4a84-923c-7edce2e70a8a", 
+    "url": null
+}

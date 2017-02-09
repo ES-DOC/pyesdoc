@@ -3,10 +3,10 @@
     "alternativeName": null, 
     "alternativeUrl": null, 
     "associations": [], 
-    "createDate": "2016-12-14 12:00:00+00:00", 
+    "createDate": "0167-03-21 00:00:00+00:00", 
     "data": {
         "aerosol": "None", 
-        "atmosphere": "IFS cy36r4 (TL159, linearly reduced Gaussian grid equivalent to 320 x 160; 62 levels; top level 5 Pa)", 
+        "atmosphere": "IFS cy36r4 (TL159, linearly reduced Gaussian grid equivalent to 320 x 160; 62 levels; top level 5 hPa)", 
         "atmosphericChemistry": "None", 
         "cohort": [
             ""
@@ -25,12 +25,12 @@
         "sourceID": "EC-Earth-3-LR"
     }, 
     "description": null, 
-    "idx": 14, 
+    "idx": 29, 
     "label": "EC-Earth-3-LR", 
     "name": "ec-earth-3-lr", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "1515f795-b9db-4d0c-8e6d-7851a79d855a", 
+    "uid": "8a5718e3-c823-4750-87c2-a9266cc4c80e", 
     "url": null
 }

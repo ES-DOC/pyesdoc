@@ -3,17 +3,17 @@
     "alternativeName": null, 
     "alternativeUrl": null, 
     "associations": [], 
-    "createDate": "2016-12-14 12:00:00+00:00", 
+    "createDate": "0167-03-21 00:00:00+00:00", 
     "data": {
         "postalAddress": "National Institute of Meteorological Sciences/Korea Meteorological Administration, Climate Research Division, Seoho-bukro 33, Seogwipo-si, Jejudo 63568, Republic of Korea"
     }, 
     "description": null, 
-    "idx": 13, 
+    "idx": 14, 
     "label": "NIMS-KMA", 
     "name": "nims-kma", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "2d944eb3-6e9d-4ea7-8417-625844777da3", 
+    "uid": "a4020085-0d90-4fb6-a36b-d7e7ec0b541a", 
     "url": null
 }

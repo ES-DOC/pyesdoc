@@ -443,6 +443,7 @@ CLASS_PROPERTIES = {
         'related_mips',
         'required_period',
         'requirements',
+        'tier',
         'alternative_names',
         'canonical_name',
         'citations',
@@ -706,6 +707,7 @@ CLASS_PROPERTIES = {
         'volume',
     ),
     science.Model: (
+        'activity_properties',
         'coupled_components',
         'coupler',
         'internal_software_components',
@@ -721,6 +723,7 @@ CLASS_PROPERTIES = {
         'name',
         'release_date',
         'repository',
+        'responsible_parties',
         'version',
     ),
     science.Realm: (
@@ -801,6 +804,7 @@ CLASS_PROPERTIES = {
         'context',
         'description',
         'external_id',
+        'further_info',
         'id',
         'institute',
         'linkage',
@@ -858,6 +862,7 @@ CLASS_PROPERTIES = {
         'name',
         'release_date',
         'repository',
+        'responsible_parties',
         'version',
     ),
     software.Composition: (
@@ -906,6 +911,7 @@ CLASS_PROPERTIES = {
         'name',
         'release_date',
         'repository',
+        'responsible_parties',
         'version',
     ),
     software.Variable: (
@@ -1079,6 +1085,7 @@ CLASS_OWN_PROPERTIES = {
         'related_mips',
         'required_period',
         'requirements',
+        'tier',
     ),
     designing.NumericalRequirement: (
         'additional_requirements',
@@ -1212,6 +1219,7 @@ CLASS_OWN_PROPERTIES = {
         'volume',
     ),
     science.Model: (
+        'activity_properties',
         'coupled_components',
         'coupler',
         'internal_software_components',
@@ -1288,6 +1296,7 @@ CLASS_OWN_PROPERTIES = {
         'context',
         'description',
         'external_id',
+        'further_info',
         'id',
         'institute',
         'linkage',
@@ -1345,6 +1354,7 @@ CLASS_OWN_PROPERTIES = {
         'name',
         'release_date',
         'repository',
+        'responsible_parties',
         'version',
     ),
     software.Composition: (
@@ -2234,6 +2244,7 @@ CONSTRAINTS = {
         ('rationale', 'type', unicode),
         ('related_experiments', 'type', designing.NumericalExperiment),
         ('keywords', 'type', unicode),
+        ('tier', 'type', int),
         ('alternative_names', 'type', unicode),
         ('name', 'type', unicode),
 
@@ -2253,6 +2264,7 @@ CONSTRAINTS = {
         ('rationale', 'cardinality', "0.1"),
         ('related_experiments', 'cardinality', "0.N"),
         ('keywords', 'cardinality', "0.1"),
+        ('tier', 'cardinality', "0.1"),
         ('alternative_names', 'cardinality', "0.N"),
         ('name', 'cardinality', "1.1"),
 
@@ -2775,6 +2787,7 @@ CONSTRAINTS = {
     ),
     science.Model: (
 
+        ('activity_properties', 'type', science.Topic),
         ('realms', 'type', science.Realm),
         ('description', 'type', unicode),
         ('repository', 'type', shared.OnlineResource),
@@ -2783,6 +2796,7 @@ CONSTRAINTS = {
         ('release_date', 'type', datetime.datetime),
         ('internal_software_components', 'type', software.SoftwareComponent),
         ('development_history', 'type', software.DevelopmentPath),
+        ('responsible_parties', 'type', shared.Responsibility),
         ('long_name', 'type', unicode),
         ('canonical_id', 'type', unicode),
         ('citations', 'type', shared.Citation),
@@ -2792,6 +2806,7 @@ CONSTRAINTS = {
         ('key_properties', 'type', science.Topic),
         ('name', 'type', unicode),
 
+        ('activity_properties', 'cardinality', "0.1"),
         ('realms', 'cardinality', "0.N"),
         ('description', 'cardinality', "0.1"),
         ('repository', 'cardinality', "0.1"),
@@ -2800,6 +2815,7 @@ CONSTRAINTS = {
         ('release_date', 'cardinality', "0.1"),
         ('internal_software_components', 'cardinality', "0.N"),
         ('development_history', 'cardinality', "0.1"),
+        ('responsible_parties', 'cardinality', "0.N"),
         ('long_name', 'cardinality', "0.1"),
         ('canonical_id', 'cardinality', "0.1"),
         ('citations', 'cardinality', "0.N"),
@@ -2971,6 +2987,7 @@ CONSTRAINTS = {
         ('url', 'type', unicode),
         ('canonical_name', 'type', unicode),
         ('version', 'type', int),
+        ('further_info', 'type', unicode),
         ('context', 'type', unicode),
         ('external_id', 'type', unicode),
         ('id', 'type', unicode),
@@ -2986,6 +3003,7 @@ CONSTRAINTS = {
         ('url', 'cardinality', "0.1"),
         ('canonical_name', 'cardinality', "0.1"),
         ('version', 'cardinality', "0.1"),
+        ('further_info', 'cardinality', "0.1"),
         ('context', 'cardinality', "0.1"),
         ('external_id', 'cardinality', "0.1"),
         ('id', 'cardinality', "0.1"),
@@ -3081,6 +3099,7 @@ CONSTRAINTS = {
         ('repository', 'type', shared.OnlineResource),
         ('release_date', 'type', datetime.datetime),
         ('development_history', 'type', software.DevelopmentPath),
+        ('responsible_parties', 'type', shared.Responsibility),
         ('long_name', 'type', unicode),
         ('canonical_id', 'type', unicode),
         ('citations', 'type', shared.Citation),
@@ -3091,6 +3110,7 @@ CONSTRAINTS = {
         ('repository', 'cardinality', "0.1"),
         ('release_date', 'cardinality', "0.1"),
         ('development_history', 'cardinality', "0.1"),
+        ('responsible_parties', 'cardinality', "0.N"),
         ('long_name', 'cardinality', "0.1"),
         ('canonical_id', 'cardinality', "0.1"),
         ('citations', 'cardinality', "0.N"),
@@ -3169,6 +3189,7 @@ CONSTRAINTS = {
         ('depends_on', 'type', software.SoftwareComponent),
         ('release_date', 'type', datetime.datetime),
         ('development_history', 'type', software.DevelopmentPath),
+        ('responsible_parties', 'type', shared.Responsibility),
         ('sub_components', 'type', software.SoftwareComponent),
         ('long_name', 'type', unicode),
         ('canonical_id', 'type', unicode),
@@ -3188,6 +3209,7 @@ CONSTRAINTS = {
         ('depends_on', 'cardinality', "0.N"),
         ('release_date', 'cardinality', "0.1"),
         ('development_history', 'cardinality', "0.1"),
+        ('responsible_parties', 'cardinality', "0.N"),
         ('sub_components', 'cardinality', "0.N"),
         ('long_name', 'cardinality', "0.1"),
         ('canonical_id', 'cardinality', "0.1"),
@@ -5168,6 +5190,13 @@ CONSTRAINTS = {
         ('cardinality', "0.N"),
 
     ),
+    (designing.NumericalExperiment, 'tier'): (
+
+        ('type', int),
+
+        ('cardinality', "0.1"),
+
+    ),
     (designing.NumericalExperiment, 'alternative_names'): (
 
         ('type', unicode),
@@ -6736,6 +6765,13 @@ CONSTRAINTS = {
 
     ),
 
+    (science.Model, 'activity_properties'): (
+
+        ('type', science.Topic),
+
+        ('cardinality', "0.1"),
+
+    ),
     (science.Model, 'coupled_components'): (
 
         ('type', science.Model),
@@ -6839,6 +6875,13 @@ CONSTRAINTS = {
         ('type', shared.OnlineResource),
 
         ('cardinality', "0.1"),
+
+    ),
+    (science.Model, 'responsible_parties'): (
+
+        ('type', shared.Responsibility),
+
+        ('cardinality', "0.N"),
 
     ),
     (science.Model, 'version'): (
@@ -7310,6 +7353,13 @@ CONSTRAINTS = {
         ('cardinality', "0.1"),
 
     ),
+    (shared.DocReference, 'further_info'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
     (shared.DocReference, 'id'): (
 
         ('type', unicode),
@@ -7618,6 +7668,13 @@ CONSTRAINTS = {
         ('cardinality', "0.1"),
 
     ),
+    (software.ComponentBase, 'responsible_parties'): (
+
+        ('type', shared.Responsibility),
+
+        ('cardinality', "0.N"),
+
+    ),
     (software.ComponentBase, 'version'): (
 
         ('type', unicode),
@@ -7874,6 +7931,13 @@ CONSTRAINTS = {
         ('type', shared.OnlineResource),
 
         ('cardinality', "0.1"),
+
+    ),
+    (software.SoftwareComponent, 'responsible_parties'): (
+
+        ('type', shared.Responsibility),
+
+        ('cardinality', "0.N"),
 
     ),
     (software.SoftwareComponent, 'version'): (
@@ -8595,6 +8659,8 @@ http://www.geosci-model-dev-discuss.net/gmd-2016-197/)
         "Constraint on start date and duration.",
     (designing.NumericalExperiment, 'requirements'):
         "Additional requirements that conformant simulations need to satisfy.",
+    (designing.NumericalExperiment, 'tier'):
+        "Relative importance of experiment within a MIP.",
     (designing.NumericalRequirement, 'additional_requirements'):
         "Additional detail for this requirement.",
     (designing.NumericalRequirement, 'delivery_order'):
@@ -8777,6 +8843,8 @@ http://www.geosci-model-dev-discuss.net/gmd-2016-197/)
         "Volume units.",
     (platform.StorageVolume, 'volume'):
         "Numeric value.",
+    (science.Model, 'activity_properties'):
+        "Properties specific to the modelling activity in question, e.g. radiative forcing agents for CMIP6.",
     (science.Model, 'coupled_components'):
         "Software components which are linked together using a coupler to deliver this model.",
     (science.Model, 'coupler'):
@@ -8901,6 +8969,8 @@ http://www.geosci-model-dev-discuss.net/gmd-2016-197/)
         "Detail of how to access the resource.",
     (shared.DocReference, 'external_id'):
         "External identifier of remote resource, if known.",
+    (shared.DocReference, 'further_info'):
+        "A further piece of information used in ad-hoc contexts.",
     (shared.DocReference, 'id'):
         "Identifier of remote resource, if known.",
     (shared.DocReference, 'institute'):
@@ -8987,6 +9057,8 @@ http://www.geosci-model-dev-discuss.net/gmd-2016-197/)
         "The date of publication of the component code (as opposed to the date of publication of the metadata document, or the date of deployment of the model).",
     (software.ComponentBase, 'repository'):
         "Location of code for this component.",
+    (software.ComponentBase, 'responsible_parties'):
+        "People or organisations responsible for providing this information.",
     (software.ComponentBase, 'version'):
         "Version identifier.",
     (software.Composition, 'couplings'):
@@ -9654,6 +9726,7 @@ KEYS = {
     (designing.NumericalExperiment, 'related_mips'): "cim.2.designing.NumericalExperiment.related_mips",
     (designing.NumericalExperiment, 'required_period'): "cim.2.designing.NumericalExperiment.required_period",
     (designing.NumericalExperiment, 'requirements'): "cim.2.designing.NumericalExperiment.requirements",
+    (designing.NumericalExperiment, 'tier'): "cim.2.designing.NumericalExperiment.tier",
     (designing.NumericalRequirement, 'additional_requirements'): "cim.2.designing.NumericalRequirement.additional_requirements",
     (designing.NumericalRequirement, 'delivery_order'): "cim.2.designing.NumericalRequirement.delivery_order",
     (designing.NumericalRequirement, 'is_conformance_requested'): "cim.2.designing.NumericalRequirement.is_conformance_requested",
@@ -9745,6 +9818,7 @@ KEYS = {
     (platform.StoragePool, 'vendor'): "cim.2.platform.StoragePool.vendor",
     (platform.StorageVolume, 'units'): "cim.2.platform.StorageVolume.units",
     (platform.StorageVolume, 'volume'): "cim.2.platform.StorageVolume.volume",
+    (science.Model, 'activity_properties'): "cim.2.science.Model.activity_properties",
     (science.Model, 'coupled_components'): "cim.2.science.Model.coupled_components",
     (science.Model, 'coupler'): "cim.2.science.Model.coupler",
     (science.Model, 'internal_software_components'): "cim.2.science.Model.internal_software_components",
@@ -9807,6 +9881,7 @@ KEYS = {
     (shared.DocReference, 'context'): "cim.2.shared.DocReference.context",
     (shared.DocReference, 'description'): "cim.2.shared.DocReference.description",
     (shared.DocReference, 'external_id'): "cim.2.shared.DocReference.external_id",
+    (shared.DocReference, 'further_info'): "cim.2.shared.DocReference.further_info",
     (shared.DocReference, 'id'): "cim.2.shared.DocReference.id",
     (shared.DocReference, 'institute'): "cim.2.shared.DocReference.institute",
     (shared.DocReference, 'linkage'): "cim.2.shared.DocReference.linkage",
@@ -9850,6 +9925,7 @@ KEYS = {
     (software.ComponentBase, 'name'): "cim.2.software.ComponentBase.name",
     (software.ComponentBase, 'release_date'): "cim.2.software.ComponentBase.release_date",
     (software.ComponentBase, 'repository'): "cim.2.software.ComponentBase.repository",
+    (software.ComponentBase, 'responsible_parties'): "cim.2.software.ComponentBase.responsible_parties",
     (software.ComponentBase, 'version'): "cim.2.software.ComponentBase.version",
     (software.Composition, 'couplings'): "cim.2.software.Composition.couplings",
     (software.Composition, 'description'): "cim.2.software.Composition.description",

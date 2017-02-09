@@ -3,7 +3,7 @@
     "alternativeName": null, 
     "alternativeUrl": null, 
     "associations": [], 
-    "createDate": "2016-12-14 12:00:00+00:00", 
+    "createDate": "0167-03-21 00:00:00+00:00", 
     "data": {
         "aerosol": "Rotstayn-1.0", 
         "atmosphere": "VCAM-1.0 (192 x 192 x 6 C192; 35 levels; top level 35km)", 
@@ -25,12 +25,12 @@
         "sourceID": "VRESM-1-0"
     }, 
     "description": null, 
-    "idx": 1, 
+    "idx": 30, 
     "label": "VRESM-1-0", 
     "name": "vresm-1-0", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "3167305f-bb40-46ea-9fb8-e2e2e2adafaa", 
+    "uid": "cac35b2e-e125-4531-989e-1929d4f8c239", 
     "url": null
 }

@@ -7,7 +7,7 @@ source $PYESDOC_HOME/sh/utils.sh
 main()
 {
 	# Version of python used by stack.
-	declare PYTHON_VERSION=2.7.12
+	declare PYTHON_VERSION=2.7.13
 
 	log "Installing python "$PYTHON_VERSION" (takes approx 2 minutes)"
 
