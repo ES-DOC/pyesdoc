@@ -22,7 +22,9 @@ def get_extenders():
     """
     return (
         _set_viewer_urls,
-        _set_summary_fields
+        _set_summary_fields,
+        _set_tiered_experiments,
+        _set_other_experiments
         )
 
 
@@ -52,3 +54,24 @@ def _set_summary_fields(ctx):
         ctx.doc.name,
         ctx.doc.long_name
     )
+
+
+def _set_tiered_experiments(ctx):
+    """Groups governed experiments by tier.
+
+    """
+    tiered_experiments = collections.defaultdict(list)
+    for e in ctx.doc.governed_experiments:
+        if e.further_info is not None:
+            tiered_experiments[e.further_info].append(e)
+    ctx.ext.tiered_experiments = tiered_experiments
+
+
+def _set_other_experiments(ctx):
+    """Sets non-governed experiments.
+
+    """
+    governed_experiments = [j.name for j in ctx.doc.governed_experiments]
+    ctx.ext.other_experiments = [i for i in ctx.doc.required_experiments
+                                 if i.name not in governed_experiments]
+

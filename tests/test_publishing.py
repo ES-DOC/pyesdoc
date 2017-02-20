@@ -39,7 +39,7 @@ def _set_api_url():
     if _MODE == 'dev':
         pyesdoc.set_option("api_url", "http://127.0.0.1:5000")
     elif _MODE == 'test':
-        pyesdoc.set_option("api_url", "http://test.api.es-doc.org")
+        pyesdoc.set_option("api_url", "https://test-api.es-doc.org")
     elif _MODE == 'prod':
         pyesdoc.set_option("api_url", "http://api.es-doc.org")
 

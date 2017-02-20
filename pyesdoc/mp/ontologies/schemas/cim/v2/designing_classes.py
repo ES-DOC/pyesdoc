@@ -98,8 +98,8 @@ def forcing_constraint():
                 "Category to which this belongs (from a CV, e.g. GASES)."),
             ('code', 'str', '0.1',
                 "Programme wide code from a controlled vocabulary (e.g. N2O)."),
-            ('data_link', 'shared.online_resource', '0.1',
-                "Link to actual data record if possible."),
+            ('data_link', 'data.dataset', '0.1',
+                "A data record used by the forcing "),
             ('forcing_type', 'designing.forcing_types', '1.1',
                 "Type of integration."),
             ('group', 'str', '0.1',
@@ -249,9 +249,7 @@ def numerical_requirement():
             ('is_conformance_requested', 'bool', '1.1',
                 "Indicator as to whether ensemble documentation should include conformance information for this requirement."),
             ('scope', 'designing.numerical_requirement_scope', '0.1',
-                "Scope allows us to categorise a requirement in terms of how widely it is shared."),
-            ('delivery_order', 'designing.numerical_requirement_delivery_order', '0.1',
-                "Describes whether confirmance informance can be provided pre or post simulation run.")
+                "Scope allows us to categorise a requirement in terms of how widely it is shared.")
         ],
         'constraints': [
             ('cardinality', 'duration', '0.0')
@@ -271,20 +269,6 @@ def numerical_requirement_scope():
             ("mip-group", "Shared across a group of MIPs e.g. aerosol forcing in GeoMIP and AerChemMIP."),
             ("mip", "Shared within a single MIP e.g. spin-up protocol for land surface experiments in LUMIP."),
             ("experiment", "Applies to a single experiment e.g. CFMIP 'zonally uniform SST plus 4K'")
-        ]
-    }
-
-
-def numerical_requirement_delivery_order():
-    """The order in which a confirmance must be delivered.
-
-    """
-    return {
-        'type': 'enum',
-        'is_open': False,
-        'members': [
-            ("pre-simulation", "Conformance information can be provided before simulations have been run"),
-            ("post-simulation", "Conformance information can only be provided after simulations have been run"),
         ]
     }
 

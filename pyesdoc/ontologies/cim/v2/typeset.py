@@ -122,7 +122,6 @@ __all__ = [
     EnsembleTypes,
     ExperimentalRelationships,
     ForcingTypes,
-    NumericalRequirementDeliveryOrder,
     NumericalRequirementScope,
     DrsFrequencyTypes,
     DrsGeographicalOperators,

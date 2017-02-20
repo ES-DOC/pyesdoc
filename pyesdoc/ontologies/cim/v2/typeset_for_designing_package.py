@@ -66,7 +66,6 @@ class NumericalRequirement(activity.Activity):
         super(NumericalRequirement, self).__init__()
 
         self.additional_requirements = []                 # designing.NumericalRequirement (0.N)
-        self.delivery_order = None                        # designing.NumericalRequirementDeliveryOrder (0.1)
         self.is_conformance_requested = None              # bool (1.1)
         self.scope = None                                 # designing.NumericalRequirementScope (0.1)
 
@@ -157,7 +156,7 @@ class ForcingConstraint(NumericalRequirement):
         self.additional_constraint = None                 # unicode (0.1)
         self.category = None                              # unicode (0.1)
         self.code = None                                  # unicode (0.1)
-        self.data_link = None                             # shared.OnlineResource (0.1)
+        self.data_link = None                             # data.Dataset (0.1)
         self.forcing_type = None                          # designing.ForcingTypes (1.1)
         self.group = None                                 # unicode (0.1)
         self.origin = None                                # shared.Citation (0.1)
@@ -315,22 +314,6 @@ class ForcingTypes(object):
         "Simplified and/or exemplar, e.g. 1%C02",
         "Intended to represent a possible future, e.g. RCP4.5",
         "Driven from another simulation"
-        ]
-
-
-class NumericalRequirementDeliveryOrder(object):
-    """An enumeration within the cim v2 type system.
-
-    The order in which a confirmance must be delivered.
-    """
-    is_open = False
-    members = [
-        "pre-simulation",
-        "post-simulation"
-        ]
-    descriptions = [
-        "Conformance information can be provided before simulations have been run",
-        "Conformance information can only be provided after simulations have been run"
         ]
 
 

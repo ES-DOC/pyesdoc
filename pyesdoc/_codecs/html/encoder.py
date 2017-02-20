@@ -19,7 +19,7 @@ import tornado.template as template
 import pyesdoc
 from pyesdoc import exceptions
 from pyesdoc._codecs.html import fieldsets
-from pyesdoc._codecs.html.templates.type_mappings import TEMPLATE_TYPE_MAPPINGS
+from pyesdoc.ontologies import cim
 from pyesdoc.utils import runtime
 
 
@@ -30,6 +30,72 @@ _DIR_TEMPLATES = os.path.join(os.path.dirname(os.path.abspath(__file__)), "templ
 # Document set template.
 _DOCUMENT_SET_TEMPLATE = "core/document_set.html"
 
+# Mapping of doucment type to template.
+_TEMPLATE_TYPE_MAPPINGS = {
+    # CIM v1 templates.
+    cim.v1.activity.Ensemble: "cim_1/activity_ensemble.html",
+    cim.v1.activity.NumericalExperiment: "cim_1/activity_numerical_experiment.html",
+    cim.v1.activity.SimulationRun: "cim_1/activity_simulation_run.html",
+    cim.v1.data.DataObject: "cim_1/data_data_object.html",
+    cim.v1.grids.GridSpec: "cim_1/grids_grid_spec.html",
+    cim.v1.shared.Platform: "cim_1/shared_platform.html",
+    cim.v1.software.ModelComponent: "cim_1/software_model_component.html",
+    cim.v1.quality.CimQuality: "cim_1/quality_cimquality.html",
+    # CIM v2 templates.
+    cim.v2.designing.NumericalExperiment: "cim_2/designing_numerical_experiment.html",
+    cim.v2.designing.Project: "cim_2/designing_project.html",
+    cim.v2.shared.Citation: "cim_2/shared_citation.html",
+    cim.v2.shared.Party: "cim_2/shared_party.html"
+}
+
+
+def encode(doc):
+    """Encodes a document to HTML.
+
+    :param object doc: Document being encoded.
+
+    :returns: An HTML representation of a document.
+    :rtype: str
+
+    """
+    # Convert to iterable.
+    try:
+        iter(doc)
+    except TypeError:
+        document_set = [doc]
+    else:
+        document_set = doc
+
+    # Filter out fragments & non-templated documents.
+    document_set = [d for d in document_set if hasattr(d, "meta") and \
+                                               isinstance(d, tuple(_TEMPLATE_TYPE_MAPPINGS.keys()))]
+
+    # Escape if no documents.
+    if not document_set:
+        return
+
+    # Sort.
+    document_set = sorted(document_set, key=lambda d: d.meta.sort_key)
+
+    # Extend.
+    for document in document_set:
+        pyesdoc.extend(document)
+
+    # JIT initialize templates.
+    if isinstance(_DOCUMENT_SET_TEMPLATE, str):
+        _init_templates()
+
+    # Return generated template.
+    try:
+        return _DOCUMENT_SET_TEMPLATE.generate(
+            document_set=document_set,
+            document_group_set=_get_group_set(document_set),
+            generate_document=_generate,
+            pyesdoc=pyesdoc
+            )
+    except Exception as error:
+        raise exceptions.EncodingException('html', doc, error)
+
 
 def _init_templates():
     """Initializes templates.
@@ -39,8 +105,8 @@ def _init_templates():
 
     loader = template.Loader(_DIR_TEMPLATES)
     _DOCUMENT_SET_TEMPLATE = loader.load(_DOCUMENT_SET_TEMPLATE)
-    for doc_type, template_path in TEMPLATE_TYPE_MAPPINGS.items():
-        TEMPLATE_TYPE_MAPPINGS[doc_type] = loader.load(template_path)
+    for doc_type, template_path in _TEMPLATE_TYPE_MAPPINGS.items():
+        _TEMPLATE_TYPE_MAPPINGS[doc_type] = loader.load(template_path)
 
 
 def _log(msg):
@@ -48,32 +114,6 @@ def _log(msg):
 
     """
     print "TEMPLATE:", msg
-
-
-def load(reference):
-    """Loads a referenced document.
-
-    """
-    def _load(ref):
-        """Inner function to load document from archive.
-
-        """
-        try:
-            ref.meta
-        except AttributeError:
-            doc = pyesdoc.archive.read(ref.id, ref.version)
-            if doc.meta.type != ref.type:
-                doc.meta.type = ref.type
-            return doc
-        else:
-            return ref
-
-    try:
-        iter(reference)
-    except TypeError:
-        return _load(reference)
-    else:
-        return [_load(i) for i in reference]
 
 
 class TemplateInfo(object):
@@ -103,15 +143,15 @@ def _generate(document):
     """Returns generated document.
 
     """
-    target = TEMPLATE_TYPE_MAPPINGS[type(document)]
     try:
-        return target.generate(
+        return _TEMPLATE_TYPE_MAPPINGS[type(document)].generate(
             doc=document,
             TemplateInfo=TemplateInfo,
             pyesdoc=pyesdoc,
-            load=load,
+            load=pyesdoc.archive.load_references,
             cim=pyesdoc.ontologies.cim,
-            log=_log
+            log=_log,
+            collections=collections
             )
     except Exception as err:
         runtime.log_error("Template generation error: {0}".format(err.message))
@@ -135,62 +175,14 @@ def _get_group_set(document_set):
         return "{0}-{1}".format(doc.meta.type_sort_key,
                                 doc.meta.type_display_name)
 
-    # Initialize group set.
+    # Initialize group sets.
     group_set = collections.defaultdict(list)
     for document in document_set:
         group_key = get_group_key(document)
         group_set[group_key].append(document)
 
-    # Sort grouped document sets.
+    # Sort group sets.
     for group_key, document_set in group_set.iteritems():
         group_set[group_key] = sorted(document_set, key=get_sort_key)
 
     return group_set
-
-
-def encode(doc):
-    """Encodes a document to HTML.
-
-    :param object doc: Document being encoded.
-
-    :returns: An HTML representation of a document.
-    :rtype: str
-
-    """
-    # Convert to iterable.
-    try:
-        iter(doc)
-    except TypeError:
-        document_set = [doc]
-    else:
-        document_set = doc
-
-    # Filter out fragments & non-templated documents.
-    document_set = [d for d in document_set if hasattr(d, "meta")]
-    document_set = [d for d in document_set if type(d) in TEMPLATE_TYPE_MAPPINGS]
-
-    # Escape if no documents.
-    if not document_set:
-        return
-
-    # Sort.
-    document_set = sorted(document_set, key=lambda d: d.meta.sort_key)
-
-    # Ensure documents are extended.
-    for document in document_set:
-        pyesdoc.extend(document)
-
-    # Ensure templates are initialized.
-    if isinstance(_DOCUMENT_SET_TEMPLATE, str):
-        _init_templates()
-
-    # Return generated template.
-    try:
-        return _DOCUMENT_SET_TEMPLATE.generate(
-            document_set=document_set,
-            document_group_set=_get_group_set(document_set),
-            generate_document=_generate,
-            pyesdoc=pyesdoc
-            )
-    except Exception as error:
-        raise exceptions.EncodingException('html', doc, error)

@@ -21,6 +21,21 @@
 	</section>
 
 	{% comment ************************************************** %}
+	{% comment Sub-section: relationships 		    			  %}
+	{% comment ************************************************** %}
+	<section>
+		<header>
+			<h3>Relationships</h3>
+		</header>
+		<table>
+			<tbody>
+			{% set ctx = TemplateInfo(doc, fieldset='cim.2.designing.numericalexperiment-relationships') %}
+			{% include ../core/fieldset.html %}
+			</tbody>
+		</table>
+	</section>
+
+	{% comment ************************************************** %}
 	{% comment Sub-section: requirements 		    			  %}
 	{% comment ************************************************** %}
 	{% if doc.requirements %}
@@ -32,8 +47,17 @@
 	{% comment ************************************************** %}
 	{% comment Sub-section: citations   		    			  %}
 	{% comment ************************************************** %}
-	{% if doc.citations %}
-		{% set citations = load(doc.citations) %}
+	{% set _citations = collections.OrderedDict() %}
+	{% for c in load(doc.citations) %}
+		{% set _citations[c.meta.id] = c %}
+	{% end %}
+	{% for r in doc.requirements %}
+		{% for c in r.citations %}
+			{% set _citations[c.id] = _citations.get(c.id, load(c)) %}
+		{% end %}
+	{% end %}
+	{% if _citations.values() %}
+		{% set citations = _citations.values() %}
 		{% set header = 3 %}
 		{% include shared_citation.html %}
 	{% end %}

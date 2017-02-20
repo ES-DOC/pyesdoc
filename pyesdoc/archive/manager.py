@@ -21,6 +21,9 @@ from pyesdoc.archive.folder_info import ArchiveFolderInfo
 # Set of managed folders.
 _FOLDERS = set()
 
+# Cached documents already read from archive.
+_CACHE = dict()
+
 
 def _create_folder(project, source):
     """Creates & returns a wrapped archive folder.
@@ -351,16 +354,25 @@ def load_references(references):
     """Loads referenced documents.
 
     """
-    def _load(ref):
-        """Inner function to load document from archive.
+    def _load(source):
+        """Inner function.
 
         """
-        try:
-            ref.meta
-        except AttributeError:
-            return read(ref.id, ref.version)
-        else:
-            return ref
+        # Return source if it is a document.
+        if hasattr(source, 'meta'):
+            return source
+
+        # Cached archived.
+        if source.id not in _CACHE:
+            doc = read(source.id, source.version)
+            if doc:
+                if doc.meta.type != source.type:
+                    doc.meta.type = source.type
+                _CACHE[source.id] = doc
+
+        # Return cached.
+        return _CACHE.get(source.id)
+
 
     try:
         iter(references)

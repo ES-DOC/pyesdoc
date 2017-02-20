@@ -77,6 +77,7 @@ class Field(object):
 
         v = _get_value(data, self.path) if self.path else self.value
         v = _format_value(v, self.input_formatter, self.output_formatter)
+
         return v
 
 

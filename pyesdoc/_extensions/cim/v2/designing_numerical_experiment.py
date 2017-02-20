@@ -10,7 +10,6 @@
 
 """
 from pyesdoc import constants
-from pyesdoc.ontologies import cim
 
 
 
