@@ -35,7 +35,8 @@ class Field(object):
         path=None,
         tag_id=None,
         value=None,
-        capitalize_value=False
+        capitalize_value=False,
+        predicate=None
         ):
         """Instance constructor.
 
@@ -52,6 +53,7 @@ class Field(object):
         self.tag_id = tag_id
         self.value = value
         self.capitalize_value = capitalize_value
+        self.predicate = predicate
 
 
     def get_name(self):

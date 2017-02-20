@@ -95,17 +95,20 @@ FIELDSETS = {
     'cim.2.designing.numericalexperiment-overview': [
         Field('MIP Era', path='meta.project'),
         Field('Related MIPs',
-            link_factory=lambda v: [(i.name, i.viewer_url) for i in sorted(v.related_mips, key=lambda v: v.name)]),
+            link_factory=lambda v: [(i.name, i.viewer_url) for i in sorted(v.related_mips, key=lambda v: v.name)]
+            ),
         Field('Institute', path='meta.institute'),
         Field('Canonical Name', path='canonical_name'),
         Field('Alternative Names', path='alternative_names',
-            input_formatter=lambda v: _SEPARATOR.join(v)),
+            input_formatter=lambda v: _SEPARATOR.join(v)
+            ),
         Field('Long Name', path='long_name'),
         Field('Tier', path='tier'),
         Field('Description', path='description'),
         Field('Rationale', path='rationale'),
         Field('Keywords', path='keywords',
-            input_formatter=lambda v: _SEPARATOR.join(v.split(','))),
+            input_formatter=lambda v: _SEPARATOR.join(v.split(','))
+            )
     ],
 
     'cim.2.designing.numericalexperiment-relationships':
@@ -118,7 +121,8 @@ FIELDSETS = {
         Field('Minimum Size', path='minimum_size'),
         Field('Conformance Requested ?', path='is_conformance_requested'),
         Field('Keywords', path='keywords',
-            input_formatter=lambda v: _SEPARATOR.join(v.split(',')))
+            input_formatter=lambda v: _SEPARATOR.join(v.split(','))
+            )
     ],
 
     str(cim.v2.designing.ForcingConstraint) : [
@@ -128,8 +132,14 @@ FIELDSETS = {
         Field('Forcing Type', path='forcing_type', capitalize_value=True),
         Field('Conformance Requested ?', path='is_conformance_requested'),
         Field('Scope', path='scope', capitalize_value=True),
+        Field('Data Link', path='data_link.name',
+            link_path=lambda v: v.data_link.availability[0].linkage,
+            predicate=lambda v: v.data_link is not None and \
+                                len(v.data_link.availability) > 0
+            ),
         Field('Keywords', path='keywords',
-            input_formatter=lambda v: _SEPARATOR.join(v.split(',')))
+            input_formatter=lambda v: _SEPARATOR.join(v.split(','))
+            )
     ],
 
     str(cim.v2.designing.MultiEnsemble) : [
@@ -138,7 +148,8 @@ FIELDSETS = {
         Field('Forcing Type', path='forcing_type'),
         Field('Conformance Requested ?', path='is_conformance_requested'),
         Field('Keywords', path='keywords',
-            input_formatter=lambda v: _SEPARATOR.join(v.split(',')))
+            input_formatter=lambda v: _SEPARATOR.join(v.split(','))
+            )
     ],
 
     str(cim.v2.designing.NumericalRequirement) : [
@@ -148,17 +159,20 @@ FIELDSETS = {
         Field('Minimum Size', path='minimum_size'),
         Field('Conformance Requested ?', path='is_conformance_requested'),
         Field('Keywords', path='keywords',
-            input_formatter=lambda v: _SEPARATOR.join(v.split(',')))
+            input_formatter=lambda v: _SEPARATOR.join(v.split(','))
+            )
     ],
 
     str(cim.v2.designing.TemporalConstraint) : [
         Field('Start Date', path='start_date.value'),
         Field('Required Duration', path='required_duration',
-            input_formatter=lambda v: "{} {}".format(v.length, v.units)),
+            input_formatter=lambda v: "{} {}".format(v.length, v.units)
+            ),
         Field('Description', path='description'),
         Field('Conformance Requested ?', path='is_conformance_requested'),
         Field('Keywords', path='keywords',
-            input_formatter=lambda v: _SEPARATOR.join(v.split(',')))
+            input_formatter=lambda v: _SEPARATOR.join(v.split(','))
+            )
     ],
 
     'cim.2.designing.project-overview':
@@ -166,15 +180,16 @@ FIELDSETS = {
 
     'cim.2.shared.citation' : [
         Field('DOI', path='doi',
-            link_path=lambda v: "https://doi.org/{}".format(v.doi)),
+            link_path=lambda v: "https://doi.org/{}".format(v.doi)
+            ),
         Field('Title', path='citation_detail', link_path="url.linkage"),
         Field('Context', path='context'),
-        Field('Abstract', path='abstract'),
+        Field('Abstract', path='abstract')
     ],
 
     'cim.2.shared.party' : [
         Field('Name', path='name', link_path="url.linkage"),
         Field('Address', path='address'),
-        Field('Email', path='email', email_path='email'),
+        Field('Email', path='email', email_path='email')
     ]
 }
