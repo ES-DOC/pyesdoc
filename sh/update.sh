@@ -11,7 +11,7 @@ main()
 	cd $PYESDOC_HOME
 	git pull
 	source $PYESDOC_HOME/sh/update_config.sh
-	# source $PYESDOC_HOME/sh/update_venv.sh
+	source $PYESDOC_HOME/sh/update_venv.sh
 
     log "update complete"
 }

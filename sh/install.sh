@@ -9,7 +9,7 @@ main()
     log "install starts ..."
 
 	source $PYESDOC_HOME/sh/install_config.sh
-	# source $PYESDOC_HOME/sh/install_venv.sh
+	source $PYESDOC_HOME/sh/install_venv.sh
 
     log "install complete"
 }

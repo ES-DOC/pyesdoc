@@ -12,6 +12,9 @@ mkdir -p $PYESDOC_HOME/ops/tmp
 
 # Aliases
 alias pyesdoc-install=$PYESDOC_HOME/sh/install.sh
+alias pyesdoc-install-config=$PYESDOC_HOME/sh/install_config.sh
+alias pyesdoc-install-venv=$PYESDOC_HOME/sh/install_venv.sh
+alias pyesdoc-notebook=$PYESDOC_HOME/sh/notebook_run.sh
 alias pyesdoc-peek=$PYESDOC_HOME/sh/peek.sh
 alias pyesdoc-pipify=$PYESDOC_HOME/sh/pipify.sh
 alias pyesdoc-populate-archive=$PYESDOC_HOME/sh/archive_populate.sh.sh
@@ -19,5 +22,3 @@ alias pyesdoc-tests=$PYESDOC_HOME/sh/tests_run.sh
 alias pyesdoc-tests-write-files=$PYESDOC_HOME/sh/tests_write_files.sh
 alias pyesdoc-update=$PYESDOC_HOME/sh/update.sh
 alias pyesdoc-validate=$PYESDOC_HOME/sh/validate.sh
-
-alias pyesdoc-notebook=$PYESDOC_HOME/sh/notebook_run.sh
