@@ -100,7 +100,8 @@ FIELDSETS = {
         Field('Institute', path='meta.institute'),
         Field('Canonical Name', path='canonical_name'),
         Field('Alternative Names', path='alternative_names',
-            input_formatter=lambda v: _SEPARATOR.join(v)
+            input_formatter=lambda v: _SEPARATOR.join(v),
+            predicate=lambda v: len(v.alternative_names) > 0
             ),
         Field('Long Name', path='long_name'),
         Field('Tier', path='tier'),
