@@ -41,7 +41,7 @@ def _set_api_url():
     elif _MODE == 'test':
         pyesdoc.set_option("api_url", "https://test-api.es-doc.org")
     elif _MODE == 'prod':
-        pyesdoc.set_option("api_url", "http://api.es-doc.org")
+        pyesdoc.set_option("api_url", "https://api.es-doc.org")
 
 
 def _test(mod):
