@@ -3,7 +3,7 @@
 """
 .. module:: pyesdoc.cv.codecs.dictionary.__init__.py
 
-   :copyright: @2013 Earth System Documentation (http://es-doc.org)
+   :copyright: @2013 Earth System Documentation (https://es-doc.org)
    :license: GPL / CeCILL
    :platform: Unix, Windows
    :synopsis: Python dictionary codec.

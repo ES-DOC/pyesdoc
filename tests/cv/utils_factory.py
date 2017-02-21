@@ -3,7 +3,7 @@
 """
 .. module:: test_utils_factory.py
 
-   :copyright: @2013 Earth System Documentation (http://es-doc.org)
+   :copyright: @2013 Earth System Documentation (https://es-doc.org)
    :license: GPL / CeCILL
    :platform: Unix, Windows
    :synopsis: Exposes test factory utility functions.

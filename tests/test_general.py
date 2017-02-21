@@ -171,7 +171,7 @@ def _test_list_types():
 
 def _test_set_option_01():
     """Test setting package options - positive."""
-    api_url = 'http://es-doc.org'
+    api_url = 'https://es-doc.org'
     api_url_old = pyesdoc.get_option('api_url')
     pyesdoc.set_option('api_url', api_url)
     tu.assert_str(api_url, pyesdoc.get_option('api_url'))

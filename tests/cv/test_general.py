@@ -3,7 +3,7 @@
 """
 .. module:: test_general.py
 
-   :copyright: @2013 Earth System Documentation (http://es-doc.org)
+   :copyright: @2013 Earth System Documentation (https://es-doc.org)
    :license: GPL / CeCILL
    :platform: Unix, Windows
    :synopsis: Executes pyesdoc.cv general tests.
