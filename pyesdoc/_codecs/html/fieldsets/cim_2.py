@@ -167,7 +167,7 @@ FIELDSETS = {
         Field('Homepage', path='homepage'),
         Field('Description', path='description'),
         Field('Rationale', path='rationale'),
-        Field('Objectives', path='objectives'),
+        Field('Objectives', path='objectives', predicate=lambda v: len(v.objectives) > 0),
         Field('Sub Projects',
             link_factory=lambda p: [(i.name, i.viewer_url) for i in p.sub_projects],
             predicate=lambda v: len(v.sub_projects) > 0
