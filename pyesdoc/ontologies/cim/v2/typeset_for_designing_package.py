@@ -66,6 +66,7 @@ class NumericalRequirement(activity.Activity):
         super(NumericalRequirement, self).__init__()
 
         self.additional_requirements = []                 # designing.NumericalRequirement (0.N)
+        self.is_conformance_info_required = None          # bool (1.1)
         self.is_conformance_requested = None              # bool (1.1)
         self.scope = None                                 # designing.NumericalRequirementScope (0.1)
 

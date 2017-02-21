@@ -248,6 +248,8 @@ def numerical_requirement():
                 "Additional detail for this requirement."),
             ('is_conformance_requested', 'bool', '1.1',
                 "Indicator as to whether ensemble documentation should include conformance information for this requirement."),
+            ('is_conformance_info_required', 'bool', '1.1',
+                "Indicator as to whether an institute is expected to provide informationas to how it confirmed."),
             ('scope', 'designing.numerical_requirement_scope', '0.1',
                 "Scope allows us to categorise a requirement in terms of how widely it is shared.")
         ],
