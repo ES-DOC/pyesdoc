@@ -21,6 +21,21 @@
 	</section>
 
 	{% comment ************************************************** %}
+	{% comment Sub-section: experiments 		    				  %}
+	{% comment ************************************************** %}
+	<section>
+		<header>
+			<h3>Experiments</h3>
+		</header>
+		<table>
+			<tbody>
+			{% set ctx = TemplateInfo(doc, fieldset='cim.2.designing.project-experiments') %}
+			{% include ../core/fieldset.html %}
+			</tbody>
+		</table>
+	</section>
+
+	{% comment ************************************************** %}
 	{% comment Sub-section: citations   		    			  %}
 	{% comment ************************************************** %}
 	{% if doc.citations %}

@@ -40,38 +40,23 @@ def _get_related_experiments(e, r_type):
     return result
 
 
-def _get_designing_project_overview(p):
+def _get_designing_project_experiments(p):
     """Returns a dynamically constructed fieldset.
 
     """
-    fields = [
-        Field('Name', path='name'),
-        Field('Long Name', path='long_name'),
-        Field('Homepage', path='homepage'),
-        Field('Description', path='description'),
-        Field('Keywords', path='keywords',
-            input_formatter=lambda v: _SEPARATOR.join(v.split(','))),
-        Field('Rationale', path='rationale'),
-        Field('Objectives', path='objectives')
-    ]
-
-    # Associated sub-projects.
-    if p.sub_projects:
-        fields.append(Field('Sub Projects',
-            link_factory=lambda p: [(i.name, i.viewer_url) for i in p.sub_projects])
-        )
+    fields = []
 
     # Governed experiments by tier.
     for tier in sorted(p.ext.tiered_experiments):
         experiments = p.ext.tiered_experiments[tier]
-        description = "Tier {} Experiments".format(tier)
+        description = "Tier {}".format(tier)
         fields.append(Field(description,
             link_factory=[(i.name, i.viewer_url) for i in experiments])
         )
 
     # Other experiments.
     if p.ext.other_experiments:
-        fields.append(Field('Other Experiments',
+        fields.append(Field('Other',
             link_factory=lambda p: [(i.name, i.viewer_url) for i in p.ext.other_experiments])
             )
 
@@ -176,8 +161,23 @@ FIELDSETS = {
             )
     ],
 
-    'cim.2.designing.project-overview':
-        _get_designing_project_overview,
+    'cim.2.designing.project-overview':[
+        Field('Name', path='name'),
+        Field('Long Name', path='long_name'),
+        Field('Homepage', path='homepage'),
+        Field('Description', path='description'),
+        Field('Keywords', path='keywords',
+            input_formatter=lambda v: _SEPARATOR.join(v.split(','))),
+        Field('Rationale', path='rationale'),
+        Field('Objectives', path='objectives'),
+        Field('Sub Projects',
+            link_factory=lambda p: [(i.name, i.viewer_url) for i in p.sub_projects],
+            predicate=lambda v: len(v.sub_projects) > 0
+            )
+        ],
+
+    'cim.2.designing.project-experiments':
+        _get_designing_project_experiments,
 
     'cim.2.shared.citation' : [
         Field('DOI', path='doi',
