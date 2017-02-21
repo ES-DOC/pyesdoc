@@ -166,14 +166,14 @@ FIELDSETS = {
         Field('Long Name', path='long_name'),
         Field('Homepage', path='homepage'),
         Field('Description', path='description'),
-        Field('Keywords', path='keywords',
-            input_formatter=lambda v: _SEPARATOR.join(v.split(','))),
         Field('Rationale', path='rationale'),
         Field('Objectives', path='objectives'),
         Field('Sub Projects',
             link_factory=lambda p: [(i.name, i.viewer_url) for i in p.sub_projects],
             predicate=lambda v: len(v.sub_projects) > 0
-            )
+            ),
+        Field('Keywords', path='keywords',
+            input_formatter=lambda v: _SEPARATOR.join(v.split(',')))
         ],
 
     'cim.2.designing.project-experiments':
