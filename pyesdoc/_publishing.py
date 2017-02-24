@@ -17,7 +17,6 @@ import uuid
 import requests
 
 from pyesdoc import constants
-from pyesdoc import exceptions
 from pyesdoc import _api_proxy as proxy
 from pyesdoc._extensions import extend
 from pyesdoc._serialization import decode

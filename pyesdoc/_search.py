@@ -15,6 +15,7 @@ import json
 import requests
 
 from pyesdoc import _api_proxy as proxy
+from pyesdoc import constants
 
 
 
@@ -39,43 +40,101 @@ _DOC_TYPE_ALIASES = {
 }
 
 
-def search(project, document_type):
+def search(
+    project,
+    document_type,
+    document_version=constants.DOC_VERSION_LATEST,
+    institute=None,
+    sub_project=None,
+    model=None,
+    experiment=None,
+    ):
     """Exposes documentation search endpoint.
 
     :param str project: Project identifier, e.g. cmip6.
     :param str document_type: Document type identifier, e.g. model.
+    :param str document_version: Document version filter, i.e. latest | all.
+
+    :param str institute: Institute identifer, e.g. ipsl.
+    :param str sub_project: Sub-project identifer, e.g. damip.
 
     :returns: Search results.
     :rtype: pyesdoc._search.SearchResult
 
     """
-    # Format input parameters.
-    project = unicode(project).lower()
-    if document_type.endswith("s"):
-        document_type = document_type[0:-1]
-
-    # Substitute document type short names.
-    try:
-        document_type = _DOC_TYPE_ALIASES[project][document_type]
-    except KeyError:
-        pass
-
-    # Temporarily switch cmip6-draft.
-    project = "cmip6-draft" if project == "cmip6" else project
+    # Set criteria.
+    criteria = SearchCriteria(
+        project,
+        document_type,
+        document_version,
+        institute,
+        sub_project,
+        model,
+        experiment
+        )
 
     # Invoke web-service.
-    response = proxy.invoke(requests.get, _ENDPOINT, params={
-        "project": project,
-        "document_type": document_type,
-        "document_version": "latest"
-        })
+    params = criteria.get_url_params()
+    response = proxy.invoke(requests.get, _ENDPOINT, params=params)
 
     # Decode & return results.
     return SearchResult(json.loads(response.text))
 
 
+class SearchCriteria(object):
+    """Search criteria wrapper.
+
+    """
+    def __init__(self, \
+        project,
+        document_type,
+        document_version=constants.DOC_VERSION_LATEST,
+        institute=None,
+        sub_project=None,
+        model=None,
+        experiment=None
+        ):
+        """Instance constructor.
+
+        """
+        self.project = project
+        self.document_type = document_type
+        if self.document_type[-1] in {"s", "S"}:
+            self.document_type = self.document_type[0:-1]
+        self.document_version = document_version
+        self.institute = institute
+        self.sub_project = sub_project
+        self.model = model
+        self.experiment = experiment
+
+
+    def get_url_params(self):
+        """Returns url parameters to be sent to web-service.
+
+        """
+        params = {
+            k: unicode(v).strip().lower() for k, v in (
+                ("document_type", self.document_type),
+                ("document_version", self.document_version),
+                ("experiment", self.experiment),
+                ("institute", self.institute),
+                ("model", self.model),
+                ("project", self.project),
+                ("sub_project", self.sub_project)
+                ) if v is not None
+        }
+        try:
+            params['document_type'] = _DOC_TYPE_ALIASES[params['project']][params['document_type']]
+        except KeyError:
+            pass
+        if params['project'] == "cmip6":
+            params['project'] = "cmip6-draft"
+
+        return params
+
+
 class SearchResult(object):
-    """A search result wrapper.
+    """Search result wrapper.
 
     """
     def __init__(self, obj):
@@ -108,7 +167,6 @@ class SearchResult(object):
 
         """
         return iter(self.items)
-
 
 
 class SearchResultItem(object):
