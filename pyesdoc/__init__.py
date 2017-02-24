@@ -56,6 +56,10 @@ from pyesdoc._publishing import publish
 from pyesdoc._publishing import retrieve
 from pyesdoc._publishing import unpublish
 
+from pyesdoc._search import search
+from pyesdoc._search import SearchResult
+from pyesdoc._search import SearchResultItem
+
 from pyesdoc._serialization import convert
 from pyesdoc._serialization import decode
 from pyesdoc._serialization import encode

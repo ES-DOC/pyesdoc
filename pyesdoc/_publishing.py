@@ -11,14 +11,14 @@
 
 """
 import datetime
-import os
+import urllib
 import uuid
 
 import requests
 
-import pyesdoc
 from pyesdoc import constants
 from pyesdoc import exceptions
+from pyesdoc import _api_proxy as proxy
 from pyesdoc._extensions import extend
 from pyesdoc._serialization import decode
 from pyesdoc._serialization import encode
@@ -26,124 +26,11 @@ from pyesdoc._validation import is_valid
 
 
 
-# API url option name.
-_API_URL = os.getenv("ESDOC_API")
-
-# HTTP response codes.
-HTTP_RESPONSE_STATUS_200 = 200
-HTTP_RESPONSE_STATUS_404 = 404
-HTTP_RESPONSE_STATUS_500 = 500
-
-
-def _assert_doc(doc, msg):
-    """Asserts document instance.
-
-    """
-    if doc is None:
-        raise ValueError(msg if msg is not None else "Document instance is null.")
-
-
-def _throw_invalid_doc_id():
-    """Throws an error.
-
-    """
-    raise TypeError("Invalid document uid (must be an instance of uuid.UUID).")
-
-
-def _throw_invalid_doc_version():
-    """Throws an error.
-
-    """
-    raise TypeError("Invalid document version (must be either 'all', 'latest' or an integer.")
-
-
-def _throw_connection_error():
-    """Throws an error.
-
-    """
-    raise exceptions.WebServiceException("Could not connect to remote API server.")
-
-
-def _throw_not_found_error():
-    """Throws an error.
-
-    """
-    raise exceptions.WebServiceException("Could not find remote resource.")
-
-
-def _throw_http_error():
-    """Throws an error.
-
-    """
-    raise exceptions.WebServiceException("Invalid HTTP response from remote API server.")
-
-
-def _throw_timeout_error():
-    """Throws an error.
-
-    """
-    raise exceptions.WebServiceException("Remote API server connection timed out.")
-
-
-def _throw_server_error(resp):
-    """Throws an error.
-
-    """
-    raise exceptions.WebServiceException("A server side failure has occurred: {0}".format(resp.text))
-
-
-def _throw_uncontrolled_server_error(resp):
-    """Throws an unknown server error.
-
-    """
-    raise exceptions.WebServiceException("An uncontrolled server side failure has occurred: {0}".format(resp.text))
-
-
-def _invoke_api(verb, url, data=None):
-    """Invokes remote API.
-
-    """
-    headers = None if not data else {'content-type': 'application/json'}
-    try:
-        return verb(url, data=data, headers=headers)
-    except requests.ConnectionError:
-        _throw_connection_error()
-    except requests.HTTPError:
-        _throw_http_error()
-    except requests.Timeout:
-        _throw_timeout_error()
-
-
-def _get_api_url(verb):
-    """Helper function to return api endpoint url.
-
-    """
-    return "{}/2/document/{}".format(_API_URL, verb)
-
-
-def _get_doc_url(verb, uid, version, encoding=None):
-    """Returns a document instance endpoint url.
-
-    """
-    url = _get_api_url(verb)
-    url += "?document_id={0}&document_version={1}".format(uid, version)
-    if encoding:
-        url += "&encoding={0}".format(encoding)
-
-    return url
-
-
-def _parse_api_response(resp, error_on_404=True):
-    """Parses response returned from API.
-
-    """
-    if resp.status_code == HTTP_RESPONSE_STATUS_404:
-        if error_on_404:
-            _throw_not_found_error()
-    elif resp.status_code == HTTP_RESPONSE_STATUS_500:
-        _throw_server_error(resp)
-    elif resp.status_code != HTTP_RESPONSE_STATUS_200:
-        _throw_uncontrolled_server_error(resp)
+# Set of target endpoints.
+_EP_CREATE = "/2/document/create"
+_EP_RETRIEVE = "/2/document/retrieve"
+_EP_UPDATE = "/2/document/update"
+_EP_DELETE = "/2/document/delete"
 
 
 def retrieve(uid, version=constants.DOC_VERSION_LATEST):
@@ -166,18 +53,14 @@ def retrieve(uid, version=constants.DOC_VERSION_LATEST):
        not isinstance(version, int):
         _throw_invalid_doc_version()
 
-    # Issue HTTP GET.
-    url = _get_doc_url('retrieve', uid, version, constants.ENCODING_JSON)
-    resp = _invoke_api(requests.get, url)
+    # Invoke web-service.
+    endpoint = _get_doc_endpoint(_EP_RETRIEVE, uid, version, constants.ENCODING_JSON)
+    response = proxy.invoke(requests.get, endpoint)
+    proxy.parse_response(response, error_on_404=False)
 
-    # Process HTTP response.
-    _parse_api_response(resp, error_on_404=False)
-
-    # Return decoded document.
-    if resp.text:
-        return extend(decode(resp.json(), constants.ENCODING_DICT))
-    else:
-        return None
+    # Process web-service response.
+    if response.text:
+        return extend(decode(response.json(), constants.ENCODING_DICT))
 
 
 def publish(doc):
@@ -200,16 +83,14 @@ def publish(doc):
     doc.meta.version = doc.meta.version + 1
     doc.meta.update_date = datetime.datetime.now()
 
-    # Set HTTP operation parameters.
-    url = _get_api_url('create')
-    data = encode(doc, constants.ENCODING_JSON)
-
-    # Invoke HTTP operation.
+    # Invoke web-service.
+    endpoint = _EP_UPDATE if doc.meta.version > 1 else _EP_CREATE
+    payload = encode(doc, constants.ENCODING_JSON)
     verb = requests.put if doc.meta.version > 1 else requests.post
-    resp = _invoke_api(verb, url, data)
+    response = proxy.invoke(verb, endpoint, data=payload)
 
-    # Process HTTP response.
-    _parse_api_response(resp)
+    # Process web-service response.
+    proxy.parse_response(response)
 
 
 def unpublish(uid, version=constants.DOC_VERSION_ALL):
@@ -230,9 +111,37 @@ def unpublish(uid, version=constants.DOC_VERSION_ALL):
        not isinstance(version, int):
         _throw_invalid_doc_version()
 
-    # Invoke HTTP operation.
-    url = _get_doc_url('delete', uid, version)
-    resp = _invoke_api(requests.delete, url)
+    # Invoke web-service.
+    endpoint = _get_doc_endpoint(_EP_DELETE, uid, version)
+    response = proxy.invoke(requests.delete, endpoint)
 
-    # Process HTTP response.
-    _parse_api_response(resp)
+    # Process web-service response.
+    proxy.parse_response(response)
+
+
+def _throw_invalid_doc_id():
+    """Throws an error.
+
+    """
+    raise TypeError("Invalid document uid (must be an instance of uuid.UUID).")
+
+
+def _throw_invalid_doc_version():
+    """Throws an error.
+
+    """
+    raise TypeError("Invalid document version (must be either 'all', 'latest' or an integer.")
+
+
+def _get_doc_endpoint(endpoint, uid, version, encoding=None):
+    """Returns a document instance endpoint url.
+
+    """
+    params = {
+        "document_id": uid,
+        "document_version": version
+    }
+    if encoding:
+        params["encoding"] = encoding
+
+    return "{}?{}".format(endpoint, urllib.urlencode(params))
