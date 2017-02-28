@@ -54,9 +54,10 @@ def search(
     :param str project: Project identifier, e.g. cmip6.
     :param str document_type: Document type identifier, e.g. model.
     :param str document_version: Document version filter, i.e. latest | all.
-
     :param str institute: Institute identifer, e.g. ipsl.
     :param str sub_project: Sub-project identifer, e.g. damip.
+    :param str model: Model identifer, e.g. ipsl-cm5a-lr.
+    :param str experiment: Experiment identifer, e.g. piControl.
 
     :returns: Search results.
     :rtype: pyesdoc._search.SearchResult
