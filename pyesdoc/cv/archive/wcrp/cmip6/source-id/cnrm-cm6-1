@@ -25,12 +25,12 @@
         "sourceID": "CNRM-CM6-1"
     }, 
     "description": null, 
-    "idx": 20, 
+    "idx": 22, 
     "label": "CNRM-CM6-1", 
     "name": "cnrm-cm6-1", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "96edb1be-85c2-41ba-8285-c3165248934c", 
+    "uid": "dc01c1be-c017-4388-94c5-70fb1cceb289", 
     "url": null
 }

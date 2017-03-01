@@ -25,12 +25,12 @@
         "sourceID": "NorESM2-LMEC"
     }, 
     "description": null, 
-    "idx": 25, 
+    "idx": 27, 
     "label": "NorESM2-LMEC", 
     "name": "noresm2-lmec", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "1feef408-6d07-451e-91ec-7f54552058fa", 
+    "uid": "de89c745-ff85-4f67-aab3-1871f1a792e9", 
     "url": null
 }

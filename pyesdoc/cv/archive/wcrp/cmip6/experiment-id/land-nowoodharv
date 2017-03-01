@@ -19,8 +19,8 @@
             "LAND"
         ], 
         "startYear": "1850 or 1700", 
-        "subExperiment": "none", 
-        "subExperimentID": "none", 
+        "subExperiment": "None", 
+        "subExperimentID": "None", 
         "tier": "2"
     }, 
     "description": null, 
@@ -30,6 +30,6 @@
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "3d546f01-caac-4858-ad84-42ac644c6661", 
+    "uid": "cb341586-77c5-4f24-96d3-f9bc6a7125bb", 
     "url": null
 }

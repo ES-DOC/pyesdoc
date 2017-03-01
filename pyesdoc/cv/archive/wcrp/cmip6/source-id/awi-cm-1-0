@@ -25,12 +25,12 @@
         "sourceID": "AWI-CM-1-0"
     }, 
     "description": null, 
-    "idx": 18, 
+    "idx": 20, 
     "label": "AWI-CM-1-0", 
     "name": "awi-cm-1-0", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "3ec6051c-3f27-4e1e-9b68-1f153a5d7d6e", 
+    "uid": "69cddeea-bd98-4991-8c26-899b49d635a7", 
     "url": null
 }

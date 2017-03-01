@@ -24,8 +24,8 @@
             "SLAB"
         ], 
         "startYear": "", 
-        "subExperiment": "none", 
-        "subExperimentID": "none", 
+        "subExperiment": "None", 
+        "subExperimentID": "None", 
         "tier": "3"
     }, 
     "description": null, 
@@ -35,6 +35,6 @@
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "670c9a6e-ee5a-417e-8bd4-5c61008698f9", 
+    "uid": "640881db-d3ed-4ec4-8f3a-3afe68a9b4b2", 
     "url": null
 }

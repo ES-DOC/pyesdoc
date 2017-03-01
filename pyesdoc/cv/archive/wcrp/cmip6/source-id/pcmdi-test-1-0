@@ -25,12 +25,12 @@
         "sourceID": "PCMDI-test-1-0"
     }, 
     "description": null, 
-    "idx": 23, 
+    "idx": 25, 
     "label": "PCMDI-test-1-0", 
     "name": "pcmdi-test-1-0", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "3ec834d2-36f7-4cb8-b9df-0fcb2f9de8aa", 
+    "uid": "4c5ba0b1-2434-4e65-9114-961fc89d5007", 
     "url": null
 }

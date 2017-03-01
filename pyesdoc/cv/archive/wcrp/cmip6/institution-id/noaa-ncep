@@ -8,12 +8,12 @@
         "postalAddress": "National Oceanic and Atmospheric Administration, National Centers for Environmental Prediction, Camp Springs, MD 20746, USA"
     }, 
     "description": null, 
-    "idx": 17, 
+    "idx": 18, 
     "label": "NOAA-NCEP", 
     "name": "noaa-ncep", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "b5f28fd9-8ccd-42c5-af85-7989683f5049", 
+    "uid": "821e34a7-17d4-45c5-bdff-c7afda8f1d68", 
     "url": null
 }

@@ -8,12 +8,12 @@
         "postalAddress": "FIO (First Institute of Oceanography, State Oceanic Administration, Qingdao 266061, China), RONM (Laboratory for Regional Oceanography and Numerical Modeling, Qingdao National Laboratory for Marine Science and Technology, Qingdao 266237, China)"
     }, 
     "description": null, 
-    "idx": 28, 
+    "idx": 29, 
     "label": "FIO-RONM", 
     "name": "fio-ronm", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "1a8097bc-1139-4cae-b71d-686285f7e9d6", 
+    "uid": "170876ff-66a9-43d9-8a2c-dcec4e2b2490", 
     "url": null
 }

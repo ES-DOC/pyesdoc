@@ -25,12 +25,12 @@
         "sourceID": "CNRM-ESM2-1-HR"
     }, 
     "description": null, 
-    "idx": 33, 
+    "idx": 34, 
     "label": "CNRM-ESM2-1-HR", 
     "name": "cnrm-esm2-1-hr", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "aabdc108-16fb-4ef3-91ab-6250fe0a5478", 
+    "uid": "b59f230e-059d-44c1-b132-07712b292ed4", 
     "url": null
 }

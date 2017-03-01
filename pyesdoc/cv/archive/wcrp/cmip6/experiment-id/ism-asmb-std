@@ -25,8 +25,8 @@
             "ISM"
         ], 
         "startYear": "", 
-        "subExperiment": "none", 
-        "subExperimentID": "none", 
+        "subExperiment": "None", 
+        "subExperimentID": "None", 
         "tier": "1"
     }, 
     "description": null, 
@@ -36,6 +36,6 @@
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "0b376c8f-e0e4-4143-9467-2aa523040904", 
+    "uid": "60829b53-c8bc-4079-ae7e-59852e99607c", 
     "url": null
 }

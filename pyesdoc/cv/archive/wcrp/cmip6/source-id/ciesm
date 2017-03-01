@@ -1,0 +1,36 @@
+{
+    "_type": "pyesdoc.cv.model.term", 
+    "alternativeName": null, 
+    "alternativeUrl": null, 
+    "associations": [], 
+    "createDate": "0167-03-21 00:00:00+00:00", 
+    "data": {
+        "aerosol": "MAM4", 
+        "atmosphere": "CIESM-AM (FV/FD, 288 x 192; 30 levels; top level 2.255 hPa)", 
+        "atmosphericChemistry": "trop_mam4", 
+        "cohort": [
+            ""
+        ], 
+        "institutionID": [
+            "THU"
+        ], 
+        "label": "CIESM", 
+        "labelExtended": "Community Integrated Earth System Model", 
+        "landIce": "None", 
+        "landSurface": "CIESM-LM (modified CLM4.5)", 
+        "ocean": "CIESM-OM (FD, SCCGrid Displaced Pole, 720x560; 46 levels; top grid cell 0-6 m)", 
+        "oceanBiogeochemistry": "None", 
+        "releaseYear": "2017", 
+        "seaIce": "CICE4", 
+        "sourceID": "CIESM"
+    }, 
+    "description": null, 
+    "idx": 14, 
+    "label": "CIESM", 
+    "name": "ciesm", 
+    "parent": null, 
+    "status": "pending", 
+    "synonyms": [], 
+    "uid": "1cece4e8-f9b5-4ac1-9125-d9fcd197411b", 
+    "url": null
+}

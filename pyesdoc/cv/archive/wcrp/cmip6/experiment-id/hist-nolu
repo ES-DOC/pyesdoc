@@ -27,8 +27,8 @@
             "AOGCM"
         ], 
         "startYear": "1850", 
-        "subExperiment": "none", 
-        "subExperimentID": "none", 
+        "subExperiment": "None", 
+        "subExperimentID": "None", 
         "tier": "1"
     }, 
     "description": null, 
@@ -38,6 +38,6 @@
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "13127e78-d0b9-44f8-bad5-d5cf987eb5f2", 
+    "uid": "d1292ecd-2489-4994-991e-1619546a5a6b", 
     "url": null
 }

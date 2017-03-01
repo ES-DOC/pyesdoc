@@ -19,8 +19,8 @@
             "LAND"
         ], 
         "startYear": "2015", 
-        "subExperiment": "none", 
-        "subExperimentID": "none", 
+        "subExperiment": "None", 
+        "subExperimentID": "None", 
         "tier": "2"
     }, 
     "description": null, 
@@ -30,6 +30,6 @@
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "f7baa8a8-7a84-4472-92de-049ec1623d87", 
+    "uid": "8efdf5f2-473c-43ad-bcf9-e695db34e8e1", 
     "url": null
 }

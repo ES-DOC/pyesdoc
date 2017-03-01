@@ -21,8 +21,8 @@
             "CHEM"
         ], 
         "startYear": "", 
-        "subExperiment": "none", 
-        "subExperimentID": "none", 
+        "subExperiment": "None", 
+        "subExperimentID": "None", 
         "tier": "3"
     }, 
     "description": null, 
@@ -32,6 +32,6 @@
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "0377a069-75a8-4264-84c7-3ecb432e633f", 
+    "uid": "4617812b-114c-483b-95bd-75a04e11ff6f", 
     "url": null
 }

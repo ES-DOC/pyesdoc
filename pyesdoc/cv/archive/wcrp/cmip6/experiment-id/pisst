@@ -22,8 +22,8 @@
             "AGCM"
         ], 
         "startYear": "Year 111-140 of piControl", 
-        "subExperiment": "none", 
-        "subExperimentID": "none", 
+        "subExperiment": "None", 
+        "subExperimentID": "None", 
         "tier": "2"
     }, 
     "description": null, 
@@ -33,6 +33,6 @@
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "e70eb12f-496c-4f1d-94f5-16bc0f31267b", 
+    "uid": "d6432dce-b495-437e-be43-50b56cd4ef1b", 
     "url": null
 }

@@ -19,8 +19,8 @@
             "OGCM"
         ], 
         "startYear": "1", 
-        "subExperiment": "none", 
-        "subExperimentID": "none", 
+        "subExperiment": "None", 
+        "subExperimentID": "None", 
         "tier": "2"
     }, 
     "description": null, 
@@ -30,6 +30,6 @@
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "617157c9-5b98-413a-8fdc-e86e17998302", 
+    "uid": "821f5add-4624-45bc-adf2-766779338be6", 
     "url": null
 }

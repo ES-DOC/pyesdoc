@@ -1,0 +1,19 @@
+{
+    "_type": "pyesdoc.cv.model.term", 
+    "alternativeName": null, 
+    "alternativeUrl": null, 
+    "associations": [], 
+    "createDate": "0167-03-21 00:00:00+00:00", 
+    "data": {
+        "postalAddress": "Department of Earth System Science, Tsinghua University, Beijing 100084, China"
+    }, 
+    "description": null, 
+    "idx": 15, 
+    "label": "THU", 
+    "name": "thu", 
+    "parent": null, 
+    "status": "pending", 
+    "synonyms": [], 
+    "uid": "34c43ca2-2221-4357-81fa-07ec77b8ae79", 
+    "url": null
+}

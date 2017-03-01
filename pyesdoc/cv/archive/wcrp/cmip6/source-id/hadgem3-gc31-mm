@@ -25,12 +25,12 @@
         "sourceID": "HadGEM3-GC31-MM"
     }, 
     "description": null, 
-    "idx": 24, 
+    "idx": 26, 
     "label": "HadGEM3-GC31-MM", 
     "name": "hadgem3-gc31-mm", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "2460f3c2-b8f1-494d-98f3-48e41b6aa222", 
+    "uid": "fd39003a-2b46-4712-966e-62f92dd91594", 
     "url": null
 }

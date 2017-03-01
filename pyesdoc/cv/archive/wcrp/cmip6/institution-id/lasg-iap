@@ -8,12 +8,12 @@
         "postalAddress": "Institute of Atmospheric Physics, Chinese Academy of Sciences, Beijing 100029, China"
     }, 
     "description": null, 
-    "idx": 24, 
+    "idx": 25, 
     "label": "LASG-IAP", 
     "name": "lasg-iap", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "373d176c-5466-4039-b55c-1acacb406f84", 
+    "uid": "f33e272f-13ea-488d-8b9a-90dfd19fc0dc", 
     "url": null
 }

@@ -22,8 +22,8 @@
             "AGCM"
         ], 
         "startYear": "", 
-        "subExperiment": "none", 
-        "subExperimentID": "none", 
+        "subExperiment": "None", 
+        "subExperimentID": "None", 
         "tier": "1"
     }, 
     "description": null, 
@@ -33,6 +33,6 @@
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "b15eecbe-1334-4d22-a4d1-b407f317b8ff", 
+    "uid": "1bb9470a-97c3-4a6c-8a2e-a0f41a2a8542", 
     "url": null
 }

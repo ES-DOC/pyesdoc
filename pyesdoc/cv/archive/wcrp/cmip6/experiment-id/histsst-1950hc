@@ -21,8 +21,8 @@
             "CHEM"
         ], 
         "startYear": "1950", 
-        "subExperiment": "none", 
-        "subExperimentID": "none", 
+        "subExperiment": "None", 
+        "subExperimentID": "None", 
         "tier": "1"
     }, 
     "description": null, 
@@ -32,6 +32,6 @@
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "69a93017-958d-4b60-8ccc-38bee7317370", 
+    "uid": "e2a46d5c-0554-4379-a03e-a4ffd26047b7", 
     "url": null
 }

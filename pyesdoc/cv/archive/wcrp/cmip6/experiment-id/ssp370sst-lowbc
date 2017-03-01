@@ -22,8 +22,8 @@
             "AER"
         ], 
         "startYear": "2015", 
-        "subExperiment": "none", 
-        "subExperimentID": "none", 
+        "subExperiment": "None", 
+        "subExperimentID": "None", 
         "tier": "2"
     }, 
     "description": null, 
@@ -33,6 +33,6 @@
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "b95cefe2-cb61-4567-81fa-4432bf776f41", 
+    "uid": "a7c7e100-4174-41e2-ad81-65dbe51d2d4e", 
     "url": null
 }

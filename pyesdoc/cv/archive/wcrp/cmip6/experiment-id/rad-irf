@@ -19,8 +19,8 @@
             "RAD"
         ], 
         "startYear": "", 
-        "subExperiment": "none", 
-        "subExperimentID": "none", 
+        "subExperiment": "None", 
+        "subExperimentID": "None", 
         "tier": "1"
     }, 
     "description": null, 
@@ -30,6 +30,6 @@
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "6c209038-4f9b-4749-a371-0e46f97cb0e8", 
+    "uid": "d8cc94f3-91de-43b6-bbe2-6531cf5d6986", 
     "url": null
 }

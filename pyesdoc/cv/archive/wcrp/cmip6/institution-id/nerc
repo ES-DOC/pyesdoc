@@ -8,12 +8,12 @@
         "postalAddress": "Natural Environment Research Council, STFC-RAL, Harwell, Oxford, OX11 0QX, UK"
     }, 
     "description": null, 
-    "idx": 22, 
+    "idx": 23, 
     "label": "NERC", 
     "name": "nerc", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "574803a7-82ba-411e-b599-0a2396c89749", 
+    "uid": "609cbbf1-7b6d-45e3-a762-1e2a89a86697", 
     "url": null
 }

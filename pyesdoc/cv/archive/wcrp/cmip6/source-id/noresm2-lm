@@ -25,12 +25,12 @@
         "sourceID": "NorESM2-LM"
     }, 
     "description": null, 
-    "idx": 12, 
+    "idx": 13, 
     "label": "NorESM2-LM", 
     "name": "noresm2-lm", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "aec51737-02bc-47d3-9ea8-53b4b74a2738", 
+    "uid": "0c1c6124-a2db-40ca-827c-ee118e000cca", 
     "url": null
 }

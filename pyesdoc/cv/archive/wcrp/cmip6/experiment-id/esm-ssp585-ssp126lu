@@ -27,8 +27,8 @@
             "BGC"
         ], 
         "startYear": "2015", 
-        "subExperiment": "none", 
-        "subExperimentID": "none", 
+        "subExperiment": "None", 
+        "subExperimentID": "None", 
         "tier": "1"
     }, 
     "description": null, 
@@ -38,6 +38,6 @@
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "6d46cb67-7fdc-4b93-b526-24be4e44e7a5", 
+    "uid": "ff7d10cf-4978-40f3-88b4-a07b0f2cb99d", 
     "url": null
 }
