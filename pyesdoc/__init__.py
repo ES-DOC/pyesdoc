@@ -49,7 +49,7 @@ from pyesdoc._io import read
 from pyesdoc._io import seek
 from pyesdoc._io import write
 
-from pyesdoc.mp.specializations import get_model_realm_specialization
+from pyesdoc.mp.specializations import get_model_specialization
 from pyesdoc.mp.specializations import get_property_specialization
 
 from pyesdoc._publishing import publish

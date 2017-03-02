@@ -15,7 +15,7 @@ import json
 import os
 
 from pyesdoc.ipython import constants
-from pyesdoc.mp.specializations import get_model_realm_specialization
+from pyesdoc.mp.specializations import get_model_specialization
 from pyesdoc.mp.specializations import get_property_specialization
 
 
@@ -37,7 +37,7 @@ class NotebookOutput(object):
         self.prop_specialization = None
         self.realm = unicode(realm).strip().lower()
         self.source_id = unicode(source_id).strip().lower()
-        self.specialization = get_model_realm_specialization(mip_era, realm)
+        self.specialization = get_model_specialization(mip_era, realm)
 
         # Auto-initialise state.
         self._init(output_dir)

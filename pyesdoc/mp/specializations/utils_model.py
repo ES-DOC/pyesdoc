@@ -11,7 +11,7 @@
 """
 from itertools import chain
 
-import constants
+from utils_constants import *
 
 
 
@@ -51,7 +51,7 @@ class TopicSpecialization(object):
         """
         result = [i for i in self.sub_topics if i.type_key == type_key]
 
-        if type_key in {constants.TYPE_KEY_PROCESS, constants.TYPE_KEY_SUBPROCESS}:
+        if type_key in {TYPE_KEY_PROCESS, TYPE_KEY_SUBPROCESS}:
             return result
         elif len(result) > 1:
             return result
