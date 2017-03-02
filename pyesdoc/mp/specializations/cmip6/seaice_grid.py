@@ -133,9 +133,9 @@ ENUMERATIONS['vertical_layering'] = {
     'members': [
         ('Zero-layer',
             'Simulation has no internal ice thermodynamics.'),
-        ('Two-levels',
+        ('Two-layers',
             'Simulation uses two layers.'),
-        ('Multi-level',
+        ('Multi-layers',
             'Simulation uses more than two layers'),
        ]
     }

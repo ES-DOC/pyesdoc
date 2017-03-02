@@ -105,7 +105,7 @@ DETAILS['salt:mass_transport']={
 DETAILS['salt:thermodynamics']={
     'description':'Salt thermodynamics',
     'properties': [
-        ('salinity', 'ENUM:salinity_method', '1.1',
+        ('salinity_type', 'ENUM:salinity_method', '1.1',
             "How is salinity determined in the thermodynamic calculation?"),
         ('constant_salinity_value', 'float', '0.1',
              "If using a constant salinity value specify this value in PSU?"),

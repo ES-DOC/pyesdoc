@@ -39,7 +39,7 @@ DETAILS['toplevel'] = {
     'properties': [
         ('surface_albedo', 'ENUM:seaice_albedo', '1.1',
             "Method used to handle surface albedo."),
-        ('ice_radiation_transmission', 'ENUM:ice_trans', '1.N',
+        ('ice_radiation_transmission', 'ENUM:ice_transmission', '1.N',
             "Method by which solar radiation through sea ice is handled."),
         ]
     }
@@ -57,8 +57,8 @@ ENUMERATIONS['seaice_albedo'] = {
     ]
 }
 
-ENUMERATIONS['ice_trans'] = {
-    'description': "Surface albedo of sea ice component",
+ENUMERATIONS['ice_transmission'] = {
+    'description': "Ice radiative transmission",
     'is_open': True,
     'members': [
         ('Delta-Eddington', None),

@@ -34,6 +34,14 @@ DESCRIPTION = 'Sea Ice key properties'
 # --------------------------------------------------------------------
 # GENERAL details.
 # --------------------------------------------------------------------
+DETAILS['model'] = {
+    'description': "Name of seaice model used.",
+    'properties': [
+        ('model_name', 'str', '1.1',
+         "Name of seaice model (e.g. CICE 4.2, LIM 2.1, etc.)"),
+    ]
+}
+
 DETAILS['variables'] = {
     'description': "List of prognostic variable in the sea ice model.",
     'properties': [
@@ -130,6 +138,7 @@ ENUMERATIONS['prognostic_variables'] = {
         ('Sea ice Temperature', None),
         ('Sea ice concentration', None),
         ('Sea ice thickness', None),
+        ('Sea ice volume per grid cell area', None),
         ('Sea ice U-velocity', None),
         ('Sea ice V-velocity', None),
         ('Internal ice stress', None),

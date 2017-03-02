@@ -1,22 +1,22 @@
-"""A specialization.
+"""A top level model.
 
 For further information goto http://wordpress.es-doc.org/cmip6-model-specializations.
 
 """
 # --------------------------------------------------------------------
-# CONTACT: Set to specialization co-ordinator.
+# CONTACT: Set to top-level specialization co-ordinator.
 # --------------------------------------------------------------------
 CONTACT = 'Eric Guilyardi'
 
 # --------------------------------------------------------------------
-# AUTHORS: Set to specialization authors (comma delimited).
+# AUTHORS: Set to top-level specialization authors (comma delimited).
 # --------------------------------------------------------------------
-AUTHORS = 'Eric Guilyardi, David Hassell, Mark Greenslade'
+AUTHORS = 'Eric Guilyardi'
 
 # --------------------------------------------------------------------
-# CONTRIBUTORS: Set to specialization contributors (comma delimited).
+# CONTRIBUTORS: Set to top-level specialization contributors (comma delimited).
 # --------------------------------------------------------------------
-CONTRIBUTORS = 'CMIP5 version +, Julie Dehayes (LOCEAN/IPSL), Steve Griffies (GFDL), Gokhan Danabasoglu (NCAR)'
+CONTRIBUTORS = 'Roland Seferian (CNRM), Tim Johns (UKMO)'
 
 # --------------------------------------------------------------------
 # QUALITY CONTROL STATUS: Set to 'draft' or 'complete'
@@ -27,43 +27,46 @@ QC_STATUS = 'draft'
 # CHANGE HISTORY: Set to list: (version, date, comment, who).
 # --------------------------------------------------------------------
 CHANGE_HISTORY = [
-    ("0.1.0", "2016-07-01", "Eric Guilyardi",
-        "Initialised"),
-    ("0.2.0", "2016-08-30", "Eric Guilyardi",
-        "Update science following inputs fron Gokhan Danabasoglu and Steve Griffies", ),
-    ("0.3.0", "2016-09-05", "David Hassell",
-        "Added hidden CIM2 properties to key_properties and timestepping_framework", ),
-    ("0.4.0", "2016-11-08", "Eric Guilyardi et al.",
-        "Changed syntax to simplify and remove CIM2 dependencies"),
-    ("0.5.0", "2016-11-25", "Mark Greenslade.",
-        "Syntax simplification in respect of process/sub-process"),
-    ("0.6.0", "2017-01-13", "Eric Guilyardi",
-        "Added ocean_short_table.py"),
+    ("0.1.0", "2016-09-01", "Initialised", "Eric Guilyardi"),
+    ("0.2.0", "2016-11-08", "Changed syntax to simplify and remove CIM2 dependencies", "Eric Guilyardi et al"),
+    ("0.3.0", "2017-01-30", "Added forcings", "David Hassell, Eric Guilyardi"),
     ]
 
 # --------------------------------------------------------------------
-# DESCRIPTION: Scientific context of this specialization
+# DESCRIPTION: Scientific context of this scientific top-level
 # --------------------------------------------------------------------
-DESCRIPTION = 'Ocean Realm'
+DESCRIPTION = 'Top level model'
 
 # --------------------------------------------------------------------
 # GRID: The grid used to layout the variables
 # --------------------------------------------------------------------
-GRID = 'ocean_grid'
+GRID = None
 
 # --------------------------------------------------------------------
-# KEY PROPERTIES: Key properties (differing from defaults (grid, timestep etc))
+# KEY PROPERTIES: File name (without the .py suffix) containing key properties of the top level model.
 # --------------------------------------------------------------------
-KEY_PROPERTIES = 'ocean_key_properties'
+KEY_PROPERTIES = 'model_key_properties'
 
 # --------------------------------------------------------------------
-# PROCESSES: Simulated processes
+# PROCESSES: Processes simulated within the model
 # --------------------------------------------------------------------
 PROCESSES = [
-    'ocean_timestepping_framework',
-    'ocean_advection',
-    'ocean_lateral_physics',
-    'ocean_vertical_physics',
-    'ocean_uplow_boundaries',
-    'ocean_boundary_forcing',
+    'model_radiative_forcings',
     ]
+
+# --------------------------------------------------------------------
+# SIMULATES: Realms simulated by the model
+# N.B. Official realms names are from https://github.com/WCRP-CMIP/CMIP6_CVs/blob/master/CMIP6_realm.json
+# N.B. Creation tool should include an on/off switch to allow for partial configurations (AMIP, AOGCM)
+# --------------------------------------------------------------------
+# TODO: ## WARNING these names are not coherent with those in ES-DOC realms specialisation repos (atmosphere instead of atmos,...)
+SIMULATES = [
+    "aerosol",
+    "atmos",
+    "atmosChem",
+    "land",
+    "landIce",
+    "ocean",
+    "ocnBgchem",
+    "seaIce",
+]

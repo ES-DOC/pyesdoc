@@ -1,4 +1,4 @@
-"""A realm key-properties specialization.
+"""A key-properties specialization.
 
 For further information goto http://wordpress.es-doc.org/cmip6-model-specializations.
 
@@ -12,12 +12,12 @@ DETAILS = OrderedDict()
 ENUMERATIONS = OrderedDict()
 
 # --------------------------------------------------------------------
-# CONTACT: Set to realm specialization co-ordinator.
+# CONTACT: Set to specialization co-ordinator.
 # --------------------------------------------------------------------
 CONTACT = 'Eric Guilyardi'
 
 # --------------------------------------------------------------------
-# AUTHORS: Set to realm specialization authors (comma delimited).
+# AUTHORS: Set to specialization authors (comma delimited).
 # --------------------------------------------------------------------
 AUTHORS = 'Eric Guilyardi'
 
@@ -92,7 +92,7 @@ DETAILS['toplevel:nonoceanic_waters'] = {
        ]
     }
 
-DETAILS['software_properties'] = {
+DETAILS['toplevel:software_properties'] = {
     'description': 'Software properties of ocean code',
     'properties':[
         ('repository','str', '0.1',
@@ -126,7 +126,7 @@ DETAILS['resolution'] = {
     }
 
 # --------------------------------------------------------------------
-# SUB-PROCESS: TUNING APPLIED: Any tuning used to optimise the parameters in this realm
+# SUB-PROCESS: TUNING APPLIED: Any tuning used to optimise the parameters
 # --------------------------------------------------------------------
 DETAILS['tuning_applied'] = {
     'description': 'Tuning methodology for ocean component',

@@ -8,12 +8,8 @@
 
 
 """
-from utils_model import TopicPropertySpecialization
-from utils_model import TopicPropertySetSpecialization
-from utils_model import EnumSpecialization
-from utils_model import EnumChoiceSpecialization
-from utils_model import RealmSpecialization
-from utils_model import TopicSpecialization
+from constants import *
+import utils_model as model
 
 
 
@@ -21,46 +17,53 @@ from utils_model import TopicSpecialization
 CACHE = dict()
 
 
-def create_realm_specialization(specs):
-    """Returns a realm specialization wrapper.
 
-    :param spec: 4 member tuple of python modules: realm, grid, key-properties, processes.
+def get_specialization(modules):
+    """Returns a specialization wrapper.
 
-    :returns: A realm specialization wrapper.
-    :rtype: TopicSpecialization
+    :param modules: 4 member tuple of python modules: root, grid, key-properties, processes.
+
+    :returns: A specialization wrapper.
+    :rtype: tuple
 
     """
-    r = _create_topic(None, specs[0], "realm", typeof=RealmSpecialization)
-    r.key_properties = _create_topic(r, specs[2], "key-properties")
-    r.grid = _create_topic(r, specs[1], "grid")
-    r.processes = [_create_topic(r, i, "process") for i in specs[3]]
+    # Unpack modules.
+    mod_root, mod_grid, mod_keyprops, mod_processes = modules
 
-    return r
+    # Set root type key.
+    type_key = TYPE_KEY_REALM if mod_root.__name__ != "model" else TYPE_KEY_MODEL
+
+    # Create topic tree.
+    result = _create_topic(None, mod_root, type_key)
+    if mod_grid is not None:
+        _create_topic(result, mod_grid, TYPE_KEY_GRID)
+    _create_topic(result, mod_keyprops, TYPE_KEY_KEYPROPS)
+    for i in mod_processes:
+        _create_topic(result, i, TYPE_KEY_PROCESS)
+
+    return result
 
 
-def _create_topic(parent, spec, type_key, key=None, typeof=TopicSpecialization):
+def _create_topic(parent, spec, type_key, key=None):
     """Creates & returns a topic specialization wrapper.
 
     """
     if spec is None:
         return None
 
-    topic = typeof()
-    topic.type_key = type_key
-    topic.spec = spec
-
+    # Instantiate.
+    topic = model.TopicSpecialization(spec, type_key)
     if isinstance(spec, dict):
         _set_topic_from_dict(parent, topic, key)
     else:
         _set_topic_from_module(parent, topic)
 
-    topic.name_camel_case = _to_camel_case(topic.name)
-    topic.name_camel_case_spaced = _to_camel_case_spaced(topic.name)
+    # Update hierachy.
     if parent:
         topic.parent = parent
         parent.sub_topics.append(topic)
 
-    # Cache.
+    # Cache (used in downstream tooling chain).
     CACHE[topic.id] = topic
 
     return topic
@@ -86,25 +89,26 @@ def _set_topic_from_module(parent, topic):
         topic.id = "cmip6.{}".format(topic.name)
 
     # Assign properties / property sets.
-    for key, obj in topic.spec.DETAILS.items():
-        # ... topic toplevel properties
-        if key == "toplevel":
-            _set_property_collection(topic, key, obj, topic.spec.ENUMERATIONS)
+    if hasattr(topic.spec, "DETAILS") and hasattr(topic.spec, "ENUMERATIONS"):
+        for key, obj in topic.spec.DETAILS.items():
+            # ... toplevel properties
+            if key == "toplevel":
+                _set_property_collection(topic, obj, topic.spec.ENUMERATIONS)
 
-        # ... topic toplevel property sets
-        elif key.startswith("toplevel"):
-            _set_property_set(topic, key, obj, topic.spec.ENUMERATIONS)
+            # ... toplevel property sets
+            elif key.startswith("toplevel"):
+                _set_property_set(topic, key, obj, topic.spec.ENUMERATIONS)
 
-        # ... sub-topic properties
-        elif len(key.split(":")) == 1:
-            _create_topic(topic, obj, "sub-process", key)
-            _set_property_collection(topic.sub_topics[-1], key, obj, topic.spec.ENUMERATIONS)
+            # ... sub-topic properties
+            elif len(key.split(":")) == 1:
+                _create_topic(topic, obj, TYPE_KEY_SUBPROCESS, key)
+                _set_property_collection(topic.sub_topics[-1], obj, topic.spec.ENUMERATIONS)
 
-        # ... sub-topic property sets
-        elif len(key.split(":")) == 2:
-            for st in topic.sub_topics:
-                if st.name == key.split(":")[0]:
-                    _set_property_set(st, key, obj, topic.spec.ENUMERATIONS)
+            # ... sub-topic property sets
+            elif len(key.split(":")) == 2:
+                for st in topic.sub_topics:
+                    if st.name == key.split(":")[0]:
+                        _set_property_set(st, key, obj, topic.spec.ENUMERATIONS)
 
 
 def _set_topic_from_dict(parent, topic, name):
@@ -125,15 +129,13 @@ def _set_property_set(owner, key, obj, enumerations):
     """Set attributes of a property-set attributes from a dictionary.
 
     """
-    ps = TopicPropertySetSpecialization()
+    ps = model.PropertySetSpecialization()
     ps.description = obj['description']
     ps.id = "{}.{}".format(owner.id, key.split(":")[-1])
     ps.key = key
     ps.name = key.split(":")[-1]
-    ps.name_camel_case = _to_camel_case(ps.name)
-    ps.name_camel_case_spaced = _to_camel_case_spaced(ps.name)
     ps.owner = owner
-    _set_property_collection(ps, key, obj, enumerations)
+    _set_property_collection(ps, obj, enumerations)
 
     owner.property_sets.append(ps)
 
@@ -141,20 +143,18 @@ def _set_property_set(owner, key, obj, enumerations):
     CACHE[ps.id] = ps
 
 
-def _set_property_collection(owner, key, obj, enumerations):
+def _set_property_collection(owner, obj, enumerations):
     """Set a collection of topic properties from a dictionary.
 
     """
-    for name, typeof, cardinality, description in obj['properties']:
-        p = TopicPropertySpecialization()
+    for name, typeof, cardinality, description in obj.get('properties', []):
+        p = model.PropertySpecialization()
         p.cardinality = cardinality
         p.description = description
         p.enum = _create_enum(p, typeof, enumerations) if typeof.startswith("ENUM:") else None
         p.id = "{}.{}".format(owner.id, name)
         p.key = name
         p.name = name
-        p.name_camel_case = _to_camel_case(name)
-        p.name_camel_case_spaced = _to_camel_case_spaced(name)
         p.owner = owner
         p.typeof = typeof
 
@@ -171,7 +171,7 @@ def _create_enum(detail, typeof, enumerations):
     key = typeof.split(":")[-1]
     obj = enumerations[key]
 
-    e = EnumSpecialization()
+    e = model.EnumSpecialization()
     e.description = obj['description']
     e.detail = detail
     e.id = "{}.{}".format(detail.id, key)
@@ -188,7 +188,7 @@ def _create_enum_choice(enum, value, description):
     """Creates & returns an enumeration choice specialzation wrapper.
 
     """
-    ec = EnumChoiceSpecialization()
+    ec = model.EnumChoiceSpecialization()
     ec.description = description
     ec.enum = enum
     ec.id = "{}.{}".format(enum.id, value)
@@ -196,37 +196,3 @@ def _create_enum_choice(enum, value, description):
 
     return ec
 
-
-def _to_camel_case_spaced(name, separator='_'):
-    """Converts passed name to camel case with space.
-
-    :param str name: A name as specified in ontology specification.
-    :param str separator: Separator to use in order to split name into constituent parts.
-
-    """
-    s = _to_camel_case(name, separator)
-    r = s[0]
-    for s in s[1:]:
-        if s.upper() == s:
-            r += " "
-        r += s
-
-    return r
-
-
-def _to_camel_case(name, separator='_'):
-    """Converts passed name to camel case.
-
-    :param str name: A name as specified in ontology specification.
-    :param str separator: Separator to use in order to split name into constituent parts.
-
-    """
-    r = ''
-    if name is not None:
-        s = name.split(separator)
-        for s in s:
-            if (len(s) > 0):
-                r += s[0].upper()
-                if (len(s) > 1):
-                    r += s[1:]
-    return r

@@ -20,7 +20,7 @@ CONTACT = 'Charlotte Pascoe'
 # --------------------------------------------------------------------
 # AUTHORS: Set to realm specialization authors (comma delimited).
 # --------------------------------------------------------------------
-AUTHORS = 'Charlotte Pascoe'
+AUTHORS = 'Charlotte Pascoe, Robert Pincus'
 
 # --------------------------------------------------------------------
 # QUALITY CONTROL STATUS: Set to 'draft' or 'complete'
@@ -39,9 +39,11 @@ DETAILS['toplevel'] = {
     'description': "Top level cloud scheme process properties",
     'properties': [
         ('uses_separate_treatment', 'bool', '1.1',
-            'Different cloud schemes for the different types of clouds (convective, stratiform and boundary layer clouds'),
+            'Different cloud schemes for the different types of clouds (convective, stratiform and boundary layer)'),
         ('cloud_overlap_method', 'ENUM:cloud_overlap_method', '1.1',
             'Method for taking into account overlapping of cloud layers'),
+        ('cloud_inhomogeneity', 'ENUM:inhomogeneity_treatment', '1.1',
+            'Method for taking into account horizontal cloud inhomogeneity'),
         ('processes', 'ENUM:processes_attributes', '1.N',
             'Processes included in the cloud scheme'),
         ]
@@ -92,10 +94,20 @@ ENUMERATIONS['cloud_overlap_method'] = {
     'members': [
         ('random', None),
         ('maximum', None),
-        ('arbitrary', 'combination of maximum and random overlap between clouds'),
+        ('maximum-random', 'combination of maximum and random overlap between clouds'),
+        ('exponential', None),
         ]
     }
 
+ENUMERATIONS['inhomogeneity_treatment'] = {
+    'description': 'Cloud scheme inhomogeneity treatment',
+    'is_open': True,
+    'members': [
+        ('Monte Carlo Independent Column Approximation', 'McICA'),
+        ('Triplecloud', 'Regions of clear sky, optically thin cloud and optically thick cloud, Shonk et al 2010'),
+        ('analytic', None),
+        ]
+    }
 ENUMERATIONS['processes_attributes'] = {
     'description': 'Processes included in the cloud scheme.',
     'is_open': True,
@@ -105,5 +117,3 @@ ENUMERATIONS['processes_attributes'] = {
         ('bulk cloud', None),
         ]
     }
-
-#TODO include horizontal cloud inhomogeneity? Tripple cloud scheme Shank et al 2010

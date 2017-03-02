@@ -11,13 +11,15 @@
 """
 from itertools import chain
 
+import constants
+
 
 
 class TopicSpecialization(object):
     """Wraps a topic specialization.
 
     """
-    def __init__(self):
+    def __init__(self, spec, type_key):
         """Instance initializer.
 
         """
@@ -28,14 +30,12 @@ class TopicSpecialization(object):
         self.id = None
         self.qc_status = None
         self.name = None
-        self.name_camel_case = None
-        self.name_camel_case_spaced = None
         self.parent = None
         self.properties = []
         self.property_sets = []
-        self.spec = None
+        self.spec = spec
         self.sub_topics = []
-        self.type_key = None
+        self.type_key = type_key
 
 
     def __repr__(self):
@@ -43,6 +43,36 @@ class TopicSpecialization(object):
 
         """
         return self.id
+
+
+    def __getitem__(self, type_key):
+        """Returns a child topic.
+
+        """
+        result = [i for i in self.sub_topics if i.type_key == type_key]
+
+        if type_key in {constants.TYPE_KEY_PROCESS, constants.TYPE_KEY_SUBPROCESS}:
+            return result
+        elif len(result) > 1:
+            return result
+        elif len(result) == 1:
+            return result[0]
+
+
+    @property
+    def name_camel_case(self):
+        """Gets camel case formatted name.
+
+        """
+        return _to_camel_case(self.name)
+
+
+    @property
+    def name_camel_case_spaced(self):
+        """Gets spaced camel case formatted name.
+
+        """
+        return _to_camel_case_spaced(self.name)
 
 
     @property
@@ -82,7 +112,7 @@ class TopicSpecialization(object):
 
     @property
     def all_properties(self):
-        """Returns all properties within realm.
+        """Returns all specialization properties.
 
         """
         return set(chain.from_iterable(i.properties for i in self.all_property_containers))
@@ -90,7 +120,7 @@ class TopicSpecialization(object):
 
     @property
     def all_required_properties(self):
-        """Returns all required properties within realm.
+        """Returns all required specialization properties.
 
         """
         return set([i for i in self.all_properties if i.is_required])
@@ -98,7 +128,7 @@ class TopicSpecialization(object):
 
     @property
     def all_optional_properties(self):
-        """Returns all optional properties within realm.
+        """Returns all optional specialization properties.
 
         """
         return self.all_properties - self.all_required_properties
@@ -132,7 +162,7 @@ class TopicSpecialization(object):
         return seperator.join(names)
 
 
-class TopicPropertySetSpecialization(object):
+class PropertySetSpecialization(object):
     """Wraps a property set specialization.
 
     """
@@ -140,13 +170,11 @@ class TopicPropertySetSpecialization(object):
         """Instance initializer.
 
         """
-        super(TopicPropertySetSpecialization, self).__init__()
+        super(PropertySetSpecialization, self).__init__()
 
         self.description = None
         self.id = None
         self.name = None
-        self.name_camel_case = None
-        self.name_camel_case_spaced = None
         self.owner = None
         self.properties = []
         self.property_sets = []
@@ -159,6 +187,22 @@ class TopicPropertySetSpecialization(object):
 
         """
         return self.id
+
+
+    @property
+    def name_camel_case(self):
+        """Gets camel case formatted name.
+
+        """
+        return _to_camel_case(self.name)
+
+
+    @property
+    def name_camel_case_spaced(self):
+        """Gets spaced camel case formatted name.
+
+        """
+        return _to_camel_case_spaced(self.name)
 
 
     def names(self, offset=None, seperator=" --> ", convertor=None):
@@ -174,7 +218,7 @@ class TopicPropertySetSpecialization(object):
         return seperator.join(names)
 
 
-class TopicPropertySpecialization(object):
+class PropertySpecialization(object):
     """Wraps a property specialization.
 
     """
@@ -182,15 +226,13 @@ class TopicPropertySpecialization(object):
         """Instance initializer.
 
         """
-        super(TopicPropertySpecialization, self).__init__()
+        super(PropertySpecialization, self).__init__()
 
         self.cardinality = None
         self.description = None
         self.enum = None
         self.id = None
         self.name = None
-        self.name_camel_case = None
-        self.name_camel_case_spaced = None
         self.owner = None
         self.topic = None
         self.typeof = None
@@ -202,6 +244,22 @@ class TopicPropertySpecialization(object):
 
         """
         return self.id
+
+
+    @property
+    def name_camel_case(self):
+        """Gets camel case formatted name.
+
+        """
+        return _to_camel_case(self.name)
+
+
+    @property
+    def name_camel_case_spaced(self):
+        """Gets spaced camel case formatted name.
+
+        """
+        return _to_camel_case_spaced(self.name)
 
 
     @property
@@ -342,20 +400,6 @@ class EnumChoiceSpecialization(object):
 
         """
         return self.id
-
-
-class RealmSpecialization(TopicSpecialization):
-    """Wraps a realm specialization.
-
-    """
-    def __init__(self):
-        """Instance initializer.
-
-        """
-        super(RealmSpecialization, self).__init__()
-        self.grid = None
-        self.key_properties = None
-        self.processes = None
 
 
 def _to_camel_case_spaced(name, separator='_'):
