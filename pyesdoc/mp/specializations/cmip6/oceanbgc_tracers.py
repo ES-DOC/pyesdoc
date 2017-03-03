@@ -53,7 +53,7 @@ DETAILS['toplevel'] = {
 # PROCESS: detailed properties
 # --------------------------------------------------------------------
 
-DETAILS['Ecosystem'] = {
+DETAILS['ecosystem'] = {
     'description': 'Ecosystem properties in ocean biogeochemistry',
     'properties': [
         ('upper_trophic_levels_definition', 'str', '1.1',
@@ -63,7 +63,7 @@ DETAILS['Ecosystem'] = {
         ]
     }
 
-DETAILS['Ecosystem:phytoplancton'] = {
+DETAILS['ecosystem:phytoplancton'] = {
     'description': 'Phytoplancton properties in ocean biogeochemistry',
     'properties': [
         ('type', 'ENUM:plancton_types', '1.1',
@@ -73,7 +73,7 @@ DETAILS['Ecosystem:phytoplancton'] = {
         ]
     }
 
-DETAILS['Ecosystem:zooplancton'] = {
+DETAILS['ecosystem:zooplancton'] = {
     'description': 'Zooplancton properties in ocean biogeochemistry',
     'properties': [
         ('type', 'ENUM:plancton_types', '1.1',
@@ -83,7 +83,7 @@ DETAILS['Ecosystem:zooplancton'] = {
         ]
     }
 
-DETAILS['Disolved_organic_matter'] = {
+DETAILS['disolved_organic_matter'] = {
     'description': 'Disolved organic matter properties in ocean biogeochemistry',
     'properties': [
         ('bacteria_present', 'bool', '1.1',
@@ -94,7 +94,7 @@ DETAILS['Disolved_organic_matter'] = {
     }
 
 
-DETAILS['Particules'] = {
+DETAILS['particules'] = {
     'description': 'Particulate carbon properties in ocean biogeochemistry',
     'properties': [
         ('method', 'ENUM:particules_method', '1.1',

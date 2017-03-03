@@ -54,13 +54,13 @@ DETAILS['toplevel'] = {
 # KEY PROPERTIES: details
 # --------------------------------------------------------------------
 
-DETAILS['Time_stepping_framework'] = {
+DETAILS['time_stepping_framework'] = {
     'description': 'Time stepping framework for ocean biogeochemistry',
     'properties' : [
         ]
     }
 
-DETAILS['Time_stepping_framework:passive_tracers_transport'] = {
+DETAILS['time_stepping_framework:passive_tracers_transport'] = {
     'description': 'Time stepping method for passive tracers transport in ocean biogeochemistry',
     'properties' : [
         ('method', 'ENUM:passive_tracers_transport', '1.1',
@@ -70,7 +70,7 @@ DETAILS['Time_stepping_framework:passive_tracers_transport'] = {
         ]
     }
 
-DETAILS['Time_stepping_framework:biology_sources_sinks'] = {
+DETAILS['time_stepping_framework:biology_sources_sinks'] = {
     'description': 'Time stepping framework for biology sources and sinks in ocean biogeochemistry',
     'properties' : [
         ('method', 'ENUM:passive_tracers_transport', '1.1',
@@ -80,7 +80,7 @@ DETAILS['Time_stepping_framework:biology_sources_sinks'] = {
         ]
     }
 
-DETAILS['Transport_scheme'] = {
+DETAILS['transport_scheme'] = {
     'description': 'Transport scheme in ocean biogeochemistry',
     'properties' : [
         ('type', 'ENUM:transport_types', '1.1',
@@ -92,7 +92,7 @@ DETAILS['Transport_scheme'] = {
         ]
     }
 
-DETAILS['Boundary_forcing'] = {
+DETAILS['boundary_forcing'] = {
     'description': 'Properties of biogeochemistry boundary forcing',
     'properties': [
         ('atmospheric_deposition', 'ENUM:sources_atmos_deposition', '1.1',
@@ -106,7 +106,7 @@ DETAILS['Boundary_forcing'] = {
         ]
     }
 
-DETAILS['Gas_exchange'] = {
+DETAILS['gas_exchange'] = {
     'description': 'Properties of gas exchange in ocean biogeochemistry ',
     'properties': [
         ('CO2_exchange_present', 'bool', '1.1',
@@ -138,7 +138,7 @@ DETAILS['Gas_exchange'] = {
         ]
     }
 
-DETAILS['Carbon_chemistry'] = {
+DETAILS['carbon_chemistry'] = {
     'description': 'Properties of carbon chemistry biogeochemistry',
     'properties': [
         ('type', 'ENUM:carbon_chemistry', '1.1',
