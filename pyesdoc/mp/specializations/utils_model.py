@@ -162,6 +162,16 @@ class TopicSpecialization(object):
         return seperator.join(names)
 
 
+    def has_property(self, property_id):
+        """Returns a flag indicating whether a topic supports a property.
+
+        """
+        for prop in self.all_properties:
+            if prop.id == property_id:
+                return True
+        return False
+
+
 class PropertySetSpecialization(object):
     """Wraps a property set specialization.
 

@@ -9,8 +9,31 @@
 
 """
 import imp
+import json
 import os
+import glob
 
+
+def get_short_tables(input_dir, typeof):
+    """Returns specialization short tables.
+
+    :param str input_dir: Directory within which modules reside.
+    :param str typeof: Type of specialization being processed.
+
+    :returns: Tuple of decoded short tables.
+    :rtype: tuple
+
+    """
+    def _decode(fpath):
+        name = fpath.split("/")[-1].split(".")[0].replace("_short_table", "")
+        with open(fpath, 'r') as fstream:
+            return name, json.loads(fstream.read())
+
+    fpaths = os.path.join(input_dir, "short_tables")
+    fpaths = os.path.join(fpaths, "{}_*.json".format(typeof))
+    tables = [_decode(i) for i in glob.glob(fpaths)]
+
+    return sorted(tables, key=lambda i: i[0])
 
 
 def get_modules(input_dir, typeof):
