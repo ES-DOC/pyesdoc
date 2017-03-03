@@ -37,13 +37,13 @@ DESCRIPTION = 'Ocean biogeochemistry tracers'
 DETAILS['toplevel'] = {
     'description': 'Top level properties of tracers in ocean biogeochemistry',
     'properties': [
-        ('sulfur_cycle', 'bool', '1.1',
+        ('sulfur_cycle_present', 'bool', '1.1',
             'Is sulfur cycle modeled ?'),
-        ('nutrients', 'ENUM:nutrients_species', '1.N',
+        ('nutrients_present', 'ENUM:nutrients_species', '1.N',
             'List nutrient species present in ocean biogeochemistry model'),
-        ('nitrous_species', 'ENUM:nitrous_species', '0.N',
+        ('nitrous_species_if_N', 'ENUM:nitrous_species', '0.N',
             'If nitrogen present, list nitrous species.'),
-        ('nitrous_processes', 'ENUM:nitrous_processes', '0.N',
+        ('nitrous_processes_if_N', 'ENUM:nitrous_processes', '0.N',
             'If nitrogen present, list nitrous processes.'),
 
         ]
@@ -56,7 +56,7 @@ DETAILS['toplevel'] = {
 DETAILS['Ecosystem'] = {
     'description': 'Ecosystem properties in ocean biogeochemistry',
     'properties': [
-        ('upper_trophic_levels', 'str', '1.1',
+        ('upper_trophic_levels_definition', 'str', '1.1',
             'Definition of upper trophic level (e.g. based on size) ?'),
         ('upper_trophic_levels_treatment', 'str', '1.1',
             'Define how upper trophic level are treated'),
@@ -86,7 +86,7 @@ DETAILS['Ecosystem:zooplancton'] = {
 DETAILS['Disolved_organic_matter'] = {
     'description': 'Disolved organic matter properties in ocean biogeochemistry',
     'properties': [
-        ('bacteria_representation', 'bool', '1.1',
+        ('bacteria_present', 'bool', '1.1',
             'Is there bacteria representation ?'),
         ('lability', 'ENUM:lability_treatment', '1.1',
             'Describe treatment of lability in dissolved organic matter'),
@@ -99,13 +99,13 @@ DETAILS['Particules'] = {
     'properties': [
         ('method', 'ENUM:particules_method', '1.1',
             'How is particulate carbon represented in ocean biogeochemistry?'),
-        ('types', 'ENUM:prognostic_particules_types', '0.1',
-            'If prognostic, types of particulate matter taken into account'),
-        ('size', 'ENUM:prognostic_particules_sizes', '0.1',
+        ('types_if_prognostic', 'ENUM:prognostic_particules_types', '0.N',
+            'If prognostic, type(s) of particulate matter taken into account'),
+        ('size_if_prognostic', 'ENUM:prognostic_particules_sizes', '0.1',
             'If prognostic, describe if a particule size spectrum is used to represent distribution of particules in water volume'),
-        ('discrete_size', 'str', '0.1',
+        ('size_if_discrete', 'str', '0.1',
             'If prognostic and discrete size, describe which size classes are used'),
-        ('sinking_speed', 'ENUM:prognostic_particules_sinking_speed', '0.1',
+        ('sinking_speed_if_prognostic', 'ENUM:prognostic_particules_sinking_speed', '0.1',
             'If prognostic, method for calculation of sinking speed of particules'),
         ]
     }
@@ -156,10 +156,10 @@ ENUMERATIONS['phytoplancton_list'] = {
     'description': 'Phytoplancton list in ocean biogeochemistry',
     'is_open': True,
     'members': [
-        ('diatoms', None),
+        ('Diatoms', None),
         ('Nfixers', None),
-        ('calcifiers', None),
-        ('picophytoplancton', None),
+        ('Calcifiers', None),
+        ('Picophytoplancton', None),
        ]
     }
 
@@ -167,8 +167,8 @@ ENUMERATIONS['zooplancton_list'] = {
     'description': 'Zooplancton list in ocean biogeochemistry',
     'is_open': True,
     'members': [
-        ('microzooplancton', None),
-        ('mesozooplancton', None),
+        ('Microzooplancton', None),
+        ('Mesozooplancton', None),
        ]
     }
 
@@ -176,10 +176,10 @@ ENUMERATIONS['lability_treatment'] = {
     'description': 'Lability treatment of dissolved organic matter in ocean biogeochemistry',
     'is_open': True,
     'members': [
-        ('none', None),
-        ('labile', 'Less than a few days'),
-        ('semi-labile', 'Few days to a few years'),
-        ('refractory', 'Over a few years'),
+        ('None', None),
+        ('Labile', 'Less than a few days'),
+        ('Semi-labile', 'Few days to a few years'),
+        ('Refractory', 'Over a few years'),
         ]
     }
 
@@ -209,9 +209,9 @@ ENUMERATIONS['prognostic_particules_sizes'] = {
     'description': 'Prognostic particulate carbon size in ocean biogeochemistry',
     'is_open': False,
     'members': [
+        ('No size spectrum used', None),
         ('Full size spectrum', None),
         ('Discrete size classes (specify which below)', None),
-        ('No size spectrum used', None),
        ]
     }
 
@@ -221,6 +221,6 @@ ENUMERATIONS['prognostic_particules_sinking_speed'] = {
     'members': [
         ('Constant', None),
         ('Function of particule size', None),
-        ('Function of particul type (balast)', None),
+        ('Function of particule type (balast)', None),
        ]
     }

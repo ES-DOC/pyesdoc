@@ -24,7 +24,7 @@ AUTHORS = 'Eric Guilyardi'
 # --------------------------------------------------------------------
 # CONTRIBUTORS: Set to realm specialization contributors (comma delimited).
 # --------------------------------------------------------------------
-CONTRIBUTORS = 'CMIP5 version +, Olivier Aumont (LOCEAN/IPSL)'
+CONTRIBUTORS = 'CMIP5 version + Olivier Aumont (LOCEAN/IPSL)'
 
 # --------------------------------------------------------------------
 # QUALITY CONTROL STATUS: Set to 'draft' or 'complete'
@@ -51,7 +51,7 @@ DESCRIPTION = 'Ocean Biogeochemistry Realm'
 GRID = None
 
 # --------------------------------------------------------------------
-# KEY PROPERTIES: Key properties for the realm which differ from model defaults (grid, timestep etc)
+# KEY PROPERTIES: Key properties for the realm which differ from model defaults
 # --------------------------------------------------------------------
 KEY_PROPERTIES = 'oceanbgc_key_properties'
 

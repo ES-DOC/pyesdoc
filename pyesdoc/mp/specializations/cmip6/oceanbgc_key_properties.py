@@ -47,104 +47,105 @@ DETAILS['toplevel'] = {
             'List of prognostic variables in the ocean biogeochemistry component'),
         ('damping', 'str', '0.1',
             'Describe any tracer damping used'),
-
         ]
     }
 
 # --------------------------------------------------------------------
 # KEY PROPERTIES: details
 # --------------------------------------------------------------------
-DETAILS['time_stepping_framework'] = {
-    'description': 'Time stepping frameowrk in ocean biogeochemistry',
-    'properties' : []
+
+DETAILS['Time_stepping_framework'] = {
+    'description': 'Time stepping framework for ocean biogeochemistry',
+    'properties' : [
+        ]
     }
 
-DETAILS['time_stepping_framework:passive_tracers_transport'] = {
+DETAILS['Time_stepping_framework:passive_tracers_transport'] = {
     'description': 'Time stepping method for passive tracers transport in ocean biogeochemistry',
     'properties' : [
-        ('passive_tracers_transport_method', 'ENUM:passive_tracers_transport', '1.1',
+        ('method', 'ENUM:passive_tracers_transport', '1.1',
             'Time stepping framework for passive tracers'),
-        ('passive_tracers_timestep', 'int', '0.1',
+        ('timestep_if_not_from_ocean', 'int', '0.1',
             'Time step for passive tracers (if different from ocean)'),
         ]
     }
 
-DETAILS['time_stepping_framework:biology_sources_sinks'] = {
+DETAILS['Time_stepping_framework:biology_sources_sinks'] = {
     'description': 'Time stepping framework for biology sources and sinks in ocean biogeochemistry',
     'properties' : [
-        ('biology_sources_sinks_transport_method', 'ENUM:passive_tracers_transport', '1.1',
+        ('method', 'ENUM:passive_tracers_transport', '1.1',
             'Time stepping framework for biology sources and sinks'),
-        ('passive_tracers_timestep', 'int', '0.1',
+        ('timestep_if_not_from_ocean', 'int', '0.1',
             'Time step for biology sources and sinks (if different from ocean)'),
         ]
     }
 
-DETAILS['transport_scheme'] = {
+DETAILS['Transport_scheme'] = {
     'description': 'Transport scheme in ocean biogeochemistry',
     'properties' : [
         ('type', 'ENUM:transport_types', '1.1',
             'Type of transport scheme'),
-        ('scheme', 'bool', '1.1',
-            'Is transport scheme same as that of ocean model ?'),
-        ('different_scheme', 'str', '0.1',
-            'Decribe transport scheme if differen than that of ocean model'),
+        ('scheme', 'ENUM:transport_scheme', '1.1',
+            'Transport scheme used'),
+        ('use_different_scheme', 'str', '0.1',
+            'Decribe transport scheme if different than that of ocean model'),
         ]
     }
 
-DETAILS['boundary_forcing'] = {
+DETAILS['Boundary_forcing'] = {
     'description': 'Properties of biogeochemistry boundary forcing',
     'properties': [
         ('atmospheric_deposition', 'ENUM:sources_atmos_deposition', '1.1',
             'Describe how atmospheric deposition is modeled'),
         ('river_input', 'ENUM:sources_river_input', '1.1',
             'Describe how river input is modeled'),
-        ('sediment_boundary_conditions', 'str', '0.1',
+        ('sediments_from_boundary_conditions', 'str', '0.1',
             'List which sediments are speficied from boundary condition'),
-        ('sediment_from_explicit_model', 'str', '0.1',
+        ('sediments_from_explicit_model', 'str', '0.1',
             'List which sediments are speficied from explicit sediment model'),
         ]
     }
 
-DETAILS['gas_exchange'] = {
+DETAILS['Gas_exchange'] = {
     'description': 'Properties of gas exchange in ocean biogeochemistry ',
     'properties': [
-        ('co2_exchange', 'bool', '1.1',
+        ('CO2_exchange_present', 'bool', '1.1',
             'Is CO2 gas exchange modeled ?'),
-        ('co2_type', 'ENUM:gas_exchange_types', '0.1',
+        ('CO2_exchange_type', 'ENUM:gas_exchange_types', '0.1',
             'Describe CO2 gas exchange'),
-        ('o2_exchange', 'bool', '1.1',
+        ('O2_exchange_present', 'bool', '1.1',
             'Is O2 gas exchange modeled ?'),
-        ('o2_type', 'ENUM:gas_exchange_types', '0.1',
+        ('O2_exchange_type', 'ENUM:gas_exchange_types', '0.1',
             'Describe O2 gas exchange'),
-        ('dms_exchange', 'bool', '1.1',
+        ('DMS_exchange_present', 'bool', '1.1',
             'Is DMS gas exchange modeled ?'),
-        ('dms_type', 'str', '0.1',
+        ('DMS_exchange_type', 'str', '0.1',
             'Specify DMS gas exchange scheme type'),
-        ('n2_exchange', 'bool', '1.1',
+        ('N2_exchange_present', 'bool', '1.1',
             'Is N2 gas exchange modeled ?'),
-        ('n2_type', 'str', '0.1',
+        ('N2_exchange_type', 'str', '0.1',
             'Specify N2 gas exchange scheme type'),
-        ('n2o_exchange', 'bool', '1.1',
+        ('N2O_exchange_present', 'bool', '1.1',
             'Is N2O gas exchange modeled ?'),
-        ('n2o_type', 'str', '0.1',
+        ('N2O_exchange_type', 'str', '0.1',
             'Specify N2O gas exchange scheme type'),
-        ('CO_exchange', 'bool', '1.1',
+        ('CO_exchange_present', 'bool', '1.1',
             'Is CO gas exchange modeled ?'),
-        ('CO_type', 'str', '0.1',
+        ('CO_exchange_type', 'str', '0.1',
             'Specify CO gas exchange scheme type'),
         ('other_gases', 'str', '0.1',
             'Specify any other gas exchange'),
         ]
     }
 
-DETAILS['carbon_chemistry'] = {
+DETAILS['Carbon_chemistry'] = {
     'description': 'Properties of carbon chemistry biogeochemistry',
     'properties': [
         ('type', 'ENUM:carbon_chemistry', '1.1',
             'Describe how carbon chemistry is modeled'),
-        ('ph_scale', 'ENUM:ph_scale', '0.1',
+        ('pH_scale', 'ENUM:ph_scale', '0.1',
             'If NOT OMIP protocol, describe pH scale.'),
-        ('constants', 'str', '0.1',
+        ('constants_if_not_OMIP', 'str', '0.1',
             'If NOT OMIP protocol, list carbon chemistry constants.'),
         ]
     }
@@ -157,7 +158,7 @@ ENUMERATIONS['passive_tracers_transport'] = {
     'description': 'Types of time stepping framework for passive tracers ocean biogeochemistry',
     'is_open': False,
     'members': [
-        ('use ocesn model transport time step', None),
+        ('use ocean model transport time step', None),
         ('use specific time step', None),
         ]
     }
@@ -168,6 +169,14 @@ ENUMERATIONS['transport_types'] = {
     'members': [
         ('Offline', None),
         ('Online', None),
+        ]
+    }
+
+ENUMERATIONS['transport_scheme'] = {
+    'description': 'Types of transport in ocean biogeochemistry',
+    'is_open': True,
+    'members': [
+        ('Use that of ocean model', None),
         ]
     }
 
