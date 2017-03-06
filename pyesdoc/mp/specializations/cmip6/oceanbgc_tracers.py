@@ -70,6 +70,8 @@ DETAILS['ecosystem:phytoplancton'] = {
             'Type of phytoplancton'),
         ('list', 'ENUM:phytoplancton_list', '0.N',
             'List species of phytoplancton if applicable'),
+        ('size_range','str','0.1',
+            'Size range of phytoplancton (if applicable)')
         ]
     }
 
@@ -80,6 +82,8 @@ DETAILS['ecosystem:zooplancton'] = {
             'Type of zooplancton'),
         ('list', 'ENUM:zooplancton_list', '0.N',
             'List species of zooplancton if applicable'),
+        ('size_range','str','0.1',
+            'Size range of zooplancton (if applicable)')
         ]
     }
 

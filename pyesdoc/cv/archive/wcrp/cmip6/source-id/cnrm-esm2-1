@@ -9,7 +9,7 @@
         "atmosphere": "Arpege 6.2 (Tl127; 91 levels; top level 78.4 km)", 
         "atmosphericChemistry": "REPROBUS-C (v2.0)", 
         "cohort": [
-            ""
+            "Registered"
         ], 
         "institutionID": [
             "CNRM-CERFACS"
@@ -31,6 +31,6 @@
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "5824a2e7-55b6-4ca8-9658-0477c9a6cc1f", 
+    "uid": "594d18fe-56b2-4a12-8631-1eecac6c08fc", 
     "url": null
 }

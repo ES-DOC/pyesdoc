@@ -164,7 +164,7 @@ DETAILS['conservation:salt'] = {
 DETAILS['conservation:momentum'] = {
     'description':'Global momentum convervation properties of the model',
     'properties': [
-        ('momentum', 'str', '0.1',
+        ('details', 'str', '0.1',
             'Describe if/how momentum is conserved in the model'),
         ]
     }

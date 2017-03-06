@@ -9,7 +9,7 @@
         "atmosphere": "CIESM-AM (FV/FD, 288 x 192; 30 levels; top level 2.255 hPa)", 
         "atmosphericChemistry": "trop_mam4", 
         "cohort": [
-            ""
+            "Registered"
         ], 
         "institutionID": [
             "THU"
@@ -31,6 +31,6 @@
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "1cece4e8-f9b5-4ac1-9125-d9fcd197411b", 
+    "uid": "dd512074-77b9-40f2-8a6d-c5aba747a418", 
     "url": null
 }

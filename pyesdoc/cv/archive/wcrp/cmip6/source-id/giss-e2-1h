@@ -9,7 +9,7 @@
         "atmosphere": "GISS-E2.1 (90 x 144 2x2.5; 40 levels; top level 0.1hPa)", 
         "atmosphericChemistry": "varies with physics-version (p==1 Non-interactive, p>1 GPUCCINI)", 
         "cohort": [
-            ""
+            "Registered"
         ], 
         "institutionID": [
             "NASA-GISS"
@@ -31,6 +31,6 @@
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "e99e21af-04a8-437d-8475-30bfa4c4f9d6", 
+    "uid": "fe7b2eab-3ff8-4cb3-8542-b4a97ce3a752", 
     "url": null
 }

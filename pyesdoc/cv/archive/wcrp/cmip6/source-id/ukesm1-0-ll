@@ -9,7 +9,7 @@
         "atmosphere": "MetUM-HadGEM3-GA7.1 (192 x 144 N96; 85 levels; top level 85km)", 
         "atmosphericChemistry": "UKCA-StratTrop", 
         "cohort": [
-            ""
+            "Registered"
         ], 
         "institutionID": [
             "MOHC", 
@@ -32,6 +32,6 @@
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "21eeb17a-3dc0-4a01-9e19-6dbf64498ab9", 
+    "uid": "7f069ddf-a879-492c-a150-e69e8553a479", 
     "url": null
 }

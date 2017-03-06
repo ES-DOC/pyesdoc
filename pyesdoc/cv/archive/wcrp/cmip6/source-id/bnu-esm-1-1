@@ -9,7 +9,7 @@
         "atmosphere": "CAM4 (FV, 144 x 96; 26 levels; top level 2.194 mb)", 
         "atmosphericChemistry": "None", 
         "cohort": [
-            ""
+            "Registered"
         ], 
         "institutionID": [
             "BNU"
@@ -31,6 +31,6 @@
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "f7668078-05f3-4eda-99f4-0ce17ec27508", 
+    "uid": "25c19ec4-fba0-4ace-9182-bd0b6872b2c5", 
     "url": null
 }

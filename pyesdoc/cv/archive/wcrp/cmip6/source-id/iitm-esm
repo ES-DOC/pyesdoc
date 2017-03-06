@@ -9,7 +9,7 @@
         "atmosphere": "GFS (192 x 94 T62; 64 levels; top level 0.2 mb)", 
         "atmosphericChemistry": "None", 
         "cohort": [
-            ""
+            "Registered"
         ], 
         "institutionID": [
             "CCCR-IITM"
@@ -25,12 +25,12 @@
         "sourceID": "IITM-ESM"
     }, 
     "description": null, 
-    "idx": 36, 
+    "idx": 37, 
     "label": "IITM-ESM", 
     "name": "iitm-esm", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "cbd347f0-ee5f-4354-a783-74640a08b612", 
+    "uid": "81200c4a-321f-41e1-b1ec-a471f5f30892", 
     "url": null
 }

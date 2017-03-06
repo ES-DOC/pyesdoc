@@ -9,7 +9,7 @@
         "atmosphere": "ECHAM6.3.02p4 (384 x 192 T127L95; 95 levels; top level 80000 m)", 
         "atmosphericChemistry": "None", 
         "cohort": [
-            ""
+            "Registered"
         ], 
         "institutionID": [
             "AWI"
@@ -31,6 +31,6 @@
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "69cddeea-bd98-4991-8c26-899b49d635a7", 
+    "uid": "23f14e6a-7cc9-432f-9c7e-06ec867cb478", 
     "url": null
 }

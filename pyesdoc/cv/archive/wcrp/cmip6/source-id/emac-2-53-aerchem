@@ -9,7 +9,7 @@
         "atmosphere": "ECHAM5.3.02 (modified; spectral T42; 128 x 64 longitude/latitude; 90 levels; top level 0.001 hPa)", 
         "atmosphericChemistry": "MECCA 3.8.x", 
         "cohort": [
-            ""
+            "Registered"
         ], 
         "institutionID": [
             "MESSy-Consortium"
@@ -25,12 +25,12 @@
         "sourceID": "EMAC-2-53-AerChem"
     }, 
     "description": null, 
-    "idx": 37, 
+    "idx": 38, 
     "label": "EMAC-2-53-AerChem", 
     "name": "emac-2-53-aerchem", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "7cdb14ae-140b-4abc-b2f5-aa51cbc57ed9", 
+    "uid": "9517f65b-a618-4333-b64e-a117b5fd9f17", 
     "url": null
 }

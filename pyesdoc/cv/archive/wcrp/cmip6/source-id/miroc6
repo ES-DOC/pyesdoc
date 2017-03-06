@@ -1,0 +1,36 @@
+{
+    "_type": "pyesdoc.cv.model.term", 
+    "alternativeName": null, 
+    "alternativeUrl": null, 
+    "associations": [], 
+    "createDate": "0167-03-21 00:00:00+00:00", 
+    "data": {
+        "aerosol": "SPRINTARS6.0", 
+        "atmosphere": "CCSR AGCM (T85; 256x128; 81 levels; top level 0.004 hPa)", 
+        "atmosphericChemistry": "None", 
+        "cohort": [
+            "Registered"
+        ], 
+        "institutionID": [
+            "MIROC"
+        ], 
+        "label": "MIROC6", 
+        "labelExtended": "MIROC6", 
+        "landIce": "None", 
+        "landSurface": "MATSIRO6.0", 
+        "ocean": "COCO4.9 (360x256x63; tripolar primarily 1deg; 63 levels; top grid cell 0-2 m)", 
+        "oceanBiogeochemistry": "None", 
+        "releaseYear": "2017", 
+        "seaIce": "COCO4.9", 
+        "sourceID": "MIROC6"
+    }, 
+    "description": null, 
+    "idx": 36, 
+    "label": "MIROC6", 
+    "name": "miroc6", 
+    "parent": null, 
+    "status": "pending", 
+    "synonyms": [], 
+    "uid": "e9940221-333a-40df-9854-386e13786195", 
+    "url": null
+}

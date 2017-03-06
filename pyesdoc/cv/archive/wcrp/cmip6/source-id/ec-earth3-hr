@@ -9,7 +9,7 @@
         "atmosphere": "IFS cy36r4 (TL511, linearly reduced Gaussian grid equivalent to 1024 x 512; 91 levels; top level 0.01 hPa)", 
         "atmosphericChemistry": "None", 
         "cohort": [
-            ""
+            "Registered"
         ], 
         "institutionID": [
             "EC-Earth-Consortium"
@@ -31,6 +31,6 @@
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "b7d6071e-04d9-4900-91c1-3c838e9371f2", 
+    "uid": "2eaa4d7d-232f-42e7-b7e2-c5290e8738eb", 
     "url": null
 }

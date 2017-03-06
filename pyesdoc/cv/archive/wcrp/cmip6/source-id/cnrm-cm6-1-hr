@@ -9,7 +9,7 @@
         "atmosphere": "Arpege 6.2 (Tl359; 91 levels; top level 78.4 km)", 
         "atmosphericChemistry": "OZL_v2", 
         "cohort": [
-            ""
+            "Registered"
         ], 
         "institutionID": [
             "CNRM-CERFACS"
@@ -31,6 +31,6 @@
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "c81547eb-461c-4c67-8729-649beed01798", 
+    "uid": "c620f293-618f-4bb1-9b4f-9ec100bcd5ae", 
     "url": null
 }

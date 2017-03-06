@@ -9,7 +9,7 @@
         "atmosphere": "CAM-OSLO (1 degree resolution; 288 x 192; 32 levels; top level 3 mb)", 
         "atmosphericChemistry": "OsloChemSimp", 
         "cohort": [
-            ""
+            "Registered"
         ], 
         "institutionID": [
             "NCC"
@@ -31,6 +31,6 @@
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "2d771095-290f-4424-b008-7ded5705e691", 
+    "uid": "e0fb5893-77c0-41f1-bb1a-1d8883427d7d", 
     "url": null
 }

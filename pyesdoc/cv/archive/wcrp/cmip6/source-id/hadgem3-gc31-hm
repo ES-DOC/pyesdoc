@@ -9,7 +9,7 @@
         "atmosphere": "MetUM-HadGEM3-GA7.1 (1024 x 768 N512; 85 levels; top level 85km)", 
         "atmosphericChemistry": "None", 
         "cohort": [
-            ""
+            "Registered"
         ], 
         "institutionID": [
             "MOHC"
@@ -31,6 +31,6 @@
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "e11d8f48-d407-444c-b285-19c9fb9abd7b", 
+    "uid": "87bb7ea1-8cb3-4adf-8850-99f0f30f9227", 
     "url": null
 }

@@ -9,7 +9,7 @@
         "atmosphere": "ECHAM6.3 (spectral T127; 384 x 192 longitude/latitude; 95 levels; top level 0.01 hPa)", 
         "atmosphericChemistry": "None", 
         "cohort": [
-            ""
+            "Registered"
         ], 
         "institutionID": [
             "MPI-M"
@@ -31,6 +31,6 @@
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "608fd747-4679-46be-8e55-a55b9b5d049b", 
+    "uid": "8548e534-d1b6-4a5e-b7f0-a7bba4426c5c", 
     "url": null
 }

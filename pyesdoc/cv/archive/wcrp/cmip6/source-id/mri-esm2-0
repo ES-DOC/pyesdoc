@@ -9,7 +9,7 @@
         "atmosphere": "MRI-AGCM3.5 (320 x 160 TL159; 80 levels; top level 0.01 hPa)", 
         "atmosphericChemistry": "MRI-CCM2.1", 
         "cohort": [
-            ""
+            "Registered"
         ], 
         "institutionID": [
             "MRI"
@@ -18,10 +18,10 @@
         "labelExtended": "MRI-ESM2.0", 
         "landIce": "None", 
         "landSurface": "HAL 1.0", 
-        "ocean": "MRI.COM4.2 (tripolar primarily 0.5 deg latitude/1 deg longitude with meridional refinement down to 0.3 deg within 10 degrees north and south of the equator; 61 levels; top grid cell 0-2 m)", 
-        "oceanBiogeochemistry": "None", 
+        "ocean": "MRI.COM4.4 (tripolar primarily 0.5 deg latitude/1 deg longitude with meridional refinement down to 0.3 deg within 10 degrees north and south of the equator; 360 x 364 longitude/latitude; 61 levels; top grid cell 0-2 m)", 
+        "oceanBiogeochemistry": "MRI.COM4.4", 
         "releaseYear": "2017", 
-        "seaIce": "MRI.COM4.2", 
+        "seaIce": "MRI.COM4.4", 
         "sourceID": "MRI-ESM2-0"
     }, 
     "description": null, 
@@ -31,6 +31,6 @@
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "291af1d3-9bec-4f53-a113-f6ac0f8098a1", 
+    "uid": "b345baea-9557-49e5-b5a4-7fdacf0d10aa", 
     "url": null
 }

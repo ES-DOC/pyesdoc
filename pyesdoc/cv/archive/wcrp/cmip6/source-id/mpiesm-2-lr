@@ -9,7 +9,7 @@
         "atmosphere": "ICON-AES (icosahedral/triangles; 160 km; 47 levels; top level 80 km)", 
         "atmosphericChemistry": "None", 
         "cohort": [
-            ""
+            "Registered"
         ], 
         "institutionID": [
             "MPI-M"
@@ -31,6 +31,6 @@
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "85fc91b9-f29a-42b9-99e5-e7ff65d4b2f5", 
+    "uid": "38d32a46-5f7b-4e9c-80f7-98f5e14cd759", 
     "url": null
 }

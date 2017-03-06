@@ -9,7 +9,7 @@
         "atmosphere": "VCAM-1.0 (192 x 192 x 6 C192; 35 levels; top level 35km)", 
         "atmosphericChemistry": "None", 
         "cohort": [
-            ""
+            "Registered"
         ], 
         "institutionID": [
             "CSIR-CSIRO"
@@ -31,6 +31,6 @@
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "0c2ba42a-cab6-47d7-9be6-fe74ae163445", 
+    "uid": "c1a920d0-b2b2-4efe-9a7b-b42bb20d17c9", 
     "url": null
 }

@@ -9,7 +9,7 @@
         "atmosphere": "IFS cy36r4 (TL255, linearly reduced Gaussian grid equivalent to 512 x 256, 91 levels, top level: 0.01 hPa)", 
         "atmosphericChemistry": "TM5 (3 deg. (long.) x 2 deg. (lat.), 34 levels, top level: 0.1 hPa", 
         "cohort": [
-            ""
+            "Registered"
         ], 
         "institutionID": [
             "EC-Earth-Consortium"
@@ -31,6 +31,6 @@
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "c80f08bd-fd30-43b6-babe-87c392806402", 
+    "uid": "1e196a6a-8b1a-4646-89f6-ec1c4925dd89", 
     "url": null
 }

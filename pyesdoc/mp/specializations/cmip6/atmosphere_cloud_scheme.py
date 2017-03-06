@@ -20,7 +20,7 @@ CONTACT = 'Charlotte Pascoe'
 # --------------------------------------------------------------------
 # AUTHORS: Set to realm specialization authors (comma delimited).
 # --------------------------------------------------------------------
-AUTHORS = 'Charlotte Pascoe, Robert Pincus'
+AUTHORS = 'Charlotte Pascoe, Robert Pincus (NOAA)'
 
 # --------------------------------------------------------------------
 # QUALITY CONTROL STATUS: Set to 'draft' or 'complete'

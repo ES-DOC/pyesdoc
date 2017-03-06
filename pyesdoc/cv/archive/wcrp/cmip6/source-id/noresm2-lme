@@ -9,7 +9,7 @@
         "atmosphere": "CAM-OSLO (2 degree resolution; 144 x 96; 32 levels; top level 3 mb)", 
         "atmosphericChemistry": "OsloChemSimp", 
         "cohort": [
-            ""
+            "Registered"
         ], 
         "institutionID": [
             "NCC"
@@ -25,12 +25,12 @@
         "sourceID": "NorESM2-LME"
     }, 
     "description": null, 
-    "idx": 38, 
+    "idx": 39, 
     "label": "NorESM2-LME", 
     "name": "noresm2-lme", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "b093321f-5ecc-4052-9962-bd8e0f08977a", 
+    "uid": "43bbce29-f6c8-428b-ab0f-6073951135f9", 
     "url": null
 }

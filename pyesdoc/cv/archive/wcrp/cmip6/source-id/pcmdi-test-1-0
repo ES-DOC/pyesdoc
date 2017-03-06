@@ -9,7 +9,7 @@
         "atmosphere": "Earth1.0-gettingHotter (360x180; 50 levels; top level 0.1 mb)", 
         "atmosphericChemistry": "None", 
         "cohort": [
-            "CMIP6"
+            "Registered"
         ], 
         "institutionID": [
             "PCMDI"
@@ -31,6 +31,6 @@
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "4c5ba0b1-2434-4e65-9114-961fc89d5007", 
+    "uid": "d3e2d17a-ad5e-46ce-98c7-486a146f941a", 
     "url": null
 }
