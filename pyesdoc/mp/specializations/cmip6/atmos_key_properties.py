@@ -40,7 +40,27 @@ DETAILS['toplevel'] = {
         ('model_family', 'ENUM:model_family_type', '1.1',
             'Type of atmospheric model.'),
         ('basic_approximations', 'ENUM:basic_approximations_attributes', '1.N',
-            'Basic approximations made in the atmosphere.',)
+            'Basic approximations made in the atmosphere.',),
+        ]
+    }
+
+DETAILS['resolution'] = {
+    'description': "Characteristics of the model resolution",
+    'properties': [
+        ('horizontal_resolution_name', 'str', '1.1',
+            'This is a string usually used by the modelling group to describe the resolution of the model grid, '
+            'e.g. T42, N48.',),
+        ('canonical_horizontal_resolution', 'str', '1.1',
+            'Expression quoted for gross comparisons of resolution, e.g. 2.5 x 3.75 degrees lat-lon.'),
+        ('number_of_vertical_levels', 'int', '1.1',
+             "Number of vertical levels resolved on the computational grid."),
+        ('high_top', 'bool', '1.1',
+            "Does the atmosphere have a high-top? "
+            "High-Top atmospheres have a fully resolved stratosphere with a model top above the stratopause."),
+        ('timestep_dynamics', 'str', '1.1',
+             "Timestep for the dynamics, e.g. 30 min."),
+        ('timestep_radiative_transfer', 'str', '0.1',
+             "Timestep for the radiative transfer, e.g. 3 hours."),
         ]
     }
 

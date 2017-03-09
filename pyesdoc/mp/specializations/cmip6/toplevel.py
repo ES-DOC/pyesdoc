@@ -1,30 +1,22 @@
-"""A realm sepecialization.
+"""A top level model.
 
 For further information goto http://wordpress.es-doc.org/cmip6-model-specializations.
 
 """
 # --------------------------------------------------------------------
-# INTERNAL (do not change)
+# CONTACT: Set to top-level specialization co-ordinator.
 # --------------------------------------------------------------------
-from collections import OrderedDict
-
-DETAILS = OrderedDict()
-ENUMERATIONS = OrderedDict()
+CONTACT = 'Eric Guilyardi'
 
 # --------------------------------------------------------------------
-# CONTACT: Set to realm specialization co-ordinator.
+# AUTHORS: Set to top-level specialization authors (comma delimited).
 # --------------------------------------------------------------------
-CONTACT = 'Charlotte Pascoe'
+AUTHORS = 'Eric Guilyardi'
 
 # --------------------------------------------------------------------
-# AUTHORS: Set to realm specialization authors (comma delimited).
+# CONTRIBUTORS: Set to top-level specialization contributors (comma delimited).
 # --------------------------------------------------------------------
-AUTHORS = 'Charlotte Pascoe'
-
-# --------------------------------------------------------------------
-# CONTRIBUTORS: Set to realm specialization contributors (comma delimited).
-# --------------------------------------------------------------------
-CONTRIBUTORS = ''
+CONTRIBUTORS = 'Roland Seferian (CNRM), Tim Johns (UKMO)'
 
 # --------------------------------------------------------------------
 # QUALITY CONTROL STATUS: Set to 'draft' or 'complete'
@@ -35,41 +27,46 @@ QC_STATUS = 'draft'
 # CHANGE HISTORY: Set to list: (version, date, comment, who).
 # --------------------------------------------------------------------
 CHANGE_HISTORY = [
-	("0.1.0", "2016-11-29", "Initialised", "Mark Greenslade"),
-    ("0.2.0", "2016-12-02", "Updated process names and descriptions, added enumeration TODOs", "Charlotte Pascoe")
-]
+    ("0.1.0", "2016-09-01", "Initialised", "Eric Guilyardi"),
+    ("0.2.0", "2016-11-08", "Changed syntax to simplify and remove CIM2 dependencies", "Eric Guilyardi et al"),
+    ("0.3.0", "2017-01-30", "Added forcings", "David Hassell, Eric Guilyardi"),
+    ]
 
 # --------------------------------------------------------------------
-# DESCRIPTION: Scientific context of this scientific realm
+# DESCRIPTION: Scientific context of this scientific top-level
 # --------------------------------------------------------------------
-DESCRIPTION = 'Atmosphere realm specialization'
-
-# --------------------------------------------------------------------
-# REALM: Canonical name for the domain of this scientific realm
-# --------------------------------------------------------------------
-REALM = 'atmosphere'
+DESCRIPTION = 'Top level model'
 
 # --------------------------------------------------------------------
 # GRID: The grid used to layout the variables
 # --------------------------------------------------------------------
-GRID = 'atmosphere_grid'
+GRID = None
 
 # --------------------------------------------------------------------
-# KEY PROPERTIES: Key properties for the realm which differ from model defaults (grid, timestep etc)
+# KEY PROPERTIES: File name (without the .py suffix) containing key properties of the top level model.
 # --------------------------------------------------------------------
-KEY_PROPERTIES = 'atmosphere_key_properties'
+KEY_PROPERTIES = 'toplevel_key_properties'
 
 # --------------------------------------------------------------------
-# PROCESSES: Processes simulated within the realm
+# PROCESSES: Processes simulated within the model
 # --------------------------------------------------------------------
 PROCESSES = [
-    'atmosphere_dynamical_core',
-    'atmosphere_radiation',
-    'atmosphere_turbulence_convection',
-    'atmosphere_microphysics_precipitation',
-	'atmosphere_cloud_scheme',
-    'atmosphere_cloud_simulator',
-    'atmosphere_gravity_waves',
-    'atmosphere_solar',
-    'atmosphere_volcanos',
+    'toplevel_radiative_forcings',
     ]
+
+# --------------------------------------------------------------------
+# SIMULATES: Realms simulated by the model
+# N.B. Official realms names are from https://github.com/WCRP-CMIP/CMIP6_CVs/blob/master/CMIP6_realm.json
+# N.B. Creation tool should include an on/off switch to allow for partial configurations (AMIP, AOGCM)
+# --------------------------------------------------------------------
+# TODO: ## WARNING these names are not coherent with those in ES-DOC realms specialisation repos (atmosphere instead of atmos,...)
+SIMULATES = [
+    "aerosol",
+    "atmos",
+    "atmosChem",
+    "land",
+    "landIce",
+    "ocean",
+    "ocnBgchem",
+    "seaIce",
+]

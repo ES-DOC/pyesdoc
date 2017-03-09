@@ -63,27 +63,25 @@ DETAILS['ecosystem'] = {
         ]
     }
 
-DETAILS['ecosystem:phytoplancton'] = {
-    'description': 'Phytoplancton properties in ocean biogeochemistry',
+DETAILS['ecosystem:phytoplankton'] = {
+    'description': 'Phytoplankton properties in ocean biogeochemistry',
     'properties': [
-        ('type', 'ENUM:plancton_types', '1.1',
-            'Type of phytoplancton'),
-        ('list', 'ENUM:phytoplancton_list', '0.N',
-            'List species of phytoplancton if applicable'),
-        ('size_range','str','0.1',
-            'Size range of phytoplancton (if applicable)')
+        ('type', 'ENUM:phytoplankton_types', '1.1',
+            'Type of phytoplankton'),
+        ('pft', 'ENUM:phytoplankton_pft_list', '0.N',
+            'Phytoplankton functional types (PFT) (if applicable)'),
+        ('size_classes','ENUM:phytoplankton_size_classes','0.N',
+            'Phytoplankton size classes (if applicable)')
         ]
     }
 
-DETAILS['ecosystem:zooplancton'] = {
-    'description': 'Zooplancton properties in ocean biogeochemistry',
+DETAILS['ecosystem:zooplankton'] = {
+    'description': 'Zooplankton properties in ocean biogeochemistry',
     'properties': [
-        ('type', 'ENUM:plancton_types', '1.1',
-            'Type of zooplancton'),
-        ('list', 'ENUM:zooplancton_list', '0.N',
-            'List species of zooplancton if applicable'),
-        ('size_range','str','0.1',
-            'Size range of zooplancton (if applicable)')
+        ('type', 'ENUM:zooplankton_types', '1.1',
+            'Type of zooplankton'),
+        ('size_classes','ENUM:zooplankton_size_classes','0.N',
+            'Zooplankton size classes (if applicable)')
         ]
     }
 
@@ -146,33 +144,55 @@ ENUMERATIONS['nitrous_processes'] = {
        ]
     }
 
-ENUMERATIONS['plancton_types'] = {
-    'description': 'Plancton types in ocean biogeochemistry',
+ENUMERATIONS['phytoplankton_types'] = {
+    'description': 'Phytoplankton types in ocean biogeochemistry',
     'is_open': False,
     'members': [
         ('None', None),
         ('Generic', None),
-        ('List (specify below)', None),       ]
+        ('PFT including size based (specify both below)', 'Plankton functional type including size based'),
+        ('Size based only (specify below)', None),
+        ('PFT only (specify below)', None),
+        ]
     }
 
 
-ENUMERATIONS['phytoplancton_list'] = {
-    'description': 'Phytoplancton list in ocean biogeochemistry',
+ENUMERATIONS['phytoplankton_pft_list'] = {
+    'description': 'Phytoplankton functional types list in ocean biogeochemistry',
     'is_open': True,
     'members': [
         ('Diatoms', None),
         ('Nfixers', None),
         ('Calcifiers', None),
-        ('Picophytoplancton', None),
        ]
     }
 
-ENUMERATIONS['zooplancton_list'] = {
-    'description': 'Zooplancton list in ocean biogeochemistry',
+ENUMERATIONS['phytoplankton_size_classes'] = {
+    'description': 'Phytoplankton size classes in ocean biogeochemistry',
     'is_open': True,
     'members': [
-        ('Microzooplancton', None),
-        ('Mesozooplancton', None),
+        ('Microphytoplankton', None),
+        ('Nanophytoplankton', None),
+        ('Picophytoplankton', None),
+       ]
+    }
+
+ENUMERATIONS['zooplankton_types'] = {
+    'description': 'Zooplankton types in ocean biogeochemistry',
+    'is_open': True,
+    'members': [
+        ('None', None),
+        ('Generic', None),
+        ('Size based (specify below)', None),
+        ]
+    }
+
+ENUMERATIONS['zooplankton_size_classes'] = {
+    'description': 'Zooplankton size classes in ocean biogeochemistry',
+    'is_open': True,
+    'members': [
+        ('Microzooplankton', None),
+        ('Mesozooplankton', None),
        ]
     }
 

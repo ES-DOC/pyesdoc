@@ -97,7 +97,7 @@ ENUMERATIONS['solar_forcing_pathways'] = {
     'description': "Pathways for solar forcing of the atmosphere",
     'is_open': True,
     'members': [
-        ('SW radiation', None),
+        ('SW radiation', 'Shortwave solar spectral irradiance.'),
         ('precipitating energetic particles', 'Precipitating energetic particles from the sun (predominantly protons) '
                             'and the magnetosphere (predominantly electrons) affect the ionization levels in the polar '
                             'middle and upper atmosphere, leading to significant changes of the chemical composition'),

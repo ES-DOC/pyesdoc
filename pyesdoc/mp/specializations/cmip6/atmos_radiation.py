@@ -51,6 +51,8 @@ DETAILS['toplevel'] = {
 DETAILS['shortwave_radiation'] = {
     'description': 'Properties of the shortwave radiation scheme',
     'properties': [
+        ('name', 'str', '0.1',
+            'Commonly used name for the shortwave radiation scheme'),
         ('spectral_integration', 'ENUM:spectral_integration', '1.1',
             'Shortwave radiation scheme spectral integration'),
         ('transport_calculation', 'ENUM:transport_calculation', '1.N',
@@ -124,6 +126,8 @@ DETAILS['sw_gases'] = {
 DETAILS['longwave_radiation'] = {
     'description': 'Properties of the longwave radiation scheme',
     'properties': [
+        ('name', 'str', '0.1',
+            'Commonly used name for the longwave radiation scheme.'),
         ('spectral_integration', 'ENUM:spectral_integration', '1.1',
             'Longwave radiation scheme spectral integration'),
         ('transport_calculation', 'ENUM:transport_calculation', '1.N',

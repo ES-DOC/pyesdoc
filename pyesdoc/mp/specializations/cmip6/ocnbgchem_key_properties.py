@@ -44,7 +44,9 @@ DETAILS['toplevel'] = {
         ('basic_approximations', 'str', '1.1',
             'Basic approximations made in the ocean biogeochemistry',),
         ('prognostic_variables', 'str', '1.N',
-            'List of prognostic variables in the ocean biogeochemistry component'),
+            'List of all prognostic tracer variables in the ocean biogeochemistry component'),
+        ('diagnostic_variables', 'str', '1.N',
+            'List of all diagnotic tracer variables in the ocean biogeochemistry component'),
         ('damping', 'str', '0.1',
             'Describe any tracer damping used'),
         ]
@@ -184,7 +186,8 @@ ENUMERATIONS['sources_atmos_deposition'] = {
     'description': 'Type of atmospheric deposition in ocean biogeochemistry',
     'is_open': False,
     'members': [
-        ('from file', None),
+        ('from file (climatology)', None),
+        ('from file (interannual variations)', None),
         ('from Atmospheric Chemistry model', None),
         ]
     }
@@ -193,7 +196,8 @@ ENUMERATIONS['sources_river_input'] = {
     'description': 'Type of river input in ocean biogeochemistry',
     'is_open': False,
     'members': [
-        ('from file', None),
+        ('from file (climatology)', None),
+        ('from file (interannual variations)', None),
         ('from Land Surface model', None),
         ]
     }

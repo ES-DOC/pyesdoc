@@ -4,27 +4,19 @@ For further information goto http://wordpress.es-doc.org/cmip6-model-specializat
 
 """
 # --------------------------------------------------------------------
-# INTERNAL (do not change)
-# --------------------------------------------------------------------
-from collections import OrderedDict
-
-DETAILS = OrderedDict()
-ENUMERATIONS = OrderedDict()
-
-# --------------------------------------------------------------------
 # CONTACT: Set to realm specialization co-ordinator.
 # --------------------------------------------------------------------
-CONTACT = 'Eric Guilyardi'
+CONTACT = 'Charlotte Pascoe'
 
 # --------------------------------------------------------------------
 # AUTHORS: Set to realm specialization authors (comma delimited).
 # --------------------------------------------------------------------
-AUTHORS = 'Eric Guilyardi'
+AUTHORS = 'Charlotte Pascoe'
 
 # --------------------------------------------------------------------
 # CONTRIBUTORS: Set to realm specialization contributors (comma delimited).
 # --------------------------------------------------------------------
-CONTRIBUTORS = 'CMIP5 version + Olivier Aumont (LOCEAN/IPSL)'
+CONTRIBUTORS = ''
 
 # --------------------------------------------------------------------
 # QUALITY CONTROL STATUS: Set to 'draft' or 'complete'
@@ -35,41 +27,41 @@ QC_STATUS = 'draft'
 # CHANGE HISTORY: Set to list: (version, date, comment, who).
 # --------------------------------------------------------------------
 CHANGE_HISTORY = [
-    ("0.1.0", "2017-01-31", "Eric Guilyardi",
-        "Initialised"),
-    ("0.2.0", "2017-03033", "Eric Guilyardi",
-        "Added plancton size as per specific request"),
-    ]
+	("0.1.0", "2016-11-29", "Initialised", "Mark Greenslade"),
+    ("0.2.0", "2016-12-02", "Updated process names and descriptions, added enumeration TODOs", "Charlotte Pascoe")
+]
 
 # --------------------------------------------------------------------
 # DESCRIPTION: Scientific context of this scientific realm
 # --------------------------------------------------------------------
-DESCRIPTION = 'Ocean Biogeochemistry Realm'
+DESCRIPTION = 'Atmosphere realm specialization'
+
+# --------------------------------------------------------------------
+# REALM: Canonical name for the domain of this scientific realm
+# --------------------------------------------------------------------
+REALM = 'atmos'
 
 # --------------------------------------------------------------------
 # GRID: The grid used to layout the variables
 # --------------------------------------------------------------------
-# Not used for this Realm.
-GRID = None
+GRID = 'atmos_grid'
 
 # --------------------------------------------------------------------
-# KEY PROPERTIES: Key properties for the realm which differ from model defaults
+# KEY PROPERTIES: Key properties for the realm which differ from model defaults (grid, timestep etc)
 # --------------------------------------------------------------------
-KEY_PROPERTIES = 'oceanbgc_key_properties'
+KEY_PROPERTIES = 'atmos_key_properties'
 
 # --------------------------------------------------------------------
 # PROCESSES: Processes simulated within the realm
 # --------------------------------------------------------------------
 PROCESSES = [
-    'oceanbgc_tracers',
+    'atmos_dynamical_core',
+    'atmos_radiation',
+    'atmos_turbulence_convection',
+    'atmos_microphysics_precipitation',
+	'atmos_cloud_scheme',
+    'atmos_cloud_simulator',
+    'atmos_gravity_waves',
+    'atmos_solar',
+    'atmos_volcanos',
     ]
-
-# --------------------------------------------------------------------
-# DETAILS: top level realm details
-# --------------------------------------------------------------------
-DETAILS = OrderedDict()
-
-# --------------------------------------------------------------------
-# ENUMERATIONS: top level realm enumerations
-# --------------------------------------------------------------------
-ENUMERATIONS = OrderedDict()

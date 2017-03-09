@@ -44,7 +44,7 @@ DESCRIPTION = 'Atmosphere Convective Turbulence and Clouds'
 DETAILS['boundary_layer_turbulence'] = {
     'description': 'Properties of the boundary layer turbulence scheme',
     'properties': [
-        ('scheme_name', 'ENUM:boundary_layer_turbulence_scheme_name', '1.1',
+        ('scheme_name', 'ENUM:boundary_layer_turbulence_scheme_name', '0.1',
              'Boundary layer turbulence scheme name'),
         ('scheme_type', 'ENUM:boundary_layer_turbulence_scheme_type', '1.N',
              'Boundary layer turbulence scheme type'),
@@ -61,14 +61,14 @@ DETAILS['boundary_layer_turbulence'] = {
 DETAILS['deep_convection'] = {
     'description': 'Properties of the deep convection scheme',
     'properties': [
-        ('scheme_name', 'str', '1.1',
+        ('scheme_name', 'str', '0.1',
              'Deep convection scheme name'),
         ('scheme_type', 'ENUM:deep_convection_scheme_type', '1.N',
              'Deep convection scheme type'),
         ('scheme_method', 'ENUM:deep_convection_scheme_method', '1.N',
              'Deep convection scheme method'),
         ('processes', 'ENUM:deep_convection_scheme_processes', '1.N',
-            'Deep convection scheme processes'),
+            'Physical processes taken into account in the parameterisatioin of deep convection'),
         ]
     }
 
@@ -78,12 +78,12 @@ DETAILS['deep_convection'] = {
 DETAILS['shallow_convection'] = {
     'description': 'Properties of the shallow convection scheme',
     'properties': [
-        ('scheme_method', 'ENUM:shallow_convection_scheme_method', '1.1',
-             'shallow convection scheme method'),
+        ('scheme_name', 'str', '0.1',
+             'Shallow convection scheme name'),
         ('scheme_type', 'ENUM:shallow_convection_scheme_type', '1.N',
              'shallow convection scheme type'),
-        ('scheme_name', 'str', '1.1',
-             'Shallow convection scheme name'),
+        ('scheme_method', 'ENUM:shallow_convection_scheme_method', '1.1',
+             'shallow convection scheme method'),
         ('processes', 'ENUM:shallow_convection_scheme_processes', '1.N',
             'Physical processes taken into account in the parameterisation of shallow convection'),
         ]

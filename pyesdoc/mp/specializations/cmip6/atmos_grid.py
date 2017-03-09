@@ -39,6 +39,7 @@ DETAILS['discretisation'] = {
     'properties': [],
     'detail_sets': [
         'horizontal',
+        'vertical',
         ]
     }
 
@@ -53,6 +54,14 @@ DETAILS['discretisation:horizontal'] = {
             'Horizontal discretisation function order'),
         ('horizontal_pole', 'ENUM:dynamical_core_discretisation_horizontal_pole', '1.1',
             'Horizontal discretisation pole singularity treatment'),
+        ]
+    }
+
+DETAILS['discretisation:vertical'] = {
+    'description': 'Atmosphere discretisation in the vertical',
+    'properties': [
+        ('coordinate_type', 'ENUM:dynamical_core_discretisation_vertical_type', '1.N',
+            'Type of vertical coordinate system'),
         ]
     }
 
@@ -88,3 +97,13 @@ ENUMERATIONS['dynamical_core_discretisation_horizontal_pole'] = {
         ('artificial island', None),
         ]
     }
+
+ENUMERATIONS['dynamical_core_discretisation_vertical_type'] = {
+    'description': 'Type of vertical coordinate system',
+    'is_open': True,
+    'members': [
+        ('isobaric', 'vertical coordinate on pressure levels'),
+        ('sigma', 'allows vertical coordinate to follow model terrain'),
+        ('hybrid sigma-pressure', 'sigma system near terrain and isobaric above'),
+    ]
+}

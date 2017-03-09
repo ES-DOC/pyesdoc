@@ -44,7 +44,7 @@ DESCRIPTION = 'Cloud Microphysics and Precipitation'
 DETAILS['large_scale_precipitation'] = {
     'description': 'Properties of the large scale precipitation scheme',
     'properties': [
-        ('scheme', 'str', '1.1',
+        ('scheme_name', 'str', '0.1',
             'Commonly used name of the large scale precipitation parameterisation scheme'),
         ('hydrometeors', 'ENUM:hydrometeor_types', '1.N',
             'Precipitating hydrometeors taken into account in the large scale precipitation scheme'),
@@ -57,7 +57,7 @@ DETAILS['large_scale_precipitation'] = {
 DETAILS['cloud_microphysics'] = {
     'description': 'Properties of the cloud microphysics scheme',
     'properties': [
-        ('scheme_name', 'str', '1.1',
+        ('scheme_name', 'str', '0.1',
             'Commonly used name of the microphysics parameterisation scheme.'),
         ('processes', 'ENUM:processes_attributes', '1.N',
             'Cloud microphysics processes'),
