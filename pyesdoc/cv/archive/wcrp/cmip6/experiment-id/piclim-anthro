@@ -15,15 +15,21 @@
         "description": "As in RFMIP-ERF-PI-Cntrl but with present-day anthropogenic forcing (greenhouse gases, aerosols and land-use)", 
         "endYear": "", 
         "experiment": "effective radiative forcing by present day anthropogenic agents", 
+        "experimentID": "piClim-anthro", 
         "minNumberYrsPerSim": "30", 
-        "parentActivityID": "", 
-        "parentExperimentID": "", 
+        "parentActivityID": [
+            "CMIP"
+        ], 
+        "parentExperimentID": [
+            "piControl"
+        ], 
         "requiredModelComponents": [
             "AGCM"
         ], 
         "startYear": "", 
-        "subExperiment": "None", 
-        "subExperimentID": "None", 
+        "subExperimentID": [
+            "none"
+        ], 
         "tier": "1"
     }, 
     "description": null, 
@@ -33,6 +39,6 @@
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "2090779a-8efc-433c-a46f-255c9dd89e64", 
+    "uid": "135144e0-f2a6-4573-8315-1f9b7c1a75ca", 
     "url": null
 }

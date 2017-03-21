@@ -10,20 +10,23 @@
         ], 
         "additionalAllowedModelComponents": [
             "AER", 
-            "CHEM"
+            "CHEM", 
+            "BGC"
         ], 
         "description": "Prescribed land conditions 30yr running mean; AMIP SSTs", 
-        "endYear": "2100", 
+        "endYear": "2014", 
         "experiment": "prescribed land conditions (from running mean climatology) and AMIP SSTs", 
-        "minNumberYrsPerSim": "121", 
-        "parentActivityID": "", 
-        "parentExperimentID": "", 
+        "experimentID": "amip-lfmip-rmLC", 
+        "minNumberYrsPerSim": "36", 
+        "parentActivityID": "no parent", 
+        "parentExperimentID": "no parent", 
         "requiredModelComponents": [
             "AGCM"
         ], 
-        "startYear": "1980", 
-        "subExperiment": "None", 
-        "subExperimentID": "None", 
+        "startYear": "1979", 
+        "subExperimentID": [
+            "none"
+        ], 
         "tier": "2"
     }, 
     "description": null, 
@@ -33,6 +36,6 @@
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "a8b1aa12-ef3b-4d25-ad34-703927a61adb", 
+    "uid": "72f9eceb-9ceb-4115-9947-c5663c802d6f", 
     "url": null
 }

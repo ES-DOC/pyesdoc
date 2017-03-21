@@ -16,6 +16,7 @@
         "description": "Early 19th century cluster of strong tropical volcanic eruptions, including the 1809 event of unknown location, the 1815 Tambora and 1835 Cosigueina eruptions. Experiment initialized from PiControl", 
         "endYear": "", 
         "experiment": "19th century volcanic cluster initialized from PiControl", 
+        "experimentID": "volc-cluster-ctrl", 
         "minNumberYrsPerSim": "50", 
         "parentActivityID": [
             "CMIP"
@@ -27,17 +28,18 @@
             "AOGCM"
         ], 
         "startYear": "", 
-        "subExperiment": "None", 
-        "subExperimentID": "None", 
+        "subExperimentID": [
+            "none"
+        ], 
         "tier": "2"
     }, 
     "description": null, 
-    "idx": 190, 
+    "idx": 192, 
     "label": "volc-cluster-ctrl", 
     "name": "volc-cluster-ctrl", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "97d73c11-7471-4c19-a955-d31eec84cf44", 
+    "uid": "3cfc1b0f-6af8-4201-b633-2a99b67ab798", 
     "url": null
 }

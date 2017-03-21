@@ -16,6 +16,7 @@
         "description": "As volc-pinatubo-full, but with prescribed perturbation to the shortwave flux to mimic the attenuation of solar radiation by volcanic aerosols", 
         "endYear": "", 
         "experiment": "Pinatubo experiment with partial radiative forcing, solar radiation scattering only", 
+        "experimentID": "volc-pinatubo-surf", 
         "minNumberYrsPerSim": "3", 
         "parentActivityID": [
             "CMIP"
@@ -27,17 +28,18 @@
             "AOGCM"
         ], 
         "startYear": "", 
-        "subExperiment": "None", 
-        "subExperimentID": "None", 
+        "subExperimentID": [
+            "none"
+        ], 
         "tier": "1"
     }, 
     "description": null, 
-    "idx": 218, 
+    "idx": 220, 
     "label": "volc-pinatubo-surf", 
     "name": "volc-pinatubo-surf", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "cd58ef23-4cfd-404d-a5ae-197722d9e1f8", 
+    "uid": "8a3d5950-dd6f-403a-9f0e-8be2b9f0c635", 
     "url": null
 }

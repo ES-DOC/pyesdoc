@@ -12,24 +12,26 @@
         "description": "Same as land-hist except with CO2 held constant", 
         "endYear": "2014", 
         "experiment": "historical land-only constant CO2", 
+        "experimentID": "land-cCO2", 
         "minNumberYrsPerSim": "165", 
-        "parentActivityID": "", 
-        "parentExperimentID": "", 
+        "parentActivityID": "no parent", 
+        "parentExperimentID": "no parent", 
         "requiredModelComponents": [
             "LAND"
         ], 
         "startYear": "1850 or 1700", 
-        "subExperiment": "None", 
-        "subExperimentID": "None", 
+        "subExperimentID": [
+            "none"
+        ], 
         "tier": "2"
     }, 
     "description": null, 
-    "idx": 107, 
+    "idx": 106, 
     "label": "land-cCO2", 
     "name": "land-cco2", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "9d112425-afdb-4c17-ab56-6c63b0d7e46b", 
+    "uid": "9848ebf3-9a8f-4d69-bfac-11489761ef74", 
     "url": null
 }

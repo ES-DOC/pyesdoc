@@ -15,25 +15,31 @@
         "description": "Perturbation from 1850 control using 2014 aerosol and ozone precursor emissions", 
         "endYear": "", 
         "experiment": "pre-industrial climatological SSTs and forcing, but with 2014 NTCF emissions", 
+        "experimentID": "piClim-NTCF", 
         "minNumberYrsPerSim": "30", 
-        "parentActivityID": "", 
-        "parentExperimentID": "", 
+        "parentActivityID": [
+            "CMIP"
+        ], 
+        "parentExperimentID": [
+            "piControl"
+        ], 
         "requiredModelComponents": [
             "AGCM", 
             "AER"
         ], 
         "startYear": "", 
-        "subExperiment": "None", 
-        "subExperimentID": "None", 
+        "subExperimentID": [
+            "none"
+        ], 
         "tier": "1"
     }, 
     "description": null, 
-    "idx": 203, 
+    "idx": 205, 
     "label": "piClim-NTCF", 
     "name": "piclim-ntcf", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "db048b60-b7cd-456a-85d8-69e915339e86", 
+    "uid": "43c5545a-2a2e-45a6-81c9-7ef59364cff6", 
     "url": null
 }

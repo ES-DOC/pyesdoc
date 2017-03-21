@@ -12,6 +12,7 @@
         "description": "Historical simulation using \"offline\" ice sheet models. Forcing for ice sheet model is from its own AOGCM", 
         "endYear": "2014", 
         "experiment": "offline ice sheet forced by ISM's own AOGCM historical output", 
+        "experimentID": "ism-historical-self", 
         "minNumberYrsPerSim": "165", 
         "parentActivityID": [
             "ISMIP6"
@@ -23,17 +24,18 @@
             "ISM"
         ], 
         "startYear": "1850", 
-        "subExperiment": "None", 
-        "subExperimentID": "None", 
+        "subExperimentID": [
+            "none"
+        ], 
         "tier": "2"
     }, 
     "description": null, 
-    "idx": 110, 
+    "idx": 109, 
     "label": "ism-historical-self", 
     "name": "ism-historical-self", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "ce6e3605-d99b-40dd-83c6-a86f75a0c029", 
+    "uid": "4f1c36e5-800e-4ca0-aa2d-7ce6a1996fa3", 
     "url": null
 }

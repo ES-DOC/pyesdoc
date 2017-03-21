@@ -16,24 +16,26 @@
         "description": "DECK: spin-up portion of the control", 
         "endYear": "", 
         "experiment": "pre-industrial control (spin-up)", 
+        "experimentID": "piControl-spinup", 
         "minNumberYrsPerSim": "100", 
-        "parentActivityID": "", 
-        "parentExperimentID": "", 
+        "parentActivityID": "no parent", 
+        "parentExperimentID": "no parent", 
         "requiredModelComponents": [
             "AOGCM"
         ], 
         "startYear": "", 
-        "subExperiment": "None", 
-        "subExperimentID": "None", 
+        "subExperimentID": [
+            "none"
+        ], 
         "tier": "2"
     }, 
     "description": null, 
-    "idx": 144, 
+    "idx": 143, 
     "label": "piControl-spinup", 
     "name": "picontrol-spinup", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "fddbaaf8-a88a-4a3d-ae0b-91dbe2fef17b", 
+    "uid": "8408335e-6151-4d3d-8a8f-31bc39ac1f6f", 
     "url": null
 }

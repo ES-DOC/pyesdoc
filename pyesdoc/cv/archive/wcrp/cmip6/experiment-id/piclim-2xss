@@ -14,25 +14,31 @@
         "description": "1850 control with doubled sea salt emissions", 
         "endYear": "", 
         "experiment": "pre-industrial climatological SSTs and forcing, but with doubled emissions of sea salt", 
+        "experimentID": "piClim-2xss", 
         "minNumberYrsPerSim": "30", 
-        "parentActivityID": "", 
-        "parentExperimentID": "", 
+        "parentActivityID": [
+            "CMIP"
+        ], 
+        "parentExperimentID": [
+            "piControl"
+        ], 
         "requiredModelComponents": [
             "AGCM", 
             "AER"
         ], 
         "startYear": "", 
-        "subExperiment": "None", 
-        "subExperimentID": "None", 
+        "subExperimentID": [
+            "none"
+        ], 
         "tier": "2"
     }, 
     "description": null, 
-    "idx": 139, 
+    "idx": 138, 
     "label": "piClim-2xss", 
     "name": "piclim-2xss", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "1a831789-42fd-4d4b-87b9-582a03054137", 
+    "uid": "a9be05ca-43f8-452e-ac14-8b0fd9c78d60", 
     "url": null
 }

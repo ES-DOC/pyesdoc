@@ -15,15 +15,21 @@
         "description": "Time slice at 1850 (picontrol) for G1ext to examine radiative forcing of abrupt4xCO2", 
         "endYear": "", 
         "experiment": "preindustrial control SSTs with quadrupled CO2 and solar reduction", 
+        "experimentID": "piSST-4xCO2-solar", 
         "minNumberYrsPerSim": "10", 
-        "parentActivityID": "", 
-        "parentExperimentID": "", 
+        "parentActivityID": [
+            "CMIP"
+        ], 
+        "parentExperimentID": [
+            "piControl"
+        ], 
         "requiredModelComponents": [
             "AGCM"
         ], 
         "startYear": "", 
-        "subExperiment": "None", 
-        "subExperimentID": "None", 
+        "subExperimentID": [
+            "none"
+        ], 
         "tier": "2"
     }, 
     "description": null, 
@@ -33,6 +39,6 @@
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "1ebe87af-b7ed-403b-af17-1793993161b3", 
+    "uid": "cd09b6c8-f428-4721-a61b-11bcef90db06", 
     "url": null
 }

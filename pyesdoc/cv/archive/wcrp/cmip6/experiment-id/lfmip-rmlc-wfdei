@@ -6,38 +6,40 @@
     "createDate": "0167-03-21 00:00:00+00:00", 
     "data": {
         "activityID": [
-            "C4MIP"
+            "LS3MIP"
         ], 
         "additionalAllowedModelComponents": [
             "AER", 
-            "CHEM"
-        ], 
-        "description": "", 
-        "endYear": "2100", 
-        "experiment": "biogeochemically-coupled version of the RCP3.4-overshoot based on SSP5", 
-        "minNumberYrsPerSim": "85", 
-        "parentActivityID": [
-            "C4MIP"
-        ], 
-        "parentExperimentID": [
-            "hist-bgc"
-        ], 
-        "requiredModelComponents": [
-            "AOGCM", 
+            "CHEM", 
             "BGC"
         ], 
-        "startYear": "2015", 
-        "subExperiment": "None", 
-        "subExperimentID": "None", 
+        "description": "Prescribed land conditions 30yr running mean with Land-Hist-wfdei", 
+        "endYear": "2100", 
+        "experiment": "as LFMIP-rmLC with Land-Hist-wfdei", 
+        "experimentID": "lfmip-rmLC-wfdei", 
+        "minNumberYrsPerSim": "121", 
+        "parentActivityID": [
+            "CMIP"
+        ], 
+        "parentExperimentID": [
+            "historical"
+        ], 
+        "requiredModelComponents": [
+            "AOGCM"
+        ], 
+        "startYear": "1980", 
+        "subExperimentID": [
+            "none"
+        ], 
         "tier": "2"
     }, 
     "description": null, 
-    "idx": 98, 
-    "label": "ssp585-over-bgc", 
-    "name": "ssp585-over-bgc", 
+    "idx": 174, 
+    "label": "lfmip-rmLC-wfdei", 
+    "name": "lfmip-rmlc-wfdei", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "7f6f784c-4145-4405-8218-864482e8d9e2", 
+    "uid": "c529e5ab-faa5-4fa9-a0f8-f52ec444812f", 
     "url": null
 }

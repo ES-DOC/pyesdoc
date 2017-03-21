@@ -16,25 +16,27 @@
         "description": "slab control run for volc-pinatubo-slab", 
         "endYear": "", 
         "experiment": "control with slab ocean", 
+        "experimentID": "control-slab", 
         "minNumberYrsPerSim": "30", 
-        "parentActivityID": "", 
-        "parentExperimentID": "", 
+        "parentActivityID": "no parent", 
+        "parentExperimentID": "no parent", 
         "requiredModelComponents": [
             "AGCM", 
             "SLAB"
         ], 
         "startYear": "", 
-        "subExperiment": "None", 
-        "subExperimentID": "None", 
+        "subExperimentID": [
+            "none"
+        ], 
         "tier": "3"
     }, 
     "description": null, 
-    "idx": 58, 
+    "idx": 57, 
     "label": "control-slab", 
     "name": "control-slab", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "95ce8c17-4e73-4518-8b3e-7f8e78d62b48", 
+    "uid": "9e2811b9-054c-4064-b236-f86b77b293f9", 
     "url": null
 }

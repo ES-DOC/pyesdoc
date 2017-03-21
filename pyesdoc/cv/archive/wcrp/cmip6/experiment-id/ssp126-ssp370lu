@@ -16,6 +16,7 @@
         "description": "Additional land use policy sensitivity simulation for low radiative forcing scenario, keep all forcings the same as ScenarioMIP SSP1-2.6 (afforestation scenario), but replace land use from SSP3-7 (afforestation) scenario; concentration-driven", 
         "endYear": "2100", 
         "experiment": "SSP1-2.6 with SSP3-7.0 land use", 
+        "experimentID": "ssp126-ssp370Lu", 
         "minNumberYrsPerSim": "86", 
         "parentActivityID": [
             "CMIP"
@@ -27,17 +28,18 @@
             "AOGCM"
         ], 
         "startYear": "2015", 
-        "subExperiment": "None", 
-        "subExperimentID": "None", 
+        "subExperimentID": [
+            "none"
+        ], 
         "tier": "1"
     }, 
     "description": null, 
-    "idx": 142, 
+    "idx": 141, 
     "label": "ssp126-ssp370Lu", 
     "name": "ssp126-ssp370lu", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "768b1480-e918-4b7e-afea-683825c3f14b", 
+    "uid": "5e6bae5a-a9f0-4e4f-b53d-16e80a654c19", 
     "url": null
 }

@@ -16,6 +16,7 @@
         "description": "Historical ALL forcing run with alternates estimate of solar and volcanic forcing", 
         "endYear": "2020", 
         "experiment": "historical ALL-forcing run with alternate estimates of natural forcing", 
+        "experimentID": "hist-all-nat2", 
         "minNumberYrsPerSim": "171", 
         "parentActivityID": [
             "CMIP"
@@ -27,17 +28,18 @@
             "AOGCM"
         ], 
         "startYear": "1850", 
-        "subExperiment": "None", 
-        "subExperimentID": "None", 
+        "subExperimentID": [
+            "none"
+        ], 
         "tier": "3"
     }, 
     "description": null, 
-    "idx": 183, 
+    "idx": 185, 
     "label": "hist-all-nat2", 
     "name": "hist-all-nat2", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "d717b4ff-9085-4e51-9dad-6aff278b84be", 
+    "uid": "af811241-d777-48f1-a6e0-ac6b07aae630", 
     "url": null
 }

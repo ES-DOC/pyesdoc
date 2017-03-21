@@ -12,24 +12,26 @@
         "description": "Global ocean - sea-ice coupled experiment forced with the Coordinated Ocean - ice Reference Experiments inter-annually varying atmospheric and river data sets for years 1948-2009. Initial ocean tracer fields are based on observations. All Priority=1 OMIP diagnostics are requested for all five cycles of the 62-year forcing to quantify drift. All OMIP diagnostics (Priority=1,2,3) are requested for the 5th cycle", 
         "endYear": "310", 
         "experiment": "OMIP experiment forced by Large and Yeager (CORE-2, NCEP) atmospheric data set and initialized with observed physical and biogeochemical ocean data", 
+        "experimentID": "omip1", 
         "minNumberYrsPerSim": "310", 
-        "parentActivityID": "", 
-        "parentExperimentID": "", 
+        "parentActivityID": "no parent", 
+        "parentExperimentID": "no parent", 
         "requiredModelComponents": [
             "OGCM"
         ], 
         "startYear": "1", 
-        "subExperiment": "None", 
-        "subExperimentID": "None", 
+        "subExperimentID": [
+            "none"
+        ], 
         "tier": "1"
     }, 
     "description": null, 
-    "idx": 211, 
+    "idx": 213, 
     "label": "omip1", 
     "name": "omip1", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "800d41d7-de72-4b1b-b0d4-612ef09dc3fd", 
+    "uid": "c43635b1-91b9-4c30-b7ae-e045f1587fed", 
     "url": null
 }

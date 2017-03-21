@@ -9,13 +9,13 @@
             "HighResMIP"
         ], 
         "additionalAllowedModelComponents": [
-            "AER", 
-            "CHEM"
+            "AER"
         ], 
         "description": "Forced global atmosphere-land simulations as highresSST-present, but using an common LAI dataset across models", 
         "endYear": "2014", 
         "experiment": "common LAI dataset within the highresSST-present experiment", 
-        "minNumberYrsPerSim": "64", 
+        "experimentID": "highresSST-LAI", 
+        "minNumberYrsPerSim": "36", 
         "parentActivityID": [
             "HighResMIP"
         ], 
@@ -25,18 +25,19 @@
         "requiredModelComponents": [
             "AGCM"
         ], 
-        "startYear": "1951", 
-        "subExperiment": "None", 
-        "subExperimentID": "None", 
-        "tier": "1"
+        "startYear": "1979", 
+        "subExperimentID": [
+            "none"
+        ], 
+        "tier": "3"
     }, 
     "description": null, 
-    "idx": 108, 
+    "idx": 107, 
     "label": "highresSST-LAI", 
     "name": "highressst-lai", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "f9b3e3a9-c43a-4c97-bf17-b518b4e6f476", 
+    "uid": "047d92f7-68ae-4564-a06f-6a7be5bbcc1f", 
     "url": null
 }

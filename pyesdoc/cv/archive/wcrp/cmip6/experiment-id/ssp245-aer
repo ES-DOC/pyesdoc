@@ -16,6 +16,7 @@
         "description": "Extension of aerosol-only run under SSP2-4.5", 
         "endYear": "2100", 
         "experiment": "aerosol-only SSP2-4.5 run", 
+        "experimentID": "ssp245-aer", 
         "minNumberYrsPerSim": "80", 
         "parentActivityID": [
             "DAMIP"
@@ -27,17 +28,18 @@
             "AOGCM"
         ], 
         "startYear": "2021", 
-        "subExperiment": "None", 
-        "subExperimentID": "None", 
+        "subExperimentID": [
+            "none"
+        ], 
         "tier": "3"
     }, 
     "description": null, 
-    "idx": 145, 
+    "idx": 144, 
     "label": "ssp245-aer", 
     "name": "ssp245-aer", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "6ec8fdf8-f512-4a07-a4f7-f23a7cd8a464", 
+    "uid": "080a51bd-0ca9-46aa-8b19-6a8589c8074b", 
     "url": null
 }

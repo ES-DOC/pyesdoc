@@ -15,6 +15,7 @@
         "description": "Extension beyond 2014 of the CMIP6 historical (CO2 emission-driven)", 
         "endYear": "", 
         "experiment": "post-2014 all-forcing simulation with atmospheric CO2 concentration calculated", 
+        "experimentID": "esm-hist-ext", 
         "minNumberYrsPerSim": "1", 
         "parentActivityID": [
             "CMIP"
@@ -27,8 +28,9 @@
             "BGC"
         ], 
         "startYear": "2015", 
-        "subExperiment": "None", 
-        "subExperimentID": "None", 
+        "subExperimentID": [
+            "none"
+        ], 
         "tier": "2"
     }, 
     "description": null, 
@@ -38,6 +40,6 @@
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "9413e931-ee56-408f-b5cf-4a96c9dce89f", 
+    "uid": "5e125fcd-e38c-45e0-bae0-6f69db04b0d5", 
     "url": null
 }

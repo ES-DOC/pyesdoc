@@ -12,6 +12,7 @@
         "description": "Prescribed anthropogenic aerosol optical properties. Changes in aerosols only", 
         "endYear": "2014", 
         "experiment": "historical simulation with specified anthropogenic aerosols, no other forcings", 
+        "experimentID": "hist-spAer-aer", 
         "minNumberYrsPerSim": "165", 
         "parentActivityID": [
             "CMIP"
@@ -23,17 +24,18 @@
             "AOGCM"
         ], 
         "startYear": "1850", 
-        "subExperiment": "None", 
-        "subExperimentID": "None", 
+        "subExperimentID": [
+            "none"
+        ], 
         "tier": "2"
     }, 
     "description": null, 
-    "idx": 151, 
+    "idx": 150, 
     "label": "hist-spAer-aer", 
     "name": "hist-spaer-aer", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "dd38d4e1-575b-4046-a9ac-296cdc484401", 
+    "uid": "d7763cb6-ae5d-4ec0-86e3-88bf1488a31c", 
     "url": null
 }

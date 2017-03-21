@@ -16,6 +16,7 @@
         "description": "Same as CMIP6 historical but with land cover held at 1850, no human activity; concentration driven", 
         "endYear": "2014", 
         "experiment": "historical with no land-use change", 
+        "experimentID": "hist-noLu", 
         "minNumberYrsPerSim": "165", 
         "parentActivityID": [
             "CMIP"
@@ -27,17 +28,18 @@
             "AOGCM"
         ], 
         "startYear": "1850", 
-        "subExperiment": "None", 
-        "subExperimentID": "None", 
+        "subExperimentID": [
+            "none"
+        ], 
         "tier": "1"
     }, 
     "description": null, 
-    "idx": 184, 
+    "idx": 186, 
     "label": "hist-noLu", 
     "name": "hist-nolu", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "7334f8bd-0a92-4a3d-a965-e1e47c261125", 
+    "uid": "18c60b62-70bb-4454-b36b-f0340cce515b", 
     "url": null
 }

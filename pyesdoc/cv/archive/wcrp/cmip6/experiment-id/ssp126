@@ -13,9 +13,10 @@
             "CHEM", 
             "BGC"
         ], 
-        "description": "Future scenario with low radiative forcing by the end of century. Following approximately RCP2.6 global forcing pathway but with new forcing based on SSP1. Concentration-driven", 
-        "endYear": "2100", 
+        "description": "Future scenario with low radiative forcing by the end of century. Following approximately RCP2.6 global forcing pathway but with new forcing based on SSP1. Concentration-driven. As a tier 2 option, this simulation should be extended to year 2300", 
+        "endYear": "2100 or 2300", 
         "experiment": "update of RCP2.6 based on SSP1", 
+        "experimentID": "ssp126", 
         "minNumberYrsPerSim": "86", 
         "parentActivityID": [
             "CMIP"
@@ -27,8 +28,9 @@
             "AOGCM"
         ], 
         "startYear": "2015", 
-        "subExperiment": "None", 
-        "subExperimentID": "None", 
+        "subExperimentID": [
+            "none"
+        ], 
         "tier": "1"
     }, 
     "description": null, 
@@ -38,6 +40,6 @@
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "395283a3-3600-4cc0-8ce7-95d5eaa2ed99", 
+    "uid": "6c9eb564-9b54-4e9b-b80f-def6a4d34c2c", 
     "url": null
 }

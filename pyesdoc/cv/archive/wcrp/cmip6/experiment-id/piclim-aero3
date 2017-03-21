@@ -15,24 +15,30 @@
         "description": "As in RFMIP-ERF-PI-Cntrl but with with present-day aerosols and ozone", 
         "endYear": "", 
         "experiment": "effective radiative forcing by present-day aerosols and ozone", 
+        "experimentID": "piClim-aerO3", 
         "minNumberYrsPerSim": "30", 
-        "parentActivityID": "", 
-        "parentExperimentID": "", 
+        "parentActivityID": [
+            "CMIP"
+        ], 
+        "parentExperimentID": [
+            "piControl"
+        ], 
         "requiredModelComponents": [
             "AGCM"
         ], 
         "startYear": "", 
-        "subExperiment": "None", 
-        "subExperimentID": "None", 
+        "subExperimentID": [
+            "none"
+        ], 
         "tier": "1"
     }, 
     "description": null, 
-    "idx": 244, 
+    "idx": 248, 
     "label": "piClim-aerO3", 
     "name": "piclim-aero3", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "08dfcd61-7701-4165-936f-32d27d25d6a4", 
+    "uid": "0158f618-d7b1-4a08-826c-a869b9f1c58b", 
     "url": null
 }

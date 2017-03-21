@@ -15,6 +15,7 @@
         "description": "DECK: control (emission-driven)", 
         "endYear": "", 
         "experiment": "pre-industrial control simulation with CO2 concentration calculated", 
+        "experimentID": "esm-piControl", 
         "minNumberYrsPerSim": "500", 
         "parentActivityID": [
             "CMIP"
@@ -27,17 +28,18 @@
             "BGC"
         ], 
         "startYear": "", 
-        "subExperiment": "None", 
-        "subExperimentID": "None", 
+        "subExperimentID": [
+            "none"
+        ], 
         "tier": "1"
     }, 
     "description": null, 
-    "idx": 119, 
+    "idx": 118, 
     "label": "esm-piControl", 
     "name": "esm-picontrol", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "87238880-e9d3-49ea-8d3b-11ae516ba710", 
+    "uid": "25997c8c-9b89-45ff-958a-36aff0dc4074", 
     "url": null
 }

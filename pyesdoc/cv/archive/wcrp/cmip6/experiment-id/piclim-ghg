@@ -15,24 +15,30 @@
         "description": "As in RFMIP-ERF-PI-Cntrl but with present-day greenhouse gases", 
         "endYear": "", 
         "experiment": "effective radiative forcing by present-day greenhouse gases", 
+        "experimentID": "piClim-ghg", 
         "minNumberYrsPerSim": "30", 
-        "parentActivityID": "", 
-        "parentExperimentID": "", 
+        "parentActivityID": [
+            "CMIP"
+        ], 
+        "parentExperimentID": [
+            "piControl"
+        ], 
         "requiredModelComponents": [
             "AGCM"
         ], 
         "startYear": "", 
-        "subExperiment": "None", 
-        "subExperimentID": "None", 
+        "subExperimentID": [
+            "none"
+        ], 
         "tier": "1"
     }, 
     "description": null, 
-    "idx": 55, 
+    "idx": 54, 
     "label": "piClim-ghg", 
     "name": "piclim-ghg", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "c92844f3-dcab-4812-9d6a-f2251d4abc5f", 
+    "uid": "18f215ea-afd0-4555-8da2-e825189c7628", 
     "url": null
 }

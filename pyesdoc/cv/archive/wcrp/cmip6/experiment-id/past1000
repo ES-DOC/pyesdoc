@@ -13,31 +13,29 @@
             "CHEM", 
             "BGC"
         ], 
-        "description": "main forcings : trace gases, volcanoes, solar variability, land use", 
+        "description": "main forcings: trace gases, volcanoes, solar variability, land use", 
         "endYear": "1849", 
-        "experiment": "last millenium", 
+        "experiment": "last millennium", 
+        "experimentID": "past1000", 
         "minNumberYrsPerSim": "1000", 
-        "parentActivityID": [
-            "CMIP"
-        ], 
-        "parentExperimentID": [
-            "piControl"
-        ], 
+        "parentActivityID": "no parent", 
+        "parentExperimentID": "no parent", 
         "requiredModelComponents": [
             "AOGCM"
         ], 
         "startYear": "850", 
-        "subExperiment": "None", 
-        "subExperimentID": "None", 
+        "subExperimentID": [
+            "none"
+        ], 
         "tier": "1"
     }, 
     "description": null, 
-    "idx": 90, 
+    "idx": 89, 
     "label": "past1000", 
     "name": "past1000", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "b3bf2eea-7941-4bfe-a157-b97e269ce805", 
+    "uid": "fdb6ed2f-2aa9-4c8c-8a80-5da4bd158adf", 
     "url": null
 }

@@ -16,6 +16,7 @@
         "description": "Prescribed land conditions 1980-2014 climate", 
         "endYear": "2100", 
         "experiment": "prescribed land conditions (from current climate climatology) and initialized from \"historical\" run year 1980", 
+        "experimentID": "lfmip-pdLC", 
         "minNumberYrsPerSim": "121", 
         "parentActivityID": [
             "CMIP"
@@ -27,8 +28,9 @@
             "AOGCM"
         ], 
         "startYear": "1980", 
-        "subExperiment": "None", 
-        "subExperimentID": "None", 
+        "subExperimentID": [
+            "none"
+        ], 
         "tier": "1"
     }, 
     "description": null, 
@@ -38,6 +40,6 @@
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "f181fbc8-4cee-4be5-b1eb-b8e384217440", 
+    "uid": "2d3dd96e-7550-4878-9dc9-0edf5328dfe9", 
     "url": null
 }

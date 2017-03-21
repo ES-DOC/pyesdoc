@@ -16,6 +16,7 @@
         "description": "Parallel experiment to volc-cluster-ctrl but with initial conditions taken from last millennium simulation to account for the effects of a more realistic history of past natural forcing. All forcings except volcanic kept constant from year AD 1790 on", 
         "endYear": "1858", 
         "experiment": "19th century volcanic cluster initialized from past1000", 
+        "experimentID": "volc-cluster-mill", 
         "minNumberYrsPerSim": "69", 
         "parentActivityID": [
             "PMIP"
@@ -27,17 +28,18 @@
             "AOGCM"
         ], 
         "startYear": "1790", 
-        "subExperiment": "None", 
-        "subExperimentID": "None", 
+        "subExperimentID": [
+            "none"
+        ], 
         "tier": "3"
     }, 
     "description": null, 
-    "idx": 137, 
+    "idx": 136, 
     "label": "volc-cluster-mill", 
     "name": "volc-cluster-mill", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "0aaace59-4046-4afd-9b95-bd40a2c94508", 
+    "uid": "199749b8-cb6b-4c1d-abdf-219a659dd565", 
     "url": null
 }

@@ -15,24 +15,26 @@
         "description": "The topography of the TIP is modified by setting surface elevations to 500m; to understand the combined thermal and mechanical forcing of the TIP. Same model as DECK", 
         "endYear": "2014", 
         "experiment": "same as \"amip\" run, but surface elevations of the Tibetan-Iranian Plateau and Himalayas reduced to 500m", 
-        "minNumberYrsPerSim": "35", 
-        "parentActivityID": "", 
-        "parentExperimentID": "", 
+        "experimentID": "amip-TIP", 
+        "minNumberYrsPerSim": "36", 
+        "parentActivityID": "no parent", 
+        "parentExperimentID": "no parent", 
         "requiredModelComponents": [
             "AGCM"
         ], 
         "startYear": "1979", 
-        "subExperiment": "None", 
-        "subExperimentID": "None", 
+        "subExperimentID": [
+            "none"
+        ], 
         "tier": "3"
     }, 
     "description": null, 
-    "idx": 106, 
+    "idx": 105, 
     "label": "amip-TIP", 
     "name": "amip-tip", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "268b9e2c-07cd-4c73-a93b-f949dd5120df", 
+    "uid": "daca1456-e3db-4e9d-aca1-266411979dd8", 
     "url": null
 }

@@ -15,25 +15,27 @@
         "description": "DECK: spin-up portion of the control (emission-driven)", 
         "endYear": "", 
         "experiment": "pre-industrial control simulation with CO2 concentration calculated (spin-up)", 
+        "experimentID": "esm-piControl-spinup", 
         "minNumberYrsPerSim": "100", 
-        "parentActivityID": "", 
-        "parentExperimentID": "", 
+        "parentActivityID": "no parent", 
+        "parentExperimentID": "no parent", 
         "requiredModelComponents": [
             "AOGCM", 
             "BGC"
         ], 
         "startYear": "", 
-        "subExperiment": "None", 
-        "subExperimentID": "None", 
+        "subExperimentID": [
+            "none"
+        ], 
         "tier": "2"
     }, 
     "description": null, 
-    "idx": 223, 
+    "idx": 225, 
     "label": "esm-piControl-spinup", 
     "name": "esm-picontrol-spinup", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "fae42bb2-ceb0-4dfa-9598-ca2a221c47c2", 
+    "uid": "177f6bd0-e113-47de-aa32-69afc40d86fd", 
     "url": null
 }

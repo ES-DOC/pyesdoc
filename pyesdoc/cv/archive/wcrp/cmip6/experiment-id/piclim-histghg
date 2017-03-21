@@ -15,15 +15,21 @@
         "description": "Time-varying forcing by GHGs. SST and sea ice fixed at preindustrial control. Interactive vegetation", 
         "endYear": "2100", 
         "experiment": "transient effective radiative forcing by greenhouse gases", 
+        "experimentID": "piClim-histghg", 
         "minNumberYrsPerSim": "251", 
-        "parentActivityID": "", 
-        "parentExperimentID": "", 
+        "parentActivityID": [
+            "CMIP"
+        ], 
+        "parentExperimentID": [
+            "piControl"
+        ], 
         "requiredModelComponents": [
             "AGCM"
         ], 
         "startYear": "1850", 
-        "subExperiment": "None", 
-        "subExperimentID": "None", 
+        "subExperimentID": [
+            "none"
+        ], 
         "tier": "2"
     }, 
     "description": null, 
@@ -33,6 +39,6 @@
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "083a676f-bb65-4731-adcb-4ff791249c26", 
+    "uid": "13661783-3d4f-454f-9b2b-177aae05cc5b", 
     "url": null
 }

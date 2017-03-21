@@ -16,6 +16,7 @@
         "description": "Historical ALL forcing run with alternate estimates of aerosol concentrations/emissions", 
         "endYear": "2020", 
         "experiment": "historical ALL-forcing run with alternate estimates of aerosol forcing", 
+        "experimentID": "hist-all-aer2", 
         "minNumberYrsPerSim": "171", 
         "parentActivityID": [
             "CMIP"
@@ -27,8 +28,9 @@
             "AOGCM"
         ], 
         "startYear": "1850", 
-        "subExperiment": "None", 
-        "subExperimentID": "None", 
+        "subExperimentID": [
+            "none"
+        ], 
         "tier": "3"
     }, 
     "description": null, 
@@ -38,6 +40,6 @@
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "8143b7eb-fcaf-41ce-9e8c-bfbc992e835b", 
+    "uid": "d851cf14-871a-491f-aa00-d6222280e22e", 
     "url": null
 }

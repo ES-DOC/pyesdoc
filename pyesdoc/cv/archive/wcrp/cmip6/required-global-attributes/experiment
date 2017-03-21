@@ -6,12 +6,12 @@
     "createDate": "0167-03-21 00:00:00+00:00", 
     "data": null, 
     "description": null, 
-    "idx": 6, 
+    "idx": 5, 
     "label": "experiment", 
     "name": "experiment", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "813f50cb-cbfd-4708-878d-cb2d05f60aa4", 
+    "uid": "e241ecb7-3ef5-4ec4-b3ad-9206228bbfbb", 
     "url": null
 }

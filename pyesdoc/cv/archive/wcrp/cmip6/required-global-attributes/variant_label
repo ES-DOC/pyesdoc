@@ -6,12 +6,12 @@
     "createDate": "0167-03-21 00:00:00+00:00", 
     "data": null, 
     "description": null, 
-    "idx": 32, 
+    "idx": 30, 
     "label": "variant_label", 
     "name": "variant_label", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "21c86589-0751-49cb-aefd-2c656cbefde6", 
+    "uid": "ec0e5cc9-5fea-46ec-a42b-946863a699e5", 
     "url": null
 }

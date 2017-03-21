@@ -13,27 +13,33 @@
             "CHEM", 
             "BGC"
         ], 
-        "description": "Mechanisms and predictability of the hiatus and of similar long timescale variations of both signs", 
-        "endYear": "1949", 
-        "experiment": "idealized negative AMV anomaly pattern", 
-        "minNumberYrsPerSim": "30", 
-        "parentActivityID": "", 
-        "parentExperimentID": "", 
+        "description": "C1.3 Mechanisms and predictability of the hiatus and of similar long timescale variations of both signs", 
+        "endYear": "", 
+        "experiment": "Idealized climate impact of negative AMV anomaly pattern", 
+        "experimentID": "dcppC-amv-neg", 
+        "minNumberYrsPerSim": "10", 
+        "parentActivityID": [
+            "CMIP"
+        ], 
+        "parentExperimentID": [
+            "piControl"
+        ], 
         "requiredModelComponents": [
             "AOGCM"
         ], 
-        "startYear": "1950", 
-        "subExperiment": "initialized near end of year YYYY", 
-        "subExperimentID": "of form: \"sYYYY\"", 
+        "startYear": "", 
+        "subExperimentID": [
+            "none"
+        ], 
         "tier": "1"
     }, 
     "description": null, 
-    "idx": 197, 
+    "idx": 199, 
     "label": "dcppC-amv-neg", 
     "name": "dcppc-amv-neg", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "54a81749-73f2-423c-a63f-fc1778676523", 
+    "uid": "564a2053-b9cf-4dd9-bdd1-57b908e60cc6", 
     "url": null
 }

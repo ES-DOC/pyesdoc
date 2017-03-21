@@ -8,34 +8,30 @@
         "activityID": [
             "ISMIP6"
         ], 
-        "additionalAllowedModelComponents": [
-            ""
-        ], 
+        "additionalAllowedModelComponents": "", 
         "description": "Offline ice sheet control run for the initMIP experiment that explores the uncertainty in sea level due to ice sheet initialization", 
         "endYear": "", 
         "experiment": "offline ice sheet model initMIP control", 
+        "experimentID": "ism-ctrl-std", 
         "minNumberYrsPerSim": "100", 
-        "parentActivityID": [
-            "ISMIP"
-        ], 
-        "parentExperimentID": [
-            ""
-        ], 
+        "parentActivityID": "no parent", 
+        "parentExperimentID": "no parent", 
         "requiredModelComponents": [
             "ISM"
         ], 
         "startYear": "", 
-        "subExperiment": "None", 
-        "subExperimentID": "None", 
+        "subExperimentID": [
+            "none"
+        ], 
         "tier": "1"
     }, 
     "description": null, 
-    "idx": 188, 
+    "idx": 190, 
     "label": "ism-ctrl-std", 
     "name": "ism-ctrl-std", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "daea5698-e213-460e-8d30-4cbfb5300629", 
+    "uid": "7f15a2b1-9340-47e9-bd70-4993f174cda0", 
     "url": null
 }

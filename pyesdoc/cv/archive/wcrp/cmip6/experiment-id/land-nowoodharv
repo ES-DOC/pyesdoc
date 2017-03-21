@@ -12,24 +12,26 @@
         "description": "Same as land-hist but with wood harvest maintained at 1850 amounts/areas", 
         "endYear": "2014", 
         "experiment": "historical land-only with no wood harvest", 
+        "experimentID": "land-noWoodHarv", 
         "minNumberYrsPerSim": "165", 
-        "parentActivityID": "", 
-        "parentExperimentID": "", 
+        "parentActivityID": "no parent", 
+        "parentExperimentID": "no parent", 
         "requiredModelComponents": [
             "LAND"
         ], 
         "startYear": "1850 or 1700", 
-        "subExperiment": "None", 
-        "subExperimentID": "None", 
+        "subExperimentID": [
+            "none"
+        ], 
         "tier": "2"
     }, 
     "description": null, 
-    "idx": 217, 
+    "idx": 219, 
     "label": "land-noWoodHarv", 
     "name": "land-nowoodharv", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "dad06dca-d97e-4120-94c0-822fd68a2a52", 
+    "uid": "423fd229-8381-402d-9415-a8041d28b8b3", 
     "url": null
 }

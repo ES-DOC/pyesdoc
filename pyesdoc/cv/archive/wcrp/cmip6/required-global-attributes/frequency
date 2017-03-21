@@ -6,12 +6,12 @@
     "createDate": "0167-03-21 00:00:00+00:00", 
     "data": null, 
     "description": null, 
-    "idx": 9, 
+    "idx": 8, 
     "label": "frequency", 
     "name": "frequency", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "11bf0869-43a5-4bcb-a8f2-0e36a25ff8c3", 
+    "uid": "dddd7ffd-8b3d-402f-b479-ae7c429f6452", 
     "url": null
 }

@@ -13,27 +13,29 @@
             "CHEM", 
             "BGC"
         ], 
-        "description": "main forcings : orbital parameters, ice-sheet, trace gases", 
+        "description": "main forcings: astronomical parameters, trace gases, dust (forcing, or feedback if dust cycle represented in model)", 
         "endYear": "", 
         "experiment": "last interglacial (127k)", 
+        "experimentID": "lig127k", 
         "minNumberYrsPerSim": "100", 
-        "parentActivityID": "", 
-        "parentExperimentID": "", 
+        "parentActivityID": "no parent", 
+        "parentExperimentID": "no parent", 
         "requiredModelComponents": [
             "AOGCM"
         ], 
         "startYear": "", 
-        "subExperiment": "None", 
-        "subExperimentID": "None", 
+        "subExperimentID": [
+            "none"
+        ], 
         "tier": "1"
     }, 
     "description": null, 
-    "idx": 94, 
+    "idx": 93, 
     "label": "lig127k", 
     "name": "lig127k", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "98ba9a91-7ac7-4ed5-8000-c045ab105ba8", 
+    "uid": "416edd64-b5c8-4683-9822-efff71958717", 
     "url": null
 }

@@ -14,25 +14,31 @@
         "description": "1850 control with doubled emissions of fires", 
         "endYear": "", 
         "experiment": "pre-industrial climatological SSTs and forcing, but with doubled emissions from fires", 
+        "experimentID": "piClim-2xfire", 
         "minNumberYrsPerSim": "30", 
-        "parentActivityID": "", 
-        "parentExperimentID": "", 
+        "parentActivityID": [
+            "CMIP"
+        ], 
+        "parentExperimentID": [
+            "piControl"
+        ], 
         "requiredModelComponents": [
             "AGCM", 
             "AER"
         ], 
         "startYear": "", 
-        "subExperiment": "None", 
-        "subExperimentID": "None", 
+        "subExperimentID": [
+            "none"
+        ], 
         "tier": "3"
     }, 
     "description": null, 
-    "idx": 185, 
+    "idx": 162, 
     "label": "piClim-2xfire", 
     "name": "piclim-2xfire", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "7ab48b40-58ac-4618-b037-60ec18a37bf5", 
+    "uid": "e1a72a6f-68d2-4fbb-a033-9fac100327e3", 
     "url": null
 }

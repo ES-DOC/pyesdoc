@@ -15,6 +15,7 @@
         "description": "Biogeochemically-coupled specified concentration simulation in which CO2 increases at a rate of 1% per year until quadrupling", 
         "endYear": "", 
         "experiment": "biogeochemically-coupled version of 1 percent per year increasing CO2 experiment", 
+        "experimentID": "1pctCO2-bgc", 
         "minNumberYrsPerSim": "150", 
         "parentActivityID": [
             "CMIP"
@@ -27,17 +28,18 @@
             "BGC"
         ], 
         "startYear": "", 
-        "subExperiment": "None", 
-        "subExperimentID": "None", 
+        "subExperimentID": [
+            "none"
+        ], 
         "tier": "1"
     }, 
     "description": null, 
-    "idx": 133, 
+    "idx": 132, 
     "label": "1pctCO2-bgc", 
     "name": "1pctco2-bgc", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "dd2a089c-cbf3-4874-831b-df5beb115ee9", 
+    "uid": "a9c32a0c-74b8-4d4d-b65c-262f1ea99a68", 
     "url": null
 }

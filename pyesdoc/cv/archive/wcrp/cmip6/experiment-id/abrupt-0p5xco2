@@ -16,6 +16,7 @@
         "description": "Identical to the DECK abrupt-4xCO2, but at 0.5xCO2", 
         "endYear": "", 
         "experiment": "abrupt halving of CO2", 
+        "experimentID": "abrupt-0p5xCO2", 
         "minNumberYrsPerSim": "150", 
         "parentActivityID": [
             "CMIP"
@@ -27,17 +28,18 @@
             "AOGCM"
         ], 
         "startYear": "", 
-        "subExperiment": "None", 
-        "subExperimentID": "None", 
+        "subExperimentID": [
+            "none"
+        ], 
         "tier": "2"
     }, 
     "description": null, 
-    "idx": 69, 
+    "idx": 68, 
     "label": "abrupt-0p5xCO2", 
     "name": "abrupt-0p5xco2", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "1423eb2d-bd29-40b0-8e36-3df2ed713c7c", 
+    "uid": "9946d455-f59a-4827-9ee3-36f59421433f", 
     "url": null
 }

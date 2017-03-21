@@ -13,32 +13,35 @@
             "CHEM", 
             "BGC"
         ], 
-        "description": "Effects of volcanoes on decadal prediction and predictability of forced and internal variability components", 
-        "endYear": "2015", 
+        "description": "C3.4 Effects of volcanoes on decadal prediction and predictability of forced and internal variability components. First full hindcast year is 2015", 
+        "endYear": "5 - 10 years after start year", 
         "experiment": "2015 forecast with added Agung forcing", 
+        "experimentID": "dcppC-forecast-addAgung", 
         "minNumberYrsPerSim": "5", 
         "parentActivityID": [
+            "no parent", 
             "DCPP"
         ], 
         "parentExperimentID": [
-            "dcppA-assim", 
-            ""
+            "no parent", 
+            "dcppA-assim"
         ], 
         "requiredModelComponents": [
             "AOGCM"
         ], 
-        "startYear": "2015", 
-        "subExperiment": "initialized near end of year YYYY", 
-        "subExperimentID": "of form: \"sYYYY\"", 
+        "startYear": "2014", 
+        "subExperimentID": [
+            "s2014"
+        ], 
         "tier": "3"
     }, 
     "description": null, 
-    "idx": 225, 
+    "idx": 228, 
     "label": "dcppC-forecast-addAgung", 
     "name": "dcppc-forecast-addagung", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "22aa2b2d-88c1-4342-89f6-1ff1a3de77f7", 
+    "uid": "5401c40f-0722-4f21-a5d1-4849763a5faf", 
     "url": null
 }

@@ -16,6 +16,7 @@
         "description": "Historical volcanic-only run", 
         "endYear": "2020", 
         "experiment": "historical volcanic-only run", 
+        "experimentID": "hist-volc", 
         "minNumberYrsPerSim": "171", 
         "parentActivityID": [
             "CMIP"
@@ -27,17 +28,18 @@
             "AOGCM"
         ], 
         "startYear": "1850", 
-        "subExperiment": "None", 
-        "subExperimentID": "None", 
+        "subExperimentID": [
+            "none"
+        ], 
         "tier": "3"
     }, 
     "description": null, 
-    "idx": 182, 
+    "idx": 184, 
     "label": "hist-volc", 
     "name": "hist-volc", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "77230e2b-98f3-49b0-a562-eed3930e8ae2", 
+    "uid": "c361da08-cc88-43b8-95e6-6f5c4d616646", 
     "url": null
 }

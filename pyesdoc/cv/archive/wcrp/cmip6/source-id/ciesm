@@ -5,6 +5,9 @@
     "associations": [], 
     "createDate": "0167-03-21 00:00:00+00:00", 
     "data": {
+        "activityParticipation": [
+            ""
+        ], 
         "aerosol": "MAM4", 
         "atmosphere": "CIESM-AM (FV/FD, 288 x 192; 30 levels; top level 2.255 hPa)", 
         "atmosphericChemistry": "trop_mam4", 
@@ -18,6 +21,9 @@
         "labelExtended": "Community Integrated Earth System Model", 
         "landIce": "None", 
         "landSurface": "CIESM-LM (modified CLM4.5)", 
+        "nominalResolutionAtmos": "", 
+        "nominalResolutionLandIce": "", 
+        "nominalResolutionOcean": "", 
         "ocean": "CIESM-OM (FD, SCCGrid Displaced Pole, 720x560; 46 levels; top grid cell 0-6 m)", 
         "oceanBiogeochemistry": "None", 
         "releaseYear": "2017", 
@@ -31,6 +37,6 @@
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "dd512074-77b9-40f2-8a6d-c5aba747a418", 
+    "uid": "a2c7356b-c870-4338-ae36-b8afa0204738", 
     "url": null
 }

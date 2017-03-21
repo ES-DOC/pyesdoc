@@ -9,13 +9,13 @@
             "HighResMIP"
         ], 
         "additionalAllowedModelComponents": [
-            "AER", 
-            "CHEM"
+            "AER"
         ], 
         "description": "Forced global atmosphere-land simulations as highresSST-present, but using smoothed SST to investigate impact of SST variability", 
         "endYear": "2014", 
         "experiment": "smoothed SST version of highresSST-present", 
-        "minNumberYrsPerSim": "64", 
+        "experimentID": "highresSST-smoothed", 
+        "minNumberYrsPerSim": "36", 
         "parentActivityID": [
             "HighResMIP"
         ], 
@@ -25,18 +25,19 @@
         "requiredModelComponents": [
             "AGCM"
         ], 
-        "startYear": "1951", 
-        "subExperiment": "None", 
-        "subExperimentID": "None", 
-        "tier": "1"
+        "startYear": "1979", 
+        "subExperimentID": [
+            "none"
+        ], 
+        "tier": "3"
     }, 
     "description": null, 
-    "idx": 149, 
+    "idx": 148, 
     "label": "highresSST-smoothed", 
     "name": "highressst-smoothed", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "3a1d636c-36f6-4c74-84bc-9288ca892cc1", 
+    "uid": "27fd5d83-f061-41f0-b019-6db883087651", 
     "url": null
 }

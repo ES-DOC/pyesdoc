@@ -15,24 +15,26 @@
         "description": "As aqua-p4K experiment, but with cloud-radiative effects switched off in the LW radiation code", 
         "endYear": "", 
         "experiment": "aquaplanet with uniform 4K SST increase and with longwave cloud radiative effects off", 
+        "experimentID": "aqua-p4K-lwoff", 
         "minNumberYrsPerSim": "10", 
-        "parentActivityID": "", 
-        "parentExperimentID": "", 
+        "parentActivityID": "no parent", 
+        "parentExperimentID": "no parent", 
         "requiredModelComponents": [
             "AGCM"
         ], 
         "startYear": "", 
-        "subExperiment": "None", 
-        "subExperimentID": "None", 
+        "subExperimentID": [
+            "none"
+        ], 
         "tier": "2"
     }, 
     "description": null, 
-    "idx": 236, 
+    "idx": 240, 
     "label": "aqua-p4K-lwoff", 
     "name": "aqua-p4k-lwoff", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "1b29cd84-ab5b-456b-b71b-df73cc0197b7", 
+    "uid": "7227827e-bb37-44ed-b4b9-0f69653a4ddd", 
     "url": null
 }

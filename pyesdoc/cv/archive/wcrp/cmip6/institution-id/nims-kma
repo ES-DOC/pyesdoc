@@ -8,12 +8,12 @@
         "postalAddress": "National Institute of Meteorological Sciences/Korea Meteorological Administration, Climate Research Division, Seoho-bukro 33, Seogwipo-si, Jejudo 63568, Republic of Korea"
     }, 
     "description": null, 
-    "idx": 14, 
+    "idx": 15, 
     "label": "NIMS-KMA", 
     "name": "nims-kma", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "a227efaf-5420-4ffe-8c07-33fe9782c830", 
+    "uid": "bf48592c-2a22-45f5-b425-34fb009304ec", 
     "url": null
 }

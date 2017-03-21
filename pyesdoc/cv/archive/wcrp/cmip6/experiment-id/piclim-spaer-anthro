@@ -12,24 +12,30 @@
         "description": "Prescribed anthropogenic aerosol optical properties. Anthropogenic forcings", 
         "endYear": "", 
         "experiment": "effective radiative forcing at present day with specified anthropogenic aerosol optical properties, anthropogenic forcings", 
+        "experimentID": "piClim-spAer-anthro", 
         "minNumberYrsPerSim": "", 
-        "parentActivityID": "", 
-        "parentExperimentID": "", 
+        "parentActivityID": [
+            "CMIP"
+        ], 
+        "parentExperimentID": [
+            "piControl"
+        ], 
         "requiredModelComponents": [
             "AGCM"
         ], 
         "startYear": "", 
-        "subExperiment": "None", 
-        "subExperimentID": "None", 
+        "subExperimentID": [
+            "none"
+        ], 
         "tier": "2"
     }, 
     "description": null, 
-    "idx": 153, 
+    "idx": 152, 
     "label": "piClim-spAer-anthro", 
     "name": "piclim-spaer-anthro", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "beea7760-be8b-4610-b5b3-0c64bdf8c8ea", 
+    "uid": "5d621f73-fecf-4909-ad43-958f4183db5b", 
     "url": null
 }

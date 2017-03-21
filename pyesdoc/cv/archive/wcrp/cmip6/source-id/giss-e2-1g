@@ -5,6 +5,9 @@
     "associations": [], 
     "createDate": "0167-03-21 00:00:00+00:00", 
     "data": {
+        "activityParticipation": [
+            ""
+        ], 
         "aerosol": "varies with physics-version (p==1 None, p==3 OMA, p==4 TOMAS, p==5 MATRIX) ", 
         "atmosphere": "GISS-E2.1 (90 x 144 2x2.5; 40 levels; top level 0.1hPa)", 
         "atmosphericChemistry": "varies with physics-version (p==1 Non-interactive, p>1 GPUCCINI)", 
@@ -18,6 +21,9 @@
         "labelExtended": "GISS-E2.1G", 
         "landIce": "Fixed", 
         "landSurface": "GISS LSM", 
+        "nominalResolutionAtmos": "", 
+        "nominalResolutionLandIce": "", 
+        "nominalResolutionOcean": "", 
         "ocean": "GISS Ocean (1 deg latitude/longitude; 32 levels; top grid cell 0-10m)", 
         "oceanBiogeochemistry": "None", 
         "releaseYear": "2016", 
@@ -31,6 +37,6 @@
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "b3cab106-df70-4b05-963d-db1d892f3575", 
+    "uid": "6ab65613-6fac-4e25-ba99-3aa0931d13ef", 
     "url": null
 }

@@ -16,6 +16,7 @@
         "description": "Prescribed land conditions 30yr running mean", 
         "endYear": "2100", 
         "experiment": "prescribed land conditions (from running mean climatology) and initialized from \"historical\" run year 1980", 
+        "experimentID": "lfmip-rmLC", 
         "minNumberYrsPerSim": "121", 
         "parentActivityID": [
             "CMIP"
@@ -27,17 +28,18 @@
             "AOGCM"
         ], 
         "startYear": "1980", 
-        "subExperiment": "None", 
-        "subExperimentID": "None", 
-        "tier": "1"
+        "subExperimentID": [
+            "none"
+        ], 
+        "tier": "2"
     }, 
     "description": null, 
-    "idx": 66, 
+    "idx": 65, 
     "label": "lfmip-rmLC", 
     "name": "lfmip-rmlc", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "50415307-6503-4be8-a0be-c98fe200bd59", 
+    "uid": "401ffa9d-6dcf-4e70-a457-069ed6477f57", 
     "url": null
 }

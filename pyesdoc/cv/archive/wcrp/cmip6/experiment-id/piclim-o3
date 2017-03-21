@@ -12,26 +12,32 @@
         "description": "Perturbation from 1850 control using 2014 ozone precursor emissions", 
         "endYear": "", 
         "experiment": "pre-industrial climatological SSTs and forcing, but with 2014 ozone precursor emissions", 
+        "experimentID": "piClim-O3", 
         "minNumberYrsPerSim": "30", 
-        "parentActivityID": "", 
-        "parentExperimentID": "", 
+        "parentActivityID": [
+            "CMIP"
+        ], 
+        "parentExperimentID": [
+            "piControl"
+        ], 
         "requiredModelComponents": [
             "AGCM", 
             "AER", 
             "CHEM"
         ], 
         "startYear": "", 
-        "subExperiment": "None", 
-        "subExperimentID": "None", 
+        "subExperimentID": [
+            "none"
+        ], 
         "tier": "2"
     }, 
     "description": null, 
-    "idx": 232, 
+    "idx": 236, 
     "label": "piClim-O3", 
     "name": "piclim-o3", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "c6fe7266-6fcb-46cf-b213-e1bb8646ee72", 
+    "uid": "10f5f8a1-11bf-437f-857d-f6153e356a62", 
     "url": null
 }

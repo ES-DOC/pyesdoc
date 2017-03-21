@@ -12,24 +12,26 @@
         "description": "Land only simulations", 
         "endYear": "2014", 
         "experiment": "as land-hist with CRU-NCEP forcings", 
+        "experimentID": "land-hist-cruNcep", 
         "minNumberYrsPerSim": "165", 
-        "parentActivityID": "", 
-        "parentExperimentID": "", 
+        "parentActivityID": "no parent", 
+        "parentExperimentID": "no parent", 
         "requiredModelComponents": [
             "LAND"
         ], 
         "startYear": "1850", 
-        "subExperiment": "None", 
-        "subExperimentID": "None", 
+        "subExperimentID": [
+            "none"
+        ], 
         "tier": "2"
     }, 
     "description": null, 
-    "idx": 221, 
+    "idx": 223, 
     "label": "land-hist-cruNcep", 
     "name": "land-hist-cruncep", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "4af3a388-d568-43b5-8888-f30bc5df051a", 
+    "uid": "db48076d-f593-4bb5-8573-3b259c3dbe1e", 
     "url": null
 }

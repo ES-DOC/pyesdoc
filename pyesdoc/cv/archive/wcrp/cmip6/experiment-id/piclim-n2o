@@ -12,26 +12,32 @@
         "description": "Perturbation from 1850 control using 2014 N2O concentrations", 
         "endYear": "", 
         "experiment": "pre-industrial climatological SSTs and forcing, but with 2014 N2O concentrations (including chemistry)", 
+        "experimentID": "piClim-N2O", 
         "minNumberYrsPerSim": "30", 
-        "parentActivityID": "", 
-        "parentExperimentID": "", 
+        "parentActivityID": [
+            "CMIP"
+        ], 
+        "parentExperimentID": [
+            "piControl"
+        ], 
         "requiredModelComponents": [
             "AGCM", 
             "AER", 
             "CHEM"
         ], 
         "startYear": "", 
-        "subExperiment": "None", 
-        "subExperimentID": "None", 
+        "subExperimentID": [
+            "none"
+        ], 
         "tier": "2"
     }, 
     "description": null, 
-    "idx": 75, 
+    "idx": 74, 
     "label": "piClim-N2O", 
     "name": "piclim-n2o", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "d869d9c3-6a8e-4ee1-a61b-d3992a2fe150", 
+    "uid": "7fc78e99-36cf-4fe7-840f-b3edd1a98b14", 
     "url": null
 }

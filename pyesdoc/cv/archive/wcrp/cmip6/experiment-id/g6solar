@@ -16,7 +16,8 @@
         "description": "Using solar irradiance reduction, return the radiative forcing from a background of the ScenarioMIP high forcing to the ScenarioMIP middle forcing", 
         "endYear": "2100", 
         "experiment": "total solar irradiance reduction to reduce net forcing from SSP585 to SSP245", 
-        "minNumberYrsPerSim": "81", 
+        "experimentID": "G6solar", 
+        "minNumberYrsPerSim": "86", 
         "parentActivityID": [
             "CMIP"
         ], 
@@ -26,9 +27,10 @@
         "requiredModelComponents": [
             "AOGCM"
         ], 
-        "startYear": "2020", 
-        "subExperiment": "None", 
-        "subExperimentID": "None", 
+        "startYear": "2015", 
+        "subExperimentID": [
+            "none"
+        ], 
         "tier": "1"
     }, 
     "description": null, 
@@ -38,6 +40,6 @@
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "f97359b8-7a3e-4b78-a1cc-1a86c46c0fd0", 
+    "uid": "f6d749f5-23c9-4675-a019-403d78452f11", 
     "url": null
 }

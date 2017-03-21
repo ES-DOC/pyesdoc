@@ -16,6 +16,7 @@
         "description": "Identical to the DECK abrupt-4xCO2, but at 2xCO2", 
         "endYear": "", 
         "experiment": "abrupt doubling of CO2", 
+        "experimentID": "abrupt-2xCO2", 
         "minNumberYrsPerSim": "150", 
         "parentActivityID": [
             "CMIP"
@@ -27,17 +28,18 @@
             "AOGCM"
         ], 
         "startYear": "", 
-        "subExperiment": "None", 
-        "subExperimentID": "None", 
+        "subExperimentID": [
+            "none"
+        ], 
         "tier": "2"
     }, 
     "description": null, 
-    "idx": 70, 
+    "idx": 69, 
     "label": "abrupt-2xCO2", 
     "name": "abrupt-2xco2", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "f0d39a95-b8ca-4a53-b1b5-0e80f01643c0", 
+    "uid": "183d8a98-efe8-4aa5-8bc5-3346e89c49ce", 
     "url": null
 }

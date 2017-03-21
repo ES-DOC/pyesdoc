@@ -15,6 +15,7 @@
         "description": "Historical WMGHG and halocarbons concentrations, 1850 NTCF emissions", 
         "endYear": "2014", 
         "experiment": "historical forcing, but with pre-industrial NTCF emissions", 
+        "experimentID": "hist-piNTCF", 
         "minNumberYrsPerSim": "165", 
         "parentActivityID": [
             "CMIP"
@@ -27,17 +28,18 @@
             "AER"
         ], 
         "startYear": "1850", 
-        "subExperiment": "None", 
-        "subExperimentID": "None", 
+        "subExperimentID": [
+            "none"
+        ], 
         "tier": "1"
     }, 
     "description": null, 
-    "idx": 89, 
+    "idx": 88, 
     "label": "hist-piNTCF", 
     "name": "hist-pintcf", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "610dd747-09c1-42e6-b07a-4e2da8413463", 
+    "uid": "92d71f20-55e9-435d-ab23-01cb27ad2d99", 
     "url": null
 }

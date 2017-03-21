@@ -5,6 +5,9 @@
     "associations": [], 
     "createDate": "0167-03-21 00:00:00+00:00", 
     "data": {
+        "activityParticipation": [
+            ""
+        ], 
         "aerosol": "UKCA-GLOMAP-mode", 
         "atmosphere": "MetUM-HadGEM3-GA7.1 (192 x 144 N96; 85 levels; top level 85km)", 
         "atmosphericChemistry": "UKCA-StratTrop", 
@@ -19,6 +22,9 @@
         "labelExtended": "UKESM1.0-N96ORCA1", 
         "landIce": "BISICLES (only active in ISMIP experiments)", 
         "landSurface": "JULES-HadGEM3-GL7.1", 
+        "nominalResolutionAtmos": "", 
+        "nominalResolutionLandIce": "", 
+        "nominalResolutionOcean": "", 
         "ocean": "NEMO-HadGEM3-GO6.0 (ORCA1 tripolar primarily 1 deg latitude/longitude with meridional refinement down to 1/3 degree in the tropics; 75 levels; top grid cell 0-1m)", 
         "oceanBiogeochemistry": "MEDUSA2", 
         "releaseYear": "2017", 
@@ -32,6 +38,6 @@
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "7f069ddf-a879-492c-a150-e69e8553a479", 
+    "uid": "b36801b3-8df0-4905-aaf2-22a91a42d50b", 
     "url": null
 }

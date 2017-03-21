@@ -13,27 +13,29 @@
             "CHEM", 
             "BGC"
         ], 
-        "description": "main forcings : trace gases, orbital parameters, dust", 
+        "description": "main forcings: trace gases, orbital parameters, dust (forcing, or feedback if dust cycle represented in model)", 
         "endYear": "", 
         "experiment": "mid-Holocene", 
+        "experimentID": "midHolocene", 
         "minNumberYrsPerSim": "200", 
-        "parentActivityID": "", 
-        "parentExperimentID": "", 
+        "parentActivityID": "no parent", 
+        "parentExperimentID": "no parent", 
         "requiredModelComponents": [
             "AOGCM"
         ], 
         "startYear": "", 
-        "subExperiment": "None", 
-        "subExperimentID": "None", 
+        "subExperimentID": [
+            "none"
+        ], 
         "tier": "1"
     }, 
     "description": null, 
-    "idx": 105, 
+    "idx": 104, 
     "label": "midHolocene", 
     "name": "midholocene", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "9be6a072-4c98-404d-901b-fe7a41160fdf", 
+    "uid": "60180589-4008-49bf-a014-fd3ba2b2d1a1", 
     "url": null
 }

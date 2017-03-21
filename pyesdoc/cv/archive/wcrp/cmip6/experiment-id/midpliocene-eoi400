@@ -13,27 +13,29 @@
             "CHEM", 
             "BGC"
         ], 
-        "description": "main forcings : trace gases, orography, ice-sheet", 
+        "description": "main forcings: trace gases, orography, ice-sheet", 
         "endYear": "", 
         "experiment": "mid-Pliocene warm period", 
+        "experimentID": "midPliocene-eoi400", 
         "minNumberYrsPerSim": "100", 
-        "parentActivityID": "", 
-        "parentExperimentID": "", 
+        "parentActivityID": "no parent", 
+        "parentExperimentID": "no parent", 
         "requiredModelComponents": [
             "AOGCM"
         ], 
         "startYear": "", 
-        "subExperiment": "None", 
-        "subExperimentID": "None", 
+        "subExperimentID": [
+            "none"
+        ], 
         "tier": "1"
     }, 
     "description": null, 
-    "idx": 170, 
+    "idx": 171, 
     "label": "midPliocene-eoi400", 
     "name": "midpliocene-eoi400", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "6e42f3f8-f964-47a4-bb03-6518a7192b93", 
+    "uid": "4a52d8f8-79fa-4430-ae82-236c71b6c849", 
     "url": null
 }

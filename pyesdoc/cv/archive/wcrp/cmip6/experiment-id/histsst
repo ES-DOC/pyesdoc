@@ -14,25 +14,27 @@
         "description": "Historical transient with SSTs prescribed from historical", 
         "endYear": "2014", 
         "experiment": "historical prescribed SSTs and historical forcing", 
+        "experimentID": "histSST", 
         "minNumberYrsPerSim": "165", 
-        "parentActivityID": "", 
-        "parentExperimentID": "", 
+        "parentActivityID": "no parent", 
+        "parentExperimentID": "no parent", 
         "requiredModelComponents": [
             "AGCM", 
             "AER"
         ], 
         "startYear": "1850", 
-        "subExperiment": "None", 
-        "subExperimentID": "None", 
+        "subExperimentID": [
+            "none"
+        ], 
         "tier": "1"
     }, 
     "description": null, 
-    "idx": 158, 
+    "idx": 157, 
     "label": "histSST", 
     "name": "histsst", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "7578161d-fc94-4822-813a-984ef6ac7efc", 
+    "uid": "de9fbee5-b94d-4d3a-bc18-fc30600f88ae", 
     "url": null
 }

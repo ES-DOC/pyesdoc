@@ -12,17 +12,23 @@
         "description": "Perturbation from 1850 control using 2014 CH4 concentrations", 
         "endYear": "", 
         "experiment": "pre-industrial climatological SSTs and forcing, but with 2014 methane concentrations (including chemistry)", 
+        "experimentID": "piClim-CH4", 
         "minNumberYrsPerSim": "30", 
-        "parentActivityID": "", 
-        "parentExperimentID": "", 
+        "parentActivityID": [
+            "CMIP"
+        ], 
+        "parentExperimentID": [
+            "piControl"
+        ], 
         "requiredModelComponents": [
             "AGCM", 
             "AER", 
             "CHEM"
         ], 
         "startYear": "", 
-        "subExperiment": "None", 
-        "subExperimentID": "None", 
+        "subExperimentID": [
+            "none"
+        ], 
         "tier": "1"
     }, 
     "description": null, 
@@ -32,6 +38,6 @@
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "55ba2d9b-4479-404e-aa53-3bfdb1e1baa0", 
+    "uid": "52fb911d-de80-46d4-84ef-73d7a9dd672d", 
     "url": null
 }

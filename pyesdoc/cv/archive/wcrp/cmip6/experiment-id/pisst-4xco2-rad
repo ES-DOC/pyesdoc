@@ -15,15 +15,21 @@
         "description": "Same as piSST but CO2 as seen by the radiation scheme is quadrupled", 
         "endYear": "", 
         "experiment": "as piSST with radiation-only seeing 4xCO2", 
+        "experimentID": "piSST-4xCO2-rad", 
         "minNumberYrsPerSim": "30", 
-        "parentActivityID": "", 
-        "parentExperimentID": "", 
+        "parentActivityID": [
+            "CMIP"
+        ], 
+        "parentExperimentID": [
+            "piControl"
+        ], 
         "requiredModelComponents": [
             "AGCM"
         ], 
         "startYear": "", 
-        "subExperiment": "None", 
-        "subExperimentID": "None", 
+        "subExperimentID": [
+            "none"
+        ], 
         "tier": "2"
     }, 
     "description": null, 
@@ -33,6 +39,6 @@
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "d71d2fc3-3b94-4b6c-8dff-df547b82adf2", 
+    "uid": "acde53ac-26da-4143-b7c9-8e028bde61e5", 
     "url": null
 }

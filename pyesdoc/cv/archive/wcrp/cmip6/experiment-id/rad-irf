@@ -12,15 +12,17 @@
         "description": "Offline radiation calculations", 
         "endYear": "", 
         "experiment": "offline assessment of radiative transfer parmeterizations in clear skies", 
+        "experimentID": "rad-irf", 
         "minNumberYrsPerSim": "", 
-        "parentActivityID": "", 
-        "parentExperimentID": "", 
+        "parentActivityID": "no parent", 
+        "parentExperimentID": "no parent", 
         "requiredModelComponents": [
             "RAD"
         ], 
         "startYear": "", 
-        "subExperiment": "None", 
-        "subExperimentID": "None", 
+        "subExperimentID": [
+            "none"
+        ], 
         "tier": "1"
     }, 
     "description": null, 
@@ -30,6 +32,6 @@
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "0cb8f82e-767c-4522-bcfa-48b11c5b3761", 
+    "uid": "34e0d08c-0289-4f5d-ba88-c3a0b4fcb9ac", 
     "url": null
 }

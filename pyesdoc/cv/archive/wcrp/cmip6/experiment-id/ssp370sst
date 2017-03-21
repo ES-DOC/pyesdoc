@@ -14,25 +14,31 @@
         "description": "Future SSP3-7.0, with SSTs prescribed from ssp370", 
         "endYear": "2055", 
         "experiment": "SSP3-7.0, with SSTs prescribed from ssp370", 
+        "experimentID": "ssp370SST", 
         "minNumberYrsPerSim": "41", 
-        "parentActivityID": "", 
-        "parentExperimentID": "", 
+        "parentActivityID": [
+            "ScenarioMIP"
+        ], 
+        "parentExperimentID": [
+            "ssp370"
+        ], 
         "requiredModelComponents": [
             "AGCM", 
             "AER"
         ], 
         "startYear": "2015", 
-        "subExperiment": "None", 
-        "subExperimentID": "None", 
+        "subExperimentID": [
+            "none"
+        ], 
         "tier": "1"
     }, 
     "description": null, 
-    "idx": 155, 
+    "idx": 154, 
     "label": "ssp370SST", 
     "name": "ssp370sst", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "1c072eba-2bbb-4111-a165-56a27a2d0ff2", 
+    "uid": "549e3ce9-55a9-4a51-a821-c3c6d8f777cb", 
     "url": null
 }

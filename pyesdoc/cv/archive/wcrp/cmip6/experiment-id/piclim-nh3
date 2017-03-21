@@ -5,24 +5,31 @@
     "associations": [], 
     "createDate": "0167-03-21 00:00:00+00:00", 
     "data": {
-        "activityID": "AerChemMIP", 
+        "activityID": [
+            "AerChemMIP"
+        ], 
         "additionalAllowedModelComponents": [
-            "AGCM", 
             "CHEM"
         ], 
         "description": "Perturbation from 1850 control using 2014 NH3 emissions", 
         "endYear": "", 
         "experiment": "pre-industrial climatological SSTs and forcing, but with 2014 ammonia emissions", 
+        "experimentID": "piClim-NH3", 
         "minNumberYrsPerSim": "30", 
-        "parentActivityID": "", 
-        "parentExperimentID": "", 
+        "parentActivityID": [
+            "CMIP"
+        ], 
+        "parentExperimentID": [
+            "piControl"
+        ], 
         "requiredModelComponents": [
             "AGCM", 
             "AER"
         ], 
         "startYear": "", 
-        "subExperiment": "None", 
-        "subExperimentID": "None", 
+        "subExperimentID": [
+            "none"
+        ], 
         "tier": "3"
     }, 
     "description": null, 
@@ -32,6 +39,6 @@
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "a174f690-988b-470a-90e7-859e9e8ee3e6", 
+    "uid": "c3d34ed8-edc4-42bf-bb1c-1ac165dc1886", 
     "url": null
 }

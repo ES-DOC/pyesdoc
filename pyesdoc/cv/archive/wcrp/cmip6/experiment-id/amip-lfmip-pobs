@@ -10,29 +10,32 @@
         ], 
         "additionalAllowedModelComponents": [
             "AER", 
-            "CHEM"
+            "CHEM", 
+            "BGC"
         ], 
         "description": "Land-hist land conditions; AMIP SSTs", 
-        "endYear": "2100", 
+        "endYear": "2014", 
         "experiment": "prescribed land (from pseudo-observations) and AMIP SSTs", 
-        "minNumberYrsPerSim": "121", 
-        "parentActivityID": "", 
-        "parentExperimentID": "", 
+        "experimentID": "amip-lfmip-pObs", 
+        "minNumberYrsPerSim": "36", 
+        "parentActivityID": "no parent", 
+        "parentExperimentID": "no parent", 
         "requiredModelComponents": [
             "AGCM"
         ], 
-        "startYear": "1980", 
-        "subExperiment": "None", 
-        "subExperimentID": "None", 
+        "startYear": "1979", 
+        "subExperimentID": [
+            "none"
+        ], 
         "tier": "2"
     }, 
     "description": null, 
-    "idx": 143, 
+    "idx": 142, 
     "label": "amip-lfmip-pObs", 
     "name": "amip-lfmip-pobs", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "52e97d17-eec1-4dd2-bc85-8f94a11cfdbf", 
+    "uid": "46447a08-2ad2-4265-8b21-3660453f28a5", 
     "url": null
 }

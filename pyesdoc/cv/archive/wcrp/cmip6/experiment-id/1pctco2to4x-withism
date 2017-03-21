@@ -16,6 +16,7 @@
         "description": "Idealized 1%/yr CO2 increase to 4xC02 over 140yrs and kept constant at 4xCO2 for an additional 200 to 400 yrs simulation that includes interactive ice sheets", 
         "endYear": "", 
         "experiment": "simulation with interactive ice sheet forced by 1 percent per year increase in CO2 to 4xCO2 (subsequently held fixed)", 
+        "experimentID": "1pctCO2to4x-withism", 
         "minNumberYrsPerSim": "350", 
         "parentActivityID": [
             "ISMIP6"
@@ -28,17 +29,18 @@
             "ISM"
         ], 
         "startYear": "", 
-        "subExperiment": "None", 
-        "subExperimentID": "None", 
+        "subExperimentID": [
+            "none"
+        ], 
         "tier": "1"
     }, 
     "description": null, 
-    "idx": 101, 
+    "idx": 100, 
     "label": "1pctCO2to4x-withism", 
     "name": "1pctco2to4x-withism", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "ac932618-d01e-45ae-91c6-88e54d2acd04", 
+    "uid": "47878bb5-38b1-476b-a4f1-50dd23176762", 
     "url": null
 }

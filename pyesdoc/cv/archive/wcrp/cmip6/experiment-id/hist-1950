@@ -9,14 +9,13 @@
             "HighResMIP"
         ], 
         "additionalAllowedModelComponents": [
-            "AER", 
-            "CHEM", 
-            "BGC"
+            "AER"
         ], 
-        "description": "Coupled integrations, at least one with constant 1950\"s forcing (CTL) and one or more with historic and then RCP4.5 (as in Forced_Atmos_Land, EXP)", 
+        "description": "Coupled integrationswith historic external forcings (as in highresSST-present)", 
         "endYear": "2014", 
         "experiment": "coupled historical 1950-2014", 
-        "minNumberYrsPerSim": "64", 
+        "experimentID": "hist-1950", 
+        "minNumberYrsPerSim": "65", 
         "parentActivityID": [
             "HighResMIP"
         ], 
@@ -26,9 +25,10 @@
         "requiredModelComponents": [
             "AOGCM"
         ], 
-        "startYear": "1951", 
-        "subExperiment": "None", 
-        "subExperimentID": "None", 
+        "startYear": "1950", 
+        "subExperimentID": [
+            "none"
+        ], 
         "tier": "2"
     }, 
     "description": null, 
@@ -38,6 +38,6 @@
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "07d00850-2562-4b81-bffd-fd2987044188", 
+    "uid": "996922ca-bb67-4068-8788-9b8c5e276d88", 
     "url": null
 }

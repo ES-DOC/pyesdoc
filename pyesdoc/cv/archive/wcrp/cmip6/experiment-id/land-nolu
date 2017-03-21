@@ -12,24 +12,26 @@
         "description": "Same as land-hist except no land-use change", 
         "endYear": "2014", 
         "experiment": "historical land-only with no land-use change", 
+        "experimentID": "land-noLu", 
         "minNumberYrsPerSim": "165", 
-        "parentActivityID": "", 
-        "parentExperimentID": "", 
+        "parentActivityID": "no parent", 
+        "parentExperimentID": "no parent", 
         "requiredModelComponents": [
             "LAND"
         ], 
         "startYear": "1850 or 1700", 
-        "subExperiment": "None", 
-        "subExperimentID": "None", 
+        "subExperimentID": [
+            "none"
+        ], 
         "tier": "1"
     }, 
     "description": null, 
-    "idx": 195, 
+    "idx": 241, 
     "label": "land-noLu", 
     "name": "land-nolu", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "372f9816-5c22-4174-a16a-f10b749e4a97", 
+    "uid": "0510ad58-b706-4f9e-98ee-3ab69d009650", 
     "url": null
 }

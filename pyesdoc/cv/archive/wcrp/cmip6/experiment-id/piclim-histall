@@ -15,15 +15,21 @@
         "description": "Time-varying forcing. SST and sea ice fixed at preindustrial control. Interactive vegetation", 
         "endYear": "2100", 
         "experiment": "transient effective radiative forcing", 
+        "experimentID": "piClim-histall", 
         "minNumberYrsPerSim": "251", 
-        "parentActivityID": "", 
-        "parentExperimentID": "", 
+        "parentActivityID": [
+            "CMIP"
+        ], 
+        "parentExperimentID": [
+            "piControl"
+        ], 
         "requiredModelComponents": [
             "AGCM"
         ], 
         "startYear": "1850", 
-        "subExperiment": "None", 
-        "subExperimentID": "None", 
+        "subExperimentID": [
+            "none"
+        ], 
         "tier": "2"
     }, 
     "description": null, 
@@ -33,6 +39,6 @@
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "d5a5e5f4-0270-46d1-ba75-5ccd235dca6c", 
+    "uid": "57b41f19-316b-4674-a6b1-57f0b339ca31", 
     "url": null
 }

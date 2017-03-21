@@ -16,6 +16,7 @@
         "description": "Historical natural-only run", 
         "endYear": "2020", 
         "experiment": "historical natural-only run", 
+        "experimentID": "hist-nat", 
         "minNumberYrsPerSim": "171", 
         "parentActivityID": [
             "CMIP"
@@ -27,17 +28,18 @@
             "AOGCM"
         ], 
         "startYear": "1850", 
-        "subExperiment": "None", 
-        "subExperimentID": "None", 
+        "subExperimentID": [
+            "none"
+        ], 
         "tier": "1"
     }, 
     "description": null, 
-    "idx": 215, 
+    "idx": 217, 
     "label": "hist-nat", 
     "name": "hist-nat", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "da650c34-8f34-43be-a97b-73441724be15", 
+    "uid": "b387648c-cce1-42d7-89c1-344e76e30924", 
     "url": null
 }

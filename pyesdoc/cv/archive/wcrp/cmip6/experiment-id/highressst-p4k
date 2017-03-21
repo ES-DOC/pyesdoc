@@ -9,13 +9,13 @@
             "HighResMIP"
         ], 
         "additionalAllowedModelComponents": [
-            "AER", 
-            "CHEM"
+            "AER"
         ], 
-        "description": "Similar to CFMIP amip-p4K, add a uniform warming of 4K to highresSST-present SSTs and run the experiment parallel to years 2005-2014 of highresSST-present", 
+        "description": "Similar to CFMIP amip-p4K, add a uniform warming of 4K to highresSST-present SSTs and run the experiment parallel to highresSST-present", 
         "endYear": "2014", 
         "experiment": "uniform 4K warming of highresSST-present SST", 
-        "minNumberYrsPerSim": "64", 
+        "experimentID": "highresSST-p4K", 
+        "minNumberYrsPerSim": "36", 
         "parentActivityID": [
             "HighResMIP"
         ], 
@@ -25,18 +25,19 @@
         "requiredModelComponents": [
             "AGCM"
         ], 
-        "startYear": "1951", 
-        "subExperiment": "None", 
-        "subExperimentID": "None", 
-        "tier": "1"
+        "startYear": "1979", 
+        "subExperimentID": [
+            "none"
+        ], 
+        "tier": "3"
     }, 
     "description": null, 
-    "idx": 200, 
+    "idx": 202, 
     "label": "highresSST-p4K", 
     "name": "highressst-p4k", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "68674581-50e4-497c-a15f-0dc807d091b6", 
+    "uid": "51dae6db-9d67-44ff-9642-505061fd3c31", 
     "url": null
 }

@@ -15,15 +15,17 @@
         "description": "Extended version of CMIP5/CFMIP-2 aqua4K experiment. Aquaplanet experiment where SSTs are subject to a uniform warming of 4K", 
         "endYear": "", 
         "experiment": "aquaplanet with uniform 4K SST increase", 
+        "experimentID": "aqua-p4K", 
         "minNumberYrsPerSim": "10", 
-        "parentActivityID": "", 
-        "parentExperimentID": "", 
+        "parentActivityID": "no parent", 
+        "parentExperimentID": "no parent", 
         "requiredModelComponents": [
             "AGCM"
         ], 
         "startYear": "", 
-        "subExperiment": "None", 
-        "subExperimentID": "None", 
+        "subExperimentID": [
+            "none"
+        ], 
         "tier": "1"
     }, 
     "description": null, 
@@ -33,6 +35,6 @@
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "1c49dfd4-4a2d-42a7-86da-e1d51cd735df", 
+    "uid": "07eefa03-8973-4bd5-8b2b-4356bc2df33d", 
     "url": null
 }

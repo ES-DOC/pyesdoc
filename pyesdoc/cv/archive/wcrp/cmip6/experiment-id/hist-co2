@@ -16,6 +16,7 @@
         "description": "Historical CO2-only run", 
         "endYear": "2020", 
         "experiment": "historical CO2-only run", 
+        "experimentID": "hist-CO2", 
         "minNumberYrsPerSim": "171", 
         "parentActivityID": [
             "CMIP"
@@ -27,17 +28,18 @@
             "AOGCM"
         ], 
         "startYear": "1850", 
-        "subExperiment": "None", 
-        "subExperimentID": "None", 
+        "subExperimentID": [
+            "none"
+        ], 
         "tier": "3"
     }, 
     "description": null, 
-    "idx": 152, 
+    "idx": 151, 
     "label": "hist-CO2", 
     "name": "hist-co2", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "c372ad00-2e93-4ff6-afe8-3df1c63dfdcc", 
+    "uid": "8a4c74fa-c04f-4569-b541-f6b904bc8301", 
     "url": null
 }

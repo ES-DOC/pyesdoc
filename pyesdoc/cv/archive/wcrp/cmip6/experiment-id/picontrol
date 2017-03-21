@@ -16,6 +16,7 @@
         "description": "DECK: control", 
         "endYear": "", 
         "experiment": "pre-industrial control", 
+        "experimentID": "piControl", 
         "minNumberYrsPerSim": "500", 
         "parentActivityID": [
             "CMIP"
@@ -27,17 +28,18 @@
             "AOGCM"
         ], 
         "startYear": "", 
-        "subExperiment": "None", 
-        "subExperimentID": "None", 
+        "subExperimentID": [
+            "none"
+        ], 
         "tier": "1"
     }, 
     "description": null, 
-    "idx": 118, 
+    "idx": 117, 
     "label": "piControl", 
     "name": "picontrol", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "4a2c69d3-d2b5-4612-b749-1fcdf0499e53", 
+    "uid": "223e2cc5-ed74-4a35-b5b5-d5c82c407d65", 
     "url": null
 }

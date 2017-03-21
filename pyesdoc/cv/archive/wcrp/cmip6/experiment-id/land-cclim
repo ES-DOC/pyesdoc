@@ -12,24 +12,26 @@
         "description": "Same as land-hist except with climate held constant", 
         "endYear": "2014", 
         "experiment": "historical land-only constant climate", 
+        "experimentID": "land-cClim", 
         "minNumberYrsPerSim": "165", 
-        "parentActivityID": "", 
-        "parentExperimentID": "", 
+        "parentActivityID": "no parent", 
+        "parentExperimentID": "no parent", 
         "requiredModelComponents": [
             "LAND"
         ], 
         "startYear": "1850 or 1700", 
-        "subExperiment": "None", 
-        "subExperimentID": "None", 
+        "subExperimentID": [
+            "none"
+        ], 
         "tier": "2"
     }, 
     "description": null, 
-    "idx": 121, 
+    "idx": 120, 
     "label": "land-cClim", 
     "name": "land-cclim", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "694da35c-32a5-4b4b-802b-130c5ca58c89", 
+    "uid": "5f0a62c3-85d2-4a38-beec-16dd9e404cc2", 
     "url": null
 }

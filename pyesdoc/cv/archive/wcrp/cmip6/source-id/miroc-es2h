@@ -1,0 +1,42 @@
+{
+    "_type": "pyesdoc.cv.model.term", 
+    "alternativeName": null, 
+    "alternativeUrl": null, 
+    "associations": [], 
+    "createDate": "0167-03-21 00:00:00+00:00", 
+    "data": {
+        "activityParticipation": [
+            ""
+        ], 
+        "aerosol": "SPRINTARS6.0", 
+        "atmosphere": "CCSR AGCM (T85; 256 x 128 longitude/latitude; 81 levels; top level 0.004 hPa)", 
+        "atmosphericChemistry": "CHASER4.0", 
+        "cohort": [
+            "Registered"
+        ], 
+        "institutionID": [
+            "MIROC"
+        ], 
+        "label": "MIROC-ES2H", 
+        "labelExtended": "MIROC-ES2H", 
+        "landIce": "None", 
+        "landSurface": "MATSIRO6.0+VISIT-e ver.1.0", 
+        "nominalResolutionAtmos": "", 
+        "nominalResolutionLandIce": "", 
+        "nominalResolutionOcean": "", 
+        "ocean": "COCO4.9 (tripolar primarily 1deg; 360 x 256 longitude/latitude; 63 levels; top grid cell 0-2 m)", 
+        "oceanBiogeochemistry": "OECO ver.2.0; NPZD-type with C/N/P/Fe/O cycles", 
+        "releaseYear": "2017", 
+        "seaIce": "COCO4.9", 
+        "sourceID": "MIROC-ES2H"
+    }, 
+    "description": null, 
+    "idx": 44, 
+    "label": "MIROC-ES2H", 
+    "name": "miroc-es2h", 
+    "parent": null, 
+    "status": "pending", 
+    "synonyms": [], 
+    "uid": "58bea60a-ac5e-45a5-be3b-7274845a2b45", 
+    "url": null
+}

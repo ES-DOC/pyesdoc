@@ -12,26 +12,28 @@
         "description": "Historical WMGHG, halocarbon concentrations and aerosol precursor emissions, 1850 tropospheric ozone precursors emissions, prescribed SSTs", 
         "endYear": "2014", 
         "experiment": "historical SSTs and historical forcing, but with pre-industrial ozone precursor emissions", 
+        "experimentID": "histSST-piO3", 
         "minNumberYrsPerSim": "165", 
-        "parentActivityID": "", 
-        "parentExperimentID": "", 
+        "parentActivityID": "no parent", 
+        "parentExperimentID": "no parent", 
         "requiredModelComponents": [
             "AGCM", 
             "AER", 
             "CHEM"
         ], 
         "startYear": "1850", 
-        "subExperiment": "None", 
-        "subExperimentID": "None", 
+        "subExperimentID": [
+            "none"
+        ], 
         "tier": "2"
     }, 
     "description": null, 
-    "idx": 140, 
+    "idx": 139, 
     "label": "histSST-piO3", 
     "name": "histsst-pio3", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "92655f77-60e4-4825-93bf-82d701a5eebe", 
+    "uid": "e14a631c-fd2d-47dd-aeb2-070413eab008", 
     "url": null
 }

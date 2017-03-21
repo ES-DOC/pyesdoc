@@ -13,32 +13,35 @@
             "CHEM", 
             "BGC"
         ], 
-        "description": "Effects of volcanoes on decadal prediction and predictability of forced and internal variability components", 
-        "endYear": "1991", 
-        "experiment": "hindcast but with only background volcanic forcing", 
+        "description": "C3.1 Effects of volcanoes on decadal prediction and predictability of forced and internal variability components. First full hindcast year is 1991", 
+        "endYear": "5 - 10 years after start year", 
+        "experiment": "hindcast but with only background volcanic forcing to be the same as that used in the 2015 forecast", 
+        "experimentID": "dcppC-hindcast-noPinatubo", 
         "minNumberYrsPerSim": "5", 
         "parentActivityID": [
+            "no parent", 
             "DCPP"
         ], 
         "parentExperimentID": [
-            "dcppA-assim", 
-            ""
+            "no parent", 
+            "dcppA-assim"
         ], 
         "requiredModelComponents": [
             "AOGCM"
         ], 
-        "startYear": "1991", 
-        "subExperiment": "initialized near end of year YYYY", 
-        "subExperimentID": "of form: \"sYYYY\"", 
+        "startYear": "1990", 
+        "subExperimentID": [
+            "s1990"
+        ], 
         "tier": "1"
     }, 
     "description": null, 
-    "idx": 201, 
+    "idx": 203, 
     "label": "dcppC-hindcast-noPinatubo", 
     "name": "dcppc-hindcast-nopinatubo", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "3095c2b1-50e2-44b3-a7f9-641876230c17", 
+    "uid": "9556f8f4-8ead-40a4-a5a3-2b4464be4917", 
     "url": null
 }

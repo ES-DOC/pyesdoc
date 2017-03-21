@@ -6,12 +6,12 @@
     "createDate": "0167-03-21 00:00:00+00:00", 
     "data": null, 
     "description": null, 
-    "idx": 15, 
+    "idx": 14, 
     "label": "institution_id", 
     "name": "institution_id", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "3f2a208b-83e5-490b-8651-53393772f69b", 
+    "uid": "e254874d-ff04-40c7-8978-d1296a354cd0", 
     "url": null
 }

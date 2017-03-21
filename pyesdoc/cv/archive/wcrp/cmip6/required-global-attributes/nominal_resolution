@@ -6,12 +6,12 @@
     "createDate": "0167-03-21 00:00:00+00:00", 
     "data": null, 
     "description": null, 
-    "idx": 18, 
+    "idx": 17, 
     "label": "nominal_resolution", 
     "name": "nominal_resolution", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "cc21b1c1-bfa8-4c14-a5a4-f5bb9191a90e", 
+    "uid": "52b49c7d-832d-417e-bdae-70a4dd0c8bd7", 
     "url": null
 }

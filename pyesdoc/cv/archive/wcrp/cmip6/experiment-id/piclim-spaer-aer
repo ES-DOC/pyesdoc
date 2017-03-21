@@ -12,24 +12,30 @@
         "description": "Prescribed anthropogenic aerosol optical properties. Aerosol and ozone forcings", 
         "endYear": "", 
         "experiment": "effective radiative forcing at present day with specified anthropogenic aerosol optical properties, all forcings", 
+        "experimentID": "piClim-spAer-aer", 
         "minNumberYrsPerSim": "", 
-        "parentActivityID": "", 
-        "parentExperimentID": "", 
+        "parentActivityID": [
+            "CMIP"
+        ], 
+        "parentExperimentID": [
+            "piControl"
+        ], 
         "requiredModelComponents": [
             "AGCM"
         ], 
         "startYear": "", 
-        "subExperiment": "None", 
-        "subExperimentID": "None", 
+        "subExperimentID": [
+            "none"
+        ], 
         "tier": "2"
     }, 
     "description": null, 
-    "idx": 86, 
+    "idx": 85, 
     "label": "piClim-spAer-aer", 
     "name": "piclim-spaer-aer", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "bade6658-8917-4904-82e8-68a1153af9e4", 
+    "uid": "3da0ef03-8293-4751-baa1-30273b1569d7", 
     "url": null
 }

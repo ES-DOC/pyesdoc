@@ -16,19 +16,21 @@
         "description": "Pacemaker 20th century historical run that includes all forcing as used in CMIP6 Historical Simulation, and the observational historical SST is restored in the AMO domain (0deg-70degN, 70degW-0deg)", 
         "endYear": "2014", 
         "experiment": "initialized from \"historical\" run year 1870 and SSTs in the AMO domain (0deg-70degN, 70degW-0deg) restored to AMIP SSTs with historical forcings", 
-        "minNumberYrsPerSim": "144", 
+        "experimentID": "hist-resAMO", 
+        "minNumberYrsPerSim": "145", 
         "parentActivityID": [
             "CMIP"
         ], 
         "parentExperimentID": [
-            "piControl"
+            "historical"
         ], 
         "requiredModelComponents": [
             "AOGCM"
         ], 
         "startYear": "1870", 
-        "subExperiment": "None", 
-        "subExperimentID": "None", 
+        "subExperimentID": [
+            "none"
+        ], 
         "tier": "2"
     }, 
     "description": null, 
@@ -38,6 +40,6 @@
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "df03131d-c368-487f-8111-9ed9110fb43f", 
+    "uid": "74262033-198c-4717-9a60-b55afa87e005", 
     "url": null
 }

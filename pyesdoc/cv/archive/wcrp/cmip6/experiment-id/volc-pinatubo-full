@@ -16,6 +16,7 @@
         "description": "1991 Pinatubo forcing as used in the CMIP6 historical simulations. Requires special diagnostics of radiative and latent heating rates. A large number of ensemble members is required to address internal atmospheric variability", 
         "endYear": "", 
         "experiment": "Pinatubo experiment", 
+        "experimentID": "volc-pinatubo-full", 
         "minNumberYrsPerSim": "3", 
         "parentActivityID": [
             "CMIP"
@@ -27,17 +28,18 @@
             "AOGCM"
         ], 
         "startYear": "", 
-        "subExperiment": "None", 
-        "subExperimentID": "None", 
+        "subExperimentID": [
+            "none"
+        ], 
         "tier": "1"
     }, 
     "description": null, 
-    "idx": 111, 
+    "idx": 110, 
     "label": "volc-pinatubo-full", 
     "name": "volc-pinatubo-full", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "cd1902df-fe9d-46c5-9b7f-9f37b2a380ee", 
+    "uid": "5413d075-33cc-4bea-ae27-59bbb3a350ad", 
     "url": null
 }

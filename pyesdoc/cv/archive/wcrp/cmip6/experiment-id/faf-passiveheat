@@ -16,6 +16,7 @@
         "description": "1xCO2 experiment, parallel to piControl, with a flux of passive tracer added at the ocean surface at the same rate as the surface net heat flux anomaly applied in the FAFMIP heat experiment", 
         "endYear": "", 
         "experiment": "control plus surface flux of passive heat tracer into ocean", 
+        "experimentID": "faf-passiveheat", 
         "minNumberYrsPerSim": "70", 
         "parentActivityID": [
             "CMIP"
@@ -27,8 +28,9 @@
             "AOGCM"
         ], 
         "startYear": "", 
-        "subExperiment": "None", 
-        "subExperimentID": "None", 
+        "subExperimentID": [
+            "none"
+        ], 
         "tier": "2"
     }, 
     "description": null, 
@@ -38,6 +40,6 @@
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "7a41f191-8ddd-4867-bcb5-9d680268d93e", 
+    "uid": "7a99c91d-e4eb-48a6-8a46-43a689e24aa2", 
     "url": null
 }

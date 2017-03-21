@@ -5,6 +5,9 @@
     "associations": [], 
     "createDate": "0167-03-21 00:00:00+00:00", 
     "data": {
+        "activityParticipation": [
+            ""
+        ], 
         "aerosol": "Rotstayn-1.0", 
         "atmosphere": "VCAM-1.0 (192 x 192 x 6 C192; 35 levels; top level 35km)", 
         "atmosphericChemistry": "None", 
@@ -18,6 +21,9 @@
         "labelExtended": "VRESM 1.0 (Variable-resolution Earth System Model 1.0)", 
         "landIce": "None", 
         "landSurface": "CABLE v2.2.3", 
+        "nominalResolutionAtmos": "", 
+        "nominalResolutionLandIce": "", 
+        "nominalResolutionOcean": "", 
         "ocean": "VCOM-1.0 (192 x 192 x 6 C192; 35 levels; top grid cell 0-10m)", 
         "oceanBiogeochemistry": "PISCES v3.4socco", 
         "releaseYear": "2016", 
@@ -25,12 +31,12 @@
         "sourceID": "VRESM-1-0"
     }, 
     "description": null, 
-    "idx": 31, 
+    "idx": 34, 
     "label": "VRESM-1-0", 
     "name": "vresm-1-0", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "c1a920d0-b2b2-4efe-9a7b-b42bb20d17c9", 
+    "uid": "40800261-93aa-4a2c-a545-9846d7b0df67", 
     "url": null
 }

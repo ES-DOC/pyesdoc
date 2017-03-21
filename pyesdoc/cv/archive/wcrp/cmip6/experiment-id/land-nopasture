@@ -12,24 +12,26 @@
         "description": "Same as land-hist but with grazing and other management on pastureland held at 1850 levels/distribution, i.e. all new pastureland is treated as unmanaged grassland (as in land-crop-grass)", 
         "endYear": "2014", 
         "experiment": "historical land-only with constant pastureland", 
+        "experimentID": "land-noPasture", 
         "minNumberYrsPerSim": "165", 
-        "parentActivityID": "", 
-        "parentExperimentID": "", 
+        "parentActivityID": "no parent", 
+        "parentExperimentID": "no parent", 
         "requiredModelComponents": [
             "LAND"
         ], 
         "startYear": "1850 or 1700", 
-        "subExperiment": "None", 
-        "subExperimentID": "None", 
+        "subExperimentID": [
+            "none"
+        ], 
         "tier": "2"
     }, 
     "description": null, 
-    "idx": 129, 
+    "idx": 128, 
     "label": "land-noPasture", 
     "name": "land-nopasture", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "c42c263a-bf02-4690-ab5f-cb8e98ea32f8", 
+    "uid": "852c4fc9-80c5-4699-b701-429fb7afc78d", 
     "url": null
 }

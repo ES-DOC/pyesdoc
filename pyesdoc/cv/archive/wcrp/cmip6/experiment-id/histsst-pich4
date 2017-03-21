@@ -12,26 +12,28 @@
         "description": "Historical (non-CH4) WMGHG concentrations and NTCF emissions, 1850 CH4 concentrations", 
         "endYear": "2014", 
         "experiment": "historical SSTs and historical forcing, but with pre-industrial methane concentrations", 
+        "experimentID": "histSST-piCH4", 
         "minNumberYrsPerSim": "165", 
-        "parentActivityID": "", 
-        "parentExperimentID": "", 
+        "parentActivityID": "no parent", 
+        "parentExperimentID": "no parent", 
         "requiredModelComponents": [
             "AGCM", 
             "AER", 
             "CHEM"
         ], 
         "startYear": "1850", 
-        "subExperiment": "None", 
-        "subExperimentID": "None", 
+        "subExperimentID": [
+            "none"
+        ], 
         "tier": "1"
     }, 
     "description": null, 
-    "idx": 235, 
+    "idx": 239, 
     "label": "histSST-piCH4", 
     "name": "histsst-pich4", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "8f6784a0-9274-4c84-8bb1-3ac67bb9ae67", 
+    "uid": "22133676-cffd-4ddc-9dd6-7792fddf4ea3", 
     "url": null
 }

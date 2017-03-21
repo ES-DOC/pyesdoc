@@ -15,6 +15,7 @@
         "description": "Emissions-driven future scenario simulation", 
         "endYear": "2100", 
         "experiment": "emission-driven RCP8.5 based on SSP5", 
+        "experimentID": "esm-ssp585", 
         "minNumberYrsPerSim": "85", 
         "parentActivityID": [
             "CMIP"
@@ -27,17 +28,18 @@
             "BGC"
         ], 
         "startYear": "2015", 
-        "subExperiment": "None", 
-        "subExperimentID": "None", 
+        "subExperimentID": [
+            "none"
+        ], 
         "tier": "1"
     }, 
     "description": null, 
-    "idx": 168, 
+    "idx": 169, 
     "label": "esm-ssp585", 
     "name": "esm-ssp585", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "2064ee10-2461-4e04-bbb5-678d8024a0f0", 
+    "uid": "2fa17f9c-5d45-4922-b548-ae114527afce", 
     "url": null
 }

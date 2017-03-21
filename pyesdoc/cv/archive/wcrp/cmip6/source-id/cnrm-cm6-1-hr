@@ -5,6 +5,9 @@
     "associations": [], 
     "createDate": "0167-03-21 00:00:00+00:00", 
     "data": {
+        "activityParticipation": [
+            ""
+        ], 
         "aerosol": "climatological fields computed by TACTIC (v2.0)", 
         "atmosphere": "Arpege 6.2 (Tl359; 91 levels; top level 78.4 km)", 
         "atmosphericChemistry": "OZL_v2", 
@@ -18,6 +21,9 @@
         "labelExtended": "CNRM-CM6-1-HR", 
         "landIce": "None", 
         "landSurface": "Surfex 8.0c", 
+        "nominalResolutionAtmos": "", 
+        "nominalResolutionLandIce": "", 
+        "nominalResolutionOcean": "", 
         "ocean": "Nemo 3.6 (eORCA025; tripolar primarily 1/4deg latitude/longitude; 75 levels; top grid cell 0-1 m)", 
         "oceanBiogeochemistry": "None", 
         "releaseYear": "2016", 
@@ -31,6 +37,6 @@
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "c620f293-618f-4bb1-9b4f-9ec100bcd5ae", 
+    "uid": "4cfb01e6-c427-4175-bc18-8e6e616615ca", 
     "url": null
 }

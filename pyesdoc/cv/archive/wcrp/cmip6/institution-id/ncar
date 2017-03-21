@@ -8,12 +8,12 @@
         "postalAddress": "National Center for Atmospheric Research, Boulder, CO 80307, USA"
     }, 
     "description": null, 
-    "idx": 13, 
+    "idx": 14, 
     "label": "NCAR", 
     "name": "ncar", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "0079dcb6-e315-4a9d-88f4-11e5aca6cb09", 
+    "uid": "87ccf700-d848-490b-93d3-4c9ecbdce524", 
     "url": null
 }

@@ -12,6 +12,7 @@
         "description": "Historical simulation using \"offline\" ice sheet models. Forcing for ice sheet model is the standard dataset based on CMIP6 AOGCM historical", 
         "endYear": "2014", 
         "experiment": "offline ice sheet forced by ISMIP6-specified AOGCM historical output", 
+        "experimentID": "ism-historical-std", 
         "minNumberYrsPerSim": "165", 
         "parentActivityID": [
             "ISMIP6"
@@ -23,17 +24,18 @@
             "ISM"
         ], 
         "startYear": "1850", 
-        "subExperiment": "None", 
-        "subExperimentID": "None", 
+        "subExperimentID": [
+            "none"
+        ], 
         "tier": "2"
     }, 
     "description": null, 
-    "idx": 206, 
+    "idx": 208, 
     "label": "ism-historical-std", 
     "name": "ism-historical-std", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "13d0a991-7518-4820-ab14-2ab0184215e1", 
+    "uid": "01c3898c-9915-4f53-a309-43cd5c222be3", 
     "url": null
 }

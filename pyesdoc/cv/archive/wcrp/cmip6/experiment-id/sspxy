@@ -16,6 +16,7 @@
         "description": "Future scenario with low radiative forcing by the end of century. Following a forcing pathway below RCP2.6. Specific SSP and 2100 forcing level to be finalized with IAM groups within next few months. Concentration-driven", 
         "endYear": "2100", 
         "experiment": "low-end scenario informing 1.5C goal", 
+        "experimentID": "sspxy", 
         "minNumberYrsPerSim": "86", 
         "parentActivityID": [
             "CMIP"
@@ -27,17 +28,18 @@
             "AOGCM"
         ], 
         "startYear": "2015", 
-        "subExperiment": "None", 
-        "subExperimentID": "None", 
+        "subExperimentID": [
+            "none"
+        ], 
         "tier": "2"
     }, 
     "description": null, 
-    "idx": 99, 
+    "idx": 98, 
     "label": "sspxy", 
     "name": "sspxy", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "787edcbf-541d-495a-b032-9fc4e4e1006a", 
+    "uid": "4429a0c7-fc0c-4397-8683-122204b74d7d", 
     "url": null
 }

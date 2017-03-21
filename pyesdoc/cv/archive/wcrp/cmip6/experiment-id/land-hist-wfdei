@@ -12,24 +12,26 @@
         "description": "Land only simulations", 
         "endYear": "2014", 
         "experiment": "as land-hist with WFDEI forcings", 
+        "experimentID": "land-hist-wfdei", 
         "minNumberYrsPerSim": "165", 
-        "parentActivityID": "", 
-        "parentExperimentID": "", 
+        "parentActivityID": "no parent", 
+        "parentExperimentID": "no parent", 
         "requiredModelComponents": [
             "LAND"
         ], 
         "startYear": "1850", 
-        "subExperiment": "None", 
-        "subExperimentID": "None", 
+        "subExperimentID": [
+            "none"
+        ], 
         "tier": "2"
     }, 
     "description": null, 
-    "idx": 238, 
+    "idx": 242, 
     "label": "land-hist-wfdei", 
     "name": "land-hist-wfdei", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "479b0581-7d01-4936-b9ed-9297a0dab9cf", 
+    "uid": "7c47371b-f587-4aa7-8099-48d53f9d0392", 
     "url": null
 }

@@ -8,12 +8,12 @@
         "postalAddress": "Center for Ocean-Land-Atmosphere Studies, Fairfax, VA 22030, USA"
     }, 
     "description": null, 
-    "idx": 10, 
+    "idx": 11, 
     "label": "COLA-CFS", 
     "name": "cola-cfs", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "36662bdd-68fc-45cf-b004-409430996380", 
+    "uid": "4edb454b-bd9d-431c-97e1-a2b5d2c38361", 
     "url": null
 }

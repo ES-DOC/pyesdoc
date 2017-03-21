@@ -15,15 +15,21 @@
         "description": "Time slice at 2020 (ScenarioMIP Tier 1 high forcing scenario)", 
         "endYear": "", 
         "experiment": "SSTs, forcings, and other prescribed conditions from year 2020 of SSP5-8.5", 
+        "experimentID": "G6SST1", 
         "minNumberYrsPerSim": "10", 
-        "parentActivityID": "", 
-        "parentExperimentID": "", 
+        "parentActivityID": [
+            "ScenarioMIP"
+        ], 
+        "parentExperimentID": [
+            "ssp585"
+        ], 
         "requiredModelComponents": [
             "AGCM"
         ], 
         "startYear": "", 
-        "subExperiment": "None", 
-        "subExperimentID": "None", 
+        "subExperimentID": [
+            "none"
+        ], 
         "tier": "2"
     }, 
     "description": null, 
@@ -33,6 +39,6 @@
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "15f1bf7e-6893-4a80-9a36-0d9cf0c42024", 
+    "uid": "3c1c6178-52c1-4bbd-bae5-1ea515e20903", 
     "url": null
 }

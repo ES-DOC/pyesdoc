@@ -16,24 +16,30 @@
         "description": "30-year atmosphere only integration using preindustrial sea-surface temperature and sea-ice climatology. Interactive vegetation", 
         "endYear": "", 
         "experiment": "effective radiative forcing in present-day", 
+        "experimentID": "piClim-control", 
         "minNumberYrsPerSim": "30", 
-        "parentActivityID": "", 
-        "parentExperimentID": "", 
+        "parentActivityID": [
+            "CMIP"
+        ], 
+        "parentExperimentID": [
+            "piControl"
+        ], 
         "requiredModelComponents": [
             "AGCM"
         ], 
         "startYear": "", 
-        "subExperiment": "None", 
-        "subExperimentID": "None", 
+        "subExperimentID": [
+            "none"
+        ], 
         "tier": "1"
     }, 
     "description": null, 
-    "idx": 120, 
+    "idx": 119, 
     "label": "piClim-control", 
     "name": "piclim-control", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "823bb44f-a789-410f-a5f1-6b4e109a747c", 
+    "uid": "5ae6d8ba-d721-4743-8245-3ada1b751d1e", 
     "url": null
 }

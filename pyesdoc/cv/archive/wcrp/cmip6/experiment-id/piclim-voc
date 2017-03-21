@@ -12,17 +12,23 @@
         "description": "Perturbation from 1850 control using 2014 CO/VOC emissions", 
         "endYear": "", 
         "experiment": "pre-industrial climatological SSTs and forcing, but with 2014 VOC emissions", 
+        "experimentID": "piClim-VOC", 
         "minNumberYrsPerSim": "30", 
-        "parentActivityID": "", 
-        "parentExperimentID": "", 
+        "parentActivityID": [
+            "CMIP"
+        ], 
+        "parentExperimentID": [
+            "piControl"
+        ], 
         "requiredModelComponents": [
             "AGCM", 
             "AER", 
             "CHEM"
         ], 
         "startYear": "", 
-        "subExperiment": "None", 
-        "subExperimentID": "None", 
+        "subExperimentID": [
+            "none"
+        ], 
         "tier": "3"
     }, 
     "description": null, 
@@ -32,6 +38,6 @@
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "cd1f1e5e-6674-437e-be07-2754d3c8fcf2", 
+    "uid": "de20de50-c80c-4812-87d2-e4e260525fb1", 
     "url": null
 }

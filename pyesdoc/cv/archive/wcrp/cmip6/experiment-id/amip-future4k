@@ -15,24 +15,26 @@
         "description": "As CMIP5/CFMIP-2 amipFuture experiment. AMIP experiment where SSTs are subject to a composite SST warming pattern derived from coupled models, scaled to an ice-free ocean mean of 4K", 
         "endYear": "2014", 
         "experiment": "AMIP with patterned 4K SST increase", 
+        "experimentID": "amip-future4K", 
         "minNumberYrsPerSim": "36", 
-        "parentActivityID": "", 
-        "parentExperimentID": "", 
+        "parentActivityID": "no parent", 
+        "parentExperimentID": "no parent", 
         "requiredModelComponents": [
             "AGCM"
         ], 
         "startYear": "1979", 
-        "subExperiment": "None", 
-        "subExperimentID": "None", 
+        "subExperimentID": [
+            "none"
+        ], 
         "tier": "1"
     }, 
     "description": null, 
-    "idx": 132, 
+    "idx": 131, 
     "label": "amip-future4K", 
     "name": "amip-future4k", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "463a4dda-3f3d-4da5-a834-4e015f0e51f9", 
+    "uid": "86114a6d-4fcc-4aa5-a9c8-94f8f15ce709", 
     "url": null
 }

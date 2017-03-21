@@ -16,6 +16,7 @@
         "description": "CMIP6 historical", 
         "endYear": "2014", 
         "experiment": "all-forcing simulation of the recent past", 
+        "experimentID": "historical", 
         "minNumberYrsPerSim": "165", 
         "parentActivityID": [
             "CMIP"
@@ -27,17 +28,18 @@
             "AOGCM"
         ], 
         "startYear": "1850", 
-        "subExperiment": "None", 
-        "subExperimentID": "None", 
+        "subExperimentID": [
+            "none"
+        ], 
         "tier": "1"
     }, 
     "description": null, 
-    "idx": 104, 
+    "idx": 103, 
     "label": "historical", 
     "name": "historical", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "60a24e0e-ca7b-46e9-b88e-e00727b3604b", 
+    "uid": "c644b83c-227f-4221-8e93-aa783b2b57a4", 
     "url": null
 }

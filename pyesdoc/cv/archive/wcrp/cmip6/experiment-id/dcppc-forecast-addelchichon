@@ -13,32 +13,35 @@
             "CHEM", 
             "BGC"
         ], 
-        "description": "Effects of volcanoes on decadal prediction and predictability of forced and internal variability components", 
-        "endYear": "2015", 
+        "description": "C3.5 Effects of volcanoes on decadal prediction and predictability of forced and internal variability components. First full hindcast year is 2015", 
+        "endYear": "5 - 10 years after start year", 
         "experiment": "2015 forecast with added El Chichon forcing", 
+        "experimentID": "dcppC-forecast-addElChichon", 
         "minNumberYrsPerSim": "5", 
         "parentActivityID": [
+            "no parent", 
             "DCPP"
         ], 
         "parentExperimentID": [
-            "dcppA-assim", 
-            ""
+            "no parent", 
+            "dcppA-assim"
         ], 
         "requiredModelComponents": [
             "AOGCM"
         ], 
-        "startYear": "2015", 
-        "subExperiment": "initialized near end of year YYYY", 
-        "subExperimentID": "of form: \"sYYYY\"", 
+        "startYear": "2014", 
+        "subExperimentID": [
+            "s2014"
+        ], 
         "tier": "3"
     }, 
     "description": null, 
-    "idx": 196, 
+    "idx": 198, 
     "label": "dcppC-forecast-addElChichon", 
     "name": "dcppc-forecast-addelchichon", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "26d9ed1c-a63e-45ca-9bd2-a683cddd6284", 
+    "uid": "117f4337-c2e2-44ee-b7f3-9936c27ca8ab", 
     "url": null
 }

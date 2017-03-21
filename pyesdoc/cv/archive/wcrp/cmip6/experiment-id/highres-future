@@ -9,14 +9,13 @@
             "HighResMIP"
         ], 
         "additionalAllowedModelComponents": [
-            "AER", 
-            "CHEM", 
-            "BGC"
+            "AER"
         ], 
-        "description": "Coupled integrations, at least one with constant 1950\"s forcing (CTL) and one or more with historic and then RCP4.5 (as in Forced_Atmos_Land, EXP)", 
+        "description": "Coupled integrations with SSP5 forcing (nearest to CMIP5 RCP8.5 (as in highresSST-future)", 
         "endYear": "2050", 
         "experiment": "coupled future 2015-2050 using a scenario as close to CMIP5 RCP8.5 as possible within CMIP6", 
-        "minNumberYrsPerSim": "100", 
+        "experimentID": "highres-future", 
+        "minNumberYrsPerSim": "36", 
         "parentActivityID": [
             "HighResMIP"
         ], 
@@ -27,17 +26,18 @@
             "AOGCM"
         ], 
         "startYear": "2015", 
-        "subExperiment": "None", 
-        "subExperimentID": "None", 
+        "subExperimentID": [
+            "none"
+        ], 
         "tier": "2"
     }, 
     "description": null, 
-    "idx": 181, 
+    "idx": 183, 
     "label": "highres-future", 
     "name": "highres-future", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "959a18d9-8ea6-44a4-b2de-f445a950f43e", 
+    "uid": "0b160c3c-ac5c-450c-8b4d-578d4cceecba", 
     "url": null
 }

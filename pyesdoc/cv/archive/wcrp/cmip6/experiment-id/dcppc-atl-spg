@@ -13,18 +13,27 @@
             "CHEM", 
             "BGC"
         ], 
-        "description": "Mechanisms and predictability of the hiatus and of similar long timescale variations of both signs", 
-        "endYear": "", 
+        "description": "C2.1 (&C2.2) Mechanisms and predictability of the hiatus and of similar long timescale variations of both signs. First full hindcast year follows start year (e.g., for s1992, first full hindcast year is 1993)", 
+        "endYear": "5 - 10 years after start year", 
         "experiment": "predictability of 1990s warming of Atlantic sub-polar gyre", 
-        "minNumberYrsPerSim": "", 
-        "parentActivityID": "", 
-        "parentExperimentID": "", 
+        "experimentID": "dcppC-atl-spg", 
+        "minNumberYrsPerSim": "5", 
+        "parentActivityID": "no parent", 
+        "parentExperimentID": "no parent", 
         "requiredModelComponents": [
             "AOGCM"
         ], 
-        "startYear": "", 
-        "subExperiment": "initialized near end of year YYYY", 
-        "subExperimentID": "of form: \"sYYYY\"", 
+        "startYear": "A year in the range 1992-1999", 
+        "subExperimentID": [
+            "s1992", 
+            "s1993", 
+            "s1994", 
+            "s1995", 
+            "s1996", 
+            "s1997", 
+            "s1998", 
+            "s1999"
+        ], 
         "tier": "3"
     }, 
     "description": null, 
@@ -34,6 +43,6 @@
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "a671e9ed-86b2-46a0-a805-ce2ff56ebc18", 
+    "uid": "1b7352ec-67ff-44e0-b19d-e7eca3807614", 
     "url": null
 }

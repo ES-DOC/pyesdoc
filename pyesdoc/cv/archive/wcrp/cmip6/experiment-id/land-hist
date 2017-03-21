@@ -13,24 +13,26 @@
         "description": "Land only simulations", 
         "endYear": "2014", 
         "experiment": "historical land-only", 
+        "experimentID": "land-hist", 
         "minNumberYrsPerSim": "165", 
-        "parentActivityID": "", 
-        "parentExperimentID": "", 
+        "parentActivityID": "no parent", 
+        "parentExperimentID": "no parent", 
         "requiredModelComponents": [
             "LAND"
         ], 
         "startYear": "1850 or 1700", 
-        "subExperiment": "None", 
-        "subExperimentID": "None", 
+        "subExperimentID": [
+            "none"
+        ], 
         "tier": "1"
     }, 
     "description": null, 
-    "idx": 165, 
+    "idx": 166, 
     "label": "land-hist", 
     "name": "land-hist", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "94c3b0fc-641c-482f-9c8d-c25559af1b18", 
+    "uid": "0369144e-fb58-4fb4-8485-cf1daff9f02a", 
     "url": null
 }

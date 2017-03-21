@@ -16,6 +16,7 @@
         "description": "Idealized deforestation experiment, 20 million km2 forest removed linearly over a period of 50 years, with an additional 30 years with no specified change in forest cover; all other forcings held constant", 
         "endYear": "", 
         "experiment": "idealized transient global deforestation", 
+        "experimentID": "deforest-globe", 
         "minNumberYrsPerSim": "81", 
         "parentActivityID": [
             "CMIP"
@@ -27,17 +28,18 @@
             "AOGCM"
         ], 
         "startYear": "1850", 
-        "subExperiment": "None", 
-        "subExperimentID": "None", 
+        "subExperimentID": [
+            "none"
+        ], 
         "tier": "1"
     }, 
     "description": null, 
-    "idx": 174, 
+    "idx": 176, 
     "label": "deforest-globe", 
     "name": "deforest-globe", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "1e2e9dde-d303-494b-9e0c-7784ca482366", 
+    "uid": "b66d5b59-11bb-4e08-8d61-f7eb55e0d1b1", 
     "url": null
 }

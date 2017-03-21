@@ -16,6 +16,7 @@
         "description": "Historical solar-only transient simulation using settings from CMIP6 historical simulation but fixed GHG&ODS (1850 level)", 
         "endYear": "2020", 
         "experiment": "historical solar-only run", 
+        "experimentID": "hist-sol", 
         "minNumberYrsPerSim": "171", 
         "parentActivityID": [
             "CMIP"
@@ -27,17 +28,18 @@
             "AOGCM"
         ], 
         "startYear": "1850", 
-        "subExperiment": "None", 
-        "subExperimentID": "None", 
+        "subExperimentID": [
+            "none"
+        ], 
         "tier": "3"
     }, 
     "description": null, 
-    "idx": 141, 
+    "idx": 140, 
     "label": "hist-sol", 
     "name": "hist-sol", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "a42ccd6b-fe77-44bd-a13d-206d8757b166", 
+    "uid": "9e528589-be9e-4166-a1a1-3e429729f1c0", 
     "url": null
 }

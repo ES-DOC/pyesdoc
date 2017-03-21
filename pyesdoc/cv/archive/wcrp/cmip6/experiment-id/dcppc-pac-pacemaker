@@ -13,27 +13,34 @@
             "CHEM", 
             "BGC"
         ], 
-        "description": "Mechanisms and predictability of the hiatus and of similar long timescale variations of both signs", 
-        "endYear": "", 
-        "experiment": "pacemaker pacific experiment", 
-        "minNumberYrsPerSim": "", 
-        "parentActivityID": "", 
-        "parentExperimentID": "", 
+        "description": "C1.10 Mechanisms and predictability of the hiatus and of similar long timescale variations of both signs. First full hindcast year is 2015", 
+        "endYear": "2014", 
+        "experiment": "pacemaker Pacific experiment", 
+        "experimentID": "dcppC-pac-pacemaker", 
+        "minNumberYrsPerSim": "65", 
+        "parentActivityID": [
+            "CMIP"
+        ], 
+        "parentExperimentID": [
+            "historical"
+        ], 
         "requiredModelComponents": [
             "AOGCM"
         ], 
-        "startYear": "", 
-        "subExperiment": "initialized near end of year YYYY", 
-        "subExperimentID": "of form: \"sYYYY\"", 
+        "startYear": "either 1910 or 1950", 
+        "subExperimentID": [
+            "s1910", 
+            "s1950"
+        ], 
         "tier": "3"
     }, 
     "description": null, 
-    "idx": 198, 
+    "idx": 200, 
     "label": "dcppC-pac-pacemaker", 
     "name": "dcppc-pac-pacemaker", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "03d00fd8-1bbe-4f7a-bba6-af10278f9eaa", 
+    "uid": "1c457f0e-49f8-40e4-bafd-6c5a1ff565b6", 
     "url": null
 }

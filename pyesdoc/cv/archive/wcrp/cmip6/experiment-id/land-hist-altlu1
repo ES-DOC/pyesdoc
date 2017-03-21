@@ -5,29 +5,33 @@
     "associations": [], 
     "createDate": "0167-03-21 00:00:00+00:00", 
     "data": {
-        "activityID": "LUMIP", 
+        "activityID": [
+            "LUMIP"
+        ], 
         "additionalAllowedModelComponents": "", 
         "description": "Land only simulations", 
         "endYear": "2014", 
         "experiment": "historical land-only alternate land-use history", 
+        "experimentID": "land-hist-altLu1", 
         "minNumberYrsPerSim": "165", 
-        "parentActivityID": "", 
-        "parentExperimentID": "", 
+        "parentActivityID": "no parent", 
+        "parentExperimentID": "no parent", 
         "requiredModelComponents": [
             "LAND"
         ], 
         "startYear": "1850 or 1700", 
-        "subExperiment": "None", 
-        "subExperimentID": "None", 
+        "subExperimentID": [
+            "none"
+        ], 
         "tier": "2"
     }, 
     "description": null, 
-    "idx": 112, 
+    "idx": 111, 
     "label": "land-hist-altLu1", 
     "name": "land-hist-altlu1", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "3c33bfda-1048-4e28-a230-7b97893409f5", 
+    "uid": "179dbe45-354a-46e9-acda-50c1bb196cca", 
     "url": null
 }

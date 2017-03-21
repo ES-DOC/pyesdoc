@@ -15,6 +15,7 @@
         "description": "CMIP6 historical (CO2 emission-driven)", 
         "endYear": "2014", 
         "experiment": "all-forcing simulation of the recent past with atmospheric CO2 concentration calculated", 
+        "experimentID": "esm-hist", 
         "minNumberYrsPerSim": "165", 
         "parentActivityID": [
             "CMIP"
@@ -27,17 +28,18 @@
             "BGC"
         ], 
         "startYear": "1850", 
-        "subExperiment": "None", 
-        "subExperimentID": "None", 
+        "subExperimentID": [
+            "none"
+        ], 
         "tier": "1"
     }, 
     "description": null, 
-    "idx": 169, 
+    "idx": 170, 
     "label": "esm-hist", 
     "name": "esm-hist", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "3f77fc1a-f00a-47d8-b745-3ce958289f3d", 
+    "uid": "e6644c14-8982-4746-b0f4-620dca541172", 
     "url": null
 }

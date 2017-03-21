@@ -5,6 +5,9 @@
     "associations": [], 
     "createDate": "0167-03-21 00:00:00+00:00", 
     "data": {
+        "activityParticipation": [
+            ""
+        ], 
         "aerosol": "MASINGAR mk2r4", 
         "atmosphere": "MRI-AGCM3.5 (320 x 160 TL159; 80 levels; top level 0.01 hPa)", 
         "atmosphericChemistry": "MRI-CCM2.1", 
@@ -18,6 +21,9 @@
         "labelExtended": "MRI-ESM2.0", 
         "landIce": "None", 
         "landSurface": "HAL 1.0", 
+        "nominalResolutionAtmos": "", 
+        "nominalResolutionLandIce": "", 
+        "nominalResolutionOcean": "", 
         "ocean": "MRI.COM4.4 (tripolar primarily 0.5 deg latitude/1 deg longitude with meridional refinement down to 0.3 deg within 10 degrees north and south of the equator; 360 x 364 longitude/latitude; 61 levels; top grid cell 0-2 m)", 
         "oceanBiogeochemistry": "MRI.COM4.4", 
         "releaseYear": "2017", 
@@ -31,6 +37,6 @@
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "b345baea-9557-49e5-b5a4-7fdacf0d10aa", 
+    "uid": "1ce03c75-782b-4458-a9ec-0019a0311ce1", 
     "url": null
 }

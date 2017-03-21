@@ -16,6 +16,7 @@
         "description": "Idealized Northern Hemisphere high-latitude eruption emitting 28.1 Tg of SO2. Experiment initialized from PiControl", 
         "endYear": "", 
         "experiment": "idealized Northern Hemisphere high-latitude eruption emitting 28.1 Tg of SO2", 
+        "experimentID": "volc-long-hlN", 
         "minNumberYrsPerSim": "20", 
         "parentActivityID": [
             "CMIP"
@@ -27,8 +28,9 @@
             "AOGCM"
         ], 
         "startYear": "", 
-        "subExperiment": "None", 
-        "subExperimentID": "None", 
+        "subExperimentID": [
+            "none"
+        ], 
         "tier": "2"
     }, 
     "description": null, 
@@ -38,6 +40,6 @@
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "7e16846d-c551-446d-9e74-74a6410ea7ea", 
+    "uid": "269f8d78-bf88-45b9-ad1e-7b83b9324cf4", 
     "url": null
 }

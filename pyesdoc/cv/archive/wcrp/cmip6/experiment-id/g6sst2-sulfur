@@ -15,15 +15,21 @@
         "description": "Time slice at 2100 (G6sulfur)", 
         "endYear": "", 
         "experiment": "SSTs from year 2020 of SSP5-8.5; forcings and other prescribed conditions from year 2100 of G6sulfur", 
+        "experimentID": "G6SST2-sulfur", 
         "minNumberYrsPerSim": "10", 
-        "parentActivityID": "", 
-        "parentExperimentID": "", 
+        "parentActivityID": [
+            "ScenarioMIP"
+        ], 
+        "parentExperimentID": [
+            "ssp585"
+        ], 
         "requiredModelComponents": [
             "AGCM"
         ], 
         "startYear": "", 
-        "subExperiment": "None", 
-        "subExperimentID": "None", 
+        "subExperimentID": [
+            "none"
+        ], 
         "tier": "2"
     }, 
     "description": null, 
@@ -33,6 +39,6 @@
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "0a8dd6ff-7674-4cbe-8869-d2fafb82f0da", 
+    "uid": "849cfcde-0e50-4111-bb66-1be7961a024f", 
     "url": null
 }

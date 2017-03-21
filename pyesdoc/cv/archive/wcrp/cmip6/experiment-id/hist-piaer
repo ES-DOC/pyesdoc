@@ -15,6 +15,7 @@
         "description": "Historical WMGHG, halocarbon concentrations and O3 precursor emissions, 1850 aerosol precursor emissions", 
         "endYear": "2014", 
         "experiment": "historical forcing, but with pre-industrial aerosol emissions", 
+        "experimentID": "hist-piAer", 
         "minNumberYrsPerSim": "165", 
         "parentActivityID": [
             "CMIP"
@@ -27,17 +28,18 @@
             "AER"
         ], 
         "startYear": "1850", 
-        "subExperiment": "None", 
-        "subExperimentID": "None", 
+        "subExperimentID": [
+            "none"
+        ], 
         "tier": "2"
     }, 
     "description": null, 
-    "idx": 73, 
+    "idx": 72, 
     "label": "hist-piAer", 
     "name": "hist-piaer", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "fff69d4d-9e20-4e92-be24-ef5b9a570a28", 
+    "uid": "b7ee921c-9666-4218-a33e-d86745cdbc45", 
     "url": null
 }

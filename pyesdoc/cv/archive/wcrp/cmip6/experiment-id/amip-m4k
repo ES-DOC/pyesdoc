@@ -15,24 +15,26 @@
         "description": "As amip experiment but SSTs are subject to a uniform cooling of 4K", 
         "endYear": "2014", 
         "experiment": "AMIP with uniform 4K SST decrease", 
+        "experimentID": "amip-m4K", 
         "minNumberYrsPerSim": "36", 
-        "parentActivityID": "", 
-        "parentExperimentID": "", 
+        "parentActivityID": "no parent", 
+        "parentExperimentID": "no parent", 
         "requiredModelComponents": [
             "AGCM"
         ], 
         "startYear": "1979", 
-        "subExperiment": "None", 
-        "subExperimentID": "None", 
+        "subExperimentID": [
+            "none"
+        ], 
         "tier": "2"
     }, 
     "description": null, 
-    "idx": 83, 
+    "idx": 82, 
     "label": "amip-m4K", 
     "name": "amip-m4k", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "643dad36-4565-404a-ae69-81b5c6096b89", 
+    "uid": "cb585f6a-3ea0-4537-9ab2-9499443eb0a7", 
     "url": null
 }

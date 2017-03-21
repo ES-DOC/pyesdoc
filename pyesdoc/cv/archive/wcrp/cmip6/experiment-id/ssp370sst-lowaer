@@ -14,25 +14,31 @@
         "description": "Future SSP3-7.0 with reduced aerosol emissions (from ssp370-lowNTCF), prescribed SSTs", 
         "endYear": "2055", 
         "experiment": "SSP3-7.0, prescribed SSTs, with low aerosol emissions", 
+        "experimentID": "ssp370SST-lowAer", 
         "minNumberYrsPerSim": "41", 
-        "parentActivityID": "", 
-        "parentExperimentID": "", 
+        "parentActivityID": [
+            "ScenarioMIP"
+        ], 
+        "parentExperimentID": [
+            "ssp370"
+        ], 
         "requiredModelComponents": [
             "AGCM", 
             "AER"
         ], 
         "startYear": "2015", 
-        "subExperiment": "None", 
-        "subExperimentID": "None", 
+        "subExperimentID": [
+            "none"
+        ], 
         "tier": "2"
     }, 
     "description": null, 
-    "idx": 59, 
+    "idx": 58, 
     "label": "ssp370SST-lowAer", 
     "name": "ssp370sst-lowaer", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "60731350-2872-4094-86bb-ff6ce26b41c9", 
+    "uid": "fc29b1f7-fd24-4263-bc8b-32e44c85386e", 
     "url": null
 }

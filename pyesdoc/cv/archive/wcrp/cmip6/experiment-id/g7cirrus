@@ -16,7 +16,8 @@
         "description": "Against a background of the ScenarioMIP high forcing, reduce cirrus cloud optical depth by a constant amount", 
         "endYear": "2100", 
         "experiment": "increase cirrus ice crystal fall speed to reduce net forcing in SSP585 by 1 W m-2", 
-        "minNumberYrsPerSim": "81", 
+        "experimentID": "G7cirrus", 
+        "minNumberYrsPerSim": "86", 
         "parentActivityID": [
             "CMIP"
         ], 
@@ -26,18 +27,19 @@
         "requiredModelComponents": [
             "AOGCM"
         ], 
-        "startYear": "2020", 
-        "subExperiment": "None", 
-        "subExperimentID": "None", 
+        "startYear": "2015", 
+        "subExperimentID": [
+            "none"
+        ], 
         "tier": "1"
     }, 
     "description": null, 
-    "idx": 114, 
+    "idx": 113, 
     "label": "G7cirrus", 
     "name": "g7cirrus", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "e8b24bdc-6aa2-48a2-af6b-e4f18bb5bfca", 
+    "uid": "70d1c603-1799-412f-8b12-4008697cdcc5", 
     "url": null
 }

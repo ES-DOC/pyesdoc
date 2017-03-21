@@ -14,16 +14,22 @@
         "description": "Perturbation from 1850 control using 2014 aerosol emissions", 
         "endYear": "", 
         "experiment": "pre-industrial climatological SSTs and forcing, but 2014 aerosol emissions", 
+        "experimentID": "piClim-aer", 
         "minNumberYrsPerSim": "30", 
-        "parentActivityID": "", 
-        "parentExperimentID": "", 
+        "parentActivityID": [
+            "CMIP"
+        ], 
+        "parentExperimentID": [
+            "piControl"
+        ], 
         "requiredModelComponents": [
             "AGCM", 
             "AER"
         ], 
         "startYear": "", 
-        "subExperiment": "None", 
-        "subExperimentID": "None", 
+        "subExperimentID": [
+            "none"
+        ], 
         "tier": "2"
     }, 
     "description": null, 
@@ -33,6 +39,6 @@
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "30d2f972-4439-4b2f-8584-583253113406", 
+    "uid": "2235c0c0-b8d1-4999-b8c6-7f8b103c6eae", 
     "url": null
 }

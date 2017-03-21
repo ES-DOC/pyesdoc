@@ -15,24 +15,26 @@
         "description": "DECK: AMIP", 
         "endYear": "2014", 
         "experiment": "AMIP", 
+        "experimentID": "amip", 
         "minNumberYrsPerSim": "36", 
-        "parentActivityID": "", 
-        "parentExperimentID": "", 
+        "parentActivityID": "no parent", 
+        "parentExperimentID": "no parent", 
         "requiredModelComponents": [
             "AGCM"
         ], 
         "startYear": "1979", 
-        "subExperiment": "None", 
-        "subExperimentID": "None", 
+        "subExperimentID": [
+            "none"
+        ], 
         "tier": "1"
     }, 
     "description": null, 
-    "idx": 245, 
+    "idx": 249, 
     "label": "amip", 
     "name": "amip", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "05de79b3-20f1-40aa-a523-3cc0dc26d0fa", 
+    "uid": "b7222061-d837-44e4-a32e-4fb9f6228159", 
     "url": null
 }

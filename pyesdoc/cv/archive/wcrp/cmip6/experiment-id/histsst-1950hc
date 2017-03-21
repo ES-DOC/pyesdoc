@@ -12,26 +12,28 @@
         "description": "Historical WMGHG concentrations and NTCF emissions, 1950 halocarbon concentrations", 
         "endYear": "2014", 
         "experiment": "historical SSTs and historical forcing, but with1950 halocarbon concentrations", 
+        "experimentID": "histSST-1950HC", 
         "minNumberYrsPerSim": "65", 
-        "parentActivityID": "", 
-        "parentExperimentID": "", 
+        "parentActivityID": "no parent", 
+        "parentExperimentID": "no parent", 
         "requiredModelComponents": [
             "AGCM", 
             "AER", 
             "CHEM"
         ], 
         "startYear": "1950", 
-        "subExperiment": "None", 
-        "subExperimentID": "None", 
+        "subExperimentID": [
+            "none"
+        ], 
         "tier": "1"
     }, 
     "description": null, 
-    "idx": 57, 
+    "idx": 56, 
     "label": "histSST-1950HC", 
     "name": "histsst-1950hc", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "11053465-711b-4a26-8669-f8b1357f5b70", 
+    "uid": "ccd2c2a2-3f8e-4485-ab04-baaaf291c2a8", 
     "url": null
 }

@@ -8,12 +8,12 @@
         "postalAddress": "Centro Euro-Mediterraneo per i Cambiamenti Climatici, Bologna 40127, Italy"
     }, 
     "description": null, 
-    "idx": 8, 
+    "idx": 9, 
     "label": "CMCC", 
     "name": "cmcc", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "b65ea5d5-b4bd-46a4-aeb1-575915425b99", 
+    "uid": "75dcc5ce-1cd7-42f6-b856-588a426e503a", 
     "url": null
 }

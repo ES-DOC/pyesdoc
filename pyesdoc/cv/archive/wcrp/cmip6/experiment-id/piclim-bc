@@ -14,25 +14,31 @@
         "description": "Perturbation from 1850 control using 2014 BC emissions", 
         "endYear": "", 
         "experiment": "pre-industrial climatological SSTs and forcing, but with 2014 black carbon emissions", 
+        "experimentID": "piClim-BC", 
         "minNumberYrsPerSim": "30", 
-        "parentActivityID": "", 
-        "parentExperimentID": "", 
+        "parentActivityID": [
+            "CMIP"
+        ], 
+        "parentExperimentID": [
+            "piControl"
+        ], 
         "requiredModelComponents": [
             "AGCM", 
             "AER"
         ], 
         "startYear": "", 
-        "subExperiment": "None", 
-        "subExperimentID": "None", 
+        "subExperimentID": [
+            "none"
+        ], 
         "tier": "2"
     }, 
     "description": null, 
-    "idx": 202, 
+    "idx": 204, 
     "label": "piClim-BC", 
     "name": "piclim-bc", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "fa173fd3-c7f1-4a2b-bed1-eccdfc86bb12", 
+    "uid": "57c8b0b6-cbc2-4a40-9d5e-5174ade62f64", 
     "url": null
 }

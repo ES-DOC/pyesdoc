@@ -15,6 +15,7 @@
         "description": "Radiatively-coupled specified concentration simulation in which CO2 increases at a rate of 1% per year until quadrupling", 
         "endYear": "", 
         "experiment": "radiatively-coupled version of 1 percent per year increasing CO2 experiment", 
+        "experimentID": "1pctCO2-rad", 
         "minNumberYrsPerSim": "150", 
         "parentActivityID": [
             "CMIP"
@@ -27,17 +28,18 @@
             "BGC"
         ], 
         "startYear": "", 
-        "subExperiment": "None", 
-        "subExperimentID": "None", 
+        "subExperimentID": [
+            "none"
+        ], 
         "tier": "2"
     }, 
     "description": null, 
-    "idx": 216, 
+    "idx": 218, 
     "label": "1pctCO2-rad", 
     "name": "1pctco2-rad", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "271952f5-ad4d-4242-a807-f020c1f0e030", 
+    "uid": "82e4c18e-ce80-49b6-b18f-5d4fb081fdab", 
     "url": null
 }

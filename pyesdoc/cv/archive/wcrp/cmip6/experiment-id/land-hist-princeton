@@ -12,24 +12,26 @@
         "description": "Land only simulations", 
         "endYear": "2014", 
         "experiment": "as land-hist with Princeton forcings", 
+        "experimentID": "land-hist-princeton", 
         "minNumberYrsPerSim": "165", 
-        "parentActivityID": "", 
-        "parentExperimentID": "", 
+        "parentActivityID": "no parent", 
+        "parentExperimentID": "no parent", 
         "requiredModelComponents": [
             "LAND"
         ], 
         "startYear": "1850", 
-        "subExperiment": "None", 
-        "subExperimentID": "None", 
+        "subExperimentID": [
+            "none"
+        ], 
         "tier": "2"
     }, 
     "description": null, 
-    "idx": 136, 
+    "idx": 135, 
     "label": "land-hist-princeton", 
     "name": "land-hist-princeton", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "cf280846-616a-4f4c-81ba-27d7f7d1e8ef", 
+    "uid": "1b5ba25b-67bb-47f7-95a9-c523ea3a6554", 
     "url": null
 }

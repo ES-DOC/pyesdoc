@@ -15,6 +15,7 @@
         "description": "Fully-coupled specified concentration simulation in which CO2 increases at a rate of 1% per year until quadrupling, plus an additional scenario of anthropogenic nitrogen deposition", 
         "endYear": "", 
         "experiment": "1 percent per year increasing CO2 experiment with increasing N-deposition", 
+        "experimentID": "1pctCO2Ndep", 
         "minNumberYrsPerSim": "150", 
         "parentActivityID": [
             "CMIP"
@@ -27,17 +28,18 @@
             "BGC"
         ], 
         "startYear": "", 
-        "subExperiment": "None", 
-        "subExperimentID": "None", 
+        "subExperimentID": [
+            "none"
+        ], 
         "tier": "2"
     }, 
     "description": null, 
-    "idx": 177, 
+    "idx": 179, 
     "label": "1pctCO2Ndep", 
     "name": "1pctco2ndep", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "9c085dc1-3623-485d-bbce-51c6707195f4", 
+    "uid": "2578f8fc-7e99-48e9-9a7a-b559df56aca5", 
     "url": null
 }

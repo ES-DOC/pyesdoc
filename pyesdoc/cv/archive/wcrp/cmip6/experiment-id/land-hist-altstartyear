@@ -12,24 +12,26 @@
         "description": "Same as land-hist except starting from either 1700 (for models that typically start in 1850) or 1850 (for models that typically start in 1700)", 
         "endYear": "2014", 
         "experiment": "historical land-only alternate start year", 
+        "experimentID": "land-hist-altStartYear", 
         "minNumberYrsPerSim": "165", 
-        "parentActivityID": "", 
-        "parentExperimentID": "", 
+        "parentActivityID": "no parent", 
+        "parentExperimentID": "no parent", 
         "requiredModelComponents": [
             "LAND"
         ], 
         "startYear": "1850 or 1700", 
-        "subExperiment": "None", 
-        "subExperimentID": "None", 
+        "subExperimentID": [
+            "none"
+        ], 
         "tier": "1"
     }, 
     "description": null, 
-    "idx": 77, 
+    "idx": 76, 
     "label": "land-hist-altStartYear", 
     "name": "land-hist-altstartyear", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "2a8385a2-f19f-40ca-b969-70817915f71e", 
+    "uid": "500f4b19-ab41-499f-bb31-e44fb4874e2b", 
     "url": null
 }

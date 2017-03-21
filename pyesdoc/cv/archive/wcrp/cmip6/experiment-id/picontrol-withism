@@ -16,25 +16,27 @@
         "description": "Pre-industrial control simulation that includes interactive ice sheets", 
         "endYear": "", 
         "experiment": "preindustrial control with interactive ice sheet", 
+        "experimentID": "piControl-withism", 
         "minNumberYrsPerSim": "500", 
-        "parentActivityID": "", 
-        "parentExperimentID": "", 
+        "parentActivityID": "no parent", 
+        "parentExperimentID": "no parent", 
         "requiredModelComponents": [
             "AOGCM", 
             "ISM"
         ], 
         "startYear": "", 
-        "subExperiment": "None", 
-        "subExperimentID": "None", 
+        "subExperimentID": [
+            "none"
+        ], 
         "tier": "1"
     }, 
     "description": null, 
-    "idx": 179, 
+    "idx": 181, 
     "label": "piControl-withism", 
     "name": "picontrol-withism", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "93d942e7-dc53-4bf2-961f-1910fb6b58e8", 
+    "uid": "8c878a97-a6f4-497e-82c6-e6834c0ead0d", 
     "url": null
 }

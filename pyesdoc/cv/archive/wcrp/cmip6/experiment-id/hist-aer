@@ -16,6 +16,7 @@
         "description": "Historical anthropogenic-Aerosols-only run", 
         "endYear": "2020", 
         "experiment": "historical anthropogenic aerosols-only run", 
+        "experimentID": "hist-aer", 
         "minNumberYrsPerSim": "171", 
         "parentActivityID": [
             "CMIP"
@@ -27,17 +28,18 @@
             "AOGCM"
         ], 
         "startYear": "1850", 
-        "subExperiment": "None", 
-        "subExperimentID": "None", 
+        "subExperimentID": [
+            "none"
+        ], 
         "tier": "1"
     }, 
     "description": null, 
-    "idx": 122, 
+    "idx": 121, 
     "label": "hist-aer", 
     "name": "hist-aer", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "e8d96733-f5d4-4160-9d2d-1d9f06d85488", 
+    "uid": "568d3ba6-0889-4c10-8419-92944f421615", 
     "url": null
 }

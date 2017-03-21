@@ -16,6 +16,7 @@
         "description": "Historical simulation that includes interactive ice sheets. Set up follows the historical experiment", 
         "endYear": "2014", 
         "experiment": "historical with interactive ice sheet", 
+        "experimentID": "historical-withism", 
         "minNumberYrsPerSim": "165", 
         "parentActivityID": [
             "ISMIP6"
@@ -28,17 +29,18 @@
             "ISM"
         ], 
         "startYear": "1850", 
-        "subExperiment": "None", 
-        "subExperimentID": "None", 
+        "subExperimentID": [
+            "none"
+        ], 
         "tier": "2"
     }, 
     "description": null, 
-    "idx": 173, 
+    "idx": 175, 
     "label": "historical-withism", 
     "name": "historical-withism", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "7875e2f7-ab31-4ea6-b30c-996063358277", 
+    "uid": "755deaf7-a974-4bd3-a4c6-0fda216694b3", 
     "url": null
 }

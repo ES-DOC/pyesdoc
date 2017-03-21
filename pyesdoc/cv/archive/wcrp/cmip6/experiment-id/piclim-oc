@@ -5,24 +5,31 @@
     "associations": [], 
     "createDate": "0167-03-21 00:00:00+00:00", 
     "data": {
-        "activityID": "AerChemMIP", 
+        "activityID": [
+            "AerChemMIP"
+        ], 
         "additionalAllowedModelComponents": [
-            "AGCM", 
             "CHEM"
         ], 
         "description": "Perturbation from 1850 control using 2014 OC emissions", 
         "endYear": "", 
         "experiment": "pre-industrial climatological SSTs and forcing, but with 2014 organic carbon emissions", 
+        "experimentID": "piClim-OC", 
         "minNumberYrsPerSim": "30", 
-        "parentActivityID": "", 
-        "parentExperimentID": "", 
+        "parentActivityID": [
+            "CMIP"
+        ], 
+        "parentExperimentID": [
+            "piControl"
+        ], 
         "requiredModelComponents": [
             "AGCM", 
             "AER"
         ], 
         "startYear": "", 
-        "subExperiment": "None", 
-        "subExperimentID": "None", 
+        "subExperimentID": [
+            "none"
+        ], 
         "tier": "3"
     }, 
     "description": null, 
@@ -32,6 +39,6 @@
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "6bef0e75-1a9e-415b-871b-eb5d019562f5", 
+    "uid": "67621d3b-2f11-4de2-8314-b4d5003fd6ac", 
     "url": null
 }

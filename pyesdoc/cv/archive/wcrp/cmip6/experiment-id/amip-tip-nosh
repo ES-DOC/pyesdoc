@@ -15,24 +15,26 @@
         "description": "Surface sensible heat released at the elevation above 500m over the TIP is not allowed to heat the atmosphere. Same model as DECK", 
         "endYear": "2014", 
         "experiment": "same as \"amip\" run, but sensible heat not allowed for elevations of the Tibetan-Iranian Plateau and Himalayas above 500m", 
-        "minNumberYrsPerSim": "35", 
-        "parentActivityID": "", 
-        "parentExperimentID": "", 
+        "experimentID": "amip-TIP-nosh", 
+        "minNumberYrsPerSim": "36", 
+        "parentActivityID": "no parent", 
+        "parentExperimentID": "no parent", 
         "requiredModelComponents": [
             "AGCM"
         ], 
         "startYear": "1979", 
-        "subExperiment": "None", 
-        "subExperimentID": "None", 
+        "subExperimentID": [
+            "none"
+        ], 
         "tier": "3"
     }, 
     "description": null, 
-    "idx": 74, 
+    "idx": 73, 
     "label": "amip-TIP-nosh", 
     "name": "amip-tip-nosh", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "3c8dcdb1-f387-4b14-8a1e-1972087f09e8", 
+    "uid": "34dcf7fa-39ca-4daa-a733-4b754ead31fa", 
     "url": null
 }

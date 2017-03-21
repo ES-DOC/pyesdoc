@@ -9,27 +9,29 @@
             "OMIP"
         ], 
         "additionalAllowedModelComponents": "", 
-        "description": "Same as the omipv2 experiment except that it is not initialized with observed climatologies; rather it is initialized with results from at least a 2000-year spin up of the coupled physical-biogeochemical models. Also it includes radiocarbon to evaluate deep-ocean circulation", 
-        "endYear": "310", 
-        "experiment": "OMIP experiment forced by JRA-55 atmospheric data set and initialized from at least a 2000-year spin up of the coupled physical-biogeochemical model", 
-        "minNumberYrsPerSim": "310", 
-        "parentActivityID": "", 
-        "parentExperimentID": "", 
+        "description": "Same as the omip2 experiment except that it is not initialized with observed climatologies; rather it is initialized with results from at least a 2000-year spin up of the coupled physical-biogeochemical models. The spin up simulations may be made with the classic online or offline approach, or with tracer-acceleration techniques or fast solvers. If an online approach is used, at the end of the 5th cycle ofthe JRA-55do forcing, the model's physical fields should be reinitialized to the values at the start of the 3rd cycle in order to avoid long-term drift in those fields and to assure that they will not diverge greatly from physical fields in the omip2 simulation. The spin up also includes radiocarbon to evaluate deep-ocean circulation", 
+        "endYear": "", 
+        "experiment": "OMIP experiment forced by JRA-55do atmospheric data set and initialized from at least a 2000-year spin up of the coupled physical-biogeochemical model", 
+        "experimentID": "omip2-spunup", 
+        "minNumberYrsPerSim": "295", 
+        "parentActivityID": "no parent", 
+        "parentExperimentID": "no parent", 
         "requiredModelComponents": [
             "OGCM"
         ], 
-        "startYear": "1", 
-        "subExperiment": "None", 
-        "subExperimentID": "None", 
+        "startYear": "", 
+        "subExperimentID": [
+            "none"
+        ], 
         "tier": "3"
     }, 
     "description": null, 
-    "idx": 229, 
+    "idx": 232, 
     "label": "omip2-spunup", 
     "name": "omip2-spunup", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "d184a6c4-5bb7-4337-a972-25056e6b3712", 
+    "uid": "d09446ff-207c-49d5-b2fc-34ef73b0dc2a", 
     "url": null
 }

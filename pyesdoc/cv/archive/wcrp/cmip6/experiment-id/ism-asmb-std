@@ -8,25 +8,25 @@
         "activityID": [
             "ISMIP6"
         ], 
-        "additionalAllowedModelComponents": [
-            ""
-        ], 
+        "additionalAllowedModelComponents": "", 
         "description": "Offline ice sheet simulation with synthetic atmospheric dataset to explore the uncertainty in sea level due to ice sheet initialization", 
         "endYear": "", 
         "experiment": "offline ice sheet forced by initMIP synthetic atmospheric experiment", 
+        "experimentID": "ism-asmb-std", 
         "minNumberYrsPerSim": "100", 
         "parentActivityID": [
-            "ISMIP"
+            "ISMIP6"
         ], 
         "parentExperimentID": [
-            ""
+            "ism-ctrl-std"
         ], 
         "requiredModelComponents": [
             "ISM"
         ], 
         "startYear": "", 
-        "subExperiment": "None", 
-        "subExperimentID": "None", 
+        "subExperimentID": [
+            "none"
+        ], 
         "tier": "1"
     }, 
     "description": null, 
@@ -36,6 +36,6 @@
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "f947a73d-cf81-453d-a646-e1e273867a76", 
+    "uid": "3b234fe0-f3af-412e-b3bb-7095f245332f", 
     "url": null
 }

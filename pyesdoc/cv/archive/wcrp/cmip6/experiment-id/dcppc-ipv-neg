@@ -13,27 +13,33 @@
             "CHEM", 
             "BGC"
         ], 
-        "description": "Mechanisms and predictability of the hiatus and of similar long timescale variations of both signs", 
+        "description": "C1.6 Mechanisms and predictability of the hiatus and of similar long timescale variations of both signs", 
         "endYear": "", 
         "experiment": "idealized negative IPV anomaly pattern", 
-        "minNumberYrsPerSim": "25", 
-        "parentActivityID": "", 
-        "parentExperimentID": "", 
+        "experimentID": "dcppC-ipv-neg", 
+        "minNumberYrsPerSim": "10", 
+        "parentActivityID": [
+            "CMIP"
+        ], 
+        "parentExperimentID": [
+            "piControl"
+        ], 
         "requiredModelComponents": [
             "AOGCM"
         ], 
-        "startYear": "control", 
-        "subExperiment": "initialized near end of year YYYY", 
-        "subExperimentID": "of form: \"sYYYY\"", 
+        "startYear": "", 
+        "subExperimentID": [
+            "none"
+        ], 
         "tier": "1"
     }, 
     "description": null, 
-    "idx": 127, 
+    "idx": 126, 
     "label": "dcppC-ipv-neg", 
     "name": "dcppc-ipv-neg", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "8bdf8d12-51c8-4ab8-a38c-d596bb41028d", 
+    "uid": "bd3c9d6c-5197-4718-971c-f9cae52636ae", 
     "url": null
 }

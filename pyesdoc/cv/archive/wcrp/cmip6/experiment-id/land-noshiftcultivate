@@ -12,24 +12,26 @@
         "description": "Same as land-hist except shifting cultivation turned off. An additional LUC transitions dataset will be provided as a data layer within LUMIP LUH2 dataset with shifting cultivation deactivated", 
         "endYear": "2014", 
         "experiment": "historical land-only with shifting cultivation turned off", 
+        "experimentID": "land-noShiftCultivate", 
         "minNumberYrsPerSim": "165", 
-        "parentActivityID": "", 
-        "parentExperimentID": "", 
+        "parentActivityID": "no parent", 
+        "parentExperimentID": "no parent", 
         "requiredModelComponents": [
             "LAND"
         ], 
         "startYear": "1850 or 1700", 
-        "subExperiment": "None", 
-        "subExperimentID": "None", 
+        "subExperimentID": [
+            "none"
+        ], 
         "tier": "2"
     }, 
     "description": null, 
-    "idx": 95, 
+    "idx": 94, 
     "label": "land-noShiftCultivate", 
     "name": "land-noshiftcultivate", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "4356185f-e6fa-4d13-a078-153372bdeac8", 
+    "uid": "004e68c7-6c04-4ba1-94bf-614be417ea77", 
     "url": null
 }

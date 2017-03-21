@@ -15,25 +15,27 @@
         "description": "Historical WMGHG concentrations and halocarbons emissions, 1850 NTCF emissions, prescribed SSTs", 
         "endYear": "2014", 
         "experiment": "historical SSTs and historical forcing, but with pre-industrial NTCF emissions", 
+        "experimentID": "histSST-piNTCF", 
         "minNumberYrsPerSim": "165", 
-        "parentActivityID": "", 
-        "parentExperimentID": "", 
+        "parentActivityID": "no parent", 
+        "parentExperimentID": "no parent", 
         "requiredModelComponents": [
             "AGCM", 
             "AER"
         ], 
         "startYear": "1850", 
-        "subExperiment": "None", 
-        "subExperimentID": "None", 
+        "subExperimentID": [
+            "none"
+        ], 
         "tier": "1"
     }, 
     "description": null, 
-    "idx": 233, 
+    "idx": 237, 
     "label": "histSST-piNTCF", 
     "name": "histsst-pintcf", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "719e6112-c320-4a01-8a63-488554fbcc57", 
+    "uid": "d175d721-218e-4239-9759-037453704a42", 
     "url": null
 }

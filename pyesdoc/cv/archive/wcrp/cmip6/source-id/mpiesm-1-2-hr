@@ -5,6 +5,9 @@
     "associations": [], 
     "createDate": "0167-03-21 00:00:00+00:00", 
     "data": {
+        "activityParticipation": [
+            ""
+        ], 
         "aerosol": "None, prescribed MACv2-SP", 
         "atmosphere": "ECHAM6.3 (spectral T127; 384 x 192 longitude/latitude; 95 levels; top level 0.01 hPa)", 
         "atmosphericChemistry": "None", 
@@ -18,6 +21,9 @@
         "labelExtended": "dynamic vegetation and nitrogen cycle switched off", 
         "landIce": "None/prescribed", 
         "landSurface": "JSBACH3.2", 
+        "nominalResolutionAtmos": "", 
+        "nominalResolutionLandIce": "", 
+        "nominalResolutionOcean": "", 
         "ocean": "MPIOM1.63 (tripolar TP04; approximately 0.4deg latitude/longitude; 40 levels; top grid cell 0-12 m)", 
         "oceanBiogeochemistry": "HAMOCC", 
         "releaseYear": "2017", 
@@ -31,6 +37,6 @@
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "8548e534-d1b6-4a5e-b7f0-a7bba4426c5c", 
+    "uid": "69a1ba35-0448-4084-be4a-75e9f5d9b0f1", 
     "url": null
 }

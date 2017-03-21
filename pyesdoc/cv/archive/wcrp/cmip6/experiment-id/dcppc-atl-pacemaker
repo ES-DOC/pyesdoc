@@ -13,27 +13,34 @@
             "CHEM", 
             "BGC"
         ], 
-        "description": "Mechanisms and predictability of the hiatus and of similar long timescale variations of both signs", 
-        "endYear": "", 
-        "experiment": "pacemaker atlantic experiment", 
-        "minNumberYrsPerSim": "", 
-        "parentActivityID": "", 
-        "parentExperimentID": "", 
+        "description": "C1.11 Mechanisms and predictability of the hiatus and of similar long timescale variations of both signs", 
+        "endYear": "2014", 
+        "experiment": "pacemaker Atlantic experiment", 
+        "experimentID": "dcppC-atl-pacemaker", 
+        "minNumberYrsPerSim": "65", 
+        "parentActivityID": [
+            "CMIP"
+        ], 
+        "parentExperimentID": [
+            "historical"
+        ], 
         "requiredModelComponents": [
             "AOGCM"
         ], 
-        "startYear": "", 
-        "subExperiment": "initialized near end of year YYYY", 
-        "subExperimentID": "of form: \"sYYYY\"", 
+        "startYear": "1910 or 1950", 
+        "subExperimentID": [
+            "s1910", 
+            "s1950"
+        ], 
         "tier": "3"
     }, 
     "description": null, 
-    "idx": 148, 
+    "idx": 147, 
     "label": "dcppC-atl-pacemaker", 
     "name": "dcppc-atl-pacemaker", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "2059dc4a-462b-4a4b-a9f3-484bca329b7f", 
+    "uid": "d7d4cb86-551d-4955-8bf4-8944d57f3ff1", 
     "url": null
 }

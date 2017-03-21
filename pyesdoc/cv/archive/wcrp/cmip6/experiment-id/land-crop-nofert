@@ -12,24 +12,26 @@
         "description": "Same as land-hist but with fertilization rates and area held at 1850 levels/distribution", 
         "endYear": "2014", 
         "experiment": "historical land-only with no fertilizer", 
+        "experimentID": "land-crop-noFert", 
         "minNumberYrsPerSim": "165", 
-        "parentActivityID": "", 
-        "parentExperimentID": "", 
+        "parentActivityID": "no parent", 
+        "parentExperimentID": "no parent", 
         "requiredModelComponents": [
             "LAND"
         ], 
         "startYear": "1850 or 1700", 
-        "subExperiment": "None", 
-        "subExperimentID": "None", 
+        "subExperimentID": [
+            "none"
+        ], 
         "tier": "2"
     }, 
     "description": null, 
-    "idx": 234, 
+    "idx": 238, 
     "label": "land-crop-noFert", 
     "name": "land-crop-nofert", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "1c8d1ae7-6d36-451e-85d3-aacee8b234b8", 
+    "uid": "6de9043a-3ce7-46e6-a098-2e5989ffe14b", 
     "url": null
 }

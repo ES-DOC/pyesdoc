@@ -5,6 +5,9 @@
     "associations": [], 
     "createDate": "0167-03-21 00:00:00+00:00", 
     "data": {
+        "activityParticipation": [
+            ""
+        ], 
         "aerosol": "UKCA-GLOMAP-mode (horizontal resolution degraded relative to that used for atmosphere physics)", 
         "atmosphere": "MetUM-HadGEM3-GA7.1 (432 x 324 N216; 85 levels; top level 85km)", 
         "atmosphericChemistry": "UKCA-StratTrop (horizontal resolution degraded relative to that used for atmosphere physics)", 
@@ -19,6 +22,9 @@
         "labelExtended": "UKESM1.0-N216ORCA025hybrid", 
         "landIce": "BISICLES (only active in ISMIP experiments)", 
         "landSurface": "JULES-HadGEM3-GL7.1", 
+        "nominalResolutionAtmos": "", 
+        "nominalResolutionLandIce": "", 
+        "nominalResolutionOcean": "", 
         "ocean": "NEMO-HadGEM3-GO6.0 (ORCA025 tripolar primarily 0.25 deg latitude/longitude; 75 levels; top grid cell 0-1m)", 
         "oceanBiogeochemistry": "MEDUSA2 (horizontal resolution degraded relative to that used for ocean physics)", 
         "releaseYear": "2018", 
@@ -26,12 +32,12 @@
         "sourceID": "UKESM1-0-MMh"
     }, 
     "description": null, 
-    "idx": 35, 
+    "idx": 38, 
     "label": "UKESM1-0-MMh", 
     "name": "ukesm1-0-mmh", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "95bf8c09-8c96-4b2f-a4ca-c4955c5cb6d0", 
+    "uid": "429ef364-740d-4227-a4a8-ad7c81cab8ba", 
     "url": null
 }

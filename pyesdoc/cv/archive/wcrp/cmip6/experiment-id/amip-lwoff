@@ -15,24 +15,26 @@
         "description": "As amip experiment, but with cloud-radiative effects switched off in the LW radiation code", 
         "endYear": "2014", 
         "experiment": "AMIP experiment with longwave cloud-radiative effects off", 
+        "experimentID": "amip-lwoff", 
         "minNumberYrsPerSim": "36", 
-        "parentActivityID": "", 
-        "parentExperimentID": "", 
+        "parentActivityID": "no parent", 
+        "parentExperimentID": "no parent", 
         "requiredModelComponents": [
             "AGCM"
         ], 
         "startYear": "1979", 
-        "subExperiment": "None", 
-        "subExperimentID": "None", 
+        "subExperimentID": [
+            "none"
+        ], 
         "tier": "2"
     }, 
     "description": null, 
-    "idx": 81, 
+    "idx": 80, 
     "label": "amip-lwoff", 
     "name": "amip-lwoff", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "2d04e8d2-28a0-4f00-9f1d-292ed2ebc647", 
+    "uid": "9657eab6-2398-4864-8716-c72e817201b8", 
     "url": null
 }

@@ -15,24 +15,26 @@
         "description": "Identical to standard AMIP experiment but from 1870-present with constant pre-industrial forcing levels (anthropogenic and natural)", 
         "endYear": "2014", 
         "experiment": "AMIP SSTs with pre-industrial anthropogenic and natural forcing", 
+        "experimentID": "amip-piForcing", 
         "minNumberYrsPerSim": "145", 
-        "parentActivityID": "", 
-        "parentExperimentID": "", 
+        "parentActivityID": "no parent", 
+        "parentExperimentID": "no parent", 
         "requiredModelComponents": [
             "AGCM"
         ], 
         "startYear": "1870", 
-        "subExperiment": "None", 
-        "subExperimentID": "None", 
+        "subExperimentID": [
+            "none"
+        ], 
         "tier": "2"
     }, 
     "description": null, 
-    "idx": 222, 
+    "idx": 224, 
     "label": "amip-piForcing", 
     "name": "amip-piforcing", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "c04754ed-11fb-47c5-8012-0208a0e778b9", 
+    "uid": "6778683e-0981-48a6-a227-75c6fc455721", 
     "url": null
 }

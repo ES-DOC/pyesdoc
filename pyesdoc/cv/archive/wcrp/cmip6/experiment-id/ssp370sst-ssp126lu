@@ -14,25 +14,31 @@
         "description": "Future SSP3-7.0 with low land use change (from ssp126), prescribed SSTs", 
         "endYear": "2055", 
         "experiment": "SSP3-7.0, prescribed SSTs, with SSP1-2.6 land use", 
+        "experimentID": "ssp370SST-ssp126Lu", 
         "minNumberYrsPerSim": "41", 
-        "parentActivityID": "", 
-        "parentExperimentID": "", 
+        "parentActivityID": [
+            "ScenarioMIP"
+        ], 
+        "parentExperimentID": [
+            "ssp370"
+        ], 
         "requiredModelComponents": [
             "AGCM", 
             "AER"
         ], 
         "startYear": "2015", 
-        "subExperiment": "None", 
-        "subExperimentID": "None", 
+        "subExperimentID": [
+            "none"
+        ], 
         "tier": "1"
     }, 
     "description": null, 
-    "idx": 103, 
+    "idx": 102, 
     "label": "ssp370SST-ssp126Lu", 
     "name": "ssp370sst-ssp126lu", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "d8ceb177-e61a-472e-9922-497cf78c2671", 
+    "uid": "891008cb-9282-4b79-8d01-076ae5c03450", 
     "url": null
 }

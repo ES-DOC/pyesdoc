@@ -16,6 +16,7 @@
         "description": "Historical well-mixed GHG-only run. Models with interactive chemistry schemes should either turn off the chemistry or use a preindustrial climatology of stratospheric and tropospheric ozone in their radiation schemes. This will ensure that ozone is fixed in all these simulations, and simulated responses in models with and without coupled chemistry are comparable", 
         "endYear": "2020", 
         "experiment": "historical well-mixed GHG-only run", 
+        "experimentID": "hist-GHG", 
         "minNumberYrsPerSim": "171", 
         "parentActivityID": [
             "CMIP"
@@ -27,17 +28,18 @@
             "AOGCM"
         ], 
         "startYear": "1850", 
-        "subExperiment": "None", 
-        "subExperimentID": "None", 
+        "subExperimentID": [
+            "none"
+        ], 
         "tier": "1"
     }, 
     "description": null, 
-    "idx": 78, 
+    "idx": 77, 
     "label": "hist-GHG", 
     "name": "hist-ghg", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "cf98fa3d-ac9c-4672-8a17-43d0ad139630", 
+    "uid": "4de4c7a8-5e69-4754-870f-0cc8036b2fcd", 
     "url": null
 }

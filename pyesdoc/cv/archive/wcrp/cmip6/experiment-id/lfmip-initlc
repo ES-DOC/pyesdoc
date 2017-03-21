@@ -16,6 +16,7 @@
         "description": "Initialized pseudo-observations land", 
         "endYear": "2014", 
         "experiment": "initialized from \"historical\" run year 1980, but with land conditions initialized from pseudo-observations", 
+        "experimentID": "lfmip-initLC", 
         "minNumberYrsPerSim": "35", 
         "parentActivityID": [
             "CMIP"
@@ -27,17 +28,18 @@
             "AOGCM"
         ], 
         "startYear": "1980", 
-        "subExperiment": "None", 
-        "subExperimentID": "None", 
+        "subExperimentID": [
+            "none"
+        ], 
         "tier": "2"
     }, 
     "description": null, 
-    "idx": 204, 
+    "idx": 206, 
     "label": "lfmip-initLC", 
     "name": "lfmip-initlc", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "2dcf7e02-789c-4bc4-a974-b812a3e67419", 
+    "uid": "1097e53f-f910-4cc1-8c79-61b2a0eaf832", 
     "url": null
 }

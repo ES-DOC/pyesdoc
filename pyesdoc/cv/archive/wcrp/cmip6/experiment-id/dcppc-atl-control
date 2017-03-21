@@ -13,27 +13,33 @@
             "CHEM", 
             "BGC"
         ], 
-        "description": "Mechanisms and predictability of the hiatus and of similar long timescale variations of both signs", 
-        "endYear": "2015", 
-        "experiment": "idealized Atlantic control", 
-        "minNumberYrsPerSim": "66", 
-        "parentActivityID": "", 
-        "parentExperimentID": "", 
+        "description": "C1.1 Mechanisms and predictability of the hiatus and of similar long timescale variations of both signs", 
+        "endYear": "", 
+        "experiment": "Idealized Atlantic control", 
+        "experimentID": "dcppC-atl-control", 
+        "minNumberYrsPerSim": "10", 
+        "parentActivityID": [
+            "CMIP"
+        ], 
+        "parentExperimentID": [
+            "piControl"
+        ], 
         "requiredModelComponents": [
             "AOGCM"
         ], 
-        "startYear": "1950 (from 1920 if possible)", 
-        "subExperiment": "initialized near end of year YYYY", 
-        "subExperimentID": "of form: \"sYYYY\"", 
+        "startYear": "", 
+        "subExperimentID": [
+            "none"
+        ], 
         "tier": "1"
     }, 
     "description": null, 
-    "idx": 207, 
+    "idx": 209, 
     "label": "dcppC-atl-control", 
     "name": "dcppc-atl-control", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "a97fd72f-28da-479e-89e1-bb516b47dbb4", 
+    "uid": "8975cb1f-926e-4a2a-83f1-bb12e448b84c", 
     "url": null
 }

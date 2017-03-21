@@ -15,24 +15,26 @@
         "description": "The topography of the highlands in Africa, N. America and S. America TP is modified by setting surface elevations to a certain height (500m). Same model as DECK", 
         "endYear": "2014", 
         "experiment": "same as \"amip\" run, but surface elevations of the East African Highlands in Africa, Sierra Madre in N. America and Andes in S. America reduced to 500m", 
-        "minNumberYrsPerSim": "35", 
-        "parentActivityID": "", 
-        "parentExperimentID": "", 
+        "experimentID": "amip-hld", 
+        "minNumberYrsPerSim": "36", 
+        "parentActivityID": "no parent", 
+        "parentExperimentID": "no parent", 
         "requiredModelComponents": [
             "AGCM"
         ], 
         "startYear": "1979", 
-        "subExperiment": "None", 
-        "subExperimentID": "None", 
+        "subExperimentID": [
+            "none"
+        ], 
         "tier": "3"
     }, 
     "description": null, 
-    "idx": 125, 
+    "idx": 124, 
     "label": "amip-hld", 
     "name": "amip-hld", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "93803949-fc3e-4396-8e00-94c4dd67ee58", 
+    "uid": "af3c7789-a320-446c-a8fb-48b47491aa47", 
     "url": null
 }

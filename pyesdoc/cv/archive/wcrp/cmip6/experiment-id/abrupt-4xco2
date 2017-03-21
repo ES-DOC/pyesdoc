@@ -16,6 +16,7 @@
         "description": "DECK: abrupt4xCO2", 
         "endYear": "", 
         "experiment": "abrupt quadrupling of CO2", 
+        "experimentID": "abrupt-4xCO2", 
         "minNumberYrsPerSim": "150", 
         "parentActivityID": [
             "CMIP"
@@ -27,17 +28,18 @@
             "AOGCM"
         ], 
         "startYear": "", 
-        "subExperiment": "None", 
-        "subExperimentID": "None", 
+        "subExperimentID": [
+            "none"
+        ], 
         "tier": "1"
     }, 
     "description": null, 
-    "idx": 97, 
+    "idx": 96, 
     "label": "abrupt-4xCO2", 
     "name": "abrupt-4xco2", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "b8bc4a6e-6228-4fb8-abb4-9c77ac8f446b", 
+    "uid": "0fcad12d-dc2c-46c2-9695-1b3a10c09977", 
     "url": null
 }

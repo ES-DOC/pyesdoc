@@ -13,27 +13,29 @@
             "CHEM", 
             "BGC"
         ], 
-        "description": "Assimilation runs used to generate initial conditions for hindcasts if used", 
-        "endYear": "", 
-        "experiment": "assimilation run (if available) that is used to generate initial conditions for hindcasts and which parallels the historical simulation and uses the same forcing", 
-        "minNumberYrsPerSim": "", 
-        "parentActivityID": "", 
-        "parentExperimentID": "", 
+        "description": "A2.3 Assimilation runs used to generate initial conditions for hindcasts", 
+        "endYear": "2016", 
+        "experiment": "Assimilation run paralleling the historical simulation, which may be used to generate hindcast initial conditions", 
+        "experimentID": "dcppA-assim", 
+        "minNumberYrsPerSim": "56", 
+        "parentActivityID": "no parent", 
+        "parentExperimentID": "no parent", 
         "requiredModelComponents": [
             "AOGCM"
         ], 
-        "startYear": "", 
-        "subExperiment": "initialized near end of year YYYY", 
-        "subExperimentID": "of form: \"sYYYY\"", 
+        "startYear": "before 1961", 
+        "subExperimentID": [
+            "none"
+        ], 
         "tier": "2"
     }, 
     "description": null, 
-    "idx": 113, 
+    "idx": 112, 
     "label": "dcppA-assim", 
     "name": "dcppa-assim", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "43b027fb-3a06-4c06-ac0c-f410e166899a", 
+    "uid": "1bdd0074-e69a-4cf2-a729-072b9cfde7d3", 
     "url": null
 }

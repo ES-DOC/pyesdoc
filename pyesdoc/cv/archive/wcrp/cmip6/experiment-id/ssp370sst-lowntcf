@@ -15,25 +15,31 @@
         "description": "Future SSP3-7.0 with reduced NTCF emissions, prescribed SSTs", 
         "endYear": "2055", 
         "experiment": "SSP3-7.0, prescribed SSTs, with low NTCF emissions", 
+        "experimentID": "ssp370SST-lowNTCF", 
         "minNumberYrsPerSim": "41", 
-        "parentActivityID": "", 
-        "parentExperimentID": "", 
+        "parentActivityID": [
+            "ScenarioMIP"
+        ], 
+        "parentExperimentID": [
+            "ssp370"
+        ], 
         "requiredModelComponents": [
             "AGCM", 
             "AER"
         ], 
         "startYear": "2015", 
-        "subExperiment": "None", 
-        "subExperimentID": "None", 
+        "subExperimentID": [
+            "none"
+        ], 
         "tier": "1"
     }, 
     "description": null, 
-    "idx": 172, 
+    "idx": 173, 
     "label": "ssp370SST-lowNTCF", 
     "name": "ssp370sst-lowntcf", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "8b0e7c4b-657d-4946-941d-0ab8021f70fc", 
+    "uid": "9ba10b4e-1ade-42a3-8d17-fb31fb1d8965", 
     "url": null
 }

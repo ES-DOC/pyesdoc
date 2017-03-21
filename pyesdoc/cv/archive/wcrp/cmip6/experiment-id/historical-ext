@@ -14,8 +14,9 @@
             "BGC"
         ], 
         "description": "Extension beyond 2014 of the CMIP6 historical", 
-        "endYear": "", 
+        "endYear": "present", 
         "experiment": "post-2014 all-forcing simulation", 
+        "experimentID": "historical-ext", 
         "minNumberYrsPerSim": "1", 
         "parentActivityID": [
             "CMIP"
@@ -27,17 +28,18 @@
             "AOGCM"
         ], 
         "startYear": "2015", 
-        "subExperiment": "None", 
-        "subExperimentID": "None", 
+        "subExperimentID": [
+            "none"
+        ], 
         "tier": "2"
     }, 
     "description": null, 
-    "idx": 209, 
+    "idx": 211, 
     "label": "historical-ext", 
     "name": "historical-ext", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "d3ea9a8c-ea44-4d31-b210-81c6707159e5", 
+    "uid": "f15b75c6-3656-4ed3-8949-34710e3c3f75", 
     "url": null
 }

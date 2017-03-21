@@ -15,24 +15,30 @@
         "description": "As piSST, but with monthly-varying SSTs taken from years 111-140 of each model's own abrupt4xCO2 experiment instead of from piControl. Sea-ice is unchanged from piSST", 
         "endYear": "", 
         "experiment": "as piSST but with SSTs from abrupt4xCO2", 
+        "experimentID": "a4SST", 
         "minNumberYrsPerSim": "30", 
-        "parentActivityID": "", 
-        "parentExperimentID": "", 
+        "parentActivityID": [
+            "CMIP"
+        ], 
+        "parentExperimentID": [
+            "abrupt4xCO2"
+        ], 
         "requiredModelComponents": [
             "AGCM"
         ], 
         "startYear": "", 
-        "subExperiment": "None", 
-        "subExperimentID": "None", 
+        "subExperimentID": [
+            "none"
+        ], 
         "tier": "2"
     }, 
     "description": null, 
-    "idx": 205, 
+    "idx": 207, 
     "label": "a4SST", 
     "name": "a4sst", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "41ed2225-d0e1-4dbf-b73a-b0f500b696f1", 
+    "uid": "d7608730-b474-4960-a6b7-6ca409eeed60", 
     "url": null
 }

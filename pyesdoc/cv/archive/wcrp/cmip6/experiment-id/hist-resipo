@@ -13,31 +13,33 @@
             "CHEM", 
             "BGC"
         ], 
-        "description": "Pacemaker 20th century historical run that includes all forcing as used in CMIP6 Historical Simulation, and the observational historical SST is restored in the tropical lobe of the IPO domain (20degS-20degN, 175degE-75degW). The HadISST data will be used", 
+        "description": "Pacemaker 20th century historical run that includes all forcing as used in CMIP6 Historical Simulation, and the observational historical SST is restored in the tropical lobe of the IPO domain (20degS-20degN, 175degE-75degW)", 
         "endYear": "2014", 
         "experiment": "initialized from \"historical\" run year 1870 and SSTs in tropical lobe of the IPO domain (20degS-20degN, 175degE-75degW) restored to AMIP SSTs with historical forcings", 
-        "minNumberYrsPerSim": "144", 
+        "experimentID": "hist-resIPO", 
+        "minNumberYrsPerSim": "145", 
         "parentActivityID": [
             "CMIP"
         ], 
         "parentExperimentID": [
-            "piControl"
+            "historical"
         ], 
         "requiredModelComponents": [
             "AOGCM"
         ], 
         "startYear": "1870", 
-        "subExperiment": "None", 
-        "subExperimentID": "None", 
+        "subExperimentID": [
+            "none"
+        ], 
         "tier": "2"
     }, 
     "description": null, 
-    "idx": 76, 
+    "idx": 75, 
     "label": "hist-resIPO", 
     "name": "hist-resipo", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "c5e2e904-85d3-48ed-a47b-be0874ed2eb9", 
+    "uid": "9ca1f166-4434-4e1b-b04b-3f5656f754dc", 
     "url": null
 }

@@ -13,27 +13,29 @@
             "CHEM", 
             "BGC"
         ], 
-        "description": "main forcings : ice-sheet; trace gases, orbital parameters dust (forcing, or feedback if dust cycle represented in model)", 
+        "description": "main forcings: ice-sheet; trace gases, astronomical parameters, dust (forcing, or feedback if dust cycle represented in model)", 
         "endYear": "", 
         "experiment": "last glacial maximum", 
+        "experimentID": "lgm", 
         "minNumberYrsPerSim": "100", 
-        "parentActivityID": "", 
-        "parentExperimentID": "", 
+        "parentActivityID": "no parent", 
+        "parentExperimentID": "no parent", 
         "requiredModelComponents": [
             "AOGCM"
         ], 
         "startYear": "", 
-        "subExperiment": "None", 
-        "subExperimentID": "None", 
+        "subExperimentID": [
+            "none"
+        ], 
         "tier": "1"
     }, 
     "description": null, 
-    "idx": 166, 
+    "idx": 167, 
     "label": "lgm", 
     "name": "lgm", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "b89aea7a-e0b6-4316-9b4b-f7164d12fdd6", 
+    "uid": "556b9684-77f5-4afd-83ac-ece7a59f067f", 
     "url": null
 }

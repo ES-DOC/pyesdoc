@@ -15,24 +15,26 @@
         "description": "As CMIP5/CFMIP-2 amip4xCO2 experiment. AMIP experiment where SSTs are held at control values and the CO2 seen by the radiation scheme is quadrupled", 
         "endYear": "2014", 
         "experiment": "AMIP SSTs with 4xCO2", 
+        "experimentID": "amip-4xCO2", 
         "minNumberYrsPerSim": "36", 
-        "parentActivityID": "", 
-        "parentExperimentID": "", 
+        "parentActivityID": "no parent", 
+        "parentExperimentID": "no parent", 
         "requiredModelComponents": [
             "AGCM"
         ], 
         "startYear": "1979", 
-        "subExperiment": "None", 
-        "subExperimentID": "None", 
+        "subExperimentID": [
+            "none"
+        ], 
         "tier": "1"
     }, 
     "description": null, 
-    "idx": 128, 
+    "idx": 127, 
     "label": "amip-4xCO2", 
     "name": "amip-4xco2", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "b0b6091e-56c5-4e75-87e7-3642989b8651", 
+    "uid": "b7ea3427-7da7-42cd-9f1d-3b75e44ee7aa", 
     "url": null
 }

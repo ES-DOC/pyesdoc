@@ -16,6 +16,7 @@
         "description": "Extension of natural-only run under SSP2-4.5", 
         "endYear": "2100", 
         "experiment": "natural-only SSP2-4.5 run", 
+        "experimentID": "ssp245-nat", 
         "minNumberYrsPerSim": "80", 
         "parentActivityID": [
             "DAMIP"
@@ -27,17 +28,18 @@
             "AOGCM"
         ], 
         "startYear": "2021", 
-        "subExperiment": "None", 
-        "subExperimentID": "None", 
+        "subExperimentID": [
+            "none"
+        ], 
         "tier": "3"
     }, 
     "description": null, 
-    "idx": 82, 
+    "idx": 81, 
     "label": "ssp245-nat", 
     "name": "ssp245-nat", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "9df29e2d-9f51-4a8e-9993-f5ac0278f04f", 
+    "uid": "1caa1b26-7f2c-48e0-869a-ac903eeb5545", 
     "url": null
 }

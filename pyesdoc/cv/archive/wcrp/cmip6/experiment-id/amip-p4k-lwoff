@@ -15,24 +15,26 @@
         "description": "As amip-p4K experiment, but with cloud-radiative effects switched off in the LW radiation code", 
         "endYear": "2014", 
         "experiment": "AMIP experiment with uniform 4K SST increase and with longwave cloud radiative effects off", 
+        "experimentID": "amip-p4K-lwoff", 
         "minNumberYrsPerSim": "36", 
-        "parentActivityID": "", 
-        "parentExperimentID": "", 
+        "parentActivityID": "no parent", 
+        "parentExperimentID": "no parent", 
         "requiredModelComponents": [
             "AGCM"
         ], 
         "startYear": "1979", 
-        "subExperiment": "None", 
-        "subExperimentID": "None", 
+        "subExperimentID": [
+            "none"
+        ], 
         "tier": "2"
     }, 
     "description": null, 
-    "idx": 68, 
+    "idx": 67, 
     "label": "amip-p4K-lwoff", 
     "name": "amip-p4k-lwoff", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "f8e73701-f465-435c-a0ab-4f82879a9823", 
+    "uid": "e9ae5cf6-b401-4334-a272-c45ea3303cab", 
     "url": null
 }

@@ -16,6 +16,7 @@
         "description": "DECK: 1pctCO2", 
         "endYear": "", 
         "experiment": "1 percent per year increase in CO2", 
+        "experimentID": "1pctCO2", 
         "minNumberYrsPerSim": "150", 
         "parentActivityID": [
             "CMIP"
@@ -27,17 +28,18 @@
             "AOGCM"
         ], 
         "startYear": "", 
-        "subExperiment": "None", 
-        "subExperimentID": "None", 
+        "subExperimentID": [
+            "none"
+        ], 
         "tier": "1"
     }, 
     "description": null, 
-    "idx": 84, 
+    "idx": 83, 
     "label": "1pctCO2", 
     "name": "1pctco2", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "ee53876d-4cad-46d9-87a2-bda512667adf", 
+    "uid": "1eeed8be-543d-4d6f-86e1-fb91d9284437", 
     "url": null
 }

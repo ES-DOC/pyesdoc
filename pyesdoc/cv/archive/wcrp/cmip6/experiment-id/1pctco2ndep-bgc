@@ -15,6 +15,7 @@
         "description": "Biogeochemically-coupled specified concentration simulation in which CO2 increases at a rate of 1% per year until quadrupling, plus an additional scenario of anthropogenic nitrogen deposition", 
         "endYear": "", 
         "experiment": "biogeochemically-coupled version of 1 percent per year increasing CO2 experiment with increasing N-deposition", 
+        "experimentID": "1pctCO2Ndep-bgc", 
         "minNumberYrsPerSim": "150", 
         "parentActivityID": [
             "CMIP"
@@ -27,8 +28,9 @@
             "BGC"
         ], 
         "startYear": "", 
-        "subExperiment": "None", 
-        "subExperimentID": "None", 
+        "subExperimentID": [
+            "none"
+        ], 
         "tier": "2"
     }, 
     "description": null, 
@@ -38,6 +40,6 @@
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "5a29507e-2582-4378-809c-ae309ec58493", 
+    "uid": "ba57b5e5-ea8c-4ac5-b612-3c1bf17deaf1", 
     "url": null
 }

@@ -15,15 +15,21 @@
         "description": "Same as piSST but CO2 is quadrupled. The increase in CO2 is seen by both the radiation scheme and vegetation", 
         "endYear": "", 
         "experiment": "as piSST with radiation and vegetation seeing 4xCO2", 
+        "experimentID": "piSST-4xCO2", 
         "minNumberYrsPerSim": "30", 
-        "parentActivityID": "", 
-        "parentExperimentID": "", 
+        "parentActivityID": [
+            "CMIP"
+        ], 
+        "parentExperimentID": [
+            "piControl"
+        ], 
         "requiredModelComponents": [
             "AGCM"
         ], 
         "startYear": "", 
-        "subExperiment": "None", 
-        "subExperimentID": "None", 
+        "subExperimentID": [
+            "none"
+        ], 
         "tier": "2"
     }, 
     "description": null, 
@@ -33,6 +39,6 @@
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "64e3182f-abad-4a59-9cba-133021bd1567", 
+    "uid": "20248b2b-9a07-4abe-a933-741140093040", 
     "url": null
 }

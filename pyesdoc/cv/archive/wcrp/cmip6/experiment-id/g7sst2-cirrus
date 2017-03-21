@@ -15,24 +15,30 @@
         "description": "Time slice at 2100 (ScenarioMIP Tier 1 high forcing scenario and cirrus thinning according to G7cirrus)", 
         "endYear": "", 
         "experiment": "SSTs from year 2100 of SSP5-8.5; forcings and other prescribed conditions from year 2100 of G7cirrus", 
+        "experimentID": "G7SST2-cirrus", 
         "minNumberYrsPerSim": "10", 
-        "parentActivityID": "", 
-        "parentExperimentID": "", 
+        "parentActivityID": [
+            "ScenarioMIP"
+        ], 
+        "parentExperimentID": [
+            "ssp585"
+        ], 
         "requiredModelComponents": [
             "AGCM"
         ], 
         "startYear": "", 
-        "subExperiment": "None", 
-        "subExperimentID": "None", 
+        "subExperimentID": [
+            "none"
+        ], 
         "tier": "2"
     }, 
     "description": null, 
-    "idx": 186, 
+    "idx": 188, 
     "label": "G7SST2-cirrus", 
     "name": "g7sst2-cirrus", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "a44a9171-346f-4c6e-8245-709e44daa789", 
+    "uid": "43f3b0f3-c6bc-492e-944a-d6db649a2ce9", 
     "url": null
 }

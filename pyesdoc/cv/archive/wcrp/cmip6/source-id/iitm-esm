@@ -5,6 +5,9 @@
     "associations": [], 
     "createDate": "0167-03-21 00:00:00+00:00", 
     "data": {
+        "activityParticipation": [
+            ""
+        ], 
         "aerosol": "unnamed (prescribed MAC-v2)", 
         "atmosphere": "GFS (192 x 94 T62; 64 levels; top level 0.2 mb)", 
         "atmosphericChemistry": "None", 
@@ -18,6 +21,9 @@
         "labelExtended": "IITM-ESM", 
         "landIce": "None", 
         "landSurface": "NOAH LSM", 
+        "nominalResolutionAtmos": "", 
+        "nominalResolutionLandIce": "", 
+        "nominalResolutionOcean": "", 
         "ocean": "MOM4p1 (tripolar, 360x200; 50 levels; top grid cell 5m)", 
         "oceanBiogeochemistry": "TOPAZ", 
         "releaseYear": "2015", 
@@ -25,12 +31,12 @@
         "sourceID": "IITM-ESM"
     }, 
     "description": null, 
-    "idx": 37, 
+    "idx": 41, 
     "label": "IITM-ESM", 
     "name": "iitm-esm", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "81200c4a-321f-41e1-b1ec-a471f5f30892", 
+    "uid": "4e2e37b9-7d04-453d-9d37-5a1b50890285", 
     "url": null
 }

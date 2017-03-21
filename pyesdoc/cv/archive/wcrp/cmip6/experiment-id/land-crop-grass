@@ -12,15 +12,17 @@
         "description": "Same as land-hist but with all new crop and pastureland treated as unmanaged grassland", 
         "endYear": "2014", 
         "experiment": "historical land-only with cropland as natural grassland", 
+        "experimentID": "land-crop-grass", 
         "minNumberYrsPerSim": "165", 
-        "parentActivityID": "", 
-        "parentExperimentID": "", 
+        "parentActivityID": "no parent", 
+        "parentExperimentID": "no parent", 
         "requiredModelComponents": [
             "LAND"
         ], 
         "startYear": "1850 or 1700", 
-        "subExperiment": "None", 
-        "subExperimentID": "None", 
+        "subExperimentID": [
+            "none"
+        ], 
         "tier": "2"
     }, 
     "description": null, 
@@ -30,6 +32,6 @@
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "e1bdd751-b5a4-40be-84b7-c854368e8a76", 
+    "uid": "2abb8f78-ab16-4ea7-aab2-5d94e55f3f07", 
     "url": null
 }

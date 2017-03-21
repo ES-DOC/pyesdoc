@@ -15,24 +15,30 @@
         "description": "As in RFMIP-ERF-PI-Cntrl but with 4xCO2", 
         "endYear": "", 
         "experiment": "effective radiative forcing by 4xCO2", 
+        "experimentID": "piClim-4xCO2", 
         "minNumberYrsPerSim": "30", 
-        "parentActivityID": "", 
-        "parentExperimentID": "", 
+        "parentActivityID": [
+            "CMIP"
+        ], 
+        "parentExperimentID": [
+            "piControl"
+        ], 
         "requiredModelComponents": [
             "AGCM"
         ], 
         "startYear": "", 
-        "subExperiment": "None", 
-        "subExperimentID": "None", 
+        "subExperimentID": [
+            "none"
+        ], 
         "tier": "1"
     }, 
     "description": null, 
-    "idx": 241, 
+    "idx": 245, 
     "label": "piClim-4xCO2", 
     "name": "piclim-4xco2", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "746361a1-204e-44b6-bd90-c247c30ca8dc", 
+    "uid": "b6bee3aa-a45d-4870-9ea3-3c73fef53e63", 
     "url": null
 }

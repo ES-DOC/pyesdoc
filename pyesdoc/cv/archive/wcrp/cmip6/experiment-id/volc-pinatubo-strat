@@ -16,6 +16,7 @@
         "description": "As volc-pinatubo-full, but with prescribed perturbation to the total (LW+SW) radiative heating rates", 
         "endYear": "", 
         "experiment": "Pinatubo experiment with partial radiative forcing, includes only stratospheric warming", 
+        "experimentID": "volc-pinatubo-strat", 
         "minNumberYrsPerSim": "3", 
         "parentActivityID": [
             "CMIP"
@@ -27,17 +28,18 @@
             "AOGCM"
         ], 
         "startYear": "", 
-        "subExperiment": "None", 
-        "subExperimentID": "None", 
+        "subExperimentID": [
+            "none"
+        ], 
         "tier": "1"
     }, 
     "description": null, 
-    "idx": 192, 
+    "idx": 194, 
     "label": "volc-pinatubo-strat", 
     "name": "volc-pinatubo-strat", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "069abddd-a534-40f8-ba99-b3ae63e72bfe", 
+    "uid": "2ada38ac-8ef0-4fdc-86b3-6e787679a4c0", 
     "url": null
 }

@@ -9,27 +9,29 @@
             "OMIP"
         ], 
         "additionalAllowedModelComponents": "", 
-        "description": "Same as the omipv1 experiment except that it is not initialized with observed climatologies; rather it is initialized with results from at least a 2000-year spin up of the coupled physical-biogeochemical models. Also it includes radiocarbon to evaluate deep-ocean circulation", 
-        "endYear": "310", 
+        "description": "Same as the omip1 experiment except that it is not initialized with observed climatologies; rather it is initialized with results from at least a 2000-year spin up of the coupled physical-biogeochemical models. The spin up simulations may be made with the classic online or offline approach, or with tracer-acceleration techniques or fast solvers. If an online approach is used, at the end of the 5th cycle of CORE-II forcing, the model's physical fields should be reinitialized to the values at the start of the 3rd cycle in order to avoid long-term drift in those fields and to assure that they will not diverge greatly from physical fields in the omip1 simulation. The spin up also includes radiocarbon to evaluate deep-ocean circulation", 
+        "endYear": "", 
         "experiment": "OMIP experiment forced by Large and Yeager (CORE-2, NCEP) atmospheric data set and initialized from at least a 2000-year spin up of the coupled physical-biogeochemical model", 
+        "experimentID": "omip1-spunup", 
         "minNumberYrsPerSim": "310", 
-        "parentActivityID": "", 
-        "parentExperimentID": "", 
+        "parentActivityID": "no parent", 
+        "parentExperimentID": "no parent", 
         "requiredModelComponents": [
             "OGCM"
         ], 
-        "startYear": "1", 
-        "subExperiment": "None", 
-        "subExperimentID": "None", 
+        "startYear": "", 
+        "subExperimentID": [
+            "none"
+        ], 
         "tier": "2"
     }, 
     "description": null, 
-    "idx": 56, 
+    "idx": 55, 
     "label": "omip1-spunup", 
     "name": "omip1-spunup", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "0ccf0a1d-1946-45a7-9261-33cf994f33b7", 
+    "uid": "cdb717a5-b774-4beb-90a5-8d6c2012c0ee", 
     "url": null
 }

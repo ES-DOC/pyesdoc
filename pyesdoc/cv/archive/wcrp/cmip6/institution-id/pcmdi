@@ -8,12 +8,12 @@
         "postalAddress": "Program for Climate Model Diagnosis and Intercomparison, Lawrence Livermore National Laboratory, Livermore, CA 94550, USA"
     }, 
     "description": null, 
-    "idx": 22, 
+    "idx": 23, 
     "label": "PCMDI", 
     "name": "pcmdi", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "652e786e-417e-447c-a162-c5633629fbb1", 
+    "uid": "61bd2125-4a39-4ce5-a0d4-10872392c47a", 
     "url": null
 }

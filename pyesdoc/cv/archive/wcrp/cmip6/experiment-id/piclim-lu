@@ -15,15 +15,21 @@
         "description": "As in RFMIP-ERF-PI-Cntrl but with present-day land use", 
         "endYear": "", 
         "experiment": "effective radiative forcing by present-day land use", 
+        "experimentID": "piClim-lu", 
         "minNumberYrsPerSim": "30", 
-        "parentActivityID": "", 
-        "parentExperimentID": "", 
+        "parentActivityID": [
+            "CMIP"
+        ], 
+        "parentExperimentID": [
+            "piControl"
+        ], 
         "requiredModelComponents": [
             "AGCM"
         ], 
         "startYear": "", 
-        "subExperiment": "None", 
-        "subExperimentID": "None", 
+        "subExperimentID": [
+            "none"
+        ], 
         "tier": "1"
     }, 
     "description": null, 
@@ -33,6 +39,6 @@
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "c394c8a9-5928-433a-bfe2-f4931b03945c", 
+    "uid": "a921909e-4b97-44b8-821e-0ee28a5a0004", 
     "url": null
 }

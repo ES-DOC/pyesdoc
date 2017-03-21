@@ -5,6 +5,9 @@
     "associations": [], 
     "createDate": "0167-03-21 00:00:00+00:00", 
     "data": {
+        "activityParticipation": [
+            ""
+        ], 
         "aerosol": "CAM-chem; semi-interactive", 
         "atmosphere": "CAM4 (FV, 144 x 96; 26 levels; top level 2.194 mb)", 
         "atmosphericChemistry": "None", 
@@ -18,6 +21,9 @@
         "labelExtended": "BNU-ESM 1.1", 
         "landIce": "None", 
         "landSurface": "CoLM version 2014 with carbon-nitrogen interactions", 
+        "nominalResolutionAtmos": "", 
+        "nominalResolutionLandIce": "", 
+        "nominalResolutionOcean": "", 
         "ocean": "MOM4p1 (tripolar, 360x200, primarily 1deg latitude/longitude, down to 1/3deg within 30deg of the equatorial tropics; 50 levels; top grid cell 0-10m)", 
         "oceanBiogeochemistry": "Dynamic ecosystem-carbon model version 1", 
         "releaseYear": "2016", 
@@ -25,12 +31,12 @@
         "sourceID": "BNU-ESM-1-1"
     }, 
     "description": null, 
-    "idx": 24, 
+    "idx": 27, 
     "label": "BNU-ESM-1-1", 
     "name": "bnu-esm-1-1", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "25c19ec4-fba0-4ace-9182-bd0b6872b2c5", 
+    "uid": "53169192-ce74-4c4e-a222-15373d751fe2", 
     "url": null
 }

@@ -6,12 +6,12 @@
     "createDate": "0167-03-21 00:00:00+00:00", 
     "data": null, 
     "description": null, 
-    "idx": 21, 
+    "idx": 20, 
     "label": "realization_index", 
     "name": "realization_index", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "b5fc2a6a-4e33-4929-9637-ddca5c386b1d", 
+    "uid": "ac627148-834a-4820-9499-898558938fd7", 
     "url": null
 }

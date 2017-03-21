@@ -15,15 +15,17 @@
         "description": "Extended AMIP run that covers 1870-2014. All natural and anthropogenic historical forcings as used in CMIP6 Historical Simulation will be included. AGCM resolution as CMIP6 Historical Simulation. The HadISST data will be used", 
         "endYear": "2014", 
         "experiment": "AMIP-style simulation covering the period 1870-2014", 
+        "experimentID": "amip-hist", 
         "minNumberYrsPerSim": "144", 
-        "parentActivityID": "", 
-        "parentExperimentID": "", 
+        "parentActivityID": "no parent", 
+        "parentExperimentID": "no parent", 
         "requiredModelComponents": [
             "AGCM"
         ], 
         "startYear": "1870", 
-        "subExperiment": "None", 
-        "subExperimentID": "None", 
+        "subExperimentID": [
+            "none"
+        ], 
         "tier": "1"
     }, 
     "description": null, 
@@ -33,6 +35,6 @@
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "3ff339b4-9485-42b2-8b25-c1ee4a5fbcc9", 
+    "uid": "d0dced6d-52f8-4dff-9cdc-b5d79555a825", 
     "url": null
 }

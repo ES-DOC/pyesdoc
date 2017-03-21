@@ -5,6 +5,9 @@
     "associations": [], 
     "createDate": "0167-03-21 00:00:00+00:00", 
     "data": {
+        "activityParticipation": [
+            "CMIP"
+        ], 
         "aerosol": "None", 
         "atmosphere": "Earth1.0-gettingHotter (360x180; 50 levels; top level 0.1 mb)", 
         "atmosphericChemistry": "None", 
@@ -18,6 +21,15 @@
         "labelExtended": "PCMDI-test 1.0 (This entry is free text for users to contribute verbose information)", 
         "landIce": "None", 
         "landSurface": "Earth1.0", 
+        "nominalResolutionAtmos": [
+            "1x1 degree"
+        ], 
+        "nominalResolutionLandIce": [
+            "None"
+        ], 
+        "nominalResolutionOcean": [
+            "1x1 degree"
+        ], 
         "ocean": "BlueMarble1.0-warming (360x180; 50 levels; top grid cell 0-10m)", 
         "oceanBiogeochemistry": "None", 
         "releaseYear": "1989", 
@@ -25,12 +37,12 @@
         "sourceID": "PCMDI-test-1-0"
     }, 
     "description": null, 
-    "idx": 25, 
+    "idx": 28, 
     "label": "PCMDI-test-1-0", 
     "name": "pcmdi-test-1-0", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "d3e2d17a-ad5e-46ce-98c7-486a146f941a", 
+    "uid": "2da22e81-6098-4834-a57f-59126e6bade9", 
     "url": null
 }

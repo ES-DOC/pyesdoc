@@ -12,6 +12,7 @@
         "description": "Idealized 1%/yr CO2 increase to 4xC02 over 140yrs and kept constant at 4xCO2 for an additional 200 to 400 yrs simulation with ice sheets forced \"offline\" with DECK 1pctCO2 using forcing from its own AOGCM", 
         "endYear": "", 
         "experiment": "offline ice sheet model forced by ISM's own AOGCM 1pctCO2to4x output", 
+        "experimentID": "ism-1pctCO2to4x-self", 
         "minNumberYrsPerSim": "350", 
         "parentActivityID": [
             "ISMIP6"
@@ -23,8 +24,9 @@
             "ISM"
         ], 
         "startYear": "", 
-        "subExperiment": "None", 
-        "subExperimentID": "None", 
+        "subExperimentID": [
+            "none"
+        ], 
         "tier": "1"
     }, 
     "description": null, 
@@ -34,6 +36,6 @@
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "e7ee5b2d-56ea-44ea-8820-ec3fa3661982", 
+    "uid": "5f171dc8-af7c-437f-af9c-117cd0b0f054", 
     "url": null
 }

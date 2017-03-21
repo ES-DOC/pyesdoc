@@ -16,7 +16,8 @@
         "description": "Using equatorial SO2 injection, return the radiative forcing from a background of the ScenarioMIP high forcing to the ScenarioMIP middle forcing", 
         "endYear": "2100", 
         "experiment": "stratospheric sulfate aerosol injection to reduce net forcing from SSP585 to SSP245", 
-        "minNumberYrsPerSim": "81", 
+        "experimentID": "G6sulfur", 
+        "minNumberYrsPerSim": "86", 
         "parentActivityID": [
             "CMIP"
         ], 
@@ -26,18 +27,19 @@
         "requiredModelComponents": [
             "AOGCM"
         ], 
-        "startYear": "2020", 
-        "subExperiment": "None", 
-        "subExperimentID": "None", 
+        "startYear": "2015", 
+        "subExperimentID": [
+            "none"
+        ], 
         "tier": "1"
     }, 
     "description": null, 
-    "idx": 193, 
+    "idx": 195, 
     "label": "G6sulfur", 
     "name": "g6sulfur", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "b201825d-91f9-40ca-8723-dfb61a06f515", 
+    "uid": "5d2786d0-bca8-4631-8de8-fded2690c2fb", 
     "url": null
 }

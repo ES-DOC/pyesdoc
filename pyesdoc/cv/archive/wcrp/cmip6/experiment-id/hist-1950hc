@@ -14,6 +14,7 @@
         "description": "Historical WMGHG concentrations and NTCF emissions, 1950 halocarbon concentrations, start 1950", 
         "endYear": "2014", 
         "experiment": "historical forcing, but with1950s halocarbon concentrations; initialized in 1950", 
+        "experimentID": "hist-1950HC", 
         "minNumberYrsPerSim": "65", 
         "parentActivityID": [
             "CMIP"
@@ -27,17 +28,18 @@
             "CHEM"
         ], 
         "startYear": "1950", 
-        "subExperiment": "None", 
-        "subExperimentID": "None", 
+        "subExperimentID": [
+            "none"
+        ], 
         "tier": "1"
     }, 
     "description": null, 
-    "idx": 242, 
+    "idx": 246, 
     "label": "hist-1950HC", 
     "name": "hist-1950hc", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "d8b2b8d9-69a4-4402-ad2a-15f67f8583cb", 
+    "uid": "16f07dc2-f740-4a10-81b1-da65bde99027", 
     "url": null
 }

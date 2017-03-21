@@ -3,17 +3,17 @@
     "alternativeName": null, 
     "alternativeUrl": null, 
     "associations": [], 
-    "createDate": "2016-12-14 12:00:00+00:00", 
+    "createDate": "0167-03-21 00:00:00+00:00", 
     "data": {
-        "postalAddress": "The First Institution of Oceanography (SOA), Qingdao, China"
+        "postalAddress": "Chinese Academy of Meteorological Sciences, Beijing 100081, China"
     }, 
     "description": null, 
-    "idx": 21, 
-    "label": "FIO", 
-    "name": "fio", 
+    "idx": 8, 
+    "label": "CAMS", 
+    "name": "cams", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "2481cebc-5a4e-4a06-8990-87b213a21261", 
+    "uid": "64373a57-aba2-4010-9896-64d736217eda", 
     "url": null
 }

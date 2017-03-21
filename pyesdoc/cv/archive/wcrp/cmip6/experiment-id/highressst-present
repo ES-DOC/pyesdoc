@@ -9,30 +9,31 @@
             "HighResMIP"
         ], 
         "additionalAllowedModelComponents": [
-            "AER", 
-            "CHEM"
+            "AER"
         ], 
-        "description": "Forced global atmosphere-land simulations using daily 1/4 degree SST and sea-ice forcings, and aerosol concentrations (not emissions) to constrain model spread", 
+        "description": "Forced global atmosphere-land simulations using daily 1/4 degree SST and sea-ice forcings, and aerosol optical properties (not emissions) to constrain model spread", 
         "endYear": "2014", 
         "experiment": "forced atmosphere experiment for 1950-2014", 
-        "minNumberYrsPerSim": "64", 
-        "parentActivityID": "", 
-        "parentExperimentID": "", 
+        "experimentID": "highresSST-present", 
+        "minNumberYrsPerSim": "65", 
+        "parentActivityID": "no parent", 
+        "parentExperimentID": "no parent", 
         "requiredModelComponents": [
             "AGCM"
         ], 
-        "startYear": "1951", 
-        "subExperiment": "None", 
-        "subExperimentID": "None", 
+        "startYear": "1950", 
+        "subExperimentID": [
+            "none"
+        ], 
         "tier": "1"
     }, 
     "description": null, 
-    "idx": 208, 
+    "idx": 210, 
     "label": "highresSST-present", 
     "name": "highressst-present", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "bf326304-285e-4c82-96d5-49af4686d7ac", 
+    "uid": "8e2243f7-34a2-48d2-bbbb-dfddf3b5604e", 
     "url": null
 }

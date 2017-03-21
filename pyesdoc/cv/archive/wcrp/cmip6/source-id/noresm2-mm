@@ -5,6 +5,9 @@
     "associations": [], 
     "createDate": "0167-03-21 00:00:00+00:00", 
     "data": {
+        "activityParticipation": [
+            ""
+        ], 
         "aerosol": "OsloAero", 
         "atmosphere": "CAM-OSLO (1 degree resolution; 288 x 192; 32 levels; top level 3 mb)", 
         "atmosphericChemistry": "OsloChemSimp", 
@@ -18,6 +21,9 @@
         "labelExtended": "NorESM2-MM (medium atmosphere-medium ocean resolution, GHG concentration driven)", 
         "landIce": "CISM", 
         "landSurface": "CLM", 
+        "nominalResolutionAtmos": "", 
+        "nominalResolutionLandIce": "", 
+        "nominalResolutionOcean": "", 
         "ocean": "MICOM (1 degree resolution; 360 x 384; 70 levels; top grid cell minimum 0-2.5 m [native model uses hybrid density and generic upper-layer coordinate interpolated to z-level for contributed data])", 
         "oceanBiogeochemistry": "HAMOCC", 
         "releaseYear": "2017", 
@@ -25,12 +31,12 @@
         "sourceID": "NorESM2-MM"
     }, 
     "description": null, 
-    "idx": 29, 
+    "idx": 32, 
     "label": "NorESM2-MM", 
     "name": "noresm2-mm", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "20e047a9-3963-40f4-92f2-9d1878584bec", 
+    "uid": "1ef5bfd1-c894-42e9-b275-a30198178ec9", 
     "url": null
 }

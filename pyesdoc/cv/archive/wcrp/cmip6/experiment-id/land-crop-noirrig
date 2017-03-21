@@ -12,24 +12,26 @@
         "description": "Same as land-hist but with irrigated area held at 1850 levels", 
         "endYear": "2014", 
         "experiment": "historical land-only with no irrigation", 
+        "experimentID": "land-crop-noIrrig", 
         "minNumberYrsPerSim": "165", 
-        "parentActivityID": "", 
-        "parentExperimentID": "", 
+        "parentActivityID": "no parent", 
+        "parentExperimentID": "no parent", 
         "requiredModelComponents": [
             "LAND"
         ], 
         "startYear": "1850 or 1700", 
-        "subExperiment": "None", 
-        "subExperimentID": "None", 
+        "subExperimentID": [
+            "none"
+        ], 
         "tier": "2"
     }, 
     "description": null, 
-    "idx": 91, 
+    "idx": 90, 
     "label": "land-crop-noIrrig", 
     "name": "land-crop-noirrig", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "26871423-847b-426f-ada2-dd1e5bfb9047", 
+    "uid": "96bb4c67-8863-4aae-acc6-b47bc3fa82f8", 
     "url": null
 }

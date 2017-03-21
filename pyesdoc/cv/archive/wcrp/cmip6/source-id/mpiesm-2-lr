@@ -5,6 +5,9 @@
     "associations": [], 
     "createDate": "0167-03-21 00:00:00+00:00", 
     "data": {
+        "activityParticipation": [
+            ""
+        ], 
         "aerosol": "None, prescribed MACv2-SP", 
         "atmosphere": "ICON-AES (icosahedral/triangles; 160 km; 47 levels; top level 80 km)", 
         "atmosphericChemistry": "None", 
@@ -18,6 +21,9 @@
         "labelExtended": "MPIESM2", 
         "landIce": "None/prescribed", 
         "landSurface": "JSBACH4.2", 
+        "nominalResolutionAtmos": "", 
+        "nominalResolutionLandIce": "", 
+        "nominalResolutionOcean": "", 
         "ocean": "ICON-OES (icosahedral/triangles; 40 km; 40 levels; top grid cell 0-12 m)", 
         "oceanBiogeochemistry": "HAMOCC", 
         "releaseYear": "2017", 
@@ -25,12 +31,12 @@
         "sourceID": "MPIESM-2-LR"
     }, 
     "description": null, 
-    "idx": 23, 
+    "idx": 42, 
     "label": "MPIESM-2-LR", 
     "name": "mpiesm-2-lr", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "38d32a46-5f7b-4e9c-80f7-98f5e14cd759", 
+    "uid": "8c40f0c7-81da-4374-aa92-d823fab067ad", 
     "url": null
 }

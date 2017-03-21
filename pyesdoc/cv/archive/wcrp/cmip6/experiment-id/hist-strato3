@@ -10,12 +10,12 @@
         ], 
         "additionalAllowedModelComponents": [
             "AER", 
-            "CHEM", 
             "BGC"
         ], 
-        "description": "Historical stratospheric-ozone-only. In models with coupled chemistry, the chemistry scheme should be turned off, and the simulated ensemble mean monthly mean 3D stratospheric ozone concentrations from the histALL simulations should be prescribed. Tropospheric ozone should be fixed at 3D long-term monthly mean piControl values, with a value of 100 ppbv ozone concentration in this piControl climatology used to separate the troposphere from the stratosphere. In models without coupled chemistry the same stratospheric ozone prescribed in histALL should be prescribed. Stratospheric ozone concentrations will be provided by CCMI", 
+        "description": "Historical stratospheric-ozone-only. In models with coupled chemistry, the chemistry scheme should be turned off, and the simulated ensemble mean monthly mean 3D stratospheric ozone concentrations from the CMIP6 historical simulations should be prescribed. Tropospheric ozone should be fixed at 3D long-term monthly mean piControl values, with a value of 100 ppbv ozone concentration in this piControl climatology used to separate the troposphere from the stratosphere. In models without coupled chemistry the same stratospheric ozone prescribed in the CMIP6 historical simulations should be prescribed. Stratospheric ozone concentrations will be provided by CCMI", 
         "endYear": "2020", 
         "experiment": "historical stratospheric-ozone-only run", 
+        "experimentID": "hist-stratO3", 
         "minNumberYrsPerSim": "171", 
         "parentActivityID": [
             "CMIP"
@@ -27,17 +27,18 @@
             "AOGCM"
         ], 
         "startYear": "1850", 
-        "subExperiment": "None", 
-        "subExperimentID": "None", 
+        "subExperimentID": [
+            "none"
+        ], 
         "tier": "2"
     }, 
     "description": null, 
-    "idx": 93, 
+    "idx": 92, 
     "label": "hist-stratO3", 
     "name": "hist-strato3", 
     "parent": null, 
     "status": "pending", 
     "synonyms": [], 
-    "uid": "10d4d474-962c-4a09-ab6f-ae5d1db8200c", 
+    "uid": "a412d608-bcd8-4ba6-b993-846ecbf3c302", 
     "url": null
 }
