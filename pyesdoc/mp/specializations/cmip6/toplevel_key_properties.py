@@ -66,8 +66,7 @@ DETAILS['toplevel:software_properties'] = {
         ('code_languages','str', '0.N',
             "Code language(s)."),
         ('components_structure','str', '0.1',
-            """Describe how model realms are structured into independent software components
-               (coupled via a coupler) and internal software components."""),
+            "Describe how model realms are structured into independent software components (coupled via a coupler) and internal software components."),
         ('coupler','ENUM:coupler_framework', '0.1',
             "Overarching coupling framework for model."),
         ]
@@ -80,10 +79,7 @@ DETAILS['tuning_applied'] = {
     'description': 'Tuning methodology for model',
     'properties': [
         ('description', 'str', '1.1',
-            """General overview description of tuning: explain and motivate the main targets and metrics retained.
-            Document the relative weight given to climate performance metrics versus process oriented metrics,
-            and on the possible conflicts with parameterization level tuning. In particular describe any struggle
-            with a parameter value that required pushing it to its limits to solve a particular model deficiency."""),
+            "General overview description of tuning: explain and motivate the main targets and metrics retained. Document the relative weight given to climate performance metrics versus process oriented metrics, and on the possible conflicts with parameterization level tuning. In particular describe any struggle with a parameter value that required pushing it to its limits to solve a particular model deficiency."),
         ('global_mean_metrics_used', 'str', '0.N',
             "List set of metrics of the global mean state used in tuning model"),
         ('regional_metrics_used', 'str', '0.N',

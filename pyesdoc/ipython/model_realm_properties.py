@@ -24,7 +24,7 @@ class NotebookOutput(object):
     """Model realm properties ipython data wrapper.
 
     """
-    def __init__(self, mip_era, institute, source_id, realm, output_dir=None):
+    def __init__(self, mip_era, institute, source_id, realm):
         """Instance initialiser.
 
         """
@@ -40,25 +40,22 @@ class NotebookOutput(object):
         self.specialization = get_model_specialization(mip_era, realm)
 
         # Auto-initialise state.
-        self._init(output_dir)
+        self._init()
 
 
-    def _init(self, output_dir):
+    def _init(self):
         """Initialises state from previously saved output.
 
         """
         # Initialise output directory.
-        if output_dir is None:
-            output_dir = os.getcwd()
-            output_dir = output_dir.replace('notebooks', 'output')
-        else:
-            output_dir = os.path.join(output_dir, self.institute)
-            output_dir = os.path.join(output_dir, self.source_id)
+        output_dir = os.path.join(os.getenv('ESDOC_CMIP6_NOTEBOOK_HOME'), self.institute)
+        output_dir = os.path.join(output_dir, self.mip_era)
+        output_dir = os.path.join(output_dir, self.source_id)
         if not os.path.isdir(output_dir):
             os.makedirs(output_dir)
 
         # Initialise state from previously saved output file.
-        self.fpath = os.path.join(output_dir, "{}.json".format(self.realm))
+        self.fpath = os.path.join(output_dir, ".{}.json".format(self.realm))
         if os.path.exists(self.fpath):
             with open(self.fpath, 'r') as fstream:
                 self._from_dict(json.loads(fstream.read()))
