@@ -30,7 +30,7 @@ CHANGE_HISTORY = [
     ("0.1.0", "2016-07-01", "Eric Guilyardi",
         "Initialised"),
     ("0.2.0", "2016-08-30", "Eric Guilyardi",
-        "Update science following inputs fron Gokhan Danabasoglu and Steve Griffies", ),
+        "Update science following inputs from Gokhan Danabasoglu and Steve Griffies", ),
     ("0.3.0", "2016-09-05", "David Hassell",
         "Added hidden CIM2 properties to key_properties and timestepping_framework", ),
     ("0.4.0", "2016-11-08", "Eric Guilyardi et al.",
