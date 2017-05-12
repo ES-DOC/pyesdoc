@@ -17,10 +17,10 @@
 
 """
 __title__ = 'pyesdoc'
-__version__ = '0.9.7.2.0'
+__version__ = '0.9.7.3.0'
 __author__ = 'ES-DOC'
 __license__ = 'GPL'
-__copyright__ = 'Copyright 2015 ???'
+__copyright__ = 'Copyright 2016 ES-DOC'
 
 
 from pyesdoc import archive

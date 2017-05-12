@@ -48,17 +48,25 @@ class NotebookOutput(object):
 
         """
         # Initialise output directory.
-        output_dir = os.path.join(os.getenv('ESDOC_CMIP6_NOTEBOOK_HOME'), self.institute)
+        output_dir = os.getenv('ESDOC_CMIP6_NOTEBOOK_HOME', '/home')
+        output_dir = os.path.join(output_dir, self.institute)
         output_dir = os.path.join(output_dir, self.mip_era)
         output_dir = os.path.join(output_dir, self.source_id)
         if not os.path.isdir(output_dir):
             os.makedirs(output_dir)
 
         # Initialise state from previously saved output file.
-        self.fpath = os.path.join(output_dir, ".{}.json".format(self.realm))
+        self.fpath = os.path.join(output_dir, '.{}.json'.format(self.realm))
         if os.path.exists(self.fpath):
-            with open(self.fpath, 'r') as fstream:
-                self._from_dict(json.loads(fstream.read()))
+            self._read()
+
+
+    def _read(self):
+        """Reads state from file system.
+
+        """
+        with open(self.fpath, 'r') as fstream:
+            self._from_dict(json.loads(fstream.read()))
 
 
     def write(self):
@@ -67,98 +75,6 @@ class NotebookOutput(object):
         """
         with open(self.fpath, 'w') as fstream:
             fstream.write(json.dumps(self._to_dict(), indent=4))
-
-
-    def set_author(self, name, email):
-        """Adds an author to managed collection.
-
-        """
-        if name is not None:
-            name = unicode(name).strip()
-        if email is not None:
-            email = unicode(email).strip()
-
-        if name is None or len(name) == 0:
-            raise ValueError("Invalid author name")
-        if email is None or len(email) == 0:
-            raise ValueError("Invalid author email")
-        # TODO: validate with reg-ex.
-
-        self.authors.append((name, email))
-
-
-    def set_contributor(self, name, email):
-        """Adds a contributor to managed collection.
-
-        """
-        if name is not None:
-            name = unicode(name).strip()
-        if email is not None:
-            email = unicode(email).strip()
-
-        if name is None or len(name) == 0:
-            raise ValueError("Invalid contributor name")
-        if email is None or len(email) == 0:
-            raise ValueError("Invalid contributor email")
-        # TODO: validate with reg-ex.
-
-        self.contributors.append((name, email))
-
-
-    def set_id(self, prop_id):
-        """Sets id of specialized property being edited.
-
-        """
-        self.content[prop_id] = {
-            'values': [],
-            'qc_status': 0
-        }
-        self.prop = self.content[prop_id]
-        self.prop_specialization = get_property_specialization(prop_id)
-
-
-    def set_qc_status(self, qc_status):
-        """Sets qc-status of specialized property being edited.
-
-        """
-        if qc_status not in constants.QC_STATES:
-            raise ValueError("Invalid QC status")
-
-        self.prop['qc_status'] = qc_status
-
-
-    def set_value(self, val):
-        """Sets a scalar value.
-
-        """
-        # Error if trying to add > 1 value to a property with singular cardinality.
-        if not self.prop_specialization.is_collection and \
-           len(self.prop['values']) >= 1:
-            raise ValueError("Invalid property: only one value can be added")
-
-        # Error if adding a duplicate value.
-        if val in self.prop['values']:
-            raise ValueError("Invalid property: cannot add duplicate values")
-
-        # Delegate validation to specialization.
-        self.prop_specialization.validate_value(val)
-
-        # Accept value.
-        self.prop['values'].append(val)
-
-
-    def get_values(self, specialization_id):
-        """Returns a set of values.
-
-        """
-        return self.content.get(specialization_id, dict()).get('values', [])
-
-
-    def get_qc_status(self, specialization_id):
-        """Returns a property qc status.
-
-        """
-        return self.content.get(specialization_id, dict()).get('qc_status', 0)
 
 
     def _from_dict(self, obj):
@@ -193,3 +109,94 @@ class NotebookOutput(object):
 
         return obj
 
+
+    def set_author(self, name, email):
+        """Adds an author to managed collection.
+
+        """
+        if name is not None:
+            name = unicode(name).strip()
+        if email is not None:
+            email = unicode(email).strip()
+
+        if name is None or len(name) == 0:
+            raise ValueError('Invalid author name')
+        if email is None or len(email) == 0:
+            raise ValueError('Invalid author email')
+        # TODO: validate with reg-ex.
+
+        self.authors.append((name, email))
+
+
+    def set_contributor(self, name, email):
+        """Adds a contributor to managed collection.
+
+        """
+        if name is not None:
+            name = unicode(name).strip()
+        if email is not None:
+            email = unicode(email).strip()
+
+        if name is None or len(name) == 0:
+            raise ValueError('Invalid contributor name')
+        if email is None or len(email) == 0:
+            raise ValueError('Invalid contributor email')
+        # TODO: validate with reg-ex.
+
+        self.contributors.append((name, email))
+
+
+    def set_id(self, prop_id):
+        """Sets id of specialized property being edited.
+
+        """
+        self.content[prop_id] = {
+            'values': [],
+            'qc_status': 0
+        }
+        self.prop = self.content[prop_id]
+        self.prop_specialization = get_property_specialization(prop_id)
+
+
+    def set_qc_status(self, qc_status):
+        """Sets qc-status of specialized property being edited.
+
+        """
+        if qc_status not in constants.QC_STATES:
+            raise ValueError('Invalid QC status')
+
+        self.prop['qc_status'] = qc_status
+
+
+    def set_value(self, val):
+        """Sets a scalar value.
+
+        """
+        # Error if trying to add > 1 value to a property with singular cardinality.
+        if not self.prop_specialization.is_collection and \
+           len(self.prop['values']) >= 1:
+            raise ValueError('Invalid property: only one value can be added')
+
+        # Error if adding a duplicate value.
+        if val in self.prop['values']:
+            raise ValueError('Invalid property: cannot add duplicate values')
+
+        # Delegate validation to specialization.
+        self.prop_specialization.validate_value(val)
+
+        # Accept value.
+        self.prop['values'].append(val)
+
+
+    def get_values(self, specialization_id):
+        """Returns a set of values.
+
+        """
+        return self.content.get(specialization_id, dict()).get('values', [])
+
+
+    def get_qc_status(self, specialization_id):
+        """Returns a property qc status.
+
+        """
+        return self.content.get(specialization_id, dict()).get('qc_status', 0)
