@@ -16,6 +16,7 @@ def activity():
         'base': None,
         'is_abstract': True,
         'is_document': True,
+        'pstr': ('{}', ('canonical_name',)),
         'properties': [
             ('alternative_names', 'str', '0.N',
                 "List of names by which the activity is also known."),
@@ -181,6 +182,7 @@ def ensemble_member():
         'type': 'class',
         'base': None,
         'is_abstract': False,
+        'pstr': ('{}', ('simulation',)),
         'properties': [
             ('errata', 'linked_to(shared.online_resource)', '0.1',
                 "Link to errata associated with this simulation."),
@@ -202,6 +204,7 @@ def parent_simulation():
         'type': 'class',
         'base': None,
         'is_abstract': False,
+        'pstr': ('{}', ('parent',)),
         'properties': [
             ('branch_method', 'str', '0.1',
                 "Description of how the simulation was branched from a parent simualtion, e.g. 'standard', 'none provided'."),

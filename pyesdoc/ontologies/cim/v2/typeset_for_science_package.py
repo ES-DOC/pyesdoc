@@ -69,6 +69,14 @@ class Topic(object):
         self.sub_topics = []                              # science.Topic (0.N)
 
 
+    @property
+    def __str__(self):
+	    """Instrance string representation.
+
+	    """
+	    return "{}".format(self.s, self.h, self.o, self.r, self.t, self._, self.n, self.a, self.m, self.e)
+
+
 class TopicProperty(object):
     """A concrete class within the cim v2 type system.
 
@@ -84,6 +92,14 @@ class TopicProperty(object):
         self.qc_status = None                             # int (1.1)
         self.specialization_id = None                     # unicode (1.1)
         self.values = []                                  # unicode (1.N)
+
+
+    @property
+    def __str__(self):
+	    """Instrance string representation.
+
+	    """
+	    return "{}: {}".format(self.specialization_id, self.values)
 
 
 class TopicPropertySet(object):
@@ -105,6 +121,14 @@ class TopicPropertySet(object):
         self.specialization_id = None                     # unicode (1.1)
 
 
+    @property
+    def __str__(self):
+	    """Instrance string representation.
+
+	    """
+	    return "{}".format(self.specialization_id)
+
+
 class Realm(Topic):
     """A concrete class within the cim v2 type system.
 
@@ -124,6 +148,14 @@ class Realm(Topic):
         self.model = None                                 # science.Model (1.1)
         self.processes = []                               # science.Topic (1.N)
         self.software_frameworks = []                     # software.Implementation (0.N)
+
+
+    @property
+    def __str__(self):
+	    """Instrance string representation.
+
+	    """
+	    return "{}".format(self.c, self.a, self.n, self.o, self.n, self.i, self.c, self.a, self.l, self._, self.n, self.a, self.m, self.e)
 
 
 class ModelTypes(object):

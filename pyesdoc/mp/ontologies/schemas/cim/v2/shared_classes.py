@@ -35,6 +35,7 @@ def citation():
         'base': None,
         'is_abstract': False,
         'is_document': True,
+        'pstr': ('{}', ('title',)),
         'properties': [
             ('abstract', 'str', '0.1',
                 "Abstract providing high level reference overview."),
@@ -107,6 +108,7 @@ def online_resource():
         'type': 'class',
         'base': None,
         'is_abstract': False,
+        'pstr': ('{}', ('linkage',)),
         'properties': [
             ('description', 'str', '0.1',
                 "Detail of how to access the resource."),
@@ -131,6 +133,7 @@ def party():
         'type': 'class',
         'base': None,
         'is_abstract': False,
+        'pstr': ('{}', ('name',)),
         'is_document': True,
         'properties': [
             ('address', 'str', '0.1',
@@ -158,6 +161,7 @@ def quality_review():
         'base': None,
         'is_abstract': False,
         'is_document': True,
+        'pstr': ('{}: {}', ('target_document', 'quality_status',)),
         'properties': [
             ('date', 'str', '1.1',
                 "Date upon which review was made."),

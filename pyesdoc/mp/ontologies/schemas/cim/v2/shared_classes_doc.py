@@ -62,6 +62,7 @@ def doc_reference():
         'type': 'class',
         'base': None,
         'is_abstract': False,
+        'pstr': ('{}', ('canonical_name',)),
         'properties': [
             ('canonical_name', 'str', '0.1',
                 "Canonical name given to document."),

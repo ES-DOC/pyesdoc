@@ -47,6 +47,14 @@ class ComponentBase(object):
         self.version = None                               # unicode (0.1)
 
 
+    @property
+    def __str__(self):
+	    """Instrance string representation.
+
+	    """
+	    return "{}".format(self.name)
+
+
 class Composition(object):
     """A concrete class within the cim v2 type system.
 
@@ -144,6 +152,14 @@ class Implementation(object):
         self.release_date = None                          # datetime.datetime (0.1)
         self.repository = None                            # shared.OnlineResource (0.1)
         self.version = None                               # unicode (0.1)
+
+
+    @property
+    def __str__(self):
+	    """Instrance string representation.
+
+	    """
+	    return "{}".format(self.name)
 
 
 class Variable(object):

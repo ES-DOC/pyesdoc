@@ -41,6 +41,14 @@ class Citation(object):
         self.url = None                                   # shared.OnlineResource (0.1)
 
 
+    @property
+    def __str__(self):
+	    """Instrance string representation.
+
+	    """
+	    return "{}".format(self.title)
+
+
 class DocMetaInfo(object):
     """A concrete class within the cim v2 type system.
 
@@ -102,6 +110,14 @@ class DocReference(object):
         self.version = None                               # int (0.1)
 
 
+    @property
+    def __str__(self):
+	    """Instrance string representation.
+
+	    """
+	    return "{}".format(self.canonical_name)
+
+
 class ExtraAttribute(object):
     """A concrete class within the cim v2 type system.
 
@@ -149,6 +165,14 @@ class OnlineResource(object):
         self.protocol = None                              # unicode (0.1)
 
 
+    @property
+    def __str__(self):
+	    """Instrance string representation.
+
+	    """
+	    return "{}".format(self.linkage)
+
+
 class Party(object):
     """A concrete class within the cim v2 type system.
 
@@ -173,6 +197,14 @@ class Party(object):
         self.url = None                                   # shared.OnlineResource (0.1)
 
 
+    @property
+    def __str__(self):
+	    """Instrance string representation.
+
+	    """
+	    return "{}".format(self.name)
+
+
 class QualityReview(object):
     """A concrete class within the cim v2 type system.
 
@@ -191,6 +223,14 @@ class QualityReview(object):
         self.quality_description = None                   # unicode (1.1)
         self.quality_status = None                        # shared.QualityStatus (0.1)
         self.target_document = None                       # shared.DocReference (1.1)
+
+
+    @property
+    def __str__(self):
+	    """Instrance string representation.
+
+	    """
+	    return "{}: {}".format(self.target_document, self.quality_status)
 
 
 class Responsibility(object):

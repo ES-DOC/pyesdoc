@@ -48,6 +48,14 @@ class Activity(object):
         self.responsible_parties = []                     # shared.Responsibility (0.N)
 
 
+    @property
+    def __str__(self):
+	    """Instrance string representation.
+
+	    """
+	    return "{}".format(self.canonical_name)
+
+
 class AxisMember(object):
     """A concrete class within the cim v2 type system.
 
@@ -114,6 +122,14 @@ class EnsembleMember(object):
         self.simulation = None                            # data.Simulation (1.1)
 
 
+    @property
+    def __str__(self):
+	    """Instrance string representation.
+
+	    """
+	    return "{}".format(self.simulation)
+
+
 class ParentSimulation(object):
     """A concrete class within the cim v2 type system.
 
@@ -130,6 +146,14 @@ class ParentSimulation(object):
         self.branch_time_in_child = None                  # time.DateTime (0.1)
         self.branch_time_in_parent = None                 # time.DateTime (0.1)
         self.parent = None                                # data.Simulation (1.1)
+
+
+    @property
+    def __str__(self):
+	    """Instrance string representation.
+
+	    """
+	    return "{}".format(self.parent)
 
 
 class Conformance(Activity):

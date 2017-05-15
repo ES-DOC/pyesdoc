@@ -43,6 +43,14 @@ class Dataset(object):
         self.responsible_parties = []                     # shared.Responsibility (0.N)
 
 
+    @property
+    def __str__(self):
+	    """Instrance string representation.
+
+	    """
+	    return "{}".format(self.name)
+
+
 class InputDataset(object):
     """A concrete class within the cim v2 type system.
 
@@ -57,7 +65,7 @@ modifications requirted to use it in the relevant component.
         """
         super(InputDataset, self).__init__()
 
-        self.modifications_applied = None                 # unicode (1.1)
+        self.modifications_applied = None                 # unicode (0.1)
         self.original_data = None                         # data.Dataset (1.1)
 
 

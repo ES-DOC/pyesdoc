@@ -47,6 +47,14 @@ class ComputePool(object):
 
 
     @property
+    def __str__(self):
+	    """Instrance string representation.
+
+	    """
+	    return "{}".format(self.name)
+
+
+    @property
     def total_cores(self):
 	    """Returns a computed property.
 
@@ -84,6 +92,14 @@ class Partition(object):
         self.storage_pools = []                           # platform.StoragePool (0.N)
         self.vendor = None                                # shared.Party (0.1)
         self.when_used = None                             # time.TimePeriod (0.1)
+
+
+    @property
+    def __str__(self):
+	    """Instrance string representation.
+
+	    """
+	    return "{}".format(self.name)
 
 
 class Performance(object):
@@ -127,7 +143,7 @@ http://www.geosci-model-dev-discuss.net/gmd-2016-197/)
 	    """Instrance string representation.
 
 	    """
-	    return "{} (sypd:{})".format(self.name, self.sypd)
+	    return "{} (sypd:{})".format(self.name, self.simulated_years_per_day)
 
 
 class StoragePool(object):
@@ -146,6 +162,14 @@ class StoragePool(object):
         self.name = None                                  # unicode (1.1)
         self.type = None                                  # platform.StorageSystems (0.1)
         self.vendor = None                                # shared.Party (0.1)
+
+
+    @property
+    def __str__(self):
+	    """Instrance string representation.
+
+	    """
+	    return "{}".format(self.name)
 
 
 class StorageVolume(object):
@@ -189,14 +213,6 @@ http://www.geosci-model-dev-discuss.net/gmd-2016-197/)
         super(ComponentPerformance, self).__init__()
 
         self.component = None                             # software.SoftwareComponent (1.1)
-
-
-    @property
-    def __str__(self):
-	    """Instrance string representation.
-
-	    """
-	    return "{} (sypd:{})".format(self.name, self.sypd)
 
 
 class Machine(Partition):

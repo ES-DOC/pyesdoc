@@ -18,6 +18,7 @@ def component_base():
         'type': 'class',
         'base': None,
         'is_abstract': True,
+        'pstr': ('{}', ('name',)), 
         'properties': [
             ('citations', 'shared.citation', '0.N',
                 "Set of pertinent citations."),
@@ -56,6 +57,7 @@ def implementation():
         'type': 'class',
         'base': None,
         'is_abstract': False,
+        'pstr': ('{}', ('name',)),
         'properties': [
             ('citations', 'shared.citation', '0.N',
                 "Set of pertinent citations."),

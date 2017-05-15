@@ -18,8 +18,7 @@ http://www.geosci-model-dev-discuss.net/gmd-2016-197/)
         'type': 'class',
         'base': 'platform.performance',
         'is_abstract': False,
-        'pstr': ('{} (sypd:{})', ('name', 'sypd')),
-        'properties': [            
+        'properties': [
             ('component', 'software.software_component', '1.1',
              "Link to a CIM software component description."),
         ],
@@ -45,6 +44,7 @@ def compute_pool():
         'type': 'class',
         'base': None,
         'is_abstract': False,
+        'pstr': ('{}', ('name',)),
         'properties': [
             ('accelerator_type', 'str', '0.1',
                 "Type of accelerator."),
@@ -103,6 +103,7 @@ def partition():
         'type': 'class',
         'base': None,
         'is_abstract': False,
+        'pstr': ('{}', ('name',)),
         'properties': [
             ('compute_pools', 'platform.compute_pool', '1.N',
                 "Layout of compute nodes."),
@@ -140,18 +141,18 @@ http://www.geosci-model-dev-discuss.net/gmd-2016-197/)
         'type': 'class',
         'base': None,
         'is_abstract': False,
-        'pstr': ('{} (sypd:{})', ('name', 'sypd')),
+        'pstr': ('{} (sypd:{})', ('name', 'simulated_years_per_day')),
         'is_document': True,
         'properties': [
             ('name', 'str', '0.1',
                 "Name for performance (experiment/test/whatever)."),
-            
+
             # CPMIP model and platform
             ('model', 'science.model', '1.1',
                 "Model for which performance was tested."),
-            ('resolution', 'int', '0.1', 
+            ('resolution', 'int', '0.1',
                  'Resolution measured as the number of gridpoints (or more generally, spatial degrees of freedom) NX x NY x NZ per component with an independent discretization'),
-            ('complexity', 'int', '0.1', 
+            ('complexity', 'int', '0.1',
                  'Complexity measured as the number of prognostic variables per component with an independent discretization'),
             ('platform', 'platform.machine', '1.1',
                  'Platform on which performance was tested.'),
@@ -194,6 +195,7 @@ def storage_pool():
         'type': 'class',
         'base': None,
         'is_abstract': False,
+        'pstr': ('{}', ('name',)),
         'properties': [
             ('description', 'str', '0.1',
                 "Description of the technology used."),

@@ -1915,7 +1915,7 @@ CONSTRAINTS = {
         ('modifications_applied', 'type', unicode),
         ('original_data', 'type', data.Dataset),
 
-        ('modifications_applied', 'cardinality', "1.1"),
+        ('modifications_applied', 'cardinality', "0.1"),
         ('original_data', 'cardinality', "1.1"),
 
     ),
@@ -4204,7 +4204,7 @@ CONSTRAINTS = {
 
         ('type', unicode),
 
-        ('cardinality', "1.1"),
+        ('cardinality', "0.1"),
 
     ),
     (data.InputDataset, 'original_data'): (
