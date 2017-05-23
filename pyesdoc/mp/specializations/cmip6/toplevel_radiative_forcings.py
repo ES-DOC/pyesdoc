@@ -243,10 +243,8 @@ DETAILS['other:land_use'] = {
 DETAILS['other:solar'] = {
     'description': 'Solar forcing',
     'properties': [
-        ('provision', 'ENUM:forcing_provision', '1.N',
-             'How this forcing agent is provided (e.g. via concentrations, emission precursors, prognostically derived, etc.)'),
-        ('historical_orbital_parameters', 'bool', '1.1',
-             'In historical period only, use of realistic time-varying orbital parameters for solar forcing (GISS-E2)'),
+        ('provision', 'ENUM:solar_forcing_provision', '1.N',
+             'How solar forcing is provided'),
         ('additional_information', 'str', '0.1',
              'Additional information relating to the provision and implementation of this forcing agent (e.g. citations, use of non-standard datasets, explaining how multiple provisions are used, etc.).'),
     ]
@@ -265,6 +263,18 @@ ENUMERATIONS['forcing_provision'] = {
         ("E",  "Concentrations calculated interactively driven by prescribed emissions or precursor emissions"),
         ("ES", "Surface emissions (and 3-D concentrations away from the surface) derived via the model from the prescribed surface concentration"),
         ("C",  "Fixed prescribed climatology of concentrations with no year-to-year variability"),
+    ]
+}
+
+ENUMERATIONS['solar_forcing_provision'] = {
+    'description': 'How solar forcing is provided',
+    'is_open': True,
+    'members': [
+        ("N/A"       , "Not applicable - solar forcing is not included"),
+        ("irradiance", "Solar irradiance forcing"),
+        ("proton"    , "Proton pathway to solar forcing"),
+        ("electron"  , "Electron pathway to solar forcing"),
+        ("cosmic ray", "Cosmic ray pathway to solar forcing"),
     ]
 }
 

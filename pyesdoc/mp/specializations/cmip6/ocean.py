@@ -42,6 +42,11 @@ CHANGE_HISTORY = [
     ]
 
 # --------------------------------------------------------------------
+# CMIP5_MAPPINGS_SYNCED_AT: Latest version that has been synced with CMIP5 mappings.
+# --------------------------------------------------------------------
+CMIP5_MAPPINGS_SYNCED_AT = "0.4.0"
+
+# --------------------------------------------------------------------
 # DESCRIPTION: Scientific context of this specialization
 # --------------------------------------------------------------------
 DESCRIPTION = 'Ocean Realm'

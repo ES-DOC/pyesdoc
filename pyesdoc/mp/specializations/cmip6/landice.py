@@ -4,14 +4,22 @@ For further information goto http://wordpress.es-doc.org/cmip6-model-specializat
 
 """
 # --------------------------------------------------------------------
+# INTERNAL (do not change)
+# --------------------------------------------------------------------
+from collections import OrderedDict
+
+DETAILS = OrderedDict()
+ENUMERATIONS = OrderedDict()
+
+# --------------------------------------------------------------------
 # CONTACT: Set to realm specialization co-ordinator.
 # --------------------------------------------------------------------
-CONTACT = 'Charlotte Pascoe'
+CONTACT = 'David Hassell'
 
 # --------------------------------------------------------------------
 # AUTHORS: Set to realm specialization authors (comma delimited).
 # --------------------------------------------------------------------
-AUTHORS = 'Charlotte Pascoe'
+AUTHORS = 'David Hassell'
 
 # --------------------------------------------------------------------
 # CONTRIBUTORS: Set to realm specialization contributors (comma delimited).
@@ -27,8 +35,10 @@ QC_STATUS = 'draft'
 # CHANGE HISTORY: Set to list: (version, date, comment, who).
 # --------------------------------------------------------------------
 CHANGE_HISTORY = [
-	("0.1.0", "2016-11-29", "Initialised", "Mark Greenslade"),
-    ("0.2.0", "2016-12-02", "Updated process names and descriptions, added enumeration TODOs", "Charlotte Pascoe")
+    ("0.1.0", "2016-04-11", "David Hassell",
+         "Initialised from CMIP5 mind map + a bit of reorganising (but no logical difference)"),
+    ("0.2.0", "2016-04-25", "David Hassell",
+         "Updated with input from Steve George"),
 ]
 
 # --------------------------------------------------------------------
@@ -39,34 +49,33 @@ CMIP5_MAPPINGS_SYNCED_AT = "N/A"
 # --------------------------------------------------------------------
 # DESCRIPTION: Scientific context of this scientific realm
 # --------------------------------------------------------------------
-DESCRIPTION = 'Atmosphere realm specialization'
-
-# --------------------------------------------------------------------
-# REALM: Canonical name for the domain of this scientific realm
-# --------------------------------------------------------------------
-REALM = 'atmos'
+DESCRIPTION = 'Land Ice Realm'
 
 # --------------------------------------------------------------------
 # GRID: The grid used to layout the variables
 # --------------------------------------------------------------------
-GRID = 'atmos_grid'
+GRID = 'landice_grid'
 
 # --------------------------------------------------------------------
 # KEY PROPERTIES: Key properties for the realm which differ from model defaults (grid, timestep etc)
 # --------------------------------------------------------------------
-KEY_PROPERTIES = 'atmos_key_properties'
+KEY_PROPERTIES = 'landice_key_properties'
 
 # --------------------------------------------------------------------
 # PROCESSES: Processes simulated within the realm
 # --------------------------------------------------------------------
 PROCESSES = [
-    'atmos_dynamical_core',
-    'atmos_radiation',
-    'atmos_turbulence_convection',
-    'atmos_microphysics_precipitation',
-	'atmos_cloud_scheme',
-    'atmos_cloud_simulator',
-    'atmos_gravity_waves',
-    'atmos_solar',
-    'atmos_volcanos',
-    ]
+    'landice_glaciers',
+    'landice_ice_sheet',
+    'landice_ice_shelves',
+]
+
+# --------------------------------------------------------------------
+# DETAILS: top level realm details
+# --------------------------------------------------------------------
+DETAILS = OrderedDict()
+
+# --------------------------------------------------------------------
+# ENUMERATIONS: top level realm enumerations
+# --------------------------------------------------------------------
+ENUMERATIONS = OrderedDict()

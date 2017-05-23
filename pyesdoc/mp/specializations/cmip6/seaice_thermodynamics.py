@@ -48,7 +48,7 @@ DETAILS['energy'] = {
             "Method by which basal ocean heat flux is handled?"),
         ('fixed_salinity_value', 'float', '0.1',
              "If you have selected {Thermal properties depend on S-T (with fixed salinity)}, supply fixed salinity value for each sea ice layer."),
-        ('heat_content_precip', 'str', '1.1',
+        ('heat_content_of_precipitation', 'str', '1.1',
             "Describe the method by which the heat content of precipitation is handled.")
         ]
     }
