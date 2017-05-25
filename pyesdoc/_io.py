@@ -60,6 +60,7 @@ def write(document, fpath, encoding=constants.ENCODING_JSON):
     """
     if os.path.isdir(fpath):
         fpath = _get_filepath(fpath, document, encoding)
+    fpath = os.path.expanduser(fpath)
     with open(fpath, 'w') as fstream:
         fstream.write(pyesdoc.encode(document, encoding))
 
@@ -77,6 +78,8 @@ def read(fpath, encoding=None, decode=True):
     :rtype: object
 
     """
+    fpath = os.path.expanduser(fpath)
+
     # Validate file path.
     if not os.path.isfile(fpath):
         raise IOError("Document file path does not exist")

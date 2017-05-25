@@ -171,6 +171,26 @@ class SearchResult(object):
         return iter(self.items)
 
 
+    def load_document(self, identifier):
+        """Loads document from remote archive.
+
+        """
+        item = None
+
+        if isinstance(identifier, int):
+            assert identifier >= 0, 'Item identifier out of bounds'
+            assert identifier <= len(self.items), 'Item identifier out of bounds'
+            item = self.items[identifer]
+        elif isinstance(identifier, basestring):
+            identifier = identifier.lower()
+            for i in self.items:
+                if identifier in (n.lower() for n in i.names):
+                    item = i
+
+        if item:
+            return item.load_document()
+
+
 class SearchResultItem(object):
     """A search result item wrapper.
 
@@ -179,6 +199,7 @@ class SearchResultItem(object):
         """Instance constructor.
 
         """
+        self.document = None
         self.experiment = obj[0]
         self.institute = obj[1]
         self.long_name = obj[2]
@@ -197,8 +218,27 @@ class SearchResultItem(object):
         return str(self.__dict__)
 
 
+    @property
+    def names(self):
+        """Returns set of names.
+
+        """
+        names = (
+            self.canonical_name,
+            self.name,
+            self.alternative_name,
+            self.long_name
+            )
+
+        return (i for i in names if i is not None and len(i) > 0)
+
+
     def load_document(self):
         """Loads document from remote archive.
 
         """
-        return retrieve(self.uid, self.version)
+        if self.document is None:
+            self.document = retrieve(self.uid, self.version)
+
+        return self.document
+
