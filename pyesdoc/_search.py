@@ -16,6 +16,7 @@ import requests
 
 from pyesdoc import _api_proxy as proxy
 from pyesdoc import constants
+from pyesdoc._publishing import retrieve
 
 
 
@@ -194,3 +195,10 @@ class SearchResultItem(object):
 
         """
         return str(self.__dict__)
+
+
+    def load_document(self):
+        """Loads document from remote archive.
+
+        """
+        return retrieve(self.uid, self.version)

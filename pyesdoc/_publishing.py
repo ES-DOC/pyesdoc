@@ -24,7 +24,6 @@ from pyesdoc._serialization import encode
 from pyesdoc._validation import is_valid
 
 
-
 # Set of target endpoints.
 _EP_CREATE = "/2/document/create"
 _EP_RETRIEVE = "/2/document/retrieve"

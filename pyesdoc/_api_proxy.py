@@ -25,7 +25,7 @@ HTTP_RESPONSE_STATUS_404 = 404
 HTTP_RESPONSE_STATUS_500 = 500
 
 # Web service base url.
-_BASE_URL = os.getenv("ESDOC_API", r"https://test-es-doc.org")
+_BASE_URL = os.getenv("ESDOC_API", r"https://api.es-doc.org")
 
 
 
