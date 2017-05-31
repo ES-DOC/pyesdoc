@@ -53,7 +53,7 @@ DETAILS['toplevel'] = {
 # --------------------------------------------------------------------
 # SUB-PROCESS: Mass balance
 # --------------------------------------------------------------------
-DETAILS['basal_mass_balance'] = {
+DETAILS['mass_balance'] = {
     'description': 'TODO',
     'properties': [],
     'detail_sets': [
@@ -88,25 +88,31 @@ DETAILS['mass_balance:frontal'] = {
 DETAILS['dynamics'] = {
     'description': '',
     'properties': [
-        ('coupling_wth_atmosphere', 'str', '0.1',
-             'Describe the coupling method between the ice sheet and ice shelf and atmosphere'),
-        ('coupling_wth_ocean', 'str', '0.1',
-             'Describe the coupling method between the ice sheet and ice shelf and the ocean'),
-    ],
-    'detail_sets': [
-        'numerics',
+        ('description', 'str', '1.1',
+            'General description if ice sheet and ice shelf dynamics'),
+        ('approximation', 'ENUM:approximation_types', '1.N',
+            'Approximation type used in modelling ice dynamics'),
+        ('timestep', 'int', '1.1',
+             'Timestep (in seconds) of the ice scheme',),        
+#        ('coupling_wth_atmosphere', 'str', '0.1',
+#             'Describe the coupling method between the ice sheet and ice shelf and atmosphe#re'),
+#        ('coupling_wth_ocean', 'str', '0.1',
+#             'Describe the coupling method between the ice sheet and ice shelf and the ocea#n'),
+#    ],
+#    'detail_sets': [
+#        'numerics',
     ]
 }
 
-DETAILS['dynamics:numerics'] = {
-    'description': 'TODO',
-    'properties': [
-        ('timestep', 'int', '1.1',
-             'Timestep (in seconds) of the ice scheme',),        
-        ('approximation', 'ENUM:approximation_types', '1.N',
-            'Approximation type used in modelling ice dynamics'),
-    ],
-}
+#DETAILS['dynamics:numerics'] = {
+#    'description': 'TODO',
+#    'properties': [
+#        ('timestep', 'int', '1.1',
+#             'Timestep (in seconds) of the ice scheme',),        
+#        ('approximation', 'ENUM:approximation_types', '1.N',
+#            'Approximation type used in modelling ice dynamics'),
+#   ],
+#}
 
 # --------------------------------------------------------------------
 # ENUMERATIONS

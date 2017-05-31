@@ -41,8 +41,6 @@ DETAILS['toplevel'] = {
              'Describe the snow tiling, if any.'),
         ('number_of_snow_layers', 'int', '1.1',
              'The number of snow levels used in the land surface scheme/model'),
-        ('albedo', 'ENUM:snow_albedo_methods', '1.1',
-             'Description of the treatment of snow albedo'),
         ('density', 'ENUM:snow_density_methods', '1.1',
              'Description of the treatment of snow density'),
         ('water_equivalent', 'ENUM:snow_water_equivalent_methods', '1.1',
@@ -60,16 +58,37 @@ DETAILS['toplevel'] = {
     ]
 }
 
+DETAILS['snow_albedo'] = {
+    'description': 'TODO',
+    'properties' : [
+        ('type', 'ENUM:snow_albedo_type', '1.1',
+            'Describe the treatment of snow-covered land albedo'),
+        ('functions', 'ENUM:snow_albedo_function_types', '0.N',
+             'If prognostic, '),
+        ]
+    }
 # --------------------------------------------------------------------
 # ENUMERATIONS
 # --------------------------------------------------------------------
-ENUMERATIONS['snow_albedo_methods'] = {
-    'description': 'Treatment of snow albedo',
+ENUMERATIONS['snow_albedo_type'] = {
+    'description': 'Describe the treatment of snow-covered land albedo',
     'is_open': True,
     'members': [
         ('prognostic', None),
-        ('diagnostic', None),
+        ('prescribed', None),        
         ('constant', None),
+    ]
+}
+
+ENUMERATIONS['snow_albedo_function_types'] = {
+    'description': 'Describe the dependancies on snow albedo calculations',
+    'is_open': True,
+    'members': [
+        ('vegetation type', None),
+        ('snow age', None),        
+        ('snow density', None),
+        ('snow grain type', None),
+        ('aerosol deposition', None),
     ]
 }
 

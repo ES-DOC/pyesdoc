@@ -29,7 +29,7 @@ QC_STATUS = 'draft'
 # --------------------------------------------------------------------
 # DESCRIPTION: Short description of the specialization.
 # --------------------------------------------------------------------
-DESCRIPTION = 'Land surface soil'
+DESCRIPTION = 'Land surface vegetation'
 
 # --------------------------------------------------------------------
 # PROCESS: top level properties
@@ -37,6 +37,10 @@ DESCRIPTION = 'Land surface soil'
 DETAILS['toplevel'] = {
     'description': 'Key properties of the land surface vegetation',
     'properties': [
+        ('description', 'str', '1.1',
+             'General description of vegatation scheme'),
+        ('dynamic_vegetation', 'bool', '1.1',
+             'Is there dynamic evolution of vegation?'),
         ('tiling', 'str', '0.1',
              'Describe the vegetation tiling, if any.'),
         ('vegetation_representation', 'ENUM:vegetation_representation_types', '1.1',
@@ -51,36 +55,6 @@ DETAILS['toplevel'] = {
              'If vegetation fractions are not dynamically updated , describe the vegetation map used (common name and reference, if possible)'),
         ('interception', 'bool', '1.1',
              'Is vegetation interception of rainwater represented?'),
-    ],
-}
-
-# --------------------------------------------------------------------
-# SUB-PROCESS: Soil map
-# --------------------------------------------------------------------
-DETAILS['toplevel'] = {
-    'description': 'TODO',
-    'properties': [
-        ('description', 'str', '1.1',
-             'General description of soil map'),
-        ('structure', 'str', '1.1',
-             'Describe the soil map structure'),
-        ('texture', 'str', '1.1',
-             'Describe the soil map texture'),
-        ('albedo', 'str', '1.1',
-             'Describe the soil map albedo'),
-        ('water_table', 'str', '1.1',
-             'Describe the soil map water_table'),
-        ('soil_depth', 'str', '1.1',
-             'Describe the soil map total soil depth'),
-    ],
-    'detail_sets': [
-        'methods',
-    ],
-}
-
-DETAILS['toplevel:methods'] = {
-    'description': 'TODO',
-    'properties': [
         ('phenology', 'ENUM:phenology_methods', '1.1',
              'Treatment of vegetation phenology'),
         ('phenology_description', 'str', '0.1',
@@ -98,7 +72,7 @@ DETAILS['toplevel:methods'] = {
         ('biogeography_description', 'str', '0.1',
              'General description of the treatment of vegetation biogeography'),
         ('stomatal_resistance', 'ENUM:stomatal_resistance_methods', '1.N',
-             'Specify the dependancies on vegetation stomatal resistance'),
+             'Specify what the vegetation stomatal resistance depends on'),
         ('stomatal_resistance_description', 'str', '0.1',
              'General description of the treatment of vegetation stomatal resistance'),
     ],
@@ -145,7 +119,7 @@ ENUMERATIONS['biogeography_methods'] = {
     }
 
 ENUMERATIONS['stomatal_resistance_methods'] = {
-    'description': 'Dependancies on vegetation stomatal resistance',
+    'description': 'Dependancies of vegetation stomatal resistance',
     'is_open': True,
     'members': [
         ('light', None),
@@ -155,3 +129,53 @@ ENUMERATIONS['stomatal_resistance_methods'] = {
         ('O3', None),
         ]
     }
+
+ENUMERATIONS['biome_types'] = {
+    'description': 'Biome type in the classification',
+    'is_open': True,
+    'members': [
+        ('evergreen needleleaf forest', None),
+        ('evergreen broadleaf forest', None),
+        ('deciduous needleleaf forest', None),
+        ('deciduous broadleaf forest', None),
+        ('mixed forest', None),
+        ('woodland', None),
+        ('wooded grassland', None),
+        ('closed shrubland', None),
+        ('opne shrubland', None),
+        ('grassland', None),
+        ('cropland', None),
+        ('wetlands', None),
+        ]
+    }
+
+ENUMERATIONS['vegetation_types'] = {
+    'description': 'Vegetation type in the classification',
+    'is_open': True,
+    'members': [
+        ('broadleaf tree', None),
+        ('needleleaf tree', None),
+        ('C3 grass', None),
+        ('C4 grass', None),
+        ('vegetated', None),
+        ]
+    }
+
+ENUMERATIONS['vegetation_representation_types'] = {
+    'description': 'Vegetation classification used',
+    'is_open': True,
+    'members': [
+        ('vegatation types', None),
+        ('biome types', None),
+        ]
+    }
+
+ENUMERATIONS['vegetation_time_variation'] = {
+    'description': 'How the vegetation fraction in each tile are varying with time',
+    'is_open': True,
+    'members': [
+        ('fixed (not varying)', None),
+        ('prescribed (varying from files)', None),
+        ('dynamical (varying from simulation)', None),
+    ]
+}

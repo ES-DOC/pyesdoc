@@ -37,7 +37,9 @@ QC_STATUS = 'draft'
 CHANGE_HISTORY = [
     ("0.1.0", "2016-04-05", "David Hassell",
         "Initialised from CMIP5 mind map + incorporating initital feedback from Rich Ellis and Pillipe Peylin"),
-    ]
+    ("0.2.0", "2016-06-01", "David Hassell",
+         "Incorporating comments from Christine Delire (CNRM), Bark van de Hurk (KNMI), Sergey Malyshev (GFDL), 'Chris Milly (GFDL)")
+]
 
 # --------------------------------------------------------------------
 # CMIP5_MAPPINGS_SYNCED_AT: Latest version that has been synced with CMIP5 mappings.
@@ -67,7 +69,6 @@ PROCESSES = [
     'land_snow',
     'land_vegetation',
     'land_energy_balance',
-    'land_albedo',
     'land_carbon_cycle',
     'land_nitrogen_cycle',
     'land_river_routing',

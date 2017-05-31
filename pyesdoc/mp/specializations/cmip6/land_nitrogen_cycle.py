@@ -35,9 +35,11 @@ DESCRIPTION = 'Land surface nitrogen cycle'
 # NITROGEN CYCLE: top level
 # --------------------------------------------------------------------
 DETAILS['toplevel'] = {
-    'description': 'Place-holder for nitrogren cycle',
-    'properties' : [
-    ],
+    'description': 'Properties of land surface nitrogen cycle',
+    'properties': [
+        ('tiling', 'str', '0.1',
+             'Describe the notrogen cycle tiling, if any.'),
+    ]
 }
 
 # --------------------------------------------------------------------

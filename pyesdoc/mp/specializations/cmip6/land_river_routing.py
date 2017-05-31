@@ -51,10 +51,14 @@ DETAILS['toplevel'] = {
              'TODO'),
         ('coupled_to_atmosphere', 'bool', '0.1',
              'Is river routing coupled to the atmosphere model component?'),
+        ('coupled_to_land', 'str', '0.1',
+             'Describe the coupling between land and rivers'),
         ('quantities_exchanged_with_atmosphere', 'ENUM:quantities_exchanged_with_atmosphere_types', '0.N',
              'If couple to atmosphere, which quantities are exchanged between river routing and the atmosphere model components?'),
         ('basin_flow_direction_map', 'ENUM:basin_flow_direction_map_types', '1.1',
              'What type of basin flow direction map is being used?'),
+        ('flooding', 'str', '0.1',
+             'Describe the representation of flooding, if any')
     ],
 }
 

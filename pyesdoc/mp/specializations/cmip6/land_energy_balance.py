@@ -39,10 +39,10 @@ DETAILS['toplevel'] = {
     'properties': [
         ('tiling', 'str', '0.1',
              'Describe the energy balance tiling, if any.'),        
-        ('number_of_surface_temperature', 'int', '1.1',
-            'The numnber of surface temperatures used'),
-        ('evaporation_formulation', 'ENUM:evaporation_formulation_types', '1.1',
-             'Specify the formulation method for land surface evaporation'),
+        ('number_of_surface_temperatures', 'int', '1.1',
+            'The maximum number of distinct surface temperatures in a grid cell  (for example, each subgrid tile may have its own temperature)'),
+        ('evaporation', 'ENUM:evaporation_formulation_types', '1.N',
+             'Specify the formulation method for land surface evaporation, from soil and vegetation'),
         ('processes', 'ENUM:process_types', '1.N',
              'Describe which processes are included in the energy balance scheme'),
         ]

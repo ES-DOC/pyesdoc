@@ -34,6 +34,13 @@ DESCRIPTION = 'Land surface soil'
 # --------------------------------------------------------------------
 # PROCESS: top level properties
 # --------------------------------------------------------------------
+DETAILS['toplevel'] = {
+    'description': 'TODO',
+    'properties': [
+         ('heat_water_coupling', 'str', '1.1',
+             'Ddescribe the coupling between heat and water in the soil'),
+    ]
+}
 
 # --------------------------------------------------------------------
 # SUB-PROCESS: Soil map
@@ -44,17 +51,36 @@ DETAILS['soil_map'] = {
         ('description', 'str', '1.1',
              'General description of soil map'),
         ('structure', 'str', '1.1',
-             'Describe the soil map structure'),
+             'Describe the soil structure map'),
         ('texture', 'str', '1.1',
-             'Describe the soil map texture'),
+             'Describe the soil texture map'),
+        ('organic_matter', 'str', '1.1',
+             'Describe the soil organic matter map'),
         ('albedo', 'str', '1.1',
-             'Describe the soil map albedo'),
+             'Describe the soil albedo map'),
         ('water_table', 'str', '1.1',
-             'Describe the soil map water_table'),
+             'Describe the soil water_table map'),
         ('soil_depth', 'str', '1.1',
-             'Describe the soil map total soil depth'),
+             'Describe the soil total soil depth map'),
     ],
 }
+
+# --------------------------------------------------------------------
+# SUB-PROCESS: Snow-free albedo
+# --------------------------------------------------------------------
+DETAILS['snow_free_albedo'] = {
+    'description': 'TODO',
+    'properties' : [
+        ('prognostic', 'bool', '1.1',
+             'Is snow free albedo prognostic?'),
+        ('functions', 'ENUM:snow_free_albedo_function_types', '0.N',
+             'If prognostic, describe the dependancies on snow free albedo calculations'),
+        ('direct_diffuse', 'ENUM:direct_diffuse_types', '0.1',
+             'If prognostic, describe the distinction between direct and diffuse albedo'),
+        ('number_of_wavelength_bands', 'int', '0.1',
+             'If prognostic, enter the number of wavelength bands used'),
+        ]
+    }
 
 # --------------------------------------------------------------------
 # SUB-PROCESS: Hydrology
@@ -66,6 +92,8 @@ DETAILS['hydrology'] = {
              'General description of how soil hydrological properties are defined'),
         ('tiling', 'str', '0.1',
              'Describe the soil hydrology tiling, if any.'),
+        ('vertical_discretisation', 'str' , '1.1',
+             'Describe the typical vertical discretisation'),
         ('number_of_ground_water_layers', 'int', '1.1',
              'The number of ground water levels used in the land surface scheme/model'),
         ('water_storage_method', 'ENUM:water_storage_method_types', '1.1',
@@ -157,5 +185,25 @@ ENUMERATIONS['heat_treatment_process_types'] = {
     'members': [
         ('soil moisture freeze-thaw', None),
         ('coupling with snow temperature', None),
-        ]
-    }
+    ]
+}
+    
+ENUMERATIONS['snow_free_albedo_function_types'] = {
+    'description': 'Describe the dependancies on snow free albedo calculations',
+    'is_open': True,
+    'members': [
+        ('vegetation type', None),
+        ('soil humidity', None),
+        ('vegatation state', None),        
+    ]
+}
+    
+ENUMERATIONS['direct_diffuse_types'] = {
+    'description': 'Describe the distinction between direct and diffuse albedo',
+    'is_open': True,
+    'members': [
+        ('distinction between direct and diffuse albedo', None),
+        ('no distinction between direct and diffuse albedo', None),        
+    ]
+}
+    

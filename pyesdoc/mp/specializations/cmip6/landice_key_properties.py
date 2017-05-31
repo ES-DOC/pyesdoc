@@ -35,35 +35,25 @@ DESCRIPTION = 'Land ice key properties'
 # KEY PROPERTIES: top level
 # --------------------------------------------------------------------
 DETAILS['toplevel'] = {
-    'description': 'General key properties in land ice',
+    'description': 'General key properties',
     'properties': [
-        ('grounding_line_method', 'ENUM:grounding_line_methods', '1.1',
-            'Specify the technique used for modelling the grounding line in the ice sheet-ice shelf coupling'),
-        ('land_ice_albedo', 'ENUM:land_ice_albedo_methods', '1.N',
-            'Specify how land ice albedo is modelled',),
+        ('ice_albedo', 'ENUM:ice_albedo_methods', '1.N',
+            'Specify how ice albedo is modelled',),
         ('atmospheric_coupling_variables', 'str', '1.1',
-             'Which variables are passed between the atmosphere and land ice components (e.g. orography, ice mass)'), 
+             'Which variables are passed between the atmosphere and ice (e.g. orography, ice mass)'), 
+        ('oceanic_coupling_variables', 'str', '1.1',
+             'Which variables are passed between the ocean and ice'), 
         ('prognostic_variables', 'ENUM:prognostic_variable_types', '1.N',
-             'Which variables are prognostically calculated in the land ice model'),
+             'Which variables are prognostically calculated in the ice model'),
+
         ]
     }
 
 # --------------------------------------------------------------------
 # KEY PROPERTIES: ENUMERATIONS
 # --------------------------------------------------------------------
-ENUMERATIONS['grounding_line_methods'] = {
-    'description': 'Specify the technique used for modelling the grounding line in the ice sheet-ice shelf coupling',
-    'is_open': True,
-    'members': [
-        ('grounding line prescribed', None),
-        ('flux prescribed (Schoof)', None),
-        ('fixed grid size', None),
-        ('moving grid', None),
-    ]
-}
-
-ENUMERATIONS['land_ice_albedo_methods'] = {
-    'description': 'Specify how land ice albedo is modelled',
+ENUMERATIONS['ice_albedo_methods'] = {
+    'description': 'Specify how ice albedo is modelled',
     'is_open': True,
     'members': [
         ('prescribed', None),
@@ -73,7 +63,7 @@ ENUMERATIONS['land_ice_albedo_methods'] = {
 }
 
 ENUMERATIONS['prognostic_variable_types'] = {
-    'description': 'Which variables are prognostically calculated in the land ice model',
+    'description': 'Which variables are prognostically calculated in the ice model',
     'is_open': True,
     'members': [
         ('ice velocity', None),
@@ -81,3 +71,5 @@ ENUMERATIONS['prognostic_variable_types'] = {
         ('ice temperature', None),
     ]
 }
+
+
