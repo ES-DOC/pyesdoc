@@ -38,7 +38,6 @@ class QConfigGenerator(Generator):
         :param GeneratorContext ctx: Generation context information.
 
         """
-
         qconfig = ctx.qconfig
         output_filepath = qgu.get_ontology_path(ctx)
         if not os.path.exists(os.path.dirname(output_filepath)):
@@ -61,7 +60,7 @@ class QConfigGenerator(Generator):
         qconfig = ctx.qconfig
 
         qconfig["name"] = ontology.name
-        qconfig["version"] = ontology.version
+        qconfig["version"] = qgu.get_ontology_version(ontology.version)
         qconfig["documentation"] = ontology.doc_string
         qconfig["ontology_type"] = "SCHEMA"
         # qconfig["ontology_base"] = no base for schemas
@@ -84,6 +83,8 @@ class QConfigGenerator(Generator):
 
         if not cls.is_abstract:
 
+            ontology_key = qgu.get_ontology_key(ctx.ontology)
+
             new_qconfig_class = OrderedDict()
             new_qconfig_class["name"] = cls.name
             new_qconfig_class["package"] = cls.package.name
@@ -91,9 +92,16 @@ class QConfigGenerator(Generator):
             new_qconfig_class["is_document"] = cls.is_entity
             new_qconfig_class["is_meta"] = cls.is_document_meta
 
-            class_id = getattr(cls, "id", None)
-            if class_id:
-                new_qconfig_class["id"] = class_id
+            class_id = getattr(
+                cls,
+                "id",
+                "{0}.{1}.{2}".format(
+                    ontology_key,
+                    new_qconfig_class["package"],
+                    new_qconfig_class["name"],
+                )
+            )
+            new_qconfig_class["id"] = class_id
 
             label = cls.pstr
             if label:
@@ -142,8 +150,8 @@ class QConfigGenerator(Generator):
                 elif property_type == qgu.QCONFIG_RELATIONSHIP_PROPERTY_TYPE:
                     new_qconfig_property["relationship_targets"] = []
                     for relationship_target_class in qgu.get_relationship_target_classes(prop):
-
-                        new_qconfig_property["relationship_targets"].append("{0}.{1}".format(
+                        new_qconfig_property["relationship_targets"].append("{0}.{1}.{2}".format(
+                            ontology_key,
                             relationship_target_class.package,
                             relationship_target_class.name
                         ))
