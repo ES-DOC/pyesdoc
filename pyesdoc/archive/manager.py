@@ -16,6 +16,8 @@ from pyesdoc.archive import config
 from pyesdoc.archive import constants
 from pyesdoc.archive.file_info import ArchiveFileInfo
 from pyesdoc.archive.folder_info import ArchiveFolderInfo
+from pyesdoc.utils.runtime import log
+
 
 
 # Set of managed folders.
@@ -44,6 +46,7 @@ def init():
     if not _FOLDERS:
         for project, source in config.get_project_sources():
             _FOLDERS.add(_create_folder(project, source))
+    log("Loading documentation archive: {}".format(config.get_directory()))
 
 
 def delete_error_files(project=None, source=None):
