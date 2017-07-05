@@ -37,10 +37,6 @@ DESCRIPTION = 'Ice sheet and ice shelf'
 DETAILS['toplevel'] = {
     'description': 'General key properties in ice sheets and ice shelves',
     'properties': [
-        ('adaptive_grid', 'bool', '1.1',
-             'Is an adative grid being used?'),    
-        ('resolution_limit', 'float', '0.1',
-             'If an adative grid is being used, what is the limit of the resolution (in metres)'),    
         ('grounding_line_method', 'ENUM:grounding_line_methods', '1.1',
             'Specify the technique used for modelling the grounding line in the ice sheet-ice shelf coupling'),
         ('ice_sheet', 'bool', '1.1',

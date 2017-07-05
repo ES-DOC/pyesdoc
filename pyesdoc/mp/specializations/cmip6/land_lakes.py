@@ -39,8 +39,14 @@ DETAILS['toplevel'] = {
     'properties' : [
         ('coupling_with_rivers', 'bool', '1.1',
              'Are lakes coupled to the river routing model component?'),
+        ('time_step', 'int', '1.1',
+             'Time step of lake scheme in seconds'),
         ('quantities_exchanged_with_rivers', 'ENUM:quantities_exchanged_with_rivers_types', '0.N',
              'If coupling with rivers, which quantities are exchanged between the lakes and rivers'),
+        ('vertical_grid', 'str', '0.1',
+             'Describe the vertical grid of lakes'),
+        ('prognostic_variables', 'str', '1.1',
+             'List the prognostic variables of the lake scheme'),
     ]
 }
 
@@ -64,11 +70,13 @@ DETAILS['method'] = {
 }
 
 # --------------------------------------------------------------------
-# LAKES: process
+# LAKES: Wetlands
 # --------------------------------------------------------------------
-DETAILS['welands'] = {
-    'description': 'Place-holder for wetlands description',
+DETAILS['wetlands'] = {
+    'description': 'TODO',
     'properties' : [
+        ('description', 'str', '0.1',
+             'Describe the treatment of wetlands, if any'),
     ]
 }
 

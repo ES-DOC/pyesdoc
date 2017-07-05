@@ -41,6 +41,8 @@ CHANGE_HISTORY = [
          "Updated with input from Steve George (NCAS)"),
     ("0.3.0", "2017-05-22", "David Hassell",
          "Updated with input from Sophie Nowicki (NASA)"),
+    ("0.4.0", "2017-06-28", "David Hassell",
+         "Reorganisation of grid info; first draft of short table"),
 ]
 
 # --------------------------------------------------------------------

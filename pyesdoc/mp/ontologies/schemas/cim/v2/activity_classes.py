@@ -128,7 +128,7 @@ def ensemble():
         'properties': [
             ('common_conformances', 'activity.conformance', '0.N',
                 "Conformance documents for requirements common across ensemble."),
-            ('common_performance', 'platform.performance', '0.1',
+            ('representative_performance', 'platform.performance', '0.1',
                 "Representative model performance across ensemble."),
             ('documentation', 'linked_to(shared.online_resource)', '0.N',
                 "Links to web-pages and other ensemble specific documentation (including workflow descriptions)."),

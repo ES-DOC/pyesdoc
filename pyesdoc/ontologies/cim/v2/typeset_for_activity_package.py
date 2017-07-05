@@ -191,11 +191,11 @@ class Ensemble(Activity):
         super(Ensemble, self).__init__()
 
         self.common_conformances = []                     # activity.Conformance (0.N)
-        self.common_performance = None                    # platform.Performance (0.1)
         self.documentation = []                           # shared.OnlineResource (0.N)
         self.ensemble_axes = []                           # activity.EnsembleAxis (0.N)
         self.experiments = []                             # designing.NumericalExperiment (1.N)
         self.members = []                                 # activity.EnsembleMember (1.N)
+        self.representative_performance = None            # platform.Performance (0.1)
         self.uber_ensembles = []                          # activity.UberEnsemble (0.N)
 
 

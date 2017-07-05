@@ -41,6 +41,8 @@ DETAILS['toplevel'] = {
              'Is an adative grid being used?'),    
         ('base_resolution', 'float', '1.1',
             'The base resolution (in metres), before any adaption'),
+        ('resolution_limit', 'float', '0.1',
+             'If an adaptive grid is being used, what is the limit of the resolution (in metres)'),    
         ('projection', 'str', '1.1',
             'The projection of the land ice grid (e.g. albers_equal_area)'),
     ]

@@ -39,6 +39,8 @@ DETAILS['toplevel'] = {
     'properties': [
         ('description', 'str', '1.1',
              'General description of vegatation scheme'),
+        ('time_step', 'int', '1.1',
+             'Time step of vegetation scheme in seconds'),                
         ('dynamic_vegetation', 'bool', '1.1',
              'Is there dynamic evolution of vegation?'),
         ('tiling', 'str', '0.1',
@@ -75,6 +77,9 @@ DETAILS['toplevel'] = {
              'Specify what the vegetation stomatal resistance depends on'),
         ('stomatal_resistance_description', 'str', '0.1',
              'General description of the treatment of vegetation stomatal resistance'),
+        ('prognostic_variables', 'str', '1.1',
+             'List the prognostic variables of the vegetation scheme'),
+
     ],
 }
 

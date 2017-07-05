@@ -37,6 +37,8 @@ DESCRIPTION = 'Land ice key properties'
 DETAILS['toplevel'] = {
     'description': 'General key properties',
     'properties': [
+        ('model_name', 'str', '1.1',
+             'Name of land surface model code'),
         ('ice_albedo', 'ENUM:ice_albedo_methods', '1.N',
             'Specify how ice albedo is modelled',),
         ('atmospheric_coupling_variables', 'str', '1.1',
@@ -45,7 +47,6 @@ DETAILS['toplevel'] = {
              'Which variables are passed between the ocean and ice'), 
         ('prognostic_variables', 'ENUM:prognostic_variable_types', '1.N',
              'Which variables are prognostically calculated in the ice model'),
-
         ]
     }
 

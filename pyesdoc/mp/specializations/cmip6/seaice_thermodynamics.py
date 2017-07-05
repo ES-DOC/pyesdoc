@@ -252,8 +252,8 @@ ENUMERATIONS['snow_process_types'] = {
     'description': 'Types of snow processes',
     'is_open': True,
     'members': [
-        ('single-layered heat diffusion', None),
-        ('multi-layered heat diffusion', None),
+        ('Single-layered heat diffusion', None),
+        ('Multi-layered heat diffusion', None),
     ]
 }
 
@@ -261,9 +261,9 @@ ENUMERATIONS['salinity_method'] = {
     'description': 'Method of describing the value of salinity',
     'is_open': True,
     'members': [
-        ('constant', None),
-        ('prescribed salinity profile', None),
-        ('prognostic salinity profile', None),
+        ('Constant', None),
+        ('Prescribed salinity profile', None),
+        ('Prognostic salinity profile', None),
     ]
 }
 

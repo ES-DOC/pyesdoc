@@ -129,8 +129,6 @@ class SearchCriteria(object):
             params['document_type'] = _DOC_TYPE_ALIASES[params['project']][params['document_type']]
         except KeyError:
             pass
-        if params['project'] == "cmip6":
-            params['project'] = "cmip6-draft"
 
         return params
 

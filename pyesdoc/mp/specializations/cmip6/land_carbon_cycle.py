@@ -39,8 +39,13 @@ DETAILS['toplevel'] = {
     'properties': [
         ('tiling', 'str', '0.1',
              'Describe the carbon cycle tiling, if any.'),
+        ('time_step', 'int', '1.1',
+             'Time step of carbon cycle in seconds'),
         ('anthropogenic_carbon', 'ENUM:anthropogenic_carbon_methods', '0.N',
              'Describe the treament of the anthropogenic carbon pool'),
+        ('prognostic_variables', 'str', '1.1',
+             'List the prognostic variables of the carbon scheme'),
+
     ]
 }
 

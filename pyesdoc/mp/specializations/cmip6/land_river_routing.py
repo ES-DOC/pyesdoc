@@ -39,14 +39,14 @@ DETAILS['toplevel'] = {
     'properties' : [
         ('tiling', 'str', '0.1',
              'Describe the river routing, if any.'),
+        ('time_step', 'int', '1.1',
+             'Time step of river routing scheme in seconds'),        
         ('grid_inherited_from_land_surface', 'bool', '1.1',
              'Is the grid inherited from land surface?'),
-        ('grid_description', 'str', '1.1',
+        ('grid_description', 'str', '0.1',
              'General description of grid, if not inherited from land surface'),
         ('number_of_reservoirs', 'int', '1.1',
              'Enter the number of reservoirs'),
-        ('prognostic_variables', 'ENUM:prognostic_variable_types', '1.N',
-             'Specify the prognostic variables within the river routing scheme'),
         ('water_re_evaporation', 'ENUM:water_re_evaporation_types', '1.N',
              'TODO'),
         ('coupled_to_atmosphere', 'bool', '0.1',
@@ -58,7 +58,9 @@ DETAILS['toplevel'] = {
         ('basin_flow_direction_map', 'ENUM:basin_flow_direction_map_types', '1.1',
              'What type of basin flow direction map is being used?'),
         ('flooding', 'str', '0.1',
-             'Describe the representation of flooding, if any')
+             'Describe the representation of flooding, if any'),
+        ('prognostic_variables', 'str', '1.1',
+             'List the prognostic variables of the river routing'),
     ],
 }
 

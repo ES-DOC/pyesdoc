@@ -64,7 +64,7 @@ DETAILS['seawater_properties'] = {
 # RESOLUTION: Description of the resolution in the sea ice grid.
 # --------------------------------------------------------------------
 DETAILS['resolution'] = {
-    'description': "Resolution in the sea ice grid",
+    'description': "Resolution of the sea ice grid",
     'properties': [
         ('name', 'str', '1.1',
             "This is a string usually used by the modelling group to describe the resolution of this grid e.g. N512L180, T512L70, ORCA025 etc."),
@@ -135,12 +135,13 @@ ENUMERATIONS['prognostic_variables'] = {
     'description': 'Prognostic variables in sea ice model',
     'is_open': True,
     'members': [
-        ('Sea ice Temperature', None),
+        ('Sea ice temperature', None),
         ('Sea ice concentration', None),
         ('Sea ice thickness', None),
         ('Sea ice volume per grid cell area', None),
-        ('Sea ice U-velocity', None),
-        ('Sea ice V-velocity', None),
+        ('Sea ice u-velocity', None),
+        ('Sea ice v-velocity', None),
+        ('Sea ice enthalpy', None),
         ('Internal ice stress', None),
         ('Salinity', None),
         ('Snow temperature', 'Snow on ice temperature'),

@@ -179,11 +179,11 @@ CLASS_PROPERTIES = {
     ),
     activity.Ensemble: (
         'common_conformances',
-        'common_performance',
         'documentation',
         'ensemble_axes',
         'experiments',
         'members',
+        'representative_performance',
         'uber_ensembles',
         'alternative_names',
         'canonical_name',
@@ -220,11 +220,11 @@ CLASS_PROPERTIES = {
     activity.UberEnsemble: (
         'child_ensembles',
         'common_conformances',
-        'common_performance',
         'documentation',
         'ensemble_axes',
         'experiments',
         'members',
+        'representative_performance',
         'uber_ensembles',
         'alternative_names',
         'canonical_name',
@@ -982,11 +982,11 @@ CLASS_OWN_PROPERTIES = {
     ),
     activity.Ensemble: (
         'common_conformances',
-        'common_performance',
         'documentation',
         'ensemble_axes',
         'experiments',
         'members',
+        'representative_performance',
         'uber_ensembles',
     ),
     activity.EnsembleAxis: (
@@ -1705,11 +1705,11 @@ CONSTRAINTS = {
         ('previously_known_as', 'type', unicode),
         ('citations', 'type', shared.Citation),
         ('meta', 'type', shared.DocMetaInfo),
+        ('representative_performance', 'type', platform.Performance),
         ('rationale', 'type', unicode),
         ('keywords', 'type', unicode),
         ('members', 'type', activity.EnsembleMember),
         ('alternative_names', 'type', unicode),
-        ('common_performance', 'type', platform.Performance),
         ('name', 'type', unicode),
 
         ('ensemble_axes', 'cardinality', "0.N"),
@@ -1726,11 +1726,11 @@ CONSTRAINTS = {
         ('previously_known_as', 'cardinality', "0.N"),
         ('citations', 'cardinality', "0.N"),
         ('meta', 'cardinality', "1.1"),
+        ('representative_performance', 'cardinality', "0.1"),
         ('rationale', 'cardinality', "0.1"),
         ('keywords', 'cardinality', "0.1"),
         ('members', 'cardinality', "1.N"),
         ('alternative_names', 'cardinality', "0.N"),
-        ('common_performance', 'cardinality', "0.1"),
         ('name', 'cardinality', "1.1"),
 
     ),
@@ -1790,11 +1790,11 @@ CONSTRAINTS = {
         ('canonical_name', 'type', unicode),
         ('uber_ensembles', 'type', activity.UberEnsemble),
         ('meta', 'type', shared.DocMetaInfo),
+        ('representative_performance', 'type', platform.Performance),
         ('internal_name', 'type', unicode),
         ('duration', 'type', time.TimePeriod),
         ('members', 'type', activity.EnsembleMember),
         ('alternative_names', 'type', unicode),
-        ('common_performance', 'type', platform.Performance),
         ('name', 'type', unicode),
 
         ('child_ensembles', 'cardinality', "1.N"),
@@ -1812,11 +1812,11 @@ CONSTRAINTS = {
         ('canonical_name', 'cardinality', "0.1"),
         ('uber_ensembles', 'cardinality', "0.N"),
         ('meta', 'cardinality', "1.1"),
+        ('representative_performance', 'cardinality', "0.1"),
         ('internal_name', 'cardinality', "0.1"),
         ('duration', 'cardinality', "0.1"),
         ('members', 'cardinality', "1.N"),
         ('alternative_names', 'cardinality', "0.N"),
-        ('common_performance', 'cardinality', "0.1"),
         ('name', 'cardinality', "1.1"),
 
     ),
@@ -3549,13 +3549,6 @@ CONSTRAINTS = {
         ('cardinality', "0.N"),
 
     ),
-    (activity.Ensemble, 'common_performance'): (
-
-        ('type', platform.Performance),
-
-        ('cardinality', "0.1"),
-
-    ),
     (activity.Ensemble, 'documentation'): (
 
         ('type', shared.OnlineResource),
@@ -3582,6 +3575,13 @@ CONSTRAINTS = {
         ('type', activity.EnsembleMember),
 
         ('cardinality', "1.N"),
+
+    ),
+    (activity.Ensemble, 'representative_performance'): (
+
+        ('type', platform.Performance),
+
+        ('cardinality', "0.1"),
 
     ),
     (activity.Ensemble, 'uber_ensembles'): (
@@ -3784,13 +3784,6 @@ CONSTRAINTS = {
         ('cardinality', "0.N"),
 
     ),
-    (activity.UberEnsemble, 'common_performance'): (
-
-        ('type', platform.Performance),
-
-        ('cardinality', "0.1"),
-
-    ),
     (activity.UberEnsemble, 'documentation'): (
 
         ('type', shared.OnlineResource),
@@ -3817,6 +3810,13 @@ CONSTRAINTS = {
         ('type', activity.EnsembleMember),
 
         ('cardinality', "1.N"),
+
+    ),
+    (activity.UberEnsemble, 'representative_performance'): (
+
+        ('type', platform.Performance),
+
+        ('cardinality', "0.1"),
 
     ),
     (activity.UberEnsemble, 'uber_ensembles'): (
@@ -8516,8 +8516,6 @@ http://www.geosci-model-dev-discuss.net/gmd-2016-197/)
         "URI of the target numerical requirement.",
     (activity.Ensemble, 'common_conformances'):
         "Conformance documents for requirements common across ensemble.",
-    (activity.Ensemble, 'common_performance'):
-        "Representative model performance across ensemble.",
     (activity.Ensemble, 'documentation'):
         "Links to web-pages and other ensemble specific documentation (including workflow descriptions).",
     (activity.Ensemble, 'ensemble_axes'):
@@ -8526,6 +8524,8 @@ http://www.geosci-model-dev-discuss.net/gmd-2016-197/)
         "Experiments with which the ensemble is associated (may differ from constituent simulations).",
     (activity.Ensemble, 'members'):
         "The set of ensemble members.",
+    (activity.Ensemble, 'representative_performance'):
+        "Representative model performance across ensemble.",
     (activity.Ensemble, 'uber_ensembles'):
         "Link to one or more over-arching ensembles that might includes this one.",
     (activity.EnsembleAxis, 'extra_detail'):
@@ -9646,11 +9646,11 @@ KEYS = {
     (activity.Conformance, 'models'): "cim.2.activity.Conformance.models",
     (activity.Conformance, 'target_requirement'): "cim.2.activity.Conformance.target_requirement",
     (activity.Ensemble, 'common_conformances'): "cim.2.activity.Ensemble.common_conformances",
-    (activity.Ensemble, 'common_performance'): "cim.2.activity.Ensemble.common_performance",
     (activity.Ensemble, 'documentation'): "cim.2.activity.Ensemble.documentation",
     (activity.Ensemble, 'ensemble_axes'): "cim.2.activity.Ensemble.ensemble_axes",
     (activity.Ensemble, 'experiments'): "cim.2.activity.Ensemble.experiments",
     (activity.Ensemble, 'members'): "cim.2.activity.Ensemble.members",
+    (activity.Ensemble, 'representative_performance'): "cim.2.activity.Ensemble.representative_performance",
     (activity.Ensemble, 'uber_ensembles'): "cim.2.activity.Ensemble.uber_ensembles",
     (activity.EnsembleAxis, 'extra_detail'): "cim.2.activity.EnsembleAxis.extra_detail",
     (activity.EnsembleAxis, 'member'): "cim.2.activity.EnsembleAxis.member",

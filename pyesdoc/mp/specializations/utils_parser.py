@@ -31,10 +31,12 @@ class SpecializationParser(object):
         """
         self.on_root_parse(self.root)
         self._parse_topic(self.root)
+
         for st in self.root.sub_topics:
             getattr(self, "on_{}_parse".format(st.type_key))(st)
             self._parse_topic(st)
             getattr(self, "on_{}_parsed".format(st.type_key))(st)
+
         self.on_root_parsed(self.root)
 
         if self.short_tables:

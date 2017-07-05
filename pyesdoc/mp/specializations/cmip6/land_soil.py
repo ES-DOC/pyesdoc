@@ -38,7 +38,11 @@ DETAILS['toplevel'] = {
     'description': 'TODO',
     'properties': [
          ('heat_water_coupling', 'str', '1.1',
-             'Ddescribe the coupling between heat and water in the soil'),
+             'Describe the coupling between heat and water in the soil'),
+         ('number_of_soil layers', 'int', '1.1',
+             'The number of soil layers'),
+         ('prognostic_variables', 'str', '1.1',
+             'List the prognostic variables of the soil scheme'),
     ]
 }
 
@@ -50,18 +54,20 @@ DETAILS['soil_map'] = {
     'properties': [
         ('description', 'str', '1.1',
              'General description of soil map'),
-        ('structure', 'str', '1.1',
+        ('structure', 'str', '0.1',
              'Describe the soil structure map'),
-        ('texture', 'str', '1.1',
+        ('texture', 'str', '0.1',
              'Describe the soil texture map'),
-        ('organic_matter', 'str', '1.1',
+        ('organic_matter', 'str', '0.1',
              'Describe the soil organic matter map'),
-        ('albedo', 'str', '1.1',
+        ('albedo', 'str', '0.1',
              'Describe the soil albedo map'),
-        ('water_table', 'str', '1.1',
-             'Describe the soil water_table map'),
-        ('soil_depth', 'str', '1.1',
-             'Describe the soil total soil depth map'),
+        ('water_table', 'str', '0.1',
+             'Describe the soil water table map, if any'),
+        ('continuously_varying_soil_depth', 'bool', '1.1',
+             'Does the soil properties vary continuously with depth?'),
+        ('soil_depth', 'str', '0.1',
+             'Describe the soil depth map'),
     ],
 }
 
@@ -89,20 +95,23 @@ DETAILS['hydrology'] = {
     'description': 'Key properties of the land surface soil hydrology',
     'properties': [
         ('description', 'str', '1.1',
-             'General description of how soil hydrological properties are defined'),
+             'General description of the soil hydrological model'),
+        ('time_step', 'int', '1.1',
+             'Time step of river soil hydrology in seconds'),                
         ('tiling', 'str', '0.1',
              'Describe the soil hydrology tiling, if any.'),
         ('vertical_discretisation', 'str' , '1.1',
              'Describe the typical vertical discretisation'),
         ('number_of_ground_water_layers', 'int', '1.1',
-             'The number of ground water levels used in the land surface scheme/model'),
-        ('water_storage_method', 'ENUM:water_storage_method_types', '1.1',
-             'Describe the method by which water is stored in the land surface scheme/model'),
+             'The number of soil layers that may contain water'),
+        ('lateral_connectivity', 'ENUM:lateral_connectivity_types', '1.N',
+             'Describe the lateral connectivity between tiles'),
+        ('method', 'ENUM:water_storage_method_types', '1.1',
+             'The hydrological dynamics scheme in the land surface model'),
     ],
     'detail_sets': [
         'freezing',
         'drainage'
-        'runoff',
     ]
 }
 
@@ -110,7 +119,7 @@ DETAILS['hydrology:freezing'] = {
     'description': 'TODO',
     'properties': [
         ('number_of_ground_ice_layers', 'int', '1.1',
-            'How many ground ice layers are included in the land surface scheme'),
+            'How many soil layers may contain ground ice'),
         ('ice_storage_method', 'str', '1.1',
             'Describe the method of ice storage'),
         ('permafrost', 'str', '1.1',
@@ -122,17 +131,11 @@ DETAILS['hydrology:drainage'] = {
     'description': 'TODO',
     'properties': [
         ('description', 'str', '1.1',
-            'Describe how drainage is included in the land surface scheme'),
-        ]
-    }
-
-DETAILS['hydrology:runoff'] = {
-    'description': 'TODO',
-    'properties': [
-        ('description', 'str', '1.1',
-            'Describe how runoff is included in the land surface scheme'),
-        ]
-    }
+            'General describe how drainage is included in the land surface scheme'),
+        ('types', 'ENUM:drainage_types', '0.N',
+            'Different types of runoff represented by the land surface model'),
+    ]
+}
 
 # --------------------------------------------------------------------
 # SUB-PROCESS: Heat treatment
@@ -142,10 +145,10 @@ DETAILS['heat_treatment'] = {
     'properties': [
         ('description', 'str', '1.1',
              'General description of how heat treatment properties are defined'),
+        ('time_step', 'int', '1.1',
+             'Time step of soil heat scheme in seconds'),                
         ('tiling', 'str', '0.1',
              'Describe the soil heat treatment tiling, if any.'),
-        ('number_of_ground_heat_layers', 'int', '1.1',
-            'How many ground heat layers are included in the land surface scheme'),
         ('vertical_discretisation', 'str' , '1.1',
              'Describe the typical vertical discretisation'),
         ('heat_storage', 'ENUM:heat_storage_types', '1.1',
@@ -155,10 +158,31 @@ DETAILS['heat_treatment'] = {
     ],
 }
 
-
 # --------------------------------------------------------------------
 # ENUMERATIONS
 # --------------------------------------------------------------------
+ENUMERATIONS['lateral_connectivity_types'] = {
+    'description': 'Describe the lateral connectivity between tiles',
+    'is_open': True,
+    'members': [
+        ('perfect connectivity', 'Common soil for multiple tiles'),
+        ('Darcian flow', 'Darcian flow among hillslope tiles'),
+    ]
+}
+
+ENUMERATIONS['drainage_types'] = {
+    'description': 'Different types of runoff represented by the land surface model',
+    'is_open': True,
+    'members': [
+        ('Gravity drainage', None),
+        ('Horton mechanism', None),
+        ('topmodel-based', None),
+        ('Dunne mechanism', None),
+        ('Lateral subsurface flow', None),
+        ('Baseflow from groundwater', None),
+    ]
+}
+
 ENUMERATIONS['water_storage_method_types'] = {
     'description': 'Describe the method by which water is stored in the land surface scheme/model',
     'is_open': True,

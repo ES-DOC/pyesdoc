@@ -85,12 +85,12 @@ ENUMERATIONS['rheology_types'] = {
     'description': 'Sea ice rheology types',
     'is_open': True,
     'members': [
-        ('free-drift', None),
+        ('Free-drift', None),
         ('Mohr-Coloumb', None),
-        ('visco-plastic', 'VP'),
-        ('elastic-visco-plastic', 'EVP'),
+        ('Visco-plastic', 'VP'),
+        ('Elastic-visco-plastic', 'EVP'),
         ('Elastic-aniostropic-plastic', None,),
-        ('granular', None),
+        ('Granular', None),
     ]
 }
 
