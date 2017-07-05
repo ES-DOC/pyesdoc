@@ -103,13 +103,15 @@ class QConfigGenerator(Generator):
             )
             new_qconfig_class["id"] = class_id
 
-            label = cls.pstr
-            if label:
-                new_qconfig_class["label"] = OrderedDict()
-                new_qconfig_class["label"]["text"] = label.text
-                new_qconfig_class["label"]["fields"] = []
-                for field in label.fields:
-                    new_qconfig_class["label"]["fields"].append(field)
+            potential_labels = [cls.pstr] + [b.pstr for b in cls.bases]
+            for label in potential_labels:
+                if label is not None:
+                    new_qconfig_class["label"] = OrderedDict()
+                    new_qconfig_class["label"]["text"] = label.text
+                    new_qconfig_class["label"]["fields"] = []
+                    for field in label.fields:
+                        new_qconfig_class["label"]["fields"].append(field)
+                    break  # stop as soon as you've found a label
 
             new_qconfig_class["categories"] = {
                 "inherited": [],
