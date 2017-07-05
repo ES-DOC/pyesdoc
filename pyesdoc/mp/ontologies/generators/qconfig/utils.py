@@ -29,6 +29,129 @@ QCONFIG_ATOMIC_TYPE_MAP = {
     "uuid": "STRING",
 }
 
+#############################################
+# begin questionnaire-specific version code #
+#############################################
+
+# TODO: THIS CODE COMES FROM "esdoc-questionnaire.Q.questionnaire.q_utils.py" IN THE LONG-TERM I SHOULD USE IT DIRECTLY
+
+
+class Version(object):
+
+    N_BITS = (8, 8, 16)
+
+    def __init__(self, string):
+        self.integer = Version.string_to_int(string)
+        self.string = string
+
+    def __str__(self):
+        return self.string
+
+    def __int__(self):
+        return self.integer
+
+    def __eq__(self, other):
+        if not other:
+            return False
+
+        if isinstance(other, basestring):
+            return self == Version(other)
+        else:
+            return int(self) == int(other)
+
+    def __gt__(self, other):
+        if isinstance(other, basestring):
+            other = Version(other)
+        return int(self) > int(other)
+
+    def __ge__(self, other):
+        if isinstance(other, basestring):
+            other = Version(other)
+        return int(self) >= int(other)
+
+    def __lt__(self, other):
+        if isinstance(other, basestring):
+            other = Version(other)
+        return int(self) < int(other)
+
+    def __le__(self, other):
+        if isinstance(other, basestring):
+            other = Version(other)
+        return int(self) <= int(other)
+
+    def major(self):
+        string = str(self)
+        numbers = [int(n) for n in string.split(".")]
+        try:
+            return numbers[0]
+        except IndexError:
+            return 0
+
+    def minor(self):
+        string = str(self)
+        numbers = [int(n) for n in string.split(".")]
+        try:
+            return numbers[1]
+        except IndexError:
+            return 0
+
+    def patch(self):
+        string = str(self)
+        numbers = [int(n) for n in string.split(".")]
+        try:
+            return numbers[2]
+        except IndexError:
+            return 0
+
+    def fully_specified(self):
+        return "{0}.{1}.{2}".format(
+            self.major(),
+            self.minor(),
+            self.patch(),
+        )
+
+    @classmethod
+    def string_to_int(cls, string):
+
+        numbers = [int(n) for n in string.split(".")]
+
+        if len(numbers) > len(cls.N_BITS):
+            msg = "Versions with more than {0} decimal places are not supported".format(len(Version.N_BITS)-1)
+            raise NotImplementedError(msg)
+
+        #  add 0s for missing numbers
+        numbers.extend([0] * (len(cls.N_BITS) - len(numbers)))
+
+        #  convert to single int and return
+        number = 0
+        total_bits = 0
+        for n, b in reversed(zip(numbers, cls.N_BITS)):
+            max_num = (b+1) - 1
+            if n >= 1 << max_num:
+                msg = "Number {0} cannot be stored with only {1} bits. Max is {2}".format(n, b, max_num)
+                raise ValueError(msg)
+            number += n << total_bits
+            total_bits += b
+
+        return number
+
+    @classmethod
+    def int_to_string(cls, integer):
+        number_strings = []
+        total_bits = sum(cls.N_BITS)
+        for b in Version.N_BITS:
+            shift_amount = (total_bits - b)
+            number_segment = integer >> shift_amount
+            number_strings.append(str(number_segment))
+            total_bits = total_bits - b
+            integer = integer - (number_segment << shift_amount)
+
+        return ".".join(number_strings)
+
+###########################################
+# end questionnaire-specific version code #
+###########################################
+
 
 def get_property_type(prop):
     prop_type = prop.type
@@ -95,7 +218,7 @@ def get_ontology_name(name):
 
 
 def get_ontology_version(version):
-    """Converts version identifier to a version suitable for qconfig.
+    """Converts version identifier to a version suitable for the questionnaire
 
     Keyword Arguments:
     name - name of version identifier being converted.
@@ -104,7 +227,15 @@ def get_ontology_version(version):
     if isinstance(version, str) == False:
         version = version.version
 
-    return version
+    q_version = Version(version)
+    return q_version.fully_specified()
+
+
+def get_ontology_key(ontology):
+    return "{0}_{1}".format(
+        get_ontology_name(ontology),
+        get_ontology_version(ontology),
+    )
 
 
 def _get_ontology_directory(ctx, include_version=True):
@@ -120,7 +251,8 @@ def _get_ontology_directory(ctx, include_version=True):
         _dir += ctx.output_dir + '/'
     _dir += get_ontology_name(ctx.ontology)
     if include_version:
-        _dir += '/v' + get_ontology_version(ctx.ontology)
+        # _dir += '/v' + get_ontology_version(ctx.ontology)
+        _dir += "/v{0}".format(Version(ctx.ontology.version).major())
     return _dir
 
 
@@ -135,7 +267,9 @@ def _get_ontology_filename(ctx, include_version=True):
     ontology = ctx.ontology
     ontology_filename = get_ontology_name(ontology)
     if include_version:
-        ontology_filename += "_{0}".format(get_ontology_version(ontology).replace('.', '_'))
+        # ontology_filename += "_{0}".format(get_ontology_version(ontology).replace('.', '_'))
+        version = Version(ontology.version).major()
+        ontology_filename += "_{0}".format(version)
     ontology_filename += ".json"
     return ontology_filename
 
