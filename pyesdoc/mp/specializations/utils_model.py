@@ -273,6 +273,14 @@ class PropertySpecialization(object):
 
 
     @property
+    def long_name(self):
+        """Returns long name derived from id.
+
+        """
+        return _get_long_name(self.id, offset=3)
+
+
+    @property
     def is_required(self):
         """Gets flag indicating whether cardinality is mandatory or not.
 
@@ -360,6 +368,13 @@ class EnumSpecialization(object):
         return self.id
 
 
+    def __iter__(self):
+        """Instance iterator initializer.
+
+        """
+        return iter(self.choices)
+
+
     def is_a_member(self, val):
         """Returns flag indicating whether vlue is a member of the enumeration.
 
@@ -419,14 +434,12 @@ def _to_camel_case_spaced(name, separator='_'):
     :param str separator: Separator to use in order to split name into constituent parts.
 
     """
-    s = _to_camel_case(name, separator)
-    r = s[0]
-    for s in s[1:]:
-        if s.upper() == s:
-            r += " "
-        r += s
+    if name is None:
+        return ''
 
-    return r
+    r = [_to_camel_case(i, separator) for i in name.split(separator)]
+
+    return ' '.join(r)
 
 
 def _to_camel_case(name, separator='_'):
@@ -436,12 +449,29 @@ def _to_camel_case(name, separator='_'):
     :param str separator: Separator to use in order to split name into constituent parts.
 
     """
+    if name is None:
+        return ''
+
     r = ''
-    if name is not None:
-        s = name.split(separator)
-        for s in s:
-            if (len(s) > 0):
-                r += s[0].upper()
-                if (len(s) > 1):
-                    r += s[1:]
+    for s in name.split(separator):
+        if len(s) == 0:
+            continue
+        r += s[0].upper()
+        if (len(s) > 1):
+            r += s[1:]
+
     return r
+
+
+def _get_long_name(identifier, offset=None, seperator=" --> ", convertor=None):
+    """Returns long name derived from an identifier.
+
+    """
+    if convertor is None:
+        convertor = _to_camel_case_spaced
+    names = identifier.split(".")
+    if offset is not None:
+        names = names[offset:]
+    names = [convertor(i) for i in names]
+
+    return seperator.join(names)
