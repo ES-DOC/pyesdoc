@@ -134,8 +134,12 @@ class QConfigGenerator(Generator):
                 new_qconfig_property["is_nillable"] = not prop.is_required
 
                 property_id = getattr(prop, "id", None)
-                if property_id:
-                    new_qconfig_property["id"] = property_id
+                if property_id is None:
+                    property_id = "{0}.{1}".format(
+                        class_id,
+                        prop.name,
+                    )
+                new_qconfig_property["id"] = property_id
 
                 property_type = qgu.get_property_type(prop)
                 new_qconfig_property["property_type"] = property_type
