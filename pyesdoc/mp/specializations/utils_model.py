@@ -318,6 +318,21 @@ class PropertySpecialization(object):
         return self.typeof.split(":")[-1].upper()
 
 
+    @property
+    def root_topic(self):
+        """Returns a properties root topic.
+
+        """
+        result = self.owner
+        while len(result.id.split('.')) != 3:
+            try:
+                result = result.owner
+            except AttributeError:
+                result = result.parent
+
+        return result
+
+
     def validate_value(self, val):
         """Validates a property value.
 
@@ -425,6 +440,50 @@ class EnumChoiceSpecialization(object):
 
         """
         return self.id
+
+
+class ShortTable(object):
+    """Wraps s short-table, i.e. a grouped subset of specializations.
+
+    """
+    def __init__(self):
+        """Instance initializer.
+
+        """
+        self.authors = []
+        self.change_history = []
+        self.contact = None
+        self.contributors = []
+        self.groups = []
+        self.label = None
+        self.name = None
+        self.qc_status = None
+
+
+    def __iter__(self):
+        """Instance iterator initializer.
+
+        """
+        return iter(self.groups)
+
+
+class ShortTableGroup(object):
+    """Wraps a grouped set of specializations related to a short table.
+
+    """
+    def __init__(self):
+        """Instance initializer.
+
+        """
+        self.name = None
+        self.identifiers = []
+
+
+    def __iter__(self):
+        """Instance iterator initializer.
+
+        """
+        return iter(self.identifiers)
 
 
 def _to_camel_case_spaced(name, separator='_'):

@@ -17,10 +17,11 @@ class SpecializationParser(object):
     """An event driven CMIP6 specializations parser.
 
     """
-    def __init__(self, root, short_tables):
+    def __init__(self, project, root, short_tables):
         """Instance constructor.
 
         """
+        self.project = project
         self.root = root
         self.short_tables = short_tables
 
@@ -37,14 +38,14 @@ class SpecializationParser(object):
             self._parse_topic(st)
             getattr(self, "on_{}_parsed".format(st.type_key))(st)
 
-        self.on_root_parsed(self.root)
-
         if self.short_tables:
             self.on_short_tables_parse(self.short_tables)
-            for name, obj in self.short_tables:
-                self.on_short_table_parse(name, obj)
-                self.on_short_table_parsed(name, obj)
+            for short_table in self.short_tables:
+                self.on_short_table_parse(short_table)
+                self.on_short_table_parsed(short_table)
             self.on_short_tables_parsed(self.short_tables)
+
+        self.on_root_parsed(self.root)
 
 
     def _parse_topic(self, topic):
@@ -219,14 +220,14 @@ class SpecializationParser(object):
         pass
 
 
-    def on_short_table_parse(self, name, obj):
+    def on_short_table_parse(self, short_table):
         """On short table parse event handler.
 
         """
         pass
 
 
-    def on_short_table_parsed(self, name, obj):
+    def on_short_table_parsed(self, short_table):
         """On short table parsed event handler.
 
         """

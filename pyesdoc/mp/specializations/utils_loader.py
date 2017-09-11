@@ -14,7 +14,8 @@ import os
 import glob
 
 
-def get_short_tables(input_dir, typeof):
+
+def get_short_tables_definitions(input_dir, typeof):
     """Returns specialization short tables.
 
     :param str input_dir: Directory within which modules reside.

@@ -1,22 +1,22 @@
-"""A top level model.
+"""A sepecialization.
 
 For further information goto http://wordpress.es-doc.org/cmip6-model-specializations.
 
 """
 # --------------------------------------------------------------------
-# CONTACT: Set to top-level specialization co-ordinator.
+# CONTACT: Set to specialization co-ordinator.
 # --------------------------------------------------------------------
-CONTACT = 'Eric Guilyardi'
+CONTACT = 'Charlotte Pascoe, David Hassell'
 
 # --------------------------------------------------------------------
-# AUTHORS: Set to top-level specialization authors (comma delimited).
+# AUTHORS: Set to specialization authors (comma delimited).
 # --------------------------------------------------------------------
-AUTHORS = 'Eric Guilyardi'
+AUTHORS = 'David Hassell'
 
 # --------------------------------------------------------------------
-# CONTRIBUTORS: Set to top-level specialization contributors (comma delimited).
+# CONTRIBUTORS: Set to specialization contributors (comma delimited).
 # --------------------------------------------------------------------
-CONTRIBUTORS = 'Roland Seferian (CNRM), Tim Johns (UKMO)'
+CONTRIBUTORS = 'CMIP5 version'
 
 # --------------------------------------------------------------------
 # QUALITY CONTROL STATUS: Set to 'draft' or 'complete'
@@ -27,46 +27,35 @@ QC_STATUS = 'draft'
 # CHANGE HISTORY: Set to list: (version, date, comment, who).
 # --------------------------------------------------------------------
 CHANGE_HISTORY = [
-    ("0.1.0", "2016-09-01", "Initialised", "Eric Guilyardi"),
-    ("0.2.0", "2016-11-08", "Changed syntax to simplify and remove CIM2 dependencies", "Eric Guilyardi et al"),
-    ("0.3.0", "2017-01-30", "Added forcings", "David Hassell, Eric Guilyardi"),
-    ("0.4.0", "2017-05-02", "Updated solar forcing", "David Hassell"),
-    ]
+	("0.1.0", "2017-08-04",
+         "Initialised from CMIP5", "Charlotte Pascoe (NCAS), David Hassell (NCAS)"),
+     ]
 
 # --------------------------------------------------------------------
-# DESCRIPTION: Scientific context of this scientific top-level
+# CMIP5_MAPPINGS_SYNCED_AT: Latest version that has been synced with CMIP5 mappings.
 # --------------------------------------------------------------------
-DESCRIPTION = 'Top level model'
+#CMIP5_MAPPINGS_SYNCED_AT = "0.4.0"
+
+# --------------------------------------------------------------------
+# DESCRIPTION: Scientific context of this specialization
+# --------------------------------------------------------------------
+DESCRIPTION = 'Atmospheric aerosols realm'
 
 # --------------------------------------------------------------------
 # GRID: The grid used to layout the variables
 # --------------------------------------------------------------------
-GRID = None
+GRID = 'aerosol_grid'
 
 # --------------------------------------------------------------------
-# KEY PROPERTIES: File name (without the .py suffix) containing key properties of the top level model.
+# KEY PROPERTIES: Key properties (differing from defaults (grid, timestep etc))
 # --------------------------------------------------------------------
-KEY_PROPERTIES = 'toplevel_key_properties'
+KEY_PROPERTIES = 'aerosol_key_properties'
 
 # --------------------------------------------------------------------
-# PROCESSES: Processes simulated within the model
+# PROCESSES: Simulated processes
 # --------------------------------------------------------------------
 PROCESSES = [
-    'toplevel_radiative_forcings',
+    'aerosol_transport',
+    'aerosol_emissions_concentrations',
+    'aerosol_model',
     ]
-
-# --------------------------------------------------------------------
-# SIMULATES: Realms simulated by the model
-# N.B. Official realms names are from https://github.com/WCRP-CMIP/CMIP6_CVs/blob/master/CMIP6_realm.json
-# N.B. Creation tool should include an on/off switch to allow for partial configurations (AMIP, AOGCM)
-# --------------------------------------------------------------------
-SIMULATES = [
-    "aerosol",
-    "atmos",
-    "atmosChem",
-    "land",
-    "landIce",
-    "ocean",
-    "ocnBgchem",
-    "seaIce",
-]
