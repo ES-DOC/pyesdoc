@@ -24,6 +24,7 @@ class TopicSpecialization(object):
 
         """
         self.authors = None
+        self.change_history = []
         self.contact = None
         self.contributors = None
         self.description = None
@@ -135,7 +136,7 @@ class TopicSpecialization(object):
 
 
     @property
-    def ENUMS(self):
+    def enums(self):
         """Gets associated enumeration definitions.
 
         """
@@ -454,9 +455,9 @@ class ShortTable(object):
         self.change_history = []
         self.contact = None
         self.contributors = []
-        self.groups = []
         self.label = None
         self.name = None
+        self.properties = []
         self.qc_status = None
 
 
@@ -464,10 +465,10 @@ class ShortTable(object):
         """Instance iterator initializer.
 
         """
-        return iter(self.groups)
+        return iter(self.properties)
 
 
-class ShortTableGroup(object):
+class ShortTableProperty(object):
     """Wraps a grouped set of specializations related to a short table.
 
     """
@@ -475,15 +476,8 @@ class ShortTableGroup(object):
         """Instance initializer.
 
         """
-        self.name = None
-        self.identifiers = []
-
-
-    def __iter__(self):
-        """Instance iterator initializer.
-
-        """
-        return iter(self.identifiers)
+        self.identifier = None
+        self.priority = None
 
 
 def _to_camel_case_spaced(name, separator='_'):
