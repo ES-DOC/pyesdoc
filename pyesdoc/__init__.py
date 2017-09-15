@@ -17,7 +17,7 @@
 
 """
 __title__ = 'pyesdoc'
-__version__ = '0.9.7.4.0'
+__version__ = '0.9.8.1.0'
 __author__ = 'ES-DOC'
 __license__ = 'GPL'
 __copyright__ = 'Copyright 2016 ES-DOC'
