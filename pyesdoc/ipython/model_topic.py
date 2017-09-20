@@ -41,8 +41,8 @@ class NotebookOutput(object):
         self._prop_specialization = None
 
         # Initialise output directory.
-        output_dir = os.getenv('ESDOC_CMIP6_NOTEBOOK_HOME')
-        if output_dir is not None:
+        if os.getenv('ESDOC_CMIP6_NOTEBOOK_HOME') is not None:
+            output_dir = os.getenv('ESDOC_CMIP6_NOTEBOOK_HOME')
             output_dir = os.path.join(output_dir, self.institute)
         else:
             output_dir = os.path.expanduser('~')
