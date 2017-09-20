@@ -24,13 +24,17 @@ CONTRIBUTORS = 'Roland Seferian (CNRM), Tim Johns (UKMO)'
 QC_STATUS = 'draft'
 
 # --------------------------------------------------------------------
-# CHANGE HISTORY: Set to list: (version, date, comment, who).
+# CHANGE HISTORY: Set to list: (version, date, who, comment).
 # --------------------------------------------------------------------
 CHANGE_HISTORY = [
-    ("0.1.0", "2016-09-01", "Initialised", "Eric Guilyardi"),
-    ("0.2.0", "2016-11-08", "Changed syntax to simplify and remove CIM2 dependencies", "Eric Guilyardi et al"),
-    ("0.3.0", "2017-01-30", "Added forcings", "David Hassell, Eric Guilyardi"),
-    ("0.4.0", "2017-05-02", "Updated solar forcing", "David Hassell"),
+    ("0.1.0", "2016-09-01", "Eric Guilyardi",
+        "Initialised"),
+    ("0.2.0", "2016-11-08", "Eric Guilyardi et al",
+        "Changed syntax to simplify and remove CIM2 dependencies"),
+    ("0.3.0", "2017-01-30", "David Hassell, Eric Guilyardi",
+        "Added forcings"),
+    ("0.4.0", "2017-05-02", "David Hassell",
+        "Updated solar forcing"),
     ]
 
 # --------------------------------------------------------------------

@@ -32,13 +32,13 @@ CONTRIBUTORS = 'CMIP5 version, Rich Ellis (CEH), Phillipe Peylin (IPSL)'
 QC_STATUS = 'draft'
 
 # --------------------------------------------------------------------
-# CHANGE HISTORY: Set to list: (version, date, comment, who).
+# CHANGE HISTORY: Set to list: (version, date, who, comment).
 # --------------------------------------------------------------------
 CHANGE_HISTORY = [
     ("0.1.0", "2016-04-05", "David Hassell",
         "Initialised from CMIP5 mind map + incorporating initital feedback from Rich Ellis and Pillipe Peylin"),
     ("0.2.0", "2016-06-01", "David Hassell",
-         "Incorporating comments from Christine Delire (CNRM), Bark van de Hurk (KNMI), Sergey Malyshev (GFDL), 'Chris Milly (GFDL)")
+         "Incorporating comments from Christine Delire (CNRM), Bark van de Hurk (KNMI), Sergey Malyshev (GFDL), Chris Milly (GFDL)")
 ]
 
 # --------------------------------------------------------------------
@@ -52,14 +52,14 @@ CMIP5_MAPPINGS_SYNCED_AT = "N/A"
 DESCRIPTION = 'Land Surface Realm'
 
 # --------------------------------------------------------------------
-# GRID: The grid used to layout the variables
-# --------------------------------------------------------------------
-GRID = 'land_grid'
-
-# --------------------------------------------------------------------
 # KEY PROPERTIES: Key properties for the realm which differ from model defaults (grid, timestep etc)
 # --------------------------------------------------------------------
 KEY_PROPERTIES = 'land_key_properties'
+
+# --------------------------------------------------------------------
+# GRID: The grid used to layout the variables
+# --------------------------------------------------------------------
+GRID = 'land_grid'
 
 # --------------------------------------------------------------------
 # PROCESSES: Processes simulated within the realm

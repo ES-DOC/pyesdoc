@@ -32,16 +32,16 @@ CONTRIBUTORS = 'Jamie Rae (UKMO), Martin Vancopppenolle (IPSL), Alexandra Jahn (
 QC_STATUS = 'draft'
 
 # --------------------------------------------------------------------
-# CHANGE HISTORY: Set to list: (version, date, comment, who).
+# CHANGE HISTORY: Set to list: (version, date, who, comment).
 # --------------------------------------------------------------------
 CHANGE_HISTORY = [
-	("0.1.0", "2016-05-24", "Initialised", "David Hassell"),
-	("0.1.1", "2016-09-28", "Modified to include work done by Bryan Lawerence", "Petrie"),
-	("0.1.2", "2016-11-07", "Updated on the basis of discussion with Jamie Rae (UKMO)", "Ruth Petrie"),
-    ("0.1.3", "2016-11-15", "Refactored based to fit in the new schema", "Mark Greenslade"),
-    ("0.1.4", "2016-11-17", "Update DETAILS and SUBPROCESS names", "Ruth Petrie"),
-    ("0.1.5", "2016-11-18", "Update based on discussions with Martin Vancopppenolle (IPSL)", "Ruth Petrie"),
-    ("0.1.6", "2016-11-23", "Update based on discussions with Alexandra Jahn (University of Colorado)", "Ruth Petrie"),
+	("0.1.0", "2016-05-24", "David Hassell", "Initialised"),
+	("0.1.1", "2016-09-28", "Ruth Petrie", "Modified to include work done by Bryan Lawerence"),
+	("0.1.2", "2016-11-07", "Ruth Petrie", "Updated on the basis of discussion with Jamie Rae (UKMO)"),
+    ("0.1.3", "2016-11-15", "Mark Greenslade", "Refactored based to fit in the new schema"),
+    ("0.1.4", "2016-11-17", "Ruth Petrie", "Update DETAILS and SUBPROCESS names"),
+    ("0.1.5", "2016-11-18", "Ruth Petrie", "Update based on discussions with Martin Vancopppenolle (IPSL)"),
+    ("0.1.6", "2016-11-23", "Ruth Petrie", "Update based on discussions with Alexandra Jahn (University of Colorado)"),
 ]
 
 # --------------------------------------------------------------------
@@ -60,14 +60,14 @@ DESCRIPTION = 'Sea ice realm specialization'
 REALM = 'seaice'
 
 # --------------------------------------------------------------------
-# GRID: The grid used to layout the variables
-# --------------------------------------------------------------------
-GRID = 'seaice_grid'
-
-# --------------------------------------------------------------------
 # KEY PROPERTIES: Key properties for the realm which differ from model defaults (grid, timestep etc)
 # --------------------------------------------------------------------
 KEY_PROPERTIES = 'seaice_key_properties'
+
+# --------------------------------------------------------------------
+# GRID: The grid used to layout the variables
+# --------------------------------------------------------------------
+GRID = 'seaice_grid'
 
 # --------------------------------------------------------------------
 # PROCESSES: Processes simulated within the realm

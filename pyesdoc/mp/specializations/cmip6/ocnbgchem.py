@@ -32,7 +32,7 @@ CONTRIBUTORS = 'CMIP5 version + Olivier Aumont (LOCEAN/IPSL)'
 QC_STATUS = 'draft'
 
 # --------------------------------------------------------------------
-# CHANGE HISTORY: Set to list: (version, date, comment, who).
+# CHANGE HISTORY: Set to list: (version, date, who, comment).
 # --------------------------------------------------------------------
 CHANGE_HISTORY = [
     ("0.1.0", "2017-01-31", "Eric Guilyardi",
@@ -59,15 +59,15 @@ DESCRIPTION = 'Ocean Biogeochemistry Realm'
 REALM = 'ocnbgchem'
 
 # --------------------------------------------------------------------
+# KEY PROPERTIES: Key properties for the realm which differ from model defaults
+# --------------------------------------------------------------------
+KEY_PROPERTIES = 'ocnbgchem_key_properties'
+
+# --------------------------------------------------------------------
 # GRID: The grid used to layout the variables
 # --------------------------------------------------------------------
 # Not used for this Realm.
 GRID = None
-
-# --------------------------------------------------------------------
-# KEY PROPERTIES: Key properties for the realm which differ from model defaults
-# --------------------------------------------------------------------
-KEY_PROPERTIES = 'ocnbgchem_key_properties'
 
 # --------------------------------------------------------------------
 # PROCESSES: Processes simulated within the realm

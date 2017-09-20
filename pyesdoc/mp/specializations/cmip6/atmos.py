@@ -24,12 +24,14 @@ CONTRIBUTORS = ''
 QC_STATUS = 'draft'
 
 # --------------------------------------------------------------------
-# CHANGE HISTORY: Set to list: (version, date, comment, who).
+# CHANGE HISTORY: Set to list: (version, date, who, comment).
 # --------------------------------------------------------------------
 CHANGE_HISTORY = [
-	("0.1.0", "2016-11-29", "Initialised", "Mark Greenslade"),
-    ("0.2.0", "2016-12-02", "Updated process names and descriptions, added enumeration TODOs", "Charlotte Pascoe")
-]
+	("0.1.0", "2016-11-29", "Mark Greenslade",
+        "Initialised"),
+    ("0.2.0", "2016-12-02", "Charlotte Pascoe",
+        "Updated process names and descriptions, added enumeration TODOs")
+    ]
 
 # --------------------------------------------------------------------
 # CMIP5_MAPPINGS_SYNCED_AT: Latest version that has been synced with CMIP5 mappings.
@@ -47,14 +49,14 @@ DESCRIPTION = 'Atmosphere realm specialization'
 REALM = 'atmos'
 
 # --------------------------------------------------------------------
-# GRID: The grid used to layout the variables
-# --------------------------------------------------------------------
-GRID = 'atmos_grid'
-
-# --------------------------------------------------------------------
 # KEY PROPERTIES: Key properties for the realm which differ from model defaults (grid, timestep etc)
 # --------------------------------------------------------------------
 KEY_PROPERTIES = 'atmos_key_properties'
+
+# --------------------------------------------------------------------
+# GRID: The grid used to layout the variables
+# --------------------------------------------------------------------
+GRID = 'atmos_grid'
 
 # --------------------------------------------------------------------
 # PROCESSES: Processes simulated within the realm

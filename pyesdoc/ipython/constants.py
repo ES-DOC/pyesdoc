@@ -12,3 +12,6 @@
 """
 # Set of valid QC states.
 QC_STATES = {0, 1, 2}
+
+# Set of valid publication states.
+PUBLICATION_STATES = {0, 1}

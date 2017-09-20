@@ -71,8 +71,8 @@ DETAILS['orbital_parameters'] = {
             'Time adaptation of orbital parameters'),
         ('fixed_reference_date', 'int', '1.1',
             'Reference date for fixed orbital parameters (yyyy)'),
-        ('solar_constant_transient_characteristics', 'str', '1.1',
-            'Characteristics of transient orbital parameters'),
+        ('transient_method', 'str', '1.1',
+            'Description of transient orbital parameters'),
         ('computation_method', 'ENUM:top_insolation_orbital_parameters_computation_method', '1.1',
             'Method used for computing orbital parameters.')
         ]

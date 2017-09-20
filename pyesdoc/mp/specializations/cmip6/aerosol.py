@@ -24,12 +24,12 @@ CONTRIBUTORS = 'CMIP5 version'
 QC_STATUS = 'draft'
 
 # --------------------------------------------------------------------
-# CHANGE HISTORY: Set to list: (version, date, comment, who).
+# CHANGE HISTORY: Set to list: (version, date, who, comment).
 # --------------------------------------------------------------------
 CHANGE_HISTORY = [
-	("0.1.0", "2017-08-04",
-         "Initialised from CMIP5", "Charlotte Pascoe (NCAS), David Hassell (NCAS)"),
-     ]
+	("0.1.0", "2017-08-04", "Charlotte Pascoe (NCAS), David Hassell (NCAS)",
+         "Initialised from CMIP5"),
+    ]
 
 # --------------------------------------------------------------------
 # CMIP5_MAPPINGS_SYNCED_AT: Latest version that has been synced with CMIP5 mappings.
@@ -42,14 +42,14 @@ CHANGE_HISTORY = [
 DESCRIPTION = 'Atmospheric aerosols realm'
 
 # --------------------------------------------------------------------
-# GRID: The grid used to layout the variables
-# --------------------------------------------------------------------
-GRID = 'aerosol_grid'
-
-# --------------------------------------------------------------------
 # KEY PROPERTIES: Key properties (differing from defaults (grid, timestep etc))
 # --------------------------------------------------------------------
 KEY_PROPERTIES = 'aerosol_key_properties'
+
+# --------------------------------------------------------------------
+# GRID: The grid used to layout the variables
+# --------------------------------------------------------------------
+GRID = 'aerosol_grid'
 
 # --------------------------------------------------------------------
 # PROCESSES: Simulated processes

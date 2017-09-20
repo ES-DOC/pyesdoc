@@ -24,7 +24,7 @@ CONTRIBUTORS = 'CMIP5 version +, Julie Dehayes (LOCEAN/IPSL), Steve Griffies (GF
 QC_STATUS = 'draft'
 
 # --------------------------------------------------------------------
-# CHANGE HISTORY: Set to list: (version, date, comment, who).
+# CHANGE HISTORY: Set to list: (version, date, who, comment).
 # --------------------------------------------------------------------
 CHANGE_HISTORY = [
     ("0.1.0", "2016-07-01", "Eric Guilyardi",
@@ -52,14 +52,14 @@ CMIP5_MAPPINGS_SYNCED_AT = "0.4.0"
 DESCRIPTION = 'Ocean Realm'
 
 # --------------------------------------------------------------------
-# GRID: The grid used to layout the variables
-# --------------------------------------------------------------------
-GRID = 'ocean_grid'
-
-# --------------------------------------------------------------------
 # KEY PROPERTIES: Key properties (differing from defaults (grid, timestep etc))
 # --------------------------------------------------------------------
 KEY_PROPERTIES = 'ocean_key_properties'
+
+# --------------------------------------------------------------------
+# GRID: The grid used to layout the variables
+# --------------------------------------------------------------------
+GRID = 'ocean_grid'
 
 # --------------------------------------------------------------------
 # PROCESSES: Simulated processes

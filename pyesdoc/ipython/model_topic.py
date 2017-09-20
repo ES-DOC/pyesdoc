@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 
 """
-.. module:: model_realm_properties.py
+.. module:: model_topic.py
    :license: GPL/CeCIL
    :platform: Unix, Windows
-   :synopsis: Model realm properties notebook data wrapper.
+   :synopsis: Model topic notebook data wrapper.
 
 .. moduleauthor:: Mark Conway-Greenslade <momipsl@ipsl.jussieu.fr>
 
@@ -21,36 +21,30 @@ from pyesdoc.mp.specializations import get_property_specialization
 
 
 class NotebookOutput(object):
-    """Model realm properties ipython data wrapper.
+    """Model topic ipython data wrapper.
 
     """
     def __init__(self, mip_era, institute, source_id, realm):
         """Instance initialiser.
 
         """
-        self.authors = list()
-        self.contributors = list()
+        self.authors = []
+        self.contributors = []
         self.content = dict()
         self.institute = unicode(institute).strip().lower()
         self.mip_era = unicode(mip_era).strip().lower()
-        self.prop = None
-        self.prop_specialization = None
+        self.publication_status = 0
         self.realm = unicode(realm).strip().lower()
         self.source_id = unicode(source_id).strip().lower()
         self.specialization = get_model_specialization(mip_era, realm)
+        self._prop = None
+        self._prop_specialization = None
 
-        # Auto-initialise state.
-        self._init()
-
-
-    def _init(self):
-        """Initialises state from previously saved output.
-
-        """
         # Initialise output directory.
         output_dir = os.getenv('ESDOC_CMIP6_NOTEBOOK_HOME', '/home')
         output_dir = os.path.join(output_dir, self.institute)
         output_dir = os.path.join(output_dir, self.mip_era)
+        output_dir = os.path.join(output_dir, 'models')
         output_dir = os.path.join(output_dir, self.source_id)
         if not os.path.isdir(output_dir):
             os.makedirs(output_dir)
@@ -58,36 +52,31 @@ class NotebookOutput(object):
         # Initialise state from previously saved output file.
         self.fpath = os.path.join(output_dir, '.{}.json'.format(self.realm))
         if os.path.exists(self.fpath):
-            self._read()
+            with open(self.fpath, 'r') as fstream:
+                self._from_dict(json.loads(fstream.read()))
 
 
-    def _read(self):
-        """Reads state from file system.
-
-        """
-        with open(self.fpath, 'r') as fstream:
-            self._from_dict(json.loads(fstream.read()))
-
-
-    def write(self):
+    def save(self):
         """Persists state to file system.
 
         """
+        obj = self._to_dict()
         with open(self.fpath, 'w') as fstream:
-            fstream.write(json.dumps(self._to_dict(), indent=4))
+            fstream.write(json.dumps(obj, indent=4))
 
 
     def _from_dict(self, obj):
         """Initialises internal state from a dictionary.
 
         """
-        self.mip_era = obj['MIP_ERA']
-        self.institute = obj['INSTITUTE']
-        self.source_id = obj['SOURCE_ID']
-        self.realm = obj['REALM']
-        self.authors = [(i['name'], i['email']) for i in obj['AUTHORS']]
-        self.contributors = [(i['name'], i['email']) for i in obj['CONTRIBUTORS']]
-        self.content = obj['CONTENT']
+        self.publication_status = obj.get('publicationState', 0)
+        self.mip_era = obj['mipEra']
+        self.institute = obj['institute']
+        self.source_id = obj['sourceID']
+        self.realm = obj['realm']
+        self.authors = [(i['name'], i['email']) for i in obj['authors']]
+        self.contributors = [(i['name'], i['email']) for i in obj['contributors']]
+        self.content = obj['content']
 
 
     def _to_dict(self):
@@ -95,17 +84,18 @@ class NotebookOutput(object):
 
         """
         obj = collections.OrderedDict()
-        obj['MIP_ERA'] = self.mip_era
-        obj['INSTITUTE'] = self.institute
-        obj['SOURCE_ID'] = self.source_id
-        obj['REALM'] = self.realm
-        obj['AUTHORS'] = [{'name': i[0], 'email': i[1]} for i in self.authors]
-        obj['CONTRIBUTORS'] = [{'name': i[0], 'email': i[1]} for i in self.contributors]
-        obj['CONTENT'] = collections.OrderedDict()
+        obj['publicationState'] = self.publication_status
+        obj['mipEra'] = self.mip_era
+        obj['institute'] = self.institute
+        obj['sourceID'] = self.source_id
+        obj['realm'] = self.realm
+        obj['authors'] = [{'name': i[0], 'email': i[1]} for i in self.authors]
+        obj['contributors'] = [{'name': i[0], 'email': i[1]} for i in self.contributors]
+        obj['content'] = collections.OrderedDict()
         for specialization_id in sorted(self.content.keys()):
             specialization_obj = self.content[specialization_id]
             if specialization_obj['qc_status'] or specialization_obj['values']:
-                obj['CONTENT'][specialization_id] = self.content[specialization_id]
+                obj['content'][specialization_id] = self.content[specialization_id]
 
         return obj
 
@@ -114,36 +104,54 @@ class NotebookOutput(object):
         """Adds an author to managed collection.
 
         """
+        # Format inputs.
         if name is not None:
             name = unicode(name).strip()
         if email is not None:
             email = unicode(email).strip()
 
-        if name is None or len(name) == 0:
-            raise ValueError('Invalid author name')
-        if email is None or len(email) == 0:
-            raise ValueError('Invalid author email')
-        # TODO: validate with reg-ex.
-
-        self.authors.append((name, email))
-
-
-    def set_contributor(self, name, email):
-        """Adds a contributor to managed collection.
-
-        """
-        if name is not None:
-            name = unicode(name).strip()
-        if email is not None:
-            email = unicode(email).strip()
-
+        # Validate inputs.
         if name is None or len(name) == 0:
             raise ValueError('Invalid contributor name')
         if email is None or len(email) == 0:
             raise ValueError('Invalid contributor email')
         # TODO: validate with reg-ex.
 
+        # Reject duplicates.
+        for i, j in self.authors:
+            if name.lower() == i.lower() and email.lower() == j.lower():
+                return
+
+        # Update state.
+        self.authors.append((name, email))
+        self.save()
+
+
+    def set_contributor(self, name, email):
+        """Adds a contributor to managed collection.
+
+        """
+        # Format inputs.
+        if name is not None:
+            name = unicode(name).strip()
+        if email is not None:
+            email = unicode(email).strip()
+
+        # Validate inputs.
+        if name is None or len(name) == 0:
+            raise ValueError('Invalid contributor name')
+        if email is None or len(email) == 0:
+            raise ValueError('Invalid contributor email')
+        # TODO: validate with reg-ex.
+
+        # Reject duplicates.
+        for i, j in self.contributors:
+            if name.lower() == i.lower() and email.lower() == j.lower():
+                return
+
+        # Update state.
         self.contributors.append((name, email))
+        self.save()
 
 
     def set_id(self, prop_id):
@@ -154,38 +162,56 @@ class NotebookOutput(object):
             'values': [],
             'qc_status': 0
         }
-        self.prop = self.content[prop_id]
-        self.prop_specialization = get_property_specialization(prop_id)
+        self._prop = self.content[prop_id]
+        self._prop_specialization = get_property_specialization(prop_id)
 
 
     def set_qc_status(self, qc_status):
         """Sets qc-status of specialized property being edited.
 
         """
+        # Validate input.
         if qc_status not in constants.QC_STATES:
             raise ValueError('Invalid QC status')
 
-        self.prop['qc_status'] = qc_status
+        # Update state.
+        self._prop['qc_status'] = qc_status
+        self.save()
+
+
+    def set_publication_status(self, publication_status):
+        """Sets publication status of document being edited.
+
+        """
+        # Validate input.
+        if publication_status not in constants.PUBLICATION_STATES:
+            raise ValueError('Invalid publication status')
+
+        # Update state.
+        self.publication_status = publication_status
+        self.save()
 
 
     def set_value(self, val):
         """Sets a scalar value.
 
         """
-        # Error if trying to add > 1 value to a property with singular cardinality.
-        if not self.prop_specialization.is_collection and \
-           len(self.prop['values']) >= 1:
+        # Validate input:
+        # ... error if trying to add > 1 value to a property with singular cardinality.
+        if not self._prop_specialization.is_collection and \
+           len(self._prop['values']) >= 1:
             raise ValueError('Invalid property: only one value can be added')
 
-        # Error if adding a duplicate value.
-        if val in self.prop['values']:
+        # ... error if adding a duplicate value.
+        if val in self._prop['values']:
             raise ValueError('Invalid property: cannot add duplicate values')
 
-        # Delegate validation to specialization.
-        self.prop_specialization.validate_value(val)
+        # ... error if specialization complains.
+        self._prop_specialization.validate_value(val)
 
-        # Accept value.
-        self.prop['values'].append(val)
+        # Update state.
+        self._prop['values'].append(val)
+        self.save()
 
 
     def get_values(self, specialization_id):

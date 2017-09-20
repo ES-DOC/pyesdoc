@@ -159,7 +159,7 @@ DETAILS['conservation'] = {
         ('corrected_conserved_prognostic_variables', 'str', '0.1', # Can we constrains these variable
              "Set of variables which are conserved by *more* than the numerical scheme alone."),
         ('was_flux_correction_used', 'bool', '0.1',
-             "Does conservation involved flux correction ?"),
+             "Does conservation involve flux correction ?"),
         ],
     }
 
