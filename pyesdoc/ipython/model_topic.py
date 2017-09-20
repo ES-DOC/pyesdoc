@@ -41,9 +41,12 @@ class NotebookOutput(object):
         self._prop_specialization = None
 
         # Initialise output directory.
-        output_dir = os.getenv('ESDOC_CMIP6_NOTEBOOK_HOME', \
-                               '{}/notebooks'.format(os.path.expanduser('~')))
-        output_dir = os.path.join(output_dir, self.institute)
+        output_dir = os.getenv('ESDOC_CMIP6_NOTEBOOK_HOME')
+        if output_dir is not None:
+            output_dir = os.path.join(output_dir, self.institute)
+        else:
+            output_dir = os.path.expanduser('~')
+            output_dir = os.path.join(output_dir, 'notebooks')
         output_dir = os.path.join(output_dir, self.mip_era)
         output_dir = os.path.join(output_dir, 'models')
         output_dir = os.path.join(output_dir, self.source_id)
