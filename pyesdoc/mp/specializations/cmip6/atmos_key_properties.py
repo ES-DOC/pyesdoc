@@ -107,7 +107,7 @@ ENUMERATIONS['orography_type'] = {
     'description': "Time adaptation of the orography",
     'is_open': False,
     'members': [
-        ('present-day', None),
+        ('present day', None),
         ('modified', None),
         ]
     }

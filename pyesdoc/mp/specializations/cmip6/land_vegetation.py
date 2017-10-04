@@ -38,11 +38,11 @@ DETAILS['toplevel'] = {
     'description': 'Key properties of the land surface vegetation',
     'properties': [
         ('description', 'str', '1.1',
-             'General description of vegatation scheme'),
+             'General description of vegetation scheme'),
         ('time_step', 'int', '1.1',
              'Time step of vegetation scheme in seconds'),                
         ('dynamic_vegetation', 'bool', '1.1',
-             'Is there dynamic evolution of vegation?'),
+             'Is there dynamic evolution of vegetation?'),
         ('tiling', 'str', '0.1',
              'Describe the vegetation tiling, if any.'),
         ('vegetation_representation', 'ENUM:vegetation_representation_types', '1.1',
@@ -170,7 +170,7 @@ ENUMERATIONS['vegetation_representation_types'] = {
     'description': 'Vegetation classification used',
     'is_open': True,
     'members': [
-        ('vegatation types', None),
+        ('vegetation types', None),
         ('biome types', None),
         ]
     }

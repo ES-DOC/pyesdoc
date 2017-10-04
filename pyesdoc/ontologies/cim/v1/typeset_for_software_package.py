@@ -54,6 +54,9 @@ class Component(shared.DataSource):
         self.sub_components = []                          # software.Component (0.N)
         self.version = None                               # unicode (0.1)
 
+    def __str__(self):
+        return "{}".format(self.short_name)
+
 
 class ComponentLanguage(object):
     """A concrete class within the cim v1 type system.

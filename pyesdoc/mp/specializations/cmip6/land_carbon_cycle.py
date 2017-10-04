@@ -160,7 +160,7 @@ DETAILS['permafrost_carbon'] = {
     'properties' : [
         ('is_permafrost_included', 'bool', '1.1',
              'Is permafrost included?'),
-        ('Emitted_greenhouse_gases', 'str', '0.1',
+        ('emitted_greenhouse_gases', 'str', '0.1',
              'List the GHGs emitted'),
         ('decomposition', 'str', '0.1',
              'List the decomposition methods used'),

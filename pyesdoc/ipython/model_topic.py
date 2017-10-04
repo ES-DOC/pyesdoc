@@ -24,7 +24,7 @@ class NotebookOutput(object):
     """Model topic ipython data wrapper.
 
     """
-    def __init__(self, mip_era, institute, source_id, realm):
+    def __init__(self, mip_era, institute, source_id, topic):
         """Instance initialiser.
 
         """
@@ -34,9 +34,10 @@ class NotebookOutput(object):
         self.institute = unicode(institute).strip().lower()
         self.mip_era = unicode(mip_era).strip().lower()
         self.publication_status = 0
-        self.realm = unicode(realm).strip().lower()
+        self.seeding_source = None
         self.source_id = unicode(source_id).strip().lower()
-        self.specialization = get_model_specialization(mip_era, realm)
+        self.specialization = get_model_specialization(mip_era, topic)
+        self.topic = unicode(topic).strip().lower()
         self._prop = None
         self._prop_specialization = None
 
@@ -54,7 +55,7 @@ class NotebookOutput(object):
             os.makedirs(output_dir)
 
         # Initialise state from previously saved output file.
-        self.fpath = os.path.join(output_dir, '.{}.json'.format(self.realm))
+        self.fpath = os.path.join(output_dir, '.{}.json'.format(self.topic))
         if os.path.exists(self.fpath):
             with open(self.fpath, 'r') as fstream:
                 self._from_dict(json.loads(fstream.read()))
@@ -76,8 +77,9 @@ class NotebookOutput(object):
         self.publication_status = obj.get('publicationState', 0)
         self.mip_era = obj['mipEra']
         self.institute = obj['institute']
+        self.seeding_source = obj.get('seedingSource')
         self.source_id = obj['sourceID']
-        self.realm = obj['realm']
+        self.topic = obj['topic']
         self.authors = [(i['name'], i['email']) for i in obj['authors']]
         self.contributors = [(i['name'], i['email']) for i in obj['contributors']]
         self.content = obj['content']
@@ -91,14 +93,15 @@ class NotebookOutput(object):
         obj['publicationState'] = self.publication_status
         obj['mipEra'] = self.mip_era
         obj['institute'] = self.institute
+        obj['seedingSource'] = self.seeding_source
         obj['sourceID'] = self.source_id
-        obj['realm'] = self.realm
+        obj['topic'] = self.topic
         obj['authors'] = [{'name': i[0], 'email': i[1]} for i in self.authors]
         obj['contributors'] = [{'name': i[0], 'email': i[1]} for i in self.contributors]
         obj['content'] = collections.OrderedDict()
         for specialization_id in sorted(self.content.keys()):
             specialization_obj = self.content[specialization_id]
-            if specialization_obj['qc_status'] or specialization_obj['values']:
+            if specialization_obj['qcStatus'] or specialization_obj['values']:
                 obj['content'][specialization_id] = self.content[specialization_id]
 
         return obj
@@ -164,7 +167,7 @@ class NotebookOutput(object):
         """
         self.content[prop_id] = {
             'values': [],
-            'qc_status': 0
+            'qcStatus': 0
         }
         self._prop = self.content[prop_id]
         self._prop_specialization = get_property_specialization(prop_id)
@@ -179,7 +182,7 @@ class NotebookOutput(object):
             raise ValueError('Invalid QC status')
 
         # Update state.
-        self._prop['qc_status'] = qc_status
+        self._prop['qcStatus'] = qc_status
         self.save()
 
 
@@ -229,4 +232,5 @@ class NotebookOutput(object):
         """Returns a property qc status.
 
         """
-        return self.content.get(specialization_id, dict()).get('qc_status', 0)
+        return self.content.get(specialization_id, dict()).get('qcStatus', 0)
+

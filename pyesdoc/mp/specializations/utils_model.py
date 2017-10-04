@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 """
-.. module:: model.py
+.. module:: utils_model.py
    :platform: Unix, Windows
    :synopsis: A repesentation of CMIP6 specializations.
 

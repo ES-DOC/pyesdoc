@@ -218,7 +218,7 @@ ENUMERATIONS['snow_free_albedo_function_types'] = {
     'members': [
         ('vegetation type', None),
         ('soil humidity', None),
-        ('vegatation state', None),        
+        ('vegetation state', None),        
     ]
 }
     
