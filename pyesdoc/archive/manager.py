@@ -16,7 +16,7 @@ from pyesdoc.archive import config
 from pyesdoc.archive import constants
 from pyesdoc.archive.file_info import ArchiveFileInfo
 from pyesdoc.archive.folder_info import ArchiveFolderInfo
-from pyesdoc.utils.runtime import log
+from pyesdoc.utils.logger import log
 
 
 

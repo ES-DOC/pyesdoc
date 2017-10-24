@@ -9,13 +9,6 @@
 
 
 """
-# Set of logging levels.
-LOG_LEVEL_DEBUG = 'DUBUG'
-LOG_LEVEL_INFO = 'INFO'
-LOG_LEVEL_WARNING = 'WARNING'
-LOG_LEVEL_ERROR = 'ERROR'
-
-
 def assert_doc(doc):
     """Asserts thay passed variable is a pyesdoc object instance.
 
@@ -26,46 +19,6 @@ def assert_doc(doc):
         raise TypeError("Document type is unrecognized")
     if not hasattr(doc, 'meta'):
         raise ValueError('Document has no meta attribute')
-
-
-def log(msg=None, level=LOG_LEVEL_INFO):
-    """Outputs a message to log.
-
-    :param str msg: Message for writing to log.
-    :param str level: Logging level.
-
-    """
-    # Format.
-    if msg:
-        msg = "ES-DOC :: pyesdoc :: {0} > {1}".format(level, str(msg).strip())
-    else:
-        msg = '-----------------------------------------'
-        msg += msg
-
-    # TODO output to logs.
-    print msg
-
-
-def log_error(err):
-    """Logs a runtime error.
-
-    :param Exception err: Exception to be logged.
-
-    """
-    if isinstance(err, basestring):
-        msg = "!!! RUNTIME ERROR !!! :: {}.".format(err)
-    else:
-        msg = "!!! RUNTIME ERROR !!! :: {} :: {}.".format(err.__class__, err)
-    log(msg, level=LOG_LEVEL_ERROR)
-
-
-def log_warning(msg):
-    """Logs a runtime warning.
-
-    :param str msg: Message for writing to log.
-
-    """
-    log(msg, level=LOG_LEVEL_WARNING)
 
 
 def invoke(ctx, actions, error_actions):

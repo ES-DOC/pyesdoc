@@ -70,20 +70,13 @@ class _ParsingException(Exception):
     pass
 
 
-def _log(msg):
-    """Logging helper function.
-
-    """
-    runtime.log(msg)
-
-
 def _log_start(ctx):
     """Writes a processing start message to standard output.
 
     """
     if ctx.verbose:
         msg = "processing doc {0}: {1} --> {2} --> {3}"
-        _log(msg.format(ctx.index, ctx.project, ctx.source, ctx.entry.url))
+        pyesdoc.log(msg.format(ctx.index, ctx.project, ctx.source, ctx.entry.url))
 
 
 def _download(ctx):
@@ -140,7 +133,7 @@ def _log_error(ctx):
     """
     msg = "ARCHIVE ERROR :: processing document {0}: {1} ---> {2}"
     msg = msg.format(ctx.index, ctx.project, ctx.error)
-    _log(msg)
+    pyesdoc.log_error(msg)
 
 
 def _write_error(ctx):
@@ -160,7 +153,7 @@ def _write_error(ctx):
                 ctx.error
                 ))
     except IOError:
-        _log("Document processing error handling failed.")
+        pyesdoc.log_error("Document processing error handling failed.")
 
 
 def process(ctx):

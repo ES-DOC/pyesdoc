@@ -20,7 +20,6 @@ import pyesdoc
 from pyesdoc import exceptions
 from pyesdoc._codecs.html import fieldsets
 from pyesdoc.ontologies import cim
-from pyesdoc.utils import runtime
 
 
 
@@ -154,7 +153,7 @@ def _generate(document):
             collections=collections
             )
     except Exception as err:
-        runtime.log_error("Template generation error: {0}".format(err.message))
+        pyesdoc.log_error("Template generation error: {0}".format(err.message))
         raise err
 
 

@@ -17,7 +17,7 @@
 
 """
 __title__ = 'pyesdoc'
-__version__ = '0.9.8.3'
+__version__ = '0.9.9.0'
 __author__ = 'ES-DOC'
 __license__ = 'GPL'
 __copyright__ = 'Copyright 2016 ES-DOC'
@@ -59,13 +59,20 @@ from pyesdoc._search import search
 from pyesdoc._search import SearchResult
 from pyesdoc._search import SearchResultItem
 
+from pyesdoc._security import authenticate_user
+from pyesdoc._security import AuthenticationError
+from pyesdoc._security import authorize_user
+from pyesdoc._security import AuthorizationError
+
+from pyesdoc._security import strip_credentials
+
 from pyesdoc._serialization import convert
 from pyesdoc._serialization import decode
 from pyesdoc._serialization import encode
 
 from pyesdoc.utils import config
-from pyesdoc.utils.runtime import log
-from pyesdoc.utils.runtime import log_error
+from pyesdoc.utils.logger import log
+from pyesdoc.utils.logger import log_error
 
 from pyesdoc._validation import is_valid
 from pyesdoc._validation import validate

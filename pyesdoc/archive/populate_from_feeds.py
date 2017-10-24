@@ -18,7 +18,7 @@ import feedparser
 from pyesdoc.archive import manager as archive
 from pyesdoc.archive import config
 from pyesdoc.archive import feed_entry_processor
-from pyesdoc.utils import runtime
+from pyesdoc.utils.logger import log
 
 
 
@@ -84,13 +84,6 @@ class _DocumentProcessingInfo(object):
         return self.file.folder
 
 
-def _log(msg):
-    """Logging helper function.
-
-    """
-    runtime.log(msg)
-
-
 def _yield_feeds(project_filter=None):
     """Yields feeds to be processed.
 
@@ -101,7 +94,7 @@ def _yield_feeds(project_filter=None):
         for feed in [f for f in project.feeds if f.is_active]:
             msg = "processing feed: {0} --> {1} --> {2}"
             msg = msg.format(project.name, feed.source, feed.url)
-            _log(msg)
+            log(msg)
             yield project, feed
 
 
@@ -133,11 +126,11 @@ def _yield_documents(archive, project, throttle, verbose):
     # Log processing stats.
     msg = "{0} feed entries scanned: {1} requires processing"
     msg = msg.format(scanned, yielded)
-    _log(msg)
+    log(msg)
     errors = archive.get_error_count()
     if errors:
         msg = "WARNING :: {0} processing errors occurred".format(errors)
-        _log(msg)
+        log(msg)
 
 
 def execute(throttle, project=None, in_parallel=True):

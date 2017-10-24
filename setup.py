@@ -28,7 +28,6 @@ _REQUIRES = [
     'requests',
     'tornado',
     'xlsxwriter',
-    'xlrd',
     'jupyter'
     ]
 
