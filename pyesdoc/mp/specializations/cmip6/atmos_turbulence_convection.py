@@ -68,7 +68,10 @@ DETAILS['deep_convection'] = {
         ('scheme_method', 'ENUM:deep_convection_scheme_method', '1.N',
              'Deep convection scheme method'),
         ('processes', 'ENUM:deep_convection_scheme_processes', '1.N',
-            'Physical processes taken into account in the parameterisatioin of deep convection'),
+            'Physical processes taken into account in the parameterisation of deep convection'),
+        ('microphysics', 'ENUM:convective_microphysics_scheme_type', '0.N',
+            'Microphysics scheme for deep convection. Microphysical processes directly control '
+            'the amount of detrainment of cloud hydrometeor and water vapor from updrafts'),
         ]
     }
 
@@ -86,6 +89,8 @@ DETAILS['shallow_convection'] = {
              'shallow convection scheme method'),
         ('processes', 'ENUM:shallow_convection_scheme_processes', '1.N',
             'Physical processes taken into account in the parameterisation of shallow convection'),
+        ('microphysics', 'ENUM:convective_microphysics_scheme_type', '0.N',
+            'Microphysics scheme for shallow convection'),
         ]
     }
 
@@ -145,17 +150,19 @@ ENUMERATIONS['deep_convection_scheme_type'] = {
     }
 
 ENUMERATIONS['deep_convection_scheme_method'] = {
-    'description': 'Method used for deep convection.',
+    'description': 'Method used for deep convection closure for determining cloud-base mass flux.',
     'is_open': True,
     'members': [
-        ('CAPE', 'Mass flux determined by CAPE'),
+        ('CAPE', 'Mass flux determined by CAPE, convectively available potential energy.'),
         ('bulk', 'A bulk mass flux scheme is used'),
-        ('ensemble', 'Summation over an ensemble of convective clouds with differing characteristics')
+        ('ensemble', 'Summation over an ensemble of convective clouds with differing characteristics'),
+        ('CAPE/WFN based', 'CAPE-Cloud Work Function: Based on the quasi-equilibrium of the free troposphere'),
+        ('TKE/CIN based', 'TKE-Convective Inhibition: Based on the quasi-equilibrium of the boundary layer'),
         ]
     }
 
 ENUMERATIONS['shallow_convection_scheme_method'] = {
-    'description': 'Method used for shallow convection.',
+    'description': 'Method used for shallow convection closure for determining cloud-base mass flux..',
     'is_open': False,
     'members': [
         ('same as deep (unified)', None),
@@ -185,6 +192,7 @@ ENUMERATIONS['deep_convection_scheme_processes'] = {
         ('updrafts', None),
         ('downdrafts', None),
         ('radiative effect of anvils', None),
+        ('re-evaporation of convective precipitation', None),
         ]
     }
 
@@ -196,8 +204,20 @@ ENUMERATIONS['shallow_convection_scheme_processes'] = {
         ('entrainment', None),
         ('detrainment', None),
         ('penetrative convection', None),
+        ('re-evaporation of convective precipitation', None),
     ]
     }
+
+ENUMERATIONS['convective_microphysics_scheme_type'] = {
+    'description': 'Convective microphysics parameterization scheme',
+    'is_open': True,
+    'members': [
+        ('tuning parameter based', None),
+        ('single moment', None),
+        ('two moment', None),
+    ]
+}
+
 
 #ENUMERATIONS['other_convection_scheme_type'] = {
 #    'description': 'other_convection_scheme_type',

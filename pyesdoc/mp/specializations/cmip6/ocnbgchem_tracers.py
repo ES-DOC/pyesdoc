@@ -37,6 +37,8 @@ DESCRIPTION = 'Ocean biogeochemistry tracers'
 DETAILS['toplevel'] = {
     'description': 'Top level properties of tracers in ocean biogeochemistry',
     'properties': [
+        ('overview', 'str', '1.1',
+            'Overview of tracers in ocean biogeochemistry'),
         ('sulfur_cycle_present', 'bool', '1.1',
             'Is sulfur cycle modeled ?'),
         ('nutrients_present', 'ENUM:nutrients_species', '1.N',
@@ -111,6 +113,20 @@ DETAILS['particules'] = {
             'If prognostic, method for calculation of sinking speed of particules'),
         ]
     }
+
+DETAILS['dic_alkalinity'] = {
+    'description': 'DIC and alkalinity properties in ocean biogeochemistry',
+    'properties': [
+        ('carbon_isotopes', 'ENUM:carbon_isotopes_list', '1.N',
+            'Which carbon isotopes are modelled (C13, C14)?'),
+        ('abiotic_carbon', 'bool', '1.1',
+            'Is abiotic carbon modelled ?'),
+        ('alkalinity', 'ENUM:alkalinity_model_types', '1.1',
+            'How is alkalinity modelled ?'),
+        ]
+    }
+
+
 #
 # --------------------------------------------------------------------
 # ENUMERATIONS
@@ -155,7 +171,6 @@ ENUMERATIONS['phytoplankton_types'] = {
         ('PFT only (specify below)', None),
         ]
     }
-
 
 ENUMERATIONS['phytoplankton_pft_list'] = {
     'description': 'Phytoplankton functional types list in ocean biogeochemistry',
@@ -246,5 +261,23 @@ ENUMERATIONS['prognostic_particules_sinking_speed'] = {
         ('Constant', None),
         ('Function of particule size', None),
         ('Function of particule type (balast)', None),
+       ]
+    }
+
+ENUMERATIONS['carbon_isotopes_list'] = {
+    'description': 'List of carbon isotopes in ocean biogeochemistry',
+    'is_open': False,
+    'members': [
+        ('C13', None),
+        ('C14)', None),
+       ]
+    }
+
+ENUMERATIONS['alkalinity_model_types'] = {
+    'description': 'Types of alkalinity modelling in ocean biogeochemistry',
+    'is_open': False,
+    'members': [
+        ('Prognostic', None),
+        ('Diagnostic)', None),
        ]
     }

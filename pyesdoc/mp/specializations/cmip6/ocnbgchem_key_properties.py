@@ -37,12 +37,16 @@ DESCRIPTION = 'Ocean Biogeochemistry key properties'
 DETAILS['toplevel'] = {
     'description': 'General key properties in ocean biogeochemistry',
     'properties': [
+        ('model_overview', 'str', '1.1',
+            'Overview of ocean biogeochemistry model'),
         ('model_name', 'str', '1.1',
             'Name of ocean biogeochemistry model code (PISCES 2.0,...)'),
-        ('model_family', 'str', '1.1',
+        ('model_type', 'ENUM:model_types', '1.1',
             'Type of ocean biogeochemistry model'),
-        ('basic_approximations', 'str', '1.1',
-            'Basic approximations made in the ocean biogeochemistry',),
+        ('elemental_stoichiometry', 'ENUM:elemental_stoichiometry_types', '1.1',
+            'Describe elemental stoichiometry (fixed, variable, mix of the two)',),
+        ('elemental_stoichiometry_details', 'str', '1.1',
+            'Describe which elements have fixed/variable stoichiometry',),
         ('prognostic_variables', 'str', '1.N',
             'List of all prognostic tracer variables in the ocean biogeochemistry component'),
         ('diagnostic_variables', 'str', '1.N',
@@ -131,10 +135,26 @@ DETAILS['gas_exchange'] = {
             'Is N2O gas exchange modeled ?'),
         ('N2O_exchange_type', 'str', '0.1',
             'Specify N2O gas exchange scheme type'),
-        ('CO_exchange_present', 'bool', '1.1',
-            'Is CO gas exchange modeled ?'),
-        ('CO_exchange_type', 'str', '0.1',
-            'Specify CO gas exchange scheme type'),
+        ('CFC11_exchange_present', 'bool', '1.1',
+            'Is CFC11 gas exchange modeled ?'),
+        ('CFC11_exchange_type', 'str', '0.1',
+            'Specify CFC11 gas exchange scheme type'),
+        ('CFC12_exchange_present', 'bool', '1.1',
+            'Is CFC12 gas exchange modeled ?'),
+        ('CFC12_exchange_type', 'str', '0.1',
+            'Specify CFC12 gas exchange scheme type'),
+        ('SF6_exchange_present', 'bool', '1.1',
+            'Is SF6 gas exchange modeled ?'),
+        ('SF6_exchange_type', 'str', '0.1',
+            'Specify SF6 gas exchange scheme type'),
+        ('13CO2_exchange_present', 'bool', '1.1',
+            'Is 13CO2 gas exchange modeled ?'),
+        ('13CO2_exchange_type', 'str', '0.1',
+            'Specify 13CO2 gas exchange scheme type'),
+        ('14CO2_exchange_present', 'bool', '1.1',
+            'Is 14CO2 gas exchange modeled ?'),
+        ('14CO2_exchange_type', 'str', '0.1',
+            'Specify 14CO2 gas exchange scheme type'),
         ('other_gases', 'str', '0.1',
             'Specify any other gas exchange'),
         ]
@@ -156,6 +176,26 @@ DETAILS['carbon_chemistry'] = {
 # --------------------------------------------------------------------
 # KEY PROPERTIES: ENUMERATIONS
 # --------------------------------------------------------------------
+ENUMERATIONS['model_types'] = {
+    'description': 'Types of models for ocean biogeochemistry',
+    'is_open': True,
+    'members': [
+        ('Geochemical', 'No living compartments'),
+        ('NPZD', 'No plankton types'),
+        ('PFT','Several plankton types'),
+        ]
+    }
+ENUMERATIONS['elemental_stoichiometry_types'] = {
+    'description': 'Types elemental stoichiometry for ocean biogeochemistry',
+    'is_open': False,
+    'members': [
+        ('Fixed', 'Fixed stoichiometry'),
+        ('Variable', 'Variable stoichiometry'),
+        ('Mix of both','Both fixed and mixed stoichiometry'),
+        ]
+    }
+
+
 ENUMERATIONS['passive_tracers_transport'] = {
     'description': 'Types of time stepping framework for passive tracers ocean biogeochemistry',
     'is_open': False,

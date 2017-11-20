@@ -16,7 +16,7 @@ AUTHORS = 'Eric Guilyardi, David Hassell, Mark Greenslade'
 # --------------------------------------------------------------------
 # CONTRIBUTORS: Set to specialization contributors (comma delimited).
 # --------------------------------------------------------------------
-CONTRIBUTORS = 'CMIP5 version +, Julie Dehayes (LOCEAN/IPSL), Steve Griffies (GFDL), Gokhan Danabasoglu (NCAR)'
+CONTRIBUTORS = 'CMIP5 version + Julie Dehayes (LOCEAN/IPSL), Steve Griffies (GFDL), Alistair Adcroft (GFDL), Gokhan Danabasoglu (NCAR), Gurvan Madec (LOCEAN/IPSL)'
 
 # --------------------------------------------------------------------
 # QUALITY CONTROL STATUS: Set to 'draft' or 'complete'
@@ -39,11 +39,14 @@ CHANGE_HISTORY = [
         "Syntax simplification in respect of process/sub-process"),
     ("0.6.0", "2017-01-13", "Eric Guilyardi",
         "Added ocean_short_table.py"),
+    ("0.7.0", "2017-11-09", "Eric Guilyardi",
+        "Updates following community review"),
     ]
 
 # --------------------------------------------------------------------
 # CMIP5_MAPPINGS_SYNCED_AT: Latest version that has been synced with CMIP5 mappings.
 # --------------------------------------------------------------------
+# TODO
 CMIP5_MAPPINGS_SYNCED_AT = "0.4.0"
 
 # --------------------------------------------------------------------
@@ -52,7 +55,7 @@ CMIP5_MAPPINGS_SYNCED_AT = "0.4.0"
 DESCRIPTION = 'Ocean Realm'
 
 # --------------------------------------------------------------------
-# KEY PROPERTIES: Key properties (differing from defaults (grid, timestep etc))
+# KEY PROPERTIES: Key properties
 # --------------------------------------------------------------------
 KEY_PROPERTIES = 'ocean_key_properties'
 

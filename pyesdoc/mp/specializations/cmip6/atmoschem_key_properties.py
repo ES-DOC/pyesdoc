@@ -39,6 +39,8 @@ DETAILS = OrderedDict()
 DETAILS['toplevel'] = {
     'description': 'Top level key properties in atmospheric chemistry model',
     'properties': [
+        ('overview', 'str', '1.1',
+             'Overview of atmospheric chemistry'), 
         ('chemistry_scheme_scope', 'ENUM:chemistry_scheme_scopes', '1.N',
             'Atmospheric domains covered by the atmospheric chemistry model'),
         ('basic_approximations', 'str', '1.1',
@@ -78,44 +80,46 @@ DETAILS['timestep_framework'] = {
     ]
 }
 
+_note1 = ' This should an integer greater than zero, and may be the same value as for another process if they are calculated at the same time.'
+
 DETAILS['timestep_framework:split_operator_order'] = {
     'description': '',
     'properties' : [
         ('turbulence', 'int', '0.1',
-            'Call order for  scheme'),
+            'Call order for turbulence scheme.'+_note1),
         ('convection', 'int', '0.1',
-            'Call order for convection scheme'),
+            'Call order for convection scheme'+_note1),
         ('precipitation', 'int', '0.1',
-            'Call order for precipitation scheme'),
+            'Call order for precipitation scheme'+_note1),
         ('emissions', 'int', '0.1',
-            'Call order for emissions scheme'),
+            'Call order for emissions scheme'+_note1),
         ('deposition', 'int', '0.1',
-            'Call order for deposition scheme'),
+            'Call order for deposition scheme'+_note1),
         ('gas_phase_chemistry', 'int', '0.1',
-            'Call order for gas phase chemistry scheme'),
+            'Call order for gas phase chemistry scheme'+_note1),
         ('heterogeneous_phase_chemistry', 'int', '0.1',
-            'Call order for heterogeneous phase chemistry scheme'),
+            'Call order for heterogeneous phase chemistry scheme'+_note1),
         ('photo_chemistry', 'int', '0.1',
-            'Call order for photo chemistry scheme'),
+            'Call order for photo chemistry scheme'+_note1),
         ('aerosols', 'int', '0.1',
-            'Call order for aerosols scheme'),
+            'Call order for aerosols scheme'+_note1),
     ]
 }
 
-# --------------------------------------------------------------------
-# SUB-PROCESS: Meteorological forcings
-# --------------------------------------------------------------------
-DETAILS['meteorological_forcings'] = {
-    'description': '',
-    'properties' : [
-        ('variables_3D', 'str', '0.1',
-            'Three dimensionsal forcing variables, e.g. U, V, W, T, Q, P, conventive mass flux'),
-        ('variables_2D', 'str', '0.1',
-            'Two dimensionsal forcing variables, e.g. land-sea mask definition'),
-        ('frequency', 'int', '1.1',
-            'Frequency with which meteological forcings are applied (in seconds).'),
-        ]
-}
+## --------------------------------------------------------------------
+## SUB-PROCESS: Meteorological forcings
+## --------------------------------------------------------------------
+#DETAILS['meteorological_forcings'] = {
+#    'description': '',
+#    'properties' : [
+#        ('variables_3D', 'str', '0.1',
+#            'Three dimensionsal forcing variables, e.g. U, V, W, T, Q, P, conventive mass flux'),
+#        ('variables_2D', 'str', '0.1',
+#            'Two dimensionsal forcing variables, e.g. land-sea mask definition'),
+#        ('frequency', 'int', '1.1',
+#            'Frequency with which meteological forcings are applied (in seconds).'),
+#        ]
+#}
 
 # --------------------------------------------------------------------
 # SUB-PROCESS: RESOLUTION: The resolution of the grid.

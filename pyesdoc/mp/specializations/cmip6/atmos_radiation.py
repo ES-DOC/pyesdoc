@@ -40,8 +40,6 @@ DETAILS['toplevel'] = {
     'properties': [
         ('aerosols', 'ENUM:aerosol_types', '1.N',
             'Aerosols whose radiative effect is taken into account in the atmosphere model'),
-        ('greenhouse_gases', 'ENUM:ghg_types', '1.N',
-            'Greenhouse gases whose radiative effect is taken into account in the atmosphere model'),
         ]
     }
 
@@ -63,9 +61,27 @@ DETAILS['shortwave_radiation'] = {
     }
 
 # --------------------------------------------------------------------
-# SUB-PROCESS: sw_cloud_ice
+# SUB-PROCESS: shortwave_GHG
 # --------------------------------------------------------------------
-DETAILS['sw_cloud_ice'] = {
+DETAILS['shortwave_GHG'] = {
+    'description': 'Representation of greenhouse gases in the shortwave radiation scheme',
+    'properties': [
+        ('greenhouse_gas_complexity', 'ENUM:ghg_types', '1.N',
+            'Complexity of greenhouse gases whose shortwave radiative effects are taken into account '
+            'in the atmosphere model'),
+        ('ODS', 'ENUM:ODS', '0.N',
+            'Ozone depleting substances whose shortwave radiative effects are explicitly taken into account '
+            'in the atmosphere model'),
+        ('other_flourinated_gases', 'ENUM:other_fluorinated_gases', '0.N',
+            'Other flourinated gases whose shortwave radiative effects are explicitly taken into account '
+            'in the atmosphere model'),
+        ]
+}
+
+# --------------------------------------------------------------------
+# SUB-PROCESS: shortwave_cloud_ice
+# --------------------------------------------------------------------
+DETAILS['shortwave_cloud_ice'] = {
     'description': 'Shortwave radiative properties of ice crystals in clouds',
     'properties': [
         ('general_interactions', 'ENUM:radiative_interactions', '1.N',
@@ -78,24 +94,35 @@ DETAILS['sw_cloud_ice'] = {
 }
 
 # --------------------------------------------------------------------
-# SUB-PROCESS: sw_cloud_liquid
+# SUB-PROCESS: shortwave_cloud_liquid
 # --------------------------------------------------------------------
-DETAILS['sw_cloud_liquid'] = {
+DETAILS['shortwave_cloud_liquid'] = {
     'description': 'Shortwave radiative properties of liquid droplets in clouds',
     'properties': [
         ('general_interactions', 'ENUM:radiative_interactions', '1.N',
             'General shortwave radiative interactions with cloud liquid droplets'),
         ('physical_representation', 'ENUM:cloud_liquid_physical_representation', '1.N',
             'Physical representation of cloud liquid droplets in the shortwave radiation scheme'),
-        ('optical_methods', 'ENUM:optical_methods', '1.N',
+        ('optical_methods', 'ENUM:optical_methods_droplets', '1.N',
             'Optical methods applicable to cloud liquid droplets in the shortwave radiation scheme'),
     ]
 }
 
 # --------------------------------------------------------------------
-# SUB-PROCESS: sw_aerosols
+# SUB-PROCESS: shortwave_cloud_inhomogeneity
 # --------------------------------------------------------------------
-DETAILS['sw_aerosols'] = {
+DETAILS['shortwave_cloud_inhomogeneity'] = {
+    'description': 'Cloud inhomogeneity in the shortwave radiation scheme',
+    'properties': [
+        ('cloud_inhomogeneity', 'ENUM:inhomogeneity_treatment', '1.1',
+            'Method for taking into account horizontal cloud inhomogeneity'),
+        ]
+}
+
+# --------------------------------------------------------------------
+# SUB-PROCESS: shortwave_aerosols
+# --------------------------------------------------------------------
+DETAILS['shortwave_aerosols'] = {
     'description': 'Shortwave radiative properties of aerosols',
     'properties': [
         ('general_interactions', 'ENUM:radiative_interactions', '1.N',
@@ -108,15 +135,13 @@ DETAILS['sw_aerosols'] = {
 }
 
 # --------------------------------------------------------------------
-# SUB-PROCESS: sw_gases
+# SUB-PROCESS: shortwave_gases
 # --------------------------------------------------------------------
-DETAILS['sw_gases'] = {
+DETAILS['shortwave_gases'] = {
     'description': 'Shortwave radiative properties of gases',
     'properties': [
         ('general_interactions', 'ENUM:radiative_interactions', '1.N',
             'General shortwave radiative interactions with gases'),
-        ('optical_methods', 'ENUM:optical_methods', '1.N',
-            'Optical methods applicable to gases in the shortwave radiation scheme'),
     ]
 }
 
@@ -138,9 +163,27 @@ DETAILS['longwave_radiation'] = {
     }
 
 # --------------------------------------------------------------------
-# SUB-PROCESS: lw_cloud_ice
+# SUB-PROCESS: longwave_GHG
 # --------------------------------------------------------------------
-DETAILS['lw_cloud_ice'] = {
+DETAILS['longwave_GHG'] = {
+    'description': 'Representation of greenhouse gases in the longwave radiation scheme',
+    'properties': [
+        ('greenhouse_gas_complexity', 'ENUM:ghg_types', '1.N',
+            'Complexity of greenhouse gases whose longwave radiative effects are taken into account '
+            'in the atmosphere model'),
+        ('ODS', 'ENUM:ODS', '0.N',
+            'Ozone depleting substances whose longwave radiative effects are explicitly taken into account '
+            'in the atmosphere model'),
+        ('other_flourinated_gases', 'ENUM:other_fluorinated_gases', '0.N',
+            'Other flourinated gases whose longwave radiative effects are explicitly taken into account '
+            'in the atmosphere model'),
+        ]
+}
+
+# --------------------------------------------------------------------
+# SUB-PROCESS: longwave_cloud_ice
+# --------------------------------------------------------------------
+DETAILS['longwave_cloud_ice'] = {
     'description': 'Longwave radiative properties of ice crystals in clouds',
     'properties': [
         ('general_interactions', 'ENUM:radiative_interactions', '1.N',
@@ -153,24 +196,35 @@ DETAILS['lw_cloud_ice'] = {
 }
 
 # --------------------------------------------------------------------
-# SUB-PROCESS: lw_cloud_liquid
+# SUB-PROCESS: longwave_cloud_liquid
 # --------------------------------------------------------------------
-DETAILS['lw_cloud_liquid'] = {
+DETAILS['longwave_cloud_liquid'] = {
     'description': 'Longwave radiative properties of liquid droplets in clouds',
     'properties': [
         ('general_interactions', 'ENUM:radiative_interactions', '1.N',
             'General longwave radiative interactions with cloud liquid droplets'),
         ('physical_representation', 'ENUM:cloud_liquid_physical_representation', '1.N',
             'Physical representation of cloud liquid droplets in the longwave radiation scheme'),
-        ('optical_methods', 'ENUM:optical_methods', '1.N',
+        ('optical_methods', 'ENUM:optical_methods_droplets', '1.N',
             'Optical methods applicable to cloud liquid droplets in the longwave radiation scheme'),
     ]
 }
 
 # --------------------------------------------------------------------
-# SUB-PROCESS: lw_aerosols
+# SUB-PROCESS: longwave_cloud_inhomogeneity
 # --------------------------------------------------------------------
-DETAILS['lw_aerosols'] = {
+DETAILS['longwave_cloud_inhomogeneity'] = {
+    'description': 'Cloud inhomogeneity in the longwave radiation scheme',
+    'properties': [
+        ('cloud_inhomogeneity', 'ENUM:inhomogeneity_treatment', '1.1',
+            'Method for taking into account horizontal cloud inhomogeneity'),
+        ]
+}
+
+# --------------------------------------------------------------------
+# SUB-PROCESS: longwave_aerosols
+# --------------------------------------------------------------------
+DETAILS['longwave_aerosols'] = {
     'description': 'Longwave radiative properties of aerosols',
     'properties': [
         ('general_interactions', 'ENUM:radiative_interactions', '1.N',
@@ -183,15 +237,13 @@ DETAILS['lw_aerosols'] = {
 }
 
 # --------------------------------------------------------------------
-# SUB-PROCESS: lw_gases
+# SUB-PROCESS: longwave_gases
 # --------------------------------------------------------------------
-DETAILS['lw_gases'] = {
+DETAILS['longwave_gases'] = {
     'description': 'Longwave radiative properties of gases',
     'properties': [
         ('general_interactions', 'ENUM:radiative_interactions', '1.N',
             'General longwave radiative interactions with gases'),
-        ('optical_methods', 'ENUM:optical_methods', '1.N',
-            'Optical methods applicable to gases in the longwave radiation scheme'),
     ]
 }
 
@@ -219,21 +271,83 @@ ENUMERATIONS['aerosol_types'] = {
     }
 
 ENUMERATIONS['ghg_types'] = {
-    'description': 'Greenhouse gases whose radiative effect is taken into account in the atmospheric model',
+    'description': 'Greenhouse gases whose radiative effect is taken into account in the atmosphere model',
     'is_open': True,
     'members': [
-        ('H2O', None),
-        ('CO2', None),
-        ('CH4', None),
-        ('N2O', None),
+        ('CO2', 'Carbon Dioxide'),
+        ('CH4', 'Methane'),
+        ('N2O', 'Nitrous Oxide'),
+        ('CFC-11 eq', 'Summarize the effect of non CO2, CH4, N2O and CFC-12 gases '
+                      'with an equivalence concentration of CFC-11'),
+        ('CFC-12 eq', 'Summarize the radiative effect of the Ozone Depleating Substances, ODSs, '
+                      'with a CFC-12 equivalence concentration'),
+        ('HFC-134a eq', 'Summarize the radiative effect of other fluorinated gases '
+                         'with a HFC-134a equivalence concentration'),
+        ('Explicit ODSs', 'Explicit representation of Ozone Depleting Substances '
+                          'e.g. CFCs, HCFCs and Halons'),
+        ('Explicit other fluorinated gases', 'Explicit representation of other fluorinated gases '
+                                             'e.g. HFCs and PFCs'),
         ('O3', None),
-        ('CFCs', None),
-        ('HFCs', None),
-        ('PFCs', None),
-        ('SF6', None),
-        ('NF3', None),
+        ('H2O', None),
         ]
     }
+
+ENUMERATIONS['ODS'] = {
+    'description': 'Ozone depleting substances, ODS, whose radiative effect is explicitly taken into account '
+                   'in the atmosphere model',
+    'is_open': True,
+    'members': [
+        ('CFC-12', 'CFC'),
+        ('CFC-11', 'CFC'),
+        ('CFC-113', 'CFC'),
+        ('CFC-114', 'CFC'),
+        ('CFC-115', 'CFC'),
+        ('HCFC-22', 'HCFC'),
+        ('HCFC-141b', 'HCFC'),
+        ('HCFC-142b', 'HCFC'),
+        ('Halon-1211', 'halon'),
+        ('Halon-1301', 'halon'),
+        ('Halon-2402', 'halon'),
+        ('methyl chloroform', 'CH3CCl3'),
+        ('carbon tetrachloride', 'CCl4'),
+        ('methyl chloride', 'CH3Cl'),
+        ('methylene chloride', 'CH2Cl2'),
+        ('chloroform', 'CHCl3'),
+        ('methyl bromide', 'Ch3Br'),
+        ]
+    }
+
+ENUMERATIONS['other_fluorinated_gases'] = {
+    'description': 'Other Fluorinated gases whose radiative effect is explicitly taken into account '
+                   'in the atmosphere model',
+    'is_open': True,
+    'members': [
+        ('HFC-134a', 'HFC'),
+        ('HFC-23', 'HFC'),
+        ('HFC-32', 'HFC'),
+        ('HFC-125', 'HFC'),
+        ('HFC-143a', 'HFC'),
+        ('HFC-152a', 'HFC'),
+        ('HFC-227ea', 'HFC'),
+        ('HFC-236fa', 'HFC'),
+        ('HFC-245fa', 'HFC'),
+        ('HFC-365mfc', 'HFC'),
+        ('HFC-43-10mee', 'HFC'),
+        ('CF4', 'PFC'),
+        ('C2F6', 'PFC'),
+        ('C3F8', 'PFC'),
+        ('C4F10', 'PFC'),
+        ('C5F12', 'PFC'),
+        ('C6F14', 'PFC'),
+        ('C7F16', 'PFC'),
+        ('C8F18', 'PFC'),
+        ('c-C4F8', 'PFC'),
+        ('NF3', None),
+        ('SF6', None),
+        ('SO2F2', None),
+        ]
+    }
+
 
 ENUMERATIONS['spectral_integration'] = {
     'description': 'Spectral integration of the radiation scheme',
@@ -318,6 +432,15 @@ ENUMERATIONS['optical_methods'] = {
         ]
     }
 
+ENUMERATIONS['optical_methods_droplets'] = {
+    'description': 'Optical methods used by radiation scheme',
+    'is_open': True,
+    'members': [
+        ('geometric optics', 'For non-spherical particles'),
+        ('Mie theory', 'For spherical particles'),
+        ]
+}
+
 ENUMERATIONS['cloud_ice_radiation_processes'] = {
     'description': 'Optical radiative processes for ice crystals in clouds',
     'is_open': True,
@@ -367,4 +490,13 @@ ENUMERATIONS['single_scattering_properties_methods'] = {
 }
 
 
+ENUMERATIONS['inhomogeneity_treatment'] = {
+    'description': 'Cloud scheme inhomogeneity treatment',
+    'is_open': True,
+    'members': [
+        ('Monte Carlo Independent Column Approximation', 'McICA'),
+        ('Triplecloud', 'Regions of clear sky, optically thin cloud and optically thick cloud, Shonk et al 2010'),
+        ('analytic', None),
+        ]
+    }
 

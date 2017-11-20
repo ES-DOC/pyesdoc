@@ -30,7 +30,7 @@ QC_STATUS = 'draft'
 # --------------------------------------------------------------------
 # DESCRIPTION: Short description of the specialization.
 # --------------------------------------------------------------------
-DESCRIPTION = 'Characteristics of the cloud simulator'
+DESCRIPTION = 'Characteristics of observation simulation'
 
 # --------------------------------------------------------------------
 # SUB-PROCESSES
@@ -38,8 +38,8 @@ DESCRIPTION = 'Characteristics of the cloud simulator'
 DETAILS['isscp_attributes'] = {
     'description': 'ISSCP Characteristics',
     'properties': [
-        ('top_height', 'ENUM:isscp_top_height', '1.N',
-            'Cloud simulator ISSCP top height'),
+        ('top_height_estimation_method', 'ENUM:isscp_top_height', '1.N',
+            'Cloud simulator ISSCP top height estimation methodUo'),
         ('top_height_direction', 'ENUM:isscp_top_height_direction', '1.1',
             'Cloud simulator ISSCP top height direction'),
         ]
@@ -52,8 +52,8 @@ DETAILS['cosp_attributes'] = {
             'Cloud simulator COSP run configuration'),
         ('number_of_grid_points', 'int', '1.1',
             'Cloud simulator COSP number of grid points'),
-        ('number_of_columns', 'int', '1.1',
-            'Cloud simulator COSP number of cloumns'),
+        ('number_of_sub_columns', 'int', '1.1',
+            'Cloud simulator COSP number of sub-cloumns used to simulate sub-grid variability'),
         ('number_of_levels', 'int', '1.1',
              'Cloud simulator COSP number of levels'),
         ]

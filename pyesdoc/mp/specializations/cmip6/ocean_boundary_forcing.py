@@ -37,6 +37,8 @@ DESCRIPTION = 'Ocean boundary forcing'
 DETAILS['toplevel'] = {
     'description': 'Top level properties of boundary forcing',
     'properties': [
+        ('overview','str','1.1',
+            'Overview of boundary forcing in ocean'),
         ('surface_pressure', 'str', '1.1',
             'Describe how surface pressure is transmitted to ocean (via sea-ice, nothing specific,...)'),
         ('momentum_flux_correction', 'str', '0.1',

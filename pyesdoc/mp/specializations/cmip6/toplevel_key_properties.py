@@ -19,7 +19,7 @@ CONTACT = 'Eric Guilyardi'
 # --------------------------------------------------------------------
 # AUTHORS: Set to top-level specialization authors (comma delimited).
 # --------------------------------------------------------------------
-AUTHORS = 'Eric Guilyardi'
+AUTHORS = 'Eric Guilyardi, David Hassell'
 
 # --------------------------------------------------------------------
 # QUALITY CONTROL STATUS: Set to 'draft' or 'complete'
@@ -34,6 +34,14 @@ DESCRIPTION = 'Key properties of the model'
 # --------------------------------------------------------------------
 # KEY PROPERTIES: top level
 # --------------------------------------------------------------------
+DETAILS['toplevel:attributes'] = {
+    'description': 'Top level properties of full coupled model',
+    'properties': [
+        ('overview', 'str', '1.1',
+            'Top level overview of coupled model'),
+        ]
+    }
+
 DETAILS['toplevel:flux_correction'] = {
     'description': 'Flux correction properties of the model',
     'properties':[

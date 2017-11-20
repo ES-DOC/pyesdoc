@@ -32,6 +32,17 @@ QC_STATUS = 'draft'
 DESCRIPTION = 'Ocean Vertical Physics'
 
 # --------------------------------------------------------------------
+# PROCESS: top level
+# --------------------------------------------------------------------
+DETAILS['toplevel'] = {
+    'description': 'Top level vertical physics properties',
+    'properties': [
+        ('overview','str','1.1',
+            'Overview of vertical physics in ocean'),
+        ]
+    }
+
+# --------------------------------------------------------------------
 # SUB-PROCESS: Boundary Layer Mixing.
 # --------------------------------------------------------------------
 DETAILS['boundary_layer_mixing'] = {

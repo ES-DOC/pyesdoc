@@ -44,14 +44,31 @@ DETAILS['toplevel'] = {
             'Atmosphere components that are linked to the cloud scheme'),
         ('uses_separate_treatment', 'bool', '1.1',
             'Different cloud schemes for the different types of clouds (convective, stratiform and boundary layer)'),
-        ('cloud_overlap_method', 'ENUM:cloud_overlap_method', '1.1',
-            'Method for taking into account overlapping of cloud layers'),
-        ('cloud_inhomogeneity', 'ENUM:inhomogeneity_treatment', '1.1',
-            'Method for taking into account horizontal cloud inhomogeneity'),
         ('processes', 'ENUM:processes_attributes', '1.N',
             'Processes included in the cloud scheme'),
+        ('prognostic_scheme', 'bool', '1.1',
+            'Is the cloud scheme a prognostic scheme?'),
+        ('diagnostic_scheme', 'bool', '1.1',
+            'Is the cloud scheme a diagnostic scheme?'),
+        ('prognostic_variables', 'ENUM:prognostic_vars', '0.N',
+            'List the prognostic variables used by the cloud scheme, if applicable.'),
         ]
     }
+
+
+# --------------------------------------------------------------------
+# SUB-PROCESS: optical_cloud_properties
+# --------------------------------------------------------------------
+DETAILS['optical_cloud_properties'] = {
+    'description': "Optical cloud properties",
+    'properties': [
+        ('cloud_overlap_method', 'ENUM:cloud_overlap_method', '0.1',
+            'Method for taking into account overlapping of cloud layers'),
+        ('cloud_inhomogeneity', 'str', '0.1',
+            'Method for taking into account cloud inhomogeneity')
+    ]
+}
+
 
 # --------------------------------------------------------------------
 # SUB-PROCESS: sub_grid_scale_water_distribution
@@ -59,23 +76,39 @@ DETAILS['toplevel'] = {
 DETAILS['sub_grid_scale_water_distribution'] = {
     'description': 'Sub-grid scale water distribution',
     'properties': [
-        ('type', 'ENUM:sub_grid_scale_water_distribution_type', '1.1',
+        ('type', 'ENUM:sub_grid_scale_h2o_distribution_type', '1.1',
             'Sub-grid scale water distribution type'),
         ('function_name', 'str', '1.1',
             'Sub-grid scale water distribution function name'),
         ('function_order', 'int', '1.1',
             'Sub-grid scale water distribution function type'),
-        ('convection_coupling', 'ENUM:sub_grid_scale_water_distribution_convection', '1.N',
+        ('convection_coupling', 'ENUM:sub_grid_scale_h2o_distribution_convection', '1.N',
             'Sub-grid scale water distribution coupling with convection'),
         ]
     }
 
 # --------------------------------------------------------------------
+# SUB-PROCESS: sub_grid_scale_ice_distribution
+# --------------------------------------------------------------------
+DETAILS['sub_grid_scale_ice_distribution'] = {
+    'description': 'Sub-grid scale ice distribution',
+    'properties': [
+        ('type', 'ENUM:sub_grid_scale_h2o_distribution_type', '1.1',
+            'Sub-grid scale ice distribution type'),
+        ('function_name', 'str', '1.1',
+            'Sub-grid scale ice distribution function name'),
+        ('function_order', 'int', '1.1',
+            'Sub-grid scale ice distribution function type'),
+        ('convection_coupling', 'ENUM:sub_grid_scale_h2o_distribution_convection', '1.N',
+            'Sub-grid scale ice distribution coupling with convection'),
+        ]
+    }
+# --------------------------------------------------------------------
 # PROCESS: ENUMERATIONS
 # --------------------------------------------------------------------
 
-ENUMERATIONS['sub_grid_scale_water_distribution_type'] = {
-    'description': 'Approach used for cloud water content and fractional cloud cover',
+ENUMERATIONS['sub_grid_scale_h2o_distribution_type'] = {
+    'description': 'Approach used for cloud H2O content and fractional cloud cover',
     'is_open': False,
     'members': [
         ('prognostic', None),
@@ -83,7 +116,7 @@ ENUMERATIONS['sub_grid_scale_water_distribution_type'] = {
         ]
     }
 
-ENUMERATIONS['sub_grid_scale_water_distribution_convection'] = {
+ENUMERATIONS['sub_grid_scale_h2o_distribution_convection'] = {
     'description': 'Type(s) of convection that the formation of clouds is coupled with',
     'is_open': False,
     'members': [
@@ -118,15 +151,6 @@ ENUMERATIONS['cloud_overlap_method'] = {
         ]
     }
 
-ENUMERATIONS['inhomogeneity_treatment'] = {
-    'description': 'Cloud scheme inhomogeneity treatment',
-    'is_open': True,
-    'members': [
-        ('Monte Carlo Independent Column Approximation', 'McICA'),
-        ('Triplecloud', 'Regions of clear sky, optically thin cloud and optically thick cloud, Shonk et al 2010'),
-        ('analytic', None),
-        ]
-    }
 ENUMERATIONS['processes_attributes'] = {
     'description': 'Processes included in the cloud scheme.',
     'is_open': True,
@@ -134,5 +158,17 @@ ENUMERATIONS['processes_attributes'] = {
         ('entrainment', None),
         ('detrainment', None),
         ('bulk cloud', None),
+        ]
+    }
+
+ENUMERATIONS['prognostic_vars'] = {
+    'description': 'Prognostic variables included in the cloud scheme.',
+    'is_open': True,
+    'members': [
+        ('cloud amount', None),
+        ('liquid', None),
+        ('ice', None),
+        ('rain', None),
+        ('snow', None),
         ]
     }

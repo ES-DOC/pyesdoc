@@ -37,37 +37,17 @@ DESCRIPTION = 'Atmospheric chemistry startospheric heterogeneous chemistry'
 DETAILS['toplevel'] = {
     'description': 'Gas phase chemistry attributes',
     'properties': [
+        ('overview', 'str', '1.1',
+            'Overview stratospheric heterogenous atmospheric chemistry'), 
         ('gas_phase_species', 'ENUM:gas_phase_species', '0.N',
             'Gas phase species included in the stratospheric heterogeneous chemistry scheme.'),
         ('aerosol_species', 'ENUM:aerosol_species', '0.N',
             'Aerosol species included in the stratospheric heterogeneous chemistry scheme.'),
-        ('number_of_reactions', 'int', '1.1',
-             'The number of reactions in the stratospheric heterogeneous chemistry scheme.'),
-        ('number_of_advected_species', 'int', '1.1',
-             'The number of advected species in the stratospheric heterogeneous chemistry scheme.'),
         ('number_of_steady_state_species', 'int', '1.1',
              'The number of steady state species in the stratospheric heterogeneous chemistry scheme.'),
-    ],
-}
-
-# --------------------------------------------------------------------
-# SUB-PROCESS: Sedimentation
-# --------------------------------------------------------------------
-DETAILS['sedimentation'] = {
-    'description': 'Sedimentation is the vertical settling of particles.',
-    'properties': [
-        ('included', 'bool', '1.1',
+        ('sedimentation', 'bool', '1.1',
             'Is sedimentation is included in the stratospheric heterogeneous chemistry scheme or not?'),       
-    ],
-}
-
-# --------------------------------------------------------------------
-# SUB-PROCESS: Coagulation
-# --------------------------------------------------------------------
-DETAILS['coagulation'] = {
-    'description': 'Coagulation is a process by which aerosol particles grow.',
-    'properties': [
-        ('included', 'bool', '1.1',
+        ('coagulation', 'bool', '1.1',
             'Is coagulation is included in the stratospheric heterogeneous chemistry scheme or not?'),       
     ],
 }

@@ -32,6 +32,18 @@ QC_STATUS = 'draft'
 DESCRIPTION = 'Ocean advection'
 
 # --------------------------------------------------------------------
+# PROCESS: top level
+# --------------------------------------------------------------------
+
+DETAILS['toplevel'] = {
+    'description': 'Properties of advection in ocean',
+    'properties': [
+        ('overview','str','1.1',
+            'Overview of advection in ocean'),
+        ]
+    }
+
+# --------------------------------------------------------------------
 # SUB-PROCESS: Momentum.
 # --------------------------------------------------------------------
 DETAILS['momentum'] = {

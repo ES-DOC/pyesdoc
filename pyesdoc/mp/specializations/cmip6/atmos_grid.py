@@ -50,10 +50,12 @@ DETAILS['discretisation:horizontal'] = {
             'Horizontal discretisation type'),
         ('scheme_method', 'ENUM:dynamical_core_discretisation_horizontal_method', '1.1',
             'Horizontal discretisation method'),
-        ('scheme_order', 'int', '1.1',
+        ('scheme_order', 'ENUM:function_order', '1.1',
             'Horizontal discretisation function order'),
-        ('horizontal_pole', 'ENUM:dynamical_core_discretisation_horizontal_pole', '1.1',
+        ('horizontal_pole', 'ENUM:dynamical_core_discretisation_horizontal_pole', '0.1',
             'Horizontal discretisation pole singularity treatment'),
+        ('grid_type', 'ENUM:grid_type', '1.1',
+            'Horizontal grid type')
         ]
     }
 
@@ -64,6 +66,7 @@ DETAILS['discretisation:vertical'] = {
             'Type of vertical coordinate system'),
         ]
     }
+
 
 # --------------------------------------------------------------------
 # ENUMERATIONS
@@ -105,5 +108,30 @@ ENUMERATIONS['dynamical_core_discretisation_vertical_type'] = {
         ('isobaric', 'vertical coordinate on pressure levels'),
         ('sigma', 'allows vertical coordinate to follow model terrain'),
         ('hybrid sigma-pressure', 'sigma system near terrain and isobaric above'),
+        ('hybrid pressure', None),
+        ('vertically lagrangian', None),
+
     ]
 }
+# "Vertically-lagrangian hybrid-pressure"
+
+ENUMERATIONS['function_order'] = {
+    'description': 'Discretisation function order',
+    'is_open': True,
+    'members': [
+        ('second', None),
+        ('third', None),
+        ('fourth', None),
+        ]
+    }
+
+ENUMERATIONS['grid_type'] = {
+    'description': 'Type of horizontal grid',
+    'is_open': True,
+    'members': [
+        ('Gaussian', None),
+        ('Latitude-Longitude', None),
+        ('Cubed-Sphere', None),
+        ('Icosahedral', None),
+        ]
+    }

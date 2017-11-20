@@ -34,40 +34,57 @@ DESCRIPTION = 'Ocean Timestepping Framework'
 # --------------------------------------------------------------------
 # PROCESS: top level
 # --------------------------------------------------------------------
-DETAILS['toplevel:timestepping_attributes'] = {
+
+
+DETAILS['toplevel:attributes'] = {
     'description': 'Properties of time stepping in ocean',
     'properties': [
-        ('time_step', 'int', '1.1',
-            'Ocean time step in seconds'),
+        ('overview','str','1.1',
+            'Overview of time stepping in ocean'),
         ('diurnal_cycle', 'ENUM:diurnal_cycle_types', '1.1',
             'Diurnal cycle type'),
         ]
     }
 
-# This is the compact notation used of only one property
-DETAILS['toplevel:timestepping_tracers_scheme'] = {
+# Tracers time stepping
+DETAILS['toplevel:tracers'] = {
     'description': 'Properties of tracers time stepping in ocean',
     'properties': [
-        ('tracers', 'ENUM:ocean_timestepping_types', '1.1',
-            'Time stepping tracer scheme')
+        ('scheme', 'ENUM:ocean_timestepping_types', '1.1',
+            'Tracers time stepping scheme'),
+        ('time_step', 'int', '1.1',
+            'Tracers time step (in seconds)'),
+        ]
+    }
+# Baroclinic dynamics
+DETAILS['toplevel:baroclinic_dynamics'] = {
+    'description': 'Baroclinic dynamics in ocean',
+    'properties': [
+        ('type', 'ENUM:baroclinic_types', '1.1',
+            'Baroclinic dynamics type'),
+        ('scheme', 'ENUM:ocean_timestepping_types', '1.1',
+            'Baroclinic dynamics scheme'),
+        ('time_step', 'int', '0.1',
+            'Baroclinic time step (in seconds)'),
+        ]
+    }
+# Barotropic
+DETAILS['toplevel:barotropic'] = {
+    'description': 'Barotropic time stepping in ocean',
+    'properties': [
+        ('splitting', 'ENUM:barotropic_splitting_methods', '1.1',
+            'Time splitting method'),
+        ('time_step', 'int', '0.1',
+            'Barotropic time step (in seconds)'),
         ]
     }
 
-DETAILS['toplevel:barotropic_solver_scheme'] = {
-    'description': 'Barotropic solver in ocean',
+# Vertical
+DETAILS['toplevel:vertical_physics'] = {
+    'description': 'Vertical physics time stepping in ocean',
     'properties': [
-        ('barotropic_solver', 'ENUM:ocean_timestepping_types', '1.1',
-            'Barotropic solver scheme'),
-        ('type', 'ENUM:barotropic_solver_types', '1.1',
-            'Barotropic solver type')
-        ]
-    }
-
-DETAILS['toplevel:barotropic_momentum_scheme'] = {
-    'description': 'Barotropic momentum solver in ocean',
-    'properties': [
-        ('barotropic_momentum', 'ENUM:ocean_timestepping_types', '1.1',
-            'Barotropic momentum scheme')
+        ('method', 'str', '1.1',
+            'Details of vertical time stepping in ocean'),
         ]
     }
 
@@ -89,19 +106,30 @@ ENUMERATIONS['ocean_timestepping_types'] = {
     'is_open': True,
     'members': [
         ('Leap-frog + Asselin filter', 'Leap-frog scheme with Asselin filter'),
-        ('Leap-frog + Periodic Euler backward solver', 'Leap-frog scheme with Periodic Euler backward solver'),
+        ('Leap-frog + Periodic Euler', 'Leap-frog scheme with Periodic Euler'),
         ('Predictor-corrector', 'Predictor-corrector scheme'),
-        ('AM3-LF (ROMS)', 'AM3-LF used in ROMS'),
+        ('Runge-Kutta 2','Runge-Kutta 2 scheme'),
+        ('AM3-LF', 'AM3-LF such as used in ROMS'),
         ('Forward-backward', 'Forward-backward scheme'),
         ('Forward operator', 'Forward operator scheme')
         ]
     }
 
-ENUMERATIONS['barotropic_solver_types'] = {
-    'description': 'Type of barotropic solver in ocean',
+ENUMERATIONS['baroclinic_types'] = {
+    'description': 'Type of baroclinic dynamics in ocean',
     'is_open': True,
     'members': [
         ('Preconditioned conjugate gradient', None),
-        ('Sub cyling', None),
+        ('Sub cyling', 'Sub cycling relative to tracers'),
+        ]
+    }
+
+ENUMERATIONS['barotropic_splitting_methods'] = {
+    'description': 'Methods for time splitting in ocean',
+    'is_open': True,
+    'members': [
+        ('None', None),
+        ('split explicit', None),
+        ('implicit', None),
         ]
     }

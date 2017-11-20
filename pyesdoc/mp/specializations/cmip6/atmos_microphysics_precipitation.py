@@ -30,7 +30,7 @@ QC_STATUS = 'draft'
 # --------------------------------------------------------------------
 # DESCRIPTION: Short description of the specialization.
 # --------------------------------------------------------------------
-DESCRIPTION = 'Cloud Microphysics and Precipitation'
+DESCRIPTION = 'Large Scale Cloud Microphysics and Precipitation'
 
 # --------------------------------------------------------------------
 # PROCESS: top level properties
@@ -52,15 +52,15 @@ DETAILS['large_scale_precipitation'] = {
     }
 
 # --------------------------------------------------------------------
-# SUB-PROCESS: cloud_microphysics
+# SUB-PROCESS: large_scale_cloud_microphysics
 # --------------------------------------------------------------------
-DETAILS['cloud_microphysics'] = {
-    'description': 'Properties of the cloud microphysics scheme',
+DETAILS['large_scale_cloud_microphysics'] = {
+    'description': 'Properties of the large scale cloud microphysics scheme',
     'properties': [
         ('scheme_name', 'str', '0.1',
-            'Commonly used name of the microphysics parameterisation scheme.'),
+            'Commonly used name of the microphysics parameterisation scheme used for large scale clouds.'),
         ('processes', 'ENUM:processes_attributes', '1.N',
-            'Cloud microphysics processes'),
+            'Large scale cloud microphysics processes'),
         ]
     }
 

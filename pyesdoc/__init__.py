@@ -63,7 +63,6 @@ from pyesdoc._security import authenticate_user
 from pyesdoc._security import AuthenticationError
 from pyesdoc._security import authorize_user
 from pyesdoc._security import AuthorizationError
-
 from pyesdoc._security import strip_credentials
 
 from pyesdoc._serialization import convert

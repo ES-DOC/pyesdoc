@@ -35,12 +35,12 @@ DESCRIPTION = 'Atmospheric chemistry photo chemistry'
 # PROCESS: top level
 # --------------------------------------------------------------------
 DETAILS['toplevel'] = {
-    'description': 'TO DO',
+    'description': '',
     'properties': [
+        ('overview', 'str', '1.1',
+             'Overview atmospheric photo chemistry'), 
         ('number_of_reactions', 'int', '1.1',
              'The number of reactions in the photo-chemistry scheme.'),
-        ('number_of_species', 'int', '1.1',
-             'The number of species in the photo-chemistry scheme.'),
     ],
 }
 
@@ -52,10 +52,8 @@ DETAILS['photolysis'] = {
     'properties': [
         ('method', 'ENUM:photolysis_methods', '1.1',
             'Photolysis scheme'),
-        ('online_processes', 'ENUM:online_processes', '0.N',
-             'Processes included in the photolysis scheme.'),
-        ('reaction_data', 'ENUM:reaction_data', '0.N',
-             'Reaction information taken into account by the photolysis scheme.'),
+        ('environmental_conditions', 'str', '0.1',
+             'Describe any environmental conditions taken into account by the photolysis scheme (e.g. whether pressure- and temperature-sensitive cross-sections and quantum yields in the photolysis calculations are modified to reflect the modelled conditions.)'),
     ],
 }
 
@@ -80,14 +78,5 @@ ENUMERATIONS['online_processes'] = {
         ('Radiative transfer', None),
         ('Spectral resolution', None),
         ('Impact of clouds', None),
-    ]
-}
-
-ENUMERATIONS['reaction_data'] = {
-    'description': 'Reaction information taken into account by the photolysis scheme.',
-    'is_open': False,
-    'members': [
-        ('Updated reaction absorptio cross sections', None),
-        ('Updated reaction quantum yields', None),
     ]
 }

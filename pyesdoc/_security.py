@@ -19,10 +19,7 @@ import requests
 
 
 # GitHub API - credentials.
-_GH_API_CREDENTIALS = (
-    'esdoc-system-user',
-     os.getenv('ESDOC_GITHUB_ACCESS_TOKEN')
-     )
+_GH_API_CREDENTIALS = ('esdoc-system-user', os.getenv('ESDOC_GITHUB_ACCESS_TOKEN'))
 
 # GitHub API - teams.
 _GH_API_TEAMS = "https://api.github.com/teams"

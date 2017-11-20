@@ -100,7 +100,7 @@ DETAILS['advection_momentum'] = {
         ('scheme_name', 'ENUM:advection_momentum_scheme_name', '0.1',
             'Momentum advection schemes name'),
         ('scheme_characteristics', 'ENUM:advection_momentum_scheme_characteristics', '1.N',
-         'Momentum advection scheme characteristics'),
+            'Momentum advection scheme characteristics'),
         ('scheme_staggering_type', 'ENUM:advection_momentum_scheme_staggering_type', '1.1',
             'Momentum advection scheme staggering type'),
         ('conserved_quantities', 'ENUM:advection_momentum_conserved_quantities', '1.N',
@@ -213,16 +213,16 @@ ENUMERATIONS['advection_tracers_scheme_characteristics'] = {
         ]
     }
 
-# TODO: is this information nescessary?
+
 ENUMERATIONS['advection_tracers_conserved_quantities'] = {
     'description': 'Quantities conserved through the tracers advection scheme',
     'is_open': True,
     'members': [
-        ('dry mass', None)
+        ('dry mass', None),
+        ('tracer mass', None),
         ]
     }
 
-# TODO: is this information nescessary?
 ENUMERATIONS['advection_tracers_conservation_method'] = {
     'description': 'Method used to ensure conservation in the tracers advection scheme',
     'is_open': True,

@@ -31,6 +31,19 @@ QC_STATUS = 'draft'
 # --------------------------------------------------------------------
 DESCRIPTION = 'Ocean grid'
 
+
+# --------------------------------------------------------------------
+# GRID: top level
+# --------------------------------------------------------------------
+
+DETAILS['toplevel'] = {
+    'description': 'Properties of grid in ocean',
+    'properties': [
+        ('overview','str','1.1',
+            'Overview of grid in ocean'),
+        ]
+    }
+
 # --------------------------------------------------------------------
 # DISCRETISATION: Description of the numerics of the discretisation.
 # --------------------------------------------------------------------

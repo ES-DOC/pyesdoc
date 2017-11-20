@@ -14,7 +14,7 @@ ENUMERATIONS = OrderedDict()
 # --------------------------------------------------------------------
 # CONTACT: Set to specialization co-ordinator.
 # --------------------------------------------------------------------
-CONTACT = 'Charlotte Pascoe, David Hassell'
+CONTACT = 'David Hassell'
 
 # --------------------------------------------------------------------
 # AUTHORS: Set to specialization authors (comma delimited).
@@ -29,34 +29,37 @@ QC_STATUS = 'draft'
 # --------------------------------------------------------------------
 # DESCRIPTION: Short description of the specialization.
 # --------------------------------------------------------------------
-DESCRIPTION = 'Atmospheric chemistry transport'
+DESCRIPTION = 'Atmospheric chemistry emissions'
 
 # --------------------------------------------------------------------
 # PROCESS: top level
 # --------------------------------------------------------------------
+DETAILS['toplevel'] = {
+    'description': '',
+    'properties': [
+        ('overview', 'str', '1.1',
+             'Overview atmospheric chemistry emissions'), 
+    ]
+}
 
 # --------------------------------------------------------------------
 # SUB-PROCESS: Surface emissions
 # --------------------------------------------------------------------
 DETAILS['surface_emissions'] = {
-    'description': 'TO DO',
+    'description': '',
     'properties': [
-        ('method', 'ENUM:emissions_methods', '0.N',
-            'Method used to define chemical species emitted at the surface (several methods allowed because the different species may not use the same method).'),
         ('sources', 'ENUM:surface_source_types', '0.N',
              'Sources of the chemical species emitted at the surface that are taken into account in the emissions scheme'),
-        ('prescribed_climatology', 'ENUM:prescribed_climatology_type', '0.1',
-            'Specify the climatology type for chemical emissions prescribed at the surface'),
+        ('method', 'ENUM:emissions_methods', '0.N',
+            'Methods used to define chemical species emitted directly into model layers above the surface (several methods allowed because the different species may not use the same method).'),
         ('prescribed_climatology_emitted_species', 'str', '0.1',
-             'List of chemical species emitted at the surface and prescribed via a climatology'),
+             'List of chemical species emitted at the surface and prescribed via a climatology, and the nature of the climatology (E.g. CO (monthly), C2H6 (constant))'),
         ('prescribed_spatially_uniform_emitted_species', 'str', '0.1',
              'List of chemical species emitted at the surface and prescribed as spatially uniform'),
         ('interactive_emitted_species', 'str', '0.1',
              'List of chemical species emitted at the surface and specified via an interactive method'),
         ('other_emitted_species', 'str', '0.1',
-             'List of chemical species emitted at the surface and specified via an "other method"'),
-        ('other_method_characteristics', 'str', '0.1',
-             'Characteristics of the "other method" used for chemical emissions at the surface'),
+             'List of chemical species emitted at the surface and specified via any other method'),
     ],
 }
 
@@ -66,22 +69,18 @@ DETAILS['surface_emissions'] = {
 DETAILS['atmospheric_emissions'] = {
     'description': 'TO DO',
     'properties': [
-        ('method', 'ENUM:emissions_methods', '0.N',
-            'Method used to define the chemical species emitted in the atmosphere (several methods allowed because the different species may not use the same method).'),
         ('sources', 'ENUM:atmospheric_source_types', '0.N',
              'Sources of chemical species emitted in the atmosphere that are taken into account in the emissions scheme.'),
-        ('prescribed_climatology', 'ENUM:prescribed_climatology_type', '0.1',
-            'Specify the climatology type for chemical emissions prescribed in the atmosphere.'),
+        ('method', 'ENUM:emissions_methods', '0.N',
+            'Methods used to define the chemical species emitted in the atmosphere (several methods allowed because the different species may not use the same method).'),
         ('prescribed_climatology_emitted_species', 'str', '0.1',
-             'List of chemical species emitted in the atmosphere and prescribed via a climatology'),
+             'List of chemical species emitted in the atmosphere and prescribed via a climatology (E.g. CO (monthly), C2H6 (constant))'),
         ('prescribed_spatially_uniform_emitted_species', 'str', '0.1',
              'List of chemical species emitted in the atmosphere and prescribed as spatially uniform'),
         ('interactive_emitted_species', 'str', '0.1',
              'List of chemical species emitted in the atmosphere and specified via an interactive method'),
         ('other_emitted_species', 'str', '0.1',
              'List of chemical species emitted in the atmosphere and specified via an "other method"'),
-        ('other_method_characteristics', 'str', '0.1',
-             'Characteristics of the "other method" used for chemical emissions in the atmosphere'),
     ],
 }
 
@@ -118,9 +117,10 @@ ENUMERATIONS['surface_source_types'] = {
     'is_open': True,
     'members':[
         ('Vegetation', None),
-        ('Bare ground', None),
+        ('Soil', None),
         ('Sea surface', None),
         ('Anthropogenic', None),
+        ('Biomass burning', None),
     ]
 }
 
@@ -140,7 +140,7 @@ ENUMERATIONS['emissions_methods'] = {
     'is_open': True,
     'members':[
         ('Prescribed (climatology)', None),
-        ('Prescribe (spatially uniform)', None),
+        ('Prescribed (spatially uniform)', None),
         ('Interactive', None),
     ]
 }

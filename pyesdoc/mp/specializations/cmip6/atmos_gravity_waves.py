@@ -67,6 +67,7 @@ DETAILS['orographic_gravity_waves'] = {
         ]
     }
 
+
 # --------------------------------------------------------------------
 # SUB-PROCESS: non_orographic_gravity_waves
 # --------------------------------------------------------------------
@@ -145,6 +146,7 @@ ENUMERATIONS['orographic_gravity_wave_propagation_scheme'] = {
     'members': [
         ('linear theory', None),
         ('non-linear theory', None),
+        ('includes boundary layer ducting', None),
         ]
     }
 
@@ -156,6 +158,7 @@ ENUMERATIONS['orographic_gravity_wave_dissipation_scheme'] = {
         ('single wave', None),
         ('spectral', None),
         ('linear', None),
+        ('wave saturation vs Richardson number', None),
         ]
     }
 
@@ -195,5 +198,6 @@ ENUMERATIONS['non_orographic_gravity_wave_dissipation_scheme'] = {
         ('single wave', None),
         ('spectral', None),
         ('linear', None),
+        ('wave saturation vs Richardson number', None),
         ]
     }

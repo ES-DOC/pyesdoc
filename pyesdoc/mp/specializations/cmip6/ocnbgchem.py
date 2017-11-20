@@ -24,7 +24,7 @@ AUTHORS = 'Eric Guilyardi'
 # --------------------------------------------------------------------
 # CONTRIBUTORS: Set to realm specialization contributors (comma delimited).
 # --------------------------------------------------------------------
-CONTRIBUTORS = 'CMIP5 version + Olivier Aumont (LOCEAN/IPSL)'
+CONTRIBUTORS = 'CMIP5 version + Olivier Aumont (LOCEAN/IPSL), Laurent Bopp (LSCE/IPSL)'
 
 # --------------------------------------------------------------------
 # QUALITY CONTROL STATUS: Set to 'draft' or 'complete'
@@ -41,11 +41,14 @@ CHANGE_HISTORY = [
         "Added plancton size as per specific request"),
     ("0.3.0", "2017-03-08", "Eric Guilyardi",
         "Science updates and short table draft with O. Aumont"),
+    ("0.4.0", "2017-11-08", "Eric Guilyardi",
+        "Science updates following community review with L. Bopp and O. Aumont"),
     ]
 
 # --------------------------------------------------------------------
 # CMIP5_MAPPINGS_SYNCED_AT: Latest version that has been synced with CMIP5 mappings.
 # --------------------------------------------------------------------
+# TODO
 CMIP5_MAPPINGS_SYNCED_AT = "N/A"
 
 # --------------------------------------------------------------------

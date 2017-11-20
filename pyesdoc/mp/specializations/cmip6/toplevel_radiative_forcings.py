@@ -32,6 +32,17 @@ QC_STATUS = 'draft'
 DESCRIPTION = 'Radiative forcings of the model for historical and scenario (aka Table 12.1 IPCC AR5)'
 
 # --------------------------------------------------------------------
+# PROCESS : TOP LEVEL
+# --------------------------------------------------------------------
+DETAILS['toplevel'] = {
+    'description': 'Properties radiative forcings in model',
+    'properties': [
+        ('overview', 'str', '1.1',
+            'Overview of radiative forcings (GHG and aerosols) implementation in model'),
+        ]
+    }
+
+# --------------------------------------------------------------------
 # GREENHOUSE GASES
 # --------------------------------------------------------------------
 DETAILS['greenhouse_gases'] = {

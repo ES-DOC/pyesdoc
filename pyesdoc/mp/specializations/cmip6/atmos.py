@@ -30,13 +30,15 @@ CHANGE_HISTORY = [
 	("0.1.0", "2016-11-29", "Mark Greenslade",
         "Initialised"),
     ("0.2.0", "2016-12-02", "Charlotte Pascoe",
-        "Updated process names and descriptions, added enumeration TODOs")
+        "Updated process names and descriptions, added enumeration TODOs"),
+    ("0.3.0", "2017-11-08", "Charlotte Pascoe",
+        "Updated following community feedback")
     ]
 
 # --------------------------------------------------------------------
 # CMIP5_MAPPINGS_SYNCED_AT: Latest version that has been synced with CMIP5 mappings.
 # --------------------------------------------------------------------
-CMIP5_MAPPINGS_SYNCED_AT = "N/A"
+CMIP5_MAPPINGS_SYNCED_AT = "0.3.0"
 
 # --------------------------------------------------------------------
 # DESCRIPTION: Scientific context of this scientific realm
@@ -67,7 +69,7 @@ PROCESSES = [
     'atmos_turbulence_convection',
     'atmos_microphysics_precipitation',
 	'atmos_cloud_scheme',
-    'atmos_cloud_simulator',
+    'atmos_observation_simulation',
     'atmos_gravity_waves',
     'atmos_solar',
     'atmos_volcanos',

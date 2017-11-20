@@ -37,6 +37,8 @@ DESCRIPTION = 'Ocean upper / lower boundaries'
 DETAILS['toplevel:free_surface'] = {
     'description': 'Properties of free surface in ocean',
     'properties': [
+        ('overview','str','1.1',
+            'Overview of free surface in ocean'),
         ('scheme', 'ENUM:free_surface_types', '1.1',
             'Free surface scheme in ocean'),
         ('embeded_seaice', 'bool', '1.1',
@@ -47,6 +49,8 @@ DETAILS['toplevel:free_surface'] = {
 DETAILS['toplevel:bottom_boundary_layer'] = {
     'description': 'Properties of bottom boundary layer in ocean',
     'properties': [
+        ('overview','str','1.1',
+            'Overview of bottom boundary layer in ocean'),
         ('type_of_bbl', 'ENUM:bottom_bl_types', '1.1',
             'Type of bottom boundary layer in ocean'),
         ('lateral_mixing_coef', 'int', '0.1',
