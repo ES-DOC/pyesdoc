@@ -35,8 +35,7 @@ DESCRIPTION = 'Ocean Timestepping Framework'
 # PROCESS: top level
 # --------------------------------------------------------------------
 
-
-DETAILS['toplevel:attributes'] = {
+DETAILS['toplevel'] = {
     'description': 'Properties of time stepping in ocean',
     'properties': [
         ('overview','str','1.1',
@@ -45,7 +44,6 @@ DETAILS['toplevel:attributes'] = {
             'Diurnal cycle type'),
         ]
     }
-
 # Tracers time stepping
 DETAILS['toplevel:tracers'] = {
     'description': 'Properties of tracers time stepping in ocean',

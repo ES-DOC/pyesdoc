@@ -34,7 +34,6 @@ DESCRIPTION = 'Ocean advection'
 # --------------------------------------------------------------------
 # PROCESS: top level
 # --------------------------------------------------------------------
-
 DETAILS['toplevel'] = {
     'description': 'Properties of advection in ocean',
     'properties': [
