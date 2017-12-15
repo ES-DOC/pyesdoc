@@ -29,6 +29,8 @@ QC_STATUS = 'draft'
 CHANGE_HISTORY = [
 	("0.1.0", "2017-08-04", "Charlotte Pascoe (NCAS), David Hassell (NCAS)",
          "Initialised from CMIP5"),
+	("0.2.0", "2017-12-??", "David Hassell (NCAS)",
+         "Updated with input from Yves Balkanski (LSCE) and Michael Schulz (MET Norway)"),
     ]
 
 # --------------------------------------------------------------------

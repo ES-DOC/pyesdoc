@@ -35,6 +35,8 @@ CHANGE_HISTORY = [
         "Added forcings"),
     ("0.4.0", "2017-05-02", "David Hassell",
         "Updated solar forcing"),
+    ("0.5.0", "2017-11-22", "David Hassell",
+        "Updates from community review: Alistair Sellar (MOHC), Oyvind Seland (MET-Norway)"),
     ]
 
 # --------------------------------------------------------------------

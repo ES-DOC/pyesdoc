@@ -36,7 +36,13 @@ DESCRIPTION = 'Large Scale Cloud Microphysics and Precipitation'
 # PROCESS: top level properties
 # --------------------------------------------------------------------
 
-# DEFINE HERE IF REQUIRED
+DETAILS['toplevel'] = {
+    'description': "Overview of large scale cloud microphysics and precipitation",
+    'properties': [
+        ('overview', 'str', '1.1',
+            'Overview description of large scale cloud microphysics and precipitation'),
+        ]
+    }
 
 # --------------------------------------------------------------------
 # SUB-PROCESS: large_scale_precipitation

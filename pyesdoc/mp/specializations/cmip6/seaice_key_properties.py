@@ -94,6 +94,21 @@ DETAILS['tuning_applied'] = {
         ]
     }
 
+
+# --------------------------------------------------------------------
+# PARAMETERISATIONS: Parameter values used in parameterisations
+# --------------------------------------------------------------------
+DETAILS['key_parameter_values'] = {
+    'description': "Values of key parameters",
+    'properties': [
+        ('typical_parameters', 'ENUM:parameter_values', '0.N',
+             "What values were specificed for the following parameters if used?"),
+        ('additional_parameters', 'str', '0.N',
+             "If you have any additional paramterised values that you have used (e.g. minimum open water fraction or bare ice albedo), please provide them here as a comma separated list"),
+        ]
+    }
+
+
 # --------------------------------------------------------------------
 # ASSUMPTIONS: Any key assumptions made in this realm
 # --------------------------------------------------------------------
@@ -120,7 +135,8 @@ DETAILS['conservation'] = {
         ('properties', 'ENUM:conserved_properties', '1.N',
             "Properties conserved in sea ice by the numerical schemes."),
         ('budget', 'str', '1.1',
-            "For each conserved property, specify the output variables which close the related budgets."),
+           "For each conserved property, specify the output variables which close the related budgets. as a comma "
+           "separated list. For example: Conserved property, variable1, variable2, variable3"),
         ('was_flux_correction_used', 'bool', '1.1',
             "Does conservation involved flux correction?"),
         ('corrected_conserved_prognostic_variables', 'str', '1.1',
@@ -165,5 +181,15 @@ ENUMERATIONS['conserved_properties'] = {
         ('Energy', None),
         ('Mass', None),
         ('Salt', None),
+    ]
+}
+
+ENUMERATIONS['parameter_values'] = {
+    'description': 'Specify the values of the following parameters if used',
+    'is_open': True,
+    'members': [
+        ('Ice strength (P*) in units of N m{-2}', None),
+        ('Snow conductivity (ks) in units of W m{-1} K{-1} ', None),
+        ('Minimum thickness of ice created in leads (h0) in units of m', None),
     ]
 }

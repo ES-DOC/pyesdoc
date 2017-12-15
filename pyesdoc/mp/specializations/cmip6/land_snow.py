@@ -37,6 +37,8 @@ DESCRIPTION = 'Land surface snow'
 DETAILS['toplevel'] = {
     'description': 'Properties of land surface snow scheme',
     'properties': [
+        ('overview', 'str', '1.1',
+             'Overview of snow in the land surface'),
         ('tiling', 'str', '0.1',
              'Describe the snow tiling, if any.'),        
         ('number_of_snow_layers', 'int', '1.1',

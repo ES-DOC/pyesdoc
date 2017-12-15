@@ -37,6 +37,8 @@ DESCRIPTION = 'Atmosphere key properties'
 DETAILS['toplevel'] = {
     'description': "Top level key properties",
     'properties': [
+        ('model_overview', 'str', '1.1',
+            'Overview of atmosphere model'),
         ('model_name', 'str', '1.1',
             'Name of atmosphere model code (CAM 4.0, ARPEGE 3.2,...)'),
         ('model_family', 'ENUM:model_family_type', '1.1',

@@ -38,6 +38,8 @@ DESCRIPTION = 'Characteristics of the cloud scheme'
 DETAILS['toplevel'] = {
     'description': "Top level cloud scheme process properties",
     'properties': [
+        ('overview', 'str', '1.1',
+            'Overview description of the atmosphere cloud scheme'),
         ('name', 'str', '0.1',
             'Commonly used name for the cloud scheme'),
         ('atmos_coupling', 'ENUM:atmos_cloud_coupling', '0.N',

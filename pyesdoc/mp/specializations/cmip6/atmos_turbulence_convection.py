@@ -36,7 +36,13 @@ DESCRIPTION = 'Atmosphere Convective Turbulence and Clouds'
 # PROCESS: top level properties
 # --------------------------------------------------------------------
 
-# DEFINE HERE IF REQUIRED
+DETAILS['toplevel'] = {
+    'description': "Overview of atmosphere convection and turbulence",
+    'properties': [
+        ('overview', 'str', '1.1',
+            'Overview description of atmosphere convection and turbulence'),
+        ]
+    }
 
 # --------------------------------------------------------------------
 # SUB-PROCESS: boundary_layer_turbulence

@@ -50,6 +50,18 @@ DETAILS['toplevel'] = {
         ]
     }
 
+DETAILS['toplevel:software_properties'] = {
+    'description': 'Software properties of land ice code',
+    'properties':[
+        ('repository','str', '0.1',
+            "Location of code for this component."),
+        ('code_version','str', '0.1',
+            "Code version identifier."),
+        ('code_languages','str', '0.N',
+            "Code language(s)."),
+    ]
+}
+
 # --------------------------------------------------------------------
 # KEY PROPERTIES: ENUMERATIONS
 # --------------------------------------------------------------------

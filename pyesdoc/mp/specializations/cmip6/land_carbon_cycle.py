@@ -37,6 +37,8 @@ DESCRIPTION = 'Land surface carbon cycle'
 DETAILS['toplevel'] = {
     'description': 'Properties of land surface carbon cycle',
     'properties': [
+        ('overview', 'str', '1.1',
+             'Overview of carbon cycle in land surface'),
         ('tiling', 'str', '0.1',
              'Describe the carbon cycle tiling, if any.'),
         ('time_step', 'int', '1.1',

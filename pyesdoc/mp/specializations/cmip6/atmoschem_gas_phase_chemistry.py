@@ -52,7 +52,7 @@ DETAILS['toplevel'] = {
         ('number_of_advected_species', 'int', '1.1',
              'The number of advected species in the gas phase chemistry scheme.'),
         ('number_of_steady_state_species', 'int', '1.1',
-             'The number of steady state species in the gas phase chemistry scheme.'),
+             'The number of gas phase species for which the concentration is updated in the chemical solver assuming photochemical steady state'),
         ('interactive_dry_deposition', 'bool', '1.1',
             'Is dry deposition interactive (as opposed to prescribed)? Dry deposition describes the dry processes by which gaseous species deposit themselves on solid surfaces thus decreasing their concentration in the air.'),  
         ('wet_deposition', 'bool', '1.1',

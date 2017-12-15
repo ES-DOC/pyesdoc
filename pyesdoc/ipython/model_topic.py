@@ -20,15 +20,20 @@ from pyesdoc.mp.specializations import get_property_specialization
 
 
 
+# Null property value.
+_NULL_PROPERTY = lambda: {'values': []}
+
+
 class NotebookOutput(object):
     """Model topic ipython data wrapper.
 
     """
-    def __init__(self, mip_era, institute, source_id, topic):
+    def __init__(self, mip_era, institute, source_id, topic, output_dir=None, auto_save=True):
         """Instance initialiser.
 
         """
         self.authors = []
+        self.auto_save = auto_save
         self.contributors = []
         self.content = dict()
         self.institute = unicode(institute).strip().lower()
@@ -40,22 +45,26 @@ class NotebookOutput(object):
         self.topic = unicode(topic).strip().lower()
         self._prop = None
         self._prop_specialization = None
+        self._init_state(output_dir)
 
-        # Initialise output directory.
-        if os.getenv('ESDOC_CMIP6_NOTEBOOK_HOME') is not None:
-            output_dir = os.getenv('ESDOC_CMIP6_NOTEBOOK_HOME')
-            output_dir = os.path.join(output_dir, self.institute)
-        else:
-            output_dir = os.path.expanduser('~')
-            output_dir = os.path.join(output_dir, 'notebooks')
-        output_dir = os.path.join(output_dir, self.mip_era)
-        output_dir = os.path.join(output_dir, 'models')
-        output_dir = os.path.join(output_dir, self.source_id)
-        if not os.path.isdir(output_dir):
-            os.makedirs(output_dir)
+
+    def _init_state(self, output_dir):
+        """Initialises state from file system.
+
+        """
+        # Initialise directory path.
+        dpath = output_dir or os.path.expanduser('~')
+        dpath = os.path.join(dpath, 'notebooks')
+        if output_dir is not None:
+            dpath = os.path.join(dpath, self.institute)
+        dpath = os.path.join(dpath, self.mip_era)
+        dpath = os.path.join(dpath, 'models')
+        dpath = os.path.join(dpath, self.source_id)
+        if not os.path.isdir(dpath):
+            os.makedirs(dpath)
 
         # Initialise state from previously saved output file.
-        self.fpath = os.path.join(output_dir, '.{}.json'.format(self.topic))
+        self.fpath = os.path.join(dpath, '.{}.json'.format(self.topic))
         if os.path.exists(self.fpath):
             with open(self.fpath, 'r') as fstream:
                 self._from_dict(json.loads(fstream.read()))
@@ -65,9 +74,8 @@ class NotebookOutput(object):
         """Persists state to file system.
 
         """
-        obj = self._to_dict()
         with open(self.fpath, 'w') as fstream:
-            fstream.write(json.dumps(obj, indent=4))
+            fstream.write(json.dumps(self._to_dict(), indent=4))
 
 
     def _from_dict(self, obj):
@@ -101,7 +109,7 @@ class NotebookOutput(object):
         obj['content'] = collections.OrderedDict()
         for specialization_id in sorted(self.content.keys()):
             specialization_obj = self.content[specialization_id]
-            if specialization_obj['qcStatus'] or specialization_obj['values']:
+            if specialization_obj['values']:
                 obj['content'][specialization_id] = self.content[specialization_id]
 
         return obj
@@ -165,25 +173,14 @@ class NotebookOutput(object):
         """Sets id of specialized property being edited.
 
         """
-        self.content[prop_id] = {
-            'values': [],
-            'qcStatus': 0
-        }
+        # N.B need to ensure content property exists.
+        if self.auto_save:
+            self.content[prop_id] = _NULL_PROPERTY()
+        else:
+            self.content[prop_id] = self.content.get(prop_id, _NULL_PROPERTY())
+
         self._prop = self.content[prop_id]
         self._prop_specialization = get_property_specialization(prop_id)
-
-
-    def set_qc_status(self, qc_status):
-        """Sets qc-status of specialized property being edited.
-
-        """
-        # Validate input.
-        if qc_status not in constants.QC_STATES:
-            raise ValueError('Invalid QC status')
-
-        # Update state.
-        self._prop['qcStatus'] = qc_status
-        self.save()
 
 
     def set_publication_status(self, publication_status):
@@ -202,6 +199,9 @@ class NotebookOutput(object):
     def set_value(self, val):
         """Sets a scalar value.
 
+        :param obj val: Value to be assigned.
+        :param bool auto_save: Flag indicating whether state change will be persisted or not.
+
         """
         # Validate input:
         # ... error if trying to add > 1 value to a property with singular cardinality.
@@ -218,7 +218,17 @@ class NotebookOutput(object):
 
         # Update state.
         self._prop['values'].append(val)
-        self.save()
+
+        # Persist changes.
+        if self.auto_save:
+            self.save()
+
+
+    def sort_values(self):
+        """Sorts current property values.
+
+        """
+        self._prop['values'] = sorted(self._prop['values'])
 
 
     def get_values(self, specialization_id):
@@ -226,11 +236,3 @@ class NotebookOutput(object):
 
         """
         return self.content.get(specialization_id, dict()).get('values', [])
-
-
-    def get_qc_status(self, specialization_id):
-        """Returns a property qc status.
-
-        """
-        return self.content.get(specialization_id, dict()).get('qcStatus', 0)
-

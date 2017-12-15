@@ -37,8 +37,8 @@ DESCRIPTION = 'Land surface vegetation'
 DETAILS['toplevel'] = {
     'description': 'Key properties of the land surface vegetation',
     'properties': [
-        ('description', 'str', '1.1',
-             'General description of vegetation scheme'),
+        ('overview', 'str', '1.1',
+             'Overview of vegetation in the land surface'),
         ('time_step', 'int', '1.1',
              'Time step of vegetation scheme in seconds'),                
         ('dynamic_vegetation', 'bool', '1.1',

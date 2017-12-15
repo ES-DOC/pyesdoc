@@ -47,10 +47,14 @@ DETAILS['energy'] = {
         ('basal_heat_flux', 'ENUM:basal_heat_flux_method', '1.1',
             "Method by which basal ocean heat flux is handled?"),
         ('fixed_salinity_value', 'float', '0.1',
-             "If you have selected {Thermal properties depend on S-T (with fixed salinity)}, supply fixed salinity value for each sea ice layer."),
+             "If you have selected {Thermal properties depend on S-T (with fixed salinity)}, "
+             "supply fixed salinity value for each sea ice layer."),
         ('heat_content_of_precipitation', 'str', '1.1',
-            "Describe the method by which the heat content of precipitation is handled.")
-        ]
+            "Describe the method by which the heat content of precipitation is handled."),
+        ('precipitation_effects_on_salinity', 'str', '0.1',
+             "If precipitation (freshwater) that falls on sea ice affects the ocean surface "
+             "salinity please provide further details.")
+    ]
     }
 
 
@@ -126,6 +130,19 @@ DETAILS['ice_thickness_distribution'] = {
         ]
     }
 
+
+# --------------------------------------------------------------------
+# SUB-PROCESS: Ice floe-size Distribution.
+# --------------------------------------------------------------------
+DETAILS['ice_floe_size_distribution'] = {
+    'description': 'Ice floe-size distribution details.',
+    'properties': [
+        ('representation', 'ENUM:ice_floe_size', '1.1',
+            "How is the sea ice floe-size represented?"),
+        ('additional_details', 'str', '0.1',
+         "Please provide further details on any parameterisation of floe-size."),
+        ]
+    }
 
 # --------------------------------------------------------------------
 # SUB-PROCESS: Melt Ponds
@@ -216,6 +233,15 @@ ENUMERATIONS['ice_thickness_representation'] = {
     'members': [
         ('Explicit', None),
         ('Virtual (enhancement of thermal conductivity, thin ice melting)', None),
+    ]
+}
+
+ENUMERATIONS['ice_floe_size'] = {
+    'description': 'Ice floe-size representation',
+    'is_open': True,
+    'members': [
+        ('Explicit', None),
+        ('Parameterised', None),
     ]
 }
 

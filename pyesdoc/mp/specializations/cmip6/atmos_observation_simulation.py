@@ -33,6 +33,18 @@ QC_STATUS = 'draft'
 DESCRIPTION = 'Characteristics of observation simulation'
 
 # --------------------------------------------------------------------
+# PROCESS: top level properties
+# --------------------------------------------------------------------
+
+DETAILS['toplevel'] = {
+    'description': "Overview of observation simulator",
+    'properties': [
+        ('overview', 'str', '1.1',
+            'Overview description of observation simulator characteristics'),
+        ]
+    }
+
+# --------------------------------------------------------------------
 # SUB-PROCESSES
 # --------------------------------------------------------------------
 DETAILS['isscp_attributes'] = {

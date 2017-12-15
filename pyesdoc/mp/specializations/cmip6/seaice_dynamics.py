@@ -44,7 +44,7 @@ DETAILS['toplevel'] = {
         ('ice_strength_formulation', 'ENUM:ice_strength', '1.1',
              "Which method of sea ice strength formulation is used?"),
         ('redistribution', 'ENUM:redistribution_types', '1.N',
-             "Which processes can redistribute sea ice?"),
+             "Which processes can redistribute sea ice (including thickness)?"),
         ('rheology', 'ENUM:rheology_types', '1.1',
              "Rheology, what is the ice deformation formulation?"),
         ]
@@ -89,7 +89,7 @@ ENUMERATIONS['rheology_types'] = {
         ('Mohr-Coloumb', None),
         ('Visco-plastic', 'VP'),
         ('Elastic-visco-plastic', 'EVP'),
-        ('Elastic-aniostropic-plastic', None,),
+        ('Elastic-anisotropic-plastic', None,),
         ('Granular', None),
     ]
 }

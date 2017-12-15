@@ -35,14 +35,16 @@ QC_STATUS = 'draft'
 # CHANGE HISTORY: Set to list: (version, date, who, comment).
 # --------------------------------------------------------------------
 CHANGE_HISTORY = [
-    ("0.1.0", "2016-04-11", "David Hassell",
-         "Initialised from CMIP5 mind map + a bit of reorganising (but no logical difference)"),
-    ("0.2.0", "2017-04-25", "David Hassell",
+    ("0.1.0", "2016-04-11", "David Hassell (NCAS)",
+         "Initialised from CMIP5 mind map"),
+    ("0.2.0", "2017-04-25", "David Hassell (NCAS)",
          "Updated with input from Steve George (NCAS)"),
     ("0.3.0", "2017-05-22", "David Hassell",
          "Updated with input from Sophie Nowicki (NASA)"),
-    ("0.4.0", "2017-06-28", "David Hassell",
+    ("0.4.0", "2017-06-28", "David Hassell (NCAS)",
          "Reorganisation of grid info; first draft of short table"),
+    ("0.5.0", "2017-12-15", "David Hassell (NCAS)",
+         "Updated with input from Christian Rodehacke (DMI)"),
 ]
 
 # --------------------------------------------------------------------

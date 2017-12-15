@@ -36,6 +36,17 @@ QC_STATUS = 'draft'
 DESCRIPTION = 'Top of atmosphere solar insolation characteristics'
 
 # --------------------------------------------------------------------
+# PROCESS: top level properties
+# --------------------------------------------------------------------
+DETAILS['toplevel'] = {
+    'description': "Overview of solar insolation",
+    'properties': [
+        ('overview', 'str', '1.1',
+            'Overview description of solar insolation of the atmosphere'),
+        ]
+    }
+
+# --------------------------------------------------------------------
 # SUB-PROCESS: solar_forcing_pathways
 # --------------------------------------------------------------------
 DETAILS['solar_pathways'] = {

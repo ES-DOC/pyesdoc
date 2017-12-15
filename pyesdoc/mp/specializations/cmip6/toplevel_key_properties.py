@@ -34,7 +34,7 @@ DESCRIPTION = 'Key properties of the model'
 # --------------------------------------------------------------------
 # KEY PROPERTIES: top level
 # --------------------------------------------------------------------
-DETAILS['toplevel:attributes'] = {
+DETAILS['toplevel'] = {
     'description': 'Top level properties of full coupled model',
     'properties': [
         ('overview', 'str', '1.1',
@@ -81,19 +81,36 @@ DETAILS['toplevel:software_properties'] = {
     }
 
 # --------------------------------------------------------------------
+# REALM COUPLING: general questions
+# --------------------------------------------------------------------
+DETAILS['coupling'] = {
+    'description': '',
+    'properties':[
+        ('overview', 'str', '1.1',
+            'Overview of coupling in the model'),
+        ('atmosphere_double_flux', 'bool', '1.1',
+             'Is the atmosphere passing a double flux to the ocean and sea ice (as opposed to a single one)?'),
+        ('atmosphere_fluxes_calculation_grid', 'ENUM:atmosphere_fluxes_calculation_grid', '0.1',
+             'Where are the air-sea fluxes calculated'),
+        ('atmosphere_relative_winds', 'bool', '1.1',
+            'Are relative or absolute winds used to compute the flux? I.e. do ocean surface currents enter the wind stress calculation?'),
+    ]
+}
+
+# --------------------------------------------------------------------
 # TUNING APPLIED: Any tuning used to optimise the parameters in this realm
 # --------------------------------------------------------------------
 DETAILS['tuning_applied'] = {
     'description': 'Tuning methodology for model',
     'properties': [
         ('description', 'str', '1.1',
-            "General overview description of tuning: explain and motivate the main targets and metrics retained. Document the relative weight given to climate performance metrics versus process oriented metrics, and on the possible conflicts with parameterization level tuning. In particular describe any struggle with a parameter value that required pushing it to its limits to solve a particular model deficiency."),
+            "General overview description of tuning: explain and motivate the main targets and metrics/diagnostics retained. Document the relative weight given to climate performance metrics/diagnostics versus process oriented metrics/diagnostics, and on the possible conflicts with parameterization level tuning. In particular describe any struggle with a parameter value that required pushing it to its limits to solve a particular model deficiency."),
         ('global_mean_metrics_used', 'str', '0.N',
-            "List set of metrics of the global mean state used in tuning model"),
+            "List set of metrics/diagnostics of the global mean state used in tuning model"),
         ('regional_metrics_used', 'str', '0.N',
-            "List of regional metrics of mean state (e.g THC, AABW, regional means etc) used in tuning model/component"),
+            "List of regional metrics/diagnostics of mean state (e.g THC, AABW, regional means etc) used in tuning model/component"),
         ('trend_metrics_used', 'str', '0.N',
-            "List observed trend metrics used in tuning model/component (such as 20th century)"),
+            "List observed trend metrics/diagnostics used in tuning model/component (such as 20th century)"),
         ('energy_balance','str', '1.1',
             "Describe how energy balance was obtained in the full system: in the various components independently or at the components coupling stage?"),
         ('fresh_water_balance','str', '1.1',
@@ -190,3 +207,13 @@ ENUMERATIONS['coupler_framework'] = {
         ]
     }
 
+ENUMERATIONS['atmosphere_fluxes_calculation_grid'] = {
+    'description': 'Where are the air-sea fluxes calculated',
+    'is_open': True,
+    'members': [
+        ("Atmosphere grid", None),
+        ("Ocean grid", None),
+        ("Specific coupler grid", None),
+    ]
+}
+           

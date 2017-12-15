@@ -37,7 +37,9 @@ DESCRIPTION = 'Land surface soil'
 DETAILS['toplevel'] = {
     'description': 'TODO',
     'properties': [
-         ('heat_water_coupling', 'str', '1.1',
+        ('overview', 'str', '1.1',
+             'Overview of soil in the land surface'),
+        ('heat_water_coupling', 'str', '1.1',
              'Describe the coupling between heat and water in the soil'),
          ('number_of_soil layers', 'int', '1.1',
              'The number of soil layers'),

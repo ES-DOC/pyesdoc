@@ -90,7 +90,10 @@ DETAILS['seaice_categories'] = {
         ('ice_thickness_distribution_scheme', 'str', '1.1',
             "Describe the sea ice thickness distribution scheme"),
         ('other', 'str', '0.1',
-            "If the sea ice model does not use sea ice categories specify any additional details."),
+            "If the sea ice model does not use sea ice categories specify any "
+            "additional details. For example models that paramterise "
+            "the ice thickness distribution ITD (i.e there is no explicit ITD) but "
+            "there is assumed distribution and fluxes are computed accordingly."),
         ]
     }
 
@@ -134,7 +137,7 @@ ENUMERATIONS['vertical_layering'] = {
         ('Zero-layer',
             'Simulation has no internal ice thermodynamics.'),
         ('Two-layers',
-            'Simulation uses two layers.'),
+            'Simulation uses two layers (i.e. one ice and one snow layer).'),
         ('Multi-layers',
             'Simulation uses more than two layers'),
        ]

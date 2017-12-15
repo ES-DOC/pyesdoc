@@ -37,6 +37,8 @@ DESCRIPTION = 'Land surface river routing'
 DETAILS['toplevel'] = {
     'description': 'TODO',
     'properties' : [
+        ('overview', 'str', '1.1',
+             'Overview of river routing in the land surface'),
         ('tiling', 'str', '0.1',
              'Describe the river routing, if any.'),
         ('time_step', 'int', '1.1',

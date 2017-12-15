@@ -48,9 +48,9 @@ DETAILS['toplevel'] = {
         ('prognostic_variables_form', 'ENUM:prognostic_vars_types', '1.N',
             'Form of prognostic variables in the atmospheric chemistry component.'),
         ('number_of_tracers', 'int', '1.1',
-            'Number of tracers in the atmospheric chemistry model'),
+            'Number of advected tracers in the atmospheric chemistry model'),
         ('family_approach', 'bool', '1.1',
-            'atmospheric chemistry calculations generalized into families of species?'),
+            'Atmospheric chemistry calculations (not advection) generalized into families of species?'),
         ('coupling_with_chemical_reactivity', 'bool', '1.1',
             'Atmospheric chemistry transport scheme turbulence is couple with chemical reactivity?'),
         ]
@@ -60,16 +60,18 @@ DETAILS['toplevel'] = {
 # SUB-PROCESS: timestepping framework
 # --------------------------------------------------------------------
 DETAILS['timestep_framework'] = {
-    'description': 'Physical properties of seawater in ocean',
+    'description': 'Timestepping in the atmospheric chemistry model',
     'properties' : [
         ('method', 'ENUM:timestepping_methods', '1.1',
-            'Mathematical method deployed to solve teh evolution of a given variable'),
+            'Mathematical method deployed to solve the evolution of a given variable'),
         ('split_operator_advection_timestep', 'int', '0.1',
             'Timestep for chemical species advection (in seconds)'),
         ('split_operator_physical_timestep', 'int', '0.1',
-            'Timestep for physics and chemistry (in seconds).'),
-        ('split_operator_alternate_order', 'bool', '1.1',
-            'TO DO'),
+            'Timestep for physics (in seconds).'),
+        ('split_operator_chemistry_timestep', 'int', '0.1',
+            'Timestep for chemistry (in seconds).'),
+        ('split_operator_alternate_order', 'bool', '0.1',
+            '?'),
         ('integrated_timestep', 'int', '1.1',
             'Timestep for the atmospheric chemistry model (in seconds)'),
         ('integrated_scheme_type', 'ENUM:integrated_scheme_types', '1.1',
@@ -80,7 +82,8 @@ DETAILS['timestep_framework'] = {
     ]
 }
 
-_note1 = ' This should an integer greater than zero, and may be the same value as for another process if they are calculated at the same time.'
+_note1 = ' This should be an integer greater than zero, and may be the same value as for another process if they are calculated at the same time.'
+
 
 DETAILS['timestep_framework:split_operator_order'] = {
     'description': '',
@@ -90,19 +93,21 @@ DETAILS['timestep_framework:split_operator_order'] = {
         ('convection', 'int', '0.1',
             'Call order for convection scheme'+_note1),
         ('precipitation', 'int', '0.1',
-            'Call order for precipitation scheme'+_note1),
+            'Call order for precipitation scheme.'+_note1),
         ('emissions', 'int', '0.1',
-            'Call order for emissions scheme'+_note1),
+            'Call order for emissions scheme.'+_note1),
         ('deposition', 'int', '0.1',
-            'Call order for deposition scheme'+_note1),
+            'Call order for deposition scheme.'+_note1),
         ('gas_phase_chemistry', 'int', '0.1',
-            'Call order for gas phase chemistry scheme'+_note1),
-        ('heterogeneous_phase_chemistry', 'int', '0.1',
-            'Call order for heterogeneous phase chemistry scheme'+_note1),
+            'Call order for gas phase chemistry scheme.'+_note1),
+        ('tropospheric_heterogeneous_phase_chemistry', 'int', '0.1',
+            'Call order for tropospheric heterogeneous phase chemistry scheme.'+_note1),
+        ('stratospheric_heterogeneous_phase_chemistry', 'int', '0.1',
+            'Call order for stratospheric heterogeneous phase chemistry scheme.'+_note1),
         ('photo_chemistry', 'int', '0.1',
-            'Call order for photo chemistry scheme'+_note1),
+            'Call order for photo chemistry scheme.'+_note1),
         ('aerosols', 'int', '0.1',
-            'Call order for aerosols scheme'+_note1),
+            'Call order for aerosols scheme.'+_note1),
     ]
 }
 
@@ -160,6 +165,18 @@ DETAILS['tuning_applied'] = {
         ]
     }
 
+DETAILS['toplevel:software_properties'] = {
+    'description': 'Software properties of aerosol code',
+    'properties':[
+        ('repository','str', '0.1',
+            "Location of code for this component."),
+        ('code_version','str', '0.1',
+            "Code version identifier."),
+        ('code_languages','str', '0.N',
+            "Code language(s)."),
+    ]
+}
+
 # --------------------------------------------------------------------
 # KEY PROPERTIES: ENUMERATIONS
 # --------------------------------------------------------------------
@@ -186,7 +203,7 @@ ENUMERATIONS['prognostic_vars_types'] = {
 }
 
 ENUMERATIONS['timestepping_methods'] = {
-    'description': 'Mathematical method deployed to solve teh evolution of a given variable',
+    'description': 'Mathematical method deployed to solve the evolution of a given variable',
     'is_open': True,
     'members': [
         ('Operator splitting', None),

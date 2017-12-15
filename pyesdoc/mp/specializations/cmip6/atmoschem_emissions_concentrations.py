@@ -139,8 +139,9 @@ ENUMERATIONS['emissions_methods'] = {
     'description': 'Method used to define chemical species emitted (several methods allowed because the different species may not use the same method).',
     'is_open': True,
     'members':[
-        ('Prescribed (climatology)', None),
-        ('Prescribed (spatially uniform)', None),
+        ('Climatology', None),
+        ('Spatially uniform mixing ratio', None),
+        ('Spatially uniform concentration', None),
         ('Interactive', None),
     ]
 }

@@ -31,6 +31,14 @@ QC_STATUS = 'draft'
 # --------------------------------------------------------------------
 DESCRIPTION = 'Land surface grid'
 
+DETAILS['toplevel'] = {
+    'description': 'The grid in the land surface',
+    'properties': [
+        ('overview', 'str', '1.1',
+             'Overview of the grid in the land surface'),
+    ]
+}
+
 # --------------------------------------------------------------------
 # DISCRETISATION: Description of the numerics of the discretisation.
 # --------------------------------------------------------------------

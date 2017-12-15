@@ -37,6 +37,8 @@ DESCRIPTION = 'Land surface energy balance'
 DETAILS['toplevel'] = {
     'description': 'General properties in land surface energy balance scheme',
     'properties': [
+        ('overview', 'str', '1.1',
+             'Overview of energy balance in land surface'),
         ('tiling', 'str', '0.1',
              'Describe the energy balance tiling, if any.'),        
         ('number_of_surface_temperatures', 'int', '1.1',

@@ -39,6 +39,8 @@ DESCRIPTION = 'Characteristics of the parameterised gravity waves in the atmosph
 DETAILS['toplevel'] = {
     'description': "General attributes of the gravity wave parameterisation",
     'properties': [
+        ('overview', 'str', '1.1',
+            'Overview description of gravity wave parameterisation in the atmosphere'),
         ('sponge_layer', 'ENUM:sponge_layer_attributes', '1.1',
             'Sponge layer in the upper levels in order to avoid gravity wave reflection at the top.'),
         ('background', 'ENUM:background_attributes', '1.1',

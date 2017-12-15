@@ -32,11 +32,13 @@ QC_STATUS = 'draft'
 DESCRIPTION = 'Atmosphere grid'
 
 # --------------------------------------------------------------------
-# DISCRETISATION: Description of the horizontal discretization and numerics.
+# DISCRETISATION: Description of the horizontal discretisation and numerics.
 # --------------------------------------------------------------------
 DETAILS['discretisation'] = {
     'description': 'Atmosphere grid discretisation',
-    'properties': [],
+    'properties': [
+        ('overview', 'str', '1.1',
+            'Overview description of grid discretisation in the atmosphere'),],
     'detail_sets': [
         'horizontal',
         'vertical',

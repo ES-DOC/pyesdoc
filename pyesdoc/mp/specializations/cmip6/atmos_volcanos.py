@@ -30,6 +30,17 @@ QC_STATUS = 'draft'
 DESCRIPTION = 'Characteristics of the implementation of volcanoes'
 
 # --------------------------------------------------------------------
+# PROCESS: top level properties
+# --------------------------------------------------------------------
+DETAILS['toplevel'] = {
+    'description': "Overview of volcanic effects",
+    'properties': [
+        ('overview', 'str', '1.1',
+            'Overview description of the implementation of volcanic effects in the atmosphere'),
+        ]
+    }
+
+# --------------------------------------------------------------------
 # SUB-PROCESS: volcanoes_treatment
 # --------------------------------------------------------------------
 DETAILS['volcanoes_treatment'] = {
