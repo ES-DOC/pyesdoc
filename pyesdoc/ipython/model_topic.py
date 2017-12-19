@@ -53,10 +53,7 @@ class NotebookOutput(object):
 
         """
         # Initialise directory path.
-        dpath = output_dir or os.path.expanduser('~')
-        dpath = os.path.join(dpath, 'notebooks')
-        if output_dir is not None:
-            dpath = os.path.join(dpath, self.institute)
+        dpath = output_dir or os.path.join(os.path.expanduser('~'), '.esdoc/notebook-output')
         dpath = os.path.join(dpath, self.mip_era)
         dpath = os.path.join(dpath, 'models')
         dpath = os.path.join(dpath, self.source_id)
@@ -64,7 +61,7 @@ class NotebookOutput(object):
             os.makedirs(dpath)
 
         # Initialise state from previously saved output file.
-        self.fpath = os.path.join(dpath, '.{}.json'.format(self.topic))
+        self.fpath = os.path.join(dpath, '{}.json'.format(self.topic))
         if os.path.exists(self.fpath):
             with open(self.fpath, 'r') as fstream:
                 self._from_dict(json.loads(fstream.read()))
