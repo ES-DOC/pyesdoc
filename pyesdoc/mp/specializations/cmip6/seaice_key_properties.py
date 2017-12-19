@@ -37,8 +37,10 @@ DESCRIPTION = 'Sea Ice key properties'
 DETAILS['model'] = {
     'description': "Name of seaice model used.",
     'properties': [
+        ('model_overview', 'str', '1.1',
+             'Overview of sea ice model.'),
         ('model_name', 'str', '1.1',
-         "Name of seaice model (e.g. CICE 4.2, LIM 2.1, etc.)"),
+             'Name of sea ice model code (e.g. CICE 4.2, LIM 2.1, etc.)')
     ]
 }
 

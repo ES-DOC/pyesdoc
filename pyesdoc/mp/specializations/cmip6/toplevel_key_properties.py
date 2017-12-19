@@ -37,8 +37,10 @@ DESCRIPTION = 'Key properties of the model'
 DETAILS['toplevel'] = {
     'description': 'Top level properties of full coupled model',
     'properties': [
-        ('overview', 'str', '1.1',
+        ('model_overview', 'str', '1.1',
             'Top level overview of coupled model'),
+        ('model_name', 'str', '1.1',
+            'Name of ocean biogeochemistry model code (PISCES 2.0,...)')
         ]
     }
 

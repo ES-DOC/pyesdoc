@@ -39,6 +39,10 @@ DETAILS = OrderedDict()
 DETAILS['toplevel'] = {
     'description': 'Top level key properties in aerosol model',
     'properties': [
+        ('model_overview', 'str', '1.1',
+             'Overview of aerosol model.'),
+        ('model_name', 'str', '1.1',
+             'Name of aerosol model code'),
         ('scheme_scope', 'ENUM:scheme_scopes', '1.N',
             'Atmospheric domains covered by the aerosol model'),
         ('basic_approximations', 'str', '1.1',

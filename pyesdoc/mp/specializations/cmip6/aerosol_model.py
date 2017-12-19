@@ -37,6 +37,8 @@ DESCRIPTION = 'Aerosol model'
 DETAILS['toplevel'] = {
     'description': 'Top level aerosol model properties',
     'properties': [
+        ('overview', 'str', '1.1',
+            'Overview of atmosperic aerosol model'),
         ('processes', 'ENUM:model_processes', '1.N',
             'Processes included in the Aerosol model.'),
         ('coupling', 'ENUM:coupling', '0.N',
@@ -47,20 +49,6 @@ DETAILS['toplevel'] = {
              'Type(s) of aerosol scheme used by the aerosols model (potentially multiple: some species may be covered by one type of aerosol scheme and other species covered by another type).'),
         ('bulk_scheme_species', 'ENUM:species', '1.N',
              'List of species covered by the bulk scheme.'),
-        ('model_scheme_framework', 'ENUM:scheme_frameworks', '1.1',
-             'Aerosols classification framework used in the modal aerosol scheme.'),
-        ('model_scheme_species', 'ENUM:species', '1.N',
-             'List of species covered by the modal scheme.'),
-        ('bin_scheme_framework', 'ENUM:scheme_frameworks', '1.1',
-             'Aerosols classification framework used in the bin aerosol scheme.'),
-        ('bin_scheme_species', 'ENUM:species', '1.N',
-             'List of species covered by the bin scheme.'),
-        ('classification_framework', 'ENUM:scheme_frameworks', '0.1',
-             'Aerosols classification framework.'),
-        ('classification_framework_characterisitics', 'str', '0.1',
-             'Characteristics of the aerosol scheme used.'),
-        ('classification_framework_species', 'ENUM:species', '0.1',
-             'List of species covered by the scheme.'),
     ]
 }
 
@@ -175,6 +163,7 @@ ENUMERATIONS['model_processes'] = {
         ('Advection (horizontal)', None),
         ('Advection (vertical)', None),
         ('Heterogeneous chemistry', None),
+        ('Nucleation', None),
     ]
 }
 
@@ -186,6 +175,9 @@ ENUMERATIONS['coupling'] = {
         ('Land surface', None),
         ('Heterogeneous chemistry', None),
         ('Clouds', None),
+        ('Ocean', None),
+        ('Cryosphere', None),
+        ('Gas phase chemistry', None),
     ]
 }
 
@@ -196,9 +188,12 @@ ENUMERATIONS['gas_phase_precursors'] = {
         ('DMS', None),
         ('SO2', None),
         ('Ammonia', None),
-        ('Iodene', None),
+        ('Iodine', None),
         ('Terpene', None),
         ('Isoprene', None),
+        ('VOC', None),
+        ('NOx', None),
+        
     ]
 }
 
@@ -229,15 +224,6 @@ ENUMERATIONS['species'] = {
         ('NAT (Nitric acid trihydrate)', None),
         ('NAD (Nitric acid dihydrate)', None),
         ('STS (supercooled ternary solution aerosol particule)', None),
-    ]
-}
-
-ENUMERATIONS['scheme_frameworks'] = {
-    'description': 'Aerosols classification framework',
-    'is_open': True,
-    'members':[
-        ('Single moment', None),
-        ('Microphysical', None),
     ]
 }
 

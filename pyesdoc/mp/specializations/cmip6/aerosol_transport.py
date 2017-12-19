@@ -14,7 +14,7 @@ ENUMERATIONS = OrderedDict()
 # --------------------------------------------------------------------
 # CONTACT: Set to specialization co-ordinator.
 # --------------------------------------------------------------------
-CONTACT = 'Charlotte Pascoe, David Hassell'
+CONTACT = 'David Hassell'
 
 # --------------------------------------------------------------------
 # AUTHORS: Set to specialization authors (comma delimited).
@@ -37,26 +37,15 @@ DESCRIPTION = 'Aerosol transport'
 DETAILS['toplevel'] = {
     'description': 'Top level aerosol transport properties',
     'properties': [
+        ('overview', 'str', '1.1',
+             'Overview of transport in atmosperic aerosol model'),
         ('scheme', 'ENUM:transport_schemes', '1.1',
             'Method for aerosol transport modeling'),
         ('mass_conservation_scheme', 'ENUM:mass_conservation_methods', '1.N',
             'Method used to ensure mass conservation.'),
-        ('convention_scheme', 'ENUM:convection_types', '1.N',
+        ('convention', 'ENUM:convection_types', '1.N',
             'Transport by convention'),
-        ]
-    }
-
-# --------------------------------------------------------------------
-# SUB-PROCESS: Turbulence
-# --------------------------------------------------------------------
-DETAILS['turbulence'] = {
-    'description': 'The scheme used for parametrization of the turbulent transport of aerosols',
-    'properties': [
-        ('method', 'ENUM:turbulence_methods', '1.1',
-            'Method used for turbulence parametrization'),
-        ('specific_scheme', 'str', '0.1',
-             'Description of the scheme used for parametrization of the turbulent transport of aerosols, if not that used by the atmospheric chemistry model'),        
-    ],
+    ]
 }
 
 # --------------------------------------------------------------------

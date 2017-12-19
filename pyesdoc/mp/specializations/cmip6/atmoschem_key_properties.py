@@ -39,8 +39,10 @@ DETAILS = OrderedDict()
 DETAILS['toplevel'] = {
     'description': 'Top level key properties in atmospheric chemistry model',
     'properties': [
-        ('overview', 'str', '1.1',
-             'Overview of atmospheric chemistry'), 
+        ('model_overview', 'str', '1.1',
+             'Overview of atmospheric chemistry model.'),
+        ('model_name', 'str', '1.1',
+             'Name of atmospheric chemistry model code'),
         ('chemistry_scheme_scope', 'ENUM:chemistry_scheme_scopes', '1.N',
             'Atmospheric domains covered by the atmospheric chemistry model'),
         ('basic_approximations', 'str', '1.1',
