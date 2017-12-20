@@ -70,9 +70,10 @@ class AxisMember(object):
         """
         super(AxisMember, self).__init__()
 
-        self.description = None                           # unicode (1.1)
+        self.description = None                           # unicode (0.1)
         self.extra_detail = None                          # unicode (0.1)
         self.index = None                                 # int (1.1)
+        self.target_requirement = None                    # designing.NumericalRequirement (0.1)
         self.value = None                                 # float (0.1)
 
 
@@ -88,10 +89,10 @@ class EnsembleAxis(object):
         """
         super(EnsembleAxis, self).__init__()
 
-        self.extra_detail = None                          # unicode (1.1)
+        self.extra_detail = None                          # unicode (0.1)
         self.member = []                                  # activity.AxisMember (1.N)
         self.short_identifier = None                      # unicode (1.1)
-        self.target_requirement = None                    # designing.NumericalRequirement (1.1)
+        self.target_requirement = None                    # designing.NumericalRequirement (0.1)
 
 
     @property

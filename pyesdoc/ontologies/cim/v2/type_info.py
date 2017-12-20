@@ -107,6 +107,7 @@ CLASSES = (
     platform.StorageVolume,
     science.Model,
     science.Realm,
+    science.RealmCoupling,
     science.Topic,
     science.TopicProperty,
     science.TopicPropertySet,
@@ -156,6 +157,7 @@ CLASS_PROPERTIES = {
         'description',
         'extra_detail',
         'index',
+        'target_requirement',
         'value',
     ),
     activity.Conformance: (
@@ -714,6 +716,7 @@ CLASS_PROPERTIES = {
         'key_properties',
         'meta',
         'model_type',
+        'realm_coupling',
         'realms',
         'canonical_id',
         'citations',
@@ -731,7 +734,6 @@ CLASS_PROPERTIES = {
         'grid',
         'key_properties',
         'meta',
-        'model',
         'processes',
         'software_frameworks',
         'citations',
@@ -744,6 +746,13 @@ CLASS_PROPERTIES = {
         'short_name',
         'specialization_id',
         'sub_topics',
+    ),
+    science.RealmCoupling: (
+        'coupling_details',
+        'source_realm',
+        'target_realm',
+        'time_frequency',
+        'variable',
     ),
     science.Topic: (
         'citations',
@@ -972,6 +981,7 @@ CLASS_OWN_PROPERTIES = {
         'description',
         'extra_detail',
         'index',
+        'target_requirement',
         'value',
     ),
     activity.Conformance: (
@@ -1226,6 +1236,7 @@ CLASS_OWN_PROPERTIES = {
         'key_properties',
         'meta',
         'model_type',
+        'realm_coupling',
         'realms',
     ),
     science.Realm: (
@@ -1233,9 +1244,15 @@ CLASS_OWN_PROPERTIES = {
         'grid',
         'key_properties',
         'meta',
-        'model',
         'processes',
         'software_frameworks',
+    ),
+    science.RealmCoupling: (
+        'coupling_details',
+        'source_realm',
+        'target_realm',
+        'time_frequency',
+        'variable',
     ),
     science.Topic: (
         'citations',
@@ -1643,11 +1660,13 @@ CONSTRAINTS = {
         ('extra_detail', 'type', unicode),
         ('description', 'type', unicode),
         ('value', 'type', float),
+        ('target_requirement', 'type', designing.NumericalRequirement),
 
         ('index', 'cardinality', "1.1"),
         ('extra_detail', 'cardinality', "0.1"),
-        ('description', 'cardinality', "1.1"),
+        ('description', 'cardinality', "0.1"),
         ('value', 'cardinality', "0.1"),
+        ('target_requirement', 'cardinality', "0.1"),
 
     ),
     activity.Conformance: (
@@ -1742,9 +1761,9 @@ CONSTRAINTS = {
         ('target_requirement', 'type', designing.NumericalRequirement),
 
         ('member', 'cardinality', "1.N"),
-        ('extra_detail', 'cardinality', "1.1"),
+        ('extra_detail', 'cardinality', "0.1"),
         ('short_identifier', 'cardinality', "1.1"),
-        ('target_requirement', 'cardinality', "1.1"),
+        ('target_requirement', 'cardinality', "0.1"),
 
     ),
     activity.EnsembleMember: (
@@ -2803,9 +2822,10 @@ CONSTRAINTS = {
         ('version', 'type', unicode),
         ('model_type', 'type', unicode),
         ('key_properties', 'type', science.Topic),
+        ('realm_coupling', 'type', science.RealmCoupling),
         ('name', 'type', unicode),
 
-        ('activity_properties', 'cardinality', "0.1"),
+        ('activity_properties', 'cardinality', "0.N"),
         ('realms', 'cardinality', "0.N"),
         ('description', 'cardinality', "0.1"),
         ('repository', 'cardinality', "0.1"),
@@ -2822,6 +2842,7 @@ CONSTRAINTS = {
         ('version', 'cardinality', "0.1"),
         ('model_type', 'cardinality', "1.1"),
         ('key_properties', 'cardinality', "0.1"),
+        ('realm_coupling', 'cardinality', "0.N"),
         ('name', 'cardinality', "1.1"),
 
     ),
@@ -2842,7 +2863,6 @@ CONSTRAINTS = {
         ('grid', 'type', science.Topic),
         ('keywords', 'type', unicode),
         ('key_properties', 'type', science.Topic),
-        ('model', 'type', science.Model),
         ('properties', 'type', science.TopicProperty),
 
         ('processes', 'cardinality', "1.N"),
@@ -2860,8 +2880,22 @@ CONSTRAINTS = {
         ('grid', 'cardinality', "0.1"),
         ('keywords', 'cardinality', "0.N"),
         ('key_properties', 'cardinality', "0.1"),
-        ('model', 'cardinality', "1.1"),
         ('properties', 'cardinality', "0.N"),
+
+    ),
+    science.RealmCoupling: (
+
+        ('variable', 'type', unicode),
+        ('coupling_details', 'type', unicode),
+        ('target_realm', 'type', unicode),
+        ('time_frequency', 'type', unicode),
+        ('source_realm', 'type', unicode),
+
+        ('variable', 'cardinality', "1.1"),
+        ('coupling_details', 'cardinality', "0.1"),
+        ('target_realm', 'cardinality', "1.1"),
+        ('time_frequency', 'cardinality', "1.1"),
+        ('source_realm', 'cardinality', "1.1"),
 
     ),
     science.Topic: (
@@ -3397,7 +3431,7 @@ CONSTRAINTS = {
 
         ('type', unicode),
 
-        ('cardinality', "1.1"),
+        ('cardinality', "0.1"),
 
     ),
     (activity.AxisMember, 'extra_detail'): (
@@ -3412,6 +3446,13 @@ CONSTRAINTS = {
         ('type', int),
 
         ('cardinality', "1.1"),
+
+    ),
+    (activity.AxisMember, 'target_requirement'): (
+
+        ('type', designing.NumericalRequirement),
+
+        ('cardinality', "0.1"),
 
     ),
     (activity.AxisMember, 'value'): (
@@ -3687,7 +3728,7 @@ CONSTRAINTS = {
 
         ('type', unicode),
 
-        ('cardinality', "1.1"),
+        ('cardinality', "0.1"),
 
     ),
     (activity.EnsembleAxis, 'member'): (
@@ -3708,7 +3749,7 @@ CONSTRAINTS = {
 
         ('type', designing.NumericalRequirement),
 
-        ('cardinality', "1.1"),
+        ('cardinality', "0.1"),
 
     ),
 
@@ -6768,7 +6809,7 @@ CONSTRAINTS = {
 
         ('type', science.Topic),
 
-        ('cardinality', "0.1"),
+        ('cardinality', "0.N"),
 
     ),
     (science.Model, 'coupled_components'): (
@@ -6811,6 +6852,13 @@ CONSTRAINTS = {
         ('type', unicode),
 
         ('cardinality', "1.1"),
+
+    ),
+    (science.Model, 'realm_coupling'): (
+
+        ('type', science.RealmCoupling),
+
+        ('cardinality', "0.N"),
 
     ),
     (science.Model, 'realms'): (
@@ -6919,13 +6967,6 @@ CONSTRAINTS = {
         ('cardinality', "1.1"),
 
     ),
-    (science.Realm, 'model'): (
-
-        ('type', science.Model),
-
-        ('cardinality', "1.1"),
-
-    ),
     (science.Realm, 'processes'): (
 
         ('type', science.Topic),
@@ -7008,6 +7049,42 @@ CONSTRAINTS = {
         ('type', science.Topic),
 
         ('cardinality', "0.N"),
+
+    ),
+
+    (science.RealmCoupling, 'coupling_details'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (science.RealmCoupling, 'source_realm'): (
+
+        ('type', unicode),
+
+        ('cardinality', "1.1"),
+
+    ),
+    (science.RealmCoupling, 'target_realm'): (
+
+        ('type', unicode),
+
+        ('cardinality', "1.1"),
+
+    ),
+    (science.RealmCoupling, 'time_frequency'): (
+
+        ('type', unicode),
+
+        ('cardinality', "1.1"),
+
+    ),
+    (science.RealmCoupling, 'variable'): (
+
+        ('type', unicode),
+
+        ('cardinality', "1.1"),
 
     ),
 
@@ -8327,6 +8404,10 @@ http://www.geosci-model-dev-discuss.net/gmd-2016-197/)
         Scientific area of a numerical model - usually a sub-model or component.
 
     """,
+    science.RealmCoupling: """
+        Description of a coupling between realms.
+
+    """,
     science.Topic: """
         An organized collection of details upon a specific topic, e.g. model key properties.
 
@@ -8504,6 +8585,8 @@ http://www.geosci-model-dev-discuss.net/gmd-2016-197/)
         "If necessary: further information about ensemble member conformance.",
     (activity.AxisMember, 'index'):
         "The ensemble member index.",
+    (activity.AxisMember, 'target_requirement'):
+        "URI of the target numerical requirement, if any.",
     (activity.AxisMember, 'value'):
         "If parameter varied, value thereof for this member.",
     (activity.Conformance, 'conformance_achieved'):
@@ -8533,9 +8616,9 @@ http://www.geosci-model-dev-discuss.net/gmd-2016-197/)
     (activity.EnsembleAxis, 'member'):
         "Individual member descriptions along axis.",
     (activity.EnsembleAxis, 'short_identifier'):
-        "e.g. 'r' or 'i' or 'p' to conform with simulation ensemble variant identifiers.",
+        "e.g. 'r', 'i', 'p' or 'f' to conform with simulation ensemble variant identifiers.",
     (activity.EnsembleAxis, 'target_requirement'):
-        "URI of the target numerical requirement.",
+        "URI of the target numerical requirement, if any",
     (activity.EnsembleMember, 'errata'):
         "Link to errata associated with this simulation.",
     (activity.EnsembleMember, 'had_performance'):
@@ -8856,6 +8939,8 @@ http://www.geosci-model-dev-discuss.net/gmd-2016-197/)
         "Injected document metadata.",
     (science.Model, 'model_type'):
         "Generic type for this model.",
+    (science.Model, 'realm_coupling'):
+        "Description of a coupling between realms",
     (science.Model, 'realms'):
         "The scientific realms which this model simulates internally, i.e. those which are not linked together using a coupler.",
     (science.Realm, 'canonical_name'):
@@ -8866,12 +8951,20 @@ http://www.geosci-model-dev-discuss.net/gmd-2016-197/)
         "Realm key properties which differ from model defaults (grid, timestep etc).",
     (science.Realm, 'meta'):
         "Injected document metadata.",
-    (science.Realm, 'model'):
-        "Associated model.",
     (science.Realm, 'processes'):
         "Processes simulated within the realm.",
     (science.Realm, 'software_frameworks'):
         "Software framework(s) of the realm.",
+    (science.RealmCoupling, 'coupling_details'):
+        "Description of the coupling algorithm, and any other information (e.g. binlinear interpolation",
+    (science.RealmCoupling, 'source_realm'):
+        "The model realm providing the variable (e.g. ocean)",
+    (science.RealmCoupling, 'target_realm'):
+        "The model realm receiving the variable (e.g. atmosphere)",
+    (science.RealmCoupling, 'time_frequency'):
+        "The time frequency of the coupling (e.g. 1 hour)",
+    (science.RealmCoupling, 'variable'):
+        "The variable being coupled (e.g. 10 metre wind)",
     (science.Topic, 'citations'):
         "Set of pertinent citations.",
     (science.Topic, 'description'):
@@ -9593,6 +9686,7 @@ KEYS = {
     platform.StorageVolume: "cim.2.platform.StorageVolume",
     science.Model: "cim.2.science.Model",
     science.Realm: "cim.2.science.Realm",
+    science.RealmCoupling: "cim.2.science.RealmCoupling",
     science.Topic: "cim.2.science.Topic",
     science.TopicProperty: "cim.2.science.TopicProperty",
     science.TopicPropertySet: "cim.2.science.TopicPropertySet",
@@ -9640,6 +9734,7 @@ KEYS = {
     (activity.AxisMember, 'description'): "cim.2.activity.AxisMember.description",
     (activity.AxisMember, 'extra_detail'): "cim.2.activity.AxisMember.extra_detail",
     (activity.AxisMember, 'index'): "cim.2.activity.AxisMember.index",
+    (activity.AxisMember, 'target_requirement'): "cim.2.activity.AxisMember.target_requirement",
     (activity.AxisMember, 'value'): "cim.2.activity.AxisMember.value",
     (activity.Conformance, 'conformance_achieved'): "cim.2.activity.Conformance.conformance_achieved",
     (activity.Conformance, 'datasets'): "cim.2.activity.Conformance.datasets",
@@ -9816,14 +9911,19 @@ KEYS = {
     (science.Model, 'key_properties'): "cim.2.science.Model.key_properties",
     (science.Model, 'meta'): "cim.2.science.Model.meta",
     (science.Model, 'model_type'): "cim.2.science.Model.model_type",
+    (science.Model, 'realm_coupling'): "cim.2.science.Model.realm_coupling",
     (science.Model, 'realms'): "cim.2.science.Model.realms",
     (science.Realm, 'canonical_name'): "cim.2.science.Realm.canonical_name",
     (science.Realm, 'grid'): "cim.2.science.Realm.grid",
     (science.Realm, 'key_properties'): "cim.2.science.Realm.key_properties",
     (science.Realm, 'meta'): "cim.2.science.Realm.meta",
-    (science.Realm, 'model'): "cim.2.science.Realm.model",
     (science.Realm, 'processes'): "cim.2.science.Realm.processes",
     (science.Realm, 'software_frameworks'): "cim.2.science.Realm.software_frameworks",
+    (science.RealmCoupling, 'coupling_details'): "cim.2.science.RealmCoupling.coupling_details",
+    (science.RealmCoupling, 'source_realm'): "cim.2.science.RealmCoupling.source_realm",
+    (science.RealmCoupling, 'target_realm'): "cim.2.science.RealmCoupling.target_realm",
+    (science.RealmCoupling, 'time_frequency'): "cim.2.science.RealmCoupling.time_frequency",
+    (science.RealmCoupling, 'variable'): "cim.2.science.RealmCoupling.variable",
     (science.Topic, 'citations'): "cim.2.science.Topic.citations",
     (science.Topic, 'description'): "cim.2.science.Topic.description",
     (science.Topic, 'keywords'): "cim.2.science.Topic.keywords",
@@ -10188,6 +10288,7 @@ platform.VolumeUnits.type_key = KEYS[platform.VolumeUnits]
 science.Model.type_key = KEYS[science.Model]
 science.ModelTypes.type_key = KEYS[science.ModelTypes]
 science.Realm.type_key = KEYS[science.Realm]
+science.RealmCoupling.type_key = KEYS[science.RealmCoupling]
 science.Topic.type_key = KEYS[science.Topic]
 science.TopicProperty.type_key = KEYS[science.TopicProperty]
 science.TopicPropertySet.type_key = KEYS[science.TopicPropertySet]

@@ -35,14 +35,34 @@ class Model(software.ComponentBase):
         """
         super(Model, self).__init__()
 
-        self.activity_properties = None                   # science.Topic (0.1)
+        self.activity_properties = []                     # science.Topic (0.N)
         self.coupled_components = []                      # science.Model (0.N)
         self.coupler = None                               # software.CouplingFramework (0.1)
         self.internal_software_components = []            # software.SoftwareComponent (0.N)
         self.key_properties = None                        # science.Topic (0.1)
         self.meta = shared.DocMetaInfo()                  # shared.DocMetaInfo (1.1)
         self.model_type = None                            # science.ModelTypes (1.1)
+        self.realm_coupling = []                          # science.RealmCoupling (0.N)
         self.realms = []                                  # science.Realm (0.N)
+
+
+class RealmCoupling(object):
+    """A concrete class within the cim v2 type system.
+
+    Description of a coupling between realms.
+
+    """
+    def __init__(self):
+        """Instance constructor.
+
+        """
+        super(RealmCoupling, self).__init__()
+
+        self.coupling_details = None                      # unicode (0.1)
+        self.source_realm = None                          # unicode (1.1)
+        self.target_realm = None                          # unicode (1.1)
+        self.time_frequency = None                        # unicode (1.1)
+        self.variable = None                              # unicode (1.1)
 
 
 class Topic(object):
@@ -74,7 +94,7 @@ class Topic(object):
 	    """Instrance string representation.
 
 	    """
-	    return "{}".format(self.s, self.h, self.o, self.r, self.t, self._, self.n, self.a, self.m, self.e)
+	    return "{}".format(self.short_name)
 
 
 class TopicProperty(object):
@@ -145,7 +165,6 @@ class Realm(Topic):
         self.grid = None                                  # science.Topic (0.1)
         self.key_properties = None                        # science.Topic (0.1)
         self.meta = shared.DocMetaInfo()                  # shared.DocMetaInfo (1.1)
-        self.model = None                                 # science.Model (1.1)
         self.processes = []                               # science.Topic (1.N)
         self.software_frameworks = []                     # software.Implementation (0.N)
 
@@ -155,7 +174,7 @@ class Realm(Topic):
 	    """Instrance string representation.
 
 	    """
-	    return "{}".format(self.c, self.a, self.n, self.o, self.n, self.i, self.c, self.a, self.l, self._, self.n, self.a, self.m, self.e)
+	    return "{}".format(self.canonical_name)
 
 
 class ModelTypes(object):

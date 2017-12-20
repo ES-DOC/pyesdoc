@@ -23,10 +23,12 @@ def model():
                 "Generic type for this model."),
             ('key_properties', 'science.topic', '0.1',
                 "Model default key properties (may be over-ridden in coupled component and realm properties)."),
-            ('activity_properties', 'science.topic', '0.1',
+            ('activity_properties', 'science.topic', '0.N',
                 "Properties specific to the modelling activity in question, e.g. radiative forcing agents for CMIP6."),
             ('realms', 'linked_to(science.realm)', '0.N',
                 "The scientific realms which this model simulates internally, i.e. those which are not linked together using a coupler."),
+            ('realm_coupling', 'science.realm_coupling', '0.N',
+                "Description of a coupling between realms"),
 
             # TODO: review these attributes once software package is peer-reviewed
             ('coupled_components', 'linked_to(science.model)', '0.N',
@@ -48,7 +50,7 @@ def realm():
         'base': 'science.topic',
         'is_abstract': False,
         'is_document': True,
-        'pstr': ('{}', ('canonical_name')),        
+        'pstr': ('{}', ('canonical_name',)),        
         'properties': [
             ('canonical_name', 'str', '0.1',
                 "Canonical name for the realm."),
@@ -56,8 +58,6 @@ def realm():
                 "The grid used to layout the variables (e.g. the Global ENDGAME-grid)."),
             ('key_properties', 'science.topic', '0.1',
                 "Realm key properties which differ from model defaults (grid, timestep etc)."),
-            ('model', 'science.model', '1.1',
-                "Associated model."),
             ('processes', 'science.topic', '1.N',
                 "Processes simulated within the realm."),
 
@@ -67,6 +67,28 @@ def realm():
         ]
     }
 
+def realm_coupling():
+    """Description of a coupling between realms.
+
+    """
+    return {
+        'type': 'class',
+        'base': None,
+        'is_abstract': False,
+        'is_document': False,
+        'properties': [
+            ('variable', 'str', '1.1',
+                 'The variable being coupled (e.g. 10 metre wind)'),
+            ('source_realm', 'str', '1.1',
+                 'The model realm providing the variable (e.g. ocean)'),
+            ('target_realm', 'str', '1.1',
+                 'The model realm receiving the variable (e.g. atmosphere)'),
+            ('time_frequency', 'str', '1.1',
+                 'The time frequency of the coupling (e.g. 1 hour)'),
+            ('coupling_details', 'str', '0.1',
+                 'Description of the coupling algorithm, and any other information (e.g. binlinear interpolation')
+        ]
+    }
 
 def topic():
     """An organized collection of details upon a specific topic, e.g. model key properties.
@@ -76,7 +98,7 @@ def topic():
         'type': 'class',
         'base': None,
         'is_abstract': False,
-        'pstr': ('{}', ('short_name')),        
+        'pstr': ('{}', ('short_name',)),        
         'properties': [
             ('citations', 'shared.citation', '0.N',
                 "Set of pertinent citations."),

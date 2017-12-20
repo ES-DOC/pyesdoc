@@ -90,6 +90,7 @@ __all__ = [
     StorageVolume,
     Model,
     Realm,
+    RealmCoupling,
     Topic,
     TopicProperty,
     TopicPropertySet,
