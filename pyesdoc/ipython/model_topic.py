@@ -28,7 +28,7 @@ class NotebookOutput(object):
     """Model topic ipython data wrapper.
 
     """
-    def __init__(self, mip_era, institute, source_id, topic, output_dir=None, auto_save=True):
+    def __init__(self, mip_era, institute, source_id, topic, path=None, auto_save=True):
         """Instance initialiser.
 
         """
@@ -45,24 +45,26 @@ class NotebookOutput(object):
         self.topic = unicode(topic).strip().lower()
         self._prop = None
         self._prop_specialization = None
-        self._init_state(output_dir)
+        self._init_state(path)
 
 
-    def _init_state(self, output_dir):
+    def _init_state(self, path):
         """Initialises state from file system.
 
         """
         # Initialise directory path.
-        dpath = output_dir or os.path.join(os.path.expanduser('~'), '.esdoc/notebook-output')
-        dpath = os.path.join(dpath, self.mip_era)
-        dpath = os.path.join(dpath, 'models')
-        dpath = os.path.join(dpath, self.source_id)
-        if not os.path.isdir(dpath):
-            os.makedirs(dpath)
+        if path is None:
+            path = os.path.join(os.path.expanduser('~'), '.esdoc/notebook-output')
+            path = os.path.join(path, self.mip_era)
+            path = os.path.join(path, 'models')
+            path = os.path.join(path, self.source_id)
+            if not os.path.isdir(path):
+                os.makedirs(path)
+            path = os.path.join(path, '{}.json'.format(self.topic))
 
         # Initialise state from previously saved output file.
-        self.fpath = os.path.join(dpath, '{}.json'.format(self.topic))
-        if os.path.exists(self.fpath):
+        self.fpath = path
+        if os.path.isfile(self.fpath):
             with open(self.fpath, 'r') as fstream:
                 self._from_dict(json.loads(fstream.read()))
 
