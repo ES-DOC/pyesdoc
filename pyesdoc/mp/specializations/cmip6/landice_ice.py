@@ -37,6 +37,8 @@ DESCRIPTION = 'Ice sheet and ice shelf'
 DETAILS['toplevel'] = {
     'description': 'General key properties in ice sheets and ice shelves',
     'properties': [
+        ('overview', 'str', '1.1',
+             'Overview of the ice sheet and ice shelf in the land ice scheme'),
         ('grounding_line_method', 'ENUM:grounding_line_methods', '1.1',
             'Specify the technique used for modelling the grounding line in the ice sheet-ice shelf coupling'),
         ('ice_sheet', 'bool', '1.1',

@@ -71,7 +71,7 @@ DETAILS['momentum:operator'] = {
 DETAILS['momentum:eddy_viscosity_coeff'] = {
     'description': 'Properties of eddy viscosity coeff in lateral physics momemtum scheme in the ocean',
     'properties': [
-        ('type', 'ENUM:latphys_eddy_visc_coeff_types', '1.1',
+        ('type', 'ENUM:latphys_eddy_coeff_types', '1.1',
             'Lateral physics momemtum eddy viscosity coeff type in the ocean'),
         ('constant_coefficient', 'int', '0.1',
             'If constant, value of eddy viscosity coeff in lateral physics momemtum scheme (in m2/s)'),
@@ -98,7 +98,7 @@ DETAILS['tracers'] = {
     ],
     'detail_sets': [
         'operator',
-        'eddy_viscosity_coeff',
+        'eddy_diffusivity_coeff',
         'eddy_induced_velocity'
         ]
     }
@@ -115,19 +115,19 @@ DETAILS['tracers:operator'] = {
         ]
     }
 
-DETAILS['tracers:eddy_viscosity_coeff'] = {
-    'description': 'Properties of eddy viscosity coeff in lateral physics tracers scheme in the ocean',
+DETAILS['tracers:eddy_diffusity_coeff'] = {
+    'description': 'Properties of eddy diffusity coeff in lateral physics tracers scheme in the ocean',
     'properties': [
-        ('type', 'ENUM:latphys_eddy_visc_coeff_types', '1.1',
-            'Lateral physics tracers eddy viscosity coeff type in the ocean'),
+        ('type', 'ENUM:latphys_eddy_coeff_types', '1.1',
+            'Lateral physics tracers eddy diffusity coeff type in the ocean'),
         ('constant_coefficient', 'int', '0.1',
-            'If constant, value of eddy viscosity coeff in lateral physics tracers scheme (in m2/s)'),
+            'If constant, value of eddy diffusity coeff in lateral physics tracers scheme (in m2/s)'),
         ('variable_coefficient', 'str', '0.1',
-            'If space-varying, describe variations of eddy viscosity coeff in lateral physics tracers scheme'),
+            'If space-varying, describe variations of eddy diffusity coeff in lateral physics tracers scheme'),
         ('coeff_background', 'int', '1.1',
-            'Describe background eddy viscosity coeff in lateral physics tracers scheme (give values in m2/s)'),
+            'Describe background eddy diffusity coeff in lateral physics tracers scheme (give values in m2/s)'),
         ('coeff_backscatter', 'bool', '1.1',
-            'Is there backscatter in eddy viscosity coeff in lateral physics tracers scheme ?')
+            'Is there backscatter in eddy diffusity coeff in lateral physics tracers scheme ?')
         ]
 }
 
@@ -189,7 +189,7 @@ ENUMERATIONS['latphys_operator_discret_types'] = {
         ]
     }
 
-ENUMERATIONS['latphys_eddy_visc_coeff_types'] = {
+ENUMERATIONS['latphys_eddy_coeff_types'] = {
     'description':'Type of lateral physics eddy viscosity coeff in ocean',
     'is_open': True,
     'members':[

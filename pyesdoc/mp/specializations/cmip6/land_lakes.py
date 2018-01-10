@@ -37,6 +37,8 @@ DESCRIPTION = 'Land surface lakes'
 DETAILS['toplevel'] = {
     'description': 'TODO',
     'properties' : [
+        ('overview', 'str', '1.1',
+             'Overview of lakes in the land surface'),
         ('coupling_with_rivers', 'bool', '1.1',
              'Are lakes coupled to the river routing model component?'),
         ('time_step', 'int', '1.1',

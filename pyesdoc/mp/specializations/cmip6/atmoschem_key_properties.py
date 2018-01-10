@@ -40,9 +40,9 @@ DETAILS['toplevel'] = {
     'description': 'Top level key properties in atmospheric chemistry model',
     'properties': [
         ('model_overview', 'str', '1.1',
-             'Overview of atmospheric chemistry model.'),
+            'Overview of atmospheric chemistry model.'),
         ('model_name', 'str', '1.1',
-             'Name of atmospheric chemistry model code'),
+            'Name of atmospheric chemistry model code.'),
         ('chemistry_scheme_scope', 'ENUM:chemistry_scheme_scopes', '1.N',
             'Atmospheric domains covered by the atmospheric chemistry model'),
         ('basic_approximations', 'str', '1.1',
@@ -127,25 +127,6 @@ DETAILS['timestep_framework:split_operator_order'] = {
 #            'Frequency with which meteological forcings are applied (in seconds).'),
 #        ]
 #}
-
-# --------------------------------------------------------------------
-# SUB-PROCESS: RESOLUTION: The resolution of the grid.
-# --------------------------------------------------------------------
-DETAILS['resolution'] = {
-    'description': 'Resolution in the atmospheric chemistry grid',
-    'properties': [
-        ('name', 'str', '1.1',
-             "This is a string usually used by the modelling group to describe the resolution of this grid, e.g. ORCA025, N512L180, T512L70 etc."),
-        ('canonical_horizontal_resolution', 'str', '0.1',
-             "Expression quoted for gross comparisons of resolution, eg. 50km or 0.1 degrees etc."),
-        ('number_of_horizontal_gridpoints', 'int', '0.1',
-             "Total number of horizontal (XY) points (or degrees of freedom) on computational grid."),
-        ('number_of_vertical_levels', 'int', '0.1',
-             "Number of vertical levels resolved on computational grid."),
-        ('is_adaptive_grid', 'bool', '0.1',
-             "Default is False. Set true if grid resolution changes during execution."),
-        ],
-    }
 
 # --------------------------------------------------------------------
 # SUB-PROCESS: TUNING APPLIED: Any tuning used to optimise the parameters

@@ -63,10 +63,14 @@ DETAILS['momentum'] = {
 DETAILS['lateral_tracers'] = {
     'description':'Properties of lateral tracer advection scheme in ocean',
     'properties': [
-        ('type', 'ENUM:adv_tra_scheme_types', '1.1',
-            "Type of lateral tracer advection scheme in ocean"),
+        ('order', 'int', '1.1',
+            "Order of lateral tracer advection scheme in ocean"),
         ('flux_limiter', 'bool', '1.1',
-            "Monotonic flux limiter for vertical tracer advection scheme in ocean ?"),
+            "Monotonic flux limiter for lateral tracer advection scheme in ocean ?"),
+        ('effective_order', 'float', '1.1',
+            "Effective order of limited lateral tracer advection scheme in ocean"),
+        ('name', 'str', '1.1',
+            "Descriptive text for lateral tracer advection scheme in ocean (e.g. MUSCL, PPM-H5, PRATHER,...)"),
         ('passive_tracers','ENUM:passive_tracers_list','0.N',
             "Passive tracers advected"),
         ('passive_tracers_advection','str','0.1',
@@ -80,8 +84,8 @@ DETAILS['lateral_tracers'] = {
 DETAILS['vertical_tracers'] = {
     'description': 'Properties of vertical tracer advection scheme in ocean',
     'properties': [
-        ('type', 'ENUM:adv_tra_scheme_types', '1.1',
-            "Type of vertical tracer advection scheme in ocean"),
+        ('name', 'str', '1.1',
+            "Descriptive text for vertical tracer advection scheme in ocean (e.g. MUSCL, PPM-H5, PRATHER,...)"),
         ('flux_limiter', 'bool', '1.1',
             "Monotonic flux limiter for vertical tracer advection scheme in ocean ?"),
         ]
@@ -96,22 +100,6 @@ ENUMERATIONS['adv_mom_scheme_types'] = {
     'members': [
         ('Flux form', None),
         ('Vector form', None)
-        ]
-    }
-
-ENUMERATIONS['adv_tra_scheme_types'] = {
-    'description': 'Type of tracer advection scheme in ocean',
-    'is_open': True,
-    'members': [
-        ('Centred 2nd order', None),
-        ('Centred 4th order', None),
-        ('Total Variance Dissipation (TVD)', None),
-        ('MUSCL', None),
-        ('QUICKEST', None),
-        ('Piecewise Parabolic method', None),
-        ('Sweby', None),
-        ('Prather 2nd moment (PSOM)', None),
-        ('3rd order upwind', None)
         ]
     }
 

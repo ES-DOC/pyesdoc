@@ -37,6 +37,8 @@ DESCRIPTION = 'Land ice glaciers'
 DETAILS['toplevel'] = {
     'description': 'Key properties of land ice glaciers',
     'properties': [
+        ('overview', 'str', '1.1',
+             'Overview of glaciers in the land ice scheme'),
         ('description', 'str', '1.1',
              'Describe the treatment of glaciers, if any'),
         ('dynamic_areal_extent', 'bool', '0.1',

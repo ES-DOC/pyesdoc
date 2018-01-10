@@ -159,7 +159,7 @@ DETAILS['aerosols:nitrate'] = {
 }
 
 DETAILS['aerosols:cloud_albedo_effect'] = {
-    'description': 'Cloud albedo effect forcing',
+    'description': 'Cloud albedo effect forcing (RFaci)',
     'properties': [
         ('provision', 'ENUM:forcing_provision', '1.N',
              'How this forcing agent is provided (e.g. via concentrations, emission precursors, prognostically derived, etc.)'),
@@ -171,7 +171,7 @@ DETAILS['aerosols:cloud_albedo_effect'] = {
 }
 
 DETAILS['aerosols:cloud_lifetime_effect'] = {
-    'description': 'Cloud lifetime effect forcing',
+    'description': 'Cloud lifetime effect forcing (ERFaci)',
     'properties': [
         ('provision', 'ENUM:forcing_provision', '1.N',
              'How this forcing agent is provided (e.g. via concentrations, emission precursors, prognostically derived, etc.)'),

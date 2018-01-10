@@ -37,6 +37,8 @@ DESCRIPTION = 'Land ice grid'
 DETAILS['toplevel'] = {
     'description': 'Grid of land ice component',
     'properties': [
+        ('overview', 'str', '1.1',
+             'Overview of the grid in the land ice scheme'),
         ('adaptive_grid', 'bool', '1.1',
              'Is an adative grid being used?'),    
         ('base_resolution', 'float', '1.1',

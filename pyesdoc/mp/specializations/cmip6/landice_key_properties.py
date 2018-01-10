@@ -37,7 +37,7 @@ DESCRIPTION = 'Land ice key properties'
 DETAILS['toplevel'] = {
     'description': 'General key properties',
     'properties': [
-        ('model_overview', 'str', '1.1',
+        ('overview', 'str', '1.1',
              'Overview of land surface model.'),
         ('model_name', 'str', '1.1',
              'Name of land surface model code'),

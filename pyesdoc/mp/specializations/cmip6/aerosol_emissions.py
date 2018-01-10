@@ -36,19 +36,10 @@ DESCRIPTION = 'Atmospheric aerosol emissions'
 # --------------------------------------------------------------------
 
 DETAILS['toplevel'] = {
-    'description': 'Properties of land surface snow scheme',
+    'description': 'Properties of aerosol emissions',
     'properties': [
         ('overview', 'str', '1.1',
              'Overview of emissions in atmosperic aerosol model'),
-    ],
-}
-
-# --------------------------------------------------------------------
-# SUB-PROCESS: Emissions
-# --------------------------------------------------------------------
-DETAILS['emissions'] = {
-    'description': 'TO DO',
-    'properties': [
         ('method', 'ENUM:emissions_methods', '1.N',
             'Method used to define aerosol species (several methods allowed because the different species may not use the same method).'),
         ('sources', 'ENUM:surface_source_types', '0.N',
@@ -65,23 +56,6 @@ DETAILS['emissions'] = {
              'List of aerosol species emitted and specified via an "other method"'),
         ('other_method_characteristics', 'str', '0.1',
              'Characteristics of the "other method" used for aerosol emissions'),
-    ],
-}
-
-# --------------------------------------------------------------------
-# SUB-PROCESS: Concentrations
-# --------------------------------------------------------------------
-DETAILS['concentrations'] = {
-    'description': 'TO DO',
-    'properties': [
-        ('prescribed_lower_boundary', 'str', '0.1',
-            'List of species prescribed at the lower boundary.'),
-        ('prescribed_upper_boundary', 'str', '0.1',
-            'List of species prescribed at the upper boundary.'),
-        ('prescribed_fields_mmr', 'str', '0.1',
-            'List of species prescribed as mass mixing ratios.'),
-        ('prescribed_fields_mmr', 'str', '0.1',
-            'List of species prescribed as AOD plus CCNs.'),
     ],
 }
 

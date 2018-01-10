@@ -58,6 +58,8 @@ GRID = 'aerosol_grid'
 # --------------------------------------------------------------------
 PROCESSES = [
     'aerosol_transport',
-    'aerosol_emissions_concentrations',
+    'aerosol_emissions',
+    'aerosol_concentrations',
+    'aerosol_optical_radiative_properties',
     'aerosol_model',
     ]

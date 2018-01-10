@@ -2,6 +2,9 @@
 export PYESDOC_HOME="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 export PYESDOC_HOME="$( cd "$( dirname "${PYESDOC_HOME[0]}" )" && pwd )"
 
+# Set python path
+export PYTHONPATH=$PYESDOC_HOME:$PYTHONPATH
+
 # Ensure shell scripts are executable
 chmod a+x $PYESDOC_HOME/sh/*.sh
 

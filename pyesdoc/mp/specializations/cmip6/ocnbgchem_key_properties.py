@@ -52,7 +52,7 @@ DETAILS['toplevel'] = {
         ('diagnostic_variables', 'str', '1.N',
             'List of all diagnotic tracer variables in the ocean biogeochemistry component'),
         ('damping', 'str', '0.1',
-            'Describe any tracer damping used'),
+            'Describe any tracer damping used (such as artificial correction or relaxation to climatology,...)'),
         ]
     }
 

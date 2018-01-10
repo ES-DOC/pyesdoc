@@ -40,7 +40,9 @@ CHANGE_HISTORY = [
     ("0.6.0", "2017-01-13", "Eric Guilyardi",
         "Added ocean_short_table.py"),
     ("0.7.0", "2017-11-09", "Eric Guilyardi",
-        "Updates following community review"),
+        "Updates following community review phase 2"),
+    ("0.8.0", "2017-12-22", "Eric Guilyardi",
+        "Updates following community review phase 3"),
     ]
 
 # --------------------------------------------------------------------

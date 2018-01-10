@@ -40,7 +40,7 @@ DETAILS['toplevel'] = {
         ('model_overview', 'str', '1.1',
             'Top level overview of coupled model'),
         ('model_name', 'str', '1.1',
-            'Name of ocean biogeochemistry model code (PISCES 2.0,...)')
+            'Name of coupled model.')
         ]
     }
 

@@ -209,6 +209,7 @@ ENUMERATIONS['seawater_eos_types'] = {
     'is_open': True,
     'members': [
         ('Linear', None),
+        ('Wright, 1997', None),
         ('Mc Dougall et al.', None),
         ('Jackett et al. 2006', None),
         ('TEOS 2010', None)

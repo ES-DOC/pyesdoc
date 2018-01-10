@@ -69,6 +69,8 @@ DETAILS['discretisation:horizontal'] = {
     'properties': [
         ('type', 'ENUM:horizontal_grid_types', '1.1',
             'Horizontal grid type'),
+        ('staggering', 'ENUM:horizontal_staggering_types', '0.1',
+            'Horizontal grid staggering type'),
         ('scheme', 'ENUM:horizontal_scheme_types', '1.1',
             'Horizontal discretisation scheme in ocean'),
         ]
@@ -91,15 +93,23 @@ ENUMERATIONS['horizontal_scheme_types'] = {
     'description': 'Types of horizonal scheme in ocean',
     'is_open': True,
     'members': [
-        ('Finite difference / Arakawa B-grid', None),
-        ('Finite difference / Arakawa C-grid', None),
-        ('Finite difference / Arakawa E-grid', None),
+        ('Finite difference', None),
         ('Finite volumes', None),
         ('Finite elements', None),
         ('Unstructured grid', None)
         ]
     }
 
+ENUMERATIONS['horizontal_staggering_types'] = {
+    'description': 'Types of horizonal staggering in ocean',
+    'is_open': True,
+    'members': [
+        ('Arakawa B-grid', None),
+        ('Arakawa C-grid', None),
+        ('Arakawa E-grid', None),
+        ('N/a', None),
+        ]
+    }
 ENUMERATIONS['vertical_coordinate_types'] = {
     'description': 'Types of vertical coordinates in ocean',
     'is_open': True,
@@ -113,7 +123,6 @@ ENUMERATIONS['vertical_coordinate_types'] = {
         ('Isopycnic - other', 'Other density-based coordinate'),
         ('Hybrid / Z+S', None),
         ('Hybrid / Z+isopycnic', None),
-        ('Hybrid / ALE', None),
         ('Hybrid / other', None),
         ('Pressure referenced (P)', None),
         ('P*', None),

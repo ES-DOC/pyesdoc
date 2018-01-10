@@ -1,5 +1,6 @@
 arrow
 feedparser
+latex
 lxml
 nose
 requests

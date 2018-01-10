@@ -72,7 +72,8 @@ ENUMERATIONS['free_surface_types'] = {
         ('Linear semi-explicit', None),
         ('Non-linear implicit', None),
         ('Non-linear filtered', None),
-        ('Non-linear semi-explicit', None)
+        ('Non-linear semi-explicit', None),
+        ('Fully explicit', None),
         ]
     }
 
