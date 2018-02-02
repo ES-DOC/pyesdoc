@@ -153,14 +153,7 @@ class TopicSpecialization(object):
         """Returns set of topic names derived from topic specialization id.
 
         """
-        if convertor is None:
-            convertor = _to_camel_case_spaced
-        names = self.id.split(".")
-        if offset is not None:
-            names = names[offset:]
-        names = [convertor(i) for i in names]
-
-        return seperator.join(names)
+        return _map_id_to_names(self.id, offset, seperator, convertor)
 
 
     def has_property(self, property_id):
@@ -220,13 +213,7 @@ class PropertySetSpecialization(object):
         """Returns set of topic names derived from topic specialization id.
 
         """
-        if convertor is None:
-            convertor = _to_camel_case_spaced
-        names = self.id.split(".")
-        if offset is not None:
-            names = names[offset:]
-        names = [convertor(i) for i in names]
-        return seperator.join(names)
+        return _map_id_to_names(self.id, offset, seperator, convertor)
 
 
 class PropertySpecialization(object):
@@ -478,6 +465,20 @@ class ShortTableProperty(object):
         """
         self.identifier = None
         self.priority = None
+
+
+def _map_id_to_names(identifier, offset=None, seperator=" --> ", convertor=None):
+    """Returns a set of topic names mapped from a specialization id.
+
+    """
+    if convertor is None:
+        convertor = _to_camel_case_spaced
+    names = identifier.split(".")
+    if offset is not None:
+        names = names[offset:]
+    names = [convertor(i) for i in names]
+
+    return seperator.join(names)
 
 
 def _to_camel_case_spaced(name, separator='_'):

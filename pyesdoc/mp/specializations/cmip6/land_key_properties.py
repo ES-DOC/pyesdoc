@@ -37,7 +37,7 @@ DESCRIPTION = 'Land surface key properties'
 DETAILS['toplevel'] = {
     'description': 'General key properties in land surface',
     'properties': [
-        ('overview', 'str', '1.1',
+        ('model_overview', 'str', '1.1',
              'Overview of land surface model.'),
         ('model_name', 'str', '1.1',
              'Name of land surface model code (e.g. MOSES2.2)'),

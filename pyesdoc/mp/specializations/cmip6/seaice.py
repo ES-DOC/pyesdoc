@@ -50,7 +50,7 @@ CHANGE_HISTORY = [
 # --------------------------------------------------------------------
 # CMIP5_MAPPINGS_SYNCED_AT: Latest version that has been synced with CMIP5 mappings.
 # --------------------------------------------------------------------
-CMIP5_MAPPINGS_SYNCED_AT = "N/A"
+CMIP5_MAPPINGS_SYNCED_AT = "0.1.8"
 
 # --------------------------------------------------------------------
 # DESCRIPTION: Scientific context of this scientific realm

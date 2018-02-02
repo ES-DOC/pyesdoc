@@ -34,7 +34,7 @@ DESCRIPTION = 'Atmosphere key properties'
 # --------------------------------------------------------------------
 # Top level details.
 # --------------------------------------------------------------------
-DETAILS['toplevel'] = {
+DETAILS['overview'] = {
     'description': "Top level key properties",
     'properties': [
         ('model_overview', 'str', '1.1',

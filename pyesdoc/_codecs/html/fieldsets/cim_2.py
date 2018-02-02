@@ -105,7 +105,6 @@ FIELDSETS = {
         Field('Description', path='description'),
         Field('Ensemble Type', path='ensemble_type'),
         Field('Minimum Size', path='minimum_size'),
-        Field('Is Conformance Requested ?', path='is_conformance_requested'),
         Field('Keywords', path='keywords',
             input_formatter=lambda v: _SEPARATOR.join(v.split(','))
             )
@@ -116,8 +115,7 @@ FIELDSETS = {
         Field('Description', path='description'),
         Field('Rationale', path='rationale'),
         Field('Forcing Type', path='forcing_type', capitalize_value=True),
-        Field('Is Conformance Requested ?', path='is_conformance_requested'),
-        Field('Is Conformance Info Required ?', path='is_conformance_info_required'),
+        Field('Conformance description required ?', path='is_conformance_info_required'),
         Field('Scope', path='scope', capitalize_value=True),
         Field('Data Link', path='data_link.name',
             link_path=lambda v: v.data_link.availability[0].linkage,
@@ -133,7 +131,6 @@ FIELDSETS = {
         Field('Name', path='canonical_name'),
         Field('Description', path='description'),
         Field('Forcing Type', path='forcing_type'),
-        Field('Is Conformance Requested ?', path='is_conformance_requested'),
         Field('Keywords', path='keywords',
             input_formatter=lambda v: _SEPARATOR.join(v.split(','))
             )
@@ -144,7 +141,6 @@ FIELDSETS = {
         Field('Description', path='description'),
         Field('Ensemble Type', path='ensemble_type'),
         Field('Minimum Size', path='minimum_size'),
-        Field('Is Conformance Requested ?', path='is_conformance_requested'),
         Field('Keywords', path='keywords',
             input_formatter=lambda v: _SEPARATOR.join(v.split(','))
             )
@@ -156,7 +152,6 @@ FIELDSETS = {
             input_formatter=lambda v: "{} {}".format(v.length, v.units)
             ),
         Field('Description', path='description'),
-        Field('Is Conformance Requested ?', path='is_conformance_requested'),
         Field('Keywords', path='keywords',
             input_formatter=lambda v: _SEPARATOR.join(v.split(','))
             )
