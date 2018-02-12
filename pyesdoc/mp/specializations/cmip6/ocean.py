@@ -48,8 +48,8 @@ CHANGE_HISTORY = [
 # --------------------------------------------------------------------
 # CMIP5_MAPPINGS_SYNCED_AT: Latest version that has been synced with CMIP5 mappings.
 # --------------------------------------------------------------------
-# TODO
-CMIP5_MAPPINGS_SYNCED_AT = "0.4.0"
+#
+CMIP5_MAPPINGS_SYNCED_AT = "0.8.0"
 
 # --------------------------------------------------------------------
 # DESCRIPTION: Scientific context of this specialization

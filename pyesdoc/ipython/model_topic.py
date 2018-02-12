@@ -69,6 +69,24 @@ class NotebookOutput(object):
                 self._from_dict(json.loads(fstream.read()))
 
 
+    @classmethod
+    def create(cls, mip_era, institution_id, source_id, topic_id):
+        """Get notebook output wrapper instance.
+
+        """
+        # Set path to notebook output file.
+        path = os.path.join(os.getenv('JH_ARCHIVE_HOME'), 'data')
+        path = os.path.join(path, institution_id)
+        path = os.path.join(path, mip_era)
+        path = os.path.join(path, 'models')
+        path = os.path.join(path, source_id)
+        path = os.path.join(path, topic_id)
+        path += '.json'
+
+        # Return notebook output wrapper.
+        return cls(mip_era, institution_id, source_id, topic_id, path=path)
+
+
     def save(self):
         """Persists state to file system.
 
