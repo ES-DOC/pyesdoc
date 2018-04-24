@@ -12,21 +12,6 @@ DETAILS = OrderedDict()
 ENUMERATIONS = OrderedDict()
 
 # --------------------------------------------------------------------
-# CONTACT: Set to specialization co-ordinator.
-# --------------------------------------------------------------------
-CONTACT = 'David Hassell'
-
-# --------------------------------------------------------------------
-# AUTHORS: Set to specialization authors (comma delimited).
-# --------------------------------------------------------------------
-AUTHORS = 'David Hassell'
-
-# --------------------------------------------------------------------
-# QUALITY CONTROL STATUS: Set to 'draft' or 'complete'
-# --------------------------------------------------------------------
-QC_STATUS = 'draft'
-
-# --------------------------------------------------------------------
 # DESCRIPTION: Short description of the specialization.
 # --------------------------------------------------------------------
 DESCRIPTION = 'Atmospheric chemistry tropospheric heterogeneous chemistry'
@@ -37,9 +22,7 @@ DESCRIPTION = 'Atmospheric chemistry tropospheric heterogeneous chemistry'
 DETAILS['toplevel'] = {
     'description': 'Tropospheric heterogenous atmospheric chemistry',
     'properties': [ 
-        ('overview', 'str', '1.1',
-             'Overview tropospheric heterogenous atmospheric chemistry'),
-        ('gas_phase_species', 'str', '0.1',
+        ('gas_phase_species', 'cs-str', '0.1',
             'List of gas phase species included in the tropospheric heterogeneous chemistry scheme.'),
         ('aerosol_species', 'ENUM:aerosol_species', '0.N',
             'Aerosol species included in the tropospheric heterogeneous chemistry scheme.'),

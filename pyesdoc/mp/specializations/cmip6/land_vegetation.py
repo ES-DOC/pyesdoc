@@ -12,21 +12,6 @@ DETAILS = OrderedDict()
 ENUMERATIONS = OrderedDict()
 
 # --------------------------------------------------------------------
-# CONTACT: Set to realm specialization co-ordinator.
-# --------------------------------------------------------------------
-CONTACT = 'David Hassell'
-
-# --------------------------------------------------------------------
-# AUTHORS: Set to realm specialization authors (comma delimited).
-# --------------------------------------------------------------------
-AUTHORS = 'David Hassell'
-
-# --------------------------------------------------------------------
-# QUALITY CONTROL STATUS: Set to 'draft' or 'complete'
-# --------------------------------------------------------------------
-QC_STATUS = 'draft'
-
-# --------------------------------------------------------------------
 # DESCRIPTION: Short description of the specialization.
 # --------------------------------------------------------------------
 DESCRIPTION = 'Land surface vegetation'
@@ -37,13 +22,11 @@ DESCRIPTION = 'Land surface vegetation'
 DETAILS['toplevel'] = {
     'description': 'Key properties of the land surface vegetation',
     'properties': [
-        ('overview', 'str', '1.1',
-             'Overview of vegetation in the land surface'),
         ('time_step', 'int', '1.1',
              'Time step of vegetation scheme in seconds'),                
         ('dynamic_vegetation', 'bool', '1.1',
              'Is there dynamic evolution of vegetation?'),
-        ('tiling', 'str', '0.1',
+        ('tiling', 'l-str', '0.1',
              'Describe the vegetation tiling, if any.'),
         ('vegetation_representation', 'ENUM:vegetation_representation_types', '1.1',
              'Vegetation classification used'),
@@ -59,25 +42,25 @@ DETAILS['toplevel'] = {
              'Is vegetation interception of rainwater represented?'),
         ('phenology', 'ENUM:phenology_methods', '1.1',
              'Treatment of vegetation phenology'),
-        ('phenology_description', 'str', '0.1',
+        ('phenology_description', 'l-str', '0.1',
              'General description of the treatment of vegetation phenology'),
         ('leaf_area_index', 'ENUM:leaf_area_index_methods', '1.1',
              'Treatment of vegetation leaf area index'),
-        ('leaf_area_index_description', 'str', '0.1',
+        ('leaf_area_index_description', 'l-str', '0.1',
              'General description of the treatment of leaf area index'),
         ('biomass', 'ENUM:biomass_methods', '1.1',
              'Treatment of vegetation biomass '),
-        ('biomass_description', 'str', '0.1',
+        ('biomass_description', 'l-str', '0.1',
              'General description of the treatment of vegetation biomass'),
         ('biogeography', 'ENUM:biogeography_methods', '1.1',
              'Treatment of vegetation biogeography'),
-        ('biogeography_description', 'str', '0.1',
+        ('biogeography_description', 'l-str', '0.1',
              'General description of the treatment of vegetation biogeography'),
         ('stomatal_resistance', 'ENUM:stomatal_resistance_methods', '1.N',
              'Specify what the vegetation stomatal resistance depends on'),
-        ('stomatal_resistance_description', 'str', '0.1',
+        ('stomatal_resistance_description', 'l-str', '0.1',
              'General description of the treatment of vegetation stomatal resistance'),
-        ('prognostic_variables', 'str', '1.1',
+        ('prognostic_variables', 'cs-str', '1.1',
              'List the prognostic variables of the vegetation scheme'),
 
     ],

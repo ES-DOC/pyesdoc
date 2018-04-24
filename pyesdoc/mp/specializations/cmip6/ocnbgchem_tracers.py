@@ -12,21 +12,6 @@ DETAILS = OrderedDict()
 ENUMERATIONS = OrderedDict()
 
 # --------------------------------------------------------------------
-# CONTACT: Set to realm specialization co-ordinator.
-# --------------------------------------------------------------------
-CONTACT = 'Eric Guilyardi'
-
-# --------------------------------------------------------------------
-# AUTHORS: Set to realm specialization authors (comma delimited).
-# --------------------------------------------------------------------
-AUTHORS = 'Eric Guilyardi'
-
-# --------------------------------------------------------------------
-# QUALITY CONTROL STATUS: Set to 'draft' or 'complete'
-# --------------------------------------------------------------------
-QC_STATUS = 'draft'
-
-# --------------------------------------------------------------------
 # DESCRIPTION: Short description of the specialization.
 # --------------------------------------------------------------------
 DESCRIPTION = 'Ocean biogeochemistry tracers'
@@ -37,8 +22,6 @@ DESCRIPTION = 'Ocean biogeochemistry tracers'
 DETAILS['toplevel'] = {
     'description': 'Top level properties of tracers in ocean biogeochemistry',
     'properties': [
-        ('overview', 'str', '1.1',
-            'Overview of tracers in ocean biogeochemistry'),
         ('sulfur_cycle_present', 'bool', '1.1',
             'Is sulfur cycle modeled ?'),
         ('nutrients_present', 'ENUM:nutrients_species', '1.N',
@@ -47,21 +30,19 @@ DETAILS['toplevel'] = {
             'If nitrogen present, list nitrous species.'),
         ('nitrous_processes_if_N', 'ENUM:nitrous_processes', '0.N',
             'If nitrogen present, list nitrous processes.'),
-
         ]
     }
 
 # --------------------------------------------------------------------
 # PROCESS: detailed properties
 # --------------------------------------------------------------------
-
 DETAILS['ecosystem'] = {
     'description': 'Ecosystem properties in ocean biogeochemistry',
     'properties': [
         ('upper_trophic_levels_definition', 'str', '1.1',
-            'Definition of upper trophic level (e.g. based on size) ?'),
+            'Describe how upper trophic levels are defined in model (e.g. based on size)'),
         ('upper_trophic_levels_treatment', 'str', '1.1',
-            'Define how upper trophic level are treated'),
+            'Describe how upper trophic levels are treated in model'),
         ]
     }
 
@@ -101,7 +82,7 @@ DETAILS['disolved_organic_matter'] = {
 DETAILS['particules'] = {
     'description': 'Particulate carbon properties in ocean biogeochemistry',
     'properties': [
-        ('method', 'ENUM:particules_method', '1.1',
+        ('method', 'ENUM:particules_method', '1.N',
             'How is particulate carbon represented in ocean biogeochemistry?'),
         ('types_if_prognostic', 'ENUM:prognostic_particules_types', '0.N',
             'If prognostic, type(s) of particulate matter taken into account'),

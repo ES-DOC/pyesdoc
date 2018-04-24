@@ -15,8 +15,8 @@ import json
 import os
 
 from pyesdoc.ipython import constants
-from pyesdoc.mp.specializations import get_model_specialization
-from pyesdoc.mp.specializations import get_property_specialization
+from pyesdoc.mp.specializations.utils_cache import get_topic_specialization
+from pyesdoc.mp.specializations.utils_cache import get_property_specialization
 
 
 
@@ -38,10 +38,9 @@ class NotebookOutput(object):
         self.content = dict()
         self.institute = unicode(institute).strip().lower()
         self.mip_era = unicode(mip_era).strip().lower()
-        self.publication_status = 0
         self.seeding_source = None
         self.source_id = unicode(source_id).strip().lower()
-        self.specialization = get_model_specialization(mip_era, topic)
+        self.specialization = get_topic_specialization(mip_era, topic)
         self.topic = unicode(topic).strip().lower()
         self._prop = None
         self._prop_specialization = None
@@ -99,7 +98,6 @@ class NotebookOutput(object):
         """Initialises internal state from a dictionary.
 
         """
-        self.publication_status = obj.get('publicationState', 0)
         self.mip_era = obj['mipEra']
         self.institute = obj['institute']
         self.seeding_source = obj.get('seedingSource')
@@ -115,7 +113,6 @@ class NotebookOutput(object):
 
         """
         obj = collections.OrderedDict()
-        obj['publicationState'] = self.publication_status
         obj['mipEra'] = self.mip_era
         obj['institute'] = self.institute
         obj['seedingSource'] = self.seeding_source
@@ -198,19 +195,6 @@ class NotebookOutput(object):
 
         self._prop = self.content[prop_id]
         self._prop_specialization = get_property_specialization(prop_id)
-
-
-    def set_publication_status(self, publication_status):
-        """Sets publication status of document being edited.
-
-        """
-        # Validate input.
-        if publication_status not in constants.PUBLICATION_STATES:
-            raise ValueError('Invalid publication status')
-
-        # Update state.
-        self.publication_status = publication_status
-        self.save()
 
 
     def set_value(self, val):

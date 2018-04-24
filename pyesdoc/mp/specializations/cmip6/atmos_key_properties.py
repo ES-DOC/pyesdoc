@@ -1,5 +1,5 @@
 """
-A realm key-properties sepecialization.
+A realm key-properties specialization.
 For further information goto http://wordpress.es-doc.org/cmip6-model-specializations.
 
 """
@@ -12,21 +12,6 @@ DETAILS = OrderedDict()
 ENUMERATIONS = OrderedDict()
 
 # --------------------------------------------------------------------
-# CONTACT: Set to realm specialization co-ordinator.
-# --------------------------------------------------------------------
-CONTACT = 'Charlotte Pascoe'
-
-# --------------------------------------------------------------------
-# AUTHORS: Set to realm specialization authors (comma delimited).
-# --------------------------------------------------------------------
-AUTHORS = 'Charlotte Pascoe'
-
-# --------------------------------------------------------------------
-# QUALITY CONTROL STATUS: Set to 'draft' or 'complete'
-# --------------------------------------------------------------------
-QC_STATUS = 'draft'
-
-# --------------------------------------------------------------------
 # DESCRIPTION: Short description of the specialization.
 # --------------------------------------------------------------------
 DESCRIPTION = 'Atmosphere key properties'
@@ -34,13 +19,9 @@ DESCRIPTION = 'Atmosphere key properties'
 # --------------------------------------------------------------------
 # Top level details.
 # --------------------------------------------------------------------
-DETAILS['overview'] = {
+DETAILS['toplevel'] = {
     'description': "Top level key properties",
     'properties': [
-        ('model_overview', 'str', '1.1',
-            'Overview of atmosphere model'),
-        ('model_name', 'str', '1.1',
-            'Name of atmosphere model code (CAM 4.0, ARPEGE 3.2,...)'),
         ('model_family', 'ENUM:model_family_type', '1.1',
             'Type of atmospheric model.'),
         ('basic_approximations', 'ENUM:basic_approximations_attributes', '1.N',
@@ -69,12 +50,12 @@ DETAILS['resolution'] = {
 DETAILS['timestepping'] = {
     'description': "Characteristics of the atmosphere model time stepping",
     'properties': [
-        ('timestep_dynamics', 'str', '1.1',
-             "Timestep for the dynamics, e.g. 30 min."),
-        ('timestep_shortwave_radiative_transfer', 'str', '0.1',
-             "Timestep for the shortwave radiative transfer, e.g. 1.5 hours."),
-        ('timestep_longwave_radiative_transfer', 'str', '0.1',
-             "Timestep for the longwave radiative transfer, e.g. 3 hours."),
+        ('timestep_dynamics', 'int', '1.1',
+             "Timestep for the dynamics in seconds"),
+        ('timestep_shortwave_radiative_transfer', 'int', '0.1',
+             "Timestep for the shortwave radiative transfer in seconds."),
+        ('timestep_longwave_radiative_transfer', 'int', '0.1',
+             "Timestep for the longwave radiative transfer in seconds."),
         ]
     }
 
@@ -83,9 +64,11 @@ DETAILS['orography'] = {
     'description': "Characteristics of the model orography",
     'properties': [
         ('type', 'ENUM:orography_type', '1.1',
-            'Time adaptation of the orography.',),
-        ('changes', 'ENUM:orography_changes', '1.N',
-            'If the orography type is modified describe the time adaptation changes.'),
+            'Type of orographic representation.',),
+        ('modified', 'ENUM:orography_changes', '0.N',
+            'If the orography type is modified describe the adaptation.'),
+        ('time-varying', 'str', '0.1',
+            'Describe any time varying orographic change')
         ]
     }
 
@@ -116,17 +99,17 @@ ENUMERATIONS['basic_approximations_attributes'] = {
 
 
 ENUMERATIONS['orography_type'] = {
-    'description': "Time adaptation of the orography",
-    'is_open': False,
+    'description': "Type of orographic representation",
+    'is_open': True,
     'members': [
-        ('present day', None),
-        ('modified', None),
+        ('fixed: present day', None),
+        ('fixed: modified', "provide details of modification below"),
         ]
     }
 
 ENUMERATIONS['orography_changes'] = {
     'description': "If the orography type is modified describe the time adaptation changes",
-    'is_open': False,
+    'is_open': True,
     'members': [
         ('related to ice sheets', None),
         ('related to tectonics', None),

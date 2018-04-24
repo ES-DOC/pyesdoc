@@ -12,32 +12,15 @@ DETAILS = OrderedDict()
 ENUMERATIONS = OrderedDict()
 
 # --------------------------------------------------------------------
-# CONTACT: Set to specialization co-ordinator.
-# --------------------------------------------------------------------
-CONTACT = 'David Hassell'
-
-# --------------------------------------------------------------------
-# AUTHORS: Set to specialization authors (comma delimited).
-# --------------------------------------------------------------------
-AUTHORS = 'David Hassell'
-
-# --------------------------------------------------------------------
-# QUALITY CONTROL STATUS: Set to 'draft' or 'complete'
-# --------------------------------------------------------------------
-QC_STATUS = 'draft'
-
-# --------------------------------------------------------------------
 # DESCRIPTION: Short description of the specialization.
 # --------------------------------------------------------------------
 DESCRIPTION = 'Atmospheric chemistry grid'
 
 DETAILS['toplevel'] = {
-    'description': 'Type of discretisation scheme in ocean',
+    'description': 'Type of grid in the atmopsheric chemistry scheme',
     'properties': [
-        ('overview', 'str', '1.1',
-            'Describe the general structure of the atmopsheric chemistry grid'),
         ('matches_atmosphere_grid', 'bool', '1.1',
-            ' Does the atmospheric chemistry grid match the atmosphere grid?'),        
+            'Does the atmospheric chemistry grid match the atmosphere grid?'),
     ],
 }
 
@@ -56,7 +39,7 @@ DETAILS['resolution'] = {
         ('number_of_vertical_levels', 'int', '0.1',
              "Number of vertical levels resolved on computational grid."),
         ('is_adaptive_grid', 'bool', '0.1',
-         "Default is False. Set true if grid resolution changes during execution."),
+            "Default is False. Set true if grid resolution changes during execution."),
     ],
 }
 

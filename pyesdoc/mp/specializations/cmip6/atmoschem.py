@@ -19,18 +19,18 @@ AUTHORS = 'David Hassell'
 CONTRIBUTORS = 'CMIP5 version + Bill Collins (URead)'
 
 # --------------------------------------------------------------------
-# QUALITY CONTROL STATUS: Set to 'draft' or 'complete'
-# --------------------------------------------------------------------
-QC_STATUS = 'draft'
-
-# --------------------------------------------------------------------
 # CHANGE HISTORY: Set to list: (version, date, who, comment).
 # --------------------------------------------------------------------
 CHANGE_HISTORY = [
     ("0.1.0", "2017-08-04", "Charlotte Pascoe (NCAS), David Hassell (NCAS)",
-     "Initialised from CMIP5"),
+         "Initialised from CMIP5"),
     ("0.2.0", "2017-11-22", "David Hassell (NCAS)",
-     "Updated with input from Bill Collins (URead), John Scinocca (CCCma)"),
+         "Updated with input from Bill Collins (URead), John Scinocca (CCCma)"),
+    ("0.3.0", "2018-04-04", "David Hassell",
+        "Replaced some occurences of 'str' with 'cs-str' and 'l-str'"),
+    ("0.3.1", "2018-04-04", "David Hassell",
+        "Removed some l-str"),
+
 ]
 
 # --------------------------------------------------------------------
@@ -41,7 +41,7 @@ CHANGE_HISTORY = [
 # --------------------------------------------------------------------
 # DESCRIPTION: Scientific context of this specialization
 # --------------------------------------------------------------------
-DESCRIPTION = 'Atmospheric chemistry realm'
+DESCRIPTION = 'Atmospheric chemistry'
 
 # --------------------------------------------------------------------
 # KEY PROPERTIES: Key properties (differing from defaults (grid, timestep etc))

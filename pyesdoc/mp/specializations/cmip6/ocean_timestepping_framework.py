@@ -12,21 +12,6 @@ DETAILS = OrderedDict()
 ENUMERATIONS = OrderedDict()
 
 # --------------------------------------------------------------------
-# CONTACT: Set to specialization co-ordinator.
-# --------------------------------------------------------------------
-CONTACT = 'Eric Guilyardi'
-
-# --------------------------------------------------------------------
-# AUTHORS: Set to specialization authors (comma delimited).
-# --------------------------------------------------------------------
-AUTHORS = 'Eric Guilyardi'
-
-# --------------------------------------------------------------------
-# QUALITY CONTROL STATUS: Set to 'draft' or 'complete'
-# --------------------------------------------------------------------
-QC_STATUS = 'draft'
-
-# --------------------------------------------------------------------
 # DESCRIPTION: Short description of the specialization.
 # --------------------------------------------------------------------
 DESCRIPTION = 'Ocean Timestepping Framework'
@@ -38,12 +23,11 @@ DESCRIPTION = 'Ocean Timestepping Framework'
 DETAILS['toplevel'] = {
     'description': 'Properties of time stepping in ocean',
     'properties': [
-        ('overview','str','1.1',
-            'Overview of time stepping in ocean'),
         ('diurnal_cycle', 'ENUM:diurnal_cycle_types', '1.1',
             'Diurnal cycle type'),
         ]
     }
+
 # Tracers time stepping
 DETAILS['toplevel:tracers'] = {
     'description': 'Properties of tracers time stepping in ocean',
@@ -54,6 +38,7 @@ DETAILS['toplevel:tracers'] = {
             'Tracers time step (in seconds)'),
         ]
     }
+
 # Baroclinic dynamics
 DETAILS['toplevel:baroclinic_dynamics'] = {
     'description': 'Baroclinic dynamics in ocean',
@@ -66,6 +51,7 @@ DETAILS['toplevel:baroclinic_dynamics'] = {
             'Baroclinic time step (in seconds)'),
         ]
     }
+
 # Barotropic
 DETAILS['toplevel:barotropic'] = {
     'description': 'Barotropic time stepping in ocean',

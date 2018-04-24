@@ -12,21 +12,6 @@ DETAILS = OrderedDict()
 ENUMERATIONS = OrderedDict()
 
 # --------------------------------------------------------------------
-# CONTACT: Set to specialization co-ordinator.
-# --------------------------------------------------------------------
-CONTACT = 'Charlotte Pascoe, David Hassell'
-
-# --------------------------------------------------------------------
-# AUTHORS: Set to specialization authors (comma delimited).
-# --------------------------------------------------------------------
-AUTHORS = 'David Hassell'
-
-# --------------------------------------------------------------------
-# QUALITY CONTROL STATUS: Set to 'draft' or 'complete'
-# --------------------------------------------------------------------
-QC_STATUS = 'draft'
-
-# --------------------------------------------------------------------
 # DESCRIPTION: Short description of the specialization.
 # --------------------------------------------------------------------
 DESCRIPTION = 'Key properties of the atmospheric chemistry'
@@ -34,15 +19,9 @@ DESCRIPTION = 'Key properties of the atmospheric chemistry'
 # --------------------------------------------------------------------
 # PROCESS: top level
 # --------------------------------------------------------------------
-DETAILS = OrderedDict()
-
 DETAILS['toplevel'] = {
     'description': 'Top level key properties in atmospheric chemistry model',
     'properties': [
-        ('model_overview', 'str', '1.1',
-            'Overview of atmospheric chemistry model.'),
-        ('model_name', 'str', '1.1',
-            'Name of atmospheric chemistry model code.'),
         ('chemistry_scheme_scope', 'ENUM:chemistry_scheme_scopes', '1.N',
             'Atmospheric domains covered by the atmospheric chemistry model'),
         ('basic_approximations', 'str', '1.1',
@@ -78,9 +57,6 @@ DETAILS['timestep_framework'] = {
             'Timestep for the atmospheric chemistry model (in seconds)'),
         ('integrated_scheme_type', 'ENUM:integrated_scheme_types', '1.1',
             'Specify the type of timestep scheme'),
-    ],
-    'detail_sets': [
-        'split_operator_order',
     ]
 }
 
@@ -134,16 +110,16 @@ DETAILS['timestep_framework:split_operator_order'] = {
 DETAILS['tuning_applied'] = {
     'description': 'Tuning methodology for atmospheric chemistry component',
     'properties': [
-        ('description', 'str', '1.1',
+        ('description', 'l-str', '1.1',
              "General overview description of tuning: explain and motivate the main targets and metrics retained. &"
              "Document the relative weight given to climate performance metrics versus process oriented metrics, &"
              "and on the possible conflicts with parameterization level tuning. In particular describe any struggle &"
              "with a parameter value that required pushing it to its limits to solve a particular model deficiency."),
-        ('global_mean_metrics_used', 'str', '0.N',
+        ('global_mean_metrics_used', 'cs-str', '0.1',
              "List set of metrics of the global mean state used in tuning model/component"),
-        ('regional_metrics_used', 'str', '0.N',
+        ('regional_metrics_used', 'cs-str', '0.1',
              "List of regional metrics of mean state used in tuning model/component"),
-        ('trend_metrics_used', 'str', '0.N',
+        ('trend_metrics_used', 'cs-str', '0.1',
              "List observed trend metrics used in tuning model/component"),
         ]
     }
@@ -155,7 +131,7 @@ DETAILS['toplevel:software_properties'] = {
             "Location of code for this component."),
         ('code_version','str', '0.1',
             "Code version identifier."),
-        ('code_languages','str', '0.N',
+        ('code_languages','cs-str', '0.1',
             "Code language(s)."),
     ]
 }
@@ -163,8 +139,6 @@ DETAILS['toplevel:software_properties'] = {
 # --------------------------------------------------------------------
 # KEY PROPERTIES: ENUMERATIONS
 # --------------------------------------------------------------------
-ENUMERATIONS = OrderedDict()
-
 ENUMERATIONS['chemistry_scheme_scopes'] = {
     'description': 'Atmospheric domains covered by the atmospheric chemistry model',
     'is_open': True,

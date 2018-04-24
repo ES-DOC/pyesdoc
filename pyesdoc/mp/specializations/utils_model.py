@@ -9,6 +9,7 @@
 
 
 """
+import inspect
 from itertools import chain
 
 from utils_constants import *
@@ -19,7 +20,7 @@ class TopicSpecialization(object):
     """Wraps a topic specialization.
 
     """
-    def __init__(self, spec, type_key):
+    def __init__(self, spec, parent):
         """Instance initializer.
 
         """
@@ -29,14 +30,16 @@ class TopicSpecialization(object):
         self.contributors = None
         self.description = None
         self.id = None
-        self.qc_status = None
         self.name = None
-        self.parent = None
+        self.parent = parent
         self.properties = []
         self.property_sets = []
         self.spec = spec
         self.sub_topics = []
-        self.type_key = type_key
+        try:
+            parent.sub_topics.append(self)
+        except AttributeError:
+            pass
 
 
     def __repr__(self):
@@ -58,6 +61,38 @@ class TopicSpecialization(object):
             return result
         elif len(result) == 1:
             return result[0]
+
+
+    @property
+    def path(self):
+        """Gets identifier path as a list.
+
+        """
+        return self.id.split('.')
+
+
+    @property
+    def type_key(self):
+        """Gets associated type key.
+
+        """
+        if self.parent is None:
+            return TYPE_KEY_REALM
+        elif self.id.endswith('.grid'):
+            return TYPE_KEY_GRID
+        elif self.id.endswith('.key_properties'):
+            return TYPE_KEY_KEYPROPS
+
+
+        elif inspect.ismodule(self.spec):
+            if self.spec.__name__.endswith('_grid'):
+                return TYPE_KEY_GRID
+            elif self.spec.__name__.endswith('_key_properties'):
+                return TYPE_KEY_KEYPROPS
+            else:
+                return TYPE_KEY_PROCESS
+        elif isinstance(self.spec, dict):
+            return TYPE_KEY_SUBPROCESS
 
 
     @property
@@ -149,6 +184,18 @@ class TopicSpecialization(object):
                 return []
 
 
+    @property
+    def root(self):
+        """Gets topic root - i.e. top-most topic in hierarchy.
+
+        """
+        result = self
+        while result.parent is not None:
+            result = result.parent
+
+        return result
+
+
     def names(self, offset=None, seperator=" --> ", convertor=None):
         """Returns set of topic names derived from topic specialization id.
 
@@ -156,14 +203,11 @@ class TopicSpecialization(object):
         return _map_id_to_names(self.id, offset, seperator, convertor)
 
 
-    def has_property(self, property_id):
+    def has_property(self, identifier):
         """Returns a flag indicating whether a topic supports a property.
 
         """
-        for prop in self.all_properties:
-            if prop.id == property_id:
-                return True
-        return False
+        return True if identifier in {i.name for i in self.properties} else False
 
 
 class PropertySetSpecialization(object):
@@ -191,6 +235,14 @@ class PropertySetSpecialization(object):
 
         """
         return self.id
+
+
+    @property
+    def are_cim_properties(self):
+        """Gets flag indicating whether property is injected from CIM.
+
+        """
+        return self.id.endswith('cim_properties')
 
 
     @property
@@ -235,6 +287,7 @@ class PropertySpecialization(object):
         self.topic = None
         self.typeof = None
         self.type_key = "property"
+        self.was_injected = False
 
 
     def __repr__(self):
@@ -293,7 +346,7 @@ class PropertySpecialization(object):
         """Gets label for the property type.
 
         """
-        if self.typeof == 'str':
+        if self.typeof in {'str', 'cs-str', 'l-str'}:
             return "STRING"
         elif self.typeof == 'bool':
             return "BOOLEAN"
@@ -330,7 +383,7 @@ class PropertySpecialization(object):
         if self.enum:
             self.enum.validate_value(val)
 
-        if self.typeof == 'str':
+        if self.typeof in {'str', 'cs-str', 'l-str'}:
             if not isinstance(val, basestring) or not len(val.strip()):
                 raise ValueError("Invalid value: must be a non zero length string")
 
@@ -445,7 +498,6 @@ class ShortTable(object):
         self.label = None
         self.name = None
         self.properties = []
-        self.qc_status = None
 
 
     def __iter__(self):

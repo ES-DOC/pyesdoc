@@ -1,6 +1,6 @@
 """
 
-A realm process sepecialization.
+A realm process specialization.
 
 For further information goto http://wordpress.es-doc.org/cmip6-model-specializations.
 """
@@ -13,36 +13,9 @@ DETAILS = OrderedDict()
 ENUMERATIONS = OrderedDict()
 
 # --------------------------------------------------------------------
-# CONTACT: Set to realm specialization co-ordinator.
-# --------------------------------------------------------------------
-CONTACT = 'Charlotte Pascoe'
-
-# --------------------------------------------------------------------
-# AUTHORS: Set to realm specialization authors (comma delimited).
-# --------------------------------------------------------------------
-AUTHORS = 'Charlotte Pascoe'
-
-# --------------------------------------------------------------------
-# QUALITY CONTROL STATUS: Set to 'draft' or 'complete'
-# --------------------------------------------------------------------
-QC_STATUS = 'draft'
-
-# --------------------------------------------------------------------
 # DESCRIPTION: Short description of the specialization.
 # --------------------------------------------------------------------
 DESCRIPTION = 'Large Scale Cloud Microphysics and Precipitation'
-
-# --------------------------------------------------------------------
-# PROCESS: top level properties
-# --------------------------------------------------------------------
-
-DETAILS['toplevel'] = {
-    'description': "Overview of large scale cloud microphysics and precipitation",
-    'properties': [
-        ('overview', 'str', '1.1',
-            'Overview description of large scale cloud microphysics and precipitation'),
-        ]
-    }
 
 # --------------------------------------------------------------------
 # SUB-PROCESS: large_scale_precipitation

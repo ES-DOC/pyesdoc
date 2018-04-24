@@ -12,35 +12,9 @@ DETAILS = OrderedDict()
 ENUMERATIONS = OrderedDict()
 
 # --------------------------------------------------------------------
-# CONTACT: Set to specialization co-ordinator.
-# --------------------------------------------------------------------
-CONTACT = 'David Hassell'
-
-# --------------------------------------------------------------------
-# AUTHORS: Set to specialization authors (comma delimited).
-# --------------------------------------------------------------------
-AUTHORS = 'David Hassell'
-
-# --------------------------------------------------------------------
-# QUALITY CONTROL STATUS: Set to 'draft' or 'complete'
-# --------------------------------------------------------------------
-QC_STATUS = 'draft'
-
-# --------------------------------------------------------------------
 # DESCRIPTION: Short description of the specialization.
 # --------------------------------------------------------------------
 DESCRIPTION = 'Atmospheric chemistry emissions'
-
-# --------------------------------------------------------------------
-# PROCESS: top level
-# --------------------------------------------------------------------
-DETAILS['toplevel'] = {
-    'description': '',
-    'properties': [
-        ('overview', 'str', '1.1',
-             'Overview atmospheric chemistry emissions'), 
-    ]
-}
 
 # --------------------------------------------------------------------
 # SUB-PROCESS: Surface emissions
@@ -52,13 +26,13 @@ DETAILS['surface_emissions'] = {
              'Sources of the chemical species emitted at the surface that are taken into account in the emissions scheme'),
         ('method', 'ENUM:emissions_methods', '0.N',
             'Methods used to define chemical species emitted directly into model layers above the surface (several methods allowed because the different species may not use the same method).'),
-        ('prescribed_climatology_emitted_species', 'str', '0.1',
+        ('prescribed_climatology_emitted_species', 'cs-str', '0.1',
              'List of chemical species emitted at the surface and prescribed via a climatology, and the nature of the climatology (E.g. CO (monthly), C2H6 (constant))'),
-        ('prescribed_spatially_uniform_emitted_species', 'str', '0.1',
+        ('prescribed_spatially_uniform_emitted_species', 'cs-str', '0.1',
              'List of chemical species emitted at the surface and prescribed as spatially uniform'),
-        ('interactive_emitted_species', 'str', '0.1',
+        ('interactive_emitted_species', 'cs-str', '0.1',
              'List of chemical species emitted at the surface and specified via an interactive method'),
-        ('other_emitted_species', 'str', '0.1',
+        ('other_emitted_species', 'cs-str', '0.1',
              'List of chemical species emitted at the surface and specified via any other method'),
     ],
 }
@@ -73,13 +47,13 @@ DETAILS['atmospheric_emissions'] = {
              'Sources of chemical species emitted in the atmosphere that are taken into account in the emissions scheme.'),
         ('method', 'ENUM:emissions_methods', '0.N',
             'Methods used to define the chemical species emitted in the atmosphere (several methods allowed because the different species may not use the same method).'),
-        ('prescribed_climatology_emitted_species', 'str', '0.1',
+        ('prescribed_climatology_emitted_species', 'cs-str', '0.1',
              'List of chemical species emitted in the atmosphere and prescribed via a climatology (E.g. CO (monthly), C2H6 (constant))'),
-        ('prescribed_spatially_uniform_emitted_species', 'str', '0.1',
+        ('prescribed_spatially_uniform_emitted_species', 'cs-str', '0.1',
              'List of chemical species emitted in the atmosphere and prescribed as spatially uniform'),
-        ('interactive_emitted_species', 'str', '0.1',
+        ('interactive_emitted_species', 'cs-str', '0.1',
              'List of chemical species emitted in the atmosphere and specified via an interactive method'),
-        ('other_emitted_species', 'str', '0.1',
+        ('other_emitted_species', 'cs-str', '0.1',
              'List of chemical species emitted in the atmosphere and specified via an "other method"'),
     ],
 }
@@ -90,9 +64,9 @@ DETAILS['atmospheric_emissions'] = {
 DETAILS['concentrations'] = {
     'description': 'TO DO',
     'properties': [
-        ('prescribed_lower_boundary', 'str', '0.1',
+        ('prescribed_lower_boundary', 'cs-str', '0.1',
             'List of species prescribed at the lower boundary.'),
-        ('prescribed_upper_boundary', 'str', '0.1',
+        ('prescribed_upper_boundary', 'cs-str', '0.1',
             'List of species prescribed at the upper boundary.'),
     ],
 }

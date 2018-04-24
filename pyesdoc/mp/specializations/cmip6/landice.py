@@ -27,11 +27,6 @@ AUTHORS = 'David Hassell'
 CONTRIBUTORS = 'Sophie Nowicki, Steve George'
 
 # --------------------------------------------------------------------
-# QUALITY CONTROL STATUS: Set to 'draft' or 'complete'
-# --------------------------------------------------------------------
-QC_STATUS = 'draft'
-
-# --------------------------------------------------------------------
 # CHANGE HISTORY: Set to list: (version, date, who, comment).
 # --------------------------------------------------------------------
 CHANGE_HISTORY = [
@@ -45,6 +40,10 @@ CHANGE_HISTORY = [
          "Reorganisation of grid info; first draft of short table"),
     ("0.5.0", "2017-12-15", "David Hassell (NCAS)",
          "Updated with input from Christian Rodehacke (DMI)"),
+    ("1.0.0", "2018-04-04", "David Hassell (NCAS)",
+         "Moved to v1"),
+    ("1.0.1", "2018-04-04", "David Hassell",
+        "Removed some l-str"),
 ]
 
 # --------------------------------------------------------------------
@@ -55,7 +54,7 @@ CMIP5_MAPPINGS_SYNCED_AT = "N/A"
 # --------------------------------------------------------------------
 # DESCRIPTION: Scientific context of this scientific realm
 # --------------------------------------------------------------------
-DESCRIPTION = 'Land Ice Realm'
+DESCRIPTION = 'Land Ice'
 
 # --------------------------------------------------------------------
 # KEY PROPERTIES: Key properties for the realm which differ from model defaults (grid, timestep etc)
@@ -73,13 +72,3 @@ PROCESSES = [
     'landice_glaciers',
     'landice_ice',
 ]
-
-# --------------------------------------------------------------------
-# DETAILS: top level realm details
-# --------------------------------------------------------------------
-DETAILS = OrderedDict()
-
-# --------------------------------------------------------------------
-# ENUMERATIONS: top level realm enumerations
-# --------------------------------------------------------------------
-ENUMERATIONS = OrderedDict()

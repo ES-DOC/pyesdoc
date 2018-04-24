@@ -12,21 +12,6 @@ DETAILS = OrderedDict()
 ENUMERATIONS = OrderedDict()
 
 # --------------------------------------------------------------------
-# CONTACT: Set to realm specialization co-ordinator.
-# --------------------------------------------------------------------
-CONTACT = 'Eric Guilyardi'
-
-# --------------------------------------------------------------------
-# AUTHORS: Set to realm specialization authors (comma delimited).
-# --------------------------------------------------------------------
-AUTHORS = 'Eric Guilyardi'
-
-# --------------------------------------------------------------------
-# QUALITY CONTROL STATUS: Set to 'draft' or 'complete'
-# --------------------------------------------------------------------
-QC_STATUS = 'draft'
-
-# --------------------------------------------------------------------
 # DESCRIPTION: Short description of the specialization.
 # --------------------------------------------------------------------
 DESCRIPTION = 'Ocean Biogeochemistry key properties'
@@ -37,20 +22,16 @@ DESCRIPTION = 'Ocean Biogeochemistry key properties'
 DETAILS['toplevel'] = {
     'description': 'General key properties in ocean biogeochemistry',
     'properties': [
-        ('model_overview', 'str', '1.1',
-            'Overview of ocean biogeochemistry model'),
-        ('model_name', 'str', '1.1',
-            'Name of ocean biogeochemistry model code (PISCES 2.0,...)'),
-        ('model_type', 'ENUM:model_types', '1.1',
+        ('model_type', 'ENUM:model_family', '1.1',
             'Type of ocean biogeochemistry model'),
         ('elemental_stoichiometry', 'ENUM:elemental_stoichiometry_types', '1.1',
             'Describe elemental stoichiometry (fixed, variable, mix of the two)',),
-        ('elemental_stoichiometry_details', 'str', '1.1',
+        ('elemental_stoichiometry_details', 'cs-str', '1.1',
             'Describe which elements have fixed/variable stoichiometry',),
-        ('prognostic_variables', 'str', '1.N',
+        ('prognostic_variables', 'cs-str', '1.1',
             'List of all prognostic tracer variables in the ocean biogeochemistry component'),
-        ('diagnostic_variables', 'str', '1.N',
-            'List of all diagnotic tracer variables in the ocean biogeochemistry component'),
+        ('diagnostic_variables', 'cs-str', '1.1',
+            'List of all diagnotic tracer variables in the ocean biogeochemistry component (derived from prognostic variables'),
         ('damping', 'str', '0.1',
             'Describe any tracer damping used (such as artificial correction or relaxation to climatology,...)'),
         ]
@@ -59,11 +40,9 @@ DETAILS['toplevel'] = {
 # --------------------------------------------------------------------
 # KEY PROPERTIES: details
 # --------------------------------------------------------------------
-
 DETAILS['time_stepping_framework'] = {
     'description': 'Time stepping framework for ocean biogeochemistry',
-    'properties' : [
-        ]
+    'properties' : []
     }
 
 DETAILS['time_stepping_framework:passive_tracers_transport'] = {
@@ -93,7 +72,7 @@ DETAILS['transport_scheme'] = {
             'Type of transport scheme'),
         ('scheme', 'ENUM:transport_scheme', '1.1',
             'Transport scheme used'),
-        ('use_different_scheme', 'str', '0.1',
+        ('use_different_scheme', 'l-str', '0.1',
             'Decribe transport scheme if different than that of ocean model'),
         ]
     }
@@ -105,9 +84,9 @@ DETAILS['boundary_forcing'] = {
             'Describe how atmospheric deposition is modeled'),
         ('river_input', 'ENUM:sources_river_input', '1.1',
             'Describe how river input is modeled'),
-        ('sediments_from_boundary_conditions', 'str', '0.1',
+        ('sediments_from_boundary_conditions', 'cs-str', '0.1',
             'List which sediments are speficied from boundary condition'),
-        ('sediments_from_explicit_model', 'str', '0.1',
+        ('sediments_from_explicit_model', 'cs-str', '0.1',
             'List which sediments are speficied from explicit sediment model'),
         ]
     }
@@ -165,9 +144,9 @@ DETAILS['carbon_chemistry'] = {
     'properties': [
         ('type', 'ENUM:carbon_chemistry', '1.1',
             'Describe how carbon chemistry is modeled'),
-        ('pH_scale', 'ENUM:ph_scale', '0.1',
+        ('ph_scale', 'ENUM:ph_scale', '0.1',
             'If NOT OMIP protocol, describe pH scale.'),
-        ('constants_if_not_OMIP', 'str', '0.1',
+        ('constants_if_not_OMIP', 'cs-str', '0.1',
             'If NOT OMIP protocol, list carbon chemistry constants.'),
         ]
     }
@@ -176,7 +155,7 @@ DETAILS['carbon_chemistry'] = {
 # --------------------------------------------------------------------
 # KEY PROPERTIES: ENUMERATIONS
 # --------------------------------------------------------------------
-ENUMERATIONS['model_types'] = {
+ENUMERATIONS['model_family'] = {
     'description': 'Types of models for ocean biogeochemistry',
     'is_open': True,
     'members': [
@@ -185,6 +164,7 @@ ENUMERATIONS['model_types'] = {
         ('PFT','Several plankton types'),
         ]
     }
+
 ENUMERATIONS['elemental_stoichiometry_types'] = {
     'description': 'Types elemental stoichiometry for ocean biogeochemistry',
     'is_open': False,
@@ -267,5 +247,3 @@ ENUMERATIONS['ph_scale'] = {
         ('Free', None),
         ]
     }
-
-

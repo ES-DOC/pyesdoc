@@ -12,21 +12,6 @@ DETAILS = OrderedDict()
 ENUMERATIONS = OrderedDict()
 
 # --------------------------------------------------------------------
-# CONTACT: Set to realm specialization co-ordinator.
-# --------------------------------------------------------------------
-CONTACT = 'David Hassell'
-
-# --------------------------------------------------------------------
-# AUTHORS: Set to realm specialization authors (comma delimited).
-# --------------------------------------------------------------------
-AUTHORS = 'David Hassell'
-
-# --------------------------------------------------------------------
-# QUALITY CONTROL STATUS: Set to 'draft' or 'complete'
-# --------------------------------------------------------------------
-QC_STATUS = 'draft'
-
-# --------------------------------------------------------------------
 # DESCRIPTION: Short description of the specialization.
 # --------------------------------------------------------------------
 DESCRIPTION = 'Land surface albedo'
@@ -35,11 +20,9 @@ DESCRIPTION = 'Land surface albedo'
 # ALBEDO: top level
 # --------------------------------------------------------------------
 DETAILS['toplevel'] = {
-    'description': 'General properties in land surface albedo',
+    'description': 'Land surface albedo top level properties',
     'properties': [
-        ('overview', 'str', '1.1',
-             'Overview of albedo in land surface'),
-        ('tiling', 'str', '0.1',
+        ('tiling', 'l-str', '0.1',
              'Describe the albedo tiling, if any.'),
     ],
 }
@@ -47,7 +30,6 @@ DETAILS['toplevel'] = {
 # --------------------------------------------------------------------
 # ALBEDO: ENUMERATIONS
 # --------------------------------------------------------------------
-
 ENUMERATIONS['phenology_types'] = {
     'description': 'Description of the treatment of vegetation phenolo]gy',
     'is_open': True,

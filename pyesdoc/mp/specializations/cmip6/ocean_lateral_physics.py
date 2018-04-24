@@ -12,21 +12,6 @@ DETAILS = OrderedDict()
 ENUMERATIONS = OrderedDict()
 
 # --------------------------------------------------------------------
-# CONTACT: Set to specialization co-ordinator.
-# --------------------------------------------------------------------
-CONTACT = 'Eric Guilyardi'
-
-# --------------------------------------------------------------------
-# AUTHORS: Set to specialization authors (comma delimited).
-# --------------------------------------------------------------------
-AUTHORS = 'Eric Guilyardi'
-
-# --------------------------------------------------------------------
-# QUALITY CONTROL STATUS: Set to 'draft' or 'complete'
-# --------------------------------------------------------------------
-QC_STATUS = 'draft'
-
-# --------------------------------------------------------------------
 # DESCRIPTION: Short description of the specialization.
 # --------------------------------------------------------------------
 DESCRIPTION = 'Ocean lateral physics'
@@ -37,8 +22,6 @@ DESCRIPTION = 'Ocean lateral physics'
 DETAILS['toplevel'] = {
     'description': 'Top level lateral physics properties',
     'properties': [
-        ('overview','str','1.1',
-            'Overview of lateral physics in ocean'),
         ('scheme', 'ENUM:latphys_transient_eddy_types', '1.1',
             'Type of transient eddy representation in ocean'),
         ]
@@ -48,12 +31,7 @@ DETAILS['toplevel'] = {
 # SUB-PROCESS: Momentum.
 # --------------------------------------------------------------------
 DETAILS['momentum'] = {
-    'description': 'Properties of lateral physics for momentum in ocean',
-    'properties': [],
-    'detail_sets': [
-        'operator',
-        'eddy_viscosity_coeff'
-        ]
+    'description': 'Properties of lateral physics for momentum in ocean'
     }
 
 DETAILS['momentum:operator'] = {
@@ -94,12 +72,6 @@ DETAILS['tracers'] = {
             'Is there a mesoscale closure in the lateral physics tracers scheme ?'),
         ('submesoscale_mixing', 'bool', '1.1',
             'Is there a submesoscale mixing parameterisation (i.e Fox-Kemper) in the lateral physics tracers scheme ?')
-
-    ],
-    'detail_sets': [
-        'operator',
-        'eddy_diffusivity_coeff',
-        'eddy_induced_velocity'
         ]
     }
 

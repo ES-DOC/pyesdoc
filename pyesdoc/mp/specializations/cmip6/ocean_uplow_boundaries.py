@@ -12,21 +12,6 @@ DETAILS = OrderedDict()
 ENUMERATIONS = OrderedDict()
 
 # --------------------------------------------------------------------
-# CONTACT: Set to specialization co-ordinator.
-# --------------------------------------------------------------------
-CONTACT = 'Eric Guilyardi'
-
-# --------------------------------------------------------------------
-# AUTHORS: Set to specialization authors (comma delimited).
-# --------------------------------------------------------------------
-AUTHORS = 'Eric Guilyardi'
-
-# --------------------------------------------------------------------
-# QUALITY CONTROL STATUS: Set to 'draft' or 'complete'
-# --------------------------------------------------------------------
-QC_STATUS = 'draft'
-
-# --------------------------------------------------------------------
 # DESCRIPTION: Short description of the specialization.
 # --------------------------------------------------------------------
 DESCRIPTION = 'Ocean upper / lower boundaries'
@@ -37,8 +22,6 @@ DESCRIPTION = 'Ocean upper / lower boundaries'
 DETAILS['toplevel:free_surface'] = {
     'description': 'Properties of free surface in ocean',
     'properties': [
-        ('overview','str','1.1',
-            'Overview of free surface in ocean'),
         ('scheme', 'ENUM:free_surface_types', '1.1',
             'Free surface scheme in ocean'),
         ('embeded_seaice', 'bool', '1.1',
@@ -49,13 +32,13 @@ DETAILS['toplevel:free_surface'] = {
 DETAILS['toplevel:bottom_boundary_layer'] = {
     'description': 'Properties of bottom boundary layer in ocean',
     'properties': [
-        ('overview','str','1.1',
+        ('overview','l-str','1.1',
             'Overview of bottom boundary layer in ocean'),
         ('type_of_bbl', 'ENUM:bottom_bl_types', '1.1',
             'Type of bottom boundary layer in ocean'),
         ('lateral_mixing_coef', 'int', '0.1',
             'If bottom BL is diffusive, specify value of lateral mixing coefficient (in m2/s)'),
-        ('sill_overflow', 'str', '1.1',
+        ('sill_overflow', 'l-str', '1.1',
             'Describe any specific treatment of sill overflows')
         ]
     }

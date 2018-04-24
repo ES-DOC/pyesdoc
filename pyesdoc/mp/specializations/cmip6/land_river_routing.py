@@ -12,21 +12,6 @@ DETAILS = OrderedDict()
 ENUMERATIONS = OrderedDict()
 
 # --------------------------------------------------------------------
-# CONTACT: Set to realm specialization co-ordinator.
-# --------------------------------------------------------------------
-CONTACT = 'David Hassell'
-
-# --------------------------------------------------------------------
-# AUTHORS: Set to realm specialization authors (comma delimited).
-# --------------------------------------------------------------------
-AUTHORS = 'David Hassell'
-
-# --------------------------------------------------------------------
-# QUALITY CONTROL STATUS: Set to 'draft' or 'complete'
-# --------------------------------------------------------------------
-QC_STATUS = 'draft'
-
-# --------------------------------------------------------------------
 # DESCRIPTION: Short description of the specialization.
 # --------------------------------------------------------------------
 DESCRIPTION = 'Land surface river routing'
@@ -35,11 +20,9 @@ DESCRIPTION = 'Land surface river routing'
 # RIVER ROUTNG: top level
 # --------------------------------------------------------------------
 DETAILS['toplevel'] = {
-    'description': 'TODO',
+    'description': 'Land surface river routing top level properties',
     'properties' : [
-        ('overview', 'str', '1.1',
-             'Overview of river routing in the land surface'),
-        ('tiling', 'str', '0.1',
+        ('tiling', 'l-str', '0.1',
              'Describe the river routing, if any.'),
         ('time_step', 'int', '1.1',
              'Time step of river routing scheme in seconds'),        
@@ -53,15 +36,15 @@ DETAILS['toplevel'] = {
              'TODO'),
         ('coupled_to_atmosphere', 'bool', '0.1',
              'Is river routing coupled to the atmosphere model component?'),
-        ('coupled_to_land', 'str', '0.1',
+        ('coupled_to_land', 'l-str', '0.1',
              'Describe the coupling between land and rivers'),
         ('quantities_exchanged_with_atmosphere', 'ENUM:quantities_exchanged_with_atmosphere_types', '0.N',
              'If couple to atmosphere, which quantities are exchanged between river routing and the atmosphere model components?'),
         ('basin_flow_direction_map', 'ENUM:basin_flow_direction_map_types', '1.1',
              'What type of basin flow direction map is being used?'),
-        ('flooding', 'str', '0.1',
+        ('flooding', 'l-str', '0.1',
              'Describe the representation of flooding, if any'),
-        ('prognostic_variables', 'str', '1.1',
+        ('prognostic_variables', 'cs-str', '1.1',
              'List the prognostic variables of the river routing'),
     ],
 }

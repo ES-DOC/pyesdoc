@@ -13,6 +13,7 @@ main()
 
 	# Download source.
 	set_working_dir $ESDOC_DIR_PYTHON
+	
 	mkdir src
 	cd src
 	wget https://www.python.org/ftp/python/$PYTHON_VERSION/Python-$PYTHON_VERSION.tgz --no-check-certificate

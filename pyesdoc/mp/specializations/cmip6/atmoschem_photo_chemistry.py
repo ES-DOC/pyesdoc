@@ -12,21 +12,6 @@ DETAILS = OrderedDict()
 ENUMERATIONS = OrderedDict()
 
 # --------------------------------------------------------------------
-# CONTACT: Set to specialization co-ordinator.
-# --------------------------------------------------------------------
-CONTACT = 'Charlotte Pascoe, David Hassell'
-
-# --------------------------------------------------------------------
-# AUTHORS: Set to specialization authors (comma delimited).
-# --------------------------------------------------------------------
-AUTHORS = 'David Hassell'
-
-# --------------------------------------------------------------------
-# QUALITY CONTROL STATUS: Set to 'draft' or 'complete'
-# --------------------------------------------------------------------
-QC_STATUS = 'draft'
-
-# --------------------------------------------------------------------
 # DESCRIPTION: Short description of the specialization.
 # --------------------------------------------------------------------
 DESCRIPTION = 'Atmospheric chemistry photo chemistry'
@@ -37,8 +22,6 @@ DESCRIPTION = 'Atmospheric chemistry photo chemistry'
 DETAILS['toplevel'] = {
     'description': '',
     'properties': [
-        ('overview', 'str', '1.1',
-             'Overview atmospheric photo chemistry'), 
         ('number_of_reactions', 'int', '1.1',
              'The number of reactions in the photo-chemistry scheme.'),
     ],

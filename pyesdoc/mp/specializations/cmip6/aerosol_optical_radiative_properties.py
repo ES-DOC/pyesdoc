@@ -12,35 +12,9 @@ DETAILS = OrderedDict()
 ENUMERATIONS = OrderedDict()
 
 # --------------------------------------------------------------------
-# CONTACT: Set to specialization co-ordinator.
-# --------------------------------------------------------------------
-CONTACT = 'Charlotte Pascoe, David Hassell'
-
-# --------------------------------------------------------------------
-# AUTHORS: Set to specialization authors (comma delimited).
-# --------------------------------------------------------------------
-AUTHORS = 'David Hassell'
-
-# --------------------------------------------------------------------
-# QUALITY CONTROL STATUS: Set to 'draft' or 'complete'
-# --------------------------------------------------------------------
-QC_STATUS = 'draft'
-
-# --------------------------------------------------------------------
 # DESCRIPTION: Short description of the specialization.
 # --------------------------------------------------------------------
 DESCRIPTION = 'Aerosol optical and radiative properties'
-
-# --------------------------------------------------------------------
-# PROCESS: Optical and radiative properties
-# --------------------------------------------------------------------
-DETAILS['toplevel'] = {
-    'description': 'Optical and radiative properties',
-    'properties': [
-        ('overview', 'str', '1.1',
-             'Overview of optical and radiative properties'),
-    ],
-}
 
 # --------------------------------------------------------------------
 # SUB-PROCESS: Absorption
@@ -68,7 +42,7 @@ DETAILS['mixtures'] = {
         ('internal', 'bool', '1.1',
             'Is there internal mixing with respect to chemical composition?'),
         ('mixing_rule', 'str', '0.1',
-             'If there is internal mixing with respect to chemical composition then indicate the mixinrg rule'),
+             'If there is internal mixing with respect to chemical composition then indicate the mixing rule'),
     ],
 }
 
@@ -76,12 +50,14 @@ DETAILS['mixtures'] = {
 # SUB-PROCESS: Impact of H2O
 # --------------------------------------------------------------------
 DETAILS['impact_of_h2o'] = {
-    'description': '',
+    'description': 'The impact of H2O on aerosols',
     'properties': [
         ('size', 'bool', '1.1',
             'Does H2O impact size?'),
         ('internal_mixture', 'bool', '1.1',
-            'Does H2O impact internal mixture?'),
+            'Does H2O impact aerosol internal mixture?'),
+        ('external_mixture', 'bool', '1.1',
+            'Does H2O impact aerosol external mixture?'),
     ],
 }
 
@@ -91,8 +67,8 @@ DETAILS['impact_of_h2o'] = {
 DETAILS['radiative_scheme'] = {
     'description': 'Radiative scheme for aerosol',
     'properties': [
-        ('overview', 'str', '1.1',
-             'Overview of radiative scheme'),      
+        ('overview', 'l-str', '1.1',
+             'Overview of radiative scheme'),
         ('shortwave_bands', 'int', '1.1',
             'Number of shortwave bands'),
         ('longwave_bands', 'int', '1.1',
@@ -106,7 +82,7 @@ DETAILS['radiative_scheme'] = {
 DETAILS['cloud_interactions'] = {
     'description': 'Aerosol-cloud interactions',
     'properties': [
-        ('overview', 'str', '1.1',
+        ('overview', 'l-str', '1.1',
              'Overview of aerosol-cloud interactions'),
         ('twomey', 'bool', '1.1',
             'Is the Twomey effect included?'),

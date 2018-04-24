@@ -12,21 +12,6 @@ DETAILS = OrderedDict()
 ENUMERATIONS = OrderedDict()
 
 # --------------------------------------------------------------------
-# CONTACT: Set to realm specialization co-ordinator.
-# --------------------------------------------------------------------
-CONTACT = 'David Hassell'
-
-# --------------------------------------------------------------------
-# AUTHORS: Set to realm specialization authors (comma delimited).
-# --------------------------------------------------------------------
-AUTHORS = 'David Hassell'
-
-# --------------------------------------------------------------------
-# QUALITY CONTROL STATUS: Set to 'draft' or 'complete'
-# --------------------------------------------------------------------
-QC_STATUS = 'draft'
-
-# --------------------------------------------------------------------
 # DESCRIPTION: Short description of the specialization.
 # --------------------------------------------------------------------
 DESCRIPTION = 'Land ice grid'
@@ -37,8 +22,6 @@ DESCRIPTION = 'Land ice grid'
 DETAILS['toplevel'] = {
     'description': 'Grid of land ice component',
     'properties': [
-        ('overview', 'str', '1.1',
-             'Overview of the grid in the land ice scheme'),
         ('adaptive_grid', 'bool', '1.1',
              'Is an adative grid being used?'),    
         ('base_resolution', 'float', '1.1',

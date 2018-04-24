@@ -12,21 +12,6 @@ DETAILS = OrderedDict()
 ENUMERATIONS = OrderedDict()
 
 # --------------------------------------------------------------------
-# CONTACT: Set to realm specialization co-ordinator.
-# --------------------------------------------------------------------
-CONTACT = 'David Hassell'
-
-# --------------------------------------------------------------------
-# AUTHORS: Set to realm specialization authors (comma delimited).
-# --------------------------------------------------------------------
-AUTHORS = 'David Hassell'
-
-# --------------------------------------------------------------------
-# QUALITY CONTROL STATUS: Set to 'draft' or 'complete'
-# --------------------------------------------------------------------
-QC_STATUS = 'draft'
-
-# --------------------------------------------------------------------
 # DESCRIPTION: Short description of the specialization.
 # --------------------------------------------------------------------
 DESCRIPTION = 'Land surface nitrogen cycle'
@@ -35,15 +20,13 @@ DESCRIPTION = 'Land surface nitrogen cycle'
 # NITROGEN CYCLE: top level
 # --------------------------------------------------------------------
 DETAILS['toplevel'] = {
-    'description': 'Properties of land surface nitrogen cycle',
+    'description': 'Land surface nitrogen cycle top level properties',
     'properties': [
-        ('overview', 'str', '1.1',
-             'Overview of the nitrogen cycle in the land surface'),
-        ('tiling', 'str', '0.1',
+        ('tiling', 'l-str', '0.1',
              'Describe the notrogen cycle tiling, if any.'),
         ('time_step', 'int', '1.1',
              'Time step of nitrogen cycle in seconds'),
-        ('prognostic_variables', 'str', '1.1',
+        ('prognostic_variables', 'cs-str', '1.1',
              'List the prognostic variables of the nitrogen scheme'),
 
     ]

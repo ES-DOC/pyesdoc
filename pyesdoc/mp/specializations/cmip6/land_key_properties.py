@@ -12,21 +12,6 @@ DETAILS = OrderedDict()
 ENUMERATIONS = OrderedDict()
 
 # --------------------------------------------------------------------
-# CONTACT: Set to realm specialization co-ordinator.
-# --------------------------------------------------------------------
-CONTACT = 'David Hassell'
-
-# --------------------------------------------------------------------
-# AUTHORS: Set to realm specialization authors (comma delimited).
-# --------------------------------------------------------------------
-AUTHORS = 'David Hassell'
-
-# --------------------------------------------------------------------
-# QUALITY CONTROL STATUS: Set to 'draft' or 'complete'
-# --------------------------------------------------------------------
-QC_STATUS = 'draft'
-
-# --------------------------------------------------------------------
 # DESCRIPTION: Short description of the specialization.
 # --------------------------------------------------------------------
 DESCRIPTION = 'Land surface key properties'
@@ -35,13 +20,9 @@ DESCRIPTION = 'Land surface key properties'
 # KEY PROPERTIES: top level
 # --------------------------------------------------------------------
 DETAILS['toplevel'] = {
-    'description': 'General key properties in land surface',
+    'description': 'Land surface top level key properties',
     'properties': [
-        ('model_overview', 'str', '1.1',
-             'Overview of land surface model.'),
-        ('model_name', 'str', '1.1',
-             'Name of land surface model code (e.g. MOSES2.2)'),
-        ('description', 'str', '1.1',
+        ('description', 'l-str', '1.1',
             'General description of the processes modelled (e.g. dymanic vegation, prognostic albedo, etc.)'),
         ('land_atmosphere_flux_exchanges', 'ENUM:land_atmosphere_flux_exchanges_types', '0.N',
             'Fluxes exchanged with the atmopshere.'),
@@ -51,7 +32,7 @@ DETAILS['toplevel'] = {
             'Types of land cover defined in the land surface model'),
         ('land_cover_change', 'str', '0.1',
              'Describe how land cover change is managed (e.g. the use of net or gross transitions)'),
-        ('tiling', 'str', '1.1',
+        ('tiling', 'l-str', '1.1',
              'Describe the general tiling procedure used in the land surface (if any). Include treatment of physiography, land/sea, (dynamic) vegetation coverage and orography/roughness'),
     ]
 }
@@ -59,11 +40,11 @@ DETAILS['toplevel'] = {
 DETAILS['conservation_properties'] = {
     'description': 'TODO',
     'properties' : [
-        ('energy', 'str', '0.1',
+        ('energy', 'l-str', '0.1',
              'Describe if/how energy is conserved globally and to what level (e.g. within X [units]/year)'),
-        ('water', 'str', '0.1',
+        ('water', 'l-str', '0.1',
              'Describe if/how water is conserved globally and to what level (e.g. within X [units]/year)'),
-        ('carbon', 'str', '0.1',
+        ('carbon', 'l-str', '0.1',
              'Describe if/how carbon is conserved globally and to what level (e.g. within X [units]/year)'),
         ]
     }
@@ -87,7 +68,7 @@ DETAILS['software_properties'] = {
             "Location of code for this component."),
         ('code_version','str', '0.1',
             "Code version identifier."),
-        ('code_languages','str', '0.N',
+        ('code_languages','cs-str', '0.1',
             "Code language(s)."),
     ]
 }

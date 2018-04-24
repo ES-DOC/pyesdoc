@@ -12,21 +12,6 @@ DETAILS = OrderedDict()
 ENUMERATIONS = OrderedDict()
 
 # --------------------------------------------------------------------
-# CONTACT: Set to realm specialization co-ordinator.
-# --------------------------------------------------------------------
-CONTACT = 'David Hassell'
-
-# --------------------------------------------------------------------
-# AUTHORS: Set to realm specialization authors (comma delimited).
-# --------------------------------------------------------------------
-AUTHORS = 'David Hassell'
-
-# --------------------------------------------------------------------
-# QUALITY CONTROL STATUS: Set to 'draft' or 'complete'
-# --------------------------------------------------------------------
-QC_STATUS = 'draft'
-
-# --------------------------------------------------------------------
 # DESCRIPTION: Short description of the specialization.
 # --------------------------------------------------------------------
 DESCRIPTION = 'Land surface energy balance'
@@ -37,9 +22,7 @@ DESCRIPTION = 'Land surface energy balance'
 DETAILS['toplevel'] = {
     'description': 'General properties in land surface energy balance scheme',
     'properties': [
-        ('overview', 'str', '1.1',
-             'Overview of energy balance in land surface'),
-        ('tiling', 'str', '0.1',
+        ('tiling', 'l-str', '0.1',
              'Describe the energy balance tiling, if any.'),        
         ('number_of_surface_temperatures', 'int', '1.1',
             'The maximum number of distinct surface temperatures in a grid cell  (for example, each subgrid tile may have its own temperature)'),

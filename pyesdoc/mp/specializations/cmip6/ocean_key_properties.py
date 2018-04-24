@@ -12,21 +12,6 @@ DETAILS = OrderedDict()
 ENUMERATIONS = OrderedDict()
 
 # --------------------------------------------------------------------
-# CONTACT: Set to specialization co-ordinator.
-# --------------------------------------------------------------------
-CONTACT = 'Eric Guilyardi'
-
-# --------------------------------------------------------------------
-# AUTHORS: Set to specialization authors (comma delimited).
-# --------------------------------------------------------------------
-AUTHORS = 'Eric Guilyardi'
-
-# --------------------------------------------------------------------
-# QUALITY CONTROL STATUS: Set to 'draft' or 'complete'
-# --------------------------------------------------------------------
-QC_STATUS = 'draft'
-
-# --------------------------------------------------------------------
 # DESCRIPTION: Short description of the specialization.
 # --------------------------------------------------------------------
 DESCRIPTION = 'Ocean key properties'
@@ -37,10 +22,6 @@ DESCRIPTION = 'Ocean key properties'
 DETAILS['toplevel'] = {
     'description': 'General key properties in ocean',
     'properties': [
-        ('model_overview', 'str', '1.1',
-            'Overview of ocean model.'),
-        ('model_name', 'str', '1.1',
-            'Name of ocean model code (NEMO 3.6, MOM 5.0,...)'),
         ('model_family', 'ENUM:model_family_types', '1.1',
             'Type of ocean model.'),
         ('basic_approximations', 'ENUM:ocean_basic_approx_types', '1.N',
@@ -77,7 +58,7 @@ DETAILS['toplevel:bathymetry'] = {
             'Reference date of bathymetry'),
         ('type', 'bool', '1.1',
             'Is the bathymetry fixed in time in the ocean ?'),
-        ('ocean_smoothing', 'str', '1.1',
+        ('ocean_smoothing', 'l-str', '1.1',
             'Describe any smoothing or hand editing of bathymetry in ocean'),
         ('source', 'str', '1.1',
             'Describe source of bathymetry in ocean'),
@@ -87,9 +68,9 @@ DETAILS['toplevel:bathymetry'] = {
 DETAILS['toplevel:nonoceanic_waters'] = {
     'description': 'Non oceanic waters treatement in ocean',
     'properties': [
-        ('isolated_seas','str', '0.1',
+        ('isolated_seas','l-str', '0.1',
             'Describe if/how isolated seas is performed'),
-        ('river_mouth','str', '0.1',
+        ('river_mouth','l-str', '0.1',
             'Describe if/how river mouth mixing or estuaries specific treatment is performed'),
        ]
     }
@@ -101,7 +82,7 @@ DETAILS['toplevel:software_properties'] = {
             "Location of code for this component."),
         ('code_version','str', '0.1',
             "Code version identifier."),
-        ('code_languages','str', '0.N',
+        ('code_languages','cs-str', '0.1',
             "Code language(s)."),
     ]
 }
@@ -135,16 +116,17 @@ DETAILS['resolution'] = {
 DETAILS['tuning_applied'] = {
     'description': 'Tuning methodology for ocean component',
     'properties': [
-        ('description', 'str', '1.1',
-             "General overview description of tuning: explain and motivate the main targets and metrics retained. &"
-             "Document the relative weight given to climate performance metrics versus process oriented metrics, &"
-             "and on the possible conflicts with parameterization level tuning. In particular describe any struggle &"
-             "with a parameter value that required pushing it to its limits to solve a particular model deficiency."),
-        ('global_mean_metrics_used', 'str', '0.N',
+        ('description', 'l-str', '1.1',
+             """General overview description of tuning: explain and motivate the main targets and metrics retained.
+             Document the relative weight given to climate performance metrics versus process oriented metrics,
+             and on the possible conflicts with parameterization level tuning. In particular describe any struggle
+             with a parameter value that required pushing it to its limits to solve a particular model deficiency.
+             """),
+        ('global_mean_metrics_used', 'cs-str', '0.1',
              "List set of metrics of the global mean state used in tuning model/component"),
-        ('regional_metrics_used', 'str', '0.N',
+        ('regional_metrics_used', 'cs-str', '0.1',
              "List of regional metrics of mean state (e.g THC, AABW, regional means etc) used in tuning model/component"),
-        ('trend_metrics_used', 'str', '0.N',
+        ('trend_metrics_used', 'cs-str', '0.1',
              "List observed trend metrics used in tuning model/component"),
         ]
     }
@@ -155,12 +137,13 @@ DETAILS['tuning_applied'] = {
 DETAILS['conservation'] = {
     'description': 'Conservation in the ocean component',
     'properties': [
-        ('description', 'str', '1.1', 'Brief description of conservation methodology'),
+        ('description', 'l-str', '1.1',
+             'Brief description of conservation methodology'),
         ('scheme', 'ENUM:conservation_props_types', '1.N',
             'Properties conserved in the ocean by the numerical schemes'),
-        ('consistency_properties', 'str','0.1',
+        ('consistency_properties', 'cs-str','0.1',
             'Any additional consistency properties (energy conversion, pressure gradient discretisation, ...)?'),
-        ('corrected_conserved_prognostic_variables', 'str', '0.1', # Can we constrains these variable
+        ('corrected_conserved_prognostic_variables', 'cs-str', '0.1', # Can we constrains these variable
              "Set of variables which are conserved by *more* than the numerical scheme alone."),
         ('was_flux_correction_used', 'bool', '0.1',
              "Does conservation involve flux correction ?"),

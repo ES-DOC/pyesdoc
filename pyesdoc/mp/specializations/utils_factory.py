@@ -8,58 +8,17 @@
 
 
 """
+from utils import log
+from utils_cache import set_specialization as cache_specialization
 from utils_constants import *
-import utils_model as model
+from utils_model import EnumSpecialization
+from utils_model import EnumChoiceSpecialization
+from utils_model import PropertySetSpecialization
+from utils_model import PropertySpecialization
+from utils_model import ShortTable
+from utils_model import ShortTableProperty
+from utils_model import TopicSpecialization
 
-
-
-# Map of specializations by id.
-CACHE = dict()
-
-
-def get_short_tables(tables):
-    """Returns a set of short table wrappers.
-
-    :param tables: 2 member tuple: name, dict.
-
-    :returns: A specialization wrapper.
-    :rtype: tuple
-
-    """
-    return [_get_short_table(i, j) for i, j in tables]
-
-
-def _get_short_table(name, obj):
-    """Creates & returns a short-table wrapper.
-
-    """
-    result = model.ShortTable()
-    result.authors = obj['AUTHORS']
-    result.change_history = obj['CHANGE_HISTORY']
-    result.contact = obj['CONTACT']
-    result.contributors = obj['CONTRIBUTORS']
-    result.label = obj['LABEL']
-    result.name = name
-    result.properties = [_get_short_table_property(i) for i in obj['PROPERTIES']]
-    result.qc_status = obj['QC_STATUS']
-
-    return result
-
-
-def _get_short_table_property(obj):
-    """Returns a short table property wrapper.
-
-    :param modules: 4 member tuple of python modules: root, grid, key-properties, processes.
-
-    :returns: A specialization wrapper.
-    :rtype: tuple
-
-    """
-    result = model.ShortTableProperty()
-    result.identifier = obj[0]
-    result.priority = obj[1]
-
-    return result
 
 
 def get_specialization(modules):
@@ -68,58 +27,124 @@ def get_specialization(modules):
     :param modules: 4 member tuple of python modules: root, grid, key-properties, processes.
 
     :returns: A specialization wrapper.
-    :rtype: tuple
+    :rtype: TopicSpecialization
 
     """
-    # Unpack modules.
-    mod_root, mod_grid, mod_keyprops, mod_processes = modules
+    root = _create_topic(modules[0], None)
+    for module in modules[1:]:
+        _create_topic(module, root)
 
-    # Set root type key.
-    type_key = TYPE_KEY_REALM if mod_root.__name__ != "model" else TYPE_KEY_MODEL
-
-    # Create topic tree.
-    result = _create_topic(None, mod_root, type_key)
-    _create_topic(result, mod_keyprops, TYPE_KEY_KEYPROPS)
-    if mod_grid is not None:
-        _create_topic(result, mod_grid, TYPE_KEY_GRID)
-    for i in mod_processes:
-        _create_topic(result, i, TYPE_KEY_PROCESS)
-
-    return result
+    return root
 
 
-def _create_topic(parent, spec, type_key, key=None):
-    """Creates & returns a topic specialization wrapper.
+create_specializations = get_specialization
+
+
+def _create_topic(spec, parent, key=None):
+    """Creates & returns a topic specialization.
 
     """
     if spec is None:
         return None
 
-    # Instantiate.
-    topic = model.TopicSpecialization(spec, type_key)
+    # Hydrate either from a dictionary or a module.
+    topic = TopicSpecialization(spec, parent)
     if isinstance(spec, dict):
-        _set_topic_from_dict(parent, topic, key)
+        _set_topic_from_dict(topic, parent, key)
     else:
-        _set_topic_from_module(parent, topic)
+        _set_topic_from_module(topic, parent)
 
-    # Update hierachy.
-    if parent:
-        topic.parent = parent
-        parent.sub_topics.append(topic)
+    # Set injected properties.
+    _set_topic_injected_properties(topic)
 
-    # Cache (used in downstream tooling chain).
-    CACHE[topic.id] = topic
+    # Cache.
+    cache_specialization(topic)
 
     return topic
 
 
-def _set_topic_from_module(parent, topic):
+def _set_topic_injected_properties(topic):
+    """Injects a set of properties into the set of specializations.
+
+    """
+    # Model properties.
+    if len(topic.path) == 3 and topic.path[1] == 'toplevel' and topic.path[2] == 'key_properties':
+        if not topic.has_property('overview'):
+            description = 'Top level overview of coupled model'
+            _set_injected_property('overview', 'l-str', '1.1', description, topic)
+
+        if not topic.has_property('keywords'):
+            description = 'Keywords associated with coupled model'
+            _set_injected_property('keywords', 'cs-str', '1.1', description, topic)
+
+        if not topic.has_property('name'):
+            description = 'Name of coupled model'
+            _set_injected_property('name', 'str', '1.1', description, topic)
+
+    # Topic key properties.
+    elif len(topic.path) == 3 and topic.path[2] == 'key_properties':
+        if not topic.has_property('overview'):
+            description = 'Overview of {} model.'.format(topic.root.name)
+            _set_injected_property('overview', 'l-str', '1.1', description, topic)
+
+        if not topic.has_property('keywords'):
+            description = 'Keywords associated with {} model code'.format(topic.root.name)
+            _set_injected_property('keywords', 'cs-str', '1.1', description, topic)
+
+        if not topic.has_property('name'):
+            description = 'Name of {} model code'.format(topic.root.name)
+            _set_injected_property('name', 'str', '1.1', description, topic)
+
+    # Topic grid properties.
+    elif len(topic.path) == 3 and topic.path[-1] == 'grid':
+        if not topic.has_property('overview'):
+            description = 'Overview of grid in {} model.'.format(topic.root.name)
+            _set_injected_property('overview', 'l-str', '0.1', description, topic)
+
+        if not topic.has_property('name'):
+            description = 'Name of grid in {} model.'.format(topic.root.name)
+            _set_injected_property('name', 'str', '0.1', description, topic)
+
+    # Topic process properties.
+    elif len(topic.path) == 3:
+        if not topic.has_property('overview'):
+            description = 'Overview of {} in {} model.'.format(topic.description.lower(), topic.root.name)
+            _set_injected_property('overview', 'l-str', '0.1', description, topic)
+
+        if not topic.has_property('name'):
+            description = 'Commonly used name for the {} in {} model.'.format(topic.name_camel_case_spaced.lower(), topic.root.name)
+            _set_injected_property('name', 'str', '0.1', description, topic)
+
+    # Topic sub-process properties.
+    elif len(topic.path) == 4:
+        if not topic.has_property('overview'):
+            description = 'Overview of {} in {} model.'.format(topic.description.lower(), topic.root.name)
+            _set_injected_property('overview', 'str', '0.1', description, topic)
+
+
+def _set_injected_property(name, typeof, cardinality, description, topic):
+    """Injects a property into the set of specializations.
+
+    """
+    try:
+        enums = topic.spec.ENUMERATIONS
+    except AttributeError:
+        enums = topic.parent.spec.ENUMERATIONS
+    _set_property(name, typeof, cardinality, description, topic, enums, False, True)
+
+
+def _set_topic_from_module(topic, parent):
     """Set topic specialization attributes from a module.
 
     """
-    topic.authors = topic.spec.AUTHORS
-    topic.contact = topic.spec.CONTACT
-    topic.qc_status = topic.spec.QC_STATUS
+    try:
+        topic.authors = topic.spec.AUTHORS
+    except AttributeError:
+        topic.authors = topic.root.authors
+    try:
+        topic.contact = topic.spec.CONTACT
+    except AttributeError:
+        topic.contact = topic.root.contact
     topic.description = topic.spec.DESCRIPTION
     if parent:
         topic.change_history = parent.change_history
@@ -145,7 +170,7 @@ def _set_topic_from_module(parent, topic):
 
             # ... sub-topic properties
             elif len(key.split(":")) == 1:
-                _create_topic(topic, obj, TYPE_KEY_SUBPROCESS, key)
+                _create_topic(obj, topic, key)
                 _set_property_collection(topic.sub_topics[-1], obj, topic.spec.ENUMERATIONS)
 
             # ... sub-topic property sets
@@ -155,7 +180,7 @@ def _set_topic_from_module(parent, topic):
                         _set_property_set(st, key, obj, topic.spec.ENUMERATIONS)
 
 
-def _set_topic_from_dict(parent, topic, name):
+def _set_topic_from_dict(topic, parent, name):
     """Set topic specialization attributes from a dictionary.
 
     """
@@ -166,14 +191,13 @@ def _set_topic_from_dict(parent, topic, name):
     topic.description = topic.spec['description']
     topic.id = "{}.{}".format(parent.id, name)
     topic.name = name
-    topic.qc_status = parent.qc_status
 
 
 def _set_property_set(owner, key, obj, enumerations):
     """Set attributes of a property-set attributes from a dictionary.
 
     """
-    ps = model.PropertySetSpecialization()
+    ps = PropertySetSpecialization()
     ps.description = obj['description']
     ps.id = "{}.{}".format(owner.id, key.split(":")[-1])
     ps.key = key
@@ -184,7 +208,7 @@ def _set_property_set(owner, key, obj, enumerations):
     owner.property_sets.append(ps)
 
     # Cache.
-    CACHE[ps.id] = ps
+    cache_specialization(ps)
 
 
 def _set_property_collection(owner, obj, enumerations):
@@ -192,20 +216,37 @@ def _set_property_collection(owner, obj, enumerations):
 
     """
     for name, typeof, cardinality, description in obj.get('properties', []):
-        p = model.PropertySpecialization()
-        p.cardinality = cardinality
-        p.description = description
-        p.enum = _create_enum(p, typeof, enumerations) if typeof.startswith("ENUM:") else None
-        p.id = "{}.{}".format(owner.id, name)
-        p.key = name
-        p.name = name
-        p.owner = owner
-        p.typeof = typeof
+        _set_property(name, typeof, cardinality, description, owner, enumerations, True, False)
 
+
+def _set_property(name, typeof, cardinality, description, owner, enumerations, append, was_injected):
+    """Returns a topic property.
+
+    """
+    p = PropertySpecialization()
+    p.cardinality = cardinality
+    p.description = description
+    p.enum = _create_enum(p, typeof, enumerations) if typeof.startswith("ENUM:") else None
+    p.id = "{}.{}".format(owner.id, name)
+    p.was_injected = was_injected
+    p.key = name
+    p.name = name
+    p.owner = owner
+    p.typeof = typeof
+
+    if append == True:
         owner.properties.append(p)
+    else:
+        owner.properties.insert(0, p)
 
-        # Cache.
-        CACHE[p.id] = p
+    # Cache.
+    cache_specialization(p)
+
+    # Log injected.
+    # if was_injected:
+    #     log('injected property: {}'.format(p.id))
+
+    return p
 
 
 def _create_enum(detail, typeof, enumerations):
@@ -215,7 +256,7 @@ def _create_enum(detail, typeof, enumerations):
     key = typeof.split(":")[-1]
     obj = enumerations[key]
 
-    e = model.EnumSpecialization()
+    e = EnumSpecialization()
     e.description = obj['description']
     e.detail = detail
     e.id = "{}.{}".format(detail.id, key)
@@ -232,10 +273,57 @@ def _create_enum_choice(enum, value, description):
     """Creates & returns an enumeration choice specialzation wrapper.
 
     """
-    ec = model.EnumChoiceSpecialization()
+    ec = EnumChoiceSpecialization()
     ec.description = description
     ec.enum = enum
     ec.id = "{}.{}".format(enum.id, value)
     ec.value = value
 
     return ec
+
+
+def get_short_tables(tables):
+    """Returns a set of short table wrappers.
+
+    :param tables: 2 member tuple: name, dict.
+
+    :returns: A specialization wrapper.
+    :rtype: tuple
+
+    """
+    return [_get_short_table(i, j) for i, j in tables]
+
+
+create_short_tables = get_short_tables
+
+
+def _get_short_table(name, obj):
+    """Creates & returns a short-table wrapper.
+
+    """
+    result = ShortTable()
+    result.authors = obj['AUTHORS']
+    result.change_history = obj['CHANGE_HISTORY']
+    result.contact = obj['CONTACT']
+    result.contributors = obj['CONTRIBUTORS']
+    result.label = obj['LABEL']
+    result.name = name
+    result.properties = [_get_short_table_property(i) for i in obj['PROPERTIES']]
+
+    return result
+
+
+def _get_short_table_property(obj):
+    """Returns a short table property wrapper.
+
+    :param modules: 4 member tuple of python modules: root, grid, key-properties, processes.
+
+    :returns: A specialization wrapper.
+    :rtype: tuple
+
+    """
+    result = ShortTableProperty()
+    result.identifier = obj[0]
+    result.priority = obj[1]
+
+    return result

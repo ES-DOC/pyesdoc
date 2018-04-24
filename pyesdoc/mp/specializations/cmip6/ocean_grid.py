@@ -12,46 +12,15 @@ DETAILS = OrderedDict()
 ENUMERATIONS = OrderedDict()
 
 # --------------------------------------------------------------------
-# CONTACT: Set to specialization co-ordinator.
-# --------------------------------------------------------------------
-CONTACT = 'Eric Guilyardi'
-
-# --------------------------------------------------------------------
-# AUTHORS: Set to specialization authors (comma delimited).
-# --------------------------------------------------------------------
-AUTHORS = 'Eric Guilyardi'
-
-# --------------------------------------------------------------------
-# QUALITY CONTROL STATUS: Set to 'draft' or 'complete'
-# --------------------------------------------------------------------
-QC_STATUS = 'draft'
-
-# --------------------------------------------------------------------
 # DESCRIPTION: Short description of the specialization.
 # --------------------------------------------------------------------
 DESCRIPTION = 'Ocean grid'
 
 # --------------------------------------------------------------------
-# GRID: top level
-# --------------------------------------------------------------------
-
-DETAILS['toplevel'] = {
-    'description': 'Properties of grid in ocean',
-    'properties': [
-        ('overview','str','1.1',
-            'Overview of grid in ocean'),
-        ]
-    }
-# --------------------------------------------------------------------
 # DISCRETISATION: Description of the numerics of the discretisation.
 # --------------------------------------------------------------------
 DETAILS['discretisation'] = {
-    'description': 'Type of discretisation scheme in ocean',
-    'properties': [],
-    'detail_sets': [
-        'horizontal',
-        'vertical'
-        ]
+    'description': 'Type of discretisation scheme in ocean'
     }
 
 DETAILS['discretisation:vertical'] = {

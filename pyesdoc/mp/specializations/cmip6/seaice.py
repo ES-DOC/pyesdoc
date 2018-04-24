@@ -27,11 +27,6 @@ AUTHORS = 'Ruth Petrie, Bryan Lawrence, David Hassell, Mark Greenslade'
 CONTRIBUTORS = 'Jamie Rae (UKMO), Martin Vancopppenolle (IPSL), Alexandra Jahn (University of Colorado)'
 
 # --------------------------------------------------------------------
-# QUALITY CONTROL STATUS: Set to 'draft' or 'complete'
-# --------------------------------------------------------------------
-QC_STATUS = 'draft'
-
-# --------------------------------------------------------------------
 # CHANGE HISTORY: Set to list: (version, date, who, comment).
 # --------------------------------------------------------------------
 CHANGE_HISTORY = [
@@ -45,6 +40,8 @@ CHANGE_HISTORY = [
     ("0.1.7", "2017-11-21", "Ruth Petrie", "Update based on community feedback"),
     ("0.1.8", "2017-11-23", "Ruth Petrie", "Include ice floe-size distribution"),
     ("1.0.0", "2017-12-4", "Ruth Petrie", "Include section on parameter values, first completed revision"),
+    ("1.0.1", "2018-3-19", "Ruth Petrie", "Add in space for parameter values in key properties."),
+    ("1.0.2", "2018-04-04", "David Hassell", "Replaced some occurences of 'str' with 'cs-str' and 'l-str'"),
 ]
 
 # --------------------------------------------------------------------
@@ -55,7 +52,7 @@ CMIP5_MAPPINGS_SYNCED_AT = "0.1.8"
 # --------------------------------------------------------------------
 # DESCRIPTION: Scientific context of this scientific realm
 # --------------------------------------------------------------------
-DESCRIPTION = 'Sea ice realm specialization'
+DESCRIPTION = 'Sea ice'
 
 # --------------------------------------------------------------------
 # REALM: Canonical name for the domain of this scientific realm
@@ -80,14 +77,4 @@ PROCESSES = [
     'seaice_thermodynamics',
     'seaice_radiative_processes',
 ]
-
-# --------------------------------------------------------------------
-# REALM: top level details
-# --------------------------------------------------------------------
-DETAILS = OrderedDict()
-
-# --------------------------------------------------------------------
-# REALM: ENUMERATIONS
-# --------------------------------------------------------------------
-ENUMERATIONS = OrderedDict()
 

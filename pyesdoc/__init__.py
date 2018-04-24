@@ -17,7 +17,7 @@
 
 """
 __title__ = 'pyesdoc'
-__version__ = '0.10.0.0'
+__version__ = '0.10.1.0'
 __author__ = 'ES-DOC'
 __license__ = 'GPL'
 __copyright__ = 'Copyright 2018 ES-DOC'
@@ -48,8 +48,8 @@ from pyesdoc._io import read
 from pyesdoc._io import seek
 from pyesdoc._io import write
 
-from pyesdoc.mp.specializations import get_model_specialization
-from pyesdoc.mp.specializations import get_property_specialization
+from pyesdoc.mp.specializations.utils_cache import get_topic_specialization
+from pyesdoc.mp.specializations.utils_cache import get_property_specialization
 
 from pyesdoc._publishing import publish
 from pyesdoc._publishing import retrieve

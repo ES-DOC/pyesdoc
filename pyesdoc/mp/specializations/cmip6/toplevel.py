@@ -19,11 +19,6 @@ AUTHORS = 'Eric Guilyardi'
 CONTRIBUTORS = 'Roland Seferian (CNRM), Tim Johns (UKMO)'
 
 # --------------------------------------------------------------------
-# QUALITY CONTROL STATUS: Set to 'draft' or 'complete'
-# --------------------------------------------------------------------
-QC_STATUS = 'draft'
-
-# --------------------------------------------------------------------
 # CHANGE HISTORY: Set to list: (version, date, who, comment).
 # --------------------------------------------------------------------
 CHANGE_HISTORY = [
@@ -37,22 +32,26 @@ CHANGE_HISTORY = [
         "Updated solar forcing"),
     ("0.5.0", "2017-11-22", "David Hassell",
         "Updates from community review: Alistair Sellar (MOHC), Oyvind Seland (MET-Norway)"),
+    ("0.6.0", "2018-04-04", "David Hassell",
+        "Replaced some occurences of 'str' with 'cs-str' and 'l-str'"),
+    ("1.0.2", "2018-04-04", "David Hassell",
+        "Removed some l-str"),
     ]
 
 # --------------------------------------------------------------------
 # DESCRIPTION: Scientific context of this scientific top-level
 # --------------------------------------------------------------------
-DESCRIPTION = 'Top level model'
-
-# --------------------------------------------------------------------
-# GRID: The grid used to layout the variables
-# --------------------------------------------------------------------
-GRID = None
+DESCRIPTION = 'Model top level'
 
 # --------------------------------------------------------------------
 # KEY PROPERTIES: File name (without the .py suffix) containing key properties of the top level model.
 # --------------------------------------------------------------------
 KEY_PROPERTIES = 'toplevel_key_properties'
+
+# --------------------------------------------------------------------
+# GRID: The grid used to layout the variables
+# --------------------------------------------------------------------
+GRID = None
 
 # --------------------------------------------------------------------
 # PROCESSES: Processes simulated within the model

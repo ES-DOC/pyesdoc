@@ -1,6 +1,6 @@
 """
 
-A realm process sepecialization.
+A realm process specialization.
 
 For further information goto http://wordpress.es-doc.org/cmip6-model-specializations.
 """
@@ -13,21 +13,6 @@ DETAILS = OrderedDict()
 ENUMERATIONS = OrderedDict()
 
 # --------------------------------------------------------------------
-# CONTACT: Set to realm specialization co-ordinator.
-# --------------------------------------------------------------------
-CONTACT = 'Charlotte Pascoe'
-
-# --------------------------------------------------------------------
-# AUTHORS: Set to realm specialization authors (comma delimited).
-# --------------------------------------------------------------------
-AUTHORS = 'Charlotte Pascoe'
-
-# --------------------------------------------------------------------
-# QUALITY CONTROL STATUS: Set to 'draft' or 'complete'
-# --------------------------------------------------------------------
-QC_STATUS = 'draft'
-
-# --------------------------------------------------------------------
 # DESCRIPTION: Short description of the specialization.
 # --------------------------------------------------------------------
 DESCRIPTION = 'Characteristics of the dynamical core'
@@ -38,10 +23,6 @@ DESCRIPTION = 'Characteristics of the dynamical core'
 DETAILS['toplevel'] = {
     'description': "General dynamical core properties",
     'properties': [
-        ('overview', 'str', '1.1',
-            'Overview description of atmosphere dynamical core'),
-        ('name', 'str', '0.1',
-            'Commonly used name for the dynamical core of the model.'),
         ('timestepping_type', 'ENUM:timestepping_type', '1.1',
             'Timestepping framework type'),
         ('prognostic_variables', 'ENUM:prognostic_variables', '1.N',
@@ -50,7 +31,7 @@ DETAILS['toplevel'] = {
     }
 
 # --------------------------------------------------------------------
-# PROCESS: SUB-PROCESSES
+# Top boundary layer
 # --------------------------------------------------------------------
 DETAILS['top_boundary'] = {
     'description': 'Type of boundary layer at the top of the model',
@@ -64,6 +45,9 @@ DETAILS['top_boundary'] = {
         ]
     }
 
+# --------------------------------------------------------------------
+# Lateral boundary conditions
+# --------------------------------------------------------------------
 DETAILS['lateral_boundary'] = {
     'description': 'Type of lateral boundary condition (if the model is a regional model)',
     'properties': [
@@ -72,6 +56,9 @@ DETAILS['lateral_boundary'] = {
         ]
     }
 
+# --------------------------------------------------------------------
+# Horizontal diffusion
+# --------------------------------------------------------------------
 DETAILS['diffusion_horizontal'] = {
     'description': 'Horizontal diffusion scheme',
     'properties': [
@@ -82,7 +69,14 @@ DETAILS['diffusion_horizontal'] = {
         ]
     }
 
-DETAILS['advection_tracers'] = {
+# --------------------------------------------------------------------
+# Advection
+# --------------------------------------------------------------------
+DETAILS['advection'] = {
+    'description': 'Dynamical core advection'
+    }
+
+DETAILS['advection:tracers'] = {
     'description': 'Tracer advection scheme',
     'properties': [
         ('scheme_name', 'ENUM:advection_tracers_scheme_name', '0.1',
@@ -96,7 +90,7 @@ DETAILS['advection_tracers'] = {
         ]
     }
 
-DETAILS['advection_momentum'] = {
+DETAILS['advection:momentum'] = {
     'description': 'Momentum advection scheme',
     'properties': [
         ('scheme_name', 'ENUM:advection_momentum_scheme_name', '0.1',

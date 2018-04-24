@@ -12,21 +12,6 @@ DETAILS = OrderedDict()
 ENUMERATIONS = OrderedDict()
 
 # --------------------------------------------------------------------
-# CONTACT: Set to realm specialization co-ordinator.
-# --------------------------------------------------------------------
-CONTACT = 'Ruth Petrie'
-
-# --------------------------------------------------------------------
-# AUTHORS: Set to realm specialization authors (comma delimited).
-# --------------------------------------------------------------------
-AUTHORS = 'Ruth Petrie'
-
-# --------------------------------------------------------------------
-# QUALITY CONTROL STATUS: Set to 'draft' or 'complete'
-# --------------------------------------------------------------------
-QC_STATUS = 'draft'
-
-# --------------------------------------------------------------------
 # DESCRIPTION: Short description of the specialization.
 # --------------------------------------------------------------------
 DESCRIPTION = 'Sea Ice grid'
@@ -35,12 +20,7 @@ DESCRIPTION = 'Sea Ice grid'
 # DISCRETISATION: Description of the horizontal discretization and numerics.
 # --------------------------------------------------------------------
 DETAILS['discretisation'] = {
-    'description': 'Sea ice discretisation',
-    'properties': [],
-    'detail_sets': [
-        'horizontal',
-        'vertical',
-        ]
+    'description': 'Sea ice discretisation'
     }
 
 DETAILS['discretisation:horizontal'] = {
@@ -56,7 +36,7 @@ DETAILS['discretisation:horizontal'] = {
             "What is the time step in the sea ice model thermodynamic component in seconds."),
         ('dynamics_time_step', 'int', '1.1',
             "What is the time step in the sea ice model dynamic component in seconds."),
-        ('additional_details', 'str', '0.1',
+        ('additional_details', 'l-str', '0.1',
             "Specify any additional horizontal discretisation details.")
         ]
     }
@@ -68,7 +48,7 @@ DETAILS['discretisation:vertical'] = {
             "What type of sea ice vertical layers are implemented for purposes of thermodynamic calculations?"),
         ('number_of_layers', 'int', '1.1',
             "If using multi-layers specify how many."),
-        ('additional_details', 'str', '0.1',
+        ('additional_details', 'l-str', '0.1',
             "Specify any additional vertical grid details.")
         ]
     }
@@ -85,11 +65,11 @@ DETAILS['seaice_categories'] = {
             "Set to true if the sea ice model has multiple sea ice categories."),
         ('number_of_categories', 'int', '1.1',
             "If using sea ice categories specify how many."),
-        ('category_limits', 'str', '1.1',
+        ('category_limits', 'cs-str', '1.1',
             "If using sea ice categories specify each of the category limits."),
-        ('ice_thickness_distribution_scheme', 'str', '1.1',
+        ('ice_thickness_distribution_scheme', 'l-str', '1.1',
             "Describe the sea ice thickness distribution scheme"),
-        ('other', 'str', '0.1',
+        ('other', 'l-str', '0.1',
             "If the sea ice model does not use sea ice categories specify any "
             "additional details. For example models that paramterise "
             "the ice thickness distribution ITD (i.e there is no explicit ITD) but "
@@ -107,9 +87,9 @@ DETAILS['snow_on_seaice'] = {
             "Is snow on ice represented in this model?"),
         ('number_of_snow_levels', 'int', '1.1',
             "Number of vertical levels of snow on ice?"),
-        ('snow_fraction', 'str', '1.1',
+        ('snow_fraction', 'l-str', '1.1',
             "Describe how the snow fraction on sea ice is determined"),
-        ('additional_details', 'str', '0.1',
+        ('additional_details', 'l-str', '0.1',
             "Specify any additional details related to snow on ice.")
         ]
     }

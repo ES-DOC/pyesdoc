@@ -51,27 +51,29 @@ def get_modules(input_dir, typeof):
 
     # Set specializations.
     root = _get_module(modules, typeof)
-    try:
-        root.GRID
-    except AttributeError:
-        grid = None
-    else:
-        grid = _get_module(modules, root.GRID)
-    key_properties = _get_module(modules, root.KEY_PROPERTIES)
-    processes = [_get_module(modules, p) for p in root.PROCESSES]
+    children = [_get_module(modules, i) for i in [
+        '{}_key_properties'.format(typeof),
+        '{}_grid'.format(typeof)
+    ] + root.PROCESSES]
 
-    return root, grid, key_properties, processes
+    return [root] + [i for i in children if i is not None]
 
 
-def _get_modules(input_dir, specialization_type):
+def _get_modules(input_dir, typeof):
     """Returns a set of specialization modules.
 
     """
-    modules = sorted([i for i in os.listdir(input_dir) if _is_target(i, specialization_type)])
+    def _is_target(fname):
+        return not fname.startswith('_') and \
+               fname.endswith('.py') and \
+               fname.startswith(typeof)
+
+    modules = sorted([i for i in os.listdir(input_dir) if _is_target(i)])
     modules = [os.path.join(input_dir, m) for m in modules]
     modules = [(m.split("/")[-1].split(".")[0], m) for m in modules]
+    modules = [imp.load_source(i, j) for i, j in modules]
 
-    return [imp.load_source(name, fpath) for name, fpath in modules]
+    return modules
 
 
 def _get_module(modules, name):
@@ -81,12 +83,3 @@ def _get_module(modules, name):
     for module in modules:
         if module.__name__ == name:
             return module
-
-
-def _is_target(filename, specialization_type):
-    """Returns flag indicating whether a module is a specialization target or not.
-
-    """
-    return not filename.startswith('_') and \
-           filename.endswith('.py') and \
-           filename.startswith(specialization_type)

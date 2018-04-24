@@ -12,35 +12,9 @@ DETAILS = OrderedDict()
 ENUMERATIONS = OrderedDict()
 
 # --------------------------------------------------------------------
-# CONTACT: Set to specialization co-ordinator.
-# --------------------------------------------------------------------
-CONTACT = 'Eric Guilyardi'
-
-# --------------------------------------------------------------------
-# AUTHORS: Set to specialization authors (comma delimited).
-# --------------------------------------------------------------------
-AUTHORS = 'Eric Guilyardi'
-
-# --------------------------------------------------------------------
-# QUALITY CONTROL STATUS: Set to 'draft' or 'complete'
-# --------------------------------------------------------------------
-QC_STATUS = 'draft'
-
-# --------------------------------------------------------------------
 # DESCRIPTION: Short description of the specialization.
 # --------------------------------------------------------------------
 DESCRIPTION = 'Ocean advection'
-
-# --------------------------------------------------------------------
-# PROCESS: top level
-# --------------------------------------------------------------------
-DETAILS['toplevel'] = {
-    'description': 'Properties of advection in ocean',
-    'properties': [
-        ('overview','str','1.1',
-            'Overview of advection in ocean'),
-        ]
-    }
 
 # --------------------------------------------------------------------
 # SUB-PROCESS: Momentum.

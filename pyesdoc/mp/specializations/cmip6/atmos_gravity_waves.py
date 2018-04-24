@@ -1,6 +1,6 @@
 """
 
-A realm process sepecialization.
+A realm process specialization.
 
 For further information goto http://wordpress.es-doc.org/cmip6-model-specializations.
 """
@@ -13,25 +13,10 @@ DETAILS = OrderedDict()
 ENUMERATIONS = OrderedDict()
 
 # --------------------------------------------------------------------
-# CONTACT: Set to realm specialization co-ordinator.
-# --------------------------------------------------------------------
-CONTACT = 'Charlotte Pascoe'
-
-# --------------------------------------------------------------------
-# AUTHORS: Set to realm specialization authors (comma delimited).
-# --------------------------------------------------------------------
-AUTHORS = 'Charlotte Pascoe'
-
-# --------------------------------------------------------------------
-# QUALITY CONTROL STATUS: Set to 'draft' or 'complete'
-# --------------------------------------------------------------------
-QC_STATUS = 'draft'
-
-# --------------------------------------------------------------------
 # DESCRIPTION: Short description of the specialization.
 # --------------------------------------------------------------------
 DESCRIPTION = 'Characteristics of the parameterised gravity waves in the atmosphere, ' \
-              'whether from orography or other sources.'
+              'whether from orography or other sources'
 
 # --------------------------------------------------------------------
 # PROCESS: top level properties
@@ -39,8 +24,6 @@ DESCRIPTION = 'Characteristics of the parameterised gravity waves in the atmosph
 DETAILS['toplevel'] = {
     'description': "General attributes of the gravity wave parameterisation",
     'properties': [
-        ('overview', 'str', '1.1',
-            'Overview description of gravity wave parameterisation in the atmosphere'),
         ('sponge_layer', 'ENUM:sponge_layer_attributes', '1.1',
             'Sponge layer in the upper levels in order to avoid gravity wave reflection at the top.'),
         ('background', 'ENUM:background_attributes', '1.1',

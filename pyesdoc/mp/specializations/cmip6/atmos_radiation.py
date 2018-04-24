@@ -1,6 +1,6 @@
 """
 
-A realm process sepecialization.
+A realm process specialization.
 
 For further information goto http://wordpress.es-doc.org/cmip6-model-specializations.
 """
@@ -11,21 +11,6 @@ from collections import OrderedDict
 
 DETAILS = OrderedDict()
 ENUMERATIONS = OrderedDict()
-
-# --------------------------------------------------------------------
-# CONTACT: Set to realm specialization co-ordinator.
-# --------------------------------------------------------------------
-CONTACT = 'Charlotte Pascoe'
-
-# --------------------------------------------------------------------
-# AUTHORS: Set to realm specialization authors (comma delimited).
-# --------------------------------------------------------------------
-AUTHORS = 'Charlotte Pascoe, Robert Pincus'
-
-# --------------------------------------------------------------------
-# QUALITY CONTROL STATUS: Set to 'draft' or 'complete'
-# --------------------------------------------------------------------
-QC_STATUS = 'draft'
 
 # --------------------------------------------------------------------
 # DESCRIPTION: Short description of the specialization.
@@ -49,7 +34,7 @@ DETAILS['toplevel'] = {
 DETAILS['shortwave_radiation'] = {
     'description': 'Properties of the shortwave radiation scheme',
     'properties': [
-        ('overview', 'str', '1.1',
+        ('overview', 'l-str', '1.1',
             'Overview description of shortwave radiation in the atmosphere'),
         ('name', 'str', '0.1',
             'Commonly used name for the shortwave radiation scheme'),
@@ -153,7 +138,7 @@ DETAILS['shortwave_gases'] = {
 DETAILS['longwave_radiation'] = {
     'description': 'Properties of the longwave radiation scheme',
     'properties': [
-        ('overview', 'str', '1.1',
+        ('overview', 'l-str', '1.1',
             'Overview description of longwave radiation in the atmosphere'),
         ('name', 'str', '0.1',
             'Commonly used name for the longwave radiation scheme.'),
@@ -264,13 +249,13 @@ ENUMERATIONS['aerosol_types'] = {
         ('dust', None),
         ('ice', None),
         ('organic', None),
-        ('BC (black carbon / soot)', None),
-        ('SOA (secondary organic aerosols)', None),
-        ('POM (particulate organic matter)', None),
+        ('BC', 'black carbon / soot'),
+        ('SOA', 'secondary organic aerosols'),
+        ('POM', 'particulate organic matter'),
         ('polar stratospheric ice', None),
-        ('NAT (nitric acid trihydrate)', None),
-        ('NAD (nitric acid dihydrate)', None),
-        ('STS (supercooled ternary solution aerosol particle)', None),
+        ('NAT', 'nitric acid trihydrate'),
+        ('NAD', 'nitric acid dihydrate'),
+        ('STS', 'supercooled ternary solution aerosol particle'),
         ]
     }
 

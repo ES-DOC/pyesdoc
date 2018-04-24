@@ -12,21 +12,6 @@ DETAILS = OrderedDict()
 ENUMERATIONS = OrderedDict()
 
 # --------------------------------------------------------------------
-# CONTACT: Set to specialization co-ordinator.
-# --------------------------------------------------------------------
-CONTACT = 'Charlotte Pascoe, David Hassell'
-
-# --------------------------------------------------------------------
-# AUTHORS: Set to specialization authors (comma delimited).
-# --------------------------------------------------------------------
-AUTHORS = 'David Hassell'
-
-# --------------------------------------------------------------------
-# QUALITY CONTROL STATUS: Set to 'draft' or 'complete'
-# --------------------------------------------------------------------
-QC_STATUS = 'draft'
-
-# --------------------------------------------------------------------
 # DESCRIPTION: Short description of the specialization.
 # --------------------------------------------------------------------
 DESCRIPTION = 'Key properties of the aerosol model'
@@ -34,15 +19,9 @@ DESCRIPTION = 'Key properties of the aerosol model'
 # --------------------------------------------------------------------
 # PROCESS: top level
 # --------------------------------------------------------------------
-DETAILS = OrderedDict()
-
 DETAILS['toplevel'] = {
     'description': 'Top level key properties in aerosol model',
     'properties': [
-        ('model_overview', 'str', '1.1',
-             'Overview of aerosol model.'),
-        ('model_name', 'str', '1.1',
-             'Name of aerosol model code'),
         ('scheme_scope', 'ENUM:scheme_scopes', '1.N',
             'Atmospheric domains covered by the aerosol model'),
         ('basic_approximations', 'str', '1.1',
@@ -81,12 +60,12 @@ DETAILS['timestep_framework'] = {
 DETAILS['meteorological_forcings'] = {
     'description': '',
     'properties' : [
-        ('variables_3D', 'str', '0.1',
-            'Three dimensionsal forcing variables, e.g. U, V, W, T, Q, P, conventive mass flux'),
-        ('variables_2D', 'str', '0.1',
-            'Two dimensionsal forcing variables, e.g. land-sea mask definition'),
+        ('variables_3D', 'cs-str', '0.1',
+            'Three dimensional forcing variables, e.g. U, V, W, T, Q, P, conventive mass flux'),
+        ('variables_2D', 'cs-str', '0.1',
+            'Two dimensional forcing variables, e.g. land-sea mask definition'),
         ('frequency', 'int', '0.1',
-            'Frequency with which meteological forcings are applied (in seconds).'),
+            'Frequency with which meteorological forcings are applied (in seconds).'),
         ]
 }
 
@@ -94,7 +73,7 @@ DETAILS['meteorological_forcings'] = {
 # SUB-PROCESS: RESOLUTION: The resolution of the grid.
 # --------------------------------------------------------------------
 DETAILS['resolution'] = {
-    'description': 'Resolution in the aersosol model grid',
+    'description': 'Resolution in the aerosol model grid',
     'properties': [
         ('name', 'str', '1.1',
              "This is a string usually used by the modelling group to describe the resolution of this grid, e.g. ORCA025, N512L180, T512L70 etc."),
@@ -104,8 +83,8 @@ DETAILS['resolution'] = {
              "Total number of horizontal (XY) points (or degrees of freedom) on computational grid."),
         ('number_of_vertical_levels', 'int', '0.1',
              "Number of vertical levels resolved on computational grid."),
-        ('is_adaptive_grid', 'bool', '0.1',
-             "Default is False. Set true if grid resolution changes during execution."),
+        ('is_adaptive_grid', 'bool', '1.1',
+             "Set to true if the grid resolution changes during execution."),
     ],
 }
 
@@ -115,16 +94,13 @@ DETAILS['resolution'] = {
 DETAILS['tuning_applied'] = {
     'description': 'Tuning methodology for aerosol model',
     'properties': [
-        ('description', 'str', '1.1',
-             "General overview description of tuning: explain and motivate the main targets and metrics retained. &"
-             "Document the relative weight given to climate performance metrics versus process oriented metrics, &"
-             "and on the possible conflicts with parameterization level tuning. In particular describe any struggle &"
-             "with a parameter value that required pushing it to its limits to solve a particular model deficiency."),
-        ('global_mean_metrics_used', 'str', '0.N',
-             "List set of metrics of the global mean state used in tuning model/component"),
-        ('regional_metrics_used', 'str', '0.N',
-             "List of regional metrics of mean state used in tuning model/component"),
-        ('trend_metrics_used', 'str', '0.N',
+        ('description', 'l-str', '1.1',
+             "General overview description of tuning: explain and motivate the main targets and metrics retained. Document the relative weight given to climate performance metrics versus process oriented metrics, and on the possible conflicts with parameterization level tuning. In particular describe any struggle with a parameter value that required pushing it to its limits to solve a particular model deficiency."),
+        ('global_mean_metrics_used', 'cs-str', '0.1',
+             "List of metrics of the global mean state used in tuning model/component"),
+        ('regional_metrics_used', 'cs-str', '0.1',
+             "List of metrics of regional mean state used in tuning model/component"),
+        ('trend_metrics_used', 'cs-str', '0.1',
              "List observed trend metrics used in tuning model/component"),
     ]
 }
@@ -136,7 +112,7 @@ DETAILS['toplevel:software_properties'] = {
             "Location of code for this component."),
         ('code_version','str', '0.1',
             "Code version identifier."),
-        ('code_languages','str', '0.N',
+        ('code_languages','cs-str', '0.1',
             "Code language(s)."),
     ]
 }
@@ -144,15 +120,12 @@ DETAILS['toplevel:software_properties'] = {
 # --------------------------------------------------------------------
 # KEY PROPERTIES: ENUMERATIONS
 # --------------------------------------------------------------------
-ENUMERATIONS = OrderedDict()
-
 ENUMERATIONS['scheme_scopes'] = {
     'description': 'Atmospheric domains covered by the aerosol model',
     'is_open': True,
     'members': [
-        ('troposhere', None),
+        ('troposphere', None),
         ('stratosphere', None),
-        ('mesosphere', None),
         ('mesosphere', None),
         ('whole atmosphere', None),
     ]
@@ -163,7 +136,7 @@ ENUMERATIONS['prognostic_vars_types'] = {
     'is_open': True,
     'members': [
         ('3D mass/volume ratio for aerosols', None),
-        ('3D number concenttration for aerosols', None),
+        ('3D number concentration for aerosols', None),
     ]
 }
 
@@ -176,7 +149,7 @@ ENUMERATIONS['timestepping_methods'] = {
         ('Specific timestepping (integrated)', None),
     ]
 }
-     
+
 ENUMERATIONS['integrated_scheme_types'] = {
     'description': 'Specify the type of timestep scheme',
     'is_open': True,

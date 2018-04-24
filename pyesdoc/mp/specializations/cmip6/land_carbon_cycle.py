@@ -12,21 +12,6 @@ DETAILS = OrderedDict()
 ENUMERATIONS = OrderedDict()
 
 # --------------------------------------------------------------------
-# CONTACT: Set to realm specialization co-ordinator.
-# --------------------------------------------------------------------
-CONTACT = 'David Hassell'
-
-# --------------------------------------------------------------------
-# AUTHORS: Set to realm specialization authors (comma delimited).
-# --------------------------------------------------------------------
-AUTHORS = 'David Hassell'
-
-# --------------------------------------------------------------------
-# QUALITY CONTROL STATUS: Set to 'draft' or 'complete'
-# --------------------------------------------------------------------
-QC_STATUS = 'draft'
-
-# --------------------------------------------------------------------
 # DESCRIPTION: Short description of the specialization.
 # --------------------------------------------------------------------
 DESCRIPTION = 'Land surface carbon cycle'
@@ -35,17 +20,15 @@ DESCRIPTION = 'Land surface carbon cycle'
 # CARBON CYCLE: top level
 # --------------------------------------------------------------------
 DETAILS['toplevel'] = {
-    'description': 'Properties of land surface carbon cycle',
+    'description': 'Land surface carbon cycle top level properties',
     'properties': [
-        ('overview', 'str', '1.1',
-             'Overview of carbon cycle in land surface'),
-        ('tiling', 'str', '0.1',
+        ('tiling', 'l-str', '0.1',
              'Describe the carbon cycle tiling, if any.'),
         ('time_step', 'int', '1.1',
              'Time step of carbon cycle in seconds'),
         ('anthropogenic_carbon', 'ENUM:anthropogenic_carbon_methods', '0.N',
              'Describe the treament of the anthropogenic carbon pool'),
-        ('prognostic_variables', 'str', '1.1',
+        ('prognostic_variables', 'cs-str', '1.1',
              'List the prognostic variables of the carbon scheme'),
 
     ]
@@ -59,24 +42,17 @@ DETAILS['vegetation'] = {
     'properties' : [ 
         ('number_of_carbon_pools', 'int', '1.1',
              'Enter the number of carbon pools used'),
-        ('carbon_pools', 'str', '0.1',
+        ('carbon_pools', 'cs-str', '0.1',
              'List the carbon pools used'),
-        ('forest_stand_dynamics', 'str', '0.1',
+        ('forest_stand_dynamics', 'l-str', '0.1',
              'Describe the treatment of forest stand dyanmics'),
-    ],
-    'detail_sets': [
-        'photosynthesis',
-        'autotrophic_respiration',
-        'allocation',
-        'phenology',
-        'mortality',
     ]
 }
 
 DETAILS['vegetation:photosynthesis'] = {
     'description': 'TODO',
     'properties' : [
-        ('method', 'str', '0.1',
+        ('method', 'l-str', '0.1',
             'Describe the general method used for photosynthesis (e.g. type of photosynthesis, distinction between C3 and C4 grasses, Nitrogen depencence, etc.)',)
     ]
 }
@@ -84,9 +60,9 @@ DETAILS['vegetation:photosynthesis'] = {
 DETAILS['vegetation:autotrophic_respiration'] = {
     'description': 'TODO',
     'properties' : [
-        ('maintainance_respiration', 'str', '0.1',
+        ('maintainance_respiration', 'l-str', '0.1',
             'Describe the general method used for maintainence respiration'),
-        ('growth_respiration', 'str', '0.1',
+        ('growth_respiration', 'l-str', '0.1',
             'Describe the general method used for growth respiration'),
         ]
     }
@@ -94,7 +70,7 @@ DETAILS['vegetation:autotrophic_respiration'] = {
 DETAILS['vegetation:allocation'] = {
     'description': 'TODO',
     'properties' : [
-        ('method', 'str', '1.1',
+        ('method', 'l-str', '1.1',
              'Describe the general principle behind the allocation scheme'),
         ('allocation_bins', 'ENUM:allocation_bin_types', '1.1',
             'Specify distinct carbon bins used in allocation'),
@@ -127,12 +103,12 @@ DETAILS['litter'] = {
     'properties' : [
         ('number_of_carbon_pools', 'int', '1.1',
              'Enter the number of carbon pools used'),
-        ('carbon_pools', 'str', '0.1',
+        ('carbon_pools', 'cs-str', '0.1',
              'List the carbon pools used'),
-        ('decomposition', 'str', '0.1',
+        ('decomposition', 'cs-str', '0.1',
              'List the decomposition methods used'),
-        ('method', 'str', '0.1',
-             'List the general method used'),
+        ('method', 'l-str', '0.1',
+             'Describe the general method used'),
     ]
 }
 
@@ -144,12 +120,12 @@ DETAILS['soil'] = {
     'properties' : [
         ('number_of_carbon_pools', 'int', '1.1',
              'Enter the number of carbon pools used'),
-        ('carbon_pools', 'str', '0.1',
+        ('carbon_pools', 'cs-str', '0.1',
              'List the carbon pools used'),
-        ('decomposition', 'str', '0.1',
+        ('decomposition', 'cs-str', '0.1',
              'List the decomposition methods used'),
-        ('method', 'str', '0.1',
-             'List the general method used'),
+        ('method', 'l-str', '0.1',
+             'Describe the general method used'),
     ]
 }
 
@@ -162,9 +138,9 @@ DETAILS['permafrost_carbon'] = {
     'properties' : [
         ('is_permafrost_included', 'bool', '1.1',
              'Is permafrost included?'),
-        ('emitted_greenhouse_gases', 'str', '0.1',
+        ('emitted_greenhouse_gases', 'cs-str', '0.1',
              'List the GHGs emitted'),
-        ('decomposition', 'str', '0.1',
+        ('decomposition', 'cs-str', '0.1',
              'List the decomposition methods used'),
         ('impact_on_soil_properties', 'str', '0.1',
              'Describe the impact of permafrost on soil properties'),

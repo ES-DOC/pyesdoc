@@ -1,6 +1,6 @@
 """
 
-A realm process sepecialization.
+A realm process specialization.
 
 For further information goto http://wordpress.es-doc.org/cmip6-model-specializations.
 """
@@ -13,36 +13,9 @@ DETAILS = OrderedDict()
 ENUMERATIONS = OrderedDict()
 
 # --------------------------------------------------------------------
-# CONTACT: Set to realm specialization co-ordinator.
-# --------------------------------------------------------------------
-CONTACT = 'Charlotte Pascoe'
-
-# --------------------------------------------------------------------
-# AUTHORS: Set to realm specialization authors (comma delimited).
-# --------------------------------------------------------------------
-AUTHORS = 'Charlotte Pascoe'
-
-# --------------------------------------------------------------------
-# QUALITY CONTROL STATUS: Set to 'draft' or 'complete'
-# --------------------------------------------------------------------
-QC_STATUS = 'draft'
-
-# --------------------------------------------------------------------
 # DESCRIPTION: Short description of the specialization.
 # --------------------------------------------------------------------
 DESCRIPTION = 'Characteristics of observation simulation'
-
-# --------------------------------------------------------------------
-# PROCESS: top level properties
-# --------------------------------------------------------------------
-
-DETAILS['toplevel'] = {
-    'description': "Overview of observation simulator",
-    'properties': [
-        ('overview', 'str', '1.1',
-            'Overview description of observation simulator characteristics'),
-        ]
-    }
 
 # --------------------------------------------------------------------
 # SUB-PROCESSES
@@ -50,9 +23,9 @@ DETAILS['toplevel'] = {
 DETAILS['isscp_attributes'] = {
     'description': 'ISSCP Characteristics',
     'properties': [
-        ('top_height_estimation_method', 'ENUM:isscp_top_height', '1.N',
+        ('top_height_estimation_method', 'ENUM:isscp_top_height', '0.N',
             'Cloud simulator ISSCP top height estimation methodUo'),
-        ('top_height_direction', 'ENUM:isscp_top_height_direction', '1.1',
+        ('top_height_direction', 'ENUM:isscp_top_height_direction', '0.1',
             'Cloud simulator ISSCP top height direction'),
         ]
     }
@@ -60,13 +33,13 @@ DETAILS['isscp_attributes'] = {
 DETAILS['cosp_attributes'] = {
     'description': 'CFMIP Observational Simulator Package attributes',
     'properties': [
-        ('run_configuration', 'ENUM:cosp_run_configuration', '1.1',
+        ('run_configuration', 'ENUM:cosp_run_configuration', '0.1',
             'Cloud simulator COSP run configuration'),
-        ('number_of_grid_points', 'int', '1.1',
+        ('number_of_grid_points', 'int', '0.1',
             'Cloud simulator COSP number of grid points'),
-        ('number_of_sub_columns', 'int', '1.1',
+        ('number_of_sub_columns', 'int', '0.1',
             'Cloud simulator COSP number of sub-cloumns used to simulate sub-grid variability'),
-        ('number_of_levels', 'int', '1.1',
+        ('number_of_levels', 'int', '0.1',
              'Cloud simulator COSP number of levels'),
         ]
     }
@@ -74,13 +47,13 @@ DETAILS['cosp_attributes'] = {
 DETAILS['radar_inputs'] = {
     'description': 'Characteristics of the cloud radar simulator',
     'properties': [
-        ('frequency', 'float', '1.1',
+        ('frequency', 'float', '0.1',
          'Cloud simulator radar frequency (Hz)'),
-        ('type', 'ENUM:inputs_radar_type', '1.1',
+        ('type', 'ENUM:inputs_radar_type', '0.1',
          'Cloud simulator radar type'),
-        ('gas_absorption', 'bool', '1.1',
+        ('gas_absorption', 'bool', '0.1',
          'Cloud simulator radar uses gas absorption'),
-        ('effective_radius', 'bool', '1.1',
+        ('effective_radius', 'bool', '0.1',
          'Cloud simulator radar uses effective radius'),
         ]
     }
@@ -88,9 +61,9 @@ DETAILS['radar_inputs'] = {
 DETAILS['lidar_inputs'] = {
     'description': 'Characteristics of the cloud lidar simulator',
     'properties': [
-        ('ice_types', 'ENUM:inputs_lidar_ice_type', '1.1',
+        ('ice_types', 'ENUM:inputs_lidar_ice_type', '0.1',
          'Cloud simulator lidar ice type'),
-        ('overlap', 'ENUM:inputs_lidar_overlap', '1.N',
+        ('overlap', 'ENUM:inputs_lidar_overlap', '0.N',
          'Cloud simulator lidar overlap'),
         ]
     }

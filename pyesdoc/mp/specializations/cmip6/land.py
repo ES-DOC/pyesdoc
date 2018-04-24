@@ -27,18 +27,19 @@ AUTHORS = 'David Hassell, Eric Guilyardi'
 CONTRIBUTORS = 'CMIP5 version, Rich Ellis (CEH), Phillipe Peylin (IPSL)'
 
 # --------------------------------------------------------------------
-# QUALITY CONTROL STATUS: Set to 'draft' or 'complete'
-# --------------------------------------------------------------------
-QC_STATUS = 'draft'
-
-# --------------------------------------------------------------------
 # CHANGE HISTORY: Set to list: (version, date, who, comment).
 # --------------------------------------------------------------------
 CHANGE_HISTORY = [
     ("0.1.0", "2016-04-05", "David Hassell",
         "Initialised from CMIP5 mind map + incorporating initital feedback from Rich Ellis and Pillipe Peylin"),
     ("0.2.0", "2016-06-01", "David Hassell",
-         "Incorporating comments from Christine Delire (CNRM), Bark van de Hurk (KNMI), Sergey Malyshev (GFDL), Chris Milly (GFDL)")
+         "Incorporating comments from Christine Delire (CNRM), Bark van de Hurk (KNMI), Sergey Malyshev (GFDL), Chris Milly (GFDL)"),
+    ("0.3.0", "2018-04-04", "David Hassell",
+        "Replaced some occurences of str with cs-str and l-str"),
+    ("1.0.0", "2018-04-04", "David Hassell",
+        "Moved to v1"),
+    ("1.0.1", "2018-04-04", "David Hassell",
+        "Removed some l-str"),
 ]
 
 # --------------------------------------------------------------------
@@ -49,7 +50,7 @@ CMIP5_MAPPINGS_SYNCED_AT = "0.2.0"
 # --------------------------------------------------------------------
 # DESCRIPTION: Scientific context of this scientific realm
 # --------------------------------------------------------------------
-DESCRIPTION = 'Land Surface Realm'
+DESCRIPTION = 'Land Surface'
 
 # --------------------------------------------------------------------
 # KEY PROPERTIES: Key properties for the realm which differ from model defaults (grid, timestep etc)
@@ -74,13 +75,3 @@ PROCESSES = [
     'land_river_routing',
     'land_lakes',
     ]
-
-# --------------------------------------------------------------------
-# DETAILS: top level realm details
-# --------------------------------------------------------------------
-DETAILS = OrderedDict()
-
-# --------------------------------------------------------------------
-# ENUMERATIONS: top level realm enumerations
-# --------------------------------------------------------------------
-ENUMERATIONS = OrderedDict()

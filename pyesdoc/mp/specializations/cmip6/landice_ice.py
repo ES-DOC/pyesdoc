@@ -12,21 +12,6 @@ DETAILS = OrderedDict()
 ENUMERATIONS = OrderedDict()
 
 # --------------------------------------------------------------------
-# CONTACT: Set to realm specialization co-ordinator.
-# --------------------------------------------------------------------
-CONTACT = 'David Hassell'
-
-# --------------------------------------------------------------------
-# AUTHORS: Set to realm specialization authors (comma delimited).
-# --------------------------------------------------------------------
-AUTHORS = 'David Hassell'
-
-# --------------------------------------------------------------------
-# QUALITY CONTROL STATUS: Set to 'draft' or 'complete'
-# --------------------------------------------------------------------
-QC_STATUS = 'draft'
-
-# --------------------------------------------------------------------
 # DESCRIPTION: Short description of the specialization.
 # --------------------------------------------------------------------
 DESCRIPTION = 'Ice sheet and ice shelf'
@@ -35,10 +20,8 @@ DESCRIPTION = 'Ice sheet and ice shelf'
 # KEY PROPERTIES: top level
 # --------------------------------------------------------------------
 DETAILS['toplevel'] = {
-    'description': 'General key properties in ice sheets and ice shelves',
+    'description': 'Ice sheet and ice shelf top level properties',
     'properties': [
-        ('overview', 'str', '1.1',
-             'Overview of the ice sheet and ice shelf in the land ice scheme'),
         ('grounding_line_method', 'ENUM:grounding_line_methods', '1.1',
             'Specify the technique used for modelling the grounding line in the ice sheet-ice shelf coupling'),
         ('ice_sheet', 'bool', '1.1',
@@ -56,21 +39,17 @@ DETAILS['toplevel'] = {
 DETAILS['mass_balance'] = {
     'description': 'Description of the surface mass balance treatment',
     'properties': [
-        ('surface_mass_balance', 'str', '1.1',
+        ('surface_mass_balance', 'l-str', '1.1',
             'Describe how and where the surface mass balance (SMB) is calulated. Include the temporal coupling frequeny from the atmosphere, whether or not a seperate  SMB model is used, and if so details of this model, such as its resolution'),
-    ],
-    'detail_sets': [
-        'basal',
-        'frontal'
-    ],
+    ]
 }
 
 DETAILS['mass_balance:basal'] = {
     'description': 'Description of basal melting',
     'properties': [
-        ('bedrock', 'str', '0.1',
+        ('bedrock', 'l-str', '0.1',
              'Describe the implementation of basal melting over bedrock'),
-        ('ocean', 'str', '0.1',
+        ('ocean', 'l-str', '0.1',
              'Describe the implementation of basal melting over the ocean'),
     ]
 }
@@ -78,9 +57,9 @@ DETAILS['mass_balance:basal'] = {
 DETAILS['mass_balance:frontal'] = {
     'description': 'Description of claving/melting from the ice shelf front',
     'properties': [
-        ('calving', 'str', '0.1',
+        ('calving', 'l-str', '0.1',
              'Describe the implementation of calving from the front of the ice shelf'),
-        ('melting', 'str', '0.1',
+        ('melting', 'l-str', '0.1',
              'Describe the implementation of melting from the front of the ice shelf'),
     ]
 }
@@ -91,8 +70,8 @@ DETAILS['mass_balance:frontal'] = {
 DETAILS['dynamics'] = {
     'description': '',
     'properties': [
-        ('description', 'str', '1.1',
-            'General description if ice sheet and ice shelf dynamics'),
+        ('description', 'l-str', '1.1',
+            'General description of ice sheet and ice shelf dynamics'),
         ('approximation', 'ENUM:approximation_types', '1.N',
             'Approximation type used in modelling ice dynamics'),
         ('adaptive_timestep', 'bool', '1.1',
@@ -103,9 +82,6 @@ DETAILS['dynamics'] = {
 #             'Describe the coupling method between the ice sheet and ice shelf and atmosphe#re'),
 #        ('coupling_wth_ocean', 'str', '0.1',
 #             'Describe the coupling method between the ice sheet and ice shelf and the ocea#n'),
-#    ],
-#    'detail_sets': [
-#        'numerics',
     ]
 }
 

@@ -27,11 +27,6 @@ AUTHORS = 'Eric Guilyardi'
 CONTRIBUTORS = 'CMIP5 version + Olivier Aumont (LOCEAN/IPSL), Laurent Bopp (LSCE/IPSL)'
 
 # --------------------------------------------------------------------
-# QUALITY CONTROL STATUS: Set to 'draft' or 'complete'
-# --------------------------------------------------------------------
-QC_STATUS = 'draft'
-
-# --------------------------------------------------------------------
 # CHANGE HISTORY: Set to list: (version, date, who, comment).
 # --------------------------------------------------------------------
 CHANGE_HISTORY = [
@@ -43,18 +38,25 @@ CHANGE_HISTORY = [
         "Science updates and short table draft with O. Aumont"),
     ("0.4.0", "2017-11-08", "Eric Guilyardi",
         "Science updates following community review with L. Bopp and O. Aumont"),
+    ("0.5.0", "2017-12-12", "Eric Guilyardi",
+        "Science updates following community review phase 3"),
+    ("1.0.0", "2018-02-21", "Eric Guilyardi",
+        "Version for release 1.0"),
+    ("1.0.1", "2018-04-04", "David Hassell",
+        "Replaced some occurences of 'str' with 'cs-str' and 'l-str'"),
+    ("1.0.2", "2018-04-04", "David Hassell",
+        "Removed some l-str"),
     ]
 
 # --------------------------------------------------------------------
 # CMIP5_MAPPINGS_SYNCED_AT: Latest version that has been synced with CMIP5 mappings.
 # --------------------------------------------------------------------
-# TODO
-CMIP5_MAPPINGS_SYNCED_AT = "N/A"
+CMIP5_MAPPINGS_SYNCED_AT = "1.0.0"
 
 # --------------------------------------------------------------------
 # DESCRIPTION: Scientific context of this scientific realm
 # --------------------------------------------------------------------
-DESCRIPTION = 'Ocean Biogeochemistry Realm'
+DESCRIPTION = 'Ocean Biogeochemistry'
 
 # --------------------------------------------------------------------
 # REALM: Canonical name for the domain of this scientific realm
@@ -78,13 +80,3 @@ GRID = None
 PROCESSES = [
     'ocnbgchem_tracers',
     ]
-
-# --------------------------------------------------------------------
-# DETAILS: top level realm details
-# --------------------------------------------------------------------
-DETAILS = OrderedDict()
-
-# --------------------------------------------------------------------
-# ENUMERATIONS: top level realm enumerations
-# --------------------------------------------------------------------
-ENUMERATIONS = OrderedDict()

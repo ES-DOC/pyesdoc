@@ -12,21 +12,6 @@ DETAILS = OrderedDict()
 ENUMERATIONS = OrderedDict()
 
 # --------------------------------------------------------------------
-# CONTACT: Set to realm specialization co-ordinator.
-# --------------------------------------------------------------------
-CONTACT = 'David Hassell'
-
-# --------------------------------------------------------------------
-# AUTHORS: Set to realm specialization authors (comma delimited).
-# --------------------------------------------------------------------
-AUTHORS = 'David Hassell'
-
-# --------------------------------------------------------------------
-# QUALITY CONTROL STATUS: Set to 'draft' or 'complete'
-# --------------------------------------------------------------------
-QC_STATUS = 'draft'
-
-# --------------------------------------------------------------------
 # DESCRIPTION: Short description of the specialization.
 # --------------------------------------------------------------------
 DESCRIPTION = 'Land surface soil'
@@ -35,15 +20,13 @@ DESCRIPTION = 'Land surface soil'
 # PROCESS: top level properties
 # --------------------------------------------------------------------
 DETAILS['toplevel'] = {
-    'description': 'TODO',
+    'description': 'Land surface soil top level properties',
     'properties': [
-        ('overview', 'str', '1.1',
-             'Overview of soil in the land surface'),
-        ('heat_water_coupling', 'str', '1.1',
+         ('heat_water_coupling', 'str', '1.1',
              'Describe the coupling between heat and water in the soil'),
          ('number_of_soil layers', 'int', '1.1',
              'The number of soil layers'),
-         ('prognostic_variables', 'str', '1.1',
+         ('prognostic_variables', 'cs-str', '1.1',
              'List the prognostic variables of the soil scheme'),
     ]
 }
@@ -54,7 +37,7 @@ DETAILS['toplevel'] = {
 DETAILS['soil_map'] = {
     'description': 'Key properties of the land surface soil map',
     'properties': [
-        ('description', 'str', '1.1',
+        ('description', 'l-str', '1.1',
              'General description of soil map'),
         ('structure', 'str', '0.1',
              'Describe the soil structure map'),
@@ -96,13 +79,13 @@ DETAILS['snow_free_albedo'] = {
 DETAILS['hydrology'] = {
     'description': 'Key properties of the land surface soil hydrology',
     'properties': [
-        ('description', 'str', '1.1',
+        ('description', 'l-str', '1.1',
              'General description of the soil hydrological model'),
         ('time_step', 'int', '1.1',
              'Time step of river soil hydrology in seconds'),                
-        ('tiling', 'str', '0.1',
+        ('tiling', 'l-str', '0.1',
              'Describe the soil hydrology tiling, if any.'),
-        ('vertical_discretisation', 'str' , '1.1',
+        ('vertical_discretisation', 'l-str' , '1.1',
              'Describe the typical vertical discretisation'),
         ('number_of_ground_water_layers', 'int', '1.1',
              'The number of soil layers that may contain water'),
@@ -110,10 +93,6 @@ DETAILS['hydrology'] = {
              'Describe the lateral connectivity between tiles'),
         ('method', 'ENUM:water_storage_method_types', '1.1',
              'The hydrological dynamics scheme in the land surface model'),
-    ],
-    'detail_sets': [
-        'freezing',
-        'drainage'
     ]
 }
 
@@ -122,9 +101,9 @@ DETAILS['hydrology:freezing'] = {
     'properties': [
         ('number_of_ground_ice_layers', 'int', '1.1',
             'How many soil layers may contain ground ice'),
-        ('ice_storage_method', 'str', '1.1',
+        ('ice_storage_method', 'l-str', '1.1',
             'Describe the method of ice storage'),
-        ('permafrost', 'str', '1.1',
+        ('permafrost', 'l-str', '1.1',
             'Describe the treatment of permafrost, if any, within the land surface scheme'),
         ]
     }
@@ -132,7 +111,7 @@ DETAILS['hydrology:freezing'] = {
 DETAILS['hydrology:drainage'] = {
     'description': 'TODO',
     'properties': [
-        ('description', 'str', '1.1',
+        ('description', 'l-str', '1.1',
             'General describe how drainage is included in the land surface scheme'),
         ('types', 'ENUM:drainage_types', '0.N',
             'Different types of runoff represented by the land surface model'),
@@ -145,13 +124,13 @@ DETAILS['hydrology:drainage'] = {
 DETAILS['heat_treatment'] = {
     'description': 'TODO',
     'properties': [
-        ('description', 'str', '1.1',
+        ('description', 'l-str', '1.1',
              'General description of how heat treatment properties are defined'),
         ('time_step', 'int', '1.1',
              'Time step of soil heat scheme in seconds'),                
-        ('tiling', 'str', '0.1',
+        ('tiling', 'l-str', '0.1',
              'Describe the soil heat treatment tiling, if any.'),
-        ('vertical_discretisation', 'str' , '1.1',
+        ('vertical_discretisation', 'l-str' , '1.1',
              'Describe the typical vertical discretisation'),
         ('heat_storage', 'ENUM:heat_storage_types', '1.1',
              'Specify the method of heat storage'),

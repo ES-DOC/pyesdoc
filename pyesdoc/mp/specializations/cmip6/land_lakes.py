@@ -12,21 +12,6 @@ DETAILS = OrderedDict()
 ENUMERATIONS = OrderedDict()
 
 # --------------------------------------------------------------------
-# CONTACT: Set to realm specialization co-ordinator.
-# --------------------------------------------------------------------
-CONTACT = 'David Hassell'
-
-# --------------------------------------------------------------------
-# AUTHORS: Set to realm specialization authors (comma delimited).
-# --------------------------------------------------------------------
-AUTHORS = 'David Hassell'
-
-# --------------------------------------------------------------------
-# QUALITY CONTROL STATUS: Set to 'draft' or 'complete'
-# --------------------------------------------------------------------
-QC_STATUS = 'draft'
-
-# --------------------------------------------------------------------
 # DESCRIPTION: Short description of the specialization.
 # --------------------------------------------------------------------
 DESCRIPTION = 'Land surface lakes'
@@ -35,10 +20,8 @@ DESCRIPTION = 'Land surface lakes'
 # LAKES: top level
 # --------------------------------------------------------------------
 DETAILS['toplevel'] = {
-    'description': 'TODO',
+    'description': 'Land surface lakes top level properties',
     'properties' : [
-        ('overview', 'str', '1.1',
-             'Overview of lakes in the land surface'),
         ('coupling_with_rivers', 'bool', '1.1',
              'Are lakes coupled to the river routing model component?'),
         ('time_step', 'int', '1.1',
@@ -47,7 +30,7 @@ DETAILS['toplevel'] = {
              'If coupling with rivers, which quantities are exchanged between the lakes and rivers'),
         ('vertical_grid', 'str', '0.1',
              'Describe the vertical grid of lakes'),
-        ('prognostic_variables', 'str', '1.1',
+        ('prognostic_variables', 'cs-str', '1.1',
              'List the prognostic variables of the lake scheme'),
     ]
 }
@@ -77,7 +60,7 @@ DETAILS['method'] = {
 DETAILS['wetlands'] = {
     'description': 'TODO',
     'properties' : [
-        ('description', 'str', '0.1',
+        ('description', 'l-str', '0.1',
              'Describe the treatment of wetlands, if any'),
     ]
 }

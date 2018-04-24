@@ -12,21 +12,6 @@ DETAILS = OrderedDict()
 ENUMERATIONS = OrderedDict()
 
 # --------------------------------------------------------------------
-# CONTACT: Set to specialization co-ordinator.
-# --------------------------------------------------------------------
-CONTACT = 'Charlotte Pascoe, David Hassell'
-
-# --------------------------------------------------------------------
-# AUTHORS: Set to specialization authors (comma delimited).
-# --------------------------------------------------------------------
-AUTHORS = 'David Hassell'
-
-# --------------------------------------------------------------------
-# QUALITY CONTROL STATUS: Set to 'draft' or 'complete'
-# --------------------------------------------------------------------
-QC_STATUS = 'draft'
-
-# --------------------------------------------------------------------
 # DESCRIPTION: Short description of the specialization.
 # --------------------------------------------------------------------
 DESCRIPTION = 'Atmospheric chemistry startospheric heterogeneous chemistry'
@@ -37,8 +22,6 @@ DESCRIPTION = 'Atmospheric chemistry startospheric heterogeneous chemistry'
 DETAILS['toplevel'] = {
     'description': 'Gas phase chemistry attributes',
     'properties': [
-        ('overview', 'str', '1.1',
-            'Overview stratospheric heterogenous atmospheric chemistry'), 
         ('gas_phase_species', 'ENUM:gas_phase_species', '0.N',
             'Gas phase species included in the stratospheric heterogeneous chemistry scheme.'),
         ('aerosol_species', 'ENUM:aerosol_species', '0.N',
