@@ -38,7 +38,7 @@ DETAILS['toplevel'] = {
 }
 
 DETAILS['conservation_properties'] = {
-    'description': 'TODO',
+    'description': 'Convservation',
     'properties' : [
         ('energy', 'l-str', '0.1',
              'Describe if/how energy is conserved globally and to what level (e.g. within X [units]/year)'),
@@ -50,7 +50,7 @@ DETAILS['conservation_properties'] = {
     }
 
 DETAILS['timestepping_framework'] = {
-    'description': 'TODO',
+    'description': 'Timestepping',
     'properties' : [
         ('timestep_dependent_on_atmosphere', 'bool', '1.1',
             'Is a time step dependent on the frequency of atmosphere coupling?'),
@@ -77,7 +77,7 @@ DETAILS['software_properties'] = {
 # KEY PROPERTIES: ENUMERATIONS
 # --------------------------------------------------------------------
 ENUMERATIONS['land_atmosphere_flux_exchanges_types'] = {
-    'description': 'TODO',
+    'description': 'land atmosphere flux exchanges types',
     'is_open': True,
     'members': [
         ('water', None),

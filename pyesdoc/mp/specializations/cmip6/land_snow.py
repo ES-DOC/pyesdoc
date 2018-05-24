@@ -46,12 +46,12 @@ DETAILS['toplevel'] = {
 }
 
 DETAILS['snow_albedo'] = {
-    'description': 'TODO',
+    'description': 'Snow albedo',
     'properties' : [
         ('type', 'ENUM:snow_albedo_type', '1.1',
             'Describe the treatment of snow-covered land albedo'),
         ('functions', 'ENUM:snow_albedo_function_types', '0.N',
-             'If prognostic, '),
+             'Describe the function types if prognostic snow albedo'),
         ]
     }
 # --------------------------------------------------------------------

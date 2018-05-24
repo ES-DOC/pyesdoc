@@ -53,7 +53,7 @@ DETAILS['toplevel'] = {
 # RIVER ROUTING: process
 # --------------------------------------------------------------------
 DETAILS['oceanic_discharge'] = {
-    'description': 'TODO',
+    'description': 'Oceanic discharge treatment in river routing',
     'properties' : [
         ('discharge_type', 'ENUM:discharge_types', '1.1',
              'Specify how rivers are discharged to the ocean'),

@@ -60,7 +60,7 @@ DETAILS['soil_map'] = {
 # SUB-PROCESS: Snow-free albedo
 # --------------------------------------------------------------------
 DETAILS['snow_free_albedo'] = {
-    'description': 'TODO',
+    'description': 'Snow free albedo',
     'properties' : [
         ('prognostic', 'bool', '1.1',
              'Is snow free albedo prognostic?'),
@@ -77,7 +77,7 @@ DETAILS['snow_free_albedo'] = {
 # SUB-PROCESS: Hydrology
 # --------------------------------------------------------------------
 DETAILS['hydrology'] = {
-    'description': 'Key properties of the land surface soil hydrology',
+    'description': 'Key properties of the soil hydrology',
     'properties': [
         ('description', 'l-str', '1.1',
              'General description of the soil hydrological model'),
@@ -97,11 +97,11 @@ DETAILS['hydrology'] = {
 }
 
 DETAILS['hydrology:freezing'] = {
-    'description': 'TODO',
+    'description': 'Frozen soil treatment',
     'properties': [
         ('number_of_ground_ice_layers', 'int', '1.1',
             'How many soil layers may contain ground ice'),
-        ('ice_storage_method', 'l-str', '1.1',
+        ('ice_storage_method', 'str', '1.1',
             'Describe the method of ice storage'),
         ('permafrost', 'l-str', '1.1',
             'Describe the treatment of permafrost, if any, within the land surface scheme'),
@@ -109,7 +109,7 @@ DETAILS['hydrology:freezing'] = {
     }
 
 DETAILS['hydrology:drainage'] = {
-    'description': 'TODO',
+    'description': 'Drainage treatment in the soil',
     'properties': [
         ('description', 'l-str', '1.1',
             'General describe how drainage is included in the land surface scheme'),
@@ -122,7 +122,7 @@ DETAILS['hydrology:drainage'] = {
 # SUB-PROCESS: Heat treatment
 # --------------------------------------------------------------------
 DETAILS['heat_treatment'] = {
-    'description': 'TODO',
+    'description': 'Soil heat treatment',
     'properties': [
         ('description', 'l-str', '1.1',
              'General description of how heat treatment properties are defined'),

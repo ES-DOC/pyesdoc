@@ -39,7 +39,7 @@ DETAILS['toplevel'] = {
 # LAKES: process
 # --------------------------------------------------------------------
 DETAILS['method'] = {
-    'description': 'TODO',
+    'description': 'Lakes treatment',
     'properties' : [
         ('ice_treatment', 'bool', '1.1',
              'Is lake ice included?'),
@@ -58,7 +58,7 @@ DETAILS['method'] = {
 # LAKES: Wetlands
 # --------------------------------------------------------------------
 DETAILS['wetlands'] = {
-    'description': 'TODO',
+    'description': 'Welands treatment',
     'properties' : [
         ('description', 'l-str', '0.1',
              'Describe the treatment of wetlands, if any'),
