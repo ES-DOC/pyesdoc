@@ -46,6 +46,8 @@ CHANGE_HISTORY = [
         "changed str to bool for 'profile'"),
     ("1.0.3", "2018-04-04", "David Hassell",
         "Removed some l-str"),
+    ("1.0.4", "2018-09-05", "Eric Guilyardi",
+        "Clarified a question in vertical mixing"),
     ]
 
 # --------------------------------------------------------------------

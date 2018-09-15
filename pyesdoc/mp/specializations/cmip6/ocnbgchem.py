@@ -46,6 +46,8 @@ CHANGE_HISTORY = [
         "Replaced some occurences of 'str' with 'cs-str' and 'l-str'"),
     ("1.0.2", "2018-04-04", "David Hassell",
         "Removed some l-str"),
+    ("1.0.3", "2018-09-05", "Eric Guilyardi",
+        "Spelling mistake corrected in Tracers"),
     ]
 
 # --------------------------------------------------------------------

@@ -9,9 +9,9 @@ main()
 	log "peeking at document ..."
 	activate_venv
 	if [ "$2" ]; then
-		python $PYESDOC_HOME/sh/peek.py --file=$1 --encoding=$2
+		python $PYESDOC_HOME/sh/doc_peek.py --file=$1 --encoding=$2
 	else
-		python $PYESDOC_HOME/sh/peek.py --file=$1
+		python $PYESDOC_HOME/sh/doc_peek.py --file=$1
 	fi
 }
 

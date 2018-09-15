@@ -63,7 +63,7 @@ def _emit_to_stdout(report):
     """Emits report to stdout.
 
     """
-    _emit(pyesdoc.rt.log_warning, report)
+    _emit(pyesdoc.log_warning, report)
 
 
 def _emit_to_file_system(report):
@@ -72,7 +72,7 @@ def _emit_to_file_system(report):
     """
     with open(options.outfile, 'w') as ofile:
         _emit(ofile.write, report)
-    pyesdoc.rt.log("Validation report written to ---> {0}.".format(options.outfile))
+    pyesdoc.log("Validation report written to ---> {0}.".format(options.outfile))
 
 
 def _main():
@@ -90,7 +90,7 @@ def _main():
         else:
             _emit_to_stdout(report)
     else:
-        pyesdoc.rt.log("Documemt is valid.")
+        pyesdoc.log("Documemt is valid.")
 
 
 

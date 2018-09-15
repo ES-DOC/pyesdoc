@@ -77,7 +77,7 @@ DETAILS['interior_mixing:details'] = {
         ('double_diffusion', 'bool', '1.1',
             'Is there double diffusion'),
         ('shear_mixing', 'bool', '1.1',
-            'Is there interior shear mixing'),
+            'Is interior shear mixing explicitly parameterised ?'),
         ]
     }
 

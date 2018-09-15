@@ -9,9 +9,9 @@ main()
 	log "validating document ..."
 	activate_venv
 	if [ "$2" ]; then
-		python $PYESDOC_HOME/sh/validate.py --file=$1 --outfile=$2
+		python $PYESDOC_HOME/sh/doc_validate.py --file=$1 --outfile=$2
 	else
-		python $PYESDOC_HOME/sh/validate/validate.py --file=$1
+		python $PYESDOC_HOME/sh/doc_validate.py --file=$1
 	fi
 }
 

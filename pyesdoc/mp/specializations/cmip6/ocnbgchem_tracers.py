@@ -118,7 +118,7 @@ ENUMERATIONS['nutrients_species'] = {
     'members': [
         ('Nitrogen (N)', None),
         ('Phosphorous (P)', None),
-        ('Silicium (S)', None),
+        ('Silicon (S)', None),
         ('Iron (Fe)', None),
         ]
     }
