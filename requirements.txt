@@ -1,7 +1,9 @@
 arrow
+jsonschema
 latex
 lxml
 nose
 requests
 tornado
+xlrd
 xlsxwriter
