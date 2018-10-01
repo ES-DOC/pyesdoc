@@ -43,6 +43,7 @@ DETAILS['toplevel:flux_correction'] = {
 
 DETAILS['toplevel:genealogy'] = {
     'description': 'Genealogy and history of the model',
+
     'properties':[
         ('year_released', 'str', '1.1',
             'Year the model was released'),
@@ -50,6 +51,8 @@ DETAILS['toplevel:genealogy'] = {
             'CMIP3 parent if any'),
         ('CMIP5_parent', 'str', '0.1',
             'CMIP5 parent if any'),
+        ('CMIP5_differences', 'l-str', '0.1',
+            'Briefly summarize the differences between this model and its CMIP5 parent, if applicable'),
         ('previous_name', 'str', '0.1',
             'Previously known as'),
         ]
@@ -77,8 +80,6 @@ DETAILS['toplevel:software_properties'] = {
 DETAILS['coupling'] = {
     'description': '',
     'properties':[
-        ('overview', 'l-str', '1.1',
-            'Overview of coupling in the model'),
         ('atmosphere_double_flux', 'bool', '1.1',
              'Is the atmosphere passing a double flux to the ocean and sea ice (as opposed to a single one)?'),
         ('atmosphere_fluxes_calculation_grid', 'ENUM:atmosphere_fluxes_calculation_grid', '0.1',

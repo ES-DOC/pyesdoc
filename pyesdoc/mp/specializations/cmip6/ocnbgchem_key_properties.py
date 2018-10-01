@@ -151,6 +151,25 @@ DETAILS['carbon_chemistry'] = {
         ]
     }
 
+# --------------------------------------------------------------------
+# SUB-PROCESS: TUNING APPLIED: Any tuning used to optimise the parameters
+# --------------------------------------------------------------------
+DETAILS['tuning_applied'] = {
+    'description': 'Tuning methodology for ocean biogeochemistry component',
+    'properties': [
+        ('description', 'l-str', '1.1',
+             "General overview description of tuning: explain and motivate the main targets and metrics retained. &"
+             "Document the relative weight given to climate performance metrics versus process oriented metrics, &"
+             "and on the possible conflicts with parameterization level tuning. In particular describe any struggle &"
+             "with a parameter value that required pushing it to its limits to solve a particular model deficiency."),
+        ('global_mean_metrics_used', 'cs-str', '0.1',
+             "List set of metrics of the global mean state used in tuning model/component"),
+        ('regional_metrics_used', 'cs-str', '0.1',
+             "List of regional metrics of mean state used in tuning model/component"),
+        ('trend_metrics_used', 'cs-str', '0.1',
+             "List observed trend metrics used in tuning model/component"),
+        ]
+    }
 
 # --------------------------------------------------------------------
 # KEY PROPERTIES: ENUMERATIONS

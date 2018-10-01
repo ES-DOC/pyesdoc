@@ -40,6 +40,8 @@ CHANGE_HISTORY = [
         "Moved to v1"),
     ("1.0.1", "2018-04-04", "David Hassell",
         "Removed some l-str"),
+    ("1.1.0", "2018-09-27", "David Hassell (NCAS)",
+         "Added key_propoerties.tuning_applied"),
 ]
 
 # --------------------------------------------------------------------

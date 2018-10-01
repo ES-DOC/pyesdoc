@@ -48,6 +48,8 @@ CHANGE_HISTORY = [
         "Removed some l-str"),
     ("1.0.3", "2018-09-05", "Eric Guilyardi",
         "Spelling mistake corrected in Tracers"),
+    ("1.1.0", "2018-09-27", "David Hassell (NCAS)",
+         "Added key_propoerties.tuning_applied"),
     ]
 
 # --------------------------------------------------------------------

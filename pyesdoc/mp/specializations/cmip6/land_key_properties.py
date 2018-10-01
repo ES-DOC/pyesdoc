@@ -74,6 +74,34 @@ DETAILS['software_properties'] = {
 }
 
 # --------------------------------------------------------------------
+# SUB-PROCESS: TUNING APPLIED: Any tuning used to optimise the parameters
+# --------------------------------------------------------------------
+DETAILS['tuning_applied'] = {
+    'description': 'Tuning methodology for land component',
+    'properties': [
+        ('description', 'l-str', '1.1',
+             "General overview description of tuning (if any): explain and motivate the main targets and metrics retained. &"
+             "Document the relative weight given to climate performance metrics versus process oriented metrics, &"
+             "and on the possible conflicts with parameterization level tuning. In particular describe any struggle &"
+             "with a parameter value that required pushing it to its limits to solve a particular model deficiency."),
+        ]
+    }
+
+# --------------------------------------------------------------------
+# SUB-PROCESS: TUNING APPLIED: Any tuning used to optimise the parameters
+# --------------------------------------------------------------------
+DETAILS['tuning_applied'] = {
+    'description': 'Tuning methodology for land component',
+    'properties': [
+        ('description', 'l-str', '1.1',
+             "General overview description of tuning (if any): explain and motivate the main targets and metrics retained. &"
+             "Document the relative weight given to climate performance metrics versus process oriented metrics, &"
+             "and on the possible conflicts with parameterization level tuning. In particular describe any struggle &"
+             "with a parameter value that required pushing it to its limits to solve a particular model deficiency."),
+    ]
+}
+
+# --------------------------------------------------------------------
 # KEY PROPERTIES: ENUMERATIONS
 # --------------------------------------------------------------------
 ENUMERATIONS['land_atmosphere_flux_exchanges_types'] = {
