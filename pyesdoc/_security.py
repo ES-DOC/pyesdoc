@@ -61,6 +61,7 @@ _GH_TEAMS = {
     'cmip5-noaa-gfdl': 2567266,
     'cmip5-nsf-doe-ncar': 2567267,
     'cmip5-unsw': 2567268,
+
     'cmip6-awi': 2567269,
     'cmip6-bcc': 2567270,
     'cmip6-bnu': 2567271,
@@ -94,6 +95,7 @@ _GH_TEAMS = {
     'cmip6-pcmdi': 2567299,
     'cmip6-snu': 2567300,
     'cmip6-thu': 2567301,
+
     'cordex-auth-lhtee': 2567302,
     'cordex-auth-met': 2567303,
     'cordex-awi': 2567304,
