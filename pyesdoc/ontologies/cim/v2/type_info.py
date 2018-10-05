@@ -714,6 +714,7 @@ CLASS_PROPERTIES = {
         'coupler',
         'internal_software_components',
         'key_properties',
+        'keywords',
         'meta',
         'model_type',
         'realm_coupling',
@@ -739,11 +740,12 @@ CLASS_PROPERTIES = {
         'citations',
         'description',
         'keywords',
+        'name',
         'overview',
         'properties',
         'property_sets',
+        'qc_status',
         'responsible_parties',
-        'short_name',
         'specialization_id',
         'sub_topics',
     ),
@@ -758,23 +760,24 @@ CLASS_PROPERTIES = {
         'citations',
         'description',
         'keywords',
+        'name',
         'overview',
         'properties',
         'property_sets',
+        'qc_status',
         'responsible_parties',
-        'short_name',
         'specialization_id',
         'sub_topics',
     ),
     science.TopicProperty: (
-        'qc_status',
+        'name',
         'specialization_id',
         'values',
     ),
     science.TopicPropertySet: (
         'description',
+        'name',
         'properties',
-        'short_name',
         'specialization_id',
     ),
     shared.Citation: (
@@ -1234,6 +1237,7 @@ CLASS_OWN_PROPERTIES = {
         'coupler',
         'internal_software_components',
         'key_properties',
+        'keywords',
         'meta',
         'model_type',
         'realm_coupling',
@@ -1258,23 +1262,24 @@ CLASS_OWN_PROPERTIES = {
         'citations',
         'description',
         'keywords',
+        'name',
         'overview',
         'properties',
         'property_sets',
+        'qc_status',
         'responsible_parties',
-        'short_name',
         'specialization_id',
         'sub_topics',
     ),
     science.TopicProperty: (
-        'qc_status',
+        'name',
         'specialization_id',
         'values',
     ),
     science.TopicPropertySet: (
         'description',
+        'name',
         'properties',
-        'short_name',
         'specialization_id',
     ),
     shared.Citation: (
@@ -2815,12 +2820,13 @@ CONSTRAINTS = {
         ('internal_software_components', 'type', software.SoftwareComponent),
         ('development_history', 'type', software.DevelopmentPath),
         ('responsible_parties', 'type', shared.Responsibility),
+        ('model_type', 'type', unicode),
         ('long_name', 'type', unicode),
         ('canonical_id', 'type', unicode),
         ('citations', 'type', shared.Citation),
         ('meta', 'type', shared.DocMetaInfo),
         ('version', 'type', unicode),
-        ('model_type', 'type', unicode),
+        ('keywords', 'type', unicode),
         ('key_properties', 'type', science.Topic),
         ('realm_coupling', 'type', science.RealmCoupling),
         ('name', 'type', unicode),
@@ -2835,12 +2841,13 @@ CONSTRAINTS = {
         ('internal_software_components', 'cardinality', "0.N"),
         ('development_history', 'cardinality', "0.1"),
         ('responsible_parties', 'cardinality', "0.N"),
+        ('model_type', 'cardinality', "1.1"),
         ('long_name', 'cardinality', "0.1"),
         ('canonical_id', 'cardinality', "0.1"),
         ('citations', 'cardinality', "0.N"),
         ('meta', 'cardinality', "1.1"),
         ('version', 'cardinality', "0.1"),
-        ('model_type', 'cardinality', "1.1"),
+        ('keywords', 'cardinality', "0.N"),
         ('key_properties', 'cardinality', "0.1"),
         ('realm_coupling', 'cardinality', "0.N"),
         ('name', 'cardinality', "1.1"),
@@ -2850,37 +2857,39 @@ CONSTRAINTS = {
 
         ('processes', 'type', science.Topic),
         ('sub_topics', 'type', science.Topic),
+        ('qc_status', 'type', int),
         ('description', 'type', unicode),
-        ('short_name', 'type', unicode),
-        ('specialization_id', 'type', unicode),
-        ('overview', 'type', unicode),
+        ('property_sets', 'type', science.TopicPropertySet),
         ('software_frameworks', 'type', software.Implementation),
         ('meta', 'type', shared.DocMetaInfo),
-        ('property_sets', 'type', science.TopicPropertySet),
+        ('specialization_id', 'type', unicode),
         ('responsible_parties', 'type', shared.Responsibility),
         ('canonical_name', 'type', unicode),
         ('citations', 'type', shared.Citation),
         ('grid', 'type', science.Topic),
+        ('overview', 'type', unicode),
         ('keywords', 'type', unicode),
         ('key_properties', 'type', science.Topic),
         ('properties', 'type', science.TopicProperty),
+        ('name', 'type', unicode),
 
         ('processes', 'cardinality', "1.N"),
         ('sub_topics', 'cardinality', "0.N"),
+        ('qc_status', 'cardinality', "0.1"),
         ('description', 'cardinality', "1.1"),
-        ('short_name', 'cardinality', "1.1"),
-        ('specialization_id', 'cardinality', "1.1"),
-        ('overview', 'cardinality', "0.1"),
+        ('property_sets', 'cardinality', "0.N"),
         ('software_frameworks', 'cardinality', "0.N"),
         ('meta', 'cardinality', "1.1"),
-        ('property_sets', 'cardinality', "0.N"),
+        ('specialization_id', 'cardinality', "1.1"),
         ('responsible_parties', 'cardinality', "0.N"),
         ('canonical_name', 'cardinality', "0.1"),
         ('citations', 'cardinality', "0.N"),
         ('grid', 'cardinality', "0.1"),
+        ('overview', 'cardinality', "0.1"),
         ('keywords', 'cardinality', "0.N"),
         ('key_properties', 'cardinality', "0.1"),
         ('properties', 'cardinality', "0.N"),
+        ('name', 'cardinality', "1.1"),
 
     ),
     science.RealmCoupling: (
@@ -2901,8 +2910,8 @@ CONSTRAINTS = {
     science.Topic: (
 
         ('sub_topics', 'type', science.Topic),
+        ('qc_status', 'type', int),
         ('description', 'type', unicode),
-        ('short_name', 'type', unicode),
         ('specialization_id', 'type', unicode),
         ('overview', 'type', unicode),
         ('property_sets', 'type', science.TopicPropertySet),
@@ -2910,10 +2919,11 @@ CONSTRAINTS = {
         ('citations', 'type', shared.Citation),
         ('keywords', 'type', unicode),
         ('properties', 'type', science.TopicProperty),
+        ('name', 'type', unicode),
 
         ('sub_topics', 'cardinality', "0.N"),
+        ('qc_status', 'cardinality', "0.1"),
         ('description', 'cardinality', "1.1"),
-        ('short_name', 'cardinality', "1.1"),
         ('specialization_id', 'cardinality', "1.1"),
         ('overview', 'cardinality', "0.1"),
         ('property_sets', 'cardinality', "0.N"),
@@ -2921,30 +2931,31 @@ CONSTRAINTS = {
         ('citations', 'cardinality', "0.N"),
         ('keywords', 'cardinality', "0.N"),
         ('properties', 'cardinality', "0.N"),
+        ('name', 'cardinality', "1.1"),
 
     ),
     science.TopicProperty: (
 
         ('values', 'type', unicode),
         ('specialization_id', 'type', unicode),
-        ('qc_status', 'type', int),
+        ('name', 'type', unicode),
 
         ('values', 'cardinality', "1.N"),
         ('specialization_id', 'cardinality', "1.1"),
-        ('qc_status', 'cardinality', "1.1"),
+        ('name', 'cardinality', "1.1"),
 
     ),
     science.TopicPropertySet: (
 
+        ('properties', 'type', science.TopicProperty),
         ('specialization_id', 'type', unicode),
         ('description', 'type', unicode),
-        ('short_name', 'type', unicode),
-        ('properties', 'type', science.TopicProperty),
+        ('name', 'type', unicode),
 
+        ('properties', 'cardinality', "1.N"),
         ('specialization_id', 'cardinality', "1.1"),
         ('description', 'cardinality', "1.1"),
-        ('short_name', 'cardinality', "1.1"),
-        ('properties', 'cardinality', "1.N"),
+        ('name', 'cardinality', "1.1"),
 
     ),
     shared.Citation: (
@@ -6840,6 +6851,13 @@ CONSTRAINTS = {
         ('cardinality', "0.1"),
 
     ),
+    (science.Model, 'keywords'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.N"),
+
+    ),
     (science.Model, 'meta'): (
 
         ('type', shared.DocMetaInfo),
@@ -7002,6 +7020,13 @@ CONSTRAINTS = {
         ('cardinality', "0.N"),
 
     ),
+    (science.Realm, 'name'): (
+
+        ('type', unicode),
+
+        ('cardinality', "1.1"),
+
+    ),
     (science.Realm, 'overview'): (
 
         ('type', unicode),
@@ -7023,18 +7048,18 @@ CONSTRAINTS = {
         ('cardinality', "0.N"),
 
     ),
+    (science.Realm, 'qc_status'): (
+
+        ('type', int),
+
+        ('cardinality', "0.1"),
+
+    ),
     (science.Realm, 'responsible_parties'): (
 
         ('type', shared.Responsibility),
 
         ('cardinality', "0.N"),
-
-    ),
-    (science.Realm, 'short_name'): (
-
-        ('type', unicode),
-
-        ('cardinality', "1.1"),
 
     ),
     (science.Realm, 'specialization_id'): (
@@ -7109,6 +7134,13 @@ CONSTRAINTS = {
         ('cardinality', "0.N"),
 
     ),
+    (science.Topic, 'name'): (
+
+        ('type', unicode),
+
+        ('cardinality', "1.1"),
+
+    ),
     (science.Topic, 'overview'): (
 
         ('type', unicode),
@@ -7130,18 +7162,18 @@ CONSTRAINTS = {
         ('cardinality', "0.N"),
 
     ),
+    (science.Topic, 'qc_status'): (
+
+        ('type', int),
+
+        ('cardinality', "0.1"),
+
+    ),
     (science.Topic, 'responsible_parties'): (
 
         ('type', shared.Responsibility),
 
         ('cardinality', "0.N"),
-
-    ),
-    (science.Topic, 'short_name'): (
-
-        ('type', unicode),
-
-        ('cardinality', "1.1"),
 
     ),
     (science.Topic, 'specialization_id'): (
@@ -7159,9 +7191,9 @@ CONSTRAINTS = {
 
     ),
 
-    (science.TopicProperty, 'qc_status'): (
+    (science.TopicProperty, 'name'): (
 
-        ('type', int),
+        ('type', unicode),
 
         ('cardinality', "1.1"),
 
@@ -7188,18 +7220,18 @@ CONSTRAINTS = {
         ('cardinality', "1.1"),
 
     ),
+    (science.TopicPropertySet, 'name'): (
+
+        ('type', unicode),
+
+        ('cardinality', "1.1"),
+
+    ),
     (science.TopicPropertySet, 'properties'): (
 
         ('type', science.TopicProperty),
 
         ('cardinality', "1.N"),
-
-    ),
-    (science.TopicPropertySet, 'short_name'): (
-
-        ('type', unicode),
-
-        ('cardinality', "1.1"),
 
     ),
     (science.TopicPropertySet, 'specialization_id'): (
@@ -8935,6 +8967,8 @@ http://www.geosci-model-dev-discuss.net/gmd-2016-197/)
         "Software modules which together provide the functionality for this model.",
     (science.Model, 'key_properties'):
         "Model default key properties (may be over-ridden in coupled component and realm properties).",
+    (science.Model, 'keywords'):
+        "Keywords to help re-use and discovery of this information.",
     (science.Model, 'meta'):
         "Injected document metadata.",
     (science.Model, 'model_type'):
@@ -8971,32 +9005,34 @@ http://www.geosci-model-dev-discuss.net/gmd-2016-197/)
         "A description (derived from specialization).",
     (science.Topic, 'keywords'):
         "Keywords to help re-use and discovery of this information.",
+    (science.Topic, 'name'):
+        "A short-name / key (derived from specialization).",
     (science.Topic, 'overview'):
         "An overview of topic being described.",
     (science.Topic, 'properties'):
         "Set of associated specialized properties.",
     (science.Topic, 'property_sets'):
         "Grouped specialized properties.",
+    (science.Topic, 'qc_status'):
+        "Quality control status of topic.",
     (science.Topic, 'responsible_parties'):
         "People or organisations responsible for providing this information.",
-    (science.Topic, 'short_name'):
-        "A short-name / key (derived from specialization).",
     (science.Topic, 'specialization_id'):
         "Specialization identifier (derived from specialization).",
     (science.Topic, 'sub_topics'):
         "Discrete sub-topic with details.",
-    (science.TopicProperty, 'qc_status'):
-        "Quality control status of entered values.",
+    (science.TopicProperty, 'name'):
+        "A short-name / key (derived from specialization).",
     (science.TopicProperty, 'specialization_id'):
         "Specialization identifier (derived from specialization).",
     (science.TopicProperty, 'values'):
         "User value(s).",
     (science.TopicPropertySet, 'description'):
         "A description (derived from specialization).",
+    (science.TopicPropertySet, 'name'):
+        "A short-name / key (derived from specialization).",
     (science.TopicPropertySet, 'properties'):
         "Set of associated specialized properties.",
-    (science.TopicPropertySet, 'short_name'):
-        "A short-name / key (derived from specialization).",
     (science.TopicPropertySet, 'specialization_id'):
         "Specialization identifier (derived from specialization).",
     (shared.Citation, 'abstract'):
@@ -9909,6 +9945,7 @@ KEYS = {
     (science.Model, 'coupler'): "cim.2.science.Model.coupler",
     (science.Model, 'internal_software_components'): "cim.2.science.Model.internal_software_components",
     (science.Model, 'key_properties'): "cim.2.science.Model.key_properties",
+    (science.Model, 'keywords'): "cim.2.science.Model.keywords",
     (science.Model, 'meta'): "cim.2.science.Model.meta",
     (science.Model, 'model_type'): "cim.2.science.Model.model_type",
     (science.Model, 'realm_coupling'): "cim.2.science.Model.realm_coupling",
@@ -9927,19 +9964,20 @@ KEYS = {
     (science.Topic, 'citations'): "cim.2.science.Topic.citations",
     (science.Topic, 'description'): "cim.2.science.Topic.description",
     (science.Topic, 'keywords'): "cim.2.science.Topic.keywords",
+    (science.Topic, 'name'): "cim.2.science.Topic.name",
     (science.Topic, 'overview'): "cim.2.science.Topic.overview",
     (science.Topic, 'properties'): "cim.2.science.Topic.properties",
     (science.Topic, 'property_sets'): "cim.2.science.Topic.property_sets",
+    (science.Topic, 'qc_status'): "cim.2.science.Topic.qc_status",
     (science.Topic, 'responsible_parties'): "cim.2.science.Topic.responsible_parties",
-    (science.Topic, 'short_name'): "cim.2.science.Topic.short_name",
     (science.Topic, 'specialization_id'): "cim.2.science.Topic.specialization_id",
     (science.Topic, 'sub_topics'): "cim.2.science.Topic.sub_topics",
-    (science.TopicProperty, 'qc_status'): "cim.2.science.TopicProperty.qc_status",
+    (science.TopicProperty, 'name'): "cim.2.science.TopicProperty.name",
     (science.TopicProperty, 'specialization_id'): "cim.2.science.TopicProperty.specialization_id",
     (science.TopicProperty, 'values'): "cim.2.science.TopicProperty.values",
     (science.TopicPropertySet, 'description'): "cim.2.science.TopicPropertySet.description",
+    (science.TopicPropertySet, 'name'): "cim.2.science.TopicPropertySet.name",
     (science.TopicPropertySet, 'properties'): "cim.2.science.TopicPropertySet.properties",
-    (science.TopicPropertySet, 'short_name'): "cim.2.science.TopicPropertySet.short_name",
     (science.TopicPropertySet, 'specialization_id'): "cim.2.science.TopicPropertySet.specialization_id",
     (shared.Citation, 'abstract'): "cim.2.shared.Citation.abstract",
     (shared.Citation, 'citation_detail'): "cim.2.shared.Citation.citation_detail",

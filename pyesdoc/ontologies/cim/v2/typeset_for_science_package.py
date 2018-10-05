@@ -40,6 +40,7 @@ class Model(software.ComponentBase):
         self.coupler = None                               # software.CouplingFramework (0.1)
         self.internal_software_components = []            # software.SoftwareComponent (0.N)
         self.key_properties = None                        # science.Topic (0.1)
+        self.keywords = []                                # unicode (0.N)
         self.meta = shared.DocMetaInfo()                  # shared.DocMetaInfo (1.1)
         self.model_type = None                            # science.ModelTypes (1.1)
         self.realm_coupling = []                          # science.RealmCoupling (0.N)
@@ -80,11 +81,12 @@ class Topic(object):
         self.citations = []                               # shared.Citation (0.N)
         self.description = None                           # unicode (1.1)
         self.keywords = []                                # unicode (0.N)
+        self.name = None                                  # unicode (1.1)
         self.overview = None                              # unicode (0.1)
         self.properties = []                              # science.TopicProperty (0.N)
         self.property_sets = []                           # science.TopicPropertySet (0.N)
+        self.qc_status = None                             # int (0.1)
         self.responsible_parties = []                     # shared.Responsibility (0.N)
-        self.short_name = None                            # unicode (1.1)
         self.specialization_id = None                     # unicode (1.1)
         self.sub_topics = []                              # science.Topic (0.N)
 
@@ -109,7 +111,7 @@ class TopicProperty(object):
         """
         super(TopicProperty, self).__init__()
 
-        self.qc_status = None                             # int (1.1)
+        self.name = None                                  # unicode (1.1)
         self.specialization_id = None                     # unicode (1.1)
         self.values = []                                  # unicode (1.N)
 
@@ -136,8 +138,8 @@ class TopicPropertySet(object):
         super(TopicPropertySet, self).__init__()
 
         self.description = None                           # unicode (1.1)
+        self.name = None                                  # unicode (1.1)
         self.properties = []                              # science.TopicProperty (1.N)
-        self.short_name = None                            # unicode (1.1)
         self.specialization_id = None                     # unicode (1.1)
 
 
