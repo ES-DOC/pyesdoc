@@ -43,6 +43,7 @@ _TEMPLATE_TYPE_MAPPINGS = {
     # CIM v2 templates.
     cim.v2.designing.NumericalExperiment: "cim_2/designing_numerical_experiment.html",
     cim.v2.designing.Project: "cim_2/designing_project.html",
+    cim.v2.science.Model: "cim_2/science_model.html",
     cim.v2.shared.Citation: "cim_2/shared_citation.html",
     cim.v2.shared.Party: "cim_2/shared_party.html"
 }

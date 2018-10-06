@@ -1,0 +1,45 @@
+{% extends "../core/document.html" %}
+
+{% comment ***************** %}
+{% comment Emit content      %}
+{% comment ***************** %}
+{% block doc-content %}
+
+	{% comment ************************************************** %}
+	{% comment Sub-section: overview 		    				  %}
+	{% comment ************************************************** %}
+	<section>
+		<header>
+			<h3>Overview</h3>
+		</header>
+		<table>
+			<tbody>
+			{% set ctx = TemplateInfo(doc, fieldset='cim.2.science.model-overview') %}
+			{% include ../core/fieldset.html %}
+			</tbody>
+		</table>
+	</section>
+
+	{% comment ************************************************** %}
+	{% comment Sub-section: citations   		    			  %}
+	{% comment ************************************************** %}
+	{% set _citations = collections.OrderedDict() %}
+	{% for c in load(doc.citations) %}
+		{% set _citations[c.meta.id] = c %}
+	{% end %}
+	{% if _citations.values() %}
+		{% set citations = _citations.values() %}
+		{% set header = 3 %}
+		{% include shared_citation.html %}
+	{% end %}
+
+	{% comment ************************************************** %}
+	{% comment Sub-section: responsible_parties     		      %}
+	{% comment ************************************************** %}
+	{% if doc.responsible_parties %}
+		{% set responsible_parties = doc.responsible_parties %}
+		{% set header = 3 %}
+		{% include shared_responsible_parties.html %}
+	{% end %}
+
+{% end %}

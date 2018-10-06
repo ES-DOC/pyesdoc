@@ -175,6 +175,12 @@ FIELDSETS = {
     'cim.2.designing.project-experiments':
         _get_designing_project_experiments,
 
+    'cim.2.science.model-overview' : [
+        Field('Name', path='name'),
+        Field('Description', path='description'),
+        Field('Keywords', path='keywords')
+    ],
+
     'cim.2.shared.citation' : [
         Field('DOI', path='doi',
             link_path=lambda v: "https://doi.org/{}".format(v.doi)
