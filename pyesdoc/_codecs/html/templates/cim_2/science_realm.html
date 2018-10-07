@@ -1,0 +1,23 @@
+<section>
+	{% comment ************************************************** %}
+	{% comment Sub-section: properties + property sets 		      %}
+	{% comment ************************************************** %}
+	{% for property in realm.properties %}
+		{% include science_topic_property.html %}
+	{% end %}
+	{% for property_set in [i for i in realm.property_sets if i.properties] %}
+		{% for property in property_set.properties %}
+			{% include science_topic_property.html %}
+		{% end %}
+	{% end %}
+
+	{% comment ************************************************** %}
+	{% comment Sub-section: sub-topics	 		    			  %}
+	{% comment ************************************************** %}
+	{% set topics = [realm.key_properties, realm.grid] + realm.processes %}
+	{% set topics = [i for i in topics if i is not None] %}
+	{% for topic in topics %}
+		{% set topic_prefix = realm.description %}
+		{% include science_topic.html %}
+	{% end %}
+</section>

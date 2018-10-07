@@ -1,0 +1,33 @@
+<section>
+
+	<header>
+		<h{{ header }}>{{ topic_prefix }} > {{ topic.name }}</h{{ header }}>
+	</header>
+
+	{% comment ************************************************** %}
+	{% comment Sub-section: properties + property sets	    	  %}
+	{% comment ************************************************** %}
+	{% for property in topic.properties %}
+		{% include science_topic_property.html %}
+	{% end %}
+	{% for property_set in [i for i in topic.property_sets if i.properties] %}
+		{% for property in property_set.properties %}
+			{% include science_topic_property.html %}
+		{% end %}
+	{% end %}
+
+	{% comment ************************************************** %}
+	{% comment Sub-section: sub-topics						 	  %}
+	{% comment ************************************************** %}
+	{% for sub_topic in topic.sub_topics %}
+		{% for property in sub_topic.properties %}
+			{% include science_topic_property.html %}
+		{% end %}
+		{% for property_set in [i for i in sub_topic.property_sets if i.properties] %}
+			{% for property in property_set.properties %}
+				{% include science_topic_property.html %}
+			{% end %}
+		{% end %}
+	{% end %}
+
+</section>

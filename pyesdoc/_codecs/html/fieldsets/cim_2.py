@@ -78,7 +78,7 @@ def _get_designing_numericalexperiment_relationships(e):
 # Document field sets.
 FIELDSETS = {
     'cim.2.designing.numericalexperiment-overview': [
-        Field('MIP Era', path='meta.project'),
+        Field('MIP Era', path='meta.project', input_formatter=lambda v: v.upper()),
         Field('Related MIPs',
             link_factory=lambda v: [(i.name, i.viewer_url) for i in sorted(v.related_mips, key=lambda v: v.name)]
             ),
@@ -176,8 +176,13 @@ FIELDSETS = {
         _get_designing_project_experiments,
 
     'cim.2.science.model-overview' : [
+        Field('MIP Era', path='meta.project', input_formatter=lambda v: v.upper()),
+        Field('Institute', path='meta.institute'),
+        Field('Canonical Name', path='canonical_name'),
         Field('Name', path='name'),
-        Field('Description', path='description'),
+        Field('Type', path='model_type'),
+        Field('Long Name', path='long_name'),
+        Field('Overview', path='description'),
         Field('Keywords', path='keywords')
     ],
 

@@ -1,0 +1,33 @@
+<table class='table table-bordered table-hover table-condensed' style='margin-bottom: 8px;'>
+	<tbody>
+		<tr class='bg-info'>
+			<td class='topic-property-name' colspan='2'>
+				<strong>{{ (' > '.join(property.specialization_id.split('.')[3:])).replace('_', ' ') }}</strong>
+			</td>
+		</tr>
+		<tr>
+			<td class='topic-property-description-caption'>
+				<strong>Description</strong>
+			</td>
+			<td>
+				{{ property.description }}
+			</td>
+		</tr>
+		<tr>
+			<td class='topic-property-value-caption'>
+				<strong>Value{% if len(property.values) > 1 %}s{% end %}</strong>
+			</td>
+			<td class='topic-property-value'>
+				{{ property.values[0] }}
+			</td>
+		</tr>
+		{% for value in property.values[1:] %}
+			<tr>
+				<td></td>
+				<td class='topic-property-value'>
+					{{ value }}
+				</td>
+			</tr>
+		{% end %}
+	</tbody>	
+</table>

@@ -770,6 +770,7 @@ CLASS_PROPERTIES = {
         'sub_topics',
     ),
     science.TopicProperty: (
+        'description',
         'name',
         'specialization_id',
         'values',
@@ -1272,6 +1273,7 @@ CLASS_OWN_PROPERTIES = {
         'sub_topics',
     ),
     science.TopicProperty: (
+        'description',
         'name',
         'specialization_id',
         'values',
@@ -2938,10 +2940,12 @@ CONSTRAINTS = {
 
         ('values', 'type', unicode),
         ('specialization_id', 'type', unicode),
+        ('description', 'type', unicode),
         ('name', 'type', unicode),
 
         ('values', 'cardinality', "1.N"),
         ('specialization_id', 'cardinality', "1.1"),
+        ('description', 'cardinality', "1.1"),
         ('name', 'cardinality', "1.1"),
 
     ),
@@ -7191,6 +7195,13 @@ CONSTRAINTS = {
 
     ),
 
+    (science.TopicProperty, 'description'): (
+
+        ('type', unicode),
+
+        ('cardinality', "1.1"),
+
+    ),
     (science.TopicProperty, 'name'): (
 
         ('type', unicode),
@@ -9021,6 +9032,8 @@ http://www.geosci-model-dev-discuss.net/gmd-2016-197/)
         "Specialization identifier (derived from specialization).",
     (science.Topic, 'sub_topics'):
         "Discrete sub-topic with details.",
+    (science.TopicProperty, 'description'):
+        "User friendly description (derived from specialization).",
     (science.TopicProperty, 'name'):
         "A short-name / key (derived from specialization).",
     (science.TopicProperty, 'specialization_id'):
@@ -9972,6 +9985,7 @@ KEYS = {
     (science.Topic, 'responsible_parties'): "cim.2.science.Topic.responsible_parties",
     (science.Topic, 'specialization_id'): "cim.2.science.Topic.specialization_id",
     (science.Topic, 'sub_topics'): "cim.2.science.Topic.sub_topics",
+    (science.TopicProperty, 'description'): "cim.2.science.TopicProperty.description",
     (science.TopicProperty, 'name'): "cim.2.science.TopicProperty.name",
     (science.TopicProperty, 'specialization_id'): "cim.2.science.TopicProperty.specialization_id",
     (science.TopicProperty, 'values'): "cim.2.science.TopicProperty.values",

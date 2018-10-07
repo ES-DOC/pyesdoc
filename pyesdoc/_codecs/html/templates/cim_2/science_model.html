@@ -21,6 +21,33 @@
 	</section>
 
 	{% comment ************************************************** %}
+	{% comment Sub-section: key-properties 		    			  %}
+	{% comment ************************************************** %}
+	{% if doc.key_properties %}
+		{% set topic = doc.key_properties %}
+		{% set topic_prefix = 'Top Level' %}
+		{% set header = 3 %}
+		{% include science_topic.html %}
+	{% end %}
+
+	{% comment ************************************************** %}
+	{% comment Sub-section: activity-properties 		    	  %}
+	{% comment ************************************************** %}
+	{% for topic in doc.activity_properties %}
+		{% set topic_prefix = 'Activity' %}
+		{% set header = 3 %}
+		{% include science_topic.html %}
+	{% end %}
+
+	{% comment ************************************************** %}
+	{% comment Sub-section: realms     			 		    	  %}
+	{% comment ************************************************** %}
+	{% for realm in doc.realms %}
+		{% set header = 3 %}
+		{% include science_realm.html %}
+	{% end %}
+
+	{% comment ************************************************** %}
 	{% comment Sub-section: citations   		    			  %}
 	{% comment ************************************************** %}
 	{% set _citations = collections.OrderedDict() %}

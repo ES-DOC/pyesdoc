@@ -111,6 +111,7 @@ class TopicProperty(object):
         """
         super(TopicProperty, self).__init__()
 
+        self.description = None                           # unicode (1.1)
         self.name = None                                  # unicode (1.1)
         self.specialization_id = None                     # unicode (1.1)
         self.values = []                                  # unicode (1.N)
