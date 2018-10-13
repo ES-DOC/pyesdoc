@@ -18,16 +18,18 @@
 				<strong>Value{% if len(property.values) > 1 %}s{% end %}</strong>
 			</td>
 			<td class='topic-property-value'>
-				{{ property.values[0] }}
+				{{ property.values[0] if property.values else '--' }}
 			</td>
 		</tr>
-		{% for value in property.values[1:] %}
-			<tr>
-				<td></td>
-				<td class='topic-property-value'>
-					{{ value }}
-				</td>
-			</tr>
+		{% if property.values %}
+			{% for value in property.values[1:] %}
+				<tr>
+					<td></td>
+					<td class='topic-property-value'>
+						{{ value }}
+					</td>
+				</tr>
+			{% end %}
 		{% end %}
 	</tbody>	
 </table>

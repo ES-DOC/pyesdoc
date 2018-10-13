@@ -5,5 +5,5 @@ lxml
 nose
 requests
 tornado
-xlrd
+openpyxl
 xlsxwriter
