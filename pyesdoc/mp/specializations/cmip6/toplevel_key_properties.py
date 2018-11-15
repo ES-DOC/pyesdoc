@@ -43,7 +43,6 @@ DETAILS['toplevel:flux_correction'] = {
 
 DETAILS['toplevel:genealogy'] = {
     'description': 'Genealogy and history of the model',
-
     'properties':[
         ('year_released', 'str', '1.1',
             'Year the model was released'),
