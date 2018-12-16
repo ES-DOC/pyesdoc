@@ -75,6 +75,14 @@ def _get_designing_numericalexperiment_relationships(e):
     return fields
 
 
+def _strip_array(arr, separator=','):
+    """Helper function to strip string arrays.
+
+    """
+    return [i.strip() for i in arr.split(separator) if len(i.strip()) > 0]
+
+
+
 # Document field sets.
 FIELDSETS = {
     'cim.2.designing.numericalexperiment-overview': [
@@ -84,16 +92,20 @@ FIELDSETS = {
             ),
         Field('Institute', path='meta.institute'),
         Field('Canonical Name', path='canonical_name'),
-        Field('Alternative Names', path='alternative_names',
+        Field('Aliases', path='alternative_names',
             input_formatter=lambda v: _SEPARATOR.join(v),
             predicate=lambda v: len(v.alternative_names) > 0
+            ),
+        Field('Previous Names', path='previously_known_as',
+            input_formatter=lambda v: _SEPARATOR.join(v),
+            predicate=lambda v: len(v.previously_known_as) > 0
             ),
         Field('Long Name', path='long_name'),
         Field('Tier', path='tier'),
         Field('Description', path='description'),
         Field('Rationale', path='rationale'),
         Field('Keywords', path='keywords',
-            input_formatter=lambda v: _SEPARATOR.join(v.split(','))
+            input_formatter=lambda v: _SEPARATOR.join(_strip_array(v))
             )
     ],
 

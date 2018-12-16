@@ -20,12 +20,12 @@ DESCRIPTION = 'Sea Ice Radiative Processes'
 # PROCESS: top level properties
 # --------------------------------------------------------------------
 DETAILS['toplevel'] = {
-    'description': "Radiative processes in sea ice",
+    'description': "Radiative processes in sea ice.",
     'properties': [
         ('surface_albedo', 'ENUM:seaice_albedo', '1.1',
-            "Method used to handle surface albedo."),
+            "Method used to handle surface albedo?"),
         ('ice_radiation_transmission', 'ENUM:ice_transmission', '1.N',
-            "Method by which solar radiation through sea ice is handled."),
+            "Method by which solar radiation through sea ice is handled?"),
         ]
     }
 
@@ -33,21 +33,21 @@ DETAILS['toplevel'] = {
 # PROCESS: ENUMERATIONS
 # --------------------------------------------------------------------
 ENUMERATIONS['seaice_albedo'] = {
-    'description': "Surface albedo of sea ice component",
+    'description': "Surface albedo of sea ice component.",
     'is_open': True,
     'members': [
         ('Delta-Eddington', None),
-        ('Parameterized', 'Sea ice albedo is parameterized'),
-        ('Multi-band albedo', 'Albedo value has a spectral dependence'),
+        ('Parameterized', 'Sea ice albedo is parameterized.'),
+        ('Multi-band albedo', 'Albedo value has a spectral dependence.'),
     ]
 }
 
 ENUMERATIONS['ice_transmission'] = {
-    'description': "Ice radiative transmission",
+    'description': "Ice radiative transmission.",
     'is_open': True,
     'members': [
         ('Delta-Eddington', None),
         ('Exponential attenuation', None),
-        ('Ice radiation transmission per category', 'Radiation transmission through ice is different for each sea ice category')
+        ('Ice radiation transmission per category', 'Radiation transmission through ice is different for each sea ice category.')
     ]
 }

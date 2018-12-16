@@ -23,7 +23,7 @@ DETAILS['variables'] = {
     'description': "List of prognostic variable in the sea ice model.",
     'properties': [
         ('prognostic', 'ENUM:prognostic_variables', '1.N',
-            "List of prognostic variables in the sea ice component."),
+            "Select all prognostic variables in the sea ice component."),
         ]
     }
 
@@ -31,7 +31,7 @@ DETAILS['seawater_properties'] = {
     'description': "Properties of seawater relevant to sea ice",
     'properties': [
         ('ocean_freezing_point', 'ENUM:seawater_freezing_point', '1.1',
-            "Equation used to compute the freezing point (in deg C) of seawater, as a function of salinity and pressure"),
+            "What is the equation used to compute the freezing point (in deg C) of seawater, as a function of salinity and pressure?"),
         ('ocean_freezing_point_value', 'float', '0.1',
             "If using a constant seawater freezing point, specify this value."),
         ]
@@ -48,7 +48,7 @@ DETAILS['resolution'] = {
         ('canonical_horizontal_resolution', 'str', '1.1',
             "Expression quoted for gross comparisons of resolution, eg. 50km or 0.1 degrees etc."),
         ('number_of_horizontal_gridpoints', 'int', '1.1',
-            "Total number of horizontal (XY) points (or degrees of freedom) on computational grid."),
+            "What are the total number of horizontal (XY) points (or degrees of freedom) on computational grid?"),
         ]
     }
 
@@ -59,15 +59,20 @@ DETAILS['tuning_applied'] = {
     'description': "Tuning applied to sea ice model component",
     'properties': [
         ('description', 'l-str', '1.1',
-            "General overview description of tuning: explain and motivate the main targets and metrics retained.  Document the relative weight given to climate performance metrics versus process oriented metrics, and on the possible conflicts with parameterization level tuning. In particular describe any struggle with a parameter value that required pushing it to its limits to solve a particular model deficiency."),
+            """Provide a general overview description of tuning: explain and motivate 
+            the main targets and metrics retained.  Document the relative weight given 
+            to climate performance metrics versus process oriented metrics, and on the 
+            possible conflicts with parameterization level tuning. In particular describe 
+            any struggle with a parameter value that required pushing it to its limits to 
+            solve a particular model deficiency."""),
         ('target', 'str', '1.1',
-            "What was the aim of tuning, e.g. correct sea ice minima, correct seasonal cycle."),
+            "What was the aim of tuning, e.g. correct sea ice minima, correct seasonal cycle?"),
         ('simulations', 'cs-str', '1.1',
             "Which simulations had tuning applied, e.g. all, not historical, only pi-control? "),
         ('metrics_used', 'cs-str', '1.1',
             "List any observed metrics used in tuning model/parameters"),
         ('variables', 'cs-str', '0.1',
-             "Which variables were changed during the tuning process?"),
+             "Which (if any) variables were changed during the tuning process?"),
         ]
     }
 
@@ -82,8 +87,9 @@ DETAILS['key_parameter_values'] = {
         ('snow_conductivity', 'float', '0.1', 'Snow conductivity (ks) in units of W m{-1} K{-1}'),
         ('ice_thickness_in_leads', 'float', '0.1', 'Minimum thickness of ice created in leads (h0) in units of m'),
         ('additional_parameters', 'cs-str', '0.1',
-         "If you have any additional paramterised values that you have used (e.g. minimum open water fraction or bare ice albedo), "
-         "please provide them here as a comma separated list in the form {parameter1}: {value1}, {parameter2}: {value2}, etc."),
+         """If you have any additional paramterised values that you have used (e.g. minimum open water 
+         fraction or bare ice albedo), please provide them here as a comma separated list in the form 
+         {parameter1}: {value1}, {parameter2}: {value2}, etc."""),
         ]
 }
 
@@ -94,11 +100,12 @@ DETAILS['assumptions'] = {
     'description': "Assumptions made in the sea ice model",
     'properties': [
         ('description', 'l-str', '1.1',
-            "General overview description of any *key* assumptions made in this model."),
+            "Provide a general overview description of any *key* assumptions made in this model."),
         ('on_diagnostic_variables', 'cs-str', '1.1',
             "Note any assumptions that specifically affect the CMIP6 diagnostic sea ice variables."),
         ('missing_processes', 'cs-str', '1.1',
-             "List any *key* processes missing in this model configuration? Provide full details where this affects the CMIP6 diagnostic sea ice variables?"),
+             """List any *key* processes missing in this model configuration? Provide full details 
+             where this affects the CMIP6 diagnostic sea ice variables?"""),
         ]
     }
 
@@ -111,14 +118,16 @@ DETAILS['conservation'] = {
         ('description', 'l-str', '1.1',
             "Provide a general description of conservation methodology."),
         ('properties', 'ENUM:conserved_properties', '1.N',
-            "Properties conserved in sea ice by the numerical schemes."),
+            "Which properties conserved in sea ice by the numerical schemes?"),
         ('budget', 'cs-str', '1.1',
-           "For each conserved property, specify the output variables which close the related budgets. as a comma "
-           "separated list. For example: Conserved property, variable1, variable2, variable3"),
+           """For each conserved property, specify the output variables which close 
+           the related budgets. as a comma separated list. For example: 
+           Conserved property, variable1, variable2, variable3"""),
         ('was_flux_correction_used', 'bool', '1.1',
             "Does conservation involved flux correction?"),
-        ('corrected_conserved_prognostic_variables', 'cs-str', '1.1',
-            "List any variables which are conserved by *more* than the numerical scheme alone."),
+        ('corrected_conserved_prognostic_variables', 'cs-str', '0.1',
+            """List any variables which are conserved by *more* than the numerical scheme alone 
+            (e.g. has correction applied)."""),
         ]
     }
 
@@ -147,7 +156,7 @@ ENUMERATIONS['seawater_freezing_point'] = {
     'description': 'Types of seawater freezing point equation in sea ice.',
     'is_open': True,
     'members': [
-        ('TEOS-10', 'Thermodynamic equation of seawater 2010'),
+        ('TEOS-10', 'Thermodynamic equation of seawater 2010.'),
         ('Constant', 'Constant value of seawater freezing point is used.'),
         ]
 }
@@ -163,11 +172,11 @@ ENUMERATIONS['conserved_properties'] = {
 }
 
 ENUMERATIONS['parameter_values'] = {
-    'description': 'Specify the values of the following parameters if used',
+    'description': 'Specify the values of the following parameters if used.',
     'is_open': True,
     'members': [
-        ('Ice strength (P*) in units of N m{-2}', None),
-        ('Snow conductivity (ks) in units of W m{-1} K{-1} ', None),
-        ('Minimum thickness of ice created in leads (h0) in units of m', None),
+        ('Ice strength (P*) in units of N m{-2}.', None),
+        ('Snow conductivity (ks) in units of W m{-1} K{-1}.', None),
+        ('Minimum thickness of ice created in leads (h0) in units of m.', None),
     ]
 }

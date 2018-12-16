@@ -30,7 +30,10 @@ def get_specialization(modules):
     :rtype: TopicSpecialization
 
     """
+    # Create root topic.
     root = _create_topic(modules[0], None)
+
+    # Create sub-topics.
     for module in modules[1:]:
         _create_topic(module, root)
 
@@ -117,9 +120,10 @@ def _set_topic_injected_properties(topic):
 
     # Topic sub-process properties.
     elif len(topic.path) == 4:
-        if not topic.has_property('overview'):
-            description = 'Overview of {} in {} model.'.format(topic.description.lower(), topic.root.name)
-            _set_injected_property('overview', 'str', '0.1', description, topic)
+        pass
+        # if not topic.has_property('overview'):
+        #     description = 'Overview of {} in {} model.'.format(topic.description.lower(), topic.root.name)
+        #     _set_injected_property('overview', 'str', '0.1', description, topic)
 
 
 def _set_injected_property(name, typeof, cardinality, description, topic):
@@ -170,6 +174,7 @@ def _set_topic_from_module(topic, parent):
 
             # ... sub-topic properties
             elif len(key.split(":")) == 1:
+                # Create sub-sub-processes.
                 _create_topic(obj, topic, key)
                 _set_property_collection(topic.sub_topics[-1], obj, topic.spec.ENUMERATIONS)
 

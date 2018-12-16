@@ -26,10 +26,13 @@ _TYPE_MAP = {
     "xs:integer": int,
     "xs:float": float,
     "xs:boolean": bool,
+    "aa:st__configurationType": str,
     "aa:st__integerList": list,
     "aa:st__integerListMonInc": list,
     "aa:st__stringList": list,
     "aa:st__floatList": list,
+    "aa:st__fortranType": str,
+    "aa:st__sliceType": list,
     "aa:st__uid": str,
 }
 
@@ -88,5 +91,3 @@ class TableAttribute(object):
 
         """
         return self.use_class == "internalLink"
-
-

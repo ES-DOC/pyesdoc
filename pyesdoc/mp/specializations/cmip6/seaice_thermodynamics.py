@@ -21,7 +21,7 @@ DESCRIPTION = 'Sea Ice Thermodynamics'
 # SUB-PROCESS: Processes related to energy in sea ice thermodynamics
 # --------------------------------------------------------------------
 DETAILS['energy'] = {
-    'description': 'Processes related to energy in sea ice thermodynamics',
+    'description': 'Processes related to energy in sea ice thermodynamics.',
     'properties': [
         ('enthalpy_formulation', 'ENUM:energy_formulation', '1.1',
             "What is the energy formulation?"),
@@ -32,13 +32,13 @@ DETAILS['energy'] = {
         ('basal_heat_flux', 'ENUM:basal_heat_flux_method', '1.1',
             "Method by which basal ocean heat flux is handled?"),
         ('fixed_salinity_value', 'float', '0.1',
-             "If you have selected {Thermal properties depend on S-T (with fixed salinity)}, "
-             "supply fixed salinity value for each sea ice layer."),
+             """If you have selected {Thermal properties depend on S-T (with fixed salinity)},
+             supply fixed salinity value for each sea ice layer."""),
         ('heat_content_of_precipitation', 'l-str', '1.1',
             "Describe the method by which the heat content of precipitation is handled."),
         ('precipitation_effects_on_salinity', 'l-str', '0.1',
-             "If precipitation (freshwater) that falls on sea ice affects the ocean surface "
-             "salinity please provide further details.")
+             """If precipitation (freshwater) that falls on sea ice affects the ocean surface
+             salinity please provide further details.""")
     ]
     }
 
@@ -46,7 +46,7 @@ DETAILS['energy'] = {
 # SUB-PROCESS: Mass.
 # --------------------------------------------------------------------
 DETAILS['mass'] = {
-    'description': 'Processes related to mass in sea ice thermodynamics',
+    'description': 'Processes related to mass in sea ice thermodynamics.',
     'properties': [
         ('new_ice_formation', 'l-str', '1.1',
              "Describe the method by which new sea ice is formed in open water."),
@@ -68,14 +68,15 @@ DETAILS['salt'] = {
     'description': 'Processes related to salt in sea ice thermodynamics.',
     'properties': [
         ('has_multiple_sea_ice_salinities', 'bool', '1.1',
-            "Does the sea ice model use two different salinities: one for thermodynamic calculations; and one for the salt budget?"),
+            """Does the sea ice model use two different salinities: one for
+            thermodynamic calculations; and one for the salt budget?"""),
         ('sea_ice_salinity_thermal_impacts', 'bool', '1.1',
             "Does sea ice salinity impact the thermal properties of sea ice?"),
     ]
 }
 
 DETAILS['salt:mass_transport']={
-    'description':'Mass transport of salt',
+    'description':'Mass transport of salt.',
     'properties': [
         ('salinity_type', 'ENUM:salinity_method', '1.1',
             "How is salinity determined in the mass transport of salt calculation?"),
@@ -120,7 +121,7 @@ DETAILS['ice_floe_size_distribution'] = {
         ('representation', 'ENUM:ice_floe_size', '1.1',
             "How is the sea ice floe-size represented?"),
         ('additional_details', 'l-str', '0.1',
-         "Please provide further details on any parameterisation of floe-size."),
+            "Provide further details on any parameterisation of floe-size."),
         ]
     }
 
@@ -179,17 +180,17 @@ ENUMERATIONS['thermal_conductivity_type'] = {
 }
 
 ENUMERATIONS['basal_heat_flux_method'] = {
-    'description': 'Basal ocean heat flux methodology',
+    'description': 'Basal ocean heat flux methodology.',
     'is_open': True,
     'members': [
-        ('Heat Reservoir', 'Brine inclusions treated as a heat reservoir'),
-        ('Thermal Fixed Salinity', 'Thermal properties depend on S-T (with fixed salinity)'),
-        ('Thermal Varying Salinity', 'Thermal properties depend on S-T (with varying salinity'),
+        ('Heat Reservoir', 'Brine inclusions treated as a heat reservoir.'),
+        ('Thermal Fixed Salinity', 'Thermal properties depend on S-T (with fixed salinity).'),
+        ('Thermal Varying Salinity', 'Thermal properties depend on S-T (with varying salinity.'),
     ]
 }
 
 ENUMERATIONS['heat_diffusion_type'] = {
-    'description': 'Heat diffusion types',
+    'description': 'Heat diffusion types.',
     'is_open': True,
     'members': [
         ('Conduction fluxes', None),
@@ -208,7 +209,7 @@ ENUMERATIONS['lateral_melting_types'] = {
 }
 
 ENUMERATIONS['ice_thickness_representation'] = {
-    'description': 'Types of sea ice thickness representation',
+    'description': 'Types of sea ice thickness representation.',
     'is_open': True,
     'members': [
         ('Explicit', None),
@@ -217,7 +218,7 @@ ENUMERATIONS['ice_thickness_representation'] = {
 }
 
 ENUMERATIONS['ice_floe_size'] = {
-    'description': 'Ice floe-size representation',
+    'description': 'Ice floe-size representation.',
     'is_open': True,
     'members': [
         ('Explicit', None),
@@ -226,17 +227,17 @@ ENUMERATIONS['ice_floe_size'] = {
 }
 
 ENUMERATIONS['thermo_brine_types'] = {
-    'description': 'Brine inclusion methodologies',
+    'description': 'Brine inclusion methodologies.',
     'is_open': True,
     'members': [
-        ('Heat Reservoir', 'Brine inclusions treated as a heat reservoir'),
-        ('Thermal Fixed Salinity', 'Thermal properties depend on S-T (with fixed salinity)'),
-        ('Thermal Varying Salinity', 'Thermal properties depend on S-T (with varying salinity'),
+        ('Heat Reservoir', 'Brine inclusions treated as a heat reservoir.'),
+        ('Thermal Fixed Salinity', 'Thermal properties depend on S-T (with fixed salinity).'),
+        ('Thermal Varying Salinity', 'Thermal properties depend on S-T (with varying salinity.'),
     ]
 }
 
 ENUMERATIONS['melt_pond_formulation'] = {
-    'description': 'Formulations of melt ponds',
+    'description': 'Formulations of melt ponds.',
     'is_open': True,
     'members': [
         ('Flocco and Feltham (2010)', None),
@@ -245,7 +246,7 @@ ENUMERATIONS['melt_pond_formulation'] = {
 }
 
 ENUMERATIONS['melt_pond_impacts'] = {
-    'description': 'Impacts of melt ponds',
+    'description': 'Impacts of melt ponds.',
     'is_open': True,
     'members': [
         ('Albedo', None),
@@ -255,7 +256,7 @@ ENUMERATIONS['melt_pond_impacts'] = {
 }
 
 ENUMERATIONS['snow_process_types'] = {
-    'description': 'Types of snow processes',
+    'description': 'Types of snow processes.',
     'is_open': True,
     'members': [
         ('Single-layered heat diffusion', None),
@@ -264,7 +265,7 @@ ENUMERATIONS['snow_process_types'] = {
 }
 
 ENUMERATIONS['salinity_method'] = {
-    'description': 'Method of describing the value of salinity',
+    'description': 'Method of describing the value of salinity.',
     'is_open': True,
     'members': [
         ('Constant', None),

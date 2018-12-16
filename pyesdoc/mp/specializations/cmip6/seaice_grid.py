@@ -27,11 +27,11 @@ DETAILS['discretisation:horizontal'] = {
     'description': 'Sea ice discretisation in the horizontal',
     'properties': [
         ('grid', 'ENUM:horizontal_grid', '1.1',
-            "Grid on which sea ice is horizontal discretised?"),
+            "On which grid is the sea ice horizontal discretisation?"),
         ('grid_type', 'ENUM:grid_structure', '1.1',
-            "What is the type of sea ice grid?"),
+            "What is the structure type of the sea ice grid?"),
         ('scheme', 'ENUM:numerical_scheme', '1.1',
-            "What is the advection scheme?"),
+            "What is the horizontal discretization (advection) scheme?"),
         ('thermodynamics_time_step', 'int', '1.1',
             "What is the time step in the sea ice model thermodynamic component in seconds."),
         ('dynamics_time_step', 'int', '1.1',
@@ -59,7 +59,7 @@ DETAILS['discretisation:vertical'] = {
 # SEAICE-CATEGROIES: Description of sea ice categories.
 # --------------------------------------------------------------------
 DETAILS['seaice_categories'] = {
-    'description': 'What method is used to represent sea ice categories ?',
+    'description': 'What method is used to represent sea ice categories?',
     'properties': [
         ('has_mulitple_categories', 'bool', '1.1',
             "Set to true if the sea ice model has multiple sea ice categories."),
@@ -67,13 +67,13 @@ DETAILS['seaice_categories'] = {
             "If using sea ice categories specify how many."),
         ('category_limits', 'cs-str', '1.1',
             "If using sea ice categories specify each of the category limits."),
-        ('ice_thickness_distribution_scheme', 'l-str', '1.1',
-            "Describe the sea ice thickness distribution scheme"),
+        ('ice_thickness_distribution', 'l-str', '1.1',
+            "Describe the sea ice thickness distribution."),
         ('other', 'l-str', '0.1',
-            "If the sea ice model does not use sea ice categories specify any "
-            "additional details. For example models that paramterise "
-            "the ice thickness distribution ITD (i.e there is no explicit ITD) but "
-            "there is assumed distribution and fluxes are computed accordingly."),
+            """If the sea ice model does not use sea ice categories specify any 
+            additional details. For example models that paramterise 
+            the ice thickness distribution ITD (i.e there is no explicit ITD) but 
+            there is assumed distribution and fluxes are computed accordingly."""),
         ]
     }
 
@@ -88,7 +88,7 @@ DETAILS['snow_on_seaice'] = {
         ('number_of_snow_levels', 'int', '1.1',
             "Number of vertical levels of snow on ice?"),
         ('snow_fraction', 'l-str', '1.1',
-            "Describe how the snow fraction on sea ice is determined"),
+            "Describe how the snow fraction on sea ice is determined."),
         ('additional_details', 'l-str', '0.1',
             "Specify any additional details related to snow on ice.")
         ]
@@ -98,15 +98,15 @@ DETAILS['snow_on_seaice'] = {
 # ENUMERATIONS
 # --------------------------------------------------------------------
 ENUMERATIONS['horizontal_grid'] = {
-    'description': 'Grid which is the sea ice horizontally discretised on?',
+    'description': 'Horizontal discretisation grids',
     'is_open': True,
     'members': [
         ('Ocean grid',
-            'Sea ice is horizontally discretised on the ocean grid'),
+            'Sea ice is horizontally discretised on the ocean grid.'),
         ('Atmosphere Grid',
-            'Sea ice is horizontally discretised on the atmospheric grid'),
+            'Sea ice is horizontally discretised on the atmospheric grid.'),
         ('Own Grid',
-            'Sea ice is horizontally discretised on its own independent grid'),
+            'Sea ice is horizontally discretised on its own independent grid.'),
         ]
     }
 
@@ -119,12 +119,12 @@ ENUMERATIONS['vertical_layering'] = {
         ('Two-layers',
             'Simulation uses two layers (i.e. one ice and one snow layer).'),
         ('Multi-layers',
-            'Simulation uses more than two layers'),
+            'Simulation uses more than two layers.'),
        ]
     }
 
 ENUMERATIONS['numerical_scheme'] = {
-    'description': 'Numerical schemes',
+    'description': 'Numerical advection schemes',
     'is_open': True,
     'members': [
         ('Finite differences', None),
@@ -134,7 +134,7 @@ ENUMERATIONS['numerical_scheme'] = {
     }
 
 ENUMERATIONS['grid_structure'] = {
-    'description': 'Grid structures',
+    'description': 'Grid structure types',
     'is_open': True,
     'members': [
         ('Structured grid', None),

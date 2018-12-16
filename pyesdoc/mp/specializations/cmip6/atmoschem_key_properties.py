@@ -143,7 +143,7 @@ ENUMERATIONS['chemistry_scheme_scopes'] = {
     'description': 'Atmospheric domains covered by the atmospheric chemistry model',
     'is_open': True,
     'members': [
-        ('troposhere', None),
+        ('troposphere', None),
         ('stratosphere', None),
         ('mesosphere', None),
         ('mesosphere', None),
@@ -167,7 +167,7 @@ ENUMERATIONS['timestepping_methods'] = {
         ('Integrated', None),
     ]
 }
-     
+
 ENUMERATIONS['integrated_scheme_types'] = {
     'description': 'Specify the type of timestep scheme',
     'is_open': True,

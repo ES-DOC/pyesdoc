@@ -35,13 +35,14 @@ CHANGE_HISTORY = [
 	("0.1.2", "2016-11-07", "Ruth Petrie", "Updated on the basis of discussion with Jamie Rae (UKMO)"),
     ("0.1.3", "2016-11-15", "Mark Greenslade", "Refactored based to fit in the new schema"),
     ("0.1.4", "2016-11-17", "Ruth Petrie", "Update DETAILS and SUBPROCESS names"),
-    ("0.1.5", "2016-11-18", "Ruth Petrie", "Update based on discussions with Martin Vancopppenolle (IPSL)"),
+    ("0.1.5", "2016-11-18", "Ruth Petrie", "Update based on discussions with Martin Vancoppenolle (IPSL)"),
     ("0.1.6", "2016-11-23", "Ruth Petrie", "Update based on discussions with Alexandra Jahn (University of Colorado)"),
     ("0.1.7", "2017-11-21", "Ruth Petrie", "Update based on community feedback"),
     ("0.1.8", "2017-11-23", "Ruth Petrie", "Include ice floe-size distribution"),
     ("1.0.0", "2017-12-4", "Ruth Petrie", "Include section on parameter values, first completed revision"),
     ("1.0.1", "2018-3-19", "Ruth Petrie", "Add in space for parameter values in key properties."),
     ("1.0.2", "2018-04-04", "David Hassell", "Replaced some occurences of 'str' with 'cs-str' and 'l-str'"),
+    ("1.0.3", "2018-11-30", "Ruth Petrie", "Updates based on feedback from Martin Vancoppenolle"),
 ]
 
 # --------------------------------------------------------------------
