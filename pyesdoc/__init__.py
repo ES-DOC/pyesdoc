@@ -71,6 +71,7 @@ from pyesdoc._serialization import encode
 from pyesdoc.utils import config
 from pyesdoc.utils.logger import log
 from pyesdoc.utils.logger import log_error
+from pyesdoc.utils.logger import log_warning
 
 from pyesdoc._validation import is_valid
 from pyesdoc._validation import validate
