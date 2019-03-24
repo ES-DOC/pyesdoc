@@ -2878,7 +2878,7 @@ CONSTRAINTS = {
         ('processes', 'cardinality', "1.N"),
         ('sub_topics', 'cardinality', "0.N"),
         ('qc_status', 'cardinality', "0.1"),
-        ('description', 'cardinality', "1.1"),
+        ('description', 'cardinality', "0.1"),
         ('property_sets', 'cardinality', "0.N"),
         ('software_frameworks', 'cardinality', "0.N"),
         ('meta', 'cardinality', "1.1"),
@@ -2891,7 +2891,7 @@ CONSTRAINTS = {
         ('keywords', 'cardinality', "0.N"),
         ('key_properties', 'cardinality', "0.1"),
         ('properties', 'cardinality', "0.N"),
-        ('name', 'cardinality', "1.1"),
+        ('name', 'cardinality', "0.1"),
 
     ),
     science.RealmCoupling: (
@@ -2925,7 +2925,7 @@ CONSTRAINTS = {
 
         ('sub_topics', 'cardinality', "0.N"),
         ('qc_status', 'cardinality', "0.1"),
-        ('description', 'cardinality', "1.1"),
+        ('description', 'cardinality', "0.1"),
         ('specialization_id', 'cardinality', "1.1"),
         ('overview', 'cardinality', "0.1"),
         ('property_sets', 'cardinality', "0.N"),
@@ -2933,7 +2933,7 @@ CONSTRAINTS = {
         ('citations', 'cardinality', "0.N"),
         ('keywords', 'cardinality', "0.N"),
         ('properties', 'cardinality', "0.N"),
-        ('name', 'cardinality', "1.1"),
+        ('name', 'cardinality', "0.1"),
 
     ),
     science.TopicProperty: (
@@ -2945,8 +2945,8 @@ CONSTRAINTS = {
 
         ('values', 'cardinality', "1.N"),
         ('specialization_id', 'cardinality', "1.1"),
-        ('description', 'cardinality', "1.1"),
-        ('name', 'cardinality', "1.1"),
+        ('description', 'cardinality', "0.1"),
+        ('name', 'cardinality', "0.1"),
 
     ),
     science.TopicPropertySet: (
@@ -2958,8 +2958,8 @@ CONSTRAINTS = {
 
         ('properties', 'cardinality', "1.N"),
         ('specialization_id', 'cardinality', "1.1"),
-        ('description', 'cardinality', "1.1"),
-        ('name', 'cardinality', "1.1"),
+        ('description', 'cardinality', "0.1"),
+        ('name', 'cardinality', "0.1"),
 
     ),
     shared.Citation: (
@@ -7014,7 +7014,7 @@ CONSTRAINTS = {
 
         ('type', unicode),
 
-        ('cardinality', "1.1"),
+        ('cardinality', "0.1"),
 
     ),
     (science.Realm, 'keywords'): (
@@ -7028,7 +7028,7 @@ CONSTRAINTS = {
 
         ('type', unicode),
 
-        ('cardinality', "1.1"),
+        ('cardinality', "0.1"),
 
     ),
     (science.Realm, 'overview'): (
@@ -7128,7 +7128,7 @@ CONSTRAINTS = {
 
         ('type', unicode),
 
-        ('cardinality', "1.1"),
+        ('cardinality', "0.1"),
 
     ),
     (science.Topic, 'keywords'): (
@@ -7142,7 +7142,7 @@ CONSTRAINTS = {
 
         ('type', unicode),
 
-        ('cardinality', "1.1"),
+        ('cardinality', "0.1"),
 
     ),
     (science.Topic, 'overview'): (
@@ -7199,14 +7199,14 @@ CONSTRAINTS = {
 
         ('type', unicode),
 
-        ('cardinality', "1.1"),
+        ('cardinality', "0.1"),
 
     ),
     (science.TopicProperty, 'name'): (
 
         ('type', unicode),
 
-        ('cardinality', "1.1"),
+        ('cardinality', "0.1"),
 
     ),
     (science.TopicProperty, 'specialization_id'): (
@@ -7228,14 +7228,14 @@ CONSTRAINTS = {
 
         ('type', unicode),
 
-        ('cardinality', "1.1"),
+        ('cardinality', "0.1"),
 
     ),
     (science.TopicPropertySet, 'name'): (
 
         ('type', unicode),
 
-        ('cardinality', "1.1"),
+        ('cardinality', "0.1"),
 
     ),
     (science.TopicPropertySet, 'properties'): (

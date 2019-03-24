@@ -79,9 +79,9 @@ class Topic(object):
         super(Topic, self).__init__()
 
         self.citations = []                               # shared.Citation (0.N)
-        self.description = None                           # unicode (1.1)
+        self.description = None                           # unicode (0.1)
         self.keywords = []                                # unicode (0.N)
-        self.name = None                                  # unicode (1.1)
+        self.name = None                                  # unicode (0.1)
         self.overview = None                              # unicode (0.1)
         self.properties = []                              # science.TopicProperty (0.N)
         self.property_sets = []                           # science.TopicPropertySet (0.N)
@@ -111,8 +111,8 @@ class TopicProperty(object):
         """
         super(TopicProperty, self).__init__()
 
-        self.description = None                           # unicode (1.1)
-        self.name = None                                  # unicode (1.1)
+        self.description = None                           # unicode (0.1)
+        self.name = None                                  # unicode (0.1)
         self.specialization_id = None                     # unicode (1.1)
         self.values = []                                  # unicode (1.N)
 
@@ -138,8 +138,8 @@ class TopicPropertySet(object):
         """
         super(TopicPropertySet, self).__init__()
 
-        self.description = None                           # unicode (1.1)
-        self.name = None                                  # unicode (1.1)
+        self.description = None                           # unicode (0.1)
+        self.name = None                                  # unicode (0.1)
         self.properties = []                              # science.TopicProperty (1.N)
         self.specialization_id = None                     # unicode (1.1)
 
