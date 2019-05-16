@@ -7,19 +7,6 @@
 """
 
 
-def axis_member():
-    """PLACEHOLDER for the real axis_member.
-
-    """
-    return {
-        'type': 'class',
-        'base': None,
-        'is_abstract': False,
-        'properties': [
-        ]
-    }
-
-
 def domain_requirements():
     """Properties of the domain which needs to be simulated, extent and/or resolution.
 

@@ -22,15 +22,14 @@ from . import software_enums
 from . import time as time_classes
 
 
-
 # Ontology name.
 NAME = 'cim'
 
 # Ontology version.
-VERSION = '2'
+VERSION = '2.0.40'
 
 # Ontology doc string.
-DOC = 'Metafor CIM ontology schema - version 2'
+DOC = 'ESDOC CIM ontology schema - version 2'
 
 
 def activity():
@@ -99,7 +98,7 @@ def shared():
 
 
 def software():
-    """Types that describe the software that constiutes a climate model.
+    """Types that describe the software that constitutes a climate model.
 
     """
     return {
@@ -108,7 +107,7 @@ def software():
     }
 
 def time():
-    """Types that describe the software that constiutes a climate model.
+    """Types that describe the software that constitutes a climate model.
 
     """
     return {

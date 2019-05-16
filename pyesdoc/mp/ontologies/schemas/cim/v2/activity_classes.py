@@ -65,15 +65,16 @@ def axis_member():
                 "The ensemble member index."),
             ('value', 'float', '0.1',
                 "If parameter varied, value thereof for this member."),
-            ('target_requirement', 'linked_to(designing.numerical_requirement)', '0.1',
-                "URI of the target numerical requirement, if any.")
+            ('conformance', 'linked_to(activity.conformance)', '0.1',
+                "Conformance document for the target requirement that defines this member, if any."),
         ]
     }
 
 
 def conformance():
-    """A specific conformance. Describes how a particular numerical requirement has been implemented.
-    Will normally be linked from an ensemble descriptor.
+    """A specific conformance. Describes how a particular numerical
+    requirement has been implemented.  Will normally be linked from an
+    ensemble descriptor.
 
     """
     return {

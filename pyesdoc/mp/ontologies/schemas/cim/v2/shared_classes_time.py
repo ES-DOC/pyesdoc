@@ -195,7 +195,7 @@ def time_units():
 
 
 def timeslice_list():
-    """A list of referential dates, 
+    """A list of referential dates,
         e.g. yearlist, 1,4,5 would refer to jan,april,may,
              monthlist, 1,5,6 would refer to the 1st, 5th and 6th of the month.
 

@@ -64,7 +64,7 @@ def drs_experiment():
         'base': None,
         'is_abstract': False,
         'properties': [
-            ('axis_identifer', 'designing.axis_member', '0.1',
+            ('axis_identifer', 'activity.axis_member', '0.1',
                 "FIXME."),
             ('axis_type', 'designing.ensemble_types', '0.1',
                 "Type of experimental family ensemble required."),
