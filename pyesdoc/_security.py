@@ -141,11 +141,14 @@ class AuthenticationError(Exception):
     """Raised when an authentication assertion fails.
 
     """
-    def __init__(self):
+    def __init__(self, msg):
         """Instance constructor.
 
         """
-        super(AuthenticationError, self).__init__("AUTHENTICATION FAILED")
+        err = "AUTHENTICATION FAILED"
+        if msg is not None:
+           err = "{} : {}".format(err, msg) 
+        super(AuthenticationError, self).__init__(err)
         self.response_code = _HTTP_UNAUTHENTICATED_ERROR
 
 
@@ -153,11 +156,14 @@ class AuthorizationError(Exception):
     """Raised when an authorization assertion fails.
 
     """
-    def __init__(self):
+    def __init__(self, msg):
         """Instance constructor.
 
         """
-        super(AuthorizationError, self).__init__("AUTHORIZATION FAILED")
+        err = "AUTHORIZATION FAILED"
+        if msg is not None:
+           err = "{} : {}".format(err, msg) 
+        super(AuthorizationError, self).__init__(err)
         self.response_code = _HTTP_UNAUTHORIZED_ERROR
 
 
