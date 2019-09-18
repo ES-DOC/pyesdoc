@@ -141,7 +141,7 @@ class AuthenticationError(Exception):
     """Raised when an authentication assertion fails.
 
     """
-    def __init__(self, msg):
+    def __init__(self, msg=None):
         """Instance constructor.
 
         """
@@ -156,7 +156,7 @@ class AuthorizationError(Exception):
     """Raised when an authorization assertion fails.
 
     """
-    def __init__(self, msg):
+    def __init__(self, msg=None):
         """Instance constructor.
 
         """
