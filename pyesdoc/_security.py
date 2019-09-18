@@ -184,15 +184,15 @@ def authenticate_user(credentials):
 
     # Assert access token is valid (status_code = 200).
     if r.status_code != 200:
-        raise AuthenticationError()
+        raise AuthenticationError("GitHub user authentication with access token failed")
 
     # Assert user has granted application read:org permissions.
     if 'read:org' not in r.headers['X-OAuth-Scopes']:
-        raise AuthenticationError()
+        raise AuthenticationError("Access token must have read:org scope enabled")
 
     # Assert user id matches access token.
     if json.loads(r.text)['login'] != user_id:
-        raise AuthenticationError()
+        raise AuthenticationError("Github User ID is not matched with access token")
 
     return user_id
 
