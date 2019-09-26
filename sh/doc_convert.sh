@@ -7,7 +7,8 @@ source $PYESDOC_HOME/sh/utils.sh
 main()
 {
 	log "converting document ..."
-	activate_venv
+
+	source $PYESDOC_HOME/sh/activate_venv.sh
 	python $PYESDOC_HOME/sh/doc_convert.py --file=$1 --encoding=$2
 }
 

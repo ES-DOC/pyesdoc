@@ -20,13 +20,6 @@ log()
 	fi
 }
 
-activate_venv()
-{
-	export PYTHONPATH=$PYTHONPATH:$PYESDOC_HOME
-	export PYTHONPATH=$PYTHONPATH:$PYESDOC_HOME/tests
-	source $PYESDOC_HOME/ops/venv/bin/activate
-}
-
 # Resets temporary folder.
 reset_tmp()
 {

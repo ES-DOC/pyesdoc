@@ -6,8 +6,8 @@ source $PYESDOC_HOME/sh/utils.sh
 # Main entry point.
 main()
 {
+	source $PYESDOC_HOME/sh/activate_venv.sh
 	cd $PYESDOC_HOME/notebooks
-	activate_venv
 	jupyter notebook
 
     log "virtual environment updated"

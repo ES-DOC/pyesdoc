@@ -7,7 +7,9 @@ source $PYESDOC_HOME/bash/utils.sh
 main()
 {
     log "PYESDOC : running tests ..."
-	activate_venv
+	
+	source $PYESDOC_HOME/sh/activate_venv.sh
+
 	# All tests.
 	if [ ! "$1" ]; then
 	    log "pyesdoc :: Executing all pyesdoc tests"

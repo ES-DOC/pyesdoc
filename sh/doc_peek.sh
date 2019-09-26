@@ -7,7 +7,8 @@ source $PYESDOC_HOME/sh/utils.sh
 main()
 {
 	log "peeking at document ..."
-	activate_venv
+
+	source $PYESDOC_HOME/sh/activate_venv.sh
 	if [ "$2" ]; then
 		python $PYESDOC_HOME/sh/doc_peek.py --file=$1 --encoding=$2
 	else
