@@ -1,4 +1,4 @@
-recursive-include pyesdoc *.py *.html *.txt *.tornado
+recursive-include pyesdoc *.py *.html *.txt *.tornado *.xml
 include LICENSE
 include README.rst
 include pyesdoc.conf
