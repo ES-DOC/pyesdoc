@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 """
 .. module:: activity_numerical_experiment.py
    :platform: Unix, Windows

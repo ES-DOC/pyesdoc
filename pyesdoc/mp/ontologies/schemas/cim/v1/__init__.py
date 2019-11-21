@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 """
 .. module:: cim.v1.__init__.py
    :license: GPL/CeCIL

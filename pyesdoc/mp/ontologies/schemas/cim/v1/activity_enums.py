@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 """
 .. module:: activity_enums.py
    :license: GPL/CeCIL

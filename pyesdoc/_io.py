@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 """
 .. module:: pyesdoc._io.py
    :license: GPL/CeCIL

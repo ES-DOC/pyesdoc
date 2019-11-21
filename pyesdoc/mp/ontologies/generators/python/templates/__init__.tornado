@@ -1,6 +1,4 @@
 {% autoescape None %}
-# -*- coding: utf-8 -*-
-
 """
 .. module:: {ontology-name}.v{ontology-version-packagename}.{file-name}
 

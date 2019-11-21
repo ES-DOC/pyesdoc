@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 """
 .. module:: utils.config.py
    :license: GPL/CeCIL

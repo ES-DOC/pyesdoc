@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 """
 .. module:: pyesdoc.mp.ontologies.core.property
    :platform: Unix, Windows

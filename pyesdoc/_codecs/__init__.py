@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 from pyesdoc._codecs import dictionary
 from pyesdoc._codecs import html
 from pyesdoc._codecs import json

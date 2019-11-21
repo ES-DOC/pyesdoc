@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 """
 .. module:: pyesdoc.drq.utils.py
    :copyright: Copyright "February 27, 2016", IPSL

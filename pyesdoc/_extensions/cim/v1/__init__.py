@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 from pyesdoc._extensions.cim.v1 import activity_ensemble
 from pyesdoc._extensions.cim.v1 import activity_numerical_experiment
 from pyesdoc._extensions.cim.v1 import activity_simulation_run

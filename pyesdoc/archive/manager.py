@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 """
 .. module:: archive/manager.py
    :license: GPL/CeCIL

@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 """
 .. module:: data_data_object.py
    :platform: Unix, Windows

@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 """
 .. module:: utils_model.py
    :platform: Unix, Windows

@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 """
 .. module:: cim.v1.decoder_for_quality_package.py
 

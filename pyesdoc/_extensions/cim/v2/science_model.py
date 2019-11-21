@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 """
 .. module:: designing_numerical_experiment.py
    :platform: Unix, Windows

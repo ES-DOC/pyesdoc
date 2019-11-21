@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 """
 .. module:: drs_entities.py
    :synopsis: Set of CIM v2 ontology type definitions.

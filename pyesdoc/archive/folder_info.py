@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 """
 .. module:: file_info.py
    :license: GPL/CeCIL

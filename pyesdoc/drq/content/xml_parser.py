@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 """
 .. module:: pyesdoc.drq.content.xml_parser.py
    :copyright: Copyright "February 27, 2016", IPSL

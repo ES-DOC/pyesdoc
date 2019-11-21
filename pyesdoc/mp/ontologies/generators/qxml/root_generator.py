@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 """
 .. module:: pyesdoc.mp.ontologies.generators.qxml.root_generator.py
    :platform: Unix, Windows

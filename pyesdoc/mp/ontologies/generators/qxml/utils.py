@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 """Encapsualtes a set of qxml specific name conversion operations.
 
 """

@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 """
 .. module:: quality_classes.py
    :license: GPL/CeCIL

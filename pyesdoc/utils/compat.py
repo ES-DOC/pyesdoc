@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 """
 .. module:: pyessv._utils.compay.py
    :copyright: Copyright "Feb 7, 2013", Earth System Documentation

@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 """
 .. module:: cim.v1.typeset_for_misc_package.py
 

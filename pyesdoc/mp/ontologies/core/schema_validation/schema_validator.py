@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 """
 .. module:: pyesdoc.mp.ontologies.core.schema_validation.schema_validator
    :platform: Unix, Windows

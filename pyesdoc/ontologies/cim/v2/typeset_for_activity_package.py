@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 """
 .. module:: cim.v2.typeset_for_activity_package.py
 

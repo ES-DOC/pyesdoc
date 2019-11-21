@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 """
 .. module:: shared_enums_doc.py
    :license: GPL/CeCIL

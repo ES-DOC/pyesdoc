@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 """
 .. module:: activity_simulation_run.py
    :platform: Unix, Windows

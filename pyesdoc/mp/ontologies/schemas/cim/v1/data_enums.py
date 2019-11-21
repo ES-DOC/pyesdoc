@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 """
 .. module:: data_enums.py
    :license: GPL/CeCIL

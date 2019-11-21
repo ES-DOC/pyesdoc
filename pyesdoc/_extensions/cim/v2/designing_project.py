@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 """
 .. module:: designing_project.py
    :platform: Unix, Windows

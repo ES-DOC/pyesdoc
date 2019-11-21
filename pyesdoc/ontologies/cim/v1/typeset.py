@@ -1,6 +1,4 @@
 
-# -*- coding: utf-8 -*-
-
 """
 .. module:: cim.v1.typeset.py
 

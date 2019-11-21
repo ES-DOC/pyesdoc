@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 """
 .. module:: shared_classes_time.py
    :synopsis: Set of CIM v2 ontology type definitions.

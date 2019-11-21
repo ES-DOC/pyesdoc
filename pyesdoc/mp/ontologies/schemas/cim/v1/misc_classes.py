@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 """
 .. module:: misc_classes.py
    :license: GPL/CeCIL

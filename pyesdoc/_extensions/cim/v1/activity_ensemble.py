@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 """
 .. module:: activity_ensemble.py
    :platform: Unix, Windows

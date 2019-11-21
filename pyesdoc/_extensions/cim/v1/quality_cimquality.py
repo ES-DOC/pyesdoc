@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 """
 .. module:: quality_cim_quality.py
    :platform: Unix, Windows

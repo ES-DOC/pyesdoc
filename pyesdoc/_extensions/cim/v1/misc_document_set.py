@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 """
 .. module:: misc_document_set.py
    :platform: Unix, Windows

@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 """
 .. module:: pyesdoc.ontologies.{ontology-name}.v{ontology-version-packagename}.{file-name}
 

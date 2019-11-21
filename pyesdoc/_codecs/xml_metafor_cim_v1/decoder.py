@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 """
 .. module:: xml_metafor_cim_v1.decoder.py
 
