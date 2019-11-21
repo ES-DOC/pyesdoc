@@ -159,8 +159,7 @@ FIELDSETS = {
     str(cim.v2.designing.TemporalConstraint) : [
         Field('Start Date', path='start_date.value'),
         Field('Required Duration', path='required_duration',
-            input_formatter=lambda v: "{} {}".format(v.length, v.units),
-            predicate=lambda v: v is not None
+            input_formatter=lambda v: "N/A" if v is None else "{} {}".format(v.length, v.units)
             ),
         Field('Description', path='description'),
         Field('Keywords', path='keywords',
