@@ -1,9 +1,5 @@
 arrow
-jsonschema
-latex
 lxml
 nose
 requests
 tornado
-openpyxl
-xlsxwriter
