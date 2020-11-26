@@ -7,8 +7,7 @@ source $PYESDOC_HOME/sh/utils.sh
 main()
 {
 	cd $PYESDOC_HOME
-	pipenv run python ./setup.py sdist bdist_wheel
-	pipenv run python -m twine upload --repository pypi dist/*
+	python ./setup.py sdist upload
 	log "library uploaded to pypi"
 }
 
