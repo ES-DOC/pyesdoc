@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 """
 .. module:: utils_parser.py
    :platform: Unix, Windows
