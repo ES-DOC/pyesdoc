@@ -24,10 +24,22 @@ DETAILS['discretisation'] = {
     'properties': [
         ]
     }
-
+    
 DETAILS['discretisation:horizontal'] = {
     'description': 'Atmosphere discretisation in the horizontal',
     'properties': [
+        ('coordinate_system', 'ENUM:horizontal_coordinate_system', '1.1',
+            'Name of horizontal coordinate system/projection'),
+        ('coordinate_system_details', 'str', '1.1',
+             'Details of horizontal coordinate system/projection (e.g. rotated pole, longitude of central meridian, false easting, etc.)'),
+        ('horizontal_resolution', 'str', '0.1',
+             'Resolution (in deg or km)'),
+        ('full_domain', 'str', '0.1',
+             'Size of full domain (Nlon x Nlat)'),
+        ('relaxation_zone', 'str', '1.1',
+             'Lateral Boundary Relaxation Zone (type, relaxation function, number of grid points (west, south, east, north) and other details)'),
+        ('inner_domain', 'str', '0.1',
+             'Size of inner domain (Nlon x Nlat)'),                          
         ('scheme_type', 'ENUM:dynamical_core_discretisation_horizontal_type', '1.1',
             'Horizontal discretisation type'),
         ('scheme_method', 'ENUM:dynamical_core_discretisation_horizontal_method', '1.1',
@@ -116,3 +128,13 @@ ENUMERATIONS['grid_type'] = {
         ('Icosahedral', None),
         ]
     }
+    
+ENUMERATIONS['horizontal_coordinate_system'] = {
+    'description': 'Type of horizontal projection',
+    'is_open': True,
+    'members': [
+        ('Rotated Polar', None),
+        ('Lambert Conformal Conic', None),
+        ('Others', None),
+        ]
+    }   

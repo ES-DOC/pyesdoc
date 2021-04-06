@@ -32,13 +32,8 @@ DETAILS['toplevel'] = {
 DETAILS['resolution'] = {
     'description': "Characteristics of the model resolution",
     'properties': [
-        ('horizontal_resolution_name', 'str', '1.1',
-            'This is a string usually used by the modelling group to describe the resolution of the model grid, '
-            'e.g. T42, N48.',),
         ('canonical_horizontal_resolution', 'str', '1.1',
             'Expression quoted for gross comparisons of resolution, e.g. 2.5 x 3.75 degrees lat-lon.'),
-        ('range_horizontal_resolution', 'str', '1.1',
-             "Range of horizontal resolution with spatial details, eg. 1 deg (Equator) - 0.5 deg"),
         ('number_of_vertical_levels', 'int', '1.1',
              "Number of vertical levels resolved on the computational grid."),
         ('high_top', 'bool', '1.1',
@@ -83,8 +78,6 @@ DETAILS['tuning_applied'] = {
              "Document the relative weight given to climate performance metrics versus process oriented metrics, &"
              "and on the possible conflicts with parameterization level tuning. In particular describe any struggle &"
              "with a parameter value that required pushing it to its limits to solve a particular model deficiency."),
-        ('global_mean_metrics_used', 'cs-str', '0.1',
-             "List set of metrics of the global mean state used in tuning model/component"),
         ('regional_metrics_used', 'cs-str', '0.1',
              "List of regional metrics of mean state used in tuning model/component"),
         ('trend_metrics_used', 'cs-str', '0.1',
