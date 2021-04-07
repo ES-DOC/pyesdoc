@@ -1,6 +1,6 @@
 """A realm specialization.
 
-For further information goto http://wordpress.es-doc.org/cmip6-model-specializations.
+For further information goto http://es-doc.org/cordex-model-specializations.
 
 """
 # --------------------------------------------------------------------

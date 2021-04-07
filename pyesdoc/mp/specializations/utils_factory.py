@@ -159,7 +159,7 @@ def _set_topic_from_module(topic, parent):
         topic.change_history = topic.spec.CHANGE_HISTORY
         topic.contributors = topic.spec.CONTRIBUTORS
         topic.name = topic.spec.__name__
-        topic.id = "cmip6.{}".format(topic.name)
+        topic.id = "{}.{}".format(topic.spec.__file__.split("/")[-2], topic.name)
 
     # Assign properties / property sets.
     if hasattr(topic.spec, "DETAILS") and hasattr(topic.spec, "ENUMERATIONS"):

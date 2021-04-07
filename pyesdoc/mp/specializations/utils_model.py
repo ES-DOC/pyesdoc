@@ -46,7 +46,7 @@ class TopicSpecialization(object):
         """Instance representation.
 
         """
-        return self.id
+        return str(self.id)
 
 
     def __getitem__(self, type_key):
@@ -82,8 +82,6 @@ class TopicSpecialization(object):
             return TYPE_KEY_GRID
         elif self.id.endswith('.key_properties'):
             return TYPE_KEY_KEYPROPS
-
-
         elif inspect.ismodule(self.spec):
             if self.spec.__name__.endswith('_grid'):
                 return TYPE_KEY_GRID
