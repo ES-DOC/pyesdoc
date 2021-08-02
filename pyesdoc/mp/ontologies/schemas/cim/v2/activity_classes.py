@@ -1,6 +1,9 @@
+# -*- coding: utf-8 -*-
+
 """
 .. module:: activity_classes.py
-   :synopsis: Set of CIM v2 ontology type definitions.
+   :synopsis: Set of CIM v2 ontology type definitions
+   which describe actions within an ES-DOC workflow.
 
 """
 
@@ -20,7 +23,7 @@ def activity():
                 "List of names by which the activity is also known."),
             ('canonical_name', 'str', '0.1',
                 "Community defined identifier or name."),
-            ('citations', 'shared.citation', '0.N',
+            ('citations', 'linked_to(shared.citation)', '0.N',
                 "Set of pertinent citations."),
             ('description', 'str', '0.1',
                 "Description of what is to be done (or was done)."),
@@ -34,7 +37,7 @@ def activity():
                 "Longer version of activity name."),
             ('name', 'str', '1.1',
                 "Short name or abbreviation."),
-            ('responsible_parties', 'linked_to(shared.responsibility)', '0.N',
+            ('responsible_parties', 'shared.responsibility', '0.N',
                 "People or organisations responsible for activity."),
             ('previously_known_as', 'str', '0.N',
                 "List of names by which the activity was formerly known."),
@@ -62,9 +65,11 @@ def axis_member():
             ('index', 'int', '1.1',
                 "The ensemble member index."),
             ('value', 'float', '0.1',
-                "If parameter varied, value thereof for this member."),
+                "If parameter varied; value for this member."),
             ('conformance', 'linked_to(activity.conformance)', '0.1',
                 "Conformance document for the target requirement that defines this member, if any."),
+            ('axis', 'linked_to(activity.ensemble_axis)','1.1',
+                'The parent axis of this ensemble member')
         ]
     }
 
@@ -82,11 +87,14 @@ def conformance():
         'properties': [
             ('conformance_achieved', 'activity.conformance_type', '1.1',
                 "Summary of conformance status."),
-            ('datasets', 'data.input_dataset', '0.N',
+            ('datasets', 'linked_to(data.dataset)', '0.N',
                 "The datasets (including any modifications made to them) used for conforming to the target requirement."),
-            ('target_requirement', 'designing.numerical_requirement', '1.1',
+            #FIXME: 
+            #Should this be a URI of the target numerical requirement, or a linked_to reference?
+            #Either the docstring, or the target type is wrong.
+            ('target_requirement', 'linked_to(designing.numerical_requirement)', '1.1',
                 "URI of the target numerical requirement."),
-            ('models', 'science.model', '1.N',
+            ('models', 'linked_to(science.model)', '1.N',
                  'The models to which this conformance applies.'),
         ],
         'constraints': [
@@ -105,7 +113,7 @@ def conformance_type():
     """
     return {
         'type': 'enum',
-        'is_open': True,
+        'is_open': False,
         'members': [
             ("Conformed", "Simulation (or ensemble) conformed to requirement"),
             ("Partially Conformed", "Simulation (or ensemble) partially conformed to requirement - details in description"),
@@ -127,20 +135,20 @@ def ensemble():
         'base': 'activity.activity',
         'is_abstract': False,
         'properties': [
-            ('common_conformances', 'activity.conformance', '0.N',
+            ('common_conformances', 'linked_to(activity.conformance)', '0.N',
                 "Conformance documents for requirements common across ensemble."),
-            ('representative_performance', 'platform.performance', '0.1',
+            ('representative_performance', 'linked_to(platform.performance)', '0.1',
                 "Representative model performance across ensemble."),
-            ('documentation', 'linked_to(shared.online_resource)', '0.N',
+            ('documentation', 'shared.online_resource', '0.N',
                 "Links to web-pages and other ensemble specific documentation (including workflow descriptions)."),
-            ('ensemble_axes', 'activity.ensemble_axis', '0.N',
+            ('ensemble_axes', 'linked_to(activity.ensemble_axis)', '0.N',
                 "Set of axes for the ensemble."),
-            ('members', 'activity.ensemble_member', '1.N',
-                "The set of ensemble members."),
-            ('uber_ensembles', 'activity.uber_ensemble', '0.N',
+            ('uber_ensembles', 'linked_to(activity.uber_ensemble)', '0.N',
                 "Link to one or more over-arching ensembles that might includes this one."),
-            ('experiments', 'designing.numerical_experiment', '1.N',
-                "Experiments with which the ensemble is associated (may differ from constituent simulations).")
+            ('experiments', 'linked_to(designing.numerical_experiment)', '1.N',
+                "Experiments with which the ensemble is associated (may differ from constituent simulations)."),
+            ('members', 'linked_to(activity.simulation)', '0.N',
+                'Simulations within ensemble (should only be zero while ensemble is being defined)')
         ],
         'constraints': [
             ('cardinality', 'rationale', '0.0'),
@@ -159,12 +167,15 @@ def ensemble_axis():
         'type': 'class',
         'base': None,
         'is_abstract': False,
-        'pstr': ('{}', ('axis',)),
+        'is_document': True,
+        'pstr': ('{}', ('name',)),
         'properties': [
+            ('name','str','1.1',
+                'Short handle/name for the axis'),
             ('extra_detail', 'str', '0.1',
                 "Any extra detail required to describe how this ensemble axis was delivered."),
-            ('member', 'activity.axis_member', '1.N',
-                "Individual member descriptions along axis."),
+            ('members', 'activity.axis_member', '0.N',
+                "Individual member descriptions along axis. 0.N cardinality is only acceptable during design"),
             ('short_identifier', 'str', '1.1',
                 "e.g. 'r', 'i', 'p' or 'f' to conform with simulation ensemble variant identifiers."),
             ('target_requirement', 'linked_to(designing.numerical_requirement)', '0.1',
@@ -173,48 +184,89 @@ def ensemble_axis():
     }
 
 
-def ensemble_member():
-    """An ensemble may be a complicated interplay of axes, for example, r/i/p, not all of which
-    are populated, so we need a list of the actual simulations and how they map onto the ensemble
-    axes.
 
-    """
-    return {
-        'type': 'class',
-        'base': None,
-        'is_abstract': False,
-        'pstr': ('{}', ('simulation',)),
-        'properties': [
-            ('errata', 'linked_to(shared.online_resource)', '0.1',
-                "Link to errata associated with this simulation."),
-            ('had_performance', 'linked_to(platform.performance)', '0.1',
-                "Performance of the simulation."),
-            ('ran_on', 'linked_to(platform.machine)', '0.1',
-                "The machine on which the simulation was run."),
-            ('simulation', 'linked_to(data.simulation)', '1.1',
-                "Actual simulation description for an ensemble member. The variant id is in the simuluation document.")
-        ]
-    }
-
-
-def parent_simulation():
+def child_simulation():
     """Defines the relationship between a simulation and its parent.
 
     """
     return {
         'type': 'class',
-        'base': None,
+        'base': 'activity.simulation',
         'is_abstract': False,
         'pstr': ('{}', ('parent',)),
         'properties': [
             ('branch_method', 'str', '0.1',
-                "Description of how the simulation was branched from a parent simualtion, e.g. 'standard', 'none provided'."),
+                "Description of how the simulation was branched from a parent simulation, e.g. 'standard', 'none provided'."),
             ('branch_time_in_child', 'time.date_time', '0.1',
                 "The time at which the present simulation started in the child calendar."),
             ('branch_time_in_parent', 'time.date_time', '0.1',
                 "The time in parent simulation calendar at which this simulation was branched."),
-            ('parent', 'linked_to(data.simulation)', '1.1',
+            ('parent', 'linked_to(activity.simulation)', '1.1',
                 "The parent simulation of this child.")
+        ]
+    }
+
+
+def simulation():
+
+    """Simulation class provides the integrating link about what models
+    were run and wny.
+    """
+
+    return {
+        'type': 'class',
+        'base': 'iso.process_step',
+        'is_abstract': False,
+        'is_document': True,
+        'pstr': ('({}/{}/{})',('used','ran_for_experiments','ensemble_id')),
+        'properties': [
+            ('part_of_project', 'linked_to(designing.project)', '1.N',
+                'Project or projects for which simulation was run'),
+            ('ran_for_experiments', 'linked_to(designing.numerical_experiment)', '1.N',
+                'One or more experiments with which the simulation is associated'),
+            ('sub_experiment', 'linked_to(designing.numerical_experiment)', '0.1',
+                "For start-date ensembles, this will indicate the beginning year; for offline models driven by output from another model, this will provide the source_id and variant_label for the 'driving' model."),
+            ('used', 'linked_to(science.model)', '1.1',
+                'The model used to run the simulation'),
+            ('primary_ensemble', 'linked_to(activity.ensemble)', '0.1',
+                'Primary Ensemble (ensemble for which this simulation was first run).'),
+            ('institution', 'linked_to(shared.party)', '0.1',
+                'institution which carried out the simulation'),
+            ('parent_of', 'linked_to(activity.child_simulation)', '0.N',
+                'If appropriate, links to simulations which branched from this one'),
+            ('produced', 'linked_to(data.dataset)','0.N','Products of the simulation'),
+            ('had_performance', 'linked_to(platform.performance)', '0.1',
+             "Performance of the simulation."),
+            ('ran_on', 'linked_to(platform.machine)', '0.1',
+             "The machine on which the simulation was run."),
+            ('errata', 'shared.online_resource', '0.1',
+             "Link to errata associated with this simulation."),
+            ('ensemble_id','activity.axis_member', '0.N',
+                """ Identification within ensemble axes via axis member. 
+                 (Multiple axis members within a simulation cannot share the same ensemble_axis.)
+                 (There must be an axis_member instance for each ensemble axis in a parent ensemble.)
+                 """
+             ),
+
+            # Time
+            ('start_time', 'time.date_time', '0.1',
+                'The start date-time of the simulation. e.g. 2012-04-01 00:00:00'),
+            ('end_time', 'time.date_time', '0.1',
+                'The start date-time of the simulation. e.g. 2087-11-30 12:00:00'),
+            ('calendar', 'time.calendar', '0.1',
+                'The calendar used in the simulation'),
+
+            # Further Info URL
+            ('documentation', 'shared.online_resource', '0.1',
+                'On-line location of additional documentation'),
+
+            # Extra attributes
+            ('extra_attributes','shared.extra_attribute', '0.N',
+                'Additional attributes provided with simulation.')
+            ],
+
+        'constraints':[
+            ('cardinality', 'rationale', '0.0'),
         ]
     }
 

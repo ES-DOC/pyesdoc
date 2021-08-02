@@ -8,12 +8,13 @@ main()
 {
 	log "validating document ..."
 
-	source $PYESDOC_HOME/sh/activate_venv.sh
+    pushd $PYESDOC_HOME
 	if [ "$2" ]; then
-		python $PYESDOC_HOME/sh/doc_validate.py --file=$1 --outfile=$2
+	    pipenv run python $PYESDOC_HOME/sh/doc_validate.py --file=$1 --outfile=$2
 	else
-		python $PYESDOC_HOME/sh/doc_validate.py --file=$1
+	    pipenv run python $PYESDOC_HOME/sh/doc_validate.py --file=$1
 	fi
+	popd
 }
 
 # Invoke entry point.

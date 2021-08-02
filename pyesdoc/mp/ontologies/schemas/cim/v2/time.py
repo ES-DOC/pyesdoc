@@ -1,6 +1,9 @@
+# -*- coding: utf-8 -*-
+
 """
 .. module:: time.py
    :synopsis: Set of CIM v2 ontology type definitions.
+   required to describe temporal characteristics.
 
 """
 
@@ -61,7 +64,7 @@ def date_time():
         'type': 'class',
         'base': None,
         'is_abstract': False,
-        'pstr': ('{}(offset {})', ('value', 'offset')),
+        'pstr': ('{}(offset {})', ('value', 'is_offset')),
         'properties': [
             ('is_offset', 'bool', '0.1',
                 "Date is offset from start of an integration."),
@@ -118,8 +121,8 @@ def period_date_types():
         'is_open': False,
         'members': [
             ("unused", "Date is not used"),
-            ("date is start", "The date defines the start of the period"),
-            ("date is end", "The date is the end of the period")
+            ("from", "The date defines the start of the period"),
+            ("to", "The date is the end of the period")
         ]
     }
 
@@ -160,7 +163,7 @@ def time_period():
                 "Optional start/end date of time period."),
             ('date_type', 'time.period_date_types', '1.1',
                 "Describes how the date is used to define the period."),
-            ('length', 'str', '1.1',
+            ('length', 'float', '1.1',
                 "Duration of the time period."),
             ('units', 'time.time_units', '1.1',
                 "Appropriate time units.")

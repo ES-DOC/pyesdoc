@@ -8,8 +8,9 @@ main()
 {
 	log "converting document ..."
 
-	source $PYESDOC_HOME/sh/activate_venv.sh
-	python $PYESDOC_HOME/sh/doc_convert.py --file=$1 --encoding=$2
+    pushd $PYESDOC_HOME
+	pipenv run python $PYESDOC_HOME/sh/doc_convert.py --file=$1 --encoding=$2
+	popd
 }
 
 # Invoke entry point.

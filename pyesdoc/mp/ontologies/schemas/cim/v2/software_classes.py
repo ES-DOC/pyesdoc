@@ -1,16 +1,18 @@
-"""
-.. module:: software_classes.py
-   :synopsis: Set of CIM v2 ontology type definitions.
+# -*- coding: utf-8 -*-
 
+"""
+Set of CIM v2 ontology type definitions.
+necessary to describe software. This module has not
+been touched for a long time, and needs replacement.
 """
 
 
 def component_base():
-    """Base class for software component properties, whether a top level model,
+    """
+    Base class for software component properties, whether a top level model,
     or a specific piece of code known as a component. In software terms, a
     component is a discrete set of code that takes input data and generates output data.
     Components may or may not have scientific descriptions.
-
     """
     return {
         'type': 'class',
@@ -18,7 +20,7 @@ def component_base():
         'is_abstract': True,
         'pstr': ('{}', ('name',)),
         'properties': [
-            ('citations', 'shared.citation', '0.N',
+            ('citations', 'linked_to(shared.citation)', '0.N',
                 "Set of pertinent citations."),
             ('canonical_id', 'str', '0.1',
                 "Vocabulary identifier, where this framework/component description was constructed via a controlled vocabulary."),
@@ -33,7 +35,7 @@ def component_base():
 
             ('development_history', 'software.development_path', '0.1',
                 "History of the development of this component."),
-            ('release_date', 'datetime', '0.1',
+            ('release_date', 'time.date_time', '0.1',
                 "The date of publication of the component code (as opposed to the date of publication of the metadata document, or the date of deployment of the model)."),
             ('repository', 'shared.online_resource', '0.1',
                 "Location of code for this component."),
@@ -43,13 +45,12 @@ def component_base():
     }
 
 
-
 def implementation():
-    """Implementation information for a software framework/component, whether a top level model,
+    """
+    Implementation information for a software framework/component, whether a top level model,
     or a specific piece of code known as a 'component'. In software terms, a
     software framework/component is a discrete set of code that takes input data and generates output data.
     Software frameworks/components may or may not have scientific descriptions.
-
     """
     return {
         'type': 'class',
@@ -57,7 +58,7 @@ def implementation():
         'is_abstract': False,
         'pstr': ('{}', ('name',)),
         'properties': [
-            ('citations', 'shared.citation', '0.N',
+            ('citations', 'linked_to(shared.citation)', '0.N',
                 "Set of pertinent citations."),
             ('canonical_id', 'str', '0.1',
                 "Vocabulary identifier, where this framework/component description was constructed via a controlled vocabulary."),
@@ -80,11 +81,12 @@ def implementation():
 
 
 def composition():
-    """Describes how component variables are coupled together either to/from other
+    """
+    Describes how component variables are coupled together either to/from other
     SoftwareComponents or external data files. The variables specified by a component's
     composition must be owned by that component, or a  child of that component;
     child components cannot couple together parent variables.
-
+    #FIXME: THIS CLASS IS BELIEVED TO BE OBSOLETE AND WILL BE REVIEWED/REPLACED IN THE NEXT VERSION
     """
     return {
         'type': 'class',
@@ -100,8 +102,8 @@ def composition():
 
 
 def development_path():
-    """Describes the software development path for this model/component.
-
+    """
+    Describes the software development path for this model/component.
     """
     return {
         'type': 'class',
@@ -123,13 +125,14 @@ def development_path():
 
 
 def entry_point():
-    """Describes a function or subroutine of a SoftwareComponent.
+    """
+    Describes a function or subroutine of a SoftwareComponent.
     BFG will use these EntryPoints to define a schedule of subroutine calls for a coupled model.
     Currently, a very basic schedule can be approximated by using the 'proceeds' and 'follows' attributes,
     however a more complete system is required for full BFG compatibility.
     Every EntryPoint can have a set of arguments associated with it.
     These reference (previously defined) variables.
-
+    #FIXME: THIS CLASS IS BELIEVED TO BE OBSOLETE AND WILL BE REVIEWED/REPLACED IN THE NEXT VERSION
     """
     return {
         'type': 'class',
@@ -143,8 +146,9 @@ def entry_point():
 
 
 def gridspec():
-    """Fully defines the computational grid used.
-
+    """
+    Fully defines the computational grid used.
+    #FIXME: THIS CLASS IS BELIEVED TO BE OBSOLETE AND WILL BE REVIEWED/REPLACED IN THE NEXT VERSION
     """
     return {
         'type': 'class',
@@ -158,14 +162,15 @@ def gridspec():
 
 
 def software_component():
-    """An embedded piece of software that does not normally function as a standalone model (although
+    """
+    An embedded piece of software that does not normally function as a standalone model (although
     it may be used standalone in a test harness).
-
     """
     return {
         'type': 'class',
         'base': 'software.component_base',
         'is_abstract': False,
+        'is_document': True,
         'properties': [
             ('composition', 'software.composition', '0.1',
                 "#FIXME."),
@@ -181,9 +186,9 @@ def software_component():
                 "Language the component is written in."),
             ('license', 'str', '0.1',
                 "The license held by this piece of software."),
-            ('sub_components', 'software.software_component', '0.N',
+            ('sub_components', 'linked_to(software.software_component)', '0.N',
                 "Internal software sub-components of this component."),
-            ('depends_on', 'software.software_component', '0.N',        # added dch/ssw 1016-0804
+            ('depends_on', 'linked_to(software.software_component)', '0.N',        # added dch/ssw 1016-0804
                 "The software components whose outputs are inputs to this software component."),
             # Would like to think about making this a stand-alone document
         ]
@@ -195,7 +200,7 @@ def variable():
     available as a connection to other software components. Note that these variables may only exist
     within the software workflow as interim quantities or coupling endpoints. Input and output
     variables will be a subset of these software variables.
-
+    #FIXME: THIS CLASS IS BELIEVED TO BE OBSOLETE AND WILL BE REVIEWED/REPLACED IN THE NEXT VERSION
     """
     return {
         'type': 'class',

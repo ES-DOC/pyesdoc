@@ -1,8 +1,13 @@
-"""
-.. module:: science_classes.py
-   :synopsis: Set of CIM v2 ontology type definitions.
+# -*- coding: utf-8 -*-
 
 """
+.. module:: science_classes.py
+   :synopsis: Set of CIM v2 ontology type definitions
+   pertaining to the description of the scientific capabilities of models
+
+"""
+
+
 def model():
     """A model component: can be executed standalone, and has as
     scientific description available via a link to a science.domain
@@ -12,7 +17,6 @@ def model():
     """
     return {
         'type': 'class',
-        # TODO: review whether science.topic works better.
         'base': 'software.component_base',
         'is_abstract': False,
         'is_document': True,
@@ -35,7 +39,7 @@ def model():
                 "Software components which are linked together using a coupler to deliver this model."),
             ('coupler', 'software.coupling_framework', '0.1',
                 "Overarching coupling framework for model."),
-            ('internal_software_components', 'software.software_component', '0.N',
+            ('internal_software_components', 'linked_to(software.software_component)', '0.N',
                 "Software modules which together provide the functionality for this model."),
         ]
     }
@@ -83,10 +87,10 @@ def realm_coupling():
                  'The model realm providing the variable (e.g. ocean)'),
             ('target_realm', 'str', '1.1',
                  'The model realm receiving the variable (e.g. atmosphere)'),
-            ('time_frequency', 'int', '1.1',
-                 'The time frequency of the coupling (in seconds)'),
+            ('time_frequency', 'str', '1.1',
+                 'The time frequency of the coupling (e.g. 1 hour)'),
             ('coupling_details', 'str', '0.1',
-                 'Description of the coupling algorithm, coupler settings, and any other information (e.g. binlinear interpolation')
+                 'Description of the coupling algorithm, and any other information (e.g. binlinear interpolation')
         ]
     }
 
@@ -98,9 +102,9 @@ def topic():
         'type': 'class',
         'base': None,
         'is_abstract': False,
-        'pstr': ('{}', ('short_name',)),
+        'pstr': ('{}', ('name',)),
         'properties': [
-            ('citations', 'shared.citation', '0.N',
+            ('citations', 'linked_to(shared.citation)', '0.N',
                 "Set of pertinent citations."),
             ('description', 'str', '0.1',
                 "A description (derived from specialization)."),
@@ -118,7 +122,7 @@ def topic():
                 "Quality control status of topic."),
             ('responsible_parties', 'shared.responsibility', '0.N',
                 "People or organisations responsible for providing this information."),
-            ('specialization_id', 'str', '1.1',
+            ('specialization_id', 'str', '0.1',
                 "Specialization identifier (derived from specialization)."),
             ('sub_topics', 'science.topic', '0.N',
                 "Discrete sub-topic with details.")
@@ -143,7 +147,7 @@ def topic_property_set():
                 "Set of associated specialized properties."),
             ('name', 'str', '0.1',
                 "A short-name / key (derived from specialization)."),
-            ('specialization_id', 'str', '1.1',
+            ('specialization_id', 'str', '0.1',
                 "Specialization identifier (derived from specialization)."),
         ]
     }
@@ -163,9 +167,11 @@ def topic_property():
                 "User friendly description (derived from specialization)."),
             ('name', 'str', '0.1',
                 "A short-name / key (derived from specialization)."),
-            ('specialization_id', 'str', '1.1',
+            ('specialization_id', 'str', '0.1',
                 "Specialization identifier (derived from specialization)."),
             ('values', 'str', '1.N',
                 "User value(s)."),
         ]
     }
+
+

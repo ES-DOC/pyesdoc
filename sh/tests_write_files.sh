@@ -8,8 +8,9 @@ main()
 {
 	log "writing test files ..."
 
-	source $PYESDOC_HOME/sh/activate_venv.sh
-	python $PYESDOC_HOME/sh/tests_write_files.py --outdir=$PYESDOC_HOME/tests/files
+    pushd $PYESDOC_HOME
+	pipenv run python $PYESDOC_HOME/sh/tests_write_files.py --outdir=$PYESDOC_HOME/tests/files
+	popd
 
 	log "test files written to "$PYESDOC_HOME/tests/files
 }

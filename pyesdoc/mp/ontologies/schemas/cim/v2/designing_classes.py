@@ -1,6 +1,9 @@
+# -*- coding: utf-8 -*-
+
 """
 .. module:: designing_classes.py
    :synopsis: Set of CIM v2 ontology type definitions.
+   applying to experiment design.
 
 """
 
@@ -83,13 +86,13 @@ def forcing_constraint():
                 "Category to which this belongs (from a CV, e.g. GASES)."),
             ('code', 'str', '0.1',
                 "Programme wide code from a controlled vocabulary (e.g. N2O)."),
-            ('data_link', 'data.dataset', '0.1',
+            ('data_link', 'linked_to(data.dataset)', '0.1',
                 "A data record used by the forcing "),
             ('forcing_type', 'designing.forcing_types', '1.1',
                 "Type of integration."),
             ('group', 'str', '0.1',
                 "Sub-Category (e.g. GHG)."),
-            ('origin', 'shared.citation', '0.1',
+            ('origin', 'linked_to(shared.citation)', '0.1',
                 "Pointer to origin, e.g. CMIP6 RCP database.")
         ],
         'constraints': [
@@ -125,9 +128,9 @@ def initialisation_requirement():
         'properties': [
             ('branch_time_in_initialisation_source', 'time.date_time', '0.1',
                 "If appropriate,  the time in the initialisation_source (whether observed or simulated)."),
-            ('initialise_from_data', 'data.dataset', '0.1',
+            ('initialise_from_data', 'linked_to(data.dataset)', '0.1',
                 "Initialisation should use this primary dataset."),
-            ('initialise_from_experiment', 'designing.numerical_experiment', '0.1',
+            ('initialise_from_experiment', 'linked_to(designing.numerical_experiment)', '0.1',
                 "This experiment should be initialised from the output of this experiment.")
         ],
         'constraints': [
@@ -166,7 +169,7 @@ def numerical_experiment():
         'properties': [
             ('tier', 'int', '0.1',
                 "Relative importance of experiment within a MIP."),
-            ('related_experiments', 'designing.numerical_experiment', '0.N',
+            ('related_experiments', 'linked_to(designing.numerical_experiment)', '0.N',
                 "Other experiments which have defined relationships to this one."),
             ('governing_mips', 'linked_to(designing.project)', '0.N',
                 "MIP(s) overseeing experimental design protocol."),
@@ -175,7 +178,10 @@ def numerical_experiment():
             ('required_period', 'linked_to(designing.temporal_constraint)', '1.1',
                 "Constraint on start date and duration."),
             ('requirements', 'linked_to(designing.numerical_requirement)', '0.N',
-                "Additional requirements that conformant simulations need to satisfy.")
+                "Additional requirements that conformant simulations need to satisfy."),
+            #FIXME: if objectives become standalone, the strings should become linked_to(designing.objective).
+            ('related_objectives', 'str', '0.N',
+                "Set of objective identifiers (which should appear within the related experiments)")
         ],
         'constraints': [
             ('cardinality', 'duration', '0.0'),
@@ -278,8 +284,30 @@ def output_requirement():
     }
 
 
+def objective():
+    """
+    Describes a specific scientific objective within a project, and any necessary
+    outputs from the experiment needed to meet this objective.
+    """
+    return {
+        'type': 'class',
+        'base': None,
+        'is_abstract': False,
+        'is_document': True,
+        'properties': [
+            ('name','str','1.1','Name of this objective'),
+            ('description','str','0.1',' Short summary of the objective'),
+            ('required_outputs', 'data.variable_collection', '0.N',
+                'Set of required outputs associated with this objective'),
+            ('identifier','str','0.1',
+                'Provides a hook to which experiments can link')
+        ]
+    }
+
+
 def project():
-    """Describes a scientific project.
+    """
+    Describes a scientific project.
 
     """
     return {
@@ -287,9 +315,9 @@ def project():
         'base': 'activity.activity',
         'is_abstract': False,
         'properties': [
-            ('homepage', 'str', '0.1',
+            ('homepage', 'shared.online_resource', '0.1',
                 "Project homepage."),
-            ('objectives', 'str', '0.N',
+            ('objectives', 'linked_to(designing.objective)', '0.N',
                 "Project objectives."),
             ('previous_projects', 'linked_to(designing.project)', '0.N',
                 "Previous projects with similar aims."),
@@ -298,7 +326,7 @@ def project():
             ('governed_experiments', 'linked_to(designing.numerical_experiment)', '0.N',
                 "Experiments governed by this project."),
             ('sub_projects', 'linked_to(designing.project)', '0.N',
-                "Activities within the project with their own name and aim(s).")
+                "Activities within the project with their own name and aim(s)."),
         ],
         'constraints': [
             ('cardinality', 'description', '1.1')
@@ -370,3 +398,5 @@ def temporal_constraint():
             ('cardinality', 'additional_requirements', '0.0')
         ]
     }
+
+

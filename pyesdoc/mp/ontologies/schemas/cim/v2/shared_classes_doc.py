@@ -1,6 +1,9 @@
+# -*- coding: utf-8 -*-
+
 """
 .. module:: shared_classes_doc.py
-   :synopsis: Set of CIM v2 ontology type definitions.
+   :synopsis: Set of CIM v2 ontology type definitions
+   which provide underlying infrastructure for document metadata and linking.
 
 """
 
@@ -14,10 +17,10 @@ def doc_meta_info():
         'base': None,
         'is_abstract': False,
         'properties': [
-            ('author', 'shared.party', '0.1',
+            ('author', 'linked_to(shared.party)', '0.1',
                 "Author of the metadata in the parent document."),
             ('create_date', 'datetime', '1.1',
-                "Date upon which the instance was created."),
+                "Date upon which the documentation instance was created."),
             ('drs_keys', 'str', '0.N',
                 "DRS related keys to support correlation of documents with datasets."),
             ('drs_path', 'str', '0.1',
@@ -60,7 +63,7 @@ def doc_reference():
         'type': 'class',
         'base': None,
         'is_abstract': False,
-        'pstr': ('{}', ('canonical_name',)),
+        'pstr': ('{} ({})', ('canonical_name','type')),
         'properties': [
             ('canonical_name', 'str', '0.1',
                 "Canonical name given to document."),
@@ -72,28 +75,33 @@ def doc_reference():
                 "The type of remote document."),
             ('version', 'int', '0.1',
                 "The version of the remote document."),
-
             ('relationship', 'str', '0.1',
                 "Relationship of the object target as seen from the subject resource."),
             ('further_info', 'str', '0.1',
                 "A further piece of information used in ad-hoc contexts."),
-
-            # TODO verify whether really needed
             ('context', 'str', '0.1',
                 "Information about remote record in context of reference."),
-            ('constraint_vocabulary', 'str', '0.1',
-                "A constraint vocabulary for the relationship."),
-            ('description', 'str', '0.1',
-                "Detail of how to access the resource."),
-            ('external_id', 'str', '0.1',
-                "External identifier of remote resource, if known."),
-            ('institute', 'str', '0.1',
-                "Canonical institute name of referenced document."),
-            ('linkage', 'str', '0.1',
-                "A URL."),
-            ('protocol', 'str', '0.1',
-                "Protocol to use at the linkage."),
-            ('url', 'str', '0.1',
-                "The URL of the remote document.")
         ]
+    }
+
+
+def formal_association():
+    """ Holds a named association between entities, where the name of
+    the association comes from a specific named enumeration. The
+    association can point at a CIM entity, or a remote entity. """
+    return {
+        'type': 'class',
+        'base': 'shared.doc_reference',
+        'is_abstract': False,
+        'is_document': False,
+        'pstr': ('{}: {}', ('relationship', 'name')),
+        'properties': [
+            ('association_vocabulary', 'shared.online_resource', '0.1', 'Link to named vocabulary in a server'),
+            ('association_id', 'str', '0.1', 'External identifier of the relationship (association name)'),
+            ('online_at', 'shared.online_resource', '0.1', 'Method of accessing the related entity')
+        ],
+        'constraints': [
+            ('relationship', 'cardinality', '1.1'),
+        ]
+
     }

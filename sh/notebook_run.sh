@@ -6,9 +6,10 @@ source $PYESDOC_HOME/sh/utils.sh
 # Main entry point.
 main()
 {
-	source $PYESDOC_HOME/sh/activate_venv.sh
+    pushd $PYESDOC_HOME
 	cd $PYESDOC_HOME/notebooks
-	jupyter notebook
+	pipenv run jupyter notebook
+	popd
 
     log "virtual environment updated"
 }

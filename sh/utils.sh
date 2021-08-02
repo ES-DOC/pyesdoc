@@ -26,3 +26,13 @@ reset_tmp()
 	rm -rf $PYESDOC_HOME/ops/tmp
 	mkdir -p $PYESDOC_HOME/ops/tmp
 }
+
+# Wraps pushd command to suppress stdout.
+function pushd () {
+    command pushd "$@" > /dev/null
+}
+
+# Wraps popd command to suppress stdout.
+function popd () {
+    command popd "$@" > /dev/null
+}

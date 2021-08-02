@@ -8,12 +8,13 @@ main()
 {
 	log "peeking at document ..."
 
-	source $PYESDOC_HOME/sh/activate_venv.sh
+    pushd $PYESDOC_HOME
 	if [ "$2" ]; then
-		python $PYESDOC_HOME/sh/doc_peek.py --file=$1 --encoding=$2
+		pipenv run python $PYESDOC_HOME/sh/doc_peek.py --file=$1 --encoding=$2
 	else
-		python $PYESDOC_HOME/sh/doc_peek.py --file=$1
+		pipenv run python $PYESDOC_HOME/sh/doc_peek.py --file=$1
 	fi
+	popd
 }
 
 # Invoke entry point.
