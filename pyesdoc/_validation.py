@@ -26,7 +26,7 @@ _ERR_HIDDEN = "hidden property has been assigned"
 _ERR_ITEM_IS_NULL = "is null"
 _ERR_ITEM_TYPE = "is of invalid type (actual = {0}, expected={1})"
 _ERR_ITEM_IS_EMPTY_TEXT = "is zero length"
-_ERR_ITEM_IS_LIST = "is a list, expected a complex or ximple type"
+_ERR_ITEM_IS_LIST = "is a list, expected a complex or simple type"
 _ERR_REGEX = "regular expression validation failed"
 
 # Type of document references.
