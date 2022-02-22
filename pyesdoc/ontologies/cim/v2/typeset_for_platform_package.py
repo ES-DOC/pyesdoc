@@ -32,16 +32,16 @@ class ComputePool(object):
         self.accelerator_type = None                      # unicode (0.1)
         self.accelerators_per_node = None                 # int (0.1)
         self.clock_cycle_concurrency = None               # int (0.1)
-        self.clock_speed = None                           # float (0.1)
+        self.clock_speed = None                           # shared.Numeric (0.1)
         self.compute_cores_per_node = None                # int (0.1)
         self.cpu_type = None                              # unicode (0.1)
         self.description = None                           # unicode (0.1)
-        self.interconnect = None                          # unicode (0.1)
-        self.memory_per_node = None                       # platform.StorageVolume (0.1)
+        self.memory_per_node = None                       # shared.Numeric (0.1)
         self.model_number = None                          # unicode (0.1)
         self.name = None                                  # unicode (0.1)
+        self.network_cards_per_node = []                  # platform.Nic (0.N)
         self.number_of_nodes = None                       # int (0.1)
-        self.operating_system = None                      # unicode (0.1)
+        self.vendor = None                                # shared.Party (0.1)
 
 
     @property
@@ -49,7 +49,7 @@ class ComputePool(object):
 	    """Instrance string representation.
 
 	    """
-	    return "{}".format(self.name)
+	    return "{} [{}]".format(self.name, self.number_of_nodes)
 
 
     @property
@@ -68,10 +68,62 @@ class ComputePool(object):
 	    return self.memory_per_node * self.number_of_nodes
 
 
+class Interconnect(object):
+    """A concrete class within the cim v2 type system.
+
+    The interconnect used within a machine to join nodes together.
+
+    """
+    def __init__(self):
+        """Instance constructor.
+
+        """
+        super(Interconnect, self).__init__()
+
+        self.description = None                           # unicode (0.1)
+        self.name = None                                  # unicode (0.1)
+        self.topology = None                              # unicode (0.1)
+        self.vendor = None                                # shared.Party (0.1)
+
+
+    @property
+    def __str__(self):
+	    """Instrance string representation.
+
+	    """
+	    return "{}".format(self.name)
+
+
+class Nic(object):
+    """A concrete class within the cim v2 type system.
+
+    Network Interface Card.
+
+    """
+    def __init__(self):
+        """Instance constructor.
+
+        """
+        super(Nic, self).__init__()
+
+        self.bandwidth = None                             # shared.Numeric (1.1)
+        self.name = None                                  # unicode (1.1)
+        self.vendor = None                                # shared.Party (0.1)
+
+
+    @property
+    def __str__(self):
+	    """Instrance string representation.
+
+	    """
+	    return "{}".format(self.name)
+
+
 class Partition(object):
     """A concrete class within the cim v2 type system.
 
-    A major partition (component) of a computing system (aka machine).
+    A major partition (component) of a computing system (aka
+    machine).
 
     """
     def __init__(self):
@@ -83,13 +135,15 @@ class Partition(object):
         self.compute_pools = []                           # platform.ComputePool (1.N)
         self.description = None                           # unicode (0.1)
         self.institution = None                           # shared.Party (1.1)
+        self.interconnect = None                          # platform.Interconnect (0.1)
         self.model_number = None                          # unicode (0.1)
         self.name = None                                  # unicode (1.1)
         self.online_documentation = []                    # shared.OnlineResource (0.N)
+        self.operating_system = None                      # unicode (0.1)
         self.partition = []                               # platform.Partition (0.N)
         self.storage_pools = []                           # platform.StoragePool (0.N)
         self.vendor = None                                # shared.Party (0.1)
-        self.when_used = None                             # time.TimePeriod (0.1)
+        self.when_available = None                        # time.TimePeriod (0.1)
 
 
     @property
@@ -103,12 +157,12 @@ class Partition(object):
 class Performance(object):
     """A concrete class within the cim v2 type system.
 
-    Describes the properties of a performance of a configured model on
-a particular system/machine.
+    Describes the properties of a performance of a configured model
+    on a particular system/machine.
 
-Based on "CPMIP: Measurements of Real Computational Performance of
-Earth System Models" (Balaji et. al. 2016, doi:10.5194/gmd-2016-197,
-http://www.geosci-model-dev-discuss.net/gmd-2016-197/)
+    Based on "CPMIP: Measurements of Real Computational Performance of
+    Earth System Models" (Balaji et. al. 2016,
+    doi:10.5194/gmd-2016-197).
 
     """
     def __init__(self):
@@ -121,19 +175,16 @@ http://www.geosci-model-dev-discuss.net/gmd-2016-197/)
         self.compiler = None                              # unicode (0.1)
         self.complexity = None                            # int (0.1)
         self.core_hours_per_simulated_year = None         # float (0.1)
-        self.coupling_cost = None                         # float (0.1)
-        self.data_intensity = None                        # float (0.1)
-        self.data_output_cost = None                      # float (0.1)
+        self.further_detail = None                        # platform.PerformanceDetail (0.1)
         self.joules_per_simulated_year = None             # float (0.1)
-        self.memory_bloat = None                          # float (0.1)
         self.meta = shared.DocMetaInfo()                  # shared.DocMetaInfo (1.1)
         self.model = None                                 # science.Model (1.1)
         self.name = None                                  # unicode (0.1)
-        self.parallelization = None                       # float (0.1)
+        self.parallelisation = None                       # float (0.1)
         self.platform = None                              # platform.Machine (1.1)
         self.resolution = None                            # int (0.1)
         self.simulated_years_per_day = None               # float (0.1)
-        self.subcomponent_performance = []                # platform.ComponentPerformance (0.N)
+        self.subcomponent_performance = []                # platform.Performance (0.N)
 
 
     @property
@@ -142,6 +193,57 @@ http://www.geosci-model-dev-discuss.net/gmd-2016-197/)
 
 	    """
 	    return "{} (sypd:{})".format(self.name, self.simulated_years_per_day)
+
+
+class PerformanceDetail(object):
+    """A concrete class within the cim v2 type system.
+
+    Information about how the various components of performance were
+    related.
+
+    """
+    def __init__(self):
+        """Instance constructor.
+
+        """
+        super(PerformanceDetail, self).__init__()
+
+        self.coupling_cost = None                         # float (0.1)
+        self.data_intensity = None                        # float (0.1)
+        self.data_output_cost = None                      # float (0.1)
+        self.memory_bloat = None                          # float (0.1)
+
+
+class ProjectCost(object):
+    """A concrete class within the cim v2 type system.
+
+    Cost of an experiment or project on a particular platform.
+
+    """
+    def __init__(self):
+        """Instance constructor.
+
+        """
+        super(ProjectCost, self).__init__()
+
+        self.activity = None                              # activity.Activity (1.1)
+        self.actual_years = None                          # int (0.1)
+        self.meta = shared.DocMetaInfo()                  # shared.DocMetaInfo (1.1)
+        self.peak_data = None                             # shared.Numeric (0.1)
+        self.platform = None                              # platform.Machine (1.1)
+        self.total_core_hours = None                      # int (0.1)
+        self.total_energy_cost = None                     # float (0.1)
+        self.useful_core_hours = None                     # int (0.1)
+        self.useful_data = None                           # shared.Numeric (0.1)
+        self.useful_years = None                          # int (1.1)
+
+
+    @property
+    def __str__(self):
+	    """Instrance string representation.
+
+	    """
+	    return "Production: {}Y, {}".format(self.useful_years, self.useful_data)
 
 
 class StoragePool(object):
@@ -157,6 +259,7 @@ class StoragePool(object):
         super(StoragePool, self).__init__()
 
         self.description = None                           # unicode (0.1)
+        self.file_system_sizes = []                       # shared.Numeric (1.N)
         self.name = None                                  # unicode (1.1)
         self.type = None                                  # platform.StorageSystems (0.1)
         self.vendor = None                                # shared.Party (0.1)
@@ -167,56 +270,14 @@ class StoragePool(object):
 	    """Instrance string representation.
 
 	    """
-	    return "{}".format(self.name)
-
-
-class StorageVolume(object):
-    """A concrete class within the cim v2 type system.
-
-    Platform storage volume and units.
-
-    """
-    def __init__(self):
-        """Instance constructor.
-
-        """
-        super(StorageVolume, self).__init__()
-
-        self.units = None                                 # platform.VolumeUnits (1.1)
-        self.volume = None                                # int (1.1)
-
-
-    @property
-    def __str__(self):
-	    """Instrance string representation.
-
-	    """
-	    return "{} {}".format(self.volume, self.units)
-
-
-class ComponentPerformance(Performance):
-    """A concrete class within the cim v2 type system.
-
-    Describes the simulation rate of a model component.
-
-Based on "CPMIP: Measurements of Real Computational Performance of
-Earth System Models" (Balaji et. al. 2016, doi:10.5194/gmd-2016-197,
-http://www.geosci-model-dev-discuss.net/gmd-2016-197/)
-
-    """
-    def __init__(self):
-        """Instance constructor.
-
-        """
-        super(ComponentPerformance, self).__init__()
-
-        self.component = None                             # software.SoftwareComponent (1.1)
+	    return "{} {}".format(self.name, self.file_system_sizes)
 
 
 class Machine(Partition):
     """A concrete class within the cim v2 type system.
 
-    A computer/system/platform/machine which is used for simulation.
+    A computer/system/platform/machine which is used for
+    simulation.
 
     """
     def __init__(self):
@@ -225,15 +286,26 @@ class Machine(Partition):
         """
         super(Machine, self).__init__()
 
+        self.linpack_performance = None                   # shared.Numeric (0.1)
         self.meta = shared.DocMetaInfo()                  # shared.DocMetaInfo (1.1)
+        self.peak_performance = None                      # shared.Numeric (0.1)
+
+
+    @property
+    def __str__(self):
+	    """Instrance string representation.
+
+	    """
+	    return "{}".format(self.name)
 
 
 class StorageSystems(object):
     """An enumeration within the cim v2 type system.
 
-    Controlled vocabulary for storage  types (including filesystems).
+    Controlled vocabulary for storage types (including
+    filesystems).
     """
-    is_open = False
+    is_open = True
     members = [
         "Lustre",
         "GPFS",
@@ -259,32 +331,6 @@ class StorageSystems(object):
         "Tape storage system using Met Office MASS",
         "Tape storage sytsem using CERN Castor",
         "Other tape based system"
-        ]
-
-
-class VolumeUnits(object):
-    """An enumeration within the cim v2 type system.
-
-    Appropriate storage volume units.
-    """
-    is_open = False
-    members = [
-        "GB",
-        "TB",
-        "PB",
-        "EB",
-        "TiB",
-        "PiB",
-        "EiB"
-        ]
-    descriptions = [
-        "Gigabytes (1000^3)",
-        "Terabytes (1000^4)",
-        "Petabytes (1000^5)",
-        "Exabytes (1000^6)",
-        "Tebibytes (1024^4)",
-        "Pebibytes (1024^5)",
-        "Exbibytes (1024^6)"
         ]
 
 

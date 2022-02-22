@@ -1,13 +1,13 @@
 #!/bin/bash
 
 # Import utils.
-source $ESDOC_DIR_BASH/utils.sh
+source $PYESDOC_HOME/sh/utils.sh
 
 # Main entry point.
 main()
 {
-	cp $ESDOC_DIR_REPOS_CORE/esdoc-cim-v$1-schema/*.py $ESDOC_DIR_PYESDOC/pyesdoc/mp/ontologies/schemas/cim/v$1
-	cp $ESDOC_DIR_REPOS_CORE/esdoc-cim-v$1-schema/*.py $ESDOC_DIR_REPOS_CORE/esdoc-cim/v$1/schema
+	cp $PYESDOC_PARENT/esdoc-cim-v$1-schema/*.py $PYESDOC_HOME/pyesdoc/mp/ontologies/schemas/cim/v$1
+	cp $PYESDOC_PARENT/esdoc-cim-v$1-schema/*.py $PYESDOC_PARENT/esdoc-cim/v$1/schema
 }
 
 # Invoke entry point.

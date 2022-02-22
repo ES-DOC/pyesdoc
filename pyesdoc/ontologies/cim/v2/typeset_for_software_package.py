@@ -13,16 +13,19 @@ import abc
 import datetime
 import uuid
 
+import typeset_for_shared_package as shared
 
 
 
 class ComponentBase(object):
     """An abstract class within the cim v2 type system.
 
-    Base class for software component properties, whether a top level model,
-    or a specific piece of code known as a component. In software terms, a
-    component is a discrete set of code that takes input data and generates output data.
-    Components may or may not have scientific descriptions.
+    Base class for software component properties, whether a top level
+    model, or a specific piece of code known as a component.
+
+    In software terms, a component is a discrete set of code that takes
+    input data and generates output data. Components may or may not have
+    scientific descriptions.
 
     """
     __metaclass__ = abc.ABCMeta
@@ -39,7 +42,7 @@ class ComponentBase(object):
         self.development_history = None                   # software.DevelopmentPath (0.1)
         self.long_name = None                             # unicode (0.1)
         self.name = None                                  # unicode (1.1)
-        self.release_date = None                          # datetime.datetime (0.1)
+        self.release_date = None                          # time.DateTime (0.1)
         self.repository = None                            # shared.OnlineResource (0.1)
         self.responsible_parties = []                     # shared.Responsibility (0.N)
         self.version = None                               # unicode (0.1)
@@ -56,10 +59,14 @@ class ComponentBase(object):
 class Composition(object):
     """A concrete class within the cim v2 type system.
 
-    Describes how component variables are coupled together either to/from other
-    SoftwareComponents or external data files. The variables specified by a component's
-    composition must be owned by that component, or a  child of that component;
-    child components cannot couple together parent variables.
+    Describes how component variables are coupled together either
+    to/from other SoftwareComponents or external data files. The
+    variables specified by a component's composition must be owned by
+    that component, or a  child of that component; child components
+    cannot couple together parent variables.
+
+    # FIXME: THIS CLASS IS BELIEVED TO BE OBSOLETE AND WILL BE
+    REVIEWED/REPLACED IN THE NEXT VERSION
 
     """
     def __init__(self):
@@ -75,7 +82,8 @@ class Composition(object):
 class DevelopmentPath(object):
     """A concrete class within the cim v2 type system.
 
-    Describes the software development path for this model/component.
+    Describes the software development path for this
+    model/component.
 
     """
     def __init__(self):
@@ -94,12 +102,16 @@ class DevelopmentPath(object):
 class EntryPoint(object):
     """A concrete class within the cim v2 type system.
 
-    Describes a function or subroutine of a SoftwareComponent.
-    BFG will use these EntryPoints to define a schedule of subroutine calls for a coupled model.
-    Currently, a very basic schedule can be approximated by using the 'proceeds' and 'follows' attributes,
-    however a more complete system is required for full BFG compatibility.
-    Every EntryPoint can have a set of arguments associated with it.
-    These reference (previously defined) variables.
+    Describes a function or subroutine of a SoftwareComponent. BFG
+    will use these EntryPoints to define a schedule of subroutine calls
+    for a coupled model. Currently, a very basic schedule can be
+    approximated by using the 'proceeds' and 'follows' attributes,
+    however a more complete system is required for full BFG
+    compatibility. Every EntryPoint can have a set of arguments
+    associated with it. These reference (previously defined) variables.
+
+    # FIXME: THIS CLASS IS BELIEVED TO BE OBSOLETE AND WILL BE
+    REVIEWED/REPLACED IN THE NEXT VERSION
 
     """
     def __init__(self):
@@ -116,6 +128,9 @@ class Gridspec(object):
 
     Fully defines the computational grid used.
 
+    # FIXME: THIS CLASS IS BELIEVED TO BE OBSOLETE AND WILL BE
+    REVIEWED/REPLACED IN THE NEXT VERSION
+
     """
     def __init__(self):
         """Instance constructor.
@@ -129,10 +144,13 @@ class Gridspec(object):
 class Implementation(object):
     """A concrete class within the cim v2 type system.
 
-    Implementation information for a software framework/component, whether a top level model,
-    or a specific piece of code known as a 'component'. In software terms, a
-    software framework/component is a discrete set of code that takes input data and generates output data.
-    Software frameworks/components may or may not have scientific descriptions.
+    Implementation information for a software framework/component,
+    whether a top level model, or a specific piece of code known as a
+    'component'.
+
+    In software terms, a software framework/component is a discrete set
+    of code that takes input data and generates output data. Software
+    frameworks/components may or may not have scientific descriptions.
 
     """
     def __init__(self):
@@ -163,10 +181,15 @@ class Implementation(object):
 class Variable(object):
     """A concrete class within the cim v2 type system.
 
-    An instance of a model software variable which may be prognostic or diagnostic, and which is
-    available as a connection to other software components. Note that these variables may only exist
-    within the software workflow as interim quantities or coupling endpoints. Input and output
-    variables will be a subset of these software variables.
+    An instance of a model software variable which may be prognostic
+    or diagnostic, and which is available as a connection to other
+    software components. Note that these variables may only exist within
+    the software workflow as interim quantities or coupling endpoints.
+    Input and output variables will be a subset of these software
+    variables.
+
+    # FIXME: THIS CLASS IS BELIEVED TO BE OBSOLETE AND WILL BE
+    REVIEWED/REPLACED IN THE NEXT VERSION
 
     """
     def __init__(self):
@@ -183,8 +206,9 @@ class Variable(object):
 class SoftwareComponent(ComponentBase):
     """A concrete class within the cim v2 type system.
 
-    An embedded piece of software that does not normally function as a standalone model (although
-    it may be used standalone in a test harness).
+    An embedded piece of software that does not normally function as
+    a standalone model (although it may be used standalone in a test
+    harness).
 
     """
     def __init__(self):
@@ -201,6 +225,7 @@ class SoftwareComponent(ComponentBase):
         self.grid = None                                  # software.Gridspec (0.1)
         self.language = None                              # software.ProgrammingLanguage (0.1)
         self.license = None                               # unicode (0.1)
+        self.meta = shared.DocMetaInfo()                  # shared.DocMetaInfo (1.1)
         self.sub_components = []                          # software.SoftwareComponent (0.N)
 
 
@@ -209,7 +234,7 @@ class CouplingFramework(object):
 
     The set of terms which define known coupling frameworks.
     """
-    is_open = False
+    is_open = True
     members = [
         "OASIS",
         "OASIS3-MCT",
@@ -233,20 +258,22 @@ class CouplingFramework(object):
 class ProgrammingLanguage(object):
     """An enumeration within the cim v2 type system.
 
-    The set of terms which define programming languages used for earth
-    system simulation.
+    The set of terms which define programming languages used for
+    earth system simulation.
     """
-    is_open = False
+    is_open = True
     members = [
         "Fortran",
         "C",
         "C++",
+        "Julia",
         "Python"
         ]
     descriptions = [
         "Fortran Programming Language",
-        "C Programmming Language",
+        "C Programming Language",
         "C++ Programming Language",
+        "Julia Programming Language",
         "Python Programming Language"
         ]
 

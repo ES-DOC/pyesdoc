@@ -117,21 +117,15 @@ def _get_ontology_directory(o, root=None, sub=None, suffix_root=False):
     return dir
 
 
-def get_ontology_directory(ctx, sub=None, include_version=True):
-    """Returns ontology directory into which code is generated code.
+def get_ontology_directory(ctx, sub=None):
+    """Returns ontology directory into which code is generated.
 
     :param GeneratorContext ctx: Generation context information.
     :param str sub: Subpackage name.
     :param bool include_version: Subpackage name.
 
     """
-    dir = ''
-    if ctx.output_dir is not None:
-        dir += ctx.output_dir + '/'
-    dir += get_ontology_name(ctx.ontology)
-    if include_version:
-        dir += '/'
-        dir += 'v' + get_ontology_version(ctx.ontology)
+    dir = ctx.output_dir + '/'
     if sub is not None:
         dir += '/'
         dir += sub

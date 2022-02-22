@@ -83,7 +83,6 @@ class GeneratorContext(object):
         :param lxml.Element node: An XML node
 
         """
-        # TODO: CONSIDER MOVING THIS FUNCTIONALITY TO THE pyesdoc.mp.ontologies.generators.qxml PACKAGE
         self.node = node
 
 

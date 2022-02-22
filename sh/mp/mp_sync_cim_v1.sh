@@ -1,12 +1,12 @@
 #!/bin/bash
 
 # Import utils.
-source $ESDOC_DIR_BASH/utils.sh
+source $PYESDOC_HOME/sh/utils.sh
 
 # Main entry point.
 main()
 {
-	source $ESDOC_DIR_BASH/pyesdoc/mp_sync.sh 1
+	source $PYESDOC_HOME/sh/mp/mp_sync.sh 1
 }
 
 # Invoke entry point.

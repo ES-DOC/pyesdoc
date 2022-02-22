@@ -23,8 +23,10 @@ class Model(software.ComponentBase):
 
     A model component: can be executed standalone, and has as
     scientific description available via a link to a science.domain
-    document. (A configured model can be understood in terms of a
-    simulation, a model, and a configuration.).
+    document.
+
+    (A configured model can be understood in terms of a simulation, a
+    model, and a configuration.).
 
     """
     def __init__(self):
@@ -67,7 +69,8 @@ class RealmCoupling(object):
 class Topic(object):
     """A concrete class within the cim v2 type system.
 
-    An organized collection of details upon a specific topic, e.g. model key properties.
+    An organized collection of details upon a specific topic, e.g.
+    model key properties.
 
     """
     def __init__(self):
@@ -85,7 +88,7 @@ class Topic(object):
         self.property_sets = []                           # science.TopicPropertySet (0.N)
         self.qc_status = None                             # int (0.1)
         self.responsible_parties = []                     # shared.Responsibility (0.N)
-        self.specialization_id = None                     # unicode (1.1)
+        self.specialization_id = None                     # unicode (0.1)
         self.sub_topics = []                              # science.Topic (0.N)
 
 
@@ -94,7 +97,7 @@ class Topic(object):
 	    """Instrance string representation.
 
 	    """
-	    return "{}".format(self.short_name)
+	    return "{}".format(self.name)
 
 
 class TopicProperty(object):
@@ -111,7 +114,7 @@ class TopicProperty(object):
 
         self.description = None                           # unicode (0.1)
         self.name = None                                  # unicode (0.1)
-        self.specialization_id = None                     # unicode (1.1)
+        self.specialization_id = None                     # unicode (0.1)
         self.values = []                                  # unicode (1.N)
 
 
@@ -126,8 +129,8 @@ class TopicProperty(object):
 class TopicPropertySet(object):
     """A concrete class within the cim v2 type system.
 
-    Provides specific details related to a topic (i.e. process, sub-process,
-    grid, key properties, etc).
+    Provides specific details related to a topic (i.e. process, sub-
+    process, grid, key properties, etc).
 
     """
     def __init__(self):
@@ -139,7 +142,7 @@ class TopicPropertySet(object):
         self.description = None                           # unicode (0.1)
         self.name = None                                  # unicode (0.1)
         self.properties = []                              # science.TopicProperty (1.N)
-        self.specialization_id = None                     # unicode (1.1)
+        self.specialization_id = None                     # unicode (0.1)
 
 
     @property
@@ -153,7 +156,8 @@ class TopicPropertySet(object):
 class Realm(Topic):
     """A concrete class within the cim v2 type system.
 
-    Scientific area of a numerical model - usually a sub-model or component.
+    Scientific area of a numerical model - usually a sub-model or
+    component.
 
     """
     def __init__(self):
@@ -181,7 +185,8 @@ class Realm(Topic):
 class ModelTypes(object):
     """An enumeration within the cim v2 type system.
 
-    Defines a set of gross model classes.
+    Defines a set of model types relevant to weather, climate, and
+    earth system modelling.
     """
     is_open = False
     members = [
@@ -193,20 +198,32 @@ class ModelTypes(object):
         "IGCM",
         "GCM-MLO",
         "Mesoscale",
+        "ProcessLA",
+        "DynamicalCore",
+        "Statistical",
+        "ML Inference",
+        "Re-Analysis",
+        "Planetary",
         "Process",
-        "Planetary"
+        "Other"
         ]
     descriptions = [
         "Atmosphere Only",
         "Ocean Only",
         "Regional Model",
-        "Earth System Model (Atmosphere, Ocean, Land, Sea-ice and cycles)",
+        "Earth System Model (Atmosphere, Ocean, Land, carbon cycle)",
         "Global Climate Model (Atmosphere, Ocean, no carbon cycle)",
         "Intermediate Complexity GCM",
         "GCM with mixed layer ocean",
         "Mesoscale Model",
         "Limited Area process model",
-        "Non-Earth model"
+        "Dynamical Core only",
+        "Derived from statistics",
+        "Model is trained from data",
+        "Model includes active data-assimilation beyond initialisation",
+        "Non-Earth model",
+        "Specific process or parameterisation in column mode",
+        "A numerical model not covered above"
         ]
 
 

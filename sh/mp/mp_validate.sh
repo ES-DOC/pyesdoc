@@ -1,16 +1,18 @@
 #!/bin/bash
 
 # Import utils.
-source $ESDOC_DIR_BASH/utils.sh
+source $PYESDOC_HOME/sh/utils.sh
 
 # Main entry point.
 main()
 {
-	if [ -f $ESDOC_DIR_BASH/pyesdoc/mp_validate_report_$1_$2.txt ]; then
-		rm $ESDOC_DIR_BASH/pyesdoc/mp_validate_report_$1_$2.txt
+	if [ -f $PYESDOC_HOME/sh/mp/mp_validate_report_$1_$2.txt ]; then
+		rm $PYESDOC_HOME/sh/mp/mp_validate_report_$1_$2.txt
 	fi
-	activate_venv
-	python $ESDOC_DIR_BASH/pyesdoc/mp_validate.py --ontology=$1 --version=$2
+
+    pushd $PYESDOC_HOME
+	pipenv run python $PYESDOC_HOME/sh/mp/mp_validate.py --ontology=$1 --version=$2
+	popd
 }
 
 # Invoke entry point.

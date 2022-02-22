@@ -11,9 +11,11 @@
 
 """
 from typeset_for_activity_package import *
+from typeset_for_cmip_package import *
 from typeset_for_data_package import *
 from typeset_for_designing_package import *
 from typeset_for_drs_package import *
+from typeset_for_iso_package import *
 from typeset_for_platform_package import *
 from typeset_for_science_package import *
 from typeset_for_shared_package import *
@@ -22,9 +24,11 @@ from typeset_for_time_package import *
 
 
 import typeset_for_activity_package as activity
+import typeset_for_cmip_package as cmip
 import typeset_for_data_package as data
 import typeset_for_designing_package as designing
 import typeset_for_drs_package as drs
+import typeset_for_iso_package as iso
 import typeset_for_platform_package as platform
 import typeset_for_science_package as science
 import typeset_for_shared_package as shared
@@ -37,9 +41,11 @@ import typeset_for_time_package as time
 __all__ = [
     # Packages
     activity,
+    cmip,
     data,
     designing,
     drs,
+    iso,
     platform,
     science,
     shared,
@@ -48,18 +54,16 @@ __all__ = [
     # Classes
     Activity,
     AxisMember,
+    ChildSimulation,
     Conformance,
     Ensemble,
     EnsembleAxis,
-    EnsembleMember,
-    ParentSimulation,
-    UberEnsemble,
-    Dataset,
-    Downscaling,
-    InputDataset,
     Simulation,
+    UberEnsemble,
+    CmipDataset,
+    CmipSimulation,
+    Dataset,
     VariableCollection,
-    AxisMember,
     DomainRequirements,
     EnsembleRequirement,
     ForcingConstraint,
@@ -67,6 +71,7 @@ __all__ = [
     MultiEnsemble,
     NumericalExperiment,
     NumericalRequirement,
+    Objective,
     OutputRequirement,
     Project,
     SimulationPlan,
@@ -79,13 +84,24 @@ __all__ = [
     DrsPublicationDataset,
     DrsSimulationIdentifier,
     DrsTemporalIdentifier,
-    ComponentPerformance,
+    Algorithm,
+    Lineage,
+    ProcessStep,
+    ProcessStepReport,
+    Processing,
+    QualityEvaluationOutput,
+    QualityEvaluationResult,
+    QualityIssue,
+    QualityReport,
     ComputePool,
+    Interconnect,
     Machine,
+    Nic,
     Partition,
     Performance,
+    PerformanceDetail,
+    ProjectCost,
     StoragePool,
-    StorageVolume,
     Model,
     Realm,
     RealmCoupling,
@@ -96,6 +112,8 @@ __all__ = [
     DocMetaInfo,
     DocReference,
     ExtraAttribute,
+    FormalAssociation,
+    Numeric,
     OnlineResource,
     Party,
     QualityReview,
@@ -117,7 +135,7 @@ __all__ = [
     TimePeriod,
     # Enums
     ConformanceType,
-    DataAssociationTypes,
+    DatasetType,
     EnsembleTypes,
     ExperimentalRelationships,
     ForcingTypes,
@@ -126,8 +144,11 @@ __all__ = [
     DrsGeographicalOperators,
     DrsRealms,
     DrsTimeSuffixes,
+    DqEvaluationResultType,
+    DsInitiativeTypecode,
+    MdCellgeometryCode,
+    MdProgressCode,
     StorageSystems,
-    VolumeUnits,
     ModelTypes,
     NilReason,
     QualityStatus,

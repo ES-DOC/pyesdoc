@@ -13,6 +13,7 @@ import abc
 import datetime
 import uuid
 
+import typeset_for_iso_package as iso
 import typeset_for_shared_package as shared
 
 
@@ -57,9 +58,11 @@ class Activity(object):
 class AxisMember(object):
     """A concrete class within the cim v2 type system.
 
-    Description of a given ensemble member. It will normally be related to a specific
-    ensemble requirement. Note that start dates can be extracted directly from the simulations
-    and do not need to be recorded with an axis member description.
+    Description of a given ensemble member.
+
+    It will normally be related to a specific ensemble requirement. Note
+    that start dates can be extracted directly from the simulations and
+    do not need to be recorded with an axis member description.
 
     """
     def __init__(self):
@@ -68,10 +71,11 @@ class AxisMember(object):
         """
         super(AxisMember, self).__init__()
 
+        self.axis = None                                  # activity.EnsembleAxis (1.1)
+        self.conformance = None                           # activity.Conformance (0.1)
         self.description = None                           # unicode (0.1)
         self.extra_detail = None                          # unicode (0.1)
         self.index = None                                 # int (1.1)
-        self.target_requirement = None                    # designing.NumericalRequirement (0.1)
         self.value = None                                 # float (0.1)
 
 
@@ -88,7 +92,9 @@ class EnsembleAxis(object):
         super(EnsembleAxis, self).__init__()
 
         self.extra_detail = None                          # unicode (0.1)
-        self.member = []                                  # activity.AxisMember (1.N)
+        self.members = []                                 # activity.AxisMember (0.N)
+        self.meta = shared.DocMetaInfo()                  # shared.DocMetaInfo (1.1)
+        self.name = None                                  # unicode (1.1)
         self.short_identifier = None                      # unicode (1.1)
         self.target_requirement = None                    # designing.NumericalRequirement (0.1)
 
@@ -98,27 +104,40 @@ class EnsembleAxis(object):
 	    """Instrance string representation.
 
 	    """
-	    return "{}".format(self.axis)
+	    return "{}".format(self.name)
 
 
-class EnsembleMember(object):
+class Simulation(iso.ProcessStep):
     """A concrete class within the cim v2 type system.
 
-    An ensemble may be a complicated interplay of axes, for example, r/i/p, not all of which
-    are populated, so we need a list of the actual simulations and how they map onto the ensemble
-    axes.
+    Simulation class provides the integrating link about what models
+    were run and wny.
 
     """
     def __init__(self):
         """Instance constructor.
 
         """
-        super(EnsembleMember, self).__init__()
+        super(Simulation, self).__init__()
 
+        self.calendar = None                              # time.Calendar (0.1)
+        self.documentation = None                         # shared.OnlineResource (0.1)
+        self.end_time = None                              # time.DateTime (0.1)
+        self.ensemble_id = []                             # activity.AxisMember (0.N)
         self.errata = None                                # shared.OnlineResource (0.1)
+        self.extra_attributes = []                        # shared.ExtraAttribute (0.N)
         self.had_performance = None                       # platform.Performance (0.1)
+        self.institution = None                           # shared.Party (0.1)
+        self.meta = shared.DocMetaInfo()                  # shared.DocMetaInfo (1.1)
+        self.parent_of = []                               # activity.ChildSimulation (0.N)
+        self.part_of_project = []                         # designing.Project (1.N)
+        self.primary_ensemble = None                      # activity.Ensemble (0.1)
+        self.produced = []                                # data.Dataset (0.N)
+        self.ran_for_experiments = []                     # designing.NumericalExperiment (1.N)
         self.ran_on = None                                # platform.Machine (0.1)
-        self.simulation = None                            # data.Simulation (1.1)
+        self.start_time = None                            # time.DateTime (0.1)
+        self.sub_experiment = None                        # designing.NumericalExperiment (0.1)
+        self.used = None                                  # science.Model (1.1)
 
 
     @property
@@ -126,10 +145,10 @@ class EnsembleMember(object):
 	    """Instrance string representation.
 
 	    """
-	    return "{}".format(self.simulation)
+	    return "({}/{}/{})".format(self.used, self.ran_for_experiments, self.ensemble_id)
 
 
-class ParentSimulation(object):
+class ChildSimulation(Simulation):
     """A concrete class within the cim v2 type system.
 
     Defines the relationship between a simulation and its parent.
@@ -139,12 +158,12 @@ class ParentSimulation(object):
         """Instance constructor.
 
         """
-        super(ParentSimulation, self).__init__()
+        super(ChildSimulation, self).__init__()
 
         self.branch_method = None                         # unicode (0.1)
         self.branch_time_in_child = None                  # time.DateTime (0.1)
         self.branch_time_in_parent = None                 # time.DateTime (0.1)
-        self.parent = None                                # data.Simulation (1.1)
+        self.parent = None                                # activity.Simulation (1.1)
 
 
     @property
@@ -158,8 +177,10 @@ class ParentSimulation(object):
 class Conformance(Activity):
     """A concrete class within the cim v2 type system.
 
-    A specific conformance. Describes how a particular numerical requirement has been implemented.
-    Will normally be linked from an ensemble descriptor.
+    A specific conformance.
+
+    Describes how a particular numerical requirement has been
+    implemented.  Will normally be linked from an ensemble descriptor.
 
     """
     def __init__(self):
@@ -169,7 +190,7 @@ class Conformance(Activity):
         super(Conformance, self).__init__()
 
         self.conformance_achieved = None                  # activity.ConformanceType (1.1)
-        self.datasets = []                                # data.InputDataset (0.N)
+        self.datasets = []                                # data.Dataset (0.N)
         self.models = []                                  # science.Model (1.N)
         self.target_requirement = None                    # designing.NumericalRequirement (1.1)
 
@@ -178,9 +199,10 @@ class Ensemble(Activity):
     """A concrete class within the cim v2 type system.
 
     Generic ensemble definition.
-    Holds the definition of how the various ensemble members have been configured.
-    If ensemble axes are not present, then this is either a single member ensemble,
-    or part of an uber ensemble.
+
+    Holds the definition of how the various ensemble members have been
+    configured. If ensemble axes are not present, then this is either a
+    single member ensemble, or part of an uber ensemble.
 
     """
     def __init__(self):
@@ -193,7 +215,7 @@ class Ensemble(Activity):
         self.documentation = []                           # shared.OnlineResource (0.N)
         self.ensemble_axes = []                           # activity.EnsembleAxis (0.N)
         self.experiments = []                             # designing.NumericalExperiment (1.N)
-        self.members = []                                 # activity.EnsembleMember (1.N)
+        self.members = []                                 # activity.Simulation (0.N)
         self.representative_performance = None            # platform.Performance (0.1)
         self.uber_ensembles = []                          # activity.UberEnsemble (0.N)
 
@@ -201,9 +223,12 @@ class Ensemble(Activity):
 class UberEnsemble(Ensemble):
     """A concrete class within the cim v2 type system.
 
-    An ensemble made up of other ensembles. Often used where parts of an ensemble were run by
-    different institutes. Could also be used when a new experiment is designed which can use
-    ensemble members from previous experiments and/or projects.
+    An ensemble made up of other ensembles.
+
+    Often used where parts of an ensemble were run by different
+    institutes. Could also be used when a new experiment is designed
+    which can use ensemble members from previous experiments and/or
+    projects.
 
     """
     def __init__(self):
@@ -220,7 +245,7 @@ class ConformanceType(object):
 
     Standardised set of conformance responses.
     """
-    is_open = True
+    is_open = False
     members = [
         "Conformed",
         "Partially Conformed",

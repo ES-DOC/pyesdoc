@@ -16,9 +16,11 @@ import uuid
 
 
 import typeset_for_activity_package as activity
+import typeset_for_cmip_package as cmip
 import typeset_for_data_package as data
 import typeset_for_designing_package as designing
 import typeset_for_drs_package as drs
+import typeset_for_iso_package as iso
 import typeset_for_platform_package as platform
 import typeset_for_science_package as science
 import typeset_for_shared_package as shared
@@ -47,9 +49,11 @@ __all__ = [
 # Supported packages.
 PACKAGES = (
     activity,
+    cmip,
     data,
     designing,
     drs,
+    iso,
     platform,
     science,
     shared,
@@ -65,18 +69,16 @@ PACKAGES = (
 CLASSES = (
     activity.Activity,
     activity.AxisMember,
+    activity.ChildSimulation,
     activity.Conformance,
     activity.Ensemble,
     activity.EnsembleAxis,
-    activity.EnsembleMember,
-    activity.ParentSimulation,
+    activity.Simulation,
     activity.UberEnsemble,
+    cmip.CmipDataset,
+    cmip.CmipSimulation,
     data.Dataset,
-    data.Downscaling,
-    data.InputDataset,
-    data.Simulation,
     data.VariableCollection,
-    designing.AxisMember,
     designing.DomainRequirements,
     designing.EnsembleRequirement,
     designing.ForcingConstraint,
@@ -84,6 +86,7 @@ CLASSES = (
     designing.MultiEnsemble,
     designing.NumericalExperiment,
     designing.NumericalRequirement,
+    designing.Objective,
     designing.OutputRequirement,
     designing.Project,
     designing.SimulationPlan,
@@ -96,13 +99,24 @@ CLASSES = (
     drs.DrsPublicationDataset,
     drs.DrsSimulationIdentifier,
     drs.DrsTemporalIdentifier,
-    platform.ComponentPerformance,
+    iso.Algorithm,
+    iso.Lineage,
+    iso.ProcessStep,
+    iso.ProcessStepReport,
+    iso.Processing,
+    iso.QualityEvaluationOutput,
+    iso.QualityEvaluationResult,
+    iso.QualityIssue,
+    iso.QualityReport,
     platform.ComputePool,
+    platform.Interconnect,
     platform.Machine,
+    platform.Nic,
     platform.Partition,
     platform.Performance,
+    platform.PerformanceDetail,
+    platform.ProjectCost,
     platform.StoragePool,
-    platform.StorageVolume,
     science.Model,
     science.Realm,
     science.RealmCoupling,
@@ -113,6 +127,8 @@ CLASSES = (
     shared.DocMetaInfo,
     shared.DocReference,
     shared.ExtraAttribute,
+    shared.FormalAssociation,
+    shared.Numeric,
     shared.OnlineResource,
     shared.Party,
     shared.QualityReview,
@@ -152,11 +168,44 @@ CLASS_PROPERTIES = {
         'responsible_parties',
     ),
     activity.AxisMember: (
+        'axis',
+        'conformance',
         'description',
         'extra_detail',
         'index',
-        'target_requirement',
         'value',
+    ),
+    activity.ChildSimulation: (
+        'branch_method',
+        'branch_time_in_child',
+        'branch_time_in_parent',
+        'parent',
+        'calendar',
+        'documentation',
+        'end_time',
+        'ensemble_id',
+        'errata',
+        'extra_attributes',
+        'had_performance',
+        'institution',
+        'meta',
+        'parent_of',
+        'part_of_project',
+        'primary_ensemble',
+        'produced',
+        'ran_for_experiments',
+        'ran_on',
+        'start_time',
+        'sub_experiment',
+        'used',
+        'description',
+        'execution_date_time',
+        'processing_information',
+        'processor',
+        'rationale',
+        'reference',
+        'report',
+        'source',
     ),
     activity.Conformance: (
         'conformance_achieved',
@@ -201,21 +250,39 @@ CLASS_PROPERTIES = {
     ),
     activity.EnsembleAxis: (
         'extra_detail',
-        'member',
+        'members',
+        'meta',
+        'name',
         'short_identifier',
         'target_requirement',
     ),
-    activity.EnsembleMember: (
+    activity.Simulation: (
+        'calendar',
+        'documentation',
+        'end_time',
+        'ensemble_id',
         'errata',
+        'extra_attributes',
         'had_performance',
+        'institution',
+        'meta',
+        'parent_of',
+        'part_of_project',
+        'primary_ensemble',
+        'produced',
+        'ran_for_experiments',
         'ran_on',
-        'simulation',
-    ),
-    activity.ParentSimulation: (
-        'branch_method',
-        'branch_time_in_child',
-        'branch_time_in_parent',
-        'parent',
+        'start_time',
+        'sub_experiment',
+        'used',
+        'description',
+        'execution_date_time',
+        'processing_information',
+        'processor',
+        'rationale',
+        'reference',
+        'report',
+        'source',
     ),
     activity.UberEnsemble: (
         'child_ensembles',
@@ -240,91 +307,77 @@ CLASS_PROPERTIES = {
         'rationale',
         'responsible_parties',
     ),
+    cmip.CmipDataset: (
+        'drs_location',
+        'meta',
+        'originating_simulation',
+        'availability',
+        'citations',
+        'contains',
+        'description',
+        'further_attributes',
+        'keywords',
+        'lineage',
+        'meta',
+        'name',
+        'progress',
+        'related_to_dataset',
+        'responsible_parties',
+        'type',
+    ),
+    cmip.CmipSimulation: (
+        'forcing_index',
+        'initialization_index',
+        'meta',
+        'physics_index',
+        'realization_index',
+        'variant_info',
+        'calendar',
+        'documentation',
+        'end_time',
+        'ensemble_id',
+        'errata',
+        'extra_attributes',
+        'had_performance',
+        'institution',
+        'meta',
+        'parent_of',
+        'part_of_project',
+        'primary_ensemble',
+        'produced',
+        'ran_for_experiments',
+        'ran_on',
+        'start_time',
+        'sub_experiment',
+        'used',
+        'description',
+        'execution_date_time',
+        'processing_information',
+        'processor',
+        'rationale',
+        'reference',
+        'report',
+        'source',
+    ),
     data.Dataset: (
         'availability',
         'citations',
+        'contains',
         'description',
-        'drs_datasets',
+        'further_attributes',
+        'keywords',
+        'lineage',
         'meta',
         'name',
-        'produced_by',
+        'progress',
         'related_to_dataset',
         'responsible_parties',
-    ),
-    data.Downscaling: (
-        'downscaled_from',
-        'calendar',
-        'end_time',
-        'extra_attributes',
-        'forcing_index',
-        'further_info_url',
-        'initialization_index',
-        'insitution',
-        'parent_simulation',
-        'part_of_project',
-        'physics_index',
-        'primary_ensemble',
-        'ran_for_experiments',
-        'realization_index',
-        'start_time',
-        'sub_experiment',
-        'used',
-        'variant_info',
-        'alternative_names',
-        'canonical_name',
-        'citations',
-        'description',
-        'duration',
-        'internal_name',
-        'keywords',
-        'long_name',
-        'meta',
-        'name',
-        'previously_known_as',
-        'rationale',
-        'responsible_parties',
-    ),
-    data.InputDataset: (
-        'modifications_applied',
-        'original_data',
-    ),
-    data.Simulation: (
-        'calendar',
-        'end_time',
-        'extra_attributes',
-        'forcing_index',
-        'further_info_url',
-        'initialization_index',
-        'insitution',
-        'parent_simulation',
-        'part_of_project',
-        'physics_index',
-        'primary_ensemble',
-        'ran_for_experiments',
-        'realization_index',
-        'start_time',
-        'sub_experiment',
-        'used',
-        'variant_info',
-        'alternative_names',
-        'canonical_name',
-        'citations',
-        'description',
-        'duration',
-        'internal_name',
-        'keywords',
-        'long_name',
-        'meta',
-        'name',
-        'previously_known_as',
-        'rationale',
-        'responsible_parties',
+        'type',
     ),
     data.VariableCollection: (
         'collection_name',
+        'geometry',
         'variables',
-    ),
-    designing.AxisMember: (
     ),
     designing.DomainRequirements: (
         'required_extent',
@@ -441,6 +494,7 @@ CLASS_PROPERTIES = {
         'governing_mips',
         'related_experiments',
         'related_mips',
+        'related_objectives',
         'required_period',
         'requirements',
         'tier',
@@ -476,6 +530,13 @@ CLASS_PROPERTIES = {
         'previously_known_as',
         'rationale',
         'responsible_parties',
+    ),
+    designing.Objective: (
+        'description',
+        'identifier',
+        'meta',
+        'name',
+        'required_outputs',
     ),
     designing.OutputRequirement: (
         'formal_data_request',
@@ -617,25 +678,68 @@ CLASS_PROPERTIES = {
         'start',
         'suffix',
     ),
-    platform.ComponentPerformance: (
-        'component',
-        'actual_simulated_years_per_day',
-        'compiler',
-        'complexity',
-        'core_hours_per_simulated_year',
-        'coupling_cost',
-        'data_intensity',
-        'data_output_cost',
-        'joules_per_simulated_year',
-        'memory_bloat',
+    iso.Algorithm: (
+        'citation',
+        'description',
+    ),
+    iso.Lineage: (
         'meta',
-        'model',
+        'process_step',
+        'source',
+        'statement',
+    ),
+    iso.ProcessStep: (
+        'description',
+        'execution_date_time',
+        'processing_information',
+        'processor',
+        'rationale',
+        'reference',
+        'report',
+        'source',
+    ),
+    iso.ProcessStepReport: (
+        'description',
+        'link',
         'name',
-        'parallelization',
-        'platform',
-        'resolution',
-        'simulated_years_per_day',
-        'subcomponent_performance',
+    ),
+    iso.Processing: (
+        'algorithm',
+        'documentation',
+        'identifier',
+        'name',
+        'procedure_description',
+        'runtime_parameters',
+        'software_reference',
+    ),
+    iso.QualityEvaluationOutput: (
+        'output_type',
+        'description',
+        'linkage',
+        'name',
+        'protocol',
+    ),
+    iso.QualityEvaluationResult: (
+        'date',
+        'evaluation_procedure',
+        'evaluator',
+        'name',
+        'passed',
+        'results',
+        'specification',
+        'summary_result',
+    ),
+    iso.QualityIssue: (
+        'description',
+        'reporter',
+        'summary',
+        'tracked_issue',
+    ),
+    iso.QualityReport: (
+        'issues',
+        'meta',
+        'reports',
+        'target',
     ),
     platform.ComputePool: (
         'accelerator_type',
@@ -645,66 +749,95 @@ CLASS_PROPERTIES = {
         'compute_cores_per_node',
         'cpu_type',
         'description',
-        'interconnect',
         'memory_per_node',
         'model_number',
         'name',
+        'network_cards_per_node',
         'number_of_nodes',
-        'operating_system',
+        'vendor',
+    ),
+    platform.Interconnect: (
+        'description',
+        'name',
+        'topology',
+        'vendor',
     ),
     platform.Machine: (
+        'linpack_performance',
         'meta',
+        'peak_performance',
         'compute_pools',
         'description',
         'institution',
+        'interconnect',
         'model_number',
         'name',
         'online_documentation',
+        'operating_system',
         'partition',
         'storage_pools',
         'vendor',
-        'when_used',
+        'when_available',
+    ),
+    platform.Nic: (
+        'bandwidth',
+        'name',
+        'vendor',
     ),
     platform.Partition: (
         'compute_pools',
         'description',
         'institution',
+        'interconnect',
         'model_number',
         'name',
         'online_documentation',
+        'operating_system',
         'partition',
         'storage_pools',
         'vendor',
-        'when_used',
+        'when_available',
     ),
     platform.Performance: (
         'actual_simulated_years_per_day',
         'compiler',
         'complexity',
         'core_hours_per_simulated_year',
-        'coupling_cost',
-        'data_intensity',
-        'data_output_cost',
+        'further_detail',
         'joules_per_simulated_year',
-        'memory_bloat',
         'meta',
         'model',
         'name',
-        'parallelization',
+        'parallelisation',
         'platform',
         'resolution',
         'simulated_years_per_day',
         'subcomponent_performance',
     ),
+    platform.PerformanceDetail: (
+        'coupling_cost',
+        'data_intensity',
+        'data_output_cost',
+        'memory_bloat',
+    ),
+    platform.ProjectCost: (
+        'activity',
+        'actual_years',
+        'meta',
+        'peak_data',
+        'platform',
+        'total_core_hours',
+        'total_energy_cost',
+        'useful_core_hours',
+        'useful_data',
+        'useful_years',
+    ),
     platform.StoragePool: (
         'description',
+        'file_system_sizes',
         'name',
         'type',
         'vendor',
-    ),
-    platform.StorageVolume: (
-        'units',
-        'volume',
     ),
     science.Model: (
         'activity_properties',
@@ -781,6 +914,8 @@ CLASS_PROPERTIES = {
     ),
     shared.Citation: (
         'abstract',
+        'authors',
+        'bibtex',
         'citation_detail',
         'collective_title',
         'context',
@@ -789,6 +924,7 @@ CLASS_PROPERTIES = {
         'title',
         'type',
         'url',
+        'year',
     ),
     shared.DocMetaInfo: (
         'author',
@@ -811,25 +947,38 @@ CLASS_PROPERTIES = {
     ),
     shared.DocReference: (
         'canonical_name',
-        'constraint_vocabulary',
         'context',
-        'description',
-        'external_id',
         'further_info',
         'id',
-        'institute',
-        'linkage',
         'name',
-        'protocol',
         'relationship',
         'type',
-        'url',
         'version',
     ),
     shared.ExtraAttribute: (
         'doc',
         'key',
         'type',
+        'value',
+    ),
+    shared.FormalAssociation: (
+        'association_id',
+        'association_vocabulary',
+        'online_at',
+        'canonical_name',
+        'context',
+        'further_info',
+        'id',
+        'name',
+        'relationship',
+        'type',
+        'version',
+    ),
+    shared.Numeric: (
+        'base_unit',
+        'unit_enumeration',
+        'unit_source',
+        'units',
         'value',
     ),
     shared.OnlineResource: (
@@ -913,6 +1062,7 @@ CLASS_PROPERTIES = {
         'grid',
         'language',
         'license',
+        'meta',
         'sub_components',
         'canonical_id',
         'citations',
@@ -980,11 +1130,18 @@ CLASS_OWN_PROPERTIES = {
         'responsible_parties',
     ),
     activity.AxisMember: (
+        'axis',
+        'conformance',
         'description',
         'extra_detail',
         'index',
-        'target_requirement',
         'value',
+    ),
+    activity.ChildSimulation: (
+        'branch_method',
+        'branch_time_in_child',
+        'branch_time_in_parent',
+        'parent',
     ),
     activity.Conformance: (
         'conformance_achieved',
@@ -1003,67 +1160,67 @@ CLASS_OWN_PROPERTIES = {
     ),
     activity.EnsembleAxis: (
         'extra_detail',
-        'member',
+        'members',
+        'meta',
+        'name',
         'short_identifier',
         'target_requirement',
     ),
-    activity.EnsembleMember: (
+    activity.Simulation: (
+        'calendar',
+        'documentation',
+        'end_time',
+        'ensemble_id',
         'errata',
+        'extra_attributes',
         'had_performance',
+        'institution',
+        'meta',
+        'parent_of',
+        'part_of_project',
+        'primary_ensemble',
+        'produced',
+        'ran_for_experiments',
         'ran_on',
-        'simulation',
-    ),
-    activity.ParentSimulation: (
-        'branch_method',
-        'branch_time_in_child',
-        'branch_time_in_parent',
-        'parent',
+        'start_time',
+        'sub_experiment',
+        'used',
     ),
     activity.UberEnsemble: (
         'child_ensembles',
     ),
+    cmip.CmipDataset: (
+        'drs_location',
+        'meta',
+        'originating_simulation',
+    ),
+    cmip.CmipSimulation: (
+        'forcing_index',
+        'initialization_index',
+        'meta',
+        'physics_index',
+        'realization_index',
+        'variant_info',
+    ),
     data.Dataset: (
         'availability',
         'citations',
+        'contains',
         'description',
-        'drs_datasets',
+        'further_attributes',
+        'keywords',
+        'lineage',
         'meta',
         'name',
-        'produced_by',
+        'progress',
         'related_to_dataset',
         'responsible_parties',
-    ),
-    data.Downscaling: (
-        'downscaled_from',
-    ),
-    data.InputDataset: (
-        'modifications_applied',
-        'original_data',
-    ),
-    data.Simulation: (
-        'calendar',
-        'end_time',
-        'extra_attributes',
-        'forcing_index',
-        'further_info_url',
-        'initialization_index',
-        'insitution',
-        'parent_simulation',
-        'part_of_project',
-        'physics_index',
-        'primary_ensemble',
-        'ran_for_experiments',
-        'realization_index',
-        'start_time',
-        'sub_experiment',
-        'used',
-        'variant_info',
+        'type',
     ),
     data.VariableCollection: (
         'collection_name',
+        'geometry',
         'variables',
-    ),
-    designing.AxisMember: (
     ),
     designing.DomainRequirements: (
         'required_extent',
@@ -1095,6 +1252,7 @@ CLASS_OWN_PROPERTIES = {
         'governing_mips',
         'related_experiments',
         'related_mips',
+        'related_objectives',
         'required_period',
         'requirements',
         'tier',
@@ -1104,6 +1262,13 @@ CLASS_OWN_PROPERTIES = {
         'is_conformance_info_required',
         'is_conformance_requested',
         'scope',
+    ),
+    designing.Objective: (
+        'description',
+        'identifier',
+        'meta',
+        'name',
+        'required_outputs',
     ),
     designing.OutputRequirement: (
         'formal_data_request',
@@ -1168,8 +1333,64 @@ CLASS_OWN_PROPERTIES = {
         'start',
         'suffix',
     ),
-    platform.ComponentPerformance: (
-        'component',
+    iso.Algorithm: (
+        'citation',
+        'description',
+    ),
+    iso.Lineage: (
+        'meta',
+        'process_step',
+        'source',
+        'statement',
+    ),
+    iso.ProcessStep: (
+        'description',
+        'execution_date_time',
+        'processing_information',
+        'processor',
+        'rationale',
+        'reference',
+        'report',
+        'source',
+    ),
+    iso.ProcessStepReport: (
+        'description',
+        'link',
+        'name',
+    ),
+    iso.Processing: (
+        'algorithm',
+        'documentation',
+        'identifier',
+        'name',
+        'procedure_description',
+        'runtime_parameters',
+        'software_reference',
+    ),
+    iso.QualityEvaluationOutput: (
+        'output_type',
+    ),
+    iso.QualityEvaluationResult: (
+        'date',
+        'evaluation_procedure',
+        'evaluator',
+        'name',
+        'passed',
+        'results',
+        'specification',
+        'summary_result',
+    ),
+    iso.QualityIssue: (
+        'description',
+        'reporter',
+        'summary',
+        'tracked_issue',
+    ),
+    iso.QualityReport: (
+        'issues',
+        'meta',
+        'reports',
+        'target',
     ),
     platform.ComputePool: (
         'accelerator_type',
@@ -1179,56 +1400,83 @@ CLASS_OWN_PROPERTIES = {
         'compute_cores_per_node',
         'cpu_type',
         'description',
-        'interconnect',
         'memory_per_node',
         'model_number',
         'name',
+        'network_cards_per_node',
         'number_of_nodes',
-        'operating_system',
+        'vendor',
+    ),
+    platform.Interconnect: (
+        'description',
+        'name',
+        'topology',
+        'vendor',
     ),
     platform.Machine: (
+        'linpack_performance',
         'meta',
+        'peak_performance',
+    ),
+    platform.Nic: (
+        'bandwidth',
+        'name',
+        'vendor',
     ),
     platform.Partition: (
         'compute_pools',
         'description',
         'institution',
+        'interconnect',
         'model_number',
         'name',
         'online_documentation',
+        'operating_system',
         'partition',
         'storage_pools',
         'vendor',
-        'when_used',
+        'when_available',
     ),
     platform.Performance: (
         'actual_simulated_years_per_day',
         'compiler',
         'complexity',
         'core_hours_per_simulated_year',
-        'coupling_cost',
-        'data_intensity',
-        'data_output_cost',
+        'further_detail',
         'joules_per_simulated_year',
-        'memory_bloat',
         'meta',
         'model',
         'name',
-        'parallelization',
+        'parallelisation',
         'platform',
         'resolution',
         'simulated_years_per_day',
         'subcomponent_performance',
     ),
+    platform.PerformanceDetail: (
+        'coupling_cost',
+        'data_intensity',
+        'data_output_cost',
+        'memory_bloat',
+    ),
+    platform.ProjectCost: (
+        'activity',
+        'actual_years',
+        'meta',
+        'peak_data',
+        'platform',
+        'total_core_hours',
+        'total_energy_cost',
+        'useful_core_hours',
+        'useful_data',
+        'useful_years',
+    ),
     platform.StoragePool: (
         'description',
+        'file_system_sizes',
         'name',
         'type',
         'vendor',
-    ),
-    platform.StorageVolume: (
-        'units',
-        'volume',
     ),
     science.Model: (
         'activity_properties',
@@ -1284,6 +1532,8 @@ CLASS_OWN_PROPERTIES = {
     ),
     shared.Citation: (
         'abstract',
+        'authors',
+        'bibtex',
         'citation_detail',
         'collective_title',
         'context',
@@ -1292,6 +1542,7 @@ CLASS_OWN_PROPERTIES = {
         'title',
         'type',
         'url',
+        'year',
     ),
     shared.DocMetaInfo: (
         'author',
@@ -1314,25 +1565,30 @@ CLASS_OWN_PROPERTIES = {
     ),
     shared.DocReference: (
         'canonical_name',
-        'constraint_vocabulary',
         'context',
-        'description',
-        'external_id',
         'further_info',
         'id',
-        'institute',
-        'linkage',
         'name',
-        'protocol',
         'relationship',
         'type',
-        'url',
         'version',
     ),
     shared.ExtraAttribute: (
         'doc',
         'key',
         'type',
+        'value',
+    ),
+    shared.FormalAssociation: (
+        'association_id',
+        'association_vocabulary',
+        'online_at',
+    ),
+    shared.Numeric: (
+        'base_unit',
+        'unit_enumeration',
+        'unit_source',
+        'units',
         'value',
     ),
     shared.OnlineResource: (
@@ -1416,6 +1672,7 @@ CLASS_OWN_PROPERTIES = {
         'grid',
         'language',
         'license',
+        'meta',
         'sub_components',
     ),
     software.Variable: (
@@ -1463,7 +1720,7 @@ TOTAL_CLASS_PROPERTIES = sum(len(i) for i in CLASS_OWN_PROPERTIES.values())
 # Supported enums.
 ENUMS = (
     activity.ConformanceType,
-    data.DataAssociationTypes,
+    data.DatasetType,
     designing.EnsembleTypes,
     designing.ExperimentalRelationships,
     designing.ForcingTypes,
@@ -1472,8 +1729,11 @@ ENUMS = (
     drs.DrsGeographicalOperators,
     drs.DrsRealms,
     drs.DrsTimeSuffixes,
+    iso.DqEvaluationResultType,
+    iso.DsInitiativeTypecode,
+    iso.MdCellgeometryCode,
+    iso.MdProgressCode,
     platform.StorageSystems,
-    platform.VolumeUnits,
     science.ModelTypes,
     shared.NilReason,
     shared.QualityStatus,
@@ -1499,12 +1759,15 @@ TYPES = CLASSES + ENUMS
 # Supported document types.
 DOCUMENT_TYPES = (
     activity.Activity,
+    activity.ChildSimulation,
     activity.Conformance,
     activity.Ensemble,
+    activity.EnsembleAxis,
+    activity.Simulation,
     activity.UberEnsemble,
+    cmip.CmipDataset,
+    cmip.CmipSimulation,
     data.Dataset,
-    data.Downscaling,
-    data.Simulation,
     designing.DomainRequirements,
     designing.EnsembleRequirement,
     designing.ForcingConstraint,
@@ -1512,28 +1775,34 @@ DOCUMENT_TYPES = (
     designing.MultiEnsemble,
     designing.NumericalExperiment,
     designing.NumericalRequirement,
+    designing.Objective,
     designing.OutputRequirement,
     designing.Project,
     designing.SimulationPlan,
     designing.StartDateEnsemble,
     designing.TemporalConstraint,
-    platform.ComponentPerformance,
+    iso.Lineage,
+    iso.QualityReport,
     platform.Machine,
     platform.Performance,
+    platform.ProjectCost,
     science.Model,
     science.Realm,
     shared.Citation,
     shared.Party,
     shared.QualityReview,
+    software.SoftwareComponent,
 )
 
 # Base classes.
 BASE_CLASSES = defaultdict(tuple)
+BASE_CLASSES[activity.ChildSimulation] = (activity.Simulation, iso.ProcessStep, )
 BASE_CLASSES[activity.Conformance] = (activity.Activity, )
 BASE_CLASSES[activity.Ensemble] = (activity.Activity, )
+BASE_CLASSES[activity.Simulation] = (iso.ProcessStep, )
 BASE_CLASSES[activity.UberEnsemble] = (activity.Ensemble, activity.Activity, )
-BASE_CLASSES[data.Downscaling] = (data.Simulation, activity.Activity, )
-BASE_CLASSES[data.Simulation] = (activity.Activity, )
+BASE_CLASSES[cmip.CmipDataset] = (data.Dataset, )
+BASE_CLASSES[cmip.CmipSimulation] = (activity.Simulation, iso.ProcessStep, )
 BASE_CLASSES[designing.DomainRequirements] = (designing.NumericalRequirement, activity.Activity, )
 BASE_CLASSES[designing.EnsembleRequirement] = (designing.NumericalRequirement, activity.Activity, )
 BASE_CLASSES[designing.ForcingConstraint] = (designing.NumericalRequirement, activity.Activity, )
@@ -1546,10 +1815,11 @@ BASE_CLASSES[designing.Project] = (activity.Activity, )
 BASE_CLASSES[designing.SimulationPlan] = (activity.Activity, )
 BASE_CLASSES[designing.StartDateEnsemble] = (designing.NumericalRequirement, activity.Activity, )
 BASE_CLASSES[designing.TemporalConstraint] = (designing.NumericalRequirement, activity.Activity, )
-BASE_CLASSES[platform.ComponentPerformance] = (platform.Performance, )
+BASE_CLASSES[iso.QualityEvaluationOutput] = (shared.OnlineResource, )
 BASE_CLASSES[platform.Machine] = (platform.Partition, )
 BASE_CLASSES[science.Model] = (software.ComponentBase, )
 BASE_CLASSES[science.Realm] = (science.Topic, )
+BASE_CLASSES[shared.FormalAssociation] = (shared.DocReference, )
 BASE_CLASSES[software.SoftwareComponent] = (software.ComponentBase, )
 BASE_CLASSES[time.IrregularDateset] = (time.DatetimeSet, )
 BASE_CLASSES[time.RegularTimeset] = (time.DatetimeSet, )
@@ -1562,13 +1832,11 @@ SUB_CLASSES = defaultdict(tuple)
 SUB_CLASSES[activity.Activity] = (
     activity.Conformance,
     activity.Ensemble,
-    data.Simulation,
     designing.NumericalExperiment,
     designing.NumericalRequirement,
     designing.Project,
     designing.SimulationPlan,
     activity.UberEnsemble,
-    data.Downscaling,
     designing.DomainRequirements,
     designing.EnsembleRequirement,
     designing.ForcingConstraint,
@@ -1581,8 +1849,12 @@ SUB_CLASSES[activity.Activity] = (
 SUB_CLASSES[activity.Ensemble] = (
     activity.UberEnsemble,
     )
-SUB_CLASSES[data.Simulation] = (
-    data.Downscaling,
+SUB_CLASSES[activity.Simulation] = (
+    activity.ChildSimulation,
+    cmip.CmipSimulation,
+    )
+SUB_CLASSES[data.Dataset] = (
+    cmip.CmipDataset,
     )
 SUB_CLASSES[designing.NumericalRequirement] = (
     designing.DomainRequirements,
@@ -1594,14 +1866,22 @@ SUB_CLASSES[designing.NumericalRequirement] = (
     designing.StartDateEnsemble,
     designing.TemporalConstraint,
     )
+SUB_CLASSES[iso.ProcessStep] = (
+    activity.Simulation,
+    activity.ChildSimulation,
+    cmip.CmipSimulation,
+    )
 SUB_CLASSES[platform.Partition] = (
     platform.Machine,
     )
-SUB_CLASSES[platform.Performance] = (
-    platform.ComponentPerformance,
-    )
 SUB_CLASSES[science.Topic] = (
     science.Realm,
+    )
+SUB_CLASSES[shared.DocReference] = (
+    shared.FormalAssociation,
+    )
+SUB_CLASSES[shared.OnlineResource] = (
+    iso.QualityEvaluationOutput,
     )
 SUB_CLASSES[software.ComponentBase] = (
     science.Model,
@@ -1662,21 +1942,88 @@ CONSTRAINTS = {
     activity.AxisMember: (
 
         ('index', 'type', int),
-        ('extra_detail', 'type', unicode),
         ('description', 'type', unicode),
         ('value', 'type', float),
-        ('target_requirement', 'type', designing.NumericalRequirement),
+        ('extra_detail', 'type', unicode),
+        ('conformance', 'type', activity.Conformance),
+        ('axis', 'type', activity.EnsembleAxis),
 
         ('index', 'cardinality', "1.1"),
-        ('extra_detail', 'cardinality', "0.1"),
         ('description', 'cardinality', "0.1"),
         ('value', 'cardinality', "0.1"),
-        ('target_requirement', 'cardinality', "0.1"),
+        ('extra_detail', 'cardinality', "0.1"),
+        ('conformance', 'cardinality', "0.1"),
+        ('axis', 'cardinality', "1.1"),
+
+    ),
+    activity.ChildSimulation: (
+
+        ('reference', 'type', shared.Citation),
+        ('part_of_project', 'type', designing.Project),
+        ('produced', 'type', data.Dataset),
+        ('meta', 'type', shared.DocMetaInfo),
+        ('ensemble_id', 'type', activity.AxisMember),
+        ('calendar', 'type', time.Calendar),
+        ('sub_experiment', 'type', designing.NumericalExperiment),
+        ('branch_time_in_child', 'type', time.DateTime),
+        ('primary_ensemble', 'type', activity.Ensemble),
+        ('had_performance', 'type', platform.Performance),
+        ('processing_information', 'type', iso.Processing),
+        ('source', 'type', data.Dataset),
+        ('parent_of', 'type', activity.ChildSimulation),
+        ('used', 'type', science.Model),
+        ('description', 'type', unicode),
+        ('parent', 'type', activity.Simulation),
+        ('start_time', 'type', time.DateTime),
+        ('ran_for_experiments', 'type', designing.NumericalExperiment),
+        ('rationale', 'type', unicode),
+        ('ran_on', 'type', platform.Machine),
+        ('report', 'type', iso.ProcessStepReport),
+        ('institution', 'type', shared.Party),
+        ('branch_time_in_parent', 'type', time.DateTime),
+        ('execution_date_time', 'type', time.DateTime),
+        ('extra_attributes', 'type', shared.ExtraAttribute),
+        ('branch_method', 'type', unicode),
+        ('documentation', 'type', shared.OnlineResource),
+        ('errata', 'type', shared.OnlineResource),
+        ('end_time', 'type', time.DateTime),
+        ('processor', 'type', shared.Responsibility),
+
+        ('reference', 'cardinality', "0.N"),
+        ('part_of_project', 'cardinality', "1.N"),
+        ('produced', 'cardinality', "0.N"),
+        ('meta', 'cardinality', "1.1"),
+        ('ensemble_id', 'cardinality', "0.N"),
+        ('calendar', 'cardinality', "0.1"),
+        ('sub_experiment', 'cardinality', "0.1"),
+        ('branch_time_in_child', 'cardinality', "0.1"),
+        ('primary_ensemble', 'cardinality', "0.1"),
+        ('had_performance', 'cardinality', "0.1"),
+        ('processing_information', 'cardinality', "0.N"),
+        ('source', 'cardinality', "0.N"),
+        ('parent_of', 'cardinality', "0.N"),
+        ('used', 'cardinality', "1.1"),
+        ('description', 'cardinality', "1.1"),
+        ('parent', 'cardinality', "1.1"),
+        ('start_time', 'cardinality', "0.1"),
+        ('ran_for_experiments', 'cardinality', "1.N"),
+        ('rationale', 'cardinality', "0.1"),
+        ('ran_on', 'cardinality', "0.1"),
+        ('report', 'cardinality', "0.N"),
+        ('institution', 'cardinality', "0.1"),
+        ('branch_time_in_parent', 'cardinality', "0.1"),
+        ('execution_date_time', 'cardinality', "0.1"),
+        ('extra_attributes', 'cardinality', "0.N"),
+        ('branch_method', 'cardinality', "0.1"),
+        ('documentation', 'cardinality', "0.1"),
+        ('errata', 'cardinality', "0.1"),
+        ('end_time', 'cardinality', "0.1"),
+        ('processor', 'cardinality', "0.1"),
 
     ),
     activity.Conformance: (
 
-        ('datasets', 'type', data.InputDataset),
+        ('datasets', 'type', data.Dataset),
         ('description', 'type', unicode),
         ('models', 'type', science.Model),
         ('conformance_achieved', 'type', unicode),
@@ -1732,7 +2079,7 @@ CONSTRAINTS = {
         ('representative_performance', 'type', platform.Performance),
         ('rationale', 'type', unicode),
         ('keywords', 'type', unicode),
-        ('members', 'type', activity.EnsembleMember),
+        ('members', 'type', activity.Simulation),
         ('alternative_names', 'type', unicode),
         ('name', 'type', unicode),
 
@@ -1753,48 +2100,83 @@ CONSTRAINTS = {
         ('representative_performance', 'cardinality', "0.1"),
         ('rationale', 'cardinality', "0.1"),
         ('keywords', 'cardinality', "0.1"),
-        ('members', 'cardinality', "1.N"),
+        ('members', 'cardinality', "0.N"),
         ('alternative_names', 'cardinality', "0.N"),
         ('name', 'cardinality', "1.1"),
 
     ),
     activity.EnsembleAxis: (
 
-        ('member', 'type', activity.AxisMember),
+        ('name', 'type', unicode),
         ('extra_detail', 'type', unicode),
+        ('meta', 'type', shared.DocMetaInfo),
         ('short_identifier', 'type', unicode),
+        ('members', 'type', activity.AxisMember),
         ('target_requirement', 'type', designing.NumericalRequirement),
 
-        ('member', 'cardinality', "1.N"),
+        ('name', 'cardinality', "1.1"),
         ('extra_detail', 'cardinality', "0.1"),
+        ('meta', 'cardinality', "1.1"),
         ('short_identifier', 'cardinality', "1.1"),
+        ('members', 'cardinality', "0.N"),
         ('target_requirement', 'cardinality', "0.1"),
 
     ),
-    activity.EnsembleMember: (
+    activity.Simulation: (
 
-        ('simulation', 'type', data.Simulation),
-        ('ran_on', 'type', platform.Machine),
-        ('errata', 'type', shared.OnlineResource),
+        ('reference', 'type', shared.Citation),
+        ('part_of_project', 'type', designing.Project),
+        ('execution_date_time', 'type', time.DateTime),
+        ('meta', 'type', shared.DocMetaInfo),
+        ('ensemble_id', 'type', activity.AxisMember),
+        ('calendar', 'type', time.Calendar),
+        ('sub_experiment', 'type', designing.NumericalExperiment),
+        ('primary_ensemble', 'type', activity.Ensemble),
         ('had_performance', 'type', platform.Performance),
+        ('processing_information', 'type', iso.Processing),
+        ('source', 'type', data.Dataset),
+        ('parent_of', 'type', activity.ChildSimulation),
+        ('used', 'type', science.Model),
+        ('description', 'type', unicode),
+        ('start_time', 'type', time.DateTime),
+        ('ran_for_experiments', 'type', designing.NumericalExperiment),
+        ('rationale', 'type', unicode),
+        ('ran_on', 'type', platform.Machine),
+        ('report', 'type', iso.ProcessStepReport),
+        ('institution', 'type', shared.Party),
+        ('produced', 'type', data.Dataset),
+        ('extra_attributes', 'type', shared.ExtraAttribute),
+        ('documentation', 'type', shared.OnlineResource),
+        ('processor', 'type', shared.Responsibility),
+        ('end_time', 'type', time.DateTime),
+        ('errata', 'type', shared.OnlineResource),
 
-        ('simulation', 'cardinality', "1.1"),
-        ('ran_on', 'cardinality', "0.1"),
-        ('errata', 'cardinality', "0.1"),
+        ('reference', 'cardinality', "0.N"),
+        ('part_of_project', 'cardinality', "1.N"),
+        ('execution_date_time', 'cardinality', "0.1"),
+        ('meta', 'cardinality', "1.1"),
+        ('ensemble_id', 'cardinality', "0.N"),
+        ('calendar', 'cardinality', "0.1"),
+        ('sub_experiment', 'cardinality', "0.1"),
+        ('primary_ensemble', 'cardinality', "0.1"),
         ('had_performance', 'cardinality', "0.1"),
-
-    ),
-    activity.ParentSimulation: (
-
-        ('branch_time_in_parent', 'type', time.DateTime),
-        ('branch_time_in_child', 'type', time.DateTime),
-        ('branch_method', 'type', unicode),
-        ('parent', 'type', data.Simulation),
-
-        ('branch_time_in_parent', 'cardinality', "0.1"),
-        ('branch_time_in_child', 'cardinality', "0.1"),
-        ('branch_method', 'cardinality', "0.1"),
-        ('parent', 'cardinality', "1.1"),
+        ('processing_information', 'cardinality', "0.N"),
+        ('source', 'cardinality', "0.N"),
+        ('parent_of', 'cardinality', "0.N"),
+        ('used', 'cardinality', "1.1"),
+        ('description', 'cardinality', "1.1"),
+        ('start_time', 'cardinality', "0.1"),
+        ('ran_for_experiments', 'cardinality', "1.N"),
+        ('rationale', 'cardinality', "0.1"),
+        ('ran_on', 'cardinality', "0.1"),
+        ('report', 'cardinality', "0.N"),
+        ('institution', 'cardinality', "0.1"),
+        ('produced', 'cardinality', "0.N"),
+        ('extra_attributes', 'cardinality', "0.N"),
+        ('documentation', 'cardinality', "0.1"),
+        ('processor', 'cardinality', "0.1"),
+        ('end_time', 'cardinality', "0.1"),
+        ('errata', 'cardinality', "0.1"),
 
     ),
     activity.UberEnsemble: (
@@ -1817,7 +2199,7 @@ CONSTRAINTS = {
         ('representative_performance', 'type', platform.Performance),
         ('internal_name', 'type', unicode),
         ('duration', 'type', time.TimePeriod),
-        ('members', 'type', activity.EnsembleMember),
+        ('members', 'type', activity.Simulation),
         ('alternative_names', 'type', unicode),
         ('name', 'type', unicode),
 
@@ -1839,187 +2221,153 @@ CONSTRAINTS = {
         ('representative_performance', 'cardinality', "0.1"),
         ('internal_name', 'cardinality', "0.1"),
         ('duration', 'cardinality', "0.1"),
-        ('members', 'cardinality', "1.N"),
+        ('members', 'cardinality', "0.N"),
         ('alternative_names', 'cardinality', "0.N"),
         ('name', 'cardinality', "1.1"),
+
+    ),
+    cmip.CmipDataset: (
+
+        ('lineage', 'type', iso.Lineage),
+        ('related_to_dataset', 'type', shared.FormalAssociation),
+        ('description', 'type', unicode),
+        ('citations', 'type', shared.Citation),
+        ('drs_location', 'type', drs.DrsPublicationDataset),
+        ('contains', 'type', data.VariableCollection),
+        ('responsible_parties', 'type', shared.Responsibility),
+        ('meta', 'type', shared.DocMetaInfo),
+        ('further_attributes', 'type', shared.ExtraAttribute),
+        ('originating_simulation', 'type', activity.Simulation),
+        ('keywords', 'type', unicode),
+        ('progress', 'type', unicode),
+        ('type', 'type', unicode),
+        ('availability', 'type', shared.OnlineResource),
+        ('name', 'type', unicode),
+
+        ('lineage', 'cardinality', "0.1"),
+        ('related_to_dataset', 'cardinality', "0.N"),
+        ('description', 'cardinality', "0.1"),
+        ('citations', 'cardinality', "0.N"),
+        ('drs_location', 'cardinality', "0.N"),
+        ('contains', 'cardinality', "0.N"),
+        ('responsible_parties', 'cardinality', "0.N"),
+        ('meta', 'cardinality', "1.1"),
+        ('further_attributes', 'cardinality', "0.N"),
+        ('originating_simulation', 'cardinality', "0.1"),
+        ('keywords', 'cardinality', "0.N"),
+        ('progress', 'cardinality', "0.1"),
+        ('type', 'cardinality', "1.N"),
+        ('availability', 'cardinality', "0.N"),
+        ('name', 'cardinality', "1.1"),
+
+    ),
+    cmip.CmipSimulation: (
+
+        ('reference', 'type', shared.Citation),
+        ('part_of_project', 'type', designing.Project),
+        ('realization_index', 'type', int),
+        ('variant_info', 'type', unicode),
+        ('produced', 'type', data.Dataset),
+        ('meta', 'type', shared.DocMetaInfo),
+        ('ensemble_id', 'type', activity.AxisMember),
+        ('physics_index', 'type', int),
+        ('calendar', 'type', time.Calendar),
+        ('forcing_index', 'type', int),
+        ('sub_experiment', 'type', designing.NumericalExperiment),
+        ('primary_ensemble', 'type', activity.Ensemble),
+        ('had_performance', 'type', platform.Performance),
+        ('processing_information', 'type', iso.Processing),
+        ('source', 'type', data.Dataset),
+        ('parent_of', 'type', activity.ChildSimulation),
+        ('used', 'type', science.Model),
+        ('description', 'type', unicode),
+        ('start_time', 'type', time.DateTime),
+        ('ran_for_experiments', 'type', designing.NumericalExperiment),
+        ('rationale', 'type', unicode),
+        ('ran_on', 'type', platform.Machine),
+        ('report', 'type', iso.ProcessStepReport),
+        ('institution', 'type', shared.Party),
+        ('execution_date_time', 'type', time.DateTime),
+        ('extra_attributes', 'type', shared.ExtraAttribute),
+        ('documentation', 'type', shared.OnlineResource),
+        ('errata', 'type', shared.OnlineResource),
+        ('initialization_index', 'type', int),
+        ('end_time', 'type', time.DateTime),
+        ('processor', 'type', shared.Responsibility),
+
+        ('reference', 'cardinality', "0.N"),
+        ('part_of_project', 'cardinality', "1.N"),
+        ('realization_index', 'cardinality', "1.1"),
+        ('variant_info', 'cardinality', "0.1"),
+        ('produced', 'cardinality', "0.N"),
+        ('meta', 'cardinality', "1.1"),
+        ('ensemble_id', 'cardinality', "0.N"),
+        ('physics_index', 'cardinality', "1.1"),
+        ('calendar', 'cardinality', "0.1"),
+        ('forcing_index', 'cardinality', "1.1"),
+        ('sub_experiment', 'cardinality', "0.1"),
+        ('primary_ensemble', 'cardinality', "0.1"),
+        ('had_performance', 'cardinality', "0.1"),
+        ('processing_information', 'cardinality', "0.N"),
+        ('source', 'cardinality', "0.N"),
+        ('parent_of', 'cardinality', "0.N"),
+        ('used', 'cardinality', "1.1"),
+        ('description', 'cardinality', "1.1"),
+        ('start_time', 'cardinality', "0.1"),
+        ('ran_for_experiments', 'cardinality', "1.N"),
+        ('rationale', 'cardinality', "0.1"),
+        ('ran_on', 'cardinality', "0.1"),
+        ('report', 'cardinality', "0.N"),
+        ('institution', 'cardinality', "0.1"),
+        ('execution_date_time', 'cardinality', "0.1"),
+        ('extra_attributes', 'cardinality', "0.N"),
+        ('documentation', 'cardinality', "0.1"),
+        ('errata', 'cardinality', "0.1"),
+        ('initialization_index', 'cardinality', "1.1"),
+        ('end_time', 'cardinality', "0.1"),
+        ('processor', 'cardinality', "0.1"),
 
     ),
     data.Dataset: (
 
-        ('related_to_dataset', 'type', shared.OnlineResource),
-        ('name', 'type', unicode),
-        ('produced_by', 'type', data.Simulation),
-        ('citations', 'type', shared.Citation),
-        ('drs_datasets', 'type', drs.DrsPublicationDataset),
-        ('responsible_parties', 'type', shared.Responsibility),
+        ('lineage', 'type', iso.Lineage),
+        ('related_to_dataset', 'type', shared.FormalAssociation),
+        ('description', 'type', unicode),
         ('meta', 'type', shared.DocMetaInfo),
+        ('contains', 'type', data.VariableCollection),
+        ('responsible_parties', 'type', shared.Responsibility),
+        ('citations', 'type', shared.Citation),
+        ('further_attributes', 'type', shared.ExtraAttribute),
+        ('keywords', 'type', unicode),
+        ('progress', 'type', unicode),
+        ('type', 'type', unicode),
         ('availability', 'type', shared.OnlineResource),
-        ('description', 'type', unicode),
+        ('name', 'type', unicode),
 
+        ('lineage', 'cardinality', "0.1"),
         ('related_to_dataset', 'cardinality', "0.N"),
-        ('name', 'cardinality', "1.1"),
-        ('produced_by', 'cardinality', "0.1"),
-        ('citations', 'cardinality', "0.N"),
-        ('drs_datasets', 'cardinality', "0.N"),
-        ('responsible_parties', 'cardinality', "0.N"),
+        ('description', 'cardinality', "0.1"),
         ('meta', 'cardinality', "1.1"),
+        ('contains', 'cardinality', "0.N"),
+        ('responsible_parties', 'cardinality', "0.N"),
+        ('citations', 'cardinality', "0.N"),
+        ('further_attributes', 'cardinality', "0.N"),
+        ('keywords', 'cardinality', "0.N"),
+        ('progress', 'cardinality', "0.1"),
+        ('type', 'cardinality', "1.N"),
         ('availability', 'cardinality', "0.N"),
-        ('description', 'cardinality', "0.1"),
-
-    ),
-    data.Downscaling: (
-
-        ('insitution', 'type', shared.Party),
-        ('realization_index', 'type', int),
-        ('variant_info', 'type', unicode),
-        ('long_name', 'type', unicode),
-        ('downscaled_from', 'type', data.Simulation),
-        ('meta', 'type', shared.DocMetaInfo),
-        ('physics_index', 'type', int),
-        ('duration', 'type', time.TimePeriod),
-        ('calendar', 'type', time.Calendar),
-        ('sub_experiment', 'type', designing.NumericalExperiment),
-        ('primary_ensemble', 'type', activity.Ensemble),
-        ('previously_known_as', 'type', unicode),
-        ('responsible_parties', 'type', shared.Responsibility),
-        ('forcing_index', 'type', int),
-        ('part_of_project', 'type', designing.Project),
-        ('canonical_name', 'type', unicode),
-        ('citations', 'type', shared.Citation),
-        ('internal_name', 'type', unicode),
-        ('used', 'type', science.Model),
-        ('description', 'type', unicode),
-        ('start_time', 'type', time.DateTime),
-        ('ran_for_experiments', 'type', designing.NumericalExperiment),
-        ('rationale', 'type', unicode),
-        ('extra_attributes', 'type', shared.ExtraAttribute),
-        ('name', 'type', unicode),
-        ('further_info_url', 'type', unicode),
-        ('parent_simulation', 'type', activity.ParentSimulation),
-        ('initialization_index', 'type', int),
-        ('end_time', 'type', time.DateTime),
-        ('keywords', 'type', unicode),
-        ('alternative_names', 'type', unicode),
-
-        ('insitution', 'cardinality', "0.1"),
-        ('realization_index', 'cardinality', "0.1"),
-        ('variant_info', 'cardinality', "0.1"),
-        ('long_name', 'cardinality', "0.1"),
-        ('downscaled_from', 'cardinality', "1.1"),
-        ('meta', 'cardinality', "1.1"),
-        ('physics_index', 'cardinality', "0.1"),
-        ('duration', 'cardinality', "0.1"),
-        ('calendar', 'cardinality', "0.1"),
-        ('sub_experiment', 'cardinality', "0.1"),
-        ('primary_ensemble', 'cardinality', "0.1"),
-        ('previously_known_as', 'cardinality', "0.N"),
-        ('responsible_parties', 'cardinality', "0.N"),
-        ('forcing_index', 'cardinality', "0.1"),
-        ('part_of_project', 'cardinality', "1.N"),
-        ('canonical_name', 'cardinality', "0.1"),
-        ('citations', 'cardinality', "0.N"),
-        ('internal_name', 'cardinality', "0.1"),
-        ('used', 'cardinality', "1.1"),
-        ('description', 'cardinality', "0.1"),
-        ('start_time', 'cardinality', "0.1"),
-        ('ran_for_experiments', 'cardinality', "1.N"),
-        ('rationale', 'cardinality', "0.1"),
-        ('extra_attributes', 'cardinality', "0.N"),
         ('name', 'cardinality', "1.1"),
-        ('further_info_url', 'cardinality', "0.1"),
-        ('parent_simulation', 'cardinality', "0.1"),
-        ('initialization_index', 'cardinality', "0.1"),
-        ('end_time', 'cardinality', "0.1"),
-        ('keywords', 'cardinality', "0.1"),
-        ('alternative_names', 'cardinality', "0.N"),
-
-    ),
-    data.InputDataset: (
-
-        ('modifications_applied', 'type', unicode),
-        ('original_data', 'type', data.Dataset),
-
-        ('modifications_applied', 'cardinality', "0.1"),
-        ('original_data', 'cardinality', "1.1"),
-
-    ),
-    data.Simulation: (
-
-        ('insitution', 'type', shared.Party),
-        ('realization_index', 'type', int),
-        ('variant_info', 'type', unicode),
-        ('long_name', 'type', unicode),
-        ('meta', 'type', shared.DocMetaInfo),
-        ('physics_index', 'type', int),
-        ('duration', 'type', time.TimePeriod),
-        ('calendar', 'type', time.Calendar),
-        ('sub_experiment', 'type', designing.NumericalExperiment),
-        ('primary_ensemble', 'type', activity.Ensemble),
-        ('previously_known_as', 'type', unicode),
-        ('responsible_parties', 'type', shared.Responsibility),
-        ('forcing_index', 'type', int),
-        ('part_of_project', 'type', designing.Project),
-        ('canonical_name', 'type', unicode),
-        ('citations', 'type', shared.Citation),
-        ('internal_name', 'type', unicode),
-        ('used', 'type', science.Model),
-        ('description', 'type', unicode),
-        ('start_time', 'type', time.DateTime),
-        ('ran_for_experiments', 'type', designing.NumericalExperiment),
-        ('rationale', 'type', unicode),
-        ('extra_attributes', 'type', shared.ExtraAttribute),
-        ('name', 'type', unicode),
-        ('further_info_url', 'type', unicode),
-        ('parent_simulation', 'type', activity.ParentSimulation),
-        ('initialization_index', 'type', int),
-        ('end_time', 'type', time.DateTime),
-        ('keywords', 'type', unicode),
-        ('alternative_names', 'type', unicode),
-
-        ('insitution', 'cardinality', "0.1"),
-        ('realization_index', 'cardinality', "0.1"),
-        ('variant_info', 'cardinality', "0.1"),
-        ('long_name', 'cardinality', "0.1"),
-        ('meta', 'cardinality', "1.1"),
-        ('physics_index', 'cardinality', "0.1"),
-        ('duration', 'cardinality', "0.1"),
-        ('calendar', 'cardinality', "0.1"),
-        ('sub_experiment', 'cardinality', "0.1"),
-        ('primary_ensemble', 'cardinality', "0.1"),
-        ('previously_known_as', 'cardinality', "0.N"),
-        ('responsible_parties', 'cardinality', "0.N"),
-        ('forcing_index', 'cardinality', "0.1"),
-        ('part_of_project', 'cardinality', "1.N"),
-        ('canonical_name', 'cardinality', "0.1"),
-        ('citations', 'cardinality', "0.N"),
-        ('internal_name', 'cardinality', "0.1"),
-        ('used', 'cardinality', "1.1"),
-        ('description', 'cardinality', "0.1"),
-        ('start_time', 'cardinality', "0.1"),
-        ('ran_for_experiments', 'cardinality', "1.N"),
-        ('rationale', 'cardinality', "0.1"),
-        ('extra_attributes', 'cardinality', "0.N"),
-        ('name', 'cardinality', "1.1"),
-        ('further_info_url', 'cardinality', "0.1"),
-        ('parent_simulation', 'cardinality', "0.1"),
-        ('initialization_index', 'cardinality', "0.1"),
-        ('end_time', 'cardinality', "0.1"),
-        ('keywords', 'cardinality', "0.1"),
-        ('alternative_names', 'cardinality', "0.N"),
 
     ),
     data.VariableCollection: (
 
+        ('geometry', 'type', unicode),
         ('collection_name', 'type', unicode),
         ('variables', 'type', unicode),
 
+        ('geometry', 'cardinality', "0.1"),
         ('collection_name', 'cardinality', "0.1"),
         ('variables', 'cardinality', "1.N"),
-
-    ),
-    designing.AxisMember: (
-
-
 
     ),
     designing.DomainRequirements: (
@@ -2269,6 +2617,7 @@ CONSTRAINTS = {
         ('keywords', 'type', unicode),
         ('tier', 'type', int),
         ('alternative_names', 'type', unicode),
+        ('related_objectives', 'type', unicode),
         ('name', 'type', unicode),
 
         ('governing_mips', 'cardinality', "0.N"),
@@ -2289,6 +2638,7 @@ CONSTRAINTS = {
         ('keywords', 'cardinality', "0.1"),
         ('tier', 'cardinality', "0.1"),
         ('alternative_names', 'cardinality', "0.N"),
+        ('related_objectives', 'cardinality', "0.N"),
         ('name', 'cardinality', "1.1"),
 
     ),
@@ -2328,6 +2678,21 @@ CONSTRAINTS = {
         ('scope', 'cardinality', "0.1"),
         ('is_conformance_requested', 'cardinality', "1.1"),
         ('alternative_names', 'cardinality', "0.N"),
+        ('name', 'cardinality', "1.1"),
+
+    ),
+    designing.Objective: (
+
+        ('required_outputs', 'type', data.VariableCollection),
+        ('identifier', 'type', unicode),
+        ('meta', 'type', shared.DocMetaInfo),
+        ('description', 'type', unicode),
+        ('name', 'type', unicode),
+
+        ('required_outputs', 'cardinality', "0.N"),
+        ('identifier', 'cardinality', "0.1"),
+        ('meta', 'cardinality', "1.1"),
+        ('description', 'cardinality', "0.1"),
         ('name', 'cardinality', "1.1"),
 
     ),
@@ -2389,8 +2754,8 @@ CONSTRAINTS = {
         ('meta', 'type', shared.DocMetaInfo),
         ('rationale', 'type', unicode),
         ('keywords', 'type', unicode),
-        ('objectives', 'type', unicode),
-        ('homepage', 'type', unicode),
+        ('objectives', 'type', designing.Objective),
+        ('homepage', 'type', shared.OnlineResource),
         ('alternative_names', 'type', unicode),
         ('name', 'type', unicode),
 
@@ -2577,7 +2942,7 @@ CONSTRAINTS = {
     drs.DrsExperiment: (
 
         ('family', 'type', unicode),
-        ('axis_identifer', 'type', designing.AxisMember),
+        ('axis_identifer', 'type', activity.AxisMember),
         ('axis_type', 'type', unicode),
 
         ('family', 'cardinality', "1.1"),
@@ -2623,65 +2988,158 @@ CONSTRAINTS = {
         ('suffix', 'cardinality', "0.1"),
 
     ),
-    platform.ComponentPerformance: (
+    iso.Algorithm: (
 
-        ('data_intensity', 'type', float),
-        ('memory_bloat', 'type', float),
-        ('name', 'type', unicode),
-        ('parallelization', 'type', float),
-        ('data_output_cost', 'type', float),
-        ('joules_per_simulated_year', 'type', float),
-        ('subcomponent_performance', 'type', platform.ComponentPerformance),
-        ('simulated_years_per_day', 'type', float),
-        ('complexity', 'type', int),
-        ('platform', 'type', platform.Machine),
-        ('coupling_cost', 'type', float),
+        ('citation', 'type', shared.Citation),
+        ('description', 'type', unicode),
+
+        ('citation', 'cardinality', "0.1"),
+        ('description', 'cardinality', "0.1"),
+
+    ),
+    iso.Lineage: (
+
+        ('process_step', 'type', iso.ProcessStep),
+        ('source', 'type', data.Dataset),
         ('meta', 'type', shared.DocMetaInfo),
-        ('component', 'type', software.SoftwareComponent),
-        ('actual_simulated_years_per_day', 'type', float),
-        ('model', 'type', science.Model),
-        ('core_hours_per_simulated_year', 'type', float),
-        ('resolution', 'type', int),
-        ('compiler', 'type', unicode),
+        ('statement', 'type', unicode),
 
-        ('data_intensity', 'cardinality', "0.1"),
-        ('memory_bloat', 'cardinality', "0.1"),
-        ('name', 'cardinality', "0.1"),
-        ('parallelization', 'cardinality', "0.1"),
-        ('data_output_cost', 'cardinality', "0.1"),
-        ('joules_per_simulated_year', 'cardinality', "0.1"),
-        ('subcomponent_performance', 'cardinality', "0.N"),
-        ('simulated_years_per_day', 'cardinality', "0.1"),
-        ('complexity', 'cardinality', "0.1"),
-        ('platform', 'cardinality', "1.1"),
-        ('coupling_cost', 'cardinality', "0.1"),
+        ('process_step', 'cardinality', "0.N"),
+        ('source', 'cardinality', "0.N"),
         ('meta', 'cardinality', "1.1"),
-        ('component', 'cardinality', "1.1"),
-        ('actual_simulated_years_per_day', 'cardinality', "0.1"),
-        ('model', 'cardinality', "1.1"),
-        ('core_hours_per_simulated_year', 'cardinality', "0.1"),
-        ('resolution', 'cardinality', "0.1"),
-        ('compiler', 'cardinality', "0.1"),
+        ('statement', 'cardinality', "0.1"),
+
+    ),
+    iso.ProcessStep: (
+
+        ('processing_information', 'type', iso.Processing),
+        ('description', 'type', unicode),
+        ('reference', 'type', shared.Citation),
+        ('execution_date_time', 'type', time.DateTime),
+        ('source', 'type', data.Dataset),
+        ('rationale', 'type', unicode),
+        ('report', 'type', iso.ProcessStepReport),
+        ('processor', 'type', shared.Responsibility),
+
+        ('processing_information', 'cardinality', "0.N"),
+        ('description', 'cardinality', "1.1"),
+        ('reference', 'cardinality', "0.N"),
+        ('execution_date_time', 'cardinality', "0.1"),
+        ('source', 'cardinality', "0.N"),
+        ('rationale', 'cardinality', "0.1"),
+        ('report', 'cardinality', "0.N"),
+        ('processor', 'cardinality', "0.1"),
+
+    ),
+    iso.ProcessStepReport: (
+
+        ('link', 'type', shared.OnlineResource),
+        ('description', 'type', unicode),
+        ('name', 'type', unicode),
+
+        ('link', 'cardinality', "0.1"),
+        ('description', 'cardinality', "1.1"),
+        ('name', 'cardinality', "1.1"),
+
+    ),
+    iso.Processing: (
+
+        ('procedure_description', 'type', unicode),
+        ('software_reference', 'type', shared.Citation),
+        ('runtime_parameters', 'type', unicode),
+        ('algorithm', 'type', iso.Algorithm),
+        ('documentation', 'type', shared.Citation),
+        ('identifier', 'type', unicode),
+        ('name', 'type', unicode),
+
+        ('procedure_description', 'cardinality', "0.1"),
+        ('software_reference', 'cardinality', "0.N"),
+        ('runtime_parameters', 'cardinality', "0.1"),
+        ('algorithm', 'cardinality', "0.N"),
+        ('documentation', 'cardinality', "0.1"),
+        ('identifier', 'cardinality', "0.1"),
+        ('name', 'cardinality', "1.1"),
+
+    ),
+    iso.QualityEvaluationOutput: (
+
+        ('output_type', 'type', unicode),
+        ('protocol', 'type', unicode),
+        ('description', 'type', unicode),
+        ('linkage', 'type', unicode),
+        ('name', 'type', unicode),
+
+        ('output_type', 'cardinality', "1.1"),
+        ('protocol', 'cardinality', "0.1"),
+        ('description', 'cardinality', "0.1"),
+        ('linkage', 'cardinality', "1.1"),
+        ('name', 'cardinality', "1.1"),
+
+    ),
+    iso.QualityEvaluationResult: (
+
+        ('name', 'type', unicode),
+        ('specification', 'type', shared.Citation),
+        ('results', 'type', iso.QualityEvaluationOutput),
+        ('evaluation_procedure', 'type', unicode),
+        ('summary_result', 'type', unicode),
+        ('passed', 'type', bool),
+        ('date', 'type', time.DateTime),
+        ('evaluator', 'type', shared.Party),
+
+        ('name', 'cardinality', "1.1"),
+        ('specification', 'cardinality', "0.1"),
+        ('results', 'cardinality', "0.N"),
+        ('evaluation_procedure', 'cardinality', "0.1"),
+        ('summary_result', 'cardinality', "0.1"),
+        ('passed', 'cardinality', "0.1"),
+        ('date', 'cardinality', "0.1"),
+        ('evaluator', 'cardinality', "0.1"),
+
+    ),
+    iso.QualityIssue: (
+
+        ('tracked_issue', 'type', shared.OnlineResource),
+        ('summary', 'type', unicode),
+        ('description', 'type', unicode),
+        ('reporter', 'type', shared.Party),
+
+        ('tracked_issue', 'cardinality', "0.1"),
+        ('summary', 'cardinality', "1.1"),
+        ('description', 'cardinality', "0.1"),
+        ('reporter', 'cardinality', "0.1"),
+
+    ),
+    iso.QualityReport: (
+
+        ('meta', 'type', shared.DocMetaInfo),
+        ('reports', 'type', iso.QualityEvaluationResult),
+        ('issues', 'type', iso.QualityIssue),
+        ('target', 'type', shared.OnlineResource),
+
+        ('meta', 'cardinality', "1.1"),
+        ('reports', 'cardinality', "0.N"),
+        ('issues', 'cardinality', "0.N"),
+        ('target', 'cardinality', "1.1"),
 
     ),
     platform.ComputePool: (
 
-        ('operating_system', 'type', unicode),
-        ('interconnect', 'type', unicode),
+        ('number_of_nodes', 'type', int),
         ('description', 'type', unicode),
-        ('memory_per_node', 'type', platform.StorageVolume),
-        ('clock_speed', 'type', float),
+        ('memory_per_node', 'type', shared.Numeric),
+        ('clock_speed', 'type', shared.Numeric),
         ('model_number', 'type', unicode),
         ('compute_cores_per_node', 'type', int),
         ('accelerator_type', 'type', unicode),
         ('cpu_type', 'type', unicode),
-        ('number_of_nodes', 'type', int),
+        ('network_cards_per_node', 'type', platform.Nic),
+        ('vendor', 'type', shared.Party),
         ('accelerators_per_node', 'type', int),
         ('clock_cycle_concurrency', 'type', int),
         ('name', 'type', unicode),
 
-        ('operating_system', 'cardinality', "0.1"),
-        ('interconnect', 'cardinality', "0.1"),
+        ('number_of_nodes', 'cardinality', "0.1"),
         ('description', 'cardinality', "0.1"),
         ('memory_per_node', 'cardinality', "0.1"),
         ('clock_speed', 'cardinality', "0.1"),
@@ -2689,59 +3147,96 @@ CONSTRAINTS = {
         ('compute_cores_per_node', 'cardinality', "0.1"),
         ('accelerator_type', 'cardinality', "0.1"),
         ('cpu_type', 'cardinality', "0.1"),
-        ('number_of_nodes', 'cardinality', "0.1"),
+        ('network_cards_per_node', 'cardinality', "0.N"),
+        ('vendor', 'cardinality', "0.1"),
         ('accelerators_per_node', 'cardinality', "0.1"),
         ('clock_cycle_concurrency', 'cardinality', "0.1"),
         ('name', 'cardinality', "0.1"),
 
     ),
+    platform.Interconnect: (
+
+        ('topology', 'type', unicode),
+        ('vendor', 'type', shared.Party),
+        ('description', 'type', unicode),
+        ('name', 'type', unicode),
+
+        ('topology', 'cardinality', "0.1"),
+        ('vendor', 'cardinality', "0.1"),
+        ('description', 'cardinality', "0.1"),
+        ('name', 'cardinality', "0.1"),
+
+    ),
     platform.Machine: (
 
-        ('vendor', 'type', shared.Party),
+        ('operating_system', 'type', unicode),
+        ('interconnect', 'type', platform.Interconnect),
         ('name', 'type', unicode),
+        ('peak_performance', 'type', shared.Numeric),
         ('partition', 'type', platform.Partition),
         ('model_number', 'type', unicode),
         ('online_documentation', 'type', shared.OnlineResource),
         ('meta', 'type', shared.DocMetaInfo),
         ('storage_pools', 'type', platform.StoragePool),
-        ('when_used', 'type', time.TimePeriod),
+        ('linpack_performance', 'type', shared.Numeric),
+        ('when_available', 'type', time.TimePeriod),
+        ('vendor', 'type', shared.Party),
         ('institution', 'type', shared.Party),
         ('compute_pools', 'type', platform.ComputePool),
         ('description', 'type', unicode),
 
-        ('vendor', 'cardinality', "0.1"),
+        ('operating_system', 'cardinality', "0.1"),
+        ('interconnect', 'cardinality', "0.1"),
         ('name', 'cardinality', "1.1"),
+        ('peak_performance', 'cardinality', "0.1"),
         ('partition', 'cardinality', "0.N"),
         ('model_number', 'cardinality', "0.1"),
         ('online_documentation', 'cardinality', "0.N"),
         ('meta', 'cardinality', "1.1"),
         ('storage_pools', 'cardinality', "0.N"),
-        ('when_used', 'cardinality', "0.1"),
+        ('linpack_performance', 'cardinality', "0.1"),
+        ('when_available', 'cardinality', "0.1"),
+        ('vendor', 'cardinality', "0.1"),
         ('institution', 'cardinality', "1.1"),
         ('compute_pools', 'cardinality', "1.N"),
         ('description', 'cardinality', "0.1"),
 
     ),
-    platform.Partition: (
+    platform.Nic: (
 
+        ('bandwidth', 'type', shared.Numeric),
         ('vendor', 'type', shared.Party),
         ('name', 'type', unicode),
+
+        ('bandwidth', 'cardinality', "1.1"),
+        ('vendor', 'cardinality', "0.1"),
+        ('name', 'cardinality', "1.1"),
+
+    ),
+    platform.Partition: (
+
+        ('operating_system', 'type', unicode),
+        ('interconnect', 'type', platform.Interconnect),
+        ('name', 'type', unicode),
+        ('when_available', 'type', time.TimePeriod),
         ('partition', 'type', platform.Partition),
         ('model_number', 'type', unicode),
         ('online_documentation', 'type', shared.OnlineResource),
         ('storage_pools', 'type', platform.StoragePool),
-        ('when_used', 'type', time.TimePeriod),
+        ('vendor', 'type', shared.Party),
         ('institution', 'type', shared.Party),
         ('compute_pools', 'type', platform.ComputePool),
         ('description', 'type', unicode),
 
-        ('vendor', 'cardinality', "0.1"),
+        ('operating_system', 'cardinality', "0.1"),
+        ('interconnect', 'cardinality', "0.1"),
         ('name', 'cardinality', "1.1"),
+        ('when_available', 'cardinality', "0.1"),
         ('partition', 'cardinality', "0.N"),
         ('model_number', 'cardinality', "0.1"),
         ('online_documentation', 'cardinality', "0.N"),
         ('storage_pools', 'cardinality', "0.N"),
-        ('when_used', 'cardinality', "0.1"),
+        ('vendor', 'cardinality', "0.1"),
         ('institution', 'cardinality', "1.1"),
         ('compute_pools', 'cardinality', "1.N"),
         ('description', 'cardinality', "0.1"),
@@ -2749,63 +3244,88 @@ CONSTRAINTS = {
     ),
     platform.Performance: (
 
-        ('data_intensity', 'type', float),
-        ('memory_bloat', 'type', float),
         ('name', 'type', unicode),
-        ('parallelization', 'type', float),
-        ('resolution', 'type', int),
+        ('parallelisation', 'type', float),
         ('joules_per_simulated_year', 'type', float),
-        ('subcomponent_performance', 'type', platform.ComponentPerformance),
-        ('coupling_cost', 'type', float),
+        ('subcomponent_performance', 'type', platform.Performance),
         ('simulated_years_per_day', 'type', float),
         ('platform', 'type', platform.Machine),
         ('complexity', 'type', int),
         ('meta', 'type', shared.DocMetaInfo),
+        ('further_detail', 'type', platform.PerformanceDetail),
         ('actual_simulated_years_per_day', 'type', float),
         ('model', 'type', science.Model),
         ('core_hours_per_simulated_year', 'type', float),
-        ('data_output_cost', 'type', float),
+        ('resolution', 'type', int),
         ('compiler', 'type', unicode),
 
-        ('data_intensity', 'cardinality', "0.1"),
-        ('memory_bloat', 'cardinality', "0.1"),
         ('name', 'cardinality', "0.1"),
-        ('parallelization', 'cardinality', "0.1"),
-        ('resolution', 'cardinality', "0.1"),
+        ('parallelisation', 'cardinality', "0.1"),
         ('joules_per_simulated_year', 'cardinality', "0.1"),
         ('subcomponent_performance', 'cardinality', "0.N"),
-        ('coupling_cost', 'cardinality', "0.1"),
         ('simulated_years_per_day', 'cardinality', "0.1"),
         ('platform', 'cardinality', "1.1"),
         ('complexity', 'cardinality', "0.1"),
         ('meta', 'cardinality', "1.1"),
+        ('further_detail', 'cardinality', "0.1"),
         ('actual_simulated_years_per_day', 'cardinality', "0.1"),
         ('model', 'cardinality', "1.1"),
         ('core_hours_per_simulated_year', 'cardinality', "0.1"),
-        ('data_output_cost', 'cardinality', "0.1"),
+        ('resolution', 'cardinality', "0.1"),
         ('compiler', 'cardinality', "0.1"),
+
+    ),
+    platform.PerformanceDetail: (
+
+        ('data_intensity', 'type', float),
+        ('coupling_cost', 'type', float),
+        ('data_output_cost', 'type', float),
+        ('memory_bloat', 'type', float),
+
+        ('data_intensity', 'cardinality', "0.1"),
+        ('coupling_cost', 'cardinality', "0.1"),
+        ('data_output_cost', 'cardinality', "0.1"),
+        ('memory_bloat', 'cardinality', "0.1"),
+
+    ),
+    platform.ProjectCost: (
+
+        ('platform', 'type', platform.Machine),
+        ('total_energy_cost', 'type', float),
+        ('peak_data', 'type', shared.Numeric),
+        ('actual_years', 'type', int),
+        ('meta', 'type', shared.DocMetaInfo),
+        ('useful_core_hours', 'type', int),
+        ('activity', 'type', activity.Activity),
+        ('total_core_hours', 'type', int),
+        ('useful_data', 'type', shared.Numeric),
+        ('useful_years', 'type', int),
+
+        ('platform', 'cardinality', "1.1"),
+        ('total_energy_cost', 'cardinality', "0.1"),
+        ('peak_data', 'cardinality', "0.1"),
+        ('actual_years', 'cardinality', "0.1"),
+        ('meta', 'cardinality', "1.1"),
+        ('useful_core_hours', 'cardinality', "0.1"),
+        ('activity', 'cardinality', "1.1"),
+        ('total_core_hours', 'cardinality', "0.1"),
+        ('useful_data', 'cardinality', "0.1"),
+        ('useful_years', 'cardinality', "1.1"),
 
     ),
     platform.StoragePool: (
 
         ('vendor', 'type', shared.Party),
         ('type', 'type', unicode),
+        ('file_system_sizes', 'type', shared.Numeric),
         ('description', 'type', unicode),
         ('name', 'type', unicode),
 
         ('vendor', 'cardinality', "0.1"),
         ('type', 'cardinality', "0.1"),
+        ('file_system_sizes', 'cardinality', "1.N"),
         ('description', 'cardinality', "0.1"),
         ('name', 'cardinality', "1.1"),
-
-    ),
-    platform.StorageVolume: (
-
-        ('units', 'type', unicode),
-        ('volume', 'type', int),
-
-        ('units', 'cardinality', "1.1"),
-        ('volume', 'cardinality', "1.1"),
 
     ),
     science.Model: (
@@ -2816,7 +3336,7 @@ CONSTRAINTS = {
         ('repository', 'type', shared.OnlineResource),
         ('coupler', 'type', unicode),
         ('coupled_components', 'type', science.Model),
-        ('release_date', 'type', datetime.datetime),
+        ('release_date', 'type', time.DateTime),
         ('internal_software_components', 'type', software.SoftwareComponent),
         ('development_history', 'type', software.DevelopmentPath),
         ('responsible_parties', 'type', shared.Responsibility),
@@ -2880,7 +3400,7 @@ CONSTRAINTS = {
         ('property_sets', 'cardinality', "0.N"),
         ('software_frameworks', 'cardinality', "0.N"),
         ('meta', 'cardinality', "1.1"),
-        ('specialization_id', 'cardinality', "1.1"),
+        ('specialization_id', 'cardinality', "0.1"),
         ('responsible_parties', 'cardinality', "0.N"),
         ('canonical_name', 'cardinality', "0.1"),
         ('citations', 'cardinality', "0.N"),
@@ -2924,7 +3444,7 @@ CONSTRAINTS = {
         ('sub_topics', 'cardinality', "0.N"),
         ('qc_status', 'cardinality', "0.1"),
         ('description', 'cardinality', "0.1"),
-        ('specialization_id', 'cardinality', "1.1"),
+        ('specialization_id', 'cardinality', "0.1"),
         ('overview', 'cardinality', "0.1"),
         ('property_sets', 'cardinality', "0.N"),
         ('responsible_parties', 'cardinality', "0.N"),
@@ -2942,7 +3462,7 @@ CONSTRAINTS = {
         ('name', 'type', unicode),
 
         ('values', 'cardinality', "1.N"),
-        ('specialization_id', 'cardinality', "1.1"),
+        ('specialization_id', 'cardinality', "0.1"),
         ('description', 'cardinality', "0.1"),
         ('name', 'cardinality', "0.1"),
 
@@ -2955,7 +3475,7 @@ CONSTRAINTS = {
         ('name', 'type', unicode),
 
         ('properties', 'cardinality', "1.N"),
-        ('specialization_id', 'cardinality', "1.1"),
+        ('specialization_id', 'cardinality', "0.1"),
         ('description', 'cardinality', "0.1"),
         ('name', 'cardinality', "0.1"),
 
@@ -2967,8 +3487,11 @@ CONSTRAINTS = {
         ('url', 'type', shared.OnlineResource),
         ('abstract', 'type', unicode),
         ('collective_title', 'type', unicode),
+        ('year', 'type', int),
         ('meta', 'type', shared.DocMetaInfo),
+        ('bibtex', 'type', unicode),
         ('context', 'type', unicode),
+        ('authors', 'type', unicode),
         ('type', 'type', unicode),
         ('citation_detail', 'type', unicode),
 
@@ -2977,8 +3500,11 @@ CONSTRAINTS = {
         ('url', 'cardinality', "0.1"),
         ('abstract', 'cardinality', "0.1"),
         ('collective_title', 'cardinality', "0.1"),
+        ('year', 'cardinality', "0.1"),
         ('meta', 'cardinality', "1.1"),
+        ('bibtex', 'cardinality', "0.1"),
         ('context', 'cardinality', "0.1"),
+        ('authors', 'cardinality', "0.N"),
         ('type', 'cardinality', "0.1"),
         ('citation_detail', 'cardinality', "0.1"),
 
@@ -3024,37 +3550,23 @@ CONSTRAINTS = {
     ),
     shared.DocReference: (
 
-        ('constraint_vocabulary', 'type', unicode),
-        ('protocol', 'type', unicode),
-        ('description', 'type', unicode),
+        ('name', 'type', unicode),
         ('relationship', 'type', unicode),
-        ('institute', 'type', unicode),
-        ('type', 'type', unicode),
-        ('url', 'type', unicode),
         ('canonical_name', 'type', unicode),
         ('version', 'type', int),
         ('further_info', 'type', unicode),
         ('context', 'type', unicode),
-        ('external_id', 'type', unicode),
+        ('type', 'type', unicode),
         ('id', 'type', unicode),
-        ('linkage', 'type', unicode),
-        ('name', 'type', unicode),
 
-        ('constraint_vocabulary', 'cardinality', "0.1"),
-        ('protocol', 'cardinality', "0.1"),
-        ('description', 'cardinality', "0.1"),
+        ('name', 'cardinality', "0.1"),
         ('relationship', 'cardinality', "0.1"),
-        ('institute', 'cardinality', "0.1"),
-        ('type', 'cardinality', "0.1"),
-        ('url', 'cardinality', "0.1"),
         ('canonical_name', 'cardinality', "0.1"),
         ('version', 'cardinality', "0.1"),
         ('further_info', 'cardinality', "0.1"),
         ('context', 'cardinality', "0.1"),
-        ('external_id', 'cardinality', "0.1"),
+        ('type', 'cardinality', "0.1"),
         ('id', 'cardinality', "0.1"),
-        ('linkage', 'cardinality', "0.1"),
-        ('name', 'cardinality', "0.1"),
 
     ),
     shared.ExtraAttribute: (
@@ -3068,6 +3580,48 @@ CONSTRAINTS = {
         ('type', 'cardinality', "0.1"),
         ('value', 'cardinality', "1.1"),
         ('key', 'cardinality', "1.1"),
+
+    ),
+    shared.FormalAssociation: (
+
+        ('name', 'type', unicode),
+        ('relationship', 'type', unicode),
+        ('online_at', 'type', shared.OnlineResource),
+        ('association_id', 'type', unicode),
+        ('canonical_name', 'type', unicode),
+        ('version', 'type', int),
+        ('further_info', 'type', unicode),
+        ('context', 'type', unicode),
+        ('association_vocabulary', 'type', shared.OnlineResource),
+        ('type', 'type', unicode),
+        ('id', 'type', unicode),
+
+        ('name', 'cardinality', "0.1"),
+        ('relationship', 'cardinality', "1.1"),
+        ('online_at', 'cardinality', "0.1"),
+        ('association_id', 'cardinality', "0.1"),
+        ('canonical_name', 'cardinality', "0.1"),
+        ('version', 'cardinality', "0.1"),
+        ('further_info', 'cardinality', "0.1"),
+        ('context', 'cardinality', "0.1"),
+        ('association_vocabulary', 'cardinality', "0.1"),
+        ('type', 'cardinality', "0.1"),
+        ('id', 'cardinality', "0.1"),
+
+    ),
+    shared.Numeric: (
+
+        ('units', 'type', unicode),
+        ('base_unit', 'type', unicode),
+        ('unit_enumeration', 'type', unicode),
+        ('value', 'type', float),
+        ('unit_source', 'type', shared.OnlineResource),
+
+        ('units', 'cardinality', "1.1"),
+        ('base_unit', 'cardinality', "0.1"),
+        ('unit_enumeration', 'cardinality', "0.1"),
+        ('value', 'cardinality', "1.1"),
+        ('unit_source', 'cardinality', "0.1"),
 
     ),
     shared.OnlineResource: (
@@ -3143,7 +3697,7 @@ CONSTRAINTS = {
 
         ('description', 'type', unicode),
         ('repository', 'type', shared.OnlineResource),
-        ('release_date', 'type', datetime.datetime),
+        ('release_date', 'type', time.DateTime),
         ('development_history', 'type', software.DevelopmentPath),
         ('responsible_parties', 'type', shared.Responsibility),
         ('long_name', 'type', unicode),
@@ -3233,7 +3787,8 @@ CONSTRAINTS = {
         ('repository', 'type', shared.OnlineResource),
         ('language', 'type', unicode),
         ('depends_on', 'type', software.SoftwareComponent),
-        ('release_date', 'type', datetime.datetime),
+        ('release_date', 'type', time.DateTime),
+        ('meta', 'type', shared.DocMetaInfo),
         ('development_history', 'type', software.DevelopmentPath),
         ('responsible_parties', 'type', shared.Responsibility),
         ('sub_components', 'type', software.SoftwareComponent),
@@ -3254,6 +3809,7 @@ CONSTRAINTS = {
         ('language', 'cardinality', "0.1"),
         ('depends_on', 'cardinality', "0.N"),
         ('release_date', 'cardinality', "0.1"),
+        ('meta', 'cardinality', "1.1"),
         ('development_history', 'cardinality', "0.1"),
         ('responsible_parties', 'cardinality', "0.N"),
         ('sub_components', 'cardinality', "0.N"),
@@ -3331,7 +3887,7 @@ CONSTRAINTS = {
     time.TimePeriod: (
 
         ('date', 'type', time.DateTime),
-        ('length', 'type', unicode),
+        ('length', 'type', float),
         ('calendar', 'type', time.Calendar),
         ('units', 'type', unicode),
         ('date_type', 'type', unicode),
@@ -3440,6 +3996,20 @@ CONSTRAINTS = {
 
     ),
 
+    (activity.AxisMember, 'axis'): (
+
+        ('type', activity.EnsembleAxis),
+
+        ('cardinality', "1.1"),
+
+    ),
+    (activity.AxisMember, 'conformance'): (
+
+        ('type', activity.Conformance),
+
+        ('cardinality', "0.1"),
+
+    ),
     (activity.AxisMember, 'description'): (
 
         ('type', unicode),
@@ -3461,18 +4031,222 @@ CONSTRAINTS = {
         ('cardinality', "1.1"),
 
     ),
-    (activity.AxisMember, 'target_requirement'): (
-
-        ('type', designing.NumericalRequirement),
-
-        ('cardinality', "0.1"),
-
-    ),
     (activity.AxisMember, 'value'): (
 
         ('type', float),
 
         ('cardinality', "0.1"),
+
+    ),
+
+    (activity.ChildSimulation, 'branch_method'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (activity.ChildSimulation, 'branch_time_in_child'): (
+
+        ('type', time.DateTime),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (activity.ChildSimulation, 'branch_time_in_parent'): (
+
+        ('type', time.DateTime),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (activity.ChildSimulation, 'parent'): (
+
+        ('type', activity.Simulation),
+
+        ('cardinality', "1.1"),
+
+    ),
+    (activity.ChildSimulation, 'calendar'): (
+
+        ('type', time.Calendar),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (activity.ChildSimulation, 'documentation'): (
+
+        ('type', shared.OnlineResource),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (activity.ChildSimulation, 'end_time'): (
+
+        ('type', time.DateTime),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (activity.ChildSimulation, 'ensemble_id'): (
+
+        ('type', activity.AxisMember),
+
+        ('cardinality', "0.N"),
+
+    ),
+    (activity.ChildSimulation, 'errata'): (
+
+        ('type', shared.OnlineResource),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (activity.ChildSimulation, 'extra_attributes'): (
+
+        ('type', shared.ExtraAttribute),
+
+        ('cardinality', "0.N"),
+
+    ),
+    (activity.ChildSimulation, 'had_performance'): (
+
+        ('type', platform.Performance),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (activity.ChildSimulation, 'institution'): (
+
+        ('type', shared.Party),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (activity.ChildSimulation, 'meta'): (
+
+        ('type', shared.DocMetaInfo),
+
+        ('cardinality', "1.1"),
+
+    ),
+    (activity.ChildSimulation, 'parent_of'): (
+
+        ('type', activity.ChildSimulation),
+
+        ('cardinality', "0.N"),
+
+    ),
+    (activity.ChildSimulation, 'part_of_project'): (
+
+        ('type', designing.Project),
+
+        ('cardinality', "1.N"),
+
+    ),
+    (activity.ChildSimulation, 'primary_ensemble'): (
+
+        ('type', activity.Ensemble),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (activity.ChildSimulation, 'produced'): (
+
+        ('type', data.Dataset),
+
+        ('cardinality', "0.N"),
+
+    ),
+    (activity.ChildSimulation, 'ran_for_experiments'): (
+
+        ('type', designing.NumericalExperiment),
+
+        ('cardinality', "1.N"),
+
+    ),
+    (activity.ChildSimulation, 'ran_on'): (
+
+        ('type', platform.Machine),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (activity.ChildSimulation, 'start_time'): (
+
+        ('type', time.DateTime),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (activity.ChildSimulation, 'sub_experiment'): (
+
+        ('type', designing.NumericalExperiment),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (activity.ChildSimulation, 'used'): (
+
+        ('type', science.Model),
+
+        ('cardinality', "1.1"),
+
+    ),
+    (activity.ChildSimulation, 'description'): (
+
+        ('type', unicode),
+
+        ('cardinality', "1.1"),
+
+    ),
+    (activity.ChildSimulation, 'execution_date_time'): (
+
+        ('type', time.DateTime),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (activity.ChildSimulation, 'processing_information'): (
+
+        ('type', iso.Processing),
+
+        ('cardinality', "0.N"),
+
+    ),
+    (activity.ChildSimulation, 'processor'): (
+
+        ('type', shared.Responsibility),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (activity.ChildSimulation, 'rationale'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (activity.ChildSimulation, 'reference'): (
+
+        ('type', shared.Citation),
+
+        ('cardinality', "0.N"),
+
+    ),
+    (activity.ChildSimulation, 'report'): (
+
+        ('type', iso.ProcessStepReport),
+
+        ('cardinality', "0.N"),
+
+    ),
+    (activity.ChildSimulation, 'source'): (
+
+        ('type', data.Dataset),
+
+        ('cardinality', "0.N"),
 
     ),
 
@@ -3485,7 +4259,7 @@ CONSTRAINTS = {
     ),
     (activity.Conformance, 'datasets'): (
 
-        ('type', data.InputDataset),
+        ('type', data.Dataset),
 
         ('cardinality', "0.N"),
 
@@ -3626,9 +4400,9 @@ CONSTRAINTS = {
     ),
     (activity.Ensemble, 'members'): (
 
-        ('type', activity.EnsembleMember),
+        ('type', activity.Simulation),
 
-        ('cardinality', "1.N"),
+        ('cardinality', "0.N"),
 
     ),
     (activity.Ensemble, 'representative_performance'): (
@@ -3744,11 +4518,25 @@ CONSTRAINTS = {
         ('cardinality', "0.1"),
 
     ),
-    (activity.EnsembleAxis, 'member'): (
+    (activity.EnsembleAxis, 'members'): (
 
         ('type', activity.AxisMember),
 
-        ('cardinality', "1.N"),
+        ('cardinality', "0.N"),
+
+    ),
+    (activity.EnsembleAxis, 'meta'): (
+
+        ('type', shared.DocMetaInfo),
+
+        ('cardinality', "1.1"),
+
+    ),
+    (activity.EnsembleAxis, 'name'): (
+
+        ('type', unicode),
+
+        ('cardinality', "1.1"),
 
     ),
     (activity.EnsembleAxis, 'short_identifier'): (
@@ -3766,61 +4554,186 @@ CONSTRAINTS = {
 
     ),
 
-    (activity.EnsembleMember, 'errata'): (
+    (activity.Simulation, 'calendar'): (
+
+        ('type', time.Calendar),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (activity.Simulation, 'documentation'): (
 
         ('type', shared.OnlineResource),
 
         ('cardinality', "0.1"),
 
     ),
-    (activity.EnsembleMember, 'had_performance'): (
+    (activity.Simulation, 'end_time'): (
+
+        ('type', time.DateTime),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (activity.Simulation, 'ensemble_id'): (
+
+        ('type', activity.AxisMember),
+
+        ('cardinality', "0.N"),
+
+    ),
+    (activity.Simulation, 'errata'): (
+
+        ('type', shared.OnlineResource),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (activity.Simulation, 'extra_attributes'): (
+
+        ('type', shared.ExtraAttribute),
+
+        ('cardinality', "0.N"),
+
+    ),
+    (activity.Simulation, 'had_performance'): (
 
         ('type', platform.Performance),
 
         ('cardinality', "0.1"),
 
     ),
-    (activity.EnsembleMember, 'ran_on'): (
+    (activity.Simulation, 'institution'): (
+
+        ('type', shared.Party),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (activity.Simulation, 'meta'): (
+
+        ('type', shared.DocMetaInfo),
+
+        ('cardinality', "1.1"),
+
+    ),
+    (activity.Simulation, 'parent_of'): (
+
+        ('type', activity.ChildSimulation),
+
+        ('cardinality', "0.N"),
+
+    ),
+    (activity.Simulation, 'part_of_project'): (
+
+        ('type', designing.Project),
+
+        ('cardinality', "1.N"),
+
+    ),
+    (activity.Simulation, 'primary_ensemble'): (
+
+        ('type', activity.Ensemble),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (activity.Simulation, 'produced'): (
+
+        ('type', data.Dataset),
+
+        ('cardinality', "0.N"),
+
+    ),
+    (activity.Simulation, 'ran_for_experiments'): (
+
+        ('type', designing.NumericalExperiment),
+
+        ('cardinality', "1.N"),
+
+    ),
+    (activity.Simulation, 'ran_on'): (
 
         ('type', platform.Machine),
 
         ('cardinality', "0.1"),
 
     ),
-    (activity.EnsembleMember, 'simulation'): (
+    (activity.Simulation, 'start_time'): (
 
-        ('type', data.Simulation),
+        ('type', time.DateTime),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (activity.Simulation, 'sub_experiment'): (
+
+        ('type', designing.NumericalExperiment),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (activity.Simulation, 'used'): (
+
+        ('type', science.Model),
 
         ('cardinality', "1.1"),
 
     ),
+    (activity.Simulation, 'description'): (
 
-    (activity.ParentSimulation, 'branch_method'): (
+        ('type', unicode),
+
+        ('cardinality', "1.1"),
+
+    ),
+    (activity.Simulation, 'execution_date_time'): (
+
+        ('type', time.DateTime),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (activity.Simulation, 'processing_information'): (
+
+        ('type', iso.Processing),
+
+        ('cardinality', "0.N"),
+
+    ),
+    (activity.Simulation, 'processor'): (
+
+        ('type', shared.Responsibility),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (activity.Simulation, 'rationale'): (
 
         ('type', unicode),
 
         ('cardinality', "0.1"),
 
     ),
-    (activity.ParentSimulation, 'branch_time_in_child'): (
+    (activity.Simulation, 'reference'): (
 
-        ('type', time.DateTime),
+        ('type', shared.Citation),
 
-        ('cardinality', "0.1"),
-
-    ),
-    (activity.ParentSimulation, 'branch_time_in_parent'): (
-
-        ('type', time.DateTime),
-
-        ('cardinality', "0.1"),
+        ('cardinality', "0.N"),
 
     ),
-    (activity.ParentSimulation, 'parent'): (
+    (activity.Simulation, 'report'): (
 
-        ('type', data.Simulation),
+        ('type', iso.ProcessStepReport),
 
-        ('cardinality', "1.1"),
+        ('cardinality', "0.N"),
+
+    ),
+    (activity.Simulation, 'source'): (
+
+        ('type', data.Dataset),
+
+        ('cardinality', "0.N"),
 
     ),
 
@@ -3861,9 +4774,9 @@ CONSTRAINTS = {
     ),
     (activity.UberEnsemble, 'members'): (
 
-        ('type', activity.EnsembleMember),
+        ('type', activity.Simulation),
 
-        ('cardinality', "1.N"),
+        ('cardinality', "0.N"),
 
     ),
     (activity.UberEnsemble, 'representative_performance'): (
@@ -3972,6 +4885,344 @@ CONSTRAINTS = {
 
     ),
 
+    (cmip.CmipDataset, 'drs_location'): (
+
+        ('type', drs.DrsPublicationDataset),
+
+        ('cardinality', "0.N"),
+
+    ),
+    (cmip.CmipDataset, 'meta'): (
+
+        ('type', shared.DocMetaInfo),
+
+        ('cardinality', "1.1"),
+
+    ),
+    (cmip.CmipDataset, 'originating_simulation'): (
+
+        ('type', activity.Simulation),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (cmip.CmipDataset, 'availability'): (
+
+        ('type', shared.OnlineResource),
+
+        ('cardinality', "0.N"),
+
+    ),
+    (cmip.CmipDataset, 'citations'): (
+
+        ('type', shared.Citation),
+
+        ('cardinality', "0.N"),
+
+    ),
+    (cmip.CmipDataset, 'contains'): (
+
+        ('type', data.VariableCollection),
+
+        ('cardinality', "0.N"),
+
+    ),
+    (cmip.CmipDataset, 'description'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (cmip.CmipDataset, 'further_attributes'): (
+
+        ('type', shared.ExtraAttribute),
+
+        ('cardinality', "0.N"),
+
+    ),
+    (cmip.CmipDataset, 'keywords'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.N"),
+
+    ),
+    (cmip.CmipDataset, 'lineage'): (
+
+        ('type', iso.Lineage),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (cmip.CmipDataset, 'meta'): (
+
+        ('type', shared.DocMetaInfo),
+
+        ('cardinality', "1.1"),
+
+    ),
+    (cmip.CmipDataset, 'name'): (
+
+        ('type', unicode),
+
+        ('cardinality', "1.1"),
+
+    ),
+    (cmip.CmipDataset, 'progress'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (cmip.CmipDataset, 'related_to_dataset'): (
+
+        ('type', shared.FormalAssociation),
+
+        ('cardinality', "0.N"),
+
+    ),
+    (cmip.CmipDataset, 'responsible_parties'): (
+
+        ('type', shared.Responsibility),
+
+        ('cardinality', "0.N"),
+
+    ),
+    (cmip.CmipDataset, 'type'): (
+
+        ('type', unicode),
+
+        ('cardinality', "1.N"),
+
+    ),
+
+    (cmip.CmipSimulation, 'forcing_index'): (
+
+        ('type', int),
+
+        ('cardinality', "1.1"),
+
+    ),
+    (cmip.CmipSimulation, 'initialization_index'): (
+
+        ('type', int),
+
+        ('cardinality', "1.1"),
+
+    ),
+    (cmip.CmipSimulation, 'meta'): (
+
+        ('type', shared.DocMetaInfo),
+
+        ('cardinality', "1.1"),
+
+    ),
+    (cmip.CmipSimulation, 'physics_index'): (
+
+        ('type', int),
+
+        ('cardinality', "1.1"),
+
+    ),
+    (cmip.CmipSimulation, 'realization_index'): (
+
+        ('type', int),
+
+        ('cardinality', "1.1"),
+
+    ),
+    (cmip.CmipSimulation, 'variant_info'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (cmip.CmipSimulation, 'calendar'): (
+
+        ('type', time.Calendar),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (cmip.CmipSimulation, 'documentation'): (
+
+        ('type', shared.OnlineResource),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (cmip.CmipSimulation, 'end_time'): (
+
+        ('type', time.DateTime),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (cmip.CmipSimulation, 'ensemble_id'): (
+
+        ('type', activity.AxisMember),
+
+        ('cardinality', "0.N"),
+
+    ),
+    (cmip.CmipSimulation, 'errata'): (
+
+        ('type', shared.OnlineResource),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (cmip.CmipSimulation, 'extra_attributes'): (
+
+        ('type', shared.ExtraAttribute),
+
+        ('cardinality', "0.N"),
+
+    ),
+    (cmip.CmipSimulation, 'had_performance'): (
+
+        ('type', platform.Performance),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (cmip.CmipSimulation, 'institution'): (
+
+        ('type', shared.Party),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (cmip.CmipSimulation, 'meta'): (
+
+        ('type', shared.DocMetaInfo),
+
+        ('cardinality', "1.1"),
+
+    ),
+    (cmip.CmipSimulation, 'parent_of'): (
+
+        ('type', activity.ChildSimulation),
+
+        ('cardinality', "0.N"),
+
+    ),
+    (cmip.CmipSimulation, 'part_of_project'): (
+
+        ('type', designing.Project),
+
+        ('cardinality', "1.N"),
+
+    ),
+    (cmip.CmipSimulation, 'primary_ensemble'): (
+
+        ('type', activity.Ensemble),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (cmip.CmipSimulation, 'produced'): (
+
+        ('type', data.Dataset),
+
+        ('cardinality', "0.N"),
+
+    ),
+    (cmip.CmipSimulation, 'ran_for_experiments'): (
+
+        ('type', designing.NumericalExperiment),
+
+        ('cardinality', "1.N"),
+
+    ),
+    (cmip.CmipSimulation, 'ran_on'): (
+
+        ('type', platform.Machine),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (cmip.CmipSimulation, 'start_time'): (
+
+        ('type', time.DateTime),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (cmip.CmipSimulation, 'sub_experiment'): (
+
+        ('type', designing.NumericalExperiment),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (cmip.CmipSimulation, 'used'): (
+
+        ('type', science.Model),
+
+        ('cardinality', "1.1"),
+
+    ),
+    (cmip.CmipSimulation, 'description'): (
+
+        ('type', unicode),
+
+        ('cardinality', "1.1"),
+
+    ),
+    (cmip.CmipSimulation, 'execution_date_time'): (
+
+        ('type', time.DateTime),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (cmip.CmipSimulation, 'processing_information'): (
+
+        ('type', iso.Processing),
+
+        ('cardinality', "0.N"),
+
+    ),
+    (cmip.CmipSimulation, 'processor'): (
+
+        ('type', shared.Responsibility),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (cmip.CmipSimulation, 'rationale'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (cmip.CmipSimulation, 'reference'): (
+
+        ('type', shared.Citation),
+
+        ('cardinality', "0.N"),
+
+    ),
+    (cmip.CmipSimulation, 'report'): (
+
+        ('type', iso.ProcessStepReport),
+
+        ('cardinality', "0.N"),
+
+    ),
+    (cmip.CmipSimulation, 'source'): (
+
+        ('type', data.Dataset),
+
+        ('cardinality', "0.N"),
+
+    ),
+
     (data.Dataset, 'availability'): (
 
         ('type', shared.OnlineResource),
@@ -3986,6 +5237,13 @@ CONSTRAINTS = {
         ('cardinality', "0.N"),
 
     ),
+    (data.Dataset, 'contains'): (
+
+        ('type', data.VariableCollection),
+
+        ('cardinality', "0.N"),
+
+    ),
     (data.Dataset, 'description'): (
 
         ('type', unicode),
@@ -3993,11 +5251,25 @@ CONSTRAINTS = {
         ('cardinality', "0.1"),
 
     ),
-    (data.Dataset, 'drs_datasets'): (
+    (data.Dataset, 'further_attributes'): (
 
-        ('type', drs.DrsPublicationDataset),
+        ('type', shared.ExtraAttribute),
 
         ('cardinality', "0.N"),
+
+    ),
+    (data.Dataset, 'keywords'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.N"),
+
+    ),
+    (data.Dataset, 'lineage'): (
+
+        ('type', iso.Lineage),
+
+        ('cardinality', "0.1"),
 
     ),
     (data.Dataset, 'meta'): (
@@ -4014,16 +5286,16 @@ CONSTRAINTS = {
         ('cardinality', "1.1"),
 
     ),
-    (data.Dataset, 'produced_by'): (
+    (data.Dataset, 'progress'): (
 
-        ('type', data.Simulation),
+        ('type', unicode),
 
         ('cardinality', "0.1"),
 
     ),
     (data.Dataset, 'related_to_dataset'): (
 
-        ('type', shared.OnlineResource),
+        ('type', shared.FormalAssociation),
 
         ('cardinality', "0.N"),
 
@@ -4035,452 +5307,22 @@ CONSTRAINTS = {
         ('cardinality', "0.N"),
 
     ),
-
-    (data.Downscaling, 'downscaled_from'): (
-
-        ('type', data.Simulation),
-
-        ('cardinality', "1.1"),
-
-    ),
-    (data.Downscaling, 'calendar'): (
-
-        ('type', time.Calendar),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (data.Downscaling, 'end_time'): (
-
-        ('type', time.DateTime),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (data.Downscaling, 'extra_attributes'): (
-
-        ('type', shared.ExtraAttribute),
-
-        ('cardinality', "0.N"),
-
-    ),
-    (data.Downscaling, 'forcing_index'): (
-
-        ('type', int),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (data.Downscaling, 'further_info_url'): (
+    (data.Dataset, 'type'): (
 
         ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (data.Downscaling, 'initialization_index'): (
-
-        ('type', int),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (data.Downscaling, 'insitution'): (
-
-        ('type', shared.Party),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (data.Downscaling, 'parent_simulation'): (
-
-        ('type', activity.ParentSimulation),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (data.Downscaling, 'part_of_project'): (
-
-        ('type', designing.Project),
 
         ('cardinality', "1.N"),
-
-    ),
-    (data.Downscaling, 'physics_index'): (
-
-        ('type', int),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (data.Downscaling, 'primary_ensemble'): (
-
-        ('type', activity.Ensemble),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (data.Downscaling, 'ran_for_experiments'): (
-
-        ('type', designing.NumericalExperiment),
-
-        ('cardinality', "1.N"),
-
-    ),
-    (data.Downscaling, 'realization_index'): (
-
-        ('type', int),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (data.Downscaling, 'start_time'): (
-
-        ('type', time.DateTime),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (data.Downscaling, 'sub_experiment'): (
-
-        ('type', designing.NumericalExperiment),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (data.Downscaling, 'used'): (
-
-        ('type', science.Model),
-
-        ('cardinality', "1.1"),
-
-    ),
-    (data.Downscaling, 'variant_info'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (data.Downscaling, 'alternative_names'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.N"),
-
-    ),
-    (data.Downscaling, 'canonical_name'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (data.Downscaling, 'citations'): (
-
-        ('type', shared.Citation),
-
-        ('cardinality', "0.N"),
-
-    ),
-    (data.Downscaling, 'description'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (data.Downscaling, 'duration'): (
-
-        ('type', time.TimePeriod),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (data.Downscaling, 'internal_name'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (data.Downscaling, 'keywords'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (data.Downscaling, 'long_name'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (data.Downscaling, 'meta'): (
-
-        ('type', shared.DocMetaInfo),
-
-        ('cardinality', "1.1"),
-
-    ),
-    (data.Downscaling, 'name'): (
-
-        ('type', unicode),
-
-        ('cardinality', "1.1"),
-
-    ),
-    (data.Downscaling, 'previously_known_as'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.N"),
-
-    ),
-    (data.Downscaling, 'rationale'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (data.Downscaling, 'responsible_parties'): (
-
-        ('type', shared.Responsibility),
-
-        ('cardinality', "0.N"),
-
-    ),
-
-    (data.InputDataset, 'modifications_applied'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (data.InputDataset, 'original_data'): (
-
-        ('type', data.Dataset),
-
-        ('cardinality', "1.1"),
-
-    ),
-
-    (data.Simulation, 'calendar'): (
-
-        ('type', time.Calendar),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (data.Simulation, 'end_time'): (
-
-        ('type', time.DateTime),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (data.Simulation, 'extra_attributes'): (
-
-        ('type', shared.ExtraAttribute),
-
-        ('cardinality', "0.N"),
-
-    ),
-    (data.Simulation, 'forcing_index'): (
-
-        ('type', int),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (data.Simulation, 'further_info_url'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (data.Simulation, 'initialization_index'): (
-
-        ('type', int),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (data.Simulation, 'insitution'): (
-
-        ('type', shared.Party),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (data.Simulation, 'parent_simulation'): (
-
-        ('type', activity.ParentSimulation),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (data.Simulation, 'part_of_project'): (
-
-        ('type', designing.Project),
-
-        ('cardinality', "1.N"),
-
-    ),
-    (data.Simulation, 'physics_index'): (
-
-        ('type', int),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (data.Simulation, 'primary_ensemble'): (
-
-        ('type', activity.Ensemble),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (data.Simulation, 'ran_for_experiments'): (
-
-        ('type', designing.NumericalExperiment),
-
-        ('cardinality', "1.N"),
-
-    ),
-    (data.Simulation, 'realization_index'): (
-
-        ('type', int),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (data.Simulation, 'start_time'): (
-
-        ('type', time.DateTime),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (data.Simulation, 'sub_experiment'): (
-
-        ('type', designing.NumericalExperiment),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (data.Simulation, 'used'): (
-
-        ('type', science.Model),
-
-        ('cardinality', "1.1"),
-
-    ),
-    (data.Simulation, 'variant_info'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (data.Simulation, 'alternative_names'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.N"),
-
-    ),
-    (data.Simulation, 'canonical_name'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (data.Simulation, 'citations'): (
-
-        ('type', shared.Citation),
-
-        ('cardinality', "0.N"),
-
-    ),
-    (data.Simulation, 'description'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (data.Simulation, 'duration'): (
-
-        ('type', time.TimePeriod),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (data.Simulation, 'internal_name'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (data.Simulation, 'keywords'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (data.Simulation, 'long_name'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (data.Simulation, 'meta'): (
-
-        ('type', shared.DocMetaInfo),
-
-        ('cardinality', "1.1"),
-
-    ),
-    (data.Simulation, 'name'): (
-
-        ('type', unicode),
-
-        ('cardinality', "1.1"),
-
-    ),
-    (data.Simulation, 'previously_known_as'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.N"),
-
-    ),
-    (data.Simulation, 'rationale'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (data.Simulation, 'responsible_parties'): (
-
-        ('type', shared.Responsibility),
-
-        ('cardinality', "0.N"),
 
     ),
 
     (data.VariableCollection, 'collection_name'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (data.VariableCollection, 'geometry'): (
 
         ('type', unicode),
 
@@ -4494,7 +5336,6 @@ CONSTRAINTS = {
         ('cardinality', "1.N"),
 
     ),
-
 
     (designing.DomainRequirements, 'required_extent'): (
 
@@ -5229,6 +6070,13 @@ CONSTRAINTS = {
         ('cardinality', "0.N"),
 
     ),
+    (designing.NumericalExperiment, 'related_objectives'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.N"),
+
+    ),
     (designing.NumericalExperiment, 'required_period'): (
 
         ('type', designing.TemporalConstraint),
@@ -5462,6 +6310,42 @@ CONSTRAINTS = {
 
     ),
 
+    (designing.Objective, 'description'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (designing.Objective, 'identifier'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (designing.Objective, 'meta'): (
+
+        ('type', shared.DocMetaInfo),
+
+        ('cardinality', "1.1"),
+
+    ),
+    (designing.Objective, 'name'): (
+
+        ('type', unicode),
+
+        ('cardinality', "1.1"),
+
+    ),
+    (designing.Objective, 'required_outputs'): (
+
+        ('type', data.VariableCollection),
+
+        ('cardinality', "0.N"),
+
+    ),
+
     (designing.OutputRequirement, 'formal_data_request'): (
 
         ('type', shared.OnlineResource),
@@ -5598,14 +6482,14 @@ CONSTRAINTS = {
     ),
     (designing.Project, 'homepage'): (
 
-        ('type', unicode),
+        ('type', shared.OnlineResource),
 
         ('cardinality', "0.1"),
 
     ),
     (designing.Project, 'objectives'): (
 
-        ('type', unicode),
+        ('type', designing.Objective),
 
         ('cardinality', "0.N"),
 
@@ -6199,7 +7083,7 @@ CONSTRAINTS = {
 
     (drs.DrsExperiment, 'axis_identifer'): (
 
-        ('type', designing.AxisMember),
+        ('type', activity.AxisMember),
 
         ('cardinality', "0.1"),
 
@@ -6286,130 +7170,327 @@ CONSTRAINTS = {
 
     ),
 
-    (platform.ComponentPerformance, 'component'): (
+    (iso.Algorithm, 'citation'): (
 
-        ('type', software.SoftwareComponent),
-
-        ('cardinality', "1.1"),
-
-    ),
-    (platform.ComponentPerformance, 'actual_simulated_years_per_day'): (
-
-        ('type', float),
+        ('type', shared.Citation),
 
         ('cardinality', "0.1"),
 
     ),
-    (platform.ComponentPerformance, 'compiler'): (
+    (iso.Algorithm, 'description'): (
 
         ('type', unicode),
 
         ('cardinality', "0.1"),
 
     ),
-    (platform.ComponentPerformance, 'complexity'): (
 
-        ('type', int),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (platform.ComponentPerformance, 'core_hours_per_simulated_year'): (
-
-        ('type', float),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (platform.ComponentPerformance, 'coupling_cost'): (
-
-        ('type', float),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (platform.ComponentPerformance, 'data_intensity'): (
-
-        ('type', float),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (platform.ComponentPerformance, 'data_output_cost'): (
-
-        ('type', float),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (platform.ComponentPerformance, 'joules_per_simulated_year'): (
-
-        ('type', float),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (platform.ComponentPerformance, 'memory_bloat'): (
-
-        ('type', float),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (platform.ComponentPerformance, 'meta'): (
+    (iso.Lineage, 'meta'): (
 
         ('type', shared.DocMetaInfo),
 
         ('cardinality', "1.1"),
 
     ),
-    (platform.ComponentPerformance, 'model'): (
+    (iso.Lineage, 'process_step'): (
 
-        ('type', science.Model),
+        ('type', iso.ProcessStep),
 
-        ('cardinality', "1.1"),
+        ('cardinality', "0.N"),
 
     ),
-    (platform.ComponentPerformance, 'name'): (
+    (iso.Lineage, 'source'): (
+
+        ('type', data.Dataset),
+
+        ('cardinality', "0.N"),
+
+    ),
+    (iso.Lineage, 'statement'): (
 
         ('type', unicode),
 
         ('cardinality', "0.1"),
 
     ),
-    (platform.ComponentPerformance, 'parallelization'): (
 
-        ('type', float),
+    (iso.ProcessStep, 'description'): (
 
-        ('cardinality', "0.1"),
-
-    ),
-    (platform.ComponentPerformance, 'platform'): (
-
-        ('type', platform.Machine),
+        ('type', unicode),
 
         ('cardinality', "1.1"),
 
     ),
-    (platform.ComponentPerformance, 'resolution'): (
+    (iso.ProcessStep, 'execution_date_time'): (
 
-        ('type', int),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (platform.ComponentPerformance, 'simulated_years_per_day'): (
-
-        ('type', float),
+        ('type', time.DateTime),
 
         ('cardinality', "0.1"),
 
     ),
-    (platform.ComponentPerformance, 'subcomponent_performance'): (
+    (iso.ProcessStep, 'processing_information'): (
 
-        ('type', platform.ComponentPerformance),
+        ('type', iso.Processing),
 
         ('cardinality', "0.N"),
+
+    ),
+    (iso.ProcessStep, 'processor'): (
+
+        ('type', shared.Responsibility),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (iso.ProcessStep, 'rationale'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (iso.ProcessStep, 'reference'): (
+
+        ('type', shared.Citation),
+
+        ('cardinality', "0.N"),
+
+    ),
+    (iso.ProcessStep, 'report'): (
+
+        ('type', iso.ProcessStepReport),
+
+        ('cardinality', "0.N"),
+
+    ),
+    (iso.ProcessStep, 'source'): (
+
+        ('type', data.Dataset),
+
+        ('cardinality', "0.N"),
+
+    ),
+
+    (iso.ProcessStepReport, 'description'): (
+
+        ('type', unicode),
+
+        ('cardinality', "1.1"),
+
+    ),
+    (iso.ProcessStepReport, 'link'): (
+
+        ('type', shared.OnlineResource),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (iso.ProcessStepReport, 'name'): (
+
+        ('type', unicode),
+
+        ('cardinality', "1.1"),
+
+    ),
+
+    (iso.Processing, 'algorithm'): (
+
+        ('type', iso.Algorithm),
+
+        ('cardinality', "0.N"),
+
+    ),
+    (iso.Processing, 'documentation'): (
+
+        ('type', shared.Citation),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (iso.Processing, 'identifier'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (iso.Processing, 'name'): (
+
+        ('type', unicode),
+
+        ('cardinality', "1.1"),
+
+    ),
+    (iso.Processing, 'procedure_description'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (iso.Processing, 'runtime_parameters'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (iso.Processing, 'software_reference'): (
+
+        ('type', shared.Citation),
+
+        ('cardinality', "0.N"),
+
+    ),
+
+    (iso.QualityEvaluationOutput, 'output_type'): (
+
+        ('type', unicode),
+
+        ('cardinality', "1.1"),
+
+    ),
+    (iso.QualityEvaluationOutput, 'description'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (iso.QualityEvaluationOutput, 'linkage'): (
+
+        ('type', unicode),
+
+        ('cardinality', "1.1"),
+
+    ),
+    (iso.QualityEvaluationOutput, 'name'): (
+
+        ('type', unicode),
+
+        ('cardinality', "1.1"),
+
+    ),
+    (iso.QualityEvaluationOutput, 'protocol'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+
+    (iso.QualityEvaluationResult, 'date'): (
+
+        ('type', time.DateTime),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (iso.QualityEvaluationResult, 'evaluation_procedure'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (iso.QualityEvaluationResult, 'evaluator'): (
+
+        ('type', shared.Party),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (iso.QualityEvaluationResult, 'name'): (
+
+        ('type', unicode),
+
+        ('cardinality', "1.1"),
+
+    ),
+    (iso.QualityEvaluationResult, 'passed'): (
+
+        ('type', bool),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (iso.QualityEvaluationResult, 'results'): (
+
+        ('type', iso.QualityEvaluationOutput),
+
+        ('cardinality', "0.N"),
+
+    ),
+    (iso.QualityEvaluationResult, 'specification'): (
+
+        ('type', shared.Citation),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (iso.QualityEvaluationResult, 'summary_result'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+
+    (iso.QualityIssue, 'description'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (iso.QualityIssue, 'reporter'): (
+
+        ('type', shared.Party),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (iso.QualityIssue, 'summary'): (
+
+        ('type', unicode),
+
+        ('cardinality', "1.1"),
+
+    ),
+    (iso.QualityIssue, 'tracked_issue'): (
+
+        ('type', shared.OnlineResource),
+
+        ('cardinality', "0.1"),
+
+    ),
+
+    (iso.QualityReport, 'issues'): (
+
+        ('type', iso.QualityIssue),
+
+        ('cardinality', "0.N"),
+
+    ),
+    (iso.QualityReport, 'meta'): (
+
+        ('type', shared.DocMetaInfo),
+
+        ('cardinality', "1.1"),
+
+    ),
+    (iso.QualityReport, 'reports'): (
+
+        ('type', iso.QualityEvaluationResult),
+
+        ('cardinality', "0.N"),
+
+    ),
+    (iso.QualityReport, 'target'): (
+
+        ('type', shared.OnlineResource),
+
+        ('cardinality', "1.1"),
 
     ),
 
@@ -6436,7 +7517,7 @@ CONSTRAINTS = {
     ),
     (platform.ComputePool, 'clock_speed'): (
 
-        ('type', float),
+        ('type', shared.Numeric),
 
         ('cardinality', "0.1"),
 
@@ -6462,16 +7543,9 @@ CONSTRAINTS = {
         ('cardinality', "0.1"),
 
     ),
-    (platform.ComputePool, 'interconnect'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
     (platform.ComputePool, 'memory_per_node'): (
 
-        ('type', platform.StorageVolume),
+        ('type', shared.Numeric),
 
         ('cardinality', "0.1"),
 
@@ -6490,6 +7564,13 @@ CONSTRAINTS = {
         ('cardinality', "0.1"),
 
     ),
+    (platform.ComputePool, 'network_cards_per_node'): (
+
+        ('type', platform.Nic),
+
+        ('cardinality', "0.N"),
+
+    ),
     (platform.ComputePool, 'number_of_nodes'): (
 
         ('type', int),
@@ -6497,19 +7578,62 @@ CONSTRAINTS = {
         ('cardinality', "0.1"),
 
     ),
-    (platform.ComputePool, 'operating_system'): (
+    (platform.ComputePool, 'vendor'): (
+
+        ('type', shared.Party),
+
+        ('cardinality', "0.1"),
+
+    ),
+
+    (platform.Interconnect, 'description'): (
 
         ('type', unicode),
 
         ('cardinality', "0.1"),
 
     ),
+    (platform.Interconnect, 'name'): (
 
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (platform.Interconnect, 'topology'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (platform.Interconnect, 'vendor'): (
+
+        ('type', shared.Party),
+
+        ('cardinality', "0.1"),
+
+    ),
+
+    (platform.Machine, 'linpack_performance'): (
+
+        ('type', shared.Numeric),
+
+        ('cardinality', "0.1"),
+
+    ),
     (platform.Machine, 'meta'): (
 
         ('type', shared.DocMetaInfo),
 
         ('cardinality', "1.1"),
+
+    ),
+    (platform.Machine, 'peak_performance'): (
+
+        ('type', shared.Numeric),
+
+        ('cardinality', "0.1"),
 
     ),
     (platform.Machine, 'compute_pools'): (
@@ -6533,6 +7657,13 @@ CONSTRAINTS = {
         ('cardinality', "1.1"),
 
     ),
+    (platform.Machine, 'interconnect'): (
+
+        ('type', platform.Interconnect),
+
+        ('cardinality', "0.1"),
+
+    ),
     (platform.Machine, 'model_number'): (
 
         ('type', unicode),
@@ -6552,6 +7683,13 @@ CONSTRAINTS = {
         ('type', shared.OnlineResource),
 
         ('cardinality', "0.N"),
+
+    ),
+    (platform.Machine, 'operating_system'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
 
     ),
     (platform.Machine, 'partition'): (
@@ -6575,9 +7713,31 @@ CONSTRAINTS = {
         ('cardinality', "0.1"),
 
     ),
-    (platform.Machine, 'when_used'): (
+    (platform.Machine, 'when_available'): (
 
         ('type', time.TimePeriod),
+
+        ('cardinality', "0.1"),
+
+    ),
+
+    (platform.Nic, 'bandwidth'): (
+
+        ('type', shared.Numeric),
+
+        ('cardinality', "1.1"),
+
+    ),
+    (platform.Nic, 'name'): (
+
+        ('type', unicode),
+
+        ('cardinality', "1.1"),
+
+    ),
+    (platform.Nic, 'vendor'): (
+
+        ('type', shared.Party),
 
         ('cardinality', "0.1"),
 
@@ -6604,6 +7764,13 @@ CONSTRAINTS = {
         ('cardinality', "1.1"),
 
     ),
+    (platform.Partition, 'interconnect'): (
+
+        ('type', platform.Interconnect),
+
+        ('cardinality', "0.1"),
+
+    ),
     (platform.Partition, 'model_number'): (
 
         ('type', unicode),
@@ -6623,6 +7790,13 @@ CONSTRAINTS = {
         ('type', shared.OnlineResource),
 
         ('cardinality', "0.N"),
+
+    ),
+    (platform.Partition, 'operating_system'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
 
     ),
     (platform.Partition, 'partition'): (
@@ -6646,7 +7820,7 @@ CONSTRAINTS = {
         ('cardinality', "0.1"),
 
     ),
-    (platform.Partition, 'when_used'): (
+    (platform.Partition, 'when_available'): (
 
         ('type', time.TimePeriod),
 
@@ -6682,35 +7856,14 @@ CONSTRAINTS = {
         ('cardinality', "0.1"),
 
     ),
-    (platform.Performance, 'coupling_cost'): (
+    (platform.Performance, 'further_detail'): (
 
-        ('type', float),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (platform.Performance, 'data_intensity'): (
-
-        ('type', float),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (platform.Performance, 'data_output_cost'): (
-
-        ('type', float),
+        ('type', platform.PerformanceDetail),
 
         ('cardinality', "0.1"),
 
     ),
     (platform.Performance, 'joules_per_simulated_year'): (
-
-        ('type', float),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (platform.Performance, 'memory_bloat'): (
 
         ('type', float),
 
@@ -6738,7 +7891,7 @@ CONSTRAINTS = {
         ('cardinality', "0.1"),
 
     ),
-    (platform.Performance, 'parallelization'): (
+    (platform.Performance, 'parallelisation'): (
 
         ('type', float),
 
@@ -6768,9 +7921,109 @@ CONSTRAINTS = {
     ),
     (platform.Performance, 'subcomponent_performance'): (
 
-        ('type', platform.ComponentPerformance),
+        ('type', platform.Performance),
 
         ('cardinality', "0.N"),
+
+    ),
+
+    (platform.PerformanceDetail, 'coupling_cost'): (
+
+        ('type', float),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (platform.PerformanceDetail, 'data_intensity'): (
+
+        ('type', float),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (platform.PerformanceDetail, 'data_output_cost'): (
+
+        ('type', float),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (platform.PerformanceDetail, 'memory_bloat'): (
+
+        ('type', float),
+
+        ('cardinality', "0.1"),
+
+    ),
+
+    (platform.ProjectCost, 'activity'): (
+
+        ('type', activity.Activity),
+
+        ('cardinality', "1.1"),
+
+    ),
+    (platform.ProjectCost, 'actual_years'): (
+
+        ('type', int),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (platform.ProjectCost, 'meta'): (
+
+        ('type', shared.DocMetaInfo),
+
+        ('cardinality', "1.1"),
+
+    ),
+    (platform.ProjectCost, 'peak_data'): (
+
+        ('type', shared.Numeric),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (platform.ProjectCost, 'platform'): (
+
+        ('type', platform.Machine),
+
+        ('cardinality', "1.1"),
+
+    ),
+    (platform.ProjectCost, 'total_core_hours'): (
+
+        ('type', int),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (platform.ProjectCost, 'total_energy_cost'): (
+
+        ('type', float),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (platform.ProjectCost, 'useful_core_hours'): (
+
+        ('type', int),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (platform.ProjectCost, 'useful_data'): (
+
+        ('type', shared.Numeric),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (platform.ProjectCost, 'useful_years'): (
+
+        ('type', int),
+
+        ('cardinality', "1.1"),
 
     ),
 
@@ -6779,6 +8032,13 @@ CONSTRAINTS = {
         ('type', unicode),
 
         ('cardinality', "0.1"),
+
+    ),
+    (platform.StoragePool, 'file_system_sizes'): (
+
+        ('type', shared.Numeric),
+
+        ('cardinality', "1.N"),
 
     ),
     (platform.StoragePool, 'name'): (
@@ -6800,21 +8060,6 @@ CONSTRAINTS = {
         ('type', shared.Party),
 
         ('cardinality', "0.1"),
-
-    ),
-
-    (platform.StorageVolume, 'units'): (
-
-        ('type', unicode),
-
-        ('cardinality', "1.1"),
-
-    ),
-    (platform.StorageVolume, 'volume'): (
-
-        ('type', int),
-
-        ('cardinality', "1.1"),
 
     ),
 
@@ -6932,7 +8177,7 @@ CONSTRAINTS = {
     ),
     (science.Model, 'release_date'): (
 
-        ('type', datetime.datetime),
+        ('type', time.DateTime),
 
         ('cardinality', "0.1"),
 
@@ -7068,7 +8313,7 @@ CONSTRAINTS = {
 
         ('type', unicode),
 
-        ('cardinality', "1.1"),
+        ('cardinality', "0.1"),
 
     ),
     (science.Realm, 'sub_topics'): (
@@ -7182,7 +8427,7 @@ CONSTRAINTS = {
 
         ('type', unicode),
 
-        ('cardinality', "1.1"),
+        ('cardinality', "0.1"),
 
     ),
     (science.Topic, 'sub_topics'): (
@@ -7211,7 +8456,7 @@ CONSTRAINTS = {
 
         ('type', unicode),
 
-        ('cardinality', "1.1"),
+        ('cardinality', "0.1"),
 
     ),
     (science.TopicProperty, 'values'): (
@@ -7247,11 +8492,25 @@ CONSTRAINTS = {
 
         ('type', unicode),
 
-        ('cardinality', "1.1"),
+        ('cardinality', "0.1"),
 
     ),
 
     (shared.Citation, 'abstract'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (shared.Citation, 'authors'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.N"),
+
+    ),
+    (shared.Citation, 'bibtex'): (
 
         ('type', unicode),
 
@@ -7310,6 +8569,13 @@ CONSTRAINTS = {
     (shared.Citation, 'url'): (
 
         ('type', shared.OnlineResource),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (shared.Citation, 'year'): (
+
+        ('type', int),
 
         ('cardinality', "0.1"),
 
@@ -7442,28 +8708,7 @@ CONSTRAINTS = {
         ('cardinality', "0.1"),
 
     ),
-    (shared.DocReference, 'constraint_vocabulary'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
     (shared.DocReference, 'context'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (shared.DocReference, 'description'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (shared.DocReference, 'external_id'): (
 
         ('type', unicode),
 
@@ -7484,28 +8729,7 @@ CONSTRAINTS = {
         ('cardinality', "0.1"),
 
     ),
-    (shared.DocReference, 'institute'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (shared.DocReference, 'linkage'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
     (shared.DocReference, 'name'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (shared.DocReference, 'protocol'): (
 
         ('type', unicode),
 
@@ -7520,13 +8744,6 @@ CONSTRAINTS = {
 
     ),
     (shared.DocReference, 'type'): (
-
-        ('type', unicode),
-
-        ('cardinality', "0.1"),
-
-    ),
-    (shared.DocReference, 'url'): (
 
         ('type', unicode),
 
@@ -7565,6 +8782,120 @@ CONSTRAINTS = {
     (shared.ExtraAttribute, 'value'): (
 
         ('type', unicode),
+
+        ('cardinality', "1.1"),
+
+    ),
+
+    (shared.FormalAssociation, 'association_id'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (shared.FormalAssociation, 'association_vocabulary'): (
+
+        ('type', shared.OnlineResource),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (shared.FormalAssociation, 'online_at'): (
+
+        ('type', shared.OnlineResource),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (shared.FormalAssociation, 'canonical_name'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (shared.FormalAssociation, 'context'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (shared.FormalAssociation, 'further_info'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (shared.FormalAssociation, 'id'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (shared.FormalAssociation, 'name'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (shared.FormalAssociation, 'relationship'): (
+
+        ('type', unicode),
+
+        ('cardinality', "1.1"),
+
+    ),
+    (shared.FormalAssociation, 'type'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (shared.FormalAssociation, 'version'): (
+
+        ('type', int),
+
+        ('cardinality', "0.1"),
+
+    ),
+
+    (shared.Numeric, 'base_unit'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (shared.Numeric, 'unit_enumeration'): (
+
+        ('type', unicode),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (shared.Numeric, 'unit_source'): (
+
+        ('type', shared.OnlineResource),
+
+        ('cardinality', "0.1"),
+
+    ),
+    (shared.Numeric, 'units'): (
+
+        ('type', unicode),
+
+        ('cardinality', "1.1"),
+
+    ),
+    (shared.Numeric, 'value'): (
+
+        ('type', float),
 
         ('cardinality', "1.1"),
 
@@ -7773,7 +9104,7 @@ CONSTRAINTS = {
     ),
     (software.ComponentBase, 'release_date'): (
 
-        ('type', datetime.datetime),
+        ('type', time.DateTime),
 
         ('cardinality', "0.1"),
 
@@ -7987,6 +9318,13 @@ CONSTRAINTS = {
         ('cardinality', "0.1"),
 
     ),
+    (software.SoftwareComponent, 'meta'): (
+
+        ('type', shared.DocMetaInfo),
+
+        ('cardinality', "1.1"),
+
+    ),
     (software.SoftwareComponent, 'sub_components'): (
 
         ('type', software.SoftwareComponent),
@@ -8038,7 +9376,7 @@ CONSTRAINTS = {
     ),
     (software.SoftwareComponent, 'release_date'): (
 
-        ('type', datetime.datetime),
+        ('type', time.DateTime),
 
         ('cardinality', "0.1"),
 
@@ -8206,7 +9544,7 @@ CONSTRAINTS = {
     ),
     (time.TimePeriod, 'length'): (
 
-        ('type', unicode),
+        ('type', float),
 
         ('cardinality', "1.1"),
 
@@ -8232,14 +9570,16 @@ DOC_STRINGS = {
     # ------------------------------------------------
 
     activity: "Types that describe context against which climate models are run.",
+    cmip: "Extensions for CMIP6.",
     data: "Types that describe output that climate models emit.",
     designing: "Types that describe project design features.",
     drs: "Types that describe the directory structures to which climate model output is written.",
+    iso: "Types that implement ISO classes used in other packages.",
     platform: "Types that describe hardware upon which climate models are run.",
     science: "Types that describe the science being performed.",
     shared: "Shared types that might be imported from other packages within the ontology.",
-    software: "Types that describe the software that constiutes a climate model.",
-    time: "Types that describe the software that constiutes a climate model.",
+    software: "Types that describe the software that constitutes a climate model.",
+    time: "Types that describe the software that constitutes a climate model.",
 
     # ------------------------------------------------
     # Classes.
@@ -8250,73 +9590,76 @@ DOC_STRINGS = {
 
     """,
     activity.AxisMember: """
-        Description of a given ensemble member. It will normally be related to a specific
-    ensemble requirement. Note that start dates can be extracted directly from the simulations
-    and do not need to be recorded with an axis member description.
+        Description of a given ensemble member.
+
+    It will normally be related to a specific ensemble requirement. Note
+    that start dates can be extracted directly from the simulations and
+    do not need to be recorded with an axis member description.
+
+    """,
+    activity.ChildSimulation: """
+        Defines the relationship between a simulation and its parent.
 
     """,
     activity.Conformance: """
-        A specific conformance. Describes how a particular numerical requirement has been implemented.
-    Will normally be linked from an ensemble descriptor.
+        A specific conformance.
+
+    Describes how a particular numerical requirement has been
+    implemented.  Will normally be linked from an ensemble descriptor.
 
     """,
     activity.Ensemble: """
         Generic ensemble definition.
-    Holds the definition of how the various ensemble members have been configured.
-    If ensemble axes are not present, then this is either a single member ensemble,
-    or part of an uber ensemble.
+
+    Holds the definition of how the various ensemble members have been
+    configured. If ensemble axes are not present, then this is either a
+    single member ensemble, or part of an uber ensemble.
 
     """,
     activity.EnsembleAxis: """
         Defines the meaning of r/i/p indices in an ensemble.
 
     """,
-    activity.EnsembleMember: """
-        An ensemble may be a complicated interplay of axes, for example, r/i/p, not all of which
-    are populated, so we need a list of the actual simulations and how they map onto the ensemble
-    axes.
-
-    """,
-    activity.ParentSimulation: """
-        Defines the relationship between a simulation and its parent.
+    activity.Simulation: """
+        Simulation class provides the integrating link about what models
+    were run and wny.
 
     """,
     activity.UberEnsemble: """
-        An ensemble made up of other ensembles. Often used where parts of an ensemble were run by
-    different institutes. Could also be used when a new experiment is designed which can use
-    ensemble members from previous experiments and/or projects.
+        An ensemble made up of other ensembles.
+
+    Often used where parts of an ensemble were run by different
+    institutes. Could also be used when a new experiment is designed
+    which can use ensemble members from previous experiments and/or
+    projects.
+
+    """,
+    cmip.CmipDataset: """
+        A CMIP dataset.
+
+    """,
+    cmip.CmipSimulation: """
+        A CMIP simulation.
+
+    In most CMIP cases this should be auto-generated from output dataset
+    file headers.
 
     """,
     data.Dataset: """
         Dataset discovery information.
 
-    """,
-    data.Downscaling: """
-        Defines a downscaling activity.
-
-    """,
-    data.InputDataset: """
-        An input dataset is used as within another component (such as a
-model). It comprises an original, source dataset plus any
-modifications requirted to use it in the relevant component.
-
-    """,
-    data.Simulation: """
-        Simulation class provides the integrating link about what models
-    were run and wny.  In many cases this should be auto-generated
-    from output file headers.
+    This may be further enhanced for ISO (or any other) compliance via
+    the extra attributes or project specific sub-classing.
 
     """,
     data.VariableCollection: """
-        A collection of variables within the scope of a code or process element.
-
-    """,
-    designing.AxisMember: """
-        PLACEHOLDER for the real axis_member.
+        A collection of variables within the scope of a code or process
+    element.
 
     """,
     designing.DomainRequirements: """
-        Properties of the domain which needs to be simulated, extent and/or resolution.
+        Properties of the domain which needs to be simulated, extent
+    and/or resolution.
 
     """,
     designing.EnsembleRequirement: """
@@ -8328,12 +9671,13 @@ modifications requirted to use it in the relevant component.
 
     """,
     designing.InitialisationRequirement: """
-        A requirement on how a particular simulation should be initialised.
+        A requirement on how a particular simulation should be
+    initialised.
 
     """,
     designing.MultiEnsemble: """
-        In the case of multiple ensemble axes, defines how they
-    are set up and ordered.
+        In the case of multiple ensemble axes, defines how they are set
+    up and ordered.
 
     """,
     designing.NumericalExperiment: """
@@ -8341,11 +9685,19 @@ modifications requirted to use it in the relevant component.
 
     """,
     designing.NumericalRequirement: """
-        A numerical requirement associated with a numerical experiment.
+        A numerical requirement associated with a numerical
+    experiment.
+
+    """,
+    designing.Objective: """
+        Describes a specific scientific objective within a project, and
+    any necessary outputs from the experiment needed to meet this
+    objective.
 
     """,
     designing.OutputRequirement: """
-        Provides details of what output is required and when from an experiment.
+        Provides details of what output is required and when from an
+    experiment.
 
     """,
     designing.Project: """
@@ -8369,7 +9721,8 @@ modifications requirted to use it in the relevant component.
 
     """,
     drs.DrsEnsembleIdentifier: """
-        Identifies a 'response ensemble' realisation using the semantic content ofa 'run_variant_id'.
+        Identifies a 'response ensemble' realisation using the semantic
+    content ofa 'run_variant_id'.
 
     """,
     drs.DrsExperiment: """
@@ -8377,8 +9730,10 @@ modifications requirted to use it in the relevant component.
 
     """,
     drs.DrsGeographicalIndicator: """
-        Specifies geographical subsets described by bounding boxes or by named regions.
-     One of spatial domain or bounding box must appear.
+        Specifies geographical subsets described by bounding boxes or by
+    named regions.
+
+    One of spatial domain or bounding box must appear.
 
     """,
     drs.DrsPublicationDataset: """
@@ -8386,63 +9741,135 @@ modifications requirted to use it in the relevant component.
 
     """,
     drs.DrsSimulationIdentifier: """
-        That part of the DRS which identifies the response to the experiment: the simulation.
+        That part of the DRS which identifies the response to the
+    experiment: the simulation.
 
     """,
     drs.DrsTemporalIdentifier: """
         Provides information about temporal subsetting and/or averaging.
-    If only N1 is present, it a temporal instant,
-    If N1-N2 are present with no suffix, it is a temporal subset,
-    If N1-N2 with a suffix are present, then some sort of temporal averaging has been applied across
-    the period.
+
+    If only N1 is present, it a temporal instant, If N1-N2 are present
+    with no suffix, it is a temporal subset, If N1-N2 with a suffix are
+    present, then some sort of temporal averaging has been applied
+    across the period.
 
     """,
-    platform.ComponentPerformance: """
-        Describes the simulation rate of a model component.
+    iso.Algorithm: """
+        Representation of the LE_Algorithm Class.
 
-Based on 'CPMIP: Measurements of Real Computational Performance of
-Earth System Models' (Balaji et. al. 2016, doi:10.5194/gmd-2016-197,
-http://www.geosci-model-dev-discuss.net/gmd-2016-197/)
+    """,
+    iso.Lineage: """
+        Representation of the ISO19115 lineage provenance description.
+
+    Information about the events or source data used in constructing a
+    dataset
+
+    """,
+    iso.ProcessStep: """
+        Representation of the ISO19115 LE_ProcessStep and parent
+    LI_ProcessStep classes.
+
+    """,
+    iso.ProcessStepReport: """
+        Report of what happened during a processing step.
+
+    Representation of ISO LE_ProcessStepReport, modified to use links or
+    body text, rather than files.
+
+    """,
+    iso.Processing: """
+        Representation of the ISO19115 LE_Processing class Note that the
+    algorithm definition has been adjusted to be more generic and less
+    'instrument obsessed' than ISO19115.
+
+    Name is an extension, and the identifier is simply a code string
+    (id) ... but given there may be no identifier space for this
+    processing step, it is made optional, rather than mandatory as in
+    ISO. For export to ISO, the recommendation is to use the identifier
+    of the CIM document which uses this class.
+
+    """,
+    iso.QualityEvaluationOutput: """
+        A specific evaluation output.
+
+    """,
+    iso.QualityEvaluationResult: """
+        The output of some quality evaluation against a specific measure
+    for evaluation quality.
+
+    This flattens several ISO classes, including DQ_Result,
+    DQ_ConformanceResult, DQ_QuantativeResult, DQ_Element.
+
+    """,
+    iso.QualityIssue: """
+        A description of some scientific quality issue known about a
+    resource described by this ontology.
+
+    E.g. if a model is known to have a particular problem, or there has
+    been a problem found with a dataset. Expect that most such detail
+    should be managed in an external (and formal) issue tracker.
+
+    """,
+    iso.QualityReport: """
+        A report detailing the quality of some aspect of the target resource.
 
     """,
     platform.ComputePool: """
         Homogeneous pool of nodes within a computing machine.
 
     """,
+    platform.Interconnect: """
+        The interconnect used within a machine to join nodes together.
+
+    """,
     platform.Machine: """
-        A computer/system/platform/machine which is used for simulation.
+        A computer/system/platform/machine which is used for
+    simulation.
+
+    """,
+    platform.Nic: """
+        Network Interface Card.
 
     """,
     platform.Partition: """
-        A major partition (component) of a computing system (aka machine).
+        A major partition (component) of a computing system (aka
+    machine).
 
     """,
     platform.Performance: """
-        Describes the properties of a performance of a configured model on
-a particular system/machine.
+        Describes the properties of a performance of a configured model
+    on a particular system/machine.
 
-Based on 'CPMIP: Measurements of Real Computational Performance of
-Earth System Models' (Balaji et. al. 2016, doi:10.5194/gmd-2016-197,
-http://www.geosci-model-dev-discuss.net/gmd-2016-197/)
+    Based on 'CPMIP: Measurements of Real Computational Performance of
+    Earth System Models' (Balaji et. al. 2016,
+    doi:10.5194/gmd-2016-197).
+
+    """,
+    platform.PerformanceDetail: """
+        Information about how the various components of performance were
+    related.
+
+    """,
+    platform.ProjectCost: """
+        Cost of an experiment or project on a particular platform.
 
     """,
     platform.StoragePool: """
         Homogeneous storage pool on a computing machine.
 
     """,
-    platform.StorageVolume: """
-        Platform storage volume and units.
-
-    """,
     science.Model: """
         A model component: can be executed standalone, and has as
     scientific description available via a link to a science.domain
-    document. (A configured model can be understood in terms of a
-    simulation, a model, and a configuration.).
+    document.
+
+    (A configured model can be understood in terms of a simulation, a
+    model, and a configuration.).
 
     """,
     science.Realm: """
-        Scientific area of a numerical model - usually a sub-model or component.
+        Scientific area of a numerical model - usually a sub-model or
+    component.
 
     """,
     science.RealmCoupling: """
@@ -8450,7 +9877,8 @@ http://www.geosci-model-dev-discuss.net/gmd-2016-197/)
 
     """,
     science.Topic: """
-        An organized collection of details upon a specific topic, e.g. model key properties.
+        An organized collection of details upon a specific topic, e.g.
+    model key properties.
 
     """,
     science.TopicProperty: """
@@ -8458,8 +9886,8 @@ http://www.geosci-model-dev-discuss.net/gmd-2016-197/)
 
     """,
     science.TopicPropertySet: """
-        Provides specific details related to a topic (i.e. process, sub-process,
-    grid, key properties, etc).
+        Provides specific details related to a topic (i.e. process, sub-
+    process, grid, key properties, etc).
 
     """,
     shared.Citation: """
@@ -8467,8 +9895,10 @@ http://www.geosci-model-dev-discuss.net/gmd-2016-197/)
 
     """,
     shared.DocMetaInfo: """
-        Encapsulates document meta information used by es-doc machinery. Will not normally be
-    populated by humans. May duplicate information held in 'visible' metadata.
+        Encapsulates document meta information used by es-doc machinery.
+
+    Will not normally be populated by humans. May duplicate information
+    held in 'visible' metadata.
 
     """,
     shared.DocReference: """
@@ -8476,109 +9906,162 @@ http://www.geosci-model-dev-discuss.net/gmd-2016-197/)
 
     """,
     shared.ExtraAttribute: """
-        An extra attribute with key and value needed to encode further information
-    not in the CIM2 domain model or specialisation. Typical use case: in parsing
-    data and encoding attributes found in data.
+        An extra attribute with key and value needed to encode further
+    information not in the CIM domain model or specialisation.
+
+    Typical use case: in parsing data and encoding attributes found in
+    data.
+
+    """,
+    shared.FormalAssociation: """
+        Holds a named association between entities, where the name of the
+    association comes from a specific named enumeration.
+
+    The association can point at a CIM entity, or a remote entity.
+
+    """,
+    shared.Numeric: """
+        A number which comes with a unit, potentially from a controlled
+    vocabulary of units.
+
+    #FIXME: Need to work on the relationship between unit_source and base_unit.
 
     """,
     shared.OnlineResource: """
-        A minimal approximation of ISO19115 CI_ONLINERESOURCE, provides a link and details
-    of how to use that link.
+        A minimal approximation of ISO19115 CI_ONLINERESOURCE, provides a
+    link and details of how to use that link.
 
     """,
     shared.Party: """
-        Implements minimal material for an ISO19115-1 (2014) compliant party.
-    For our purposes this is a much better animal than the previous responsibleParty 
-    which munged roles together with people. Note we have collapsed CI_Contact,
-    CI_Individual and CI_Organisation as well as the abstract CI_Party.
+        Implements minimal material for an ISO19115-1 (2014) compliant
+    party.
+
+    For our purposes this is a much better animal than the previous
+    responsibleParty which munged roles together with people. Note we
+    have collapsed CI_Contact, CI_Individual and CI_Organisation as well
+    as the abstract CI_Party.
 
     """,
     shared.QualityReview: """
         Assertions as to the completeness and quality of a document.
 
+    Not to be confused with assertions as to the quality of the resource
+    described by the document (as covered by the iso.quality_report). A
+    future version of this ontology may rename this class.
+
     """,
     shared.Responsibility: """
-        Implements the ISO19115-1 (2014) CI_Responsibility (which replaces
-    responsibleParty). Combines a person and their role in doing something.
+        Implements the ISO19115-1 (2014) CI_Responsibility (which
+    replaces responsibleParty).
+
+    Combines a person and their role in doing something.
 
     """,
     shared.TextBlob: """
-        Provides a text class which supports plaintext, html, and
-    friends (or will do).
+        Provides a text class which supports plaintext, html, and friends
+    (or will do).
 
     """,
     software.ComponentBase: """
-        Base class for software component properties, whether a top level model,
-    or a specific piece of code known as a component. In software terms, a
-    component is a discrete set of code that takes input data and generates output data.
-    Components may or may not have scientific descriptions.
+        Base class for software component properties, whether a top level
+    model, or a specific piece of code known as a component.
+
+    In software terms, a component is a discrete set of code that takes
+    input data and generates output data. Components may or may not have
+    scientific descriptions.
 
     """,
     software.Composition: """
-        Describes how component variables are coupled together either to/from other
-    SoftwareComponents or external data files. The variables specified by a component's
-    composition must be owned by that component, or a  child of that component;
-    child components cannot couple together parent variables.
+        Describes how component variables are coupled together either
+    to/from other SoftwareComponents or external data files. The
+    variables specified by a component's composition must be owned by
+    that component, or a  child of that component; child components
+    cannot couple together parent variables.
+
+    # FIXME: THIS CLASS IS BELIEVED TO BE OBSOLETE AND WILL BE
+    REVIEWED/REPLACED IN THE NEXT VERSION
 
     """,
     software.DevelopmentPath: """
-        Describes the software development path for this model/component.
+        Describes the software development path for this
+    model/component.
 
     """,
     software.EntryPoint: """
-        Describes a function or subroutine of a SoftwareComponent.
-    BFG will use these EntryPoints to define a schedule of subroutine calls for a coupled model.
-    Currently, a very basic schedule can be approximated by using the 'proceeds' and 'follows' attributes,
-    however a more complete system is required for full BFG compatibility.
-    Every EntryPoint can have a set of arguments associated with it.
-    These reference (previously defined) variables.
+        Describes a function or subroutine of a SoftwareComponent. BFG
+    will use these EntryPoints to define a schedule of subroutine calls
+    for a coupled model. Currently, a very basic schedule can be
+    approximated by using the 'proceeds' and 'follows' attributes,
+    however a more complete system is required for full BFG
+    compatibility. Every EntryPoint can have a set of arguments
+    associated with it. These reference (previously defined) variables.
+
+    # FIXME: THIS CLASS IS BELIEVED TO BE OBSOLETE AND WILL BE
+    REVIEWED/REPLACED IN THE NEXT VERSION
 
     """,
     software.Gridspec: """
         Fully defines the computational grid used.
 
+    # FIXME: THIS CLASS IS BELIEVED TO BE OBSOLETE AND WILL BE
+    REVIEWED/REPLACED IN THE NEXT VERSION
+
     """,
     software.Implementation: """
-        Implementation information for a software framework/component, whether a top level model,
-    or a specific piece of code known as a 'component'. In software terms, a
-    software framework/component is a discrete set of code that takes input data and generates output data.
-    Software frameworks/components may or may not have scientific descriptions.
+        Implementation information for a software framework/component,
+    whether a top level model, or a specific piece of code known as a
+    'component'.
+
+    In software terms, a software framework/component is a discrete set
+    of code that takes input data and generates output data. Software
+    frameworks/components may or may not have scientific descriptions.
 
     """,
     software.SoftwareComponent: """
-        An embedded piece of software that does not normally function as a standalone model (although
-    it may be used standalone in a test harness).
+        An embedded piece of software that does not normally function as
+    a standalone model (although it may be used standalone in a test
+    harness).
 
     """,
     software.Variable: """
-        An instance of a model software variable which may be prognostic or diagnostic, and which is
-    available as a connection to other software components. Note that these variables may only exist
-    within the software workflow as interim quantities or coupling endpoints. Input and output
-    variables will be a subset of these software variables.
+        An instance of a model software variable which may be prognostic
+    or diagnostic, and which is available as a connection to other
+    software components. Note that these variables may only exist within
+    the software workflow as interim quantities or coupling endpoints.
+    Input and output variables will be a subset of these software
+    variables.
+
+    # FIXME: THIS CLASS IS BELIEVED TO BE OBSOLETE AND WILL BE
+    REVIEWED/REPLACED IN THE NEXT VERSION
 
     """,
     time.Calendar: """
         Describes the calendar required/used in an experiment/simulation.
-    This class is based on the calendar attributes and properties found in the
-    CF netCDF conventions.
+
+    This class is based on the calendar attributes and properties found
+    in the CF netCDF conventions.
 
     """,
     time.DateTime: """
-        A date or time. Either in simulation time with the simulation
-    calendar, or with reference to a simulation start, in which
-    case the datetime is an interval after the start date.
+        A date or time.
+
+    Either in simulation time with the simulation calendar, or with
+    reference to a simulation start, in which case the datetime is an
+    interval after the start date.
 
     """,
     time.DatetimeSet: """
-        A set of times. This is an abstract class which is specialised into
-    a periodic or aperiodic (irregular) list.  Note that we assume either a
-    periodic set of dates which can be date and/or time, or an irregular set
+        A set of times.
+
+    This is an abstract class which is specialised into a periodic or
+    aperiodic (irregular) list.  Note that we assume either a periodic
+    set of dates which can be date and/or time, or an irregular set
     which can only be dates.
 
     """,
     time.IrregularDateset: """
-        A set of irregularly spaced times, provided as a comma separated string of yyyy-mm-dd in
-     the appropriate calendar.
+        A set of irregularly spaced times, provided as a comma separated
+    string of yyyy-mm-dd in the appropriate calendar.
 
     """,
     time.RegularTimeset: """
@@ -8620,16 +10103,26 @@ http://www.geosci-model-dev-discuss.net/gmd-2016-197/)
         "Explanation of why this activity was carried out and/or what it was intended to achieve.",
     (activity.Activity, 'responsible_parties'):
         "People or organisations responsible for activity.",
+    (activity.AxisMember, 'axis'):
+        "The parent axis of this ensemble member",
+    (activity.AxisMember, 'conformance'):
+        "Conformance document for the target requirement that defines this member, if any.",
     (activity.AxisMember, 'description'):
         "Description of the member (or name of parameter varied).",
     (activity.AxisMember, 'extra_detail'):
         "If necessary: further information about ensemble member conformance.",
     (activity.AxisMember, 'index'):
         "The ensemble member index.",
-    (activity.AxisMember, 'target_requirement'):
-        "URI of the target numerical requirement, if any.",
     (activity.AxisMember, 'value'):
-        "If parameter varied, value thereof for this member.",
+        "If parameter varied; value for this member.",
+    (activity.ChildSimulation, 'branch_method'):
+        "Description of how the simulation was branched from a parent simulation, e.g. 'standard', 'none provided'.",
+    (activity.ChildSimulation, 'branch_time_in_child'):
+        "The time at which the present simulation started in the child calendar.",
+    (activity.ChildSimulation, 'branch_time_in_parent'):
+        "The time in parent simulation calendar at which this simulation was branched.",
+    (activity.ChildSimulation, 'parent'):
+        "The parent simulation of this child.",
     (activity.Conformance, 'conformance_achieved'):
         "Summary of conformance status.",
     (activity.Conformance, 'datasets'):
@@ -8647,97 +10140,109 @@ http://www.geosci-model-dev-discuss.net/gmd-2016-197/)
     (activity.Ensemble, 'experiments'):
         "Experiments with which the ensemble is associated (may differ from constituent simulations).",
     (activity.Ensemble, 'members'):
-        "The set of ensemble members.",
+        "Simulations within ensemble (should only be zero while ensemble is being defined)",
     (activity.Ensemble, 'representative_performance'):
         "Representative model performance across ensemble.",
     (activity.Ensemble, 'uber_ensembles'):
         "Link to one or more over-arching ensembles that might includes this one.",
     (activity.EnsembleAxis, 'extra_detail'):
         "Any extra detail required to describe how this ensemble axis was delivered.",
-    (activity.EnsembleAxis, 'member'):
-        "Individual member descriptions along axis.",
+    (activity.EnsembleAxis, 'members'):
+        "Individual member descriptions along axis. 0.N cardinality is only acceptable during design",
+    (activity.EnsembleAxis, 'meta'):
+        "Injected document metadata.",
+    (activity.EnsembleAxis, 'name'):
+        "Short handle/name for the axis",
     (activity.EnsembleAxis, 'short_identifier'):
         "e.g. 'r', 'i', 'p' or 'f' to conform with simulation ensemble variant identifiers.",
     (activity.EnsembleAxis, 'target_requirement'):
         "URI of the target numerical requirement, if any",
-    (activity.EnsembleMember, 'errata'):
+    (activity.Simulation, 'calendar'):
+        "The calendar used in the simulation",
+    (activity.Simulation, 'documentation'):
+        "On-line location of additional documentation",
+    (activity.Simulation, 'end_time'):
+        "The end date-time of the simulation. e.g. 2087-11-30 12:00:00",
+    (activity.Simulation, 'ensemble_id'):
+        "Identification within ensemble axes via axis member. (Multiple axis members within a simulation cannot share the same ensemble_axis.) (There must be an axis_member instance for each ensemble axis in a parent ensemble.)",
+    (activity.Simulation, 'errata'):
         "Link to errata associated with this simulation.",
-    (activity.EnsembleMember, 'had_performance'):
+    (activity.Simulation, 'extra_attributes'):
+        "Additional attributes provided with simulation.",
+    (activity.Simulation, 'had_performance'):
         "Performance of the simulation.",
-    (activity.EnsembleMember, 'ran_on'):
+    (activity.Simulation, 'institution'):
+        "institution which carried out the simulation",
+    (activity.Simulation, 'meta'):
+        "Injected document metadata.",
+    (activity.Simulation, 'parent_of'):
+        "If appropriate, links to simulations which branched from this one",
+    (activity.Simulation, 'part_of_project'):
+        "Project or projects for which simulation was run",
+    (activity.Simulation, 'primary_ensemble'):
+        "Primary Ensemble (ensemble for which this simulation was first run).",
+    (activity.Simulation, 'produced'):
+        "Products of the simulation",
+    (activity.Simulation, 'ran_for_experiments'):
+        "One or more experiments with which the simulation is associated",
+    (activity.Simulation, 'ran_on'):
         "The machine on which the simulation was run.",
-    (activity.EnsembleMember, 'simulation'):
-        "Actual simulation description for an ensemble member. The variant id is in the simuluation document.",
-    (activity.ParentSimulation, 'branch_method'):
-        "Description of how the simulation was branched from a parent simualtion, e.g. 'standard', 'none provided'.",
-    (activity.ParentSimulation, 'branch_time_in_child'):
-        "The time at which the present simulation started in the child calendar.",
-    (activity.ParentSimulation, 'branch_time_in_parent'):
-        "The time in parent simulation calendar at which this simulation was branched.",
-    (activity.ParentSimulation, 'parent'):
-        "The parent simulation of this child.",
+    (activity.Simulation, 'start_time'):
+        "The start date-time of the simulation. e.g. 2012-04-01 00:00:00",
+    (activity.Simulation, 'sub_experiment'):
+        "For start-date ensembles, this will indicate the beginning year; for offline models driven by output from another model, this will provide the source_id and variant_label for the 'driving' model.",
+    (activity.Simulation, 'used'):
+        "The model used to run the simulation",
     (activity.UberEnsemble, 'child_ensembles'):
         "Ensemble which are aggregated into this one.",
+    (cmip.CmipDataset, 'drs_location'):
+        "DRS identifier of dataset.",
+    (cmip.CmipDataset, 'meta'):
+        "Injected document metadata.",
+    (cmip.CmipDataset, 'originating_simulation'):
+        "Makes a link back to originating activity.",
+    (cmip.CmipSimulation, 'forcing_index'):
+        "index for variant of forcing, e.g. 2",
+    (cmip.CmipSimulation, 'initialization_index'):
+        "Index variant of initialization method, e.g. 1",
+    (cmip.CmipSimulation, 'meta'):
+        "Injected document metadata.",
+    (cmip.CmipSimulation, 'physics_index'):
+        "index for model physics, e.g. 3",
+    (cmip.CmipSimulation, 'realization_index'):
+        "realization number, e.g. 5",
+    (cmip.CmipSimulation, 'variant_info'):
+        "description of run variant differences, e.g. forcing: black carbon aerosol only",
     (data.Dataset, 'availability'):
         "Where the data is located, and how it is accessed.",
     (data.Dataset, 'citations'):
         "Set of pertinent citations.",
+    (data.Dataset, 'contains'):
+        "Contents in terms of variables.",
     (data.Dataset, 'description'):
         "Textural description of dataset.",
-    (data.Dataset, 'drs_datasets'):
-        "Data available in the DRS.",
+    (data.Dataset, 'further_attributes'):
+        "Additional attributes as necessary.",
+    (data.Dataset, 'keywords'):
+        "Set of additional keywords to aid discovery/classification",
+    (data.Dataset, 'lineage'):
+        "Provenance of the dataset",
     (data.Dataset, 'meta'):
         "Injected document metadata.",
     (data.Dataset, 'name'):
         "Name of dataset.",
-    (data.Dataset, 'produced_by'):
-        "Makes a link back to originating activity.",
+    (data.Dataset, 'progress'):
+        "State of the dataset",
     (data.Dataset, 'related_to_dataset'):
         "Related dataset.",
     (data.Dataset, 'responsible_parties'):
-        "Individuals and organisations reponsible for the data.",
-    (data.Downscaling, 'downscaled_from'):
-        "The simulation that was downscaled by this downscaling activity.",
-    (data.InputDataset, 'modifications_applied'):
-        "Describe modifications (if any) applied to the dataset prior to use. E.g. spatial interpolation, temporal averaging, etc.",
-    (data.InputDataset, 'original_data'):
-        "The source dataset, prior to any modifications",
-    (data.Simulation, 'calendar'):
-        "The calendar used in the simulation",
-    (data.Simulation, 'end_time'):
-        "The start date-time of the simulation. e.g. 2087-11-30 12:00:00",
-    (data.Simulation, 'extra_attributes'):
-        "Additional attributes provided with simulation.",
-    (data.Simulation, 'forcing_index'):
-        "index for variant of forcing, e.g. 2",
-    (data.Simulation, 'further_info_url'):
-        "On-line location of documentation",
-    (data.Simulation, 'initialization_index'):
-        "Index variant of initialization method, e.g. 1",
-    (data.Simulation, 'insitution'):
-        "institution which carried out the simulation",
-    (data.Simulation, 'parent_simulation'):
-        "If appropriate, detailed information about how this simulation branched from a previous one",
-    (data.Simulation, 'part_of_project'):
-        "Project or projects for which simulation was run",
-    (data.Simulation, 'physics_index'):
-        "index for model physics, e.g. 3",
-    (data.Simulation, 'primary_ensemble'):
-        "Primary Ensemble (ensemble for which this simulation was first run).",
-    (data.Simulation, 'ran_for_experiments'):
-        "One or more experiments with which the simulation is associated",
-    (data.Simulation, 'realization_index'):
-        "realization number, e.g. 5",
-    (data.Simulation, 'start_time'):
-        "The start date-time of the simulation. e.g. 2012-04-01 00:00:00",
-    (data.Simulation, 'sub_experiment'):
-        "For start-date ensembles, this will indicate the beginning year; for offline models driven by output from another model, this will provide the source_id and variant_label for the 'driving' model.",
-    (data.Simulation, 'used'):
-        "The model used to run the simulation",
-    (data.Simulation, 'variant_info'):
-        "description of run variant differences, e.g. forcing: black carbon aerosol only",
+        "Individuals and organisations responsible for the data.",
+    (data.Dataset, 'type'):
+        "Dataset discovery classifier",
     (data.VariableCollection, 'collection_name'):
         "Name for this variable collection.",
+    (data.VariableCollection, 'geometry'):
+        "Defines whether or not all variables in collection are point or area based",
     (data.VariableCollection, 'variables'):
         "Set of variable names.",
     (designing.DomainRequirements, 'required_extent'):
@@ -8778,6 +10283,8 @@ http://www.geosci-model-dev-discuss.net/gmd-2016-197/)
         "Other experiments which have defined relationships to this one.",
     (designing.NumericalExperiment, 'related_mips'):
         "MIP's that require this experiment.",
+    (designing.NumericalExperiment, 'related_objectives'):
+        "Set of objective identifiers (which should appear within the related experiments)",
     (designing.NumericalExperiment, 'required_period'):
         "Constraint on start date and duration.",
     (designing.NumericalExperiment, 'requirements'):
@@ -8792,6 +10299,16 @@ http://www.geosci-model-dev-discuss.net/gmd-2016-197/)
         "Indicator as to whether ensemble documentation should include conformance information for this requirement.",
     (designing.NumericalRequirement, 'scope'):
         "Scope allows us to categorise a requirement in terms of how widely it is shared.",
+    (designing.Objective, 'description'):
+        "Short summary of the objective",
+    (designing.Objective, 'identifier'):
+        "Provides a hook to which experiments can link",
+    (designing.Objective, 'meta'):
+        "Injected document metadata.",
+    (designing.Objective, 'name'):
+        "Name of this objective",
+    (designing.Objective, 'required_outputs'):
+        "Set of required outputs associated with this objective",
     (designing.OutputRequirement, 'formal_data_request'):
         "If available, link to a 'cmip' style online request.",
     (designing.Project, 'governed_experiments'):
@@ -8870,8 +10387,88 @@ http://www.geosci-model-dev-discuss.net/gmd-2016-197/)
         "N1,  of the form yyyy[MM[dd[hh[mm[ss]]]]].",
     (drs.DrsTemporalIdentifier, 'suffix'):
         "If present, used to indicate climatology or average.",
-    (platform.ComponentPerformance, 'component'):
-        "Link to a CIM software component description.",
+    (iso.Algorithm, 'citation'):
+        "Formal documentation for the algorithm used.",
+    (iso.Algorithm, 'description'):
+        "Textural description of algorithm",
+    (iso.Lineage, 'meta'):
+        "Injected document metadata.",
+    (iso.Lineage, 'process_step'):
+        "How the resource was developed or set of events associated with production.",
+    (iso.Lineage, 'source'):
+        "Input(s) used in production of resource",
+    (iso.Lineage, 'statement'):
+        "General explanation of the level of knowledge or lack thereof about the lineage",
+    (iso.ProcessStep, 'description'):
+        "General description of the events in the development of the resource.",
+    (iso.ProcessStep, 'execution_date_time'):
+        "The date and time when the process was completed.",
+    (iso.ProcessStep, 'processing_information'):
+        "Comprehensive information on the processing carried out",
+    (iso.ProcessStep, 'processor'):
+        "Individual or organisation responsible for the process step. Use roleCode='processor'. Contact information is not necessary.",
+    (iso.ProcessStep, 'rationale'):
+        "Purpose for performing the process on the resource",
+    (iso.ProcessStep, 'reference'):
+        "Process step documentation",
+    (iso.ProcessStep, 'report'):
+        "Report generated by the process step",
+    (iso.ProcessStep, 'source'):
+        "Information on the inputs used in the process step.",
+    (iso.ProcessStepReport, 'description'):
+        "Summary textual description of what occurred during the process step",
+    (iso.ProcessStepReport, 'link'):
+        "Link to actual report documents, if any",
+    (iso.ProcessStepReport, 'name'):
+        "Name of the processing report",
+    (iso.Processing, 'algorithm'):
+        "details of the methodology carried out in this processing",
+    (iso.Processing, 'documentation'):
+        "reference to documentation describing the processing",
+    (iso.Processing, 'identifier'):
+        "Identifier (strictly, a code which can be used in an MD_Identifier",
+    (iso.Processing, 'name'):
+        "Name of the processing action (ISO extension)",
+    (iso.Processing, 'procedure_description'):
+        "additional details about the processing procedures",
+    (iso.Processing, 'runtime_parameters'):
+        "parameters to control the processing operations, entered at run time",
+    (iso.Processing, 'software_reference'):
+        "Reference to document describing processing software",
+    (iso.QualityEvaluationOutput, 'output_type'):
+        "Type of evaluation resource",
+    (iso.QualityEvaluationResult, 'date'):
+        "Date of quality evaluation",
+    (iso.QualityEvaluationResult, 'evaluation_procedure'):
+        "Brief description of the evaluation method",
+    (iso.QualityEvaluationResult, 'evaluator'):
+        "Person or entity reesponsible for evaluation",
+    (iso.QualityEvaluationResult, 'name'):
+        "Name of measure being evaluated",
+    (iso.QualityEvaluationResult, 'passed'):
+        "Success or failure of the evaluation, if boolean concept is appropriate",
+    (iso.QualityEvaluationResult, 'results'):
+        "Evaluation outputs, including log files, plots, or datasets",
+    (iso.QualityEvaluationResult, 'specification'):
+        "Formal specification of the evaluation method",
+    (iso.QualityEvaluationResult, 'summary_result'):
+        "Summary description of evaluation outcome",
+    (iso.QualityIssue, 'description'):
+        "Description of issue",
+    (iso.QualityIssue, 'reporter'):
+        "Person or entity responsible for reporting/describing issue",
+    (iso.QualityIssue, 'summary'):
+        "Brief (one-line) description of issue",
+    (iso.QualityIssue, 'tracked_issue'):
+        "Issue as lodged in an external issue tracker",
+    (iso.QualityReport, 'issues'):
+        "Issues with this resource",
+    (iso.QualityReport, 'meta'):
+        "Injected document metadata.",
+    (iso.QualityReport, 'reports'):
+        "Reports against quality measures for this resource",
+    (iso.QualityReport, 'target'):
+        "Document about to which this quality report applies",
     (platform.ComputePool, 'accelerator_type'):
         "Type of accelerator.",
     (platform.ComputePool, 'accelerators_per_node'):
@@ -8886,86 +10483,128 @@ http://www.geosci-model-dev-discuss.net/gmd-2016-197/)
         "CPU type.",
     (platform.ComputePool, 'description'):
         "Textural description of pool.",
-    (platform.ComputePool, 'interconnect'):
-        "Interconnect used.",
     (platform.ComputePool, 'memory_per_node'):
         "Memory per node.",
     (platform.ComputePool, 'model_number'):
         "Model/Board number/type.",
     (platform.ComputePool, 'name'):
         "Name of compute pool within a machine.",
+    (platform.ComputePool, 'network_cards_per_node'):
+        "Available network interfaces on node",
     (platform.ComputePool, 'number_of_nodes'):
         "Number of nodes.",
-    (platform.ComputePool, 'operating_system'):
-        "Operating system.",
+    (platform.ComputePool, 'vendor'):
+        "Supplier of compute hardware in this pool",
+    (platform.Interconnect, 'description'):
+        "Technical description of interconnect layout",
+    (platform.Interconnect, 'name'):
+        "Name of interconnnect.",
+    (platform.Interconnect, 'topology'):
+        "Interconnect topology",
+    (platform.Interconnect, 'vendor'):
+        "Supplier of the interconnect",
+    (platform.Machine, 'linpack_performance'):
+        "Linpack performance (RMax in Top500 lingo)",
     (platform.Machine, 'meta'):
         "Injected document metadata.",
+    (platform.Machine, 'peak_performance'):
+        "Total peak performance (RPeak in Top500 lingo)",
+    (platform.Nic, 'bandwidth'):
+        "Bandwidth to network",
+    (platform.Nic, 'name'):
+        "Name of interface card",
+    (platform.Nic, 'vendor'):
+        "Vendor of network card",
     (platform.Partition, 'compute_pools'):
         "Layout of compute nodes.",
     (platform.Partition, 'description'):
         "Textural description of machine.",
     (platform.Partition, 'institution'):
         "Institutional location.",
+    (platform.Partition, 'interconnect'):
+        "Interconnect used.",
     (platform.Partition, 'model_number'):
         "Vendor's model number/name - if it exists.",
     (platform.Partition, 'name'):
         "Name of partition (or machine).",
     (platform.Partition, 'online_documentation'):
         "Links to documentation.",
+    (platform.Partition, 'operating_system'):
+        "Operating system.",
     (platform.Partition, 'partition'):
         "If machine is partitioned, treat subpartitions as machines.",
     (platform.Partition, 'storage_pools'):
         "Storage resource available.",
     (platform.Partition, 'vendor'):
         "The system integrator or vendor.",
-    (platform.Partition, 'when_used'):
+    (platform.Partition, 'when_available'):
         "If no longer in use, the time period it was in use.",
     (platform.Performance, 'actual_simulated_years_per_day'):
         "Actual simulated years per day (ASYPD) in a 24h period on the given platform obtained from a typical long-running simulation with the model. Inclusive of system interruptions, queue wait time, or issues with the model workflow, etc.",
     (platform.Performance, 'compiler'):
         "Compiler used for performance test.",
     (platform.Performance, 'complexity'):
-        "Complexity measured as the number of prognostic variables per component with an independent discretization",
+        "Complexity measured as the number of prognostic variables per component with an independent discretization.",
     (platform.Performance, 'core_hours_per_simulated_year'):
         "Core-hours per simulated year (CHSY). This is measured as the product of the model runtime for 1 SY, and the numbers of cores allocated. Note that if allocations are done on a node basis then all cores on a node are charged against the allocation, regardless of whether or not they are used.",
-    (platform.Performance, 'coupling_cost'):
-        "Coupling cost measures the overhead caused by coupling. This can include the cost of the coupling algorithm itself (which may involve grid interpolation and computation of transfer coefficients for conservative coupling) as well as load imbalance. It is the normalized difference between the time-processor integral for the whole model versus the sum of individual concurrent components",
-    (platform.Performance, 'data_intensity'):
-        "Data intensity the amount of data produced per compute-hour, in units GB per compute-hour.",
-    (platform.Performance, 'data_output_cost'):
-        "Data output cost is the cost of performing I/O, and is the ratio of CHSY with and without I/O.",
+    (platform.Performance, 'further_detail'):
+        "Set of additional information related to coupling, memory and I/O.",
     (platform.Performance, 'joules_per_simulated_year'):
-        "The energy cost of a simulation, measured in joules per simulated year (JPSY). Given the energy E in joules consumed over a budgeting interval T (generally 1 month or 1 year, in units of hours), JPSY=CHSY*E*T/NP",
-    (platform.Performance, 'memory_bloat'):
-        "Memory bloat is the ratio of the actual memory size to the ideal memory size (the size of the complete model state, which in theory is all you need to hold in memory)Mi, defined below.",
+        "The energy cost of a simulation, measured in joules per simulated year (JPSY). Given the energy E in joules consumed over a budgeting interval T (generally 1 month or 1 year, in units of hours), JPSY=CHSY*E*T/NP.",
     (platform.Performance, 'meta'):
         "Injected document metadata.",
     (platform.Performance, 'model'):
         "Model for which performance was tested.",
     (platform.Performance, 'name'):
         "Name for performance (experiment/test/whatever).",
-    (platform.Performance, 'parallelization'):
-        "Parallelization measured as the total number of cores (NP) allocated for the run, regardless of whether or or all cores were used. Note that NP=CHSY*SYPD/24.",
+    (platform.Performance, 'parallelisation'):
+        "Total number of cores (NP) allocated for the run, regardless of whether or not all cores were used all of the time.",
     (platform.Performance, 'platform'):
         "Platform on which performance was tested.",
     (platform.Performance, 'resolution'):
-        "Resolution measured as the number of gridpoints (or more generally, spatial degrees of freedom) NX x NY x NZ per component with an independent discretization",
+        "Resolution measured as the number of gridpoints (or more generally, spatial degrees of freedom) NX x NY x NZ per component with an independent discretization.",
     (platform.Performance, 'simulated_years_per_day'):
-        "Simulated years per day (SYPD) in a 24h period on the given platform",
+        "Simulated years per day (SYPD) in a 24h period on the given platform.",
     (platform.Performance, 'subcomponent_performance'):
         "Describes the performance of each subcomponent.",
+    (platform.PerformanceDetail, 'coupling_cost'):
+        "Coupling cost measures the overhead caused by coupling. This can include the cost of the coupling algorithm itself (which may involve grid interpolation and computation of transfer coefficients for conservative coupling) as well as load imbalance. It is the normalized difference between the time-processor integral for the whole model versus the sum of individual concurrent components.",
+    (platform.PerformanceDetail, 'data_intensity'):
+        "Data intensity is the amount of data produced per compute-hour, in units GB per compute-hour.",
+    (platform.PerformanceDetail, 'data_output_cost'):
+        "Data output cost is the cost of performing I/O, and is the ratio of CHSY with and without I/O.",
+    (platform.PerformanceDetail, 'memory_bloat'):
+        "Memory bloat is the ratio of the actual memory size, defined as M minus NP  multiplied by X where M is the measured runtime memory usage and X the size of the executable files, to the ideal memory size Mi, the size of the complete model state, which in theory is all you need to hold in memory.",
+    (platform.ProjectCost, 'activity'):
+        "Project or Experiment of interest",
+    (platform.ProjectCost, 'actual_years'):
+        "Number of actual years simulated, including spin-up tuning etc.",
+    (platform.ProjectCost, 'meta'):
+        "Injected document metadata.",
+    (platform.ProjectCost, 'peak_data'):
+        "Maximum volume of data held during project",
+    (platform.ProjectCost, 'platform'):
+        "Machine used for project",
+    (platform.ProjectCost, 'total_core_hours'):
+        "Total number of core hours needed for all aspects of the project",
+    (platform.ProjectCost, 'total_energy_cost'):
+        "Total cost of project in Joules, if known",
+    (platform.ProjectCost, 'useful_core_hours'):
+        "Number of core-hours used for useful simulations within the project",
+    (platform.ProjectCost, 'useful_data'):
+        "Volume of useful data to be analysed",
+    (platform.ProjectCost, 'useful_years'):
+        "Number of useful years simulated (or to be simulated) during this project",
     (platform.StoragePool, 'description'):
         "Description of the technology used.",
+    (platform.StoragePool, 'file_system_sizes'):
+        "Sizes of constituent File Systems",
     (platform.StoragePool, 'name'):
         "Name of storage pool.",
     (platform.StoragePool, 'type'):
         "Type of storage.",
     (platform.StoragePool, 'vendor'):
         "Vendor of storage hardware.",
-    (platform.StorageVolume, 'units'):
-        "Volume units.",
-    (platform.StorageVolume, 'volume'):
-        "Numeric value.",
     (science.Model, 'activity_properties'):
         "Properties specific to the modelling activity in question, e.g. radiative forcing agents for CMIP6.",
     (science.Model, 'coupled_components'):
@@ -9048,8 +10687,12 @@ http://www.geosci-model-dev-discuss.net/gmd-2016-197/)
         "Specialization identifier (derived from specialization).",
     (shared.Citation, 'abstract'):
         "Abstract providing high level reference overview.",
+    (shared.Citation, 'authors'):
+        "The Authors of the work.",
+    (shared.Citation, 'bibtex'):
+        "A BibTeX reference for the work.",
     (shared.Citation, 'citation_detail'):
-        "Complete citation string as would appear in a bibliography.",
+        "A complete citation string as would appear in a bibliography.",
     (shared.Citation, 'collective_title'):
         "Citation collective title, i.e. with all authors declared.",
     (shared.Citation, 'context'):
@@ -9059,15 +10702,17 @@ http://www.geosci-model-dev-discuss.net/gmd-2016-197/)
     (shared.Citation, 'meta'):
         "Injected document metadata.",
     (shared.Citation, 'title'):
-        "Citation short title.",
+        "The title of the work.",
     (shared.Citation, 'type'):
         "Citation type.",
     (shared.Citation, 'url'):
         "Location of electronic version.",
+    (shared.Citation, 'year'):
+        "Year of publication.",
     (shared.DocMetaInfo, 'author'):
         "Author of the metadata in the parent document.",
     (shared.DocMetaInfo, 'create_date'):
-        "Date upon which the instance was created.",
+        "Date upon which the documentation instance was created.",
     (shared.DocMetaInfo, 'drs_keys'):
         "DRS related keys to support correlation of documents with datasets.",
     (shared.DocMetaInfo, 'drs_path'):
@@ -9100,32 +10745,18 @@ http://www.geosci-model-dev-discuss.net/gmd-2016-197/)
         "Document version identifier.",
     (shared.DocReference, 'canonical_name'):
         "Canonical name given to document.",
-    (shared.DocReference, 'constraint_vocabulary'):
-        "A constraint vocabulary for the relationship.",
     (shared.DocReference, 'context'):
         "Information about remote record in context of reference.",
-    (shared.DocReference, 'description'):
-        "Detail of how to access the resource.",
-    (shared.DocReference, 'external_id'):
-        "External identifier of remote resource, if known.",
     (shared.DocReference, 'further_info'):
         "A further piece of information used in ad-hoc contexts.",
     (shared.DocReference, 'id'):
         "Identifier of remote resource, if known.",
-    (shared.DocReference, 'institute'):
-        "Canonical institute name of referenced document.",
-    (shared.DocReference, 'linkage'):
-        "A URL.",
     (shared.DocReference, 'name'):
         "A user friendly name given to document.",
-    (shared.DocReference, 'protocol'):
-        "Protocol to use at the linkage.",
     (shared.DocReference, 'relationship'):
         "Relationship of the object target as seen from the subject resource.",
     (shared.DocReference, 'type'):
         "The type of remote document.",
-    (shared.DocReference, 'url'):
-        "The URL of the remote document.",
     (shared.DocReference, 'version'):
         "The version of the remote document.",
     (shared.ExtraAttribute, 'doc'):
@@ -9136,6 +10767,22 @@ http://www.geosci-model-dev-discuss.net/gmd-2016-197/)
         "If a non-string type, provide type.",
     (shared.ExtraAttribute, 'value'):
         "Value associated with key.",
+    (shared.FormalAssociation, 'association_id'):
+        "External identifier of the relationship (association name)",
+    (shared.FormalAssociation, 'association_vocabulary'):
+        "Link to named vocabulary in a server",
+    (shared.FormalAssociation, 'online_at'):
+        "Method of accessing the related entity",
+    (shared.Numeric, 'base_unit'):
+        "type of unit in external vocabulary",
+    (shared.Numeric, 'unit_enumeration'):
+        "Internal CIM vocabulary",
+    (shared.Numeric, 'unit_source'):
+        "External vocabulary source",
+    (shared.Numeric, 'units'):
+        "Associated Units",
+    (shared.Numeric, 'value'):
+        "Numerical value of number",
     (shared.OnlineResource, 'description'):
         "Detail of how to access the resource.",
     (shared.OnlineResource, 'linkage'):
@@ -9252,6 +10899,8 @@ http://www.geosci-model-dev-discuss.net/gmd-2016-197/)
         "Language the component is written in.",
     (software.SoftwareComponent, 'license'):
         "The license held by this piece of software.",
+    (software.SoftwareComponent, 'meta'):
+        "Injected document metadata.",
     (software.SoftwareComponent, 'sub_components'):
         "Internal software sub-components of this component.",
     (software.Variable, 'description'):
@@ -9301,16 +10950,18 @@ http://www.geosci-model-dev-discuss.net/gmd-2016-197/)
         Standardised set of conformance responses.
 
     """,
-    data.DataAssociationTypes: """
-        Set of possible dataset associations.
+    data.DatasetType: """
+        Classifier of dataset type, to inform discovery metadata.
 
-    Selected from, and extended from,  ISO19115 (2014) DS_AssociationTypeCode.
+    Informed by Bedia et al,
+    https://doi.org/10.1016/j.envsoft.2019.07.005, but adjusted for more
+    generality.
 
     """,
     designing.EnsembleTypes: """
-        Defines the various axes along which one can set up an ensemble, whether
-     as an experiment designer, or in designing a 'response' ensemble around an
-     experiment.
+        Defines the various axes along which one can set up an ensemble,
+    whether as an experiment designer, or in designing a 'response'
+    ensemble around an experiment.
 
     """,
     designing.ExperimentalRelationships: """
@@ -9318,11 +10969,13 @@ http://www.geosci-model-dev-discuss.net/gmd-2016-197/)
 
     """,
     designing.ForcingTypes: """
-        Defines the possible set of forcing types for a forcing constraint.
+        Defines the possible set of forcing types for a forcing
+    constraint.
 
     """,
     designing.NumericalRequirementScope: """
-        The scope to which a numerical requirement may or may not apply.
+        The scope to which a numerical requirement may or may not
+    apply.
 
     """,
     drs.DrsFrequencyTypes: """
@@ -9330,7 +10983,8 @@ http://www.geosci-model-dev-discuss.net/gmd-2016-197/)
 
     """,
     drs.DrsGeographicalOperators: """
-        Set of permitted spatial averaging operator suffixes for drs spatial indicators (yyyy-zzzz).
+        Set of permitted spatial averaging operator suffixes for drs
+    spatial indicators (yyyy-zzzz).
 
     """,
     drs.DrsRealms: """
@@ -9338,24 +10992,44 @@ http://www.geosci-model-dev-discuss.net/gmd-2016-197/)
 
     """,
     drs.DrsTimeSuffixes: """
-        Set of permitted time averaging suffixes for drs temporal identifiers.
+        Set of permitted time averaging suffixes for drs temporal
+    identifiers.
+
+    """,
+    iso.DqEvaluationResultType: """
+        Classifier of evaluation results.
+
+    """,
+    iso.DsInitiativeTypecode: """
+        Classifier of initiative, to inform ISO19115 metadata.
+
+    Formally a DS_InitiativeTypeCode, from ISO19115_2011.
+
+    """,
+    iso.MdCellgeometryCode: """
+        Classifier of cells.
+
+    Whether a grid point is point or area.
+
+    """,
+    iso.MdProgressCode: """
+        Classifier of project or dataset progress.
 
     """,
     platform.StorageSystems: """
-        Controlled vocabulary for storage  types (including filesystems).
-
-    """,
-    platform.VolumeUnits: """
-        Appropriate storage volume units.
+        Controlled vocabulary for storage types (including
+    filesystems).
 
     """,
     science.ModelTypes: """
-        Defines a set of gross model classes.
+        Defines a set of model types relevant to weather, climate, and
+    earth system modelling.
 
     """,
     shared.NilReason: """
-        Provides an enumeration of possible reasons why a property has not been defined
-    Based on GML nilReason as discussed here: https://www.seegrid.csiro.au/wiki/AppSchemas/NilValues.
+        Provides an enumeration of possible reasons why a property has
+    not been defined Based on GML nilReason as discussed here:
+    https://www.seegrid.csiro.au/wiki/AppSchemas/NilValues.
 
     """,
     shared.QualityStatus: """
@@ -9363,12 +11037,17 @@ http://www.geosci-model-dev-discuss.net/gmd-2016-197/)
 
     """,
     shared.RoleCode: """
-        Responsibility role codes: roles that a party may play in delivering a responsibility.
+        Responsibility role codes: roles that a party may play in
+    delivering a responsibility.
+
+    This is an extension and modification of CI_RoleCode from ISO19115.
 
     """,
     shared.TextBlobEncoding: """
-        Types of text understood by the CIM notebook. Currently only
-    plaintext, but we expect safe HTML to be supported as soon as practicable.
+        Types of text understood by the CIM notebook.
+
+    Currently only plaintext, but we expect safe HTML to be supported as
+    soon as practicable.
 
     """,
     software.CouplingFramework: """
@@ -9376,8 +11055,8 @@ http://www.geosci-model-dev-discuss.net/gmd-2016-197/)
 
     """,
     software.ProgrammingLanguage: """
-        The set of terms which define programming languages used for earth
-    system simulation.
+        The set of terms which define programming languages used for
+    earth system simulation.
 
     """,
     time.CalendarTypes: """
@@ -9389,7 +11068,8 @@ http://www.geosci-model-dev-discuss.net/gmd-2016-197/)
 
     """,
     time.TimeUnits: """
-        Appropriate Time units for experiment durations in NWP and Climate Modelling.
+        Appropriate Time units for experiment durations in NWP and
+    Climate Modelling.
 
     """,
 
@@ -9405,12 +11085,28 @@ http://www.geosci-model-dev-discuss.net/gmd-2016-197/)
         "Simulation (or ensemble) was unable to conform to requirement",
     (activity.ConformanceType, 'Not Applicable'):
         "Requirement is not relevant",
-    (data.DataAssociationTypes, 'revisonOf'):
-        "This dataset was revised from the target",
-    (data.DataAssociationTypes, 'partOf'):
-        "This dataset forms part of the target",
-    (data.DataAssociationTypes, 'isComposedOf'):
-        "This dataset is composed from the target",
+    (data.DatasetType, 'reanalysis'):
+        "Hindcast which includes observations via data assimilation",
+    (data.DatasetType, 'analysis'):
+        "Product of manipulation of multiple input datasets",
+    (data.DatasetType, 'forecast'):
+        "Representation of a future real time predicted from a specific initial condition",
+    (data.DatasetType, 'hindcast'):
+        "Representation of a past real time predicted from a specific initial condition",
+    (data.DatasetType, 'projection'):
+        "Representation a possible future given initial conditions and assumptions",
+    (data.DatasetType, 'representation'):
+        "Simulation of a particular object or process",
+    (data.DatasetType, 'observation'):
+        "Constructed from observations or measurements alone",
+    (data.DatasetType, 'dump'):
+        "Raw computer output intended for re-use within or by originating software",
+    (data.DatasetType, 'modified'):
+        "Modified representation of another dataset (e.g. regridded)",
+    (data.DatasetType, 'unphysical'):
+        "Not intended for comparison with the real world (e.g. as part of a sensitivity study)",
+    (data.DatasetType, 'downscaled'):
+        "Dataset was downscaled by embedded simulation within driving data at larger scale",
     (designing.EnsembleTypes, 'Perturbed Physics'):
         "Members differ in some aspects of their physics.",
     (designing.EnsembleTypes, 'Initialisation Method'):
@@ -9503,6 +11199,60 @@ http://www.geosci-model-dev-discuss.net/gmd-2016-197/)
         "Indicates data is a single average of DRS frequency data across temporal period N1-N2",
     (drs.DrsTimeSuffixes, 'clim'):
         "Indicates data is climatological average data at the DRS frequency from the period N1-N2",
+    (iso.DqEvaluationResultType, 'plot'):
+        "Diagnostic plot, use mime-type to identify what kind of image format is used",
+    (iso.DqEvaluationResultType, 'document'):
+        "Document of some form, use mime-type to identify if PDF etc",
+    (iso.DqEvaluationResultType, 'dataset'):
+        "Expect a binary target, accessible via a landing page or directly",
+    (iso.DsInitiativeTypecode, 'campaign'):
+        "series of organized planned actions",
+    (iso.DsInitiativeTypecode, 'collection'):
+        "accumulation of datasets assembled for a specific purpose",
+    (iso.DsInitiativeTypecode, 'exercise'):
+        "specific performance of a function or group of functions",
+    (iso.DsInitiativeTypecode, 'experiment'):
+        "process designed to find if something is effective or valid",
+    (iso.DsInitiativeTypecode, 'investigation'):
+        "search or systematic inquiry",
+    (iso.DsInitiativeTypecode, 'mission'):
+        "specific operation of a data collection system",
+    (iso.DsInitiativeTypecode, 'sensor'):
+        "device or piece of equipment which detects or records",
+    (iso.DsInitiativeTypecode, 'operation'):
+        "action that is part of a series of actions",
+    (iso.DsInitiativeTypecode, 'platform'):
+        "vehicle or other support base that holds a sensor",
+    (iso.DsInitiativeTypecode, 'process'):
+        "method of doing something involving a number of steps",
+    (iso.DsInitiativeTypecode, 'program'):
+        "specific planned activity",
+    (iso.DsInitiativeTypecode, 'project'):
+        "organized undertaking, research, or development",
+    (iso.DsInitiativeTypecode, 'study'):
+        "examination or investigation",
+    (iso.DsInitiativeTypecode, 'task'):
+        "piece of work",
+    (iso.DsInitiativeTypecode, 'trial'):
+        "process of testing to discover or demonstrate something",
+    (iso.MdCellgeometryCode, 'point'):
+        "each cell represents a point",
+    (iso.MdCellgeometryCode, 'area'):
+        "each cell represents an area",
+    (iso.MdProgressCode, 'completed'):
+        "production of the data has been completed",
+    (iso.MdProgressCode, 'historicalArchive'):
+        "data has been stored in an offline storage facility",
+    (iso.MdProgressCode, 'obsolete'):
+        "data is no longer relevant",
+    (iso.MdProgressCode, 'onGoing'):
+        "data is continually being updated",
+    (iso.MdProgressCode, 'planned'):
+        "fixed date has been established upon or by which the data will be created or updated",
+    (iso.MdProgressCode, 'required'):
+        "updated",
+    (iso.MdProgressCode, 'underDevelopment'):
+        "data is currently in the process of being created",
     (platform.StorageSystems, 'Lustre'):
         "Lustre parallel file system",
     (platform.StorageSystems, 'GPFS'):
@@ -9525,20 +11275,6 @@ http://www.geosci-model-dev-discuss.net/gmd-2016-197/)
         "Tape storage sytsem using CERN Castor",
     (platform.StorageSystems, 'Tape - Other'):
         "Other tape based system",
-    (platform.VolumeUnits, 'GB'):
-        "Gigabytes (1000^3)",
-    (platform.VolumeUnits, 'TB'):
-        "Terabytes (1000^4)",
-    (platform.VolumeUnits, 'PB'):
-        "Petabytes (1000^5)",
-    (platform.VolumeUnits, 'EB'):
-        "Exabytes (1000^6)",
-    (platform.VolumeUnits, 'TiB'):
-        "Tebibytes (1024^4)",
-    (platform.VolumeUnits, 'PiB'):
-        "Pebibytes (1024^5)",
-    (platform.VolumeUnits, 'EiB'):
-        "Exbibytes (1024^6)",
     (science.ModelTypes, 'Atm Only'):
         "Atmosphere Only",
     (science.ModelTypes, 'Ocean Only'):
@@ -9546,7 +11282,7 @@ http://www.geosci-model-dev-discuss.net/gmd-2016-197/)
     (science.ModelTypes, 'Regional'):
         "Regional Model",
     (science.ModelTypes, 'ESM'):
-        "Earth System Model (Atmosphere, Ocean, Land, Sea-ice and cycles)",
+        "Earth System Model (Atmosphere, Ocean, Land, carbon cycle)",
     (science.ModelTypes, 'GCM'):
         "Global Climate Model (Atmosphere, Ocean, no carbon cycle)",
     (science.ModelTypes, 'IGCM'):
@@ -9555,10 +11291,22 @@ http://www.geosci-model-dev-discuss.net/gmd-2016-197/)
         "GCM with mixed layer ocean",
     (science.ModelTypes, 'Mesoscale'):
         "Mesoscale Model",
-    (science.ModelTypes, 'Process'):
+    (science.ModelTypes, 'ProcessLA'):
         "Limited Area process model",
+    (science.ModelTypes, 'DynamicalCore'):
+        "Dynamical Core only",
+    (science.ModelTypes, 'Statistical'):
+        "Derived from statistics",
+    (science.ModelTypes, 'ML Inference'):
+        "Model is trained from data",
+    (science.ModelTypes, 'Re-Analysis'):
+        "Model includes active data-assimilation beyond initialisation",
     (science.ModelTypes, 'Planetary'):
         "Non-Earth model",
+    (science.ModelTypes, 'Process'):
+        "Specific process or parameterisation in column mode",
+    (science.ModelTypes, 'Other'):
+        "A numerical model not covered above",
     (shared.NilReason, 'nil:inapplicable'):
         "There is no value",
     (shared.NilReason, 'nil:missing'):
@@ -9626,9 +11374,11 @@ http://www.geosci-model-dev-discuss.net/gmd-2016-197/)
     (software.ProgrammingLanguage, 'Fortran'):
         "Fortran Programming Language",
     (software.ProgrammingLanguage, 'C'):
-        "C Programmming Language",
+        "C Programming Language",
     (software.ProgrammingLanguage, 'C++'):
         "C++ Programming Language",
+    (software.ProgrammingLanguage, 'Julia'):
+        "Julia Programming Language",
     (software.ProgrammingLanguage, 'Python'):
         "Python Programming Language",
     (time.CalendarTypes, 'gregorian'):
@@ -9653,9 +11403,9 @@ http://www.geosci-model-dev-discuss.net/gmd-2016-197/)
         "Perpetual time axis",
     (time.PeriodDateTypes, 'unused'):
         "Date is not used",
-    (time.PeriodDateTypes, 'date is start'):
+    (time.PeriodDateTypes, 'from'):
         "The date defines the start of the period",
-    (time.PeriodDateTypes, 'date is end'):
+    (time.PeriodDateTypes, 'to'):
         "The date is the end of the period",
     (time.TimeUnits, 'years'):
         "Years in current calendar",
@@ -9678,9 +11428,11 @@ KEYS = {
     # ------------------------------------------------
 
     activity: "cim.2.activity",
+    cmip: "cim.2.cmip",
     data: "cim.2.data",
     designing: "cim.2.designing",
     drs: "cim.2.drs",
+    iso: "cim.2.iso",
     platform: "cim.2.platform",
     science: "cim.2.science",
     shared: "cim.2.shared",
@@ -9693,18 +11445,16 @@ KEYS = {
 
     activity.Activity: "cim.2.activity.Activity",
     activity.AxisMember: "cim.2.activity.AxisMember",
+    activity.ChildSimulation: "cim.2.activity.ChildSimulation",
     activity.Conformance: "cim.2.activity.Conformance",
     activity.Ensemble: "cim.2.activity.Ensemble",
     activity.EnsembleAxis: "cim.2.activity.EnsembleAxis",
-    activity.EnsembleMember: "cim.2.activity.EnsembleMember",
-    activity.ParentSimulation: "cim.2.activity.ParentSimulation",
+    activity.Simulation: "cim.2.activity.Simulation",
     activity.UberEnsemble: "cim.2.activity.UberEnsemble",
+    cmip.CmipDataset: "cim.2.cmip.CmipDataset",
+    cmip.CmipSimulation: "cim.2.cmip.CmipSimulation",
     data.Dataset: "cim.2.data.Dataset",
-    data.Downscaling: "cim.2.data.Downscaling",
-    data.InputDataset: "cim.2.data.InputDataset",
-    data.Simulation: "cim.2.data.Simulation",
     data.VariableCollection: "cim.2.data.VariableCollection",
-    designing.AxisMember: "cim.2.designing.AxisMember",
     designing.DomainRequirements: "cim.2.designing.DomainRequirements",
     designing.EnsembleRequirement: "cim.2.designing.EnsembleRequirement",
     designing.ForcingConstraint: "cim.2.designing.ForcingConstraint",
@@ -9712,6 +11462,7 @@ KEYS = {
     designing.MultiEnsemble: "cim.2.designing.MultiEnsemble",
     designing.NumericalExperiment: "cim.2.designing.NumericalExperiment",
     designing.NumericalRequirement: "cim.2.designing.NumericalRequirement",
+    designing.Objective: "cim.2.designing.Objective",
     designing.OutputRequirement: "cim.2.designing.OutputRequirement",
     designing.Project: "cim.2.designing.Project",
     designing.SimulationPlan: "cim.2.designing.SimulationPlan",
@@ -9724,13 +11475,24 @@ KEYS = {
     drs.DrsPublicationDataset: "cim.2.drs.DrsPublicationDataset",
     drs.DrsSimulationIdentifier: "cim.2.drs.DrsSimulationIdentifier",
     drs.DrsTemporalIdentifier: "cim.2.drs.DrsTemporalIdentifier",
-    platform.ComponentPerformance: "cim.2.platform.ComponentPerformance",
+    iso.Algorithm: "cim.2.iso.Algorithm",
+    iso.Lineage: "cim.2.iso.Lineage",
+    iso.ProcessStep: "cim.2.iso.ProcessStep",
+    iso.ProcessStepReport: "cim.2.iso.ProcessStepReport",
+    iso.Processing: "cim.2.iso.Processing",
+    iso.QualityEvaluationOutput: "cim.2.iso.QualityEvaluationOutput",
+    iso.QualityEvaluationResult: "cim.2.iso.QualityEvaluationResult",
+    iso.QualityIssue: "cim.2.iso.QualityIssue",
+    iso.QualityReport: "cim.2.iso.QualityReport",
     platform.ComputePool: "cim.2.platform.ComputePool",
+    platform.Interconnect: "cim.2.platform.Interconnect",
     platform.Machine: "cim.2.platform.Machine",
+    platform.Nic: "cim.2.platform.Nic",
     platform.Partition: "cim.2.platform.Partition",
     platform.Performance: "cim.2.platform.Performance",
+    platform.PerformanceDetail: "cim.2.platform.PerformanceDetail",
+    platform.ProjectCost: "cim.2.platform.ProjectCost",
     platform.StoragePool: "cim.2.platform.StoragePool",
-    platform.StorageVolume: "cim.2.platform.StorageVolume",
     science.Model: "cim.2.science.Model",
     science.Realm: "cim.2.science.Realm",
     science.RealmCoupling: "cim.2.science.RealmCoupling",
@@ -9741,6 +11503,8 @@ KEYS = {
     shared.DocMetaInfo: "cim.2.shared.DocMetaInfo",
     shared.DocReference: "cim.2.shared.DocReference",
     shared.ExtraAttribute: "cim.2.shared.ExtraAttribute",
+    shared.FormalAssociation: "cim.2.shared.FormalAssociation",
+    shared.Numeric: "cim.2.shared.Numeric",
     shared.OnlineResource: "cim.2.shared.OnlineResource",
     shared.Party: "cim.2.shared.Party",
     shared.QualityReview: "cim.2.shared.QualityReview",
@@ -9778,11 +11542,16 @@ KEYS = {
     (activity.Activity, 'previously_known_as'): "cim.2.activity.Activity.previously_known_as",
     (activity.Activity, 'rationale'): "cim.2.activity.Activity.rationale",
     (activity.Activity, 'responsible_parties'): "cim.2.activity.Activity.responsible_parties",
+    (activity.AxisMember, 'axis'): "cim.2.activity.AxisMember.axis",
+    (activity.AxisMember, 'conformance'): "cim.2.activity.AxisMember.conformance",
     (activity.AxisMember, 'description'): "cim.2.activity.AxisMember.description",
     (activity.AxisMember, 'extra_detail'): "cim.2.activity.AxisMember.extra_detail",
     (activity.AxisMember, 'index'): "cim.2.activity.AxisMember.index",
-    (activity.AxisMember, 'target_requirement'): "cim.2.activity.AxisMember.target_requirement",
     (activity.AxisMember, 'value'): "cim.2.activity.AxisMember.value",
+    (activity.ChildSimulation, 'branch_method'): "cim.2.activity.ChildSimulation.branch_method",
+    (activity.ChildSimulation, 'branch_time_in_child'): "cim.2.activity.ChildSimulation.branch_time_in_child",
+    (activity.ChildSimulation, 'branch_time_in_parent'): "cim.2.activity.ChildSimulation.branch_time_in_parent",
+    (activity.ChildSimulation, 'parent'): "cim.2.activity.ChildSimulation.parent",
     (activity.Conformance, 'conformance_achieved'): "cim.2.activity.Conformance.conformance_achieved",
     (activity.Conformance, 'datasets'): "cim.2.activity.Conformance.datasets",
     (activity.Conformance, 'models'): "cim.2.activity.Conformance.models",
@@ -9795,48 +11564,54 @@ KEYS = {
     (activity.Ensemble, 'representative_performance'): "cim.2.activity.Ensemble.representative_performance",
     (activity.Ensemble, 'uber_ensembles'): "cim.2.activity.Ensemble.uber_ensembles",
     (activity.EnsembleAxis, 'extra_detail'): "cim.2.activity.EnsembleAxis.extra_detail",
-    (activity.EnsembleAxis, 'member'): "cim.2.activity.EnsembleAxis.member",
+    (activity.EnsembleAxis, 'members'): "cim.2.activity.EnsembleAxis.members",
+    (activity.EnsembleAxis, 'meta'): "cim.2.activity.EnsembleAxis.meta",
+    (activity.EnsembleAxis, 'name'): "cim.2.activity.EnsembleAxis.name",
     (activity.EnsembleAxis, 'short_identifier'): "cim.2.activity.EnsembleAxis.short_identifier",
     (activity.EnsembleAxis, 'target_requirement'): "cim.2.activity.EnsembleAxis.target_requirement",
-    (activity.EnsembleMember, 'errata'): "cim.2.activity.EnsembleMember.errata",
-    (activity.EnsembleMember, 'had_performance'): "cim.2.activity.EnsembleMember.had_performance",
-    (activity.EnsembleMember, 'ran_on'): "cim.2.activity.EnsembleMember.ran_on",
-    (activity.EnsembleMember, 'simulation'): "cim.2.activity.EnsembleMember.simulation",
-    (activity.ParentSimulation, 'branch_method'): "cim.2.activity.ParentSimulation.branch_method",
-    (activity.ParentSimulation, 'branch_time_in_child'): "cim.2.activity.ParentSimulation.branch_time_in_child",
-    (activity.ParentSimulation, 'branch_time_in_parent'): "cim.2.activity.ParentSimulation.branch_time_in_parent",
-    (activity.ParentSimulation, 'parent'): "cim.2.activity.ParentSimulation.parent",
+    (activity.Simulation, 'calendar'): "cim.2.activity.Simulation.calendar",
+    (activity.Simulation, 'documentation'): "cim.2.activity.Simulation.documentation",
+    (activity.Simulation, 'end_time'): "cim.2.activity.Simulation.end_time",
+    (activity.Simulation, 'ensemble_id'): "cim.2.activity.Simulation.ensemble_id",
+    (activity.Simulation, 'errata'): "cim.2.activity.Simulation.errata",
+    (activity.Simulation, 'extra_attributes'): "cim.2.activity.Simulation.extra_attributes",
+    (activity.Simulation, 'had_performance'): "cim.2.activity.Simulation.had_performance",
+    (activity.Simulation, 'institution'): "cim.2.activity.Simulation.institution",
+    (activity.Simulation, 'meta'): "cim.2.activity.Simulation.meta",
+    (activity.Simulation, 'parent_of'): "cim.2.activity.Simulation.parent_of",
+    (activity.Simulation, 'part_of_project'): "cim.2.activity.Simulation.part_of_project",
+    (activity.Simulation, 'primary_ensemble'): "cim.2.activity.Simulation.primary_ensemble",
+    (activity.Simulation, 'produced'): "cim.2.activity.Simulation.produced",
+    (activity.Simulation, 'ran_for_experiments'): "cim.2.activity.Simulation.ran_for_experiments",
+    (activity.Simulation, 'ran_on'): "cim.2.activity.Simulation.ran_on",
+    (activity.Simulation, 'start_time'): "cim.2.activity.Simulation.start_time",
+    (activity.Simulation, 'sub_experiment'): "cim.2.activity.Simulation.sub_experiment",
+    (activity.Simulation, 'used'): "cim.2.activity.Simulation.used",
     (activity.UberEnsemble, 'child_ensembles'): "cim.2.activity.UberEnsemble.child_ensembles",
+    (cmip.CmipDataset, 'drs_location'): "cim.2.cmip.CmipDataset.drs_location",
+    (cmip.CmipDataset, 'meta'): "cim.2.cmip.CmipDataset.meta",
+    (cmip.CmipDataset, 'originating_simulation'): "cim.2.cmip.CmipDataset.originating_simulation",
+    (cmip.CmipSimulation, 'forcing_index'): "cim.2.cmip.CmipSimulation.forcing_index",
+    (cmip.CmipSimulation, 'initialization_index'): "cim.2.cmip.CmipSimulation.initialization_index",
+    (cmip.CmipSimulation, 'meta'): "cim.2.cmip.CmipSimulation.meta",
+    (cmip.CmipSimulation, 'physics_index'): "cim.2.cmip.CmipSimulation.physics_index",
+    (cmip.CmipSimulation, 'realization_index'): "cim.2.cmip.CmipSimulation.realization_index",
+    (cmip.CmipSimulation, 'variant_info'): "cim.2.cmip.CmipSimulation.variant_info",
     (data.Dataset, 'availability'): "cim.2.data.Dataset.availability",
     (data.Dataset, 'citations'): "cim.2.data.Dataset.citations",
+    (data.Dataset, 'contains'): "cim.2.data.Dataset.contains",
     (data.Dataset, 'description'): "cim.2.data.Dataset.description",
-    (data.Dataset, 'drs_datasets'): "cim.2.data.Dataset.drs_datasets",
+    (data.Dataset, 'further_attributes'): "cim.2.data.Dataset.further_attributes",
+    (data.Dataset, 'keywords'): "cim.2.data.Dataset.keywords",
+    (data.Dataset, 'lineage'): "cim.2.data.Dataset.lineage",
     (data.Dataset, 'meta'): "cim.2.data.Dataset.meta",
     (data.Dataset, 'name'): "cim.2.data.Dataset.name",
-    (data.Dataset, 'produced_by'): "cim.2.data.Dataset.produced_by",
+    (data.Dataset, 'progress'): "cim.2.data.Dataset.progress",
     (data.Dataset, 'related_to_dataset'): "cim.2.data.Dataset.related_to_dataset",
     (data.Dataset, 'responsible_parties'): "cim.2.data.Dataset.responsible_parties",
-    (data.Downscaling, 'downscaled_from'): "cim.2.data.Downscaling.downscaled_from",
-    (data.InputDataset, 'modifications_applied'): "cim.2.data.InputDataset.modifications_applied",
-    (data.InputDataset, 'original_data'): "cim.2.data.InputDataset.original_data",
-    (data.Simulation, 'calendar'): "cim.2.data.Simulation.calendar",
-    (data.Simulation, 'end_time'): "cim.2.data.Simulation.end_time",
-    (data.Simulation, 'extra_attributes'): "cim.2.data.Simulation.extra_attributes",
-    (data.Simulation, 'forcing_index'): "cim.2.data.Simulation.forcing_index",
-    (data.Simulation, 'further_info_url'): "cim.2.data.Simulation.further_info_url",
-    (data.Simulation, 'initialization_index'): "cim.2.data.Simulation.initialization_index",
-    (data.Simulation, 'insitution'): "cim.2.data.Simulation.insitution",
-    (data.Simulation, 'parent_simulation'): "cim.2.data.Simulation.parent_simulation",
-    (data.Simulation, 'part_of_project'): "cim.2.data.Simulation.part_of_project",
-    (data.Simulation, 'physics_index'): "cim.2.data.Simulation.physics_index",
-    (data.Simulation, 'primary_ensemble'): "cim.2.data.Simulation.primary_ensemble",
-    (data.Simulation, 'ran_for_experiments'): "cim.2.data.Simulation.ran_for_experiments",
-    (data.Simulation, 'realization_index'): "cim.2.data.Simulation.realization_index",
-    (data.Simulation, 'start_time'): "cim.2.data.Simulation.start_time",
-    (data.Simulation, 'sub_experiment'): "cim.2.data.Simulation.sub_experiment",
-    (data.Simulation, 'used'): "cim.2.data.Simulation.used",
-    (data.Simulation, 'variant_info'): "cim.2.data.Simulation.variant_info",
+    (data.Dataset, 'type'): "cim.2.data.Dataset.type",
     (data.VariableCollection, 'collection_name'): "cim.2.data.VariableCollection.collection_name",
+    (data.VariableCollection, 'geometry'): "cim.2.data.VariableCollection.geometry",
     (data.VariableCollection, 'variables'): "cim.2.data.VariableCollection.variables",
     (designing.DomainRequirements, 'required_extent'): "cim.2.designing.DomainRequirements.required_extent",
     (designing.DomainRequirements, 'required_resolution'): "cim.2.designing.DomainRequirements.required_resolution",
@@ -9857,6 +11632,7 @@ KEYS = {
     (designing.NumericalExperiment, 'governing_mips'): "cim.2.designing.NumericalExperiment.governing_mips",
     (designing.NumericalExperiment, 'related_experiments'): "cim.2.designing.NumericalExperiment.related_experiments",
     (designing.NumericalExperiment, 'related_mips'): "cim.2.designing.NumericalExperiment.related_mips",
+    (designing.NumericalExperiment, 'related_objectives'): "cim.2.designing.NumericalExperiment.related_objectives",
     (designing.NumericalExperiment, 'required_period'): "cim.2.designing.NumericalExperiment.required_period",
     (designing.NumericalExperiment, 'requirements'): "cim.2.designing.NumericalExperiment.requirements",
     (designing.NumericalExperiment, 'tier'): "cim.2.designing.NumericalExperiment.tier",
@@ -9864,6 +11640,11 @@ KEYS = {
     (designing.NumericalRequirement, 'is_conformance_info_required'): "cim.2.designing.NumericalRequirement.is_conformance_info_required",
     (designing.NumericalRequirement, 'is_conformance_requested'): "cim.2.designing.NumericalRequirement.is_conformance_requested",
     (designing.NumericalRequirement, 'scope'): "cim.2.designing.NumericalRequirement.scope",
+    (designing.Objective, 'description'): "cim.2.designing.Objective.description",
+    (designing.Objective, 'identifier'): "cim.2.designing.Objective.identifier",
+    (designing.Objective, 'meta'): "cim.2.designing.Objective.meta",
+    (designing.Objective, 'name'): "cim.2.designing.Objective.name",
+    (designing.Objective, 'required_outputs'): "cim.2.designing.Objective.required_outputs",
     (designing.OutputRequirement, 'formal_data_request'): "cim.2.designing.OutputRequirement.formal_data_request",
     (designing.Project, 'governed_experiments'): "cim.2.designing.Project.governed_experiments",
     (designing.Project, 'homepage'): "cim.2.designing.Project.homepage",
@@ -9903,7 +11684,47 @@ KEYS = {
     (drs.DrsTemporalIdentifier, 'end'): "cim.2.drs.DrsTemporalIdentifier.end",
     (drs.DrsTemporalIdentifier, 'start'): "cim.2.drs.DrsTemporalIdentifier.start",
     (drs.DrsTemporalIdentifier, 'suffix'): "cim.2.drs.DrsTemporalIdentifier.suffix",
-    (platform.ComponentPerformance, 'component'): "cim.2.platform.ComponentPerformance.component",
+    (iso.Algorithm, 'citation'): "cim.2.iso.Algorithm.citation",
+    (iso.Algorithm, 'description'): "cim.2.iso.Algorithm.description",
+    (iso.Lineage, 'meta'): "cim.2.iso.Lineage.meta",
+    (iso.Lineage, 'process_step'): "cim.2.iso.Lineage.process_step",
+    (iso.Lineage, 'source'): "cim.2.iso.Lineage.source",
+    (iso.Lineage, 'statement'): "cim.2.iso.Lineage.statement",
+    (iso.ProcessStep, 'description'): "cim.2.iso.ProcessStep.description",
+    (iso.ProcessStep, 'execution_date_time'): "cim.2.iso.ProcessStep.execution_date_time",
+    (iso.ProcessStep, 'processing_information'): "cim.2.iso.ProcessStep.processing_information",
+    (iso.ProcessStep, 'processor'): "cim.2.iso.ProcessStep.processor",
+    (iso.ProcessStep, 'rationale'): "cim.2.iso.ProcessStep.rationale",
+    (iso.ProcessStep, 'reference'): "cim.2.iso.ProcessStep.reference",
+    (iso.ProcessStep, 'report'): "cim.2.iso.ProcessStep.report",
+    (iso.ProcessStep, 'source'): "cim.2.iso.ProcessStep.source",
+    (iso.ProcessStepReport, 'description'): "cim.2.iso.ProcessStepReport.description",
+    (iso.ProcessStepReport, 'link'): "cim.2.iso.ProcessStepReport.link",
+    (iso.ProcessStepReport, 'name'): "cim.2.iso.ProcessStepReport.name",
+    (iso.Processing, 'algorithm'): "cim.2.iso.Processing.algorithm",
+    (iso.Processing, 'documentation'): "cim.2.iso.Processing.documentation",
+    (iso.Processing, 'identifier'): "cim.2.iso.Processing.identifier",
+    (iso.Processing, 'name'): "cim.2.iso.Processing.name",
+    (iso.Processing, 'procedure_description'): "cim.2.iso.Processing.procedure_description",
+    (iso.Processing, 'runtime_parameters'): "cim.2.iso.Processing.runtime_parameters",
+    (iso.Processing, 'software_reference'): "cim.2.iso.Processing.software_reference",
+    (iso.QualityEvaluationOutput, 'output_type'): "cim.2.iso.QualityEvaluationOutput.output_type",
+    (iso.QualityEvaluationResult, 'date'): "cim.2.iso.QualityEvaluationResult.date",
+    (iso.QualityEvaluationResult, 'evaluation_procedure'): "cim.2.iso.QualityEvaluationResult.evaluation_procedure",
+    (iso.QualityEvaluationResult, 'evaluator'): "cim.2.iso.QualityEvaluationResult.evaluator",
+    (iso.QualityEvaluationResult, 'name'): "cim.2.iso.QualityEvaluationResult.name",
+    (iso.QualityEvaluationResult, 'passed'): "cim.2.iso.QualityEvaluationResult.passed",
+    (iso.QualityEvaluationResult, 'results'): "cim.2.iso.QualityEvaluationResult.results",
+    (iso.QualityEvaluationResult, 'specification'): "cim.2.iso.QualityEvaluationResult.specification",
+    (iso.QualityEvaluationResult, 'summary_result'): "cim.2.iso.QualityEvaluationResult.summary_result",
+    (iso.QualityIssue, 'description'): "cim.2.iso.QualityIssue.description",
+    (iso.QualityIssue, 'reporter'): "cim.2.iso.QualityIssue.reporter",
+    (iso.QualityIssue, 'summary'): "cim.2.iso.QualityIssue.summary",
+    (iso.QualityIssue, 'tracked_issue'): "cim.2.iso.QualityIssue.tracked_issue",
+    (iso.QualityReport, 'issues'): "cim.2.iso.QualityReport.issues",
+    (iso.QualityReport, 'meta'): "cim.2.iso.QualityReport.meta",
+    (iso.QualityReport, 'reports'): "cim.2.iso.QualityReport.reports",
+    (iso.QualityReport, 'target'): "cim.2.iso.QualityReport.target",
     (platform.ComputePool, 'accelerator_type'): "cim.2.platform.ComputePool.accelerator_type",
     (platform.ComputePool, 'accelerators_per_node'): "cim.2.platform.ComputePool.accelerators_per_node",
     (platform.ComputePool, 'clock_cycle_concurrency'): "cim.2.platform.ComputePool.clock_cycle_concurrency",
@@ -9911,46 +11732,67 @@ KEYS = {
     (platform.ComputePool, 'compute_cores_per_node'): "cim.2.platform.ComputePool.compute_cores_per_node",
     (platform.ComputePool, 'cpu_type'): "cim.2.platform.ComputePool.cpu_type",
     (platform.ComputePool, 'description'): "cim.2.platform.ComputePool.description",
-    (platform.ComputePool, 'interconnect'): "cim.2.platform.ComputePool.interconnect",
     (platform.ComputePool, 'memory_per_node'): "cim.2.platform.ComputePool.memory_per_node",
     (platform.ComputePool, 'model_number'): "cim.2.platform.ComputePool.model_number",
     (platform.ComputePool, 'name'): "cim.2.platform.ComputePool.name",
+    (platform.ComputePool, 'network_cards_per_node'): "cim.2.platform.ComputePool.network_cards_per_node",
     (platform.ComputePool, 'number_of_nodes'): "cim.2.platform.ComputePool.number_of_nodes",
-    (platform.ComputePool, 'operating_system'): "cim.2.platform.ComputePool.operating_system",
+    (platform.ComputePool, 'vendor'): "cim.2.platform.ComputePool.vendor",
+    (platform.Interconnect, 'description'): "cim.2.platform.Interconnect.description",
+    (platform.Interconnect, 'name'): "cim.2.platform.Interconnect.name",
+    (platform.Interconnect, 'topology'): "cim.2.platform.Interconnect.topology",
+    (platform.Interconnect, 'vendor'): "cim.2.platform.Interconnect.vendor",
+    (platform.Machine, 'linpack_performance'): "cim.2.platform.Machine.linpack_performance",
     (platform.Machine, 'meta'): "cim.2.platform.Machine.meta",
+    (platform.Machine, 'peak_performance'): "cim.2.platform.Machine.peak_performance",
+    (platform.Nic, 'bandwidth'): "cim.2.platform.Nic.bandwidth",
+    (platform.Nic, 'name'): "cim.2.platform.Nic.name",
+    (platform.Nic, 'vendor'): "cim.2.platform.Nic.vendor",
     (platform.Partition, 'compute_pools'): "cim.2.platform.Partition.compute_pools",
     (platform.Partition, 'description'): "cim.2.platform.Partition.description",
     (platform.Partition, 'institution'): "cim.2.platform.Partition.institution",
+    (platform.Partition, 'interconnect'): "cim.2.platform.Partition.interconnect",
     (platform.Partition, 'model_number'): "cim.2.platform.Partition.model_number",
     (platform.Partition, 'name'): "cim.2.platform.Partition.name",
     (platform.Partition, 'online_documentation'): "cim.2.platform.Partition.online_documentation",
+    (platform.Partition, 'operating_system'): "cim.2.platform.Partition.operating_system",
     (platform.Partition, 'partition'): "cim.2.platform.Partition.partition",
     (platform.Partition, 'storage_pools'): "cim.2.platform.Partition.storage_pools",
     (platform.Partition, 'vendor'): "cim.2.platform.Partition.vendor",
-    (platform.Partition, 'when_used'): "cim.2.platform.Partition.when_used",
+    (platform.Partition, 'when_available'): "cim.2.platform.Partition.when_available",
     (platform.Performance, 'actual_simulated_years_per_day'): "cim.2.platform.Performance.actual_simulated_years_per_day",
     (platform.Performance, 'compiler'): "cim.2.platform.Performance.compiler",
     (platform.Performance, 'complexity'): "cim.2.platform.Performance.complexity",
     (platform.Performance, 'core_hours_per_simulated_year'): "cim.2.platform.Performance.core_hours_per_simulated_year",
-    (platform.Performance, 'coupling_cost'): "cim.2.platform.Performance.coupling_cost",
-    (platform.Performance, 'data_intensity'): "cim.2.platform.Performance.data_intensity",
-    (platform.Performance, 'data_output_cost'): "cim.2.platform.Performance.data_output_cost",
+    (platform.Performance, 'further_detail'): "cim.2.platform.Performance.further_detail",
     (platform.Performance, 'joules_per_simulated_year'): "cim.2.platform.Performance.joules_per_simulated_year",
-    (platform.Performance, 'memory_bloat'): "cim.2.platform.Performance.memory_bloat",
     (platform.Performance, 'meta'): "cim.2.platform.Performance.meta",
     (platform.Performance, 'model'): "cim.2.platform.Performance.model",
     (platform.Performance, 'name'): "cim.2.platform.Performance.name",
-    (platform.Performance, 'parallelization'): "cim.2.platform.Performance.parallelization",
+    (platform.Performance, 'parallelisation'): "cim.2.platform.Performance.parallelisation",
     (platform.Performance, 'platform'): "cim.2.platform.Performance.platform",
     (platform.Performance, 'resolution'): "cim.2.platform.Performance.resolution",
     (platform.Performance, 'simulated_years_per_day'): "cim.2.platform.Performance.simulated_years_per_day",
     (platform.Performance, 'subcomponent_performance'): "cim.2.platform.Performance.subcomponent_performance",
+    (platform.PerformanceDetail, 'coupling_cost'): "cim.2.platform.PerformanceDetail.coupling_cost",
+    (platform.PerformanceDetail, 'data_intensity'): "cim.2.platform.PerformanceDetail.data_intensity",
+    (platform.PerformanceDetail, 'data_output_cost'): "cim.2.platform.PerformanceDetail.data_output_cost",
+    (platform.PerformanceDetail, 'memory_bloat'): "cim.2.platform.PerformanceDetail.memory_bloat",
+    (platform.ProjectCost, 'activity'): "cim.2.platform.ProjectCost.activity",
+    (platform.ProjectCost, 'actual_years'): "cim.2.platform.ProjectCost.actual_years",
+    (platform.ProjectCost, 'meta'): "cim.2.platform.ProjectCost.meta",
+    (platform.ProjectCost, 'peak_data'): "cim.2.platform.ProjectCost.peak_data",
+    (platform.ProjectCost, 'platform'): "cim.2.platform.ProjectCost.platform",
+    (platform.ProjectCost, 'total_core_hours'): "cim.2.platform.ProjectCost.total_core_hours",
+    (platform.ProjectCost, 'total_energy_cost'): "cim.2.platform.ProjectCost.total_energy_cost",
+    (platform.ProjectCost, 'useful_core_hours'): "cim.2.platform.ProjectCost.useful_core_hours",
+    (platform.ProjectCost, 'useful_data'): "cim.2.platform.ProjectCost.useful_data",
+    (platform.ProjectCost, 'useful_years'): "cim.2.platform.ProjectCost.useful_years",
     (platform.StoragePool, 'description'): "cim.2.platform.StoragePool.description",
+    (platform.StoragePool, 'file_system_sizes'): "cim.2.platform.StoragePool.file_system_sizes",
     (platform.StoragePool, 'name'): "cim.2.platform.StoragePool.name",
     (platform.StoragePool, 'type'): "cim.2.platform.StoragePool.type",
     (platform.StoragePool, 'vendor'): "cim.2.platform.StoragePool.vendor",
-    (platform.StorageVolume, 'units'): "cim.2.platform.StorageVolume.units",
-    (platform.StorageVolume, 'volume'): "cim.2.platform.StorageVolume.volume",
     (science.Model, 'activity_properties'): "cim.2.science.Model.activity_properties",
     (science.Model, 'coupled_components'): "cim.2.science.Model.coupled_components",
     (science.Model, 'coupler'): "cim.2.science.Model.coupler",
@@ -9992,6 +11834,8 @@ KEYS = {
     (science.TopicPropertySet, 'properties'): "cim.2.science.TopicPropertySet.properties",
     (science.TopicPropertySet, 'specialization_id'): "cim.2.science.TopicPropertySet.specialization_id",
     (shared.Citation, 'abstract'): "cim.2.shared.Citation.abstract",
+    (shared.Citation, 'authors'): "cim.2.shared.Citation.authors",
+    (shared.Citation, 'bibtex'): "cim.2.shared.Citation.bibtex",
     (shared.Citation, 'citation_detail'): "cim.2.shared.Citation.citation_detail",
     (shared.Citation, 'collective_title'): "cim.2.shared.Citation.collective_title",
     (shared.Citation, 'context'): "cim.2.shared.Citation.context",
@@ -10000,6 +11844,7 @@ KEYS = {
     (shared.Citation, 'title'): "cim.2.shared.Citation.title",
     (shared.Citation, 'type'): "cim.2.shared.Citation.type",
     (shared.Citation, 'url'): "cim.2.shared.Citation.url",
+    (shared.Citation, 'year'): "cim.2.shared.Citation.year",
     (shared.DocMetaInfo, 'author'): "cim.2.shared.DocMetaInfo.author",
     (shared.DocMetaInfo, 'create_date'): "cim.2.shared.DocMetaInfo.create_date",
     (shared.DocMetaInfo, 'drs_keys'): "cim.2.shared.DocMetaInfo.drs_keys",
@@ -10018,24 +11863,25 @@ KEYS = {
     (shared.DocMetaInfo, 'update_date'): "cim.2.shared.DocMetaInfo.update_date",
     (shared.DocMetaInfo, 'version'): "cim.2.shared.DocMetaInfo.version",
     (shared.DocReference, 'canonical_name'): "cim.2.shared.DocReference.canonical_name",
-    (shared.DocReference, 'constraint_vocabulary'): "cim.2.shared.DocReference.constraint_vocabulary",
     (shared.DocReference, 'context'): "cim.2.shared.DocReference.context",
-    (shared.DocReference, 'description'): "cim.2.shared.DocReference.description",
-    (shared.DocReference, 'external_id'): "cim.2.shared.DocReference.external_id",
     (shared.DocReference, 'further_info'): "cim.2.shared.DocReference.further_info",
     (shared.DocReference, 'id'): "cim.2.shared.DocReference.id",
-    (shared.DocReference, 'institute'): "cim.2.shared.DocReference.institute",
-    (shared.DocReference, 'linkage'): "cim.2.shared.DocReference.linkage",
     (shared.DocReference, 'name'): "cim.2.shared.DocReference.name",
-    (shared.DocReference, 'protocol'): "cim.2.shared.DocReference.protocol",
     (shared.DocReference, 'relationship'): "cim.2.shared.DocReference.relationship",
     (shared.DocReference, 'type'): "cim.2.shared.DocReference.type",
-    (shared.DocReference, 'url'): "cim.2.shared.DocReference.url",
     (shared.DocReference, 'version'): "cim.2.shared.DocReference.version",
     (shared.ExtraAttribute, 'doc'): "cim.2.shared.ExtraAttribute.doc",
     (shared.ExtraAttribute, 'key'): "cim.2.shared.ExtraAttribute.key",
     (shared.ExtraAttribute, 'type'): "cim.2.shared.ExtraAttribute.type",
     (shared.ExtraAttribute, 'value'): "cim.2.shared.ExtraAttribute.value",
+    (shared.FormalAssociation, 'association_id'): "cim.2.shared.FormalAssociation.association_id",
+    (shared.FormalAssociation, 'association_vocabulary'): "cim.2.shared.FormalAssociation.association_vocabulary",
+    (shared.FormalAssociation, 'online_at'): "cim.2.shared.FormalAssociation.online_at",
+    (shared.Numeric, 'base_unit'): "cim.2.shared.Numeric.base_unit",
+    (shared.Numeric, 'unit_enumeration'): "cim.2.shared.Numeric.unit_enumeration",
+    (shared.Numeric, 'unit_source'): "cim.2.shared.Numeric.unit_source",
+    (shared.Numeric, 'units'): "cim.2.shared.Numeric.units",
+    (shared.Numeric, 'value'): "cim.2.shared.Numeric.value",
     (shared.OnlineResource, 'description'): "cim.2.shared.OnlineResource.description",
     (shared.OnlineResource, 'linkage'): "cim.2.shared.OnlineResource.linkage",
     (shared.OnlineResource, 'name'): "cim.2.shared.OnlineResource.name",
@@ -10094,6 +11940,7 @@ KEYS = {
     (software.SoftwareComponent, 'grid'): "cim.2.software.SoftwareComponent.grid",
     (software.SoftwareComponent, 'language'): "cim.2.software.SoftwareComponent.language",
     (software.SoftwareComponent, 'license'): "cim.2.software.SoftwareComponent.license",
+    (software.SoftwareComponent, 'meta'): "cim.2.software.SoftwareComponent.meta",
     (software.SoftwareComponent, 'sub_components'): "cim.2.software.SoftwareComponent.sub_components",
     (software.Variable, 'description'): "cim.2.software.Variable.description",
     (software.Variable, 'is_prognostic'): "cim.2.software.Variable.is_prognostic",
@@ -10120,7 +11967,7 @@ KEYS = {
     # ------------------------------------------------
 
     activity.ConformanceType: "cim.2.activity.ConformanceType",
-    data.DataAssociationTypes: "cim.2.data.DataAssociationTypes",
+    data.DatasetType: "cim.2.data.DatasetType",
     designing.EnsembleTypes: "cim.2.designing.EnsembleTypes",
     designing.ExperimentalRelationships: "cim.2.designing.ExperimentalRelationships",
     designing.ForcingTypes: "cim.2.designing.ForcingTypes",
@@ -10129,8 +11976,11 @@ KEYS = {
     drs.DrsGeographicalOperators: "cim.2.drs.DrsGeographicalOperators",
     drs.DrsRealms: "cim.2.drs.DrsRealms",
     drs.DrsTimeSuffixes: "cim.2.drs.DrsTimeSuffixes",
+    iso.DqEvaluationResultType: "cim.2.iso.DqEvaluationResultType",
+    iso.DsInitiativeTypecode: "cim.2.iso.DsInitiativeTypecode",
+    iso.MdCellgeometryCode: "cim.2.iso.MdCellgeometryCode",
+    iso.MdProgressCode: "cim.2.iso.MdProgressCode",
     platform.StorageSystems: "cim.2.platform.StorageSystems",
-    platform.VolumeUnits: "cim.2.platform.VolumeUnits",
     science.ModelTypes: "cim.2.science.ModelTypes",
     shared.NilReason: "cim.2.shared.NilReason",
     shared.QualityStatus: "cim.2.shared.QualityStatus",
@@ -10150,9 +12000,17 @@ KEYS = {
     (activity.ConformanceType, 'Partially Conformed'): "cim.2.activity.ConformanceType.Partially-Conformed",
     (activity.ConformanceType, 'Not Conformed'): "cim.2.activity.ConformanceType.Not-Conformed",
     (activity.ConformanceType, 'Not Applicable'): "cim.2.activity.ConformanceType.Not-Applicable",
-    (data.DataAssociationTypes, 'revisonOf'): "cim.2.data.DataAssociationTypes.revisonOf",
-    (data.DataAssociationTypes, 'partOf'): "cim.2.data.DataAssociationTypes.partOf",
-    (data.DataAssociationTypes, 'isComposedOf'): "cim.2.data.DataAssociationTypes.isComposedOf",
+    (data.DatasetType, 'reanalysis'): "cim.2.data.DatasetType.reanalysis",
+    (data.DatasetType, 'analysis'): "cim.2.data.DatasetType.analysis",
+    (data.DatasetType, 'forecast'): "cim.2.data.DatasetType.forecast",
+    (data.DatasetType, 'hindcast'): "cim.2.data.DatasetType.hindcast",
+    (data.DatasetType, 'projection'): "cim.2.data.DatasetType.projection",
+    (data.DatasetType, 'representation'): "cim.2.data.DatasetType.representation",
+    (data.DatasetType, 'observation'): "cim.2.data.DatasetType.observation",
+    (data.DatasetType, 'dump'): "cim.2.data.DatasetType.dump",
+    (data.DatasetType, 'modified'): "cim.2.data.DatasetType.modified",
+    (data.DatasetType, 'unphysical'): "cim.2.data.DatasetType.unphysical",
+    (data.DatasetType, 'downscaled'): "cim.2.data.DatasetType.downscaled",
     (designing.EnsembleTypes, 'Perturbed Physics'): "cim.2.designing.EnsembleTypes.Perturbed-Physics",
     (designing.EnsembleTypes, 'Initialisation Method'): "cim.2.designing.EnsembleTypes.Initialisation-Method",
     (designing.EnsembleTypes, 'Realization'): "cim.2.designing.EnsembleTypes.Realization",
@@ -10199,6 +12057,33 @@ KEYS = {
     (drs.DrsRealms, 'ocnBgchem'): "cim.2.drs.DrsRealms.ocnBgchem",
     (drs.DrsTimeSuffixes, 'avg'): "cim.2.drs.DrsTimeSuffixes.avg",
     (drs.DrsTimeSuffixes, 'clim'): "cim.2.drs.DrsTimeSuffixes.clim",
+    (iso.DqEvaluationResultType, 'plot'): "cim.2.iso.DqEvaluationResultType.plot",
+    (iso.DqEvaluationResultType, 'document'): "cim.2.iso.DqEvaluationResultType.document",
+    (iso.DqEvaluationResultType, 'dataset'): "cim.2.iso.DqEvaluationResultType.dataset",
+    (iso.DsInitiativeTypecode, 'campaign'): "cim.2.iso.DsInitiativeTypecode.campaign",
+    (iso.DsInitiativeTypecode, 'collection'): "cim.2.iso.DsInitiativeTypecode.collection",
+    (iso.DsInitiativeTypecode, 'exercise'): "cim.2.iso.DsInitiativeTypecode.exercise",
+    (iso.DsInitiativeTypecode, 'experiment'): "cim.2.iso.DsInitiativeTypecode.experiment",
+    (iso.DsInitiativeTypecode, 'investigation'): "cim.2.iso.DsInitiativeTypecode.investigation",
+    (iso.DsInitiativeTypecode, 'mission'): "cim.2.iso.DsInitiativeTypecode.mission",
+    (iso.DsInitiativeTypecode, 'sensor'): "cim.2.iso.DsInitiativeTypecode.sensor",
+    (iso.DsInitiativeTypecode, 'operation'): "cim.2.iso.DsInitiativeTypecode.operation",
+    (iso.DsInitiativeTypecode, 'platform'): "cim.2.iso.DsInitiativeTypecode.platform",
+    (iso.DsInitiativeTypecode, 'process'): "cim.2.iso.DsInitiativeTypecode.process",
+    (iso.DsInitiativeTypecode, 'program'): "cim.2.iso.DsInitiativeTypecode.program",
+    (iso.DsInitiativeTypecode, 'project'): "cim.2.iso.DsInitiativeTypecode.project",
+    (iso.DsInitiativeTypecode, 'study'): "cim.2.iso.DsInitiativeTypecode.study",
+    (iso.DsInitiativeTypecode, 'task'): "cim.2.iso.DsInitiativeTypecode.task",
+    (iso.DsInitiativeTypecode, 'trial'): "cim.2.iso.DsInitiativeTypecode.trial",
+    (iso.MdCellgeometryCode, 'point'): "cim.2.iso.MdCellgeometryCode.point",
+    (iso.MdCellgeometryCode, 'area'): "cim.2.iso.MdCellgeometryCode.area",
+    (iso.MdProgressCode, 'completed'): "cim.2.iso.MdProgressCode.completed",
+    (iso.MdProgressCode, 'historicalArchive'): "cim.2.iso.MdProgressCode.historicalArchive",
+    (iso.MdProgressCode, 'obsolete'): "cim.2.iso.MdProgressCode.obsolete",
+    (iso.MdProgressCode, 'onGoing'): "cim.2.iso.MdProgressCode.onGoing",
+    (iso.MdProgressCode, 'planned'): "cim.2.iso.MdProgressCode.planned",
+    (iso.MdProgressCode, 'required'): "cim.2.iso.MdProgressCode.required",
+    (iso.MdProgressCode, 'underDevelopment'): "cim.2.iso.MdProgressCode.underDevelopment",
     (platform.StorageSystems, 'Lustre'): "cim.2.platform.StorageSystems.Lustre",
     (platform.StorageSystems, 'GPFS'): "cim.2.platform.StorageSystems.GPFS",
     (platform.StorageSystems, 'isilon'): "cim.2.platform.StorageSystems.isilon",
@@ -10210,13 +12095,6 @@ KEYS = {
     (platform.StorageSystems, 'Tape - MASS'): "cim.2.platform.StorageSystems.Tape---MASS",
     (platform.StorageSystems, 'Tape - Castor'): "cim.2.platform.StorageSystems.Tape---Castor",
     (platform.StorageSystems, 'Tape - Other'): "cim.2.platform.StorageSystems.Tape---Other",
-    (platform.VolumeUnits, 'GB'): "cim.2.platform.VolumeUnits.GB",
-    (platform.VolumeUnits, 'TB'): "cim.2.platform.VolumeUnits.TB",
-    (platform.VolumeUnits, 'PB'): "cim.2.platform.VolumeUnits.PB",
-    (platform.VolumeUnits, 'EB'): "cim.2.platform.VolumeUnits.EB",
-    (platform.VolumeUnits, 'TiB'): "cim.2.platform.VolumeUnits.TiB",
-    (platform.VolumeUnits, 'PiB'): "cim.2.platform.VolumeUnits.PiB",
-    (platform.VolumeUnits, 'EiB'): "cim.2.platform.VolumeUnits.EiB",
     (science.ModelTypes, 'Atm Only'): "cim.2.science.ModelTypes.Atm-Only",
     (science.ModelTypes, 'Ocean Only'): "cim.2.science.ModelTypes.Ocean-Only",
     (science.ModelTypes, 'Regional'): "cim.2.science.ModelTypes.Regional",
@@ -10225,8 +12103,14 @@ KEYS = {
     (science.ModelTypes, 'IGCM'): "cim.2.science.ModelTypes.IGCM",
     (science.ModelTypes, 'GCM-MLO'): "cim.2.science.ModelTypes.GCM-MLO",
     (science.ModelTypes, 'Mesoscale'): "cim.2.science.ModelTypes.Mesoscale",
-    (science.ModelTypes, 'Process'): "cim.2.science.ModelTypes.Process",
+    (science.ModelTypes, 'ProcessLA'): "cim.2.science.ModelTypes.ProcessLA",
+    (science.ModelTypes, 'DynamicalCore'): "cim.2.science.ModelTypes.DynamicalCore",
+    (science.ModelTypes, 'Statistical'): "cim.2.science.ModelTypes.Statistical",
+    (science.ModelTypes, 'ML Inference'): "cim.2.science.ModelTypes.ML-Inference",
+    (science.ModelTypes, 'Re-Analysis'): "cim.2.science.ModelTypes.Re-Analysis",
     (science.ModelTypes, 'Planetary'): "cim.2.science.ModelTypes.Planetary",
+    (science.ModelTypes, 'Process'): "cim.2.science.ModelTypes.Process",
+    (science.ModelTypes, 'Other'): "cim.2.science.ModelTypes.Other",
     (shared.NilReason, 'nil:inapplicable'): "cim.2.shared.NilReason.nil:inapplicable",
     (shared.NilReason, 'nil:missing'): "cim.2.shared.NilReason.nil:missing",
     (shared.NilReason, 'nil:template'): "cim.2.shared.NilReason.nil:template",
@@ -10262,6 +12146,7 @@ KEYS = {
     (software.ProgrammingLanguage, 'Fortran'): "cim.2.software.ProgrammingLanguage.Fortran",
     (software.ProgrammingLanguage, 'C'): "cim.2.software.ProgrammingLanguage.C",
     (software.ProgrammingLanguage, 'C++'): "cim.2.software.ProgrammingLanguage.C++",
+    (software.ProgrammingLanguage, 'Julia'): "cim.2.software.ProgrammingLanguage.Julia",
     (software.ProgrammingLanguage, 'Python'): "cim.2.software.ProgrammingLanguage.Python",
     (time.CalendarTypes, 'gregorian'): "cim.2.time.CalendarTypes.gregorian",
     (time.CalendarTypes, 'standard'): "cim.2.time.CalendarTypes.standard",
@@ -10274,8 +12159,8 @@ KEYS = {
     (time.CalendarTypes, 'julian'): "cim.2.time.CalendarTypes.julian",
     (time.CalendarTypes, 'none'): "cim.2.time.CalendarTypes.none",
     (time.PeriodDateTypes, 'unused'): "cim.2.time.PeriodDateTypes.unused",
-    (time.PeriodDateTypes, 'date is start'): "cim.2.time.PeriodDateTypes.date-is-start",
-    (time.PeriodDateTypes, 'date is end'): "cim.2.time.PeriodDateTypes.date-is-end",
+    (time.PeriodDateTypes, 'from'): "cim.2.time.PeriodDateTypes.from",
+    (time.PeriodDateTypes, 'to'): "cim.2.time.PeriodDateTypes.to",
     (time.TimeUnits, 'years'): "cim.2.time.TimeUnits.years",
     (time.TimeUnits, 'months'): "cim.2.time.TimeUnits.months",
     (time.TimeUnits, 'days'): "cim.2.time.TimeUnits.days",
@@ -10285,20 +12170,18 @@ KEYS = {
 # Set inline type keys.
 activity.Activity.type_key = KEYS[activity.Activity]
 activity.AxisMember.type_key = KEYS[activity.AxisMember]
+activity.ChildSimulation.type_key = KEYS[activity.ChildSimulation]
 activity.Conformance.type_key = KEYS[activity.Conformance]
 activity.ConformanceType.type_key = KEYS[activity.ConformanceType]
 activity.Ensemble.type_key = KEYS[activity.Ensemble]
 activity.EnsembleAxis.type_key = KEYS[activity.EnsembleAxis]
-activity.EnsembleMember.type_key = KEYS[activity.EnsembleMember]
-activity.ParentSimulation.type_key = KEYS[activity.ParentSimulation]
+activity.Simulation.type_key = KEYS[activity.Simulation]
 activity.UberEnsemble.type_key = KEYS[activity.UberEnsemble]
-data.DataAssociationTypes.type_key = KEYS[data.DataAssociationTypes]
+cmip.CmipDataset.type_key = KEYS[cmip.CmipDataset]
+cmip.CmipSimulation.type_key = KEYS[cmip.CmipSimulation]
 data.Dataset.type_key = KEYS[data.Dataset]
-data.Downscaling.type_key = KEYS[data.Downscaling]
-data.InputDataset.type_key = KEYS[data.InputDataset]
-data.Simulation.type_key = KEYS[data.Simulation]
+data.DatasetType.type_key = KEYS[data.DatasetType]
 data.VariableCollection.type_key = KEYS[data.VariableCollection]
-designing.AxisMember.type_key = KEYS[designing.AxisMember]
 designing.DomainRequirements.type_key = KEYS[designing.DomainRequirements]
 designing.EnsembleRequirement.type_key = KEYS[designing.EnsembleRequirement]
 designing.EnsembleTypes.type_key = KEYS[designing.EnsembleTypes]
@@ -10310,6 +12193,7 @@ designing.MultiEnsemble.type_key = KEYS[designing.MultiEnsemble]
 designing.NumericalExperiment.type_key = KEYS[designing.NumericalExperiment]
 designing.NumericalRequirement.type_key = KEYS[designing.NumericalRequirement]
 designing.NumericalRequirementScope.type_key = KEYS[designing.NumericalRequirementScope]
+designing.Objective.type_key = KEYS[designing.Objective]
 designing.OutputRequirement.type_key = KEYS[designing.OutputRequirement]
 designing.Project.type_key = KEYS[designing.Project]
 designing.SimulationPlan.type_key = KEYS[designing.SimulationPlan]
@@ -10326,15 +12210,29 @@ drs.DrsRealms.type_key = KEYS[drs.DrsRealms]
 drs.DrsSimulationIdentifier.type_key = KEYS[drs.DrsSimulationIdentifier]
 drs.DrsTemporalIdentifier.type_key = KEYS[drs.DrsTemporalIdentifier]
 drs.DrsTimeSuffixes.type_key = KEYS[drs.DrsTimeSuffixes]
-platform.ComponentPerformance.type_key = KEYS[platform.ComponentPerformance]
+iso.Algorithm.type_key = KEYS[iso.Algorithm]
+iso.DqEvaluationResultType.type_key = KEYS[iso.DqEvaluationResultType]
+iso.DsInitiativeTypecode.type_key = KEYS[iso.DsInitiativeTypecode]
+iso.Lineage.type_key = KEYS[iso.Lineage]
+iso.MdCellgeometryCode.type_key = KEYS[iso.MdCellgeometryCode]
+iso.MdProgressCode.type_key = KEYS[iso.MdProgressCode]
+iso.ProcessStep.type_key = KEYS[iso.ProcessStep]
+iso.ProcessStepReport.type_key = KEYS[iso.ProcessStepReport]
+iso.Processing.type_key = KEYS[iso.Processing]
+iso.QualityEvaluationOutput.type_key = KEYS[iso.QualityEvaluationOutput]
+iso.QualityEvaluationResult.type_key = KEYS[iso.QualityEvaluationResult]
+iso.QualityIssue.type_key = KEYS[iso.QualityIssue]
+iso.QualityReport.type_key = KEYS[iso.QualityReport]
 platform.ComputePool.type_key = KEYS[platform.ComputePool]
+platform.Interconnect.type_key = KEYS[platform.Interconnect]
 platform.Machine.type_key = KEYS[platform.Machine]
+platform.Nic.type_key = KEYS[platform.Nic]
 platform.Partition.type_key = KEYS[platform.Partition]
 platform.Performance.type_key = KEYS[platform.Performance]
+platform.PerformanceDetail.type_key = KEYS[platform.PerformanceDetail]
+platform.ProjectCost.type_key = KEYS[platform.ProjectCost]
 platform.StoragePool.type_key = KEYS[platform.StoragePool]
 platform.StorageSystems.type_key = KEYS[platform.StorageSystems]
-platform.StorageVolume.type_key = KEYS[platform.StorageVolume]
-platform.VolumeUnits.type_key = KEYS[platform.VolumeUnits]
 science.Model.type_key = KEYS[science.Model]
 science.ModelTypes.type_key = KEYS[science.ModelTypes]
 science.Realm.type_key = KEYS[science.Realm]
@@ -10346,7 +12244,9 @@ shared.Citation.type_key = KEYS[shared.Citation]
 shared.DocMetaInfo.type_key = KEYS[shared.DocMetaInfo]
 shared.DocReference.type_key = KEYS[shared.DocReference]
 shared.ExtraAttribute.type_key = KEYS[shared.ExtraAttribute]
+shared.FormalAssociation.type_key = KEYS[shared.FormalAssociation]
 shared.NilReason.type_key = KEYS[shared.NilReason]
+shared.Numeric.type_key = KEYS[shared.Numeric]
 shared.OnlineResource.type_key = KEYS[shared.OnlineResource]
 shared.Party.type_key = KEYS[shared.Party]
 shared.QualityReview.type_key = KEYS[shared.QualityReview]
@@ -10382,9 +12282,11 @@ del defaultdict
 del datetime
 del uuid
 del activity
+del cmip
 del data
 del designing
 del drs
+del iso
 del platform
 del science
 del shared

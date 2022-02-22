@@ -13,7 +13,6 @@ import abc
 import datetime
 import uuid
 
-import typeset_for_activity_package as activity
 import typeset_for_shared_package as shared
 
 
@@ -22,6 +21,9 @@ class Dataset(object):
     """A concrete class within the cim v2 type system.
 
     Dataset discovery information.
+
+    This may be further enhanced for ISO (or any other) compliance via
+    the extra attributes or project specific sub-classing.
 
     """
     def __init__(self):
@@ -32,13 +34,17 @@ class Dataset(object):
 
         self.availability = []                            # shared.OnlineResource (0.N)
         self.citations = []                               # shared.Citation (0.N)
+        self.contains = []                                # data.VariableCollection (0.N)
         self.description = None                           # unicode (0.1)
-        self.drs_datasets = []                            # drs.DrsPublicationDataset (0.N)
+        self.further_attributes = []                      # shared.ExtraAttribute (0.N)
+        self.keywords = []                                # unicode (0.N)
+        self.lineage = None                               # iso.Lineage (0.1)
         self.meta = shared.DocMetaInfo()                  # shared.DocMetaInfo (1.1)
         self.name = None                                  # unicode (1.1)
-        self.produced_by = None                           # data.Simulation (0.1)
-        self.related_to_dataset = []                      # shared.OnlineResource (0.N)
+        self.progress = None                              # iso.MdProgressCode (0.1)
+        self.related_to_dataset = []                      # shared.FormalAssociation (0.N)
         self.responsible_parties = []                     # shared.Responsibility (0.N)
+        self.type = []                                    # data.DatasetType (1.N)
 
 
     @property
@@ -49,61 +55,11 @@ class Dataset(object):
 	    return "{}".format(self.name)
 
 
-class InputDataset(object):
-    """A concrete class within the cim v2 type system.
-
-    An input dataset is used as within another component (such as a
-model). It comprises an original, source dataset plus any
-modifications requirted to use it in the relevant component.
-
-    """
-    def __init__(self):
-        """Instance constructor.
-
-        """
-        super(InputDataset, self).__init__()
-
-        self.modifications_applied = None                 # unicode (0.1)
-        self.original_data = None                         # data.Dataset (1.1)
-
-
-class Simulation(activity.Activity):
-    """A concrete class within the cim v2 type system.
-
-    Simulation class provides the integrating link about what models
-    were run and wny.  In many cases this should be auto-generated
-    from output file headers.
-
-    """
-    def __init__(self):
-        """Instance constructor.
-
-        """
-        super(Simulation, self).__init__()
-
-        self.calendar = None                              # time.Calendar (0.1)
-        self.end_time = None                              # time.DateTime (0.1)
-        self.extra_attributes = []                        # shared.ExtraAttribute (0.N)
-        self.forcing_index = None                         # int (0.1)
-        self.further_info_url = None                      # unicode (0.1)
-        self.initialization_index = None                  # int (0.1)
-        self.insitution = None                            # shared.Party (0.1)
-        self.parent_simulation = None                     # activity.ParentSimulation (0.1)
-        self.part_of_project = []                         # designing.Project (1.N)
-        self.physics_index = None                         # int (0.1)
-        self.primary_ensemble = None                      # activity.Ensemble (0.1)
-        self.ran_for_experiments = []                     # designing.NumericalExperiment (1.N)
-        self.realization_index = None                     # int (0.1)
-        self.start_time = None                            # time.DateTime (0.1)
-        self.sub_experiment = None                        # designing.NumericalExperiment (0.1)
-        self.used = None                                  # science.Model (1.1)
-        self.variant_info = None                          # unicode (0.1)
-
-
 class VariableCollection(object):
     """A concrete class within the cim v2 type system.
 
-    A collection of variables within the scope of a code or process element.
+    A collection of variables within the scope of a code or process
+    element.
 
     """
     def __init__(self):
@@ -113,41 +69,45 @@ class VariableCollection(object):
         super(VariableCollection, self).__init__()
 
         self.collection_name = None                       # unicode (0.1)
+        self.geometry = None                              # iso.MdCellgeometryCode (0.1)
         self.variables = []                               # unicode (1.N)
 
 
-class Downscaling(Simulation):
-    """A concrete class within the cim v2 type system.
-
-    Defines a downscaling activity.
-
-    """
-    def __init__(self):
-        """Instance constructor.
-
-        """
-        super(Downscaling, self).__init__()
-
-        self.downscaled_from = None                       # data.Simulation (1.1)
-
-
-class DataAssociationTypes(object):
+class DatasetType(object):
     """An enumeration within the cim v2 type system.
 
-    Set of possible dataset associations.
+    Classifier of dataset type, to inform discovery metadata.
 
-    Selected from, and extended from,  ISO19115 (2014) DS_AssociationTypeCode.
+    Informed by Bedia et al,
+    https://doi.org/10.1016/j.envsoft.2019.07.005, but adjusted for more
+    generality.
     """
     is_open = False
     members = [
-        "revisonOf",
-        "partOf",
-        "isComposedOf"
+        "reanalysis",
+        "analysis",
+        "forecast",
+        "hindcast",
+        "projection",
+        "representation",
+        "observation",
+        "dump",
+        "modified",
+        "unphysical",
+        "downscaled"
         ]
     descriptions = [
-        "This dataset was revised from the target",
-        "This dataset forms part of the target",
-        "This dataset is composed from the target"
+        "Hindcast which includes observations via data assimilation",
+        "Product of manipulation of multiple input datasets",
+        "Representation of a future real time predicted from a specific initial condition ",
+        "Representation of a past real time predicted from a specific initial condition",
+        "Representation a possible future given initial conditions and assumptions",
+        "Simulation of a particular object or process",
+        "Constructed from observations or measurements alone",
+        "Raw computer output intended for re-use within or by originating software",
+        "Modified representation of another dataset (e.g. regridded)",
+        "Not intended for comparison with the real world (e.g. as part of a sensitivity study)",
+        "Dataset was downscaled by embedded simulation within driving data at larger scale"
         ]
 
 

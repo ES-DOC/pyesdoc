@@ -50,7 +50,7 @@ def convert_to_camel_case(name, separator='_'):
 
 
 def convert_to_pascal_case(name, separator='_'):
-    """Converts passed name to camel case.
+    """Converts passed name to pascal case.
 
     :param str name: A name as specified in ontology specification.
     :param str separator: Separator to use in order to split name into constituent parts.

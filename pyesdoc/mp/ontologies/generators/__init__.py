@@ -15,13 +15,14 @@ from pyesdoc.mp.ontologies.core.factory import create_ontology
 from pyesdoc.mp.ontologies.core.schema_validation import validate as validate_schema
 from pyesdoc.mp.ontologies.generators import generator_utils as gu
 from pyesdoc.mp.ontologies.generators import python
-from pyesdoc.mp.ontologies.generators import qxml
-from pyesdoc.mp.ontologies.generators import qconfig
 from pyesdoc.mp.ontologies.generators.generator_context import GeneratorContext
 
 
+# Set of generators by language.
+_GENERATORS_BY_LANGUAGE = (python, )
+
 # Map of generator handlers.
-_HANDLERS = { i.__name__.split('.')[-1]: i for i in (python, qxml, qconfig) }
+_HANDLERS = { i.__name__.split('.')[-1]: i for i in _GENERATORS_BY_LANGUAGE }
 
 
 def _log_start(schema, language, io_dir):

@@ -20,8 +20,9 @@ class Calendar(object):
     """A concrete class within the cim v2 type system.
 
     Describes the calendar required/used in an experiment/simulation.
-    This class is based on the calendar attributes and properties found in the
-    CF netCDF conventions.
+
+    This class is based on the calendar attributes and properties found
+    in the CF netCDF conventions.
 
     """
     def __init__(self):
@@ -47,9 +48,11 @@ class Calendar(object):
 class DateTime(object):
     """A concrete class within the cim v2 type system.
 
-    A date or time. Either in simulation time with the simulation
-    calendar, or with reference to a simulation start, in which
-    case the datetime is an interval after the start date.
+    A date or time.
+
+    Either in simulation time with the simulation calendar, or with
+    reference to a simulation start, in which case the datetime is an
+    interval after the start date.
 
     """
     def __init__(self):
@@ -67,15 +70,17 @@ class DateTime(object):
 	    """Instrance string representation.
 
 	    """
-	    return "{}(offset {})".format(self.value, self.offset)
+	    return "{}(offset {})".format(self.value, self.is_offset)
 
 
 class DatetimeSet(object):
     """An abstract class within the cim v2 type system.
 
-    A set of times. This is an abstract class which is specialised into
-    a periodic or aperiodic (irregular) list.  Note that we assume either a
-    periodic set of dates which can be date and/or time, or an irregular set
+    A set of times.
+
+    This is an abstract class which is specialised into a periodic or
+    aperiodic (irregular) list.  Note that we assume either a periodic
+    set of dates which can be date and/or time, or an irregular set
     which can only be dates.
 
     """
@@ -105,7 +110,7 @@ class TimePeriod(object):
         self.calendar = None                              # time.Calendar (0.1)
         self.date = None                                  # time.DateTime (0.1)
         self.date_type = None                             # time.PeriodDateTypes (1.1)
-        self.length = None                                # unicode (1.1)
+        self.length = None                                # float (1.1)
         self.units = None                                 # time.TimeUnits (1.1)
 
 
@@ -120,8 +125,8 @@ class TimePeriod(object):
 class IrregularDateset(DatetimeSet):
     """A concrete class within the cim v2 type system.
 
-    A set of irregularly spaced times, provided as a comma separated string of yyyy-mm-dd in
-     the appropriate calendar.
+    A set of irregularly spaced times, provided as a comma separated
+    string of yyyy-mm-dd in the appropriate calendar.
 
     """
     def __init__(self):
@@ -198,8 +203,8 @@ class PeriodDateTypes(object):
     is_open = False
     members = [
         "unused",
-        "date is start",
-        "date is end"
+        "from",
+        "to"
         ]
     descriptions = [
         "Date is not used",
@@ -211,7 +216,8 @@ class PeriodDateTypes(object):
 class TimeUnits(object):
     """An enumeration within the cim v2 type system.
 
-    Appropriate Time units for experiment durations in NWP and Climate Modelling.
+    Appropriate Time units for experiment durations in NWP and
+    Climate Modelling.
     """
     is_open = False
     members = [

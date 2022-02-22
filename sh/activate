@@ -1,9 +1,7 @@
 # Set home path
 export PYESDOC_HOME="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 export PYESDOC_HOME="$( cd "$( dirname "${PYESDOC_HOME[0]}" )" && pwd )"
-
-# Set python path
-# export PYTHONPATH=$PYESDOC_HOME:$PYTHONPATH
+export PYESDOC_PARENT="$( cd "$( dirname "${PYESDOC_HOME[0]}" )" && pwd )"
 
 # Ensure shell scripts are executable
 chmod a+x $PYESDOC_HOME/sh/*.sh
@@ -24,3 +22,10 @@ alias pyesdoc-tests=$PYESDOC_HOME/sh/tests_run.sh
 alias pyesdoc-tests-write-files=$PYESDOC_HOME/sh/tests_write_files.sh
 alias pyesdoc-update=$PYESDOC_HOME/sh/update.sh
 alias pyesdoc-validate=$PYESDOC_HOME/sh/doc_validate.sh
+
+alias pyesdoc-mp-generate-cim-v1="$PYESDOC_HOME/sh/mp/mp_generate_cim_v1.sh"
+alias pyesdoc-mp-generate-cim-v2="$PYESDOC_HOME/sh/mp/mp_generate_cim_v2.sh"
+alias pyesdoc-mp-sync-cim-v1="$PYESDOC_HOME/sh/mp/mp_sync_cim_v1.sh"
+alias pyesdoc-mp-sync-cim-v2="$PYESDOC_HOME/sh/mp/mp_sync_cim_v2.sh"
+alias pyesdoc-mp-validate-cim-v1="$PYESDOC_HOME/sh/mp/mp_validate_cim_v1.sh"
+alias pyesdoc-mp-validate-cim-v2="$PYESDOC_HOME/sh/mp/mp_validate_cim_v2.sh"

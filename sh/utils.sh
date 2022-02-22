@@ -20,6 +20,12 @@ log()
 	fi
 }
 
+# Outputs a line to split up logging.
+log_banner()
+{
+	echo "-------------------------------------------------------------------------------"
+}
+
 # Resets temporary folder.
 reset_tmp()
 {

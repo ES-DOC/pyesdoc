@@ -14,20 +14,7 @@ import datetime
 import uuid
 
 import typeset_for_activity_package as activity
-
-
-
-class AxisMember(object):
-    """A concrete class within the cim v2 type system.
-
-    PLACEHOLDER for the real axis_member.
-
-    """
-    def __init__(self):
-        """Instance constructor.
-
-        """
-        super(AxisMember, self).__init__()
+import typeset_for_shared_package as shared
 
 
 
@@ -46,6 +33,7 @@ class NumericalExperiment(activity.Activity):
         self.governing_mips = []                          # designing.Project (0.N)
         self.related_experiments = []                     # designing.NumericalExperiment (0.N)
         self.related_mips = []                            # designing.Project (0.N)
+        self.related_objectives = []                      # unicode (0.N)
         self.required_period = None                       # designing.TemporalConstraint (1.1)
         self.requirements = []                            # designing.NumericalRequirement (0.N)
         self.tier = None                                  # int (0.1)
@@ -54,7 +42,8 @@ class NumericalExperiment(activity.Activity):
 class NumericalRequirement(activity.Activity):
     """A concrete class within the cim v2 type system.
 
-    A numerical requirement associated with a numerical experiment.
+    A numerical requirement associated with a numerical
+    experiment.
 
     """
     def __init__(self):
@@ -67,6 +56,27 @@ class NumericalRequirement(activity.Activity):
         self.is_conformance_info_required = None          # bool (1.1)
         self.is_conformance_requested = None              # bool (1.1)
         self.scope = None                                 # designing.NumericalRequirementScope (0.1)
+
+
+class Objective(object):
+    """A concrete class within the cim v2 type system.
+
+    Describes a specific scientific objective within a project, and
+    any necessary outputs from the experiment needed to meet this
+    objective.
+
+    """
+    def __init__(self):
+        """Instance constructor.
+
+        """
+        super(Objective, self).__init__()
+
+        self.description = None                           # unicode (0.1)
+        self.identifier = None                            # unicode (0.1)
+        self.meta = shared.DocMetaInfo()                  # shared.DocMetaInfo (1.1)
+        self.name = None                                  # unicode (1.1)
+        self.required_outputs = []                        # data.VariableCollection (0.N)
 
 
 class Project(activity.Activity):
@@ -82,8 +92,8 @@ class Project(activity.Activity):
         super(Project, self).__init__()
 
         self.governed_experiments = []                    # designing.NumericalExperiment (0.N)
-        self.homepage = None                              # unicode (0.1)
-        self.objectives = []                              # unicode (0.N)
+        self.homepage = None                              # shared.OnlineResource (0.1)
+        self.objectives = []                              # designing.Objective (0.N)
         self.previous_projects = []                       # designing.Project (0.N)
         self.required_experiments = []                    # designing.NumericalExperiment (0.N)
         self.sub_projects = []                            # designing.Project (0.N)
@@ -110,7 +120,8 @@ class SimulationPlan(activity.Activity):
 class DomainRequirements(NumericalRequirement):
     """A concrete class within the cim v2 type system.
 
-    Properties of the domain which needs to be simulated, extent and/or resolution.
+    Properties of the domain which needs to be simulated, extent
+    and/or resolution.
 
     """
     def __init__(self):
@@ -164,7 +175,8 @@ class ForcingConstraint(NumericalRequirement):
 class InitialisationRequirement(NumericalRequirement):
     """A concrete class within the cim v2 type system.
 
-    A requirement on how a particular simulation should be initialised.
+    A requirement on how a particular simulation should be
+    initialised.
 
     """
     def __init__(self):
@@ -181,8 +193,8 @@ class InitialisationRequirement(NumericalRequirement):
 class MultiEnsemble(NumericalRequirement):
     """A concrete class within the cim v2 type system.
 
-    In the case of multiple ensemble axes, defines how they
-    are set up and ordered.
+    In the case of multiple ensemble axes, defines how they are set
+    up and ordered.
 
     """
     def __init__(self):
@@ -197,7 +209,8 @@ class MultiEnsemble(NumericalRequirement):
 class OutputRequirement(NumericalRequirement):
     """A concrete class within the cim v2 type system.
 
-    Provides details of what output is required and when from an experiment.
+    Provides details of what output is required and when from an
+    experiment.
 
     """
     def __init__(self):
@@ -245,9 +258,9 @@ class TemporalConstraint(NumericalRequirement):
 class EnsembleTypes(object):
     """An enumeration within the cim v2 type system.
 
-    Defines the various axes along which one can set up an ensemble, whether
-     as an experiment designer, or in designing a 'response' ensemble around an
-     experiment.
+    Defines the various axes along which one can set up an ensemble,
+    whether as an experiment designer, or in designing a 'response'
+    ensemble around an experiment.
     """
     is_open = False
     members = [
@@ -299,7 +312,8 @@ class ExperimentalRelationships(object):
 class ForcingTypes(object):
     """An enumeration within the cim v2 type system.
 
-    Defines the possible set of forcing types for a forcing constraint.
+    Defines the possible set of forcing types for a forcing
+    constraint.
     """
     is_open = False
     members = [
@@ -319,7 +333,8 @@ class ForcingTypes(object):
 class NumericalRequirementScope(object):
     """An enumeration within the cim v2 type system.
 
-    The scope to which a numerical requirement may or may not apply.
+    The scope to which a numerical requirement may or may not
+    apply.
     """
     is_open = False
     members = [

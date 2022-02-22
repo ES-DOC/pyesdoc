@@ -40,7 +40,8 @@ class DrsAtomicDataset(object):
 class DrsEnsembleIdentifier(object):
     """A concrete class within the cim v2 type system.
 
-    Identifies a 'response ensemble' realisation using the semantic content ofa 'run_variant_id'.
+    Identifies a 'response ensemble' realisation using the semantic
+    content ofa 'run_variant_id'.
 
     """
     def __init__(self):
@@ -67,7 +68,7 @@ class DrsExperiment(object):
         """
         super(DrsExperiment, self).__init__()
 
-        self.axis_identifer = None                        # designing.AxisMember (0.1)
+        self.axis_identifer = None                        # activity.AxisMember (0.1)
         self.axis_type = None                             # designing.EnsembleTypes (0.1)
         self.family = None                                # unicode (1.1)
 
@@ -75,8 +76,10 @@ class DrsExperiment(object):
 class DrsGeographicalIndicator(object):
     """A concrete class within the cim v2 type system.
 
-    Specifies geographical subsets described by bounding boxes or by named regions.
-     One of spatial domain or bounding box must appear.
+    Specifies geographical subsets described by bounding boxes or by
+    named regions.
+
+    One of spatial domain or bounding box must appear.
 
     """
     def __init__(self):
@@ -107,7 +110,8 @@ class DrsPublicationDataset(object):
 class DrsSimulationIdentifier(object):
     """A concrete class within the cim v2 type system.
 
-    That part of the DRS which identifies the response to the experiment: the simulation.
+    That part of the DRS which identifies the response to the
+    experiment: the simulation.
 
     """
     def __init__(self):
@@ -125,10 +129,11 @@ class DrsTemporalIdentifier(object):
     """A concrete class within the cim v2 type system.
 
     Provides information about temporal subsetting and/or averaging.
-    If only N1 is present, it a temporal instant,
-    If N1-N2 are present with no suffix, it is a temporal subset,
-    If N1-N2 with a suffix are present, then some sort of temporal averaging has been applied across
-    the period.
+
+    If only N1 is present, it a temporal instant, If N1-N2 are present
+    with no suffix, it is a temporal subset, If N1-N2 with a suffix are
+    present, then some sort of temporal averaging has been applied
+    across the period.
 
     """
     def __init__(self):
@@ -173,7 +178,8 @@ class DrsFrequencyTypes(object):
 class DrsGeographicalOperators(object):
     """An enumeration within the cim v2 type system.
 
-    Set of permitted spatial averaging operator suffixes for drs spatial indicators (yyyy-zzzz).
+    Set of permitted spatial averaging operator suffixes for drs
+    spatial indicators (yyyy-zzzz).
     """
     is_open = False
     members = [
@@ -225,7 +231,8 @@ class DrsRealms(object):
 class DrsTimeSuffixes(object):
     """An enumeration within the cim v2 type system.
 
-    Set of permitted time averaging suffixes for drs temporal identifiers.
+    Set of permitted time averaging suffixes for drs temporal
+    identifiers.
     """
     is_open = False
     members = [

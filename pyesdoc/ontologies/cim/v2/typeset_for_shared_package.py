@@ -29,6 +29,8 @@ class Citation(object):
         super(Citation, self).__init__()
 
         self.abstract = None                              # unicode (0.1)
+        self.authors = []                                 # unicode (0.N)
+        self.bibtex = None                                # unicode (0.1)
         self.citation_detail = None                       # unicode (0.1)
         self.collective_title = None                      # unicode (0.1)
         self.context = None                               # unicode (0.1)
@@ -37,6 +39,7 @@ class Citation(object):
         self.title = None                                 # unicode (0.1)
         self.type = None                                  # unicode (0.1)
         self.url = None                                   # shared.OnlineResource (0.1)
+        self.year = None                                  # int (0.1)
 
 
     @property
@@ -50,8 +53,10 @@ class Citation(object):
 class DocMetaInfo(object):
     """A concrete class within the cim v2 type system.
 
-    Encapsulates document meta information used by es-doc machinery. Will not normally be
-    populated by humans. May duplicate information held in 'visible' metadata.
+    Encapsulates document meta information used by es-doc machinery.
+
+    Will not normally be populated by humans. May duplicate information
+    held in 'visible' metadata.
 
     """
     def __init__(self):
@@ -92,19 +97,12 @@ class DocReference(object):
         super(DocReference, self).__init__()
 
         self.canonical_name = None                        # unicode (0.1)
-        self.constraint_vocabulary = None                 # unicode (0.1)
         self.context = None                               # unicode (0.1)
-        self.description = None                           # unicode (0.1)
-        self.external_id = None                           # unicode (0.1)
         self.further_info = None                          # unicode (0.1)
         self.id = None                                    # unicode (0.1)
-        self.institute = None                             # unicode (0.1)
-        self.linkage = None                               # unicode (0.1)
         self.name = None                                  # unicode (0.1)
-        self.protocol = None                              # unicode (0.1)
         self.relationship = None                          # unicode (0.1)
         self.type = None                                  # unicode (0.1)
-        self.url = None                                   # unicode (0.1)
         self.version = None                               # int (0.1)
 
 
@@ -113,15 +111,17 @@ class DocReference(object):
 	    """Instrance string representation.
 
 	    """
-	    return "{}".format(self.canonical_name)
+	    return "{} ({})".format(self.canonical_name, self.type)
 
 
 class ExtraAttribute(object):
     """A concrete class within the cim v2 type system.
 
-    An extra attribute with key and value needed to encode further information
-    not in the CIM2 domain model or specialisation. Typical use case: in parsing
-    data and encoding attributes found in data.
+    An extra attribute with key and value needed to encode further
+    information not in the CIM domain model or specialisation.
+
+    Typical use case: in parsing data and encoding attributes found in
+    data.
 
     """
     def __init__(self):
@@ -144,11 +144,41 @@ class ExtraAttribute(object):
 	    return "{}:{}".format(self.key, self.value)
 
 
+class Numeric(object):
+    """A concrete class within the cim v2 type system.
+
+    A number which comes with a unit, potentially from a controlled
+    vocabulary of units.
+
+    #FIXME: Need to work on the relationship between unit_source and base_unit.
+
+    """
+    def __init__(self):
+        """Instance constructor.
+
+        """
+        super(Numeric, self).__init__()
+
+        self.base_unit = None                             # unicode (0.1)
+        self.unit_enumeration = None                      # unicode (0.1)
+        self.unit_source = None                           # shared.OnlineResource (0.1)
+        self.units = None                                 # unicode (1.1)
+        self.value = None                                 # float (1.1)
+
+
+    @property
+    def __str__(self):
+	    """Instrance string representation.
+
+	    """
+	    return "{}{}".format(self.value, self.units)
+
+
 class OnlineResource(object):
     """A concrete class within the cim v2 type system.
 
-    A minimal approximation of ISO19115 CI_ONLINERESOURCE, provides a link and details
-    of how to use that link.
+    A minimal approximation of ISO19115 CI_ONLINERESOURCE, provides a
+    link and details of how to use that link.
 
     """
     def __init__(self):
@@ -174,10 +204,13 @@ class OnlineResource(object):
 class Party(object):
     """A concrete class within the cim v2 type system.
 
-    Implements minimal material for an ISO19115-1 (2014) compliant party.
-    For our purposes this is a much better animal than the previous responsibleParty 
-    which munged roles together with people. Note we have collapsed CI_Contact,
-    CI_Individual and CI_Organisation as well as the abstract CI_Party.
+    Implements minimal material for an ISO19115-1 (2014) compliant
+    party.
+
+    For our purposes this is a much better animal than the previous
+    responsibleParty which munged roles together with people. Note we
+    have collapsed CI_Contact, CI_Individual and CI_Organisation as well
+    as the abstract CI_Party.
 
     """
     def __init__(self):
@@ -208,6 +241,10 @@ class QualityReview(object):
 
     Assertions as to the completeness and quality of a document.
 
+    Not to be confused with assertions as to the quality of the resource
+    described by the document (as covered by the iso.quality_report). A
+    future version of this ontology may rename this class.
+
     """
     def __init__(self):
         """Instance constructor.
@@ -234,8 +271,10 @@ class QualityReview(object):
 class Responsibility(object):
     """A concrete class within the cim v2 type system.
 
-    Implements the ISO19115-1 (2014) CI_Responsibility (which replaces
-    responsibleParty). Combines a person and their role in doing something.
+    Implements the ISO19115-1 (2014) CI_Responsibility (which
+    replaces responsibleParty).
+
+    Combines a person and their role in doing something.
 
     """
     def __init__(self):
@@ -260,8 +299,8 @@ class Responsibility(object):
 class TextBlob(object):
     """A concrete class within the cim v2 type system.
 
-    Provides a text class which supports plaintext, html, and
-    friends (or will do).
+    Provides a text class which supports plaintext, html, and friends
+    (or will do).
 
     """
     def __init__(self):
@@ -282,11 +321,40 @@ class TextBlob(object):
 	    return "{}".format(self.content)
 
 
+class FormalAssociation(DocReference):
+    """A concrete class within the cim v2 type system.
+
+    Holds a named association between entities, where the name of the
+    association comes from a specific named enumeration.
+
+    The association can point at a CIM entity, or a remote entity.
+
+    """
+    def __init__(self):
+        """Instance constructor.
+
+        """
+        super(FormalAssociation, self).__init__()
+
+        self.association_id = None                        # unicode (0.1)
+        self.association_vocabulary = None                # shared.OnlineResource (0.1)
+        self.online_at = None                             # shared.OnlineResource (0.1)
+
+
+    @property
+    def __str__(self):
+	    """Instrance string representation.
+
+	    """
+	    return "{}: {}".format(self.relationship, self.name)
+
+
 class NilReason(object):
     """An enumeration within the cim v2 type system.
 
-    Provides an enumeration of possible reasons why a property has not been defined
-    Based on GML nilReason as discussed here: https://www.seegrid.csiro.au/wiki/AppSchemas/NilValues.
+    Provides an enumeration of possible reasons why a property has
+    not been defined Based on GML nilReason as discussed here:
+    https://www.seegrid.csiro.au/wiki/AppSchemas/NilValues.
     """
     is_open = False
     members = [
@@ -328,7 +396,10 @@ class QualityStatus(object):
 class RoleCode(object):
     """An enumeration within the cim v2 type system.
 
-    Responsibility role codes: roles that a party may play in delivering a responsibility.
+    Responsibility role codes: roles that a party may play in
+    delivering a responsibility.
+
+    This is an extension and modification of CI_RoleCode from ISO19115.
     """
     is_open = False
     members = [
@@ -370,8 +441,10 @@ class RoleCode(object):
 class TextBlobEncoding(object):
     """An enumeration within the cim v2 type system.
 
-    Types of text understood by the CIM notebook. Currently only
-    plaintext, but we expect safe HTML to be supported as soon as practicable.
+    Types of text understood by the CIM notebook.
+
+    Currently only plaintext, but we expect safe HTML to be supported as
+    soon as practicable.
     """
     is_open = False
     members = [
