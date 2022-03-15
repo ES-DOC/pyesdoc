@@ -50,7 +50,7 @@ class ComponentBase(object):
 
     @property
     def __str__(self):
-	    """Instrance string representation.
+	    """Instance string representation.
 
 	    """
 	    return "{}".format(self.name)
@@ -172,7 +172,7 @@ class Implementation(object):
 
     @property
     def __str__(self):
-	    """Instrance string representation.
+	    """Instance string representation.
 
 	    """
 	    return "{}".format(self.name)

@@ -49,7 +49,7 @@ class Activity(object):
 
     @property
     def __str__(self):
-	    """Instrance string representation.
+	    """Instance string representation.
 
 	    """
 	    return "{}".format(self.canonical_name)
@@ -101,7 +101,7 @@ class EnsembleAxis(object):
 
     @property
     def __str__(self):
-	    """Instrance string representation.
+	    """Instance string representation.
 
 	    """
 	    return "{}".format(self.name)
@@ -142,7 +142,7 @@ class Simulation(iso.ProcessStep):
 
     @property
     def __str__(self):
-	    """Instrance string representation.
+	    """Instance string representation.
 
 	    """
 	    return "({}/{}/{})".format(self.used, self.ran_for_experiments, self.ensemble_id)
@@ -168,7 +168,7 @@ class ChildSimulation(Simulation):
 
     @property
     def __str__(self):
-	    """Instrance string representation.
+	    """Instance string representation.
 
 	    """
 	    return "{}".format(self.parent)

@@ -39,7 +39,7 @@ class Calendar(object):
 
     @property
     def __str__(self):
-	    """Instrance string representation.
+	    """Instance string representation.
 
 	    """
 	    return "{}".format(self.standard_name)
@@ -67,7 +67,7 @@ class DateTime(object):
 
     @property
     def __str__(self):
-	    """Instrance string representation.
+	    """Instance string representation.
 
 	    """
 	    return "{}(offset {})".format(self.value, self.is_offset)
@@ -116,7 +116,7 @@ class TimePeriod(object):
 
     @property
     def __str__(self):
-	    """Instrance string representation.
+	    """Instance string representation.
 
 	    """
 	    return "{} {}".format(self.length, self.units)
@@ -157,7 +157,7 @@ class RegularTimeset(DatetimeSet):
 
     @property
     def __str__(self):
-	    """Instrance string representation.
+	    """Instance string representation.
 
 	    """
 	    return "{} times from {} at {} intervals".format(self.length, self.start_date, self.increment)

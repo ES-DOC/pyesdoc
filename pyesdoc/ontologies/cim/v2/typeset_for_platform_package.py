@@ -46,7 +46,7 @@ class ComputePool(object):
 
     @property
     def __str__(self):
-	    """Instrance string representation.
+	    """Instance string representation.
 
 	    """
 	    return "{} [{}]".format(self.name, self.number_of_nodes)
@@ -88,7 +88,7 @@ class Interconnect(object):
 
     @property
     def __str__(self):
-	    """Instrance string representation.
+	    """Instance string representation.
 
 	    """
 	    return "{}".format(self.name)
@@ -113,7 +113,7 @@ class Nic(object):
 
     @property
     def __str__(self):
-	    """Instrance string representation.
+	    """Instance string representation.
 
 	    """
 	    return "{}".format(self.name)
@@ -148,7 +148,7 @@ class Partition(object):
 
     @property
     def __str__(self):
-	    """Instrance string representation.
+	    """Instance string representation.
 
 	    """
 	    return "{}".format(self.name)
@@ -189,7 +189,7 @@ class Performance(object):
 
     @property
     def __str__(self):
-	    """Instrance string representation.
+	    """Instance string representation.
 
 	    """
 	    return "{} (sypd:{})".format(self.name, self.simulated_years_per_day)
@@ -240,7 +240,7 @@ class ProjectCost(object):
 
     @property
     def __str__(self):
-	    """Instrance string representation.
+	    """Instance string representation.
 
 	    """
 	    return "Production: {}Y, {}".format(self.useful_years, self.useful_data)
@@ -267,7 +267,7 @@ class StoragePool(object):
 
     @property
     def __str__(self):
-	    """Instrance string representation.
+	    """Instance string representation.
 
 	    """
 	    return "{} {}".format(self.name, self.file_system_sizes)
@@ -293,7 +293,7 @@ class Machine(Partition):
 
     @property
     def __str__(self):
-	    """Instrance string representation.
+	    """Instance string representation.
 
 	    """
 	    return "{}".format(self.name)

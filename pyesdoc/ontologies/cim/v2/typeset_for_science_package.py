@@ -94,7 +94,7 @@ class Topic(object):
 
     @property
     def __str__(self):
-	    """Instrance string representation.
+	    """Instance string representation.
 
 	    """
 	    return "{}".format(self.name)
@@ -120,7 +120,7 @@ class TopicProperty(object):
 
     @property
     def __str__(self):
-	    """Instrance string representation.
+	    """Instance string representation.
 
 	    """
 	    return "{}: {}".format(self.specialization_id, self.values)
@@ -147,7 +147,7 @@ class TopicPropertySet(object):
 
     @property
     def __str__(self):
-	    """Instrance string representation.
+	    """Instance string representation.
 
 	    """
 	    return "{}".format(self.specialization_id)
@@ -176,7 +176,7 @@ class Realm(Topic):
 
     @property
     def __str__(self):
-	    """Instrance string representation.
+	    """Instance string representation.
 
 	    """
 	    return "{}".format(self.canonical_name)

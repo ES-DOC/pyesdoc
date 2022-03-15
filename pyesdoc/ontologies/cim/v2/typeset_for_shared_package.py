@@ -44,7 +44,7 @@ class Citation(object):
 
     @property
     def __str__(self):
-	    """Instrance string representation.
+	    """Instance string representation.
 
 	    """
 	    return "{}".format(self.title)
@@ -108,7 +108,7 @@ class DocReference(object):
 
     @property
     def __str__(self):
-	    """Instrance string representation.
+	    """Instance string representation.
 
 	    """
 	    return "{} ({})".format(self.canonical_name, self.type)
@@ -138,7 +138,7 @@ class ExtraAttribute(object):
 
     @property
     def __str__(self):
-	    """Instrance string representation.
+	    """Instance string representation.
 
 	    """
 	    return "{}:{}".format(self.key, self.value)
@@ -168,7 +168,7 @@ class Numeric(object):
 
     @property
     def __str__(self):
-	    """Instrance string representation.
+	    """Instance string representation.
 
 	    """
 	    return "{}{}".format(self.value, self.units)
@@ -195,7 +195,7 @@ class OnlineResource(object):
 
     @property
     def __str__(self):
-	    """Instrance string representation.
+	    """Instance string representation.
 
 	    """
 	    return "{}".format(self.linkage)
@@ -230,7 +230,7 @@ class Party(object):
 
     @property
     def __str__(self):
-	    """Instrance string representation.
+	    """Instance string representation.
 
 	    """
 	    return "{}".format(self.name)
@@ -262,7 +262,7 @@ class QualityReview(object):
 
     @property
     def __str__(self):
-	    """Instrance string representation.
+	    """Instance string representation.
 
 	    """
 	    return "{}: {}".format(self.target_document, self.quality_status)
@@ -290,7 +290,7 @@ class Responsibility(object):
 
     @property
     def __str__(self):
-	    """Instrance string representation.
+	    """Instance string representation.
 
 	    """
 	    return "{}:{}".format(self.role, self.parties)
@@ -315,7 +315,7 @@ class TextBlob(object):
 
     @property
     def __str__(self):
-	    """Instrance string representation.
+	    """Instance string representation.
 
 	    """
 	    return "{}".format(self.content)
@@ -343,7 +343,7 @@ class FormalAssociation(DocReference):
 
     @property
     def __str__(self):
-	    """Instrance string representation.
+	    """Instance string representation.
 
 	    """
 	    return "{}: {}".format(self.relationship, self.name)

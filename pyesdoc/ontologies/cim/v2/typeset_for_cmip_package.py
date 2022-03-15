@@ -38,7 +38,7 @@ class CmipDataset(data.Dataset):
 
     @property
     def __str__(self):
-	    """Instrance string representation.
+	    """Instance string representation.
 
 	    """
 	    return "{}".format(self.name)
@@ -69,7 +69,7 @@ class CmipSimulation(activity.Simulation):
 
     @property
     def __str__(self):
-	    """Instrance string representation.
+	    """Instance string representation.
 
 	    """
 	    return "({}/{}/{}{}{}{})".format(self.used, self.ran_for_experiments, self.realization_index, self.initialization_index, self.physics_index, self.forcing_index)
