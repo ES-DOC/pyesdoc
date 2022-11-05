@@ -15,8 +15,8 @@ class EnumMember(object):
     def __init__(self, name, doc_string):
         """Instance constructor.
 
-        :param str name: Enumeration member name.
-        :param str doc_string: Enumeration member documentation string.
+        :param name: Enumeration member name.
+        :param doc_string: Enumeration member documentation string.
 
         """
         self.enum = None

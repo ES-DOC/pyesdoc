@@ -16,7 +16,7 @@ class Wrapper(object):
     def __init__(self, tables):
         """Instance constructor.
 
-        :param list tables: Collection of definition tables.
+        :param tables: Collection of definition tables.
 
         """
         self._tables = sorted(tables, key=lambda i: i.label.lower())

@@ -41,7 +41,7 @@ def decode(target, encoding=constants.ENCODING_JSON):
 
     :param target: A document representation (e.g. json).
     :type target: utf-8 encoded str | unicode
-    :param str encoding: A document encoding (dict|json|xml|metafor-cim-1-xml).
+    :param encoding: A document encoding (dict|json|xml|metafor-cim-1-xml).
 
     :returns: A pyesdoc document instance.
     :rtype: object
@@ -55,8 +55,8 @@ def decode(target, encoding=constants.ENCODING_JSON):
 def encode(target, encoding=constants.ENCODING_JSON):
     """Encodes a document.
 
-    :param object target: pyesdoc document instance.
-    :param str encoding: A document encoding.
+    :param target: pyesdoc document instance.
+    :param encoding: A document encoding.
 
     :returns: A formatted representation of a pyesdoc document.
     :rtype: object
@@ -82,9 +82,9 @@ def encode(target, encoding=constants.ENCODING_JSON):
 def convert(doc, encoding_from, encoding_to):
     """Converts a document.
 
-    :param unicode doc: A document representation (e.g. json).
-    :param str encoding_from: A document encoding (dict|json|xml).
-    :param str encoding_to: A document encoding (dict|json|xml).
+    :param doc: A document representation (e.g. json).
+    :param encoding_from: A document encoding (dict|json|xml).
+    :param encoding_to: A document encoding (dict|json|xml).
 
     :returns: A pyesdoc document representation.
     :rtype: unicode | dict

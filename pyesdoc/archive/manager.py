@@ -50,8 +50,8 @@ def init():
 def delete_error_files(project=None, source=None):
     """Deletes error files from archive.
 
-    :param str project: Name of a supported project (e.g. cmip6).
-    :param str source: Name of a document source (e.g. esdoc-q).
+    :param project: Name of a supported project (e.g. cmip6).
+    :param source: Name of a document source (e.g. esdoc-q).
 
     """
     delete_files(project, source, constants.FILE_FILTER_ERROR)
@@ -60,8 +60,8 @@ def delete_error_files(project=None, source=None):
 def delete_ingested_files(project=None, source=None):
     """Deletes ingested files from archive.
 
-    :param str project: Name of a supported project (e.g. cmip6).
-    :param str source: Name of a document source (e.g. esdoc-q).
+    :param project: Name of a supported project (e.g. cmip6).
+    :param source: Name of a document source (e.g. esdoc-q).
 
     """
     delete_files(project, source, constants.FILE_FILTER_INGESTED)
@@ -70,9 +70,9 @@ def delete_ingested_files(project=None, source=None):
 def delete_files(project=None, source=None, file_filter=None):
     """Deletes files from archive.
 
-    :param str project: Name of a supported project (e.g. cmip6).
-    :param str source: Name of a document source (e.g. esdoc-q).
-    :param str file_filter: A file filter to apply.
+    :param project: Name of a supported project (e.g. cmip6).
+    :param source: Name of a document source (e.g. esdoc-q).
+    :param file_filter: A file filter to apply.
 
     """
     for file_ in yield_files(project, source, file_filter):
@@ -82,8 +82,8 @@ def delete_files(project=None, source=None, file_filter=None):
 def delete_folders(project=None, source=None):
     """Deletes folders from archive.
 
-    :param str project: Name of a supported project (e.g. cmip6).
-    :param str source: Name of a document source (e.g. esdoc-q).
+    :param project: Name of a supported project (e.g. cmip6).
+    :param source: Name of a document source (e.g. esdoc-q).
 
     """
     delete_files(project, source)
@@ -94,9 +94,9 @@ def delete_folders(project=None, source=None):
 def get_count(project=None, source=None, file_filter=None):
     """Returns archived document count.
 
-    :param str project: Name of a supported project (e.g. cmip6).
-    :param str source: Name of a document source (e.g. esdoc-q).
-    :param str file_filter: A file filter to apply when deriving the count.
+    :param project: Name of a supported project (e.g. cmip6).
+    :param source: Name of a document source (e.g. esdoc-q).
+    :param file_filter: A file filter to apply when deriving the count.
 
     :rtype: int
 
@@ -111,8 +111,8 @@ def get_count(project=None, source=None, file_filter=None):
 def get_error_count(project=None, source=None):
     """Returns archived document error count.
 
-    :param str project: Name of a supported project (e.g. cmip6).
-    :param str source: Name of a document source (e.g. esdoc-q).
+    :param project: Name of a supported project (e.g. cmip6).
+    :param source: Name of a document source (e.g. esdoc-q).
 
     :rtype: int
 
@@ -123,8 +123,8 @@ def get_error_count(project=None, source=None):
 def get_accepted_count(project=None, source=None):
     """Returns accepted archived document error count.
 
-    :param str project: Name of a supported project (e.g. cmip6).
-    :param str source: Name of a document source (e.g. esdoc-q).
+    :param project: Name of a supported project (e.g. cmip6).
+    :param source: Name of a document source (e.g. esdoc-q).
 
     :rtype: int
 
@@ -135,10 +135,10 @@ def get_accepted_count(project=None, source=None):
 def get_file(project, source, name, encoding):
     """Returns an archive file wrapper.
 
-    :param str project: Name of a supported project (e.g. cmip6).
-    :param str source: Name of a document source (e.g. esdoc-q).
-    :param str name: File name.
-    :param str encoding: File encoding.
+    :param project: Name of a supported project (e.g. cmip6).
+    :param source: Name of a document source (e.g. esdoc-q).
+    :param name: File name.
+    :param encoding: File encoding.
 
     :returns: A file wrapper for processing.
     :rtype: pyesdoc.archive.ArchiveFileInfo
@@ -156,9 +156,9 @@ def get_file(project, source, name, encoding):
 def get_folder(project, source, create=False):
     """Returns an archive folder wrapper.
 
-    :param str project: Name of a supported project (e.g. cmip6).
-    :param str source: Name of a document source (e.g. esdoc-q).
-    :param bool create: Flag indicating whether the folder should be created or not.
+    :param project: Name of a supported project (e.g. cmip6).
+    :param source: Name of a document source (e.g. esdoc-q).
+    :param create: Flag indicating whether the folder should be created or not.
 
     :returns: A folder wrapper for processing.
     :rtype: pyesdoc.archive.ArchiveFolderInfo
@@ -177,9 +177,9 @@ def get_folder(project, source, create=False):
 def yield_files(project=None, source=None, file_filter=None):
     """Yields files for processing.
 
-    :param str project: Name of a supported project (e.g. cmip6).
-    :param str source: Name of a document source (e.g. esdoc-q).
-    :param str file_filter: A file filter to be applied.
+    :param project: Name of a supported project (e.g. cmip6).
+    :param source: Name of a document source (e.g. esdoc-q).
+    :param file_filter: A file filter to be applied.
 
     :returns: Set of files for processing.
     :rtype: generator
@@ -193,9 +193,9 @@ def yield_files(project=None, source=None, file_filter=None):
 def yield_latest_documents(project=None, source=None, file_filter=None):
     """Yields latest documents for processing.
 
-    :param str project: Name of a supported project (e.g. cmip6).
-    :param str source: Name of a document source (e.g. esdoc-q).
-    :param str file_filter: A file filter to be applied.
+    :param project: Name of a supported project (e.g. cmip6).
+    :param source: Name of a document source (e.g. esdoc-q).
+    :param file_filter: A file filter to be applied.
 
     :returns: Set of latest documents for processing.
     :rtype: generator
@@ -214,8 +214,8 @@ def yield_latest_documents(project=None, source=None, file_filter=None):
 def yield_folders(project=None, source=None):
     """Yields set of folders for processing.
 
-    :param str project: Name of a supported project (e.g. cmip6).
-    :param str source: Name of a document source (e.g. esdoc-q).
+    :param project: Name of a supported project (e.g. cmip6).
+    :param source: Name of a document source (e.g. esdoc-q).
 
     :returns: Set of folders for processing.
     :rtype: generator
@@ -236,8 +236,8 @@ def yield_folders(project=None, source=None):
 def find_file(uid, version):
     """Finds an archive file wrapper for processing.
 
-    :param str uid: Document unique identifier.
-    :param str version: Document version.
+    :param uid: Document unique identifier.
+    :param version: Document version.
 
     :returns: A file wrapper to be processed.
     :rtype: pyesdoc.archive.ArchiveFileInfo
@@ -252,8 +252,8 @@ def find_file(uid, version):
 def file_exists(uid, version):
     """Returns flag indicating whether a matching archive file exists.
 
-    :param str uid: Document unique identifier.
-    :param str version: Document version.
+    :param uid: Document unique identifier.
+    :param version: Document version.
 
     :returns: A flag indicating whether a matching archive file exists.
     :rtype: boolean
@@ -265,8 +265,8 @@ def file_exists(uid, version):
 def delete_file(uid, version):
     """Deletes an archive file.
 
-    :param str uid: Document unique identifier.
-    :param str version: Document version.
+    :param uid: Document unique identifier.
+    :param version: Document version.
 
     """
     file_ = find_file(uid, version)
@@ -277,8 +277,8 @@ def delete_file(uid, version):
 def get_file_content(uid, version, encoding, must_exist=False):
     """Returns content of an archived file in the desired encoding.
 
-    :param str uid: Document unique identifier.
-    :param str version: Document version.
+    :param uid: Document unique identifier.
+    :param version: Document version.
 
     :returns: The contents of an archived file in the desired encoding.
     :rtype: unicode
@@ -294,9 +294,9 @@ def get_file_content(uid, version, encoding, must_exist=False):
 def get_file_document(uid, version, extend=True):
     """Returns document of an archived file.
 
-    :param str uid: Document unique identifier.
-    :param str version: Document version.
-    :param bool extend: Flag instructing whether to extend document.
+    :param uid: Document unique identifier.
+    :param version: Document version.
+    :param extend: Flag instructing whether to extend document.
 
     :returns: A document loaded from an archived file.
     :rtype: object | null
@@ -310,8 +310,8 @@ def get_file_document(uid, version, extend=True):
 def delete(uid, version):
     """Deletes a document from archive.
 
-    :param str uid: Document unique identifier.
-    :param str version: Document version.
+    :param uid: Document unique identifier.
+    :param version: Document version.
 
     """
     delete_file(uid, version)
@@ -320,8 +320,8 @@ def delete(uid, version):
 def exists(uid, version):
     """Returns flag indicating whether a document is already archived.
 
-    :param str uid: Document unique identifier.
-    :param str version: Document version.
+    :param uid: Document unique identifier.
+    :param version: Document version.
 
     :returns: Flag indicating whether a document is already archived.
     :rtype: boolean
@@ -333,9 +333,9 @@ def exists(uid, version):
 def load(uid, version, encoding='json', must_exist=False):
     """Loads document content from archive.
 
-    :param str uid: Document unique identifier.
-    :param str version: Document version.
-    :param bool must_exist: Flag indicating whether the document is expected to exist within the archive.
+    :param uid: Document unique identifier.
+    :param version: Document version.
+    :param must_exist: Flag indicating whether the document is expected to exist within the archive.
 
     :returns: Document content loaded from archive.
     :rtype: unicode | None
@@ -386,9 +386,9 @@ def load_references(references):
 def read(uid, version, extend=True):
     """Reads a document from archive.
 
-    :param str uid: Document unique identifier.
-    :param str version: Document version.
-    :param bool extend: Flag instructing whether to extend document.
+    :param uid: Document unique identifier.
+    :param version: Document version.
+    :param extend: Flag instructing whether to extend document.
 
     :returns: A document.
     :rtype: object
@@ -400,7 +400,7 @@ def read(uid, version, extend=True):
 def write(doc):
     """Writes a document to the archive.
 
-    :param object doc: Document to be written.
+    :param doc: Document to be written.
 
     :returns: Pointer to archive file.
     :rtype: pyesdoc.archive.FileInfo

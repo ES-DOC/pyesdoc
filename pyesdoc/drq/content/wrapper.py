@@ -16,7 +16,7 @@ class Wrapper(object):
     def __init__(self, sections):
         """Instance constructor.
 
-        :param list sections: Collection of content sections.
+        :param sections: Collection of content sections.
 
         """
         self._sections = sorted(sections, key=lambda i: i._TABLE.label.lower())

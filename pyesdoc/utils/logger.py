@@ -1,87 +1,62 @@
-"""
-.. module:: pyessv._utils.logger.py
-   :copyright: Copyright "December 01, 2016", IPSL
-   :license: GPL/CeCIL
-   :platform: Unix, Windows
-   :synopsis: Package logging utility functions.
-
-.. moduleauthor:: Mark Conway-Greenslade <momipsl@ipsl.jussieu.fr>
-
-
-"""
-import arrow
-
-from pyesdoc.utils.compat import str
-
+import datetime as dt
+import typing
 
 
 # Set of logging levels.
-LOG_LEVEL_DEBUG = 'DUBUG'
-LOG_LEVEL_INFO = 'INFO'
-LOG_LEVEL_WARNING = 'WARNING'
-LOG_LEVEL_ERROR = 'ERROR'
-LOG_LEVEL_CRITICAL = 'CRITICAL'
-LOG_LEVEL_FATAL = 'FATAL'
-
-# Defaults.
-_DEFAULT_APP = 'PYESDOC'
-_DEFAULT_INSTITUTE = 'ESDOC'
+LOG_LEVEL_DEBUG = "DEBUG"
+LOG_LEVEL_INFO = "INFO"
+LOG_LEVEL_WARNING = "WARNING"
+LOG_LEVEL_ERROR = "ERROR"
+LOG_LEVEL_CRITICAL = "CRITICAL"
+LOG_LEVEL_FATAL = "FATAL"
 
 # Text to display when passed a null message.
-_NULL_MSG = '-------------------------------------------------------------------------------'
+_NULL_MSG = "-------------------------------------------------------------------------------"
 
 
-def _get_formatted_message(msg, level, app):
+def log(msg: object=None, level: str=LOG_LEVEL_INFO):
+    """Outputs a message to log.
+
+    :param msg: Message to be written to log.
+    :param level: Message level (e.g. INFO).
+
+    """
+    # TODO use structlog/logstash.
+    print(_get_formatted_message(msg, level))
+
+
+def log_error(err: typing.Union[BaseException, str]):
+    """Logs a runtime error.
+
+    :param err: Error to be written to log.
+
+    """
+    msg = "!! RUNTIME ERROR !! :: "
+    if issubclass(BaseException, err.__class__):
+        msg += "{} :: {}".format(err.__class__, err)
+    else:
+        msg += "{}".format(err)
+    log(msg, LOG_LEVEL_ERROR)
+
+
+def log_warning(err: typing.Union[BaseException, str]):
+    """Logs a runtime warning.
+
+    :param err: Error to be written to log.
+
+    """
+    if issubclass(BaseException, err.__class__):
+        msg = "{} :: {}".format(err.__class__, err)
+    else:
+        msg = "{}".format(err)
+    log(msg, LOG_LEVEL_WARNING)
+
+
+def _get_formatted_message(msg: object, level: str) -> str:
     """Returns a message formatted for logging.
 
     """
     if msg is None:
         return _NULL_MSG
     else:
-        return '{} [{}] :: ESDOC-{} :: {}'.format(
-            str(arrow.get())[0:-6],
-            level,
-            app,
-            str(msg).strip()
-            )
-
-
-def log(msg=None, level=LOG_LEVEL_INFO, app=_DEFAULT_APP):
-    """Outputs a message to log.
-
-    :param str msg: Message to be written to log.
-    :param str level: Message level (e.g. INFO).
-    :param str app: Application emitting log message (e.g. libIGCM).
-
-    """
-    # TODO use structlog/logstash.
-    print(_get_formatted_message(msg, level, app))
-
-
-def log_error(err, app=_DEFAULT_APP):
-    """Logs a runtime error.
-
-    :param str err: Error to be written to log.
-    :param str app: Application emitting log message (e.g. libIGCM).
-
-    """
-    msg = '!! RUNTIME ERROR !! :: '
-    if issubclass(BaseException, err.__class__):
-        msg += '{} :: {}'.format(err.__class__, err)
-    else:
-        msg += '{}'.format(err)
-    log(msg, LOG_LEVEL_ERROR, app)
-
-
-def log_warning(err, app=_DEFAULT_APP):
-    """Logs a runtime warning.
-
-    :param str err: Error to be written to log.
-    :param str app: Application emitting log message (e.g. libIGCM).
-
-    """
-    if issubclass(BaseException, err.__class__):
-        msg = '{} :: {}'.format(err.__class__, err)
-    else:
-        msg = '{}'.format(err)
-    log(msg, LOG_LEVEL_WARNING, app)
+        return f"{dt.datetime.utcnow()} [{level}] :: PYESDOC :: {str(msg).strip()}"

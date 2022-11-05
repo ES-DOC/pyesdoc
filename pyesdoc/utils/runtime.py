@@ -12,7 +12,7 @@
 def assert_doc(doc):
     """Asserts thay passed variable is a pyesdoc object instance.
 
-    :param object doc: A pyesdoc object instance.
+    :param doc: A pyesdoc object instance.
 
     """
     if doc is None or not isinstance(doc, object):
@@ -24,7 +24,7 @@ def assert_doc(doc):
 def invoke(ctx, actions, error_actions):
     """Invokes a set of actions.
 
-    :param object ctx: Processing context information.
+    :param ctx: Processing context information.
     :param iterable actions: Set of actions to perform.
     :param iterable error_actions: Set of error actions to perform.
 
@@ -42,8 +42,8 @@ def first(collection, name, value, value_formatter=None):
     """Returns first item in collection filtered by attribute name/value.
 
     :param iterable collection: A collection of items for filtering.
-    :param str name: Name of an attribute acting as filter target.
-    :param object value: Value to filter by.
+    :param name: Name of an attribute acting as filter target.
+    :param value: Value to filter by.
     :param function formatter: Value formatting function.
 
     :returns: First item in collection filtered by attribute name/value.
@@ -59,8 +59,8 @@ def all(collection, name, value, formatter=None):
     """Returns collection filtered by attribute name/value.
 
     :param iterable collection: A collection of items for filtering.
-    :param str name: Name of an attribute acting as filter target.
-    :param object value: Value to filter by.
+    :param name: Name of an attribute acting as filter target.
+    :param value: Value to filter by.
     :param function formatter: Value formatting function.
 
     :returns: Collection filtered by attribute name/value.

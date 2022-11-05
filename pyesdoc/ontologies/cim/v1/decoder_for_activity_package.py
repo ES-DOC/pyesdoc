@@ -21,7 +21,7 @@ def decode_activity(xml, nsmap):
     """Decodes an instance of the following type: activity.
 
     :param lxml.etree xml: XML from which type is to be decoded.
-    :param dict nsmap: XML namespace mappings.
+    :param nsmap: XML namespace mappings.
 
     :returns: A decoded type instance.
     :rtype: cim.v1.typeset.activity.Activity
@@ -41,7 +41,7 @@ def decode_boundary_condition(xml, nsmap):
     """Decodes an instance of the following type: boundary condition.
 
     :param lxml.etree xml: XML from which type is to be decoded.
-    :param dict nsmap: XML namespace mappings.
+    :param nsmap: XML namespace mappings.
 
     :returns: A decoded type instance.
     :rtype: cim.v1.typeset.activity.BoundaryCondition
@@ -68,7 +68,7 @@ def decode_conformance(xml, nsmap):
     """Decodes an instance of the following type: conformance.
 
     :param lxml.etree xml: XML from which type is to be decoded.
-    :param dict nsmap: XML namespace mappings.
+    :param nsmap: XML namespace mappings.
 
     :returns: A decoded type instance.
     :rtype: cim.v1.typeset.activity.Conformance
@@ -101,7 +101,7 @@ def decode_downscaling_simulation(xml, nsmap):
     """Decodes an instance of the following type: downscaling simulation.
 
     :param lxml.etree xml: XML from which type is to be decoded.
-    :param dict nsmap: XML namespace mappings.
+    :param nsmap: XML namespace mappings.
 
     :returns: A decoded type instance.
     :rtype: cim.v1.typeset.activity.DownscalingSimulation
@@ -142,7 +142,7 @@ def decode_ensemble(xml, nsmap):
     """Decodes an instance of the following type: ensemble.
 
     :param lxml.etree xml: XML from which type is to be decoded.
-    :param dict nsmap: XML namespace mappings.
+    :param nsmap: XML namespace mappings.
 
     :returns: A decoded type instance.
     :rtype: cim.v1.typeset.activity.Ensemble
@@ -177,7 +177,7 @@ def decode_ensemble_member(xml, nsmap):
     """Decodes an instance of the following type: ensemble member.
 
     :param lxml.etree xml: XML from which type is to be decoded.
-    :param dict nsmap: XML namespace mappings.
+    :param nsmap: XML namespace mappings.
 
     :returns: A decoded type instance.
     :rtype: cim.v1.typeset.activity.EnsembleMember
@@ -207,7 +207,7 @@ def decode_experiment(xml, nsmap):
     """Decodes an instance of the following type: experiment.
 
     :param lxml.etree xml: XML from which type is to be decoded.
-    :param dict nsmap: XML namespace mappings.
+    :param nsmap: XML namespace mappings.
 
     :returns: A decoded type instance.
     :rtype: cim.v1.typeset.activity.Experiment
@@ -227,7 +227,7 @@ def decode_experiment_relationship(xml, nsmap):
     """Decodes an instance of the following type: experiment relationship.
 
     :param lxml.etree xml: XML from which type is to be decoded.
-    :param dict nsmap: XML namespace mappings.
+    :param nsmap: XML namespace mappings.
 
     :returns: A decoded type instance.
     :rtype: cim.v1.typeset.activity.ExperimentRelationship
@@ -243,7 +243,7 @@ def decode_experiment_relationship_target(xml, nsmap):
     """Decodes an instance of the following type: experiment relationship target.
 
     :param lxml.etree xml: XML from which type is to be decoded.
-    :param dict nsmap: XML namespace mappings.
+    :param nsmap: XML namespace mappings.
 
     :returns: A decoded type instance.
     :rtype: cim.v1.typeset.activity.ExperimentRelationshipTarget
@@ -259,7 +259,7 @@ def decode_initial_condition(xml, nsmap):
     """Decodes an instance of the following type: initial condition.
 
     :param lxml.etree xml: XML from which type is to be decoded.
-    :param dict nsmap: XML namespace mappings.
+    :param nsmap: XML namespace mappings.
 
     :returns: A decoded type instance.
     :rtype: cim.v1.typeset.activity.InitialCondition
@@ -286,7 +286,7 @@ def decode_lateral_boundary_condition(xml, nsmap):
     """Decodes an instance of the following type: lateral boundary condition.
 
     :param lxml.etree xml: XML from which type is to be decoded.
-    :param dict nsmap: XML namespace mappings.
+    :param nsmap: XML namespace mappings.
 
     :returns: A decoded type instance.
     :rtype: cim.v1.typeset.activity.LateralBoundaryCondition
@@ -313,7 +313,7 @@ def decode_measurement_campaign(xml, nsmap):
     """Decodes an instance of the following type: measurement campaign.
 
     :param lxml.etree xml: XML from which type is to be decoded.
-    :param dict nsmap: XML namespace mappings.
+    :param nsmap: XML namespace mappings.
 
     :returns: A decoded type instance.
     :rtype: cim.v1.typeset.activity.MeasurementCampaign
@@ -333,7 +333,7 @@ def decode_numerical_activity(xml, nsmap):
     """Decodes an instance of the following type: numerical activity.
 
     :param lxml.etree xml: XML from which type is to be decoded.
-    :param dict nsmap: XML namespace mappings.
+    :param nsmap: XML namespace mappings.
 
     :returns: A decoded type instance.
     :rtype: cim.v1.typeset.activity.NumericalActivity
@@ -358,7 +358,7 @@ def decode_numerical_experiment(xml, nsmap):
     """Decodes an instance of the following type: numerical experiment.
 
     :param lxml.etree xml: XML from which type is to be decoded.
-    :param dict nsmap: XML namespace mappings.
+    :param nsmap: XML namespace mappings.
 
     :returns: A decoded type instance.
     :rtype: cim.v1.typeset.activity.NumericalExperiment
@@ -393,7 +393,7 @@ def decode_numerical_requirement(xml, nsmap):
     """Decodes an instance of the following type: numerical requirement.
 
     :param lxml.etree xml: XML from which type is to be decoded.
-    :param dict nsmap: XML namespace mappings.
+    :param nsmap: XML namespace mappings.
 
     :returns: A decoded type instance.
     :rtype: cim.v1.typeset.activity.NumericalRequirement
@@ -420,7 +420,7 @@ def decode_numerical_requirement_option(xml, nsmap):
     """Decodes an instance of the following type: numerical requirement option.
 
     :param lxml.etree xml: XML from which type is to be decoded.
-    :param dict nsmap: XML namespace mappings.
+    :param nsmap: XML namespace mappings.
 
     :returns: A decoded type instance.
     :rtype: cim.v1.typeset.activity.NumericalRequirementOption
@@ -455,7 +455,7 @@ def decode_output_requirement(xml, nsmap):
     """Decodes an instance of the following type: output requirement.
 
     :param lxml.etree xml: XML from which type is to be decoded.
-    :param dict nsmap: XML namespace mappings.
+    :param nsmap: XML namespace mappings.
 
     :returns: A decoded type instance.
     :rtype: cim.v1.typeset.activity.OutputRequirement
@@ -482,7 +482,7 @@ def decode_physical_modification(xml, nsmap):
     """Decodes an instance of the following type: physical modification.
 
     :param lxml.etree xml: XML from which type is to be decoded.
-    :param dict nsmap: XML namespace mappings.
+    :param nsmap: XML namespace mappings.
 
     :returns: A decoded type instance.
     :rtype: cim.v1.typeset.activity.PhysicalModification
@@ -515,7 +515,7 @@ def decode_simulation(xml, nsmap):
     """Decodes an instance of the following type: simulation.
 
     :param lxml.etree xml: XML from which type is to be decoded.
-    :param dict nsmap: XML namespace mappings.
+    :param nsmap: XML namespace mappings.
 
     :returns: A decoded type instance.
     :rtype: cim.v1.typeset.activity.Simulation
@@ -552,7 +552,7 @@ def decode_simulation_composite(xml, nsmap):
     """Decodes an instance of the following type: simulation composite.
 
     :param lxml.etree xml: XML from which type is to be decoded.
-    :param dict nsmap: XML namespace mappings.
+    :param nsmap: XML namespace mappings.
 
     :returns: A decoded type instance.
     :rtype: cim.v1.typeset.activity.SimulationComposite
@@ -595,7 +595,7 @@ def decode_simulation_relationship(xml, nsmap):
     """Decodes an instance of the following type: simulation relationship.
 
     :param lxml.etree xml: XML from which type is to be decoded.
-    :param dict nsmap: XML namespace mappings.
+    :param nsmap: XML namespace mappings.
 
     :returns: A decoded type instance.
     :rtype: cim.v1.typeset.activity.SimulationRelationship
@@ -611,7 +611,7 @@ def decode_simulation_relationship_target(xml, nsmap):
     """Decodes an instance of the following type: simulation relationship target.
 
     :param lxml.etree xml: XML from which type is to be decoded.
-    :param dict nsmap: XML namespace mappings.
+    :param nsmap: XML namespace mappings.
 
     :returns: A decoded type instance.
     :rtype: cim.v1.typeset.activity.SimulationRelationshipTarget
@@ -627,7 +627,7 @@ def decode_simulation_run(xml, nsmap):
     """Decodes an instance of the following type: simulation run.
 
     :param lxml.etree xml: XML from which type is to be decoded.
-    :param dict nsmap: XML namespace mappings.
+    :param nsmap: XML namespace mappings.
 
     :returns: A decoded type instance.
     :rtype: cim.v1.typeset.activity.SimulationRun
@@ -669,7 +669,7 @@ def decode_spatio_temporal_constraint(xml, nsmap):
     """Decodes an instance of the following type: spatio temporal constraint.
 
     :param lxml.etree xml: XML from which type is to be decoded.
-    :param dict nsmap: XML namespace mappings.
+    :param nsmap: XML namespace mappings.
 
     :returns: A decoded type instance.
     :rtype: cim.v1.typeset.activity.SpatioTemporalConstraint

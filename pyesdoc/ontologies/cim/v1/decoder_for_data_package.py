@@ -19,7 +19,7 @@ def decode_data_content(xml, nsmap):
     """Decodes an instance of the following type: data content.
 
     :param lxml.etree xml: XML from which type is to be decoded.
-    :param dict nsmap: XML namespace mappings.
+    :param nsmap: XML namespace mappings.
 
     :returns: A decoded type instance.
     :rtype: cim.v1.typeset.data.DataContent
@@ -38,7 +38,7 @@ def decode_data_distribution(xml, nsmap):
     """Decodes an instance of the following type: data distribution.
 
     :param lxml.etree xml: XML from which type is to be decoded.
-    :param dict nsmap: XML namespace mappings.
+    :param nsmap: XML namespace mappings.
 
     :returns: A decoded type instance.
     :rtype: cim.v1.typeset.data.DataDistribution
@@ -57,7 +57,7 @@ def decode_data_extent(xml, nsmap):
     """Decodes an instance of the following type: data extent.
 
     :param lxml.etree xml: XML from which type is to be decoded.
-    :param dict nsmap: XML namespace mappings.
+    :param nsmap: XML namespace mappings.
 
     :returns: A decoded type instance.
     :rtype: cim.v1.typeset.data.DataExtent
@@ -75,7 +75,7 @@ def decode_data_extent_geographical(xml, nsmap):
     """Decodes an instance of the following type: data extent geographical.
 
     :param lxml.etree xml: XML from which type is to be decoded.
-    :param dict nsmap: XML namespace mappings.
+    :param nsmap: XML namespace mappings.
 
     :returns: A decoded type instance.
     :rtype: cim.v1.typeset.data.DataExtentGeographical
@@ -95,7 +95,7 @@ def decode_data_extent_temporal(xml, nsmap):
     """Decodes an instance of the following type: data extent temporal.
 
     :param lxml.etree xml: XML from which type is to be decoded.
-    :param dict nsmap: XML namespace mappings.
+    :param nsmap: XML namespace mappings.
 
     :returns: A decoded type instance.
     :rtype: cim.v1.typeset.data.DataExtentTemporal
@@ -114,7 +114,7 @@ def decode_data_extent_time_interval(xml, nsmap):
     """Decodes an instance of the following type: data extent time interval.
 
     :param lxml.etree xml: XML from which type is to be decoded.
-    :param dict nsmap: XML namespace mappings.
+    :param nsmap: XML namespace mappings.
 
     :returns: A decoded type instance.
     :rtype: cim.v1.typeset.data.DataExtentTimeInterval
@@ -133,7 +133,7 @@ def decode_data_hierarchy_level(xml, nsmap):
     """Decodes an instance of the following type: data hierarchy level.
 
     :param lxml.etree xml: XML from which type is to be decoded.
-    :param dict nsmap: XML namespace mappings.
+    :param nsmap: XML namespace mappings.
 
     :returns: A decoded type instance.
     :rtype: cim.v1.typeset.data.DataHierarchyLevel
@@ -152,7 +152,7 @@ def decode_data_object(xml, nsmap):
     """Decodes an instance of the following type: data object.
 
     :param lxml.etree xml: XML from which type is to be decoded.
-    :param dict nsmap: XML namespace mappings.
+    :param nsmap: XML namespace mappings.
 
     :returns: A decoded type instance.
     :rtype: cim.v1.typeset.data.DataObject
@@ -182,7 +182,7 @@ def decode_data_property(xml, nsmap):
     """Decodes an instance of the following type: data property.
 
     :param lxml.etree xml: XML from which type is to be decoded.
-    :param dict nsmap: XML namespace mappings.
+    :param nsmap: XML namespace mappings.
 
     :returns: A decoded type instance.
     :rtype: cim.v1.typeset.data.DataProperty
@@ -201,7 +201,7 @@ def decode_data_restriction(xml, nsmap):
     """Decodes an instance of the following type: data restriction.
 
     :param lxml.etree xml: XML from which type is to be decoded.
-    :param dict nsmap: XML namespace mappings.
+    :param nsmap: XML namespace mappings.
 
     :returns: A decoded type instance.
     :rtype: cim.v1.typeset.data.DataRestriction
@@ -217,7 +217,7 @@ def decode_data_storage(xml, nsmap):
     """Decodes an instance of the following type: data storage.
 
     :param lxml.etree xml: XML from which type is to be decoded.
-    :param dict nsmap: XML namespace mappings.
+    :param nsmap: XML namespace mappings.
 
     :returns: A decoded type instance.
     :rtype: cim.v1.typeset.data.DataStorage
@@ -233,7 +233,7 @@ def decode_data_storage_db(xml, nsmap):
     """Decodes an instance of the following type: data storage db.
 
     :param lxml.etree xml: XML from which type is to be decoded.
-    :param dict nsmap: XML namespace mappings.
+    :param nsmap: XML namespace mappings.
 
     :returns: A decoded type instance.
     :rtype: cim.v1.typeset.data.DataStorageDb
@@ -249,7 +249,7 @@ def decode_data_storage_file(xml, nsmap):
     """Decodes an instance of the following type: data storage file.
 
     :param lxml.etree xml: XML from which type is to be decoded.
-    :param dict nsmap: XML namespace mappings.
+    :param nsmap: XML namespace mappings.
 
     :returns: A decoded type instance.
     :rtype: cim.v1.typeset.data.DataStorageFile
@@ -265,7 +265,7 @@ def decode_data_storage_ip(xml, nsmap):
     """Decodes an instance of the following type: data storage ip.
 
     :param lxml.etree xml: XML from which type is to be decoded.
-    :param dict nsmap: XML namespace mappings.
+    :param nsmap: XML namespace mappings.
 
     :returns: A decoded type instance.
     :rtype: cim.v1.typeset.data.DataStorageIp
@@ -283,7 +283,7 @@ def decode_data_topic(xml, nsmap):
     """Decodes an instance of the following type: data topic.
 
     :param lxml.etree xml: XML from which type is to be decoded.
-    :param dict nsmap: XML namespace mappings.
+    :param nsmap: XML namespace mappings.
 
     :returns: A decoded type instance.
     :rtype: cim.v1.typeset.data.DataTopic

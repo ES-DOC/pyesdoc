@@ -49,10 +49,10 @@ def init_from_xml(
     ):
     """Initialises set of class instance attributes from an xml element.
 
-    :param object instance: Class instance to be initialized.
+    :param instance: Class instance to be initialized.
     :param xml.etree.Element elem: XML element used to hydrate class instance.
-    :param list names: Set of class attribute names.
-    :param dict convertors: Map of value convertors keyed by attribute name.
+    :param names: Set of class attribute names.
+    :param convertors: Map of value convertors keyed by attribute name.
 
     """
     names = [(n, get_label(n)) for n in names]

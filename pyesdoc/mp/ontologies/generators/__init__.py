@@ -46,8 +46,8 @@ def _can_generate(schema, language, output_dir):
     """Verifies whether the generation options are in a state such that generation can occur.
 
     :param module schema: Ontology schema definition.
-    :param str language: Target programming language.
-    :param str io_dir: Target I/O directory.
+    :param language: Target programming language.
+    :param io_dir: Target I/O directory.
 
     :returns: True if generation can occur, False otherwise.
     :rtype: bool
@@ -103,8 +103,8 @@ def generate(schema, language, io_dir):
     """Generates code.
 
     :param module schema: Ontology schema definition.
-    :param str language: Target programming language.
-    :param str io_dir: Target I/O directory.
+    :param language: Target programming language.
+    :param io_dir: Target I/O directory.
 
     """
     if not _can_generate(schema, language, io_dir):

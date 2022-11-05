@@ -199,8 +199,8 @@ def authenticate_user(credentials):
 def authorize_user(team_id, user_id):
     """Verifies a user is a member of a team.
 
-    :param str team_id: GitHub team identifier.
-    :param str user_id: GitHub user login.
+    :param team_id: GitHub team identifier.
+    :param user_id: GitHub user login.
 
     """
     # Validate inputs.
@@ -218,7 +218,7 @@ def authorize_user(team_id, user_id):
 def strip_credentials(credentials):
     """Strips passed credentials from HTTP header.
 
-    :param str credentials: Base64 encoded, ':' delimited credentials.
+    :param credentials: Base64 encoded, ':' delimited credentials.
 
     :returns: Stripped credentials.
     :rtype: tuple

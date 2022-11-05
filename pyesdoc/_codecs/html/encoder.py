@@ -50,7 +50,7 @@ _TEMPLATE_TYPE_MAPPINGS = {
 def encode(doc):
     """Encodes a document to HTML.
 
-    :param object doc: Document being encoded.
+    :param doc: Document being encoded.
 
     :returns: An HTML representation of a document.
     :rtype: str

@@ -17,10 +17,10 @@ from pyesdoc.ontologies import type_info
 def get_type_key(name, version, package, typeof):
     """Returns type key.
 
-    :param str name: Ontology name, e.g. cim.
-    :param str version: Ontology version, e.g. 1.
-    :param str package: Ontology package, e.g. activity.
-    :param str typeof: Ontology type, e.g. Experiment.
+    :param name: Ontology name, e.g. cim.
+    :param version: Ontology version, e.g. 1.
+    :param package: Ontology package, e.g. activity.
+    :param typeof: Ontology type, e.g. Experiment.
 
     :returns: A type key.
     :rtype: str
@@ -32,8 +32,8 @@ def get_type_key(name, version, package, typeof):
 def get_types(name=None, version=None):
     """Returns set of supported types.
 
-    :param str name: Ontology name, e.g. cim.
-    :param str version: Ontology version, e.g. 1.
+    :param name: Ontology name, e.g. cim.
+    :param version: Ontology version, e.g. 1.
 
     :returns: A tuple of supported types.
     :rtype: tuple
@@ -53,8 +53,8 @@ def get_types(name=None, version=None):
 def list_types(name=None, version=None):
     """Returns list of supported type keys and types.
 
-    :param str name: Ontology name, e.g. cim.
-    :param str version: Ontology version, e.g. 1.
+    :param name: Ontology name, e.g. cim.
+    :param version: Ontology version, e.g. 1.
 
     :returns: A tuple of supported typekeys and types.
     :rtype: tuple
@@ -79,10 +79,10 @@ def get_doc_type_keyset():
 def get_type(name, version, package, typeof):
     """Returns a type if supported.
 
-    :param str name: Ontology name, e.g. cim.
-    :param str version: Ontology version, e.g. 1.
-    :param str package: Ontology package, e.g. activity.
-    :param str typeof: Ontology type, e.g. Experiment.
+    :param name: Ontology name, e.g. cim.
+    :param version: Ontology version, e.g. 1.
+    :param package: Ontology package, e.g. activity.
+    :param typeof: Ontology type, e.g. Experiment.
 
     :returns: A type (if found).
     :rtype: class or None
@@ -106,7 +106,7 @@ def get_type_key(doc_type):
 def get_type_from_key(key):
     """Returns a type if supported.
 
-    :param str key: Type key, e.g. cim.1.software.ModelComponent.
+    :param key: Type key, e.g. cim.1.software.ModelComponent.
 
     :returns: A type (if found).
     :rtype: class or None
@@ -121,10 +121,10 @@ def get_type_from_key(key):
 def is_supported(name, version, package=None, typeof=None):
     """Returns a flag indicating whether ontology/type is supported.
 
-    :param str name: Ontology name, e.g. cim.
-    :param str version: Ontology version, e.g. 1.
-    :param str package: Ontology package, e.g. activity.
-    :param str typeof: Ontology type, e.g. Experiment.
+    :param name: Ontology name, e.g. cim.
+    :param version: Ontology version, e.g. 1.
+    :param package: Ontology package, e.g. activity.
+    :param typeof: Ontology type, e.g. Experiment.
 
     :returns: A flag indicating whether ontology is supported.
     :rtype: bool
@@ -159,8 +159,8 @@ def get_decoder_info(doc_type):
 def get_constraint(constraints, constraint_type):
     """Returns first constraint within collection of the matching type.
 
-    :param list constraints: A collection of constraints.
-    :param str constraint_type: Type of constraint.
+    :param constraints: A collection of constraints.
+    :param constraint_type: Type of constraint.
 
     :returns: Constrain meta-information.
     :rtype: tuple
@@ -175,7 +175,7 @@ def get_constraints(doc_type, type_filter=None):
     """Returns constraints associated with a type.
 
     :param class doc_type: A document type for which meta-information is to be returned.
-    :param str type_filtre: A constraint type filter.
+    :param type_filtre: A constraint type filter.
 
     :returns: Type meta-information.
     :rtype: tuple
@@ -191,8 +191,8 @@ def get_property_constraint(container, name, typeof):
     """Returns property constraints associated with a type instance.
 
     :param class container: A document instance for which meta-information is to be returned.
-    :param str name: Property name.
-    :param str typeof: Type of property constraint to be returned.
+    :param name: Property name.
+    :param typeof: Type of property constraint to be returned.
 
     :returns: Constraint meta-information.
     :rtype: tuple

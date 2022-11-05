@@ -120,10 +120,10 @@ _SIMPLE_TYPE_DECODERS = {
 def set_attributes(target, xml, nsmap, decodings):
     """Decodes entity attributes from a collection of decodings.
 
-    :param object target: A pyesdoc object with a set of attributes to be assigned.
+    :param target: A pyesdoc object with a set of attributes to be assigned.
     :param lxml.etree._Element xml: An xml element.
-    :param dict nsmap: Set of xml namespace mappings.
-    :param dict decodings: Set of mappings used to perform decoding.
+    :param nsmap: Set of xml namespace mappings.
+    :param decodings: Set of mappings used to perform decoding.
 
     :returns: A pyesdoc object with assigned attributes.
     :rtype: object
@@ -240,8 +240,8 @@ def decode_xml(decoder, xml, nsmap, is_iterable):
 
     :param function decoder: Decoder function pointer.
     :param lxml.etree._Element xml: An xml element.
-    :param dict nsmap: Set of xml namespace mappings.
-    :param bool take_first: Flag indicating whether to return only the first entity of a collection.
+    :param nsmap: Set of xml namespace mappings.
+    :param take_first: Flag indicating whether to return only the first entity of a collection.
 
     :returns: Decoded entity or entity collection.
     :rtype: miscellaneous
@@ -274,9 +274,9 @@ def decode_xml(decoder, xml, nsmap, is_iterable):
 def load_xml(xml, return_nsmap=False, default_ns='cim'):
     """Loads etree xml element.
 
-    :param string xml: An xml blob.
-    :param bool return_nsmap: Flag indicating whether namespace map will be returned or not.
-    :param str default_ns: Default namespace.
+    :paraming xml: An xml blob.
+    :param return_nsmap: Flag indicating whether namespace map will be returned or not.
+    :param default_ns: Default namespace.
 
     :returns: XML element.
     :rtype: lxml.etree._Element

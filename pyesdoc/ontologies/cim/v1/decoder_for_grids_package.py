@@ -19,7 +19,7 @@ def decode_coordinate_list(xml, nsmap):
     """Decodes an instance of the following type: coordinate list.
 
     :param lxml.etree xml: XML from which type is to be decoded.
-    :param dict nsmap: XML namespace mappings.
+    :param nsmap: XML namespace mappings.
 
     :returns: A decoded type instance.
     :rtype: cim.v1.typeset.grids.CoordinateList
@@ -38,7 +38,7 @@ def decode_grid_extent(xml, nsmap):
     """Decodes an instance of the following type: grid extent.
 
     :param lxml.etree xml: XML from which type is to be decoded.
-    :param dict nsmap: XML namespace mappings.
+    :param nsmap: XML namespace mappings.
 
     :returns: A decoded type instance.
     :rtype: cim.v1.typeset.grids.GridExtent
@@ -59,7 +59,7 @@ def decode_grid_mosaic(xml, nsmap):
     """Decodes an instance of the following type: grid mosaic.
 
     :param lxml.etree xml: XML from which type is to be decoded.
-    :param dict nsmap: XML namespace mappings.
+    :param nsmap: XML namespace mappings.
 
     :returns: A decoded type instance.
     :rtype: cim.v1.typeset.grids.GridMosaic
@@ -88,7 +88,7 @@ def decode_grid_property(xml, nsmap):
     """Decodes an instance of the following type: grid property.
 
     :param lxml.etree xml: XML from which type is to be decoded.
-    :param dict nsmap: XML namespace mappings.
+    :param nsmap: XML namespace mappings.
 
     :returns: A decoded type instance.
     :rtype: cim.v1.typeset.grids.GridProperty
@@ -106,7 +106,7 @@ def decode_grid_spec(xml, nsmap):
     """Decodes an instance of the following type: grid spec.
 
     :param lxml.etree xml: XML from which type is to be decoded.
-    :param dict nsmap: XML namespace mappings.
+    :param nsmap: XML namespace mappings.
 
     :returns: A decoded type instance.
     :rtype: cim.v1.typeset.grids.GridSpec
@@ -125,7 +125,7 @@ def decode_grid_tile(xml, nsmap):
     """Decodes an instance of the following type: grid tile.
 
     :param lxml.etree xml: XML from which type is to be decoded.
-    :param dict nsmap: XML namespace mappings.
+    :param nsmap: XML namespace mappings.
 
     :returns: A decoded type instance.
     :rtype: cim.v1.typeset.grids.GridTile
@@ -160,7 +160,7 @@ def decode_grid_tile_resolution_type(xml, nsmap):
     """Decodes an instance of the following type: grid tile resolution type.
 
     :param lxml.etree xml: XML from which type is to be decoded.
-    :param dict nsmap: XML namespace mappings.
+    :param nsmap: XML namespace mappings.
 
     :returns: A decoded type instance.
     :rtype: cim.v1.typeset.grids.GridTileResolutionType
@@ -178,7 +178,7 @@ def decode_simple_grid_geometry(xml, nsmap):
     """Decodes an instance of the following type: simple grid geometry.
 
     :param lxml.etree xml: XML from which type is to be decoded.
-    :param dict nsmap: XML namespace mappings.
+    :param nsmap: XML namespace mappings.
 
     :returns: A decoded type instance.
     :rtype: cim.v1.typeset.grids.SimpleGridGeometry
@@ -194,7 +194,7 @@ def decode_vertical_coordinate_list(xml, nsmap):
     """Decodes an instance of the following type: vertical coordinate list.
 
     :param lxml.etree xml: XML from which type is to be decoded.
-    :param dict nsmap: XML namespace mappings.
+    :param nsmap: XML namespace mappings.
 
     :returns: A decoded type instance.
     :rtype: cim.v1.typeset.grids.VerticalCoordinateList

@@ -58,7 +58,7 @@ def _strip(name):
 def _strip_type_name(name):
     """Returns stripped type name.
 
-    :param str name: Name being converted.
+    :param name: Name being converted.
 
     """
     name = _strip(name)
@@ -121,8 +121,8 @@ def get_ontology_directory(ctx, sub=None):
     """Returns ontology directory into which code is generated.
 
     :param GeneratorContext ctx: Generation context information.
-    :param str sub: Subpackage name.
-    :param bool include_version: Subpackage name.
+    :param sub: Subpackage name.
+    :param include_version: Subpackage name.
 
     """
     dir = ctx.output_dir + '/'
@@ -136,7 +136,7 @@ def get_ontology_directory(ctx, sub=None):
 def get_package_name(name):
     """Converts name to a python package name.
 
-    :param str name: Package name being converted.
+    :param name: Package name being converted.
 
     """
     return _strip_package_name(name)
@@ -145,7 +145,7 @@ def get_package_name(name):
 def get_full_type_name(c):
     """Converts name to a python type name.
 
-    :param str name: Class name being converted.
+    :param name: Class name being converted.
 
     """
     return get_package_name(c.package) + "." + get_type_name(c)
@@ -154,7 +154,7 @@ def get_full_type_name(c):
 def get_type_name(name):
     """Converts name to a python type name.
 
-    :param str name: Class name being converted.
+    :param name: Class name being converted.
 
     """
     return convert_to_camel_case(_strip_type_name(name))
@@ -163,7 +163,7 @@ def get_type_name(name):
 def get_type_import_name(name):
     """Converts name to a python type import name.
 
-    :param str name: Class name being converted.
+    :param name: Class name being converted.
 
     """
     return _strip_type_name(name)
@@ -172,7 +172,7 @@ def get_type_import_name(name):
 def get_type_func_name(name):
     """Converts name to one suitable for use in a python function definition.
 
-    :param str name: Class name being converted.
+    :param name: Class name being converted.
 
     """
     return _strip_type_name(name)
@@ -181,7 +181,7 @@ def get_type_func_name(name):
 def get_type_doc_string_name(name):
     """Converts name to one suitable for use in python documentation.
 
-    :param str name: Type name being converted.
+    :param name: Type name being converted.
 
     """
     return _strip_type_name(name).replace('_', ' ')
@@ -253,7 +253,7 @@ def get_property_default_value(p):
 def get_type_name(type):
     """Returns python type name.
 
-    :param str name: Type name being converted.
+    :param name: Type name being converted.
 
     """
     name = type.name
@@ -268,7 +268,7 @@ def get_type_name(type):
 def get_type_functional_name(t, get_full_name=False):
     """Returns python type functional name.
 
-    :param str name: Type name being converted.
+    :param name: Type name being converted.
 
     """
     name = t.name
@@ -286,7 +286,7 @@ def get_type_functional_name(t, get_full_name=False):
 def get_type_doc_name(t):
     """Returns python type documentation name.
 
-    :param str name: Type name being converted.
+    :param name: Type name being converted.
 
     """
     name = t.name
@@ -299,7 +299,7 @@ def get_type_doc_name(t):
 def get_type_name(name):
     """Converts name to a python type name.
 
-    :param str name: Type name being converted.
+    :param name: Type name being converted.
 
     """
     return convert_to_camel_case(_strip_type_name(name))
@@ -308,7 +308,7 @@ def get_type_name(name):
 def _get_type_file_name(name):
     """Converts name to a python class file name.
 
-    :param str name: Class name being converted.
+    :param name: Class name being converted.
 
     """
     return "{}{}".format(_strip_type_name(name), FILE_EXTENSION)
@@ -334,7 +334,7 @@ def _strip_package_name(name):
 def get_package_init_file_name():
     """Returns python package init file name.
 
-    :param str name: Package name being converted.
+    :param name: Package name being converted.
 
     """
     return _PACKAGE_INIT_FILE + FILE_EXTENSION
@@ -344,8 +344,8 @@ def get_package_init_file_name():
 def get_package_module_name(name, prefix):
     """Returns a package module name by injecting package name into a template.
 
-    :param str name: Package name.
-    :param str prefix: A package name prefix, e.g. "validator".
+    :param name: Package name.
+    :param prefix: A package name prefix, e.g. "validator".
 
     """
     return (prefix + "_for_{0}_package").format(get_package_name(name))
@@ -354,8 +354,8 @@ def get_package_module_name(name, prefix):
 def get_package_module_file_name(name, prefix):
     """Returns a package module file name by injecting package name into a template.
 
-    :param str name: Package name.
-    :param str prefix: A package name prefix, e.g. "validator".
+    :param name: Package name.
+    :param prefix: A package name prefix, e.g. "validator".
 
     """
     return get_package_module_name(name, prefix) + FILE_EXTENSION
@@ -364,7 +364,7 @@ def get_package_module_file_name(name, prefix):
 def get_module_file_name(name):
     """Returns a module file name.
 
-    :param str name: Module name.
+    :param name: Module name.
 
     """
     return name + FILE_EXTENSION

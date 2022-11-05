@@ -22,7 +22,7 @@ def decode_component(xml, nsmap):
     """Decodes an instance of the following type: component.
 
     :param lxml.etree xml: XML from which type is to be decoded.
-    :param dict nsmap: XML namespace mappings.
+    :param nsmap: XML namespace mappings.
 
     :returns: A decoded type instance.
     :rtype: cim.v1.typeset.software.Component
@@ -50,7 +50,7 @@ def decode_component_language(xml, nsmap):
     """Decodes an instance of the following type: component language.
 
     :param lxml.etree xml: XML from which type is to be decoded.
-    :param dict nsmap: XML namespace mappings.
+    :param nsmap: XML namespace mappings.
 
     :returns: A decoded type instance.
     :rtype: cim.v1.typeset.software.ComponentLanguage
@@ -67,7 +67,7 @@ def decode_component_language_property(xml, nsmap):
     """Decodes an instance of the following type: component language property.
 
     :param lxml.etree xml: XML from which type is to be decoded.
-    :param dict nsmap: XML namespace mappings.
+    :param nsmap: XML namespace mappings.
 
     :returns: A decoded type instance.
     :rtype: cim.v1.typeset.software.ComponentLanguageProperty
@@ -85,7 +85,7 @@ def decode_component_property(xml, nsmap):
     """Decodes an instance of the following type: component property.
 
     :param lxml.etree xml: XML from which type is to be decoded.
-    :param dict nsmap: XML namespace mappings.
+    :param nsmap: XML namespace mappings.
 
     :returns: A decoded type instance.
     :rtype: cim.v1.typeset.software.ComponentProperty
@@ -111,7 +111,7 @@ def decode_composition(xml, nsmap):
     """Decodes an instance of the following type: composition.
 
     :param lxml.etree xml: XML from which type is to be decoded.
-    :param dict nsmap: XML namespace mappings.
+    :param nsmap: XML namespace mappings.
 
     :returns: A decoded type instance.
     :rtype: cim.v1.typeset.software.Composition
@@ -127,7 +127,7 @@ def decode_connection(xml, nsmap):
     """Decodes an instance of the following type: connection.
 
     :param lxml.etree xml: XML from which type is to be decoded.
-    :param dict nsmap: XML namespace mappings.
+    :param nsmap: XML namespace mappings.
 
     :returns: A decoded type instance.
     :rtype: cim.v1.typeset.software.Connection
@@ -161,7 +161,7 @@ def decode_connection_endpoint(xml, nsmap):
     """Decodes an instance of the following type: connection endpoint.
 
     :param lxml.etree xml: XML from which type is to be decoded.
-    :param dict nsmap: XML namespace mappings.
+    :param nsmap: XML namespace mappings.
 
     :returns: A decoded type instance.
     :rtype: cim.v1.typeset.software.ConnectionEndpoint
@@ -186,7 +186,7 @@ def decode_connection_property(xml, nsmap):
     """Decodes an instance of the following type: connection property.
 
     :param lxml.etree xml: XML from which type is to be decoded.
-    :param dict nsmap: XML namespace mappings.
+    :param nsmap: XML namespace mappings.
 
     :returns: A decoded type instance.
     :rtype: cim.v1.typeset.software.ConnectionProperty
@@ -204,7 +204,7 @@ def decode_coupling(xml, nsmap):
     """Decodes an instance of the following type: coupling.
 
     :param lxml.etree xml: XML from which type is to be decoded.
-    :param dict nsmap: XML namespace mappings.
+    :param nsmap: XML namespace mappings.
 
     :returns: A decoded type instance.
     :rtype: cim.v1.typeset.software.Coupling
@@ -241,7 +241,7 @@ def decode_coupling_endpoint(xml, nsmap):
     """Decodes an instance of the following type: coupling endpoint.
 
     :param lxml.etree xml: XML from which type is to be decoded.
-    :param dict nsmap: XML namespace mappings.
+    :param nsmap: XML namespace mappings.
 
     :returns: A decoded type instance.
     :rtype: cim.v1.typeset.software.CouplingEndpoint
@@ -266,7 +266,7 @@ def decode_coupling_property(xml, nsmap):
     """Decodes an instance of the following type: coupling property.
 
     :param lxml.etree xml: XML from which type is to be decoded.
-    :param dict nsmap: XML namespace mappings.
+    :param nsmap: XML namespace mappings.
 
     :returns: A decoded type instance.
     :rtype: cim.v1.typeset.software.CouplingProperty
@@ -284,7 +284,7 @@ def decode_deployment(xml, nsmap):
     """Decodes an instance of the following type: deployment.
 
     :param lxml.etree xml: XML from which type is to be decoded.
-    :param dict nsmap: XML namespace mappings.
+    :param nsmap: XML namespace mappings.
 
     :returns: A decoded type instance.
     :rtype: cim.v1.typeset.software.Deployment
@@ -307,7 +307,7 @@ def decode_entry_point(xml, nsmap):
     """Decodes an instance of the following type: entry point.
 
     :param lxml.etree xml: XML from which type is to be decoded.
-    :param dict nsmap: XML namespace mappings.
+    :param nsmap: XML namespace mappings.
 
     :returns: A decoded type instance.
     :rtype: cim.v1.typeset.software.EntryPoint
@@ -323,7 +323,7 @@ def decode_model_component(xml, nsmap):
     """Decodes an instance of the following type: model component.
 
     :param lxml.etree xml: XML from which type is to be decoded.
-    :param dict nsmap: XML namespace mappings.
+    :param nsmap: XML namespace mappings.
 
     :returns: A decoded type instance.
     :rtype: cim.v1.typeset.software.ModelComponent
@@ -355,7 +355,7 @@ def decode_parallelisation(xml, nsmap):
     """Decodes an instance of the following type: parallelisation.
 
     :param lxml.etree xml: XML from which type is to be decoded.
-    :param dict nsmap: XML namespace mappings.
+    :param nsmap: XML namespace mappings.
 
     :returns: A decoded type instance.
     :rtype: cim.v1.typeset.software.Parallelisation
@@ -373,7 +373,7 @@ def decode_processor_component(xml, nsmap):
     """Decodes an instance of the following type: processor component.
 
     :param lxml.etree xml: XML from which type is to be decoded.
-    :param dict nsmap: XML namespace mappings.
+    :param nsmap: XML namespace mappings.
 
     :returns: A decoded type instance.
     :rtype: cim.v1.typeset.software.ProcessorComponent
@@ -402,7 +402,7 @@ def decode_rank(xml, nsmap):
     """Decodes an instance of the following type: rank.
 
     :param lxml.etree xml: XML from which type is to be decoded.
-    :param dict nsmap: XML namespace mappings.
+    :param nsmap: XML namespace mappings.
 
     :returns: A decoded type instance.
     :rtype: cim.v1.typeset.software.Rank
@@ -422,7 +422,7 @@ def decode_spatial_regridding(xml, nsmap):
     """Decodes an instance of the following type: spatial regridding.
 
     :param lxml.etree xml: XML from which type is to be decoded.
-    :param dict nsmap: XML namespace mappings.
+    :param nsmap: XML namespace mappings.
 
     :returns: A decoded type instance.
     :rtype: cim.v1.typeset.software.SpatialRegridding
@@ -442,7 +442,7 @@ def decode_spatial_regridding_property(xml, nsmap):
     """Decodes an instance of the following type: spatial regridding property.
 
     :param lxml.etree xml: XML from which type is to be decoded.
-    :param dict nsmap: XML namespace mappings.
+    :param nsmap: XML namespace mappings.
 
     :returns: A decoded type instance.
     :rtype: cim.v1.typeset.software.SpatialRegriddingProperty
@@ -460,7 +460,7 @@ def decode_spatial_regridding_user_method(xml, nsmap):
     """Decodes an instance of the following type: spatial regridding user method.
 
     :param lxml.etree xml: XML from which type is to be decoded.
-    :param dict nsmap: XML namespace mappings.
+    :param nsmap: XML namespace mappings.
 
     :returns: A decoded type instance.
     :rtype: cim.v1.typeset.software.SpatialRegriddingUserMethod
@@ -479,7 +479,7 @@ def decode_statistical_model_component(xml, nsmap):
     """Decodes an instance of the following type: statistical model component.
 
     :param lxml.etree xml: XML from which type is to be decoded.
-    :param dict nsmap: XML namespace mappings.
+    :param nsmap: XML namespace mappings.
 
     :returns: A decoded type instance.
     :rtype: cim.v1.typeset.software.StatisticalModelComponent
@@ -511,7 +511,7 @@ def decode_time_lag(xml, nsmap):
     """Decodes an instance of the following type: time lag.
 
     :param lxml.etree xml: XML from which type is to be decoded.
-    :param dict nsmap: XML namespace mappings.
+    :param nsmap: XML namespace mappings.
 
     :returns: A decoded type instance.
     :rtype: cim.v1.typeset.software.TimeLag
@@ -529,7 +529,7 @@ def decode_time_transformation(xml, nsmap):
     """Decodes an instance of the following type: time transformation.
 
     :param lxml.etree xml: XML from which type is to be decoded.
-    :param dict nsmap: XML namespace mappings.
+    :param nsmap: XML namespace mappings.
 
     :returns: A decoded type instance.
     :rtype: cim.v1.typeset.software.TimeTransformation
@@ -547,7 +547,7 @@ def decode_timing(xml, nsmap):
     """Decodes an instance of the following type: timing.
 
     :param lxml.etree xml: XML from which type is to be decoded.
-    :param dict nsmap: XML namespace mappings.
+    :param nsmap: XML namespace mappings.
 
     :returns: A decoded type instance.
     :rtype: cim.v1.typeset.software.Timing

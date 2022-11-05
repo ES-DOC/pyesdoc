@@ -107,7 +107,7 @@ def extend(c, p, parent=None, ancestors=[]):
     :param parent: Parent model component property.
     :type parent: pyesdoc.ontologies.cim.v1.software.ComponentProperty
 
-    :param list ancestors: Ancestor model component properties.
+    :param ancestors: Ancestor model component properties.
 
     """
     ctx = _ExtensionContextInfo(c, p, parent, ancestors)

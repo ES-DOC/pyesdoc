@@ -15,8 +15,8 @@ class ComputedProperty(object):
     def __init__(self, name, computation):
         """Instance constructor.
 
-        :param str name: Property name.
-        :param str computation: Computed property derivation.
+        :param name: Property name.
+        :param computation: Computed property derivation.
 
         """
         if name.lower() in ("ext", ):

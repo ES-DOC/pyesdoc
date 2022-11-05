@@ -19,7 +19,7 @@ def decode_cim_quality(xml, nsmap):
     """Decodes an instance of the following type: cim quality.
 
     :param lxml.etree xml: XML from which type is to be decoded.
-    :param dict nsmap: XML namespace mappings.
+    :param nsmap: XML namespace mappings.
 
     :returns: A decoded type instance.
     :rtype: cim.v1.typeset.quality.CimQuality
@@ -37,7 +37,7 @@ def decode_evaluation(xml, nsmap):
     """Decodes an instance of the following type: evaluation.
 
     :param lxml.etree xml: XML from which type is to be decoded.
-    :param dict nsmap: XML namespace mappings.
+    :param nsmap: XML namespace mappings.
 
     :returns: A decoded type instance.
     :rtype: cim.v1.typeset.quality.Evaluation
@@ -62,7 +62,7 @@ def decode_measure(xml, nsmap):
     """Decodes an instance of the following type: measure.
 
     :param lxml.etree xml: XML from which type is to be decoded.
-    :param dict nsmap: XML namespace mappings.
+    :param nsmap: XML namespace mappings.
 
     :returns: A decoded type instance.
     :rtype: cim.v1.typeset.quality.Measure
@@ -83,7 +83,7 @@ def decode_report(xml, nsmap):
     """Decodes an instance of the following type: report.
 
     :param lxml.etree xml: XML from which type is to be decoded.
-    :param dict nsmap: XML namespace mappings.
+    :param nsmap: XML namespace mappings.
 
     :returns: A decoded type instance.
     :rtype: cim.v1.typeset.quality.Report

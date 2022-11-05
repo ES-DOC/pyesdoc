@@ -22,9 +22,9 @@ class Ontology(object):
     def __init__(self, name, version, doc_string, packages):
         """Instance constructor.
 
-        :param str name: Ontology name.
-        :param str version: Ontology version.
-        :param str doc_string: Ontology documentation string.
+        :param name: Ontology name.
+        :param version: Ontology version.
+        :param doc_string: Ontology documentation string.
         :param iterable packages: Set of associated packages.
 
         """
@@ -71,7 +71,7 @@ class Ontology(object):
     def get_type(self, name):
         """Returns type with matching name.
 
-        :param str name: Fully qualified name of target type.
+        :param name: Fully qualified name of target type.
 
         """
         pkg_name = name.split('.')[0]

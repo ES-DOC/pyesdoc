@@ -15,8 +15,8 @@ class ClassPrintString(object):
     def __init__(self, text, fields):
         """Instance constructor.
 
-        :param str text: Pstr text (unformatted).
-        :param str fields: Fields to be pushed into text at point of formatting.
+        :param text: Pstr text (unformatted).
+        :param fields: Fields to be pushed into text at point of formatting.
 
         """
         self.text = text

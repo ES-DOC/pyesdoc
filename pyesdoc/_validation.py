@@ -162,7 +162,7 @@ class _GraphParserValidator(GraphParser):
 def validate(doc):
     """Validates a document.
 
-    :param object doc: A pyesdoc document instance.
+    :param doc: A pyesdoc document instance.
 
     :returns: A list of validation errors.
     :rtype: list
@@ -177,7 +177,7 @@ def validate(doc):
 def is_valid(doc):
     """Returns validation status of a document.
 
-    :param object doc: A pyesdoc document instance.
+    :param doc: A pyesdoc document instance.
 
     :returns: The document's validation state.
     :rtype: bool

@@ -29,11 +29,11 @@ def create(
     """Creates a document.
 
     :param class typeof: Ontology type, e.g. cim.1.software.ModelComponent.
-    :param str project: Project wih which instance is associated.
-    :param list|str sub_projects: Sub-project(s) with which instance is associated.
-    :param str institute: Institute wih which instance is associated.
-    :param str source: Source application with which instance is associated.
-    :param str author: Author wih which instance is associated.
+    :param project: Project wih which instance is associated.
+    :param|str sub_projects: Sub-project(s) with which instance is associated.
+    :param institute: Institute wih which instance is associated.
+    :param source: Source application with which instance is associated.
+    :param author: Author wih which instance is associated.
     :param uuid.UUID uid: Document unique identifier.
 
     :returns: A pyesdoc document instance.

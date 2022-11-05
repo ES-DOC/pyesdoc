@@ -18,10 +18,10 @@ class Property(object):
     def __init__(self, name, type_name, cardinality, doc_string):
         """Instance constructor.
 
-        :param str name: Property name.
-        :param str doc_string: Property documentation string.
-        :param str type_name: Property type name.
-        :param str cardinality: Type of relationship to associated class (i.e. 0.1 | 1.1 | 0.N | 1.N).
+        :param name: Property name.
+        :param doc_string: Property documentation string.
+        :param type_name: Property type name.
+        :param cardinality: Type of relationship to associated class (i.e. 0.1 | 1.1 | 0.N | 1.N).
 
         """
         if name.lower() in ("ext", ):

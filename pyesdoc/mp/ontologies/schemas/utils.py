@@ -14,8 +14,8 @@ from pyesdoc.mp.ontologies.schemas import cim
 def get_schema(name, version):
     """Returns a supported ontology schema module.
 
-    :param str name: Schema name.
-    :param str version: Schema version.
+    :param name: Schema name.
+    :param version: Schema version.
 
     :returns: An ontology schema.
     :rtype: module

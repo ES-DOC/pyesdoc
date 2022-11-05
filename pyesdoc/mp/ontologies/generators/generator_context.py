@@ -89,7 +89,7 @@ class GeneratorContext(object):
     def get_code(self, template, lu):
         """Generates code from a template.
 
-        :param str template: Name of a template file.
+        :param template: Name of a template file.
         :module lu: Lanaugage specific utility functions passed to template.
 
         """

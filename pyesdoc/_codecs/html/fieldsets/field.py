@@ -64,7 +64,7 @@ class Field(object):
     def get_value(self, data=None):
         """Returns value of field for html output.
 
-        :param object data: An object from which the field value is derived.
+        :param data: An object from which the field value is derived.
 
         :returns: The derived field value.
         :rtype str:
@@ -84,7 +84,7 @@ class Field(object):
     def get_link(self, data):
         """Returns value of associated hyperlink.
 
-        :param object data: An object from which the hyperlink value is derived.
+        :param data: An object from which the hyperlink value is derived.
 
         :returns: The derived field hyperlink.
         :rtype str:
@@ -102,7 +102,7 @@ class Field(object):
     def get_email(self, data):
         """Returns value of associated email link.
 
-        :param object data: An object from which the email link value is derived.
+        :param data: An object from which the email link value is derived.
 
         :returns: The derived field email link.
         :rtype str:

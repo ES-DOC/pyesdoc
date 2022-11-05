@@ -15,9 +15,9 @@ class Enum(object):
     def __init__(self, name, is_open, doc_string, members):
         """Instance constructor.
 
-        :param str name: Enumeration name.
-        :param bool is_open: Flag indicating whether members can be added to the enumeration or not.
-        :param str doc_string: Enumeration documentation string.
+        :param name: Enumeration name.
+        :param is_open: Flag indicating whether members can be added to the enumeration or not.
+        :param doc_string: Enumeration documentation string.
         :param iterable members: Set of associated enumeration members.
 
         """

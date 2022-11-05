@@ -50,13 +50,13 @@ def search(
     ):
     """Exposes documentation search endpoint.
 
-    :param str project: Project identifier, e.g. cmip6.
-    :param str document_type: Document type identifier, e.g. model.
-    :param str document_version: Document version filter, i.e. latest | all.
-    :param str institute: Institute identifer, e.g. ipsl.
-    :param str sub_project: Sub-project identifer, e.g. damip.
-    :param str model: Model identifer, e.g. ipsl-cm5a-lr.
-    :param str experiment: Experiment identifer, e.g. piControl.
+    :param project: Project identifier, e.g. cmip6.
+    :param document_type: Document type identifier, e.g. model.
+    :param document_version: Document version filter, i.e. latest | all.
+    :param institute: Institute identifer, e.g. ipsl.
+    :param sub_project: Sub-project identifer, e.g. damip.
+    :param model: Model identifer, e.g. ipsl-cm5a-lr.
+    :param experiment: Experiment identifer, e.g. piControl.
 
     :returns: Search results.
     :rtype: pyesdoc._search.SearchResult

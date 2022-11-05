@@ -32,15 +32,15 @@ class Class(object):
         ):
         """Instance constructor.
 
-        :param str name: Class name.
-        :param str base: Base class used in object hierarchies.
-        :param bool is_abstract: Flag indicating whether this is an abstract class or not.
-        :param bool is_document: Flag indicating whether this is a document or not.
-        :param str doc_string: Class documentation string.
-        :param list properties: Set of associated properties.
-        :param list computed_properties: Set of associated computed properties.
-        :param list constraints: Set of associated constraints.
-        :param list decodings: Set of associated property decodings.
+        :param name: Class name.
+        :param base: Base class used in object hierarchies.
+        :param is_abstract: Flag indicating whether this is an abstract class or not.
+        :param is_document: Flag indicating whether this is a document or not.
+        :param doc_string: Class documentation string.
+        :param properties: Set of associated properties.
+        :param computed_properties: Set of associated computed properties.
+        :param constraints: Set of associated constraints.
+        :param decodings: Set of associated property decodings.
         :param ClassPrintString pstr: Class print string information.
 
         """
@@ -201,7 +201,7 @@ class Class(object):
     def get_property(self, name):
         """Recursively gets associated property either from self or from base class.
 
-        :param str name: Name of a property.
+        :param name: Name of a property.
 
         """
         for prp in self.properties:

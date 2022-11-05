@@ -78,7 +78,7 @@ def _decode(value, doc_type, is_iterable):
 def decode(as_dict):
     """Decodes a document from a dictionary.
 
-    :param dict as_dict: A document in dictionary format.
+    :param as_dict: A document in dictionary format.
 
     :returns: A pyesdoc document instance.
     :rtype: object

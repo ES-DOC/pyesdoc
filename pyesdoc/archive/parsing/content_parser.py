@@ -27,9 +27,9 @@ def parse(encoding, project, source, content):
     """Parses document content according to project & source.
 
     :param encoding: Original content encoding.
-    :param str project: Name of a supported project (e.g. cmip6).
-    :param str source: Name of a document source (e.g. esdoc-q).
-    :param unicode content: Document content.
+    :param project: Name of a supported project (e.g. cmip6).
+    :param source: Name of a document source (e.g. esdoc-q).
+    :param content: Document content.
 
     """
     try:

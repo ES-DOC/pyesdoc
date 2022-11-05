@@ -23,7 +23,7 @@ class Type(object):
     def __init__(self, name):
         """Instance constructor.
 
-        :param str name: Name of type.
+        :param name: Name of type.
 
         """
         self.is_class = False

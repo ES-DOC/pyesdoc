@@ -159,7 +159,7 @@ def _write_error(ctx):
 def process(ctx):
     """Processes a document from a remote feed.
 
-    :param object ctx: Document processing context.
+    :param ctx: Document processing context.
 
     """
     tasks = (

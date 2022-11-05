@@ -375,7 +375,7 @@ class PropertySpecialization(object):
     def validate_value(self, val):
         """Validates a property value.
 
-        :param object val: Value to be validated.
+        :param val: Value to be validated.
 
         """
         if self.enum:
@@ -432,7 +432,7 @@ class EnumSpecialization(object):
     def is_a_member(self, val):
         """Returns flag indicating whether vlue is a member of the enumeration.
 
-        :param object val: Value to be validated.
+        :param val: Value to be validated.
 
         """
         return val in [i.value for i in self.choices]
@@ -441,7 +441,7 @@ class EnumSpecialization(object):
     def validate_value(self, val):
         """Validates a value against the set of enum choices.
 
-        :param object val: Value to be validated.
+        :param val: Value to be validated.
 
         """
         if not isinstance(val, basestring) or not len(val.strip()):
@@ -534,8 +534,8 @@ def _map_id_to_names(identifier, offset=None, seperator=" --> ", convertor=None)
 def _to_camel_case_spaced(name, separator='_'):
     """Converts passed name to camel case with space.
 
-    :param str name: A name as specified in ontology specification.
-    :param str separator: Separator to use in order to split name into constituent parts.
+    :param name: A name as specified in ontology specification.
+    :param separator: Separator to use in order to split name into constituent parts.
 
     """
     if name is None:
@@ -549,8 +549,8 @@ def _to_camel_case_spaced(name, separator='_'):
 def _to_camel_case(name, separator='_'):
     """Converts passed name to camel case.
 
-    :param str name: A name as specified in ontology specification.
-    :param str separator: Separator to use in order to split name into constituent parts.
+    :param name: A name as specified in ontology specification.
+    :param separator: Separator to use in order to split name into constituent parts.
 
     """
     if name is None:

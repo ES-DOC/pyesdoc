@@ -16,7 +16,7 @@ class ESDOC_MP_Exception(Exception):
     def __init__(self, message):
         """Contructor.
 
-        :param str message: Exception message.
+        :param message: Exception message.
 
         """
         self.message = unicode(message)
@@ -32,7 +32,7 @@ class ESDOC_MP_Exception(Exception):
 def raise_error(msg, type_=ESDOC_MP_Exception):
     """Helper function to raise a runtime error.
 
-    :param str msg: Error message.
+    :param msg: Error message.
     :param class type_: Error type.
 
     """
@@ -42,7 +42,7 @@ def raise_error(msg, type_=ESDOC_MP_Exception):
 def log(msg):
     """Outputs a message to log.
 
-    :param str msg: Logging message.
+    :param msg: Logging message.
 
     """
     if msg.startswith('-'):

@@ -15,9 +15,9 @@ class ClassConstraint(object):
     def __init__(self, property_name, typeof, value):
         """Instance constructor.
 
-        :param str property_name: Property name.
-        :param str typeof: Constraint type.
-        :param str value: Constrained value.
+        :param property_name: Property name.
+        :param typeof: Constraint type.
+        :param value: Constrained value.
 
         """
         if property_name.lower() in ("ext", ):

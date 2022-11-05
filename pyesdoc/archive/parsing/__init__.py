@@ -27,8 +27,8 @@ def parse(target, encoding, project, source, target_type='document'):
 
     :param target: Object to be parsed.
     :param encoding: Original encoding of target.
-    :param str project: Name of a supported project (e.g. cmip6).
-    :param str source: Name of a document source (e.g. esdoc-q).
+    :param project: Name of a supported project (e.g. cmip6).
+    :param source: Name of a document source (e.g. esdoc-q).
     :param target_type: Type of object to be parsed.
 
     :returns: Parsed target.

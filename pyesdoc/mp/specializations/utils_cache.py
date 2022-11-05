@@ -28,8 +28,8 @@ def set_specialization(spec):
 def get_topic_specialization(mip_era, topic):
     """Returns topic specializations.
 
-    :param str mip_era: MIP era that model documentation is related to.
-    :param str topic: Specialization topic.
+    :param mip_era: MIP era that model documentation is related to.
+    :param topic: Specialization topic.
 
     :result: Topic specializations.
     :rtype: TopicSpecialization
@@ -44,7 +44,7 @@ def get_topic_specialization(mip_era, topic):
 def get_property_specialization(specialization_id):
     """Returns property specializations.
 
-    :param str specialization_id: Specialziation identifier.
+    :param specialization_id: Specialziation identifier.
 
     :result: Property specialization.
     :rtype: PropertySpecialization

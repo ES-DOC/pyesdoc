@@ -34,8 +34,8 @@ _loaded_tornado_templates = dict()
 def convert_to_camel_case(name, separator='_'):
     """Converts passed name to camel case.
 
-    :param str name: A name as specified in ontology specification.
-    :param str separator: Separator to use in order to split name into constituent parts.
+    :param name: A name as specified in ontology specification.
+    :param separator: Separator to use in order to split name into constituent parts.
 
     """
     r = ''
@@ -52,8 +52,8 @@ def convert_to_camel_case(name, separator='_'):
 def convert_to_pascal_case(name, separator='_'):
     """Converts passed name to pascal case.
 
-    :param str name: A name as specified in ontology specification.
-    :param str separator: Separator to use in order to split name into constituent parts.
+    :param name: A name as specified in ontology specification.
+    :param separator: Separator to use in order to split name into constituent parts.
 
     """
     r = ''
@@ -84,8 +84,8 @@ def emit(iterable, func=None, sort=True, joiner=""):
 def _load_template(language, filename):
     """Returns code template.
 
-    :param str language: Generator language.
-    :param str filename: Name of template file.
+    :param language: Generator language.
+    :param filename: Name of template file.
 
     """
     path = _TEMPLATE_FOLDER + "/{0}/templates/{1}".format(language, filename)
@@ -101,8 +101,8 @@ def _load_template(language, filename):
 def load_templates(language, filenames):
     """Returns a dictionary of loaded code templates.
 
-    :param str language: Generator language.
-    :param str filenames: Set of template file names.
+    :param language: Generator language.
+    :param filenames: Set of template file names.
 
     """
     templates = {}
@@ -115,8 +115,8 @@ def load_templates(language, filenames):
 def load_tornado_template(language, fname):
     """Returns tornado code template.
 
-    :param str language: Generator language.
-    :param str fname: Name of template file.
+    :param language: Generator language.
+    :param fname: Name of template file.
 
     """
     dir_ = _TEMPLATE_FOLDER + "/{0}/templates".format(language)
@@ -132,8 +132,8 @@ def load_tornado_template(language, fname):
 def load_tornado_templates(language, fnames):
     """Returns a dictionary of loaded tornado code templates.
 
-    :param str language: Generator language.
-    :param str fnames: Set of template file names.
+    :param language: Generator language.
+    :param fnames: Set of template file names.
 
     """
     return {fname: load_tornado_template(language, fname) for fname in fnames}
@@ -152,7 +152,7 @@ def get_username():
 def emit_indent(count=1):
     """Emits code corresponding to a code indentation.
 
-    :param int count: Number of indentations to emit.
+    :param count: Number of indentations to emit.
 
     """
     return reduce(lambda x, y: x + _INDENT, range(count), '')
@@ -168,7 +168,7 @@ def emit_tab():
 def emit_line_return(count=1):
     """Emits code corresponding to a code line return.
 
-    :param int count: Number of line returns to emit.
+    :param count: Number of line returns to emit.
 
     """
     return reduce(lambda x, y: x + _LINE_RETURN, range(count), '')
@@ -177,7 +177,7 @@ def emit_line_return(count=1):
 def create_directory(dir):
     """Generates a directory into which code will be generated.
 
-    :param str dir: Target code generation directory.
+    :param dir: Target code generation directory.
 
     """
     try:
@@ -189,9 +189,9 @@ def create_directory(dir):
 def write_file(code, dir, file):
     """Writes code to a file.
 
-    :param str code: Code to be written to a file.
-    :param str dir: Directory into which code is to be generated.
-    :param str file: Name of code file being written.
+    :param code: Code to be written to a file.
+    :param dir: Directory into which code is to be generated.
+    :param file: Name of code file being written.
 
     """
     # Create directory.
@@ -210,7 +210,7 @@ def format_code(ctx, code):
     """Formats code prior to being written to file system.
 
     :param pyesdoc.mp.ontologies.generators.generator.GeneratorContext ctx: Generation context information.
-    :param str code: Code to be injected with standard params.
+    :param code: Code to be injected with standard params.
 
     """
     # Ontology related params.

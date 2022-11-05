@@ -1,13 +1,3 @@
-"""
-.. module:: pyesdoc.utils.convert.py
-   :license: GPL/CeCIL
-   :platform: Unix, Windows
-   :synopsis: Set of library conversion functions.
-
-.. moduleauthor:: Mark Conway-Greenslade <momipsl@ipsl.jussieu.fr>
-
-
-"""
 import collections
 import csv
 import datetime
@@ -34,10 +24,8 @@ _ABBREVIATIONS = ("id", "uid", "uuid")
 def str_to_unicode(val):
     """Converts string input to a unicode literal.
 
-    :param object val: arget to be converted to a unicode literal.
-
+    :param val: arget to be converted to a unicode literal.
     :returns: A unicode literal.
-    :rtype: unicode
 
     """
     if val is None:
@@ -55,10 +43,8 @@ def str_to_unicode(val):
 def unicode_to_str(val):
     """Converts unicode input to a string literal.
 
-    :param object val: arget to be converted to a unicode literal.
-
+    :param val: arget to be converted to a unicode literal.
     :returns: A unicode literal.
-    :rtype: unicode
 
     """
     if val is None:
@@ -74,13 +60,11 @@ def unicode_to_str(val):
     return val
 
 
-def capitalize(target):
+def capitalize(target) -> str:
     """Capitalizes passed string.
 
-    :param str target: A string to be converted.
-
+    :param target: A string to be converted.
     :returns: The target string capitalized.
-    :rtype: str
 
     """
     if not isinstance(target, (str, unicode)):
@@ -502,7 +486,7 @@ def now_to_timestamp(offset=0):
 def csv_file_to_dict(fp):
     """Converts a csv file to a list of dictionaries.
 
-    :param str fp: A csv file path.
+    :param fp: A csv file path.
 
     :returns: A list of dictionaries.
     :rtype: list
@@ -514,7 +498,7 @@ def csv_file_to_dict(fp):
 def csv_file_to_namedtuple(fp):
     """Converts a csv file to a list of named tuples.
 
-    :param str fp: A csv file path.
+    :param fp: A csv file path.
 
     :returns: A list of named tuples.
     :rtype: list
@@ -526,7 +510,7 @@ def csv_file_to_namedtuple(fp):
 def csv_file_to_json(fp):
     """Converts a csv file to json.
 
-    :param str fp: A csv file path.
+    :param fp: A csv file path.
 
     :returns: A json string.
     :rtype: unicode
@@ -538,7 +522,7 @@ def csv_file_to_json(fp):
 def csv_file_to_json_file(fp, dest=None):
     """Converts a csv file to a json file.
 
-    :param str fp: A csv file path.
+    :param fp: A csv file path.
 
     """
     if dest is None:
@@ -550,7 +534,7 @@ def csv_file_to_json_file(fp, dest=None):
 def text_to_typed_value(text, target_type):
     """Converts text to a typed value.
 
-    :param str text: Text to be converted to a typed value.
+    :param text: Text to be converted to a typed value.
     :param class type: Target type.
 
     :returns: A typed value.

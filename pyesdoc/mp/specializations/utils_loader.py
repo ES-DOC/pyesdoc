@@ -18,8 +18,8 @@ import glob
 def get_short_tables_definitions(input_dir, typeof):
     """Returns specialization short tables.
 
-    :param str input_dir: Directory within which modules reside.
-    :param str typeof: Type of specialization being processed.
+    :param input_dir: Directory within which modules reside.
+    :param typeof: Type of specialization being processed.
 
     :returns: Tuple of decoded short tables.
     :rtype: tuple
@@ -40,8 +40,8 @@ def get_short_tables_definitions(input_dir, typeof):
 def get_modules(input_dir, typeof):
     """Returns specialization modules.
 
-    :param str input_dir: Directory within which modules reside.
-    :param str typeof: Type of specialization being processed.
+    :param input_dir: Directory within which modules reside.
+    :param typeof: Type of specialization being processed.
 
     """
     # Load specialization modules.

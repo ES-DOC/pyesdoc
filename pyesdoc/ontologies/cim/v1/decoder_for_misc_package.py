@@ -23,7 +23,7 @@ def decode_document_set(xml, nsmap):
     """Decodes an instance of the following type: document set.
 
     :param lxml.etree xml: XML from which type is to be decoded.
-    :param dict nsmap: XML namespace mappings.
+    :param nsmap: XML namespace mappings.
 
     :returns: A decoded type instance.
     :rtype: cim.v1.typeset.misc.DocumentSet

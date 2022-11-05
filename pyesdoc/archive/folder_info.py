@@ -81,7 +81,7 @@ class ArchiveFolderInfo(object):
     def yield_documents(self, file_filter=None):
         """Yields set of documents.
 
-        :param str file_filter: Optional file filter.
+        :param file_filter: Optional file filter.
 
         :returns: Set of file paths.
         :rtype: generator
@@ -94,7 +94,7 @@ class ArchiveFolderInfo(object):
     def yield_files(self, file_filter=None):
         """Yields set of files.
 
-        :param str file_filter: Optional file filter.
+        :param file_filter: Optional file filter.
 
         :returns: Set of file paths.
         :rtype: generator
@@ -111,8 +111,8 @@ class ArchiveFolderInfo(object):
     def find_file(self, uid, version):
         """Yields files for processing.
 
-        :param str uid: Document unique identifier.
-        :param str version: Document version.
+        :param uid: Document unique identifier.
+        :param version: Document version.
 
         :returns: A file wrapper to be processed.
         :rtype: pyesdoc.archive.ArchiveFileInfo
@@ -132,7 +132,7 @@ class ArchiveFolderInfo(object):
     def write(self, doc):
         """Writes a document to the archive.
 
-        :param object doc: Document to be written.
+        :param doc: Document to be written.
 
         :returns: Pointer to archive file.
         :rtype: pyesdoc.archive.ArchiveFileInfo

@@ -122,7 +122,7 @@ class ArchiveFileInfo(object):
     def get_content(self, encoding):
         """Returns content of an archived file in the desired encoding.
 
-        :param str encoding: Desired document content encoding.
+        :param encoding: Desired document content encoding.
 
         :returns: The contents of an archived file in the desired encoding.
         :rtype: unicode

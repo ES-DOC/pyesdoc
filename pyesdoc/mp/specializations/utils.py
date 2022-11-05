@@ -11,7 +11,7 @@
 def log(msg):
     """Outputs a message to log.
 
-    :param str msg: Logging message.
+    :param msg: Logging message.
 
     """
     if msg.startswith('-'):

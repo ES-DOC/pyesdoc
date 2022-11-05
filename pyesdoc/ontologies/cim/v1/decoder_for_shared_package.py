@@ -18,7 +18,7 @@ def decode_calendar(xml, nsmap):
     """Decodes an instance of the following type: calendar.
 
     :param lxml.etree xml: XML from which type is to be decoded.
-    :param dict nsmap: XML namespace mappings.
+    :param nsmap: XML namespace mappings.
 
     :returns: A decoded type instance.
     :rtype: cim.v1.typeset.shared.Calendar
@@ -38,7 +38,7 @@ def decode_change(xml, nsmap):
     """Decodes an instance of the following type: change.
 
     :param lxml.etree xml: XML from which type is to be decoded.
-    :param dict nsmap: XML namespace mappings.
+    :param nsmap: XML namespace mappings.
 
     :returns: A decoded type instance.
     :rtype: cim.v1.typeset.shared.Change
@@ -60,7 +60,7 @@ def decode_change_property(xml, nsmap):
     """Decodes an instance of the following type: change property.
 
     :param lxml.etree xml: XML from which type is to be decoded.
-    :param dict nsmap: XML namespace mappings.
+    :param nsmap: XML namespace mappings.
 
     :returns: A decoded type instance.
     :rtype: cim.v1.typeset.shared.ChangeProperty
@@ -80,7 +80,7 @@ def decode_citation(xml, nsmap):
     """Decodes an instance of the following type: citation.
 
     :param lxml.etree xml: XML from which type is to be decoded.
-    :param dict nsmap: XML namespace mappings.
+    :param nsmap: XML namespace mappings.
 
     :returns: A decoded type instance.
     :rtype: cim.v1.typeset.shared.Citation
@@ -107,7 +107,7 @@ def decode_closed_date_range(xml, nsmap):
     """Decodes an instance of the following type: closed date range.
 
     :param lxml.etree xml: XML from which type is to be decoded.
-    :param dict nsmap: XML namespace mappings.
+    :param nsmap: XML namespace mappings.
 
     :returns: A decoded type instance.
     :rtype: cim.v1.typeset.shared.ClosedDateRange
@@ -126,7 +126,7 @@ def decode_compiler(xml, nsmap):
     """Decodes an instance of the following type: compiler.
 
     :param lxml.etree xml: XML from which type is to be decoded.
-    :param dict nsmap: XML namespace mappings.
+    :param nsmap: XML namespace mappings.
 
     :returns: A decoded type instance.
     :rtype: cim.v1.typeset.shared.Compiler
@@ -148,7 +148,7 @@ def decode_daily_360(xml, nsmap):
     """Decodes an instance of the following type: daily 360.
 
     :param lxml.etree xml: XML from which type is to be decoded.
-    :param dict nsmap: XML namespace mappings.
+    :param nsmap: XML namespace mappings.
 
     :returns: A decoded type instance.
     :rtype: cim.v1.typeset.shared.Daily360
@@ -168,7 +168,7 @@ def decode_data_source(xml, nsmap):
     """Decodes an instance of the following type: data source.
 
     :param lxml.etree xml: XML from which type is to be decoded.
-    :param dict nsmap: XML namespace mappings.
+    :param nsmap: XML namespace mappings.
 
     :returns: A decoded type instance.
     :rtype: cim.v1.typeset.shared.DataSource
@@ -184,7 +184,7 @@ def decode_date_range(xml, nsmap):
     """Decodes an instance of the following type: date range.
 
     :param lxml.etree xml: XML from which type is to be decoded.
-    :param dict nsmap: XML namespace mappings.
+    :param nsmap: XML namespace mappings.
 
     :returns: A decoded type instance.
     :rtype: cim.v1.typeset.shared.DateRange
@@ -201,7 +201,7 @@ def decode_doc_meta_info(xml, nsmap):
     """Decodes an instance of the following type: doc meta info.
 
     :param lxml.etree xml: XML from which type is to be decoded.
-    :param dict nsmap: XML namespace mappings.
+    :param nsmap: XML namespace mappings.
 
     :returns: A decoded type instance.
     :rtype: cim.v1.typeset.shared.DocMetaInfo
@@ -224,7 +224,7 @@ def decode_doc_reference(xml, nsmap):
     """Decodes an instance of the following type: doc reference.
 
     :param lxml.etree xml: XML from which type is to be decoded.
-    :param dict nsmap: XML namespace mappings.
+    :param nsmap: XML namespace mappings.
 
     :returns: A decoded type instance.
     :rtype: cim.v1.typeset.shared.DocReference
@@ -247,7 +247,7 @@ def decode_license(xml, nsmap):
     """Decodes an instance of the following type: license.
 
     :param lxml.etree xml: XML from which type is to be decoded.
-    :param dict nsmap: XML namespace mappings.
+    :param nsmap: XML namespace mappings.
 
     :returns: A decoded type instance.
     :rtype: cim.v1.typeset.shared.License
@@ -263,7 +263,7 @@ def decode_machine(xml, nsmap):
     """Decodes an instance of the following type: machine.
 
     :param lxml.etree xml: XML from which type is to be decoded.
-    :param dict nsmap: XML namespace mappings.
+    :param nsmap: XML namespace mappings.
 
     :returns: A decoded type instance.
     :rtype: cim.v1.typeset.shared.Machine
@@ -291,7 +291,7 @@ def decode_machine_compiler_unit(xml, nsmap):
     """Decodes an instance of the following type: machine compiler unit.
 
     :param lxml.etree xml: XML from which type is to be decoded.
-    :param dict nsmap: XML namespace mappings.
+    :param nsmap: XML namespace mappings.
 
     :returns: A decoded type instance.
     :rtype: cim.v1.typeset.shared.MachineCompilerUnit
@@ -309,7 +309,7 @@ def decode_open_date_range(xml, nsmap):
     """Decodes an instance of the following type: open date range.
 
     :param lxml.etree xml: XML from which type is to be decoded.
-    :param dict nsmap: XML namespace mappings.
+    :param nsmap: XML namespace mappings.
 
     :returns: A decoded type instance.
     :rtype: cim.v1.typeset.shared.OpenDateRange
@@ -328,7 +328,7 @@ def decode_perpetual_period(xml, nsmap):
     """Decodes an instance of the following type: perpetual period.
 
     :param lxml.etree xml: XML from which type is to be decoded.
-    :param dict nsmap: XML namespace mappings.
+    :param nsmap: XML namespace mappings.
 
     :returns: A decoded type instance.
     :rtype: cim.v1.typeset.shared.PerpetualPeriod
@@ -348,7 +348,7 @@ def decode_platform(xml, nsmap):
     """Decodes an instance of the following type: platform.
 
     :param lxml.etree xml: XML from which type is to be decoded.
-    :param dict nsmap: XML namespace mappings.
+    :param nsmap: XML namespace mappings.
 
     :returns: A decoded type instance.
     :rtype: cim.v1.typeset.shared.Platform
@@ -370,7 +370,7 @@ def decode_property(xml, nsmap):
     """Decodes an instance of the following type: property.
 
     :param lxml.etree xml: XML from which type is to be decoded.
-    :param dict nsmap: XML namespace mappings.
+    :param nsmap: XML namespace mappings.
 
     :returns: A decoded type instance.
     :rtype: cim.v1.typeset.shared.Property
@@ -388,7 +388,7 @@ def decode_real_calendar(xml, nsmap):
     """Decodes an instance of the following type: real calendar.
 
     :param lxml.etree xml: XML from which type is to be decoded.
-    :param dict nsmap: XML namespace mappings.
+    :param nsmap: XML namespace mappings.
 
     :returns: A decoded type instance.
     :rtype: cim.v1.typeset.shared.RealCalendar
@@ -408,7 +408,7 @@ def decode_relationship(xml, nsmap):
     """Decodes an instance of the following type: relationship.
 
     :param lxml.etree xml: XML from which type is to be decoded.
-    :param dict nsmap: XML namespace mappings.
+    :param nsmap: XML namespace mappings.
 
     :returns: A decoded type instance.
     :rtype: cim.v1.typeset.shared.Relationship
@@ -424,7 +424,7 @@ def decode_responsible_party(xml, nsmap):
     """Decodes an instance of the following type: responsible party.
 
     :param lxml.etree xml: XML from which type is to be decoded.
-    :param dict nsmap: XML namespace mappings.
+    :param nsmap: XML namespace mappings.
 
     :returns: A decoded type instance.
     :rtype: cim.v1.typeset.shared.ResponsibleParty
@@ -451,7 +451,7 @@ def decode_standard(xml, nsmap):
     """Decodes an instance of the following type: standard.
 
     :param lxml.etree xml: XML from which type is to be decoded.
-    :param dict nsmap: XML namespace mappings.
+    :param nsmap: XML namespace mappings.
 
     :returns: A decoded type instance.
     :rtype: cim.v1.typeset.shared.Standard
@@ -470,7 +470,7 @@ def decode_standard_name(xml, nsmap):
     """Decodes an instance of the following type: standard name.
 
     :param lxml.etree xml: XML from which type is to be decoded.
-    :param dict nsmap: XML namespace mappings.
+    :param nsmap: XML namespace mappings.
 
     :returns: A decoded type instance.
     :rtype: cim.v1.typeset.shared.StandardName

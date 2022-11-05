@@ -22,8 +22,8 @@ from pyesdoc.utils.convert import str_to_unicode
 def get_filename(doc, encoding=None):
     """Returns document file name.
 
-    :param object document: A pyesdoc document instance.
-    :param str encoding: Document encoding.
+    :param document: A pyesdoc document instance.
+    :param encoding: Document encoding.
 
     :returns: Document file name.
     :rtype: str
@@ -48,9 +48,9 @@ def _get_filepath(io_dir, doc, encoding):
 def write(document, fpath, encoding=constants.ENCODING_JSON):
     """Writes a document to the file system.
 
-    :param object document: A pyesdoc document instance.
-    :param str fpath: Path to I/O directory or file.
-    :param str encoding: Document encoding.
+    :param document: A pyesdoc document instance.
+    :param fpath: Path to I/O directory or file.
+    :param encoding: Document encoding.
 
     :returns: Path to created file.
     :rtype: str
@@ -68,9 +68,9 @@ def write(document, fpath, encoding=constants.ENCODING_JSON):
 def read(fpath, encoding=None, decode=True):
     """Reads a document from file system.
 
-    :param str fpath: Path to previously saved file.
-    :param str encoding: Encoding to use during deserialization.
-    :param bool decode: Flag indicating whether document will be decoded.
+    :param fpath: Path to previously saved file.
+    :param encoding: Encoding to use during deserialization.
+    :param decode: Flag indicating whether document will be decoded.
 
     :returns: A pyesdoc document instance.
     :rtype: object
@@ -97,8 +97,8 @@ def read(fpath, encoding=None, decode=True):
 def seek(io_dir, filter=None, latest=False):
     """Reads a document from file system.
 
-    :param str io_dir: Path to a directory within documents exist.
-    :param object filter: Filter to apply when seeking.
+    :param io_dir: Path to a directory within documents exist.
+    :param filter: Filter to apply when seeking.
 
     :returns: A pyesdoc document instance.
     :rtype: object
@@ -166,9 +166,9 @@ def seek(io_dir, filter=None, latest=False):
 def convert(fpath, to_encoding, from_encoding=None):
     """Converts a document upon file system.
 
-    :param str fpath: Path to previously saved file.
-    :param str to_encoding: Target encoding.
-    :param str from_encoding: Source encoding (defaults to json).
+    :param fpath: Path to previously saved file.
+    :param to_encoding: Target encoding.
+    :param from_encoding: Source encoding (defaults to json).
 
     :returns: Path to converted pyesdoc document instance.
     :rtype: str

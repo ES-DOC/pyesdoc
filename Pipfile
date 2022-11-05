@@ -6,11 +6,16 @@ name = "pypi"
 [packages]
 arrow = "*"
 lxml = "*"
-nose = "*"
 requests = "*"
 tornado = "*"
 
 [requires]
-python_version = "2.7.18"
+python_version = "3.10.1"
 
 [dev-packages]
+flake8 = "*"
+mkdocs = "*"
+mkdocs-material = "*"
+mkdocstrings = "*"
+nose = "*"
+pytest = "*"

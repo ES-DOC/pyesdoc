@@ -32,8 +32,8 @@ _EP_DELETE = "/2/document/delete"
 def retrieve(uid, version=constants.DOC_VERSION_LATEST):
     """Retrieves a document from web service.
 
-    :param str|uuid.UUID uid: Document unique identifier.
-    :param str|int version: Document version.
+    :param|uuid.UUID uid: Document unique identifier.
+    :param|int version: Document version.
 
     :returns: A document from remote repository.
     :rtype: object | None
@@ -92,8 +92,8 @@ def publish(doc):
 def unpublish(uid, version=constants.DOC_VERSION_ALL):
     """Unpublishes a document from web service.
 
-    :param str|uuid.UUID uid: Document unique identifier.
-    :param str|int version: Document version.
+    :param|uuid.UUID uid: Document unique identifier.
+    :param|int version: Document version.
 
     """
     # Validate inputs.

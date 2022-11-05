@@ -53,7 +53,7 @@ def _get_source_description(source):
 def _get_children(doc):
     """Unpacks child documents contained within document being processed.
 
-    :param object doc: Document being processed.
+    :param doc: Document being processed.
 
     :returns: Collection of documents being processed.
     :rtype: list
@@ -109,9 +109,9 @@ def parse(encoding, project, source, document):
     """Parses document according to project & source.
 
     :param encoding: Original document encoding.
-    :param str project: Name of a supported project (e.g. cmip6).
-    :param str source: Name of a document source (e.g. esdoc-q).
-    :param object document: Document being parsed.
+    :param project: Name of a supported project (e.g. cmip6).
+    :param source: Name of a document source (e.g. esdoc-q).
+    :param document: Document being parsed.
 
     """
     # Set collection of documents to process.

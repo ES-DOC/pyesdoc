@@ -19,8 +19,8 @@ from pyesdoc.ontologies import cim
 def associate(source, target):
     """Associates a source document with a target document.
 
-    :param object source: Source document.
-    :param object target: Target document.
+    :param source: Source document.
+    :param target: Target document.
 
     :returns: Document reference encapsulating the association.
     :rtype: cim.v2.DocReference
@@ -41,8 +41,8 @@ def associate(source, target):
 def associate_by_id(source, target_id):
     """Associates a source document with target document identifer(s).
 
-    :param object source: Source document.
-    :param str target_id: Target document identifier.
+    :param source: Source document.
+    :param target_id: Target document identifier.
 
     :returns: Document reference encapsulating the association.
     :rtype: cim.v2.DocReference
@@ -64,9 +64,9 @@ def associate_by_id(source, target_id):
 def associate_by_id_and_version(source, target_id, target_version):
     """Associates a source document with target document identifer / version.
 
-    :param object source: Source document.
-    :param str target_id: Target document identifier.
-    :param int target_version: Target document version.
+    :param source: Source document.
+    :param target_id: Target document identifier.
+    :param target_version: Target document version.
 
     :returns: Document reference encapsulating the association.
     :rtype: cim.v2.DocReference
@@ -96,9 +96,9 @@ def associate_by_id_and_version(source, target_id, target_version):
 def associate_by_name(source, target_type, target_name):
     """Associates document(s) with another via document name.
 
-    :param object source: Source document.
+    :param source: Source document.
     :param class target_type: Type of target document.
-    :param str target_name: Name of target document.
+    :param target_name: Name of target document.
 
     :returns: Document reference encapsulating the association.
     :rtype: cim.v2.DocReference

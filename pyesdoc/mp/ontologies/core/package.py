@@ -24,8 +24,8 @@ class Package(object):
     def __init__(self, name, doc_string, classes, enums):
         """Instance constructor.
 
-        :param str name: Package name.
-        :param str doc_string: Package documentation string.
+        :param name: Package name.
+        :param doc_string: Package documentation string.
         :param iterable classes: Set of associated classes.
         :param iterable enums: Set of associated enums.
 
