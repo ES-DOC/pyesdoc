@@ -9,7 +9,7 @@
 
 """
 from pyesdoc._codecs.dictionary import encoder as dict_encoder
-from pyesdoc.utils import convert as convertor
+from pyesdoc.utils import convertor
 
 
 

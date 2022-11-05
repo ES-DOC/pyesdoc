@@ -11,7 +11,7 @@
 import datetime
 import inspect
 
-from pyesdoc.utils import convert as convertor
+from pyesdoc.utils import convertor
 from pyesdoc.utils import runtime
 
 

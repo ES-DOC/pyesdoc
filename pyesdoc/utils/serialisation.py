@@ -2,7 +2,7 @@ import datetime as dt
 import json
 import uuid
 
-from pyesdoc.utils import convert as convertor
+from pyesdoc.utils import convertor
 
 
 # Default character set.

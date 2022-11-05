@@ -9,7 +9,7 @@
 
 
 """
-from pyesdoc.utils import convert as convertor
+from pyesdoc.utils import convertor
 from pyesdoc.utils import runtime
 from pyesdoc.utils import logger
 from pyesdoc.utils import config

@@ -9,7 +9,7 @@
 
 """
 from pyesdoc import ontologies
-from pyesdoc.utils import convert as convertor
+from pyesdoc.utils import convertor
 
 
 

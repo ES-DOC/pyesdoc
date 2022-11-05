@@ -5,7 +5,7 @@ import arrow
 from lxml import etree as et
 
 from pyesdoc import exceptions
-from pyesdoc.utils import convert as convertor
+from pyesdoc.utils import convertor
 
 
 # Null uuid for checking whether one has to be generated.
