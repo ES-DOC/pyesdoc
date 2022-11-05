@@ -11,7 +11,7 @@
 import datetime
 import inspect
 
-from pyesdoc.utils import convert
+from pyesdoc.utils import convert as convertor
 from pyesdoc.utils import runtime
 
 
@@ -203,7 +203,7 @@ def _get_name(name):
 
     # Convert to spaced case.
     if len(name) > 4:
-        name = convert.str_to_spaced_case(name).strip()
+        name = convertor.str_to_spaced_case(name).strip()
 
     # Prefixes.
     n = name.lower()

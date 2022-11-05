@@ -16,7 +16,7 @@ import arrow
 from lxml import etree as et
 
 from pyesdoc import exceptions
-from pyesdoc.utils import convert
+from pyesdoc.utils import convert as convertor
 
 
 

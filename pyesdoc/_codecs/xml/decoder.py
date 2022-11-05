@@ -11,7 +11,7 @@
 import xml.etree.ElementTree as ET
 
 from pyesdoc import ontologies
-from pyesdoc.utils import convert
+from pyesdoc.utils import convert as convertor
 
 
 
@@ -37,8 +37,8 @@ def _decode_simple(elem, typeof, is_iterable):
 
     """
     if is_iterable:
-        return [convert.text_to_typed_value(i.text, typeof) for i in elem]
-    return convert.text_to_typed_value(elem.text, typeof)
+        return [convertor.text_to_typed_value(i.text, typeof) for i in elem]
+    return convertor.text_to_typed_value(elem.text, typeof)
 
 
 def _decode(elem, doc_type, is_iterable):
@@ -52,7 +52,7 @@ def _decode(elem, doc_type, is_iterable):
         # Set doc attributes:
         for _name, _type, _is_iterable in doc_type_info:
             # ... set xml element;
-            _elem = xml.find(convert.str_to_camel_case(_name))
+            _elem = xml.find(convertor.str_to_camel_case(_name))
 
             # ... skip placeholders;
             if _elem is None:

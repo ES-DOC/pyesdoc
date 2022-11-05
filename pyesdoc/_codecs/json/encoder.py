@@ -9,7 +9,7 @@
 
 """
 from pyesdoc._codecs.dictionary import encoder as dict_encoder
-from pyesdoc.utils import convert
+from pyesdoc.utils import convert as convertor
 
 
 
@@ -23,7 +23,7 @@ def encode(doc):
     :rtype: unicode
 
     """
-    return convert.dict_to_json(
+    return convertor.dict_to_json(
       dict_encoder.encode(doc),
-      convert.str_to_camel_case
+      convertor.str_to_camel_case
       )

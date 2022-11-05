@@ -9,7 +9,7 @@
 
 """
 from pyesdoc import ontologies
-from pyesdoc.utils import convert
+from pyesdoc.utils import convert as convertor
 
 
 
@@ -37,8 +37,8 @@ def _decode_simple(value, target_type, is_iterable):
 
     """
     if is_iterable:
-        return [convert.text_to_typed_value(i, target_type) for i in value]
-    return convert.text_to_typed_value(value, target_type)
+        return [convertor.text_to_typed_value(i, target_type) for i in value]
+    return convertor.text_to_typed_value(value, target_type)
 
 
 def _decode(value, doc_type, is_iterable):
@@ -85,7 +85,7 @@ def decode(as_dict):
 
     """
     # Format keys.
-    as_dict = convert.dict_keys(as_dict, convert.str_to_underscore_case)
+    as_dict = convertor.dict_keys(as_dict, convertor.str_to_underscore_case)
 
     # Get document type key.
     try:

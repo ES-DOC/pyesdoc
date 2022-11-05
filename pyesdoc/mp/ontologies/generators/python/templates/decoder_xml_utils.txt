@@ -16,7 +16,7 @@ import arrow
 from lxml import etree as et
 
 from pyesdoc import exceptions
-from pyesdoc.utils import convert
+from pyesdoc.utils import convert as convertor
 
 
 
@@ -36,12 +36,12 @@ def _get_value(xml, rtype=unicode):
     # Get unicode.
     if rtype is unicode:
         if isinstance(xml, types.StringTypes):
-            result = convert.str_to_unicode(xml)
+            result = convertor.str_to_unicode(xml)
         else:
-            result = convert.str_to_unicode(et.tostring(xml))
+            result = convertor.str_to_unicode(et.tostring(xml))
     else:
         if isinstance(xml, types.StringTypes):
-            result = convert.unicode_to_str(xml)
+            result = convertor.unicode_to_str(xml)
         else:
             result = et.tostring(xml)
 
@@ -305,7 +305,7 @@ def load_xml(xml, return_nsmap=False, default_ns='cim'):
         except Exception as e:
             # ... unicode
             if isinstance(xml, unicode):
-                xml = convert.unicode_to_str(xml)
+                xml = convertor.unicode_to_str(xml)
 
             # ... strings
             if isinstance(xml, str):

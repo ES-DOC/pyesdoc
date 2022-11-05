@@ -13,7 +13,7 @@ import uuid
 import xml.etree.ElementTree as ET
 
 from pyesdoc._codecs.dictionary import encoder as dict_encoder
-from pyesdoc.utils import convert
+from pyesdoc.utils import convert as convertor
 
 
 
@@ -118,7 +118,7 @@ def _get_xml_tag(doc):
 
     """
     tag = type(doc).type_key.split('.')[3]
-    tag = convert.str_to_camel_case(tag)
+    tag = convertor.str_to_camel_case(tag)
 
     return tag
 
@@ -137,7 +137,7 @@ def encode(doc):
     as_dict = dict_encoder.encode(doc)
 
     # Format dictionary keys.
-    as_dict = convert.dict_keys(as_dict, convert.str_to_camel_case)
+    as_dict = convertor.dict_keys(as_dict, convertor.str_to_camel_case)
 
     # Encode to an etree xml element.
     tag = _get_xml_tag(doc)

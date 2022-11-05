@@ -9,7 +9,7 @@
 
 """
 from pyesdoc._codecs.dictionary import decoder as dict_decoder
-from pyesdoc.utils import convert
+from pyesdoc.utils import convert as convertor
 
 
 
@@ -21,7 +21,7 @@ def decode(as_json):
 
     """
     # Convert to dictionary.
-    as_dict = convert.json_to_dict(as_json)
+    as_dict = convertor.json_to_dict(as_json)
 
     # Decode from dictionary.
     return dict_decoder.decode(as_dict)

@@ -14,7 +14,7 @@ import datetime
 import requests
 
 import pyesdoc
-from pyesdoc.utils import convert
+from pyesdoc.utils import convert as convertor
 from pyesdoc.utils import runtime
 
 
