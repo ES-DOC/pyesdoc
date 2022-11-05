@@ -13,9 +13,8 @@ import abc
 import datetime
 import uuid
 
-import typeset_for_iso_package as iso
-import typeset_for_shared_package as shared
-
+import pyesdoc.ontologies.cim.v2.typeset_for_iso_package as iso
+import pyesdoc.ontologies.cim.v2.typeset_for_shared_package as shared
 
 
 class Activity(object):

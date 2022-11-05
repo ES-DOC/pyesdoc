@@ -13,8 +13,8 @@ import abc
 import datetime
 import uuid
 
-import typeset_for_shared_package as shared
-import typeset_for_software_package as software
+import pyesdoc.ontologies.cim.v2.typeset_for_shared_package as shared
+import pyesdoc.ontologies.cim.v2.typeset_for_software_package as software
 
 
 

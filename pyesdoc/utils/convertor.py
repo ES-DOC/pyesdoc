@@ -99,7 +99,7 @@ def str_to_spaced_case(target: str, separator="_") -> str:
     elif separator is not None and len(target.split(separator)) > 1:
         return " ".join(target.split(separator))
     elif target.find(" ") == -1:
-        return re.sub("([A-Z])"," \g<0>", target).strip()
+        return re.sub("([A-Z])", ' \g<0>', target).strip()
     else:
         return target
 

@@ -15,7 +15,6 @@ import uuid
 
 
 
-
 class Calendar(object):
     """A concrete class within the cim v2 type system.
 

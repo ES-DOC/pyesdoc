@@ -151,7 +151,7 @@ def set_attributes(target, xml, nsmap, decodings):
             msg += "\tAttribute is simple ? = {0};\n".format(is_simple_type)
             msg += "\tAttribute xpath = {0};\n".format(xpath)
             msg += "\tError = {0};\n".format(e)
-            print msg
+            print(msg)
 
     # Support operation chaining.
     return target

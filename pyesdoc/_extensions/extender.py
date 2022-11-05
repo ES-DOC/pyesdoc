@@ -19,7 +19,7 @@ from pyesdoc.utils import runtime
 # Supported extenders keyed by document type.
 SUPPORTED = {}
 for o in {cim.v1, cim.v2}:
-    for doc_type, doc_extender in o.SUPPORTED.iteritems():
+    for doc_type, doc_extender in o.SUPPORTED.items():
         SUPPORTED[doc_type] = doc_extender
 
 

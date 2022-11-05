@@ -7,8 +7,8 @@
 """
 from collections import namedtuple
 
-from pyesdoc.utils.convert import capitalize
-from pyesdoc.utils.convert import str_to_spaced_case
+from pyesdoc.utils.convertor import capitalize
+from pyesdoc.utils.convertor import str_to_spaced_case
 
 
 
@@ -118,5 +118,5 @@ def extend(c, p, parent=None, ancestors=[]):
         try:
             func(ctx)
         except Exception as err:
-            print func, err
+            print(f"{func} :: {err}")
             raise err

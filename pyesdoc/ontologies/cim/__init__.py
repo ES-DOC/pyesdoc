@@ -10,9 +10,9 @@
 .. note:: Code generated using pyesdoc @ 2013-04-17 13:14:13.903808.
 
 """
-import v1
-import v2
-import constants
+from pyesdoc.ontologies.cim import v1
+from pyesdoc.ontologies.cim import v2
+from pyesdoc.ontologies.cim import constants
 
 
 # Supported version of this ontology.

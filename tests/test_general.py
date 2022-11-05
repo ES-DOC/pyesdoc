@@ -89,7 +89,7 @@ def test_imports_01():
         pyesdoc.publishing,
         pyesdoc.serialization,
         pyesdoc.utils,
-        pyesdoc.utils.convert,
+        pyesdoc.utils.convertor,
         pyesdoc.utils.runtime,
         pyesdoc.validation,
         pyesdoc.validation.graph,

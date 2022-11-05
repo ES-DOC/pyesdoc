@@ -50,9 +50,7 @@ def _validate_class_property_type_references(ctx):
                 err = err.format(ctx.get_name(factory, module), name, typeof)
                 ctx.set_error(err)
             if qualifier and qualifier not in valid_types:
-                print name, typeof, qualifier
-                # for t in valid_types:
-                #     print t
+                print(f"{name} :: {typeof} :: {qualifier}")
                 err = 'Invalid linked_to qualifier: {0}.[{1}] --> '
                 err += 'type reference "{2}" is unrecognized'
                 err = err.format(ctx.get_name(factory, module), name, qualifier)

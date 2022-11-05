@@ -22,6 +22,3 @@ from decoder_for_shared_package import decode_platform
 from decoder_for_software_package import decode_model_component
 from decoder_for_software_package import decode_processor_component
 from decoder_for_software_package import decode_statistical_model_component
-
-
-

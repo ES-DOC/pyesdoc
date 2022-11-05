@@ -13,9 +13,9 @@ import abc
 import datetime
 import uuid
 
-import typeset_for_activity_package as activity
-import typeset_for_data_package as data
-import typeset_for_shared_package as shared
+import pyesdoc.ontologies.cim.v2.typeset_for_activity_package as activity
+import pyesdoc.ontologies.cim.v2.typeset_for_data_package as data
+import pyesdoc.ontologies.cim.v2.typeset_for_shared_package as shared
 
 
 

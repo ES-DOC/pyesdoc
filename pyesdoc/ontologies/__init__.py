@@ -10,5 +10,5 @@
 
 
 """
-import type_info
-from utils import *
+from pyesdoc.ontologies import type_info
+from pyesdoc.ontologies.utils import *

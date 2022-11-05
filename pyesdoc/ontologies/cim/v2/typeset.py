@@ -10,31 +10,30 @@
 .. note:: Code generated using the pyesdoc framework.
 
 """
-from typeset_for_activity_package import *
-from typeset_for_cmip_package import *
-from typeset_for_data_package import *
-from typeset_for_designing_package import *
-from typeset_for_drs_package import *
-from typeset_for_iso_package import *
-from typeset_for_platform_package import *
-from typeset_for_science_package import *
-from typeset_for_shared_package import *
-from typeset_for_software_package import *
-from typeset_for_time_package import *
+from pyesdoc.ontologies.cim.v2.typeset_for_activity_package import *
+from pyesdoc.ontologies.cim.v2.typeset_for_cmip_package import *
+from pyesdoc.ontologies.cim.v2.typeset_for_data_package import *
+from pyesdoc.ontologies.cim.v2.typeset_for_designing_package import *
+from pyesdoc.ontologies.cim.v2.typeset_for_drs_package import *
+from pyesdoc.ontologies.cim.v2.typeset_for_iso_package import *
+from pyesdoc.ontologies.cim.v2.typeset_for_platform_package import *
+from pyesdoc.ontologies.cim.v2.typeset_for_science_package import *
+from pyesdoc.ontologies.cim.v2.typeset_for_shared_package import *
+from pyesdoc.ontologies.cim.v2.typeset_for_software_package import *
+from pyesdoc.ontologies.cim.v2.typeset_for_time_package import *
 
 
-import typeset_for_activity_package as activity
-import typeset_for_cmip_package as cmip
-import typeset_for_data_package as data
-import typeset_for_designing_package as designing
-import typeset_for_drs_package as drs
-import typeset_for_iso_package as iso
-import typeset_for_platform_package as platform
-import typeset_for_science_package as science
-import typeset_for_shared_package as shared
-import typeset_for_software_package as software
-import typeset_for_time_package as time
-
+import pyesdoc.ontologies.cim.v2.typeset_for_activity_package as activity
+import pyesdoc.ontologies.cim.v2.typeset_for_cmip_package as cmip
+import pyesdoc.ontologies.cim.v2.typeset_for_data_package as data
+import pyesdoc.ontologies.cim.v2.typeset_for_designing_package as designing
+import pyesdoc.ontologies.cim.v2.typeset_for_drs_package as drs
+import pyesdoc.ontologies.cim.v2.typeset_for_iso_package as iso
+import pyesdoc.ontologies.cim.v2.typeset_for_platform_package as platform
+import pyesdoc.ontologies.cim.v2.typeset_for_science_package as science
+import pyesdoc.ontologies.cim.v2.typeset_for_shared_package as shared
+import pyesdoc.ontologies.cim.v2.typeset_for_software_package as software
+import pyesdoc.ontologies.cim.v2.typeset_for_time_package as time
 
 
 # Module exports.
