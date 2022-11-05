@@ -33,7 +33,7 @@ def raise_error(msg, type_=ESDOC_MP_Exception):
     """Helper function to raise a runtime error.
 
     :param msg: Error message.
-    :param class type_: Error type.
+    :param type_: Error type.
 
     """
     raise type_(msg)

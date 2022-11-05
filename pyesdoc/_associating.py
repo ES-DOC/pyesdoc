@@ -97,7 +97,7 @@ def associate_by_name(source, target_type, target_name):
     """Associates document(s) with another via document name.
 
     :param source: Source document.
-    :param class target_type: Type of target document.
+    :param target_type: Type of target document.
     :param target_name: Name of target document.
 
     :returns: Document reference encapsulating the association.

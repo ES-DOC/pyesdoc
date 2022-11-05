@@ -28,7 +28,7 @@ def create(
     ):
     """Creates a document.
 
-    :param class typeof: Ontology type, e.g. cim.1.software.ModelComponent.
+    :param typeof: Ontology type, e.g. cim.1.software.ModelComponent.
     :param project: Project wih which instance is associated.
     :param|str sub_projects: Sub-project(s) with which instance is associated.
     :param institute: Institute wih which instance is associated.

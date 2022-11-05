@@ -96,10 +96,7 @@ def _set_content(ctx):
     """Set document content to be written to file system.
 
     """
-    try:
-        ctx.content = convert.unicode_to_str(ctx.download.text)
-    except Exception as err:
-        raise _EncodingException(err)
+    ctx.content = ctx.download.text
 
 
 def _parse_content(ctx):

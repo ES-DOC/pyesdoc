@@ -17,15 +17,9 @@ def decode(as_json):
     """Decodes a document from a UTF-8 encoded json text blob.
 
     :param as_json: Document json representation.
-    :type as_json: unicode | str
-
     :returns: A pyesdoc document instance.
-    :rtype: object
 
     """
-    # Convert to unicode.
-    as_json = convert.str_to_unicode(as_json)
-
     # Convert to dictionary.
     as_dict = convert.json_to_dict(as_json)
 

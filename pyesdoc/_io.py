@@ -15,7 +15,6 @@ import os
 import pyesdoc
 from pyesdoc import constants
 from pyesdoc import ontologies
-from pyesdoc.utils.convert import str_to_unicode
 
 
 
@@ -88,7 +87,7 @@ def read(fpath, encoding=None, decode=True):
 
     # Set raw content.
     with open(fpath, 'r') as fstream:
-        fcontent = str_to_unicode(fstream.read())
+        fcontent = fstream.read()
 
     # Decode upon request.
     return pyesdoc.decode(fcontent, encoding) if decode else fcontent

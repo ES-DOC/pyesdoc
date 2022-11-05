@@ -50,7 +50,6 @@ def _encode_simple(xml, val):
     """Encodes a simple value.
 
     """
-    # Format according to type.
     if val in (None, 'None'):
         return u''
     elif isinstance(val, datetime.datetime):
@@ -60,11 +59,11 @@ def _encode_simple(xml, val):
     elif isinstance(val, datetime.time):
         val = val.isoformat()
     else:
-        val = convert.str_to_unicode(val)
-    if val is None or len(val) == 0:
-        val = u''
+        val = str(val)
 
-    # Assign to xml.
+    if val is None or len(val) == 0:
+        val = ""
+
     xml.text = val.strip()
 
 

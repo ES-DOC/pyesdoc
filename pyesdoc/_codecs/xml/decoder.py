@@ -75,24 +75,18 @@ def decode(as_xml):
     """Decodes a document from an xml string.
 
     :param as_xml: Document xml representation.
-    :type as_xml: unicode | str | ET.Element
-
     :returns: A pyesdoc document instance.
-    :rtype: object
 
     """
-    # Convert to etree.
-    if isinstance(as_xml, unicode):
-        as_xml = ET.fromstring(convert.unicode_to_str(as_xml))
-    elif isinstance(as_xml, str):
+    if isinstance(as_xml, str):
         as_xml = ET.fromstring(as_xml)
+
     if not isinstance(as_xml, ET.Element):
         raise TypeError("Cannot decode non xml documents")
 
-    # Get document type key.
-    doc_type_key = as_xml.find('meta/type').text
 
     # Get document type.
+    doc_type_key = as_xml.find('meta/type').text
     doc_type = ontologies.get_type_from_key(doc_type_key)
     if doc_type is None:
         raise ValueError('meta.type key cannot be mapped to an ontology type.')

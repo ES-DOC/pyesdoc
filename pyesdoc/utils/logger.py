@@ -11,10 +11,10 @@ LOG_LEVEL_CRITICAL = "CRITICAL"
 LOG_LEVEL_FATAL = "FATAL"
 
 # Text to display when passed a null message.
-_NULL_MSG = "-------------------------------------------------------------------------------"
+_NULL_MSG: str = "-" * 90
 
 
-def log(msg: object=None, level: str=LOG_LEVEL_INFO):
+def log(msg: object = None, level: str = LOG_LEVEL_INFO):
     """Outputs a message to log.
 
     :param msg: Message to be written to log.

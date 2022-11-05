@@ -130,10 +130,8 @@ def _format_value(v, input_formatter=None, output_formatter=None):
         else:
             s = str(s)
 
-        if s and len(s):
-            s = convert.str_to_unicode(s)
-            if output_formatter:
-                s = output_formatter(s)
+        if s and len(s) and output_formatter:
+            s = output_formatter(s)
 
         if s and len(s):
             s = s.strip()
@@ -190,8 +188,8 @@ def _get_value(data, path):
             break
 
     # Tornado templating requires 'strings'.
-    if isinstance(value, unicode):
-        value = convert.unicode_to_str(value)
+    if not isinstance(value, str):
+        value = str(value)
 
     return None if value == data else value
 

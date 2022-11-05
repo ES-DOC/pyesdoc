@@ -1,14 +1,3 @@
-"""
-.. module:: decoder_utils.py
-
-   :license: GPL / CeCILL
-   :platform: Unix, Windows
-   :synopsis: XML decoding utility functions.
-
-.. moduleauthor:: Earth System Documentation (ES-DOC) <dev@es-doc.org>
-.. note:: Code generated using pyesdoc @ 2013-08-28 14:41:13.340289.
-
-"""
 import uuid
 import types
 
@@ -19,67 +8,64 @@ from pyesdoc import exceptions
 from pyesdoc.utils import convert
 
 
-
 # Null uuid for checking whether one has to be generated.
 NULL_UUID = u'00000000-0000-0000-0000-000000000000'
 
 
-
-def _get_value(xml, rtype=unicode):
-    """Returns xml node value."""
-    # Get xml value.
+def _get_value(xml, rtype = str):
+    """Returns xml node value.
+    
+    """
     if isinstance(xml, types.ListType):
         xml = None if len(xml) == 0 else xml[0]
     if xml is None:
         return None
 
-    # Get unicode.
-    if rtype is unicode:
-        if isinstance(xml, types.StringTypes):
-            result = convert.str_to_unicode(xml)
-        else:
-            result = convert.str_to_unicode(et.tostring(xml))
-    else:
-        if isinstance(xml, types.StringTypes):
-            result = convert.unicode_to_str(xml)
-        else:
-            result = et.tostring(xml)
-
-    # Format.
+    result = et.tostring(xml)
     result = result.strip()
     result = result.rstrip('|')
 
     return result
 
 
-def _convert_to_unicode(xml, nsmap=None):
-    """Converts an etree element xml representation into a unicode type."""
+def _convert_to_str(xml, nsmap=None):
+    """Converts an etree element xml representation into a string type.
+    
+    """
     return _get_value(xml, str)
 
 
 def _convert_to_bool(xml, nsmap=None):
-    """Converts an etree element xml representation into a boolean type."""
+    """Converts an etree element xml representation into a boolean type.
+    
+    """
     value = _get_value(xml)
 
     return True if value is not None and value.lower() in [u'true'] else bool()
 
 
 def _convert_to_integer(xml, nsmap=None):
-    """Converts an etree element xml representation into an integer type."""
+    """Converts an etree element xml representation into an integer type.
+    
+    """
     value = _get_value(xml)
 
     return int(value) if value is not None and value.upper() != u'NONE' else int()
 
 
 def _convert_to_float(xml, nsmap=None):
-    """Converts an etree element xml representation into a float type."""
+    """Converts an etree element xml representation into a float type.
+    
+    """
     value = _get_value(xml)
 
     return float(value) if value is not None else float()
 
 
 def _convert_to_uid(xml, nsmap=None):
-    """Converts an etree element xml representation into a uid type."""
+    """Converts an etree element xml representation into a uid type.
+    
+    """
     value = _get_value(xml)
     if value is None or value == NULL_UUID:
         return uuid.uuid4()
@@ -90,7 +76,9 @@ def _convert_to_uid(xml, nsmap=None):
 
 
 def _convert_to_datetime(xml, nsmap=None):
-    """Converts an etree element xml representation into a datetime type."""
+    """Converts an etree element xml representation into a datetime type.
+    
+    """
     value = _get_value(xml)
     if value is None:
         return None
@@ -109,9 +97,9 @@ _SIMPLE_TYPE_DECODERS = {
     'datetime.datetime' : _convert_to_datetime,
     'float' : _convert_to_float,
     'int' : _convert_to_integer,
-    'str' : _convert_to_unicode,
-    'unicode' : _convert_to_unicode,
-    'uri' : _convert_to_unicode,
+    'str' : _convert_to_str,
+    'unicode' : _convert_to_str,
+    'uri' : _convert_to_str,
     'uuid' : _convert_to_uid,
     'uuid.UUID' : _convert_to_uid,
 }
@@ -168,16 +156,20 @@ def set_attributes(target, xml, nsmap, decodings):
     return target
 
 
-def _set_attribute(target,
-                   xml,
-                   nsmap,
-                   attr,
-                   decoder,
-                   xpath,
-                   is_simple_type,
-                   is_iterable,
-                   is_duplicate):
-    """Decodes entity attribute from a decoding."""
+def _set_attribute(
+    target,
+    xml,
+    nsmap,
+    attr,
+    decoder,
+    xpath,
+    is_simple_type,
+    is_iterable,
+    is_duplicate
+):
+    """Decodes entity attribute from a decoding.
+    
+    """
     # Escape if xpath is unassigned.
     if not xpath:
         return
@@ -213,7 +205,9 @@ def _set_attribute(target,
 
 
 def _get_attribute_value(xml, nsmap, decoder, xpath, is_simple_type, is_iterable):
-    """Gets the value of an attribute from xml."""
+    """Gets the value of an attribute from xml.
+    
+    """
     # Apply xpath (derive xml fragment from value is derived).
     att_xml = xml.xpath(xpath, namespaces=nsmap)
     if not att_xml:
@@ -303,11 +297,6 @@ def load_xml(xml, return_nsmap=False, default_ns='cim'):
             xml = xml.getroot()
             nsmap = xml.nsmap
         except Exception as e:
-            # ... unicode
-            if isinstance(xml, unicode):
-                xml = convert.unicode_to_str(xml)
-
-            # ... strings
             if isinstance(xml, str):
                 try:
                     xml = et.fromstring(xml)

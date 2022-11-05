@@ -94,7 +94,7 @@ def get_type(name, version, package, typeof):
 def get_type_key(doc_type):
     """Returns a document type key.
 
-    :param class doc_type: A document type for which meta-information is to be returned.
+    :param doc_type: A document type for which meta-information is to be returned.
 
     :returns: A type key (if found).
     :rtype: str or None
@@ -143,7 +143,7 @@ def is_supported(name, version, package=None, typeof=None):
 def get_decoder_info(doc_type):
     """Returns meta-information associated with a type used for decoding purposes.
 
-    :param class doc_type: A document type for which meta-information is to be returned.
+    :param doc_type: A document type for which meta-information is to be returned.
 
     :returns: Type meta-information.
     :rtype: tuple
@@ -174,7 +174,7 @@ def get_constraint(constraints, constraint_type):
 def get_constraints(doc_type, type_filter=None):
     """Returns constraints associated with a type.
 
-    :param class doc_type: A document type for which meta-information is to be returned.
+    :param doc_type: A document type for which meta-information is to be returned.
     :param type_filtre: A constraint type filter.
 
     :returns: Type meta-information.
@@ -190,7 +190,7 @@ def get_constraints(doc_type, type_filter=None):
 def get_property_constraint(container, name, typeof):
     """Returns property constraints associated with a type instance.
 
-    :param class container: A document instance for which meta-information is to be returned.
+    :param container: A document instance for which meta-information is to be returned.
     :param name: Property name.
     :param typeof: Type of property constraint to be returned.
 

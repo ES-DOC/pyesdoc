@@ -9,8 +9,6 @@ from collections import namedtuple
 
 from pyesdoc.utils.convert import capitalize
 from pyesdoc.utils.convert import str_to_spaced_case
-from pyesdoc.utils.convert import str_to_unicode
-
 
 
 
@@ -24,10 +22,10 @@ class _PropertyExtensionInfo(object):
 
     """
     def __init__(self):
-        self.display_name = unicode()
-        self.full_display_name = unicode()
-        self.long_display_name = unicode()
-        self.short_display_name = unicode()
+        self.display_name = ""
+        self.full_display_name = ""
+        self.long_display_name = ""
+        self.short_display_name = ""
 
 
 def _extend_property_01(ctx):
