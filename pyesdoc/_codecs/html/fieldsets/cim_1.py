@@ -117,7 +117,7 @@ FIELDSETS = {
         Field('Institute', path='meta.institute'),
         Field('Acronym', path='acronym'),
         Field('Format', path='distribution.format'),
-        Field('State', path='data_status', output_formatter=unicode.upper),
+        Field('State', path='data_status', output_formatter=str.upper),
         Field('Description', path='description')
     ],
 
@@ -223,7 +223,7 @@ FIELDSETS = {
     ],
 
     'cim.1.shared.responsibleparty': [
-        # Field('Role', path='role', output_formatter=unicode.upper),
+        # Field('Role', path='role', output_formatter=str.upper),
         Field('Name', path='individual_name'),
         Field('Organisation', path='organisation_name'),
         Field('Address', path='address'),

@@ -25,27 +25,16 @@ NULL_UUID = u'00000000-0000-0000-0000-000000000000'
 
 
 
-def _get_value(xml, rtype=unicode):
-    """Returns xml node value."""
-    # Get xml value.
+def _get_value(xml):
+    """Returns xml node value.
+    
+    """
     if isinstance(xml, types.ListType):
         xml = None if len(xml) == 0 else xml[0]
     if xml is None:
         return None
 
-    # Get unicode.
-    if rtype is unicode:
-        if isinstance(xml, types.StringTypes):
-            result = convertor.str_to_unicode(xml)
-        else:
-            result = convertor.str_to_unicode(et.tostring(xml))
-    else:
-        if isinstance(xml, types.StringTypes):
-            result = convertor.unicode_to_str(xml)
-        else:
-            result = et.tostring(xml)
-
-    # Format.
+    result = et.tostring(xml)
     result = result.strip()
     result = result.rstrip('|')
 
@@ -303,11 +292,6 @@ def load_xml(xml, return_nsmap=False, default_ns='cim'):
             xml = xml.getroot()
             nsmap = xml.nsmap
         except Exception as e:
-            # ... unicode
-            if isinstance(xml, unicode):
-                xml = convertor.unicode_to_str(xml)
-
-            # ... strings
             if isinstance(xml, str):
                 try:
                     xml = et.fromstring(xml)

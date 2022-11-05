@@ -9,9 +9,8 @@
 .. note:: Code generated using the pyesdoc framework.
 
 """
-from decoder_xml_utils import set_attributes
-import typeset
-
+from pyesdoc.ontologies.cim.v1 import typeset
+from pyesdoc.ontologies.cim.v1.decoder_xml_utils import set_attributes
 
 
 def decode_calendar(xml, nsmap):

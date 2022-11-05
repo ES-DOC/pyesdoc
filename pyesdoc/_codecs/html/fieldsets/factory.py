@@ -14,7 +14,7 @@ from pyesdoc._codecs.html.fieldsets import cim_2
 
 
 # Fieldsets by ontology type.
-_FIELDSETS = dict(cim_1.FIELDSETS.items() + cim_2.FIELDSETS.items())
+_FIELDSETS = cim_1.FIELDSETS | cim_2.FIELDSETS
 
 
 def create(fieldset):

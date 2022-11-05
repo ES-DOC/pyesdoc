@@ -10,8 +10,7 @@
 """
 import os
 
-from utils_loader import get_modules
-
+from pyesdoc.mp.specializations.utils_loader import get_modules
 
 
 # Map of specializations by id.

@@ -9,12 +9,11 @@
 .. note:: Code generated using the pyesdoc framework.
 
 """
-from decoder_xml_utils import set_attributes
-from decoder_for_data_package import *
-from decoder_for_shared_package import *
-from decoder_for_software_package import *
-import typeset
-
+from pyesdoc.ontologies.cim.v1 import typeset
+from pyesdoc.ontologies.cim.v1.decoder_xml_utils import set_attributes
+from pyesdoc.ontologies.cim.v1.decoder_for_data_package import *
+from pyesdoc.ontologies.cim.v1.decoder_for_shared_package import *
+from pyesdoc.ontologies.cim.v1.decoder_for_software_package import *
 
 
 def decode_activity(xml, nsmap):

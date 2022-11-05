@@ -10,7 +10,7 @@
 import itertools
 from collections import defaultdict
 
-import constants
+from pyesdoc.mp.ontologies.core import constants
 
 
 class Class(object):

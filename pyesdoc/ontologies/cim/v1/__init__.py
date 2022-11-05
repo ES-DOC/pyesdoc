@@ -176,9 +176,6 @@ from pyesdoc.ontologies.cim.v1.typeset_for_software_package import StatisticalMo
 from pyesdoc.ontologies.cim.v1.typeset_for_software_package import TimeMappingType
 from pyesdoc.ontologies.cim.v1.typeset_for_software_package import TimingUnits
 
+from pyesdoc.ontologies.cim.v1 import decoder
 from pyesdoc.ontologies.cim.v1 import type_info
 from pyesdoc.ontologies.cim.v1 import typeset
-try:
-	from pyesdoc.ontologies.cim.v1 import decoder
-except ImportError:
-	pass
