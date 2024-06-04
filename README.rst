@@ -7,7 +7,7 @@ Python client for the esdoc eco-system, more commonly referred to as pyesdoc.
 What is ES-DOC ?
 --------------------------------------
 
-ES-DOC stands for Earth Science - Documentation.  It's goal is to provide software tools and services in order to support the distribution of earth science documentation.
+ES-DOC stands for 'Earth Science - Documentation'.  Its goal is to provide software tools and services in order to support the distribution of earth science documentation.
 
 
 What is pyesdoc ?
