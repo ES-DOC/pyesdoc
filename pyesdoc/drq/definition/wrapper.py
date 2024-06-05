@@ -28,7 +28,7 @@ class Wrapper(object):
         """Instance representation.
 
         """
-        return unicode(self._tables)
+        return str(self._tables)
 
 
     def __len__(self):

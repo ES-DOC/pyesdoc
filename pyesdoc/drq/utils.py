@@ -69,7 +69,7 @@ def init_from_xml(
             val = elem.get(name_xml)
 
         # Set value to None.
-        if val and unicode(val).strip().lower() in {u'', u'none'}:
+        if val and str(val).strip().lower() in {'', 'none'}:
             val = None
 
         # Convert value.

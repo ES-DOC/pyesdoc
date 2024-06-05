@@ -55,7 +55,7 @@ class TableAttribute(object):
 
         """
         # Initialize from XML.
-        utils.init_from_xml(self, elem, elem.keys(), _CONVERTORS)
+        utils.init_from_xml(self, elem, list(elem.keys()), _CONVERTORS)
 
         # Switch to pythonic labels.
         self.label_drq = self.label

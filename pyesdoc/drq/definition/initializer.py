@@ -52,7 +52,7 @@ class _Parser(XMLParser):
 
         """
         # Instantiate wrapper.
-        wrapper = Wrapper(self.tables.values())
+        wrapper = Wrapper(list(self.tables.values()))
 
         # Mutate drq.definition from package to wrapper.
         setattr(pyesdoc.drq, "definition", wrapper)
