@@ -240,7 +240,7 @@ class _JSONDecoder(json.JSONDecoder):
 
     def dict_to_object(self, d):
         # Parse values.
-        for k, v in list(d.items()):
+        for k, v in d.items():
             for parser in self.value_parsers:
                 if parser(d, k, v):
                     break
@@ -411,7 +411,7 @@ def dict_keys(d, key_formatter=str_to_pascal_case):
 
     r = {}
 
-    for k, v in list(d.items()):
+    for k, v in d.items():
         if isinstance(v, dict):
             r[key_formatter(k)] = dict_keys(v, key_formatter)
         elif isinstance(v, list):

@@ -16,7 +16,7 @@ from pyesdoc.utils.compat import str
 
 
 # Set of logging levels.
-LOG_LEVEL_DEBUG = 'DUBUG'
+LOG_LEVEL_DEBUG = 'DEBUG'
 LOG_LEVEL_INFO = 'INFO'
 LOG_LEVEL_WARNING = 'WARNING'
 LOG_LEVEL_ERROR = 'ERROR'
@@ -55,7 +55,7 @@ def log(msg=None, level=LOG_LEVEL_INFO, app=_DEFAULT_APP):
 
     """
     # TODO use structlog/logstash.
-    print((_get_formatted_message(msg, level, app)))
+    print(_get_formatted_message(msg, level, app))
 
 
 def log_error(err, app=_DEFAULT_APP):
