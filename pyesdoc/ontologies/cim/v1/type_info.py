@@ -1689,7 +1689,7 @@ CLASS_OWN_PROPERTIES = {
 }
 
 # Total class properties.
-TOTAL_CLASS_PROPERTIES = sum(len(i) for i in list(CLASS_OWN_PROPERTIES.values()))
+TOTAL_CLASS_PROPERTIES = sum(len(i) for i in CLASS_OWN_PROPERTIES.values())
 
 # ------------------------------------------------
 # Enum.
@@ -1905,7 +1905,7 @@ SUB_CLASSES[software.Component] = (
 SUB_CLASSED = tuple(SUB_CLASSES.keys())
 
 # Maximum class depth in hierarchy.
-CLASS_HIERACHY_DEPTH = max(len(v) for v in list(BASE_CLASSES.values()))
+CLASS_HIERACHY_DEPTH = max(len(v) for v in BASE_CLASSES.values())
 
 # ------------------------------------------------
 # Type constraints.
