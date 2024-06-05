@@ -12,7 +12,7 @@
 import inspect
 from itertools import chain
 
-from utils_constants import *
+from .utils_constants import *
 
 
 
@@ -382,7 +382,7 @@ class PropertySpecialization(object):
             self.enum.validate_value(val)
 
         if self.typeof in {'str', 'cs-str', 'l-str'}:
-            if not isinstance(val, basestring) or not len(val.strip()):
+            if not isinstance(val, str) or not len(val.strip()):
                 raise ValueError("Invalid value: must be a non zero length string")
 
         if self.typeof == 'bool':
@@ -444,7 +444,7 @@ class EnumSpecialization(object):
         :param object val: Value to be validated.
 
         """
-        if not isinstance(val, basestring) or not len(val.strip()):
+        if not isinstance(val, str) or not len(val.strip()):
             raise ValueError("Invalid value: must be a non zero length string")
         if self.is_a_member(val):
             return

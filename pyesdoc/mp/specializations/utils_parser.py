@@ -9,7 +9,7 @@
 
 
 """
-from utils_constants import *
+from .utils_constants import *
 
 
 

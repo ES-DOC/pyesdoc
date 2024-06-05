@@ -19,7 +19,7 @@ class ESDOC_MP_Exception(Exception):
         :param str message: Exception message.
 
         """
-        self.message = unicode(message)
+        self.message = str(message)
 
 
     def __str__(self):
@@ -48,7 +48,7 @@ def log(msg):
     if msg.startswith('-'):
         print(msg)
     else:
-        print("ES-DOC-MP :: {}".format(msg))
+        print(("ES-DOC-MP :: {}".format(msg)))
 
 
 def str_to_camel_case(target, separator='_'):

@@ -17,7 +17,7 @@ def log(msg):
     if msg.startswith('-'):
         print(msg)
     else:
-        print("ES-DOC :: {}".format(msg))
+        print(("ES-DOC :: {}".format(msg)))
 
 
 def get_label(name):
