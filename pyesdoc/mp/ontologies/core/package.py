@@ -8,6 +8,7 @@
 
 """
 from operator import add
+from functools import reduce
 
 
 

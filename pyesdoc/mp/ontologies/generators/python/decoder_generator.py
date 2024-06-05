@@ -12,6 +12,7 @@ from operator import add
 from pyesdoc.mp.ontologies.generators import generator_utils as gu
 from pyesdoc.mp.ontologies.generators.generator import Generator
 from pyesdoc.mp.ontologies.generators.python import utils as pgu
+from functools import reduce
 
 
 
@@ -114,7 +115,7 @@ def _emit_snippet_decoder_imports(o, p):
         append_import(imp)
 
     if len(imports) > 0:
-        return reduce(add, map(lambda i : i + gu.emit_line_return(), sorted(imports)))
+        return reduce(add, [i + gu.emit_line_return() for i in sorted(imports)])
     else:
         return ''
 

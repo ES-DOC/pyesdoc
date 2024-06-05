@@ -12,6 +12,7 @@ import os
 import pwd
 
 import tornado
+from functools import reduce
 
 
 
@@ -155,7 +156,7 @@ def emit_indent(count=1):
     :param int count: Number of indentations to emit.
 
     """
-    return reduce(lambda x, y: x + _INDENT, range(count), '')
+    return reduce(lambda x, y: x + _INDENT, list(range(count)), '')
 
 
 def emit_tab():
@@ -171,7 +172,7 @@ def emit_line_return(count=1):
     :param int count: Number of line returns to emit.
 
     """
-    return reduce(lambda x, y: x + _LINE_RETURN, range(count), '')
+    return reduce(lambda x, y: x + _LINE_RETURN, list(range(count)), '')
 
 
 def create_directory(dir):
