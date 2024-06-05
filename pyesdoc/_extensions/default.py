@@ -27,7 +27,7 @@ def _set_type_info(ctx):
     ctx.meta.type = ctx.ext.type = ctx.doc.__class__.type_key
     ctx.ext.css_class = ctx.ext.type.lower().replace(".", "-")
     ctx.meta.type_display_name = cim.constants.DISPLAY_NAMES.get(type(ctx.doc), ctx.meta.type.split(".")[-1])
-    ctx.meta.type_sort_key = cim.constants.SORT_KEYS.get(type(ctx.doc), u"ZZ")
+    ctx.meta.type_sort_key = cim.constants.SORT_KEYS.get(type(ctx.doc), "ZZ")
 
 
 def _set_institute(ctx):
@@ -104,18 +104,18 @@ def _set_full_display_name(ctx):
     if ctx.ext.full_display_name:
         return
 
-    name = u""
+    name = ""
     if ctx.meta.project:
         name += ctx.meta.project.upper()
-        name += u" "
+        name += " "
     name += ctx.meta.type_display_name
-    name += u" : "
-    if ctx.meta.institute and ctx.meta.institute != u"--":
+    name += " : "
+    if ctx.meta.institute and ctx.meta.institute != "--":
         name += ctx.meta.institute.upper()
-        name += u" - "
+        name += " - "
     if ctx.ext.display_name:
         name += ctx.ext.display_name
-        name += u" "
+        name += " "
 
     ctx.ext.full_display_name = name.strip()
 
@@ -124,8 +124,8 @@ def _set_sort_key(ctx):
     """Sets document full display name.
 
     """
-    ctx.meta.sort_key = u"{0}{1}".format(
-        ctx.meta.type_sort_key, ctx.ext.display_name or unicode())
+    ctx.meta.sort_key = "{0}{1}".format(
+        ctx.meta.type_sort_key, ctx.ext.display_name or str())
     ctx.meta.sort_key = ctx.meta.sort_key.upper()
 
 

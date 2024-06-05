@@ -30,7 +30,7 @@ def get_extenders():
 
 # Mappings between component type & component type display name.
 _COMPONENT_TYPE_DISPLAY_NAMES = \
-    {k: v.split(">")[-1].strip() for k, v in iter(METAFOR_ESDOC_MODEL_COMPONENT_MAP.items())}
+    {k: v.split(">")[-1].strip() for k, v in iter(list(METAFOR_ESDOC_MODEL_COMPONENT_MAP.items()))}
 
 
 # Component extension context information.
@@ -79,13 +79,13 @@ def _extend_component_01(ctx):
     if not hasattr(ctx.c, "ext"):
         ctx.c.ext = _ComponentExtensionInfo()
     if not hasattr(ctx.c.ext, "full_display_name"):
-        ctx.c.ext.full_display_name = unicode()
+        ctx.c.ext.full_display_name = str()
     if not hasattr(ctx.c.ext, "long_display_name"):
-        ctx.c.ext.long_display_name = unicode()
+        ctx.c.ext.long_display_name = str()
     if not hasattr(ctx.c.ext, "short_display_name"):
-        ctx.c.ext.short_display_name = unicode()
+        ctx.c.ext.short_display_name = str()
     if not hasattr(ctx.c.ext, "type_display_name"):
-        ctx.c.ext.type_display_name = unicode()
+        ctx.c.ext.type_display_name = str()
 
     ctx.c.ext.ancestors = ctx.ancestors
     ctx.c.ext.component_tree = []
@@ -130,16 +130,16 @@ def _extend_component_03(ctx):
         ctx.c.ext.short_display_name = ctx.c.type
 
     # Long name.
-    ctx.c.ext.long_display_name = unicode()
+    ctx.c.ext.long_display_name = str()
     if ctx.c.ext.depth > 1:
         ctx.c.ext.long_display_name += ctx.c.ext.parent.ext.long_display_name
-        ctx.c.ext.long_display_name += u" > "
+        ctx.c.ext.long_display_name += " > "
     ctx.c.ext.long_display_name += ctx.c.ext.short_display_name
 
     # Full name.
     if ctx.c.ext.depth > 0:
         ctx.c.ext.full_display_name += ctx.c.ext.parent.ext.full_display_name
-        ctx.c.ext.full_display_name += u" > "
+        ctx.c.ext.full_display_name += " > "
         ctx.c.ext.full_display_name += ctx.c.ext.short_display_name
 
 

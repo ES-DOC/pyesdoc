@@ -19,7 +19,7 @@ from pyesdoc.utils import runtime
 # Supported extenders keyed by document type.
 SUPPORTED = {}
 for o in {cim.v1, cim.v2}:
-    for doc_type, doc_extender in o.SUPPORTED.iteritems():
+    for doc_type, doc_extender in o.SUPPORTED.items():
         SUPPORTED[doc_type] = doc_extender
 
 
@@ -45,13 +45,13 @@ class DocumentExtensionInfo(object):
 
         """
         self.children = []
-        self.css_class = unicode()
-        self.description = unicode()
-        self.display_name = unicode()
-        self.full_display_name = unicode()
+        self.css_class = str()
+        self.description = str()
+        self.display_name = str()
+        self.full_display_name = str()
         self.summary_fields = []
-        self.type = unicode()
-        self.viewer_url = unicode()
+        self.type = str()
+        self.viewer_url = str()
 
 
 def extend(doc):
