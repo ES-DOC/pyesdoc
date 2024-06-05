@@ -13,11 +13,11 @@ import abc
 import datetime
 import uuid
 
-import typeset_for_shared_package as shared
+from . import typeset_for_shared_package as shared
 
 
 
-class ComponentBase(object):
+class ComponentBase(object, metaclass=abc.ABCMeta):
     """An abstract class within the cim v2 type system.
 
     Base class for software component properties, whether a top level
@@ -28,7 +28,6 @@ class ComponentBase(object):
     scientific descriptions.
 
     """
-    __metaclass__ = abc.ABCMeta
 
     def __init__(self):
         """Instance constructor.

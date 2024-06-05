@@ -10,22 +10,22 @@
 .. note:: Code generated using the pyesdoc framework.
 
 """
-from typeset_for_activity_package import *
-from typeset_for_data_package import *
-from typeset_for_grids_package import *
-from typeset_for_misc_package import *
-from typeset_for_quality_package import *
-from typeset_for_shared_package import *
-from typeset_for_software_package import *
+from .typeset_for_activity_package import *
+from .typeset_for_data_package import *
+from .typeset_for_grids_package import *
+from .typeset_for_misc_package import *
+from .typeset_for_quality_package import *
+from .typeset_for_shared_package import *
+from .typeset_for_software_package import *
 
 
-import typeset_for_activity_package as activity
-import typeset_for_data_package as data
-import typeset_for_grids_package as grids
-import typeset_for_misc_package as misc
-import typeset_for_quality_package as quality
-import typeset_for_shared_package as shared
-import typeset_for_software_package as software
+from . import typeset_for_activity_package as activity
+from . import typeset_for_data_package as data
+from . import typeset_for_grids_package as grids
+from . import typeset_for_misc_package as misc
+from . import typeset_for_quality_package as quality
+from . import typeset_for_shared_package as shared
+from . import typeset_for_software_package as software
 
 
 

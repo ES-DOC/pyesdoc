@@ -13,7 +13,7 @@ import abc
 import datetime
 import uuid
 
-import typeset_for_shared_package as shared
+from . import typeset_for_shared_package as shared
 
 
 
@@ -201,13 +201,12 @@ class DataRestriction(object):
         self.scope = None                                 # unicode (0.1)
 
 
-class DataStorage(object):
+class DataStorage(object, metaclass=abc.ABCMeta):
     """An abstract class within the cim v1 type system.
 
     Describes the method that the DataObject is stored. An abstract class with specific child classes for each supported method.
 
     """
-    __metaclass__ = abc.ABCMeta
 
     def __init__(self):
         """Instance constructor.

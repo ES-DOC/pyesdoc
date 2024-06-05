@@ -9,8 +9,8 @@
 .. note:: Code generated using the pyesdoc framework.
 
 """
-from decoder_xml_utils import set_attributes
-import typeset
+from .decoder_xml_utils import set_attributes
+from . import typeset
 
 
 

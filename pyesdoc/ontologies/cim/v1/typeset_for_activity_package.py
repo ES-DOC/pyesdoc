@@ -13,17 +13,16 @@ import abc
 import datetime
 import uuid
 
-import typeset_for_shared_package as shared
+from . import typeset_for_shared_package as shared
 
 
 
-class Activity(object):
+class Activity(object, metaclass=abc.ABCMeta):
     """An abstract class within the cim v1 type system.
 
     An abstract class used as the parent of MeasurementCampaigns, Projects, Experiments, and NumericalActivities.
 
     """
-    __metaclass__ = abc.ABCMeta
 
     def __init__(self):
         """Instance constructor.
@@ -88,13 +87,12 @@ class ExperimentRelationshipTarget(object):
         self.numerical_experiment = None                  # activity.NumericalExperiment (0.1)
 
 
-class NumericalRequirement(object):
+class NumericalRequirement(object, metaclass=abc.ABCMeta):
     """An abstract class within the cim v1 type system.
 
     A description of the requirements of particular experiments.  Numerical Requirements can be initial conditions, boundary conditions, or physical modificiations.
 
     """
-    __metaclass__ = abc.ABCMeta
 
     def __init__(self):
         """Instance constructor.
@@ -173,16 +171,15 @@ class BoundaryCondition(NumericalRequirement):
         """
         super(BoundaryCondition, self).__init__()
 
-        self.requirement_type = unicode("boundaryCondition")
+        self.requirement_type = str("boundaryCondition")
 
 
-class Experiment(Activity):
+class Experiment(Activity, metaclass=abc.ABCMeta):
     """An abstract class within the cim v1 type system.
 
     An experiment might be an activity which is both observational and numerical in focus, for example, a measurement campaign and numerical experiments for an alpine experiment.  It is a place for the scientific description of the reason why an experiment was made.
 
     """
-    __metaclass__ = abc.ABCMeta
 
     def __init__(self):
         """Instance constructor.
@@ -208,7 +205,7 @@ class InitialCondition(NumericalRequirement):
         """
         super(InitialCondition, self).__init__()
 
-        self.requirement_type = unicode("initialCondition")
+        self.requirement_type = str("initialCondition")
 
 
 class LateralBoundaryCondition(NumericalRequirement):
@@ -223,7 +220,7 @@ class LateralBoundaryCondition(NumericalRequirement):
         """
         super(LateralBoundaryCondition, self).__init__()
 
-        self.requirement_type = unicode("lateralBoundaryCondition")
+        self.requirement_type = str("lateralBoundaryCondition")
 
 
 class MeasurementCampaign(Activity):
@@ -241,13 +238,12 @@ class MeasurementCampaign(Activity):
         self.duration = None                              # int (1.1)
 
 
-class NumericalActivity(Activity):
+class NumericalActivity(Activity, metaclass=abc.ABCMeta):
     """An abstract class within the cim v1 type system.
 
     Creates and returns instance of numerical_activity class.
 
     """
-    __metaclass__ = abc.ABCMeta
 
     def __init__(self):
         """Instance constructor.
@@ -293,7 +289,7 @@ class OutputRequirement(NumericalRequirement):
         """
         super(OutputRequirement, self).__init__()
 
-        self.requirement_type = unicode("outputRequirement")
+        self.requirement_type = str("outputRequirement")
 
 
 class PhysicalModification(Conformance):
@@ -310,13 +306,12 @@ class PhysicalModification(Conformance):
 
 
 
-class Simulation(NumericalActivity):
+class Simulation(NumericalActivity, metaclass=abc.ABCMeta):
     """An abstract class within the cim v1 type system.
 
     A simulation is the implementation of a numerical experiment.  A simulation can be made up of "child" simulations aggregated together to form a simulation composite.  The parent simulation can be made up of whole or partial child simulations, the simulation attributes need to be able to capture this.
 
     """
-    __metaclass__ = abc.ABCMeta
 
     def __init__(self):
         """Instance constructor.
@@ -386,16 +381,15 @@ class SpatioTemporalConstraint(NumericalRequirement):
 
         self.date_range = None                            # shared.DateRange (0.1)
         self.spatial_resolution = None                    # activity.ResolutionType (0.1)
-        self.requirement_type = unicode("spatioTemporalConstraint")
+        self.requirement_type = str("spatioTemporalConstraint")
 
 
-class DownscalingSimulation(NumericalActivity):
+class DownscalingSimulation(NumericalActivity, metaclass=abc.ABCMeta):
     """An abstract class within the cim v1 type system.
 
     A simulation is the implementation of a numerical experiment.  A simulation can be made up of "child" simulations aggregated together to form a simulation composite.  The parent simulation can be made up of whole or partial child simulations, the simulation attributes need to be able to capture this.
 
     """
-    __metaclass__ = abc.ABCMeta
 
     def __init__(self):
         """Instance constructor.

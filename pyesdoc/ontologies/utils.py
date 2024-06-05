@@ -73,7 +73,7 @@ def get_doc_type_keyset():
     :rtype: set
 
     """
-    return type_info.KEYS.values()
+    return list(type_info.KEYS.values())
 
 
 def get_type(name, version, package, typeof):
@@ -153,7 +153,7 @@ def get_decoder_info(doc_type):
     for name, _, cardinality in get_constraints(doc_type, constants.CONSTRAINT_TYPE_CARDINALITY):
         result[name] = (name, result[name], bool(cardinality.split(".")[1] == 'N'))
 
-    return result.values()
+    return list(result.values())
 
 
 def get_constraint(constraints, constraint_type):

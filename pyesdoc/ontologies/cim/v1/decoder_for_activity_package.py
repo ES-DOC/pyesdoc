@@ -9,11 +9,11 @@
 .. note:: Code generated using the pyesdoc framework.
 
 """
-from decoder_xml_utils import set_attributes
-from decoder_for_data_package import *
-from decoder_for_shared_package import *
-from decoder_for_software_package import *
-import typeset
+from .decoder_xml_utils import set_attributes
+from .decoder_for_data_package import *
+from .decoder_for_shared_package import *
+from .decoder_for_software_package import *
+from . import typeset
 
 
 

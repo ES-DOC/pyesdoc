@@ -10,5 +10,5 @@
 
 
 """
-import type_info
-from utils import *
+from . import type_info
+from .utils import *

@@ -10,30 +10,30 @@
 .. note:: Code generated using the pyesdoc framework.
 
 """
-from typeset_for_activity_package import *
-from typeset_for_cmip_package import *
-from typeset_for_data_package import *
-from typeset_for_designing_package import *
-from typeset_for_drs_package import *
-from typeset_for_iso_package import *
-from typeset_for_platform_package import *
-from typeset_for_science_package import *
-from typeset_for_shared_package import *
-from typeset_for_software_package import *
-from typeset_for_time_package import *
+from .typeset_for_activity_package import *
+from .typeset_for_cmip_package import *
+from .typeset_for_data_package import *
+from .typeset_for_designing_package import *
+from .typeset_for_drs_package import *
+from .typeset_for_iso_package import *
+from .typeset_for_platform_package import *
+from .typeset_for_science_package import *
+from .typeset_for_shared_package import *
+from .typeset_for_software_package import *
+from .typeset_for_time_package import *
 
 
-import typeset_for_activity_package as activity
-import typeset_for_cmip_package as cmip
-import typeset_for_data_package as data
-import typeset_for_designing_package as designing
-import typeset_for_drs_package as drs
-import typeset_for_iso_package as iso
-import typeset_for_platform_package as platform
-import typeset_for_science_package as science
-import typeset_for_shared_package as shared
-import typeset_for_software_package as software
-import typeset_for_time_package as time
+from . import typeset_for_activity_package as activity
+from . import typeset_for_cmip_package as cmip
+from . import typeset_for_data_package as data
+from . import typeset_for_designing_package as designing
+from . import typeset_for_drs_package as drs
+from . import typeset_for_iso_package as iso
+from . import typeset_for_platform_package as platform
+from . import typeset_for_science_package as science
+from . import typeset_for_shared_package as shared
+from . import typeset_for_software_package as software
+from . import typeset_for_time_package as time
 
 
 

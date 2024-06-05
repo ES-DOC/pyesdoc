@@ -16,13 +16,12 @@ import uuid
 
 
 
-class Calendar(object):
+class Calendar(object, metaclass=abc.ABCMeta):
     """An abstract class within the cim v1 type system.
 
     Describes a method of calculating a span of dates.
 
     """
-    __metaclass__ = abc.ABCMeta
 
     def __init__(self):
         """Instance constructor.
@@ -98,13 +97,12 @@ class Compiler(object):
         self.version = None                               # unicode (1.1)
 
 
-class DataSource(object):
+class DataSource(object, metaclass=abc.ABCMeta):
     """An abstract class within the cim v1 type system.
 
     A DataSource can be realised by either a DataObject (file), a DataContent (variable), a Component (model), or a ComponentProperty (variable); all of those can supply data.
 
     """
-    __metaclass__ = abc.ABCMeta
 
     def __init__(self):
         """Instance constructor.
@@ -115,13 +113,12 @@ class DataSource(object):
         self.purpose = None                               # shared.DataPurpose (0.1)
 
 
-class DateRange(object):
+class DateRange(object, metaclass=abc.ABCMeta):
     """An abstract class within the cim v1 type system.
 
     Creates and returns instance of date_range class.
 
     """
-    __metaclass__ = abc.ABCMeta
 
     def __init__(self):
         """Instance constructor.
@@ -289,13 +286,12 @@ class Property(object):
         self.value = None                                 # unicode (0.1)
 
 
-class Relationship(object):
+class Relationship(object, metaclass=abc.ABCMeta):
     """An abstract class within the cim v1 type system.
 
     A record of a relationship between one document and another. This class is abstract; specific document types must specialise this class for their relationshipTypes to be included in a document's genealogy.
 
     """
-    __metaclass__ = abc.ABCMeta
 
     def __init__(self):
         """Instance constructor.
