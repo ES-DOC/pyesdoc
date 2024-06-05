@@ -117,7 +117,7 @@ FIELDSETS = {
         Field('Institute', path='meta.institute'),
         Field('Acronym', path='acronym'),
         Field('Format', path='distribution.format'),
-        Field('State', path='data_status', output_formatter=unicode.upper),
+        Field('State', path='data_status', output_formatter=str.upper),
         Field('Description', path='description')
     ],
 

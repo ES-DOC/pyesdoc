@@ -178,7 +178,7 @@ def _get_value(data, path):
         # ... collection filter by attribute
         elif "=" in attr:
             left, right = attr.split("=")
-            value = runtime.first(value, left, right.lower(), lambda v: unicode(v).lower())
+            value = runtime.first(value, left, right.lower(), lambda v: str(v).lower())
         # ... item attribute filter
         elif hasattr(value, attr):
             value = getattr(value, attr)
@@ -190,7 +190,7 @@ def _get_value(data, path):
             break
 
     # Tornado templating requires 'strings'.
-    if isinstance(value, unicode):
+    if isinstance(value, str):
         value = convert.unicode_to_str(value)
 
     return None if value == data else value
@@ -210,7 +210,7 @@ def _get_name(name):
     # Prefixes.
     n = name.lower()
     prefixes = { "number of ": "" }
-    for prefix in prefixes.keys():
+    for prefix in list(prefixes.keys()):
         if n.startswith(prefix):
             name = prefixes[prefix] + name[len(prefix):]
 
@@ -220,14 +220,14 @@ def _get_name(name):
         "Second": "2nd",
         "First": "1st"
     }
-    for replacement in replacements.keys():
+    for replacement in list(replacements.keys()):
         name = name.replace(replacement, replacements[replacement])
 
     # Substitutions.
     swaps = {
         "id": "ID",
     }
-    for swap in swaps.keys():
+    for swap in list(swaps.keys()):
         if name == swap:
             name = swaps[swap]
 

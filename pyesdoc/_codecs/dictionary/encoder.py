@@ -40,7 +40,7 @@ def encode(doc):
     """
     obj = dict()
 
-    for key, val in doc.__dict__.items():
+    for key, val in list(doc.__dict__.items()):
         # Escape private/magic properties.
         if not _is_encodable_attribute(key):
             continue
@@ -62,7 +62,7 @@ def encode(doc):
         else:
             if len(val) > 0:
                 # ... string types;
-                if isinstance(val, (str, unicode)):
+                if isinstance(val, str):
                     obj[key] = val
                 # ... collections;
                 else:
