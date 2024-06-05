@@ -34,7 +34,7 @@ def _set_institute(doc):
 
     """
     if doc.meta.institute is None or not doc.meta.institute.strip():
-        doc.meta.institute = u"--"
+        doc.meta.institute = "--"
     elif doc.meta.institute.upper() in _INSTITUTE_OVERRIDES:
         doc.meta.institute = _INSTITUTE_OVERRIDES[doc.meta.institute.upper()]
 
