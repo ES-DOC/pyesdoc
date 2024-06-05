@@ -99,4 +99,4 @@ METAFOR_ESDOC_MODEL_COMPONENT_MAP = {
 
 # Map from es-doc to metafor model component types.
 ESDOC_METAFOR_MODEL_COMPONENT_MAP = \
-    {v: k for k, v in list(METAFOR_ESDOC_MODEL_COMPONENT_MAP.items())}
+    {v: k for k, v in METAFOR_ESDOC_MODEL_COMPONENT_MAP.items()}
