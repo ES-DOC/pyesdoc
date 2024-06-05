@@ -163,7 +163,7 @@ def _set_topic_from_module(topic, parent):
 
     # Assign properties / property sets.
     if hasattr(topic.spec, "DETAILS") and hasattr(topic.spec, "ENUMERATIONS"):
-        for key, obj in list(topic.spec.DETAILS.items()):
+        for key, obj in topic.spec.DETAILS.items():
             # ... toplevel properties
             if key == "toplevel":
                 _set_property_collection(topic, obj, topic.spec.ENUMERATIONS)
