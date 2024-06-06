@@ -11,7 +11,7 @@
 
 """
 import pyesdoc
-import test_utils as tu
+from . import test_utils as tu
 
 
 def _test_archive_config():

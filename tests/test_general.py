@@ -16,8 +16,8 @@ import inspect
 import nose.tools
 
 import pyesdoc
-import test_utils as tu
-import test_types as tt
+from . import test_utils as tu
+from . import test_types as tt
 
 
 

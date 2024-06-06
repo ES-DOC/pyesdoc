@@ -14,8 +14,8 @@
 import pyesdoc
 import pyesdoc.ontologies.cim as cim
 
-import test_utils as tu
-import test_types as tt
+from . import test_utils as tu
+from . import test_types as tt
 
 
 
@@ -35,18 +35,18 @@ def _get_description(text_type):
             "grid. Due to its fine resolution, the model requires a timestep "
             "of 5 minutes to maintain numerical stability."
             )
-    elif text_type == unicode:
-        return (u"{AS PARENT with differences as indicated}\r\n"
-            u"The horizontal resolution is 0.44\xb0 x 0.44\xb0, which gives "
-            u"a minimum resolution of ~50 km at the Equator of the rotated "
-            u"grid. Due to its fine resolution, the model requires a timestep "
-            u"of 5 minutes to maintain numerical stability."
+    elif text_type == str:
+        return ("{AS PARENT with differences as indicated}\r\n"
+            "The horizontal resolution is 0.44\xb0 x 0.44\xb0, which gives "
+            "a minimum resolution of ~50 km at the Equator of the rotated "
+            "grid. Due to its fine resolution, the model requires a timestep "
+            "of 5 minutes to maintain numerical stability."
             ).encode('utf-8')
 
 
 def _do_test(encoding):
     """Executes a serialization test."""
-    for desc in (_get_description(t) for t in (str, unicode)):
+    for desc in (_get_description(t) for t in (str, str)):
         _MODEL.description = desc
         representation = pyesdoc.encode(_MODEL, encoding)
         tu.assert_object(representation, str)

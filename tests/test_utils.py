@@ -19,7 +19,7 @@ import lxml.etree as et
 
 import pyesdoc
 import pyesdoc.ontologies.cim.v1.typeset as cim_v1
-import test_types as tt
+from . import test_types as tt
 
 
 
@@ -214,7 +214,7 @@ def get_unicode(length):
     """Returns a random unicode for testing purposes.
 
     """
-    return unicode(uuid.uuid1())[:length]
+    return str(uuid.uuid1())[:length]
 
 
 def get_uuid():
@@ -281,7 +281,7 @@ def assert_iter(collection,
         assert_int(len(collection), length, length_compare)
     if item_type is not None:
         if isinstance(collection, dict):
-            collection = collection.values()
+            collection = list(collection.values())
         for instance in collection:
             assert_object(instance, item_type)
 
@@ -404,8 +404,8 @@ def assert_unicode(actual, expected):
     :type expected: str
 
     """
-    assert_object(actual, unicode)
-    assert_object(expected, unicode)
+    assert_object(actual, str)
+    assert_object(expected, str)
     assert actual == expected, \
            "Unicode mismatch : actual = {0} :: expected = {1}" \
            .format(actual, expected)

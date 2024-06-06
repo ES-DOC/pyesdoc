@@ -11,19 +11,19 @@
 
 """
 # Module imports.
-import test_type_cim_v1_activity_ensemble_1
-import test_type_cim_v1_activity_ensemble_2
-import test_type_cim_v1_activity_numerical_experiment
-import test_type_cim_v1_activity_simulation_run
-import test_type_cim_v1_data_data_object_1
-import test_type_cim_v1_data_data_object_2
-import test_type_cim_v1_grids_gridspec
-import test_type_cim_v1_misc_document_set
-import test_type_cim_v1_quality_cim_quality
-import test_type_cim_v1_shared_platform
-import test_type_cim_v1_software_model_component_1
-import test_type_cim_v1_software_model_component_2
-import test_type_cim_v1_software_statistical_model_component
+from . import test_type_cim_v1_activity_ensemble_1
+from . import test_type_cim_v1_activity_ensemble_2
+from . import test_type_cim_v1_activity_numerical_experiment
+from . import test_type_cim_v1_activity_simulation_run
+from . import test_type_cim_v1_data_data_object_1
+from . import test_type_cim_v1_data_data_object_2
+from . import test_type_cim_v1_grids_gridspec
+from . import test_type_cim_v1_misc_document_set
+from . import test_type_cim_v1_quality_cim_quality
+from . import test_type_cim_v1_shared_platform
+from . import test_type_cim_v1_software_model_component_1
+from . import test_type_cim_v1_software_model_component_2
+from . import test_type_cim_v1_software_statistical_model_component
 
 
 # Set of test modules.

@@ -13,7 +13,7 @@
 import arrow
 
 import pyesdoc.ontologies.cim as cim
-import test_utils as tu
+from . import test_utils as tu
 
 
 
@@ -83,7 +83,7 @@ def assert_doc(doc, meta, ext):
     assert doc.language is None
     assert doc.license is None
     assert doc.long_name == "IPSL-CM5A-LR;atmosphere:LMDZ5A(95x96L39);ocean:NEMOv3.2 (OPA-LIM-PISCES,149x182L31)"
-    assert doc.previous_version == unicode()
+    assert doc.previous_version == str()
     assert doc.release_date == arrow.get('2010', 'YYYY').datetime
     assert doc.short_name == 'IPSL-CM5A-LR'
     assert doc.types[0] == 'downscaling'
