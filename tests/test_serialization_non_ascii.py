@@ -46,7 +46,7 @@ def _get_description(text_type):
 
 def _do_test(encoding):
     """Executes a serialization test."""
-    for desc in (_get_description(t) for t in (str, str)):
+    for desc in _get_description(str):
         _MODEL.description = desc
         representation = pyesdoc.encode(_MODEL, encoding)
         tu.assert_object(representation, str)
