@@ -115,23 +115,23 @@ def seek(io_dir, filter=None, latest=False):
 
     # Document collection - all.
     if filter is None and not latest:
-        docs = sum([list(i.values()) for i in list(targets.values())], [])
+        docs = sum([list(i.values()) for i in targets.values()], [])
         return [read(i) for i in docs]
 
     # Document collection - latest.
     elif filter is None and latest:
-        docs = [i[max(i.keys())] for i in list(targets.values())]
+        docs = [i[max(i.keys())] for i in targets.values()]
         return [read(i) for i in docs]
 
     # Document collection (typed) - all.
     elif filter in ontologies.type_info.TYPES and not latest:
-        docs = sum([list(i.values()) for i in list(targets.values())], [])
+        docs = sum([list(i.values()) for i in targets.values()], [])
         docs = [i for i in docs if i.find(filter.type_key) > -1]
         return [read(i) for i in docs]
 
     # Document collection (typed) - latest.
     elif filter in ontologies.type_info.TYPES and latest:
-        docs = [i[max(i.keys())] for i in list(targets.values())]
+        docs = [i[max(i.keys())] for i in targets.values()]
         docs = [i for i in docs if i.find(filter.type_key) > -1]
         return [read(i) for i in docs]
 
@@ -160,7 +160,7 @@ def seek(io_dir, filter=None, latest=False):
         except AttributeError:
             return None
         else:
-            return [read(i) for i in list(docs.values())]
+            return [read(i) for i in docs.values()]
 
 
 def convert(fpath, to_encoding, from_encoding=None):
