@@ -50,20 +50,20 @@ def create(
 
     # Reformat.
     if institute:
-        institute = unicode(institute).lower()
+        institute = str(institute).lower()
     if project:
-        project = unicode(project).lower()
+        project = str(project).lower()
     if source:
-        source = unicode(source).lower()
+        source = str(source).lower()
     elif institute:
         source = institute
     elif project:
         source = project
-    uid = unicode(uid)
+    uid = str(uid)
     if sub_projects:
-        if isinstance(sub_projects, (str, unicode)):
+        if isinstance(sub_projects, str):
             sub_projects = [sub_projects]
-        sub_projects = [unicode(i).lower() for i in sub_projects]
+        sub_projects = [str(i).lower() for i in sub_projects]
 
     # Verify uid.
     try:

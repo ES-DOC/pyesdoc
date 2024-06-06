@@ -9,7 +9,7 @@
 
 """
 import datetime
-import urllib
+import urllib.request, urllib.parse, urllib.error
 import uuid
 
 import requests
@@ -140,4 +140,4 @@ def _get_doc_endpoint(endpoint, uid, version, encoding=None):
     if encoding:
         params["encoding"] = encoding
 
-    return "{}?{}".format(endpoint, urllib.urlencode(params))
+    return "{}?{}".format(endpoint, urllib.parse.urlencode(params))

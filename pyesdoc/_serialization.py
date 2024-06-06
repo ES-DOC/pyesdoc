@@ -30,9 +30,9 @@ _CODECS = {
 # Map of formats to allowed input types when decoding.
 _DECODE_TYPE_WHITELIST = {
     constants.ENCODING_DICT : (dict, ),
-    constants.ENCODING_JSON : (str, unicode),
-    constants.ENCODING_XML : (str, unicode, ET.Element),
-    constants.METAFOR_CIM_XML_ENCODING : (str, unicode, ET.Element, et, ete),
+    constants.ENCODING_JSON : (str, str),
+    constants.ENCODING_XML : (str, str, ET.Element),
+    constants.METAFOR_CIM_XML_ENCODING : (str, str, ET.Element, et, ete),
 }
 
 

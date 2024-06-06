@@ -35,12 +35,12 @@ def _get_value(xml, rtype=str):
 
     # Get unicode.
     if rtype is str:
-        if isinstance(xml, (str,)):
+        if isinstance(xml, str):
             result = convert.str_to_unicode(xml)
         else:
             result = convert.str_to_unicode(et.tostring(xml))
     else:
-        if isinstance(xml, (str,)):
+        if isinstance(xml, str):
             result = convert.unicode_to_str(xml)
         else:
             result = et.tostring(xml)
