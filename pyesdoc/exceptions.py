@@ -24,14 +24,14 @@ class LibraryBaseException(Exception):
         :type msg: str
 
         """
-        self.message = msg() if inspect.isfunction(msg) else unicode(msg)
+        self.message = msg() if inspect.isfunction(msg) else str(msg)
 
 
     def __str__(self):
         """Returns a string representation.
 
         """
-        return u"ES-DOC PY-CLIENT EXCEPTION : {0}".format(repr(self.message))
+        return "ES-DOC PY-CLIENT EXCEPTION : {0}".format(repr(self.message))
 
 
 class ObsoleteException(LibraryBaseException):
