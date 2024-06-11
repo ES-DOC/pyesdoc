@@ -58,7 +58,7 @@ class _Parser(XMLParser):
 
         """
         # Instantiate wrapper.
-        wrapper = Wrapper([i for i in list(self.parsed.values()) if isinstance(i, Section)])
+        wrapper = Wrapper([i for i in self.parsed.values() if isinstance(i, Section)])
 
         # Set internal links.
         _set_internal_links(wrapper)

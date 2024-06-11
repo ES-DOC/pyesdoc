@@ -123,7 +123,7 @@ def _set_sub_classes(ontology):
     sub_classed = {}
     for i in ontology.classes:
         sub_classed[i] = [(c.bases.index(i), c) for c in with_base if i in c.bases]
-    sub_classed = {k: v for k, v in list(sub_classed.items()) if v}
+    sub_classed = {k: v for k, v in sub_classed.items() if v}
 
     # Set ontology & package sub-class sets.
     ontology.sub_classed = sorted(list(sub_classed.keys()), key=lambda i: str(i))

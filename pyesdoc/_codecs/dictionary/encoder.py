@@ -3,7 +3,7 @@
 
    :license: GPL / CeCILL
    :platform: Unix, Windows
-   :synopsis: Enocdes a document as a python dictionary.
+   :synopsis: Encodes a document as a Python dictionary.
 
 .. moduleauthor:: Earth System Documentation (ES-DOC) <dev@es-doc.org>
 
@@ -40,7 +40,7 @@ def encode(doc):
     """
     obj = dict()
 
-    for key, val in list(doc.__dict__.items()):
+    for key, val in doc.__dict__.items():
         # Escape private/magic properties.
         if not _is_encodable_attribute(key):
             continue

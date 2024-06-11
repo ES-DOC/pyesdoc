@@ -146,7 +146,7 @@ class Class(object):
             if p.name not in result['type']:
                 result['type'][p.name] = (p.name, "type", p.type)
 
-        return list(itertools.chain.from_iterable([list(v.values()) for v in list(result.values())]))
+        return list(itertools.chain.from_iterable([list(v.values()) for v in result.values()]))
 
 
     @property

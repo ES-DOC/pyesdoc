@@ -207,7 +207,7 @@ def yield_latest_documents(project=None, source=None, file_filter=None):
            (i.uid in latest and latest[i.uid].version < i.version):
             latest[i.uid] = i
 
-    for i in list(latest.values()):
+    for i in latest.values():
         yield i.get_document()
 
 

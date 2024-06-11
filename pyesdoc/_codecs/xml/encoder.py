@@ -98,7 +98,7 @@ def _encode_complex(xml, d):
 
         # ... complex
         elif isinstance(v, dict):
-            if len(list(v.keys())):
+            if len(v.keys()):
                 elem = ET.SubElement(xml, k)
                 _encode_complex(elem, v)
 

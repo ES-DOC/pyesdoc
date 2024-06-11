@@ -210,7 +210,7 @@ def _get_name(name):
     # Prefixes.
     n = name.lower()
     prefixes = { "number of ": "" }
-    for prefix in list(prefixes.keys()):
+    for prefix in prefixes.keys():
         if n.startswith(prefix):
             name = prefixes[prefix] + name[len(prefix):]
 
@@ -220,14 +220,14 @@ def _get_name(name):
         "Second": "2nd",
         "First": "1st"
     }
-    for replacement in list(replacements.keys()):
+    for replacement in replacements.keys():
         name = name.replace(replacement, replacements[replacement])
 
     # Substitutions.
     swaps = {
         "id": "ID",
     }
-    for swap in list(swaps.keys()):
+    for swap in swaps.keys():
         if name == swap:
             name = swaps[swap]
 

@@ -103,7 +103,7 @@ def _init_templates():
 
     loader = template.Loader(_DIR_TEMPLATES)
     _DOCUMENT_SET_TEMPLATE = loader.load(_DOCUMENT_SET_TEMPLATE)
-    for doc_type, template_path in list(_TEMPLATE_TYPE_MAPPINGS.items()):
+    for doc_type, template_path in _TEMPLATE_TYPE_MAPPINGS.items():
         _TEMPLATE_TYPE_MAPPINGS[doc_type] = loader.load(template_path)
 
 
