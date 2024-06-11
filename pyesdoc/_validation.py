@@ -33,7 +33,7 @@ _ERR_REGEX = "regular expression validation failed"
 _DOCUMENT_REFERENCE_TYPE = "DocReference"
 
 # Set of text types.
-_TEXT_TYPES = (str, str)
+_TEXT_TYPES = (str,)
 
 
 def _validate_cardinality(value, expected_cardinality):
