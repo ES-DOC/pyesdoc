@@ -48,7 +48,7 @@ def log(msg):
     if msg.startswith('-'):
         print(msg)
     else:
-        print(("ES-DOC-MP :: {}".format(msg)))
+        print("ES-DOC-MP :: {}".format(msg))
 
 
 def str_to_camel_case(target, separator='_'):
