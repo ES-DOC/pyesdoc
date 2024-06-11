@@ -52,7 +52,7 @@ def _encode_simple(xml, val):
     """
     # Format according to type.
     if val in (None, 'None'):
-        return u''
+        return ''
     elif isinstance(val, datetime.datetime):
         val = val.isoformat().replace('T', ' ')
     elif isinstance(val, datetime.date):
@@ -62,7 +62,7 @@ def _encode_simple(xml, val):
     else:
         val = convert.str_to_unicode(val)
     if val is None or len(val) == 0:
-        val = u''
+        val = ''
 
     # Assign to xml.
     xml.text = val.strip()
@@ -85,7 +85,7 @@ def _encode_complex(xml, d):
 
     """
     # Iterate dictionary keys sorted in alphabetical order.
-    for k in sorted(d.iterkeys()):
+    for k in sorted(d.keys()):
         # Get attribute value.
         v = d[k]
 

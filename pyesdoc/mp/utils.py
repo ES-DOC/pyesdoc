@@ -19,7 +19,7 @@ class ESDOC_MP_Exception(Exception):
         :param str message: Exception message.
 
         """
-        self.message = unicode(message)
+        self.message = str(message)
 
 
     def __str__(self):

@@ -21,26 +21,26 @@ from pyesdoc.utils import convert
 
 
 # Null uuid for checking whether one has to be generated.
-NULL_UUID = u'00000000-0000-0000-0000-000000000000'
+NULL_UUID = '00000000-0000-0000-0000-000000000000'
 
 
 
-def _get_value(xml, rtype=unicode):
+def _get_value(xml, rtype=str):
     """Returns xml node value."""
     # Get xml value.
-    if isinstance(xml, types.ListType):
+    if isinstance(xml, list):
         xml = None if len(xml) == 0 else xml[0]
     if xml is None:
         return None
 
     # Get unicode.
-    if rtype is unicode:
-        if isinstance(xml, types.StringTypes):
+    if rtype is str:
+        if isinstance(xml, str):
             result = convert.str_to_unicode(xml)
         else:
             result = convert.str_to_unicode(et.tostring(xml))
     else:
-        if isinstance(xml, types.StringTypes):
+        if isinstance(xml, str):
             result = convert.unicode_to_str(xml)
         else:
             result = et.tostring(xml)
@@ -61,14 +61,14 @@ def _convert_to_bool(xml, nsmap=None):
     """Converts an etree element xml representation into a boolean type."""
     value = _get_value(xml)
 
-    return True if value is not None and value.lower() in [u'true'] else bool()
+    return True if value is not None and value.lower() in ['true'] else bool()
 
 
 def _convert_to_integer(xml, nsmap=None):
     """Converts an etree element xml representation into an integer type."""
     value = _get_value(xml)
 
-    return int(value) if value is not None and value.upper() != u'NONE' else int()
+    return int(value) if value is not None and value.upper() != 'NONE' else int()
 
 
 def _convert_to_float(xml, nsmap=None):
@@ -95,7 +95,7 @@ def _convert_to_datetime(xml, nsmap=None):
     if value is None:
         return None
     if len(value) == 4:
-        return arrow.get(value, u"YYYY").datetime
+        return arrow.get(value, "YYYY").datetime
     else:
         return arrow.get(value).datetime
 
@@ -162,7 +162,7 @@ def set_attributes(target, xml, nsmap, decodings):
             msg += "\tAttribute is simple ? = {0};\n".format(is_simple_type)
             msg += "\tAttribute xpath = {0};\n".format(xpath)
             msg += "\tError = {0};\n".format(e)
-            print msg
+            print(msg)
 
     # Support operation chaining.
     return target
@@ -256,11 +256,11 @@ def decode_xml(decoder, xml, nsmap, is_iterable):
         return decoder(xml, nsmap)
 
     # Instance if passed etree element collection and caller wants first only.
-    if isinstance(xml, types.ListType) and is_iterable == False:
+    if isinstance(xml, list) and is_iterable == False:
         return None if len(xml) == 0 else decode_xml(decoder, xml[0], nsmap, None)
 
     # Collection if passed etree element collection.
-    if isinstance(xml, types.ListType):
+    if isinstance(xml, list):
         collection = []
         for elem in xml:
             instance = decode_xml(decoder, elem, nsmap, None)
@@ -304,7 +304,7 @@ def load_xml(xml, return_nsmap=False, default_ns='cim'):
             nsmap = xml.nsmap
         except Exception as e:
             # ... unicode
-            if isinstance(xml, unicode):
+            if isinstance(xml, str):
                 xml = convert.unicode_to_str(xml)
 
             # ... strings

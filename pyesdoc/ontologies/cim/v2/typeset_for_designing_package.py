@@ -13,8 +13,8 @@ import abc
 import datetime
 import uuid
 
-import typeset_for_activity_package as activity
-import typeset_for_shared_package as shared
+from . import typeset_for_activity_package as activity
+from . import typeset_for_shared_package as shared
 
 
 

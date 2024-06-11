@@ -3,7 +3,7 @@
 
    :license: GPL / CeCILL
    :platform: Unix, Windows
-   :synopsis: Enocdes a document as a python dictionary.
+   :synopsis: Encodes a document as a Python dictionary.
 
 .. moduleauthor:: Earth System Documentation (ES-DOC) <dev@es-doc.org>
 
@@ -62,7 +62,7 @@ def encode(doc):
         else:
             if len(val) > 0:
                 # ... string types;
-                if isinstance(val, (str, unicode)):
+                if isinstance(val, str):
                     obj[key] = val
                 # ... collections;
                 else:

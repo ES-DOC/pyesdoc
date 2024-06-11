@@ -78,9 +78,9 @@ def _set_meta_attributes(project, source, document):
     """Sets document meta attributes.
 
     """
-    document.meta.project = unicode(project)
+    document.meta.project = str(project)
     document.meta.source = _get_source_description(source)
-    document.meta.source_key = unicode(source)
+    document.meta.source_key = str(source)
 
 
 def _set_defaults(doc):
@@ -88,7 +88,7 @@ def _set_defaults(doc):
 
     """
     if doc.meta.institute is None:
-        doc.meta.institute = u"--"
+        doc.meta.institute = "--"
 
 
 def _get_parsers(project, source):

@@ -80,4 +80,4 @@ def all(collection, name, value, formatter=None):
         else:
             return False
 
-    return filter(predicate, collection)
+    return list(filter(predicate, collection))

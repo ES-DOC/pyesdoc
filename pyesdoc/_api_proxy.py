@@ -9,7 +9,7 @@
 
 """
 import os
-import urllib
+import urllib.request, urllib.parse, urllib.error
 
 import requests
 
@@ -34,7 +34,7 @@ def invoke(verb, endpoint, params=None, data=None):
     # Set endpoint url.
     url = "{}{}".format(_BASE_URL, endpoint)
     if params is not None:
-    	url += "?{}".format(urllib.urlencode(params))
+    	url += "?{}".format(urllib.parse.urlencode(params))
 
     # Set request headers.
     headers = None if not data else {'content-type': 'application/json'}

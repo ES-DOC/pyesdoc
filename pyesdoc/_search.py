@@ -113,7 +113,7 @@ class SearchCriteria(object):
 
         """
         params = {
-            k: unicode(v).strip().lower() for k, v in (
+            k: str(v).strip().lower() for k, v in (
                 ("document_type", self.document_type),
                 ("document_version", self.document_version),
                 ("experiment", self.experiment),
@@ -177,7 +177,7 @@ class SearchResult(object):
             assert identifier >= 0, 'Item identifier out of bounds'
             assert identifier <= len(self.items), 'Item identifier out of bounds'
             item = self.items[identifer]
-        elif isinstance(identifier, basestring):
+        elif isinstance(identifier, str):
             identifier = identifier.lower()
             for i in self.items:
                 if identifier in (n.lower() for n in i.names):

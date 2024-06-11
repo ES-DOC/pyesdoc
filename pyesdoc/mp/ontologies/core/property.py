@@ -29,7 +29,7 @@ class Property(object):
 
         self.cls = None
         self.decodings = []
-        self.doc_string = doc_string if doc_string is not None else u""
+        self.doc_string = doc_string if doc_string is not None else ""
         self.cardinality = cardinality
         self.is_collection = cardinality.split('.')[1] == 'N'
         self.is_linked_document = (name == 'meta')

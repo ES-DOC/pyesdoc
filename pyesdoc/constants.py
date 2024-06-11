@@ -67,16 +67,16 @@ DOC_VERSION_ALL = 'all'
 DEFAULT_ENCODING = 'json'
 
 # Default document project.
-DEFAULT_PROJECT = u'--'
+DEFAULT_PROJECT = '--'
 
 # Default document institute.
-DEFAULT_INSTITUTE = u'--'
+DEFAULT_INSTITUTE = '--'
 
 # Default document source.
-DEFAULT_SOURCE = u'scripts'
+DEFAULT_SOURCE = 'scripts'
 
 # Document viewer url.
-VIEWER_URL_BY_ID = u"index.html?renderMethod=id&project={0}&id={1}&version={2}"
+VIEWER_URL_BY_ID = "index.html?renderMethod=id&project={0}&id={1}&version={2}"
 
 # Cardinality constraint.
 CONSTRAINT_TYPE_CARDINALITY = 'cardinality'

@@ -27,7 +27,7 @@ def _main():
     """
     doc = pyesdoc.read(options.file, options.encoding)
 
-    print pyesdoc.encode(doc, 'json')
+    print(pyesdoc.encode(doc, 'json'))
 
 
 # Entry point.

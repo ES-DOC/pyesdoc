@@ -13,12 +13,10 @@ from pyesdoc.mp.ontologies.generators import generator_utils as gu
 
 
 
-class Generator(object):
+class Generator(object, metaclass=ABCMeta):
     """Base class encapsulating functionality common to all code generators.
 
     """
-    # Abstract Base Class module - see http://docs.python.org/library/abc.html
-    __metaclass__ = ABCMeta
 
     def execute(self, ctx):
         """Executes the code generator.

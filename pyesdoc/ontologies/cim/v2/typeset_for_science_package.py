@@ -13,8 +13,8 @@ import abc
 import datetime
 import uuid
 
-import typeset_for_shared_package as shared
-import typeset_for_software_package as software
+from . import typeset_for_shared_package as shared
+from . import typeset_for_software_package as software
 
 
 

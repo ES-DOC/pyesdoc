@@ -55,7 +55,7 @@ def _can_generate(schema, language, output_dir):
     """
     if not language in _HANDLERS:
         err = "Programming language is unsupported [{}].  Supported languages are {}."
-        err = err.format(language, _HANDLERS.keys())
+        err = err.format(language, list(_HANDLERS.keys()))
         raise ValueError(err)
     if not os.path.exists(output_dir):
         raise IOError("Output directory does not exist [{0}].".format(output_dir))

@@ -64,7 +64,7 @@ class Section(object):
         """
         if isinstance(key, (slice, int)):
             return self._items[key]
-        key = unicode(key).strip().lower()
+        key = str(key).strip().lower()
         for item in self._items:
             if item.label.lower() == key:
                 return item

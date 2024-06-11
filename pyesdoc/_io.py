@@ -115,7 +115,7 @@ def seek(io_dir, filter=None, latest=False):
 
     # Document collection - all.
     if filter is None and not latest:
-        docs = sum([i.values() for i in targets.values()], [])
+        docs = sum([list(i.values()) for i in targets.values()], [])
         return [read(i) for i in docs]
 
     # Document collection - latest.
@@ -125,7 +125,7 @@ def seek(io_dir, filter=None, latest=False):
 
     # Document collection (typed) - all.
     elif filter in ontologies.type_info.TYPES and not latest:
-        docs = sum([i.values() for i in targets.values()], [])
+        docs = sum([list(i.values()) for i in targets.values()], [])
         docs = [i for i in docs if i.find(filter.type_key) > -1]
         return [read(i) for i in docs]
 

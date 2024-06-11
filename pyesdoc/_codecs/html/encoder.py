@@ -111,7 +111,7 @@ def _log(msg):
     """Emits a template logging message - used for debugging.
 
     """
-    print "TEMPLATE:", msg
+    print("TEMPLATE:", msg)
 
 
 class TemplateInfo(object):
@@ -180,7 +180,7 @@ def _get_group_set(document_set):
         group_set[group_key].append(document)
 
     # Sort group sets.
-    for group_key, document_set in group_set.iteritems():
+    for group_key, document_set in group_set.items():
         group_set[group_key] = sorted(document_set, key=get_sort_key)
 
     return group_set

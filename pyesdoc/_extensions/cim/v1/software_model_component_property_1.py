@@ -10,6 +10,7 @@ from collections import namedtuple
 from pyesdoc.utils.convert import capitalize
 from pyesdoc.utils.convert import str_to_spaced_case
 from pyesdoc.utils.convert import str_to_unicode
+from functools import reduce
 
 
 
@@ -24,10 +25,10 @@ class _PropertyExtensionInfo(object):
 
     """
     def __init__(self):
-        self.display_name = unicode()
-        self.full_display_name = unicode()
-        self.long_display_name = unicode()
-        self.short_display_name = unicode()
+        self.display_name = str()
+        self.full_display_name = str()
+        self.long_display_name = str()
+        self.short_display_name = str()
 
 
 def _extend_property_01(ctx):
@@ -44,10 +45,10 @@ def _extend_property_02(ctx):
     """Formats property values.
 
     """
-    ctx.p.values = filter(None, ctx.p.values)
-    ctx.p.values = map(str_to_unicode, ctx.p.values)
-    ctx.p.values = filter(len, ctx.p.values)
-    ctx.p.values = map(lambda v: v[0].upper() + v[1:], ctx.p.values)
+    ctx.p.values = [_f for _f in ctx.p.values if _f]
+    ctx.p.values = list(map(str_to_unicode, ctx.p.values))
+    ctx.p.values = list(filter(len, ctx.p.values))
+    ctx.p.values = [v[0].upper() + v[1:] for v in ctx.p.values]
 
 
 def _extend_property_03(ctx):
@@ -58,32 +59,32 @@ def _extend_property_03(ctx):
     name = ctx.p.short_name
     if len(name) and not name[0].isdigit():
         name = str_to_spaced_case(name)
-        name = map(capitalize, name.split(" "))
+        name = list(map(capitalize, name.split(" ")))
         name = reduce(lambda x, s: s if x is None else x + " " + s, name, None)
     ctx.p.ext.short_display_name = name
 
     # Display name.
     if ctx.p.ext.depth:
         ctx.p.ext.display_name += ctx.p.ext.parent.ext.display_name
-        ctx.p.ext.display_name += u" > "
+        ctx.p.ext.display_name += " > "
     ctx.p.ext.display_name += ctx.p.ext.short_display_name
 
     # Long name.
     if not ctx.p.ext.depth:
         ctx.p.ext.long_display_name = ctx.c.ext.long_display_name
-        ctx.p.ext.long_display_name += u" >> "
+        ctx.p.ext.long_display_name += " >> "
     else:
         ctx.p.ext.long_display_name = ctx.p.ext.parent.ext.long_display_name
-        ctx.p.ext.long_display_name += u" > "
+        ctx.p.ext.long_display_name += " > "
     ctx.p.ext.long_display_name += ctx.p.ext.short_display_name
 
     # Full name.
     if not ctx.p.ext.depth:
         ctx.p.ext.full_display_name = ctx.c.ext.full_display_name
-        ctx.p.ext.full_display_name += u" >> "
+        ctx.p.ext.full_display_name += " >> "
     else:
         ctx.p.ext.full_display_name = ctx.p.ext.parent.ext.full_display_name
-        ctx.p.ext.full_display_name += u" > "
+        ctx.p.ext.full_display_name += " > "
     ctx.p.ext.full_display_name += ctx.p.ext.short_display_name
 
 
@@ -120,5 +121,5 @@ def extend(c, p, parent=None, ancestors=[]):
         try:
             func(ctx)
         except Exception as err:
-            print func, err
+            print(func, err)
             raise err

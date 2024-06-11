@@ -10,7 +10,7 @@
 """
 import os
 
-from utils_loader import get_modules
+from .utils_loader import get_modules
 
 
 
@@ -68,7 +68,7 @@ def _set_topic_specialization(mip_era, topic):
         return
 
     # JIT to avoid circular dependencies.
-    from utils_factory import create_specializations
+    from .utils_factory import create_specializations
 
     mip_era = mip_era.strip().lower()
     topic = topic.strip().lower()

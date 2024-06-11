@@ -41,15 +41,15 @@ def str_to_unicode(val):
 
     """
     if val is None:
-        return unicode()
-    if isinstance(val, unicode):
+        return str()
+    if isinstance(val, str):
         return val
 
     val = str(val).decode('utf-8').strip()
     if not len(val):
-        return unicode()
+        return str()
 
-    return unicode(val)
+    return str(val)
 
 
 def unicode_to_str(val):
@@ -64,8 +64,8 @@ def unicode_to_str(val):
     if val is None:
         return str()
 
-    if not isinstance(val, unicode):
-        val = unicode(val)
+    if not isinstance(val, str):
+        val = str(val)
 
     val = val.encode('utf-8').strip()
     if not len(val):
@@ -83,7 +83,7 @@ def capitalize(target):
     :rtype: str
 
     """
-    if not isinstance(target, (str, unicode)):
+    if not isinstance(target, str):
         raise TypeError()
 
     if len(target) == 0:
@@ -254,7 +254,7 @@ class _JSONDecoder(json.JSONDecoder):
 
 
     def unicode_to_datetime(self, d, k, v):
-        if isinstance(v, unicode) and len(v):
+        if isinstance(v, str) and len(v):
             try:
                 float(v)
             except ValueError:
@@ -271,7 +271,7 @@ class _JSONDecoder(json.JSONDecoder):
 
 
     def unicode_to_uuid(self, d, k, v):
-        if isinstance(v, unicode) and len(v):
+        if isinstance(v, str) and len(v):
             try:
                 v = uuid.UUID(v)
             except ValueError:
@@ -388,7 +388,7 @@ def dict_to_namedtuple(d, key_formatter=None):
     if key_formatter is not None:
         d = key_formatter(d)
 
-    _Class = collections.namedtuple('_Class', d.keys())
+    _Class = collections.namedtuple('_Class', list(d.keys()))
 
     return _Class(**d)
 
@@ -414,8 +414,8 @@ def dict_keys(d, key_formatter=str_to_pascal_case):
     for k, v in d.items():
         if isinstance(v, dict):
             r[key_formatter(k)] = dict_keys(v, key_formatter)
-        elif isinstance(v, types.ListType):
-            r[key_formatter(k)] = map(lambda i: dict_keys(i, key_formatter), v)
+        elif isinstance(v, list):
+            r[key_formatter(k)] = [dict_keys(i, key_formatter) for i in v]
         else:
             r[key_formatter(k)] = v
 
@@ -508,7 +508,7 @@ def csv_file_to_dict(fp):
     :rtype: list
 
     """
-    return map(lambda r:r, csv.DictReader(open(fp)))
+    return [r for r in csv.DictReader(open(fp))]
 
 
 def csv_file_to_namedtuple(fp):
@@ -520,7 +520,7 @@ def csv_file_to_namedtuple(fp):
     :rtype: list
 
     """
-    return map(dict_to_namedtuple, csv.DictReader(open(fp)))
+    return list(map(dict_to_namedtuple, csv.DictReader(open(fp))))
 
 
 def csv_file_to_json(fp):
@@ -559,7 +559,7 @@ def text_to_typed_value(text, target_type):
     """
     # Encode text.
     if text is not None:
-        text = str_to_unicode(text) if isinstance(text, str) else unicode(text)
+        text = str_to_unicode(text) if isinstance(text, str) else str(text)
 
     # Decode according to type:
     # ... date's
@@ -571,7 +571,7 @@ def text_to_typed_value(text, target_type):
     # ... boolean's
     elif target_type is bool:
         return text.lower() in {"yes", "true", "t", "1", "y"}
-    elif target_type is unicode:
+    elif target_type is str:
         return text
     # ... others
     else:
@@ -579,4 +579,4 @@ def text_to_typed_value(text, target_type):
             return target_type(text)
         # ... exceptions
         except Exception as e:
-            print "Scalar decoding error", text, target_type
+            print("Scalar decoding error", text, target_type)

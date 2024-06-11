@@ -8,16 +8,16 @@
 
 
 """
-from utils import log
-from utils_cache import set_specialization as cache_specialization
-from utils_constants import *
-from utils_model import EnumSpecialization
-from utils_model import EnumChoiceSpecialization
-from utils_model import PropertySetSpecialization
-from utils_model import PropertySpecialization
-from utils_model import ShortTable
-from utils_model import ShortTableProperty
-from utils_model import TopicSpecialization
+from .utils import log
+from .utils_cache import set_specialization as cache_specialization
+from .utils_constants import *
+from .utils_model import EnumSpecialization
+from .utils_model import EnumChoiceSpecialization
+from .utils_model import PropertySetSpecialization
+from .utils_model import PropertySpecialization
+from .utils_model import ShortTable
+from .utils_model import ShortTableProperty
+from .utils_model import TopicSpecialization
 
 
 

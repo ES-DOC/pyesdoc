@@ -16,7 +16,7 @@ from pyesdoc.utils.compat import str
 
 
 # Set of logging levels.
-LOG_LEVEL_DEBUG = 'DUBUG'
+LOG_LEVEL_DEBUG = 'DEBUG'
 LOG_LEVEL_INFO = 'INFO'
 LOG_LEVEL_WARNING = 'WARNING'
 LOG_LEVEL_ERROR = 'ERROR'

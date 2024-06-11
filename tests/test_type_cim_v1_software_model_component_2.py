@@ -13,7 +13,7 @@
 import arrow
 
 import pyesdoc.ontologies.cim as cim
-import test_utils as tu
+from . import test_utils as tu
 
 
 

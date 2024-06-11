@@ -33,7 +33,7 @@ class Table(object):
         :param xml.etree.Element elem: XML element declared within data request definition.
 
         """
-        utils.init_from_xml(self, elem, elem.keys(), _CONVERTORS)
+        utils.init_from_xml(self, elem, list(elem.keys()), _CONVERTORS)
         self.attributes = []
         self.label_drq = self.label
         self.label = utils.get_label(self.label)

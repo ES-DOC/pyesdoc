@@ -13,7 +13,7 @@
 import arrow
 
 import pyesdoc.ontologies.cim as cim
-import test_utils as tu
+from . import test_utils as tu
 
 
 
@@ -54,12 +54,12 @@ def assert_extension_info(ext):
     :param object ext: Document extension information.
 
     """
-    tu.assert_str(ext.display_name, u"amip")
-    tu.assert_str(ext.description, u"Six element ensemble", True)
-    tu.assert_str(ext.full_display_name, u"CMIP5 Ensemble : MOHC - amip")
+    tu.assert_str(ext.display_name, "amip")
+    tu.assert_str(ext.description, "Six element ensemble", True)
+    tu.assert_str(ext.full_display_name, "CMIP5 Ensemble : MOHC - amip")
     tu.assert_int(ext.summary_fields, 2)
-    tu.assert_str(ext.summary_fields[0], u"amip")
-    tu.assert_str(ext.summary_fields[1], u"3.3 AMIP and AMIP Ensemble")
+    tu.assert_str(ext.summary_fields[0], "amip")
+    tu.assert_str(ext.summary_fields[1], "3.3 AMIP and AMIP Ensemble")
 
 
 def _assert_doc_core(doc, is_update):

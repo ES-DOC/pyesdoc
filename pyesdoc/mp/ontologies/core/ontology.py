@@ -126,7 +126,7 @@ def _set_sub_classes(ontology):
     sub_classed = {k: v for k, v in sub_classed.items() if v}
 
     # Set ontology & package sub-class sets.
-    ontology.sub_classed = sorted(sub_classed.keys(), key=lambda i: str(i))
+    ontology.sub_classed = sorted(list(sub_classed.keys()), key=lambda i: str(i))
     for pkg in ontology.packages:
         pkg.sub_classed = [c for c in ontology.sub_classed if c.package == pkg]
 

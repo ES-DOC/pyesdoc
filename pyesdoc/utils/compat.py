@@ -34,19 +34,19 @@ except (ImportError, SyntaxError):
 # Python 2
 # ---------
 if is_py2:
-    from urllib import quote, unquote, quote_plus, unquote_plus, urlencode, getproxies, proxy_bypass
-    from urlparse import urlparse, urlunparse, urljoin, urlsplit, urldefrag
+    from urllib.parse import quote, unquote, quote_plus, unquote_plus, urlencode
+    from urllib.parse import urlparse, urlunparse, urljoin, urlsplit, urldefrag
     from urllib2 import parse_http_list
-    import cookielib
-    from Cookie import Morsel
-    from StringIO import StringIO
+    import http.cookiejar
+    from http.cookies import Morsel
+    from io import StringIO
 
     builtin_str = str
     bytes = str
-    str = unicode
-    basestring = basestring
-    numeric_types = (int, long, float)
-    integer_types = (int, long)
+    str = str
+    str = str
+    numeric_types = (int, int, float)
+    integer_types = (int, int)
 
 # ---------
 # Python 3
@@ -61,6 +61,6 @@ elif is_py3:
     builtin_str = str
     str = str
     bytes = bytes
-    basestring = (str, bytes)
+    str = (str, bytes)
     numeric_types = (int, float)
     integer_types = (int,)

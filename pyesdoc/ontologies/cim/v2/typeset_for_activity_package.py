@@ -13,18 +13,17 @@ import abc
 import datetime
 import uuid
 
-import typeset_for_iso_package as iso
-import typeset_for_shared_package as shared
+from . import typeset_for_iso_package as iso
+from . import typeset_for_shared_package as shared
 
 
 
-class Activity(object):
+class Activity(object, metaclass=abc.ABCMeta):
     """An abstract class within the cim v2 type system.
 
     Base class for activities.
 
     """
-    __metaclass__ = abc.ABCMeta
 
     def __init__(self):
         """Instance constructor.

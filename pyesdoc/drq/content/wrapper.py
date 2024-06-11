@@ -28,7 +28,7 @@ class Wrapper(object):
         """Instance representation.
 
         """
-        return unicode(self._sections)
+        return str(self._sections)
 
 
     def __len__(self):
@@ -74,7 +74,7 @@ class Wrapper(object):
         """
         if isinstance(key, (slice, int)):
             return self._sections[key]
-        key = unicode(key).strip().lower()
+        key = str(key).strip().lower()
         for section in self._sections:
             if section._TABLE.label.lower() == key or \
                section._TABLE.label_drq.lower() == key:

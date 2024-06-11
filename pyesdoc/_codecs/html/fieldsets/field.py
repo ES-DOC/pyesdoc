@@ -178,7 +178,7 @@ def _get_value(data, path):
         # ... collection filter by attribute
         elif "=" in attr:
             left, right = attr.split("=")
-            value = runtime.first(value, left, right.lower(), lambda v: unicode(v).lower())
+            value = runtime.first(value, left, right.lower(), lambda v: str(v).lower())
         # ... item attribute filter
         elif hasattr(value, attr):
             value = getattr(value, attr)
@@ -190,7 +190,7 @@ def _get_value(data, path):
             break
 
     # Tornado templating requires 'strings'.
-    if isinstance(value, unicode):
+    if isinstance(value, str):
         value = convert.unicode_to_str(value)
 
     return None if value == data else value

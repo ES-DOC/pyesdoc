@@ -13,8 +13,8 @@
 # Module imports.
 import pyesdoc
 from pyesdoc.ontologies import cim
-import test_utils as tu
-import test_types as tt
+from . import test_utils as tu
+from . import test_types as tt
 
 
 

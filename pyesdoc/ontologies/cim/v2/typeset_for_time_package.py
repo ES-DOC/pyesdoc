@@ -73,7 +73,7 @@ class DateTime(object):
 	    return "{}(offset {})".format(self.value, self.is_offset)
 
 
-class DatetimeSet(object):
+class DatetimeSet(object, metaclass=abc.ABCMeta):
     """An abstract class within the cim v2 type system.
 
     A set of times.
@@ -84,7 +84,6 @@ class DatetimeSet(object):
     which can only be dates.
 
     """
-    __metaclass__ = abc.ABCMeta
 
     def __init__(self):
         """Instance constructor.
